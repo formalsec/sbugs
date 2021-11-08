@@ -38,19 +38,6 @@ class InputGenVisitor(c_ast.NodeVisitor):
         #Final line(s) of code 
         self.code = []
 
-    
-
-    #Get number of bits by type
-    def nbits(self, vartype):
-        if vartype == 'int':
-            return 32
-        elif vartype == 'char':
-            return 8
-        elif vartype == 'float':
-            return 32
-        else:
-            return None
-
 
     #Create a symbolic array (uses a 'For' loop to fill array)
     def create_sym_array(self, argname, vartype, size):
@@ -83,7 +70,7 @@ class InputGenVisitor(c_ast.NodeVisitor):
         
         #For-statement
         lvalue = c_ast.ArrayRef(argname, subscript=c_ast.ID(index))
-        exprlist = c_ast.ExprList( [c_ast.Constant('int', bits)] )
+        exprlist = c_ast.ExprList( [c_ast.FuncCall(c_ast.ID('sizeof'), c_ast.ExprList([c_ast.ID(vartype)]))] )
         rvalue = c_ast.FuncCall(c_ast.ID('summ_new_sym_var'), exprlist)
         assignment = c_ast.Assignment(op='=', lvalue=lvalue, rvalue=rvalue)                                                                                  
         stmt = c_ast.Compound([assignment])
@@ -97,13 +84,13 @@ class InputGenVisitor(c_ast.NodeVisitor):
 
 
 
-    #Create a primitive symbolic var  e.g, int a = summ_new_sym_var(32)
+    #Create a primitive symbolic var  e.g, int a = summ_new_sym_var(sizeof(int))
     def create_symvar(self, argname, vartype):
         bits = str(self.nbits(vartype))
         name = argname.name
 
         #Create Rvalue
-        exprlist = c_ast.ExprList( [c_ast.Constant('int', bits)] )
+        exprlist = c_ast.ExprList( [c_ast.FuncCall(c_ast.ID('sizeof'), c_ast.ExprList([c_ast.ID(vartype)]))] )
         rvalue = c_ast.FuncCall(c_ast.ID('summ_new_sym_var'), exprlist)
         
         #Declare Variable
