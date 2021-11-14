@@ -40,7 +40,6 @@ class InputGenVisitor(c_ast.NodeVisitor):
         #Final line(s) of code 
         self.code = []
 
-
     #Visitors
     def visit(self, node):
         return c_ast.NodeVisitor.visit(self, node)
@@ -76,12 +75,17 @@ class InputGenVisitor(c_ast.NodeVisitor):
 #Create a single test
 def create_test(fname, args):
 
-    #Function receives no args
-    if args is None:
+    #Ignore 'main' function
+    if fname == 'main':
         return
+
+    #Function has no arguments
+    if args is None:
+        args = []
 
     #Code generator
     gen = c_generator.CGenerator()
+
 
     #Create a void return type
     typedecl = c_ast.TypeDecl(f'test_{fname}', [], c_ast.IdentifierType(names=['void']))
@@ -117,7 +121,6 @@ def create_test(fname, args):
 
     #Generate the final string with the test
     str_ast = gen.visit(n_func_def_ast)
-    print(str_ast)
 
     return str_ast
 
@@ -126,11 +129,7 @@ def create_test(fname, args):
 
 #Create tests for all functions
 def create_tests (f_decls):
-    symb_args = list(map(lambda x : create_test(x, f_decls[x]), f_decls))
-    return 
-
-
-
+    return [t for t in map(lambda x : create_test(x, f_decls[x]), f_decls) if t is not None] 
 
 
 if __name__ == "__main__":
@@ -146,5 +145,7 @@ if __name__ == "__main__":
     fun_decls = vis.fun_dict;
     
     #Create tests
-    create_tests(fun_decls)
+    tests = create_tests(fun_decls)
+    for t in tests:
+        print(t)
 
