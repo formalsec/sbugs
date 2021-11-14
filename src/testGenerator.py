@@ -34,8 +34,10 @@ class InputGenVisitor(c_ast.NodeVisitor):
 
         #c_ast.ID object
         self.argname = None 
-
         self.argtype = None
+
+        #Array properties
+        self.arrayDim = 0
 
         #Final line(s) of code 
         self.code = []
@@ -50,19 +52,25 @@ class InputGenVisitor(c_ast.NodeVisitor):
         self.visit(node.type)                                                                    
         return
 
-    #Primitive Type
+    #TypeDecl
     def visit_TypeDecl(self, node):
         self.visit(node.type)
-        generator = PrimitiveTypeGen(self.argname, self.argtype)
-        code = generator.gen()
-        self.code = [code]
-        return  
 
-    #Array Type
+        if self.arrayDim == 0:
+            generator = PrimitiveTypeGen(self.argname, self.argtype)
+            self.code = generator.gen()
+            return
+
+        elif self.arrayDim > 0:
+            generator = ArrayTypeGen(self.argname, self.argtype, self.arrayDim)
+            self.code = generator.gen()
+            return 
+    
+
+    #ArrayDecl
     def visit_ArrayDecl(self, node):
-        self.visit(node.type.type)
-        generator = ArrayTypeGen(self.argname, self.argtype)
-        self.code = generator.gen()
+        self.arrayDim += 1
+        self.visit(node.type)
         return
 
     #Final Node
@@ -134,7 +142,7 @@ def create_tests (f_decls):
 
 if __name__ == "__main__":
 
-    ast = parse_file("example42.c", use_cpp=True,
+    ast = parse_file(sys.argv[1], use_cpp=True,
             cpp_path='gcc',
             cpp_args=['-E', '-Iloglib/fake_libc_include'])
     
@@ -143,7 +151,7 @@ if __name__ == "__main__":
     vis = FunDeclVisitor()
     vis.visit(ast)
     fun_decls = vis.fun_dict;
-    
+
     #Create tests
     tests = create_tests(fun_decls)
     for t in tests:
