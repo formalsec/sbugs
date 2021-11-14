@@ -1,5 +1,4 @@
 from __future__ import print_function
-import random
 import sys, os
 import re
 
@@ -10,6 +9,7 @@ from shutil import copyfile
 sys.path.extend(['.', '..'])
 
 from pycparser import c_parser, c_ast, parse_file, c_generator
+from typeGenerators import PrimitiveTypeGen, ArrayTypeGen
 
 
 class FunDeclVisitor(c_ast.NodeVisitor):
@@ -26,6 +26,8 @@ class FunDeclVisitor(c_ast.NodeVisitor):
         self.var_glob_dict[node.name] = node
 
 
+
+
 class InputGenVisitor(c_ast.NodeVisitor):
 
     def __init__ (self):
@@ -38,77 +40,6 @@ class InputGenVisitor(c_ast.NodeVisitor):
         #Final line(s) of code 
         self.code = []
 
-
-    #Create a symbolic array (uses a 'For' loop to fill array)
-    def create_sym_array(self, argname, vartype, size):
-        code = []
-        name = argname.name
-
-        #Declare array
-        dim = c_ast.Constant('int', str(size))
-        typedecl = c_ast.TypeDecl(name, [], c_ast.IdentifierType(names=[vartype]))
-        array = c_ast.ArrayDecl(typedecl, dim, None)
-        decl = c_ast.Decl(name, [], [], [], array, None, None)
-        code.append(decl)
-
-
-        #Create 'for' loop to fill array
-        index = f'index_{name}'
-        
-        ##For-init
-        typedecl = c_ast.TypeDecl(index, [], c_ast.IdentifierType(names=['int']))
-        decl = c_ast.Decl(name, [], [], [], typedecl, c_ast.Constant('int', str(0)), None)
-        init  = c_ast.DeclList(decls=[decl])
-        
-        ##For-condition
-        cond = c_ast.BinaryOp(op='<', left=c_ast.ID(index), right=c_ast.Constant('int', str(size)))
-        
-        ##For-next
-        nxt = c_ast.UnaryOp(op='p++', expr=c_ast.ID(index))
-        
-        ##For-statement
-        #Declare array
-        lvalue = c_ast.ArrayRef(argname, subscript=c_ast.ID(index))
-        
-        #multiply sizeof by 8bits
-        multiply = c_ast.BinaryOp(op='*', left=c_ast.FuncCall(c_ast.ID('sizeof'), c_ast.ExprList([c_ast.ID(vartype)])),\
-        right=c_ast.Constant('int', str(8)))
-        sizeof = c_ast.ExprList([multiply])
-        
-        #summ_new_sym_var(sizeof(<type> * 8))
-        rvalue = c_ast.FuncCall(c_ast.ID('summ_new_sym_var'), sizeof)
-        assignment = c_ast.Assignment(op='=', lvalue=lvalue, rvalue=rvalue)                                                                                  
-        
-        stmt = c_ast.Compound([assignment])
-
-        ##Create the For node
-        for_ast_code = c_ast.For(init, cond, nxt, stmt)
-        code.append(for_ast_code)
-
-        self.code += code
-        return
-
-
-
-    #Create a primitive symbolic var  e.g, int a = summ_new_sym_var(sizeof(int))
-    def create_symvar(self, argname, vartype):
-        name = argname.name
-
-        #Multiply sizeof by 8bits
-        multiply = c_ast.BinaryOp(op='*', left=c_ast.FuncCall(c_ast.ID('sizeof'), c_ast.ExprList([c_ast.ID(vartype)])),\
-        right=c_ast.Constant('int', str(8)))
-        
-        #Create Rvalue
-        sizeof = c_ast.ExprList([multiply])
-        rvalue = c_ast.FuncCall(c_ast.ID('summ_new_sym_var'), sizeof)
-        
-        #Declare Variable
-        lvalue = c_ast.TypeDecl(name, [], c_ast.IdentifierType(names=[vartype]))
-        decl = c_ast.Decl(name, [], [], [], lvalue, rvalue, None)
-        
-        self.code = [decl]
-        return
-            
 
     #Visitors
     def visit(self, node):
@@ -123,13 +54,16 @@ class InputGenVisitor(c_ast.NodeVisitor):
     #Primitive Type
     def visit_TypeDecl(self, node):
         self.visit(node.type)
-        self.create_symvar(self.argname, self.argtype)
+        generator = PrimitiveTypeGen(self.argname, self.argtype)
+        code = generator.gen()
+        self.code = [code]
         return  
 
     #Array Type
     def visit_ArrayDecl(self, node):
         self.visit(node.type.type)
-        self.create_sym_array(self.argname, self.argtype, random.randint(2,10))
+        generator = ArrayTypeGen(self.argname, self.argtype)
+        self.code = generator.gen()
         return
 
     #Final Node
@@ -164,9 +98,11 @@ def create_test(fname, args):
 
     #Visit arguments 
     for arg in args:
-        vis = InputGenVisitor()    
-        ast = vis.visit(arg)
-        call_args.append(vis.argname)
+        
+        vis = InputGenVisitor()   
+        vis.visit(arg)
+        
+        call_args.append(vis.argname) 
         code += vis.code
 
    
@@ -186,10 +122,14 @@ def create_test(fname, args):
     return str_ast
 
 
+
+
 #Create tests for all functions
 def create_tests (f_decls):
     symb_args = list(map(lambda x : create_test(x, f_decls[x]), f_decls))
     return 
+
+
 
 
 
