@@ -1,7 +1,7 @@
 #define N 10
 
 
-int f1(int a, float b, char c[][]) {
+int f1(unsigned long int a, float b, char c[][]) {
     return a;
 }
 

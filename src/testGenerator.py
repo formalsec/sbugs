@@ -75,7 +75,12 @@ class InputGenVisitor(c_ast.NodeVisitor):
 
     #Final Node
     def visit_IdentifierType(self, node):
-        self.argtype = node.names[0]
+        typ = node.names[0]
+        if len(node.names):
+            for t in node.names[1:]:
+                typ += f' {t}' 
+        
+        self.argtype = typ
         return
 
 
@@ -110,6 +115,7 @@ def create_test(fname, args):
 
     #Visit arguments 
     for arg in args:
+        print(arg)
         
         vis = InputGenVisitor()   
         vis.visit(arg)
