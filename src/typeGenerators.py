@@ -1,9 +1,9 @@
 from pycparser import c_parser, c_ast, parse_file, c_generator
 import random
 
+
 # Create a primitive symbolic var
 # e.g, int a = summ_new_sym_var(sizeof(int))
-
 class SymbolicTypeGen(c_ast.NodeVisitor):
     def __init__ (self, name, vartype):
 
@@ -31,6 +31,39 @@ class SymbolicTypeGen(c_ast.NodeVisitor):
 
 
 
+class StructTypeGen(SymbolicTypeGen):
+    def __init__ (self, name, vartype):
+        super().__init__(name, vartype)
+
+
+        self.minsize = 2
+        self.maxsize = 10
+
+
+    def randomFuel(self):
+        fuel = random.randint(self.minsize,  self.maxsize) 
+        return fuel
+
+
+    def gen(self):
+        code = []
+        name = self.argname.name
+
+        fname = self.vartype.replace(' ', '_')
+
+        #Declare Variable
+        lvalue = c_ast.TypeDecl(name, [], c_ast.IdentifierType(names=[self.vartype]))
+        rvalue = c_ast.FuncCall(c_ast.ID(f'create_{fname}'),c_ast.ExprList([c_ast.Constant('int', str(self.randomFuel()))]) )
+
+        #Assemble declaration
+        decl = c_ast.Decl(name, [], [], [], lvalue, rvalue, None)
+
+        code.append(decl)   
+        return code
+
+
+
+
 class PrimitiveTypeGen(SymbolicTypeGen):
     def __init__ (self, name, vartype):
         super().__init__(name, vartype)
@@ -47,7 +80,7 @@ class PrimitiveTypeGen(SymbolicTypeGen):
         #Make symbolic type
         rvalue = self.symbolic_rvalue(self.vartype)
 
-        #Asselble declaration
+        #Assemble declaration
         decl = c_ast.Decl(name, [], [], [], lvalue, rvalue, None)
         
         code.append(decl)   
@@ -146,3 +179,80 @@ class ArrayTypeGen(SymbolicTypeGen):
 
         code.append(for_ast_code)
         return code
+
+
+
+
+
+class InputGenVisitor(c_ast.NodeVisitor):
+
+    def __init__ (self):
+
+        #c_ast.ID object
+        self.argname = None 
+        self.argtype = None
+
+        #Array properties
+        self.arrayDim = 0
+
+        #Struct properties
+        self.struct = False
+
+        #Final line(s) of code 
+        self.code = []
+
+    #Visitors
+    def visit(self, node):
+        return c_ast.NodeVisitor.visit(self, node)
+    
+    #Entry Node
+    def visit_Decl(self, node):
+        self.argname = c_ast.ID(name=node.name)
+        self.visit(node.type)                                                                    
+        return
+
+    #TypeDecl
+    def visit_TypeDecl(self, node):
+        self.visit(node.type)
+
+        if self.struct:
+            generator = StructTypeGen(self.argname, self.argtype)
+            self.code = generator.gen()
+            return
+
+        elif self.arrayDim == 0:
+            generator = PrimitiveTypeGen(self.argname, self.argtype)
+            self.code = generator.gen()
+            return
+
+        elif self.arrayDim > 0:
+            generator = ArrayTypeGen(self.argname, self.argtype, self.arrayDim)
+            self.code = generator.gen()
+            return 
+    
+
+    #ArrayDecl
+    def visit_ArrayDecl(self, node):
+        self.arrayDim += 1
+        self.visit(node.type)
+        return
+
+    
+    #Struct Pype
+    def visit_Struct(self, node):
+        self.argtype = f'struct {node.name}'
+        self.struct = True
+        return
+
+
+
+    #Primitive Type
+    def visit_IdentifierType(self, node):
+        typ = node.names[0]
+        if len(node.names):
+            for t in node.names[1:]:
+                typ += f' {t}' 
+        
+        self.argtype = typ
+        return
+

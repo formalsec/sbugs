@@ -9,79 +9,40 @@ from shutil import copyfile
 sys.path.extend(['.', '..'])
 
 from pycparser import c_parser, c_ast, parse_file, c_generator
-from typeGenerators import PrimitiveTypeGen, ArrayTypeGen
-
+from typeGenerators import InputGenVisitor
+from structGenerator import StructGen
 
 class FunDeclVisitor(c_ast.NodeVisitor):
 
     def __init__ (self): 
         self.fun_dict = {}
-        self.var_glob_dict = {}    
+        self.var_glob_dict = {}
+        self.structs = {}
+
+        #Typedefed structs
+        self.aliases ={}
+
+    
+    def visit(self, node):
+        c_ast.NodeVisitor.visit(self, node)
 
     def visit_FuncDef(self, node):
-        self.fun_dict[node.decl.name] = node.decl.type.args.params if node.decl.type.args else None
+        self.fun_dict[node.decl.name] = node.decl.type.args.params\
+        if node.decl.type.args else None
 
 
     def visit_Decl(self, node):
-        self.var_glob_dict[node.name] = node
-
-
-
-
-class InputGenVisitor(c_ast.NodeVisitor):
-
-    def __init__ (self):
-
-        #c_ast.ID object
-        self.argname = None 
-        self.argtype = None
-
-        #Array properties
-        self.arrayDim = 0
-
-        #Final line(s) of code 
-        self.code = []
-
-    #Visitors
-    def visit(self, node):
-        return c_ast.NodeVisitor.visit(self, node)
-    
-    #Entry Node
-    def visit_Decl(self, node):
-        self.argname = c_ast.ID(name=node.name)
-        self.visit(node.type)                                                                    
-        return
-
-    #TypeDecl
-    def visit_TypeDecl(self, node):
         self.visit(node.type)
 
-        if self.arrayDim == 0:
-            generator = PrimitiveTypeGen(self.argname, self.argtype)
-            self.code = generator.gen()
-            return
 
-        elif self.arrayDim > 0:
-            generator = ArrayTypeGen(self.argname, self.argtype, self.arrayDim)
-            self.code = generator.gen()
-            return 
-    
+    def visit_Struct(self, node):
+        self.structs[node.name] = node.decls
 
-    #ArrayDecl
-    def visit_ArrayDecl(self, node):
-        self.arrayDim += 1
+
+    def visit_Typedef(self, node):
+        self.aliases[node.name] = node.type.type.name
         self.visit(node.type)
-        return
 
-    #Final Node
-    def visit_IdentifierType(self, node):
-        typ = node.names[0]
-        if len(node.names):
-            for t in node.names[1:]:
-                typ += f' {t}' 
-        
-        self.argtype = typ
-        return
 
 
 
@@ -99,7 +60,6 @@ def create_test(fname, args):
     #Code generator
     gen = c_generator.CGenerator()
 
-
     #Create a void return type
     typedecl = c_ast.TypeDecl(f'test_{fname}', [], c_ast.IdentifierType(names=['void']))
     
@@ -115,8 +75,7 @@ def create_test(fname, args):
 
     #Visit arguments 
     for arg in args:
-        print(arg)
-        
+
         vis = InputGenVisitor()   
         vis.visit(arg)
         
@@ -127,14 +86,17 @@ def create_test(fname, args):
     #Add the function call to the Ast
     code.append(c_ast.FuncCall(c_ast.ID(fname), c_ast.ExprList(call_args)))
 
+    #Return
+    code.append(c_ast.Return(c_ast.ExprList([])))
+
     #Create a block containg the function code
     block = c_ast.Compound(code)
 
     #Place the block inside a function definition
-    n_func_def_ast = c_ast.FuncDef(decl, None, block, None)
+    func_def_ast = c_ast.FuncDef(decl, None, block, None)
 
     #Generate the final string with the test
-    str_ast = gen.visit(n_func_def_ast)
+    str_ast = gen.visit(func_def_ast)
 
     return str_ast
 
@@ -142,7 +104,7 @@ def create_test(fname, args):
 
 
 #Create tests for all functions
-def create_tests (f_decls):
+def create_tests(f_decls):
     return [t for t in map(lambda x : create_test(x, f_decls[x]), f_decls) if t is not None] 
 
 
@@ -156,7 +118,13 @@ if __name__ == "__main__":
     #Visitor to get all func defs
     vis = FunDeclVisitor()
     vis.visit(ast)
+
     fun_decls = vis.fun_dict;
+    structs = vis.structs
+
+    #Generate functions responsible to create symbolic structs
+    struct_generator = StructGen(structs)
+    init_functions = struct_generator.symbolic_structs()
 
     #Create tests
     tests = create_tests(fun_decls)
