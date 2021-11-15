@@ -16,5 +16,5 @@ void f3(){
 
 
 void main() {
-    f1();
+
 }

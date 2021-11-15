@@ -1,16 +1,20 @@
-typedef struct A {
-   int a_id;   
+struct Car {
    char name[10];
-   struct A a;
-} Book;
-
-
-struct B {
-   int b_id;
-   struct A a;
+   int id;
 };
 
 
-void f1(int* a, struct A c, struct B b) {
+typedef struct Person {
+   char name[10];
+   int id;
+   struct Car car;
+
+   struct Person other;
+} Book;
+
+
+
+
+void f1(int a, struct Car car, struct Person person) {
 
 }
