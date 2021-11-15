@@ -28,9 +28,7 @@ class SymbolicTypeGen(c_ast.NodeVisitor):
         return rvalue
 
 
-
-
-
+#Create a symbolic struct (call respective function)
 class StructTypeGen(SymbolicTypeGen):
     def __init__ (self, name, vartype):
         super().__init__(name, vartype)
@@ -46,7 +44,7 @@ class StructTypeGen(SymbolicTypeGen):
 
 
     def gen(self):
-        code = []
+
         name = self.argname.name
 
         fname = self.vartype.replace(' ', '_')
@@ -58,8 +56,7 @@ class StructTypeGen(SymbolicTypeGen):
         #Assemble declaration
         decl = c_ast.Decl(name, [], [], [], lvalue, rvalue, None)
 
-        code.append(decl)   
-        return code
+        return [decl]
 
 
 
@@ -71,7 +68,6 @@ class PrimitiveTypeGen(SymbolicTypeGen):
 
     def gen(self):
         
-        code = []
         name = self.argname.name
 
         #Declare Variable
@@ -83,8 +79,7 @@ class PrimitiveTypeGen(SymbolicTypeGen):
         #Assemble declaration
         decl = c_ast.Decl(name, [], [], [], lvalue, rvalue, None)
         
-        code.append(decl)   
-        return code
+        return [decl]
 
 
 
