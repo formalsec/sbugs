@@ -10,11 +10,25 @@ class SymbolicFieldGen(c_ast.NodeVisitor):
         if isinstance(name, str):
             name = c_ast.ID(name=name)
 
+        #Ranges for array/fuel
+        self.minsize = 2
+        self.maxsize = 10
+
         self.argname = name 
         self.vartype = vartype
         self.struct_name = struct_name
         self.field = field
     
+
+
+    def init_struct_rvalue(self, vartype):
+
+        fuel = c_ast.Constant('int', str(random.randint(self.minsize,  self.maxsize)))
+        vartype = self.vartype.replace(' ', '_')
+        rvalue = c_ast.FuncCall(c_ast.ID(f'create_{vartype}'), c_ast.ExprList([fuel]))
+        return rvalue
+
+
 
     def symbolic_rvalue(self, vartype):
         
@@ -33,11 +47,6 @@ class SymbolicFieldGen(c_ast.NodeVisitor):
 class StructFieldGen(SymbolicFieldGen):
     def __init__ (self, name, vartype, struct_name, field):
         super().__init__(name, vartype, struct_name, field)
-
-
-        self.minsize = 2
-        self.maxsize = 10
-
 
     def randomFuel(self):
         fuel = random.randint(self.minsize,  self.maxsize) 
@@ -117,16 +126,14 @@ class PrimitiveFieldGen(SymbolicFieldGen):
 
 #N-dimension array struct field
 class ArrayFieldGen(SymbolicFieldGen):
-    def __init__ (self, name, vartype, struct_name, field, dimension, sizes):
+    def __init__ (self, name, vartype, struct_name, field, dimension, sizes, struct=False):
         super().__init__(name, vartype, struct_name, field) 
 
+        self.struct = struct
         self.dimension = dimension
         self.sizes = sizes
         self.sizes.reverse()
 
-        #Ranges for array size
-        self.minsize = 2
-        self.maxsize = 10
 
     #Create Random size and store value
     def randomSize(self):
@@ -154,7 +161,11 @@ class ArrayFieldGen(SymbolicFieldGen):
         lvalue = c_ast.StructRef(name = c_ast.ID(f'{sname}'), type='->', field=lvalue)
         
         #Return assignment
-        rvalue = self.symbolic_rvalue(self.vartype)
+        if self.struct:
+            rvalue = self.init_struct_rvalue(self.vartype)
+        else:
+            rvalue = self.symbolic_rvalue(self.vartype)
+        
         return c_ast.Assignment(op='=', lvalue=lvalue, rvalue=rvalue)             
 
 
@@ -232,24 +243,23 @@ class StructFieldGenVisitor(c_ast.NodeVisitor):
     def visit_TypeDecl(self, node):
         self.visit(node.type)
 
-        if self.struct:
-            generator = StructFieldGen(self.argname, self.argtype,
-            self.struct_name, self.field)
-            self.code = generator.gen()
-            return
+        if self.arrayDim == 0:
+            if self.struct:
+                generator = StructFieldGen(self.argname, self.argtype,
+                self.struct_name, self.field)
+                self.code = generator.gen()
+                return
+            else:
+                generator = PrimitiveFieldGen(self.argname, self.argtype,
+                self.struct_name, self.field)
+                self.code = generator.gen()
+                return    
 
-        elif self.arrayDim == 0:
-            generator = PrimitiveFieldGen(self.argname, self.argtype,
-            self.struct_name, self.field)
-            self.code = generator.gen()
-            return
-
-        elif self.arrayDim > 0:
+        else:
             generator = ArrayFieldGen(self.argname, self.argtype, self.struct_name,
-            self.field, self.arrayDim, self.sizes)
+            self.field, self.arrayDim, self.sizes, self.struct)
             self.code = generator.gen()
-            return 
-    
+            return   
 
     #ArrayDecl
     def visit_ArrayDecl(self, node):

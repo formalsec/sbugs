@@ -9,12 +9,12 @@ typedef struct Person {
    int id;
    struct Car car;
 
-   struct Person other;
+   struct Person other[10];
 } Book;
 
 
 
 
-void f1(int a, struct Car car, struct Person person) {
+void f1(int a, struct Car car, struct Person person[10]) {
 
 }

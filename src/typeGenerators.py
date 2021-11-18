@@ -7,6 +7,9 @@ import random
 class SymbolicTypeGen(c_ast.NodeVisitor):
     def __init__ (self, name, vartype):
 
+        self.minsize = 2
+        self.maxsize = 10
+
         if isinstance(name, str):
             name = c_ast.ID(name=name)
 
@@ -14,6 +17,13 @@ class SymbolicTypeGen(c_ast.NodeVisitor):
         self.vartype = vartype
 
     
+
+    def init_struct_rvalue(self, vartype):
+
+        fuel = c_ast.Constant('int', str(random.randint(self.minsize,  self.maxsize)))
+        vartype = self.vartype.replace(' ', '_')
+        rvalue = c_ast.FuncCall(c_ast.ID(f'create_{vartype}'), c_ast.ExprList([fuel]))
+        return rvalue
 
     def symbolic_rvalue(self, vartype):
         
@@ -32,11 +42,6 @@ class SymbolicTypeGen(c_ast.NodeVisitor):
 class StructTypeGen(SymbolicTypeGen):
     def __init__ (self, name, vartype):
         super().__init__(name, vartype)
-
-
-        self.minsize = 2
-        self.maxsize = 10
-
 
     def randomFuel(self):
         fuel = random.randint(self.minsize,  self.maxsize) 
@@ -86,14 +91,11 @@ class PrimitiveTypeGen(SymbolicTypeGen):
 
 #Create a symbolic N-dimension array
 class ArrayTypeGen(SymbolicTypeGen):
-    def __init__ (self, name, vartype, dimension):
+    def __init__ (self, name, vartype, dimension, struct=False):
         super().__init__(name, vartype) 
 
+        self.struct = struct
         self.dimension = dimension
-        
-        self.minsize = 2
-        self.maxsize = 10
-
         self.sizes = []
 
     def randomSize(self):
@@ -129,8 +131,12 @@ class ArrayTypeGen(SymbolicTypeGen):
             
             index = f'{name}_index_{i}'
             lvalue = c_ast.ArrayRef(lvalue, subscript=c_ast.ID(index))  
-
-        rvalue = self.symbolic_rvalue(self.vartype)
+        
+        if self.struct:
+            rvalue = self.init_struct_rvalue(self.vartype)
+        else:
+            rvalue = self.symbolic_rvalue(self.vartype)
+        
         return c_ast.Assignment(op='=', lvalue=lvalue, rvalue=rvalue)             
 
 
@@ -210,20 +216,26 @@ class InputGenVisitor(c_ast.NodeVisitor):
     def visit_TypeDecl(self, node):
         self.visit(node.type)
 
-        if self.struct:
-            generator = StructTypeGen(self.argname, self.argtype)
+        #Single
+        if self.arrayDim == 0:
+            
+            #Struct
+            if self.struct:
+                generator = StructTypeGen(self.argname, self.argtype)
+                self.code = generator.gen()
+                return
+            
+            #Primitive Type
+            else:
+                generator = PrimitiveTypeGen(self.argname, self.argtype)
+                self.code = generator.gen()
+                return
+        #Array 
+        else:
+            generator = ArrayTypeGen(self.argname, self.argtype,
+            self.arrayDim, self.struct)
             self.code = generator.gen()
-            return
-
-        elif self.arrayDim == 0:
-            generator = PrimitiveTypeGen(self.argname, self.argtype)
-            self.code = generator.gen()
-            return
-
-        elif self.arrayDim > 0:
-            generator = ArrayTypeGen(self.argname, self.argtype, self.arrayDim)
-            self.code = generator.gen()
-            return 
+            return  
     
 
     #ArrayDecl
