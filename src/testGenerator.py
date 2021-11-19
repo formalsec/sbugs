@@ -12,7 +12,10 @@ from pycparser import c_parser, c_ast, parse_file, c_generator
 from typeGenerators import InputGenVisitor
 from structGenerator import StructGen
 
-class FunDeclVisitor(c_ast.NodeVisitor):
+
+#Visit the ASt to separate each elemenet of interest
+#function definitions; defined structs; and Typedefs 
+class InitialVisitor(c_ast.NodeVisitor):
 
     def __init__ (self): 
         self.fun_dict = {}
@@ -31,10 +34,6 @@ class FunDeclVisitor(c_ast.NodeVisitor):
         if node.decl.type.args else None
 
 
-    def visit_Decl(self, node):
-        self.visit(node.type)
-
-
     def visit_Struct(self, node):
         self.structs[node.name] = node.decls
 
@@ -46,8 +45,9 @@ class FunDeclVisitor(c_ast.NodeVisitor):
 
 
 
+
 #Create a single test
-def create_test(fname, args):
+def create_test(fname, args, structs, aliases):
 
     #Ignore 'main' function
     if fname == 'main':
@@ -76,7 +76,7 @@ def create_test(fname, args):
     #Visit arguments 
     for arg in args:
 
-        vis = InputGenVisitor()   
+        vis = InputGenVisitor(structs,aliases)   
         vis.visit(arg)
         
         call_args.append(vis.argname) 
@@ -104,8 +104,8 @@ def create_test(fname, args):
 
 
 #Create tests for all functions
-def create_tests(f_decls):
-    return [t for t in map(lambda x : create_test(x, f_decls[x]), f_decls) if t is not None] 
+def create_tests(f_decls, structs, aliases):
+    return [t for t in map(lambda x : create_test(x, f_decls[x], structs, aliases), f_decls) if t is not None] 
 
 
 if __name__ == "__main__":
@@ -116,18 +116,20 @@ if __name__ == "__main__":
     
     
     #Visitor to get all func defs
-    vis = FunDeclVisitor()
+    vis = InitialVisitor()
     vis.visit(ast)
 
-    fun_decls = vis.fun_dict;
+
+    fun_decls = vis.fun_dict
     structs = vis.structs
+    aliases = vis.aliases
 
     #Generate functions responsible to create symbolic structs
-    struct_generator = StructGen(structs)
+    struct_generator = StructGen(structs, aliases)
     init_functions = struct_generator.symbolic_structs()
 
     #Create tests
-    tests = create_tests(fun_decls)
+    tests = create_tests(fun_decls, structs, aliases)
     for t in tests:
         print(t)
 

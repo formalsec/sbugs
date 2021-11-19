@@ -187,7 +187,11 @@ class ArrayTypeGen(SymbolicTypeGen):
 
 class InputGenVisitor(c_ast.NodeVisitor):
 
-    def __init__ (self):
+    def __init__ (self, structs, aliases):
+
+
+        self.structs = structs
+        self.aliases = aliases
 
         #c_ast.ID object
         self.argname = None 
@@ -212,7 +216,7 @@ class InputGenVisitor(c_ast.NodeVisitor):
         self.visit(node.type)                                                                    
         return
 
-    #TypeDecl
+    #TypeDecl (Common node)
     def visit_TypeDecl(self, node):
         self.visit(node.type)
 
@@ -252,14 +256,22 @@ class InputGenVisitor(c_ast.NodeVisitor):
         return
 
 
-
-    #Primitive Type
+    #IdentifierType (Common and last node)
     def visit_IdentifierType(self, node):
         typ = node.names[0]
         if len(node.names):
             for t in node.names[1:]:
                 typ += f' {t}' 
         
+        #Type is a typedef alias
+        if typ in self.aliases.keys():
+            typ = self.aliases[typ]
+            
+            #Typedef struct
+            if typ in self.structs.keys():
+                typ = f'struct {typ}'
+                self.struct = True
+
         self.argtype = typ
         return
 

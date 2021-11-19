@@ -210,7 +210,10 @@ class ArrayFieldGen(SymbolicFieldGen):
 
 class StructFieldGenVisitor(c_ast.NodeVisitor):
 
-    def __init__ (self, struct_name, field):
+    def __init__ (self, struct_name, field, structs, aliases):
+
+        self.structs = structs
+        self.aliases = aliases
 
         self.struct_name = struct_name
         self.field = field
@@ -239,7 +242,7 @@ class StructFieldGenVisitor(c_ast.NodeVisitor):
         self.visit(node.type)                                                                    
         return
 
-    #TypeDecl
+    #TypeDecl (Common node)
     def visit_TypeDecl(self, node):
         self.visit(node.type)
 
@@ -277,13 +280,22 @@ class StructFieldGenVisitor(c_ast.NodeVisitor):
 
 
 
-    #Primitive Type
+    #IdentifierType (Common and last node)
     def visit_IdentifierType(self, node):
         typ = node.names[0]
         if len(node.names):
             for t in node.names[1:]:
                 typ += f' {t}' 
         
+        #Type is a typedef alias
+        if typ in self.aliases.keys():
+            typ = self.aliases[typ]
+            
+            #Typedef struct
+            if typ in self.structs.keys():
+                typ = f'struct {typ}'
+                self.struct = True
+
         self.argtype = typ
         return
 
@@ -292,11 +304,11 @@ class StructFieldGenVisitor(c_ast.NodeVisitor):
 
 
 
-
 #Generates the functions to init symbolic structs
 class StructGen(c_ast.NodeVisitor):
-    def __init__ (self, structs):
+    def __init__ (self, structs, aliases):
 
+        self.aliases = aliases
         self.structs = structs
 
     #Arguments of init function
@@ -330,7 +342,7 @@ class StructGen(c_ast.NodeVisitor):
         return decl
 
 
-    def init_function(self, struct_name, fields):
+    def init_function(self, struct_name, fields, structs, aliases):
         
         #Code generator
         gen = c_generator.CGenerator()
@@ -353,7 +365,7 @@ class StructGen(c_ast.NodeVisitor):
         #Visit fields 
         for field in fields:
 
-            vis = StructFieldGenVisitor(struct_name, field.name)   
+            vis = StructFieldGenVisitor(struct_name, field.name, structs, aliases)   
             vis.visit(field)
 
             code += vis.code
@@ -377,4 +389,5 @@ class StructGen(c_ast.NodeVisitor):
     
     #Create functions do instantiate all structs
     def symbolic_structs(self):
-        return [s for s in map(lambda x : self.init_function(x, self.structs[x]), self.structs) if s is not None] 
+        return [s for s in map(lambda x : self.init_function(x, self.structs[x],
+        self.structs, self.aliases), self.structs) if s is not None] 
