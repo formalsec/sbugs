@@ -7,8 +7,8 @@ import random
 class SymbolicTypeGen(c_ast.NodeVisitor):
     def __init__ (self, name, vartype):
 
-        self.minsize = 2
-        self.maxsize = 10
+        self.arraysize = c_ast.ID('ARRAY_SIZE')
+        self.fuel = c_ast.ID('FUEL')
 
         if isinstance(name, str):
             name = c_ast.ID(name=name)
@@ -20,9 +20,8 @@ class SymbolicTypeGen(c_ast.NodeVisitor):
 
     def init_struct_rvalue(self, vartype):
 
-        fuel = c_ast.Constant('int', str(random.randint(self.minsize,  self.maxsize)))
         vartype = self.vartype.replace(' ', '_')
-        rvalue = c_ast.FuncCall(c_ast.ID(f'create_{vartype}'), c_ast.ExprList([fuel]))
+        rvalue = c_ast.FuncCall(c_ast.ID(f'create_{vartype}'), c_ast.ExprList([self.fuel]))
         return rvalue
 
     def symbolic_rvalue(self, vartype):
@@ -43,20 +42,15 @@ class StructTypeGen(SymbolicTypeGen):
     def __init__ (self, name, vartype):
         super().__init__(name, vartype)
 
-    def randomFuel(self):
-        fuel = random.randint(self.minsize,  self.maxsize) 
-        return fuel
-
 
     def gen(self):
 
         name = self.argname.name
-
         fname = self.vartype.replace(' ', '_')
 
         #Declare Variable
         lvalue = c_ast.TypeDecl(name, [], c_ast.IdentifierType(names=[self.vartype]))
-        rvalue = c_ast.FuncCall(c_ast.ID(f'create_{fname}'),c_ast.ExprList([c_ast.Constant('int', str(self.randomFuel()))]) )
+        rvalue = c_ast.FuncCall(c_ast.ID(f'create_{fname}'),c_ast.ExprList([self.fuel]) )
 
         #Assemble declaration
         decl = c_ast.Decl(name, [], [], [], lvalue, rvalue, None)
@@ -96,12 +90,6 @@ class ArrayTypeGen(SymbolicTypeGen):
 
         self.struct = struct
         self.dimension = dimension
-        self.sizes = []
-
-    def randomSize(self):
-        rsize = random.randint(self.minsize,  self.maxsize) 
-        self.sizes.append(rsize)
-        return rsize
 
 
     #Declare N-dimension array
@@ -109,13 +97,11 @@ class ArrayTypeGen(SymbolicTypeGen):
     def gen_array_decl(self):
         name = self.argname.name
 
-        dim = c_ast.Constant('int', str(self.randomSize()))
         typedecl = c_ast.TypeDecl(name, [], c_ast.IdentifierType(names=[self.vartype]))
-        array = c_ast.ArrayDecl(typedecl, dim, None)
+        array = c_ast.ArrayDecl(typedecl, self.arraysize, None)
 
         for i in range(1, self.dimension):
-            dim = c_ast.Constant('int', str(self.randomSize()))
-            array =  c_ast.ArrayDecl(array, dim, None)
+            array =  c_ast.ArrayDecl(array, self.arraysize, None)
 
         return c_ast.Decl(name, [], [], [], array, None, None)
     
@@ -150,7 +136,7 @@ class ArrayTypeGen(SymbolicTypeGen):
         init  = c_ast.DeclList(decls=[decl])
         
         ##For-condition
-        cond = c_ast.BinaryOp(op='<', left=c_ast.ID(index), right=c_ast.Constant('int', str(size)))
+        cond = c_ast.BinaryOp(op='<', left=c_ast.ID(index), right=size)
         
         ##For-next
         nxt = c_ast.UnaryOp(op='p++', expr=c_ast.ID(index))
@@ -169,14 +155,12 @@ class ArrayTypeGen(SymbolicTypeGen):
                                                             
         stmt = c_ast.Compound([self.gen_array_init()])
 
-        sizes = self.sizes
-
         index = f'{name}_index_{self.dimension}' 
-        for_ast_code = self.For_ast(index, sizes.pop(0), stmt)
+        for_ast_code = self.For_ast(index, self.arraysize, stmt)
 
         for i in range(self.dimension-1, 0 ,-1):
             index = f'{name}_index_{i}'
-            for_ast_code = self.For_ast(index, sizes.pop(0), c_ast.Compound([for_ast_code])) 
+            for_ast_code = self.For_ast(index, self.arraysize, c_ast.Compound([for_ast_code])) 
 
         code.append(for_ast_code)
         return code

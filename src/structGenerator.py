@@ -10,9 +10,8 @@ class SymbolicFieldGen(c_ast.NodeVisitor):
         if isinstance(name, str):
             name = c_ast.ID(name=name)
 
-        #Ranges for array/fuel
-        self.minsize = 2
-        self.maxsize = 10
+        self.arraysize = c_ast.ID('ARRAY_SIZE')
+        self.fuel = c_ast.ID('FUEL')
 
         self.argname = name 
         self.vartype = vartype
@@ -23,9 +22,8 @@ class SymbolicFieldGen(c_ast.NodeVisitor):
 
     def init_struct_rvalue(self, vartype):
 
-        fuel = c_ast.Constant('int', str(random.randint(self.minsize,  self.maxsize)))
         vartype = self.vartype.replace(' ', '_')
-        rvalue = c_ast.FuncCall(c_ast.ID(f'create_{vartype}'), c_ast.ExprList([fuel]))
+        rvalue = c_ast.FuncCall(c_ast.ID(f'create_{vartype}'), c_ast.ExprList([self.fuel]))
         return rvalue
 
 
@@ -47,10 +45,6 @@ class SymbolicFieldGen(c_ast.NodeVisitor):
 class StructFieldGen(SymbolicFieldGen):
     def __init__ (self, name, vartype, struct_name, field):
         super().__init__(name, vartype, struct_name, field)
-
-    def randomFuel(self):
-        fuel = random.randint(self.minsize,  self.maxsize) 
-        return fuel
 
 
     #Recursive struct 
@@ -91,8 +85,7 @@ class StructFieldGen(SymbolicFieldGen):
         
         #Other struct
         else:
-            fuel = c_ast.Constant('int', str(self.randomFuel()))
-            rvalue = c_ast.FuncCall(c_ast.ID(f'create_{fname}'),c_ast.ExprList([fuel]) )
+            rvalue = c_ast.FuncCall(c_ast.ID(f'create_{fname}'),c_ast.ExprList([self.fuel]) )
             decl = c_ast.Decl(name, [], [], [], lvalue, rvalue, None)
             code.append(decl)   
         
@@ -133,13 +126,6 @@ class ArrayFieldGen(SymbolicFieldGen):
         self.dimension = dimension
         self.sizes = sizes
         self.sizes.reverse()
-
-
-    #Create Random size and store value
-    def randomSize(self):
-        rsize = random.randint(self.minsize,  self.maxsize) 
-        self.sizes.append(rsize)
-        return rsize
 
 
     #struct->Array[i][j] = symbolic();
@@ -382,8 +368,6 @@ class StructGen(c_ast.NodeVisitor):
 
         #Generate the final string with the test
         str_ast = gen.visit(n_func_def_ast)
-
-        print(str_ast)
         return str_ast
 
     

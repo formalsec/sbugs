@@ -11,6 +11,7 @@ sys.path.extend(['.', '..'])
 from pycparser import c_parser, c_ast, parse_file, c_generator
 from typeGenerators import InputGenVisitor
 from structGenerator import StructGen
+from utils import defineMacro
 
 
 #Visit the ASt to separate each elemenet of interest
@@ -119,17 +120,32 @@ if __name__ == "__main__":
     vis = InitialVisitor()
     vis.visit(ast)
 
+    #print(ast)
 
     fun_decls = vis.fun_dict
     structs = vis.structs
     aliases = vis.aliases
 
+    #Final test is a list of strings
+    testfile = []
+
+
+    #Add Macros for size (array size and fuel)
+    testfile.append(defineMacro('FUEL', 5))
+    testfile.append(defineMacro('ARRAY_SIZE', 10))
+    testfile.append('\n')
+
+
+
     #Generate functions responsible to create symbolic structs
     struct_generator = StructGen(structs, aliases)
-    init_functions = struct_generator.symbolic_structs()
+    testfile +=  struct_generator.symbolic_structs()
 
-    #Create tests
-    tests = create_tests(fun_decls, structs, aliases)
-    for t in tests:
+
+    #Create actual tests
+    testfile += create_tests(fun_decls, structs, aliases)
+    
+
+    for t in testfile:
         print(t)
 
