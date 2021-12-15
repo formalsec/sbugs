@@ -11,7 +11,7 @@ sys.path.extend(['.', '..'])
 from pycparser import c_parser, c_ast, parse_file, c_generator
 from typeGenerators import InputGenVisitor
 from structGenerator import StructGen
-from utils import defineMacro
+from utils import defineMacro, mainFunction
 
 
 #Visit the ASt to separate each elemenet of interest
@@ -52,7 +52,7 @@ def create_test(fname, args, structs, aliases):
 
     #Ignore 'main' function
     if fname == 'main':
-        return
+        return ('main', None)
 
     #Function has no arguments
     if args is None:
@@ -99,14 +99,15 @@ def create_test(fname, args, structs, aliases):
     #Generate the final string with the test
     str_ast = gen.visit(func_def_ast)
 
-    return str_ast
+    return (f'test_{fname}', str_ast)
 
 
 
 
 #Create tests for all functions
 def create_tests(f_decls, structs, aliases):
-    return [t for t in map(lambda x : create_test(x, f_decls[x], structs, aliases), f_decls) if t is not None] 
+    return {k: v for k, v in map(lambda x :\
+    create_test(x, f_decls[x], structs, aliases), f_decls) if v is not None} 
 
 
 if __name__ == "__main__":
@@ -120,33 +121,32 @@ if __name__ == "__main__":
     vis = InitialVisitor()
     vis.visit(ast)
 
-    #print(ast)
-
     fun_decls = vis.fun_dict
 
     structs = vis.structs
     aliases = vis.aliases
 
-    #Final test is a list of strings
-    testfile = []
-
+    #Final list of strings to be written to file
+    codeList = []
 
     #Add Macros for size (array size and fuel)
-    testfile.append(defineMacro('FUEL', 5))
-    testfile.append(defineMacro('ARRAY_SIZE', 10))
-    testfile.append('\n')
-
-
+    codeList.append(defineMacro('FUEL', 5))
+    codeList.append(defineMacro('ARRAY_SIZE', 10)+'\n')
 
     #Generate functions responsible to create symbolic structs
     struct_generator = StructGen(structs, aliases)
-    testfile +=  struct_generator.symbolic_structs()
-
+    codeList +=  struct_generator.symbolic_structs()
 
     #Create actual tests
-    testfile += create_tests(fun_decls, structs, aliases)
-    
+    testsDict = create_tests(fun_decls, structs, aliases) 
+    codeList += testsDict.values()
 
-    for t in testfile:
-        print(t)
+    #Create main function and call tests
+    codeList.append(mainFunction(testsDict.keys()))
+
+    #Write to actual file
+    file = open(sys.argv[2], "w")
+    for c in codeList:
+        file.write(f'{c}\n')
+
 
