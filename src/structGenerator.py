@@ -62,8 +62,8 @@ class StructFieldGen(SymbolicFieldGen):
         rvalue = c_ast.FuncCall(c_ast.ID(f'create_{fname}'),c_ast.ExprList([fuel]) )
         
         #Assemble If
-        if_decl = c_ast.Decl(name, [], [], [], [], lvalue, rvalue, None)
-        else_decl = c_ast.Decl(name, [], [], [], [], lvalue, c_ast.ID('NULL'), None)
+        if_decl = c_ast.Decl(name, [], [], [], lvalue, rvalue, None)
+        else_decl = c_ast.Decl(name, [], [], [], lvalue, c_ast.ID('NULL'), None)
         if_fuel = c_ast.If(cond, c_ast.Compound([if_decl]), c_ast.Compound([else_decl]))
 
         return [if_fuel]
@@ -86,7 +86,7 @@ class StructFieldGen(SymbolicFieldGen):
         #Other struct
         else:
             rvalue = c_ast.FuncCall(c_ast.ID(f'create_{fname}'),c_ast.ExprList([self.fuel]) )
-            decl = c_ast.Decl(name, [], [], [], [], lvalue, rvalue, None)
+            decl = c_ast.Decl(name, [], [], [], lvalue, rvalue, None)
             code.append(decl)   
         
         return code
@@ -111,7 +111,7 @@ class PrimitiveFieldGen(SymbolicFieldGen):
         lvalue = c_ast.StructRef(name = c_ast.ID(f'{name}'), type='->', field=c_ast.ID(f'{self.field}'))
 
         #Assemble declaration
-        decl = c_ast.Decl(name, [], [], [], [], lvalue, rvalue, None)
+        decl = c_ast.Decl(name, [], [], [], lvalue, rvalue, None)
         return [decl]
 
 
@@ -160,8 +160,8 @@ class ArrayFieldGen(SymbolicFieldGen):
     def For_ast(self, index, size, stmt):
 
         ##For-init
-        typedecl = c_ast.TypeDecl(index, [], None, c_ast.IdentifierType(names=['int']))
-        decl = c_ast.Decl(index, [], [], [], [], typedecl, c_ast.Constant('int', str(0)), None)
+        typedecl = c_ast.TypeDecl(index, [], c_ast.IdentifierType(names=['int']))
+        decl = c_ast.Decl(index, [], [], [], typedecl, c_ast.Constant('int', str(0)), None)
         init  = c_ast.DeclList(decls=[decl])
         
         ##For-condition
@@ -304,8 +304,8 @@ class StructGen(c_ast.NodeVisitor):
     def init_args(self):
         args = []
         
-        typedecl = c_ast.TypeDecl('fuel', [], None, c_ast.IdentifierType(names=['int']))
-        decl = c_ast.Decl('fuel', [], [], [], [], typedecl, None, None)
+        typedecl = c_ast.TypeDecl('fuel', [], c_ast.IdentifierType(names=['int']))
+        decl = c_ast.Decl('fuel', [], [], [], typedecl, None, None)
 
         args.append(decl)
         return args
@@ -318,12 +318,12 @@ class StructGen(c_ast.NodeVisitor):
         typ = f'struct {struct_name}'
         name = f'struct_{struct_name}_instance' 
 
-        lvalue = c_ast.TypeDecl(name, [], None, c_ast.IdentifierType(names=[typ]))
+        lvalue = c_ast.TypeDecl(name, [], c_ast.IdentifierType(names=[typ]))
         rvalue = c_ast.FuncCall(c_ast.ID('malloc'),c_ast.ExprList([c_ast.FuncCall(c_ast.ID('sizeof'),\
         c_ast.ExprList([c_ast.ID(typ)]))]) )
 
         #Assemble declaration
-        decl = c_ast.Decl(name, [], [], [], [], c_ast.PtrDecl([], lvalue), rvalue, None)
+        decl = c_ast.Decl(name, [], [], [], c_ast.PtrDecl([], lvalue), rvalue, None)
 
         return decl
 
@@ -334,14 +334,14 @@ class StructGen(c_ast.NodeVisitor):
         gen = c_generator.CGenerator()
 
         #Create return of type struct
-        typedecl = c_ast.TypeDecl(f'create_struct_{struct_name}', [], None, c_ast.IdentifierType(names=[f'struct {struct_name}']))
+        typedecl = c_ast.TypeDecl(f'create_struct_{struct_name}', [], c_ast.IdentifierType(names=[f'struct {struct_name}']))
 
         #Fuel parameter
         paramlist = c_ast.ParamList(self.init_args())
 
         #Create a function declaration with name 'create_<struct_name>'
         funcdecl = c_ast.FuncDecl(paramlist, typedecl)
-        decl = c_ast.Decl(f'create_{struct_name}', [], [], [], [], funcdecl, None, None)
+        decl = c_ast.Decl(f'create_{struct_name}', [], [], [], funcdecl, None, None)
 
         code = []
 

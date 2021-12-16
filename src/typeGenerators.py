@@ -49,11 +49,11 @@ class StructTypeGen(SymbolicTypeGen):
         fname = self.vartype.replace(' ', '_')
 
         #Declare Variable
-        lvalue = c_ast.TypeDecl(name, [], None, c_ast.IdentifierType(names=[self.vartype]))
+        lvalue = c_ast.TypeDecl(name, [], c_ast.IdentifierType(names=[self.vartype]))
         rvalue = c_ast.FuncCall(c_ast.ID(f'create_{fname}'),c_ast.ExprList([self.fuel]) )
 
         #Assemble declaration
-        decl = c_ast.Decl(name, [], [], [], [], lvalue, rvalue, None)
+        decl = c_ast.Decl(name, [], [], [], lvalue, rvalue, None)
 
         return [decl]
 
@@ -70,13 +70,13 @@ class PrimitiveTypeGen(SymbolicTypeGen):
         name = self.argname.name
 
         #Declare Variable
-        lvalue = c_ast.TypeDecl(name, [], None, c_ast.IdentifierType(names=[self.vartype]))
+        lvalue = c_ast.TypeDecl(name, [], c_ast.IdentifierType(names=[self.vartype]))
 
         #Make symbolic type
         rvalue = self.symbolic_rvalue(self.vartype)
 
         #Assemble declaration
-        decl = c_ast.Decl(name, [], [], [], [], lvalue, rvalue, None)
+        decl = c_ast.Decl(name, [], [], [], lvalue, rvalue, None)
         
         return [decl]
 
@@ -97,13 +97,13 @@ class ArrayTypeGen(SymbolicTypeGen):
     def gen_array_decl(self):
         name = self.argname.name
 
-        typedecl = c_ast.TypeDecl(name, [], None, c_ast.IdentifierType(names=[self.vartype]))
+        typedecl = c_ast.TypeDecl(name, [], c_ast.IdentifierType(names=[self.vartype]))
         array = c_ast.ArrayDecl(typedecl, self.arraysize, None)
 
         for i in range(1, self.dimension):
             array =  c_ast.ArrayDecl(array, self.arraysize, None)
 
-        return c_ast.Decl(name, [], [], [], [], array, None, None)
+        return c_ast.Decl(name, [], [], [], array, None, None)
     
 
     #Array[i][j] = symbolic();
@@ -131,8 +131,8 @@ class ArrayTypeGen(SymbolicTypeGen):
     def For_ast(self, index, size, stmt):
 
         ##For-init
-        typedecl = c_ast.TypeDecl(index, [], None, c_ast.IdentifierType(names=['int']))
-        decl = c_ast.Decl(index, [], [], [], [], typedecl, c_ast.Constant('int', str(0)), None)
+        typedecl = c_ast.TypeDecl(index, [], c_ast.IdentifierType(names=['int']))
+        decl = c_ast.Decl(index, [], [], [], typedecl, c_ast.Constant('int', str(0)), None)
         init  = c_ast.DeclList(decls=[decl])
         
         ##For-condition

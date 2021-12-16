@@ -11,9 +11,9 @@ def returnValue(val):
 def mainFunction(calls):
 	gen = c_generator.CGenerator()
 
-	typedecl = c_ast.TypeDecl(f'main', [], None, c_ast.IdentifierType(names=['int']))
+	typedecl = c_ast.TypeDecl(f'main', [], c_ast.IdentifierType(names=['int']))
 	funcdecl = c_ast.FuncDecl(None, typedecl)
-	decl = c_ast.Decl(f'main', [], [], [], [], funcdecl, None, None)
+	decl = c_ast.Decl(f'main', [], [], [], funcdecl, None, None)
 
 	calls_ast = [c for c in map(lambda x : c_ast.FuncCall(c_ast.ID(x), c_ast.ExprList([])), calls)]
 	calls_ast.append(returnValue(c_ast.Constant('int', str(0))))

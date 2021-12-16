@@ -62,11 +62,11 @@ def create_test(fname, args, structs, aliases):
     gen = c_generator.CGenerator()
 
     #Create a void return type
-    typedecl = c_ast.TypeDecl(f'test_{fname}', [], None, c_ast.IdentifierType(names=['void']))
+    typedecl = c_ast.TypeDecl(f'test_{fname}', [], c_ast.IdentifierType(names=['void']))
     
     #Create a function declaration with name 'test_<fname>'
     funcdecl = c_ast.FuncDecl(None, typedecl)
-    decl = c_ast.Decl(f'test_{fname}', [], [], [], [], funcdecl, None, None)
+    decl = c_ast.Decl(f'test_{fname}', [], [], [], funcdecl, None, None)
     
     #Arguments to call the function
     call_args = []
