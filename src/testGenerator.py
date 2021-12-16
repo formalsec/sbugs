@@ -1,4 +1,7 @@
+#!/usr/bin/env python3
+
 from __future__ import print_function
+import argparse
 import sys, os
 import re
 
@@ -24,7 +27,7 @@ class InitialVisitor(c_ast.NodeVisitor):
         self.structs = {}
 
         #Typedefed structs
-        self.aliases ={}
+        self.aliases = {}
 
     
     def visit(self, node):
@@ -102,36 +105,62 @@ def create_test(fname, args, structs, aliases):
     return (f'test_{fname}', str_ast)
 
 
-
-
 #Create tests for all functions
 def create_tests(f_decls, structs, aliases):
     return {k: v for k, v in map(lambda x :\
     create_test(x, f_decls[x], structs, aliases), f_decls) if v is not None} 
 
 
+
+
+def get_cmd_args():
+    parser = argparse.ArgumentParser(description='Generate Symbolic Tests')
+
+    parser.add_argument('-o', metavar='name', type=str, required=False, default='out.c',
+                        help='Output name')
+
+    parser.add_argument('--fuel', metavar='value', type=int, required=False, default=5,
+                        help='Define \'Fuel\' value (default:5)')
+
+    parser.add_argument('--arraySize', metavar='value', type=int, required=False, default=10,
+                        help='Define array size (default:10)')
+
+    parser.add_argument('targetFile', metavar='file', type=str,
+                        help='The name of the target C file')
+
+    return parser.parse_args()
+
+
+
 if __name__ == "__main__":
 
-    ast = parse_file(sys.argv[1], use_cpp=True,
+    #Command line arguments
+    args = get_cmd_args()
+    inputFile = args.targetFile
+    outFile = args.o
+    fuel = args.fuel
+    arraySize = args.arraySize
+
+    ast = parse_file(args.targetFile, use_cpp=True,
             cpp_path='gcc',
             cpp_args=['-E', '-Iloglib/fake_libc_include'])
-    
-    
-    #Visitor to get all func defs
+
+
+    #Initial visitor to get all relevant elements
     vis = InitialVisitor()
     vis.visit(ast)
 
     fun_decls = vis.fun_dict
-
     structs = vis.structs
     aliases = vis.aliases
 
+    
     #Final list of strings to be written to file
     codeList = []
 
     #Add Macros for size (array size and fuel)
-    codeList.append(defineMacro('FUEL', 5))
-    codeList.append(defineMacro('ARRAY_SIZE', 10)+'\n')
+    codeList.append(defineMacro('FUEL', fuel))
+    codeList.append(defineMacro('ARRAY_SIZE', arraySize)+'\n')
 
     #Generate functions responsible to create symbolic structs
     struct_generator = StructGen(structs, aliases)
@@ -145,7 +174,7 @@ if __name__ == "__main__":
     codeList.append(mainFunction(testsDict.keys()))
 
     #Write to actual file
-    file = open(sys.argv[2], "w")
+    file = open(outFile, "w")
     for c in codeList:
         file.write(f'{c}\n')
 
