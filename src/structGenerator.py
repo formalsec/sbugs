@@ -11,7 +11,7 @@ class SymbolicFieldGen(c_ast.NodeVisitor):
             name = c_ast.ID(name=name)
 
         self.arraysize = c_ast.ID('ARRAY_SIZE')
-        self.fuel = c_ast.ID('FUEL')
+        self.fuel = c_ast.ID('fuel')
 
         self.argname = name 
         self.vartype = vartype
@@ -41,11 +41,6 @@ class SymbolicFieldGen(c_ast.NodeVisitor):
         return rvalue
 
 
-#Struct inside Struct
-class StructFieldGen(SymbolicFieldGen):
-    def __init__ (self, name, vartype, struct_name, field):
-        super().__init__(name, vartype, struct_name, field)
-
 
     #Recursive struct 
     # if(fuel > 0) struct->field = create_this_struct(fuel-1)
@@ -66,9 +61,15 @@ class StructFieldGen(SymbolicFieldGen):
         else_decl = c_ast.Decl(name, [], [], [], lvalue, c_ast.ID('NULL'), None)
         if_fuel = c_ast.If(cond, c_ast.Compound([if_decl]), c_ast.Compound([else_decl]))
 
-        return [if_fuel]
+        return if_fuel    
 
-    
+
+#Struct inside Struct
+class StructFieldGen(SymbolicFieldGen):
+    def __init__ (self, name, vartype, struct_name, field):
+        super().__init__(name, vartype, struct_name, field)
+
+
     #struct->field = create_struct(fuel)
     def gen(self):
         code = []
@@ -81,11 +82,11 @@ class StructFieldGen(SymbolicFieldGen):
 
         #Recursive struct
         if f'struct_{self.struct_name}' == fname:
-            code += self.recursiveStruct(name, lvalue, fname)
+            code.append(self.recursiveStruct(name, lvalue, fname))
         
         #Other struct
         else:
-            rvalue = c_ast.FuncCall(c_ast.ID(f'create_{fname}'),c_ast.ExprList([self.fuel]) )
+            rvalue = self.init_struct_rvalue(self.vartype)
             decl = c_ast.Decl(name, [], [], [], lvalue, rvalue, None)
             code.append(decl)   
         
@@ -146,9 +147,18 @@ class ArrayFieldGen(SymbolicFieldGen):
         sname = f'struct_{self.struct_name}_instance'   
         lvalue = c_ast.StructRef(name = c_ast.ID(f'{sname}'), type='->', field=lvalue)
         
+        fname = self.vartype.replace(' ', '_')
+
         #Return assignment
         if self.struct:
-            rvalue = self.init_struct_rvalue(self.vartype)
+            
+            #Recursive struct
+            if f'struct_{self.struct_name}' == fname:
+                return self.recursiveStruct(name, lvalue, fname)
+
+            #Other struct
+            else:
+                rvalue = self.init_struct_rvalue(self.vartype)
         else:
             rvalue = self.symbolic_rvalue(self.vartype)
         
@@ -258,7 +268,7 @@ class StructFieldGenVisitor(c_ast.NodeVisitor):
         return
 
     
-    #Struct Pype
+    #Struct Type
     def visit_Struct(self, node):
         self.argtype = f'struct {node.name}'
         self.struct = True
