@@ -145,8 +145,6 @@ if __name__ == "__main__":
             cpp_path='gcc',
             cpp_args=['-E', '-Iloglib/fake_libc_include'])
 
-    print(ast)
-
     #Initial visitor to get all relevant elements
     vis = InitialVisitor()
     vis.visit(ast)
