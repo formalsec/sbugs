@@ -161,7 +161,7 @@ if __name__ == "__main__":
     codeList.append(defineMacro('FUEL', fuel))
     codeList.append(defineMacro('ARRAY_SIZE', arraySize)+'\n')
 
-    #Generate functions responsible to create symbolic structs
+    #Generate functions responsible for creating symbolic structs
     struct_generator = StructGen(structs, aliases)
     codeList +=  struct_generator.symbolic_structs()
 
