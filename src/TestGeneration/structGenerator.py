@@ -175,7 +175,13 @@ class ArrayFieldGen(SymbolicFieldGen):
         init  = DeclList(decls=[decl])
         
         ##For-condition
-        cond = BinaryOp(op='<', left=ID(index), right=Constant('int', str(size)))
+        if isinstance(size, int):
+            size = Constant('int', str(size))
+
+        elif isinstance(size, str):
+            size = ID(size)
+        
+        cond = BinaryOp(op='<', left=ID(index), right=size)
         
         ##For-next
         nxt = UnaryOp(op='p++', expr=ID(index))
@@ -190,7 +196,6 @@ class ArrayFieldGen(SymbolicFieldGen):
         name = self.argname.name
                           
         stmt = Compound([self.gen_array_init()])
-
         sizes = self.sizes
 
         index = f'{name}_index_{self.dimension}' 
@@ -263,6 +268,13 @@ class StructFieldGenVisitor(NodeVisitor):
     #ArrayDecl
     def visit_ArrayDecl(self, node):
         self.sizes.append(int(node.dim.value))
+        self.arrayDim += 1
+        self.visit(node.type)
+        return
+
+    #Pointer
+    def visit_PtrDecl(self, node):
+        self.sizes.append('POINTER_SIZE')
         self.arrayDim += 1
         self.visit(node.type)
         return
