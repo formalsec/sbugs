@@ -16,8 +16,7 @@ from pycparser.c_ast import *
 
 from typeGenerators import InputGenVisitor
 from structGenerator import StructGen
-from utils import defineMacro, mainFunction
-
+from utils import *
 
 
 #Visit the ASt to separate each elemenet of interest
@@ -67,18 +66,14 @@ def create_test(fname, args, structs, aliases):
     #Code generator
     gen = c_generator.CGenerator()
 
-    #Create a void return type
-    typedecl = TypeDecl(f'test_{fname}', [], IdentifierType(names=['void']))
-    
-    #Create a function declaration with name 'test_<fname>'
-    funcdecl = FuncDecl(None, typedecl)
-    decl = Decl(f'test_{fname}', [], [], [], funcdecl, None, None)
+    #Empty function
+    decl = createFunction(f'test_{fname}', args=None, returnType='void')
     
     #Arguments to call the function
     call_args = []
     
     #Ast code to be generated
-    code = []
+    fblock = []
 
     #Visit arguments 
     for arg in args:
@@ -87,17 +82,17 @@ def create_test(fname, args, structs, aliases):
         vis.visit(arg)
         
         call_args.append(vis.argname) 
-        code += vis.code
+        fblock += vis.code
 
    
     #Add the function call to the Ast
-    code.append(FuncCall(ID(fname), ExprList(call_args)))
+    fblock.append(FuncCall(ID(fname), ExprList(call_args)))
 
     #Return
-    code.append(Return(ExprList([])))
+    fblock.append(Return(ExprList([])))
 
     #Create a block containg the function code
-    block = Compound(code)
+    block = Compound(fblock)
 
     #Place the block inside a function definition
     func_def_ast = FuncDef(decl, None, block, None)
@@ -109,6 +104,7 @@ def create_test(fname, args, structs, aliases):
 
 
 #Create tests for all functions
+#Return a dictionary -> {fname : ast}
 def create_tests(f_decls, structs, aliases):
     return {k: v for k, v in map(lambda x :\
     create_test(x, f_decls[x], structs, aliases), f_decls) if v is not None} 
@@ -147,6 +143,8 @@ if __name__ == "__main__":
     ast = parse_file(args.targetFile, use_cpp=True,
             cpp_path='gcc',
             cpp_args=['-E', '-Iloglib/fake_libc_include'])
+
+    #print(ast)
 
     #Initial visitor to get all relevant elements
     vis = InitialVisitor()

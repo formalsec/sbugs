@@ -6,15 +6,23 @@ def defineMacro(label, value):
 
 
 def returnValue(val):
-   return Return(ExprList([val]))
+	return Return(ExprList([val]))
+
+
+def createFunction(name, args, returnType):
+	
+	typedecl = TypeDecl(name, [], IdentifierType(names=[returnType]))
+	funcdecl = FuncDecl(args, typedecl)
+	decl = Decl(name, [], [], [], funcdecl, None, None)
+	return decl
+
+
 
 
 def mainFunction(calls):
 	gen = c_generator.CGenerator()
 
-	typedecl = TypeDecl(f'main', [], IdentifierType(names=['int']))
-	funcdecl = FuncDecl(None, typedecl)
-	decl = Decl(f'main', [], [], [], funcdecl, None, None)
+	decl = createFunction('main', None, 'int')
 
 	calls_ast = [c for c in map(lambda x : FuncCall(ID(x), ExprList([])), calls)]
 	calls_ast.append(returnValue(Constant('int', str(0))))

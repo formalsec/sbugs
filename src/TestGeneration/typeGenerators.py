@@ -1,6 +1,5 @@
 from pycparser import c_parser, parse_file, c_generator
 from pycparser.c_ast import *
-import random
 
 
 # Create a primitive symbolic var

@@ -1,7 +1,7 @@
 from pycparser import c_parser, parse_file, c_generator
 from pycparser.c_ast import *
 from typeGenerators import InputGenVisitor
-import random
+from utils import *
 
 
 #Class responsible for creating symbolic struct fields
@@ -344,15 +344,11 @@ class StructGen(NodeVisitor):
         #Code generator
         gen = c_generator.CGenerator()
 
-        #Create return of type struct
-        typedecl = TypeDecl(f'create_struct_{struct_name}', [], IdentifierType(names=[f'struct {struct_name}']))
-
         #Fuel parameter
         paramlist = ParamList(self.init_args())
 
         #Create a function declaration with name 'create_<struct_name>'
-        funcdecl = FuncDecl(paramlist, typedecl)
-        decl = Decl(f'create_{struct_name}', [], [], [], funcdecl, None, None)
+        decl = createFunction(name=f'create_{struct_name}', args=paramlist, returnType=f'struct {struct_name}')
 
         code = []
 
