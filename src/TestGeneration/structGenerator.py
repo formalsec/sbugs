@@ -1,17 +1,18 @@
-from pycparser import c_parser, c_ast, parse_file, c_generator
+from pycparser import c_parser, parse_file, c_generator
+from pycparser.c_ast import *
 from typeGenerators import InputGenVisitor
 import random
 
 
 #Class responsible for creating symbolic struct fields
-class SymbolicFieldGen(c_ast.NodeVisitor):
+class SymbolicFieldGen(NodeVisitor):
     def __init__ (self, name, vartype, struct_name, field):
 
         if isinstance(name, str):
-            name = c_ast.ID(name=name)
+            name = ID(name=name)
 
-        self.arraysize = c_ast.ID('ARRAY_SIZE')
-        self.fuel = c_ast.ID('fuel')
+        self.arraysize = ID('ARRAY_SIZE')
+        self.fuel = ID('fuel')
 
         self.argname = name 
         self.vartype = vartype
@@ -23,7 +24,7 @@ class SymbolicFieldGen(c_ast.NodeVisitor):
     def init_struct_rvalue(self, vartype):
 
         vartype = self.vartype.replace(' ', '_')
-        rvalue = c_ast.FuncCall(c_ast.ID(f'create_{vartype}'), c_ast.ExprList([self.fuel]))
+        rvalue = FuncCall(ID(f'create_{vartype}'), ExprList([self.fuel]))
         return rvalue
 
 
@@ -31,12 +32,12 @@ class SymbolicFieldGen(c_ast.NodeVisitor):
     def symbolic_rvalue(self, vartype):
         
         #Multiply sizeof by 8bits
-        multiply = c_ast.BinaryOp(op='*', left=c_ast.FuncCall(c_ast.ID('sizeof'),\
-        c_ast.ExprList([c_ast.ID(vartype)])), right=c_ast.Constant('int', str(8)))
+        multiply = BinaryOp(op='*', left=FuncCall(ID('sizeof'),\
+        ExprList([ID(vartype)])), right=Constant('int', str(8)))
 
         #Create Rvalue
-        sizeof = c_ast.ExprList([multiply])
-        rvalue = c_ast.FuncCall(c_ast.ID('summ_new_sym_var'), sizeof)
+        sizeof = ExprList([multiply])
+        rvalue = FuncCall(ID('summ_new_sym_var'), sizeof)
 
         return rvalue
 
@@ -48,18 +49,18 @@ class SymbolicFieldGen(c_ast.NodeVisitor):
     def recursiveStruct(self, name, lvalue, fname):   
         
         #(fuel > 0)
-        cond = c_ast.BinaryOp(op='>', left=c_ast.ID('fuel'), right=c_ast.Constant('int', str(0)))
+        cond = BinaryOp(op='>', left=ID('fuel'), right=Constant('int', str(0)))
 
         #(fuel-1)
-        fuel = c_ast.BinaryOp(op='-', left=c_ast.ID('fuel'), right=c_ast.Constant('int', str(1)))
+        fuel = BinaryOp(op='-', left=ID('fuel'), right=Constant('int', str(1)))
         
         #create_this_struct(fuel-1)
-        rvalue = c_ast.FuncCall(c_ast.ID(f'create_{fname}'),c_ast.ExprList([fuel]) )
+        rvalue = FuncCall(ID(f'create_{fname}'),ExprList([fuel]) )
         
         #Assemble If
-        if_decl = c_ast.Decl(name, [], [], [], lvalue, rvalue, None)
-        else_decl = c_ast.Decl(name, [], [], [], lvalue, c_ast.ID('NULL'), None)
-        if_fuel = c_ast.If(cond, c_ast.Compound([if_decl]), c_ast.Compound([else_decl]))
+        if_decl = Decl(name, [], [], [], lvalue, rvalue, None)
+        else_decl = Decl(name, [], [], [], lvalue, ID('NULL'), None)
+        if_fuel = If(cond, Compound([if_decl]), Compound([else_decl]))
 
         return if_fuel    
 
@@ -78,7 +79,7 @@ class StructFieldGen(SymbolicFieldGen):
         fname = self.vartype.replace(' ', '_')
 
         #Declare Variable
-        lvalue = c_ast.StructRef(name = c_ast.ID(f'{name}'), type='->', field=c_ast.ID(f'{self.field}'))
+        lvalue = StructRef(name = ID(f'{name}'), type='->', field=ID(f'{self.field}'))
 
         #Recursive struct
         if f'struct_{self.struct_name}' == fname:
@@ -87,7 +88,7 @@ class StructFieldGen(SymbolicFieldGen):
         #Other struct
         else:
             rvalue = self.init_struct_rvalue(self.vartype)
-            decl = c_ast.Decl(name, [], [], [], lvalue, rvalue, None)
+            decl = Decl(name, [], [], [], lvalue, rvalue, None)
             code.append(decl)   
         
         return code
@@ -109,10 +110,10 @@ class PrimitiveFieldGen(SymbolicFieldGen):
         rvalue = self.symbolic_rvalue(self.vartype)
 
         #struct->field
-        lvalue = c_ast.StructRef(name = c_ast.ID(f'{name}'), type='->', field=c_ast.ID(f'{self.field}'))
+        lvalue = StructRef(name = ID(f'{name}'), type='->', field=ID(f'{self.field}'))
 
         #Assemble declaration
-        decl = c_ast.Decl(name, [], [], [], lvalue, rvalue, None)
+        decl = Decl(name, [], [], [], lvalue, rvalue, None)
         return [decl]
 
 
@@ -135,17 +136,17 @@ class ArrayFieldGen(SymbolicFieldGen):
 
         #array[index]
         index = f'{name}_index_1'
-        lvalue = c_ast.ArrayRef(self.argname, subscript=c_ast.ID(index))                                                              
+        lvalue = ArrayRef(self.argname, subscript=ID(index))                                                              
 
         #Loop for N array dimensions array[][]...
         for i in range(2, self.dimension+1):
             
             index = f'{name}_index_{i}'
-            lvalue = c_ast.ArrayRef(lvalue, subscript=c_ast.ID(index))  
+            lvalue = ArrayRef(lvalue, subscript=ID(index))  
 
         #struct_instance->Array[i][j]
         sname = f'struct_{self.struct_name}_instance'   
-        lvalue = c_ast.StructRef(name = c_ast.ID(f'{sname}'), type='->', field=lvalue)
+        lvalue = StructRef(name = ID(f'{sname}'), type='->', field=lvalue)
         
         fname = self.vartype.replace(' ', '_')
 
@@ -162,7 +163,7 @@ class ArrayFieldGen(SymbolicFieldGen):
         else:
             rvalue = self.symbolic_rvalue(self.vartype)
         
-        return c_ast.Assignment(op='=', lvalue=lvalue, rvalue=rvalue)             
+        return Assignment(op='=', lvalue=lvalue, rvalue=rvalue)             
 
 
 
@@ -170,18 +171,18 @@ class ArrayFieldGen(SymbolicFieldGen):
     def For_ast(self, index, size, stmt):
 
         ##For-init
-        typedecl = c_ast.TypeDecl(index, [], c_ast.IdentifierType(names=['int']))
-        decl = c_ast.Decl(index, [], [], [], typedecl, c_ast.Constant('int', str(0)), None)
-        init  = c_ast.DeclList(decls=[decl])
+        typedecl = TypeDecl(index, [], IdentifierType(names=['int']))
+        decl = Decl(index, [], [], [], typedecl, Constant('int', str(0)), None)
+        init  = DeclList(decls=[decl])
         
         ##For-condition
-        cond = c_ast.BinaryOp(op='<', left=c_ast.ID(index), right=c_ast.Constant('int', str(size)))
+        cond = BinaryOp(op='<', left=ID(index), right=Constant('int', str(size)))
         
         ##For-next
-        nxt = c_ast.UnaryOp(op='p++', expr=c_ast.ID(index))
+        nxt = UnaryOp(op='p++', expr=ID(index))
 
         ##Create the For node
-        return c_ast.For(init, cond, nxt, stmt)
+        return For(init, cond, nxt, stmt)
         
 
     #Fill array field
@@ -189,7 +190,7 @@ class ArrayFieldGen(SymbolicFieldGen):
         code = []
         name = self.argname.name
                           
-        stmt = c_ast.Compound([self.gen_array_init()])
+        stmt = Compound([self.gen_array_init()])
 
         sizes = self.sizes
 
@@ -198,13 +199,13 @@ class ArrayFieldGen(SymbolicFieldGen):
 
         for i in range(self.dimension-1, 0 ,-1):
             index = f'{name}_index_{i}'
-            for_ast_code = self.For_ast(index, sizes.pop(0), c_ast.Compound([for_ast_code])) 
+            for_ast_code = self.For_ast(index, sizes.pop(0), Compound([for_ast_code])) 
 
         code.append(for_ast_code)
         return code
 
 
-class StructFieldGenVisitor(c_ast.NodeVisitor):
+class StructFieldGenVisitor(NodeVisitor):
 
     def __init__ (self, struct_name, field, structs, aliases):
 
@@ -214,7 +215,7 @@ class StructFieldGenVisitor(c_ast.NodeVisitor):
         self.struct_name = struct_name
         self.field = field
         
-        #c_ast.ID object
+        #ID object
         self.argname = None 
         self.argtype = None
 
@@ -230,11 +231,11 @@ class StructFieldGenVisitor(c_ast.NodeVisitor):
 
     #Visitors
     def visit(self, node):
-        return c_ast.NodeVisitor.visit(self, node)
+        return NodeVisitor.visit(self, node)
     
     #Entry Node
     def visit_Decl(self, node):
-        self.argname = c_ast.ID(name=node.name)
+        self.argname = ID(name=node.name)
         self.visit(node.type)                                                                    
         return
 
@@ -301,7 +302,7 @@ class StructFieldGenVisitor(c_ast.NodeVisitor):
 
 
 #Generates the functions to init symbolic structs
-class StructGen(c_ast.NodeVisitor):
+class StructGen(NodeVisitor):
     def __init__ (self, structs, aliases):
 
         self.aliases = aliases
@@ -314,8 +315,8 @@ class StructGen(c_ast.NodeVisitor):
     def init_args(self):
         args = []
         
-        typedecl = c_ast.TypeDecl('fuel', [], c_ast.IdentifierType(names=['int']))
-        decl = c_ast.Decl('fuel', [], [], [], typedecl, None, None)
+        typedecl = TypeDecl('fuel', [], IdentifierType(names=['int']))
+        decl = Decl('fuel', [], [], [], typedecl, None, None)
 
         args.append(decl)
         return args
@@ -328,12 +329,12 @@ class StructGen(c_ast.NodeVisitor):
         typ = f'struct {struct_name}'
         name = f'struct_{struct_name}_instance' 
 
-        lvalue = c_ast.TypeDecl(name, [], c_ast.IdentifierType(names=[typ]))
-        rvalue = c_ast.FuncCall(c_ast.ID('malloc'),c_ast.ExprList([c_ast.FuncCall(c_ast.ID('sizeof'),\
-        c_ast.ExprList([c_ast.ID(typ)]))]) )
+        lvalue = TypeDecl(name, [], IdentifierType(names=[typ]))
+        rvalue = FuncCall(ID('malloc'),ExprList([FuncCall(ID('sizeof'),\
+        ExprList([ID(typ)]))]) )
 
         #Assemble declaration
-        decl = c_ast.Decl(name, [], [], [], c_ast.PtrDecl([], lvalue), rvalue, None)
+        decl = Decl(name, [], [], [], PtrDecl([], lvalue), rvalue, None)
 
         return decl
 
@@ -344,14 +345,14 @@ class StructGen(c_ast.NodeVisitor):
         gen = c_generator.CGenerator()
 
         #Create return of type struct
-        typedecl = c_ast.TypeDecl(f'create_struct_{struct_name}', [], c_ast.IdentifierType(names=[f'struct {struct_name}']))
+        typedecl = TypeDecl(f'create_struct_{struct_name}', [], IdentifierType(names=[f'struct {struct_name}']))
 
         #Fuel parameter
-        paramlist = c_ast.ParamList(self.init_args())
+        paramlist = ParamList(self.init_args())
 
         #Create a function declaration with name 'create_<struct_name>'
-        funcdecl = c_ast.FuncDecl(paramlist, typedecl)
-        decl = c_ast.Decl(f'create_{struct_name}', [], [], [], funcdecl, None, None)
+        funcdecl = FuncDecl(paramlist, typedecl)
+        decl = Decl(f'create_{struct_name}', [], [], [], funcdecl, None, None)
 
         code = []
 
@@ -368,13 +369,13 @@ class StructGen(c_ast.NodeVisitor):
 
         
         #Return struct
-        code.append(c_ast.Return(c_ast.ExprList([c_ast.ID(f'struct_{struct_name}_instance')])))
+        code.append(Return(ExprList([ID(f'struct_{struct_name}_instance')])))
 
         #Create a block containg the function code
-        block = c_ast.Compound(code)
+        block = Compound(code)
 
         #Place the block inside a function definition
-        n_func_def_ast = c_ast.FuncDef(decl, None, block, None)
+        n_func_def_ast = FuncDef(decl, None, block, None)
 
         #Generate the final string with the test
         str_ast = gen.visit(n_func_def_ast)

@@ -1,17 +1,18 @@
-from pycparser import c_parser, c_ast, parse_file, c_generator
+from pycparser import c_parser, parse_file, c_generator
+from pycparser.c_ast import *
 import random
 
 
 # Create a primitive symbolic var
 # e.g, int a = summ_new_sym_var(sizeof(int))
-class SymbolicTypeGen(c_ast.NodeVisitor):
+class SymbolicTypeGen(NodeVisitor):
     def __init__ (self, name, vartype):
 
-        self.arraysize = c_ast.ID('ARRAY_SIZE')
-        self.fuel = c_ast.ID('FUEL')
+        self.arraysize = ID('ARRAY_SIZE')
+        self.fuel = ID('FUEL')
 
         if isinstance(name, str):
-            name = c_ast.ID(name=name)
+            name = ID(name=name)
 
         self.argname = name 
         self.vartype = vartype
@@ -21,18 +22,18 @@ class SymbolicTypeGen(c_ast.NodeVisitor):
     def init_struct_rvalue(self, vartype):
 
         vartype = self.vartype.replace(' ', '_')
-        rvalue = c_ast.FuncCall(c_ast.ID(f'create_{vartype}'), c_ast.ExprList([self.fuel]))
+        rvalue = FuncCall(ID(f'create_{vartype}'), ExprList([self.fuel]))
         return rvalue
 
     def symbolic_rvalue(self, vartype):
         
         #Multiply sizeof by 8bits
-        multiply = c_ast.BinaryOp(op='*', left=c_ast.FuncCall(c_ast.ID('sizeof'),\
-        c_ast.ExprList([c_ast.ID(vartype)])), right=c_ast.Constant('int', str(8)))
+        multiply = BinaryOp(op='*', left=FuncCall(ID('sizeof'),\
+        ExprList([ID(vartype)])), right=Constant('int', str(8)))
 
         #Create Rvalue
-        sizeof = c_ast.ExprList([multiply])
-        rvalue = c_ast.FuncCall(c_ast.ID('summ_new_sym_var'), sizeof)
+        sizeof = ExprList([multiply])
+        rvalue = FuncCall(ID('summ_new_sym_var'), sizeof)
 
         return rvalue
 
@@ -49,11 +50,11 @@ class StructTypeGen(SymbolicTypeGen):
         fname = self.vartype.replace(' ', '_')
 
         #Declare Variable
-        lvalue = c_ast.TypeDecl(name, [], c_ast.IdentifierType(names=[self.vartype]))
-        rvalue = c_ast.FuncCall(c_ast.ID(f'create_{fname}'),c_ast.ExprList([self.fuel]) )
+        lvalue = TypeDecl(name, [], IdentifierType(names=[self.vartype]))
+        rvalue = FuncCall(ID(f'create_{fname}'),ExprList([self.fuel]) )
 
         #Assemble declaration
-        decl = c_ast.Decl(name, [], [], [], lvalue, rvalue, None)
+        decl = Decl(name, [], [], [], lvalue, rvalue, None)
 
         return [decl]
 
@@ -70,13 +71,13 @@ class PrimitiveTypeGen(SymbolicTypeGen):
         name = self.argname.name
 
         #Declare Variable
-        lvalue = c_ast.TypeDecl(name, [], c_ast.IdentifierType(names=[self.vartype]))
+        lvalue = TypeDecl(name, [], IdentifierType(names=[self.vartype]))
 
         #Make symbolic type
         rvalue = self.symbolic_rvalue(self.vartype)
 
         #Assemble declaration
-        decl = c_ast.Decl(name, [], [], [], lvalue, rvalue, None)
+        decl = Decl(name, [], [], [], lvalue, rvalue, None)
         
         return [decl]
 
@@ -97,13 +98,13 @@ class ArrayTypeGen(SymbolicTypeGen):
     def gen_array_decl(self):
         name = self.argname.name
 
-        typedecl = c_ast.TypeDecl(name, [], c_ast.IdentifierType(names=[self.vartype]))
-        array = c_ast.ArrayDecl(typedecl, self.arraysize, None)
+        typedecl = TypeDecl(name, [], IdentifierType(names=[self.vartype]))
+        array = ArrayDecl(typedecl, self.arraysize, None)
 
         for i in range(1, self.dimension):
-            array =  c_ast.ArrayDecl(array, self.arraysize, None)
+            array =  ArrayDecl(array, self.arraysize, None)
 
-        return c_ast.Decl(name, [], [], [], array, None, None)
+        return Decl(name, [], [], [], array, None, None)
     
 
     #Array[i][j] = symbolic();
@@ -111,19 +112,19 @@ class ArrayTypeGen(SymbolicTypeGen):
         name = self.argname.name
 
         index = f'{name}_index_1'
-        lvalue = c_ast.ArrayRef(self.argname, subscript=c_ast.ID(index))                                                              
+        lvalue = ArrayRef(self.argname, subscript=ID(index))                                                              
 
         for i in range(2, self.dimension+1):
             
             index = f'{name}_index_{i}'
-            lvalue = c_ast.ArrayRef(lvalue, subscript=c_ast.ID(index))  
+            lvalue = ArrayRef(lvalue, subscript=ID(index))  
         
         if self.struct:
             rvalue = self.init_struct_rvalue(self.vartype)
         else:
             rvalue = self.symbolic_rvalue(self.vartype)
         
-        return c_ast.Assignment(op='=', lvalue=lvalue, rvalue=rvalue)             
+        return Assignment(op='=', lvalue=lvalue, rvalue=rvalue)             
 
 
 
@@ -131,18 +132,18 @@ class ArrayTypeGen(SymbolicTypeGen):
     def For_ast(self, index, size, stmt):
 
         ##For-init
-        typedecl = c_ast.TypeDecl(index, [], c_ast.IdentifierType(names=['int']))
-        decl = c_ast.Decl(index, [], [], [], typedecl, c_ast.Constant('int', str(0)), None)
-        init  = c_ast.DeclList(decls=[decl])
+        typedecl = TypeDecl(index, [], IdentifierType(names=['int']))
+        decl = Decl(index, [], [], [], typedecl, Constant('int', str(0)), None)
+        init  = DeclList(decls=[decl])
         
         ##For-condition
-        cond = c_ast.BinaryOp(op='<', left=c_ast.ID(index), right=size)
+        cond = BinaryOp(op='<', left=ID(index), right=size)
         
         ##For-next
-        nxt = c_ast.UnaryOp(op='p++', expr=c_ast.ID(index))
+        nxt = UnaryOp(op='p++', expr=ID(index))
 
         ##Create the For node
-        return c_ast.For(init, cond, nxt, stmt)
+        return For(init, cond, nxt, stmt)
         
 
     #Declare array and fill
@@ -153,14 +154,14 @@ class ArrayTypeGen(SymbolicTypeGen):
         #Declare array
         code.append(self.gen_array_decl())
                                                             
-        stmt = c_ast.Compound([self.gen_array_init()])
+        stmt = Compound([self.gen_array_init()])
 
         index = f'{name}_index_{self.dimension}' 
         for_ast_code = self.For_ast(index, self.arraysize, stmt)
 
         for i in range(self.dimension-1, 0 ,-1):
             index = f'{name}_index_{i}'
-            for_ast_code = self.For_ast(index, self.arraysize, c_ast.Compound([for_ast_code])) 
+            for_ast_code = self.For_ast(index, self.arraysize, Compound([for_ast_code])) 
 
         code.append(for_ast_code)
         return code
@@ -169,7 +170,7 @@ class ArrayTypeGen(SymbolicTypeGen):
 
 
 
-class InputGenVisitor(c_ast.NodeVisitor):
+class InputGenVisitor(NodeVisitor):
 
     def __init__ (self, structs, aliases):
 
@@ -177,7 +178,7 @@ class InputGenVisitor(c_ast.NodeVisitor):
         self.structs = structs
         self.aliases = aliases
 
-        #c_ast.ID object
+        #ID object
         self.argname = None 
         self.argtype = None
 
@@ -192,11 +193,11 @@ class InputGenVisitor(c_ast.NodeVisitor):
 
     #Visitors
     def visit(self, node):
-        return c_ast.NodeVisitor.visit(self, node)
+        return NodeVisitor.visit(self, node)
     
     #Entry Node
     def visit_Decl(self, node):
-        self.argname = c_ast.ID(name=node.name)
+        self.argname = ID(name=node.name)
         self.visit(node.type)                                                                    
         return
 

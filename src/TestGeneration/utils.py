@@ -1,25 +1,26 @@
-from pycparser import c_parser, c_ast, parse_file, c_generator
+from pycparser import c_parser, parse_file, c_generator
+from pycparser.c_ast import *
 
 def defineMacro(label, value):
 	return f'#define {label} {value}'
 
 
 def returnValue(val):
-   return c_ast.Return(c_ast.ExprList([val]))
+   return Return(ExprList([val]))
 
 
 def mainFunction(calls):
 	gen = c_generator.CGenerator()
 
-	typedecl = c_ast.TypeDecl(f'main', [], c_ast.IdentifierType(names=['int']))
-	funcdecl = c_ast.FuncDecl(None, typedecl)
-	decl = c_ast.Decl(f'main', [], [], [], funcdecl, None, None)
+	typedecl = TypeDecl(f'main', [], IdentifierType(names=['int']))
+	funcdecl = FuncDecl(None, typedecl)
+	decl = Decl(f'main', [], [], [], funcdecl, None, None)
 
-	calls_ast = [c for c in map(lambda x : c_ast.FuncCall(c_ast.ID(x), c_ast.ExprList([])), calls)]
-	calls_ast.append(returnValue(c_ast.Constant('int', str(0))))
+	calls_ast = [c for c in map(lambda x : FuncCall(ID(x), ExprList([])), calls)]
+	calls_ast.append(returnValue(Constant('int', str(0))))
 
-	block = c_ast.Compound(calls_ast)
-	main = c_ast.FuncDef(decl, None, block, None) 
+	block = Compound(calls_ast)
+	main = FuncDef(decl, None, block, None) 
 
 	return gen.visit(main)
 	
