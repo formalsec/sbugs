@@ -351,9 +351,7 @@ class StructGen(NodeVisitor):
         decl = createFunction(name=f'create_{struct_name}', args=paramlist, returnType=f'struct {struct_name}')
 
         code = []
-
         code.append(self.malloc_struct(struct_name))
-
         
         #Visit fields 
         for field in fields:
@@ -362,10 +360,10 @@ class StructGen(NodeVisitor):
             vis.visit(field)
 
             code += vis.code
-
         
         #Return struct
-        code.append(Return(ExprList([ID(f'struct_{struct_name}_instance')])))
+        code.append(returnValue(ID(f'struct_{struct_name}_instance')))
+
 
         #Create a block containg the function code
         block = Compound(code)
