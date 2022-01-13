@@ -1,6 +1,10 @@
 from pycparser import c_parser, parse_file, c_generator
 from pycparser.c_ast import *
 
+FUEL_MACRO = 'FUEL'
+ARRAY_SIZE_MACRO = 'ARRAY_SIZE'
+POINTER_SIZE_MACRO = 'POINTER_SIZE'
+
 def defineMacro(label, value):
 	return f'#define {label} {value}'
 

@@ -1,5 +1,6 @@
 from pycparser import c_parser, parse_file, c_generator
 from pycparser.c_ast import *
+import utils
 
 
 # Create a primitive symbolic var
@@ -7,7 +8,7 @@ from pycparser.c_ast import *
 class SymbolicTypeGen(NodeVisitor):
     def __init__ (self, name, vartype):
 
-        self.fuel = ID('FUEL')
+        self.fuel = utils.FUEL_MACRO
 
         if isinstance(name, str):
             name = ID(name=name)
@@ -230,7 +231,7 @@ class InputGenVisitor(NodeVisitor):
     #ArrayDecl
     def visit_ArrayDecl(self, node):
         self.arrayDim += 1
-        self.sizeMacro = 'ARRAY_SIZE'
+        self.sizeMacro = utils.ARRAY_SIZE_MACRO
         self.visit(node.type)
         return
 
@@ -238,7 +239,7 @@ class InputGenVisitor(NodeVisitor):
     #Pointer
     def visit_PtrDecl(self, node):
         self.arrayDim += 1
-        self.sizeMacro = 'POINTER_SIZE'
+        self.sizeMacro = utils.POINTER_SIZE_MACRO
         self.visit(node.type)
         return
 

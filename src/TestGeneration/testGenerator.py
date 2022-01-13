@@ -16,7 +16,9 @@ from pycparser.c_ast import *
 
 from typeGenerators import InputGenVisitor
 from structGenerator import StructGen
-from utils import *
+from utils import defineMacro, mainFunction, returnValue, createFunction
+import utils
+
 
 
 #Visit the ASt to separate each elemenet of interest
@@ -67,7 +69,9 @@ def create_test(fname, args, structs, aliases):
     gen = c_generator.CGenerator()
 
     #Empty function
-    decl = createFunction(f'test_{fname}', args=None, returnType='void')
+    decl = createFunction(name=f'test_{fname}',\
+        args=None,\
+        returnType='void')
     
     #Arguments to call the function
     call_args = []
@@ -169,9 +173,9 @@ if __name__ == "__main__":
     codeList = []
 
     #Add Macros for size (array size and fuel)
-    codeList.append(defineMacro('FUEL', fuel))
-    codeList.append(defineMacro('ARRAY_SIZE', arraySize))
-    codeList.append(defineMacro('POINTER_SIZE', pointerSize)+'\n')
+    codeList.append(defineMacro(utils.FUEL_MACRO, fuel))
+    codeList.append(defineMacro(utils.ARRAY_SIZE_MACRO, arraySize))
+    codeList.append(defineMacro(utils.POINTER_SIZE_MACRO, pointerSize)+'\n')
 
     #Generate functions responsible for creating symbolic structs
     struct_generator = StructGen(structs, aliases)

@@ -1,8 +1,7 @@
 from pycparser import c_parser, parse_file, c_generator
 from pycparser.c_ast import *
 from typeGenerators import InputGenVisitor
-from utils import *
-
+import utils
 
 #Class responsible for creating symbolic struct fields
 class SymbolicFieldGen(NodeVisitor):
@@ -274,7 +273,7 @@ class StructFieldGenVisitor(NodeVisitor):
 
     #Pointer
     def visit_PtrDecl(self, node):
-        self.sizes.append('POINTER_SIZE')
+        self.sizes.append(utils.POINTER_SIZE_MACRO)
         self.arrayDim += 1
         self.visit(node.type)
         return
@@ -359,7 +358,9 @@ class StructGen(NodeVisitor):
         paramlist = ParamList(self.init_args())
 
         #Create a function declaration with name 'create_<struct_name>'
-        decl = createFunction(name=f'create_{struct_name}', args=paramlist, returnType=f'struct {struct_name}')
+        decl = utils.createFunction(name=f'create_{struct_name}',\
+               args=paramlist,\
+               returnType=f'struct {struct_name}')
 
         code = []
         code.append(self.malloc_struct(struct_name))
@@ -373,7 +374,7 @@ class StructGen(NodeVisitor):
             code += vis.code
         
         #Return struct
-        code.append(returnValue(ID(f'struct_{struct_name}_instance')))
+        code.append(utils.returnValue(ID(f'struct_{struct_name}_instance')))
 
 
         #Create a block containg the function code
