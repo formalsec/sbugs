@@ -88,8 +88,8 @@ def create_test(fname, args, structs, aliases):
     #Add the function call to the Ast
     fblock.append(FuncCall(ID(fname), ExprList(call_args)))
 
-    #Return
-    fblock.append(Return(ExprList([])))
+    #Return (void)
+    fblock.append(returnValue(None))
 
     #Create a block containg the function code
     block = Compound(fblock)
@@ -100,7 +100,7 @@ def create_test(fname, args, structs, aliases):
     #Generate the final string with the test
     str_ast = gen.visit(func_def_ast)
 
-    return (f'test_{fname}', str_ast)
+    return (f'test_{fname}', str_ast) #Return (key,value) tuple
 
 
 #Create tests for all functions
