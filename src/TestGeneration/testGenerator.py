@@ -104,7 +104,7 @@ def create_test(fname, args, structs, aliases):
 
 
 #Create tests for all functions
-#Return a dictionary -> {fname : ast}
+#Returns a dictionary -> {fname : ast}
 def create_tests(f_decls, structs, aliases):
     return {k: v for k, v in map(lambda x :\
     create_test(x, f_decls[x], structs, aliases), f_decls) if v is not None} 
@@ -124,6 +124,9 @@ def get_cmd_args():
     parser.add_argument('--arraySize', metavar='value', type=int, required=False, default=10,
                         help='Define array size (default:10)')
 
+    parser.add_argument('--pointerSize', metavar='value', type=int, required=False, default=5,
+                        help='Define array size allocated for pointers (*) (default:5)')
+
     parser.add_argument('targetFile', metavar='file', type=str,
                         help='The name of the target C file')
 
@@ -133,18 +136,24 @@ def get_cmd_args():
 
 if __name__ == "__main__":
 
+    
     #Command line arguments
     args = get_cmd_args()
     inputFile = args.targetFile
     outFile = args.o
     fuel = args.fuel
     arraySize = args.arraySize
+    pointerSize = args.pointerSize
 
+    
+
+    #Parse Fele
     ast = parse_file(args.targetFile, use_cpp=True,
             cpp_path='gcc',
             cpp_args=['-E', '-Iloglib/fake_libc_include'])
 
-    #print(ast)
+
+
 
     #Initial visitor to get all relevant elements
     vis = InitialVisitor()
@@ -155,12 +164,14 @@ if __name__ == "__main__":
     aliases = vis.aliases
 
     
+
     #Final list of strings to be written to file
     codeList = []
 
     #Add Macros for size (array size and fuel)
     codeList.append(defineMacro('FUEL', fuel))
-    codeList.append(defineMacro('ARRAY_SIZE', arraySize)+'\n')
+    codeList.append(defineMacro('ARRAY_SIZE', arraySize))
+    codeList.append(defineMacro('POINTER_SIZE', pointerSize)+'\n')
 
     #Generate functions responsible for creating symbolic structs
     struct_generator = StructGen(structs, aliases)

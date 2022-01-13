@@ -7,7 +7,6 @@ from pycparser.c_ast import *
 class SymbolicTypeGen(NodeVisitor):
     def __init__ (self, name, vartype):
 
-        self.arraysize = ID('ARRAY_SIZE')
         self.fuel = ID('FUEL')
 
         if isinstance(name, str):
@@ -85,9 +84,10 @@ class PrimitiveTypeGen(SymbolicTypeGen):
 
 #Create a symbolic N-dimension array
 class ArrayTypeGen(SymbolicTypeGen):
-    def __init__ (self, name, vartype, dimension, struct=False):
+    def __init__ (self, name, vartype, dimension, array, struct=False):
         super().__init__(name, vartype) 
 
+        self.arraysize = ID(array)
         self.struct = struct
         self.dimension = dimension
 
@@ -173,6 +173,7 @@ class InputGenVisitor(NodeVisitor):
 
     def __init__ (self, structs, aliases):
 
+        self.sizeMacro = None
 
         self.structs = structs
         self.aliases = aliases
@@ -221,7 +222,7 @@ class InputGenVisitor(NodeVisitor):
         #Array 
         else:
             generator = ArrayTypeGen(self.argname, self.argtype,
-            self.arrayDim, self.struct)
+            self.arrayDim, self.sizeMacro, self.struct)
             self.code = generator.gen()
             return  
     
@@ -229,6 +230,7 @@ class InputGenVisitor(NodeVisitor):
     #ArrayDecl
     def visit_ArrayDecl(self, node):
         self.arrayDim += 1
+        self.sizeMacro = 'ARRAY_SIZE'
         self.visit(node.type)
         return
 
@@ -236,6 +238,7 @@ class InputGenVisitor(NodeVisitor):
     #Pointer
     def visit_PtrDecl(self, node):
         self.arrayDim += 1
+        self.sizeMacro = 'POINTER_SIZE'
         self.visit(node.type)
         return
 

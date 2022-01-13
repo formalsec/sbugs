@@ -11,7 +11,6 @@ class SymbolicFieldGen(NodeVisitor):
         if isinstance(name, str):
             name = ID(name=name)
 
-        self.arraysize = ID('ARRAY_SIZE')
         self.fuel = ID('fuel')
 
         self.argname = name 
