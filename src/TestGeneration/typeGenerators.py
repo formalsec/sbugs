@@ -233,6 +233,13 @@ class InputGenVisitor(NodeVisitor):
         self.visit(node.type)
         return
 
+
+    #Pointer
+    def visit_PtrDecl(self, node):
+        self.arrayDim += 1
+        self.visit(node.type)
+        return
+
     
     #Struct Pype
     def visit_Struct(self, node):
