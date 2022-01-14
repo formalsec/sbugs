@@ -16,8 +16,8 @@ from pycparser.c_ast import *
 
 from typeGenerators import InputGenVisitor
 from structGenerator import StructGen
-from utils import defineMacro, mainFunction, returnValue, createFunction, InitialVisitor
-import utils
+from utils import defineMacro, mainFunction, returnValue, createFunction 
+from utils import InitialVisitor, FUEL_MACRO, ARRAY_SIZE_MACRO, POINTER_SIZE_MACRO
 
 
 
@@ -106,9 +106,9 @@ class testGenerator():
         codeList = []
 
         #Add Macros for size (array size and fuel)
-        codeList.append(defineMacro(utils.FUEL_MACRO, self.fuel))
-        codeList.append(defineMacro(utils.ARRAY_SIZE_MACRO, self.arraysize))
-        codeList.append(defineMacro(utils.POINTER_SIZE_MACRO, self.pointersize)+'\n')
+        codeList.append(defineMacro(FUEL_MACRO, self.fuel))
+        codeList.append(defineMacro(ARRAY_SIZE_MACRO, self.arraysize))
+        codeList.append(defineMacro(POINTER_SIZE_MACRO, self.pointersize)+'\n')
 
         #Generate functions responsible for creating symbolic structs
         struct_generator = StructGen(structs, aliases)
