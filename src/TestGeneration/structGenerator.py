@@ -35,7 +35,7 @@ class SymbolicFieldGen(NodeVisitor):
 
         #Create Rvalue
         sizeof = ExprList([multiply])
-        rvalue = FuncCall(ID('summ_new_sym_var'), sizeof)
+        rvalue = FuncCall(ID('new_sym_var'), sizeof)
 
         return rvalue
 

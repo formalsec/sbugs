@@ -16,102 +16,117 @@ from pycparser.c_ast import *
 
 from typeGenerators import InputGenVisitor
 from structGenerator import StructGen
-from utils import defineMacro, mainFunction, returnValue, createFunction
+from utils import defineMacro, mainFunction, returnValue, createFunction, InitialVisitor
 import utils
 
 
 
-#Visit the ASt to separate each elemenet of interest
-#function definitions; defined structs; and Typedefs 
-class InitialVisitor(NodeVisitor):
+class testGenerator():
+    def __init__(self, inputfile, outputfile, fuel=5, arraysize=10, pointersize=5):
+        self.inputfile = inputfile
+        self.outputfile = outputfile
+        self.fuel = fuel
+        self.arraysize = arraysize
+        self.pointersize = pointersize
 
-    def __init__ (self): 
-        self.fun_dict = {}
-        self.var_glob_dict = {}
-        self.structs = {}
-
-        #Typedefed structs
-        self.aliases = {}
-
-    
-    def visit(self, node):
-        NodeVisitor.visit(self, node)
-
-    def visit_FuncDef(self, node):
-        self.fun_dict[node.decl.name] = node.decl.type.args.params\
-        if node.decl.type.args else None
+        #Parse File
+        self.ast = parse_file(self.inputfile, use_cpp=True,
+            cpp_path='gcc',
+            cpp_args=['-E', '-Iloglib/fake_libc_include'])
 
 
-    def visit_Struct(self, node):
-        self.structs[node.name] = node.decls
+    #Create a single test
+    def create_test(self, fname, args, structs, aliases):
 
-
-    def visit_Typedef(self, node):
-        self.aliases[node.name] = node.type.type.name
-        self.visit(node.type)
-
-
-
-
-
-#Create a single test
-def create_test(fname, args, structs, aliases):
-
-    #Ignore 'main' function
-    if fname == 'main':
-        return ('main', None)
-
-    #Function has no arguments
-    if args is None:
-        args = []
-
-    #Code generator
-    gen = c_generator.CGenerator()
-
-    #Empty function
-    decl = createFunction(name=f'test_{fname}',\
-        args=None,\
-        returnType='void')
-    
-    #Arguments to call the function
-    call_args = []
-    
-    #Ast code to be generated
-    fblock = []
-
-    #Visit arguments 
-    for arg in args:
-
-        vis = InputGenVisitor(structs,aliases)   
-        vis.visit(arg)
+        testname = f'test_{fname}'
         
-        call_args.append(vis.argname) 
-        fblock += vis.code
+        if fname == 'main':
+            return ('main', None) #Ignore 'main' function
 
-   
-    #Add the function call to the Ast
-    fblock.append(FuncCall(ID(fname), ExprList(call_args)))
+        
+        fblock = []     #Test code to be generated
+        call_args = []  #Arguments to call the function
+        
 
-    #Return (void)
-    fblock.append(returnValue(None))
+        #Function has no arguments
+        if args is None:
+            args = []
+        
+        #Visit arguments 
+        for arg in args:
 
-    #Create a block containg the function code
-    block = Compound(fblock)
+            vis = InputGenVisitor(structs,aliases)   
+            vis.visit(arg)
+            
+            call_args.append(vis.argname) 
+            fblock += vis.code
 
-    #Place the block inside a function definition
-    func_def_ast = FuncDef(decl, None, block, None)
+       
+        #Add the function call to the Ast
+        fblock.append(FuncCall(ID(fname), ExprList(call_args)))
+        fblock.append(returnValue(None)) #Return (void)
 
-    #Generate the final string with the test
-    str_ast = gen.visit(func_def_ast)
+        #Create a block containg the test code
+        block = Compound(fblock)
 
-    return (f'test_{fname}', str_ast) #Return (key,value) tuple
+        #Create the actual test function
+        decl = createFunction(name=testname,\
+            args=None,\
+            returnType='void')
+
+        #Place the block inside a function definition
+        func_def_ast = FuncDef(decl, None, block, None)
+
+        #Generate the final string with the test
+        gen = c_generator.CGenerator()
+        str_ast = gen.visit(func_def_ast)
+
+        return (testname, str_ast) #Return (key,value) tuple
 
 
-#Create tests for all functions
-#Returns a dictionary -> {fname : ast}
-def create_tests(f_decls, structs, aliases):
-    return {k: v for k, v in map(lambda x :\
-    create_test(x, f_decls[x], structs, aliases), f_decls) if v is not None} 
+    #Create tests for all functions
+    #Returns a dictionary -> {fname : ast}
+    def create_tests(self, f_decls, structs, aliases):
+        return {k: v for k, v in map(lambda x :self.create_test(x, f_decls[x],\
+                 structs, aliases), f_decls) if v is not None} 
+
+
+
+    def gen(self):            
+
+        #Initial visitor to get all relevant elements
+        vis = InitialVisitor()
+        vis.visit(self.ast)
+
+        fun_decls = vis.fun_dict
+        structs = vis.structs
+        aliases = vis.aliases  
+
+        #Final list of strings to be written to file
+        codeList = []
+
+        #Add Macros for size (array size and fuel)
+        codeList.append(defineMacro(utils.FUEL_MACRO, self.fuel))
+        codeList.append(defineMacro(utils.ARRAY_SIZE_MACRO, self.arraysize))
+        codeList.append(defineMacro(utils.POINTER_SIZE_MACRO, self.pointersize)+'\n')
+
+        #Generate functions responsible for creating symbolic structs
+        struct_generator = StructGen(structs, aliases)
+        codeList +=  struct_generator.symbolic_structs()
+
+        #Create actual test functions
+        testsDict = self.create_tests(fun_decls, structs, aliases) 
+        codeList += testsDict.values()
+
+        #Main function to call tests
+        codeList.append(mainFunction(testsDict.keys()))
+
+        #Write to file
+        file = open(self.outputfile, "w")
+        file.write(f'/*File generated by {os.path.basename(__file__)}*/\n\n')
+        for c in codeList:
+            file.write(f'{c}\n')
+
 
 
 
@@ -143,55 +158,16 @@ if __name__ == "__main__":
     
     #Command line arguments
     args = get_cmd_args()
-    inputFile = args.targetFile
-    outFile = args.o
+    
+    inputfile = args.targetFile
+    outputfile = args.o
     fuel = args.fuel
-    arraySize = args.arraySize
-    pointerSize = args.pointerSize
+    arraysize = args.arraySize
+    pointersize = args.pointerSize
 
     
 
-    #Parse Fele
-    ast = parse_file(args.targetFile, use_cpp=True,
-            cpp_path='gcc',
-            cpp_args=['-E', '-Iloglib/fake_libc_include'])
+    testGenerator = testGenerator(inputfile, outputfile,\
+                     fuel, arraysize, pointersize)
 
-
-
-
-    #Initial visitor to get all relevant elements
-    vis = InitialVisitor()
-    vis.visit(ast)
-
-    fun_decls = vis.fun_dict
-    structs = vis.structs
-    aliases = vis.aliases
-
-    
-
-    #Final list of strings to be written to file
-    codeList = []
-
-    #Add Macros for size (array size and fuel)
-    codeList.append(defineMacro(utils.FUEL_MACRO, fuel))
-    codeList.append(defineMacro(utils.ARRAY_SIZE_MACRO, arraySize))
-    codeList.append(defineMacro(utils.POINTER_SIZE_MACRO, pointerSize)+'\n')
-
-    #Generate functions responsible for creating symbolic structs
-    struct_generator = StructGen(structs, aliases)
-    codeList +=  struct_generator.symbolic_structs()
-
-    #Create actual tests
-    testsDict = create_tests(fun_decls, structs, aliases) 
-    codeList += testsDict.values()
-
-    #Create main function and call tests
-    codeList.append(mainFunction(testsDict.keys()))
-
-    #Write to actual file
-    file = open(outFile, "w")
-    file.write(f'/*File generated by {os.path.basename(__file__)}*/\n\n')
-    for c in codeList:
-        file.write(f'{c}\n')
-
-
+    testGenerator.gen()

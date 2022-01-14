@@ -8,7 +8,7 @@ import utils
 class SymbolicTypeGen(NodeVisitor):
     def __init__ (self, name, vartype):
 
-        self.fuel = utils.FUEL_MACRO
+        self.fuel = ID(utils.FUEL_MACRO)
 
         if isinstance(name, str):
             name = ID(name=name)
@@ -32,7 +32,7 @@ class SymbolicTypeGen(NodeVisitor):
 
         #Create Rvalue
         sizeof = ExprList([multiply])
-        rvalue = FuncCall(ID('summ_new_sym_var'), sizeof)
+        rvalue = FuncCall(ID('new_sym_var'), sizeof)
 
         return rvalue
 
