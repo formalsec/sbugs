@@ -1,4 +1,4 @@
-from pycparser import c_parser, parse_file, c_generator
+from pycparser import parse_file, c_generator
 from pycparser.c_ast import *
 from typeGenerators import InputGenVisitor
 import utils

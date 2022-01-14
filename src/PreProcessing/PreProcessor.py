@@ -2,7 +2,6 @@
 
 import argparse
 import sys, os
-import re
 
 # This is not required if you've installed pycparser into
 # your site-packages/ with setup.py

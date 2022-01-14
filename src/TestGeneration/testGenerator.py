@@ -1,17 +1,13 @@
 #!/usr/bin/env python3
 
-from __future__ import print_function
 import argparse
 import sys, os
-import re
-
-from shutil import copyfile
 
 # This is not required if you've installed pycparser into
 # your site-packages/ with setup.py
 sys.path.extend(['.', '..'])
 
-from pycparser import c_parser, parse_file, c_generator
+from pycparser import parse_file, c_generator
 from pycparser.c_ast import *
 
 from typeGenerators import InputGenVisitor
