@@ -10,30 +10,32 @@ POINTER_SIZE_MACRO = 'POINTER_SIZE'
 #function definitions; defined structs; and Typedefs 
 class InitialVisitor(NodeVisitor):
 
-    def __init__ (self): 
-        self.fun_dict = {}
-        self.var_glob_dict = {}
-        self.structs = {}
+	def __init__ (self): 
+		self.fun_dict = {}
+		self.var_glob_dict = {}
+		self.structs = {}
 
-        #Typedefed structs
-        self.aliases = {}
+		#Typedefed structs
+		self.aliases = {}
 
-    
-    def visit(self, node):
-        NodeVisitor.visit(self, node)
+	
+	def visit(self, node):
+		NodeVisitor.visit(self, node)
 
-    def visit_FuncDef(self, node):
-        self.fun_dict[node.decl.name] = node.decl.type.args.params\
-        if node.decl.type.args else None
-
-
-    def visit_Struct(self, node):
-        self.structs[node.name] = node.decls
+	def visit_FuncDef(self, node):
+		self.fun_dict[node.decl.name] = node.decl.type.args.params\
+		if node.decl.type.args else None
 
 
-    def visit_Typedef(self, node):
-        self.aliases[node.name] = node.type.type.name
-        self.visit(node.type)
+	def visit_Struct(self, node):
+		self.structs[node.name] = node.decls
+
+
+	def visit_Typedef(self, node):
+		if isinstance(node.type.type, IdentifierType):
+			self.aliases[node.name] = node.type.type.names[0]
+		elif isinstance(node.type.type, Struct):
+			self.aliases[node.name] = node.type.type.name
 
 
 

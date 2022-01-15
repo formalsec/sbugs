@@ -21,7 +21,7 @@ def get_cmd_args():
 	parser.add_argument('targetFile', metavar='file', type=str,
 						help='The name of the target C file')
 	
-	parser.add_argument('-fakelib', metavar='path', type=str,
+	parser.add_argument('--fakelib', metavar='path', type=str,
 						help='Path to pycparser fake libc')
 
 	parser.add_argument('-ast', action='store_true',
@@ -33,13 +33,17 @@ def get_cmd_args():
 
 class PreProcessor():
 
-	def __init__(self, inputfile, outputfile, fakelib='../Fake_libc', save_ast=False):
+	def __init__(self, inputfile, outputfile, fakelib=None, save_ast=False):
 		
 		self.inputfile = inputfile
 		self.outputfile = outputfile
-		self.fakelib = fakelib
 		self.save_ast = save_ast
+		self.fakelib = '../Fake_libc'
 		self.tmpfile = f'tmp_{self.outputfile}'
+
+		if fakelib is not None:
+			self.fakelib = fakelib
+
 
 		#Write input ast for debug
 		if self.save_ast:
@@ -145,5 +149,7 @@ if __name__ == "__main__":
 	fakelib = args.fakelib
 	save_ast = args.ast
 
-	preprocessor = PreProcessor(inputfile, outfile, save_ast=save_ast)
+	preprocessor = PreProcessor(inputfile, outfile,
+				 fakelib=fakelib, save_ast=save_ast)
+	
 	preprocessor.gen()
