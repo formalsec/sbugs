@@ -55,7 +55,7 @@ class ArgTypeVisitor(NodeVisitor):
 
 	def visit_ArrayDecl(self, node):
 
-		#Store variable type and id (and array = True)
+		#Store variable type and id (and array dimension)
 		vartype = node.type.type.names[0]
 		self.stack.addVar(self.name, vartype, array = node.dim.value)
 		return	
@@ -90,14 +90,17 @@ class ArgGenVisitor(NodeVisitor):
 			return NodeVisitor.visit(self, node)
 
 	def visit_UnaryOp(self, node):
-		name = node.expr.name
-		code = self.gen(name)
-		return code
+		return self.visit(node.expr)
 
 	def visit_ID(self, node):
 		name = node.name
 		code = self.gen(name)
 		return code
+
+	def visit_StructRef(self, node):
+		return self.visit(node.field)
+
+
 
 
 class PreProcessVisitor(NodeVisitor):
@@ -181,3 +184,17 @@ class PreProcessVisitor(NodeVisitor):
 		if node.name.name == 'scanf':
 			return self.create_symvars(node.args.exprs)
 		return node
+
+
+	def visit_Typedef(self, node):
+		self.visit(node.type.type)
+		return node
+
+
+	def visit_Struct(self, node):
+		if node.decls is not None:
+			for decl in node.decls:
+				self.visit(decl)
+		return node
+	
+
