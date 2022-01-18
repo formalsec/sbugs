@@ -110,7 +110,7 @@ class testGenerator():
 
 		fun_decls = vis.fun_dict
 		structs = vis.structs
-		aliases = vis.aliases  
+		aliases = vis.aliases 
 
 		#Final list of strings to be written to file
 		codeList = []

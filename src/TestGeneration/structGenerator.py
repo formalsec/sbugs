@@ -351,6 +351,9 @@ class StructGen(NodeVisitor):
 
     def init_function(self, struct_name, fields, structs, aliases):
         
+        if fields is None:
+            return
+        
         #Code generator
         gen = c_generator.CGenerator()
 
@@ -358,7 +361,7 @@ class StructGen(NodeVisitor):
         paramlist = ParamList(self.init_args())
 
         #Create a function declaration with name 'create_<struct_name>'
-        decl = utils.createFunction(name=f'create_{struct_name}',\
+        decl = utils.createFunction(name=f'create_struct_{struct_name}',\
                args=paramlist,\
                returnType=f'struct {struct_name}')
 

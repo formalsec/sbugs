@@ -20,7 +20,8 @@ class InitialVisitor(NodeVisitor):
 
 	
 	def visit(self, node):
-		NodeVisitor.visit(self, node)
+		if node is not None: 
+			return NodeVisitor.visit(self, node)
 
 	def visit_FuncDef(self, node):
 		self.fun_dict[node.decl.name] = node.decl.type.args.params\
@@ -36,6 +37,8 @@ class InitialVisitor(NodeVisitor):
 			self.aliases[node.name] = node.type.type.names[0]
 		elif isinstance(node.type.type, Struct):
 			self.aliases[node.name] = node.type.type.name
+
+		self.visit(node.type.type)
 
 
 
