@@ -2,10 +2,13 @@
 #include<stdio.h>
 #include<string.h>
 
+/*Used to simulate a bug*/
+#define BUG_VAL 100
 
 #define MAX_DESCRICAO 64
 #define MAX_PRODUTOS 1000
 #define LOOPS 5
+
 
 typedef struct produto{
     int preco, quantidade;
@@ -13,8 +16,34 @@ typedef struct produto{
 }PRODUTO;
 
 
+
+/*Function to simulate a bug*/
+void check_value(int i){
+	if(i==BUG_VAL){
+		int* a = NULL; //Dereference NULL ptr
+		*a = 0;
+	}
+	return;
+}
+
+
 void command_a(int* n_prods, PRODUTO array[]){
-	scanf(" %[^:]:%d:%d", array[*n_prods].desc, &array[*n_prods].preco, &array[*n_prods].quantidade);
+
+	if(*n_prods > MAX_PRODUTOS){
+		return;
+	}
+
+	int preco;
+	int qtd;
+
+	scanf(" %[^:]:%d:%d", array[*n_prods].desc, &preco, &qtd);
+
+	/*Trigger Bug*/
+	check_value(preco);
+
+	array[*n_prods].preco = preco;
+	array[*n_prods].quantidade = qtd;
+
 	(*n_prods)++;
 	return;
 }
@@ -25,7 +54,10 @@ void command_r(int* n_prods, PRODUTO array[]){
 
 	int id, qtd;
 	scanf(" %d:%d",&id, &qtd);
-	array[id].quantidade -= qtd;
+
+	if(id <= *n_prods){
+		array[id].quantidade -= qtd;
+	}
 	return;
 }
 

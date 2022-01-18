@@ -14,11 +14,11 @@ def symbolic_rvalue(vartype):
 	return rvalue
 
 
-def genArray(name, vartype, size):
+def genArray(name, lvalue, vartype, size):
 	
 	index = f'{name}_index'
-	lvalue = ArrayRef(ID(name), subscript=ID(index))
 	rvalue = symbolic_rvalue(vartype)
+	lvalue = ArrayRef(lvalue, subscript=ID(index))    
 
 	stmt = Assignment(op='=', lvalue=lvalue, rvalue=rvalue)  
 	block = Compound([stmt])
@@ -36,29 +36,54 @@ def genArray(name, vartype, size):
 	return For(init, cond, nxt, block)      
 
 
-class ArgTypeVisitor(NodeVisitor):
+class StructGenVisitor(NodeVisitor):
+	def __init__(self, node, stack):
 
-	def __init__(self, name, stack):
-		self.name = name
+		self.node = node
 		self.stack = stack
+		
+		self.var = None
+		self.field = None
 
 	def visit(self, node): 
 		if node is not None: 
 			return NodeVisitor.visit(self, node)
 
-	def visit_TypeDecl(self, node):
-		
-		#Store variable type and id
-		vartype = node.type.names[0]
-		self.stack.addVar(self.name, vartype)		
-		return 
+	def visit_ID(self, node):
+		self.var = node.name
+		return
 
-	def visit_ArrayDecl(self, node):
+	def visit_ArrayRef(self, node):
+		self.visit(node.name)
+		return
 
-		#Store variable type and id (and array dimension)
-		vartype = node.type.type.names[0]
-		self.stack.addVar(self.name, vartype, array = node.dim.value)
-		return	
+	def visit_StructRef(self, node):
+		self.field = node.field.name
+		self.visit(node.name)
+		return
+
+	def gen(self):
+		self.visit(self.node)
+		struct = self.stack.findType(self.var)
+		structType = struct.getType()
+
+		if self.stack.isAlias(structType):
+			structType = self.stack.getStruct(structType)
+
+		structFieldType = self.stack.fieldType(structType, self.field)
+
+		vartype = structFieldType.getType()
+		arraysize = structFieldType.arraySize()
+
+		if arraysize:
+			code = genArray(self.field, self.node, vartype, arraysize)
+
+		else:
+			rvalue = symbolic_rvalue(vartype)			
+			code = Decl(self.field, [], [], [], self.node, rvalue, None)
+
+		return code
+
 
 
 
@@ -75,10 +100,10 @@ class ArgGenVisitor(NodeVisitor):
 		arraysize = argtype.arraySize()
 
 		if arraysize:
-			code = genArray(name, vartype, arraysize)
+			code = genArray(name, ID(name), vartype, arraysize)
 
 		else:
-			lvalue = TypeDecl(name, [], IdentifierType(names=[vartype]))
+			lvalue = ID(name)
 			rvalue = symbolic_rvalue(vartype)			
 			code = Decl(name, [], [], [], lvalue, rvalue, None)
 
@@ -98,8 +123,50 @@ class ArgGenVisitor(NodeVisitor):
 		return code
 
 	def visit_StructRef(self, node):
-		return self.visit(node.field)
+		struct_vis = StructGenVisitor(node, self.stack)
+		code = struct_vis.gen()
+		return code
 
+
+
+class ArgTypeVisitor(NodeVisitor):
+
+	def __init__(self, name, stack, struct):
+		self.name = name
+		self.stack = stack
+		self.struct = struct
+
+	def visit(self, node): 
+		if node is not None: 
+			return NodeVisitor.visit(self, node)
+
+	def visit_TypeDecl(self, node):
+		
+		#Store variable type and id
+		vartype = node.type.names[0]
+		if self.struct:
+			self.stack.addField(self.struct, self.name, vartype)
+		else:
+			self.stack.addVar(self.name, vartype)		
+		return 
+
+	def visit_ArrayDecl(self, node):
+
+		#Store variable type and id (and array dimension)
+		vartype = node.type.type.names[0]
+		
+		dim = None
+		if node.dim is not None:
+			dim = node.dim.value
+		
+		if self.struct:
+			self.stack.addField(self.struct, self.name, vartype, array = dim)
+		else:
+			self.stack.addVar(self.name, vartype, array = dim)
+		return	
+
+	def visit_FuncDecl(self, node):
+		return	
 
 
 
@@ -107,8 +174,9 @@ class PreProcessVisitor(NodeVisitor):
 
 	def __init__ (self): 
 		self.stack = ScopeStack()
+		self.struct = None #If inside a struct store name
 
-
+	
 	def create_symvars(self, args):
 		code = []		#Code to generate symbolic variables
 		args = args[1:] #Remove format string
@@ -118,7 +186,8 @@ class PreProcessVisitor(NodeVisitor):
 			code.append(genvisitor.visit(arg))
 		return code
 	
-	
+
+	#Safe visit wrapper
 	def visit(self, node):
 		if node is not None: 
 			return NodeVisitor.visit(self, node)
@@ -128,7 +197,9 @@ class PreProcessVisitor(NodeVisitor):
 	def generic_visit(self, node):
 		return node 
 
-
+	
+	#Entry node, generate a new ast by
+	#visiting all stmts
 	def visit_FileAST(self, node):
 		decls = []
 		for decl in node.ext:
@@ -163,38 +234,63 @@ class PreProcessVisitor(NodeVisitor):
 		return Compound(stms)
 
 
-	#Visit variable declarations
-	def visit_Decl(self, node):
 
+	#Visit variable declarations
+	#This includes struct fields
+	def visit_Decl(self, node):
 		name = node.name
-		argv = ArgTypeVisitor(name, self.stack)
+		argv = ArgTypeVisitor(name, self.stack, self.struct)
 		argv.visit(node.type)
+		return node
+
+
+	#Function declarations
+	#Visit to push arg types into scope
+	def visit_FuncDecl(self, node):
+		args = node.args
+		if args is not None:
+			for decl in args.params:
+				self.visit(decl)
 		return node
 
 
 	#Visit function definitions
 	def visit_FuncDef(self, node):
-		new_body = self.visit(node.body)
+		self.stack.push()
+		self.visit(node.decl.type) #--> visit_FuncDecl
+		new_body = self.visit(node.body) #--> visit_Compound
+		self.stack.pop()
 		return FuncDef(node.decl, node.param_decls, new_body)
 
 
-
 	#Visit function calls
+	#Create symvar for 'scanf' call
 	def visit_FuncCall(self, node):
 		if node.name.name == 'scanf':
 			return self.create_symvars(node.args.exprs)
 		return node
 
 
+	#Visit Typedef (store aliases)
 	def visit_Typedef(self, node):
-		self.visit(node.type.type)
+		obj = node.type.type
+		if isinstance(obj,Struct):
+			self.stack.addAlias(node.name, obj.name)
+			self.visit(obj)
 		return node
 
 
+	#Visit Struct
+	#Store new struct and visit its fields
 	def visit_Struct(self, node):
+		self.struct = node.name
+		
 		if node.decls is not None:
+			self.stack.addStruct(node.name)
 			for decl in node.decls:
 				self.visit(decl)
+
+		self.struct = None
 		return node
 	
 

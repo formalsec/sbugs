@@ -136,7 +136,7 @@ class PreProcessor():
 			
 
 		except Exception as e:
-			self._remove_files(self.tmpfile, self.outputfile)
+			self._remove_files(self.tmpfile)
 			print(traceback.format_exc())
 
 
