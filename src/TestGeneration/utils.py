@@ -46,8 +46,11 @@ def defineMacro(label, value):
 	return f'#define {label} {value}'
 
 
-def returnValue(val):
-	return Return(ExprList([val]))
+def returnValue(val, operator=None):
+	if operator:
+		val = UnaryOp(operator, val)
+	expr = ExprList([val])
+	return Return(expr)
 
 
 def createFunction(name, args, returnType):

@@ -377,7 +377,7 @@ class StructGen(NodeVisitor):
             code += vis.code
         
         #Return struct
-        code.append(utils.returnValue(ID(f'struct_{struct_name}_instance')))
+        code.append(utils.returnValue(ID(f'struct_{struct_name}_instance'),'*'))
 
 
         #Create a block containg the function code

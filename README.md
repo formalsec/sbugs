@@ -8,12 +8,15 @@ $ pip3 install pycparser==2.20
 ```
 
 ## Usage
-### Simple Usage
+#### Test Generator
 ```sh
-$ ./testGenerator -o <outfile> <inputfile>
+$ ./testGenerator.py -o <outfile> <inputfile>
+$ ./testGenerator.py -h #Help
 ```
 
-### Help
+#### Pre-Processor
 ```sh
-$ ./testGenerator -h
+$ ./PreProcessor.py -o <outfile> <inputfile>
+$ ./testGenerator.py -h #Help
 ```
+

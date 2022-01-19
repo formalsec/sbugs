@@ -7,13 +7,19 @@
 
 #define MAX_DESCRICAO 64
 #define MAX_PRODUTOS 1000
-#define LOOPS 5
+#define LOOPS 1
 
 
 typedef struct produto{
     int preco, quantidade;
     char desc[MAX_DESCRICAO];
 }PRODUTO;
+
+
+
+void* new_sym_var(unsigned int length){
+	return NULL;
+}
 
 
 
