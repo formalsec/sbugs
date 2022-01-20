@@ -135,6 +135,7 @@ class ArgTypeVisitor(NodeVisitor):
 		self.name = name
 		self.stack = stack
 		self.struct = struct
+		self.dim = None
 
 	def visit(self, node): 
 		if node is not None: 
@@ -145,25 +146,20 @@ class ArgTypeVisitor(NodeVisitor):
 		#Store variable type and id
 		vartype = node.type.names[0]
 		if self.struct:
-			self.stack.addField(self.struct, self.name, vartype)
+			self.stack.addField(self.struct, self.name, vartype, array = self.dim)
 		else:
-			self.stack.addVar(self.name, vartype)		
+			self.stack.addVar(self.name, vartype, array = self.dim)		
 		return 
 
 	def visit_ArrayDecl(self, node):
 
-		#Store variable type and id (and array dimension)
-		vartype = node.type.type.names[0]
-		
-		dim = None
 		if node.dim is not None:
-			dim = node.dim.value
+			self.dim = node.dim.value
+
+		#Store array dimension and visit type
+		self.visit(node.type)
 		
-		if self.struct:
-			self.stack.addField(self.struct, self.name, vartype, array = dim)
-		else:
-			self.stack.addVar(self.name, vartype, array = dim)
-		return	
+		return
 
 	def visit_FuncDecl(self, node):
 		return	
@@ -294,3 +290,21 @@ class PreProcessVisitor(NodeVisitor):
 		return node
 	
 
+	def visit_If(self, node):
+		iftrue = self.visit(node.iftrue)
+		iffalse = self.visit(node.iffalse)
+		return If(node.cond, iftrue, iffalse)
+	
+
+	def visit_While(self, node):
+		new_stmt = self.visit(node.stmt)
+		return While(node.cond, new_stmt)
+
+	def visit_For(self, node):
+
+		self.stack.push()
+		new_init = self.visit(node.init)
+		new_stmt = self.visit(node.stmt)
+		self.stack.pop()
+		
+		return For(new_init, node.cond, node.next, new_stmt)
