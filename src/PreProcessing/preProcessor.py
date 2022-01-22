@@ -39,7 +39,9 @@ class PreProcessor():
 		self.outputfile = outputfile
 		self.save_ast = save_ast
 		self.fakelib = '../Fake_libc'
-		self.tmpfile = f'tmp_{self.outputfile}'
+
+		tmpname = self.outputfile.split('/')[-1]
+		self.tmpfile = f'tmp_{tmpname}'
 
 		if fakelib is not None:
 			self.fakelib = fakelib
