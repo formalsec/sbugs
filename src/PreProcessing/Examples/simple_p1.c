@@ -35,9 +35,9 @@ void check_value(int i){
 
 void command_a(int* n_prods, PRODUTO array[]){
 
-	if(*n_prods > MAX_PRODUTOS){
-		return;
-	}
+	//if(*n_prods > MAX_PRODUTOS){
+	//	return;
+	//}
 
 	int preco;
 	int qtd;

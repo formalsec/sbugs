@@ -3,18 +3,13 @@
 import argparse
 import sys, os
 
-# This is not required if you've installed pycparser into
-# your site-packages/ with setup.py
-sys.path.extend(['.', '..'])
-
 from pycparser import parse_file, c_generator
 from pycparser.c_ast import *
 
-from typeGenerators import InputGenVisitor
-from structGenerator import StructGen
-from utils import defineMacro, mainFunction, returnValue, createFunction 
-from utils import InitialVisitor, FUEL_MACRO, ARRAY_SIZE_MACRO, POINTER_SIZE_MACRO
-
+from TestGeneration.visitors.typeGenerators import InputGenVisitor
+from TestGeneration.visitors.structGenerator import StructGen
+from TestGeneration.utils import defineMacro, mainFunction, returnValue, createFunction 
+from TestGeneration.utils import InitialVisitor, FUEL_MACRO, ARRAY_SIZE_MACRO, POINTER_SIZE_MACRO
 
 
 class testGenerator():
@@ -29,7 +24,7 @@ class testGenerator():
 		self.pointersize = pointersize
 		
 		self.save_ast = save_ast
-		self.fakelib = '../Fake_libc'
+		self.fakelib = 'Fake_libc'
 
 
 		if fakelib is not None:
@@ -164,6 +159,9 @@ def get_cmd_args():
 
 	parser.add_argument('--fakelib', metavar='path', type=str,
 						help='Path to pycparser fake libc')
+
+	parser.add_argument('-preprocess', action='store_true',
+						help='Pre-process input file')
  
 	return parser.parse_args()
 
@@ -182,6 +180,7 @@ if __name__ == "__main__":
 	pointersize = args.pointerSize
 	fakelib = args.fakelib
 	save_ast = args.ast
+	preprocess = args.preprocess
 
 	
 

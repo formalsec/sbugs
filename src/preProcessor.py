@@ -4,12 +4,8 @@ import traceback
 import argparse
 import sys, os
 
-# This is not required if you've installed pycparser into
-# your site-packages/ with setup.py
-sys.path.extend(['.', '..'])
-
 from pycparser import parse_file, c_generator
-from visitors import *
+from PreProcessing.visitors import *
 
 
 def get_cmd_args():
@@ -38,7 +34,7 @@ class PreProcessor():
 		self.inputfile = inputfile
 		self.outputfile = outputfile
 		self.save_ast = save_ast
-		self.fakelib = '../Fake_libc'
+		self.fakelib = 'Fake_libc'
 
 		tmpname = self.outputfile.split('/')[-1]
 		self.tmpfile = f'tmp_{tmpname}'

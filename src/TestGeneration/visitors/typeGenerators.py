@@ -1,6 +1,7 @@
 from pycparser import parse_file, c_generator
 from pycparser.c_ast import *
-import utils
+
+import TestGeneration.utils as utils
 
 
 # Create a primitive symbolic var

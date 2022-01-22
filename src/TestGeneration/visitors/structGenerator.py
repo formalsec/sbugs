@@ -1,7 +1,8 @@
 from pycparser import parse_file, c_generator
 from pycparser.c_ast import *
-from typeGenerators import InputGenVisitor
-import utils
+
+from TestGeneration.visitors.typeGenerators import InputGenVisitor
+import TestGeneration.utils as utils
 
 #Class responsible for creating symbolic struct fields
 class SymbolicFieldGen(NodeVisitor):
