@@ -16,7 +16,7 @@ $ ./testGenerator.py -h #Help
 
 #### Pre-Processor
 ```sh
-$ ./PreProcessor.py -o <outfile> <inputfile>
-$ ./testGenerator.py -h #Help
+$ ./preProcessor.py -o <outfile> <inputfile>
+$ ./preProcessor.py -h #Help
 ```
 
