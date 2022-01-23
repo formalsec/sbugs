@@ -11,6 +11,7 @@
 
 /*Hardcode API functions to create sym vars*/
 void* new_sym_var(unsigned int length){
+    char null = '\0';
     return NULL;
 }
 

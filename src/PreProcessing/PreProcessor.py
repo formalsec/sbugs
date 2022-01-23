@@ -1,4 +1,4 @@
-import sys, os
+import sys, os, traceback
 
 from pycparser import parse_file, c_generator
 from PreProcessing.visitors import *
@@ -108,6 +108,8 @@ class PreProcessor():
 			#Write final output file
 			outfile = open(self.outputfile, "w")
 			outfile.writelines(final_code)
+
+			return self.outputfile
 			
 
 		except Exception as e:

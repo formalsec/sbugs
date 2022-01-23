@@ -15,13 +15,18 @@ def symbolic_rvalue(vartype):
 	return rvalue
 
 
+def terminate_string(lvalue, size):
+	arr_lvalue = ArrayRef(lvalue, subscript=Constant('int', str(int(size)-1)))
+	assign = Assignment(op='=', lvalue=arr_lvalue, rvalue=Constant('char', '\'\\0\''))
+	return assign   
+
 def genArray(name, lvalue, vartype, size):
-	
+	code = []
 	index = f'{name}_index'
 	rvalue = symbolic_rvalue(vartype)
-	lvalue = ArrayRef(lvalue, subscript=ID(index))    
+	arr_lvalue = ArrayRef(lvalue, subscript=ID(index))    
 
-	stmt = Assignment(op='=', lvalue=lvalue, rvalue=rvalue)  
+	stmt = Assignment(op='=', lvalue=arr_lvalue, rvalue=rvalue)  
 	block = Compound([stmt])
 
 	##For-init
@@ -34,7 +39,13 @@ def genArray(name, lvalue, vartype, size):
 	
 	##For-next
 	nxt = UnaryOp(op='p++', expr=ID(index))
-	return For(init, cond, nxt, block)      
+
+	code.append(For(init, cond, nxt, block))
+
+	if vartype == 'char':
+		code.append(terminate_string(lvalue,size))
+
+	return code       
 
 
 class StructGenVisitor(NodeVisitor):
@@ -76,12 +87,13 @@ class StructGenVisitor(NodeVisitor):
 		vartype = structFieldType.getType()
 		arraysize = structFieldType.arraySize()
 
+		code = []
 		if arraysize:
-			code = genArray(self.field, self.node, vartype, arraysize)
+			code += genArray(self.field, self.node, vartype, arraysize)
 
 		else:
 			rvalue = symbolic_rvalue(vartype)			
-			code = Decl(self.field, [], [], [], self.node, rvalue, None)
+			code.append(Decl(self.field, [], [], [], self.node, rvalue, None))
 
 		return code
 
@@ -100,13 +112,14 @@ class ArgGenVisitor(NodeVisitor):
 		vartype = argtype.getType()
 		arraysize = argtype.arraySize()
 
+		code = []
 		if arraysize:
-			code = genArray(name, ID(name), vartype, arraysize)
+			code += genArray(name, ID(name), vartype, arraysize)
 
 		else:
 			lvalue = ID(name)
-			rvalue = symbolic_rvalue(vartype)			
-			code = Decl(name, [], [], [], lvalue, rvalue, None)
+			rvalue = symbolic_rvalue(vartype)
+			code.append(Decl(name, [], [], [], lvalue, rvalue, None))			
 
 		return code
 
@@ -201,7 +214,7 @@ class PreProcessVisitor(NodeVisitor):
 
 		genvisitor = ArgGenVisitor(self.stack)	
 		for arg in args:
-			code.append(genvisitor.visit(arg))
+			code += genvisitor.visit(arg)
 		return code
 	
 
@@ -282,7 +295,7 @@ class PreProcessVisitor(NodeVisitor):
 
 
 	#Visit function calls
-	#Create symvar for 'scanf' call
+	#Create symvars for 'scanf' call
 	def visit_FuncCall(self, node):
 		if node.name.name == 'scanf':
 			return self.create_symvars(node.args.exprs)

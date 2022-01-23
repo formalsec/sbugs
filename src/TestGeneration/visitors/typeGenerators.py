@@ -239,13 +239,17 @@ class InputGenVisitor(NodeVisitor):
 
     #Pointer
     def visit_PtrDecl(self, node):
+        if isinstance(node.type, FuncDecl):
+            self.code = None
+            return
+
         self.arrayDim += 1
         self.sizeMacro = utils.POINTER_SIZE_MACRO
         self.visit(node.type)
         return
 
     
-    #Struct Pype
+    #Struct Type
     def visit_Struct(self, node):
         self.argtype = f'struct {node.name}'
         self.struct = True
@@ -255,7 +259,7 @@ class InputGenVisitor(NodeVisitor):
     #IdentifierType (Common and last node)
     def visit_IdentifierType(self, node):
         typ = node.names[0]
-        if len(node.names):
+        if len(node.names) > 1:
             for t in node.names[1:]:
                 typ += f' {t}' 
         

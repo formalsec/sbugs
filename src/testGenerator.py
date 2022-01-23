@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import argparse
+from PreProcessing.PreProcessor import PreProcessor
 from TestGeneration.TestGenerator import TestGenerator
 
 
@@ -50,7 +51,13 @@ if __name__ == "__main__":
 	save_ast = args.ast
 	preprocess = args.preprocess
 
-	
+
+	if preprocess:
+		preprocessor = PreProcessor(inputfile, outputfile,
+				 fakelib=fakelib, save_ast=save_ast)
+		
+		inputfile = preprocessor.gen()
+
 
 	testGenerator = TestGenerator(inputfile, outputfile,
 					 fuel, arraysize, pointersize,

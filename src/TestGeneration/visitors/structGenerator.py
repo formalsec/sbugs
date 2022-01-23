@@ -386,10 +386,8 @@ class StructGen(NodeVisitor):
 
         #Place the block inside a function definition
         n_func_def_ast = FuncDef(decl, None, block, None)
-
-        #Generate the final string with the test
-        str_ast = gen.visit(n_func_def_ast)
-        return str_ast
+        
+        return n_func_def_ast
 
     
     #Create functions do instantiate all structs
