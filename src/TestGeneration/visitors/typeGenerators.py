@@ -221,7 +221,8 @@ class InputGenVisitor(NodeVisitor):
                 generator = PrimitiveTypeGen(self.argname, self.argtype)
                 self.code = generator.gen()
                 return
-        #Array 
+        
+        #Array or pointer
         else:
             generator = ArrayTypeGen(self.argname, self.argtype,
             self.arrayDim, self.sizeMacro, self.struct)
