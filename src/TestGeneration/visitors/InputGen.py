@@ -1,9 +1,9 @@
 from pycparser import parse_file, c_generator
 from pycparser.c_ast import *
 
-from TestGeneration.visitors.Types.ArrayType import ArrayTypeGen
-from TestGeneration.visitors.Types.PrimitiveType import PrimitiveTypeGen
-from TestGeneration.visitors.Types.StructType import StructTypeGen
+from .Types.ArrayType import ArrayTypeGen
+from .Types.PrimitiveType import PrimitiveTypeGen
+from .Types.StructType import StructTypeGen
 import TestGeneration.utils as utils
 
 

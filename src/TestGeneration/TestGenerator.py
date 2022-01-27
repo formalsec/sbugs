@@ -4,7 +4,7 @@ from pycparser import parse_file, c_generator
 from pycparser.c_ast import *
 
 from TestGeneration.visitors.InputGen import InputGenVisitor
-from TestGeneration.visitors.structGenerator import StructGen
+from TestGeneration.visitors.StructGen import StructGenVisitor
 from TestGeneration.utils import defineMacro, defineInclude, mainFunction, returnValue, createFunction 
 from TestGeneration.utils import InitialVisitor, FUEL_MACRO, ARRAY_SIZE_MACRO, POINTER_SIZE_MACRO
 
@@ -202,7 +202,7 @@ class TestGenerator():
 		codeList = []
 
 		#Generate functions responsible for creating symbolic structs
-		struct_generator = StructGen(structs, aliases)
+		struct_generator = StructGenVisitor(structs, aliases)
 		codeList +=  struct_generator.symbolic_structs()
 
 		#Create actual test functions
