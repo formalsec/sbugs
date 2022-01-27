@@ -158,7 +158,6 @@ class TestGenerator():
 				 structs, aliases), f_decls) if v is not None} 
 
 
-	#TODO:no main
 	def place_testcode(self, ast, code, mainblock):
 		index = 0
 		for stmt in ast.ext:
@@ -181,7 +180,7 @@ class TestGenerator():
 
 	def gen(self):
 
-		#TODO:include stdlib
+
 		#PreProcess inputfile
 		includes = self._preprocess_file(self.inputfile, self.tmpfile)
 
