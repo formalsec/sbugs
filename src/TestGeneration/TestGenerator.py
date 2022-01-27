@@ -3,7 +3,7 @@ import sys, os
 from pycparser import parse_file, c_generator
 from pycparser.c_ast import *
 
-from TestGeneration.visitors.typeGenerators import InputGenVisitor
+from TestGeneration.visitors.InputGen import InputGenVisitor
 from TestGeneration.visitors.structGenerator import StructGen
 from TestGeneration.utils import defineMacro, defineInclude, mainFunction, returnValue, createFunction 
 from TestGeneration.utils import InitialVisitor, FUEL_MACRO, ARRAY_SIZE_MACRO, POINTER_SIZE_MACRO

@@ -1,7 +1,7 @@
 from pycparser import parse_file, c_generator
 from pycparser.c_ast import *
 
-from TestGeneration.visitors.typeGenerators import InputGenVisitor
+from TestGeneration.visitors.InputGen import InputGenVisitor
 import TestGeneration.utils as utils
 
 #Class responsible for creating symbolic struct fields
