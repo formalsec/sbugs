@@ -1,7 +1,7 @@
 import sys, os, traceback
 
 from pycparser import parse_file, c_generator
-from PreProcessing.visitors import *
+from PreProcessing.visitors.PreProcessVisitor import PreProcessVisitor
 
 
 class PreProcessor():
