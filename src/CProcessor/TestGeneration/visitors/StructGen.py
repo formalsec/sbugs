@@ -1,8 +1,8 @@
 from pycparser import parse_file, c_generator
 from pycparser.c_ast import *
 
-from TestGeneration.visitors.InputGen import InputGenVisitor
-import TestGeneration.utils as utils
+from .InputGen import InputGenVisitor
+import CProcessor.TestGeneration.utils as utils
 
 from .StructFields.ArrayField import ArrayFieldGen
 from .StructFields.PrimitiveField import PrimitiveFieldGen

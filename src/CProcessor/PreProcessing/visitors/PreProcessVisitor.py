@@ -1,10 +1,10 @@
-from PreProcessing.ScopeStack import ScopeStack
+from ..ScopeStack import ScopeStack
 from pycparser.c_ast import *
 
 from . ArgGen import ArgGenVisitor
 from . ArgType import ArgTypeVisitor
 
-from PreProcessing.utils import *
+from CProcessor.PreProcessing.utils import *
 
 
 class PreProcessVisitor(NodeVisitor):

@@ -4,7 +4,7 @@ from pycparser.c_ast import *
 from .Types.ArrayType import ArrayTypeGen
 from .Types.PrimitiveType import PrimitiveTypeGen
 from .Types.StructType import StructTypeGen
-import TestGeneration.utils as utils
+import CProcessor.TestGeneration.utils as utils
 
 
 class InputGenVisitor(NodeVisitor):

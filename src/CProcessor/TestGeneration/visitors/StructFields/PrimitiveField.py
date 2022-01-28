@@ -1,9 +1,8 @@
 from pycparser import parse_file, c_generator
 from pycparser.c_ast import *
 
-from TestGeneration.visitors.InputGen import InputGenVisitor
 from .SymbolicField import SymbolicFieldGen
-import TestGeneration.utils as utils
+import CProcessor.TestGeneration.utils as utils
 
 #Primitive type struct field
 class PrimitiveFieldGen(SymbolicFieldGen):

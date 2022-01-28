@@ -1,4 +1,4 @@
-from PreProcessing.ScopeStack import ScopeStack
+from ..ScopeStack import ScopeStack
 from pycparser.c_ast import *
 
 

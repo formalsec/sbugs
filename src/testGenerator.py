@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 
 import argparse
-from PreProcessing.PreProcessor import PreProcessor
-from TestGeneration.TestGenerator import TestGenerator
+from CProcessor import TestGenerator, PreProcessor
 
 
 def get_cmd_args():

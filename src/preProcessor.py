@@ -3,7 +3,8 @@
 import argparse
 import traceback
 
-from PreProcessing.PreProcessor import PreProcessor
+from CProcessor import PreProcessor
+
 
 def get_cmd_args():
 	parser = argparse.ArgumentParser(description='Generate Symbolic Tests')

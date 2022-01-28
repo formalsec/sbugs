@@ -1,5 +1,5 @@
-from PreProcessing.ScopeStack import ScopeStack
 from pycparser.c_ast import *
+from .ScopeStack import ScopeStack
 
 
 def symbolic_rvalue(vartype):

@@ -1,10 +1,11 @@
 import sys, os, traceback
 
 from pycparser import parse_file, c_generator
-from PreProcessing.visitors.PreProcessVisitor import PreProcessVisitor
 
+from .visitors.PreProcessVisitor import PreProcessVisitor
+from CProcessor.C_Generator import C_FileGenerator
 
-class PreProcessor():
+class PreProcessor(C_FileGenerator):
 
 	def __init__(self, inputfile, outputfile, fakelib=None, save_ast=False):
 		

@@ -1,7 +1,7 @@
 from pycparser import parse_file, c_generator
 from pycparser.c_ast import *
 
-import TestGeneration.utils as utils
+import CProcessor.TestGeneration.utils as utils
 
 from .TypeGen import SymbolicTypeGen
 
