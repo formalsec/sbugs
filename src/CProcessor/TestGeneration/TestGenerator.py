@@ -146,7 +146,7 @@ class TestGenerator(C_FileGenerator):
 			tmpfile.flush()
 
 			#PostPreProcess temporary file
-			final_code = self._postprocess_file(self.tmpfile, includes)
+			final_code = self._postprocess_file(self.tmpfile, includes, generator=os.path.basename(__file__))
 			self._remove_files(self.tmpfile)
 
 			#Write final output file
