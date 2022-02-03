@@ -1,5 +1,5 @@
 from pycparser.c_ast import *
-from .ScopeStack import ScopeStack
+from .IO.ScopeStack import ScopeStack
 
 
 def symbolic_rvalue(vartype):
@@ -46,3 +46,4 @@ def genArray(name, lvalue, vartype, size):
 		code.append(terminate_string(lvalue,size))
 
 	return code       
+

@@ -7,7 +7,7 @@ from . ArgType import ArgTypeVisitor
 from CProcessor.PreProcessing.utils import *
 
 
-class PreProcessVisitor(NodeVisitor):
+class IO_Visitor(NodeVisitor):
 
 	def __init__ (self): 
 		self.stack = ScopeStack()

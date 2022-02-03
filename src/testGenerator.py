@@ -28,8 +28,8 @@ def get_cmd_args():
 	parser.add_argument('--fakelib', metavar='path', type=str,
 						help='Path to pycparser fake libc')
 
-	parser.add_argument('-preprocess', action='store_true',
-						help='Pre-process input file')
+	parser.add_argument('--preprocess', nargs='*', default=[],
+                        help='Pre-processing options (scanf, global_vars)')
  
 	return parser.parse_args()
 
@@ -49,10 +49,20 @@ if __name__ == "__main__":
 	fakelib = args.fakelib
 	save_ast = args.ast
 	preprocess = args.preprocess
+	io = False
+	global_vars = False
+
+	if 'scanf' in preprocess:
+		io = True
+
+	if 'global_vars' in preprocess:
+		global_vars = True
+
+
 
 
 	if preprocess:
-		preprocessor = PreProcessor(inputfile, outputfile,
+		preprocessor = PreProcessor(inputfile, outputfile, io, global_vars,
 				 fakelib=fakelib, save_ast=save_ast)
 		
 		inputfile = preprocessor.gen()
