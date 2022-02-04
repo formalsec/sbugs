@@ -36,7 +36,6 @@ class Global_Visitor(NodeVisitor):
 				return 	Decl(name, [], [], [], arraydecl, None, None)
 			
 			else:
-
 				arraydecl = ArrayDecl(typedecl, Constant('int', array_dim[-1]), [])
 				for i in range(len(array_dim)-2, 0, -1):
 					arraydecl = ArrayDecl(arraydecl, Constant('int', array_dim[i]), [])

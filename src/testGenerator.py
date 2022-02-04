@@ -28,7 +28,7 @@ def get_cmd_args():
 	parser.add_argument('--fakelib', metavar='path', type=str,
 						help='Path to pycparser fake libc')
 
-	parser.add_argument('--preprocess', nargs='*', default=[],
+	parser.add_argument('-preprocess', metavar='options', choices=['scanf', 'global_vars'], nargs='*', default=[],
                         help='Pre-processing options (scanf, global_vars)')
  
 	return parser.parse_args()
