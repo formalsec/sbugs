@@ -16,13 +16,6 @@ typedef struct produto{
 }PRODUTO;
 
 
-
-void* new_sym_var(unsigned int length){
-	return NULL;
-}
-
-
-
 /*Function to simulate a bug*/
 void check_value(int i){
 	if(i==BUG_VAL){
