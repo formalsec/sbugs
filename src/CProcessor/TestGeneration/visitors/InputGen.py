@@ -21,7 +21,7 @@ class InputGenVisitor(NodeVisitor):
         self.argtype = None
 
         #Array properties
-        self.arrayDim = 0
+        self.arrayDim = []
 
         #Struct properties
         self.struct = False
@@ -35,32 +35,33 @@ class InputGenVisitor(NodeVisitor):
     
     #Entry Node
     def visit_Decl(self, node):
-        self.argname = ID(name=node.name)
+        self.argname = node.name
         self.visit(node.type)                                                                    
         return
 
     #TypeDecl (Common node)
     def visit_TypeDecl(self, node):
         self.visit(node.type)
+        argname = ID(self.argname)
 
         #Single
-        if self.arrayDim == 0:
+        if len(self.arrayDim) == 0:
             
             #Struct
             if self.struct:
-                generator = StructTypeGen(self.argname, self.argtype)
+                generator = StructTypeGen(argname, self.argtype)
                 self.code = generator.gen()
                 return
             
             #Primitive Type
             else:
-                generator = PrimitiveTypeGen(self.argname, self.argtype)
+                generator = PrimitiveTypeGen(argname, self.argtype)
                 self.code = generator.gen()
                 return
         
         #Array or pointer
         else:
-            generator = ArrayTypeGen(self.argname, self.argtype,
+            generator = ArrayTypeGen(argname, self.argtype,
             self.arrayDim, self.sizeMacro, self.struct)
             self.code = generator.gen()
             return  
@@ -68,7 +69,11 @@ class InputGenVisitor(NodeVisitor):
 
     #ArrayDecl
     def visit_ArrayDecl(self, node):
-        self.arrayDim += 1
+        if node.dim is not None:
+            self.arrayDim.append(node.dim.value)
+
+        else:
+            self.arrayDim.append(None)
         self.sizeMacro = utils.ARRAY_SIZE_MACRO
         self.visit(node.type)
         return
@@ -80,7 +85,8 @@ class InputGenVisitor(NodeVisitor):
             self.code = None
             return
 
-        self.arrayDim += 1
+        self.arrayDim.append(None)
+
         self.sizeMacro = utils.POINTER_SIZE_MACRO
         self.visit(node.type)
         return

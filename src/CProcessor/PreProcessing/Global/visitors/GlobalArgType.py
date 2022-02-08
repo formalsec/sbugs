@@ -16,7 +16,12 @@ class GlobalArgVisitor(NodeVisitor):
 		
 		#Store variable type and id
 		vartype = node.names[0]
-		self.global_vars.addVar(self.name, vartype, array = self.dim)		
+		
+		if len(node.names) > 1:
+			for t in node.names[1:]:
+				vartype += f' {t}' 
+		
+		self.global_vars.addVar(self.name, vartype, array = self.dim)       
 		return 
 
 
@@ -27,7 +32,7 @@ class GlobalArgVisitor(NodeVisitor):
 
 	def visit_PtrDecl(self, node):
 		self.visit(node.type)
-		return 		
+		return      
 
 
 	def visit_ArrayDecl(self, node):
@@ -41,4 +46,4 @@ class GlobalArgVisitor(NodeVisitor):
 		return
 
 	def visit_FuncDecl(self, node):
-		return	
+		return  

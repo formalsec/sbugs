@@ -30,6 +30,9 @@ def get_cmd_args():
 
 	parser.add_argument('-preprocess', metavar='options', choices=['scanf', 'global_vars'], nargs='*', default=[],
                         help='Pre-processing options (scanf, global_vars)')
+
+	parser.add_argument('--target', metavar='function', type=str,
+                        help='Generate a test for a specific target function')
  
 	return parser.parse_args()
 
@@ -51,14 +54,13 @@ if __name__ == "__main__":
 	preprocess = args.preprocess
 	io = False
 	global_vars = False
+	target = args.target
 
 	if 'scanf' in preprocess:
 		io = True
 
 	if 'global_vars' in preprocess:
 		global_vars = True
-
-
 
 
 	if preprocess:
@@ -70,6 +72,9 @@ if __name__ == "__main__":
 
 	testGenerator = TestGenerator(inputfile, outputfile,
 					 fuel, arraysize, pointersize,
-					 fakelib=fakelib, save_ast=save_ast)
+					 fakelib=fakelib, save_ast=save_ast, target=target)
+
+
+
 
 	testGenerator.gen()

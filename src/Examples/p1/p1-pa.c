@@ -9,11 +9,6 @@
 #define LESS(A, B) { (prods[A].preco) < (prods[B].preco) }
 #define EXCH(A, B) { int t = A; A = B; B = t; }
 
-/*Hardcode API functions to create sym vars*/
-void* new_sym_var(unsigned int length){
-    return NULL;
-}
-
 
 typedef struct produto{
     int preco, peso, qtd;

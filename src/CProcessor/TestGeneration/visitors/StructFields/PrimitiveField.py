@@ -10,7 +10,7 @@ class PrimitiveFieldGen(SymbolicFieldGen):
         super().__init__(name, vartype, struct_name, field)
 
 
-    #E.g: struct->field = summ_new_sym_var(32)
+    #E.g: struct->field = new_sym_var(32)
     def gen(self):
         
         name = f'struct_{self.struct_name}_instance' 

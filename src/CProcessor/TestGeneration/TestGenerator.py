@@ -4,6 +4,7 @@ from pycparser import parse_file, c_generator
 from pycparser.c_ast import *
 
 from CProcessor.C_Generator import C_FileGenerator
+from CProcessor import config
 from .visitors.InputGen import InputGenVisitor
 from .visitors.StructGen import StructGenVisitor
 from .utils import defineMacro, defineInclude, mainFunction, returnValue, createFunction 
@@ -12,14 +13,15 @@ from .utils import InitialVisitor, FUEL_MACRO, ARRAY_SIZE_MACRO, POINTER_SIZE_MA
 
 
 class TestGenerator(C_FileGenerator):
-	def __init__(self, inputfile, outputfile, fuel=5,
-				 arraysize=10, pointersize=5,
-				 fakelib=None, save_ast=False):
+	def __init__(self, inputfile, outputfile, fuel,
+				 arraysize, pointersize,
+				 fakelib=None, save_ast=False, target=None):
 
 
 		self.fuel = fuel
 		self.arraysize = arraysize
 		self.pointersize = pointersize
+		self.target = target
 
 		super().__init__(inputfile, outputfile,
 						 fakelib ,save_ast)
@@ -43,6 +45,24 @@ class TestGenerator(C_FileGenerator):
 		ast.ext.append(main)
 		return
 
+
+	def constrain_number(self, number, max_val):
+		code = []
+		code.append(FuncCall(ID('_assume_leq'), ExprList([ID(number), Constant('int', str(max_val))])))
+		code.append(FuncCall(ID('_assume_geq'), ExprList([ID(number), Constant('int', str(-1))])))
+
+		return code
+
+
+	def constrain_numbers(self, args):
+		code = []
+		if config.global_vars is not None:
+			numbers = config.global_vars.numbers()
+			for n in numbers:
+				if n in args:
+					code += self.constrain_number(n,config.max_array_size)
+		return code
+
 	
 	#Create a single test
 	def create_test(self, fname, args, structs, aliases):
@@ -62,7 +82,7 @@ class TestGenerator(C_FileGenerator):
 		#Visit arguments 
 		for arg in args:
 
-			vis = InputGenVisitor(structs,aliases)   
+			vis = InputGenVisitor(structs, aliases)   
 			vis.visit(arg)
 			code = vis.code
 
@@ -72,9 +92,12 @@ class TestGenerator(C_FileGenerator):
 			call_args.append(vis.argname)
 			fblock += code
 
+		#Constrain global vars denoting numbers
+		fblock += self.constrain_numbers(call_args)
 	   
+		
 		#Add the function call to the Ast
-		fblock.append(FuncCall(ID(fname), ExprList(call_args)))
+		fblock.append(FuncCall(ID(fname), ExprList([a for a in map(lambda x: ID(x), call_args)])))
 		fblock.append(returnValue(None)) #Return (void)
 
 		#Create a block containg the test code
@@ -133,8 +156,15 @@ class TestGenerator(C_FileGenerator):
 			testsDict = self.create_tests(fun_decls, structs, aliases) 
 			codeList += testsDict.values()
 
-			self._place_testcode(ast, codeList, testsDict.keys())
-				
+			#Place tests to be called in main()
+			maincode = []
+			if self.target:
+				maincode.append(f'test_{self.target}')
+
+			else:
+				maincode += testsDict.keys()
+
+			self._place_testcode(ast, codeList, maincode)
 
 			#Generate string from ast
 			generator = c_generator.CGenerator()
@@ -146,7 +176,11 @@ class TestGenerator(C_FileGenerator):
 			tmpfile.flush()
 
 			#PostPreProcess temporary file
-			final_code = self._postprocess_file(self.tmpfile, includes, generator=os.path.basename(__file__))
+			final_code = self._postprocess_file(self.tmpfile, includes,
+							 generator=os.path.basename(__file__),
+							 stubs=config.stubs)
+			
+
 			self._remove_files(self.tmpfile)
 
 			#Write final output file

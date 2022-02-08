@@ -22,7 +22,7 @@ class StructFieldGen(SymbolicFieldGen):
 
         #Recursive struct
         if f'struct_{self.struct_name}' == fname:
-            code.append(self.recursiveStruct(name, lvalue, fname))
+            code += self.recursiveStruct(name, lvalue, fname)
         
         #Other struct
         else:

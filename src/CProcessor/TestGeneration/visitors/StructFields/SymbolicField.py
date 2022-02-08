@@ -23,7 +23,7 @@ class SymbolicFieldGen(NodeVisitor):
     def init_struct_rvalue(self, vartype):
 
         vartype = self.vartype.replace(' ', '_')
-        rvalue = FuncCall(ID(f'create_{vartype}'), ExprList([self.fuel]))
+        rvalue = FuncCall(ID(f'create_{vartype}'), ExprList([ID(utils.FUEL_MACRO)]))
         return rvalue
 
 
@@ -39,3 +39,20 @@ class SymbolicFieldGen(NodeVisitor):
         rvalue = FuncCall(ID('new_sym_var'), sizeof)
 
         return rvalue
+
+
+    def recursiveStruct(self, name, lvalue, fname):   
+        code = []
+
+        cond = BinaryOp(op='>', left=self.fuel, right=Constant('int', str(0)))
+
+        fuel = BinaryOp(op='-', left=self.fuel, right=Constant('int', str(1)))
+        rvalue = FuncCall(ID(f'create_{fname}'),ExprList([fuel]) )
+        ifdecl = Decl(name, [], [], [], lvalue, rvalue, None)
+
+        elsedecl = Decl(name, [], [], [], lvalue, ID('NULL'), None)
+
+        iffuel = If(cond, Compound([ifdecl]), Compound([elsedecl]))
+
+        code.append(iffuel)
+        return code    

@@ -49,7 +49,7 @@ class ArrayFieldGen(SymbolicFieldGen):
         else:
             rvalue = self.symbolic_rvalue(self.vartype)
         
-        return Assignment(op='=', lvalue=lvalue, rvalue=rvalue)             
+        return [Assignment(op='=', lvalue=lvalue, rvalue=rvalue)]             
 
 
 
@@ -82,7 +82,7 @@ class ArrayFieldGen(SymbolicFieldGen):
         code = []
         name = self.argname.name
                           
-        stmt = Compound([self.gen_array_init()])
+        stmt = Compound(self.gen_array_init())
         sizes = self.sizes
 
         index = f'{name}_index_{self.dimension}' 

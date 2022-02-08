@@ -3,12 +3,16 @@ from pycparser.c_ast import *
 from . visitors.GlobalArgType import GlobalArgVisitor
 from . GlobalArgs import GlobalArgs
 from CProcessor.PreProcessing.utils import *
+from CProcessor import config
 
 
 class Global_Visitor(NodeVisitor):
 
-	def __init__ (self): 
-		self.global_vars = GlobalArgs()
+	def __init__ (self):
+
+		config.global_vars = GlobalArgs()
+		self.global_vars = config.global_vars
+		
 		self.current_fvars = None
 		self.current_fdecls = None
 
@@ -29,19 +33,11 @@ class Global_Visitor(NodeVisitor):
 
 		#N-dimension array
 		else:
+			arraydecl = ArrayDecl(typedecl, Constant('int', array_dim[-1]), [])
+			for i in range(len(array_dim)-2, -1, -1):
+				arraydecl = ArrayDecl(arraydecl, Constant('int', array_dim[i]), [])
 
-			#One dimension arrays do not require size
-			if len(array_dim) == 1:
-				arraydecl = ArrayDecl(typedecl, None, [])
-				return 	Decl(name, [], [], [], arraydecl, None, None)
-			
-			else:
-				arraydecl = ArrayDecl(typedecl, Constant('int', array_dim[-1]), [])
-				for i in range(len(array_dim)-2, 0, -1):
-					arraydecl = ArrayDecl(arraydecl, Constant('int', array_dim[i]), [])
-
-				arraydecl = ArrayDecl(arraydecl, None, [])
-				return 	Decl(name, [], [], [], arraydecl, None, None)
+			return 	Decl(name, [], [], [], arraydecl, None, None)
 		
 
 

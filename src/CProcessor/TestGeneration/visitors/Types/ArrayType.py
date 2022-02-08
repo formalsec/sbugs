@@ -7,12 +7,22 @@ from .TypeGen import SymbolicTypeGen
 
 #Create a symbolic N-dimension array
 class ArrayTypeGen(SymbolicTypeGen):
-    def __init__ (self, name, vartype, dimension, array, struct=False):
+    def __init__ (self, name, vartype, array, default, struct=False):
         super().__init__(name, vartype) 
 
-        self.arraysize = ID(array)
+        self.default_size = ID(default) 
+
+        self.arraysize = array
+        self.dimension = len(array)
+        
         self.struct = struct
-        self.dimension = dimension
+
+
+    def _dimension(self, val):
+        if val is None:
+            return self.default_size
+        else:
+            return Constant('int', val)
 
 
     #Declare N-dimension array
@@ -21,12 +31,13 @@ class ArrayTypeGen(SymbolicTypeGen):
         name = self.argname.name
 
         typedecl = TypeDecl(name, [], IdentifierType(names=[self.vartype]))
-        array = ArrayDecl(typedecl, self.arraysize, None)
+        array = ArrayDecl(typedecl, self._dimension(self.arraysize[-1]), [])
 
-        for i in range(1, self.dimension):
-            array =  ArrayDecl(array, self.arraysize, None)
+        for i in range(self.dimension-2, -1, -1):
+            array = ArrayDecl(array,  self._dimension(self.arraysize[i]), [])
 
-        return Decl(name, [], [], [], array, None, None)
+        return  Decl(name, [], [], [], array, None, None)
+    
     
 
     #Array[i][j] = symbolic();
@@ -79,11 +90,11 @@ class ArrayTypeGen(SymbolicTypeGen):
         stmt = Compound([self.gen_array_init()])
 
         index = f'{name}_index_{self.dimension}' 
-        for_ast_code = self.For_ast(index, self.arraysize, stmt)
+        for_ast_code = self.For_ast(index, self._dimension(self.arraysize[-1]), stmt)
 
         for i in range(self.dimension-1, 0 ,-1):
             index = f'{name}_index_{i}'
-            for_ast_code = self.For_ast(index, self.arraysize, Compound([for_ast_code])) 
+            for_ast_code = self.For_ast(index, self._dimension(self.arraysize[i-1]), Compound([for_ast_code])) 
 
         code.append(for_ast_code)
         return code

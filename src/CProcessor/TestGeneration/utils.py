@@ -68,5 +68,3 @@ def mainFunction(calls):
 	calls_ast.append(returnValue(Constant('int', str(0))))
 	block = Compound(calls_ast)
 	return block
-	
-
