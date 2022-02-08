@@ -57,6 +57,7 @@ class Global_Visitor(NodeVisitor):
 		
 		#Filter undeclared variables with global variables
 		used_globals = [var for var in undeclared if var in global_vars_names] 
+		used_globals.sort()
 
 		extra_args = []
 		for g in used_globals:
@@ -79,6 +80,7 @@ class Global_Visitor(NodeVisitor):
 			return
 
 		global_args = self.fcalls[name]
+		global_args.sort()
 
 		if len(global_args) == 0:
 			return 
