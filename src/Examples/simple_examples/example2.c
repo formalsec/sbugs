@@ -9,7 +9,7 @@ typedef struct Person {
    int id;
    struct Car car;
 
-   struct Person other[10];
+   struct Person* other;
 } Type_Person;
 
 

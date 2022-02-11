@@ -15,6 +15,6 @@ void f3(){
 }
 
 
-void main() {
+int main() {
 
 }
