@@ -10,13 +10,13 @@ class Global_Visitor(NodeVisitor):
 
 	def __init__ (self):
 
-		config.global_vars = GlobalArgs()
+		config.global_vars = GlobalArgs() #Also store in the config
 		self.global_vars = config.global_vars
 		
-		self.current_fvars = None
-		self.current_fdecls = None
+		self.current_fvars = None 	#Vars used in function
+		self.current_fdecls = None 	#Vars declared in function	
 
-		self.fcalls = {}
+		self.fcalls = {} #Store used global vars for each function
 
 
 	def create_function_arg(self, name, vartype):
@@ -48,7 +48,7 @@ class Global_Visitor(NodeVisitor):
 
 
 
-
+	#Add the needed global variables to the function header
 	def add_global_vars_def(self, decl):
 		global_vars_names = list(self.global_vars.var_names())
 
