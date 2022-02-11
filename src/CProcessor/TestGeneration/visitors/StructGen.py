@@ -7,6 +7,7 @@ import CProcessor.TestGeneration.utils as utils
 from .StructFields.ArrayField import ArrayFieldGen
 from .StructFields.PrimitiveField import PrimitiveFieldGen
 from .StructFields.StructField import StructFieldGen
+from .StructFields.PtrField import PtrFieldGen
 
 
 #Visit the Struct fields and gen the appropriate symbolic values
@@ -30,6 +31,8 @@ class StructFieldGenVisitor(NodeVisitor):
 
         #Struct properties
         self.struct = False
+
+        self.ptr = False
 
         #Final line(s) of code 
         self.code = []
@@ -61,10 +64,17 @@ class StructFieldGenVisitor(NodeVisitor):
                 return    
 
         else:
-            generator = ArrayFieldGen(self.argname, self.argtype, self.struct_name,
-            self.field, self.arrayDim, self.sizes, self.struct)
-            self.code = generator.gen()
-            return   
+            if self.ptr:
+                generator = PtrFieldGen(self.argname, self.argtype, self.struct_name,
+                self.field, self.arrayDim, self.sizes, self.struct)
+                self.code = generator.gen()
+                return
+
+            else:
+                generator = ArrayFieldGen(self.argname, self.argtype, self.struct_name,
+                self.field, self.arrayDim, self.sizes, self.struct)
+                self.code = generator.gen()
+                return   
 
     #ArrayDecl
     def visit_ArrayDecl(self, node):
@@ -77,6 +87,7 @@ class StructFieldGenVisitor(NodeVisitor):
     def visit_PtrDecl(self, node):
         self.sizes.append(utils.POINTER_SIZE_MACRO)
         self.arrayDim += 1
+        self.ptr = True
         self.visit(node.type)
         return
 

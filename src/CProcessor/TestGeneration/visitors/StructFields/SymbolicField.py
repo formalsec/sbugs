@@ -40,19 +40,3 @@ class SymbolicFieldGen(NodeVisitor):
 
         return rvalue
 
-
-    def recursiveStruct(self, name, lvalue, fname):   
-        code = []
-
-        cond = BinaryOp(op='>', left=self.fuel, right=Constant('int', str(0)))
-
-        fuel = BinaryOp(op='-', left=self.fuel, right=Constant('int', str(1)))
-        rvalue = FuncCall(ID(f'create_{fname}'),ExprList([fuel]) )
-        ifdecl = Decl(name, [], [], [], lvalue, rvalue, None)
-
-        elsedecl = Decl(name, [], [], [], lvalue, ID('NULL'), None)
-
-        iffuel = If(cond, Compound([ifdecl]), Compound([elsedecl]))
-
-        code.append(iffuel)
-        return code    
