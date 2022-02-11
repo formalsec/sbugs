@@ -91,6 +91,7 @@ class C_FileGenerator:
 					file += includes
 					file.append('\n')
 					file += stubs
+					file.append('\n')
 
 
 		return file

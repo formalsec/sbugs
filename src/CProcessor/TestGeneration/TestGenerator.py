@@ -48,8 +48,11 @@ class TestGenerator(C_FileGenerator):
 
 	def constrain_number(self, number, max_val):
 		code = []
-		code.append(FuncCall(ID('_assume_leq'), ExprList([ID(number), Constant('int', str(max_val))])))
-		code.append(FuncCall(ID('_assume_geq'), ExprList([ID(number), Constant('int', str(-1))])))
+
+		ptr = UnaryOp('&', ID(number))
+
+		code.append(FuncCall(ID('_assume_leq'), ExprList([ptr, Constant('int', str(max_val))])))
+		code.append(FuncCall(ID('_assume_geq'), ExprList([ptr, Constant('int', str(-1))])))
 
 		return code
 
@@ -84,7 +87,7 @@ class TestGenerator(C_FileGenerator):
 
 			vis = InputGenVisitor(structs, aliases)   
 			vis.visit(arg)
-			code = vis.code
+			code = vis.gen_code()
 
 			if code is None:
 				return (fname, None)

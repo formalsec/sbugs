@@ -8,6 +8,8 @@ from .StructFields.ArrayField import ArrayFieldGen
 from .StructFields.PrimitiveField import PrimitiveFieldGen
 from .StructFields.StructField import StructFieldGen
 
+
+#Visit the Struct fields and gen the appropriate symbolic values
 class StructFieldGenVisitor(NodeVisitor):
 
     def __init__ (self, struct_name, field, structs, aliases):
@@ -66,7 +68,7 @@ class StructFieldGenVisitor(NodeVisitor):
 
     #ArrayDecl
     def visit_ArrayDecl(self, node):
-        self.sizes.append(int(node.dim.value))
+        self.sizes.append(int(node.dim.value)) #Arrays in structs must specify value
         self.arrayDim += 1
         self.visit(node.type)
         return
