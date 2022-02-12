@@ -54,7 +54,7 @@ class TestGenerator(C_FileGenerator):
 		if config.CONSTRAIN_UPPER:
 			if config.CONSTRAIN_MAX_ARRAY:
 				config.GLOBAL_MAX = config.max_array_size
-				
+
 			upper = Constant('int', str(config.GLOBAL_MAX))
 			code.append(FuncCall(ID('_assume_leq'), ExprList([ptr, upper])))
 		
@@ -115,9 +115,9 @@ class TestGenerator(C_FileGenerator):
 		block = Compound(fblock)
 
 		#Create the actual test function
-		decl = createFunction(name=testname,\
-			args=None,\
-			returnType='void')
+		decl = createFunction(name=testname,
+							  args=None,
+							  returnType='void')
 
 		#Place the block inside a function definition
 		func_def_ast = FuncDef(decl, None, block, None)
@@ -128,7 +128,9 @@ class TestGenerator(C_FileGenerator):
 	#Create tests for all functions
 	#Returns a dictionary -> {fname : ast}
 	def create_tests(self, f_decls, structs, aliases):
-		return {k: v for k, v in map(lambda x :self.create_test(x, f_decls[x], structs, aliases), f_decls) if v is not None} 
+		return {k: v for k, v in \
+		map(lambda x :self.create_test(x, f_decls[x], structs, aliases), f_decls)\
+		if v is not None} 
 
 
 	def gen(self):
