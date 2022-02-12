@@ -150,6 +150,8 @@ class Global_Visitor(NodeVisitor):
 		name = node.name
 		if self.current_fdecls is not None:
 			self.current_fdecls.append(name)
+
+		self.visit(node.init)
 		return node
 
 
