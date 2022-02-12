@@ -6,7 +6,7 @@
 #define BUG_VAL 100
 
 #define MAX_DESCRICAO 64
-#define MAX_PRODUTOS 1000
+#define MAX_PRODUTOS 10
 #define LOOPS 1
 
 
@@ -14,6 +14,12 @@ typedef struct produto{
     int preco, quantidade;
     char desc[MAX_DESCRICAO];
 }PRODUTO;
+
+
+
+int n_prods = 0;
+PRODUTO prods[MAX_PRODUTOS];
+
 
 
 /*Function to simulate a bug*/
@@ -26,65 +32,61 @@ void check_value(int i){
 }
 
 
-void command_a(int* n_prods, PRODUTO array[]){
+void command_a(){
 
-	//if(*n_prods > MAX_PRODUTOS){
-	//	return;
-	//}
+	if(n_prods > MAX_PRODUTOS){
+		return;
+	}
 
 	int preco;
 	int qtd;
 
-	scanf(" %[^:]:%d:%d", array[*n_prods].desc, &preco, &qtd);
+	scanf(" %[^:]:%d:%d", prods[n_prods].desc, &preco, &qtd);
 
-	/*Trigger Bug*/
-	check_value(preco);
+	prods[n_prods].preco = preco;
+	prods[n_prods].quantidade = qtd;
 
-	array[*n_prods].preco = preco;
-	array[*n_prods].quantidade = qtd;
-
-	(*n_prods)++;
+	(n_prods)++;
 	return;
 }
 
 
 
-void command_r(int* n_prods, PRODUTO array[]){
+void command_r(){
 
 	int id, qtd;
 	scanf(" %d:%d",&id, &qtd);
 
-	if(id <= *n_prods){
-		array[id].quantidade -= qtd;
+	if(id <= n_prods){
+		prods[id].quantidade -= qtd;
 	}
 	return;
 }
 
 
-void command_l(int* n_prods, PRODUTO array[]){
+void command_l(){
 
-	for(int i=0; i<*n_prods; i++){
-		printf("* %s %d %d\n", array[i].desc, array[i].preco, array[i].quantidade);
+	for(int i=0; i<n_prods; i++){
+		printf("* %s %d %d\n", prods[i].desc, prods[i].preco, prods[i].quantidade);
 	}
 	return;
 }
 
 int main(){
 
-	int n_prods = 0;
-	PRODUTO prods[MAX_PRODUTOS];
+
 
 	for(int i=0; i<LOOPS; i++){
 		int c = getchar();
 		switch(c){
 			case 'a':
-				command_a(&n_prods, prods);
+				command_a();
 				break;
 			case 'r':
-				command_r(&n_prods, prods);
+				command_r();
 				break;
 			case 'l':
-				command_l(&n_prods, prods);
+				command_l();
 				break;
 			case 'x':
             	return 0;
