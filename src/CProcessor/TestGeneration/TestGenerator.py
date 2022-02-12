@@ -46,13 +46,21 @@ class TestGenerator(C_FileGenerator):
 		return
 
 
-	def constrain_number(self, number, max_val):
+	def constrain_number(self, number):
 		code = []
 
 		ptr = UnaryOp('&', ID(number))
 
-		code.append(FuncCall(ID('_assume_leq'), ExprList([ptr, Constant('int', str(max_val))])))
-		code.append(FuncCall(ID('_assume_geq'), ExprList([ptr, Constant('int', str(-1))])))
+		if config.CONSTRAIN_UPPER:
+			if config.CONSTRAIN_MAX_ARRAY:
+				config.GLOBAL_MAX = config.max_array_size
+				
+			upper = Constant('int', str(config.GLOBAL_MAX))
+			code.append(FuncCall(ID('_assume_leq'), ExprList([ptr, upper])))
+		
+		if config.CONSTRAIN_LOWER:
+			lower = Constant('int', str(config.GLOBAL_MIN))
+			code.append(FuncCall(ID('_assume_geq'), ExprList([ptr, lower])))
 
 		return code
 
@@ -63,7 +71,7 @@ class TestGenerator(C_FileGenerator):
 			numbers = config.global_vars.numbers()
 			for n in numbers:
 				if n in args:
-					code += self.constrain_number(n,config.max_array_size)
+					code += self.constrain_number(n)
 		return code
 
 	
