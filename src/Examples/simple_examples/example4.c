@@ -13,7 +13,6 @@ int foo(){
     
     scanf("%d %ld %s", &i, &l, array);
 
-    array[GLOBAL] = 'a';
 }
 
 

@@ -2,16 +2,20 @@ from pycparser import parse_file, c_generator
 from pycparser.c_ast import *
 
 import CProcessor.TestGeneration.utils as utils
-from .TypeGen import SymbolicTypeGen
+from ..DefaultGen import DefaultGen
 
 
-class PrimitiveTypeGen(SymbolicTypeGen):
+# Create a primitive symbolic var
+
+class PrimitiveTypeGen(DefaultGen):
     def __init__ (self, name, vartype):
         super().__init__(name, vartype)
 
 
+    # e.g, int a = summ_new_sym_var(sizeof(int))
+    
     def gen(self):
-        
+
         name = self.argname.name
 
         #Declare Variable

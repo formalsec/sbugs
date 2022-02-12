@@ -1,17 +1,16 @@
 from pycparser import parse_file, c_generator
 from pycparser.c_ast import *
 
-from .InputGen import InputGenVisitor
 import CProcessor.TestGeneration.utils as utils
 
-from .StructFields.ArrayField import ArrayFieldGen
-from .StructFields.PrimitiveField import PrimitiveFieldGen
-from .StructFields.StructField import StructFieldGen
-from .StructFields.PtrField import PtrFieldGen
+from ..Generators.StructFields.ArrayField import ArrayFieldGen
+from ..Generators.StructFields.PrimitiveField import PrimitiveFieldGen
+from ..Generators.StructFields.StructField import StructFieldGen
+from ..Generators.StructFields.PtrField import PtrFieldGen
 
 
 #Visit the Struct fields and gen the appropriate symbolic values
-class StructFieldGenVisitor(NodeVisitor):
+class StructFieldsVisitor(NodeVisitor):
 
     def __init__ (self, struct_name, field, structs, aliases):
 
@@ -125,7 +124,7 @@ class StructFieldGenVisitor(NodeVisitor):
 
 
 #Generates the functions to init symbolic structs
-class StructGenVisitor(NodeVisitor):
+class StructVisitor(NodeVisitor):
     def __init__ (self, structs, aliases):
 
         self.aliases = aliases
@@ -184,7 +183,7 @@ class StructGenVisitor(NodeVisitor):
         #Visit fields 
         for field in fields:
 
-            vis = StructFieldGenVisitor(struct_name, field.name, structs, aliases)   
+            vis = StructFieldsVisitor(struct_name, field.name, structs, aliases)   
             vis.visit(field)
 
             code += vis.code

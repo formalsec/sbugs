@@ -5,8 +5,8 @@ from pycparser.c_ast import *
 
 from CProcessor.C_Generator import C_FileGenerator
 from CProcessor import config
-from .visitors.InputGen import InputGenVisitor
-from .visitors.StructGen import StructGenVisitor
+from .Visitors.FunctionArgs import ArgVisitor
+from .Visitors.Structs import StructVisitor
 from .utils import defineMacro, defineInclude, mainFunction, returnValue, createFunction 
 from .utils import InitialVisitor, FUEL_MACRO, ARRAY_SIZE_MACRO, POINTER_SIZE_MACRO
 
@@ -85,7 +85,7 @@ class TestGenerator(C_FileGenerator):
 		#Visit arguments 
 		for arg in args:
 
-			vis = InputGenVisitor(structs, aliases)   
+			vis = ArgVisitor(structs, aliases)   
 			vis.visit(arg)
 			code = vis.gen_code()
 
@@ -152,7 +152,7 @@ class TestGenerator(C_FileGenerator):
 			codeList = []
 
 			#Generate functions responsible for creating symbolic structs
-			struct_generator = StructGenVisitor(structs, aliases)
+			struct_generator = StructVisitor(structs, aliases)
 			codeList +=  struct_generator.symbolic_structs()
 
 			#Create actual test functions

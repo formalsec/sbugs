@@ -1,18 +1,21 @@
 from pycparser import parse_file, c_generator
 from pycparser.c_ast import *
 
-from .SymbolicField import SymbolicFieldGen
+from ..DefaultGen import DefaultGen
+
 import CProcessor.TestGeneration.utils as utils
 
 #Primitive type struct field
-class PrimitiveFieldGen(SymbolicFieldGen):
+class PrimitiveFieldGen(DefaultGen):
     def __init__ (self, name, vartype, struct_name, field):
-        super().__init__(name, vartype, struct_name, field)
+        super().__init__(name, vartype)
 
+        self.struct_name = struct_name
+        self.field = field
 
-    #E.g: struct->field = new_sym_var(32)
+    #e.g: struct->field = new_sym_var(32)
     def gen(self):
-        
+        code = []
         name = f'struct_{self.struct_name}_instance' 
 
         #Make symbolic type
@@ -23,4 +26,7 @@ class PrimitiveFieldGen(SymbolicFieldGen):
 
         #Assemble declaration
         decl = Decl(name, [], [], [], lvalue, rvalue, None)
-        return [decl]
+        
+        code.append(decl)
+        
+        return code

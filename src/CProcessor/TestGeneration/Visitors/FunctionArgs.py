@@ -1,21 +1,23 @@
 from pycparser import parse_file, c_generator
 from pycparser.c_ast import *
 
-from .Types.ArrayType import ArrayTypeGen
-from .Types.PrimitiveType import PrimitiveTypeGen
-from .Types.StructType import StructTypeGen
+from ..Generators.FunctionArgs.ArrayType import ArrayTypeGen
+from ..Generators.FunctionArgs.PrimitiveType import PrimitiveTypeGen
+from ..Generators.FunctionArgs.StructType import StructTypeGen
+
 import CProcessor.TestGeneration.utils as utils
 from CProcessor import config
 
 
 
-class InputGenVisitor(NodeVisitor):
+class ArgVisitor(NodeVisitor):
 
     def __init__ (self, structs, aliases):
 
         #Store argument node (Decl)
         self.node = None
 
+        # array or ptr
         self.sizeMacro = None
 
         self.structs = structs
@@ -98,9 +100,10 @@ class InputGenVisitor(NodeVisitor):
 
         else:
             self.arrayDim.append(None)
-        self.sizeMacro = utils.ARRAY_SIZE_MACRO
-        self.visit(node.type)
 
+        self.sizeMacro = 'array'
+
+        self.visit(node.type)
         return
 
 
@@ -112,7 +115,8 @@ class InputGenVisitor(NodeVisitor):
 
         self.arrayDim.append(None)
 
-        self.sizeMacro = utils.POINTER_SIZE_MACRO
+        self.sizeMacro = 'ptr'
+      
         self.visit(node.type)
         return
 

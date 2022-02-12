@@ -3,10 +3,10 @@ from pycparser.c_ast import *
 
 import CProcessor.TestGeneration.utils as utils
 
-from .TypeGen import SymbolicTypeGen
+from ..DefaultGen import DefaultGen
 
 #Create a symbolic struct (call respective function)
-class StructTypeGen(SymbolicTypeGen):
+class StructTypeGen(DefaultGen):
     def __init__ (self, name, vartype):
         super().__init__(name, vartype)
 

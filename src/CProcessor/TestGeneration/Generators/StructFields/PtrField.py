@@ -1,24 +1,44 @@
 from pycparser import parse_file, c_generator
 from pycparser.c_ast import *
 
-from .SymbolicField import SymbolicFieldGen
+from ..ArrayGen import ArrayGen
+
 import CProcessor.TestGeneration.utils as utils
 
 
-#N-dimension array struct field
-class ArrayFieldGen(SymbolicFieldGen):
+
+#N-dimension pointer struct field
+class PtrFieldGen(ArrayGen):
     def __init__ (self, name, vartype, struct_name, field, dimension, sizes, struct=False):
-        super().__init__(name, vartype, struct_name, field) 
+        super().__init__(name, vartype, sizes, 'ptr') 
 
+        self.struct_name = struct_name
+        self.field = field
         self.struct = struct
-        self.dimension = dimension
-        self.sizes = sizes
-        self.sizes.reverse()
 
 
-    #struct->Array[i][j] = symbolic();
-    def gen_array_init(self):
+
+    def recursiveStruct(self, name, lvalue, ptr, fname):   
+        code = []
+
+        cond = BinaryOp(op='>', left=ID('fuel'), right=Constant('int', str(0)))
+
+        fuel = BinaryOp(op='-', left=ID('fuel'), right=Constant('int', str(1)))
+        rvalue = FuncCall(ID(f'create_{fname}'),ExprList([fuel]) )
+        ifdecl = Decl(name, [], [], [], lvalue, rvalue, None)
+
+        elsedecl = Decl(name, [], [], [], ptr, ID('NULL'), None)
+
+        iffuel = If(cond, Compound([ifdecl]), Compound([elsedecl]))
+
+        code.append(iffuel)
+        return code    
+
+
+    #struct->ptr[i][j] = symbolic();
+    def gen_ptr_init(self):
         name = self.argname.name
+
 
         #array[index]
         index = f'{name}_index_1'
@@ -33,6 +53,8 @@ class ArrayFieldGen(SymbolicFieldGen):
         #struct_instance->Array[i][j]
         sname = f'struct_{self.struct_name}_instance'   
         lvalue = StructRef(name = ID(f'{sname}'), type='->', field=lvalue)
+
+        ptr = StructRef(name = ID(f'{sname}'), type='->', field=self.argname)
         
         fname = self.vartype.replace(' ', '_')
 
@@ -41,7 +63,7 @@ class ArrayFieldGen(SymbolicFieldGen):
             
             #Recursive struct
             if f'struct_{self.struct_name}' == fname:
-                return self.recursiveStruct(name, lvalue, fname)
+                return self.recursiveStruct(name, lvalue, ptr, fname)
 
             #Other struct
             else:
@@ -53,44 +75,22 @@ class ArrayFieldGen(SymbolicFieldGen):
 
 
 
-    #Create 'for' loop to fill array
-    def For_ast(self, index, size, stmt):
-
-        ##For-init
-        typedecl = TypeDecl(index, [], IdentifierType(names=['int']))
-        decl = Decl(index, [], [], [], typedecl, Constant('int', str(0)), None)
-        init  = DeclList(decls=[decl])
-        
-        ##For-condition
-        if isinstance(size, int):
-            size = Constant('int', str(size))
-
-        elif isinstance(size, str):
-            size = ID(size)
-        
-        cond = BinaryOp(op='<', left=ID(index), right=size)
-        
-        ##For-next
-        nxt = UnaryOp(op='p++', expr=ID(index))
-
-        ##Create the For node
-        return For(init, cond, nxt, stmt)
-        
-
     #Fill array field
     def gen(self):     
         code = []
         name = self.argname.name
+
+        code += self.declare_heap_array()
                           
-        stmt = Compound(self.gen_array_init())
+        stmt = Compound(self.gen_ptr_init())
         sizes = self.sizes
 
         index = f'{name}_index_{self.dimension}' 
-        for_ast_code = self.For_ast(index, sizes.pop(0), stmt)
+        for_ast_code = self.For_ast(index, self._size(sizes.pop(0)), stmt)
 
         for i in range(self.dimension-1, 0 ,-1):
             index = f'{name}_index_{i}'
-            for_ast_code = self.For_ast(index, sizes.pop(0), Compound([for_ast_code])) 
+            for_ast_code = self.For_ast(index, self._size(sizes.pop(0)), Compound([for_ast_code])) 
 
         code.append(for_ast_code)
         return code

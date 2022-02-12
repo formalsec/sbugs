@@ -1,13 +1,18 @@
 from pycparser import parse_file, c_generator
 from pycparser.c_ast import *
 
-from .SymbolicField import SymbolicFieldGen
+from ..DefaultGen import DefaultGen
+
+
 import CProcessor.TestGeneration.utils as utils
 
 #Struct inside Struct
-class StructFieldGen(SymbolicFieldGen):
+class StructFieldGen(DefaultGen):
     def __init__ (self, name, vartype, struct_name, field):
-        super().__init__(name, vartype, struct_name, field)
+        super().__init__(name, vartype)
+
+        self.struct_name = struct_name
+        self.field = field
 
 
     #struct->field = create_struct(fuel)
@@ -19,15 +24,9 @@ class StructFieldGen(SymbolicFieldGen):
 
         #Declare Variable
         lvalue = StructRef(name = ID(f'{name}'), type='->', field=ID(f'{self.field}'))
-
-        #Recursive struct
-        if f'struct_{self.struct_name}' == fname:
-            code += self.recursiveStruct(name, lvalue, fname)
-        
-        #Other struct
-        else:
-            rvalue = self.init_struct_rvalue(self.vartype)
-            decl = Decl(name, [], [], [], lvalue, rvalue, None)
-            code.append(decl)   
-        
+    
+        rvalue = self.init_struct_rvalue(self.vartype)
+        decl = Decl(name, [], [], [], lvalue, rvalue, None)
+        code.append(decl)   
+    
         return code

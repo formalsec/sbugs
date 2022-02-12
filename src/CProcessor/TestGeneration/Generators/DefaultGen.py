@@ -3,18 +3,21 @@ from pycparser.c_ast import *
 
 import CProcessor.TestGeneration.utils as utils
 
-# Create a primitive symbolic var
-# e.g, int a = summ_new_sym_var(sizeof(int))
-class SymbolicTypeGen(NodeVisitor):
+
+class DefaultGen(NodeVisitor):
     def __init__ (self, name, vartype):
 
+        #Size Macros
+        self.sizeMacros = {
+        'array':ID(utils.ARRAY_SIZE_MACRO),
+        'ptr':ID(utils.POINTER_SIZE_MACRO)
+        }
+
+        #Fuel Macro
         self.fuel = ID(utils.FUEL_MACRO)
 
-        if isinstance(name, str):
-            name = ID(name=name)
-
-        self.argname = name 
-        self.vartype = vartype
+        self.argname = name #ID node
+        self.vartype = vartype #String
 
     
     def init_struct_rvalue(self, vartype):
