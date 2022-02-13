@@ -132,8 +132,12 @@ class ArgVisitor(NodeVisitor):
         
         #Type is a typedef alias
         if typ in self.aliases.keys():
-            typ = self.aliases[typ]
-            
+            typ, ptr = self.aliases[typ]
+           
+            #Typedefed pointer 
+            if ptr:
+                self.arrayDim.append('ptr')
+
             #Typedef struct
             if typ in self.structs.keys():
                 typ = f'struct {typ}'

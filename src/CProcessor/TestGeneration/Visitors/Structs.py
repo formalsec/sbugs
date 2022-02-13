@@ -105,8 +105,13 @@ class StructFieldsVisitor(NodeVisitor):
         
         #Type is a typedef alias
         if typ in self.aliases.keys():
-            typ = self.aliases[typ]
+            typ, ptr = self.aliases[typ]
             
+            #Typedefed pointer
+            if ptr:
+                self.sizes.append('ptr')
+                self.ptr = True
+
             #Typedef struct
             if typ in self.structs.keys():
                 typ = f'struct {typ}'

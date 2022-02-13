@@ -6,6 +6,30 @@ ARRAY_SIZE_MACRO = 'ARRAY_SIZE'
 POINTER_SIZE_MACRO = 'POINTER_SIZE'
 
 
+
+class TypeDefVisitor(NodeVisitor):
+	def __init__ (self): 
+		self.ptr = False
+
+	def visit(self, node):
+		if node is not None: 
+			return NodeVisitor.visit(self, node)
+
+	def visit_PtrDecl(self, node):
+		self.ptr = True
+		return self.visit(node.type)
+
+	def visit_TypeDecl(self, node):
+		return self.visit(node.type)
+
+	def visit_Struct(self, node):
+		return (node.name, self.ptr)
+
+	def visit_IdentifierType(self, node):
+		return (node.names[0], self.ptr)	
+
+
+
 #Visit the ASt to separate each elemenet of interest
 #function definitions; defined structs; and Typedefs 
 class InitialVisitor(NodeVisitor):
@@ -27,18 +51,24 @@ class InitialVisitor(NodeVisitor):
 		self.fun_dict[node.decl.name] = node.decl.type.args.params\
 		if node.decl.type.args else None
 
+	
+	def visit_PtrDecl(self, node):
+		self.visit(node.type)
+
 
 	def visit_Struct(self, node):
 		self.structs[node.name] = node.decls
 
 
 	def visit_Typedef(self, node):
-		if isinstance(node.type.type, IdentifierType):
-			self.aliases[node.name] = node.type.type.names[0]
-		elif isinstance(node.type.type, Struct):
-			self.aliases[node.name] = node.type.type.name
+		visitor = TypeDefVisitor()
 
-		self.visit(node.type.type)
+		self.aliases[node.name] = visitor.visit(node.type)
+		self.visit(node.type)
+
+
+
+
 
 
 
