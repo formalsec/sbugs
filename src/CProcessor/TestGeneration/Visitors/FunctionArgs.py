@@ -87,8 +87,7 @@ class ArgVisitor(NodeVisitor):
         
         #Array or pointer
         else:
-            generator = ArrayTypeGen(argname, self.argtype,
-            self.arrayDim, self.sizeMacro, self.struct)
+            generator = ArrayTypeGen(argname, self.argtype, self.arrayDim, self.struct)
             self.code = generator.gen()
             return  
     
@@ -99,9 +98,7 @@ class ArgVisitor(NodeVisitor):
             self.arrayDim.append(node.dim.value)
 
         else:
-            self.arrayDim.append(None)
-
-        self.sizeMacro = 'array'
+            self.arrayDim.append('array')
 
         self.visit(node.type)
         return
@@ -113,9 +110,7 @@ class ArgVisitor(NodeVisitor):
             self.code = None
             return
 
-        self.arrayDim.append(None)
-
-        self.sizeMacro = 'ptr'
+        self.arrayDim.append('ptr')
       
         self.visit(node.type)
         return

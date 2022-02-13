@@ -9,7 +9,7 @@ import CProcessor.TestGeneration.utils as utils
 #N-dimension array struct field
 class ArrayFieldGen(ArrayGen):
     def __init__ (self, name, vartype, struct_name, field, dimension, sizes, struct=False):
-        super().__init__(name, vartype, sizes, 'array') 
+        super().__init__(name, vartype, sizes) 
 
         self.struct_name = struct_name
         self.field = field

@@ -10,10 +10,8 @@ from .DefaultGen import DefaultGen
 
 #Create a symbolic N-dimension array
 class ArrayGen(DefaultGen):
-    def __init__ (self, name, vartype, array, default):
+    def __init__ (self, name, vartype, array):
         super().__init__(name, vartype) 
-
-        self.default_size = self.sizeMacros[default]
 
         self.sizes = array
         self.dimension = len(array)
@@ -21,8 +19,8 @@ class ArrayGen(DefaultGen):
 
 
     def _size(self, val):
-        if val is None:
-            return self.default_size
+        if not val.isnumeric():
+            return self.sizeMacros[val]
         else:
             return Constant('int', val)
 

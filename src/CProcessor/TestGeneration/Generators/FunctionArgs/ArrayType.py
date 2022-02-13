@@ -9,8 +9,8 @@ from ..ArrayGen import ArrayGen
 
 #Create a symbolic N-dimension array
 class ArrayTypeGen(ArrayGen):
-    def __init__ (self, name, vartype, array, default, struct=False):
-        super().__init__(name, vartype, array, default) 
+    def __init__ (self, name, vartype, array, struct=False):
+        super().__init__(name, vartype, array) 
 
         self.struct = struct
 

@@ -77,14 +77,14 @@ class StructFieldsVisitor(NodeVisitor):
 
     #ArrayDecl
     def visit_ArrayDecl(self, node):
-        self.sizes.append(int(node.dim.value)) #Arrays in structs must specify value
+        self.sizes.append(node.dim.value) #Arrays in structs must specify value
         self.arrayDim += 1
         self.visit(node.type)
         return
 
     #Pointer
     def visit_PtrDecl(self, node):
-        self.sizes.append(utils.POINTER_SIZE_MACRO)
+        self.sizes.append('ptr')
         self.arrayDim += 1
         self.ptr = True
         self.visit(node.type)
