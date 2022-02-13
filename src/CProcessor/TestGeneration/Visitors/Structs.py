@@ -25,7 +25,6 @@ class StructFieldsVisitor(NodeVisitor):
         self.argtype = None
 
         #Array properties
-        self.arrayDim = 0
         self.sizes = []
 
         #Struct properties
@@ -50,7 +49,7 @@ class StructFieldsVisitor(NodeVisitor):
     def visit_TypeDecl(self, node):
         self.visit(node.type)
 
-        if self.arrayDim == 0:
+        if len(self.sizes) == 0:
             if self.struct:
                 generator = StructFieldGen(self.argname, self.argtype,
                 self.struct_name, self.field)
@@ -65,27 +64,25 @@ class StructFieldsVisitor(NodeVisitor):
         else:
             if self.ptr:
                 generator = PtrFieldGen(self.argname, self.argtype, self.struct_name,
-                self.field, self.arrayDim, self.sizes, self.struct)
+                self.field, self.sizes, self.struct)
                 self.code = generator.gen()
                 return
 
             else:
                 generator = ArrayFieldGen(self.argname, self.argtype, self.struct_name,
-                self.field, self.arrayDim, self.sizes, self.struct)
+                self.field, self.sizes, self.struct)
                 self.code = generator.gen()
                 return   
 
     #ArrayDecl
     def visit_ArrayDecl(self, node):
         self.sizes.append(node.dim.value) #Arrays in structs must specify value
-        self.arrayDim += 1
         self.visit(node.type)
         return
 
     #Pointer
     def visit_PtrDecl(self, node):
         self.sizes.append('ptr')
-        self.arrayDim += 1
         self.ptr = True
         self.visit(node.type)
         return

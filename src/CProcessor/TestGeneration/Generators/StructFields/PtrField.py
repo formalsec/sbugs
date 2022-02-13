@@ -9,7 +9,7 @@ import CProcessor.TestGeneration.utils as utils
 
 #N-dimension pointer struct field
 class PtrFieldGen(ArrayGen):
-    def __init__ (self, name, vartype, struct_name, field, dimension, sizes, struct=False):
+    def __init__ (self, name, vartype, struct_name, field, sizes, struct=False):
         super().__init__(name, vartype, sizes) 
 
         self.struct_name = struct_name
