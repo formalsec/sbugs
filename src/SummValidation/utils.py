@@ -34,7 +34,10 @@ class TypeDefVisitor(NodeVisitor):
 #function definitions; defined structs; and Typedefs 
 class InitialVisitor(NodeVisitor):
 
-	def __init__ (self): 
+	def __init__ (self):
+
+		self.ast
+
 		self.fun_dict = {}
 		self.var_glob_dict = {}
 		self.structs = {}

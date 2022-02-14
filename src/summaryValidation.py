@@ -5,7 +5,7 @@ from SummValidation import ValidationGenerator
 
 
 def get_cmd_args():
-	parser = argparse.ArgumentParser(description='Generate Symbolic Tests')
+	parser = argparse.ArgumentParser(description='Generate Summary Validation Tests')
 
 	parser.add_argument('-o', metavar='name', type=str, required=False, default='test.c',
 						help='Output name')
@@ -15,6 +15,9 @@ def get_cmd_args():
 
 	parser.add_argument('summary', metavar='summary_file', type=str,
 						help='Path to the summary being evaluated')
+
+	parser.add_argument('-summ_lib', action='store_true',
+						help='Whether target summary is contained in a library')
 
 	parser.add_argument('--fakelib', metavar='path', type=str,
 					help='Path to pycparser fake libc')
@@ -37,8 +40,10 @@ if __name__ == "__main__":
 	outputfile = args.o
 	arraysize = args.arraySize
 	fakelib = args.fakelib
+	summ_lib = args.summ_lib
 
 
 	valgenerator = ValidationGenerator(target_summary, concrete_function,
-					 			 outputfile, arraysize, fakelib=fakelib)
+					 			 	   outputfile, arraysize,
+					 			 	   summ_lib, fakelib=fakelib)
 	valgenerator.gen()

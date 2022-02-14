@@ -12,7 +12,7 @@ from .utils import InitialVisitor, FUEL_MACRO, ARRAY_SIZE_MACRO, POINTER_SIZE_MA
 
 class ValidationGenerator(C_FileGenerator):
 	def __init__(self, summary, concrete_func, outputfile,
-				 arraysize, fakelib=None):
+				 arraysize, summ_lib, fakelib=None):
 
 		super().__init__(outputfile, fakelib)
 
@@ -20,6 +20,8 @@ class ValidationGenerator(C_FileGenerator):
 		self.summary_path = summary
 		self.concrete_file = concrete_func
 		self.arraysize = arraysize
+
+		self.summ_lib = summ_lib
 		self.fakelib = 'Fake_libc'
 
 		if fakelib is not None:
