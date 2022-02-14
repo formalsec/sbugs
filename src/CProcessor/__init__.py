@@ -1,2 +1,3 @@
 from CProcessor.TestGeneration.TestGenerator import TestGenerator
 from CProcessor.PreProcessing.PreProcessor import PreProcessor
+from CProcessor import config
