@@ -73,17 +73,17 @@ if __name__ == "__main__":
 
 
 	if preprocess:
-		preprocessor = PreProcessor(inputfile, outputfile, io, global_vars,
-				 fakelib=fakelib, save_ast=save_ast)
+		preprocessor = PreProcessor(inputfile, outputfile,
+								   io, global_vars,
+				 				   fakelib=fakelib, save_ast=save_ast)
 		
 		inputfile = preprocessor.gen()
 
 
 	testGenerator = TestGenerator(inputfile, outputfile,
-					 fuel, arraysize, pointersize,
-					 fakelib=fakelib, save_ast=save_ast, target=target)
-
-
+					 			 fuel, arraysize,
+					 			 pointersize,fakelib=fakelib,
+					 			 save_ast=save_ast, target=target)
 
 
 	testGenerator.gen()
