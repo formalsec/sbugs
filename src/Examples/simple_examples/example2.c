@@ -10,11 +10,11 @@ typedef struct Person {
    struct Car car;
 
    struct Person* other;
-} Type_Person;
+}* Type_Person;
 
 
 
 
-void f1(int a, struct Car car, Type_Person array[]) {
+void f1(int* a[], struct Car car, Type_Person array[]) {
 
 }

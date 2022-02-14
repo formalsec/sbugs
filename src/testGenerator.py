@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import argparse
-from CProcessor import TestGenerator, PreProcessor
+from CProcessor import TestGenerator, PreProcessor, config
 
 
 def get_cmd_args():
@@ -33,6 +33,10 @@ def get_cmd_args():
 
 	parser.add_argument('--target', metavar='function', type=str,
                         help='Generate a test for a specific target function')
+
+	parser.add_argument('-stack', action='store_true',
+                        help='Generate arrays in the stack instead of the heap')
+ 
  
 	return parser.parse_args()
 
@@ -55,6 +59,11 @@ if __name__ == "__main__":
 	io = False
 	global_vars = False
 	target = args.target
+	stack = args.stack
+
+	if stack:
+		config.HEAP = False
+
 
 	if 'scanf' in preprocess:
 		io = True
