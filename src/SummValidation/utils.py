@@ -6,6 +6,11 @@ ARRAY_SIZE_MACRO = 'ARRAY_SIZE'
 POINTER_SIZE_MACRO = 'POINTER_SIZE'
 
 
+#Stubs
+new_sym_var_DECL = 'void *new_sym_var(unsigned int length){return 0;}\n'
+stubs = [new_sym_var_DECL]
+
+
 
 class TypeDefVisitor(NodeVisitor):
 	def __init__ (self): 
@@ -34,43 +39,34 @@ class TypeDefVisitor(NodeVisitor):
 #function definitions; defined structs; and Typedefs 
 class InitialVisitor(NodeVisitor):
 
-	def __init__ (self):
+	def __init__ (self, ast):
 
-		self.ast
+		self.ast = ast
 
-		self.fun_dict = {}
-		self.var_glob_dict = {}
-		self.structs = {}
+		self._functions = {}
+		self._function_args = {}
 
-		#Typedefed structs
-		self.aliases = {}
 
 	def functions(self):
-		return list(self.fun_dict.keys())
+		self.visit(self.ast)
+		return self._functions
 	
+
+	def function_args(self):
+		self.visit(self.ast)
+		return self._function_args
+
+
 	def visit(self, node):
 		if node is not None: 
 			return NodeVisitor.visit(self, node)
 
 	def visit_FuncDef(self, node):
-		self.fun_dict[node.decl.name] = node.decl.type.args.params\
+		self._functions[node.decl.name] = node
+		self._function_args[node.decl.name] = node.decl.type.args.params\
 		if node.decl.type.args else None
 
 	
-	def visit_PtrDecl(self, node):
-		self.visit(node.type)
-
-
-	def visit_Struct(self, node):
-		self.structs[node.name] = node.decls
-
-
-	def visit_Typedef(self, node):
-		visitor = TypeDefVisitor()
-
-		self.aliases[node.name] = visitor.visit(node.type)
-		self.visit(node.type)
-
 
 
 

@@ -4,15 +4,15 @@ from pycparser import parse_file, c_generator
 from pycparser.c_ast import *
 
 from SummValidation.C_Generator import C_FileGenerator
+from SummValidation.ArgGen.Visitors.FunctionArgs import ArgVisitor
 
-
-from .utils import defineMacro, defineInclude, mainFunction, returnValue, createFunction 
-from .utils import InitialVisitor, FUEL_MACRO, ARRAY_SIZE_MACRO, POINTER_SIZE_MACRO
+from .utils import defineMacro, mainFunction, returnValue, createFunction 
+from .utils import InitialVisitor, ARRAY_SIZE_MACRO, POINTER_SIZE_MACRO, stubs
 
 
 class ValidationGenerator(C_FileGenerator):
 	def __init__(self, summary, concrete_func, outputfile,
-				 arraysize, summ_lib, fakelib=None):
+				 arraysize, summ_name, fakelib=None):
 
 		super().__init__(outputfile, fakelib)
 
@@ -21,11 +21,8 @@ class ValidationGenerator(C_FileGenerator):
 		self.concrete_file = concrete_func
 		self.arraysize = arraysize
 
-		self.summ_lib = summ_lib
-		self.fakelib = 'Fake_libc'
-
-		if fakelib is not None:
-			self.fakelib = fakelib
+		#Summary name (if summ is not isolated in a file, e,g in a library)
+		self.summ_name = summ_name
 
 
 
@@ -39,13 +36,9 @@ class ValidationGenerator(C_FileGenerator):
 		return
 
 	
-	#Create a single test
-	def create_test(self, fname, args, structs, aliases):
+	#Create validation test
+	def create_test(self, c_fname, s_fname, args):
 
-		testname = f'test_{fname}'
-		
-		if fname == 'main':
-			return ('main', None) #Ignore 'main' function
 
 		fblock = []     #Test code to be generated
 		call_args = []  #Arguments to call the function		
@@ -57,94 +50,128 @@ class ValidationGenerator(C_FileGenerator):
 		#Visit arguments 
 		for arg in args:
 
-			vis = ArgVisitor(structs, aliases)   
+			vis = ArgVisitor()   
 			vis.visit(arg)
 			code = vis.gen_code()
 
-			if code is None:
-				return (fname, None)
-			
 			call_args.append(vis.argname)
 			fblock += code
 
-		#Constrain global vars denoting numbers
-		fblock += self.constrain_numbers(call_args)
-	   
 		
 		#Add the function call to the Ast
-		fblock.append(FuncCall(ID(fname), ExprList([a for a in map(lambda x: ID(x), call_args)])))
-		fblock.append(returnValue(None)) #Return (void)
+		fblock.append(FuncCall(ID(c_fname), ExprList([a for a in map(lambda x: ID(x), call_args)])))
+		fblock.append(FuncCall(ID(s_fname), ExprList([a for a in map(lambda x: ID(x), call_args)])))
+		
+		fblock.append(returnValue(Constant('int', str(0)))) #Return 0
 
 		#Create a block containg the test code
 		block = Compound(fblock)
 
 		#Create the actual test function
-		decl = createFunction(name=testname,
+		decl = createFunction(name='main',
 							  args=None,
-							  returnType='void')
+							  returnType='int')
 
 		#Place the block inside a function definition
 		func_def_ast = FuncDef(decl, None, block, None)
 
-		return (testname, func_def_ast) #Return (key,value) tuple
+		return func_def_ast 
 
-
-	#Create tests for all functions
-	#Returns a dictionary -> {fname : ast}
-	def create_tests(self, f_decls, structs, aliases):
-		return {k: v for k, v in \
-		map(lambda x :self.create_test(x, f_decls[x], structs, aliases), f_decls)\
-		if v is not None} 
 
 
 	def create_symbolic_args(self, function):
 		pass
 
-	def _check_functions(self, functions):
-		if len(functions) == 0:
+	def _check_functions(self, c_functions, s_functions=None):
+		if len(c_functions) == 0:
 			sys.exit("No concrete function provided")
-		if len(functions) > 1:
+		if len(c_functions) > 1:
 			sys.exit("There should be only one concrete function to be compared with")
 
+		if s_functions is not None:
+			if len(s_functions) == 0:
+				sys.exit("No summary provided")
+			if len(s_functions) > 1:
+				sys.exit("There should be only one target summary")			
 
-	def gen(self):
+
+	def _process_includes(self, includes):
+		return list(set([inc for inc in map(lambda x: x.replace(' ', ''), includes)]))
+
+	#Gen test if summary is in a library
+	def gen_summ_lib(self):
+		pass
+
+	#Gen test if summary is in a file
+	def gen_summ_file(self):
 
 		try:
-			#PreProcess inputfile
-			includes = self._preprocess_file(self.concrete_file, self.tmpfile)
-			
-			#Add macros for teste generation
-			includes.append(defineMacro(ARRAY_SIZE_MACRO, self.arraysize))
+			#Get includes from concrete function and summary
+			includes = self._get_includes(self.concrete_file)
+			includes += self._get_includes(self.summary_path)
 
-			#Parse new file
-			ast = parse_file(self.tmpfile, use_cpp=True,
+			includes = self._process_includes(includes)
+
+			#Add macros for test generation
+			includes.append(defineMacro(ARRAY_SIZE_MACRO, self.arraysize))
+			includes.append(defineMacro(POINTER_SIZE_MACRO, self.arraysize))
+
+			#Parse files
+			ast_cnctr = parse_file(self.concrete_file, use_cpp=True,
 				cpp_path='gcc',
 				cpp_args=['-E', f'-I{self.fakelib}/fake_libc_include'])            
 
-			
-			#Initial visitor to get all relevant elements
-			vis = InitialVisitor()
-			vis.visit(ast)
 
-			functions = vis.functions()
-			self._check_functions(functions)
-
-			function = functions[0]
+			ast_summ = parse_file(self.summary_path, use_cpp=True,
+				cpp_path='gcc',
+				cpp_args=['-E', f'-I{self.fakelib}/fake_libc_include'])
 
 			
-			#Place tests to be called in main()
-			maincode = []
-			maincode.append(f'{function}')
+			#Initial visitor to get the functions from both files
+			vis_cncrt = InitialVisitor(ast_cnctr)
+			vis_summ = InitialVisitor(ast_summ)
+
+			#Dictionary --> fname:ast_code
+			cnctr_functions = vis_cncrt.functions()
+			summ_functions = vis_summ.functions()
+
+			#Check if only one concrete function and summary are provided
+			self._check_functions(cnctr_functions.keys(), summ_functions.keys())
+
+			cnctr_fname = list(cnctr_functions.keys())[0]
+			summ_fname = list(summ_functions.keys())[0]
+
+			function_defs = []
+
+			cnctr_def = cnctr_functions.values()
+			summ_def = summ_functions.values()
 
 
-			self._place_testcode(ast, [], maincode)
+			function_defs += list(cnctr_def)
+			function_defs += list(summ_def)
+
+			gen_ast = FileAST(function_defs)
+
+			args = list(cnctr_functions.values())[0].decl.type.args.params
+
+
+			test_ast = self.create_test(cnctr_fname, summ_fname, args)
+			gen_ast.ext.append(test_ast)
 
 			#Generate string from ast
 			generator = c_generator.CGenerator()
-			generated_string = generator.visit(ast)
+			generated_string = generator.visit(gen_ast)
 
-			self._write_to_file(generated_string, includes)
+			generator = os.path.basename(__file__)
+			self._write_to_file(generated_string, includes, generator=generator, stubs)
 
 		except Exception as e:
 			self._remove_files(self.tmpfile)
 			print(traceback.format_exc())
+
+
+
+
+	def gen(self):
+
+		self.gen_summ_file()
