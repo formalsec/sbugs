@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import argparse
-from SummValidation import ValidationGenerator
+from SummValidation import ValidationGenerator, CCompiler
 
 
 def get_cmd_args():
@@ -22,6 +22,9 @@ def get_cmd_args():
 	parser.add_argument('--arraySize', metavar='value', type=int, required=False, default=10,
 						help='Define array size (default:10)')
 
+	parser.add_argument('-compile', action='store_true',
+						help='Compile the generated test')
+
 	return parser.parse_args()
 
 
@@ -37,8 +40,15 @@ if __name__ == "__main__":
 	outputfile = args.o
 	arraysize = args.arraySize
 	summ_lib = args.summ_lib
+	ccompile = args.compile
 
 
 	valgenerator = ValidationGenerator(target_summary, concrete_function,
 					 			 	   outputfile, arraysize, summ_lib,)
 	valgenerator.gen()
+
+
+	if ccompile:
+		bin_name = outputfile[:-2]
+		comp = CCompiler(outputfile, bin_name)
+		comp.compile()

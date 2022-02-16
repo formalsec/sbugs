@@ -163,7 +163,7 @@ class ValidationGenerator(C_FileGenerator):
 			generated_string = generator.visit(gen_ast)
 
 			generator = os.path.basename(__file__)
-			self._write_to_file(generated_string, includes, generator=generator, stubs)
+			self._write_to_file(generated_string, includes, generator, stubs)
 
 		except Exception as e:
 			self._remove_files(self.tmpfile)

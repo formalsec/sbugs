@@ -67,6 +67,7 @@ class C_FileGenerator:
 		headers += includes
 		headers.append('\n')
 		headers += stubs
+		headers.append('\n')
 
 		outfile = open(self.outputfile, "w")
 		outfile.writelines(headers)
