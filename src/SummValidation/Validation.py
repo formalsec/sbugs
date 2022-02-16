@@ -12,7 +12,7 @@ from .utils import InitialVisitor, ARRAY_SIZE_MACRO, POINTER_SIZE_MACRO, stubs
 
 class ValidationGenerator(C_FileGenerator):
 	def __init__(self, summary, concrete_func, outputfile,
-				 arraysize, summ_name, fakelib=None):
+				 arraysize, summ_name=None, cncr_name = None, fakelib=None):
 
 		super().__init__(outputfile, fakelib)
 
@@ -23,17 +23,8 @@ class ValidationGenerator(C_FileGenerator):
 
 		#Summary name (if summ is not isolated in a file, e,g in a library)
 		self.summ_name = summ_name
+		self.cncr_name = cncr_name
 
-
-
-	def _place_testcode(self, ast, code, mainblock):
-
-		ast.ext += code
-		decl = createFunction(name='main',\
-				args=None,returnType='int')
-		main = FuncDef(decl, None, mainFunction(mainblock), None)
-		ast.ext.append(main)
-		return
 
 	
 	#Create validation test
@@ -78,10 +69,6 @@ class ValidationGenerator(C_FileGenerator):
 		return func_def_ast 
 
 
-
-	def create_symbolic_args(self, function):
-		pass
-
 	def _check_functions(self, c_functions, s_functions=None):
 		if len(c_functions) == 0:
 			sys.exit("No concrete function provided")
@@ -95,6 +82,7 @@ class ValidationGenerator(C_FileGenerator):
 				sys.exit("There should be only one target summary")			
 
 
+	
 	def _process_includes(self, includes):
 		return list(set([inc for inc in map(lambda x: x.replace(' ', ''), includes)]))
 

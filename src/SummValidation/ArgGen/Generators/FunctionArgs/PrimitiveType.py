@@ -1,7 +1,8 @@
 from pycparser import parse_file, c_generator
 from pycparser.c_ast import *
 
-import CProcessor.TestGeneration.utils as utils
+import SummValidation.utils as utils
+
 from ..DefaultGen import DefaultGen
 
 

@@ -16,8 +16,11 @@ def get_cmd_args():
 	parser.add_argument('summary', metavar='summary_file', type=str,
 						help='Path to file containing the summary being evaluated')
 
-	parser.add_argument('--summ_lib', metavar='summ_name', type=str,
-						help='Name of the summary in the given library path')
+	parser.add_argument('--summ_name', metavar='name', type=str,
+						help='Name of the summary in the given path')
+	
+	parser.add_argument('--func_name', metavar='name', type=str,
+						help='Name of the concrete function in the given path')
 
 	parser.add_argument('--arraySize', metavar='value', type=int, required=False, default=10,
 						help='Define array size (default:10)')
@@ -39,12 +42,13 @@ if __name__ == "__main__":
 	target_summary = args.summary
 	outputfile = args.o
 	arraysize = args.arraySize
-	summ_lib = args.summ_lib
+	summ_name = args.summ_name
+	cncr_name = args.func_name
 	ccompile = args.compile
 
 
 	valgenerator = ValidationGenerator(target_summary, concrete_function,
-					 			 	   outputfile, arraysize, summ_lib,)
+					 			 	   outputfile, arraysize)
 	valgenerator.gen()
 
 
