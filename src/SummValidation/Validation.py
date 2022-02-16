@@ -92,12 +92,9 @@ class ValidationGenerator(C_FileGenerator):
 
 		return list(set([inc for inc in map(lambda x: x.replace(' ', ''), includes)]))
 
-	#Gen test if summary is in a library
-	def gen_summ_lib(self):
-		pass
 
 	#Gen test if summary is in a file
-	def gen_summ_file(self):
+	def gen(self):
 
 		try:
 
@@ -122,7 +119,7 @@ class ValidationGenerator(C_FileGenerator):
 			vis_cncrt = InitialVisitor(ast_cnctr)
 			vis_summ = InitialVisitor(ast_summ)
 
-			#Dictionary --> fname:ast_code
+
 			cnctr_functions = vis_cncrt.function_names()
 			summ_functions = vis_summ.function_names()
 
@@ -152,9 +149,3 @@ class ValidationGenerator(C_FileGenerator):
 			self._remove_files(self.tmpfile)
 			print(traceback.format_exc())
 
-
-
-
-	def gen(self):
-
-		self.gen_summ_file()
