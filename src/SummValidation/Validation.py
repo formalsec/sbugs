@@ -83,7 +83,13 @@ class ValidationGenerator(C_FileGenerator):
 
 
 	
-	def _process_includes(self, includes):
+	def _process_includes(self):
+		includes = self._get_includes(self.concrete_file)
+
+		if self.summ_name is None:
+			includes += self._get_includes(self.summary_path)
+
+
 		return list(set([inc for inc in map(lambda x: x.replace(' ', ''), includes)]))
 
 	#Gen test if summary is in a library
@@ -94,11 +100,8 @@ class ValidationGenerator(C_FileGenerator):
 	def gen_summ_file(self):
 
 		try:
-			#Get includes from concrete function and summary
-			includes = self._get_includes(self.concrete_file)
-			includes += self._get_includes(self.summary_path)
 
-			includes = self._process_includes(includes)
+			includes = self._process_includes()
 
 			#Add macros for test generation
 			includes.append(defineMacro(ARRAY_SIZE_MACRO, self.arraysize))
@@ -120,28 +123,20 @@ class ValidationGenerator(C_FileGenerator):
 			vis_summ = InitialVisitor(ast_summ)
 
 			#Dictionary --> fname:ast_code
-			cnctr_functions = vis_cncrt.functions()
-			summ_functions = vis_summ.functions()
+			cnctr_functions = vis_cncrt.function_names()
+			summ_functions = vis_summ.function_names()
 
 			#Check if only one concrete function and summary are provided
-			self._check_functions(cnctr_functions.keys(), summ_functions.keys())
+			self._check_functions(cnctr_functions, summ_functions)
 
-			cnctr_fname = list(cnctr_functions.keys())[0]
-			summ_fname = list(summ_functions.keys())[0]
+			cnctr_fname, = cnctr_functions
+			summ_fname, = summ_functions
 
-			function_defs = []
-
-			cnctr_def = cnctr_functions.values()
-			summ_def = summ_functions.values()
-
-
-			function_defs += list(cnctr_def)
-			function_defs += list(summ_def)
+			function_defs = [*vis_summ.function_defs(), *vis_cncrt.function_defs()]
 
 			gen_ast = FileAST(function_defs)
 
-			args = list(cnctr_functions.values())[0].decl.type.args.params
-
+			args, = vis_cncrt.function_args()
 
 			test_ast = self.create_test(cnctr_fname, summ_fname, args)
 			gen_ast.ext.append(test_ast)

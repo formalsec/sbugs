@@ -46,15 +46,25 @@ class InitialVisitor(NodeVisitor):
 		self._functions = {}
 		self._function_args = {}
 
+	def function_defs(self):
+		if not self._functions:
+			self.visit(self.ast)
 
-	def functions(self):
-		self.visit(self.ast)
-		return self._functions
+		return list(self._functions.values())
+
+	
+	def function_names(self):
+		if not self._functions:
+			self.visit(self.ast)
+		
+		return list(self._functions.keys())
 	
 
 	def function_args(self):
-		self.visit(self.ast)
-		return self._function_args
+		if not self._function_args:
+			self.visit(self.ast)
+		
+		return list(self._function_args.values())
 
 
 	def visit(self, node):
@@ -65,10 +75,6 @@ class InitialVisitor(NodeVisitor):
 		self._functions[node.decl.name] = node
 		self._function_args[node.decl.name] = node.decl.type.args.params\
 		if node.decl.type.args else None
-
-	
-
-
 
 
 
