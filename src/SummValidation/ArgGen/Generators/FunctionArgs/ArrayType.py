@@ -52,4 +52,10 @@ class ArrayTypeGen(ArrayGen):
             for_ast_code = self.For_ast(index, self._size(self.sizes[i]), Compound([for_ast_code])) 
 
         code.append(for_ast_code)
+
+        #Terminate string with null byte ('\0')
+        if self.vartype == 'char' and self.dimension == 1:
+            size = BinaryOp('-',ID(utils.POINTER_SIZE_MACRO), Constant('int',str(1)))
+            code.append(utils.terminate_string(self.argname, size))
+
         return code

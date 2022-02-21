@@ -106,3 +106,9 @@ def mainFunction(calls):
 	block = Compound(calls_ast)
 	return block
 
+
+def terminate_string(lvalue, size):
+	arr_lvalue = ArrayRef(lvalue, subscript=size)
+	assign = Assignment(op='=', lvalue=arr_lvalue, rvalue=Constant('char', '\'\\0\''))
+	return assign   
+
