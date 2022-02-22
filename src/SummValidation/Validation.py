@@ -142,8 +142,8 @@ class ValidationGenerator(C_FileGenerator):
 			generator = c_generator.CGenerator()
 			generated_string = generator.visit(gen_ast)
 
-			generator = os.path.basename(__file__)
-			self._write_to_file(generated_string, includes, generator, stubs)
+			file_name = os.path.basename(__file__)
+			self._write_to_file(generated_string, includes, file_name, stubs)
 
 		except Exception as e:
 			self._remove_files(self.tmpfile)
