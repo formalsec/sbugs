@@ -1,10 +1,10 @@
 type_defs = [
     'define NULL ((void*)0)'
     'typedef void* symbolic;',
-    'typedef  size_t size_t;',
-    'typedef  size_t cnstr_t;',
-    'typedef  size_t state_t;',
-    'typedef  size_t result_t;',
+    'typedef unsigned int size_t;',
+    'typedef unsigned int cnstr_t;',
+    'typedef unsigned int state_t;',
+    'typedef unsigned int result_t;',
 ]
 
 validation_api = {
