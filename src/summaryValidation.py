@@ -22,8 +22,8 @@ def get_cmd_args():
 	parser.add_argument('--func_name', metavar='name', type=str,
 						help='Name of the concrete function in the given path')
 
-	parser.add_argument('--arraySize', metavar='value', type=int, required=False, default=10,
-						help='Define array size (default:10)')
+	parser.add_argument('--arraySize', metavar='value', type=int, required=False, default=5,
+						help='Define array size (default:5)')
 
 	parser.add_argument('-compile', action='store_true',
 						help='Compile the generated test')

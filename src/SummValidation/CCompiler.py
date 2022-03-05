@@ -15,10 +15,12 @@ class CCompiler():
 
     
     def compile(self):
-
-        gcc_cmd =  ['gcc'] + self.gcc_args
-        gcc_cmd += [self.inputfile]
-        gcc_cmd += ['-o', self.outputfile]
+        gcc_cmd = [
+            'gcc',
+            *self.gcc_args,
+            self.inputfile,
+            '-o', self.outputfile
+        ]
 
         print(' '.join(gcc_cmd))  
 

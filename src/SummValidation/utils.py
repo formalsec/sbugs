@@ -6,12 +6,6 @@ ARRAY_SIZE_MACRO = 'ARRAY_SIZE'
 POINTER_SIZE_MACRO = 'POINTER_SIZE'
 
 
-#Stubs
-new_sym_var_DECL = 'void *new_sym_var(unsigned int length){return 0;}\n'
-stubs = [new_sym_var_DECL]
-
-
-
 class TypeDefVisitor(NodeVisitor):
 	def __init__ (self): 
 		self.ptr = False
@@ -46,11 +40,11 @@ class InitialVisitor(NodeVisitor):
 		self._functions = {}
 		self._function_args = {}
 
-	def function_defs(self):
+	def functions(self):
 		if not self._functions:
 			self.visit(self.ast)
 
-		return list(self._functions.values())
+		return self._functions
 
 	
 	def function_names(self):
@@ -64,7 +58,7 @@ class InitialVisitor(NodeVisitor):
 		if not self._function_args:
 			self.visit(self.ast)
 		
-		return list(self._function_args.values())
+		return self._function_args
 
 
 	def visit(self, node):
@@ -73,8 +67,7 @@ class InitialVisitor(NodeVisitor):
 
 	def visit_FuncDef(self, node):
 		self._functions[node.decl.name] = node
-		self._function_args[node.decl.name] = node.decl.type.args.params\
-		if node.decl.type.args else None
+		self._function_args[node.decl.name] = node.decl.type.args.params if node.decl.type.args else None
 
 
 
