@@ -8,9 +8,8 @@ from SummValidation.ArgGen.Symbolic_Args import Symbolic_Args
 from SummValidation.APIGen.APIGen import API_Gen
 from SummValidation.APIGen import API
 
-
-from .utils import defineMacro, returnValue, createFunction 
-from .utils import InitialVisitor, ARRAY_SIZE_MACRO, POINTER_SIZE_MACRO
+from SummValidation.Utils.utils import defineMacro, returnValue, createFunction 
+from SummValidation.Utils.utils import InitialVisitor, ARRAY_SIZE_MACRO, POINTER_SIZE_MACRO
 
 
 class ValidationGenerator(CGenerator):
@@ -163,7 +162,6 @@ class ValidationGenerator(CGenerator):
 			#Create symbolic args
 			args_code, args_names = sym_args_gen.create_symbolic_args(args)
 			
-			#Build Test body
 			#Body contains the test code
 			body = [
 				*args_code,

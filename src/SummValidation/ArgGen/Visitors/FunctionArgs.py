@@ -5,7 +5,7 @@ from ..Generators.FunctionArgs.ArrayType import ArrayTypeGen
 from ..Generators.FunctionArgs.PrimitiveType import PrimitiveTypeGen
 from ..Generators.FunctionArgs.StructType import StructTypeGen
 
-import SummValidation.utils as utils
+import SummValidation.Utils.utils as utils
 from CProcessor import config
 
 
