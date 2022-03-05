@@ -9,7 +9,8 @@ from SummValidation.APIGen.APIGen import API_Gen
 from SummValidation.APIGen import API
 
 from SummValidation.Utils.utils import defineMacro, returnValue, createFunction 
-from SummValidation.Utils.utils import InitialVisitor, ARRAY_SIZE_MACRO, POINTER_SIZE_MACRO
+from SummValidation.Utils.utils import ARRAY_SIZE_MACRO, POINTER_SIZE_MACRO
+from SummValidation.Utils.visitors import InitialVisitor, FCallsVisitor
 
 
 class ValidationGenerator(CGenerator):
@@ -120,21 +121,21 @@ class ValidationGenerator(CGenerator):
 
 	#Gen headers
 	#Typedefs, API stubs and Macros
-	def _gen_headers(self):
+	def _gen_headers(self, defs):
+		_ , summ_def = defs
+		
+		call_vis = FCallsVisitor()
+		call_vis.visit(summ_def)
+		calls = call_vis.fcalls()
+
 		headers = []
-		
-		#Typedefs
 		headers += API.type_defs
-		headers.append('\n')
+		headers += API.validation_api
+
+		for c in calls:
+			if c in API.all_api.keys():
+				headers.append(API.all_api[c])
 		
-		#API stubs
-		headers += API.validation_api.values()
-		headers.append('\n')
-
-		headers += API.standard_api.values()
-		headers.append('\n')
-
-		headers += API.constraints_api.values()
 		headers.append('\n')
 
 		#Macros
@@ -147,9 +148,11 @@ class ValidationGenerator(CGenerator):
 	def gen(self):
 
 		try:
-			header = self._gen_headers()
+			
 			function_defs, args, ret_type = self._parse_functions()
-
+			header = self._gen_headers(function_defs)
+			
+			
 			#Main function to run the test
 			main = createFunction(name='main',
 						args=None,
