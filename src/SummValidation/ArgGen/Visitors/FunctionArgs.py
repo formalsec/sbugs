@@ -36,6 +36,11 @@ class ArgVisitor(NodeVisitor):
         #Final line(s) of code 
         self.code = []
 
+    
+    def get_type(self):
+        return (self.argtype, self.arrayDim, self.struct)
+
+
 
     #Return generated code
     #If HEAP=true, change declaration of

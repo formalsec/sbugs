@@ -34,3 +34,20 @@ class Symbolic_Args():
         
         return Decl(ret_name, [], [], [], lvalue, rvalue, None)
 
+    
+    def get_types(self, args):
+        
+        #Function has no arguments
+        if args is None:
+            return []
+        
+        types_list = []
+        for arg in args:
+
+            vis = ArgVisitor()   
+            vis.visit(arg)
+            typ = vis.get_type()
+            types_list.append(typ)
+
+        return types_list
+

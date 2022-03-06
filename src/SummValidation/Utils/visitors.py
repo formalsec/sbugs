@@ -5,8 +5,9 @@ from sympy import N
 #function definitions; defined structs; and Typedefs 
 class InitialVisitor(NodeVisitor):
 
-	def __init__ (self, ast):
+	def __init__ (self, ast, file):
 
+		self.file = file
 		self.ast = ast
 
 		self._functions = {}
@@ -35,6 +36,10 @@ class InitialVisitor(NodeVisitor):
 			return NodeVisitor.visit(self, node)
 
 	def visit_FuncDef(self, node):
+		name = node.decl.name
+		if name in self._functions.keys():
+			sys.exit(f"ERROR: Mutiple functions with same name in: \'{self.file}\'") 
+
 		self._functions[node.decl.name] = node
 		self._function_args[node.decl.name] = node.decl.type.args.params if node.decl.type.args else None
 
