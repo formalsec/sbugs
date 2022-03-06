@@ -25,6 +25,9 @@ def get_cmd_args():
 	parser.add_argument('--arraySize', metavar='value', type=int, required=False, default=5,
 						help='Define array size (default:5)')
 
+	parser.add_argument('--lib', metavar='path', nargs='+', type=str, required=False,
+						help='Path to external files needed to compile the test binary')
+
 	parser.add_argument('-compile', action='store_true',
 						help='Compile the generated test')
 
@@ -45,7 +48,7 @@ if __name__ == "__main__":
 	summ_name = args.summ_name
 	cncr_name = args.func_name
 	ccompile = args.compile
-
+	lib_paths = args.lib
 
 	valgenerator = ValidationGenerator(concrete_function, target_summary,
 					 			 	   outputfile, arraysize)
@@ -53,5 +56,5 @@ if __name__ == "__main__":
 
 	if ccompile:
 		bin_name = outputfile[:-2]
-		comp = CCompiler(outputfile, bin_name)
+		comp = CCompiler(outputfile, bin_name, lib_paths)
 		comp.compile()
