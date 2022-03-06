@@ -14,7 +14,7 @@ class CGenerator:
 		self.outputfile = outputfile
 
 
-	def _add_fake_includes(self, file):
+	def _add_fake_include(self, file):
 		fake_include = '#include <stdlib.h>\n'
 
 		c = open(file, "r")

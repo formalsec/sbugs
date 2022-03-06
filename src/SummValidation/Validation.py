@@ -14,7 +14,7 @@ from SummValidation.Utils.visitors import InitialVisitor, FCallsVisitor, ReturnT
 
 
 class ValidationGenerator(CGenerator):
-	def __init__(self, summary, concrete_func, outputfile,
+	def __init__(self, concrete_func, summary, outputfile,
 				 arraysize, summ_name=None, cncrt_name = None, fakelib=None):
 
 		super().__init__(outputfile, summary, concrete_func, fakelib)
@@ -94,7 +94,8 @@ class ValidationGenerator(CGenerator):
 			msg = (
 				"Arguments do not match!\n"
 				f"Summary path: \'{self.summary_path}\'\n"
-				f"Concrete Function: \'{self.concrete_file}\'")
+				f"Concrete Function: \'{self.concrete_file}\'"
+				)
 			sys.exit(msg)
 
 		return cncrt_args
@@ -119,7 +120,8 @@ class ValidationGenerator(CGenerator):
 			msg = (
 				"Return values do not match!\n"
 				f"Summary path: \'{self.summary_path}\'\n"
-				f"Concrete Function: \'{self.concrete_file}\'")
+				f"Concrete Function: \'{self.concrete_file}\'"
+				)
 			sys.exit(msg)
 
 		return ret1
@@ -180,13 +182,12 @@ class ValidationGenerator(CGenerator):
 	#Generate summary validation test
 	def gen(self):
 		try:
-			tmp_concrete = self._add_fake_includes(self.concrete_file)
-			tmp_summary = self._add_fake_includes(self.summary_path)
+			tmp_concrete = self._add_fake_include(self.concrete_file)
+			tmp_summary = self._add_fake_include(self.summary_path)
 
 			function_defs, args, ret_type = self._parse_functions(tmp_concrete, tmp_summary)
 			header = self._gen_headers(function_defs)
-			
-			
+						
 			#Main function to run the test
 			main = createFunction(name='main',
 						args=None,

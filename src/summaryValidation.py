@@ -47,10 +47,9 @@ if __name__ == "__main__":
 	ccompile = args.compile
 
 
-	valgenerator = ValidationGenerator(target_summary, concrete_function,
+	valgenerator = ValidationGenerator(concrete_function, target_summary,
 					 			 	   outputfile, arraysize)
 	valgenerator.gen()
-
 
 	if ccompile:
 		bin_name = outputfile[:-2]
