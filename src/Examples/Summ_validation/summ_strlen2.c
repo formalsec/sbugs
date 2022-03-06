@@ -5,16 +5,16 @@ size_t summ_strlen(char* s){
 	char zero = '\0';
 
 	while(1){
-		if(is_symbolic(&s[i],CHAR_SIZE)){
+		if(is_symbolic(&s[i],8)){
 			
-			if(!is_sat(_solver_NEQ(&s[i], &zero, CHAR_SIZE))){
+			if(!is_sat(_solver_NEQ(&s[i], &zero, 8))){
 				break;				
 			}
 			
 			else{
 				
-				symbolic val = new_sym_var(INT_SIZE);
-				cnstr_t r = _solver_NOT(_solver_SLT(&val, &i, &INT_SIZE));
+				symbolic val = new_sym_var(32);
+				cnstr_t r = _solver_NOT(_solver_SLT(&val, &i, 32));
 				assume(r);
 
 				return val;
