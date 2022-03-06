@@ -1,4 +1,5 @@
 import subprocess as sp
+from sys import stderr
 
 class CCompiler():
     def __init__(self, inputfile, outputfile):
@@ -25,4 +26,9 @@ class CCompiler():
         print(' '.join(gcc_cmd))  
 
         t = sp.Popen(gcc_cmd, stdout=sp.PIPE, stderr=sp.PIPE)
-        t.communicate() 
+        stdout, stderr = t.communicate()
+        out = stdout.decode()
+        err = stderr.decode()
+
+        print(out,end='')
+        print(err,end='')
