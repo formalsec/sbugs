@@ -1,4 +1,3 @@
-#include <stdlib.h>
 
 //Summary implementation to be compared with
 size_t summ_strlen(char* s){
