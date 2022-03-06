@@ -66,7 +66,6 @@ all_api = {
     'check_implications':    'result_t check_implications(char* constraint1, char* constraint2) {return 0;} \n',
     'print_counterexamples': 'void print_counterexamples(result_t result) {return;}\n',
     'error':            'void error(char *fname) {return;} \n',
-    'new_sym_var':      'symbolic new_sym_var(size_t size) {return 0;} \n',
     'assume':           'void assume(cnstr_t cnstr) {return;} \n',
     'is_symbolic':      'int is_symbolic(symbolic sym_var, size_t size) {return 0;} \n',
     'print_byte':       'void print_byte(char byte) {return;} \n',
