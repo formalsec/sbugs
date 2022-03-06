@@ -3,6 +3,34 @@ from sympy import N
 
 #Visit the ASt to separate each elemenet of interest
 #function definitions; defined structs; and Typedefs 
+
+class ReturnTypeVisior(NodeVisitor):
+	def __init__ (self):
+		self.name = None
+		self.ptr = 0
+
+	def get_ret(self):
+		typ = self.name + self.ptr*'*'
+		return typ
+
+	def generic_visit(self, node):
+		return node 
+
+	def visit(self, node):
+		if node is not None: 
+			return NodeVisitor.visit(self, node)
+
+	def visit_PtrDecl(self, node):
+		self.ptr +=1
+		self.visit(node.type)
+
+	def visit_TypeDecl(self, node):
+		self.visit(node.type)
+
+	def visit_IdentifierType(self, node):
+		self.name = node.names[0]
+
+
 class InitialVisitor(NodeVisitor):
 
 	def __init__ (self, ast, file):

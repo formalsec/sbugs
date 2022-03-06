@@ -10,7 +10,7 @@ from SummValidation.APIGen import API
 
 from SummValidation.Utils.utils import defineMacro, returnValue, createFunction 
 from SummValidation.Utils.utils import ARRAY_SIZE_MACRO, POINTER_SIZE_MACRO
-from SummValidation.Utils.visitors import InitialVisitor, FCallsVisitor
+from SummValidation.Utils.visitors import InitialVisitor, FCallsVisitor, ReturnTypeVisior
 
 
 class ValidationGenerator(CGenerator):
@@ -102,10 +102,30 @@ class ValidationGenerator(CGenerator):
 
 		return cncrt_args
 
+
 	def _get_ret_type(self, defs):
 		cncrt_def, summ_def = defs
-		return cncrt_def.decl.type.type.type.names[0]
-	
+
+		cncrt_ret = cncrt_def.decl.type.type
+		summ_ret = summ_def.decl.type.type
+
+		ret_vis1 = ReturnTypeVisior()
+		ret_vis2 = ReturnTypeVisior()
+
+		ret_vis1.visit(cncrt_ret)
+		ret_vis2.visit(summ_ret)
+
+		ret1 = ret_vis1.get_ret()
+		ret2 = ret_vis2.get_ret()
+
+		if ret1 != ret2:
+			msg = (
+				"Return values do not match!\n"
+				f"Summary path: \'{self.summary_path}\'\n"
+				f"Concrete Function: \'{self.concrete_file}\'")
+			sys.exit(msg)
+
+		return ret1
 
 	#Parse target functions from the given files
 	#Returns (ast_defs, ast_args, ret_type)
@@ -164,7 +184,6 @@ class ValidationGenerator(CGenerator):
 	def gen(self):
 
 		try:
-			
 			function_defs, args, ret_type = self._parse_functions()
 			header = self._gen_headers(function_defs)
 			
