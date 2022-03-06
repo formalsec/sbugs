@@ -14,7 +14,7 @@ size_t summ_strlen(char* s){
 			else{
 				
 				symbolic val = new_sym_var(INT_SIZE);
-				cnstr_t r = _solver_SGE(&val, &i, INT_SIZE);
+				cnstr_t r = _solver_NOT(_solver_SLT(&val, &i, &INT_SIZE));
 				assume(r);
 
 				return val;
