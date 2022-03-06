@@ -1,17 +1,46 @@
+import traceback
 import os
 
 class CGenerator:
-	def __init__(self, outputfile, fakelib=None):
+	def __init__(self, outputfile, summary, concrete_func, fakelib=None):
 
 		self.fakelib =  f'{os.path.dirname(os.path.realpath(__file__))}/../Fake_libc/fake_libc_include'
-		self.outputfile = outputfile
-
-		tmpname = self.outputfile.split('/')[-1]
-		self.tmpfile = f'tmp_{tmpname}'
-
 		if fakelib is not None:
 			self.fakelib = fakelib
 
+		self.summary_path = summary
+		self.concrete_file = concrete_func
+
+		tmp_concrete = self.concrete_file.split('/')[-1]
+		self.tmp_concrete = f'tmp_{tmp_concrete}'
+
+		tmp_summary = self.summary_path.split('/')[-1]
+		self.tmp_summary = f'tmp_{tmp_summary}'
+
+		self.outputfile = outputfile
+
+
+	def _add_fake_includes(self):
+		fake_include = '#include <stdlib.h>\n'
+
+		c = open(self.concrete_file, "r")
+		c_lines = c.readlines()
+		c.close()
+		tmp_c = open(self.tmp_concrete, "w")
+		tmp_c.writelines([fake_include] + c_lines)
+		tmp_c.flush()
+		tmp_c.close()
+
+		s = open(self.summary_path, "r")
+		s_lines = s.readlines()
+		s.close()
+		tmp_s = open(self.tmp_summary, "w")
+		tmp_s.writelines([fake_include] + s_lines)
+		tmp_s.flush()
+		tmp_s.close()
+
+
+	
 	def _remove_files(self, *files):
 		for f in files:
 			if os.path.exists(f):
@@ -28,4 +57,4 @@ class CGenerator:
 		outfile.writelines(header)
 		outfile.write(code)
 		outfile.flush()
-
+		outfile.close()

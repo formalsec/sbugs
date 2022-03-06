@@ -17,11 +17,8 @@ class ValidationGenerator(CGenerator):
 	def __init__(self, summary, concrete_func, outputfile,
 				 arraysize, summ_name=None, cncrt_name = None, fakelib=None):
 
-		super().__init__(outputfile, fakelib)
+		super().__init__(outputfile, summary, concrete_func, fakelib)
 
-
-		self.summary_path = summary
-		self.concrete_file = concrete_func
 		self.arraysize = arraysize
 
 		#Summary name (if summ is not isolated in a file, e,g in a library)
@@ -132,11 +129,11 @@ class ValidationGenerator(CGenerator):
 	def _parse_functions(self):
 		
 		#Parse files
-		ast_cnctr = parse_file(self.concrete_file, use_cpp=True,
+		ast_cnctr = parse_file(self.tmp_concrete, use_cpp=True,
 			cpp_path='gcc',
 			cpp_args=['-E', f'-I{self.fakelib}'])            
 		
-		ast_summ = parse_file(self.summary_path, use_cpp=True,
+		ast_summ = parse_file(self.tmp_summary, use_cpp=True,
 			cpp_path='gcc',
 			cpp_args=['-E', f'-I{self.fakelib}'])
 
@@ -182,8 +179,9 @@ class ValidationGenerator(CGenerator):
 
 	#Generate summary validation test
 	def gen(self):
-
 		try:
+			self._add_fake_includes()
+
 			function_defs, args, ret_type = self._parse_functions()
 			header = self._gen_headers(function_defs)
 			
@@ -236,8 +234,9 @@ class ValidationGenerator(CGenerator):
 
 			file_name = os.path.basename(__file__)
 			self._write_to_file(generated_string, header, file_name)
+			self._remove_files(self.tmp_concrete, self.tmp_summary)
 
-		except Exception as e:
-			self._remove_files(self.tmpfile)
+		except Exception:
+			self._remove_files(self.tmp_concrete, self.tmp_summary)
 			print(traceback.format_exc())
 
