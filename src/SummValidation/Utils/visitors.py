@@ -33,9 +33,9 @@ class ReturnTypeVisior(NodeVisitor):
 
 class InitialVisitor(NodeVisitor):
 
-	def __init__ (self, ast, file):
+	def __init__ (self, ast, filename):
 
-		self.file = file
+		self.file = filename
 		self.ast = ast
 
 		self._functions = {}

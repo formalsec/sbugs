@@ -11,34 +11,24 @@ class CGenerator:
 		self.summary_path = summary
 		self.concrete_file = concrete_func
 
-		tmp_concrete = self.concrete_file.split('/')[-1]
-		self.tmp_concrete = f'tmp_{tmp_concrete}'
-
-		tmp_summary = self.summary_path.split('/')[-1]
-		self.tmp_summary = f'tmp_{tmp_summary}'
-
 		self.outputfile = outputfile
 
 
-	def _add_fake_includes(self):
+	def _add_fake_includes(self, file):
 		fake_include = '#include <stdlib.h>\n'
 
-		c = open(self.concrete_file, "r")
+		c = open(file, "r")
 		c_lines = c.readlines()
 		c.close()
-		tmp_c = open(self.tmp_concrete, "w")
+
+		tmp_file = 'tmp_' + file.split('/')[-1]
+	
+		tmp_c = open(tmp_file, "w")
 		tmp_c.writelines([fake_include] + c_lines)
 		tmp_c.flush()
 		tmp_c.close()
 
-		s = open(self.summary_path, "r")
-		s_lines = s.readlines()
-		s.close()
-		tmp_s = open(self.tmp_summary, "w")
-		tmp_s.writelines([fake_include] + s_lines)
-		tmp_s.flush()
-		tmp_s.close()
-
+		return tmp_file
 
 	
 	def _remove_files(self, *files):

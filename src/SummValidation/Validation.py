@@ -126,21 +126,21 @@ class ValidationGenerator(CGenerator):
 
 	#Parse target functions from the given files
 	#Returns (ast_defs, ast_args, ret_type)
-	def _parse_functions(self):
+	def _parse_functions(self, concrete, summary):
 		
 		#Parse files
-		ast_cnctr = parse_file(self.tmp_concrete, use_cpp=True,
+		ast_cnctr = parse_file(concrete, use_cpp=True,
 			cpp_path='gcc',
 			cpp_args=['-E', f'-I{self.fakelib}'])            
 		
-		ast_summ = parse_file(self.tmp_summary, use_cpp=True,
+		ast_summ = parse_file(summary, use_cpp=True,
 			cpp_path='gcc',
 			cpp_args=['-E', f'-I{self.fakelib}'])
 
 
 		#Initial visitor to get the functions from both files
-		vis_cncrt = InitialVisitor(ast_cnctr, self.concrete_file)
-		vis_summ = InitialVisitor(ast_summ, self.summary_path)
+		vis_cncrt = InitialVisitor(ast_cnctr, filename = self.concrete_file)
+		vis_summ = InitialVisitor(ast_summ, filename = self.summary_path)
 
 		#Functions in each file
 		cnctr_functions = vis_cncrt.functions()
@@ -180,9 +180,10 @@ class ValidationGenerator(CGenerator):
 	#Generate summary validation test
 	def gen(self):
 		try:
-			self._add_fake_includes()
+			tmp_concrete = self._add_fake_includes(self.concrete_file)
+			tmp_summary = self._add_fake_includes(self.summary_path)
 
-			function_defs, args, ret_type = self._parse_functions()
+			function_defs, args, ret_type = self._parse_functions(tmp_concrete, tmp_summary)
 			header = self._gen_headers(function_defs)
 			
 			
@@ -234,9 +235,9 @@ class ValidationGenerator(CGenerator):
 
 			file_name = os.path.basename(__file__)
 			self._write_to_file(generated_string, header, file_name)
-			self._remove_files(self.tmp_concrete, self.tmp_summary)
+			self._remove_files(tmp_concrete, tmp_summary)
 
 		except Exception:
-			self._remove_files(self.tmp_concrete, self.tmp_summary)
+			self._remove_files(tmp_concrete, tmp_summary)
 			print(traceback.format_exc())
 
