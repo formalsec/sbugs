@@ -1,6 +1,11 @@
 #ifndef _FAKE_TYPEDEFS_H
 #define _FAKE_TYPEDEFS_H
 
+typedef void* symbolic;
+typedef unsigned int cnstr_t;
+typedef unsigned int state_t; 
+typedef unsigned int result_t; 
+
 typedef int size_t;
 typedef int __builtin_va_list;
 typedef int __gnuc_va_list;
