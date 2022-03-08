@@ -42,3 +42,6 @@ class API_Gen():
 
     def print_counterexamples(self, result):
         return FuncCall(ID(f'print_counterexamples'), ExprList( [ID(result)] ))
+
+    def summ_mem_addr(self, name, size):
+        return FuncCall(ID(f'summ_mem_addr'), ExprList( [ID(name), ID(size)] ))

@@ -1,9 +1,9 @@
 from pycparser import parse_file, c_generator
 from pycparser.c_ast import *
 
-from ..Generators.FunctionArgs.ArrayType import ArrayTypeGen
-from ..Generators.FunctionArgs.PrimitiveType import PrimitiveTypeGen
-from ..Generators.FunctionArgs.StructType import StructTypeGen
+from ..Generators.Types.ArrayType import ArrayTypeGen
+from ..Generators.Types.PrimitiveType import PrimitiveTypeGen
+from ..Generators.Types.StructType import StructTypeGen
 
 import SummValidation.Utils.utils as utils
 from CProcessor import config
@@ -12,13 +12,15 @@ from CProcessor import config
 
 class ArgVisitor(NodeVisitor):
 
-    def __init__ (self):
+    def __init__ (self, sizeMacro = None):
 
         #Store argument node (Decl)
         self.node = None
 
         # array or ptr
-        self.sizeMacro = None
+        if not sizeMacro:
+            sizeMacro = 'ptr'
+        self.sizeMacro = sizeMacro
 
         self.structs = {}
         self.aliases = {}
@@ -41,18 +43,10 @@ class ArgVisitor(NodeVisitor):
         return (self.argtype, self.arrayDim, self.struct)
 
 
-
     #Return generated code
     #If HEAP=true, change declaration of
     #arrays (dim: 2+) in function headers
     def gen_code(self):   
-        if len(self.arrayDim) > 1 and config.HEAP:
-            ptr = PtrDecl([], TypeDecl(self.argname, [], IdentifierType([self.argtype])))
-            for _ in range(1, len(self.arrayDim)):
-                ptr = PtrDecl([], ptr)
-
-            self.node.type = ptr
-        
         return self.code
 
     #Visitors
@@ -115,7 +109,7 @@ class ArgVisitor(NodeVisitor):
             self.code = None
             return
 
-        self.arrayDim.append('ptr')
+        self.arrayDim.append(self.sizeMacro)
       
         self.visit(node.type)
         return

@@ -2,29 +2,53 @@ from SummValidation.ArgGen.Visitors.FunctionArgs import ArgVisitor
 from pycparser.c_ast import *
 
 class Symbolic_Args():
-    def __init__(self):
-        pass
-
-    def create_symbolic_args(self, args):
-
-        block = []     #Test code to be generated
-        call_args = []  #Arguments to call the function		
-
-        #Function has no arguments
-        if args is None:
-            args = []
+    def __init__(self, args, size_macro = None):
+        self.args = args
+        self.size_macro = size_macro
         
+        if self.args == None:
+            self.args = []
+
+        self.block = []
+        
+        self.call_args = []
+        self.types_list = []
+
+        self.args_dict = {}
+
         #Visit arguments 
         for arg in args:
 
-            vis = ArgVisitor()   
+            vis = ArgVisitor(self.size_macro)   
             vis.visit(arg)
             code = vis.gen_code()
-            call_args.append(vis.argname)
+            typ = vis.get_type()
             
-            block += code
+            self.call_args.append(vis.argname)
+            self.block += code
+            self.types_list += typ
+            
+            self.args_dict[vis.argname] = typ
 
-        return block, call_args
+
+    def create_symbolic_args(self):
+        return self.block
+
+    def get_types(self):  
+        return self.types_list
+
+    def get_all_args(self):
+        return self.call_args
+
+    def get_ptr_args(self):
+        ptr_names = []
+        for name in self.args_dict.keys():
+            if len(self.args_dict[name][1]) > 0:
+                ptr_names.append(name)
+        
+        return ptr_names
+
+
 
     def call_function(self, fname, call_args, ret_name, ret_type):
         
@@ -35,19 +59,4 @@ class Symbolic_Args():
         return Decl(ret_name, [], [], [], lvalue, rvalue, None)
 
     
-    def get_types(self, args):
-        
-        #Function has no arguments
-        if args is None:
-            return []
-        
-        types_list = []
-        for arg in args:
-
-            vis = ArgVisitor()   
-            vis.visit(arg)
-            typ = vis.get_type()
-            types_list.append(typ)
-
-        return types_list
 

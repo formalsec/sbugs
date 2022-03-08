@@ -1,7 +1,4 @@
-from pycparser import parse_file, c_generator
 from pycparser.c_ast import *
-
-import SummValidation.Utils.utils as utils
 from .DefaultGen import DefaultGen
 
 
@@ -15,13 +12,14 @@ class ArrayGen(DefaultGen):
         self.dimension = len(array)
 
 
-
     def _size(self, val):
-        if not val.isnumeric():
-            return self.sizeMacros[val]
-        else:
+        if val.isnumeric():
             return Constant('int', val)
-
+        else:
+            if val in self.sizeMacros.keys():
+                return self.sizeMacros[val]
+            else:
+                return ID(val)
 
 
     #Declare N-dimension array in the stack

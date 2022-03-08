@@ -1,6 +1,6 @@
 from pycparser.c_ast import *
 
-FUEL_MACRO = 'FUEL'
+SIZE_MACRO = 'SIZE'
 ARRAY_SIZE_MACRO = 'ARRAY_SIZE'
 POINTER_SIZE_MACRO = 'POINTER_SIZE'
 

@@ -7,19 +7,24 @@ from SummValidation.CGenerator import CGenerator
 from SummValidation.ArgGen.Symbolic_Args import Symbolic_Args
 from SummValidation.APIGen.APIGen import API_Gen
 from SummValidation.APIGen import API
+from SummValidation.TestGen.TestGen import TestGen
 
 from SummValidation.Utils.utils import defineMacro, returnValue, createFunction 
-from SummValidation.Utils.utils import ARRAY_SIZE_MACRO, POINTER_SIZE_MACRO
+from SummValidation.Utils.utils import SIZE_MACRO 
 from SummValidation.Utils.visitors import InitialVisitor, FCallsVisitor, ReturnTypeVisior
 
 
 class ValidationGenerator(CGenerator):
-	def __init__(self, concrete_func, summary, outputfile,
-				 arraysize, summ_name=None, cncrt_name = None, fakelib=None):
+	def __init__(self, concrete_func, summary,
+				 outputfile,
+				 arraysize, memory = False,
+				 cncrt_name = None, summ_name=None,
+				 fakelib=None):
 
 		super().__init__(outputfile, summary, concrete_func, fakelib)
 
 		self.arraysize = arraysize
+		self.memory = memory
 
 		#Summary name (if summ is not isolated in a file, e,g in a library)
 		self.summ_name = summ_name
@@ -84,11 +89,11 @@ class ValidationGenerator(CGenerator):
 		cncrt_args = cncrt_def.decl.type.args.params if cncrt_def.decl.type.args else None
 		summ_args = summ_def.decl.type.args.params if summ_def.decl.type.args else None
 
-		args_vis1 = Symbolic_Args()
-		args_vis2 = Symbolic_Args()
+		args_vis1 = Symbolic_Args(cncrt_args)
+		args_vis2 = Symbolic_Args(summ_args)
 
-		args1 = args_vis1.get_types(cncrt_args)
-		args2 = args_vis2.get_types(summ_args)
+		args1 = args_vis1.get_types()
+		args2 = args_vis2.get_types()
 
 		if args1 != args2:
 			msg = (
@@ -159,23 +164,29 @@ class ValidationGenerator(CGenerator):
 	def _gen_headers(self, defs):
 		_ , summ_def = defs
 		
-		call_vis = FCallsVisitor()
-		call_vis.visit(summ_def)
-		calls = call_vis.fcalls()
-
+		#Add core api functions
 		headers = []
 		headers += API.type_defs
 		headers += API.validation_api
 
+		#Visitor to get all function calls
+		call_vis = FCallsVisitor()
+		call_vis.visit(summ_def)
+		calls = call_vis.fcalls()
+
+		#Check if calls are optional api functions
 		for c in calls:
 			if c in API.all_api.keys():
 				headers.append(API.all_api[c])
 		
 		headers.append('\n')
 
-		#Macros
-		headers.append(defineMacro(ARRAY_SIZE_MACRO, self.arraysize))
-		headers.append(defineMacro(POINTER_SIZE_MACRO, self.arraysize))
+		#Size macros
+		i = 0
+		for size in self.arraysize:	
+			i += 1	
+			headers.append(defineMacro(f'{SIZE_MACRO}_{i}', size))
+
 		return headers
 
 
@@ -189,45 +200,27 @@ class ValidationGenerator(CGenerator):
 			header = self._gen_headers(function_defs)
 						
 			#Main function to run the test
-			main = createFunction(name='main',
-						args=None,
-						returnType='int')
-
-			#Helper objects
-			sym_args_gen = Symbolic_Args()
-			api_gen = API_Gen()
-
-			#Create symbolic args
-			args_code, args_names = sym_args_gen.create_symbolic_args(args)
-			
-			#Body contains the test code
-			body = [
-				*args_code,
-
-				api_gen.save_current_state('initial_state'),
-
-				sym_args_gen.call_function(self.cncrt_name, args_names, 'ret1', ret_type),
-				api_gen.get_cnstr('cnstr1', 'ret1', ret_type),
-				api_gen.add_expr('cnctr', 'cnstr1'),
+			main = createFunction(name='main',args=None, returnType='int')
 				
-				api_gen.halt_all('initial_state'),
+			i = 0
+			test_defs = []
+			main_body = []
+			test_gen = TestGen(args, ret_type, self.cncrt_name, self.summ_name, self.memory)
+			
+			for i in range(1, len(self.arraysize)+1):
 
-				sym_args_gen.call_function(self.summ_name, args_names, 'ret2', ret_type),			
-				api_gen.get_cnstr('cnstr2', 'ret2', ret_type),
-				api_gen.add_expr('summ', 'cnstr2'),
+				#Create test 
+				test_name = f'test_{i}'
+				test_defs.append(test_gen.createTest(test_name, f'{SIZE_MACRO}_{i}'))
+				
+				#Call test function from main
+				main_body.append(FuncCall(ID(test_name), ExprList([])))
+				
 
-				api_gen.check_implications('result', 'cnctr', 'summ'),
-				api_gen.print_counterexamples('result'),
-
-				#Return
-				returnValue(Constant('int', str(0)))
-			]
-
-			#Create main function ast
-			block = Compound(body)
+			block = Compound(main_body)
 			main_ast = FuncDef(main, None, block, None)
 
-			gen_ast = FileAST(function_defs)
+			gen_ast = FileAST(function_defs + test_defs)
 			gen_ast.ext.append(main_ast)
 
 			#Generate string from ast
