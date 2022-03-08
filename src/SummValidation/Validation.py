@@ -36,13 +36,13 @@ class ValidationGenerator(CGenerator):
 
 		if self.cncrt_name:
 			if self.cncrt_name not in c_names:
-				sys.exit(f"ERROR: Concrete function not found in the given file: \'{self.concrete_file}\'")
+				self._exit(f"ERROR: Concrete function not found in the given file: \'{self.concrete_file}\'")
 			else:
 				cncrt = c_functions[self.cncr_name]
 
 		if self.summ_name:
 			if self.summ_name not in s_names:
-				sys.exit(f"ERROR: Summary not found in the given file: \'{self.summary_path}\'")
+				self._exit(f"ERROR: Summary not found in the given file: \'{self.summary_path}\'")
 			else:
 				summ = c_functions[self.summ_name]
 
@@ -50,7 +50,7 @@ class ValidationGenerator(CGenerator):
 		if not cncrt:
 
 			if len(c_names) == 0:
-				sys.exit(f"ERROR: No functions provided in: \'{self.concrete_file}\'")
+				self._exit(f"ERROR: No functions provided in: \'{self.concrete_file}\'")
 			
 			elif len(c_names) == 1:
 				cncrt, = list(c_functions.values())
@@ -59,12 +59,12 @@ class ValidationGenerator(CGenerator):
 			else: 
 				message = ("No function name provided!\n"
 						  f"ERROR: There should be only one concrete function to be compared with in \'{self.concrete_file}\'")				
-				sys.exit(message)
+				self._exit(message)
 
 		if not summ:
 
 			if len(s_names) == 0:
-				sys.exit(f"ERROR: No summary provided in: \'{self.summary_path}\'")
+				self._exit(f"ERROR: No summary provided in: \'{self.summary_path}\'")
 			
 			elif len(s_names) == 1:
 				summ, = list(s_functions.values())
@@ -73,7 +73,7 @@ class ValidationGenerator(CGenerator):
 			else:
 				message = ("No function name provided!\n"
 						  f"ERROR: There should be only one target summary in \'{self.summary_path}\'")
-				sys.exit(message)
+				self._exit(message)
 
 			return [cncrt, summ]
 		
@@ -96,7 +96,7 @@ class ValidationGenerator(CGenerator):
 				f"Summary path: \'{self.summary_path}\'\n"
 				f"Concrete Function: \'{self.concrete_file}\'"
 				)
-			sys.exit(msg)
+			self._exit(msg)
 
 		return cncrt_args
 
@@ -122,7 +122,7 @@ class ValidationGenerator(CGenerator):
 				f"Summary path: \'{self.summary_path}\'\n"
 				f"Concrete Function: \'{self.concrete_file}\'"
 				)
-			sys.exit(msg)
+			self._exit(msg)
 
 		return ret1
 

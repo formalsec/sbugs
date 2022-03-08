@@ -1,3 +1,4 @@
+import sys
 import traceback
 import os
 
@@ -12,7 +13,7 @@ class CGenerator:
 		self.concrete_file = concrete_func
 
 		self.outputfile = outputfile
-
+		self.tmp_files = []
 
 	def _add_fake_include(self, file):
 		fake_include = '#include <stdlib.h>\n'
@@ -28,6 +29,7 @@ class CGenerator:
 		tmp_c.flush()
 		tmp_c.close()
 
+		self.tmp_files.append(tmp_file)
 		return tmp_file
 
 	
@@ -48,3 +50,11 @@ class CGenerator:
 		outfile.write(code)
 		outfile.flush()
 		outfile.close()
+
+	def _exit(self, msg):
+		try:
+			self._remove_files(*self.tmp_files)
+		except Exception:
+				print(traceback.format_exc())
+
+		sys.exit(msg)
