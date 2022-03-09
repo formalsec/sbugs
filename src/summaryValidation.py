@@ -34,8 +34,22 @@ def get_cmd_args():
 	parser.add_argument('-memory', action='store_true',
 						help='Evaluate a summary with memory manipulation side-effects')
 
+	parser.add_argument('-config', metavar='path', type=str, required=False,
+						help='Config file')
+
+
 	return parser.parse_args()
 
+
+def parse_config(conf):
+	f = open(conf, "r")
+	lines = f.readlines()
+	f.close()
+
+	for l in lines:
+		split = l.split(' ')
+		if 'size' in split[0]:
+			return [size for size in map(lambda x: int(x), split[1:])]
 
 
 if __name__ == "__main__":
@@ -53,6 +67,10 @@ if __name__ == "__main__":
 	ccompile = args.compile
 	lib_paths = args.lib
 	memory = args.memory
+	config_file = args.config
+
+	if config_file:
+		arraysize = parse_config(config_file)
 
 	valgenerator = ValidationGenerator(concrete_function, target_summary,
 					 			 		outputfile,
