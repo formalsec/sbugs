@@ -12,7 +12,7 @@ class TestGen:
         self.cncrt_name = cncrt_name
         self.summ_name = summ_name
     
-    def createTest(self, name, size_macro):
+    def createTest(self, name, size_macro, id):
 
         #Helper objects
         sym_args_gen = Symbolic_Args(self.args, size_macro)
@@ -38,15 +38,15 @@ class TestGen:
         body +=[
             sym_args_gen.call_function(self.cncrt_name, args_names, 'ret1', self.ret),
             api_gen.get_cnstr('cnstr1', 'ret1', self.ret),
-            api_gen.add_expr('cnctr', 'cnstr1'),
+            api_gen.add_expr(f'cnctr_test{id}', 'cnstr1'),
             
             api_gen.halt_all('initial_state'),
 
             sym_args_gen.call_function(self.summ_name, args_names, 'ret2', self.ret),			
             api_gen.get_cnstr('cnstr2', 'ret2', self.ret),
-            api_gen.add_expr('summ', 'cnstr2'),
+            api_gen.add_expr(f'summ_test{id}', 'cnstr2'),
 
-            api_gen.check_implications('result', 'cnctr', 'summ'),
+            api_gen.check_implications('result', f'cnctr_test{id}', f'summ_test{id}'),
             api_gen.print_counterexamples('result'),
 
             #Return

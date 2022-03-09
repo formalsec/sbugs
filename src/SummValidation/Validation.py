@@ -211,7 +211,8 @@ class ValidationGenerator(CGenerator):
 
 				#Create test 
 				test_name = f'test_{i}'
-				test_defs.append(test_gen.createTest(test_name, f'{SIZE_MACRO}_{i}'))
+				macro = f'{SIZE_MACRO}_{i}'
+				test_defs.append(test_gen.createTest(test_name, macro, i))
 				
 				#Call test function from main
 				main_body.append(FuncCall(ID(test_name), ExprList([])))
