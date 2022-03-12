@@ -1,9 +1,10 @@
 type_defs = [
     '#define NULL ((void*)0)\n'
+    '#define NULL_STATE -1\n'
     'typedef void* symbolic; \n',
+    'typedef int state_t; \n',
     'typedef unsigned int size_t; \n',
     'typedef unsigned int cnstr_t; \n',
-    'typedef unsigned int state_t; \n',
     'typedef unsigned int result_t; \n',
     '\n'
 ]

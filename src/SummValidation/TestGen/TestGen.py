@@ -11,7 +11,8 @@ class TestGen:
         self.memory = memory
         self.cncrt_name = cncrt_name
         self.summ_name = summ_name
-    
+
+
     def createTest(self, name, size_macro, id):
 
         #Helper objects
@@ -26,6 +27,7 @@ class TestGen:
 
         #Body contains the test code
         body = [
+            api_gen.save_current_state(),
             *args_code,
             api_gen.save_current_state('initial_state'),
         ]
@@ -53,13 +55,13 @@ class TestGen:
             returnValue(Constant('int', str(0)))
         ]
 
-        #Create main function ast
+        #Create function ast
         block = Compound(body)
-
+        
         typedecl = TypeDecl(name, [], IdentifierType(names=[self.ret]))
         funcdecl = FuncDecl(None, typedecl)
         decl = Decl(name, [], [], [], funcdecl, None, None)
         
         
-        return FuncDef(decl, None, block, None)
+        return FuncDef(decl, None, block)
 

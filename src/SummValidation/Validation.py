@@ -41,13 +41,15 @@ class ValidationGenerator(CGenerator):
 
 		if self.cncrt_name:
 			if self.cncrt_name not in c_names:
-				self._exit(f"ERROR: Concrete function not found in the given file: \'{self.concrete_file}\'")
+				self._exit("ERROR: Concrete function not found"
+						  "in the given file: \'{self.concrete_file}\'")
 			else:
 				cncrt = c_functions[self.cncr_name]
 
 		if self.summ_name:
 			if self.summ_name not in s_names:
-				self._exit(f"ERROR: Summary not found in the given file: \'{self.summary_path}\'")
+				self._exit("ERROR: Summary not found in"
+						 f"the given file: \'{self.summary_path}\'")
 			else:
 				summ = c_functions[self.summ_name]
 
@@ -63,7 +65,8 @@ class ValidationGenerator(CGenerator):
 			
 			else: 
 				message = ("No function name provided!\n"
-						  f"ERROR: There should be only one concrete function to be compared with in \'{self.concrete_file}\'")				
+						  "ERROR: There should be only one concrete function"
+						  f"to be compared with in \'{self.concrete_file}\'")				
 				self._exit(message)
 
 		if not summ:
@@ -77,12 +80,14 @@ class ValidationGenerator(CGenerator):
 			
 			else:
 				message = ("No function name provided!\n"
-						  f"ERROR: There should be only one target summary in \'{self.summary_path}\'")
+						  "ERROR: There should be only one"
+						  f"target summary in \'{self.summary_path}\'")
 				self._exit(message)
 
 			return [cncrt, summ]
+	
 		
-
+	#Get function arguments
 	def _get_function_args(self, defs):
 		cncrt_def, summ_def = defs
 		
@@ -99,13 +104,13 @@ class ValidationGenerator(CGenerator):
 			msg = (
 				"Arguments do not match!\n"
 				f"Summary path: \'{self.summary_path}\'\n"
-				f"Concrete Function: \'{self.concrete_file}\'"
-				)
+				f"Concrete Function: \'{self.concrete_file}\'")
 			self._exit(msg)
 
 		return cncrt_args
 
 
+	#Get return type
 	def _get_ret_type(self, defs):
 		cncrt_def, summ_def = defs
 
@@ -130,6 +135,7 @@ class ValidationGenerator(CGenerator):
 			self._exit(msg)
 
 		return ret1
+
 
 	#Parse target functions from the given files
 	#Returns (ast_defs, ast_args, ret_type)
@@ -198,15 +204,20 @@ class ValidationGenerator(CGenerator):
 
 			function_defs, args, ret_type = self._parse_functions(tmp_concrete, tmp_summary)
 			header = self._gen_headers(function_defs)
+
+			#Generation helpers
+			api_gen = API_Gen()
+			test_gen = TestGen(args, ret_type, self.cncrt_name, self.summ_name, self.memory)
 						
-			#Main function to run the test
+			#Main function to run the tests	
+			main_body = []
 			main = createFunction(name='main',args=None, returnType='int')
+
+			#Save fresh state on which to run all tests
+			main_body.append(api_gen.save_current_state('fresh_state'))
 				
 			i = 0
 			test_defs = []
-			main_body = []
-			test_gen = TestGen(args, ret_type, self.cncrt_name, self.summ_name, self.memory)
-			
 			for i in range(1, len(self.arraysize)+1):
 
 				#Create test 
@@ -216,7 +227,10 @@ class ValidationGenerator(CGenerator):
 				
 				#Call test function from main
 				main_body.append(FuncCall(ID(test_name), ExprList([])))
-				
+
+				if i < len(self.arraysize):
+					main_body.append(api_gen.halt_all('fresh_state'))
+
 
 			block = Compound(main_body)
 			main_ast = FuncDef(main, None, block, None)

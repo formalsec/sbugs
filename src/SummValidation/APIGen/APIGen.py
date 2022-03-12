@@ -4,11 +4,13 @@ class API_Gen():
     def __init__(self):
         pass
 
-    def save_current_state(self, name):
+    def save_current_state(self, name = None):
         
+        if not name:
+            return FuncCall(ID(f'save_current_state'), ExprList([]))
+
         lvalue = TypeDecl(name, [], IdentifierType(names=['state_t']))
         rvalue = FuncCall(ID(f'save_current_state'), ExprList([]))
-
         return Decl(name, [], [], [], lvalue, rvalue, None)
     
 

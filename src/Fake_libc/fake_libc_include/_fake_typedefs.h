@@ -3,7 +3,7 @@
 
 typedef void* symbolic;
 typedef unsigned int cnstr_t;
-typedef unsigned int state_t; 
+typedef int state_t; 
 typedef unsigned int result_t; 
 
 typedef int size_t;
