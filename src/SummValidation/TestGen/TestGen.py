@@ -35,7 +35,7 @@ class TestGen:
         if self.memory:
             ptr_names = sym_args_gen.get_ptr_args()
             for ptr in ptr_names:
-                body.append(api_gen.summ_mem_addr(ptr, size_macro))
+                body.append(api_gen.mem_addr(ptr, size_macro))
 
         body +=[
             sym_args_gen.call_function(self.cncrt_name, args_names, 'ret1', self.ret),

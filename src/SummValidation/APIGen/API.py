@@ -17,7 +17,8 @@ validation_api = [
     'result_t check_implications(char* constraint1, char* constraint2) {return 0;} \n',
     'void print_counterexamples(result_t result) {return;}\n',
     'symbolic new_sym_var(size_t size) {return 0;} \n',
-    '\n'
+    'void mem_addr(void* addr, size_t length) {return;} \n',
+    '\n',
 ]
 
 standard_api = {
@@ -73,7 +74,7 @@ all_api = {
     'maximize':         'void* maximize(symbolic sym_var, size_t length) {return NULL;} \n',
     'is_sat':           'int is_sat(cnstr_t cnstr) {return 0;}\n',
     'mem_alloc':    'void* mem_alloc(void* size) {return NULL;} \n',
-    'mem_addr':     'void mem_addr(void* addr, void* n, size_t length) {return;} \n',
+    'mem_addr':     'mem_addr(void* addr, size_t length) \n',
     'mem_bytes':    'size_t* mem_bytes(void* ptr) {return -1;} \n',
     'mem_free':     'void summ_mem_free(void* ptr) {return;} \n',
     '_solver_Concat':   'symbolic _solver_Concat(symbolic sym_var, symbolic sym_var2, size_t length1, size_t length2) {return NULL;} \n', 

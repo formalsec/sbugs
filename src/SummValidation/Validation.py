@@ -180,11 +180,12 @@ class ValidationGenerator(CGenerator):
 		call_vis.visit(summ_def)
 		calls = call_vis.fcalls()
 
-		#Check if calls are optional api functions
-		for c in calls:
-			if c in API.all_api.keys():
-				headers.append(API.all_api[c])
-		
+		#Check if calls are api functions
+		#Only add stubs for functions not already added by API.validation_api
+		for c in calls: 
+			stub = API.all_api[c]
+			if c in API.all_api.keys() and stub not in API.validation_api:
+				headers.append(stub)
 		headers.append('\n')
 
 		#Size macros
