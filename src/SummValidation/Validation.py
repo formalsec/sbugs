@@ -183,9 +183,10 @@ class ValidationGenerator(CGenerator):
 		#Check if calls are api functions
 		#Only add stubs for functions not already added by API.validation_api
 		for c in calls: 
-			stub = API.all_api[c]
-			if c in API.all_api.keys() and stub not in API.validation_api:
-				headers.append(stub)
+			if c in API.all_api.keys():
+				stub = API.all_api[c]
+				if stub not in API.validation_api:
+					headers.append(stub)
 		headers.append('\n')
 
 		#Size macros
