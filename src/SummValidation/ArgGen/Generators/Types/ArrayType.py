@@ -29,7 +29,7 @@ class ArrayTypeGen(ArrayGen):
         if self.struct:
             rvalue = self.init_struct_rvalue(self.vartype)
         else:
-            rvalue = self.symbolic_rvalue(self.vartype)
+            rvalue = self.symbolic_rvalue_array(Constant('string', f'\"{name}\"'), ID(index), self.vartype)
         
         return Assignment(op='=', lvalue=lvalue, rvalue=rvalue)             
 

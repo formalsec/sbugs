@@ -15,14 +15,13 @@ class DefaultGen(NodeVisitor):
         self.vartype = vartype #String
 
     
-    def symbolic_rvalue(self, vartype):
+    def symbolic_rvalue(self, name, vartype):
         
         #Multiply sizeof by 8bits
-        multiply = BinaryOp(op='*', left=FuncCall(ID('sizeof'),\
-        ExprList([ID(vartype)])), right=Constant('int', str(8)))
+        multiply = BinaryOp(op='*', left=FuncCall(ID('sizeof'),ExprList([ID(vartype)])), right=Constant('int', str(8)))
 
         #Create Rvalue
-        sizeof = ExprList([multiply])
+        sizeof = ExprList([name, multiply])
         rvalue = FuncCall(ID('new_sym_var'), sizeof)
 
         return rvalue

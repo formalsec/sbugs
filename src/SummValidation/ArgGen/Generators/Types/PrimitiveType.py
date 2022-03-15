@@ -23,7 +23,7 @@ class PrimitiveTypeGen(DefaultGen):
         lvalue = TypeDecl(name, [], IdentifierType(names=[self.vartype]))
 
         #Make symbolic type
-        rvalue = self.symbolic_rvalue(self.vartype)
+        rvalue = self.symbolic_rvalue(Constant('string', f'\"{name}\"'),self.vartype)
 
         #Assemble declaration
         decl = Decl(name, [], [], [], lvalue, rvalue, None)

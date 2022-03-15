@@ -131,3 +131,14 @@ class ArrayGen(DefaultGen):
         ##Create the For node
         return For(init, cond, nxt, stmt)
         
+
+    def symbolic_rvalue_array(self, name, index, vartype):
+        
+        #Multiply sizeof by 8bits
+        multiply = BinaryOp(op='*', left=FuncCall(ID('sizeof'),ExprList([ID(vartype)])), right=Constant('int', str(8)))
+
+        #Create Rvalue
+        sizeof = ExprList([name, index, multiply])
+        rvalue = FuncCall(ID('new_sym_var_array'), sizeof)
+
+        return rvalue
