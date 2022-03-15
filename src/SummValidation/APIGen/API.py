@@ -18,7 +18,7 @@ validation_api = [
     'void print_counterexamples(result_t result) {return;}\n',
     'symbolic new_sym_var(char* name, size_t size) {return 0;}\n'
     'symbolic new_sym_var_array(char* name, size_t index, size_t size) {return 0;}\n'   
-    'void mem_addr(void* addr, size_t length) {return;} \n',
+    'void mem_addr(char* name, void* addr, size_t length) {return;} \n',
     '\n',
 ]
 
