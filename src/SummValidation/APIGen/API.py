@@ -62,7 +62,6 @@ constraints_api = {
 
 #Merge all 
 all_api = {
-    'new_sym_var':              'symbolic new_sym_var(char* name, size_t size) {return 0;}\n',
     'new_sym_var_array':        'symbolic new_sym_var_array(char* name, size_t index, size_t size) {return 0;}\n',
     'save_current_state':       'state_t save_current_state() {return 0;} \n',
     'get_cnstr':                'cnstr_t get_cnstr(symbolic var, size_t size) {return 0;} \n',
