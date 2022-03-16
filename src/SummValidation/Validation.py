@@ -173,7 +173,8 @@ class ValidationGenerator(CGenerator):
 		#Add core api functions
 		headers = []
 		headers += API.type_defs
-		headers += API.validation_api
+		headers += API.validation_api.values()
+		headers.append('\n')
 
 		#Visitor to get all function calls
 		call_vis = FCallsVisitor()
@@ -185,7 +186,7 @@ class ValidationGenerator(CGenerator):
 		for c in calls: 
 			if c in API.all_api.keys():
 				stub = API.all_api[c]
-				if stub not in API.validation_api:
+				if c not in API.validation_api:
 					headers.append(stub)
 		headers.append('\n')
 
