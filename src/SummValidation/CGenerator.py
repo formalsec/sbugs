@@ -18,20 +18,24 @@ class CGenerator:
 	def _add_fake_include(self, file):
 		fake_include = '#include <stdlib.h>\n'
 
-		c = open(file, "r")
-		c_lines = c.readlines()
-		c.close()
+		try:
+			c = open(file, "r")
+			c_lines = c.readlines()
+			c.close()
 
-		tmp_file = 'tmp_' + file.split('/')[-1]
-	
-		tmp_c = open(tmp_file, "w")
-		tmp_c.writelines([fake_include] + c_lines)
-		tmp_c.flush()
-		tmp_c.close()
+			tmp_file = 'tmp_' + file.split('/')[-1]
+		
+			tmp_c = open(tmp_file, "w")
+			tmp_c.writelines([fake_include] + c_lines)
+			tmp_c.flush()
+			tmp_c.close()
 
-		self.tmp_files.append(tmp_file)
-		return tmp_file
+			self.tmp_files.append(tmp_file)
+			return tmp_file
 
+		except Exception:
+			print(traceback.format_exc())
+			self._exit(f'{file} not found')
 	
 	def _remove_files(self, *files):
 		for f in files:
@@ -55,6 +59,6 @@ class CGenerator:
 		try:
 			self._remove_files(*self.tmp_files)
 		except Exception:
-				print(traceback.format_exc())
+				pass
 
 		sys.exit(msg)
