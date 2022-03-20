@@ -73,7 +73,7 @@ if __name__ == "__main__":
 	target_summary = args.summary
 	outputfile = args.o
 	arraysize = args.arraysize
-	maxnum = args.maxnum
+	maxvalue = args.maxvalue
 	summ_name = args.summ_name
 	cncr_name = args.func_name
 	ccompile = args.compile
@@ -82,13 +82,13 @@ if __name__ == "__main__":
 	config_file = args.config
 
 	if config_file:
-		arraysize, maxnum = parse_config(config_file)
+		arraysize, maxvalue = parse_config(config_file)
 		if arraysize == []:
 			arraysize = [5]
 
 	valgenerator = ValidationGenerator(concrete_function, target_summary,
 					 			 		outputfile,
-										arraysize, maxnum, memory,
+										arraysize, maxvalue, memory,
 										cncr_name, summ_name)
 	valgenerator.gen()
 
