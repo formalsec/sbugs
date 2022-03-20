@@ -1,9 +1,4 @@
-from pycparser import parse_file, c_generator
 from pycparser.c_ast import *
-
-import SummValidation.Utils.utils as utils
-
-
 from ..DefaultGen import DefaultGen
 
 #Create a symbolic struct (call respective function)

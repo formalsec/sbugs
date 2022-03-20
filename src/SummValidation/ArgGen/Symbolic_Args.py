@@ -2,9 +2,10 @@ from SummValidation.ArgGen.Visitors.FunctionArgs import ArgVisitor
 from pycparser.c_ast import *
 
 class Symbolic_Args():
-    def __init__(self, args, size_macro = None):
+    def __init__(self, args, size_macro = None, max_macro = None):
         self.args = args
         self.size_macro = size_macro
+        self.max_macro = max_macro
         
         if self.args == None:
             self.args = []
@@ -19,7 +20,7 @@ class Symbolic_Args():
         #Visit arguments 
         for arg in args:
 
-            vis = ArgVisitor(self.size_macro)   
+            vis = ArgVisitor(self.size_macro, self.max_macro)   
             vis.visit(arg)
             code = vis.gen_code()
             typ = vis.get_type()

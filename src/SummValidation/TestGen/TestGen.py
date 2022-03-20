@@ -13,10 +13,10 @@ class TestGen:
         self.summ_name = summ_name
 
 
-    def createTest(self, name, size_macro, id):
+    def createTest(self, name, size_macro, max_macro, id):
 
         #Helper objects
-        sym_args_gen = Symbolic_Args(self.args, size_macro)
+        sym_args_gen = Symbolic_Args(self.args, size_macro, max_macro)
         api_gen = API_Gen()
 
         #Create symbolic args

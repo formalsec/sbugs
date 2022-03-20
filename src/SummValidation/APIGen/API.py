@@ -19,6 +19,8 @@ validation_api = {
     'new_sym_var':              'symbolic new_sym_var(char* name, size_t size) {return 0;}\n',
     'new_sym_var_array':        'symbolic new_sym_var_array(char* name, size_t index, size_t size) {return 0;}\n',   
     'mem_addr':                 'void mem_addr(char* name, void* addr, size_t length) {return;} \n',
+    '_solver_LE':               'cnstr_t _solver_LE(symbolic sym_var, symbolic sym_var2, size_t length) {return 0;} \n',
+    'assume':                   'void assume(cnstr_t cnstr) {return;} \n'
 }
 
 standard_api = {

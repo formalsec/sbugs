@@ -23,7 +23,10 @@ def get_cmd_args():
 						help='Name of the concrete function in the given path')
 
 	parser.add_argument('--arraysize', metavar='value', nargs='+', type=int, required=False, default=[5],
-						help='Define array sizes to use for tests (default:5)')
+						help='Define array sizes for each tests (default:5)')
+
+	parser.add_argument('--maxvalue', metavar='value', nargs='+', type=int, required=False, default=[],
+						help='Define values to constrain numeric values')
 
 	parser.add_argument('--lib', metavar='path', nargs='+', type=str, required=False,
 						help='Path to external files needed to compile the test binary')
@@ -47,17 +50,18 @@ def parse_config(conf):
 	f.close()
 
 	array_size = []
-	max_int = []
+	max_num = []
 
 	for l in lines:
+		l = l.strip()
 		split = l.split(' ')
 		if 'array_size' in split[0]:
 			array_size = [size for size in map(lambda x: int(x), split[1:])]
 
-		if 'max_int' in split[0]:
-			max_int = [size for size in map(lambda x: int(x), split[1:])]
+		if 'max_num' in split[0]:
+			max_num = [size for size in map(lambda x: int(x), split[1:])]
 
-	return array_size, max_int
+	return array_size, max_num
 
 if __name__ == "__main__":
 
@@ -69,6 +73,7 @@ if __name__ == "__main__":
 	target_summary = args.summary
 	outputfile = args.o
 	arraysize = args.arraysize
+	maxnum = args.maxnum
 	summ_name = args.summ_name
 	cncr_name = args.func_name
 	ccompile = args.compile
@@ -77,11 +82,13 @@ if __name__ == "__main__":
 	config_file = args.config
 
 	if config_file:
-		arraysize, maxint = parse_config(config_file)
+		arraysize, maxnum = parse_config(config_file)
+		if arraysize == []:
+			arraysize = [5]
 
 	valgenerator = ValidationGenerator(concrete_function, target_summary,
 					 			 		outputfile,
-										arraysize, memory,
+										arraysize, maxnum, memory,
 										cncr_name, summ_name)
 	valgenerator.gen()
 

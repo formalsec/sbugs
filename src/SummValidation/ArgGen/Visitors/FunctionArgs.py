@@ -12,7 +12,7 @@ from CProcessor import config
 
 class ArgVisitor(NodeVisitor):
 
-    def __init__ (self, sizeMacro = None):
+    def __init__ (self, sizeMacro = None, max_macro = None):
 
         #Store argument node (Decl)
         self.node = None
@@ -20,10 +20,9 @@ class ArgVisitor(NodeVisitor):
         # array or ptr
         if not sizeMacro:
             sizeMacro = 'ptr'
+        
         self.sizeMacro = sizeMacro
-
-        self.structs = {}
-        self.aliases = {}
+        self.max_macro = max_macro
 
         #ID object
         self.argname = None 
@@ -80,12 +79,14 @@ class ArgVisitor(NodeVisitor):
             
             #Primitive Type
             else:
-                generator = PrimitiveTypeGen(argname, self.argtype)
+                generator = PrimitiveTypeGen(argname, self.argtype, self.max_macro)
                 self.code = generator.gen()
                 return
         
         #Array or pointer
         else:
+            if self.argtype == 'void':
+                self.argtype = 'char'
             generator = ArrayTypeGen(argname, self.argtype, self.arrayDim, self.struct)
             self.code = generator.gen()
             return  
@@ -129,19 +130,6 @@ class ArgVisitor(NodeVisitor):
             for t in node.names[1:]:
                 typ += f' {t}' 
         
-        #Type is a typedef alias
-        if typ in self.aliases.keys():
-            typ, ptr = self.aliases[typ]
-           
-            #Typedefed pointer 
-            if ptr:
-                self.arrayDim.append('ptr')
-
-            #Typedef struct
-            if typ in self.structs.keys():
-                typ = f'struct {typ}'
-                self.struct = True
-
         self.argtype = typ
         return
 

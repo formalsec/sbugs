@@ -1,22 +1,39 @@
-from pycparser import parse_file, c_generator
 from pycparser.c_ast import *
-
-import SummValidation.Utils.utils as utils
-
 from ..DefaultGen import DefaultGen
 
 
 # Create a primitive symbolic var
 
 class PrimitiveTypeGen(DefaultGen):
-    def __init__ (self, name, vartype):
+    def __init__ (self, name, vartype, max_macro = None):
         super().__init__(name, vartype)
 
+        self.max_macro = max_macro
 
-    # e.g, int a = summ_new_sym_var(sizeof(int))
+
+    #size_t max = MAX_NUM_1;
+    #assume(_solver_LE(&n, &max, sizeof(size_t) * 8));
     
+    def _limit_max(self, name):
+
+        lvalue = TypeDecl('max', [], IdentifierType(names=[self.vartype]))
+        rvalue = ID(self.max_macro)
+        decl = Decl('max', [], [], [], lvalue, rvalue, None)
+
+        max = UnaryOp('&', ID('max'))
+        value = UnaryOp('&', ID(name))
+        size = self.type_size(self.vartype)
+
+        le = FuncCall(ID('_solver_LE'), ExprList([value, max, size]))
+        assume = FuncCall(ID('assume'), ExprList([le]))
+
+        return[decl, assume]
+
+
+    # e.g, int a = summ_new_sym_var(sizeof(int))   
     def gen(self):
 
+        code = []
         name = self.argname.name
 
         #Declare Variable
@@ -27,5 +44,8 @@ class PrimitiveTypeGen(DefaultGen):
 
         #Assemble declaration
         decl = Decl(name, [], [], [], lvalue, rvalue, None)
-        
-        return [decl]
+        code.append(decl)
+
+        if self.max_macro:
+            code += self._limit_max(name)
+        return code

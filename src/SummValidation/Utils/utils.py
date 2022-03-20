@@ -1,6 +1,7 @@
 from pycparser.c_ast import *
 
 SIZE_MACRO = 'SIZE'
+MAX_MACRO = 'MAX_NUM'
 ARRAY_SIZE_MACRO = 'ARRAY_SIZE'
 POINTER_SIZE_MACRO = 'POINTER_SIZE'
 

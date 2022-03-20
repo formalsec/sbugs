@@ -10,20 +10,22 @@ from SummValidation.APIGen import API
 from SummValidation.TestGen.TestGen import TestGen
 
 from SummValidation.Utils.utils import defineMacro, returnValue, createFunction 
-from SummValidation.Utils.utils import SIZE_MACRO 
+from SummValidation.Utils.utils import ARRAY_SIZE_MACRO, MAX_MACRO 
 from SummValidation.Utils.visitors import InitialVisitor, FCallsVisitor, ReturnTypeVisior
 
 
 class ValidationGenerator(CGenerator):
 	def __init__(self, concrete_func, summary,
 				 outputfile,
-				 arraysize, memory = False,
+				 arraysize = [5], maxnum = [],
+				 memory = False,
 				 cncrt_name = None, summ_name=None,
 				 fakelib=None):
 
 		super().__init__(outputfile, summary, concrete_func, fakelib)
 
 		self.arraysize = arraysize
+		self.maxnum = maxnum
 		self.memory = memory
 
 		#Summary name (if summ is not isolated in a file, e,g in a library)
@@ -42,7 +44,7 @@ class ValidationGenerator(CGenerator):
 		if self.cncrt_name:
 			if self.cncrt_name not in c_names:
 				self._exit("ERROR: Concrete function not found"
-						  "in the given file: \'{self.concrete_file}\'")
+						  f"in the given file: \'{self.concrete_file}\'")
 			else:
 				cncrt = c_functions[self.cncr_name]
 
@@ -169,7 +171,7 @@ class ValidationGenerator(CGenerator):
 	#Typedefs, API stubs and Macros
 	def _gen_headers(self, defs):
 		_ , summ_def = defs
-		
+
 		#Add core api functions
 		headers = []
 		headers += API.type_defs
@@ -183,20 +185,64 @@ class ValidationGenerator(CGenerator):
 
 		#Check if calls are api functions
 		#Only add stubs for functions not already added by API.validation_api
-		for c in calls: 
+		for c in calls:
 			if c in API.all_api.keys():
 				stub = API.all_api[c]
 				if c not in API.validation_api:
 					headers.append(stub)
 		headers.append('\n')
 
-		#Size macros
+		#Array size macros
 		i = 0
 		for size in self.arraysize:	
 			i += 1	
-			headers.append(defineMacro(f'{SIZE_MACRO}_{i}', size))
+			headers.append(defineMacro(f'{ARRAY_SIZE_MACRO}_{i}', size))
+		
+		#Max numeric value macros
+		j = 0
+		for max in self.maxnum:	
+			j += 1	
+			headers.append(defineMacro(f'{MAX_MACRO}_{j}', max))
 
 		return headers
+
+
+	#Generate the tests code
+	def _gen_tests(self, args, ret_type):
+
+		#Gen helpers
+		api_gen = API_Gen()	
+		test_gen = TestGen(args, ret_type, self.cncrt_name, self.summ_name, self.memory)
+
+		test_defs = []
+		main_body = []
+
+		main_body.append(api_gen.save_current_state('fresh_state'))
+		
+		max_value = None
+		array_size = f'{ARRAY_SIZE_MACRO}_1' #There is always one default size macro
+
+		tests = max(len(self.maxnum),len(self.arraysize))
+		for i in range(1, tests+1):
+
+			#Create test 
+			test_name = f'test_{i}'
+
+			if i <= len(self.arraysize):
+				array_size = f'{ARRAY_SIZE_MACRO}_{i}'
+
+			if i <= len(self.maxnum):
+				max_value = f'{MAX_MACRO}_{i}'
+
+			test_defs.append(test_gen.createTest(test_name, array_size, max_value, i))
+			
+			#Call test function from main
+			main_body.append(FuncCall(ID(test_name), ExprList([])))
+
+			if i < tests:
+				main_body.append(api_gen.halt_all('fresh_state'))
+		
+		return test_defs, main_body
 
 
 	#Generate summary validation test
@@ -206,34 +252,13 @@ class ValidationGenerator(CGenerator):
 			tmp_summary = self._add_fake_include(self.summary_path)
 
 			function_defs, args, ret_type = self._parse_functions(tmp_concrete, tmp_summary)
-			header = self._gen_headers(function_defs)
-
-			#Generation helpers
-			api_gen = API_Gen()
-			test_gen = TestGen(args, ret_type, self.cncrt_name, self.summ_name, self.memory)
+			header = self._gen_headers(function_defs)	
 						
 			#Main function to run the tests	
-			main_body = []
 			main = createFunction(name='main',args=None, returnType='int')
-
-			#Save fresh state on which to run all tests
-			main_body.append(api_gen.save_current_state('fresh_state'))
-				
-			i = 0
-			test_defs = []
-			for i in range(1, len(self.arraysize)+1):
-
-				#Create test 
-				test_name = f'test_{i}'
-				macro = f'{SIZE_MACRO}_{i}'
-				test_defs.append(test_gen.createTest(test_name, macro, i))
-				
-				#Call test function from main
-				main_body.append(FuncCall(ID(test_name), ExprList([])))
-
-				if i < len(self.arraysize):
-					main_body.append(api_gen.halt_all('fresh_state'))
-
+			
+			#Gen test definitions and calls from main
+			test_defs, main_body = self._gen_tests(args, ret_type)
 
 			block = Compound(main_body)
 			main_ast = FuncDef(main, None, block, None)
