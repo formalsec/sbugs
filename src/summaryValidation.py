@@ -46,11 +46,18 @@ def parse_config(conf):
 	lines = f.readlines()
 	f.close()
 
+	array_size = []
+	max_int = []
+
 	for l in lines:
 		split = l.split(' ')
-		if 'size' in split[0]:
-			return [size for size in map(lambda x: int(x), split[1:])]
+		if 'array_size' in split[0]:
+			array_size = [size for size in map(lambda x: int(x), split[1:])]
 
+		if 'max_int' in split[0]:
+			max_int = [size for size in map(lambda x: int(x), split[1:])]
+
+	return array_size, max_int
 
 if __name__ == "__main__":
 
@@ -70,7 +77,7 @@ if __name__ == "__main__":
 	config_file = args.config
 
 	if config_file:
-		arraysize = parse_config(config_file)
+		arraysize, maxint = parse_config(config_file)
 
 	valgenerator = ValidationGenerator(concrete_function, target_summary,
 					 			 		outputfile,
