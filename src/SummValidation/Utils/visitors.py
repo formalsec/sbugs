@@ -87,6 +87,10 @@ class FCallsVisitor(NodeVisitor):
 		if node is not None: 
 			return NodeVisitor.visit(self, node)
 
+	def visit_Assignment(self, node):
+		self.visit(node.lvalue)
+		self.visit(node.rvalue)
+
 	def visit_Switch(self, node):
 		self.visit(node.cond)
 		self.visit(node.stmt)
