@@ -219,28 +219,32 @@ class ValidationGenerator(CGenerator):
 
 		main_body.append(api_gen.save_current_state('fresh_state'))
 		
-		max_value = None
+		
 		array_size = f'{ARRAY_SIZE_MACRO}_1' #There is always one default size macro
 
+		#Number of tests
 		tests = max(len(self.maxnum),len(self.arraysize))
 		for i in range(1, tests+1):
-
-			#Create test 
+			
+			#Create test name
 			test_name = f'test_{i}'
 
 			if i <= len(self.arraysize):
 				array_size = f'{ARRAY_SIZE_MACRO}_{i}'
 
+			max_value = None
 			if i <= len(self.maxnum):
 				max_value = f'{MAX_MACRO}_{i}'
 
+			#Gen test using helper
 			test_defs.append(test_gen.createTest(test_name, array_size, max_value, i))
 			
 			#Call test function from main
 			main_body.append(FuncCall(ID(test_name), ExprList([])))
 
+			#Halt to a fresh state in between tests
 			if i < tests:
-				main_body.append(api_gen.halt_all('fresh_state'))
+				main_body.append(api_gen.halt_all('fresh_state')) 
 		
 		return test_defs, main_body
 
