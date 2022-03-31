@@ -16,7 +16,7 @@ validation_api = {
     'halt_all':                 'void halt_all(state_t state) {return;} \n',
     'check_implications':       'result_t check_implications(char* constraint1, char* constraint2) {return 0;} \n',
     'print_counterexamples':    'void print_counterexamples(result_t result) {return;}\n',
-    'new_sym_var':              'symbolic new_sym_var(char* name, size_t size) {return 0;}\n',
+    'new_sym_var_named':        'symbolic new_sym_var_named(char* name, size_t size) {return 0;}\n',
     'new_sym_var_array':        'symbolic new_sym_var_array(char* name, size_t index, size_t size) {return 0;}\n',   
     'mem_addr':                 'void mem_addr(char* name, void* addr, size_t length) {return;} \n',
     '_solver_LE':               'cnstr_t _solver_LE(symbolic sym_var, symbolic sym_var2, size_t length) {return 0;} \n',
@@ -63,7 +63,7 @@ constraints_api = {
 
 #Merge all 
 all_api = {
-    'new_sym_var':              'symbolic new_sym_var(char* name, size_t size) {return 0;}\n',
+    'new_sym_var_named':        'symbolic new_sym_var_named(char* name, size_t size) {return 0;}\n',
     'new_sym_var_array':        'symbolic new_sym_var_array(char* name, size_t index, size_t size) {return 0;}\n',
     'save_current_state':       'state_t save_current_state() {return 0;} \n',
     'get_cnstr':                'cnstr_t get_cnstr(symbolic var, size_t size) {return 0;} \n',

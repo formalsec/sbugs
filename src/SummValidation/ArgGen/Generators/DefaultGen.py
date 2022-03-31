@@ -21,9 +21,8 @@ class DefaultGen(NodeVisitor):
     
     def symbolic_rvalue(self, name, vartype):
         
-
         #Create Rvalue
         sizeof = ExprList([name, self.type_size(self.vartype)])
-        rvalue = FuncCall(ID('new_sym_var'), sizeof)
+        rvalue = FuncCall(ID('new_sym_var_named'), sizeof)
 
         return rvalue
