@@ -13,7 +13,7 @@ size_t summ_strlen(char* s){
 			
 			else{
 				
-				symbolic val = new_sym_var_named("ret", 32);
+				symbolic val = new_sym_var_named("a", 32);
 				cnstr_t r = _solver_NOT(_solver_SLT(&val, &i, 32));
 				assume(r);
 

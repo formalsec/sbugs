@@ -31,6 +31,4 @@ char* summ_strdup(char *s){
 
 	*dest = '\0';
 	return save;
-
-
 }
