@@ -48,17 +48,19 @@ class TestGen:
             api_gen.get_cnstr('cnstr2', 'ret2', self.ret),
             api_gen.add_expr(f'summ_test{id}', 'cnstr2'),
 
+            api_gen.halt_all('NULL_STATE'),
+
             api_gen.check_implications('result', f'cnctr_test{id}', f'summ_test{id}'),
             api_gen.print_counterexamples('result'),
 
             #Return
-            returnValue(Constant('int', str(0)))
+            returnValue(None)
         ]
 
         #Create function ast
         block = Compound(body)
         
-        typedecl = TypeDecl(name, [], IdentifierType(names=[self.ret]))
+        typedecl = TypeDecl(name, [], IdentifierType(names=['void']))
         funcdecl = FuncDecl(None, typedecl)
         decl = Decl(name, [], [], [], funcdecl, None, None)
         
