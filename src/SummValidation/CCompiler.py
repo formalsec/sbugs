@@ -1,12 +1,15 @@
 import subprocess as sp
-from sys import stderr
 
 class CCompiler():
     def __init__(self, inputfile, outputfile, libs):
         self.inputfile = inputfile
         self.outputfile = self.binary_name(outputfile)
 
-        self.gcc_args = ['-Wno-int-conversion']
+        self.gcc_args = ['-Wall', '-m32', '-O0',
+                         '-Wno-implicit-function-declaration',
+                         '-Wno-int-conversion',
+                         '-no-pie', '-Wno-unused-variable',
+                         '-fno-builtin']
 
         if not libs:
             libs = []
