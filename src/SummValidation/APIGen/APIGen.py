@@ -16,10 +16,14 @@ class API_Gen():
 
     def get_cnstr(self, name, ret_name, ret_type):
         
-        args = [
-            UnaryOp('&', ID(ret_name)),
-            BinaryOp(op='*', left=FuncCall(ID('sizeof'),ExprList( [ID(ret_type)]) ), right=Constant('int', str(8)))
-        ]
+        if ret_type == 'void':
+            args = [ID('NULL'), Constant('int', str(0))]
+
+        else:
+            args = [
+                UnaryOp('&', ID(ret_name)),
+                BinaryOp(op='*', left=FuncCall(ID('sizeof'),ExprList( [ID(ret_type)]) ), right=Constant('int', str(8)))
+            ]
         
         lvalue = TypeDecl(name, [], IdentifierType(names=['cnstr_t']))
         rvalue = FuncCall(ID(f'get_cnstr'), ExprList(args))
