@@ -18,6 +18,9 @@ class CGenerator:
 	def _add_fake_include(self, file):
 		fake_include = '#include <stdlib.h>\n'
 
+		if not file:
+			return None
+
 		try:
 			c = open(file, "r")
 			c_lines = c.readlines()
@@ -39,7 +42,7 @@ class CGenerator:
 	
 	def _remove_files(self, *files):
 		for f in files:
-			if os.path.exists(f):
+			if f and os.path.exists(f):
 				os.remove(f)
 
 
