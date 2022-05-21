@@ -36,6 +36,9 @@ class ValidationGenerator(CGenerator):
 
 
 	def _omit(self, defs):
+
+		defs = [d for d in defs if d]
+
 		if 'summ' in self.omit:
 			defs = defs[:-1]
 
