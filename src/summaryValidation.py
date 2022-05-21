@@ -53,8 +53,11 @@ def parse_config(conf):
 	lines = f.readlines()
 	f.close()
 
-	array_size = []
-	max_num = []
+	array_size = None
+	max_num = None
+	summ_name = None
+	func_name = None
+	omit = None
 
 	for l in lines:
 		l = l.strip()
@@ -65,7 +68,18 @@ def parse_config(conf):
 		if 'max_num' in split[0]:
 			max_num = [size for size in map(lambda x: int(x), split[1:])]
 
-	return array_size, max_num
+		if 'omit' in split[0]:
+			omit = [n for n in split[1:]]		
+
+		if 'summ_name' in split[0]:
+			if len(split) == 2:
+				summ_name = split[1]
+
+		if 'func_name' in split[0]:
+			if len(split) == 2:
+				func_name = split[1]
+
+	return array_size, max_num, summ_name, func_name, omit
 
 if __name__ == "__main__":
 
@@ -79,17 +93,37 @@ if __name__ == "__main__":
 	arraysize = args.arraysize
 	maxvalue = args.maxvalue
 	summ_name = args.summ_name
-	cncr_name = args.func_name
+	func_name = args.func_name
 	omit = args.omit
 	ccompile = args.compile
 	lib_paths = args.lib
 	memory = args.memory
 	config_file = args.config
 
+	if config_file:
+		conf_arraysize, conf_maxvalue,\
+		conf_summ_name, conf_func_name,\
+		conf_omit = parse_config(config_file)
+
+		if conf_arraysize:
+			arraysize = conf_arraysize
+
+		if conf_maxvalue:
+			maxvalue = conf_maxvalue
+
+		if conf_summ_name:
+			summ_name = conf_summ_name			
+
+		if conf_func_name:
+			func_name = conf_func_name		
+
+		if conf_omit:
+			omit = conf_omit		
+	
 	if not concrete_function and not target_summary:
 		sys.exit('ERROR: At least the code for a concrete function or summary MUST be provided')
 
-	if not concrete_function and not cncr_name:
+	if not concrete_function and not func_name:
 		msg = ("ERROR: No concrete function code or name provided\n"
 				"INFO: In the absence of the code, a name must be specified in order to call the function")
 		sys.exit(msg)
@@ -99,15 +133,12 @@ if __name__ == "__main__":
 				"INFO: In the absence of the code, a name must be specified in order to call the summary")
 		sys.exit(msg)
 
-	if config_file:
-		arraysize, maxvalue = parse_config(config_file)
-		if arraysize == []:
-			arraysize = [5]
+
 
 	valgenerator = ValidationGenerator(concrete_function, target_summary,
 					 			 		outputfile, arraysize,
 										maxvalue, memory,
-										cncr_name, summ_name, omit)
+										func_name, summ_name, omit)
 	valgenerator.gen()
 
 	if ccompile:
