@@ -5,7 +5,7 @@ class CCompiler():
         self.inputfile = inputfile
         self.outputfile = self.binary_name(outputfile)
 
-        self.gcc_args = ['-Wall', '-m32', '-O0',
+        self.gcc_args = ['-Wall', '-O0',
                          '-Wno-implicit-function-declaration',
                          '-Wno-int-conversion',
                          '-no-pie', '-Wno-unused-variable',
