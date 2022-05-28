@@ -31,8 +31,8 @@ class API_Gen():
         return Decl(name, [], [], [], lvalue, rvalue, None)
 
 
-    def add_expr(self, cnstr_id, restr):
-        return FuncCall(ID(f'add_expr'), ExprList( [Constant('string', f'\"{cnstr_id}\"'), ID(restr)] ))
+    def store_cnstr(self, cnstr_id, restr):
+        return FuncCall(ID(f'store_cnstr'), ExprList( [Constant('string', f'\"{cnstr_id}\"'), ID(restr)] ))
 
     
     def halt_all(self, initial_state):

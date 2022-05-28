@@ -40,13 +40,13 @@ class TestGen:
         body +=[
             sym_args_gen.call_function(self.cncrt_name, args_names, 'ret1', self.ret),
             api_gen.get_cnstr('cnstr1', 'ret1', self.ret),
-            api_gen.add_expr(f'cnctr_test{id}', 'cnstr1'),
+            api_gen.store_cnstr(f'cnctr_test{id}', 'cnstr1'),
             
             api_gen.halt_all('initial_state'),
 
             sym_args_gen.call_function(self.summ_name, args_names, 'ret2', self.ret),			
             api_gen.get_cnstr('cnstr2', 'ret2', self.ret),
-            api_gen.add_expr(f'summ_test{id}', 'cnstr2'),
+            api_gen.store_cnstr(f'summ_test{id}', 'cnstr2'),
 
             api_gen.halt_all('NULL_STATE'),
 
