@@ -249,13 +249,14 @@ class ValidationGenerator(CGenerator):
 		test_defs = []
 		main_body = []
 
-		main_body.append(api_gen.save_current_state('fresh_state'))
-		
-		
 		array_size = f'{ARRAY_SIZE_MACRO}_1' #There is always one default size macro
 
 		#Number of tests
 		tests = max(len(self.maxnum),len(self.arraysize))
+
+		if tests > 1:	
+			main_body.append(api_gen.save_current_state('fresh_state'))
+		
 		for i in range(1, tests+1):
 			
 			#Create test name
