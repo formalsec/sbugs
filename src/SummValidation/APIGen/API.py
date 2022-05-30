@@ -1,6 +1,5 @@
 type_defs = [
     '#define NULL ((void*)0)\n'
-    '#define NULL_STATE -1\n',
     '#define INT_SIZE (sizeof(int) * 8)\n',
     '#define LONG_SIZE (sizeof(long) * 8)\n',
     '#define CHAR_SIZE (sizeof(char) * 8)\n',

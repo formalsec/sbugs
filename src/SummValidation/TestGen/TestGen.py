@@ -47,7 +47,7 @@ class TestGen:
             api_gen.get_cnstr('cnstr2', 'ret2', self.ret),
             api_gen.store_cnstr(f'summ_test{id}', 'cnstr2'),
 
-            api_gen.halt_all('NULL_STATE'),
+            api_gen.halt_all('NULL'),
 
             api_gen.check_implications('result', f'cnctr_test{id}', f'summ_test{id}'),
             api_gen.print_counterexamples('result'),
