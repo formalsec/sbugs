@@ -27,7 +27,6 @@ class TestGen:
 
         #Body contains the test code
         body = [
-            api_gen.save_current_state(),
             *args_code,
             api_gen.save_current_state('initial_state'),
         ]
