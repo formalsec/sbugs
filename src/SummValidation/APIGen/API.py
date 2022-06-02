@@ -52,16 +52,17 @@ sym_vars_api = {
 }
 
 constraints_api = {
-    '_solver_NOT':  'cnstr_t _solver_NOT(cnstr_t cnstr1){return 0;} \n',
-    '_solver_Or':   'cnstr_t _solver_Or(cnstr_t cnstr1, cnstr_t cnstr2) {return 0;} \n',
-    '_solver_And':  'cnstr_t _solver_And(cnstr_t cnstr1, cnstr_t cnstr2) {return 0;} \n',
-    '_solver_EQ':   'cnstr_t _solver_EQ(symbolic sym_var, symbolic sym_var2, size_t length) {return 0;} \n',
-    '_solver_NEQ':  'cnstr_t _solver_NEQ(symbolic sym_var, symbolic sym_var2, size_t length) {return 0;} \n',
-    '_solver_LT':   'cnstr_t _solver_LT(symbolic sym_var, symbolic sym_var2, size_t length) {return 0;} \n',
-    '_solver_LE':   'cnstr_t _solver_LE(symbolic sym_var, symbolic sym_var2, size_t length) {return 0;} \n',
-    '_solver_SLT':  'cnstr_t _solver_SLT(symbolic sym_var, symbolic sym_var2, size_t length) {return 0;} \n',
-    '_solver_SLE':  'cnstr_t _solver_SLE(symbolic sym_var, symbolic sym_var2, size_t length) {return 0;} \n',
-    '_solver_ITE':   'cnstr_t _solver_ITE(cnstr_t cond, cnstr_t cnstr1, cnstr_t cnstr2) {return 0;}\n'
+    '_solver_NOT':      'cnstr_t _solver_NOT(cnstr_t cnstr1){return 0;} \n',
+    '_solver_Or':       'cnstr_t _solver_Or(cnstr_t cnstr1, cnstr_t cnstr2) {return 0;} \n',
+    '_solver_And':      'cnstr_t _solver_And(cnstr_t cnstr1, cnstr_t cnstr2) {return 0;} \n',
+    '_solver_EQ':       'cnstr_t _solver_EQ(symbolic sym_var, symbolic sym_var2, size_t length) {return 0;} \n',
+    '_solver_NEQ':      'cnstr_t _solver_NEQ(symbolic sym_var, symbolic sym_var2, size_t length) {return 0;} \n',
+    '_solver_LT':       'cnstr_t _solver_LT(symbolic sym_var, symbolic sym_var2, size_t length) {return 0;} \n',
+    '_solver_LE':       'cnstr_t _solver_LE(symbolic sym_var, symbolic sym_var2, size_t length) {return 0;} \n',
+    '_solver_SLT':      'cnstr_t _solver_SLT(symbolic sym_var, symbolic sym_var2, size_t length) {return 0;} \n',
+    '_solver_SLE':      'cnstr_t _solver_SLE(symbolic sym_var, symbolic sym_var2, size_t length) {return 0;} \n',
+    '_solver_ITE':      'cnstr_t _solver_ITE(cnstr_t cond, cnstr_t cnstr1, cnstr_t cnstr2) {return 0;}\n',
+    '_solver_ITE_VAR':  'cnstr_t _solver_ITE(cnstr_t cond, symbolic var1, symbolic var2, size_t len1, size_t len2) {return 0;}\n'
 }
 
 #Merge all 
