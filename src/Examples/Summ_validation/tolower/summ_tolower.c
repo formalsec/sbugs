@@ -15,7 +15,7 @@ int summ_tolower(int c){
         cnstr_t lower_cnstr = _solver_EQ(&ret, &lower_c, 32);
 		cnstr_t unchanged_cnstr = _solver_EQ(&ret, &c, 32);
 
-		cnstr_t final_cnstr = _solver_IF(_solver_And(c_geq, c_leq), lower_cnstr, unchanged_cnstr);
+		cnstr_t final_cnstr = _solver_ITE(_solver_And(c_geq, c_leq), lower_cnstr, unchanged_cnstr);
 		assume(final_cnstr);
 
 		return ret;
