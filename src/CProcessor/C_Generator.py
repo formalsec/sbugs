@@ -1,9 +1,7 @@
-import sys, os
+import os
 
-from pycparser import c_parser, parse_file, c_generator
+from pycparser import  parse_file
 from pycparser.c_ast import *
-from CProcessor import config
-
 
 class C_FileGenerator:
 	def __init__(self, inputfile, outputfile,
@@ -37,7 +35,7 @@ class C_FileGenerator:
 	def _remove_files(self, *files):
 		for f in files:
 			if os.path.exists(f):
-	  			os.remove(f)
+				os.remove(f)
 
 
 	#Store 'includes' of inputfile
