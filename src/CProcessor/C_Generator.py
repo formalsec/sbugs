@@ -13,7 +13,7 @@ class C_FileGenerator:
 		
 		
 		self.save_ast = save_ast
-		self.fakelib = 'Fake_libc'
+		self.fakelib = 'CProcessor/Fake_libc'
 
 		tmpname = self.outputfile.split('/')[-1]
 		self.tmpfile = f'tmp_{tmpname}'
