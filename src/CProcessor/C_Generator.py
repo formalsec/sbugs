@@ -5,29 +5,27 @@ from pycparser.c_ast import *
 
 class C_FileGenerator:
 	def __init__(self, inputfile, outputfile,
-				 fakelib=None, save_ast=False):
-
+				 include=None, save_ast=False):
 
 		self.inputfile = inputfile
 		self.outputfile = outputfile
 		
-		
+		self.include = include
 		self.save_ast = save_ast
-		self.fakelib = f'{os.path.abspath(os.path.dirname(__file__))}/Fake_libc'
-
+		self.fakelib = f'{os.path.abspath(os.path.dirname(__file__))}/Fake_libc/fake_libc_include'
 
 		tmpname = self.outputfile.split('/')[-1]
 		self.tmpfile = f'tmp_{tmpname}'
 
 
-		if fakelib is not None:
-			self.fakelib = fakelib
-
 		#Write input ast for debug
 		if self.save_ast:
-			ast = parse_file(self.inputfile, use_cpp=True,
-			cpp_path='gcc',
-			cpp_args=['-E', f'-I{self.fakelib}/fake_libc_include'])
+
+			cpp_args=['-E', f'-I{self.fakelib}']
+			if self.include:
+				cpp_args.append(f'-I{self.include}')
+
+			ast = parse_file(self.inputfile, use_cpp=True, cpp_path='gcc', cpp_args=cpp_args)
 			file = open('ast.txt', "w")
 			file.write(str(ast))
 

@@ -8,8 +8,8 @@ from CProcessor.C_Generator import C_FileGenerator
 
 class PreProcessor(C_FileGenerator):
 
-	def __init__(self, inputfile, outputfile, io, global_vars=None, fakelib=None, save_ast=False):
-		super().__init__(inputfile, outputfile, fakelib ,save_ast)
+	def __init__(self, inputfile, outputfile, io, global_vars=None, include=None, save_ast=False):
+		super().__init__(inputfile, outputfile, include ,save_ast)
 		
 		self.io = io 
 		self.global_vars = global_vars
@@ -21,10 +21,12 @@ class PreProcessor(C_FileGenerator):
 			#PreProcess inputfile
 			includes = self._preprocess_file(self.inputfile, self.tmpfile)
 
+			cpp_args=['-E', f'-I{self.fakelib}']
+			if self.include:
+				cpp_args.append(f'-I{self.include}')
+
 			#Parse new file
-			ast = parse_file(self.tmpfile, use_cpp=True,
-				cpp_path='gcc',
-				cpp_args=['-E', f'-I{self.fakelib}/fake_libc_include'])
+			ast = parse_file(self.tmpfile, use_cpp=True, cpp_path='gcc', cpp_args=cpp_args)
 
 
 			if self.io:

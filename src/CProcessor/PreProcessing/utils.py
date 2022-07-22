@@ -16,7 +16,7 @@ def symbolic_rvalue(vartype):
 
 
 def terminate_string(lvalue, size):
-	arr_lvalue = ArrayRef(lvalue, subscript=Constant('int', str(int(size)-1)))
+	arr_lvalue = ArrayRef(lvalue, subscript=BinaryOp(op='-', left=size, right=Constant('int', '1')))
 	assign = Assignment(op='=', lvalue=arr_lvalue, rvalue=Constant('char', '\'\\0\''))
 	return assign   
 
@@ -35,7 +35,7 @@ def genArray(name, lvalue, vartype, size):
 	init  = DeclList(decls=[decl])
 	
 	##For-condition
-	cond = BinaryOp(op='<', left=ID(index), right=Constant('int', str(size)))
+	cond = BinaryOp(op='<', left=ID(index), right=size)
 	
 	##For-next
 	nxt = UnaryOp(op='p++', expr=ID(index))

@@ -1,4 +1,3 @@
-from ..ScopeStack import ScopeStack
 from pycparser.c_ast import *
 
 
@@ -49,7 +48,7 @@ class ArgTypeVisitor(NodeVisitor):
 	def visit_ArrayDecl(self, node):
 
 		if node.dim is not None:
-			self.dim = node.dim.value
+			self.dim = node.dim
 
 		#Store array dimension and visit type
 		self.visit(node.type)
