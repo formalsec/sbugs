@@ -25,9 +25,6 @@ def get_cmd_args():
 	parser.add_argument('-ast', action='store_true',
 						help='Save input ast for debug')
 
-	parser.add_argument('--fakelib', metavar='path', type=str,
-						help='Path to pycparser fake libc')
-
 	parser.add_argument('-preprocess', metavar='options', choices=['scanf', 'global_vars'], nargs='*', default=[],
                         help='Pre-processing options (scanf, global_vars)')
 
@@ -53,7 +50,6 @@ if __name__ == "__main__":
 	fuel = args.fuel
 	arraysize = args.arraySize
 	pointersize = args.pointerSize
-	fakelib = args.fakelib
 	save_ast = args.ast
 	preprocess = args.preprocess
 	io = False
@@ -75,7 +71,7 @@ if __name__ == "__main__":
 	if preprocess:
 		preprocessor = PreProcessor(inputfile, outputfile,
 								   io, global_vars,
-				 				   fakelib=fakelib, save_ast=save_ast)
+				 				   save_ast=save_ast)
 		
 		inputfile = preprocessor.gen()
 
