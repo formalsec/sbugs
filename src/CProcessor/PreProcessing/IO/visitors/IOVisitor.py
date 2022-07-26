@@ -13,10 +13,18 @@ class IO_Visitor(NodeVisitor):
 		self.stack = ScopeStack()
 		self.struct = None #If inside a struct store name
 
+		self.lastAlias = None	
 	
-	def create_symvars(self, args):
+		self.scanfs = ['scanf', 'sscanf']
+
+	def create_symvars(self, fname, args):
 		code = []		#Code to generate symbolic variables
-		args = args[1:] #Remove format string
+		
+		if fname == 'scanf':
+			args = args[1:] #Remove format string
+
+		elif fname == 'sscanf':
+			args = args[2:] #Remove format string and buffer
 
 		genvisitor = ArgGenVisitor(self.stack)	
 		for arg in args:
@@ -103,8 +111,9 @@ class IO_Visitor(NodeVisitor):
 	#Visit function calls
 	#Create symvars for 'scanf' call
 	def visit_FuncCall(self, node):
-		if node.name.name == 'scanf':
-			return self.create_symvars(node.args.exprs)
+		fname = node.name.name
+		if fname in self.scanfs:
+			return self.create_symvars(fname, node.args.exprs)
 		return node
 
 
@@ -112,7 +121,14 @@ class IO_Visitor(NodeVisitor):
 	def visit_Typedef(self, node):
 		obj = node.type.type
 		if isinstance(obj,Struct):
-			self.stack.addAlias(node.name, obj.name)
+			
+			name = obj.name
+			if name is None:
+				name = node.name
+
+			self.lastAlias = node.name
+			self.stack.addAlias(node.name, name)
+			
 			self.visit(obj)
 		return node
 
@@ -120,10 +136,13 @@ class IO_Visitor(NodeVisitor):
 	#Visit Struct
 	#Store new struct and visit its fields
 	def visit_Struct(self, node):
-		self.struct = node.name
+		if node.name is None:
+			self.struct = self.lastAlias
+		else:
+			self.struct = node.name
 		
 		if node.decls is not None:
-			self.stack.addStruct(node.name)
+			self.stack.addStruct(self.struct)
 			for decl in node.decls:
 				self.visit(decl)
 
@@ -149,3 +168,20 @@ class IO_Visitor(NodeVisitor):
 		self.stack.pop()
 		
 		return For(new_init, node.cond, node.next, new_stmt)
+
+
+	def visit_Switch(self, node):
+		new_stmt = self.visit(node.stmt)
+		return Switch(node.cond, new_stmt)
+
+	def visit_Case(self, node):
+		new_stmts = []
+		if node.stmts is not None:
+			for stmt in node.stmts:
+				new_stmt = self.visit(stmt)
+				if type(new_stmt) is list:
+					new_stmts += new_stmt
+				else:
+					new_stmts.append(new_stmt)
+		
+		return Case(node.expr, new_stmts)
