@@ -1,4 +1,3 @@
-from ..ScopeStack import ScopeStack
 from pycparser.c_ast import *
 
 from . StructGen import StructGenVisitor 
@@ -6,9 +5,17 @@ from CProcessor.PreProcessing.utils import *
 
 class ArgGenVisitor(NodeVisitor):
 
-	def __init__(self, stack):
+	def __init__(self, stack, arraysize=None):
 		self.stack = stack
+		self.arraysize = arraysize
 
+	def calc_size(self, size):
+		if isinstance(size, Constant):
+			size_int = int(size.value)
+			if self.arraysize is not None:
+				if self.arraysize > 0 and self.arraysize < size_int:
+					return Constant('int', str(self.arraysize))
+		return size
 
 	def gen(self, name):
 		argtype = self.stack.findType(name)
@@ -18,6 +25,7 @@ class ArgGenVisitor(NodeVisitor):
 
 		code = []
 		if arraysize:
+			arraysize = self.calc_size(arraysize)
 			code += genArray(name, ID(name), vartype, arraysize)
 
 		else:
@@ -41,6 +49,6 @@ class ArgGenVisitor(NodeVisitor):
 		return code
 
 	def visit_StructRef(self, node):
-		struct_vis = StructGenVisitor(node, self.stack)
+		struct_vis = StructGenVisitor(node, self.stack, self.arraysize)
 		code = struct_vis.gen()
 		return code

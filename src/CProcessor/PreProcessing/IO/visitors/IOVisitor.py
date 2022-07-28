@@ -10,7 +10,8 @@ from CProcessor.PreProcessing.utils import *
 
 class IO_Visitor(NodeVisitor):
 
-	def __init__ (self): 
+	def __init__ (self, arraysize=None): 
+		self.arraysize = arraysize
 		self.stack = ScopeStack()
 		self.struct = None #If inside a struct store name
 
@@ -27,7 +28,7 @@ class IO_Visitor(NodeVisitor):
 		elif fname == 'sscanf':
 			args = args[2:] #Remove format string and buffer
 
-		genvisitor = ArgGenVisitor(self.stack)	
+		genvisitor = ArgGenVisitor(self.stack, self.arraysize)	
 		for arg in args:
 			code += genvisitor.visit(arg)
 		return code

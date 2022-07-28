@@ -6,13 +6,22 @@ from CProcessor.PreProcessing.utils import *
 
 
 class StructGenVisitor(NodeVisitor):
-	def __init__(self, node, stack):
+	def __init__(self, node, stack, arraysize=None):
+		self.arraysize = arraysize
 
 		self.node = node
 		self.stack = stack
 		
 		self.var = None
 		self.field = None
+
+	def calc_size(self, size):
+		if isinstance(size, Constant):
+			size_int = int(size.value)
+			if self.arraysize is not None:
+				if self.arraysize > 0 and self.arraysize < size_int:
+					return Constant('int', str(self.arraysize))
+		return size
 
 	def visit(self, node): 
 		if node is not None: 
@@ -46,6 +55,7 @@ class StructGenVisitor(NodeVisitor):
 
 		code = []
 		if arraysize:
+			arraysize = self.calc_size(arraysize)
 			code += genArray(self.field, self.node, vartype, arraysize)
 
 		else:
