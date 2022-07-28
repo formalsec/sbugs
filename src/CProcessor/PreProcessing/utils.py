@@ -1,5 +1,4 @@
 from pycparser.c_ast import *
-from .IO.ScopeStack import ScopeStack
 
 
 def symbolic_rvalue(vartype):

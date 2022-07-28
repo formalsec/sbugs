@@ -28,7 +28,6 @@ class PreProcessor(C_FileGenerator):
 			#Parse new file
 			ast = parse_file(self.tmpfile, use_cpp=True, cpp_path='gcc', cpp_args=cpp_args)
 
-
 			if self.io:
 				io_visitor = IO_Visitor()
 				ast = io_visitor.visit(ast)

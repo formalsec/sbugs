@@ -1,3 +1,4 @@
+from typing import List
 from ..ScopeStack import ScopeStack
 from pycparser.c_ast import *
 
@@ -82,10 +83,14 @@ class IO_Visitor(NodeVisitor):
 
 	#Visit variable declarations
 	#This includes struct fields
+	#This can also be a struct definition
 	def visit_Decl(self, node):
 		name = node.name
-		argv = ArgTypeVisitor(name, self.stack, self.struct)
-		argv.visit(node.type)
+		if name is not None:
+			argv = ArgTypeVisitor(name, self.stack, self.struct)
+			argv.visit(node.type)	
+		else:
+			self.visit(node.type)
 		return node
 
 
@@ -153,6 +158,13 @@ class IO_Visitor(NodeVisitor):
 	def visit_If(self, node):
 		iftrue = self.visit(node.iftrue)
 		iffalse = self.visit(node.iffalse)
+		
+		if isinstance(iftrue, list):
+			iftrue = Compound(iftrue)
+
+		if isinstance(iffalse, list):
+			iffalse = Compound(iffalse)
+
 		return If(node.cond, iftrue, iffalse)
 	
 
