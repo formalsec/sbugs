@@ -78,8 +78,7 @@ if __name__ == "__main__":
 
 	testGenerator = TestGenerator(inputfile, outputfile,
 					 			 fuel, arraysize,
-					 			 pointersize,fakelib=fakelib,
-					 			 save_ast=save_ast, target=target)
+					 			 pointersize, save_ast=save_ast, target=target)
 
 
 	testGenerator.gen()
