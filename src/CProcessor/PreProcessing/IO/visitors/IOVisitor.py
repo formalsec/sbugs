@@ -89,9 +89,13 @@ class IO_Visitor(NodeVisitor):
 		name = node.name
 		if name is not None:
 			argv = ArgTypeVisitor(name, self.stack, self.struct)
-			argv.visit(node.type)	
-		else:
-			self.visit(node.type)
+			argv.visit(node.type)		
+		self.visit(node.type)
+		return node
+
+
+	def visit_TypeDecl(self, node):
+		self.visit(node.type)
 		return node
 
 

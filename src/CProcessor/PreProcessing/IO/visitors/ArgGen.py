@@ -43,6 +43,9 @@ class ArgGenVisitor(NodeVisitor):
 	def visit_UnaryOp(self, node):
 		return self.visit(node.expr)
 
+	def visit_ArrayRef(self, node):
+		return self.visit(node.name)
+
 	def visit_ID(self, node):
 		name = node.name
 		code = self.gen(name)
