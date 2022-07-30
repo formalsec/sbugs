@@ -46,7 +46,6 @@ class ArgTypeVisitor(NodeVisitor):
 
 
 	def visit_ArrayDecl(self, node):
-
 		if node.dim is not None:
 			self.dim = node.dim
 

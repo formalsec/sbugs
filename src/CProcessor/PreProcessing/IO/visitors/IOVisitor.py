@@ -98,6 +98,10 @@ class IO_Visitor(NodeVisitor):
 		self.visit(node.type)
 		return node
 
+	def visit_ArrayDecl(self, node):
+		self.visit(node.type)
+		return node
+
 
 	#Function declarations
 	#Visit to push arg types into scope

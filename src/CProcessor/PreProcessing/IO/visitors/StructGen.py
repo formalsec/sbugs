@@ -13,7 +13,7 @@ class StructGenVisitor(NodeVisitor):
 		self.stack = stack
 		
 		self.var = None
-		self.field = None
+		self.fields = []
 
 	def calc_size(self, size):
 		if isinstance(size, Constant):
@@ -36,9 +36,10 @@ class StructGenVisitor(NodeVisitor):
 		return
 
 	def visit_StructRef(self, node):
-		self.field = node.field.name
+		self.fields.insert(0, node.field.name)
 		self.visit(node.name)
 		return
+
 
 	def gen(self):
 		self.visit(self.node)
@@ -48,18 +49,19 @@ class StructGenVisitor(NodeVisitor):
 		if self.stack.isAlias(structType):
 			structType = self.stack.getStruct(structType)
 
-		structFieldType = self.stack.fieldType(structType, self.field)
-
-		vartype = structFieldType.getType()
-		arraysize = structFieldType.arraySize()
+		for field in self.fields:
+			structFieldType = self.stack.fieldType(structType, field)
+			vartype = structFieldType.getType()
+			arraysize = structFieldType.arraySize()
+			structType = vartype
 
 		code = []
 		if arraysize:
 			arraysize = self.calc_size(arraysize)
-			code += genArray(self.field, self.node, vartype, arraysize)
+			code += genArray(self.fields[-1], self.node, vartype, arraysize)
 
 		else:
 			rvalue = symbolic_rvalue(vartype)			
-			code.append(Decl(self.field, [], [], [], self.node, rvalue, None))
+			code.append(Decl(self.fields[-1], [], [], [], self.node, rvalue, None))
 
 		return code
