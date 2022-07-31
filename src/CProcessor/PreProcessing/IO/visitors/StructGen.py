@@ -50,10 +50,14 @@ class StructGenVisitor(NodeVisitor):
 			structType = self.stack.getStruct(structType)
 
 		for field in self.fields:
+			
 			structFieldType = self.stack.fieldType(structType, field)
 			vartype = structFieldType.getType()
 			arraysize = structFieldType.arraySize()
 			structType = vartype
+			
+			if self.stack.isAlias(structType):
+				structType = self.stack.getStruct(structType)
 
 		code = []
 		if arraysize:

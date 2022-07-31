@@ -27,7 +27,11 @@ class ArgTypeVisitor(NodeVisitor):
 	def visit_IdentifierType(self, node):
 		
 		#Store variable type and id
-		vartype = node.names[0]
+		vartype = ''
+		for token in node.names:
+			vartype += f'{token} '
+		vartype = vartype.strip()
+		
 		if self.struct:
 			self.stack.addField(self.struct, self.name, vartype, array = self.dim)
 		else:

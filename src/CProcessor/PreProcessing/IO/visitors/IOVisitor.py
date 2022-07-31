@@ -102,6 +102,9 @@ class IO_Visitor(NodeVisitor):
 		self.visit(node.type)
 		return node
 
+	def visit_PtrDecl(self, node):
+		self.visit(node.type)
+		return node
 
 	#Function declarations
 	#Visit to push arg types into scope
@@ -170,9 +173,13 @@ class IO_Visitor(NodeVisitor):
 		
 		if isinstance(iftrue, list):
 			iftrue = Compound(iftrue)
+		else:
+			iftrue = Compound([iftrue])
 
-		if isinstance(iffalse, list):
+		if isinstance(iffalse, list): 
 			iffalse = Compound(iffalse)
+		else:
+			iffalse = Compound([iffalse])
 
 		return If(node.cond, iftrue, iffalse)
 	
