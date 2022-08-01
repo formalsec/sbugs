@@ -8,6 +8,7 @@ class ArgGenVisitor(NodeVisitor):
 	def __init__(self, stack, arraysize=None):
 		self.stack = stack
 		self.arraysize = arraysize
+		self.arraynode = None
 
 	def calc_size(self, size):
 		if isinstance(size, Constant):
@@ -25,8 +26,16 @@ class ArgGenVisitor(NodeVisitor):
 
 		code = []
 		if arraysize:
-			arraysize = self.calc_size(arraysize)
-			code += genArray(name, ID(name), vartype, arraysize)
+			size = arraysize[-1]
+			size = self.calc_size(size)
+			dim = len(arraysize)
+
+			if dim > 1:
+				node = self.arraynode
+			else:
+				node = ID(name)
+
+			code += genArray(name, node, vartype, size)
 
 		else:
 			lvalue = ID(name)
@@ -44,9 +53,13 @@ class ArgGenVisitor(NodeVisitor):
 		return self.visit(node.expr)
 
 	def visit_ArrayRef(self, node):
+		if not self.arraynode:
+			self.arraynode = node
 		return self.visit(node.name)
 
 	def visit_ID(self, node):
+		if not self.arraynode:
+			self.arraynode = node
 		name = node.name
 		code = self.gen(name)
 		return code

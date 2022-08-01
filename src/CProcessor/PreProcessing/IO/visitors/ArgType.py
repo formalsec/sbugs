@@ -7,7 +7,7 @@ class ArgTypeVisitor(NodeVisitor):
 		self.name = name
 		self.stack = stack
 		self.struct = struct
-		self.dim = None
+		self.dim = []
 
 	def visit(self, node): 
 		if node is not None: 
@@ -51,7 +51,7 @@ class ArgTypeVisitor(NodeVisitor):
 
 	def visit_ArrayDecl(self, node):
 		if node.dim is not None:
-			self.dim = node.dim
+			self.dim.append(node.dim)
 
 		#Store array dimension and visit type
 		self.visit(node.type)

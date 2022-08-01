@@ -19,6 +19,8 @@ class IO_Visitor(NodeVisitor):
 	
 		self.scanfs = ['scanf', 'sscanf']
 
+		self.fundef = False #Used to ignore function headers with no definition
+
 	def create_symvars(self, fname, args):
 		code = []		#Code to generate symbolic variables
 		
@@ -28,8 +30,8 @@ class IO_Visitor(NodeVisitor):
 		elif fname == 'sscanf':
 			args = args[2:] #Remove format string and buffer
 
-		genvisitor = ArgGenVisitor(self.stack, self.arraysize)	
 		for arg in args:
+			genvisitor = ArgGenVisitor(self.stack, self.arraysize)	
 			code += genvisitor.visit(arg)
 		return code
 	
@@ -83,7 +85,7 @@ class IO_Visitor(NodeVisitor):
 
 
 	#Visit variable declarations
-	#This includes struct fields
+	#Includes struct fields
 	#This can also be a struct definition
 	def visit_Decl(self, node):
 		name = node.name
@@ -109,19 +111,22 @@ class IO_Visitor(NodeVisitor):
 	#Function declarations
 	#Visit to push arg types into scope
 	def visit_FuncDecl(self, node):
-		args = node.args
-		if args is not None:
-			for decl in args.params:
-				self.visit(decl)
+		if self.fundef:
+			args = node.args
+			if args is not None:
+				for decl in args.params:
+					self.visit(decl)
 		return node
 
 
 	#Visit function definitions
 	def visit_FuncDef(self, node):
+		self.fundef = True
 		self.stack.push()
 		self.visit(node.decl.type) #--> visit_FuncDecl
 		new_body = self.visit(node.body) #--> visit_Compound
 		self.stack.pop()
+		self.fundef = False
 		return FuncDef(node.decl, node.param_decls, new_body)
 
 

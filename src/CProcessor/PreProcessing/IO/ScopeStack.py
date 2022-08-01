@@ -9,6 +9,8 @@ class ArgType():
 		return self._type
 	
 	def arraySize(self):
+		if len(self._arr) == 0:
+			return None
 		return self._arr
 
 	def __repr__(self):
@@ -27,7 +29,10 @@ class ScopeStack():
 		#Push global scope
 		self.push()
 
-	
+	def contains(self, struct):
+		if struct in self.structs.keys():
+			return True
+		return False
 
 	#Aliases
 	def addAlias(self, alias, struct):

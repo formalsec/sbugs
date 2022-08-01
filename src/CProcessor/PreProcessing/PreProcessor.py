@@ -19,7 +19,7 @@ class PreProcessor(C_FileGenerator):
 		
 		try:
 			#PreProcess inputfile
-			includes = self._preprocess_file(self.inputfile, self.tmpfile)
+			includes, guards = self._preprocess_file(self.inputfile, self.tmpfile)
 
 			cpp_args=['-E', f'-I{self.fakelib}']
 			if self.include:
@@ -47,7 +47,7 @@ class PreProcessor(C_FileGenerator):
 
 			#PostProcess temporary file
 			final_code = self._postprocess_file(self.tmpfile, includes,
-						 generator=os.path.basename(__file__))
+						 generator=os.path.basename(__file__), guards=guards)
 
 			self._remove_files(self.tmpfile)
 

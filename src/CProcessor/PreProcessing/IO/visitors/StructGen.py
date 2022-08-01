@@ -61,8 +61,10 @@ class StructGenVisitor(NodeVisitor):
 
 		code = []
 		if arraysize:
-			arraysize = self.calc_size(arraysize)
-			code += genArray(self.fields[-1], self.node, vartype, arraysize)
+			size = arraysize[-1]
+			size = self.calc_size(size)
+
+			code += genArray(self.fields[-1], self.node, vartype, size)
 
 		else:
 			rvalue = symbolic_rvalue(vartype)			
