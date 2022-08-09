@@ -1,4 +1,3 @@
-from typing import List
 from ..ScopeStack import ScopeStack
 from pycparser.c_ast import *
 
@@ -17,7 +16,7 @@ class IO_Visitor(NodeVisitor):
 
 		self.lastAlias = None	
 	
-		self.scanfs = ['scanf', 'sscanf']
+		self.scanfs = ['scanf', 'sscanf', 'fscanf']
 
 		self.fundef = False #Used to ignore function headers with no definition
 
@@ -28,6 +27,9 @@ class IO_Visitor(NodeVisitor):
 			args = args[1:] #Remove format string
 
 		elif fname == 'sscanf':
+			args = args[2:] #Remove format string and buffer
+
+		elif fname == 'fscanf':
 			args = args[2:] #Remove format string and buffer
 
 		for arg in args:
@@ -192,6 +194,11 @@ class IO_Visitor(NodeVisitor):
 	def visit_While(self, node):
 		new_stmt = self.visit(node.stmt)
 		return While(node.cond, new_stmt)
+
+	
+	def visit_DoWhile(self, node):
+		new_stmt = self.visit(node.stmt)
+		return DoWhile(node.cond, new_stmt)
 
 	def visit_For(self, node):
 
