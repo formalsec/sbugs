@@ -16,9 +16,13 @@ class IO_Visitor(NodeVisitor):
 
 		self.lastAlias = None	
 	
-		self.scanfs = ['scanf', 'sscanf', 'fscanf']
 
 		self.fundef = False #Used to ignore function headers with no definition
+		
+		self.scanfs = ['scanf', 'sscanf', 'fscanf']
+		self.scanf_ret = False #Scanfs in decls, if/whiles int n = scanf(...)
+
+		self.scanf_extra = None #Extra scanf code for ifs, whiles, ...
 
 	def create_symvars(self, fname, args):
 		code = []		#Code to generate symbolic variables
@@ -35,6 +39,15 @@ class IO_Visitor(NodeVisitor):
 		for arg in args:
 			genvisitor = ArgGenVisitor(self.stack, self.arraysize)	
 			code += genvisitor.visit(arg)
+
+				
+		if self.scanf_ret:
+			nargs = len(args)
+			nargs_node = Constant('int', str(nargs))
+			self.scanf_extra = code
+			return nargs_node
+
+	
 		return code
 	
 
@@ -91,12 +104,39 @@ class IO_Visitor(NodeVisitor):
 	#This can also be a struct definition
 	def visit_Decl(self, node):
 		name = node.name
+		init = node.init
 		if name is not None:
 			argv = ArgTypeVisitor(name, self.stack, self.struct)
-			argv.visit(node.type)		
+			argv.visit(node.type)	
+		
 		self.visit(node.type)
+
+		if init is not None:
+			self.scanf_ret = True
+			new_node = self.visit(init)
+			self.scanf_ret = False
+
+			if self.scanf_extra:
+				extra_code = self.scanf_extra
+				self.scanf_extra = None
+				node.init = new_node
+				return [node, *extra_code]		
+		
 		return node
 
+
+	def visit_Assignment(self, node):
+		self.scanf_ret = True
+		new_assign = self.visit(node.rvalue)
+		self.scanf_ret = False
+		
+		if self.scanf_extra:
+			extra_code = self.scanf_extra
+			self.scanf_extra = None
+			node.rvalue = new_assign
+			return [node, *extra_code]		
+
+		return node
 
 	def visit_TypeDecl(self, node):
 		self.visit(node.type)
@@ -135,7 +175,11 @@ class IO_Visitor(NodeVisitor):
 	#Visit function calls
 	#Create symvars for 'scanf' call
 	def visit_FuncCall(self, node):
-		fname = node.name.name
+		if type(node.name) is ID:
+			fname = node.name.name
+		else:
+			return node
+		
 		if fname in self.scanfs:
 			return self.create_symvars(fname, node.args.exprs)
 		return node
@@ -188,20 +232,63 @@ class IO_Visitor(NodeVisitor):
 		else:
 			iffalse = Compound([iffalse])
 
+		self.scanf_ret = True
+		new_cond = self.visit(node.cond)
+		self.scanf_ret = False
+		
+		if self.scanf_extra:
+			extra_code = self.scanf_extra
+			self.scanf_extra = None
+			node.cond = new_cond
+			block = iftrue.block_items
+			iftrue.block_items = extra_code + block	
+
 		return If(node.cond, iftrue, iffalse)
 	
 
 	def visit_While(self, node):
 		new_stmt = self.visit(node.stmt)
+
+		self.scanf_ret = True
+		new_cond = self.visit(node.cond)
+		self.scanf_ret = False
+
+		if self.scanf_extra:
+			extra_code = self.scanf_extra
+			self.scanf_extra = None
+			node.cond = new_cond
+
+			if type(new_stmt) is Compound:
+				block = new_stmt.block_items
+				new_stmt.block_items = extra_code + block
+			else:
+				new_stmt = Compound([*extra_code, new_stmt])
+
+
 		return While(node.cond, new_stmt)
 
 	
 	def visit_DoWhile(self, node):
 		new_stmt = self.visit(node.stmt)
+
+		self.scanf_ret = True
+		new_cond = self.visit(node.cond)
+		self.scanf_ret = False
+
+		if self.scanf_extra:
+			extra_code = self.scanf_extra
+			self.scanf_extra = None
+			node.cond = new_cond
+
+			if type(new_stmt) is Compound:
+				block = new_stmt.block_items
+				new_stmt.block_items = extra_code + block
+			else:
+				new_stmt = Compound([*extra_code, new_stmt])
+
 		return DoWhile(node.cond, new_stmt)
 
 	def visit_For(self, node):
-
 		self.stack.push()
 		new_init = self.visit(node.init)
 		new_stmt = self.visit(node.stmt)
@@ -225,3 +312,9 @@ class IO_Visitor(NodeVisitor):
 					new_stmts.append(new_stmt)
 		
 		return Case(node.expr, new_stmts)
+
+
+	def visit_BinaryOp(self, node):
+		new_left = self.visit(node.left)
+		new_right = self.visit(node.right)
+		return BinaryOp(node.op, new_left, new_right)
