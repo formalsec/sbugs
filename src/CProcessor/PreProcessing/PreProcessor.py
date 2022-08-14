@@ -1,4 +1,4 @@
-import sys, os, traceback
+import os, traceback
 
 from pycparser import parse_file, c_generator
 
