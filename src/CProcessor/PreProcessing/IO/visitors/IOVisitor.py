@@ -3,14 +3,15 @@ from pycparser.c_ast import *
 
 from . ArgGen import ArgGenVisitor
 from . ArgType import ArgTypeVisitor
+from . TypeDef import TypeDefVisitor
 
 from CProcessor.PreProcessing.utils import *
 
 
 class IO_Visitor(NodeVisitor):
 
-	def __init__ (self, arraysize=None): 
-		self.arraysize = arraysize
+	def __init__ (self, arraylimit=None): 
+		self.arraylimit = arraylimit
 		self.stack = ScopeStack()
 		self.struct = None #If inside a struct store name
 
@@ -37,7 +38,7 @@ class IO_Visitor(NodeVisitor):
 			args = args[2:] #Remove format string and buffer
 
 		for arg in args:
-			genvisitor = ArgGenVisitor(self.stack, self.arraysize)	
+			genvisitor = ArgGenVisitor(self.stack, self.arraylimit)	
 			code += genvisitor.visit(arg)
 
 				
@@ -187,23 +188,28 @@ class IO_Visitor(NodeVisitor):
 
 	#Visit Typedef (store aliases)
 	def visit_Typedef(self, node):
-		obj = node.type.type
-		if isinstance(obj,Struct):
-			
-			name = obj.name
+
+		vis = TypeDefVisitor()
+		struct = vis.visit(node)
+
+		if struct:
+			name = struct.name
 			if name is None:
 				name = node.name
 
 			self.lastAlias = node.name
 			self.stack.addAlias(node.name, name)
 			
-			self.visit(obj)
+			self.visit(struct)
 		return node
 
 
 	#Visit Struct
 	#Store new struct and visit its fields
 	def visit_Struct(self, node):
+		if self.struct:
+			return node
+
 		if node.name is None:
 			self.struct = self.lastAlias
 		else:
