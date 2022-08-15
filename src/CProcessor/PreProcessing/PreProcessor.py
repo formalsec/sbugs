@@ -8,12 +8,12 @@ from CProcessor.C_Generator import C_FileGenerator
 
 class PreProcessor(C_FileGenerator):
 
-	def __init__(self, inputfile, outputfile, io, global_vars=None, include=None, save_ast=False, arraysize=None):
+	def __init__(self, inputfile, outputfile, io, global_vars=None, include=None, save_ast=False, arraylimit=None):
 		super().__init__(inputfile, outputfile, include ,save_ast)
 		
 		self.io = io 
 		self.global_vars = global_vars
-		self.arraysize = arraysize
+		self.arraylimit = arraylimit
 
 	def gen(self):
 		
@@ -30,7 +30,7 @@ class PreProcessor(C_FileGenerator):
 			#print(ast)
 
 			if self.io:
-				io_visitor = IO_Visitor(self.arraysize)
+				io_visitor = IO_Visitor(self.arraylimit)
 				ast = io_visitor.visit(ast)
 
 			if self.global_vars:
