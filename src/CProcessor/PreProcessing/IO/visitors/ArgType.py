@@ -50,9 +50,8 @@ class ArgTypeVisitor(NodeVisitor):
 
 
 	def visit_ArrayDecl(self, node):
-		if node.dim is not None:
-			self.dim.append(node.dim)
-
+		
+		self.dim.append(node.dim)
 		#Store array dimension and visit type
 		self.visit(node.type)
 		return
