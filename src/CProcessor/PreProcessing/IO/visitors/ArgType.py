@@ -45,6 +45,7 @@ class ArgTypeVisitor(NodeVisitor):
 
 
 	def visit_PtrDecl(self, node):
+		self.dim.append(None)
 		self.visit(node.type)
 		return 		
 

@@ -38,7 +38,7 @@ class IO_Visitor(NodeVisitor):
 			args = args[2:] #Remove format string and buffer
 
 		for arg in args:
-			genvisitor = ArgGenVisitor(self.stack, self.arraylimit)	
+			genvisitor = ArgGenVisitor(self.stack, self.arraylimit)
 			code += genvisitor.visit(arg)
 
 				
