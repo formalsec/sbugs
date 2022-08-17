@@ -1,22 +1,29 @@
 # sbugs
 
-## Requirements
-### pycparser version 2.20
+## Install CProcessor
 
 ```sh
-$ pip3 install pycparser==2.20
+$ cd src && ./install.sh
 ```
 
-## Basic Usage
-#### Test Generator
-```sh
-$ ./testGenerator.py -o <outfile> <inputfile>
-$ ./testGenerator.py -h #Help
+## Usage
+
+```python
+from CProcessor import PreProcessor
+
+p = PreProcessor(inputfile, outfile, io=True)	
+p.gen()
 ```
 
+### Command line scripts in Examples
 #### Pre-Processor
 ```sh
 $ ./preProcessor.py -o <outfile> <inputfile>
 $ ./preProcessor.py -h #Help
+```
+#### Test Generator
+```sh
+$ ./testGenerator.py -o <outfile> <inputfile>
+$ ./testGenerator.py -h #Help
 ```
 
