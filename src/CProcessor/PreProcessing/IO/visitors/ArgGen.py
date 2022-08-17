@@ -8,8 +8,10 @@ class ArgGenVisitor(NodeVisitor):
 		self.stack = stack
 		self.arraylimit = arraylimit
 		self.node = None
-		self.dim = 0
 		self.fields = []
+		self.dim = 0
+
+		self.count_dim = True
 
 	def calc_size(self, size):
 		limit = Constant('int', str(self.arraylimit))
@@ -32,12 +34,18 @@ class ArgGenVisitor(NodeVisitor):
 		return self.visit(node.expr)
 
 	def visit_ArrayRef(self, node):
-		self.dim += 1
+		if self.count_dim:
+			self.dim += 1
+
+		if isinstance(node.name, StructRef):
+			self.count_dim = False
+
 		if not self.node:
 			self.node = node
 		return self.visit(node.name)
 
 	def visit_StructRef(self, node):
+		self.count_dim = False
 		if not self.node:
 			self.node = node		
 		self.fields.insert(0, node.field.name)
@@ -68,6 +76,7 @@ class ArgGenVisitor(NodeVisitor):
 			
 			if self.stack.isAlias(vartype):
 				vartype = self.stack.getStruct(vartype)
+
 
 		code = []
 		if arraysize:
