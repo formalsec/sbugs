@@ -324,3 +324,11 @@ class IO_Visitor(NodeVisitor):
 		new_left = self.visit(node.left)
 		new_right = self.visit(node.right)
 		return BinaryOp(node.op, new_left, new_right)
+
+
+	def visit_TernaryOp(self, node):
+		new_iftrue = self.visit(node.iftrue)
+		new_iffalse = self.visit(node.iffalse)
+		return TernaryOp(node.cond, new_iftrue, new_iffalse)
+
+  
