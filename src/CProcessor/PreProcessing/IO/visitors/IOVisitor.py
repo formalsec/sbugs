@@ -4,6 +4,7 @@ from pycparser.c_ast import *
 from . ArgGen import ArgGenVisitor
 from . ArgType import ArgTypeVisitor
 from . TypeDef import TypeDefVisitor
+from . CondVis import CondVisitor
 
 from CProcessor.PreProcessing.utils import *
 
@@ -16,7 +17,6 @@ class IO_Visitor(NodeVisitor):
 		self.struct = None #If inside a struct store name
 
 		self.lastAlias = None	
-	
 
 		self.fundef = False #Used to ignore function headers with no definition
 		
@@ -243,11 +243,20 @@ class IO_Visitor(NodeVisitor):
 		self.scanf_ret = False
 		
 		if self.scanf_extra:
+
 			extra_code = self.scanf_extra
 			self.scanf_extra = None
+			
+			v = CondVisitor()
+			in_if = v.visit(node.cond)
 			node.cond = new_cond
-			block = iftrue.block_items
-			iftrue.block_items = extra_code + block	
+			
+			if in_if:
+				block = iftrue.block_items
+				iftrue.block_items = extra_code + block	
+			else:
+				block = iffalse.block_items
+				iffalse.block_items = extra_code + block	
 
 		return If(node.cond, iftrue, iffalse)
 	
