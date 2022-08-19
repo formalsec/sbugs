@@ -4,15 +4,16 @@ import argparse
 import json
 import sys
 import os
+import re
 
 
 def cmd_args():
 	parser = argparse.ArgumentParser(description='Run student projects')
 
-	parser.add_argument('-results', metavar='dir', type=str, required=True,
+	parser.add_argument('results', metavar='results', type=str,
 						help='Results directory')
 	
-	parser.add_argument('-projects', metavar='dir', type=str, required=True,
+	parser.add_argument('projects', metavar='projects', type=str,
 						help='Projects directory')
 
 	parser.add_argument('-lconvert',  action='store_true',
@@ -38,27 +39,22 @@ class LineCoverter:
 		f = open(file, 'r')
 		for line in f:
 			line = line.strip()
-			if line.startswith('#define') or line.startswith('# define'):
+			if re.match(r'^\# *define', line) and '(' not in line:
 				split = line.split()
-				macros[split[1]] = split[2]
+				macros[split[-2]] = split[-1]
 		f.close()
 		return macros
 
 
-	def trim(self, line, macros:dict = None):
+	def trim(self, line:str, macros:dict = None):
 		if macros:
 			for key in macros.keys():
 				if key in line:
 					line = line.replace(key, macros[key])
 
 		line = line.strip()
-		line = line.replace(' ', '')
-		line = line.replace('(', '')
-		line = line.replace(')', '')
-		line = line.replace('{', '')
-		line = line.replace('}', '')
-
-
+		line = re.sub(r'[(){}; ]', '', line)
+		line = re.sub(r'(\/\*.*?\*+\/|\/\/.*)', '', line)
 		return line
 
 	def get_line(self, lineno, file):
@@ -72,7 +68,15 @@ class LineCoverter:
 		f = open(file, 'r')
 		i = 1
 		for l in f:
-			if self.trim(line) == self.trim(l, macros):
+			
+			line = self.trim(line)
+			l = self.trim(l, macros)
+
+			if not l:
+				i += 1
+				continue
+			
+			if line in l:
 				matches.append(i)
 			i += 1
 		return matches
@@ -82,6 +86,7 @@ class LineCoverter:
 		pre = f'{self.preprocessed}/{file}'
 
 		macros = self.get_macros(original)
+		
 
 		line = self.get_line(lineno, pre)
 		matches = self.find_line(line, original, macros)
@@ -89,8 +94,9 @@ class LineCoverter:
 		assert len(matches) > 0, f'Unable to match line {lineno} in {self.project} {file}'
 
 		if len(matches) > 1:
-			print(f'Multiple line candidates in {original}' )
-			print(f'Possible Lines: {matches}')
+			print(f'> Multiple line candidates in {original}' )
+			print(f'> Possible Lines: {matches}')
+			print(f'> Choosing the closest to {lineno}: ', end='')
 
 		best_match = matches[0]
 		for match in matches[1:]:
@@ -98,7 +104,10 @@ class LineCoverter:
 				best_match = match
 
 			elif self.diff(lineno, match) == self.diff(lineno, best_match):		
-				sys.exit(f'Equidistant line candidates, line:{match} and line{best_match}')
+				sys.exit(f'Equidistant line candidates, line:{match} and line:{best_match}')
+		
+		if len(matches) > 1:
+			print(f'{best_match}\n')
 		
 		return best_match
 
@@ -177,14 +186,15 @@ class ParseLog:
 
 
 class ParseResults:
-	def __init__(self, results, projects, out) -> None:
+	def __init__(self, results, projects, out, lconvert = True) -> None:
 		
 		self.results_path = results
 		self.projects_path = projects
 		self.out = out
+		self.lconvert = lconvert
 
 		self.results = os.listdir(self.results_path)
-		self.projects = os.listdir(self.projects_path)
+		self.results.sort(key=lambda p : int(p.split('_')[-1]))
 
 		self.ignore_errors = ['external call with symbolic argument: printf']
 
@@ -276,7 +286,10 @@ class ParseResults:
 			self.no_errors.append(proj)
 
 		for err in filtered_errors:
-			err = self.convert_lines(err, proj)	
+
+			if self.lconvert:
+				err = self.convert_lines(err, proj)	
+			
 			self.update_global(err)
 			err_obj = self.create_error_obj(err)
 			proj_json_obj['errors'].append(err_obj)
@@ -288,7 +301,7 @@ class ParseResults:
 		os.makedirs(self.out, exist_ok=True)
 
 		for proj in self.results:
-			print(f'Parsing {proj}')
+			print(f'==> Parsing {proj}')
 			
 			proj_json_obj = self.parse_proj(proj)
 			
@@ -321,5 +334,5 @@ if __name__ == "__main__":
 		out = results.split('/')[-1]
 		out = f'Parsed_{out}'
 	
-	parser = ParseResults(results, projects, out)
+	parser = ParseResults(results, projects, out, lconvert=lconvert)
 	parser.save_results()
