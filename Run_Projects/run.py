@@ -161,7 +161,7 @@ class Klee():
 
 	def run(self):
 
-		os.system(f'make clean -s')
+		os.system(f'make -C {self.path} clean -s')
 		for proj in self.projects:
 			self.compile(self.path, proj, self.original)
 
