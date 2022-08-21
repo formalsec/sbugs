@@ -32,7 +32,7 @@ def cmd_args():
 	return args
 
 
-class LineCoverter:
+class LineProcessor:
 	def __init__(self, project) -> None:
 		self.project = project
 		self.preprocessed = f'{self.project}/preprocessed'
@@ -65,11 +65,13 @@ class LineCoverter:
 		line = re.sub(r'(\/\*.*?\*+\/|\/\/.*)', '', line) #Remove comments
 		return line
 
+
 	def get_line(self, lineno, file):
 		f = open(file, 'r')
 		lines = f.readlines()
 		f.close()
 		return lines[lineno - 1]
+
 
 	def find_line(self, line, file, macros):
 		matches = []
@@ -102,6 +104,22 @@ class LineCoverter:
 			i += 1		
 
 		return matches
+
+
+	def verify(self, lineno, file):
+		pre = f'{self.preprocessed}/{file}'
+		line = self.get_line(lineno, pre)
+		sline = line.strip()
+		validated = True
+
+		if not sline:
+			validated = False
+		elif len(sline) < 10 and ';' not in sline:
+			validated = False
+
+		return validated, line
+
+
 
 	def convert(self, lineno, file):
 		original = f'{self.project}/{file}'
@@ -158,6 +176,9 @@ class Error():
 
 	def to_list(self):
 		return [self.file, self.line, self.desc]
+
+
+
 
 
 class KleeParseLog:
@@ -254,20 +275,24 @@ class KleeParseLog:
 
 
 
-
 class ParseResults:
-	def __init__(self, results, projects, out, lconvert = True, specific = []) -> None:	
+	def __init__(self, results, projects, out,
+				lconvert = True, specific = [], lerrors=False) -> None:	
+		
 		self.results_path = results
 		self.projects_path = projects
 		self.out = out
 		self.lconvert = lconvert
+		self.lerrors = lerrors
+		
+		if self.lerrors:
+			self.lwrong = open('wrong_lines.txt','w+')
+			self.lwrong.write('(Possibly) Incorrect lines reported\n')
 
 		if len(specific) == 0:
 			self.results = os.listdir(self.results_path)
-		
 		else:
 			self.results = specific
-
 		self.results.sort(key=lambda p : int(p.split('_')[-1]))
 
 		self.total_errors = 0
@@ -306,24 +331,38 @@ class ParseResults:
 		}
 		return proj_obj
 
-	def convert_lines(self, error:Error, proj:str):
+	def convert_line(self, error:Error, proj:str):
 		file, line, error_desc = error.to_list()
 		
 		if 'Project_' in proj:
 			proj = proj.split('_')[1]
 		
-		proj_path = f'{self.projects_path}/{proj}'
-		
-		lc = LineCoverter(proj_path)
-		lineno = lc.convert(int(line), file)
+		proj_path = f'{self.projects_path}/{proj}'		
+		lp = LineProcessor(proj_path)
+		lineno = lp.convert(int(line), file)
 
 		return Error(file, lineno, error_desc)
 
 
-	def parse_proj(self, proj:str):
+	def verify_line(self, error:Error, proj:str):
+		file, lineno, _ = error.to_list()
 		
+		if 'Project_' in proj:
+			proj = proj.split('_')[1]
+		proj_path = f'{self.projects_path}/{proj}'	
+
+		lp = LineProcessor(proj_path)
+		validated, line = lp.verify(int(lineno), file)
+			
+		if not validated:
+			self.lwrong.write(f'{proj} {file}:{lineno} {line}')
+
+
+
+	def parse_proj(self, proj:str):		
 		proj_json_obj = self.create_proj_obj(proj)	
 		proj_path = f'{self.results_path}/{proj}'
+		
 		parser = KleeParseLog(proj_path)
 		errors = parser.parse()
 				
@@ -331,9 +370,12 @@ class ParseResults:
 			self.no_errors.append(proj)
 
 		for err in errors:
+			
+			if self.lerrors:
+				self.verify_line(err, proj)
 
 			if self.lconvert:
-				err = self.convert_lines(err, proj)	
+				err = self.convert_line(err, proj)
 			
 			self.update_global(err)
 			proj_json_obj['errors'].append(err.json())
@@ -356,6 +398,9 @@ class ParseResults:
 		global_log = f'{self.out}/Global_stats.json'
 		
 		self.log_json(global_log, global_obj)
+
+		if self.lerrors:
+			self.lwrong.close()
 		
 
 def addPrefix(prefix:str, name:str):
@@ -364,9 +409,10 @@ def addPrefix(prefix:str, name:str):
 if __name__ == "__main__":
 	
 	ARGS = cmd_args()
-	results = ARGS.results
+	results  = ARGS.results
 	projects = ARGS.projects
 	lconvert = ARGS.lconvert
+	lerrors	 = ARGS.lerrors
 	
 	specific = ARGS.projs
 	specific = [addPrefix('Project_',p) if p.isnumeric() else p for p in specific]
@@ -385,5 +431,5 @@ if __name__ == "__main__":
 		out = f'Parsed_{out}'
 	
 	parser = ParseResults(results, projects, out,
-						lconvert=lconvert, specific=specific)
+						lconvert=lconvert, specific=specific, lerrors=lerrors)
 	parser.save_results()
