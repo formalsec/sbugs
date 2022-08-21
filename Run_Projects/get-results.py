@@ -16,6 +16,9 @@ def cmd_args():
 	parser.add_argument('projects', metavar='projects', type=str,
 						help='Projects directory')
 
+	parser.add_argument('--projs', nargs='*', default=[],
+						help='Parse only specific projects')
+
 	parser.add_argument('-lconvert',  action='store_true',
 						help='Convert error lines (preprocessed to original file)')
 
@@ -39,6 +42,8 @@ class LineCoverter:
 		f = open(file, 'r')
 		for line in f:
 			line = line.strip()
+
+			#Get simple variable macros
 			if re.match(r'^\# *define', line) and '(' not in line:
 				split = line.split()
 				macros[split[-2]] = split[-1]
@@ -53,8 +58,8 @@ class LineCoverter:
 					line = line.replace(key, macros[key])
 
 		line = line.strip()
-		line = re.sub(r'[(){}; ]', '', line)
-		line = re.sub(r'(\/\*.*?\*+\/|\/\/.*)', '', line)
+		line = re.sub(r'[(){}; ]', '', line) 
+		line = re.sub(r'(\/\*.*?\*+\/|\/\/.*)', '', line) #Remove comments
 		return line
 
 	def get_line(self, lineno, file):
@@ -65,12 +70,14 @@ class LineCoverter:
 
 	def find_line(self, line, file, macros):
 		matches = []
+		trimmed = []
 		f = open(file, 'r')
 		i = 1
-		for l in f:
-			
-			line = self.trim(line)
+		line = self.trim(line)
+		
+		for l in f:	
 			l = self.trim(l, macros)
+			trimmed.append(l)
 
 			if not l:
 				i += 1
@@ -79,6 +86,18 @@ class LineCoverter:
 			if line in l:
 				matches.append(i)
 			i += 1
+
+		if len(matches) == 0:
+			i = 0
+			for l in trimmed:
+				if not l:
+					i += 1
+					continue
+
+			if l in line and i-1 not in matches:
+				matches.append(i)
+			i += 1		
+
 		return matches
 
 	def convert(self, lineno, file):
@@ -86,15 +105,18 @@ class LineCoverter:
 		pre = f'{self.preprocessed}/{file}'
 
 		macros = self.get_macros(original)
-		
-
 		line = self.get_line(lineno, pre)
+
+		#Help Debug
+		#print(lineno, line)
+
 		matches = self.find_line(line, original, macros)
 
-		assert len(matches) > 0, f'Unable to match line {lineno} in {self.project} {file}'
+		if not(len(matches) > 0):
+			sys.exit(f'Unable to match line {lineno} in {self.project} {file}')
 
 		if len(matches) > 1:
-			print(f'> Multiple line candidates in {original}' )
+			print(f'> Multiple line candidates in {original} to match {lineno}')
 			print(f'> Possible Lines: {matches}')
 			print(f'> Choosing the closest to {lineno}: ', end='')
 
@@ -103,8 +125,9 @@ class LineCoverter:
 			if self.diff(lineno, match) < self.diff(lineno, best_match):
 				best_match = match
 
-			elif self.diff(lineno, match) == self.diff(lineno, best_match):		
-				sys.exit(f'Equidistant line candidates, line:{match} and line:{best_match}')
+			elif self.diff(lineno, match) == self.diff(lineno, best_match):
+				best_match = min(match, best_match)						
+				print(f'Equidistant line candidates, line:{match} and line:{best_match}')
 		
 		if len(matches) > 1:
 			print(f'{best_match}\n')
@@ -186,14 +209,19 @@ class ParseLog:
 
 
 class ParseResults:
-	def __init__(self, results, projects, out, lconvert = True) -> None:
+	def __init__(self, results, projects, out, lconvert = True, specific = []) -> None:
 		
 		self.results_path = results
 		self.projects_path = projects
 		self.out = out
 		self.lconvert = lconvert
 
-		self.results = os.listdir(self.results_path)
+		if len(specific) == 0:
+			self.results = os.listdir(self.results_path)
+		
+		else:
+			self.results = specific
+
 		self.results.sort(key=lambda p : int(p.split('_')[-1]))
 
 		self.ignore_errors = ['external call with symbolic argument: printf']
@@ -314,7 +342,8 @@ class ParseResults:
 		self.log_json(global_log, global_obj)
 		
 
-
+def addPrefix(prefix:str, name:str):
+	return prefix + name
 		
 if __name__ == "__main__":
 	
@@ -322,6 +351,11 @@ if __name__ == "__main__":
 	results = ARGS.results
 	projects = ARGS.projects
 	lconvert = ARGS.lconvert
+	
+	specific = ARGS.projs
+	specific = [addPrefix('Project_',p) if p.isnumeric() else p for p in specific]
+
+
 	out = ARGS.o
 
 	if results[-1] == '/':
@@ -334,5 +368,6 @@ if __name__ == "__main__":
 		out = results.split('/')[-1]
 		out = f'Parsed_{out}'
 	
-	parser = ParseResults(results, projects, out, lconvert=lconvert)
+	parser = ParseResults(results, projects, out,
+						lconvert=lconvert, specific=specific)
 	parser.save_results()
