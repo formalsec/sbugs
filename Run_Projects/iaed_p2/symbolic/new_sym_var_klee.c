@@ -34,18 +34,30 @@ void *new_sym_var(unsigned int length){
         return sym;
     }  
 
+    else if (length == sizeof(long int)){
+        long int sym;
+        klee_make_symbolic(&sym, sizeof(sym), "sym_long_int");
+        return sym;
+    }  
+
     else if (length == sizeof(long long)){
-        long sym;
+        long long sym;
         klee_make_symbolic(&sym, sizeof(sym), "sym_long_long");
         return sym;
     }  
 
+    else if (length == sizeof(short int)){
+        short int sym;
+        klee_make_symbolic(&sym, sizeof(sym), "sym_short_int");
+        return sym;
+    }
+
     else if (length == sizeof(short)){
-        long sym;
+        short sym;
         klee_make_symbolic(&sym, sizeof(sym), "sym_short");
         return sym;
     }
-    
+
     else{
         void* sym;
         klee_make_symbolic(&sym, sizeof(sym), "sym_unknown_type");
