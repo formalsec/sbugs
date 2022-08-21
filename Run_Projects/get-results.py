@@ -22,6 +22,9 @@ def cmd_args():
 	parser.add_argument('-lconvert',  action='store_true',
 						help='Convert error lines (preprocessed to original file)')
 
+	parser.add_argument('-lerrors',  action='store_true',
+						help='Log possible error lines ')
+
 	parser.add_argument('-o', metavar='out_dir', type=str,
 						help='Specify output directory')
 
@@ -135,15 +138,39 @@ class LineCoverter:
 		return best_match
 
 
-class ParseLog:
-	def __init__(self, log) -> None:
-		self.log = log
+
+class Error():
+	def __init__(self, file, line, desc) -> None:
+		self.file = file
+		self.line = line
+		self.desc = desc
+
+	def __repr__(self) -> str:
+		return f'{self.file} : {self.line} : {self.desc}'
+
+	def json(self):
+		error_obj = {
+			'file':self.file,
+			'line':self.line,
+			'error':self.desc
+		}
+		return error_obj		
+
+	def to_list(self):
+		return [self.file, self.line, self.desc]
+
+
+class KleeParseLog:
+	def __init__(self, logpath) -> None:
+		self.logpath = logpath
 
 		self.Error = 'Error:'
 		self.File = 'File:'
 		self.Line = 'Line:'
 		self.Stack = 'Stack:'
 	
+		self.ignore_errors = ['external call with symbolic argument: printf']
+
 
 	def split_line(self, line, delim, index=1):
 		split = line.split(delim, index)
@@ -164,7 +191,6 @@ class ParseLog:
 				continue	
 		return error_type, file_name, code_line
 
-	
 	
 	def get_stack(self, f):
 		stack = False
@@ -187,10 +213,17 @@ class ParseLog:
 		return None
 
 
+	def filter_errors(self, error:Error):
+		_, _, error_desc = error.to_list()
+		for ignore in self.ignore_errors:
+			if ignore in error_desc or ignore == error_desc:
+				return False
+		return True	
 
-	def parse(self):
-		f1 = open(self.log, 'r')
-		f2 = open(self.log, 'r')
+
+	def parse_log(self, log) -> Error:
+		f1 = open(log, 'r')
+		f2 = open(log, 'r')
 		error, file, line = self.get_main_values(f1)
 		stack_file, stack_line = self.get_stack(f2)
 		f1.close()
@@ -204,13 +237,26 @@ class ParseLog:
 			line = stack_line
 			assert('/' not in file)
 
-		return [file, line, error]
+		return Error(file, line, error)
+
+
+	def parse(self):
+		errors = []
+		logs = os.listdir(self.logpath)
+		for log in logs:
+			if log.endswith('.err'):
+				log_path = f'{self.logpath}/{log}'
+				error = self.parse_log(log_path)
+				errors.append(error)
+
+		errors = list(filter(self.filter_errors, errors))
+		return errors
+
 
 
 
 class ParseResults:
-	def __init__(self, results, projects, out, lconvert = True, specific = []) -> None:
-		
+	def __init__(self, results, projects, out, lconvert = True, specific = []) -> None:	
 		self.results_path = results
 		self.projects_path = projects
 		self.out = out
@@ -224,15 +270,13 @@ class ParseResults:
 
 		self.results.sort(key=lambda p : int(p.split('_')[-1]))
 
-		self.ignore_errors = ['external call with symbolic argument: printf']
-
 		self.total_errors = 0
 		self.error_types = {}
 		self.no_errors = []
 
 
-	def update_global(self, error):
-		_, _, error_desc = error
+	def update_global(self, error:Error):
+		_, _, error_desc = error.to_list()
 		self.total_errors += 1
 		
 		if error_desc in self.error_types.keys():
@@ -246,15 +290,6 @@ class ParseResults:
 		json_object = json.dumps(results, indent = 2)  
 		file.write(json_object)
 		return
-	
-	def create_error_obj(self, error):
-		file, line, error_desc = error
-		error_obj = {
-			'file':file,
-			'line':line,
-			'error':error_desc,
-		}
-		return error_obj
 
 	def create_global_obj(self):
 		global_obj = {
@@ -271,8 +306,8 @@ class ParseResults:
 		}
 		return proj_obj
 
-	def convert_lines(self, error, proj):
-		file, line, error_desc = error
+	def convert_lines(self, error:Error, proj:str):
+		file, line, error_desc = error.to_list()
 		
 		if 'Project_' in proj:
 			proj = proj.split('_')[1]
@@ -282,45 +317,26 @@ class ParseResults:
 		lc = LineCoverter(proj_path)
 		lineno = lc.convert(int(line), file)
 
-		return [file, lineno, error_desc]
-
-	def filter_errors(self, error):
-		_, _, error_desc = error
-		for ignore in self.ignore_errors:
-			if ignore in error_desc or ignore == error_desc:
-				return False
-		return True
+		return Error(file, lineno, error_desc)
 
 
-	def parse_proj(self, proj):
+	def parse_proj(self, proj:str):
 		
-		proj_json_obj = self.create_proj_obj(proj)
-		errors = []
-		
+		proj_json_obj = self.create_proj_obj(proj)	
 		proj_path = f'{self.results_path}/{proj}'
-		logs = os.listdir(proj_path)
-		
-		for log in logs:
-		
-			if log.endswith('.err'):
-				log_path = f'{self.results_path}/{proj}/{log}'
-				parser = ParseLog(log_path)
-				error = parser.parse()
-				errors.append(error)
-		
-		filtered_errors = list(filter(self.filter_errors, errors))
-		
-		if not filtered_errors:
+		parser = KleeParseLog(proj_path)
+		errors = parser.parse()
+				
+		if not errors:
 			self.no_errors.append(proj)
 
-		for err in filtered_errors:
+		for err in errors:
 
 			if self.lconvert:
 				err = self.convert_lines(err, proj)	
 			
 			self.update_global(err)
-			err_obj = self.create_error_obj(err)
-			proj_json_obj['errors'].append(err_obj)
+			proj_json_obj['errors'].append(err.json())
 	
 		return proj_json_obj
 
