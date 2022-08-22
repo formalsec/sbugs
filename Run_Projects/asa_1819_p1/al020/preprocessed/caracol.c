@@ -19,7 +19,7 @@ typedef struct router
   bool articPoint;
   node_t head;
 } *router_t;
-bool secondDFS = 0;
+bool secondDFS = false;
 int time = 1;
 int numSubnetworks = 0;
 int subnetworkId = 0;
@@ -86,7 +86,7 @@ router_t newRouter()
     router->head = 0;
     router->discovery = 0;
     router->parent = -1;
-    router->articPoint = 0;
+    router->articPoint = false;
   }
   else
   {
@@ -158,7 +158,7 @@ void DFS(int i, router_t router[])
       if (((((router[i]->parent == (-1)) && (numOfChildren > 1)) || ((router[i]->parent != (-1)) && (router[x->num - 1]->low >= router[i]->discovery))) && (!router[i]->articPoint)) && (!secondDFS))
       {
         articPointsCnt++;
-        router[i]->articPoint = 1;
+        router[i]->articPoint = true;
       }
       else
       {
@@ -257,7 +257,7 @@ int main()
     router[i]->parent = -1;
   }
 
-  secondDFS = 1;
+  secondDFS = true;
   tmpSubnetworkSize = 1;
   for (i = 0; i < numRouters; i++)
   {

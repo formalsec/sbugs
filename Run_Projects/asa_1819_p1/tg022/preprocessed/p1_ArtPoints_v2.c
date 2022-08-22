@@ -7,8 +7,8 @@
 
 typedef enum 
 {
-  false_,
-  true_
+  false,
+  true
 } bool;
 typedef struct connection
 {
@@ -26,12 +26,12 @@ int artPoints(int u, bool visited[], int disc[], int low[], int parent[], bool a
   int children = 0;
   int index;
   (*size)++;
-  visited[u] = true_;
+  visited[u] = true;
   disc[u] = (low[u] = ++(*time));
   for (index = 0; index < nodes[u].n; index++)
   {
     int v = nodes[u].next[index];
-    if ((visited[v] == false_) && (artpoint[v] == false_))
+    if ((visited[v] == false) && (artpoint[v] == false))
     {
       children++;
       parent[v] = u;
@@ -48,7 +48,7 @@ int artPoints(int u, bool visited[], int disc[], int low[], int parent[], bool a
       low[u] = (low[u] < low[v]) ? (low[u]) : (low[v]);
       if ((parent[u] == (-1)) && (children > 1))
       {
-        artpoint[u] = true_;
+        artpoint[u] = true;
       }
       else
       {
@@ -57,7 +57,7 @@ int artPoints(int u, bool visited[], int disc[], int low[], int parent[], bool a
 
       if ((parent[u] != (-1)) && (low[v] >= disc[u]))
       {
-        artpoint[u] = true_;
+        artpoint[u] = true;
       }
       else
       {
@@ -159,13 +159,13 @@ int main()
   for (i = 0; i < numNodes; i++)
   {
     parent[i] = -1;
-    visited[i] = false_;
-    artpoint[i] = false_;
+    visited[i] = false;
+    artpoint[i] = false;
   }
 
   for (i = 0; i < numNodes; i++)
   {
-    if (visited[i] == false_)
+    if (visited[i] == false)
     {
       int max = artPoints(i, visited, disc, low, parent, artpoint, nodes, &time, &size);
       subs++;
@@ -191,7 +191,7 @@ int main()
   int numAPoints = 0;
   for (i = 0; i < numNodes; i++)
   {
-    if (artpoint[i] == true_)
+    if (artpoint[i] == true)
     {
       numAPoints++;
     }
@@ -206,13 +206,13 @@ int main()
   for (i = 0; i < numNodes; i++)
   {
     parent[i] = -1;
-    visited[i] = false_;
+    visited[i] = false;
   }
 
   time = 0;
   for (i = 0; i < numNodes; i++)
   {
-    if ((artpoint[i] == false_) && (visited[i] == false_))
+    if ((artpoint[i] == false) && (visited[i] == false))
     {
       size = 0;
       artPoints(i, visited, disc, low, parent, artpoint, nodes, &time, &size);

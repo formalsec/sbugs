@@ -38,7 +38,7 @@ void printResults(Data data)
   int count_cut_vertexs = 0;
   for (i = 0; i < data->nr_vertexs; i++)
   {
-    if (data->vertexs[i].is_max_vertex == 1)
+    if (data->vertexs[i].is_max_vertex == true)
     {
       printf("%d", data->vertexs[i].vertex);
       j--;
@@ -57,7 +57,7 @@ void printResults(Data data)
       
     }
 
-    if (data->vertexs[i].is_articulation == 1)
+    if (data->vertexs[i].is_articulation == true)
     {
       count_cut_vertexs++;
     }
@@ -73,7 +73,7 @@ void printResults(Data data)
 
 void dfsVisit(Data data, int u, int *variable, int mode)
 {
-  data->vertexs[u].visited = 1;
+  data->vertexs[u].visited = true;
   if (mode == 0)
   {
     static int time = 0;
@@ -82,7 +82,7 @@ void dfsVisit(Data data, int u, int *variable, int mode)
     Connection pointer;
     for (pointer = data->vertexs[u].head; pointer != 0; pointer = pointer->next)
     {
-      if (data->vertexs[pointer->vertex - 1].visited == 0)
+      if (data->vertexs[pointer->vertex - 1].visited == false)
       {
         *variable = ((*variable) > pointer->vertex) ? (*variable) : (pointer->vertex);
         children++;
@@ -91,7 +91,7 @@ void dfsVisit(Data data, int u, int *variable, int mode)
         data->vertexs[u].low = (data->vertexs[u].low < data->vertexs[pointer->vertex - 1].low) ? (data->vertexs[u].low) : (data->vertexs[pointer->vertex - 1].low);
         if (((data->vertexs[u].parent == 0) && (children > 1)) || ((data->vertexs[u].parent != 0) && (data->vertexs[pointer->vertex - 1].low >= data->vertexs[u].d)))
         {
-          data->vertexs[u].is_articulation = 1;
+          data->vertexs[u].is_articulation = true;
         }
         else
         {
@@ -119,7 +119,7 @@ void dfsVisit(Data data, int u, int *variable, int mode)
   {
     Connection pointer;
     for (pointer = data->vertexs[u].head; pointer != 0; pointer = pointer->next)
-      if ((data->vertexs[pointer->vertex - 1].visited == 0) && (data->vertexs[pointer->vertex - 1].is_articulation == 0))
+      if ((data->vertexs[pointer->vertex - 1].visited == false) && (data->vertexs[pointer->vertex - 1].is_articulation == false))
     {
       (*variable)++;
       dfsVisit(data, pointer->vertex - 1, variable, mode);
@@ -138,18 +138,18 @@ void dfs(Data data, int mode)
 {
   int u;
   for (u = 0; u < data->nr_vertexs; u++)
-    data->vertexs[u].visited = 0;
+    data->vertexs[u].visited = false;
 
   if (mode == 0)
   {
     int max_vertex;
     for (u = 0; u < data->nr_vertexs; u++)
-      if (data->vertexs[u].visited == 0)
+      if (data->vertexs[u].visited == false)
     {
       data->nr_graphs++;
       max_vertex = data->vertexs[u].vertex;
       dfsVisit(data, u, &max_vertex, mode);
-      data->vertexs[max_vertex - 1].is_max_vertex = 1;
+      data->vertexs[max_vertex - 1].is_max_vertex = true;
     }
     else
     {
@@ -162,7 +162,7 @@ void dfs(Data data, int mode)
   {
     int nr_vertexs_bigger_graph;
     for (u = 0; u < data->nr_vertexs; u++)
-      if ((data->vertexs[u].visited == 0) && (data->vertexs[u].is_articulation == 0))
+      if ((data->vertexs[u].visited == false) && (data->vertexs[u].is_articulation == false))
     {
       nr_vertexs_bigger_graph = 1;
       dfsVisit(data, u, &nr_vertexs_bigger_graph, mode);
@@ -258,8 +258,8 @@ Data createData()
   {
     data->vertexs[i].vertex = i + 1;
     data->vertexs[i].parent = 0;
-    data->vertexs[i].is_articulation = 0;
-    data->vertexs[i].is_max_vertex = 0;
+    data->vertexs[i].is_articulation = false;
+    data->vertexs[i].is_max_vertex = false;
     data->vertexs[i].head = 0;
   }
 

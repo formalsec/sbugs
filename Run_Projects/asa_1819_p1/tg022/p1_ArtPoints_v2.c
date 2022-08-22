@@ -10,7 +10,7 @@
 /* returns the lowest argument given */
 #define min(a, b) (((a) < (b)) ? (a) : (b))
 
-typedef enum { false_, true_ } bool;
+typedef enum { false, true } bool;
 
 /* structers */
 
@@ -44,7 +44,7 @@ int artPoints(int u, bool visited[], int disc[], int low[], int parent[], bool a
 	int index;
 
 	(*size)++;
-	visited[u] = true_;
+	visited[u] = true;
 	disc[u] = low[u] = ++(*time);
 
 	/* goes through each node of the graph searching for the articulation points */
@@ -52,7 +52,7 @@ int artPoints(int u, bool visited[], int disc[], int low[], int parent[], bool a
 	{
 		int v = nodes[u].next[index];
 
-		if (visited[v] == false_ && artpoint[v] == false_)
+		if (visited[v] == false && artpoint[v] == false)
 		{
 			children++;
 			parent[v] = u;
@@ -65,11 +65,11 @@ int artPoints(int u, bool visited[], int disc[], int low[], int parent[], bool a
 			low[u] = min(low[u],low[v]);
 
 			if (parent[u] == NIL && children > 1){
-				artpoint[u] = true_;
+				artpoint[u] = true;
 			}
 
 			if (parent[u] != NIL && low[v] >= disc[u]){
-				artpoint[u] = true_;
+				artpoint[u] = true;
 			}
 		}
 
@@ -147,14 +147,14 @@ int main ()
 	for (i=0; i < numNodes; i++)
 	{
 		parent[i] = NIL;
-		visited[i] = false_;
-		artpoint[i] = false_;
+		visited[i] = false;
+		artpoint[i] = false;
 	}
 	
 	/* goes through the graph and searches the articulation points with the auxiliar function : artPoints*/
 	for (i = 0; i < numNodes; i++)
 	{
-		if (visited[i] == false_) 
+		if (visited[i] == false) 
 		{
 			int max = artPoints(i,visited,disc,low,parent,artpoint,nodes,&time,&size);
 			subs++;
@@ -179,7 +179,7 @@ int main ()
 	int numAPoints=0;
 	/* Using the vector of artpoint counts the number of articulation points in the graph */
 	for (i=0; i<numNodes; i++){
-		if (artpoint[i]==true_){
+		if (artpoint[i]==true){
 			numAPoints++;
 		}
 	}
@@ -188,7 +188,7 @@ int main ()
 	/* re-initializes the vectors of each node in the graphs */
 	for (i=0; i < numNodes; i++){
 		parent[i] = NIL;
-		visited[i] = false_;
+		visited[i] = false;
 	}
 
 	/* Goes through the graph ignoring the articulation points in order to search the number
@@ -196,7 +196,7 @@ int main ()
 	time = 0;
 	for (i=0; i<numNodes; i++)
 	{
-		if (artpoint[i] == false_ && visited[i] == false_)
+		if (artpoint[i] == false && visited[i] == false)
 		{
 			size=0;
 			artPoints(i,visited,disc,low,parent,artpoint,nodes,&time, &size);

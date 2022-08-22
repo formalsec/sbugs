@@ -27,7 +27,7 @@ int maiorVertice = 0;
 int *subtreeIds;
 int tamanhoArvoreFinal = 0;
 int tamanhoArvoreInstancia = 0;
-bool ciclo = 0;
+bool ciclo = false;
 Grafo *initGraph(int V)
 {
   Grafo *grafo = 0;
@@ -90,7 +90,7 @@ void tarjanVisit(Grafo *grafo, verticeId u, int **lista, int pontosDeArticulacao
 {
   verticeDoGrafo *node = grafo->listaAdjacencias[u - 1];
   verticeId adj;
-  bool pontoDeArticulacaoCandidato = 0;
+  bool pontoDeArticulacaoCandidato = false;
   int outDegree = 0;
   lista[1][u - 1] = lista[0][0];
   lista[2][u - 1] = lista[0][0];
@@ -129,8 +129,8 @@ void tarjanVisit(Grafo *grafo, verticeId u, int **lista, int pontosDeArticulacao
         {
           tamanhoArvoreFinal = (tamanhoArvoreFinal < tamanhoArvoreInstancia) ? (tamanhoArvoreInstancia) : (tamanhoArvoreFinal);
           tamanhoArvoreInstancia = 0;
-          ciclo = 1;
-          pontoDeArticulacaoCandidato = 1;
+          ciclo = true;
+          pontoDeArticulacaoCandidato = true;
         }
         else
         {

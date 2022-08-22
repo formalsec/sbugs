@@ -89,7 +89,7 @@ bool is_in_list(link l, int id)
   {
     if (aux->id == id)
     {
-      return 1;
+      return true;
     }
     else
     {
@@ -98,7 +98,7 @@ bool is_in_list(link l, int id)
 
   }
 
-  return 0;
+  return false;
 }
 
 void list_print(link l)

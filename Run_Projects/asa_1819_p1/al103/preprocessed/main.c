@@ -420,7 +420,7 @@ void auxCutVertices(Graph g, int u, int *color, int *pi, int *d, int *f, bool *a
       f[u] = min(f[u], f[v]);
       if (((pi[u] == 0) && (children > 1)) || ((pi[u] != 0) && (f[v] >= d[u])))
       {
-        ap[u] = 1;
+        ap[u] = true;
       }
       else
       {
@@ -459,7 +459,7 @@ void cutVerticesDFS(Graph g, bool *ap)
     f[i] = -1;
     d[i] = 32767;
     pi[i] = 0;
-    ap[i] = 0;
+    ap[i] = false;
   }
 
   for (i = 1; i < (nVertices + 1); i++)
@@ -481,7 +481,7 @@ void cutVerticesDFS(Graph g, bool *ap)
   free(color);
   for (i = 1; i < (nVertices + 1); i++)
   {
-    if (ap[i] == 1)
+    if (ap[i] == true)
     {
       nCutVertices++;
       GraphRemoveNode(g, i);

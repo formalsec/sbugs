@@ -192,7 +192,7 @@ TarjanInfo *inicTarjanInfo(int v)
     ti->_parent[i] = -1;
     ti->_d[i] = 2147483646;
     ti->_low[i] = 2147483646;
-    ti->_isInStack[i] = 0;
+    ti->_isInStack[i] = false;
     ti->_SCCid[i] = -1;
   }
 
@@ -254,7 +254,7 @@ void TarjanVisit(Graph *g, TarjanInfo *ti, int u)
   for (aux = g->_adjacencyList[u]; aux != 0; aux = aux->_nextNode)
   {
     v = aux->_end;
-    if ((ti->_d[v] == 2147483646) || (ti->_isInStack[v] == 1))
+    if ((ti->_d[v] == 2147483646) || (ti->_isInStack[v] == true))
     {
       if (ti->_d[v] == 2147483646)
       {
@@ -265,7 +265,7 @@ void TarjanVisit(Graph *g, TarjanInfo *ti, int u)
         ti->_low[u] = (ti->_low[v] < ti->_low[u]) ? (ti->_low[v]) : (ti->_low[u]);
         if ((ti->_parent[u] != (-1)) && (ti->_low[v] >= ti->_d[u]))
         {
-          ti->_AP[u] = 1;
+          ti->_AP[u] = true;
         }
         else
         {
@@ -274,7 +274,7 @@ void TarjanVisit(Graph *g, TarjanInfo *ti, int u)
 
         if ((ti->_parent[u] == (-1)) && (child > 1))
         {
-          ti->_AP[u] = 1;
+          ti->_AP[u] = true;
         }
         else
         {
@@ -369,7 +369,7 @@ void pushStackVertex(TarjanInfo *ti, int u)
   new->_vertex = u;
   new->_nextNode = ti->_stackHead;
   ti->_stackHead = new;
-  ti->_isInStack[u] = 1;
+  ti->_isInStack[u] = true;
 }
 
 void popStackVertex(TarjanInfo *ti)
@@ -378,7 +378,7 @@ void popStackVertex(TarjanInfo *ti)
   VertexNode *newhead = ti->_stackHead->_nextNode;
   free(ti->_stackHead);
   ti->_stackHead = newhead;
-  ti->_isInStack[u] = 0;
+  ti->_isInStack[u] = false;
 }
 
 void count_remove_AP(Graph *g, TarjanInfo *ti)
@@ -388,7 +388,7 @@ void count_remove_AP(Graph *g, TarjanInfo *ti)
   int N = g->_v;
   for (i = 0; i < N; i++)
   {
-    if (ti->_AP[i] == 1)
+    if (ti->_AP[i] == true)
     {
       count++;
       g->_adjacencyList[i] = 0;

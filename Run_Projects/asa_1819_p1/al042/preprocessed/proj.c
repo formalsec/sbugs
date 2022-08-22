@@ -118,7 +118,7 @@ void read_input()
 void add_ap(int v)
 {
   link x;
-  bool flag = 0;
+  bool flag = false;
   if (ap == 0)
   {
     ap = NEW(v);
@@ -129,7 +129,7 @@ void add_ap(int v)
     {
       if (x->v == v)
       {
-        flag = 1;
+        flag = true;
       }
       else
       {
@@ -140,7 +140,7 @@ void add_ap(int v)
 
     if (x->v == v)
     {
-      flag = 1;
+      flag = true;
     }
     else
     {

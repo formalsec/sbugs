@@ -209,7 +209,7 @@ void dfs_visit(graph_t graph, int u, int *discovery, int *low, int *parent, stac
       {
         if (((parent[u] == (-1)) && (children > 1)) || ((parent[u] != (-1)) && (low[i->value] >= discovery[u])))
         {
-          artcVec[u] = 1;
+          artcVec[u] = true;
           push(artcPoints, u);
         }
         else
@@ -260,7 +260,7 @@ data_t dfs(graph_t graph)
   {
     discovery[i] = -1;
     parent[i] = -1;
-    artcVec[i] = 0;
+    artcVec[i] = false;
   }
 
   int startTime;

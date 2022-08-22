@@ -137,7 +137,7 @@ void Inicializacoes(int flag)
     {
       adj[i].inicio = 0;
       adj[i].fim = 0;
-      ptoart[i] = 0;
+      ptoart[i] = false;
     }
     else
     {
@@ -203,9 +203,9 @@ void tarjan(int atual, int flag)
         parente[i->vertice - 1] = atual + 1;
         tarjan(i->vertice - 1, flag);
         low[atual] = min(low[atual], low[i->vertice - 1]);
-        if (((flag == 1) && (ptoart[atual] == 0)) && (((parente[atual] == 0) && (filhos > 1)) || ((parente[atual] != 0) && (low[i->vertice - 1] >= d[atual]))))
+        if (((flag == 1) && (ptoart[atual] == false)) && (((parente[atual] == 0) && (filhos > 1)) || ((parente[atual] != 0) && (low[i->vertice - 1] >= d[atual]))))
         {
-          ptoart[atual] = 1;
+          ptoart[atual] = true;
           n_ptoart++;
         }
         else

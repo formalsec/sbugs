@@ -131,10 +131,10 @@ void routerInfoInit()
     routerInfoVec[i].index = -1;
     routerInfoVec[i].head = -1;
     routerInfoVec[i].lowLink = -1;
-    routerInfoVec[i].onStack = 0;
+    routerInfoVec[i].onStack = false;
     routerInfoVec[i].scc = -1;
     routerInfoVec[i].rID = -1;
-    routerInfoVec[i].removed = 0;
+    routerInfoVec[i].removed = false;
   }
 
 }
@@ -251,7 +251,7 @@ void scc(int currentRouter)
   routerInfoVec[currentRouter].lowLink = totalIndex;
   totalIndex += 1;
   push(currentRouter);
-  routerInfoVec[currentRouter].onStack = 1;
+  routerInfoVec[currentRouter].onStack = true;
   while (adjacent != 0)
   {
     if ((routerInfoVec[adjacent->id].index == (-1)) && (!routerInfoVec[adjacent->id].removed))
@@ -287,7 +287,7 @@ void scc(int currentRouter)
     {
       auxRouter = pop();
       routerInfoVec[auxRouter].scc = currentSCC;
-      routerInfoVec[auxRouter].onStack = 0;
+      routerInfoVec[auxRouter].onStack = false;
       routerInfoVec[auxRouter].head = currentRouter;
       size += 1;
       if (sccHeadID[currentSCC] < routerInfoVec[auxRouter].rID)
@@ -407,7 +407,7 @@ void AP()
     {
       flag = 1;
       nAP++;
-      routerInfoVec[i].removed = 1;
+      routerInfoVec[i].removed = true;
     }
     else
     {

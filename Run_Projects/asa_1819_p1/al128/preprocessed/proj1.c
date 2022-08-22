@@ -88,7 +88,7 @@ void startVertices(unsigned long number, router *vertices)
   for (i = 0; i < number; i++)
   {
     vertices[i].id = i + 1;
-    vertices[i].ap = 0;
+    vertices[i].ap = false;
     vertices[i].connect = 0;
   }
 
@@ -124,14 +124,14 @@ unsigned long dfsVisit(router *node, unsigned long *time, unsigned long *discove
   unsigned long biggestId = node->id;
   unsigned long tempId;
   unsigned long children = 0;
-  seen[node->id - 1] = 1;
+  seen[node->id - 1] = true;
   discovery[node->id - 1] = *time;
   low[node->id - 1] = *time;
   (*time)++;
   link *l = node->connect;
   while (l != 0)
   {
-    if (seen[l->content->id - 1] == 0)
+    if (seen[l->content->id - 1] == false)
     {
       predecessor[l->content->id - 1] = node->id;
       children++;
@@ -148,7 +148,7 @@ unsigned long dfsVisit(router *node, unsigned long *time, unsigned long *discove
       low[node->id - 1] = min(low[node->id - 1], low[l->content->id - 1]);
       if ((predecessor[node->id - 1] == 0) && (children > 1))
       {
-        node->ap = 1;
+        node->ap = true;
       }
       else
       {
@@ -157,7 +157,7 @@ unsigned long dfsVisit(router *node, unsigned long *time, unsigned long *discove
 
       if ((predecessor[node->id - 1] != 0) && (low[l->content->id - 1] >= discovery[node->id - 1]))
       {
-        node->ap = 1;
+        node->ap = true;
       }
       else
       {
@@ -199,16 +199,16 @@ void dfs(router *vertices, unsigned long verticeNum)
     dfsDiscovery[i] = 0;
     dfsPredecessor[i] = 0;
     dfsLow[i] = 0;
-    dfsSeen[i] = 0;
-    dfsSubtree[i] = 0;
+    dfsSeen[i] = false;
+    dfsSubtree[i] = false;
   }
 
   for (i = 0; i < verticeNum; i++)
   {
-    if (dfsSeen[i] == 0)
+    if (dfsSeen[i] == false)
     {
       biggestNode = dfsVisit(&vertices[i], &time, dfsDiscovery, dfsPredecessor, dfsLow, dfsSeen);
-      dfsSubtree[biggestNode - 1] = 1;
+      dfsSubtree[biggestNode - 1] = true;
     }
     else
     {
@@ -221,7 +221,7 @@ void dfs(router *vertices, unsigned long verticeNum)
   unsigned long ap = 0;
   for (i = 0; i < verticeNum; i++)
   {
-    if (dfsSubtree[i] == 1)
+    if (dfsSubtree[i] == true)
     {
       subR++;
     }
@@ -230,7 +230,7 @@ void dfs(router *vertices, unsigned long verticeNum)
       
     }
 
-    if (vertices[i].ap == 1)
+    if (vertices[i].ap == true)
     {
       ap++;
     }
@@ -244,7 +244,7 @@ void dfs(router *vertices, unsigned long verticeNum)
   printf("%lu\n", subR);
   for (i = 0; i < verticeNum; i++)
   {
-    if (dfsSubtree[i] == 1)
+    if (dfsSubtree[i] == true)
     {
       printf("%lu", vertices[i].id);
       if (subR > 1)
@@ -275,12 +275,12 @@ void dfs(router *vertices, unsigned long verticeNum)
 
 void simpleDfsVisit(router *node, unsigned long *time, bool *seen)
 {
-  seen[node->id - 1] = 1;
+  seen[node->id - 1] = true;
   (*time)++;
   link *l = node->connect;
   while (l != 0)
   {
-    if ((seen[l->content->id - 1] == 0) && (l->content->ap == 0))
+    if ((seen[l->content->id - 1] == false) && (l->content->ap == false))
     {
       simpleDfsVisit(l->content, time, seen);
     }
@@ -302,12 +302,12 @@ void simpleDfsCounter(router *vertices, unsigned long verticeNum)
   bool *dfsSeen = (bool *) malloc((sizeof(bool)) * verticeNum);
   for (i = 0; i < verticeNum; i++)
   {
-    dfsSeen[i] = 0;
+    dfsSeen[i] = false;
   }
 
   for (i = 0; i < verticeNum; i++)
   {
-    if ((dfsSeen[i] == 0) && (vertices[i].ap == 0))
+    if ((dfsSeen[i] == false) && (vertices[i].ap == false))
     {
       simpleDfsVisit(&vertices[i], &time, dfsSeen);
     }

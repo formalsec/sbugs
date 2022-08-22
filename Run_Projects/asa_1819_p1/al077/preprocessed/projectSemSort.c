@@ -82,7 +82,7 @@ int main()
   }
 
   crucialPoints = (bool *) malloc((sizeof(bool)) * routers);
-  adjDFS(graph, 0);
+  adjDFS(graph, false);
   printf("%d\n", subNetworksCount);
   for (i = subNetworksCount - 1; i > 0; i--)
     printf("%d ", subNetworkIds.vector[i] + 1);
@@ -93,7 +93,7 @@ int main()
   subNetworksCount = 0;
   subNetworks = (subNetworksVector *) malloc(sizeof(struct subNetworksVector));
   subNetworksInit(subNetworks, 16);
-  adjDFS(graph, 1);
+  adjDFS(graph, true);
   printf("%d\n", subNetworks->biggestSubNetwork);
   free(crucialPoints);
   freeSubNetwork(subNetworks);
@@ -114,11 +114,11 @@ void adjDFS(Graph *g, bool goal)
   int i;
   for (i = 0; i < routers; i++)
   {
-    visited[i] = 0;
+    visited[i] = false;
     parent[i] = -1;
     if (!goal)
     {
-      crucialPoints[i] = 0;
+      crucialPoints[i] = false;
     }
     else
     {
@@ -163,7 +163,7 @@ void adjDFS(Graph *g, bool goal)
 void adjAux(Graph *g, int u, int *time, bool *visited, int *discovery, int *low, int *parent, bool goal)
 {
   int children = 0;
-  visited[u] = 1;
+  visited[u] = true;
   discovery[u] = (low[u] = ++(*time));
   vectorPushback(&subNetworks->vector[subNetworksCount], u);
   if (u > max)
@@ -189,7 +189,7 @@ void adjAux(Graph *g, int u, int *time, bool *visited, int *discovery, int *low,
         low[u] = (low[u] < low[v]) ? (low[u]) : (low[v]);
         if ((!goal) && ((((children > 1) && (parent[u] == (-1))) || ((low[v] >= discovery[u]) && (parent[u] != (-1)))) && (!crucialPoints[u])))
         {
-          crucialPoints[u] = 1;
+          crucialPoints[u] = true;
           crucialPointCounter++;
         }
         else
