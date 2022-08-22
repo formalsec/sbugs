@@ -59,5 +59,5 @@ class PreProcessor(C_FileGenerator):
 			
 
 		except Exception as e:
-			self._remove_files(self.tmpfile)
+			#self._remove_files(self.tmpfile)
 			print(traceback.format_exc())
