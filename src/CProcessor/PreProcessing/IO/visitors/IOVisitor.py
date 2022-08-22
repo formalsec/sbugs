@@ -307,6 +307,10 @@ class IO_Visitor(NodeVisitor):
 		self.stack.push()
 		new_init = self.visit(node.init)
 		new_stmt = self.visit(node.stmt)
+
+		if isinstance(new_stmt, list):
+			new_stmt = Compound(new_stmt)
+
 		self.stack.pop()
 		
 		return For(new_init, node.cond, node.next, new_stmt)
