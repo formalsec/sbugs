@@ -2,7 +2,7 @@
 
 from threading import Thread
 import subprocess as sp
-from time import ctime
+from time import ctime, time
 import argparse
 import signal
 import sys
@@ -69,9 +69,9 @@ class RunCommands():
 							 stdout=sp.DEVNULL, stderr=sp.DEVNULL,
 							 shell=True)
 				try:
-					p.wait(timeout=MIN_15) #15min
+					p.wait(timeout=MIN_15 + 10) #15min +10sec
 
-				#Cath timeout exception and kill child process
+				#Catch timeout exception and kill child process
 				except sp.TimeoutExpired:
 					print(f'\n[!] 15min Timeout Detected: {c}')
 					p.send_signal(signal.SIGKILL)
@@ -98,6 +98,7 @@ class RunCommands():
 
 	def run(self, commands):
 		
+		start = time()
 		activeThreads = []
 		commands_division = self.divide_commands(commands, self.nthreads)
 
@@ -115,6 +116,10 @@ class RunCommands():
 		for t in activeThreads:
 			t.join()
 		
+		end = time()
+		elapsed = round(end-start, 3)
+		 
+		print(f'Elapsed: {elapsed} seconds ({round(elapsed/3600,2)} hours')
 		return
 
 
@@ -294,7 +299,6 @@ if __name__ == "__main__":
 	if tool_name == 'klee':
 		tool = Klee(project, projs, orginal, timeout, threads)
 
-	
 	tool.run()
 
 	
