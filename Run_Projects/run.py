@@ -17,7 +17,7 @@ MIN_15 = 60*15
 def cmd_args():
 	parser = argparse.ArgumentParser(description='Run student projects')
 
-	parser.add_argument('project', type=str, choices=['iaed_p1','iaed_p2'],
+	parser.add_argument('project', type=str, choices=['iaed_p1','iaed_p2', 'asa_201819_p1'],
 						help='Specify the IAED project')
 
 	parser.add_argument('--tool', choices=['klee'],
@@ -189,18 +189,23 @@ class Klee():
 class GetProjects():
 	def __init__(self, path):
 		self.path = path
+		self.ignore = ['Makefile', 'symbolic']
 
 
 	def proj_filter(self, entry):
-		if os.path.isdir(f'{self.path}/{entry}') and entry.isnumeric():
-			return True
-		else:
-			return False
+		if not os.path.isdir(f'{self.path}/{entry}'):
+			return False	
+		
+		for ignore in self.ignore:
+			if ignore in entry:
+				return False
+
+		return True
 
 	def get_all(self):
 		projects = os.listdir(self.path)
 		projects =  list(filter(self.proj_filter, projects))
-		projects.sort(key=lambda dir : int(dir))
+		projects.sort(key=lambda dir : int(dir) if dir.isnumeric() else dir)
 		return projects
 
 
