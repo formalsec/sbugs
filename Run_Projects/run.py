@@ -117,7 +117,7 @@ class RunCommands():
 			t.join()
 		
 		end = time()
-		elapsed = round(end,start,3)
+		elapsed = round(end-start, 3)
 		 
 		print(f'Elapsed: {elapsed} seconds ({round(elapsed/3600,2)} hours')
 		return
