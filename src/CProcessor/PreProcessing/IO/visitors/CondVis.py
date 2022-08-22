@@ -4,6 +4,7 @@ class CondVisitor(NodeVisitor):
 
 	def __init__ (self): 
 		self.scanfs = ['scanf', 'sscanf', 'fscanf']
+		self.eof = 'EOF'
 
 
 	#Safe visit wrapper
@@ -27,10 +28,14 @@ class CondVisitor(NodeVisitor):
 	def visit_Constant(self, node):
 		return int(node.value)
 
+	def visit_ID(self, node):
+		return node.name
 
 	def visit_BinaryOp(self, node):
 		op = node.op
 		zero = False
+		eof = False
+		
 		if isinstance(node.left, Constant):
 			if self.visit(node.left) == 0:
 				zero = True
@@ -39,14 +44,22 @@ class CondVisitor(NodeVisitor):
 			if self.visit(node.right) == 0:
 				zero = True
 
-		if zero and op == '==':
+		if isinstance(node.right, ID):
+			if self.visit(node.right) == self.eof:
+				eof = True
+
+		if isinstance(node.left, ID):
+			if self.visit(node.left) == self.eof:
+				eof = True
+
+		if zero or eof and op == '==':
 			return False
 
-		elif zero and op == '!=':
+		elif zero or eof and op == '!=':
 			return True
 
-		elif not zero and op == '==':
+		elif not (zero or eof) and op == '==':
 			return True
 
-		elif not zero and op == '!=':
+		elif not (zero or eof) and op == '!=':
 			return False

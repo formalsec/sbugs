@@ -230,12 +230,14 @@ class IO_Visitor(NodeVisitor):
 		
 		if isinstance(iftrue, list):
 			iftrue = Compound(iftrue)
-		else:
+		
+		elif not isinstance(iftrue, Compound):
 			iftrue = Compound([iftrue])
 
 		if isinstance(iffalse, list): 
 			iffalse = Compound(iffalse)
-		else:
+		
+		elif not isinstance(iffalse, Compound):
 			iffalse = Compound([iffalse])
 
 		self.scanf_ret = True
