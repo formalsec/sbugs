@@ -111,13 +111,13 @@ int main()
 
 	int i;
 
-	if (!scanf("%d", &V) || V < MIN_ROUTER_NUM)
+	if (!scanf("%d", &V))
 	{
 		printf("Invalid number of routers!\n");
 		exit(1);
 	}
 
-	if (!scanf("%d", &E) || E < MIN_CONNECTION_NUM)
+	if (!scanf("%d", &E))
 	{
 		printf("Invalid number of connections!\n");
 		exit(1);

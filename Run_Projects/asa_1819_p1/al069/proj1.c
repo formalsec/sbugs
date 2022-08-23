@@ -165,13 +165,13 @@ void tarjan(int atual,int flag) {
 
 int main(){
 	int nligacoes = 0,i,origem,destino;	
-	if ((!scanf("%d",&nrouters))|| nrouters < 2){
+	if (!scanf("%d",&nrouters)){
 		printf("Tem de colocar um número de routers e tem de ser igual ou");
 		printf(" superior a 2\n");
 		exit(EXIT_FAILURE);
 	}
 
-	if((!scanf("%d",&nligacoes)) || nligacoes <1){
+	if (!scanf("%d",&nligacoes)){
 		printf("Tem de colocar um número de ligações e tem de ser igual ou");
 		printf(" superior a 1\n");
 		exit(EXIT_FAILURE);

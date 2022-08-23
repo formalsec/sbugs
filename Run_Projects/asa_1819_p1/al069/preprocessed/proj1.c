@@ -243,7 +243,7 @@ int main()
   int i;
   int origem;
   int destino;
-  if ((!scanf("%d", &nrouters)) || (nrouters < 2))
+  if (!1)
   {
     printf("Tem de colocar um número de routers e tem de ser igual ou");
     printf(" superior a 2\n");
@@ -251,10 +251,11 @@ int main()
   }
   else
   {
+    nrouters = new_sym_var(sizeof(int) * 8);
     
   }
 
-  if ((!scanf("%d", &nligacoes)) || (nligacoes < 1))
+  if (!1)
   {
     printf("Tem de colocar um número de ligações e tem de ser igual ou");
     printf(" superior a 1\n");
@@ -262,6 +263,7 @@ int main()
   }
   else
   {
+    nligacoes = new_sym_var(sizeof(int) * 8);
     
   }
 
@@ -274,13 +276,15 @@ int main()
   Inicializacoes(1);
   for (i = 0; i < nligacoes; i++)
   {
-    if (((((!scanf("%d %d", &origem, &destino)) || (origem < 1)) || (origem > nrouters)) || (destino < 1)) || (destino > nrouters))
+    if (((((!2) || (origem < 1)) || (origem > nrouters)) || (destino < 1)) || (destino > nrouters))
     {
       printf("O identificador do router tem de estar entre 1 e %d", nrouters);
       exit(1);
     }
     else
     {
+      origem = new_sym_var(sizeof(int) * 8);
+      destino = new_sym_var(sizeof(int) * 8);
       
     }
 

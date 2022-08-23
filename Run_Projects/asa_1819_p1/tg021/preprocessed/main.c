@@ -455,33 +455,37 @@ graph_t get_input()
   int i;
   int u;
   int v;
-  if (!scanf("%d", &N))
+  if (!1)
   {
     exit(1);
   }
   else
   {
+    N = new_sym_var(sizeof(int) * 8);
     
   }
 
-  if (!scanf("%d", &M))
+  if (!1)
   {
     exit(1);
   }
   else
   {
+    M = new_sym_var(sizeof(int) * 8);
     
   }
 
   router_graph = graph_create(N);
   for (i = 0; i < M; i++)
   {
-    if (!scanf("%d %d", &u, &v))
+    if (!2)
     {
       exit(1);
     }
     else
     {
+      u = new_sym_var(sizeof(int) * 8);
+      v = new_sym_var(sizeof(int) * 8);
       
     }
 

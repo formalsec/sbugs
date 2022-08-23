@@ -43,24 +43,28 @@ int main()
   int E = 0;
   int nponto_artic = 0;
   int a = 0;
-  if (!scanf("%d %d", &V, &E))
+  if (!2)
   {
     exit(1);
   }
   else
   {
+    V = new_sym_var(sizeof(int) * 8);
+    E = new_sym_var(sizeof(int) * 8);
     
   }
 
   struct Rede *rede = criarRede(V);
   for (i = 0; i < E; i++)
   {
-    if (!scanf("%d %d", &router_x, &router_y))
+    if (!2)
     {
       exit(1);
     }
     else
     {
+      router_x = new_sym_var(sizeof(int) * 8);
+      router_y = new_sym_var(sizeof(int) * 8);
       
     }
 

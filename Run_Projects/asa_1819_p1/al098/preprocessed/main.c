@@ -144,7 +144,8 @@ void parseInput(Graph g)
   int b;
   int i;
   int M;
-  assert(scanf("%d\n%d", &g->N, &M));
+  g->N = new_sym_var(sizeof(int) * 8);
+  M = new_sym_var(sizeof(int) * 8);
   g->array = calloc(g->N, sizeof(struct vertex));
   for (i = 0; i < g->N; i++)
   {
@@ -154,7 +155,8 @@ void parseInput(Graph g)
 
   for (i = 0; i < M; i++)
   {
-    assert(scanf("%d %d", &a, &b));
+    a = new_sym_var(sizeof(int) * 8);
+    b = new_sym_var(sizeof(int) * 8);
     link(g, a, b);
     link(g, b, a);
   }

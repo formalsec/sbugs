@@ -502,12 +502,14 @@ struct Graph *read_input_file()
   int i;
   int n;
   int e;
-  if (!scanf("%d %d", &n, &e))
+  if (!2)
   {
     exit(0);
   }
   else
   {
+    n = new_sym_var(sizeof(int) * 8);
+    e = new_sym_var(sizeof(int) * 8);
     
   }
 
@@ -515,12 +517,14 @@ struct Graph *read_input_file()
   g = createGraph(n);
   for (i = 0; i < e; i++)
   {
-    if (!scanf("%d %d", &a, &b))
+    if (!2)
     {
       exit(0);
     }
     else
     {
+      a = new_sym_var(sizeof(int) * 8);
+      b = new_sym_var(sizeof(int) * 8);
       
     }
 

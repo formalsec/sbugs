@@ -62,23 +62,25 @@ int main()
   int v;
   Audit output;
   int i;
-  if ((!scanf("%d", &V)) || (V < 2))
+  if (!1)
   {
     printf("Invalid number of routers!\n");
     exit(1);
   }
   else
   {
+    V = new_sym_var(sizeof(int) * 8);
     
   }
 
-  if ((!scanf("%d", &E)) || (E < 1))
+  if (!1)
   {
     printf("Invalid number of connections!\n");
     exit(1);
   }
   else
   {
+    E = new_sym_var(sizeof(int) * 8);
     
   }
 
