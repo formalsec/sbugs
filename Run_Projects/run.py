@@ -18,7 +18,9 @@ def cmd_args():
 	parser = argparse.ArgumentParser(description='Run student projects')
 
 	parser.add_argument('project', type=str,
-						choices=['iaed_p1','iaed_p2', 'asa_1819_p1', 'asa_1819_p2', 'asa_1920_p1'],
+						choices=['iaed_p1','iaed_p2',
+						'asa_1819_p1', 'asa_1819_p2',
+						'asa_1920_p1', 'asa_1920_p2'],
 						help='Specify the IAED project')
 
 	parser.add_argument('--tool', choices=['klee'],
