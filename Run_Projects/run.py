@@ -277,7 +277,7 @@ class Preprocess():
 if __name__ == "__main__":
 
 	args = cmd_args()
-	project = args.project
+	project = f'Projects/{args.project}'
 	projs = args.projs
 	preprocess_only = args.preprocess_only
 	tool_name = args.tool
