@@ -186,7 +186,7 @@ Graph newGraph()
   graph->vertexList[1] = newVertex();
   for (i = 2; i < (sources + 2); i++)
   {
-    assert(scanf("%d", &value));
+    value = new_sym_var(sizeof(int) * 8);
     graph->vertexList[i] = newVertex();
     graph->edgeList[aux] = newEdge(0, i, value);
     graph->vertexList[i]->size++;
@@ -196,7 +196,7 @@ Graph newGraph()
 
   for (i = 0; i < stations; i++)
   {
-    assert(scanf("%d", &value));
+    value = new_sym_var(sizeof(int) * 8);
     graph->vertexList[((2 + sources) + i) + aux_2] = newVertex();
     graph->vertexList[((3 + sources) + i) + aux_2] = newVertex();
     graph->edgeList[aux] = newEdge(((2 + sources) + i) + aux_2, ((3 + sources) + i) + aux_2, value);

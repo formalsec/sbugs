@@ -99,13 +99,16 @@ int main()
   int v;
   int cap;
   int i;
-  if ((((!scanf("%d %d %d", &P, &S, &T)) || (P < 1)) || (S < 0)) || (T < 0))
+  if (!3)
   {
     printf("Invalid input!\n");
     exit(1);
   }
   else
   {
+    P = new_sym_var(sizeof(int) * 8);
+    S = new_sym_var(sizeof(int) * 8);
+    T = new_sym_var(sizeof(int) * 8);
     
   }
 
@@ -125,13 +128,16 @@ int main()
 
   for (i = 0; i < T; i++)
   {
-    if ((((!scanf("%d %d %d", &u, &v, &cap)) || (u < 2)) || (v < 1)) || (cap < 1))
+    if (!3)
     {
       printf("Invalid input!\n");
       exit(1);
     }
     else
     {
+      u = new_sym_var(sizeof(int) * 8);
+      v = new_sym_var(sizeof(int) * 8);
+      cap = new_sym_var(sizeof(int) * 8);
       
     }
 

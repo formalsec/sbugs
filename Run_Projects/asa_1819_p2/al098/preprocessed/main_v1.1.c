@@ -257,7 +257,9 @@ void parseInput(Graph g)
   int b;
   int i;
   int capacity;
-  assert(scanf("%d %d %d", &g->f, &g->e, &g->t));
+  g->f = new_sym_var(sizeof(int) * 8);
+  g->e = new_sym_var(sizeof(int) * 8);
+  g->t = new_sym_var(sizeof(int) * 8);
   g->V = (Vertex) malloc((sizeof(struct vertex)) * ((g->f + (2 * g->e)) + 2));
   for (i = 0; i < ((g->f + (2 * g->e)) + 2); i++)
   {
@@ -267,19 +269,21 @@ void parseInput(Graph g)
 
   for (i = 2; i <= (g->f + 1); i++)
   {
-    assert(scanf("%d", &capacity));
+    capacity = new_sym_var(sizeof(int) * 8);
     link(g, 0, i, capacity);
   }
 
   for (i = g->f + 2; i < (((g->f + (2 * g->e)) + 2) - g->e); i++)
   {
-    assert(scanf("%d", &capacity));
+    capacity = new_sym_var(sizeof(int) * 8);
     link(g, i, i + g->e, capacity);
   }
 
   for (i = 0; i < g->t; i++)
   {
-    assert(scanf("%d %d %d", &a, &b, &capacity));
+    a = new_sym_var(sizeof(int) * 8);
+    b = new_sym_var(sizeof(int) * 8);
+    capacity = new_sym_var(sizeof(int) * 8);
     if (((g->f + 1) < a) && (b == 1))
     {
       link(g, a + g->e, 1, capacity);

@@ -173,7 +173,7 @@ int main()
 
 	int i;
 
-	if (!scanf("%d %d %d", &P, &S, &T) || P < MIN_NUM_PROVIDERS || S < MIN_NUM_SUPPLY_ST || T < MIN_NUM_CONNECTIONS)
+	if (!scanf("%d %d %d", &P, &S, &T))
 	{
 		printf("Invalid input!\n");
 		exit(1);
@@ -199,7 +199,7 @@ int main()
 
 	for (i = 0; i < T; i++)
 	{
-		if (!scanf("%d %d %d", &u, &v, &cap) || u < MIN_PROVIDER_ID || v < MIN_DESTINY_ID || cap < MIN_CAPACITY)
+		if (!scanf("%d %d %d", &u, &v, &cap))
 		{
 			printf("Invalid input!\n");
 			exit(1);
