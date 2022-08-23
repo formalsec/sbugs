@@ -31,12 +31,14 @@ int main()
   int i;
   int num_alunos;
   int num_amizades;
-  if (!scanf("%d,%d", &num_alunos, &num_amizades))
+  if (!2)
   {
     return -1;
   }
   else
   {
+    num_alunos = new_sym_var(sizeof(int) * 8);
+    num_amizades = new_sym_var(sizeof(int) * 8);
     
   }
 
@@ -44,12 +46,13 @@ int main()
   int nota;
   for (i = 1; i <= num_alunos; i++)
   {
-    if (!scanf("%d", &nota))
+    if (!1)
     {
       return -1;
     }
     else
     {
+      nota = new_sym_var(sizeof(int) * 8);
       
     }
 
@@ -60,12 +63,14 @@ int main()
   int amigo;
   for (i = 1; i <= num_amizades; i++)
   {
-    if (!scanf("%d %d", &aluno, &amigo))
+    if (!2)
     {
       return -1;
     }
     else
     {
+      aluno = new_sym_var(sizeof(int) * 8);
+      amigo = new_sym_var(sizeof(int) * 8);
       
     }
 

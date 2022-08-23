@@ -86,12 +86,13 @@ int main()
     if (i <= studentNum)
     {
       int grade;
-      if (!scanf("%d", &grade))
+      if (!1)
       {
         exit(1);
       }
       else
       {
+        grade = new_sym_var(sizeof(int) * 8);
         
       }
 
@@ -102,12 +103,14 @@ int main()
     {
       int stud;
       int fr;
-      if (!scanf("%d %d", &stud, &fr))
+      if (!2)
       {
         exit(1);
       }
       else
       {
+        stud = new_sym_var(sizeof(int) * 8);
+        fr = new_sym_var(sizeof(int) * 8);
         
       }
 

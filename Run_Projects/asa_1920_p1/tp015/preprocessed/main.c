@@ -170,12 +170,14 @@ void processInput()
   int i;
   int aux1;
   int aux2;
-  if (!scanf("%d,%d", &alunos, &adjsc))
+  if (!2)
   {
     printf("Error");
   }
   else
   {
+    alunos = new_sym_var(sizeof(int) * 8);
+    adjsc = new_sym_var(sizeof(int) * 8);
     
   }
 
@@ -183,12 +185,13 @@ void processInput()
   stack = malloc((sizeof(int)) * adjsc);
   for (i = 0; i < alunos; i++)
   {
-    if (!scanf("%d", &students[i].grade))
+    if (!1)
     {
       printf("Error");
     }
     else
     {
+      students[i].grade = new_sym_var(sizeof(int) * 8);
       
     }
 
@@ -202,12 +205,14 @@ void processInput()
 
   for (i = 0; i < adjsc; i++)
   {
-    if (!scanf("%d %d", &aux1, &aux2))
+    if (!2)
     {
       printf("Error");
     }
     else
     {
+      aux1 = new_sym_var(sizeof(int) * 8);
+      aux2 = new_sym_var(sizeof(int) * 8);
       
     }
 
