@@ -17,7 +17,8 @@ MIN_15 = 60*15
 def cmd_args():
 	parser = argparse.ArgumentParser(description='Run student projects')
 
-	parser.add_argument('project', type=str, choices=['iaed_p1','iaed_p2', 'asa_1819_p1', 'asa_1819_p2'],
+	parser.add_argument('project', type=str,
+						choices=['iaed_p1','iaed_p2', 'asa_1819_p1', 'asa_1819_p2', 'asa_1920_p1'],
 						help='Specify the IAED project')
 
 	parser.add_argument('--tool', choices=['klee'],
