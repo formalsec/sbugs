@@ -31,6 +31,11 @@ class CondVisitor(NodeVisitor):
 	def visit_ID(self, node):
 		return node.name
 
+	def visit_UnaryOp(self, node):
+		if node.op == '!':
+			return False
+		return True
+
 	def visit_BinaryOp(self, node):
 		op = node.op
 		zero = False

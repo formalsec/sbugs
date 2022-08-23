@@ -183,6 +183,14 @@ class IO_Visitor(NodeVisitor):
 		
 		if fname in self.scanfs:
 			return self.create_symvars(fname, node.args.exprs)
+
+		elif fname == 'assert':
+			arg = node.args.exprs[0]
+			if isinstance(arg, FuncCall):
+				ffname =  arg.name.name
+				if ffname in self.scanfs:
+					return self.visit(arg)
+
 		return node
 
 
@@ -339,6 +347,10 @@ class IO_Visitor(NodeVisitor):
 		new_left = self.visit(node.left)
 		new_right = self.visit(node.right)
 		return BinaryOp(node.op, new_left, new_right)
+
+	def visit_UnaryOp(self, node):
+		new_expr = self.visit(node.expr)
+		return UnaryOp(node.op, new_expr)
 
 
 	def visit_TernaryOp(self, node):
