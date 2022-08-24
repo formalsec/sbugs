@@ -1,0 +1,1 @@
+void *new_sym_var(unsigned int length){return 0;}
