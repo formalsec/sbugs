@@ -20,8 +20,9 @@ def cmd_args():
 	parser.add_argument('project', type=str,
 						choices=['iaed_p1','iaed_p2',
 						'asa_1819_p1', 'asa_1819_p2',
-						'asa_1920_p1', 'asa_1920_p2'],
-						help='Specify the IAED project')
+						'asa_1920_p1', 'asa_1920_p2',
+						'asa_2021_p1', 'asa_2021_p2'],
+						help='Specify the ASA/IAED project')
 
 	parser.add_argument('--tool', choices=['klee'],
 						help='Specify the symbolic the execution tool')
