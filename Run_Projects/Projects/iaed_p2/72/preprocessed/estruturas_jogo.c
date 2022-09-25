@@ -16,17 +16,13 @@ void insere_jogo(Jogos jogos, Jogo jogo)
   jogos->ht[ind] = push_jogo(jogos->ht[ind], jogo);
   if (jogos->primeiro == 0)
   {
-    {
-      jogos->primeiro = jogos->ht[ind];
-      jogos->ht[ind]->ant_inserido = 0;
-    }
+    jogos->primeiro = jogos->ht[ind];
+    jogos->ht[ind]->ant_inserido = 0;
   }
   else
   {
-    {
-      jogos->ht[ind]->ant_inserido = jogos->ultimo;
-      jogos->ultimo->prox_inserido = jogos->ht[ind];
-    }
+    jogos->ht[ind]->ant_inserido = jogos->ultimo;
+    jogos->ultimo->prox_inserido = jogos->ht[ind];
   }
 
   jogos->ht[ind]->prox_inserido = 0;
@@ -111,48 +107,17 @@ Jogo remove_jogos(Jogos jogos, char *nome)
 
   if ((no->ant_inserido != 0) && (no->prox_inserido != 0))
   {
-    {
-      no->ant_inserido->prox_inserido = no->prox_inserido;
-      no->prox_inserido->ant_inserido = no->ant_inserido;
-    }
+    no->ant_inserido->prox_inserido = no->prox_inserido;
+    no->prox_inserido->ant_inserido = no->ant_inserido;
   }
   else
   {
+    if (no == jogos->primeiro)
     {
-      if (no == jogos->primeiro)
+      jogos->primeiro = no->prox_inserido;
+      if (no->prox_inserido != 0)
       {
-        {
-          jogos->primeiro = no->prox_inserido;
-          if (no->prox_inserido != 0)
-          {
-            no->prox_inserido->ant_inserido = 0;
-          }
-          else
-          {
-            
-          }
-
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (no == jogos->ultimo)
-      {
-        {
-          jogos->ultimo = no->ant_inserido;
-          if (no->ant_inserido != 0)
-          {
-            no->ant_inserido->prox_inserido = 0;
-          }
-          else
-          {
-            
-          }
-
-        }
+        no->prox_inserido->ant_inserido = 0;
       }
       else
       {
@@ -160,6 +125,29 @@ Jogo remove_jogos(Jogos jogos, char *nome)
       }
 
     }
+    else
+    {
+      
+    }
+
+    if (no == jogos->ultimo)
+    {
+      jogos->ultimo = no->ant_inserido;
+      if (no->ant_inserido != 0)
+      {
+        no->ant_inserido->prox_inserido = 0;
+      }
+      else
+      {
+        
+      }
+
+    }
+    else
+    {
+      
+    }
+
   }
 
   jogo = no->jogo;

@@ -97,50 +97,26 @@ link *new_node(link *head, Teams new_team)
   }
   else
   {
+    for (node = head[m]; node != 0; node = node->next)
     {
-      for (node = head[m]; node != 0; node = node->next)
+      if (strcmp(node->T->team_name, new_team->team_name) > 0)
       {
-        if (strcmp(node->T->team_name, new_team->team_name) > 0)
+        if (node->prev == 0)
         {
-          {
-            if (node->prev == 0)
-            {
-              {
-                node = NEW_T(new_team);
-                node->next = head[m];
-                head[m]->prev = node;
-                head[m] = node;
-                flag = 1;
-                break;
-              }
-            }
-            else
-            {
-              {
-                node->prev = insert_midle(node, new_team);
-                flag = 1;
-                break;
-              }
-            }
-
-          }
+          node = NEW_T(new_team);
+          node->next = head[m];
+          head[m]->prev = node;
+          head[m] = node;
+          flag = 1;
+          break;
         }
         else
         {
-          
+          node->prev = insert_midle(node, new_team);
+          flag = 1;
+          break;
         }
 
-      }
-
-      if (flag == 0)
-      {
-        {
-          for (node = head[m]; node->next != 0; node = node->next)
-          {
-          }
-
-          node->next = NEW_T(new_team);
-        }
       }
       else
       {
@@ -148,6 +124,20 @@ link *new_node(link *head, Teams new_team)
       }
 
     }
+
+    if (flag == 0)
+    {
+      for (node = head[m]; node->next != 0; node = node->next)
+      {
+      }
+
+      node->next = NEW_T(new_team);
+    }
+    else
+    {
+      
+    }
+
   }
 
   return head;
@@ -160,23 +150,19 @@ link search(char *name, link *head)
   m = hash(name);
   if (head[m] != 0)
   {
+    for (node = head[m]; node != 0; node = node->next)
     {
-      for (node = head[m]; node != 0; node = node->next)
+      if (strcmp(node->T->team_name, name) == 0)
       {
-        if (strcmp(node->T->team_name, name) == 0)
-        {
-          {
-            return node;
-          }
-        }
-        else
-        {
-          
-        }
-
+        return node;
+      }
+      else
+      {
+        
       }
 
     }
+
   }
   else
   {
@@ -193,23 +179,19 @@ link_games search_game(char *name, link_games *head)
   m = hash(name);
   if (head[m] != 0)
   {
+    for (node = head[m]; node != 0; node = node->next)
     {
-      for (node = head[m]; node != 0; node = node->next)
+      if (strcmp(node->G->game_name, name) == 0)
       {
-        if (strcmp(node->G->game_name, name) == 0)
-        {
-          {
-            return node;
-          }
-        }
-        else
-        {
-          
-        }
-
+        return node;
+      }
+      else
+      {
+        
       }
 
     }
+
   }
   else
   {
@@ -243,12 +225,10 @@ link *add_team(int NL, link *heads)
   strcpy(new_team->team_name, e_temp);
   if (search(new_team->team_name, heads) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-      free(new_team->team_name);
-      free(new_team);
-      flag = 1;
-    }
+    printf("%d Equipa existente.\n", NL);
+    free(new_team->team_name);
+    free(new_team);
+    flag = 1;
   }
   else
   {
@@ -291,37 +271,29 @@ link_games *delete_game(int NL, link_games *heads)
   {
     if (strcmp(node->G->game_name, g_temp) == 0)
     {
+      if (node->prev == 0)
       {
-        if (node->prev == 0)
+        free_node(heads[m]);
+        heads[m] = 0;
+      }
+      else
+      {
+        if (node->next == 0)
         {
-          {
-            free_node(heads[m]);
-            heads[m] = 0;
-          }
+          node->prev->next = 0;
+          free_node(node);
+          break;
         }
         else
         {
-          if (node->next == 0)
-          {
-            {
-              node->prev->next = 0;
-              free_node(node);
-              break;
-            }
-          }
-          else
-          {
-            {
-              node->prev->next = node->next;
-              node->next->prev = node->prev;
-              free_node(node);
-            }
-          }
-
+          node->prev->next = node->next;
+          node->next->prev = node->prev;
+          free_node(node);
         }
 
-        flag = 1;
       }
+
+      flag = 1;
     }
     else
     {
@@ -399,55 +371,32 @@ link_games *new_node_game(link_games *head, Games new_game)
   m = hash(new_game->game_name);
   if (head[m] == 0)
   {
-    {
-      head[m] = NEW_G(new_game);
-    }
+    head[m] = NEW_G(new_game);
   }
   else
   {
+    last_node = 0;
+    for (node = head[m]; node != 0; node = node->next)
     {
-      last_node = 0;
-      for (node = head[m]; node != 0; node = node->next)
+      last_node = node;
+      if (strcmp(node->G->game_name, new_game->game_name) > 0)
       {
-        last_node = node;
-        if (strcmp(node->G->game_name, new_game->game_name) > 0)
+        if (node->prev == 0)
         {
-          {
-            if (node->prev == 0)
-            {
-              {
-                node = NEW_G(new_game);
-                node->next = head[m];
-                head[m]->prev = node;
-                head[m] = node;
-                flag = 1;
-                break;
-              }
-            }
-            else
-            {
-              {
-                node->prev = insert_midle_games(node, new_game);
-                flag = 1;
-                break;
-              }
-            }
-
-          }
+          node = NEW_G(new_game);
+          node->next = head[m];
+          head[m]->prev = node;
+          head[m] = node;
+          flag = 1;
+          break;
         }
         else
         {
-          
+          node->prev = insert_midle_games(node, new_game);
+          flag = 1;
+          break;
         }
 
-      }
-
-      if (flag == 0)
-      {
-        {
-          last_node->next = NEW_G(new_game);
-          last_node->next->prev = last_node;
-        }
       }
       else
       {
@@ -455,6 +404,17 @@ link_games *new_node_game(link_games *head, Games new_game)
       }
 
     }
+
+    if (flag == 0)
+    {
+      last_node->next = NEW_G(new_game);
+      last_node->next->prev = last_node;
+    }
+    else
+    {
+      
+    }
+
   }
 
   return head;
@@ -513,33 +473,22 @@ link_games *add_games(int NL, link_games *heads_games, link *heads_teams, int id
   score2 = new_sym_var(sizeof(int) * 8);
   if (search(e_temp1, heads_teams) != 0)
   {
+    if (search(e_temp2, heads_teams) != 0)
     {
-      if (search(e_temp2, heads_teams) != 0)
+      flag = 1;
+      if (search_game(g_temp, heads_games) == 0)
       {
-        {
-          flag = 1;
-          if (search_game(g_temp, heads_games) == 0)
-          {
-            {
-              new = malloc(sizeof(struct game));
-              new->score[0] = score1;
-              new->score[1] = score2;
-              new->game_name = malloc((strlen(g_temp) + 1) * (sizeof(char)));
-              strcpy(new->game_name, g_temp);
-              new->teams[0] = search(e_temp1, heads_teams);
-              new->teams[1] = search(e_temp2, heads_teams);
-              new->ID = id;
-              victories(new);
-              heads_games = new_node_game(heads_games, new);
-              flag = 2;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
+        new = malloc(sizeof(struct game));
+        new->score[0] = score1;
+        new->score[1] = score2;
+        new->game_name = malloc((strlen(g_temp) + 1) * (sizeof(char)));
+        strcpy(new->game_name, g_temp);
+        new->teams[0] = search(e_temp1, heads_teams);
+        new->teams[1] = search(e_temp2, heads_teams);
+        new->ID = id;
+        victories(new);
+        heads_games = new_node_game(heads_games, new);
+        flag = 2;
       }
       else
       {
@@ -547,6 +496,11 @@ link_games *add_games(int NL, link_games *heads_games, link *heads_teams, int id
       }
 
     }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -616,63 +570,51 @@ link_games *change_score(int NL, link_games *heads_games)
   }
   else
   {
+    if (((game->G->score[0] - game->G->score[1]) > 0) && ((score1 - score2) > 0))
     {
-      if (((game->G->score[0] - game->G->score[1]) > 0) && ((score1 - score2) > 0))
-      {
-        {
-          game->G->score[0] = score1;
-          game->G->score[1] = score2;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (((game->G->score[0] - game->G->score[1]) < 0) && ((score1 - score2) < 0))
-      {
-        {
-          game->G->score[0] = score1;
-          game->G->score[1] = score2;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (((game->G->score[0] - game->G->score[1]) > 0) && ((score1 - score2) < 0))
-      {
-        {
-          game->G->score[0] = score1;
-          game->G->score[1] = score2;
-          game->G->teams[0]->T->n_victories--;
-          game->G->teams[1]->T->n_victories++;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (((game->G->score[0] - game->G->score[1]) < 0) && ((score1 - score2) > 0))
-      {
-        {
-          game->G->score[0] = score1;
-          game->G->score[1] = score2;
-          game->G->teams[0]->T->n_victories++;
-          game->G->teams[1]->T->n_victories--;
-        }
-      }
-      else
-      {
-        {
-          game->G->score[0] = score1;
-          game->G->score[1] = score2;
-        }
-      }
-
+      game->G->score[0] = score1;
+      game->G->score[1] = score2;
     }
+    else
+    {
+      
+    }
+
+    if (((game->G->score[0] - game->G->score[1]) < 0) && ((score1 - score2) < 0))
+    {
+      game->G->score[0] = score1;
+      game->G->score[1] = score2;
+    }
+    else
+    {
+      
+    }
+
+    if (((game->G->score[0] - game->G->score[1]) > 0) && ((score1 - score2) < 0))
+    {
+      game->G->score[0] = score1;
+      game->G->score[1] = score2;
+      game->G->teams[0]->T->n_victories--;
+      game->G->teams[1]->T->n_victories++;
+    }
+    else
+    {
+      
+    }
+
+    if (((game->G->score[0] - game->G->score[1]) < 0) && ((score1 - score2) > 0))
+    {
+      game->G->score[0] = score1;
+      game->G->score[1] = score2;
+      game->G->teams[0]->T->n_victories++;
+      game->G->teams[1]->T->n_victories--;
+    }
+    else
+    {
+      game->G->score[0] = score1;
+      game->G->score[1] = score2;
+    }
+
   }
 
   return heads_games;
@@ -695,26 +637,22 @@ void list_teams(link *heads_teams)
     {
       if (temp1->T->n_victories > count)
       {
-        {
-          count = temp1->T->n_victories;
-          node = NEW_T(temp1->T);
-          begin_node->next = node;
-          node->prev = begin_node;
-        }
+        count = temp1->T->n_victories;
+        node = NEW_T(temp1->T);
+        begin_node->next = node;
+        node->prev = begin_node;
       }
       else
       {
         if (temp1->T->n_victories == count)
         {
+          for (temp = begin_node; temp->next != 0; temp = temp->next)
           {
-            for (temp = begin_node; temp->next != 0; temp = temp->next)
-            {
-            }
-
-            node = NEW_T(temp1->T);
-            node->prev = temp;
-            temp->next = node;
           }
+
+          node = NEW_T(temp1->T);
+          node->prev = temp;
+          temp->next = node;
         }
         else
         {
@@ -755,10 +693,8 @@ void list_games(int NL, link_games *heads)
     {
       if (array_size == max_array_size)
       {
-        {
-          max_array_size *= 2;
-          array = realloc(array, max_array_size * (sizeof(link_games)));
-        }
+        max_array_size *= 2;
+        array = realloc(array, max_array_size * (sizeof(link_games)));
       }
       else
       {

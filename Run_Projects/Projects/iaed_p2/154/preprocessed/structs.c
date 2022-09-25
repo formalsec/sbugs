@@ -38,9 +38,7 @@ void inserir_hash_table(game_n **hash_table, game_n *novo)
   int id = 0;
   if (novo == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -61,19 +59,17 @@ void free_hash_table(game_n **hash_table)
   {
     if (hash_table[i] != 0)
     {
+      t = hash_table[i];
+      while (t != 0)
       {
-        t = hash_table[i];
-        while (t != 0)
-        {
-          anterior = t;
-          free(anterior->nome);
-          free(anterior->equipa1);
-          free(anterior->equipa2);
-          t = anterior->next;
-          free(anterior);
-        }
-
+        anterior = t;
+        free(anterior->nome);
+        free(anterior->equipa1);
+        free(anterior->equipa2);
+        t = anterior->next;
+        free(anterior);
       }
+
     }
     else
     {
@@ -99,9 +95,7 @@ void inserir_hash_teams(team_n **hash_teams, team_n *novo)
   int id = 0;
   if (novo == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -122,17 +116,15 @@ void free_hash_teams(team_n **hash_teams)
   {
     if (hash_teams[i] != 0)
     {
+      t = hash_teams[i];
+      while (t != 0)
       {
-        t = hash_teams[i];
-        while (t != 0)
-        {
-          anterior = t;
-          free(anterior->name);
-          t = anterior->next;
-          free(anterior);
-        }
-
+        anterior = t;
+        free(anterior->name);
+        t = anterior->next;
+        free(anterior);
       }
+
     }
     else
     {

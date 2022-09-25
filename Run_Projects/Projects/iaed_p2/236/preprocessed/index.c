@@ -99,33 +99,29 @@ int main()
       {
         if ((team1 == 0) || (team2 == 0))
         {
-          {
-            printf("%d Equipa inexistente.\n", NL);
-          }
+          printf("%d Equipa inexistente.\n", NL);
         }
         else
         {
+          if (score1 > score2)
           {
-            if (score1 > score2)
+            team1->wins++;
+          }
+          else
+          {
+            if (score2 > score1)
             {
-              team1->wins++;
+              team2->wins++;
             }
             else
             {
-              if (score2 > score1)
-              {
-                team2->wins++;
-              }
-              else
-              {
-                
-              }
-
+              
             }
 
-            insertGame(game_hash_table, game_current);
-            pushReference(&game_head, newReference(game_current));
           }
+
+          insertGame(game_hash_table, game_current);
+          pushReference(&game_head, newReference(game_current));
         }
 
       }
@@ -136,9 +132,7 @@ int main()
         ;
         if (findTeam(team_hash_table, name) != 0)
       {
-        {
-          printf("%d Equipa existente.\n", NL);
-        }
+        printf("%d Equipa existente.\n", NL);
       }
       else
       {
@@ -171,15 +165,11 @@ int main()
         team1 = findTeam(team_hash_table, name);
         if (team1 == 0)
       {
-        {
-          printf("%d Equipa inexistente.\n", NL);
-        }
+        printf("%d Equipa inexistente.\n", NL);
       }
       else
       {
-        {
-          printf("%d %s %d\n", NL, name, team1->wins);
-        }
+        printf("%d %s %d\n", NL, name, team1->wins);
       }
 
         break;
@@ -201,84 +191,82 @@ int main()
       }
       else
       {
+        team1 = findTeam(team_hash_table, game_current->team1);
+        team2 = findTeam(team_hash_table, game_current->team2);
+        if ((score1 > score2) && ((*game_current->score1) < (*game_current->score2)))
         {
-          team1 = findTeam(team_hash_table, game_current->team1);
-          team2 = findTeam(team_hash_table, game_current->team2);
-          if ((score1 > score2) && ((*game_current->score1) < (*game_current->score2)))
-          {
-            team1->wins++;
-          }
-          else
-          {
-            
-          }
-
-          if ((score1 < score2) && ((*game_current->score1) > (*game_current->score2)))
-          {
-            team1->wins--;
-          }
-          else
-          {
-            
-          }
-
-          if ((score1 > score2) && ((*game_current->score1) == (*game_current->score2)))
-          {
-            team1->wins++;
-          }
-          else
-          {
-            
-          }
-
-          if ((score1 == score2) && ((*game_current->score1) > (*game_current->score2)))
-          {
-            team1->wins--;
-          }
-          else
-          {
-            
-          }
-
-          if ((score2 > score1) && ((*game_current->score2) < (*game_current->score1)))
-          {
-            team2->wins++;
-          }
-          else
-          {
-            
-          }
-
-          if ((score2 < score1) && ((*game_current->score2) > (*game_current->score1)))
-          {
-            team2->wins--;
-          }
-          else
-          {
-            
-          }
-
-          if ((score2 == score1) && ((*game_current->score2) > (*game_current->score1)))
-          {
-            team2->wins--;
-          }
-          else
-          {
-            
-          }
-
-          if ((score2 > score1) && ((*game_current->score2) == (*game_current->score1)))
-          {
-            team2->wins++;
-          }
-          else
-          {
-            
-          }
-
-          *game_current->score1 = score1;
-          *game_current->score2 = score2;
+          team1->wins++;
         }
+        else
+        {
+          
+        }
+
+        if ((score1 < score2) && ((*game_current->score1) > (*game_current->score2)))
+        {
+          team1->wins--;
+        }
+        else
+        {
+          
+        }
+
+        if ((score1 > score2) && ((*game_current->score1) == (*game_current->score2)))
+        {
+          team1->wins++;
+        }
+        else
+        {
+          
+        }
+
+        if ((score1 == score2) && ((*game_current->score1) > (*game_current->score2)))
+        {
+          team1->wins--;
+        }
+        else
+        {
+          
+        }
+
+        if ((score2 > score1) && ((*game_current->score2) < (*game_current->score1)))
+        {
+          team2->wins++;
+        }
+        else
+        {
+          
+        }
+
+        if ((score2 < score1) && ((*game_current->score2) > (*game_current->score1)))
+        {
+          team2->wins--;
+        }
+        else
+        {
+          
+        }
+
+        if ((score2 == score1) && ((*game_current->score2) > (*game_current->score1)))
+        {
+          team2->wins--;
+        }
+        else
+        {
+          
+        }
+
+        if ((score2 > score1) && ((*game_current->score2) == (*game_current->score1)))
+        {
+          team2->wins++;
+        }
+        else
+        {
+          
+        }
+
+        *game_current->score1 = score1;
+        *game_current->score2 = score2;
       }
 
         break;
@@ -297,29 +285,27 @@ int main()
       }
       else
       {
+        team1 = findTeam(team_hash_table, game_current->team1);
+        team2 = findTeam(team_hash_table, game_current->team2);
+        if (((*game_current->score1) > (*game_current->score2)) && (team1->wins > 0))
         {
-          team1 = findTeam(team_hash_table, game_current->team1);
-          team2 = findTeam(team_hash_table, game_current->team2);
-          if (((*game_current->score1) > (*game_current->score2)) && (team1->wins > 0))
+          team1->wins--;
+        }
+        else
+        {
+          if (((*game_current->score2) > (*game_current->score1)) && (team2->wins > 0))
           {
-            team1->wins--;
+            team2->wins--;
           }
           else
           {
-            if (((*game_current->score2) > (*game_current->score1)) && (team2->wins > 0))
-            {
-              team2->wins--;
-            }
-            else
-            {
-              
-            }
-
+            
           }
 
-          deleteReference(&game_head, findReference(game_head, name));
-          deleteGame(game_hash_table, name);
         }
+
+        deleteReference(&game_head, findReference(game_head, name));
+        deleteGame(game_hash_table, name);
       }
 
         break;

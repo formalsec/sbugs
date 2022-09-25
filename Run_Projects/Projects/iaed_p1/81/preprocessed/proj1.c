@@ -151,30 +151,13 @@ void comando_A()
         }
         else
         {
+          sistema[produ].qtd -= quant;
+          for (i = 0; (encomendas[ide][i].preco != 0) && (i < 200); i++)
           {
-            sistema[produ].qtd -= quant;
-            for (i = 0; (encomendas[ide][i].preco != 0) && (i < 200); i++)
+            if (encomendas[ide][i].idp == sistema[produ].idp)
             {
-              if (encomendas[ide][i].idp == sistema[produ].idp)
-              {
-                {
-                  encomendas[ide][i].qtd += quant;
-                  estado = 1;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-            if (!estado)
-            {
-              {
-                encomendas[ide][i] = sistema[produ];
-                encomendas[ide][i].qtd = quant;
-              }
+              encomendas[ide][i].qtd += quant;
+              estado = 1;
             }
             else
             {
@@ -182,6 +165,17 @@ void comando_A()
             }
 
           }
+
+          if (!estado)
+          {
+            encomendas[ide][i] = sistema[produ];
+            encomendas[ide][i].qtd = quant;
+          }
+          else
+          {
+            
+          }
+
         }
 
       }
@@ -238,47 +232,41 @@ void comando_R()
     }
     else
     {
+      for (i = 0; (encomendas[ide][i].preco != 0) && (i < 200); i++)
       {
-        for (i = 0; (encomendas[ide][i].preco != 0) && (i < 200); i++)
+        if (sistema[produ].idp == encomendas[ide][i].idp)
         {
-          if (sistema[produ].idp == encomendas[ide][i].idp)
-          {
-            {
-              j = i;
-              sistema[produ].qtd += encomendas[ide][i].qtd;
-            }
-          }
-          else
-          {
-            
-          }
-
-          numero_produtos++;
-        }
-
-        if (j == (numero_produtos - 1))
-        {
-          apagar_produto(ide, j);
+          j = i;
+          sistema[produ].qtd += encomendas[ide][i].qtd;
         }
         else
         {
-          if (j > (-1))
-          {
-            {
-              for (i = j; i < (numero_produtos - 1); i++)
-                encomendas[ide][i] = encomendas[ide][i + 1];
+          
+        }
 
-              apagar_produto(ide, i);
-            }
-          }
-          else
-          {
-            
-          }
+        numero_produtos++;
+      }
 
+      if (j == (numero_produtos - 1))
+      {
+        apagar_produto(ide, j);
+      }
+      else
+      {
+        if (j > (-1))
+        {
+          for (i = j; i < (numero_produtos - 1); i++)
+            encomendas[ide][i] = encomendas[ide][i + 1];
+
+          apagar_produto(ide, i);
+        }
+        else
+        {
+          
         }
 
       }
+
     }
 
   }
@@ -297,12 +285,10 @@ void comando_C()
   }
   else
   {
-    {
-      for (i = 0; (encomendas[ide][i].preco != 0) && (i < 200); i++)
-        custo += encomendas[ide][i].preco * encomendas[ide][i].qtd;
+    for (i = 0; (encomendas[ide][i].preco != 0) && (i < 200); i++)
+      custo += encomendas[ide][i].preco * encomendas[ide][i].qtd;
 
-      printf("Custo da encomenda %d %d.\n", ide, custo);
-    }
+    printf("Custo da encomenda %d %d.\n", ide, custo);
   }
 
 }
@@ -321,26 +307,24 @@ void comando_p()
   }
   else
   {
+    sistema[produ].preco = novo_preco;
+    for (ide = 0; ide < e; ide++)
     {
-      sistema[produ].preco = novo_preco;
-      for (ide = 0; ide < e; ide++)
+      for (i = 0; (encomendas[ide][i].preco != 0) && (i < 200); i++)
       {
-        for (i = 0; (encomendas[ide][i].preco != 0) && (i < 200); i++)
+        if (encomendas[ide][i].idp == sistema[produ].idp)
         {
-          if (encomendas[ide][i].idp == sistema[produ].idp)
-          {
-            encomendas[ide][i].preco = novo_preco;
-          }
-          else
-          {
-            
-          }
-
+          encomendas[ide][i].preco = novo_preco;
+        }
+        else
+        {
+          
         }
 
       }
 
     }
+
   }
 
 }
@@ -365,26 +349,12 @@ void comando_E()
     }
     else
     {
+      for (i = 0; (encomendas[ide][i].preco != 0) && (i < 200); i++)
       {
-        for (i = 0; (encomendas[ide][i].preco != 0) && (i < 200); i++)
+        if (encomendas[ide][i].idp == sistema[produ].idp)
         {
-          if (encomendas[ide][i].idp == sistema[produ].idp)
-          {
-            {
-              printf("%s %d.\n", encomendas[ide][i].desc, encomendas[ide][i].qtd);
-              estado = 1;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-        if (!estado)
-        {
-          printf("%s 0.\n", sistema[produ].desc);
+          printf("%s %d.\n", encomendas[ide][i].desc, encomendas[ide][i].qtd);
+          estado = 1;
         }
         else
         {
@@ -392,6 +362,16 @@ void comando_E()
         }
 
       }
+
+      if (!estado)
+      {
+        printf("%s 0.\n", sistema[produ].desc);
+      }
+      else
+      {
+        
+      }
+
     }
 
   }
@@ -413,28 +393,17 @@ void comando_m()
   }
   else
   {
+    for (ide = 0; ide < e; ide++)
     {
-      for (ide = 0; ide < e; ide++)
+      for (i = 0; (encomendas[ide][i].preco != 0) && (i < 200); i++)
       {
-        for (i = 0; (encomendas[ide][i].preco != 0) && (i < 200); i++)
+        if (sistema[produ].idp == encomendas[ide][i].idp)
         {
-          if (sistema[produ].idp == encomendas[ide][i].idp)
+          estado = 1;
+          if (encomendas[ide][i].qtd > maior_quant)
           {
-            {
-              estado = 1;
-              if (encomendas[ide][i].qtd > maior_quant)
-              {
-                {
-                  maior_quant = encomendas[ide][i].qtd;
-                  resposta = ide;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
+            maior_quant = encomendas[ide][i].qtd;
+            resposta = ide;
           }
           else
           {
@@ -442,19 +411,24 @@ void comando_m()
           }
 
         }
+        else
+        {
+          
+        }
 
-      }
-
-      if (estado)
-      {
-        printf("Maximo produto %d %d %d.\n", produ, resposta, maior_quant);
-      }
-      else
-      {
-        
       }
 
     }
+
+    if (estado)
+    {
+      printf("Maximo produto %d %d %d.\n", produ, resposta, maior_quant);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -487,16 +461,14 @@ void comando_L()
   }
   else
   {
-    {
-      printf("Encomenda %d\n", ide);
-      for (i = 0; (encomendas[ide][i].preco != 0) && (i < 200); i++)
-        aux_descricoes[i] = encomendas[ide][i];
+    printf("Encomenda %d\n", ide);
+    for (i = 0; (encomendas[ide][i].preco != 0) && (i < 200); i++)
+      aux_descricoes[i] = encomendas[ide][i];
 
-      InsertionSort_desc(aux_descricoes, 0, i - 1);
-      for (j = 0; j < i; j++)
-        printf("* %s %d %d\n", aux_descricoes[j].desc, aux_descricoes[j].preco, aux_descricoes[j].qtd);
+    InsertionSort_desc(aux_descricoes, 0, i - 1);
+    for (j = 0; j < i; j++)
+      printf("* %s %d %d\n", aux_descricoes[j].desc, aux_descricoes[j].preco, aux_descricoes[j].qtd);
 
-    }
   }
 
 }

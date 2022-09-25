@@ -33,10 +33,8 @@ void cmd_a(link *head, link *last, Tree **g, Tree2 **t, int nl)
   game.score2 = new_sym_var(sizeof(unsigned int) * 8);
   if (searchTree(*g, line[0]) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", nl);
-      return;
-    }
+    printf("%d Jogo existente.\n", nl);
+    return;
   }
   else
   {
@@ -46,10 +44,8 @@ void cmd_a(link *head, link *last, Tree **g, Tree2 **t, int nl)
   h = searchTree2(*t, line[1]);
   if (h == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", nl);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", nl);
+    return;
   }
   else
   {
@@ -59,10 +55,8 @@ void cmd_a(link *head, link *last, Tree **g, Tree2 **t, int nl)
   f = searchTree2(*t, line[2]);
   if (f == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", nl);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", nl);
+    return;
   }
   else
   {
@@ -109,10 +103,8 @@ void cmd_A(Tree2 **g, int nl)
   line[10 - 1] = '\0';
   if (searchTree2(*g, line) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", nl);
-      return;
-    }
+    printf("%d Equipa existente.\n", nl);
+    return;
   }
   else
   {
@@ -142,10 +134,8 @@ void cmd_p(Tree **g, int nl)
   f = searchTree(*g, line);
   if (f == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", nl);
+    return;
   }
   else
   {
@@ -168,10 +158,8 @@ void cmd_P(Tree2 **g, int nl)
   f = searchTree2(*g, line);
   if (f == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", nl);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", nl);
+    return;
   }
   else
   {
@@ -198,10 +186,8 @@ void cmd_r(link *head, link *last, Tree **g, Tree2 **t, int nl)
   f = searchTree(*g, line);
   if (f == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", nl);
+    return;
   }
   else
   {
@@ -212,10 +198,8 @@ void cmd_r(link *head, link *last, Tree **g, Tree2 **t, int nl)
   sAux2 = f->x->game.score2;
   if (sAux1 > sAux2)
   {
-    {
-      e1 = searchTree2(*t, f->x->game.equipa1);
-      e1->win--;
-    }
+    e1 = searchTree2(*t, f->x->game.equipa1);
+    e1->win--;
   }
   else
   {
@@ -224,10 +208,8 @@ void cmd_r(link *head, link *last, Tree **g, Tree2 **t, int nl)
 
   if (sAux1 < sAux2)
   {
-    {
-      e2 = searchTree2(*t, f->x->game.equipa2);
-      e2->win--;
-    }
+    e2 = searchTree2(*t, f->x->game.equipa2);
+    e2->win--;
   }
   else
   {
@@ -258,10 +240,8 @@ void cmd_s(Tree **g, Tree2 **t, int nl)
   f = searchTree(*g, line);
   if (f == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", nl);
+    return;
   }
   else
   {
@@ -276,29 +256,25 @@ void cmd_s(Tree **g, Tree2 **t, int nl)
   e2 = searchTree2(*t, f->x->game.equipa2);
   if (sAux1 < sAux2)
   {
+    if (s1 == s2)
     {
-      if (s1 == s2)
-      {
-        e2->win--;
-      }
-      else
-      {
-        
-      }
-
-      if (s1 > s2)
-      {
-        {
-          e2->win--;
-          e1->win++;
-        }
-      }
-      else
-      {
-        
-      }
-
+      e2->win--;
     }
+    else
+    {
+      
+    }
+
+    if (s1 > s2)
+    {
+      e2->win--;
+      e1->win++;
+    }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -307,29 +283,25 @@ void cmd_s(Tree **g, Tree2 **t, int nl)
 
   if (sAux1 > sAux2)
   {
+    if (s1 == s2)
     {
-      if (s1 == s2)
-      {
-        e1->win--;
-      }
-      else
-      {
-        
-      }
-
-      if (s1 < s2)
-      {
-        {
-          e1->win--;
-          e2->win++;
-        }
-      }
-      else
-      {
-        
-      }
-
+      e1->win--;
     }
+    else
+    {
+      
+    }
+
+    if (s1 < s2)
+    {
+      e1->win--;
+      e2->win++;
+    }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -338,26 +310,24 @@ void cmd_s(Tree **g, Tree2 **t, int nl)
 
   if (sAux1 == sAux2)
   {
+    if (s1 < s2)
     {
-      if (s1 < s2)
-      {
-        e2->win++;
-      }
-      else
-      {
-        
-      }
-
-      if (s1 > s2)
-      {
-        e1->win++;
-      }
-      else
-      {
-        
-      }
-
+      e2->win++;
     }
+    else
+    {
+      
+    }
+
+    if (s1 > s2)
+    {
+      e1->win++;
+    }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -371,11 +341,9 @@ void cmd_g(Tree2 *g, int nl)
   int win = 0;
   if (g != 0)
   {
-    {
-      traverse(g, &win);
-      printf("%d Melhores %d\n", nl, win);
-      printMostWins(g, win, nl);
-    }
+    traverse(g, &win);
+    printf("%d Melhores %d\n", nl, win);
+    printMostWins(g, win, nl);
   }
   else
   {

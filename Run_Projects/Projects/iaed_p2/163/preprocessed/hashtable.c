@@ -31,9 +31,7 @@ team_ptr LookUpTeams(team_ptr head, char *team_name_var)
   {
     if (strcmp(x->team_name, team_name_var) == 0)
     {
-      {
-        return x;
-      }
+      return x;
     }
     else
     {
@@ -63,19 +61,15 @@ link InsertGameList(link head, char *game_name_var, char *team1_var, char *team2
   link x;
   if (head == 0)
   {
-    {
-      return NewLink(game_name_var, team1_var, team2_var, score1, score2);
-    }
+    return NewLink(game_name_var, team1_var, team2_var, score1, score2);
   }
   else
   {
-    {
-      for (x = head; x->next != 0; x = x->next)
-        ;
+    for (x = head; x->next != 0; x = x->next)
+      ;
 
-      x->next = NewLink(game_name_var, team1_var, team2_var, score1, score2);
-      return head;
-    }
+    x->next = NewLink(game_name_var, team1_var, team2_var, score1, score2);
+    return head;
   }
 
 }
@@ -87,11 +81,9 @@ link ChangeScore(link head, char *game_name_var, int score1, int score2)
   {
     if (strcmp(x->this_game->game_name, game_name_var) == 0)
     {
-      {
-        x->this_game->score_team1 = score1;
-        x->this_game->score_team1 = score2;
-        break;
-      }
+      x->this_game->score_team1 = score1;
+      x->this_game->score_team1 = score2;
+      break;
     }
     else
     {
@@ -161,23 +153,21 @@ link Remove(link head, char *game_name_var)
   {
     if (strcmp(x->this_game->game_name, game_name_var) == 0)
     {
+      if (x == head)
       {
-        if (x == head)
-        {
-          head = x->next;
-        }
-        else
-        {
-          prev->next = x->next;
-        }
-
-        free(x->this_game->team1);
-        free(x->this_game->team2);
-        free(x->this_game->game_name);
-        free(x->this_game);
-        free(x);
-        break;
+        head = x->next;
       }
+      else
+      {
+        prev->next = x->next;
+      }
+
+      free(x->this_game->team1);
+      free(x->this_game->team2);
+      free(x->this_game->game_name);
+      free(x->this_game);
+      free(x);
+      break;
     }
     else
     {
@@ -232,12 +222,10 @@ link *Init(link *heads, int size_table)
   int i;
   if (heads == 0)
   {
-    {
-      heads = (link *) malloc((sizeof(link)) * size_table);
-      for (i = 0; i < size_table; i++)
-        heads[i] = 0;
+    heads = (link *) malloc((sizeof(link)) * size_table);
+    for (i = 0; i < size_table; i++)
+      heads[i] = 0;
 
-    }
   }
   else
   {
@@ -264,17 +252,15 @@ game_ptr LookUpInTable(link *hashtable, char *game_name_var, int size_table)
   int key = hash(game_name_var, size_table);
   if (hashtable != 0)
   {
+    if (LookUp(hashtable[key], game_name_var) == 0)
     {
-      if (LookUp(hashtable[key], game_name_var) == 0)
-      {
-        return 0;
-      }
-      else
-      {
-        return LookUp(hashtable[key], game_name_var)->this_game;
-      }
-
+      return 0;
     }
+    else
+    {
+      return LookUp(hashtable[key], game_name_var)->this_game;
+    }
+
   }
   else
   {
@@ -289,14 +275,12 @@ void DeleteHashtable(link *hashtable, int size_table)
   int i;
   if (hashtable != 0)
   {
+    for (i = 0; i < size_table; i++)
     {
-      for (i = 0; i < size_table; i++)
-      {
-        freeLink(hashtable[i]);
-      }
-
-      free(hashtable);
+      freeLink(hashtable[i]);
     }
+
+    free(hashtable);
   }
   else
   {

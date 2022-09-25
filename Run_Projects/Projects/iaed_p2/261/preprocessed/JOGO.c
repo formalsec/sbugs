@@ -107,10 +107,8 @@ list *adicionaJogo(list *l, equipaHash **equipaTable, char *buffer, int n)
   char *res2 = strtok(0, ":");
   if (encontrarJogo(l, buffer))
   {
-    {
-      printf("%d Jogo existente.\n", n);
-      return l;
-    }
+    printf("%d Jogo existente.\n", n);
+    return l;
   }
   else
   {
@@ -119,82 +117,66 @@ list *adicionaJogo(list *l, equipaHash **equipaTable, char *buffer, int n)
 
   if (encontraEquipa(equipaTable, eq1))
   {
+    if (encontraEquipa(equipaTable, eq2))
     {
-      if (encontraEquipa(equipaTable, eq2))
+      novo_jogo = malloc(sizeof(jogo));
+      novo_jogo->nome = malloc((sizeof(char)) * (strlen(nome) + 1));
+      strcpy(novo_jogo->nome, nome);
+      novo_jogo->equipa1 = malloc((sizeof(char)) * (strlen(eq1) + 1));
+      strcpy(novo_jogo->equipa1, eq1);
+      novo_jogo->equipa2 = malloc((sizeof(char)) * (strlen(eq2) + 1));
+      strcpy(novo_jogo->equipa2, eq2);
+      novo_jogo->resultado1 = atoi(res1);
+      novo_jogo->resultado2 = atoi(res2);
+      if (novo_jogo->resultado1 > novo_jogo->resultado2)
       {
-        {
-          novo_jogo = malloc(sizeof(jogo));
-          novo_jogo->nome = malloc((sizeof(char)) * (strlen(nome) + 1));
-          strcpy(novo_jogo->nome, nome);
-          novo_jogo->equipa1 = malloc((sizeof(char)) * (strlen(eq1) + 1));
-          strcpy(novo_jogo->equipa1, eq1);
-          novo_jogo->equipa2 = malloc((sizeof(char)) * (strlen(eq2) + 1));
-          strcpy(novo_jogo->equipa2, eq2);
-          novo_jogo->resultado1 = atoi(res1);
-          novo_jogo->resultado2 = atoi(res2);
-          if (novo_jogo->resultado1 > novo_jogo->resultado2)
-          {
-            {
-              adicionaVitoria(equipaTable, eq1);
-            }
-          }
-          else
-          {
-            
-          }
-
-          if (novo_jogo->resultado1 < novo_jogo->resultado2)
-          {
-            {
-              adicionaVitoria(equipaTable, eq2);
-            }
-          }
-          else
-          {
-            
-          }
-
-          novo_jogo->next = 0;
-          novo_jogo->previous = l->last;
-          novo_jogo->collision = 0;
-          jogoHash = hash(novo_jogo->nome) % 1009;
-          if ((*(l->hashtable + jogoHash)) == 0)
-          {
-            {
-              *(l->hashtable + jogoHash) = novo_jogo;
-            }
-          }
-          else
-          {
-            {
-              novo_jogo->collision = *(l->hashtable + jogoHash);
-              *(l->hashtable + jogoHash) = novo_jogo;
-            }
-          }
-
-          if (l->head == 0)
-          {
-            {
-              l->head = novo_jogo;
-            }
-          }
-          else
-          {
-            {
-              l->last->next = novo_jogo;
-            }
-          }
-
-          l->last = novo_jogo;
-          return l;
-        }
+        adicionaVitoria(equipaTable, eq1);
       }
       else
       {
         
       }
 
+      if (novo_jogo->resultado1 < novo_jogo->resultado2)
+      {
+        adicionaVitoria(equipaTable, eq2);
+      }
+      else
+      {
+        
+      }
+
+      novo_jogo->next = 0;
+      novo_jogo->previous = l->last;
+      novo_jogo->collision = 0;
+      jogoHash = hash(novo_jogo->nome) % 1009;
+      if ((*(l->hashtable + jogoHash)) == 0)
+      {
+        *(l->hashtable + jogoHash) = novo_jogo;
+      }
+      else
+      {
+        novo_jogo->collision = *(l->hashtable + jogoHash);
+        *(l->hashtable + jogoHash) = novo_jogo;
+      }
+
+      if (l->head == 0)
+      {
+        l->head = novo_jogo;
+      }
+      else
+      {
+        l->last->next = novo_jogo;
+      }
+
+      l->last = novo_jogo;
+      return l;
     }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -232,10 +214,8 @@ void procuraJogo(list *l, char buffer[1024], int n)
   buffer = strtok(buffer, "\n");
   if (x = encontrarJogo(l, buffer))
   {
-    {
-      printf("%d %s %s %s %d %d\n", n, x->nome, x->equipa1, x->equipa2, x->resultado1, x->resultado2);
-      return;
-    }
+    printf("%d %s %s %s %d %d\n", n, x->nome, x->equipa1, x->equipa2, x->resultado1, x->resultado2);
+    return;
   }
   else
   {
@@ -255,99 +235,81 @@ list *apagarJogo(list *l, equipaHash **equipaTable, char buffer[1024], int n)
   buffer = strtok(buffer, "\n");
   if (paraApagar = encontrarJogo(l, buffer))
   {
+    if (paraApagar->resultado1 > paraApagar->resultado2)
     {
-      if (paraApagar->resultado1 > paraApagar->resultado2)
-      {
-        {
-          removeVitoria(equipaTable, paraApagar->equipa1);
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (paraApagar->resultado1 < paraApagar->resultado2)
-      {
-        {
-          removeVitoria(equipaTable, paraApagar->equipa2);
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (paraApagar->next != 0)
-      {
-        {
-          paraApagar->next->previous = paraApagar->previous;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (paraApagar->previous != 0)
-      {
-        {
-          paraApagar->previous->next = paraApagar->next;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (paraApagar == l->head)
-      {
-        {
-          l->head = paraApagar->next;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (paraApagar == l->last)
-      {
-        {
-          l->last = paraApagar->previous;
-        }
-      }
-      else
-      {
-        
-      }
-
-      jogoHash = hash(buffer) % 1009;
-      jogoCollision = *(l->hashtable + jogoHash);
-      if (strcmp(jogoCollision->nome, buffer) == 0)
-      {
-        {
-          *(l->hashtable + jogoHash) = jogoCollision->collision;
-        }
-      }
-      else
-      {
-        {
-          for (; strcmp(jogoCollision->collision->nome, buffer) != 0; jogoCollision = jogoCollision->collision)
-            ;
-
-          jogoCollision->collision = jogoCollision->collision->collision;
-        }
-      }
-
-      free(paraApagar->nome);
-      free(paraApagar->equipa1);
-      free(paraApagar->equipa2);
-      paraApagar->resultado1 = 0;
-      paraApagar->resultado2 = 0;
-      free(paraApagar);
-      return l;
+      removeVitoria(equipaTable, paraApagar->equipa1);
     }
+    else
+    {
+      
+    }
+
+    if (paraApagar->resultado1 < paraApagar->resultado2)
+    {
+      removeVitoria(equipaTable, paraApagar->equipa2);
+    }
+    else
+    {
+      
+    }
+
+    if (paraApagar->next != 0)
+    {
+      paraApagar->next->previous = paraApagar->previous;
+    }
+    else
+    {
+      
+    }
+
+    if (paraApagar->previous != 0)
+    {
+      paraApagar->previous->next = paraApagar->next;
+    }
+    else
+    {
+      
+    }
+
+    if (paraApagar == l->head)
+    {
+      l->head = paraApagar->next;
+    }
+    else
+    {
+      
+    }
+
+    if (paraApagar == l->last)
+    {
+      l->last = paraApagar->previous;
+    }
+    else
+    {
+      
+    }
+
+    jogoHash = hash(buffer) % 1009;
+    jogoCollision = *(l->hashtable + jogoHash);
+    if (strcmp(jogoCollision->nome, buffer) == 0)
+    {
+      *(l->hashtable + jogoHash) = jogoCollision->collision;
+    }
+    else
+    {
+      for (; strcmp(jogoCollision->collision->nome, buffer) != 0; jogoCollision = jogoCollision->collision)
+        ;
+
+      jogoCollision->collision = jogoCollision->collision->collision;
+    }
+
+    free(paraApagar->nome);
+    free(paraApagar->equipa1);
+    free(paraApagar->equipa2);
+    paraApagar->resultado1 = 0;
+    paraApagar->resultado2 = 0;
+    free(paraApagar);
+    return l;
   }
   else
   {
@@ -364,57 +326,47 @@ list *alteraResultado(list *l, equipaHash **equipaTable, char buffer[1024], int 
   buffer = strtok(buffer, ":");
   if (paraMudar = encontrarJogo(l, buffer))
   {
+    if (paraMudar->resultado1 > paraMudar->resultado2)
     {
-      if (paraMudar->resultado1 > paraMudar->resultado2)
-      {
-        {
-          removeVitoria(equipaTable, paraMudar->equipa1);
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (paraMudar->resultado1 < paraMudar->resultado2)
-      {
-        {
-          removeVitoria(equipaTable, paraMudar->equipa2);
-        }
-      }
-      else
-      {
-        
-      }
-
-      buffer = strtok(0, ":");
-      paraMudar->resultado1 = atoi(buffer);
-      buffer = strtok(0, ":");
-      paraMudar->resultado2 = atoi(buffer);
-      if (paraMudar->resultado1 > paraMudar->resultado2)
-      {
-        {
-          adicionaVitoria(equipaTable, paraMudar->equipa1);
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (paraMudar->resultado1 < paraMudar->resultado2)
-      {
-        {
-          adicionaVitoria(equipaTable, paraMudar->equipa2);
-        }
-      }
-      else
-      {
-        
-      }
-
-      return l;
+      removeVitoria(equipaTable, paraMudar->equipa1);
     }
+    else
+    {
+      
+    }
+
+    if (paraMudar->resultado1 < paraMudar->resultado2)
+    {
+      removeVitoria(equipaTable, paraMudar->equipa2);
+    }
+    else
+    {
+      
+    }
+
+    buffer = strtok(0, ":");
+    paraMudar->resultado1 = atoi(buffer);
+    buffer = strtok(0, ":");
+    paraMudar->resultado2 = atoi(buffer);
+    if (paraMudar->resultado1 > paraMudar->resultado2)
+    {
+      adicionaVitoria(equipaTable, paraMudar->equipa1);
+    }
+    else
+    {
+      
+    }
+
+    if (paraMudar->resultado1 < paraMudar->resultado2)
+    {
+      adicionaVitoria(equipaTable, paraMudar->equipa2);
+    }
+    else
+    {
+      
+    }
+
+    return l;
   }
   else
   {
@@ -430,10 +382,8 @@ void adicionaEquipa(equipaHash **equipaTable, char buffer[1024], int n)
   buffer = strtok(buffer, "\n");
   if (encontraEquipa(equipaTable, buffer))
   {
-    {
-      printf("%d Equipa existente.\n", n);
-      return;
-    }
+    printf("%d Equipa existente.\n", n);
+    return;
   }
   else
   {
@@ -449,10 +399,8 @@ void procuraEquipa(equipaHash **equipaTable, char buffer[1024], int n)
   buffer = strtok(buffer, "\n");
   if (encontraEquipa(equipaTable, buffer))
   {
-    {
-      printf("%d %s %d\n", n, buffer, jogosGanhos(equipaTable, buffer));
-      return;
-    }
+    printf("%d %s %d\n", n, buffer, jogosGanhos(equipaTable, buffer));
+    return;
   }
   else
   {
@@ -473,28 +421,26 @@ void melhoresEquipas(equipaHash **equipaTable, int n)
   e = equipasMaisJogos(equipaTable, tab_equipas);
   if (e > 0)
   {
+    for (i = 0; i < e; i++)
     {
-      for (i = 0; i < e; i++)
-      {
-        tab_final[counter] = i;
-        counter++;
-      }
-
-      printf("%d Melhores %d\n", n, jogosGanhos(equipaTable, tab_equipas[0]));
-      mergeSort(tab_final, 0, counter - 1, tab_equipas);
-      for (i = 0; i < counter; i++)
-      {
-        printf("%d * %s\n", n, tab_equipas[tab_final[i]]);
-      }
-
-      i = 0;
-      while (i < e)
-      {
-        free(tab_equipas[i]);
-        i++;
-      }
-
+      tab_final[counter] = i;
+      counter++;
     }
+
+    printf("%d Melhores %d\n", n, jogosGanhos(equipaTable, tab_equipas[0]));
+    mergeSort(tab_final, 0, counter - 1, tab_equipas);
+    for (i = 0; i < counter; i++)
+    {
+      printf("%d * %s\n", n, tab_equipas[tab_final[i]]);
+    }
+
+    i = 0;
+    while (i < e)
+    {
+      free(tab_equipas[i]);
+      i++;
+    }
+
   }
   else
   {

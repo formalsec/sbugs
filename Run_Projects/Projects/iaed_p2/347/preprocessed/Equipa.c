@@ -64,10 +64,8 @@ void apropriar_htE(htE_t *hashtable, char *chaveE, Equipa *equipa)
   entradaE_t *entradaE = hashtable->entradas[index];
   if (entradaE == 0)
   {
-    {
-      hashtable->entradas[index] = criarEntrada_htE(chaveE, equipa);
-      return;
-    }
+    hashtable->entradas[index] = criarEntrada_htE(chaveE, equipa);
+    return;
   }
   else
   {
@@ -78,10 +76,8 @@ void apropriar_htE(htE_t *hashtable, char *chaveE, Equipa *equipa)
   {
     if (strcmp(entradaE->chaveE, chaveE) == 0)
     {
-      {
-        entradaE->equipa = equipa;
-        return;
-      }
+      entradaE->equipa = equipa;
+      return;
     }
     else
     {
@@ -133,9 +129,7 @@ void htE_del(htE_t *hashtable, char *chaveE)
   entradaE_t *entradaE = hashtable->entradas[index];
   if (entradaE == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -146,55 +140,45 @@ void htE_del(htE_t *hashtable, char *chaveE)
   {
     if (strcmp(entradaE->chaveE, chaveE) == 0)
     {
+      if ((entradaE->proxE == 0) && (id == 0))
       {
-        if ((entradaE->proxE == 0) && (id == 0))
-        {
-          {
-            hashtable->entradas[index] = 0;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if ((entradaE->proxE != 0) && (id == 0))
-        {
-          {
-            hashtable->entradas[index] = entradaE->proxE;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if ((entradaE->proxE == 0) && (id != 0))
-        {
-          {
-            ant->proxE = 0;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if ((entradaE->proxE != 0) && (id != 0))
-        {
-          {
-            ant->proxE = entradaE->proxE;
-          }
-        }
-        else
-        {
-          
-        }
-
-        free(entradaE->chaveE);
-        free(entradaE);
-        return;
+        hashtable->entradas[index] = 0;
       }
+      else
+      {
+        
+      }
+
+      if ((entradaE->proxE != 0) && (id == 0))
+      {
+        hashtable->entradas[index] = entradaE->proxE;
+      }
+      else
+      {
+        
+      }
+
+      if ((entradaE->proxE == 0) && (id != 0))
+      {
+        ant->proxE = 0;
+      }
+      else
+      {
+        
+      }
+
+      if ((entradaE->proxE != 0) && (id != 0))
+      {
+        ant->proxE = entradaE->proxE;
+      }
+      else
+      {
+        
+      }
+
+      free(entradaE->chaveE);
+      free(entradaE);
+      return;
     }
     else
     {

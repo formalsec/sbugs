@@ -184,10 +184,8 @@ void adiciona_a_encomenda(int i_encomenda, int i_prod, int quantidade)
 {
   if (i_encomenda > ide)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", i_prod, i_encomenda);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", i_prod, i_encomenda);
+    return;
   }
   else
   {
@@ -196,10 +194,8 @@ void adiciona_a_encomenda(int i_encomenda, int i_prod, int quantidade)
 
   if (i_prod > idp)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", i_prod, i_encomenda);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", i_prod, i_encomenda);
+    return;
   }
   else
   {
@@ -208,10 +204,8 @@ void adiciona_a_encomenda(int i_encomenda, int i_prod, int quantidade)
 
   if (quantidade > sistema[i_prod].quantidade)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", i_prod, i_encomenda);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", i_prod, i_encomenda);
+    return;
   }
   else
   {
@@ -220,10 +214,8 @@ void adiciona_a_encomenda(int i_encomenda, int i_prod, int quantidade)
 
   if ((sistema_encomendas[i_encomenda].peso + (quantidade * sistema[i_prod].peso)) > 200)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", i_prod, i_encomenda);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", i_prod, i_encomenda);
+    return;
   }
   else
   {
@@ -240,10 +232,8 @@ void remove_stock(int i_prod, int quantidade)
 {
   if (i_prod > idp)
   {
-    {
-      printf("Impossivel remover stock do produto %d. Produto inexistente.\n", i_prod);
-      return;
-    }
+    printf("Impossivel remover stock do produto %d. Produto inexistente.\n", i_prod);
+    return;
   }
   else
   {
@@ -252,10 +242,8 @@ void remove_stock(int i_prod, int quantidade)
 
   if (sistema[i_prod].quantidade < quantidade)
   {
-    {
-      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", quantidade, i_prod);
-      return;
-    }
+    printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", quantidade, i_prod);
+    return;
   }
   else
   {
@@ -269,10 +257,8 @@ void remove_produto(int i_encomenda, int i_prod)
 {
   if (i_encomenda > ide)
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", i_prod, i_encomenda);
-      return;
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", i_prod, i_encomenda);
+    return;
   }
   else
   {
@@ -281,10 +267,8 @@ void remove_produto(int i_encomenda, int i_prod)
 
   if (i_prod > idp)
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", i_prod, i_encomenda);
-      return;
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", i_prod, i_encomenda);
+    return;
   }
   else
   {
@@ -293,9 +277,7 @@ void remove_produto(int i_encomenda, int i_prod)
 
   if (sistema_encomendas[i_encomenda].produtos[i_prod] == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -312,10 +294,8 @@ void calcula_custo(int i_encomenda)
 {
   if (i_encomenda > ide)
   {
-    {
-      printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", i_encomenda);
-      return;
-    }
+    printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", i_encomenda);
+    return;
   }
   else
   {
@@ -330,10 +310,8 @@ void altera_preco(int i_prod, int preco)
   int i;
   if (i_prod > idp)
   {
-    {
-      printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", i_prod);
-      return;
-    }
+    printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", i_prod);
+    return;
   }
   else
   {
@@ -343,9 +321,7 @@ void altera_preco(int i_prod, int preco)
   for (i = 0; i <= ide; i++)
     if (sistema_encomendas[i].produtos[i_prod] != 0)
   {
-    {
-      sistema_encomendas[i].preco += sistema_encomendas[i].produtos[i_prod] * (preco - sistema[i_prod].preco);
-    }
+    sistema_encomendas[i].preco += sistema_encomendas[i].produtos[i_prod] * (preco - sistema[i_prod].preco);
   }
   else
   {
@@ -360,10 +336,8 @@ void lista_produto(int i_encomenda, int i_prod)
 {
   if (ide < i_encomenda)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", i_encomenda);
-      return;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", i_encomenda);
+    return;
   }
   else
   {
@@ -372,10 +346,8 @@ void lista_produto(int i_encomenda, int i_prod)
 
   if (idp < i_prod)
   {
-    {
-      printf("Impossivel listar produto %d. Produto inexistente.\n", i_prod);
-      return;
-    }
+    printf("Impossivel listar produto %d. Produto inexistente.\n", i_prod);
+    return;
   }
   else
   {
@@ -392,10 +364,8 @@ void produto_mais_pedido(int i_prod)
   int i;
   if (i_prod > idp)
   {
-    {
-      printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", i_prod);
-      return;
-    }
+    printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", i_prod);
+    return;
   }
   else
   {
@@ -415,10 +385,8 @@ void produto_mais_pedido(int i_prod)
   {
     if (sistema_encomendas[i].produtos[i_prod] > quantidade_max)
     {
-      {
-        quantidade_max = sistema_encomendas[i].produtos[i_prod];
-        i_encomenda = i;
-      }
+      quantidade_max = sistema_encomendas[i].produtos[i_prod];
+      i_encomenda = i;
     }
     else
     {
@@ -477,15 +445,11 @@ void merge(PRODUTO a[], int l, int m, int r)
   {
     if (L[i].preco <= R[j].preco)
     {
-      {
-        a[k] = L[i++];
-      }
+      a[k] = L[i++];
     }
     else
     {
-      {
-        a[k] = R[j++];
-      }
+      a[k] = R[j++];
     }
 
     k++;
@@ -509,12 +473,10 @@ void mergesort(PRODUTO arr[], int l, int r)
 {
   if (l < r)
   {
-    {
-      int m = l + ((r - l) / 2);
-      mergesort(arr, l, m);
-      mergesort(arr, m + 1, r);
-      merge(arr, l, m, r);
-    }
+    int m = l + ((r - l) / 2);
+    mergesort(arr, l, m);
+    mergesort(arr, m + 1, r);
+    merge(arr, l, m, r);
   }
   else
   {
@@ -530,10 +492,8 @@ void ordena_encomenda(int i_encomenda)
   int counter = 0;
   if (i_encomenda > ide)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", i_encomenda);
-      return;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", i_encomenda);
+    return;
   }
   else
   {
@@ -545,11 +505,9 @@ void ordena_encomenda(int i_encomenda)
   {
     if (sistema_encomendas[i_encomenda].produtos[i] != 0)
     {
-      {
-        enc_cpy[counter] = sistema[i];
-        enc_cpy[counter].quantidade = sistema_encomendas[i_encomenda].produtos[i];
-        counter += 1;
-      }
+      enc_cpy[counter] = sistema[i];
+      enc_cpy[counter].quantidade = sistema_encomendas[i_encomenda].produtos[i];
+      counter += 1;
     }
     else
     {
@@ -616,12 +574,10 @@ void mergesort2(PRODUTO arr[], int l, int r)
 {
   if (l < r)
   {
-    {
-      int m = l + ((r - l) / 2);
-      mergesort2(arr, l, m);
-      mergesort2(arr, m + 1, r);
-      merge2(arr, l, m, r);
-    }
+    int m = l + ((r - l) / 2);
+    mergesort2(arr, l, m);
+    mergesort2(arr, m + 1, r);
+    merge2(arr, l, m, r);
   }
   else
   {

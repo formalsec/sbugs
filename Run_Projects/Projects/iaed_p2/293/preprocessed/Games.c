@@ -209,62 +209,52 @@ void Funcaocaso_a(FILE *fpOut, Game *headG, Team *headT, char *nome, char *team1
   Team *aux = 0;
   if (headT == 0)
   {
-    {
-      fprintf(fpOut, "%d Equipa inexistente.\n", NL);
-      exit(0);
-    }
+    fprintf(fpOut, "%d Equipa inexistente.\n", NL);
+    exit(0);
   }
   else
   {
+    for (aux = headT; GetNext_team(aux) != 0; aux = GetNext_team(aux))
     {
-      for (aux = headT; GetNext_team(aux) != 0; aux = GetNext_team(aux))
+      if ((strcmp(team1, Getteam_name(aux)) == 0) && (strcmp(team2, Getteam_name(aux)) == 0))
       {
-        if ((strcmp(team1, Getteam_name(aux)) == 0) && (strcmp(team2, Getteam_name(aux)) == 0))
-        {
-          {
-            break;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      for (aux1 = headG; GetNext_game(aux1) != 0; aux1 = GetNext_game(aux1))
-      {
-        if (strcmp(nome, GetName(aux1)) == 0)
-        {
-          {
-            fprintf(fpOut, "%d Jogo existente.\n", NL);
-            exit(0);
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      newG = InitGameNode();
-      if (newG == 0)
-      {
-        {
-          printf("Erro alocacao novo node\n.");
-          exit(0);
-        }
+        break;
       }
       else
       {
         
       }
 
-      headG = SetGameNode(newG, headG, nome, team1, team2, score1, score2, NL);
-      Determinewins(headT, newG);
-      fprintf(fpOut, "\n");
     }
+
+    for (aux1 = headG; GetNext_game(aux1) != 0; aux1 = GetNext_game(aux1))
+    {
+      if (strcmp(nome, GetName(aux1)) == 0)
+      {
+        fprintf(fpOut, "%d Jogo existente.\n", NL);
+        exit(0);
+      }
+      else
+      {
+        
+      }
+
+    }
+
+    newG = InitGameNode();
+    if (newG == 0)
+    {
+      printf("Erro alocacao novo node\n.");
+      exit(0);
+    }
+    else
+    {
+      
+    }
+
+    headG = SetGameNode(newG, headG, nome, team1, team2, score1, score2, NL);
+    Determinewins(headT, newG);
+    fprintf(fpOut, "\n");
   }
 
   free(aux);
@@ -278,24 +268,20 @@ void Funcaocaso_l(Game *headG, FILE *fpOut, int NL)
   Game *tail = 0;
   if (headG == 0)
   {
-    {
-      fprintf(fpOut, "\n");
-      exit(0);
-    }
+    fprintf(fpOut, "\n");
+    exit(0);
   }
   else
   {
+    for (aux = headG; GetNext_game(aux) != 0; aux = GetNext_game(aux))
     {
-      for (aux = headG; GetNext_game(aux) != 0; aux = GetNext_game(aux))
-      {
-        tail = aux;
-        tail = GetPrev_game(aux);
-      }
-
-      for (aux1 = tail; GetPrev_game(aux1) != 0; aux1 = GetPrev_game(aux1))
-        fprintf(fpOut, "%d %s %s %s %d %d\n", NL, GetName(aux1), GetTeam1(aux1), GetTeam2(aux), Getscore1(aux1), Getscore2(aux1));
-
+      tail = aux;
+      tail = GetPrev_game(aux);
     }
+
+    for (aux1 = tail; GetPrev_game(aux1) != 0; aux1 = GetPrev_game(aux1))
+      fprintf(fpOut, "%d %s %s %s %d %d\n", NL, GetName(aux1), GetTeam1(aux1), GetTeam2(aux), Getscore1(aux1), Getscore2(aux1));
+
   }
 
   free(tail);
@@ -331,24 +317,20 @@ void Funcaocaso_r(char *nome, Game *headG, FILE *fpOut, int NL)
   }
   else
   {
+    for (aux = headG; GetNext_game(aux) != 0; aux = GetNext_game(aux))
     {
-      for (aux = headG; GetNext_game(aux) != 0; aux = GetNext_game(aux))
+      if (strcmp(GetName(aux), nome) == 0)
       {
-        if (strcmp(GetName(aux), nome) == 0)
-        {
-          DeleteGameNode(aux, headG);
-        }
-        else
-        {
-          {
-            fprintf(fpOut, "%d Jogo Inexistente", NL);
-            break;
-          }
-        }
-
+        DeleteGameNode(aux, headG);
+      }
+      else
+      {
+        fprintf(fpOut, "%d Jogo Inexistente", NL);
+        break;
       }
 
     }
+
   }
 
   free(aux);
@@ -361,12 +343,10 @@ void Funcaocaso_s(Team *headT, char *nome, int score1, int score2, Game *headG, 
   {
     if (strcmp(GetName(aux), nome) == 0)
     {
-      {
-        aux = muda_score(score1, score2, aux);
-        Determinewins(headT, aux);
-        free(aux);
-        exit(0);
-      }
+      aux = muda_score(score1, score2, aux);
+      Determinewins(headT, aux);
+      free(aux);
+      exit(0);
     }
     else
     {
@@ -385,41 +365,24 @@ void Funcaocaso_A(char *nome, FILE *fpOut, Team *headT, int NL)
   Team *new = 0;
   if (headT == 0)
   {
+    headT = SetTeamNode(new, headT, nome);
+    if (headT == 0)
     {
-      headT = SetTeamNode(new, headT, nome);
-      if (headT == 0)
-      {
-        exit(0);
-      }
-      else
-      {
-        
-      }
-
+      exit(0);
     }
+    else
+    {
+      
+    }
+
   }
   else
   {
+    for (aux = headT; GetNext_team(aux) != 0; aux = GetNext_team(aux))
     {
-      for (aux = headT; GetNext_team(aux) != 0; aux = GetNext_team(aux))
+      if (strcmp(Getteam_name(aux), nome) == 0)
       {
-        if (strcmp(Getteam_name(aux), nome) == 0)
-        {
-          {
-            fprintf(fpOut, "%d Equipa existente.\n", NL);
-            exit(0);
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      new = InitTeamNode();
-      if (new == 0)
-      {
+        fprintf(fpOut, "%d Equipa existente.\n", NL);
         exit(0);
       }
       else
@@ -427,8 +390,19 @@ void Funcaocaso_A(char *nome, FILE *fpOut, Team *headT, int NL)
         
       }
 
-      headT = SetTeamNode(new, headT, nome);
     }
+
+    new = InitTeamNode();
+    if (new == 0)
+    {
+      exit(0);
+    }
+    else
+    {
+      
+    }
+
+    headT = SetTeamNode(new, headT, nome);
   }
 
   free(aux);
@@ -441,11 +415,9 @@ void Funcaocaso_P(char *nome, Team *headT, FILE *fpOut, int NL)
   {
     if (strcmp(Getteam_name(aux), nome) == 0)
     {
-      {
-        fprintf(fpOut, "%d %s %d\n", NL, nome, GetWin(aux));
-        free(aux);
-        exit(0);
-      }
+      fprintf(fpOut, "%d %s %d\n", NL, nome, GetWin(aux));
+      free(aux);
+      exit(0);
     }
     else
     {

@@ -121,31 +121,25 @@ void nova_equipa()
   nova_equipa[10 - 1] = '\0';
   if (existe_equipa(nova_equipa) == 1)
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-      return;
-    }
+    printf("%d Equipa existente.\n", NL);
+    return;
   }
   else
   {
+    for (i = 0; i < 1000; i++)
     {
-      for (i = 0; i < 1000; i++)
+      if (strcmp(equipas[i], "?") == 0)
       {
-        if (strcmp(equipas[i], "?") == 0)
-        {
-          {
-            strcpy(equipas[i], nova_equipa);
-            return;
-          }
-        }
-        else
-        {
-          
-        }
-
+        strcpy(equipas[i], nova_equipa);
+        return;
+      }
+      else
+      {
+        
       }
 
     }
+
   }
 
 }
@@ -176,10 +170,8 @@ void novo_jogo()
   novo_jogo.score2 = new_sym_var(sizeof(int) * 8);
   if (existe_jogo(novo_jogo.nome) == 1)
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-      return;
-    }
+    printf("%d Jogo existente.\n", NL);
+    return;
   }
   else
   {
@@ -188,10 +180,8 @@ void novo_jogo()
 
   if ((existe_equipa(novo_jogo.equipa1) == 0) || (existe_equipa(novo_jogo.equipa2) == 0))
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -202,10 +192,8 @@ void novo_jogo()
   {
     if (strcmp(jogos[i].nome, "?") == 0)
     {
-      {
-        jogos[i] = novo_jogo;
-        return;
-      }
+      jogos[i] = novo_jogo;
+      return;
     }
     else
     {
@@ -223,9 +211,7 @@ int existe_equipa(char equipa[1023])
   {
     if (strcmp(equipas[i], equipa) == 0)
     {
-      {
-        return 1;
-      }
+      return 1;
     }
     else
     {
@@ -244,9 +230,7 @@ int existe_jogo(char nome[1023])
   {
     if (strcmp(jogos[i].nome, nome) == 0)
     {
-      {
-        return 1;
-      }
+      return 1;
     }
     else
     {
@@ -281,35 +265,29 @@ void apaga_jogo()
   nome[10 - 1] = '\0';
   if (existe_jogo(nome) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
+    for (i = 0; strcmp(jogos[i].nome, "?") != 0; i++)
     {
-      for (i = 0; strcmp(jogos[i].nome, "?") != 0; i++)
+      if (strcmp(jogos[i].nome, nome) == 0)
       {
-        if (strcmp(jogos[i].nome, nome) == 0)
+        for (e = i; strcmp(jogos[e].nome, "?") != 0; e++)
         {
-          {
-            for (e = i; strcmp(jogos[e].nome, "?") != 0; e++)
-            {
-              jogos[e] = jogos[e + 1];
-            }
-
-            return;
-          }
-        }
-        else
-        {
-          
+          jogos[e] = jogos[e + 1];
         }
 
+        return;
+      }
+      else
+      {
+        
       }
 
     }
+
   }
 
 }
@@ -330,32 +308,26 @@ void altera_score()
   score2_novo = new_sym_var(sizeof(int) * 8);
   if (existe_jogo(nome) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
+    for (i = 0; strcmp(jogos[i].nome, "?") != 0; i++)
     {
-      for (i = 0; strcmp(jogos[i].nome, "?") != 0; i++)
+      if (strcmp(jogos[i].nome, nome) == 0)
       {
-        if (strcmp(jogos[i].nome, nome) == 0)
-        {
-          {
-            jogos[i].score1 = score1_novo;
-            jogos[i].score2 = score2_novo;
-            return;
-          }
-        }
-        else
-        {
-          
-        }
-
+        jogos[i].score1 = score1_novo;
+        jogos[i].score2 = score2_novo;
+        return;
+      }
+      else
+      {
+        
       }
 
     }
+
   }
 
 }
@@ -372,30 +344,24 @@ void procura_jogo()
   nome[10 - 1] = '\0';
   if (existe_jogo(nome) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
   else
   {
+    for (i = 0; strcmp(jogos[i].nome, "?") != 0; i++)
     {
-      for (i = 0; strcmp(jogos[i].nome, "?") != 0; i++)
+      if (strcmp(jogos[i].nome, nome) == 0)
       {
-        if (strcmp(jogos[i].nome, nome) == 0)
-        {
-          {
-            printf("%d %s %s %s %d %d\n", NL, jogos[i].nome, jogos[i].equipa1, jogos[i].equipa2, jogos[i].score1, jogos[i].score2);
-            return;
-          }
-        }
-        else
-        {
-          
-        }
-
+        printf("%d %s %s %s %d %d\n", NL, jogos[i].nome, jogos[i].equipa1, jogos[i].equipa2, jogos[i].score1, jogos[i].score2);
+        return;
+      }
+      else
+      {
+        
       }
 
     }
+
   }
 
 }
@@ -413,41 +379,33 @@ void procura_equipa()
   nome_equipa[10 - 1] = '\0';
   if (existe_equipa(nome_equipa) == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-    }
+    printf("%d Equipa inexistente.\n", NL);
   }
   else
   {
+    for (i = 0; strcmp(jogos[i].nome, "?") != 0; i++)
     {
-      for (i = 0; strcmp(jogos[i].nome, "?") != 0; i++)
+      if ((strcmp(jogos[i].equipa1, nome_equipa) == 0) && (jogos[i].score1 > jogos[i].score2))
       {
-        if ((strcmp(jogos[i].equipa1, nome_equipa) == 0) && (jogos[i].score1 > jogos[i].score2))
-        {
-          {
-            jogos_ganhos++;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if ((strcmp(jogos[i].equipa2, nome_equipa) == 0) && (jogos[i].score2 > jogos[i].score1))
-        {
-          {
-            jogos_ganhos++;
-          }
-        }
-        else
-        {
-          
-        }
-
+        jogos_ganhos++;
+      }
+      else
+      {
+        
       }
 
-      printf("%d %s %d\n", NL, nome_equipa, jogos_ganhos);
+      if ((strcmp(jogos[i].equipa2, nome_equipa) == 0) && (jogos[i].score2 > jogos[i].score1))
+      {
+        jogos_ganhos++;
+      }
+      else
+      {
+        
+      }
+
     }
+
+    printf("%d %s %d\n", NL, nome_equipa, jogos_ganhos);
   }
 
 }
@@ -460,9 +418,7 @@ int n_jogos_ganhos(char equipa[1023])
   {
     if ((strcmp(jogos[i].equipa1, equipa) == 0) && (jogos[i].score1 > jogos[i].score2))
     {
-      {
-        jogos_ganhos++;
-      }
+      jogos_ganhos++;
     }
     else
     {
@@ -471,9 +427,7 @@ int n_jogos_ganhos(char equipa[1023])
 
     if ((strcmp(jogos[i].equipa2, equipa) == 0) && (jogos[i].score2 > jogos[i].score1))
     {
-      {
-        jogos_ganhos++;
-      }
+      jogos_ganhos++;
     }
     else
     {
@@ -495,76 +449,68 @@ void lista_melhores()
   char temp[1023];
   if (strcmp(equipas[0], "?") != 0)
   {
+    for (i = 0; i < 1000; i++)
     {
-      for (i = 0; i < 1000; i++)
+      strcpy(melhores[i], "?");
+    }
+
+    for (i = 0; strcmp(equipas[i], "?") != 0; i++)
+    {
+      if (n_jogos_ganhos(equipas[i]) > n)
       {
-        strcpy(melhores[i], "?");
+        n = n_jogos_ganhos(equipas[i]);
       }
-
-      for (i = 0; strcmp(equipas[i], "?") != 0; i++)
+      else
       {
-        if (n_jogos_ganhos(equipas[i]) > n)
-        {
-          {
-            n = n_jogos_ganhos(equipas[i]);
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      for (i = 0; strcmp(equipas[i], "?") != 0; i++)
-      {
-        if (n_jogos_ganhos(equipas[i]) == n)
-        {
-          {
-            strcpy(melhores[e], equipas[i]);
-            e++;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      for (i = 0; strcmp(melhores[i], "?") != 0; i++)
-      {
-        contador++;
-      }
-
-      for (i = 0; i < contador; i++)
-      {
-        for (e = i + 1; e < contador; e++)
-        {
-          if (strcmp(melhores[i], melhores[e]) > 0)
-          {
-            {
-              strcpy(temp, melhores[i]);
-              strcpy(melhores[i], melhores[e]);
-              strcpy(melhores[e], temp);
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-      }
-
-      printf("%d Melhores %d\n", NL, n);
-      for (i = 0; strcmp(melhores[i], "?") != 0; i++)
-      {
-        printf("%d * %s\n", NL, melhores[i]);
+        
       }
 
     }
+
+    for (i = 0; strcmp(equipas[i], "?") != 0; i++)
+    {
+      if (n_jogos_ganhos(equipas[i]) == n)
+      {
+        strcpy(melhores[e], equipas[i]);
+        e++;
+      }
+      else
+      {
+        
+      }
+
+    }
+
+    for (i = 0; strcmp(melhores[i], "?") != 0; i++)
+    {
+      contador++;
+    }
+
+    for (i = 0; i < contador; i++)
+    {
+      for (e = i + 1; e < contador; e++)
+      {
+        if (strcmp(melhores[i], melhores[e]) > 0)
+        {
+          strcpy(temp, melhores[i]);
+          strcpy(melhores[i], melhores[e]);
+          strcpy(melhores[e], temp);
+        }
+        else
+        {
+          
+        }
+
+      }
+
+    }
+
+    printf("%d Melhores %d\n", NL, n);
+    for (i = 0; strcmp(melhores[i], "?") != 0; i++)
+    {
+      printf("%d * %s\n", NL, melhores[i]);
+    }
+
   }
   else
   {

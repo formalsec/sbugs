@@ -112,10 +112,8 @@ int search_game(node_jogo head, char *nome_do_jogo)
   {
     if (strcmp(x->name, nome_do_jogo) == 0)
     {
-      {
-        return 1;
-        break;
-      }
+      return 1;
+      break;
     }
     else
     {
@@ -134,10 +132,8 @@ int search_team(node_equipa head_equipa, char *team)
   {
     if (strcmp(x->nome, team) == 0)
     {
-      {
-        return 1;
-        break;
-      }
+      return 1;
+      break;
     }
     else
     {
@@ -162,15 +158,11 @@ void insert(int input, node_equipa *equipas, int m)
   i = hash_str(nome, m);
   if (search_team(equipas[i], nome) == 1)
   {
-    {
-      printf("%d Equipa existente.\n", input);
-    }
+    printf("%d Equipa existente.\n", input);
   }
   else
   {
-    {
-      equipas[i] = insere_equipa(equipas[i], nome);
-    }
+    equipas[i] = insere_equipa(equipas[i], nome);
   }
 
 }
@@ -198,13 +190,11 @@ Q novo_no(char *nome_do_jogo, int m, char *team1, char *team2, int golos_casa, i
   {
     if (strcmp(h->nome, team1) == 0)
     {
-      {
-        aux = (node_equipa) malloc(sizeof(struct stru_node_equipa));
-        new->jogo->equipa1 = aux;
-        free(aux);
-        new->jogo->equipa1 = h;
-        break;
-      }
+      aux = (node_equipa) malloc(sizeof(struct stru_node_equipa));
+      new->jogo->equipa1 = aux;
+      free(aux);
+      new->jogo->equipa1 = h;
+      break;
     }
     else
     {
@@ -217,13 +207,11 @@ Q novo_no(char *nome_do_jogo, int m, char *team1, char *team2, int golos_casa, i
   {
     if (strcmp(h->nome, team2) == 0)
     {
-      {
-        aux = (node_equipa) malloc(sizeof(struct stru_node_equipa));
-        new->jogo->equipa2 = aux;
-        free(aux);
-        new->jogo->equipa2 = h;
-        break;
-      }
+      aux = (node_equipa) malloc(sizeof(struct stru_node_equipa));
+      new->jogo->equipa2 = aux;
+      free(aux);
+      new->jogo->equipa2 = h;
+      break;
     }
     else
     {
@@ -250,25 +238,19 @@ node_jogo insere_jogo(char *nome_do_jogo, int m, int n, char *team1, char *team2
   node_equipa aux;
   if (golos_casa > golos_fora)
   {
-    {
-      winner = 1;
-    }
+    winner = 1;
   }
   else
   {
     if (golos_casa < golos_fora)
     {
-      {
-        winner = 2;
-      }
+      winner = 2;
     }
     else
     {
       if (golos_casa == golos_fora)
       {
-        {
-          winner = 0;
-        }
+        winner = 0;
       }
       else
       {
@@ -288,13 +270,11 @@ node_jogo insere_jogo(char *nome_do_jogo, int m, int n, char *team1, char *team2
   {
     if (strcmp(h->nome, team1) == 0)
     {
-      {
-        aux = (node_equipa) malloc(sizeof(struct stru_node_equipa));
-        novo_jogo->equipa1 = aux;
-        novo_jogo->equipa1 = h;
-        free(aux);
-        break;
-      }
+      aux = (node_equipa) malloc(sizeof(struct stru_node_equipa));
+      novo_jogo->equipa1 = aux;
+      novo_jogo->equipa1 = h;
+      free(aux);
+      break;
     }
     else
     {
@@ -307,13 +287,11 @@ node_jogo insere_jogo(char *nome_do_jogo, int m, int n, char *team1, char *team2
   {
     if (strcmp(h->nome, team2) == 0)
     {
-      {
-        aux = (node_equipa) malloc(sizeof(struct stru_node_equipa));
-        novo_jogo->equipa2 = aux;
-        novo_jogo->equipa2 = h;
-        free(aux);
-        break;
-      }
+      aux = (node_equipa) malloc(sizeof(struct stru_node_equipa));
+      novo_jogo->equipa2 = aux;
+      novo_jogo->equipa2 = h;
+      free(aux);
+      break;
     }
     else
     {
@@ -326,9 +304,7 @@ node_jogo insere_jogo(char *nome_do_jogo, int m, int n, char *team1, char *team2
   {
     if ((strcmp(h->nome, team1) == 0) && (winner == 1))
     {
-      {
-        h->vitorias++;
-      }
+      h->vitorias++;
     }
     else
     {
@@ -341,9 +317,7 @@ node_jogo insere_jogo(char *nome_do_jogo, int m, int n, char *team1, char *team2
   {
     if ((strcmp(h->nome, team2) == 0) && (winner == 2))
     {
-      {
-        h->vitorias++;
-      }
+      h->vitorias++;
     }
     else
     {
@@ -355,18 +329,14 @@ node_jogo insere_jogo(char *nome_do_jogo, int m, int n, char *team1, char *team2
   novo_jogo->next = jogos[k];
   if (!l->head)
   {
-    {
-      l->head = (l->tail = novo_no(nome_do_jogo, m, team1, team2, golos_casa, golos_fora, equipas, l->head));
-      return novo_jogo;
-    }
+    l->head = (l->tail = novo_no(nome_do_jogo, m, team1, team2, golos_casa, golos_fora, equipas, l->head));
+    return novo_jogo;
   }
   else
   {
-    {
-      l->tail->next = novo_no(nome_do_jogo, m, team1, team2, golos_casa, golos_fora, equipas, l->tail);
-      l->tail = l->tail->next;
-      return novo_jogo;
-    }
+    l->tail->next = novo_no(nome_do_jogo, m, team1, team2, golos_casa, golos_fora, equipas, l->tail);
+    l->tail = l->tail->next;
+    return novo_jogo;
   }
 
   return 0;
@@ -407,31 +377,23 @@ void adiciona_jogo(int inp, int m, int n, node_jogo *jogos, node_equipa *equipas
   k = hash_str(nome, n);
   if (search_game(jogos[k], nome) == 1)
   {
-    {
-      printf("%d Jogo existente.\n", inp);
-    }
+    printf("%d Jogo existente.\n", inp);
   }
   else
   {
     if (search_team(equipas[i], e1) == 0)
     {
-      {
-        printf("%d Equipa inexistente.\n", inp);
-      }
+      printf("%d Equipa inexistente.\n", inp);
     }
     else
     {
       if (search_team(equipas[j], e2) == 0)
       {
-        {
-          printf("%d Equipa inexistente.\n", inp);
-        }
+        printf("%d Equipa inexistente.\n", inp);
       }
       else
       {
-        {
-          jogos[k] = insere_jogo(nome, m, n, e1, e2, a, b, jogos, equipas, l);
-        }
+        jogos[k] = insere_jogo(nome, m, n, e1, e2, a, b, jogos, equipas, l);
       }
 
     }
@@ -466,10 +428,8 @@ int check_game(int inp, node_jogo *jogos, int n)
   {
     if (strcmp(x->name, nome) == 0)
     {
-      {
-        printf("%d %s %s %s %d %d\n", inp, x->name, x->equipa1->nome, x->equipa2->nome, x->golos_casa, x->golos_fora);
-        return 0;
-      }
+      printf("%d %s %s %s %d %d\n", inp, x->name, x->equipa1->nome, x->equipa2->nome, x->golos_casa, x->golos_fora);
+      return 0;
     }
     else
     {
@@ -506,195 +466,137 @@ int delete_game(int inp, node_jogo *jogos, node_equipa *equipas, int m, int n, l
   aux = jogos[i];
   if (aux != 0)
   {
+    for (temp = jogos[i], prev = 0; temp != 0; prev = temp, temp = temp->next)
     {
-      for (temp = jogos[i], prev = 0; temp != 0; prev = temp, temp = temp->next)
+      if (strcmp(temp->name, nome) == 0)
       {
-        if (strcmp(temp->name, nome) == 0)
+        if (temp == jogos[i])
         {
+          if (temp->golos_casa > temp->golos_fora)
           {
-            if (temp == jogos[i])
-            {
-              {
-                if (temp->golos_casa > temp->golos_fora)
-                {
-                  {
-                    vencedor = (char *) malloc((sizeof(char)) * (strlen(temp->equipa1->nome) + 1));
-                    existe = 1;
-                    strcpy(vencedor, temp->equipa1->nome);
-                    jogos[i] = temp->next;
-                    free(temp->name);
-                    free(temp);
-                    break;
-                  }
-                }
-                else
-                {
-                  if (temp->golos_fora > temp->golos_casa)
-                  {
-                    {
-                      existe = 1;
-                      vencedor = (char *) malloc((sizeof(char)) * (strlen(temp->equipa2->nome) + 1));
-                      strcpy(vencedor, temp->equipa2->nome);
-                      jogos[i] = temp->next;
-                      free(temp->name);
-                      free(temp);
-                      break;
-                    }
-                  }
-                  else
-                  {
-                    if (temp->golos_fora == temp->golos_casa)
-                    {
-                      {
-                        tie = 1;
-                        jogos[i] = temp->next;
-                        free(temp->name);
-                        free(temp);
-                        break;
-                      }
-                    }
-                    else
-                    {
-                      
-                    }
-
-                  }
-
-                }
-
-              }
-            }
-            else
-            {
-              {
-                if (temp->golos_casa > temp->golos_fora)
-                {
-                  {
-                    existe = 1;
-                    vencedor = (char *) malloc((sizeof(char)) * (strlen(temp->equipa1->nome) + 1));
-                    strcpy(vencedor, temp->equipa1->nome);
-                    prev->next = temp->next;
-                    free(temp->name);
-                    free(temp);
-                    break;
-                  }
-                }
-                else
-                {
-                  if (temp->golos_fora > temp->golos_casa)
-                  {
-                    {
-                      existe = 1;
-                      vencedor = (char *) malloc((sizeof(char)) * (strlen(temp->equipa2->nome) + 1));
-                      strcpy(vencedor, temp->equipa2->nome);
-                      prev->next = temp->next;
-                      free(temp->name);
-                      free(temp);
-                      break;
-                    }
-                  }
-                  else
-                  {
-                    if (temp->golos_fora == temp->golos_casa)
-                    {
-                      {
-                        tie = 1;
-                        prev->next = temp->next;
-                        free(temp->name);
-                        free(temp);
-                        break;
-                      }
-                    }
-                    else
-                    {
-                      
-                    }
-
-                  }
-
-                }
-
-              }
-            }
-
+            vencedor = (char *) malloc((sizeof(char)) * (strlen(temp->equipa1->nome) + 1));
+            existe = 1;
+            strcpy(vencedor, temp->equipa1->nome);
+            jogos[i] = temp->next;
+            free(temp->name);
+            free(temp);
+            break;
           }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      for (x = l->head; x != 0; x = x->next)
-      {
-        if (strcmp(x->jogo->name, nome) == 0)
-        {
+          else
           {
-            if (x == l->head)
+            if (temp->golos_fora > temp->golos_casa)
             {
-              {
-                l->head = x->next;
-                free(x->jogo->name);
-                free(x);
-                break;
-              }
+              existe = 1;
+              vencedor = (char *) malloc((sizeof(char)) * (strlen(temp->equipa2->nome) + 1));
+              strcpy(vencedor, temp->equipa2->nome);
+              jogos[i] = temp->next;
+              free(temp->name);
+              free(temp);
+              break;
             }
             else
             {
-              if (x->next != 0)
+              if (temp->golos_fora == temp->golos_casa)
               {
-                {
-                  aux_queue = x;
-                  x->next->prev = x->prev;
-                  x->prev->next = x->next;
-                  free(aux_queue->jogo->name);
-                  free(aux_queue);
-                  break;
-                }
+                tie = 1;
+                jogos[i] = temp->next;
+                free(temp->name);
+                free(temp);
+                break;
               }
               else
               {
-                if (x->prev != 0)
-                {
-                  {
-                    x->prev->next = x->next;
-                    free(x->jogo->name);
-                    free(x);
-                    break;
-                  }
-                }
-                else
-                {
-                  
-                }
-
+                
               }
 
             }
 
           }
+
         }
         else
         {
-          
+          if (temp->golos_casa > temp->golos_fora)
+          {
+            existe = 1;
+            vencedor = (char *) malloc((sizeof(char)) * (strlen(temp->equipa1->nome) + 1));
+            strcpy(vencedor, temp->equipa1->nome);
+            prev->next = temp->next;
+            free(temp->name);
+            free(temp);
+            break;
+          }
+          else
+          {
+            if (temp->golos_fora > temp->golos_casa)
+            {
+              existe = 1;
+              vencedor = (char *) malloc((sizeof(char)) * (strlen(temp->equipa2->nome) + 1));
+              strcpy(vencedor, temp->equipa2->nome);
+              prev->next = temp->next;
+              free(temp->name);
+              free(temp);
+              break;
+            }
+            else
+            {
+              if (temp->golos_fora == temp->golos_casa)
+              {
+                tie = 1;
+                prev->next = temp->next;
+                free(temp->name);
+                free(temp);
+                break;
+              }
+              else
+              {
+                
+              }
+
+            }
+
+          }
+
         }
 
       }
-
-      if (existe == 1)
+      else
       {
+        
+      }
+
+    }
+
+    for (x = l->head; x != 0; x = x->next)
+    {
+      if (strcmp(x->jogo->name, nome) == 0)
+      {
+        if (x == l->head)
         {
-          j = hash_str(vencedor, m);
-          for (equipa_com_menos_vitoria = equipas[j]; equipa_com_menos_vitoria != 0; equipa_com_menos_vitoria = equipa_com_menos_vitoria->next)
+          l->head = x->next;
+          free(x->jogo->name);
+          free(x);
+          break;
+        }
+        else
+        {
+          if (x->next != 0)
           {
-            if (strcmp(equipa_com_menos_vitoria->nome, vencedor) == 0)
+            aux_queue = x;
+            x->next->prev = x->prev;
+            x->prev->next = x->next;
+            free(aux_queue->jogo->name);
+            free(aux_queue);
+            break;
+          }
+          else
+          {
+            if (x->prev != 0)
             {
-              {
-                equipa_com_menos_vitoria->vitorias--;
-                free(vencedor);
-                return 0;
-              }
+              x->prev->next = x->next;
+              free(x->jogo->name);
+              free(x);
+              break;
             }
             else
             {
@@ -704,40 +606,60 @@ int delete_game(int inp, node_jogo *jogos, node_equipa *equipas, int m, int n, l
           }
 
         }
+
       }
       else
       {
-        if (tie == 1)
+        
+      }
+
+    }
+
+    if (existe == 1)
+    {
+      j = hash_str(vencedor, m);
+      for (equipa_com_menos_vitoria = equipas[j]; equipa_com_menos_vitoria != 0; equipa_com_menos_vitoria = equipa_com_menos_vitoria->next)
+      {
+        if (strcmp(equipa_com_menos_vitoria->nome, vencedor) == 0)
         {
-          {
-            return 0;
-          }
+          equipa_com_menos_vitoria->vitorias--;
+          free(vencedor);
+          return 0;
         }
         else
         {
-          if (search_game(jogos[i], nome) == 0)
-          {
-            {
-              printf("%d Jogo inexistente.\n", inp);
-              return 0;
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
 
     }
+    else
+    {
+      if (tie == 1)
+      {
+        return 0;
+      }
+      else
+      {
+        if (search_game(jogos[i], nome) == 0)
+        {
+          printf("%d Jogo inexistente.\n", inp);
+          return 0;
+        }
+        else
+        {
+          
+        }
+
+      }
+
+    }
+
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", inp);
-    }
+    printf("%d Jogo inexistente.\n", inp);
   }
 
   return 0;
@@ -763,25 +685,19 @@ int change_game(int inp, node_jogo *jogos, int n, list l)
   i = hash_str(nome, n);
   if (a > b)
   {
-    {
-      winner = 1;
-    }
+    winner = 1;
   }
   else
   {
     if (a < b)
     {
-      {
-        winner = 2;
-      }
+      winner = 2;
     }
     else
     {
       if (a == b)
       {
-        {
-          winner = 0;
-        }
+        winner = 0;
       }
       else
       {
@@ -794,110 +710,89 @@ int change_game(int inp, node_jogo *jogos, int n, list l)
 
   if (search_game(jogos[i], nome) == 1)
   {
+    for (x = jogos[i]; x != 0; x = x->next)
     {
-      for (x = jogos[i]; x != 0; x = x->next)
+      if (((strcmp(x->name, nome) == 0) && (winner == 1)) && (x->golos_casa < x->golos_fora))
       {
-        if (((strcmp(x->name, nome) == 0) && (winner == 1)) && (x->golos_casa < x->golos_fora))
+        x->equipa1->vitorias++;
+        x->equipa2->vitorias--;
+        x->golos_casa = a;
+        x->golos_fora = b;
+        break;
+      }
+      else
+      {
+        if (((winner == 2) && (x->golos_casa > x->golos_fora)) && (strcmp(x->name, nome) == 0))
         {
+          x->equipa1->vitorias--;
+          x->equipa2->vitorias++;
+          x->golos_casa = a;
+          x->golos_fora = b;
+          break;
+        }
+        else
+        {
+          if (((winner == 1) && (x->golos_casa > x->golos_fora)) && (strcmp(x->name, nome) == 0))
           {
-            x->equipa1->vitorias++;
-            x->equipa2->vitorias--;
             x->golos_casa = a;
             x->golos_fora = b;
             break;
           }
-        }
-        else
-        {
-          if (((winner == 2) && (x->golos_casa > x->golos_fora)) && (strcmp(x->name, nome) == 0))
+          else
           {
+            if (((winner == 2) && (x->golos_casa < x->golos_fora)) && (strcmp(x->name, nome) == 0))
             {
-              x->equipa1->vitorias--;
-              x->equipa2->vitorias++;
               x->golos_casa = a;
               x->golos_fora = b;
               break;
             }
-          }
-          else
-          {
-            if (((winner == 1) && (x->golos_casa > x->golos_fora)) && (strcmp(x->name, nome) == 0))
+            else
             {
+              if (((strcmp(x->name, nome) == 0) && (winner == 0)) && (x->golos_casa < x->golos_fora))
               {
+                x->equipa2->vitorias--;
                 x->golos_casa = a;
                 x->golos_fora = b;
                 break;
               }
-            }
-            else
-            {
-              if (((winner == 2) && (x->golos_casa < x->golos_fora)) && (strcmp(x->name, nome) == 0))
+              else
               {
+                if (((strcmp(x->name, nome) == 0) && (winner == 0)) && (x->golos_casa > x->golos_fora))
                 {
+                  x->equipa1->vitorias--;
                   x->golos_casa = a;
                   x->golos_fora = b;
                   break;
                 }
-              }
-              else
-              {
-                if (((strcmp(x->name, nome) == 0) && (winner == 0)) && (x->golos_casa < x->golos_fora))
+                else
                 {
+                  if (((strcmp(x->name, nome) == 0) && (winner == 1)) && (x->golos_casa == x->golos_fora))
                   {
-                    x->equipa2->vitorias--;
+                    x->equipa1->vitorias++;
                     x->golos_casa = a;
                     x->golos_fora = b;
                     break;
                   }
-                }
-                else
-                {
-                  if (((strcmp(x->name, nome) == 0) && (winner == 0)) && (x->golos_casa > x->golos_fora))
+                  else
                   {
+                    if (((strcmp(x->name, nome) == 0) && (winner == 2)) && (x->golos_casa == x->golos_fora))
                     {
-                      x->equipa1->vitorias--;
+                      x->equipa2->vitorias++;
                       x->golos_casa = a;
                       x->golos_fora = b;
                       break;
                     }
-                  }
-                  else
-                  {
-                    if (((strcmp(x->name, nome) == 0) && (winner == 1)) && (x->golos_casa == x->golos_fora))
+                    else
                     {
+                      if (((strcmp(x->name, nome) == 0) && (winner == 0)) && (x->golos_casa == x->golos_fora))
                       {
-                        x->equipa1->vitorias++;
                         x->golos_casa = a;
                         x->golos_fora = b;
                         break;
                       }
-                    }
-                    else
-                    {
-                      if (((strcmp(x->name, nome) == 0) && (winner == 2)) && (x->golos_casa == x->golos_fora))
-                      {
-                        {
-                          x->equipa2->vitorias++;
-                          x->golos_casa = a;
-                          x->golos_fora = b;
-                          break;
-                        }
-                      }
                       else
                       {
-                        if (((strcmp(x->name, nome) == 0) && (winner == 0)) && (x->golos_casa == x->golos_fora))
-                        {
-                          {
-                            x->golos_casa = a;
-                            x->golos_fora = b;
-                            break;
-                          }
-                        }
-                        else
-                        {
-                          
-                        }
-
+                        
                       }
 
                     }
@@ -916,29 +811,26 @@ int change_game(int inp, node_jogo *jogos, int n, list l)
 
       }
 
-      for (t = l->head; t != 0; t = t->next)
-      {
-        if (strcmp(t->jogo->name, nome) == 0)
-        {
-          {
-            t->jogo->golos_casa = a;
-            t->jogo->golos_fora = b;
-          }
-        }
-        else
-        {
-          
-        }
+    }
 
+    for (t = l->head; t != 0; t = t->next)
+    {
+      if (strcmp(t->jogo->name, nome) == 0)
+      {
+        t->jogo->golos_casa = a;
+        t->jogo->golos_fora = b;
+      }
+      else
+      {
+        
       }
 
     }
+
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", inp);
-    }
+    printf("%d Jogo inexistente.\n", inp);
   }
 
   return 0;
@@ -960,10 +852,8 @@ int check_team(int inp, node_equipa *equipas, int m)
   {
     if (strcmp(x->nome, nome) == 0)
     {
-      {
-        printf("%d %s %d\n", inp, x->nome, x->vitorias);
-        return 0;
-      }
+      printf("%d %s %d\n", inp, x->nome, x->vitorias);
+      return 0;
     }
     else
     {
@@ -1001,9 +891,7 @@ void sort_teams(int inp, node_equipa *equipas)
     {
       if (x->vitorias >= maximo)
       {
-        {
-          maximo = x->vitorias;
-        }
+        maximo = x->vitorias;
       }
       else
       {
@@ -1017,56 +905,50 @@ void sort_teams(int inp, node_equipa *equipas)
 
   if (existe == 1)
   {
+    node_equipa *array = malloc((sizeof(struct stru_node_equipa)) * capacity);
+    for (j = 0; j < n; j++)
     {
-      node_equipa *array = malloc((sizeof(struct stru_node_equipa)) * capacity);
-      for (j = 0; j < n; j++)
+      for (x = equipas[j]; x != 0; x = x->next)
       {
-        for (x = equipas[j]; x != 0; x = x->next)
+        if ((used >= capacity) && (x->vitorias == maximo))
         {
-          if ((used >= capacity) && (x->vitorias == maximo))
+          capacity *= 2;
+          array = (node_equipa *) realloc(array, (sizeof(struct stru_node_equipa)) * capacity);
+          array[used] = (node_equipa) malloc(sizeof(struct stru_node_equipa));
+          array[used]->nome = (char *) malloc(strlen(x->nome) + 1);
+          strcpy(array[used]->nome, x->nome);
+          used++;
+        }
+        else
+        {
+          if (x->vitorias == maximo)
           {
-            {
-              capacity *= 2;
-              array = (node_equipa *) realloc(array, (sizeof(struct stru_node_equipa)) * capacity);
-              array[used] = (node_equipa) malloc(sizeof(struct stru_node_equipa));
-              array[used]->nome = (char *) malloc(strlen(x->nome) + 1);
-              strcpy(array[used]->nome, x->nome);
-              used++;
-            }
+            array[used] = (node_equipa) malloc(sizeof(struct stru_node_equipa));
+            array[used]->nome = (char *) malloc(strlen(x->nome) + 1);
+            strcpy(array[used]->nome, x->nome);
+            used++;
           }
           else
           {
-            if (x->vitorias == maximo)
-            {
-              {
-                array[used] = (node_equipa) malloc(sizeof(struct stru_node_equipa));
-                array[used]->nome = (char *) malloc(strlen(x->nome) + 1);
-                strcpy(array[used]->nome, x->nome);
-                used++;
-              }
-            }
-            else
-            {
-              
-            }
-
+            
           }
 
         }
 
       }
 
-      qsort(array, used, sizeof(struct equipa_a *), cmpstr);
-      printf("%d Melhores %d\n", inp, maximo);
-      for (i = 0; i < used; i++)
-      {
-        printf("%d * %s\n", inp, array[i]->nome);
-        free(array[i]->nome);
-        free(array[i]);
-      }
-
-      free(array);
     }
+
+    qsort(array, used, sizeof(struct equipa_a *), cmpstr);
+    printf("%d Melhores %d\n", inp, maximo);
+    for (i = 0; i < used; i++)
+    {
+      printf("%d * %s\n", inp, array[i]->nome);
+      free(array[i]->nome);
+      free(array[i]);
+    }
+
+    free(array);
   }
   else
   {

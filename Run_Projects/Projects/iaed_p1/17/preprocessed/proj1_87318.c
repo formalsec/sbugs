@@ -65,10 +65,8 @@ int Funcao_q(char argum[])
   {
     if (Produto[i].idp == id)
     {
-      {
-        Produto[i].qtd = Produto[i].qtd + qt;
-        return 0;
-      }
+      Produto[i].qtd = Produto[i].qtd + qt;
+      return 0;
     }
     else
     {
@@ -96,23 +94,17 @@ int Funcao_r(int id, int qt)
   {
     if (Produto[i].idp == id)
     {
+      if (Produto[i].qtd >= qt)
       {
-        if (Produto[i].qtd >= qt)
-        {
-          {
-            Produto[i].qtd = Produto[i].qtd - qt;
-            return 0;
-          }
-        }
-        else
-        {
-          {
-            printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qt, id);
-            return 1;
-          }
-        }
-
+        Produto[i].qtd = Produto[i].qtd - qt;
+        return 0;
       }
+      else
+      {
+        printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qt, id);
+        return 1;
+      }
+
     }
     else
     {
@@ -147,133 +139,70 @@ int Funcao_A(char argum[])
   {
     if ((Encomenda[i].ide == id_e) && (id_e >= 0))
     {
+      for (j = 0; j <= n_produtos; j++)
       {
-        for (j = 0; j <= n_produtos; j++)
+        if ((Produto[j].idp == id_p) && (id_p >= 0))
         {
-          if ((Produto[j].idp == id_p) && (id_p >= 0))
+          if (Encomenda[i].num_prods == 0)
           {
+            if (Produto[j].qtd >= qt)
             {
-              if (Encomenda[i].num_prods == 0)
+              if ((qt * Produto[j].peso) <= 200)
               {
-                {
-                  if (Produto[j].qtd >= qt)
-                  {
-                    {
-                      if ((qt * Produto[j].peso) <= 200)
-                      {
-                        {
-                          Encomenda[i].prod[0] = id_p;
-                          Encomenda[i].qtds[0] = qt;
-                          Encomenda[i].num_prods++;
-                          Funcao_r(id_p, qt);
-                          return 0;
-                        }
-                      }
-                      else
-                      {
-                        {
-                          printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", id_p, id_e);
-                          return 1;
-                        }
-                      }
-
-                    }
-                  }
-                  else
-                  {
-                    {
-                      printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", id_p, id_e);
-                      return 2;
-                    }
-                  }
-
-                }
+                Encomenda[i].prod[0] = id_p;
+                Encomenda[i].qtds[0] = qt;
+                Encomenda[i].num_prods++;
+                Funcao_r(id_p, qt);
+                return 0;
               }
               else
               {
-                if (Encomenda[i].num_prods > 0)
+                printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", id_p, id_e);
+                return 1;
+              }
+
+            }
+            else
+            {
+              printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", id_p, id_e);
+              return 2;
+            }
+
+          }
+          else
+          {
+            if (Encomenda[i].num_prods > 0)
+            {
+              for (l = 0; l < Encomenda[i].num_prods; l++)
+              {
+                peso_total = peso_total + (Encomenda[i].qtds[l] * Produto[Encomenda[i].prod[l]].peso);
+              }
+
+              for (k = 0; k < Encomenda[i].num_prods; k++)
+              {
+                if (Encomenda[i].prod[k] == id_p)
                 {
+                  if (qt <= Produto[j].qtd)
                   {
-                    for (l = 0; l < Encomenda[i].num_prods; l++)
+                    if ((peso_total + (qt * Produto[j].peso)) <= 200)
                     {
-                      peso_total = peso_total + (Encomenda[i].qtds[l] * Produto[Encomenda[i].prod[l]].peso);
-                    }
-
-                    for (k = 0; k < Encomenda[i].num_prods; k++)
-                    {
-                      if (Encomenda[i].prod[k] == id_p)
-                      {
-                        {
-                          if (qt <= Produto[j].qtd)
-                          {
-                            {
-                              if ((peso_total + (qt * Produto[j].peso)) <= 200)
-                              {
-                                {
-                                  Encomenda[i].qtds[k] = Encomenda[i].qtds[k] + qt;
-                                  Funcao_r(id_p, qt);
-                                  return 0;
-                                }
-                              }
-                              else
-                              {
-                                {
-                                  printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", id_p, id_e);
-                                  return 1;
-                                }
-                              }
-
-                            }
-                          }
-                          else
-                          {
-                            {
-                              printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", id_p, id_e);
-                              return 2;
-                            }
-                          }
-
-                        }
-                      }
-                      else
-                      {
-                        
-                      }
-
-                    }
-
-                    if (Produto[j].qtd >= qt)
-                    {
-                      {
-                        if ((peso_total + (qt * Produto[j].peso)) <= 200)
-                        {
-                          {
-                            Encomenda[i].prod[Encomenda[i].num_prods] = id_p;
-                            Encomenda[i].qtds[Encomenda[i].num_prods] = qt;
-                            Encomenda[i].num_prods++;
-                            Funcao_r(id_p, qt);
-                            return 0;
-                          }
-                        }
-                        else
-                        {
-                          {
-                            printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", id_p, id_e);
-                            return 1;
-                          }
-                        }
-
-                      }
+                      Encomenda[i].qtds[k] = Encomenda[i].qtds[k] + qt;
+                      Funcao_r(id_p, qt);
+                      return 0;
                     }
                     else
                     {
-                      {
-                        printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", id_p, id_e);
-                        return 2;
-                      }
+                      printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", id_p, id_e);
+                      return 1;
                     }
 
                   }
+                  else
+                  {
+                    printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", id_p, id_e);
+                    return 2;
+                  }
+
                 }
                 else
                 {
@@ -282,18 +211,47 @@ int Funcao_A(char argum[])
 
               }
 
+              if (Produto[j].qtd >= qt)
+              {
+                if ((peso_total + (qt * Produto[j].peso)) <= 200)
+                {
+                  Encomenda[i].prod[Encomenda[i].num_prods] = id_p;
+                  Encomenda[i].qtds[Encomenda[i].num_prods] = qt;
+                  Encomenda[i].num_prods++;
+                  Funcao_r(id_p, qt);
+                  return 0;
+                }
+                else
+                {
+                  printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", id_p, id_e);
+                  return 1;
+                }
+
+              }
+              else
+              {
+                printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", id_p, id_e);
+                return 2;
+              }
+
             }
-          }
-          else
-          {
-            
+            else
+            {
+              
+            }
+
           }
 
         }
+        else
+        {
+          
+        }
 
-        printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", id_p, id_e);
-        return 3;
       }
+
+      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", id_p, id_e);
+      return 3;
     }
     else
     {
@@ -325,49 +283,43 @@ int Funcao_R(char argum[])
   {
     if (Encomenda[i].ide == id_e)
     {
+      for (j = 0; j <= n_produtos; j++)
       {
-        for (j = 0; j <= n_produtos; j++)
+        if (Produto[j].idp == id_p)
         {
-          if (Produto[j].idp == id_p)
+          for (k = 0; k < Encomenda[i].num_prods; k++)
           {
+            if (Encomenda[i].prod[k] == id_p)
             {
-              for (k = 0; k < Encomenda[i].num_prods; k++)
-              {
-                if (Encomenda[i].prod[k] == id_p)
-                {
-                  {
-                    qt_prod = Encomenda[i].qtds[k];
-                    posi = k;
-                    Encomenda[i].num_prods = Encomenda[i].num_prods - 1;
-                  }
-                }
-                else
-                {
-                  
-                }
-
-              }
-
-              for (k = posi; k < Encomenda[i].num_prods; k++)
-              {
-                Encomenda[i].prod[k] = Encomenda[i].prod[k + 1];
-                Encomenda[i].qtds[k] = Encomenda[i].qtds[k + 1];
-              }
-
-              Produto[j].qtd = Produto[j].qtd + qt_prod;
-              return 0;
+              qt_prod = Encomenda[i].qtds[k];
+              posi = k;
+              Encomenda[i].num_prods = Encomenda[i].num_prods - 1;
             }
-          }
-          else
-          {
-            
+            else
+            {
+              
+            }
+
           }
 
+          for (k = posi; k < Encomenda[i].num_prods; k++)
+          {
+            Encomenda[i].prod[k] = Encomenda[i].prod[k + 1];
+            Encomenda[i].qtds[k] = Encomenda[i].qtds[k + 1];
+          }
+
+          Produto[j].qtd = Produto[j].qtd + qt_prod;
+          return 0;
+        }
+        else
+        {
+          
         }
 
-        printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", id_p, id_e);
-        return 1;
       }
+
+      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", id_p, id_e);
+      return 1;
     }
     else
     {
@@ -391,15 +343,13 @@ int Funcao_C(char argum[])
   {
     if (Encomenda[i].ide == id_e)
     {
+      for (j = 0; j < Encomenda[i].num_prods; j++)
       {
-        for (j = 0; j < Encomenda[i].num_prods; j++)
-        {
-          preco_total = preco_total + (Encomenda[i].qtds[j] * Produto[Encomenda[i].prod[j]].preco);
-        }
-
-        printf("Custo da encomenda %d %d.\n", id_e, preco_total);
-        return 0;
+        preco_total = preco_total + (Encomenda[i].qtds[j] * Produto[Encomenda[i].prod[j]].preco);
       }
+
+      printf("Custo da encomenda %d %d.\n", id_e, preco_total);
+      return 0;
     }
     else
     {
@@ -427,10 +377,8 @@ int Funcao_p(char argum[])
   {
     if (Produto[i].idp == id)
     {
-      {
-        Produto[i].preco = price;
-        return 0;
-      }
+      Produto[i].preco = price;
+      return 0;
     }
     else
     {
@@ -461,41 +409,35 @@ int Funcao_E(char argum[])
   {
     if (Encomenda[i].ide == id_e)
     {
+      for (j = 0; j <= n_produtos; j++)
       {
-        for (j = 0; j <= n_produtos; j++)
+        if (Produto[j].idp == id_p)
         {
-          if (Produto[j].idp == id_p)
+          for (k = 0; k < Encomenda[i].num_prods; k++)
           {
+            if (Encomenda[i].prod[k] == id_p)
             {
-              for (k = 0; k < Encomenda[i].num_prods; k++)
-              {
-                if (Encomenda[i].prod[k] == id_p)
-                {
-                  {
-                    qtd = Encomenda[i].qtds[k];
-                  }
-                }
-                else
-                {
-                  
-                }
-
-              }
-
-              printf("%s %d.\n", Produto[j].descricao, qtd);
-              return 0;
+              qtd = Encomenda[i].qtds[k];
             }
-          }
-          else
-          {
-            
+            else
+            {
+              
+            }
+
           }
 
+          printf("%s %d.\n", Produto[j].descricao, qtd);
+          return 0;
+        }
+        else
+        {
+          
         }
 
-        printf("Impossivel listar produto %d. Produto inexistente.\n", id_p);
-        return 1;
       }
+
+      printf("Impossivel listar produto %d. Produto inexistente.\n", id_p);
+      return 1;
     }
     else
     {
@@ -522,65 +464,51 @@ int Funcao_m(char argum[])
   {
     if (Produto[i].idp == id_p)
     {
+      if (n_encomendas < 0)
       {
-        if (n_encomendas < 0)
+        return 0;
+      }
+      else
+      {
+        for (j = 0; j <= n_encomendas; j++)
         {
+          for (k = 0; k < Encomenda[j].num_prods; k++)
           {
-            return 0;
-          }
-        }
-        else
-        {
-          {
-            for (j = 0; j <= n_encomendas; j++)
+            if (Encomenda[j].prod[k] == id_p)
             {
-              for (k = 0; k < Encomenda[j].num_prods; k++)
+              if (Encomenda[j].qtds[k] > maior)
               {
-                if (Encomenda[j].prod[k] == id_p)
-                {
-                  {
-                    if (Encomenda[j].qtds[k] > maior)
-                    {
-                      {
-                        id_e = j;
-                        maior = Encomenda[j].qtds[k];
-                        flag = 1;
-                      }
-                    }
-                    else
-                    {
-                      
-                    }
-
-                  }
-                }
-                else
-                {
-                  
-                }
-
+                id_e = j;
+                maior = Encomenda[j].qtds[k];
+                flag = 1;
+              }
+              else
+              {
+                
               }
 
-            }
-
-            if (flag == 1)
-            {
-              {
-                printf("Maximo produto %d %d %d.\n", id_p, id_e, maior);
-                return 0;
-              }
             }
             else
             {
-              {
-                return 0;
-              }
+              
             }
 
           }
+
+        }
+
+        if (flag == 1)
+        {
+          printf("Maximo produto %d %d %d.\n", id_p, id_e, maior);
+          return 0;
+        }
+        else
+        {
+          return 0;
         }
 
       }
+
     }
     else
     {

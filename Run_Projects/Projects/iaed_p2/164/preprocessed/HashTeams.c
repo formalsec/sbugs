@@ -48,10 +48,8 @@ void DestroyHashTeams(Team *hash_team, int *n_teams)
   for (; count < (*n_teams); i++)
     if (hash_team[i] != 0)
   {
-    {
-      DestroyTeam(hash_team[i]);
-      count++;
-    }
+    DestroyTeam(hash_team[i]);
+    count++;
   }
   else
   {
@@ -72,10 +70,8 @@ Team *ExpandTeams(Team *hash_team, int *n_teams, int *m)
   for (; count < (*n_teams); i++)
     if (hash_team[i] != 0)
   {
-    {
-      HashTeamsInsert(new_hash_team, hash_team[i], m);
-      count++;
-    }
+    HashTeamsInsert(new_hash_team, hash_team[i], m);
+    count++;
   }
   else
   {

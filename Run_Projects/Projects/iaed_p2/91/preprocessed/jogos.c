@@ -35,17 +35,13 @@ void inserir_jogo(TabelaJogos *tabela, Jogo *jogo)
   no->prev = tabela->last;
   if (tabela->first == 0)
   {
-    {
-      tabela->first = no;
-      tabela->last = no;
-    }
+    tabela->first = no;
+    tabela->last = no;
   }
   else
   {
-    {
-      tabela->last->next = no;
-      tabela->last = no;
-    }
+    tabela->last->next = no;
+    tabela->last = no;
   }
 
   tabela->tamanho++;
@@ -68,9 +64,7 @@ void expandir_jogos(TabelaJogos *tabela)
   {
     if (tabela->jogos[i] != 0)
     {
-      {
-        inserir_jogo(tab, tabela->jogos[i]);
-      }
+      inserir_jogo(tab, tabela->jogos[i]);
     }
     else
     {
@@ -93,15 +87,11 @@ Jogo *procura_jogo(TabelaJogos *tabela, char *nome)
   {
     if (strcmp(tabela->jogos[i]->nome, nome) == 0)
     {
-      {
-        return tabela->jogos[i];
-      }
+      return tabela->jogos[i];
     }
     else
     {
-      {
-        i = (i + 1) % tabela->capacidade;
-      }
+      i = (i + 1) % tabela->capacidade;
     }
 
   }
@@ -118,15 +108,11 @@ void apagar_jogo(TabelaJogos *tabela, char *nome)
   {
     if (strcmp(tabela->jogos[i]->nome, nome) == 0)
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {
-      {
-        i = (i + 1) % tabela->capacidade;
-      }
+      i = (i + 1) % tabela->capacidade;
     }
 
   }
@@ -166,9 +152,7 @@ void free_tabela_jogos(TabelaJogos *tabela)
   {
     if (tabela->jogos[i] != 0)
     {
-      {
-        free_jogo(tabela->jogos[i]);
-      }
+      free_jogo(tabela->jogos[i]);
     }
     else
     {

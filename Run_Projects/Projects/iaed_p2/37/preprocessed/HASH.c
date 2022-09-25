@@ -57,10 +57,8 @@ int searchTeamHash(char *buffer, tlink *HashTeams, pTeam *hit)
     compare = c->pEquipa->name;
     if (strcmp(compare, buffer) == 0)
     {
-      {
-        *hit = c->pEquipa;
-        return 1;
-      }
+      *hit = c->pEquipa;
+      return 1;
     }
     else
     {
@@ -80,16 +78,14 @@ void limpaHashTeams(tlink *HashTeams)
   {
     if (HashTeams[i] != 0)
     {
+      while (HashTeams[i])
       {
-        while (HashTeams[i])
-        {
-          aux = HashTeams[i];
-          HashTeams[i] = HashTeams[i]->next;
-          free(aux);
-        }
-
-        free(HashTeams[i]);
+        aux = HashTeams[i];
+        HashTeams[i] = HashTeams[i]->next;
+        free(aux);
       }
+
+      free(HashTeams[i]);
     }
     else
     {
@@ -129,10 +125,8 @@ void Ginsert(glink *HeadFila, pGame pJogo)
   }
   else
   {
-    {
-      *HeadFila = Ginsert_aux(pJogo, *HeadFila);
-      aux->prev = *HeadFila;
-    }
+    *HeadFila = Ginsert_aux(pJogo, *HeadFila);
+    aux->prev = *HeadFila;
   }
 
 }
@@ -148,10 +142,8 @@ int searchGameHash(char *buffer, glink *HashGames, pGame *hit)
     compare = c->pJogo->name;
     if (strcmp(compare, buffer) == 0)
     {
-      {
-        *hit = c->pJogo;
-        return 1;
-      }
+      *hit = c->pJogo;
+      return 1;
     }
     else
     {
@@ -171,16 +163,14 @@ void limpaHashGames(glink *HashGames)
   {
     if (HashGames[i] != 0)
     {
+      while (HashGames[i])
       {
-        while (HashGames[i])
-        {
-          aux = HashGames[i];
-          HashGames[i] = HashGames[i]->next;
-          free(aux);
-        }
-
-        free(HashGames[i]);
+        aux = HashGames[i];
+        HashGames[i] = HashGames[i]->next;
+        free(aux);
       }
+
+      free(HashGames[i]);
     }
     else
     {

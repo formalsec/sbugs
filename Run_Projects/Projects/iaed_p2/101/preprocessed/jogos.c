@@ -62,45 +62,43 @@ Jogos *remove_jogo(Jogos *Lst, char *text)
   for (aux = Lst->head; aux != 0; aux = aux->next)
     if (strcmp(aux->nome, text) == 0)
   {
+    if (aux == Lst->head)
     {
-      if (aux == Lst->head)
-      {
-        Lst->head = aux->next;
-      }
-      else
-      {
-        if (aux == Lst->last)
-        {
-          Lst->last = aux->prev;
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      if (aux->prev != 0)
-      {
-        aux->prev->next = aux->next;
-      }
-      else
-      {
-        
-      }
-
-      if (aux->next != 0)
-      {
-        aux->next->prev = aux->prev;
-      }
-      else
-      {
-        
-      }
-
-      elimina_jogo(aux);
-      break;
+      Lst->head = aux->next;
     }
+    else
+    {
+      if (aux == Lst->last)
+      {
+        Lst->last = aux->prev;
+      }
+      else
+      {
+        
+      }
+
+    }
+
+    if (aux->prev != 0)
+    {
+      aux->prev->next = aux->next;
+    }
+    else
+    {
+      
+    }
+
+    if (aux->next != 0)
+    {
+      aux->next->prev = aux->prev;
+    }
+    else
+    {
+      
+    }
+
+    elimina_jogo(aux);
+    break;
   }
   else
   {

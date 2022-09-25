@@ -35,11 +35,9 @@ void Append_List(List list, char *name)
   Node new = NewNode(name);
   if (!list->head)
   {
-    {
-      list->head = new;
-      list->tail = new;
-      return;
-    }
+    list->head = new;
+    list->tail = new;
+    return;
   }
   else
   {
@@ -62,22 +60,16 @@ void Remove_List(List list, char *name)
 
   if (tmp == list->head)
   {
-    {
-      list->head = tmp->next;
-    }
+    list->head = tmp->next;
   }
   else
   {
-    {
-      tmp_aux->next = tmp->next;
-    }
+    tmp_aux->next = tmp->next;
   }
 
   if (tmp == list->tail)
   {
-    {
-      list->tail = tmp_aux;
-    }
+    list->tail = tmp_aux;
   }
   else
   {

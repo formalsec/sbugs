@@ -34,17 +34,15 @@ int less(produto A, produto B, char chave[12])
 
   if (strcmp(chave, "price\0") == 0)
   {
+    if ((A.price == B.price) && (A.id < B.id))
     {
-      if ((A.price == B.price) && (A.id < B.id))
-      {
-        return 1;
-      }
-      else
-      {
-        return A.price < B.price;
-      }
-
+      return 1;
     }
+    else
+    {
+      return A.price < B.price;
+    }
+
   }
   else
   {
@@ -246,11 +244,9 @@ void novo_p(int idp, produto a, produto portfolio_p[10000])
 {
   if (idp != 10000)
   {
-    {
-      a.id = idp;
-      portfolio_p[idp] = a;
-      printf("Novo produto %d.\n", a.id);
-    }
+    a.id = idp;
+    portfolio_p[idp] = a;
+    printf("Novo produto %d.\n", a.id);
   }
   else
   {
@@ -263,9 +259,7 @@ int existe_p(int a, int idp)
 {
   if (a < idp)
   {
-    {
-      return 1;
-    }
+    return 1;
   }
   else
   {
@@ -291,11 +285,9 @@ void nova_e(int ide, encomenda e, encomenda portfolio_e[500])
 {
   if (ide != 500)
   {
-    {
-      e.order_id = ide;
-      portfolio_e[ide] = e;
-      printf("Nova encomenda %d.\n", e.order_id);
-    }
+    e.order_id = ide;
+    portfolio_e[ide] = e;
+    printf("Nova encomenda %d.\n", e.order_id);
   }
   else
   {
@@ -310,37 +302,29 @@ int letra_A(int a, int i, int qtd, produto portfolio_p[10000], encomenda portfol
   int k;
   if (existe_p(a, idp) != 1)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", a, i);
-      return 0;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", a, i);
+    return 0;
   }
   else
   {
     if (existe_e(i, ide) != 1)
     {
-      {
-        printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", a, i);
-        return 0;
-      }
+      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", a, i);
+      return 0;
     }
     else
     {
       if (portfolio_p[a].stock < qtd)
       {
-        {
-          printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", a, i);
-          return 0;
-        }
+        printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", a, i);
+        return 0;
       }
       else
       {
         if ((portfolio_e[i].order_weight + (qtd * portfolio_p[a].weight)) > 200)
         {
-          {
-            printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", a, i);
-            return 0;
-          }
+          printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", a, i);
+          return 0;
         }
         else
         {
@@ -357,12 +341,10 @@ int letra_A(int a, int i, int qtd, produto portfolio_p[10000], encomenda portfol
   {
     if (portfolio_e[i].products[k].id == a)
     {
-      {
-        portfolio_e[i].products[k].stock += qtd;
-        portfolio_p[a].stock -= qtd;
-        portfolio_e[i].order_weight += qtd * portfolio_p[a].weight;
-        return 0;
-      }
+      portfolio_e[i].products[k].stock += qtd;
+      portfolio_p[a].stock -= qtd;
+      portfolio_e[i].order_weight += qtd * portfolio_p[a].weight;
+      return 0;
     }
     else
     {
@@ -386,26 +368,20 @@ int letra_r(int a, int qtd, produto portfolio_p[10000], int idp)
 {
   if (existe_p(a, idp) != 1)
   {
-    {
-      printf("Impossivel remover stock do produto %d. Produto inexistente.\n", a);
-      return 0;
-    }
+    printf("Impossivel remover stock do produto %d. Produto inexistente.\n", a);
+    return 0;
   }
   else
   {
     if ((portfolio_p[a].stock - qtd) < 0)
     {
-      {
-        printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, a);
-        return 0;
-      }
+      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, a);
+      return 0;
     }
     else
     {
-      {
-        portfolio_p[a].stock -= qtd;
-        return 0;
-      }
+      portfolio_p[a].stock -= qtd;
+      return 0;
     }
 
   }
@@ -418,19 +394,15 @@ int letra_R(int a, int i, produto portfolio_p[10000], encomenda portfolio_e[500]
   int p;
   if (existe_e(i, ide) != 1)
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", a, i);
-      return 0;
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", a, i);
+    return 0;
   }
   else
   {
     if (existe_p(a, idp) != 1)
     {
-      {
-        printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", a, i);
-        return 0;
-      }
+      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", a, i);
+      return 0;
     }
     else
     {
@@ -443,14 +415,12 @@ int letra_R(int a, int i, produto portfolio_p[10000], encomenda portfolio_e[500]
   {
     if (portfolio_e[i].products[k].id == a)
     {
-      {
-        portfolio_p[a].stock += portfolio_e[i].products[k].stock;
-        portfolio_e[i].order_weight -= portfolio_p[a].weight * portfolio_e[i].products[k].stock;
-        for (p = k; p < portfolio_e[i].contador_pe; p++)
-          portfolio_e[i].products[p] = portfolio_e[i].products[p + 1];
+      portfolio_p[a].stock += portfolio_e[i].products[k].stock;
+      portfolio_e[i].order_weight -= portfolio_p[a].weight * portfolio_e[i].products[k].stock;
+      for (p = k; p < portfolio_e[i].contador_pe; p++)
+        portfolio_e[i].products[p] = portfolio_e[i].products[p + 1];
 
-        portfolio_e[i].contador_pe--;
-      }
+      portfolio_e[i].contador_pe--;
     }
     else
     {
@@ -467,20 +437,16 @@ int letra_C(int i, produto portfolio_p[10000], encomenda portfolio_e[500], int t
   int p;
   if (existe_e(i, ide) != 1)
   {
-    {
-      printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", i);
-      return 0;
-    }
+    printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", i);
+    return 0;
   }
   else
   {
-    {
-      for (p = 0; p < portfolio_e[i].contador_pe; p++)
-        total = total + (portfolio_p[portfolio_e[i].products[p].id].price * portfolio_e[i].products[p].stock);
+    for (p = 0; p < portfolio_e[i].contador_pe; p++)
+      total = total + (portfolio_p[portfolio_e[i].products[p].id].price * portfolio_e[i].products[p].stock);
 
-      printf("Custo da encomenda %d %d.\n", i, total);
-      return 0;
-    }
+    printf("Custo da encomenda %d %d.\n", i, total);
+    return 0;
   }
 
 }
@@ -491,10 +457,8 @@ int letra_p(int a, int price, int ide, produto portfolio_p[10000], encomenda por
   int k;
   if (existe_p(a, idp) != 1)
   {
-    {
-      printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", a);
-      return 0;
-    }
+    printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", a);
+    return 0;
   }
   else
   {
@@ -525,50 +489,42 @@ int letra_E(int a, int i, produto portfolio_p[10000], encomenda portfolio_e[500]
   int existe_pe = 0;
   if (existe_p(a, idp) != 1)
   {
-    {
-      printf("Impossivel listar produto %d. Produto inexistente.\n", a);
-      return 0;
-    }
+    printf("Impossivel listar produto %d. Produto inexistente.\n", a);
+    return 0;
   }
   else
   {
     if (existe_e(i, ide) != 1)
     {
-      {
-        printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", i);
-        return 0;
-      }
+      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", i);
+      return 0;
     }
     else
     {
+      for (k = 0; k < portfolio_e[i].contador_pe; k++)
       {
-        for (k = 0; k < portfolio_e[i].contador_pe; k++)
+        if (portfolio_e[i].products[k].id == a)
         {
-          if (portfolio_e[i].products[k].id == a)
-          {
-            {
-              existe_pe = 1;
-              printf("%s %d.\n", portfolio_p[a].description, portfolio_e[i].products[k].stock);
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-        if (existe_pe == 0)
-        {
-          printf("%s 0.\n", portfolio_p[a].description);
+          existe_pe = 1;
+          printf("%s %d.\n", portfolio_p[a].description, portfolio_e[i].products[k].stock);
         }
         else
         {
           
         }
 
-        return 0;
       }
+
+      if (existe_pe == 0)
+      {
+        printf("%s 0.\n", portfolio_p[a].description);
+      }
+      else
+      {
+        
+      }
+
+      return 0;
     }
 
   }
@@ -583,47 +539,32 @@ int letra_m(int a, produto maximo, int ide, encomenda portfolio_e[500], int idp)
   existe_pe = 0;
   if (existe_p(a, idp) != 1)
   {
-    {
-      printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", a);
-      return 0;
-    }
+    printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", a);
+    return 0;
   }
   else
   {
+    for (i = 0; i < ide; i++)
     {
-      for (i = 0; i < ide; i++)
+      for (k = 0; k < portfolio_e[i].contador_pe; k++)
       {
-        for (k = 0; k < portfolio_e[i].contador_pe; k++)
+        if (portfolio_e[i].products[k].id == a)
         {
-          if (portfolio_e[i].products[k].id == a)
+          existe_pe = 1;
+          if (portfolio_e[i].products[k].stock > maximo.stock)
           {
-            {
-              existe_pe = 1;
-              if (portfolio_e[i].products[k].stock > maximo.stock)
-              {
-                {
-                  maximo.stock = portfolio_e[i].products[k].stock;
-                  maximo.id = portfolio_e[i].order_id;
-                }
-              }
-              else
-              {
-                
-              }
+            maximo.stock = portfolio_e[i].products[k].stock;
+            maximo.id = portfolio_e[i].order_id;
+          }
+          else
+          {
+            
+          }
 
-              if ((portfolio_e[i].products[k].stock == maximo.stock) && (portfolio_e[i].order_id < maximo.id))
-              {
-                {
-                  maximo.stock = portfolio_e[i].products[k].stock;
-                  maximo.id = portfolio_e[i].order_id;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
+          if ((portfolio_e[i].products[k].stock == maximo.stock) && (portfolio_e[i].order_id < maximo.id))
+          {
+            maximo.stock = portfolio_e[i].products[k].stock;
+            maximo.id = portfolio_e[i].order_id;
           }
           else
           {
@@ -631,20 +572,25 @@ int letra_m(int a, produto maximo, int ide, encomenda portfolio_e[500], int idp)
           }
 
         }
+        else
+        {
+          
+        }
 
       }
 
-      if (existe_pe == 1)
-      {
-        printf("Maximo produto %d %d %d.\n", a, maximo.id, maximo.stock);
-      }
-      else
-      {
-        
-      }
-
-      return 0;
     }
+
+    if (existe_pe == 1)
+    {
+      printf("Maximo produto %d %d %d.\n", a, maximo.id, maximo.stock);
+    }
+    else
+    {
+      
+    }
+
+    return 0;
   }
 
 }
@@ -676,37 +622,33 @@ int letra_L(int i, produto portfolio_p[10000], encomenda portfolio_e[500], int i
   item b[10000];
   if (existe_e(i, ide) != 1)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", i);
-      return 0;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", i);
+    return 0;
   }
   else
   {
+    for (k = 0; k < portfolio_e[i].contador_pe; k++)
     {
-      for (k = 0; k < portfolio_e[i].contador_pe; k++)
+      b[k] = portfolio_e[i].products[k].id;
+    }
+
+    mergesort(b, 0, portfolio_e[i].contador_pe - 1, "description\0", portfolio_p);
+    printf("Encomenda %d\n", i);
+    for (p = 0; p < portfolio_e[i].contador_pe; p++)
+    {
+      for (j = 0; j < portfolio_e[i].contador_pe; j++)
+        if (portfolio_e[i].products[j].id == b[p])
       {
-        b[k] = portfolio_e[i].products[k].id;
+        printf("* %s %d %d\n", portfolio_p[b[p]].description, portfolio_p[b[p]].price, portfolio_e[i].products[j].stock);
+      }
+      else
+      {
+        
       }
 
-      mergesort(b, 0, portfolio_e[i].contador_pe - 1, "description\0", portfolio_p);
-      printf("Encomenda %d\n", i);
-      for (p = 0; p < portfolio_e[i].contador_pe; p++)
-      {
-        for (j = 0; j < portfolio_e[i].contador_pe; j++)
-          if (portfolio_e[i].products[j].id == b[p])
-        {
-          printf("* %s %d %d\n", portfolio_p[b[p]].description, portfolio_p[b[p]].price, portfolio_e[i].products[j].stock);
-        }
-        else
-        {
-          
-        }
-
-
-      }
 
     }
+
   }
 
   return 0;

@@ -232,50 +232,42 @@ void A()
         {
           if (produto_na_encomenda(idp, ide))
           {
+            int i;
+            for (i = 0; i < 200; i++)
             {
-              int i;
-              for (i = 0; i < 200; i++)
+              if ((encomendas[ide][i].id == idp) && (encomendas[ide][i].preco != 0))
               {
-                if ((encomendas[ide][i].id == idp) && (encomendas[ide][i].preco != 0))
-                {
-                  {
-                    encomendas[ide][i].quant += qtd;
-                    lista_produtos[idp].quant -= qtd;
-                    return;
-                  }
-                }
-                else
-                {
-                  
-                }
-
+                encomendas[ide][i].quant += qtd;
+                lista_produtos[idp].quant -= qtd;
+                return;
+              }
+              else
+              {
+                
               }
 
             }
+
           }
           else
           {
+            int i;
+            for (i = 0; i < 200; i++)
             {
-              int i;
-              for (i = 0; i < 200; i++)
+              if (encomendas[ide][i].preco == 0)
               {
-                if (encomendas[ide][i].preco == 0)
-                {
-                  {
-                    encomendas[ide][i] = lista_produtos[idp];
-                    encomendas[ide][i].quant = qtd;
-                    lista_produtos[idp].quant -= qtd;
-                    return;
-                  }
-                }
-                else
-                {
-                  
-                }
-
+                encomendas[ide][i] = lista_produtos[idp];
+                encomendas[ide][i].quant = qtd;
+                lista_produtos[idp].quant -= qtd;
+                return;
+              }
+              else
+              {
+                
               }
 
             }
+
           }
 
         }
@@ -331,45 +323,39 @@ void R()
     }
     else
     {
+      int i;
+      int j;
+      struct product produto;
+      for (i = 0; i < 200; i++)
       {
-        int i;
-        int j;
-        struct product produto;
-        for (i = 0; i < 200; i++)
+        if ((encomendas[ide][i].id == idp) && (encomendas[ide][i].preco != 0))
         {
-          if ((encomendas[ide][i].id == idp) && (encomendas[ide][i].preco != 0))
-          {
-            {
-              encomendas[ide][i].preco = 0;
-              lista_produtos[idp].quant += encomendas[ide][i].quant;
-              break;
-            }
-          }
-          else
-          {
-            
-          }
-
+          encomendas[ide][i].preco = 0;
+          lista_produtos[idp].quant += encomendas[ide][i].quant;
+          break;
         }
-
-        for (j = i; j < (200 - 1); j++)
+        else
         {
-          if (encomendas[ide][j + 1].preco == 0)
-          {
-            return;
-          }
-          else
-          {
-            {
-              produto = encomendas[ide][j];
-              encomendas[ide][j] = encomendas[ide][j + 1];
-              encomendas[ide][j + 1] = produto;
-            }
-          }
-
+          
         }
 
       }
+
+      for (j = i; j < (200 - 1); j++)
+      {
+        if (encomendas[ide][j + 1].preco == 0)
+        {
+          return;
+        }
+        else
+        {
+          produto = encomendas[ide][j];
+          encomendas[ide][j] = encomendas[ide][j + 1];
+          encomendas[ide][j + 1] = produto;
+        }
+
+      }
+
     }
 
   }
@@ -386,24 +372,22 @@ void C()
   }
   else
   {
+    int i;
+    int custo = 0;
+    for (i = 0; i < 200; i++)
     {
-      int i;
-      int custo = 0;
-      for (i = 0; i < 200; i++)
+      if (encomendas[ide][i].preco == 0)
       {
-        if (encomendas[ide][i].preco == 0)
-        {
-          break;
-        }
-        else
-        {
-          custo += encomendas[ide][i].preco * encomendas[ide][i].quant;
-        }
-
+        break;
+      }
+      else
+      {
+        custo += encomendas[ide][i].preco * encomendas[ide][i].quant;
       }
 
-      printf("Custo da encomenda %d %d.\n", ide, custo);
     }
+
+    printf("Custo da encomenda %d %d.\n", ide, custo);
   }
 
 }
@@ -420,32 +404,27 @@ void p()
   }
   else
   {
+    int i;
+    int j;
+    lista_produtos[idp].preco = new_preco;
+    for (i = 0; i < ide_atual; i++)
     {
-      int i;
-      int j;
-      lista_produtos[idp].preco = new_preco;
-      for (i = 0; i < ide_atual; i++)
+      for (j = 0; j < 200; j++)
       {
-        for (j = 0; j < 200; j++)
+        if (encomendas[i][j].preco == 0)
         {
-          if (encomendas[i][j].preco == 0)
+          break;
+        }
+        else
+        {
+          if (encomendas[i][j].id == idp)
           {
+            encomendas[i][j].preco = new_preco;
             break;
           }
           else
           {
-            if (encomendas[i][j].id == idp)
-            {
-              {
-                encomendas[i][j].preco = new_preco;
-                break;
-              }
-            }
-            else
-            {
-              
-            }
-
+            
           }
 
         }
@@ -453,6 +432,7 @@ void p()
       }
 
     }
+
   }
 
 }
@@ -481,33 +461,29 @@ void E()
       }
       else
       {
+        int i;
+        for (i = 0; i < 200; i++)
         {
-          int i;
-          for (i = 0; i < 200; i++)
+          if (encomendas[ide][i].preco == 0)
           {
-            if (encomendas[ide][i].preco == 0)
+            return;
+          }
+          else
+          {
+            if (encomendas[ide][i].id == idp)
             {
+              printf("%s %d.\n", encomendas[ide][i].descricao, encomendas[ide][i].quant);
               return;
             }
             else
             {
-              if (encomendas[ide][i].id == idp)
-              {
-                {
-                  printf("%s %d.\n", encomendas[ide][i].descricao, encomendas[ide][i].quant);
-                  return;
-                }
-              }
-              else
-              {
-                
-              }
-
+              
             }
 
           }
 
         }
+
       }
 
     }
@@ -526,49 +502,45 @@ void m()
   }
   else
   {
+    int i;
+    int j;
+    int maior_qtd = 0;
+    int ide = 0;
+    for (i = 0; i < ide_atual; i++)
     {
-      int i;
-      int j;
-      int maior_qtd = 0;
-      int ide = 0;
-      for (i = 0; i < ide_atual; i++)
+      for (j = 0; j < 200; j++)
       {
-        for (j = 0; j < 200; j++)
+        if (encomendas[i][j].preco == 0)
         {
-          if (encomendas[i][j].preco == 0)
+          break;
+        }
+        else
+        {
+          if ((encomendas[i][j].id == idp) && ((encomendas[i][j].quant > maior_qtd) || ((encomendas[i][j].quant == maior_qtd) && (i < ide))))
           {
-            break;
+            ide = i;
+            maior_qtd = encomendas[i][j].quant;
           }
           else
           {
-            if ((encomendas[i][j].id == idp) && ((encomendas[i][j].quant > maior_qtd) || ((encomendas[i][j].quant == maior_qtd) && (i < ide))))
-            {
-              {
-                ide = i;
-                maior_qtd = encomendas[i][j].quant;
-              }
-            }
-            else
-            {
-              
-            }
-
+            
           }
 
         }
 
       }
 
-      if (maior_qtd != 0)
-      {
-        printf("Maximo produto %d %d %d.\n", idp, ide, maior_qtd);
-      }
-      else
-      {
-        
-      }
-
     }
+
+    if (maior_qtd != 0)
+    {
+      printf("Maximo produto %d %d %d.\n", idp, ide, maior_qtd);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -597,30 +569,28 @@ void L()
   }
   else
   {
+    int limit;
+    int i;
+    struct product encomenda[200];
+    for (i = 0; i < 200; i++)
     {
-      int limit;
-      int i;
-      struct product encomenda[200];
-      for (i = 0; i < 200; i++)
+      if (encomendas[ide][i].preco == 0)
       {
-        if (encomendas[ide][i].preco == 0)
-        {
-          break;
-        }
-        else
-        {
-          encomenda[i] = encomendas[ide][i];
-        }
-
+        break;
+      }
+      else
+      {
+        encomenda[i] = encomendas[ide][i];
       }
 
-      limit = i;
-      printf("Encomenda %d\n", ide);
-      mergesort_encomendas(encomenda, 0, limit - 1);
-      for (i = 0; i < limit; i++)
-        printf("* %s %d %d\n", encomenda[i].descricao, encomenda[i].preco, encomenda[i].quant);
-
     }
+
+    limit = i;
+    printf("Encomenda %d\n", ide);
+    mergesort_encomendas(encomenda, 0, limit - 1);
+    for (i = 0; i < limit; i++)
+      printf("* %s %d %d\n", encomenda[i].descricao, encomenda[i].preco, encomenda[i].quant);
+
   }
 
 }

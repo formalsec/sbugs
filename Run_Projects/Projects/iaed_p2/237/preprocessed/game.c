@@ -23,10 +23,8 @@ orderedGames *removeGame(ht *game_ht, int cmd_count, orderedGames *head)
   entrie = game_ht->entries[key];
   if (entrie == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", cmd_count);
-      return head;
-    }
+    printf("%d Jogo inexistente.\n", cmd_count);
+    return head;
   }
   else
   {
@@ -35,132 +33,108 @@ orderedGames *removeGame(ht *game_ht, int cmd_count, orderedGames *head)
 
   if (searchGame(entrie, buffer))
   {
+    orderedGames *aux;
+    orderedGames *prevv;
+    for (aux = head, prevv = 0; aux != 0; prevv = aux, aux = aux->next)
     {
-      orderedGames *aux;
-      orderedGames *prevv;
-      for (aux = head, prevv = 0; aux != 0; prevv = aux, aux = aux->next)
+      if (strcmp(aux->game->gameName, buffer) == 0)
       {
-        if (strcmp(aux->game->gameName, buffer) == 0)
+        if (aux == head)
         {
-          {
-            if (aux == head)
-            {
-              {
-                head = aux->next;
-              }
-            }
-            else
-            {
-              {
-                prevv->next = aux->next;
-              }
-            }
-
-            free(aux);
-            break;
-          }
+          head = aux->next;
         }
         else
         {
-          
+          prevv->next = aux->next;
         }
 
+        free(aux);
+        break;
       }
-
-      while (entrie != 0)
+      else
       {
-        if (strcmp(entrie->game->gameName, buffer) == 0)
-        {
-          {
-            if ((entrie->next == 0) && (idx == 0))
-            {
-              {
-                game_ht->entries[key] = 0;
-              }
-            }
-            else
-            {
-              
-            }
-
-            if ((entrie->next != 0) && (idx == 0))
-            {
-              {
-                game_ht->entries[key] = entrie->next;
-              }
-            }
-            else
-            {
-              
-            }
-
-            if ((entrie->next == 0) && (idx != 0))
-            {
-              {
-                prev->next = 0;
-              }
-            }
-            else
-            {
-              
-            }
-
-            if ((entrie->next != 0) && (idx != 0))
-            {
-              {
-                prev->next = entrie->next;
-              }
-            }
-            else
-            {
-              
-            }
-
-            if (entrie->game->score1 > entrie->game->score2)
-            {
-              {
-                entrie->game->t1->wins--;
-              }
-            }
-            else
-            {
-              if (entrie->game->score2 > entrie->game->score1)
-              {
-                {
-                  entrie->game->t2->wins--;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-            free(entrie->game->gameName);
-            free(entrie->game);
-            free(entrie);
-            return head;
-          }
-        }
-        else
-        {
-          
-        }
-
-        prev = entrie;
-        entrie = prev->next;
-        ++idx;
+        
       }
 
     }
+
+    while (entrie != 0)
+    {
+      if (strcmp(entrie->game->gameName, buffer) == 0)
+      {
+        if ((entrie->next == 0) && (idx == 0))
+        {
+          game_ht->entries[key] = 0;
+        }
+        else
+        {
+          
+        }
+
+        if ((entrie->next != 0) && (idx == 0))
+        {
+          game_ht->entries[key] = entrie->next;
+        }
+        else
+        {
+          
+        }
+
+        if ((entrie->next == 0) && (idx != 0))
+        {
+          prev->next = 0;
+        }
+        else
+        {
+          
+        }
+
+        if ((entrie->next != 0) && (idx != 0))
+        {
+          prev->next = entrie->next;
+        }
+        else
+        {
+          
+        }
+
+        if (entrie->game->score1 > entrie->game->score2)
+        {
+          entrie->game->t1->wins--;
+        }
+        else
+        {
+          if (entrie->game->score2 > entrie->game->score1)
+          {
+            entrie->game->t2->wins--;
+          }
+          else
+          {
+            
+          }
+
+        }
+
+        free(entrie->game->gameName);
+        free(entrie->game);
+        free(entrie);
+        return head;
+      }
+      else
+      {
+        
+      }
+
+      prev = entrie;
+      entrie = prev->next;
+      ++idx;
+    }
+
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", cmd_count);
-      return head;
-    }
+    printf("%d Jogo inexistente.\n", cmd_count);
+    return head;
   }
 
   return head;
@@ -170,41 +144,33 @@ orderedGames *push(orderedGames *head, Game *game)
 {
   if (game == 0)
   {
-    {
-      return head;
-    }
+    return head;
   }
   else
   {
+    orderedGames *novo;
+    orderedGames *aux;
+    novo = malloc(sizeof(orderedGames));
+    aux = head;
+    if (aux != 0)
     {
-      orderedGames *novo;
-      orderedGames *aux;
-      novo = malloc(sizeof(orderedGames));
-      aux = head;
-      if (aux != 0)
+      while (aux->next != 0)
       {
-        {
-          while (aux->next != 0)
-          {
-            aux = aux->next;
-          }
-
-        }
-      }
-      else
-      {
-        {
-          novo->game = game;
-          novo->next = 0;
-          return novo;
-        }
+        aux = aux->next;
       }
 
-      aux->next = novo;
+    }
+    else
+    {
       novo->game = game;
       novo->next = 0;
-      return head;
+      return novo;
     }
+
+    aux->next = novo;
+    novo->game = game;
+    novo->next = 0;
+    return head;
   }
 
 }
@@ -229,9 +195,7 @@ void print(orderedGames *head, int cmd_count)
   {
     if ((aux->game != 0) && (aux->game->gameName != 0))
     {
-      {
-        printf("%d %s %s %s %d %d\n", cmd_count, aux->game->gameName, aux->game->t1->nome, aux->game->t2->nome, aux->game->score1, aux->game->score2);
-      }
+      printf("%d %s %s %s %d %d\n", cmd_count, aux->game->gameName, aux->game->t1->nome, aux->game->t2->nome, aux->game->score1, aux->game->score2);
     }
     else
     {

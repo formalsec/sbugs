@@ -21,17 +21,13 @@ int existe_equipa(team_n **hash_teams, char *name)
 
   if (auxiliar == 0)
   {
-    {
-      i = 0;
-      return i;
-    }
+    i = 0;
+    return i;
   }
   else
   {
-    {
-      i = 1;
-      return i;
-    }
+    i = 1;
+    return i;
   }
 
 }
@@ -45,19 +41,15 @@ void altera_numero_vitorias(team_n **hash_teams, char *equipa, bool valor)
     t = t->next;
   }
 
-  if (valor == 1)
+  if (valor == true)
   {
-    {
-      t->wins = t->wins + 1;
-    }
+    t->wins = t->wins + 1;
   }
   else
   {
-    if (valor == 0)
+    if (valor == false)
     {
-      {
-        t->wins = t->wins - 1;
-      }
+      t->wins = t->wins - 1;
     }
     else
     {
@@ -118,14 +110,12 @@ game_n *a_adiciona_jogo(game_n **hash_table, team_n **hash_teams, game_n *head, 
   {
     if (strcmp(auxiliar->nome, t->nome) == 0)
     {
-      {
-        printf("%d Jogo existente.\n", nl);
-        free_jogo(t);
-        free(nome);
-        free(equipa1);
-        free(equipa2);
-        return head;
-      }
+      printf("%d Jogo existente.\n", nl);
+      free_jogo(t);
+      free(nome);
+      free(equipa1);
+      free(equipa2);
+      return head;
     }
     else
     {
@@ -138,14 +128,12 @@ game_n *a_adiciona_jogo(game_n **hash_table, team_n **hash_teams, game_n *head, 
   i1 = existe_equipa(hash_teams, t->equipa1);
   if (i1 == 0)
   {
-    {
-      free_jogo(t);
-      free(nome);
-      free(equipa1);
-      free(equipa2);
-      printf("%d Equipa inexistente.\n", nl);
-      return head;
-    }
+    free_jogo(t);
+    free(nome);
+    free(equipa1);
+    free(equipa2);
+    printf("%d Equipa inexistente.\n", nl);
+    return head;
   }
   else
   {
@@ -155,34 +143,28 @@ game_n *a_adiciona_jogo(game_n **hash_table, team_n **hash_teams, game_n *head, 
   i2 = existe_equipa(hash_teams, t->equipa2);
   if (i2 == 0)
   {
-    {
-      free_jogo(t);
-      free(nome);
-      free(equipa1);
-      free(equipa2);
-      printf("%d Equipa inexistente.\n", nl);
-      return head;
-    }
+    free_jogo(t);
+    free(nome);
+    free(equipa1);
+    free(equipa2);
+    printf("%d Equipa inexistente.\n", nl);
+    return head;
   }
   else
   {
     
   }
 
-  valor = 1;
+  valor = true;
   if (t->score1 > t->score2)
   {
-    {
-      altera_numero_vitorias(hash_teams, t->equipa1, valor);
-    }
+    altera_numero_vitorias(hash_teams, t->equipa1, valor);
   }
   else
   {
     if (t->score2 > t->score1)
     {
-      {
-        altera_numero_vitorias(hash_teams, t->equipa2, valor);
-      }
+      altera_numero_vitorias(hash_teams, t->equipa2, valor);
     }
     else
     {
@@ -223,12 +205,10 @@ team_n *A_adiciona_equipa(team_n **hash_teams, team_n *head_team, int nl)
   {
     if (strcmp(auxiliar->name, t->name) == 0)
     {
-      {
-        printf("%d Equipa existente.\n", nl);
-        free_equipa(t);
-        free(name);
-        return head_team;
-      }
+      printf("%d Equipa existente.\n", nl);
+      free_equipa(t);
+      free(name);
+      return head_team;
     }
     else
     {
@@ -249,9 +229,7 @@ void l_lista_jogos(game_n *head, int nl)
   game_n *a = head;
   if (a == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -277,47 +255,39 @@ void p_procura_jogo(game_n **hash_table, int nl)
   t = hash_table[id];
   if (t == 0)
   {
+    printf("%d Jogo inexistente.\n", nl);
+    free(nome);
+    return;
+  }
+  else
+  {
+    while ((t != 0) && (strcmp(t->nome, nome) != 0))
+    {
+      t = t->next;
+    }
+
+    if (t == 0)
     {
       printf("%d Jogo inexistente.\n", nl);
       free(nome);
       return;
     }
-  }
-  else
-  {
+    else
     {
-      while ((t != 0) && (strcmp(t->nome, nome) != 0))
-      {
-        t = t->next;
-      }
-
-      if (t == 0)
-      {
-        {
-          printf("%d Jogo inexistente.\n", nl);
-          free(nome);
-          return;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (strcmp(t->nome, nome) == 0)
-      {
-        {
-          printf("%d %s %s %s %d %d\n", nl, t->nome, t->equipa1, t->equipa2, t->score1, t->score2);
-          free(nome);
-          return;
-        }
-      }
-      else
-      {
-        
-      }
-
+      
     }
+
+    if (strcmp(t->nome, nome) == 0)
+    {
+      printf("%d %s %s %s %d %d\n", nl, t->nome, t->equipa1, t->equipa2, t->score1, t->score2);
+      free(nome);
+      return;
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -337,47 +307,39 @@ void P_procura_equipa(team_n **hash_teams, int nl)
   t = hash_teams[id];
   if (t == 0)
   {
+    printf("%d Equipa inexistente.\n", nl);
+    free(name);
+    return;
+  }
+  else
+  {
+    while ((t != 0) && (strcmp(t->name, name) != 0))
+    {
+      t = t->next;
+    }
+
+    if (t == 0)
     {
       printf("%d Equipa inexistente.\n", nl);
       free(name);
       return;
     }
-  }
-  else
-  {
+    else
     {
-      while ((t != 0) && (strcmp(t->name, name) != 0))
-      {
-        t = t->next;
-      }
-
-      if (t == 0)
-      {
-        {
-          printf("%d Equipa inexistente.\n", nl);
-          free(name);
-          return;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (strcmp(t->name, name) == 0)
-      {
-        {
-          printf("%d %s %d\n", nl, t->name, t->wins);
-          free(name);
-          return;
-        }
-      }
-      else
-      {
-        
-      }
-
+      
     }
+
+    if (strcmp(t->name, name) == 0)
+    {
+      printf("%d %s %d\n", nl, t->name, t->wins);
+      free(name);
+      return;
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -390,23 +352,17 @@ game_n *apaga(game_n *head, char *nome)
   {
     if (strcmp(t->nome, nome) == 0)
     {
+      if (t == head)
       {
-        if (t == head)
-        {
-          {
-            head = t->lista;
-          }
-        }
-        else
-        {
-          {
-            anterior->lista = t->lista;
-          }
-        }
-
-        free_jogo(t);
-        break;
+        head = t->lista;
       }
+      else
+      {
+        anterior->lista = t->lista;
+      }
+
+      free_jogo(t);
+      break;
     }
     else
     {
@@ -437,71 +393,55 @@ game_n *r_apaga_jogo(game_n **hash_table, team_n **hash_teams, game_n *head, int
   t = hash_table[id];
   if (t == 0)
   {
+    printf("%d Jogo inexistente.\n", nl);
+    free(nome);
+    return head;
+  }
+  else
+  {
+    while ((t != 0) && (strcmp(t->nome, nome) != 0))
+    {
+      anterior = t;
+      t = t->next;
+    }
+
+    if (t == 0)
     {
       printf("%d Jogo inexistente.\n", nl);
       free(nome);
       return head;
     }
-  }
-  else
-  {
+    else
     {
-      while ((t != 0) && (strcmp(t->nome, nome) != 0))
+      valor = false;
+      if (t->score1 > t->score2)
       {
-        anterior = t;
-        t = t->next;
-      }
-
-      if (t == 0)
-      {
-        {
-          printf("%d Jogo inexistente.\n", nl);
-          free(nome);
-          return head;
-        }
+        altera_numero_vitorias(hash_teams, t->equipa1, valor);
       }
       else
       {
+        if (t->score1 < t->score2)
         {
-          valor = 0;
-          if (t->score1 > t->score2)
-          {
-            {
-              altera_numero_vitorias(hash_teams, t->equipa1, valor);
-            }
-          }
-          else
-          {
-            if (t->score1 < t->score2)
-            {
-              {
-                altera_numero_vitorias(hash_teams, t->equipa2, valor);
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-          if (anterior == 0)
-          {
-            {
-              hash_table[id] = t->next;
-            }
-          }
-          else
-          {
-            {
-              anterior->next = t->next;
-            }
-          }
-
+          altera_numero_vitorias(hash_teams, t->equipa2, valor);
         }
+        else
+        {
+          
+        }
+
+      }
+
+      if (anterior == 0)
+      {
+        hash_table[id] = t->next;
+      }
+      else
+      {
+        anterior->next = t->next;
       }
 
     }
+
   }
 
   head = apaga(head, nome);
@@ -513,24 +453,42 @@ void muda_scores(int antigoscore1, int antigoscore2, team_n **hash_teams, game_n
 {
   if (antigoscore1 > antigoscore2)
   {
+    if (t->score1 == t->score2)
     {
-      if (t->score1 == t->score2)
+      valor = false;
+      altera_numero_vitorias(hash_teams, t->equipa1, valor);
+    }
+    else
+    {
+      if (t->score1 < t->score2)
       {
-        {
-          valor = 0;
-          altera_numero_vitorias(hash_teams, t->equipa1, valor);
-        }
+        valor = false;
+        altera_numero_vitorias(hash_teams, t->equipa1, valor);
+        valor = true;
+        altera_numero_vitorias(hash_teams, t->equipa2, valor);
+      }
+      else
+      {
+        
+      }
+
+    }
+
+  }
+  else
+  {
+    if (antigoscore1 == antigoscore2)
+    {
+      valor = true;
+      if (t->score1 > t->score2)
+      {
+        altera_numero_vitorias(hash_teams, t->equipa1, valor);
       }
       else
       {
         if (t->score1 < t->score2)
         {
-          {
-            valor = 0;
-            altera_numero_vitorias(hash_teams, t->equipa1, valor);
-            valor = 1;
-            altera_numero_vitorias(hash_teams, t->equipa2, valor);
-          }
+          altera_numero_vitorias(hash_teams, t->equipa2, valor);
         }
         else
         {
@@ -540,26 +498,23 @@ void muda_scores(int antigoscore1, int antigoscore2, team_n **hash_teams, game_n
       }
 
     }
-  }
-  else
-  {
-    if (antigoscore1 == antigoscore2)
+    else
     {
+      if (antigoscore1 < antigoscore2)
       {
-        valor = 1;
-        if (t->score1 > t->score2)
+        if (t->score1 == t->score2)
         {
-          {
-            altera_numero_vitorias(hash_teams, t->equipa1, valor);
-          }
+          valor = false;
+          altera_numero_vitorias(hash_teams, t->equipa2, valor);
         }
         else
         {
-          if (t->score1 < t->score2)
+          if (t->score1 > t->score2)
           {
-            {
-              altera_numero_vitorias(hash_teams, t->equipa2, valor);
-            }
+            valor = true;
+            altera_numero_vitorias(hash_teams, t->equipa1, valor);
+            valor = false;
+            altera_numero_vitorias(hash_teams, t->equipa2, valor);
           }
           else
           {
@@ -568,39 +523,6 @@ void muda_scores(int antigoscore1, int antigoscore2, team_n **hash_teams, game_n
 
         }
 
-      }
-    }
-    else
-    {
-      if (antigoscore1 < antigoscore2)
-      {
-        {
-          if (t->score1 == t->score2)
-          {
-            {
-              valor = 0;
-              altera_numero_vitorias(hash_teams, t->equipa2, valor);
-            }
-          }
-          else
-          {
-            if (t->score1 > t->score2)
-            {
-              {
-                valor = 1;
-                altera_numero_vitorias(hash_teams, t->equipa1, valor);
-                valor = 0;
-                altera_numero_vitorias(hash_teams, t->equipa2, valor);
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-        }
       }
       else
       {
@@ -616,7 +538,7 @@ void muda_scores(int antigoscore1, int antigoscore2, team_n **hash_teams, game_n
 void s_altera_score(game_n **hash_table, team_n **hash_teams, int nl)
 {
   game_n *t = 0;
-  bool valor = 0;
+  bool valor = false;
   int id = 0;
   int score1;
   int score2;
@@ -635,48 +557,40 @@ void s_altera_score(game_n **hash_table, team_n **hash_teams, int nl)
   t = hash_table[id];
   if (t == 0)
   {
+    printf("%d Jogo inexistente.\n", nl);
+    free(nome);
+    return;
+  }
+  else
+  {
+    while ((t != 0) && (strcmp(t->nome, nome) != 0))
+    {
+      t = t->next;
+    }
+
+    if (t == 0)
     {
       printf("%d Jogo inexistente.\n", nl);
       free(nome);
       return;
     }
-  }
-  else
-  {
+    else
     {
-      while ((t != 0) && (strcmp(t->nome, nome) != 0))
-      {
-        t = t->next;
-      }
-
-      if (t == 0)
-      {
-        {
-          printf("%d Jogo inexistente.\n", nl);
-          free(nome);
-          return;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (strcmp(t->nome, nome) == 0)
-      {
-        {
-          antigoscore1 = t->score1;
-          antigoscore2 = t->score2;
-          t->score1 = score1;
-          t->score2 = score2;
-        }
-      }
-      else
-      {
-        
-      }
-
+      
     }
+
+    if (strcmp(t->nome, nome) == 0)
+    {
+      antigoscore1 = t->score1;
+      antigoscore2 = t->score2;
+      t->score1 = score1;
+      t->score2 = score2;
+    }
+    else
+    {
+      
+    }
+
   }
 
   muda_scores(antigoscore1, antigoscore2, hash_teams, t, valor);
@@ -691,9 +605,7 @@ int encontrar_maximo(team_n *head_team)
   {
     if (aux->wins > maximo)
     {
-      {
-        maximo = aux->wins;
-      }
+      maximo = aux->wins;
     }
     else
     {
@@ -714,9 +626,7 @@ int encontrar_numero_maximos(team_n *head_team, int maximo)
   {
     if (aux->wins == maximo)
     {
-      {
-        n_maximos++;
-      }
+      n_maximos++;
     }
     else
     {
@@ -743,10 +653,8 @@ void g_equipas_vencedoras(team_n *head_team, int nl, int maximo, int n_maximos)
   lista = malloc((sizeof(char *)) * n_maximos);
   if ((maximo == 0) && (n_maximos == 0))
   {
-    {
-      free(lista);
-      return;
-    }
+    free(lista);
+    return;
   }
   else
   {
@@ -758,10 +666,8 @@ void g_equipas_vencedoras(team_n *head_team, int nl, int maximo, int n_maximos)
   {
     if (aux->wins == maximo)
     {
-      {
-        lista[indice] = aux->name;
-        indice++;
-      }
+      lista[indice] = aux->name;
+      indice++;
     }
     else
     {

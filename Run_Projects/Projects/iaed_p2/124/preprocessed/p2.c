@@ -120,53 +120,43 @@ gLink addGame(gLink *hashGame, gLink gHead, tLink *hashTeam, int NL)
   score2 = new_sym_var(sizeof(int) * 8);
   if (gHTsearch(hashGame, name) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-    }
+    printf("%d Jogo existente.\n", NL);
   }
   else
   {
     if ((tHTsearch(hashTeam, team1) == 0) || (tHTsearch(hashTeam, team2) == 0))
     {
-      {
-        printf("%d Equipa inexistente.\n", NL);
-      }
+      printf("%d Equipa inexistente.\n", NL);
     }
     else
     {
+      g = (pGame) malloc(sizeof(struct game));
+      g->name = strManip(name);
+      g->team1 = strManip(team1);
+      g->team2 = strManip(team2);
+      g->score1 = score1;
+      g->score2 = score2;
+      gHTinsert(hashGame, g);
+      gHead = gInsert_begin(gHead, g);
+      if (score1 > score2)
       {
-        g = (pGame) malloc(sizeof(struct game));
-        g->name = strManip(name);
-        g->team1 = strManip(team1);
-        g->team2 = strManip(team2);
-        g->score1 = score1;
-        g->score2 = score2;
-        gHTinsert(hashGame, g);
-        gHead = gInsert_begin(gHead, g);
-        if (score1 > score2)
+        winnTeam = tHTsearch(hashTeam, team1);
+        winnTeam->wins++;
+      }
+      else
+      {
+        if (score2 > score1)
         {
-          {
-            winnTeam = tHTsearch(hashTeam, team1);
-            winnTeam->wins++;
-          }
+          winnTeam = tHTsearch(hashTeam, team2);
+          winnTeam->wins++;
         }
         else
         {
-          if (score2 > score1)
-          {
-            {
-              winnTeam = tHTsearch(hashTeam, team2);
-              winnTeam->wins++;
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
+
     }
 
   }
@@ -182,19 +172,17 @@ void listGames(gLink gHead, int NL)
   }
   else
   {
+    while (gHead->next != 0)
     {
-      while (gHead->next != 0)
-      {
-        gHead = gHead->next;
-      }
-
-      do
-      {
-        printf("%d %s %s %s %d %d\n", NL, gHead->game->name, gHead->game->team1, gHead->game->team2, gHead->game->score1, gHead->game->score2);
-        gHead = gHead->prev;
-      }
-      while (gHead != 0);
+      gHead = gHead->next;
     }
+
+    do
+    {
+      printf("%d %s %s %s %d %d\n", NL, gHead->game->name, gHead->game->team1, gHead->game->team2, gHead->game->score1, gHead->game->score2);
+      gHead = gHead->prev;
+    }
+    while (gHead != 0);
   }
 
 }
@@ -239,30 +227,28 @@ gLink delGame(gLink *hashGame, gLink gHead, tLink *hashTeam, int NL)
   }
   else
   {
+    t1 = tHTsearch(hashTeam, g->team1);
+    t2 = tHTsearch(hashTeam, g->team2);
+    if (g->score1 > g->score2)
     {
-      t1 = tHTsearch(hashTeam, g->team1);
-      t2 = tHTsearch(hashTeam, g->team2);
-      if (g->score1 > g->score2)
+      t1->wins--;
+    }
+    else
+    {
+      if (g->score1 < g->score2)
       {
-        t1->wins--;
+        t2->wins--;
       }
       else
       {
-        if (g->score1 < g->score2)
-        {
-          t2->wins--;
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      gHead = gRemove(gHead, name);
-      gHTdelete(hashGame, name);
-      freeGame(g);
     }
+
+    gHead = gRemove(gHead, name);
+    gHTdelete(hashGame, name);
+    freeGame(g);
   }
 
   return gHead;
@@ -290,73 +276,34 @@ void changeScore(gLink *hashGame, tLink *hashTeam, int NL)
   }
   else
   {
+    g = gHTsearch(hashGame, name);
+    t1 = tHTsearch(hashTeam, g->team1);
+    t2 = tHTsearch(hashTeam, g->team2);
+    if ((g->score1 > g->score2) && (score1 < score2))
     {
-      g = gHTsearch(hashGame, name);
-      t1 = tHTsearch(hashTeam, g->team1);
-      t2 = tHTsearch(hashTeam, g->team2);
-      if ((g->score1 > g->score2) && (score1 < score2))
+      t1->wins--;
+      t2->wins++;
+    }
+    else
+    {
+      if ((g->score1 < g->score2) && (score1 > score2))
       {
-        {
-          t1->wins--;
-          t2->wins++;
-        }
+        t1->wins++;
+        t2->wins--;
       }
       else
       {
-        if ((g->score1 < g->score2) && (score1 > score2))
+        if (g->score1 == g->score2)
         {
+          if (score1 > score2)
           {
             t1->wins++;
-            t2->wins--;
-          }
-        }
-        else
-        {
-          if (g->score1 == g->score2)
-          {
-            {
-              if (score1 > score2)
-              {
-                t1->wins++;
-              }
-              else
-              {
-                if (score1 < score2)
-                {
-                  t2->wins++;
-                }
-                else
-                {
-                  
-                }
-
-              }
-
-            }
           }
           else
           {
-            if (score1 == score2)
+            if (score1 < score2)
             {
-              {
-                if (g->score1 > g->score2)
-                {
-                  t1->wins--;
-                }
-                else
-                {
-                  if (g->score1 < g->score2)
-                  {
-                    t2->wins--;
-                  }
-                  else
-                  {
-                    
-                  }
-
-                }
-
-              }
+              t2->wins++;
             }
             else
             {
@@ -366,12 +313,41 @@ void changeScore(gLink *hashGame, tLink *hashTeam, int NL)
           }
 
         }
+        else
+        {
+          if (score1 == score2)
+          {
+            if (g->score1 > g->score2)
+            {
+              t1->wins--;
+            }
+            else
+            {
+              if (g->score1 < g->score2)
+              {
+                t2->wins--;
+              }
+              else
+              {
+                
+              }
+
+            }
+
+          }
+          else
+          {
+            
+          }
+
+        }
 
       }
 
-      g->score1 = score1;
-      g->score2 = score2;
     }
+
+    g->score1 = score1;
+    g->score2 = score2;
   }
 
 }
@@ -388,18 +364,14 @@ void addTeam(tLink *hashTeam, int NL)
   name[10 - 1] = '\0';
   if (tHTsearch(hashTeam, name) == 0)
   {
-    {
-      t = (pTeam) malloc(sizeof(struct team));
-      t->name = strManip(name);
-      t->wins = 0;
-      tHTinsert(hashTeam, t);
-    }
+    t = (pTeam) malloc(sizeof(struct team));
+    t->name = strManip(name);
+    t->wins = 0;
+    tHTinsert(hashTeam, t);
   }
   else
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-    }
+    printf("%d Equipa existente.\n", NL);
   }
 
 }
@@ -438,9 +410,7 @@ void winningTeams(tLink *hashTeam, int NL)
     {
       if (aux->team->wins == max)
       {
-        {
-          tHead = alphInsert(tHead, aux->team);
-        }
+        tHead = alphInsert(tHead, aux->team);
       }
       else
       {
@@ -454,17 +424,15 @@ void winningTeams(tLink *hashTeam, int NL)
 
   if (tHead != 0)
   {
+    printf("%d Melhores %d\n", NL, max);
+    while (tHead != 0)
     {
-      printf("%d Melhores %d\n", NL, max);
-      while (tHead != 0)
-      {
-        printf("%d * %s\n", NL, tHead->team->name);
-        aux = tHead;
-        tHead = tHead->next;
-        free(aux);
-      }
-
+      printf("%d * %s\n", NL, tHead->team->name);
+      aux = tHead;
+      tHead = tHead->next;
+      free(aux);
     }
+
   }
   else
   {

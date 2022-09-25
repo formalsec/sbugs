@@ -20,10 +20,8 @@ void cmd_A(int *NL, hash_table_teams *hash_teams, linked_list_teams *linked_team
   d[10 - 1] = '\0';
   if (search_team(hash_teams, d) == 0)
   {
-    {
-      node_team *n = add_linked_list_team(linked_teams, d, 0);
-      add_hash_table_team(hash_teams, n);
-    }
+    node_team *n = add_linked_list_team(linked_teams, d, 0);
+    add_hash_table_team(hash_teams, n);
   }
   else
   {
@@ -88,42 +86,38 @@ void cmd_a(int *NL, hash_table_teams *hash_teams, hash_table_matches *hash_match
   }
   else
   {
+    ptr_team *ptr_n_team1 = search_team(hash_teams, team1);
+    node_team *n_team1 = (ptr_n_team1) ? (ptr_n_team1->node) : (0);
+    ptr_team *ptr_n_team2 = search_team(hash_teams, team2);
+    node_team *n_team2 = (ptr_n_team2) ? (ptr_n_team2->node) : (0);
+    if ((n_team1 == 0) || (n_team2 == 0))
     {
-      ptr_team *ptr_n_team1 = search_team(hash_teams, team1);
-      node_team *n_team1 = (ptr_n_team1) ? (ptr_n_team1->node) : (0);
-      ptr_team *ptr_n_team2 = search_team(hash_teams, team2);
-      node_team *n_team2 = (ptr_n_team2) ? (ptr_n_team2->node) : (0);
-      if ((n_team1 == 0) || (n_team2 == 0))
+      printf("%d Equipa inexistente.\n", *NL);
+    }
+    else
+    {
+      node_match *n;
+      if (score[0] > score[1])
       {
-        printf("%d Equipa inexistente.\n", *NL);
+        n_team1->victories++;
       }
       else
       {
+        if (score[1] > score[0])
         {
-          node_match *n;
-          if (score[0] > score[1])
-          {
-            n_team1->victories++;
-          }
-          else
-          {
-            if (score[1] > score[0])
-            {
-              n_team2->victories++;
-            }
-            else
-            {
-              
-            }
-
-          }
-
-          n = add_linked_list_match(linked_matches, name, n_team1, n_team2, score);
-          add_hash_table_match(hash_matches, n);
+          n_team2->victories++;
         }
+        else
+        {
+          
+        }
+
       }
 
+      n = add_linked_list_match(linked_matches, name, n_team1, n_team2, score);
+      add_hash_table_match(hash_matches, n);
     }
+
   }
 
 }
@@ -176,15 +170,13 @@ void cmd_r(int *NL, hash_table_matches *hash_matches, linked_list_matches *linke
   ptr_n = search_match(hash_matches, d);
   if (ptr_n)
   {
-    {
-      int old_score[2];
-      int new_score[2] = {0, 0};
-      node_match *n = remove_match_hash_table(hash_matches, ptr_n);
-      old_score[0] = n->score[0];
-      old_score[1] = n->score[1];
-      change_victories(n->team1, n->team2, old_score, new_score);
-      remove_match(linked_matches, n);
-    }
+    int old_score[2];
+    int new_score[2] = {0, 0};
+    node_match *n = remove_match_hash_table(hash_matches, ptr_n);
+    old_score[0] = n->score[0];
+    old_score[1] = n->score[1];
+    change_victories(n->team1, n->team2, old_score, new_score);
+    remove_match(linked_matches, n);
   }
   else
   {
@@ -209,18 +201,16 @@ void cmd_s(int *NL, hash_table_matches *hash_matches)
   ptr_n_match = search_match(hash_matches, name);
   if (ptr_n_match)
   {
-    {
-      int old_score[2];
-      node_team *team1;
-      node_team *team2;
-      old_score[0] = ptr_n_match->node->score[0];
-      old_score[1] = ptr_n_match->node->score[1];
-      team1 = ptr_n_match->node->team1;
-      team2 = ptr_n_match->node->team2;
-      change_victories(team1, team2, old_score, new_score);
-      ptr_n_match->node->score[0] = new_score[0];
-      ptr_n_match->node->score[1] = new_score[1];
-    }
+    int old_score[2];
+    node_team *team1;
+    node_team *team2;
+    old_score[0] = ptr_n_match->node->score[0];
+    old_score[1] = ptr_n_match->node->score[1];
+    team1 = ptr_n_match->node->team1;
+    team2 = ptr_n_match->node->team2;
+    change_victories(team1, team2, old_score, new_score);
+    ptr_n_match->node->score[0] = new_score[0];
+    ptr_n_match->node->score[1] = new_score[1];
   }
   else
   {
@@ -233,54 +223,48 @@ void cmd_g(int *NL, linked_list_teams *linked_teams)
 {
   if (linked_teams->head)
   {
+    int cap = 100;
+    int i = 0;
+    int last_index;
+    int v = search_most_vict_teams(linked_teams);
+    node_team **list_vic = malloc((sizeof(node_team)) * cap);
+    node_team **aux_l_v;
+    node_team *n = linked_teams->head;
+    while (n)
     {
-      int cap = 100;
-      int i = 0;
-      int last_index;
-      int v = search_most_vict_teams(linked_teams);
-      node_team **list_vic = malloc((sizeof(node_team)) * cap);
-      node_team **aux_l_v;
-      node_team *n = linked_teams->head;
-      while (n)
+      if (n->victories == v)
       {
-        if (n->victories == v)
+        if (i == cap)
         {
-          {
-            if (i == cap)
-            {
-              {
-                list_vic = realloc(list_vic, ((sizeof(node_team)) * cap) * 2);
-                cap *= 2;
-              }
-            }
-            else
-            {
-              
-            }
-
-            list_vic[i++] = n;
-          }
+          list_vic = realloc(list_vic, ((sizeof(node_team)) * cap) * 2);
+          cap *= 2;
         }
         else
         {
           
         }
 
-        n = n->next;
+        list_vic[i++] = n;
       }
-
-      last_index = i - 1;
-      aux_l_v = malloc((sizeof(node_team)) * (last_index + 1));
-      merge_sort(list_vic, aux_l_v, 0, last_index);
-      printf("%d Melhores %d\n", *NL, v);
-      for (i = 0; i <= last_index; i++)
+      else
       {
-        printf("%d * %s\n", *NL, list_vic[i]->desc);
+        
       }
 
-      free(list_vic);
-      free(aux_l_v);
+      n = n->next;
     }
+
+    last_index = i - 1;
+    aux_l_v = malloc((sizeof(node_team)) * (last_index + 1));
+    merge_sort(list_vic, aux_l_v, 0, last_index);
+    printf("%d Melhores %d\n", *NL, v);
+    for (i = 0; i <= last_index; i++)
+    {
+      printf("%d * %s\n", *NL, list_vic[i]->desc);
+    }
+
+    free(list_vic);
+    free(aux_l_v);
   }
   else
   {

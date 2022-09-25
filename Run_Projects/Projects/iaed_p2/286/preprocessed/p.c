@@ -107,63 +107,49 @@ jogos *comando_a(jogos **htjogos, equipas **ht, int num, jogos *head, equipas *h
   final = HTprocurajogo(htjogos, nome);
   if (final == 0)
   {
+    if ((i1 == 1) && (i2 == 1))
     {
-      if ((i1 == 1) && (i2 == 1))
+      HTinserejogo(htjogos, jogo);
+      head = insere_fim_jogos(head, jogo);
+      if (score1 > score2)
       {
-        {
-          HTinserejogo(htjogos, jogo);
-          head = insere_fim_jogos(head, jogo);
-          if (score1 > score2)
-          {
-            {
-              HT_soma_vitoria(ht, equipa1);
-              soma_vitoria(head_e, equipa1);
-              return head;
-            }
-          }
-          else
-          {
-            if (score2 > score1)
-            {
-              {
-                HT_soma_vitoria(ht, equipa2);
-                soma_vitoria(head_e, equipa2);
-                return head;
-              }
-            }
-            else
-            {
-              {
-                return head;
-              }
-            }
-
-          }
-
-        }
+        HT_soma_vitoria(ht, equipa1);
+        soma_vitoria(head_e, equipa1);
+        return head;
       }
       else
       {
+        if (score2 > score1)
         {
-          printf("%d Equipa inexistente.\n", num);
-          free(jogo->nome);
-          free(jogo->equipa1);
-          free(jogo->equipa2);
-          free(jogo);
+          HT_soma_vitoria(ht, equipa2);
+          soma_vitoria(head_e, equipa2);
+          return head;
         }
+        else
+        {
+          return head;
+        }
+
       }
 
     }
-  }
-  else
-  {
+    else
     {
-      printf("%d Jogo existente.\n", num);
+      printf("%d Equipa inexistente.\n", num);
       free(jogo->nome);
       free(jogo->equipa1);
       free(jogo->equipa2);
       free(jogo);
     }
+
+  }
+  else
+  {
+    printf("%d Jogo existente.\n", num);
+    free(jogo->nome);
+    free(jogo->equipa1);
+    free(jogo->equipa2);
+    free(jogo);
   }
 
   return head;
@@ -184,20 +170,16 @@ equipas *comando_A(equipas **ht, int num, equipas *head_e)
   i = HTprocura(ht, nome);
   if (i == 1)
   {
-    {
-      printf("%d Equipa existente.\n", num);
-      free(eq->nome_equipa);
-      free(eq);
-      return head_e;
-    }
+    printf("%d Equipa existente.\n", num);
+    free(eq->nome_equipa);
+    free(eq);
+    return head_e;
   }
   else
   {
-    {
-      HTinsere_equipa(ht, eq);
-      head_e = insere_fim_equipas(head_e, eq);
-      return head_e;
-    }
+    HTinsere_equipa(ht, eq);
+    head_e = insere_fim_equipas(head_e, eq);
+    return head_e;
   }
 
 }
@@ -281,10 +263,8 @@ void comando_g(int num, equipas *head_e)
   aux = malloc((sizeof(char *)) * num_equipas);
   if (num_equipas == 0)
   {
-    {
-      free(aux);
-      return;
-    }
+    free(aux);
+    return;
   }
   else
   {

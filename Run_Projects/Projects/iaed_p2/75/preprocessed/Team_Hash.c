@@ -50,24 +50,18 @@ void deleteTeam_Hash(int size, link_team *h, char *name_delete)
   {
     if (strcmp(p_aux->pteam->name, name_delete) == 0)
     {
+      if (p_aux == h[i])
       {
-        if (p_aux == h[i])
-        {
-          {
-            h[i] = p_aux->next;
-          }
-        }
-        else
-        {
-          {
-            p_previous_aux->next = p_aux->next;
-          }
-        }
-
-        deleteTeam(p_aux->pteam);
-        free(p_aux);
-        break;
+        h[i] = p_aux->next;
       }
+      else
+      {
+        p_previous_aux->next = p_aux->next;
+      }
+
+      deleteTeam(p_aux->pteam);
+      free(p_aux);
+      break;
     }
     else
     {
@@ -86,9 +80,7 @@ Team *searchTeam_Hash(int size, link_team *h, char *name)
   {
     if (strcmp(aux_pointer->pteam->name, name) == 0)
     {
-      {
-        return aux_pointer->pteam;
-      }
+      return aux_pointer->pteam;
     }
     else
     {

@@ -82,10 +82,8 @@ t_node *search_team(link_t **List_links, char *name)
   {
     if (!strcmp(List_links[key]->link_team->team_name, name))
     {
-      {
-        team = List_links[key]->link_team;
-        break;
-      }
+      team = List_links[key]->link_team;
+      break;
     }
     else
     {
@@ -106,19 +104,15 @@ int less(t_node *team_one, t_node *team_two)
   {
     if ((team_one->team_name[i] > team_two->team_name[i]) || (team_two->team_name[i] == '\0'))
     {
-      {
-        booleano = 0;
-        break;
-      }
+      booleano = 0;
+      break;
     }
     else
     {
       if ((team_one->team_name[i] < team_two->team_name[i]) || (team_one->team_name[i] == '\0'))
       {
-        {
-          booleano = 1;
-          break;
-        }
+        booleano = 1;
+        break;
       }
       else
       {

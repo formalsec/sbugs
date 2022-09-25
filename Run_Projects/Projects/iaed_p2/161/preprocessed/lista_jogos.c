@@ -19,17 +19,13 @@ void adiciona_jogo_lista(lista *lista_jogos, pJogo jogo)
   link_novo->next = 0;
   if (lista_jogos->cabeca == 0)
   {
-    {
-      lista_jogos->cabeca = link_novo;
-      lista_jogos->ultimo = link_novo;
-    }
+    lista_jogos->cabeca = link_novo;
+    lista_jogos->ultimo = link_novo;
   }
   else
   {
-    {
-      lista_jogos->ultimo->next = link_novo;
-      lista_jogos->ultimo = link_novo;
-    }
+    lista_jogos->ultimo->next = link_novo;
+    lista_jogos->ultimo = link_novo;
   }
 
 }
@@ -41,52 +37,46 @@ pJogo remove_jogo_lista(lista *lista_jogos, char *nome)
   link_jogo iterador = lista_jogos->cabeca;
   if (strcmp(obtem_nome_jogo(iterador->jogo), nome) == 0)
   {
+    lista_jogos->cabeca = iterador->next;
+    jogo = iterador->jogo;
+    if (lista_jogos->ultimo->jogo == jogo)
     {
-      lista_jogos->cabeca = iterador->next;
-      jogo = iterador->jogo;
-      if (lista_jogos->ultimo->jogo == jogo)
-      {
-        lista_jogos->ultimo = lista_jogos->cabeca;
-      }
-      else
-      {
-        
-      }
-
-      free(iterador);
+      lista_jogos->ultimo = lista_jogos->cabeca;
     }
+    else
+    {
+      
+    }
+
+    free(iterador);
   }
   else
   {
+    for (aux = iterador->next; iterador->next != 0; iterador = aux, aux = iterador->next)
     {
-      for (aux = iterador->next; iterador->next != 0; iterador = aux, aux = iterador->next)
+      if (strcmp(obtem_nome_jogo(aux->jogo), nome) == 0)
       {
-        if (strcmp(obtem_nome_jogo(aux->jogo), nome) == 0)
+        if (lista_jogos->ultimo == aux)
         {
-          {
-            if (lista_jogos->ultimo == aux)
-            {
-              lista_jogos->ultimo = iterador;
-            }
-            else
-            {
-              
-            }
-
-            jogo = aux->jogo;
-            iterador->next = aux->next;
-            free(aux);
-            break;
-          }
+          lista_jogos->ultimo = iterador;
         }
         else
         {
           
         }
 
+        jogo = aux->jogo;
+        iterador->next = aux->next;
+        free(aux);
+        break;
+      }
+      else
+      {
+        
       }
 
     }
+
   }
 
   return jogo;

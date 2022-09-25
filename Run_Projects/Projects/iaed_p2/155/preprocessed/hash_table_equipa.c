@@ -37,9 +37,7 @@ equipa *hash_table_equipa_lookup(char *nome, equipa *hash[2000])
   {
     if (strcmp(aux->nome_equipa, nome) == 0)
     {
-      {
-        return aux;
-      }
+      return aux;
     }
     else
     {
@@ -67,9 +65,7 @@ equipa *hash_table_equipa_delete(char *nome, equipa *hash[2000])
 
   if (aux == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -78,15 +74,11 @@ equipa *hash_table_equipa_delete(char *nome, equipa *hash[2000])
 
   if (aux_ant == 0)
   {
-    {
-      hash[indice] = aux->next;
-    }
+    hash[indice] = aux->next;
   }
   else
   {
-    {
-      aux_ant->next = aux->next;
-    }
+    aux_ant->next = aux->next;
   }
 
   return *hash;

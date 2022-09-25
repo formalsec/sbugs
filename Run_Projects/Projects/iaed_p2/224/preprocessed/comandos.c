@@ -40,35 +40,31 @@ void AdicionaNovoJogo(int NL, Jogo *jogo, Node **hash_table_jogos, Node **hash_t
   equipaY = ProcuraNaHashTable(nome_equipaY, hash_table_equipas, 1);
   if (((!existeJogo) && (!(!equipaX))) && (!(!equipaY)))
   {
+    if (jogo->scoreX > jogo->scoreY)
     {
-      if (jogo->scoreX > jogo->scoreY)
+      equipaX->jogos_ganhos++;
+    }
+    else
+    {
+      if (jogo->scoreX < jogo->scoreY)
       {
-        equipaX->jogos_ganhos++;
+        equipaY->jogos_ganhos++;
       }
       else
       {
-        if (jogo->scoreX < jogo->scoreY)
-        {
-          equipaY->jogos_ganhos++;
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      node_jogo = CriaNode(jogo);
-      InsereNaHashTable(hash_table_jogos, node_jogo, 0);
-      InsereNaLista(lista_jogos, jogo, 0);
     }
+
+    node_jogo = CriaNode(jogo);
+    InsereNaHashTable(hash_table_jogos, node_jogo, 0);
+    InsereNaLista(lista_jogos, jogo, 0);
   }
   else
   {
-    {
-      DestroiJogo(jogo);
-      (existeJogo) ? (printf("%d Jogo existente.\n", NL)) : (((!equipaX) || (!equipaY)) ? (printf("%d Equipa inexistente.\n", NL)) : (0));
-    }
+    DestroiJogo(jogo);
+    (existeJogo) ? (printf("%d Jogo existente.\n", NL)) : (((!equipaX) || (!equipaY)) ? (printf("%d Equipa inexistente.\n", NL)) : (0));
   }
 
 }
@@ -113,28 +109,26 @@ void ApagaJogo(int NL, char input_separado[5][1024], Node **hash_table_jogos, No
   }
   else
   {
+    equipaX = ProcuraNaHashTable(jogo->equipaX, hash_table_equipas, 1);
+    equipaY = ProcuraNaHashTable(jogo->equipaY, hash_table_equipas, 1);
+    if (jogo->scoreX > jogo->scoreY)
     {
-      equipaX = ProcuraNaHashTable(jogo->equipaX, hash_table_equipas, 1);
-      equipaY = ProcuraNaHashTable(jogo->equipaY, hash_table_equipas, 1);
-      if (jogo->scoreX > jogo->scoreY)
+      equipaX->jogos_ganhos--;
+    }
+    else
+    {
+      if (jogo->scoreY > jogo->scoreX)
       {
-        equipaX->jogos_ganhos--;
+        equipaY->jogos_ganhos--;
       }
       else
       {
-        if (jogo->scoreY > jogo->scoreX)
-        {
-          equipaY->jogos_ganhos--;
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      LimpaElemento(nome, hash_table_jogos, lista_jogos, DestroiJogo, 1);
     }
+
+    LimpaElemento(nome, hash_table_jogos, lista_jogos, DestroiJogo, 1);
   }
 
 }
@@ -154,54 +148,47 @@ void AlteraScore(int NL, char input_separado[5][1024], Node **hash_table_jogos, 
   }
   else
   {
+    equipaX = ProcuraNaHashTable(jogo->equipaX, hash_table_equipas, 1);
+    equipaY = ProcuraNaHashTable(jogo->equipaY, hash_table_equipas, 1);
+    if ((scoreX_novo > scoreY_novo) && (jogo->scoreX < jogo->scoreY))
     {
-      equipaX = ProcuraNaHashTable(jogo->equipaX, hash_table_equipas, 1);
-      equipaY = ProcuraNaHashTable(jogo->equipaY, hash_table_equipas, 1);
-      if ((scoreX_novo > scoreY_novo) && (jogo->scoreX < jogo->scoreY))
+      equipaX->jogos_ganhos++;
+      equipaY->jogos_ganhos--;
+    }
+    else
+    {
+      if ((scoreX_novo > scoreY_novo) && (jogo->scoreX == jogo->scoreY))
       {
-        {
-          equipaX->jogos_ganhos++;
-          equipaY->jogos_ganhos--;
-        }
+        equipaX->jogos_ganhos++;
       }
       else
       {
-        if ((scoreX_novo > scoreY_novo) && (jogo->scoreX == jogo->scoreY))
+        if ((scoreY_novo > scoreX_novo) && (jogo->scoreY < jogo->scoreX))
         {
-          equipaX->jogos_ganhos++;
+          equipaY->jogos_ganhos++;
+          equipaX->jogos_ganhos--;
         }
         else
         {
-          if ((scoreY_novo > scoreX_novo) && (jogo->scoreY < jogo->scoreX))
+          if ((scoreY_novo > scoreX_novo) && (jogo->scoreY == jogo->scoreX))
           {
-            {
-              equipaY->jogos_ganhos++;
-              equipaX->jogos_ganhos--;
-            }
+            equipaY->jogos_ganhos++;
           }
           else
           {
-            if ((scoreY_novo > scoreX_novo) && (jogo->scoreY == jogo->scoreX))
+            if ((scoreX_novo == scoreY_novo) && (jogo->scoreX > jogo->scoreY))
             {
-              equipaY->jogos_ganhos++;
+              equipaX->jogos_ganhos--;
             }
             else
             {
-              if ((scoreX_novo == scoreY_novo) && (jogo->scoreX > jogo->scoreY))
+              if ((scoreX_novo == scoreY_novo) && (jogo->scoreY > jogo->scoreX))
               {
-                equipaX->jogos_ganhos--;
+                equipaY->jogos_ganhos--;
               }
               else
               {
-                if ((scoreX_novo == scoreY_novo) && (jogo->scoreY > jogo->scoreX))
-                {
-                  equipaY->jogos_ganhos--;
-                }
-                else
-                {
-                  
-                }
-
+                
               }
 
             }
@@ -212,9 +199,10 @@ void AlteraScore(int NL, char input_separado[5][1024], Node **hash_table_jogos, 
 
       }
 
-      jogo->scoreX = scoreX_novo;
-      jogo->scoreY = scoreY_novo;
     }
+
+    jogo->scoreX = scoreX_novo;
+    jogo->scoreY = scoreY_novo;
   }
 
 }
@@ -239,18 +227,14 @@ void AdicionaNovaEquipa(int NL, Equipa *equipa, Node **hash_table_equipas, Lista
   int existeEquipa = !(!ProcuraNaHashTable(nome, hash_table_equipas, 1));
   if (!existeEquipa)
   {
-    {
-      node_equipa = CriaNode(equipa);
-      InsereNaHashTable(hash_table_equipas, node_equipa, 1);
-      InsereNaLista(lista_equipas, equipa, 1);
-    }
+    node_equipa = CriaNode(equipa);
+    InsereNaHashTable(hash_table_equipas, node_equipa, 1);
+    InsereNaLista(lista_equipas, equipa, 1);
   }
   else
   {
-    {
-      DestroiEquipa(equipa);
-      (existeEquipa) ? (printf("%d Equipa existente.\n", NL)) : (0);
-    }
+    DestroiEquipa(equipa);
+    (existeEquipa) ? (printf("%d Equipa existente.\n", NL)) : (0);
   }
 
 }
@@ -302,10 +286,8 @@ void BubbleSort(Equipa *inicial)
     {
       if (strcmp(equipaA->nome, equipaA->drt->nome) > 0)
       {
-        {
-          Trocar(equipaA, equipaA->drt);
-          trocado = 1;
-        }
+        Trocar(equipaA, equipaA->drt);
+        trocado = 1;
       }
       else
       {
@@ -346,15 +328,13 @@ void OrdenaEquipas(int NL, Lista *lista)
   {
     if (equipa_aux->jogos_ganhos == mais_jogos_ganhos)
     {
-      {
-        copia = malloc(sizeof(Equipa));
-        copia->nome = (char *) malloc((strlen(equipa_aux->nome) + 1) * (sizeof(char)));
-        strcpy(copia->nome, equipa_aux->nome);
-        copia->jogos_ganhos = equipa_aux->jogos_ganhos;
-        copia->drt = 0;
-        copia->esq = 0;
-        InsereNaLista(lista_aux_equipas, copia, 1);
-      }
+      copia = malloc(sizeof(Equipa));
+      copia->nome = (char *) malloc((strlen(equipa_aux->nome) + 1) * (sizeof(char)));
+      strcpy(copia->nome, equipa_aux->nome);
+      copia->jogos_ganhos = equipa_aux->jogos_ganhos;
+      copia->drt = 0;
+      copia->esq = 0;
+      InsereNaLista(lista_aux_equipas, copia, 1);
     }
     else
     {
@@ -366,20 +346,18 @@ void OrdenaEquipas(int NL, Lista *lista)
 
   if (lista_aux_equipas->cabeca)
   {
+    BubbleSort(lista_aux_equipas->cabeca);
+    printf("%d Melhores %d\n", NL, mais_jogos_ganhos);
+    equipa_aux = lista_aux_equipas->cabeca;
+    while (equipa_aux)
     {
-      BubbleSort(lista_aux_equipas->cabeca);
-      printf("%d Melhores %d\n", NL, mais_jogos_ganhos);
-      equipa_aux = lista_aux_equipas->cabeca;
-      while (equipa_aux)
-      {
-        printf("%d * %s\n", NL, equipa_aux->nome);
-        aux_apagar = equipa_aux;
-        equipa_aux = equipa_aux->drt;
-        free(aux_apagar->nome);
-        free(aux_apagar);
-      }
-
+      printf("%d * %s\n", NL, equipa_aux->nome);
+      aux_apagar = equipa_aux;
+      equipa_aux = equipa_aux->drt;
+      free(aux_apagar->nome);
+      free(aux_apagar);
     }
+
   }
   else
   {

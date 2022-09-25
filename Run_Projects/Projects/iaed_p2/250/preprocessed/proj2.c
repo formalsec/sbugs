@@ -155,12 +155,10 @@ int insert(Nodo_jogo **table, Jogos *novojogo)
   new_node->next = 0;
   if (table[index] == 0)
   {
-    {
-      table[index] = new_node;
-      table[index]->jogo = novojogo;
-      table[index]->next = 0;
-      return 1;
-    }
+    table[index] = new_node;
+    table[index]->jogo = novojogo;
+    table[index]->next = 0;
+    return 1;
   }
   else
   {
@@ -186,12 +184,10 @@ int insert_e(Nodo_equipa **table, Equipas *novaequipa)
   new_node_e->next_e = 0;
   if (table[index] == 0)
   {
-    {
-      table[index] = new_node_e;
-      table[index]->equipa = novaequipa;
-      table[index]->next_e = 0;
-      return 1;
-    }
+    table[index] = new_node_e;
+    table[index]->equipa = novaequipa;
+    table[index]->next_e = 0;
+    return 1;
   }
   else
   {
@@ -218,13 +214,11 @@ void inserir_score(Nodo_equipa **table_e, int score1, int score2, char *equipa1,
   aux2 = table_e[index2];
   if (score1 > score2)
   {
-    {
-      while (strcmp(aux1->equipa->nome, equipa1) != 0)
-        aux1 = aux1->next_e;
+    while (strcmp(aux1->equipa->nome, equipa1) != 0)
+      aux1 = aux1->next_e;
 
-      aux1->equipa->finalscore++;
-      return;
-    }
+    aux1->equipa->finalscore++;
+    return;
   }
   else
   {
@@ -233,13 +227,11 @@ void inserir_score(Nodo_equipa **table_e, int score1, int score2, char *equipa1,
 
   if (score2 > score1)
   {
-    {
-      while (strcmp(aux2->equipa->nome, equipa2) != 0)
-        aux2 = aux2->next_e;
+    while (strcmp(aux2->equipa->nome, equipa2) != 0)
+      aux2 = aux2->next_e;
 
-      aux2->equipa->finalscore++;
-      return;
-    }
+    aux2->equipa->finalscore++;
+    return;
   }
   else
   {
@@ -258,9 +250,7 @@ int search(Nodo_jogo **table, char *nome)
   {
     if (strcmp(node_aux->jogo->nome, nome) == 0)
     {
-      {
-        return index;
-      }
+      return index;
     }
     else
     {
@@ -284,9 +274,7 @@ int search_e(Nodo_equipa **table, char *name)
   {
     if (strcmp(node_aux->equipa->nome, name) == 0)
     {
-      {
-        return index;
-      }
+      return index;
     }
     else
     {
@@ -315,22 +303,18 @@ void pop_node(Jogoslist *l, Jogos *n)
 
   if ((aux->next == 0) && (strcmp(aux->nome, n->nome) == 0))
   {
-    {
-      l->head = 0;
-      l->root = 0;
-      free(aux);
-      return;
-    }
+    l->head = 0;
+    l->root = 0;
+    free(aux);
+    return;
   }
   else
   {
     if ((aux != 0) && (strcmp(aux->nome, n->nome) == 0))
     {
-      {
-        l->head = l->head->next;
-        free(aux);
-        return;
-      }
+      l->head = l->head->next;
+      free(aux);
+      return;
     }
     else
     {
@@ -377,17 +361,13 @@ void apaga(Jogoslist *lista, char name[1023], Nodo_jogo **table, Nodo_equipa **t
   aux_2 = table_e[score2_jogo];
   if (table[index]->jogo->score1 > table[index]->jogo->score2)
   {
-    {
-      aux_1->equipa->finalscore--;
-    }
+    aux_1->equipa->finalscore--;
   }
   else
   {
     if (table[index]->jogo->score1 < table[index]->jogo->score2)
     {
-      {
-        aux_2->equipa->finalscore--;
-      }
+      aux_2->equipa->finalscore--;
     }
     else
     {
@@ -407,12 +387,10 @@ void apaga(Jogoslist *lista, char name[1023], Nodo_jogo **table, Nodo_equipa **t
 
   if ((aux != 0) && (strcmp(aux->jogo->nome, name) == 0))
   {
-    {
-      pop_node(lista, table[index]->jogo);
-      free(aux);
-      table[index] = 0;
-      return;
-    }
+    pop_node(lista, table[index]->jogo);
+    free(aux);
+    table[index] = 0;
+    return;
   }
   else
   {
@@ -444,11 +422,9 @@ void adiciona_jogo(int i, Jogoslist *lista, Nodo_jogo **hashtable_j, Nodo_equipa
   novo_jogo = alocar_jogos();
   if (search(hashtable_j, novo_jogo->nome) != (-1))
   {
-    {
-      printf("%d Jogo existente.\n", i);
-      free_item(novo_jogo);
-      return;
-    }
+    printf("%d Jogo existente.\n", i);
+    free_item(novo_jogo);
+    return;
   }
   else
   {
@@ -457,39 +433,31 @@ void adiciona_jogo(int i, Jogoslist *lista, Nodo_jogo **hashtable_j, Nodo_equipa
 
   if ((search_e(hashtable_e, novo_jogo->equipa1) == (-1)) || (search_e(hashtable_e, novo_jogo->equipa2) == (-1)))
   {
-    {
-      printf("%d Equipa inexistente.\n", i);
-      free_item(novo_jogo);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", i);
+    free_item(novo_jogo);
+    return;
   }
   else
   {
+    if (lista->head == 0)
     {
-      if (lista->head == 0)
-      {
-        {
-          lista->head = novo_jogo;
-          lista->root = novo_jogo;
-          novo_jogo->next = 0;
-          novo_jogo->prev = 0;
-          insert(hashtable_j, novo_jogo);
-          inserir_score(hashtable_e, novo_jogo->score1, novo_jogo->score2, novo_jogo->equipa1, novo_jogo->equipa2);
-          return;
-        }
-      }
-      else
-      {
-        {
-          novo_jogo->next = lista->head;
-          lista->head->prev = novo_jogo;
-          lista->head = novo_jogo;
-          insert(hashtable_j, novo_jogo);
-          inserir_score(hashtable_e, novo_jogo->score1, novo_jogo->score2, novo_jogo->equipa1, novo_jogo->equipa2);
-        }
-      }
-
+      lista->head = novo_jogo;
+      lista->root = novo_jogo;
+      novo_jogo->next = 0;
+      novo_jogo->prev = 0;
+      insert(hashtable_j, novo_jogo);
+      inserir_score(hashtable_e, novo_jogo->score1, novo_jogo->score2, novo_jogo->equipa1, novo_jogo->equipa2);
+      return;
     }
+    else
+    {
+      novo_jogo->next = lista->head;
+      lista->head->prev = novo_jogo;
+      lista->head = novo_jogo;
+      insert(hashtable_j, novo_jogo);
+      inserir_score(hashtable_e, novo_jogo->score1, novo_jogo->score2, novo_jogo->equipa1, novo_jogo->equipa2);
+    }
+
   }
 
 }
@@ -500,11 +468,9 @@ void adiciona_equipa(int i, Nodo_equipa **hashtable_e, int *teams)
   nova_equipa = alocar_equipas_nome();
   if (search_e(hashtable_e, nova_equipa->nome) != (-1))
   {
-    {
-      printf("%d Equipa existente.\n", i);
-      free_item_e(nova_equipa);
-      return;
-    }
+    printf("%d Equipa existente.\n", i);
+    free_item_e(nova_equipa);
+    return;
   }
   else
   {
@@ -549,10 +515,8 @@ void procurajogo(int i, Nodo_jogo **table)
   {
     if (strcmp(aux->jogo->nome, arg1) == 0)
     {
-      {
-        printf("%d %s %s %s %d %d\n", i, aux->jogo->nome, aux->jogo->equipa1, aux->jogo->equipa2, aux->jogo->score1, aux->jogo->score2);
-        return;
-      }
+      printf("%d %s %s %s %d %d\n", i, aux->jogo->nome, aux->jogo->equipa1, aux->jogo->equipa2, aux->jogo->score1, aux->jogo->score2);
+      return;
     }
     else
     {
@@ -584,10 +548,8 @@ void procuraequipa(int i, Nodo_equipa **table)
   {
     if (strcmp(aux->equipa->nome, arg1) == 0)
     {
-      {
-        printf("%d %s %d\n", i, aux->equipa->nome, aux->equipa->finalscore);
-        return;
-      }
+      printf("%d %s %d\n", i, aux->equipa->nome, aux->equipa->finalscore);
+      return;
     }
     else
     {
@@ -623,10 +585,8 @@ void altera_pontos(int i, Nodo_jogo **table, Nodo_equipa **table_e)
   arg3 = new_sym_var(sizeof(int) * 8);
   if (search(table, arg1) == (-1))
   {
-    {
-      printf("%d Jogo inexistente.\n", i);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", i);
+    return;
   }
   else
   {
@@ -683,11 +643,9 @@ void altera_pontos(int i, Nodo_jogo **table, Nodo_equipa **table_e)
 
   if (((arg2 > arg3) && (novo_jogo->jogo->score1 > novo_jogo->jogo->score2)) || ((arg2 == arg3) && (novo_jogo->jogo->score1 == novo_jogo->jogo->score2)))
   {
-    {
-      novo_jogo->jogo->score1 = arg2;
-      novo_jogo->jogo->score2 = arg3;
-      return;
-    }
+    novo_jogo->jogo->score1 = arg2;
+    novo_jogo->jogo->score2 = arg3;
+    return;
   }
   else
   {
@@ -696,13 +654,11 @@ void altera_pontos(int i, Nodo_jogo **table, Nodo_equipa **table_e)
 
   if ((arg2 > arg3) && (novo_jogo->jogo->score1 < novo_jogo->jogo->score2))
   {
-    {
-      nova_equipa1->equipa->finalscore++;
-      nova_equipa2->equipa->finalscore--;
-      novo_jogo->jogo->score1 = arg2;
-      novo_jogo->jogo->score2 = arg3;
-      return;
-    }
+    nova_equipa1->equipa->finalscore++;
+    nova_equipa2->equipa->finalscore--;
+    novo_jogo->jogo->score1 = arg2;
+    novo_jogo->jogo->score2 = arg3;
+    return;
   }
   else
   {
@@ -711,12 +667,10 @@ void altera_pontos(int i, Nodo_jogo **table, Nodo_equipa **table_e)
 
   if ((arg2 > arg3) && (novo_jogo->jogo->score1 == novo_jogo->jogo->score2))
   {
-    {
-      nova_equipa1->equipa->finalscore++;
-      novo_jogo->jogo->score1 = arg2;
-      novo_jogo->jogo->score2 = arg3;
-      return;
-    }
+    nova_equipa1->equipa->finalscore++;
+    novo_jogo->jogo->score1 = arg2;
+    novo_jogo->jogo->score2 = arg3;
+    return;
   }
   else
   {
@@ -725,12 +679,10 @@ void altera_pontos(int i, Nodo_jogo **table, Nodo_equipa **table_e)
 
   if ((arg2 < arg3) && (novo_jogo->jogo->score1 == novo_jogo->jogo->score2))
   {
-    {
-      nova_equipa2->equipa->finalscore++;
-      novo_jogo->jogo->score1 = arg2;
-      novo_jogo->jogo->score2 = arg3;
-      return;
-    }
+    nova_equipa2->equipa->finalscore++;
+    novo_jogo->jogo->score1 = arg2;
+    novo_jogo->jogo->score2 = arg3;
+    return;
   }
   else
   {
@@ -739,13 +691,11 @@ void altera_pontos(int i, Nodo_jogo **table, Nodo_equipa **table_e)
 
   if ((arg2 < arg3) && (novo_jogo->jogo->score1 > novo_jogo->jogo->score2))
   {
-    {
-      nova_equipa1->equipa->finalscore--;
-      nova_equipa2->equipa->finalscore++;
-      novo_jogo->jogo->score1 = arg2;
-      novo_jogo->jogo->score2 = arg3;
-      return;
-    }
+    nova_equipa1->equipa->finalscore--;
+    nova_equipa2->equipa->finalscore++;
+    novo_jogo->jogo->score1 = arg2;
+    novo_jogo->jogo->score2 = arg3;
+    return;
   }
   else
   {
@@ -754,12 +704,10 @@ void altera_pontos(int i, Nodo_jogo **table, Nodo_equipa **table_e)
 
   if ((arg2 == arg3) && (novo_jogo->jogo->score1 > novo_jogo->jogo->score2))
   {
-    {
-      nova_equipa1->equipa->finalscore--;
-      novo_jogo->jogo->score1 = arg2;
-      novo_jogo->jogo->score2 = arg3;
-      return;
-    }
+    nova_equipa1->equipa->finalscore--;
+    novo_jogo->jogo->score1 = arg2;
+    novo_jogo->jogo->score2 = arg3;
+    return;
   }
   else
   {
@@ -768,12 +716,10 @@ void altera_pontos(int i, Nodo_jogo **table, Nodo_equipa **table_e)
 
   if ((arg2 == arg3) && (novo_jogo->jogo->score1 < novo_jogo->jogo->score2))
   {
-    {
-      nova_equipa2->equipa->finalscore--;
-      novo_jogo->jogo->score1 = arg2;
-      novo_jogo->jogo->score2 = arg3;
-      return;
-    }
+    nova_equipa2->equipa->finalscore--;
+    novo_jogo->jogo->score1 = arg2;
+    novo_jogo->jogo->score2 = arg3;
+    return;
   }
   else
   {
@@ -782,11 +728,9 @@ void altera_pontos(int i, Nodo_jogo **table, Nodo_equipa **table_e)
 
   if ((arg2 < arg3) && (novo_jogo->jogo->score1 < novo_jogo->jogo->score2))
   {
-    {
-      novo_jogo->jogo->score1 = arg2;
-      novo_jogo->jogo->score2 = arg3;
-      return;
-    }
+    novo_jogo->jogo->score1 = arg2;
+    novo_jogo->jogo->score2 = arg3;
+    return;
   }
   else
   {
@@ -808,17 +752,13 @@ void remover(int i, Jogoslist *nova, Nodo_jogo **table, Nodo_equipa **table_e)
   arg1[10 - 1] = '\0';
   if (search(table, arg1) == (-1))
   {
-    {
-      printf("%d Jogo inexistente.\n", i);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", i);
+    return;
   }
   else
   {
-    {
-      apaga(nova, arg1, table, table_e);
-      return;
-    }
+    apaga(nova, arg1, table, table_e);
+    return;
   }
 
 }
@@ -835,15 +775,13 @@ void ordena(int i, int *teams, Nodo_equipa **table)
   malloc_array(array, num_equipas);
   if (num_equipas == 0)
   {
+    for (j = 0; j < num_equipas; j++)
     {
-      for (j = 0; j < num_equipas; j++)
-      {
-        free(array[j]);
-      }
-
-      free(array);
-      return;
+      free(array[j]);
     }
+
+    free(array);
+    return;
   }
   else
   {
@@ -857,10 +795,8 @@ void ordena(int i, int *teams, Nodo_equipa **table)
     {
       if (aux->equipa->finalscore == max_score)
       {
-        {
-          strcpy(array[k], aux->equipa->nome);
-          k++;
-        }
+        strcpy(array[k], aux->equipa->nome);
+        k++;
       }
       else
       {
@@ -869,12 +805,10 @@ void ordena(int i, int *teams, Nodo_equipa **table)
 
       if (aux->equipa->finalscore > max_score)
       {
-        {
-          max_score = aux->equipa->finalscore;
-          clean_array(array, num_equipas);
-          strcpy(array[0], aux->equipa->nome);
-          k = 1;
-        }
+        max_score = aux->equipa->finalscore;
+        clean_array(array, num_equipas);
+        strcpy(array[0], aux->equipa->nome);
+        k = 1;
       }
       else
       {
@@ -893,21 +827,17 @@ void ordena(int i, int *teams, Nodo_equipa **table)
     {
       if ((strcmp(array[j], "\0") != 0) && (strcmp(array[k], "\0") != 0))
       {
+        if (strcmp(array[k], array[j]) > 0)
         {
-          if (strcmp(array[k], array[j]) > 0)
-          {
-            {
-              strcpy(temp, array[k]);
-              strcpy(array[k], array[j]);
-              strcpy(array[j], temp);
-            }
-          }
-          else
-          {
-            
-          }
-
+          strcpy(temp, array[k]);
+          strcpy(array[k], array[j]);
+          strcpy(array[j], temp);
         }
+        else
+        {
+          
+        }
+
       }
       else
       {

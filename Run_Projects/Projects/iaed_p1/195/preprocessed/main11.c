@@ -206,28 +206,22 @@ void A(int maxide, int maxidp, produto lis[], encomenda tab[])
         }
         else
         {
+          ind = search(tab[ide].prods, lis[idp].descricao);
+          if (ind < 0)
           {
-            ind = search(tab[ide].prods, lis[idp].descricao);
-            if (ind < 0)
-            {
-              {
-                tab[ide].prods[tab[ide].loc] = lis[idp];
-                tab[ide].prods[tab[ide].loc].qtd = qtd;
-                tab[ide].loc = tab[ide].loc + 1;
-                tab[ide].peso = tab[ide].peso + (qtd * lis[idp].peso);
-                lis[idp].qtd = lis[idp].qtd - qtd;
-              }
-            }
-            else
-            {
-              {
-                tab[ide].prods[ind].qtd = tab[ide].prods[ind].qtd + qtd;
-                tab[ide].peso = tab[ide].peso + (qtd * tab[ide].prods[ind].peso);
-                lis[idp].qtd = lis[idp].qtd - qtd;
-              }
-            }
-
+            tab[ide].prods[tab[ide].loc] = lis[idp];
+            tab[ide].prods[tab[ide].loc].qtd = qtd;
+            tab[ide].loc = tab[ide].loc + 1;
+            tab[ide].peso = tab[ide].peso + (qtd * lis[idp].peso);
+            lis[idp].qtd = lis[idp].qtd - qtd;
           }
+          else
+          {
+            tab[ide].prods[ind].qtd = tab[ide].prods[ind].qtd + qtd;
+            tab[ide].peso = tab[ide].peso + (qtd * tab[ide].prods[ind].peso);
+            lis[idp].qtd = lis[idp].qtd - qtd;
+          }
+
         }
 
       }
@@ -282,22 +276,18 @@ void R(int maxide, int maxidp, produto lis[], encomenda tab[])
     }
     else
     {
+      ind = search(tab[ide].prods, lis[idp].descricao);
+      if (ind >= 0)
       {
-        ind = search(tab[ide].prods, lis[idp].descricao);
-        if (ind >= 0)
-        {
-          {
-            lis[idp].qtd = lis[idp].qtd + tab[ide].prods[ind].qtd;
-            tab[ide].peso = tab[ide].peso - (tab[ide].prods[ind].peso * tab[ide].prods[ind].qtd);
-            tab[ide].prods[ind].qtd = 0;
-          }
-        }
-        else
-        {
-          
-        }
-
+        lis[idp].qtd = lis[idp].qtd + tab[ide].prods[ind].qtd;
+        tab[ide].peso = tab[ide].peso - (tab[ide].prods[ind].peso * tab[ide].prods[ind].qtd);
+        tab[ide].prods[ind].qtd = 0;
       }
+      else
+      {
+        
+      }
+
     }
 
   }
@@ -316,12 +306,10 @@ void C(int maxide, encomenda tab[])
   }
   else
   {
-    {
-      for (i = 0; i < tab[ide].loc; i++)
-        total += tab[ide].prods[i].qtd * tab[ide].prods[i].preco;
+    for (i = 0; i < tab[ide].loc; i++)
+      total += tab[ide].prods[i].qtd * tab[ide].prods[i].preco;
 
-      printf("Custo da encomenda %d %d.\n", ide, total);
-    }
+    printf("Custo da encomenda %d %d.\n", ide, total);
   }
 
 }
@@ -340,23 +328,21 @@ void p(int maxide, int maxidp, produto lis[], encomenda tab[])
   }
   else
   {
+    lis[idp].preco = preco;
+    for (i = 0; i < maxide; i++)
     {
-      lis[idp].preco = preco;
-      for (i = 0; i < maxide; i++)
+      ind = search(tab[i].prods, lis[idp].descricao);
+      if (ind >= 0)
       {
-        ind = search(tab[i].prods, lis[idp].descricao);
-        if (ind >= 0)
-        {
-          tab[i].prods[ind].preco = preco;
-        }
-        else
-        {
-          
-        }
-
+        tab[i].prods[ind].preco = preco;
+      }
+      else
+      {
+        
       }
 
     }
+
   }
 
 }
@@ -380,18 +366,16 @@ void E(int maxide, int maxidp, produto lis[], encomenda tab[])
     }
     else
     {
+      ind = search(tab[ide].prods, lis[idp].descricao);
+      if (ind >= 0)
       {
-        ind = search(tab[ide].prods, lis[idp].descricao);
-        if (ind >= 0)
-        {
-          printf("%s %d.\n", lis[idp].descricao, tab[ide].prods[ind].qtd);
-        }
-        else
-        {
-          printf("%s %d.\n", lis[idp].descricao, 0);
-        }
-
+        printf("%s %d.\n", lis[idp].descricao, tab[ide].prods[ind].qtd);
       }
+      else
+      {
+        printf("%s %d.\n", lis[idp].descricao, 0);
+      }
+
     }
 
   }
@@ -412,26 +396,15 @@ void m(int maxide, int maxidp, produto lis[], encomenda tab[])
   }
   else
   {
+    for (i = 0; i < maxide; i++)
     {
-      for (i = 0; i < maxide; i++)
+      ind = search(tab[i].prods, lis[idp].descricao);
+      if (ind >= 0)
       {
-        ind = search(tab[i].prods, lis[idp].descricao);
-        if (ind >= 0)
+        if (tab[i].prods[ind].qtd > qtd)
         {
-          {
-            if (tab[i].prods[ind].qtd > qtd)
-            {
-              {
-                qtd = tab[i].prods[ind].qtd;
-                ide = i;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
+          qtd = tab[i].prods[ind].qtd;
+          ide = i;
         }
         else
         {
@@ -439,17 +412,22 @@ void m(int maxide, int maxidp, produto lis[], encomenda tab[])
         }
 
       }
-
-      if (qtd != 0)
-      {
-        printf("Maximo produto %d %d %d.\n", idp, ide, qtd);
-      }
       else
       {
         
       }
 
     }
+
+    if (qtd != 0)
+    {
+      printf("Maximo produto %d %d %d.\n", idp, ide, qtd);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -478,26 +456,24 @@ void L(produto sortlis[], encomenda tab[], int maxide)
   }
   else
   {
+    for (i = 0; i < tab[ide].loc; i++)
+      sortlis[i] = tab[ide].prods[i];
+
+    mergesorts(sortlis, 0, tab[ide].loc - 1);
+    printf("Encomenda %d\n", ide);
+    for (i = 0; i < tab[ide].loc; i++)
     {
-      for (i = 0; i < tab[ide].loc; i++)
-        sortlis[i] = tab[ide].prods[i];
-
-      mergesorts(sortlis, 0, tab[ide].loc - 1);
-      printf("Encomenda %d\n", ide);
-      for (i = 0; i < tab[ide].loc; i++)
+      if (sortlis[i].qtd != 0)
       {
-        if (sortlis[i].qtd != 0)
-        {
-          printf("* %s %d %d\n", sortlis[i].descricao, sortlis[i].preco, sortlis[i].qtd);
-        }
-        else
-        {
-          
-        }
-
+        printf("* %s %d %d\n", sortlis[i].descricao, sortlis[i].preco, sortlis[i].qtd);
+      }
+      else
+      {
+        
       }
 
     }
+
   }
 
 }
@@ -515,10 +491,8 @@ int main()
   {
     if (ch == 'a')
     {
-      {
-        a(lp, midp);
-        midp++;
-      }
+      a(lp, midp);
+      midp++;
     }
     else
     {
@@ -530,18 +504,14 @@ int main()
       {
         if (ch == 'N')
         {
-          {
-            N(le, mide);
-            mide++;
-          }
+          N(le, mide);
+          mide++;
         }
         else
         {
           if (ch == 'A')
           {
-            {
-              A(mide, midp, lp, le);
-            }
+            A(mide, midp, lp, le);
           }
           else
           {

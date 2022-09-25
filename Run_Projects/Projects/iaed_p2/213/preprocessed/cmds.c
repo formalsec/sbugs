@@ -37,10 +37,8 @@ void cmd_a(int c, System system)
   score2 = new_sym_var(sizeof(int) * 8);
   if (G_search(system->games, name))
   {
-    {
-      printf("%d Jogo existente.\n", c);
-      return;
-    }
+    printf("%d Jogo existente.\n", c);
+    return;
   }
   else
   {
@@ -51,20 +49,18 @@ void cmd_a(int c, System system)
   team2 = T_search(system->teams, t2);
   if (team1 && team2)
   {
+    Game game = newGame(name, team1, team2, score1, score2);
+    G_insert(system->games, game);
+    add_last(system->games_dl, game);
+    if (score1 != score2)
     {
-      Game game = newGame(name, team1, team2, score1, score2);
-      G_insert(system->games, game);
-      add_last(system->games_dl, game);
-      if (score1 != score2)
-      {
-        add_win((score1 > score2) ? (team1) : (team2));
-      }
-      else
-      {
-        
-      }
-
+      add_win((score1 > score2) ? (team1) : (team2));
     }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -113,10 +109,8 @@ void cmd_r(int c, System system)
   name[10 - 1] = '\0';
   if ((game = G_search(system->games, name)) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", c);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", c);
+    return;
   }
   else
   {
@@ -175,10 +169,8 @@ void cmd_A(int c, System system)
   name[10 - 1] = '\0';
   if (T_search(system->teams, name) == 0)
   {
-    {
-      team = newTeam(name);
-      T_insert(system->teams, team);
-    }
+    team = newTeam(name);
+    T_insert(system->teams, team);
   }
   else
   {
@@ -215,19 +207,17 @@ void cmd_g(int c, System system)
   max = find_winner(system->teams, &num);
   if (max >= 0)
   {
+    int i;
+    Team *winners = malloc((sizeof(Team)) * num);
+    get_winners(system->teams, winners, max);
+    sort(winners, 0, num - 1);
+    printf("%d Melhores %d\n", c, max);
+    for (i = 0; i < num; i++)
     {
-      int i;
-      Team *winners = malloc((sizeof(Team)) * num);
-      get_winners(system->teams, winners, max);
-      sort(winners, 0, num - 1);
-      printf("%d Melhores %d\n", c, max);
-      for (i = 0; i < num; i++)
-      {
-        printTeam(winners[i], c);
-      }
-
-      free(winners);
+      printTeam(winners[i], c);
     }
+
+    free(winners);
   }
   else
   {

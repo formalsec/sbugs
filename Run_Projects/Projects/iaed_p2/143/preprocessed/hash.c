@@ -51,15 +51,11 @@ equipa Equipa_search(int M, char Nome[], equipa *Equipa)
   {
     if (strcmp(Equipa[i]->nome, Nome) == 0)
     {
-      {
-        return Equipa[i];
-      }
+      return Equipa[i];
     }
     else
     {
-      {
-        i = (i + 1) % M;
-      }
+      i = (i + 1) % M;
     }
 
   }
@@ -74,10 +70,8 @@ void Equipa_FREE(unsigned int M, equipa *Equipa)
   {
     if (Equipa[j] != 0)
     {
-      {
-        free(Equipa[j]->nome);
-        free(Equipa[j]);
-      }
+      free(Equipa[j]->nome);
+      free(Equipa[j]);
     }
     else
     {
@@ -98,9 +92,7 @@ equipa *Equipa_expand(unsigned int *M, equipa *Equipa)
   {
     if (p[i] != 0)
     {
-      {
-        Equipa_insert(*M, Equipa, p[i]);
-      }
+      Equipa_insert(*M, Equipa, p[i]);
     }
     else
     {
@@ -157,15 +149,11 @@ jogo Jogo_search(int N, char Nome[], jogo *Jogo)
   {
     if (strcmp(Jogo[i]->nome, Nome) == 0)
     {
-      {
-        return Jogo[i];
-      }
+      return Jogo[i];
     }
     else
     {
-      {
-        i = (i + 1) % N;
-      }
+      i = (i + 1) % N;
     }
 
   }
@@ -182,15 +170,11 @@ void Jogo_delete(unsigned int N, char Nome[], jogo *Jogo)
   {
     if (strcmp(Jogo[i]->nome, Nome) == 0)
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {
-      {
-        i = (i + 1) % N;
-      }
+      i = (i + 1) % N;
     }
 
   }
@@ -223,10 +207,8 @@ void Jogo_FREE(unsigned int N, jogo *Jogo)
   {
     if (Jogo[j] != 0)
     {
-      {
-        free(Jogo[j]->nome);
-        free(Jogo[j]);
-      }
+      free(Jogo[j]->nome);
+      free(Jogo[j]);
     }
     else
     {
@@ -247,9 +229,7 @@ jogo *Jogo_expand(unsigned int *M, jogo *Jogo)
   {
     if (p[i] != 0)
     {
-      {
-        Jogo_insert(*M, Jogo, p[i]);
-      }
+      Jogo_insert(*M, Jogo, p[i]);
     }
     else
     {

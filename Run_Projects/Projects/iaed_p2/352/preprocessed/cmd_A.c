@@ -26,13 +26,11 @@ void cmd_A()
   t->next = 0;
   if (!equipa_nao_existe(t->nome_equipa))
   {
-    {
-      free(t->nome_equipa);
-      free(t);
-      free(aux);
-      printf("%d Equipa existente.\n", nl);
-      return;
-    }
+    free(t->nome_equipa);
+    free(t);
+    free(aux);
+    printf("%d Equipa existente.\n", nl);
+    return;
   }
   else
   {
@@ -42,15 +40,13 @@ void cmd_A()
   indice_equipa = hash(t->nome_equipa);
   if (HashTeams[indice_equipa] != 0)
   {
+    temp = HashTeams[indice_equipa];
+    while (temp->next != 0)
     {
-      temp = HashTeams[indice_equipa];
-      while (temp->next != 0)
-      {
-        temp = temp->next;
-      }
-
-      temp->next = t;
+      temp = temp->next;
     }
+
+    temp->next = t;
   }
   else
   {
@@ -59,23 +55,19 @@ void cmd_A()
 
   if (headteam == 0)
   {
-    {
-      aux->team = t;
-      aux->next = 0;
-      headteam = aux;
-    }
+    aux->team = t;
+    aux->next = 0;
+    headteam = aux;
   }
   else
   {
-    {
-      temp1 = headteam;
-      while (temp1->next != 0)
-        temp1 = temp1->next;
+    temp1 = headteam;
+    while (temp1->next != 0)
+      temp1 = temp1->next;
 
-      aux->team = t;
-      aux->next = 0;
-      temp1->next = aux;
-    }
+    aux->team = t;
+    aux->next = 0;
+    temp1->next = aux;
   }
 
 }

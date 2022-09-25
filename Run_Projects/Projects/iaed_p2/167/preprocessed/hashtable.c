@@ -65,15 +65,11 @@ p_game Search(p_game *p, char *name, int M)
   {
     if (strcmp(p[i]->name, name) == 0)
     {
-      {
-        return p[i];
-      }
+      return p[i];
     }
     else
     {
-      {
-        i++;
-      }
+      i++;
     }
 
   }
@@ -90,24 +86,18 @@ p_game *HTRemoveElement(p_game *p, char *name, int N, int M)
   {
     if (strcmp(p[i]->name, name) == 0)
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {
-      {
-        i++;
-      }
+      i++;
     }
 
   }
 
   if (p[i] == 0)
   {
-    {
-      return p;
-    }
+    return p;
   }
   else
   {
@@ -144,9 +134,7 @@ p_game *Expand(p_game *p, int N, int M)
   {
     if (v[i] != 0)
     {
-      {
-        p = HTInsertElement(p, v[i]->name, v[i]->team1, v[i]->team2, v[i]->score1, v[i]->score2, N, M);
-      }
+      p = HTInsertElement(p, v[i]->name, v[i]->team1, v[i]->team2, v[i]->score1, v[i]->score2, N, M);
     }
     else
     {
@@ -166,12 +154,10 @@ p_game *FreeAllHT(p_game *p, int M)
   {
     if (p[i] != 0)
     {
-      {
-        free(p[i]->name);
-        free(p[i]->team1);
-        free(p[i]->team2);
-        free(p[i]);
-      }
+      free(p[i]->name);
+      free(p[i]->team1);
+      free(p[i]->team2);
+      free(p[i]);
     }
     else
     {
@@ -227,15 +213,11 @@ p_team Search_T(p_team *p, char *name, int M)
   {
     if (strcmp(p[i]->name, name) == 0)
     {
-      {
-        return p[i];
-      }
+      return p[i];
     }
     else
     {
-      {
-        i++;
-      }
+      i++;
     }
 
   }
@@ -252,24 +234,18 @@ p_team *HTRemoveElement_T(p_team *p, char *name, int N, int M)
   {
     if (strcmp(p[i]->name, name) == 0)
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {
-      {
-        i++;
-      }
+      i++;
     }
 
   }
 
   if (p[i] == 0)
   {
-    {
-      return p;
-    }
+    return p;
   }
   else
   {
@@ -300,9 +276,7 @@ p_team *Expand_T(p_team *p, int N, int M)
   {
     if (v[i] != 0)
     {
-      {
-        p = HTInsertElement_T(p, v[i]->name, v[i]->wins, N, M);
-      }
+      p = HTInsertElement_T(p, v[i]->name, v[i]->wins, N, M);
     }
     else
     {
@@ -322,10 +296,8 @@ p_team *FreeAllHT_T(p_team *p, int M)
   {
     if (p[i] != 0)
     {
-      {
-        free(p[i]->name);
-        free(p[i]);
-      }
+      free(p[i]->name);
+      free(p[i]);
     }
     else
     {

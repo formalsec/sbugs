@@ -124,21 +124,19 @@ void add_Game(gamelink *headgame, teamlink *headteam, GameLinkedList list, int N
     }
     else
     {
+      i = newGame(name, A, B, home, away);
+      insert_game(headgame, i);
+      append(list, i);
+      w = winner(i);
+      if (w)
       {
-        i = newGame(name, A, B, home, away);
-        insert_game(headgame, i);
-        append(list, i);
-        w = winner(i);
-        if (w)
-        {
-          w->wongames++;
-        }
-        else
-        {
-          
-        }
-
+        w->wongames++;
       }
+      else
+      {
+        
+      }
+
     }
 
   }
@@ -163,10 +161,8 @@ void add_Team(teamlink *head, int NL, int *teamcounter)
   }
   else
   {
-    {
-      insert_team(head, newTeam(name));
-      (*teamcounter)++;
-    }
+    insert_team(head, newTeam(name));
+    (*teamcounter)++;
   }
 
 }
@@ -189,10 +185,8 @@ void print_Game(gamelink *head, int NL)
   }
   else
   {
-    {
-      printf("%d ", NL);
-      seeGame(i);
-    }
+    printf("%d ", NL);
+    seeGame(i);
   }
 
 }
@@ -215,11 +209,9 @@ void print_Team(teamlink *head, int NL)
   }
   else
   {
-    {
-      printf("%d ", NL);
-      seeTeam(i);
-      printf(" %d\n", i->wongames);
-    }
+    printf("%d ", NL);
+    seeTeam(i);
+    printf(" %d\n", i->wongames);
   }
 
 }
@@ -243,20 +235,18 @@ void delete_Game(gamelink *head, int NL, GameLinkedList list)
   }
   else
   {
+    t = winner(i);
+    if (t)
     {
-      t = winner(i);
-      if (t)
-      {
-        t->wongames--;
-      }
-      else
-      {
-        
-      }
-
-      remove_Game_list(list, name);
-      delete_game(head, name);
+      t->wongames--;
     }
+    else
+    {
+      
+    }
+
+    remove_Game_list(list, name);
+    delete_game(head, name);
   }
 
 }
@@ -281,10 +271,8 @@ void edit_Score(gamelink *headgame, int NL)
   i = search_game(headgame, name);
   if (!i)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -359,9 +347,7 @@ void best_Teams(teamlink *head, int NL, int *teamcounter)
     {
       if (max < aux->TEAM->wongames)
       {
-        {
-          max = aux->TEAM->wongames;
-        }
+        max = aux->TEAM->wongames;
       }
       else
       {
@@ -379,9 +365,7 @@ void best_Teams(teamlink *head, int NL, int *teamcounter)
     {
       if (aux->TEAM->wongames == max)
       {
-        {
-          nmax++;
-        }
+        nmax++;
       }
       else
       {
@@ -399,10 +383,8 @@ void best_Teams(teamlink *head, int NL, int *teamcounter)
     {
       if (aux->TEAM->wongames == max)
       {
-        {
-          TEAMARRAY[index] = aux->TEAM;
-          index++;
-        }
+        TEAMARRAY[index] = aux->TEAM;
+        index++;
       }
       else
       {

@@ -43,18 +43,16 @@ void copy_elementsT(TeamsHash *new_Hash, TeamsHash *old_Hash)
 
     if (x != 0)
     {
+      for (prev = x->prev; prev != 0; x = prev, prev = prev->prev)
       {
-        for (prev = x->prev; prev != 0; x = prev, prev = prev->prev)
-        {
-          new_i = hashU(x->team->name, new_Hash->size);
-          prev->next = 0;
-          x->prev = 0;
-          new_Hash = addTeam(new_Hash, new_i, x);
-        }
-
         new_i = hashU(x->team->name, new_Hash->size);
+        prev->next = 0;
+        x->prev = 0;
         new_Hash = addTeam(new_Hash, new_i, x);
       }
+
+      new_i = hashU(x->team->name, new_Hash->size);
+      new_Hash = addTeam(new_Hash, new_i, x);
     }
     else
     {
@@ -78,18 +76,16 @@ void copy_elementsG(GamesHash *new_Hash, GamesHash *old_Hash)
 
     if (x != 0)
     {
+      for (prev = x->prevH; prev != 0; x = prev, prev = prev->prevH)
       {
-        for (prev = x->prevH; prev != 0; x = prev, prev = prev->prevH)
-        {
-          new_i = hashU(x->game->name, new_Hash->size);
-          prev->nextH = 0;
-          x->prevH = 0;
-          new_Hash = addGameHash(new_Hash, new_i, x);
-        }
-
         new_i = hashU(x->game->name, new_Hash->size);
+        prev->nextH = 0;
+        x->prevH = 0;
         new_Hash = addGameHash(new_Hash, new_i, x);
       }
+
+      new_i = hashU(x->game->name, new_Hash->size);
+      new_Hash = addGameHash(new_Hash, new_i, x);
     }
     else
     {
@@ -142,24 +138,20 @@ int verifyExistentTeam(TeamsHash *HashT, char *name)
   int i = hashU(name, HashT->size);
   if (headsT[i] != 0)
   {
+    teamNodeP x;
+    for (x = headsT[i]; x != 0; x = x->next)
     {
-      teamNodeP x;
-      for (x = headsT[i]; x != 0; x = x->next)
+      if (strcmp(x->team->name, name) == 0)
       {
-        if (strcmp(x->team->name, name) == 0)
-        {
-          {
-            return -1;
-          }
-        }
-        else
-        {
-          
-        }
-
+        return -1;
+      }
+      else
+      {
+        
       }
 
     }
+
   }
   else
   {
@@ -175,24 +167,20 @@ int verifyExistentGame(GamesHash *HashG, char *name)
   int i = hashU(name, HashG->size);
   if (headsG[i] != 0)
   {
+    gameNodeP x;
+    for (x = headsG[i]; x != 0; x = x->nextH)
     {
-      gameNodeP x;
-      for (x = headsG[i]; x != 0; x = x->nextH)
+      if (strcmp(x->game->name, name) == 0)
       {
-        if (strcmp(x->game->name, name) == 0)
-        {
-          {
-            return -1;
-          }
-        }
-        else
-        {
-          
-        }
-
+        return -1;
+      }
+      else
+      {
+        
       }
 
     }
+
   }
   else
   {
@@ -207,10 +195,8 @@ TeamsHash *addTeam(TeamsHash *HashT, int i, TeamNode *eq)
   int load_factor = HashT->n_elements / HashT->size;
   if (load_factor >= 1)
   {
-    {
-      HashT = expandT(HashT);
-      i = hashU(eq->team->name, HashT->size);
-    }
+    HashT = expandT(HashT);
+    i = hashU(eq->team->name, HashT->size);
   }
   else
   {
@@ -226,9 +212,7 @@ teamNodeP insertBeginT(teamNodeP head, teamNodeP eq)
 {
   if (head != 0)
   {
-    {
-      head->prev = eq;
-    }
+    head->prev = eq;
   }
   else
   {
@@ -244,10 +228,8 @@ GamesHash *addGameHash(GamesHash *HashG, int i, gameNodeP game)
   int load_factor = HashG->n_elements / HashG->size;
   if (load_factor >= 1)
   {
-    {
-      HashG = expandG(HashG);
-      i = hashU(game->game->name, HashG->size);
-    }
+    HashG = expandG(HashG);
+    i = hashU(game->game->name, HashG->size);
   }
   else
   {
@@ -263,9 +245,7 @@ gameNodeP insertBeginG(gameNodeP head, gameNodeP game)
 {
   if (head != 0)
   {
-    {
-      head->prevH = game;
-    }
+    head->prevH = game;
   }
   else
   {
@@ -287,24 +267,20 @@ Team *searchListT(teamNodeP head, char *name)
 {
   if (head != 0)
   {
+    teamNodeP x;
+    for (x = head; x != 0; x = x->next)
     {
-      teamNodeP x;
-      for (x = head; x != 0; x = x->next)
+      if (strcmp(x->team->name, name) == 0)
       {
-        if (strcmp(x->team->name, name) == 0)
-        {
-          {
-            return x->team;
-          }
-        }
-        else
-        {
-          
-        }
-
+        return x->team;
+      }
+      else
+      {
+        
       }
 
     }
+
   }
   else
   {
@@ -325,24 +301,20 @@ Game *searchListG(gameNodeP head, char *name)
 {
   if (head != 0)
   {
+    gameNodeP x;
+    for (x = head; x != 0; x = x->nextH)
     {
-      gameNodeP x;
-      for (x = head; x != 0; x = x->nextH)
+      if (strcmp(x->game->name, name) == 0)
       {
-        if (strcmp(x->game->name, name) == 0)
-        {
-          {
-            return x->game;
-          }
-        }
-        else
-        {
-          
-        }
-
+        return x->game;
+      }
+      else
+      {
+        
       }
 
     }
+
   }
   else
   {
@@ -362,48 +334,38 @@ void deleteGame(gameListP gameList, GamesHash *HashG, char *name)
   {
     if (strcmp(x->game->name, name) == 0)
     {
+      if (x == headsG[i])
       {
-        if (x == headsG[i])
+        headsG[i] = x->nextH;
+        if (headsG[i] != 0)
         {
-          {
-            headsG[i] = x->nextH;
-            if (headsG[i] != 0)
-            {
-              {
-                headsG[i]->prevH = 0;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
+          headsG[i]->prevH = 0;
         }
         else
         {
-          {
-            prev->nextH = x->nextH;
-            if (prev->nextH != 0)
-            {
-              {
-                prev->nextH->prevH = prev;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
+          
         }
 
-        deleteGameList(gameList, name);
-        free(x->game->name);
-        free(x->game);
-        free(x);
-        break;
       }
+      else
+      {
+        prev->nextH = x->nextH;
+        if (prev->nextH != 0)
+        {
+          prev->nextH->prevH = prev;
+        }
+        else
+        {
+          
+        }
+
+      }
+
+      deleteGameList(gameList, name);
+      free(x->game->name);
+      free(x->game);
+      free(x);
+      break;
     }
     else
     {
@@ -423,46 +385,34 @@ void deleteGameList(gameListP gameList, char *name)
   {
     if (strcmp(x->game->name, name) == 0)
     {
+      if (x == gameList->head)
       {
-        if (x == gameList->head)
+        gameList->head = x->nextL;
+        if (gameList->head != 0)
         {
-          {
-            gameList->head = x->nextL;
-            if (gameList->head != 0)
-            {
-              {
-                gameList->head->previous = 0;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
+          gameList->head->previous = 0;
         }
         else
         {
-          {
-            prev->nextL = x->nextL;
-            if (x == gameList->last)
-            {
-              {
-                gameList->last = prev;
-              }
-            }
-            else
-            {
-              {
-                x->nextL->previous = prev;
-              }
-            }
-
-          }
+          
         }
 
-        break;
       }
+      else
+      {
+        prev->nextL = x->nextL;
+        if (x == gameList->last)
+        {
+          gameList->last = prev;
+        }
+        else
+        {
+          x->nextL->previous = prev;
+        }
+
+      }
+
+      break;
     }
     else
     {
@@ -480,17 +430,13 @@ void changeScores(GamesHash *HashG, char *name, int s1, int s2)
   x = searchGame(HashG, name);
   if (x->score1 > x->score2)
   {
-    {
-      winner = 1;
-    }
+    winner = 1;
   }
   else
   {
     if (x->score2 > x->score1)
     {
-      {
-        winner = 2;
-      }
+      winner = 2;
     }
     else
     {
@@ -503,13 +449,25 @@ void changeScores(GamesHash *HashG, char *name, int s1, int s2)
   x->score2 = s2;
   if ((winner == 1) && (s1 <= s2))
   {
+    x->team1->wins--;
+    if (s1 < s2)
     {
-      x->team1->wins--;
-      if (s1 < s2)
+      x->team2->wins++;
+    }
+    else
+    {
+      
+    }
+
+  }
+  else
+  {
+    if ((winner == 2) && (s2 <= s1))
+    {
+      x->team2->wins--;
+      if (s2 < s1)
       {
-        {
-          x->team2->wins++;
-        }
+        x->team1->wins++;
       }
       else
       {
@@ -517,53 +475,27 @@ void changeScores(GamesHash *HashG, char *name, int s1, int s2)
       }
 
     }
-  }
-  else
-  {
-    if ((winner == 2) && (s2 <= s1))
-    {
-      {
-        x->team2->wins--;
-        if (s2 < s1)
-        {
-          {
-            x->team1->wins++;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-    }
     else
     {
       if (winner == 0)
       {
+        if (s1 > s2)
         {
-          if (s1 > s2)
+          x->team1->wins++;
+        }
+        else
+        {
+          if (s2 > s1)
           {
-            {
-              x->team1->wins++;
-            }
+            x->team2->wins++;
           }
           else
           {
-            if (s2 > s1)
-            {
-              {
-                x->team2->wins++;
-              }
-            }
-            else
-            {
-              
-            }
-
+            
           }
 
         }
+
       }
       else
       {
@@ -587,9 +519,7 @@ Team **winners(TeamsHash *HashT, Team **winnersTable, int maxCapacity, int cont)
   {
     if (headsT[i] != 0)
     {
-      {
-        winnersTable = searchWinners(headsT, &max, i, &len, winnersTable, &maxCapacity);
-      }
+      winnersTable = searchWinners(headsT, &max, i, &len, winnersTable, &maxCapacity);
     }
     else
     {
@@ -602,9 +532,7 @@ Team **winners(TeamsHash *HashT, Team **winnersTable, int maxCapacity, int cont)
   {
     if (winnersTable[i]->wins >= max)
     {
-      {
-        topMax = winnersTable[i]->wins;
-      }
+      topMax = winnersTable[i]->wins;
     }
     else
     {
@@ -616,24 +544,20 @@ Team **winners(TeamsHash *HashT, Team **winnersTable, int maxCapacity, int cont)
   winnersTable = sortWinners(winnersTable, &len);
   if (len > 1)
   {
+    printf("%d Melhores %d\n", cont, topMax);
+    for (i = 0; i < (len - 1); i++)
     {
-      printf("%d Melhores %d\n", cont, topMax);
-      for (i = 0; i < (len - 1); i++)
+      if (winnersTable[i]->wins == topMax)
       {
-        if (winnersTable[i]->wins == topMax)
-        {
-          {
-            printf("%d * %s\n", cont, winnersTable[i]->name);
-          }
-        }
-        else
-        {
-          
-        }
-
+        printf("%d * %s\n", cont, winnersTable[i]->name);
+      }
+      else
+      {
+        
       }
 
     }
+
   }
   else
   {
@@ -650,11 +574,9 @@ Team **searchWinners(teamNodeP *headsT, int *maxP, int i, int *lenP, Team **winn
   {
     if (x->team->wins >= (*maxP))
     {
-      {
-        winnersTable = addWinnerTable(x->team, lenP, winnersTable, maxC);
-        (*lenP)++;
-        *maxP = x->team->wins;
-      }
+      winnersTable = addWinnerTable(x->team, lenP, winnersTable, maxC);
+      (*lenP)++;
+      *maxP = x->team->wins;
     }
     else
     {
@@ -670,29 +592,21 @@ Team **addWinnerTable(Team *x, int *lenP, Team **winnersTable, int *maxC)
 {
   if ((*lenP) == 1)
   {
-    {
-      winnersTable[0] = x;
-    }
+    winnersTable[0] = x;
   }
   else
   {
+    if ((*lenP) == (*maxC))
     {
-      if ((*lenP) == (*maxC))
-      {
-        {
-          winnersTable = (Team **) realloc(winnersTable, ((sizeof(Team *)) * (*maxC)) * 2);
-          *maxC = (*maxC) * 2;
-          winnersTable[(*lenP) - 1] = x;
-        }
-      }
-      else
-      {
-        {
-          winnersTable[(*lenP) - 1] = x;
-        }
-      }
-
+      winnersTable = (Team **) realloc(winnersTable, ((sizeof(Team *)) * (*maxC)) * 2);
+      *maxC = (*maxC) * 2;
+      winnersTable[(*lenP) - 1] = x;
     }
+    else
+    {
+      winnersTable[(*lenP) - 1] = x;
+    }
+
   }
 
   return winnersTable;
@@ -711,14 +625,12 @@ Team **sortWinners(Team **winnersTable, int *lenP)
       if (strcmp(winnersTable[j + 1]->name, winnersTable[j]->name) < 0)
       {
         {
-          {
-            Item t = winnersTable[j + 1];
-            winnersTable[j + 1] = winnersTable[j];
-            winnersTable[j] = t;
-          }
-          ;
-          ;
+          Item t = winnersTable[j + 1];
+          winnersTable[j + 1] = winnersTable[j];
+          winnersTable[j] = t;
         }
+        ;
+        ;
       }
       else
       {

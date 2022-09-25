@@ -61,17 +61,13 @@ void addTeam(char *name, struct team **hash_teams, struct team *last)
   newTeam->nextHash = 0;
   if (hash_teams[hash(name)] == 0)
   {
-    {
-      newTeam->previousHash = 0;
-      hash_teams[hash(name)] = newTeam;
-    }
+    newTeam->previousHash = 0;
+    hash_teams[hash(name)] = newTeam;
   }
   else
   {
-    {
-      newTeam->previousHash = last;
-      last->nextHash = newTeam;
-    }
+    newTeam->previousHash = last;
+    last->nextHash = newTeam;
   }
 
 }
@@ -84,52 +80,42 @@ void addGame(char *name, char *team1, char *team2, int s1, int s2, struct game *
   struct game *g;
   if ((*lastGame) == 0)
   {
-    {
-      newGame->previousGeral = 0;
-      newGame->nextGeral = 0;
-      *firstGame = newGame;
-      *lastGame = newGame;
-    }
+    newGame->previousGeral = 0;
+    newGame->nextGeral = 0;
+    *firstGame = newGame;
+    *lastGame = newGame;
   }
   else
   {
-    {
-      g = *lastGame;
-      g->nextGeral = newGame;
-      newGame->previousGeral = *lastGame;
-      newGame->nextGeral = 0;
-      *lastGame = newGame;
-    }
+    g = *lastGame;
+    g->nextGeral = newGame;
+    newGame->previousGeral = *lastGame;
+    newGame->nextGeral = 0;
+    *lastGame = newGame;
   }
 
   if (hash_games[hash(name)] == 0)
   {
-    {
-      newGame->nextHash = 0;
-      newGame->previousHash = 0;
-      hash_games[hash(name)] = newGame;
-    }
+    newGame->nextHash = 0;
+    newGame->previousHash = 0;
+    hash_games[hash(name)] = newGame;
   }
   else
   {
+    g = hash_games[hash(name)];
+    while (g->nextHash != 0)
     {
-      g = hash_games[hash(name)];
-      while (g->nextHash != 0)
-      {
-        g = g->nextHash;
-      }
-
-      newGame->nextHash = 0;
-      newGame->previousHash = g;
-      g->nextHash = newGame;
+      g = g->nextHash;
     }
+
+    newGame->nextHash = 0;
+    newGame->previousHash = g;
+    g->nextHash = newGame;
   }
 
   if (s1 > s2)
   {
-    {
-      teamOne->wins++;
-    }
+    teamOne->wins++;
   }
   else
   {
@@ -138,9 +124,7 @@ void addGame(char *name, char *team1, char *team2, int s1, int s2, struct game *
 
   if (s1 < s2)
   {
-    {
-      teamTwo->wins++;
-    }
+    teamTwo->wins++;
   }
   else
   {
@@ -170,16 +154,14 @@ void deleteHashTeams(struct team **hash_teams)
   {
     if (hash_teams[i] != 0)
     {
+      t1 = hash_teams[i];
+      while (t1 != 0)
       {
-        t1 = hash_teams[i];
-        while (t1 != 0)
-        {
-          t = t1->nextHash;
-          freeTeam(t1);
-          t1 = t;
-        }
-
+        t = t1->nextHash;
+        freeTeam(t1);
+        t1 = t;
       }
+
     }
     else
     {
@@ -198,9 +180,7 @@ int teamExists(char *name, struct team **hash_teams)
   {
     if (strcmp(name, t->name) == 0)
     {
-      {
-        return 0;
-      }
+      return 0;
     }
     else
     {
@@ -217,29 +197,23 @@ int gameExists(char *name, struct game **hash_games)
   struct game *g;
   if (hash_games[hash(name)] == 0)
   {
-    {
-      return -1;
-    }
+    return -1;
   }
   else
   {
+    for (g = hash_games[hash(name)]; g != 0; g = g->nextHash)
     {
-      for (g = hash_games[hash(name)]; g != 0; g = g->nextHash)
+      if (strcmp(name, g->name) == 0)
       {
-        if (strcmp(name, g->name) == 0)
-        {
-          {
-            return 0;
-          }
-        }
-        else
-        {
-          
-        }
-
+        return 0;
+      }
+      else
+      {
+        
       }
 
     }
+
   }
 
   return -1;
@@ -252,9 +226,7 @@ struct team *getTeam(char *name, struct team **hash_teams)
   {
     if (strcmp(name, t->name) == 0)
     {
-      {
-        return t;
-      }
+      return t;
     }
     else
     {
@@ -270,13 +242,34 @@ void changeScore(struct game *g, int s1, int s2)
 {
   if (g->score1 > g->score2)
   {
+    if (s1 < s2)
     {
-      if (s1 < s2)
+      g->team2->wins++;
+      g->team1->wins--;
+    }
+    else
+    {
+      
+    }
+
+    if (s1 == s2)
+    {
+      g->team1->wins--;
+    }
+    else
+    {
+      
+    }
+
+  }
+  else
+  {
+    if (g->score1 < g->score2)
+    {
+      if (s1 > s2)
       {
-        {
-          g->team2->wins++;
-          g->team1->wins--;
-        }
+        g->team1->wins++;
+        g->team2->wins--;
       }
       else
       {
@@ -285,9 +278,7 @@ void changeScore(struct game *g, int s1, int s2)
 
       if (s1 == s2)
       {
-        {
-          g->team1->wins--;
-        }
+        g->team2->wins--;
       }
       else
       {
@@ -295,63 +286,26 @@ void changeScore(struct game *g, int s1, int s2)
       }
 
     }
-  }
-  else
-  {
-    if (g->score1 < g->score2)
-    {
-      {
-        if (s1 > s2)
-        {
-          {
-            g->team1->wins++;
-            g->team2->wins--;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if (s1 == s2)
-        {
-          {
-            g->team2->wins--;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-    }
     else
     {
+      if (s1 > s2)
       {
-        if (s1 > s2)
-        {
-          {
-            g->team1->wins++;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if (s1 < s2)
-        {
-          {
-            g->team2->wins++;
-          }
-        }
-        else
-        {
-          
-        }
-
+        g->team1->wins++;
       }
+      else
+      {
+        
+      }
+
+      if (s1 < s2)
+      {
+        g->team2->wins++;
+      }
+      else
+      {
+        
+      }
+
     }
 
   }
@@ -367,83 +321,63 @@ void removeGame(struct game *g, struct game **hash_games, struct game **lastGame
   changeScore(g, 0, 0);
   if (g->previousHash == 0)
   {
+    if (g->nextHash == 0)
     {
-      if (g->nextHash == 0)
-      {
-        {
-          hash_games[hash(g->name)] = 0;
-        }
-      }
-      else
-      {
-        {
-          game = g->nextHash;
-          game->previousHash = 0;
-          hash_games[hash(g->name)] = game;
-        }
-      }
-
+      hash_games[hash(g->name)] = 0;
     }
+    else
+    {
+      game = g->nextHash;
+      game->previousHash = 0;
+      hash_games[hash(g->name)] = game;
+    }
+
   }
   else
   {
-    {
-      game = g->previousHash;
-      game->nextHash = g->nextHash;
-    }
+    game = g->previousHash;
+    game->nextHash = g->nextHash;
   }
 
   if (g->previousGeral == 0)
   {
+    if (g->nextGeral == 0)
     {
-      if (g->nextGeral == 0)
-      {
-        {
-          *firstGame = 0;
-          *lastGame = 0;
-          freeGame(g);
-          return;
-        }
-      }
-      else
-      {
-        {
-          game = g->nextGeral;
-          game->previousGeral = 0;
-          *firstGame = game;
-          freeGame(g);
-          return;
-        }
-      }
-
+      *firstGame = 0;
+      *lastGame = 0;
+      freeGame(g);
+      return;
     }
+    else
+    {
+      game = g->nextGeral;
+      game->previousGeral = 0;
+      *firstGame = game;
+      freeGame(g);
+      return;
+    }
+
   }
   else
   {
+    if (g->nextGeral == 0)
     {
-      if (g->nextGeral == 0)
-      {
-        {
-          game = g->previousGeral;
-          game->nextGeral = 0;
-          *lastGame = game;
-          freeGame(g);
-          return;
-        }
-      }
-      else
-      {
-        {
-          game = g->previousGeral;
-          game1 = g->nextGeral;
-          game1->previousGeral = game;
-          game->nextGeral = game1;
-          freeGame(g);
-          return;
-        }
-      }
-
+      game = g->previousGeral;
+      game->nextGeral = 0;
+      *lastGame = game;
+      freeGame(g);
+      return;
     }
+    else
+    {
+      game = g->previousGeral;
+      game1 = g->nextGeral;
+      game1->previousGeral = game;
+      game->nextGeral = game1;
+      freeGame(g);
+      return;
+    }
+
   }
 
 }
@@ -458,23 +392,19 @@ int findMaxWins(struct team **hash_teams)
   {
     if (hash_teams[i] != 0)
     {
+      for (t = hash_teams[i]; t != 0; t = t->nextHash)
       {
-        for (t = hash_teams[i]; t != 0; t = t->nextHash)
+        if (t->wins > max)
         {
-          if (t->wins > max)
-          {
-            {
-              max = t->wins;
-            }
-          }
-          else
-          {
-            
-          }
-
+          max = t->wins;
+        }
+        else
+        {
+          
         }
 
       }
+
     }
     else
     {
@@ -497,11 +427,9 @@ void sortAlphabetic(char **array, int max)
     {
       if (strcmp(array[j], array[i]) > 0)
       {
-        {
-          swap = array[i];
-          array[i] = array[j];
-          array[j] = swap;
-        }
+        swap = array[i];
+        array[i] = array[j];
+        array[j] = swap;
       }
       else
       {

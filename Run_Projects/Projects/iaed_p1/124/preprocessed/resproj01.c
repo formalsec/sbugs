@@ -62,15 +62,11 @@ void AdicionaStock()
   quantidade = new_sym_var(sizeof(int) * 8);
   if (identificadorP >= idp)
   {
-    {
-      printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", identificadorP);
-    }
+    printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", identificadorP);
   }
   else
   {
-    {
-      prod[identificadorP].qtd += quantidade;
-    }
+    prod[identificadorP].qtd += quantidade;
   }
 
 }
@@ -94,42 +90,32 @@ void AdicionaProdutoEncomenda()
   peso = prod[identificadorP].peso * quantidade;
   if (identificadorE >= ide)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", identificadorP, identificadorE);
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", identificadorP, identificadorE);
   }
   else
   {
     if (identificadorP >= idp)
     {
-      {
-        printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", identificadorP, identificadorE);
-      }
+      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", identificadorP, identificadorE);
     }
     else
     {
       if (prod[identificadorP].qtd < quantidade)
       {
-        {
-          printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", identificadorP, identificadorE);
-        }
+        printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", identificadorP, identificadorE);
       }
       else
       {
         if ((peso + encom[identificadorE].peso) > 200)
         {
-          {
-            printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", identificadorP, identificadorE);
-          }
+          printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", identificadorP, identificadorE);
         }
         else
         {
-          {
-            encom[identificadorE].peso += peso;
-            encom[identificadorE].prod[identificadorP].qtd += quantidade;
-            prod[identificadorP].qtd -= quantidade;
-            encom[identificadorE].prod[identificadorP].identP = identificadorP;
-          }
+          encom[identificadorE].peso += peso;
+          encom[identificadorE].prod[identificadorP].qtd += quantidade;
+          prod[identificadorP].qtd -= quantidade;
+          encom[identificadorE].prod[identificadorP].identP = identificadorP;
         }
 
       }
@@ -148,27 +134,19 @@ void RemoveStock()
   quantidade = new_sym_var(sizeof(int) * 8);
   if (identificadorP >= idp)
   {
-    {
-      printf("Impossivel remover stock do produto %d. Produto inexistente.\n", identificadorP);
-    }
+    printf("Impossivel remover stock do produto %d. Produto inexistente.\n", identificadorP);
   }
   else
   {
+    if (prod[identificadorP].qtd >= quantidade)
     {
-      if (prod[identificadorP].qtd >= quantidade)
-      {
-        {
-          prod[identificadorP].qtd -= quantidade;
-        }
-      }
-      else
-      {
-        {
-          printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", quantidade, identificadorP);
-        }
-      }
-
+      prod[identificadorP].qtd -= quantidade;
     }
+    else
+    {
+      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", quantidade, identificadorP);
+    }
+
   }
 
 }
@@ -182,26 +160,20 @@ void RemoveProdutoEncomenda()
   identificadorP = new_sym_var(sizeof(int) * 8);
   if (identificadorE >= ide)
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", identificadorP, identificadorE);
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", identificadorP, identificadorE);
   }
   else
   {
     if (identificadorP >= idp)
     {
-      {
-        printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", identificadorP, identificadorE);
-      }
+      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", identificadorP, identificadorE);
     }
     else
     {
-      {
-        peso = prod[identificadorP].peso * encom[identificadorE].prod[identificadorP].qtd;
-        encom[identificadorE].peso -= peso;
-        prod[identificadorP].qtd += encom[identificadorE].prod[identificadorP].qtd;
-        encom[identificadorE].prod[identificadorP].qtd = 0;
-      }
+      peso = prod[identificadorP].peso * encom[identificadorE].prod[identificadorP].qtd;
+      encom[identificadorE].peso -= peso;
+      prod[identificadorP].qtd += encom[identificadorE].prod[identificadorP].qtd;
+      encom[identificadorE].prod[identificadorP].qtd = 0;
     }
 
   }
@@ -216,18 +188,14 @@ void CalculaCusto()
   identificadorE = new_sym_var(sizeof(int) * 8);
   if (identificadorE >= ide)
   {
-    {
-      printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", identificadorE);
-    }
+    printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", identificadorE);
   }
   else
   {
-    {
-      for (i = 0; i < idp; i++)
-        custo += prod[i].preco * encom[identificadorE].prod[i].qtd;
+    for (i = 0; i < idp; i++)
+      custo += prod[i].preco * encom[identificadorE].prod[i].qtd;
 
-      printf("Custo da encomenda %d %d.\n", identificadorE, custo);
-    }
+    printf("Custo da encomenda %d %d.\n", identificadorE, custo);
   }
 
 }
@@ -240,15 +208,11 @@ void AlteraPreco()
   preco = new_sym_var(sizeof(int) * 8);
   if (identificadorP >= idp)
   {
-    {
-      printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", identificadorP);
-    }
+    printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", identificadorP);
   }
   else
   {
-    {
-      prod[identificadorP].preco = preco;
-    }
+    prod[identificadorP].preco = preco;
   }
 
 }
@@ -261,23 +225,17 @@ void DescricaoQuantidade()
   identificadorP = new_sym_var(sizeof(int) * 8);
   if (identificadorE >= ide)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", identificadorE);
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", identificadorE);
   }
   else
   {
     if (identificadorP >= idp)
     {
-      {
-        printf("Impossivel listar produto %d. Produto inexistente.\n", identificadorP);
-      }
+      printf("Impossivel listar produto %d. Produto inexistente.\n", identificadorP);
     }
     else
     {
-      {
-        printf("%s %d.\n", prod[identificadorP].descricao, encom[identificadorE].prod[identificadorP].qtd);
-      }
+      printf("%s %d.\n", prod[identificadorP].descricao, encom[identificadorE].prod[identificadorP].qtd);
     }
 
   }
@@ -293,32 +251,16 @@ void MaiorOcurrencia()
   identificadorP = new_sym_var(sizeof(int) * 8);
   if (identificadorP >= idp)
   {
-    {
-      printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", identificadorP);
-    }
+    printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", identificadorP);
   }
   else
   {
+    for (i = 0; i < ide; i++)
     {
-      for (i = 0; i < ide; i++)
+      if (encom[i].prod[identificadorP].qtd > quantidade)
       {
-        if (encom[i].prod[identificadorP].qtd > quantidade)
-        {
-          {
-            quantidade = encom[i].prod[identificadorP].qtd;
-            encomenda = i;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      if (quantidade != 0)
-      {
-        printf("Maximo produto %d %d %d.\n", identificadorP, encomenda, quantidade);
+        quantidade = encom[i].prod[identificadorP].qtd;
+        encomenda = i;
       }
       else
       {
@@ -326,6 +268,16 @@ void MaiorOcurrencia()
       }
 
     }
+
+    if (quantidade != 0)
+    {
+      printf("Maximo produto %d %d %d.\n", identificadorP, encomenda, quantidade);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -355,40 +307,30 @@ void mergeSort(int p[10000], int aux[10000], int i, int f, char c)
   {
     if ((l > f) || (k > f))
     {
-      {
-        comparador = 0;
-      }
+      comparador = 0;
     }
     else
     {
       if (c == 'P')
       {
-        {
-          comparador = comparadorProdutos(p[k], p[l]);
-        }
+        comparador = comparadorProdutos(p[k], p[l]);
       }
       else
       {
-        {
-          comparador = comparadorProdutosEncomenda(p[k], p[l]);
-        }
+        comparador = comparadorProdutosEncomenda(p[k], p[l]);
       }
 
     }
 
     if ((k <= m) && ((l > f) || comparador))
     {
-      {
-        aux[j] = p[k];
-        k++;
-      }
+      aux[j] = p[k];
+      k++;
     }
     else
     {
-      {
-        aux[j] = p[l];
-        l++;
-      }
+      aux[j] = p[l];
+      l++;
     }
 
   }
@@ -429,42 +371,36 @@ void ListaEncomenda()
   identificadorE = new_sym_var(sizeof(int) * 8);
   if (identificadorE >= ide)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", identificadorE);
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", identificadorE);
   }
   else
   {
+    for (i = 0; i < idp; i++)
     {
-      for (i = 0; i < idp; i++)
+      produtos[i] = -1;
+      if (encom[identificadorE].prod[i].qtd > 0)
       {
-        produtos[i] = -1;
-        if (encom[identificadorE].prod[i].qtd > 0)
-        {
-          {
-            produtos[j++] = encom[identificadorE].prod[i].identP;
-          }
-        }
-        else
-        {
-          
-        }
-
+        produtos[j++] = encom[identificadorE].prod[i].identP;
       }
-
-      for (i = 0; i < j; i++)
+      else
       {
-        aux[i] = produtos[i];
-      }
-
-      mergeSort(aux, produtos, 0, j - 1, 'E');
-      printf("Encomenda %d\n", identificadorE);
-      for (i = 0; i < j; i++)
-      {
-        printf("* %s %d %d\n", prod[produtos[i]].descricao, prod[produtos[i]].preco, encom[identificadorE].prod[produtos[i]].qtd);
+        
       }
 
     }
+
+    for (i = 0; i < j; i++)
+    {
+      aux[i] = produtos[i];
+    }
+
+    mergeSort(aux, produtos, 0, j - 1, 'E');
+    printf("Encomenda %d\n", identificadorE);
+    for (i = 0; i < j; i++)
+    {
+      printf("* %s %d %d\n", prod[produtos[i]].descricao, prod[produtos[i]].preco, encom[identificadorE].prod[produtos[i]].qtd);
+    }
+
   }
 
 }

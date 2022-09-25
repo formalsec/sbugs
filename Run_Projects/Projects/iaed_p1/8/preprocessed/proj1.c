@@ -72,10 +72,8 @@ int main()
       case 'a':
         if (total_produtos == (10000 - 1))
       {
-        {
-          printf("Limite de produtos alcan?ado. Imposs?vel adicionar mais.\n");
-          break;
-        }
+        printf("Limite de produtos alcan?ado. Imposs?vel adicionar mais.\n");
+        break;
       }
       else
       {
@@ -126,11 +124,9 @@ int main()
       {
         if (lista_produtos[i].idp == identificador_temporario)
         {
-          {
-            estado = 1;
-            index_produto = i;
-            break;
-          }
+          estado = 1;
+          index_produto = i;
+          break;
         }
         else
         {
@@ -141,11 +137,9 @@ int main()
 
         if (estado == 0)
       {
-        {
-          printf("Imposs?vel adicionar produto %d ao stock. Produto inexistente.\n", identificador_temporario);
-          estado = -1;
-          break;
-        }
+        printf("Imposs?vel adicionar produto %d ao stock. Produto inexistente.\n", identificador_temporario);
+        estado = -1;
+        break;
       }
       else
       {
@@ -166,10 +160,8 @@ int main()
       case 'N':
         if (total_encomendas == (500 - 1))
       {
-        {
-          printf("Total de encomendas alcan?ado. Imposs?vel adicionar mais.\n");
-          break;
-        }
+        printf("Total de encomendas alcan?ado. Imposs?vel adicionar mais.\n");
+        break;
       }
       else
       {
@@ -207,10 +199,8 @@ int main()
       {
         if (lista_encomendas[i].ide == n)
         {
-          {
-            estado = 1;
-            index_encomenda = i;
-          }
+          estado = 1;
+          index_encomenda = i;
         }
         else
         {
@@ -221,11 +211,9 @@ int main()
 
         if (estado == 0)
       {
-        {
-          printf("Imposs?vel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", identificador_temporario, n);
-          estado = -1;
-          break;
-        }
+        printf("Imposs?vel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", identificador_temporario, n);
+        estado = -1;
+        break;
       }
       else
       {
@@ -237,10 +225,8 @@ int main()
       {
         if (lista_produtos[i].idp == identificador_temporario)
         {
-          {
-            estado = 1;
-            index_produto = i;
-          }
+          estado = 1;
+          index_produto = i;
         }
         else
         {
@@ -251,11 +237,9 @@ int main()
 
         if (estado == 0)
       {
-        {
-          printf("Imposs?vel adicionar produto %d a encomenda %d. Produto inexistente.\n", identificador_temporario, n);
-          estado = -1;
-          break;
-        }
+        printf("Imposs?vel adicionar produto %d a encomenda %d. Produto inexistente.\n", identificador_temporario, n);
+        estado = -1;
+        break;
       }
       else
       {
@@ -272,10 +256,8 @@ int main()
         quantidade_temporaria = converte_string_int(qtd_temp, i);
         if (lista_produtos[index_produto].qtd < quantidade_temporaria)
       {
-        {
-          printf("Imposs?vel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", identificador_temporario, n);
-          break;
-        }
+        printf("Imposs?vel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", identificador_temporario, n);
+        break;
       }
       else
       {
@@ -288,10 +270,8 @@ int main()
 
         if (peso_temporario > 200)
       {
-        {
-          printf("Imposs?vel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", identificador_temporario, n);
-          break;
-        }
+        printf("Imposs?vel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", identificador_temporario, n);
+        break;
       }
       else
       {
@@ -302,10 +282,8 @@ int main()
         for (i = 0; lista_encomendas[n].produtos_na_encomenda[i] != (-1); i++)
         if (lista_encomendas[n].produtos_na_encomenda[i] == identificador_temporario)
       {
-        {
-          estado = 1;
-          break;
-        }
+        estado = 1;
+        break;
       }
       else
       {
@@ -315,16 +293,12 @@ int main()
 
         if (estado == 1)
       {
-        {
-          lista_encomendas[n].qtd[i] += quantidade_temporaria;
-        }
+        lista_encomendas[n].qtd[i] += quantidade_temporaria;
       }
       else
       {
-        {
-          lista_encomendas[n].produtos_na_encomenda[i] = identificador_temporario;
-          lista_encomendas[n].qtd[i] = quantidade_temporaria;
-        }
+        lista_encomendas[n].produtos_na_encomenda[i] = identificador_temporario;
+        lista_encomendas[n].qtd[i] = quantidade_temporaria;
       }
 
         estado = -1;
@@ -344,11 +318,9 @@ int main()
       {
         if (lista_produtos[i].idp == identificador_temporario)
         {
-          {
-            estado = 1;
-            index_produto = i;
-            break;
-          }
+          estado = 1;
+          index_produto = i;
+          break;
         }
         else
         {
@@ -359,11 +331,9 @@ int main()
 
         if (estado == 0)
       {
-        {
-          printf("Imposs?vel remover stock do produto %d. Produto inexistente.\n", identificador_temporario);
-          estado = -1;
-          break;
-        }
+        printf("Imposs?vel remover stock do produto %d. Produto inexistente.\n", identificador_temporario);
+        estado = -1;
+        break;
       }
       else
       {
@@ -380,10 +350,8 @@ int main()
         quantidade_temporaria = converte_string_int(qtd_temp, i);
         if (quantidade_temporaria > lista_produtos[identificador_temporario].qtd)
       {
-        {
-          printf("Imposs?vel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", quantidade_temporaria, lista_produtos[identificador_temporario].idp);
-          break;
-        }
+        printf("Imposs?vel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", quantidade_temporaria, lista_produtos[identificador_temporario].idp);
+        break;
       }
       else
       {
@@ -414,10 +382,8 @@ int main()
       {
         if (lista_encomendas[i].ide == n)
         {
-          {
-            estado = 1;
-            index_encomenda = i;
-          }
+          estado = 1;
+          index_encomenda = i;
         }
         else
         {
@@ -428,11 +394,9 @@ int main()
 
         if (estado == 0)
       {
-        {
-          printf("Imposs?vel remover produto %d a encomenda %d. Encomenda inexistente.\n", identificador_temporario, n);
-          estado = -1;
-          break;
-        }
+        printf("Imposs?vel remover produto %d a encomenda %d. Encomenda inexistente.\n", identificador_temporario, n);
+        estado = -1;
+        break;
       }
       else
       {
@@ -444,10 +408,8 @@ int main()
       {
         if (lista_produtos[m].idp == identificador_temporario)
         {
-          {
-            estado = 1;
-            index_produto = m;
-          }
+          estado = 1;
+          index_produto = m;
         }
         else
         {
@@ -458,11 +420,9 @@ int main()
 
         if (estado == 0)
       {
-        {
-          printf("Imposs?vel remover produto %d a encomenda %d. Produto inexistente.\n", identificador_temporario, n);
-          estado = -1;
-          break;
-        }
+        printf("Imposs?vel remover produto %d a encomenda %d. Produto inexistente.\n", identificador_temporario, n);
+        estado = -1;
+        break;
       }
       else
       {
@@ -503,10 +463,8 @@ int main()
       {
         if (lista_encomendas[i].ide == identificador_temporario)
         {
-          {
-            index_encomenda = i;
-            break;
-          }
+          index_encomenda = i;
+          break;
         }
         else
         {
@@ -517,10 +475,8 @@ int main()
 
         if (i == 500)
       {
-        {
-          printf("Imposs?vel calcular custo da encomenda %d. Encomenda inexistente.\n", identificador_temporario);
-          break;
-        }
+        printf("Imposs?vel calcular custo da encomenda %d. Encomenda inexistente.\n", identificador_temporario);
+        break;
       }
       else
       {
@@ -550,11 +506,9 @@ int main()
       {
         if (lista_produtos[i].idp == identificador_temporario)
         {
-          {
-            estado = 1;
-            index_produto = i;
-            break;
-          }
+          estado = 1;
+          index_produto = i;
+          break;
         }
         else
         {
@@ -565,11 +519,9 @@ int main()
 
         if (estado == 0)
       {
-        {
-          printf("Imposs?vel alterar preco do produto %d. Produto inexistente.\n", identificador_temporario);
-          estado = -1;
-          break;
-        }
+        printf("Imposs?vel alterar preco do produto %d. Produto inexistente.\n", identificador_temporario);
+        estado = -1;
+        break;
       }
       else
       {
@@ -607,10 +559,8 @@ int main()
       {
         if (lista_encomendas[i].ide == n)
         {
-          {
-            estado = 1;
-            index_encomenda = i;
-          }
+          estado = 1;
+          index_encomenda = i;
         }
         else
         {
@@ -621,11 +571,9 @@ int main()
 
         if (estado == 0)
       {
-        {
-          printf("Imposs?vel listar encomenda %d. Encomenda inexistente.\n", n);
-          estado = -1;
-          break;
-        }
+        printf("Imposs?vel listar encomenda %d. Encomenda inexistente.\n", n);
+        estado = -1;
+        break;
       }
       else
       {
@@ -637,10 +585,8 @@ int main()
       {
         if (lista_produtos[i].idp == identificador_temporario)
         {
-          {
-            estado = 1;
-            index_produto = i;
-          }
+          estado = 1;
+          index_produto = i;
         }
         else
         {
@@ -651,11 +597,9 @@ int main()
 
         if (estado == 0)
       {
-        {
-          printf("Impossivel listar produto %d. Produto inexistente.\n", identificador_temporario);
-          estado = -1;
-          break;
-        }
+        printf("Impossivel listar produto %d. Produto inexistente.\n", identificador_temporario);
+        estado = -1;
+        break;
       }
       else
       {
@@ -710,11 +654,9 @@ int main()
       {
         if (lista_produtos[i].idp == identificador_temporario)
         {
-          {
-            estado = 1;
-            index_produto = i;
-            break;
-          }
+          estado = 1;
+          index_produto = i;
+          break;
         }
         else
         {
@@ -725,11 +667,9 @@ int main()
 
         if (estado == 0)
       {
-        {
-          printf("Imposs?vel listar maximo do produto %d. Produto inexistente.\n", identificador_temporario);
-          estado = -1;
-          break;
-        }
+        printf("Imposs?vel listar maximo do produto %d. Produto inexistente.\n", identificador_temporario);
+        estado = -1;
+        break;
       }
       else
       {
@@ -744,22 +684,18 @@ int main()
         {
           if (lista_encomendas[i].produtos_na_encomenda[k] == identificador_temporario)
           {
+            if (lista_encomendas[i].qtd[k] > max)
             {
-              if (lista_encomendas[i].qtd[k] > max)
-              {
-                {
-                  max = lista_encomendas[i].qtd[k];
-                  n = i;
-                  m = k;
-                }
-              }
-              else
-              {
-                
-              }
-
-              break;
+              max = lista_encomendas[i].qtd[k];
+              n = i;
+              m = k;
             }
+            else
+            {
+              
+            }
+
+            break;
           }
           else
           {
@@ -786,28 +722,26 @@ int main()
         printf("Produtos\n");
         if (total_produtos >= 0)
       {
+        left = 0;
+        right = total_produtos;
+        for (a = 0 + left; a <= right; a++)
         {
-          left = 0;
-          right = total_produtos;
-          for (a = 0 + left; a <= right; a++)
+          struct produto v = lista_produtos[a];
+          b = a - 1;
+          while ((b >= left) && (v.preco < lista_produtos[b].preco))
           {
-            struct produto v = lista_produtos[a];
-            b = a - 1;
-            while ((b >= left) && (v.preco < lista_produtos[b].preco))
-            {
-              lista_produtos[b + 1] = lista_produtos[b];
-              b--;
-            }
-
-            lista_produtos[b + 1] = v;
+            lista_produtos[b + 1] = lista_produtos[b];
+            b--;
           }
 
-          for (i = 0; i <= total_produtos; i++)
-          {
-            printf("* %s %d %d\n", lista_produtos[i].descricao, lista_produtos[i].preco, lista_produtos[i].qtd);
-          }
-
+          lista_produtos[b + 1] = v;
         }
+
+        for (i = 0; i <= total_produtos; i++)
+        {
+          printf("* %s %d %d\n", lista_produtos[i].descricao, lista_produtos[i].preco, lista_produtos[i].qtd);
+        }
+
       }
       else
       {

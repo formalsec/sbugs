@@ -102,10 +102,8 @@ void adiciona_jogo(int NL, node_htable_jogos **entrada_hash_jogos, lista_ligada_
   score2 = new_sym_var(sizeof(int) * 8);
   if (procura_jogo_aux(nome_jogo, entrada_hash_jogos))
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-      return;
-    }
+    printf("%d Jogo existente.\n", NL);
+    return;
   }
   else
   {
@@ -114,10 +112,8 @@ void adiciona_jogo(int NL, node_htable_jogos **entrada_hash_jogos, lista_ligada_
 
   if ((!procura_equipa_aux(equipa1, entrada_hash_equipas)) || (!procura_equipa_aux(equipa2, entrada_hash_equipas)))
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -143,10 +139,8 @@ void adiciona_equipa(int NL, node_htable_equipas **entrada_hash, lista_ligada_eq
   nome_equipa[10 - 1] = '\0';
   if (procura_equipa_aux(nome_equipa, entrada_hash))
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-      return;
-    }
+    printf("%d Equipa existente.\n", NL);
+    return;
   }
   else
   {
@@ -230,10 +224,8 @@ void apaga_jogo(int NL, node_htable_jogos **entrada_hash_jogos, lista_ligada_jog
   nome_jogo[10 - 1] = '\0';
   if (!(pt_jogo = procura_jogo_aux(nome_jogo, entrada_hash_jogos)))
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -242,9 +234,7 @@ void apaga_jogo(int NL, node_htable_jogos **entrada_hash_jogos, lista_ligada_jog
 
   if (pt_jogo->score1 > pt_jogo->score2)
   {
-    {
-      pt_jogo->equipa1->jogos_ganhos--;
-    }
+    pt_jogo->equipa1->jogos_ganhos--;
   }
   else
   {
@@ -253,9 +243,7 @@ void apaga_jogo(int NL, node_htable_jogos **entrada_hash_jogos, lista_ligada_jog
 
   if (pt_jogo->score1 < pt_jogo->score2)
   {
-    {
-      pt_jogo->equipa2->jogos_ganhos--;
-    }
+    pt_jogo->equipa2->jogos_ganhos--;
   }
   else
   {
@@ -284,10 +272,8 @@ void altera_score(int NL, node_htable_jogos **entrada_hash_jogos)
   score2 = new_sym_var(sizeof(int) * 8);
   if (!procura_jogo_aux(nome_jogo, entrada_hash_jogos))
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -299,10 +285,8 @@ void altera_score(int NL, node_htable_jogos **entrada_hash_jogos)
   score_antes2 = pt_jogo->score2;
   if ((score_antes1 > score_antes2) && (score1 < score2))
   {
-    {
-      pt_jogo->equipa1->jogos_ganhos--;
-      pt_jogo->equipa2->jogos_ganhos++;
-    }
+    pt_jogo->equipa1->jogos_ganhos--;
+    pt_jogo->equipa2->jogos_ganhos++;
   }
   else
   {
@@ -311,10 +295,8 @@ void altera_score(int NL, node_htable_jogos **entrada_hash_jogos)
 
   if ((score_antes1 < score_antes2) && (score1 > score2))
   {
-    {
-      pt_jogo->equipa1->jogos_ganhos++;
-      pt_jogo->equipa2->jogos_ganhos--;
-    }
+    pt_jogo->equipa1->jogos_ganhos++;
+    pt_jogo->equipa2->jogos_ganhos--;
   }
   else
   {
@@ -323,9 +305,7 @@ void altera_score(int NL, node_htable_jogos **entrada_hash_jogos)
 
   if ((score_antes1 == score_antes2) && (score1 < score2))
   {
-    {
-      pt_jogo->equipa2->jogos_ganhos++;
-    }
+    pt_jogo->equipa2->jogos_ganhos++;
   }
   else
   {
@@ -334,9 +314,7 @@ void altera_score(int NL, node_htable_jogos **entrada_hash_jogos)
 
   if ((score_antes1 == score_antes2) && (score1 > score2))
   {
-    {
-      pt_jogo->equipa1->jogos_ganhos++;
-    }
+    pt_jogo->equipa1->jogos_ganhos++;
   }
   else
   {
@@ -345,9 +323,7 @@ void altera_score(int NL, node_htable_jogos **entrada_hash_jogos)
 
   if ((score_antes1 < score_antes2) && (score1 == score2))
   {
-    {
-      pt_jogo->equipa2->jogos_ganhos--;
-    }
+    pt_jogo->equipa2->jogos_ganhos--;
   }
   else
   {
@@ -356,9 +332,7 @@ void altera_score(int NL, node_htable_jogos **entrada_hash_jogos)
 
   if ((score_antes1 > score_antes2) && (score1 == score2))
   {
-    {
-      pt_jogo->equipa1->jogos_ganhos--;
-    }
+    pt_jogo->equipa1->jogos_ganhos--;
   }
   else
   {
@@ -386,9 +360,7 @@ void lista_melhores_equipas(int NL, lista_ligada_equipas **lista_ligada)
   {
     if (node->equipa->jogos_ganhos > max_vitorias)
     {
-      {
-        max_vitorias = node->equipa->jogos_ganhos;
-      }
+      max_vitorias = node->equipa->jogos_ganhos;
     }
     else
     {
@@ -404,9 +376,7 @@ void lista_melhores_equipas(int NL, lista_ligada_equipas **lista_ligada)
   {
     if (node->equipa->jogos_ganhos == max_vitorias)
     {
-      {
-        printf("%d * %s\n", NL, node->equipa->nome_equipa);
-      }
+      printf("%d * %s\n", NL, node->equipa->nome_equipa);
     }
     else
     {

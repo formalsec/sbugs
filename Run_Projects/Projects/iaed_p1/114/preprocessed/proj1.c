@@ -181,40 +181,34 @@ void novo_prod_enc()
         }
         else
         {
+          for (i = 0; i < reg_encs[enc].num_prods; i++)
+            if (reg_encs[enc].idp[i] == prod)
           {
-            for (i = 0; i < reg_encs[enc].num_prods; i++)
-              if (reg_encs[enc].idp[i] == prod)
-            {
-              {
-                existe = 1;
-                id = i;
-                break;
-              }
-            }
-            else
-            {
-              
-            }
-
-
-            if (existe)
-            {
-              reg_encs[enc].qtd[id] += qtd;
-            }
-            else
-            {
-              {
-                id = reg_encs[enc].num_prods;
-                reg_encs[enc].idp[id] = prod;
-                reg_encs[enc].qtd[id] = qtd;
-                reg_encs[enc].num_prods++;
-              }
-            }
-
-            reg_encs[enc].peso += reg_prods[prod].peso * qtd;
-            reg_encs[enc].preco += reg_prods[prod].preco * qtd;
-            reg_prods[prod].stock -= qtd;
+            existe = 1;
+            id = i;
+            break;
           }
+          else
+          {
+            
+          }
+
+
+          if (existe)
+          {
+            reg_encs[enc].qtd[id] += qtd;
+          }
+          else
+          {
+            id = reg_encs[enc].num_prods;
+            reg_encs[enc].idp[id] = prod;
+            reg_encs[enc].qtd[id] = qtd;
+            reg_encs[enc].num_prods++;
+          }
+
+          reg_encs[enc].peso += reg_prods[prod].peso * qtd;
+          reg_encs[enc].preco += reg_prods[prod].preco * qtd;
+          reg_prods[prod].stock -= qtd;
         }
 
       }
@@ -270,38 +264,32 @@ void remover_prod_enc()
     }
     else
     {
+      for (i = 0; i < reg_encs[enc].num_prods; i++)
+        if (reg_encs[enc].idp[i] == prod)
       {
-        for (i = 0; i < reg_encs[enc].num_prods; i++)
-          if (reg_encs[enc].idp[i] == prod)
-        {
-          {
-            id = i;
-            break;
-          }
-        }
-        else
-        {
-          
-        }
-
-
-        if (id >= 0)
-        {
-          {
-            reg_encs[enc].peso -= reg_prods[prod].peso * reg_encs[enc].qtd[id];
-            reg_encs[enc].preco -= reg_prods[prod].preco * reg_encs[enc].qtd[id];
-            reg_prods[prod].stock += reg_encs[enc].qtd[id];
-            remover_elemento(id, reg_encs[enc].idp, -1, 200);
-            remover_elemento(id, reg_encs[enc].qtd, 0, 200);
-            reg_encs[enc].num_prods--;
-          }
-        }
-        else
-        {
-          
-        }
-
+        id = i;
+        break;
       }
+      else
+      {
+        
+      }
+
+
+      if (id >= 0)
+      {
+        reg_encs[enc].peso -= reg_prods[prod].peso * reg_encs[enc].qtd[id];
+        reg_encs[enc].preco -= reg_prods[prod].preco * reg_encs[enc].qtd[id];
+        reg_prods[prod].stock += reg_encs[enc].qtd[id];
+        remover_elemento(id, reg_encs[enc].idp, -1, 200);
+        remover_elemento(id, reg_encs[enc].qtd, 0, 200);
+        reg_encs[enc].num_prods--;
+      }
+      else
+      {
+        
+      }
+
     }
 
   }
@@ -339,32 +327,15 @@ void alt_preco()
   }
   else
   {
+    for (i = 0; i < ide; i++)
     {
-      for (i = 0; i < ide; i++)
+      for (j = 0; j < reg_encs[i].num_prods; j++)
       {
-        for (j = 0; j < reg_encs[i].num_prods; j++)
+        if (reg_encs[i].idp[j] == prod)
         {
-          if (reg_encs[i].idp[j] == prod)
-          {
-            {
-              existe = 1;
-              id = j;
-              break;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-        if (existe)
-        {
-          {
-            reg_encs[i].preco += reg_encs[i].qtd[id] * (preco - reg_prods[prod].preco);
-            existe = 0;
-          }
+          existe = 1;
+          id = j;
+          break;
         }
         else
         {
@@ -373,8 +344,19 @@ void alt_preco()
 
       }
 
-      reg_prods[prod].preco = preco;
+      if (existe)
+      {
+        reg_encs[i].preco += reg_encs[i].qtd[id] * (preco - reg_prods[prod].preco);
+        existe = 0;
+      }
+      else
+      {
+        
+      }
+
     }
+
+    reg_prods[prod].preco = preco;
   }
 
 }
@@ -401,33 +383,29 @@ void quant_prod_enc()
     }
     else
     {
+      for (i = 0; i < reg_encs[enc].num_prods; i++)
+        if (reg_encs[enc].idp[i] == prod)
       {
-        for (i = 0; i < reg_encs[enc].num_prods; i++)
-          if (reg_encs[enc].idp[i] == prod)
-        {
-          {
-            id = i;
-            existe = 1;
-            break;
-          }
-        }
-        else
-        {
-          
-        }
-
-
-        if (existe)
-        {
-          qtd = reg_encs[enc].qtd[id];
-        }
-        else
-        {
-          
-        }
-
-        printf("%s %d.\n", reg_prods[prod].desc, qtd);
+        id = i;
+        existe = 1;
+        break;
       }
+      else
+      {
+        
+      }
+
+
+      if (existe)
+      {
+        qtd = reg_encs[enc].qtd[id];
+      }
+      else
+      {
+        
+      }
+
+      printf("%s %d.\n", reg_prods[prod].desc, qtd);
     }
 
   }
@@ -452,49 +430,43 @@ void enc_maior_qtd_prod()
   {
     if (ide > 0)
     {
+      for (i = 0; i < ide; i++)
       {
-        for (i = 0; i < ide; i++)
+        for (j = 0; j < reg_encs[i].num_prods; j++)
+          if (reg_encs[i].idp[j] == prod)
         {
-          for (j = 0; j < reg_encs[i].num_prods; j++)
-            if (reg_encs[i].idp[j] == prod)
-          {
-            {
-              existe = 1;
-              id = j;
-              break;
-            }
-          }
-          else
-          {
-            
-          }
-
-
-          if (existe && (qtd < reg_encs[i].qtd[id]))
-          {
-            {
-              qtd = reg_encs[i].qtd[id];
-              enc = i;
-            }
-          }
-          else
-          {
-            
-          }
-
-          existe = 0;
-        }
-
-        if (qtd > 0)
-        {
-          printf("Maximo produto %d %d %d.\n", prod, enc, qtd);
+          existe = 1;
+          id = j;
+          break;
         }
         else
         {
           
         }
 
+
+        if (existe && (qtd < reg_encs[i].qtd[id]))
+        {
+          qtd = reg_encs[i].qtd[id];
+          enc = i;
+        }
+        else
+        {
+          
+        }
+
+        existe = 0;
       }
+
+      if (qtd > 0)
+      {
+        printf("Maximo produto %d %d %d.\n", prod, enc, qtd);
+      }
+      else
+      {
+        
+      }
+
     }
     else
     {
@@ -533,35 +505,31 @@ void listar_prods_enc()
   }
   else
   {
+    for (i = 0; i < reg_encs[enc].num_prods; i++)
     {
-      for (i = 0; i < reg_encs[enc].num_prods; i++)
-      {
-        id = reg_encs[enc].idp[i];
-        prods[i] = reg_prods[id];
-      }
-
-      mergesort(prods, 0, reg_encs[enc].num_prods - 1, 0);
-      printf("Encomenda %d\n", enc);
-      for (i = 0; i < reg_encs[enc].num_prods; i++)
-      {
-        for (j = 0; j < reg_encs[enc].num_prods; j++)
-          if (prods[i].idp == reg_encs[enc].idp[j])
-        {
-          {
-            id = j;
-            break;
-          }
-        }
-        else
-        {
-          
-        }
-
-
-        printf("* %s %d %d\n", prods[i].desc, prods[i].preco, reg_encs[enc].qtd[id]);
-      }
-
+      id = reg_encs[enc].idp[i];
+      prods[i] = reg_prods[id];
     }
+
+    mergesort(prods, 0, reg_encs[enc].num_prods - 1, 0);
+    printf("Encomenda %d\n", enc);
+    for (i = 0; i < reg_encs[enc].num_prods; i++)
+    {
+      for (j = 0; j < reg_encs[enc].num_prods; j++)
+        if (prods[i].idp == reg_encs[enc].idp[j])
+      {
+        id = j;
+        break;
+      }
+      else
+      {
+        
+      }
+
+
+      printf("* %s %d %d\n", prods[i].desc, prods[i].preco, reg_encs[enc].qtd[id]);
+    }
+
   }
 
 }

@@ -32,32 +32,21 @@ link_jogo apaga_jogo_lista(link_jogo head, char *nome)
   {
     if (x->jogo->nome[0] == nome[0])
     {
+      if (x->jogo->nome[1] == nome[1])
       {
-        if (x->jogo->nome[1] == nome[1])
+        if (!strcmp(x->jogo->nome, nome))
         {
+          if (x == head)
           {
-            if (!strcmp(x->jogo->nome, nome))
-            {
-              {
-                if (x == head)
-                {
-                  head = x->next;
-                }
-                else
-                {
-                  prev->next = x->next;
-                }
-
-                free(x);
-                return head;
-              }
-            }
-            else
-            {
-              
-            }
-
+            head = x->next;
           }
+          else
+          {
+            prev->next = x->next;
+          }
+
+          free(x);
+          return head;
         }
         else
         {
@@ -65,6 +54,11 @@ link_jogo apaga_jogo_lista(link_jogo head, char *nome)
         }
 
       }
+      else
+      {
+        
+      }
+
     }
     else
     {
@@ -110,18 +104,14 @@ void insere_equipa_lista(link_equipa *tab_equipas, char *equipa)
   n = nova_equipa_lista(equipa);
   if (tab_equipas[h] == 0)
   {
-    {
-      tab_equipas[h] = n;
-    }
+    tab_equipas[h] = n;
   }
   else
   {
-    {
-      for (x = tab_equipas[h]; x->next != 0; x = x->next)
-        ;
+    for (x = tab_equipas[h]; x->next != 0; x = x->next)
+      ;
 
-      x->next = n;
-    }
+    x->next = n;
   }
 
   return;
@@ -138,19 +128,15 @@ link_equipa procura_equipa_lista(link_equipa *tab_equipas, char *equipa)
   {
     if (x->size_e == comp)
     {
+      if (!strcmp(x->equipa, equipa))
       {
-        if (!strcmp(x->equipa, equipa))
-        {
-          {
-            return x;
-          }
-        }
-        else
-        {
-          
-        }
-
+        return x;
       }
+      else
+      {
+        
+      }
+
     }
     else
     {

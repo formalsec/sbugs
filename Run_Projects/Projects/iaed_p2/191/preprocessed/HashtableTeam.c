@@ -98,24 +98,18 @@ void deleteHTT(HTT *table, Team *team)
   {
     if (!strcmp(vector[i]->name, key))
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {
-      {
-        i = (i + k) % factor;
-      }
+      i = (i + k) % factor;
     }
 
   }
 
   if (vector[i] == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -140,15 +134,11 @@ Team *getTeam(HTT *table, char *name)
   {
     if (!strcmp(vector[i]->name, name))
     {
-      {
-        return vector[i];
-      }
+      return vector[i];
     }
     else
     {
-      {
-        i = (i + k) % factor;
-      }
+      i = (i + k) % factor;
     }
 
   }
@@ -167,23 +157,19 @@ void freeHTT(HTT *table)
   vector = table->items;
   if (size >= 0)
   {
+    for (i = 0; i < factor; i++)
     {
-      for (i = 0; i < factor; i++)
+      if (vector[i] != 0)
       {
-        if (vector[i] != 0)
-        {
-          {
-            freeTeam(vector[i]);
-          }
-        }
-        else
-        {
-          
-        }
-
+        freeTeam(vector[i]);
+      }
+      else
+      {
+        
       }
 
     }
+
   }
   else
   {

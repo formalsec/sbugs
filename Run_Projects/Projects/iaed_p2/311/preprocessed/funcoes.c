@@ -43,10 +43,8 @@ void addJ(hashJ hash, hashE teams, link_J *jogos, int count, int *wins, int *fla
   score2 = new_sym_var(sizeof(int) * 8);
   if (procura_hash_jogo(hash, nome, 1013) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", count);
-      return;
-    }
+    printf("%d Jogo existente.\n", count);
+    return;
   }
   else
   {
@@ -57,10 +55,8 @@ void addJ(hashJ hash, hashE teams, link_J *jogos, int count, int *wins, int *fla
   node2 = procura_hash_equipa(teams, equipa2, 1013);
   if ((node1 == 0) || (node2 == 0))
   {
-    {
-      printf("%d Equipa inexistente.\n", count);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", count);
+    return;
   }
   else
   {
@@ -69,17 +65,13 @@ void addJ(hashJ hash, hashE teams, link_J *jogos, int count, int *wins, int *fla
 
   if (score1 > score2)
   {
-    {
-      equipa = node1->equipa;
-    }
+    equipa = node1->equipa;
   }
   else
   {
     if (score2 > score1)
     {
-      {
-        equipa = node2->equipa;
-      }
+      equipa = node2->equipa;
     }
     else
     {
@@ -90,32 +82,26 @@ void addJ(hashJ hash, hashE teams, link_J *jogos, int count, int *wins, int *fla
 
   if (equipa != 0)
   {
+    if ((++equipa->wins) > (*wins))
     {
-      if ((++equipa->wins) > (*wins))
+      (*wins)++;
+      *flag = 2;
+      *new = equipa;
+    }
+    else
+    {
+      if (equipa->wins == (*wins))
       {
-        {
-          (*wins)++;
-          *flag = 2;
-          *new = equipa;
-        }
+        *flag = 1;
+        *new = equipa;
       }
       else
       {
-        if (equipa->wins == (*wins))
-        {
-          {
-            *flag = 1;
-            *new = equipa;
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
     }
+
   }
   else
   {
@@ -151,10 +137,8 @@ void procura_jogo(hashJ jogos, int contador)
   }
   else
   {
-    {
-      printf("%d ", contador);
-      printNodeJ(jogo);
-    }
+    printf("%d ", contador);
+    printNodeJ(jogo);
   }
 
   return;
@@ -174,10 +158,8 @@ void apaga_jogo(hashJ jogos, hashE equipas, link_J *lista, link_E *winners, int 
   node = procura_hash_jogo(jogos, nome, 1013);
   if (node == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", contador);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", contador);
+    return;
   }
   else
   {
@@ -186,17 +168,13 @@ void apaga_jogo(hashJ jogos, hashE equipas, link_J *lista, link_E *winners, int 
 
   if (node->jogo->score1 > node->jogo->score2)
   {
-    {
-      equipa = procura_hash_equipa(equipas, node->jogo->equipa1, 1013)->equipa;
-    }
+    equipa = procura_hash_equipa(equipas, node->jogo->equipa1, 1013)->equipa;
   }
   else
   {
     if (node->jogo->score2 > node->jogo->score1)
     {
-      {
-        equipa = procura_hash_equipa(equipas, node->jogo->equipa2, 1013)->equipa;
-      }
+      equipa = procura_hash_equipa(equipas, node->jogo->equipa2, 1013)->equipa;
     }
     else
     {
@@ -207,10 +185,8 @@ void apaga_jogo(hashJ jogos, hashE equipas, link_J *lista, link_E *winners, int 
 
   if (equipa != 0)
   {
-    {
-      *winners = deleteE(*winners, equipa->nome);
-      equipa->wins--;
-    }
+    *winners = deleteE(*winners, equipa->nome);
+    equipa->wins--;
   }
   else
   {
@@ -250,151 +226,125 @@ void alt_score(hashJ jogos, hashE equipas, link_E *winners, Equipa *new, int cou
   node = procura_hash_jogo(jogos, nome, 1013);
   if (node == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", count);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", count);
+    return;
   }
   else
   {
+    equipa1 = procura_hash_equipa(equipas, node->jogo->equipa1, 1013)->equipa;
+    equipa2 = procura_hash_equipa(equipas, node->jogo->equipa2, 1013)->equipa;
+    if ((score1 > score2) && (node->jogo->score1 <= node->jogo->score2))
     {
-      equipa1 = procura_hash_equipa(equipas, node->jogo->equipa1, 1013)->equipa;
-      equipa2 = procura_hash_equipa(equipas, node->jogo->equipa2, 1013)->equipa;
-      if ((score1 > score2) && (node->jogo->score1 <= node->jogo->score2))
+      if (node->jogo->score1 < node->jogo->score2)
       {
-        {
-          if (node->jogo->score1 < node->jogo->score2)
-          {
-            {
-              equipa2->wins--;
-              *winners = deleteE(*winners, equipa2->nome);
-            }
-          }
-          else
-          {
-            
-          }
-
-          if ((++equipa1->wins) > (*wins))
-          {
-            {
-              (*wins)++;
-              *flag = 2;
-              *new = equipa1;
-            }
-          }
-          else
-          {
-            if (equipa1->wins == (*wins))
-            {
-              {
-                *flag = 1;
-                *new = equipa1;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-        }
-      }
-      else
-      {
-        if ((score2 > score1) && (node->jogo->score2 <= node->jogo->score1))
-        {
-          {
-            if (node->jogo->score2 < node->jogo->score1)
-            {
-              {
-                *winners = deleteE(*winners, equipa1->nome);
-                equipa1->wins--;
-              }
-            }
-            else
-            {
-              
-            }
-
-            if ((++equipa2->wins) > (*wins))
-            {
-              {
-                (*wins)++;
-                *flag = 2;
-                *new = equipa2;
-              }
-            }
-            else
-            {
-              if (equipa2->wins == (*wins))
-              {
-                {
-                  *flag = 1;
-                  *new = equipa2;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-          }
-        }
-        else
-        {
-          if (score1 == score2)
-          {
-            {
-              if (node->jogo->score1 > node->jogo->score2)
-              {
-                {
-                  *winners = deleteE(*winners, equipa1->nome);
-                  equipa1->wins--;
-                }
-              }
-              else
-              {
-                if (node->jogo->score2 > node->jogo->score1)
-                {
-                  {
-                    *winners = deleteE(*winners, equipa2->nome);
-                    equipa2->wins--;
-                  }
-                }
-                else
-                {
-                  
-                }
-
-              }
-
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-      }
-
-      node->jogo->score1 = score1;
-      node->jogo->score2 = score2;
-      if (((*winners) == 0) && ((*flag) == 0))
-      {
-        *flag = 3;
+        equipa2->wins--;
+        *winners = deleteE(*winners, equipa2->nome);
       }
       else
       {
         
       }
 
+      if ((++equipa1->wins) > (*wins))
+      {
+        (*wins)++;
+        *flag = 2;
+        *new = equipa1;
+      }
+      else
+      {
+        if (equipa1->wins == (*wins))
+        {
+          *flag = 1;
+          *new = equipa1;
+        }
+        else
+        {
+          
+        }
+
+      }
+
     }
+    else
+    {
+      if ((score2 > score1) && (node->jogo->score2 <= node->jogo->score1))
+      {
+        if (node->jogo->score2 < node->jogo->score1)
+        {
+          *winners = deleteE(*winners, equipa1->nome);
+          equipa1->wins--;
+        }
+        else
+        {
+          
+        }
+
+        if ((++equipa2->wins) > (*wins))
+        {
+          (*wins)++;
+          *flag = 2;
+          *new = equipa2;
+        }
+        else
+        {
+          if (equipa2->wins == (*wins))
+          {
+            *flag = 1;
+            *new = equipa2;
+          }
+          else
+          {
+            
+          }
+
+        }
+
+      }
+      else
+      {
+        if (score1 == score2)
+        {
+          if (node->jogo->score1 > node->jogo->score2)
+          {
+            *winners = deleteE(*winners, equipa1->nome);
+            equipa1->wins--;
+          }
+          else
+          {
+            if (node->jogo->score2 > node->jogo->score1)
+            {
+              *winners = deleteE(*winners, equipa2->nome);
+              equipa2->wins--;
+            }
+            else
+            {
+              
+            }
+
+          }
+
+        }
+        else
+        {
+          
+        }
+
+      }
+
+    }
+
+    node->jogo->score1 = score1;
+    node->jogo->score2 = score2;
+    if (((*winners) == 0) && ((*flag) == 0))
+    {
+      *flag = 3;
+    }
+    else
+    {
+      
+    }
+
   }
 
   return;
@@ -412,10 +362,8 @@ void add_equipa(hashE equipas, Equipa *new_winner, int wins, int *flag, int cont
   nome[10 - 1] = '\0';
   if (procura_hash_equipa(equipas, nome, 1013) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", contador);
-      return;
-    }
+    printf("%d Equipa existente.\n", contador);
+    return;
   }
   else
   {
@@ -428,10 +376,8 @@ void add_equipa(hashE equipas, Equipa *new_winner, int wins, int *flag, int cont
   x->wins = 0;
   if (wins == 0)
   {
-    {
-      *flag = 1;
-      *new_winner = x;
-    }
+    *flag = 1;
+    *new_winner = x;
   }
   else
   {
@@ -459,10 +405,8 @@ void procura_equipa(hashE equipas, int contador)
   }
   else
   {
-    {
-      printf("%d ", contador);
-      printNodeE(equipa);
-    }
+    printf("%d ", contador);
+    printNodeE(equipa);
   }
 
   return;
@@ -512,80 +456,68 @@ void atualiza_winner(hashE equipas, link_E *winners, Equipa winner, int flag, in
   link_E temp;
   if (flag != 0)
   {
+    if (flag == 1)
     {
-      if (flag == 1)
+      *winners = insertBeginE(*winners, winner);
+    }
+    else
+    {
+      if (flag == 2)
       {
-        {
-          *winners = insertBeginE(*winners, winner);
-        }
+        free_nodesE(*winners);
+        *winners = 0;
+        *winners = insertBeginE(*winners, winner);
       }
       else
       {
-        if (flag == 2)
+        if (flag == 3)
         {
+          (*wins)--;
+          for (i = 0; i < 1013; i++)
           {
-            free_nodesE(*winners);
-            *winners = 0;
-            *winners = insertBeginE(*winners, winner);
-          }
-        }
-        else
-        {
-          if (flag == 3)
-          {
+            head = equipas[i];
+            while (head != 0)
             {
-              (*wins)--;
-              for (i = 0; i < 1013; i++)
+              if (head->equipa->wins == max)
               {
-                head = equipas[i];
-                while (head != 0)
+                *winners = insertBeginE(*winners, head->equipa);
+              }
+              else
+              {
+                if (head->equipa->wins > max)
                 {
-                  if (head->equipa->wins == max)
+                  max = head->equipa->wins;
+                  while ((*winners) != 0)
                   {
-                    {
-                      *winners = insertBeginE(*winners, head->equipa);
-                    }
-                  }
-                  else
-                  {
-                    if (head->equipa->wins > max)
-                    {
-                      {
-                        max = head->equipa->wins;
-                        while ((*winners) != 0)
-                        {
-                          temp = *winners;
-                          *winners = (*winners)->next;
-                          free(temp);
-                        }
-
-                        *winners = insertBeginE(*winners, head->equipa);
-                      }
-                    }
-                    else
-                    {
-                      
-                    }
-
+                    temp = *winners;
+                    *winners = (*winners)->next;
+                    free(temp);
                   }
 
-                  head = head->next;
+                  *winners = insertBeginE(*winners, head->equipa);
+                }
+                else
+                {
+                  
                 }
 
               }
 
+              head = head->next;
             }
-          }
-          else
-          {
-            
+
           }
 
+        }
+        else
+        {
+          
         }
 
       }
 
     }
+
   }
   else
   {

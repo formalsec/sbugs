@@ -84,10 +84,8 @@ void add_amount()
   _amount = new_sym_var(sizeof(int) * 8);
   if (Exists_Product(product_ID) == 0)
   {
-    {
-      printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", product_ID);
-      return;
-    }
+    printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", product_ID);
+    return;
   }
   else
   {
@@ -119,10 +117,8 @@ void add_product_to_delivery()
   _amount = new_sym_var(sizeof(int) * 8);
   if (Exists_Delivery(delivery_ID) == 0)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", product_ID, delivery_ID);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", product_ID, delivery_ID);
+    return;
   }
   else
   {
@@ -131,10 +127,8 @@ void add_product_to_delivery()
 
   if (Exists_Product(product_ID) == 0)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", product_ID, delivery_ID);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", product_ID, delivery_ID);
+    return;
   }
   else
   {
@@ -143,10 +137,8 @@ void add_product_to_delivery()
 
   if (all_products[product_ID].amount < _amount)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", product_ID, delivery_ID);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", product_ID, delivery_ID);
+    return;
   }
   else
   {
@@ -155,10 +147,8 @@ void add_product_to_delivery()
 
   if ((company[delivery_ID].delivery_weight + (all_products[product_ID].weight * _amount)) > 200)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", product_ID, delivery_ID);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", product_ID, delivery_ID);
+    return;
   }
   else
   {
@@ -169,12 +159,10 @@ void add_product_to_delivery()
   {
     if (company[delivery_ID].products[k].ID == product_ID)
     {
-      {
-        company[delivery_ID].products[k].amount += _amount;
-        all_products[product_ID].amount = all_products[product_ID].amount - _amount;
-        company[delivery_ID].delivery_weight += all_products[product_ID].weight * _amount;
-        return;
-      }
+      company[delivery_ID].products[k].amount += _amount;
+      all_products[product_ID].amount = all_products[product_ID].amount - _amount;
+      company[delivery_ID].delivery_weight += all_products[product_ID].weight * _amount;
+      return;
     }
     else
     {
@@ -201,10 +189,8 @@ void remove_product_stock()
   _amount = new_sym_var(sizeof(int) * 8);
   if (Exists_Product(product_ID) == 0)
   {
-    {
-      printf("Impossivel remover stock do produto %d. Produto inexistente.\n", product_ID);
-      return;
-    }
+    printf("Impossivel remover stock do produto %d. Produto inexistente.\n", product_ID);
+    return;
   }
   else
   {
@@ -213,10 +199,8 @@ void remove_product_stock()
 
   if (all_products[product_ID].amount < _amount)
   {
-    {
-      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", _amount, product_ID);
-      return;
-    }
+    printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", _amount, product_ID);
+    return;
   }
   else
   {
@@ -237,10 +221,8 @@ void remove_delivery_product()
   product_ID = new_sym_var(sizeof(int) * 8);
   if (Exists_Delivery(delivery_ID) == 0)
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", product_ID, delivery_ID);
-      return;
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", product_ID, delivery_ID);
+    return;
   }
   else
   {
@@ -249,10 +231,8 @@ void remove_delivery_product()
 
   if (Exists_Product(product_ID) == 0)
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", product_ID, delivery_ID);
-      return;
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", product_ID, delivery_ID);
+    return;
   }
   else
   {
@@ -263,15 +243,13 @@ void remove_delivery_product()
   {
     if (company[delivery_ID].products[i].ID == product_ID)
     {
-      {
-        company[delivery_ID].delivery_weight -= company[delivery_ID].products[i].weight * company[delivery_ID].products[i].amount;
-        all_products[product_ID].amount += company[delivery_ID].products[i].amount;
-        temporary = company[delivery_ID].products[company[delivery_ID].different_products - 1];
-        company[delivery_ID].products[company[delivery_ID].different_products - 1] = company[delivery_ID].products[i];
-        company[delivery_ID].products[i] = temporary;
-        company[delivery_ID].different_products--;
-        return;
-      }
+      company[delivery_ID].delivery_weight -= company[delivery_ID].products[i].weight * company[delivery_ID].products[i].amount;
+      all_products[product_ID].amount += company[delivery_ID].products[i].amount;
+      temporary = company[delivery_ID].products[company[delivery_ID].different_products - 1];
+      company[delivery_ID].products[company[delivery_ID].different_products - 1] = company[delivery_ID].products[i];
+      company[delivery_ID].products[i] = temporary;
+      company[delivery_ID].different_products--;
+      return;
     }
     else
     {
@@ -292,10 +270,8 @@ void price_generator()
   delivery_ID = new_sym_var(sizeof(int) * 8);
   if (Exists_Delivery(delivery_ID) == 0)
   {
-    {
-      printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", delivery_ID);
-      return;
-    }
+    printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", delivery_ID);
+    return;
   }
   else
   {
@@ -322,10 +298,8 @@ void price_change()
   price = new_sym_var(sizeof(int) * 8);
   if (Exists_Product(product_ID) == 0)
   {
-    {
-      printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", product_ID);
-      return;
-    }
+    printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", product_ID);
+    return;
   }
   else
   {
@@ -339,9 +313,7 @@ void price_change()
     {
       if (company[k].products[j].ID == product_ID)
       {
-        {
-          company[k].products[j].price = price;
-        }
+        company[k].products[j].price = price;
       }
       else
       {
@@ -365,10 +337,8 @@ void look_product()
   product_ID = new_sym_var(sizeof(int) * 8);
   if (Exists_Delivery(delivery_ID) == 0)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", delivery_ID);
-      return;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", delivery_ID);
+    return;
   }
   else
   {
@@ -377,10 +347,8 @@ void look_product()
 
   if (Exists_Product(product_ID) == 0)
   {
-    {
-      printf("Impossivel listar produto %d. Produto inexistente.\n", product_ID);
-      return;
-    }
+    printf("Impossivel listar produto %d. Produto inexistente.\n", product_ID);
+    return;
   }
   else
   {
@@ -391,10 +359,8 @@ void look_product()
   {
     if (company[delivery_ID].products[i].ID == product_ID)
     {
-      {
-        printf("%s %d.\n", company[delivery_ID].products[i].description, company[delivery_ID].products[i].amount);
-        return;
-      }
+      printf("%s %d.\n", company[delivery_ID].products[i].description, company[delivery_ID].products[i].amount);
+      return;
     }
     else
     {
@@ -418,10 +384,8 @@ void product_ocurrences()
   product_ID = new_sym_var(sizeof(int) * 8);
   if (Exists_Product(product_ID) == 0)
   {
-    {
-      printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", product_ID);
-      return;
-    }
+    printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", product_ID);
+    return;
   }
   else
   {
@@ -434,42 +398,32 @@ void product_ocurrences()
     {
       if (company[j].products[k].ID == product_ID)
       {
+        if (company[j].products[k].amount > max)
         {
-          if (company[j].products[k].amount > max)
+          max = company[j].products[k].amount;
+          max_ID = company[j].delivery_ID;
+        }
+        else
+        {
+          if (company[j].products[k].amount == max)
           {
+            if (company[j].delivery_ID < max_ID)
             {
-              max = company[j].products[k].amount;
-              max_ID = company[j].delivery_ID;
+              max_ID = company[j].products[k].ID;
             }
+            else
+            {
+              
+            }
+
           }
           else
           {
-            {
-              if (company[j].products[k].amount == max)
-              {
-                {
-                  if (company[j].delivery_ID < max_ID)
-                  {
-                    {
-                      max_ID = company[j].products[k].ID;
-                    }
-                  }
-                  else
-                  {
-                    
-                  }
-
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
+            
           }
 
         }
+
       }
       else
       {
@@ -506,9 +460,7 @@ void merge_letter(int left, int m, int right)
   for (k = left; k <= right; k++)
     if (strcmp(aux[j].description, aux[i].description) < 0)
   {
-    {
-      all_products_sort[k] = aux[j--];
-    }
+    all_products_sort[k] = aux[j--];
   }
   else
   {
@@ -556,9 +508,7 @@ void merge_price(int left, int m, int right)
   {
     if ((aux[j].price == aux[i].price) && (aux[j].ID < aux[i].ID))
     {
-      {
-        all_products_sort[k] = aux[j--];
-      }
+      all_products_sort[k] = aux[j--];
     }
     else
     {
@@ -618,10 +568,8 @@ void letter_order()
   delivery_ID = new_sym_var(sizeof(int) * 8);
   if (Exists_Delivery(delivery_ID) == 0)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", delivery_ID);
-      return;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", delivery_ID);
+    return;
   }
   else
   {
@@ -630,10 +578,8 @@ void letter_order()
 
   if (company[delivery_ID].different_products == 0)
   {
-    {
-      printf("Encomenda %d\n", delivery_ID);
-      return;
-    }
+    printf("Encomenda %d\n", delivery_ID);
+    return;
   }
   else
   {

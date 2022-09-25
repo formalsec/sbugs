@@ -37,22 +37,18 @@ void adiciona_equipa(equipa *eq, lista_equipas *l_equipas)
   equipa *old_first;
   if (l_equipas->head == 0)
   {
-    {
-      l_equipas->head = eq;
-      eq->equipa_anterior = 0;
-      eq->equipa_seguinte = 0;
-      l_equipas->last = eq;
-    }
+    l_equipas->head = eq;
+    eq->equipa_anterior = 0;
+    eq->equipa_seguinte = 0;
+    l_equipas->last = eq;
   }
   else
   {
-    {
-      old_first = l_equipas->head;
-      old_first->equipa_anterior = eq;
-      eq->equipa_seguinte = old_first;
-      eq->equipa_anterior = 0;
-      l_equipas->head = eq;
-    }
+    old_first = l_equipas->head;
+    old_first->equipa_anterior = eq;
+    eq->equipa_seguinte = old_first;
+    eq->equipa_anterior = 0;
+    l_equipas->head = eq;
   }
 
   l_equipas->num_equipas++;

@@ -66,19 +66,39 @@ void alteraScore_aux(int score1, int score2, int newscore1, int newscore2, pTeam
 {
   if (score1 > score2)
   {
+    if (newscore2 > newscore1)
     {
-      if (newscore2 > newscore1)
+      pE1->vitorias--;
+      pE2->vitorias++;
+    }
+    else
+    {
+      if (newscore2 == newscore1)
       {
-        {
-          pE1->vitorias--;
-          pE2->vitorias++;
-        }
+        pE1->vitorias--;
+      }
+      else
+      {
+        
+      }
+
+    }
+
+  }
+  else
+  {
+    if (score1 < score2)
+    {
+      if (newscore1 > newscore2)
+      {
+        pE1->vitorias++;
+        pE2->vitorias--;
       }
       else
       {
         if (newscore2 == newscore1)
         {
-          pE1->vitorias--;
+          pE2->vitorias--;
         }
         else
         {
@@ -88,24 +108,19 @@ void alteraScore_aux(int score1, int score2, int newscore1, int newscore2, pTeam
       }
 
     }
-  }
-  else
-  {
-    if (score1 < score2)
+    else
     {
+      if (score1 == score2)
       {
         if (newscore1 > newscore2)
         {
-          {
-            pE1->vitorias++;
-            pE2->vitorias--;
-          }
+          pE1->vitorias++;
         }
         else
         {
-          if (newscore2 == newscore1)
+          if (newscore2 > newscore1)
           {
-            pE2->vitorias--;
+            pE2->vitorias++;
           }
           else
           {
@@ -114,31 +129,6 @@ void alteraScore_aux(int score1, int score2, int newscore1, int newscore2, pTeam
 
         }
 
-      }
-    }
-    else
-    {
-      if (score1 == score2)
-      {
-        {
-          if (newscore1 > newscore2)
-          {
-            pE1->vitorias++;
-          }
-          else
-          {
-            if (newscore2 > newscore1)
-            {
-              pE2->vitorias++;
-            }
-            else
-            {
-              
-            }
-
-          }
-
-        }
       }
       else
       {
@@ -193,19 +183,17 @@ void apagaJogoHash(char *buffer, glink *HashGames, pGame hit)
   {
     if (c->pJogo == hit)
     {
+      if (c == HashGames[indice])
       {
-        if (c == HashGames[indice])
-        {
-          HashGames[indice] = c->next;
-        }
-        else
-        {
-          prev->next = c->next;
-        }
-
-        free(c);
-        break;
+        HashGames[indice] = c->next;
       }
+      else
+      {
+        prev->next = c->next;
+      }
+
+      free(c);
+      break;
     }
     else
     {
@@ -224,32 +212,28 @@ void apagaJogoLista(glink *pLGhead, glink *pLGtail, pGame hit)
   {
     if (c->pJogo == hit)
     {
+      if (c == (*pLGhead))
       {
-        if (c == (*pLGhead))
+        *pLGhead = c->next;
+      }
+      else
+      {
+        if (c == (*pLGtail))
         {
-          *pLGhead = c->next;
+          *pLGtail = c->prev;
+          prev->next = 0;
         }
         else
         {
-          if (c == (*pLGtail))
-          {
-            {
-              *pLGtail = c->prev;
-              prev->next = 0;
-            }
-          }
-          else
-          {
-            prev->next = c->next;
-          }
-
+          prev->next = c->next;
         }
 
-        free(c->pJogo->name);
-        free(c->pJogo);
-        free(c);
-        break;
       }
+
+      free(c->pJogo->name);
+      free(c->pJogo);
+      free(c);
+      break;
     }
     else
     {

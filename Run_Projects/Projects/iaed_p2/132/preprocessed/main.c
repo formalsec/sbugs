@@ -84,10 +84,8 @@ void add_team(tnode **teams_tab, unsigned int line)
   name[10 - 1] = '\0';
   if (table_search_team(teams_tab, name) != 0)
   {
-    {
-      printf("%u Equipa existente.\n", line);
-      return;
-    }
+    printf("%u Equipa existente.\n", line);
+    return;
   }
   else
   {
@@ -110,10 +108,8 @@ void search_team(tnode **teams_tab, unsigned int line)
   name[10 - 1] = '\0';
   if ((t = table_search_team(teams_tab, name)) == 0)
   {
-    {
-      printf("%u Equipa inexistente.\n", line);
-      return;
-    }
+    printf("%u Equipa inexistente.\n", line);
+    return;
   }
   else
   {
@@ -153,10 +149,8 @@ void add_game(tnode **teams_tab, gnode **games_tab, gnode **games_list, unsigned
   score2 = new_sym_var(sizeof(int) * 8);
   if (table_search_game(games_tab, name) != 0)
   {
-    {
-      printf("%u Jogo existente.\n", line);
-      return;
-    }
+    printf("%u Jogo existente.\n", line);
+    return;
   }
   else
   {
@@ -165,10 +159,8 @@ void add_game(tnode **teams_tab, gnode **games_tab, gnode **games_list, unsigned
 
   if ((table_search_team(teams_tab, team1) == 0) || (table_search_team(teams_tab, team2) == 0))
   {
-    {
-      printf("%u Equipa inexistente.\n", line);
-      return;
-    }
+    printf("%u Equipa inexistente.\n", line);
+    return;
   }
   else
   {
@@ -193,10 +185,8 @@ void remove_game(tnode **teams_tab, gnode **games_tab, gnode **games_list, unsig
   name[10 - 1] = '\0';
   if ((g = table_search_game(games_tab, name)) == 0)
   {
-    {
-      printf("%u Jogo inexistente.\n", line);
-      return;
-    }
+    printf("%u Jogo inexistente.\n", line);
+    return;
   }
   else
   {
@@ -220,10 +210,8 @@ void search_game(gnode **games_tab, unsigned int line)
   name[10 - 1] = '\0';
   if ((g = table_search_game(games_tab, name)) == 0)
   {
-    {
-      printf("%u Jogo inexistente.\n", line);
-      return;
-    }
+    printf("%u Jogo inexistente.\n", line);
+    return;
   }
   else
   {
@@ -249,10 +237,8 @@ void change_score(tnode **teams_tab, gnode **games_tab, unsigned int line)
   score2 = new_sym_var(sizeof(int) * 8);
   if ((g = table_search_game(games_tab, name)) == 0)
   {
-    {
-      printf("%u Jogo inexistente.\n", line);
-      return;
-    }
+    printf("%u Jogo inexistente.\n", line);
+    return;
   }
   else
   {
@@ -288,10 +274,8 @@ void top_teams(tnode **teams_tab, unsigned int line)
   top_teams = table_search_top_teams(teams_tab, top_teams, higher);
   if (top_teams != 0)
   {
-    {
-      printf("%u Melhores %d\n", line, higher);
-      list_top_teams(top_teams, line);
-    }
+    printf("%u Melhores %d\n", line, higher);
+    list_top_teams(top_teams, line);
   }
   else
   {
@@ -306,19 +290,15 @@ void decide_winner(tnode **teams_tab, game *g)
   team *t;
   if (g->score1 > g->score2)
   {
-    {
-      t = table_search_team(teams_tab, g->t1);
-      t->wins++;
-    }
+    t = table_search_team(teams_tab, g->t1);
+    t->wins++;
   }
   else
   {
     if (g->score1 < g->score2)
     {
-      {
-        t = table_search_team(teams_tab, g->t2);
-        t->wins++;
-      }
+      t = table_search_team(teams_tab, g->t2);
+      t->wins++;
     }
     else
     {
@@ -334,19 +314,15 @@ void remove_win(tnode **teams_tab, game *g)
   team *t;
   if (g->score1 > g->score2)
   {
-    {
-      t = table_search_team(teams_tab, g->t1);
-      t->wins--;
-    }
+    t = table_search_team(teams_tab, g->t1);
+    t->wins--;
   }
   else
   {
     if (g->score1 < g->score2)
     {
-      {
-        t = table_search_team(teams_tab, g->t2);
-        t->wins--;
-      }
+      t = table_search_team(teams_tab, g->t2);
+      t->wins--;
     }
     else
     {

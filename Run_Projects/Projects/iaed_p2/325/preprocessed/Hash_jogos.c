@@ -21,16 +21,12 @@ Jogo_hash insertBegin(Jogo_hash head, jogo *res)
   Jogo_hash x = NEW(res);
   if (head == 0)
   {
-    {
-      head = x;
-      x->next = 0;
-    }
+    head = x;
+    x->next = 0;
   }
   else
   {
-    {
-      x->next = head;
-    }
+    x->next = head;
   }
 
   return x;
@@ -50,23 +46,17 @@ Jogo_hash delete_node(Jogo_hash head, jogo *res)
   {
     if (strcmp(t->ptr_jogo->nome, res->nome) == 0)
     {
+      if (t == head)
       {
-        if (t == head)
-        {
-          {
-            head = t->next;
-          }
-        }
-        else
-        {
-          {
-            prev->next = t->next;
-          }
-        }
-
-        free(t);
-        break;
+        head = t->next;
       }
+      else
+      {
+        prev->next = t->next;
+      }
+
+      free(t);
+      break;
     }
     else
     {
@@ -97,9 +87,7 @@ jogo *search_list(Jogo_hash head, char *nome)
   {
     if (strcmp(new->ptr_jogo->nome, nome) == 0)
     {
-      {
-        return new->ptr_jogo;
-      }
+      return new->ptr_jogo;
     }
     else
     {

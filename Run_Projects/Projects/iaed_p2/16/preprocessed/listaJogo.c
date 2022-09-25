@@ -38,10 +38,8 @@ void freeListaJogo(listaJogo *Lista)
   nodeJogo *aux;
   if (Lista == 0)
   {
-    {
-      free(Lista);
-      return;
-    }
+    free(Lista);
+    return;
   }
   else
   {
@@ -63,10 +61,8 @@ void freeListaMaisJogos(listaJogo *Lista)
   nodeJogo *aux;
   if (Lista == 0)
   {
-    {
-      free(Lista);
-      return;
-    }
+    free(Lista);
+    return;
   }
   else
   {
@@ -87,11 +83,9 @@ listaJogo *insereInicioListaJogo(listaJogo *Lista, jogo *Jogo)
 {
   if (Lista == 0)
   {
-    {
-      Lista = criaListaJogo();
-      Lista->head = (Lista->tail = criaNodeJogo(Jogo, 0, 0));
-      return Lista;
-    }
+    Lista = criaListaJogo();
+    Lista->head = (Lista->tail = criaNodeJogo(Jogo, 0, 0));
+    return Lista;
   }
   else
   {
@@ -100,10 +94,8 @@ listaJogo *insereInicioListaJogo(listaJogo *Lista, jogo *Jogo)
 
   if (Lista->head == 0)
   {
-    {
-      Lista->head = (Lista->tail = criaNodeJogo(Jogo, 0, 0));
-      return Lista;
-    }
+    Lista->head = (Lista->tail = criaNodeJogo(Jogo, 0, 0));
+    return Lista;
   }
   else
   {
@@ -119,11 +111,9 @@ listaJogo *insereFimListaJogo(listaJogo *Lista, jogo *Jogo)
 {
   if (Lista == 0)
   {
-    {
-      Lista = criaListaJogo();
-      Lista->head = (Lista->tail = criaNodeJogo(Jogo, 0, 0));
-      return Lista;
-    }
+    Lista = criaListaJogo();
+    Lista->head = (Lista->tail = criaNodeJogo(Jogo, 0, 0));
+    return Lista;
   }
   else
   {
@@ -132,10 +122,8 @@ listaJogo *insereFimListaJogo(listaJogo *Lista, jogo *Jogo)
 
   if (Lista->head == 0)
   {
-    {
-      Lista->head = (Lista->tail = criaNodeJogo(Jogo, 0, 0));
-      return Lista;
-    }
+    Lista->head = (Lista->tail = criaNodeJogo(Jogo, 0, 0));
+    return Lista;
   }
   else
   {
@@ -153,9 +141,7 @@ jogo *procuraListaJogo(listaJogo *Lista, char *nome)
   char *auxNome;
   if (Lista == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -164,9 +150,7 @@ jogo *procuraListaJogo(listaJogo *Lista, char *nome)
 
   if (Lista->head == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -183,17 +167,13 @@ jogo *procuraListaJogo(listaJogo *Lista, char *nome)
 
   if (strcmp(auxNome, nome) == 0)
   {
-    {
-      return auxNode->Jogo;
-    }
+    return auxNode->Jogo;
   }
   else
   {
     if (auxNode->next == 0)
     {
-      {
-        return 0;
-      }
+      return 0;
     }
     else
     {
@@ -211,9 +191,7 @@ listaJogo *removeListaJogo(listaJogo *Lista, char *nome)
   char *auxNome;
   if (Lista == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -222,9 +200,7 @@ listaJogo *removeListaJogo(listaJogo *Lista, char *nome)
 
   if (Lista->head == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -241,9 +217,7 @@ listaJogo *removeListaJogo(listaJogo *Lista, char *nome)
 
   if (strcmp(nome, auxNome) != 0)
   {
-    {
-      return Lista;
-    }
+    return Lista;
   }
   else
   {
@@ -252,12 +226,10 @@ listaJogo *removeListaJogo(listaJogo *Lista, char *nome)
 
   if ((auxNode == Lista->head) && (auxNode == Lista->tail))
   {
-    {
-      Lista->head = 0;
-      Lista->tail = 0;
-      free(auxNode);
-      return Lista;
-    }
+    Lista->head = 0;
+    Lista->tail = 0;
+    free(auxNode);
+    return Lista;
   }
   else
   {
@@ -266,12 +238,10 @@ listaJogo *removeListaJogo(listaJogo *Lista, char *nome)
 
   if (auxNode == Lista->head)
   {
-    {
-      Lista->head = auxNode->next;
-      Lista->head->previous = 0;
-      free(auxNode);
-      return Lista;
-    }
+    Lista->head = auxNode->next;
+    Lista->head->previous = 0;
+    free(auxNode);
+    return Lista;
   }
   else
   {
@@ -280,12 +250,10 @@ listaJogo *removeListaJogo(listaJogo *Lista, char *nome)
 
   if (auxNode == Lista->tail)
   {
-    {
-      Lista->tail = auxNode->previous;
-      Lista->tail->next = 0;
-      free(auxNode);
-      return Lista;
-    }
+    Lista->tail = auxNode->previous;
+    Lista->tail->next = 0;
+    free(auxNode);
+    return Lista;
   }
   else
   {
@@ -303,9 +271,7 @@ void printListaJogo(listaJogo *Lista, int *pNL)
   nodeJogo *auxNode;
   if ((Lista->head == 0) || (Lista == 0))
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {

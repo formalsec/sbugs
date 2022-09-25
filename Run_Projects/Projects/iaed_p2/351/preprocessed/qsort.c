@@ -9,9 +9,7 @@ void quicksort(char **chr_arr, int left, int right, void *info_struct, swap_elem
   int part_idx;
   if (left >= right)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -34,9 +32,7 @@ int part(char **chr_arr, int left, int right, void *info_struct, swap_elem f_swa
   {
     if (strcmp(*(chr_arr + curr_idx), *(chr_arr + right)) <= 0)
     {
-      {
-        f_swap(++lower_idx, curr_idx, chr_arr, info_struct);
-      }
+      f_swap(++lower_idx, curr_idx, chr_arr, info_struct);
     }
     else
     {

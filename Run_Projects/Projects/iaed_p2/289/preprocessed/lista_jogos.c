@@ -38,28 +38,20 @@ void LS_jg_delete(link_jogo ptr_node_jogo, list *l)
 {
   if (ptr_node_jogo->prev == 0)
   {
-    {
-      l->head = ptr_node_jogo->next;
-    }
+    l->head = ptr_node_jogo->next;
   }
   else
   {
-    {
-      ptr_node_jogo->prev->next = ptr_node_jogo->next;
-    }
+    ptr_node_jogo->prev->next = ptr_node_jogo->next;
   }
 
   if (ptr_node_jogo->next == 0)
   {
-    {
-      l->last = ptr_node_jogo->prev;
-    }
+    l->last = ptr_node_jogo->prev;
   }
   else
   {
-    {
-      ptr_node_jogo->next->prev = ptr_node_jogo->prev;
-    }
+    ptr_node_jogo->next->prev = ptr_node_jogo->prev;
   }
 
   freeJogo(ptr_node_jogo->jogo);

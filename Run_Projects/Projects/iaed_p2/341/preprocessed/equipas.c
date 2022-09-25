@@ -11,9 +11,7 @@ HashNoEquipas *EquipaJaAdicionada(HashTableEquipas *HTE, int hash, char *nome)
   {
     if (!strcmp(aux->dadosequipa->equipa, nome))
     {
-      {
-        return aux;
-      }
+      return aux;
     }
     else
     {
@@ -40,25 +38,21 @@ NoSimplesEquipas *AdicionarEquipa(int *contacomandos, HashTableEquipas *HTE, NoS
   hashbuffer = Hash(bufferequipa, HTE->capacidade);
   if (EquipaJaAdicionada(HTE, hashbuffer, bufferequipa) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", *contacomandos);
-      (*contacomandos)++;
-      return listaequipas;
-    }
+    printf("%d Equipa existente.\n", *contacomandos);
+    (*contacomandos)++;
+    return listaequipas;
   }
   else
   {
-    {
-      nova = malloc(sizeof(NoSimplesEquipas));
-      nova->equipa = malloc((sizeof(char)) * (strlen(bufferequipa) + 1));
-      strcpy(nova->equipa, bufferequipa);
-      nova->proxequipa = listaequipas;
-      nova->vitorias = 0;
-      listaequipas = nova;
-      AdicionarHTEquipas(HTE, hashbuffer, nova);
-      (*contacomandos)++;
-      return listaequipas;
-    }
+    nova = malloc(sizeof(NoSimplesEquipas));
+    nova->equipa = malloc((sizeof(char)) * (strlen(bufferequipa) + 1));
+    strcpy(nova->equipa, bufferequipa);
+    nova->proxequipa = listaequipas;
+    nova->vitorias = 0;
+    listaequipas = nova;
+    AdicionarHTEquipas(HTE, hashbuffer, nova);
+    (*contacomandos)++;
+    return listaequipas;
   }
 
 }
@@ -79,11 +73,9 @@ void ProcuraEquipa(int *contacomandos, HashTableEquipas *HTE)
   aux = EquipaJaAdicionada(HTE, hashbuffer, buffer);
   if (aux)
   {
-    {
-      printf("%d %s %d\n", *contacomandos, buffer, aux->dadosequipa->vitorias);
-      (*contacomandos)++;
-      return;
-    }
+    printf("%d %s %d\n", *contacomandos, buffer, aux->dadosequipa->vitorias);
+    (*contacomandos)++;
+    return;
   }
   else
   {
@@ -109,18 +101,14 @@ int *EncontraMaiorNVitorias(NoSimplesEquipas *equipas)
   {
     if (aux->vitorias > vitoriasmax)
     {
-      {
-        vitoriasmax = aux->vitorias;
-        maiorescount = 1;
-      }
+      vitoriasmax = aux->vitorias;
+      maiorescount = 1;
     }
     else
     {
       if (aux->vitorias == vitoriasmax)
       {
-        {
-          maiorescount++;
-        }
+        maiorescount++;
       }
       else
       {
@@ -146,12 +134,10 @@ void ListaMaisVitorias(int *contacomandos, NoSimplesEquipas *equipas)
   NoSimplesEquipas *aux;
   if (maiorescount == 0)
   {
-    {
-      (*contacomandos)++;
-      free(auxmax);
-      free(maiores);
-      return;
-    }
+    (*contacomandos)++;
+    free(auxmax);
+    free(maiores);
+    return;
   }
   else
   {
@@ -162,10 +148,8 @@ void ListaMaisVitorias(int *contacomandos, NoSimplesEquipas *equipas)
   {
     if (aux->vitorias == vitoriasmax)
     {
-      {
-        maiores[count] = aux->equipa;
-        count++;
-      }
+      maiores[count] = aux->equipa;
+      count++;
     }
     else
     {

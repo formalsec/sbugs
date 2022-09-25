@@ -46,61 +46,51 @@ void NewGame(int line)
   t = searchHashGame(name, g_heads[i]);
   if (!t)
   {
+    i1 = hash_team(name1);
+    i2 = hash_team(name2);
+    t1 = searchHashTeam(name1, t_heads[i1]);
+    t2 = searchHashTeam(name2, t_heads[i2]);
+    if ((t1 == 0) || (t2 == 0))
     {
-      i1 = hash_team(name1);
-      i2 = hash_team(name2);
-      t1 = searchHashTeam(name1, t_heads[i1]);
-      t2 = searchHashTeam(name2, t_heads[i2]);
-      if ((t1 == 0) || (t2 == 0))
+      printf("%d Equipa inexistente.\n", line);
+    }
+    else
+    {
+      g_heads[i] = insertHashGame(name, name1, name2, score1, score2, g_heads[i]);
+      insertListGames(name);
+      if (score1 > score2)
       {
-        {
-          printf("%d Equipa inexistente.\n", line);
-        }
+        t1->team->wins++;
       }
       else
       {
+        if (score1 < score2)
         {
-          g_heads[i] = insertHashGame(name, name1, name2, score1, score2, g_heads[i]);
-          insertListGames(name);
-          if (score1 > score2)
-          {
-            t1->team->wins++;
-          }
-          else
-          {
-            if (score1 < score2)
-            {
-              t2->team->wins++;
-            }
-            else
-            {
-              
-            }
-
-          }
-
-          if ((teams_list != 0) && (teams_list->team->wins > 0))
-          {
-            {
-              freeTeamList(teams_list);
-              TeamListInit();
-            }
-          }
-          else
-          {
-            
-          }
-
+          t2->team->wins++;
         }
+        else
+        {
+          
+        }
+
+      }
+
+      if ((teams_list != 0) && (teams_list->team->wins > 0))
+      {
+        freeTeamList(teams_list);
+        TeamListInit();
+      }
+      else
+      {
+        
       }
 
     }
+
   }
   else
   {
-    {
-      printf("%d Jogo existente.\n", line);
-    }
+    printf("%d Jogo existente.\n", line);
   }
 
   free(name);
@@ -124,9 +114,7 @@ void SearchGame(int line)
   l = searchHashGame(name, g_heads[i]);
   if (l != 0)
   {
-    {
-      printf("%d %s %s %s %d %d\n", line, name, l->game->team1, l->game->team2, l->game->score1, l->game->score2);
-    }
+    printf("%d %s %s %s %d %d\n", line, name, l->game->team1, l->game->team2, l->game->score1, l->game->score2);
   }
   else
   {
@@ -152,35 +140,31 @@ void DeleteGame(int line)
   l = searchHashGame(name, g_heads[i]);
   if (l != 0)
   {
+    if (l->game->score1 > l->game->score2)
     {
-      if (l->game->score1 > l->game->score2)
+      decreaseWins(l->game->team1);
+    }
+    else
+    {
+      if (l->game->score1 < l->game->score2)
       {
-        decreaseWins(l->game->team1);
+        decreaseWins(l->game->team2);
       }
       else
       {
-        if (l->game->score1 < l->game->score2)
-        {
-          decreaseWins(l->game->team2);
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      g_heads[i] = deleteHashGame(name, g_heads[i]);
-      delete_gamelist(name);
-      freeTeamList(teams_list);
-      TeamListInit();
     }
+
+    g_heads[i] = deleteHashGame(name, g_heads[i]);
+    delete_gamelist(name);
+    freeTeamList(teams_list);
+    TeamListInit();
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", line);
-    }
+    printf("%d Jogo inexistente.\n", line);
   }
 
   free(name);
@@ -221,68 +205,55 @@ void Change_Score(int line)
   l = searchHashGame(name, g_heads[i]);
   if (l != 0)
   {
+    if ((score1 > score2) && (l->game->score2 > l->game->score1))
     {
-      if ((score1 > score2) && (l->game->score2 > l->game->score1))
+      increaseWins(l->game->team1);
+      decreaseWins(l->game->team2);
+    }
+    else
+    {
+      if ((score1 < score2) && (l->game->score2 < l->game->score1))
       {
-        {
-          increaseWins(l->game->team1);
-          decreaseWins(l->game->team2);
-        }
+        increaseWins(l->game->team2);
+        decreaseWins(l->game->team1);
       }
       else
       {
-        if ((score1 < score2) && (l->game->score2 < l->game->score1))
+        if ((score1 > score2) && (l->game->score2 == l->game->score1))
         {
-          {
-            increaseWins(l->game->team2);
-            decreaseWins(l->game->team1);
-          }
+          increaseWins(l->game->team1);
         }
         else
         {
-          if ((score1 > score2) && (l->game->score2 == l->game->score1))
+          if ((score1 < score2) && (l->game->score2 == l->game->score1))
           {
-            {
-              increaseWins(l->game->team1);
-            }
+            increaseWins(l->game->team2);
           }
           else
           {
-            if ((score1 < score2) && (l->game->score2 == l->game->score1))
+            if (score1 == score2)
             {
+              if (l->game->score2 > l->game->score1)
               {
-                increaseWins(l->game->team2);
-              }
-            }
-            else
-            {
-              if (score1 == score2)
-              {
-                {
-                  if (l->game->score2 > l->game->score1)
-                  {
-                    decreaseWins(l->game->team2);
-                  }
-                  else
-                  {
-                    if (l->game->score1 > l->game->score2)
-                    {
-                      decreaseWins(l->game->team1);
-                    }
-                    else
-                    {
-                      
-                    }
-
-                  }
-
-                }
+                decreaseWins(l->game->team2);
               }
               else
               {
-                
+                if (l->game->score1 > l->game->score2)
+                {
+                  decreaseWins(l->game->team1);
+                }
+                else
+                {
+                  
+                }
+
               }
 
+            }
+            else
+            {
+              
             }
 
           }
@@ -291,19 +262,18 @@ void Change_Score(int line)
 
       }
 
-      l->game->score1 = score1;
-      l->game->score2 = score2;
-      free(name);
-      freeTeamList(teams_list);
-      TeamListInit();
     }
+
+    l->game->score1 = score1;
+    l->game->score2 = score2;
+    free(name);
+    freeTeamList(teams_list);
+    TeamListInit();
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", line);
-      free(name);
-    }
+    printf("%d Jogo inexistente.\n", line);
+    free(name);
   }
 
 }
@@ -336,15 +306,11 @@ gamelink insertHashGame(char *name, char *name1, char *name2, int score1, int sc
 
   if (aux == head)
   {
-    {
-      head = newGameLink(name, name1, name2, score1, score2);
-    }
+    head = newGameLink(name, name1, name2, score1, score2);
   }
   else
   {
-    {
-      prev->next = newGameLink(name, name1, name2, score1, score2);
-    }
+    prev->next = newGameLink(name, name1, name2, score1, score2);
   }
 
   return head;
@@ -377,37 +343,29 @@ gamelink deleteHashGame(char *name, gamelink head)
   {
     if (strcmp(t->game->name, name) == 0)
     {
+      if (t == head)
       {
-        if (t == head)
+        head = t->next;
+      }
+      else
+      {
+        if (t->next == 0)
         {
-          {
-            head = t->next;
-          }
+          prev->next = 0;
         }
         else
         {
-          if (t->next == 0)
-          {
-            {
-              prev->next = 0;
-            }
-          }
-          else
-          {
-            {
-              prev->next = t->next;
-            }
-          }
-
+          prev->next = t->next;
         }
 
-        free(t->game->name);
-        free(t->game->team1);
-        free(t->game->team2);
-        free(t->game);
-        free(t);
-        return head;
       }
+
+      free(t->game->name);
+      free(t->game->team1);
+      free(t->game->team2);
+      free(t->game);
+      free(t);
+      return head;
     }
     else
     {
@@ -423,14 +381,12 @@ void free_gamelist(gamelink head)
 {
   if (head != 0)
   {
-    {
-      free(head->game->name);
-      free(head->game->team1);
-      free(head->game->team2);
-      free(head->game);
-      free_gamelist(head->next);
-      free(head);
-    }
+    free(head->game->name);
+    free(head->game->team1);
+    free(head->game->team2);
+    free(head->game);
+    free_gamelist(head->next);
+    free(head);
   }
   else
   {
@@ -473,16 +429,12 @@ void insertListGames(char *name)
 {
   if (list_head == 0)
   {
-    {
-      list_head = (tail = new_game_node(name));
-    }
+    list_head = (tail = new_game_node(name));
   }
   else
   {
-    {
-      tail->next = new_game_node(name);
-      tail = tail->next;
-    }
+    tail->next = new_game_node(name);
+    tail = tail->next;
   }
 
 }
@@ -506,31 +458,27 @@ void delete_gamelist(char *name)
   {
     if (strcmp(t->name, name) == 0)
     {
+      if (t == list_head)
       {
-        if (t == list_head)
+        list_head = t->next;
+      }
+      else
+      {
+        if (t == tail)
         {
-          list_head = t->next;
+          prev->next = 0;
+          tail = prev;
         }
         else
         {
-          if (t == tail)
-          {
-            {
-              prev->next = 0;
-              tail = prev;
-            }
-          }
-          else
-          {
-            prev->next = t->next;
-          }
-
+          prev->next = t->next;
         }
 
-        free(t->name);
-        free(t);
-        return;
       }
+
+      free(t->name);
+      free(t);
+      return;
     }
     else
     {

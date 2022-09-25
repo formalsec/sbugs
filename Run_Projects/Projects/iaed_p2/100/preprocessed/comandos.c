@@ -61,52 +61,44 @@ void a(unsigned long contador, link *heads_jogos, link_e *heads_equipas, lst_ptr
   score2 = new_sym_var(sizeof(unsigned int) * 8);
   if (hash_search_jogo(nome, heads_jogos) != 0)
   {
-    {
-      printf("%ld Jogo existente.\n", contador);
-      return;
-    }
+    printf("%ld Jogo existente.\n", contador);
+    return;
   }
   else
   {
     if ((hash_search_equipa(equipa1, heads_equipas) == 0) || (hash_search_equipa(equipa2, heads_equipas) == 0))
     {
-      {
-        printf("%ld Equipa inexistente.\n", contador);
-        return;
-      }
+      printf("%ld Equipa inexistente.\n", contador);
+      return;
     }
     else
     {
+      char *vencedor;
+      char *empate = "empate";
+      equipa_ptr e;
+      jogo_ptr x = (jogo_ptr) malloc(sizeof(jogo));
+      x->nome = (char *) malloc((sizeof(char)) * (strlen(nome) + 1));
+      x->equipa1 = (char *) malloc((sizeof(char)) * (strlen(equipa1) + 1));
+      x->equipa2 = (char *) malloc((sizeof(char)) * (strlen(equipa2) + 1));
+      strcpy(x->nome, nome);
+      strcpy(x->equipa1, equipa1);
+      strcpy(x->equipa2, equipa2);
+      x->score1 = score1;
+      x->score2 = score2;
+      hash_insert_jogo(x, heads_jogos);
+      insertEnd_lista(lista, x);
+      vencedor = vencedor_f(x->equipa1, x->equipa2, x->score1, x->score2);
+      if (strcmp(vencedor, empate) == 0)
       {
-        char *vencedor;
-        char *empate = "empate";
-        equipa_ptr e;
-        jogo_ptr x = (jogo_ptr) malloc(sizeof(jogo));
-        x->nome = (char *) malloc((sizeof(char)) * (strlen(nome) + 1));
-        x->equipa1 = (char *) malloc((sizeof(char)) * (strlen(equipa1) + 1));
-        x->equipa2 = (char *) malloc((sizeof(char)) * (strlen(equipa2) + 1));
-        strcpy(x->nome, nome);
-        strcpy(x->equipa1, equipa1);
-        strcpy(x->equipa2, equipa2);
-        x->score1 = score1;
-        x->score2 = score2;
-        hash_insert_jogo(x, heads_jogos);
-        insertEnd_lista(lista, x);
-        vencedor = vencedor_f(x->equipa1, x->equipa2, x->score1, x->score2);
-        if (strcmp(vencedor, empate) == 0)
-        {
-          return;
-        }
-        else
-        {
-          {
-            e = hash_search_equipa(vencedor, heads_equipas);
-            e->vitorias++;
-            return;
-          }
-        }
-
+        return;
       }
+      else
+      {
+        e = hash_search_equipa(vencedor, heads_equipas);
+        e->vitorias++;
+        return;
+      }
+
     }
 
   }
@@ -141,17 +133,13 @@ void p(unsigned long contador, link *heads_jogos)
   j = hash_search_jogo(nome, heads_jogos);
   if (j != 0)
   {
-    {
-      printf("%ld %s %s %s %u %u\n", contador, j->nome, j->equipa1, j->equipa2, j->score1, j->score2);
-      return;
-    }
+    printf("%ld %s %s %s %u %u\n", contador, j->nome, j->equipa1, j->equipa2, j->score1, j->score2);
+    return;
   }
   else
   {
-    {
-      printf("%ld Jogo inexistente.\n", contador);
-      return;
-    }
+    printf("%ld Jogo inexistente.\n", contador);
+    return;
   }
 
 }
@@ -173,30 +161,24 @@ void r(unsigned long contador, link *heads_jogos, link_e *heads_equipas, lst_ptr
   j = hash_search_jogo(nome, heads_jogos);
   if (j == 0)
   {
-    {
-      printf("%ld Jogo inexistente.\n", contador);
-      return;
-    }
+    printf("%ld Jogo inexistente.\n", contador);
+    return;
   }
   else
   {
+    vencedor = vencedor_f(j->equipa1, j->equipa2, j->score1, j->score2);
+    if (strcmp(vencedor, empate) != 0)
     {
-      vencedor = vencedor_f(j->equipa1, j->equipa2, j->score1, j->score2);
-      if (strcmp(vencedor, empate) != 0)
-      {
-        {
-          e = hash_search_equipa(vencedor, heads_equipas);
-          e->vitorias--;
-        }
-      }
-      else
-      {
-        
-      }
-
-      hash_delete_jogo(nome, heads_jogos, lista);
-      return;
+      e = hash_search_equipa(vencedor, heads_equipas);
+      e->vitorias--;
     }
+    else
+    {
+      
+    }
+
+    hash_delete_jogo(nome, heads_jogos, lista);
+    return;
   }
 
 }
@@ -224,54 +206,44 @@ void s(unsigned long contador, link *heads_jogos, link_e *heads_equipas)
   j = hash_search_jogo(nome, heads_jogos);
   if (j == 0)
   {
-    {
-      printf("%ld Jogo inexistente.\n", contador);
-      return;
-    }
+    printf("%ld Jogo inexistente.\n", contador);
+    return;
   }
   else
   {
+    vencedor_ant = vencedor_f(j->equipa1, j->equipa2, j->score1, j->score2);
+    vencedor_dep = vencedor_f(j->equipa1, j->equipa2, score1, score2);
+    j->score1 = score1;
+    j->score2 = score2;
+    if (strcmp(vencedor_ant, vencedor_dep) == 0)
     {
-      vencedor_ant = vencedor_f(j->equipa1, j->equipa2, j->score1, j->score2);
-      vencedor_dep = vencedor_f(j->equipa1, j->equipa2, score1, score2);
-      j->score1 = score1;
-      j->score2 = score2;
-      if (strcmp(vencedor_ant, vencedor_dep) == 0)
+      return;
+    }
+    else
+    {
+      if (strcmp(vencedor_ant, empate) != 0)
+      {
+        e_ant = hash_search_equipa(vencedor_ant, heads_equipas);
+        e_ant->vitorias--;
+      }
+      else
+      {
+        
+      }
+
+      if (strcmp(vencedor_dep, empate) == 0)
       {
         return;
       }
       else
       {
-        {
-          if (strcmp(vencedor_ant, empate) != 0)
-          {
-            {
-              e_ant = hash_search_equipa(vencedor_ant, heads_equipas);
-              e_ant->vitorias--;
-            }
-          }
-          else
-          {
-            
-          }
-
-          if (strcmp(vencedor_dep, empate) == 0)
-          {
-            return;
-          }
-          else
-          {
-            {
-              e_dep = hash_search_equipa(vencedor_dep, heads_equipas);
-              e_dep->vitorias++;
-              return;
-            }
-          }
-
-        }
+        e_dep = hash_search_equipa(vencedor_dep, heads_equipas);
+        e_dep->vitorias++;
+        return;
       }
 
     }
+
   }
 
 }
@@ -288,21 +260,17 @@ void A(unsigned long contador, link_e *heads_equipas)
   nome[10 - 1] = '\0';
   if (hash_search_equipa(nome, heads_equipas) != 0)
   {
-    {
-      printf("%ld Equipa existente.\n", contador);
-      return;
-    }
+    printf("%ld Equipa existente.\n", contador);
+    return;
   }
   else
   {
-    {
-      equipa_ptr e = (equipa_ptr) malloc(sizeof(equipa));
-      e->nome = (char *) malloc((sizeof(char)) * (strlen(nome) + 1));
-      strcpy(e->nome, nome);
-      e->vitorias = 0;
-      hash_insert_equipa(e, heads_equipas);
-      return;
-    }
+    equipa_ptr e = (equipa_ptr) malloc(sizeof(equipa));
+    e->nome = (char *) malloc((sizeof(char)) * (strlen(nome) + 1));
+    strcpy(e->nome, nome);
+    e->vitorias = 0;
+    hash_insert_equipa(e, heads_equipas);
+    return;
   }
 
 }
@@ -321,17 +289,13 @@ void P(unsigned long contador, link_e *heads_equipas)
   e = hash_search_equipa(nome, heads_equipas);
   if (e == 0)
   {
-    {
-      printf("%ld Equipa inexistente.\n", contador);
-      return;
-    }
+    printf("%ld Equipa inexistente.\n", contador);
+    return;
   }
   else
   {
-    {
-      printf("%ld %s %u\n", contador, nome, e->vitorias);
-      return;
-    }
+    printf("%ld %s %u\n", contador, nome, e->vitorias);
+    return;
   }
 
 }
@@ -360,20 +324,16 @@ void g(unsigned long contador, link_e *heads_equipas)
       e = t->e;
       if (e->vitorias == max_vit)
       {
-        {
-          vec[n_equipas] = e->nome;
-          n_equipas++;
-        }
+        vec[n_equipas] = e->nome;
+        n_equipas++;
       }
       else
       {
         if (e->vitorias > max_vit)
         {
-          {
-            vec[0] = e->nome;
-            n_equipas = 1;
-            max_vit = e->vitorias;
-          }
+          vec[0] = e->nome;
+          n_equipas = 1;
+          max_vit = e->vitorias;
         }
         else
         {
@@ -388,13 +348,11 @@ void g(unsigned long contador, link_e *heads_equipas)
 
   if (n_equipas > 0)
   {
-    {
-      printf("%ld Melhores %d\n", contador, max_vit);
-      qsort(vec, n_equipas, sizeof(char *), compare);
-      for (i = 0; i < n_equipas; i++)
-        printf("%ld * %s\n", contador, vec[i]);
+    printf("%ld Melhores %d\n", contador, max_vit);
+    qsort(vec, n_equipas, sizeof(char *), compare);
+    for (i = 0; i < n_equipas; i++)
+      printf("%ld * %s\n", contador, vec[i]);
 
-    }
   }
   else
   {

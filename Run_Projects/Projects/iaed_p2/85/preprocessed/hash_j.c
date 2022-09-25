@@ -64,9 +64,7 @@ pJogo STsearch_jogo(hash_j hash, char *n_jogo)
   pJogo j = 0;
   if (!hash->heads[i])
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -100,19 +98,17 @@ link_j delete_jogo(link_j head, char *n_jogo)
   {
     if (!strcmp(temp->j->n_jogo, n_jogo))
     {
+      if (temp == head)
       {
-        if (temp == head)
-        {
-          head = temp->next;
-        }
-        else
-        {
-          prev->next = temp->next;
-        }
-
-        free_link_j(temp);
-        break;
+        head = temp->next;
       }
+      else
+      {
+        prev->next = temp->next;
+      }
+
+      free_link_j(temp);
+      break;
     }
     else
     {

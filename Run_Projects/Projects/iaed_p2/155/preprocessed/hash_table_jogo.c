@@ -37,9 +37,7 @@ jogo *hash_table_jogo_lookup(char *nome, jogo *hash[2000])
   {
     if (strcmp(aux->nome_jogo, nome) == 0)
     {
-      {
-        return aux;
-      }
+      return aux;
     }
     else
     {
@@ -67,9 +65,7 @@ jogo *hash_table_jogo_delete(char *nome, jogo *hash[2000])
 
   if (aux == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -78,15 +74,11 @@ jogo *hash_table_jogo_delete(char *nome, jogo *hash[2000])
 
   if (aux_ant == 0)
   {
-    {
-      hash[indice] = aux->next;
-    }
+    hash[indice] = aux->next;
   }
   else
   {
-    {
-      aux_ant->next = aux->next;
-    }
+    aux_ant->next = aux->next;
   }
 
   return *hash;

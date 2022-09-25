@@ -35,9 +35,7 @@ Link searchLL(Link head, char *name)
   {
     if (strcmp(aux->key, name) == 0)
     {
-      {
-        return aux;
-      }
+      return aux;
     }
     else
     {
@@ -57,21 +55,15 @@ void removeLL(Link *head, char *name)
   {
     if (strcmp(aux->key, name) == 0)
     {
+      if (aux == (*head))
       {
-        if (aux == (*head))
-        {
-          {
-            *head = (*head)->next;
-          }
-        }
-        else
-        {
-          {
-            prev->next = aux->next;
-          }
-        }
-
+        *head = (*head)->next;
       }
+      else
+      {
+        prev->next = aux->next;
+      }
+
     }
     else
     {
@@ -86,18 +78,14 @@ void insertDLL(Link *first, Link *last, Link new)
 {
   if ((*first) == 0)
   {
-    {
-      *first = new;
-      *last = new;
-    }
+    *first = new;
+    *last = new;
   }
   else
   {
-    {
-      (*last)->next_order = new;
-      new->prev_order = *last;
-      *last = new;
-    }
+    (*last)->next_order = new;
+    new->prev_order = *last;
+    *last = new;
   }
 
 }
@@ -106,35 +94,27 @@ void removeDLL(Link *first, Link *last, Link del)
 {
   if ((*first) == (*last))
   {
-    {
-      *first = 0;
-      *last = 0;
-    }
+    *first = 0;
+    *last = 0;
   }
   else
   {
     if ((*first) == del)
     {
-      {
-        *first = (*first)->next_order;
-        (*first)->prev_order = 0;
-      }
+      *first = (*first)->next_order;
+      (*first)->prev_order = 0;
     }
     else
     {
       if ((*last) == del)
       {
-        {
-          *last = (*last)->prev_order;
-          (*last)->next_order = 0;
-        }
+        *last = (*last)->prev_order;
+        (*last)->next_order = 0;
       }
       else
       {
-        {
-          del->next_order->prev_order = del->prev_order;
-          del->prev_order->next_order = del->next_order;
-        }
+        del->next_order->prev_order = del->prev_order;
+        del->prev_order->next_order = del->next_order;
       }
 
     }

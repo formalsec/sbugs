@@ -33,10 +33,8 @@ void novo_jogo(no_equipa *tabela_equipas[], lista_jogos **fila_jogos, no_jogo_ta
   score2 = new_sym_var(sizeof(int) * 8);
   if (procura_jogo_lista(tabela_jogos, nome))
   {
-    {
-      printf("%d Jogo existente.\n", linha);
-      return;
-    }
+    printf("%d Jogo existente.\n", linha);
+    return;
   }
   else
   {
@@ -45,10 +43,8 @@ void novo_jogo(no_equipa *tabela_equipas[], lista_jogos **fila_jogos, no_jogo_ta
 
   if ((!procura_equipa_lista(tabela_equipas, equipa1)) || (!procura_equipa_lista(tabela_equipas, equipa2)))
   {
-    {
-      printf("%d Equipa inexistente.\n", linha);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", linha);
+    return;
   }
   else
   {
@@ -75,9 +71,7 @@ void procura_jogo(no_jogo_tabela *tabela_jogos[], int linha)
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", linha);
-    }
+    printf("%d Jogo inexistente.\n", linha);
   }
 
 }
@@ -93,10 +87,8 @@ void apaga_jogo_alvo(no_equipa *tabela_equipas[], no_jogo_tabela *tabela_jogos[]
   nome[10 - 1] = '\0';
   if (!procura_jogo_lista(tabela_jogos, nome))
   {
-    {
-      printf("%d Jogo inexistente.\n", linha);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", linha);
+    return;
   }
   else
   {
@@ -121,10 +113,8 @@ void altera_score_jogo(no_jogo_tabela *tabela_jogos[], no_equipa *tabela_equipas
   score2 = new_sym_var(sizeof(int) * 8);
   if (!procura_jogo_lista(tabela_jogos, nome))
   {
-    {
-      printf("%d Jogo inexistente.\n", linha);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", linha);
+    return;
   }
   else
   {
@@ -145,10 +135,8 @@ void adiciona_equipa_alvo(no_equipa *tabela_equipas[], int linha, int *numero_eq
   nome[10 - 1] = '\0';
   if (procura_equipa_lista(tabela_equipas, nome))
   {
-    {
-      printf("%d Equipa existente.\n", linha);
-      return;
-    }
+    printf("%d Equipa existente.\n", linha);
+    return;
   }
   else
   {
@@ -171,15 +159,11 @@ void procura_equipa(no_equipa *tabela_equipas[], int linha)
   alvo = procura_equipa_lista(tabela_equipas, nome);
   if (alvo)
   {
-    {
-      printf("%d %s %d\n", linha, alvo->nome, alvo->vitorias);
-    }
+    printf("%d %s %d\n", linha, alvo->nome, alvo->vitorias);
   }
   else
   {
-    {
-      printf("%d Equipa inexistente.\n", linha);
-    }
+    printf("%d Equipa inexistente.\n", linha);
   }
 
 }

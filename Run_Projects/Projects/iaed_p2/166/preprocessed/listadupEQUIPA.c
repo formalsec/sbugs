@@ -29,19 +29,15 @@ void add_last_equipa(list_equipa *l, Equipa *e)
   newNode->equipa = e;
   if ((l->head == 0) && (l->last == 0))
   {
-    {
-      newNode->previous = 0;
-      l->head = newNode;
-      l->last = newNode;
-    }
+    newNode->previous = 0;
+    l->head = newNode;
+    l->last = newNode;
   }
   else
   {
-    {
-      newNode->previous = l->last;
-      l->last->next = newNode;
-      l->last = newNode;
-    }
+    newNode->previous = l->last;
+    l->last->next = newNode;
+    l->last = newNode;
   }
 
 }
@@ -62,20 +58,18 @@ void free_list_equipa(list_equipa *l)
   }
   else
   {
+    while (lastNode != l->head)
     {
-      while (lastNode != l->head)
-      {
-        newLast = lastNode->previous;
-        free_equipa(lastNode->equipa);
-        free(lastNode);
-        newLast->next = 0;
-        lastNode = newLast;
-      }
-
+      newLast = lastNode->previous;
       free_equipa(lastNode->equipa);
       free(lastNode);
-      free(l);
+      newLast->next = 0;
+      lastNode = newLast;
     }
+
+    free_equipa(lastNode->equipa);
+    free(lastNode);
+    free(l);
   }
 
 }

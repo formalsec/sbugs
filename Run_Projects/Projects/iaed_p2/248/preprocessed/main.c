@@ -15,79 +15,63 @@ int main()
   {
     if (comando == 'a')
     {
-      {
-        getchar();
-        a(jogos_lista, jogos_hashtable, equipas_hashtable, linha_input);
-        linha_input++;
-      }
+      getchar();
+      a(jogos_lista, jogos_hashtable, equipas_hashtable, linha_input);
+      linha_input++;
     }
     else
     {
       if (comando == 'A')
       {
-        {
-          getchar();
-          A(equipas_hashtable, linha_input);
-          linha_input++;
-        }
+        getchar();
+        A(equipas_hashtable, linha_input);
+        linha_input++;
       }
       else
       {
         if (comando == 'l')
         {
-          {
-            l(jogos_lista, linha_input);
-            linha_input++;
-          }
+          l(jogos_lista, linha_input);
+          linha_input++;
         }
         else
         {
           if (comando == 'p')
           {
-            {
-              getchar();
-              p(jogos_hashtable, linha_input);
-              linha_input++;
-            }
+            getchar();
+            p(jogos_hashtable, linha_input);
+            linha_input++;
           }
           else
           {
             if (comando == 'P')
             {
-              {
-                getchar();
-                P(equipas_hashtable, linha_input);
-                linha_input++;
-              }
+              getchar();
+              P(equipas_hashtable, linha_input);
+              linha_input++;
             }
             else
             {
               if (comando == 'r')
               {
-                {
-                  getchar();
-                  r(jogos_lista, jogos_hashtable, equipas_hashtable, linha_input);
-                  linha_input++;
-                }
+                getchar();
+                r(jogos_lista, jogos_hashtable, equipas_hashtable, linha_input);
+                linha_input++;
               }
               else
               {
                 if (comando == 's')
                 {
-                  {
-                    getchar();
-                    s(jogos_hashtable, equipas_hashtable, linha_input);
-                    linha_input++;
-                  }
+                  getchar();
+                  s(jogos_hashtable, equipas_hashtable, linha_input);
+                  linha_input++;
                 }
                 else
                 {
                   if (comando == 'g')
                   {
-                    {
-                      g(equipas_hashtable, linha_input);
-                      linha_input++;
-                    }
+                    g(equipas_hashtable, linha_input);
+                    linha_input++;
                   }
                   else
                   {

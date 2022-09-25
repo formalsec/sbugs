@@ -47,17 +47,13 @@ void append(list *lst, node *n)
   n->next = 0;
   if (lst->head)
   {
-    {
-      lst->last->next = n;
-      n->prev = lst->last;
-    }
+    lst->last->next = n;
+    n->prev = lst->last;
   }
   else
   {
-    {
-      lst->head = n;
-      n->prev = 0;
-    }
+    lst->head = n;
+    n->prev = 0;
   }
 
   lst->last = n;
@@ -104,31 +100,29 @@ void free_list(list *lst)
   STfree(lst->table);
   if (head)
   {
+    if (head->type == TEAM)
     {
-      if (head->type == TEAM)
+      while (head)
       {
-        while (head)
-        {
-          aux = head;
-          head = head->next;
-          free_team(aux->d.t);
-          free(aux);
-        }
-
-      }
-      else
-      {
-        while (head)
-        {
-          aux = head;
-          head = head->next;
-          free_game(aux->d.g);
-          free(aux);
-        }
-
+        aux = head;
+        head = head->next;
+        free_team(aux->d.t);
+        free(aux);
       }
 
     }
+    else
+    {
+      while (head)
+      {
+        aux = head;
+        head = head->next;
+        free_game(aux->d.g);
+        free(aux);
+      }
+
+    }
+
   }
   else
   {
@@ -153,35 +147,31 @@ node *STsearch(link **heads, char *text)
 
   if (head->n->type == TEAM)
   {
+    while (head)
+      if (!strcmp(head->n->d.t->name, text))
     {
-      while (head)
-        if (!strcmp(head->n->d.t->name, text))
-      {
-        return head->n;
-      }
-      else
-      {
-        head = head->next;
-      }
-
-
+      return head->n;
     }
+    else
+    {
+      head = head->next;
+    }
+
+
   }
   else
   {
+    while (head)
+      if (!strcmp(head->n->d.g->name, text))
     {
-      while (head)
-        if (!strcmp(head->n->d.g->name, text))
-      {
-        return head->n;
-      }
-      else
-      {
-        head = head->next;
-      }
-
-
+      return head->n;
     }
+    else
+    {
+      head = head->next;
+    }
+
+
   }
 
   return 0;
@@ -222,20 +212,16 @@ void STdelete(link **heads, node *n)
   head = heads[i];
   if (head->n == n)
   {
-    {
-      aux = head;
-      heads[i] = head->next;
-    }
+    aux = head;
+    heads[i] = head->next;
   }
   else
   {
-    {
-      while (head->next->n != n)
-        head = head->next;
+    while (head->next->n != n)
+      head = head->next;
 
-      aux = head->next;
-      head->next = head->next->next;
-    }
+    aux = head->next;
+    head->next = head->next->next;
   }
 
   free(aux);

@@ -31,9 +31,7 @@ void add_game(node_games **head_games, node_games **games_table, node_teams **te
   p_node_new_game = &node_new_game;
   if (in_table_games(games_table, p_node_new_game) != 0)
   {
-    {
-      fail_game = 1;
-    }
+    fail_game = 1;
   }
   else
   {
@@ -42,9 +40,7 @@ void add_game(node_games **head_games, node_games **games_table, node_teams **te
 
   if (get_t1(p_node_new_game) == 0)
   {
-    {
-      fail_team = 1;
-    }
+    fail_team = 1;
   }
   else
   {
@@ -53,9 +49,7 @@ void add_game(node_games **head_games, node_games **games_table, node_teams **te
 
   if (get_t2(p_node_new_game) == 0)
   {
-    {
-      fail_team = 1;
-    }
+    fail_team = 1;
   }
   else
   {
@@ -64,11 +58,9 @@ void add_game(node_games **head_games, node_games **games_table, node_teams **te
 
   if (fail_game)
   {
-    {
-      destroy_game(new_game);
-      printf("%d Jogo existente.\n", l_count);
-      return;
-    }
+    destroy_game(new_game);
+    printf("%d Jogo existente.\n", l_count);
+    return;
   }
   else
   {
@@ -77,11 +69,9 @@ void add_game(node_games **head_games, node_games **games_table, node_teams **te
 
   if (fail_team)
   {
-    {
-      destroy_game(new_game);
-      printf("%d Equipa inexistente.\n", l_count);
-      return;
-    }
+    destroy_game(new_game);
+    printf("%d Equipa inexistente.\n", l_count);
+    return;
   }
   else
   {
@@ -91,9 +81,7 @@ void add_game(node_games **head_games, node_games **games_table, node_teams **te
   winner = get_winner(p_node_new_game);
   if (winner != 0)
   {
-    {
-      give_win(winner);
-    }
+    give_win(winner);
   }
   else
   {
@@ -110,15 +98,11 @@ void search_game(node_games **games_table, int l_count)
   game_found = find_game(games_table);
   if (game_found == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", l_count);
-    }
+    printf("%d Jogo inexistente.\n", l_count);
   }
   else
   {
-    {
-      printf("%d %s %s %s %d %d\n", l_count, get_game_name(game_found), get_name_t1(game_found), get_name_t2(game_found), get_score1(game_found), get_score2(game_found));
-    }
+    printf("%d %s %s %s %d %d\n", l_count, get_game_name(game_found), get_name_t1(game_found), get_name_t2(game_found), get_score1(game_found), get_score2(game_found));
   }
 
 }
@@ -133,11 +117,9 @@ void add_team(node_teams **head_teams, node_teams **teams_table, int l_count)
   p_node_new_team = &node_new_team;
   if (in_table_teams(teams_table, p_node_new_team) != 0)
   {
-    {
-      destroy_team(new_team);
-      printf("%d Equipa existente.\n", l_count);
-      return;
-    }
+    destroy_team(new_team);
+    printf("%d Equipa existente.\n", l_count);
+    return;
   }
   else
   {
@@ -154,16 +136,12 @@ void search_team(node_teams **teams_table, int l_count)
   t_found = find_team(teams_table);
   if (t_found != 0)
   {
-    {
-      printf("%d %s %d\n", l_count, get_team_name(t_found), get_wins(t_found));
-      return;
-    }
+    printf("%d %s %d\n", l_count, get_team_name(t_found), get_wins(t_found));
+    return;
   }
   else
   {
-    {
-      printf("%d Equipa inexistente.\n", l_count);
-    }
+    printf("%d Equipa inexistente.\n", l_count);
   }
 
 }
@@ -180,10 +158,8 @@ void delete_game(node_games **head_games, node_games **games_table, int l_count)
   game_found = find_game(games_table);
   if (game_found == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", l_count);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", l_count);
+    return;
   }
   else
   {
@@ -194,9 +170,7 @@ void delete_game(node_games **head_games, node_games **games_table, int l_count)
   winner = get_winner(game_found);
   if (winner != 0)
   {
-    {
-      take_win(winner);
-    }
+    take_win(winner);
   }
   else
   {
@@ -218,10 +192,8 @@ void change_score(node_games **games_table, int l_count)
   new_score2 = read_score();
   if (game_found == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", l_count);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", l_count);
+    return;
   }
   else
   {
@@ -233,30 +205,24 @@ void change_score(node_games **games_table, int l_count)
   new_winner = get_winner(game_found);
   if (old_winner != new_winner)
   {
+    if (old_winner != 0)
     {
-      if (old_winner != 0)
-      {
-        {
-          take_win(old_winner);
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (new_winner != 0)
-      {
-        {
-          give_win(new_winner);
-        }
-      }
-      else
-      {
-        
-      }
-
+      take_win(old_winner);
     }
+    else
+    {
+      
+    }
+
+    if (new_winner != 0)
+    {
+      give_win(new_winner);
+    }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -274,9 +240,7 @@ void list_most_wins(node_teams **head_teams, int l_count)
   int teams_count = 0;
   if ((*head_teams) == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -290,18 +254,14 @@ void list_most_wins(node_teams **head_teams, int l_count)
     n_wins = get_wins(tmp);
     if (n_wins == max_wins)
     {
-      {
-        teams_count++;
-      }
+      teams_count++;
     }
     else
     {
       if (n_wins > max_wins)
       {
-        {
-          max_wins = n_wins;
-          teams_count = 1;
-        }
+        max_wins = n_wins;
+        teams_count = 1;
       }
       else
       {
@@ -319,10 +279,8 @@ void list_most_wins(node_teams **head_teams, int l_count)
   {
     if (get_wins(tmp) == max_wins)
     {
-      {
-        winners[i] = tmp;
-        i++;
-      }
+      winners[i] = tmp;
+      i++;
     }
     else
     {

@@ -62,10 +62,8 @@ LISTA **adiciona_jg_lista(LISTA **lista, JOGO *jogo)
   nova_lista->next = 0;
   if ((*lista) == 0)
   {
-    {
-      *lista = nova_lista;
-      return lista;
-    }
+    *lista = nova_lista;
+    return lista;
   }
   else
   {
@@ -118,12 +116,10 @@ void apaga_jg_ht(JOGO **ht_jg, JOGO *jogo)
   node = ht_jg[hash];
   if ((node != 0) && (strcmp(node->nome, jogo->nome) == 0))
   {
-    {
-      ht_jg[hash] = ht_jg[hash]->next;
-      free(jogo->nome);
-      free(jogo);
-      return;
-    }
+    ht_jg[hash] = ht_jg[hash]->next;
+    free(jogo->nome);
+    free(jogo);
+    return;
   }
   else
   {
@@ -147,11 +143,9 @@ void apaga_jg_lista(LISTA **lista, JOGO *jogo)
   LISTA *aux;
   if (node->next == 0)
   {
-    {
-      *lista = 0;
-      free(node);
-      return;
-    }
+    *lista = 0;
+    free(node);
+    return;
   }
   else
   {
@@ -160,11 +154,9 @@ void apaga_jg_lista(LISTA **lista, JOGO *jogo)
 
   if (strcmp(node->jogo->nome, jogo->nome) == 0)
   {
-    {
-      *lista = node->next;
-      free(node);
-      return;
-    }
+    *lista = node->next;
+    free(node);
+    return;
   }
   else
   {
@@ -175,12 +167,10 @@ void apaga_jg_lista(LISTA **lista, JOGO *jogo)
   {
     if (strcmp(node->next->jogo->nome, jogo->nome) == 0)
     {
-      {
-        aux = node->next;
-        node->next = node->next->next;
-        free(aux);
-        return;
-      }
+      aux = node->next;
+      node->next = node->next->next;
+      free(aux);
+      return;
     }
     else
     {

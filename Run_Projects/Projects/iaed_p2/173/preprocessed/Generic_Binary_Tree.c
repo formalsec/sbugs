@@ -41,35 +41,25 @@ void *bintree_search(BTlink head, void *info, void *(*get_info)(void *), int (*c
   aux = compare(info, get_info(head->data));
   if (aux == 0)
   {
-    {
-      return head->data;
-    }
+    return head->data;
   }
   else
   {
     if ((head->l == 0) && (head->r == 0))
     {
-      {
-        return 0;
-      }
+      return 0;
     }
     else
     {
+      if (aux > 0)
       {
-        if (aux > 0)
-        {
-          {
-            return bintree_search(head->l, info, get_info, compare);
-          }
-        }
-        else
-        {
-          {
-            return bintree_search(head->r, info, get_info, compare);
-          }
-        }
-
+        return bintree_search(head->l, info, get_info, compare);
       }
+      else
+      {
+        return bintree_search(head->r, info, get_info, compare);
+      }
+
     }
 
   }
@@ -80,15 +70,11 @@ BTlink bintree_max(BTlink head)
 {
   if (head->r == 0)
   {
-    {
-      return head;
-    }
+    return head;
   }
   else
   {
-    {
-      return bintree_max(head->r);
-    }
+    return bintree_max(head->r);
   }
 
 }
@@ -97,15 +83,11 @@ BTlink bintree_min(BTlink head)
 {
   if (head->l == 0)
   {
-    {
-      return head;
-    }
+    return head;
   }
   else
   {
-    {
-      return bintree_min(head->l);
-    }
+    return bintree_min(head->l);
   }
 
 }
@@ -120,9 +102,7 @@ void bintree_free(BTlink head, void (*free_data)(void *))
 {
   if (head == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -131,9 +111,7 @@ void bintree_free(BTlink head, void (*free_data)(void *))
 
   if (head->r != 0)
   {
-    {
-      bintree_free(head->r, free_data);
-    }
+    bintree_free(head->r, free_data);
   }
   else
   {
@@ -142,9 +120,7 @@ void bintree_free(BTlink head, void (*free_data)(void *))
 
   if (head->l != 0)
   {
-    {
-      bintree_free(head->l, free_data);
-    }
+    bintree_free(head->l, free_data);
   }
   else
   {
@@ -265,49 +241,35 @@ BTlink bintree_AVLbalance(BTlink head)
   balanceFactor = bintree_balance(head);
   if (balanceFactor > 1)
   {
+    if (bintree_balance(head->l) >= 0)
     {
-      if (bintree_balance(head->l) >= 0)
-      {
-        {
-          head = rotR(head);
-        }
-      }
-      else
-      {
-        {
-          head = rotLR(head);
-        }
-      }
-
+      head = rotR(head);
     }
+    else
+    {
+      head = rotLR(head);
+    }
+
   }
   else
   {
     if (balanceFactor < (-1))
     {
+      if (bintree_balance(head->r) <= 0)
       {
-        if (bintree_balance(head->r) <= 0)
-        {
-          {
-            head = rotL(head);
-          }
-        }
-        else
-        {
-          {
-            head = rotRL(head);
-          }
-        }
-
+        head = rotL(head);
       }
+      else
+      {
+        head = rotRL(head);
+      }
+
     }
     else
     {
-      {
-        hleft = bintree_height(head->l);
-        hright = bintree_height(head->r);
-        head->height = (hleft > hright) ? (hleft + 1) : (hright + 1);
-      }
+      hleft = bintree_height(head->l);
+      hright = bintree_height(head->r);
+      head->height = (hleft > hright) ? (hleft + 1) : (hright + 1);
     }
 
   }
@@ -330,39 +292,27 @@ int bintree_add_item_aux(BTlink *head, BTlink node, void *(*get_info)(void *), i
 
   if (aux > 0)
   {
+    if ((*head)->r == 0)
     {
-      if ((*head)->r == 0)
-      {
-        {
-          (*head)->r = node;
-        }
-      }
-      else
-      {
-        {
-          res = bintree_add_item_aux(&(*head)->r, node, get_info, compare);
-        }
-      }
-
+      (*head)->r = node;
     }
+    else
+    {
+      res = bintree_add_item_aux(&(*head)->r, node, get_info, compare);
+    }
+
   }
   else
   {
+    if ((*head)->l == 0)
     {
-      if ((*head)->l == 0)
-      {
-        {
-          (*head)->l = node;
-        }
-      }
-      else
-      {
-        {
-          res = bintree_add_item_aux(&(*head)->l, node, get_info, compare);
-        }
-      }
-
+      (*head)->l = node;
     }
+    else
+    {
+      res = bintree_add_item_aux(&(*head)->l, node, get_info, compare);
+    }
+
   }
 
   *head = bintree_AVLbalance(*head);
@@ -374,28 +324,22 @@ int bintree_add_item(BTlink *head, void *data, int size, void (*free_data)(void 
   BTlink node = btnode_create(data, size);
   if ((*head) != 0)
   {
+    if (bintree_add_item_aux(head, node, get_info, compare))
     {
-      if (bintree_add_item_aux(head, node, get_info, compare))
-      {
-        {
-          btnode_free(node, free_data);
-          return 1;
-        }
-      }
-      else
-      {
-        
-      }
-
-      return 0;
+      btnode_free(node, free_data);
+      return 1;
     }
+    else
+    {
+      
+    }
+
+    return 0;
   }
   else
   {
-    {
-      *head = node;
-      return 0;
-    }
+    *head = node;
+    return 0;
   }
 
 }
@@ -407,85 +351,67 @@ void bintree_delete_item(BTlink *head, void *info, void *(*get_info)(void *), vo
   void *data_aux;
   if (cmp_aux != 0)
   {
+    if (cmp_aux > 0)
     {
-      if (cmp_aux > 0)
+      if ((*head)->l == 0)
       {
-        {
-          if ((*head)->l == 0)
-          {
-            return;
-          }
-          else
-          {
-            
-          }
-
-          bintree_delete_item(&(*head)->l, info, get_info, free_data, compare);
-        }
+        return;
       }
       else
       {
-        {
-          if ((*head)->r == 0)
-          {
-            return;
-          }
-          else
-          {
-            
-          }
-
-          bintree_delete_item(&(*head)->r, info, get_info, free_data, compare);
-        }
+        
       }
 
+      bintree_delete_item(&(*head)->l, info, get_info, free_data, compare);
     }
+    else
+    {
+      if ((*head)->r == 0)
+      {
+        return;
+      }
+      else
+      {
+        
+      }
+
+      bintree_delete_item(&(*head)->r, info, get_info, free_data, compare);
+    }
+
   }
   else
   {
+    if (((*head)->r != 0) && ((*head)->l != 0))
     {
-      if (((*head)->r != 0) && ((*head)->l != 0))
+      aux = bintree_max((*head)->l);
+      data_aux = (*head)->data;
+      (*head)->data = aux->data;
+      aux->data = data_aux;
+      bintree_delete_item(&(*head)->l, get_info(aux->data), get_info, free_data, compare);
+    }
+    else
+    {
+      aux = *head;
+      if (((*head)->l == 0) && ((*head)->r == 0))
       {
-        {
-          aux = bintree_max((*head)->l);
-          data_aux = (*head)->data;
-          (*head)->data = aux->data;
-          aux->data = data_aux;
-          bintree_delete_item(&(*head)->l, get_info(aux->data), get_info, free_data, compare);
-        }
+        *head = 0;
       }
       else
       {
+        if ((*head)->l == 0)
         {
-          aux = *head;
-          if (((*head)->l == 0) && ((*head)->r == 0))
-          {
-            {
-              *head = 0;
-            }
-          }
-          else
-          {
-            if ((*head)->l == 0)
-            {
-              {
-                *head = (*head)->r;
-              }
-            }
-            else
-            {
-              {
-                *head = (*head)->l;
-              }
-            }
-
-          }
-
-          btnode_free(aux, free_data);
+          *head = (*head)->r;
         }
+        else
+        {
+          *head = (*head)->l;
+        }
+
       }
 
+      btnode_free(aux, free_data);
     }
+
   }
 
   *head = bintree_AVLbalance(*head);

@@ -48,23 +48,19 @@ void insertTeam(char *teamData)
   strcpy(n->team_name, teamData);
   if (teamList == 0)
   {
-    {
-      n->next = 0;
-      teamList = n;
-    }
+    n->next = 0;
+    teamList = n;
   }
   else
   {
+    aux = teamList;
+    while (aux->next != 0)
     {
-      aux = teamList;
-      while (aux->next != 0)
-      {
-        aux = aux->next;
-      }
-
-      n->next = 0;
-      aux->next = n;
+      aux = aux->next;
     }
+
+    n->next = 0;
+    aux->next = n;
   }
 
   return;
@@ -85,23 +81,19 @@ void insertMatch(char *nameData, char *teamData1, char *teamData2, int score_1, 
   n->score_2 = score_2;
   if (matchList == 0)
   {
-    {
-      n->next = 0;
-      matchList = n;
-    }
+    n->next = 0;
+    matchList = n;
   }
   else
   {
+    aux = matchList;
+    while (aux->next != 0)
     {
-      aux = matchList;
-      while (aux->next != 0)
-      {
-        aux = aux->next;
-      }
-
-      n->next = 0;
-      aux->next = n;
+      aux = aux->next;
     }
+
+    n->next = 0;
+    aux->next = n;
   }
 
   return;
@@ -111,16 +103,14 @@ void add_match(char *name, char *team_1, char *team_2, int score_1, int score_2)
 {
   matchNode *aux = matchList;
   teamNode *aux2 = teamList;
-  bool b1 = 0;
-  bool b2 = 0;
+  bool b1 = false;
+  bool b2 = false;
   while (aux != 0)
   {
     if (!strcmp(aux->name, name))
     {
-      {
-        printf("%d Jogo existente.\n", inputCount);
-        return;
-      }
+      printf("%d Jogo existente.\n", inputCount);
+      return;
     }
     else
     {
@@ -134,9 +124,7 @@ void add_match(char *name, char *team_1, char *team_2, int score_1, int score_2)
   {
     if (!strcmp(aux2->team_name, team_1))
     {
-      {
-        b1 = 1;
-      }
+      b1 = true;
     }
     else
     {
@@ -145,9 +133,7 @@ void add_match(char *name, char *team_1, char *team_2, int score_1, int score_2)
 
     if (!strcmp(aux2->team_name, team_2))
     {
-      {
-        b2 = 1;
-      }
+      b2 = true;
     }
     else
     {
@@ -159,10 +145,8 @@ void add_match(char *name, char *team_1, char *team_2, int score_1, int score_2)
 
   if ((!b1) || (!b2))
   {
-    {
-      printf("%d Equipa inexistente.\n", inputCount);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", inputCount);
+    return;
   }
   else
   {
@@ -179,9 +163,7 @@ void list_match()
   auxList = matchList;
   if (auxList == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -200,16 +182,14 @@ void list_match()
 void match_search(char *namep)
 {
   matchNode *auxMatch = matchList;
-  bool b1 = 0;
+  bool b1 = false;
   while (auxMatch != 0)
   {
     if (!strcmp(auxMatch->name, namep))
     {
-      {
-        b1 = 1;
-        printf("%d %s %s %s %d %d\n", inputCount, namep, auxMatch->team_1, auxMatch->team_2, auxMatch->score_1, auxMatch->score_2);
-        return;
-      }
+      b1 = true;
+      printf("%d %s %s %s %d %d\n", inputCount, namep, auxMatch->team_1, auxMatch->team_2, auxMatch->score_1, auxMatch->score_2);
+      return;
     }
     else
     {
@@ -221,10 +201,8 @@ void match_search(char *namep)
 
   if (!b1)
   {
-    {
-      printf("%d Jogo inexistente.\n", inputCount);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", inputCount);
+    return;
   }
   else
   {
@@ -238,16 +216,14 @@ void change_score(char *name, int score_1, int score_2)
 {
   matchNode *auxMatch = matchList;
   matchNode *auxHead = auxMatch;
-  bool b1 = 0;
+  bool b1 = false;
   while (auxMatch != 0)
   {
     if (!strcmp(auxMatch->name, name))
     {
-      {
-        b1 = 1;
-        auxMatch->score_1 = score_1;
-        auxMatch->score_2 = score_2;
-      }
+      b1 = true;
+      auxMatch->score_1 = score_1;
+      auxMatch->score_2 = score_2;
     }
     else
     {
@@ -259,10 +235,8 @@ void change_score(char *name, int score_1, int score_2)
 
   if (!b1)
   {
-    {
-      printf("%d Jogo inexistente.\n", inputCount);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", inputCount);
+    return;
   }
   else
   {
@@ -280,10 +254,8 @@ void add_team(char *nameA)
   {
     if (!strcmp(aux->team_name, nameA))
     {
-      {
-        printf("%d Equipa existente.\n", inputCount);
-        return;
-      }
+      printf("%d Equipa existente.\n", inputCount);
+      return;
     }
     else
     {
@@ -303,10 +275,8 @@ void delete_match(char *name)
   matchNode *auxPrevious = 0;
   if ((auxMatch != 0) && (!strcmp(auxMatch->name, name)))
   {
-    {
-      matchList = auxMatch->next;
-      return;
-    }
+    matchList = auxMatch->next;
+    return;
   }
   else
   {
@@ -321,10 +291,8 @@ void delete_match(char *name)
 
   if (auxMatch == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", inputCount);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", inputCount);
+    return;
   }
   else
   {
@@ -340,15 +308,13 @@ void team_search(char *name)
   matchNode *auxMatch = matchList;
   teamNode *auxTeam = teamList;
   int winCount = 0;
-  bool b1 = 0;
-  bool b2 = 0;
+  bool b1 = false;
+  bool b2 = false;
   while (auxTeam != 0)
   {
     if (!strcmp(auxTeam->team_name, name))
     {
-      {
-        b1 = 1;
-      }
+      b1 = true;
     }
     else
     {
@@ -357,9 +323,7 @@ void team_search(char *name)
 
     if (!strcmp(auxTeam->team_name, name))
     {
-      {
-        b2 = 1;
-      }
+      b2 = true;
     }
     else
     {
@@ -371,10 +335,8 @@ void team_search(char *name)
 
   if ((!b1) || (!b2))
   {
-    {
-      printf("%d Equipa inexistente.\n", inputCount);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", inputCount);
+    return;
   }
   else
   {
@@ -385,9 +347,7 @@ void team_search(char *name)
   {
     if ((!strcmp(auxMatch->team_1, name)) & (auxMatch->score_1 > auxMatch->score_2))
     {
-      {
-        winCount++;
-      }
+      winCount++;
     }
     else
     {
@@ -396,9 +356,7 @@ void team_search(char *name)
 
     if ((!strcmp(auxMatch->team_2, name)) & (auxMatch->score_2 > auxMatch->score_1))
     {
-      {
-        winCount++;
-      }
+      winCount++;
     }
     else
     {
@@ -431,9 +389,7 @@ void list_team()
   bool swapped;
   if (aux_team == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -449,9 +405,7 @@ void list_team()
     {
       if ((!strcmp(aux_match->team_1, vicTeam[i].vName)) && (aux_match->score_1 > aux_match->score_2))
       {
-        {
-          vicTeam[i].vicCount++;
-        }
+        vicTeam[i].vicCount++;
       }
       else
       {
@@ -460,9 +414,7 @@ void list_team()
 
       if ((!strcmp(aux_match->team_2, vicTeam[i].vName)) && (aux_match->score_2 > aux_match->score_1))
       {
-        {
-          vicTeam[i].vicCount++;
-        }
+        vicTeam[i].vicCount++;
       }
       else
       {
@@ -488,23 +440,21 @@ void list_team()
 
   free(aux_team);
   free(aux_match);
-  swapped = 1;
+  swapped = true;
   while (swapped)
   {
-    swapped = 0;
+    swapped = false;
     for (j = 0; j < (i - 1); j++)
     {
       if (strcmp(vicTeam[j].vName, vicTeam[j + 1].vName) > 0)
       {
-        {
-          strcpy(auxVic, vicTeam[j].vName);
-          k = vicTeam[j].vicCount;
-          strcpy(vicTeam[j].vName, vicTeam[j + 1].vName);
-          vicTeam[j].vicCount = vicTeam[j + 1].vicCount;
-          strcpy(vicTeam[j + 1].vName, auxVic);
-          vicTeam[j + 1].vicCount = k;
-          swapped = 1;
-        }
+        strcpy(auxVic, vicTeam[j].vName);
+        k = vicTeam[j].vicCount;
+        strcpy(vicTeam[j].vName, vicTeam[j + 1].vName);
+        vicTeam[j].vicCount = vicTeam[j + 1].vicCount;
+        strcpy(vicTeam[j + 1].vName, auxVic);
+        vicTeam[j + 1].vicCount = k;
+        swapped = true;
       }
       else
       {
@@ -520,9 +470,7 @@ void list_team()
   {
     if ((vicTeam[j].vicCount == maxVict) && strcmp(vicTeam[j].vName, vicTeam[j + 1].vName))
     {
-      {
-        printf("%d %s %s\n", inputCount, "*", vicTeam[j].vName);
-      }
+      printf("%d %s %s\n", inputCount, "*", vicTeam[j].vName);
     }
     else
     {

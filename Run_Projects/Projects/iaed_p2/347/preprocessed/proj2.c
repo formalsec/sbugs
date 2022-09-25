@@ -42,51 +42,39 @@ int casoa(int NL, htJ_t *htJ, htE_t *htE, lista_jogo *listaJogos, int indexJogos
   equipa2 = obter_htE(htE, equipa2nome);
   if (obter_htJ(htJ, nome))
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-    }
+    printf("%d Jogo existente.\n", NL);
   }
   else
   {
     if ((!equipa1) || (!equipa2))
     {
-      {
-        printf("%d Equipa inexistente.\n", NL);
-      }
+      printf("%d Equipa inexistente.\n", NL);
     }
     else
     {
+      jogo = novoJogo(nome, equipa1, equipa2, pontuacao1, pontuacao2);
+      if (pontuacao1 > pontuacao2)
       {
-        jogo = novoJogo(nome, equipa1, equipa2, pontuacao1, pontuacao2);
-        if (pontuacao1 > pontuacao2)
+        equipa1->vitorias++;
+        jogo->vitoriosa = equipa1;
+      }
+      else
+      {
+        if (pontuacao2 > pontuacao1)
         {
-          {
-            equipa1->vitorias++;
-            jogo->vitoriosa = equipa1;
-          }
+          equipa2->vitorias++;
+          jogo->vitoriosa = equipa2;
         }
         else
         {
-          if (pontuacao2 > pontuacao1)
-          {
-            {
-              equipa2->vitorias++;
-              jogo->vitoriosa = equipa2;
-            }
-          }
-          else
-          {
-            {
-              jogo->vitoriosa = 0;
-            }
-          }
-
+          jogo->vitoriosa = 0;
         }
 
-        adicionar_ultimo_jogo(listaJogos, jogo);
-        apropriar_htJ(htJ, nome, jogo);
-        return indexJogos + 1;
       }
+
+      adicionar_ultimo_jogo(listaJogos, jogo);
+      apropriar_htJ(htJ, nome, jogo);
+      return indexJogos + 1;
     }
 
   }
@@ -106,18 +94,14 @@ int casoA(int NL, htE_t *htE, lista_equipa *listaEquipas, int indexEquipas)
   nome[10 - 1] = '\0';
   if (obter_htE(htE, nome))
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-    }
+    printf("%d Equipa existente.\n", NL);
   }
   else
   {
-    {
-      equipa = novaEquipa(nome);
-      adicionar_ultimo_equipa(listaEquipas, equipa);
-      apropriar_htE(htE, nome, equipa);
-      return indexEquipas + 1;
-    }
+    equipa = novaEquipa(nome);
+    adicionar_ultimo_equipa(listaEquipas, equipa);
+    apropriar_htE(htE, nome, equipa);
+    return indexEquipas + 1;
   }
 
   return indexEquipas;
@@ -149,15 +133,11 @@ void casop(int NL, htJ_t *htJ)
   jogo = obter_htJ(htJ, nome);
   if (!jogo)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
   else
   {
-    {
-      printf("%d %s %s %s %d %d\n", NL, jogo->nome, jogo->equipa1->nome, jogo->equipa2->nome, jogo->pontuacao[0], jogo->pontuacao[1]);
-    }
+    printf("%d %s %s %s %d %d\n", NL, jogo->nome, jogo->equipa1->nome, jogo->equipa2->nome, jogo->pontuacao[0], jogo->pontuacao[1]);
   }
 
 }
@@ -175,15 +155,11 @@ void casoP(int NL, htE_t *htE)
   equipa = obter_htE(htE, nome);
   if (!equipa)
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-    }
+    printf("%d Equipa inexistente.\n", NL);
   }
   else
   {
-    {
-      printf("%d %s %d\n", NL, equipa->nome, equipa->vitorias);
-    }
+    printf("%d %s %d\n", NL, equipa->nome, equipa->vitorias);
   }
 
 }
@@ -203,33 +179,27 @@ int casor(int NL, htJ_t *htJ, htE_t *htE, lista_jogo *listaJogos, int indexJogos
   jogo = obter_htJ(htJ, nome);
   if (!jogo)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return indexJogos;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return indexJogos;
   }
   else
   {
+    if (jogo->vitoriosa != 0)
     {
-      if (jogo->vitoriosa != 0)
-      {
-        {
-          vitoriosa = obter_htE(htE, jogo->vitoriosa->nome);
-          vitoriosa->vitorias--;
-        }
-      }
-      else
-      {
-        
-      }
-
-      htJ_del(htJ, nome);
-      while (strcmp(no->jogo->nome, jogo->nome) != 0)
-        no = no->prox;
-
-      remover_no_jogo(listaJogos, no);
-      return indexJogos - 1;
+      vitoriosa = obter_htE(htE, jogo->vitoriosa->nome);
+      vitoriosa->vitorias--;
     }
+    else
+    {
+      
+    }
+
+    htJ_del(htJ, nome);
+    while (strcmp(no->jogo->nome, jogo->nome) != 0)
+      no = no->prox;
+
+    remover_no_jogo(listaJogos, no);
+    return indexJogos - 1;
   }
 
 }
@@ -254,82 +224,66 @@ void casos(int NL, htJ_t *htJ, htE_t *htE)
   jogo = obter_htJ(htJ, nome);
   if (!jogo)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
   else
   {
+    if (pontuacao1 > pontuacao2)
     {
-      if (pontuacao1 > pontuacao2)
+      novaVitoriosa = jogo->equipa1;
+    }
+    else
+    {
+      if (pontuacao2 > pontuacao1)
       {
-        {
-          novaVitoriosa = jogo->equipa1;
-        }
+        novaVitoriosa = jogo->equipa2;
       }
       else
       {
-        if (pontuacao2 > pontuacao1)
+        if (pontuacao1 == pontuacao2)
         {
-          {
-            novaVitoriosa = jogo->equipa2;
-          }
+          novaVitoriosa = 0;
         }
         else
         {
-          if (pontuacao1 == pontuacao2)
-          {
-            {
-              novaVitoriosa = 0;
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
 
-      jogo->pontuacao[0] = pontuacao1;
-      jogo->pontuacao[1] = pontuacao2;
-      if (novaVitoriosa != jogo->vitoriosa)
+    }
+
+    jogo->pontuacao[0] = pontuacao1;
+    jogo->pontuacao[1] = pontuacao2;
+    if (novaVitoriosa != jogo->vitoriosa)
+    {
+      if (novaVitoriosa != 0)
       {
-        {
-          if (novaVitoriosa != 0)
-          {
-            {
-              nova = obter_htE(htE, novaVitoriosa->nome);
-              nova->vitorias++;
-            }
-          }
-          else
-          {
-            
-          }
-
-          if (jogo->vitoriosa != 0)
-          {
-            {
-              antiga = obter_htE(htE, jogo->vitoriosa->nome);
-              antiga->vitorias--;
-            }
-          }
-          else
-          {
-            
-          }
-
-          jogo->vitoriosa = novaVitoriosa;
-        }
+        nova = obter_htE(htE, novaVitoriosa->nome);
+        nova->vitorias++;
       }
       else
       {
         
       }
 
+      if (jogo->vitoriosa != 0)
+      {
+        antiga = obter_htE(htE, jogo->vitoriosa->nome);
+        antiga->vitorias--;
+      }
+      else
+      {
+        
+      }
+
+      jogo->vitoriosa = novaVitoriosa;
     }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -346,68 +300,62 @@ void casog(int NL, lista_equipa *listaEquipas, int indexEquipas)
   no_equipa *no;
   if (indexEquipas > 0)
   {
+    no = listaEquipas->cabeca;
+    while (no != 0)
     {
-      no = listaEquipas->cabeca;
-      while (no != 0)
+      ponte = no->equipa;
+      if (ponte->vitorias > maiorVitorias)
       {
-        ponte = no->equipa;
-        if (ponte->vitorias > maiorVitorias)
-        {
-          maiorVitorias = ponte->vitorias;
-        }
-        else
-        {
-          no = no->prox;
-        }
-
+        maiorVitorias = ponte->vitorias;
+      }
+      else
+      {
+        no = no->prox;
       }
 
-      no = listaEquipas->cabeca;
-      while (no != 0)
+    }
+
+    no = listaEquipas->cabeca;
+    while (no != 0)
+    {
+      ponte = no->equipa;
+      if (ponte->vitorias == maiorVitorias)
       {
-        ponte = no->equipa;
-        if (ponte->vitorias == maiorVitorias)
+        melhores[indexVitorioso++] = ponte->nome;
+      }
+      else
+      {
+        
+      }
+
+      no = no->prox;
+    }
+
+    for (i = 0; i < (indexVitorioso - 1); i++)
+    {
+      for (j = i + 1; j < indexVitorioso; j++)
+      {
+        if (strcmp(melhores[i], melhores[j]) > 0)
         {
-          {
-            melhores[indexVitorioso++] = ponte->nome;
-          }
+          temp = melhores[i];
+          melhores[i] = melhores[j];
+          melhores[j] = temp;
         }
         else
         {
           
         }
 
-        no = no->prox;
-      }
-
-      for (i = 0; i < (indexVitorioso - 1); i++)
-      {
-        for (j = i + 1; j < indexVitorioso; j++)
-        {
-          if (strcmp(melhores[i], melhores[j]) > 0)
-          {
-            {
-              temp = melhores[i];
-              melhores[i] = melhores[j];
-              melhores[j] = temp;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-      }
-
-      printf("%d Melhores %d\n", NL, maiorVitorias);
-      for (i = 0; i < indexVitorioso; i++)
-      {
-        printf("%d * %s\n", NL, melhores[i]);
       }
 
     }
+
+    printf("%d Melhores %d\n", NL, maiorVitorias);
+    for (i = 0; i < indexVitorioso; i++)
+    {
+      printf("%d * %s\n", NL, melhores[i]);
+    }
+
   }
   else
   {

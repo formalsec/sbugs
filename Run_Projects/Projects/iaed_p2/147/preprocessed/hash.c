@@ -42,9 +42,7 @@ pJogo searchList(pLink head, char *nome)
   {
     if (strcmp(temp->j->nome, nome) == 0)
     {
-      {
-        return temp->j;
-      }
+      return temp->j;
     }
     else
     {
@@ -64,9 +62,7 @@ pEquipa searchList_e(pLink_e head, char *nome)
   {
     if (strcmp(temp->e->nome_e, nome) == 0)
     {
-      {
-        return temp->e;
-      }
+      return temp->e;
     }
     else
     {
@@ -85,9 +81,7 @@ pLink removeList(pLink head, char *nome)
   pLink prev = 0;
   if (!head)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -98,23 +92,17 @@ pLink removeList(pLink head, char *nome)
   {
     if (strcmp(temp->j->nome, nome) == 0)
     {
+      if (temp == head)
       {
-        if (temp == head)
-        {
-          {
-            head = temp->next;
-          }
-        }
-        else
-        {
-          {
-            prev->next = temp->next;
-          }
-        }
-
-        free_link(temp);
-        break;
+        head = temp->next;
       }
+      else
+      {
+        prev->next = temp->next;
+      }
+
+      free_link(temp);
+      break;
     }
     else
     {
@@ -201,16 +189,12 @@ pJogo ht_search(pHash h, char *nome)
   int i = hash(h->M, nome);
   if (h->heads[i] != 0)
   {
-    {
-      return searchList(h->heads[i], nome);
-    }
+    return searchList(h->heads[i], nome);
   }
   else
   {
-    {
-      pJogo j = 0;
-      return j;
-    }
+    pJogo j = 0;
+    return j;
   }
 
 }
@@ -220,16 +204,12 @@ pEquipa ht_search_e(pHash_e h_e, char *nome_e)
   int i = hash(h_e->M, nome_e);
   if (h_e->heads_e[i] != 0)
   {
-    {
-      return searchList_e(h_e->heads_e[i], nome_e);
-    }
+    return searchList_e(h_e->heads_e[i], nome_e);
   }
   else
   {
-    {
-      pEquipa e = 0;
-      return e;
-    }
+    pEquipa e = 0;
+    return e;
   }
 
 }

@@ -151,12 +151,10 @@ void mergeSort_preco(Produto arr[], int l, int r)
 {
   if (l < r)
   {
-    {
-      int m = l + ((r - l) / 2);
-      mergeSort_preco(arr, l, m);
-      mergeSort_preco(arr, m + 1, r);
-      merge_preco(arr, l, m, r);
-    }
+    int m = l + ((r - l) / 2);
+    mergeSort_preco(arr, l, m);
+    mergeSort_preco(arr, m + 1, r);
+    merge_preco(arr, l, m, r);
   }
   else
   {
@@ -200,12 +198,10 @@ void mergeSort_desc(Produto arr[], int l, int r)
 {
   if (l < r)
   {
-    {
-      int m = l + ((r - l) / 2);
-      mergeSort_desc(arr, l, m);
-      mergeSort_desc(arr, m + 1, r);
-      merge_desc(arr, l, m, r);
-    }
+    int m = l + ((r - l) / 2);
+    mergeSort_desc(arr, l, m);
+    mergeSort_desc(arr, m + 1, r);
+    merge_desc(arr, l, m, r);
   }
   else
   {
@@ -312,28 +308,22 @@ void adic_prod_enc()
         }
         else
         {
+          i = prod_existe_enc(p.idp, e.ide);
+          if (i < todas_encomendas[e.ide].contador_prod_enc)
           {
-            i = prod_existe_enc(p.idp, e.ide);
-            if (i < todas_encomendas[e.ide].contador_prod_enc)
-            {
-              {
-                todas_encomendas[e.ide].peso_total_enc += todos_produtos[p.idp].peso * qnt_prod;
-                todas_encomendas[e.ide].produtos[i].qnt += qnt_prod;
-                todos_produtos[p.idp].qnt -= qnt_prod;
-              }
-            }
-            else
-            {
-              {
-                todas_encomendas[e.ide].peso_total_enc += todos_produtos[p.idp].peso * qnt_prod;
-                todas_encomendas[e.ide].produtos[i] = todos_produtos[p.idp];
-                todas_encomendas[e.ide].produtos[i].qnt = qnt_prod;
-                todas_encomendas[e.ide].contador_prod_enc++;
-                todos_produtos[p.idp].qnt -= qnt_prod;
-              }
-            }
-
+            todas_encomendas[e.ide].peso_total_enc += todos_produtos[p.idp].peso * qnt_prod;
+            todas_encomendas[e.ide].produtos[i].qnt += qnt_prod;
+            todos_produtos[p.idp].qnt -= qnt_prod;
           }
+          else
+          {
+            todas_encomendas[e.ide].peso_total_enc += todos_produtos[p.idp].peso * qnt_prod;
+            todas_encomendas[e.ide].produtos[i] = todos_produtos[p.idp];
+            todas_encomendas[e.ide].produtos[i].qnt = qnt_prod;
+            todas_encomendas[e.ide].contador_prod_enc++;
+            todos_produtos[p.idp].qnt -= qnt_prod;
+          }
+
         }
 
       }
@@ -389,25 +379,21 @@ void rem_prod_enc()
     }
     else
     {
+      i = prod_existe_enc(p.idp, e.ide);
+      if (i < todas_encomendas[e.ide].contador_prod_enc)
       {
-        i = prod_existe_enc(p.idp, e.ide);
-        if (i < todas_encomendas[e.ide].contador_prod_enc)
-        {
-          {
-            todos_produtos[p.idp].qnt += todas_encomendas[e.ide].produtos[i].qnt;
-            todas_encomendas[e.ide].peso_total_enc -= todos_produtos[p.idp].peso * todas_encomendas[e.ide].produtos[i].qnt;
-            for (j = i; j < (todas_encomendas[e.ide].contador_prod_enc - 1); j++)
-              todas_encomendas[e.ide].produtos[j] = todas_encomendas[e.ide].produtos[j + 1];
+        todos_produtos[p.idp].qnt += todas_encomendas[e.ide].produtos[i].qnt;
+        todas_encomendas[e.ide].peso_total_enc -= todos_produtos[p.idp].peso * todas_encomendas[e.ide].produtos[i].qnt;
+        for (j = i; j < (todas_encomendas[e.ide].contador_prod_enc - 1); j++)
+          todas_encomendas[e.ide].produtos[j] = todas_encomendas[e.ide].produtos[j + 1];
 
-            todas_encomendas[e.ide].contador_prod_enc--;
-          }
-        }
-        else
-        {
-          
-        }
-
+        todas_encomendas[e.ide].contador_prod_enc--;
       }
+      else
+      {
+        
+      }
+
     }
 
   }
@@ -426,12 +412,10 @@ void calcula_custo_enc()
   }
   else
   {
-    {
-      for (i = 0; i < todas_encomendas[e.ide].contador_prod_enc; i++)
-        preco_total += todos_produtos[todas_encomendas[e.ide].produtos[i].idp].preco * todas_encomendas[e.ide].produtos[i].qnt;
+    for (i = 0; i < todas_encomendas[e.ide].contador_prod_enc; i++)
+      preco_total += todos_produtos[todas_encomendas[e.ide].produtos[i].idp].preco * todas_encomendas[e.ide].produtos[i].qnt;
 
-      printf("Custo da encomenda %d %d.\n", e.ide, preco_total);
-    }
+    printf("Custo da encomenda %d %d.\n", e.ide, preco_total);
   }
 
 }
@@ -472,18 +456,16 @@ void desc_qnt_prod_enc()
     }
     else
     {
+      i = prod_existe_enc(p.idp, e.ide);
+      if (i < todas_encomendas[e.ide].contador_prod_enc)
       {
-        i = prod_existe_enc(p.idp, e.ide);
-        if (i < todas_encomendas[e.ide].contador_prod_enc)
-        {
-          printf("%s %d.\n", todas_encomendas[e.ide].produtos[i].desc, todas_encomendas[e.ide].produtos[i].qnt);
-        }
-        else
-        {
-          printf("%s %d.\n", todos_produtos[p.idp].desc, 0);
-        }
-
+        printf("%s %d.\n", todas_encomendas[e.ide].produtos[i].desc, todas_encomendas[e.ide].produtos[i].qnt);
       }
+      else
+      {
+        printf("%s %d.\n", todos_produtos[p.idp].desc, 0);
+      }
+
     }
 
   }
@@ -504,27 +486,13 @@ void enc_mais_prod()
   }
   else
   {
+    for (j = 0; j < contador_enc; j++)
     {
-      for (j = 0; j < contador_enc; j++)
+      i = prod_existe_enc(p.idp, j);
+      if ((i < todas_encomendas[j].contador_prod_enc) && (todas_encomendas[j].produtos[i].qnt > qnt_mais_alta))
       {
-        i = prod_existe_enc(p.idp, j);
-        if ((i < todas_encomendas[j].contador_prod_enc) && (todas_encomendas[j].produtos[i].qnt > qnt_mais_alta))
-        {
-          {
-            qnt_mais_alta = todas_encomendas[j].produtos[i].qnt;
-            indice_qnt_mais_alta = j;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      if (indice_qnt_mais_alta != (-1))
-      {
-        printf("Maximo produto %d %d %d.\n", p.idp, indice_qnt_mais_alta, qnt_mais_alta);
+        qnt_mais_alta = todas_encomendas[j].produtos[i].qnt;
+        indice_qnt_mais_alta = j;
       }
       else
       {
@@ -532,6 +500,16 @@ void enc_mais_prod()
       }
 
     }
+
+    if (indice_qnt_mais_alta != (-1))
+    {
+      printf("Maximo produto %d %d %d.\n", p.idp, indice_qnt_mais_alta, qnt_mais_alta);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -562,16 +540,14 @@ void lista_prod_encomenda()
   }
   else
   {
-    {
-      printf("Encomenda %d\n", e.ide);
-      for (i = 0; i < todas_encomendas[e.ide].contador_prod_enc; i++)
-        copia_prod_enc[i] = todas_encomendas[e.ide].produtos[i];
+    printf("Encomenda %d\n", e.ide);
+    for (i = 0; i < todas_encomendas[e.ide].contador_prod_enc; i++)
+      copia_prod_enc[i] = todas_encomendas[e.ide].produtos[i];
 
-      mergeSort_desc(copia_prod_enc, 0, todas_encomendas[e.ide].contador_prod_enc - 1);
-      for (i = 0; i < todas_encomendas[e.ide].contador_prod_enc; i++)
-        printf("* %s %d %d\n", copia_prod_enc[i].desc, todos_produtos[copia_prod_enc[i].idp].preco, copia_prod_enc[i].qnt);
+    mergeSort_desc(copia_prod_enc, 0, todas_encomendas[e.ide].contador_prod_enc - 1);
+    for (i = 0; i < todas_encomendas[e.ide].contador_prod_enc; i++)
+      printf("* %s %d %d\n", copia_prod_enc[i].desc, todos_produtos[copia_prod_enc[i].idp].preco, copia_prod_enc[i].qnt);
 
-    }
   }
 
 }

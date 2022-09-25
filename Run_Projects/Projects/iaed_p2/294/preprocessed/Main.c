@@ -20,9 +20,7 @@ int main()
   {
     if (c == 'a')
     {
-      {
-        a(ptr_HTJ, ptr_HTE, CJ, Contador_Instrucoes);
-      }
+      a(ptr_HTJ, ptr_HTE, CJ, Contador_Instrucoes);
     }
     else
     {
@@ -31,9 +29,7 @@ int main()
 
     if (c == 'l')
     {
-      {
-        l(CJ, Contador_Instrucoes);
-      }
+      l(CJ, Contador_Instrucoes);
     }
     else
     {
@@ -42,9 +38,7 @@ int main()
 
     if (c == 'p')
     {
-      {
-        p(ptr_HTJ, Contador_Instrucoes);
-      }
+      p(ptr_HTJ, Contador_Instrucoes);
     }
     else
     {
@@ -53,9 +47,7 @@ int main()
 
     if (c == 'r')
     {
-      {
-        r(ptr_HTJ, ptr_HTE, CJ, Contador_Instrucoes);
-      }
+      r(ptr_HTJ, ptr_HTE, CJ, Contador_Instrucoes);
     }
     else
     {
@@ -64,9 +56,7 @@ int main()
 
     if (c == 's')
     {
-      {
-        s(ptr_HTJ, ptr_HTE, Contador_Instrucoes);
-      }
+      s(ptr_HTJ, ptr_HTE, Contador_Instrucoes);
     }
     else
     {
@@ -75,9 +65,7 @@ int main()
 
     if (c == 'A')
     {
-      {
-        A(ptr_HTE, CE, Contador_Instrucoes);
-      }
+      A(ptr_HTE, CE, Contador_Instrucoes);
     }
     else
     {
@@ -86,9 +74,7 @@ int main()
 
     if (c == 'P')
     {
-      {
-        P(ptr_HTE, Contador_Instrucoes);
-      }
+      P(ptr_HTE, Contador_Instrucoes);
     }
     else
     {
@@ -97,9 +83,7 @@ int main()
 
     if (c == 'g')
     {
-      {
-        g(CE, Contador_Instrucoes);
-      }
+      g(CE, Contador_Instrucoes);
     }
     else
     {

@@ -102,24 +102,20 @@ list_names *insert_name_list(list_names *head_lst_names, char *name)
   y->next = 0;
   if ((head_lst_names == 0) || (compare_names(y, head_lst_names) < 0))
   {
-    {
-      y->next = head_lst_names;
-      return y;
-    }
+    y->next = head_lst_names;
+    return y;
   }
   else
   {
+    list_names *z = head_lst_names;
+    while ((z->next != 0) && (compare_names(y, z->next) >= 0))
     {
-      list_names *z = head_lst_names;
-      while ((z->next != 0) && (compare_names(y, z->next) >= 0))
-      {
-        z = z->next;
-      }
-
-      y->next = z->next;
-      z->next = y;
-      return head_lst_names;
+      z = z->next;
     }
+
+    y->next = z->next;
+    z->next = y;
+    return head_lst_names;
   }
 
 }

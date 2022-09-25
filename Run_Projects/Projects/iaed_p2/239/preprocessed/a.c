@@ -42,10 +42,8 @@ void a(GAME *hashG[], TEAM *hashT[], int row)
   {
     if (searcher_team == 0)
     {
-      {
-        printf("%d Equipa inexistente.", row);
-        return;
-      }
+      printf("%d Equipa inexistente.", row);
+      return;
     }
     else
     {
@@ -61,10 +59,8 @@ void a(GAME *hashG[], TEAM *hashT[], int row)
   {
     if (searcher_team == 0)
     {
-      {
-        printf("%d Equipa inexistente.", row);
-        return;
-      }
+      printf("%d Equipa inexistente.", row);
+      return;
     }
     else
     {
@@ -80,43 +76,41 @@ void a(GAME *hashG[], TEAM *hashT[], int row)
   {
     if ((searcher_game->link == 0) && (strcmp(searcher_game->name, "\0") == 0))
     {
+      new_game = (GAME *) calloc(1, sizeof(GAME *));
+      strcpy(new_game->name, name);
+      index = hash_function(team1);
+      searcher_team = hashT[index];
+      while (strcmp(searcher_team->name, team1) != 0)
+        searcher_team = searcher_team->link;
+
+      if (score1 > score2)
       {
-        new_game = (GAME *) calloc(1, sizeof(GAME *));
-        strcpy(new_game->name, name);
-        index = hash_function(team1);
-        searcher_team = hashT[index];
-        while (strcmp(searcher_team->name, team1) != 0)
-          searcher_team = searcher_team->link;
-
-        if (score1 > score2)
-        {
-          searcher_team->score++;
-        }
-        else
-        {
-          
-        }
-
-        new_game->team1 = searcher_team;
-        index = hash_function(team2);
-        searcher_team = hashT[index];
-        while (strcmp(searcher_team->name, team2) != 0)
-          searcher_team = searcher_team->link;
-
-        if (score2 > score1)
-        {
-          searcher_team->score++;
-        }
-        else
-        {
-          
-        }
-
-        new_game->team2 = searcher_team;
-        new_game->score1 = score1;
-        new_game->score2 = score2;
-        return;
+        searcher_team->score++;
       }
+      else
+      {
+        
+      }
+
+      new_game->team1 = searcher_team;
+      index = hash_function(team2);
+      searcher_team = hashT[index];
+      while (strcmp(searcher_team->name, team2) != 0)
+        searcher_team = searcher_team->link;
+
+      if (score2 > score1)
+      {
+        searcher_team->score++;
+      }
+      else
+      {
+        
+      }
+
+      new_game->team2 = searcher_team;
+      new_game->score1 = score1;
+      new_game->score2 = score2;
+      return;
     }
     else
     {

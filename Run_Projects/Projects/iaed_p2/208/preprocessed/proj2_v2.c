@@ -205,18 +205,14 @@ link_lst link_list_pop(link_lst head)
   link_lst node_m;
   if (head == 0)
   {
-    {
-      printf("List empty couldnt remove item");
-    }
+    printf("List empty couldnt remove item");
   }
   else
   {
-    {
-      node_m = head->next;
-      node_m->_jogo_ = head->next->_jogo_;
-      free(head);
-      head = node_m;
-    }
+    node_m = head->next;
+    node_m->_jogo_ = head->next->_jogo_;
+    free(head);
+    head = node_m;
   }
 
   return head;
@@ -239,15 +235,11 @@ Jogo *link_list_search(link_lst head, char *nm)
   {
     if (strcmp(current->_jogo_->_nome_, nm) == 0)
     {
-      {
-        return current->_jogo_;
-      }
+      return current->_jogo_;
     }
     else
     {
-      {
-        current = current->next;
-      }
+      current = current->next;
     }
 
   }
@@ -262,15 +254,11 @@ Jogo *link_list_searchTeam(link_lst head, char *team_name)
   {
     if ((strcmp(current->_jogo_->_equipaA_, team_name) == 0) || (strcmp(current->_jogo_->_equipaB_, team_name) == 0))
     {
-      {
-        return current->_jogo_;
-      }
+      return current->_jogo_;
     }
     else
     {
-      {
-        current = current->next;
-      }
+      current = current->next;
     }
 
   }
@@ -284,50 +272,42 @@ int link_list_delete(link_lst head, char *nm)
   link_lst tempNode = 0;
   if (head != 0)
   {
+    if (strcmp(head->_jogo_->_nome_, nm) == 0)
     {
-      if (strcmp(head->_jogo_->_nome_, nm) == 0)
+      if ((*head->_jogo_->_scoreA_) > (*head->_jogo_->_scoreB_))
       {
-        {
-          if ((*head->_jogo_->_scoreA_) > (*head->_jogo_->_scoreB_))
-          {
-            {
-              team_lst_gamesWon_decrement(head->_jogo_->_equipaA_);
-            }
-          }
-          else
-          {
-            
-          }
-
-          if ((*head->_jogo_->_scoreB_) > (*head->_jogo_->_scoreA_))
-          {
-            {
-              team_lst_gamesWon_decrement(head->_jogo_->_equipaB_);
-            }
-          }
-          else
-          {
-            
-          }
-
-          tempNode = head;
-          head = head->next;
-          free(tempNode->_jogo_->_nome_);
-          free(tempNode->_jogo_->_equipaA_);
-          free(tempNode->_jogo_->_equipaB_);
-          free(tempNode->_jogo_->_scoreA_);
-          free(tempNode->_jogo_->_scoreB_);
-          free(tempNode->_jogo_);
-          free(tempNode);
-          return 1;
-        }
+        team_lst_gamesWon_decrement(head->_jogo_->_equipaA_);
       }
       else
       {
         
       }
 
+      if ((*head->_jogo_->_scoreB_) > (*head->_jogo_->_scoreA_))
+      {
+        team_lst_gamesWon_decrement(head->_jogo_->_equipaB_);
+      }
+      else
+      {
+        
+      }
+
+      tempNode = head;
+      head = head->next;
+      free(tempNode->_jogo_->_nome_);
+      free(tempNode->_jogo_->_equipaA_);
+      free(tempNode->_jogo_->_equipaB_);
+      free(tempNode->_jogo_->_scoreA_);
+      free(tempNode->_jogo_->_scoreB_);
+      free(tempNode->_jogo_);
+      free(tempNode);
+      return 1;
     }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -338,50 +318,42 @@ int link_list_delete(link_lst head, char *nm)
   {
     if (current->next != 0)
     {
+      if (strcmp(current->next->_jogo_->_nome_, nm) == 0)
       {
-        if (strcmp(current->next->_jogo_->_nome_, nm) == 0)
+        if ((*current->next->_jogo_->_scoreA_) > (*current->next->_jogo_->_scoreB_))
         {
-          {
-            if ((*current->next->_jogo_->_scoreA_) > (*current->next->_jogo_->_scoreB_))
-            {
-              {
-                team_lst_gamesWon_decrement(current->next->_jogo_->_equipaA_);
-              }
-            }
-            else
-            {
-              
-            }
-
-            if ((*current->next->_jogo_->_scoreB_) > (*current->next->_jogo_->_scoreA_))
-            {
-              {
-                team_lst_gamesWon_decrement(current->next->_jogo_->_equipaB_);
-              }
-            }
-            else
-            {
-              
-            }
-
-            tempNode = current->next;
-            current->next = tempNode->next;
-            free(tempNode->_jogo_->_nome_);
-            free(tempNode->_jogo_->_equipaA_);
-            free(tempNode->_jogo_->_equipaB_);
-            free(tempNode->_jogo_->_scoreA_);
-            free(tempNode->_jogo_->_scoreB_);
-            free(tempNode->_jogo_);
-            free(tempNode);
-            return 1;
-          }
+          team_lst_gamesWon_decrement(current->next->_jogo_->_equipaA_);
         }
         else
         {
           
         }
 
+        if ((*current->next->_jogo_->_scoreB_) > (*current->next->_jogo_->_scoreA_))
+        {
+          team_lst_gamesWon_decrement(current->next->_jogo_->_equipaB_);
+        }
+        else
+        {
+          
+        }
+
+        tempNode = current->next;
+        current->next = tempNode->next;
+        free(tempNode->_jogo_->_nome_);
+        free(tempNode->_jogo_->_equipaA_);
+        free(tempNode->_jogo_->_equipaB_);
+        free(tempNode->_jogo_->_scoreA_);
+        free(tempNode->_jogo_->_scoreB_);
+        free(tempNode->_jogo_);
+        free(tempNode);
+        return 1;
       }
+      else
+      {
+        
+      }
+
     }
     else
     {
@@ -443,9 +415,7 @@ char *team_lst_search(char *team)
   {
     if (strcmp(current->teamName, team) == 0)
     {
-      {
-        return current->teamName;
-      }
+      return current->teamName;
     }
     else
     {
@@ -465,9 +435,7 @@ int *team_lst_searchGamesWon(char *team)
   {
     if (strcmp(current->teamName, team) == 0)
     {
-      {
-        return current->gamesWon;
-      }
+      return current->gamesWon;
     }
     else
     {
@@ -487,9 +455,7 @@ void team_lst_gamesWon_increment(char *team)
   {
     if (strcmp(current->teamName, team) == 0)
     {
-      {
-        (*current->gamesWon)++;
-      }
+      (*current->gamesWon)++;
     }
     else
     {
@@ -508,9 +474,7 @@ void team_lst_gamesWon_decrement(char *team)
   {
     if (strcmp(current->teamName, team) == 0)
     {
-      {
-        (*current->gamesWon)--;
-      }
+      (*current->gamesWon)--;
     }
     else
     {
@@ -587,38 +551,30 @@ int adicionaJogo()
   {
     if (counter == 0)
     {
+      if (hashSearch(token) == 0)
       {
-        if (hashSearch(token) == 0)
+        length = strlen(token);
+        if (firstGame == 0)
         {
-          {
-            length = strlen(token);
-            if (firstGame == 0)
-            {
-              {
-                gameHead->gameName = realloc(gameHead->gameName, (length + 1) * (sizeof(char)));
-                firstGame = 1;
-              }
-            }
-            else
-            {
-              
-            }
-
-            game_lst_push(token, length);
-            novoJogo->_nome_ = (char *) realloc(novoJogo->_nome_, (length + 1) * (sizeof(char)));
-            strcpy(novoJogo->_nome_, token);
-            controlNbit = 1;
-          }
+          gameHead->gameName = realloc(gameHead->gameName, (length + 1) * (sizeof(char)));
+          firstGame = 1;
         }
         else
         {
-          {
-            printf("%d Jogo existente.\n", lineNumber);
-            break;
-          }
+          
         }
 
+        game_lst_push(token, length);
+        novoJogo->_nome_ = (char *) realloc(novoJogo->_nome_, (length + 1) * (sizeof(char)));
+        strcpy(novoJogo->_nome_, token);
+        controlNbit = 1;
       }
+      else
+      {
+        printf("%d Jogo existente.\n", lineNumber);
+        break;
+      }
+
     }
     else
     {
@@ -627,25 +583,19 @@ int adicionaJogo()
 
     if (counter == 1)
     {
+      if (team_lst_search(token) != 0)
       {
-        if (team_lst_search(token) != 0)
-        {
-          {
-            length = strlen(token);
-            novoJogo->_equipaA_ = (char *) realloc(novoJogo->_equipaA_, (length + 1) * (sizeof(char)));
-            strcpy(novoJogo->_equipaA_, token);
-            controlTAbit = 1;
-          }
-        }
-        else
-        {
-          {
-            printf("%d Equipa inexistente.\n", lineNumber);
-            break;
-          }
-        }
-
+        length = strlen(token);
+        novoJogo->_equipaA_ = (char *) realloc(novoJogo->_equipaA_, (length + 1) * (sizeof(char)));
+        strcpy(novoJogo->_equipaA_, token);
+        controlTAbit = 1;
       }
+      else
+      {
+        printf("%d Equipa inexistente.\n", lineNumber);
+        break;
+      }
+
     }
     else
     {
@@ -654,25 +604,19 @@ int adicionaJogo()
 
     if (counter == 2)
     {
+      if (team_lst_search(token) != 0)
       {
-        if (team_lst_search(token) != 0)
-        {
-          {
-            length = strlen(token);
-            novoJogo->_equipaB_ = (char *) realloc(novoJogo->_equipaB_, (length + 1) * (sizeof(char)));
-            strcpy(novoJogo->_equipaB_, token);
-            controlTBbit = 1;
-          }
-        }
-        else
-        {
-          {
-            printf("%d Equipa inexistente.\n", lineNumber);
-            break;
-          }
-        }
-
+        length = strlen(token);
+        novoJogo->_equipaB_ = (char *) realloc(novoJogo->_equipaB_, (length + 1) * (sizeof(char)));
+        strcpy(novoJogo->_equipaB_, token);
+        controlTBbit = 1;
       }
+      else
+      {
+        printf("%d Equipa inexistente.\n", lineNumber);
+        break;
+      }
+
     }
     else
     {
@@ -681,13 +625,11 @@ int adicionaJogo()
 
     if (counter == 3)
     {
+      for (int novoJogo_index = 0; novoJogo_index < 10; novoJogo_index++)
       {
-        for (int novoJogo_index = 0; novoJogo_index < 10; novoJogo_index++)
-        {
-          novoJogo->_scoreA_[novoJogo_index] = new_sym_var(sizeof(int) * 8);
-        }
-
+        novoJogo->_scoreA_[novoJogo_index] = new_sym_var(sizeof(int) * 8);
       }
+
     }
     else
     {
@@ -696,13 +638,11 @@ int adicionaJogo()
 
     if (counter == 4)
     {
+      for (int novoJogo_index = 0; novoJogo_index < 10; novoJogo_index++)
       {
-        for (int novoJogo_index = 0; novoJogo_index < 10; novoJogo_index++)
-        {
-          novoJogo->_scoreB_[novoJogo_index] = new_sym_var(sizeof(int) * 8);
-        }
-
+        novoJogo->_scoreB_[novoJogo_index] = new_sym_var(sizeof(int) * 8);
       }
+
     }
     else
     {
@@ -715,42 +655,34 @@ int adicionaJogo()
 
   if (((controlTAbit != 0) && (controlTBbit != 0)) && (controlNbit != 0))
   {
+    if ((*novoJogo->_scoreA_) > (*novoJogo->_scoreB_))
     {
-      if ((*novoJogo->_scoreA_) > (*novoJogo->_scoreB_))
-      {
-        {
-          team_lst_gamesWon_increment(novoJogo->_equipaA_);
-        }
-      }
-      else
-      {
-        
-      }
-
-      if ((*novoJogo->_scoreB_) > (*novoJogo->_scoreA_))
-      {
-        {
-          team_lst_gamesWon_increment(novoJogo->_equipaB_);
-        }
-      }
-      else
-      {
-        
-      }
-
-      hashInsert(novoJogo);
+      team_lst_gamesWon_increment(novoJogo->_equipaA_);
     }
+    else
+    {
+      
+    }
+
+    if ((*novoJogo->_scoreB_) > (*novoJogo->_scoreA_))
+    {
+      team_lst_gamesWon_increment(novoJogo->_equipaB_);
+    }
+    else
+    {
+      
+    }
+
+    hashInsert(novoJogo);
   }
   else
   {
-    {
-      free(novoJogo->_nome_);
-      free(novoJogo->_equipaA_);
-      free(novoJogo->_equipaB_);
-      free(novoJogo->_scoreA_);
-      free(novoJogo->_scoreB_);
-      free(novoJogo);
-    }
+    free(novoJogo->_nome_);
+    free(novoJogo->_equipaA_);
+    free(novoJogo->_equipaB_);
+    free(novoJogo->_scoreA_);
+    free(novoJogo->_scoreB_);
+    free(novoJogo);
   }
 
   free(input);
@@ -765,26 +697,20 @@ void listaJogos()
   {
     if (firstGame == 0)
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {
+      gameAux = hashSearch(current->gameName);
+      if (gameAux != 0)
       {
-        gameAux = hashSearch(current->gameName);
-        if (gameAux != 0)
-        {
-          {
-            printf("%d %s %s %s %d %d\n", lineNumber, gameAux->_nome_, gameAux->_equipaA_, gameAux->_equipaB_, *gameAux->_scoreA_, *gameAux->_scoreB_);
-          }
-        }
-        else
-        {
-          
-        }
-
+        printf("%d %s %s %s %d %d\n", lineNumber, gameAux->_nome_, gameAux->_equipaA_, gameAux->_equipaB_, *gameAux->_scoreA_, *gameAux->_scoreB_);
       }
+      else
+      {
+        
+      }
+
     }
 
     current = current->next;
@@ -803,11 +729,9 @@ void adicionaEquipa()
   search_result = team_lst_search(input);
   if (search_result != 0)
   {
-    {
-      printf("%d Equipa existente.\n", lineNumber);
-      free(input);
-      return;
-    }
+    printf("%d Equipa existente.\n", lineNumber);
+    free(input);
+    return;
   }
   else
   {
@@ -822,21 +746,17 @@ void adicionaEquipa()
   node->next = 0;
   if (teamHead == 0)
   {
-    {
-      teamHead = node;
-    }
+    teamHead = node;
   }
   else
   {
+    team_lst current = teamHead;
+    while (current->next != 0)
     {
-      team_lst current = teamHead;
-      while (current->next != 0)
-      {
-        current = current->next;
-      }
-
-      current->next = node;
+      current = current->next;
     }
+
+    current->next = node;
   }
 
   free(input);
@@ -848,15 +768,11 @@ void procuraJogo()
   input = readStdin();
   if (hashSearch(input) != 0)
   {
-    {
-      printf("%d %s %s %s %d %d\n", lineNumber, hashSearch(input)->_nome_, hashSearch(input)->_equipaA_, hashSearch(input)->_equipaB_, *hashSearch(input)->_scoreA_, *hashSearch(input)->_scoreB_);
-    }
+    printf("%d %s %s %s %d %d\n", lineNumber, hashSearch(input)->_nome_, hashSearch(input)->_equipaA_, hashSearch(input)->_equipaB_, *hashSearch(input)->_scoreA_, *hashSearch(input)->_scoreB_);
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", lineNumber);
-    }
+    printf("%d Jogo inexistente.\n", lineNumber);
   }
 
   free(input);
@@ -868,9 +784,7 @@ void apagaJogo()
   input = readStdin();
   if (hashDelete(input) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", lineNumber);
-    }
+    printf("%d Jogo inexistente.\n", lineNumber);
   }
   else
   {
@@ -895,21 +809,17 @@ void alteraScore()
   {
     if (counter == 0)
     {
+      jogo = hashSearch(token);
+      if (jogo == 0)
       {
-        jogo = hashSearch(token);
-        if (jogo == 0)
-        {
-          {
-            printf("%d Jogo inexistente.\n", lineNumber);
-            return;
-          }
-        }
-        else
-        {
-          
-        }
-
+        printf("%d Jogo inexistente.\n", lineNumber);
+        return;
       }
+      else
+      {
+        
+      }
+
     }
     else
     {
@@ -918,23 +828,19 @@ void alteraScore()
 
     if (counter == 1)
     {
+      for (int scoreA_index = 0; scoreA_index < 10; scoreA_index++)
       {
-        for (int scoreA_index = 0; scoreA_index < 10; scoreA_index++)
-        {
-          scoreA[scoreA_index] = new_sym_var(sizeof(int) * 8);
-        }
-
+        scoreA[scoreA_index] = new_sym_var(sizeof(int) * 8);
       }
+
     }
     else
     {
+      for (int scoreB_index = 0; scoreB_index < 10; scoreB_index++)
       {
-        for (int scoreB_index = 0; scoreB_index < 10; scoreB_index++)
-        {
-          scoreB[scoreB_index] = new_sym_var(sizeof(int) * 8);
-        }
-
+        scoreB[scoreB_index] = new_sym_var(sizeof(int) * 8);
       }
+
     }
 
     counter++;
@@ -943,9 +849,7 @@ void alteraScore()
 
   if ((*jogo->_scoreA_) > (*jogo->_scoreB_))
   {
-    {
-      team_lst_gamesWon_decrement(jogo->_equipaA_);
-    }
+    team_lst_gamesWon_decrement(jogo->_equipaA_);
   }
   else
   {
@@ -954,9 +858,7 @@ void alteraScore()
 
   if ((*jogo->_scoreB_) > (*jogo->_scoreA_))
   {
-    {
-      team_lst_gamesWon_decrement(jogo->_equipaB_);
-    }
+    team_lst_gamesWon_decrement(jogo->_equipaB_);
   }
   else
   {
@@ -967,9 +869,7 @@ void alteraScore()
   *jogo->_scoreB_ = *scoreB;
   if ((*jogo->_scoreA_) > (*jogo->_scoreB_))
   {
-    {
-      team_lst_gamesWon_increment(jogo->_equipaA_);
-    }
+    team_lst_gamesWon_increment(jogo->_equipaA_);
   }
   else
   {
@@ -978,9 +878,7 @@ void alteraScore()
 
   if ((*jogo->_scoreB_) > (*jogo->_scoreA_))
   {
-    {
-      team_lst_gamesWon_increment(jogo->_equipaB_);
-    }
+    team_lst_gamesWon_increment(jogo->_equipaB_);
   }
   else
   {
@@ -996,15 +894,11 @@ void procuraEquipa()
   input = readStdin();
   if (team_lst_search(input) != 0)
   {
-    {
-      printf("%d %s %d\n", lineNumber, team_lst_search(input), *team_lst_searchGamesWon(team_lst_search(input)));
-    }
+    printf("%d %s %d\n", lineNumber, team_lst_search(input), *team_lst_searchGamesWon(team_lst_search(input)));
   }
   else
   {
-    {
-      printf("%d Equipa inexistente.\n", lineNumber);
-    }
+    printf("%d Equipa inexistente.\n", lineNumber);
   }
 
   free(input);
@@ -1024,9 +918,7 @@ void imprimeEquipascomMaisVitorias()
   {
     if (max < (*currentTeam->gamesWon))
     {
-      {
-        max = *currentTeam->gamesWon;
-      }
+      max = *currentTeam->gamesWon;
     }
     else
     {
@@ -1041,17 +933,15 @@ void imprimeEquipascomMaisVitorias()
   {
     if ((*currentTeam->gamesWon) == max)
     {
-      {
-        len = strlen(currentTeam->teamName);
-        node = (team_lst) malloc(sizeof(struct _node));
-        node->teamName = (char *) malloc((len + 1) * (sizeof(char)));
-        strcpy(node->teamName, currentTeam->teamName);
-        node->gamesWon = (int *) malloc((sizeof(int)) * 2);
-        *node->gamesWon = max;
-        currentAux = aux_lst_head;
-        aux_lst_head = node;
-        node->next = currentAux;
-      }
+      len = strlen(currentTeam->teamName);
+      node = (team_lst) malloc(sizeof(struct _node));
+      node->teamName = (char *) malloc((len + 1) * (sizeof(char)));
+      strcpy(node->teamName, currentTeam->teamName);
+      node->gamesWon = (int *) malloc((sizeof(int)) * 2);
+      *node->gamesWon = max;
+      currentAux = aux_lst_head;
+      aux_lst_head = node;
+      node->next = currentAux;
     }
     else
     {
@@ -1067,10 +957,8 @@ void imprimeEquipascomMaisVitorias()
   {
     if (aux_helper == 0)
     {
-      {
-        printf("%d Melhores %d\n", lineNumber, max);
-        aux_helper = 1;
-      }
+      printf("%d Melhores %d\n", lineNumber, max);
+      aux_helper = 1;
     }
     else
     {
@@ -1095,10 +983,8 @@ char *readStdin()
   {
     if ((c == ' ') && (ack == 0))
     {
-      {
-        ack = 1;
-        continue;
-      }
+      ack = 1;
+      continue;
     }
     else
     {
@@ -1108,9 +994,7 @@ char *readStdin()
     buffer[length] = c;
     if ((++length) == capacity)
     {
-      {
-        buffer = realloc(buffer, (capacity * 2) * (sizeof(char)));
-      }
+      buffer = realloc(buffer, (capacity * 2) * (sizeof(char)));
     }
     else
     {
@@ -1144,9 +1028,7 @@ void sortList(team_lst headT)
   size_t len_next = 0;
   if ((headT == 0) || (headT->next == 0))
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -1161,24 +1043,18 @@ void sortList(team_lst headT)
     {
       if (aux_str_cmp(ptr1->teamName, ptr1->next->teamName) > 0)
       {
+        len = strlen(ptr1->teamName);
+        len_next = strlen(ptr1->next->teamName);
+        if (len > len_next)
         {
-          len = strlen(ptr1->teamName);
-          len_next = strlen(ptr1->next->teamName);
-          if (len > len_next)
-          {
-            {
-              swap(ptr1, ptr1->next, len);
-            }
-          }
-          else
-          {
-            {
-              swap(ptr1, ptr1->next, len_next);
-            }
-          }
-
-          swapped = 1;
+          swap(ptr1, ptr1->next, len);
         }
+        else
+        {
+          swap(ptr1, ptr1->next, len_next);
+        }
+
+        swapped = 1;
       }
       else
       {
@@ -1224,9 +1100,7 @@ int aux_str_cmp(char *a, char *b)
   len = strlen(a);
   if (len > strlen(b))
   {
-    {
-      len = strlen(b);
-    }
+    len = strlen(b);
   }
   else
   {
@@ -1238,9 +1112,7 @@ int aux_str_cmp(char *a, char *b)
   {
     if (tolower(a[i]) == tolower(b[i]))
     {
-      {
-        continue;
-      }
+      continue;
     }
     else
     {
@@ -1249,9 +1121,7 @@ int aux_str_cmp(char *a, char *b)
 
     if (tolower(a[i]) > tolower(b[i]))
     {
-      {
-        return 1;
-      }
+      return 1;
     }
     else
     {

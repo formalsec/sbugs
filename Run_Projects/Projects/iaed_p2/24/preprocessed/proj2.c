@@ -167,36 +167,22 @@ Link addMatch(int nl, Hash matches, Hash teams, char *name, char *team1, char *t
   Match match;
   if (searchHash(matches, name) == 0)
   {
+    if ((searchHash(teams, team1) != 0) && (searchHash(teams, team2) != 0))
     {
-      if ((searchHash(teams, team1) != 0) && (searchHash(teams, team2) != 0))
+      match = newMatch(name, team1, team2, score1, score2);
+      new = newNode(name, match);
+      insertHash(matches, name, new);
+      if (score1 != score2)
       {
+        if (score1 > score2)
         {
-          match = newMatch(name, team1, team2, score1, score2);
-          new = newNode(name, match);
-          insertHash(matches, name, new);
-          if (score1 != score2)
+          teamNode = searchHash(teams, team1);
+        }
+        else
+        {
+          if (score1 < score2)
           {
-            {
-              if (score1 > score2)
-              {
-                teamNode = searchHash(teams, team1);
-              }
-              else
-              {
-                if (score1 < score2)
-                {
-                  teamNode = searchHash(teams, team2);
-                }
-                else
-                {
-                  
-                }
-
-              }
-
-              team = (Team) teamNode->data;
-              team->victories++;
-            }
+            teamNode = searchHash(teams, team2);
           }
           else
           {
@@ -204,21 +190,25 @@ Link addMatch(int nl, Hash matches, Hash teams, char *name, char *team1, char *t
           }
 
         }
+
+        team = (Team) teamNode->data;
+        team->victories++;
       }
       else
       {
-        {
-          printf("%d Equipa inexistente.\n", nl);
-        }
+        
       }
 
     }
+    else
+    {
+      printf("%d Equipa inexistente.\n", nl);
+    }
+
   }
   else
   {
-    {
-      printf("%d Jogo existente.\n", nl);
-    }
+    printf("%d Jogo existente.\n", nl);
   }
 
   return new;
@@ -240,17 +230,13 @@ void searchMatch(int nl, Hash matches, char *name)
   Link matchNode = searchHash(matches, name);
   if (matchNode != 0)
   {
-    {
-      Match match = (Match) matchNode->data;
-      printf("%d ", nl);
-      printMatch(match);
-    }
+    Match match = (Match) matchNode->data;
+    printf("%d ", nl);
+    printMatch(match);
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-    }
+    printf("%d Jogo inexistente.\n", nl);
   }
 
 }
@@ -264,46 +250,40 @@ Link removeMatch(int nl, Hash matches, Hash teams, char *name)
   matchNode = searchHash(matches, name);
   if (matchNode != 0)
   {
+    match = (Match) matchNode->data;
+    removeHash(matches, name);
+    if (match->score1 != match->score2)
     {
-      match = (Match) matchNode->data;
-      removeHash(matches, name);
-      if (match->score1 != match->score2)
+      if (match->score1 > match->score2)
       {
-        {
-          if (match->score1 > match->score2)
-          {
-            teamNode = searchHash(teams, match->team1);
-          }
-          else
-          {
-            if (match->score1 < match->score2)
-            {
-              teamNode = searchHash(teams, match->team2);
-            }
-            else
-            {
-              
-            }
-
-          }
-
-          team = (Team) teamNode->data;
-          team->victories--;
-        }
+        teamNode = searchHash(teams, match->team1);
       }
       else
       {
-        
+        if (match->score1 < match->score2)
+        {
+          teamNode = searchHash(teams, match->team2);
+        }
+        else
+        {
+          
+        }
+
       }
 
-      freeMatch((Match) matchNode->data);
+      team = (Team) teamNode->data;
+      team->victories--;
     }
+    else
+    {
+      
+    }
+
+    freeMatch((Match) matchNode->data);
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-    }
+    printf("%d Jogo inexistente.\n", nl);
   }
 
   return matchNode;
@@ -318,75 +298,67 @@ void changeScore(int nl, Hash matches, Hash teams, char *name, int score1, int s
   matchNode = searchHash(matches, name);
   if (matchNode != 0)
   {
+    match = (Match) matchNode->data;
+    if (match->score1 != match->score2)
     {
-      match = (Match) matchNode->data;
-      if (match->score1 != match->score2)
+      if (match->score1 > match->score2)
       {
-        {
-          if (match->score1 > match->score2)
-          {
-            teamNode = searchHash(teams, match->team1);
-          }
-          else
-          {
-            if (match->score1 < match->score2)
-            {
-              teamNode = searchHash(teams, match->team2);
-            }
-            else
-            {
-              
-            }
-
-          }
-
-          team = (Team) teamNode->data;
-          team->victories--;
-        }
+        teamNode = searchHash(teams, match->team1);
       }
       else
       {
-        
-      }
-
-      if (score1 != score2)
-      {
+        if (match->score1 < match->score2)
         {
-          if (score1 > score2)
-          {
-            teamNode = searchHash(teams, match->team1);
-          }
-          else
-          {
-            if (score1 < score2)
-            {
-              teamNode = searchHash(teams, match->team2);
-            }
-            else
-            {
-              
-            }
-
-          }
-
-          team = (Team) teamNode->data;
-          team->victories++;
+          teamNode = searchHash(teams, match->team2);
         }
-      }
-      else
-      {
-        
+        else
+        {
+          
+        }
+
       }
 
-      match->score1 = score1;
-      match->score2 = score2;
+      team = (Team) teamNode->data;
+      team->victories--;
     }
+    else
+    {
+      
+    }
+
+    if (score1 != score2)
+    {
+      if (score1 > score2)
+      {
+        teamNode = searchHash(teams, match->team1);
+      }
+      else
+      {
+        if (score1 < score2)
+        {
+          teamNode = searchHash(teams, match->team2);
+        }
+        else
+        {
+          
+        }
+
+      }
+
+      team = (Team) teamNode->data;
+      team->victories++;
+    }
+    else
+    {
+      
+    }
+
+    match->score1 = score1;
+    match->score2 = score2;
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-    }
+    printf("%d Jogo inexistente.\n", nl);
   }
 
 }
@@ -396,17 +368,13 @@ Link addTeam(int nl, Hash teams, char *name)
   Link new = 0;
   if (searchHash(teams, name) == 0)
   {
-    {
-      Team team = newTeam(name);
-      new = newNode(name, team);
-      insertHash(teams, name, new);
-    }
+    Team team = newTeam(name);
+    new = newNode(name, team);
+    insertHash(teams, name, new);
   }
   else
   {
-    {
-      printf("%d Equipa existente.\n", nl);
-    }
+    printf("%d Equipa existente.\n", nl);
   }
 
   return new;
@@ -417,17 +385,13 @@ void searchTeam(int nl, Hash teams, char *name)
   Link teamNode = searchHash(teams, name);
   if (teamNode != 0)
   {
-    {
-      Team team = (Team) teamNode->data;
-      printf("%d ", nl);
-      printTeam(team);
-    }
+    Team team = (Team) teamNode->data;
+    printf("%d ", nl);
+    printTeam(team);
   }
   else
   {
-    {
-      printf("%d Equipa inexistente.\n", nl);
-    }
+    printf("%d Equipa inexistente.\n", nl);
   }
 
 }
@@ -449,10 +413,8 @@ void findWinners(int nl, Link firstTeam)
     victories = team->victories;
     if (victories > mostVictories)
     {
-      {
-        mostVictories = victories;
-        count = 0;
-      }
+      mostVictories = victories;
+      count = 0;
     }
     else
     {
@@ -461,11 +423,9 @@ void findWinners(int nl, Link firstTeam)
 
     if (victories == mostVictories)
     {
-      {
-        count++;
-        teams = (char **) realloc(teams, (sizeof(char *)) * count);
-        *((teams + count) - 1) = team->name;
-      }
+      count++;
+      teams = (char **) realloc(teams, (sizeof(char *)) * count);
+      *((teams + count) - 1) = team->name;
     }
     else
     {
@@ -477,14 +437,12 @@ void findWinners(int nl, Link firstTeam)
   sort(teams, count);
   if (count > 0)
   {
+    printf("%d Melhores %d\n", nl, mostVictories);
+    for (i = 0; i < count; i++)
     {
-      printf("%d Melhores %d\n", nl, mostVictories);
-      for (i = 0; i < count; i++)
-      {
-        printf("%d * %s\n", nl, teams[i]);
-      }
-
+      printf("%d * %s\n", nl, teams[i]);
     }
+
   }
   else
   {

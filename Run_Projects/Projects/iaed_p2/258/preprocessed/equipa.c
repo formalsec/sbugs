@@ -19,15 +19,11 @@ int hashequipa(char nome[1024])
 
   if (hash < 0)
   {
-    {
-      return -hash;
-    }
+    return -hash;
   }
   else
   {
-    {
-      return hash;
-    }
+    return hash;
   }
 
 }
@@ -51,10 +47,8 @@ void adicionaequipa(struct TodasEquipas *equipas, int num_comandos)
   {
     if (strncmp(nome, equipa_cur->nome, 1024) == 0)
     {
-      {
-        printf("%d Equipa existente.\n", num_comandos);
-        return;
-      }
+      printf("%d Equipa existente.\n", num_comandos);
+      return;
     }
     else
     {
@@ -63,9 +57,7 @@ void adicionaequipa(struct TodasEquipas *equipas, int num_comandos)
 
     if (equipa_cur->next == 0)
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {
@@ -83,15 +75,11 @@ void adicionaequipa(struct TodasEquipas *equipas, int num_comandos)
   equipa->next = 0;
   if (equipa_cur == 0)
   {
-    {
-      equipas->elementos[nomehash] = equipa;
-    }
+    equipas->elementos[nomehash] = equipa;
   }
   else
   {
-    {
-      equipa_cur->next = equipa;
-    }
+    equipa_cur->next = equipa;
   }
 
   equipas->vetor = realloc(equipas->vetor, (equipas->num_equipas + 1) * (sizeof(struct Equipa *)));
@@ -116,10 +104,8 @@ void procuraequipa(struct TodasEquipas *equipas, int num_comandos)
   {
     if (strcmp(equipa_cur->nome, nome) == 0)
     {
-      {
-        printf("%d %s %d\n", num_comandos, equipa_cur->nome, equipa_cur->jogos_ganhos);
-        return;
-      }
+      printf("%d %s %d\n", num_comandos, equipa_cur->nome, equipa_cur->jogos_ganhos);
+      return;
     }
     else
     {
@@ -164,9 +150,7 @@ void encontravitoriosos(struct TodasEquipas *equipas, int num_comandos)
   struct Equipa *equipa;
   if (equipas->vetor == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -181,9 +165,7 @@ void encontravitoriosos(struct TodasEquipas *equipas, int num_comandos)
     equipa = equipas->vetor[n];
     if (equipa->jogos_ganhos < jogos_ganhos_max)
     {
-      {
-        return;
-      }
+      return;
     }
     else
     {

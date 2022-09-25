@@ -39,10 +39,8 @@ int part(int low, int high)
   {
     if (strcmp(bestTeams[j]->name, bestTeams[high]->name) < 0)
     {
-      {
-        i++;
-        swap(i, j);
-      }
+      i++;
+      swap(i, j);
     }
     else
     {
@@ -59,11 +57,9 @@ void quicksortWins(int low, int high)
 {
   if (low < high)
   {
-    {
-      int p = part(low, high);
-      quicksortWins(low, p - 1);
-      quicksortWins(p + 1, high);
-    }
+    int p = part(low, high);
+    quicksortWins(low, p - 1);
+    quicksortWins(p + 1, high);
   }
   else
   {
@@ -78,31 +74,27 @@ void removebestTeam(team *t)
   int j;
   if ((teamsSize > 0) && (bestTeams[0]->wins == t->wins))
   {
+    for (i = 0; i < teamsSize; i++)
     {
-      for (i = 0; i < teamsSize; i++)
+      if (bestTeams[i] == t)
       {
-        if (bestTeams[i] == t)
-        {
-          {
-            break;
-          }
-        }
-        else
-        {
-          
-        }
-
+        break;
+      }
+      else
+      {
+        
       }
 
-      for (j = i; j < (teamsSize - 1); j++)
-      {
-        bestTeams[j] = bestTeams[j + 1];
-      }
-
-      t->wins--;
-      teamsSize--;
-      bestTeams = realloc(bestTeams, (sizeof(team *)) * teamsSize);
     }
+
+    for (j = i; j < (teamsSize - 1); j++)
+    {
+      bestTeams[j] = bestTeams[j + 1];
+    }
+
+    t->wins--;
+    teamsSize--;
+    bestTeams = realloc(bestTeams, (sizeof(team *)) * teamsSize);
   }
   else
   {
@@ -134,41 +126,33 @@ void addbestTeam(team *t)
 {
   if (teamsSize == 0)
   {
-    {
-      teamsSize++;
-      bestTeams = realloc(bestTeams, (sizeof(team *)) * teamsSize);
-      bestTeams[0] = t;
-    }
+    teamsSize++;
+    bestTeams = realloc(bestTeams, (sizeof(team *)) * teamsSize);
+    bestTeams[0] = t;
   }
   else
   {
+    if (inbestTeams(t) == 1)
     {
-      if (inbestTeams(t) == 1)
+      teamsSize = 1;
+      bestTeams = realloc(bestTeams, (sizeof(team *)) * teamsSize);
+      bestTeams[0] = t;
+    }
+    else
+    {
+      if ((inbestTeams(t) == 0) && (t->wins == bestTeams[0]->wins))
       {
-        {
-          teamsSize = 1;
-          bestTeams = realloc(bestTeams, (sizeof(team *)) * teamsSize);
-          bestTeams[0] = t;
-        }
+        teamsSize++;
+        bestTeams = realloc(bestTeams, (sizeof(team *)) * teamsSize);
+        bestTeams[teamsSize - 1] = t;
       }
       else
       {
-        if ((inbestTeams(t) == 0) && (t->wins == bestTeams[0]->wins))
-        {
-          {
-            teamsSize++;
-            bestTeams = realloc(bestTeams, (sizeof(team *)) * teamsSize);
-            bestTeams[teamsSize - 1] = t;
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
     }
+
   }
 
 }
@@ -206,9 +190,7 @@ team *htTeam_search(tent *ht_t, char *name)
   temp = ht_t->entries[index];
   if (temp == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -242,11 +224,9 @@ int htTeam_insert(tent *ht_t, char *name)
   test = ht_t->entries[index];
   if (test == 0)
   {
-    {
-      ht_t->entries[index] = alloct(name);
-      addbestTeam(ht_t->entries[index]);
-      return 1;
-    }
+    ht_t->entries[index] = alloct(name);
+    addbestTeam(ht_t->entries[index]);
+    return 1;
   }
   else
   {
@@ -278,25 +258,23 @@ void presentOrdered(int debug)
   int i;
   if (teamsSize > 0)
   {
+    quicksortWins(0, teamsSize - 1);
+    printf("%d Melhores %d\n", debug, bestTeams[0]->wins);
+    for (i = 0; i < teamsSize; i++)
     {
-      quicksortWins(0, teamsSize - 1);
-      printf("%d Melhores %d\n", debug, bestTeams[0]->wins);
-      for (i = 0; i < teamsSize; i++)
-      {
-        printf("%d * %s\n", debug, bestTeams[i]->name);
-      }
-
-      return;
-      if (teamsSize == 0)
-      {
-        printf("%d * %s\n", debug, bestTeams[0]->name);
-      }
-      else
-      {
-        
-      }
-
+      printf("%d * %s\n", debug, bestTeams[i]->name);
     }
+
+    return;
+    if (teamsSize == 0)
+    {
+      printf("%d * %s\n", debug, bestTeams[0]->name);
+    }
+    else
+    {
+      
+    }
+
   }
   else
   {

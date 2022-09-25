@@ -58,19 +58,17 @@ GameHT_node gameHtNodeRemove(GameHT_node head, char *name)
   for (previous = 0, temp = head; temp; previous = temp, temp = temp->next)
     if (!strcmp(gameKey(temp->link), name))
   {
+    if (previous)
     {
-      if (previous)
-      {
-        previous->next = temp->next;
-      }
-      else
-      {
-        head = temp->next;
-      }
-
-      free(temp);
-      break;
+      previous->next = temp->next;
     }
+    else
+    {
+      head = temp->next;
+    }
+
+    free(temp);
+    break;
   }
   else
   {

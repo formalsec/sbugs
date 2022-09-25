@@ -48,10 +48,8 @@ void novo_jogo(int *contador_input, noh *cabeca[], noh_equipa *cabeca_equipa[], 
   chave = calcula_chave(nome);
   if (verifica_se_jogo_existe(chave, nome, cabeca) == 1)
   {
-    {
-      printf("%d Jogo existente.\n", *contador_input);
-      return;
-    }
+    printf("%d Jogo existente.\n", *contador_input);
+    return;
   }
   else
   {
@@ -61,10 +59,8 @@ void novo_jogo(int *contador_input, noh *cabeca[], noh_equipa *cabeca_equipa[], 
   chave_equipa1 = calcula_chave(equipa1);
   if (verifica_se_equipa_existe(chave_equipa1, equipa1, cabeca_equipa) == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", *contador_input);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", *contador_input);
+    return;
   }
   else
   {
@@ -74,10 +70,8 @@ void novo_jogo(int *contador_input, noh *cabeca[], noh_equipa *cabeca_equipa[], 
   chave_equipa2 = calcula_chave(equipa2);
   if (verifica_se_equipa_existe(chave_equipa2, equipa2, cabeca_equipa) == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", *contador_input);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", *contador_input);
+    return;
   }
   else
   {
@@ -108,15 +102,13 @@ void lista_jogos(int *contador_input, fila *fila_jogos)
   *contador_input += 1;
   if (fila_jogos->cabeca != 0)
   {
+    noh *noh_fila = fila_jogos->cabeca;
+    while (noh_fila != 0)
     {
-      noh *noh_fila = fila_jogos->cabeca;
-      while (noh_fila != 0)
-      {
-        printf("%d %s %s %s %d %d\n", *contador_input, noh_fila->jogo->nome, noh_fila->jogo->equipa1, noh_fila->jogo->equipa2, noh_fila->jogo->score1, noh_fila->jogo->score2);
-        noh_fila = noh_fila->prox_fila;
-      }
-
+      printf("%d %s %s %s %d %d\n", *contador_input, noh_fila->jogo->nome, noh_fila->jogo->equipa1, noh_fila->jogo->equipa2, noh_fila->jogo->score1, noh_fila->jogo->score2);
+      noh_fila = noh_fila->prox_fila;
     }
+
   }
   else
   {
@@ -139,26 +131,22 @@ void procura_jogo(int *contador_input, noh *cabeca[])
   chave = calcula_chave(nome);
   if (cabeca[chave] != 0)
   {
+    noh *noh_temp = cabeca[chave];
+    while (noh_temp != 0)
     {
-      noh *noh_temp = cabeca[chave];
-      while (noh_temp != 0)
+      if (strcmp(noh_temp->jogo->nome, nome) == 0)
       {
-        if (strcmp(noh_temp->jogo->nome, nome) == 0)
-        {
-          {
-            printf("%d %s %s %s %d %d\n", *contador_input, noh_temp->jogo->nome, noh_temp->jogo->equipa1, noh_temp->jogo->equipa2, noh_temp->jogo->score1, noh_temp->jogo->score2);
-            return;
-          }
-        }
-        else
-        {
-          
-        }
-
-        noh_temp = noh_temp->prox;
+        printf("%d %s %s %s %d %d\n", *contador_input, noh_temp->jogo->nome, noh_temp->jogo->equipa1, noh_temp->jogo->equipa2, noh_temp->jogo->score1, noh_temp->jogo->score2);
+        return;
+      }
+      else
+      {
+        
       }
 
+      noh_temp = noh_temp->prox;
     }
+
   }
   else
   {
@@ -184,10 +172,8 @@ void apaga_jogo(int *contador_input, noh *cabeca[], noh_equipa *cabeca_equipa[],
   noh_temp = cabeca[chave];
   if (verifica_se_jogo_existe(chave, nome, cabeca) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", *contador_input);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", *contador_input);
+    return;
   }
   else
   {
@@ -196,128 +182,106 @@ void apaga_jogo(int *contador_input, noh *cabeca[], noh_equipa *cabeca_equipa[],
 
   if (cabeca[chave] != 0)
   {
+    if (strcmp(cabeca[chave]->jogo->nome, nome) == 0)
     {
-      if (strcmp(cabeca[chave]->jogo->nome, nome) == 0)
+      if (cabeca[chave]->jogo->score1 > cabeca[chave]->jogo->score2)
       {
-        {
-          if (cabeca[chave]->jogo->score1 > cabeca[chave]->jogo->score2)
-          {
-            {
-              decrementa_uma(cabeca_equipa, cabeca[chave]->jogo->equipa1);
-            }
-          }
-          else
-          {
-            if (cabeca[chave]->jogo->score2 > cabeca[chave]->jogo->score1)
-            {
-              {
-                decrementa_uma(cabeca_equipa, cabeca[chave]->jogo->equipa2);
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-          if (cabeca[chave]->prox != 0)
-          {
-            {
-              cabeca[chave] = cabeca[chave]->prox;
-              apaga_da_fila(nome, fila_jogos);
-              free(noh_temp->jogo);
-              free(noh_temp);
-              return;
-            }
-          }
-          else
-          {
-            {
-              apaga_da_fila(nome, fila_jogos);
-              free(noh_temp->jogo);
-              free(noh_temp);
-              cabeca[chave] = 0;
-              return;
-            }
-          }
-
-        }
+        decrementa_uma(cabeca_equipa, cabeca[chave]->jogo->equipa1);
       }
       else
       {
-        
-      }
-
-      while (noh_temp != 0)
-      {
-        if (strcmp(noh_temp->prox->jogo->nome, nome) == 0)
+        if (cabeca[chave]->jogo->score2 > cabeca[chave]->jogo->score1)
         {
-          {
-            if (noh_temp->prox->jogo->score1 > noh_temp->prox->jogo->score2)
-            {
-              {
-                decrementa_uma(cabeca_equipa, noh_temp->prox->jogo->equipa1);
-              }
-            }
-            else
-            {
-              if (noh_temp->prox->jogo->score2 > noh_temp->prox->jogo->score1)
-              {
-                {
-                  decrementa_uma(cabeca_equipa, noh_temp->prox->jogo->equipa2);
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-            if (noh_temp->prox->prox != 0)
-            {
-              {
-                noh *noh_apagar = noh_temp->prox;
-                noh_temp->prox = noh_temp->prox->prox;
-                apaga_da_fila(nome, fila_jogos);
-                free(noh_apagar->jogo);
-                free(noh_apagar);
-                return;
-              }
-            }
-            else
-            {
-              
-            }
-
-            if (noh_temp->prox->prox == 0)
-            {
-              {
-                noh *noh_apagar = noh_temp->prox;
-                noh_temp->prox = 0;
-                apaga_da_fila(nome, fila_jogos);
-                free(noh_apagar->jogo);
-                free(noh_apagar);
-                return;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
+          decrementa_uma(cabeca_equipa, cabeca[chave]->jogo->equipa2);
         }
         else
         {
           
         }
 
-        noh_temp = noh_temp->prox;
+      }
+
+      if (cabeca[chave]->prox != 0)
+      {
+        cabeca[chave] = cabeca[chave]->prox;
+        apaga_da_fila(nome, fila_jogos);
+        free(noh_temp->jogo);
+        free(noh_temp);
+        return;
+      }
+      else
+      {
+        apaga_da_fila(nome, fila_jogos);
+        free(noh_temp->jogo);
+        free(noh_temp);
+        cabeca[chave] = 0;
+        return;
       }
 
     }
+    else
+    {
+      
+    }
+
+    while (noh_temp != 0)
+    {
+      if (strcmp(noh_temp->prox->jogo->nome, nome) == 0)
+      {
+        if (noh_temp->prox->jogo->score1 > noh_temp->prox->jogo->score2)
+        {
+          decrementa_uma(cabeca_equipa, noh_temp->prox->jogo->equipa1);
+        }
+        else
+        {
+          if (noh_temp->prox->jogo->score2 > noh_temp->prox->jogo->score1)
+          {
+            decrementa_uma(cabeca_equipa, noh_temp->prox->jogo->equipa2);
+          }
+          else
+          {
+            
+          }
+
+        }
+
+        if (noh_temp->prox->prox != 0)
+        {
+          noh *noh_apagar = noh_temp->prox;
+          noh_temp->prox = noh_temp->prox->prox;
+          apaga_da_fila(nome, fila_jogos);
+          free(noh_apagar->jogo);
+          free(noh_apagar);
+          return;
+        }
+        else
+        {
+          
+        }
+
+        if (noh_temp->prox->prox == 0)
+        {
+          noh *noh_apagar = noh_temp->prox;
+          noh_temp->prox = 0;
+          apaga_da_fila(nome, fila_jogos);
+          free(noh_apagar->jogo);
+          free(noh_apagar);
+          return;
+        }
+        else
+        {
+          
+        }
+
+      }
+      else
+      {
+        
+      }
+
+      noh_temp = noh_temp->prox;
+    }
+
   }
   else
   {
@@ -345,9 +309,7 @@ void altera_score(int *contador_input, noh *cabeca[], noh_equipa *cabeca_equipa[
   chave = calcula_chave(nome);
   if (verifica_se_jogo_existe(chave, nome, cabeca) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", *contador_input);
-    }
+    printf("%d Jogo inexistente.\n", *contador_input);
   }
   else
   {
@@ -356,149 +318,121 @@ void altera_score(int *contador_input, noh *cabeca[], noh_equipa *cabeca_equipa[
 
   if (cabeca[chave] != 0)
   {
+    noh *noh_temp = cabeca[chave];
+    while (noh_temp != 0)
     {
-      noh *noh_temp = cabeca[chave];
-      while (noh_temp != 0)
+      if (strcmp(noh_temp->jogo->nome, nome) == 0)
       {
-        if (strcmp(noh_temp->jogo->nome, nome) == 0)
+        if (noh_temp->jogo->score1 > noh_temp->jogo->score2)
         {
-          {
-            if (noh_temp->jogo->score1 > noh_temp->jogo->score2)
-            {
-              {
-                var = 0;
-              }
-            }
-            else
-            {
-              if (noh_temp->jogo->score2 > noh_temp->jogo->score1)
-              {
-                {
-                  var = 1;
-                }
-              }
-              else
-              {
-                if (noh_temp->jogo->score1 == noh_temp->jogo->score2)
-                {
-                  {
-                    var = 2;
-                  }
-                }
-                else
-                {
-                  
-                }
-
-              }
-
-            }
-
-            noh_temp->jogo->score1 = score1;
-            noh_temp->jogo->score2 = score2;
-            if (noh_temp->jogo->score1 > noh_temp->jogo->score2)
-            {
-              {
-                if (var == 1)
-                {
-                  {
-                    incrementa_uma_decrementa_outra(cabeca_equipa, noh_temp->jogo->equipa1, noh_temp->jogo->equipa2);
-                  }
-                }
-                else
-                {
-                  if (var == 2)
-                  {
-                    {
-                      incrementa_uma(cabeca_equipa, noh_temp->jogo->equipa1);
-                    }
-                  }
-                  else
-                  {
-                    
-                  }
-
-                }
-
-              }
-            }
-            else
-            {
-              if (noh_temp->jogo->score2 > noh_temp->jogo->score1)
-              {
-                {
-                  if (var == 0)
-                  {
-                    {
-                      incrementa_uma_decrementa_outra(cabeca_equipa, noh_temp->jogo->equipa2, noh_temp->jogo->equipa1);
-                    }
-                  }
-                  else
-                  {
-                    if (var == 2)
-                    {
-                      {
-                        incrementa_uma(cabeca_equipa, noh_temp->jogo->equipa2);
-                      }
-                    }
-                    else
-                    {
-                      
-                    }
-
-                  }
-
-                }
-              }
-              else
-              {
-                if (noh_temp->jogo->score1 == noh_temp->jogo->score2)
-                {
-                  {
-                    if (var == 0)
-                    {
-                      {
-                        decrementa_uma(cabeca_equipa, noh_temp->jogo->equipa1);
-                      }
-                    }
-                    else
-                    {
-                      if (var == 1)
-                      {
-                        {
-                          decrementa_uma(cabeca_equipa, noh_temp->jogo->equipa2);
-                        }
-                      }
-                      else
-                      {
-                        
-                      }
-
-                    }
-
-                  }
-                }
-                else
-                {
-                  
-                }
-
-              }
-
-            }
-
-            break;
-          }
+          var = 0;
         }
         else
         {
-          
+          if (noh_temp->jogo->score2 > noh_temp->jogo->score1)
+          {
+            var = 1;
+          }
+          else
+          {
+            if (noh_temp->jogo->score1 == noh_temp->jogo->score2)
+            {
+              var = 2;
+            }
+            else
+            {
+              
+            }
+
+          }
+
         }
 
-        noh_temp = noh_temp->prox;
+        noh_temp->jogo->score1 = score1;
+        noh_temp->jogo->score2 = score2;
+        if (noh_temp->jogo->score1 > noh_temp->jogo->score2)
+        {
+          if (var == 1)
+          {
+            incrementa_uma_decrementa_outra(cabeca_equipa, noh_temp->jogo->equipa1, noh_temp->jogo->equipa2);
+          }
+          else
+          {
+            if (var == 2)
+            {
+              incrementa_uma(cabeca_equipa, noh_temp->jogo->equipa1);
+            }
+            else
+            {
+              
+            }
+
+          }
+
+        }
+        else
+        {
+          if (noh_temp->jogo->score2 > noh_temp->jogo->score1)
+          {
+            if (var == 0)
+            {
+              incrementa_uma_decrementa_outra(cabeca_equipa, noh_temp->jogo->equipa2, noh_temp->jogo->equipa1);
+            }
+            else
+            {
+              if (var == 2)
+              {
+                incrementa_uma(cabeca_equipa, noh_temp->jogo->equipa2);
+              }
+              else
+              {
+                
+              }
+
+            }
+
+          }
+          else
+          {
+            if (noh_temp->jogo->score1 == noh_temp->jogo->score2)
+            {
+              if (var == 0)
+              {
+                decrementa_uma(cabeca_equipa, noh_temp->jogo->equipa1);
+              }
+              else
+              {
+                if (var == 1)
+                {
+                  decrementa_uma(cabeca_equipa, noh_temp->jogo->equipa2);
+                }
+                else
+                {
+                  
+                }
+
+              }
+
+            }
+            else
+            {
+              
+            }
+
+          }
+
+        }
+
+        break;
+      }
+      else
+      {
+        
       }
 
+      noh_temp = noh_temp->prox;
     }
+
   }
   else
   {
@@ -523,10 +457,8 @@ void nova_equipa(int *contador_input, noh_equipa *cabeca_equipa[])
   chave = calcula_chave(equipa);
   if (verifica_se_equipa_existe(chave, equipa, cabeca_equipa) == 1)
   {
-    {
-      printf("%d Equipa existente.\n", *contador_input);
-      return;
-    }
+    printf("%d Equipa existente.\n", *contador_input);
+    return;
   }
   else
   {
@@ -541,32 +473,26 @@ void nova_equipa(int *contador_input, noh_equipa *cabeca_equipa[])
   novo_noh->prox = 0;
   if (cabeca_equipa[chave] == 0)
   {
-    {
-      cabeca_equipa[chave] = novo_noh;
-    }
+    cabeca_equipa[chave] = novo_noh;
   }
   else
   {
+    noh_equipa *noh_temp = cabeca_equipa[chave];
+    while (noh_temp != 0)
     {
-      noh_equipa *noh_temp = cabeca_equipa[chave];
-      while (noh_temp != 0)
+      if (noh_temp->prox == 0)
       {
-        if (noh_temp->prox == 0)
-        {
-          {
-            noh_temp->prox = novo_noh;
-            break;
-          }
-        }
-        else
-        {
-          
-        }
-
-        noh_temp = noh_temp->prox;
+        noh_temp->prox = novo_noh;
+        break;
+      }
+      else
+      {
+        
       }
 
+      noh_temp = noh_temp->prox;
     }
+
   }
 
 }
@@ -586,10 +512,8 @@ void procura_equipa(int *contador_input, noh_equipa *cabeca_equipa[])
   chave = calcula_chave(equipa);
   if (verifica_se_equipa_existe(chave, equipa, cabeca_equipa) == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", *contador_input);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", *contador_input);
+    return;
   }
   else
   {
@@ -601,10 +525,8 @@ void procura_equipa(int *contador_input, noh_equipa *cabeca_equipa[])
   {
     if (strcmp(noh_temp->equipa, equipa) == 0)
     {
-      {
-        printf("%d %s %d\n", *contador_input, equipa, noh_temp->jogos_ganhos);
-        return;
-      }
+      printf("%d %s %d\n", *contador_input, equipa, noh_temp->jogos_ganhos);
+      return;
     }
     else
     {
@@ -627,9 +549,7 @@ void melhores_equipas(int *contador_input, noh_equipa *cabeca_equipa[])
   {
     if (cabeca_equipa[i] == 0)
     {
-      {
-        cont++;
-      }
+      cont++;
     }
     else
     {
@@ -640,9 +560,7 @@ void melhores_equipas(int *contador_input, noh_equipa *cabeca_equipa[])
 
   if (cont == 3013)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -654,25 +572,21 @@ void melhores_equipas(int *contador_input, noh_equipa *cabeca_equipa[])
   {
     if (cabeca_equipa[i] != 0)
     {
+      noh_temp_eq = cabeca_equipa[i];
+      while (noh_temp_eq != 0)
       {
-        noh_temp_eq = cabeca_equipa[i];
-        while (noh_temp_eq != 0)
+        if (noh_temp_eq->jogos_ganhos > max)
         {
-          if (noh_temp_eq->jogos_ganhos > max)
-          {
-            {
-              max = noh_temp_eq->jogos_ganhos;
-            }
-          }
-          else
-          {
-            
-          }
-
-          noh_temp_eq = noh_temp_eq->prox;
+          max = noh_temp_eq->jogos_ganhos;
+        }
+        else
+        {
+          
         }
 
+        noh_temp_eq = noh_temp_eq->prox;
       }
+
     }
     else
     {
@@ -683,11 +597,9 @@ void melhores_equipas(int *contador_input, noh_equipa *cabeca_equipa[])
 
   if (max == (-1))
   {
-    {
-      printf("%d Melhores 0\n", *contador_input);
-      lista_com_equipas_melhores_e_sort(contador_input, 0, cabeca_equipa);
-      return;
-    }
+    printf("%d Melhores 0\n", *contador_input);
+    lista_com_equipas_melhores_e_sort(contador_input, 0, cabeca_equipa);
+    return;
   }
   else
   {
@@ -711,9 +623,7 @@ int main()
     c = getchar();
     if (c == 'a')
     {
-      {
-        novo_jogo(contador_input, cabeca, cabeca_equipa, fila_jogos);
-      }
+      novo_jogo(contador_input, cabeca, cabeca_equipa, fila_jogos);
     }
     else
     {
@@ -722,9 +632,7 @@ int main()
 
     if (c == 'A')
     {
-      {
-        nova_equipa(contador_input, cabeca_equipa);
-      }
+      nova_equipa(contador_input, cabeca_equipa);
     }
     else
     {
@@ -733,9 +641,7 @@ int main()
 
     if (c == 'l')
     {
-      {
-        lista_jogos(contador_input, fila_jogos);
-      }
+      lista_jogos(contador_input, fila_jogos);
     }
     else
     {
@@ -744,9 +650,7 @@ int main()
 
     if (c == 'p')
     {
-      {
-        procura_jogo(contador_input, cabeca);
-      }
+      procura_jogo(contador_input, cabeca);
     }
     else
     {
@@ -755,9 +659,7 @@ int main()
 
     if (c == 'P')
     {
-      {
-        procura_equipa(contador_input, cabeca_equipa);
-      }
+      procura_equipa(contador_input, cabeca_equipa);
     }
     else
     {
@@ -766,9 +668,7 @@ int main()
 
     if (c == 'r')
     {
-      {
-        apaga_jogo(contador_input, cabeca, cabeca_equipa, fila_jogos);
-      }
+      apaga_jogo(contador_input, cabeca, cabeca_equipa, fila_jogos);
     }
     else
     {
@@ -777,9 +677,7 @@ int main()
 
     if (c == 's')
     {
-      {
-        altera_score(contador_input, cabeca, cabeca_equipa);
-      }
+      altera_score(contador_input, cabeca, cabeca_equipa);
     }
     else
     {
@@ -788,9 +686,7 @@ int main()
 
     if (c == 'g')
     {
-      {
-        melhores_equipas(contador_input, cabeca_equipa);
-      }
+      melhores_equipas(contador_input, cabeca_equipa);
     }
     else
     {
@@ -799,10 +695,8 @@ int main()
 
     if (c == 'x')
     {
-      {
-        free_total(contador_input, cabeca, cabeca_equipa, fila_jogos);
-        return 0;
-      }
+      free_total(contador_input, cabeca, cabeca_equipa, fila_jogos);
+      return 0;
     }
     else
     {

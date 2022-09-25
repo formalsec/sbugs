@@ -106,20 +106,16 @@ void a(lista_ponteiro *lp, tabela_equipa *TB_equipa, tabela_jogo *TB_jogo, int M
   LJ = pesquisa_lista_jogo(TB_jogo, jogo, MJ);
   if (LJ != 0)
   {
+    if (procura_no_jogo(LJ, jogo) != 0)
     {
-      if (procura_no_jogo(LJ, jogo) != 0)
-      {
-        {
-          printf("%d Jogo existente.\n", NL);
-          return;
-        }
-      }
-      else
-      {
-        
-      }
-
+      printf("%d Jogo existente.\n", NL);
+      return;
     }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -128,65 +124,53 @@ void a(lista_ponteiro *lp, tabela_equipa *TB_equipa, tabela_jogo *TB_jogo, int M
 
   if ((LE1 != 0) && (LE2 != 0))
   {
+    No_equipa1 = procura_no_equipa(LE1, equipa1);
+    No_equipa2 = procura_no_equipa(LE2, equipa2);
+    if ((No_equipa1 == 0) || (No_equipa2 == 0))
     {
-      No_equipa1 = procura_no_equipa(LE1, equipa1);
-      No_equipa2 = procura_no_equipa(LE2, equipa2);
-      if ((No_equipa1 == 0) || (No_equipa2 == 0))
+      printf("%d Equipa inexistente.\n", NL);
+      return;
+    }
+    else
+    {
+      if ((No_equipa1 != 0) && (No_equipa2 != 0))
       {
+        LJ = insere_ou_cria_lista_jogo(TB_jogo, jogo, MJ);
+        Novo_no = cria_no_jogo(jogo, equipa1, equipa2, score1, score2);
+        no_ponteiro = cria_no_ponteiro(Novo_no);
+        Novo_no->pt_no_ponteiro = no_ponteiro;
+        no_ponteiro->ponteiro = Novo_no;
+        adiciona_fim(LJ, Novo_no);
+        adiciona_fim_ponteiro(lp, no_ponteiro);
+        if (score1 > score2)
         {
-          printf("%d Equipa inexistente.\n", NL);
-          return;
-        }
-      }
-      else
-      {
-        if ((No_equipa1 != 0) && (No_equipa2 != 0))
-        {
-          {
-            LJ = insere_ou_cria_lista_jogo(TB_jogo, jogo, MJ);
-            Novo_no = cria_no_jogo(jogo, equipa1, equipa2, score1, score2);
-            no_ponteiro = cria_no_ponteiro(Novo_no);
-            Novo_no->pt_no_ponteiro = no_ponteiro;
-            no_ponteiro->ponteiro = Novo_no;
-            adiciona_fim(LJ, Novo_no);
-            adiciona_fim_ponteiro(lp, no_ponteiro);
-            if (score1 > score2)
-            {
-              {
-                *No_equipa1->vitorias += 1;
-              }
-            }
-            else
-            {
-              if (score1 < score2)
-              {
-                {
-                  *No_equipa2->vitorias += 1;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-          }
+          *No_equipa1->vitorias += 1;
         }
         else
         {
-          
+          if (score1 < score2)
+          {
+            *No_equipa2->vitorias += 1;
+          }
+          else
+          {
+            
+          }
+
         }
 
       }
+      else
+      {
+        
+      }
 
     }
+
   }
   else
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-    }
+    printf("%d Equipa inexistente.\n", NL);
   }
 
   return;
@@ -225,16 +209,12 @@ void A(tabela_equipa *TB_equipa, int M, int NL)
   LE = insere_ou_cria_lista_equipa(TB_equipa, nome, M);
   if (procura_no_equipa(LE, nome) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-    }
+    printf("%d Equipa existente.\n", NL);
   }
   else
   {
-    {
-      Novo_no = cria_no_equipa(nome);
-      adiciona_equipa_fim(LE, Novo_no);
-    }
+    Novo_no = cria_no_equipa(nome);
+    adiciona_equipa_fim(LE, Novo_no);
   }
 
   return;
@@ -297,29 +277,21 @@ void p(tabela_jogo *TB_jogo, int MJ, int NL)
   LJ = pesquisa_lista_jogo(TB_jogo, jogo, MJ);
   if (LJ != 0)
   {
+    No_jogo = procura_no_jogo(LJ, jogo);
+    if (No_jogo != 0)
     {
-      No_jogo = procura_no_jogo(LJ, jogo);
-      if (No_jogo != 0)
-      {
-        {
-          printf("%d %s %s %s", NL, *No_jogo->jogo, *No_jogo->equipa1, *No_jogo->equipa2);
-          printf(" %d %d\n", *No_jogo->score1, *No_jogo->score2);
-        }
-      }
-      else
-      {
-        {
-          printf("%d Jogo inexistente.\n", NL);
-        }
-      }
-
+      printf("%d %s %s %s", NL, *No_jogo->jogo, *No_jogo->equipa1, *No_jogo->equipa2);
+      printf(" %d %d\n", *No_jogo->score1, *No_jogo->score2);
     }
-  }
-  else
-  {
+    else
     {
       printf("%d Jogo inexistente.\n", NL);
     }
+
+  }
+  else
+  {
+    printf("%d Jogo inexistente.\n", NL);
   }
 
   return;
@@ -349,28 +321,20 @@ void P(tabela_equipa *TB_equipa, int M, int NL)
 
   if (LE != 0)
   {
-    {
-      No_equipa = procura_no_equipa(LE, equipa);
-      if (No_equipa == 0)
-      {
-        {
-          printf("%d Equipa inexistente.\n", NL);
-        }
-      }
-      else
-      {
-        {
-          printf("%d %s %d\n", NL, equipa, *No_equipa->vitorias);
-        }
-      }
-
-    }
-  }
-  else
-  {
+    No_equipa = procura_no_equipa(LE, equipa);
+    if (No_equipa == 0)
     {
       printf("%d Equipa inexistente.\n", NL);
     }
+    else
+    {
+      printf("%d %s %d\n", NL, equipa, *No_equipa->vitorias);
+    }
+
+  }
+  else
+  {
+    printf("%d Equipa inexistente.\n", NL);
   }
 
   return;
@@ -405,44 +369,24 @@ void r(lista_ponteiro *lp, tabela_equipa *TB_equipa, tabela_jogo *TB_jogo, int M
   LJ = pesquisa_lista_jogo(TB_jogo, jogo, MJ);
   if (LJ != 0)
   {
+    No_jogo = procura_no_jogo(LJ, jogo);
+    if (No_jogo != 0)
     {
-      No_jogo = procura_no_jogo(LJ, jogo);
-      if (No_jogo != 0)
+      LE1 = pesquisa_lista_equipa(TB_equipa, *No_jogo->equipa1, M);
+      LE2 = pesquisa_lista_equipa(TB_equipa, *No_jogo->equipa2, M);
+      if ((LE1 != 0) && (LE2 != 0))
       {
+        No_equipa1 = procura_no_equipa(LE1, *No_jogo->equipa1);
+        No_equipa2 = procura_no_equipa(LE2, *No_jogo->equipa2);
+        if ((*No_jogo->score1) > (*No_jogo->score2))
         {
-          LE1 = pesquisa_lista_equipa(TB_equipa, *No_jogo->equipa1, M);
-          LE2 = pesquisa_lista_equipa(TB_equipa, *No_jogo->equipa2, M);
-          if ((LE1 != 0) && (LE2 != 0))
+          *No_equipa1->vitorias -= 1;
+        }
+        else
+        {
+          if ((*No_jogo->score1) < (*No_jogo->score2))
           {
-            {
-              No_equipa1 = procura_no_equipa(LE1, *No_jogo->equipa1);
-              No_equipa2 = procura_no_equipa(LE2, *No_jogo->equipa2);
-              if ((*No_jogo->score1) > (*No_jogo->score2))
-              {
-                {
-                  *No_equipa1->vitorias -= 1;
-                }
-              }
-              else
-              {
-                if ((*No_jogo->score1) < (*No_jogo->score2))
-                {
-                  {
-                    *No_equipa2->vitorias -= 1;
-                  }
-                }
-                else
-                {
-                  
-                }
-
-              }
-
-              no_ponteiro = No_jogo->pt_no_ponteiro;
-              No_jogo->pt_no_ponteiro = 0;
-              remove_no_ponteiro(lp, no_ponteiro);
-              remove_no_jogo(LJ, No_jogo);
-            }
+            *No_equipa2->vitorias -= 1;
           }
           else
           {
@@ -450,21 +394,27 @@ void r(lista_ponteiro *lp, tabela_equipa *TB_equipa, tabela_jogo *TB_jogo, int M
           }
 
         }
+
+        no_ponteiro = No_jogo->pt_no_ponteiro;
+        No_jogo->pt_no_ponteiro = 0;
+        remove_no_ponteiro(lp, no_ponteiro);
+        remove_no_jogo(LJ, No_jogo);
       }
       else
       {
-        {
-          printf("%d Jogo inexistente.\n", NL);
-        }
+        
       }
 
     }
-  }
-  else
-  {
+    else
     {
       printf("%d Jogo inexistente.\n", NL);
     }
+
+  }
+  else
+  {
+    printf("%d Jogo inexistente.\n", NL);
   }
 
   return;
@@ -495,47 +445,37 @@ void s(tabela_equipa *TB_equipa, tabela_jogo *TB_jogo, int M, int MJ, int NL)
   LJ = pesquisa_lista_jogo(TB_jogo, jogo, MJ);
   if (LJ != 0)
   {
+    No_jogo = procura_no_jogo(LJ, jogo);
+    if (No_jogo != 0)
     {
-      No_jogo = procura_no_jogo(LJ, jogo);
-      if (No_jogo != 0)
+      LE1 = pesquisa_lista_equipa(TB_equipa, *No_jogo->equipa1, M);
+      LE2 = pesquisa_lista_equipa(TB_equipa, *No_jogo->equipa2, M);
+      if ((LE1 != 0) && (LE2 != 0))
       {
-        {
-          LE1 = pesquisa_lista_equipa(TB_equipa, *No_jogo->equipa1, M);
-          LE2 = pesquisa_lista_equipa(TB_equipa, *No_jogo->equipa2, M);
-          if ((LE1 != 0) && (LE2 != 0))
-          {
-            {
-              score_velho1 = *No_jogo->score1;
-              score_velho2 = *No_jogo->score2;
-              No_equipa1 = procura_no_equipa(LE1, *No_jogo->equipa1);
-              No_equipa2 = procura_no_equipa(LE2, *No_jogo->equipa2);
-              altera_vitorias_empate(score1, score2, score_velho1, score_velho2, No_equipa1, No_equipa2);
-              altera_vitorias_equipa1(score1, score2, score_velho1, score_velho2, No_equipa1, No_equipa2);
-              altera_vitorias_equipa2(score1, score2, score_velho1, score_velho2, No_equipa1, No_equipa2);
-              altera_score(score1, score2, No_jogo);
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
+        score_velho1 = *No_jogo->score1;
+        score_velho2 = *No_jogo->score2;
+        No_equipa1 = procura_no_equipa(LE1, *No_jogo->equipa1);
+        No_equipa2 = procura_no_equipa(LE2, *No_jogo->equipa2);
+        altera_vitorias_empate(score1, score2, score_velho1, score_velho2, No_equipa1, No_equipa2);
+        altera_vitorias_equipa1(score1, score2, score_velho1, score_velho2, No_equipa1, No_equipa2);
+        altera_vitorias_equipa2(score1, score2, score_velho1, score_velho2, No_equipa1, No_equipa2);
+        altera_score(score1, score2, No_jogo);
       }
       else
       {
-        {
-          printf("%d Jogo inexistente.\n", NL);
-        }
+        
       }
 
     }
-  }
-  else
-  {
+    else
     {
       printf("%d Jogo inexistente.\n", NL);
     }
+
+  }
+  else
+  {
+    printf("%d Jogo inexistente.\n", NL);
   }
 
   return;
@@ -562,10 +502,8 @@ void g(tabela_equipa *TB_equipa, int M, int NL)
   getchar();
   if (eh_vazia_tabela_equipa(TB_equipa, M))
   {
-    {
-      free(Vetor_equipas);
-      return;
-    }
+    free(Vetor_equipas);
+    return;
   }
   else
   {
@@ -574,40 +512,34 @@ void g(tabela_equipa *TB_equipa, int M, int NL)
 
   if (!eh_vazia_tabela_equipa(TB_equipa, M))
   {
+    for (i = 0; i < M; i++)
     {
-      for (i = 0; i < M; i++)
+      LE = TB_equipa->cabecas_eq[i];
+      if (LE != 0)
       {
-        LE = TB_equipa->cabecas_eq[i];
-        if (LE != 0)
+        inicio = LE->inicio;
+        while (inicio != 0)
         {
+          if ((*inicio->vitorias) == Max_vitorias)
           {
-            inicio = LE->inicio;
-            while (inicio != 0)
-            {
-              if ((*inicio->vitorias) == Max_vitorias)
-              {
-                {
-                  Vetor_equipas[k++] = inicio->equipa;
-                }
-              }
-              else
-              {
-                
-              }
-
-              inicio = inicio->proximo;
-            }
-
+            Vetor_equipas[k++] = inicio->equipa;
           }
-        }
-        else
-        {
-          
+          else
+          {
+            
+          }
+
+          inicio = inicio->proximo;
         }
 
       }
+      else
+      {
+        
+      }
 
     }
+
   }
   else
   {

@@ -100,14 +100,12 @@ void add_game(long int NL, list *game_list, list *team_list)
   {
     if (in_list(t1, team_list) && in_list(t2, team_list))
     {
-      {
-        node *n1;
-        node *n2;
-        n1 = STsearch(team_list->table, t1);
-        n2 = STsearch(team_list->table, t2);
-        n1 = create_game(name, n1->d.t, n2->d.t, s1, s2);
-        append(game_list, n1);
-      }
+      node *n1;
+      node *n2;
+      n1 = STsearch(team_list->table, t1);
+      n2 = STsearch(team_list->table, t2);
+      n1 = create_game(name, n1->d.t, n2->d.t, s1, s2);
+      append(game_list, n1);
     }
     else
     {
@@ -133,11 +131,9 @@ void add_team(long int NL, list *team_list)
   }
   else
   {
-    {
-      node *n;
-      n = create_team(name);
-      append(team_list, n);
-    }
+    node *n;
+    n = create_team(name);
+    append(team_list, n);
   }
 
 }
@@ -169,10 +165,8 @@ void find_game(long int NL, list *game_list)
   n = STsearch(game_list->table, name);
   if (n)
   {
-    {
-      g = n->d.g;
-      printf("%ld %s %s %s %d %d", NL, g->name, g->t1->name, g->t2->name, g->s1, g->s2);
-    }
+    g = n->d.g;
+    printf("%ld %s %s %s %d %d", NL, g->name, g->t1->name, g->t2->name, g->s1, g->s2);
   }
   else
   {
@@ -218,27 +212,25 @@ void remove_game(long int NL, list *game_list)
   n = STsearch(game_list->table, name);
   if (n)
   {
+    g = n->d.g;
+    if (g->s1 > g->s2)
     {
-      g = n->d.g;
-      if (g->s1 > g->s2)
+      g->t1->wins--;
+    }
+    else
+    {
+      if (g->s1 < g->s2)
       {
-        g->t1->wins--;
+        g->t2->wins--;
       }
       else
       {
-        if (g->s1 < g->s2)
-        {
-          g->t2->wins--;
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      delete(game_list, n);
     }
+
+    delete(game_list, n);
   }
   else
   {
@@ -265,32 +257,48 @@ void change_game(long int NL, list *game_list)
   n = STsearch(game_list->table, name);
   if (n)
   {
+    g = n->d.g;
+    if ((g->s1 > g->s2) && (s1 <= s2))
     {
-      g = n->d.g;
-      if ((g->s1 > g->s2) && (s1 <= s2))
+      g->t1->wins--;
+      if (s1 < s2)
       {
-        {
-          g->t1->wins--;
-          if (s1 < s2)
-          {
-            g->t2->wins++;
-          }
-          else
-          {
-            
-          }
-
-        }
+        g->t2->wins++;
       }
       else
       {
-        if ((g->s1 < g->s2) && (s1 >= s2))
+        
+      }
+
+    }
+    else
+    {
+      if ((g->s1 < g->s2) && (s1 >= s2))
+      {
+        g->t2->wins--;
+        if (s1 > s2)
         {
+          g->t1->wins++;
+        }
+        else
+        {
+          
+        }
+
+      }
+      else
+      {
+        if (g->s1 == g->s2)
+        {
+          if (s1 > s2)
           {
-            g->t2->wins--;
-            if (s1 > s2)
+            g->t1->wins++;
+          }
+          else
+          {
+            if (s1 < s2)
             {
-              g->t1->wins++;
+              g->t2->wins++;
             }
             else
             {
@@ -298,43 +306,19 @@ void change_game(long int NL, list *game_list)
             }
 
           }
+
         }
         else
         {
-          if (g->s1 == g->s2)
-          {
-            {
-              if (s1 > s2)
-              {
-                g->t1->wins++;
-              }
-              else
-              {
-                if (s1 < s2)
-                {
-                  g->t2->wins++;
-                }
-                else
-                {
-                  
-                }
-
-              }
-
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
 
-      n->d.g->s1 = s1;
-      n->d.g->s2 = s2;
     }
+
+    n->d.g->s1 = s1;
+    n->d.g->s2 = s2;
   }
   else
   {
@@ -353,53 +337,45 @@ void get_winners(long int NL, list *team_list)
   node *head = team_list->head;
   if (head)
   {
+    while (head)
     {
-      while (head)
+      if (head->d.t->wins > wins)
       {
-        if (head->d.t->wins > wins)
+        wins = head->d.t->wins;
+        lst[0] = head->d.t->name;
+        i = 1;
+      }
+      else
+      {
+        if (head->d.t->wins == wins)
         {
+          if (i >= size)
           {
-            wins = head->d.t->wins;
-            lst[0] = head->d.t->name;
-            i = 1;
-          }
-        }
-        else
-        {
-          if (head->d.t->wins == wins)
-          {
-            {
-              if (i >= size)
-              {
-                {
-                  size *= 2;
-                  lst = (char **) realloc(lst, size);
-                }
-              }
-              else
-              {
-                
-              }
-
-              lst[i++] = head->d.t->name;
-            }
+            size *= 2;
+            lst = (char **) realloc(lst, size);
           }
           else
           {
             
           }
 
+          lst[i++] = head->d.t->name;
+        }
+        else
+        {
+          
         }
 
-        head = head->next;
       }
 
-      printf("%ld Melhores %d\n", NL, wins);
-      qsort(lst, i, sizeof(char *), cmp_func);
-      for (j = 0; j < i; j++)
-        printf("%ld * %s\n", NL, lst[j]);
-
+      head = head->next;
     }
+
+    printf("%ld Melhores %d\n", NL, wins);
+    qsort(lst, i, sizeof(char *), cmp_func);
+    for (j = 0; j < i; j++)
+      printf("%ld * %s\n", NL, lst[j]);
+
   }
   else
   {

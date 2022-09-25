@@ -75,9 +75,24 @@ int muda_numero_jogos_ganhos(char *nome_equipa1, char *nome_equipa2, int pontos1
   equipa p;
   if (pontos1 > pontos2)
   {
+    for (p = inicio_equipas; p != 0; p = p->proximo)
+      if (strcmp(p->nome_equipa, nome_equipa1) == 0)
+    {
+      p->numero_jogos_ganhos += 1;
+    }
+    else
+    {
+      
+    }
+
+
+  }
+  else
+  {
+    if (pontos1 < pontos2)
     {
       for (p = inicio_equipas; p != 0; p = p->proximo)
-        if (strcmp(p->nome_equipa, nome_equipa1) == 0)
+        if (strcmp(p->nome_equipa, nome_equipa2) == 0)
       {
         p->numero_jogos_ganhos += 1;
       }
@@ -87,25 +102,6 @@ int muda_numero_jogos_ganhos(char *nome_equipa1, char *nome_equipa2, int pontos1
       }
 
 
-    }
-  }
-  else
-  {
-    if (pontos1 < pontos2)
-    {
-      {
-        for (p = inicio_equipas; p != 0; p = p->proximo)
-          if (strcmp(p->nome_equipa, nome_equipa2) == 0)
-        {
-          p->numero_jogos_ganhos += 1;
-        }
-        else
-        {
-          
-        }
-
-
-      }
     }
     else
     {
@@ -126,60 +122,54 @@ jogo remove_jogo_lista(int i, char *nome)
   {
     if (strcmp(j->nome_jogo, nome) == 0)
     {
+      if (j == inicio_jogos[i])
       {
-        if (j == inicio_jogos[i])
+        inicio_jogos[i] = j->proximo;
+      }
+      else
+      {
+        anterior->proximo = j->proximo;
+      }
+
+      if (j->pontos_1 > j->pontos_2)
+      {
+        for (p = inicio_equipas; p != 0; p = p->proximo)
+          if (strcmp(j->equipa1, p->nome_equipa) == 0)
         {
-          inicio_jogos[i] = j->proximo;
+          p->numero_jogos_ganhos -= 1;
         }
         else
         {
-          anterior->proximo = j->proximo;
+          
         }
 
-        if (j->pontos_1 > j->pontos_2)
+
+      }
+      else
+      {
+        if (j->pontos_1 < j->pontos_2)
         {
+          for (p = inicio_equipas; p != 0; p = p->proximo)
+            if (strcmp(j->equipa2, p->nome_equipa) == 0)
           {
-            for (p = inicio_equipas; p != 0; p = p->proximo)
-              if (strcmp(j->equipa1, p->nome_equipa) == 0)
-            {
-              p->numero_jogos_ganhos -= 1;
-            }
-            else
-            {
-              
-            }
-
-
-          }
-        }
-        else
-        {
-          if (j->pontos_1 < j->pontos_2)
-          {
-            {
-              for (p = inicio_equipas; p != 0; p = p->proximo)
-                if (strcmp(j->equipa2, p->nome_equipa) == 0)
-              {
-                p->numero_jogos_ganhos -= 1;
-              }
-              else
-              {
-                
-              }
-
-
-            }
+            p->numero_jogos_ganhos -= 1;
           }
           else
           {
             
           }
 
+
+        }
+        else
+        {
+          
         }
 
-        free(j->nome_jogo);
-        free(j);
       }
+
+      free(j->nome_jogo);
+      free(j);
     }
     else
     {
@@ -243,62 +233,56 @@ void adiciona_novo_jogo()
   }
   else
   {
+    for (j = inicio_jogos[i]; j != 0; j = j->proximo)
+      if (strcmp(j->nome_jogo, nomejogo) == 0)
     {
-      for (j = inicio_jogos[i]; j != 0; j = j->proximo)
-        if (strcmp(j->nome_jogo, nomejogo) == 0)
-      {
-        existe_nome_jogo++;
-      }
-      else
-      {
-        
-      }
+      existe_nome_jogo++;
+    }
+    else
+    {
+      
+    }
 
 
-      if (existe_nome_jogo != 0)
+    if (existe_nome_jogo != 0)
+    {
+      printf("%d Jogo existente.\n", linha_comando);
+    }
+    else
+    {
+      for (p = inicio_equipas; p != 0; p = p->proximo)
       {
-        printf("%d Jogo existente.\n", linha_comando);
-      }
-      else
-      {
+        if (strcmp(p->nome_equipa, nome_equipa1) == 0)
         {
-          for (p = inicio_equipas; p != 0; p = p->proximo)
+          controlo_existe_equipa1++;
+        }
+        else
+        {
+          if (strcmp(p->nome_equipa, nome_equipa2) == 0)
           {
-            if (strcmp(p->nome_equipa, nome_equipa1) == 0)
-            {
-              controlo_existe_equipa1++;
-            }
-            else
-            {
-              if (strcmp(p->nome_equipa, nome_equipa2) == 0)
-              {
-                controlo_existe_equipa2++;
-              }
-              else
-              {
-                
-              }
-
-            }
-
-          }
-
-          if ((controlo_existe_equipa1 == 0) || (controlo_existe_equipa2 == 0))
-          {
-            printf("%d Equipa inexistente.\n", linha_comando);
+            controlo_existe_equipa2++;
           }
           else
           {
-            {
-              inicio_jogos[i] = insere_jogo_lista(inicio_jogos, i, nomejogo, nome_equipa1, nome_equipa2, pontos1, pontos2);
-              muda_numero_jogos_ganhos(nome_equipa1, nome_equipa2, pontos1, pontos2);
-            }
+            
           }
 
         }
+
+      }
+
+      if ((controlo_existe_equipa1 == 0) || (controlo_existe_equipa2 == 0))
+      {
+        printf("%d Equipa inexistente.\n", linha_comando);
+      }
+      else
+      {
+        inicio_jogos[i] = insere_jogo_lista(inicio_jogos, i, nomejogo, nome_equipa1, nome_equipa2, pontos1, pontos2);
+        muda_numero_jogos_ganhos(nome_equipa1, nome_equipa2, pontos1, pontos2);
       }
 
     }
+
   }
 
 }
@@ -323,31 +307,27 @@ void procura_jogo()
   }
   else
   {
+    for (j = inicio_jogos[i]; j != 0; j = j->proximo)
+      if (strcmp(j->nome_jogo, nome) == 0)
     {
-      for (j = inicio_jogos[i]; j != 0; j = j->proximo)
-        if (strcmp(j->nome_jogo, nome) == 0)
-      {
-        {
-          printf("%d %s %s %s %d %d\n", linha_comando, j->nome_jogo, j->equipa1, j->equipa2, j->pontos_1, j->pontos_2);
-          existe_nome_jogo++;
-        }
-      }
-      else
-      {
-        
-      }
-
-
-      if (existe_nome_jogo == 0)
-      {
-        printf("%d Jogo inexistente.\n", linha_comando);
-      }
-      else
-      {
-        
-      }
-
+      printf("%d %s %s %s %d %d\n", linha_comando, j->nome_jogo, j->equipa1, j->equipa2, j->pontos_1, j->pontos_2);
+      existe_nome_jogo++;
     }
+    else
+    {
+      
+    }
+
+
+    if (existe_nome_jogo == 0)
+    {
+      printf("%d Jogo inexistente.\n", linha_comando);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -377,54 +357,77 @@ void altera_resultado_jogo()
   }
   else
   {
+    for (j = inicio_jogos[i]; j != 0; j = j->proximo)
+      if (strcmp(j->nome_jogo, nome) == 0)
     {
-      for (j = inicio_jogos[i]; j != 0; j = j->proximo)
-        if (strcmp(j->nome_jogo, nome) == 0)
+      existe_nome_jogo++;
+      if (j->pontos_1 < j->pontos_2)
       {
+        if (pontos1 > pontos2)
         {
-          existe_nome_jogo++;
-          if (j->pontos_1 < j->pontos_2)
+          for (p = inicio_equipas; p != 0; p = p->proximo)
           {
+            if (strcmp(p->nome_equipa, j->equipa1) == 0)
             {
-              if (pontos1 > pontos2)
+              p->numero_jogos_ganhos += 1;
+            }
+            else
+            {
+              if (strcmp(p->nome_equipa, j->equipa2) == 0)
               {
-                for (p = inicio_equipas; p != 0; p = p->proximo)
-                {
-                  if (strcmp(p->nome_equipa, j->equipa1) == 0)
-                  {
-                    p->numero_jogos_ganhos += 1;
-                  }
-                  else
-                  {
-                    if (strcmp(p->nome_equipa, j->equipa2) == 0)
-                    {
-                      p->numero_jogos_ganhos -= 1;
-                    }
-                    else
-                    {
-                      
-                    }
-
-                  }
-
-                }
-
+                p->numero_jogos_ganhos -= 1;
               }
               else
               {
-                if (pontos1 == pontos2)
+                
+              }
+
+            }
+
+          }
+
+        }
+        else
+        {
+          if (pontos1 == pontos2)
+          {
+            for (p = inicio_equipas; p != 0; p = p->proximo)
+              if (strcmp(p->nome_equipa, j->equipa2) == 0)
+            {
+              p->numero_jogos_ganhos -= 1;
+            }
+            else
+            {
+              
+            }
+
+
+          }
+          else
+          {
+            
+          }
+
+        }
+
+      }
+      else
+      {
+        if (j->pontos_1 > j->pontos_2)
+        {
+          if (pontos1 < pontos2)
+          {
+            for (p = inicio_equipas; p != 0; p = p->proximo)
+            {
+              if (strcmp(p->nome_equipa, j->equipa1) == 0)
+              {
+                p->numero_jogos_ganhos -= 1;
+              }
+              else
+              {
+                if (strcmp(p->nome_equipa, j->equipa2) == 0)
                 {
-                  for (p = inicio_equipas; p != 0; p = p->proximo)
-                    if (strcmp(p->nome_equipa, j->equipa2) == 0)
-                  {
-                    p->numero_jogos_ganhos -= 1;
-                  }
-                  else
-                  {
-                    
-                  }
-
-
+                  p->numero_jogos_ganhos += 1;
                 }
                 else
                 {
@@ -434,60 +437,23 @@ void altera_resultado_jogo()
               }
 
             }
+
           }
           else
           {
-            if (j->pontos_1 > j->pontos_2)
+            if (pontos1 == pontos2)
             {
+              for (p = inicio_equipas; p != 0; p = p->proximo)
+                if (strcmp(p->nome_equipa, j->equipa1) == 0)
               {
-                if (pontos1 < pontos2)
-                {
-                  for (p = inicio_equipas; p != 0; p = p->proximo)
-                  {
-                    if (strcmp(p->nome_equipa, j->equipa1) == 0)
-                    {
-                      p->numero_jogos_ganhos -= 1;
-                    }
-                    else
-                    {
-                      if (strcmp(p->nome_equipa, j->equipa2) == 0)
-                      {
-                        p->numero_jogos_ganhos += 1;
-                      }
-                      else
-                      {
-                        
-                      }
-
-                    }
-
-                  }
-
-                }
-                else
-                {
-                  if (pontos1 == pontos2)
-                  {
-                    for (p = inicio_equipas; p != 0; p = p->proximo)
-                      if (strcmp(p->nome_equipa, j->equipa1) == 0)
-                    {
-                      p->numero_jogos_ganhos -= 1;
-                    }
-                    else
-                    {
-                      
-                    }
-
-
-                  }
-                  else
-                  {
-                    
-                  }
-
-                }
-
+                p->numero_jogos_ganhos -= 1;
               }
+              else
+              {
+                
+              }
+
+
             }
             else
             {
@@ -496,26 +462,32 @@ void altera_resultado_jogo()
 
           }
 
-          j->pontos_1 = pontos1;
-          j->pontos_2 = pontos2;
         }
-      }
-      else
-      {
-        
+        else
+        {
+          
+        }
+
       }
 
-
-      if (existe_nome_jogo == 0)
-      {
-        printf("%d Jogo inexistente.\n", linha_comando);
-      }
-      else
-      {
-        
-      }
-
+      j->pontos_1 = pontos1;
+      j->pontos_2 = pontos2;
     }
+    else
+    {
+      
+    }
+
+
+    if (existe_nome_jogo == 0)
+    {
+      printf("%d Jogo inexistente.\n", linha_comando);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -540,30 +512,26 @@ void apaga_jogo()
   }
   else
   {
+    for (j = inicio_jogos[i]; j != 0; j = j->proximo)
+      if (strcmp(j->nome_jogo, nome) == 0)
     {
-      for (j = inicio_jogos[i]; j != 0; j = j->proximo)
-        if (strcmp(j->nome_jogo, nome) == 0)
-      {
-        existe_nome_jogo++;
-      }
-      else
-      {
-        
-      }
-
-
-      if (existe_nome_jogo != 0)
-      {
-        {
-          inicio_jogos[i] = remove_jogo_lista(i, nome);
-        }
-      }
-      else
-      {
-        printf("%d Jogo inexistente.\n", linha_comando);
-      }
-
+      existe_nome_jogo++;
     }
+    else
+    {
+      
+    }
+
+
+    if (existe_nome_jogo != 0)
+    {
+      inicio_jogos[i] = remove_jogo_lista(i, nome);
+    }
+    else
+    {
+      printf("%d Jogo inexistente.\n", linha_comando);
+    }
+
   }
 
 }
@@ -590,46 +558,38 @@ void podio_equipas()
 
   if (max_jogos_ganhos >= 0)
   {
+    for (p = inicio_equipas; p != 0; p = p->proximo)
+      if (p->numero_jogos_ganhos == max_jogos_ganhos)
     {
-      for (p = inicio_equipas; p != 0; p = p->proximo)
-        if (p->numero_jogos_ganhos == max_jogos_ganhos)
+      strcpy(nome, p->nome_equipa);
+      if (lista_podio == 0)
       {
-        {
-          strcpy(nome, p->nome_equipa);
-          if (lista_podio == 0)
-          {
-            {
-              lista_podio = adiciona_podio(nome);
-              numero_elementos++;
-            }
-          }
-          else
-          {
-            {
-              l = lista_podio;
-              while (l->proximo != 0)
-                l = l->proximo;
-
-              l->proximo = adiciona_podio(nome);
-              numero_elementos++;
-            }
-          }
-
-        }
+        lista_podio = adiciona_podio(nome);
+        numero_elementos++;
       }
       else
       {
-        
-      }
+        l = lista_podio;
+        while (l->proximo != 0)
+          l = l->proximo;
 
-
-      printf("%d Melhores %d\n", linha_comando, max_jogos_ganhos);
-      for (l = lista_podio; l != 0; l = l->proximo)
-      {
-        printf("%d * %s\n", linha_comando, l->nome_equipa_podio);
+        l->proximo = adiciona_podio(nome);
+        numero_elementos++;
       }
 
     }
+    else
+    {
+      
+    }
+
+
+    printf("%d Melhores %d\n", linha_comando, max_jogos_ganhos);
+    for (l = lista_podio; l != 0; l = l->proximo)
+    {
+      printf("%d * %s\n", linha_comando, l->nome_equipa_podio);
+    }
+
   }
   else
   {
@@ -646,38 +606,34 @@ void lista_todos_jogos()
   jogo j;
   if (numero_jogos_total > 0)
   {
+    while (inicio <= numero_jogos_total)
     {
-      while (inicio <= numero_jogos_total)
+      for (i = 0; i < 127; i++)
+        for (j = inicio_jogos[i]; j != 0; j = j->proximo)
+        if (j->ordem_entrada_jogo == inicio)
       {
-        for (i = 0; i < 127; i++)
-          for (j = inicio_jogos[i]; j != 0; j = j->proximo)
-          if (j->ordem_entrada_jogo == inicio)
-        {
-          {
-            printf("%d %s %s %s %d %d\n", linha_comando, j->nome_jogo, j->equipa1, j->equipa2, j->pontos_1, j->pontos_2);
-            inicio++;
-            nao_existe = 0;
-          }
-        }
-        else
-        {
-          nao_existe = 1;
-        }
+        printf("%d %s %s %s %d %d\n", linha_comando, j->nome_jogo, j->equipa1, j->equipa2, j->pontos_1, j->pontos_2);
+        inicio++;
+        nao_existe = 0;
+      }
+      else
+      {
+        nao_existe = 1;
+      }
 
 
 
-        if (nao_existe == 1)
-        {
-          inicio++;
-        }
-        else
-        {
-          
-        }
-
+      if (nao_existe == 1)
+      {
+        inicio++;
+      }
+      else
+      {
+        
       }
 
     }
+
   }
   else
   {
@@ -704,51 +660,47 @@ void adiciona_equipa()
   }
   else
   {
+    p = inicio_equipas;
+    if (strcmp(p->nome_equipa, nome) == 0)
     {
-      p = inicio_equipas;
-      if (strcmp(p->nome_equipa, nome) == 0)
+      existe_equipa++;
+    }
+    else
+    {
+      while (p->proximo != 0)
       {
-        existe_equipa++;
-      }
-      else
-      {
+        if (strcmp(p->nome_equipa, nome) == 0)
         {
-          while (p->proximo != 0)
-          {
-            if (strcmp(p->nome_equipa, nome) == 0)
-            {
-              existe_equipa++;
-            }
-            else
-            {
-              
-            }
-
-            p = p->proximo;
-            if (strcmp(p->nome_equipa, nome) == 0)
-            {
-              existe_equipa++;
-            }
-            else
-            {
-              
-            }
-
-          }
-
+          existe_equipa++;
         }
-      }
+        else
+        {
+          
+        }
 
-      if (existe_equipa == 0)
-      {
-        p->proximo = criar_equipa(nome);
-      }
-      else
-      {
-        printf("%d Equipa existente.\n", linha_comando);
+        p = p->proximo;
+        if (strcmp(p->nome_equipa, nome) == 0)
+        {
+          existe_equipa++;
+        }
+        else
+        {
+          
+        }
+
       }
 
     }
+
+    if (existe_equipa == 0)
+    {
+      p->proximo = criar_equipa(nome);
+    }
+    else
+    {
+      printf("%d Equipa existente.\n", linha_comando);
+    }
+
   }
 
 }
@@ -768,10 +720,8 @@ void procura_equipa()
   for (p = inicio_equipas; p != 0; p = p->proximo)
     if (strcmp(p->nome_equipa, nome) == 0)
   {
-    {
-      printf("%d %s %d\n", linha_comando, p->nome_equipa, p->numero_jogos_ganhos);
-      controlo++;
-    }
+    printf("%d %s %d\n", linha_comando, p->nome_equipa, p->numero_jogos_ganhos);
+    controlo++;
   }
   else
   {

@@ -14,121 +14,91 @@ int main()
   {
     if (cmd == 'x')
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {
       if (cmd == 'a')
       {
-        {
-          new_product();
-        }
+        new_product();
       }
       else
       {
         if (cmd == 'q')
         {
-          {
-            add_stock();
-          }
+          add_stock();
         }
         else
         {
           if (cmd == 'r')
           {
-            {
-              remove_stock();
-            }
+            remove_stock();
           }
           else
           {
             if (cmd == 'p')
             {
-              {
-                change_price();
-              }
+              change_price();
             }
             else
             {
               if (cmd == 'k')
               {
-                {
-                  show_stock();
-                }
+                show_stock();
               }
               else
               {
                 if (cmd == 'N')
                 {
-                  {
-                    new_order();
-                  }
+                  new_order();
                 }
                 else
                 {
                   if (cmd == 'A')
                   {
-                    {
-                      add_to_order();
-                    }
+                    add_to_order();
                   }
                   else
                   {
                     if (cmd == 'K')
                     {
-                      {
-                        show_orders();
-                      }
+                      show_orders();
                     }
                     else
                     {
                       if (cmd == 'C')
                       {
-                        {
-                          order_price();
-                        }
+                        order_price();
                       }
                       else
                       {
                         if (cmd == 'E')
                         {
-                          {
-                            order_desc_quantity();
-                          }
+                          order_desc_quantity();
                         }
                         else
                         {
                           if (cmd == 'm')
                           {
-                            {
-                              compare_orders();
-                            }
+                            compare_orders();
                           }
                           else
                           {
                             if (cmd == 'l')
                             {
-                              {
-                                sort_products();
-                              }
+                              sort_products();
                             }
                             else
                             {
                               if (cmd == 'L')
                               {
-                                {
-                                  sort_orders();
-                                }
+                                sort_orders();
                               }
                               else
                               {
                                 if (cmd == 'R')
                                 {
-                                  {
-                                    remove_from_order();
-                                  }
+                                  remove_from_order();
                                 }
                                 else
                                 {

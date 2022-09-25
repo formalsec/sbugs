@@ -22,27 +22,21 @@ pJogo cria_jogo(char *buffer, char *team1, char *team2, int s1, int s2, table_eq
   match->score2 = s2;
   if (s1 > s2)
   {
-    {
-      match->winner = malloc((sizeof(char)) * (strlen(team1) + 1));
-      strcpy(match->winner, team1);
-      SearchEquipa(match->winner, tab_eq)->vitorias++;
-    }
+    match->winner = malloc((sizeof(char)) * (strlen(team1) + 1));
+    strcpy(match->winner, team1);
+    SearchEquipa(match->winner, tab_eq)->vitorias++;
   }
   else
   {
     if (s2 > s1)
     {
-      {
-        match->winner = malloc((sizeof(char)) * (strlen(team2) + 1));
-        strcpy(match->winner, team2);
-        SearchEquipa(match->winner, tab_eq)->vitorias++;
-      }
+      match->winner = malloc((sizeof(char)) * (strlen(team2) + 1));
+      strcpy(match->winner, team2);
+      SearchEquipa(match->winner, tab_eq)->vitorias++;
     }
     else
     {
-      {
-        match->winner = 0;
-      }
+      match->winner = 0;
     }
 
   }
@@ -56,9 +50,7 @@ void add_last(listagem l, pJogo match)
   match->previous = l->tail;
   if (l->tail != 0)
   {
-    {
-      l->tail->next = match;
-    }
+    l->tail->next = match;
   }
   else
   {
@@ -68,9 +60,7 @@ void add_last(listagem l, pJogo match)
   l->tail = match;
   if (l->head == 0)
   {
-    {
-      l->head = match;
-    }
+    l->head = match;
   }
   else
   {
@@ -98,35 +88,27 @@ void delete_jogo_lst(listagem lst, pJogo match)
 {
   if ((match->previous == 0) && (match->next == 0))
   {
-    {
-      lst->head = 0;
-      lst->tail = 0;
-    }
+    lst->head = 0;
+    lst->tail = 0;
   }
   else
   {
     if ((match->previous != 0) && (match->next == 0))
     {
-      {
-        lst->tail = match->previous;
-        match->previous->next = 0;
-      }
+      lst->tail = match->previous;
+      match->previous->next = 0;
     }
     else
     {
       if ((match->previous == 0) && (match->next != 0))
       {
-        {
-          match->next->previous = 0;
-          lst->head = match->next;
-        }
+        match->next->previous = 0;
+        lst->head = match->next;
       }
       else
       {
-        {
-          match->previous->next = match->next;
-          match->next->previous = match->previous;
-        }
+        match->previous->next = match->next;
+        match->next->previous = match->previous;
       }
 
     }
@@ -143,23 +125,17 @@ Node_jogos delete_jogo_hash(char nome[], Node_jogos node_j)
   {
     if (strcmp(temp->match->nome, nome) == 0)
     {
+      if (temp == node_j)
       {
-        if (temp == node_j)
-        {
-          {
-            node_j = temp->next;
-          }
-        }
-        else
-        {
-          {
-            prev->next = temp->next;
-          }
-        }
-
-        liberta_no_j(temp);
-        break;
+        node_j = temp->next;
       }
+      else
+      {
+        prev->next = temp->next;
+      }
+
+      liberta_no_j(temp);
+      break;
     }
     else
     {
@@ -186,25 +162,19 @@ void Change_Score(pJogo match, int score1, int score2)
   free(match->winner);
   if (score1 > score2)
   {
-    {
-      match->winner = malloc((sizeof(char)) * (strlen(match->equipa1) + 1));
-      strcpy(match->winner, match->equipa1);
-    }
+    match->winner = malloc((sizeof(char)) * (strlen(match->equipa1) + 1));
+    strcpy(match->winner, match->equipa1);
   }
   else
   {
     if (score2 > score1)
     {
-      {
-        match->winner = malloc((sizeof(char)) * (strlen(match->equipa2) + 1));
-        strcpy(match->winner, match->equipa2);
-      }
+      match->winner = malloc((sizeof(char)) * (strlen(match->equipa2) + 1));
+      strcpy(match->winner, match->equipa2);
     }
     else
     {
-      {
-        match->winner = 0;
-      }
+      match->winner = 0;
     }
 
   }
@@ -215,9 +185,7 @@ void Change_Wins(pJogo match, table_eq tab_eq, char *old_winner)
 {
   if ((match->winner == 0) && (old_winner == 0))
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -226,35 +194,27 @@ void Change_Wins(pJogo match, table_eq tab_eq, char *old_winner)
 
   if (((match->winner != 0) && (old_winner != 0)) && (strcmp(match->winner, old_winner) == 0))
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
     if ((match->winner == 0) && (old_winner != 0))
     {
-      {
-        SearchEquipa(old_winner, tab_eq)->vitorias--;
-        return;
-      }
+      SearchEquipa(old_winner, tab_eq)->vitorias--;
+      return;
     }
     else
     {
       if ((match->winner != 0) && (old_winner == 0))
       {
-        {
-          SearchEquipa(match->winner, tab_eq)->vitorias++;
-          return;
-        }
+        SearchEquipa(match->winner, tab_eq)->vitorias++;
+        return;
       }
       else
       {
-        {
-          SearchEquipa(old_winner, tab_eq)->vitorias--;
-          SearchEquipa(match->winner, tab_eq)->vitorias++;
-          return;
-        }
+        SearchEquipa(old_winner, tab_eq)->vitorias--;
+        SearchEquipa(match->winner, tab_eq)->vitorias++;
+        return;
       }
 
     }

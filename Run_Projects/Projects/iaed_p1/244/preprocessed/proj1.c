@@ -60,10 +60,8 @@ void addStock(char command[64])
   {
     if (allProducts[i].id == idp)
     {
-      {
-        allProducts[i].stock = allProducts[i].stock + qtd;
-        found = 1;
-      }
+      allProducts[i].stock = allProducts[i].stock + qtd;
+      found = 1;
     }
     else
     {
@@ -74,9 +72,7 @@ void addStock(char command[64])
 
   if (found == 0)
   {
-    {
-      printf("%s%d%s\n", "Impossivel adicionar produto ", idp, " ao stock. Produto inexistente.");
-    }
+    printf("%s%d%s\n", "Impossivel adicionar produto ", idp, " ao stock. Produto inexistente.");
   }
   else
   {
@@ -118,9 +114,7 @@ void addToPackage(char command[64])
   {
     if (ide == allPackages[i].id)
     {
-      {
-        packageNum = i;
-      }
+      packageNum = i;
     }
     else
     {
@@ -133,9 +127,7 @@ void addToPackage(char command[64])
   {
     if (idp == allProducts[i].id)
     {
-      {
-        productNum = i;
-      }
+      productNum = i;
     }
     else
     {
@@ -146,73 +138,57 @@ void addToPackage(char command[64])
 
   if (packageNum == (-1))
   {
-    {
-      printf("%s%d%s%d%s\n", "Impossivel adicionar produto ", idp, " a encomenda ", ide, ". Encomenda inexistente.");
-    }
+    printf("%s%d%s%d%s\n", "Impossivel adicionar produto ", idp, " a encomenda ", ide, ". Encomenda inexistente.");
   }
   else
   {
     if (productNum == (-1))
     {
-      {
-        printf("%s%d%s%d%s\n", "Impossivel adicionar produto ", idp, " a encomenda ", ide, ". Produto inexistente.");
-      }
+      printf("%s%d%s%d%s\n", "Impossivel adicionar produto ", idp, " a encomenda ", ide, ". Produto inexistente.");
     }
     else
     {
       if (allProducts[productNum].stock < qtd)
       {
-        {
-          printf("%s%d%s%d%s\n", "Impossivel adicionar produto ", idp, " a encomenda ", ide, ". Quantidade em stock insuficiente.");
-        }
+        printf("%s%d%s%d%s\n", "Impossivel adicionar produto ", idp, " a encomenda ", ide, ". Quantidade em stock insuficiente.");
       }
       else
       {
         if ((allPackages[packageNum].weight + (allProducts[productNum].weight * qtd)) > 200)
         {
-          {
-            printf("%s%d%s%d%s\n", "Impossivel adicionar produto ", idp, " a encomenda ", ide, ". Peso da encomenda excede o maximo de 200.");
-          }
+          printf("%s%d%s%d%s\n", "Impossivel adicionar produto ", idp, " a encomenda ", ide, ". Peso da encomenda excede o maximo de 200.");
         }
         else
         {
+          for (i = 0; i < allPackages[packageNum].contentsCount; ++i)
           {
-            for (i = 0; i < allPackages[packageNum].contentsCount; ++i)
+            if (allPackages[packageNum].contents[i].id == allProducts[productNum].id)
             {
-              if (allPackages[packageNum].contents[i].id == allProducts[productNum].id)
-              {
-                {
-                  inConNum = i;
-                  exists = 1;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-            if (exists == 0)
-            {
-              {
-                allPackages[packageNum].contents[allPackages[packageNum].contentsCount] = allProducts[productNum];
-                allPackages[packageNum].contents[allPackages[packageNum].contentsCount].stock = qtd;
-                allPackages[packageNum].weight = allPackages[packageNum].weight + (allProducts[productNum].weight * qtd);
-                allPackages[packageNum].contentsCount = allPackages[packageNum].contentsCount + 1;
-                allProducts[productNum].stock = allProducts[productNum].stock - qtd;
-              }
+              inConNum = i;
+              exists = 1;
             }
             else
             {
-              {
-                allPackages[packageNum].contents[inConNum].stock = allPackages[packageNum].contents[inConNum].stock + qtd;
-                allPackages[packageNum].weight = allPackages[packageNum].weight + (allProducts[productNum].weight * qtd);
-                allProducts[productNum].stock = allProducts[productNum].stock - qtd;
-              }
+              
             }
 
           }
+
+          if (exists == 0)
+          {
+            allPackages[packageNum].contents[allPackages[packageNum].contentsCount] = allProducts[productNum];
+            allPackages[packageNum].contents[allPackages[packageNum].contentsCount].stock = qtd;
+            allPackages[packageNum].weight = allPackages[packageNum].weight + (allProducts[productNum].weight * qtd);
+            allPackages[packageNum].contentsCount = allPackages[packageNum].contentsCount + 1;
+            allProducts[productNum].stock = allProducts[productNum].stock - qtd;
+          }
+          else
+          {
+            allPackages[packageNum].contents[inConNum].stock = allPackages[packageNum].contents[inConNum].stock + qtd;
+            allPackages[packageNum].weight = allPackages[packageNum].weight + (allProducts[productNum].weight * qtd);
+            allProducts[productNum].stock = allProducts[productNum].stock - qtd;
+          }
+
         }
 
       }
@@ -239,9 +215,7 @@ void removeStock(char command[64])
   {
     if (idp == allProducts[i].id)
     {
-      {
-        productNum = i;
-      }
+      productNum = i;
     }
     else
     {
@@ -252,23 +226,17 @@ void removeStock(char command[64])
 
   if (productNum == (-1))
   {
-    {
-      printf("%s%d%s\n", "Impossivel remover stock do produto ", idp, ". Produto inexistente.");
-    }
+    printf("%s%d%s\n", "Impossivel remover stock do produto ", idp, ". Produto inexistente.");
   }
   else
   {
     if (allProducts[productNum].stock < qtd)
     {
-      {
-        printf("%s%d%s%d%s\n", "Impossivel remover ", qtd, " unidades do produto ", idp, " do stock. Quantidade insuficiente.");
-      }
+      printf("%s%d%s%d%s\n", "Impossivel remover ", qtd, " unidades do produto ", idp, " do stock. Quantidade insuficiente.");
     }
     else
     {
-      {
-        allProducts[productNum].stock = allProducts[productNum].stock - qtd;
-      }
+      allProducts[productNum].stock = allProducts[productNum].stock - qtd;
     }
 
   }
@@ -293,9 +261,7 @@ void removeFromPackage(char command[64])
   {
     if (ide == allPackages[i].id)
     {
-      {
-        packageNum = i;
-      }
+      packageNum = i;
     }
     else
     {
@@ -308,9 +274,7 @@ void removeFromPackage(char command[64])
   {
     if (idp == allProducts[i].id)
     {
-      {
-        productNum = i;
-      }
+      productNum = i;
     }
     else
     {
@@ -321,45 +285,37 @@ void removeFromPackage(char command[64])
 
   if (packageNum == (-1))
   {
-    {
-      printf("%s%d%s%d%s\n", "Impossivel remover produto ", idp, " a encomenda ", ide, ". Encomenda inexistente.");
-    }
+    printf("%s%d%s%d%s\n", "Impossivel remover produto ", idp, " a encomenda ", ide, ". Encomenda inexistente.");
   }
   else
   {
     if (productNum == (-1))
     {
-      {
-        printf("%s%d%s%d%s\n", "Impossivel remover produto ", idp, " a encomenda ", ide, ". Produto inexistente.");
-      }
+      printf("%s%d%s%d%s\n", "Impossivel remover produto ", idp, " a encomenda ", ide, ". Produto inexistente.");
     }
     else
     {
+      for (i = 0; i < allPackages[packageNum].contentsCount; ++i)
       {
-        for (i = 0; i < allPackages[packageNum].contentsCount; ++i)
+        if (allPackages[packageNum].contents[i].id == idp)
         {
-          if (allPackages[packageNum].contents[i].id == idp)
-          {
-            {
-              inPackNum = i;
-            }
-          }
-          else
-          {
-            
-          }
-
+          inPackNum = i;
+        }
+        else
+        {
+          
         }
 
-        allPackages[packageNum].weight = allPackages[packageNum].weight - (allPackages[packageNum].contents[inPackNum].weight * allPackages[packageNum].contents[inPackNum].stock);
-        allProducts[productNum].stock = allProducts[productNum].stock + allPackages[packageNum].contents[inPackNum].stock;
-        for (i = inPackNum; i < allPackages[packageNum].contentsCount; ++i)
-        {
-          allPackages[packageNum].contents[i] = allPackages[packageNum].contents[i + 1];
-        }
-
-        allPackages[packageNum].contentsCount = allPackages[packageNum].contentsCount - 1;
       }
+
+      allPackages[packageNum].weight = allPackages[packageNum].weight - (allPackages[packageNum].contents[inPackNum].weight * allPackages[packageNum].contents[inPackNum].stock);
+      allProducts[productNum].stock = allProducts[productNum].stock + allPackages[packageNum].contents[inPackNum].stock;
+      for (i = inPackNum; i < allPackages[packageNum].contentsCount; ++i)
+      {
+        allPackages[packageNum].contents[i] = allPackages[packageNum].contents[i + 1];
+      }
+
+      allPackages[packageNum].contentsCount = allPackages[packageNum].contentsCount - 1;
     }
 
   }
@@ -375,9 +331,7 @@ void calcCost(int ide)
   {
     if (ide == allPackages[i].id)
     {
-      {
-        packageNum = i;
-      }
+      packageNum = i;
     }
     else
     {
@@ -388,20 +342,16 @@ void calcCost(int ide)
 
   if (packageNum == (-1))
   {
-    {
-      printf("%s%d%s\n", "Impossivel calcular custo da encomenda ", ide, ". Encomenda inexistente.");
-    }
+    printf("%s%d%s\n", "Impossivel calcular custo da encomenda ", ide, ". Encomenda inexistente.");
   }
   else
   {
+    for (i = 0; i < allPackages[packageNum].contentsCount; ++i)
     {
-      for (i = 0; i < allPackages[packageNum].contentsCount; ++i)
-      {
-        total = total + (allPackages[packageNum].contents[i].price * allPackages[packageNum].contents[i].stock);
-      }
-
-      printf("%s%d%s%d%s\n", "Custo da encomenda ", ide, " ", total, ".");
+      total = total + (allPackages[packageNum].contents[i].price * allPackages[packageNum].contents[i].stock);
     }
+
+    printf("%s%d%s%d%s\n", "Custo da encomenda ", ide, " ", total, ".");
   }
 
 }
@@ -423,9 +373,7 @@ void changePrice(char command[64])
   {
     if (idp == allProducts[i].id)
     {
-      {
-        productNum = i;
-      }
+      productNum = i;
     }
     else
     {
@@ -436,34 +384,28 @@ void changePrice(char command[64])
 
   if (productNum == (-1))
   {
-    {
-      printf("%s%d%s\n", "Impossivel alterar preco do produto ", idp, ". Produto inexistente.");
-    }
+    printf("%s%d%s\n", "Impossivel alterar preco do produto ", idp, ". Produto inexistente.");
   }
   else
   {
+    allProducts[productNum].price = Nprice;
+    for (i = 0; i < PackageCounter; ++i)
     {
-      allProducts[productNum].price = Nprice;
-      for (i = 0; i < PackageCounter; ++i)
+      for (q = 0; q < allPackages[i].contentsCount; ++q)
       {
-        for (q = 0; q < allPackages[i].contentsCount; ++q)
+        if (allPackages[i].contents[q].id == allProducts[productNum].id)
         {
-          if (allPackages[i].contents[q].id == allProducts[productNum].id)
-          {
-            {
-              allPackages[i].contents[q].price = Nprice;
-            }
-          }
-          else
-          {
-            
-          }
-
+          allPackages[i].contents[q].price = Nprice;
+        }
+        else
+        {
+          
         }
 
       }
 
     }
+
   }
 
 }
@@ -485,9 +427,7 @@ void inPackProdInfo(char command[64])
   {
     if (ide == allPackages[i].id)
     {
-      {
-        packageNum = i;
-      }
+      packageNum = i;
     }
     else
     {
@@ -500,9 +440,7 @@ void inPackProdInfo(char command[64])
   {
     if (idp == allProducts[i].id)
     {
-      {
-        productNum = i;
-      }
+      productNum = i;
     }
     else
     {
@@ -513,37 +451,29 @@ void inPackProdInfo(char command[64])
 
   if (packageNum == (-1))
   {
-    {
-      printf("%s%d%s\n", "Impossivel listar encomenda ", ide, ". Encomenda inexistente.");
-    }
+    printf("%s%d%s\n", "Impossivel listar encomenda ", ide, ". Encomenda inexistente.");
   }
   else
   {
     if (productNum == (-1))
     {
-      {
-        printf("%s%d%s\n", "Impossivel listar produto ", idp, ". Produto inexistente.");
-      }
+      printf("%s%d%s\n", "Impossivel listar produto ", idp, ". Produto inexistente.");
     }
     else
     {
+      for (i = 0; i < allPackages[packageNum].contentsCount; ++i)
       {
-        for (i = 0; i < allPackages[packageNum].contentsCount; ++i)
+        if (allPackages[packageNum].contents[i].id == idp)
         {
-          if (allPackages[packageNum].contents[i].id == idp)
-          {
-            {
-              printf("%s%s%d%s\n", allPackages[packageNum].contents[i].description, " ", allPackages[packageNum].contents[i].stock, ".");
-            }
-          }
-          else
-          {
-            
-          }
-
+          printf("%s%s%d%s\n", allPackages[packageNum].contents[i].description, " ", allPackages[packageNum].contents[i].stock, ".");
+        }
+        else
+        {
+          
         }
 
       }
+
     }
 
   }
@@ -561,9 +491,7 @@ void findMode(int idp)
   {
     if (idp == allProducts[i].id)
     {
-      {
-        productNum = i;
-      }
+      productNum = i;
     }
     else
     {
@@ -574,33 +502,20 @@ void findMode(int idp)
 
   if (productNum == (-1))
   {
-    {
-      printf("%s%d%s\n", "Impossivel listar maximo do produto ", idp, ". Produto inexistente.");
-    }
+    printf("%s%d%s\n", "Impossivel listar maximo do produto ", idp, ". Produto inexistente.");
   }
   else
   {
+    for (i = 0; i < PackageCounter; ++i)
     {
-      for (i = 0; i < PackageCounter; ++i)
+      for (q = 0; q < allPackages[i].contentsCount; ++q)
       {
-        for (q = 0; q < allPackages[i].contentsCount; ++q)
+        if (allPackages[i].contents[q].id == idp)
         {
-          if (allPackages[i].contents[q].id == idp)
+          if (allPackages[i].contents[q].stock > pInStock)
           {
-            {
-              if (allPackages[i].contents[q].stock > pInStock)
-              {
-                {
-                  packageNum = i;
-                  pInStock = allPackages[i].contents[q].stock;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
+            packageNum = i;
+            pInStock = allPackages[i].contents[q].stock;
           }
           else
           {
@@ -608,22 +523,23 @@ void findMode(int idp)
           }
 
         }
-
-      }
-
-      if (packageNum == (-1))
-      {
+        else
         {
+          
         }
-      }
-      else
-      {
-        {
-          printf("%s%d%s%d%s%d%s\n", "Maximo produto ", idp, " ", allPackages[packageNum].id, " ", pInStock, ".");
-        }
+
       }
 
     }
+
+    if (packageNum == (-1))
+    {
+    }
+    else
+    {
+      printf("%s%d%s%d%s%d%s\n", "Maximo produto ", idp, " ", allPackages[packageNum].id, " ", pInStock, ".");
+    }
+
   }
 
 }
@@ -639,11 +555,9 @@ void listPrice(struct Product listt[10000])
     {
       if (listt[q].price > listt[q + 1].price)
       {
-        {
-          tempy = listt[q];
-          listt[q] = listt[q + 1];
-          listt[q + 1] = tempy;
-        }
+        tempy = listt[q];
+        listt[q] = listt[q + 1];
+        listt[q + 1] = tempy;
       }
       else
       {
@@ -672,9 +586,7 @@ void alphaList(int ide, struct Package listt[10000])
   {
     if (ide == allPackages[i].id)
     {
-      {
-        packageNum = i;
-      }
+      packageNum = i;
     }
     else
     {
@@ -685,41 +597,35 @@ void alphaList(int ide, struct Package listt[10000])
 
   if (packageNum == (-1))
   {
-    {
-      printf("%s%d%s\n", "Impossivel listar encomenda ", ide, ". Encomenda inexistente.");
-    }
+    printf("%s%d%s\n", "Impossivel listar encomenda ", ide, ". Encomenda inexistente.");
   }
   else
   {
+    for (i = 0; i < (listt[packageNum].contentsCount - 1); ++i)
     {
-      for (i = 0; i < (listt[packageNum].contentsCount - 1); ++i)
+      for (q = 0; q < ((listt[packageNum].contentsCount - i) - 1); ++q)
       {
-        for (q = 0; q < ((listt[packageNum].contentsCount - i) - 1); ++q)
+        if (strcmp(listt[packageNum].contents[q].description, listt[packageNum].contents[q + 1].description) > 0)
         {
-          if (strcmp(listt[packageNum].contents[q].description, listt[packageNum].contents[q + 1].description) > 0)
-          {
-            {
-              tempy = listt[packageNum].contents[q];
-              listt[packageNum].contents[q] = listt[packageNum].contents[q + 1];
-              listt[packageNum].contents[q + 1] = tempy;
-            }
-          }
-          else
-          {
-            
-          }
-
+          tempy = listt[packageNum].contents[q];
+          listt[packageNum].contents[q] = listt[packageNum].contents[q + 1];
+          listt[packageNum].contents[q + 1] = tempy;
+        }
+        else
+        {
+          
         }
 
       }
 
-      printf("%s%d\n", "Encomenda ", ide);
-      for (i = 0; i < listt[packageNum].contentsCount; ++i)
-      {
-        printf("%s%s%s%d%s%d\n", "* ", listt[packageNum].contents[i].description, " ", listt[packageNum].contents[i].price, " ", listt[packageNum].contents[i].stock);
-      }
-
     }
+
+    printf("%s%d\n", "Encomenda ", ide);
+    for (i = 0; i < listt[packageNum].contentsCount; ++i)
+    {
+      printf("%s%s%s%d%s%d\n", "* ", listt[packageNum].contents[i].description, " ", listt[packageNum].contents[i].price, " ", listt[packageNum].contents[i].stock);
+    }
+
   }
 
 }

@@ -74,10 +74,8 @@ int hash_table_insert(jogo *p)
     tentar = (i + index) % 10000;
     if (hash_table[tentar] == 0)
     {
-      {
-        hash_table[tentar] = p;
-        return 1;
-      }
+      hash_table[tentar] = p;
+      return 1;
     }
     else
     {
@@ -108,10 +106,8 @@ int hash_table_insertE(equipa *p)
     tentar = (i + index) % 10000;
     if (hash_tableE[tentar] == 0)
     {
-      {
-        hash_tableE[tentar] = p;
-        return 1;
-      }
+      hash_tableE[tentar] = p;
+      return 1;
     }
     else
     {
@@ -133,9 +129,7 @@ jogo *hash_table_lookup(char *name)
     tentar = (index + i) % 10000;
     if (hash_table[tentar] == 0)
     {
-      {
-        return 0;
-      }
+      return 0;
     }
     else
     {
@@ -144,9 +138,7 @@ jogo *hash_table_lookup(char *name)
 
     if ((hash_table[tentar] != 0) && (strncmp(hash_table[tentar]->name, name, 10000) == 0))
     {
-      {
-        return hash_table[tentar];
-      }
+      return hash_table[tentar];
     }
     else
     {
@@ -168,9 +160,7 @@ equipa *hash_table_lookupE(char *name)
     tentar = (index + i) % 10000;
     if (hash_tableE[tentar] == 0)
     {
-      {
-        return 0;
-      }
+      return 0;
     }
     else
     {
@@ -179,9 +169,7 @@ equipa *hash_table_lookupE(char *name)
 
     if ((hash_tableE[tentar] != 0) && (strncmp(hash_tableE[tentar]->nome, name, 10000) == 0))
     {
-      {
-        return hash_tableE[tentar];
-      }
+      return hash_tableE[tentar];
     }
     else
     {
@@ -212,11 +200,9 @@ jogo *hash_table_delete(char *name)
 
     if ((hash_table[tentar] != 0) && (strncmp(hash_table[tentar]->name, name, 10000) == 0))
     {
-      {
-        jogo *tmp = hash_table[tentar];
-        hash_table[tentar] = 0;
-        return tmp;
-      }
+      jogo *tmp = hash_table[tentar];
+      hash_table[tentar] = 0;
+      return tmp;
     }
     else
     {
@@ -253,10 +239,8 @@ void a(void)
   game.s2 = new_sym_var(sizeof(int) * 8);
   if (hash_table_lookup(game.name) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-      return;
-    }
+    printf("%d Jogo existente.\n", NL);
+    return;
   }
   else
   {
@@ -265,30 +249,28 @@ void a(void)
 
   if ((hash_table_lookupE(game.equipa1) != 0) && (hash_table_lookupE(game.equipa2) != 0))
   {
+    hash_table_insert(&game);
+    lista[n_jogos] = game;
+    n_jogos++;
+    if (game.s1 > game.s2)
     {
-      hash_table_insert(&game);
-      lista[n_jogos] = game;
-      n_jogos++;
-      if (game.s1 > game.s2)
-      {
-        hash_table_lookupE(game.equipa1)->vitorias++;
-      }
-      else
-      {
-        
-      }
-
-      if (game.s2 > game.s1)
-      {
-        hash_table_lookupE(game.equipa2)->vitorias++;
-      }
-      else
-      {
-        
-      }
-
-      return;
+      hash_table_lookupE(game.equipa1)->vitorias++;
     }
+    else
+    {
+      
+    }
+
+    if (game.s2 > game.s1)
+    {
+      hash_table_lookupE(game.equipa2)->vitorias++;
+    }
+    else
+    {
+      
+    }
+
+    return;
   }
   else
   {
@@ -310,10 +292,8 @@ void A(void)
   e.vitorias = new_sym_var(sizeof(int) * 8);
   if (hash_table_lookupE(e.nome) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-      return;
-    }
+    printf("%d Equipa existente.\n", NL);
+    return;
   }
   else
   {
@@ -354,10 +334,8 @@ void p(void)
   game.name[10 - 1] = '\0';
   if (hash_table_lookup(game.name) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -378,10 +356,8 @@ void r(void)
   game.name[10 - 1] = '\0';
   if (hash_table_lookup(game.name) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -408,10 +384,8 @@ void s(void)
   s2 = new_sym_var(sizeof(int) * 8);
   if (hash_table_lookup(game.name) == 0)
   {
-    {
-      printf("%d Jogo inexistente.", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.", NL);
+    return;
   }
   else
   {
@@ -422,10 +396,8 @@ void s(void)
   {
     if (strcmp(lista[i].name, game.name) == 0)
     {
-      {
-        game.s1 = s1;
-        game.s2 = s2;
-      }
+      game.s1 = s1;
+      game.s2 = s2;
     }
     else
     {
@@ -449,10 +421,8 @@ void P(void)
   team.nome[10 - 1] = '\0';
   if (hash_table_lookupE(team.nome) == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    return;
   }
   else
   {

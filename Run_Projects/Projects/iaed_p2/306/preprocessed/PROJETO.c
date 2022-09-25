@@ -16,10 +16,8 @@ void adiciona_equipa_lista(equipa *e)
   n->anterior = 0;
   if (tmp == 0)
   {
-    {
-      head_e = n;
-      return;
-    }
+    head_e = n;
+    return;
   }
   else
   {
@@ -33,29 +31,23 @@ void adiciona_equipa_lista(equipa *e)
 
   if ((tmp->seguinte == 0) && (strcmp(e->nome, tmp->equipa->nome) > 0))
   {
-    {
-      tmp->seguinte = n;
-      n->anterior = tmp;
-    }
+    tmp->seguinte = n;
+    n->anterior = tmp;
   }
   else
   {
     if ((tmp == head_e) && (strcmp(e->nome, tmp->equipa->nome) < 0))
     {
-      {
-        tmp->anterior = n;
-        n->seguinte = tmp;
-        head_e = n;
-      }
+      tmp->anterior = n;
+      n->seguinte = tmp;
+      head_e = n;
     }
     else
     {
-      {
-        tmp->anterior->seguinte = n;
-        n->anterior = tmp->anterior;
-        n->seguinte = tmp;
-        tmp->anterior = n;
-      }
+      tmp->anterior->seguinte = n;
+      n->anterior = tmp->anterior;
+      n->seguinte = tmp;
+      tmp->anterior = n;
     }
 
   }
@@ -70,9 +62,7 @@ void adiciona_jogo_lista(jogo *j)
   n->jogo = j;
   if (tail_j != 0)
   {
-    {
-      tail_j->seguinte = n;
-    }
+    tail_j->seguinte = n;
   }
   else
   {
@@ -82,9 +72,7 @@ void adiciona_jogo_lista(jogo *j)
   tail_j = n;
   if (head_j == 0)
   {
-    {
-      head_j = n;
-    }
+    head_j = n;
   }
   else
   {
@@ -126,17 +114,13 @@ void adiciona_jogo_aux(equipa *e1, equipa *e2, jogo *j)
 {
   if (j->score1 > j->score2)
   {
-    {
-      e1->vitorias = e1->vitorias + 1;
-    }
+    e1->vitorias = e1->vitorias + 1;
   }
   else
   {
     if (j->score2 > j->score1)
     {
-      {
-        e2->vitorias = e2->vitorias + 1;
-      }
+      e2->vitorias = e2->vitorias + 1;
     }
     else
     {
@@ -184,9 +168,7 @@ jogo *remove_jogo_hash(char *nome)
 
   if (tmp == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -195,15 +177,11 @@ jogo *remove_jogo_hash(char *nome)
 
   if (anterior == 0)
   {
-    {
-      hash_jogos[index] = tmp->seguinte;
-    }
+    hash_jogos[index] = tmp->seguinte;
   }
   else
   {
-    {
-      anterior->seguinte = tmp->seguinte;
-    }
+    anterior->seguinte = tmp->seguinte;
   }
 
   return tmp;
@@ -217,9 +195,7 @@ void remove_jogo_lista(jogo *j)
   node_j *seguinte;
   if (j == head_j->jogo)
   {
-    {
-      i++, tmp = head_j, head_j = head_j->seguinte;
-    }
+    i++, tmp = head_j, head_j = head_j->seguinte;
   }
   else
   {
@@ -228,9 +204,7 @@ void remove_jogo_lista(jogo *j)
 
   if (j == tail_j->jogo)
   {
-    {
-      i++, tmp = tail_j, tail_j = tail_j->anterior;
-    }
+    i++, tmp = tail_j, tail_j = tail_j->anterior;
   }
   else
   {
@@ -239,20 +213,18 @@ void remove_jogo_lista(jogo *j)
 
   if (i == 0)
   {
+    anterior = head_j;
+    tmp = head_j->seguinte;
+    seguinte = tmp->seguinte;
+    while (j != tmp->jogo)
     {
-      anterior = head_j;
-      tmp = head_j->seguinte;
-      seguinte = tmp->seguinte;
-      while (j != tmp->jogo)
-      {
-        anterior = anterior->seguinte;
-        tmp = tmp->seguinte;
-        seguinte = seguinte->seguinte;
-      }
-
-      anterior->seguinte = seguinte;
-      seguinte->anterior = anterior;
+      anterior = anterior->seguinte;
+      tmp = tmp->seguinte;
+      seguinte = seguinte->seguinte;
     }
+
+    anterior->seguinte = seguinte;
+    seguinte->anterior = anterior;
   }
   else
   {
@@ -270,9 +242,7 @@ void reverte(jogo *tmp)
   e2 = procura_equipa_hash(tmp->equipa2);
   if (tmp->score1 > tmp->score2)
   {
-    {
-      e1->vitorias = e1->vitorias - 1;
-    }
+    e1->vitorias = e1->vitorias - 1;
   }
   else
   {
@@ -281,9 +251,7 @@ void reverte(jogo *tmp)
 
   if (tmp->score2 > tmp->score1)
   {
-    {
-      e2->vitorias = e2->vitorias - 1;
-    }
+    e2->vitorias = e2->vitorias - 1;
   }
   else
   {
@@ -299,9 +267,7 @@ jogo *altera_jogo_hash(char *nome_jogo, int score1_n, int score2_n)
   jogo *tmp = procura_jogo_hash(nome_jogo);
   if (tmp == 0)
   {
-    {
-      return tmp;
-    }
+    return tmp;
   }
   else
   {
@@ -325,9 +291,7 @@ int maximo()
   {
     if (tmp->equipa->vitorias > i)
     {
-      {
-        i = tmp->equipa->vitorias;
-      }
+      i = tmp->equipa->vitorias;
     }
     else
     {
@@ -346,9 +310,7 @@ void finaliza(int equipas)
   node_j *tmp2 = head_j;
   if (equipas == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -366,9 +328,7 @@ void finaliza(int equipas)
   free(tmp1->equipa->nome), free(tmp1->equipa), free(tmp1);
   if (tail_j == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -405,10 +365,8 @@ int AdicionarJogo(int nl, char dados[3098], int jogos)
   tmp = procura_jogo_hash(nome_jogo);
   if (tmp != 0)
   {
-    {
-      printf("%d Jogo existente.\n", nl);
-      return jogos;
-    }
+    printf("%d Jogo existente.\n", nl);
+    return jogos;
   }
   else
   {
@@ -419,33 +377,27 @@ int AdicionarJogo(int nl, char dados[3098], int jogos)
   e2 = procura_equipa_hash(equipa2);
   if ((e1 == 0) || (e2 == 0))
   {
+    printf("%d Equipa inexistente.\n", nl);
+    if (e1 == 0)
     {
-      printf("%d Equipa inexistente.\n", nl);
-      if (e1 == 0)
-      {
-        {
-          free(e1);
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (e2 == 0)
-      {
-        {
-          free(e2);
-        }
-      }
-      else
-      {
-        
-      }
-
-      free(tmp);
-      return jogos;
+      free(e1);
     }
+    else
+    {
+      
+    }
+
+    if (e2 == 0)
+    {
+      free(e2);
+    }
+    else
+    {
+      
+    }
+
+    free(tmp);
+    return jogos;
   }
   else
   {
@@ -477,23 +429,19 @@ int AdicionarEquipa(int nl, char dados[3098], int equipas)
   tmp = procura_equipa_hash(nome);
   if (tmp == 0)
   {
-    {
-      e = malloc(sizeof(equipa));
-      e->nome = malloc((sizeof(char)) * (strlen(nome) + 1));
-      e->vitorias = 0;
-      strcpy(e->nome, nome);
-      adiciona_equipa_hash(e);
-      adiciona_equipa_lista(e);
-      free(tmp);
-      return ++equipas;
-    }
+    e = malloc(sizeof(equipa));
+    e->nome = malloc((sizeof(char)) * (strlen(nome) + 1));
+    e->vitorias = 0;
+    strcpy(e->nome, nome);
+    adiciona_equipa_hash(e);
+    adiciona_equipa_lista(e);
+    free(tmp);
+    return ++equipas;
   }
   else
   {
-    {
-      printf("%d Equipa existente.\n", nl);
-      return equipas;
-    }
+    printf("%d Equipa existente.\n", nl);
+    return equipas;
   }
 
 }
@@ -504,9 +452,7 @@ void ListaJogos(int nl, int jogos)
   jogo *j;
   if (jogos == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -515,11 +461,9 @@ void ListaJogos(int nl, int jogos)
 
   if (jogos == 1)
   {
-    {
-      j = tmp->jogo;
-      printf("%d %s %s %s %d %d\n", nl, j->nome, j->equipa1, j->equipa2, j->score1, j->score2);
-      return;
-    }
+    j = tmp->jogo;
+    printf("%d %s %s %s %d %d\n", nl, j->nome, j->equipa1, j->equipa2, j->score1, j->score2);
+    return;
   }
   else
   {
@@ -543,15 +487,11 @@ void ProcuraJogo(int nl, char dados[3098])
   tmp = procura_jogo_hash(nome_jogo);
   if (tmp == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", nl), free(tmp);
-    }
+    printf("%d Jogo inexistente.\n", nl), free(tmp);
   }
   else
   {
-    {
-      printf("%d %s %s %s %d %d\n", nl, tmp->nome, tmp->equipa1, tmp->equipa2, tmp->score1, tmp->score2);
-    }
+    printf("%d %s %s %s %d %d\n", nl, tmp->nome, tmp->equipa1, tmp->equipa2, tmp->score1, tmp->score2);
   }
 
 }
@@ -564,15 +504,11 @@ void ProcuraEquipa(int nl, char dados[3098])
   tmp = procura_equipa_hash(nome);
   if (tmp == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", nl), free(tmp);
-    }
+    printf("%d Equipa inexistente.\n", nl), free(tmp);
   }
   else
   {
-    {
-      printf("%d %s %d\n", nl, tmp->nome, tmp->vitorias);
-    }
+    printf("%d %s %d\n", nl, tmp->nome, tmp->vitorias);
   }
 
 }
@@ -585,11 +521,9 @@ int RemoveJogo(int nl, char dados[3098], int jogos)
   tmp = remove_jogo_hash(nome_jogo);
   if (tmp == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-      free(tmp);
-      return jogos;
-    }
+    printf("%d Jogo inexistente.\n", nl);
+    free(tmp);
+    return jogos;
   }
   else
   {
@@ -602,10 +536,8 @@ int RemoveJogo(int nl, char dados[3098], int jogos)
   free(tmp);
   if (jogos == 1)
   {
-    {
-      head_j = 0;
-      tail_j = 0;
-    }
+    head_j = 0;
+    tail_j = 0;
   }
   else
   {
@@ -627,9 +559,7 @@ void AlteraScore(int nl, char dados[3098])
   tmp = altera_jogo_hash(nome_jogo, score1, score2);
   if (tmp == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", nl), free(tmp);
-    }
+    printf("%d Jogo inexistente.\n", nl), free(tmp);
   }
   else
   {
@@ -644,9 +574,7 @@ void Vencedores(int nl, int equipas)
   int i;
   if (equipas == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -660,9 +588,7 @@ void Vencedores(int nl, int equipas)
   {
     if (tmp->equipa->vitorias == i)
     {
-      {
-        printf("%d * %s\n", nl, tmp->equipa->nome);
-      }
+      printf("%d * %s\n", nl, tmp->equipa->nome);
     }
     else
     {

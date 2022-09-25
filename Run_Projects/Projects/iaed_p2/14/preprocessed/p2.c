@@ -47,10 +47,8 @@ void inserir_hash_eqp(link_equipa *eq, int M, char nome[1023])
   int i = hash(nome, M);
   if (eq[i] == 0)
   {
-    {
-      eq[i] = nova_equipa(nome);
-      return;
-    }
+    eq[i] = nova_equipa(nome);
+    return;
   }
   else
   {
@@ -70,9 +68,7 @@ link_equipa procura_hash_equipas(link_equipa *t_eq, char *nome, int M)
   {
     if (strcmp(aux->eq.nome_equipa, nome) == 0)
     {
-      {
-        return aux;
-      }
+      return aux;
     }
     else
     {
@@ -113,17 +109,13 @@ void inserir_hash_jogo(link_jogo *tab, int M, char nome[1023], char equipa1[1023
   int i = hash(nome, M);
   if (tab[i] == 0)
   {
-    {
-      tab[i] = novo_jogo(nome, equipa1, equipa2, score1, score2);
-    }
+    tab[i] = novo_jogo(nome, equipa1, equipa2, score1, score2);
   }
   else
   {
-    {
-      aux = novo_jogo(nome, equipa1, equipa2, score1, score2);
-      aux->seguinte = tab[i];
-      tab[i] = aux;
-    }
+    aux = novo_jogo(nome, equipa1, equipa2, score1, score2);
+    aux->seguinte = tab[i];
+    tab[i] = aux;
   }
 
 }
@@ -136,9 +128,7 @@ link_jogo procura_hash(link_jogo *tab, char nome[1023], int M)
   {
     if (strcmp(aux->jogos.nome, nome) == 0)
     {
-      {
-        return aux;
-      }
+      return aux;
     }
     else
     {
@@ -184,25 +174,19 @@ void remove_hash_el(link_jogo *tab, char *nome, int M)
     {
       if (strcmp(auxiliar->jogos.nome, nome) == 0)
       {
+        if (auxiliar == tab[i])
         {
-          if (auxiliar == tab[i])
-          {
-            {
-              tab[i] = auxiliar->seguinte;
-              apaga_node(auxiliar);
-              break;
-            }
-          }
-          else
-          {
-            {
-              anterior->seguinte = auxiliar->seguinte;
-              apaga_node(auxiliar);
-              break;
-            }
-          }
-
+          tab[i] = auxiliar->seguinte;
+          apaga_node(auxiliar);
+          break;
         }
+        else
+        {
+          anterior->seguinte = auxiliar->seguinte;
+          apaga_node(auxiliar);
+          break;
+        }
+
       }
       else
       {
@@ -259,42 +243,30 @@ void adiciona_jogo(link_jogo *tab, link_equipa *tab_eq, int M, int M2, int NL)
   score2 = new_sym_var(sizeof(int) * 8);
   if (procura_hash(tab, nome, M) == 0)
   {
+    if ((procura_hash_equipas(tab_eq, equipa1, M2) != 0) || (procura_hash_equipas(tab_eq, equipa2, M2) != 0))
     {
-      if ((procura_hash_equipas(tab_eq, equipa1, M2) != 0) || (procura_hash_equipas(tab_eq, equipa2, M2) != 0))
+      inserir_hash_jogo(tab, M, nome, equipa1, equipa2, score1, score2);
+      if (score1 > score2)
       {
-        {
-          inserir_hash_jogo(tab, M, nome, equipa1, equipa2, score1, score2);
-          if (score1 > score2)
-          {
-            {
-              h = hash(equipa1, M2);
-              tab_eq[h]->eq.numero_vit = tab_eq[h]->eq.numero_vit + 1;
-            }
-          }
-          else
-          {
-            {
-              h = hash(equipa2, M2);
-              tab_eq[h]->eq.numero_vit = tab_eq[h]->eq.numero_vit + 1;
-            }
-          }
-
-        }
+        h = hash(equipa1, M2);
+        tab_eq[h]->eq.numero_vit = tab_eq[h]->eq.numero_vit + 1;
       }
       else
       {
-        {
-          printf("%d Equipa inexistente.\n", NL);
-        }
+        h = hash(equipa2, M2);
+        tab_eq[h]->eq.numero_vit = tab_eq[h]->eq.numero_vit + 1;
       }
 
     }
+    else
+    {
+      printf("%d Equipa inexistente.\n", NL);
+    }
+
   }
   else
   {
-    {
-      printf("%d Jogo existente.", NL);
-    }
+    printf("%d Jogo existente.", NL);
   }
 
 }
@@ -333,16 +305,12 @@ void procura_jogo(link_jogo *tab, int M, int NL)
   nome[10 - 1] = '\0';
   if (procura_hash(tab, nome, M) != 0)
   {
-    {
-      tab1 = procura_hash(tab, nome, M);
-      imprime_jogo(tab1, NL);
-    }
+    tab1 = procura_hash(tab, nome, M);
+    imprime_jogo(tab1, NL);
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
 
 }
@@ -358,15 +326,11 @@ void remove_jogo(link_jogo *tab, int M, int NL)
   nome[10 - 1] = '\0';
   if (procura_hash(tab, nome, M) != 0)
   {
-    {
-      remove_hash_el(tab, nome, M);
-    }
+    remove_hash_el(tab, nome, M);
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
 
 }
@@ -387,17 +351,13 @@ void altera_score(link_jogo *tab, int M, int NL)
   score2 = new_sym_var(sizeof(int) * 8);
   if (procura_hash(tab, nome, M) != 0)
   {
-    {
-      h = hash(nome, M);
-      tab[h]->jogos.score1 = score1;
-      tab[h]->jogos.score2 = score2;
-    }
+    h = hash(nome, M);
+    tab[h]->jogos.score1 = score1;
+    tab[h]->jogos.score2 = score2;
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
 
 }
@@ -413,15 +373,11 @@ void adiciona_equipa(link_equipa *tab_eq, int M, int NL)
   nome[10 - 1] = '\0';
   if (procura_hash_equipas(tab_eq, nome, M) == 0)
   {
-    {
-      inserir_hash_eqp(tab_eq, M, nome);
-    }
+    inserir_hash_eqp(tab_eq, M, nome);
   }
   else
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-    }
+    printf("%d Equipa existente.\n", NL);
   }
 
 }

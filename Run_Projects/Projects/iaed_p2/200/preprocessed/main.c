@@ -27,10 +27,8 @@ int cmd_a(int NL, glink **HTgame, tlink **HTteams, glink **STgame, int counter_g
   glink *link = malloc(sizeof(struct node_game));
   if (5 != 5)
   {
-    {
-      printf("argumentos invalidos a.\n");
-      return 0;
-    }
+    printf("argumentos invalidos a.\n");
+    return 0;
   }
   else
   {
@@ -59,10 +57,8 @@ int cmd_a(int NL, glink **HTgame, tlink **HTteams, glink **STgame, int counter_g
 
   if (verifica_jogo(buffer0, buffer1, buffer2, HTgame, HTteams) == 1)
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-      return 0;
-    }
+    printf("%d Jogo existente.\n", NL);
+    return 0;
   }
   else
   {
@@ -71,20 +67,16 @@ int cmd_a(int NL, glink **HTgame, tlink **HTteams, glink **STgame, int counter_g
 
   if (verifica_jogo(buffer0, buffer1, buffer2, HTgame, HTteams) == 4)
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      return 0;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    return 0;
   }
   else
   {
     if (verifica_jogo(buffer0, buffer1, buffer2, HTgame, HTteams) == 5)
     {
-      {
-        link = glinkInsert(buffer0, buffer1, buffer2, res1, res2, link, HTgame, HTteams);
-        gorderInsert(&link, STgame, counter_game);
-        return 1;
-      }
+      link = glinkInsert(buffer0, buffer1, buffer2, res1, res2, link, HTgame, HTteams);
+      gorderInsert(&link, STgame, counter_game);
+      return 1;
     }
     else
     {
@@ -102,10 +94,8 @@ int cmd_A(int NL, tlink **HTteams)
   tlink *link = malloc(sizeof(struct node_team));
   if (1 != 1)
   {
-    {
-      printf("argumentos invalidos A.\n");
-      return 0;
-    }
+    printf("argumentos invalidos A.\n");
+    return 0;
   }
   else
   {
@@ -117,17 +107,13 @@ int cmd_A(int NL, tlink **HTteams)
     buffer0[10 - 1] = '\0';
     if (tLinkInsert(buffer0, link, HTteams) == 0)
     {
-      {
-        printf("%d Equipa existente.\n", NL);
-        return 0;
-      }
+      printf("%d Equipa existente.\n", NL);
+      return 0;
     }
     else
     {
-      {
-        link = tLinkInsert(buffer0, link, HTteams);
-        return 1;
-      }
+      link = tLinkInsert(buffer0, link, HTteams);
+      return 1;
     }
 
   }
@@ -141,9 +127,7 @@ void cmd_p(int NL, glink **HTgame)
   pGame *jogo = malloc(sizeof(struct game));
   if (1 != 1)
   {
-    {
-      err("Argumentos invalidos.");
-    }
+    err("Argumentos invalidos.");
   }
   else
   {
@@ -155,17 +139,13 @@ void cmd_p(int NL, glink **HTgame)
     buffer0[10 - 1] = '\0';
     if (search_game(HTgame, buffer0) == 0)
     {
-      {
-        printf("%d Jogo inexistente.\n", NL);
-      }
+      printf("%d Jogo inexistente.\n", NL);
     }
     else
     {
-      {
-        name = my_strdup(buffer0);
-        jogo = search_game(HTgame, name)->g;
-        printf("%d %s %s %s %d %d\n", NL, jogo->name, jogo->team1->name, jogo->team2->name, jogo->score1, jogo->score2);
-      }
+      name = my_strdup(buffer0);
+      jogo = search_game(HTgame, name)->g;
+      printf("%d %s %s %s %d %d\n", NL, jogo->name, jogo->team1->name, jogo->team2->name, jogo->score1, jogo->score2);
     }
 
   }
@@ -179,9 +159,7 @@ void cmd_P(int NL, tlink **HTteams)
   pTeam *equipa = malloc(sizeof(struct team));
   if (1 != 1)
   {
-    {
-      err("Argumentos invalidos");
-    }
+    err("Argumentos invalidos");
   }
   else
   {
@@ -193,17 +171,13 @@ void cmd_P(int NL, tlink **HTteams)
     buffer0[10 - 1] = '\0';
     if (search_team(HTteams, buffer0) == 0)
     {
-      {
-        printf("%d Equipa inexistente.\n", NL);
-      }
+      printf("%d Equipa inexistente.\n", NL);
     }
     else
     {
-      {
-        name = my_strdup(buffer0);
-        equipa = search_team(HTteams, name)->t;
-        printf("%d %s %d\n", NL, equipa->name, equipa->wins);
-      }
+      name = my_strdup(buffer0);
+      equipa = search_team(HTteams, name)->t;
+      printf("%d %s %d\n", NL, equipa->name, equipa->wins);
     }
 
   }
@@ -217,9 +191,7 @@ void cmd_l(glink **STgame, int NL, int counter_game)
   {
     if (STgame[i] != 0)
     {
-      {
-        printf("%d %s %s %s %d %d\n", NL, STgame[i]->g->name, STgame[i]->g->team1->name, STgame[i]->g->team2->name, STgame[i]->g->score1, STgame[i]->g->score2);
-      }
+      printf("%d %s %s %s %d %d\n", NL, STgame[i]->g->name, STgame[i]->g->team1->name, STgame[i]->g->team2->name, STgame[i]->g->score1, STgame[i]->g->score2);
     }
     else
     {
@@ -235,10 +207,8 @@ int cmd_r(int NL, glink **STgame, glink **HTgame, int counter_game)
   char buffer0[1024];
   if (1 != 1)
   {
-    {
-      err("Argumentos invalidos.");
-      return 0;
-    }
+    err("Argumentos invalidos.");
+    return 0;
   }
   else
   {
@@ -250,18 +220,14 @@ int cmd_r(int NL, glink **STgame, glink **HTgame, int counter_game)
     buffer0[10 - 1] = '\0';
     if (search_game(HTgame, buffer0) == 0)
     {
-      {
-        printf("%d Jogo inexistente.\n", NL);
-        return 0;
-      }
+      printf("%d Jogo inexistente.\n", NL);
+      return 0;
     }
     else
     {
-      {
-        STgame = gorderRemove(buffer0, STgame, counter_game);
-        glinkRemove(buffer0, HTgame);
-        return 1;
-      }
+      STgame = gorderRemove(buffer0, STgame, counter_game);
+      glinkRemove(buffer0, HTgame);
+      return 1;
     }
 
   }
@@ -275,9 +241,7 @@ void cmd_s(int NL, glink **HTgame, tlink **HTteams)
   int res2;
   if (3 != 3)
   {
-    {
-      err("Argumentos invalidos.");
-    }
+    err("Argumentos invalidos.");
   }
   else
   {
@@ -291,15 +255,11 @@ void cmd_s(int NL, glink **HTgame, tlink **HTteams)
     res2 = new_sym_var(sizeof(int) * 8);
     if (search_game(HTgame, buffer0) == 0)
     {
-      {
-        printf("%d Jogo inexistente.\n", NL);
-      }
+      printf("%d Jogo inexistente.\n", NL);
     }
     else
     {
-      {
-        gchangeScore(buffer0, res1, res2, HTgame, HTteams);
-      }
+      gchangeScore(buffer0, res1, res2, HTgame, HTteams);
     }
 
   }
@@ -312,84 +272,72 @@ pTeam **cmd_g(int NL, pTeam **STteams, int counter_team, tlink **HTteams)
   int soma = 0;
   if (teamisEmpty(HTteams))
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
+    if (counter_team == 1)
     {
-      if (counter_team == 1)
+      STteams = team_array(counter_team);
+    }
+    else
+    {
+      
+    }
+
+    STteams = search_el(STteams, HTteams, counter_team);
+    for (i = 0; i < counter_team; i++)
+    {
+      if (STteams[i] != 0)
       {
-        STteams = team_array(counter_team);
+        if (STteams[i]->wins > soma)
+        {
+          soma = STteams[i]->wins;
+        }
+        else
+        {
+          
+        }
+
       }
       else
       {
         
       }
 
-      STteams = search_el(STteams, HTteams, counter_team);
-      for (i = 0; i < counter_team; i++)
-      {
-        if (STteams[i] != 0)
-        {
-          {
-            if (STteams[i]->wins > soma)
-            {
-              soma = STteams[i]->wins;
-            }
-            else
-            {
-              
-            }
+    }
 
+    printf("%d Melhores %d\n", NL, soma);
+    STteams = abc_winners(STteams, counter_team);
+    for (i = 0; i < counter_team; i++)
+    {
+      if (STteams[i] != 0)
+      {
+        if (counter_team > 1)
+        {
+          if (STteams[i]->wins >= soma)
+          {
+            printf("%d * %s\n", NL, STteams[i]->name);
           }
+          else
+          {
+            
+          }
+
         }
         else
         {
-          
+          printf("%d * %s\n", NL, STteams[i]->name);
         }
 
       }
-
-      printf("%d Melhores %d\n", NL, soma);
-      STteams = abc_winners(STteams, counter_team);
-      for (i = 0; i < counter_team; i++)
+      else
       {
-        if (STteams[i] != 0)
-        {
-          {
-            if (counter_team > 1)
-            {
-              {
-                if (STteams[i]->wins >= soma)
-                {
-                  printf("%d * %s\n", NL, STteams[i]->name);
-                }
-                else
-                {
-                  
-                }
-
-              }
-            }
-            else
-            {
-              {
-                printf("%d * %s\n", NL, STteams[i]->name);
-              }
-            }
-
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
     }
+
   }
 
   return STteams;

@@ -34,15 +34,11 @@ Name *add_end_name(List_Names *l, char *j)
   new->prev = l->last;
   if (l->last)
   {
-    {
-      l->last->next = new;
-    }
+    l->last->next = new;
   }
   else
   {
-    {
-      l->head = new;
-    }
+    l->head = new;
   }
 
   l->last = new;
@@ -56,9 +52,7 @@ Name *search_name(List_Names *l, char *nome_j)
   {
     if (!strcmp(t->jogo, nome_j))
     {
-      {
-        return t;
-      }
+      return t;
     }
     else
     {
@@ -83,28 +77,20 @@ void remove_name(List_Names *l, char *jogo)
   t = search_name(l, jogo);
   if (t->prev == 0)
   {
-    {
-      l->head = t->next;
-    }
+    l->head = t->next;
   }
   else
   {
-    {
-      t->prev->next = t->next;
-    }
+    t->prev->next = t->next;
   }
 
   if (t->next == 0)
   {
-    {
-      l->last = t->prev;
-    }
+    l->last = t->prev;
   }
   else
   {
-    {
-      t->next->prev = t->prev;
-    }
+    t->next->prev = t->prev;
   }
 
   free_name(t);
@@ -145,25 +131,21 @@ void search_teams_wins(List_Teams *lst_eq, List_Names *l, int max)
   Team *eq;
   if (lst_eq)
   {
+    eq = lst_eq->head;
+    while (eq)
     {
-      eq = lst_eq->head;
-      while (eq)
+      if (eq->vitorias == max)
       {
-        if (eq->vitorias == max)
-        {
-          {
-            add_end_name(l, eq->nome_eq);
-          }
-        }
-        else
-        {
-          
-        }
-
-        eq = eq->next;
+        add_end_name(l, eq->nome_eq);
+      }
+      else
+      {
+        
       }
 
+      eq = eq->next;
     }
+
   }
   else
   {
@@ -189,9 +171,7 @@ int check_empty_ht_t(ht_teams l)
   {
     if (l[i]->head != 0)
     {
-      {
-        return 0;
-      }
+      return 0;
     }
     else
     {
@@ -236,17 +216,13 @@ void merge(List_Names *lst, int l, int m, int r)
   {
     if ((strcmp(aux[i], aux[j]) < 0) || (j < m))
     {
-      {
-        index_(lst, k)->jogo = aux[i];
-        i++;
-      }
+      index_(lst, k)->jogo = aux[i];
+      i++;
     }
     else
     {
-      {
-        index_(lst, k)->jogo = aux[j];
-        j--;
-      }
+      index_(lst, k)->jogo = aux[j];
+      j--;
     }
 
   }
@@ -258,12 +234,10 @@ void mergesort(List_Names *lst, int l, int r)
   int m;
   if (l < r)
   {
-    {
-      m = (r + l) / 2;
-      mergesort(lst, l, m);
-      mergesort(lst, m + 1, r);
-      merge(lst, l, m, r);
-    }
+    m = (r + l) / 2;
+    mergesort(lst, l, m);
+    mergesort(lst, m + 1, r);
+    merge(lst, l, m, r);
   }
   else
   {

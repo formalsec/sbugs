@@ -17,23 +17,19 @@ node *lista_insert(jogo *j, node *head)
   novo->next = 0;
   if (head == 0)
   {
-    {
-      head = novo;
-      return head;
-    }
+    head = novo;
+    return head;
   }
   else
   {
+    aux = head;
+    while (aux->next != 0)
     {
-      aux = head;
-      while (aux->next != 0)
-      {
-        aux = aux->next;
-      }
-
-      aux->next = novo;
-      return head;
+      aux = aux->next;
     }
+
+    aux->next = novo;
+    return head;
   }
 
 }
@@ -47,9 +43,7 @@ node *lista_lookup(char *nome, node *head)
     jogo_aux = aux->jogo;
     if (strcmp(jogo_aux->nome_jogo, nome) == 0)
     {
-      {
-        return aux;
-      }
+      return aux;
     }
     else
     {
@@ -65,74 +59,62 @@ node *lista_delete(char *nome, node *head)
 {
   if (head == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
+    node *aux;
+    node *aux_ant;
+    if (lista_lookup(nome, head) == 0)
     {
-      node *aux;
-      node *aux_ant;
-      if (lista_lookup(nome, head) == 0)
+      return head;
+    }
+    else
+    {
+      if ((head->next == 0) && (strcmp(head->jogo->nome_jogo, nome) == 0))
       {
-        {
-          return head;
-        }
+        free(head->jogo->equipa_1);
+        free(head->jogo->equipa_2);
+        free(head->jogo->nome_jogo);
+        free(head->jogo);
+        free(head);
+        return 0;
       }
       else
       {
-        if ((head->next == 0) && (strcmp(head->jogo->nome_jogo, nome) == 0))
+        if (strcmp(head->jogo->nome_jogo, nome) == 0)
         {
-          {
-            free(head->jogo->equipa_1);
-            free(head->jogo->equipa_2);
-            free(head->jogo->nome_jogo);
-            free(head->jogo);
-            free(head);
-            return 0;
-          }
+          aux = head->next;
+          free(head->jogo->equipa_1);
+          free(head->jogo->equipa_2);
+          free(head->jogo->nome_jogo);
+          free(head->jogo);
+          free(head);
+          return aux;
         }
         else
         {
-          if (strcmp(head->jogo->nome_jogo, nome) == 0)
+          aux = head;
+          aux_ant = 0;
+          while (strcmp(aux->jogo->nome_jogo, nome) != 0)
           {
-            {
-              aux = head->next;
-              free(head->jogo->equipa_1);
-              free(head->jogo->equipa_2);
-              free(head->jogo->nome_jogo);
-              free(head->jogo);
-              free(head);
-              return aux;
-            }
-          }
-          else
-          {
-            {
-              aux = head;
-              aux_ant = 0;
-              while (strcmp(aux->jogo->nome_jogo, nome) != 0)
-              {
-                aux_ant = aux;
-                aux = aux->next;
-              }
-
-              aux_ant->next = aux->next;
-              free(aux->jogo->equipa_1);
-              free(aux->jogo->equipa_2);
-              free(aux->jogo->nome_jogo);
-              free(aux->jogo);
-              free(aux);
-              return head;
-            }
+            aux_ant = aux;
+            aux = aux->next;
           }
 
+          aux_ant->next = aux->next;
+          free(aux->jogo->equipa_1);
+          free(aux->jogo->equipa_2);
+          free(aux->jogo->nome_jogo);
+          free(aux->jogo);
+          free(aux);
+          return head;
         }
 
       }
 
     }
+
   }
 
 }

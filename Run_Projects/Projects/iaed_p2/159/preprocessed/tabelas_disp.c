@@ -55,24 +55,18 @@ void ST_jg_delete(ST_jg T, Key value)
   {
     if (!strcmp(value, T->st[i]->nome))
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {
-      {
-        i = (i + 1) % T->M;
-      }
+      i = (i + 1) % T->M;
     }
 
   }
 
   if (T->st[i] == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -98,15 +92,11 @@ Jogo ST_jg_search(ST_jg T, Key value)
   {
     if (!strcmp(value, T->st[i]->nome))
     {
-      {
-        return T->st[i];
-      }
+      return T->st[i];
     }
     else
     {
-      {
-        i = (i + 1) % T->M;
-      }
+      i = (i + 1) % T->M;
     }
 
   }
@@ -149,15 +139,11 @@ Equipa ST_eq_search(ST_eq T, Key value)
   {
     if (!strcmp(value, T->st[i]->nome))
     {
-      {
-        return T->st[i];
-      }
+      return T->st[i];
     }
     else
     {
-      {
-        i = (i + 1) % T->M;
-      }
+      i = (i + 1) % T->M;
     }
 
   }
@@ -174,9 +160,7 @@ ST_jg expand_j(ST_jg Tj)
   {
     if (Tj->st[i] != 0)
     {
-      {
-        ST_jg_insert(new, Tj->st[i]);
-      }
+      ST_jg_insert(new, Tj->st[i]);
     }
     else
     {
@@ -199,9 +183,7 @@ ST_eq expand_e(ST_eq Te)
   {
     if (Te->st[i] != 0)
     {
-      {
-        ST_eq_insert(new, Te->st[i]);
-      }
+      ST_eq_insert(new, Te->st[i]);
     }
     else
     {

@@ -50,11 +50,9 @@ void d_a()
   b.identificador++;
   if (b.identificador < 10000)
   {
-    {
-      vetorprodutos[incrimentador] = b;
-      incrimentador++;
-      printf("Novo produto %d\n", vetorprodutos[incrimentador - 1].identificador);
-    }
+    vetorprodutos[incrimentador] = b;
+    incrimentador++;
+    printf("Novo produto %d\n", vetorprodutos[incrimentador - 1].identificador);
   }
   else
   {
@@ -76,15 +74,11 @@ void d_q()
   {
     if (vetorprodutos[i].identificador == a)
     {
-      {
-        vetorprodutos[i].qtd = vetorprodutos[i].qtd + c;
-      }
+      vetorprodutos[i].qtd = vetorprodutos[i].qtd + c;
     }
     else
     {
-      {
-        printf("Impossivel adicionar produto <idp> ao stock. Produto inexistente.\n");
-      }
+      printf("Impossivel adicionar produto <idp> ao stock. Produto inexistente.\n");
     }
 
     i++;
@@ -121,87 +115,67 @@ void d_A()
   {
     if (vetorencomenda[i].identificador == ide)
     {
+      int i = 0;
+      for (int i = 0; i < 10000; ++i)
       {
-        int i = 0;
-        for (int i = 0; i < 10000; ++i)
+        if (b.identificador == idp)
         {
-          if (b.identificador == idp)
+          if (vetorprodutos[i].peso <= 200)
           {
+            if (vetorprodutos[i].identificador == vetorencomenda[j].produto[i].idp_e)
             {
-              if (vetorprodutos[i].peso <= 200)
+              if (vetorprodutos[i].qtd >= qtd)
               {
-                {
-                  if (vetorprodutos[i].identificador == vetorencomenda[j].produto[i].idp_e)
-                  {
-                    {
-                      if (vetorprodutos[i].qtd >= qtd)
-                      {
-                        {
-                          vetorencomenda[j].produto[i].qtd_e += qtd;
-                        }
-                      }
-                      else
-                      {
-                        
-                      }
-
-                    }
-                  }
-                  else
-                  {
-                    if (vetorprodutos[i].qtd >= qtd)
-                    {
-                      {
-                        vetorprodutos[i].qtd -= qtd;
-                        vetorencomenda[j].produto[i].qtd_e = qtd;
-                        vetorencomenda[j].produto[i].idp_e = b.identificador;
-                        vetorencomenda[j].produto[i].preco = vetorprodutos[i].preco;
-                      }
-                    }
-                    else
-                    {
-                      if (vetorprodutos[i].qtd < qtd)
-                      {
-                        {
-                          printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
-                        }
-                      }
-                      else
-                      {
-                        
-                      }
-
-                    }
-
-                  }
-
-                }
+                vetorencomenda[j].produto[i].qtd_e += qtd;
               }
               else
               {
-                {
-                  printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200\n", idp, ide);
-                }
+                
               }
 
             }
+            else
+            {
+              if (vetorprodutos[i].qtd >= qtd)
+              {
+                vetorprodutos[i].qtd -= qtd;
+                vetorencomenda[j].produto[i].qtd_e = qtd;
+                vetorencomenda[j].produto[i].idp_e = b.identificador;
+                vetorencomenda[j].produto[i].preco = vetorprodutos[i].preco;
+              }
+              else
+              {
+                if (vetorprodutos[i].qtd < qtd)
+                {
+                  printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
+                }
+                else
+                {
+                  
+                }
+
+              }
+
+            }
+
           }
           else
           {
-            {
-              printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
-            }
+            printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200\n", idp, ide);
           }
 
         }
+        else
+        {
+          printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
+        }
 
       }
+
     }
     else
     {
-      {
-        printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
-      }
+      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
     }
 
   }
@@ -222,22 +196,11 @@ void d_r()
   {
     if (p.identificador == idp)
     {
+      if (vetorencomenda[i].produto[i].idp_e == idp)
       {
-        if (vetorencomenda[i].produto[i].idp_e == idp)
+        if ((vetorprodutos[i].qtd - vetorencomenda[i].produto[i].qtd_e) >= c)
         {
-          {
-            if ((vetorprodutos[i].qtd - vetorencomenda[i].produto[i].qtd_e) >= c)
-            {
-              {
-                vetorprodutos[i].qtd = vetorprodutos[i].qtd - c;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
+          vetorprodutos[i].qtd = vetorprodutos[i].qtd - c;
         }
         else
         {
@@ -245,12 +208,15 @@ void d_r()
         }
 
       }
+      else
+      {
+        
+      }
+
     }
     else
     {
-      {
-        printf("Impossivel remover stock do produto %d. Produto inexistente.\n", idp);
-      }
+      printf("Impossivel remover stock do produto %d. Produto inexistente.\n", idp);
     }
 
     i++;
@@ -270,31 +236,25 @@ void d_R()
   {
     if (p.identificador == ide)
     {
+      if (vetorencomenda[i].produto[i].idp_e == idp)
       {
-        if (vetorencomenda[i].produto[i].idp_e == idp)
+        vetorencomenda[i].produto[i].idp_e = 0;
+        vetorencomenda[i].identificador = 0;
+        vetorencomenda[i].produto[i].qtd_e = 0;
+      }
+      else
+      {
+        if (((vetorencomenda[i].produto[i].idp_e == idp) != 0) && (i == 4))
         {
-          {
-            vetorencomenda[i].produto[i].idp_e = 0;
-            vetorencomenda[i].identificador = 0;
-            vetorencomenda[i].produto[i].qtd_e = 0;
-          }
+          printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
         }
         else
         {
-          if (((vetorencomenda[i].produto[i].idp_e == idp) != 0) && (i == 4))
-          {
-            {
-              printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
+
     }
     else
     {
@@ -321,10 +281,8 @@ void d_C()
     {
       if (ide == p.identificador)
       {
-        {
-          total += vetorencomenda[i].produto[j].preco;
-          qtd += vetorencomenda[i].produto[j].qtd_e;
-        }
+        total += vetorencomenda[i].produto[j].preco;
+        qtd += vetorencomenda[i].produto[j].qtd_e;
       }
       else
       {
@@ -353,10 +311,8 @@ void d_p()
     {
       if ((idp == vetorprodutos[i].identificador) && (idp == vetorencomenda[i].produto[i].idp_e))
       {
-        {
-          vetorprodutos[j].preco = preco;
-          vetorencomenda[i].produto[j].preco = preco;
-        }
+        vetorprodutos[j].preco = preco;
+        vetorencomenda[i].produto[j].preco = preco;
       }
       else
       {
@@ -383,19 +339,15 @@ void d_E()
     {
       if (ide == vetorencomenda[i].identificador)
       {
+        if (idp == vetorencomenda[i].produto[i].idp_e)
         {
-          if (idp == vetorencomenda[i].produto[i].idp_e)
-          {
-            {
-              printf("%s %d:", vetorprodutos[j].descricao, vetorencomenda[i].produto[i].qtd_e);
-            }
-          }
-          else
-          {
-            
-          }
-
+          printf("%s %d:", vetorprodutos[j].descricao, vetorencomenda[i].produto[i].qtd_e);
         }
+        else
+        {
+          
+        }
+
       }
       else
       {
@@ -417,11 +369,9 @@ void d_m()
     {
       if (vetorencomenda[i].identificador > vetorencomenda[i + 1].identificador)
       {
-        {
-          vetor[i] = vetorencomenda[i].identificador;
-          vetorprodutos[i].identificador = vetorprodutos[i + 1].identificador;
-          vetorprodutos[i + 1].identificador = vetor[i];
-        }
+        vetor[i] = vetorencomenda[i].identificador;
+        vetorprodutos[i].identificador = vetorprodutos[i + 1].identificador;
+        vetorprodutos[i + 1].identificador = vetor[i];
       }
       else
       {
@@ -440,10 +390,8 @@ void d_m()
   {
     if (vetor[i] > maior)
     {
-      {
-        maior = vetor[i];
-        po = i;
-      }
+      maior = vetor[i];
+      po = i;
     }
     else
     {
@@ -464,11 +412,9 @@ void d_l()
     {
       if (vetorprodutos[i].preco > vetorprodutos[i + 1].preco)
       {
-        {
-          ordenado[i] = vetorprodutos[i];
-          vetorprodutos[i] = vetorprodutos[i + 1];
-          vetorprodutos[i + 1] = ordenado[i];
-        }
+        ordenado[i] = vetorprodutos[i];
+        vetorprodutos[i] = vetorprodutos[i + 1];
+        vetorprodutos[i + 1] = ordenado[i];
       }
       else
       {

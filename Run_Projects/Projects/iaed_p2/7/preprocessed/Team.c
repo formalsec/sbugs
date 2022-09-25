@@ -20,10 +20,8 @@ void free_team(Team t)
 {
   if (t)
   {
-    {
-      free(t->name);
-      free(t);
-    }
+    free(t->name);
+    free(t);
   }
   else
   {

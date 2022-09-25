@@ -22,49 +22,47 @@ int main()
   {
     if (comando != '\n')
     {
+      contador++;
+      switch (comando)
       {
-        contador++;
-        switch (comando)
-        {
-          case 'a':
-            a_adicionaNovoJogo(lst_jogo, hashtable_jogo, hashtable_equipa, contador);
-            break;
+        case 'a':
+          a_adicionaNovoJogo(lst_jogo, hashtable_jogo, hashtable_equipa, contador);
+          break;
 
-          case 'A':
-            head_equipa = A_adicionaNovaEquipa(head_equipa, hashtable_equipa, contador);
-            break;
+        case 'A':
+          head_equipa = A_adicionaNovaEquipa(head_equipa, hashtable_equipa, contador);
+          break;
 
-          case 'l':
-            l_listaTodosJogosPorOrdem(lst_jogo, contador);
-            break;
+        case 'l':
+          l_listaTodosJogosPorOrdem(lst_jogo, contador);
+          break;
 
-          case 'p':
-            p_procuraJogo(hashtable_jogo, contador);
-            break;
+        case 'p':
+          p_procuraJogo(hashtable_jogo, contador);
+          break;
 
-          case 'P':
-            P_procuraEquipa(hashtable_equipa, contador);
-            break;
+        case 'P':
+          P_procuraEquipa(hashtable_equipa, contador);
+          break;
 
-          case 'r':
-            r_apagaJogo(lst_jogo, hashtable_jogo, hashtable_equipa, contador);
-            break;
+        case 'r':
+          r_apagaJogo(lst_jogo, hashtable_jogo, hashtable_equipa, contador);
+          break;
 
-          case 's':
-            s_alteraPontuacao(hashtable_jogo, hashtable_equipa, contador);
-            break;
+        case 's':
+          s_alteraPontuacao(hashtable_jogo, hashtable_equipa, contador);
+          break;
 
-          case 'g':
-            g_encontraEquipasMaisVitorias(head_equipa, contador);
-            break;
+        case 'g':
+          g_encontraEquipasMaisVitorias(head_equipa, contador);
+          break;
 
-          default:
-            printf("Input invalido\n");
-            break;
-
-        }
+        default:
+          printf("Input invalido\n");
+          break;
 
       }
+
     }
     else
     {

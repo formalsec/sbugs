@@ -38,18 +38,14 @@ void adiciona_e(table_e **heads, Equipa *eq, int M)
   int key = hash(eq->nome, M);
   if (heads[key] == 0)
   {
-    {
-      heads[key] = malloc(sizeof(table_e));
-      heads[key]->equipas = eq;
-    }
+    heads[key] = malloc(sizeof(table_e));
+    heads[key]->equipas = eq;
   }
   else
   {
-    {
-      x = heads[key]->equipas;
-      heads[key]->equipas = eq;
-      eq->next = x;
-    }
+    x = heads[key]->equipas;
+    heads[key]->equipas = eq;
+    eq->next = x;
   }
 
 }
@@ -61,9 +57,7 @@ Equipa *encontra(Equipa *head, char *nome)
   {
     if (strcmp(equipa->nome, nome) == 0)
     {
-      {
-        return equipa;
-      }
+      return equipa;
     }
     else
     {
@@ -81,18 +75,16 @@ Equipa *procura_equipa_hash(table_e **heads, Chave nome, int M)
   int key = hash(nome, M);
   if (heads[key] != 0)
   {
+    x = heads[key]->equipas;
+    if ((x = encontra(x, nome)) == 0)
     {
-      x = heads[key]->equipas;
-      if ((x = encontra(x, nome)) == 0)
-      {
-        return 0;
-      }
-      else
-      {
-        return x;
-      }
-
+      return 0;
     }
+    else
+    {
+      return x;
+    }
+
   }
   else
   {
@@ -112,32 +104,28 @@ int mais_ganhos(table_e **heads, int size_hash, int *count)
   {
     if (heads[i] != 0)
     {
+      for (x = heads[i]->equipas; x != 0; x = x->next)
       {
-        for (x = heads[i]->equipas; x != 0; x = x->next)
+        if ((ganhos = x->ganhos) == max)
         {
-          if ((ganhos = x->ganhos) == max)
+          *count = (*count) + 1;
+        }
+        else
+        {
+          if (ganhos > max)
           {
-            *count = (*count) + 1;
+            max = ganhos;
+            *count = 1;
           }
           else
           {
-            if (ganhos > max)
-            {
-              {
-                max = ganhos;
-                *count = 1;
-              }
-            }
-            else
-            {
-              
-            }
-
+            
           }
 
         }
 
       }
+
     }
     else
     {
@@ -158,15 +146,13 @@ void free_hash_equipas(table_e **heads, int M)
   {
     if (heads[i] != 0)
     {
+      head = heads[i]->equipas;
+      for (x = head; head != 0; x = head)
       {
-        head = heads[i]->equipas;
-        for (x = head; head != 0; x = head)
-        {
-          head = head->next;
-          free_equipa(x);
-        }
-
+        head = head->next;
+        free_equipa(x);
       }
+
     }
     else
     {

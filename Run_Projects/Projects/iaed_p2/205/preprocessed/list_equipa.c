@@ -27,9 +27,7 @@ link_equipa list_equipa_insert_end(link_equipa head, Equipa *equipa)
   link_equipa x;
   if (head == 0)
   {
-    {
-      return list_equipa_init(equipa);
-    }
+    return list_equipa_init(equipa);
   }
   else
   {
@@ -53,9 +51,7 @@ link_equipa list_equipa_lookup(link_equipa head, Equipa *equipa)
   {
     if (strcmp(t->equipa->nome, equipa->nome) == 0)
     {
-      {
-        return t;
-      }
+      return t;
     }
     else
     {
@@ -85,25 +81,19 @@ link_equipa list_equipa_delete(link_equipa head, Equipa *equipa)
   {
     if (strcmp(t->equipa->nome, equipa->nome) == 0)
     {
+      if (t == head)
       {
-        if (t == head)
-        {
-          {
-            head = t->next;
-          }
-        }
-        else
-        {
-          {
-            prev->next = t->next;
-          }
-        }
-
-        free(t->equipa->nome);
-        free(t->equipa);
-        free(t);
-        break;
+        head = t->next;
       }
+      else
+      {
+        prev->next = t->next;
+      }
+
+      free(t->equipa->nome);
+      free(t->equipa);
+      free(t);
+      break;
     }
     else
     {
@@ -123,9 +113,7 @@ link_equipa list_equipa_insert_sorted(link_equipa head, Equipa *equipa)
   int cmp2;
   if (head == 0)
   {
-    {
-      return list_equipa_init(equipa);
-    }
+    return list_equipa_init(equipa);
   }
   else
   {
@@ -135,9 +123,7 @@ link_equipa list_equipa_insert_sorted(link_equipa head, Equipa *equipa)
   x = head;
   if (strcmp(x->equipa->nome, equipa->nome) > 0)
   {
-    {
-      return list_equipa_insert_begin(head, equipa);
-    }
+    return list_equipa_insert_begin(head, equipa);
   }
   else
   {
@@ -150,12 +136,10 @@ link_equipa list_equipa_insert_sorted(link_equipa head, Equipa *equipa)
     cmp2 = strcmp(x->next->equipa->nome, equipa->nome);
     if ((cmp1 <= 0) && (cmp2 >= 0))
     {
-      {
-        new = list_equipa_init(equipa);
-        new->next = x->next;
-        x->next = new;
-        return head;
-      }
+      new = list_equipa_init(equipa);
+      new->next = x->next;
+      x->next = new;
+      return head;
     }
     else
     {

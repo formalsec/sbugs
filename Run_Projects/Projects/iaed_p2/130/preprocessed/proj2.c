@@ -110,42 +110,36 @@ void Adiciona_Jogo(Elink *Eheads, Jlink *Jheads, Q Todos_Jogos, uint *Cont_Ln)
     }
     else
     {
+      pJogo j;
+      j = (pJogo) malloc(sizeof(struct Jogo));
+      j->score1 = score1;
+      j->score2 = score2;
+      j->nome = (char *) malloc((sizeof(char)) * (strlen(nome) + 1));
+      strcpy(j->nome, nome);
+      j->equipa1 = (char *) malloc((sizeof(char)) * (strlen(equipa1) + 1));
+      strcpy(j->equipa1, equipa1);
+      j->equipa2 = (char *) malloc((sizeof(char)) * (strlen(equipa2) + 1));
+      strcpy(j->equipa2, equipa2);
+      J_STinsert(Todos_Jogos, Jheads, j);
+      if (score1 > score2)
       {
-        pJogo j;
-        j = (pJogo) malloc(sizeof(struct Jogo));
-        j->score1 = score1;
-        j->score2 = score2;
-        j->nome = (char *) malloc((sizeof(char)) * (strlen(nome) + 1));
-        strcpy(j->nome, nome);
-        j->equipa1 = (char *) malloc((sizeof(char)) * (strlen(equipa1) + 1));
-        strcpy(j->equipa1, equipa1);
-        j->equipa2 = (char *) malloc((sizeof(char)) * (strlen(equipa2) + 1));
-        strcpy(j->equipa2, equipa2);
-        J_STinsert(Todos_Jogos, Jheads, j);
-        if (score1 > score2)
+        pEquipa e = E_STSearch(Eheads, equipa1);
+        e->vit++;
+      }
+      else
+      {
+        if (score1 < score2)
         {
-          {
-            pEquipa e = E_STSearch(Eheads, equipa1);
-            e->vit++;
-          }
+          pEquipa e = E_STSearch(Eheads, equipa2);
+          e->vit++;
         }
         else
         {
-          if (score1 < score2)
-          {
-            {
-              pEquipa e = E_STSearch(Eheads, equipa2);
-              e->vit++;
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
+
     }
 
   }
@@ -185,10 +179,8 @@ void Procura_Jogo(Jlink *Jheads, uint *Cont_Ln)
   }
   else
   {
-    {
-      printf("%u %s %s %s ", *Cont_Ln, ptrJogo->nome, ptrJogo->equipa1, ptrJogo->equipa2);
-      printf("%u %u\n", ptrJogo->score1, ptrJogo->score2);
-    }
+    printf("%u %s %s %s ", *Cont_Ln, ptrJogo->nome, ptrJogo->equipa1, ptrJogo->equipa2);
+    printf("%u %u\n", ptrJogo->score1, ptrJogo->score2);
   }
 
   (*Cont_Ln)++;
@@ -209,15 +201,13 @@ void Adiciona_Equipa(Elink *Eheads, uint *Cont_Ln, uint *Cont_Eq)
   }
   else
   {
-    {
-      pEquipa e;
-      e = (pEquipa) malloc(sizeof(struct Equipa));
-      e->nome = (char *) malloc((sizeof(char)) * (strlen(buffer) + 1));
-      strcpy(e->nome, buffer);
-      e->vit = 0;
-      E_STinsert(Eheads, e);
-      (*Cont_Eq)++;
-    }
+    pEquipa e;
+    e = (pEquipa) malloc(sizeof(struct Equipa));
+    e->nome = (char *) malloc((sizeof(char)) * (strlen(buffer) + 1));
+    strcpy(e->nome, buffer);
+    e->vit = 0;
+    E_STinsert(Eheads, e);
+    (*Cont_Eq)++;
   }
 
   (*Cont_Ln)++;
@@ -263,34 +253,28 @@ void Remove_Jogo(Elink *Eheads, Jlink *Jheads, Q Todos_Jogos, uint *Cont_Ln)
   }
   else
   {
+    uint score1 = ptrJogo->score1;
+    uint score2 = ptrJogo->score2;
+    if (score1 > score2)
     {
-      uint score1 = ptrJogo->score1;
-      uint score2 = ptrJogo->score2;
-      if (score1 > score2)
+      pEquipa e = E_STSearch(Eheads, ptrJogo->equipa1);
+      e->vit--;
+    }
+    else
+    {
+      if (score1 < score2)
       {
-        {
-          pEquipa e = E_STSearch(Eheads, ptrJogo->equipa1);
-          e->vit--;
-        }
+        pEquipa e = E_STSearch(Eheads, ptrJogo->equipa2);
+        e->vit--;
       }
       else
       {
-        if (score1 < score2)
-        {
-          {
-            pEquipa e = E_STSearch(Eheads, ptrJogo->equipa2);
-            e->vit--;
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      J_STdelete(Jheads, Todos_Jogos, ptrJogo);
     }
+
+    J_STdelete(Jheads, Todos_Jogos, ptrJogo);
   }
 
   (*Cont_Ln)++;
@@ -317,56 +301,49 @@ void Altera_Score(Elink *Eheads, Jlink *Jheads, uint *Cont_Ln)
   }
   else
   {
+    uint ant_sc1 = ptrJogo->score1;
+    uint ant_sc2 = ptrJogo->score2;
+    pEquipa e1 = E_STSearch(Eheads, ptrJogo->equipa1);
+    pEquipa e2 = E_STSearch(Eheads, ptrJogo->equipa2);
+    if ((ant_sc1 > ant_sc2) && (new_sc1 == new_sc2))
     {
-      uint ant_sc1 = ptrJogo->score1;
-      uint ant_sc2 = ptrJogo->score2;
-      pEquipa e1 = E_STSearch(Eheads, ptrJogo->equipa1);
-      pEquipa e2 = E_STSearch(Eheads, ptrJogo->equipa2);
-      if ((ant_sc1 > ant_sc2) && (new_sc1 == new_sc2))
+      e1->vit--;
+    }
+    else
+    {
+      if ((ant_sc1 < ant_sc2) && (new_sc1 == new_sc2))
       {
-        e1->vit--;
+        e2->vit--;
       }
       else
       {
-        if ((ant_sc1 < ant_sc2) && (new_sc1 == new_sc2))
+        if ((ant_sc1 == ant_sc2) && (new_sc1 > new_sc2))
         {
-          e2->vit--;
+          e1->vit++;
         }
         else
         {
-          if ((ant_sc1 == ant_sc2) && (new_sc1 > new_sc2))
+          if ((ant_sc1 == ant_sc2) && (new_sc1 < new_sc2))
           {
-            e1->vit++;
+            e2->vit++;
           }
           else
           {
-            if ((ant_sc1 == ant_sc2) && (new_sc1 < new_sc2))
+            if ((ant_sc1 > ant_sc2) && (new_sc1 < new_sc2))
             {
+              e1->vit--;
               e2->vit++;
             }
             else
             {
-              if ((ant_sc1 > ant_sc2) && (new_sc1 < new_sc2))
+              if ((ant_sc1 < ant_sc2) && (new_sc1 > new_sc2))
               {
-                {
-                  e1->vit--;
-                  e2->vit++;
-                }
+                e1->vit++;
+                e2->vit--;
               }
               else
               {
-                if ((ant_sc1 < ant_sc2) && (new_sc1 > new_sc2))
-                {
-                  {
-                    e1->vit++;
-                    e2->vit--;
-                  }
-                }
-                else
-                {
-                  
-                }
-
+                
               }
 
             }
@@ -377,9 +354,10 @@ void Altera_Score(Elink *Eheads, Jlink *Jheads, uint *Cont_Ln)
 
       }
 
-      ptrJogo->score1 = new_sc1;
-      ptrJogo->score2 = new_sc2;
     }
+
+    ptrJogo->score1 = new_sc1;
+    ptrJogo->score2 = new_sc2;
   }
 
   (*Cont_Ln)++;
@@ -389,61 +367,57 @@ void Mostra_Melhores_Equipas(Elink *Eheads, uint *Cont_Ln, uint Cont_Eq)
 {
   if (Cont_Eq)
   {
+    int i;
+    int m_vit = 0;
+    int Lim_equipas = 0;
+    char **equipas = (char **) malloc((sizeof(char *)) * Cont_Eq);
+    for (i = 0; i < 1637; i++)
     {
-      int i;
-      int m_vit = 0;
-      int Lim_equipas = 0;
-      char **equipas = (char **) malloc((sizeof(char *)) * Cont_Eq);
-      for (i = 0; i < 1637; i++)
+      Elink ptr = Eheads[i];
+      for (; ptr; ptr = ptr->next)
       {
-        Elink ptr = Eheads[i];
-        for (; ptr; ptr = ptr->next)
+        if (ptr->e->vit > m_vit)
         {
-          if (ptr->e->vit > m_vit)
-          {
-            m_vit = ptr->e->vit;
-          }
-          else
-          {
-            
-          }
-
+          m_vit = ptr->e->vit;
+        }
+        else
+        {
+          
         }
 
       }
 
-      for (i = 0; i < 1637; i++)
-      {
-        Elink ptr = Eheads[i];
-        for (; ptr; ptr = ptr->next)
-        {
-          if (ptr->e->vit == m_vit)
-          {
-            {
-              equipas[Lim_equipas] = (char *) malloc((sizeof(char)) * (strlen(ptr->e->nome) + 1));
-              strcpy(equipas[Lim_equipas], ptr->e->nome);
-              Lim_equipas++;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-      }
-
-      qsort(equipas, Lim_equipas, sizeof(char *), Compara_strcmp);
-      printf("%u Melhores %u\n", *Cont_Ln, m_vit);
-      for (i = 0; i < Lim_equipas; i++)
-      {
-        printf("%u * %s\n", *Cont_Ln, equipas[i]);
-        free(equipas[i]);
-      }
-
-      free(equipas);
     }
+
+    for (i = 0; i < 1637; i++)
+    {
+      Elink ptr = Eheads[i];
+      for (; ptr; ptr = ptr->next)
+      {
+        if (ptr->e->vit == m_vit)
+        {
+          equipas[Lim_equipas] = (char *) malloc((sizeof(char)) * (strlen(ptr->e->nome) + 1));
+          strcpy(equipas[Lim_equipas], ptr->e->nome);
+          Lim_equipas++;
+        }
+        else
+        {
+          
+        }
+
+      }
+
+    }
+
+    qsort(equipas, Lim_equipas, sizeof(char *), Compara_strcmp);
+    printf("%u Melhores %u\n", *Cont_Ln, m_vit);
+    for (i = 0; i < Lim_equipas; i++)
+    {
+      printf("%u * %s\n", *Cont_Ln, equipas[i]);
+      free(equipas[i]);
+    }
+
+    free(equipas);
   }
   else
   {

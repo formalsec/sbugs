@@ -27,10 +27,8 @@ void adiciona_equipa(struct Equipas *equipas, int comandos_total)
   {
     if (strcmp(nome, equipa->nome) == 0)
     {
-      {
-        printf("%d Equipa existente.\n", comandos_total);
-        return;
-      }
+      printf("%d Equipa existente.\n", comandos_total);
+      return;
     }
     else
     {
@@ -39,9 +37,7 @@ void adiciona_equipa(struct Equipas *equipas, int comandos_total)
 
     if (equipa->next_equipa == 0)
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {
@@ -64,15 +60,11 @@ void adiciona_equipa(struct Equipas *equipas, int comandos_total)
   equipas->nequipas += 1;
   if (equipa != 0)
   {
-    {
-      equipa->next_equipa = nova_equipa;
-    }
+    equipa->next_equipa = nova_equipa;
   }
   else
   {
-    {
-      equipas->gavetas[hash % 1024] = nova_equipa;
-    }
+    equipas->gavetas[hash % 1024] = nova_equipa;
   }
 
 }
@@ -94,10 +86,8 @@ void procura_equipa(struct Equipas *equipas, int comandos_total)
   {
     if (strcmp(nome, equipa->nome) == 0)
     {
-      {
-        printf("%d %s %d\n", comandos_total, equipa->nome, equipa->wins);
-        return;
-      }
+      printf("%d %s %d\n", comandos_total, equipa->nome, equipa->wins);
+      return;
     }
     else
     {
@@ -114,9 +104,7 @@ int comparar_equipas(const void *equipa1, const void *equipa2)
 {
   if ((*((const struct Equipa **) equipa1))->wins < (*((const struct Equipa **) equipa2))->wins)
   {
-    {
-      return 1;
-    }
+    return 1;
   }
   else
   {
@@ -125,9 +113,7 @@ int comparar_equipas(const void *equipa1, const void *equipa2)
 
   if ((*((const struct Equipa **) equipa1))->wins > (*((const struct Equipa **) equipa2))->wins)
   {
-    {
-      return -1;
-    }
+    return -1;
   }
   else
   {
@@ -143,9 +129,7 @@ void melhores_equipas(struct Equipas *equipas, int comandos_total)
   int n;
   if (equipas->ordem == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -159,9 +143,7 @@ void melhores_equipas(struct Equipas *equipas, int comandos_total)
   {
     if (equipas->ordem[n]->wins < wins)
     {
-      {
-        return;
-      }
+      return;
     }
     else
     {

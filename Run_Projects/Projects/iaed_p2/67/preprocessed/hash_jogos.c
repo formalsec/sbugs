@@ -43,9 +43,7 @@ link_jogo procura_lista_jogo(link_jogo head, char *nome)
   {
     if (strcmp(t->jogo->nome, nome) == 0)
     {
-      {
-        return t;
-      }
+      return t;
     }
     else
     {
@@ -77,16 +75,14 @@ link_jogo remove_jogo_lista(link_jogo head, char *nome)
 
   if (strcmp(head->jogo->nome, nome) == 0)
   {
-    {
-      link_jogo t;
-      t = head->next;
-      free(head->jogo->nome);
-      free(head->jogo->equipa1);
-      free(head->jogo->equipa2);
-      free(head->jogo);
-      free(head);
-      return t;
-    }
+    link_jogo t;
+    t = head->next;
+    free(head->jogo->nome);
+    free(head->jogo->equipa1);
+    free(head->jogo->equipa2);
+    free(head->jogo);
+    free(head);
+    return t;
   }
   else
   {
@@ -105,16 +101,14 @@ link_jogo remove_lista(link_jogo head)
   }
   else
   {
-    {
-      link_jogo t;
-      t = head->next;
-      free(head->jogo->nome);
-      free(head->jogo->equipa1);
-      free(head->jogo->equipa2);
-      free(head->jogo);
-      free(head);
-      return t;
-    }
+    link_jogo t;
+    t = head->next;
+    free(head->jogo->nome);
+    free(head->jogo->equipa1);
+    free(head->jogo->equipa2);
+    free(head->jogo);
+    free(head);
+    return t;
   }
 
   head->next = remove_lista(head->next);
@@ -171,9 +165,7 @@ link_jogo insere_lista_jogo_2(link_jogo head, link_jogo jogo)
   link_jogo x;
   if (head == 0)
   {
-    {
-      return novo_jogo(jogo->jogo->nome, jogo->jogo->equipa1, jogo->jogo->equipa2, jogo->jogo->score1, jogo->jogo->score2);
-    }
+    return novo_jogo(jogo->jogo->nome, jogo->jogo->equipa1, jogo->jogo->equipa2, jogo->jogo->score1, jogo->jogo->score2);
   }
   else
   {

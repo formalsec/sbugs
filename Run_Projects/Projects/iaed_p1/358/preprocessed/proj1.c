@@ -67,36 +67,16 @@ void adicionaEncomenda(Produto Stock[10000], encomenda Lista[500], int id_encome
         }
         else
         {
+          len = Lista[ide].n_produtos;
+          for (i = 0; i < len; i++)
           {
-            len = Lista[ide].n_produtos;
-            for (i = 0; i < len; i++)
+            a = Lista[ide].prod[i];
+            if (a.id_produto == idp)
             {
-              a = Lista[ide].prod[i];
-              if (a.id_produto == idp)
-              {
-                {
-                  Lista[ide].prod[i].quantidade += qtd;
-                  Lista[ide].peso += Stock[idp].peso * qtd;
-                  Stock[idp].quantidade -= qtd;
-                  add = 1;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-            if (add == 0)
-            {
-              {
-                Lista[ide].prod[len] = Stock[idp];
-                Lista[ide].prod[len].quantidade = qtd;
-                Stock[idp].quantidade -= qtd;
-                Lista[ide].peso += Stock[idp].peso * qtd;
-                Lista[ide].n_produtos += 1;
-              }
+              Lista[ide].prod[i].quantidade += qtd;
+              Lista[ide].peso += Stock[idp].peso * qtd;
+              Stock[idp].quantidade -= qtd;
+              add = 1;
             }
             else
             {
@@ -104,6 +84,20 @@ void adicionaEncomenda(Produto Stock[10000], encomenda Lista[500], int id_encome
             }
 
           }
+
+          if (add == 0)
+          {
+            Lista[ide].prod[len] = Stock[idp];
+            Lista[ide].prod[len].quantidade = qtd;
+            Stock[idp].quantidade -= qtd;
+            Lista[ide].peso += Stock[idp].peso * qtd;
+            Lista[ide].n_produtos += 1;
+          }
+          else
+          {
+            
+          }
+
         }
 
       }
@@ -135,29 +129,25 @@ void removeEncomenda(Produto Stock[10000], encomenda Lista[500], int id_encomend
     }
     else
     {
+      for (i = 0; i < Lista[ide].n_produtos; i++)
       {
-        for (i = 0; i < Lista[ide].n_produtos; i++)
+        a = Lista[ide].prod[i];
+        if (a.id_produto == idp)
         {
-          a = Lista[ide].prod[i];
-          if (a.id_produto == idp)
-          {
-            {
-              Lista[ide].peso -= Lista[ide].prod[i].quantidade * Lista[ide].prod[i].peso;
-              Stock[idp].quantidade += Lista[ide].prod[i].quantidade;
-              temp = Lista[ide].prod[i];
-              Lista[ide].prod[i] = Lista[ide].prod[Lista[ide].n_produtos - 1];
-              Lista[ide].prod[Lista[ide].n_produtos - 1] = temp;
-              Lista[ide].n_produtos -= 1;
-            }
-          }
-          else
-          {
-            
-          }
-
+          Lista[ide].peso -= Lista[ide].prod[i].quantidade * Lista[ide].prod[i].peso;
+          Stock[idp].quantidade += Lista[ide].prod[i].quantidade;
+          temp = Lista[ide].prod[i];
+          Lista[ide].prod[i] = Lista[ide].prod[Lista[ide].n_produtos - 1];
+          Lista[ide].prod[Lista[ide].n_produtos - 1] = temp;
+          Lista[ide].n_produtos -= 1;
+        }
+        else
+        {
+          
         }
 
       }
+
     }
 
   }
@@ -197,9 +187,7 @@ void addStock(Produto Stock[10000], int id_produto)
   }
   else
   {
-    {
-      printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idp);
-    }
+    printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idp);
   }
 
 }
@@ -222,9 +210,7 @@ void removeStock(Produto Stock[10000], int id_produto)
     }
     else
     {
-      {
-        Stock[idp].quantidade -= qtd;
-      }
+      Stock[idp].quantidade -= qtd;
     }
 
   }
@@ -243,14 +229,12 @@ void custoEncomenda(encomenda Lista[500], int id_encomenda)
   }
   else
   {
+    for (i = 0; i < Lista[ide].n_produtos; i++)
     {
-      for (i = 0; i < Lista[ide].n_produtos; i++)
-      {
-        custo += Lista[ide].prod[i].preco * Lista[ide].prod[i].quantidade;
-      }
-
-      printf("Custo da encomenda %d %d.\n", ide, custo);
+      custo += Lista[ide].prod[i].preco * Lista[ide].prod[i].quantidade;
     }
+
+    printf("Custo da encomenda %d %d.\n", ide, custo);
   }
 
 }
@@ -269,28 +253,24 @@ void alteraPreco(Produto Stock[10000], encomenda Lista[500], int id_encomenda, i
   }
   else
   {
+    Stock[idp].preco = novoPreco;
+    for (i = 0; i < id_encomenda; i++)
     {
-      Stock[idp].preco = novoPreco;
-      for (i = 0; i < id_encomenda; i++)
+      for (e = 0; e < Lista[i].n_produtos; e++)
       {
-        for (e = 0; e < Lista[i].n_produtos; e++)
+        if (Lista[i].prod[e].id_produto == idp)
         {
-          if (Lista[i].prod[e].id_produto == idp)
-          {
-            {
-              Lista[i].prod[e].preco = novoPreco;
-            }
-          }
-          else
-          {
-            
-          }
-
+          Lista[i].prod[e].preco = novoPreco;
+        }
+        else
+        {
+          
         }
 
       }
 
     }
+
   }
 
 }
@@ -315,28 +295,12 @@ void produtoEncomenda(Produto Stock[10000], encomenda Lista[500], int id_encomen
     }
     else
     {
+      for (i = 0; i < Lista[ide].n_produtos; i++)
       {
-        for (i = 0; i < Lista[ide].n_produtos; i++)
+        if (Lista[ide].prod[i].id_produto == idp)
         {
-          if (Lista[ide].prod[i].id_produto == idp)
-          {
-            {
-              printf("%s %d.\n", Lista[ide].prod[i].descricao, Lista[ide].prod[i].quantidade);
-              encontrou = 1;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-        if (encontrou == 0)
-        {
-          {
-            printf("%s 0.\n", Stock[idp].descricao);
-          }
+          printf("%s %d.\n", Lista[ide].prod[i].descricao, Lista[ide].prod[i].quantidade);
+          encontrou = 1;
         }
         else
         {
@@ -344,6 +308,16 @@ void produtoEncomenda(Produto Stock[10000], encomenda Lista[500], int id_encomen
         }
 
       }
+
+      if (encontrou == 0)
+      {
+        printf("%s 0.\n", Stock[idp].descricao);
+      }
+      else
+      {
+        
+      }
+
     }
 
   }
@@ -364,37 +338,33 @@ void ocorreProduto(encomenda Lista[500], int id_encomenda, int id_produto)
   }
   else
   {
+    for (i = 0; i < id_encomenda; i++)
     {
-      for (i = 0; i < id_encomenda; i++)
+      for (e = 0; e < Lista[i].n_produtos; e++)
       {
-        for (e = 0; e < Lista[i].n_produtos; e++)
+        if ((Lista[i].prod[e].id_produto == idp) && (Lista[i].prod[e].quantidade > qtd))
         {
-          if ((Lista[i].prod[e].id_produto == idp) && (Lista[i].prod[e].quantidade > qtd))
-          {
-            {
-              qtd = Lista[i].prod[e].quantidade;
-              maior_ide = Lista[i].id_encomenda;
-            }
-          }
-          else
-          {
-            
-          }
-
+          qtd = Lista[i].prod[e].quantidade;
+          maior_ide = Lista[i].id_encomenda;
+        }
+        else
+        {
+          
         }
 
       }
 
-      if (maior_ide >= 0)
-      {
-        printf("Maximo produto %d %d %d.\n", idp, maior_ide, qtd);
-      }
-      else
-      {
-        
-      }
-
     }
+
+    if (maior_ide >= 0)
+    {
+      printf("Maximo produto %d %d %d.\n", idp, maior_ide, qtd);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -421,17 +391,13 @@ void mergeStock(Produto arr[10000], int l, int m, int r)
   {
     if (L[i].preco <= R[j].preco)
     {
-      {
-        arr[k] = L[i];
-        i++;
-      }
+      arr[k] = L[i];
+      i++;
     }
     else
     {
-      {
-        arr[k] = R[j];
-        j++;
-      }
+      arr[k] = R[j];
+      j++;
     }
 
     k++;
@@ -457,12 +423,10 @@ void mergeSortStock(Produto arr[10000], int l, int r)
 {
   if (l < r)
   {
-    {
-      int m = l + ((r - l) / 2);
-      mergeSortStock(arr, l, m);
-      mergeSortStock(arr, m + 1, r);
-      mergeStock(arr, l, m, r);
-    }
+    int m = l + ((r - l) / 2);
+    mergeSortStock(arr, l, m);
+    mergeSortStock(arr, m + 1, r);
+    mergeStock(arr, l, m, r);
   }
   else
   {
@@ -508,19 +472,15 @@ int maior(char um[20], char dois[20])
   {
     if (um[i] > dois[i])
     {
-      {
-        maior = 1;
-        break;
-      }
+      maior = 1;
+      break;
     }
     else
     {
       if (um[i] < dois[i])
       {
-        {
-          maior = 2;
-          break;
-        }
+        maior = 2;
+        break;
       }
       else
       {
@@ -556,17 +516,13 @@ void mergeEncomenda(Produto arr[], int l, int m, int r)
   {
     if (maior(L[i].descricao, R[j].descricao) == 2)
     {
-      {
-        arr[k] = L[i];
-        i++;
-      }
+      arr[k] = L[i];
+      i++;
     }
     else
     {
-      {
-        arr[k] = R[j];
-        j++;
-      }
+      arr[k] = R[j];
+      j++;
     }
 
     k++;
@@ -592,12 +548,10 @@ void mergeSortEncomenda(Produto arr[], int l, int r)
 {
   if (l < r)
   {
-    {
-      int m = l + ((r - l) / 2);
-      mergeSortEncomenda(arr, l, m);
-      mergeSortEncomenda(arr, m + 1, r);
-      mergeEncomenda(arr, l, m, r);
-    }
+    int m = l + ((r - l) / 2);
+    mergeSortEncomenda(arr, l, m);
+    mergeSortEncomenda(arr, m + 1, r);
+    mergeEncomenda(arr, l, m, r);
   }
   else
   {
@@ -618,16 +572,14 @@ void listEncomenda(encomenda Lista[500], int id_encomenda)
   }
   else
   {
+    enc = Lista[ide];
+    mergeSortEncomenda(enc.prod, 0, enc.n_produtos - 1);
+    printf("Encomenda %d\n", ide);
+    for (i = 0; i < enc.n_produtos; i++)
     {
-      enc = Lista[ide];
-      mergeSortEncomenda(enc.prod, 0, enc.n_produtos - 1);
-      printf("Encomenda %d\n", ide);
-      for (i = 0; i < enc.n_produtos; i++)
-      {
-        printf("* %s %d %d\n", enc.prod[i].descricao, enc.prod[i].preco, enc.prod[i].quantidade);
-      }
-
+      printf("* %s %d %d\n", enc.prod[i].descricao, enc.prod[i].preco, enc.prod[i].quantidade);
     }
+
   }
 
 }
@@ -640,99 +592,75 @@ int menu(Produto Stock[10000], encomenda Lista[500], int id_produto, int id_enco
     opcao = new_sym_var(sizeof(char) * 8);
     if (opcao == 'a')
     {
-      {
-        Stock[id_produto] = leProduto(id_produto);
-        id_produto++;
-      }
+      Stock[id_produto] = leProduto(id_produto);
+      id_produto++;
     }
     else
     {
       if (opcao == 'l')
       {
-        {
-          listStock(Stock, id_produto);
-        }
+        listStock(Stock, id_produto);
       }
       else
       {
         if (opcao == 'q')
         {
-          {
-            addStock(Stock, id_produto);
-          }
+          addStock(Stock, id_produto);
         }
         else
         {
           if (opcao == 'N')
           {
-            {
-              Lista[id_encomenda] = criaEncomenda(id_encomenda);
-              id_encomenda++;
-            }
+            Lista[id_encomenda] = criaEncomenda(id_encomenda);
+            id_encomenda++;
           }
           else
           {
             if (opcao == 'A')
             {
-              {
-                adicionaEncomenda(Stock, Lista, id_encomenda, id_produto);
-              }
+              adicionaEncomenda(Stock, Lista, id_encomenda, id_produto);
             }
             else
             {
               if (opcao == 'r')
               {
-                {
-                  removeStock(Stock, id_produto);
-                }
+                removeStock(Stock, id_produto);
               }
               else
               {
                 if (opcao == 'R')
                 {
-                  {
-                    removeEncomenda(Stock, Lista, id_encomenda, id_produto);
-                  }
+                  removeEncomenda(Stock, Lista, id_encomenda, id_produto);
                 }
                 else
                 {
                   if (opcao == 'L')
                   {
-                    {
-                      listEncomenda(Lista, id_encomenda);
-                    }
+                    listEncomenda(Lista, id_encomenda);
                   }
                   else
                   {
                     if (opcao == 'C')
                     {
-                      {
-                        custoEncomenda(Lista, id_encomenda);
-                      }
+                      custoEncomenda(Lista, id_encomenda);
                     }
                     else
                     {
                       if (opcao == 'p')
                       {
-                        {
-                          alteraPreco(Stock, Lista, id_encomenda, id_produto);
-                        }
+                        alteraPreco(Stock, Lista, id_encomenda, id_produto);
                       }
                       else
                       {
                         if (opcao == 'E')
                         {
-                          {
-                            produtoEncomenda(Stock, Lista, id_encomenda, id_produto);
-                          }
+                          produtoEncomenda(Stock, Lista, id_encomenda, id_produto);
                         }
                         else
                         {
                           if (opcao == 'm')
                           {
-                            {
-                              ocorreProduto(Lista, id_encomenda, id_produto);
-                            }
+                            ocorreProduto(Lista, id_encomenda, id_produto);
                           }
                           else
                           {

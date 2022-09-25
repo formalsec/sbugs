@@ -171,20 +171,18 @@ void comando_a(produto produtos[])
 {
   if (conta_produtos < 10000)
   {
+    for (int produtos_index = 0; produtos_index < 10; produtos_index++)
     {
-      for (int produtos_index = 0; produtos_index < 10; produtos_index++)
-      {
-        produtos[conta_produtos].descricao[produtos_index] = new_sym_var(sizeof(char) * 8);
-      }
-
-      produtos[conta_produtos].descricao[10 - 1] = '\0';
-      produtos[conta_produtos].preco = new_sym_var(sizeof(int) * 8);
-      produtos[conta_produtos].peso = new_sym_var(sizeof(int) * 8);
-      produtos[conta_produtos].quantidade = new_sym_var(sizeof(int) * 8);
-      produtos[conta_produtos].identificador = conta_produtos;
-      printf("Novo produto %d.\n", conta_produtos);
-      conta_produtos++;
+      produtos[conta_produtos].descricao[produtos_index] = new_sym_var(sizeof(char) * 8);
     }
+
+    produtos[conta_produtos].descricao[10 - 1] = '\0';
+    produtos[conta_produtos].preco = new_sym_var(sizeof(int) * 8);
+    produtos[conta_produtos].peso = new_sym_var(sizeof(int) * 8);
+    produtos[conta_produtos].quantidade = new_sym_var(sizeof(int) * 8);
+    produtos[conta_produtos].identificador = conta_produtos;
+    printf("Novo produto %d.\n", conta_produtos);
+    conta_produtos++;
   }
   else
   {
@@ -215,14 +213,12 @@ void comando_N(encomenda encomendas[])
   int i;
   if (conta_encomendas < 500)
   {
-    {
-      encomendas[conta_encomendas].identificador = conta_encomendas;
-      for (i = 0; i < 200; i++)
-        encomendas[conta_encomendas].produtos[i].identificador = -1;
+    encomendas[conta_encomendas].identificador = conta_encomendas;
+    for (i = 0; i < 200; i++)
+      encomendas[conta_encomendas].produtos[i].identificador = -1;
 
-      printf("Nova encomenda %d.\n", conta_encomendas);
-      conta_encomendas++;
-    }
+    printf("Nova encomenda %d.\n", conta_encomendas);
+    conta_encomendas++;
   }
   else
   {
@@ -265,24 +261,20 @@ void comando_A(produto produtos[], encomenda encomendas[])
         }
         else
         {
+          i = indice_produto_encomenda(encomendas, ide, idp);
+          if (i != (-1))
           {
-            i = indice_produto_encomenda(encomendas, ide, idp);
-            if (i != (-1))
-            {
-              encomendas[ide].produtos[i].quantidade += qtd;
-            }
-            else
-            {
-              {
-                i = indice_produto_encomenda(encomendas, ide, -1);
-                encomendas[ide].produtos[i].identificador = idp;
-                encomendas[ide].produtos[i].quantidade = qtd;
-              }
-            }
-
-            encomendas[ide].peso = novo_peso;
-            produtos[idp].quantidade -= qtd;
+            encomendas[ide].produtos[i].quantidade += qtd;
           }
+          else
+          {
+            i = indice_produto_encomenda(encomendas, ide, -1);
+            encomendas[ide].produtos[i].identificador = idp;
+            encomendas[ide].produtos[i].quantidade = qtd;
+          }
+
+          encomendas[ide].peso = novo_peso;
+          produtos[idp].quantidade -= qtd;
         }
 
       }
@@ -337,23 +329,19 @@ void comando_R(produto produtos[], encomenda encomendas[])
     }
     else
     {
+      i = indice_produto_encomenda(encomendas, ide, idp);
+      if (i != (-1))
       {
-        i = indice_produto_encomenda(encomendas, ide, idp);
-        if (i != (-1))
-        {
-          {
-            encomendas[ide].peso -= encomendas[ide].produtos[i].quantidade * produtos[idp].peso;
-            produtos[idp].quantidade += encomendas[ide].produtos[i].quantidade;
-            encomendas[ide].produtos[i].quantidade = 0;
-            encomendas[ide].produtos[i].identificador = -1;
-          }
-        }
-        else
-        {
-          
-        }
-
+        encomendas[ide].peso -= encomendas[ide].produtos[i].quantidade * produtos[idp].peso;
+        produtos[idp].quantidade += encomendas[ide].produtos[i].quantidade;
+        encomendas[ide].produtos[i].quantidade = 0;
+        encomendas[ide].produtos[i].identificador = -1;
       }
+      else
+      {
+        
+      }
+
     }
 
   }
@@ -373,22 +361,20 @@ void comando_C(produto produtos[], encomenda encomendas[])
   }
   else
   {
+    for (i = 0; i < 200; i++)
     {
-      for (i = 0; i < 200; i++)
+      if ((idp = encomendas[ide].produtos[i].identificador) != (-1))
       {
-        if ((idp = encomendas[ide].produtos[i].identificador) != (-1))
-        {
-          total += produtos[idp].preco * encomendas[ide].produtos[i].quantidade;
-        }
-        else
-        {
-          
-        }
-
+        total += produtos[idp].preco * encomendas[ide].produtos[i].quantidade;
+      }
+      else
+      {
+        
       }
 
-      printf("Custo da encomenda %d %d.\n", ide, total);
     }
+
+    printf("Custo da encomenda %d %d.\n", ide, total);
   }
 
 }
@@ -430,19 +416,17 @@ void comando_E(produto produtos[], encomenda encomendas[])
     }
     else
     {
+      i = indice_produto_encomenda(encomendas, ide, idp);
+      if (i == (-1))
       {
-        i = indice_produto_encomenda(encomendas, ide, idp);
-        if (i == (-1))
-        {
-          quantidade = 0;
-        }
-        else
-        {
-          quantidade = encomendas[ide].produtos[i].quantidade;
-        }
-
-        printf("%s %d.\n", produtos[idp].descricao, quantidade);
+        quantidade = 0;
       }
+      else
+      {
+        quantidade = encomendas[ide].produtos[i].quantidade;
+      }
+
+      printf("%s %d.\n", produtos[idp].descricao, quantidade);
     }
 
   }
@@ -465,32 +449,13 @@ void comando_m(encomenda encomendas[])
   {
     if (conta_encomendas > 0)
     {
+      for (ide = 0; ide < conta_encomendas; ide++)
+        if ((i = indice_produto_encomenda(encomendas, ide, idp)) != (-1))
       {
-        for (ide = 0; ide < conta_encomendas; ide++)
-          if ((i = indice_produto_encomenda(encomendas, ide, idp)) != (-1))
+        if (encomendas[ide].produtos[i].quantidade > max_qtd)
         {
-          if (encomendas[ide].produtos[i].quantidade > max_qtd)
-          {
-            {
-              max_qtd = encomendas[ide].produtos[i].quantidade;
-              max_ide = ide;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-        else
-        {
-          
-        }
-
-
-        if (max_qtd > 0)
-        {
-          printf("Maximo produto %d %d %d.\n", idp, max_ide, max_qtd);
+          max_qtd = encomendas[ide].produtos[i].quantidade;
+          max_ide = ide;
         }
         else
         {
@@ -498,6 +463,21 @@ void comando_m(encomenda encomendas[])
         }
 
       }
+      else
+      {
+        
+      }
+
+
+      if (max_qtd > 0)
+      {
+        printf("Maximo produto %d %d %d.\n", idp, max_ide, max_qtd);
+      }
+      else
+      {
+        
+      }
+
     }
     else
     {
@@ -584,35 +564,31 @@ void comando_L(produto produtos[], encomenda encomendas[])
   }
   else
   {
+    conta_prods_encom = 0;
+    for (i = 0; i < 200; i++)
     {
-      conta_prods_encom = 0;
-      for (i = 0; i < 200; i++)
+      if ((idp = encomendas[ide].produtos[i].identificador) != (-1))
       {
-        if ((idp = encomendas[ide].produtos[i].identificador) != (-1))
-        {
-          {
-            prods_encom[conta_prods_encom] = produtos[idp];
-            conta_prods_encom++;
-          }
-        }
-        else
-        {
-          
-        }
-
+        prods_encom[conta_prods_encom] = produtos[idp];
+        conta_prods_encom++;
       }
-
-      mergesort_descricao(prods_encom, 0, conta_prods_encom - 1);
-      printf("Encomenda %d\n", ide);
-      for (i = 0; i < conta_prods_encom; i++)
+      else
       {
-        idp = prods_encom[i].identificador;
-        j = indice_produto_encomenda(encomendas, ide, idp);
-        qtd = encomendas[ide].produtos[j].quantidade;
-        printf("* %s %d %d\n", prods_encom[i].descricao, prods_encom[i].preco, qtd);
+        
       }
 
     }
+
+    mergesort_descricao(prods_encom, 0, conta_prods_encom - 1);
+    printf("Encomenda %d\n", ide);
+    for (i = 0; i < conta_prods_encom; i++)
+    {
+      idp = prods_encom[i].identificador;
+      j = indice_produto_encomenda(encomendas, ide, idp);
+      qtd = encomendas[ide].produtos[j].quantidade;
+      printf("* %s %d %d\n", prods_encom[i].descricao, prods_encom[i].preco, qtd);
+    }
+
   }
 
 }

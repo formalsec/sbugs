@@ -47,52 +47,42 @@ void adicionaNovoJogo(pJogo *tabJ, pEquipa *tabE, int maxJ, int maxE, int nComan
   equipa2 = EQUIPAseach(nomeEq2, tabE, maxE);
   if (jogo != 0)
   {
-    {
-      printf("%d Jogo existente.\n", nComandos);
-    }
+    printf("%d Jogo existente.\n", nComandos);
   }
   else
   {
     if ((equipa1 == 0) || (equipa2 == 0))
     {
-      {
-        printf("%d Equipa inexistente.\n", nComandos);
-      }
+      printf("%d Equipa inexistente.\n", nComandos);
     }
     else
     {
+      novoJogo->nome = strdup(nome);
+      novoJogo->equipa1 = strdup(nomeEq1);
+      novoJogo->equipa2 = strdup(nomeEq2);
+      novoJogo->score1 = score1;
+      novoJogo->score2 = score2;
+      novoJogo->novoJogo = 0;
+      novoJ = JOGOappend(list, novoJogo);
+      novoJogo->novoJogo = novoJ;
+      JOGOinsert(novoJogo, tabJ, maxJ);
+      if (score1 > score2)
       {
-        novoJogo->nome = strdup(nome);
-        novoJogo->equipa1 = strdup(nomeEq1);
-        novoJogo->equipa2 = strdup(nomeEq2);
-        novoJogo->score1 = score1;
-        novoJogo->score2 = score2;
-        novoJogo->novoJogo = 0;
-        novoJ = JOGOappend(list, novoJogo);
-        novoJogo->novoJogo = novoJ;
-        JOGOinsert(novoJogo, tabJ, maxJ);
-        if (score1 > score2)
+        equipa1->contVencidos++;
+      }
+      else
+      {
+        if (score1 < score2)
         {
-          {
-            equipa1->contVencidos++;
-          }
+          equipa2->contVencidos++;
         }
         else
         {
-          if (score1 < score2)
-          {
-            {
-              equipa2->contVencidos++;
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
+
     }
 
   }
@@ -112,15 +102,11 @@ void adicionaNovaEquipa(pEquipa *tab, int max, int nComandos)
   equipa = EQUIPAseach(nome, tab, max);
   if (equipa != 0)
   {
-    {
-      printf("%d Equipa existente.\n", nComandos);
-    }
+    printf("%d Equipa existente.\n", nComandos);
   }
   else
   {
-    {
-      EQUIPAinsert(nome, 0, tab, max);
-    }
+    EQUIPAinsert(nome, 0, tab, max);
   }
 
 }
@@ -143,15 +129,11 @@ void procuraUmJogo(pJogo *tabJ, int max, int nComandos)
   jogo = JOGOsearch(nome, tabJ, max);
   if (jogo == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", nComandos);
-    }
+    printf("%d Jogo inexistente.\n", nComandos);
   }
   else
   {
-    {
-      printf("%d %s %s %s %d %d\n", nComandos, nome, jogo->equipa1, jogo->equipa2, jogo->score1, jogo->score2);
-    }
+    printf("%d %s %s %s %d %d\n", nComandos, nome, jogo->equipa1, jogo->equipa2, jogo->score1, jogo->score2);
   }
 
 }
@@ -169,15 +151,11 @@ void procuraUmaEquipa(pEquipa *tab, int max, int nComandos)
   equipa = EQUIPAseach(nome, tab, max);
   if (equipa == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", nComandos);
-    }
+    printf("%d Equipa inexistente.\n", nComandos);
   }
   else
   {
-    {
-      printf("%d %s %d\n", nComandos, nome, equipa->contVencidos);
-    }
+    printf("%d %s %d\n", nComandos, nome, equipa->contVencidos);
   }
 
 }
@@ -195,37 +173,29 @@ void apagaUmJogo(pJogo *tabJ, pEquipa *tabE, int maxJ, int maxE, DLinkedList lis
   jogo = JOGOsearch(nome, tabJ, maxJ);
   if (jogo == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", nComandos);
-    }
+    printf("%d Jogo inexistente.\n", nComandos);
   }
   else
   {
+    if (jogo->score1 > jogo->score2)
     {
-      if (jogo->score1 > jogo->score2)
+      EQUIPAseach(jogo->equipa1, tabE, maxE)->contVencidos--;
+    }
+    else
+    {
+      if (jogo->score1 < jogo->score2)
       {
-        {
-          EQUIPAseach(jogo->equipa1, tabE, maxE)->contVencidos--;
-        }
+        EQUIPAseach(jogo->equipa2, tabE, maxE)->contVencidos--;
       }
       else
       {
-        if (jogo->score1 < jogo->score2)
-        {
-          {
-            EQUIPAseach(jogo->equipa2, tabE, maxE)->contVencidos--;
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      JOGOQdelete(jogo->novoJogo, list);
-      JOGOdelete(nome, tabJ, maxJ);
     }
+
+    JOGOQdelete(jogo->novoJogo, list);
+    JOGOdelete(nome, tabJ, maxJ);
   }
 
 }
@@ -249,68 +219,51 @@ void alteraScoreDeUmJogo(pJogo *tabJ, pEquipa *tabE, int maxJ, int maxE, int nCo
   jogo = JOGOsearch(nome, tabJ, maxJ);
   if (jogo == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", nComandos);
-    }
+    printf("%d Jogo inexistente.\n", nComandos);
   }
   else
   {
+    equipa1 = EQUIPAseach(jogo->equipa1, tabE, maxE);
+    equipa2 = EQUIPAseach(jogo->equipa2, tabE, maxE);
+    if ((jogo->score1 > jogo->score2) && (score1 < score2))
     {
-      equipa1 = EQUIPAseach(jogo->equipa1, tabE, maxE);
-      equipa2 = EQUIPAseach(jogo->equipa2, tabE, maxE);
-      if ((jogo->score1 > jogo->score2) && (score1 < score2))
+      equipa1->contVencidos--;
+      equipa2->contVencidos++;
+    }
+    else
+    {
+      if ((jogo->score1 < jogo->score2) && (score1 > score2))
       {
-        {
-          equipa1->contVencidos--;
-          equipa2->contVencidos++;
-        }
+        equipa1->contVencidos++;
+        equipa2->contVencidos--;
       }
       else
       {
-        if ((jogo->score1 < jogo->score2) && (score1 > score2))
+        if ((jogo->score1 == jogo->score2) && (score1 > score2))
         {
-          {
-            equipa1->contVencidos++;
-            equipa2->contVencidos--;
-          }
+          equipa1->contVencidos++;
         }
         else
         {
-          if ((jogo->score1 == jogo->score2) && (score1 > score2))
+          if ((jogo->score1 == jogo->score2) && (score1 < score2))
           {
-            {
-              equipa1->contVencidos++;
-            }
+            equipa2->contVencidos++;
           }
           else
           {
-            if ((jogo->score1 == jogo->score2) && (score1 < score2))
+            if ((jogo->score1 > jogo->score2) && (score1 == score2))
             {
-              {
-                equipa2->contVencidos++;
-              }
+              equipa1->contVencidos--;
             }
             else
             {
-              if ((jogo->score1 > jogo->score2) && (score1 == score2))
+              if ((jogo->score1 < jogo->score2) && (score1 == score2))
               {
-                {
-                  equipa1->contVencidos--;
-                }
+                equipa2->contVencidos--;
               }
               else
               {
-                if ((jogo->score1 < jogo->score2) && (score1 == score2))
-                {
-                  {
-                    equipa2->contVencidos--;
-                  }
-                }
-                else
-                {
-                  
-                }
-
+                
               }
 
             }
@@ -321,11 +274,12 @@ void alteraScoreDeUmJogo(pJogo *tabJ, pEquipa *tabE, int maxJ, int maxE, int nCo
 
       }
 
-      jogo->novoJogo->jogo->score1 = score1;
-      jogo->novoJogo->jogo->score1 = score2;
-      jogo->score1 = score1;
-      jogo->score2 = score2;
     }
+
+    jogo->novoJogo->jogo->score1 = score1;
+    jogo->novoJogo->jogo->score1 = score2;
+    jogo->score1 = score1;
+    jogo->score2 = score2;
   }
 
 }

@@ -102,10 +102,8 @@ void new_team(NodeTeam **headsT, int mod, unsigned long int NL)
   errorCheck = hash_search_team(headsT, nameTeam, mod);
   if (errorCheck != 0)
   {
-    {
-      printf("%lu Equipa existente.\n", NL);
-      return;
-    }
+    printf("%lu Equipa existente.\n", NL);
+    return;
   }
   else
   {
@@ -129,10 +127,8 @@ void search_team_in_hash(NodeTeam **headsT, int mod, unsigned long int NL)
   teamHash = hash_search_team(headsT, nameTeam, mod);
   if (teamHash == 0)
   {
-    {
-      printf("%lu Equipa inexistente.\n", NL);
-      return;
-    }
+    printf("%lu Equipa inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -176,10 +172,8 @@ NodeGame *new_game(NodeGame **headsG, NodeGame *headRefs, NodeTeam **headsT, int
   errorCheck = hash_search_game(headsG, nameGame, mod);
   if (errorCheck != 0)
   {
-    {
-      printf("%lu Jogo existente.\n", NL);
-      return headRefs;
-    }
+    printf("%lu Jogo existente.\n", NL);
+    return headRefs;
   }
   else
   {
@@ -190,10 +184,8 @@ NodeGame *new_game(NodeGame **headsG, NodeGame *headRefs, NodeTeam **headsT, int
   team2 = hash_search_team(headsT, nameTeam2, mod);
   if ((team1 == 0) || (team2 == 0))
   {
-    {
-      printf("%lu Equipa inexistente.\n", NL);
-      return headRefs;
-    }
+    printf("%lu Equipa inexistente.\n", NL);
+    return headRefs;
   }
   else
   {
@@ -202,17 +194,13 @@ NodeGame *new_game(NodeGame **headsG, NodeGame *headRefs, NodeTeam **headsT, int
 
   if (score1 > score2)
   {
-    {
-      team1->victories++;
-    }
+    team1->victories++;
   }
   else
   {
     if (score2 > score1)
     {
-      {
-        team2->victories++;
-      }
+      team2->victories++;
     }
     else
     {
@@ -240,10 +228,8 @@ void search_in_games_hash(NodeGame **headsG, int mod, unsigned long int NL)
   gameHash = hash_search_game(headsG, nameGame, mod);
   if (gameHash == 0)
   {
-    {
-      printf("%lu Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%lu Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -274,10 +260,8 @@ void change_score(NodeGame **headsG, NodeTeam **headsT, int mod, unsigned long i
   game = hash_search_game(headsG, nameGame, mod);
   if (game == 0)
   {
-    {
-      printf("%lu Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%lu Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -290,51 +274,39 @@ void change_score(NodeGame **headsG, NodeTeam **headsT, int mod, unsigned long i
   team2 = hash_search_team(headsT, nameTeam2, mod);
   if ((score1 > score2) && (game->score2 > game->score1))
   {
-    {
-      team1->victories++;
-      team2->victories--;
-    }
+    team1->victories++;
+    team2->victories--;
   }
   else
   {
     if ((score2 > score1) && (game->score1 > game->score2))
     {
-      {
-        team1->victories--;
-        team2->victories++;
-      }
+      team1->victories--;
+      team2->victories++;
     }
     else
     {
       if ((score1 > score2) && (game->score1 == game->score2))
       {
-        {
-          team1->victories++;
-        }
+        team1->victories++;
       }
       else
       {
         if ((score2 > score1) && (game->score1 == game->score2))
         {
-          {
-            team2->victories++;
-          }
+          team2->victories++;
         }
         else
         {
           if ((score1 == score2) && (game->score1 > game->score2))
           {
-            {
-              team1->victories--;
-            }
+            team1->victories--;
           }
           else
           {
             if ((score1 == score2) && (game->score2 > game->score1))
             {
-              {
-                team2->victories--;
-              }
+              team2->victories--;
             }
             else
             {
@@ -358,9 +330,7 @@ void print_games(NodeGame *head, unsigned long int NL)
 {
   if (head == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -387,10 +357,8 @@ NodeGame *remove_game(NodeGame **headsGames, NodeGame *headRefs, NodeTeam **head
   gameHash = hash_search_game(headsGames, nameGame, mod);
   if (gameHash == 0)
   {
-    {
-      printf("%lu Jogo inexistente.\n", NL);
-      return headRefs;
-    }
+    printf("%lu Jogo inexistente.\n", NL);
+    return headRefs;
   }
   else
   {
@@ -401,19 +369,15 @@ NodeGame *remove_game(NodeGame **headsGames, NodeGame *headRefs, NodeTeam **head
   score2 = gameHash->score2;
   if (score1 > score2)
   {
-    {
-      teamAux = hash_search_team(headsTeams, gameHash->team1, mod);
-      teamAux->victories--;
-    }
+    teamAux = hash_search_team(headsTeams, gameHash->team1, mod);
+    teamAux->victories--;
   }
   else
   {
     if (score2 > score1)
     {
-      {
-        teamAux = hash_search_team(headsTeams, gameHash->team2, mod);
-        teamAux->victories--;
-      }
+      teamAux = hash_search_team(headsTeams, gameHash->team2, mod);
+      teamAux->victories--;
     }
     else
     {
@@ -442,10 +406,8 @@ void more_victories(NodeTeam **headsT, int mod, unsigned long int NL)
     {
       if (currentMoreWins < current->team->victories)
       {
-        {
-          currentMoreWins = current->team->victories;
-          numTeams = 0;
-        }
+        currentMoreWins = current->team->victories;
+        numTeams = 0;
       }
       else
       {
@@ -454,9 +416,7 @@ void more_victories(NodeTeam **headsT, int mod, unsigned long int NL)
 
       if (currentMoreWins == current->team->victories)
       {
-        {
-          numTeams++;
-        }
+        numTeams++;
       }
       else
       {
@@ -470,9 +430,7 @@ void more_victories(NodeTeam **headsT, int mod, unsigned long int NL)
 
   if (numTeams == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -488,10 +446,8 @@ void more_victories(NodeTeam **headsT, int mod, unsigned long int NL)
     {
       if (currentMoreWins == current->team->victories)
       {
-        {
-          teamsMoreWins[j] = current->team->name;
-          j++;
-        }
+        teamsMoreWins[j] = current->team->name;
+        j++;
       }
       else
       {

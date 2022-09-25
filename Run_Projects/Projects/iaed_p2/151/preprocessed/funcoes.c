@@ -51,10 +51,8 @@ void adiciona_jogo(item_hash_jg *hash_jogos, linkeq *hash_equipas, lista lista_j
   score2 = new_sym_var(sizeof(int) * 8);
   if (encontra_jogo(hash_jogos, nome) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", linha);
-      return;
-    }
+    printf("%d Jogo existente.\n", linha);
+    return;
   }
   else
   {
@@ -63,10 +61,8 @@ void adiciona_jogo(item_hash_jg *hash_jogos, linkeq *hash_equipas, lista lista_j
 
   if ((encontra_equipa(hash_equipas, equipa1) == 0) || (encontra_equipa(hash_equipas, equipa2) == 0))
   {
-    {
-      printf("%d Equipa inexistente.\n", linha);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", linha);
+    return;
   }
   else
   {
@@ -128,10 +124,8 @@ void procura_jogo(item_hash_jg *hash_jogos, int linha)
   aux = encontra_jogo(hash_jogos, nome);
   if (aux != 0)
   {
-    {
-      jogo_procurado = aux->pno->jogo;
-      printf("%d %s %s %s %d %d\n", linha, jogo_procurado->nome, jogo_procurado->equipa1, jogo_procurado->equipa2, jogo_procurado->score1, jogo_procurado->score2);
-    }
+    jogo_procurado = aux->pno->jogo;
+    printf("%d %s %s %s %d %d\n", linha, jogo_procurado->nome, jogo_procurado->equipa1, jogo_procurado->equipa2, jogo_procurado->score1, jogo_procurado->score2);
   }
   else
   {
@@ -156,10 +150,8 @@ void apaga_jogo(item_hash_jg *hash_jogos, linkeq *hash_equipas, lista lista, int
   key = hashfunc(nome);
   if (aux == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", linha);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", linha);
+    return;
   }
   else
   {
@@ -186,36 +178,30 @@ void apaga_jogo(item_hash_jg *hash_jogos, linkeq *hash_equipas, lista lista, int
 
   if (aux->prev == 0)
   {
+    remove_lista(aux->pno, lista);
+    if (aux->next != 0)
     {
-      remove_lista(aux->pno, lista);
-      if (aux->next != 0)
-      {
-        hash_jogos[key]->next->prev = 0;
-      }
-      else
-      {
-        
-      }
-
-      hash_jogos[key] = hash_jogos[key]->next;
+      hash_jogos[key]->next->prev = 0;
     }
+    else
+    {
+      
+    }
+
+    hash_jogos[key] = hash_jogos[key]->next;
   }
   else
   {
     if (aux->next == 0)
     {
-      {
-        remove_lista(aux->pno, lista);
-        aux->prev->next = 0;
-      }
+      remove_lista(aux->pno, lista);
+      aux->prev->next = 0;
     }
     else
     {
-      {
-        remove_lista(aux->pno, lista);
-        aux->prev->next = aux->next;
-        aux->next->prev = aux->prev;
-      }
+      remove_lista(aux->pno, lista);
+      aux->prev->next = aux->next;
+      aux->next->prev = aux->prev;
     }
 
   }
@@ -244,10 +230,8 @@ void altera_score(item_hash_jg *hash_jogos, linkeq *hash_equipas, int linha)
   aux = encontra_jogo(hash_jogos, nome_jogo);
   if (aux == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", linha);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", linha);
+    return;
   }
   else
   {
@@ -262,79 +246,69 @@ void altera_score(item_hash_jg *hash_jogos, linkeq *hash_equipas, int linha)
   resultado_novo = obtem_resultado(score1, score2);
   if (resultado_antigo == 0)
   {
+    if (resultado_novo == 1)
     {
-      if (resultado_novo == 1)
+      encontra_equipa(hash_equipas, equipa1)->pequipa->vitorias++;
+    }
+    else
+    {
+      if (resultado_novo == 2)
       {
-        encontra_equipa(hash_equipas, equipa1)->pequipa->vitorias++;
+        encontra_equipa(hash_equipas, equipa2)->pequipa->vitorias++;
       }
       else
       {
-        if (resultado_novo == 2)
-        {
-          encontra_equipa(hash_equipas, equipa2)->pequipa->vitorias++;
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
     }
+
   }
   else
   {
     if (resultado_antigo == 1)
     {
+      if (resultado_novo == 2)
       {
-        if (resultado_novo == 2)
-        {
-          {
-            encontra_equipa(hash_equipas, equipa2)->pequipa->vitorias++;
-            encontra_equipa(hash_equipas, equipa1)->pequipa->vitorias--;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if (resultado_novo == 0)
-        {
-          encontra_equipa(hash_equipas, equipa1)->pequipa->vitorias--;
-        }
-        else
-        {
-          
-        }
-
+        encontra_equipa(hash_equipas, equipa2)->pequipa->vitorias++;
+        encontra_equipa(hash_equipas, equipa1)->pequipa->vitorias--;
       }
+      else
+      {
+        
+      }
+
+      if (resultado_novo == 0)
+      {
+        encontra_equipa(hash_equipas, equipa1)->pequipa->vitorias--;
+      }
+      else
+      {
+        
+      }
+
     }
     else
     {
+      if (resultado_novo == 1)
       {
-        if (resultado_novo == 1)
-        {
-          {
-            encontra_equipa(hash_equipas, equipa1)->pequipa->vitorias++;
-            encontra_equipa(hash_equipas, equipa2)->pequipa->vitorias--;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if (resultado_novo == 0)
-        {
-          encontra_equipa(hash_equipas, equipa2)->pequipa->vitorias--;
-        }
-        else
-        {
-          
-        }
-
+        encontra_equipa(hash_equipas, equipa1)->pequipa->vitorias++;
+        encontra_equipa(hash_equipas, equipa2)->pequipa->vitorias--;
       }
+      else
+      {
+        
+      }
+
+      if (resultado_novo == 0)
+      {
+        encontra_equipa(hash_equipas, equipa2)->pequipa->vitorias--;
+      }
+      else
+      {
+        
+      }
+
     }
 
   }
@@ -355,10 +329,8 @@ void adiciona_equipa(linkeq *hash_equipas, int linha)
   key = hashfunc(nome);
   if (encontra_equipa(hash_equipas, nome) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", linha);
-      return;
-    }
+    printf("%d Equipa existente.\n", linha);
+    return;
   }
   else
   {
@@ -385,10 +357,8 @@ void procura_equipa(linkeq *hash_equipas, int linha)
   aux = encontra_equipa(hash_equipas, nome);
   if (aux != 0)
   {
-    {
-      printf("%d %s %d\n", linha, nome, aux->pequipa->vitorias);
-      return;
-    }
+    printf("%d %s %d\n", linha, nome, aux->pequipa->vitorias);
+    return;
   }
   else
   {
@@ -412,22 +382,18 @@ void lista_melhores_equipas(linkeq *hash_equipas, int linha)
     {
       if (aux->pequipa->vitorias > max_vitorias)
       {
-        {
-          max_vitorias = aux->pequipa->vitorias;
-          tamanho_lista = 1;
-          l = realloc(l, sizeof(equipa *));
-          l[0] = aux->pequipa;
-        }
+        max_vitorias = aux->pequipa->vitorias;
+        tamanho_lista = 1;
+        l = realloc(l, sizeof(equipa *));
+        l[0] = aux->pequipa;
       }
       else
       {
         if (aux->pequipa->vitorias == max_vitorias)
         {
-          {
-            tamanho_lista++;
-            l = realloc(l, tamanho_lista * (sizeof(equipa *)));
-            l[tamanho_lista - 1] = aux->pequipa;
-          }
+          tamanho_lista++;
+          l = realloc(l, tamanho_lista * (sizeof(equipa *)));
+          l[tamanho_lista - 1] = aux->pequipa;
         }
         else
         {
@@ -443,10 +409,8 @@ void lista_melhores_equipas(linkeq *hash_equipas, int linha)
 
   if (l[0] == 0)
   {
-    {
-      free(l);
-      return;
-    }
+    free(l);
+    return;
   }
   else
   {

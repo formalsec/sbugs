@@ -52,10 +52,8 @@ LISTA_EQ **adiciona_eq_lista(LISTA_EQ **lista, EQUIPA *equipa)
   nova_lista->next = 0;
   if ((*lista) == 0)
   {
-    {
-      *lista = nova_lista;
-      return lista;
-    }
+    *lista = nova_lista;
+    return lista;
   }
   else
   {
@@ -64,34 +62,28 @@ LISTA_EQ **adiciona_eq_lista(LISTA_EQ **lista, EQUIPA *equipa)
 
   if ((ultimo->next == 0) || (strcmp(equipa->nome, ultimo->equipa->nome) < 0))
   {
+    if (strcmp(equipa->nome, ultimo->equipa->nome) < 0)
     {
-      if (strcmp(equipa->nome, ultimo->equipa->nome) < 0)
-      {
-        {
-          nova_lista->next = ultimo;
-          *lista = nova_lista;
-          return lista;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (strcmp(equipa->nome, ultimo->equipa->nome) > 0)
-      {
-        {
-          ultimo->next = nova_lista;
-          nova_lista->next = 0;
-          return lista;
-        }
-      }
-      else
-      {
-        
-      }
-
+      nova_lista->next = ultimo;
+      *lista = nova_lista;
+      return lista;
     }
+    else
+    {
+      
+    }
+
+    if (strcmp(equipa->nome, ultimo->equipa->nome) > 0)
+    {
+      ultimo->next = nova_lista;
+      nova_lista->next = 0;
+      return lista;
+    }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -102,11 +94,9 @@ LISTA_EQ **adiciona_eq_lista(LISTA_EQ **lista, EQUIPA *equipa)
   {
     if (strcmp(equipa->nome, ultimo->next->equipa->nome) < 0)
     {
-      {
-        nova_lista->next = ultimo->next;
-        ultimo->next = nova_lista;
-        return lista;
-      }
+      nova_lista->next = ultimo->next;
+      ultimo->next = nova_lista;
+      return lista;
     }
     else
     {

@@ -46,9 +46,7 @@ int procura_jogo(char *key, jogo *ht)
   {
     if (strcmp(ht[(h + i) % M]->nome_jogo, key) == 0)
     {
-      {
-        return (h + i) % M;
-      }
+      return (h + i) % M;
     }
     else
     {
@@ -60,9 +58,7 @@ int procura_jogo(char *key, jogo *ht)
 
   if ((ht[(h + i) % M] != 0) && (strcmp(ht[(h + i) % M]->nome_jogo, key) == 0))
   {
-    {
-      return (h + i) % M;
-    }
+    return (h + i) % M;
   }
   else
   {
@@ -79,9 +75,7 @@ void free_tabela_jg(jogo *ht)
   {
     if (ht[i] != 0)
     {
-      {
-        free_jogo(ht[i]);
-      }
+      free_jogo(ht[i]);
     }
     else
     {
@@ -104,34 +98,26 @@ void tab_delete_jg(jogo jg, jogo *ht_jg)
   {
     if (strcmp(ht_jg[(h + i) % M]->nome_jogo, key) == 0)
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {
-      {
-        i += 1;
-      }
+      i += 1;
     }
 
   }
 
   if ((ht_jg[(h + i) % M] != 0) && (strcmp(ht_jg[(h + i) % M]->nome_jogo, key) == 0))
   {
-    {
-      free_jogo(ht_jg[(h + i) % M]);
-      ht_jg[(h + i) % M] = 0;
-    }
+    free_jogo(ht_jg[(h + i) % M]);
+    ht_jg[(h + i) % M] = 0;
   }
   else
   {
     if (strcmp(ht_jg[0]->nome_jogo, key) == 0)
     {
-      {
-        free_jogo(ht_jg[0]);
-        ht_jg[0] = 0;
-      }
+      free_jogo(ht_jg[0]);
+      ht_jg[0] = 0;
     }
     else
     {
@@ -162,24 +148,18 @@ void reposicionar(jogo jg, jogo *ht_jg)
   {
     if (strcmp(ht_jg[(h + i) % M]->nome_jogo, key) == 0)
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {
-      {
-        i += 1;
-      }
+      i += 1;
     }
 
   }
 
   if (((((h + i) % M) != 0) && (ht_jg[(h + i) % M] != 0)) && (strcmp(ht_jg[(h + i) % M]->nome_jogo, key) == 0))
   {
-    {
-      ht_jg[(h + i) % M] = 0;
-    }
+    ht_jg[(h + i) % M] = 0;
   }
   else
   {
@@ -212,126 +192,98 @@ void apaga_jogo(int nl, jogo *ht_jg, equipa *ht_eq)
   indice = procura_jogo(nome, ht_jg);
   if (ht_jg[0] != 0)
   {
+    if (strcmp(ht_jg[0]->nome_jogo, nome) == 0)
     {
-      if (strcmp(ht_jg[0]->nome_jogo, nome) == 0)
+      eq1 = procura_equipa(ht_jg[0]->nome_eq1, ht_eq);
+      eq2 = procura_equipa(ht_jg[0]->nome_eq2, ht_eq);
+      if (ht_jg[0]->score_eq1 > ht_jg[0]->score_eq2)
       {
-        {
-          eq1 = procura_equipa(ht_jg[0]->nome_eq1, ht_eq);
-          eq2 = procura_equipa(ht_jg[0]->nome_eq2, ht_eq);
-          if (ht_jg[0]->score_eq1 > ht_jg[0]->score_eq2)
-          {
-            {
-              ht_eq[eq1]->vitorias -= 1;
-            }
-          }
-          else
-          {
-            if (ht_jg[0]->score_eq2 > ht_jg[0]->score_eq1)
-            {
-              {
-                ht_eq[eq2]->vitorias -= 1;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-          if (ht_jg[0]->next == 0)
-          {
-            {
-              free_jogo(ht_jg[0]);
-              ht_jg[0] = 0;
-            }
-          }
-          else
-          {
-            {
-              aux_free = ht_jg[0];
-              ht_jg[0] = aux_free->next;
-              ht_jg[0]->prev = 0;
-              reposicionar(aux_free->next, ht_jg);
-              free_jogo(aux_free);
-            }
-          }
-
-        }
+        ht_eq[eq1]->vitorias -= 1;
       }
       else
       {
-        if (indice > 0)
+        if (ht_jg[0]->score_eq2 > ht_jg[0]->score_eq1)
         {
-          {
-            eq1 = procura_equipa(ht_jg[indice]->nome_eq1, ht_eq);
-            eq2 = procura_equipa(ht_jg[indice]->nome_eq2, ht_eq);
-            if (ht_jg[indice]->score_eq1 > ht_jg[indice]->score_eq2)
-            {
-              {
-                ht_eq[eq1]->vitorias -= 1;
-              }
-            }
-            else
-            {
-              if (ht_jg[indice]->score_eq2 > ht_jg[indice]->score_eq1)
-              {
-                {
-                  ht_eq[eq2]->vitorias -= 1;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-            if (ht_jg[indice]->next == 0)
-            {
-              {
-                ht_jg[indice]->prev->next = 0;
-                tab_delete_jg(ht_jg[indice], ht_jg);
-              }
-            }
-            else
-            {
-              if (ht_jg[indice]->prev == 0)
-              {
-                {
-                  ht_jg[indice]->next->prev = 0;
-                  tab_delete_jg(ht_jg[indice], ht_jg);
-                }
-              }
-              else
-              {
-                {
-                  ht_jg[indice]->next->prev = ht_jg[indice]->prev;
-                  ht_jg[indice]->prev->next = ht_jg[indice]->next;
-                  tab_delete_jg(ht_jg[indice], ht_jg);
-                }
-              }
-
-            }
-
-          }
+          ht_eq[eq2]->vitorias -= 1;
         }
         else
         {
-          {
-            printf("%d Jogo inexistente.\n", nl);
-          }
+          
         }
 
       }
 
+      if (ht_jg[0]->next == 0)
+      {
+        free_jogo(ht_jg[0]);
+        ht_jg[0] = 0;
+      }
+      else
+      {
+        aux_free = ht_jg[0];
+        ht_jg[0] = aux_free->next;
+        ht_jg[0]->prev = 0;
+        reposicionar(aux_free->next, ht_jg);
+        free_jogo(aux_free);
+      }
+
     }
+    else
+    {
+      if (indice > 0)
+      {
+        eq1 = procura_equipa(ht_jg[indice]->nome_eq1, ht_eq);
+        eq2 = procura_equipa(ht_jg[indice]->nome_eq2, ht_eq);
+        if (ht_jg[indice]->score_eq1 > ht_jg[indice]->score_eq2)
+        {
+          ht_eq[eq1]->vitorias -= 1;
+        }
+        else
+        {
+          if (ht_jg[indice]->score_eq2 > ht_jg[indice]->score_eq1)
+          {
+            ht_eq[eq2]->vitorias -= 1;
+          }
+          else
+          {
+            
+          }
+
+        }
+
+        if (ht_jg[indice]->next == 0)
+        {
+          ht_jg[indice]->prev->next = 0;
+          tab_delete_jg(ht_jg[indice], ht_jg);
+        }
+        else
+        {
+          if (ht_jg[indice]->prev == 0)
+          {
+            ht_jg[indice]->next->prev = 0;
+            tab_delete_jg(ht_jg[indice], ht_jg);
+          }
+          else
+          {
+            ht_jg[indice]->next->prev = ht_jg[indice]->prev;
+            ht_jg[indice]->prev->next = ht_jg[indice]->next;
+            tab_delete_jg(ht_jg[indice], ht_jg);
+          }
+
+        }
+
+      }
+      else
+      {
+        printf("%d Jogo inexistente.\n", nl);
+      }
+
+    }
+
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-    }
+    printf("%d Jogo inexistente.\n", nl);
   }
 
   free(nome);

@@ -51,9 +51,7 @@ void set_order_weigth(int ide)
   {
     if (all_orders[ide].all_items[i].weight > 0)
     {
-      {
-        weight = weight + (all_orders[ide].all_items[i].weight * all_orders[ide].all_items[i].amount);
-      }
+      weight = weight + (all_orders[ide].all_items[i].weight * all_orders[ide].all_items[i].amount);
     }
     else
     {
@@ -73,9 +71,7 @@ void set_order_price(int ide)
   {
     if (stock[all_orders[ide].all_items[i].id].price > 0)
     {
-      {
-        price = price + (stock[all_orders[ide].all_items[i].id].price * all_orders[ide].all_items[i].amount);
-      }
+      price = price + (stock[all_orders[ide].all_items[i].id].price * all_orders[ide].all_items[i].amount);
     }
     else
     {
@@ -91,12 +87,23 @@ int check_error(int e, int idp, int ide, int qtd)
 {
   if (e == 1)
   {
+    if (current_id <= idp)
     {
-      if (current_id <= idp)
+      return 0;
+    }
+    else
+    {
+      
+    }
+
+  }
+  else
+  {
+    if (e == 2)
+    {
+      if (current_order_id <= ide)
       {
-        {
-          return 0;
-        }
+        return 0;
       }
       else
       {
@@ -104,17 +111,13 @@ int check_error(int e, int idp, int ide, int qtd)
       }
 
     }
-  }
-  else
-  {
-    if (e == 2)
+    else
     {
+      if (e == 3)
       {
-        if (current_order_id <= ide)
+        if (stock[idp].amount < qtd)
         {
-          {
-            return 0;
-          }
+          return 0;
         }
         else
         {
@@ -122,43 +125,20 @@ int check_error(int e, int idp, int ide, int qtd)
         }
 
       }
-    }
-    else
-    {
-      if (e == 3)
+      else
       {
+        if (e == 4)
         {
-          if (stock[idp].amount < qtd)
+          set_order_weigth(ide);
+          if ((all_orders[ide].total_weight + (stock[idp].weight * qtd)) > 200)
           {
-            {
-              return 0;
-            }
+            return 0;
           }
           else
           {
             
           }
 
-        }
-      }
-      else
-      {
-        if (e == 4)
-        {
-          {
-            set_order_weigth(ide);
-            if ((all_orders[ide].total_weight + (stock[idp].weight * qtd)) > 200)
-            {
-              {
-                return 0;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
         }
         else
         {
@@ -186,13 +166,11 @@ void add_to_order(int ide, int idp, int qtd)
   {
     if ((all_orders[ide].all_items[i].id == idp) && (all_orders[ide].all_items[i].amount != 0))
     {
-      {
-        all_orders[ide].all_items[i].amount = all_orders[ide].all_items[i].amount + qtd;
-        stock[idp].amount = stock[idp].amount - qtd;
-        set_order_weigth(ide);
-        set_order_price(ide);
-        return;
-      }
+      all_orders[ide].all_items[i].amount = all_orders[ide].all_items[i].amount + qtd;
+      stock[idp].amount = stock[idp].amount - qtd;
+      set_order_weigth(ide);
+      set_order_price(ide);
+      return;
     }
     else
     {
@@ -205,14 +183,12 @@ void add_to_order(int ide, int idp, int qtd)
   {
     if (all_orders[ide].all_items[i].amount == 0)
     {
-      {
-        all_orders[ide].all_items[i] = stock[idp];
-        all_orders[ide].all_items[i].amount = qtd;
-        stock[idp].amount = stock[idp].amount - qtd;
-        set_order_weigth(ide);
-        set_order_price(ide);
-        return;
-      }
+      all_orders[ide].all_items[i] = stock[idp];
+      all_orders[ide].all_items[i].amount = qtd;
+      stock[idp].amount = stock[idp].amount - qtd;
+      set_order_weigth(ide);
+      set_order_price(ide);
+      return;
     }
     else
     {
@@ -230,11 +206,9 @@ void remove_product(int idp, int ide)
   {
     if (all_orders[ide].all_items[i].id == idp)
     {
-      {
-        stock[idp].amount = stock[idp].amount + all_orders[ide].all_items[i].amount;
-        all_orders[ide].all_items[i].amount = 0;
-        return;
-      }
+      stock[idp].amount = stock[idp].amount + all_orders[ide].all_items[i].amount;
+      all_orders[ide].all_items[i].amount = 0;
+      return;
     }
     else
     {
@@ -252,9 +226,7 @@ int get_number(int idp, int ide)
   {
     if (all_orders[ide].all_items[i].id == stock[idp].id)
     {
-      {
-        return all_orders[ide].all_items[i].amount;
-      }
+      return all_orders[ide].all_items[i].amount;
     }
     else
     {
@@ -278,20 +250,16 @@ int get_order(int idp)
     {
       if (all_orders[i].all_items[j].id == idp)
       {
+        if (max < all_orders[i].all_items[j].amount)
         {
-          if (max < all_orders[i].all_items[j].amount)
-          {
-            {
-              max = all_orders[i].all_items[j].amount;
-              ide = i;
-            }
-          }
-          else
-          {
-            
-          }
-
+          max = all_orders[i].all_items[j].amount;
+          ide = i;
         }
+        else
+        {
+          
+        }
+
       }
       else
       {
@@ -366,12 +334,10 @@ void sort_order(int ide)
   {
     if (all_orders[ide].all_items[i].amount != 0)
     {
-      {
-        strcpy(desc[j], all_orders[ide].all_items[i].description);
-        ids[j] = all_orders[ide].all_items[i].id;
-        qtd[j] = all_orders[ide].all_items[i].amount;
-        j++;
-      }
+      strcpy(desc[j], all_orders[ide].all_items[i].description);
+      ids[j] = all_orders[ide].all_items[i].id;
+      qtd[j] = all_orders[ide].all_items[i].amount;
+      j++;
     }
     else
     {
@@ -389,17 +355,15 @@ void sort_order(int ide)
     {
       if (strcmp(desc[i], desc[j]) > 0)
       {
-        {
-          strcpy(temp, desc[i]);
-          temp_id = ids[i];
-          temp_qtd = qtd[i];
-          strcpy(desc[i], desc[j]);
-          ids[i] = ids[j];
-          qtd[i] = qtd[j];
-          strcpy(desc[j], temp);
-          ids[j] = temp_id;
-          qtd[j] = temp_qtd;
-        }
+        strcpy(temp, desc[i]);
+        temp_id = ids[i];
+        temp_qtd = qtd[i];
+        strcpy(desc[i], desc[j]);
+        ids[i] = ids[j];
+        qtd[i] = qtd[j];
+        strcpy(desc[j], temp);
+        ids[j] = temp_id;
+        qtd[j] = temp_qtd;
       }
       else
       {
@@ -432,9 +396,7 @@ int main()
     choice = getchar();
     if (choice == 'x')
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {
@@ -443,121 +405,96 @@ int main()
 
     if (choice == 'a')
     {
+      getchar();
+      stock[current_id].id = current_id;
+      store_info();
+      for (j = 0; j < 65; j++)
       {
-        getchar();
-        stock[current_id].id = current_id;
-        store_info();
-        for (j = 0; j < 65; j++)
+        stock[current_id].description[j] = storage_Array0[j];
+        if (storage_Array0[j] == '\0')
         {
-          stock[current_id].description[j] = storage_Array0[j];
-          if (storage_Array0[j] == '\0')
-          {
-            {
-              break;
-            }
-          }
-          else
-          {
-            
-          }
-
+          break;
+        }
+        else
+        {
+          
         }
 
-        j = 0;
-        store_info();
-        stock[current_id].price = atoi(storage_Array0);
-        store_info();
-        stock[current_id].weight = atoi(storage_Array0);
-        store_info();
-        stock[current_id].amount = atoi(storage_Array0);
-        printf("Novo produto %d.\n", current_id);
-        current_id++;
       }
+
+      j = 0;
+      store_info();
+      stock[current_id].price = atoi(storage_Array0);
+      store_info();
+      stock[current_id].weight = atoi(storage_Array0);
+      store_info();
+      stock[current_id].amount = atoi(storage_Array0);
+      printf("Novo produto %d.\n", current_id);
+      current_id++;
     }
     else
     {
       if (choice == 'q')
       {
+        getchar();
+        store_info();
+        idp = atoi(storage_Array0);
+        store_info();
+        qtd = atoi(storage_Array0);
+        if (check_error(1, idp, 0, 0) == 0)
         {
-          getchar();
-          store_info();
-          idp = atoi(storage_Array0);
-          store_info();
-          qtd = atoi(storage_Array0);
-          if (check_error(1, idp, 0, 0) == 0)
-          {
-            {
-              printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idp);
-            }
-          }
-          else
-          {
-            {
-              add_stock(idp, qtd);
-            }
-          }
-
+          printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idp);
         }
+        else
+        {
+          add_stock(idp, qtd);
+        }
+
       }
       else
       {
         if (choice == 'N')
         {
-          {
-            all_orders[current_order_id].order_id = current_order_id;
-            printf("Nova encomenda %d.\n", current_order_id);
-            current_order_id++;
-          }
+          all_orders[current_order_id].order_id = current_order_id;
+          printf("Nova encomenda %d.\n", current_order_id);
+          current_order_id++;
         }
         else
         {
           if (choice == 'A')
           {
+            getchar();
+            store_info();
+            ide = atoi(storage_Array0);
+            store_info();
+            idp = atoi(storage_Array0);
+            store_info();
+            qtd = atoi(storage_Array0);
+            if (check_error(2, idp, ide, qtd) == 0)
             {
-              getchar();
-              store_info();
-              ide = atoi(storage_Array0);
-              store_info();
-              idp = atoi(storage_Array0);
-              store_info();
-              qtd = atoi(storage_Array0);
-              if (check_error(2, idp, ide, qtd) == 0)
+              printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
+            }
+            else
+            {
+              if (check_error(1, idp, ide, qtd) == 0)
               {
-                {
-                  printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
-                }
+                printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
               }
               else
               {
-                if (check_error(1, idp, ide, qtd) == 0)
+                if (check_error(3, idp, ide, qtd) == 0)
                 {
-                  {
-                    printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
-                  }
+                  printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
                 }
                 else
                 {
-                  if (check_error(3, idp, ide, qtd) == 0)
+                  if (check_error(4, idp, ide, qtd) == 0)
                   {
-                    {
-                      printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
-                    }
+                    printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
                   }
                   else
                   {
-                    if (check_error(4, idp, ide, qtd) == 0)
-                    {
-                      {
-                        printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
-                      }
-                    }
-                    else
-                    {
-                      {
-                        add_to_order(ide, idp, qtd);
-                      }
-                    }
-
+                    add_to_order(ide, idp, qtd);
                   }
 
                 }
@@ -565,229 +502,178 @@ int main()
               }
 
             }
+
           }
           else
           {
             if (choice == 'r')
             {
+              getchar();
+              store_info();
+              idp = atoi(storage_Array0);
+              store_info();
+              qtd = atoi(storage_Array0);
+              if (check_error(1, idp, 0, qtd) == 0)
               {
-                getchar();
-                store_info();
-                idp = atoi(storage_Array0);
-                store_info();
-                qtd = atoi(storage_Array0);
-                if (check_error(1, idp, 0, qtd) == 0)
+                printf("Impossivel remover stock do produto %d. Produto inexistente.\n", idp);
+              }
+              else
+              {
+                if (stock[idp].amount < qtd)
                 {
-                  {
-                    printf("Impossivel remover stock do produto %d. Produto inexistente.\n", idp);
-                  }
+                  printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, idp);
                 }
                 else
                 {
-                  if (stock[idp].amount < qtd)
-                  {
-                    {
-                      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, idp);
-                    }
-                  }
-                  else
-                  {
-                    {
-                      add_stock(idp, -qtd);
-                    }
-                  }
-
+                  add_stock(idp, -qtd);
                 }
 
               }
+
             }
             else
             {
               if (choice == 'R')
               {
+                getchar();
+                store_info();
+                ide = atoi(storage_Array0);
+                store_info();
+                idp = atoi(storage_Array0);
+                if (check_error(2, idp, ide, 0) == 0)
                 {
-                  getchar();
-                  store_info();
-                  ide = atoi(storage_Array0);
-                  store_info();
-                  idp = atoi(storage_Array0);
-                  if (check_error(2, idp, ide, 0) == 0)
+                  printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
+                }
+                else
+                {
+                  if (check_error(1, idp, ide, 0) == 0)
                   {
-                    {
-                      printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
-                    }
+                    printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
                   }
                   else
                   {
-                    if (check_error(1, idp, ide, 0) == 0)
-                    {
-                      {
-                        printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
-                      }
-                    }
-                    else
-                    {
-                      {
-                        remove_product(idp, ide);
-                      }
-                    }
-
+                    remove_product(idp, ide);
                   }
 
                 }
+
               }
               else
               {
                 if (choice == 'C')
                 {
+                  getchar();
+                  store_info();
+                  ide = atoi(storage_Array0);
+                  if (check_error(2, 0, ide, 0) == 0)
                   {
-                    getchar();
-                    store_info();
-                    ide = atoi(storage_Array0);
-                    if (check_error(2, 0, ide, 0) == 0)
-                    {
-                      {
-                        printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ide);
-                      }
-                    }
-                    else
-                    {
-                      {
-                        set_order_price(ide);
-                        printf("Custo da encomenda %d %d.\n", ide, all_orders[ide].total_price);
-                      }
-                    }
-
+                    printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ide);
                   }
+                  else
+                  {
+                    set_order_price(ide);
+                    printf("Custo da encomenda %d %d.\n", ide, all_orders[ide].total_price);
+                  }
+
                 }
                 else
                 {
                   if (choice == 'p')
                   {
+                    getchar();
+                    store_info();
+                    idp = atoi(storage_Array0);
+                    store_info();
+                    price = atoi(storage_Array0);
+                    if (check_error(1, idp, 0, 0) == 0)
                     {
-                      getchar();
-                      store_info();
-                      idp = atoi(storage_Array0);
-                      store_info();
-                      price = atoi(storage_Array0);
-                      if (check_error(1, idp, 0, 0) == 0)
-                      {
-                        {
-                          printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idp);
-                        }
-                      }
-                      else
-                      {
-                        {
-                          stock[idp].price = price;
-                        }
-                      }
-
+                      printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idp);
                     }
+                    else
+                    {
+                      stock[idp].price = price;
+                    }
+
                   }
                   else
                   {
                     if (choice == 'E')
                     {
+                      getchar();
+                      store_info();
+                      ide = atoi(storage_Array0);
+                      store_info();
+                      idp = atoi(storage_Array0);
+                      if (check_error(2, idp, ide, 0) == 0)
                       {
-                        getchar();
-                        store_info();
-                        ide = atoi(storage_Array0);
-                        store_info();
-                        idp = atoi(storage_Array0);
-                        if (check_error(2, idp, ide, 0) == 0)
+                        printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
+                      }
+                      else
+                      {
+                        if (check_error(1, idp, ide, 0) == 0)
                         {
-                          {
-                            printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
-                          }
+                          printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
                         }
                         else
                         {
-                          if (check_error(1, idp, ide, 0) == 0)
-                          {
-                            {
-                              printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
-                            }
-                          }
-                          else
-                          {
-                            {
-                              token = strtok(stock[idp].description, "\n");
-                              printf("%s %d.\n", token, get_number(idp, ide));
-                            }
-                          }
-
+                          token = strtok(stock[idp].description, "\n");
+                          printf("%s %d.\n", token, get_number(idp, ide));
                         }
 
                       }
+
                     }
                     else
                     {
                       if (choice == 'm')
                       {
+                        getchar();
+                        store_info();
+                        idp = atoi(storage_Array0);
+                        if (check_error(1, idp, 0, 0) == 0)
                         {
-                          getchar();
-                          store_info();
-                          idp = atoi(storage_Array0);
-                          if (check_error(1, idp, 0, 0) == 0)
+                          printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idp);
+                        }
+                        else
+                        {
+                          ide = get_order(idp);
+                          qtd = get_number(idp, ide);
+                          if (qtd != 0)
                           {
-                            {
-                              printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idp);
-                            }
+                            printf("Maximo produto %d %d %d.\n", idp, ide, qtd);
                           }
                           else
                           {
-                            {
-                              ide = get_order(idp);
-                              qtd = get_number(idp, ide);
-                              if (qtd != 0)
-                              {
-                                {
-                                  printf("Maximo produto %d %d %d.\n", idp, ide, qtd);
-                                }
-                              }
-                              else
-                              {
-                                
-                              }
-
-                            }
+                            
                           }
 
                         }
+
                       }
                       else
                       {
                         if (choice == 'l')
                         {
-                          {
-                            printf("Produtos\n");
-                            shell_sort_price(current_id);
-                          }
+                          printf("Produtos\n");
+                          shell_sort_price(current_id);
                         }
                         else
                         {
                           if (choice == 'L')
                           {
+                            getchar();
+                            store_info();
+                            ide = atoi(storage_Array0);
+                            if (check_error(2, 0, ide, 0) == 0)
                             {
-                              getchar();
-                              store_info();
-                              ide = atoi(storage_Array0);
-                              if (check_error(2, 0, ide, 0) == 0)
-                              {
-                                {
-                                  printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
-                                }
-                              }
-                              else
-                              {
-                                {
-                                  printf("Encomenda %d\n", ide);
-                                  sort_order(ide);
-                                }
-                              }
-
+                              printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
                             }
+                            else
+                            {
+                              printf("Encomenda %d\n", ide);
+                              sort_order(ide);
+                            }
+
                           }
                           else
                           {

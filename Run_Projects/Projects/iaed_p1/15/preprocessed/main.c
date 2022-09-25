@@ -66,10 +66,8 @@ void command_q()
   sp = stock_get_product(stock, pid);
   if (sp == 0)
   {
-    {
-      printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", pid);
-      return;
-    }
+    printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", pid);
+    return;
   }
   else
   {
@@ -92,10 +90,8 @@ void command_r()
   sp = stock_get_product(stock, pid);
   if (sp == 0)
   {
-    {
-      printf("Impossivel remover stock do produto %d. Produto inexistente.\n", pid);
-      return;
-    }
+    printf("Impossivel remover stock do produto %d. Produto inexistente.\n", pid);
+    return;
   }
   else
   {
@@ -105,10 +101,8 @@ void command_r()
   error = stock_product_update_quantity(sp, -qtd);
   if (error)
   {
-    {
-      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, pid);
-      return;
-    }
+    printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, pid);
+    return;
   }
   else
   {
@@ -129,10 +123,8 @@ void command_p()
   sp = stock_get_product(stock, pid);
   if (sp == 0)
   {
-    {
-      printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", pid);
-      return;
-    }
+    printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", pid);
+    return;
   }
   else
   {
@@ -165,10 +157,8 @@ void command_A()
   o = orders_get_order(orders, oid);
   if (o == 0)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", pid, oid);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", pid, oid);
+    return;
   }
   else
   {
@@ -178,10 +168,8 @@ void command_A()
   sp = stock_get_product(stock, pid);
   if (sp == 0)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", pid, oid);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", pid, oid);
+    return;
   }
   else
   {
@@ -190,10 +178,8 @@ void command_A()
 
   if (order_add_product(o, sp->product, qtd) == 0)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", pid, oid);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", pid, oid);
+    return;
   }
   else
   {
@@ -203,10 +189,8 @@ void command_A()
   error = stock_product_reserve_quantity(sp, qtd);
   if (error)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", pid, oid);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", pid, oid);
+    return;
   }
   else
   {
@@ -229,10 +213,8 @@ void command_R()
   o = orders_get_order(orders, oid);
   if (o == 0)
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", pid, oid);
-      return;
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", pid, oid);
+    return;
   }
   else
   {
@@ -242,10 +224,8 @@ void command_R()
   sp = stock_get_product(stock, pid);
   if (sp == 0)
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", pid, oid);
-      return;
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", pid, oid);
+    return;
   }
   else
   {
@@ -255,9 +235,7 @@ void command_R()
   error = order_remove_product(o, pid);
   if (error)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -277,10 +255,8 @@ void command_C()
   o = orders_get_order(orders, oid);
   if (o == 0)
   {
-    {
-      printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", oid);
-      return;
-    }
+    printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", oid);
+    return;
   }
   else
   {
@@ -305,10 +281,8 @@ void command_E()
   o = orders_get_order(orders, oid);
   if (o == 0)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", oid);
-      return;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", oid);
+    return;
   }
   else
   {
@@ -318,10 +292,8 @@ void command_E()
   sp = stock_get_product(stock, pid);
   if (sp == 0)
   {
-    {
-      printf("Impossivel listar produto %d. Produto inexistente.\n", pid);
-      return;
-    }
+    printf("Impossivel listar produto %d. Produto inexistente.\n", pid);
+    return;
   }
   else
   {
@@ -342,10 +314,8 @@ void command_m()
   sp = stock_get_product(stock, pid);
   if (sp == 0)
   {
-    {
-      printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", pid);
-      return;
-    }
+    printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", pid);
+    return;
   }
   else
   {
@@ -362,10 +332,8 @@ void command_l(char command)
   }
   else
   {
-    {
-      stock_print(stock);
-      stock_list_products(stock);
-    }
+    stock_print(stock);
+    stock_list_products(stock);
   }
 
 }
@@ -380,10 +348,8 @@ void command_L(char command)
   o = orders_get_order(orders, oid);
   if (o == 0)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", oid);
-      return;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", oid);
+    return;
   }
   else
   {
@@ -396,10 +362,8 @@ void command_L(char command)
   }
   else
   {
-    {
-      order_print(o);
-      order_list_products(o);
-    }
+    order_print(o);
+    order_list_products(o);
   }
 
 }

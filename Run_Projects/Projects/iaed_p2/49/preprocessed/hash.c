@@ -65,14 +65,12 @@ void expandM(hashM *hashtable)
   {
     if (hashtable->array[index] != 0)
     {
-      {
-        newHashval = hashvalM(hashtable, hashtable->array[index]->name);
-        while (newArray[newHashval] != 0)
-          newHashval = (newHashval + 1) % newSize;
+      newHashval = hashvalM(hashtable, hashtable->array[index]->name);
+      while (newArray[newHashval] != 0)
+        newHashval = (newHashval + 1) % newSize;
 
-        newArray[newHashval] = hashtable->array[index];
-        hashtable->array[index] = 0;
-      }
+      newArray[newHashval] = hashtable->array[index];
+      hashtable->array[index] = 0;
     }
     else
     {
@@ -113,13 +111,11 @@ void eraseM(hashM *hashtable)
   {
     if (hashtable->array[index] != 0)
     {
-      {
-        free(hashtable->array[index]->name);
-        free(hashtable->array[index]->team1);
-        free(hashtable->array[index]->team2);
-        free(hashtable->array[index]);
-        hashtable->array[index] = 0;
-      }
+      free(hashtable->array[index]->name);
+      free(hashtable->array[index]->team1);
+      free(hashtable->array[index]->team2);
+      free(hashtable->array[index]);
+      hashtable->array[index] = 0;
     }
     else
     {
@@ -140,9 +136,7 @@ int next_sizeM(int size)
   {
     if ((size % counter) == 0)
     {
-      {
-        ++size;
-      }
+      ++size;
     }
     else
     {

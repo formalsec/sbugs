@@ -18,23 +18,17 @@ LinkGame remove_elem_game(LinkGame head, char *name)
   {
     if (strcmp(name, t->item->name) == 0)
     {
+      if (t == head)
       {
-        if (t == head)
-        {
-          {
-            head = t->next;
-          }
-        }
-        else
-        {
-          {
-            prev->next = t->next;
-          }
-        }
-
-        free(t);
-        return head;
+        head = t->next;
       }
+      else
+      {
+        prev->next = t->next;
+      }
+
+      free(t);
+      return head;
     }
     else
     {
@@ -53,9 +47,7 @@ ItemGame search_list_game(LinkGame head, char *name)
   {
     if (strcmp(t->item->name, name) == 0)
     {
-      {
-        return t->item;
-      }
+      return t->item;
     }
     else
     {
@@ -73,9 +65,7 @@ void destroy_list_game(LinkGame head)
   LinkGame aux;
   if (head == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {

@@ -209,43 +209,37 @@ void add_to_order(int ord_id, int prd_id, int qtd)
         }
         else
         {
+          while (i < all_orders[ord_id].nr_of_prod)
           {
-            while (i < all_orders[ord_id].nr_of_prod)
+            if (all_orders[ord_id].products[i].identifier == prd_id)
             {
-              if (all_orders[ord_id].products[i].identifier == prd_id)
-              {
-                {
-                  in_order = 1;
-                  break;
-                }
-              }
-              else
-              {
-                
-              }
-
-              i++;
-            }
-
-            if (in_order)
-            {
-              all_orders[ord_id].products[i].order_stock += qtd;
+              in_order = 1;
+              break;
             }
             else
             {
-              {
-                all_orders[ord_id].products[i].identifier = prd_id;
-                all_orders[ord_id].products[i].order_stock = qtd;
-                all_orders[ord_id].products[i].price = all_produce[prd_id].price;
-                strcpy(all_orders[ord_id].products[i].description, all_produce[prd_id].description);
-                all_orders[ord_id].nr_of_prod += 1;
-              }
+              
             }
 
-            all_orders[ord_id].total_price += all_produce[prd_id].price * qtd;
-            all_orders[ord_id].total_weight += all_produce[prd_id].weight * qtd;
-            remove_prd(prd_id, qtd);
+            i++;
           }
+
+          if (in_order)
+          {
+            all_orders[ord_id].products[i].order_stock += qtd;
+          }
+          else
+          {
+            all_orders[ord_id].products[i].identifier = prd_id;
+            all_orders[ord_id].products[i].order_stock = qtd;
+            all_orders[ord_id].products[i].price = all_produce[prd_id].price;
+            strcpy(all_orders[ord_id].products[i].description, all_produce[prd_id].description);
+            all_orders[ord_id].nr_of_prod += 1;
+          }
+
+          all_orders[ord_id].total_price += all_produce[prd_id].price * qtd;
+          all_orders[ord_id].total_weight += all_produce[prd_id].weight * qtd;
+          remove_prd(prd_id, qtd);
         }
 
       }
@@ -292,29 +286,25 @@ void remove_from_ord(int ord_id, int prd_id)
     }
     else
     {
+      while (i < all_orders[ord_id].nr_of_prod)
       {
-        while (i < all_orders[ord_id].nr_of_prod)
+        if (all_orders[ord_id].products[i].identifier == prd_id)
         {
-          if (all_orders[ord_id].products[i].identifier == prd_id)
-          {
-            {
-              int qtnty = all_orders[ord_id].products[i].order_stock;
-              all_orders[ord_id].total_price -= all_produce[prd_id].price * qtnty;
-              all_orders[ord_id].total_weight -= all_produce[prd_id].weight * qtnty;
-              add_stock(prd_id, qtnty);
-              all_orders[ord_id].products[i].order_stock = 0;
-              break;
-            }
-          }
-          else
-          {
-            
-          }
-
-          i++;
+          int qtnty = all_orders[ord_id].products[i].order_stock;
+          all_orders[ord_id].total_price -= all_produce[prd_id].price * qtnty;
+          all_orders[ord_id].total_weight -= all_produce[prd_id].weight * qtnty;
+          add_stock(prd_id, qtnty);
+          all_orders[ord_id].products[i].order_stock = 0;
+          break;
+        }
+        else
+        {
+          
         }
 
+        i++;
       }
+
     }
 
   }
@@ -329,9 +319,7 @@ void order_price(int ord_id)
   }
   else
   {
-    {
-      printf("Custo da encomenda %d %d.\n", ord_id, all_orders[ord_id].total_price);
-    }
+    printf("Custo da encomenda %d %d.\n", ord_id, all_orders[ord_id].total_price);
   }
 
 }
@@ -348,40 +336,34 @@ void change_price(int prd_id, int price)
   }
   else
   {
+    b4_price = all_produce[prd_id].price;
+    all_produce[prd_id].price = price;
+    for (i = 0; i < order_nr; i++)
     {
-      b4_price = all_produce[prd_id].price;
-      all_produce[prd_id].price = price;
-      for (i = 0; i < order_nr; i++)
+      if (all_orders[i].total_weight > 0)
       {
-        if (all_orders[i].total_weight > 0)
+        for (j = 0; j < all_orders[i].nr_of_prod; j++)
         {
+          if (all_orders[i].products[j].identifier == prd_id)
           {
-            for (j = 0; j < all_orders[i].nr_of_prod; j++)
-            {
-              if (all_orders[i].products[j].identifier == prd_id)
-              {
-                {
-                  all_orders[i].products[j].price = price;
-                  all_orders[i].total_price += (after_price - b4_price) * all_orders[i].products[j].order_stock;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
+            all_orders[i].products[j].price = price;
+            all_orders[i].total_price += (after_price - b4_price) * all_orders[i].products[j].order_stock;
           }
-        }
-        else
-        {
-          
+          else
+          {
+            
+          }
+
         }
 
       }
+      else
+      {
+        
+      }
 
     }
+
   }
 
 }
@@ -400,35 +382,31 @@ void list_prd(int ord_id, int prd_id)
     }
     else
     {
+      int i = 0;
+      while (i < all_orders[ord_id].nr_of_prod)
       {
-        int i = 0;
-        while (i < all_orders[ord_id].nr_of_prod)
+        if (all_orders[ord_id].products[i].identifier == prd_id)
         {
-          if (all_orders[ord_id].products[i].identifier == prd_id)
-          {
-            {
-              printf("%s %d.\n", all_produce[prd_id].description, all_orders[ord_id].products[i].order_stock);
-              break;
-            }
-          }
-          else
-          {
-            
-          }
-
-          i++;
-        }
-
-        if (i == all_orders[ord_id].nr_of_prod)
-        {
-          printf("%s 0.\n", all_produce[prd_id].description);
+          printf("%s %d.\n", all_produce[prd_id].description, all_orders[ord_id].products[i].order_stock);
+          break;
         }
         else
         {
           
         }
 
+        i++;
       }
+
+      if (i == all_orders[ord_id].nr_of_prod)
+      {
+        printf("%s 0.\n", all_produce[prd_id].description);
+      }
+      else
+      {
+        
+      }
+
     }
 
   }
@@ -443,45 +421,29 @@ void most_order(int prd_id)
   }
   else
   {
+    int i;
+    int j;
+    int max = 0;
+    int max_id;
+    for (i = 0; i < order_nr; i++)
     {
-      int i;
-      int j;
-      int max = 0;
-      int max_id;
-      for (i = 0; i < order_nr; i++)
+      if (all_orders[i].total_weight > 0)
       {
-        if (all_orders[i].total_weight > 0)
+        for (j = 0; j < all_orders[i].nr_of_prod; j++)
         {
+          if ((all_orders[i].products[j].identifier == prd_id) && (all_orders[i].products[j].order_stock > max))
           {
-            for (j = 0; j < all_orders[i].nr_of_prod; j++)
-            {
-              if ((all_orders[i].products[j].identifier == prd_id) && (all_orders[i].products[j].order_stock > max))
-              {
-                {
-                  max = all_orders[i].products[j].order_stock;
-                  max_id = i;
-                  break;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
+            max = all_orders[i].products[j].order_stock;
+            max_id = i;
+            break;
           }
-        }
-        else
-        {
-          
+          else
+          {
+            
+          }
+
         }
 
-      }
-
-      if (max > 0)
-      {
-        printf("Maximo produto %d %d %d.\n", prd_id, max_id, max);
       }
       else
       {
@@ -489,6 +451,16 @@ void most_order(int prd_id)
       }
 
     }
+
+    if (max > 0)
+    {
+      printf("Maximo produto %d %d %d.\n", prd_id, max_id, max);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -522,27 +494,23 @@ void list_order(int ord_id)
   }
   else
   {
+    int i = 0;
+    quicksort(all_orders[ord_id].products, 0, all_orders[ord_id].nr_of_prod - 1, 'L');
+    printf("Encomenda %d\n", ord_id);
+    while (i < all_orders[ord_id].nr_of_prod)
     {
-      int i = 0;
-      quicksort(all_orders[ord_id].products, 0, all_orders[ord_id].nr_of_prod - 1, 'L');
-      printf("Encomenda %d\n", ord_id);
-      while (i < all_orders[ord_id].nr_of_prod)
+      if (all_orders[ord_id].products[i].order_stock > 0)
       {
-        if (all_orders[ord_id].products[i].order_stock > 0)
-        {
-          {
-            printf("* %s %d %d\n", all_orders[ord_id].products[i].description, all_orders[ord_id].products[i].price, all_orders[ord_id].products[i].order_stock);
-          }
-        }
-        else
-        {
-          
-        }
-
-        i++;
+        printf("* %s %d %d\n", all_orders[ord_id].products[i].description, all_orders[ord_id].products[i].price, all_orders[ord_id].products[i].order_stock);
+      }
+      else
+      {
+        
       }
 
+      i++;
     }
+
   }
 
 }
@@ -552,9 +520,7 @@ void quicksort(Product_resumido list[], int left, int right, char mode)
   int i;
   if (right <= left)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -598,10 +564,8 @@ int partition_l(Product_resumido list[], int left, int right)
 
     if (i < j)
     {
-      {
-        troca_produto(list, i, j);
-        i++;
-      }
+      troca_produto(list, i, j);
+      i++;
     }
     else
     {
@@ -630,10 +594,8 @@ int partition_L(Product_resumido list[], int left, int right)
 
     if (i < j)
     {
-      {
-        troca_produto(list, i, j);
-        i++;
-      }
+      troca_produto(list, i, j);
+      i++;
     }
     else
     {

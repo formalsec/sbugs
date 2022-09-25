@@ -30,10 +30,8 @@ int main()
   {
     if (c == 'x')
     {
-      {
-        free_geral(conj_equipas, conj_equipas_aux, conj_jogos, conj_jogos_aux);
-        break;
-      }
+      free_geral(conj_equipas, conj_equipas_aux, conj_jogos, conj_jogos_aux);
+      break;
     }
     else
     {
@@ -44,9 +42,7 @@ int main()
     a++;
     if ((a % 2) == 0)
     {
-      {
-        nl++;
-      }
+      nl++;
     }
     else
     {

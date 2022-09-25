@@ -61,41 +61,37 @@ void free_table(node **table, jogos *lista_jogos)
       aux_2 = table[i]->next;
       if (strcmp(table[i]->nome_jogo, "") == 0)
       {
-        {
-          free(table[i]->nome_jogo);
-          free_node_jg(table[i]->jogo);
-          free(table[i]->jogo);
-          free(table[i]);
-          table[i] = aux_2;
-        }
+        free(table[i]->nome_jogo);
+        free_node_jg(table[i]->jogo);
+        free(table[i]->jogo);
+        free(table[i]);
+        table[i] = aux_2;
       }
       else
       {
+        free(table[i]->nome_jogo);
+        if (table[i]->jogo->previous == 0)
         {
-          free(table[i]->nome_jogo);
-          if (table[i]->jogo->previous == 0)
-          {
-            lista_jogos->head = table[i]->jogo->next;
-          }
-          else
-          {
-            table[i]->jogo->previous->next = table[i]->jogo->next;
-          }
-
-          if (table[i]->jogo->next == 0)
-          {
-            lista_jogos->last = table[i]->jogo->previous;
-          }
-          else
-          {
-            table[i]->jogo->next->previous = table[i]->jogo->previous;
-          }
-
-          free_node_jg(table[i]->jogo);
-          free(table[i]->jogo);
-          free(table[i]);
-          table[i] = aux_2;
+          lista_jogos->head = table[i]->jogo->next;
         }
+        else
+        {
+          table[i]->jogo->previous->next = table[i]->jogo->next;
+        }
+
+        if (table[i]->jogo->next == 0)
+        {
+          lista_jogos->last = table[i]->jogo->previous;
+        }
+        else
+        {
+          table[i]->jogo->next->previous = table[i]->jogo->previous;
+        }
+
+        free_node_jg(table[i]->jogo);
+        free(table[i]->jogo);
+        free(table[i]);
+        table[i] = aux_2;
       }
 
     }

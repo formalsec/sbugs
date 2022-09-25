@@ -41,23 +41,19 @@ void push_team(team_table *teams, team *team)
   new_node->next_node = 0;
   if (teams->table[key] == 0)
   {
-    {
-      teams->table[key] = new_node;
-      new_node->previous_node = 0;
-    }
+    teams->table[key] = new_node;
+    new_node->previous_node = 0;
   }
   else
   {
+    taken_node = teams->table[key];
+    while (taken_node->next_node != 0)
     {
-      taken_node = teams->table[key];
-      while (taken_node->next_node != 0)
-      {
-        taken_node = taken_node->next_node;
-      }
-
-      taken_node->next_node = new_node;
-      new_node->previous_node = taken_node;
+      taken_node = taken_node->next_node;
     }
+
+    taken_node->next_node = new_node;
+    new_node->previous_node = taken_node;
   }
 
 }
@@ -81,9 +77,7 @@ team *get_team(team_table *teams, char *name)
   {
     if (!strcmp(node->team->name, name))
     {
-      {
-        return node->team;
-      }
+      return node->team;
     }
     else
     {
@@ -105,9 +99,7 @@ int same_team(team *team_1, team *team_2)
 {
   if (!strcmp(team_1->name, team_2->name))
   {
-    {
-      return 1;
-    }
+    return 1;
   }
   else
   {
@@ -137,48 +129,40 @@ char **get_top_winners_names(team_table *teams)
   {
     if ((node = teams->table[i]) != 0)
     {
+      while (node != 0)
       {
-        while (node != 0)
+        if (node->team->won_games == max_no_wins)
         {
-          if (node->team->won_games == max_no_wins)
+          if ((++no_top_winners) >= teams->len_top_winners)
           {
-            {
-              if ((++no_top_winners) >= teams->len_top_winners)
-              {
-                {
-                  teams->len_top_winners += 10;
-                  teams->top_winners_names = realloc(teams->top_winners_names, teams->len_top_winners * (sizeof(char *)));
-                }
-              }
-              else
-              {
-                
-              }
-
-              teams->top_winners_names[no_top_winners - 1] = node->team->name;
-            }
+            teams->len_top_winners += 10;
+            teams->top_winners_names = realloc(teams->top_winners_names, teams->len_top_winners * (sizeof(char *)));
           }
           else
           {
-            if (node->team->won_games > max_no_wins)
-            {
-              {
-                no_top_winners = 1;
-                max_no_wins = node->team->won_games;
-                teams->top_winners_names[0] = node->team->name;
-              }
-            }
-            else
-            {
-              
-            }
-
+            
           }
 
-          node = node->next_node;
+          teams->top_winners_names[no_top_winners - 1] = node->team->name;
+        }
+        else
+        {
+          if (node->team->won_games > max_no_wins)
+          {
+            no_top_winners = 1;
+            max_no_wins = node->team->won_games;
+            teams->top_winners_names[0] = node->team->name;
+          }
+          else
+          {
+            
+          }
+
         }
 
+        node = node->next_node;
       }
+
     }
     else
     {
@@ -214,18 +198,16 @@ void free_teams(team_table *teams)
   {
     if (teams->table[i] != 0)
     {
+      node = teams->table[i];
+      while (node != 0)
       {
-        node = teams->table[i];
-        while (node != 0)
-        {
-          free(node->team->name);
-          free(node->team);
-          tmp = node->next_node;
-          free(node);
-          node = tmp;
-        }
-
+        free(node->team->name);
+        free(node->team);
+        tmp = node->next_node;
+        free(node);
+        node = tmp;
       }
+
     }
     else
     {

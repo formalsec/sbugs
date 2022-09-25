@@ -20,73 +20,57 @@ int main()
   {
     if (cmd == 'A')
     {
-      {
-        NL++;
-        n_equipas = A(NL, n_equipas, h_equipas);
-      }
+      NL++;
+      n_equipas = A(NL, n_equipas, h_equipas);
     }
     else
     {
       if (cmd == 'P')
       {
-        {
-          NL++;
-          P(NL, h_equipas);
-        }
+        NL++;
+        P(NL, h_equipas);
       }
       else
       {
         if (cmd == 'a')
         {
-          {
-            NL++;
-            a(NL, jogos, h_jogos, h_equipas);
-          }
+          NL++;
+          a(NL, jogos, h_jogos, h_equipas);
         }
         else
         {
           if (cmd == 'l')
           {
-            {
-              NL++;
-              l(NL, jogos);
-            }
+            NL++;
+            l(NL, jogos);
           }
           else
           {
             if (cmd == 'p')
             {
-              {
-                NL++;
-                p(NL, h_jogos);
-              }
+              NL++;
+              p(NL, h_jogos);
             }
             else
             {
               if (cmd == 's')
               {
-                {
-                  NL++;
-                  s(NL, h_jogos, h_equipas);
-                }
+                NL++;
+                s(NL, h_jogos, h_equipas);
               }
               else
               {
                 if (cmd == 'r')
                 {
-                  {
-                    NL++;
-                    r(NL, jogos, h_jogos, h_equipas);
-                  }
+                  NL++;
+                  r(NL, jogos, h_jogos, h_equipas);
                 }
                 else
                 {
                   if (cmd == 'g')
                   {
-                    {
-                      NL++;
-                      g(NL, h_equipas);
-                    }
+                    NL++;
+                    g(NL, h_equipas);
                   }
                   else
                   {

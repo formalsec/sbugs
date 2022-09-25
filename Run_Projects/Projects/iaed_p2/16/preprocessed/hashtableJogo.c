@@ -51,9 +51,7 @@ jogo *procuraHashTableJogo(listaJogo **headsJogos, char *nome, int M)
   int i = hash(nome, M);
   if (headsJogos == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -62,9 +60,7 @@ jogo *procuraHashTableJogo(listaJogo **headsJogos, char *nome, int M)
 
   if (headsJogos[i] == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -80,9 +76,7 @@ int jogoExiste(listaJogo **headsJogos, char *nome, int M_J)
   auxJogo = procuraHashTableJogo(headsJogos, nome, M_J);
   if (auxJogo == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {

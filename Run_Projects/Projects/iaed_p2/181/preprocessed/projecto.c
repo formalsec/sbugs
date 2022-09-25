@@ -126,10 +126,8 @@ void a_adiciona_jogo(int NL, ListaJogos *jogos_ordenados, HashJogos *jogos, Hash
   jogo = procuraJogo_HashJogo(jogos, nome);
   if (jogo != 0)
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-      return;
-    }
+    printf("%d Jogo existente.\n", NL);
+    return;
   }
   else
   {
@@ -140,10 +138,8 @@ void a_adiciona_jogo(int NL, ListaJogos *jogos_ordenados, HashJogos *jogos, Hash
   equipa2 = procura_HashEquipas(equipas, equipa2_nome);
   if ((equipa1 == 0) || (equipa2 == 0))
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -182,10 +178,8 @@ void p_procura_jogo(int NL, HashJogos *jogos)
   jogo = procuraJogo_HashJogo(jogos, nome);
   if (jogo == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -208,10 +202,8 @@ void r_remove_jogo(int NL, ListaJogos *jogos_ordenados, HashJogos *jogos)
   jogo = procuraJogo_HashJogo(jogos, nome);
   if (jogo == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -242,10 +234,8 @@ void s_altera_resultado(int NL, ListaJogos *jogos_ordenados, HashJogos *jogos)
   jogo_lista = procura_jogo(jogos_ordenados, nome);
   if ((jogo_hash == 0) || (jogo_lista == 0))
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -271,10 +261,8 @@ void A_adiciona_equipa(int NL, HashEquipas *equipas)
   equipa = procura_HashEquipas(equipas, nome);
   if (equipa != 0)
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-      return;
-    }
+    printf("%d Equipa existente.\n", NL);
+    return;
   }
   else
   {
@@ -297,10 +285,8 @@ void P_procura_equipa(int NL, HashEquipas *equipas)
   equipa = procura_HashEquipas(equipas, nome);
   if (equipa == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -326,16 +312,14 @@ void g_lista_equipas(int NL, HashEquipas *equipas)
   maior_numero_vitorias(equipas, &max_vitorias, &quantidade);
   if (max_vitorias != (-1))
   {
-    {
-      nomes_equipas = (char **) malloc((sizeof(char *)) * quantidade);
-      procura_equipasVitoriaHash(equipas, nomes_equipas, max_vitorias, quantidade);
-      qsort(nomes_equipas, quantidade, sizeof(char *), comparar_string);
-      printf("%d Melhores %d\n", NL, max_vitorias);
-      for (i = 0; i < quantidade; i++)
-        printf("%d * %s\n", NL, nomes_equipas[i]);
+    nomes_equipas = (char **) malloc((sizeof(char *)) * quantidade);
+    procura_equipasVitoriaHash(equipas, nomes_equipas, max_vitorias, quantidade);
+    qsort(nomes_equipas, quantidade, sizeof(char *), comparar_string);
+    printf("%d Melhores %d\n", NL, max_vitorias);
+    for (i = 0; i < quantidade; i++)
+      printf("%d * %s\n", NL, nomes_equipas[i]);
 
-      free(nomes_equipas);
-    }
+    free(nomes_equipas);
   }
   else
   {

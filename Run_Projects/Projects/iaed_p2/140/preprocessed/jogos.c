@@ -14,17 +14,13 @@ Jogo newJogo(char *nome, char *e1, char *e2, int s1, int s2, ulong *ordem, link 
   final->ordem = *ordem;
   if (s1 > s2)
   {
-    {
-      final->e1->equipa->ganhos += 1;
-    }
+    final->e1->equipa->ganhos += 1;
   }
   else
   {
     if (s2 > s1)
     {
-      {
-        final->e2->equipa->ganhos += 1;
-      }
+      final->e2->equipa->ganhos += 1;
     }
     else
     {
@@ -60,9 +56,7 @@ Jogo JsearchList(jlink head, char *nome)
   {
     if (strcmp(nome, p->jogo->nome) == 0)
     {
-      {
-        return p->jogo;
-      }
+      return p->jogo;
     }
     else
     {
@@ -96,52 +90,42 @@ jlink removeJogo(jlink head, char *nome)
   {
     if (strcmp(t->jogo->nome, nome) == 0)
     {
+      if (t == head)
       {
-        if (t == head)
-        {
-          {
-            head = t->next;
-          }
-        }
-        else
-        {
-          if (t != head)
-          {
-            {
-              prev->next = t->next;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-        if (t->jogo->e1->pontos > t->jogo->e2->pontos)
-        {
-          {
-            t->jogo->e1->equipa->ganhos -= 1;
-          }
-        }
-        else
-        {
-          if (t->jogo->e1->pontos < t->jogo->e2->pontos)
-          {
-            {
-              t->jogo->e2->equipa->ganhos -= 1;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-        freeJNode(t);
-        break;
+        head = t->next;
       }
+      else
+      {
+        if (t != head)
+        {
+          prev->next = t->next;
+        }
+        else
+        {
+          
+        }
+
+      }
+
+      if (t->jogo->e1->pontos > t->jogo->e2->pontos)
+      {
+        t->jogo->e1->equipa->ganhos -= 1;
+      }
+      else
+      {
+        if (t->jogo->e1->pontos < t->jogo->e2->pontos)
+        {
+          t->jogo->e2->equipa->ganhos -= 1;
+        }
+        else
+        {
+          
+        }
+
+      }
+
+      freeJNode(t);
+      break;
     }
     else
     {

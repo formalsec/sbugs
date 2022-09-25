@@ -49,9 +49,7 @@ int main()
         auxliar = command_a(htable_game, htable_team, GameName, Team1Name, Team2Name, score1, score2, NL_counter);
         if (auxliar != 0)
       {
-        {
-          ordergamelist = insertBegin(ordergamelist, auxliar);
-        }
+        ordergamelist = insertBegin(ordergamelist, auxliar);
       }
       else
       {
@@ -132,10 +130,8 @@ int main()
         mostvictories = Lookup_BiggerNumVictories(htable_team);
         if (mostvictories == (-1))
       {
-        {
-          NL_counter++;
-          break;
-        }
+        NL_counter++;
+        break;
       }
       else
       {

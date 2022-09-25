@@ -81,9 +81,7 @@ jogos *expand_j(jogos *tb_j)
   {
     if (old->tb[i])
     {
-      {
-        tb_j = insere_j(old->tb[i], tb_j);
-      }
+      tb_j = insere_j(old->tb[i], tb_j);
     }
     else
     {

@@ -39,74 +39,60 @@ void comando_a(int linha, jlink *hash_jogos, elink *hash_equipas, Lista_Jogos li
   res2 = new_sym_var(sizeof(int) * 8);
   if (!existe_jogo(hash_jogos, nome_jogo))
   {
+    equipa1 = procura_equipa(hash_equipas, eq1_nome);
+    if (equipa1 == 0)
     {
-      equipa1 = procura_equipa(hash_equipas, eq1_nome);
-      if (equipa1 == 0)
-      {
-        {
-          free(jogo);
-          printf("%d Equipa inexistente.\n", linha);
-          return;
-        }
-      }
-      else
-      {
-        {
-          equipa2 = procura_equipa(hash_equipas, eq2_nome);
-          if (equipa2 == 0)
-          {
-            {
-              free(jogo);
-              printf("%d Equipa inexistente.\n", linha);
-              return;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-      }
-
-      if (res1 > res2)
-      {
-        {
-          jogo->vencedora = equipa1;
-          equipa1->total_ganhos++;
-        }
-      }
-      else
-      {
-        if (res1 < res2)
-        {
-          {
-            jogo->vencedora = equipa2;
-            equipa2->total_ganhos++;
-          }
-        }
-        else
-        {
-          jogo->vencedora = 0;
-        }
-
-      }
-
-      jogo->nome = malloc((sizeof(char)) * (strlen(nome_jogo) + 1));
-      jogo->nome = strcpy(jogo->nome, nome_jogo);
-      jogo->eq1 = equipa1;
-      jogo->eq2 = equipa2;
-      jogo->res1 = res1;
-      jogo->res2 = res2;
-      adiciona_jogo(hash_jogos, lista, jogo);
+      free(jogo);
+      printf("%d Equipa inexistente.\n", linha);
+      return;
     }
+    else
+    {
+      equipa2 = procura_equipa(hash_equipas, eq2_nome);
+      if (equipa2 == 0)
+      {
+        free(jogo);
+        printf("%d Equipa inexistente.\n", linha);
+        return;
+      }
+      else
+      {
+        
+      }
+
+    }
+
+    if (res1 > res2)
+    {
+      jogo->vencedora = equipa1;
+      equipa1->total_ganhos++;
+    }
+    else
+    {
+      if (res1 < res2)
+      {
+        jogo->vencedora = equipa2;
+        equipa2->total_ganhos++;
+      }
+      else
+      {
+        jogo->vencedora = 0;
+      }
+
+    }
+
+    jogo->nome = malloc((sizeof(char)) * (strlen(nome_jogo) + 1));
+    jogo->nome = strcpy(jogo->nome, nome_jogo);
+    jogo->eq1 = equipa1;
+    jogo->eq2 = equipa2;
+    jogo->res1 = res1;
+    jogo->res2 = res2;
+    adiciona_jogo(hash_jogos, lista, jogo);
   }
   else
   {
-    {
-      free(jogo);
-      printf("%d Jogo existente.\n", linha);
-    }
+    free(jogo);
+    printf("%d Jogo existente.\n", linha);
   }
 
 }
@@ -126,16 +112,12 @@ void comando_A(int linha, elink *hash_equipas)
   equipa->total_ganhos = 0;
   if (!existe_equipa(hash_equipas, equipa->nome))
   {
-    {
-      adiciona_equipa(hash_equipas, equipa);
-    }
+    adiciona_equipa(hash_equipas, equipa);
   }
   else
   {
-    {
-      printf("%d Equipa existente.\n", linha);
-      FREEequipa(equipa);
-    }
+    printf("%d Equipa existente.\n", linha);
+    FREEequipa(equipa);
   }
 
 }
@@ -145,9 +127,7 @@ void comando_l(int linha, Lista_Jogos lista)
   jog_lig x = lista->primeiro;
   if (lista->primeiro == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -176,9 +156,7 @@ void comando_p(int linha, jlink *hash_jogos)
   jogo = procura_jogo(hash_jogos, nome_jogo);
   if (jogo != 0)
   {
-    {
-      printf("%d %s %s %s %d %d\n", linha, jogo->nome, jogo->eq1->nome, jogo->eq2->nome, jogo->res1, jogo->res2);
-    }
+    printf("%d %s %s %s %d %d\n", linha, jogo->nome, jogo->eq1->nome, jogo->eq2->nome, jogo->res1, jogo->res2);
   }
   else
   {
@@ -200,15 +178,11 @@ void comando_P(int linha, elink *hash_equipas)
   equipa = procura_equipa(hash_equipas, nome_equipa);
   if (equipa != 0)
   {
-    {
-      printf("%d %s %d\n", linha, equipa->nome, equipa->total_ganhos);
-    }
+    printf("%d %s %d\n", linha, equipa->nome, equipa->total_ganhos);
   }
   else
   {
-    {
-      printf("%d Equipa inexistente.\n", linha);
-    }
+    printf("%d Equipa inexistente.\n", linha);
   }
 
 }
@@ -226,18 +200,16 @@ void comando_r(int linha, jlink *hash_jogos, Lista_Jogos lista)
   x = procura_jogo(hash_jogos, nome_jogo);
   if (x != 0)
   {
+    if (x->vencedora != 0)
     {
-      if (x->vencedora != 0)
-      {
-        x->vencedora->total_ganhos--;
-      }
-      else
-      {
-        
-      }
-
-      remove_jogo(hash_jogos, lista, x);
+      x->vencedora->total_ganhos--;
     }
+    else
+    {
+      
+    }
+
+    remove_jogo(hash_jogos, lista, x);
   }
   else
   {
@@ -272,44 +244,36 @@ void comando_s(int linha, jlink *hash_jogos)
   x = procura_jogo(hash_jogos, nome_jogo);
   if (x != 0)
   {
+    x->res1 = novo_1;
+    x->res2 = novo_2;
+    if (x->vencedora != 0)
     {
-      x->res1 = novo_1;
-      x->res2 = novo_2;
-      if (x->vencedora != 0)
+      x->vencedora->total_ganhos--;
+    }
+    else
+    {
+      
+    }
+
+    if (novo_1 > novo_2)
+    {
+      x->vencedora = x->eq1;
+      x->vencedora->total_ganhos++;
+    }
+    else
+    {
+      if (novo_1 < novo_2)
       {
-        {
-          x->vencedora->total_ganhos--;
-        }
+        x->vencedora = x->eq2;
+        x->vencedora->total_ganhos++;
       }
       else
       {
-        
-      }
-
-      if (novo_1 > novo_2)
-      {
-        {
-          x->vencedora = x->eq1;
-          x->vencedora->total_ganhos++;
-        }
-      }
-      else
-      {
-        if (novo_1 < novo_2)
-        {
-          {
-            x->vencedora = x->eq2;
-            x->vencedora->total_ganhos++;
-          }
-        }
-        else
-        {
-          x->vencedora = 0;
-        }
-
+        x->vencedora = 0;
       }
 
     }
+
   }
   else
   {

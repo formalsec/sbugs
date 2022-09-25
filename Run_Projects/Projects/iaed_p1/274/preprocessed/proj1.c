@@ -205,20 +205,18 @@ void adicionaprodaenc(int ide, int idp, int qtd)
         }
         else
         {
+          todos_produtos[idp].Quantidade -= qtd;
+          todas_encomendas[ide].Peso += todos_produtos[idp].Peso * qtd;
+          todas_encomendas[ide].Quantidade[idp] += qtd;
+          if (todas_encomendas[ide].Quantidade[idp] == 0)
           {
-            todos_produtos[idp].Quantidade -= qtd;
-            todas_encomendas[ide].Peso += todos_produtos[idp].Peso * qtd;
-            todas_encomendas[ide].Quantidade[idp] += qtd;
-            if (todas_encomendas[ide].Quantidade[idp] == 0)
-            {
-              todas_encomendas[ide].Quantidade[idp] = qtd;
-            }
-            else
-            {
-              
-            }
-
+            todas_encomendas[ide].Quantidade[idp] = qtd;
           }
+          else
+          {
+            
+          }
+
         }
 
       }
@@ -264,21 +262,17 @@ void removeprodenc(int ide, int idp)
     }
     else
     {
+      if (todas_encomendas[ide].Quantidade[idp] != 0)
       {
-        if (todas_encomendas[ide].Quantidade[idp] != 0)
-        {
-          {
-            todos_produtos[idp].Quantidade += todas_encomendas[ide].Quantidade[idp];
-            todas_encomendas[ide].Peso -= todos_produtos[idp].Peso * todas_encomendas[ide].Quantidade[idp];
-            todas_encomendas[ide].Quantidade[idp] = 0;
-          }
-        }
-        else
-        {
-          
-        }
-
+        todos_produtos[idp].Quantidade += todas_encomendas[ide].Quantidade[idp];
+        todas_encomendas[ide].Peso -= todos_produtos[idp].Peso * todas_encomendas[ide].Quantidade[idp];
+        todas_encomendas[ide].Quantidade[idp] = 0;
       }
+      else
+      {
+        
+      }
+
     }
 
   }
@@ -295,20 +289,18 @@ void custoenc(int ide)
   }
   else
   {
+    for (i = 0; i < 10000; i++)
+      if (todas_encomendas[ide].Quantidade[i] > 0)
     {
-      for (i = 0; i < 10000; i++)
-        if (todas_encomendas[ide].Quantidade[i] > 0)
-      {
-        custo += todas_encomendas[ide].Quantidade[i] * todos_produtos[i].Preco;
-      }
-      else
-      {
-        
-      }
-
-
-      printf("Custo da encomenda %d %d.\n", ide, custo);
+      custo += todas_encomendas[ide].Quantidade[i] * todos_produtos[i].Preco;
     }
+    else
+    {
+      
+    }
+
+
+    printf("Custo da encomenda %d %d.\n", ide, custo);
   }
 
 }
@@ -357,28 +349,26 @@ void prodquantidademaisalta(int idp)
   }
   else
   {
+    for (i = 0; i < qtd_encomendas; i++)
+      if (todas_encomendas[i].Quantidade[idp] > todas_encomendas[maxencomenda].Quantidade[idp])
     {
-      for (i = 0; i < qtd_encomendas; i++)
-        if (todas_encomendas[i].Quantidade[idp] > todas_encomendas[maxencomenda].Quantidade[idp])
-      {
-        maxencomenda = i;
-      }
-      else
-      {
-        
-      }
-
-
-      if (todas_encomendas[maxencomenda].Quantidade[idp] != 0)
-      {
-        printf("Maximo produto %d %d %d.\n", idp, maxencomenda, todas_encomendas[maxencomenda].Quantidade[idp]);
-      }
-      else
-      {
-        
-      }
-
+      maxencomenda = i;
     }
+    else
+    {
+      
+    }
+
+
+    if (todas_encomendas[maxencomenda].Quantidade[idp] != 0)
+    {
+      printf("Maximo produto %d %d %d.\n", idp, maxencomenda, todas_encomendas[maxencomenda].Quantidade[idp]);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -451,12 +441,10 @@ void Adjust(produto heap[], int i)
     }
     else
     {
-      {
-        copy = heap[i];
-        heap[i] = heap[j];
-        heap[j] = copy;
-        i = j;
-      }
+      copy = heap[i];
+      heap[i] = heap[j];
+      heap[j] = copy;
+      i = j;
     }
 
   }
@@ -501,29 +489,25 @@ void ordemalfabetica(int ide)
   }
   else
   {
+    for (i = 0; i < 10000; i++)
+      if (todas_encomendas[ide].Quantidade[i] > 0)
     {
-      for (i = 0; i < 10000; i++)
-        if (todas_encomendas[ide].Quantidade[i] > 0)
-      {
-        {
-          copia[j] = todos_produtos[i];
-          copia[j].Quantidade = todas_encomendas[ide].Quantidade[i];
-          j++;
-        }
-      }
-      else
-      {
-        
-      }
-
-
-      copia[0].Identificacao = j - 1;
-      heapSort(copia);
-      printf("Encomenda %d\n", ide);
-      for (i = 1; i < j; i++)
-        printf("* %s %d %d\n", copia[i].Descricao, copia[i].Preco, copia[i].Quantidade);
-
+      copia[j] = todos_produtos[i];
+      copia[j].Quantidade = todas_encomendas[ide].Quantidade[i];
+      j++;
     }
+    else
+    {
+      
+    }
+
+
+    copia[0].Identificacao = j - 1;
+    heapSort(copia);
+    printf("Encomenda %d\n", ide);
+    for (i = 1; i < j; i++)
+      printf("* %s %d %d\n", copia[i].Descricao, copia[i].Preco, copia[i].Quantidade);
+
   }
 
 }

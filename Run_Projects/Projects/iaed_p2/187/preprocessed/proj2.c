@@ -130,26 +130,24 @@ NodeJ *a_add_jogo(int cont, NodeJ **tabelaJ, NodeE **tabelaE, NodeJ **caudaJ, No
     }
     else
     {
+      cabecaJ = insertEnd_listaJ(cabecaJ, caudaJ, tabelaJ, nomej, nome1, nome2, res1, res2);
+      if (res1 > res2)
       {
-        cabecaJ = insertEnd_listaJ(cabecaJ, caudaJ, tabelaJ, nomej, nome1, nome2, res1, res2);
-        if (res1 > res2)
+        equipa1->vitorias += 1;
+      }
+      else
+      {
+        if (res1 < res2)
         {
-          equipa1->vitorias += 1;
+          equipa2->vitorias += 1;
         }
         else
         {
-          if (res1 < res2)
-          {
-            equipa2->vitorias += 1;
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
+
     }
 
   }
@@ -225,28 +223,26 @@ NodeJ *r_remove_jogo(int cont, NodeJ **tabelaJ, NodeJ *cabecaJ, NodeJ **caudaJ, 
   }
   else
   {
+    equipa1 = encontra_tabelaE(tabelaE, jogo->casa);
+    equipa2 = encontra_tabelaE(tabelaE, jogo->fora);
+    if (jogo->resCasa > jogo->resFora)
     {
-      equipa1 = encontra_tabelaE(tabelaE, jogo->casa);
-      equipa2 = encontra_tabelaE(tabelaE, jogo->fora);
-      if (jogo->resCasa > jogo->resFora)
+      equipa1->vitorias -= 1;
+    }
+    else
+    {
+      if (jogo->resFora > jogo->resCasa)
       {
-        equipa1->vitorias -= 1;
+        equipa2->vitorias -= 1;
       }
       else
       {
-        if (jogo->resFora > jogo->resCasa)
-        {
-          equipa2->vitorias -= 1;
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      cabecaJ = remove_listaJ(cabecaJ, caudaJ, tabelaJ, jogo->nome);
     }
+
+    cabecaJ = remove_listaJ(cabecaJ, caudaJ, tabelaJ, jogo->nome);
   }
 
   return cabecaJ;
@@ -275,33 +271,49 @@ void s_altera_resultado(int cont, NodeJ **tabelaJ, NodeE **tabelaE)
   }
   else
   {
+    equipaCasa = encontra_tabelaE(tabelaE, jogo->casa);
+    equipaFora = encontra_tabelaE(tabelaE, jogo->fora);
+    if ((jogo->resCasa > jogo->resFora) && (score1 <= score2))
     {
-      equipaCasa = encontra_tabelaE(tabelaE, jogo->casa);
-      equipaFora = encontra_tabelaE(tabelaE, jogo->fora);
-      if ((jogo->resCasa > jogo->resFora) && (score1 <= score2))
+      equipaCasa->vitorias -= 1;
+      if (score1 < score2)
       {
-        {
-          equipaCasa->vitorias -= 1;
-          if (score1 < score2)
-          {
-            equipaFora->vitorias += 1;
-          }
-          else
-          {
-            
-          }
-
-        }
+        equipaFora->vitorias += 1;
       }
       else
       {
-        if ((jogo->resCasa < jogo->resFora) && (score1 >= score2))
+        
+      }
+
+    }
+    else
+    {
+      if ((jogo->resCasa < jogo->resFora) && (score1 >= score2))
+      {
+        equipaFora->vitorias -= 1;
+        if (score1 > score2)
         {
+          equipaCasa->vitorias += 1;
+        }
+        else
+        {
+          
+        }
+
+      }
+      else
+      {
+        if (jogo->resCasa == jogo->resFora)
+        {
+          if (score1 > score2)
           {
-            equipaFora->vitorias -= 1;
-            if (score1 > score2)
+            equipaCasa->vitorias += 1;
+          }
+          else
+          {
+            if (score1 < score2)
             {
-              equipaCasa->vitorias += 1;
+              equipaFora->vitorias += 1;
             }
             else
             {
@@ -309,43 +321,19 @@ void s_altera_resultado(int cont, NodeJ **tabelaJ, NodeE **tabelaE)
             }
 
           }
+
         }
         else
         {
-          if (jogo->resCasa == jogo->resFora)
-          {
-            {
-              if (score1 > score2)
-              {
-                equipaCasa->vitorias += 1;
-              }
-              else
-              {
-                if (score1 < score2)
-                {
-                  equipaFora->vitorias += 1;
-                }
-                else
-                {
-                  
-                }
-
-              }
-
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
 
-      jogo->resCasa = score1;
-      jogo->resFora = score2;
     }
+
+    jogo->resCasa = score1;
+    jogo->resFora = score2;
   }
 
 }
@@ -369,36 +357,30 @@ void g_encontra_mais_vitorias(int cont, NodeE **tabelaE)
   {
     if (tabelaE[i] != 0)
     {
+      t = tabelaE[i];
+      while (t != 0)
       {
-        t = tabelaE[i];
-        while (t != 0)
+        if (t->vitorias == max)
         {
-          if (t->vitorias == max)
+          n += 1;
+        }
+        else
+        {
+          if (t->vitorias > max)
           {
-            {
-              n += 1;
-            }
+            max = t->vitorias;
+            n = 1;
           }
           else
           {
-            if (t->vitorias > max)
-            {
-              {
-                max = t->vitorias;
-                n = 1;
-              }
-            }
-            else
-            {
-              
-            }
-
+            
           }
 
-          t = t->next;
         }
 
+        t = t->next;
       }
+
     }
     else
     {
@@ -413,26 +395,22 @@ void g_encontra_mais_vitorias(int cont, NodeE **tabelaE)
   {
     if (tabelaE[i] != 0)
     {
+      t = tabelaE[i];
+      while (t != 0)
       {
-        t = tabelaE[i];
-        while (t != 0)
+        if (t->vitorias == max)
         {
-          if (t->vitorias == max)
-          {
-            {
-              vector[n] = t->nome;
-              n += 1;
-            }
-          }
-          else
-          {
-            
-          }
-
-          t = t->next;
+          vector[n] = t->nome;
+          n += 1;
+        }
+        else
+        {
+          
         }
 
+        t = t->next;
       }
+
     }
     else
     {
@@ -443,15 +421,13 @@ void g_encontra_mais_vitorias(int cont, NodeE **tabelaE)
 
   if (n)
   {
+    qsort(vector, n, sizeof(char *), comparador_de_strings);
+    printf("%d Melhores %d\n", cont, max);
+    for (k = 0; k < n; k++)
     {
-      qsort(vector, n, sizeof(char *), comparador_de_strings);
-      printf("%d Melhores %d\n", cont, max);
-      for (k = 0; k < n; k++)
-      {
-        printf("%d * %s\n", cont, vector[k]);
-      }
-
+      printf("%d * %s\n", cont, vector[k]);
     }
+
   }
   else
   {

@@ -54,15 +54,11 @@ int main()
         stock = new_sym_var(sizeof(int) * 8);
         if (identifier >= id)
       {
-        {
-          printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", identifier);
-        }
+        printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", identifier);
       }
       else
       {
-        {
-          myProduct[identifier].stock += stock;
-        }
+        myProduct[identifier].stock += stock;
       }
 
         break;
@@ -78,10 +74,8 @@ int main()
         stock = new_sym_var(sizeof(int) * 8);
         if (order_identifier >= order_id)
       {
-        {
-          printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", identifier, order_identifier);
-          break;
-        }
+        printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", identifier, order_identifier);
+        break;
       }
       else
       {
@@ -90,10 +84,8 @@ int main()
 
         if (identifier >= id)
       {
-        {
-          printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", identifier, order_identifier);
-          break;
-        }
+        printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", identifier, order_identifier);
+        break;
       }
       else
       {
@@ -102,10 +94,8 @@ int main()
 
         if (myProduct[identifier].stock < stock)
       {
-        {
-          printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", identifier, order_identifier);
-          break;
-        }
+        printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", identifier, order_identifier);
+        break;
       }
       else
       {
@@ -114,19 +104,15 @@ int main()
 
         if ((myOrders[order_identifier].order_weight + (stock * myProduct[identifier].weight)) > 200)
       {
-        {
-          printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", identifier, order_identifier);
-          break;
-        }
+        printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", identifier, order_identifier);
+        break;
       }
       else
       {
-        {
-          myOrders[order_identifier].product[identifier].stock = myOrders[order_identifier].product[identifier].stock + stock;
-          myOrders[order_identifier].order_weight = myOrders[order_identifier].order_weight + (stock * myProduct[identifier].weight);
-          myProduct[identifier].stock = myProduct[identifier].stock - stock;
-          break;
-        }
+        myOrders[order_identifier].product[identifier].stock = myOrders[order_identifier].product[identifier].stock + stock;
+        myOrders[order_identifier].order_weight = myOrders[order_identifier].order_weight + (stock * myProduct[identifier].weight);
+        myProduct[identifier].stock = myProduct[identifier].stock - stock;
+        break;
       }
 
         break;
@@ -136,10 +122,8 @@ int main()
         stock = new_sym_var(sizeof(int) * 8);
         if (identifier >= id)
       {
-        {
-          printf("Impossivel remover stock do produto %d. Produto inexistente.\n", identifier);
-          break;
-        }
+        printf("Impossivel remover stock do produto %d. Produto inexistente.\n", identifier);
+        break;
       }
       else
       {
@@ -148,18 +132,14 @@ int main()
 
         if (myProduct[identifier].stock < stock)
       {
-        {
-          printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", stock, identifier);
-          break;
-        }
+        printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", stock, identifier);
+        break;
       }
       else
       {
-        {
-          myProduct[identifier].stock = myProduct[identifier].stock - stock;
-          printf("novo stock:%d", myProduct[identifier].stock);
-          break;
-        }
+        myProduct[identifier].stock = myProduct[identifier].stock - stock;
+        printf("novo stock:%d", myProduct[identifier].stock);
+        break;
       }
 
         break;
@@ -169,10 +149,8 @@ int main()
         identifier = new_sym_var(sizeof(int) * 8);
         if (order_identifier >= order_id)
       {
-        {
-          printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", identifier, order_identifier);
-          break;
-        }
+        printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", identifier, order_identifier);
+        break;
       }
       else
       {
@@ -181,19 +159,15 @@ int main()
 
         if (identifier >= id)
       {
-        {
-          printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", identifier, order_identifier);
-          break;
-        }
+        printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", identifier, order_identifier);
+        break;
       }
       else
       {
-        {
-          myProduct[identifier].stock = myProduct[identifier].stock + myOrders[order_identifier].product[identifier].stock;
-          myOrders[order_identifier].order_weight -= myProduct[identifier].weight * myOrders[order_identifier].product[identifier].stock;
-          myOrders[order_identifier].product[identifier].stock = 0;
-          break;
-        }
+        myProduct[identifier].stock = myProduct[identifier].stock + myOrders[order_identifier].product[identifier].stock;
+        myOrders[order_identifier].order_weight -= myProduct[identifier].weight * myOrders[order_identifier].product[identifier].stock;
+        myOrders[order_identifier].product[identifier].stock = 0;
+        break;
       }
 
         break;
@@ -202,17 +176,13 @@ int main()
         order_identifier = new_sym_var(sizeof(int) * 8);
         if (order_identifier >= order_id)
       {
-        {
-          printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", order_identifier);
-          break;
-        }
+        printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", order_identifier);
+        break;
       }
       else
       {
-        {
-          custoEncomenda(order_identifier);
-          break;
-        }
+        custoEncomenda(order_identifier);
+        break;
       }
 
         break;
@@ -222,17 +192,13 @@ int main()
         price = new_sym_var(sizeof(int) * 8);
         if (identifier >= id)
       {
-        {
-          printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", identifier);
-          break;
-        }
+        printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", identifier);
+        break;
       }
       else
       {
-        {
-          myProduct[identifier].price = price;
-          break;
-        }
+        myProduct[identifier].price = price;
+        break;
       }
 
         break;
@@ -242,10 +208,8 @@ int main()
         identifier = new_sym_var(sizeof(int) * 8);
         if (order_identifier >= order_id)
       {
-        {
-          printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", order_identifier);
-          break;
-        }
+        printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", order_identifier);
+        break;
       }
       else
       {
@@ -254,17 +218,13 @@ int main()
 
         if (identifier >= id)
       {
-        {
-          printf("Impossivel listar produto %d. Produto inexistente.\n", identifier);
-          break;
-        }
+        printf("Impossivel listar produto %d. Produto inexistente.\n", identifier);
+        break;
       }
       else
       {
-        {
-          printf("%s %d.\n", myProduct[identifier].description, myOrders[order_identifier].product[identifier].stock);
-          break;
-        }
+        printf("%s %d.\n", myProduct[identifier].description, myOrders[order_identifier].product[identifier].stock);
+        break;
       }
 
         break;
@@ -273,17 +233,13 @@ int main()
         identifier = new_sym_var(sizeof(int) * 8);
         if (identifier >= id)
       {
-        {
-          printf("Impossivel listar maximo do produto %d. Produto inexistente.", identifier);
-          break;
-        }
+        printf("Impossivel listar maximo do produto %d. Produto inexistente.", identifier);
+        break;
       }
       else
       {
-        {
-          orderMostProduct(identifier);
-          break;
-        }
+        orderMostProduct(identifier);
+        break;
       }
 
 
@@ -322,10 +278,8 @@ void orderMostProduct(int identifier)
   {
     if (max < myOrders[i].product[identifier].stock)
     {
-      {
-        max = myOrders[i].product[identifier].stock;
-        order = i;
-      }
+      max = myOrders[i].product[identifier].stock;
+      order = i;
     }
     else
     {

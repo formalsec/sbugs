@@ -27,10 +27,8 @@ void add_stock(const int product_id, const int quantity)
 {
   if (product_id >= product_count)
   {
-    {
-      printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", product_id);
-      return;
-    }
+    printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", product_id);
+    return;
   }
   else
   {
@@ -50,10 +48,8 @@ void add_product_to_order(const int order_id, const int product_id, const int qu
   int weight_after;
   if (order_id >= order_count)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", product_id, order_id);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", product_id, order_id);
+    return;
   }
   else
   {
@@ -62,10 +58,8 @@ void add_product_to_order(const int order_id, const int product_id, const int qu
 
   if (product_id >= product_count)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", product_id, order_id);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", product_id, order_id);
+    return;
   }
   else
   {
@@ -74,10 +68,8 @@ void add_product_to_order(const int order_id, const int product_id, const int qu
 
   if (quantity > storage[product_id].stock)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", product_id, order_id);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", product_id, order_id);
+    return;
   }
   else
   {
@@ -87,10 +79,8 @@ void add_product_to_order(const int order_id, const int product_id, const int qu
   weight_after = orders[order_id].weight + (storage[product_id].weight * quantity);
   if (weight_after > 200)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", product_id, order_id);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", product_id, order_id);
+    return;
   }
   else
   {
@@ -99,12 +89,10 @@ void add_product_to_order(const int order_id, const int product_id, const int qu
 
   if (orders[order_id].product_qty[product_id] != 0)
   {
-    {
-      storage[product_id].stock -= quantity;
-      orders[order_id].product_qty[product_id] += quantity;
-      orders[order_id].weight = weight_after;
-      return;
-    }
+    storage[product_id].stock -= quantity;
+    orders[order_id].product_qty[product_id] += quantity;
+    orders[order_id].weight = weight_after;
+    return;
   }
   else
   {
@@ -122,10 +110,8 @@ void remove_stock_from_product(const int product_id, const int quantity)
 {
   if (product_id >= product_count)
   {
-    {
-      printf("Impossivel remover stock do produto %d. Produto inexistente.\n", product_id);
-      return;
-    }
+    printf("Impossivel remover stock do produto %d. Produto inexistente.\n", product_id);
+    return;
   }
   else
   {
@@ -134,10 +120,8 @@ void remove_stock_from_product(const int product_id, const int quantity)
 
   if (quantity > storage[product_id].stock)
   {
-    {
-      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", quantity, product_id);
-      return;
-    }
+    printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", quantity, product_id);
+    return;
   }
   else
   {
@@ -153,10 +137,8 @@ void remove_product_from_order(const int order_id, const int product_id)
   Order order;
   if (order_id >= order_count)
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", product_id, order_id);
-      return;
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", product_id, order_id);
+    return;
   }
   else
   {
@@ -165,10 +147,8 @@ void remove_product_from_order(const int order_id, const int product_id)
 
   if (product_id >= product_count)
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", product_id, order_id);
-      return;
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", product_id, order_id);
+    return;
   }
   else
   {
@@ -180,15 +160,13 @@ void remove_product_from_order(const int order_id, const int product_id)
   {
     if (order.product_ids[i] == product_id)
     {
-      {
-        storage[product_id].stock += order.product_qty[product_id];
-        order.weight -= order.product_qty[product_id] * storage[product_id].weight;
-        order.product_qty[product_id] = 0;
-        order.product_ids[i] = order.product_ids[--order.num_products];
-        order.product_ids[order.num_products] = -1;
-        orders[order_id] = order;
-        return;
-      }
+      storage[product_id].stock += order.product_qty[product_id];
+      order.weight -= order.product_qty[product_id] * storage[product_id].weight;
+      order.product_qty[product_id] = 0;
+      order.product_ids[i] = order.product_ids[--order.num_products];
+      order.product_ids[order.num_products] = -1;
+      orders[order_id] = order;
+      return;
     }
     else
     {
@@ -207,10 +185,8 @@ void get_order_cost(const int order_id)
   int cost = 0;
   if (order_id >= order_count)
   {
-    {
-      printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", order_id);
-      return;
-    }
+    printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", order_id);
+    return;
   }
   else
   {
@@ -230,10 +206,8 @@ void change_product_price(const int product_id, const int price)
 {
   if (product_id >= product_count)
   {
-    {
-      printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", product_id);
-      return;
-    }
+    printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", product_id);
+    return;
   }
   else
   {
@@ -247,10 +221,8 @@ void list_product_from_order(const int order_id, const int product_id)
 {
   if (order_id >= order_count)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", order_id);
-      return;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", order_id);
+    return;
   }
   else
   {
@@ -259,10 +231,8 @@ void list_product_from_order(const int order_id, const int product_id)
 
   if (product_id >= product_count)
   {
-    {
-      printf("Impossivel listar produto %d. Produto inexistente.\n", product_id);
-      return;
-    }
+    printf("Impossivel listar produto %d. Produto inexistente.\n", product_id);
+    return;
   }
   else
   {
@@ -279,10 +249,8 @@ void list_order_with_highest_qty_of_product(const int product_id)
   int order_id = -1;
   if (product_id >= product_count)
   {
-    {
-      printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", product_id);
-      return;
-    }
+    printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", product_id);
+    return;
   }
   else
   {
@@ -293,10 +261,8 @@ void list_order_with_highest_qty_of_product(const int product_id)
   {
     if (orders[i].product_qty[product_id] > highest_quantity)
     {
-      {
-        order_id = i;
-        highest_quantity = orders[i].product_qty[product_id];
-      }
+      order_id = i;
+      highest_quantity = orders[i].product_qty[product_id];
     }
     else
     {
@@ -331,10 +297,8 @@ void list_products_by_description(const int order_id)
   int ids_array[200];
   if (order_id >= order_count)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", order_id);
-      return;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", order_id);
+    return;
   }
   else
   {

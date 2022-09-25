@@ -16,9 +16,7 @@ Team teamHashLookup(Team *hash_team_sys, char *name)
   {
     if (!strcmp(hash_team_sys[i]->name, name))
     {
-      {
-        return hash_team_sys[i];
-      }
+      return hash_team_sys[i];
     }
     else
     {
@@ -38,9 +36,7 @@ Game gameHashLookup(Game *hash_game_sys, char *name)
   {
     if ((!strcmp(hash_game_sys[i]->name, name)) && (!(hash_game_sys[i]->removed_state == 1)))
     {
-      {
-        return hash_game_sys[i];
-      }
+      return hash_game_sys[i];
     }
     else
     {
@@ -128,10 +124,8 @@ void hashShutdown(Team *hash_team_sys, Game *hash_game_sys)
   {
     if (hash_team_sys[i] != 0)
     {
-      {
-        free(hash_team_sys[i]->name);
-        free(hash_team_sys[i]);
-      }
+      free(hash_team_sys[i]->name);
+      free(hash_team_sys[i]);
     }
     else
     {
@@ -140,12 +134,10 @@ void hashShutdown(Team *hash_team_sys, Game *hash_game_sys)
 
     if (hash_game_sys[i] != 0)
     {
-      {
-        free(hash_game_sys[i]->name);
-        free(hash_game_sys[i]->team1);
-        free(hash_game_sys[i]->team2);
-        free(hash_game_sys[i]);
-      }
+      free(hash_game_sys[i]->name);
+      free(hash_game_sys[i]->team1);
+      free(hash_game_sys[i]->team2);
+      free(hash_game_sys[i]);
     }
     else
     {

@@ -70,22 +70,18 @@ list *list_remove(char *txt, list *lis)
       {
         if (t1 != 0)
         {
-          {
-            t2->next = t1;
-            t1->ant = t2;
-            free(temp->str);
-            free(temp);
-            return lis;
-          }
+          t2->next = t1;
+          t1->ant = t2;
+          free(temp->str);
+          free(temp);
+          return lis;
         }
         else
         {
-          {
-            t2->next = 0;
-            free(temp->str);
-            free(temp);
-            return lis;
-          }
+          t2->next = 0;
+          free(temp->str);
+          free(temp);
+          return lis;
         }
 
       }
@@ -93,22 +89,18 @@ list *list_remove(char *txt, list *lis)
       {
         if (t1 != 0)
         {
-          {
-            t1->ant = 0;
-            free(temp->str);
-            free(temp);
-            lis = t1;
-            return lis;
-          }
+          t1->ant = 0;
+          free(temp->str);
+          free(temp);
+          lis = t1;
+          return lis;
         }
         else
         {
-          {
-            lis = 0;
-            free(temp->str);
-            free(temp);
-            return lis;
-          }
+          lis = 0;
+          free(temp->str);
+          free(temp);
+          return lis;
         }
 
       }
@@ -116,9 +108,7 @@ list *list_remove(char *txt, list *lis)
     }
     else
     {
-      {
-        temp = temp->next;
-      }
+      temp = temp->next;
     }
 
   }
@@ -133,15 +123,11 @@ list *list_search(char *txt, list *lis)
   {
     if (strcmp(temp->str, txt) == 0)
     {
-      {
-        return temp;
-      }
+      return temp;
     }
     else
     {
-      {
-        temp = temp->next;
-      }
+      temp = temp->next;
     }
 
   }

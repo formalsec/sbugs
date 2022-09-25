@@ -11,19 +11,15 @@ void atualiza_lista(jogo_pont *lista_jogos_inicio, jogo_pont *lista_jogos_fim, j
 {
   if ((*lista_jogos_fim) == 0)
   {
-    {
-      *lista_jogos_inicio = jogo_adici;
-      *lista_jogos_fim = jogo_adici;
-      (*lista_jogos_fim)->prox_jogo_lista = 0;
-    }
+    *lista_jogos_inicio = jogo_adici;
+    *lista_jogos_fim = jogo_adici;
+    (*lista_jogos_fim)->prox_jogo_lista = 0;
   }
   else
   {
-    {
-      (*lista_jogos_fim)->prox_jogo_lista = jogo_adici;
-      *lista_jogos_fim = jogo_adici;
-      (*lista_jogos_fim)->prox_jogo_lista = 0;
-    }
+    (*lista_jogos_fim)->prox_jogo_lista = jogo_adici;
+    *lista_jogos_fim = jogo_adici;
+    (*lista_jogos_fim)->prox_jogo_lista = 0;
   }
 
 }
@@ -38,10 +34,8 @@ equipa_pont encontra_equipa(char *nome_equipa, equipa_pont *tabela_hash_equipas,
   {
     if ((strcmp(e->nome_equipa, nome_equipa) == 0) && (equipa == 1))
     {
-      {
-        (*jogo_adici)->equipa1 = e->nome_equipa;
-        aux = e;
-      }
+      (*jogo_adici)->equipa1 = e->nome_equipa;
+      aux = e;
     }
     else
     {
@@ -50,10 +44,8 @@ equipa_pont encontra_equipa(char *nome_equipa, equipa_pont *tabela_hash_equipas,
 
     if ((strcmp(e->nome_equipa, nome_equipa) == 0) && (equipa == 2))
     {
-      {
-        (*jogo_adici)->equipa2 = e->nome_equipa;
-        aux = e;
-      }
+      (*jogo_adici)->equipa2 = e->nome_equipa;
+      aux = e;
     }
     else
     {
@@ -115,11 +107,9 @@ void adic_jogo(jogo_pont *lista_jogos_inicio, jogo_pont *lista_jogos_fim, jogo_p
   {
     if (strcmp(i->nome_jogo, n_jogo) == 0)
     {
-      {
-        printf("%d Jogo existente.\n", nl);
-        free(jogo_adici);
-        return;
-      }
+      printf("%d Jogo existente.\n", nl);
+      free(jogo_adici);
+      return;
     }
     else
     {
@@ -131,11 +121,9 @@ void adic_jogo(jogo_pont *lista_jogos_inicio, jogo_pont *lista_jogos_fim, jogo_p
   aux1 = encontra_equipa(nome_equipa1, tabela_hash_equipas, &jogo_adici, 1);
   if (aux1 == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", nl);
-      free(jogo_adici);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", nl);
+    free(jogo_adici);
+    return;
   }
   else
   {
@@ -145,11 +133,9 @@ void adic_jogo(jogo_pont *lista_jogos_inicio, jogo_pont *lista_jogos_fim, jogo_p
   aux2 = encontra_equipa(nome_equipa2, tabela_hash_equipas, &jogo_adici, 2);
   if (aux2 == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", nl);
-      free(jogo_adici);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", nl);
+    free(jogo_adici);
+    return;
   }
   else
   {
@@ -158,17 +144,13 @@ void adic_jogo(jogo_pont *lista_jogos_inicio, jogo_pont *lista_jogos_fim, jogo_p
 
   if (resultado1 > resultado2)
   {
-    {
-      (*aux1->vitorias)++;
-    }
+    (*aux1->vitorias)++;
   }
   else
   {
     if (resultado1 < resultado2)
     {
-      {
-        (*aux2->vitorias)++;
-      }
+      (*aux2->vitorias)++;
     }
     else
     {
@@ -208,10 +190,8 @@ void procura_jogo(jogo_pont *tabela_hash_jogos, int nl)
   {
     if (strcmp(nome, i->nome_jogo) == 0)
     {
-      {
-        printf("%d %s %s %s %d %d\n", nl, i->nome_jogo, i->equipa1, i->equipa2, *i->golos1, *i->golos2);
-        return;
-      }
+      printf("%d %s %s %s %d %d\n", nl, i->nome_jogo, i->equipa1, i->equipa2, *i->golos1, *i->golos2);
+      return;
     }
     else
     {
@@ -230,36 +210,30 @@ void atualiza_vitorias_equipa1(equipa_pont *tabela_hash_equipas, int ctrl, jogo_
   indice = hash(aux->equipa1, 2131);
   if ((((ctrl == 1) || (ctrl == 2)) || (ctrl == 3)) || (ctrl == 5))
   {
+    for (e = tabela_hash_equipas[indice]; e != 0; e = e->prox_equipa)
     {
-      for (e = tabela_hash_equipas[indice]; e != 0; e = e->prox_equipa)
+      if ((strcmp(aux->equipa1, e->nome_equipa) == 0) && ((ctrl == 3) || (ctrl == 5)))
       {
-        if ((strcmp(aux->equipa1, e->nome_equipa) == 0) && ((ctrl == 3) || (ctrl == 5)))
-        {
-          {
-            (*e->vitorias)++;
-            return;
-          }
-        }
-        else
-        {
-          
-        }
+        (*e->vitorias)++;
+        return;
+      }
+      else
+      {
+        
+      }
 
-        if ((strcmp(aux->equipa1, e->nome_equipa) == 0) && ((ctrl == 1) || (ctrl == 2)))
-        {
-          {
-            (*e->vitorias)--;
-            return;
-          }
-        }
-        else
-        {
-          
-        }
-
+      if ((strcmp(aux->equipa1, e->nome_equipa) == 0) && ((ctrl == 1) || (ctrl == 2)))
+      {
+        (*e->vitorias)--;
+        return;
+      }
+      else
+      {
+        
       }
 
     }
+
   }
   else
   {
@@ -275,36 +249,30 @@ void atualiza_vitorias_equipa2(equipa_pont *tabela_hash_equipas, int ctrl, jogo_
   indice = hash(aux->equipa2, 2131);
   if ((((ctrl == 1) || (ctrl == 4)) || (ctrl == 5)) || (ctrl == 6))
   {
+    for (e = tabela_hash_equipas[indice]; e != 0; e = e->prox_equipa)
     {
-      for (e = tabela_hash_equipas[indice]; e != 0; e = e->prox_equipa)
+      if ((strcmp(aux->equipa2, e->nome_equipa) == 0) && ((ctrl == 1) || (ctrl == 4)))
       {
-        if ((strcmp(aux->equipa2, e->nome_equipa) == 0) && ((ctrl == 1) || (ctrl == 4)))
-        {
-          {
-            (*e->vitorias)++;
-            return;
-          }
-        }
-        else
-        {
-          
-        }
+        (*e->vitorias)++;
+        return;
+      }
+      else
+      {
+        
+      }
 
-        if ((strcmp(aux->equipa2, e->nome_equipa) == 0) && ((ctrl == 5) || (ctrl == 6)))
-        {
-          {
-            (*e->vitorias)--;
-            return;
-          }
-        }
-        else
-        {
-          
-        }
-
+      if ((strcmp(aux->equipa2, e->nome_equipa) == 0) && ((ctrl == 5) || (ctrl == 6)))
+      {
+        (*e->vitorias)--;
+        return;
+      }
+      else
+      {
+        
       }
 
     }
+
   }
   else
   {
@@ -317,16 +285,37 @@ int obtem_ctrl(jogo_pont i, int resultado1, int resultado2)
 {
   if ((*i->golos1) > (*i->golos2))
   {
+    if (resultado1 < resultado2)
     {
-      if (resultado1 < resultado2)
+      return 1;
+    }
+    else
+    {
+      if (resultado1 == resultado2)
       {
-        return 1;
+        return 2;
       }
       else
       {
-        if (resultado1 == resultado2)
+        
+      }
+
+    }
+
+  }
+  else
+  {
+    if ((*i->golos1) == (*i->golos2))
+    {
+      if (resultado1 > resultado2)
+      {
+        return 3;
+      }
+      else
+      {
+        if (resultado1 < resultado2)
         {
-          return 2;
+          return 4;
         }
         else
         {
@@ -336,21 +325,19 @@ int obtem_ctrl(jogo_pont i, int resultado1, int resultado2)
       }
 
     }
-  }
-  else
-  {
-    if ((*i->golos1) == (*i->golos2))
+    else
     {
+      if ((*i->golos1) < (*i->golos2))
       {
         if (resultado1 > resultado2)
         {
-          return 3;
+          return 5;
         }
         else
         {
-          if (resultado1 < resultado2)
+          if (resultado1 == resultado2)
           {
-            return 4;
+            return 6;
           }
           else
           {
@@ -359,31 +346,6 @@ int obtem_ctrl(jogo_pont i, int resultado1, int resultado2)
 
         }
 
-      }
-    }
-    else
-    {
-      if ((*i->golos1) < (*i->golos2))
-      {
-        {
-          if (resultado1 > resultado2)
-          {
-            return 5;
-          }
-          else
-          {
-            if (resultado1 == resultado2)
-            {
-              return 6;
-            }
-            else
-            {
-              
-            }
-
-          }
-
-        }
       }
       else
       {
@@ -420,13 +382,11 @@ void altera_resultado(jogo_pont *tabela_hash_jogos, equipa_pont *tabela_hash_equ
   {
     if (strcmp(nome, i->nome_jogo) == 0)
     {
-      {
-        ctrl = obtem_ctrl(i, resultado1, resultado2);
-        *i->golos1 = resultado1;
-        *i->golos2 = resultado2;
-        aux = i;
-        ctrl_jogo = 1;
-      }
+      ctrl = obtem_ctrl(i, resultado1, resultado2);
+      *i->golos1 = resultado1;
+      *i->golos2 = resultado2;
+      aux = i;
+      ctrl_jogo = 1;
     }
     else
     {
@@ -437,10 +397,8 @@ void altera_resultado(jogo_pont *tabela_hash_jogos, equipa_pont *tabela_hash_equ
 
   if (ctrl_jogo == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", nl);
+    return;
   }
   else
   {
@@ -449,9 +407,7 @@ void altera_resultado(jogo_pont *tabela_hash_jogos, equipa_pont *tabela_hash_equ
 
   if (ctrl == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -471,47 +427,37 @@ int remove_jogo_lista(jogo_pont *lista_jogos, jogo_pont *lista_jogos_fim, char *
   {
     if (strcmp(nome, i->nome_jogo) == 0)
     {
+      if ((i == (*lista_jogos)) && (i->prox_jogo_lista == 0))
       {
-        if ((i == (*lista_jogos)) && (i->prox_jogo_lista == 0))
+        *lista_jogos = 0;
+        *lista_jogos_fim = 0;
+        return ++ctrl;
+      }
+      else
+      {
+        if (i == (*lista_jogos))
         {
-          {
-            *lista_jogos = 0;
-            *lista_jogos_fim = 0;
-            return ++ctrl;
-          }
+          *lista_jogos = (*lista_jogos)->prox_jogo_lista;
+          return ++ctrl;
         }
         else
         {
-          if (i == (*lista_jogos))
+          if (i->prox_jogo_lista == 0)
           {
-            {
-              *lista_jogos = (*lista_jogos)->prox_jogo_lista;
-              return ++ctrl;
-            }
+            *lista_jogos_fim = aux;
+            (*lista_jogos_fim)->prox_jogo_lista = 0;
+            return ++ctrl;
           }
           else
           {
-            if (i->prox_jogo_lista == 0)
-            {
-              {
-                *lista_jogos_fim = aux;
-                (*lista_jogos_fim)->prox_jogo_lista = 0;
-                return ++ctrl;
-              }
-            }
-            else
-            {
-              {
-                aux->prox_jogo_lista = i->prox_jogo_lista;
-                return ++ctrl;
-              }
-            }
-
+            aux->prox_jogo_lista = i->prox_jogo_lista;
+            return ++ctrl;
           }
 
         }
 
       }
+
     }
     else
     {
@@ -534,48 +480,40 @@ jogo_pont remove_jogo_hash(jogo_pont *tabela_hash_jogos, char *nome, int *result
   {
     if (strcmp(nome, i->nome_jogo) == 0)
     {
+      if (i == tabela_hash_jogos[indice])
       {
-        if (i == tabela_hash_jogos[indice])
+        tabela_hash_jogos[indice] = i->prox_jogo;
+        *resultado1 = *i->golos1;
+        *resultado2 = *i->golos2;
+        strcpy(equipa1, i->equipa1);
+        strcpy(equipa2, i->equipa2);
+        return i;
+      }
+      else
+      {
+        if (i->prox_jogo == 0)
         {
-          {
-            tabela_hash_jogos[indice] = i->prox_jogo;
-            *resultado1 = *i->golos1;
-            *resultado2 = *i->golos2;
-            strcpy(equipa1, i->equipa1);
-            strcpy(equipa2, i->equipa2);
-            return i;
-          }
+          *resultado1 = *i->golos1;
+          *resultado2 = *i->golos2;
+          strcpy(equipa1, i->equipa1);
+          strcpy(equipa2, i->equipa2);
+          aux_free = i;
+          i = aux;
+          i->prox_jogo = 0;
+          return aux_free;
         }
         else
         {
-          if (i->prox_jogo == 0)
-          {
-            {
-              *resultado1 = *i->golos1;
-              *resultado2 = *i->golos2;
-              strcpy(equipa1, i->equipa1);
-              strcpy(equipa2, i->equipa2);
-              aux_free = i;
-              i = aux;
-              i->prox_jogo = 0;
-              return aux_free;
-            }
-          }
-          else
-          {
-            {
-              aux->prox_jogo = i->prox_jogo;
-              *resultado1 = *i->golos1;
-              *resultado2 = *i->golos2;
-              strcpy(equipa1, i->equipa1);
-              strcpy(equipa2, i->equipa2);
-              return i;
-            }
-          }
-
+          aux->prox_jogo = i->prox_jogo;
+          *resultado1 = *i->golos1;
+          *resultado2 = *i->golos2;
+          strcpy(equipa1, i->equipa1);
+          strcpy(equipa2, i->equipa2);
+          return i;
         }
 
       }
+
     }
     else
     {
@@ -607,10 +545,8 @@ void apaga_jogo(jogo_pont *tabela_hash_jogos, equipa_pont *tabela_hash_equipas, 
   ctrl = remove_jogo_lista(lista_jogos, lista_jogos_fim, nome);
   if (ctrl == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", nl);
+    return;
   }
   else
   {
@@ -620,15 +556,31 @@ void apaga_jogo(jogo_pont *tabela_hash_jogos, equipa_pont *tabela_hash_equipas, 
   aux_free = remove_jogo_hash(tabela_hash_jogos, nome, &resultado1, &resultado2, equipa1, equipa2);
   if (resultado1 > resultado2)
   {
+    indice = hash(equipa1, 2131);
+    for (e = tabela_hash_equipas[indice]; e != 0; e = e->prox_equipa)
     {
-      indice = hash(equipa1, 2131);
+      if (strcmp(equipa1, e->nome_equipa) == 0)
+      {
+        (*e->vitorias)--;
+      }
+      else
+      {
+        
+      }
+
+    }
+
+  }
+  else
+  {
+    if (resultado1 < resultado2)
+    {
+      indice = hash(equipa2, 2131);
       for (e = tabela_hash_equipas[indice]; e != 0; e = e->prox_equipa)
       {
-        if (strcmp(equipa1, e->nome_equipa) == 0)
+        if (strcmp(equipa2, e->nome_equipa) == 0)
         {
-          {
-            (*e->vitorias)--;
-          }
+          (*e->vitorias)--;
         }
         else
         {
@@ -637,30 +589,6 @@ void apaga_jogo(jogo_pont *tabela_hash_jogos, equipa_pont *tabela_hash_equipas, 
 
       }
 
-    }
-  }
-  else
-  {
-    if (resultado1 < resultado2)
-    {
-      {
-        indice = hash(equipa2, 2131);
-        for (e = tabela_hash_equipas[indice]; e != 0; e = e->prox_equipa)
-        {
-          if (strcmp(equipa2, e->nome_equipa) == 0)
-          {
-            {
-              (*e->vitorias)--;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-      }
     }
     else
     {

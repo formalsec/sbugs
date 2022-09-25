@@ -48,57 +48,53 @@ void a(LinkE *ETable, Link *JTable, Lista lista, int Linha_Input)
   validade = jogo_invalido(JTable, ETable, nome, equipa0, equipa1);
   if (validade == 0)
   {
+    index = hashEquipa(equipa0, 12049);
+    novo_jogo->equipa0 = search_lista_e(ETable[index], equipa0);
+    index = hashEquipa(equipa1, 12049);
+    novo_jogo->equipa1 = search_lista_e(ETable[index], equipa1);
+    lista->head = add_j_to_main_list(lista->head, novo_jogo);
+    add_linkj_hash(JTable, lista->head, novo_jogo->nome);
+    if (lista->tail == 0)
     {
-      index = hashEquipa(equipa0, 12049);
-      novo_jogo->equipa0 = search_lista_e(ETable[index], equipa0);
-      index = hashEquipa(equipa1, 12049);
-      novo_jogo->equipa1 = search_lista_e(ETable[index], equipa1);
-      lista->head = add_j_to_main_list(lista->head, novo_jogo);
-      add_linkj_hash(JTable, lista->head, novo_jogo->nome);
-      if (lista->tail == 0)
-      {
-        lista->tail = lista->head;
-      }
-      else
-      {
-        
-      }
-
-      e_vencedora = vencedor(novo_jogo);
-      if (e_vencedora != 0)
-      {
-        e_vencedora->wins++;
-      }
-      else
-      {
-        
-      }
-
+      lista->tail = lista->head;
     }
+    else
+    {
+      
+    }
+
+    e_vencedora = vencedor(novo_jogo);
+    if (e_vencedora != 0)
+    {
+      e_vencedora->wins++;
+    }
+    else
+    {
+      
+    }
+
   }
   else
   {
+    if (validade == 1)
     {
-      if (validade == 1)
+      printf("%d Jogo existente.\n", Linha_Input);
+    }
+    else
+    {
+      if (validade == 2)
       {
-        printf("%d Jogo existente.\n", Linha_Input);
+        printf("%d Equipa inexistente.\n", Linha_Input);
       }
       else
       {
-        if (validade == 2)
-        {
-          printf("%d Equipa inexistente.\n", Linha_Input);
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      free(novo_jogo->nome);
-      free(novo_jogo);
     }
+
+    free(novo_jogo->nome);
+    free(novo_jogo);
   }
 
 }
@@ -121,11 +117,9 @@ void A(LinkE *ETable, int Linha_Input)
   nova_equipa->wins = 0;
   if (add_e_to_hash(ETable, nova_equipa) == 0)
   {
-    {
-      printf("%d Equipa existente.\n", Linha_Input);
-      free(nova_equipa->nome);
-      free(nova_equipa);
-    }
+    printf("%d Equipa existente.\n", Linha_Input);
+    free(nova_equipa->nome);
+    free(nova_equipa);
   }
   else
   {
@@ -155,30 +149,28 @@ void s(Link *JTable, int Linha_Input)
   }
   else
   {
+    equipa = vencedor(link->linkj->jogo);
+    if (equipa != 0)
     {
-      equipa = vencedor(link->linkj->jogo);
-      if (equipa != 0)
-      {
-        equipa->wins -= 1;
-      }
-      else
-      {
-        
-      }
-
-      link->linkj->jogo->score[0] = score[0];
-      link->linkj->jogo->score[1] = score[1];
-      equipa = vencedor(link->linkj->jogo);
-      if (equipa != 0)
-      {
-        equipa->wins++;
-      }
-      else
-      {
-        
-      }
-
+      equipa->wins -= 1;
     }
+    else
+    {
+      
+    }
+
+    link->linkj->jogo->score[0] = score[0];
+    link->linkj->jogo->score[1] = score[1];
+    equipa = vencedor(link->linkj->jogo);
+    if (equipa != 0)
+    {
+      equipa->wins++;
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -275,10 +267,8 @@ void g(LinkE *ETable, int Linha_Input)
       existem_equipas = 1;
       if (linke->equipa->wins > max_wins)
       {
-        {
-          max_wins = linke->equipa->wins;
-          array_size = 1;
-        }
+        max_wins = linke->equipa->wins;
+        array_size = 1;
       }
       else
       {
@@ -307,10 +297,8 @@ void g(LinkE *ETable, int Linha_Input)
     {
       if (linke->equipa->wins == max_wins)
       {
-        {
-          equipas[array_size2 - 1] = linke->equipa;
-          array_size2 -= 1;
-        }
+        equipas[array_size2 - 1] = linke->equipa;
+        array_size2 -= 1;
       }
       else
       {
@@ -333,13 +321,11 @@ void g(LinkE *ETable, int Linha_Input)
 
   if (existem_equipas == 1)
   {
-    {
-      qsort(equipas, array_size, sizeof(pEquipa), cmpstr);
-      printf("%d Melhores %d\n", Linha_Input, max_wins);
-      for (contador = 0; contador < array_size; contador++)
-        printf("%d * %s\n", Linha_Input, equipas[contador]->nome);
+    qsort(equipas, array_size, sizeof(pEquipa), cmpstr);
+    printf("%d Melhores %d\n", Linha_Input, max_wins);
+    for (contador = 0; contador < array_size; contador++)
+      printf("%d * %s\n", Linha_Input, equipas[contador]->nome);
 
-    }
   }
   else
   {

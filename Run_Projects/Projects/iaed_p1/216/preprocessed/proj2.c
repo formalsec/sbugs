@@ -64,31 +64,25 @@ void listProd()
     {
       if (prodaux[i].preco > prodaux[j].preco)
       {
-        {
-          temp = prodaux[i];
-          prodaux[i] = prodaux[j];
-          prodaux[j] = temp;
-        }
+        temp = prodaux[i];
+        prodaux[i] = prodaux[j];
+        prodaux[j] = temp;
       }
       else
       {
         if (prodaux[i].preco == prodaux[j].preco)
         {
+          if (prodaux[i].idp > prodaux[j].idp)
           {
-            if (prodaux[i].idp > prodaux[j].idp)
-            {
-              {
-                temp = prodaux[i];
-                prodaux[i] = prodaux[j];
-                prodaux[j] = temp;
-              }
-            }
-            else
-            {
-              
-            }
-
+            temp = prodaux[i];
+            prodaux[i] = prodaux[j];
+            prodaux[j] = temp;
           }
+          else
+          {
+            
+          }
+
         }
         else
         {
@@ -133,17 +127,13 @@ void addStock()
   id = strtol(t, &ptr, 10);
   if (id >= idpcount)
   {
-    {
-      printf("Impossivel adicionar produto %ld ao stock. Produto inexistente.\n", id);
-    }
+    printf("Impossivel adicionar produto %ld ao stock. Produto inexistente.\n", id);
   }
   else
   {
-    {
-      t = strtok(0, tok);
-      q = strtol(t, &ptr, 10);
-      prod[id].quant += q;
-    }
+    t = strtok(0, tok);
+    q = strtol(t, &ptr, 10);
+    prod[id].quant += q;
   }
 
 }
@@ -167,45 +157,35 @@ void addToEnc()
   npeso = enc[e].pesoE + (q * prod[ip].peso);
   if (e >= idecount)
   {
-    {
-      printf("Impossivel adicionar produto %ld a encomenda %ld. Encomenda inexistente.\n", ip, e);
-      return;
-    }
+    printf("Impossivel adicionar produto %ld a encomenda %ld. Encomenda inexistente.\n", ip, e);
+    return;
   }
   else
   {
     if (ip >= idpcount)
     {
-      {
-        printf("Impossivel adicionar produto %ld a encomenda %ld. Produto inexistente.\n", ip, e);
-        return;
-      }
+      printf("Impossivel adicionar produto %ld a encomenda %ld. Produto inexistente.\n", ip, e);
+      return;
     }
     else
     {
       if (q > prod[ip].quant)
       {
-        {
-          printf("Impossivel adicionar produto %ld a encomenda %ld. Quantidade em stock insuficiente.\n", ip, e);
-          return;
-        }
+        printf("Impossivel adicionar produto %ld a encomenda %ld. Quantidade em stock insuficiente.\n", ip, e);
+        return;
       }
       else
       {
         if (npeso > 200)
         {
-          {
-            printf("Impossivel adicionar produto %ld a encomenda %ld. Peso da encomenda excede o maximo de 200.\n", ip, e);
-          }
+          printf("Impossivel adicionar produto %ld a encomenda %ld. Peso da encomenda excede o maximo de 200.\n", ip, e);
         }
         else
         {
-          {
-            prod[ip].quant -= q;
-            enc[e].quant[ip] += q;
-            enc[e].proE++;
-            enc[e].pesoE = npeso;
-          }
+          prod[ip].quant -= q;
+          enc[e].quant[ip] += q;
+          enc[e].proE++;
+          enc[e].pesoE = npeso;
         }
 
       }
@@ -230,24 +210,18 @@ void remStock()
   q = strtol(t, &ptr, 10);
   if (id >= idpcount)
   {
-    {
-      printf("Impossivel remover stock do produto %ld. Produto inexistente.\n", id);
-      return;
-    }
+    printf("Impossivel remover stock do produto %ld. Produto inexistente.\n", id);
+    return;
   }
   else
   {
     if (q > prod[id].quant)
     {
-      {
-        printf("Impossivel remover %ld unidades do produto %ld do stock. Quantidade insuficiente.\n", q, id);
-      }
+      printf("Impossivel remover %ld unidades do produto %ld do stock. Quantidade insuficiente.\n", q, id);
     }
     else
     {
-      {
-        prod[id].quant -= q;
-      }
+      prod[id].quant -= q;
     }
 
   }
@@ -269,29 +243,23 @@ void remProd()
   ip = strtol(t, &ptr, 10);
   if (e >= idecount)
   {
-    {
-      printf("Impossivel remover produto %ld a encomenda %ld. Encomenda inexistente.\n", ip, e);
-      return;
-    }
+    printf("Impossivel remover produto %ld a encomenda %ld. Encomenda inexistente.\n", ip, e);
+    return;
   }
   else
   {
     if (ip >= idpcount)
     {
-      {
-        printf("Impossivel remover produto %ld a encomenda %ld. Produto inexistente.\n", ip, e);
-        return;
-      }
+      printf("Impossivel remover produto %ld a encomenda %ld. Produto inexistente.\n", ip, e);
+      return;
     }
     else
     {
-      {
-        quanti = enc[e].quant[ip];
-        enc[e].quant[ip] = 0;
-        enc[e].proE--;
-        enc[e].pesoE -= quanti * prod[ip].peso;
-        prod[ip].quant += quanti;
-      }
+      quanti = enc[e].quant[ip];
+      enc[e].quant[ip] = 0;
+      enc[e].proE--;
+      enc[e].pesoE -= quanti * prod[ip].peso;
+      prod[ip].quant += quanti;
     }
 
   }
@@ -313,33 +281,27 @@ void calcCusto()
   id = strtol(t, &ptr, 10);
   if (id >= idecount)
   {
-    {
-      printf("Impossivel calcular custo da encomenda %ld. Encomenda inexistente.\n", id);
-    }
+    printf("Impossivel calcular custo da encomenda %ld. Encomenda inexistente.\n", id);
   }
   else
   {
+    total = 0;
+    for (i = 0; i < idpcount; ++i)
     {
-      total = 0;
-      for (i = 0; i < idpcount; ++i)
+      q = enc[id].quant[i];
+      if (q > 0)
       {
-        q = enc[id].quant[i];
-        if (q > 0)
-        {
-          {
-            p = prod[i].preco;
-            total += p * q;
-          }
-        }
-        else
-        {
-          
-        }
-
+        p = prod[i].preco;
+        total += p * q;
+      }
+      else
+      {
+        
       }
 
-      printf("Custo da encomenda %ld %ld.\n", id, total);
     }
+
+    printf("Custo da encomenda %ld %ld.\n", id, total);
   }
 
 }
@@ -356,17 +318,13 @@ void chPri()
   id = strtol(t, &ptr, 10);
   if (id >= idpcount)
   {
-    {
-      printf("Impossivel alterar preco do produto %ld. Produto inexistente.\n", id);
-    }
+    printf("Impossivel alterar preco do produto %ld. Produto inexistente.\n", id);
   }
   else
   {
-    {
-      t = strtok(0, tok);
-      p = strtol(t, &ptr, 10);
-      prod[id].preco = p;
-    }
+    t = strtok(0, tok);
+    p = strtol(t, &ptr, 10);
+    prod[id].preco = p;
   }
 
 }
@@ -387,29 +345,23 @@ void listProdOrd()
   ip = strtol(t, &ptr, 10);
   if (e >= idecount)
   {
-    {
-      printf("Impossivel listar encomenda %ld. Encomenda inexistente.\n", e);
-      return;
-    }
+    printf("Impossivel listar encomenda %ld. Encomenda inexistente.\n", e);
+    return;
   }
   else
   {
     if (ip >= idpcount)
     {
-      {
-        printf("Impossivel listar produto %ld. Produto inexistente.\n", ip);
-        return;
-      }
+      printf("Impossivel listar produto %ld. Produto inexistente.\n", ip);
+      return;
     }
     else
     {
-      {
-        d = malloc(strlen(prod[ip].desc) + 1);
-        strcpy(d, prod[ip].desc);
-        q = enc[e].quant[ip];
-        printf("%s %ld.\n", d, q);
-        free(d);
-      }
+      d = malloc(strlen(prod[ip].desc) + 1);
+      strcpy(d, prod[ip].desc);
+      q = enc[e].quant[ip];
+      printf("%s %ld.\n", d, q);
+      free(d);
     }
 
   }
@@ -433,37 +385,19 @@ void listMaxProd()
   ide = 0;
   if (id >= idpcount)
   {
-    {
-      printf("Impossivel listar maximo do produto %ld. Produto inexistente.\n", id);
-    }
+    printf("Impossivel listar maximo do produto %ld. Produto inexistente.\n", id);
   }
   else
   {
     if (idecount != 0)
     {
+      for (e = 0; e < idecount; ++e)
       {
-        for (e = 0; e < idecount; ++e)
+        quantaux = enc[e].quant[id];
+        if (quantaux > quant)
         {
-          quantaux = enc[e].quant[id];
-          if (quantaux > quant)
-          {
-            {
-              quant = quantaux;
-              ide = e;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-        if (quant > 0)
-        {
-          {
-            printf("Maximo produto %ld %ld %ld.\n", id, ide, quant);
-          }
+          quant = quantaux;
+          ide = e;
         }
         else
         {
@@ -471,6 +405,16 @@ void listMaxProd()
         }
 
       }
+
+      if (quant > 0)
+      {
+        printf("Maximo produto %ld %ld %ld.\n", id, ide, quant);
+      }
+      else
+      {
+        
+      }
+
     }
     else
     {
@@ -501,24 +445,36 @@ void listProdEnc()
   p = 0;
   if (id >= idecount)
   {
-    {
-      printf("Impossivel listar encomenda %ld. Encomenda inexistente.\n", id);
-    }
+    printf("Impossivel listar encomenda %ld. Encomenda inexistente.\n", id);
   }
   else
   {
+    printf("Encomenda %ld\n", id);
+    for (i = 0; i < idpcount; ++i)
     {
-      printf("Encomenda %ld\n", id);
-      for (i = 0; i < idpcount; ++i)
+      q = enc[id].quant[i];
+      if (q > 0)
       {
-        q = enc[id].quant[i];
-        if (q > 0)
+        prodaux[p] = prod[i];
+        prodaux[p].quant = q;
+        p++;
+      }
+      else
+      {
+        
+      }
+
+    }
+
+    for (k = 0; k < p; ++k)
+    {
+      for (j = k + 1; j < p; ++j)
+      {
+        if (strcmp(prodaux[k].desc, prodaux[j].desc) > 0)
         {
-          {
-            prodaux[p] = prod[i];
-            prodaux[p].quant = q;
-            p++;
-          }
+          temp = prodaux[k];
+          prodaux[k] = prodaux[j];
+          prodaux[j] = temp;
         }
         else
         {
@@ -527,29 +483,9 @@ void listProdEnc()
 
       }
 
-      for (k = 0; k < p; ++k)
-      {
-        for (j = k + 1; j < p; ++j)
-        {
-          if (strcmp(prodaux[k].desc, prodaux[j].desc) > 0)
-          {
-            {
-              temp = prodaux[k];
-              prodaux[k] = prodaux[j];
-              prodaux[j] = temp;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-      }
-
-      printProd(prodaux, p);
     }
+
+    printProd(prodaux, p);
   }
 
 }

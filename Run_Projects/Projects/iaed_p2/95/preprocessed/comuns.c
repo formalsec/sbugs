@@ -73,9 +73,7 @@ Equipas SearchEquipa(char nome[], table_eq table)
   Equipas equipa = 0;
   if (table->heads[i] == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -85,9 +83,7 @@ Equipas SearchEquipa(char nome[], table_eq table)
   equipa = search_equipa(table->heads[i], nome);
   if (equipa == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -104,9 +100,7 @@ Equipas search_equipa(Node_eq head, char nome[])
   {
     if (strcmp(temp->equipa->nome, nome) == 0)
     {
-      {
-        return temp->equipa;
-      }
+      return temp->equipa;
     }
     else
     {
@@ -125,9 +119,7 @@ pJogo SearchJogo(char nome[], table_jogos table)
   pJogo match = 0;
   if (table->heads[i] == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -137,9 +129,7 @@ pJogo SearchJogo(char nome[], table_jogos table)
   match = search_jogo(table->heads[i], nome);
   if (match == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -156,9 +146,7 @@ pJogo search_jogo(Node_jogos head, char nome[])
   {
     if (strcmp(temp->match->nome, nome) == 0)
     {
-      {
-        return temp->match;
-      }
+      return temp->match;
     }
     else
     {

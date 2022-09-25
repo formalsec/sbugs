@@ -57,9 +57,7 @@ hashNode *getNodeGames(char n_name[1024])
   {
     if (strcmp(n_name, aux->point->name) == 0)
     {
-      {
-        return aux;
-      }
+      return aux;
     }
     else
     {
@@ -80,9 +78,7 @@ hashNode *getNodeTeams(char n_name[1024])
   {
     if (strcmp(n_name, aux->point->name) == 0)
     {
-      {
-        return aux;
-      }
+      return aux;
     }
     else
     {

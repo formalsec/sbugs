@@ -20,10 +20,8 @@ void deleteTeam(TEAM i)
 {
   if (i)
   {
-    {
-      free(i->Teamname);
-      free(i);
-    }
+    free(i->Teamname);
+    free(i);
   }
   else
   {

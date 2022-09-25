@@ -59,23 +59,19 @@ Game *SetGameNode(Game *new, Game *headG, char *fname, char *fteam1, char *fteam
   strcpy(new->team2, fteam2);
   if (aux == 0)
   {
-    {
-      headG = new;
-    }
+    headG = new;
   }
   else
   {
+    aux1 = aux;
+    while (aux1->next != 0)
     {
-      aux1 = aux;
-      while (aux1->next != 0)
-      {
-        aux1 = aux1->next;
-      }
-
-      aux1->next = new;
-      new->previous = aux1;
-      new->next = 0;
+      aux1 = aux1->next;
     }
+
+    aux1->next = new;
+    new->previous = aux1;
+    new->next = 0;
   }
 
   return headG;
@@ -88,21 +84,17 @@ Game *DeleteGameNode(Game *delete, Game *headG)
   aux = headG;
   if (delete != headG)
   {
-    {
-      while (aux->next != delete)
-        aux = aux->next;
+    while (aux->next != delete)
+      aux = aux->next;
 
-      aux->next = delete->next;
-      aux1 = delete->next;
-      aux1->previous = aux;
-    }
+    aux->next = delete->next;
+    aux1 = delete->next;
+    aux1->previous = aux;
   }
   else
   {
-    {
-      printf("Estas a tenter apagar a head.");
-      headG = delete->next;
-    }
+    printf("Estas a tenter apagar a head.");
+    headG = delete->next;
   }
 
   delete->previous = 0;
@@ -195,12 +187,10 @@ Team *SetTeamNode(Team *new, Team *headT, char *fname)
   int ln = 0;
   if (new == 0)
   {
-    {
-      new = InitTeamNode();
-      ln = strlen(fname);
-      new->name = (char *) malloc(((sizeof(char)) * ln) + 1);
-      strcpy(new->name, fname);
-    }
+    new = InitTeamNode();
+    ln = strlen(fname);
+    new->name = (char *) malloc(((sizeof(char)) * ln) + 1);
+    strcpy(new->name, fname);
   }
   else
   {
@@ -209,80 +199,64 @@ Team *SetTeamNode(Team *new, Team *headT, char *fname)
 
   if (headT == 0)
   {
-    {
-      headT = new;
-    }
+    headT = new;
   }
   else
   {
+    if (new->wins > headT->wins)
     {
-      if (new->wins > headT->wins)
+      new->next = headT;
+      headT = new;
+    }
+    else
+    {
+      aux = headT;
+      while (new->wins <= aux->wins)
       {
+        if (new->wins == aux->wins)
         {
-          new->next = headT;
-          headT = new;
-        }
-      }
-      else
-      {
-        {
-          aux = headT;
-          while (new->wins <= aux->wins)
+          if (strcmp(new->name, aux->name) == 0)
           {
-            if (new->wins == aux->wins)
+            exit(0);
+          }
+          else
+          {
+            if (strcmp(new->name, aux->name) < 0)
             {
-              {
-                if (strcmp(new->name, aux->name) == 0)
-                {
-                  {
-                    exit(0);
-                  }
-                }
-                else
-                {
-                  if (strcmp(new->name, aux->name) < 0)
-                  {
-                    {
-                      new->next = aux->next;
-                      aux = new;
-                      break;
-                    }
-                  }
-                  else
-                  {
-                    if (strcmp(new->name, aux->name) > 0)
-                    {
-                      {
-                        aux->next = new;
-                        aux1 = aux;
-                        aux1 = aux1->next;
-                        new->next = aux1->next;
-                        break;
-                      }
-                    }
-                    else
-                    {
-                      
-                    }
-
-                  }
-
-                }
-
-              }
+              new->next = aux->next;
+              aux = new;
+              break;
             }
             else
             {
-              
+              if (strcmp(new->name, aux->name) > 0)
+              {
+                aux->next = new;
+                aux1 = aux;
+                aux1 = aux1->next;
+                new->next = aux1->next;
+                break;
+              }
+              else
+              {
+                
+              }
+
             }
 
-            aux = aux->next;
           }
 
         }
+        else
+        {
+          
+        }
+
+        aux = aux->next;
       }
 
     }
+
   }
 
   return headT;

@@ -42,15 +42,11 @@ pEquipa EQUIPAseach(char *nome, pEquipa *tab, int max)
   {
     if (strcmp(tab[i]->nome, nome) == 0)
     {
-      {
-        return tab[i];
-      }
+      return tab[i];
     }
     else
     {
-      {
-        i = (i + 1) % max;
-      }
+      i = (i + 1) % max;
     }
 
   }
@@ -66,9 +62,7 @@ int EQUIPAmaxWin(pEquipa *tab, int max)
   {
     if ((tab[i] != 0) && (tab[i]->contVencidos > maxW))
     {
-      {
-        maxW = tab[i]->contVencidos;
-      }
+      maxW = tab[i]->contVencidos;
     }
     else
     {
@@ -88,9 +82,7 @@ int EQUIPAsizeOfList(int ganhos, pEquipa *tab, int max)
   {
     if ((tab[i] != 0) && (tab[i]->contVencidos == ganhos))
     {
-      {
-        sizeList++;
-      }
+      sizeList++;
     }
     else
     {
@@ -115,12 +107,10 @@ void EQUIPAlist(int contComandos, int ganhos, pEquipa *tab, int max)
   {
     if ((tab[j] != 0) && (tab[j]->contVencidos == ganhos))
     {
-      {
-        len = strlen(tab[j]->nome) + 1;
-        str[x] = (char *) malloc((sizeof(char)) * len);
-        strcpy(str[x], tab[j]->nome);
-        x++;
-      }
+      len = strlen(tab[j]->nome) + 1;
+      str[x] = (char *) malloc((sizeof(char)) * len);
+      strcpy(str[x], tab[j]->nome);
+      x++;
     }
     else
     {
@@ -145,11 +135,9 @@ void EQUIPAsort(char **str, int sizeList)
     {
       if (strcmp(str[i], str[j]) > 0)
       {
-        {
-          temp = str[i];
-          str[i] = str[j];
-          str[j] = temp;
-        }
+        temp = str[i];
+        str[i] = str[j];
+        str[j] = temp;
       }
       else
       {
@@ -167,9 +155,7 @@ void EQUIPAlistPrintf(char **str, int contComandos, int sizeList, int ganhos)
   int i;
   if (sizeList != 0)
   {
-    {
-      printf("%d Melhores %d\n", contComandos, ganhos);
-    }
+    printf("%d Melhores %d\n", contComandos, ganhos);
   }
   else
   {
@@ -192,9 +178,7 @@ pEquipa *EQUIPAexpand(pEquipa *tabE, int maxE)
   {
     if (t[i] != 0)
     {
-      {
-        EQUIPAinsert(t[i]->nome, t[i]->contVencidos, tabE, maxE);
-      }
+      EQUIPAinsert(t[i]->nome, t[i]->contVencidos, tabE, maxE);
     }
     else
     {

@@ -72,10 +72,8 @@ void procurarEquipa(ItemSecondHT **headsEquipa, int capacidadeE, int linha)
   }
   else
   {
-    {
-      printf("%d ", linha);
-      imprimirEquipa(e);
-    }
+    printf("%d ", linha);
+    imprimirEquipa(e);
   }
 
 }
@@ -198,9 +196,7 @@ void removerJogo(ItemFirstHT **headsJogo, int capacidadeJ, lista *listaJogo, int
   nomeJogo[10 - 1] = '\0';
   if ((i = HTRemoverElemento(headsJogo, capacidadeJ, nomeJogo, listaJogo)) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", linha);
-    }
+    printf("%d Jogo inexistente.\n", linha);
   }
   else
   {

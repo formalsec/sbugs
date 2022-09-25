@@ -51,9 +51,7 @@ equipa *procuraHashTableEquipa(listaEquipa **headsEquipas, char *nome, int M_E)
   int i = hash(nome, M_E);
   if (headsEquipas == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -62,9 +60,7 @@ equipa *procuraHashTableEquipa(listaEquipa **headsEquipas, char *nome, int M_E)
 
   if (headsEquipas[i] == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -80,9 +76,7 @@ int equipaExiste(listaEquipa **headsEquipas, char *nome, int M_E)
   auxEquipa = procuraHashTableEquipa(headsEquipas, nome, M_E);
   if (auxEquipa == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {

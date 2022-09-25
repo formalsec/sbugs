@@ -16,9 +16,7 @@ int procura_equipa(char *equipa_nome, PRINCIPAL p)
   {
     if (strcmp(p->hashEquipa[i]->nome, equipa_nome) == 0)
     {
-      {
-        return i;
-      }
+      return i;
     }
     else
     {
@@ -37,9 +35,7 @@ void adiciona_vitoria(char *equipa_nome, PRINCIPAL p)
   int i = procura_equipa(equipa_nome, p);
   if (i != (-1))
   {
-    {
-      p->hashEquipa[i]->vitorias++;
-    }
+    p->hashEquipa[i]->vitorias++;
   }
   else
   {
@@ -53,9 +49,7 @@ void remove_vitoria(char *equipa_nome, PRINCIPAL p)
   int i = procura_equipa(equipa_nome, p);
   if (i != (-1))
   {
-    {
-      p->hashEquipa[i]->vitorias--;
-    }
+    p->hashEquipa[i]->vitorias--;
   }
   else
   {
@@ -69,10 +63,8 @@ int insert_equipa(char *nome, PRINCIPAL p)
   int i;
   if (p->tamanho_equipas >= (p->cap_equipas * 0.7))
   {
-    {
-      p->cap_equipas += 20;
-      p->hashEquipa = (EQUIPA *) realloc(p->hashEquipa, (sizeof(EQUIPA)) * p->cap_equipas);
-    }
+    p->cap_equipas += 20;
+    p->hashEquipa = (EQUIPA *) realloc(p->hashEquipa, (sizeof(EQUIPA)) * p->cap_equipas);
   }
   else
   {
@@ -148,9 +140,7 @@ void display_equipa(PRINCIPAL p)
   {
     if (p->hashEquipa[i] != 0)
     {
-      {
-        printf("(%s, %d)\n", p->hashEquipa[i]->nome, p->hashEquipa[i]->vitorias);
-      }
+      printf("(%s, %d)\n", p->hashEquipa[i]->nome, p->hashEquipa[i]->vitorias);
     }
     else
     {

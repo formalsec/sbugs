@@ -37,32 +37,26 @@ void addJogo(HLink_ head1, Link_ *head2, HLink head3, int NL)
   score2 = new_sym_var(sizeof(int) * 8);
   if (procuraJgHash(head1, 1049, nome) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-      return;
-    }
+    printf("%d Jogo existente.\n", NL);
+    return;
   }
   else
   {
+    equipa1_ = procuraEqHash(head3, 1049, equipa1);
+    equipa2_ = procuraEqHash(head3, 1049, equipa2);
+    if ((equipa1_ == 0) || (equipa2_ == 0))
     {
-      equipa1_ = procuraEqHash(head3, 1049, equipa1);
-      equipa2_ = procuraEqHash(head3, 1049, equipa2);
-      if ((equipa1_ == 0) || (equipa2_ == 0))
-      {
-        {
-          printf("%d Equipa inexistente.\n", NL);
-          return;
-        }
-      }
-      else
-      {
-        
-      }
-
-      jogo = criaJogo(nome, equipa1_, equipa2_, score1, score2);
-      addHash_(head1, jogo, 1049);
-      *head2 = addJgLista(*head2, jogo);
+      printf("%d Equipa inexistente.\n", NL);
+      return;
     }
+    else
+    {
+      
+    }
+
+    jogo = criaJogo(nome, equipa1_, equipa2_, score1, score2);
+    addHash_(head1, jogo, 1049);
+    *head2 = addJgLista(*head2, jogo);
   }
 
 }
@@ -79,9 +73,7 @@ void addEquipa(HLink head, int NL)
   nome[10 - 1] = '\0';
   if (procuraEqHash(head, 1049, nome) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-    }
+    printf("%d Equipa existente.\n", NL);
   }
   else
   {
@@ -118,10 +110,8 @@ void procurarJogo(HLink_ head, int NL)
   jogo = procuraJgHash(head, 1049, nome);
   if (jogo == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -144,10 +134,8 @@ void procurarEquipa(HLink head, int NL)
   equipa = procuraEqHash(head, 1049, nome);
   if (equipa == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -170,10 +158,8 @@ void apagarJogo(HLink_ head, Link_ *listaJgs, int NL)
   jogo = procuraJgHash(head, 1049, nome);
   if (jogo == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -201,10 +187,8 @@ void alteraScores(HLink_ head, int NL)
   jogo = procuraJgHash(head, 1049, nome);
   if (jogo == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {

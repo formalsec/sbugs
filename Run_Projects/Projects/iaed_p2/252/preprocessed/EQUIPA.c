@@ -35,12 +35,10 @@ void SearchTeam(team_list *l, char buffer[1024], int NL)
   Equipa *toFind;
   if (toFind = FindTeam(l, buffer))
   {
-    {
-      printf("%d ", NL);
-      printf("%s ", toFind->nome);
-      printf("%d\n", toFind->vitorias);
-      return;
-    }
+    printf("%d ", NL);
+    printf("%s ", toFind->nome);
+    printf("%d\n", toFind->vitorias);
+    return;
   }
   else
   {

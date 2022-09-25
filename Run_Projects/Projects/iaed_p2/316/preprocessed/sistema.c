@@ -60,23 +60,19 @@ void adiciona_jogo(Sistema *sistema, int NL)
   }
   else
   {
+    equipa1 = HTsearch_equipa(sistema->ht, e1);
+    equipa2 = HTsearch_equipa(sistema->ht, e2);
+    if ((!equipa1) || (!equipa2))
     {
-      equipa1 = HTsearch_equipa(sistema->ht, e1);
-      equipa2 = HTsearch_equipa(sistema->ht, e2);
-      if ((!equipa1) || (!equipa2))
-      {
-        printf("%d Equipa inexistente.\n", NL);
-      }
-      else
-      {
-        {
-          jogo = cria_jogo(n, equipa1, equipa2, s1, s2);
-          add_jogo(sistema->jogos, jogo);
-          HTinsert_jogo(sistema->ht, jogo);
-        }
-      }
-
+      printf("%d Equipa inexistente.\n", NL);
     }
+    else
+    {
+      jogo = cria_jogo(n, equipa1, equipa2, s1, s2);
+      add_jogo(sistema->jogos, jogo);
+      HTinsert_jogo(sistema->ht, jogo);
+    }
+
   }
 
 }
@@ -124,27 +120,25 @@ void apaga_jogo(Sistema *sistema, int NL)
   jogo = HTsearch_jogo(sistema->ht, n);
   if (jogo)
   {
+    if (jogo->score1 > jogo->score2)
     {
-      if (jogo->score1 > jogo->score2)
+      equipa_diminui_jogos_ganhos(jogo->equipa1);
+    }
+    else
+    {
+      if (jogo->score1 < jogo->score2)
       {
-        equipa_diminui_jogos_ganhos(jogo->equipa1);
+        equipa_diminui_jogos_ganhos(jogo->equipa2);
       }
       else
       {
-        if (jogo->score1 < jogo->score2)
-        {
-          equipa_diminui_jogos_ganhos(jogo->equipa2);
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      HTdelete_jogo(sistema->ht, jogo->nome);
-      remove_node_jogos(sistema->jogos, jogo);
     }
+
+    HTdelete_jogo(sistema->ht, jogo->nome);
+    remove_node_jogos(sistema->jogos, jogo);
   }
   else
   {
@@ -195,11 +189,9 @@ void adiciona_equipa(Sistema *sistema, int NL)
   }
   else
   {
-    {
-      equipa = cria_equipa(n);
-      sistema->equipas = push_equipa(sistema->equipas, equipa);
-      HTinsert_equipa(sistema->ht, equipa);
-    }
+    equipa = cria_equipa(n);
+    sistema->equipas = push_equipa(sistema->equipas, equipa);
+    HTinsert_equipa(sistema->ht, equipa);
   }
 
 }
@@ -243,17 +235,15 @@ void encontra_equipas(Sistema *sistema, int NL)
   long i = 0;
   if (sistema->equipas->head)
   {
-    {
-      numero_melhores = malloc(sizeof(long));
-      melhores = melhores_equipas(sistema->equipas, numero_melhores);
-      printf("%d Melhores %d\n", NL, melhores[0]->jogos_ganhos);
-      ordena_equipas(melhores, *numero_melhores);
-      for (i = 0; i < (*numero_melhores); i++)
-        printf("%d * %s\n", NL, melhores[i]->nome);
+    numero_melhores = malloc(sizeof(long));
+    melhores = melhores_equipas(sistema->equipas, numero_melhores);
+    printf("%d Melhores %d\n", NL, melhores[0]->jogos_ganhos);
+    ordena_equipas(melhores, *numero_melhores);
+    for (i = 0; i < (*numero_melhores); i++)
+      printf("%d * %s\n", NL, melhores[i]->nome);
 
-      free(numero_melhores);
-      destroy_melhores(melhores);
-    }
+    free(numero_melhores);
+    destroy_melhores(melhores);
   }
   else
   {

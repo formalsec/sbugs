@@ -42,12 +42,10 @@ void cria_lista_nomes(char **lista_nomes, EQUIPA **hashtable_equipas, int maior_
     {
       if (tmp->score == maior_score)
       {
-        {
-          len_str = strlen(tmp->nome);
-          lista_nomes[indice] = malloc((sizeof(char)) * (len_str + 1));
-          strcpy(lista_nomes[indice], tmp->nome);
-          indice++;
-        }
+        len_str = strlen(tmp->nome);
+        lista_nomes[indice] = malloc((sizeof(char)) * (len_str + 1));
+        strcpy(lista_nomes[indice], tmp->nome);
+        indice++;
       }
       else
       {

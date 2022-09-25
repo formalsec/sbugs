@@ -13,12 +13,10 @@ void free_teams(team_node node)
 {
   if (node != 0)
   {
-    {
-      free_teams(node->left);
-      free_teams(node->right);
-      free_team(node->team);
-      free(node);
-    }
+    free_teams(node->left);
+    free_teams(node->right);
+    free_team(node->team);
+    free(node);
   }
   else
   {
@@ -31,9 +29,7 @@ int height(team_node node)
 {
   if (node == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -145,10 +141,8 @@ team_node team_insert(team_node node, team team)
 
   if ((balance > 1) && (strcmp(team->name, node->left->team->name) > 0))
   {
-    {
-      node->left = rotate_left(node->left);
-      return rotate_right(node);
-    }
+    node->left = rotate_left(node->left);
+    return rotate_right(node);
   }
   else
   {
@@ -157,10 +151,8 @@ team_node team_insert(team_node node, team team)
 
   if ((balance < (-1)) && (strcmp(team->name, node->right->team->name) < 0))
   {
-    {
-      node->right = rotate_right(node->right);
-      return rotate_left(node);
-    }
+    node->right = rotate_right(node->right);
+    return rotate_left(node);
   }
   else
   {
@@ -179,19 +171,17 @@ void print_inorder(team_node node, int m, int NL)
 {
   if (node != 0)
   {
+    print_inorder(node->left, m, NL);
+    if (node->team->score == m)
     {
-      print_inorder(node->left, m, NL);
-      if (node->team->score == m)
-      {
-        print_team(node->team, NL);
-      }
-      else
-      {
-        
-      }
-
-      print_inorder(node->right, m, NL);
+      print_team(node->team, NL);
     }
+    else
+    {
+      
+    }
+
+    print_inorder(node->right, m, NL);
   }
   else
   {

@@ -160,11 +160,9 @@ tnode *insert_team_sorted(tnode *top_teams, team *t)
   tnode *new = malloc(sizeof(tnode));
   if ((top_teams == 0) || (strcmp(top_teams->t->name, t->name) < 0))
   {
-    {
-      new->t = t;
-      new->next = top_teams;
-      return new;
-    }
+    new->t = t;
+    new->next = top_teams;
+    return new;
   }
   else
   {
@@ -270,19 +268,17 @@ gnode *delete_game(gnode *head, char *name)
   {
     if (!strcmp(tmp->g->name, name))
     {
+      if (tmp == head)
       {
-        if (tmp == head)
-        {
-          head = tmp->next;
-        }
-        else
-        {
-          prev->next = tmp->next;
-        }
-
-        free(tmp);
-        break;
+        head = tmp->next;
       }
+      else
+      {
+        prev->next = tmp->next;
+      }
+
+      free(tmp);
+      break;
     }
     else
     {
@@ -332,19 +328,17 @@ gnode *del_from_glist(gnode *head, char *name)
   {
     if (!strcmp(tmp->g->name, name))
     {
+      if (tmp == head)
       {
-        if (tmp == head)
-        {
-          head = tmp->next;
-        }
-        else
-        {
-          prev->next = tmp->next;
-        }
-
-        free_gnode(tmp);
-        return head;
+        head = tmp->next;
       }
+      else
+      {
+        prev->next = tmp->next;
+      }
+
+      free_gnode(tmp);
+      return head;
     }
     else
     {

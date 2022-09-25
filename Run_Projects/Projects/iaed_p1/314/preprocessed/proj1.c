@@ -165,10 +165,8 @@ void adiciona_stock()
   idp = le_linhas_numeros();
   if (idp < sistcounter)
   {
-    {
-      qtd = le_linhas_numeros();
-      sistema[idp].quantidade = sistema[idp].quantidade + qtd;
-    }
+    qtd = le_linhas_numeros();
+    sistema[idp].quantidade = sistema[idp].quantidade + qtd;
   }
   else
   {
@@ -234,57 +232,47 @@ void adiciona_produto_encomenda()
   qtd = le_linhas_numeros();
   if (ide < enccounter)
   {
+    if (idp < sistcounter)
     {
-      if (idp < sistcounter)
+      if (qtd <= sistema[idp].quantidade)
       {
+        peso = peso_encomenda(ide);
+        if ((peso + (qtd * sistema[idp].peso)) <= 200)
         {
-          if (qtd <= sistema[idp].quantidade)
+          i1 = verifica_encomenda(encomendas[ide], idp, ide);
+          if (indice[ide] == i1)
           {
-            {
-              peso = peso_encomenda(ide);
-              if ((peso + (qtd * sistema[idp].peso)) <= 200)
-              {
-                {
-                  i1 = verifica_encomenda(encomendas[ide], idp, ide);
-                  if (indice[ide] == i1)
-                  {
-                    {
-                      encomendas[ide][indice[ide]].quantidade = qtd;
-                      encomendas[ide][indice[ide]].idproduto = idp;
-                      encomendas[ide][indice[ide]].peso = sistema[idp].peso;
-                      encomendas[ide][indice[ide]].preco = sistema[idp].preco;
-                      strcpy(encomendas[ide][indice[ide]].desc, sistema[idp].desc);
-                      indice[ide]++;
-                    }
-                  }
-                  else
-                  {
-                    encomendas[ide][i1].quantidade = encomendas[ide][i1].quantidade + qtd;
-                  }
-
-                  sistema[idp].quantidade = sistema[idp].quantidade - qtd;
-                }
-              }
-              else
-              {
-                printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
-              }
-
-            }
+            encomendas[ide][indice[ide]].quantidade = qtd;
+            encomendas[ide][indice[ide]].idproduto = idp;
+            encomendas[ide][indice[ide]].peso = sistema[idp].peso;
+            encomendas[ide][indice[ide]].preco = sistema[idp].preco;
+            strcpy(encomendas[ide][indice[ide]].desc, sistema[idp].desc);
+            indice[ide]++;
           }
           else
           {
-            printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
+            encomendas[ide][i1].quantidade = encomendas[ide][i1].quantidade + qtd;
           }
 
+          sistema[idp].quantidade = sistema[idp].quantidade - qtd;
         }
+        else
+        {
+          printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
+        }
+
       }
       else
       {
-        printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
+        printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
       }
 
     }
+    else
+    {
+      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
+    }
+
   }
   else
   {
@@ -301,17 +289,15 @@ void remove_stock()
   qtd = le_linhas_numeros();
   if (idp < sistcounter)
   {
+    if ((sistema[idp].quantidade - qtd) >= 0)
     {
-      if ((sistema[idp].quantidade - qtd) >= 0)
-      {
-        sistema[idp].quantidade = sistema[idp].quantidade - qtd;
-      }
-      else
-      {
-        printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, idp);
-      }
-
+      sistema[idp].quantidade = sistema[idp].quantidade - qtd;
     }
+    else
+    {
+      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, idp);
+    }
+
   }
   else
   {
@@ -329,40 +315,26 @@ void remove_produto()
   idp = le_linhas_numeros();
   if (ide < enccounter)
   {
+    if (idp < sistcounter)
     {
-      if (idp < sistcounter)
+      i = verifica_encomenda(encomendas[ide], idp, ide);
+      if ((i >= 0) && (i < indice[ide]))
       {
+        indice[ide]--;
+        if (i != indice[ide])
         {
-          i = verifica_encomenda(encomendas[ide], idp, ide);
-          if ((i >= 0) && (i < indice[ide]))
+          sistema[idp].quantidade = sistema[idp].quantidade + encomendas[ide][i].quantidade;
+          encomendas[ide][i].idproduto = encomendas[ide][indice[ide]].idproduto;
+          strcpy(encomendas[ide][i].desc, encomendas[ide][indice[ide]].desc);
+          encomendas[ide][i].preco = encomendas[ide][indice[ide]].preco;
+          encomendas[ide][i].peso = encomendas[ide][indice[ide]].peso;
+          encomendas[ide][i].quantidade = encomendas[ide][indice[ide]].quantidade;
+        }
+        else
+        {
+          if (i == indice[ide])
           {
-            {
-              indice[ide]--;
-              if (i != indice[ide])
-              {
-                {
-                  sistema[idp].quantidade = sistema[idp].quantidade + encomendas[ide][i].quantidade;
-                  encomendas[ide][i].idproduto = encomendas[ide][indice[ide]].idproduto;
-                  strcpy(encomendas[ide][i].desc, encomendas[ide][indice[ide]].desc);
-                  encomendas[ide][i].preco = encomendas[ide][indice[ide]].preco;
-                  encomendas[ide][i].peso = encomendas[ide][indice[ide]].peso;
-                  encomendas[ide][i].quantidade = encomendas[ide][indice[ide]].quantidade;
-                }
-              }
-              else
-              {
-                if (i == indice[ide])
-                {
-                  sistema[idp].quantidade = sistema[idp].quantidade + encomendas[ide][i].quantidade;
-                }
-                else
-                {
-                  
-                }
-
-              }
-
-            }
+            sistema[idp].quantidade = sistema[idp].quantidade + encomendas[ide][i].quantidade;
           }
           else
           {
@@ -370,13 +342,19 @@ void remove_produto()
           }
 
         }
+
       }
       else
       {
-        printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
+        
       }
 
     }
+    else
+    {
+      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
+    }
+
   }
   else
   {
@@ -393,14 +371,12 @@ void calcula_custo()
   ide = le_linhas_numeros();
   if (ide < enccounter)
   {
+    for (i = 0; i < indice[ide]; i++)
     {
-      for (i = 0; i < indice[ide]; i++)
-      {
-        total = total + (encomendas[ide][i].preco * encomendas[ide][i].quantidade);
-      }
-
-      printf("Custo da encomenda %d %d.\n", ide, total);
+      total = total + (encomendas[ide][i].preco * encomendas[ide][i].quantidade);
     }
+
+    printf("Custo da encomenda %d %d.\n", ide, total);
   }
   else
   {
@@ -419,24 +395,22 @@ void altera_preco()
   preco = le_linhas_numeros();
   if (idp < sistcounter)
   {
+    sistema[idp].preco = preco;
+    for (i = 0; i < enccounter; i++)
     {
-      sistema[idp].preco = preco;
-      for (i = 0; i < enccounter; i++)
+      for (j = 0; j < indice[i]; j++)
+        if (encomendas[i][j].idproduto == idp)
       {
-        for (j = 0; j < indice[i]; j++)
-          if (encomendas[i][j].idproduto == idp)
-        {
-          encomendas[i][j].preco = preco;
-        }
-        else
-        {
-          
-        }
-
-
+        encomendas[i][j].preco = preco;
+      }
+      else
+      {
+        
       }
 
+
     }
+
   }
   else
   {
@@ -454,28 +428,24 @@ void lista_desc_quantidade()
   idp = le_linhas_numeros();
   if (ide < enccounter)
   {
+    if (idp < sistcounter)
     {
-      if (idp < sistcounter)
+      i = verifica_encomenda(encomendas[ide], idp, ide);
+      if ((i >= 0) && (i < indice[ide]))
       {
-        {
-          i = verifica_encomenda(encomendas[ide], idp, ide);
-          if ((i >= 0) && (i < indice[ide]))
-          {
-            printf("%s %d.\n", encomendas[ide][i].desc, encomendas[ide][i].quantidade);
-          }
-          else
-          {
-            printf("%s 0.\n", sistema[idp].desc);
-          }
-
-        }
+        printf("%s %d.\n", encomendas[ide][i].desc, encomendas[ide][i].quantidade);
       }
       else
       {
-        printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
+        printf("%s 0.\n", sistema[idp].desc);
       }
 
     }
+    else
+    {
+      printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
+    }
+
   }
   else
   {
@@ -495,38 +465,34 @@ void indentificador_encomenda()
   idp = le_linhas_numeros();
   if (idp < sistcounter)
   {
+    for (i = 0; i < enccounter; i++)
     {
-      for (i = 0; i < enccounter; i++)
+      for (j = 0; j < indice[i]; j++)
       {
-        for (j = 0; j < indice[i]; j++)
+        if ((encomendas[i][j].idproduto == idp) && (encomendas[i][j].quantidade > max))
         {
-          if ((encomendas[i][j].idproduto == idp) && (encomendas[i][j].quantidade > max))
-          {
-            {
-              max = encomendas[i][j].quantidade;
-              ide = i;
-              counter++;
-            }
-          }
-          else
-          {
-            
-          }
-
+          max = encomendas[i][j].quantidade;
+          ide = i;
+          counter++;
+        }
+        else
+        {
+          
         }
 
       }
 
-      if (counter > 0)
-      {
-        printf("Maximo produto %d %d %d.\n", idp, ide, max);
-      }
-      else
-      {
-        
-      }
-
     }
+
+    if (counter > 0)
+    {
+      printf("Maximo produto %d %d %d.\n", idp, ide, max);
+    }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -556,21 +522,17 @@ void merge(copia a[], int l, int m, int r)
   {
     if ((aux[j].preco < aux[i].preco) || (i > m))
     {
-      {
-        a[k].preco = aux[j].preco;
-        a[k].idproduto = aux[j].idproduto;
-        j--;
-      }
+      a[k].preco = aux[j].preco;
+      a[k].idproduto = aux[j].idproduto;
+      j--;
     }
     else
     {
       if (aux[j].preco >= aux[i].preco)
       {
-        {
-          a[k].preco = aux[i].preco;
-          a[k].idproduto = aux[i].idproduto;
-          i++;
-        }
+        a[k].preco = aux[i].preco;
+        a[k].idproduto = aux[i].idproduto;
+        i++;
       }
       else
       {
@@ -630,45 +592,27 @@ void lista_produtos_encomenda()
   ide = le_linhas_numeros();
   if (ide < enccounter)
   {
+    for (i = 0; i < indice[ide]; i++)
     {
-      for (i = 0; i < indice[ide]; i++)
-      {
-        strcpy(descricao[i], encomendas[ide][i].desc);
-      }
+      strcpy(descricao[i], encomendas[ide][i].desc);
+    }
 
-      printf("Encomenda %d\n", ide);
-      for (i = 0; i < (indice[ide] - 1); i++)
+    printf("Encomenda %d\n", ide);
+    for (i = 0; i < (indice[ide] - 1); i++)
+    {
+      x = 0;
+      menor = i;
+      for (j = i + 1; j < indice[ide]; j++)
       {
         x = 0;
-        menor = i;
-        for (j = i + 1; j < indice[ide]; j++)
+        while (descricao[menor][x] == descricao[j][x])
         {
-          x = 0;
-          while (descricao[menor][x] == descricao[j][x])
-          {
-            x++;
-          }
-
-          if (descricao[menor][x] > descricao[j][x])
-          {
-            {
-              menor = j;
-            }
-          }
-          else
-          {
-            
-          }
-
+          x++;
         }
 
-        if (menor != i)
+        if (descricao[menor][x] > descricao[j][x])
         {
-          {
-            strcpy(aux, descricao[menor]);
-            strcpy(descricao[menor], descricao[i]);
-            strcpy(descricao[i], aux);
-          }
+          menor = j;
         }
         else
         {
@@ -677,24 +621,36 @@ void lista_produtos_encomenda()
 
       }
 
-      for (i = 0; i < indice[ide]; i++)
+      if (menor != i)
       {
-        for (j = 0; j < indice[ide]; j++)
-        {
-          if (strcmp(descricao[i], encomendas[ide][j].desc) == 0)
-          {
-            printf("* %s %d %d\n", encomendas[ide][j].desc, encomendas[ide][j].preco, encomendas[ide][j].quantidade);
-          }
-          else
-          {
-            
-          }
+        strcpy(aux, descricao[menor]);
+        strcpy(descricao[menor], descricao[i]);
+        strcpy(descricao[i], aux);
+      }
+      else
+      {
+        
+      }
 
+    }
+
+    for (i = 0; i < indice[ide]; i++)
+    {
+      for (j = 0; j < indice[ide]; j++)
+      {
+        if (strcmp(descricao[i], encomendas[ide][j].desc) == 0)
+        {
+          printf("* %s %d %d\n", encomendas[ide][j].desc, encomendas[ide][j].preco, encomendas[ide][j].quantidade);
+        }
+        else
+        {
+          
         }
 
       }
 
     }
+
   }
   else
   {

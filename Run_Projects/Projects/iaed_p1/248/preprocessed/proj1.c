@@ -69,10 +69,8 @@ int __q__()
   _quantidade = atoi(token);
   if (_idp < produtosAtuais)
   {
-    {
-      produtos[_idp].quantidade += _quantidade;
-      return 0;
-    }
+    produtos[_idp].quantidade += _quantidade;
+    return 0;
   }
   else
   {
@@ -125,10 +123,8 @@ int __A__()
   _qtd = atoi(token);
   if (encomendas[_ide].eCriado != 1)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", _idp, _ide);
-      return 0;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", _idp, _ide);
+    return 0;
   }
   else
   {
@@ -137,10 +133,8 @@ int __A__()
 
   if (produtos[_idp].pCriado != 1)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", _idp, _ide);
-      return 0;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", _idp, _ide);
+    return 0;
   }
   else
   {
@@ -149,10 +143,8 @@ int __A__()
 
   if (produtos[_idp].quantidade < _qtd)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", _idp, _ide);
-      return 0;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", _idp, _ide);
+    return 0;
   }
   else
   {
@@ -161,10 +153,8 @@ int __A__()
 
   if ((encomendas[_ide].pesoEnc + (_qtd * produtos[_idp].peso)) > 200)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", _idp, _ide);
-      return 0;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", _idp, _ide);
+    return 0;
   }
   else
   {
@@ -209,10 +199,8 @@ int __r__()
   _qtd = atoi(token);
   if (produtos[_idp].pCriado != 1)
   {
-    {
-      printf("Impossivel remover stock do produto %d. Produto inexistente.\n", _idp);
-      return 0;
-    }
+    printf("Impossivel remover stock do produto %d. Produto inexistente.\n", _idp);
+    return 0;
   }
   else
   {
@@ -221,10 +209,8 @@ int __r__()
 
   if ((produtos[_idp].quantidade - _qtd) < 0)
   {
-    {
-      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", _qtd, _idp);
-      return 0;
-    }
+    printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", _qtd, _idp);
+    return 0;
   }
   else
   {
@@ -258,10 +244,8 @@ int __R__()
   _idp = atoi(token);
   if (encomendas[_ide].eCriado != 1)
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", _idp, _ide);
-      return 0;
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", _idp, _ide);
+    return 0;
   }
   else
   {
@@ -270,10 +254,8 @@ int __R__()
 
   if (produtos[_idp].pCriado != 1)
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", _idp, _ide);
-      return 0;
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", _idp, _ide);
+    return 0;
   }
   else
   {
@@ -308,10 +290,8 @@ int __C__()
   _ide = atoi(token);
   if (encomendas[_ide].eCriado != 1)
   {
-    {
-      printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", _ide);
-      return 0;
-    }
+    printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", _ide);
+    return 0;
   }
   else
   {
@@ -358,10 +338,8 @@ int __p__()
   _preco = atoi(token);
   if (produtos[_idp].pCriado != 1)
   {
-    {
-      printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", _idp);
-      return 0;
-    }
+    printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", _idp);
+    return 0;
   }
   else
   {
@@ -396,10 +374,8 @@ int __E__()
   _idp = atoi(token);
   if (encomendas[_ide].eCriado != 1)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", _ide);
-      contadorErros++;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", _ide);
+    contadorErros++;
   }
   else
   {
@@ -408,10 +384,8 @@ int __E__()
 
   if (produtos[_idp].pCriado != 1)
   {
-    {
-      printf("Impossivel listar produto %d. Produto inexistente.\n", _idp);
-      contadorErros++;
-    }
+    printf("Impossivel listar produto %d. Produto inexistente.\n", _idp);
+    contadorErros++;
   }
   else
   {
@@ -464,20 +438,16 @@ int __m__()
   {
     if (encomendas[i].eCriado == 1)
     {
+      if (_qtd < encomendas[i].prodsEnc[_idp])
       {
-        if (_qtd < encomendas[i].prodsEnc[_idp])
-        {
-          {
-            _qtd = encomendas[i].prodsEnc[_idp];
-            _ide = i;
-          }
-        }
-        else
-        {
-          
-        }
-
+        _qtd = encomendas[i].prodsEnc[_idp];
+        _ide = i;
       }
+      else
+      {
+        
+      }
+
     }
     else
     {
@@ -507,10 +477,8 @@ int __l__()
   {
     if (produtos[i].pCriado == 1)
     {
-      {
-        auxiliar[tamanhoAux] = i;
-        tamanhoAux++;
-      }
+      auxiliar[tamanhoAux] = i;
+      tamanhoAux++;
     }
     else
     {
@@ -550,10 +518,8 @@ int __L__()
   _ide = atoi(token);
   if (encomendas[_ide].eCriado != 1)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", _ide);
-      return 0;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", _ide);
+    return 0;
   }
   else
   {
@@ -564,11 +530,9 @@ int __L__()
   {
     if (encomendas[_ide].prodsEnc[i] != 0)
     {
-      {
-        auxiliar[tamanhoAux] = i;
-        temporario[tamanhoAux] = encomendas[_ide].prodsEnc[i];
-        tamanhoAux++;
-      }
+      auxiliar[tamanhoAux] = i;
+      temporario[tamanhoAux] = encomendas[_ide].prodsEnc[i];
+      tamanhoAux++;
     }
     else
     {
@@ -676,19 +640,15 @@ void merge2(int a[], int b[], int l, int m, int r)
   {
     if (strcmp(produtos[merge2Aux[j]].descricao, produtos[merge2Aux[i]].descricao) < 0)
     {
-      {
-        a[k] = merge2Aux[j];
-        b[k] = temp[j];
-        j--;
-      }
+      a[k] = merge2Aux[j];
+      b[k] = temp[j];
+      j--;
     }
     else
     {
-      {
-        a[k] = merge2Aux[i];
-        b[k] = temp[i];
-        i++;
-      }
+      a[k] = merge2Aux[i];
+      b[k] = temp[i];
+      i++;
     }
 
   }
@@ -725,10 +685,8 @@ int __K__()
   _ide = atoi(token);
   if (encomendas[_ide].eCriado != 1)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", _ide);
-      return 0;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", _ide);
+    return 0;
   }
   else
   {
@@ -740,9 +698,7 @@ int __K__()
   {
     if (encomendas[_ide].prodsEnc[i] > 0)
     {
-      {
-        printf("* %s %d %d\n", produtos[i].descricao, produtos[i].preco, encomendas[_ide].prodsEnc[i]);
-      }
+      printf("* %s %d %d\n", produtos[i].descricao, produtos[i].preco, encomendas[_ide].prodsEnc[i]);
     }
     else
     {

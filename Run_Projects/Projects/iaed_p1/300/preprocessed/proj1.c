@@ -53,14 +53,12 @@ void adiciona_produto()
   {
     if (catalogo_produtos[j].idp == (-1))
     {
-      {
-        strcpy(catalogo_produtos[j].descricao, auxiliar[0]);
-        catalogo_produtos[j].preco = atoi(auxiliar[1]);
-        catalogo_produtos[j].peso = atoi(auxiliar[2]);
-        catalogo_produtos[j].stock = atoi(auxiliar[3]);
-        catalogo_produtos[j].idp = j;
-        break;
-      }
+      strcpy(catalogo_produtos[j].descricao, auxiliar[0]);
+      catalogo_produtos[j].preco = atoi(auxiliar[1]);
+      catalogo_produtos[j].peso = atoi(auxiliar[2]);
+      catalogo_produtos[j].stock = atoi(auxiliar[3]);
+      catalogo_produtos[j].idp = j;
+      break;
     }
     else
     {
@@ -116,10 +114,8 @@ void cria_encomenda()
   {
     if (catalogo_encomendas[i].ide == (-1))
     {
-      {
-        catalogo_encomendas[i].ide = i;
-        break;
-      }
+      catalogo_encomendas[i].ide = i;
+      break;
     }
     else
     {
@@ -184,40 +180,34 @@ void adiciona_produto_encomenda()
         }
         else
         {
+          for (j = 0; j < 200; j++)
           {
-            for (j = 0; j < 200; j++)
+            if (catalogo_encomendas[id_encomenda].info_produtos[j].idp == (-1))
             {
-              if (catalogo_encomendas[id_encomenda].info_produtos[j].idp == (-1))
+              catalogo_encomendas[id_encomenda].info_produtos[j].stock = quantidade;
+              catalogo_produtos[id_produto].stock -= quantidade;
+              catalogo_encomendas[id_encomenda].peso += quantidade * catalogo_produtos[id_produto].peso;
+              catalogo_encomendas[id_encomenda].info_produtos[j].idp = id_produto;
+              break;
+            }
+            else
+            {
+              if (catalogo_encomendas[id_encomenda].info_produtos[j].idp == id_produto)
               {
-                {
-                  catalogo_encomendas[id_encomenda].info_produtos[j].stock = quantidade;
-                  catalogo_produtos[id_produto].stock -= quantidade;
-                  catalogo_encomendas[id_encomenda].peso += quantidade * catalogo_produtos[id_produto].peso;
-                  catalogo_encomendas[id_encomenda].info_produtos[j].idp = id_produto;
-                  break;
-                }
+                catalogo_encomendas[id_encomenda].info_produtos[j].stock += quantidade;
+                catalogo_produtos[id_produto].stock -= quantidade;
+                catalogo_encomendas[id_encomenda].peso += quantidade * catalogo_produtos[id_produto].peso;
+                break;
               }
               else
               {
-                if (catalogo_encomendas[id_encomenda].info_produtos[j].idp == id_produto)
-                {
-                  {
-                    catalogo_encomendas[id_encomenda].info_produtos[j].stock += quantidade;
-                    catalogo_produtos[id_produto].stock -= quantidade;
-                    catalogo_encomendas[id_encomenda].peso += quantidade * catalogo_produtos[id_produto].peso;
-                    break;
-                  }
-                }
-                else
-                {
-                  
-                }
-
+                
               }
 
             }
 
           }
+
         }
 
       }
@@ -256,17 +246,15 @@ void remove_stock()
   stock = atoi(auxiliar[1]);
   if (proximo_produto > id)
   {
+    if (catalogo_produtos[id].stock >= stock)
     {
-      if (catalogo_produtos[id].stock >= stock)
-      {
-        catalogo_produtos[id].stock -= stock;
-      }
-      else
-      {
-        printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", stock, id);
-      }
-
+      catalogo_produtos[id].stock -= stock;
     }
+    else
+    {
+      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", stock, id);
+    }
+
   }
   else
   {
@@ -315,33 +303,29 @@ void remove_produto_encomenda()
     }
     else
     {
+      for (j = 0; j < 200; j++)
       {
-        for (j = 0; j < 200; j++)
+        if (catalogo_encomendas[id_encomenda].info_produtos[j].idp == id_produto)
         {
-          if (catalogo_encomendas[id_encomenda].info_produtos[j].idp == id_produto)
+          catalogo_encomendas[id_encomenda].peso -= catalogo_encomendas[id_encomenda].info_produtos[j].stock * catalogo_produtos[id_produto].peso;
+          catalogo_produtos[id_produto].stock += catalogo_encomendas[id_encomenda].info_produtos[j].stock;
+          catalogo_encomendas[id_encomenda].info_produtos[j].stock = 0;
+        }
+        else
+        {
+          if (contador == 200)
           {
-            {
-              catalogo_encomendas[id_encomenda].peso -= catalogo_encomendas[id_encomenda].info_produtos[j].stock * catalogo_produtos[id_produto].peso;
-              catalogo_produtos[id_produto].stock += catalogo_encomendas[id_encomenda].info_produtos[j].stock;
-              catalogo_encomendas[id_encomenda].info_produtos[j].stock = 0;
-            }
+            printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", id_produto, id_encomenda);
           }
           else
           {
-            if (contador == 200)
-            {
-              printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", id_produto, id_encomenda);
-            }
-            else
-            {
-              contador++;
-            }
-
+            contador++;
           }
 
         }
 
       }
+
     }
 
   }
@@ -378,12 +362,10 @@ void custo_encomenda()
   }
   else
   {
-    {
-      for (j = 0; j < 200; j++)
-        custo += catalogo_encomendas[atoi(auxiliar[0])].info_produtos[j].stock * catalogo_produtos[j].preco;
+    for (j = 0; j < 200; j++)
+      custo += catalogo_encomendas[atoi(auxiliar[0])].info_produtos[j].stock * catalogo_produtos[j].preco;
 
-      printf("Custo da encomenda %d %d.", atoi(auxiliar[0]), custo);
-    }
+    printf("Custo da encomenda %d %d.", atoi(auxiliar[0]), custo);
   }
 
 }

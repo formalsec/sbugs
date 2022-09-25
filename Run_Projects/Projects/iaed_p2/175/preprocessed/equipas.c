@@ -57,10 +57,8 @@ int ptr_ord_equipa(ptr_equipa fila, ptr_equipa ptr)
     {
       if (elem->next == 0)
       {
-        {
-          elem->next = ptr;
-          return 0;
-        }
+        elem->next = ptr;
+        return 0;
       }
       else
       {
@@ -78,11 +76,9 @@ int ptr_ord_equipa(ptr_equipa fila, ptr_equipa ptr)
     {
       if ((anterior < 0) && (proximo > 0))
       {
-        {
-          ptr->next = elem->next;
-          elem->next = ptr;
-          return 0;
-        }
+        ptr->next = elem->next;
+        elem->next = ptr;
+        return 0;
       }
       else
       {
@@ -105,9 +101,7 @@ ptr_equipa devolve_ptr_e(ptr_equipa fila, char *nome_e)
   {
     if (strcmp(elem->nome, nome_e) == 0)
     {
-      {
-        return elem;
-      }
+      return elem;
     }
     else
     {
@@ -136,10 +130,8 @@ ptr_equipa percorre_mais(ptr_equipa posicao, ptr_equipa equipa)
   {
     if (elem->last_ordem->jogos_ganhos < equipa->jogos_ganhos)
     {
-      {
-        elem = elem->last_ordem;
-        continue;
-      }
+      elem = elem->last_ordem;
+      continue;
     }
     else
     {
@@ -157,9 +149,7 @@ ptr_equipa percorre_mais(ptr_equipa posicao, ptr_equipa equipa)
         {
           if ((strcmp(elem->last_ordem->nome, equipa->nome) < 0) && (strcmp(elem->nome, equipa->nome) > 0))
           {
-            {
-              return elem;
-            }
+            return elem;
           }
           else
           {
@@ -186,10 +176,8 @@ ptr_equipa percorre_menos(ptr_equipa posicao, ptr_equipa equipa)
   {
     if (elem->next_ordem->jogos_ganhos > equipa->jogos_ganhos)
     {
-      {
-        elem = elem->next_ordem;
-        continue;
-      }
+      elem = elem->next_ordem;
+      continue;
     }
     else
     {
@@ -207,9 +195,7 @@ ptr_equipa percorre_menos(ptr_equipa posicao, ptr_equipa equipa)
         {
           if ((strcmp(elem->next_ordem->nome, equipa->nome) > 0) && (strcmp(elem->nome, equipa->nome) < 0))
           {
-            {
-              return elem;
-            }
+            return elem;
           }
           else
           {
@@ -246,60 +232,52 @@ void altera_fila(ptr_equipa *head, ptr_equipa *tail, ptr_equipa equipa, int valo
     {
       if (valor == 0)
       {
+        anterior = percorre_menos(equipa, equipa);
+        if (anterior == equipa)
         {
-          anterior = percorre_menos(equipa, equipa);
-          if (anterior == equipa)
+          return;
+        }
+        else
+        {
+          if ((equipa == head[0]) && (anterior == head[0]))
           {
             return;
           }
           else
           {
-            if ((equipa == head[0]) && (anterior == head[0]))
+            if (equipa == head[0])
             {
-              return;
+              head[0] = head[0]->next_ordem;
+              head[0]->last_ordem = 0;
             }
             else
             {
-              if (equipa == head[0])
-              {
-                {
-                  head[0] = head[0]->next_ordem;
-                  head[0]->last_ordem = 0;
-                }
-              }
-              else
-              {
-                {
-                  equipa->last_ordem->next_ordem = equipa->next_ordem;
-                  equipa->next_ordem->last_ordem = equipa->last_ordem;
-                }
-              }
-
+              equipa->last_ordem->next_ordem = equipa->next_ordem;
+              equipa->next_ordem->last_ordem = equipa->last_ordem;
             }
 
           }
 
-          if (anterior == tail[0])
-          {
-            {
-              tail[0]->next_ordem = equipa;
-              equipa->last_ordem = tail[0];
-              tail[0] = equipa;
-              tail[0]->next_ordem = 0;
-              return;
-            }
-          }
-          else
-          {
-            
-          }
+        }
 
-          anterior->next_ordem->last_ordem = equipa;
-          equipa->next_ordem = anterior->next_ordem;
-          anterior->next_ordem = equipa;
-          equipa->last_ordem = anterior;
+        if (anterior == tail[0])
+        {
+          tail[0]->next_ordem = equipa;
+          equipa->last_ordem = tail[0];
+          tail[0] = equipa;
+          tail[0]->next_ordem = 0;
           return;
         }
+        else
+        {
+          
+        }
+
+        anterior->next_ordem->last_ordem = equipa;
+        equipa->next_ordem = anterior->next_ordem;
+        anterior->next_ordem = equipa;
+        equipa->last_ordem = anterior;
+        return;
       }
       else
       {
@@ -325,17 +303,13 @@ void altera_fila(ptr_equipa *head, ptr_equipa *tail, ptr_equipa equipa, int valo
     {
       if (equipa == tail[0])
       {
-        {
-          tail[0] = tail[0]->last_ordem;
-          tail[0]->next_ordem = 0;
-        }
+        tail[0] = tail[0]->last_ordem;
+        tail[0]->next_ordem = 0;
       }
       else
       {
-        {
-          equipa->last_ordem->next_ordem = equipa->next_ordem;
-          equipa->next_ordem->last_ordem = equipa->last_ordem;
-        }
+        equipa->last_ordem->next_ordem = equipa->next_ordem;
+        equipa->next_ordem->last_ordem = equipa->last_ordem;
       }
 
     }
@@ -344,13 +318,11 @@ void altera_fila(ptr_equipa *head, ptr_equipa *tail, ptr_equipa equipa, int valo
 
   if (proximo == head[0])
   {
-    {
-      head[0]->last_ordem = equipa;
-      equipa->next_ordem = head[0];
-      head[0] = equipa;
-      head[0]->last_ordem = 0;
-      return;
-    }
+    head[0]->last_ordem = equipa;
+    equipa->next_ordem = head[0];
+    head[0] = equipa;
+    head[0]->last_ordem = 0;
+    return;
   }
   else
   {
@@ -368,73 +340,61 @@ void add_equipa_lista(ptr_equipa *head, ptr_equipa *tail, ptr_equipa equipa)
   ptr_equipa proximo;
   if (head[0] == 0)
   {
-    {
-      head[0] = equipa;
-      return;
-    }
+    head[0] = equipa;
+    return;
   }
   else
   {
     if (head[0]->next_ordem == 0)
     {
+      if (strcmp(head[0]->nome, equipa->nome) > 0)
       {
-        if (strcmp(head[0]->nome, equipa->nome) > 0)
+        tail[0] = head[0];
+        head[0] = equipa;
+        head[0]->next_ordem = tail[0];
+        tail[0]->last_ordem = head[0];
+        return;
+      }
+      else
+      {
+        
+      }
+
+      tail[0] = equipa;
+      head[0]->next_ordem = tail[0];
+      tail[0]->last_ordem = head[0];
+      return;
+    }
+    else
+    {
+      if ((head[0]->jogos_ganhos == 0) && (strcmp(head[0]->nome, equipa->nome) > 0))
+      {
+        equipa->next_ordem = head[0];
+        head[0]->last_ordem = equipa;
+        head[0] = equipa;
+        head[0]->last_ordem = 0;
+        return;
+      }
+      else
+      {
+        if ((tail[0]->jogos_ganhos > 0) || ((tail[0]->jogos_ganhos == 0) && (strcmp(tail[0]->nome, equipa->nome) < 0)))
         {
-          {
-            tail[0] = head[0];
-            head[0] = equipa;
-            head[0]->next_ordem = tail[0];
-            tail[0]->last_ordem = head[0];
-            return;
-          }
+          tail[0]->next_ordem = equipa;
+          equipa->last_ordem = tail[0];
+          tail[0] = equipa;
+          tail[0]->next_ordem = 0;
+          return;
         }
         else
         {
           
         }
 
-        tail[0] = equipa;
-        head[0]->next_ordem = tail[0];
-        tail[0]->last_ordem = head[0];
-        return;
-      }
-    }
-    else
-    {
-      if ((head[0]->jogos_ganhos == 0) && (strcmp(head[0]->nome, equipa->nome) > 0))
-      {
-        {
-          equipa->next_ordem = head[0];
-          head[0]->last_ordem = equipa;
-          head[0] = equipa;
-          head[0]->last_ordem = 0;
-          return;
-        }
-      }
-      else
-      {
-        {
-          if ((tail[0]->jogos_ganhos > 0) || ((tail[0]->jogos_ganhos == 0) && (strcmp(tail[0]->nome, equipa->nome) < 0)))
-          {
-            {
-              tail[0]->next_ordem = equipa;
-              equipa->last_ordem = tail[0];
-              tail[0] = equipa;
-              tail[0]->next_ordem = 0;
-              return;
-            }
-          }
-          else
-          {
-            
-          }
-
-          proximo = percorre_mais(tail[0], equipa);
-          proximo->last_ordem->next_ordem = equipa;
-          equipa->last_ordem = proximo->last_ordem;
-          proximo->last_ordem = equipa;
-          equipa->next_ordem = proximo;
-        }
+        proximo = percorre_mais(tail[0], equipa);
+        proximo->last_ordem->next_ordem = equipa;
+        equipa->last_ordem = proximo->last_ordem;
+        proximo->last_ordem = equipa;
+        equipa->next_ordem = proximo;
       }
 
     }
@@ -464,79 +424,63 @@ void nova_equipa(int NL, ptr_equipa *h_equipa, int e, ptr_equipa *head_equipa, p
   h_indice = hash(ptr_e->nome, e);
   if (h_equipa[h_indice] == 0)
   {
-    {
-      h_equipa[h_indice] = ptr_e;
-      add_equipa_lista(head_equipa, tail_equipa, ptr_e);
-      return;
-    }
+    h_equipa[h_indice] = ptr_e;
+    add_equipa_lista(head_equipa, tail_equipa, ptr_e);
+    return;
   }
   else
   {
     if ((h_equipa[h_indice] != 0) && (h_equipa[h_indice]->next == 0))
     {
+      if (strcmp(h_equipa[h_indice]->nome, ptr_e->nome) < 0)
       {
-        if (strcmp(h_equipa[h_indice]->nome, ptr_e->nome) < 0)
-        {
-          {
-            h_equipa[h_indice]->next = ptr_e;
-            add_equipa_lista(head_equipa, tail_equipa, ptr_e);
-            return;
-          }
-        }
-        else
-        {
-          if (strcmp(h_equipa[h_indice]->nome, ptr_e->nome) > 0)
-          {
-            {
-              ptr_e->next = h_equipa[h_indice];
-              h_equipa[h_indice] = ptr_e;
-              add_equipa_lista(head_equipa, tail_equipa, ptr_e);
-              return;
-            }
-          }
-          else
-          {
-            {
-              printf("%d Equipa existente.\n", NL);
-              free_equipa(ptr_e);
-              return;
-            }
-          }
-
-        }
-
+        h_equipa[h_indice]->next = ptr_e;
+        add_equipa_lista(head_equipa, tail_equipa, ptr_e);
+        return;
       }
-    }
-    else
-    {
-      if (strcmp(h_equipa[h_indice]->nome, ptr_e->nome) > 0)
+      else
       {
+        if (strcmp(h_equipa[h_indice]->nome, ptr_e->nome) > 0)
         {
           ptr_e->next = h_equipa[h_indice];
           h_equipa[h_indice] = ptr_e;
           add_equipa_lista(head_equipa, tail_equipa, ptr_e);
           return;
         }
+        else
+        {
+          printf("%d Equipa existente.\n", NL);
+          free_equipa(ptr_e);
+          return;
+        }
+
+      }
+
+    }
+    else
+    {
+      if (strcmp(h_equipa[h_indice]->nome, ptr_e->nome) > 0)
+      {
+        ptr_e->next = h_equipa[h_indice];
+        h_equipa[h_indice] = ptr_e;
+        add_equipa_lista(head_equipa, tail_equipa, ptr_e);
+        return;
       }
       else
       {
+        valor = ptr_ord_equipa(h_equipa[h_indice], ptr_e);
+        if (valor == 1)
         {
-          valor = ptr_ord_equipa(h_equipa[h_indice], ptr_e);
-          if (valor == 1)
-          {
-            {
-              printf("%d Equipa existente.\n", NL);
-              free_equipa(ptr_e);
-              return;
-            }
-          }
-          else
-          {
-            
-          }
-
-          add_equipa_lista(head_equipa, tail_equipa, ptr_e);
+          printf("%d Equipa existente.\n", NL);
+          free_equipa(ptr_e);
+          return;
         }
+        else
+        {
+          
+        }
+
+        add_equipa_lista(head_equipa, tail_equipa, ptr_e);
       }
 
     }
@@ -562,10 +506,8 @@ void procura_equipa(int NL, ptr_equipa *h_equipa, int e)
   {
     if (strcmp(elem->nome, nome_e) == 0)
     {
-      {
-        printf("%d %s %d\n", NL, elem->nome, elem->jogos_ganhos);
-        return;
-      }
+      printf("%d %s %d\n", NL, elem->nome, elem->jogos_ganhos);
+      return;
     }
     else
     {

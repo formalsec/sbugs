@@ -128,17 +128,13 @@ void merge(pEquipa *vetor, int e, int d, int m)
   for (k = e; k <= d; ++k)
     if ((strcmp(aux[j]->nome, aux[i]->nome) < 0) || (i > m))
   {
-    {
-      vetor[k] = aux[j];
-      --j;
-    }
+    vetor[k] = aux[j];
+    --j;
   }
   else
   {
-    {
-      vetor[k] = aux[i];
-      ++i;
-    }
+    vetor[k] = aux[i];
+    ++i;
   }
 
 
@@ -168,10 +164,8 @@ void freeTabEq()
   for (i = 0; i < tabEq_size; ++i)
     if (tabela_Equi[i] != 0)
   {
-    {
-      free(tabela_Equi[i]->nome);
-      free(tabela_Equi[i]);
-    }
+    free(tabela_Equi[i]->nome);
+    free(tabela_Equi[i]);
   }
   else
   {
@@ -209,19 +203,15 @@ void atualiza_vencedores(int ant_venc, int novo_venc, pEquipa e1, pEquipa e2)
 {
   if ((ant_venc == 1) && (novo_venc == 2))
   {
-    {
-      e1->vit--;
-      e2->vit++;
-    }
+    e1->vit--;
+    e2->vit++;
   }
   else
   {
     if ((ant_venc == 2) && (novo_venc == 1))
     {
-      {
-        e1->vit++;
-        e2->vit--;
-      }
+      e1->vit++;
+      e2->vit--;
     }
     else
     {
@@ -277,19 +267,15 @@ pJogo cria_jogo(char nome[1024], pEquipa e1, pEquipa e2, int sc1, int sc2)
   atualiza_vencedores(-1, vencedor(sc1, sc2), e1, e2);
   if (head == 0)
   {
-    {
-      head = novo_jogo;
-      tail = novo_jogo;
-      novo_jogo->previous = 0;
-    }
+    head = novo_jogo;
+    tail = novo_jogo;
+    novo_jogo->previous = 0;
   }
   else
   {
-    {
-      tail->next = novo_jogo;
-      novo_jogo->previous = tail;
-      tail = novo_jogo;
-    }
+    tail->next = novo_jogo;
+    novo_jogo->previous = tail;
+    tail = novo_jogo;
   }
 
   return novo_jogo;
@@ -382,34 +368,28 @@ int remove_Jo(char *nome)
   jo = tabela_Jo[i];
   if (jo == head)
   {
+    head = head->next;
+    if (jo == tail)
     {
-      head = head->next;
-      if (jo == tail)
-      {
-        tail = 0;
-      }
-      else
-      {
-        
-      }
-
+      tail = 0;
     }
+    else
+    {
+      
+    }
+
   }
   else
   {
     if (jo == tail)
     {
-      {
-        tail = jo->previous;
-        tail->next = 0;
-      }
+      tail = jo->previous;
+      tail->next = 0;
     }
     else
     {
-      {
-        jo->previous->next = jo->next;
-        jo->next->previous = jo->previous;
-      }
+      jo->previous->next = jo->next;
+      jo->next->previous = jo->previous;
     }
 
   }
@@ -436,10 +416,8 @@ void freeTabJo()
   {
     if (tabela_Jo[i] != 0)
     {
-      {
-        free(tabela_Jo[i]->nome);
-        free(tabela_Jo[i]);
-      }
+      free(tabela_Jo[i]->nome);
+      free(tabela_Jo[i]);
     }
     else
     {

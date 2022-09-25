@@ -47,21 +47,19 @@ void removeJogo(LstJogos *lst, char *nome)
   {
     if (strcmp(t->jogo.nome, nome) == 0)
     {
+      if (t == lst->head)
       {
-        if (t == lst->head)
-        {
-          lst->head = t->seguinte;
-        }
-        else
-        {
-          anterior->seguinte = t->seguinte;
-        }
-
-        destroiJogo(t->jogo);
-        free(t);
-        lst->n_jogos--;
-        break;
+        lst->head = t->seguinte;
       }
+      else
+      {
+        anterior->seguinte = t->seguinte;
+      }
+
+      destroiJogo(t->jogo);
+      free(t);
+      lst->n_jogos--;
+      break;
     }
     else
     {

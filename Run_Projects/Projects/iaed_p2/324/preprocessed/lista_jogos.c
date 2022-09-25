@@ -29,15 +29,11 @@ jg_node *add_last_jg(jogos *l, const char *nome, const char *equipa1, const char
   nn->score2 = score2;
   if (l->last)
   {
-    {
-      l->last->next = nn;
-    }
+    l->last->next = nn;
   }
   else
   {
-    {
-      l->head = nn;
-    }
+    l->head = nn;
   }
 
   l->last = nn;

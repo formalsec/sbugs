@@ -41,10 +41,8 @@ void executa_a(int nL, fila jogos, fila equipas, fila jogos_ord)
   j1 = encontra_j_tab(jogos, a);
   if (j1)
   {
-    {
-      escreve_erro(nL, -4);
-      return;
-    }
+    escreve_erro(nL, -4);
+    return;
   }
   else
   {
@@ -54,10 +52,8 @@ void executa_a(int nL, fila jogos, fila equipas, fila jogos_ord)
   e1 = encontra_e_tab(equipas, b);
   if (!e1)
   {
-    {
-      escreve_erro(nL, -1);
-      return;
-    }
+    escreve_erro(nL, -1);
+    return;
   }
   else
   {
@@ -67,10 +63,8 @@ void executa_a(int nL, fila jogos, fila equipas, fila jogos_ord)
   e2 = encontra_e_tab(equipas, c);
   if (!e2)
   {
-    {
-      escreve_erro(nL, -1);
-      return;
-    }
+    escreve_erro(nL, -1);
+    return;
   }
   else
   {
@@ -96,10 +90,8 @@ void executa_A(int nL, fila equipas, fila equipas_ord)
   e1 = encontra_e_tab(equipas, a);
   if (e1)
   {
-    {
-      escreve_erro(nL, -2);
-      return;
-    }
+    escreve_erro(nL, -2);
+    return;
   }
   else
   {
@@ -177,30 +169,28 @@ void executa_r(int nL, fila jogos, fila jogos_ord)
   }
   else
   {
+    equipa vencedora;
+    vencedora = obtem_vencedora(j);
+    if (vencedora == j->e1)
     {
-      equipa vencedora;
-      vencedora = obtem_vencedora(j);
-      if (vencedora == j->e1)
+      muda_vitorias(j->e1, '-');
+    }
+    else
+    {
+      if (vencedora == j->e2)
       {
-        muda_vitorias(j->e1, '-');
+        muda_vitorias(j->e2, '-');
       }
       else
       {
-        if (vencedora == j->e2)
-        {
-          muda_vitorias(j->e2, '-');
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      tira_j(jogos, j, -8);
-      tira_j(jogos_ord, j, -7);
-      apaga_jogo(j);
     }
+
+    tira_j(jogos, j, -8);
+    tira_j(jogos_ord, j, -7);
+    apaga_jogo(j);
   }
 
 }
@@ -226,45 +216,43 @@ void executa_s(int nL, fila jogos)
   }
   else
   {
+    equipa vencedora;
+    vencedora = obtem_vencedora(j);
+    if (vencedora == j->e1)
     {
-      equipa vencedora;
-      vencedora = obtem_vencedora(j);
-      if (vencedora == j->e1)
-      {
-        muda_vitorias(j->e1, '-');
-      }
-      else
-      {
-        if (vencedora == j->e2)
-        {
-          muda_vitorias(j->e2, '-');
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      if (s1 > s2)
-      {
-        muda_vitorias(j->e1, '+');
-      }
-      else
-      {
-        if (s2 > s1)
-        {
-          muda_vitorias(j->e2, '+');
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      altera_score(j, s1, s2);
+      muda_vitorias(j->e1, '-');
     }
+    else
+    {
+      if (vencedora == j->e2)
+      {
+        muda_vitorias(j->e2, '-');
+      }
+      else
+      {
+        
+      }
+
+    }
+
+    if (s1 > s2)
+    {
+      muda_vitorias(j->e1, '+');
+    }
+    else
+    {
+      if (s2 > s1)
+      {
+        muda_vitorias(j->e2, '+');
+      }
+      else
+      {
+        
+      }
+
+    }
+
+    altera_score(j, s1, s2);
   }
 
 }

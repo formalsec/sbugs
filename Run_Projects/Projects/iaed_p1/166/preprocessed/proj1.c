@@ -39,32 +39,26 @@ void Aux_q_r(int idp, int qtd, char operacao)
     Produto_Aux = VetorProdutos[i];
     if (Produto_Aux.Idp == idp)
     {
+      if (operacao == 'q')
       {
-        if (operacao == 'q')
+        Produto_Aux.Stock = Produto_Aux.Stock + qtd;
+        VetorProdutos[idp] = Produto_Aux;
+      }
+      else
+      {
+        if (operacao == 'r')
         {
-          {
-            Produto_Aux.Stock = Produto_Aux.Stock + qtd;
-            VetorProdutos[idp] = Produto_Aux;
-          }
+          Produto_Aux.Stock = Produto_Aux.Stock - qtd;
+          VetorProdutos[idp] = Produto_Aux;
         }
         else
         {
-          if (operacao == 'r')
-          {
-            {
-              Produto_Aux.Stock = Produto_Aux.Stock - qtd;
-              VetorProdutos[idp] = Produto_Aux;
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
-        break;
       }
+
+      break;
     }
     else
     {
@@ -114,15 +108,11 @@ void Comando_q()
   qtd_q = new_sym_var(sizeof(int) * 8);
   if (idp_q > IdentProduto)
   {
-    {
-      printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idp_q);
-    }
+    printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idp_q);
   }
   else
   {
-    {
-      Aux_q_r(idp_q, qtd_q, 'q');
-    }
+    Aux_q_r(idp_q, qtd_q, 'q');
   }
 
 }
@@ -160,71 +150,57 @@ void Comando_A()
   Encomenda_A = VetorEncomendas[ide_A];
   if (ide_A > IdentEncom)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp_A, ide_A);
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp_A, ide_A);
   }
   else
   {
     if (idp_A > IdentProduto)
     {
-      {
-        printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp_A, ide_A);
-      }
+      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp_A, ide_A);
     }
     else
     {
       if (VetorProdutos[idp_A].Stock < qtd_A)
       {
-        {
-          printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp_A, ide_A);
-        }
+        printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp_A, ide_A);
       }
       else
       {
         if ((Calcula_Peso(ide_A) + (qtd_A * VetorProdutos[idp_A].Peso)) > 200)
         {
-          {
-            printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp_A, ide_A);
-          }
+          printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp_A, ide_A);
         }
         else
         {
+          for (i = 0; i <= Encomenda_A.Contador; i++)
           {
-            for (i = 0; i <= Encomenda_A.Contador; i++)
+            if (Encomenda_A.Lista_Produtos[i].Idp == idp_A)
             {
-              if (Encomenda_A.Lista_Produtos[i].Idp == idp_A)
-              {
-                {
-                  Encomenda_A.Lista_Produtos[i].Stock = Encomenda_A.Lista_Produtos[i].Stock + qtd_A;
-                  dentro = 1;
-                  break;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-            if (dentro != 1)
-            {
-              {
-                Encomenda_A.Contador++;
-                Encomenda_A.Lista_Produtos[Encomenda_A.Contador] = Produto_A;
-                Encomenda_A.Lista_Produtos[Encomenda_A.Contador].Stock = qtd_A;
-              }
+              Encomenda_A.Lista_Produtos[i].Stock = Encomenda_A.Lista_Produtos[i].Stock + qtd_A;
+              dentro = 1;
+              break;
             }
             else
             {
               
             }
 
-            Produto_A.Stock = Produto_A.Stock - qtd_A;
-            VetorEncomendas[ide_A] = Encomenda_A;
-            VetorProdutos[idp_A] = Produto_A;
           }
+
+          if (dentro != 1)
+          {
+            Encomenda_A.Contador++;
+            Encomenda_A.Lista_Produtos[Encomenda_A.Contador] = Produto_A;
+            Encomenda_A.Lista_Produtos[Encomenda_A.Contador].Stock = qtd_A;
+          }
+          else
+          {
+            
+          }
+
+          Produto_A.Stock = Produto_A.Stock - qtd_A;
+          VetorEncomendas[ide_A] = Encomenda_A;
+          VetorProdutos[idp_A] = Produto_A;
         }
 
       }
@@ -243,23 +219,17 @@ void comando_r()
   qtd_r = new_sym_var(sizeof(int) * 8);
   if (idp_r > IdentProduto)
   {
-    {
-      printf("Impossivel remover stock do produto %d. Produto inexistente.\n", idp_r);
-    }
+    printf("Impossivel remover stock do produto %d. Produto inexistente.\n", idp_r);
   }
   else
   {
     if ((VetorProdutos[idp_r].Stock - qtd_r) < 0)
     {
-      {
-        printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd_r, idp_r);
-      }
+      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd_r, idp_r);
     }
     else
     {
-      {
-        Aux_q_r(idp_r, qtd_r, 'r');
-      }
+      Aux_q_r(idp_r, qtd_r, 'r');
     }
 
   }
@@ -279,41 +249,33 @@ void comando_R()
   Produto_R = VetorProdutos[idp_R];
   if (ide_R > IdentEncom)
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idp_R, ide_R);
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idp_R, ide_R);
   }
   else
   {
     if (idp_R > IdentProduto)
     {
-      {
-        printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp_R, ide_R);
-      }
+      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp_R, ide_R);
     }
     else
     {
+      for (i = 0; i <= Encomenda_R.Contador; i++)
       {
-        for (i = 0; i <= Encomenda_R.Contador; i++)
+        if (Encomenda_R.Lista_Produtos[i].Idp == idp_R)
         {
-          if (Encomenda_R.Lista_Produtos[i].Idp == idp_R)
-          {
-            {
-              Produto_R.Stock = Produto_R.Stock + Encomenda_R.Lista_Produtos[i].Stock;
-              Encomenda_R.Lista_Produtos[i].Stock = 0;
-              break;
-            }
-          }
-          else
-          {
-            
-          }
-
+          Produto_R.Stock = Produto_R.Stock + Encomenda_R.Lista_Produtos[i].Stock;
+          Encomenda_R.Lista_Produtos[i].Stock = 0;
+          break;
+        }
+        else
+        {
+          
         }
 
-        VetorEncomendas[ide_R] = Encomenda_R;
-        VetorProdutos[idp_R] = Produto_R;
       }
+
+      VetorEncomendas[ide_R] = Encomenda_R;
+      VetorProdutos[idp_R] = Produto_R;
     }
 
   }
@@ -331,21 +293,17 @@ void Comando_C()
   Encomenda_C = VetorEncomendas[ide_C];
   if (ide_C > IdentEncom)
   {
-    {
-      printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ide_C);
-    }
+    printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ide_C);
   }
   else
   {
+    for (i = 0; i <= Encomenda_C.Contador; i++)
     {
-      for (i = 0; i <= Encomenda_C.Contador; i++)
-      {
-        Produto_C = Encomenda_C.Lista_Produtos[i];
-        PrecoEncomenda = PrecoEncomenda + (Produto_C.Stock * Produto_C.Preco);
-      }
-
-      printf("Custo da encomenda %d %d.\n", ide_C, PrecoEncomenda);
+      Produto_C = Encomenda_C.Lista_Produtos[i];
+      PrecoEncomenda = PrecoEncomenda + (Produto_C.Stock * Produto_C.Preco);
     }
+
+    printf("Custo da encomenda %d %d.\n", ide_C, PrecoEncomenda);
   }
 
 }
@@ -363,37 +321,31 @@ void Comando_p()
   Produto_p = VetorProdutos[idp_p];
   if (idp_p > IdentProduto)
   {
-    {
-      printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idp_p);
-    }
+    printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idp_p);
   }
   else
   {
+    Produto_p.Preco = preco_p;
+    VetorProdutos[idp_p] = Produto_p;
+    for (i = 0; i <= IdentEncom; i++)
     {
-      Produto_p.Preco = preco_p;
-      VetorProdutos[idp_p] = Produto_p;
-      for (i = 0; i <= IdentEncom; i++)
+      Encomenda_p = VetorEncomendas[i];
+      for (k = 0; k <= Encomenda_p.Contador; k++)
       {
-        Encomenda_p = VetorEncomendas[i];
-        for (k = 0; k <= Encomenda_p.Contador; k++)
+        if (Encomenda_p.Lista_Produtos[k].Idp == idp_p)
         {
-          if (Encomenda_p.Lista_Produtos[k].Idp == idp_p)
-          {
-            {
-              Encomenda_p.Lista_Produtos[k].Preco = preco_p;
-            }
-          }
-          else
-          {
-            
-          }
-
+          Encomenda_p.Lista_Produtos[k].Preco = preco_p;
+        }
+        else
+        {
+          
         }
 
-        VetorEncomendas[i] = Encomenda_p;
       }
 
+      VetorEncomendas[i] = Encomenda_p;
     }
+
   }
 
 }
@@ -412,43 +364,23 @@ void Comando_E()
   Produto_E = VetorProdutos[idp_E];
   if (ide_E > IdentEncom)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide_E);
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide_E);
   }
   else
   {
     if (idp_E > IdentProduto)
     {
-      {
-        printf("Impossivel listar produto %d. Produto inexistente.\n", idp_E);
-      }
+      printf("Impossivel listar produto %d. Produto inexistente.\n", idp_E);
     }
     else
     {
+      for (i = 0; i <= Encomenda_E.Contador; i++)
       {
-        for (i = 0; i <= Encomenda_E.Contador; i++)
+        if (Encomenda_E.Lista_Produtos[i].Idp == idp_E)
         {
-          if (Encomenda_E.Lista_Produtos[i].Idp == idp_E)
-          {
-            {
-              printf("%s %d.\n", Encomenda_E.Lista_Produtos[i].Descricao, Encomenda_E.Lista_Produtos[i].Stock);
-              dentro = 1;
-              break;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-        if (dentro == 0)
-        {
-          {
-            printf("%s %d.\n", Produto_E.Descricao, 0);
-          }
+          printf("%s %d.\n", Encomenda_E.Lista_Produtos[i].Descricao, Encomenda_E.Lista_Produtos[i].Stock);
+          dentro = 1;
+          break;
         }
         else
         {
@@ -456,6 +388,16 @@ void Comando_E()
         }
 
       }
+
+      if (dentro == 0)
+      {
+        printf("%s %d.\n", Produto_E.Descricao, 0);
+      }
+      else
+      {
+        
+      }
+
     }
 
   }
@@ -475,36 +417,23 @@ void Comando_m()
   idp_m = new_sym_var(sizeof(int) * 8);
   if (idp_m > IdentProduto)
   {
-    {
-      printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idp_m);
-    }
+    printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idp_m);
   }
   else
   {
+    for (i = 0; i <= IdentEncom; i++)
     {
-      for (i = 0; i <= IdentEncom; i++)
+      Encomenda_m = VetorEncomendas[i];
+      for (k = 0; k <= Encomenda_m.Contador; k++)
       {
-        Encomenda_m = VetorEncomendas[i];
-        for (k = 0; k <= Encomenda_m.Contador; k++)
+        Produto_m = Encomenda_m.Lista_Produtos[k];
+        if ((Produto_m.Idp == idp_m) && (Produto_m.Stock > 0))
         {
-          Produto_m = Encomenda_m.Lista_Produtos[k];
-          if ((Produto_m.Idp == idp_m) && (Produto_m.Stock > 0))
+          dentro = 1;
+          if (Produto_m.Stock > Stock_max)
           {
-            {
-              dentro = 1;
-              if (Produto_m.Stock > Stock_max)
-              {
-                {
-                  Stock_max = Produto_m.Stock;
-                  Encomenda_max = Encomenda_m;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
+            Stock_max = Produto_m.Stock;
+            Encomenda_max = Encomenda_m;
           }
           else
           {
@@ -512,17 +441,20 @@ void Comando_m()
           }
 
         }
+        else
+        {
+          
+        }
 
       }
 
     }
+
   }
 
   if ((IdentEncom >= 0) && (dentro == 1))
   {
-    {
-      printf("Maximo produto %d %d %d.\n", idp_m, Encomenda_max.Ide, Stock_max);
-    }
+    printf("Maximo produto %d %d %d.\n", idp_m, Encomenda_max.Ide, Stock_max);
   }
   else
   {
@@ -552,9 +484,7 @@ void Comando_l()
     {
       if (Vetor_Copia[j].Preco < Vetor_Copia[min].Preco)
       {
-        {
-          min = j;
-        }
+        min = j;
       }
       else
       {
@@ -587,51 +517,25 @@ void Comando_L()
   ide_L = new_sym_var(sizeof(int) * 8);
   if (ide_L > IdentEncom)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide_L);
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide_L);
   }
   else
   {
+    for (i = 0; i <= VetorEncomendas[ide_L].Contador; i++)
     {
-      for (i = 0; i <= VetorEncomendas[ide_L].Contador; i++)
-      {
-        Produtos_ide[i] = VetorEncomendas[ide_L].Lista_Produtos[i];
-      }
+      Produtos_ide[i] = VetorEncomendas[ide_L].Lista_Produtos[i];
+    }
 
-      printf("Encomenda %d\n", ide_L);
-      for (j = 0; j < VetorEncomendas[ide_L].Contador; j++)
+    printf("Encomenda %d\n", ide_L);
+    for (j = 0; j < VetorEncomendas[ide_L].Contador; j++)
+    {
+      produto aux;
+      int min = j;
+      for (k = j + 1; k <= VetorEncomendas[ide_L].Contador; k++)
       {
-        produto aux;
-        int min = j;
-        for (k = j + 1; k <= VetorEncomendas[ide_L].Contador; k++)
+        if (strcmp(Produtos_ide[k].Descricao, Produtos_ide[min].Descricao) < 0)
         {
-          if (strcmp(Produtos_ide[k].Descricao, Produtos_ide[min].Descricao) < 0)
-          {
-            {
-              min = k;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-        aux = Produtos_ide[j];
-        Produtos_ide[j] = Produtos_ide[min];
-        Produtos_ide[min] = aux;
-      }
-
-      for (l = 0; l <= VetorEncomendas[ide_L].Contador; l++)
-      {
-        if (Produtos_ide[l].Stock > 0)
-        {
-          {
-            Produto_L = Produtos_ide[l];
-            printf("* %s %d %d\n", Produto_L.Descricao, Produto_L.Preco, Produto_L.Stock);
-          }
+          min = k;
         }
         else
         {
@@ -640,7 +544,25 @@ void Comando_L()
 
       }
 
+      aux = Produtos_ide[j];
+      Produtos_ide[j] = Produtos_ide[min];
+      Produtos_ide[min] = aux;
     }
+
+    for (l = 0; l <= VetorEncomendas[ide_L].Contador; l++)
+    {
+      if (Produtos_ide[l].Stock > 0)
+      {
+        Produto_L = Produtos_ide[l];
+        printf("* %s %d %d\n", Produto_L.Descricao, Produto_L.Preco, Produto_L.Stock);
+      }
+      else
+      {
+        
+      }
+
+    }
+
   }
 
 }

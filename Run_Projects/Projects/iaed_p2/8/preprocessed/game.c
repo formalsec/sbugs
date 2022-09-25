@@ -15,10 +15,8 @@ Game *new_game(char *name, Team *t1, Team *t2, Score score)
   Game *game = (Game *) malloc(sizeof(Game));
   if (errno > 0)
   {
-    {
-      perror("game_new: create_game");
-      exit(errno);
-    }
+    perror("game_new: create_game");
+    exit(errno);
   }
   else
   {
@@ -37,10 +35,8 @@ void game_free(Game *g)
 {
   if (g == 0)
   {
-    {
-      printf("%s: null pointer\n", "game_free");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "game_free");
+    exit(1);
   }
   else
   {
@@ -56,10 +52,8 @@ char *game_get_name(Game *g)
 {
   if (g == 0)
   {
-    {
-      printf("%s: null pointer\n", "game_get_name");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "game_get_name");
+    exit(1);
   }
   else
   {
@@ -74,10 +68,8 @@ Team *game_get_team1(Game *g)
 {
   if (g == 0)
   {
-    {
-      printf("%s: null pointer\n", "game_get_team1");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "game_get_team1");
+    exit(1);
   }
   else
   {
@@ -92,10 +84,8 @@ Team *game_get_team2(Game *g)
 {
   if (g == 0)
   {
-    {
-      printf("%s: null pointer\n", "game_get_team2");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "game_get_team2");
+    exit(1);
   }
   else
   {
@@ -110,10 +100,8 @@ int game_get_score1(Game *g)
 {
   if (g == 0)
   {
-    {
-      printf("%s: null pointer\n", "game_get_score1");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "game_get_score1");
+    exit(1);
   }
   else
   {
@@ -128,10 +116,8 @@ int game_get_score2(Game *g)
 {
   if (g == 0)
   {
-    {
-      printf("%s: null pointer\n", "game_get_score2");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "game_get_score2");
+    exit(1);
   }
   else
   {
@@ -146,10 +132,8 @@ void game_set_score(Game *g, int s1, int s2)
 {
   if (g == 0)
   {
-    {
-      printf("%s: null pointer\n", "game_set_score");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "game_set_score");
+    exit(1);
   }
   else
   {
@@ -207,10 +191,8 @@ void game_print(Game *g)
 {
   if (g == 0)
   {
-    {
-      printf("%s: null pointer\n", "game_print");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "game_print");
+    exit(1);
   }
   else
   {
@@ -225,10 +207,8 @@ char *game_to_string(Game *g, char *buf)
 {
   if (g == 0)
   {
-    {
-      printf("%s: null pointer\n", "game_to_string");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "game_to_string");
+    exit(1);
   }
   else
   {

@@ -38,11 +38,9 @@ void funcaoa(Hash_Jogo *HashTableJogo, Hash *HashTableEquipas, int nl, list *pon
   y = STsearch_jogo(HashTableJogo, palavra1, 13009);
   if (y != 0)
   {
-    {
-      printf("%d Jogo existente.\n", nl);
-      nl++;
-      return;
-    }
+    printf("%d Jogo existente.\n", nl);
+    nl++;
+    return;
   }
   else
   {
@@ -52,11 +50,9 @@ void funcaoa(Hash_Jogo *HashTableJogo, Hash *HashTableEquipas, int nl, list *pon
   x = STsearch(HashTableEquipas, palavra2, 10001);
   if (x == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", nl);
-      nl++;
-      return;
-    }
+    printf("%d Equipa inexistente.\n", nl);
+    nl++;
+    return;
   }
   else
   {
@@ -66,11 +62,9 @@ void funcaoa(Hash_Jogo *HashTableJogo, Hash *HashTableEquipas, int nl, list *pon
   z = STsearch(HashTableEquipas, palavra3, 10001);
   if (z == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", nl);
-      nl++;
-      return;
-    }
+    printf("%d Equipa inexistente.\n", nl);
+    nl++;
+    return;
   }
   else
   {
@@ -81,17 +75,13 @@ void funcaoa(Hash_Jogo *HashTableJogo, Hash *HashTableEquipas, int nl, list *pon
   add_last(ponteiro_lista_unica, palavra1, HashTableJogo, 13009);
   if (a > b)
   {
-    {
-      x->equipa->vitorias++;
-    }
+    x->equipa->vitorias++;
   }
   else
   {
     if (a < b)
     {
-      {
-        z->equipa->vitorias++;
-      }
+      z->equipa->vitorias++;
     }
     else
     {
@@ -127,11 +117,9 @@ void funcaop(Hash_Jogo *HashTableJogo, int nl)
   y = STsearch_jogo(HashTableJogo, palavra1, 13009);
   if (y == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-      nl++;
-      return;
-    }
+    printf("%d Jogo inexistente.\n", nl);
+    nl++;
+    return;
   }
   else
   {
@@ -160,11 +148,9 @@ void funcaor(Hash_Jogo *HashTableJogo, int m_jogo, int nl, list *ponteiro_lista_
   y = STsearch_jogo(HashTableJogo, palavra1, m_jogo);
   if (y == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-      nl++;
-      return;
-    }
+    printf("%d Jogo inexistente.\n", nl);
+    nl++;
+    return;
   }
   else
   {
@@ -173,17 +159,13 @@ void funcaor(Hash_Jogo *HashTableJogo, int m_jogo, int nl, list *ponteiro_lista_
 
   if (y->jogo->score1 > y->jogo->score2)
   {
-    {
-      y->jogo->equipa1->vitorias--;
-    }
+    y->jogo->equipa1->vitorias--;
   }
   else
   {
     if (y->jogo->score1 < y->jogo->score2)
     {
-      {
-        y->jogo->equipa2->vitorias--;
-      }
+      y->jogo->equipa2->vitorias--;
     }
     else
     {
@@ -194,37 +176,29 @@ void funcaor(Hash_Jogo *HashTableJogo, int m_jogo, int nl, list *ponteiro_lista_
 
   if ((y->previousHash == 0) && (y->nextHash != 0))
   {
-    {
-      ydepois = y->nextHash;
-      ydepois->previousHash = 0;
-      heads[i] = ydepois;
-    }
+    ydepois = y->nextHash;
+    ydepois->previousHash = 0;
+    heads[i] = ydepois;
   }
   else
   {
     if ((y->previousHash != 0) && (y->nextHash == 0))
     {
-      {
-        yantes = y->previousHash;
-        yantes->nextHash = 0;
-      }
+      yantes = y->previousHash;
+      yantes->nextHash = 0;
     }
     else
     {
       if ((y->previousHash == 0) && (y->nextHash == 0))
       {
-        {
-          heads[i] = 0;
-        }
+        heads[i] = 0;
       }
       else
       {
-        {
-          yantes = y->previousHash;
-          ydepois = y->nextHash;
-          yantes->nextHash = ydepois;
-          ydepois->previousHash = yantes;
-        }
+        yantes = y->previousHash;
+        ydepois = y->nextHash;
+        yantes->nextHash = ydepois;
+        ydepois->previousHash = yantes;
       }
 
     }
@@ -256,11 +230,9 @@ void funcaos(Hash_Jogo *HashTableJogo, Hash *HashTableEquipas, int nl)
   y = STsearch_jogo(HashTableJogo, palavra1, 13009);
   if (y == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-      nl++;
-      return;
-    }
+    printf("%d Jogo inexistente.\n", nl);
+    nl++;
+    return;
   }
   else
   {
@@ -269,15 +241,29 @@ void funcaos(Hash_Jogo *HashTableJogo, Hash *HashTableEquipas, int nl)
 
   if ((y->jogo->score1 > y->jogo->score2) && (a <= b))
   {
+    x = STsearch(HashTableEquipas, y->jogo->equipa1->name, 10001);
+    x->equipa->vitorias--;
+    if ((y->jogo->score1 > y->jogo->score2) && (a < b))
     {
-      x = STsearch(HashTableEquipas, y->jogo->equipa1->name, 10001);
-      x->equipa->vitorias--;
-      if ((y->jogo->score1 > y->jogo->score2) && (a < b))
+      z = STsearch(HashTableEquipas, y->jogo->equipa2->name, 10001);
+      z->equipa->vitorias++;
+    }
+    else
+    {
+      
+    }
+
+  }
+  else
+  {
+    if ((y->jogo->score1 < y->jogo->score2) && (a >= b))
+    {
+      z = STsearch(HashTableEquipas, y->jogo->equipa2->name, 10001);
+      z->equipa->vitorias--;
+      if (a > b)
       {
-        {
-          z = STsearch(HashTableEquipas, y->jogo->equipa2->name, 10001);
-          z->equipa->vitorias++;
-        }
+        x = STsearch(HashTableEquipas, y->jogo->equipa1->name, 10001);
+        x->equipa->vitorias++;
       }
       else
       {
@@ -285,57 +271,29 @@ void funcaos(Hash_Jogo *HashTableJogo, Hash *HashTableEquipas, int nl)
       }
 
     }
-  }
-  else
-  {
-    if ((y->jogo->score1 < y->jogo->score2) && (a >= b))
-    {
-      {
-        z = STsearch(HashTableEquipas, y->jogo->equipa2->name, 10001);
-        z->equipa->vitorias--;
-        if (a > b)
-        {
-          {
-            x = STsearch(HashTableEquipas, y->jogo->equipa1->name, 10001);
-            x->equipa->vitorias++;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-    }
     else
     {
       if (y->jogo->score1 == y->jogo->score2)
       {
+        if (a < b)
         {
-          if (a < b)
+          z = STsearch(HashTableEquipas, y->jogo->equipa2->name, 10001);
+          z->equipa->vitorias++;
+        }
+        else
+        {
+          if (a > b)
           {
-            {
-              z = STsearch(HashTableEquipas, y->jogo->equipa2->name, 10001);
-              z->equipa->vitorias++;
-            }
+            x = STsearch(HashTableEquipas, y->jogo->equipa1->name, 10001);
+            x->equipa->vitorias++;
           }
           else
           {
-            if (a > b)
-            {
-              {
-                x = STsearch(HashTableEquipas, y->jogo->equipa1->name, 10001);
-                x->equipa->vitorias++;
-              }
-            }
-            else
-            {
-              
-            }
-
+            
           }
 
         }
+
       }
       else
       {
@@ -363,11 +321,9 @@ void funcaoA(Hash *HashTableEquipas, int nl)
   x = STsearch(HashTableEquipas, palavra, 10001);
   if (x != 0)
   {
-    {
-      printf("%d Equipa existente.\n", nl);
-      nl++;
-      return;
-    }
+    printf("%d Equipa existente.\n", nl);
+    nl++;
+    return;
   }
   else
   {
@@ -390,11 +346,9 @@ void funcaoP(Hash *HashTableEquipas, int nl)
   x = STsearch(HashTableEquipas, palavra, 10001);
   if (x == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", nl);
-      nl++;
-      return;
-    }
+    printf("%d Equipa inexistente.\n", nl);
+    nl++;
+    return;
   }
   else
   {
@@ -419,23 +373,19 @@ void funcaog(Hash *HashTable, int m, int nl)
     {
       if (t->equipa->vitorias > v)
       {
-        {
-          v = t->equipa->vitorias;
-          free(array);
-          array = malloc(sizeof(link));
-          array[0] = t;
-          contador = 1;
-        }
+        v = t->equipa->vitorias;
+        free(array);
+        array = malloc(sizeof(link));
+        array[0] = t;
+        contador = 1;
       }
       else
       {
         if (t->equipa->vitorias == v)
         {
-          {
-            contador++;
-            array = realloc((void *) array, (sizeof(link)) * contador);
-            array[contador - 1] = t;
-          }
+          contador++;
+          array = realloc((void *) array, (sizeof(link)) * contador);
+          array[contador - 1] = t;
         }
         else
         {
@@ -452,9 +402,7 @@ void funcaog(Hash *HashTable, int m, int nl)
   qsort(array, contador, sizeof(struct node *), comparator);
   if (contador != 0)
   {
-    {
-      printf("%d Melhores %d\n", nl, array[0]->equipa->vitorias);
-    }
+    printf("%d Melhores %d\n", nl, array[0]->equipa->vitorias);
   }
   else
   {

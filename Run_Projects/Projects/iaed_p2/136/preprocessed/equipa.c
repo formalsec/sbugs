@@ -21,10 +21,8 @@ void apaga_equipa(equipa e)
 {
   if (e)
   {
-    {
-      free(e->nome);
-      free(e);
-    }
+    free(e->nome);
+    free(e);
   }
   else
   {

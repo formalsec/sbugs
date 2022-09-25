@@ -72,46 +72,40 @@ link_j apaga_j(link_j *primeiros_j, link_j primeiro_jogo, char *nome, link_j *fi
   {
     if (strcmp(x->jogo->nome, nome) == 0)
     {
+      if (x == primeiro_jogo)
       {
-        if (x == primeiro_jogo)
+        primeiro_jogo = x->proximo;
+        if ((*fim_lista) == x)
         {
-          {
-            primeiro_jogo = x->proximo;
-            if ((*fim_lista) == x)
-            {
-              *fim_lista = x->proximo;
-            }
-            else
-            {
-              
-            }
-
-          }
+          *fim_lista = x->proximo;
         }
         else
         {
-          {
-            anterior->proximo = x->proximo;
-            if ((*fim_lista) == x)
-            {
-              *fim_lista = anterior;
-            }
-            else
-            {
-              
-            }
-
-          }
+          
         }
 
-        y = apaga_jogo(primeiros_j, nome);
-        free(x->jogo->nome);
-        free(x->jogo->equipa1);
-        free(x->jogo->equipa2);
-        FreeNode_j(x);
-        free(y);
-        return primeiro_jogo;
       }
+      else
+      {
+        anterior->proximo = x->proximo;
+        if ((*fim_lista) == x)
+        {
+          *fim_lista = anterior;
+        }
+        else
+        {
+          
+        }
+
+      }
+
+      y = apaga_jogo(primeiros_j, nome);
+      free(x->jogo->nome);
+      free(x->jogo->equipa1);
+      free(x->jogo->equipa2);
+      FreeNode_j(x);
+      free(y);
+      return primeiro_jogo;
     }
     else
     {
@@ -164,18 +158,16 @@ link_j apaga_jogo(link_j *primeiros_j, char *nome)
   {
     if (strcmp(x->jogo->nome, nome) == 0)
     {
+      if (x == primeiro_jogo)
       {
-        if (x == primeiro_jogo)
-        {
-          primeiros_j[i] = x->proximo;
-        }
-        else
-        {
-          anterior->proximo = x->proximo;
-        }
-
-        break;
+        primeiros_j[i] = x->proximo;
       }
+      else
+      {
+        anterior->proximo = x->proximo;
+      }
+
+      break;
     }
     else
     {

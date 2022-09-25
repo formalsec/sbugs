@@ -82,18 +82,16 @@ int less(Produto a, Produto b, int tipo)
 {
   if (tipo == 1)
   {
+    if (a.preco == b.preco)
     {
-      if (a.preco == b.preco)
-      {
-        return a.idp < b.idp;
-      }
-      else
-      {
-        
-      }
-
-      return a.preco < b.preco;
+      return a.idp < b.idp;
     }
+    else
+    {
+      
+    }
+
+    return a.preco < b.preco;
   }
   else
   {
@@ -134,11 +132,9 @@ void quickSort(Produto lista[], int l, int r, int tipo)
 
     if (i < j)
     {
-      {
-        Produto t = lista[i];
-        lista[i] = lista[j];
-        lista[j] = t;
-      }
+      Produto t = lista[i];
+      lista[i] = lista[j];
+      lista[j] = t;
     }
     else
     {
@@ -212,21 +208,17 @@ void casoA(int ide, int idp, int qtd)
         }
         else
         {
+          sistema[idp].qtd -= qtd;
+          if (existeProduto(encomendas[ide].produtos, idp, encomendas[ide].distintos))
           {
-            sistema[idp].qtd -= qtd;
-            if (existeProduto(encomendas[ide].produtos, idp, encomendas[ide].distintos))
-            {
-              encomendas[ide].produtos[posicao(ide, idp)].qtd += qtd;
-            }
-            else
-            {
-              {
-                encomendas[ide].produtos[encomendas[ide].distintos] = sistema[idp];
-                encomendas[ide].produtos[encomendas[ide].distintos++].qtd = qtd;
-              }
-            }
-
+            encomendas[ide].produtos[posicao(ide, idp)].qtd += qtd;
           }
+          else
+          {
+            encomendas[ide].produtos[encomendas[ide].distintos] = sistema[idp];
+            encomendas[ide].produtos[encomendas[ide].distintos++].qtd = qtd;
+          }
+
         }
 
       }
@@ -274,10 +266,8 @@ void casoR(int ide, int idp)
     {
       if (existeProduto(encomendas[ide].produtos, idp, encomendas[ide].distintos))
       {
-        {
-          sistema[idp].qtd += encomendas[ide].produtos[posicao(ide, idp)].qtd;
-          encomendas[ide].produtos[posicao(ide, idp)].qtd = 0;
-        }
+        sistema[idp].qtd += encomendas[ide].produtos[posicao(ide, idp)].qtd;
+        encomendas[ide].produtos[posicao(ide, idp)].qtd = 0;
       }
       else
       {
@@ -298,16 +288,14 @@ void casoC(int ide)
   }
   else
   {
+    int preco = 0;
+    int i;
+    for (i = 0; i < encomendas[ide].distintos; i++)
     {
-      int preco = 0;
-      int i;
-      for (i = 0; i < encomendas[ide].distintos; i++)
-      {
-        preco += encomendas[ide].produtos[i].qtd * encomendas[ide].produtos[i].preco;
-      }
-
-      printf("Custo da encomenda %d %d.\n", ide, preco);
+      preco += encomendas[ide].produtos[i].qtd * encomendas[ide].produtos[i].preco;
     }
+
+    printf("Custo da encomenda %d %d.\n", ide, preco);
   }
 
 }
@@ -320,13 +308,11 @@ void casop(int idp, int preco)
   }
   else
   {
-    {
-      int i;
-      sistema[idp].preco = preco;
-      for (i = 0; i < ideGlobal; i++)
-        encomendas[i].produtos[posicao(i, idp)].preco = preco;
+    int i;
+    sistema[idp].preco = preco;
+    for (i = 0; i < ideGlobal; i++)
+      encomendas[i].produtos[posicao(i, idp)].preco = preco;
 
-    }
   }
 
 }
@@ -345,17 +331,15 @@ void casoE(int ide, int idp)
     }
     else
     {
+      if (existeProduto(encomendas[ide].produtos, idp, encomendas[ide].distintos))
       {
-        if (existeProduto(encomendas[ide].produtos, idp, encomendas[ide].distintos))
-        {
-          printf("%s %d.\n", sistema[idp].desc, encomendas[ide].produtos[posicao(ide, idp)].qtd);
-        }
-        else
-        {
-          printf("%s %d.\n", sistema[idp].desc, 0);
-        }
-
+        printf("%s %d.\n", sistema[idp].desc, encomendas[ide].produtos[posicao(ide, idp)].qtd);
       }
+      else
+      {
+        printf("%s %d.\n", sistema[idp].desc, 0);
+      }
+
     }
 
   }
@@ -370,35 +354,24 @@ void casom(int idp)
   }
   else
   {
+    int i;
+    int maxID;
+    int numero = 0;
+    for (i = 0; i < ideGlobal; i++)
     {
-      int i;
-      int maxID;
-      int numero = 0;
-      for (i = 0; i < ideGlobal; i++)
+      if (existeEncomenda(i))
       {
-        if (existeEncomenda(i))
+        if (existeProduto(encomendas[i].produtos, idp, encomendas[i].distintos))
         {
+          if (encomendas[i].produtos[posicao(i, idp)].qtd > numero)
           {
-            if (existeProduto(encomendas[i].produtos, idp, encomendas[i].distintos))
-            {
-              {
-                if (encomendas[i].produtos[posicao(i, idp)].qtd > numero)
-                {
-                  numero = encomendas[i].produtos[posicao(i, idp)].qtd, maxID = i;
-                }
-                else
-                {
-                  
-                }
-
-              }
-            }
-            else
-            {
-              
-            }
-
+            numero = encomendas[i].produtos[posicao(i, idp)].qtd, maxID = i;
           }
+          else
+          {
+            
+          }
+
         }
         else
         {
@@ -406,17 +379,22 @@ void casom(int idp)
         }
 
       }
-
-      if (numero > 0)
-      {
-        printf("Maximo produto %d %d %d.\n", idp, maxID, numero);
-      }
       else
       {
         
       }
 
     }
+
+    if (numero > 0)
+    {
+      printf("Maximo produto %d %d %d.\n", idp, maxID, numero);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -442,22 +420,20 @@ void casoL(int ide)
   }
   else
   {
+    int i;
+    quickSort(encomendas[ide].produtos, 0, encomendas[ide].distintos - 1, 2);
+    printf("Encomenda %d\n", ide);
+    for (i = 0; i < encomendas[ide].distintos; i++)
+      if (encomendas[ide].produtos[i].qtd > 0)
     {
-      int i;
-      quickSort(encomendas[ide].produtos, 0, encomendas[ide].distintos - 1, 2);
-      printf("Encomenda %d\n", ide);
-      for (i = 0; i < encomendas[ide].distintos; i++)
-        if (encomendas[ide].produtos[i].qtd > 0)
-      {
-        printf("* %s %d %d\n", encomendas[ide].produtos[i].desc, encomendas[ide].produtos[i].preco, encomendas[ide].produtos[i].qtd);
-      }
-      else
-      {
-        
-      }
-
-
+      printf("* %s %d %d\n", encomendas[ide].produtos[i].desc, encomendas[ide].produtos[i].preco, encomendas[ide].produtos[i].qtd);
     }
+    else
+    {
+      
+    }
+
+
   }
 
 }

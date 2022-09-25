@@ -25,19 +25,15 @@ void novo_jogo(lista **j, lista **j_o, elem_eq **e, int NL, char *nome, char *eq
   tmp2 = encontra_equipa_tabela(e, eq2);
   if (encontra_jogo_tabela(j, nome) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-      return;
-    }
+    printf("%d Jogo existente.\n", NL);
+    return;
   }
   else
   {
     if ((tmp1 == 0) || (tmp2 == 0))
     {
-      {
-        printf("%d Equipa inexistente.\n", NL);
-        return;
-      }
+      printf("%d Equipa inexistente.\n", NL);
+      return;
     }
     else
     {
@@ -53,17 +49,13 @@ void novo_jogo(lista **j, lista **j_o, elem_eq **e, int NL, char *nome, char *eq
   insere_jogo_tabela(j, novo);
   if (sc1 > sc2)
   {
-    {
-      aumenta_pontuacao(acede_equipa(tmp1));
-    }
+    aumenta_pontuacao(acede_equipa(tmp1));
   }
   else
   {
     if (sc2 > sc1)
     {
-      {
-        aumenta_pontuacao(acede_equipa(tmp2));
-      }
+      aumenta_pontuacao(acede_equipa(tmp2));
     }
     else
     {
@@ -79,16 +71,12 @@ void nova_equipa(elem_eq **e, int NL, char *nome)
   Item_eq *novo;
   if (encontra_equipa_tabela(e, nome) == 0)
   {
-    {
-      novo = inicializa_equipa(nome);
-      insere_equipa_tabela(e, novo);
-    }
+    novo = inicializa_equipa(nome);
+    insere_equipa_tabela(e, novo);
   }
   else
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-    }
+    printf("%d Equipa existente.\n", NL);
   }
 
 }
@@ -118,18 +106,14 @@ void procura_jogo(lista **j, int NL, char *nome)
   elem_j *aux = encontra_jogo_tabela(j, nome);
   if (aux != 0)
   {
-    {
-      tmp = acede_jogo(aux);
-      sc1 = pontuacao_eq1(tmp);
-      sc2 = pontuacao_eq2(tmp);
-      printf("%d %s %s %s %d %d\n", NL, nome_jogo(tmp), nome_eq1(tmp), nome_eq2(tmp), sc1, sc2);
-    }
+    tmp = acede_jogo(aux);
+    sc1 = pontuacao_eq1(tmp);
+    sc2 = pontuacao_eq2(tmp);
+    printf("%d %s %s %s %d %d\n", NL, nome_jogo(tmp), nome_eq1(tmp), nome_eq2(tmp), sc1, sc2);
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
 
 }
@@ -140,16 +124,12 @@ void procura_equipa(elem_eq **e, int NL, char *nome)
   Item_eq *tmp;
   if (aux != 0)
   {
-    {
-      tmp = acede_equipa(aux);
-      printf("%d %s %d\n", NL, nome_equipa(tmp), ganhos_equipa(tmp));
-    }
+    tmp = acede_equipa(aux);
+    printf("%d %s %d\n", NL, nome_equipa(tmp), ganhos_equipa(tmp));
   }
   else
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-    }
+    printf("%d Equipa inexistente.\n", NL);
   }
 
 }
@@ -164,43 +144,35 @@ void apaga_jogo(lista **j, lista **j_o, elem_eq **e, int NL, char *nome)
   Item_j *jogo;
   if (tmp1 != 0)
   {
+    jogo = acede_jogo(tmp1);
+    sc1 = pontuacao_eq1(jogo);
+    sc2 = pontuacao_eq2(jogo);
+    if (sc1 > sc2)
     {
-      jogo = acede_jogo(tmp1);
-      sc1 = pontuacao_eq1(jogo);
-      sc2 = pontuacao_eq2(jogo);
-      if (sc1 > sc2)
+      aux = encontra_equipa_tabela(e, nome_eq1(jogo));
+      diminui_pontuacao(acede_equipa(aux));
+    }
+    else
+    {
+      if (sc1 < sc2)
       {
-        {
-          aux = encontra_equipa_tabela(e, nome_eq1(jogo));
-          diminui_pontuacao(acede_equipa(aux));
-        }
+        aux = encontra_equipa_tabela(e, nome_eq2(jogo));
+        diminui_pontuacao(acede_equipa(aux));
       }
       else
       {
-        if (sc1 < sc2)
-        {
-          {
-            aux = encontra_equipa_tabela(e, nome_eq2(jogo));
-            diminui_pontuacao(acede_equipa(aux));
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      remove_jogo_lista(*j_o, tmp2);
-      remove_jogo_tabela(j, tmp1);
-      liberta_jogo(jogo);
     }
+
+    remove_jogo_lista(*j_o, tmp2);
+    remove_jogo_tabela(j, tmp1);
+    liberta_jogo(jogo);
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
 
 }
@@ -209,20 +181,38 @@ void altera_ganhos_equipas(int sc1, int sc2, int ant1, int ant2, elem_eq *aux1, 
 {
   if (sc1 == sc2)
   {
+    if (ant1 > ant2)
     {
-      if (ant1 > ant2)
+      diminui_pontuacao(acede_equipa(aux1));
+    }
+    else
+    {
+      if (ant1 < ant2)
       {
-        {
-          diminui_pontuacao(acede_equipa(aux1));
-        }
+        diminui_pontuacao(acede_equipa(aux2));
+      }
+      else
+      {
+        
+      }
+
+    }
+
+  }
+  else
+  {
+    if (sc1 > sc2)
+    {
+      if (ant1 == ant2)
+      {
+        aumenta_pontuacao(acede_equipa(aux1));
       }
       else
       {
         if (ant1 < ant2)
         {
-          {
-            diminui_pontuacao(acede_equipa(aux2));
-          }
+          diminui_pontuacao(acede_equipa(aux2));
+          aumenta_pontuacao(acede_equipa(aux1));
         }
         else
         {
@@ -232,62 +222,26 @@ void altera_ganhos_equipas(int sc1, int sc2, int ant1, int ant2, elem_eq *aux1, 
       }
 
     }
-  }
-  else
-  {
-    if (sc1 > sc2)
-    {
-      {
-        if (ant1 == ant2)
-        {
-          {
-            aumenta_pontuacao(acede_equipa(aux1));
-          }
-        }
-        else
-        {
-          if (ant1 < ant2)
-          {
-            {
-              diminui_pontuacao(acede_equipa(aux2));
-              aumenta_pontuacao(acede_equipa(aux1));
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-      }
-    }
     else
     {
+      if (ant1 == ant2)
       {
-        if (ant1 == ant2)
+        aumenta_pontuacao(acede_equipa(aux2));
+      }
+      else
+      {
+        if (ant1 > ant2)
         {
-          {
-            aumenta_pontuacao(acede_equipa(aux2));
-          }
+          diminui_pontuacao(acede_equipa(aux1));
+          aumenta_pontuacao(acede_equipa(aux2));
         }
         else
         {
-          if (ant1 > ant2)
-          {
-            {
-              diminui_pontuacao(acede_equipa(aux1));
-              aumenta_pontuacao(acede_equipa(aux2));
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
+
     }
 
   }
@@ -304,21 +258,17 @@ void altera_sc_jogo(lista **j, elem_eq **e, int NL, char *nome, int sc1, int sc2
   Item_j *jogo;
   if (tmp != 0)
   {
-    {
-      jogo = acede_jogo(tmp);
-      sc_antigo1 = pontuacao_eq1(jogo);
-      sc_antigo2 = pontuacao_eq2(jogo);
-      aux1 = encontra_equipa_tabela(e, nome_eq1(jogo));
-      aux2 = encontra_equipa_tabela(e, nome_eq2(jogo));
-      altera_ganhos_equipas(sc1, sc2, sc_antigo1, sc_antigo2, aux1, aux2);
-      altera_pontuacao(jogo, sc1, sc2);
-    }
+    jogo = acede_jogo(tmp);
+    sc_antigo1 = pontuacao_eq1(jogo);
+    sc_antigo2 = pontuacao_eq2(jogo);
+    aux1 = encontra_equipa_tabela(e, nome_eq1(jogo));
+    aux2 = encontra_equipa_tabela(e, nome_eq2(jogo));
+    altera_ganhos_equipas(sc1, sc2, sc_antigo1, sc_antigo2, aux1, aux2);
+    altera_pontuacao(jogo, sc1, sc2);
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
 
 }
@@ -342,9 +292,7 @@ void equipas_maior_pontuacao(elem_eq **e, int NL)
   len = tamanho(vencedores);
   if (!len)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {

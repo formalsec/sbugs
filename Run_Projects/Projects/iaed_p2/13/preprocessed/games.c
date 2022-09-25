@@ -64,15 +64,13 @@ void addGame(int lineNumber)
   name = readName();
   if (searchGameHash(name) != 0)
   {
-    {
-      free(name);
-      free(game);
-      printf("%d Jogo existente.\n", lineNumber);
-      while (((c = getchar()) != '\n') && (c != EOF))
-        ;
+    free(name);
+    free(game);
+    printf("%d Jogo existente.\n", lineNumber);
+    while (((c = getchar()) != '\n') && (c != EOF))
+      ;
 
-      return;
-    }
+    return;
   }
   else
   {
@@ -84,15 +82,13 @@ void addGame(int lineNumber)
   free(home);
   if (homeT == 0)
   {
-    {
-      free(name);
-      free(game);
-      printf("%d Equipa inexistente.\n", lineNumber);
-      while (((c = getchar()) != '\n') && (c != EOF))
-        ;
+    free(name);
+    free(game);
+    printf("%d Equipa inexistente.\n", lineNumber);
+    while (((c = getchar()) != '\n') && (c != EOF))
+      ;
 
-      return;
-    }
+    return;
   }
   else
   {
@@ -104,15 +100,13 @@ void addGame(int lineNumber)
   free(away);
   if (awayT == 0)
   {
-    {
-      free(name);
-      free(game);
-      printf("%d Equipa inexistente.\n", lineNumber);
-      while (((c = getchar()) != '\n') && (c != EOF))
-        ;
+    free(name);
+    free(game);
+    printf("%d Equipa inexistente.\n", lineNumber);
+    while (((c = getchar()) != '\n') && (c != EOF))
+      ;
 
-      return;
-    }
+    return;
   }
   else
   {
@@ -160,10 +154,8 @@ void searchGame(int lineNumber)
   free(name);
   if (game == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", lineNumber);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", lineNumber);
+    return;
   }
   else
   {
@@ -181,11 +173,9 @@ void deleteGame(int lineNumber)
   game = (Game *) hashRemove(name);
   if (game == 0)
   {
-    {
-      free(name);
-      printf("%d Jogo inexistente.\n", lineNumber);
-      return;
-    }
+    free(name);
+    printf("%d Jogo inexistente.\n", lineNumber);
+    return;
   }
   else
   {
@@ -227,10 +217,8 @@ void changeScore(int lineNumber)
   free(name);
   if (game == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", lineNumber);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", lineNumber);
+    return;
   }
   else
   {
@@ -283,11 +271,9 @@ void addTeam(int lineNumber)
   team = searchTeamHash(name);
   if (team != 0)
   {
-    {
-      printf("%d Equipa existente.\n", lineNumber);
-      free(name);
-      return;
-    }
+    printf("%d Equipa existente.\n", lineNumber);
+    free(name);
+    return;
   }
   else
   {
@@ -308,11 +294,9 @@ void searchTeam(int lineNumber)
   team = searchTeamHash(name);
   if (team == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", lineNumber);
-      free(name);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", lineNumber);
+    free(name);
+    return;
   }
   else
   {
@@ -337,13 +321,11 @@ void mostSuccessfulTeams(int lineNumber)
   list = getBestTeams(&length, &wins);
   if (length > 0)
   {
-    {
-      printf("%d Melhores %u\n", lineNumber, wins);
-      aux = (char **) malloc((sizeof(char *)) * length);
-      mergeSort(list, aux, 0, length - 1);
-      free(aux);
-      printNames(list, length, lineNumber);
-    }
+    printf("%d Melhores %u\n", lineNumber, wins);
+    aux = (char **) malloc((sizeof(char *)) * length);
+    mergeSort(list, aux, 0, length - 1);
+    free(aux);
+    printNames(list, length, lineNumber);
   }
   else
   {
@@ -368,12 +350,10 @@ void mergeSort(char **arr, char **aux, int l, int r)
   int m;
   if (l < r)
   {
-    {
-      m = (r + l) / 2;
-      mergeSort(arr, aux, l, m);
-      mergeSort(arr, aux, m + 1, r);
-      merge(arr, aux, l, m, r);
-    }
+    m = (r + l) / 2;
+    mergeSort(arr, aux, l, m);
+    mergeSort(arr, aux, m + 1, r);
+    merge(arr, aux, l, m, r);
   }
   else
   {
@@ -434,16 +414,12 @@ int lower(const char *a, const char *b)
 
     if (a[i] == b[j])
     {
-      {
-        i++;
-        j++;
-      }
+      i++;
+      j++;
     }
     else
     {
-      {
-        return a[i] < b[j];
-      }
+      return a[i] < b[j];
     }
 
   }

@@ -67,19 +67,17 @@ link_jg apaga_jg_lista(link_jg head, Jogo jogo)
   {
     if (t->jogo == jogo)
     {
+      if (t == head)
       {
-        if (t == head)
-        {
-          head = t->prox;
-        }
-        else
-        {
-          ant->prox = t->prox;
-        }
-
-        free(t);
-        break;
+        head = t->prox;
       }
+      else
+      {
+        ant->prox = t->prox;
+      }
+
+      free(t);
+      break;
     }
     else
     {

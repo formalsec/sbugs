@@ -67,54 +67,44 @@ void adds_new_game(int lct, hash_teams teams_tbl, hash_games games_tbl, dl_list 
   score2 = new_sym_var(sizeof(int) * 8);
   if (game_exists(games_tbl, name))
   {
-    {
-      printf("%d Jogo existente.\n", lct);
-      free(name);
-      free(team1);
-      free(team2);
-    }
+    printf("%d Jogo existente.\n", lct);
+    free(name);
+    free(team1);
+    free(team2);
   }
   else
   {
     if ((!team_exists(teams_tbl, team1)) || (!team_exists(teams_tbl, team2)))
     {
-      {
-        printf("%d Equipa inexistente.\n", lct);
-        free(name);
-        free(team1);
-        free(team2);
-      }
+      printf("%d Equipa inexistente.\n", lct);
+      free(name);
+      free(team1);
+      free(team2);
     }
     else
     {
+      if (score1 > score2)
       {
-        if (score1 > score2)
+        winner_idx = search_team_index_in_hash(teams_tbl, team1);
+        teams_tbl->table[winner_idx]->value->victories++;
+      }
+      else
+      {
+        if (score1 < score2)
         {
-          {
-            winner_idx = search_team_index_in_hash(teams_tbl, team1);
-            teams_tbl->table[winner_idx]->value->victories++;
-          }
+          winner_idx = search_team_index_in_hash(teams_tbl, team2);
+          teams_tbl->table[winner_idx]->value->victories++;
         }
         else
         {
-          if (score1 < score2)
-          {
-            {
-              winner_idx = search_team_index_in_hash(teams_tbl, team2);
-              teams_tbl->table[winner_idx]->value->victories++;
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
-        new_game = creates_match(name, team1, team2, score1, score2);
-        insert_begin(games_lst, new_game);
-        insert_games_hash(games_tbl, games_lst->head);
       }
+
+      new_game = creates_match(name, team1, team2, score1, score2);
+      insert_begin(games_lst, new_game);
+      insert_games_hash(games_tbl, games_lst->head);
     }
 
   }
@@ -136,18 +126,14 @@ void add_new_team(int lct, hash_teams teams_tbl, sl_list teams_lst)
   strcpy(name, buffer);
   if (team_exists(teams_tbl, name))
   {
-    {
-      printf("%d Equipa existente.\n", lct);
-      free(name);
-    }
+    printf("%d Equipa existente.\n", lct);
+    free(name);
   }
   else
   {
-    {
-      new_team = creates_team(name);
-      insert_team_begin(teams_lst, new_team);
-      insert_team_hash(teams_tbl, teams_lst->head);
-    }
+    new_team = creates_team(name);
+    insert_team_begin(teams_lst, new_team);
+    insert_team_hash(teams_tbl, teams_lst->head);
   }
 
 }
@@ -193,16 +179,12 @@ void search_game(int lct, hash_games games_tbl)
   game_index = search_game_index_in_hash(games_tbl, name);
   if (game_index == (-1))
   {
-    {
-      printf("%d Jogo inexistente.\n", lct);
-    }
+    printf("%d Jogo inexistente.\n", lct);
   }
   else
   {
-    {
-      game = games_tbl->table[game_index]->value;
-      printf("%d %s %s %s %d %d\n", lct, game->name, game->team1, game->team2, game->score1, game->score2);
-    }
+    game = games_tbl->table[game_index]->value;
+    printf("%d %s %s %s %d %d\n", lct, game->name, game->team1, game->team2, game->score1, game->score2);
   }
 
   free(name);
@@ -225,16 +207,12 @@ void search_team(int lct, hash_teams teams_tbl)
   team_index = search_team_index_in_hash(teams_tbl, name);
   if (team_index == (-1))
   {
-    {
-      printf("%d Equipa inexistente.\n", lct);
-    }
+    printf("%d Equipa inexistente.\n", lct);
   }
   else
   {
-    {
-      team = teams_tbl->table[team_index]->value;
-      printf("%d %s %d\n", lct, team->name, team->victories);
-    }
+    team = teams_tbl->table[team_index]->value;
+    printf("%d %s %d\n", lct, team->name, team->victories);
   }
 
   free(name);
@@ -258,40 +236,32 @@ void deletes_game(int lct, hash_teams teams_tbl, hash_games games_tbl, dl_list g
   game_index = search_game_index_in_hash(games_tbl, name);
   if (game_index == (-1))
   {
-    {
-      printf("%d Jogo inexistente.\n", lct);
-    }
+    printf("%d Jogo inexistente.\n", lct);
   }
   else
   {
+    game = games_tbl->table[game_index]->value;
+    if (game->score1 > game->score2)
     {
-      game = games_tbl->table[game_index]->value;
-      if (game->score1 > game->score2)
+      team_idx = search_team_index_in_hash(teams_tbl, game->team1);
+      teams_tbl->table[team_idx]->value->victories--;
+    }
+    else
+    {
+      if (game->score1 < game->score2)
       {
-        {
-          team_idx = search_team_index_in_hash(teams_tbl, game->team1);
-          teams_tbl->table[team_idx]->value->victories--;
-        }
+        team_idx = search_team_index_in_hash(teams_tbl, game->team2);
+        teams_tbl->table[team_idx]->value->victories--;
       }
       else
       {
-        if (game->score1 < game->score2)
-        {
-          {
-            team_idx = search_team_index_in_hash(teams_tbl, game->team2);
-            teams_tbl->table[team_idx]->value->victories--;
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      remove_node(games_lst, games_tbl->table[game_index]);
-      deletes_game_hash(games_tbl, game_index);
     }
+
+    remove_node(games_lst, games_tbl->table[game_index]);
+    deletes_game_hash(games_tbl, game_index);
   }
 
   free(name);
@@ -318,110 +288,82 @@ void changes_game_score(int lct, hash_teams teams_tbl, hash_games games_tbl)
   new_sc2 = new_sym_var(sizeof(int) * 8);
   if (!game_exists(games_tbl, name))
   {
-    {
-      printf("%d Jogo inexistente.\n", lct);
-    }
+    printf("%d Jogo inexistente.\n", lct);
   }
   else
   {
+    game = games_tbl->table[search_game_index_in_hash(games_tbl, name)]->value;
+    t1_idx = search_team_index_in_hash(teams_tbl, game->team1);
+    t2_idx = search_team_index_in_hash(teams_tbl, game->team2);
+    if (game->score1 > game->score2)
     {
-      game = games_tbl->table[search_game_index_in_hash(games_tbl, name)]->value;
-      t1_idx = search_team_index_in_hash(teams_tbl, game->team1);
-      t2_idx = search_team_index_in_hash(teams_tbl, game->team2);
-      if (game->score1 > game->score2)
+      if (new_sc1 > new_sc2)
       {
-        {
-          if (new_sc1 > new_sc2)
-          {
-            {
-              ;
-            }
-          }
-          else
-          {
-            if (new_sc1 < new_sc2)
-            {
-              {
-                teams_tbl->table[t1_idx]->value->victories--;
-                teams_tbl->table[t2_idx]->value->victories++;
-              }
-            }
-            else
-            {
-              {
-                teams_tbl->table[t1_idx]->value->victories--;
-              }
-            }
-
-          }
-
-        }
+        ;
       }
       else
       {
-        if (game->score1 < game->score2)
+        if (new_sc1 < new_sc2)
         {
-          {
-            if (new_sc1 > new_sc2)
-            {
-              {
-                teams_tbl->table[t1_idx]->value->victories++;
-                teams_tbl->table[t2_idx]->value->victories--;
-              }
-            }
-            else
-            {
-              if (new_sc1 < new_sc2)
-              {
-                {
-                  ;
-                }
-              }
-              else
-              {
-                {
-                  teams_tbl->table[t2_idx]->value->victories--;
-                }
-              }
-
-            }
-
-          }
+          teams_tbl->table[t1_idx]->value->victories--;
+          teams_tbl->table[t2_idx]->value->victories++;
         }
         else
         {
-          {
-            if (new_sc1 > new_sc2)
-            {
-              {
-                teams_tbl->table[t1_idx]->value->victories++;
-              }
-            }
-            else
-            {
-              if (new_sc1 < new_sc2)
-              {
-                {
-                  teams_tbl->table[t2_idx]->value->victories++;
-                }
-              }
-              else
-              {
-                {
-                  ;
-                }
-              }
-
-            }
-
-          }
+          teams_tbl->table[t1_idx]->value->victories--;
         }
 
       }
 
-      game->score1 = new_sc1;
-      game->score2 = new_sc2;
     }
+    else
+    {
+      if (game->score1 < game->score2)
+      {
+        if (new_sc1 > new_sc2)
+        {
+          teams_tbl->table[t1_idx]->value->victories++;
+          teams_tbl->table[t2_idx]->value->victories--;
+        }
+        else
+        {
+          if (new_sc1 < new_sc2)
+          {
+            ;
+          }
+          else
+          {
+            teams_tbl->table[t2_idx]->value->victories--;
+          }
+
+        }
+
+      }
+      else
+      {
+        if (new_sc1 > new_sc2)
+        {
+          teams_tbl->table[t1_idx]->value->victories++;
+        }
+        else
+        {
+          if (new_sc1 < new_sc2)
+          {
+            teams_tbl->table[t2_idx]->value->victories++;
+          }
+          else
+          {
+            ;
+          }
+
+        }
+
+      }
+
+    }
+
+    game->score1 = new_sc1;
+    game->score2 = new_sc2;
   }
 
   free(name);
@@ -450,18 +392,14 @@ void prints_top_teams(int lct, sl_list teams_lst)
     team = node->value;
     if (team->victories > max[0])
     {
-      {
-        max[0] = team->victories;
-        max[1] = 1;
-      }
+      max[0] = team->victories;
+      max[1] = 1;
     }
     else
     {
       if (team->victories == max[0])
       {
-        {
-          max[1]++;
-        }
+        max[1]++;
       }
       else
       {
@@ -478,9 +416,7 @@ void prints_top_teams(int lct, sl_list teams_lst)
     team = node->value;
     if (team->victories == max[0])
     {
-      {
-        bag_teams[j++] = team->name;
-      }
+      bag_teams[j++] = team->name;
     }
     else
     {

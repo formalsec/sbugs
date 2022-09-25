@@ -168,10 +168,8 @@ void adiciona_produto_encomenda()
   e = d;
   if (a > (prox_enc - 1))
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", b, a);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", b, a);
+    return;
   }
   else
   {
@@ -180,10 +178,8 @@ void adiciona_produto_encomenda()
 
   if (b > (prox_prod - 1))
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", b, a);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", b, a);
+    return;
   }
   else
   {
@@ -192,10 +188,8 @@ void adiciona_produto_encomenda()
 
   if (c > sistema[b].stock)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", b, a);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", b, a);
+    return;
   }
   else
   {
@@ -206,13 +200,11 @@ void adiciona_produto_encomenda()
   {
     if (sestemas[a].conjuntos[i].identificador == sistema[b].identificador)
     {
-      {
-        e = i;
-        sestemas[a].conjuntos[i].stock += c;
-        sestemas[a].geso += sestemas[a].conjuntos[i].peso * c;
-        sistema[b].stock -= c;
-        break;
-      }
+      e = i;
+      sestemas[a].conjuntos[i].stock += c;
+      sestemas[a].geso += sestemas[a].conjuntos[i].peso * c;
+      sistema[b].stock -= c;
+      break;
     }
     else
     {
@@ -223,13 +215,11 @@ void adiciona_produto_encomenda()
 
   if (sestemas[a].geso > 200)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", b, a);
-      sestemas[a].conjuntos[e].stock -= c;
-      sestemas[a].geso -= sestemas[a].conjuntos[e].peso * c;
-      sistema[b].stock += c;
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", b, a);
+    sestemas[a].conjuntos[e].stock -= c;
+    sestemas[a].geso -= sestemas[a].conjuntos[e].peso * c;
+    sistema[b].stock += c;
+    return;
   }
   else
   {
@@ -238,27 +228,23 @@ void adiciona_produto_encomenda()
 
   if (e == d)
   {
+    sestemas[a].conjuntos[d] = sistema[b];
+    sestemas[a].conjuntos[d].stock = c;
+    sestemas[a].geso += sestemas[a].conjuntos[d].peso * c;
+    if (sestemas[a].geso > 200)
     {
-      sestemas[a].conjuntos[d] = sistema[b];
-      sestemas[a].conjuntos[d].stock = c;
-      sestemas[a].geso += sestemas[a].conjuntos[d].peso * c;
-      if (sestemas[a].geso > 200)
-      {
-        {
-          printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", b, a);
-          sestemas[a].conjuntos[d].stock = 0;
-          sestemas[a].geso -= sestemas[a].conjuntos[d].peso * c;
-          return;
-        }
-      }
-      else
-      {
-        
-      }
-
-      sistema[b].stock -= c;
-      sestemas[a].tamanho += 1;
+      printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", b, a);
+      sestemas[a].conjuntos[d].stock = 0;
+      sestemas[a].geso -= sestemas[a].conjuntos[d].peso * c;
+      return;
     }
+    else
+    {
+      
+    }
+
+    sistema[b].stock -= c;
+    sestemas[a].tamanho += 1;
   }
   else
   {
@@ -293,10 +279,8 @@ void remove_stock()
 
   if (sistema[a].stock < 0)
   {
-    {
-      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", b, a);
-      sistema[a].stock += b;
-    }
+    printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", b, a);
+    sistema[a].stock += b;
   }
   else
   {
@@ -316,10 +300,8 @@ void remove_produto()
   idp = new_sym_var(sizeof(int) * 8);
   if (ide > (prox_enc - 1))
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
+    return;
   }
   else
   {
@@ -328,10 +310,8 @@ void remove_produto()
 
   if (idp > (prox_prod - 1))
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
+    return;
   }
   else
   {
@@ -374,10 +354,8 @@ void calcula_custo()
   ide = new_sym_var(sizeof(int) * 8);
   if (ide > (prox_enc - 1))
   {
-    {
-      printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ide);
-      return;
-    }
+    printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ide);
+    return;
   }
   else
   {
@@ -468,10 +446,8 @@ void encomenda_produto_repetido()
   idp = new_sym_var(sizeof(int) * 8);
   if (idp > (prox_prod - 1))
   {
-    {
-      printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idp);
-      return;
-    }
+    printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idp);
+    return;
   }
   else
   {
@@ -484,10 +460,8 @@ void encomenda_produto_repetido()
     {
       if ((sestemas[i].conjuntos[e].identificador == sistema[idp].identificador) && (sestemas[i].conjuntos[e].stock > max))
       {
-        {
-          max = sestemas[i].conjuntos[e].stock;
-          lugar = i;
-        }
+        max = sestemas[i].conjuntos[e].stock;
+        lugar = i;
       }
       else
       {

@@ -49,10 +49,8 @@ void a_comando(jogos *jg, node **jg_hash, e_node **eqp_hash, int NL)
   {
     if (strcmp(aux->nome_jogo, nome) == 0)
     {
-      {
-        procura = 1;
-        break;
-      }
+      procura = 1;
+      break;
     }
     else
     {
@@ -67,74 +65,64 @@ void a_comando(jogos *jg, node **jg_hash, e_node **eqp_hash, int NL)
   }
   else
   {
+    location_2 = get_location(equipa1);
+    location_3 = get_location(equipa2);
+    for (tmp_1 = eqp_hash[location_2]; tmp_1 != 0; tmp_1 = tmp_1->next)
     {
-      location_2 = get_location(equipa1);
-      location_3 = get_location(equipa2);
-      for (tmp_1 = eqp_hash[location_2]; tmp_1 != 0; tmp_1 = tmp_1->next)
+      if (strcmp(tmp_1->nome, equipa1) == 0)
       {
-        if (strcmp(tmp_1->nome, equipa1) == 0)
-        {
-          {
-            procura_1 = 1;
-            break;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      for (tmp_2 = eqp_hash[location_3]; tmp_2 != 0; tmp_2 = tmp_2->next)
-      {
-        if (strcmp(tmp_2->nome, equipa2) == 0)
-        {
-          {
-            procura_2 = 1;
-            break;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      if ((procura_1 == 1) && (procura_2 == 1))
-      {
-        {
-          jg_aux = add_last_jg(jg, nome, equipa1, equipa2, score1, score2);
-          insert_into_table(jg_hash, jg_aux);
-          if (score1 > score2)
-          {
-            tmp_1->vitorias++;
-          }
-          else
-          {
-            
-          }
-
-          if (score1 < score2)
-          {
-            tmp_2->vitorias++;
-          }
-          else
-          {
-            
-          }
-
-        }
+        procura_1 = 1;
+        break;
       }
       else
       {
-        {
-          printf("%d Equipa inexistente.\n", NL);
-        }
+        
       }
 
     }
+
+    for (tmp_2 = eqp_hash[location_3]; tmp_2 != 0; tmp_2 = tmp_2->next)
+    {
+      if (strcmp(tmp_2->nome, equipa2) == 0)
+      {
+        procura_2 = 1;
+        break;
+      }
+      else
+      {
+        
+      }
+
+    }
+
+    if ((procura_1 == 1) && (procura_2 == 1))
+    {
+      jg_aux = add_last_jg(jg, nome, equipa1, equipa2, score1, score2);
+      insert_into_table(jg_hash, jg_aux);
+      if (score1 > score2)
+      {
+        tmp_1->vitorias++;
+      }
+      else
+      {
+        
+      }
+
+      if (score1 < score2)
+      {
+        tmp_2->vitorias++;
+      }
+      else
+      {
+        
+      }
+
+    }
+    else
+    {
+      printf("%d Equipa inexistente.\n", NL);
+    }
+
   }
 
 }
@@ -164,41 +152,33 @@ void p_comando(node **hashtable, int NL)
   location = get_location(texto);
   if (hashtable[location] == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
   else
   {
+    for (aux = hashtable[location]; aux != 0; aux = aux->next)
     {
-      for (aux = hashtable[location]; aux != 0; aux = aux->next)
+      if (strcmp(aux->nome_jogo, texto) == 0)
       {
-        if (strcmp(aux->nome_jogo, texto) == 0)
-        {
-          {
-            procura = 1;
-            break;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      if (procura == 1)
-      {
-        {
-          printf("%d %s %s %s %d %d\n", NL, aux->jogo->value, aux->jogo->equipa1, aux->jogo->equipa2, aux->jogo->score1, aux->jogo->score2);
-        }
+        procura = 1;
+        break;
       }
       else
       {
-        printf("%d Jogo inexistente.\n", NL);
+        
       }
 
     }
+
+    if (procura == 1)
+    {
+      printf("%d %s %s %s %d %d\n", NL, aux->jogo->value, aux->jogo->equipa1, aux->jogo->equipa2, aux->jogo->score1, aux->jogo->score2);
+    }
+    else
+    {
+      printf("%d Jogo inexistente.\n", NL);
+    }
+
   }
 
 }
@@ -222,37 +202,31 @@ void r_comando(jogos *jg, node **hashtable, e_node **equipas, int NL)
   }
   else
   {
+    for (aux = hashtable[location]; aux != 0; aux = aux->next)
     {
-      for (aux = hashtable[location]; aux != 0; aux = aux->next)
+      if (strcmp(aux->nome_jogo, texto) == 0)
       {
-        if (strcmp(aux->nome_jogo, texto) == 0)
-        {
-          {
-            procura = 1;
-            break;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      if (procura != 1)
-      {
-        printf("%d Jogo inexistente.\n", NL);
+        procura = 1;
+        break;
       }
       else
       {
-        {
-          remove_vitoria(aux, equipas);
-          remove_jogo(jg, aux);
-          strcpy(aux->nome_jogo, "");
-        }
+        
       }
 
     }
+
+    if (procura != 1)
+    {
+      printf("%d Jogo inexistente.\n", NL);
+    }
+    else
+    {
+      remove_vitoria(aux, equipas);
+      remove_jogo(jg, aux);
+      strcpy(aux->nome_jogo, "");
+    }
+
   }
 
 }
@@ -286,15 +260,55 @@ void s_comando(node **hashtable, e_node **equipas, int NL)
   }
   else
   {
+    for (aux = hashtable[location]; aux != 0; aux = aux->next)
     {
-      for (aux = hashtable[location]; aux != 0; aux = aux->next)
+      if (strcmp(aux->nome_jogo, texto) == 0)
       {
-        if (strcmp(aux->nome_jogo, texto) == 0)
+        procura = 1;
+        break;
+      }
+      else
+      {
+        
+      }
+
+    }
+
+    if (procura != 1)
+    {
+      printf("%d Jogo inexistente.\n", NL);
+    }
+    else
+    {
+      location_1 = get_location(aux->jogo->equipa1);
+      location_2 = get_location(aux->jogo->equipa2);
+      aux_1 = aux->jogo->score1;
+      aux_2 = aux->jogo->score2;
+      aux->jogo->score1 = score_1;
+      aux->jogo->score2 = score_2;
+      for (tmp = equipas[location_1]; tmp != 0; tmp = tmp->next)
+      {
+        if (strcmp(tmp->nome, aux->jogo->equipa1) == 0)
         {
+          if (aux_1 > aux_2)
           {
-            procura = 1;
-            break;
+            tmp->vitorias -= 1;
           }
+          else
+          {
+            
+          }
+
+          if (score_1 > score_2)
+          {
+            tmp->vitorias += 1;
+          }
+          else
+          {
+            
+          }
+
+          break;
         }
         else
         {
@@ -303,91 +317,39 @@ void s_comando(node **hashtable, e_node **equipas, int NL)
 
       }
 
-      if (procura != 1)
+      for (tmp_1 = equipas[location_2]; tmp_1 != 0; tmp_1 = tmp_1->next)
       {
+        if (strcmp(tmp_1->nome, aux->jogo->equipa2) == 0)
         {
-          printf("%d Jogo inexistente.\n", NL);
-        }
-      }
-      else
-      {
-        {
-          location_1 = get_location(aux->jogo->equipa1);
-          location_2 = get_location(aux->jogo->equipa2);
-          aux_1 = aux->jogo->score1;
-          aux_2 = aux->jogo->score2;
-          aux->jogo->score1 = score_1;
-          aux->jogo->score2 = score_2;
-          for (tmp = equipas[location_1]; tmp != 0; tmp = tmp->next)
+          if (aux_1 < aux_2)
           {
-            if (strcmp(tmp->nome, aux->jogo->equipa1) == 0)
-            {
-              {
-                if (aux_1 > aux_2)
-                {
-                  tmp->vitorias -= 1;
-                }
-                else
-                {
-                  
-                }
-
-                if (score_1 > score_2)
-                {
-                  tmp->vitorias += 1;
-                }
-                else
-                {
-                  
-                }
-
-                break;
-              }
-            }
-            else
-            {
-              
-            }
-
+            tmp_1->vitorias -= 1;
+          }
+          else
+          {
+            
           }
 
-          for (tmp_1 = equipas[location_2]; tmp_1 != 0; tmp_1 = tmp_1->next)
+          if (score_1 < score_2)
           {
-            if (strcmp(tmp_1->nome, aux->jogo->equipa2) == 0)
-            {
-              {
-                if (aux_1 < aux_2)
-                {
-                  tmp_1->vitorias -= 1;
-                }
-                else
-                {
-                  
-                }
-
-                if (score_1 < score_2)
-                {
-                  tmp_1->vitorias += 1;
-                }
-                else
-                {
-                  
-                }
-
-                break;
-              }
-            }
-            else
-            {
-              
-            }
-
+            tmp_1->vitorias += 1;
+          }
+          else
+          {
+            
           }
 
+          break;
         }
+        else
+        {
+          
+        }
+
       }
 
     }
+
   }
 
 }
@@ -410,18 +372,16 @@ void A_comando(e_node **hashtable, int NL)
   }
   else
   {
+    procura = existe_equipa(hashtable, location, texto);
+    if (procura == 1)
     {
-      procura = existe_equipa(hashtable, location, texto);
-      if (procura == 1)
-      {
-        printf("%d Equipa existente.\n", NL);
-      }
-      else
-      {
-        insert_into_equipas(hashtable, texto);
-      }
-
+      printf("%d Equipa existente.\n", NL);
     }
+    else
+    {
+      insert_into_equipas(hashtable, texto);
+    }
+
   }
 
 }
@@ -445,33 +405,29 @@ void P_comando(e_node **hashtable, int NL)
   }
   else
   {
+    for (aux = hashtable[location]; aux != 0; aux = aux->next)
     {
-      for (aux = hashtable[location]; aux != 0; aux = aux->next)
+      if (strcmp(aux->nome, texto) == 0)
       {
-        if (strcmp(aux->nome, texto) == 0)
-        {
-          {
-            procura = 1;
-            break;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      if (procura == 1)
-      {
-        printf("%d %s %d\n", NL, aux->nome, aux->vitorias);
+        procura = 1;
+        break;
       }
       else
       {
-        printf("%d Equipa inexistente.\n", NL);
+        
       }
 
     }
+
+    if (procura == 1)
+    {
+      printf("%d %s %d\n", NL, aux->nome, aux->vitorias);
+    }
+    else
+    {
+      printf("%d Equipa inexistente.\n", NL);
+    }
+
   }
 
 }
@@ -486,24 +442,20 @@ void g_comando(e_node **equipas, int NL)
   {
     if (equipas[i] != 0)
     {
+      for (aux = equipas[i]; aux != 0; aux = aux->next)
       {
-        for (aux = equipas[i]; aux != 0; aux = aux->next)
+        if (aux->vitorias >= maior)
         {
-          if (aux->vitorias >= maior)
-          {
-            {
-              maior = aux->vitorias;
-              conta++;
-            }
-          }
-          else
-          {
-            
-          }
-
+          maior = aux->vitorias;
+          conta++;
+        }
+        else
+        {
+          
         }
 
       }
+
     }
     else
     {

@@ -29,10 +29,8 @@ void adiciona_equipa(table_e **heads, int M, int linha)
   }
   else
   {
-    {
-      x = cria_equipa(nome);
-      adiciona_e(heads, x, M);
-    }
+    x = cria_equipa(nome);
+    adiciona_e(heads, x, M);
   }
 
 }
@@ -101,23 +99,19 @@ void adiciona_jogo(table_e **head_e, table_j **heads, Lista **ultimo_jogo, int M
     }
     else
     {
+      jogo = cria_elemento(nome_j);
+      adiciona_elemento(lista, jogo, ultimo_jogo);
+      x = cria_jogo(nome_j, equipa1, equipa2, score1, score2);
+      adiciona_j(heads, x, M);
+      if (score1 != score2)
       {
-        jogo = cria_elemento(nome_j);
-        adiciona_elemento(lista, jogo, ultimo_jogo);
-        x = cria_jogo(nome_j, equipa1, equipa2, score1, score2);
-        adiciona_j(heads, x, M);
-        if (score1 != score2)
-        {
-          {
-            (score1 > score2) ? (altera_ganhos(procura_equipa_hash(head_e, equipa1, M), 1)) : (altera_ganhos(procura_equipa_hash(head_e, equipa2, M), 1));
-          }
-        }
-        else
-        {
-          
-        }
-
+        (score1 > score2) ? (altera_ganhos(procura_equipa_hash(head_e, equipa1, M), 1)) : (altera_ganhos(procura_equipa_hash(head_e, equipa2, M), 1));
       }
+      else
+      {
+        
+      }
+
     }
 
   }
@@ -173,33 +167,27 @@ void remove_jogo(table_j **heads_j, table_e **heads_e, Lista **listas, Lista **u
   }
   else
   {
+    if (jogo->score1 > jogo->score2)
     {
-      if (jogo->score1 > jogo->score2)
+      equipa = procura_equipa_hash(heads_e, jogo->equipa1, M);
+      altera_ganhos(equipa, 0);
+    }
+    else
+    {
+      if (jogo->score1 < jogo->score2)
       {
-        {
-          equipa = procura_equipa_hash(heads_e, jogo->equipa1, M);
-          altera_ganhos(equipa, 0);
-        }
+        equipa = procura_equipa_hash(heads_e, jogo->equipa2, M);
+        altera_ganhos(equipa, 0);
       }
       else
       {
-        if (jogo->score1 < jogo->score2)
-        {
-          {
-            equipa = procura_equipa_hash(heads_e, jogo->equipa2, M);
-            altera_ganhos(equipa, 0);
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      remove_j(heads_j, nome, M);
-      ultimo_jogo = remove_el(listas, ultimo_jogo, nome);
     }
+
+    remove_j(heads_j, nome, M);
+    ultimo_jogo = remove_el(listas, ultimo_jogo, nome);
   }
 
 }
@@ -223,60 +211,48 @@ void altera_score(table_j **jogos, table_e **equipas, int M, int linha_input)
   x = procura_jogo_hash(jogos, nome, M);
   if (x != 0)
   {
+    e1 = procura_equipa_hash(equipas, x->equipa1, M);
+    e2 = procura_equipa_hash(equipas, x->equipa2, M);
+    if (((x->score1 < x->score2) || (x->score1 == x->score2)) && (s1 > s2))
     {
-      e1 = procura_equipa_hash(equipas, x->equipa1, M);
-      e2 = procura_equipa_hash(equipas, x->equipa2, M);
-      if (((x->score1 < x->score2) || (x->score1 == x->score2)) && (s1 > s2))
-      {
-        {
-          altera_ganhos(e1, 1);
-        }
-      }
-      else
-      {
-        if ((x->score1 > x->score2) && ((s2 > s1) || (s2 == s1)))
-        {
-          {
-            altera_ganhos(e1, 0);
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      if ((x->score1 < x->score2) && ((s1 > s2) || (s1 == s2)))
-      {
-        {
-          altera_ganhos(e2, 0);
-        }
-      }
-      else
-      {
-        if (((x->score1 > x->score2) || (x->score1 == x->score2)) && (s1 < s2))
-        {
-          {
-            altera_ganhos(e2, 1);
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      x->score1 = s1;
-      x->score2 = s2;
+      altera_ganhos(e1, 1);
     }
+    else
+    {
+      if ((x->score1 > x->score2) && ((s2 > s1) || (s2 == s1)))
+      {
+        altera_ganhos(e1, 0);
+      }
+      else
+      {
+        
+      }
+
+    }
+
+    if ((x->score1 < x->score2) && ((s1 > s2) || (s1 == s2)))
+    {
+      altera_ganhos(e2, 0);
+    }
+    else
+    {
+      if (((x->score1 > x->score2) || (x->score1 == x->score2)) && (s1 < s2))
+      {
+        altera_ganhos(e2, 1);
+      }
+      else
+      {
+        
+      }
+
+    }
+
+    x->score1 = s1;
+    x->score2 = s2;
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", linha_input);
-    }
+    printf("%d Jogo inexistente.\n", linha_input);
   }
 
 }
@@ -312,10 +288,8 @@ void heapify(char **arr, int n, int i)
 
   if (largest != i)
   {
-    {
-      swap(arr, i, largest);
-      heapify(arr, n, largest);
-    }
+    swap(arr, i, largest);
+    heapify(arr, n, largest);
   }
   else
   {
@@ -349,57 +323,51 @@ void mais_ganhos_g(table_e **heads, int M, int linha_input)
   Max = mais_ganhos(heads, M, &count);
   if (count > 0)
   {
+    nomes = malloc((sizeof(char *)) * count);
+    for (i = 0; i < count; i++)
     {
-      nomes = malloc((sizeof(char *)) * count);
-      for (i = 0; i < count; i++)
-      {
-        nomes[i] = malloc((sizeof(char)) * 1024);
-      }
-
-      for (i = 0, i2 = 0; i < M; i++)
-      {
-        if (heads[i] != 0)
-        {
-          {
-            for (x = heads[i]->equipas; x != 0; x = x->next)
-            {
-              if (x->ganhos == Max)
-              {
-                {
-                  strcpy(nomes[i2], x->nome);
-                  i2++;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      heapSort(nomes, i2);
-      printf("%d Melhores %d\n", linha_input, Max);
-      for (i2 = i2 - 1; i2 >= 0; i2--)
-      {
-        printf("%d * %s\n", linha_input, nomes[i2]);
-      }
-
-      for (count = count - 1; count >= 0; count--)
-      {
-        free(nomes[count]);
-      }
-
-      free(nomes);
+      nomes[i] = malloc((sizeof(char)) * 1024);
     }
+
+    for (i = 0, i2 = 0; i < M; i++)
+    {
+      if (heads[i] != 0)
+      {
+        for (x = heads[i]->equipas; x != 0; x = x->next)
+        {
+          if (x->ganhos == Max)
+          {
+            strcpy(nomes[i2], x->nome);
+            i2++;
+          }
+          else
+          {
+            
+          }
+
+        }
+
+      }
+      else
+      {
+        
+      }
+
+    }
+
+    heapSort(nomes, i2);
+    printf("%d Melhores %d\n", linha_input, Max);
+    for (i2 = i2 - 1; i2 >= 0; i2--)
+    {
+      printf("%d * %s\n", linha_input, nomes[i2]);
+    }
+
+    for (count = count - 1; count >= 0; count--)
+    {
+      free(nomes[count]);
+    }
+
+    free(nomes);
   }
   else
   {
@@ -440,10 +408,8 @@ int main()
     c = new_sym_var(sizeof(char) * 8);
     if (c == 'a')
     {
-      {
-        linha_input++;
-        adiciona_jogo(heads, heads_j, ultimo_jogo, size_hash, linha_input, listas);
-      }
+      linha_input++;
+      adiciona_jogo(heads, heads_j, ultimo_jogo, size_hash, linha_input, listas);
     }
     else
     {
@@ -452,64 +418,50 @@ int main()
 
     if (c == 'A')
     {
-      {
-        linha_input++;
-        adiciona_equipa(heads, size_hash, linha_input);
-      }
+      linha_input++;
+      adiciona_equipa(heads, size_hash, linha_input);
     }
     else
     {
       if (c == 'P')
       {
-        {
-          linha_input++;
-          procura_e(heads, size_hash, linha_input);
-        }
+        linha_input++;
+        procura_e(heads, size_hash, linha_input);
       }
       else
       {
         if (c == 'l')
         {
-          {
-            linha_input++;
-            lista_jogos(heads_j, listas[0], size_hash, linha_input);
-          }
+          linha_input++;
+          lista_jogos(heads_j, listas[0], size_hash, linha_input);
         }
         else
         {
           if (c == 'r')
           {
-            {
-              linha_input++;
-              remove_jogo(heads_j, heads, listas, ultimo_jogo, size_hash, linha_input);
-            }
+            linha_input++;
+            remove_jogo(heads_j, heads, listas, ultimo_jogo, size_hash, linha_input);
           }
           else
           {
             if (c == 'p')
             {
-              {
-                linha_input++;
-                procura_j(heads_j, size_hash, linha_input);
-              }
+              linha_input++;
+              procura_j(heads_j, size_hash, linha_input);
             }
             else
             {
               if (c == 's')
               {
-                {
-                  linha_input++;
-                  altera_score(heads_j, heads, size_hash, linha_input);
-                }
+                linha_input++;
+                altera_score(heads_j, heads, size_hash, linha_input);
               }
               else
               {
                 if (c == 'g')
                 {
-                  {
-                    linha_input++;
-                    mais_ganhos_g(heads, size_hash, linha_input);
-                  }
+                  linha_input++;
+                  mais_ganhos_g(heads, size_hash, linha_input);
                 }
                 else
                 {

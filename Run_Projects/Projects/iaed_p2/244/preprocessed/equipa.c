@@ -34,76 +34,56 @@ void adicionar_a_lista_de_equipas_introduzidas(lista_equipas_intruduzidas_t **ca
   nova_entrada->next = 0;
   if ((*cabeca) == 0)
   {
-    {
-      *cabeca = nova_entrada;
-      return;
-    }
+    *cabeca = nova_entrada;
+    return;
   }
   else
   {
+    while (ultimo->next != 0)
     {
-      while (ultimo->next != 0)
+      if (strcmp(ultimo->equipa->nome, nova_entrada->equipa->nome) >= 0)
       {
-        if (strcmp(ultimo->equipa->nome, nova_entrada->equipa->nome) >= 0)
-        {
-          {
-            break;
-          }
-        }
-        else
-        {
-          {
-            trail = ultimo;
-            ultimo = ultimo->next;
-          }
-        }
-
-      }
-
-      if (ultimo == (*cabeca))
-      {
-        {
-          if (strcmp(ultimo->equipa->nome, nova_entrada->equipa->nome) >= 0)
-          {
-            {
-              nova_entrada->next = *cabeca;
-              *cabeca = nova_entrada;
-            }
-          }
-          else
-          {
-            {
-              trail = ultimo->next;
-              ultimo->next = nova_entrada;
-              nova_entrada->next = trail;
-            }
-          }
-
-        }
+        break;
       }
       else
       {
-        {
-          if (strcmp(ultimo->equipa->nome, nova_entrada->equipa->nome) >= 0)
-          {
-            {
-              nova_entrada->next = ultimo;
-              trail->next = nova_entrada;
-            }
-          }
-          else
-          {
-            {
-              temp = ultimo->next;
-              ultimo->next = nova_entrada;
-              nova_entrada->next = temp;
-            }
-          }
-
-        }
+        trail = ultimo;
+        ultimo = ultimo->next;
       }
 
     }
+
+    if (ultimo == (*cabeca))
+    {
+      if (strcmp(ultimo->equipa->nome, nova_entrada->equipa->nome) >= 0)
+      {
+        nova_entrada->next = *cabeca;
+        *cabeca = nova_entrada;
+      }
+      else
+      {
+        trail = ultimo->next;
+        ultimo->next = nova_entrada;
+        nova_entrada->next = trail;
+      }
+
+    }
+    else
+    {
+      if (strcmp(ultimo->equipa->nome, nova_entrada->equipa->nome) >= 0)
+      {
+        nova_entrada->next = ultimo;
+        trail->next = nova_entrada;
+      }
+      else
+      {
+        temp = ultimo->next;
+        ultimo->next = nova_entrada;
+        nova_entrada->next = temp;
+      }
+
+    }
+
   }
 
 }
@@ -186,9 +166,7 @@ int max_jogos_ganhos(lista_equipas_intruduzidas_t *lista)
   {
     if (pt->equipa->numero_de_jogos > max)
     {
-      {
-        max = pt->equipa->numero_de_jogos;
-      }
+      max = pt->equipa->numero_de_jogos;
     }
     else
     {
@@ -205,9 +183,7 @@ void imprime_melhores_equipas(lista_equipas_intruduzidas_t *lista, int n, int nl
   lista_equipas_intruduzidas_t *pt;
   if (lista == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -219,9 +195,7 @@ void imprime_melhores_equipas(lista_equipas_intruduzidas_t *lista, int n, int nl
   {
     if (pt->equipa->numero_de_jogos == n)
     {
-      {
-        printf("%d * %s\n", nl, pt->equipa->nome);
-      }
+      printf("%d * %s\n", nl, pt->equipa->nome);
     }
     else
     {

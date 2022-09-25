@@ -11,9 +11,7 @@ int JogoJaAdicionado(HashTableJogos *HTJ, int hash, char *nome)
   {
     if (!strcmp(aux->dadosjogo->nomejogo, nome))
     {
-      {
-        return 1;
-      }
+      return 1;
     }
     else
     {
@@ -80,11 +78,9 @@ void AdicionarJogo(int *contacomandos, ListaDuplaJogo *listajogos, HashTableJogo
   hashnome = Hash(buffernome, HTJ->capacidade);
   if (JogoJaAdicionado(HTJ, hashnome, buffernome))
   {
-    {
-      printf("%d Jogo existente.\n", *contacomandos);
-      (*contacomandos)++;
-      return;
-    }
+    printf("%d Jogo existente.\n", *contacomandos);
+    (*contacomandos)++;
+    return;
   }
   else
   {
@@ -95,11 +91,9 @@ void AdicionarJogo(int *contacomandos, ListaDuplaJogo *listajogos, HashTableJogo
   hashbuffer2 = Hash(bufferequipa2, HTE->capacidade);
   if ((!EquipaJaAdicionada(HTE, hashbuffer1, bufferequipa1)) || (!EquipaJaAdicionada(HTE, hashbuffer2, bufferequipa2)))
   {
-    {
-      printf("%d Equipa inexistente.\n", *contacomandos);
-      (*contacomandos)++;
-      return;
-    }
+    printf("%d Equipa inexistente.\n", *contacomandos);
+    (*contacomandos)++;
+    return;
   }
   else
   {
@@ -119,9 +113,7 @@ void AdicionarJogo(int *contacomandos, ListaDuplaJogo *listajogos, HashTableJogo
   novo->golos2 = golose2;
   if (golose1 > golose2)
   {
-    {
-      AdicionaVitoria(novo->equipa1, HTE);
-    }
+    AdicionaVitoria(novo->equipa1, HTE);
   }
   else
   {
@@ -130,9 +122,7 @@ void AdicionarJogo(int *contacomandos, ListaDuplaJogo *listajogos, HashTableJogo
 
   if (golose1 < golose2)
   {
-    {
-      AdicionaVitoria(novo->equipa2, HTE);
-    }
+    AdicionaVitoria(novo->equipa2, HTE);
   }
   else
   {
@@ -141,15 +131,11 @@ void AdicionarJogo(int *contacomandos, ListaDuplaJogo *listajogos, HashTableJogo
 
   if (listajogos->ultimo)
   {
-    {
-      listajogos->ultimo->proxjogo = novo;
-    }
+    listajogos->ultimo->proxjogo = novo;
   }
   else
   {
-    {
-      listajogos->cabeca = novo;
-    }
+    listajogos->cabeca = novo;
   }
 
   listajogos->ultimo = novo;
@@ -174,28 +160,20 @@ void TrocaPonteiros(HashNoJogos *auxprocura, ListaDuplaJogo *listajogos)
 {
   if (auxprocura->dadosjogo->antjogo)
   {
-    {
-      auxprocura->dadosjogo->antjogo->proxjogo = auxprocura->dadosjogo->proxjogo;
-    }
+    auxprocura->dadosjogo->antjogo->proxjogo = auxprocura->dadosjogo->proxjogo;
   }
   else
   {
-    {
-      listajogos->cabeca = auxprocura->dadosjogo->proxjogo;
-    }
+    listajogos->cabeca = auxprocura->dadosjogo->proxjogo;
   }
 
   if (auxprocura->dadosjogo->proxjogo)
   {
-    {
-      auxprocura->dadosjogo->proxjogo->antjogo = auxprocura->dadosjogo->antjogo;
-    }
+    auxprocura->dadosjogo->proxjogo->antjogo = auxprocura->dadosjogo->antjogo;
   }
   else
   {
-    {
-      listajogos->ultimo = auxprocura->dadosjogo->antjogo;
-    }
+    listajogos->ultimo = auxprocura->dadosjogo->antjogo;
   }
 
 }
@@ -206,22 +184,18 @@ void RemocaoJogo(HashNoJogos *auxprocura, HashNoJogos *auxcabeca, HashNoJogos *a
   LibertaNomes(auxprocura->dadosjogo->equipa1, auxprocura->dadosjogo->equipa2);
   if (!strcmp(auxcabeca->dadosjogo->nomejogo, buffer))
   {
-    {
-      HTJ->listasjog[hashbuffer] = auxcabeca->proxjogoh;
-      LibertaJogo(auxprocura->dadosjogo->nomejogo, auxprocura->dadosjogo, auxcabeca);
-    }
+    HTJ->listasjog[hashbuffer] = auxcabeca->proxjogoh;
+    LibertaJogo(auxprocura->dadosjogo->nomejogo, auxprocura->dadosjogo, auxcabeca);
   }
   else
   {
+    for (; strcmp(auxcabeca->dadosjogo->nomejogo, buffer); auxcabeca = auxcabeca->proxjogoh)
     {
-      for (; strcmp(auxcabeca->dadosjogo->nomejogo, buffer); auxcabeca = auxcabeca->proxjogoh)
-      {
-        anterior = auxcabeca;
-      }
-
-      anterior->proxjogoh = auxcabeca->proxjogoh;
-      LibertaJogo(auxprocura->dadosjogo->nomejogo, auxprocura->dadosjogo, auxcabeca);
+      anterior = auxcabeca;
     }
+
+    anterior->proxjogoh = auxcabeca->proxjogoh;
+    LibertaJogo(auxprocura->dadosjogo->nomejogo, auxprocura->dadosjogo, auxcabeca);
   }
 
   (*contacomandos)++;
@@ -244,11 +218,9 @@ void RemoverJogo(int *contacomandos, HashTableJogos *HTJ, ListaDuplaJogo *listaj
   hashbuffer = Hash(buffer, HTJ->capacidade);
   if (!JogoJaAdicionado(HTJ, hashbuffer, buffer))
   {
-    {
-      printf("%d Jogo inexistente.\n", *contacomandos);
-      (*contacomandos)++;
-      return;
-    }
+    printf("%d Jogo inexistente.\n", *contacomandos);
+    (*contacomandos)++;
+    return;
   }
   else
   {
@@ -260,27 +232,21 @@ void RemoverJogo(int *contacomandos, HashTableJogos *HTJ, ListaDuplaJogo *listaj
 
   if (auxprocura->dadosjogo->golos1 == auxprocura->dadosjogo->golos2)
   {
-    {
-      RemocaoJogo(auxprocura, auxcabeca, anterior, listajogos, buffer, HTJ, hashbuffer, contacomandos);
-    }
+    RemocaoJogo(auxprocura, auxcabeca, anterior, listajogos, buffer, HTJ, hashbuffer, contacomandos);
   }
   else
   {
     if (auxprocura->dadosjogo->golos1 > auxprocura->dadosjogo->golos2)
     {
-      {
-        RemoveVitoria(auxprocura->dadosjogo->equipa1, HTE);
-        RemocaoJogo(auxprocura, auxcabeca, anterior, listajogos, buffer, HTJ, hashbuffer, contacomandos);
-      }
+      RemoveVitoria(auxprocura->dadosjogo->equipa1, HTE);
+      RemocaoJogo(auxprocura, auxcabeca, anterior, listajogos, buffer, HTJ, hashbuffer, contacomandos);
     }
     else
     {
       if (auxprocura->dadosjogo->golos1 < auxprocura->dadosjogo->golos2)
       {
-        {
-          RemoveVitoria(auxprocura->dadosjogo->equipa2, HTE);
-          RemocaoJogo(auxprocura, auxcabeca, anterior, listajogos, buffer, HTJ, hashbuffer, contacomandos);
-        }
+        RemoveVitoria(auxprocura->dadosjogo->equipa2, HTE);
+        RemocaoJogo(auxprocura, auxcabeca, anterior, listajogos, buffer, HTJ, hashbuffer, contacomandos);
       }
       else
       {
@@ -310,11 +276,9 @@ void ProcuraJogo(int *contacomandos, HashTableJogos *HTJ)
   {
     if (!strcmp(auxprocura->dadosjogo->nomejogo, buffer))
     {
-      {
-        printf("%d %s %s %s %d %d\n", *contacomandos, buffer, auxprocura->dadosjogo->equipa1, auxprocura->dadosjogo->equipa2, auxprocura->dadosjogo->golos1, auxprocura->dadosjogo->golos2);
-        (*contacomandos)++;
-        return;
-      }
+      printf("%d %s %s %s %d %d\n", *contacomandos, buffer, auxprocura->dadosjogo->equipa1, auxprocura->dadosjogo->equipa2, auxprocura->dadosjogo->golos1, auxprocura->dadosjogo->golos2);
+      (*contacomandos)++;
+      return;
     }
     else
     {
@@ -352,11 +316,9 @@ void AlteraPontuacao(int *contacomandos, HashTableEquipas *HTE, HashTableJogos *
   hashbuffer = Hash(buffer, HTJ->capacidade);
   if (!JogoJaAdicionado(HTJ, hashbuffer, buffer))
   {
-    {
-      printf("%d Jogo inexistente.\n", *contacomandos);
-      (*contacomandos)++;
-      return;
-    }
+    printf("%d Jogo inexistente.\n", *contacomandos);
+    (*contacomandos)++;
+    return;
   }
   else
   {
@@ -368,20 +330,37 @@ void AlteraPontuacao(int *contacomandos, HashTableEquipas *HTE, HashTableJogos *
 
   if (novosgolos1 == novosgolos2)
   {
+    if (auxprocura->dadosjogo->golos1 > auxprocura->dadosjogo->golos2)
     {
-      if (auxprocura->dadosjogo->golos1 > auxprocura->dadosjogo->golos2)
+      RemoveVitoria(auxprocura->dadosjogo->equipa1, HTE);
+    }
+    else
+    {
+      if (auxprocura->dadosjogo->golos1 < auxprocura->dadosjogo->golos2)
       {
-        {
-          RemoveVitoria(auxprocura->dadosjogo->equipa1, HTE);
-        }
+        RemoveVitoria(auxprocura->dadosjogo->equipa2, HTE);
       }
       else
       {
-        if (auxprocura->dadosjogo->golos1 < auxprocura->dadosjogo->golos2)
+        
+      }
+
+    }
+
+  }
+  else
+  {
+    if (novosgolos1 > novosgolos2)
+    {
+      if (auxprocura->dadosjogo->golos1 < auxprocura->dadosjogo->golos2)
+      {
+        TrocaVitorias(HTE, auxprocura->dadosjogo->equipa2, auxprocura->dadosjogo->equipa1);
+      }
+      else
+      {
+        if (auxprocura->dadosjogo->golos1 == auxprocura->dadosjogo->golos2)
         {
-          {
-            RemoveVitoria(auxprocura->dadosjogo->equipa2, HTE);
-          }
+          AdicionaVitoria(auxprocura->dadosjogo->equipa1, HTE);
         }
         else
         {
@@ -391,25 +370,19 @@ void AlteraPontuacao(int *contacomandos, HashTableEquipas *HTE, HashTableJogos *
       }
 
     }
-  }
-  else
-  {
-    if (novosgolos1 > novosgolos2)
+    else
     {
+      if (novosgolos1 < novosgolos2)
       {
-        if (auxprocura->dadosjogo->golos1 < auxprocura->dadosjogo->golos2)
+        if (auxprocura->dadosjogo->golos1 == auxprocura->dadosjogo->golos2)
         {
-          {
-            TrocaVitorias(HTE, auxprocura->dadosjogo->equipa2, auxprocura->dadosjogo->equipa1);
-          }
+          AdicionaVitoria(auxprocura->dadosjogo->equipa2, HTE);
         }
         else
         {
-          if (auxprocura->dadosjogo->golos1 == auxprocura->dadosjogo->golos2)
+          if (auxprocura->dadosjogo->golos1 > auxprocura->dadosjogo->golos2)
           {
-            {
-              AdicionaVitoria(auxprocura->dadosjogo->equipa1, HTE);
-            }
+            TrocaVitorias(HTE, auxprocura->dadosjogo->equipa1, auxprocura->dadosjogo->equipa2);
           }
           else
           {
@@ -418,35 +391,6 @@ void AlteraPontuacao(int *contacomandos, HashTableEquipas *HTE, HashTableJogos *
 
         }
 
-      }
-    }
-    else
-    {
-      if (novosgolos1 < novosgolos2)
-      {
-        {
-          if (auxprocura->dadosjogo->golos1 == auxprocura->dadosjogo->golos2)
-          {
-            {
-              AdicionaVitoria(auxprocura->dadosjogo->equipa2, HTE);
-            }
-          }
-          else
-          {
-            if (auxprocura->dadosjogo->golos1 > auxprocura->dadosjogo->golos2)
-            {
-              {
-                TrocaVitorias(HTE, auxprocura->dadosjogo->equipa1, auxprocura->dadosjogo->equipa2);
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-        }
       }
       else
       {

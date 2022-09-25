@@ -130,10 +130,8 @@ void ht_set_j(ht_j *hashtable, const char *nome, const char *equipa1, const char
   entry_j *prev;
   if (entry == 0)
   {
-    {
-      hashtable->entries[slot] = ht_pair_j(nome, equipa1, equipa2, score1, score2, jogo_id);
-      return;
-    }
+    hashtable->entries[slot] = ht_pair_j(nome, equipa1, equipa2, score1, score2, jogo_id);
+    return;
   }
   else
   {
@@ -144,10 +142,8 @@ void ht_set_j(ht_j *hashtable, const char *nome, const char *equipa1, const char
   {
     if (strcmp(entry->nome, nome) == 0)
     {
-      {
-        printf("%d Jogo existente.\n", rnl);
-        return;
-      }
+      printf("%d Jogo existente.\n", rnl);
+      return;
     }
     else
     {
@@ -168,10 +164,8 @@ void ht_set_e(ht_e *hashtable, const char *nome, const int vitorias, int rnl)
   entry_e *prev;
   if (entry == 0)
   {
-    {
-      hashtable->entries[slot] = ht_pair_e(nome, vitorias);
-      return;
-    }
+    hashtable->entries[slot] = ht_pair_e(nome, vitorias);
+    return;
   }
   else
   {
@@ -182,10 +176,8 @@ void ht_set_e(ht_e *hashtable, const char *nome, const int vitorias, int rnl)
   {
     if (strcmp(entry->nome, nome) == 0)
     {
-      {
-        printf("%d Equipa existente.\n", rnl);
-        return;
-      }
+      printf("%d Equipa existente.\n", rnl);
+      return;
     }
     else
     {
@@ -205,9 +197,7 @@ entry_j *ht_get_j(ht_j *hashtable, const char *nome)
   entry_j *entry = hashtable->entries[slot];
   if (entry == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -218,9 +208,7 @@ entry_j *ht_get_j(ht_j *hashtable, const char *nome)
   {
     if (strcmp(entry->nome, nome) == 0)
     {
-      {
-        return entry;
-      }
+      return entry;
     }
     else
     {
@@ -239,9 +227,7 @@ entry_e *ht_get_e(ht_e *hashtable, const char *nome)
   entry_e *entry = hashtable->entries[slot];
   if (entry == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -252,9 +238,7 @@ entry_e *ht_get_e(ht_e *hashtable, const char *nome)
   {
     if (strcmp(entry->nome, nome) == 0)
     {
-      {
-        return entry;
-      }
+      return entry;
     }
     else
     {
@@ -275,9 +259,7 @@ void ht_del_j(ht_j *hashtable, const char *nome)
   int idx = 0;
   if (entry == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -288,57 +270,47 @@ void ht_del_j(ht_j *hashtable, const char *nome)
   {
     if (strcmp(entry->nome, nome) == 0)
     {
+      if ((entry->next == 0) && (idx == 0))
       {
-        if ((entry->next == 0) && (idx == 0))
-        {
-          {
-            hashtable->entries[bucket] = 0;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if ((entry->next != 0) && (idx == 0))
-        {
-          {
-            hashtable->entries[bucket] = entry->next;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if ((entry->next == 0) && (idx != 0))
-        {
-          {
-            prev->next = 0;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if ((entry->next != 0) && (idx != 0))
-        {
-          {
-            prev->next = entry->next;
-          }
-        }
-        else
-        {
-          
-        }
-
-        free(entry->nome);
-        free(entry->equipa1);
-        free(entry->equipa2);
-        free(entry);
-        return;
+        hashtable->entries[bucket] = 0;
       }
+      else
+      {
+        
+      }
+
+      if ((entry->next != 0) && (idx == 0))
+      {
+        hashtable->entries[bucket] = entry->next;
+      }
+      else
+      {
+        
+      }
+
+      if ((entry->next == 0) && (idx != 0))
+      {
+        prev->next = 0;
+      }
+      else
+      {
+        
+      }
+
+      if ((entry->next != 0) && (idx != 0))
+      {
+        prev->next = entry->next;
+      }
+      else
+      {
+        
+      }
+
+      free(entry->nome);
+      free(entry->equipa1);
+      free(entry->equipa2);
+      free(entry);
+      return;
     }
     else
     {
@@ -360,9 +332,7 @@ void ht_del_e(ht_e *hashtable, const char *nome)
   int idx = 0;
   if (entry == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -373,55 +343,45 @@ void ht_del_e(ht_e *hashtable, const char *nome)
   {
     if (strcmp(entry->nome, nome) == 0)
     {
+      if ((entry->next == 0) && (idx == 0))
       {
-        if ((entry->next == 0) && (idx == 0))
-        {
-          {
-            hashtable->entries[bucket] = 0;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if ((entry->next != 0) && (idx == 0))
-        {
-          {
-            hashtable->entries[bucket] = entry->next;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if ((entry->next == 0) && (idx != 0))
-        {
-          {
-            prev->next = 0;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if ((entry->next != 0) && (idx != 0))
-        {
-          {
-            prev->next = entry->next;
-          }
-        }
-        else
-        {
-          
-        }
-
-        free(entry->nome);
-        free(entry);
-        return;
+        hashtable->entries[bucket] = 0;
       }
+      else
+      {
+        
+      }
+
+      if ((entry->next != 0) && (idx == 0))
+      {
+        hashtable->entries[bucket] = entry->next;
+      }
+      else
+      {
+        
+      }
+
+      if ((entry->next == 0) && (idx != 0))
+      {
+        prev->next = 0;
+      }
+      else
+      {
+        
+      }
+
+      if ((entry->next != 0) && (idx != 0))
+      {
+        prev->next = entry->next;
+      }
+      else
+      {
+        
+      }
+
+      free(entry->nome);
+      free(entry);
+      return;
     }
     else
     {
@@ -449,9 +409,7 @@ void ht_dump_j(ht_j *hashtable, int rnl)
     entry = hashtable->entries[i];
     if (entry == 0)
     {
-      {
-        continue;
-      }
+      continue;
     }
     else
     {
@@ -463,9 +421,7 @@ void ht_dump_j(ht_j *hashtable, int rnl)
       total_jogos++;
       if (entry->next == 0)
       {
-        {
-          break;
-        }
+        break;
       }
       else
       {
@@ -483,9 +439,7 @@ void ht_dump_j(ht_j *hashtable, int rnl)
     entry = hashtable->entries[i];
     if (entry == 0)
     {
-      {
-        continue;
-      }
+      continue;
     }
     else
     {
@@ -507,9 +461,7 @@ void ht_dump_j(ht_j *hashtable, int rnl)
       index++;
       if (entry->next == 0)
       {
-        {
-          break;
-        }
+        break;
       }
       else
       {
@@ -527,11 +479,9 @@ void ht_dump_j(ht_j *hashtable, int rnl)
     {
       if (lista_jogos[d]->jogo_id > lista_jogos[d + 1]->jogo_id)
       {
-        {
-          swap = lista_jogos[d];
-          lista_jogos[d] = lista_jogos[d + 1];
-          lista_jogos[d + 1] = swap;
-        }
+        swap = lista_jogos[d];
+        lista_jogos[d] = lista_jogos[d + 1];
+        lista_jogos[d + 1] = swap;
       }
       else
       {
@@ -564,9 +514,7 @@ void delete_all_j(ht_j *hashtable)
     entry_j *entry = hashtable->entries[i];
     if (entry == 0)
     {
-      {
-        continue;
-      }
+      continue;
     }
     else
     {
@@ -583,9 +531,7 @@ void delete_all_j(ht_j *hashtable)
       free(current);
       if (entry == 0)
       {
-        {
-          break;
-        }
+        break;
       }
       else
       {
@@ -607,9 +553,7 @@ void delete_all_e(ht_e *hashtable)
     entry_e *entry = hashtable->entries[i];
     if (entry == 0)
     {
-      {
-        continue;
-      }
+      continue;
     }
     else
     {
@@ -624,9 +568,7 @@ void delete_all_e(ht_e *hashtable)
       free(current);
       if (entry == 0)
       {
-        {
-          break;
-        }
+        break;
       }
       else
       {
@@ -687,53 +629,41 @@ int main()
         score2 = new_sym_var(sizeof(int) * 8);
         if (ht_get_j(htj, b) == 0)
       {
+        if ((ht_get_e(hte, h) != 0) && (ht_get_e(hte, j) != 0))
         {
-          if ((ht_get_e(hte, h) != 0) && (ht_get_e(hte, j) != 0))
+          ht_set_j(htj, b, h, j, score1, score2, jogo_id, rnl);
+          jogo_id++;
+          if (score1 > score2)
           {
-            {
-              ht_set_j(htj, b, h, j, score1, score2, jogo_id, rnl);
-              jogo_id++;
-              if (score1 > score2)
-              {
-                {
-                  current_e = ht_get_e(hte, h);
-                  current_e->vitorias++;
-                }
-              }
-              else
-              {
-                
-              }
-
-              if (score1 < score2)
-              {
-                {
-                  current_e = ht_get_e(hte, j);
-                  current_e->vitorias++;
-                }
-              }
-              else
-              {
-                
-              }
-
-              break;
-            }
+            current_e = ht_get_e(hte, h);
+            current_e->vitorias++;
           }
           else
           {
-            {
-              printf("%d Equipa inexistente.\n", rnl);
-            }
+            
           }
 
+          if (score1 < score2)
+          {
+            current_e = ht_get_e(hte, j);
+            current_e->vitorias++;
+          }
+          else
+          {
+            
+          }
+
+          break;
         }
+        else
+        {
+          printf("%d Equipa inexistente.\n", rnl);
+        }
+
       }
       else
       {
-        {
-          printf("%d Jogo existente.\n", rnl);
-        }
+        printf("%d Jogo existente.\n", rnl);
       }
 
         break;
@@ -748,16 +678,12 @@ int main()
         b[10 - 1] = '\0';
         if (ht_get_e(hte, b) == 0)
       {
-        {
-          ht_set_e(hte, b, 0, rnl);
-          break;
-        }
+        ht_set_e(hte, b, 0, rnl);
+        break;
       }
       else
       {
-        {
-          printf("%d Equipa existente.\n", rnl);
-        }
+        printf("%d Equipa existente.\n", rnl);
       }
 
         break;
@@ -778,15 +704,11 @@ int main()
         current_j = ht_get_j(htj, b);
         if (current_j != 0)
       {
-        {
-          printf("%d %s %s %s %d %d\n", rnl, current_j->nome, current_j->equipa1, current_j->equipa2, current_j->score1, current_j->score2);
-        }
+        printf("%d %s %s %s %d %d\n", rnl, current_j->nome, current_j->equipa1, current_j->equipa2, current_j->score1, current_j->score2);
       }
       else
       {
-        {
-          printf("%d Jogo inexistente.\n", rnl);
-        }
+        printf("%d Jogo inexistente.\n", rnl);
       }
 
         break;
@@ -802,40 +724,32 @@ int main()
         current_j = ht_get_j(htj, b);
         if (current_j != 0)
       {
+        if (current_j->score1 > current_j->score2)
         {
-          if (current_j->score1 > current_j->score2)
-          {
-            {
-              current_e = ht_get_e(hte, current_j->equipa1);
-              current_e->vitorias--;
-            }
-          }
-          else
-          {
-            
-          }
-
-          if (current_j->score1 < current_j->score2)
-          {
-            {
-              current_e = ht_get_e(hte, current_j->equipa2);
-              current_e->vitorias--;
-            }
-          }
-          else
-          {
-            
-          }
-
-          ht_del_j(htj, b);
-          break;
+          current_e = ht_get_e(hte, current_j->equipa1);
+          current_e->vitorias--;
         }
+        else
+        {
+          
+        }
+
+        if (current_j->score1 < current_j->score2)
+        {
+          current_e = ht_get_e(hte, current_j->equipa2);
+          current_e->vitorias--;
+        }
+        else
+        {
+          
+        }
+
+        ht_del_j(htj, b);
+        break;
       }
       else
       {
-        {
-          printf("%d Jogo inexistente.\n", rnl);
-        }
+        printf("%d Jogo inexistente.\n", rnl);
       }
 
         break;
@@ -853,65 +767,53 @@ int main()
         current_j = ht_get_j(htj, b);
         if (current_j != 0)
       {
+        if (current_j->score1 > current_j->score2)
         {
-          if (current_j->score1 > current_j->score2)
-          {
-            {
-              current_e = ht_get_e(hte, current_j->equipa1);
-              current_e->vitorias--;
-            }
-          }
-          else
-          {
-            
-          }
-
-          if (current_j->score1 < current_j->score2)
-          {
-            {
-              current_e = ht_get_e(hte, current_j->equipa2);
-              current_e->vitorias--;
-            }
-          }
-          else
-          {
-            
-          }
-
-          current_j->score1 = score1;
-          current_j->score2 = score2;
-          if (current_j->score1 > current_j->score2)
-          {
-            {
-              current_e = ht_get_e(hte, current_j->equipa1);
-              current_e->vitorias++;
-            }
-          }
-          else
-          {
-            
-          }
-
-          if (current_j->score1 < current_j->score2)
-          {
-            {
-              current_e = ht_get_e(hte, current_j->equipa2);
-              current_e->vitorias++;
-            }
-          }
-          else
-          {
-            
-          }
-
-          break;
+          current_e = ht_get_e(hte, current_j->equipa1);
+          current_e->vitorias--;
         }
+        else
+        {
+          
+        }
+
+        if (current_j->score1 < current_j->score2)
+        {
+          current_e = ht_get_e(hte, current_j->equipa2);
+          current_e->vitorias--;
+        }
+        else
+        {
+          
+        }
+
+        current_j->score1 = score1;
+        current_j->score2 = score2;
+        if (current_j->score1 > current_j->score2)
+        {
+          current_e = ht_get_e(hte, current_j->equipa1);
+          current_e->vitorias++;
+        }
+        else
+        {
+          
+        }
+
+        if (current_j->score1 < current_j->score2)
+        {
+          current_e = ht_get_e(hte, current_j->equipa2);
+          current_e->vitorias++;
+        }
+        else
+        {
+          
+        }
+
+        break;
       }
       else
       {
-        {
-          printf("%d Jogo inexistente.\n", rnl);
-        }
+        printf("%d Jogo inexistente.\n", rnl);
       }
 
         break;
@@ -927,15 +829,11 @@ int main()
         current_e = ht_get_e(hte, b);
         if (current_e != 0)
       {
-        {
-          printf("%d %s %d\n", rnl, current_e->nome, current_e->vitorias);
-        }
+        printf("%d %s %d\n", rnl, current_e->nome, current_e->vitorias);
       }
       else
       {
-        {
-          printf("%d Equipa inexistente.\n", rnl);
-        }
+        printf("%d Equipa inexistente.\n", rnl);
       }
 
         break;
@@ -950,9 +848,7 @@ int main()
         entry_equipa = hte->entries[i];
         if (entry_equipa == 0)
         {
-          {
-            continue;
-          }
+          continue;
         }
         else
         {
@@ -963,18 +859,14 @@ int main()
         {
           if (entry_equipa->vitorias > c)
           {
-            {
-              c = entry_equipa->vitorias;
-              n_equipas = 1;
-            }
+            c = entry_equipa->vitorias;
+            n_equipas = 1;
           }
           else
           {
             if (entry_equipa->vitorias == c)
             {
-              {
-                n_equipas++;
-              }
+              n_equipas++;
             }
             else
             {
@@ -985,9 +877,7 @@ int main()
 
           if (entry_equipa->next == 0)
           {
-            {
-              break;
-            }
+            break;
           }
           else
           {
@@ -1001,9 +891,7 @@ int main()
 
         if (n_equipas == 0)
       {
-        {
-          break;
-        }
+        break;
       }
       else
       {
@@ -1017,9 +905,7 @@ int main()
         entry_equipa = hte->entries[i];
         if (entry_equipa == 0)
         {
-          {
-            continue;
-          }
+          continue;
         }
         else
         {
@@ -1030,11 +916,9 @@ int main()
         {
           if (entry_equipa->vitorias == c)
           {
-            {
-              strings[index] = (char *) malloc((strlen(entry_equipa->nome) + 1) * (sizeof(char)));
-              strcpy((char *) strings[index], entry_equipa->nome);
-              index++;
-            }
+            strings[index] = (char *) malloc((strlen(entry_equipa->nome) + 1) * (sizeof(char)));
+            strcpy((char *) strings[index], entry_equipa->nome);
+            index++;
           }
           else
           {
@@ -1043,9 +927,7 @@ int main()
 
           if (entry_equipa->next == 0)
           {
-            {
-              break;
-            }
+            break;
           }
           else
           {

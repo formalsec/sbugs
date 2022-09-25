@@ -36,31 +36,23 @@ void createGameCmd(int nl, BTTeam *teams, BTGame **games)
   score2 = new_sym_var(sizeof(int) * 8);
   if (existsBTGame(*games, name))
   {
-    {
-      printf("%d Jogo existente.\n", nl);
-      return;
-    }
+    printf("%d Jogo existente.\n", nl);
+    return;
   }
   else
   {
+    team1 = searchBTTeam(teams, teamName1);
+    team2 = searchBTTeam(teams, teamName2);
+    if ((team1 == 0) || (team2 == 0))
     {
-      team1 = searchBTTeam(teams, teamName1);
-      team2 = searchBTTeam(teams, teamName2);
-      if ((team1 == 0) || (team2 == 0))
-      {
-        {
-          printf("%d Equipa inexistente.\n", nl);
-        }
-      }
-      else
-      {
-        {
-          game = newGame(nl, name, team1, team2, score1, score2);
-          insertBTGame(games, game);
-        }
-      }
-
+      printf("%d Equipa inexistente.\n", nl);
     }
+    else
+    {
+      game = newGame(nl, name, team1, team2, score1, score2);
+      insertBTGame(games, game);
+    }
+
   }
 
 }
@@ -98,15 +90,11 @@ void searchGameCmd(int nl, BTGame *games)
   game = searchBTGame(games, name);
   if (game == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-    }
+    printf("%d Jogo inexistente.\n", nl);
   }
   else
   {
-    {
-      printGame(game, nl);
-    }
+    printGame(game, nl);
   }
 
 }
@@ -122,15 +110,11 @@ void deleteGameCmd(int nl, BTGame **games)
   name[10 - 1] = '\0';
   if (!existsBTGame(*games, name))
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-    }
+    printf("%d Jogo inexistente.\n", nl);
   }
   else
   {
-    {
-      deleteBTGame(games, name);
-    }
+    deleteBTGame(games, name);
   }
 
 }
@@ -152,15 +136,11 @@ void changeGameScoresCmd(int nl, BTGame *games)
   game = searchBTGame(games, name);
   if (game == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-    }
+    printf("%d Jogo inexistente.\n", nl);
   }
   else
   {
-    {
-      updateGameScore(game, score1, score2);
-    }
+    updateGameScore(game, score1, score2);
   }
 
 }
@@ -177,16 +157,12 @@ void createTeamCmd(int nl, BTTeam **teams)
   name[10 - 1] = '\0';
   if (existsBTTeam(*teams, name))
   {
-    {
-      printf("%d Equipa existente.\n", nl);
-    }
+    printf("%d Equipa existente.\n", nl);
   }
   else
   {
-    {
-      team = newTeam(name, 0);
-      insertBTTeam(teams, team);
-    }
+    team = newTeam(name, 0);
+    insertBTTeam(teams, team);
   }
 
 }
@@ -204,15 +180,11 @@ void searchTeamCmd(int nl, BTTeam *teams)
   team = searchBTTeam(teams, name);
   if (team == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", nl);
-    }
+    printf("%d Equipa inexistente.\n", nl);
   }
   else
   {
-    {
-      printf("%d %s %d\n", nl, getTeamName(team), getTeamWins(team));
-    }
+    printf("%d %s %d\n", nl, getTeamName(team), getTeamWins(team));
   }
 
 }
@@ -223,11 +195,9 @@ void bestTeamsCmd(int nl, BTTeam *teams)
   int wins;
   if (countTeamList(best) > 0)
   {
-    {
-      wins = getTeamWins(best->team);
-      printf("%d Melhores %d\n", nl, wins);
-      printTeamList(best, nl);
-    }
+    wins = getTeamWins(best->team);
+    printf("%d Melhores %d\n", nl, wins);
+    printTeamList(best, nl);
   }
   else
   {

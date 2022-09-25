@@ -45,9 +45,7 @@ void pushReference(game_reference **head, game_reference *new_game_reference)
   new_game_reference->prev = 0;
   if ((*head) != 0)
   {
-    {
-      (*head)->prev = new_game_reference;
-    }
+    (*head)->prev = new_game_reference;
   }
   else
   {
@@ -61,37 +59,29 @@ void deleteReference(game_reference **head, game_reference *node_to_delete)
 {
   if ((*head) == node_to_delete)
   {
+    *head = node_to_delete->next;
+    if ((*head) != 0)
     {
-      *head = node_to_delete->next;
-      if ((*head) != 0)
-      {
-        {
-          (*head)->prev = 0;
-        }
-      }
-      else
-      {
-        
-      }
-
+      (*head)->prev = 0;
     }
+    else
+    {
+      
+    }
+
   }
   else
   {
+    node_to_delete->prev->next = node_to_delete->next;
+    if (node_to_delete->next != 0)
     {
-      node_to_delete->prev->next = node_to_delete->next;
-      if (node_to_delete->next != 0)
-      {
-        {
-          node_to_delete->next->prev = node_to_delete->prev;
-        }
-      }
-      else
-      {
-        
-      }
-
+      node_to_delete->next->prev = node_to_delete->prev;
     }
+    else
+    {
+      
+    }
+
   }
 
   node_to_delete->next = 0;

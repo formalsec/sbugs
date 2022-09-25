@@ -39,28 +39,20 @@ void rm_node(list *l, node *n)
 {
   if (n->previous == 0)
   {
-    {
-      l->head = n->next;
-    }
+    l->head = n->next;
   }
   else
   {
-    {
-      n->previous->next = n->next;
-    }
+    n->previous->next = n->next;
   }
 
   if (n->next == 0)
   {
-    {
-      l->last = n->previous;
-    }
+    l->last = n->previous;
   }
   else
   {
-    {
-      n->next->previous = n->previous;
-    }
+    n->next->previous = n->previous;
   }
 
   free_node(n);
@@ -82,15 +74,11 @@ node *add_last(list *l, char *n, char *equipa1, char *equipa2, int score1, int s
   nn->next = 0;
   if (l->last != 0)
   {
-    {
-      l->last->next = nn;
-    }
+    l->last->next = nn;
   }
   else
   {
-    {
-      l->head = nn;
-    }
+    l->head = nn;
   }
 
   ;

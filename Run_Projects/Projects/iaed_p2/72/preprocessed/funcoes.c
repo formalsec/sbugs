@@ -22,19 +22,15 @@ unsigned int a(unsigned int NL, Jogos jogos, Equipas equipas)
   score2 = new_sym_var(sizeof(int) * 8);
   if (procura_jogo(jogos, nome) != 0)
   {
-    {
-      printf("%u Jogo existente.\n", NL);
-      return ++NL;
-    }
+    printf("%u Jogo existente.\n", NL);
+    return ++NL;
   }
   else
   {
     if (((eq1 = procura_equipa(equipas, nome_eq1)) == 0) || ((eq2 = procura_equipa(equipas, nome_eq2)) == 0))
     {
-      {
-        printf("%u Equipa inexistente.\n", NL);
-        return ++NL;
-      }
+      printf("%u Equipa inexistente.\n", NL);
+      return ++NL;
     }
     else
     {
@@ -79,10 +75,8 @@ unsigned int A(unsigned int NL, Equipas equipas)
   size = get_string(nome);
   if (procura_equipa(equipas, nome) != 0)
   {
-    {
-      printf("%u Equipa existente.\n", NL);
-      return ++NL;
-    }
+    printf("%u Equipa existente.\n", NL);
+    return ++NL;
   }
   else
   {
@@ -101,10 +95,8 @@ unsigned int P(unsigned int NL, Equipas equipas)
   get_string(nome);
   if ((atual = procura_equipa(equipas, nome)) == 0)
   {
-    {
-      printf("%u Equipa inexistente.\n", NL);
-      return ++NL;
-    }
+    printf("%u Equipa inexistente.\n", NL);
+    return ++NL;
   }
   else
   {
@@ -142,10 +134,8 @@ unsigned int s(unsigned int NL, Jogos jogos)
   score2 = new_sym_var(sizeof(int) * 8);
   if ((jg = procura_jogo(jogos, nome)) == 0)
   {
-    {
-      printf("%u Jogo inexistente.\n", NL);
-      return ++NL;
-    }
+    printf("%u Jogo inexistente.\n", NL);
+    return ++NL;
   }
   else
   {

@@ -37,15 +37,11 @@ void funcaoq(int arg2, int arg3)
 {
   if (arg2 > (z - 1))
   {
-    {
-      printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", arg2);
-    }
+    printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", arg2);
   }
   else
   {
-    {
-      produtos[arg2].qtd = produtos[arg2].qtd + arg3;
-    }
+    produtos[arg2].qtd = produtos[arg2].qtd + arg3;
   }
 
 }
@@ -74,37 +70,29 @@ void funcaoA(int ide, int idp, int qtd)
   int x = 0;
   if (ide > (i - 1))
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
+    return;
   }
   else
   {
     if (idp > (z - 1))
     {
-      {
-        printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
-        return;
-      }
+      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
+      return;
     }
     else
     {
       if (qtd > produtos[idp].qtd)
       {
-        {
-          printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
-          return;
-        }
+        printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
+        return;
       }
       else
       {
         if ((peso_da_encomenda(ide) + (produtos[idp].peso * qtd)) > 200)
         {
-          {
-            printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
-            return;
-          }
+          printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
+          return;
         }
         else
         {
@@ -121,13 +109,11 @@ void funcaoA(int ide, int idp, int qtd)
   {
     if (idp == encomendas[ide].chegada[x])
     {
-      {
-        encomendas[ide].produto[x].qtd += qtd;
-        encomendas[ide].produto[x].preco = produtos[idp].preco * encomendas[ide].produto[x].qtd;
-        encomendas[ide].produto[x].peso = produtos[idp].peso * encomendas[ide].produto[x].qtd;
-        produtos[idp].qtd -= qtd;
-        return;
-      }
+      encomendas[ide].produto[x].qtd += qtd;
+      encomendas[ide].produto[x].preco = produtos[idp].preco * encomendas[ide].produto[x].qtd;
+      encomendas[ide].produto[x].peso = produtos[idp].peso * encomendas[ide].produto[x].qtd;
+      produtos[idp].qtd -= qtd;
+      return;
     }
     else
     {
@@ -152,25 +138,19 @@ void funcaor(int idp, int qtd)
 {
   if (idp > (z - 1))
   {
-    {
-      printf("Impossivel remover stock do produto %d. Produto inexistente.\n", idp);
-      return;
-    }
+    printf("Impossivel remover stock do produto %d. Produto inexistente.\n", idp);
+    return;
   }
   else
   {
     if ((produtos[idp].qtd - qtd) < 0)
     {
-      {
-        printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, idp);
-        return;
-      }
+      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, idp);
+      return;
     }
     else
     {
-      {
-        produtos[idp].qtd -= qtd;
-      }
+      produtos[idp].qtd -= qtd;
     }
 
   }
@@ -182,19 +162,15 @@ void funcaoR(int ide, int idp)
   int x = 0;
   if (ide > (i - 1))
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
-      return;
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
+    return;
   }
   else
   {
     if (idp > (z - 1))
     {
-      {
-        printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
-        return;
-      }
+      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
+      return;
     }
     else
     {
@@ -207,12 +183,10 @@ void funcaoR(int ide, int idp)
   {
     if (encomendas[ide].chegada[x] == idp)
     {
-      {
-        produtos[idp].qtd += encomendas[ide].produto[x].qtd;
-        encomendas[ide].produto[x].qtd = 0;
-        encomendas[ide].produto[x].peso = 0;
-        return;
-      }
+      produtos[idp].qtd += encomendas[ide].produto[x].qtd;
+      encomendas[ide].produto[x].qtd = 0;
+      encomendas[ide].produto[x].peso = 0;
+      return;
     }
     else
     {
@@ -231,10 +205,8 @@ void funcaoc(int ide)
   int idp = 0;
   if (ide > (i - 1))
   {
-    {
-      printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ide);
-      return;
-    }
+    printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ide);
+    return;
   }
   else
   {
@@ -262,9 +234,7 @@ void precos_encomendas(int idp)
     {
       if (encomendas[x].chegada[y] == idp)
       {
-        {
-          encomendas[x].produto[y].preco = produtos[idp].preco * encomendas[x].produto[y].qtd;
-        }
+        encomendas[x].produto[y].preco = produtos[idp].preco * encomendas[x].produto[y].qtd;
       }
       else
       {
@@ -283,10 +253,8 @@ void funcaop(int idp, int preco)
 {
   if (idp > (z - 1))
   {
-    {
-      printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idp);
-      return;
-    }
+    printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idp);
+    return;
   }
   else
   {
@@ -302,19 +270,15 @@ void funcaoE(int ide, int idp)
   int x = 0;
   if (idp > (z - 1))
   {
-    {
-      printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
-      return;
-    }
+    printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
+    return;
   }
   else
   {
     if (ide > (i - 1))
     {
-      {
-        printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
-        return;
-      }
+      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
+      return;
     }
     else
     {
@@ -327,10 +291,8 @@ void funcaoE(int ide, int idp)
   {
     if (idp == encomendas[ide].chegada[x])
     {
-      {
-        printf("%s %d.\n", produtos[idp].descricao, encomendas[ide].produto[x].qtd);
-        return;
-      }
+      printf("%s %d.\n", produtos[idp].descricao, encomendas[ide].produto[x].qtd);
+      return;
     }
     else
     {
@@ -351,10 +313,8 @@ void funcaom(int idp)
   int idezao = 0;
   if (idp > (z - 1))
   {
-    {
-      printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idp);
-      return;
-    }
+    printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idp);
+    return;
   }
   else
   {
@@ -367,10 +327,8 @@ void funcaom(int idp)
     {
       if ((idp == encomendas[p].chegada[x]) && (encomendas[p].produto[x].qtd > max))
       {
-        {
-          max = encomendas[p].produto[x].qtd;
-          idezao = p;
-        }
+        max = encomendas[p].produto[x].qtd;
+        idezao = p;
       }
       else
       {
@@ -386,9 +344,7 @@ void funcaom(int idp)
 
   if (max == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -424,11 +380,9 @@ int partition(int a[], int left, int right)
 
     if (i < j)
     {
-      {
-        t[0] = a[i];
-        a[i] = a[j];
-        a[j] = t[0];
-      }
+      t[0] = a[i];
+      a[i] = a[j];
+      a[j] = t[0];
     }
     else
     {
@@ -500,15 +454,11 @@ void mergedois(int a[], int left, int m, int right, int ide)
   {
     if ((strcmp(encomendas[ide].produto[aux[j]].descricao, encomendas[ide].produto[aux[b]].descricao) < 0) || (b > m))
     {
-      {
-        a[k] = aux[j--];
-      }
+      a[k] = aux[j--];
     }
     else
     {
-      {
-        a[k] = aux[b++];
-      }
+      a[k] = aux[b++];
     }
 
   }
@@ -520,9 +470,7 @@ void mergesortdois(int a[], int left, int right, int ide)
   int m = (right + left) / 2;
   if (right <= left)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -541,10 +489,8 @@ void funcaoL(int ide)
   int idps = 0;
   if (ide > (i - 1))
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
-      return;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
+    return;
   }
   else
   {
@@ -564,9 +510,7 @@ void funcaoL(int ide)
     idps = encomendas[ide].chegada[novo[t]];
     if (encomendas[ide].produto[novo[t]].qtd != 0)
     {
-      {
-        printf("* %s %d %d\n", encomendas[ide].produto[novo[t]].descricao, produtos[idps].preco, encomendas[ide].produto[novo[t]].qtd);
-      }
+      printf("* %s %d %d\n", encomendas[ide].produto[novo[t]].descricao, produtos[idps].preco, encomendas[ide].produto[novo[t]].qtd);
     }
     else
     {

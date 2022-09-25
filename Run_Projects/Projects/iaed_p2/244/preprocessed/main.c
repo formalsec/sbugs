@@ -66,47 +66,37 @@ int main()
         strcpy(nome_2, nome2);
         if (encontra_jogo(htable_jogos, nome_jogo) != 0)
       {
-        {
-          printf("%d Jogo existente.\n", nl);
-        }
+        printf("%d Jogo existente.\n", nl);
       }
       else
       {
         if ((encontra_equipa(htable_equipas, nome_1) == 0) || (encontra_equipa(htable_equipas, nome_2) == 0))
         {
-          {
-            printf("%d Equipa inexistente.\n", nl);
-          }
+          printf("%d Equipa inexistente.\n", nl);
         }
         else
         {
+          adiciona_jogo_a_hashtable(htable_jogos, &cabeca, nome_jogo, nome_1, nome_2, pt1, pt2);
+          t->jogo = encontra_jogo(htable_jogos, nome_jogo);
+          if (t->jogo->pts_1 > t->jogo->pts_2)
           {
-            adiciona_jogo_a_hashtable(htable_jogos, &cabeca, nome_jogo, nome_1, nome_2, pt1, pt2);
-            t->jogo = encontra_jogo(htable_jogos, nome_jogo);
-            if (t->jogo->pts_1 > t->jogo->pts_2)
+            eq->equipa = encontra_equipa(htable_equipas, t->jogo->eq1);
+            eq->equipa->numero_de_jogos += 1;
+          }
+          else
+          {
+            if (t->jogo->pts_2 > t->jogo->pts_1)
             {
-              {
-                eq->equipa = encontra_equipa(htable_equipas, t->jogo->eq1);
-                eq->equipa->numero_de_jogos += 1;
-              }
+              eq->equipa = encontra_equipa(htable_equipas, t->jogo->eq2);
+              eq->equipa->numero_de_jogos += 1;
             }
             else
             {
-              if (t->jogo->pts_2 > t->jogo->pts_1)
-              {
-                {
-                  eq->equipa = encontra_equipa(htable_equipas, t->jogo->eq2);
-                  eq->equipa->numero_de_jogos += 1;
-                }
-              }
-              else
-              {
-                
-              }
-
+              
             }
 
           }
+
         }
 
       }
@@ -133,19 +123,15 @@ int main()
         strcpy(nome_jogo, buffer);
         if (encontra_jogo(htable_jogos, nome_jogo) == 0)
       {
-        {
-          printf("%d Jogo inexistente.\n", nl);
-        }
+        printf("%d Jogo inexistente.\n", nl);
       }
       else
       {
-        {
-          printf("%d %s", nl, nome_jogo);
-          printf(" %s", encontra_jogo(htable_jogos, nome_jogo)->eq1);
-          printf(" %s", encontra_jogo(htable_jogos, nome_jogo)->eq2);
-          printf(" %d", encontra_jogo(htable_jogos, nome_jogo)->pts_1);
-          printf(" %d\n", encontra_jogo(htable_jogos, nome_jogo)->pts_2);
-        }
+        printf("%d %s", nl, nome_jogo);
+        printf(" %s", encontra_jogo(htable_jogos, nome_jogo)->eq1);
+        printf(" %s", encontra_jogo(htable_jogos, nome_jogo)->eq2);
+        printf(" %d", encontra_jogo(htable_jogos, nome_jogo)->pts_1);
+        printf(" %d\n", encontra_jogo(htable_jogos, nome_jogo)->pts_2);
       }
 
         nl += 1;
@@ -163,37 +149,29 @@ int main()
         strcpy(nome_jogo, buffer);
         if (encontra_jogo(htable_jogos, nome_jogo) == 0)
       {
-        {
-          printf("%d Jogo inexistente.\n", nl);
-        }
+        printf("%d Jogo inexistente.\n", nl);
       }
       else
       {
+        if (encontra_jogo(htable_jogos, nome_jogo)->pts_1 > encontra_jogo(htable_jogos, nome_jogo)->pts_2)
         {
-          if (encontra_jogo(htable_jogos, nome_jogo)->pts_1 > encontra_jogo(htable_jogos, nome_jogo)->pts_2)
+          encontra_equipa(htable_equipas, encontra_jogo(htable_jogos, nome_jogo)->eq1)->numero_de_jogos -= 1;
+        }
+        else
+        {
+          if (encontra_jogo(htable_jogos, nome_jogo)->pts_1 < encontra_jogo(htable_jogos, nome_jogo)->pts_2)
           {
-            {
-              encontra_equipa(htable_equipas, encontra_jogo(htable_jogos, nome_jogo)->eq1)->numero_de_jogos -= 1;
-            }
+            encontra_equipa(htable_equipas, encontra_jogo(htable_jogos, nome_jogo)->eq2)->numero_de_jogos -= 1;
           }
           else
           {
-            if (encontra_jogo(htable_jogos, nome_jogo)->pts_1 < encontra_jogo(htable_jogos, nome_jogo)->pts_2)
-            {
-              {
-                encontra_equipa(htable_equipas, encontra_jogo(htable_jogos, nome_jogo)->eq2)->numero_de_jogos -= 1;
-              }
-            }
-            else
-            {
-              
-            }
-
+            
           }
 
-          retira_da_lista(&cabeca, nome_jogo);
-          remove_jogo(htable_jogos, nome_jogo);
         }
+
+        retira_da_lista(&cabeca, nome_jogo);
+        remove_jogo(htable_jogos, nome_jogo);
       }
 
         nl += 1;
@@ -213,74 +191,57 @@ int main()
         strcpy(nome_jogo, buffer);
         if (encontra_jogo(htable_jogos, nome_jogo) == 0)
       {
-        {
-          printf("%d Jogo inexistente.\n", nl);
-        }
+        printf("%d Jogo inexistente.\n", nl);
       }
       else
       {
+        temp_1 = encontra_jogo(htable_jogos, nome_jogo)->pts_1;
+        temp_2 = encontra_jogo(htable_jogos, nome_jogo)->pts_2;
+        t->jogo = encontra_jogo(htable_jogos, nome_jogo);
+        t->jogo->pts_1 = pt1;
+        t->jogo->pts_2 = pt2;
+        if ((pt1 > pt2) && (temp_1 < temp_2))
         {
-          temp_1 = encontra_jogo(htable_jogos, nome_jogo)->pts_1;
-          temp_2 = encontra_jogo(htable_jogos, nome_jogo)->pts_2;
-          t->jogo = encontra_jogo(htable_jogos, nome_jogo);
-          t->jogo->pts_1 = pt1;
-          t->jogo->pts_2 = pt2;
-          if ((pt1 > pt2) && (temp_1 < temp_2))
-          {
-            {
-              encontra_equipa(htable_equipas, t->jogo->eq1)->numero_de_jogos += 1;
-              encontra_equipa(htable_equipas, t->jogo->eq2)->numero_de_jogos -= 1;
-            }
-          }
-          else
-          {
-            
-          }
+          encontra_equipa(htable_equipas, t->jogo->eq1)->numero_de_jogos += 1;
+          encontra_equipa(htable_equipas, t->jogo->eq2)->numero_de_jogos -= 1;
+        }
+        else
+        {
+          
+        }
 
-          if ((pt1 > pt2) && (temp_1 == temp_2))
+        if ((pt1 > pt2) && (temp_1 == temp_2))
+        {
+          encontra_equipa(htable_equipas, t->jogo->eq1)->numero_de_jogos += 1;
+        }
+        else
+        {
+          if ((pt1 < pt2) && (temp_1 > temp_2))
           {
-            {
-              encontra_equipa(htable_equipas, t->jogo->eq1)->numero_de_jogos += 1;
-            }
+            encontra_equipa(htable_equipas, t->jogo->eq2)->numero_de_jogos += 1;
+            encontra_equipa(htable_equipas, t->jogo->eq1)->numero_de_jogos -= 1;
           }
           else
           {
-            if ((pt1 < pt2) && (temp_1 > temp_2))
+            if ((pt1 < pt2) && (temp_1 == temp_2))
             {
-              {
-                encontra_equipa(htable_equipas, t->jogo->eq2)->numero_de_jogos += 1;
-                encontra_equipa(htable_equipas, t->jogo->eq1)->numero_de_jogos -= 1;
-              }
+              encontra_equipa(htable_equipas, t->jogo->eq2)->numero_de_jogos += 1;
             }
             else
             {
-              if ((pt1 < pt2) && (temp_1 == temp_2))
+              if ((pt1 == pt2) && (temp_1 > temp_2))
               {
-                {
-                  encontra_equipa(htable_equipas, t->jogo->eq2)->numero_de_jogos += 1;
-                }
+                encontra_equipa(htable_equipas, t->jogo->eq1)->numero_de_jogos -= 1;
               }
               else
               {
-                if ((pt1 == pt2) && (temp_1 > temp_2))
+                if ((pt1 == pt2) && (temp_1 < temp_2))
                 {
-                  {
-                    encontra_equipa(htable_equipas, t->jogo->eq1)->numero_de_jogos -= 1;
-                  }
+                  encontra_equipa(htable_equipas, t->jogo->eq2)->numero_de_jogos -= 1;
                 }
                 else
                 {
-                  if ((pt1 == pt2) && (temp_1 < temp_2))
-                  {
-                    {
-                      encontra_equipa(htable_equipas, t->jogo->eq2)->numero_de_jogos -= 1;
-                    }
-                  }
-                  else
-                  {
-                    
-                  }
-
+                  
                 }
 
               }
@@ -290,6 +251,7 @@ int main()
           }
 
         }
+
       }
 
         nl += 1;
@@ -307,15 +269,11 @@ int main()
         strcpy(nome_equipa, buffer);
         if (encontra_equipa(htable_equipas, nome_equipa) != 0)
       {
-        {
-          printf("%d Equipa existente.\n", nl);
-        }
+        printf("%d Equipa existente.\n", nl);
       }
       else
       {
-        {
-          adiciona_equipa_a_hashtable(htable_equipas, &cabeca_remove, nome_equipa);
-        }
+        adiciona_equipa_a_hashtable(htable_equipas, &cabeca_remove, nome_equipa);
       }
 
         nl += 1;
@@ -333,15 +291,11 @@ int main()
         strcpy(nome_equipa, buffer);
         if (encontra_equipa(htable_equipas, nome_equipa) == 0)
       {
-        {
-          printf("%d Equipa inexistente.\n", nl);
-        }
+        printf("%d Equipa inexistente.\n", nl);
       }
       else
       {
-        {
-          printf("%d %s %d\n", nl, nome_equipa, encontra_equipa(htable_equipas, nome_equipa)->numero_de_jogos);
-        }
+        printf("%d %s %d\n", nl, nome_equipa, encontra_equipa(htable_equipas, nome_equipa)->numero_de_jogos);
       }
 
         nl += 1;

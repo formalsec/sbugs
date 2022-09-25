@@ -210,19 +210,15 @@ pEquipas AdicionarEquipa(pEquipas hEquipas, char *nome)
   pEquipas x;
   if (hEquipas == 0)
   {
-    {
-      return NovaEquipa;
-    }
+    return NovaEquipa;
   }
   else
   {
-    {
-      for (x = hEquipas; x->next != 0; x = x->next)
-        ;
+    for (x = hEquipas; x->next != 0; x = x->next)
+      ;
 
-      x->next = NovaEquipa;
-      return hEquipas;
-    }
+    x->next = NovaEquipa;
+    return hEquipas;
   }
 
 }
@@ -289,19 +285,15 @@ pJogos AdicionarJogo(pJogos hJogos, char *nome, char *equipa1, char *equipa2, in
   pJogos x;
   if (hJogos == 0)
   {
-    {
-      return NovoJogo;
-    }
+    return NovoJogo;
   }
   else
   {
-    {
-      for (x = hJogos; x->next != 0; x = x->next)
-        ;
+    for (x = hJogos; x->next != 0; x = x->next)
+      ;
 
-      x->next = NovoJogo;
-      return hJogos;
-    }
+    x->next = NovoJogo;
+    return hJogos;
   }
 
 }
@@ -354,19 +346,17 @@ pJogos DeleteJogo(pJogos hJogos, char *nome)
   {
     if (strcmp(x->jogo->nome, nome) == 0)
     {
+      if (x == hJogos)
       {
-        if (x == hJogos)
-        {
-          hJogos = x->next;
-        }
-        else
-        {
-          prev->next = x->next;
-        }
-
-        FreeJogo(x);
-        break;
+        hJogos = x->next;
       }
+      else
+      {
+        prev->next = x->next;
+      }
+
+      FreeJogo(x);
+      break;
     }
     else
     {
@@ -414,19 +404,15 @@ void funcao_a()
   h2 = Hash(bufferEquipa2);
   if (searchJogo(TableJogos[h0], bufferNome) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-      return;
-    }
+    printf("%d Jogo existente.\n", NL);
+    return;
   }
   else
   {
     if ((searchEquipa(TableEquipas[h1], bufferEquipa1) == 0) || (searchEquipa(TableEquipas[h2], bufferEquipa2) == 0))
     {
-      {
-        printf("%d Equipa inexistente.\n", NL);
-        return;
-      }
+      printf("%d Equipa inexistente.\n", NL);
+      return;
     }
     else
     {
@@ -439,19 +425,15 @@ void funcao_a()
   TableJogos[h0] = AdicionarJogo(TableJogos[h0], bufferNome, bufferEquipa1, bufferEquipa2, s1, s2);
   if (s1 > s2)
   {
-    {
-      x = searchEquipa(TableEquipas[h1], bufferEquipa1);
-      x->equipa->vitorias++;
-    }
+    x = searchEquipa(TableEquipas[h1], bufferEquipa1);
+    x->equipa->vitorias++;
   }
   else
   {
     if (s2 > s1)
     {
-      {
-        x = searchEquipa(TableEquipas[h2], bufferEquipa2);
-        x->equipa->vitorias++;
-      }
+      x = searchEquipa(TableEquipas[h2], bufferEquipa2);
+      x->equipa->vitorias++;
     }
     else
     {
@@ -484,10 +466,8 @@ void funcao_p()
   h = Hash(bufferNome);
   if (searchJogo(TableJogos[h], bufferNome) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -513,10 +493,8 @@ void funcao_r()
   h = Hash(bufferNome);
   if (searchJogo(TableJogos[h], bufferNome) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -526,19 +504,15 @@ void funcao_r()
   x = searchJogo(TableJogos[h], bufferNome);
   if (x->jogo->score1 > x->jogo->score2)
   {
-    {
-      y = searchEquipa(TableEquipas[Hash(x->jogo->equipa1)], x->jogo->equipa1);
-      y->equipa->vitorias--;
-    }
+    y = searchEquipa(TableEquipas[Hash(x->jogo->equipa1)], x->jogo->equipa1);
+    y->equipa->vitorias--;
   }
   else
   {
     if (x->jogo->score2 > x->jogo->score1)
     {
-      {
-        y = searchEquipa(TableEquipas[Hash(x->jogo->equipa2)], x->jogo->equipa2);
-        y->equipa->vitorias--;
-      }
+      y = searchEquipa(TableEquipas[Hash(x->jogo->equipa2)], x->jogo->equipa2);
+      y->equipa->vitorias--;
     }
     else
     {
@@ -573,10 +547,8 @@ void funcao_s()
   h0 = Hash(bufferNome);
   if (searchJogo(TableJogos[h0], bufferNome) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -589,19 +561,15 @@ void funcao_s()
   h2 = Hash(x->jogo->equipa2);
   if (x->jogo->score1 > x->jogo->score2)
   {
-    {
-      y = searchEquipa(TableEquipas[h1], x->jogo->equipa1);
-      y->equipa->vitorias--;
-    }
+    y = searchEquipa(TableEquipas[h1], x->jogo->equipa1);
+    y->equipa->vitorias--;
   }
   else
   {
     if (x->jogo->score2 > x->jogo->score1)
     {
-      {
-        y = searchEquipa(TableEquipas[h2], x->jogo->equipa2);
-        y->equipa->vitorias--;
-      }
+      y = searchEquipa(TableEquipas[h2], x->jogo->equipa2);
+      y->equipa->vitorias--;
     }
     else
     {
@@ -612,19 +580,15 @@ void funcao_s()
 
   if (s1 > s2)
   {
-    {
-      y = searchEquipa(TableEquipas[h1], x->jogo->equipa1);
-      y->equipa->vitorias++;
-    }
+    y = searchEquipa(TableEquipas[h1], x->jogo->equipa1);
+    y->equipa->vitorias++;
   }
   else
   {
     if (s2 > s1)
     {
-      {
-        y = searchEquipa(TableEquipas[h2], x->jogo->equipa2);
-        y->equipa->vitorias++;
-      }
+      y = searchEquipa(TableEquipas[h2], x->jogo->equipa2);
+      y->equipa->vitorias++;
     }
     else
     {
@@ -651,10 +615,8 @@ void funcao_A()
   bufferNome[10 - 1] = '\0';
   if (searchEquipa(TableEquipas[Hash(bufferNome)], bufferNome) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-      return;
-    }
+    printf("%d Equipa existente.\n", NL);
+    return;
   }
   else
   {
@@ -679,10 +641,8 @@ void funcao_P()
   y = Hash(bufferNome);
   if (searchEquipa(TableEquipas[y], bufferNome) == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -702,36 +662,30 @@ void funcao_g()
   {
     if (TableEquipas[i] != 0)
     {
+      for (x = TableEquipas[i]; x != 0; x = x->next)
       {
-        for (x = TableEquipas[i]; x != 0; x = x->next)
+        if (x->equipa->vitorias >= max)
         {
-          if (x->equipa->vitorias >= max)
+          if (x->equipa->vitorias > max)
           {
-            {
-              if (x->equipa->vitorias > max)
-              {
-                {
-                  FreeEquipas(gEquipas);
-                  gEquipas = 0;
-                  max = x->equipa->vitorias;
-                }
-              }
-              else
-              {
-                
-              }
-
-              gEquipas = AdicionarEquipag(gEquipas, x->equipa->nome);
-            }
+            FreeEquipas(gEquipas);
+            gEquipas = 0;
+            max = x->equipa->vitorias;
           }
           else
           {
             
           }
 
+          gEquipas = AdicionarEquipag(gEquipas, x->equipa->nome);
+        }
+        else
+        {
+          
         }
 
       }
+
     }
     else
     {
@@ -742,14 +696,12 @@ void funcao_g()
 
   if (gEquipas != 0)
   {
-    {
-      printf("%d Melhores %d\n", NL, max);
-      for (x = gEquipas; x != 0; x = x->next)
-        printf("%d * %s\n", NL, x->equipa->nome);
+    printf("%d Melhores %d\n", NL, max);
+    for (x = gEquipas; x != 0; x = x->next)
+      printf("%d * %s\n", NL, x->equipa->nome);
 
-      FreeEquipas(gEquipas);
-      gEquipas = 0;
-    }
+    FreeEquipas(gEquipas);
+    gEquipas = 0;
   }
   else
   {
@@ -766,9 +718,7 @@ pEquipas AdicionarEquipag(pEquipas hEquipas, char *nome)
   int small = 0;
   if (hEquipas == 0)
   {
-    {
-      return NovaEquipa;
-    }
+    return NovaEquipa;
   }
   else
   {
@@ -777,26 +727,20 @@ pEquipas AdicionarEquipag(pEquipas hEquipas, char *nome)
 
   if (strlen(NovaEquipa->equipa->nome) > strlen(hEquipas->equipa->nome))
   {
-    {
-      menor = strlen(hEquipas->equipa->nome);
-      small = 0;
-    }
+    menor = strlen(hEquipas->equipa->nome);
+    small = 0;
   }
   else
   {
-    {
-      menor = strlen(NovaEquipa->equipa->nome);
-      small = 1;
-    }
+    menor = strlen(NovaEquipa->equipa->nome);
+    small = 1;
   }
 
   if ((strncmp(NovaEquipa->equipa->nome, hEquipas->equipa->nome, menor) < 0) || ((strncmp(NovaEquipa->equipa->nome, hEquipas->equipa->nome, menor) == 0) && (small == 1)))
   {
-    {
-      NovaEquipa->next = hEquipas;
-      hEquipas = NovaEquipa;
-      return hEquipas;
-    }
+    NovaEquipa->next = hEquipas;
+    hEquipas = NovaEquipa;
+    return hEquipas;
   }
   else
   {
@@ -807,26 +751,20 @@ pEquipas AdicionarEquipag(pEquipas hEquipas, char *nome)
   {
     if (strlen(NovaEquipa->equipa->nome) > strlen(x->next->equipa->nome))
     {
-      {
-        menor = strlen(x->next->equipa->nome);
-        small = 0;
-      }
+      menor = strlen(x->next->equipa->nome);
+      small = 0;
     }
     else
     {
-      {
-        menor = strlen(NovaEquipa->equipa->nome);
-        small = 1;
-      }
+      menor = strlen(NovaEquipa->equipa->nome);
+      small = 1;
     }
 
     if ((strncmp(NovaEquipa->equipa->nome, x->next->equipa->nome, menor) < 0) || ((strncmp(NovaEquipa->equipa->nome, x->next->equipa->nome, menor) == 0) && (small == 1)))
     {
-      {
-        NovaEquipa->next = x->next;
-        x->next = NovaEquipa;
-        return hEquipas;
-      }
+      NovaEquipa->next = x->next;
+      x->next = NovaEquipa;
+      return hEquipas;
     }
     else
     {

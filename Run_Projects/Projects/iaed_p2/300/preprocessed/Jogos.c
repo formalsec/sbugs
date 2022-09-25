@@ -37,19 +37,17 @@ node *removeJogoListJ(node *head, char *nome)
   {
     if (strcmp(t->jogo->nome, nome) == 0)
     {
+      if (t == head)
       {
-        if (t == head)
-        {
-          head = t->next;
-        }
-        else
-        {
-          prev->next = t->next;
-        }
-
-        free(t);
-        break;
+        head = t->next;
       }
+      else
+      {
+        prev->next = t->next;
+      }
+
+      free(t);
+      break;
     }
     else
     {
@@ -71,9 +69,7 @@ node *searchListJ(node *head, char *nome)
   {
     if (strcmp(t->jogo->nome, nome) == 0)
     {
-      {
-        return t;
-      }
+      return t;
     }
     else
     {

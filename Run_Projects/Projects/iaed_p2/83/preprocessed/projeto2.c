@@ -62,64 +62,48 @@ void comando_a(int *max_jogos, int *max_equipas, int *N_jogos, Jogo *TabJogos, E
   Jogo = TabJogossearch(max_jogos, TabJogos, nome);
   if (Jogo == 0)
   {
+    Equipa1 = TabEquipassearch(max_equipas, TabEquipas, equipa1);
+    if (Equipa1 == 0)
     {
-      Equipa1 = TabEquipassearch(max_equipas, TabEquipas, equipa1);
-      if (Equipa1 == 0)
+      printf("%d Equipa inexistente.\n", *N_linhas);
+    }
+    else
+    {
+      Equipa2 = TabEquipassearch(max_equipas, TabEquipas, equipa2);
+      if (Equipa2 == 0)
       {
-        {
-          printf("%d Equipa inexistente.\n", *N_linhas);
-        }
+        printf("%d Equipa inexistente.\n", *N_linhas);
       }
       else
       {
+        if (score2 > score1)
         {
-          Equipa2 = TabEquipassearch(max_equipas, TabEquipas, equipa2);
-          if (Equipa2 == 0)
+          atribui_vitoria(Equipa2);
+        }
+        else
+        {
+          if (score1 > score2)
           {
-            {
-              printf("%d Equipa inexistente.\n", *N_linhas);
-            }
+            atribui_vitoria(Equipa1);
           }
           else
           {
-            {
-              if (score2 > score1)
-              {
-                {
-                  atribui_vitoria(Equipa2);
-                }
-              }
-              else
-              {
-                if (score1 > score2)
-                {
-                  {
-                    atribui_vitoria(Equipa1);
-                  }
-                }
-                else
-                {
-                  
-                }
-
-              }
-
-              Jogo = newJogo(nome, equipa1, equipa2, score1, score2);
-              insertEnd(head, tail, Jogo);
-              TabJogosinsert(max_jogos, N_jogos, TabJogos, Jogo);
-            }
+            
           }
 
         }
+
+        Jogo = newJogo(nome, equipa1, equipa2, score1, score2);
+        insertEnd(head, tail, Jogo);
+        TabJogosinsert(max_jogos, N_jogos, TabJogos, Jogo);
       }
 
     }
+
   }
   else
   {
-    {
-      printf("%d Jogo existente.\n", *N_linhas);
-    }
+    printf("%d Jogo existente.\n", *N_linhas);
   }
 
   free(nome);
@@ -141,16 +125,12 @@ void comando_A(int *max_equipas, int *N_equipas, Equipa *TabEquipas, int *N_linh
   Equipa = TabEquipassearch(max_equipas, TabEquipas, nome);
   if (Equipa == 0)
   {
-    {
-      Equipa = newEquipa(nome, 0);
-      TabEquipasinsert(max_equipas, N_equipas, TabEquipas, Equipa);
-    }
+    Equipa = newEquipa(nome, 0);
+    TabEquipasinsert(max_equipas, N_equipas, TabEquipas, Equipa);
   }
   else
   {
-    {
-      printf("%d Equipa existente.\n", *N_linhas);
-    }
+    printf("%d Equipa existente.\n", *N_linhas);
   }
 
   free(nome);
@@ -170,16 +150,12 @@ void comando_p(int *max_jogos, Jogo *TabJogos, int *N_linhas)
   Jogo = TabJogossearch(max_jogos, TabJogos, nome);
   if (Jogo != 0)
   {
-    {
-      printf("%d ", *N_linhas);
-      printJogo(Jogo);
-    }
+    printf("%d ", *N_linhas);
+    printJogo(Jogo);
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", *N_linhas);
-    }
+    printf("%d Jogo inexistente.\n", *N_linhas);
   }
 
   free(nome);
@@ -199,16 +175,12 @@ void comando_P(int *max_equipas, Equipa *TabEquipas, int *N_linhas)
   Equipa = TabEquipassearch(max_equipas, TabEquipas, nome);
   if (Equipa != 0)
   {
-    {
-      printf("%d ", *N_linhas);
-      printEquipa(Equipa);
-    }
+    printf("%d ", *N_linhas);
+    printEquipa(Equipa);
   }
   else
   {
-    {
-      printf("%d Equipa inexistente.\n", *N_linhas);
-    }
+    printf("%d Equipa inexistente.\n", *N_linhas);
   }
 
   free(nome);
@@ -229,39 +201,31 @@ void comando_r(int *max_jogos, int *max_equipas, int *N_jogos, Jogo *TabJogos, E
   Jogo = TabJogossearch(max_jogos, TabJogos, nome);
   if (Jogo != 0)
   {
+    if (Jogo->score1 > Jogo->score2)
     {
-      if (Jogo->score1 > Jogo->score2)
+      Equipa = TabEquipassearch(max_equipas, TabEquipas, Jogo->equipa1);
+      retira_vitoria(Equipa);
+    }
+    else
+    {
+      if (Jogo->score1 < Jogo->score2)
       {
-        {
-          Equipa = TabEquipassearch(max_equipas, TabEquipas, Jogo->equipa1);
-          retira_vitoria(Equipa);
-        }
+        Equipa = TabEquipassearch(max_equipas, TabEquipas, Jogo->equipa2);
+        retira_vitoria(Equipa);
       }
       else
       {
-        if (Jogo->score1 < Jogo->score2)
-        {
-          {
-            Equipa = TabEquipassearch(max_equipas, TabEquipas, Jogo->equipa2);
-            retira_vitoria(Equipa);
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      delete(head, tail, Jogo);
-      TabJogosdelete(max_jogos, N_jogos, TabJogos, nome);
     }
+
+    delete(head, tail, Jogo);
+    TabJogosdelete(max_jogos, N_jogos, TabJogos, nome);
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", *N_linhas);
-    }
+    printf("%d Jogo inexistente.\n", *N_linhas);
   }
 
   free(nome);
@@ -286,96 +250,45 @@ void comando_s(int *max_jogos, int *max_equipas, Jogo *TabJogos, Equipa *TabEqui
   Jogo = TabJogossearch(max_jogos, TabJogos, nome);
   if (Jogo != 0)
   {
+    if (Jogo->score1 > Jogo->score2)
     {
-      if (Jogo->score1 > Jogo->score2)
+      Equipa = TabEquipassearch(max_equipas, TabEquipas, Jogo->equipa1);
+      if (novo_score1 < novo_score2)
       {
-        {
-          Equipa = TabEquipassearch(max_equipas, TabEquipas, Jogo->equipa1);
-          if (novo_score1 < novo_score2)
-          {
-            {
-              retira_vitoria(Equipa);
-              Equipa = TabEquipassearch(max_equipas, TabEquipas, Jogo->equipa2);
-              atribui_vitoria(Equipa);
-            }
-          }
-          else
-          {
-            if (novo_score1 == novo_score2)
-            {
-              {
-                retira_vitoria(Equipa);
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-        }
+        retira_vitoria(Equipa);
+        Equipa = TabEquipassearch(max_equipas, TabEquipas, Jogo->equipa2);
+        atribui_vitoria(Equipa);
       }
       else
       {
-        if (Jogo->score1 < Jogo->score2)
+        if (novo_score1 == novo_score2)
         {
-          {
-            Equipa = TabEquipassearch(max_equipas, TabEquipas, Jogo->equipa2);
-            if (novo_score1 > novo_score2)
-            {
-              {
-                retira_vitoria(Equipa);
-                Equipa = TabEquipassearch(max_equipas, TabEquipas, Jogo->equipa1);
-                atribui_vitoria(Equipa);
-              }
-            }
-            else
-            {
-              if (novo_score1 == novo_score2)
-              {
-                {
-                  retira_vitoria(Equipa);
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-          }
+          retira_vitoria(Equipa);
         }
         else
         {
-          if (Jogo->score1 == Jogo->score2)
+          
+        }
+
+      }
+
+    }
+    else
+    {
+      if (Jogo->score1 < Jogo->score2)
+      {
+        Equipa = TabEquipassearch(max_equipas, TabEquipas, Jogo->equipa2);
+        if (novo_score1 > novo_score2)
+        {
+          retira_vitoria(Equipa);
+          Equipa = TabEquipassearch(max_equipas, TabEquipas, Jogo->equipa1);
+          atribui_vitoria(Equipa);
+        }
+        else
+        {
+          if (novo_score1 == novo_score2)
           {
-            {
-              if (novo_score1 > novo_score2)
-              {
-                {
-                  Equipa = TabEquipassearch(max_equipas, TabEquipas, Jogo->equipa1);
-                  atribui_vitoria(Equipa);
-                }
-              }
-              else
-              {
-                if (novo_score1 < novo_score2)
-                {
-                  {
-                    Equipa = TabEquipassearch(max_equipas, TabEquipas, Jogo->equipa2);
-                    atribui_vitoria(Equipa);
-                  }
-                }
-                else
-                {
-                  
-                }
-
-              }
-
-            }
+            retira_vitoria(Equipa);
           }
           else
           {
@@ -385,16 +298,45 @@ void comando_s(int *max_jogos, int *max_equipas, Jogo *TabJogos, Equipa *TabEqui
         }
 
       }
+      else
+      {
+        if (Jogo->score1 == Jogo->score2)
+        {
+          if (novo_score1 > novo_score2)
+          {
+            Equipa = TabEquipassearch(max_equipas, TabEquipas, Jogo->equipa1);
+            atribui_vitoria(Equipa);
+          }
+          else
+          {
+            if (novo_score1 < novo_score2)
+            {
+              Equipa = TabEquipassearch(max_equipas, TabEquipas, Jogo->equipa2);
+              atribui_vitoria(Equipa);
+            }
+            else
+            {
+              
+            }
 
-      Jogo->score1 = novo_score1;
-      Jogo->score2 = novo_score2;
+          }
+
+        }
+        else
+        {
+          
+        }
+
+      }
+
     }
+
+    Jogo->score1 = novo_score1;
+    Jogo->score2 = novo_score2;
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", *N_linhas);
-    }
+    printf("%d Jogo inexistente.\n", *N_linhas);
   }
 
   free(nome);
@@ -416,30 +358,24 @@ void comando_g(int *max_equipas, Equipa *TabEquipas, int *N_linhas)
   {
     if (TabEquipas[i] != 0)
     {
+      if (TabEquipas[i]->vitorias > maior)
       {
-        if (TabEquipas[i]->vitorias > maior)
+        maior = TabEquipas[i]->vitorias;
+        acumulador = 1;
+      }
+      else
+      {
+        if (TabEquipas[i]->vitorias == maior)
         {
-          {
-            maior = TabEquipas[i]->vitorias;
-            acumulador = 1;
-          }
+          acumulador++;
         }
         else
         {
-          if (TabEquipas[i]->vitorias == maior)
-          {
-            {
-              acumulador++;
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
+
     }
     else
     {
@@ -452,46 +388,40 @@ void comando_g(int *max_equipas, Equipa *TabEquipas, int *N_linhas)
   i = 0;
   if (acumulador > 0)
   {
+    Tabela = (char **) malloc(acumulador * 1023);
+    while ((i < (*max_equipas)) && (contador < acumulador))
     {
-      Tabela = (char **) malloc(acumulador * 1023);
-      while ((i < (*max_equipas)) && (contador < acumulador))
+      if (TabEquipas[i] != 0)
       {
-        if (TabEquipas[i] != 0)
+        if (TabEquipas[i]->vitorias == maior)
         {
-          {
-            if (TabEquipas[i]->vitorias == maior)
-            {
-              {
-                Tabela[contador] = TabEquipas[i]->nome;
-                contador++;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
+          Tabela[contador] = TabEquipas[i]->nome;
+          contador++;
         }
         else
         {
           
         }
 
-        i++;
       }
-
-      contador = 0;
-      qsort(Tabela, acumulador, sizeof(char *), cstring_cmp);
-      printf("%d Melhores %d\n", *N_linhas, maior);
-      while (contador < acumulador)
+      else
       {
-        printf("%d * %s\n", *N_linhas, Tabela[contador]);
-        contador++;
+        
       }
 
-      free(Tabela);
+      i++;
     }
+
+    contador = 0;
+    qsort(Tabela, acumulador, sizeof(char *), cstring_cmp);
+    printf("%d Melhores %d\n", *N_linhas, maior);
+    while (contador < acumulador)
+    {
+      printf("%d * %s\n", *N_linhas, Tabela[contador]);
+      contador++;
+    }
+
+    free(Tabela);
   }
   else
   {
@@ -529,13 +459,25 @@ int main()
   {
     if (c == 'a')
     {
+      comando_a(max_jogos, max_equipas, &N_jogos, TabJogos, TabEquipas, &N_linhas, head, tail);
+      if (N_jogos == ((*max_jogos) / 2))
       {
-        comando_a(max_jogos, max_equipas, &N_jogos, TabJogos, TabEquipas, &N_linhas, head, tail);
-        if (N_jogos == ((*max_jogos) / 2))
+        TabJogos = expand_jogos(max_jogos, &N_jogos, TabJogos);
+      }
+      else
+      {
+        
+      }
+
+    }
+    else
+    {
+      if (c == 'A')
+      {
+        comando_A(max_equipas, &N_equipas, TabEquipas, &N_linhas);
+        if (N_equipas == ((*max_equipas) / 2))
         {
-          {
-            TabJogos = expand_jogos(max_jogos, &N_jogos, TabJogos);
-          }
+          TabEquipas = expand_equipas(max_equipas, &N_equipas, TabEquipas);
         }
         else
         {
@@ -543,73 +485,41 @@ int main()
         }
 
       }
-    }
-    else
-    {
-      if (c == 'A')
-      {
-        {
-          comando_A(max_equipas, &N_equipas, TabEquipas, &N_linhas);
-          if (N_equipas == ((*max_equipas) / 2))
-          {
-            {
-              TabEquipas = expand_equipas(max_equipas, &N_equipas, TabEquipas);
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-      }
       else
       {
         if (c == 'p')
         {
-          {
-            comando_p(max_jogos, TabJogos, &N_linhas);
-          }
+          comando_p(max_jogos, TabJogos, &N_linhas);
         }
         else
         {
           if (c == 'P')
           {
-            {
-              comando_P(max_equipas, TabEquipas, &N_linhas);
-            }
+            comando_P(max_equipas, TabEquipas, &N_linhas);
           }
           else
           {
             if (c == 'r')
             {
-              {
-                comando_r(max_jogos, max_equipas, &N_jogos, TabJogos, TabEquipas, head, tail, &N_linhas);
-              }
+              comando_r(max_jogos, max_equipas, &N_jogos, TabJogos, TabEquipas, head, tail, &N_linhas);
             }
             else
             {
               if (c == 's')
               {
-                {
-                  comando_s(max_jogos, max_equipas, TabJogos, TabEquipas, &N_linhas);
-                }
+                comando_s(max_jogos, max_equipas, TabJogos, TabEquipas, &N_linhas);
               }
               else
               {
                 if (c == 'l')
                 {
-                  {
-                    comando_l(*head, &N_linhas);
-                  }
+                  comando_l(*head, &N_linhas);
                 }
                 else
                 {
                   if (c == 'g')
                   {
-                    {
-                      comando_g(max_equipas, TabEquipas, &N_linhas);
-                    }
+                    comando_g(max_equipas, TabEquipas, &N_linhas);
                   }
                   else
                   {

@@ -22,27 +22,21 @@ void acrescenta_jogo(Lista_Jogos lista, Jogo jogo)
   link->jogo = jogo;
   if (lista->primeiro == 0)
   {
-    {
-      lista->primeiro = link;
-      lista->ultimo = link;
-      lista->primeiro->seguinte = lista->ultimo;
-    }
+    lista->primeiro = link;
+    lista->ultimo = link;
+    lista->primeiro->seguinte = lista->ultimo;
   }
   else
   {
     if (lista->primeiro->jogo == lista->ultimo->jogo)
     {
-      {
-        lista->ultimo = link;
-        lista->primeiro->seguinte = lista->ultimo;
-      }
+      lista->ultimo = link;
+      lista->primeiro->seguinte = lista->ultimo;
     }
     else
     {
-      {
-        lista->ultimo->seguinte = link;
-        lista->ultimo = link;
-      }
+      lista->ultimo->seguinte = link;
+      lista->ultimo = link;
     }
 
   }
@@ -57,49 +51,41 @@ void rem_aux1(Lista_Jogos lista, Jogo jogo)
   int verifica = 0;
   if (lista->primeiro->jogo == jogo)
   {
-    {
-      atual = lista->primeiro;
-      lista->primeiro = lista->primeiro->seguinte;
-      free(atual);
-    }
+    atual = lista->primeiro;
+    lista->primeiro = lista->primeiro->seguinte;
+    free(atual);
   }
   else
   {
+    anterior = lista->primeiro;
+    for (atual = lista->primeiro->seguinte; atual != lista->ultimo; atual = atual->seguinte)
     {
-      anterior = lista->primeiro;
-      for (atual = lista->primeiro->seguinte; atual != lista->ultimo; atual = atual->seguinte)
+      if (atual->jogo == jogo)
       {
-        if (atual->jogo == jogo)
-        {
-          {
-            verifica++;
-            anterior->seguinte = atual->seguinte;
-            free(atual);
-            break;
-          }
-        }
-        else
-        {
-          
-        }
-
-        anterior = atual;
-      }
-
-      if (!verifica)
-      {
-        {
-          anterior->seguinte = 0;
-          free(lista->ultimo);
-          lista->ultimo = anterior;
-        }
+        verifica++;
+        anterior->seguinte = atual->seguinte;
+        free(atual);
+        break;
       }
       else
       {
         
       }
 
+      anterior = atual;
     }
+
+    if (!verifica)
+    {
+      anterior->seguinte = 0;
+      free(lista->ultimo);
+      lista->ultimo = anterior;
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -110,33 +96,27 @@ void destroi_jog_ligados(Lista_Jogos lista)
   jog_lig seg;
   if (lista->primeiro == 0)
   {
-    {
-      free(lista);
-    }
+    free(lista);
   }
   else
   {
     if (lista->primeiro->jogo == lista->ultimo->jogo)
     {
-      {
-        free(lista->primeiro);
-        free(lista);
-      }
+      free(lista->primeiro);
+      free(lista);
     }
     else
     {
+      atual = lista->primeiro;
+      while (atual != lista->ultimo)
       {
-        atual = lista->primeiro;
-        while (atual != lista->ultimo)
-        {
-          seg = atual->seguinte;
-          free(atual);
-          atual = seg;
-        }
-
+        seg = atual->seguinte;
         free(atual);
-        free(lista);
+        atual = seg;
       }
+
+      free(atual);
+      free(lista);
     }
 
   }

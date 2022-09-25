@@ -24,9 +24,7 @@ tlink TinsertEnd(tlink head, Equipa equipa)
   tlink x;
   if (head == 0)
   {
-    {
-      return TNEW(equipa);
-    }
+    return TNEW(equipa);
   }
   else
   {
@@ -47,9 +45,7 @@ tlink Tlookup(tlink head, char *v)
   {
     if (strcmp(t->equipa->nome, v) == 0)
     {
-      {
-        return t;
-      }
+      return t;
     }
     else
     {
@@ -69,34 +65,26 @@ tlink TremoveItem(tlink head, Equipa equipa, int n)
   {
     if (strcmp(t->equipa->nome, equipa->nome) == 0)
     {
+      if (t == head)
       {
-        if (t == head)
-        {
-          {
-            head = t->next;
-          }
-        }
-        else
-        {
-          {
-            prev->next = t->next;
-          }
-        }
-
-        if (n == 1)
-        {
-          {
-            libertaEquipa(equipa);
-          }
-        }
-        else
-        {
-          
-        }
-
-        free(t);
-        break;
+        head = t->next;
       }
+      else
+      {
+        prev->next = t->next;
+      }
+
+      if (n == 1)
+      {
+        libertaEquipa(equipa);
+      }
+      else
+      {
+        
+      }
+
+      free(t);
+      break;
     }
     else
     {

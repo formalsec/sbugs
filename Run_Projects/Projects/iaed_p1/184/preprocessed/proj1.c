@@ -137,54 +137,44 @@ void A()
   qtd = new_sym_var(sizeof(int) * 8);
   if (ide < ie)
   {
+    if (idp < ip)
     {
-      if (idp < ip)
+      if (qtd <= P[idp].stock)
       {
+        if ((E[ide].weight + (qtd * P[idp].weight)) <= 200)
         {
-          if (qtd <= P[idp].stock)
+          if (E[ide].verificap[idp] != 1)
           {
-            {
-              if ((E[ide].weight + (qtd * P[idp].weight)) <= 200)
-              {
-                {
-                  if (E[ide].verificap[idp] != 1)
-                  {
-                    {
-                      E[ide].sortL[E[ide].contap] = idp;
-                      E[ide].contap += 1;
-                      E[ide].verificap[idp] = 1;
-                    }
-                  }
-                  else
-                  {
-                    
-                  }
-
-                  E[ide].stock[idp] += qtd;
-                  E[ide].weight += qtd * P[idp].weight;
-                  P[idp].stock -= qtd;
-                }
-              }
-              else
-              {
-                printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
-              }
-
-            }
+            E[ide].sortL[E[ide].contap] = idp;
+            E[ide].contap += 1;
+            E[ide].verificap[idp] = 1;
           }
           else
           {
-            printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
+            
           }
 
+          E[ide].stock[idp] += qtd;
+          E[ide].weight += qtd * P[idp].weight;
+          P[idp].stock -= qtd;
         }
+        else
+        {
+          printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
+        }
+
       }
       else
       {
-        printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
+        printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
       }
 
     }
+    else
+    {
+      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
+    }
+
   }
   else
   {
@@ -199,17 +189,15 @@ void r()
   qtd = new_sym_var(sizeof(int) * 8);
   if (idp < ip)
   {
+    if (qtd <= P[idp].stock)
     {
-      if (qtd <= P[idp].stock)
-      {
-        P[idp].stock -= qtd;
-      }
-      else
-      {
-        printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, idp);
-      }
-
+      P[idp].stock -= qtd;
     }
+    else
+    {
+      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, idp);
+    }
+
   }
   else
   {
@@ -224,21 +212,17 @@ void R()
   idp = new_sym_var(sizeof(int) * 8);
   if (ide < ie)
   {
+    if (idp < ip)
     {
-      if (idp < ip)
-      {
-        {
-          P[idp].stock += E[ide].stock[idp];
-          E[ide].weight -= E[ide].stock[idp] * P[idp].weight;
-          E[ide].stock[idp] = 0;
-        }
-      }
-      else
-      {
-        printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
-      }
-
+      P[idp].stock += E[ide].stock[idp];
+      E[ide].weight -= E[ide].stock[idp] * P[idp].weight;
+      E[ide].stock[idp] = 0;
     }
+    else
+    {
+      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
+    }
+
   }
   else
   {
@@ -252,13 +236,11 @@ void C()
   ide = new_sym_var(sizeof(int) * 8);
   if (ide < ie)
   {
-    {
-      for (idp = 0; idp < ip; idp++)
-        total += E[ide].stock[idp] * P[idp].price;
+    for (idp = 0; idp < ip; idp++)
+      total += E[ide].stock[idp] * P[idp].price;
 
-      printf("Custo da encomenda %d %d.\n", ide, total);
-      total = 0;
-    }
+    printf("Custo da encomenda %d %d.\n", ide, total);
+    total = 0;
   }
   else
   {
@@ -288,17 +270,15 @@ void e()
   idp = new_sym_var(sizeof(int) * 8);
   if (ide < ie)
   {
+    if (idp < ip)
     {
-      if (idp < ip)
-      {
-        printf("%s %d.\n", P[idp].desc, E[ide].stock[idp]);
-      }
-      else
-      {
-        printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
-      }
-
+      printf("%s %d.\n", P[idp].desc, E[ide].stock[idp]);
     }
+    else
+    {
+      printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
+    }
+
   }
   else
   {
@@ -312,27 +292,13 @@ void m()
   idp = new_sym_var(sizeof(int) * 8);
   if (idp < ip)
   {
+    maior = 0;
+    for (i = 0; i < 500; i++)
     {
-      maior = 0;
-      for (i = 0; i < 500; i++)
+      if (E[i].stock[idp] > maior)
       {
-        if (E[i].stock[idp] > maior)
-        {
-          {
-            maior = E[i].stock[idp];
-            ide = i;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      if (maior != 0)
-      {
-        printf("Maximo produto %d %d %d.\n", idp, ide, maior);
+        maior = E[i].stock[idp];
+        ide = i;
       }
       else
       {
@@ -340,6 +306,16 @@ void m()
       }
 
     }
+
+    if (maior != 0)
+    {
+      printf("Maximo produto %d %d %d.\n", idp, ide, maior);
+    }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -362,23 +338,21 @@ void L()
   ide = new_sym_var(sizeof(int) * 8);
   if (ide < ie)
   {
+    mergesort(E[ide].sortL, 0, E[ide].contap - 1, ordena_L);
+    printf("Encomenda %d\n", ide);
+    for (i = 0; i < E[ide].contap; i++)
     {
-      mergesort(E[ide].sortL, 0, E[ide].contap - 1, ordena_L);
-      printf("Encomenda %d\n", ide);
-      for (i = 0; i < E[ide].contap; i++)
+      if (E[ide].stock[E[ide].sortL[i]] != 0)
       {
-        if (E[ide].stock[E[ide].sortL[i]] != 0)
-        {
-          printf("* %s %d %d\n", P[E[ide].sortL[i]].desc, P[E[ide].sortL[i]].price, E[ide].stock[E[ide].sortL[i]]);
-        }
-        else
-        {
-          
-        }
-
+        printf("* %s %d %d\n", P[E[ide].sortL[i]].desc, P[E[ide].sortL[i]].price, E[ide].stock[E[ide].sortL[i]]);
+      }
+      else
+      {
+        
       }
 
     }
+
   }
   else
   {

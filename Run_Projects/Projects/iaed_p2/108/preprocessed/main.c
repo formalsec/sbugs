@@ -25,9 +25,7 @@ int main()
     letrainicial = getchar();
     if (letrainicial == 'A')
     {
-      {
-        A(++contador, &max_equipas, &n_equipas, &tab_e);
-      }
+      A(++contador, &max_equipas, &n_equipas, &tab_e);
     }
     else
     {
@@ -36,9 +34,7 @@ int main()
 
     if (letrainicial == 'P')
     {
-      {
-        P(++contador, &max_equipas, &tab_e);
-      }
+      P(++contador, &max_equipas, &tab_e);
     }
     else
     {
@@ -47,9 +43,7 @@ int main()
 
     if (letrainicial == 'a')
     {
-      {
-        a(++contador, &max_jogos, &max_equipas, &n_jogos, &tab_j, &tab_e, &head, &tail);
-      }
+      a(++contador, &max_jogos, &max_equipas, &n_jogos, &tab_j, &tab_e, &head, &tail);
     }
     else
     {
@@ -58,9 +52,7 @@ int main()
 
     if (letrainicial == 'p')
     {
-      {
-        p(++contador, &max_jogos, &tab_j);
-      }
+      p(++contador, &max_jogos, &tab_j);
     }
     else
     {
@@ -69,9 +61,7 @@ int main()
 
     if (letrainicial == 's')
     {
-      {
-        s(++contador, &max_jogos, &tab_j);
-      }
+      s(++contador, &max_jogos, &tab_j);
     }
     else
     {
@@ -80,9 +70,7 @@ int main()
 
     if (letrainicial == 'l')
     {
-      {
-        l(++contador, head);
-      }
+      l(++contador, head);
     }
     else
     {
@@ -91,9 +79,7 @@ int main()
 
     if (letrainicial == 'r')
     {
-      {
-        r(++contador, &max_jogos, &n_jogos, &tab_j, &head, &tail);
-      }
+      r(++contador, &max_jogos, &n_jogos, &tab_j, &head, &tail);
     }
     else
     {
@@ -111,10 +97,8 @@ int main()
 
     if (letrainicial == 'x')
     {
-      {
-        liberta(max_equipas, tab_e, tab_j, head);
-        break;
-      }
+      liberta(max_equipas, tab_e, tab_j, head);
+      break;
     }
     else
     {

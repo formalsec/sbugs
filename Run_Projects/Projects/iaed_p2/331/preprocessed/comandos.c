@@ -17,45 +17,35 @@ void cmd_a(int NL, char *j_nome, char *eq1_nome, char *eq2_nome, int s1, int s2,
   eq2 = search_ht_t(ht_eq, eq2_nome);
   if (n)
   {
-    {
-      printf("%i Jogo existente.\n", NL);
-    }
+    printf("%i Jogo existente.\n", NL);
   }
   else
   {
     if ((eq1 == 0) || (eq2 == 0))
     {
-      {
-        printf("%i Equipa inexistente.\n", NL);
-      }
+      printf("%i Equipa inexistente.\n", NL);
     }
     else
     {
+      insert_ht_g(ht_j, j_nome, eq1_nome, eq2_nome, s1, s2);
+      add_end_name(jogos_introduzidos, j_nome);
+      if (s1 > s2)
       {
-        insert_ht_g(ht_j, j_nome, eq1_nome, eq2_nome, s1, s2);
-        add_end_name(jogos_introduzidos, j_nome);
-        if (s1 > s2)
+        eq1->vitorias += 1;
+      }
+      else
+      {
+        if (s2 > s1)
         {
-          {
-            eq1->vitorias += 1;
-          }
+          eq2->vitorias += 1;
         }
         else
         {
-          if (s2 > s1)
-          {
-            {
-              eq2->vitorias += 1;
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
+
     }
 
   }
@@ -68,15 +58,11 @@ void cmd_A(int NL, char *nome, ht_teams ht_eq)
   n = search_ht_t(ht_eq, nome);
   if (n)
   {
-    {
-      printf("%i Equipa existente.\n", NL);
-    }
+    printf("%i Equipa existente.\n", NL);
   }
   else
   {
-    {
-      insert_ht_t(ht_eq, nome);
-    }
+    insert_ht_t(ht_eq, nome);
   }
 
 }
@@ -102,16 +88,12 @@ void cmd_p(int NL, char *nome, ht_games ht_j)
   n = search_ht_g(ht_j, nome);
   if (n == 0)
   {
-    {
-      printf("%i Jogo inexistente.\n", NL);
-    }
+    printf("%i Jogo inexistente.\n", NL);
   }
   else
   {
-    {
-      printf("%i ", NL);
-      print_game(n);
-    }
+    printf("%i ", NL);
+    print_game(n);
   }
 
 }
@@ -122,37 +104,29 @@ void cmd_r(int NL, char *nome, ht_games ht_j, List_Names *l_jogos, ht_teams ht_e
   n = search_ht_g(ht_j, nome);
   if (n == 0)
   {
-    {
-      printf("%i Jogo inexistente.\n", NL);
-    }
+    printf("%i Jogo inexistente.\n", NL);
   }
   else
   {
+    if (n->score1 > n->score2)
     {
-      if (n->score1 > n->score2)
+      change_wins_ht_t(ht_eq, n->nome_eq1, -1);
+    }
+    else
+    {
+      if (n->score1 < n->score2)
       {
-        {
-          change_wins_ht_t(ht_eq, n->nome_eq1, -1);
-        }
+        change_wins_ht_t(ht_eq, n->nome_eq2, -1);
       }
       else
       {
-        if (n->score1 < n->score2)
-        {
-          {
-            change_wins_ht_t(ht_eq, n->nome_eq2, -1);
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      remove_ht_g(ht_j, nome);
-      remove_name(l_jogos, nome);
     }
+
+    remove_ht_g(ht_j, nome);
+    remove_name(l_jogos, nome);
   }
 
 }
@@ -163,66 +137,49 @@ void cmd_s(int NL, char *nome, int s1, int s2, ht_games ht_j, ht_teams ht_eq)
   n = search_ht_g(ht_j, nome);
   if (n == 0)
   {
-    {
-      printf("%i Jogo inexistente.\n", NL);
-    }
+    printf("%i Jogo inexistente.\n", NL);
   }
   else
   {
+    if ((n->score1 > n->score2) && (s1 < s2))
     {
-      if ((n->score1 > n->score2) && (s1 < s2))
+      change_wins_ht_t(ht_eq, n->nome_eq1, -1);
+      change_wins_ht_t(ht_eq, n->nome_eq2, 1);
+    }
+    else
+    {
+      if ((n->score1 < n->score2) && (s1 > s2))
       {
-        {
-          change_wins_ht_t(ht_eq, n->nome_eq1, -1);
-          change_wins_ht_t(ht_eq, n->nome_eq2, 1);
-        }
+        change_wins_ht_t(ht_eq, n->nome_eq1, 1);
+        change_wins_ht_t(ht_eq, n->nome_eq2, -1);
       }
       else
       {
-        if ((n->score1 < n->score2) && (s1 > s2))
+        if ((n->score1 > n->score2) && (s1 == s2))
         {
-          {
-            change_wins_ht_t(ht_eq, n->nome_eq1, 1);
-            change_wins_ht_t(ht_eq, n->nome_eq2, -1);
-          }
+          change_wins_ht_t(ht_eq, n->nome_eq1, -1);
         }
         else
         {
-          if ((n->score1 > n->score2) && (s1 == s2))
+          if ((n->score1 < n->score2) && (s1 == s2))
           {
-            {
-              change_wins_ht_t(ht_eq, n->nome_eq1, -1);
-            }
+            change_wins_ht_t(ht_eq, n->nome_eq2, -1);
           }
           else
           {
-            if ((n->score1 < n->score2) && (s1 == s2))
+            if ((n->score1 == n->score2) && (s1 > s2))
             {
-              {
-                change_wins_ht_t(ht_eq, n->nome_eq2, -1);
-              }
+              change_wins_ht_t(ht_eq, n->nome_eq1, 1);
             }
             else
             {
-              if ((n->score1 == n->score2) && (s1 > s2))
+              if ((n->score1 == n->score2) && (s1 < s2))
               {
-                {
-                  change_wins_ht_t(ht_eq, n->nome_eq1, 1);
-                }
+                change_wins_ht_t(ht_eq, n->nome_eq2, 1);
               }
               else
               {
-                if ((n->score1 == n->score2) && (s1 < s2))
-                {
-                  {
-                    change_wins_ht_t(ht_eq, n->nome_eq2, 1);
-                  }
-                }
-                else
-                {
-                  
-                }
-
+                
               }
 
             }
@@ -233,8 +190,9 @@ void cmd_s(int NL, char *nome, int s1, int s2, ht_games ht_j, ht_teams ht_eq)
 
       }
 
-      change_sc_ht_g(ht_j, nome, s1, s2);
     }
+
+    change_sc_ht_g(ht_j, nome, s1, s2);
   }
 
 }
@@ -245,16 +203,12 @@ void cmd_P(int NL, char *nome, ht_teams ht_eq)
   eq = search_ht_t(ht_eq, nome);
   if (eq == 0)
   {
-    {
-      printf("%i Equipa inexistente.\n", NL);
-    }
+    printf("%i Equipa inexistente.\n", NL);
   }
   else
   {
-    {
-      printf("%i ", NL);
-      print_team(eq);
-    }
+    printf("%i ", NL);
+    print_team(eq);
   }
 
 }
@@ -266,16 +220,14 @@ void cmd_g(int NL, ht_teams ht_eq)
   List_Names *res;
   if (!check_empty_ht_t(ht_eq))
   {
-    {
-      max = max_wins(ht_eq);
-      res = init_list_n();
-      search_ht_t_wins(ht_eq, res, max);
-      num = number_elem(res);
-      mergesort(res, 0, num - 1);
-      printf("%i Melhores %i\n", NL, max);
-      print_teams(NL, res);
-      free_all_names(res);
-    }
+    max = max_wins(ht_eq);
+    res = init_list_n();
+    search_ht_t_wins(ht_eq, res, max);
+    num = number_elem(res);
+    mergesort(res, 0, num - 1);
+    printf("%i Melhores %i\n", NL, max);
+    print_teams(NL, res);
+    free_all_names(res);
   }
   else
   {

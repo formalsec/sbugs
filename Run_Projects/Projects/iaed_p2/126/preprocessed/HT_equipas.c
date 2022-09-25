@@ -73,10 +73,8 @@ void maximo_vitorias(HT_eq equipas, int *max_num, int max_eq)
       v = vitorias_equipa(link->equipa);
       if (v > max)
       {
-        {
-          max = v;
-          num = 1;
-        }
+        max = v;
+        num = 1;
       }
       else
       {
@@ -111,10 +109,8 @@ void melhores_equipas(HT_eq equipas, Equipa *melhores, int max_v, int max_eq)
     {
       if (vitorias_equipa(link->equipa) == max_v)
       {
-        {
-          melhores[j] = link->equipa;
-          j++;
-        }
+        melhores[j] = link->equipa;
+        j++;
       }
       else
       {

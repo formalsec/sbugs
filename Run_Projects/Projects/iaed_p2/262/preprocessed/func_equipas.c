@@ -77,22 +77,18 @@ equipa ListaEquipas(equipa lista, char *nome, int vitorias)
   equipa x = newequipa(nome, vitorias);
   if ((lista == 0) || (strcmp(lista->nome, nome) > 0))
   {
-    {
-      x->nextE = lista;
-      return x;
-    }
+    x->nextE = lista;
+    return x;
   }
   else
   {
-    {
-      aux = lista;
-      while ((aux->nextE != 0) && (strcmp(aux->nextE->nome, x->nome) < 0))
-        aux = aux->nextE;
+    aux = lista;
+    while ((aux->nextE != 0) && (strcmp(aux->nextE->nome, x->nome) < 0))
+      aux = aux->nextE;
 
-      x->nextE = aux->nextE;
-      aux->nextE = x;
-      return lista;
-    }
+    x->nextE = aux->nextE;
+    aux->nextE = x;
+    return lista;
   }
 
 }

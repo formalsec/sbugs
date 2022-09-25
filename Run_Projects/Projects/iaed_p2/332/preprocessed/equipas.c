@@ -13,9 +13,7 @@ char *strdup(const char *src)
   char *dst = malloc((strlen(src) + 1) * (sizeof(char)));
   if (dst == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -55,16 +53,12 @@ void adiciona_equipa(int nl, equipa *ht)
   verif = procura_equipa(nova->nome_equipa, ht);
   if (verif >= 0)
   {
-    {
-      printf("%d Equipa existente.\n", nl);
-      free_equipa(nova);
-    }
+    printf("%d Equipa existente.\n", nl);
+    free_equipa(nova);
   }
   else
   {
-    {
-      tab_insert_eq(nova, ht);
-    }
+    tab_insert_eq(nova, ht);
   }
 
   free(nome);
@@ -83,15 +77,11 @@ void encontra_equipa(int nl, equipa *ht)
   indice = procura_equipa(nome, ht);
   if (indice == (-1))
   {
-    {
-      printf("%d Equipa inexistente.\n", nl);
-    }
+    printf("%d Equipa inexistente.\n", nl);
   }
   else
   {
-    {
-      printf("%d %s %d\n", nl, ht[indice]->nome_equipa, ht[indice]->vitorias);
-    }
+    printf("%d %s %d\n", nl, ht[indice]->nome_equipa, ht[indice]->vitorias);
   }
 
   free(nome);
@@ -115,30 +105,24 @@ void melhores_equipas(int nl, equipa *ht)
   {
     if (ht[i] != 0)
     {
+      if (ht[i]->vitorias > best)
       {
-        if (ht[i]->vitorias > best)
+        best = ht[i]->vitorias;
+        contador = 1;
+      }
+      else
+      {
+        if (ht[i]->vitorias == best)
         {
-          {
-            best = ht[i]->vitorias;
-            contador = 1;
-          }
+          contador += 1;
         }
         else
         {
-          if (ht[i]->vitorias == best)
-          {
-            {
-              contador += 1;
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
+
     }
     else
     {
@@ -149,26 +133,15 @@ void melhores_equipas(int nl, equipa *ht)
 
   if (contador > 0)
   {
+    nomes = malloc(contador * (sizeof(char *)));
+    for (i = 0; i < 32911; i++)
     {
-      nomes = malloc(contador * (sizeof(char *)));
-      for (i = 0; i < 32911; i++)
+      if (ht[i] != 0)
       {
-        if (ht[i] != 0)
+        if (ht[i]->vitorias == best)
         {
-          {
-            if (ht[i]->vitorias == best)
-            {
-              {
-                nomes[indice] = ht[i]->nome_equipa;
-                indice += 1;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
+          nomes[indice] = ht[i]->nome_equipa;
+          indice += 1;
         }
         else
         {
@@ -176,16 +149,21 @@ void melhores_equipas(int nl, equipa *ht)
         }
 
       }
-
-      qsort(nomes, contador, sizeof(char *), compara_palavras);
-      printf("%d Melhores %d\n", nl, best);
-      for (i = 0; i < contador; i++)
+      else
       {
-        printf("%d * %s\n", nl, nomes[i]);
+        
       }
 
-      free(nomes);
     }
+
+    qsort(nomes, contador, sizeof(char *), compara_palavras);
+    printf("%d Melhores %d\n", nl, best);
+    for (i = 0; i < contador; i++)
+    {
+      printf("%d * %s\n", nl, nomes[i]);
+    }
+
+    free(nomes);
   }
   else
   {

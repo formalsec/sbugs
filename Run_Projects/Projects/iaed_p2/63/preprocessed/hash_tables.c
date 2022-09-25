@@ -36,11 +36,9 @@ void insert_team(node_teams **table, node_teams *node)
   node->next_in_hash_table = 0;
   if (table[index] == 0)
   {
-    {
-      node->prev_in_hash_table = 0;
-      table[index] = node;
-      return;
-    }
+    node->prev_in_hash_table = 0;
+    table[index] = node;
+    return;
   }
   else
   {
@@ -59,11 +57,9 @@ void insert_game(node_games **table, node_games *node)
   node->next_in_hash_table = 0;
   if (table[index] == 0)
   {
-    {
-      node->prev_in_hash_table = 0;
-      table[index] = node;
-      return;
-    }
+    node->prev_in_hash_table = 0;
+    table[index] = node;
+    return;
   }
   else
   {
@@ -83,9 +79,7 @@ node_teams *in_table_teams(node_teams **table, node_teams *node)
   tmp = table[index];
   if (tmp == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -96,9 +90,7 @@ node_teams *in_table_teams(node_teams **table, node_teams *node)
   {
     if (strcmp(tmp->t.name, node->t.name) == 0)
     {
-      {
-        return tmp;
-      }
+      return tmp;
     }
     else
     {
@@ -119,9 +111,7 @@ node_games *in_table_games(node_games **table, node_games *node)
   tmp = table[index];
   if (tmp == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -132,9 +122,7 @@ node_games *in_table_games(node_games **table, node_games *node)
   {
     if (strcmp(tmp->g.name, node->g.name) == 0)
     {
-      {
-        return tmp;
-      }
+      return tmp;
     }
     else
     {

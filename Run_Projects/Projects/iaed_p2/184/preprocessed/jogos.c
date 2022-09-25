@@ -53,23 +53,19 @@ void insereInicio_J(linkJ *headptr, char *jogo, char *e1, char *e2, int p1, int 
   {
     if ((aux != 0) && (aux->next == 0))
     {
-      {
-        (*headptr)->prev = novoJ;
-        novoJ->next = *headptr;
-        novoJ->prev = *headptr;
-        *headptr = novoJ;
-      }
+      (*headptr)->prev = novoJ;
+      novoJ->next = *headptr;
+      novoJ->prev = *headptr;
+      *headptr = novoJ;
     }
     else
     {
       if ((aux != 0) && (aux->next != 0))
       {
-        {
-          novoJ->next = *headptr;
-          novoJ->prev = (*headptr)->prev;
-          (*headptr)->prev = novoJ;
-          *headptr = novoJ;
-        }
+        novoJ->next = *headptr;
+        novoJ->prev = (*headptr)->prev;
+        (*headptr)->prev = novoJ;
+        *headptr = novoJ;
       }
       else
       {
@@ -108,54 +104,46 @@ void elimina_J(linkJ *headptr, char *jogo)
   {
     if (strcmp(ctrl->nome_jogo, jogo) == 0)
     {
+      if ((ctrl == (*headptr)) && (ctrl->next != 0))
       {
-        if ((ctrl == (*headptr)) && (ctrl->next != 0))
+        (*headptr)->next->prev = (*headptr)->prev;
+        *headptr = ctrl->next;
+      }
+      else
+      {
+        if (ctrl->next != 0)
         {
-          {
-            (*headptr)->next->prev = (*headptr)->prev;
-            *headptr = ctrl->next;
-          }
+          ant->next = ctrl->next;
+          ctrl->next->prev = ant;
         }
         else
         {
-          if (ctrl->next != 0)
+          if ((ctrl->next == 0) && (contador != 0))
           {
-            {
-              ant->next = ctrl->next;
-              ctrl->next->prev = ant;
-            }
+            (*headptr)->prev = ant;
+            ant->next = 0;
           }
           else
           {
-            if ((ctrl->next == 0) && (contador != 0))
+            if (ctrl == (*headptr))
             {
-              {
-                (*headptr)->prev = ant;
-                ant->next = 0;
-              }
+              *headptr = 0;
             }
             else
             {
-              if (ctrl == (*headptr))
-              {
-                *headptr = 0;
-              }
-              else
-              {
-                
-              }
-
+              
             }
 
           }
 
         }
 
-        free(ctrl->nome_jogo);
-        free(ctrl->equipa1);
-        free(ctrl->equipa2);
-        free(ctrl);
       }
+
+      free(ctrl->nome_jogo);
+      free(ctrl->equipa1);
+      free(ctrl->equipa2);
+      free(ctrl);
     }
     else
     {

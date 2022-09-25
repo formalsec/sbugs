@@ -21,10 +21,8 @@ void freeTeamListNodes(TeamList *node)
 {
   if (node != 0)
   {
-    {
-      freeTeamListNodes(node->next);
-      freeTeamListNode(node);
-    }
+    freeTeamListNodes(node->next);
+    freeTeamListNode(node);
   }
   else
   {
@@ -76,15 +74,11 @@ void shiftTeamList(TeamList **node, Team *team)
 {
   if ((*node) != 0)
   {
-    {
-      *node = newTeamListNode(team, *node);
-    }
+    *node = newTeamListNode(team, *node);
   }
   else
   {
-    {
-      *node = newTeamListNode(team, 0);
-    }
+    *node = newTeamListNode(team, 0);
   }
 
 }
@@ -114,11 +108,9 @@ TeamList *removeTeamListAux(TeamList *node, Team *team)
   {
     if (node->team == team)
     {
-      {
-        aux = node->next;
-        freeTeamListNode(node);
-        node = aux;
-      }
+      aux = node->next;
+      freeTeamListNode(node);
+      node = aux;
     }
     else
     {
@@ -139,10 +131,8 @@ void printTeamList(TeamList *node, int nl)
 {
   if (node != 0)
   {
-    {
-      printTeam(node->team, nl);
-      printTeamList(node->next, nl);
-    }
+    printTeam(node->team, nl);
+    printTeamList(node->next, nl);
   }
   else
   {

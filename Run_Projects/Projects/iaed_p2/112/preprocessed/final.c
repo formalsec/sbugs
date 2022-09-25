@@ -56,52 +56,40 @@ void cria_jogo(int *NL, int *M, pjogo *st, int *L, pequipa *ht, link *head)
   *ponteiro_equipa2 = search_equipa(equipa2, L, ht);
   if ((*ponteiro) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", *NL);
-    }
+    printf("%d Jogo existente.\n", *NL);
   }
   else
   {
     if ((*ponteiro_equipa1) == 0)
     {
-      {
-        printf("%d Equipa inexistente.\n", *NL);
-      }
+      printf("%d Equipa inexistente.\n", *NL);
     }
     else
     {
       if ((*ponteiro_equipa2) == 0)
       {
-        {
-          printf("%d Equipa inexistente.\n", *NL);
-        }
+        printf("%d Equipa inexistente.\n", *NL);
       }
       else
       {
+        Stinsert(nome_jogo, equipa1, equipa2, score1, score2, M, st, head);
+        if (score1 > score2)
         {
-          Stinsert(nome_jogo, equipa1, equipa2, score1, score2, M, st, head);
-          if (score1 > score2)
+          (*ponteiro_equipa1)->vitorias += 1;
+        }
+        else
+        {
+          if (score1 < score2)
           {
-            {
-              (*ponteiro_equipa1)->vitorias += 1;
-            }
+            (*ponteiro_equipa2)->vitorias += 1;
           }
           else
           {
-            if (score1 < score2)
-            {
-              {
-                (*ponteiro_equipa2)->vitorias += 1;
-              }
-            }
-            else
-            {
-              
-            }
-
+            
           }
 
         }
+
       }
 
     }
@@ -139,15 +127,11 @@ void procura_jogo(int *NL, int *M, pjogo *st)
   *ponteiro = search(nome_jogo, M, st);
   if ((*ponteiro) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", *NL);
-    }
+    printf("%d Jogo inexistente.\n", *NL);
   }
   else
   {
-    {
-      printf("%d %s %s %s %d %d\n", *NL, (*ponteiro)->nome_jogo, (*ponteiro)->equipa1, (*ponteiro)->equipa2, (*ponteiro)->score1, (*ponteiro)->score2);
-    }
+    printf("%d %s %s %s %d %d\n", *NL, (*ponteiro)->nome_jogo, (*ponteiro)->equipa1, (*ponteiro)->equipa2, (*ponteiro)->score1, (*ponteiro)->score2);
   }
 
   free(ponteiro);
@@ -172,35 +156,27 @@ void apaga_jogo(int *NL, int *M, pjogo *st, int *L, pequipa *ht, link *head)
   *ponteiro = search(nome_jogo, M, st);
   if ((*ponteiro) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", *NL);
-    }
+    printf("%d Jogo inexistente.\n", *NL);
   }
   else
   {
     if ((*ponteiro)->score1 > (*ponteiro)->score2)
     {
-      {
-        *ponteiro_equipa1 = search_equipa((*ponteiro)->equipa1, L, ht);
-        (*ponteiro_equipa1)->vitorias -= 1;
-        STdelete(nome_jogo, M, st, head);
-      }
+      *ponteiro_equipa1 = search_equipa((*ponteiro)->equipa1, L, ht);
+      (*ponteiro_equipa1)->vitorias -= 1;
+      STdelete(nome_jogo, M, st, head);
     }
     else
     {
       if ((*ponteiro)->score1 < (*ponteiro)->score2)
       {
-        {
-          *ponteiro_equipa2 = search_equipa((*ponteiro)->equipa2, L, ht);
-          (*ponteiro_equipa2)->vitorias -= 1;
-          STdelete(nome_jogo, M, st, head);
-        }
+        *ponteiro_equipa2 = search_equipa((*ponteiro)->equipa2, L, ht);
+        (*ponteiro_equipa2)->vitorias -= 1;
+        STdelete(nome_jogo, M, st, head);
       }
       else
       {
-        {
-          STdelete(nome_jogo, M, st, head);
-        }
+        STdelete(nome_jogo, M, st, head);
       }
 
     }
@@ -235,62 +211,50 @@ void altera_resultado(int *NL, int *M, pjogo *st, int *L, pequipa *ht)
   *ponteiro = search(nome_jogo, M, st);
   if ((*ponteiro) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", *NL);
-    }
+    printf("%d Jogo inexistente.\n", *NL);
   }
   else
   {
+    if ((*ponteiro)->score1 > (*ponteiro)->score2)
     {
-      if ((*ponteiro)->score1 > (*ponteiro)->score2)
+      *ponteiro_equipa1 = search_equipa((*ponteiro)->equipa1, L, ht);
+      (*ponteiro_equipa1)->vitorias -= 1;
+    }
+    else
+    {
+      if ((*ponteiro)->score1 < (*ponteiro)->score2)
       {
-        {
-          *ponteiro_equipa1 = search_equipa((*ponteiro)->equipa1, L, ht);
-          (*ponteiro_equipa1)->vitorias -= 1;
-        }
+        *ponteiro_equipa2 = search_equipa((*ponteiro)->equipa2, L, ht);
+        (*ponteiro_equipa2)->vitorias -= 1;
       }
       else
       {
-        if ((*ponteiro)->score1 < (*ponteiro)->score2)
-        {
-          {
-            *ponteiro_equipa2 = search_equipa((*ponteiro)->equipa2, L, ht);
-            (*ponteiro_equipa2)->vitorias -= 1;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      (*ponteiro)->score1 = score1;
-      (*ponteiro)->score2 = score2;
-      if (score1 > score2)
-      {
-        {
-          *ponteiro_equipa1 = search_equipa((*ponteiro)->equipa1, L, ht);
-          (*ponteiro_equipa1)->vitorias += 1;
-        }
-      }
-      else
-      {
-        if (score1 < score2)
-        {
-          {
-            *ponteiro_equipa2 = search_equipa((*ponteiro)->equipa2, L, ht);
-            (*ponteiro_equipa2)->vitorias += 1;
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
     }
+
+    (*ponteiro)->score1 = score1;
+    (*ponteiro)->score2 = score2;
+    if (score1 > score2)
+    {
+      *ponteiro_equipa1 = search_equipa((*ponteiro)->equipa1, L, ht);
+      (*ponteiro_equipa1)->vitorias += 1;
+    }
+    else
+    {
+      if (score1 < score2)
+      {
+        *ponteiro_equipa2 = search_equipa((*ponteiro)->equipa2, L, ht);
+        (*ponteiro_equipa2)->vitorias += 1;
+      }
+      else
+      {
+        
+      }
+
+    }
+
   }
 
   free(ponteiro);
@@ -313,15 +277,11 @@ void adiciona_equipa(int *NL, int *L, pequipa *ht, link *head_2)
   *ponteiro_equipa = search_equipa(equipa, L, ht);
   if ((*ponteiro_equipa) == 0)
   {
-    {
-      Htinsert(equipa, 0, L, ht, head_2);
-    }
+    Htinsert(equipa, 0, L, ht, head_2);
   }
   else
   {
-    {
-      printf("%d Equipa existente.\n", *NL);
-    }
+    printf("%d Equipa existente.\n", *NL);
   }
 
   free(ponteiro_equipa);
@@ -342,15 +302,11 @@ void procura_equipa(int *NL, int *L, pequipa *ht)
   *ponteiro_equipa = search_equipa(equipa, L, ht);
   if ((*ponteiro_equipa) == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", *NL);
-    }
+    printf("%d Equipa inexistente.\n", *NL);
   }
   else
   {
-    {
-      printf("%d %s %d\n", *NL, (*ponteiro_equipa)->equipa, (*ponteiro_equipa)->vitorias);
-    }
+    printf("%d %s %d\n", *NL, (*ponteiro_equipa)->equipa, (*ponteiro_equipa)->vitorias);
   }
 
   free(ponteiro_equipa);
@@ -370,18 +326,14 @@ void lista_equipa(int *NL, link *head_2)
   {
     if (t->equipa->vitorias > maximo)
     {
-      {
-        maximo = t->equipa->vitorias;
-        contador = 1;
-      }
+      maximo = t->equipa->vitorias;
+      contador = 1;
     }
     else
     {
       if (t->equipa->vitorias == maximo)
       {
-        {
-          contador++;
-        }
+        contador++;
       }
       else
       {
@@ -397,10 +349,8 @@ void lista_equipa(int *NL, link *head_2)
   {
     if (t->equipa->vitorias == maximo)
     {
-      {
-        *guarda = t->equipa->equipa;
-        guarda++;
-      }
+      *guarda = t->equipa->equipa;
+      guarda++;
     }
     else
     {
@@ -411,21 +361,19 @@ void lista_equipa(int *NL, link *head_2)
 
   if (contador != 0)
   {
+    for (i = 0; i < contador; i++)
     {
-      for (i = 0; i < contador; i++)
-      {
-        guarda--;
-      }
-
-      qsort(guarda, contador, sizeof(char *), cmp);
-      printf("%d Melhores %d\n", *NL, maximo);
-      for (i = 0; i < contador; i++)
-      {
-        printf("%d * %s\n", *NL, *guarda);
-        guarda++;
-      }
-
+      guarda--;
     }
+
+    qsort(guarda, contador, sizeof(char *), cmp);
+    printf("%d Melhores %d\n", *NL, maximo);
+    for (i = 0; i < contador; i++)
+    {
+      printf("%d * %s\n", *NL, *guarda);
+      guarda++;
+    }
+
   }
   else
   {

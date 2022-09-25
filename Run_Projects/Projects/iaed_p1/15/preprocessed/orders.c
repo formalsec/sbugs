@@ -15,10 +15,8 @@ Orders *orders_init()
   Orders *oo = (Orders *) malloc(sizeof(Orders));
   if (errno > 0)
   {
-    {
-      perror("orders_init: malloc Order");
-      exit(errno);
-    }
+    perror("orders_init: malloc Order");
+    exit(errno);
   }
   else
   {
@@ -29,10 +27,8 @@ Orders *orders_init()
   oo->orders = (Order **) malloc((sizeof(Order *)) * 500);
   if (errno > 0)
   {
-    {
-      perror("orders_init: malloc Orders");
-      exit(errno);
-    }
+    perror("orders_init: malloc Orders");
+    exit(errno);
   }
   else
   {
@@ -49,10 +45,8 @@ void orders_free(Orders *oo)
   int oid;
   if (oo == 0)
   {
-    {
-      printf("%s: null pointer\n", "orders_free");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "orders_free");
+    exit(1);
   }
   else
   {
@@ -71,10 +65,8 @@ void orders_print(const Orders *oo)
 {
   if (oo == 0)
   {
-    {
-      printf("%s: null pointer\n", "orders_print");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "orders_print");
+    exit(1);
   }
   else
   {
@@ -90,10 +82,8 @@ void orders_list(const Orders *oo)
   int oid;
   if (oo == 0)
   {
-    {
-      printf("%s: null pointer\n", "orders_list");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "orders_list");
+    exit(1);
   }
   else
   {
@@ -113,10 +103,8 @@ Order *orders_get_order(const Orders *oo, int oid)
 {
   if (oo == 0)
   {
-    {
-      printf("%s: null pointer\n", "orders_get_order");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "orders_get_order");
+    exit(1);
   }
   else
   {
@@ -131,10 +119,8 @@ int orders_add_order(Orders *oo, Order *o)
 {
   if (oo == 0)
   {
-    {
-      printf("%s: null pointer\n", "orders_add_order: Orders");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "orders_add_order: Orders");
+    exit(1);
   }
   else
   {
@@ -144,10 +130,8 @@ int orders_add_order(Orders *oo, Order *o)
   ;
   if (o == 0)
   {
-    {
-      printf("%s: null pointer\n", "orders_add_order: Order");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "orders_add_order: Order");
+    exit(1);
   }
   else
   {
@@ -172,10 +156,8 @@ int orders_get_count(const Orders *oo)
 {
   if (oo == 0)
   {
-    {
-      printf("%s: null pointer\n", "orders_get_count");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "orders_get_count");
+    exit(1);
   }
   else
   {

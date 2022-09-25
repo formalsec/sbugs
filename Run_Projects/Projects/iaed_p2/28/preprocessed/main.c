@@ -9,9 +9,7 @@ jogo *createGame(char *nome, char *equipa1, char *equipa2)
   jogo *game = malloc(sizeof(struct jogo));
   if (game == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -21,10 +19,8 @@ jogo *createGame(char *nome, char *equipa1, char *equipa2)
   game->nome = malloc((strlen(nome) + 1) * (sizeof(char)));
   if (game->nome == 0)
   {
-    {
-      free(game);
-      return 0;
-    }
+    free(game);
+    return 0;
   }
   else
   {
@@ -34,11 +30,9 @@ jogo *createGame(char *nome, char *equipa1, char *equipa2)
   game->equipa1 = malloc((strlen(equipa1) + 1) * (sizeof(char)));
   if (game->equipa1 == 0)
   {
-    {
-      free(game->nome);
-      free(game);
-      return 0;
-    }
+    free(game->nome);
+    free(game);
+    return 0;
   }
   else
   {
@@ -48,12 +42,10 @@ jogo *createGame(char *nome, char *equipa1, char *equipa2)
   game->equipa2 = malloc((strlen(equipa2) + 1) * (sizeof(char)));
   if (game->equipa2 == 0)
   {
-    {
-      free(game->equipa1);
-      free(game->nome);
-      free(game);
-      return 0;
-    }
+    free(game->equipa1);
+    free(game->nome);
+    free(game);
+    return 0;
   }
   else
   {
@@ -76,9 +68,7 @@ equipa *criaEquipa(char *nome)
   equipa *team = malloc(sizeof(struct equipa));
   if (team == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -88,10 +78,8 @@ equipa *criaEquipa(char *nome)
   team->nome = malloc((strlen(nome) + 1) * (sizeof(char)));
   if (team->nome == 0)
   {
-    {
-      free(team);
-      return 0;
-    }
+    free(team);
+    return 0;
   }
   else
   {
@@ -121,10 +109,8 @@ void command_a(int inputLine, char *nome, char *equipa1, char *equipa2, int _sco
   jogo *game;
   if (hashtableGet(jogos, nome) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", inputLine);
-      return;
-    }
+    printf("%d Jogo existente.\n", inputLine);
+    return;
   }
   else
   {
@@ -133,10 +119,8 @@ void command_a(int inputLine, char *nome, char *equipa1, char *equipa2, int _sco
 
   if (hashtableGet(equipas, equipa1) == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", inputLine);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", inputLine);
+    return;
   }
   else
   {
@@ -145,10 +129,8 @@ void command_a(int inputLine, char *nome, char *equipa1, char *equipa2, int _sco
 
   if (hashtableGet(equipas, equipa2) == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", inputLine);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", inputLine);
+    return;
   }
   else
   {
@@ -165,10 +147,8 @@ void command_a(int inputLine, char *nome, char *equipa1, char *equipa2, int _sco
   hashtableAdd(jogos, nome, p);
   if (_score1 > _score2)
   {
-    {
-      ((equipa *) ((ListNode *) hashtableGet(equipas, equipa1))->structPointer)->jogosGanhos++;
-      return;
-    }
+    ((equipa *) ((ListNode *) hashtableGet(equipas, equipa1))->structPointer)->jogosGanhos++;
+    return;
   }
   else
   {
@@ -177,9 +157,7 @@ void command_a(int inputLine, char *nome, char *equipa1, char *equipa2, int _sco
 
   if (_score1 < _score2)
   {
-    {
-      ((equipa *) ((ListNode *) hashtableGet(equipas, equipa2))->structPointer)->jogosGanhos++;
-    }
+    ((equipa *) ((ListNode *) hashtableGet(equipas, equipa2))->structPointer)->jogosGanhos++;
   }
   else
   {
@@ -198,10 +176,8 @@ void command_p(int inputLine, char *nome, hashtable *jogos)
   ListNode *p = hashtableGet(jogos, nome);
   if (p == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", inputLine);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", inputLine);
+    return;
   }
   else
   {
@@ -217,10 +193,8 @@ void command_r(int inputLine, char *nome, hashtable *jogos, hashtable *equipas, 
   char team[1024];
   if (p == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", inputLine);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", inputLine);
+    return;
   }
   else
   {
@@ -229,10 +203,8 @@ void command_r(int inputLine, char *nome, hashtable *jogos, hashtable *equipas, 
 
   if (winningTeam(p) != 0)
   {
-    {
-      strcpy(team, winningTeam(p));
-      ((equipa *) ((ListNode *) hashtableGet(equipas, team))->structPointer)->jogosGanhos--;
-    }
+    strcpy(team, winningTeam(p));
+    ((equipa *) ((ListNode *) hashtableGet(equipas, team))->structPointer)->jogosGanhos--;
   }
   else
   {
@@ -252,10 +224,8 @@ void command_s(int inputLine, char *nome, int _score1, int _score2, hashtable *j
   int result;
   if (p == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", inputLine);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", inputLine);
+    return;
   }
   else
   {
@@ -303,10 +273,8 @@ void command_A(int inputLine, char *nome, ListNode **head_ref, hashtable *equipa
   ListNode *p;
   if (hashtableGet(equipas, nome) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", inputLine);
-      return;
-    }
+    printf("%d Equipa existente.\n", inputLine);
+    return;
   }
   else
   {
@@ -325,10 +293,8 @@ void command_P(int inputLine, char *nome, hashtable *equipas)
   ListNode *p = hashtableGet(equipas, nome);
   if (p == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", inputLine);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", inputLine);
+    return;
   }
   else
   {
@@ -348,9 +314,7 @@ void command_g(int inputLine, ListNode **head_ref)
   {
     if (((equipa *) current->structPointer)->jogosGanhos > max)
     {
-      {
-        max = ((equipa *) current->structPointer)->jogosGanhos;
-      }
+      max = ((equipa *) current->structPointer)->jogosGanhos;
     }
     else
     {
@@ -365,9 +329,7 @@ void command_g(int inputLine, ListNode **head_ref)
   {
     if (((equipa *) current->structPointer)->jogosGanhos == max)
     {
-      {
-        push(&bestTeams, (equipa *) current->structPointer);
-      }
+      push(&bestTeams, (equipa *) current->structPointer);
     }
     else
     {
@@ -443,9 +405,7 @@ int main()
         command_a(inputLine, nomeJogo, equipa1, equipa2, score1, score2, &headGameslist, jogos, equipas);
         if (tailGamesList == 0)
       {
-        {
-          tailGamesList = headGameslist;
-        }
+        tailGamesList = headGameslist;
       }
       else
       {

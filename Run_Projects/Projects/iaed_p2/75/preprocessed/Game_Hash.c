@@ -52,24 +52,18 @@ void deleteGame_Hash(int size, link_game *h, char *g_name)
   {
     if (strcmp(paux->pgame->pname, g_name) == 0)
     {
+      if (paux == h[i])
       {
-        if (paux == h[i])
-        {
-          {
-            h[i] = paux->next;
-          }
-        }
-        else
-        {
-          {
-            previous->next = paux->next;
-          }
-        }
-
-        delGame(paux->pgame);
-        free(paux);
-        break;
+        h[i] = paux->next;
       }
+      else
+      {
+        previous->next = paux->next;
+      }
+
+      delGame(paux->pgame);
+      free(paux);
+      break;
     }
     else
     {
@@ -136,21 +130,17 @@ lnk_dblist insrtGHash_auxList(lnk_dblist head, Game *game)
   ptr_aux->next = 0;
   if (head == 0)
   {
-    {
-      head = ptr_aux;
-      head->previous = head;
-      return head;
-    }
+    head = ptr_aux;
+    head->previous = head;
+    return head;
   }
   else
   {
-    {
-      ptr_endlist = head->previous;
-      ptr_endlist->next = ptr_aux;
-      ptr_aux->previous = ptr_endlist;
-      head->previous = ptr_aux;
-      return head;
-    }
+    ptr_endlist = head->previous;
+    ptr_endlist->next = ptr_aux;
+    ptr_aux->previous = ptr_endlist;
+    head->previous = ptr_aux;
+    return head;
   }
 
 }
@@ -163,48 +153,38 @@ lnk_dblist removGHash_auxList(lnk_dblist head, Game *game)
   {
     if (ptr_aux->pgame == game)
     {
+      if (ptr_aux == head)
       {
-        if (ptr_aux == head)
+        if (head->next == 0)
         {
-          {
-            if (head->next == 0)
-            {
-              {
-                free(ptr_aux);
-                return 0;
-              }
-            }
-            else
-            {
-              {
-                ptr_aux2 = head->next;
-                ptr_aux2->previous = head->previous;
-                free(head);
-                return ptr_aux2;
-              }
-            }
-
-          }
+          free(ptr_aux);
+          return 0;
         }
         else
         {
-          {
-            ptr_aux->previous->next = ptr_aux->next;
-            if (ptr_aux->next == 0)
-            {
-              head->previous = ptr_aux->previous;
-            }
-            else
-            {
-              ptr_aux->next->previous = ptr_aux->previous;
-            }
-
-            free(ptr_aux);
-            return head;
-          }
+          ptr_aux2 = head->next;
+          ptr_aux2->previous = head->previous;
+          free(head);
+          return ptr_aux2;
         }
 
       }
+      else
+      {
+        ptr_aux->previous->next = ptr_aux->next;
+        if (ptr_aux->next == 0)
+        {
+          head->previous = ptr_aux->previous;
+        }
+        else
+        {
+          ptr_aux->next->previous = ptr_aux->previous;
+        }
+
+        free(ptr_aux);
+        return head;
+      }
+
     }
     else
     {

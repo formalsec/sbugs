@@ -44,60 +44,50 @@ void add_jovo(int NL, list_jogos *jogos, HT_jogos *HT_jogos, HT_equipas *HT_equi
   novo->score2 = score2;
   if (searchJogo(novo->nome, HT_jogos, HT_tam) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-      free_jogo(novo);
-    }
+    printf("%d Jogo existente.\n", NL);
+    free_jogo(novo);
   }
   else
   {
     if ((searchEquipa(novo->e1, HT_equipas, HT_tam) == 0) || (searchEquipa(novo->e2, HT_equipas, HT_tam) == 0))
     {
-      {
-        printf("%d Equipa inexistente.\n", NL);
-        free_jogo(novo);
-      }
+      printf("%d Equipa inexistente.\n", NL);
+      free_jogo(novo);
     }
     else
     {
+      novo->prev = jogos->last;
+      novo->next = 0;
+      addHTJ(novo, HT_jogos, HT_tam);
+      if (jogos->last)
       {
-        novo->prev = jogos->last;
-        novo->next = 0;
-        addHTJ(novo, HT_jogos, HT_tam);
-        if (jogos->last)
+        jogos->last->next = novo;
+      }
+      else
+      {
+        jogos->head = novo;
+      }
+
+      jogos->last = novo;
+      if (novo->score1 > novo->score2)
+      {
+        equipa = searchEquipa(novo->e1, HT_equipas, HT_tam);
+        equipa->jogos_ganhos = equipa->jogos_ganhos + 1;
+      }
+      else
+      {
+        if (novo->score1 < novo->score2)
         {
-          jogos->last->next = novo;
+          equipa = searchEquipa(novo->e2, HT_equipas, HT_tam);
+          equipa->jogos_ganhos = equipa->jogos_ganhos + 1;
         }
         else
         {
-          jogos->head = novo;
-        }
-
-        jogos->last = novo;
-        if (novo->score1 > novo->score2)
-        {
-          {
-            equipa = searchEquipa(novo->e1, HT_equipas, HT_tam);
-            equipa->jogos_ganhos = equipa->jogos_ganhos + 1;
-          }
-        }
-        else
-        {
-          if (novo->score1 < novo->score2)
-          {
-            {
-              equipa = searchEquipa(novo->e2, HT_equipas, HT_tam);
-              equipa->jogos_ganhos = equipa->jogos_ganhos + 1;
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
+
     }
 
   }
@@ -118,40 +108,32 @@ void apaga_jogo(int NL, list_jogos *jogos, HT_jogos *HT_jogos, HT_equipas *HT_eq
   jogo = searchJogo(nome, HT_jogos, HT_tam);
   if (jogo)
   {
+    if (jogo->score1 > jogo->score2)
     {
-      if (jogo->score1 > jogo->score2)
-      {
-        {
-          equipa = searchEquipa(jogo->e1, HT_equipas, HT_tam);
-          equipa->jogos_ganhos = equipa->jogos_ganhos - 1;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (jogo->score1 < jogo->score2)
-      {
-        {
-          equipa = searchEquipa(jogo->e2, HT_equipas, HT_tam);
-          equipa->jogos_ganhos = equipa->jogos_ganhos - 1;
-        }
-      }
-      else
-      {
-        
-      }
-
-      remHTJ(nome, HT_jogos, HT_tam);
-      rm_jogo(jogos, jogo);
+      equipa = searchEquipa(jogo->e1, HT_equipas, HT_tam);
+      equipa->jogos_ganhos = equipa->jogos_ganhos - 1;
     }
+    else
+    {
+      
+    }
+
+    if (jogo->score1 < jogo->score2)
+    {
+      equipa = searchEquipa(jogo->e2, HT_equipas, HT_tam);
+      equipa->jogos_ganhos = equipa->jogos_ganhos - 1;
+    }
+    else
+    {
+      
+    }
+
+    remHTJ(nome, HT_jogos, HT_tam);
+    rm_jogo(jogos, jogo);
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
 
 }
@@ -184,14 +166,12 @@ void procura_jogo(int NL, HT_jogos *HT, int HT_tam)
   jogo = searchJogo(nome, HT, HT_tam);
   if (jogo != 0)
   {
-    {
-      printf("%d ", NL);
-      printf("%s ", jogo->nome);
-      printf("%s ", jogo->e1);
-      printf("%s ", jogo->e2);
-      printf("%d ", jogo->score1);
-      printf("%d\n", jogo->score2);
-    }
+    printf("%d ", NL);
+    printf("%s ", jogo->nome);
+    printf("%s ", jogo->e1);
+    printf("%s ", jogo->e2);
+    printf("%d ", jogo->score1);
+    printf("%d\n", jogo->score2);
   }
   else
   {
@@ -220,52 +200,46 @@ void altera_score(int NL, HT_jogos *HT_jogos, HT_equipas *HT_equipas, int HT_tam
   jogo = searchJogo(nome, HT_jogos, HT_tam);
   if (jogo)
   {
+    equipa1 = searchEquipa(jogo->e1, HT_equipas, HT_tam);
+    equipa2 = searchEquipa(jogo->e2, HT_equipas, HT_tam);
+    if (jogo->score1 > jogo->score2)
     {
-      equipa1 = searchEquipa(jogo->e1, HT_equipas, HT_tam);
-      equipa2 = searchEquipa(jogo->e2, HT_equipas, HT_tam);
-      if (jogo->score1 > jogo->score2)
-      {
-        {
-          equipa1->jogos_ganhos -= 1;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (jogo->score1 < jogo->score2)
-      {
-        {
-          equipa2->jogos_ganhos -= 1;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (s1 > s2)
-      {
-        equipa1->jogos_ganhos += 1;
-      }
-      else
-      {
-        
-      }
-
-      if (s1 < s2)
-      {
-        equipa2->jogos_ganhos += 1;
-      }
-      else
-      {
-        
-      }
-
-      jogo->score1 = s1;
-      jogo->score2 = s2;
+      equipa1->jogos_ganhos -= 1;
     }
+    else
+    {
+      
+    }
+
+    if (jogo->score1 < jogo->score2)
+    {
+      equipa2->jogos_ganhos -= 1;
+    }
+    else
+    {
+      
+    }
+
+    if (s1 > s2)
+    {
+      equipa1->jogos_ganhos += 1;
+    }
+    else
+    {
+      
+    }
+
+    if (s1 < s2)
+    {
+      equipa2->jogos_ganhos += 1;
+    }
+    else
+    {
+      
+    }
+
+    jogo->score1 = s1;
+    jogo->score2 = s2;
   }
   else
   {

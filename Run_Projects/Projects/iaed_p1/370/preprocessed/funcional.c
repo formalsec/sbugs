@@ -73,15 +73,11 @@ void Merge(Item a[], int l, int m, int r)
   {
     if (aux[j] < aux[i])
     {
-      {
-        a[k] = aux[j--];
-      }
+      a[k] = aux[j--];
     }
     else
     {
-      {
-        a[k] = aux[i++];
-      }
+      a[k] = aux[i++];
     }
 
   }
@@ -93,9 +89,7 @@ void MergeSort(Item a[], int l, int r)
   int m = (l + r) / 2;
   if (r <= l)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -214,9 +208,7 @@ void adiciona_stock()
   }
   else
   {
-    {
-      prod[idp].stck += qnt;
-    }
+    prod[idp].stck += qnt;
   }
 
 }
@@ -234,64 +226,38 @@ void command_A()
   qnt = new_sym_var(sizeof(int) * 8);
   if (ide >= id_enc)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
   }
   else
   {
     if (idp >= id_prod)
     {
-      {
-        printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
-      }
+      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
     }
     else
     {
       if (prod[idp].stck < qnt)
       {
-        {
-          printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
-        }
+        printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
       }
       else
       {
         if (((prod[idp].peso * qnt) + enc[ide].peso) > 200)
         {
-          {
-            printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
-          }
+          printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
         }
         else
         {
+          exist = 1;
+          for (aux = 0; aux < id_prod; aux++)
           {
-            exist = 1;
-            for (aux = 0; aux < id_prod; aux++)
+            if (aux == idp)
             {
-              if (aux == idp)
-              {
-                {
-                  exist = 0;
-                  enc[ide].prod_stck[aux] += qnt;
-                  enc[ide].peso += prod[idp].peso * qnt;
-                  remove_stock(idp, qnt);
-                  break;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-            if (exist)
-            {
-              {
-                enc[ide].prod_stck[idp] = qnt;
-                enc[ide].peso = prod[idp].peso * qnt;
-                remove_stock(idp, qnt);
-              }
+              exist = 0;
+              enc[ide].prod_stck[aux] += qnt;
+              enc[ide].peso += prod[idp].peso * qnt;
+              remove_stock(idp, qnt);
+              break;
             }
             else
             {
@@ -299,6 +265,18 @@ void command_A()
             }
 
           }
+
+          if (exist)
+          {
+            enc[ide].prod_stck[idp] = qnt;
+            enc[ide].peso = prod[idp].peso * qnt;
+            remove_stock(idp, qnt);
+          }
+          else
+          {
+            
+          }
+
         }
 
       }
@@ -323,9 +301,7 @@ void remove_stock(int idp, int qnt)
     }
     else
     {
-      {
-        prod[idp].stck -= qnt;
-      }
+      prod[idp].stck -= qnt;
     }
 
   }
@@ -357,11 +333,9 @@ void command_R()
     {
       if (enc[ide].prod_stck[idp] != 0)
       {
-        {
-          enc[ide].prod_stck[idp] = 0;
-          enc[ide].peso -= prod[idp].peso * qnt;
-          adiciona_stock(idp, qnt);
-        }
+        enc[ide].prod_stck[idp] = 0;
+        enc[ide].peso -= prod[idp].peso * qnt;
+        adiciona_stock(idp, qnt);
       }
       else
       {
@@ -383,15 +357,13 @@ void command_C()
   }
   else
   {
+    enc[ide].preco = 0;
+    for (aux = 0; aux < id_prod; aux++)
     {
-      enc[ide].preco = 0;
-      for (aux = 0; aux < id_prod; aux++)
-      {
-        enc[ide].preco += prod[aux].preco * enc[ide].prod_stck[aux];
-      }
-
-      printf("Custo da encomenda %d %d.\n", ide, enc[ide].preco);
+      enc[ide].preco += prod[aux].preco * enc[ide].prod_stck[aux];
     }
+
+    printf("Custo da encomenda %d %d.\n", ide, enc[ide].preco);
   }
 
 }
@@ -406,9 +378,7 @@ void command_p()
   }
   else
   {
-    {
-      prod[idp].preco = qnt;
-    }
+    prod[idp].preco = qnt;
   }
 
 }
@@ -429,9 +399,7 @@ void command_E()
     }
     else
     {
-      {
-        printf("%s %d\n", prod[idp].des, enc[ide].prod_stck[idp]);
-      }
+      printf("%s %d\n", prod[idp].des, enc[ide].prod_stck[idp]);
     }
 
   }
@@ -447,29 +415,15 @@ void command_m()
   }
   else
   {
+    exist = 0;
+    qnt = 0;
+    for (aux = 0; aux < id_enc; aux++)
     {
-      exist = 0;
-      qnt = 0;
-      for (aux = 0; aux < id_enc; aux++)
+      if (enc[aux].prod_stck[idp] > qnt)
       {
-        if (enc[aux].prod_stck[idp] > qnt)
-        {
-          {
-            exist = 1;
-            qnt = enc[aux].prod_stck[idp];
-            ide = aux;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      if (exist)
-      {
-        printf("Maximo produto %d %d %d", idp, ide, qnt);
+        exist = 1;
+        qnt = enc[aux].prod_stck[idp];
+        ide = aux;
       }
       else
       {
@@ -477,6 +431,16 @@ void command_m()
       }
 
     }
+
+    if (exist)
+    {
+      printf("Maximo produto %d %d %d", idp, ide, qnt);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }

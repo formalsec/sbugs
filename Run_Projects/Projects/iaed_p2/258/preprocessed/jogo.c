@@ -19,15 +19,11 @@ int hashjogo(char nome[1024])
 
   if (hash < 0)
   {
-    {
-      return -hash;
-    }
+    return -hash;
   }
   else
   {
-    {
-      return hash;
-    }
+    return hash;
   }
 
 }
@@ -76,10 +72,8 @@ void adicionajogo(struct TodosJogos *jogos, struct TodasEquipas *equipas, int nu
   {
     if (strcmp(nome, jogo_cur->nome) == 0)
     {
-      {
-        printf("%d Jogo existente.\n", num_comandos);
-        return;
-      }
+      printf("%d Jogo existente.\n", num_comandos);
+      return;
     }
     else
     {
@@ -88,9 +82,7 @@ void adicionajogo(struct TodosJogos *jogos, struct TodasEquipas *equipas, int nu
 
     if (jogo_cur->next == 0)
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {
@@ -105,10 +97,8 @@ void adicionajogo(struct TodosJogos *jogos, struct TodasEquipas *equipas, int nu
   {
     if ((equipa1 == 0) && (strncmp(nome_e1, equipa_cur->nome, 1024) == 0))
     {
-      {
-        equipa1 = equipa_cur;
-        break;
-      }
+      equipa1 = equipa_cur;
+      break;
     }
     else
     {
@@ -123,10 +113,8 @@ void adicionajogo(struct TodosJogos *jogos, struct TodasEquipas *equipas, int nu
   {
     if ((equipa2 == 0) && (strncmp(nome_e2, equipa_cur->nome, 1024) == 0))
     {
-      {
-        equipa2 = equipa_cur;
-        break;
-      }
+      equipa2 = equipa_cur;
+      break;
     }
     else
     {
@@ -138,10 +126,8 @@ void adicionajogo(struct TodosJogos *jogos, struct TodasEquipas *equipas, int nu
 
   if ((equipa1 == 0) || (equipa2 == 0))
   {
-    {
-      printf("%d Equipa inexistente.\n", num_comandos);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", num_comandos);
+    return;
   }
   else
   {
@@ -159,17 +145,13 @@ void adicionajogo(struct TodosJogos *jogos, struct TodasEquipas *equipas, int nu
   strcpy(jogo->nome, nome);
   if (score1 > score2)
   {
-    {
-      equipa1->jogos_ganhos += 1;
-    }
+    equipa1->jogos_ganhos += 1;
   }
   else
   {
     if (score2 > score1)
     {
-      {
-        equipa2->jogos_ganhos += 1;
-      }
+      equipa2->jogos_ganhos += 1;
     }
     else
     {
@@ -180,15 +162,11 @@ void adicionajogo(struct TodosJogos *jogos, struct TodasEquipas *equipas, int nu
 
   if (jogo_cur == 0)
   {
-    {
-      jogos->elementos[nomehash] = jogo;
-    }
+    jogos->elementos[nomehash] = jogo;
   }
   else
   {
-    {
-      jogo_cur->next = jogo;
-    }
+    jogo_cur->next = jogo;
   }
 
   jogos->vetor = realloc(jogos->vetor, (jogos->num_jogos + 1) * (sizeof(struct Jogo *)));
@@ -203,9 +181,7 @@ void listajogo(struct TodosJogos *jogos, int num_comandos)
   {
     if (jogos->vetor[n] == 0)
     {
-      {
-        continue;
-      }
+      continue;
     }
     else
     {
@@ -236,62 +212,50 @@ void apagajogo(struct TodosJogos *jogos, int num_comandos)
   {
     if (strcmp(nome, jogo_cur->nome) == 0)
     {
+      if (jogo_cur->score1 > jogo_cur->score2)
       {
-        if (jogo_cur->score1 > jogo_cur->score2)
-        {
-          {
-            jogo_cur->equipa1->jogos_ganhos -= 1;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if (jogo_cur->score1 < jogo_cur->score2)
-        {
-          {
-            jogo_cur->equipa2->jogos_ganhos -= 1;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if (jogo_prev == 0)
-        {
-          {
-            jogos->elementos[nomehash] = jogo_cur->next;
-          }
-        }
-        else
-        {
-          {
-            jogo_prev->next = jogo_cur->next;
-          }
-        }
-
-        for (n = 0; n < jogos->num_jogos; n++)
-        {
-          if (jogos->vetor[n] == jogo_cur)
-          {
-            {
-              jogos->vetor[n] = 0;
-              break;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-        free(jogo_cur->nome);
-        free(jogo_cur);
-        return;
+        jogo_cur->equipa1->jogos_ganhos -= 1;
       }
+      else
+      {
+        
+      }
+
+      if (jogo_cur->score1 < jogo_cur->score2)
+      {
+        jogo_cur->equipa2->jogos_ganhos -= 1;
+      }
+      else
+      {
+        
+      }
+
+      if (jogo_prev == 0)
+      {
+        jogos->elementos[nomehash] = jogo_cur->next;
+      }
+      else
+      {
+        jogo_prev->next = jogo_cur->next;
+      }
+
+      for (n = 0; n < jogos->num_jogos; n++)
+      {
+        if (jogos->vetor[n] == jogo_cur)
+        {
+          jogos->vetor[n] = 0;
+          break;
+        }
+        else
+        {
+          
+        }
+
+      }
+
+      free(jogo_cur->nome);
+      free(jogo_cur);
+      return;
     }
     else
     {
@@ -322,10 +286,8 @@ void procurajogo(struct TodosJogos *jogos, int num_comandos)
   {
     if (strcmp(jogo->nome, nome) == 0)
     {
-      {
-        printf("%d %s %s %s %d %d\n", num_comandos, jogo->nome, jogo->equipa1->nome, jogo->equipa2->nome, jogo->score1, jogo->score2);
-        return;
-      }
+      printf("%d %s %s %s %d %d\n", num_comandos, jogo->nome, jogo->equipa1->nome, jogo->equipa2->nome, jogo->score1, jogo->score2);
+      return;
     }
     else
     {
@@ -359,55 +321,45 @@ void alterascore(struct TodosJogos *jogos, int num_comandos)
   {
     if (strcmp(jogo->nome, nome) == 0)
     {
+      if (jogo->score1 > jogo->score2)
       {
-        if (jogo->score1 > jogo->score2)
-        {
-          {
-            jogo->equipa1->jogos_ganhos -= 1;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if (jogo->score1 < jogo->score2)
-        {
-          {
-            jogo->equipa2->jogos_ganhos -= 1;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if (score1 > score2)
-        {
-          {
-            jogo->equipa1->jogos_ganhos += 1;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if (score1 < score2)
-        {
-          {
-            jogo->equipa2->jogos_ganhos += 1;
-          }
-        }
-        else
-        {
-          
-        }
-
-        jogo->score1 = score1;
-        jogo->score2 = score2;
-        return;
+        jogo->equipa1->jogos_ganhos -= 1;
       }
+      else
+      {
+        
+      }
+
+      if (jogo->score1 < jogo->score2)
+      {
+        jogo->equipa2->jogos_ganhos -= 1;
+      }
+      else
+      {
+        
+      }
+
+      if (score1 > score2)
+      {
+        jogo->equipa1->jogos_ganhos += 1;
+      }
+      else
+      {
+        
+      }
+
+      if (score1 < score2)
+      {
+        jogo->equipa2->jogos_ganhos += 1;
+      }
+      else
+      {
+        
+      }
+
+      jogo->score1 = score1;
+      jogo->score2 = score2;
+      return;
     }
     else
     {

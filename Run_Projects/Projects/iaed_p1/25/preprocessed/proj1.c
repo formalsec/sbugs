@@ -145,25 +145,19 @@ void open_files(int argc, const char *argv[])
 {
   if (argc == 3)
   {
-    {
-      inputFile = fopen(argv[1], "r");
-      outputFile = fopen(argv[2], "w");
-    }
+    inputFile = fopen(argv[1], "r");
+    outputFile = fopen(argv[2], "w");
   }
   else
   {
-    {
-      inputFile = stdin;
-      outputFile = stdout;
-    }
+    inputFile = stdin;
+    outputFile = stdout;
   }
 
   if ((!inputFile) || (!outputFile))
   {
-    {
-      perror("Couldn't open files");
-      exit(1);
-    }
+    perror("Couldn't open files");
+    exit(1);
   }
   else
   {

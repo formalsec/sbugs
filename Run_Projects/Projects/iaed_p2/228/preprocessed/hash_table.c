@@ -111,37 +111,35 @@ void remove_in_ht(ht *h, char *key)
   {
     if (!strcmp(key, h->get_data_key(n->data)))
     {
+      if (n == head)
       {
-        if (n == head)
-        {
-          h->row_heads[row] = n->ht_next;
-        }
-        else
-        {
-          prev->ht_next = n->ht_next;
-        }
-
-        if (!n->prev)
-        {
-          h->dll_head = n->next;
-        }
-        else
-        {
-          n->prev->next = n->next;
-        }
-
-        if (!n->next)
-        {
-          h->dll_tail = n->prev;
-        }
-        else
-        {
-          n->next->prev = n->prev;
-        }
-
-        free_node(h, n);
-        return;
+        h->row_heads[row] = n->ht_next;
       }
+      else
+      {
+        prev->ht_next = n->ht_next;
+      }
+
+      if (!n->prev)
+      {
+        h->dll_head = n->next;
+      }
+      else
+      {
+        n->prev->next = n->next;
+      }
+
+      if (!n->next)
+      {
+        h->dll_tail = n->prev;
+      }
+      else
+      {
+        n->next->prev = n->prev;
+      }
+
+      free_node(h, n);
+      return;
     }
     else
     {

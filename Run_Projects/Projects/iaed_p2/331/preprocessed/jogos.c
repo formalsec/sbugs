@@ -40,15 +40,11 @@ Game *add_end_game(List_Games *l, char *j, char *eq1, char *eq2, int sc1, int sc
   new->prev = l->last;
   if (l->last)
   {
-    {
-      l->last->next = new;
-    }
+    l->last->next = new;
   }
   else
   {
-    {
-      l->head = new;
-    }
+    l->head = new;
   }
 
   l->last = new;
@@ -62,9 +58,7 @@ Game *search_game(List_Games *l, char *nome_j)
   {
     if (!strcmp(t->jogo_nome, nome_j))
     {
-      {
-        return t;
-      }
+      return t;
     }
     else
     {
@@ -99,28 +93,20 @@ void remove_game(List_Games *l, char *jogo)
   t = search_game(l, jogo);
   if (t->prev == 0)
   {
-    {
-      l->head = t->next;
-    }
+    l->head = t->next;
   }
   else
   {
-    {
-      t->prev->next = t->next;
-    }
+    t->prev->next = t->next;
   }
 
   if (t->next == 0)
   {
-    {
-      l->last = t->prev;
-    }
+    l->last = t->prev;
   }
   else
   {
-    {
-      t->next->prev = t->prev;
-    }
+    t->next->prev = t->prev;
   }
 
   free_game(t);

@@ -14,9 +14,7 @@ int teamExists(char *name, HashTable *teamsHashTable)
   link *link = hashTableSearch(teamsHashTable, name, compareTeamFunction);
   if (link == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -31,9 +29,7 @@ int gameExists(char *name, HashTable *gameHashMap)
   link *link = hashTableSearch(gameHashMap, name, compareTeamFunction);
   if (link == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -47,17 +43,13 @@ void newVictories(int *scores, Team **teams, int scoreToUpdate)
 {
   if (scores[0] > scores[1])
   {
-    {
-      updateVictories(teams[0], scoreToUpdate);
-    }
+    updateVictories(teams[0], scoreToUpdate);
   }
   else
   {
     if (scores[0] < scores[1])
     {
-      {
-        updateVictories(teams[1], scoreToUpdate);
-      }
+      updateVictories(teams[1], scoreToUpdate);
     }
     else
     {
@@ -72,9 +64,7 @@ int canCreateGame(char *name, char *team1, char *team2, HashTable *gamesHashTabl
 {
   if (gameExists(name, gamesHashTable) == 1)
   {
-    {
-      return 1;
-    }
+    return 1;
   }
   else
   {
@@ -83,9 +73,7 @@ int canCreateGame(char *name, char *team1, char *team2, HashTable *gamesHashTabl
 
   if ((teamExists(team1, teamsHashTable) == 0) || (teamExists(team2, teamsHashTable) == 0))
   {
-    {
-      return 2;
-    }
+    return 2;
   }
   else
   {
@@ -103,9 +91,7 @@ int createNewGame(char *name, char *team1, char *team2, int *scores, HashTable *
   int value = canCreateGame(name, team1, team2, gamesHashTable, teamsHashTable);
   if ((value == 1) || (value == 2))
   {
-    {
-      return value;
-    }
+    return value;
   }
   else
   {
@@ -153,17 +139,13 @@ void execute_a(HashTable *gamesHashTable, HashTable *teamsHashTable, List *order
   value = createNewGame(gameName, team1, team2, scores, gamesHashTable, teamsHashTable, orderList);
   if (value == 1)
   {
-    {
-      printf("%d Jogo existente.\n", *cmdCounter);
-    }
+    printf("%d Jogo existente.\n", *cmdCounter);
   }
   else
   {
     if (value == 2)
     {
-      {
-        printf("%d Equipa inexistente.\n", *cmdCounter);
-      }
+      printf("%d Equipa inexistente.\n", *cmdCounter);
     }
     else
     {
@@ -192,15 +174,11 @@ void execute_p(HashTable *gamesHashTable, int *cmdCounter)
   link = hashTableSearch(gamesHashTable, gameName, compareGameFunction);
   if (link != 0)
   {
-    {
-      printGame(link->dataPointer, cmdCounter);
-    }
+    printGame(link->dataPointer, cmdCounter);
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", *cmdCounter);
-    }
+    printf("%d Jogo inexistente.\n", *cmdCounter);
   }
 
 }
@@ -210,9 +188,7 @@ int delGame(char *name, HashTable *gamesHashTable, List *orderList)
   link *link;
   if (gameExists(name, gamesHashTable) == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -237,9 +213,7 @@ void execute_r(HashTable *gamesHashTable, List *orderList, int *cmdCounter)
   gameName[10 - 1] = '\0';
   if (delGame(gameName, gamesHashTable, orderList) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", *cmdCounter);
-    }
+    printf("%d Jogo inexistente.\n", *cmdCounter);
   }
   else
   {
@@ -252,75 +226,59 @@ void evaluateScores(int *newScores, Game *game)
 {
   if (newScores[0] == newScores[1])
   {
+    if (game->scores[0] > game->scores[1])
     {
-      if (game->scores[0] > game->scores[1])
+      updateVictories(game->teams[0], -1);
+    }
+    else
+    {
+      if (game->scores[0] < game->scores[1])
       {
-        {
-          updateVictories(game->teams[0], -1);
-        }
+        updateVictories(game->teams[1], -1);
       }
       else
       {
-        if (game->scores[0] < game->scores[1])
-        {
-          {
-            updateVictories(game->teams[1], -1);
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
     }
+
   }
   else
   {
     if ((game->scores[0] > game->scores[1]) && (newScores[0] < newScores[1]))
     {
-      {
-        updateVictories(game->teams[0], -1);
-        updateVictories(game->teams[1], 1);
-      }
+      updateVictories(game->teams[0], -1);
+      updateVictories(game->teams[1], 1);
     }
     else
     {
       if ((game->scores[0] < game->scores[1]) && (newScores[0] > newScores[1]))
       {
-        {
-          updateVictories(game->teams[1], -1);
-          updateVictories(game->teams[0], 1);
-        }
+        updateVictories(game->teams[1], -1);
+        updateVictories(game->teams[0], 1);
       }
       else
       {
         if (game->scores[0] == game->scores[1])
         {
+          if (newScores[0] > newScores[1])
           {
-            if (newScores[0] > newScores[1])
+            updateVictories(game->teams[0], 1);
+          }
+          else
+          {
+            if (newScores[0] < newScores[1])
             {
-              {
-                updateVictories(game->teams[0], 1);
-              }
+              updateVictories(game->teams[1], 1);
             }
             else
             {
-              if (newScores[0] < newScores[1])
-              {
-                {
-                  updateVictories(game->teams[1], 1);
-                }
-              }
-              else
-              {
-                
-              }
-
+              
             }
 
           }
+
         }
         else
         {
@@ -341,9 +299,7 @@ int changeGameScores(char *name, int *newScores, HashTable *gamesHashTable)
   Game *game;
   if (gameExists(name, gamesHashTable) == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -372,9 +328,7 @@ void execute_s(HashTable *gamesHashTable, int *cmdCounter)
   scores[1] = new_sym_var(sizeof(int) * 8);
   if (changeGameScores(gameName, scores, gamesHashTable) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", *cmdCounter);
-    }
+    printf("%d Jogo inexistente.\n", *cmdCounter);
   }
   else
   {
@@ -388,9 +342,7 @@ int createNewTeam(char *name, HashTable *teamsHashTable)
   Team *team;
   if (teamExists(name, teamsHashTable) == 1)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -413,9 +365,7 @@ void execute_A(HashTable *teamsHashTable, int *cmdCounter)
   name[10 - 1] = '\0';
   if (createNewTeam(name, teamsHashTable) == 0)
   {
-    {
-      printf("%d Equipa existente.\n", *cmdCounter);
-    }
+    printf("%d Equipa existente.\n", *cmdCounter);
   }
   else
   {
@@ -437,15 +387,11 @@ void execute_P(HashTable *teamsHashTable, int *cmdCounter)
   link = hashTableSearch(teamsHashTable, name, compareTeamFunction);
   if (link != 0)
   {
-    {
-      printTeam(link->dataPointer, cmdCounter);
-    }
+    printTeam(link->dataPointer, cmdCounter);
   }
   else
   {
-    {
-      printf("%d Equipa inexistente.\n", *cmdCounter);
-    }
+    printf("%d Equipa inexistente.\n", *cmdCounter);
   }
 
 }
@@ -462,47 +408,39 @@ List *createBestTeamsList(HashTable *teamsHashTable, int *mostVictories)
     {
       if (((Team *) node->dataPointer)->victories == (*mostVictories))
       {
+        if (isListEmpty(list))
         {
-          if (isListEmpty(list))
+          listInsertEnd(list, node->dataPointer);
+          continue;
+        }
+        else
+        {
+          
+        }
+
+        for (listNode = list->head; listNode != 0; listNode = listNode->next)
+        {
+          if (strcmp(((Team *) node->dataPointer)->name, ((Team *) listNode->dataPointer)->name) < 0)
           {
-            {
-              listInsertEnd(list, node->dataPointer);
-              continue;
-            }
+            listInsertBefore(list, listNode, node->dataPointer);
+            break;
           }
           else
           {
-            
-          }
-
-          for (listNode = list->head; listNode != 0; listNode = listNode->next)
-          {
-            if (strcmp(((Team *) node->dataPointer)->name, ((Team *) listNode->dataPointer)->name) < 0)
+            if (listNode == list->tail)
             {
-              {
-                listInsertBefore(list, listNode, node->dataPointer);
-                break;
-              }
+              listInsertEnd(list, node->dataPointer);
+              break;
             }
             else
             {
-              if (listNode == list->tail)
-              {
-                {
-                  listInsertEnd(list, node->dataPointer);
-                  break;
-                }
-              }
-              else
-              {
-                
-              }
-
+              
             }
 
           }
 
         }
+
       }
       else
       {
@@ -527,9 +465,7 @@ List *buildListByGames(HashTable *teamsHashTable, int *victories)
     {
       if (mostVictories < ((Team *) node->dataPointer)->victories)
       {
-        {
-          mostVictories = ((Team *) node->dataPointer)->victories;
-        }
+        mostVictories = ((Team *) node->dataPointer)->victories;
       }
       else
       {
@@ -550,10 +486,8 @@ void execute_g(HashTable *teamsHashTable, int *counter)
   List *teams = buildListByGames(teamsHashTable, &victories);
   if (isListEmpty(teams) == 0)
   {
-    {
-      printf("%d Melhores %d\n", *counter, victories);
-      listPrint(teams, counter, bestTeamsFunction);
-    }
+    printf("%d Melhores %d\n", *counter, victories);
+    listPrint(teams, counter, bestTeamsFunction);
   }
   else
   {

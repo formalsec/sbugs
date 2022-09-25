@@ -67,10 +67,8 @@ void node_push(game_node *head, game game, game_node *first, game_node *current)
   new_node->in_previous = 0;
   if ((*first) == 0)
   {
-    {
-      *first = new_node;
-      *current = new_node;
-    }
+    *first = new_node;
+    *current = new_node;
   }
   else
   {
@@ -158,39 +156,31 @@ void delete_game(game_item hashtbl, game_node node)
 {
   if ((node->previous == 0) && (node->next == 0))
   {
-    {
-      hashtbl->head = 0;
-      free_node(node);
-    }
+    hashtbl->head = 0;
+    free_node(node);
   }
   else
   {
     if ((node->previous == 0) && (node->next != 0))
     {
-      {
-        node->next->previous = 0;
-        hashtbl->head = node->next;
-        free_node(node);
-      }
+      node->next->previous = 0;
+      hashtbl->head = node->next;
+      free_node(node);
     }
     else
     {
       if ((node->previous != 0) && (node->next != 0))
       {
-        {
-          node->previous->next = node->next;
-          node->next->previous = node->previous;
-          free_node(node);
-        }
+        node->previous->next = node->next;
+        node->next->previous = node->previous;
+        free_node(node);
       }
       else
       {
         if ((node->previous != 0) && (node->next == 0))
         {
-          {
-            node->previous->next = 0;
-            free_node(node);
-          }
+          node->previous->next = 0;
+          free_node(node);
         }
         else
         {
@@ -219,29 +209,25 @@ void update_score(game_node node, int s1, int s2)
   node->game->score_2 = s2;
   if (p_s1 > p_s2)
   {
+    if (s1 < s2)
     {
-      if (s1 < s2)
-      {
-        {
-          dec_score(t1);
-          inc_score(t2);
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (s1 == s2)
-      {
-        dec_score(t1);
-      }
-      else
-      {
-        
-      }
-
+      dec_score(t1);
+      inc_score(t2);
     }
+    else
+    {
+      
+    }
+
+    if (s1 == s2)
+    {
+      dec_score(t1);
+    }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -250,29 +236,25 @@ void update_score(game_node node, int s1, int s2)
 
   if (p_s1 < p_s2)
   {
+    if (s1 > s2)
     {
-      if (s1 > s2)
-      {
-        {
-          dec_score(t2);
-          inc_score(t1);
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (s1 == s2)
-      {
-        dec_score(t2);
-      }
-      else
-      {
-        
-      }
-
+      dec_score(t2);
+      inc_score(t1);
     }
+    else
+    {
+      
+    }
+
+    if (s1 == s2)
+    {
+      dec_score(t2);
+    }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -281,26 +263,24 @@ void update_score(game_node node, int s1, int s2)
 
   if (p_s1 == p_s2)
   {
+    if (s1 > s2)
     {
-      if (s1 > s2)
-      {
-        inc_score(t1);
-      }
-      else
-      {
-        
-      }
-
-      if (s1 < s2)
-      {
-        inc_score(t2);
-      }
-      else
-      {
-        
-      }
-
+      inc_score(t1);
     }
+    else
+    {
+      
+    }
+
+    if (s1 < s2)
+    {
+      inc_score(t2);
+    }
+    else
+    {
+      
+    }
+
   }
   else
   {

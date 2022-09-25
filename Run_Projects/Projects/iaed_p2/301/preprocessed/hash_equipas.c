@@ -29,18 +29,14 @@ void insertEquipa_T(Hash_tableEq *t, NodeEq *equipaIns)
   int i = hash(equipaIns->nome, t->capacity);
   if (t->table[i] == 0)
   {
-    {
-      Hash_nodeEq *head = 0;
-      head = insertEquipa_N(head, equipaIns);
-      t->table[i] = head;
-    }
+    Hash_nodeEq *head = 0;
+    head = insertEquipa_N(head, equipaIns);
+    t->table[i] = head;
   }
   else
   {
-    {
-      Hash_nodeEq *head = t->table[i];
-      insertEquipa_N(head, equipaIns);
-    }
+    Hash_nodeEq *head = t->table[i];
+    insertEquipa_N(head, equipaIns);
   }
 
 }
@@ -52,22 +48,18 @@ Hash_nodeEq *insertEquipa_N(Hash_nodeEq *head, NodeEq *equipaIns)
   new->next = 0;
   if (head == 0)
   {
-    {
-      head = new;
-      return head;
-    }
+    head = new;
+    return head;
   }
   else
   {
+    Hash_nodeEq *actual = head;
+    while (actual->next != 0)
     {
-      Hash_nodeEq *actual = head;
-      while (actual->next != 0)
-      {
-        actual = actual->next;
-      }
-
-      actual->next = new;
+      actual = actual->next;
     }
+
+    actual->next = new;
   }
 
   return new;
@@ -84,24 +76,20 @@ void printTableEq(Hash_tableEq *t)
     printf("%d: ", i);
     if (head == 0)
     {
-      {
-        vazios++;
-        printf("NULL");
-      }
+      vazios++;
+      printf("NULL");
     }
     else
     {
+      Hash_nodeEq *current = head;
+      colisoes--;
+      while (current != 0)
       {
-        Hash_nodeEq *current = head;
-        colisoes--;
-        while (current != 0)
-        {
-          colisoes++;
-          printf("%s ", current->equipa->nome);
-          current = current->next;
-        }
-
+        colisoes++;
+        printf("%s ", current->equipa->nome);
+        current = current->next;
       }
+
     }
 
     printf("\n");

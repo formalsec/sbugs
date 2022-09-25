@@ -38,9 +38,7 @@ link_equipa procura_lista_equipa(link_equipa head, char *nome)
   {
     if (strcmp(t->equipa->nome, nome) == 0)
     {
-      {
-        return t;
-      }
+      return t;
     }
     else
     {
@@ -72,14 +70,12 @@ link_equipa remove_equipa_lista(link_equipa head, char *nome)
 
   if (strcmp(head->equipa->nome, nome) == 0)
   {
-    {
-      link_equipa t;
-      t = head->next;
-      free(head->equipa->nome);
-      free(head->equipa);
-      free(head);
-      return t;
-    }
+    link_equipa t;
+    t = head->next;
+    free(head->equipa->nome);
+    free(head->equipa);
+    free(head);
+    return t;
   }
   else
   {
@@ -98,14 +94,12 @@ link_equipa remove_lista_2(link_equipa head)
   }
   else
   {
-    {
-      link_equipa t;
-      t = head->next;
-      free(head->equipa->nome);
-      free(head->equipa);
-      free(head);
-      return t;
-    }
+    link_equipa t;
+    t = head->next;
+    free(head->equipa->nome);
+    free(head->equipa);
+    free(head);
+    return t;
   }
 
   head->next = remove_lista_2(head->next);
@@ -155,9 +149,7 @@ link_equipa insere_equipa_lista_2(link_equipa head, link_equipa equipa)
   link_equipa x;
   if (head == 0)
   {
-    {
-      return nova_equipa(equipa->equipa->nome);
-    }
+    return nova_equipa(equipa->equipa->nome);
   }
   else
   {

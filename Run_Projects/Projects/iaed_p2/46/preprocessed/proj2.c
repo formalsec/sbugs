@@ -37,10 +37,8 @@ void AddJogo(linkJogo *pheadj, linkJogo *ptailj, linkJogo tabJogos[631], linkEqu
   s2 = new_sym_var(sizeof(int) * 8);
   if (ProcuraJHash(tabJogos, strings[0]) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-      return;
-    }
+    printf("%d Jogo existente.\n", NL);
+    return;
   }
   else
   {
@@ -49,10 +47,8 @@ void AddJogo(linkJogo *pheadj, linkJogo *ptailj, linkJogo tabJogos[631], linkEqu
 
   if (((e1 = ProcuraEHash(tabEquipas, strings[1])) == 0) || ((e2 = ProcuraEHash(tabEquipas, strings[2])) == 0))
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -61,19 +57,15 @@ void AddJogo(linkJogo *pheadj, linkJogo *ptailj, linkJogo tabJogos[631], linkEqu
 
   if (s1 > s2)
   {
-    {
-      *e1->equipa->vit = (*e1->equipa->vit) + 1;
-      ReposCima(pheade, ptaile, e1);
-    }
+    *e1->equipa->vit = (*e1->equipa->vit) + 1;
+    ReposCima(pheade, ptaile, e1);
   }
   else
   {
     if (s1 < s2)
     {
-      {
-        *e2->equipa->vit = (*e2->equipa->vit) + 1;
-        ReposCima(pheade, ptaile, e2);
-      }
+      *e2->equipa->vit = (*e2->equipa->vit) + 1;
+      ReposCima(pheade, ptaile, e2);
     }
     else
     {
@@ -104,10 +96,8 @@ void AddEquipa(linkEquipa *pheade, linkEquipa *ptaile, linkEquipa tabEquipas[631
   string[i] = '\0';
   if (ProcuraEHash(tabEquipas, string) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-      return;
-    }
+    printf("%d Equipa existente.\n", NL);
+    return;
   }
   else
   {
@@ -159,10 +149,8 @@ void FindJogo(linkJogo tabJogos[631], int NL)
   j = ProcuraJHash(tabJogos, string);
   if (j == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -191,10 +179,8 @@ void FindEquipa(linkEquipa tabEquipas[631], int NL)
   e = ProcuraEHash(tabEquipas, string);
   if (e == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -224,10 +210,8 @@ void RemoveJogo(linkJogo *pheadj, linkJogo *ptailj, linkJogo tabJogos[631], link
   j = ProcuraJHash(tabJogos, string);
   if (j == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -236,21 +220,17 @@ void RemoveJogo(linkJogo *pheadj, linkJogo *ptailj, linkJogo tabJogos[631], link
 
   if ((*j->jogo->score1) > (*j->jogo->score2))
   {
-    {
-      e = ProcuraEHash(tabEquipas, j->jogo->equipa1);
-      *e->equipa->vit = (*e->equipa->vit) - 1;
-      ReposBaixo(pheade, ptaile, e);
-    }
+    e = ProcuraEHash(tabEquipas, j->jogo->equipa1);
+    *e->equipa->vit = (*e->equipa->vit) - 1;
+    ReposBaixo(pheade, ptaile, e);
   }
   else
   {
     if ((*j->jogo->score2) > (*j->jogo->score1))
     {
-      {
-        e = ProcuraEHash(tabEquipas, j->jogo->equipa2);
-        *e->equipa->vit = (*e->equipa->vit) - 1;
-        ReposBaixo(pheade, ptaile, e);
-      }
+      e = ProcuraEHash(tabEquipas, j->jogo->equipa2);
+      *e->equipa->vit = (*e->equipa->vit) - 1;
+      ReposBaixo(pheade, ptaile, e);
     }
     else
     {
@@ -291,10 +271,8 @@ void AltScore(linkJogo tabJogos[631], linkEquipa *pheade, linkEquipa *ptaile, li
   j = ProcuraJHash(tabJogos, string);
   if (j == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -309,24 +287,45 @@ void AltScore(linkJogo tabJogos[631], linkEquipa *pheade, linkEquipa *ptaile, li
   ps2 = *j->jogo->score2;
   if (ps1 > ps2)
   {
+    if (s1 < s2)
     {
-      if (s1 < s2)
+      *v1 = (*v1) - 1;
+      ReposBaixo(pheade, ptaile, e1);
+      *v2 = (*v2) + 1;
+      ReposCima(pheade, ptaile, e2);
+    }
+    else
+    {
+      if (s1 == s2)
       {
-        {
-          *v1 = (*v1) - 1;
-          ReposBaixo(pheade, ptaile, e1);
-          *v2 = (*v2) + 1;
-          ReposCima(pheade, ptaile, e2);
-        }
+        *v1 = (*v1) - 1;
+        ReposBaixo(pheade, ptaile, e1);
+      }
+      else
+      {
+        
+      }
+
+    }
+
+  }
+  else
+  {
+    if (ps1 < ps2)
+    {
+      if (s1 > s2)
+      {
+        *v1 = (*v1) + 1;
+        ReposCima(pheade, ptaile, e1);
+        *v2 = (*v2) - 1;
+        ReposBaixo(pheade, ptaile, e2);
       }
       else
       {
         if (s1 == s2)
         {
-          {
-            *v1 = (*v1) - 1;
-            ReposBaixo(pheade, ptaile, e1);
-          }
+          *v2 = (*v2) - 1;
+          ReposBaixo(pheade, ptaile, e2);
         }
         else
         {
@@ -336,66 +335,27 @@ void AltScore(linkJogo tabJogos[631], linkEquipa *pheade, linkEquipa *ptaile, li
       }
 
     }
-  }
-  else
-  {
-    if (ps1 < ps2)
-    {
-      {
-        if (s1 > s2)
-        {
-          {
-            *v1 = (*v1) + 1;
-            ReposCima(pheade, ptaile, e1);
-            *v2 = (*v2) - 1;
-            ReposBaixo(pheade, ptaile, e2);
-          }
-        }
-        else
-        {
-          if (s1 == s2)
-          {
-            {
-              *v2 = (*v2) - 1;
-              ReposBaixo(pheade, ptaile, e2);
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-      }
-    }
     else
     {
+      if (s1 > s2)
       {
-        if (s1 > s2)
+        *v1 = (*v1) + 1;
+        ReposCima(pheade, ptaile, e1);
+      }
+      else
+      {
+        if (s1 < s2)
         {
-          {
-            *v1 = (*v1) + 1;
-            ReposCima(pheade, ptaile, e1);
-          }
+          *v2 = (*v2) + 1;
+          ReposCima(pheade, ptaile, e2);
         }
         else
         {
-          if (s1 < s2)
-          {
-            {
-              *v2 = (*v2) + 1;
-              ReposCima(pheade, ptaile, e2);
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
+
     }
 
   }

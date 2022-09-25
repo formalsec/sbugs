@@ -110,10 +110,8 @@ char *duplica_string(char *cadeia_caracteres)
   char *cc = (char *) malloc((sizeof(char)) * tamanho);
   if (cc == 0)
   {
-    {
-      puts("duplica_string: Erro. malloc retornou NULL\n");
-      return 0;
-    }
+    puts("duplica_string: Erro. malloc retornou NULL\n");
+    return 0;
   }
   else
   {

@@ -16,10 +16,8 @@ void adicionaVitoria(hashE *e, char *nome)
   s = hash(nome);
   if (strcmp(e->entradas[s]->nome, nome) == 0)
   {
-    {
-      e->entradas[s]->vitorias++;
-      return;
-    }
+    e->entradas[s]->vitorias++;
+    return;
   }
   else
   {
@@ -32,10 +30,8 @@ void adicionaVitoria(hashE *e, char *nome)
   {
     if (strcmp(omega->nome, nome) == 0)
     {
-      {
-        outra->next->vitorias++;
-        break;
-      }
+      outra->next->vitorias++;
+      break;
     }
     else
     {
@@ -56,10 +52,8 @@ void retiraVitoria(hashE *e, char *nome)
   s = hash(nome);
   if (strcmp(e->entradas[s]->nome, nome) == 0)
   {
-    {
-      e->entradas[s]->vitorias--;
-      return;
-    }
+    e->entradas[s]->vitorias--;
+    return;
   }
   else
   {
@@ -72,10 +66,8 @@ void retiraVitoria(hashE *e, char *nome)
   {
     if (strcmp(omega->nome, nome) == 0)
     {
-      {
-        outra->next->vitorias--;
-        break;
-      }
+      outra->next->vitorias--;
+      break;
     }
     else
     {
@@ -161,14 +153,12 @@ int adicionaEquipa(hashE *s, char *nome)
   eq3 = s->entradas[chave];
   if (eq3 == 0)
   {
-    {
-      eq3 = malloc(sizeof(equipa));
-      eq3->nome = malloc(strlen(nome) + 1);
-      strcpy(eq3->nome, nome);
-      eq3->vitorias = 0;
-      eq3->next = 0;
-      s->entradas[chave] = eq3;
-    }
+    eq3 = malloc(sizeof(equipa));
+    eq3->nome = malloc(strlen(nome) + 1);
+    strcpy(eq3->nome, nome);
+    eq3->vitorias = 0;
+    eq3->next = 0;
+    s->entradas[chave] = eq3;
   }
   else
   {

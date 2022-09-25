@@ -30,9 +30,7 @@ link_jogo list_jogo_insert_end(link_jogo head, Jogo *jogo)
   link_jogo x;
   if (head == 0)
   {
-    {
-      return list_jogo_init(jogo);
-    }
+    return list_jogo_init(jogo);
   }
   else
   {
@@ -56,9 +54,7 @@ link_jogo list_jogo_lookup(link_jogo head, Jogo *jogo)
   {
     if (strcmp(t->jogo->nome, jogo->nome) == 0)
     {
-      {
-        return t;
-      }
+      return t;
     }
     else
     {
@@ -88,27 +84,21 @@ link_jogo list_jogo_delete(link_jogo head, Jogo *jogo)
   {
     if (strcmp(t->jogo->nome, jogo->nome) == 0)
     {
+      if (t == head)
       {
-        if (t == head)
-        {
-          {
-            head = t->next;
-          }
-        }
-        else
-        {
-          {
-            prev->next = t->next;
-          }
-        }
-
-        free(t->jogo->nome);
-        free(t->jogo->equipa1);
-        free(t->jogo->equipa2);
-        free(t->jogo);
-        free(t);
-        break;
+        head = t->next;
       }
+      else
+      {
+        prev->next = t->next;
+      }
+
+      free(t->jogo->nome);
+      free(t->jogo->equipa1);
+      free(t->jogo->equipa2);
+      free(t->jogo);
+      free(t);
+      break;
     }
     else
     {

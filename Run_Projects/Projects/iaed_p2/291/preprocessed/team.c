@@ -28,17 +28,15 @@ void print_teams(link *teams)
     }
     else
     {
+      aux = teams[i];
+      printf("Equipa %d", i);
+      while (aux != 0)
       {
-        aux = teams[i];
-        printf("Equipa %d", i);
-        while (aux != 0)
-        {
-          printf(":-:%s", aux->name);
-          aux = aux->next;
-        }
-
-        printf("\n");
+        printf(":-:%s", aux->name);
+        aux = aux->next;
       }
+
+      printf("\n");
     }
 
   }
@@ -54,16 +52,12 @@ int find(link *teams, char buffer[1024], int contador)
   {
     if (strcmp(aux->name, buffer))
     {
-      {
-        aux = aux->next;
-      }
+      aux = aux->next;
     }
     else
     {
-      {
-        printf("%d %s ", contador, aux->name);
-        return 0;
-      }
+      printf("%d %s ", contador, aux->name);
+      return 0;
     }
 
   }
@@ -80,15 +74,11 @@ int existing_team(link *hashtable, char buffer[1024])
   {
     if (strcmp(aux->name, buffer))
     {
-      {
-        aux = aux->next;
-      }
+      aux = aux->next;
     }
     else
     {
-      {
-        return 1;
-      }
+      return 1;
     }
 
   }

@@ -41,11 +41,9 @@ void adiciona_equipa_lista(link_equipa equipa, lista_equipas *lista)
   link_equipa t;
   if ((lista->primeiro == 0) || (strcmp(equipa->nome_equipa, lista->primeiro->nome_equipa) < 0))
   {
-    {
-      equipa->next_lista = lista->primeiro;
-      lista->primeiro = equipa;
-      return;
-    }
+    equipa->next_lista = lista->primeiro;
+    lista->primeiro = equipa;
+    return;
   }
   else
   {
@@ -65,10 +63,8 @@ void adiciona_equipa_ht(link_equipa equipa, link_equipa *ht)
   int i = hash(equipa->nome_equipa);
   if (!ht[i])
   {
-    {
-      ht[i] = equipa;
-      return;
-    }
+    ht[i] = equipa;
+    return;
   }
   else
   {
@@ -86,9 +82,7 @@ link_equipa procura_equipa(char *nome_equipa, link_equipa *ht)
   for (t = ht[i]; t != 0; t = t->next_ht)
     if (strcmp(t->nome_equipa, nome_equipa) == 0)
   {
-    {
-      return t;
-    }
+    return t;
   }
   else
   {

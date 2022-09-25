@@ -83,9 +83,7 @@ int procuraE(Hequipas *h_eq, char *nome)
   {
     if (strcmp(tmp->aponta_equipa->nome, nome) == 0)
     {
-      {
-        return 1;
-      }
+      return 1;
     }
     else
     {
@@ -124,24 +122,18 @@ void hash_insertJ(Hjogos *h_j, Cabeca_cauda *extremos_lista_jogos, char *buffer,
   j_add->pontos2 = pontos2;
   if (extremos_lista_jogos->cauda != 0)
   {
-    {
-      extremos_lista_jogos->cauda->proximo = j_add;
-    }
+    extremos_lista_jogos->cauda->proximo = j_add;
   }
   else
   {
-    {
-      extremos_lista_jogos->cabeca = j_add;
-    }
+    extremos_lista_jogos->cabeca = j_add;
   }
 
   extremos_lista_jogos->cauda = j_add;
   aux->proximo = h_j->cabecas[index];
   if (h_j->cabecas[index])
   {
-    {
-      h_j->cabecas[index]->anterior = aux;
-    }
+    h_j->cabecas[index]->anterior = aux;
   }
   else
   {
@@ -198,9 +190,7 @@ int procuraJ(Hjogos *h_j, char *nome)
   {
     if (strcmp(tmp->aponta_jogo->nome, nome) == 0)
     {
-      {
-        return 1;
-      }
+      return 1;
     }
     else
     {

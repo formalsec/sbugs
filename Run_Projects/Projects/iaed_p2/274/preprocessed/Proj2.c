@@ -110,9 +110,7 @@ hashtable *procura(tabela *tab, char *nome)
   {
     if (strcmp(t->item->nome, nome) == 0)
     {
-      {
-        return t;
-      }
+      return t;
     }
     else
     {
@@ -144,15 +142,11 @@ lista *adiciona_j(tabela *tab, lista *list, char *nome, char *equipa_1, char *eq
   j->anterior = list->fim;
   if (list->fim != 0)
   {
-    {
-      list->fim->seguinte = j;
-    }
+    list->fim->seguinte = j;
   }
   else
   {
-    {
-      list->inicio = j;
-    }
+    list->inicio = j;
   }
 
   list->fim = j;
@@ -166,10 +160,8 @@ lista *adiciona_j(tabela *tab, lista *list, char *nome, char *equipa_1, char *eq
   tab->vet[valor] = entrada;
   if (resultado_1 > resultado_2)
   {
-    {
-      tab_e->vet[valor1]->item->vitorias++;
-      return list;
-    }
+    tab_e->vet[valor1]->item->vitorias++;
+    return list;
   }
   else
   {
@@ -178,10 +170,8 @@ lista *adiciona_j(tabela *tab, lista *list, char *nome, char *equipa_1, char *eq
 
   if (resultado_2 > resultado_1)
   {
-    {
-      tab_e->vet[valor2]->item->vitorias++;
-      return list;
-    }
+    tab_e->vet[valor2]->item->vitorias++;
+    return list;
   }
   else
   {
@@ -199,9 +189,7 @@ hash_equipas *procura_e(tabela_e *tab_e, char *nome)
   {
     if (strcmp(t->item->nome, nome) == 0)
     {
-      {
-        return t;
-      }
+      return t;
     }
     else
     {
@@ -248,10 +236,8 @@ lista *adiciona_jogo(int contador, lista *list, tabela *tab, tabela_e *tab_e)
   b = procura_e(tab_e, equipa_2);
   if (g != 0)
   {
-    {
-      printf("%d Jogo existente.\n", contador);
-      return list;
-    }
+    printf("%d Jogo existente.\n", contador);
+    return list;
   }
   else
   {
@@ -260,16 +246,12 @@ lista *adiciona_jogo(int contador, lista *list, tabela *tab, tabela_e *tab_e)
 
   if ((a == 0) || (b == 0))
   {
-    {
-      printf("%d Equipa inexistente.\n", contador);
-      return list;
-    }
+    printf("%d Equipa inexistente.\n", contador);
+    return list;
   }
   else
   {
-    {
-      list = adiciona_j(tab, list, nome, equipa_1, equipa_2, resultado_1, resultado_2, tab_e);
-    }
+    list = adiciona_j(tab, list, nome, equipa_1, equipa_2, resultado_1, resultado_2, tab_e);
   }
 
   return list;
@@ -280,9 +262,7 @@ void lista_j(int contador, lista *list)
   jogo *temp = list->inicio;
   if (temp == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -310,15 +290,11 @@ void procura_jogo(int contador, tabela *tab)
   entrada = procura(tab, nome);
   if (entrada == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", contador);
-    }
+    printf("%d Jogo inexistente.\n", contador);
   }
   else
   {
-    {
-      printf("%d %s %s %s %d %d\n", contador, entrada->item->nome, entrada->item->equipa_1, entrada->item->equipa_2, entrada->item->resultado_1, entrada->item->resultado_2);
-    }
+    printf("%d %s %s %s %d %d\n", contador, entrada->item->nome, entrada->item->equipa_1, entrada->item->equipa_2, entrada->item->resultado_1, entrada->item->resultado_2);
   }
 
 }
@@ -336,15 +312,11 @@ lista_das_equipas *adiciona_e(tabela_e *tab_e, lista_das_equipas *list_e, char *
   e->anterior = list_e->fim;
   if (list_e->fim != 0)
   {
-    {
-      list_e->fim->seguinte = e;
-    }
+    list_e->fim->seguinte = e;
   }
   else
   {
-    {
-      list_e->inicio = e;
-    }
+    list_e->inicio = e;
   }
 
   list_e->fim = e;
@@ -371,17 +343,13 @@ lista_das_equipas *adiciona_equipa(int contador, lista_das_equipas *list_e, tabe
   entrada = procura_e(tab_e, nome);
   if (entrada != 0)
   {
-    {
-      printf("%d Equipa existente.\n", contador);
-      return list_e;
-    }
+    printf("%d Equipa existente.\n", contador);
+    return list_e;
   }
   else
   {
-    {
-      list_e = adiciona_e(tab_e, list_e, nome);
-      return list_e;
-    }
+    list_e = adiciona_e(tab_e, list_e, nome);
+    return list_e;
   }
 
 }
@@ -399,15 +367,11 @@ void procura_equipa(int contador, tabela_e *tab_e)
   entrada = procura_e(tab_e, nome);
   if (entrada == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", contador);
-    }
+    printf("%d Equipa inexistente.\n", contador);
   }
   else
   {
-    {
-      printf("%d %s %d\n", contador, entrada->item->nome, entrada->item->vitorias);
-    }
+    printf("%d %s %d\n", contador, entrada->item->nome, entrada->item->vitorias);
   }
 
 }
@@ -416,9 +380,7 @@ lista *remove_jogo(lista *list, jogo *j)
 {
   if (j == list->inicio)
   {
-    {
-      j->anterior = 0;
-    }
+    j->anterior = 0;
   }
   else
   {
@@ -427,9 +389,7 @@ lista *remove_jogo(lista *list, jogo *j)
 
   if (j == list->fim)
   {
-    {
-      j->seguinte = 0;
-    }
+    j->seguinte = 0;
   }
   else
   {
@@ -438,28 +398,20 @@ lista *remove_jogo(lista *list, jogo *j)
 
   if (j->anterior == 0)
   {
-    {
-      list->inicio = j->seguinte;
-    }
+    list->inicio = j->seguinte;
   }
   else
   {
-    {
-      j->anterior->seguinte = j->seguinte;
-    }
+    j->anterior->seguinte = j->seguinte;
   }
 
   if (j->seguinte == 0)
   {
-    {
-      list->fim = j->anterior;
-    }
+    list->fim = j->anterior;
   }
   else
   {
-    {
-      j->seguinte->anterior = j->anterior;
-    }
+    j->seguinte->anterior = j->anterior;
   }
 
   return list;
@@ -478,9 +430,7 @@ lista *apaga_j(tabela *tab, lista *list, char *nome, tabela_e *tab_e)
   {
     if (strcmp(temp->nome, nome) == 0)
     {
-      {
-        j = temp;
-      }
+      j = temp;
     }
     else
     {
@@ -496,10 +446,8 @@ lista *apaga_j(tabela *tab, lista *list, char *nome, tabela_e *tab_e)
   tab->vet[valor] = 0;
   if (j->resultado_1 > j->resultado_2)
   {
-    {
-      tab_e->vet[valor1]->item->vitorias--;
-      return list;
-    }
+    tab_e->vet[valor1]->item->vitorias--;
+    return list;
   }
   else
   {
@@ -508,10 +456,8 @@ lista *apaga_j(tabela *tab, lista *list, char *nome, tabela_e *tab_e)
 
   if (j->resultado_2 > j->resultado_1)
   {
-    {
-      tab_e->vet[valor2]->item->vitorias--;
-      return list;
-    }
+    tab_e->vet[valor2]->item->vitorias--;
+    return list;
   }
   else
   {
@@ -538,17 +484,13 @@ lista *apaga_jogo(int contador, lista *list, tabela *tab, tabela_e *tab_e)
   entrada = procura(tab, nome);
   if (entrada == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", contador);
-      return list;
-    }
+    printf("%d Jogo inexistente.\n", contador);
+    return list;
   }
   else
   {
-    {
-      list = apaga_j(tab, list, nome, tab_e);
-      return list;
-    }
+    list = apaga_j(tab, list, nome, tab_e);
+    return list;
   }
 
 }
@@ -575,10 +517,8 @@ lista *altera_score(int contador, lista *list, tabela *tab, tabela_e *tab_e)
   temp = list->inicio;
   if (entrada == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", contador);
-      return list;
-    }
+    printf("%d Jogo inexistente.\n", contador);
+    return list;
   }
   else
   {
@@ -590,32 +530,26 @@ lista *altera_score(int contador, lista *list, tabela *tab, tabela_e *tab_e)
   valor2 = hash(entrada->item->equipa_2);
   if (tab->vet[valor]->item->resultado_1 == tab->vet[valor]->item->resultado_2)
   {
+    if (resultado_1 > resultado_2)
     {
-      if (resultado_1 > resultado_2)
-      {
-        {
-          tab_e->vet[valor1]->item->vitorias++;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (resultado_2 > resultado_1)
-      {
-        {
-          tab_e->vet[valor2]->item->vitorias++;
-        }
-      }
-      else
-      {
-        
-      }
-
-      tab->vet[valor]->item->resultado_1 = resultado_1;
-      tab->vet[valor]->item->resultado_2 = resultado_2;
+      tab_e->vet[valor1]->item->vitorias++;
     }
+    else
+    {
+      
+    }
+
+    if (resultado_2 > resultado_1)
+    {
+      tab_e->vet[valor2]->item->vitorias++;
+    }
+    else
+    {
+      
+    }
+
+    tab->vet[valor]->item->resultado_1 = resultado_1;
+    tab->vet[valor]->item->resultado_2 = resultado_2;
   }
   else
   {
@@ -624,33 +558,27 @@ lista *altera_score(int contador, lista *list, tabela *tab, tabela_e *tab_e)
 
   if (tab->vet[valor]->item->resultado_1 > tab->vet[valor]->item->resultado_2)
   {
+    if (resultado_1 < resultado_2)
     {
-      if (resultado_1 < resultado_2)
-      {
-        {
-          tab_e->vet[valor1]->item->vitorias--;
-          tab_e->vet[valor2]->item->vitorias++;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (resultado_1 == resultado_2)
-      {
-        {
-          tab_e->vet[valor1]->item->vitorias--;
-        }
-      }
-      else
-      {
-        
-      }
-
-      tab->vet[valor]->item->resultado_1 = resultado_1;
-      tab->vet[valor]->item->resultado_2 = resultado_2;
+      tab_e->vet[valor1]->item->vitorias--;
+      tab_e->vet[valor2]->item->vitorias++;
     }
+    else
+    {
+      
+    }
+
+    if (resultado_1 == resultado_2)
+    {
+      tab_e->vet[valor1]->item->vitorias--;
+    }
+    else
+    {
+      
+    }
+
+    tab->vet[valor]->item->resultado_1 = resultado_1;
+    tab->vet[valor]->item->resultado_2 = resultado_2;
   }
   else
   {
@@ -659,33 +587,27 @@ lista *altera_score(int contador, lista *list, tabela *tab, tabela_e *tab_e)
 
   if (tab->vet[valor]->item->resultado_2 > tab->vet[valor]->item->resultado_1)
   {
+    if (resultado_2 < resultado_1)
     {
-      if (resultado_2 < resultado_1)
-      {
-        {
-          tab_e->vet[valor2]->item->vitorias--;
-          tab_e->vet[valor1]->item->vitorias++;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (resultado_1 == resultado_2)
-      {
-        {
-          tab_e->vet[valor2]->item->vitorias--;
-        }
-      }
-      else
-      {
-        
-      }
-
-      tab->vet[valor]->item->resultado_1 = resultado_1;
-      tab->vet[valor]->item->resultado_2 = resultado_2;
+      tab_e->vet[valor2]->item->vitorias--;
+      tab_e->vet[valor1]->item->vitorias++;
     }
+    else
+    {
+      
+    }
+
+    if (resultado_1 == resultado_2)
+    {
+      tab_e->vet[valor2]->item->vitorias--;
+    }
+    else
+    {
+      
+    }
+
+    tab->vet[valor]->item->resultado_1 = resultado_1;
+    tab->vet[valor]->item->resultado_2 = resultado_2;
   }
   else
   {
@@ -696,10 +618,8 @@ lista *altera_score(int contador, lista *list, tabela *tab, tabela_e *tab_e)
   {
     if (strcmp(temp->nome, nome) == 0)
     {
-      {
-        temp->resultado_1 = resultado_1;
-        temp->resultado_2 = resultado_2;
-      }
+      temp->resultado_1 = resultado_1;
+      temp->resultado_2 = resultado_2;
     }
     else
     {
@@ -745,9 +665,7 @@ void encontra_equipas(int contador, lista_das_equipas *list_e)
   temp = list_e->inicio;
   if (list_e->inicio == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -758,9 +676,7 @@ void encontra_equipas(int contador, lista_das_equipas *list_e)
   {
     if (temp->vitorias > j)
     {
-      {
-        j = temp->vitorias;
-      }
+      j = temp->vitorias;
     }
     else
     {
@@ -775,10 +691,8 @@ void encontra_equipas(int contador, lista_das_equipas *list_e)
   {
     if (temp->vitorias == j)
     {
-      {
-        aux[e] = temp->nome;
-        e++;
-      }
+      aux[e] = temp->nome;
+      e++;
     }
     else
     {

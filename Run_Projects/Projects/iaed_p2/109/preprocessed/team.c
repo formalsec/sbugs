@@ -40,10 +40,8 @@ HashTeam tHashInsert(HashTeam *table, Team team)
   (*table)->N++;
   if ((*table)->N >= ((*table)->M / 2))
   {
-    {
-      newtable = tHashExpand(*table);
-      return newtable;
-    }
+    newtable = tHashExpand(*table);
+    return newtable;
   }
   else
   {
@@ -61,9 +59,7 @@ HashTeam tHashExpand(HashTeam table)
   {
     if (table->teams[i])
     {
-      {
-        tHashInsert(&newtable, table->teams[i]);
-      }
+      tHashInsert(&newtable, table->teams[i]);
     }
     else
     {
@@ -84,15 +80,11 @@ Team tHashSearch(HashTeam table, char *name)
   {
     if (strcmp(name, table->teams[i]->name) == 0)
     {
-      {
-        return table->teams[i];
-      }
+      return table->teams[i];
     }
     else
     {
-      {
-        i = (i + 1) % table->M;
-      }
+      i = (i + 1) % table->M;
     }
 
   }
@@ -118,9 +110,7 @@ void tHashFree(HashTeam table)
   {
     if (table->teams[i])
     {
-      {
-        freeTeam(table->teams[i]);
-      }
+      freeTeam(table->teams[i]);
     }
     else
     {

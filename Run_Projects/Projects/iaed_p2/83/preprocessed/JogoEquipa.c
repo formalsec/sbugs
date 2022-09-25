@@ -22,10 +22,8 @@ char *strndup(const char *s, size_t n)
   p = malloc(n + 1);
   if (p != 0)
   {
-    {
-      memcpy(p, s, n);
-      p[n] = '\0';
-    }
+    memcpy(p, s, n);
+    p[n] = '\0';
   }
   else
   {

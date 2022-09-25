@@ -142,10 +142,8 @@ void get_input(char info[5][100])
     token = strtok(0, str);
     if (token != 0)
     {
-      {
-        i++;
-        strcpy(info[i], token);
-      }
+      i++;
+      strcpy(info[i], token);
     }
     else
     {
@@ -199,10 +197,8 @@ void _q_(int k)
   {
     if (idp == PRODUTO[i].identificador)
     {
-      {
-        j = 1;
-        break;
-      }
+      j = 1;
+      break;
     }
     else
     {
@@ -249,10 +245,8 @@ int _A_(int n)
   {
     if (ENCOMENDA[ide][i].identificador == ide)
     {
-      {
-        j = 1;
-        break;
-      }
+      j = 1;
+      break;
     }
     else
     {
@@ -274,10 +268,8 @@ int _A_(int n)
   {
     if (PRODUTO[i].identificador == idp)
     {
-      {
-        l = 1;
-        break;
-      }
+      l = 1;
+      break;
     }
     else
     {
@@ -288,9 +280,7 @@ int _A_(int n)
 
   if ((l == 0) || (n == (-1)))
   {
-    {
-      return printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
-    }
+    return printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
   }
   else
   {
@@ -327,27 +317,23 @@ int _A_(int n)
 
   if (verifica_idp_na_encomenda(idp, ide) == 0)
   {
+    for (i = 0; i < 200; i++)
     {
-      for (i = 0; i < 200; i++)
+      if (ENCOMENDA[ide][i].identificadorpro == (-1))
       {
-        if (ENCOMENDA[ide][i].identificadorpro == (-1))
-        {
-          {
-            PRODUTO[idp].quantidade = PRODUTO[idp].quantidade - qtd;
-            ENCOMENDA[ide][i].identificadorpro = idp;
-            ENCOMENDA[ide][i].identificador = ide;
-            return ENCOMENDA[ide][i].quantidade = ENCOMENDA[ide][i].quantidade + qtd;
-            break;
-          }
-        }
-        else
-        {
-          
-        }
-
+        PRODUTO[idp].quantidade = PRODUTO[idp].quantidade - qtd;
+        ENCOMENDA[ide][i].identificadorpro = idp;
+        ENCOMENDA[ide][i].identificador = ide;
+        return ENCOMENDA[ide][i].quantidade = ENCOMENDA[ide][i].quantidade + qtd;
+        break;
+      }
+      else
+      {
+        
       }
 
     }
+
   }
   else
   {
@@ -356,27 +342,23 @@ int _A_(int n)
 
   if (verifica_idp_na_encomenda(idp, ide) == 1)
   {
+    for (i = 0; i < 200; i++)
     {
-      for (i = 0; i < 200; i++)
+      if (ENCOMENDA[ide][i].identificadorpro == idp)
       {
-        if (ENCOMENDA[ide][i].identificadorpro == idp)
-        {
-          {
-            PRODUTO[idp].quantidade = PRODUTO[idp].quantidade - qtd;
-            ENCOMENDA[ide][i].identificadorpro = idp;
-            ENCOMENDA[ide][i].identificador = ide;
-            ENCOMENDA[ide][i].quantidade = ENCOMENDA[ide][i].quantidade + qtd;
-            break;
-          }
-        }
-        else
-        {
-          
-        }
-
+        PRODUTO[idp].quantidade = PRODUTO[idp].quantidade - qtd;
+        ENCOMENDA[ide][i].identificadorpro = idp;
+        ENCOMENDA[ide][i].identificador = ide;
+        ENCOMENDA[ide][i].quantidade = ENCOMENDA[ide][i].quantidade + qtd;
+        break;
+      }
+      else
+      {
+        
       }
 
     }
+
   }
   else
   {
@@ -409,10 +391,8 @@ int _r_(int k)
   {
     if (PRODUTO[i].identificador == idp)
     {
-      {
-        l = 1;
-        break;
-      }
+      l = 1;
+      break;
     }
     else
     {
@@ -458,10 +438,8 @@ int _R_()
   {
     if (ENCOMENDA[ide][i].identificador == ide)
     {
-      {
-        j = 1;
-        break;
-      }
+      j = 1;
+      break;
     }
     else
     {
@@ -483,10 +461,8 @@ int _R_()
   {
     if (PRODUTO[i].identificador == idp)
     {
-      {
-        l = 1;
-        break;
-      }
+      l = 1;
+      break;
     }
     else
     {
@@ -508,13 +484,11 @@ int _R_()
   {
     if (ENCOMENDA[ide][i].identificadorpro == idp)
     {
-      {
-        PRODUTO[idp].quantidade = PRODUTO[idp].quantidade + ENCOMENDA[ide][i].quantidade;
-        ENCOMENDA[ide][i].quantidade = 0;
-        ENCOMENDA[ide][i].identificador = -1;
-        ENCOMENDA[ide][i].identificadorpro = -1;
-        break;
-      }
+      PRODUTO[idp].quantidade = PRODUTO[idp].quantidade + ENCOMENDA[ide][i].quantidade;
+      ENCOMENDA[ide][i].quantidade = 0;
+      ENCOMENDA[ide][i].identificador = -1;
+      ENCOMENDA[ide][i].identificadorpro = -1;
+      break;
     }
     else
     {
@@ -539,10 +513,8 @@ int _C_()
   {
     if (ENCOMENDA[ide][i].identificador == ide)
     {
-      {
-        j = 1;
-        break;
-      }
+      j = 1;
+      break;
     }
     else
     {
@@ -564,9 +536,7 @@ int _C_()
   {
     if (ENCOMENDA[ide][i].identificadorpro != (-1))
     {
-      {
-        custo += PRODUTO[ENCOMENDA[ide][i].identificadorpro].preco * ENCOMENDA[ide][i].quantidade;
-      }
+      custo += PRODUTO[ENCOMENDA[ide][i].identificadorpro].preco * ENCOMENDA[ide][i].quantidade;
     }
     else
     {
@@ -602,11 +572,9 @@ int _p_(int k)
   {
     if (PRODUTO[i].identificador == idp)
     {
-      {
-        l = 1;
-        PRODUTO[i].preco = preco;
-        break;
-      }
+      l = 1;
+      PRODUTO[i].preco = preco;
+      break;
     }
     else
     {
@@ -642,9 +610,7 @@ int _E_(int k)
   idp = atoi(info[1]);
   if (k == (-1))
   {
-    {
-      return printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
-    }
+    return printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
   }
   else
   {
@@ -655,10 +621,8 @@ int _E_(int k)
   {
     if (ENCOMENDA[ide][i].identificador == ide)
     {
-      {
-        j = 1;
-        break;
-      }
+      j = 1;
+      break;
     }
     else
     {
@@ -680,11 +644,9 @@ int _E_(int k)
   {
     if (PRODUTO[i].identificador == idp)
     {
-      {
-        l = 1;
-        strcpy(desc, PRODUTO[idp].descricao);
-        break;
-      }
+      l = 1;
+      strcpy(desc, PRODUTO[idp].descricao);
+      break;
     }
     else
     {
@@ -706,10 +668,8 @@ int _E_(int k)
   {
     if (ENCOMENDA[ide][i].identificadorpro == idp)
     {
-      {
-        qtd = ENCOMENDA[ide][i].quantidade;
-        break;
-      }
+      qtd = ENCOMENDA[ide][i].quantidade;
+      break;
     }
     else
     {
@@ -739,10 +699,8 @@ int _m_(int n)
   {
     if (PRODUTO[i].identificador == idp)
     {
-      {
-        l = 1;
-        break;
-      }
+      l = 1;
+      break;
     }
     else
     {
@@ -766,10 +724,8 @@ int _m_(int n)
     {
       if (ENCOMENDA[i][j].identificadorpro == idp)
       {
-        {
-          count = ENCOMENDA[i][j].quantidade;
-          k = 1;
-        }
+        count = ENCOMENDA[i][j].quantidade;
+        k = 1;
       }
       else
       {
@@ -780,10 +736,8 @@ int _m_(int n)
 
     if (count > max)
     {
-      {
-        max = count;
-        ide = i;
-      }
+      max = count;
+      ide = i;
     }
     else
     {
@@ -887,9 +841,7 @@ int less_l(produto a, produto v)
 {
   if (a.preco < v.preco)
   {
-    {
-      return 1;
-    }
+    return 1;
   }
   else
   {
@@ -907,26 +859,24 @@ int less_l(produto a, produto v)
 
   if (a.preco == v.preco)
   {
+    if (a.identificador < v.identificador)
     {
-      if (a.identificador < v.identificador)
-      {
-        return 1;
-      }
-      else
-      {
-        
-      }
-
-      if (a.identificador > v.identificador)
-      {
-        return 0;
-      }
-      else
-      {
-        
-      }
-
+      return 1;
     }
+    else
+    {
+      
+    }
+
+    if (a.identificador > v.identificador)
+    {
+      return 0;
+    }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -975,24 +925,20 @@ int _L_(int n)
 
   if (calcula_produtos_encomenda(ide) == 1)
   {
+    for (i = 0; i < 200; i++)
     {
-      for (i = 0; i < 200; i++)
+      if (ENCOMENDA[ide][i].identificadorpro != (-1))
       {
-        if (ENCOMENDA[ide][i].identificadorpro != (-1))
-        {
-          {
-            return printf("* %s %d %d\n", PRODUTO[ENCOMENDA[ide][i].identificadorpro].descricao, PRODUTO[ENCOMENDA[ide][i].identificadorpro].preco, ENCOMENDA[ide][i].quantidade);
-            break;
-          }
-        }
-        else
-        {
-          
-        }
-
+        return printf("* %s %d %d\n", PRODUTO[ENCOMENDA[ide][i].identificadorpro].descricao, PRODUTO[ENCOMENDA[ide][i].identificadorpro].preco, ENCOMENDA[ide][i].quantidade);
+        break;
+      }
+      else
+      {
+        
       }
 
     }
+
   }
   else
   {
@@ -1003,12 +949,10 @@ int _L_(int n)
   {
     if (ENCOMENDA[ide][i].identificadorpro != (-1))
     {
-      {
-        guardaenc[ide][i].identificadorpro = ENCOMENDA[ide][i].identificadorpro;
-        guardaenc[ide][i].identificador = ENCOMENDA[ide][i].identificador;
-        guardaenc[ide][i].quantidade = ENCOMENDA[ide][i].quantidade;
-        r++;
-      }
+      guardaenc[ide][i].identificadorpro = ENCOMENDA[ide][i].identificadorpro;
+      guardaenc[ide][i].identificador = ENCOMENDA[ide][i].identificador;
+      guardaenc[ide][i].quantidade = ENCOMENDA[ide][i].quantidade;
+      r++;
     }
     else
     {
@@ -1022,9 +966,7 @@ int _L_(int n)
   {
     if (verifica_idp_na_encomenda(guardaenc[ide][i].identificadorpro, ide) == 1)
     {
-      {
-        printf("* %s %d %d\n", PRODUTO[guardaenc[ide][i].identificadorpro].descricao, PRODUTO[guardaenc[ide][i].identificadorpro].preco, guardaenc[ide][i].quantidade);
-      }
+      printf("* %s %d %d\n", PRODUTO[guardaenc[ide][i].identificadorpro].descricao, PRODUTO[guardaenc[ide][i].identificadorpro].preco, guardaenc[ide][i].quantidade);
     }
     else
     {
@@ -1124,17 +1066,13 @@ int less_L(encomenda a, encomenda v)
   {
     if (desc1[i] < desc2[i])
     {
-      {
-        return 0;
-        break;
-      }
+      return 0;
+      break;
     }
     else
     {
-      {
-        return 1;
-        break;
-      }
+      return 1;
+      break;
     }
 
   }
@@ -1158,9 +1096,7 @@ int calcula_peso_encomenda(int ide)
   {
     if (ENCOMENDA[ide][i].identificadorpro != (-1))
     {
-      {
-        pesototal += PRODUTO[ENCOMENDA[ide][i].identificadorpro].peso * ENCOMENDA[ide][i].quantidade;
-      }
+      pesototal += PRODUTO[ENCOMENDA[ide][i].identificadorpro].peso * ENCOMENDA[ide][i].quantidade;
     }
     else
     {
@@ -1181,9 +1117,7 @@ int calcula_produtos_encomenda(int ide)
   {
     if (ENCOMENDA[ide][i].identificadorpro != (-1))
     {
-      {
-        cont++;
-      }
+      cont++;
     }
     else
     {
@@ -1204,10 +1138,8 @@ int verifica_idp_na_encomenda(int idp, int ide)
   {
     if (ENCOMENDA[ide][i].identificadorpro == idp)
     {
-      {
-        yes = 1;
-        break;
-      }
+      yes = 1;
+      break;
     }
     else
     {

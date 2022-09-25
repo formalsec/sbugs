@@ -75,42 +75,36 @@ void execute_command(team_node *tree_ptr, game_item *hash_ptr)
         gm = search_game(hash_ptr, gm_name);
         if (((t1 != 0) && (t2 != 0)) && (gm == 0))
       {
+        if (order_fst == 0)
         {
-          if (order_fst == 0)
+          insert_game(hash_ptr, create_game(gm_name, t1->team, t2->team, s1, s2), &order_fst, &order_crnt);
+          order_prev = order_fst;
+        }
+        else
+        {
+          insert_game(hash_ptr, create_game(gm_name, t1->team, t2->team, s1, s2), &order_fst, &order_crnt);
+          order_prev->in_next = order_crnt;
+          order_crnt->in_previous = order_prev;
+          order_prev = order_crnt;
+        }
+
+        if (s1 > s2)
+        {
+          inc_score(t1->team);
+        }
+        else
+        {
+          if (s1 < s2)
           {
-            {
-              insert_game(hash_ptr, create_game(gm_name, t1->team, t2->team, s1, s2), &order_fst, &order_crnt);
-              order_prev = order_fst;
-            }
+            inc_score(t2->team);
           }
           else
           {
-            {
-              insert_game(hash_ptr, create_game(gm_name, t1->team, t2->team, s1, s2), &order_fst, &order_crnt);
-              order_prev->in_next = order_crnt;
-              order_crnt->in_previous = order_prev;
-              order_prev = order_crnt;
-            }
-          }
-
-          if (s1 > s2)
-          {
-            inc_score(t1->team);
-          }
-          else
-          {
-            if (s1 < s2)
-            {
-              inc_score(t2->team);
-            }
-            else
-            {
-              
-            }
-
+            
           }
 
         }
+
       }
       else
       {
@@ -200,31 +194,29 @@ void execute_command(team_node *tree_ptr, game_item *hash_ptr)
         gm = search_game(hash_ptr, gm_name);
         if (gm != 0)
       {
+        hashtbl = hash_ptr[hash_function(gm_name)];
+        s1 = gm->game->score_1;
+        s2 = gm->game->score_2;
+        if (s1 > s2)
         {
-          hashtbl = hash_ptr[hash_function(gm_name)];
-          s1 = gm->game->score_1;
-          s2 = gm->game->score_2;
-          if (s1 > s2)
-          {
-            dec_score(gm->game->team_1);
-          }
-          else
-          {
-            
-          }
-
-          if (s1 < s2)
-          {
-            dec_score(gm->game->team_2);
-          }
-          else
-          {
-            
-          }
-
-          delete_ordered(&order_fst, gm);
-          delete_game(hashtbl, gm);
+          dec_score(gm->game->team_1);
         }
+        else
+        {
+          
+        }
+
+        if (s1 < s2)
+        {
+          dec_score(gm->game->team_2);
+        }
+        else
+        {
+          
+        }
+
+        delete_ordered(&order_fst, gm);
+        delete_game(hashtbl, gm);
       }
       else
       {
@@ -259,11 +251,9 @@ void execute_command(team_node *tree_ptr, game_item *hash_ptr)
       case 'g':
         if ((*tree_ptr) != 0)
       {
-        {
-          m = victories(*tree_ptr);
-          printf("%d Melhores %d\n", NL, m);
-          in_order(tree_ptr, m, NL);
-        }
+        m = victories(*tree_ptr);
+        printf("%d Melhores %d\n", NL, m);
+        in_order(tree_ptr, m, NL);
       }
       else
       {

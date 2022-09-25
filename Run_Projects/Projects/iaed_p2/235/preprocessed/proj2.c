@@ -132,49 +132,43 @@ int createNewGame(Game g[3500], Team t[3500], int nl, int i, int j)
   c = returnTeamIndex(t, t2, j);
   if (a != (-1))
   {
-    {
-      printf("%d Jogo existente.\n", nl);
-      return 0;
-    }
+    printf("%d Jogo existente.\n", nl);
+    return 0;
   }
   else
   {
     if ((b == (-1)) || (c == (-1)))
     {
-      {
-        printf("%d Equipa inexistente.\n", nl);
-        return 0;
-      }
+      printf("%d Equipa inexistente.\n", nl);
+      return 0;
     }
     else
     {
       if (i < 3500)
       {
+        strcpy(g[i].name, n);
+        strcpy(g[i].team1, t1);
+        strcpy(g[i].team2, t2);
+        g[i].score1 = s1;
+        g[i].score2 = s2;
+        if (s1 > s2)
         {
-          strcpy(g[i].name, n);
-          strcpy(g[i].team1, t1);
-          strcpy(g[i].team2, t2);
-          g[i].score1 = s1;
-          g[i].score2 = s2;
-          if (s1 > s2)
+          t[b].victories++;
+        }
+        else
+        {
+          if (s2 > s1)
           {
-            t[b].victories++;
+            t[c].victories++;
           }
           else
           {
-            if (s2 > s1)
-            {
-              t[c].victories++;
-            }
-            else
-            {
-              
-            }
-
+            
           }
 
-          return 1;
         }
+
+        return 1;
       }
       else
       {
@@ -201,19 +195,15 @@ int createNewTeam(Team t[3500], int nl, int j)
   a = returnTeamIndex(t, n, j);
   if (a != (-1))
   {
-    {
-      printf("%d Equipa existente.\n", nl);
-    }
+    printf("%d Equipa existente.\n", nl);
   }
   else
   {
     if (j < 3500)
     {
-      {
-        strcpy(t[j].name, n);
-        t[j].victories = 0;
-        return 1;
-      }
+      strcpy(t[j].name, n);
+      t[j].victories = 0;
+      return 1;
     }
     else
     {
@@ -253,10 +243,8 @@ void searchGame(Game g[3500], int nl, int i)
   }
   else
   {
-    {
-      printf("%d %s %s", nl, g[a].name, g[a].team1);
-      printf(" %s %d %d\n", g[a].team2, g[a].score1, g[a].score2);
-    }
+    printf("%d %s %s", nl, g[a].name, g[a].team1);
+    printf(" %s %d %d\n", g[a].team2, g[a].score1, g[a].score2);
   }
 
 }
@@ -299,39 +287,35 @@ int removeGame(Game g[3500], Team t[3500], int nl, int i, int j)
   a = returnGameIndex(g, n, i);
   if (a == (-1))
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-    }
+    printf("%d Jogo inexistente.\n", nl);
   }
   else
   {
+    b = returnTeamIndex(t, g[a].team1, j);
+    c = returnTeamIndex(t, g[a].team2, j);
+    if (g[a].score1 > g[a].score2)
     {
-      b = returnTeamIndex(t, g[a].team1, j);
-      c = returnTeamIndex(t, g[a].team2, j);
-      if (g[a].score1 > g[a].score2)
+      t[b].victories--;
+    }
+    else
+    {
+      if (g[a].score2 > g[a].score1)
       {
-        t[b].victories--;
+        t[c].victories--;
       }
       else
       {
-        if (g[a].score2 > g[a].score1)
-        {
-          t[c].victories--;
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      for (x = a; x <= i; x++)
-      {
-        g[x] = g[x + 1];
-      }
-
-      return 1;
     }
+
+    for (x = a; x <= i; x++)
+    {
+      g[x] = g[x + 1];
+    }
+
+    return 1;
   }
 
   return 0;
@@ -363,55 +347,48 @@ void changeScore(Game g[3500], Team t[3500], int nl, int i, int j)
   {
     if ((s1 >= 0) && (s2 >= 0))
     {
+      b = returnTeamIndex(t, g[a].team1, j);
+      c = returnTeamIndex(t, g[a].team2, j);
+      d = addOrSubtractVictories(g[a].score1, g[a].score2, s1, s2);
+      if (d == 0)
       {
-        b = returnTeamIndex(t, g[a].team1, j);
-        c = returnTeamIndex(t, g[a].team2, j);
-        d = addOrSubtractVictories(g[a].score1, g[a].score2, s1, s2);
-        if (d == 0)
+        t[b].victories--;
+        t[c].victories++;
+      }
+      else
+      {
+        if (d == 1)
         {
-          {
-            t[b].victories--;
-            t[c].victories++;
-          }
+          t[b].victories++;
+          t[c].victories--;
         }
         else
         {
-          if (d == 1)
+          if (d == (-1))
           {
-            {
-              t[b].victories++;
-              t[c].victories--;
-            }
+            t[b].victories++;
           }
           else
           {
-            if (d == (-1))
+            if (d == 2)
             {
-              t[b].victories++;
+              t[c].victories++;
             }
             else
             {
-              if (d == 2)
+              if (d == (-2))
               {
-                t[c].victories++;
+                t[b].victories--;
               }
               else
               {
-                if (d == (-2))
+                if (d == 3)
                 {
-                  t[b].victories--;
+                  t[c].victories--;
                 }
                 else
                 {
-                  if (d == 3)
-                  {
-                    t[c].victories--;
-                  }
-                  else
-                  {
-                    
-                  }
-
+                  
                 }
 
               }
@@ -422,9 +399,10 @@ void changeScore(Game g[3500], Team t[3500], int nl, int i, int j)
 
         }
 
-        g[a].score1 = s1;
-        g[a].score2 = s2;
       }
+
+      g[a].score1 = s1;
+      g[a].score2 = s2;
     }
     else
     {
@@ -461,10 +439,8 @@ void listMostWins(Team t[3500], int nl, int j)
   {
     if (t[x].victories == max_v)
     {
-      {
-        z++;
-        strcpy(o[z], t[x].name);
-      }
+      z++;
+      strcpy(o[z], t[x].name);
     }
     else
     {
@@ -479,11 +455,9 @@ void listMostWins(Team t[3500], int nl, int j)
     {
       if (strcmp(o[x], o[y]) > 0)
       {
-        {
-          strcpy(temp, o[x]);
-          strcpy(o[x], o[y]);
-          strcpy(o[y], temp);
-        }
+        strcpy(temp, o[x]);
+        strcpy(o[x], o[y]);
+        strcpy(o[y], temp);
       }
       else
       {
@@ -496,12 +470,10 @@ void listMostWins(Team t[3500], int nl, int j)
 
   if (j > 0)
   {
-    {
-      printf("%d Melhores %d\n", nl, max_v);
-      for (x = 0; x <= z; x++)
-        printf("%d * %s\n", nl, o[x]);
+    printf("%d Melhores %d\n", nl, max_v);
+    for (x = 0; x <= z; x++)
+      printf("%d * %s\n", nl, o[x]);
 
-    }
   }
   else
   {

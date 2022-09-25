@@ -47,97 +47,73 @@ int main()
     comando = getchar();
     if (comando == 'a')
     {
-      {
-        adiciona_produto();
-      }
+      adiciona_produto();
     }
     else
     {
       if (comando == 'N')
       {
-        {
-          cria_nova_encomenda();
-        }
+        cria_nova_encomenda();
       }
       else
       {
         if (comando == 'q')
         {
-          {
-            adiciona_stock_produto();
-          }
+          adiciona_stock_produto();
         }
         else
         {
           if (comando == 'A')
           {
-            {
-              adiciona_produto_encomenda();
-            }
+            adiciona_produto_encomenda();
           }
           else
           {
             if (comando == 'r')
             {
-              {
-                remove_stock_produto();
-              }
+              remove_stock_produto();
             }
             else
             {
               if (comando == 'R')
               {
-                {
-                  remove_produto_encomenda();
-                }
+                remove_produto_encomenda();
               }
               else
               {
                 if (comando == 'C')
                 {
-                  {
-                    custo_encomenda();
-                  }
+                  custo_encomenda();
                 }
                 else
                 {
                   if (comando == 'p')
                   {
-                    {
-                      altera_preco_produto();
-                    }
+                    altera_preco_produto();
                   }
                   else
                   {
                     if (comando == 'E')
                     {
-                      {
-                        descricao_e_quantidade_produto_encomenda();
-                      }
+                      descricao_e_quantidade_produto_encomenda();
                     }
                     else
                     {
                       if (comando == 'm')
                       {
-                        {
-                          produto_encomenda_mais_vezes();
-                        }
+                        produto_encomenda_mais_vezes();
                       }
                       else
                       {
                         if (comando == 'l')
                         {
-                          {
-                            lista_produtos_preco();
-                          }
+                          lista_produtos_preco();
                         }
                         else
                         {
                           if (comando == 'L')
                           {
-                            {
-                              lista_produtos_alfabeto();
-                            }
+                            lista_produtos_alfabeto();
                           }
                           else
                           {
@@ -202,15 +178,11 @@ void adiciona_stock_produto()
   quantidade = new_sym_var(sizeof(int) * 8);
   if ((id_produto < 0) || (id_produto > (num_produtos - 1)))
   {
-    {
-      printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", id_produto);
-    }
+    printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", id_produto);
   }
   else
   {
-    {
-      produtos[id_produto].qtd += quantidade;
-    }
+    produtos[id_produto].qtd += quantidade;
   }
 
 }
@@ -227,103 +199,81 @@ void adiciona_produto_encomenda()
   quantidade = new_sym_var(sizeof(int) * 8);
   if (id_encomenda > (num_encomendas - 1))
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", id_produto, id_encomenda);
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", id_produto, id_encomenda);
   }
   else
   {
     if (id_produto > (num_produtos - 1))
     {
-      {
-        printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", id_produto, id_encomenda);
-      }
+      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", id_produto, id_encomenda);
     }
     else
     {
       if (quantidade > produtos[id_produto].qtd)
       {
-        {
-          printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", id_produto, id_encomenda);
-        }
+        printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", id_produto, id_encomenda);
       }
       else
       {
         if ((produtos[id_produto].peso * quantidade) > 200)
         {
-          {
-            printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", id_produto, id_encomenda);
-          }
+          printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", id_produto, id_encomenda);
         }
         else
         {
+          for (contador = 0; contador < num_produtos_encomenda; ++contador)
           {
-            for (contador = 0; contador < num_produtos_encomenda; ++contador)
-            {
-              encomenda[id_encomenda].peso_total += produtos[encomenda[id_encomenda].idp[contador]].peso * quantidade;
-            }
+            encomenda[id_encomenda].peso_total += produtos[encomenda[id_encomenda].idp[contador]].peso * quantidade;
+          }
 
-            if (encomenda[id_encomenda].peso_total > 200)
+          if (encomenda[id_encomenda].peso_total > 200)
+          {
+            printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", id_produto, id_encomenda);
+            encomenda[id_encomenda].peso_total -= produtos[encomenda[id_encomenda].idp[id_produto]].peso * quantidade;
+          }
+          else
+          {
+            if (num_produtos_encomenda > 0)
             {
+              for (contador = 0; contador < num_produtos_encomenda; contador++)
               {
-                printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", id_produto, id_encomenda);
-                encomenda[id_encomenda].peso_total -= produtos[encomenda[id_encomenda].idp[id_produto]].peso * quantidade;
-              }
-            }
-            else
-            {
-              {
-                if (num_produtos_encomenda > 0)
+                if (id_produto == encomenda[id_encomenda].idp[contador])
                 {
-                  {
-                    for (contador = 0; contador < num_produtos_encomenda; contador++)
-                    {
-                      if (id_produto == encomenda[id_encomenda].idp[contador])
-                      {
-                        {
-                          encomenda[id_encomenda].qtd[contador] += quantidade;
-                          produtos[id_produto].qtd -= quantidade;
-                          produto_igual = 1;
-                        }
-                      }
-                      else
-                      {
-                        
-                      }
-
-                    }
-
-                    if (produto_igual != 1)
-                    {
-                      {
-                        encomenda[id_encomenda].idp[num_produtos_encomenda] = id_produto;
-                        encomenda[id_encomenda].qtd[num_produtos_encomenda] += quantidade;
-                        produtos[id_produto].qtd = produtos[id_produto].qtd - quantidade;
-                        num_produtos_encomenda++;
-                      }
-                    }
-                    else
-                    {
-                      
-                    }
-
-                  }
+                  encomenda[id_encomenda].qtd[contador] += quantidade;
+                  produtos[id_produto].qtd -= quantidade;
+                  produto_igual = 1;
                 }
                 else
                 {
-                  {
-                    encomenda[id_encomenda].peso_total += produtos[encomenda[id_encomenda].idp[0]].peso * quantidade;
-                    encomenda[id_encomenda].idp[num_produtos_encomenda] = id_produto;
-                    encomenda[id_encomenda].qtd[num_produtos_encomenda] += quantidade;
-                    produtos[id_produto].qtd = produtos[id_produto].qtd - quantidade;
-                    num_produtos_encomenda++;
-                  }
+                  
                 }
 
               }
+
+              if (produto_igual != 1)
+              {
+                encomenda[id_encomenda].idp[num_produtos_encomenda] = id_produto;
+                encomenda[id_encomenda].qtd[num_produtos_encomenda] += quantidade;
+                produtos[id_produto].qtd = produtos[id_produto].qtd - quantidade;
+                num_produtos_encomenda++;
+              }
+              else
+              {
+                
+              }
+
+            }
+            else
+            {
+              encomenda[id_encomenda].peso_total += produtos[encomenda[id_encomenda].idp[0]].peso * quantidade;
+              encomenda[id_encomenda].idp[num_produtos_encomenda] = id_produto;
+              encomenda[id_encomenda].qtd[num_produtos_encomenda] += quantidade;
+              produtos[id_produto].qtd = produtos[id_produto].qtd - quantidade;
+              num_produtos_encomenda++;
             }
 
           }
+
         }
 
       }
@@ -342,23 +292,17 @@ void remove_stock_produto()
   quantidade = new_sym_var(sizeof(int) * 8);
   if (id_produto > (num_produtos - 1))
   {
-    {
-      printf("Impossivel remover stock do produto %d. Produto inexistente.\n", id_produto);
-    }
+    printf("Impossivel remover stock do produto %d. Produto inexistente.\n", id_produto);
   }
   else
   {
     if (quantidade > produtos[id_produto].qtd)
     {
-      {
-        printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", quantidade, id_produto);
-      }
+      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", quantidade, id_produto);
     }
     else
     {
-      {
-        produtos[id_produto].qtd -= quantidade;
-      }
+      produtos[id_produto].qtd -= quantidade;
     }
 
   }
@@ -373,21 +317,17 @@ void custo_encomenda()
   id_encomenda = new_sym_var(sizeof(int) * 8);
   if (id_encomenda > (num_encomendas - 1))
   {
-    {
-      printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", id_encomenda);
-    }
+    printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", id_encomenda);
   }
   else
   {
+    for (contador = 0; contador < num_produtos_encomenda; ++contador)
     {
-      for (contador = 0; contador < num_produtos_encomenda; ++contador)
-      {
-        custo += produtos[encomenda[id_encomenda].idp[contador]].preco * encomenda[id_encomenda].qtd[contador];
-      }
-
-      encomenda[id_encomenda].custo_encomenda = custo;
-      printf("Custo da encomenda %d %d.\n", id_encomenda, custo);
+      custo += produtos[encomenda[id_encomenda].idp[contador]].preco * encomenda[id_encomenda].qtd[contador];
     }
+
+    encomenda[id_encomenda].custo_encomenda = custo;
+    printf("Custo da encomenda %d %d.\n", id_encomenda, custo);
   }
 
 }
@@ -400,15 +340,11 @@ void altera_preco_produto()
   preco = new_sym_var(sizeof(int) * 8);
   if (id_produto > (num_produtos - 1))
   {
-    {
-      printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", id_produto);
-    }
+    printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", id_produto);
   }
   else
   {
-    {
-      produtos[id_produto].preco = preco;
-    }
+    produtos[id_produto].preco = preco;
   }
 
 }
@@ -421,23 +357,17 @@ void descricao_e_quantidade_produto_encomenda()
   id_produto = new_sym_var(sizeof(int) * 8);
   if (id_produto > (num_produtos - 1))
   {
-    {
-      printf("Impossivel listar produto %d. Produto inexistente.\n", id_produto);
-    }
+    printf("Impossivel listar produto %d. Produto inexistente.\n", id_produto);
   }
   else
   {
     if (id_encomenda > (num_encomendas - 1))
     {
-      {
-        printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", id_encomenda);
-      }
+      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", id_encomenda);
     }
     else
     {
-      {
-        printf("%s %d.\n", produtos[id_produto].descricao, encomenda[id_encomenda].qtd[id_produto]);
-      }
+      printf("%s %d.\n", produtos[id_produto].descricao, encomenda[id_encomenda].qtd[id_produto]);
     }
 
   }
@@ -454,9 +384,7 @@ void produto_encomenda_mais_vezes()
   id_produto = new_sym_var(sizeof(int) * 8);
   if (id_produto > (num_produtos - 1))
   {
-    {
-      printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", id_produto);
-    }
+    printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", id_produto);
   }
   else
   {
@@ -469,10 +397,8 @@ void produto_encomenda_mais_vezes()
     {
       if ((encomenda[contador_encomenda].idp[contador_produto] == id_produto) && (encomenda[contador_encomenda].qtd[contador_produto] > vezes_produto))
       {
-        {
-          vezes_produto = encomenda[contador_encomenda].qtd[contador_produto];
-          id_encomenda = encomenda[contador_encomenda].ide;
-        }
+        vezes_produto = encomenda[contador_encomenda].qtd[contador_produto];
+        id_encomenda = encomenda[contador_encomenda].ide;
       }
       else
       {
@@ -485,14 +411,10 @@ void produto_encomenda_mais_vezes()
 
   if (vezes_produto == 0)
   {
-    {
-    }
   }
   else
   {
-    {
-      printf("Maximo produto %d %d %d.\n", id_produto, id_encomenda, vezes_produto);
-    }
+    printf("Maximo produto %d %d %d.\n", id_produto, id_encomenda, vezes_produto);
   }
 
 }
@@ -506,17 +428,80 @@ void lista_produtos_preco()
   int flag = 0;
   if (num_produtos == 1)
   {
-    {
-      printf("Produtos\n");
-      printf("* %s %d %d\n", produtos[0].descricao, produtos[0].preco, produtos[0].qtd);
-    }
+    printf("Produtos\n");
+    printf("* %s %d %d\n", produtos[0].descricao, produtos[0].preco, produtos[0].qtd);
   }
   else
   {
+    for (contador = 0; contador < num_produtos; contador++)
     {
-      for (contador = 0; contador < num_produtos; contador++)
+      id_produtos_ordenados[contador] = produtos[contador].idp;
+    }
+
+    for (contador = 1; contador <= (num_produtos - 1); contador++)
+    {
+      ultimo_elemento = id_produtos_ordenados[contador];
+      for (contador2 = contador - 1; contador2 >= 0; contador2--)
       {
-        id_produtos_ordenados[contador] = produtos[contador].idp;
+        if (produtos[id_produtos_ordenados[contador2]].preco > produtos[ultimo_elemento].preco)
+        {
+          id_produtos_ordenados[contador2 + 1] = id_produtos_ordenados[contador2];
+          flag = 1;
+        }
+        else
+        {
+          break;
+        }
+
+      }
+
+      if (flag)
+      {
+        id_produtos_ordenados[contador2 + 1] = ultimo_elemento;
+      }
+      else
+      {
+        
+      }
+
+    }
+
+    printf("Produtos\n");
+    for (contador = 0; contador < num_produtos; ++contador)
+    {
+      printf("* %s %d %d\n", produtos[id_produtos_ordenados[contador]].descricao, produtos[id_produtos_ordenados[contador]].preco, produtos[id_produtos_ordenados[contador]].qtd);
+    }
+
+  }
+
+}
+
+void lista_produtos_alfabeto()
+{
+  int id_produtos_ordenados[10000];
+  int contador;
+  int id_encomenda;
+  int contador2;
+  int flag = 0;
+  int ultimo_elemento;
+  int comparacao;
+  id_encomenda = new_sym_var(sizeof(int) * 8);
+  if (id_encomenda > (num_encomendas - 1))
+  {
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", id_encomenda);
+  }
+  else
+  {
+    if (num_produtos_encomenda == 1)
+    {
+      printf("Encomenda %d\n", id_encomenda);
+      printf("* %s %d %d\n", produtos[encomenda[id_encomenda].idp[0]].descricao, produtos[encomenda[id_encomenda].idp[0]].preco, encomenda[id_encomenda].qtd[0]);
+    }
+    else
+    {
+      for (contador = 0; contador < num_produtos_encomenda; contador++)
+      {
+        id_produtos_ordenados[contador] = encomenda[id_encomenda].idp[contador];
       }
 
       for (contador = 1; contador <= (num_produtos - 1); contador++)
@@ -524,12 +509,11 @@ void lista_produtos_preco()
         ultimo_elemento = id_produtos_ordenados[contador];
         for (contador2 = contador - 1; contador2 >= 0; contador2--)
         {
-          if (produtos[id_produtos_ordenados[contador2]].preco > produtos[ultimo_elemento].preco)
+          comparacao = strcmp(produtos[id_produtos_ordenados[contador2]].descricao, produtos[ultimo_elemento].descricao);
+          if (comparacao > 0)
           {
-            {
-              id_produtos_ordenados[contador2 + 1] = id_produtos_ordenados[contador2];
-              flag = 1;
-            }
+            id_produtos_ordenados[contador2 + 1] = id_produtos_ordenados[contador2];
+            flag = 1;
           }
           else
           {
@@ -549,88 +533,12 @@ void lista_produtos_preco()
 
       }
 
-      printf("Produtos\n");
-      for (contador = 0; contador < num_produtos; ++contador)
+      printf("Encomenda %d\n", id_encomenda);
+      for (contador = 0; contador < num_produtos_encomenda; ++contador)
       {
-        printf("* %s %d %d\n", produtos[id_produtos_ordenados[contador]].descricao, produtos[id_produtos_ordenados[contador]].preco, produtos[id_produtos_ordenados[contador]].qtd);
+        printf("* %s %d %d\n", produtos[id_produtos_ordenados[contador]].descricao, produtos[id_produtos_ordenados[contador]].preco, encomenda[id_encomenda].qtd[contador]);
       }
 
-    }
-  }
-
-}
-
-void lista_produtos_alfabeto()
-{
-  int id_produtos_ordenados[10000];
-  int contador;
-  int id_encomenda;
-  int contador2;
-  int flag = 0;
-  int ultimo_elemento;
-  int comparacao;
-  id_encomenda = new_sym_var(sizeof(int) * 8);
-  if (id_encomenda > (num_encomendas - 1))
-  {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", id_encomenda);
-    }
-  }
-  else
-  {
-    if (num_produtos_encomenda == 1)
-    {
-      {
-        printf("Encomenda %d\n", id_encomenda);
-        printf("* %s %d %d\n", produtos[encomenda[id_encomenda].idp[0]].descricao, produtos[encomenda[id_encomenda].idp[0]].preco, encomenda[id_encomenda].qtd[0]);
-      }
-    }
-    else
-    {
-      {
-        for (contador = 0; contador < num_produtos_encomenda; contador++)
-        {
-          id_produtos_ordenados[contador] = encomenda[id_encomenda].idp[contador];
-        }
-
-        for (contador = 1; contador <= (num_produtos - 1); contador++)
-        {
-          ultimo_elemento = id_produtos_ordenados[contador];
-          for (contador2 = contador - 1; contador2 >= 0; contador2--)
-          {
-            comparacao = strcmp(produtos[id_produtos_ordenados[contador2]].descricao, produtos[ultimo_elemento].descricao);
-            if (comparacao > 0)
-            {
-              {
-                id_produtos_ordenados[contador2 + 1] = id_produtos_ordenados[contador2];
-                flag = 1;
-              }
-            }
-            else
-            {
-              break;
-            }
-
-          }
-
-          if (flag)
-          {
-            id_produtos_ordenados[contador2 + 1] = ultimo_elemento;
-          }
-          else
-          {
-            
-          }
-
-        }
-
-        printf("Encomenda %d\n", id_encomenda);
-        for (contador = 0; contador < num_produtos_encomenda; ++contador)
-        {
-          printf("* %s %d %d\n", produtos[id_produtos_ordenados[contador]].descricao, produtos[id_produtos_ordenados[contador]].preco, encomenda[id_encomenda].qtd[contador]);
-        }
-
-      }
     }
 
   }
@@ -648,57 +556,45 @@ void remove_produto_encomenda()
   id_produto = new_sym_var(sizeof(int) * 8);
   if (id_encomenda > (num_encomendas - 1))
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", id_produto, id_encomenda);
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", id_produto, id_encomenda);
   }
   else
   {
     if (id_produto > (num_produtos - 1))
     {
-      {
-        printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", id_produto, id_encomenda);
-      }
+      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", id_produto, id_encomenda);
     }
     else
     {
+      for (contador = 0; contador < num_produtos_encomenda; contador++)
       {
-        for (contador = 0; contador < num_produtos_encomenda; contador++)
+        if (id_produto == encomenda[id_encomenda].idp[contador])
         {
-          if (id_produto == encomenda[id_encomenda].idp[contador])
+          id_produto_encomenda = contador;
+          produtos[id_produto].qtd += encomenda[id_encomenda].qtd[contador];
+          if (id_produto_encomenda == (num_produtos_encomenda - 1))
           {
-            {
-              id_produto_encomenda = contador;
-              produtos[id_produto].qtd += encomenda[id_encomenda].qtd[contador];
-              if (id_produto_encomenda == (num_produtos_encomenda - 1))
-              {
-                {
-                  num_produtos_encomenda--;
-                }
-              }
-              else
-              {
-                {
-                  for (contador2 = id_produto_encomenda; contador2 < (num_produtos_encomenda - 1); contador2++)
-                  {
-                    encomenda[id_encomenda].idp[contador2] = encomenda[id_encomenda].idp[contador2 + 1];
-                    encomenda[id_encomenda].qtd[contador2] = encomenda[id_encomenda].qtd[contador2 + 1];
-                  }
-
-                  num_produtos_encomenda--;
-                }
-              }
-
-            }
+            num_produtos_encomenda--;
           }
           else
           {
-            
+            for (contador2 = id_produto_encomenda; contador2 < (num_produtos_encomenda - 1); contador2++)
+            {
+              encomenda[id_encomenda].idp[contador2] = encomenda[id_encomenda].idp[contador2 + 1];
+              encomenda[id_encomenda].qtd[contador2] = encomenda[id_encomenda].qtd[contador2 + 1];
+            }
+
+            num_produtos_encomenda--;
           }
 
         }
+        else
+        {
+          
+        }
 
       }
+
     }
 
   }

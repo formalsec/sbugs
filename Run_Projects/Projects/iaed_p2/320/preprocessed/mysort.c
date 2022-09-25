@@ -28,17 +28,13 @@ void merge_alpha(char **list_t, int l, int m, int r)
 
     if (list_t_aux[i][a] < list_t_aux[j][a])
     {
-      {
-        list_t[k] = list_t_aux[i];
-        i++;
-      }
+      list_t[k] = list_t_aux[i];
+      i++;
     }
     else
     {
-      {
-        list_t[k] = list_t_aux[j];
-        j++;
-      }
+      list_t[k] = list_t_aux[j];
+      j++;
     }
 
     k++;
@@ -46,25 +42,21 @@ void merge_alpha(char **list_t, int l, int m, int r)
 
   if (i > m)
   {
+    for (; j <= r; j++)
     {
-      for (; j <= r; j++)
-      {
-        list_t[k] = list_t_aux[j];
-        k++;
-      }
-
+      list_t[k] = list_t_aux[j];
+      k++;
     }
+
   }
   else
   {
+    for (; i <= m; i++)
     {
-      for (; i <= m; i++)
-      {
-        list_t[k] = list_t_aux[i];
-        k++;
-      }
-
+      list_t[k] = list_t_aux[i];
+      k++;
     }
+
   }
 
   free(list_t_aux);

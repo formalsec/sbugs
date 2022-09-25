@@ -56,48 +56,46 @@ int commands_loop(l_ht_info *info)
     if (1)
     {
       cmd = new_sym_var(sizeof(char) * 8);
+      switch (cmd)
       {
-        switch (cmd)
-        {
-          case 'a':
-            add_game_proc(io_buffer, info, cmd_counter);
-            break;
+        case 'a':
+          add_game_proc(io_buffer, info, cmd_counter);
+          break;
 
-          case 'A':
-            add_team_proc(io_buffer, info, cmd_counter);
-            break;
+        case 'A':
+          add_team_proc(io_buffer, info, cmd_counter);
+          break;
 
-          case 'l':
-            list_games_proc(info, cmd_counter);
-            break;
+        case 'l':
+          list_games_proc(info, cmd_counter);
+          break;
 
-          case 'p':
-            search_game_proc(io_buffer, info, cmd_counter);
-            break;
+        case 'p':
+          search_game_proc(io_buffer, info, cmd_counter);
+          break;
 
-          case 'P':
-            search_team_proc(io_buffer, info, cmd_counter);
-            break;
+        case 'P':
+          search_team_proc(io_buffer, info, cmd_counter);
+          break;
 
-          case 'r':
-            delete_game_proc(io_buffer, info, cmd_counter);
-            break;
+        case 'r':
+          delete_game_proc(io_buffer, info, cmd_counter);
+          break;
 
-          case 's':
-            change_game_score_proc(io_buffer, info, cmd_counter);
-            break;
+        case 's':
+          change_game_score_proc(io_buffer, info, cmd_counter);
+          break;
 
-          case 'g':
-            teams_most_wins_proc(info, cmd_counter);
-            break;
+        case 'g':
+          teams_most_wins_proc(info, cmd_counter);
+          break;
 
-          case 'x':
-            return 0;
+        case 'x':
+          return 0;
 
-        }
-
-        cmd_counter++;
       }
+
+      cmd_counter++;
     }
     else
     {
@@ -140,10 +138,8 @@ int add_game_proc(char *io_buffer, l_ht_info *info, int cmd_ctr)
   score2 = new_sym_var(sizeof(int) * 8);
   if (search_game_by_name(name, info, &p_game))
   {
-    {
-      printf("%d Jogo existente.\n", cmd_ctr);
-      return 0;
-    }
+    printf("%d Jogo existente.\n", cmd_ctr);
+    return 0;
   }
   else
   {
@@ -152,10 +148,8 @@ int add_game_proc(char *io_buffer, l_ht_info *info, int cmd_ctr)
 
   if (!search_team_by_name(tm1, info, &p_team1))
   {
-    {
-      printf("%d Equipa inexistente.\n", cmd_ctr);
-      return 0;
-    }
+    printf("%d Equipa inexistente.\n", cmd_ctr);
+    return 0;
   }
   else
   {
@@ -164,10 +158,8 @@ int add_game_proc(char *io_buffer, l_ht_info *info, int cmd_ctr)
 
   if (!search_team_by_name(tm2, info, &p_team2))
   {
-    {
-      printf("%d Equipa inexistente.\n", cmd_ctr);
-      return 0;
-    }
+    printf("%d Equipa inexistente.\n", cmd_ctr);
+    return 0;
   }
   else
   {
@@ -239,10 +231,8 @@ int add_team_proc(char *io_buffer, l_ht_info *info, int cmd_ctr)
   name[10 - 1] = '\0';
   if (search_team_by_name(name, info, &p_team))
   {
-    {
-      printf("%d Equipa existente.\n", cmd_ctr);
-      return 0;
-    }
+    printf("%d Equipa existente.\n", cmd_ctr);
+    return 0;
   }
   else
   {
@@ -309,10 +299,8 @@ int search_game_proc(char *io_buffer, l_ht_info *info, int cmd_ctr)
   search_game_by_name(name, info, &p_game);
   if (p_game == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", cmd_ctr);
-      return 0;
-    }
+    printf("%d Jogo inexistente.\n", cmd_ctr);
+    return 0;
   }
   else
   {
@@ -342,10 +330,8 @@ int search_team_proc(char *io_buffer, l_ht_info *info, int cmd_ctr)
   search_team_by_name(name, info, ptr_team_ptr);
   if (p_team == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", cmd_ctr);
-      return 0;
-    }
+    printf("%d Equipa inexistente.\n", cmd_ctr);
+    return 0;
   }
   else
   {
@@ -373,10 +359,8 @@ int delete_game_proc(char *io_buffer, l_ht_info *info, int cmd_ctr)
   p_ht_node = ht_get_base_node(info->ht_games, key);
   if (p_ht_node == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", cmd_ctr);
-      return 0;
-    }
+    printf("%d Jogo inexistente.\n", cmd_ctr);
+    return 0;
   }
   else
   {
@@ -397,10 +381,8 @@ int delete_game_proc(char *io_buffer, l_ht_info *info, int cmd_ctr)
 
     if (p_ht_node->next == 0)
     {
-      {
-        printf("%d Jogo inexistente.\n", cmd_ctr);
-        return 0;
-      }
+      printf("%d Jogo inexistente.\n", cmd_ctr);
+      return 0;
     }
     else
     {
@@ -423,9 +405,7 @@ void dgp_update_games_won(l_ht_info *info, game *p_game)
   search_team_by_name(p_game->team2, info, &p_team2);
   if (p_game->score1 > p_game->score2)
   {
-    {
-      p_team1->games_won--;
-    }
+    p_team1->games_won--;
   }
   else
   {
@@ -434,9 +414,7 @@ void dgp_update_games_won(l_ht_info *info, game *p_game)
 
   if (p_game->score1 < p_game->score2)
   {
-    {
-      p_team2->games_won--;
-    }
+    p_team2->games_won--;
   }
   else
   {
@@ -462,10 +440,8 @@ int change_game_score_proc(char *io_buffer, l_ht_info *info, int cmd_ctr)
   scr2 = new_sym_var(sizeof(int) * 8);
   if (!search_game_by_name(name, info, &p_game))
   {
-    {
-      printf("%d Jogo inexistente.\n", cmd_ctr);
-      return 0;
-    }
+    printf("%d Jogo inexistente.\n", cmd_ctr);
+    return 0;
   }
   else
   {
@@ -490,29 +466,25 @@ void cgsp_update_games_won(l_ht_info *info, game *p_game, int scr1, int scr2)
   search_team_by_name(p_game->team2, info, &p_team2);
   if (pre_scr1 > pre_scr2)
   {
+    if (scr1 == scr2)
     {
-      if (scr1 == scr2)
-      {
-        p_team1->games_won--;
-      }
-      else
-      {
-        
-      }
-
-      if (scr1 < scr2)
-      {
-        {
-          p_team1->games_won--;
-          p_team2->games_won++;
-        }
-      }
-      else
-      {
-        
-      }
-
+      p_team1->games_won--;
     }
+    else
+    {
+      
+    }
+
+    if (scr1 < scr2)
+    {
+      p_team1->games_won--;
+      p_team2->games_won++;
+    }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -521,29 +493,25 @@ void cgsp_update_games_won(l_ht_info *info, game *p_game, int scr1, int scr2)
 
   if (pre_scr1 < pre_scr2)
   {
+    if (scr1 == scr2)
     {
-      if (scr1 == scr2)
-      {
-        p_team2->games_won--;
-      }
-      else
-      {
-        
-      }
-
-      if (scr1 > scr2)
-      {
-        {
-          p_team1->games_won++;
-          p_team2->games_won--;
-        }
-      }
-      else
-      {
-        
-      }
-
+      p_team2->games_won--;
     }
+    else
+    {
+      
+    }
+
+    if (scr1 > scr2)
+    {
+      p_team1->games_won++;
+      p_team2->games_won--;
+    }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -552,26 +520,24 @@ void cgsp_update_games_won(l_ht_info *info, game *p_game, int scr1, int scr2)
 
   if (pre_scr1 == pre_scr2)
   {
+    if (scr1 > scr2)
     {
-      if (scr1 > scr2)
-      {
-        p_team1->games_won++;
-      }
-      else
-      {
-        
-      }
-
-      if (scr1 < scr2)
-      {
-        p_team2->games_won++;
-      }
-      else
-      {
-        
-      }
-
+      p_team1->games_won++;
     }
+    else
+    {
+      
+    }
+
+    if (scr1 < scr2)
+    {
+      p_team2->games_won++;
+    }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -603,12 +569,10 @@ int teams_most_wins_proc(l_ht_info *info, int cmd_ctr)
     p_team = (team *) lst_node->info_struct;
     if (p_team->games_won > max_wins)
     {
-      {
-        max_wins = p_team->games_won;
-        n_winners = 0;
-        free_l_list_and_node_only(l_max_winners);
-        l_max_winners = create_l_list();
-      }
+      max_wins = p_team->games_won;
+      n_winners = 0;
+      free_l_list_and_node_only(l_max_winners);
+      l_max_winners = create_l_list();
     }
     else
     {
@@ -617,12 +581,10 @@ int teams_most_wins_proc(l_ht_info *info, int cmd_ctr)
 
     if (p_team->games_won == max_wins)
     {
-      {
-        temp_l_node = create_l_node();
-        temp_l_node->info_struct = (void *) p_team;
-        l_list_add_node_end(l_max_winners, temp_l_node);
-        n_winners++;
-      }
+      temp_l_node = create_l_node();
+      temp_l_node->info_struct = (void *) p_team;
+      l_list_add_node_end(l_max_winners, temp_l_node);
+      n_winners++;
     }
     else
     {
@@ -652,10 +614,8 @@ void tmwp_sort_print(l_list *l_winners, int n_winners, int max_wins, int cmd_ctr
   {
     if (!title_flag)
     {
-      {
-        printf("%d Melhores %d\n", cmd_ctr, max_wins);
-        title_flag = 1;
-      }
+      printf("%d Melhores %d\n", cmd_ctr, max_wins);
+      title_flag = 1;
     }
     else
     {
@@ -690,10 +650,8 @@ int search_game_by_name(char *name, l_ht_info *info, game **p_game)
     node = (l_node *) p_ht_node->info_struct;
     if (strcmp(((game *) node->info_struct)->name, name) == 0)
     {
-      {
-        *p_game = (game *) node->info_struct;
-        return 1;
-      }
+      *p_game = (game *) node->info_struct;
+      return 1;
     }
     else
     {
@@ -717,10 +675,8 @@ int search_team_by_name(char *name, l_ht_info *info, team **p_team)
     node = (l_node *) p_ht_node->info_struct;
     if (strcmp(((team *) node->info_struct)->name, name) == 0)
     {
-      {
-        *p_team = (team *) node->info_struct;
-        return 1;
-      }
+      *p_team = (team *) node->info_struct;
+      return 1;
     }
     else
     {

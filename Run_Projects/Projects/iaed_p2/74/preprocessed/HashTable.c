@@ -44,15 +44,13 @@ void Ginsert(char *name, char *t1, char *t2, int s1, int s2)
   }
   else
   {
+    games temp = g[key];
+    while (temp->next)
     {
-      games temp = g[key];
-      while (temp->next)
-      {
-        temp = temp->next;
-      }
-
-      temp->next = newNode;
+      temp = temp->next;
     }
+
+    temp->next = newNode;
   }
 
 }
@@ -86,43 +84,37 @@ void Gdelete(char *name)
   games ant = g[key];
   if (strcmp(temp->game_name, name) == 0)
   {
-    {
-      g[key] = temp->next;
-      free(temp->game_name);
-      free(temp->team1);
-      free(temp->team2);
-      free(temp);
-    }
+    g[key] = temp->next;
+    free(temp->game_name);
+    free(temp->team1);
+    free(temp->team2);
+    free(temp);
   }
   else
   {
+    temp = temp->next;
+    while (temp)
     {
-      temp = temp->next;
-      while (temp)
+      if (strcmp(temp->game_name, name) == 0)
       {
-        if (strcmp(temp->game_name, name) == 0)
-        {
-          {
-            dealloc = temp;
-            temp = temp->next;
-            ant->next = temp;
-            free(dealloc->game_name);
-            free(dealloc->team1);
-            free(dealloc->team2);
-            free(dealloc);
-            return;
-          }
-        }
-        else
-        {
-          
-        }
-
-        ant = temp;
+        dealloc = temp;
         temp = temp->next;
+        ant->next = temp;
+        free(dealloc->game_name);
+        free(dealloc->team1);
+        free(dealloc->team2);
+        free(dealloc);
+        return;
+      }
+      else
+      {
+        
       }
 
+      ant = temp;
+      temp = temp->next;
     }
+
   }
 
 }
@@ -205,18 +197,16 @@ int max_wins()
   {
     if (t[i] != 0)
     {
+      wins = t[i]->wins;
+      if (wins > max_wins)
       {
-        wins = t[i]->wins;
-        if (wins > max_wins)
-        {
-          max_wins = wins;
-        }
-        else
-        {
-          
-        }
-
+        max_wins = wins;
       }
+      else
+      {
+        
+      }
+
     }
     else
     {
@@ -235,10 +225,8 @@ void Tfree_hash()
   {
     if (t[i] != 0)
     {
-      {
-        free(t[i]->team_name);
-        free(t[i]);
-      }
+      free(t[i]->team_name);
+      free(t[i]);
     }
     else
     {

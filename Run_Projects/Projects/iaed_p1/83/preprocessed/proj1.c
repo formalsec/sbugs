@@ -219,37 +219,33 @@ void command_A(int identifier_order, int identifier_product, int amount, int num
         }
         else
         {
+          int position = orders_list[identifier_order].number_diff_products;
+          int i;
+          for (i = 0; i < orders_list[identifier_order].number_diff_products; i++)
           {
-            int position = orders_list[identifier_order].number_diff_products;
-            int i;
-            for (i = 0; i < orders_list[identifier_order].number_diff_products; i++)
+            if (orders_list[identifier_order].shoplist[i].identifier == identifier_product)
             {
-              if (orders_list[identifier_order].shoplist[i].identifier == identifier_product)
-              {
-                {
-                  orders_list[identifier_order].shoplist[i].amount += amount;
-                  orders_list[identifier_order].weight += orders_list[identifier_order].shoplist[i].weight * amount;
-                  store_stock[identifier_product].amount -= amount;
-                  return;
-                }
-              }
-              else
-              {
-                
-              }
-
+              orders_list[identifier_order].shoplist[i].amount += amount;
+              orders_list[identifier_order].weight += orders_list[identifier_order].shoplist[i].weight * amount;
+              store_stock[identifier_product].amount -= amount;
+              return;
+            }
+            else
+            {
+              
             }
 
-            newProduct.identifier = identifier_product;
-            newProduct.amount = amount;
-            newProduct.price = store_stock[identifier_product].price;
-            newProduct.weight = store_stock[identifier_product].weight;
-            strcpy(newProduct.name, store_stock[identifier_product].name);
-            orders_list[identifier_order].shoplist[position] = newProduct;
-            orders_list[identifier_order].weight += amount * store_stock[identifier_product].weight;
-            orders_list[identifier_order].number_diff_products += 1;
-            store_stock[identifier_product].amount -= amount;
           }
+
+          newProduct.identifier = identifier_product;
+          newProduct.amount = amount;
+          newProduct.price = store_stock[identifier_product].price;
+          newProduct.weight = store_stock[identifier_product].weight;
+          strcpy(newProduct.name, store_stock[identifier_product].name);
+          orders_list[identifier_order].shoplist[position] = newProduct;
+          orders_list[identifier_order].weight += amount * store_stock[identifier_product].weight;
+          orders_list[identifier_order].number_diff_products += 1;
+          store_stock[identifier_product].amount -= amount;
         }
 
       }
@@ -295,29 +291,25 @@ void command_R(int identifier_order, int identifier_product, int number_orders, 
     }
     else
     {
+      int i;
+      int returnAmount;
+      for (i = 0; i < orders_list[identifier_order].number_diff_products; i++)
       {
-        int i;
-        int returnAmount;
-        for (i = 0; i < orders_list[identifier_order].number_diff_products; i++)
+        if (orders_list[identifier_order].shoplist[i].identifier == identifier_product)
         {
-          if (orders_list[identifier_order].shoplist[i].identifier == identifier_product)
-          {
-            {
-              returnAmount = orders_list[identifier_order].shoplist[i].amount;
-              orders_list[identifier_order].shoplist[i].amount = 0;
-              store_stock[identifier_product].amount += returnAmount;
-              orders_list[identifier_order].weight -= returnAmount * orders_list[identifier_order].shoplist[i].weight;
-              return;
-            }
-          }
-          else
-          {
-            
-          }
-
+          returnAmount = orders_list[identifier_order].shoplist[i].amount;
+          orders_list[identifier_order].shoplist[i].amount = 0;
+          store_stock[identifier_product].amount += returnAmount;
+          orders_list[identifier_order].weight -= returnAmount * orders_list[identifier_order].shoplist[i].weight;
+          return;
+        }
+        else
+        {
+          
         }
 
       }
+
     }
 
   }
@@ -332,16 +324,14 @@ void command_C(int identifier_order, int number_orders)
   }
   else
   {
+    int i;
+    int cost = 0;
+    for (i = 0; i < orders_list[identifier_order].number_diff_products; i++)
     {
-      int i;
-      int cost = 0;
-      for (i = 0; i < orders_list[identifier_order].number_diff_products; i++)
-      {
-        cost += orders_list[identifier_order].shoplist[i].amount * orders_list[identifier_order].shoplist[i].price;
-      }
-
-      printf("Custo da encomenda %d %d.\n", identifier_order, cost);
+      cost += orders_list[identifier_order].shoplist[i].amount * orders_list[identifier_order].shoplist[i].price;
     }
+
+    printf("Custo da encomenda %d %d.\n", identifier_order, cost);
   }
 
 }
@@ -354,31 +344,27 @@ void command_p(int identifier_product, int price, int number_orders, int number_
   }
   else
   {
+    int i;
+    int j;
+    store_stock[identifier_product].price = price;
+    for (i = 0; i < number_orders; i++)
     {
-      int i;
-      int j;
-      store_stock[identifier_product].price = price;
-      for (i = 0; i < number_orders; i++)
+      for (j = 0; j < orders_list[i].number_diff_products; j++)
       {
-        for (j = 0; j < orders_list[i].number_diff_products; j++)
+        if (orders_list[i].shoplist[j].identifier == identifier_product)
         {
-          if (orders_list[i].shoplist[j].identifier == identifier_product)
-          {
-            {
-              orders_list[i].shoplist[j].price = price;
-              break;
-            }
-          }
-          else
-          {
-            
-          }
-
+          orders_list[i].shoplist[j].price = price;
+          break;
+        }
+        else
+        {
+          
         }
 
       }
 
     }
+
   }
 
 }
@@ -397,26 +383,22 @@ void command_E(int identifier_order, int identifier_product, int number_orders, 
     }
     else
     {
+      int i;
+      for (i = 0; i < orders_list[identifier_order].number_diff_products; i++)
       {
-        int i;
-        for (i = 0; i < orders_list[identifier_order].number_diff_products; i++)
+        if (identifier_product == orders_list[identifier_order].shoplist[i].identifier)
         {
-          if (identifier_product == orders_list[identifier_order].shoplist[i].identifier)
-          {
-            {
-              printf("%s %d.\n", store_stock[identifier_product].name, orders_list[identifier_order].shoplist[i].amount);
-              return;
-            }
-          }
-          else
-          {
-            
-          }
-
+          printf("%s %d.\n", store_stock[identifier_product].name, orders_list[identifier_order].shoplist[i].amount);
+          return;
+        }
+        else
+        {
+          
         }
 
-        printf("%s 0.\n", store_stock[identifier_product].name);
       }
+
+      printf("%s 0.\n", store_stock[identifier_product].name);
     }
 
   }
@@ -431,43 +413,39 @@ void command_m(int identifier_product, int number_orders, int number_diff_produc
   }
   else
   {
+    int i;
+    int j;
+    int max_index = 0;
+    int max_amount = 0;
+    int state = 0;
+    for (i = 0; i < number_orders; i++)
     {
-      int i;
-      int j;
-      int max_index = 0;
-      int max_amount = 0;
-      int state = 0;
-      for (i = 0; i < number_orders; i++)
+      for (j = 0; j < orders_list[i].number_diff_products; j++)
       {
-        for (j = 0; j < orders_list[i].number_diff_products; j++)
+        if ((identifier_product == orders_list[i].shoplist[j].identifier) && (max_amount < orders_list[i].shoplist[j].amount))
         {
-          if ((identifier_product == orders_list[i].shoplist[j].identifier) && (max_amount < orders_list[i].shoplist[j].amount))
-          {
-            {
-              max_amount = orders_list[i].shoplist[j].amount;
-              max_index = i;
-              state = 1;
-            }
-          }
-          else
-          {
-            
-          }
-
+          max_amount = orders_list[i].shoplist[j].amount;
+          max_index = i;
+          state = 1;
+        }
+        else
+        {
+          
         }
 
       }
 
-      if (state)
-      {
-        printf("Maximo produto %d %d %d.\n", identifier_product, max_index, max_amount);
-      }
-      else
-      {
-        
-      }
-
     }
+
+    if (state)
+    {
+      printf("Maximo produto %d %d %d.\n", identifier_product, max_index, max_amount);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -477,17 +455,15 @@ void command_l(int number_diff_products)
   printf("Produtos\n");
   if (number_diff_products > 0)
   {
-    {
-      int i;
-      int ordered_products[10000];
-      for (i = 0; i < number_diff_products; i++)
-        ordered_products[i] = i;
+    int i;
+    int ordered_products[10000];
+    for (i = 0; i < number_diff_products; i++)
+      ordered_products[i] = i;
 
-      quicksort_products(ordered_products, 0, number_diff_products - 1);
-      for (i = 0; i < number_diff_products; i++)
-        printf("* %s %d %d\n", store_stock[ordered_products[i]].name, store_stock[ordered_products[i]].price, store_stock[ordered_products[i]].amount);
+    quicksort_products(ordered_products, 0, number_diff_products - 1);
+    for (i = 0; i < number_diff_products; i++)
+      printf("* %s %d %d\n", store_stock[ordered_products[i]].name, store_stock[ordered_products[i]].price, store_stock[ordered_products[i]].amount);
 
-    }
   }
   else
   {
@@ -504,26 +480,24 @@ void command_L(int identifier_order, int number_orders)
   }
   else
   {
+    int i;
+    int ordered_products[200];
+    printf("Encomenda %d\n", identifier_order);
+    for (i = 0; i < orders_list[identifier_order].number_diff_products; i++)
+      ordered_products[i] = i;
+
+    quicksort_orders(ordered_products, 0, orders_list[identifier_order].number_diff_products - 1, identifier_order);
+    for (i = 0; i < orders_list[identifier_order].number_diff_products; i++)
+      if (orders_list[identifier_order].shoplist[ordered_products[i]].amount > 0)
     {
-      int i;
-      int ordered_products[200];
-      printf("Encomenda %d\n", identifier_order);
-      for (i = 0; i < orders_list[identifier_order].number_diff_products; i++)
-        ordered_products[i] = i;
-
-      quicksort_orders(ordered_products, 0, orders_list[identifier_order].number_diff_products - 1, identifier_order);
-      for (i = 0; i < orders_list[identifier_order].number_diff_products; i++)
-        if (orders_list[identifier_order].shoplist[ordered_products[i]].amount > 0)
-      {
-        printf("* %s %d %d\n", orders_list[identifier_order].shoplist[ordered_products[i]].name, orders_list[identifier_order].shoplist[ordered_products[i]].price, orders_list[identifier_order].shoplist[ordered_products[i]].amount);
-      }
-      else
-      {
-        
-      }
-
-
+      printf("* %s %d %d\n", orders_list[identifier_order].shoplist[ordered_products[i]].name, orders_list[identifier_order].shoplist[ordered_products[i]].price, orders_list[identifier_order].shoplist[ordered_products[i]].amount);
     }
+    else
+    {
+      
+    }
+
+
   }
 
 }

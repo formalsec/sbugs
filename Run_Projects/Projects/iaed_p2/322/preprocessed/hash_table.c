@@ -52,34 +52,28 @@ void hashtable_insert(Hash_Array *hashtable, char *key, Game *value)
   entry = hashtable->entries[slot];
   if (entry == 0)
   {
-    {
-      hashtable->entries[slot] = create_bucket(key, value);
-    }
+    hashtable->entries[slot] = create_bucket(key, value);
   }
   else
   {
+    while (entry != 0)
     {
-      while (entry != 0)
+      if (strcmp(entry->key, key) == 0)
       {
-        if (strcmp(entry->key, key) == 0)
-        {
-          {
-            free_data(entry->data);
-            entry->data = value;
-            return;
-          }
-        }
-        else
-        {
-          
-        }
-
-        prev = entry;
-        entry = prev->next;
+        free_data(entry->data);
+        entry->data = value;
+        return;
+      }
+      else
+      {
+        
       }
 
-      prev->next = create_bucket(key, value);
+      prev = entry;
+      entry = prev->next;
     }
+
+    prev->next = create_bucket(key, value);
   }
 
   return;
@@ -95,9 +89,7 @@ Game *hashtable_get(Hash_Array *hashtable, char *key)
   {
     if (strcmp(entry->key, key) == 0)
     {
-      {
-        return entry->data;
-      }
+      return entry->data;
     }
     else
     {
@@ -120,9 +112,7 @@ void hashtable_print_all(Hash_Array *hashtable)
     entry = hashtable->entries[counter];
     if (entry == 0)
     {
-      {
-        continue;
-      }
+      continue;
     }
     else
     {
@@ -134,9 +124,7 @@ void hashtable_print_all(Hash_Array *hashtable)
     {
       if (entry->data->team_flag == 0)
       {
-        {
-          printf(" (%s:%s) ->", entry->key, entry->data->team1);
-        }
+        printf(" (%s:%s) ->", entry->key, entry->data->team1);
       }
       else
       {
@@ -145,9 +133,7 @@ void hashtable_print_all(Hash_Array *hashtable)
 
       if (entry->data->team_flag == 1)
       {
-        {
-          printf(" (%s:%d) ->", entry->key, entry->data->score1);
-        }
+        printf(" (%s:%d) ->", entry->key, entry->data->score1);
       }
       else
       {
@@ -156,10 +142,8 @@ void hashtable_print_all(Hash_Array *hashtable)
 
       if (entry->next == 0)
       {
-        {
-          printf(" NULL");
-          break;
-        }
+        printf(" NULL");
+        break;
       }
       else
       {
@@ -183,9 +167,7 @@ void hashtable_visualize(Hash_Array *hashtable)
     entry = hashtable->entries[counter];
     if (entry == 0)
     {
-      {
-        continue;
-      }
+      continue;
     }
     else
     {
@@ -197,9 +179,7 @@ void hashtable_visualize(Hash_Array *hashtable)
     {
       if (entry->data->team_flag == 0)
       {
-        {
-          printf(" (%s:%s:%d) ->", entry->key, entry->data->team1, *entry->data->index);
-        }
+        printf(" (%s:%s:%d) ->", entry->key, entry->data->team1, *entry->data->index);
       }
       else
       {
@@ -208,9 +188,7 @@ void hashtable_visualize(Hash_Array *hashtable)
 
       if (entry->data->team_flag == 1)
       {
-        {
-          printf(" (%s:%d:%d) ->", entry->key, entry->data->score1, *entry->data->index);
-        }
+        printf(" (%s:%d:%d) ->", entry->key, entry->data->score1, *entry->data->index);
       }
       else
       {
@@ -219,10 +197,8 @@ void hashtable_visualize(Hash_Array *hashtable)
 
       if (entry->next == 0)
       {
-        {
-          printf(" NULL");
-          break;
-        }
+        printf(" NULL");
+        break;
       }
       else
       {
@@ -248,10 +224,8 @@ void hashtable_free_all(Hash_Array *hashtable)
     entry = hashtable->entries[counter];
     if (entry == 0)
     {
-      {
-        free(entry);
-        continue;
-      }
+      free(entry);
+      continue;
     }
     else
     {
@@ -266,9 +240,7 @@ void hashtable_free_all(Hash_Array *hashtable)
       free(entry);
       if (aux == 0)
       {
-        {
-          break;
-        }
+        break;
       }
       else
       {
@@ -297,56 +269,46 @@ void hashtable_del(Hash_Array *hashtable, char *key)
   {
     if (strcmp(entry->key, key) == 0)
     {
+      if ((entry->next == 0) && (counter == 0))
       {
-        if ((entry->next == 0) && (counter == 0))
-        {
-          {
-            hashtable->entries[slot] = 0;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if ((entry->next != 0) && (counter == 0))
-        {
-          {
-            hashtable->entries[slot] = entry->next;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if ((entry->next == 0) && (counter != 0))
-        {
-          {
-            prev->next = 0;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if ((entry->next != 0) && (counter != 0))
-        {
-          {
-            prev->next = entry->next;
-          }
-        }
-        else
-        {
-          
-        }
-
-        free(entry->key);
-        free_data(entry->data);
-        free(entry);
-        return;
+        hashtable->entries[slot] = 0;
       }
+      else
+      {
+        
+      }
+
+      if ((entry->next != 0) && (counter == 0))
+      {
+        hashtable->entries[slot] = entry->next;
+      }
+      else
+      {
+        
+      }
+
+      if ((entry->next == 0) && (counter != 0))
+      {
+        prev->next = 0;
+      }
+      else
+      {
+        
+      }
+
+      if ((entry->next != 0) && (counter != 0))
+      {
+        prev->next = entry->next;
+      }
+      else
+      {
+        
+      }
+
+      free(entry->key);
+      free_data(entry->data);
+      free(entry);
+      return;
     }
     else
     {
@@ -364,10 +326,8 @@ void free_data(Game *data)
 {
   if (data->team_flag == 0)
   {
-    {
-      free(data->team1);
-      free(data->team2);
-    }
+    free(data->team1);
+    free(data->team2);
   }
   else
   {
@@ -394,9 +354,7 @@ void biggest_wins(int line_number, Hash_Array *hashtable)
     entry = hashtable->entries[counter];
     if (entry == 0)
     {
-      {
-        continue;
-      }
+      continue;
     }
     else
     {
@@ -408,20 +366,16 @@ void biggest_wins(int line_number, Hash_Array *hashtable)
       aux = entry->next;
       if (entry->data->score1 == max_win)
       {
-        {
-          size = size + 1;
-          team_list[size] = entry->key;
-        }
+        size = size + 1;
+        team_list[size] = entry->key;
       }
       else
       {
         if (entry->data->score1 > max_win)
         {
-          {
-            size = 0;
-            team_list[size] = entry->key;
-            max_win = entry->data->score1;
-          }
+          size = 0;
+          team_list[size] = entry->key;
+          max_win = entry->data->score1;
         }
         else
         {
@@ -432,9 +386,7 @@ void biggest_wins(int line_number, Hash_Array *hashtable)
 
       if (aux == 0)
       {
-        {
-          break;
-        }
+        break;
       }
       else
       {
@@ -448,10 +400,8 @@ void biggest_wins(int line_number, Hash_Array *hashtable)
 
   if (max_win < 0)
   {
-    {
-      free(team_list);
-      return;
-    }
+    free(team_list);
+    return;
   }
   else
   {
@@ -461,11 +411,9 @@ void biggest_wins(int line_number, Hash_Array *hashtable)
   printf("%d Melhores %d\n", line_number, max_win);
   if (size == 0)
   {
-    {
-      printf("%d * %s\n", line_number, team_list[0]);
-      free(team_list);
-      return;
-    }
+    printf("%d * %s\n", line_number, team_list[0]);
+    free(team_list);
+    return;
   }
   else
   {

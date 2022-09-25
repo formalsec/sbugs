@@ -75,9 +75,7 @@ void InserirJogo(linkJogo *pheadj, linkJogo *ptailj, linkJogo *tabJogos, linkJog
   i = hash(j->jogo->nome, 631);
   if (tabJogos[i] != 0)
   {
-    {
-      j->nextHash = tabJogos[i];
-    }
+    j->nextHash = tabJogos[i];
   }
   else
   {
@@ -87,9 +85,7 @@ void InserirJogo(linkJogo *pheadj, linkJogo *ptailj, linkJogo *tabJogos, linkJog
   tabJogos[i] = j;
   if ((*pheadj) == 0)
   {
-    {
-      *pheadj = j;
-    }
+    *pheadj = j;
   }
   else
   {
@@ -98,9 +94,7 @@ void InserirJogo(linkJogo *pheadj, linkJogo *ptailj, linkJogo *tabJogos, linkJog
 
   if ((*ptailj) != 0)
   {
-    {
-      (*ptailj)->nextList = j;
-    }
+    (*ptailj)->nextList = j;
   }
   else
   {
@@ -117,37 +111,31 @@ void RemoverJogo(linkJogo *pheadj, linkJogo *ptailj, linkJogo *tabJogos, linkJog
   int i = 0;
   if ((j == (*pheadj)) && (j == (*ptailj)))
   {
-    {
-      *pheadj = 0;
-      *ptailj = 0;
-    }
+    *pheadj = 0;
+    *ptailj = 0;
   }
   else
   {
     if (j == (*pheadj))
     {
-      {
-        *pheadj = j->nextList;
-      }
+      *pheadj = j->nextList;
     }
     else
     {
+      auxL = *pheadj;
+      while (auxL->nextList != j)
+        auxL = auxL->nextList;
+
+      auxL->nextList = j->nextList;
+      if (j == (*ptailj))
       {
-        auxL = *pheadj;
-        while (auxL->nextList != j)
-          auxL = auxL->nextList;
-
-        auxL->nextList = j->nextList;
-        if (j == (*ptailj))
-        {
-          *ptailj = auxL;
-        }
-        else
-        {
-          
-        }
-
+        *ptailj = auxL;
       }
+      else
+      {
+        
+      }
+
     }
 
   }
@@ -159,13 +147,11 @@ void RemoverJogo(linkJogo *pheadj, linkJogo *ptailj, linkJogo *tabJogos, linkJog
   }
   else
   {
-    {
-      auxH = tabJogos[i];
-      while (auxH->nextHash != j)
-        auxH = auxH->nextHash;
+    auxH = tabJogos[i];
+    while (auxH->nextHash != j)
+      auxH = auxH->nextHash;
 
-      auxH->nextHash = j->nextHash;
-    }
+    auxH->nextHash = j->nextHash;
   }
 
   freeJogo(j->jogo);

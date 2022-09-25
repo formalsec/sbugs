@@ -51,9 +51,7 @@ equipa *procura_equipa_hash(bloco_hash_equipa *table_e, char *nome)
 
   if (aux == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -96,9 +94,7 @@ jogo *procura_jogo_hash(bloco_hash_jogo *table_j, char *nome)
 
   if (aux == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -131,15 +127,11 @@ void apaga_jogo_hash(bloco_hash_jogo *table_j, char *nome)
 
   if (aux2 == 0)
   {
-    {
-      table_j[pos] = aux->next;
-    }
+    table_j[pos] = aux->next;
   }
   else
   {
-    {
-      aux2->next = aux->next;
-    }
+    aux2->next = aux->next;
   }
 
   free(aux->jogo->nome);

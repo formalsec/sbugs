@@ -34,9 +34,7 @@ void insert_team_hashtable(Team_Hashtable *TH, Team team)
   int position = index;
   if (TH->count > (TH->size / 2))
   {
-    {
-      expand_team_hashtable(TH);
-    }
+    expand_team_hashtable(TH);
   }
   else
   {
@@ -63,9 +61,7 @@ void expand_team_hashtable(Team_Hashtable *TH)
   {
     if (aux_team_table[i] != 0)
     {
-      {
-        insert_team_hashtable(TH, aux_team_table[i]);
-      }
+      insert_team_hashtable(TH, aux_team_table[i]);
     }
     else
     {
@@ -85,9 +81,7 @@ Team search_team_hashtable(Team_Hashtable *TH, char *name)
   {
     if (strcmp(TH->team_table[position]->name, name) == 0)
     {
-      {
-        return TH->team_table[position];
-      }
+      return TH->team_table[position];
     }
     else
     {

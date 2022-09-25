@@ -146,15 +146,11 @@ void Add_Quantidade()
   qnt = new_sym_var(sizeof(int) * 8);
   if (arr_Produto[idp].Peso > 0)
   {
-    {
-      arr_Produto[idp].Quantidade_Stock += qnt;
-    }
+    arr_Produto[idp].Quantidade_Stock += qnt;
   }
   else
   {
-    {
-      printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idp);
-    }
+    printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idp);
   }
 
 }
@@ -173,45 +169,35 @@ void Add_Produto_Encomenda()
   qnt = new_sym_var(sizeof(int) * 8);
   if (ide > Number)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
   }
   else
   {
     if (idp > Id)
     {
-      {
-        printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
-      }
+      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
     }
     else
     {
       if (qnt > arr_Produto[idp].Quantidade_Stock)
       {
-        {
-          printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
-        }
+        printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
       }
       else
       {
         if ((arr_Encomenda[ide].Peso + (arr_Produto[idp].Peso * qnt)) > 200)
         {
-          {
-            printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
-          }
+          printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
         }
         else
         {
-          {
-            arr_Produto[idp].Quantidade_Stock -= qnt;
-            arr_Encomenda[ide].arr_Produto[idp].Quantidade_Encomenda += qnt;
-            arr_Encomenda[ide].Peso += arr_Produto[idp].Peso * qnt;
-            arr_Encomenda[ide].Custo += arr_Produto[idp].Preco * qnt;
-            arr_Encomenda[ide].arr_Produto[idp].Preco = arr_Produto[idp].Preco;
-            arr_Encomenda[ide].arr_Produto[idp].Peso = arr_Produto[idp].Peso;
-            strcpy(arr_Encomenda[ide].arr_Produto[idp].Descricao, arr_Produto[idp].Descricao);
-          }
+          arr_Produto[idp].Quantidade_Stock -= qnt;
+          arr_Encomenda[ide].arr_Produto[idp].Quantidade_Encomenda += qnt;
+          arr_Encomenda[ide].Peso += arr_Produto[idp].Peso * qnt;
+          arr_Encomenda[ide].Custo += arr_Produto[idp].Preco * qnt;
+          arr_Encomenda[ide].arr_Produto[idp].Preco = arr_Produto[idp].Preco;
+          arr_Encomenda[ide].arr_Produto[idp].Peso = arr_Produto[idp].Peso;
+          strcpy(arr_Encomenda[ide].arr_Produto[idp].Descricao, arr_Produto[idp].Descricao);
         }
 
       }
@@ -228,23 +214,17 @@ void Remove_Stock()
   qnt = new_sym_var(sizeof(int) * 8);
   if (idp > Id)
   {
-    {
-      printf("Impossivel remover stock do produto %d. Produto inexistente.\n", idp);
-    }
+    printf("Impossivel remover stock do produto %d. Produto inexistente.\n", idp);
   }
   else
   {
     if (qnt > arr_Produto[idp].Quantidade_Stock)
     {
-      {
-        printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qnt, idp);
-      }
+      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qnt, idp);
     }
     else
     {
-      {
-        arr_Produto[idp].Quantidade_Stock -= qnt;
-      }
+      arr_Produto[idp].Quantidade_Stock -= qnt;
     }
 
   }
@@ -257,26 +237,20 @@ void Remove_Produto()
   idp = new_sym_var(sizeof(int) * 8);
   if (ide > Number)
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
   }
   else
   {
     if (idp > Id)
     {
-      {
-        printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
-      }
+      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
     }
     else
     {
-      {
-        arr_Encomenda[ide].Custo -= arr_Encomenda[ide].arr_Produto[idp].Quantidade_Encomenda * arr_Produto[idp].Preco;
-        arr_Encomenda[ide].Peso -= arr_Encomenda[ide].arr_Produto[idp].Quantidade_Encomenda * arr_Produto[idp].Peso;
-        arr_Produto[idp].Quantidade_Stock += arr_Encomenda[ide].arr_Produto[idp].Quantidade_Encomenda;
-        arr_Encomenda[ide].arr_Produto[idp].Quantidade_Encomenda = 0;
-      }
+      arr_Encomenda[ide].Custo -= arr_Encomenda[ide].arr_Produto[idp].Quantidade_Encomenda * arr_Produto[idp].Preco;
+      arr_Encomenda[ide].Peso -= arr_Encomenda[ide].arr_Produto[idp].Quantidade_Encomenda * arr_Produto[idp].Peso;
+      arr_Produto[idp].Quantidade_Stock += arr_Encomenda[ide].arr_Produto[idp].Quantidade_Encomenda;
+      arr_Encomenda[ide].arr_Produto[idp].Quantidade_Encomenda = 0;
     }
 
   }
@@ -288,15 +262,11 @@ void Calcula_Custo()
   ide = new_sym_var(sizeof(int) * 8);
   if (ide > Number)
   {
-    {
-      printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ide);
-    }
+    printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ide);
   }
   else
   {
-    {
-      printf("Custo da encomenda %d %d.\n", ide, arr_Encomenda[ide].Custo);
-    }
+    printf("Custo da encomenda %d %d.\n", ide, arr_Encomenda[ide].Custo);
   }
 
 }
@@ -308,32 +278,26 @@ void Altera_Preco()
   Novo_Preco = new_sym_var(sizeof(int) * 8);
   if (idp > Id)
   {
-    {
-      printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idp);
-    }
+    printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idp);
   }
   else
   {
+    for (ide = 0; ide <= Number; ide++)
     {
-      for (ide = 0; ide <= Number; ide++)
+      if (arr_Encomenda[ide].arr_Produto[idp].Quantidade_Encomenda != 0)
       {
-        if (arr_Encomenda[ide].arr_Produto[idp].Quantidade_Encomenda != 0)
-        {
-          {
-            arr_Encomenda[ide].Custo -= arr_Produto[idp].Preco * arr_Encomenda[ide].arr_Produto[idp].Quantidade_Encomenda;
-            arr_Encomenda[ide].Custo += Novo_Preco * arr_Encomenda[ide].arr_Produto[idp].Quantidade_Encomenda;
-            arr_Encomenda[ide].arr_Produto[idp].Preco = Novo_Preco;
-          }
-        }
-        else
-        {
-          
-        }
-
+        arr_Encomenda[ide].Custo -= arr_Produto[idp].Preco * arr_Encomenda[ide].arr_Produto[idp].Quantidade_Encomenda;
+        arr_Encomenda[ide].Custo += Novo_Preco * arr_Encomenda[ide].arr_Produto[idp].Quantidade_Encomenda;
+        arr_Encomenda[ide].arr_Produto[idp].Preco = Novo_Preco;
+      }
+      else
+      {
+        
       }
 
-      arr_Produto[idp].Preco = Novo_Preco;
     }
+
+    arr_Produto[idp].Preco = Novo_Preco;
   }
 
 }
@@ -344,23 +308,17 @@ void Lista_Um_Produto()
   idp = new_sym_var(sizeof(int) * 8);
   if (ide > Number)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
   }
   else
   {
     if (idp > Id)
     {
-      {
-        printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
-      }
+      printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
     }
     else
     {
-      {
-        printf("%s %d.\n", arr_Produto[idp].Descricao, arr_Encomenda[ide].arr_Produto[idp].Quantidade_Encomenda);
-      }
+      printf("%s %d.\n", arr_Produto[idp].Descricao, arr_Encomenda[ide].arr_Produto[idp].Quantidade_Encomenda);
     }
 
   }
@@ -373,35 +331,17 @@ void Encomenda_Com_Mais_Produto()
   idp = new_sym_var(sizeof(int) * 8);
   if (idp > Id)
   {
-    {
-      printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idp);
-    }
+    printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idp);
   }
   else
   {
+    qnt = 0;
+    for (ide = 0; ide <= Number; ide++)
     {
-      qnt = 0;
-      for (ide = 0; ide <= Number; ide++)
+      if (arr_Encomenda[ide].arr_Produto[idp].Quantidade_Encomenda > qnt)
       {
-        if (arr_Encomenda[ide].arr_Produto[idp].Quantidade_Encomenda > qnt)
-        {
-          {
-            qnt = arr_Encomenda[ide].arr_Produto[idp].Quantidade_Encomenda;
-            ide_resposta = ide;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      if (qnt > 0)
-      {
-        {
-          printf("Maximo produto %d %d %d.\n", idp, ide_resposta, qnt);
-        }
+        qnt = arr_Encomenda[ide].arr_Produto[idp].Quantidade_Encomenda;
+        ide_resposta = ide;
       }
       else
       {
@@ -409,6 +349,16 @@ void Encomenda_Com_Mais_Produto()
       }
 
     }
+
+    if (qnt > 0)
+    {
+      printf("Maximo produto %d %d %d.\n", idp, ide_resposta, qnt);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -422,16 +372,12 @@ void Lista_Produtos_Sistema_Preco_Crescente()
   {
     if (arr_Produto[idp].Peso != 0)
     {
-      {
-        arr_Produto2[idp2] = arr_Produto[idp];
-        idp2++;
-      }
+      arr_Produto2[idp2] = arr_Produto[idp];
+      idp2++;
     }
     else
     {
-      {
-        contador++;
-      }
+      contador++;
     }
 
   }
@@ -453,39 +399,31 @@ void Lista_Produtos_Encomenda_Alfabeticamente()
   ide = new_sym_var(sizeof(int) * 8);
   if (ide > Number)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
   }
   else
   {
+    for (idp = 0; idp <= Id; idp++)
     {
-      for (idp = 0; idp <= Id; idp++)
+      if (arr_Encomenda[ide].arr_Produto[idp].Quantidade_Encomenda != 0)
       {
-        if (arr_Encomenda[ide].arr_Produto[idp].Quantidade_Encomenda != 0)
-        {
-          {
-            arr_Produto2[idp2] = arr_Encomenda[ide].arr_Produto[idp];
-            idp2++;
-          }
-        }
-        else
-        {
-          {
-            contador++;
-          }
-        }
-
+        arr_Produto2[idp2] = arr_Encomenda[ide].arr_Produto[idp];
+        idp2++;
       }
-
-      mergesort(arr_Produto2, 0, Id - contador);
-      printf("Encomenda %d\n", ide);
-      for (idp = 0; idp <= (Id - contador); idp++)
+      else
       {
-        printf("* %s %d %d\n", arr_Produto2[idp].Descricao, arr_Produto2[idp].Preco, arr_Produto2[idp].Quantidade_Encomenda);
+        contador++;
       }
 
     }
+
+    mergesort(arr_Produto2, 0, Id - contador);
+    printf("Encomenda %d\n", ide);
+    for (idp = 0; idp <= (Id - contador); idp++)
+    {
+      printf("* %s %d %d\n", arr_Produto2[idp].Descricao, arr_Produto2[idp].Preco, arr_Produto2[idp].Quantidade_Encomenda);
+    }
+
   }
 
 }
@@ -495,9 +433,7 @@ void mergesort(struct Produto arr[], int l, int r)
   int meio = (r + l) / 2;
   if (r <= l)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -528,51 +464,37 @@ void merge(struct Produto arr[], int l, int m, int r)
   {
     if (Escolhe_Lista == 0)
     {
+      if (arr2[j].Preco < arr2[i].Preco)
       {
-        if (arr2[j].Preco < arr2[i].Preco)
+        arr[k] = arr2[j--];
+      }
+      else
+      {
+        if ((arr2[j].Preco == arr2[i].Preco) && (arr2[j].Identificador < arr2[i].Identificador))
         {
-          {
-            arr[k] = arr2[j--];
-          }
+          arr[k] = arr2[j--];
         }
         else
         {
-          if ((arr2[j].Preco == arr2[i].Preco) && (arr2[j].Identificador < arr2[i].Identificador))
-          {
-            {
-              arr[k] = arr2[j--];
-            }
-          }
-          else
-          {
-            {
-              arr[k] = arr2[i++];
-            }
-          }
-
+          arr[k] = arr2[i++];
         }
 
       }
+
     }
     else
     {
       if (Escolhe_Lista == 1)
       {
+        if (strcmp(arr2[j].Descricao, arr2[i].Descricao) < 0)
         {
-          if (strcmp(arr2[j].Descricao, arr2[i].Descricao) < 0)
-          {
-            {
-              arr[k] = arr2[j--];
-            }
-          }
-          else
-          {
-            {
-              arr[k] = arr2[i++];
-            }
-          }
-
+          arr[k] = arr2[j--];
         }
+        else
+        {
+          arr[k] = arr2[i++];
+        }
+
       }
       else
       {

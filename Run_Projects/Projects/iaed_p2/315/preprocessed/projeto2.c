@@ -54,38 +54,32 @@ void a(int Nl, hash_table_jogos table_jogo, lista_jogos *jogos, hash_table_team 
     }
     else
     {
+      int r1;
+      jogo new_jogo = cria_jogo(nome1, equipa11, equipa22, score);
+      hash_insert_jogos(table_jogo, nome1);
+      h = hash(nome1, table_jogo->cap);
+      insert_end_list_jogos(jogos, new_jogo);
+      table_jogo->table[h]->no_j = jogos->last;
+      r1 = score[0] - score[1];
+      if (r1 > 0)
       {
-        int r1;
-        jogo new_jogo = cria_jogo(nome1, equipa11, equipa22, score);
-        hash_insert_jogos(table_jogo, nome1);
-        h = hash(nome1, table_jogo->cap);
-        insert_end_list_jogos(jogos, new_jogo);
-        table_jogo->table[h]->no_j = jogos->last;
-        r1 = score[0] - score[1];
-        if (r1 > 0)
+        no team = hash_search_equipas(table_equipas, equipa11);
+        team->no_e->vitorias += 1;
+      }
+      else
+      {
+        if (r1 < 0)
         {
-          {
-            no team = hash_search_equipas(table_equipas, equipa11);
-            team->no_e->vitorias += 1;
-          }
+          no team = hash_search_equipas(table_equipas, equipa22);
+          team->no_e->vitorias += 1;
         }
         else
         {
-          if (r1 < 0)
-          {
-            {
-              no team = hash_search_equipas(table_equipas, equipa22);
-              team->no_e->vitorias += 1;
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
+
     }
 
   }
@@ -108,10 +102,8 @@ void A(int Nl, hash_table_team table_equipas, lista *equipas)
   equipa = reduce_string(nome);
   if (!hash_search_equipas(table_equipas, equipa))
   {
-    {
-      equipas->head = insert_equipa(equipas->head, equipa);
-      hash_insert_equipas(table_equipas, equipa, equipas);
-    }
+    equipas->head = insert_equipa(equipas->head, equipa);
+    hash_insert_equipas(table_equipas, equipa, equipas);
   }
   else
   {
@@ -200,64 +192,18 @@ void r(int Nl, hash_table_jogos table_jogos, lista_jogos *jogos, hash_table_team
   }
   else
   {
+    r = aux->no_j->game.score0 - aux->no_j->game.score1;
+    if (r > 0)
     {
-      r = aux->no_j->game.score0 - aux->no_j->game.score1;
-      if (r > 0)
+      no team = hash_search_equipas(table_equipas, aux->no_j->game.equipa1);
+      team->no_e->vitorias -= 1;
+    }
+    else
+    {
+      if (r < 0)
       {
-        {
-          no team = hash_search_equipas(table_equipas, aux->no_j->game.equipa1);
-          team->no_e->vitorias -= 1;
-        }
-      }
-      else
-      {
-        if (r < 0)
-        {
-          {
-            no team = hash_search_equipas(table_equipas, aux->no_j->game.equipa2);
-            team->no_e->vitorias -= 1;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      if (strcmp(jogos->last->game.nome, aux->no_j->game.nome) == 0)
-      {
-        {
-          jogos->last = jogos->last->prev;
-        }
-      }
-      else
-      {
-        
-      }
-
-      remove_jogos(table_jogos, aux);
-      if (jogos->head->game.nome == 0)
-      {
-        {
-          if (jogos->head->next != 0)
-          {
-            {
-              aux1 = jogos->head->next;
-              free(jogos->head);
-              jogos->head = aux1;
-              aux1->prev = 0;
-            }
-          }
-          else
-          {
-            {
-              free(jogos->head);
-              jogos->head = 0;
-            }
-          }
-
-        }
+        no team = hash_search_equipas(table_equipas, aux->no_j->game.equipa2);
+        team->no_e->vitorias -= 1;
       }
       else
       {
@@ -265,6 +211,38 @@ void r(int Nl, hash_table_jogos table_jogos, lista_jogos *jogos, hash_table_team
       }
 
     }
+
+    if (strcmp(jogos->last->game.nome, aux->no_j->game.nome) == 0)
+    {
+      jogos->last = jogos->last->prev;
+    }
+    else
+    {
+      
+    }
+
+    remove_jogos(table_jogos, aux);
+    if (jogos->head->game.nome == 0)
+    {
+      if (jogos->head->next != 0)
+      {
+        aux1 = jogos->head->next;
+        free(jogos->head);
+        jogos->head = aux1;
+        aux1->prev = 0;
+      }
+      else
+      {
+        free(jogos->head);
+        jogos->head = 0;
+      }
+
+    }
+    else
+    {
+      
+    }
+
   }
 
   free(nome1);
@@ -292,80 +270,65 @@ void s(int Nl, hash_table_jogos table_jogos, hash_table_team hash_equipa)
   }
   else
   {
+    int r1;
+    int r2;
+    r1 = aux->no_j->game.score0 - aux->no_j->game.score1;
+    r2 = score[0] - score[1];
+    if ((r1 > 0) && (r2 < 0))
     {
-      int r1;
-      int r2;
-      r1 = aux->no_j->game.score0 - aux->no_j->game.score1;
-      r2 = score[0] - score[1];
-      if ((r1 > 0) && (r2 < 0))
+      no team;
+      no team1;
+      team = hash_search_equipas(hash_equipa, aux->no_j->game.equipa1);
+      team->no_e->vitorias -= 1;
+      team1 = hash_search_equipas(hash_equipa, aux->no_j->game.equipa2);
+      team1->no_e->vitorias += 1;
+    }
+    else
+    {
+      if ((r1 < 0) && (r2 > 0))
       {
-        {
-          no team;
-          no team1;
-          team = hash_search_equipas(hash_equipa, aux->no_j->game.equipa1);
-          team->no_e->vitorias -= 1;
-          team1 = hash_search_equipas(hash_equipa, aux->no_j->game.equipa2);
-          team1->no_e->vitorias += 1;
-        }
+        no team;
+        no team1;
+        team = hash_search_equipas(hash_equipa, aux->no_j->game.equipa1);
+        team->no_e->vitorias += 1;
+        team1 = hash_search_equipas(hash_equipa, aux->no_j->game.equipa2);
+        team1->no_e->vitorias -= 1;
       }
       else
       {
-        if ((r1 < 0) && (r2 > 0))
+        if ((r1 == 0) && (r2 > 0))
         {
-          {
-            no team;
-            no team1;
-            team = hash_search_equipas(hash_equipa, aux->no_j->game.equipa1);
-            team->no_e->vitorias += 1;
-            team1 = hash_search_equipas(hash_equipa, aux->no_j->game.equipa2);
-            team1->no_e->vitorias -= 1;
-          }
+          no team;
+          team = hash_search_equipas(hash_equipa, aux->no_j->game.equipa1);
+          team->no_e->vitorias += 1;
         }
         else
         {
-          if ((r1 == 0) && (r2 > 0))
+          if ((r1 == 0) && (r2 < 0))
           {
-            {
-              no team;
-              team = hash_search_equipas(hash_equipa, aux->no_j->game.equipa1);
-              team->no_e->vitorias += 1;
-            }
+            no team;
+            team = hash_search_equipas(hash_equipa, aux->no_j->game.equipa2);
+            team->no_e->vitorias += 1;
           }
           else
           {
-            if ((r1 == 0) && (r2 < 0))
+            if ((r1 > 0) && (r2 == 0))
             {
-              {
-                no team;
-                team = hash_search_equipas(hash_equipa, aux->no_j->game.equipa2);
-                team->no_e->vitorias += 1;
-              }
+              no team;
+              team = hash_search_equipas(hash_equipa, aux->no_j->game.equipa1);
+              team->no_e->vitorias -= 1;
             }
             else
             {
-              if ((r1 > 0) && (r2 == 0))
+              if ((r1 < 0) && (r2 == 0))
               {
-                {
-                  no team;
-                  team = hash_search_equipas(hash_equipa, aux->no_j->game.equipa1);
-                  team->no_e->vitorias -= 1;
-                }
+                no team;
+                team = hash_search_equipas(hash_equipa, aux->no_j->game.equipa2);
+                team->no_e->vitorias -= 1;
               }
               else
               {
-                if ((r1 < 0) && (r2 == 0))
-                {
-                  {
-                    no team;
-                    team = hash_search_equipas(hash_equipa, aux->no_j->game.equipa2);
-                    team->no_e->vitorias -= 1;
-                  }
-                }
-                else
-                {
-                  
-                }
-
+                
               }
 
             }
@@ -376,9 +339,10 @@ void s(int Nl, hash_table_jogos table_jogos, hash_table_team hash_equipa)
 
       }
 
-      aux->no_j->game.score0 = score[0];
-      aux->no_j->game.score1 = score[1];
     }
+
+    aux->no_j->game.score0 = score[0];
+    aux->no_j->game.score1 = score[1];
   }
 
   free(nome1);
@@ -388,47 +352,41 @@ void g(int Nl, lista *equipas)
 {
   if (equipas->head != 0)
   {
+    node_equipa lista;
+    node_equipa aux;
+    node_equipa aux1;
+    int maior = 0;
+    lista = 0;
+    for (aux = equipas->head; aux != 0; aux = aux->next)
     {
-      node_equipa lista;
-      node_equipa aux;
-      node_equipa aux1;
-      int maior = 0;
-      lista = 0;
-      for (aux = equipas->head; aux != 0; aux = aux->next)
+      if (aux->vitorias > maior)
       {
-        if (aux->vitorias > maior)
+        maior = aux->vitorias;
+        libertar_lista_teams(lista);
+        lista = 0;
+        lista = insert_equipa(lista, aux->nome_equipa);
+      }
+      else
+      {
+        if (aux->vitorias == maior)
         {
-          {
-            maior = aux->vitorias;
-            libertar_lista_teams(lista);
-            lista = 0;
-            lista = insert_equipa(lista, aux->nome_equipa);
-          }
+          char *equipa = aux->nome_equipa;
+          lista = adicionar_ordem_alfabetica(lista, equipa);
         }
         else
         {
-          if (aux->vitorias == maior)
-          {
-            {
-              char *equipa = aux->nome_equipa;
-              lista = adicionar_ordem_alfabetica(lista, equipa);
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
 
-      printf("%d Melhores %d\n", Nl, maior);
-      for (aux1 = lista; aux1 != 0; aux1 = aux1->next)
-        printf("%d * %s\n", Nl, aux1->nome_equipa);
-
-      libertar_lista_teams(lista);
     }
+
+    printf("%d Melhores %d\n", Nl, maior);
+    for (aux1 = lista; aux1 != 0; aux1 = aux1->next)
+      printf("%d * %s\n", Nl, aux1->nome_equipa);
+
+    libertar_lista_teams(lista);
   }
   else
   {

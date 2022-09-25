@@ -62,9 +62,7 @@ gametable *ExpandGameTable(gametable *table_g)
   {
     if (old_table[i] != 0)
     {
-      {
-        InsertGame(old_table[i], table_g);
-      }
+      InsertGame(old_table[i], table_g);
     }
     else
     {
@@ -85,15 +83,11 @@ game *SearchGame(char *name, gametable *table_g)
   {
     if (strcmp(table_g->table[i]->name, name) == 0)
     {
-      {
-        return table_g->table[i];
-      }
+      return table_g->table[i];
     }
     else
     {
-      {
-        i = (i + 1) % table_g->size;
-      }
+      i = (i + 1) % table_g->size;
     }
 
   }
@@ -110,24 +104,18 @@ void DeleteGame(game *game_v, gametable *table_g)
   {
     if (strcmp(table_g->table[i]->name, game_v->name) == 0)
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {
-      {
-        i = (i + 1) % table_g->size;
-      }
+      i = (i + 1) % table_g->size;
     }
 
   }
 
   if (table_g->table[i] == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -185,9 +173,7 @@ teamstable *ExpandTeamsTable(teamstable *table_t)
   {
     if (old_table[i] != 0)
     {
-      {
-        InsertTeam(old_table[i], table_t);
-      }
+      InsertTeam(old_table[i], table_t);
     }
     else
     {
@@ -207,15 +193,11 @@ team *SearchTeam(char *name, teamstable *table_t)
   {
     if (strcmp(table_t->table[i]->name, name) == 0)
     {
-      {
-        return table_t->table[i];
-      }
+      return table_t->table[i];
     }
     else
     {
-      {
-        i = (i + 1) % table_t->size;
-      }
+      i = (i + 1) % table_t->size;
     }
 
   }

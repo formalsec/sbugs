@@ -22,10 +22,8 @@ void P(TEAM *hashT[], int row)
   {
     if (searcher_team->link == 0)
     {
-      {
-        printf("%d Equipa inexistente.", row);
-        return;
-      }
+      printf("%d Equipa inexistente.", row);
+      return;
     }
     else
     {

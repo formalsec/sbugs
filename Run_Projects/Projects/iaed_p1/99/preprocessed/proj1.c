@@ -139,22 +139,18 @@ int cmd_a(char cmd[], int next_idp)
       case 0:
         if (cmd[i] == ':')
       {
+        state = 1;
+        man_trc = up_string(middle_man, '\0', man_trc);
+        for (man_trc = 0; middle_man[man_trc] != '\0'; man_trc++)
         {
-          state = 1;
-          man_trc = up_string(middle_man, '\0', man_trc);
-          for (man_trc = 0; middle_man[man_trc] != '\0'; man_trc++)
-          {
-            products[next_idp].desc[man_trc] = middle_man[man_trc];
-          }
-
-          man_trc = 0;
+          products[next_idp].desc[man_trc] = middle_man[man_trc];
         }
+
+        man_trc = 0;
       }
       else
       {
-        {
-          man_trc = up_string(middle_man, cmd[i], man_trc);
-        }
+        man_trc = up_string(middle_man, cmd[i], man_trc);
       }
 
         break;
@@ -162,17 +158,13 @@ int cmd_a(char cmd[], int next_idp)
       case 1:
         if (cmd[i] == ':')
       {
-        {
-          state = 2;
-          man_trc = up_string(middle_man, '\0', man_trc);
-          products[next_idp].prc = str_int(middle_man);
-        }
+        state = 2;
+        man_trc = up_string(middle_man, '\0', man_trc);
+        products[next_idp].prc = str_int(middle_man);
       }
       else
       {
-        {
-          man_trc = up_string(middle_man, cmd[i], man_trc);
-        }
+        man_trc = up_string(middle_man, cmd[i], man_trc);
       }
 
         break;
@@ -180,17 +172,13 @@ int cmd_a(char cmd[], int next_idp)
       case 2:
         if (cmd[i] == ':')
       {
-        {
-          state = 3;
-          man_trc = up_string(middle_man, '\0', man_trc);
-          products[next_idp].wght = str_int(middle_man);
-        }
+        state = 3;
+        man_trc = up_string(middle_man, '\0', man_trc);
+        products[next_idp].wght = str_int(middle_man);
       }
       else
       {
-        {
-          man_trc = up_string(middle_man, cmd[i], man_trc);
-        }
+        man_trc = up_string(middle_man, cmd[i], man_trc);
       }
 
         break;
@@ -223,26 +211,22 @@ void cmd_q(char cmd[])
       case 4:
         if (cmd[i] == ':')
       {
+        state = 3;
+        middle_trc = up_string(middle_man, '\0', middle_trc);
+        id = str_int(middle_man);
+        if (products[id].idp == (-1))
         {
-          state = 3;
-          middle_trc = up_string(middle_man, '\0', middle_trc);
-          id = str_int(middle_man);
-          if (products[id].idp == (-1))
-          {
-            state = 6;
-          }
-          else
-          {
-            
-          }
-
+          state = 6;
         }
+        else
+        {
+          
+        }
+
       }
       else
       {
-        {
-          middle_trc = up_string(middle_man, cmd[i], middle_trc);
-        }
+        middle_trc = up_string(middle_man, cmd[i], middle_trc);
       }
 
         break;
@@ -261,10 +245,8 @@ void cmd_q(char cmd[])
   }
   else
   {
-    {
-      up_string(middle_man, '\0', middle_trc);
-      products[id].qtd += str_int(middle_man);
-    }
+    up_string(middle_man, '\0', middle_trc);
+    products[id].qtd += str_int(middle_man);
   }
 
 }
@@ -284,26 +266,22 @@ void cmd_r(char cmd[])
       case 4:
         if (cmd[i] == ':')
       {
+        state = 3;
+        middle_trc = up_string(middle_man, '\0', middle_trc);
+        idp = str_int(middle_man);
+        if (products[idp].idp == (-1))
         {
-          state = 3;
-          middle_trc = up_string(middle_man, '\0', middle_trc);
-          idp = str_int(middle_man);
-          if (products[idp].idp == (-1))
-          {
-            state = 6;
-          }
-          else
-          {
-            
-          }
-
+          state = 6;
         }
+        else
+        {
+          
+        }
+
       }
       else
       {
-        {
-          middle_trc = up_string(middle_man, cmd[i], middle_trc);
-        }
+        middle_trc = up_string(middle_man, cmd[i], middle_trc);
       }
 
         break;
@@ -322,21 +300,17 @@ void cmd_r(char cmd[])
   }
   else
   {
+    up_string(middle_man, '\0', middle_trc);
+    qtd = str_int(middle_man);
+    if (products[idp].qtd < qtd)
     {
-      up_string(middle_man, '\0', middle_trc);
-      qtd = str_int(middle_man);
-      if (products[idp].qtd < qtd)
-      {
-        printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, idp);
-      }
-      else
-      {
-        {
-          products[idp].qtd -= qtd;
-        }
-      }
-
+      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, idp);
     }
+    else
+    {
+      products[idp].qtd -= qtd;
+    }
+
   }
 
 }
@@ -356,26 +330,22 @@ void cmd_p(char cmd[])
       case 4:
         if (cmd[i] == ':')
       {
+        state = 1;
+        middle_trc = up_string(middle_man, '\0', middle_trc);
+        idp = str_int(middle_man);
+        if (products[idp].idp == (-1))
         {
-          state = 1;
-          middle_trc = up_string(middle_man, '\0', middle_trc);
-          idp = str_int(middle_man);
-          if (products[idp].idp == (-1))
-          {
-            state = 6;
-          }
-          else
-          {
-            
-          }
-
+          state = 6;
         }
+        else
+        {
+          
+        }
+
       }
       else
       {
-        {
-          middle_trc = up_string(middle_man, cmd[i], middle_trc);
-        }
+        middle_trc = up_string(middle_man, cmd[i], middle_trc);
       }
 
         break;
@@ -394,11 +364,9 @@ void cmd_p(char cmd[])
   }
   else
   {
-    {
-      up_string(middle_man, '\0', middle_trc);
-      price = str_int(middle_man);
-      products[idp].prc = price;
-    }
+    up_string(middle_man, '\0', middle_trc);
+    price = str_int(middle_man);
+    products[idp].prc = price;
   }
 
 }
@@ -427,51 +395,29 @@ void cmd_m(char cmd[])
   }
   else
   {
+    for (i = 0; (orders[i].ido != (-1)) && (i < 500); i++)
     {
-      for (i = 0; (orders[i].ido != (-1)) && (i < 500); i++)
+      nbprdct = orders[i].nbprdct;
+      for (j = 0; (nbprdct != 0) && (j < 200); j++)
       {
-        nbprdct = orders[i].nbprdct;
-        for (j = 0; (nbprdct != 0) && (j < 200); j++)
+        if (orders[i].products[j][0] == idp)
         {
-          if (orders[i].products[j][0] == idp)
+          if (ido == (-1))
           {
-            {
-              if (ido == (-1))
-              {
-                {
-                  max = orders[i].products[j][1];
-                  ido = i;
-                  o_idp = j;
-                }
-              }
-              else
-              {
-                
-              }
-
-              if (orders[i].products[j][1] > max)
-              {
-                {
-                  max = orders[i].products[j][1];
-                  ido = i;
-                  o_idp = j;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
+            max = orders[i].products[j][1];
+            ido = i;
+            o_idp = j;
           }
           else
           {
             
           }
 
-          if (orders[i].products[j][0] != (-1))
+          if (orders[i].products[j][1] > max)
           {
-            nbprdct--;
+            max = orders[i].products[j][1];
+            ido = i;
+            o_idp = j;
           }
           else
           {
@@ -479,19 +425,33 @@ void cmd_m(char cmd[])
           }
 
         }
+        else
+        {
+          
+        }
 
-      }
+        if (orders[i].products[j][0] != (-1))
+        {
+          nbprdct--;
+        }
+        else
+        {
+          
+        }
 
-      if (ido != (-1))
-      {
-        printf("Maximo produto %d %d %d.\n", idp, ido, orders[ido].products[o_idp][1]);
-      }
-      else
-      {
-        
       }
 
     }
+
+    if (ido != (-1))
+    {
+      printf("Maximo produto %d %d %d.\n", idp, ido, orders[ido].products[o_idp][1]);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -541,26 +501,22 @@ void cmd_A(char cmd[])
       case 5:
         if (cmd[i] == ':')
       {
+        state = 4;
+        middle_trc = up_string(middle_man, '\0', middle_trc);
+        ido = str_int(middle_man);
+        if (orders[ido].ido == (-1))
         {
-          state = 4;
-          middle_trc = up_string(middle_man, '\0', middle_trc);
-          ido = str_int(middle_man);
-          if (orders[ido].ido == (-1))
-          {
-            error = 7;
-          }
-          else
-          {
-            
-          }
-
+          error = 7;
         }
+        else
+        {
+          
+        }
+
       }
       else
       {
-        {
-          middle_trc = up_string(middle_man, cmd[i], middle_trc);
-        }
+        middle_trc = up_string(middle_man, cmd[i], middle_trc);
       }
 
         break;
@@ -568,23 +524,14 @@ void cmd_A(char cmd[])
       case 4:
         if (cmd[i] == ':')
       {
+        state = 3;
+        middle_trc = up_string(middle_man, '\0', middle_trc);
+        idp = str_int(middle_man);
+        if (products[idp].idp == (-1))
         {
-          state = 3;
-          middle_trc = up_string(middle_man, '\0', middle_trc);
-          idp = str_int(middle_man);
-          if (products[idp].idp == (-1))
+          if (error == (-1))
           {
-            {
-              if (error == (-1))
-              {
-                error = 6;
-              }
-              else
-              {
-                
-              }
-
-            }
+            error = 6;
           }
           else
           {
@@ -592,12 +539,15 @@ void cmd_A(char cmd[])
           }
 
         }
+        else
+        {
+          
+        }
+
       }
       else
       {
-        {
-          middle_trc = up_string(middle_man, cmd[i], middle_trc);
-        }
+        middle_trc = up_string(middle_man, cmd[i], middle_trc);
       }
 
         break;
@@ -622,68 +572,62 @@ void cmd_A(char cmd[])
     }
     else
     {
+      up_string(middle_man, '\0', middle_trc);
+      qtd = str_int(middle_man);
+      if (products[idp].qtd < qtd)
       {
-        up_string(middle_man, '\0', middle_trc);
-        qtd = str_int(middle_man);
-        if (products[idp].qtd < qtd)
+        printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ido);
+      }
+      else
+      {
+        if (((qtd * products[idp].wght) + orders[ido].wght) > 200)
         {
-          printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ido);
+          printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ido);
         }
         else
         {
-          if (((qtd * products[idp].wght) + orders[ido].wght) > 200)
+          products[idp].qtd -= qtd;
+          nbprdcts = orders[ido].nbprdct;
+          for (i = 0; ((nbprdcts != 0) && (orders[ido].products[i][0] != idp)) && (i < 500); i++)
           {
-            printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ido);
+            if (orders[ido].products[i][0] != (-1))
+            {
+              nbprdcts--;
+            }
+            else
+            {
+              
+            }
+
+          }
+
+          if (nbprdcts == 0)
+          {
+            for (i = 0; (orders[ido].products[i][0] != (-1)) && (i < 200); i++)
+              ;
+
           }
           else
           {
-            {
-              products[idp].qtd -= qtd;
-              nbprdcts = orders[ido].nbprdct;
-              for (i = 0; ((nbprdcts != 0) && (orders[ido].products[i][0] != idp)) && (i < 500); i++)
-              {
-                if (orders[ido].products[i][0] != (-1))
-                {
-                  {
-                    nbprdcts--;
-                  }
-                }
-                else
-                {
-                  
-                }
-
-              }
-
-              if (nbprdcts == 0)
-              {
-                for (i = 0; (orders[ido].products[i][0] != (-1)) && (i < 200); i++)
-                  ;
-
-              }
-              else
-              {
-                
-              }
-
-              if (orders[ido].products[i][0] == (-1))
-              {
-                orders[ido].nbprdct++;
-              }
-              else
-              {
-                
-              }
-
-              orders[ido].products[i][0] = idp;
-              orders[ido].products[i][1] += qtd;
-              orders[ido].wght += qtd * products[idp].wght;
-            }
+            
           }
 
+          if (orders[ido].products[i][0] == (-1))
+          {
+            orders[ido].nbprdct++;
+          }
+          else
+          {
+            
+          }
+
+          orders[ido].products[i][0] = idp;
+          orders[ido].products[i][1] += qtd;
+          orders[ido].wght += qtd * products[idp].wght;
         }
 
       }
+
     }
 
   }
@@ -707,26 +651,22 @@ void cmd_R(char cmd[])
       case 5:
         if (cmd[i] == ':')
       {
+        state = 4;
+        middle_trc = up_string(middle_man, '\0', middle_trc);
+        ido = str_int(middle_man);
+        if (orders[ido].ido == (-1))
         {
-          state = 4;
-          middle_trc = up_string(middle_man, '\0', middle_trc);
-          ido = str_int(middle_man);
-          if (orders[ido].ido == (-1))
-          {
-            error = 7;
-          }
-          else
-          {
-            
-          }
-
+          error = 7;
         }
+        else
+        {
+          
+        }
+
       }
       else
       {
-        {
-          middle_trc = up_string(middle_man, cmd[i], middle_trc);
-        }
+        middle_trc = up_string(middle_man, cmd[i], middle_trc);
       }
 
         break;
@@ -753,38 +693,34 @@ void cmd_R(char cmd[])
     }
     else
     {
+      nbprdcts = orders[ido].nbprdct;
+      for (i = 0; (i < 200) && (nbprdcts != 0); i++)
       {
-        nbprdcts = orders[ido].nbprdct;
-        for (i = 0; (i < 200) && (nbprdcts != 0); i++)
+        if (orders[ido].products[i][0] == idp)
         {
-          if (orders[ido].products[i][0] == idp)
-          {
-            {
-              orders[ido].products[i][0] = -1;
-              orders[ido].wght -= orders[ido].products[i][1] * products[idp].wght;
-              products[idp].qtd += orders[ido].products[i][1];
-              orders[ido].products[i][1] = 0;
-              orders[ido].nbprdct--;
-              break;
-            }
-          }
-          else
-          {
-            
-          }
+          orders[ido].products[i][0] = -1;
+          orders[ido].wght -= orders[ido].products[i][1] * products[idp].wght;
+          products[idp].qtd += orders[ido].products[i][1];
+          orders[ido].products[i][1] = 0;
+          orders[ido].nbprdct--;
+          break;
+        }
+        else
+        {
+          
+        }
 
-          if (orders[ido].products[i][0] != (-1))
-          {
-            nbprdcts--;
-          }
-          else
-          {
-            
-          }
-
+        if (orders[ido].products[i][0] != (-1))
+        {
+          nbprdcts--;
+        }
+        else
+        {
+          
         }
 
       }
+
     }
 
   }
@@ -813,27 +749,23 @@ void cmd_C(char cmd[])
   }
   else
   {
+    nbrprdcts = orders[ido].nbprdct;
+    for (i = 0; (i < 200) && (nbrprdcts != 0); i++)
     {
-      nbrprdcts = orders[ido].nbprdct;
-      for (i = 0; (i < 200) && (nbrprdcts != 0); i++)
+      if (orders[ido].products[i][0] != (-1))
       {
-        if (orders[ido].products[i][0] != (-1))
-        {
-          {
-            idp = orders[ido].products[i][0];
-            cost += orders[ido].products[i][1] * products[idp].prc;
-            nbrprdcts--;
-          }
-        }
-        else
-        {
-          
-        }
-
+        idp = orders[ido].products[i][0];
+        cost += orders[ido].products[i][1] * products[idp].prc;
+        nbrprdcts--;
+      }
+      else
+      {
+        
       }
 
-      printf("Custo da encomenda %d %d.\n", ido, cost);
     }
+
+    printf("Custo da encomenda %d %d.\n", ido, cost);
   }
 
 }
@@ -853,26 +785,22 @@ void cmd_E(char cmd[])
       case 5:
         if (cmd[i] == ':')
       {
+        state = 4;
+        middle_trc = up_string(middle_man, '\0', middle_trc);
+        ido = str_int(middle_man);
+        if (orders[ido].ido == (-1))
         {
-          state = 4;
-          middle_trc = up_string(middle_man, '\0', middle_trc);
-          ido = str_int(middle_man);
-          if (orders[ido].ido == (-1))
-          {
-            state = 7;
-          }
-          else
-          {
-            
-          }
-
+          state = 7;
         }
+        else
+        {
+          
+        }
+
       }
       else
       {
-        {
-          middle_trc = up_string(middle_man, cmd[i], middle_trc);
-        }
+        middle_trc = up_string(middle_man, cmd[i], middle_trc);
       }
 
         break;
@@ -891,33 +819,29 @@ void cmd_E(char cmd[])
   }
   else
   {
+    up_string(middle_man, '\0', middle_trc);
+    idp = str_int(middle_man);
+    if (products[idp].idp == (-1))
     {
-      up_string(middle_man, '\0', middle_trc);
-      idp = str_int(middle_man);
-      if (products[idp].idp == (-1))
+      printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
+    }
+    else
+    {
+      for (i = 0; (orders[ido].products[i][0] != idp) && (i < 200); i++)
+        ;
+
+      printf("%s", products[idp].desc);
+      if ((i == 200) && (orders[ido].products[i][0] != idp))
       {
-        printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
+        printf(" 0.\n");
       }
       else
       {
-        {
-          for (i = 0; (orders[ido].products[i][0] != idp) && (i < 200); i++)
-            ;
-
-          printf("%s", products[idp].desc);
-          if ((i == 200) && (orders[ido].products[i][0] != idp))
-          {
-            printf(" 0.\n");
-          }
-          else
-          {
-            printf(" %d.\n", orders[ido].products[i][1]);
-          }
-
-        }
+        printf(" %d.\n", orders[ido].products[i][1]);
       }
 
     }
+
   }
 
 }
@@ -944,40 +868,36 @@ void cmd_L(char cmd[])
   }
   else
   {
+    nbprdct = orders[ido].nbprdct;
+    i = 0;
+    j = 0;
+    while (nbprdct != 0)
     {
-      nbprdct = orders[ido].nbprdct;
-      i = 0;
-      j = 0;
-      while (nbprdct != 0)
+      if (orders[ido].products[i][0] != (-1))
       {
-        if (orders[ido].products[i][0] != (-1))
-        {
-          {
-            new_products[j] = products[orders[ido].products[i][0]];
-            nbprdct--;
-            j++;
-          }
-        }
-        else
-        {
-          
-        }
-
-        i++;
+        new_products[j] = products[orders[ido].products[i][0]];
+        nbprdct--;
+        j++;
+      }
+      else
+      {
+        
       }
 
-      new_products[j].idp = -1;
-      quicksort(new_products, less_L, 0, orders[ido].nbprdct - 1);
-      printf("Encomenda %d\n", ido);
-      for (i = 0; new_products[i].idp != (-1); i++)
-      {
-        for (j = 0; orders[ido].products[j][0] != new_products[i].idp; j++)
-          ;
-
-        printf("* %s %d %d\n", new_products[i].desc, new_products[i].prc, orders[ido].products[j][1]);
-      }
-
+      i++;
     }
+
+    new_products[j].idp = -1;
+    quicksort(new_products, less_L, 0, orders[ido].nbprdct - 1);
+    printf("Encomenda %d\n", ido);
+    for (i = 0; new_products[i].idp != (-1); i++)
+    {
+      for (j = 0; orders[ido].products[j][0] != new_products[i].idp; j++)
+        ;
+
+      printf("* %s %d %d\n", new_products[i].desc, new_products[i].prc, orders[ido].products[j][1]);
+    }
+
   }
 
 }
@@ -1042,11 +962,9 @@ void quicksort(prct items[], int (*less)(prct, prct), int left, int right)
   int i;
   if (right > left)
   {
-    {
-      i = partition(items, left, right, *less);
-      quicksort(items, *less, left, i - 1);
-      quicksort(items, *less, i + 1, right);
-    }
+    i = partition(items, left, right, *less);
+    quicksort(items, *less, left, i - 1);
+    quicksort(items, *less, i + 1, right);
   }
   else
   {
@@ -1079,9 +997,7 @@ int partition(prct items[], int left, int right, int (*less)(prct, prct))
 
     if (i < j)
     {
-      {
-        exch(items, i, j);
-      }
+      exch(items, i, j);
     }
     else
     {
@@ -1112,20 +1028,16 @@ int less_l(prct prct1, prct prct2)
   {
     if (prct1.prc == prct2.prc)
     {
+      if (prct1.idp < prct2.idp)
       {
-        if (prct1.idp < prct2.idp)
-        {
-          {
-            return 1;
-          }
-        }
-        else
-        {
-          
-        }
-
-        return 0;
+        return 1;
       }
+      else
+      {
+        
+      }
+
+      return 0;
     }
     else
     {

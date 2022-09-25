@@ -39,28 +39,20 @@ void rm_jogo(list_jogos *jogos, jogo *n)
 {
   if (n->prev)
   {
-    {
-      n->prev->next = n->next;
-    }
+    n->prev->next = n->next;
   }
   else
   {
-    {
-      jogos->head = n->next;
-    }
+    jogos->head = n->next;
   }
 
   if (n->next)
   {
-    {
-      n->next->prev = n->prev;
-    }
+    n->next->prev = n->prev;
   }
   else
   {
-    {
-      jogos->last = n->prev;
-    }
+    jogos->last = n->prev;
   }
 
   free_jogo(n);

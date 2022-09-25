@@ -38,22 +38,16 @@ void remover_no_jogo(lista_jogo *lista, no_jogo *n)
 {
   if (n->ant == 0)
   {
-    {
-      lista->cabeca = n->prox;
-    }
+    lista->cabeca = n->prox;
   }
   else
   {
-    {
-      n->ant->prox = n->prox;
-    }
+    n->ant->prox = n->prox;
   }
 
   if (n->prox == 0)
   {
-    {
-      lista->ult = n->ant;
-    }
+    lista->ult = n->ant;
   }
   else
   {

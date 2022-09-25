@@ -54,9 +54,7 @@ int adicionaJogo(hashJ *tabelaJogos, hashE *tabelaEquipas, char *nome, char *nom
   equipa2 = procuraEquipa(tabelaEquipas, nomeequipa2);
   if ((equipa1 == 0) || (equipa2 == 0))
   {
-    {
-      return 2;
-    }
+    return 2;
   }
   else
   {
@@ -67,40 +65,38 @@ int adicionaJogo(hashJ *tabelaJogos, hashE *tabelaEquipas, char *nome, char *nom
   jogo1 = tabelaJogos->entradas[chave];
   if (jogo1 == 0)
   {
+    jogo1 = malloc(sizeof(jogo));
+    jogo1->nome = malloc(strlen(nome) + 1);
+    strcpy(jogo1->nome, nome);
+    jogo1->equipa1 = malloc(strlen(nomeequipa1) + 1);
+    strcpy(jogo1->equipa1, nomeequipa1);
+    jogo1->equipa2 = malloc(strlen(nomeequipa2) + 1);
+    strcpy(jogo1->equipa2, nomeequipa2);
+    if (resultado1 > resultado2)
     {
-      jogo1 = malloc(sizeof(jogo));
-      jogo1->nome = malloc(strlen(nome) + 1);
-      strcpy(jogo1->nome, nome);
-      jogo1->equipa1 = malloc(strlen(nomeequipa1) + 1);
-      strcpy(jogo1->equipa1, nomeequipa1);
-      jogo1->equipa2 = malloc(strlen(nomeequipa2) + 1);
-      strcpy(jogo1->equipa2, nomeequipa2);
-      if (resultado1 > resultado2)
-      {
-        adicionaVitoria(tabelaEquipas, nomeequipa1);
-      }
-      else
-      {
-        
-      }
-
-      if (resultado1 < resultado2)
-      {
-        adicionaVitoria(tabelaEquipas, nomeequipa2);
-      }
-      else
-      {
-        
-      }
-
-      jogo1->pontos1 = resultado1;
-      jogo1->pontos2 = resultado2;
-      tamanhoLista++;
-      listaL = realloc(listaL, (sizeof(jogo)) * tamanhoLista);
-      listaL[tamanhoLista - 1] = *jogo1;
-      tabelaJogos->entradas[chave] = jogo1;
-      return 0;
+      adicionaVitoria(tabelaEquipas, nomeequipa1);
     }
+    else
+    {
+      
+    }
+
+    if (resultado1 < resultado2)
+    {
+      adicionaVitoria(tabelaEquipas, nomeequipa2);
+    }
+    else
+    {
+      
+    }
+
+    jogo1->pontos1 = resultado1;
+    jogo1->pontos2 = resultado2;
+    tamanhoLista++;
+    listaL = realloc(listaL, (sizeof(jogo)) * tamanhoLista);
+    listaL[tamanhoLista - 1] = *jogo1;
+    tabelaJogos->entradas[chave] = jogo1;
+    return 0;
   }
   else
   {
@@ -177,10 +173,8 @@ void removeLista(char *nome)
   {
     if (strcmp(listaL[i].nome, nome) == 0)
     {
-      {
-        t = i;
-        break;
-      }
+      t = i;
+      break;
     }
     else
     {
@@ -207,10 +201,8 @@ void removeJogo(hashJ *lolada, hashE *e, char *nome, int nl)
   jogoz = lolada->entradas[chave];
   if (!jogoz)
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", nl);
+    return;
   }
   else
   {
@@ -219,35 +211,29 @@ void removeJogo(hashJ *lolada, hashE *e, char *nome, int nl)
 
   if (strcmp(lolada->entradas[chave]->nome, nome) == 0)
   {
+    if (lolada->entradas[chave]->pontos1 > lolada->entradas[chave]->pontos2)
     {
-      if (lolada->entradas[chave]->pontos1 > lolada->entradas[chave]->pontos2)
-      {
-        {
-          retiraVitoria(e, lolada->entradas[chave]->equipa1);
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (lolada->entradas[chave]->pontos1 < lolada->entradas[chave]->pontos2)
-      {
-        {
-          retiraVitoria(e, lolada->entradas[chave]->equipa2);
-        }
-      }
-      else
-      {
-        
-      }
-
-      lolada->entradas[chave] = lolada->entradas[chave]->next;
-      removeLista(nome);
-      free(jogoz->nome);
-      free(jogoz);
-      return;
+      retiraVitoria(e, lolada->entradas[chave]->equipa1);
     }
+    else
+    {
+      
+    }
+
+    if (lolada->entradas[chave]->pontos1 < lolada->entradas[chave]->pontos2)
+    {
+      retiraVitoria(e, lolada->entradas[chave]->equipa2);
+    }
+    else
+    {
+      
+    }
+
+    lolada->entradas[chave] = lolada->entradas[chave]->next;
+    removeLista(nome);
+    free(jogoz->nome);
+    free(jogoz);
+    return;
   }
   else
   {
@@ -260,35 +246,29 @@ void removeJogo(hashJ *lolada, hashE *e, char *nome, int nl)
   {
     if (strcmp(outro->next->nome, nome) == 0)
     {
+      outro->next = jogoz->next;
+      if (outro->pontos1 > outro->pontos2)
       {
-        outro->next = jogoz->next;
-        if (outro->pontos1 > outro->pontos2)
-        {
-          {
-            retiraVitoria(e, outro->equipa1);
-          }
-        }
-        else
-        {
-          
-        }
-
-        if (outro->pontos1 < outro->pontos2)
-        {
-          {
-            retiraVitoria(e, outro->equipa2);
-          }
-        }
-        else
-        {
-          
-        }
-
-        removeLista(nome);
-        free(jogoz->nome);
-        free(jogoz);
-        return;
+        retiraVitoria(e, outro->equipa1);
       }
+      else
+      {
+        
+      }
+
+      if (outro->pontos1 < outro->pontos2)
+      {
+        retiraVitoria(e, outro->equipa2);
+      }
+      else
+      {
+        
+      }
+
+      removeLista(nome);
+      free(jogoz->nome);
+      free(jogoz);
+      return;
     }
     else
     {
@@ -305,10 +285,8 @@ void alterapontos(hashJ *omega, hashE *e, char *nome, int pontos1, int pontos2, 
   tau = procuraJogo(omega, nome);
   if (!tau)
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", nl);
+    return;
   }
   else
   {
@@ -317,51 +295,39 @@ void alterapontos(hashJ *omega, hashE *e, char *nome, int pontos1, int pontos2, 
 
   if ((tau->pontos1 > tau->pontos2) && (pontos1 < pontos2))
   {
-    {
-      retiraVitoria(e, tau->equipa1);
-      adicionaVitoria(e, tau->equipa2);
-    }
+    retiraVitoria(e, tau->equipa1);
+    adicionaVitoria(e, tau->equipa2);
   }
   else
   {
     if ((tau->pontos1 > tau->pontos2) && (pontos1 == pontos2))
     {
-      {
-        retiraVitoria(e, tau->equipa1);
-      }
+      retiraVitoria(e, tau->equipa1);
     }
     else
     {
       if ((tau->pontos1 == tau->pontos2) && (pontos1 > pontos2))
       {
-        {
-          adicionaVitoria(e, tau->equipa1);
-        }
+        adicionaVitoria(e, tau->equipa1);
       }
       else
       {
         if ((tau->pontos1 == tau->pontos2) && (pontos1 < pontos2))
         {
-          {
-            adicionaVitoria(e, tau->equipa2);
-          }
+          adicionaVitoria(e, tau->equipa2);
         }
         else
         {
           if ((tau->pontos1 < tau->pontos2) && (pontos1 > pontos2))
           {
-            {
-              adicionaVitoria(e, tau->equipa1);
-              retiraVitoria(e, tau->equipa2);
-            }
+            adicionaVitoria(e, tau->equipa1);
+            retiraVitoria(e, tau->equipa2);
           }
           else
           {
             if ((tau->pontos1 < tau->pontos2) && (pontos1 == pontos2))
             {
-              {
-                retiraVitoria(e, tau->equipa2);
-              }
+              retiraVitoria(e, tau->equipa2);
             }
             else
             {

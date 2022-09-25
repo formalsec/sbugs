@@ -178,39 +178,33 @@ void adiciona_produto()
         }
         else
         {
+          for (i = 0; i < orders[ide].N_de_Prods; i++)
           {
-            for (i = 0; i < orders[ide].N_de_Prods; i++)
+            if (orders[ide].order_products[i].ID == idp)
             {
-              if (orders[ide].order_products[i].ID == idp)
-              {
-                {
-                  orders[ide].order_products[i].quant = orders[ide].order_products[i].quant + qtd;
-                  break;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-            if ((i == orders[ide].N_de_Prods) && (qtd != 0))
-            {
-              {
-                orders[ide].order_products[orders[ide].N_de_Prods] = products[idp];
-                orders[ide].order_products[orders[ide].N_de_Prods].quant = qtd;
-                orders[ide].N_de_Prods++;
-              }
+              orders[ide].order_products[i].quant = orders[ide].order_products[i].quant + qtd;
+              break;
             }
             else
             {
               
             }
 
-            products[idp].quant = products[idp].quant - qtd;
-            orders[ide].weight_order = orders[ide].weight_order + (qtd * products[idp].weight);
           }
+
+          if ((i == orders[ide].N_de_Prods) && (qtd != 0))
+          {
+            orders[ide].order_products[orders[ide].N_de_Prods] = products[idp];
+            orders[ide].order_products[orders[ide].N_de_Prods].quant = qtd;
+            orders[ide].N_de_Prods++;
+          }
+          else
+          {
+            
+          }
+
+          products[idp].quant = products[idp].quant - qtd;
+          orders[ide].weight_order = orders[ide].weight_order + (qtd * products[idp].weight);
         }
 
       }
@@ -281,26 +275,22 @@ void remove_produto_encomenda()
     }
     else
     {
+      for (i = 0; i < orders[ide].N_de_Prods; i++)
       {
-        for (i = 0; i < orders[ide].N_de_Prods; i++)
+        if (orders[ide].order_products[i].ID == idp)
         {
-          if (orders[ide].order_products[i].ID == idp)
-          {
-            {
-              products[idp].quant = products[idp].quant + orders[ide].order_products[i].quant;
-              orders[ide].weight_order = orders[ide].weight_order - (orders[ide].order_products[i].quant * products[idp].weight);
-              orders[ide].order_products[i].quant = 0;
-              break;
-            }
-          }
-          else
-          {
-            
-          }
-
+          products[idp].quant = products[idp].quant + orders[ide].order_products[i].quant;
+          orders[ide].weight_order = orders[ide].weight_order - (orders[ide].order_products[i].quant * products[idp].weight);
+          orders[ide].order_products[i].quant = 0;
+          break;
+        }
+        else
+        {
+          
         }
 
       }
+
     }
 
   }
@@ -327,24 +317,22 @@ void calcula_preco()
   }
   else
   {
+    for (i = 0; i < orders[id].N_de_Prods; i++)
     {
-      for (i = 0; i < orders[id].N_de_Prods; i++)
+      idp = orders[id].order_products[i].ID;
+      if (products[idp].modif)
       {
-        idp = orders[id].order_products[i].ID;
-        if (products[idp].modif)
-        {
-          orders[id].order_products[i].price = products[idp].price;
-        }
-        else
-        {
-          
-        }
-
-        soma = soma + (orders[id].order_products[i].price * orders[id].order_products[i].quant);
+        orders[id].order_products[i].price = products[idp].price;
+      }
+      else
+      {
+        
       }
 
-      printf("Custo da encomenda %d %d.\n", id, soma);
+      soma = soma + (orders[id].order_products[i].price * orders[id].order_products[i].quant);
     }
+
+    printf("Custo da encomenda %d %d.\n", id, soma);
   }
 
 }
@@ -369,10 +357,8 @@ void altera_preco()
   }
   else
   {
-    {
-      products[id].price = new_price;
-      products[id].modif = 1;
-    }
+    products[id].price = new_price;
+    products[id].modif = 1;
   }
 
 }
@@ -404,26 +390,12 @@ void mostra_produto()
     }
     else
     {
+      for (i = 0; i < orders[ide].N_de_Prods; i++)
       {
-        for (i = 0; i < orders[ide].N_de_Prods; i++)
+        if (orders[ide].order_products[i].ID == idp)
         {
-          if (orders[ide].order_products[i].ID == idp)
-          {
-            {
-              printf("%s %d.\n", orders[ide].order_products[i].desc, orders[ide].order_products[i].quant);
-              break;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-        if (i == orders[ide].N_de_Prods)
-        {
-          printf("%s 0.\n", products[idp].desc);
+          printf("%s %d.\n", orders[ide].order_products[i].desc, orders[ide].order_products[i].quant);
+          break;
         }
         else
         {
@@ -431,6 +403,16 @@ void mostra_produto()
         }
 
       }
+
+      if (i == orders[ide].N_de_Prods)
+      {
+        printf("%s 0.\n", products[idp].desc);
+      }
+      else
+      {
+        
+      }
+
     }
 
   }
@@ -457,49 +439,43 @@ void mostra_maior_n_produtos()
   }
   else
   {
+    vals[1] = 0;
+    for (i = 0; i < ID_Orders; i++)
     {
-      vals[1] = 0;
-      for (i = 0; i < ID_Orders; i++)
+      for (j = 0; j < orders[i].N_de_Prods; j++)
       {
-        for (j = 0; j < orders[i].N_de_Prods; j++)
+        if (id == orders[i].order_products[j].ID)
         {
-          if (id == orders[i].order_products[j].ID)
+          if (vals[1] < orders[i].order_products[j].quant)
           {
-            {
-              if (vals[1] < orders[i].order_products[j].quant)
-              {
-                {
-                  vals[0] = orders[i].ID_Order;
-                  vals[1] = orders[i].order_products[j].quant;
-                }
-              }
-              else
-              {
-                
-              }
-
-              break;
-            }
+            vals[0] = orders[i].ID_Order;
+            vals[1] = orders[i].order_products[j].quant;
           }
           else
           {
             
           }
 
+          break;
+        }
+        else
+        {
+          
         }
 
       }
 
-      if (vals[1] != 0)
-      {
-        printf("Maximo produto %d %d %d.\n", id, vals[0], vals[1]);
-      }
-      else
-      {
-        
-      }
-
     }
+
+    if (vals[1] != 0)
+    {
+      printf("Maximo produto %d %d %d.\n", id, vals[0], vals[1]);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -521,12 +497,10 @@ void lista_produtos()
     {
       if ((produtos[i].price > produtos[i + 1].price) || ((produtos[i].price == produtos[i + 1].price) && (produtos[i].ID > produtos[i + 1].ID)))
       {
-        {
-          aux = produtos[i];
-          produtos[i] = produtos[i + 1];
-          produtos[i + 1] = aux;
-          finish = 0;
-        }
+        aux = produtos[i];
+        produtos[i] = produtos[i + 1];
+        produtos[i + 1] = aux;
+        finish = 0;
       }
       else
       {
@@ -574,34 +548,20 @@ void lista_produtos_encomenda()
   }
   else
   {
+    for (i = 0; i < orders[id].N_de_Prods; i++)
+      produtos[i] = orders[id].order_products[i];
+
+    while (1)
     {
-      for (i = 0; i < orders[id].N_de_Prods; i++)
-        produtos[i] = orders[id].order_products[i];
-
-      while (1)
+      finish = 1;
+      for (i = 0; i < (orders[id].N_de_Prods - 1); i++)
       {
-        finish = 1;
-        for (i = 0; i < (orders[id].N_de_Prods - 1); i++)
+        if (strcmp(produtos[i].desc, produtos[i + 1].desc) > 0)
         {
-          if (strcmp(produtos[i].desc, produtos[i + 1].desc) > 0)
-          {
-            {
-              aux = produtos[i];
-              produtos[i] = produtos[i + 1];
-              produtos[i + 1] = aux;
-              finish = 0;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-        if (finish)
-        {
-          break;
+          aux = produtos[i];
+          produtos[i] = produtos[i + 1];
+          produtos[i + 1] = aux;
+          finish = 0;
         }
         else
         {
@@ -610,30 +570,40 @@ void lista_produtos_encomenda()
 
       }
 
-      printf("Encomenda %d\n", id);
-      for (i = 0; i < orders[id].N_de_Prods; i++)
+      if (finish)
       {
-        if (products[produtos[i].ID].modif)
-        {
-          produtos[i].price = products[produtos[i].ID].price;
-        }
-        else
-        {
-          
-        }
-
-        if (produtos[i].quant != 0)
-        {
-          printf("* %s %d %d\n", produtos[i].desc, produtos[i].price, produtos[i].quant);
-        }
-        else
-        {
-          
-        }
-
+        break;
+      }
+      else
+      {
+        
       }
 
     }
+
+    printf("Encomenda %d\n", id);
+    for (i = 0; i < orders[id].N_de_Prods; i++)
+    {
+      if (products[produtos[i].ID].modif)
+      {
+        produtos[i].price = products[produtos[i].ID].price;
+      }
+      else
+      {
+        
+      }
+
+      if (produtos[i].quant != 0)
+      {
+        printf("* %s %d %d\n", produtos[i].desc, produtos[i].price, produtos[i].quant);
+      }
+      else
+      {
+        
+      }
+
+    }
+
   }
 
 }

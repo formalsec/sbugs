@@ -47,17 +47,13 @@ lista *insereFinalLista(lista *q, item item)
 
   if (q->n < q->m)
   {
-    {
-      q->vetor[q->n++] = item;
-      return q;
-    }
+    q->vetor[q->n++] = item;
+    return q;
   }
   else
   {
-    {
-      q = dupTamanhoLista(q);
-      return insereFinalLista(q, item);
-    }
+    q = dupTamanhoLista(q);
+    return insereFinalLista(q, item);
   }
 
 }
@@ -104,9 +100,7 @@ lista *removeItemLista(lista *q, item Item)
   for (i = 0; i < q->n; i++)
     if (!strcmp(q->vetor[i]->nome, Item->nome))
   {
-    {
-      q->vetor[i]->scr[1] = -1;
-    }
+    q->vetor[i]->scr[1] = -1;
   }
   else
   {

@@ -37,47 +37,37 @@ void adiciona_jogo(link1 *hashtable1, link2 *hashtable2, list *lista, int m)
   score2 = new_sym_var(sizeof(int) * 8);
   if (STsearchJ(nome, hashtable1, 1009) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", m);
-    }
+    printf("%d Jogo existente.\n", m);
   }
   else
   {
     if ((STsearchE(equipa1, hashtable2, 1009) == 0) || (STsearchE(equipa2, hashtable2, 1009) == 0))
     {
-      {
-        printf("%d Equipa inexistente.\n", m);
-      }
+      printf("%d Equipa inexistente.\n", m);
     }
     else
     {
+      STinsertJ(nome, equipa1, equipa2, score1, score2, hashtable1, 1009);
+      add_last(lista, nome);
+      if (score1 > score2)
       {
-        STinsertJ(nome, equipa1, equipa2, score1, score2, hashtable1, 1009);
-        add_last(lista, nome);
-        if (score1 > score2)
+        link2 hashtable = STsearchE(equipa1, hashtable2, 1009);
+        ++hashtable->vitorias;
+      }
+      else
+      {
+        if (score2 > score1)
         {
-          {
-            link2 hashtable = STsearchE(equipa1, hashtable2, 1009);
-            ++hashtable->vitorias;
-          }
+          link2 hashtable = STsearchE(equipa2, hashtable2, 1009);
+          ++hashtable->vitorias;
         }
         else
         {
-          if (score2 > score1)
-          {
-            {
-              link2 hashtable = STsearchE(equipa2, hashtable2, 1009);
-              ++hashtable->vitorias;
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
+
     }
 
   }
@@ -106,16 +96,12 @@ void procura_jogo(link1 *hashtable, int m)
   nome[10 - 1] = '\0';
   if (STsearchJ(nome, hashtable, 1009) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", m);
-    }
+    printf("%d Jogo inexistente.\n", m);
   }
   else
   {
-    {
-      link1 hash = STsearchJ(nome, hashtable, 1009);
-      printf("%d %s %s %s %d %d\n", m, nome, hash->Jogo->equipa1, hash->Jogo->equipa2, hash->Jogo->score1, hash->Jogo->score2);
-    }
+    link1 hash = STsearchJ(nome, hashtable, 1009);
+    printf("%d %s %s %s %d %d\n", m, nome, hash->Jogo->equipa1, hash->Jogo->equipa2, hash->Jogo->score1, hash->Jogo->score2);
   }
 
 }
@@ -131,41 +117,33 @@ void apaga_jogo(link1 *hashtable1, link2 *hashtable2, list *lista, int m)
   nome[10 - 1] = '\0';
   if (STsearchJ(nome, hashtable1, 1009) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", m);
-    }
+    printf("%d Jogo inexistente.\n", m);
   }
   else
   {
+    link1 hash1 = STsearchJ(nome, hashtable1, 1009);
+    link2 hash2 = STsearchE(hash1->Jogo->equipa1, hashtable2, 1009);
+    link2 hash3 = STsearchE(hash1->Jogo->equipa2, hashtable2, 1009);
+    link1 node = search(lista, nome);
+    if (hash1->Jogo->score1 > hash1->Jogo->score2)
     {
-      link1 hash1 = STsearchJ(nome, hashtable1, 1009);
-      link2 hash2 = STsearchE(hash1->Jogo->equipa1, hashtable2, 1009);
-      link2 hash3 = STsearchE(hash1->Jogo->equipa2, hashtable2, 1009);
-      link1 node = search(lista, nome);
-      if (hash1->Jogo->score1 > hash1->Jogo->score2)
+      --hash2->vitorias;
+    }
+    else
+    {
+      if (hash1->Jogo->score1 < hash1->Jogo->score2)
       {
-        {
-          --hash2->vitorias;
-        }
+        --hash3->vitorias;
       }
       else
       {
-        if (hash1->Jogo->score1 < hash1->Jogo->score2)
-        {
-          {
-            --hash3->vitorias;
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      rm_node(lista, node);
-      STdelete(nome, hashtable1, 1009);
     }
+
+    rm_node(lista, node);
+    STdelete(nome, hashtable1, 1009);
   }
 
 }
@@ -185,99 +163,48 @@ void altera_score(link1 *hashtable1, link2 *hashtable2, int m)
   score2 = new_sym_var(sizeof(int) * 8);
   if (STsearchJ(nome, hashtable1, 1009) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", m);
-    }
+    printf("%d Jogo inexistente.\n", m);
   }
   else
   {
+    link1 hash1 = STsearchJ(nome, hashtable1, 1009);
+    link2 hash2 = STsearchE(hash1->Jogo->equipa1, hashtable2, 1009);
+    link2 hash3 = STsearchE(hash1->Jogo->equipa2, hashtable2, 1009);
+    if (score1 > score2)
     {
-      link1 hash1 = STsearchJ(nome, hashtable1, 1009);
-      link2 hash2 = STsearchE(hash1->Jogo->equipa1, hashtable2, 1009);
-      link2 hash3 = STsearchE(hash1->Jogo->equipa2, hashtable2, 1009);
-      if (score1 > score2)
+      if (hash1->Jogo->score1 < hash1->Jogo->score2)
       {
-        {
-          if (hash1->Jogo->score1 < hash1->Jogo->score2)
-          {
-            {
-              ++hash2->vitorias;
-              --hash3->vitorias;
-            }
-          }
-          else
-          {
-            if (hash1->Jogo->score1 == hash1->Jogo->score2)
-            {
-              {
-                ++hash2->vitorias;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-        }
+        ++hash2->vitorias;
+        --hash3->vitorias;
       }
       else
       {
-        if (score1 < score2)
+        if (hash1->Jogo->score1 == hash1->Jogo->score2)
         {
-          {
-            if (hash1->Jogo->score1 > hash1->Jogo->score2)
-            {
-              {
-                --hash2->vitorias;
-                ++hash3->vitorias;
-              }
-            }
-            else
-            {
-              if (hash1->Jogo->score1 == hash1->Jogo->score2)
-              {
-                {
-                  ++hash3->vitorias;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-          }
+          ++hash2->vitorias;
         }
         else
         {
-          if (score1 == score2)
+          
+        }
+
+      }
+
+    }
+    else
+    {
+      if (score1 < score2)
+      {
+        if (hash1->Jogo->score1 > hash1->Jogo->score2)
+        {
+          --hash2->vitorias;
+          ++hash3->vitorias;
+        }
+        else
+        {
+          if (hash1->Jogo->score1 == hash1->Jogo->score2)
           {
-            {
-              if (hash1->Jogo->score1 < hash1->Jogo->score2)
-              {
-                {
-                  --hash3->vitorias;
-                }
-              }
-              else
-              {
-                if (hash1->Jogo->score1 > hash1->Jogo->score2)
-                {
-                  {
-                    --hash2->vitorias;
-                  }
-                }
-                else
-                {
-                  
-                }
-
-              }
-
-            }
+            ++hash3->vitorias;
           }
           else
           {
@@ -287,10 +214,39 @@ void altera_score(link1 *hashtable1, link2 *hashtable2, int m)
         }
 
       }
+      else
+      {
+        if (score1 == score2)
+        {
+          if (hash1->Jogo->score1 < hash1->Jogo->score2)
+          {
+            --hash3->vitorias;
+          }
+          else
+          {
+            if (hash1->Jogo->score1 > hash1->Jogo->score2)
+            {
+              --hash2->vitorias;
+            }
+            else
+            {
+              
+            }
 
-      hash1->Jogo->score1 = score1;
-      hash1->Jogo->score2 = score2;
+          }
+
+        }
+        else
+        {
+          
+        }
+
+      }
+
     }
+
+    hash1->Jogo->score1 = score1;
+    hash1->Jogo->score2 = score2;
   }
 
 }
@@ -306,15 +262,11 @@ void adiciona_equipa(link2 *hashtable, int m)
   nome[10 - 1] = '\0';
   if (STsearchE(nome, hashtable, 1009) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", m);
-    }
+    printf("%d Equipa existente.\n", m);
   }
   else
   {
-    {
-      STinsertE(nome, hashtable, 1009);
-    }
+    STinsertE(nome, hashtable, 1009);
   }
 
 }
@@ -330,16 +282,12 @@ void procura_equipa(link2 *hashtable, int m)
   nome[10 - 1] = '\0';
   if (STsearchE(nome, hashtable, 1009) == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", m);
-    }
+    printf("%d Equipa inexistente.\n", m);
   }
   else
   {
-    {
-      link2 hash = STsearchE(nome, hashtable, 1009);
-      printf("%d %s %d\n", m, nome, hash->vitorias);
-    }
+    link2 hash = STsearchE(nome, hashtable, 1009);
+    printf("%d %s %d\n", m, nome, hash->vitorias);
   }
 
 }
@@ -364,9 +312,7 @@ void lista_equipas(link2 *hashtable, int m)
     {
       if (x->vitorias > max_vitorias)
       {
-        {
-          max_vitorias = x->vitorias;
-        }
+        max_vitorias = x->vitorias;
       }
       else
       {
@@ -383,10 +329,8 @@ void lista_equipas(link2 *hashtable, int m)
     {
       if (x->vitorias == max_vitorias)
       {
-        {
-          a[n] = x;
-          ++n;
-        }
+        a[n] = x;
+        ++n;
       }
       else
       {
@@ -399,15 +343,13 @@ void lista_equipas(link2 *hashtable, int m)
 
   if (n != 0)
   {
+    qsort(a, n, sizeof(node2 *), ordena);
+    printf("%d Melhores %d\n", m, max_vitorias);
+    for (i = 0; i < n; i++)
     {
-      qsort(a, n, sizeof(node2 *), ordena);
-      printf("%d Melhores %d\n", m, max_vitorias);
-      for (i = 0; i < n; i++)
-      {
-        printf("%d * %s\n", m, a[i]->equipa);
-      }
-
+      printf("%d * %s\n", m, a[i]->equipa);
     }
+
   }
   else
   {

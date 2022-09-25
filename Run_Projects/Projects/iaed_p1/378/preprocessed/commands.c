@@ -54,10 +54,8 @@ void addQty(char *cmd, logistics *l)
   qty = new_sym_var(sizeof(unsigned int) * 8);
   if (idp >= l->itemCount)
   {
-    {
-      printf("Impossivel adicionar produto %u ao stock. Produto inexistente.\n", idp);
-      return;
-    }
+    printf("Impossivel adicionar produto %u ao stock. Produto inexistente.\n", idp);
+    return;
   }
   else
   {
@@ -86,10 +84,8 @@ void addItem(char *cmd, logistics *l)
   qty = new_sym_var(sizeof(unsigned int) * 8);
   if (ide >= l->orderCount)
   {
-    {
-      printf("Impossivel adicionar produto %u a encomenda %u. Encomenda inexistente.\n", idp, ide);
-      return;
-    }
+    printf("Impossivel adicionar produto %u a encomenda %u. Encomenda inexistente.\n", idp, ide);
+    return;
   }
   else
   {
@@ -98,10 +94,8 @@ void addItem(char *cmd, logistics *l)
 
   if (idp >= l->itemCount)
   {
-    {
-      printf("Impossivel adicionar produto %u a encomenda %u. Produto inexistente.\n", idp, ide);
-      return;
-    }
+    printf("Impossivel adicionar produto %u a encomenda %u. Produto inexistente.\n", idp, ide);
+    return;
   }
   else
   {
@@ -110,10 +104,8 @@ void addItem(char *cmd, logistics *l)
 
   if (qty > l->items[idp].qty)
   {
-    {
-      printf("Impossivel adicionar produto %u a encomenda %u. Quantidade em stock insuficiente.\n", idp, ide);
-      return;
-    }
+    printf("Impossivel adicionar produto %u a encomenda %u. Quantidade em stock insuficiente.\n", idp, ide);
+    return;
   }
   else
   {
@@ -122,10 +114,8 @@ void addItem(char *cmd, logistics *l)
 
   if ((orderWeight(l->orders[ide], l->items) + (qty * l->items[idp].weight)) > 200)
   {
-    {
-      printf("Impossivel adicionar produto %u a encomenda %u. Peso da encomenda excede o maximo de 200.\n", idp, ide);
-      return;
-    }
+    printf("Impossivel adicionar produto %u a encomenda %u. Peso da encomenda excede o maximo de 200.\n", idp, ide);
+    return;
   }
   else
   {
@@ -137,11 +127,9 @@ void addItem(char *cmd, logistics *l)
   {
     if (l->orders[ide].items[i].id == idp)
     {
-      {
-        found = 1;
-        l->orders[ide].items[i].qty += qty;
-        break;
-      }
+      found = 1;
+      l->orders[ide].items[i].qty += qty;
+      break;
     }
     else
     {
@@ -152,11 +140,9 @@ void addItem(char *cmd, logistics *l)
 
   if (!found)
   {
-    {
-      l->orders[ide].items[l->orders[ide].itemCount].qty = qty;
-      l->orders[ide].items[l->orders[ide].itemCount].id = idp;
-      l->orders[ide].itemCount++;
-    }
+    l->orders[ide].items[l->orders[ide].itemCount].qty = qty;
+    l->orders[ide].items[l->orders[ide].itemCount].id = idp;
+    l->orders[ide].itemCount++;
   }
   else
   {
@@ -173,10 +159,8 @@ void removeQty(char *cmd, logistics *l)
   qty = new_sym_var(sizeof(unsigned int) * 8);
   if (idp >= l->itemCount)
   {
-    {
-      printf("Impossivel remover stock do produto %u. Produto inexistente.\n", idp);
-      return;
-    }
+    printf("Impossivel remover stock do produto %u. Produto inexistente.\n", idp);
+    return;
   }
   else
   {
@@ -185,10 +169,8 @@ void removeQty(char *cmd, logistics *l)
 
   if (qty > l->items[idp].qty)
   {
-    {
-      printf("Impossivel remover %u unidades do produto %u do stock. Quantidade insuficiente.\n", qty, idp);
-      return;
-    }
+    printf("Impossivel remover %u unidades do produto %u do stock. Quantidade insuficiente.\n", qty, idp);
+    return;
   }
   else
   {
@@ -209,10 +191,8 @@ void removeItem(char *cmd, logistics *l)
   idp = new_sym_var(sizeof(unsigned int) * 8);
   if (ide >= l->orderCount)
   {
-    {
-      printf("Impossivel remover produto %u a encomenda %u. Encomenda inexistente.\n", idp, ide);
-      return;
-    }
+    printf("Impossivel remover produto %u a encomenda %u. Encomenda inexistente.\n", idp, ide);
+    return;
   }
   else
   {
@@ -221,10 +201,8 @@ void removeItem(char *cmd, logistics *l)
 
   if (idp >= l->itemCount)
   {
-    {
-      printf("Impossivel remover produto %u a encomenda %u. Produto inexistente.\n", idp, ide);
-      return;
-    }
+    printf("Impossivel remover produto %u a encomenda %u. Produto inexistente.\n", idp, ide);
+    return;
   }
   else
   {
@@ -235,10 +213,8 @@ void removeItem(char *cmd, logistics *l)
   {
     if (l->orders[ide].items[i].id == idp)
     {
-      {
-        found = 1;
-        break;
-      }
+      found = 1;
+      break;
     }
     else
     {
@@ -272,10 +248,8 @@ void getCost(char *cmd, logistics *l)
   ide = new_sym_var(sizeof(unsigned int) * 8);
   if (ide >= l->orderCount)
   {
-    {
-      printf("Impossivel calcular custo da encomenda %u. Encomenda inexistente.\n", ide);
-      return;
-    }
+    printf("Impossivel calcular custo da encomenda %u. Encomenda inexistente.\n", ide);
+    return;
   }
   else
   {
@@ -293,10 +267,8 @@ void changePrice(char *cmd, logistics *l)
   price = new_sym_var(sizeof(unsigned int) * 8);
   if (idp >= l->itemCount)
   {
-    {
-      printf("Impossivel alterar preco do produto %u. Produto inexistente.\n", idp);
-      return;
-    }
+    printf("Impossivel alterar preco do produto %u. Produto inexistente.\n", idp);
+    return;
   }
   else
   {
@@ -315,10 +287,8 @@ void getDesc(char *cmd, logistics *l)
   idp = new_sym_var(sizeof(unsigned int) * 8);
   if (ide >= l->orderCount)
   {
-    {
-      printf("Impossivel listar encomenda %u. Encomenda inexistente.\n", ide);
-      return;
-    }
+    printf("Impossivel listar encomenda %u. Encomenda inexistente.\n", ide);
+    return;
   }
   else
   {
@@ -327,10 +297,8 @@ void getDesc(char *cmd, logistics *l)
 
   if (idp >= l->itemCount)
   {
-    {
-      printf("Impossivel listar produto %u. Produto inexistente.\n", idp);
-      return;
-    }
+    printf("Impossivel listar produto %u. Produto inexistente.\n", idp);
+    return;
   }
   else
   {
@@ -341,10 +309,8 @@ void getDesc(char *cmd, logistics *l)
   {
     if (l->orders[ide].items[i].id == idp)
     {
-      {
-        printf("%s %u.\n", l->items[idp].desc, l->orders[ide].items[i].qty);
-        return;
-      }
+      printf("%s %u.\n", l->items[idp].desc, l->orders[ide].items[i].qty);
+      return;
     }
     else
     {
@@ -367,10 +333,8 @@ void getMost(char *cmd, logistics *l)
   idp = new_sym_var(sizeof(unsigned int) * 8);
   if (idp >= l->itemCount)
   {
-    {
-      printf("Impossivel listar maximo do produto %u. Produto inexistente.\n", idp);
-      return;
-    }
+    printf("Impossivel listar maximo do produto %u. Produto inexistente.\n", idp);
+    return;
   }
   else
   {
@@ -384,11 +348,9 @@ void getMost(char *cmd, logistics *l)
     {
       if ((o.items[j].id == idp) && (o.items[j].qty > most))
       {
-        {
-          mostAt = i;
-          most = o.items[j].qty;
-          break;
-        }
+        mostAt = i;
+        most = o.items[j].qty;
+        break;
       }
       else
       {
@@ -420,12 +382,10 @@ int partitionItems(item *it, int lo, int hi)
   {
     if (it[j].price < pivot.price)
     {
-      {
-        i++;
-        swap = it[j];
-        it[j] = it[i];
-        it[i] = swap;
-      }
+      i++;
+      swap = it[j];
+      it[j] = it[i];
+      it[i] = swap;
     }
     else
     {
@@ -445,11 +405,9 @@ void sortItems(item *it, int lo, int hi)
   int pi;
   if (lo < hi)
   {
-    {
-      pi = partitionItems(it, lo, hi);
-      sortItems(it, lo, pi - 1);
-      sortItems(it, pi + 1, hi);
-    }
+    pi = partitionItems(it, lo, hi);
+    sortItems(it, lo, pi - 1);
+    sortItems(it, pi + 1, hi);
   }
   else
   {
@@ -476,12 +434,10 @@ int sortItems2(item *it, int max)
 
     if (it[i].id > it[i + 1].id)
     {
-      {
-        swap = it[i];
-        it[i] = it[i + 1];
-        it[i + 1] = swap;
-        s = 1;
-      }
+      swap = it[i];
+      it[i] = it[i + 1];
+      it[i + 1] = swap;
+      s = 1;
     }
     else
     {
@@ -524,12 +480,10 @@ int partitionOrder(orderItem *it, int lo, int hi, item *li)
     a = li[it[j].id];
     if (strcmp(a.desc, b.desc) < 1)
     {
-      {
-        i++;
-        swap = it[j];
-        it[j] = it[i];
-        it[i] = swap;
-      }
+      i++;
+      swap = it[j];
+      it[j] = it[i];
+      it[i] = swap;
     }
     else
     {
@@ -549,11 +503,9 @@ void sortOrder(orderItem *it, int lo, int hi, item *li)
   int pi;
   if (lo < hi)
   {
-    {
-      pi = partitionOrder(it, lo, hi, li);
-      sortOrder(it, lo, pi - 1, li);
-      sortOrder(it, pi + 1, hi, li);
-    }
+    pi = partitionOrder(it, lo, hi, li);
+    sortOrder(it, lo, pi - 1, li);
+    sortOrder(it, pi + 1, hi, li);
   }
   else
   {
@@ -570,10 +522,8 @@ void listOrder(char *cmd, logistics *l)
   ide = new_sym_var(sizeof(unsigned int) * 8);
   if (ide >= l->orderCount)
   {
-    {
-      printf("Impossivel listar encomenda %u. Encomenda inexistente.\n", ide);
-      return;
-    }
+    printf("Impossivel listar encomenda %u. Encomenda inexistente.\n", ide);
+    return;
   }
   else
   {

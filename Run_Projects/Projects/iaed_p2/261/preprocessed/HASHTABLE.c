@@ -69,9 +69,7 @@ void AddEquipa(equipaHash **equipaTable, char *chave)
   equipaPtr = *(equipaTable + equipaIndex);
   if (equipaPtr != 0)
   {
-    {
-      n = equipaPtr->bucketCheio;
-    }
+    n = equipaPtr->bucketCheio;
   }
   else
   {
@@ -82,15 +80,11 @@ void AddEquipa(equipaHash **equipaTable, char *chave)
   equipaPtr = malloc(sizeof(equipaHash));
   if (n > 0)
   {
-    {
-      equipaPtr->bucketCheio = n + 1;
-    }
+    equipaPtr->bucketCheio = n + 1;
   }
   else
   {
-    {
-      equipaPtr->bucketCheio = 1;
-    }
+    equipaPtr->bucketCheio = 1;
   }
 
   equipaPtr->equipa = malloc((sizeof(char)) * (strlen(chave) + 1));
@@ -106,9 +100,7 @@ int jogosGanhos(equipaHash **equipaTable, char *chave)
   equipaPtr = encontraEquipa(equipaTable, chave);
   if (equipaPtr != 0)
   {
-    {
-      return equipaPtr->jogosGanhos;
-    }
+    return equipaPtr->jogosGanhos;
   }
   else
   {
@@ -131,9 +123,7 @@ void removeVitoria(equipaHash **equipaTable, char *chave)
   equipaPtr = encontraEquipa(equipaTable, chave);
   if (equipaPtr->jogosGanhos > 0)
   {
-    {
-      equipaPtr->jogosGanhos--;
-    }
+    equipaPtr->jogosGanhos--;
   }
   else
   {
@@ -157,29 +147,25 @@ int equipasMaisJogos(equipaHash **equipaTable, char *tab_final[503])
     equipaPtr = *(equipaTable + i);
     if (equipaPtr != 0)
     {
+      for (a = 1; a <= equipaPtr->bucketCheio; a++)
       {
-        for (a = 1; a <= equipaPtr->bucketCheio; a++)
+        for (current = *(equipaTable + i); (current != 0) && (current->bucketCheio != a); current = current->collision)
+          ;
+
+        if (current->jogosGanhos >= max)
         {
-          for (current = *(equipaTable + i); (current != 0) && (current->bucketCheio != a); current = current->collision)
-            ;
-
-          if (current->jogosGanhos >= max)
-          {
-            {
-              max = current->jogosGanhos;
-              tab_equipa[e] = malloc((sizeof(char)) * (strlen(current->equipa) + 1));
-              strcpy(tab_equipa[e], current->equipa);
-              e++;
-            }
-          }
-          else
-          {
-            
-          }
-
+          max = current->jogosGanhos;
+          tab_equipa[e] = malloc((sizeof(char)) * (strlen(current->equipa) + 1));
+          strcpy(tab_equipa[e], current->equipa);
+          e++;
+        }
+        else
+        {
+          
         }
 
       }
+
     }
     else
     {
@@ -190,34 +176,30 @@ int equipasMaisJogos(equipaHash **equipaTable, char *tab_final[503])
 
   if (e > 0)
   {
+    i = 0;
+    for (n = 0; n < e; n++)
     {
-      i = 0;
-      for (n = 0; n < e; n++)
+      if (jogosGanhos(equipaTable, tab_equipa[n]) == max)
       {
-        if (jogosGanhos(equipaTable, tab_equipa[n]) == max)
-        {
-          {
-            tab_final[i] = malloc((sizeof(char)) * (strlen(tab_equipa[n]) + 1));
-            strcpy(tab_final[i], tab_equipa[n]);
-            i++;
-          }
-        }
-        else
-        {
-          
-        }
-
+        tab_final[i] = malloc((sizeof(char)) * (strlen(tab_equipa[n]) + 1));
+        strcpy(tab_final[i], tab_equipa[n]);
+        i++;
+      }
+      else
+      {
+        
       }
 
-      n = 0;
-      while (n < e)
-      {
-        free(tab_equipa[n]);
-        n++;
-      }
-
-      return i;
     }
+
+    n = 0;
+    while (n < e)
+    {
+      free(tab_equipa[n]);
+      n++;
+    }
+
+    return i;
   }
   else
   {

@@ -47,9 +47,7 @@ void insere_hash_equipas(hashtable_equipas *hash_table, equipas *equipa)
   hash_table->n_elem++;
   if (hash_table->n_elem >= (hash_table->tamanho / 2))
   {
-    {
-      expandir_hash_equipas(hash_table);
-    }
+    expandir_hash_equipas(hash_table);
   }
   else
   {
@@ -65,9 +63,7 @@ equipas *procura_hash_equipas(hashtable_equipas *hash_table, char *nome)
   {
     if (!strcmp(hash_table->hash[i]->nome, nome))
     {
-      {
-        return hash_table->hash[i];
-      }
+      return hash_table->hash[i];
     }
     else
     {
@@ -87,9 +83,7 @@ void expandir_hash_equipas(hashtable_equipas *hash_table)
   {
     if (hash_table->hash[i] != 0)
     {
-      {
-        insere_hash_equipas(nova_hash, hash_table->hash[i]);
-      }
+      insere_hash_equipas(nova_hash, hash_table->hash[i]);
     }
     else
     {
@@ -111,10 +105,8 @@ void free_hash_equipas(hashtable_equipas *hash_table)
   {
     if (hash_table->hash[i] != 0)
     {
-      {
-        free(hash_table->hash[i]->nome);
-        free(hash_table->hash[i]);
-      }
+      free(hash_table->hash[i]->nome);
+      free(hash_table->hash[i]);
     }
     else
     {

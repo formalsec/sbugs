@@ -51,17 +51,13 @@ void insertTeamList(team *t)
   temp->next = 0;
   if (team_head == 0)
   {
-    {
-      team_head = temp;
-      team_tail = temp;
-    }
+    team_head = temp;
+    team_tail = temp;
   }
   else
   {
-    {
-      team_tail->next = temp;
-      team_tail = temp;
-    }
+    team_tail->next = temp;
+    team_tail = temp;
   }
 
 }
@@ -73,17 +69,13 @@ void insertList(game *g)
   temp->next = 0;
   if (head == 0)
   {
-    {
-      head = temp;
-      tail = temp;
-    }
+    head = temp;
+    tail = temp;
   }
   else
   {
-    {
-      tail->next = temp;
-      tail = temp;
-    }
+    tail->next = temp;
+    tail = temp;
   }
 
 }
@@ -93,18 +85,14 @@ void insertHashTeam(team *t, unsigned long key)
   team *temp;
   if (!teams[key])
   {
-    {
-      teams[key] = t;
-    }
+    teams[key] = t;
   }
   else
   {
-    {
-      for (temp = teams[key]; temp->next != 0; temp = temp->next)
-        ;
+    for (temp = teams[key]; temp->next != 0; temp = temp->next)
+      ;
 
-      temp->next = t;
-    }
+    temp->next = t;
   }
 
 }
@@ -114,18 +102,14 @@ void insertHashName(game *g, unsigned long key)
   game *temp;
   if (!hashtable[key])
   {
-    {
-      hashtable[key] = g;
-    }
+    hashtable[key] = g;
   }
   else
   {
-    {
-      for (temp = hashtable[key]; temp->next != 0; temp = temp->next)
-        ;
+    for (temp = hashtable[key]; temp->next != 0; temp = temp->next)
+      ;
 
-      temp->next = g;
-    }
+    temp->next = g;
   }
 
 }
@@ -192,17 +176,15 @@ void deleteHash(char *name, char *team_one, char *team_two, unsigned long key)
   {
     if (((strcmp(t->name, name) == 0) && (strcmp(t->team_one, team_one) == 0)) && (strcmp(t->team_two, team_two) == 0))
     {
+      if (t == hashtable[key])
       {
-        if (t == hashtable[key])
-        {
-          hashtable[key] = t->next;
-        }
-        else
-        {
-          prev->next = t->next;
-        }
-
+        hashtable[key] = t->next;
       }
+      else
+      {
+        prev->next = t->next;
+      }
+
     }
     else
     {
@@ -221,28 +203,24 @@ void deleteList(char *name, char *team_one, char *team_two)
   {
     if (((strcmp(t->game->name, name) == 0) && (strcmp(t->game->team_one, team_one) == 0)) && (strcmp(t->game->team_two, team_two) == 0))
     {
+      if (t == head)
       {
-        if (t == head)
+        head = t->next;
+      }
+      else
+      {
+        if (t == tail)
         {
-          head = t->next;
+          tail = prev;
+          prev->next = t->next;
         }
         else
         {
-          if (t == tail)
-          {
-            {
-              tail = prev;
-              prev->next = t->next;
-            }
-          }
-          else
-          {
-            prev->next = t->next;
-          }
-
+          prev->next = t->next;
         }
 
       }
+
     }
     else
     {
@@ -292,14 +270,28 @@ void increment_win(game *g, unsigned long key1, unsigned long key2)
   team *node;
   if (g->score[0] > g->score[1])
   {
+    for (node = teams[key1]; node != 0; node = node->next)
+      if (strcmp(node->team_name, g->team_one) == 0)
     {
-      for (node = teams[key1]; node != 0; node = node->next)
-        if (strcmp(node->team_name, g->team_one) == 0)
+      node->wins++;
+      return;
+    }
+    else
+    {
+      
+    }
+
+
+  }
+  else
+  {
+    if (g->score[0] < g->score[1])
+    {
+      for (node = teams[key2]; node != 0; node = node->next)
+        if (strcmp(node->team_name, g->team_two) == 0)
       {
-        {
-          node->wins++;
-          return;
-        }
+        node->wins++;
+        return;
       }
       else
       {
@@ -307,28 +299,6 @@ void increment_win(game *g, unsigned long key1, unsigned long key2)
       }
 
 
-    }
-  }
-  else
-  {
-    if (g->score[0] < g->score[1])
-    {
-      {
-        for (node = teams[key2]; node != 0; node = node->next)
-          if (strcmp(node->team_name, g->team_two) == 0)
-        {
-          {
-            node->wins++;
-            return;
-          }
-        }
-        else
-        {
-          
-        }
-
-
-      }
     }
     else
     {
@@ -348,25 +318,19 @@ void command_a()
   key = getKey(inputPtr->name);
   if (game_error(inputPtr->name, key) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", command_count);
-    }
+    printf("%d Jogo existente.\n", command_count);
   }
   else
   {
     if ((team_error(inputPtr->team_one, getKey(inputPtr->team_one)) == 0) || (team_error(inputPtr->team_two, getKey(inputPtr->team_two)) == 0))
     {
-      {
-        printf("%d Equipa inexistente.\n", command_count);
-      }
+      printf("%d Equipa inexistente.\n", command_count);
     }
     else
     {
-      {
-        insertHashName(inputPtr, key);
-        insertList(inputPtr);
-        increment_win(inputPtr, getKey(inputPtr->team_one), getKey(inputPtr->team_two));
-      }
+      insertHashName(inputPtr, key);
+      insertList(inputPtr);
+      increment_win(inputPtr, getKey(inputPtr->team_one), getKey(inputPtr->team_two));
     }
 
   }
@@ -388,10 +352,8 @@ void command_p()
   for (node = hashtable[key]; node != 0; node = node->next)
     if (strcmp(node->name, name) == 0)
   {
-    {
-      printf("%d %s %s %s %d %d\n", command_count, node->name, node->team_one, node->team_two, node->score[0], node->score[1]);
-      return;
-    }
+    printf("%d %s %s %s %d %d\n", command_count, node->name, node->team_one, node->team_two, node->score[0], node->score[1]);
+    return;
   }
   else
   {
@@ -418,11 +380,9 @@ void command_r()
   {
     if (strcmp(t->name, name) == 0)
     {
-      {
-        deleteList(t->name, t->team_one, t->team_two);
-        deleteHash(t->name, t->team_one, t->team_two, key);
-        return;
-      }
+      deleteList(t->name, t->team_one, t->team_two);
+      deleteHash(t->name, t->team_one, t->team_two, key);
+      return;
     }
     else
     {
@@ -453,11 +413,9 @@ void command_s()
   for (node = hashtable[key]; node != 0; node = node->next)
     if (strcmp(node->name, name) == 0)
   {
-    {
-      node->score[0] = score_one;
-      node->score[1] = score_two;
-      return;
-    }
+    node->score[0] = score_one;
+    node->score[1] = score_two;
+    return;
   }
   else
   {
@@ -495,17 +453,13 @@ void command_A()
   inputPtr->next = 0;
   if (team_error(inputPtr->team_name, key) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", command_count);
-    }
+    printf("%d Equipa existente.\n", command_count);
   }
   else
   {
-    {
-      insertHashTeam(inputPtr, key);
-      insertTeamList(inputPtr);
-      teams_counter++;
-    }
+    insertHashTeam(inputPtr, key);
+    insertTeamList(inputPtr);
+    teams_counter++;
   }
 
 }
@@ -525,10 +479,8 @@ void command_P()
   for (node = teams[key]; node != 0; node = node->next)
     if (strcmp(node->team_name, name) == 0)
   {
-    {
-      printf("%d %s %d\n", command_count, node->team_name, node->wins);
-      return;
-    }
+    printf("%d %s %d\n", command_count, node->team_name, node->wins);
+    return;
   }
   else
   {
@@ -578,10 +530,8 @@ void command_g()
   for (node = team_head, i = 0; node != 0; node = node->next, i++)
     if (node->wins == max_wins)
   {
-    {
-      strcpy(max_wins_teams[i], node->team_name);
-      count++;
-    }
+    strcpy(max_wins_teams[i], node->team_name);
+    count++;
   }
   else
   {
@@ -595,11 +545,9 @@ void command_g()
     {
       if (strcmp(max_wins_teams[i], max_wins_teams[j]) > 0)
       {
-        {
-          strcpy(temp, max_wins_teams[i]);
-          strcpy(max_wins_teams[i], max_wins_teams[j]);
-          strcpy(max_wins_teams[j], temp);
-        }
+        strcpy(temp, max_wins_teams[i]);
+        strcpy(max_wins_teams[i], max_wins_teams[j]);
+        strcpy(max_wins_teams[j], temp);
       }
       else
       {

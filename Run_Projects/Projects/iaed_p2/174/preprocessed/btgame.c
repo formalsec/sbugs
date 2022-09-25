@@ -28,12 +28,10 @@ void freeBTGame(BTGame *node)
 {
   if (node != 0)
   {
-    {
-      freeBTGame(node->left);
-      freeBTGame(node->right);
-      freeGame(node->game);
-      freeBTGameNode(node);
-    }
+    freeBTGame(node->left);
+    freeBTGame(node->right);
+    freeGame(node->game);
+    freeBTGameNode(node);
   }
   else
   {
@@ -204,41 +202,35 @@ BTGame *AVLbalanceBBGame(BTGame *node)
   balanceFactor = balanceBBGame(node);
   if (balanceFactor > 1)
   {
+    if (balanceBBGame(node->left) >= 0)
     {
-      if (balanceBBGame(node->left) >= 0)
-      {
-        node = rotRBTGame(node);
-      }
-      else
-      {
-        node = rotLRBTGame(node);
-      }
-
+      node = rotRBTGame(node);
     }
+    else
+    {
+      node = rotLRBTGame(node);
+    }
+
   }
   else
   {
     if (balanceFactor < (-1))
     {
+      if (balanceBBGame(node->right) <= 0)
       {
-        if (balanceBBGame(node->right) <= 0)
-        {
-          node = rotLBTGame(node);
-        }
-        else
-        {
-          node = rotRLBTGame(node);
-        }
-
+        node = rotLBTGame(node);
       }
+      else
+      {
+        node = rotRLBTGame(node);
+      }
+
     }
     else
     {
-      {
-        hleft = heightBBGame(node->left);
-        hright = heightBBGame(node->right);
-        node->height = (hleft > hright) ? (hleft + 1) : (hright + 1);
-      }
+      hleft = heightBBGame(node->left);
+      hright = heightBBGame(node->right);
+      node->height = (hleft > hright) ? (hleft + 1) : (hright + 1);
     }
 
   }
@@ -319,38 +311,34 @@ BTGame *deleteRBTGame(BTGame *node, char *name)
     {
       if ((node->left != 0) && (node->right != 0))
       {
-        {
-          aux = maxBBGame(node->left);
-          x = node->game;
-          node->game = aux->game;
-          aux->game = x;
-          node->left = deleteRBTGame(node->left, name);
-        }
+        aux = maxBBGame(node->left);
+        x = node->game;
+        node->game = aux->game;
+        aux->game = x;
+        node->left = deleteRBTGame(node->left, name);
       }
       else
       {
+        aux = node;
+        if ((node->left == 0) && (node->right == 0))
         {
-          aux = node;
-          if ((node->left == 0) && (node->right == 0))
+          node = 0;
+        }
+        else
+        {
+          if (node->left == 0)
           {
-            node = 0;
+            node = node->right;
           }
           else
           {
-            if (node->left == 0)
-            {
-              node = node->right;
-            }
-            else
-            {
-              node = node->left;
-            }
-
+            node = node->left;
           }
 
-          freeGame(aux->game);
-          freeBTGameNode(aux);
         }
+
+        freeGame(aux->game);
+        freeBTGameNode(aux);
       }
 
     }
@@ -371,10 +359,8 @@ void dumpGame(Game *array[], BTGame *node, int index)
   index++;
   if (node->right != 0)
   {
-    {
-      dumpGame(array, node->right, index);
-      index = index + countBTGame(node->right);
-    }
+    dumpGame(array, node->right, index);
+    index = index + countBTGame(node->right);
   }
   else
   {
@@ -383,9 +369,7 @@ void dumpGame(Game *array[], BTGame *node, int index)
 
   if (node->left != 0)
   {
-    {
-      dumpGame(array, node->left, index);
-    }
+    dumpGame(array, node->left, index);
   }
   else
   {
@@ -398,9 +382,7 @@ void dumpBTGame(Game *array[], BTGame *node)
 {
   if (node != 0)
   {
-    {
-      dumpGame(array, node, 0);
-    }
+    dumpGame(array, node, 0);
   }
   else
   {

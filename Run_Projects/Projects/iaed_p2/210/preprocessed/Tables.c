@@ -99,9 +99,7 @@ void insertArrayE(equipa e)
   listaEquipas[Nequipas] = e;
   if ((Nequipas + 1) > (sizeArrayE / 2))
   {
-    {
-      expandArrayE();
-    }
+    expandArrayE();
   }
   else
   {
@@ -115,9 +113,7 @@ int insertArrayJ(jogo e)
   listaJogos[Njogos] = e;
   if ((Njogos + 1) > (sizeArrayJ / 2))
   {
-    {
-      expandArrayJ();
-    }
+    expandArrayJ();
   }
   else
   {
@@ -136,17 +132,13 @@ void tableEInsert(equipa a)
   {
     if (i == ((i + k) % Mequipas))
     {
-      {
-        expandTableE();
-        i = hash1(name, Mequipas);
-        k = hash2(name, Mequipas);
-      }
+      expandTableE();
+      i = hash1(name, Mequipas);
+      k = hash2(name, Mequipas);
     }
     else
     {
-      {
-        i = (i + k) % Mequipas;
-      }
+      i = (i + k) % Mequipas;
     }
 
   }
@@ -154,9 +146,7 @@ void tableEInsert(equipa a)
   tableEquipas[i] = a;
   if ((Nequipas++) > (Mequipas / 2))
   {
-    {
-      expandTableE();
-    }
+    expandTableE();
   }
   else
   {
@@ -174,17 +164,13 @@ void tableJInsert(jogo a, int pos)
   {
     if (i == ((i + k) % Mjogos))
     {
-      {
-        expandTableJ();
-        i = hash1(name, Mjogos);
-        k = hash2(name, Mjogos);
-      }
+      expandTableJ();
+      i = hash1(name, Mjogos);
+      k = hash2(name, Mjogos);
     }
     else
     {
-      {
-        i = (i + k) % Mjogos;
-      }
+      i = (i + k) % Mjogos;
     }
 
   }
@@ -194,9 +180,7 @@ void tableJInsert(jogo a, int pos)
   tableJogos[i]->game->idNumber = pos;
   if ((Njogos++) > (Mjogos / 2))
   {
-    {
-      expandTableJ();
-    }
+    expandTableJ();
   }
   else
   {
@@ -214,9 +198,7 @@ equipa tableESearch(char *name)
   {
     if (strcmp(name, tableEquipas[i]->name) == 0)
     {
-      {
-        return tableEquipas[i];
-      }
+      return tableEquipas[i];
     }
     else
     {
@@ -226,9 +208,7 @@ equipa tableESearch(char *name)
     i = (i + k) % Mequipas;
     if (i == aux)
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {
@@ -249,9 +229,7 @@ element tableJSearch(char *name)
   {
     if ((tableJogos[i]->game != 0) && (strcmp(name, tableJogos[i]->game->name) == 0))
     {
-      {
-        return tableJogos[i];
-      }
+      return tableJogos[i];
     }
     else
     {
@@ -261,9 +239,7 @@ element tableJSearch(char *name)
     i = (i + k) % Mjogos;
     if (i == aux)
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {
@@ -280,20 +256,16 @@ void removeArrayJ(int pos)
   int i;
   if ((pos + 1) == Njogos)
   {
-    {
-      listaJogos[pos] = 0;
-    }
+    listaJogos[pos] = 0;
   }
   else
   {
+    for (i = pos; i < (Njogos - 1); i++)
     {
-      for (i = pos; i < (Njogos - 1); i++)
-      {
-        listaJogos[i] = listaJogos[i + 1];
-        listaJogos[i]->idNumber--;
-      }
-
+      listaJogos[i] = listaJogos[i + 1];
+      listaJogos[i]->idNumber--;
     }
+
   }
 
 }
@@ -303,9 +275,7 @@ void tableJDelete(jogo j)
   removeArrayJ(j->idNumber);
   if (j->r1 > j->r2)
   {
-    {
-      removeVictory(j->equipa1);
-    }
+    removeVictory(j->equipa1);
   }
   else
   {
@@ -314,9 +284,7 @@ void tableJDelete(jogo j)
 
   if (j->r2 > j->r1)
   {
-    {
-      removeVictory(j->equipa2);
-    }
+    removeVictory(j->equipa2);
   }
   else
   {
@@ -397,25 +365,19 @@ int findPrime(int n)
     {
       if (((i % j) == 0) && (j != 1))
       {
-        {
-          flag = 0;
-          break;
-        }
+        flag = 0;
+        break;
       }
       else
       {
-        {
-          flag = 1;
-        }
+        flag = 1;
       }
 
     }
 
     if (flag == 1)
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {
@@ -437,9 +399,7 @@ void expandTableE()
   {
     if (aux[i] != 0)
     {
-      {
-        tableEInsert(aux[i]);
-      }
+      tableEInsert(aux[i]);
     }
     else
     {
@@ -461,9 +421,7 @@ void expandTableJ()
   {
     if (aux[i]->game != 0)
     {
-      {
-        tableJInsert(aux[i]->game, aux[i]->game->idNumber);
-      }
+      tableJInsert(aux[i]->game, aux[i]->game->idNumber);
     }
     else
     {
@@ -486,9 +444,7 @@ void expandArrayE()
   {
     if (aux[i] != 0)
     {
-      {
-        listaEquipas[i] = aux[i];
-      }
+      listaEquipas[i] = aux[i];
     }
     else
     {
@@ -510,9 +466,7 @@ void expandArrayJ()
   {
     if (aux[i] != 0)
     {
-      {
-        listaJogos[i] = aux[i];
-      }
+      listaJogos[i] = aux[i];
     }
     else
     {
@@ -534,13 +488,11 @@ int putBiggerOnTop()
   {
     if (listaEquipas[i]->victorys > vit)
     {
-      {
-        aux = listaEquipas[0];
-        listaEquipas[0] = listaEquipas[i];
-        listaEquipas[i] = aux;
-        vit = listaEquipas[0]->victorys;
-        j = 1;
-      }
+      aux = listaEquipas[0];
+      listaEquipas[0] = listaEquipas[i];
+      listaEquipas[i] = aux;
+      vit = listaEquipas[0]->victorys;
+      j = 1;
     }
     else
     {
@@ -549,12 +501,10 @@ int putBiggerOnTop()
 
     if ((listaEquipas[i]->victorys == vit) && (j != i))
     {
-      {
-        aux = listaEquipas[j];
-        listaEquipas[j] = listaEquipas[i];
-        listaEquipas[i] = aux;
-        j++;
-      }
+      aux = listaEquipas[j];
+      listaEquipas[j] = listaEquipas[i];
+      listaEquipas[i] = aux;
+      j++;
     }
     else
     {
@@ -563,9 +513,7 @@ int putBiggerOnTop()
 
     if ((listaEquipas[i]->victorys == vit) && (j == i))
     {
-      {
-        j++;
-      }
+      j++;
     }
     else
     {
@@ -585,9 +533,7 @@ void heapify(int n, int i)
   equipa aux;
   if ((left < n) && (strcmp(listaEquipas[left]->name, listaEquipas[largest]->name) > 0))
   {
-    {
-      largest = left;
-    }
+    largest = left;
   }
   else
   {
@@ -596,9 +542,7 @@ void heapify(int n, int i)
 
   if ((right < n) && (strcmp(listaEquipas[right]->name, listaEquipas[largest]->name) > 0))
   {
-    {
-      largest = right;
-    }
+    largest = right;
   }
   else
   {
@@ -607,12 +551,10 @@ void heapify(int n, int i)
 
   if (largest != i)
   {
-    {
-      aux = listaEquipas[i];
-      listaEquipas[i] = listaEquipas[largest];
-      listaEquipas[largest] = aux;
-      heapify(n, largest);
-    }
+    aux = listaEquipas[i];
+    listaEquipas[i] = listaEquipas[largest];
+    listaEquipas[largest] = aux;
+    heapify(n, largest);
   }
   else
   {

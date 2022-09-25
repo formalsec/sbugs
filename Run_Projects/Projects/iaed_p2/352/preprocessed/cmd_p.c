@@ -18,10 +18,8 @@ void cmd_p()
   indice_jogo = hash(nome_jogo);
   if (HashGames[indice_jogo] == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", nl);
+    return;
   }
   else
   {
@@ -30,25 +28,21 @@ void cmd_p()
 
   if (HashGames[indice_jogo]->nome != nome_jogo)
   {
+    aux = HashGames[indice_jogo];
+    while ((aux->next != 0) && (strcmp(aux->nome, nome_jogo) != 0))
+      aux = aux->next;
+
+    if (strcmp(aux->nome, nome_jogo) == 0)
     {
-      aux = HashGames[indice_jogo];
-      while ((aux->next != 0) && (strcmp(aux->nome, nome_jogo) != 0))
-        aux = aux->next;
-
-      if (strcmp(aux->nome, nome_jogo) == 0)
-      {
-        {
-          printf("%d %s %s %s %d %d\n", nl, aux->nome, aux->equipa_1, aux->equipa_2, aux->score_1, aux->score_2);
-          return;
-        }
-      }
-      else
-      {
-        
-      }
-
-      printf("%d Jogo inexistente.\n", nl);
+      printf("%d %s %s %s %d %d\n", nl, aux->nome, aux->equipa_1, aux->equipa_2, aux->score_1, aux->score_2);
+      return;
     }
+    else
+    {
+      
+    }
+
+    printf("%d Jogo inexistente.\n", nl);
   }
   else
   {

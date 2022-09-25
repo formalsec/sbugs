@@ -72,33 +72,15 @@ void add_to_order(int id_e, int id_p, int st_p)
     }
     else
     {
+      orders[id_e].ps_e += system_prod[id_p].ps * st_p;
+      system_prod[id_p].st -= st_p;
+      for (id = 0; id < orders[id_e].n_prod; id++)
       {
-        orders[id_e].ps_e += system_prod[id_p].ps * st_p;
-        system_prod[id_p].st -= st_p;
-        for (id = 0; id < orders[id_e].n_prod; id++)
+        if (orders[id_e].id_prod[id] == id_p)
         {
-          if (orders[id_e].id_prod[id] == id_p)
-          {
-            {
-              orders[id_e].st_prod[id] += st_p;
-              status = 0;
-              break;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-        if (status)
-        {
-          {
-            orders[id_e].id_prod[orders[id_e].n_prod] = id_p;
-            orders[id_e].st_prod[orders[id_e].n_prod] = st_p;
-            orders[id_e].n_prod++;
-          }
+          orders[id_e].st_prod[id] += st_p;
+          status = 0;
+          break;
         }
         else
         {
@@ -106,6 +88,18 @@ void add_to_order(int id_e, int id_p, int st_p)
         }
 
       }
+
+      if (status)
+      {
+        orders[id_e].id_prod[orders[id_e].n_prod] = id_p;
+        orders[id_e].st_prod[orders[id_e].n_prod] = st_p;
+        orders[id_e].n_prod++;
+      }
+      else
+      {
+        
+      }
+
     }
 
   }
@@ -119,26 +113,22 @@ void rm_prod_order(int id_e, int id_p)
   {
     if (orders[id_e].id_prod[id] == id_p)
     {
+      system_prod[id_p].st += orders[id_e].st_prod[id];
+      orders[id_e].ps_e -= system_prod[id_p].ps * orders[id_e].st_prod[id];
+      if (id != (orders[id_e].n_prod - 1))
       {
-        system_prod[id_p].st += orders[id_e].st_prod[id];
-        orders[id_e].ps_e -= system_prod[id_p].ps * orders[id_e].st_prod[id];
-        if (id != (orders[id_e].n_prod - 1))
-        {
-          {
-            orders[id_e].st_prod[id] = orders[id_e].st_prod[orders[id_e].n_prod - 1];
-            orders[id_e].id_prod[id] = orders[id_e].id_prod[orders[id_e].n_prod - 1];
-          }
-        }
-        else
-        {
-          
-        }
-
-        orders[id_e].id_prod[orders[id_e].n_prod - 1] = 0;
-        orders[id_e].st_prod[orders[id_e].n_prod - 1] = 0;
-        orders[id_e].n_prod--;
-        break;
+        orders[id_e].st_prod[id] = orders[id_e].st_prod[orders[id_e].n_prod - 1];
+        orders[id_e].id_prod[id] = orders[id_e].id_prod[orders[id_e].n_prod - 1];
       }
+      else
+      {
+        
+      }
+
+      orders[id_e].id_prod[orders[id_e].n_prod - 1] = 0;
+      orders[id_e].st_prod[orders[id_e].n_prod - 1] = 0;
+      orders[id_e].n_prod--;
+      break;
     }
     else
     {
@@ -169,11 +159,9 @@ void list_prod_order(int id_e, int id_p)
   {
     if (orders[id_e].id_prod[id] == id_p)
     {
-      {
-        printf("%s %d.\n", system_prod[id_p].desc, orders[id_e].st_prod[id]);
-        status = 0;
-        break;
-      }
+      printf("%s %d.\n", system_prod[id_p].desc, orders[id_e].st_prod[id]);
+      status = 0;
+      break;
     }
     else
     {
@@ -204,21 +192,17 @@ void order_max_prod(int id_p)
     {
       if (orders[id_e].id_prod[id] == id_p)
       {
+        if ((max[0] == (-1)) || (orders[id_e].st_prod[id] > orders[max[0]].st_prod[max[1]]))
         {
-          if ((max[0] == (-1)) || (orders[id_e].st_prod[id] > orders[max[0]].st_prod[max[1]]))
-          {
-            {
-              max[0] = id_e;
-              max[1] = id;
-            }
-          }
-          else
-          {
-            
-          }
-
-          break;
+          max[0] = id_e;
+          max[1] = id;
         }
+        else
+        {
+          
+        }
+
+        break;
       }
       else
       {
@@ -551,11 +535,9 @@ void comand_L()
   }
   else
   {
-    {
-      make_list_id(orders[var1_aux].n_prod - 1);
-      mergesort(id_list, 0, orders[var1_aux].n_prod - 1, 0, var1_aux);
-      list_order(var1_aux, id_list);
-    }
+    make_list_id(orders[var1_aux].n_prod - 1);
+    mergesort(id_list, 0, orders[var1_aux].n_prod - 1, 0, var1_aux);
+    list_order(var1_aux, id_list);
   }
 
   getchar();

@@ -17,47 +17,37 @@ void le_input()
   int o = 0;
   if (v1[0] == 'a')
   {
+    for (i = 0; i < 80; i++)
     {
-      for (i = 0; i < 80; i++)
+      c = getchar();
+      if ((c == '\n') || (c == EOF))
       {
-        c = getchar();
-        if ((c == '\n') || (c == EOF))
+        break;
+      }
+      else
+      {
+        if (c == ':')
         {
-          {
-            break;
-          }
+          break;
         }
         else
         {
+          if (c != ' ')
           {
-            if (c == ':')
-            {
-              {
-                break;
-              }
-            }
-            else
-            {
-              if (c != ' ')
-              {
-                {
-                  descricao[i - 1] = c;
-                  descricao[i] = '\0';
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
+            descricao[i - 1] = c;
+            descricao[i] = '\0';
           }
+          else
+          {
+            
+          }
+
         }
 
       }
 
     }
+
   }
   else
   {
@@ -72,35 +62,27 @@ void le_input()
     c = getchar();
     if ((c == '\n') || (c == EOF))
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {
+      if (c == ':')
       {
-        if (c == ':')
+        o += 1;
+      }
+      else
+      {
+        if (c != ' ')
         {
-          {
-            o += 1;
-          }
+          var[o] = ((var[o] * 10) + c) - '0';
         }
         else
         {
-          if (c != ' ')
-          {
-            {
-              var[o] = ((var[o] * 10) + c) - '0';
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
+
     }
 
   }
@@ -248,10 +230,8 @@ void func_a()
     }
     else
     {
-      {
-        stock[contadorp].descr[i] = descricao[i];
-        stock[contadorp].descr[i + 1] = '\0';
-      }
+      stock[contadorp].descr[i] = descricao[i];
+      stock[contadorp].descr[i + 1] = '\0';
     }
 
   }
@@ -267,15 +247,11 @@ void func_q()
 {
   if (var[0] < contadorp)
   {
-    {
-      stock[var[0]].qtd += var[1];
-    }
+    stock[var[0]].qtd += var[1];
   }
   else
   {
-    {
-      printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", var[0]);
-    }
+    printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", var[0]);
   }
 
 }
@@ -321,12 +297,10 @@ void func_A()
         }
         else
         {
-          {
-            encomendas[var[0]].idp += 1;
-            encomendas[var[0]].qtd[var[1]] += var[2];
-            encomendas[var[0]].peso = encomendas[var[0]].peso + (var[2] * stock[var[1]].peso);
-            stock[var[1]].qtd -= var[2];
-          }
+          encomendas[var[0]].idp += 1;
+          encomendas[var[0]].qtd[var[1]] += var[2];
+          encomendas[var[0]].peso = encomendas[var[0]].peso + (var[2] * stock[var[1]].peso);
+          stock[var[1]].qtd -= var[2];
         }
 
       }
@@ -373,12 +347,10 @@ void func_R()
     }
     else
     {
-      {
-        n = encomendas[var[0]].qtd[var[1]];
-        encomendas[var[0]].qtd[var[1]] = 0;
-        stock[var[1]].qtd += n;
-        encomendas[var[0]].peso -= n * stock[var[1]].peso;
-      }
+      n = encomendas[var[0]].qtd[var[1]];
+      encomendas[var[0]].qtd[var[1]] = 0;
+      stock[var[1]].qtd += n;
+      encomendas[var[0]].peso -= n * stock[var[1]].peso;
     }
 
   }
@@ -395,14 +367,12 @@ void func_C()
   }
   else
   {
+    for (i = 0; i < 10000; i++)
     {
-      for (i = 0; i < 10000; i++)
-      {
-        custo += encomendas[var[0]].qtd[i] * stock[i].preco;
-      }
-
-      printf("Custo da encomenda %d %d.\n", var[0], custo);
+      custo += encomendas[var[0]].qtd[i] * stock[i].preco;
     }
+
+    printf("Custo da encomenda %d %d.\n", var[0], custo);
   }
 
 }
@@ -415,9 +385,7 @@ void func_p()
   }
   else
   {
-    {
-      stock[var[0]].preco = var[1];
-    }
+    stock[var[0]].preco = var[1];
   }
 
 }
@@ -436,9 +404,7 @@ void func_E()
     }
     else
     {
-      {
-        printf("%s %d.\n", stock[var[1]].descr, encomendas[var[0]].qtd[var[1]]);
-      }
+      printf("%s %d.\n", stock[var[1]].descr, encomendas[var[0]].qtd[var[1]]);
     }
 
   }
@@ -455,10 +421,8 @@ void func_m()
   {
     if (encomendas[i].qtd[var[0]] > 0)
     {
-      {
-        estado = 1;
-        break;
-      }
+      estado = 1;
+      break;
     }
     else
     {
@@ -475,30 +439,24 @@ void func_m()
   {
     if ((contadorenc < 1) || (estado == 0))
     {
-      {
-      }
     }
     else
     {
+      for (i = 0; i < contadorenc; i++)
       {
-        for (i = 0; i < contadorenc; i++)
+        if (encomendas[i].qtd[var[0]] > maximo)
         {
-          if (encomendas[i].qtd[var[0]] > maximo)
-          {
-            {
-              maximo = encomendas[i].qtd[var[0]];
-              idatual = i;
-            }
-          }
-          else
-          {
-            
-          }
-
+          maximo = encomendas[i].qtd[var[0]];
+          idatual = i;
+        }
+        else
+        {
+          
         }
 
-        printf("Maximo produto %d %d %d.\n", var[0], idatual, maximo);
       }
+
+      printf("Maximo produto %d %d %d.\n", var[0], idatual, maximo);
     }
 
   }
@@ -536,24 +494,15 @@ void func_L()
   }
   else
   {
+    for (u = 0; u < 10000; u++)
     {
-      for (u = 0; u < 10000; u++)
+      if (encomendas[var[0]].qtd[u] > 0)
       {
-        if (encomendas[var[0]].qtd[u] > 0)
+        enc_d[o] = stock[u].idp;
+        o += 1;
+        if ((o - 1) == encomendas[var[0]].idp)
         {
-          {
-            enc_d[o] = stock[u].idp;
-            o += 1;
-            if ((o - 1) == encomendas[var[0]].idp)
-            {
-              break;
-            }
-            else
-            {
-              
-            }
-
-          }
+          break;
         }
         else
         {
@@ -561,15 +510,20 @@ void func_L()
         }
 
       }
-
-      mergesort_L(enc_d, 0, o - 1);
-      printf("Encomenda %d\n", var[0]);
-      for (i = 0; i < o; i++)
+      else
       {
-        printf("* %s %d %d\n", stock[enc_d[i]].descr, stock[enc_d[i]].preco, encomendas[var[0]].qtd[enc_d[i]]);
+        
       }
 
     }
+
+    mergesort_L(enc_d, 0, o - 1);
+    printf("Encomenda %d\n", var[0]);
+    for (i = 0; i < o; i++)
+    {
+      printf("* %s %d %d\n", stock[enc_d[i]].descr, stock[enc_d[i]].preco, encomendas[var[0]].qtd[enc_d[i]]);
+    }
+
   }
 
 }

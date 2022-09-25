@@ -139,43 +139,33 @@ void adicionaStock()
   stock = atoi(strtok(0, ":"));
   if (num_produtos == 0)
   {
-    {
-      printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", referencia);
-    }
+    printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", referencia);
   }
   else
   {
+    for (i = 0; i < num_produtos; i++)
     {
-      for (i = 0; i < num_produtos; i++)
+      if (referencia > (num_produtos - 1))
       {
-        if (referencia > (num_produtos - 1))
+        printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", referencia);
+        break;
+      }
+      else
+      {
+        if (i != referencia)
         {
-          {
-            printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", referencia);
-            break;
-          }
+          continue;
         }
         else
         {
-          if (i != referencia)
-          {
-            {
-              continue;
-            }
-          }
-          else
-          {
-            {
-              rede[referencia].stock += stock;
-              break;
-            }
-          }
-
+          rede[referencia].stock += stock;
+          break;
         }
 
       }
 
     }
+
   }
 
 }
@@ -201,102 +191,82 @@ void adicionaProduto()
   stock = atoi(strtok(0, ":"));
   if ((num_encomendas == 0) || (id > (num_encomendas - 1)))
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", referencia, id);
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", referencia, id);
   }
   else
   {
     if (referencia > (num_produtos - 1))
     {
-      {
-        printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", referencia, id);
-      }
+      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", referencia, id);
     }
     else
     {
       if (stock > rede[referencia].stock)
       {
-        {
-          printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", referencia, id);
-        }
+        printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", referencia, id);
       }
       else
       {
         if (((rede[referencia].peso * stock) + track[id].peso) > 200)
         {
-          {
-            printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", referencia, id);
-          }
+          printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", referencia, id);
         }
         else
         {
+          if (num_prod_in_encom == 0)
           {
-            if (num_prod_in_encom == 0)
+            strcpy(track[id].rede[num_prod_in_encom[id]].descricao, rede[referencia].descricao);
+            track[id].rede[num_prod_in_encom[id]].preco = rede[referencia].preco;
+            track[id].rede[num_prod_in_encom[id]].peso = rede[referencia].peso;
+            track[id].rede[num_prod_in_encom[id]].stock = stock;
+            track[id].peso = rede[referencia].peso * stock;
+            rede[referencia].stock -= stock;
+            num_prod_in_encom[id]++;
+          }
+          else
+          {
+            for (i = 0; i <= (num_prod_in_encom[id] + 1); i++)
             {
+              if ((strcmp(track[id].rede[i].descricao, rede[referencia].descricao) == 0) && (i < num_prod_in_encom[id]))
               {
-                strcpy(track[id].rede[num_prod_in_encom[id]].descricao, rede[referencia].descricao);
-                track[id].rede[num_prod_in_encom[id]].preco = rede[referencia].preco;
-                track[id].rede[num_prod_in_encom[id]].peso = rede[referencia].peso;
-                track[id].rede[num_prod_in_encom[id]].stock = stock;
-                track[id].peso = rede[referencia].peso * stock;
+                track[id].rede[i].stock += stock;
+                track[id].peso += rede[referencia].peso * stock;
                 rede[referencia].stock -= stock;
                 num_prod_in_encom[id]++;
+                break;
               }
-            }
-            else
-            {
+              else
               {
-                for (i = 0; i <= (num_prod_in_encom[id] + 1); i++)
+                if ((strcmp(track[id].rede[i].descricao, rede[referencia].descricao) != 0) && (i < num_prod_in_encom[id]))
                 {
-                  if ((strcmp(track[id].rede[i].descricao, rede[referencia].descricao) == 0) && (i < num_prod_in_encom[id]))
+                  continue;
+                }
+                else
+                {
+                  if ((strcmp(track[id].rede[i].descricao, rede[referencia].descricao) != 0) && (i == num_prod_in_encom[id]))
                   {
-                    {
-                      track[id].rede[i].stock += stock;
-                      track[id].peso += rede[referencia].peso * stock;
-                      rede[referencia].stock -= stock;
-                      num_prod_in_encom[id]++;
-                      break;
-                    }
+                    strcpy(track[id].rede[num_prod_in_encom[id]].descricao, rede[referencia].descricao);
+                    track[id].rede[num_prod_in_encom[id]].preco = rede[referencia].preco;
+                    track[id].rede[num_prod_in_encom[id]].peso = rede[referencia].peso;
+                    track[id].rede[num_prod_in_encom[id]].stock = stock;
+                    track[id].peso += rede[referencia].peso * stock;
+                    rede[referencia].stock -= stock;
+                    num_prod_in_encom[id]++;
+                    break;
                   }
                   else
                   {
-                    if ((strcmp(track[id].rede[i].descricao, rede[referencia].descricao) != 0) && (i < num_prod_in_encom[id]))
-                    {
-                      {
-                        continue;
-                      }
-                    }
-                    else
-                    {
-                      if ((strcmp(track[id].rede[i].descricao, rede[referencia].descricao) != 0) && (i == num_prod_in_encom[id]))
-                      {
-                        {
-                          strcpy(track[id].rede[num_prod_in_encom[id]].descricao, rede[referencia].descricao);
-                          track[id].rede[num_prod_in_encom[id]].preco = rede[referencia].preco;
-                          track[id].rede[num_prod_in_encom[id]].peso = rede[referencia].peso;
-                          track[id].rede[num_prod_in_encom[id]].stock = stock;
-                          track[id].peso += rede[referencia].peso * stock;
-                          rede[referencia].stock -= stock;
-                          num_prod_in_encom[id]++;
-                          break;
-                        }
-                      }
-                      else
-                      {
-                        
-                      }
-
-                    }
-
+                    
                   }
 
                 }
 
               }
+
             }
 
           }
+
         }
 
       }
@@ -317,23 +287,17 @@ void removeStock()
   stock = atoi(strtok(0, ":"));
   if ((num_produtos == 0) || (referencia > (num_produtos - 1)))
   {
-    {
-      printf("Impossivel remover stock do produto %d. Produto inexistente.\n", referencia);
-    }
+    printf("Impossivel remover stock do produto %d. Produto inexistente.\n", referencia);
   }
   else
   {
     if (rede[referencia].stock < stock)
     {
-      {
-        printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", stock, referencia);
-      }
+      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", stock, referencia);
     }
     else
     {
-      {
-        rede[referencia].stock -= stock;
-      }
+      rede[referencia].stock -= stock;
     }
 
   }
@@ -351,43 +315,35 @@ void removeStockEncomenda()
   referencia = atoi(strtok(0, ":"));
   if ((num_encomendas == 0) || (id > (num_encomendas - 1)))
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", referencia, id);
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", referencia, id);
   }
   else
   {
     if ((num_produtos == 0) || (referencia > (num_produtos - 1)))
     {
-      {
-        printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", referencia, id);
-      }
+      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", referencia, id);
     }
     else
     {
+      for (i = 0; i <= num_prod_in_encom[id]; i++)
       {
-        for (i = 0; i <= num_prod_in_encom[id]; i++)
+        if ((strcmp(track[id].rede[i].descricao, rede[referencia].descricao) == 0) && (i < num_prod_in_encom[id]))
         {
-          if ((strcmp(track[id].rede[i].descricao, rede[referencia].descricao) == 0) && (i < num_prod_in_encom[id]))
-          {
-            {
-              strcpy(track[id].rede[num_prod_in_encom[id]].descricao, "\0");
-              track[id].rede[num_prod_in_encom[id]].preco = 0;
-              track[id].peso -= rede[referencia].peso * track[id].rede[num_prod_in_encom[id]].stock;
-              track[id].rede[num_prod_in_encom[id]].peso = 0;
-              rede[referencia].stock += track[id].rede[num_prod_in_encom[id]].stock;
-              track[id].rede[num_prod_in_encom[id]].stock = 0;
-              num_prod_in_encom[id]--;
-            }
-          }
-          else
-          {
-            
-          }
-
+          strcpy(track[id].rede[num_prod_in_encom[id]].descricao, "\0");
+          track[id].rede[num_prod_in_encom[id]].preco = 0;
+          track[id].peso -= rede[referencia].peso * track[id].rede[num_prod_in_encom[id]].stock;
+          track[id].rede[num_prod_in_encom[id]].peso = 0;
+          rede[referencia].stock += track[id].rede[num_prod_in_encom[id]].stock;
+          track[id].rede[num_prod_in_encom[id]].stock = 0;
+          num_prod_in_encom[id]--;
+        }
+        else
+        {
+          
         }
 
       }
+
     }
 
   }
@@ -405,44 +361,34 @@ void alteraPreco()
   preco = atoi(strtok(0, ":"));
   if (num_produtos == 0)
   {
-    {
-      printf("Impossivel alterar preco do produto %d. Produto inexistente.", referencia);
-    }
+    printf("Impossivel alterar preco do produto %d. Produto inexistente.", referencia);
   }
   else
   {
+    for (i = 0; i < num_produtos; i++)
     {
-      for (i = 0; i < num_produtos; i++)
+      if (referencia > (num_produtos - 1))
       {
-        if (referencia > (num_produtos - 1))
+        printf("Impossivel alterar preco do produto %d. Produto inexistente.", referencia);
+        break;
+      }
+      else
+      {
+        if (i != referencia)
         {
-          {
-            printf("Impossivel alterar preco do produto %d. Produto inexistente.", referencia);
-            break;
-          }
+          continue;
         }
         else
         {
-          if (i != referencia)
-          {
-            {
-              continue;
-            }
-          }
-          else
-          {
-            {
-              rede[referencia].preco = preco;
-              printf("Preco atualizado:%d\n", rede[i].preco);
-              break;
-            }
-          }
-
+          rede[referencia].preco = preco;
+          printf("Preco atualizado:%d\n", rede[i].preco);
+          break;
         }
 
       }
 
     }
+
   }
 
 }

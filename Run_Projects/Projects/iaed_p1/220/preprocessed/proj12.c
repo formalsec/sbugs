@@ -98,12 +98,10 @@ void adiciona_produto(char *descricao, int preco, int peso, int qtd)
 {
   if (ProductInd != 10000)
   {
-    {
-      strcpy(prod[ProductInd].descricao, descricao);
-      prod[ProductInd].preco = preco;
-      prod[ProductInd].peso = peso;
-      prod[ProductInd].qtd = qtd;
-    }
+    strcpy(prod[ProductInd].descricao, descricao);
+    prod[ProductInd].preco = preco;
+    prod[ProductInd].peso = peso;
+    prod[ProductInd].qtd = qtd;
   }
   else
   {
@@ -118,15 +116,11 @@ void add_stock(int ProductInd, int qtd_n)
 {
   if (ProductInd > 9999)
   {
-    {
-      printf(" Impossivel adicionar produto%d ao stock. Produto inexistente\n", ProductInd);
-    }
+    printf(" Impossivel adicionar produto%d ao stock. Produto inexistente\n", ProductInd);
   }
   else
   {
-    {
-      prod[ProductInd].qtd += qtd_n;
-    }
+    prod[ProductInd].qtd += qtd_n;
   }
 
 }
@@ -135,15 +129,11 @@ void remove_stock_produto(int ProductInd, int qtd_n)
 {
   if (ProductInd > 9999)
   {
-    {
-      printf(" Impossivel adicionar produto%d ao stock. Produto inexistente\n", ProductInd);
-    }
+    printf(" Impossivel adicionar produto%d ao stock. Produto inexistente\n", ProductInd);
   }
   else
   {
-    {
-      prod[ProductInd].qtd -= qtd_n;
-    }
+    prod[ProductInd].qtd -= qtd_n;
   }
 
 }
@@ -152,15 +142,11 @@ void altera_preco_prod(int ProductInd, int preco)
 {
   if (ProductInd > 9999)
   {
-    {
-      printf("ERRO: Impossivel alterar preco do produto %d. Produto inexistente.\n", ProductInd);
-    }
+    printf("ERRO: Impossivel alterar preco do produto %d. Produto inexistente.\n", ProductInd);
   }
   else
   {
-    {
-      prod[ProductInd].preco = preco;
-    }
+    prod[ProductInd].preco = preco;
   }
 
 }
@@ -169,9 +155,7 @@ void nova_encomenda()
 {
   if (EncomendaInd != 500)
   {
-    {
-      encomenda[EncomendaInd].ide = 0;
-    }
+    encomenda[EncomendaInd].ide = 0;
   }
   else
   {

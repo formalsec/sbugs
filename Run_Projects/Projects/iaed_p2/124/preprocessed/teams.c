@@ -32,26 +32,24 @@ tLink tRemove(tLink head, char *name)
   {
     if (strcmp(aux->team->name, name) == 0)
     {
+      if (aux->prev != 0)
       {
-        if (aux->prev != 0)
-        {
-          aux->prev->next = aux->next;
-        }
-        else
-        {
-          
-        }
-
-        if (aux->next != 0)
-        {
-          aux->next->prev = aux->prev;
-        }
-        else
-        {
-          
-        }
-
+        aux->prev->next = aux->next;
       }
+      else
+      {
+        
+      }
+
+      if (aux->next != 0)
+      {
+        aux->next->prev = aux->prev;
+      }
+      else
+      {
+        
+      }
+
     }
     else
     {
@@ -135,9 +133,7 @@ int max_wins(tLink *hashTeam)
     {
       if (aux->team->wins > max)
       {
-        {
-          max = aux->team->wins;
-        }
+        max = aux->team->wins;
       }
       else
       {
@@ -160,11 +156,9 @@ tLink alphInsert(tLink tHead, pTeam team)
   new->team = team;
   if (tHead == 0)
   {
-    {
-      new->next = tHead;
-      new->prev = 0;
-      return new;
-    }
+    new->next = tHead;
+    new->prev = 0;
+    return new;
   }
   else
   {
@@ -176,37 +170,33 @@ tLink alphInsert(tLink tHead, pTeam team)
 
   if ((aux->next == 0) && (strcmp(aux->team->name, new->team->name) < 0))
   {
-    {
-      aux->next = new;
-      new->prev = aux;
-      new->next = 0;
-    }
+    aux->next = new;
+    new->prev = aux;
+    new->next = 0;
   }
   else
   {
+    new->prev = aux->prev;
+    if (aux->prev != 0)
     {
-      new->prev = aux->prev;
-      if (aux->prev != 0)
-      {
-        aux->prev->next = new;
-      }
-      else
-      {
-        
-      }
-
-      aux->prev = new;
-      new->next = aux;
-      if (tHead == aux)
-      {
-        tHead = new;
-      }
-      else
-      {
-        
-      }
-
+      aux->prev->next = new;
     }
+    else
+    {
+      
+    }
+
+    aux->prev = new;
+    new->next = aux;
+    if (tHead == aux)
+    {
+      tHead = new;
+    }
+    else
+    {
+      
+    }
+
   }
 
   return tHead;

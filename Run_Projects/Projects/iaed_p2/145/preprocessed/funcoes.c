@@ -45,11 +45,9 @@ void __a__(int NL, Hashtable hash_j, Hashtable hash_e, link *head)
   j = cria_item(n, e1, e2, s1, s2);
   if (procura_hash(n, hash_j) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-      free_item(j);
-      return;
-    }
+    printf("%d Jogo existente.\n", NL);
+    free_item(j);
+    return;
   }
   else
   {
@@ -58,11 +56,9 @@ void __a__(int NL, Hashtable hash_j, Hashtable hash_e, link *head)
 
   if ((procura_hash(e1, hash_e) == 0) || (procura_hash(e2, hash_e) == 0))
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      free_item(j);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    free_item(j);
+    return;
   }
   else
   {
@@ -96,11 +92,9 @@ void __A__(int NL, Hashtable hasht)
   n = cria_pchar(n_s);
   if (procura_hash(n, hasht) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-      free(n);
-      return;
-    }
+    printf("%d Equipa existente.\n", NL);
+    free(n);
+    return;
   }
   else
   {
@@ -137,10 +131,8 @@ void __p__(int NL, Hashtable hasht)
   j = procura_hash(n, hasht);
   if (j == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -163,10 +155,8 @@ void __P__(int NL, Hashtable hasht)
   e = procura_hash(n, hasht);
   if (e == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -190,10 +180,8 @@ void __r__(int NL, Hashtable hash_j, Hashtable hash_e, link *head)
   j = apaga_hash(n, hash_j);
   if (j == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -235,10 +223,8 @@ void __s__(int NL, Hashtable hash_j, Hashtable hash_e)
   s2 = new_sym_var(sizeof(int) * 8);
   if (j == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -260,10 +246,8 @@ void __s__(int NL, Hashtable hash_j, Hashtable hash_e)
 
   if (aux == 0)
   {
-    {
-      v->vitorias++;
-      return;
-    }
+    v->vitorias++;
+    return;
   }
   else
   {
@@ -272,10 +256,8 @@ void __s__(int NL, Hashtable hash_j, Hashtable hash_e)
 
   if (v == 0)
   {
-    {
-      aux->vitorias--;
-      return;
-    }
+    aux->vitorias--;
+    return;
   }
   else
   {
@@ -307,29 +289,25 @@ void __g__(int NL, Hashtable hasht)
   for (i = 0; i < M; i++)
     if (endereco[i] != 0)
   {
+    if (endereco[i]->vitorias == V)
     {
-      if (endereco[i]->vitorias == V)
-      {
-        equipas++;
-      }
-      else
-      {
-        
-      }
-
-      if (endereco[i]->vitorias > V)
-      {
-        {
-          V = endereco[i]->vitorias;
-          equipas = 1;
-        }
-      }
-      else
-      {
-        
-      }
-
+      equipas++;
     }
+    else
+    {
+      
+    }
+
+    if (endereco[i]->vitorias > V)
+    {
+      V = endereco[i]->vitorias;
+      equipas = 1;
+    }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -341,20 +319,16 @@ void __g__(int NL, Hashtable hasht)
   for (i = 0; i < M; i++)
     if (endereco[i] != 0)
   {
+    if (endereco[i]->vitorias == V)
     {
-      if (endereco[i]->vitorias == V)
-      {
-        {
-          lista[j] = endereco[i]->nome;
-          j++;
-        }
-      }
-      else
-      {
-        
-      }
-
+      lista[j] = endereco[i]->nome;
+      j++;
     }
+    else
+    {
+      
+    }
+
   }
   else
   {

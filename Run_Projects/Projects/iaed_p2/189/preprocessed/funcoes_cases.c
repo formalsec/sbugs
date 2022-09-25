@@ -42,10 +42,8 @@ link_j letra_a(int num_linhas, link_j *primeiros_j, link_e *primeiras_e, link_j 
   score2 = new_sym_var(sizeof(int) * 8);
   if (procura_jogo(primeiros_j, j1) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", num_linhas);
-      return lista_jogos;
-    }
+    printf("%d Jogo existente.\n", num_linhas);
+    return lista_jogos;
   }
   else
   {
@@ -54,10 +52,8 @@ link_j letra_a(int num_linhas, link_j *primeiros_j, link_e *primeiras_e, link_j 
 
   if (procura_equipa(primeiras_e, eq1) == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", num_linhas);
-      return lista_jogos;
-    }
+    printf("%d Equipa inexistente.\n", num_linhas);
+    return lista_jogos;
   }
   else
   {
@@ -66,10 +62,8 @@ link_j letra_a(int num_linhas, link_j *primeiros_j, link_e *primeiras_e, link_j 
 
   if (procura_equipa(primeiras_e, eq2) == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", num_linhas);
-      return lista_jogos;
-    }
+    printf("%d Equipa inexistente.\n", num_linhas);
+    return lista_jogos;
   }
   else
   {
@@ -84,10 +78,8 @@ link_j letra_a(int num_linhas, link_j *primeiros_j, link_e *primeiras_e, link_j 
   strcpy(ptr_eq2, eq2);
   if (score1 > score2)
   {
-    {
-      e1 = procura_equipa(primeiras_e, eq1);
-      e1->equipa->vitorias++;
-    }
+    e1 = procura_equipa(primeiras_e, eq1);
+    e1->equipa->vitorias++;
   }
   else
   {
@@ -96,10 +88,8 @@ link_j letra_a(int num_linhas, link_j *primeiros_j, link_e *primeiras_e, link_j 
 
   if (score1 < score2)
   {
-    {
-      e2 = procura_equipa(primeiras_e, eq2);
-      e2->equipa->vitorias++;
-    }
+    e2 = procura_equipa(primeiras_e, eq2);
+    e2->equipa->vitorias++;
   }
   else
   {
@@ -142,10 +132,8 @@ link_e letra_A(int num_linhas, link_e *primeiras_e, link_e lista_equipas)
   eq1[10 - 1] = '\0';
   if (procura_equipa(primeiras_e, eq1) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", num_linhas);
-      return lista_equipas;
-    }
+    printf("%d Equipa existente.\n", num_linhas);
+    return lista_equipas;
   }
   else
   {
@@ -171,11 +159,9 @@ int letra_l(int num_linhas, link_j lista_jogos)
   link_j x;
   if (lista_jogos != 0)
   {
-    {
-      for (x = lista_jogos; x != 0; x = x->proximo)
-        printf("%d %s %s %s %d %d\n", num_linhas, x->jogo->nome, x->jogo->equipa1, x->jogo->equipa2, x->jogo->score1, x->jogo->score2);
+    for (x = lista_jogos; x != 0; x = x->proximo)
+      printf("%d %s %s %s %d %d\n", num_linhas, x->jogo->nome, x->jogo->equipa1, x->jogo->equipa2, x->jogo->score1, x->jogo->score2);
 
-    }
   }
   else
   {
@@ -198,10 +184,8 @@ int letra_p(int num_linhas, link_j *primeiros_j)
   x = procura_jogo(primeiros_j, j1);
   if (x == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", num_linhas);
-      return 0;
-    }
+    printf("%d Jogo inexistente.\n", num_linhas);
+    return 0;
   }
   else
   {
@@ -224,10 +208,8 @@ int letra_P(int num_linhas, link_e *primeiras_e)
   eq1[10 - 1] = '\0';
   if (procura_equipa(primeiras_e, eq1) == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", num_linhas);
-      return 0;
-    }
+    printf("%d Equipa inexistente.\n", num_linhas);
+    return 0;
   }
   else
   {
@@ -255,10 +237,8 @@ link_j letra_r(int num_linhas, link_j *primeiros_j, link_e *primeiras_e, link_j 
   x = procura_jogo(primeiros_j, j1);
   if (x == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", num_linhas);
-      return lista_jogos;
-    }
+    printf("%d Jogo inexistente.\n", num_linhas);
+    return lista_jogos;
   }
   else
   {
@@ -309,10 +289,8 @@ int letra_s(int num_linhas, link_j *primeiros_j, link_e *primeiras_e)
   x = procura_jogo(primeiros_j, j1);
   if (x == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", num_linhas);
-      return 0;
-    }
+    printf("%d Jogo inexistente.\n", num_linhas);
+    return 0;
   }
   else
   {
@@ -323,29 +301,25 @@ int letra_s(int num_linhas, link_j *primeiros_j, link_e *primeiras_e)
   e2 = procura_equipa(primeiras_e, x->jogo->equipa2);
   if (x->jogo->score1 > x->jogo->score2)
   {
+    if (score1 == score2)
     {
-      if (score1 == score2)
-      {
-        e1->equipa->vitorias--;
-      }
-      else
-      {
-        
-      }
-
-      if (score1 < score2)
-      {
-        {
-          e1->equipa->vitorias--;
-          e2->equipa->vitorias++;
-        }
-      }
-      else
-      {
-        
-      }
-
+      e1->equipa->vitorias--;
     }
+    else
+    {
+      
+    }
+
+    if (score1 < score2)
+    {
+      e1->equipa->vitorias--;
+      e2->equipa->vitorias++;
+    }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -354,29 +328,25 @@ int letra_s(int num_linhas, link_j *primeiros_j, link_e *primeiras_e)
 
   if (x->jogo->score1 < x->jogo->score2)
   {
+    if (score1 == score2)
     {
-      if (score1 == score2)
-      {
-        e2->equipa->vitorias--;
-      }
-      else
-      {
-        
-      }
-
-      if (score1 > score2)
-      {
-        {
-          e2->equipa->vitorias--;
-          e1->equipa->vitorias++;
-        }
-      }
-      else
-      {
-        
-      }
-
+      e2->equipa->vitorias--;
     }
+    else
+    {
+      
+    }
+
+    if (score1 > score2)
+    {
+      e2->equipa->vitorias--;
+      e1->equipa->vitorias++;
+    }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -385,26 +355,24 @@ int letra_s(int num_linhas, link_j *primeiros_j, link_e *primeiras_e)
 
   if (x->jogo->score1 == x->jogo->score2)
   {
+    if (score1 > score2)
     {
-      if (score1 > score2)
-      {
-        e1->equipa->vitorias++;
-      }
-      else
-      {
-        
-      }
-
-      if (score1 < score2)
-      {
-        e2->equipa->vitorias++;
-      }
-      else
-      {
-        
-      }
-
+      e1->equipa->vitorias++;
     }
+    else
+    {
+      
+    }
+
+    if (score1 < score2)
+    {
+      e2->equipa->vitorias++;
+    }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -471,17 +439,15 @@ int frees_projeto(link_j *primeiros_j, link_e *primeiras_e, link_j lista_jogos, 
   m = 0, anterior_e = 0, k = 0, anterior_j = 0;
   if (lista_equipas != 0)
   {
+    m = lista_equipas;
+    while (m != 0)
     {
-      m = lista_equipas;
-      while (m != 0)
-      {
-        anterior_e = m;
-        m = m->proximo;
-        FreeNome_e(anterior_e);
-        free(anterior_e);
-      }
-
+      anterior_e = m;
+      m = m->proximo;
+      FreeNome_e(anterior_e);
+      free(anterior_e);
     }
+
   }
   else
   {
@@ -490,17 +456,15 @@ int frees_projeto(link_j *primeiros_j, link_e *primeiras_e, link_j lista_jogos, 
 
   if (lista_jogos != 0)
   {
+    k = lista_jogos;
+    while (k != 0)
     {
-      k = lista_jogos;
-      while (k != 0)
-      {
-        anterior_j = k;
-        k = k->proximo;
-        FreeNomes_j(anterior_j);
-        free(anterior_j);
-      }
-
+      anterior_j = k;
+      k = k->proximo;
+      FreeNomes_j(anterior_j);
+      free(anterior_j);
     }
+
   }
   else
   {

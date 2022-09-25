@@ -18,13 +18,11 @@ link insertEnd(link head, link *last, struct jogo game, struct node **new)
   link x;
   if (head == 0)
   {
-    {
-      x = NEW(game, 0);
-      x->prev = 0;
-      *last = x;
-      *new = x;
-      return x;
-    }
+    x = NEW(game, 0);
+    x->prev = 0;
+    *last = x;
+    *new = x;
+    return x;
   }
   else
   {

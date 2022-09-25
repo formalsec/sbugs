@@ -26,10 +26,8 @@ void s(GAME *hashG[], int row)
   {
     if (searcher_game->link == 0)
     {
-      {
-        printf("%d Jogo inexistente.", row);
-        return;
-      }
+      printf("%d Jogo inexistente.", row);
+      return;
     }
     else
     {
@@ -41,19 +39,15 @@ void s(GAME *hashG[], int row)
 
   if ((searcher_game->score1 > searcher_game->score2) && (score2 > score1))
   {
-    {
-      searcher_game->team1->score--;
-      searcher_game->team2->score++;
-    }
+    searcher_game->team1->score--;
+    searcher_game->team2->score++;
   }
   else
   {
     if ((searcher_game->score2 > searcher_game->score1) && (score1 > score2))
     {
-      {
-        searcher_game->team1->score++;
-        searcher_game->team2->score--;
-      }
+      searcher_game->team1->score++;
+      searcher_game->team2->score--;
     }
     else
     {

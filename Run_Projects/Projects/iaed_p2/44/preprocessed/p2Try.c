@@ -41,53 +41,43 @@ int caseSAux(char auxString[1024], int auxNum1, int auxNum2, link *heads)
   j = Jsearch(heads, auxString);
   if (j != 0)
   {
+    if (j->score1 > j->score2)
     {
-      if (j->score1 > j->score2)
+      j->equipa1->wins--;
+    }
+    else
+    {
+      if (j->score1 < j->score2)
       {
-        {
-          j->equipa1->wins--;
-        }
+        j->equipa2->wins--;
       }
       else
       {
-        if (j->score1 < j->score2)
-        {
-          {
-            j->equipa2->wins--;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      j->score1 = auxNum1;
-      j->score2 = auxNum2;
-      out = 1;
-      if (j->score1 > j->score2)
-      {
-        {
-          j->equipa1->wins++;
-        }
-      }
-      else
-      {
-        if (j->score1 < j->score2)
-        {
-          {
-            j->equipa2->wins++;
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
     }
+
+    j->score1 = auxNum1;
+    j->score2 = auxNum2;
+    out = 1;
+    if (j->score1 > j->score2)
+    {
+      j->equipa1->wins++;
+    }
+    else
+    {
+      if (j->score1 < j->score2)
+      {
+        j->equipa2->wins++;
+      }
+      else
+      {
+        
+      }
+
+    }
+
   }
   else
   {
@@ -159,10 +149,8 @@ void processInput()
         auxNum2 = new_sym_var(sizeof(int) * 8);
         if (Jsearch(head, name))
       {
-        {
-          printf("%d Jogo existente.\n", countOut);
-          break;
-        }
+        printf("%d Jogo existente.\n", countOut);
+        break;
       }
       else
       {
@@ -172,10 +160,8 @@ void processInput()
         team1 = Esearch(top, team);
         if (!team1)
       {
-        {
-          printf("%d Equipa inexistente.\n", countOut);
-          break;
-        }
+        printf("%d Equipa inexistente.\n", countOut);
+        break;
       }
       else
       {
@@ -185,10 +171,8 @@ void processInput()
         team2 = Esearch(top, auxString);
         if (!team2)
       {
-        {
-          printf("%d Equipa inexistente.\n", countOut);
-          break;
-        }
+        printf("%d Equipa inexistente.\n", countOut);
+        break;
       }
       else
       {
@@ -197,20 +181,16 @@ void processInput()
 
         if (headList == 0)
       {
-        {
-          headList = malloc(sizeof(struct node));
-          headList->j = novoJogo(name, team1, team2, auxNum1, auxNum2);
-          Jinsert(head, headList->j);
-          tailList = headList;
-        }
+        headList = malloc(sizeof(struct node));
+        headList->j = novoJogo(name, team1, team2, auxNum1, auxNum2);
+        Jinsert(head, headList->j);
+        tailList = headList;
       }
       else
       {
-        {
-          tailList->next = caseaAux(name, team1, team2, auxNum1, auxNum2);
-          Jinsert(head, tailList->next->j);
-          tailList = tailList->next;
-        }
+        tailList->next = caseaAux(name, team1, team2, auxNum1, auxNum2);
+        Jinsert(head, tailList->next->j);
+        tailList = tailList->next;
       }
 
         break;
@@ -218,9 +198,7 @@ void processInput()
       case 'l':
         if (headList == 0)
       {
-        {
-          break;
-        }
+        break;
       }
       else
       {
@@ -232,10 +210,8 @@ void processInput()
       {
         if (auxList->j->nome != 0)
         {
-          {
-            printf("%d ", countOut);
-            printJogo(auxList->j);
-          }
+          printf("%d ", countOut);
+          printJogo(auxList->j);
         }
         else
         {
@@ -256,16 +232,12 @@ void processInput()
         auxString[10 - 1] = '\0';
         if (Jsearch(head, auxString))
       {
-        {
-          printf("%d ", countOut);
-          printJogo(Jsearch(head, auxString));
-        }
+        printf("%d ", countOut);
+        printJogo(Jsearch(head, auxString));
       }
       else
       {
-        {
-          printf("%d Jogo inexistente.\n", countOut);
-        }
+        printf("%d Jogo inexistente.\n", countOut);
       }
 
         break;
@@ -279,15 +251,11 @@ void processInput()
         auxString[10 - 1] = '\0';
         if (Jsearch(head, auxString))
       {
-        {
-          Jdelete(head, auxString);
-        }
+        Jdelete(head, auxString);
       }
       else
       {
-        {
-          printf("%d Jogo inexistente.\n", countOut);
-        }
+        printf("%d Jogo inexistente.\n", countOut);
       }
 
         break;
@@ -304,9 +272,7 @@ void processInput()
         cond = caseSAux(auxString, auxNum1, auxNum2, head);
         if (cond == 0)
       {
-        {
-          printf("%d Jogo inexistente.\n", countOut);
-        }
+        printf("%d Jogo inexistente.\n", countOut);
       }
       else
       {
@@ -324,15 +290,11 @@ void processInput()
         auxString[10 - 1] = '\0';
         if (Esearch(top, auxString))
       {
-        {
-          printf("%d Equipa existente.\n", countOut);
-        }
+        printf("%d Equipa existente.\n", countOut);
       }
       else
       {
-        {
-          Einsert(top, novaEquipa(auxString));
-        }
+        Einsert(top, novaEquipa(auxString));
       }
 
         break;
@@ -346,16 +308,12 @@ void processInput()
         auxString[10 - 1] = '\0';
         if (Esearch(top, auxString))
       {
-        {
-          k = getWins(top, auxString);
-          printf("%d %s %d\n", countOut, auxString, k);
-        }
+        k = getWins(top, auxString);
+        printf("%d %s %d\n", countOut, auxString, k);
       }
       else
       {
-        {
-          printf("%d Equipa inexistente.\n", countOut);
-        }
+        printf("%d Equipa inexistente.\n", countOut);
       }
 
         break;

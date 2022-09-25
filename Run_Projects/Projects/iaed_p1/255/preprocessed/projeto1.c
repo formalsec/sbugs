@@ -81,39 +81,35 @@ void quicksort(int vetor[], int esq, int dir)
   int temp;
   if (esq < dir)
   {
+    pivot = esq;
+    i = esq;
+    j = dir;
+    while (i < j)
     {
-      pivot = esq;
-      i = esq;
-      j = dir;
-      while (i < j)
+      while ((vetor[i] <= vetor[pivot]) && (i < dir))
+        i++;
+
+      while (vetor[j] > vetor[pivot])
+        j--;
+
+      if (i < j)
       {
-        while ((vetor[i] <= vetor[pivot]) && (i < dir))
-          i++;
-
-        while (vetor[j] > vetor[pivot])
-          j--;
-
-        if (i < j)
-        {
-          {
-            temp = vetor[i];
-            vetor[i] = vetor[j];
-            vetor[j] = temp;
-          }
-        }
-        else
-        {
-          
-        }
-
+        temp = vetor[i];
+        vetor[i] = vetor[j];
+        vetor[j] = temp;
+      }
+      else
+      {
+        
       }
 
-      temp = vetor[pivot];
-      vetor[pivot] = vetor[j];
-      vetor[j] = temp;
-      quicksort(vetor, esq, j - 1);
-      quicksort(vetor, j + 1, dir);
     }
+
+    temp = vetor[pivot];
+    vetor[pivot] = vetor[j];
+    vetor[j] = temp;
+    quicksort(vetor, esq, j - 1);
+    quicksort(vetor, j + 1, dir);
   }
   else
   {
@@ -177,13 +173,11 @@ void add_produto(Produto p)
   int posicao;
   if (10000 >= id_produtos)
   {
-    {
-      id_produtos++;
-      posicao = id_produtos;
-      p.id = posicao;
-      sistema_produtos[posicao] = p;
-      printf("Novo produto %d.\n", posicao);
-    }
+    id_produtos++;
+    posicao = id_produtos;
+    p.id = posicao;
+    sistema_produtos[posicao] = p;
+    printf("Novo produto %d.\n", posicao);
   }
   else
   {
@@ -197,9 +191,7 @@ void add_stock(char *string[])
   int idp = atoi(string[0]);
   if (procuraProduto(idp) < 0)
   {
-    {
-      printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idp);
-    }
+    printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idp);
   }
   else
   {
@@ -214,25 +206,21 @@ void cria_encomenda()
   int posicao;
   if (500 >= id_encomendas)
   {
+    id_encomendas++;
+    posicao = id_encomendas;
+    if (posicao >= 0)
     {
-      id_encomendas++;
-      posicao = id_encomendas;
-      if (posicao >= 0)
-      {
-        {
-          encomenda.peso = 0;
-          encomenda.nprodutos = 0;
-          encomenda.id = posicao;
-          sistema_encomendas[posicao] = encomenda;
-          printf("Nova encomenda %d.\n", posicao);
-        }
-      }
-      else
-      {
-        
-      }
-
+      encomenda.peso = 0;
+      encomenda.nprodutos = 0;
+      encomenda.id = posicao;
+      sistema_encomendas[posicao] = encomenda;
+      printf("Nova encomenda %d.\n", posicao);
     }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -248,68 +236,41 @@ void produtoParaEncomenda(char *string[])
   int qtd = atoi(string[2]);
   if (verificaEncomenda(ide) < 0)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
   }
   else
   {
     if (procuraProduto(idp) < 0)
     {
-      {
-        printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
-      }
+      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
     }
     else
     {
       if (obterStockProduto(idp) < qtd)
       {
-        {
-          printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
-        }
+        printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
       }
       else
       {
         if ((obterPesoAtualEncomenda(ide) + (obterPesoProduto(idp) * qtd)) > 200)
         {
-          {
-            printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
-          }
+          printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
         }
         else
         {
+          int n;
+          int i;
+          int flag = 1;
+          n = sistema_encomendas[ide].nprodutos;
+          for (i = 0; i < n; i++)
           {
-            int n;
-            int i;
-            int flag = 1;
-            n = sistema_encomendas[ide].nprodutos;
-            for (i = 0; i < n; i++)
+            if (obterIdCodigo(sistema_encomendas[ide].prod_details[i]) == idp)
             {
-              if (obterIdCodigo(sistema_encomendas[ide].prod_details[i]) == idp)
-              {
-                {
-                  sistema_encomendas[ide].prod_details[i] += qtd * 10000;
-                  sistema_produtos[idp].quantidade -= qtd;
-                  sistema_encomendas[ide].peso += obterPesoProduto(idp) * qtd;
-                  flag = 0;
-                  break;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-            if (flag)
-            {
-              {
-                sistema_encomendas[ide].prod_details[n] = cria_codigo(idp, qtd);
-                sistema_encomendas[ide].nprodutos += 1;
-                sistema_encomendas[ide].peso += obterPesoProduto(idp) * qtd;
-                sistema_produtos[idp].quantidade -= qtd;
-              }
+              sistema_encomendas[ide].prod_details[i] += qtd * 10000;
+              sistema_produtos[idp].quantidade -= qtd;
+              sistema_encomendas[ide].peso += obterPesoProduto(idp) * qtd;
+              flag = 0;
+              break;
             }
             else
             {
@@ -317,6 +278,19 @@ void produtoParaEncomenda(char *string[])
             }
 
           }
+
+          if (flag)
+          {
+            sistema_encomendas[ide].prod_details[n] = cria_codigo(idp, qtd);
+            sistema_encomendas[ide].nprodutos += 1;
+            sistema_encomendas[ide].peso += obterPesoProduto(idp) * qtd;
+            sistema_produtos[idp].quantidade -= qtd;
+          }
+          else
+          {
+            
+          }
+
         }
 
       }
@@ -333,23 +307,17 @@ void removeStock(char *string[])
   int qtd = atoi(string[1]);
   if (procuraProduto(idp) < 0)
   {
-    {
-      printf("Impossivel remover stock do produto %d. Produto inexistente.\n", idp);
-    }
+    printf("Impossivel remover stock do produto %d. Produto inexistente.\n", idp);
   }
   else
   {
     if ((obterStockProduto(idp) - qtd) < 0)
     {
-      {
-        printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, idp);
-      }
+      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, idp);
     }
     else
     {
-      {
-        sistema_produtos[idp].quantidade -= atoi(string[1]);
-      }
+      sistema_produtos[idp].quantidade -= atoi(string[1]);
     }
 
   }
@@ -362,48 +330,40 @@ void removeProdutoEncomenda(char *string[])
   int idp = atoi(string[1]);
   if (verificaEncomenda(ide) < 0)
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
   }
   else
   {
     if (procuraProduto(idp) < 0)
     {
-      {
-        printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
-      }
+      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
     }
     else
     {
+      int i;
+      int nprod;
+      nprod = sistema_encomendas[ide].nprodutos;
+      for (i = 0; i < nprod; i++)
       {
-        int i;
-        int nprod;
-        nprod = sistema_encomendas[ide].nprodutos;
-        for (i = 0; i < nprod; i++)
+        if (obterIdCodigo(sistema_encomendas[ide].prod_details[i]) == idp)
         {
-          if (obterIdCodigo(sistema_encomendas[ide].prod_details[i]) == idp)
-          {
-            {
-              sistema_produtos[idp].quantidade += obterQtdCodigo(sistema_encomendas[ide].prod_details[i]);
-              sistema_encomendas[ide].peso -= obterQtdCodigo(sistema_encomendas[ide].prod_details[i]) * obterPesoProduto(idp);
-              sistema_encomendas[ide].nprodutos -= 1;
-              break;
-            }
-          }
-          else
-          {
-            
-          }
-
+          sistema_produtos[idp].quantidade += obterQtdCodigo(sistema_encomendas[ide].prod_details[i]);
+          sistema_encomendas[ide].peso -= obterQtdCodigo(sistema_encomendas[ide].prod_details[i]) * obterPesoProduto(idp);
+          sistema_encomendas[ide].nprodutos -= 1;
+          break;
         }
-
-        for (; i < nprod; i++)
+        else
         {
-          sistema_encomendas[ide].prod_details[i] = sistema_encomendas[ide].prod_details[i + 1];
+          
         }
 
       }
+
+      for (; i < nprod; i++)
+      {
+        sistema_encomendas[ide].prod_details[i] = sistema_encomendas[ide].prod_details[i + 1];
+      }
+
     }
 
   }
@@ -418,21 +378,17 @@ void calculaCusto(char *string[])
   int precoTotal = 0;
   if (verificaEncomenda(ide) < 0)
   {
-    {
-      printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ide);
-    }
+    printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ide);
   }
   else
   {
+    nprod = sistema_encomendas[ide].nprodutos;
+    for (i = 0; i < nprod; i++)
     {
-      nprod = sistema_encomendas[ide].nprodutos;
-      for (i = 0; i < nprod; i++)
-      {
-        precoTotal += obterPrecoProduto(obterIdCodigo(sistema_encomendas[ide].prod_details[i])) * obterQtdCodigo(sistema_encomendas[ide].prod_details[i]);
-      }
-
-      printf("Custo da encomenda %d %d.\n", ide, precoTotal);
+      precoTotal += obterPrecoProduto(obterIdCodigo(sistema_encomendas[ide].prod_details[i])) * obterQtdCodigo(sistema_encomendas[ide].prod_details[i]);
     }
+
+    printf("Custo da encomenda %d %d.\n", ide, precoTotal);
   }
 
 }
@@ -443,15 +399,11 @@ void alteraPreco(char *string[])
   int newPreco = atoi(string[1]);
   if (procuraProduto(idp) < 0)
   {
-    {
-      printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idp);
-    }
+    printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idp);
   }
   else
   {
-    {
-      sistema_produtos[idp].preco = newPreco;
-    }
+    sistema_produtos[idp].preco = newPreco;
   }
 
 }
@@ -462,55 +414,47 @@ void listaProduto(char *string[])
   int idp = atoi(string[1]);
   if (verificaEncomenda(ide) < 0)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
   }
   else
   {
     if (procuraProduto(idp) < 0)
     {
-      {
-        printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
-      }
+      printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
     }
     else
     {
+      int qtd;
+      int i;
+      int nprod;
+      int flag = 0;
+      char desc[64];
+      nprod = sistema_encomendas[ide].nprodutos;
+      for (i = 0; i < nprod; i++)
       {
-        int qtd;
-        int i;
-        int nprod;
-        int flag = 0;
-        char desc[64];
-        nprod = sistema_encomendas[ide].nprodutos;
-        for (i = 0; i < nprod; i++)
+        if (obterIdCodigo(sistema_encomendas[ide].prod_details[i]) == idp)
         {
-          if (obterIdCodigo(sistema_encomendas[ide].prod_details[i]) == idp)
-          {
-            {
-              qtd = obterQtdCodigo(sistema_encomendas[ide].prod_details[i]);
-              strcpy(desc, obterDescProduto(idp));
-              flag = 1;
-              break;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-        if (flag)
-        {
-          printf("%s %d.\n", desc, qtd);
+          qtd = obterQtdCodigo(sistema_encomendas[ide].prod_details[i]);
+          strcpy(desc, obterDescProduto(idp));
+          flag = 1;
+          break;
         }
         else
         {
-          printf("%s %d.\n", sistema_produtos[idp].descricao, 0);
+          
         }
 
       }
+
+      if (flag)
+      {
+        printf("%s %d.\n", desc, qtd);
+      }
+      else
+      {
+        printf("%s %d.\n", sistema_produtos[idp].descricao, 0);
+      }
+
     }
 
   }
@@ -522,64 +466,54 @@ void produtoMaisEncomendado(char *string[])
   int idp = atoi(string[0]);
   if (procuraProduto(idp) < 0)
   {
-    {
-      printf("Impossivel listar maximo do produto %s. Produto inexistente.\n", string[0]);
-    }
+    printf("Impossivel listar maximo do produto %s. Produto inexistente.\n", string[0]);
   }
   else
   {
+    int i;
+    int nencomendas;
+    int j;
+    int nprod;
+    int ide;
+    int qtd = 0;
+    nencomendas = id_encomendas + 1;
+    for (i = 0; i < nencomendas; i++)
     {
-      int i;
-      int nencomendas;
-      int j;
-      int nprod;
-      int ide;
-      int qtd = 0;
-      nencomendas = id_encomendas + 1;
-      for (i = 0; i < nencomendas; i++)
+      nprod = sistema_encomendas[i].nprodutos;
+      for (j = 0; j < nprod; j++)
       {
-        nprod = sistema_encomendas[i].nprodutos;
-        for (j = 0; j < nprod; j++)
+        if (obterIdCodigo(sistema_encomendas[i].prod_details[j]) == idp)
         {
-          if (obterIdCodigo(sistema_encomendas[i].prod_details[j]) == idp)
+          if (obterQtdCodigo(sistema_encomendas[i].prod_details[j]) > qtd)
           {
-            {
-              if (obterQtdCodigo(sistema_encomendas[i].prod_details[j]) > qtd)
-              {
-                {
-                  qtd = obterQtdCodigo(sistema_encomendas[i].prod_details[j]);
-                  ide = i;
-                }
-              }
-              else
-              {
-                
-              }
-
-              break;
-            }
+            qtd = obterQtdCodigo(sistema_encomendas[i].prod_details[j]);
+            ide = i;
           }
           else
           {
             
           }
 
+          break;
         }
-
-      }
-
-      if (qtd > 0)
-      {
+        else
         {
-          printf("Maximo produto %d %d %d.\n", idp, ide, qtd);
+          
         }
-      }
-      else
-      {
-        
+
       }
 
     }
+
+    if (qtd > 0)
+    {
+      printf("Maximo produto %d %d %d.\n", idp, ide, qtd);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -593,14 +527,12 @@ void listaPreco()
   nprod = id_produtos + 1;
   if (nprod > 0)
   {
+    for (i = 0; i < nprod; i++)
     {
-      for (i = 0; i < nprod; i++)
-      {
-        precos[i] = sistema_produtos[i].preco;
-      }
-
-      quicksort(precos, 0, nprod - 1);
+      precos[i] = sistema_produtos[i].preco;
     }
+
+    quicksort(precos, 0, nprod - 1);
   }
   else
   {
@@ -614,24 +546,18 @@ void listaPreco()
   {
     if (precos[k] == sistema_produtos[i].preco)
     {
+      printf("* %s %d %d\n", sistema_produtos[i].descricao, sistema_produtos[i].preco, sistema_produtos[i].quantidade);
+      if (((k + 1) < nprod) && (precos[k] == precos[k + 1]))
       {
-        printf("* %s %d %d\n", sistema_produtos[i].descricao, sistema_produtos[i].preco, sistema_produtos[i].quantidade);
-        if (((k + 1) < nprod) && (precos[k] == precos[k + 1]))
-        {
-          {
-            k++;
-            i++;
-          }
-        }
-        else
-        {
-          {
-            k++;
-            i = 0;
-          }
-        }
-
+        k++;
+        i++;
       }
+      else
+      {
+        k++;
+        i = 0;
+      }
+
     }
     else
     {
@@ -647,78 +573,66 @@ void listaEncomenda(char *string[])
   int ide = atoi(string[0]);
   if (verificaEncomenda(ide) < 0)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
   }
   else
   {
+    int i;
+    int j;
+    int k;
+    char temp[64];
+    Produto copiaOrdenada[10000];
+    for (i = 0; i < sistema_encomendas[ide].nprodutos; i++)
     {
-      int i;
-      int j;
-      int k;
-      char temp[64];
-      Produto copiaOrdenada[10000];
-      for (i = 0; i < sistema_encomendas[ide].nprodutos; i++)
-      {
-        copiaOrdenada[i] = sistema_produtos[obterIdCodigo(sistema_encomendas[ide].prod_details[i])];
-      }
+      copiaOrdenada[i] = sistema_produtos[obterIdCodigo(sistema_encomendas[ide].prod_details[i])];
+    }
 
-      for (i = 0; i < sistema_encomendas[ide].nprodutos; i++)
+    for (i = 0; i < sistema_encomendas[ide].nprodutos; i++)
+    {
+      for (j = i + 1; j < sistema_encomendas[ide].nprodutos; j++)
       {
-        for (j = i + 1; j < sistema_encomendas[ide].nprodutos; j++)
+        if (strcmp(copiaOrdenada[i].descricao, copiaOrdenada[j].descricao) > 0)
         {
-          if (strcmp(copiaOrdenada[i].descricao, copiaOrdenada[j].descricao) > 0)
-          {
-            {
-              strcpy(temp, copiaOrdenada[i].descricao);
-              strcpy(copiaOrdenada[i].descricao, copiaOrdenada[j].descricao);
-              strcpy(copiaOrdenada[j].descricao, temp);
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-      }
-
-      i = 0;
-      k = 0;
-      printf("Encomenda %d\n", ide);
-      while ((i < sistema_encomendas[ide].nprodutos) && (k < sistema_encomendas[ide].nprodutos))
-      {
-        if (strcmp(copiaOrdenada[k].descricao, obterDescProduto(obterIdCodigo(sistema_encomendas[ide].prod_details[i]))) == 0)
-        {
-          {
-            printf("* %s %d %d\n", obterDescProduto(obterIdCodigo(sistema_encomendas[ide].prod_details[i])), obterPrecoProduto(obterIdCodigo(sistema_encomendas[ide].prod_details[i])), obterQtdCodigo(sistema_encomendas[ide].prod_details[i]));
-            if (((k + 1) < sistema_encomendas[ide].nprodutos) && (strcmp(copiaOrdenada[k].descricao, copiaOrdenada[k + 1].descricao) == 0))
-            {
-              {
-                k++;
-                i++;
-              }
-            }
-            else
-            {
-              {
-                k++;
-                i = 0;
-              }
-            }
-
-          }
+          strcpy(temp, copiaOrdenada[i].descricao);
+          strcpy(copiaOrdenada[i].descricao, copiaOrdenada[j].descricao);
+          strcpy(copiaOrdenada[j].descricao, temp);
         }
         else
         {
-          i++;
+          
         }
 
       }
 
     }
+
+    i = 0;
+    k = 0;
+    printf("Encomenda %d\n", ide);
+    while ((i < sistema_encomendas[ide].nprodutos) && (k < sistema_encomendas[ide].nprodutos))
+    {
+      if (strcmp(copiaOrdenada[k].descricao, obterDescProduto(obterIdCodigo(sistema_encomendas[ide].prod_details[i]))) == 0)
+      {
+        printf("* %s %d %d\n", obterDescProduto(obterIdCodigo(sistema_encomendas[ide].prod_details[i])), obterPrecoProduto(obterIdCodigo(sistema_encomendas[ide].prod_details[i])), obterQtdCodigo(sistema_encomendas[ide].prod_details[i]));
+        if (((k + 1) < sistema_encomendas[ide].nprodutos) && (strcmp(copiaOrdenada[k].descricao, copiaOrdenada[k + 1].descricao) == 0))
+        {
+          k++;
+          i++;
+        }
+        else
+        {
+          k++;
+          i = 0;
+        }
+
+      }
+      else
+      {
+        i++;
+      }
+
+    }
+
   }
 
 }

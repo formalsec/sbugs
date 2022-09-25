@@ -15,10 +15,8 @@ void a(int NL, char *atr1, char *atr2, char *atr3, char *atr4, char *atr5, Lista
   int posicao = hash(atr1);
   if (procura_nome_jogo(lje, atr1) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-      return;
-    }
+    printf("%d Jogo existente.\n", NL);
+    return;
   }
   else
   {
@@ -29,10 +27,8 @@ void a(int NL, char *atr1, char *atr2, char *atr3, char *atr4, char *atr5, Lista
   equipa_2 = procura_nome_equipa(lje, atr3);
   if ((equipa_1 == 0) || (equipa_2 == 0))
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -42,47 +38,35 @@ void a(int NL, char *atr1, char *atr2, char *atr3, char *atr4, char *atr5, Lista
   novo_jogo = adiciona_jogo(atr1, equipa_1, equipa_2, atr4, atr5);
   if (lje->primeiro_jogo == 0)
   {
-    {
-      lje->primeiro_jogo = novo_jogo;
-    }
+    lje->primeiro_jogo = novo_jogo;
   }
   else
   {
-    {
-      novo_jogo->jogo_anterior = lje->ultimo_jogo;
-      lje->ultimo_jogo->jogo_seguinte = novo_jogo;
-    }
+    novo_jogo->jogo_anterior = lje->ultimo_jogo;
+    lje->ultimo_jogo->jogo_seguinte = novo_jogo;
   }
 
   lje->ultimo_jogo = novo_jogo;
   if (lje->tab_jogo[posicao]->primeiro_jogo == 0)
   {
-    {
-      lje->tab_jogo[posicao]->primeiro_jogo = novo_jogo;
-    }
+    lje->tab_jogo[posicao]->primeiro_jogo = novo_jogo;
   }
   else
   {
-    {
-      novo_jogo->anterior_tabela = lje->tab_jogo[posicao]->ultimo_jogo;
-      lje->tab_jogo[posicao]->ultimo_jogo->prox_tabela = novo_jogo;
-    }
+    novo_jogo->anterior_tabela = lje->tab_jogo[posicao]->ultimo_jogo;
+    lje->tab_jogo[posicao]->ultimo_jogo->prox_tabela = novo_jogo;
   }
 
   lje->tab_jogo[posicao]->ultimo_jogo = novo_jogo;
   if (novo_jogo->score1 > novo_jogo->score2)
   {
-    {
-      novo_jogo->equipa1->vitorias += 1;
-    }
+    novo_jogo->equipa1->vitorias += 1;
   }
   else
   {
     if (novo_jogo->score2 > novo_jogo->score1)
     {
-      {
-        novo_jogo->equipa2->vitorias += 1;
-      }
+      novo_jogo->equipa2->vitorias += 1;
     }
     else
     {
@@ -99,10 +83,8 @@ void A(int NL, char *atr1, Lista_jogos_equipas *lje)
   int posicao = hash(atr1);
   if (procura_nome_equipa(lje, atr1) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-      return;
-    }
+    printf("%d Equipa existente.\n", NL);
+    return;
   }
   else
   {
@@ -112,29 +94,21 @@ void A(int NL, char *atr1, Lista_jogos_equipas *lje)
   nova_equipa = adiciona_equipa(atr1);
   if (lje->primeira_equipa == 0)
   {
-    {
-      lje->primeira_equipa = nova_equipa;
-    }
+    lje->primeira_equipa = nova_equipa;
   }
   else
   {
-    {
-      lje->ultima_equipa->equipa_seguinte = nova_equipa;
-    }
+    lje->ultima_equipa->equipa_seguinte = nova_equipa;
   }
 
   lje->ultima_equipa = nova_equipa;
   if (lje->tab_equipa[posicao]->primeira_equipa == 0)
   {
-    {
-      lje->tab_equipa[posicao]->primeira_equipa = nova_equipa;
-    }
+    lje->tab_equipa[posicao]->primeira_equipa = nova_equipa;
   }
   else
   {
-    {
-      lje->tab_equipa[posicao]->ultima_equipa->prox_tabela = nova_equipa;
-    }
+    lje->tab_equipa[posicao]->ultima_equipa->prox_tabela = nova_equipa;
   }
 
   lje->tab_equipa[posicao]->ultima_equipa = nova_equipa;
@@ -156,15 +130,11 @@ void p(int NL, char *atr1, Lista_jogos_equipas *lje)
   Jogo *jogo = procura_nome_jogo(lje, atr1);
   if (jogo == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
   else
   {
-    {
-      printf("%d %s %s %s %d %d\n", NL, jogo->nome, jogo->equipa1->nome, jogo->equipa2->nome, jogo->score1, jogo->score2);
-    }
+    printf("%d %s %s %s %d %d\n", NL, jogo->nome, jogo->equipa1->nome, jogo->equipa2->nome, jogo->score1, jogo->score2);
   }
 
 }
@@ -174,15 +144,11 @@ void P(int NL, char *atr1, Lista_jogos_equipas *lje)
   Equipa *equipa = procura_nome_equipa(lje, atr1);
   if (equipa == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-    }
+    printf("%d Equipa inexistente.\n", NL);
   }
   else
   {
-    {
-      printf("%d %s %d\n", NL, equipa->nome, equipa->vitorias);
-    }
+    printf("%d %s %d\n", NL, equipa->nome, equipa->vitorias);
   }
 
 }
@@ -194,10 +160,8 @@ void r(int NL, char *atr1, Lista_jogos_equipas *lje)
   jogo = procura_nome_jogo(lje, atr1);
   if (jogo == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -206,95 +170,71 @@ void r(int NL, char *atr1, Lista_jogos_equipas *lje)
 
   if (lje->primeiro_jogo == jogo)
   {
+    if (lje->ultimo_jogo == jogo)
     {
-      if (lje->ultimo_jogo == jogo)
-      {
-        {
-          lje->primeiro_jogo = 0;
-          lje->ultimo_jogo = 0;
-        }
-      }
-      else
-      {
-        {
-          jogo->jogo_seguinte->jogo_anterior = 0;
-          lje->primeiro_jogo = jogo->jogo_seguinte;
-        }
-      }
-
+      lje->primeiro_jogo = 0;
+      lje->ultimo_jogo = 0;
     }
+    else
+    {
+      jogo->jogo_seguinte->jogo_anterior = 0;
+      lje->primeiro_jogo = jogo->jogo_seguinte;
+    }
+
   }
   else
   {
     if (lje->ultimo_jogo == jogo)
     {
-      {
-        jogo->jogo_anterior->jogo_seguinte = 0;
-        lje->ultimo_jogo = jogo->jogo_anterior;
-      }
+      jogo->jogo_anterior->jogo_seguinte = 0;
+      lje->ultimo_jogo = jogo->jogo_anterior;
     }
     else
     {
-      {
-        jogo->jogo_anterior->jogo_seguinte = jogo->jogo_seguinte;
-        jogo->jogo_seguinte->jogo_anterior = jogo->jogo_anterior;
-      }
+      jogo->jogo_anterior->jogo_seguinte = jogo->jogo_seguinte;
+      jogo->jogo_seguinte->jogo_anterior = jogo->jogo_anterior;
     }
 
   }
 
   if (lje->tab_jogo[posicao]->primeiro_jogo == jogo)
   {
+    if (lje->tab_jogo[posicao]->ultimo_jogo == jogo)
     {
-      if (lje->tab_jogo[posicao]->ultimo_jogo == jogo)
-      {
-        {
-          lje->tab_jogo[posicao]->primeiro_jogo = 0;
-          lje->tab_jogo[posicao]->ultimo_jogo = 0;
-        }
-      }
-      else
-      {
-        {
-          jogo->prox_tabela->anterior_tabela = 0;
-          lje->tab_jogo[posicao]->primeiro_jogo = jogo->prox_tabela;
-        }
-      }
-
+      lje->tab_jogo[posicao]->primeiro_jogo = 0;
+      lje->tab_jogo[posicao]->ultimo_jogo = 0;
     }
+    else
+    {
+      jogo->prox_tabela->anterior_tabela = 0;
+      lje->tab_jogo[posicao]->primeiro_jogo = jogo->prox_tabela;
+    }
+
   }
   else
   {
     if (lje->tab_jogo[posicao]->ultimo_jogo == jogo)
     {
-      {
-        jogo->anterior_tabela->prox_tabela = 0;
-        lje->tab_jogo[posicao]->ultimo_jogo = jogo->anterior_tabela;
-      }
+      jogo->anterior_tabela->prox_tabela = 0;
+      lje->tab_jogo[posicao]->ultimo_jogo = jogo->anterior_tabela;
     }
     else
     {
-      {
-        jogo->anterior_tabela->prox_tabela = jogo->prox_tabela;
-        jogo->prox_tabela->anterior_tabela = jogo->anterior_tabela;
-      }
+      jogo->anterior_tabela->prox_tabela = jogo->prox_tabela;
+      jogo->prox_tabela->anterior_tabela = jogo->anterior_tabela;
     }
 
   }
 
   if (jogo->score1 > jogo->score2)
   {
-    {
-      jogo->equipa1->vitorias -= 1;
-    }
+    jogo->equipa1->vitorias -= 1;
   }
   else
   {
     if (jogo->score2 > jogo->score1)
     {
-      {
-        jogo->equipa2->vitorias -= 1;
-      }
+      jogo->equipa2->vitorias -= 1;
     }
     else
     {
@@ -312,10 +252,8 @@ void s(int NL, char *atr1, char *atr2, char *atr3, Lista_jogos_equipas *lje)
   Jogo *jogo = procura_nome_jogo(lje, atr1);
   if (jogo == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -324,17 +262,13 @@ void s(int NL, char *atr1, char *atr2, char *atr3, Lista_jogos_equipas *lje)
 
   if (jogo->score1 > jogo->score2)
   {
-    {
-      jogo->equipa1->vitorias -= 1;
-    }
+    jogo->equipa1->vitorias -= 1;
   }
   else
   {
     if (jogo->score2 > jogo->score1)
     {
-      {
-        jogo->equipa2->vitorias -= 1;
-      }
+      jogo->equipa2->vitorias -= 1;
     }
     else
     {
@@ -347,17 +281,13 @@ void s(int NL, char *atr1, char *atr2, char *atr3, Lista_jogos_equipas *lje)
   jogo->score2 = atoi(atr3);
   if (jogo->score1 > jogo->score2)
   {
-    {
-      jogo->equipa1->vitorias += 1;
-    }
+    jogo->equipa1->vitorias += 1;
   }
   else
   {
     if (jogo->score2 > jogo->score1)
     {
-      {
-        jogo->equipa2->vitorias += 1;
-      }
+      jogo->equipa2->vitorias += 1;
     }
     else
     {

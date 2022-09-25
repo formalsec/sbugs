@@ -51,18 +51,14 @@ int separarstring(char linha[], char dadosdoinput[][63])
   {
     if (linha[c] == ':')
     {
-      {
-        dadosdoinput[a][b] = '\0';
-        b = 0;
-        a++;
-      }
+      dadosdoinput[a][b] = '\0';
+      b = 0;
+      a++;
     }
     else
     {
-      {
-        dadosdoinput[a][b] = linha[c];
-        b++;
-      }
+      dadosdoinput[a][b] = linha[c];
+      b++;
     }
 
     c++;
@@ -80,77 +76,63 @@ void merge(int l, int r, int m, int tabela_indices[], int alfabetica)
   int tabela_alfabetica[200];
   if (alfabetica == 0)
   {
+    for (a = m + 1; a > l; a--)
     {
-      for (a = m + 1; a > l; a--)
-      {
-        tabela_auxiliar[a - 1] = tabela_indices[a - 1];
-      }
+      tabela_auxiliar[a - 1] = tabela_indices[a - 1];
+    }
 
-      for (b = m; b < r; b++)
-      {
-        tabela_auxiliar[(r + m) - b] = tabela_indices[b + 1];
-      }
+    for (b = m; b < r; b++)
+    {
+      tabela_auxiliar[(r + m) - b] = tabela_indices[b + 1];
+    }
 
-      for (c = l; c <= r; c++)
+    for (c = l; c <= r; c++)
+    {
+      if (loja[tabela_auxiliar[b]].precodoproduto < loja[tabela_auxiliar[a]].precodoproduto)
       {
-        if (loja[tabela_auxiliar[b]].precodoproduto < loja[tabela_auxiliar[a]].precodoproduto)
+        tabela_indices[c] = tabela_auxiliar[b--];
+      }
+      else
+      {
+        if ((loja[tabela_auxiliar[b]].idedoproduto < loja[tabela_auxiliar[a]].idedoproduto) && (loja[tabela_auxiliar[b]].precodoproduto == loja[tabela_auxiliar[a]].precodoproduto))
         {
-          {
-            tabela_indices[c] = tabela_auxiliar[b--];
-          }
+          tabela_indices[c] = tabela_auxiliar[b--];
         }
         else
         {
-          if ((loja[tabela_auxiliar[b]].idedoproduto < loja[tabela_auxiliar[a]].idedoproduto) && (loja[tabela_auxiliar[b]].precodoproduto == loja[tabela_auxiliar[a]].precodoproduto))
-          {
-            {
-              tabela_indices[c] = tabela_auxiliar[b--];
-            }
-          }
-          else
-          {
-            {
-              tabela_indices[c] = tabela_auxiliar[a++];
-            }
-          }
-
+          tabela_indices[c] = tabela_auxiliar[a++];
         }
 
       }
 
     }
+
   }
   else
   {
+    for (a = m + 1; a > l; a--)
     {
-      for (a = m + 1; a > l; a--)
+      tabela_alfabetica[a - 1] = tabela_indices[a - 1];
+    }
+
+    for (b = m; b < r; b++)
+    {
+      tabela_alfabetica[(r + m) - b] = tabela_indices[b + 1];
+    }
+
+    for (c = l; c <= r; c++)
+    {
+      if (strcmp(loja[tabela_alfabetica[b]].nomedoproduto, loja[tabela_alfabetica[a]].nomedoproduto) < 0)
       {
-        tabela_alfabetica[a - 1] = tabela_indices[a - 1];
+        tabela_indices[c] = tabela_alfabetica[b--];
       }
-
-      for (b = m; b < r; b++)
+      else
       {
-        tabela_alfabetica[(r + m) - b] = tabela_indices[b + 1];
-      }
-
-      for (c = l; c <= r; c++)
-      {
-        if (strcmp(loja[tabela_alfabetica[b]].nomedoproduto, loja[tabela_alfabetica[a]].nomedoproduto) < 0)
-        {
-          {
-            tabela_indices[c] = tabela_alfabetica[b--];
-          }
-        }
-        else
-        {
-          {
-            tabela_indices[c] = tabela_alfabetica[a++];
-          }
-        }
-
+        tabela_indices[c] = tabela_alfabetica[a++];
       }
 
     }
+
   }
 
 }
@@ -185,15 +167,11 @@ void addproduto()
   {
     if (loja[i].idedoproduto != (-1))
     {
-      {
-        a++;
-      }
+      a++;
     }
     else
     {
-      {
-        break;
-      }
+      break;
     }
 
     i++;
@@ -216,15 +194,11 @@ void addstock()
   separarstring(linha, dadosdoinput);
   if (loja[atoi(dadosdoinput[0])].idedoproduto != (-1))
   {
-    {
-      loja[atoi(dadosdoinput[0])].qtddoproduto += atoi(dadosdoinput[1]);
-    }
+    loja[atoi(dadosdoinput[0])].qtddoproduto += atoi(dadosdoinput[1]);
   }
   else
   {
-    {
-      printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", atoi(dadosdoinput[0]));
-    }
+    printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", atoi(dadosdoinput[0]));
   }
 
 }
@@ -262,82 +236,62 @@ void addqtdprodutoaencomenda()
   separarstring(linha, dadosdoinput);
   if (encomendas[atoi(dadosdoinput[0])].idedaencomenda != (-1))
   {
+    if (loja[atoi(dadosdoinput[1])].idedoproduto != (-1))
     {
-      if (loja[atoi(dadosdoinput[1])].idedoproduto != (-1))
+      if (loja[atoi(dadosdoinput[1])].qtddoproduto >= atoi(dadosdoinput[2]))
       {
+        if (((atoi(dadosdoinput[2]) * loja[atoi(dadosdoinput[1])].pesodoproduto) + encomendas[atoi(dadosdoinput[0])].pesodaencomenda) <= 200)
         {
-          if (loja[atoi(dadosdoinput[1])].qtddoproduto >= atoi(dadosdoinput[2]))
+          for (i = 0; i < 200; i++)
           {
+            if (encomendas[atoi(dadosdoinput[0])].infoencomenda[i][0] == atoi(dadosdoinput[1]))
             {
-              if (((atoi(dadosdoinput[2]) * loja[atoi(dadosdoinput[1])].pesodoproduto) + encomendas[atoi(dadosdoinput[0])].pesodaencomenda) <= 200)
+              encomendas[atoi(dadosdoinput[0])].infoencomenda[i][1] += atoi(dadosdoinput[2]);
+              loja[atoi(dadosdoinput[1])].qtddoproduto -= atoi(dadosdoinput[2]);
+              encomendas[atoi(dadosdoinput[0])].pesodaencomenda += atoi(dadosdoinput[2]) * loja[atoi(dadosdoinput[1])].pesodoproduto;
+              break;
+            }
+            else
+            {
+              if (encomendas[atoi(dadosdoinput[0])].infoencomenda[i][0] == (-1))
               {
-                {
-                  for (i = 0; i < 200; i++)
-                  {
-                    if (encomendas[atoi(dadosdoinput[0])].infoencomenda[i][0] == atoi(dadosdoinput[1]))
-                    {
-                      {
-                        encomendas[atoi(dadosdoinput[0])].infoencomenda[i][1] += atoi(dadosdoinput[2]);
-                        loja[atoi(dadosdoinput[1])].qtddoproduto -= atoi(dadosdoinput[2]);
-                        encomendas[atoi(dadosdoinput[0])].pesodaencomenda += atoi(dadosdoinput[2]) * loja[atoi(dadosdoinput[1])].pesodoproduto;
-                        break;
-                      }
-                    }
-                    else
-                    {
-                      if (encomendas[atoi(dadosdoinput[0])].infoencomenda[i][0] == (-1))
-                      {
-                        {
-                          encomendas[atoi(dadosdoinput[0])].infoencomenda[i][0] = atoi(dadosdoinput[1]);
-                          encomendas[atoi(dadosdoinput[0])].infoencomenda[i][1] = atoi(dadosdoinput[2]);
-                          loja[atoi(dadosdoinput[1])].qtddoproduto -= atoi(dadosdoinput[2]);
-                          encomendas[atoi(dadosdoinput[0])].pesodaencomenda += atoi(dadosdoinput[2]) * loja[atoi(dadosdoinput[1])].pesodoproduto;
-                          break;
-                        }
-                      }
-                      else
-                      {
-                        
-                      }
-
-                    }
-
-                  }
-
-                }
+                encomendas[atoi(dadosdoinput[0])].infoencomenda[i][0] = atoi(dadosdoinput[1]);
+                encomendas[atoi(dadosdoinput[0])].infoencomenda[i][1] = atoi(dadosdoinput[2]);
+                loja[atoi(dadosdoinput[1])].qtddoproduto -= atoi(dadosdoinput[2]);
+                encomendas[atoi(dadosdoinput[0])].pesodaencomenda += atoi(dadosdoinput[2]) * loja[atoi(dadosdoinput[1])].pesodoproduto;
+                break;
               }
               else
               {
-                {
-                  printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", atoi(dadosdoinput[1]), atoi(dadosdoinput[0]));
-                }
+                
               }
 
             }
-          }
-          else
-          {
-            {
-              printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", atoi(dadosdoinput[1]), atoi(dadosdoinput[0]));
-            }
+
           }
 
         }
+        else
+        {
+          printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", atoi(dadosdoinput[1]), atoi(dadosdoinput[0]));
+        }
+
       }
       else
       {
-        {
-          printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", atoi(dadosdoinput[1]), atoi(dadosdoinput[0]));
-        }
+        printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", atoi(dadosdoinput[1]), atoi(dadosdoinput[0]));
       }
 
     }
+    else
+    {
+      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", atoi(dadosdoinput[1]), atoi(dadosdoinput[0]));
+    }
+
   }
   else
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", atoi(dadosdoinput[1]), atoi(dadosdoinput[0]));
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", atoi(dadosdoinput[1]), atoi(dadosdoinput[0]));
   }
 
 }
@@ -351,27 +305,19 @@ void removestock()
   separarstring(linha, dadosdoinput);
   if (loja[atoi(dadosdoinput[0])].idedoproduto != (-1))
   {
+    if (loja[atoi(dadosdoinput[0])].qtddoproduto >= atoi(dadosdoinput[1]))
     {
-      if (loja[atoi(dadosdoinput[0])].qtddoproduto >= atoi(dadosdoinput[1]))
-      {
-        {
-          loja[atoi(dadosdoinput[0])].qtddoproduto -= atoi(dadosdoinput[1]);
-        }
-      }
-      else
-      {
-        {
-          printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", atoi(dadosdoinput[1]), atoi(dadosdoinput[0]));
-        }
-      }
-
+      loja[atoi(dadosdoinput[0])].qtddoproduto -= atoi(dadosdoinput[1]);
     }
+    else
+    {
+      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", atoi(dadosdoinput[1]), atoi(dadosdoinput[0]));
+    }
+
   }
   else
   {
-    {
-      printf("Impossivel remover stock do produto %d. Produto inexistente.\n", atoi(dadosdoinput[0]));
-    }
+    printf("Impossivel remover stock do produto %d. Produto inexistente.\n", atoi(dadosdoinput[0]));
   }
 
 }
@@ -388,45 +334,35 @@ void removeprodutodaencomenda()
   separarstring(linha, dadosdoinput);
   if (encomendas[atoi(dadosdoinput[0])].idedaencomenda != (-1))
   {
+    if (loja[atoi(dadosdoinput[1])].idedoproduto != (-1))
     {
-      if (loja[atoi(dadosdoinput[1])].idedoproduto != (-1))
+      for (i = 0; i < 200; i++)
       {
+        if (encomendas[atoi(dadosdoinput[0])].infoencomenda[i][0] == atoi(dadosdoinput[1]))
         {
-          for (i = 0; i < 200; i++)
-          {
-            if (encomendas[atoi(dadosdoinput[0])].infoencomenda[i][0] == atoi(dadosdoinput[1]))
-            {
-              {
-                quantidade = encomendas[atoi(dadosdoinput[0])].infoencomenda[i][1];
-                indice = encomendas[atoi(dadosdoinput[0])].infoencomenda[i][0];
-                encomendas[atoi(dadosdoinput[0])].infoencomenda[i][1] = 0;
-                encomendas[atoi(dadosdoinput[0])].pesodaencomenda -= quantidade * loja[atoi(dadosdoinput[1])].pesodoproduto;
-                loja[indice].qtddoproduto += quantidade;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
+          quantidade = encomendas[atoi(dadosdoinput[0])].infoencomenda[i][1];
+          indice = encomendas[atoi(dadosdoinput[0])].infoencomenda[i][0];
+          encomendas[atoi(dadosdoinput[0])].infoencomenda[i][1] = 0;
+          encomendas[atoi(dadosdoinput[0])].pesodaencomenda -= quantidade * loja[atoi(dadosdoinput[1])].pesodoproduto;
+          loja[indice].qtddoproduto += quantidade;
         }
-      }
-      else
-      {
+        else
         {
-          printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", atoi(dadosdoinput[1]), atoi(dadosdoinput[0]));
+          
         }
+
       }
 
     }
+    else
+    {
+      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", atoi(dadosdoinput[1]), atoi(dadosdoinput[0]));
+    }
+
   }
   else
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", atoi(dadosdoinput[1]), atoi(dadosdoinput[0]));
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", atoi(dadosdoinput[1]), atoi(dadosdoinput[0]));
   }
 
 }
@@ -444,32 +380,26 @@ void custoencomenda()
   separarstring(linha, dadosdoinput);
   if (encomendas[atoi(dadosdoinput[0])].idedaencomenda != (-1))
   {
+    for (i = 0; i < 200; i++)
     {
-      for (i = 0; i < 200; i++)
+      if (encomendas[atoi(dadosdoinput[0])].infoencomenda[i][0] != (-1))
       {
-        if (encomendas[atoi(dadosdoinput[0])].infoencomenda[i][0] != (-1))
-        {
-          {
-            indice = encomendas[atoi(dadosdoinput[0])].infoencomenda[i][0];
-            quantidade = encomendas[atoi(dadosdoinput[0])].infoencomenda[i][1];
-            custo += loja[indice].precodoproduto * quantidade;
-          }
-        }
-        else
-        {
-          
-        }
-
+        indice = encomendas[atoi(dadosdoinput[0])].infoencomenda[i][0];
+        quantidade = encomendas[atoi(dadosdoinput[0])].infoencomenda[i][1];
+        custo += loja[indice].precodoproduto * quantidade;
+      }
+      else
+      {
+        
       }
 
-      printf("Custo da encomenda %d %d.\n", atoi(dadosdoinput[0]), custo);
     }
+
+    printf("Custo da encomenda %d %d.\n", atoi(dadosdoinput[0]), custo);
   }
   else
   {
-    {
-      printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", atoi(dadosdoinput[0]));
-    }
+    printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", atoi(dadosdoinput[0]));
   }
 
 }
@@ -483,15 +413,11 @@ void alteraprecodoproduto()
   separarstring(linha, dadosdoinput);
   if (loja[atoi(dadosdoinput[0])].idedoproduto != (-1))
   {
-    {
-      loja[atoi(dadosdoinput[0])].precodoproduto = atoi(dadosdoinput[1]);
-    }
+    loja[atoi(dadosdoinput[0])].precodoproduto = atoi(dadosdoinput[1]);
   }
   else
   {
-    {
-      printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", atoi(dadosdoinput[0]));
-    }
+    printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", atoi(dadosdoinput[0]));
   }
 
 }
@@ -507,42 +433,32 @@ void descqtdprodutonaencomenda()
   separarstring(linha, dadosdoinput);
   if (encomendas[atoi(dadosdoinput[0])].idedaencomenda != (-1))
   {
+    if (loja[atoi(dadosdoinput[1])].idedoproduto != (-1))
     {
-      if (loja[atoi(dadosdoinput[1])].idedoproduto != (-1))
+      for (i = 0; i < 200; i++)
       {
+        if (encomendas[atoi(dadosdoinput[0])].infoencomenda[i][0] == atoi(dadosdoinput[1]))
         {
-          for (i = 0; i < 200; i++)
-          {
-            if (encomendas[atoi(dadosdoinput[0])].infoencomenda[i][0] == atoi(dadosdoinput[1]))
-            {
-              {
-                quantidade += encomendas[atoi(dadosdoinput[0])].infoencomenda[i][1];
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-          printf("%s %d.\n", loja[atoi(dadosdoinput[1])].nomedoproduto, quantidade);
+          quantidade += encomendas[atoi(dadosdoinput[0])].infoencomenda[i][1];
         }
-      }
-      else
-      {
+        else
         {
-          printf("Impossivel listar produto %d. Produto inexistente.\n", atoi(dadosdoinput[1]));
+          
         }
+
       }
 
+      printf("%s %d.\n", loja[atoi(dadosdoinput[1])].nomedoproduto, quantidade);
     }
+    else
+    {
+      printf("Impossivel listar produto %d. Produto inexistente.\n", atoi(dadosdoinput[1]));
+    }
+
   }
   else
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", atoi(dadosdoinput[0]));
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", atoi(dadosdoinput[0]));
   }
 
 }
@@ -560,55 +476,45 @@ int encomendacommaisproduto()
   separarstring(linha, dadosdoinput);
   if (loja[atoi(dadosdoinput[0])].idedoproduto != (-1))
   {
+    for (i = 0; i < 500; i++)
     {
-      for (i = 0; i < 500; i++)
+      if (encomendas[i].idedaencomenda != (-1))
       {
-        if (encomendas[i].idedaencomenda != (-1))
+        for (j = 0; j < 200; j++)
         {
+          if ((encomendas[i].infoencomenda[j][0] == atoi(dadosdoinput[0])) && (qtdmax < encomendas[i].infoencomenda[j][1]))
           {
-            for (j = 0; j < 200; j++)
-            {
-              if ((encomendas[i].infoencomenda[j][0] == atoi(dadosdoinput[0])) && (qtdmax < encomendas[i].infoencomenda[j][1]))
-              {
-                {
-                  qtdmax = encomendas[i].infoencomenda[j][1];
-                  idedaencomendacomqtdmax = encomendas[i].idedaencomenda;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
+            qtdmax = encomendas[i].infoencomenda[j][1];
+            idedaencomendacomqtdmax = encomendas[i].idedaencomenda;
           }
-        }
-        else
-        {
-          break;
+          else
+          {
+            
+          }
+
         }
 
-      }
-
-      if (qtdmax != 0)
-      {
-        {
-          printf("Maximo produto %d %d %d.\n", atoi(dadosdoinput[0]), idedaencomendacomqtdmax, qtdmax);
-        }
       }
       else
       {
-        
+        break;
       }
 
     }
+
+    if (qtdmax != 0)
+    {
+      printf("Maximo produto %d %d %d.\n", atoi(dadosdoinput[0]), idedaencomendacomqtdmax, qtdmax);
+    }
+    else
+    {
+      
+    }
+
   }
   else
   {
-    {
-      printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", atoi(dadosdoinput[0]));
-    }
+    printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", atoi(dadosdoinput[0]));
   }
 
   return 0;
@@ -624,10 +530,8 @@ void ordemdeprodutos()
   {
     if (loja[i].idedoproduto != (-1))
     {
-      {
-        tabela_indices[i] = loja[i].idedoproduto;
-        r++;
-      }
+      tabela_indices[i] = loja[i].idedoproduto;
+      r++;
     }
     else
     {
@@ -658,37 +562,31 @@ void ordemalfabeticadeprodnumaencomenda()
   separarstring(linha, dadosdoinput);
   if (encomendas[atoi(dadosdoinput[0])].idedaencomenda != (-1))
   {
+    for (i = 0; i < 200; i++)
     {
-      for (i = 0; i < 200; i++)
+      if ((encomendas[atoi(dadosdoinput[0])].infoencomenda[i][0] != (-1)) && (encomendas[atoi(dadosdoinput[0])].infoencomenda[i][1] > 0))
       {
-        if ((encomendas[atoi(dadosdoinput[0])].infoencomenda[i][0] != (-1)) && (encomendas[atoi(dadosdoinput[0])].infoencomenda[i][1] > 0))
-        {
-          {
-            tabela_idpnaencomenda[r] = i;
-            r++;
-          }
-        }
-        else
-        {
-          break;
-        }
-
+        tabela_idpnaencomenda[r] = i;
+        r++;
       }
-
-      mergesort(tabela_idpnaencomenda, 0, r - 1, 1);
-      printf("Encomenda %d\n", atoi(dadosdoinput[0]));
-      for (j = 0; j < r; j++)
+      else
       {
-        printf("* %s %d %d\n", loja[tabela_idpnaencomenda[j]].nomedoproduto, loja[tabela_idpnaencomenda[j]].precodoproduto, encomendas[atoi(dadosdoinput[0])].infoencomenda[tabela_idpnaencomenda[j]][1]);
+        break;
       }
 
     }
+
+    mergesort(tabela_idpnaencomenda, 0, r - 1, 1);
+    printf("Encomenda %d\n", atoi(dadosdoinput[0]));
+    for (j = 0; j < r; j++)
+    {
+      printf("* %s %d %d\n", loja[tabela_idpnaencomenda[j]].nomedoproduto, loja[tabela_idpnaencomenda[j]].precodoproduto, encomendas[atoi(dadosdoinput[0])].infoencomenda[tabela_idpnaencomenda[j]][1]);
+    }
+
   }
   else
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", atoi(dadosdoinput[0]));
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", atoi(dadosdoinput[0]));
   }
 
 }

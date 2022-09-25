@@ -57,9 +57,7 @@ int main()
   {
     if (comando == 'a')
     {
-      {
-        Inseret(games_list, &first, rest, M, counter, lista_equipas, false_t, &top, false_g, N);
-      }
+      Inseret(games_list, &first, rest, M, counter, lista_equipas, false_t, &top, false_g, N);
     }
     else
     {
@@ -68,18 +66,16 @@ int main()
 
     if (comando == 'A')
     {
+      x = InseretEquipa(lista_equipas, rest, N, counter, false_t);
+      if (x == 1)
       {
-        x = InseretEquipa(lista_equipas, rest, N, counter, false_t);
-        if (x == 1)
-        {
-          ++Nequipas;
-        }
-        else
-        {
-          
-        }
-
+        ++Nequipas;
       }
+      else
+      {
+        
+      }
+
     }
     else
     {
@@ -88,9 +84,7 @@ int main()
 
     if (comando == 'p')
     {
-      {
-        encontraJogo(games_list, rest, 1, M, counter, false_g);
-      }
+      encontraJogo(games_list, rest, true, M, counter, false_g);
     }
     else
     {
@@ -99,7 +93,7 @@ int main()
 
     if (comando == 'P')
     {
-      encontraEquipa(lista_equipas, rest, 1, N, counter, false_t);
+      encontraEquipa(lista_equipas, rest, true, N, counter, false_t);
     }
     else
     {
@@ -117,9 +111,7 @@ int main()
 
     if (comando == 'r')
     {
-      {
-        deleteGame(games_list, &first, rest, lista_equipas, false_t, M, counter, false_g, &top, N);
-      }
+      deleteGame(games_list, &first, rest, lista_equipas, false_t, M, counter, false_g, &top, N);
     }
     else
     {
@@ -128,9 +120,7 @@ int main()
 
     if (comando == 's')
     {
-      {
-        alteraScore(games_list, rest, M, counter, lista_equipas, false_t, N);
-      }
+      alteraScore(games_list, rest, M, counter, lista_equipas, false_t, N);
     }
     else
     {
@@ -139,10 +129,8 @@ int main()
 
     if (comando == 'g')
     {
-      {
-        max = FindMax(lista_equipas, N);
-        lista(lista_equipas, Nequipas, counter, max, N);
-      }
+      max = FindMax(lista_equipas, N);
+      lista(lista_equipas, Nequipas, counter, max, N);
     }
     else
     {
@@ -151,10 +139,8 @@ int main()
 
     if (comando == 'w')
     {
-      {
-        max = FindMax(lista_equipas, N);
-        printf("<%d>\n", max);
-      }
+      max = FindMax(lista_equipas, N);
+      printf("<%d>\n", max);
     }
     else
     {

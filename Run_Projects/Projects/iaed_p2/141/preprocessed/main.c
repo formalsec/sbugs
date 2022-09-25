@@ -131,34 +131,32 @@ void ad_novo_jogo(int linha, Hashtable_j ht_jogos, Lista nomes, Hashtable_eq ht_
     }
     else
     {
+      Jogo jogo = malloc(sizeof(struct jogo));
+      n = copia_string(nome);
+      jogo->nome = n;
+      insereLista(nomes, n);
+      jogo->equipa1 = eq1;
+      jogo->equipa2 = eq2;
+      jogo->score1 = score1;
+      jogo->score2 = score2;
+      if (score1 > score2)
       {
-        Jogo jogo = malloc(sizeof(struct jogo));
-        n = copia_string(nome);
-        jogo->nome = n;
-        insereLista(nomes, n);
-        jogo->equipa1 = eq1;
-        jogo->equipa2 = eq2;
-        jogo->score1 = score1;
-        jogo->score2 = score2;
-        if (score1 > score2)
+        eq1->vitorias++;
+      }
+      else
+      {
+        if (score2 > score1)
         {
-          eq1->vitorias++;
+          eq2->vitorias++;
         }
         else
         {
-          if (score2 > score1)
-          {
-            eq2->vitorias++;
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
-        insereHT_j(ht_jogos, jogo);
       }
+
+      insereHT_j(ht_jogos, jogo);
     }
 
   }
@@ -189,10 +187,8 @@ void procura_jogo(int linha, Hashtable_j ht_jogos)
   nome[10 - 1] = '\0';
   if (jogo = procuraHT_j(ht_jogos, nome))
   {
-    {
-      printf("%d ", linha);
-      imprime_jogo(jogo);
-    }
+    printf("%d ", linha);
+    imprime_jogo(jogo);
   }
   else
   {
@@ -217,27 +213,25 @@ void apaga_jogo(int linha, Hashtable_j ht_jogos, Lista nomes)
   }
   else
   {
+    if (jogo->score1 > jogo->score2)
     {
-      if (jogo->score1 > jogo->score2)
+      jogo->equipa1->vitorias--;
+    }
+    else
+    {
+      if (jogo->score2 > jogo->score1)
       {
-        jogo->equipa1->vitorias--;
+        jogo->equipa2->vitorias--;
       }
       else
       {
-        if (jogo->score2 > jogo->score1)
-        {
-          jogo->equipa2->vitorias--;
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      apagaLista(nomes, nome);
-      apagaHT_j(ht_jogos, nome);
     }
+
+    apagaLista(nomes, nome);
+    apagaHT_j(ht_jogos, nome);
   }
 
 }
@@ -266,79 +260,71 @@ void altera_score(int linha, Hashtable_j ht_jogos)
   }
   else
   {
+    eq1 = jogo->equipa1;
+    eq2 = jogo->equipa2;
+    antigo_score1 = jogo->score1;
+    antigo_score2 = jogo->score2;
+    jogo->score1 = score1;
+    jogo->score2 = score2;
+    if ((antigo_score1 > antigo_score2) && (score1 <= score2))
     {
-      eq1 = jogo->equipa1;
-      eq2 = jogo->equipa2;
-      antigo_score1 = jogo->score1;
-      antigo_score2 = jogo->score2;
-      jogo->score1 = score1;
-      jogo->score2 = score2;
-      if ((antigo_score1 > antigo_score2) && (score1 <= score2))
+      if (score1 < score2)
       {
-        {
-          if (score1 < score2)
-          {
-            eq2->vitorias++;
-          }
-          else
-          {
-            
-          }
-
-          eq1->vitorias--;
-        }
+        eq2->vitorias++;
       }
       else
       {
-        if ((antigo_score1 < antigo_score2) && (score1 >= score2))
+        
+      }
+
+      eq1->vitorias--;
+    }
+    else
+    {
+      if ((antigo_score1 < antigo_score2) && (score1 >= score2))
+      {
+        if (score1 > score2)
         {
+          eq1->vitorias++;
+        }
+        else
+        {
+          
+        }
+
+        eq2->vitorias--;
+      }
+      else
+      {
+        if (antigo_score1 == antigo_score2)
+        {
+          if (score1 > score2)
           {
-            if (score1 > score2)
+            eq1->vitorias++;
+          }
+          else
+          {
+            if (score1 < score2)
             {
-              eq1->vitorias++;
+              eq2->vitorias++;
             }
             else
             {
               
             }
 
-            eq2->vitorias--;
           }
+
         }
         else
         {
-          if (antigo_score1 == antigo_score2)
-          {
-            {
-              if (score1 > score2)
-              {
-                eq1->vitorias++;
-              }
-              else
-              {
-                if (score1 < score2)
-                {
-                  eq2->vitorias++;
-                }
-                else
-                {
-                  
-                }
-
-              }
-
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
 
     }
+
   }
 
 }
@@ -359,14 +345,12 @@ void ad_nova_equipa(int linha, Hashtable_eq ht_equipas, Vetor equipas)
   }
   else
   {
-    {
-      Equipa nova = malloc(sizeof(struct equipa));
-      eq = copia_string(nome);
-      nova->nome = eq;
-      nova->vitorias = 0;
-      insereHT_eq(ht_equipas, nova);
-      insereVetor(equipas, nova);
-    }
+    Equipa nova = malloc(sizeof(struct equipa));
+    eq = copia_string(nome);
+    nova->nome = eq;
+    nova->vitorias = 0;
+    insereHT_eq(ht_equipas, nova);
+    insereVetor(equipas, nova);
   }
 
 }
@@ -383,10 +367,8 @@ void procura_equipa(int linha, Hashtable_eq ht_equipas)
   nome[10 - 1] = '\0';
   if (equipa = procuraHT_eq(ht_equipas, nome))
   {
-    {
-      printf("%d ", linha);
-      imprime_equipa(equipa);
-    }
+    printf("%d ", linha);
+    imprime_equipa(equipa);
   }
   else
   {
@@ -400,19 +382,17 @@ void encontra_melhores(int linha, Hashtable_eq ht_equipas, Vetor equipas)
   int N = ht_equipas->N;
   if (N > 0)
   {
+    int max_vitorias;
+    int i = 0;
+    qsort(equipas->vetor, equipas->N, sizeof(Equipa), comparador);
+    max_vitorias = equipas->vetor[0]->vitorias;
+    printf("%d Melhores %d\n", linha, max_vitorias);
+    while ((i < N) && (equipas->vetor[i]->vitorias == max_vitorias))
     {
-      int max_vitorias;
-      int i = 0;
-      qsort(equipas->vetor, equipas->N, sizeof(Equipa), comparador);
-      max_vitorias = equipas->vetor[0]->vitorias;
-      printf("%d Melhores %d\n", linha, max_vitorias);
-      while ((i < N) && (equipas->vetor[i]->vitorias == max_vitorias))
-      {
-        printf("%d * %s\n", linha, equipas->vetor[i]->nome);
-        i++;
-      }
-
+      printf("%d * %s\n", linha, equipas->vetor[i]->nome);
+      i++;
     }
+
   }
   else
   {

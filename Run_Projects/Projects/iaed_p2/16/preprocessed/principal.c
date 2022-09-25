@@ -74,13 +74,11 @@ void a_adicionaJogo(char *comando, listaJogo **headsJogos, listaEquipa **headsEq
   auxScore2 = obtemNumero(comando, pi);
   if (jogoExiste(headsJogos, auxNomeJogo, M_J))
   {
-    {
-      printf("%d Jogo existente.\n", *pNL);
-      free(auxNomeJogo);
-      free(auxEquipa1);
-      free(auxEquipa2);
-      return;
-    }
+    printf("%d Jogo existente.\n", *pNL);
+    free(auxNomeJogo);
+    free(auxEquipa1);
+    free(auxEquipa2);
+    return;
   }
   else
   {
@@ -89,13 +87,11 @@ void a_adicionaJogo(char *comando, listaJogo **headsJogos, listaEquipa **headsEq
 
   if ((!equipaExiste(headsEquipas, auxEquipa1, M_E)) || (!equipaExiste(headsEquipas, auxEquipa2, M_E)))
   {
-    {
-      printf("%d Equipa inexistente.\n", *pNL);
-      free(auxNomeJogo);
-      free(auxEquipa1);
-      free(auxEquipa2);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", *pNL);
+    free(auxNomeJogo);
+    free(auxEquipa1);
+    free(auxEquipa2);
+    return;
   }
   else
   {
@@ -114,9 +110,7 @@ void l_listaJogos(listaJogo *Lista, int *pNL)
 {
   if ((Lista->head == 0) || (Lista == 0))
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -135,11 +129,9 @@ void p_procuraJogo(char *comando, listaJogo **headsJogos, int M_J, int *pNL)
   auxNome = obtemString(comando, pi);
   if (!jogoExiste(headsJogos, auxNome, M_J))
   {
-    {
-      printf("%d Jogo inexistente.\n", *pNL);
-      free(auxNome);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", *pNL);
+    free(auxNome);
+    return;
   }
   else
   {
@@ -163,11 +155,9 @@ void r_apagaJogo(char *comando, listaJogo **headsJogos, listaJogo *Lista, listaE
   auxNome = obtemString(comando, pi);
   if (!jogoExiste(headsJogos, auxNome, M_J))
   {
-    {
-      printf("%d Jogo inexistente.\n", *pNL);
-      free(auxNome);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", *pNL);
+    free(auxNome);
+    return;
   }
   else
   {
@@ -179,19 +169,15 @@ void r_apagaJogo(char *comando, listaJogo **headsJogos, listaJogo *Lista, listaE
   score2 = auxJogo->score2;
   if (score1 > score2)
   {
-    {
-      auxEquipa = procuraHashTableEquipa(headsEquipas, auxJogo->equipa1, M_E);
-      auxEquipa->numeroVitorias -= 1;
-    }
+    auxEquipa = procuraHashTableEquipa(headsEquipas, auxJogo->equipa1, M_E);
+    auxEquipa->numeroVitorias -= 1;
   }
   else
   {
     if (score1 < score2)
     {
-      {
-        auxEquipa = procuraHashTableEquipa(headsEquipas, auxJogo->equipa2, M_E);
-        auxEquipa->numeroVitorias -= 1;
-      }
+      auxEquipa = procuraHashTableEquipa(headsEquipas, auxJogo->equipa2, M_E);
+      auxEquipa->numeroVitorias -= 1;
     }
     else
     {
@@ -222,11 +208,9 @@ void s_alteraScoreJogo(char *comando, listaJogo **headsJogos, listaEquipa **head
   novoScore2 = obtemNumero(comando, pi);
   if (!jogoExiste(headsJogos, auxNome, M_J))
   {
-    {
-      printf("%d Jogo inexistente.\n", *pNL);
-      free(auxNome);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", *pNL);
+    free(auxNome);
+    return;
   }
   else
   {
@@ -241,31 +225,25 @@ void s_alteraScoreJogo(char *comando, listaJogo **headsJogos, listaEquipa **head
   if (novoScore1 == novoScore2)
   {
     {
+      if (score1Antigo > score2Antigo)
       {
-        if (score1Antigo > score2Antigo)
+        equipaAux = procuraHashTableEquipa(headsEquipas, jogoAux->equipa1, M_E);
+        equipaAux->numeroVitorias -= 1;
+      }
+      else
+      {
+        if (score1Antigo < score2Antigo)
         {
-          {
-            equipaAux = procuraHashTableEquipa(headsEquipas, jogoAux->equipa1, M_E);
-            equipaAux->numeroVitorias -= 1;
-          }
+          equipaAux = procuraHashTableEquipa(headsEquipas, jogoAux->equipa2, M_E);
+          equipaAux->numeroVitorias -= 1;
         }
         else
         {
-          if (score1Antigo < score2Antigo)
-          {
-            {
-              equipaAux = procuraHashTableEquipa(headsEquipas, jogoAux->equipa2, M_E);
-              equipaAux->numeroVitorias -= 1;
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
+
     }
   }
   else
@@ -275,15 +253,29 @@ void s_alteraScoreJogo(char *comando, listaJogo **headsJogos, listaEquipa **head
 
   if (score1Antigo > score2Antigo)
   {
+    if (novoScore1 < novoScore2)
     {
-      if (novoScore1 < novoScore2)
+      equipaAux = procuraHashTableEquipa(headsEquipas, jogoAux->equipa1, M_E);
+      equipaAux->numeroVitorias -= 1;
+      equipaAux = procuraHashTableEquipa(headsEquipas, jogoAux->equipa2, M_E);
+      equipaAux->numeroVitorias += 1;
+    }
+    else
+    {
+      
+    }
+
+  }
+  else
+  {
+    if (score1Antigo < score2Antigo)
+    {
+      if (novoScore1 > novoScore2)
       {
-        {
-          equipaAux = procuraHashTableEquipa(headsEquipas, jogoAux->equipa1, M_E);
-          equipaAux->numeroVitorias -= 1;
-          equipaAux = procuraHashTableEquipa(headsEquipas, jogoAux->equipa2, M_E);
-          equipaAux->numeroVitorias += 1;
-        }
+        equipaAux = procuraHashTableEquipa(headsEquipas, jogoAux->equipa2, M_E);
+        equipaAux->numeroVitorias -= 1;
+        equipaAux = procuraHashTableEquipa(headsEquipas, jogoAux->equipa1, M_E);
+        equipaAux->numeroVitorias += 1;
       }
       else
       {
@@ -291,57 +283,29 @@ void s_alteraScoreJogo(char *comando, listaJogo **headsJogos, listaEquipa **head
       }
 
     }
-  }
-  else
-  {
-    if (score1Antigo < score2Antigo)
-    {
-      {
-        if (novoScore1 > novoScore2)
-        {
-          {
-            equipaAux = procuraHashTableEquipa(headsEquipas, jogoAux->equipa2, M_E);
-            equipaAux->numeroVitorias -= 1;
-            equipaAux = procuraHashTableEquipa(headsEquipas, jogoAux->equipa1, M_E);
-            equipaAux->numeroVitorias += 1;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-    }
     else
     {
       if (score1Antigo == score2Antigo)
       {
+        if (novoScore1 < novoScore2)
         {
-          if (novoScore1 < novoScore2)
+          equipaAux = procuraHashTableEquipa(headsEquipas, jogoAux->equipa2, M_E);
+          equipaAux->numeroVitorias += 1;
+        }
+        else
+        {
+          if (novoScore1 > novoScore2)
           {
-            {
-              equipaAux = procuraHashTableEquipa(headsEquipas, jogoAux->equipa2, M_E);
-              equipaAux->numeroVitorias += 1;
-            }
+            equipaAux = procuraHashTableEquipa(headsEquipas, jogoAux->equipa1, M_E);
+            equipaAux->numeroVitorias += 1;
           }
           else
           {
-            if (novoScore1 > novoScore2)
-            {
-              {
-                equipaAux = procuraHashTableEquipa(headsEquipas, jogoAux->equipa1, M_E);
-                equipaAux->numeroVitorias += 1;
-              }
-            }
-            else
-            {
-              
-            }
-
+            
           }
 
         }
+
       }
       else
       {
@@ -364,11 +328,9 @@ void A_adicionaEquipa(char *comando, listaEquipa **headsEquipas, listaEquipa *li
   auxNome = obtemString(comando, pi);
   if (equipaExiste(headsEquipas, auxNome, M_E))
   {
-    {
-      printf("%d Equipa existente.\n", *pNL);
-      free(auxNome);
-      return;
-    }
+    printf("%d Equipa existente.\n", *pNL);
+    free(auxNome);
+    return;
   }
   else
   {
@@ -390,11 +352,9 @@ void P_procuraEquipa(char *comando, listaEquipa **headsEquipas, int M_E, int *pN
   auxNome = obtemString(comando, pi);
   if (!equipaExiste(headsEquipas, auxNome, M_E))
   {
-    {
-      printf("%d Equipa inexistente.\n", *pNL);
-      free(auxNome);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", *pNL);
+    free(auxNome);
+    return;
   }
   else
   {
@@ -416,9 +376,7 @@ void g_listaEquipasComMaisVitorias(listaEquipa *ListaDeEquipas, int *pNL)
   char equipasComMaisVitorias[500][4000];
   if ((ListaDeEquipas == 0) || (ListaDeEquipas->head == 0))
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -427,11 +385,9 @@ void g_listaEquipasComMaisVitorias(listaEquipa *ListaDeEquipas, int *pNL)
 
   if (ListaDeEquipas->head->next == 0)
   {
-    {
-      printf("%d Melhores %d\n", *pNL, ListaDeEquipas->head->Equipa->numeroVitorias);
-      printf("%d * %s\n", *pNL, ListaDeEquipas->head->Equipa->nome);
-      return;
-    }
+    printf("%d Melhores %d\n", *pNL, ListaDeEquipas->head->Equipa->numeroVitorias);
+    printf("%d * %s\n", *pNL, ListaDeEquipas->head->Equipa->nome);
+    return;
   }
   else
   {
@@ -444,11 +400,9 @@ void g_listaEquipasComMaisVitorias(listaEquipa *ListaDeEquipas, int *pNL)
   {
     if (auxNode->Equipa->numeroVitorias == maxVitorias)
     {
-      {
-        copia_String(equipasComMaisVitorias[i], auxNode->Equipa->nome);
-        *pTamanho += 1;
-        i++;
-      }
+      copia_String(equipasComMaisVitorias[i], auxNode->Equipa->nome);
+      *pTamanho += 1;
+      i++;
     }
     else
     {

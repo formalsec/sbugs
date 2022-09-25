@@ -65,10 +65,8 @@ void adiciona_tabela_hash_equipa()
   equipa->next = 0;
   if (entrada == 0)
   {
-    {
-      hashtable_equipa->indice[index] = equipa;
-      return;
-    }
+    hashtable_equipa->indice[index] = equipa;
+    return;
   }
   else
   {
@@ -81,12 +79,10 @@ void adiciona_tabela_hash_equipa()
   {
     if (strcmp(entrada->nome, nome) == 0)
     {
-      {
-        printf("_Equipa existente.\n");
-        free(equipa);
-        free(Anterior);
-        return;
-      }
+      printf("_Equipa existente.\n");
+      free(equipa);
+      free(Anterior);
+      return;
     }
     else
     {
@@ -116,10 +112,8 @@ void procura_equipa()
   Equipa *entrada = hashtable_equipa->indice[index];
   if (entrada == 0)
   {
-    {
-      printf("_ Equipa inexistente.\n");
-      return;
-    }
+    printf("_ Equipa inexistente.\n");
+    return;
   }
   else
   {
@@ -130,10 +124,8 @@ void procura_equipa()
   {
     if (strcmp(entrada->nome, nome) == 0)
     {
-      {
-        printf("_ %s %d.\n", entrada->nome, entrada->vitorias);
-        return;
-      }
+      printf("_ %s %d.\n", entrada->nome, entrada->vitorias);
+      return;
     }
     else
     {
@@ -179,9 +171,7 @@ bool verifica_equipa(char *nome)
   {
     if (strcmp(hashtable_equipa->indice[index]->nome, nome) == 0)
     {
-      {
-        return 1;
-      }
+      return true;
     }
     else
     {
@@ -191,7 +181,7 @@ bool verifica_equipa(char *nome)
     hashtable_equipa->indice[index] = hashtable_equipa->indice[index]->next;
   }
 
-  return 0;
+  return false;
 }
 
 void adiciona_hash_tabela_jogo()
@@ -236,10 +226,8 @@ void adiciona_hash_tabela_jogo()
   int index_equipa2 = hash(equipa2);
   if ((verifica_equipa(equipa1) == 0) || (verifica_equipa(equipa2) == 0))
   {
-    {
-      printf("_ Equipa inexistente.\n");
-      return;
-    }
+    printf("_ Equipa inexistente.\n");
+    return;
   }
   else
   {
@@ -256,32 +244,26 @@ void adiciona_hash_tabela_jogo()
   jogo->next = 0;
   if (entrada == 0)
   {
+    hashtable_jogo->indice[index] = jogo;
+    if (score1 > score2)
     {
-      hashtable_jogo->indice[index] = jogo;
-      if (score1 > score2)
+      hashtable_equipa->indice[index_equipa1]->vitorias += 1;
+      return;
+    }
+    else
+    {
+      if (score2 > score1)
       {
-        {
-          hashtable_equipa->indice[index_equipa1]->vitorias += 1;
-          return;
-        }
+        hashtable_equipa->indice[index_equipa2]->vitorias += 1;
+        return;
       }
       else
       {
-        if (score2 > score1)
-        {
-          {
-            hashtable_equipa->indice[index_equipa2]->vitorias += 1;
-            return;
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
     }
+
   }
   else
   {
@@ -294,12 +276,10 @@ void adiciona_hash_tabela_jogo()
   {
     if (strcmp(entrada->nome, nome) == 0)
     {
-      {
-        printf("_ Jogo existente.\n");
-        free(jogo);
-        free(Anterior);
-        return;
-      }
+      printf("_ Jogo existente.\n");
+      free(jogo);
+      free(Anterior);
+      return;
     }
     else
     {
@@ -313,17 +293,13 @@ void adiciona_hash_tabela_jogo()
   Anterior->next = jogo;
   if (score1 > score2)
   {
-    {
-      hashtable_equipa->indice[index_equipa1]->vitorias += 1;
-    }
+    hashtable_equipa->indice[index_equipa1]->vitorias += 1;
   }
   else
   {
     if (score2 > score1)
     {
-      {
-        hashtable_equipa->indice[index_equipa2]->vitorias += 1;
-      }
+      hashtable_equipa->indice[index_equipa2]->vitorias += 1;
     }
     else
     {
@@ -350,10 +326,8 @@ void procura_jogo()
   Jogo *entrada = hashtable_jogo->indice[index];
   if (entrada == 0)
   {
-    {
-      printf("_ Jogo inexistente.\n");
-      return;
-    }
+    printf("_ Jogo inexistente.\n");
+    return;
   }
   else
   {
@@ -364,10 +338,8 @@ void procura_jogo()
   {
     if (strcmp(entrada->nome, nome) == 0)
     {
-      {
-        printf("_ %s %s %s %d %d.\n", entrada->nome, entrada->equipa1, entrada->equipa2, entrada->score1, entrada->socre2);
-        return;
-      }
+      printf("_ %s %s %s %d %d.\n", entrada->nome, entrada->equipa1, entrada->equipa2, entrada->score1, entrada->socre2);
+      return;
     }
     else
     {
@@ -396,10 +368,8 @@ void apaga_jogo()
   Jogo *entrada = hashtable_jogo->indice[index];
   if (entrada == 0)
   {
-    {
-      printf("_ Jogo inexistente.\n");
-      return;
-    }
+    printf("_ Jogo inexistente.\n");
+    return;
   }
   else
   {
@@ -412,27 +382,25 @@ void apaga_jogo()
   {
     if (strcmp(entrada->nome, nome) == 0)
     {
+      if (entrada->score1 > entrada->socre2)
       {
-        if (entrada->score1 > entrada->socre2)
+        hashtable_equipa->indice[index_equipa1]->vitorias -= 1;
+      }
+      else
+      {
+        if (entrada->socre2 > entrada->score1)
         {
-          hashtable_equipa->indice[index_equipa1]->vitorias -= 1;
+          hashtable_equipa->indice[index_equipa2]->vitorias -= 1;
         }
         else
         {
-          if (entrada->socre2 > entrada->score1)
-          {
-            hashtable_equipa->indice[index_equipa2]->vitorias -= 1;
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
-        hashtable_jogo->indice[index] = 0;
-        return;
       }
+
+      hashtable_jogo->indice[index] = 0;
+      return;
     }
     else
     {
@@ -466,10 +434,8 @@ void altera_score()
   Jogo *entrada = hashtable_jogo->indice[index];
   if (entrada == 0)
   {
-    {
-      printf("_ Jogo inexistente.\n");
-      return;
-    }
+    printf("_ Jogo inexistente.\n");
+    return;
   }
   else
   {
@@ -482,45 +448,43 @@ void altera_score()
   {
     if (strcmp(entrada->nome, nome) == 0)
     {
+      if (hashtable_jogo->indice[index]->score1 > hashtable_jogo->indice[index]->socre2)
       {
-        if (hashtable_jogo->indice[index]->score1 > hashtable_jogo->indice[index]->socre2)
-        {
-          hashtable_equipa->indice[index_equipa1] -= 1;
-        }
-        else
-        {
-          if (hashtable_jogo->indice[index]->socre2 > hashtable_jogo->indice[index]->score1)
-          {
-            hashtable_equipa->indice[index_equipa2] -= 1;
-          }
-          else
-          {
-            
-          }
-
-        }
-
-        if (score1 > score2)
-        {
-          hashtable_equipa->indice[index_equipa1] += 1;
-        }
-        else
-        {
-          if (score2 > score1)
-          {
-            hashtable_equipa->indice[index_equipa2] += 1;
-          }
-          else
-          {
-            
-          }
-
-        }
-
-        hashtable_jogo->indice[index]->score1 = score1;
-        hashtable_jogo->indice[index]->socre2 = score2;
-        return;
+        hashtable_equipa->indice[index_equipa1] -= 1;
       }
+      else
+      {
+        if (hashtable_jogo->indice[index]->socre2 > hashtable_jogo->indice[index]->score1)
+        {
+          hashtable_equipa->indice[index_equipa2] -= 1;
+        }
+        else
+        {
+          
+        }
+
+      }
+
+      if (score1 > score2)
+      {
+        hashtable_equipa->indice[index_equipa1] += 1;
+      }
+      else
+      {
+        if (score2 > score1)
+        {
+          hashtable_equipa->indice[index_equipa2] += 1;
+        }
+        else
+        {
+          
+        }
+
+      }
+
+      hashtable_jogo->indice[index]->score1 = score1;
+      hashtable_jogo->indice[index]->socre2 = score2;
+      return;
     }
     else
     {

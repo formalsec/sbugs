@@ -57,9 +57,7 @@ equipa *searchteam(equipa *equipas, char item[1024])
   {
     if (strcmp(item, t->nome) == 0)
     {
-      {
-        return t;
-      }
+      return t;
     }
     else
     {
@@ -90,10 +88,8 @@ int ent_meh(equipa *head, int sc1, int *i)
     {
       if (sc1 < t->i)
       {
-        {
-          sc1 = t->i;
-          *i = 1;
-        }
+        sc1 = t->i;
+        *i = 1;
       }
       else
       {
@@ -123,20 +119,16 @@ void procurar(equipa *hash, equipa **haed, int sc1, int sc2, int *i)
   {
     if (t->i == sc1)
     {
+      haed[*i] = t;
+      if ((*i) < sc2)
       {
-        haed[*i] = t;
-        if ((*i) < sc2)
-        {
-          {
-            (*i)++;
-          }
-        }
-        else
-        {
-          break;
-        }
-
+        (*i)++;
       }
+      else
+      {
+        break;
+      }
+
     }
     else
     {
@@ -193,11 +185,9 @@ int particao(equipa **head, int inicio, int fim)
 
     if (i < j)
     {
-      {
-        aux = head[i];
-        head[i] = head[j];
-        head[j] = aux;
-      }
+      aux = head[i];
+      head[i] = head[j];
+      head[j] = aux;
     }
     else
     {
@@ -282,69 +272,57 @@ hash_jogo *remove_jogo(hash_jogo *hash_game, l_jogo *l, char nome[1024], int nl)
   {
     if (strcmp(nome, t->nome->n_jogo) == 0)
     {
+      if (t->nome == l->head)
       {
-        if (t->nome == l->head)
+        l->head = l->head->next;
+      }
+      else
+      {
+        if (t->nome == l->last)
         {
-          {
-            l->head = l->head->next;
-          }
+          l->last = l->last->previous;
+          l->last->next = 0;
         }
         else
         {
-          if (t->nome == l->last)
-          {
-            {
-              l->last = l->last->previous;
-              l->last->next = 0;
-            }
-          }
-          else
-          {
-            {
-              t->nome->previous->next = t->nome->next;
-              t->nome->next->previous = t->nome->previous;
-            }
-          }
-
-        }
-
-        free(t->nome->n_jogo);
-        if (t->nome->sc1 > t->nome->sc2)
-        {
-          t->nome->equipa1->i--;
-        }
-        else
-        {
-          if (t->nome->sc2 > t->nome->sc1)
-          {
-            t->nome->equipa2->i--;
-          }
-          else
-          {
-            
-          }
-
-        }
-
-        free(t->nome);
-        if (pre != 0)
-        {
-          {
-            pre->next = t->next;
-            free(t);
-            return hash_game;
-          }
-        }
-        else
-        {
-          {
-            pre = t->next;
-            free(t);
-            return pre;
-          }
+          t->nome->previous->next = t->nome->next;
+          t->nome->next->previous = t->nome->previous;
         }
 
       }
+
+      free(t->nome->n_jogo);
+      if (t->nome->sc1 > t->nome->sc2)
+      {
+        t->nome->equipa1->i--;
+      }
+      else
+      {
+        if (t->nome->sc2 > t->nome->sc1)
+        {
+          t->nome->equipa2->i--;
+        }
+        else
+        {
+          
+        }
+
+      }
+
+      free(t->nome);
+      if (pre != 0)
+      {
+        pre->next = t->next;
+        free(t);
+        return hash_game;
+      }
+      else
+      {
+        pre = t->next;
+        free(t);
+        return pre;
+      }
+
     }
     else
     {
@@ -378,9 +356,7 @@ jogo *searchList(hash_jogo *hash_game, char item[1024])
   {
     if (strcmp(item, t->nome->n_jogo) == 0)
     {
-      {
-        return t->nome;
-      }
+      return t->nome;
     }
     else
     {
@@ -441,17 +417,13 @@ void add_jogo(l_jogo *l, char jog[1024], equipa *eq1, equipa *eq2, int sc1, int 
   n->previous = l->last;
   if (l->head == 0)
   {
-    {
-      l->head = n;
-      l->last = n;
-    }
+    l->head = n;
+    l->last = n;
   }
   else
   {
-    {
-      l->last->next = n;
-      l->last = n;
-    }
+    l->last->next = n;
+    l->last = n;
   }
 
 }

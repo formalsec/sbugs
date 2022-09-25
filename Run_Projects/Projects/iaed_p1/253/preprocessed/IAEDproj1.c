@@ -59,11 +59,9 @@ void bubble_sort(int n)
     {
       if (compara_preco(vet[i], vet[j]))
       {
-        {
-          temp = vet[j];
-          vet[j] = vet[i];
-          vet[i] = temp;
-        }
+        temp = vet[j];
+        vet[j] = vet[i];
+        vet[i] = temp;
       }
       else
       {
@@ -87,11 +85,9 @@ void bubble_sort_stock(int n)
     {
       if (compara_stock(nv2[i], nv2[j]))
       {
-        {
-          temp = nv2[j];
-          nv2[j] = nv2[i];
-          nv2[i] = temp;
-        }
+        temp = nv2[j];
+        nv2[j] = nv2[i];
+        nv2[i] = temp;
       }
       else
       {
@@ -124,9 +120,7 @@ int calcula_custo(int n)
   {
     if (mat[n][count].peso != 0)
     {
-      {
-        custo_total += mat[n][count].preco * mat[n][count].stock;
-      }
+      custo_total += mat[n][count].preco * mat[n][count].stock;
     }
     else
     {
@@ -210,9 +204,7 @@ void command_q()
 
   if (vet[atoi(v[0])].peso != 0)
   {
-    {
-      vet[atoi(v[0])].stock += atoi(v[1]);
-    }
+    vet[atoi(v[0])].stock += atoi(v[1]);
   }
   else
   {
@@ -247,67 +239,47 @@ void command_A()
 
   if (mat[atoi(v[0])][0].flag == 1)
   {
+    if (vet[atoi(v[1])].peso != 0)
     {
-      if (vet[atoi(v[1])].peso != 0)
+      if (atoi(v[2]) <= vet[atoi(v[1])].stock)
       {
+        if ((calcula_peso(atoi(v[0])) + (vet[atoi(v[1])].peso * atoi(v[2]))) <= 200)
         {
-          if (atoi(v[2]) <= vet[atoi(v[1])].stock)
+          if (mat[atoi(v[0])][vet[atoi(v[1])].id].peso == 0)
           {
-            {
-              if ((calcula_peso(atoi(v[0])) + (vet[atoi(v[1])].peso * atoi(v[2]))) <= 200)
-              {
-                {
-                  if (mat[atoi(v[0])][vet[atoi(v[1])].id].peso == 0)
-                  {
-                    {
-                      mat[atoi(v[0])][vet[atoi(v[1])].id] = vet[atoi(v[1])];
-                      mat[atoi(v[0])][vet[atoi(v[1])].id].stock = atoi(v[2]);
-                      mat[atoi(v[0])][vet[atoi(v[1])].id].flag = 1;
-                      vet[atoi(v[1])].stock -= atoi(v[2]);
-                    }
-                  }
-                  else
-                  {
-                    {
-                      mat[atoi(v[0])][vet[atoi(v[1])].id].stock += atoi(v[2]);
-                      vet[atoi(v[1])].stock -= atoi(v[2]);
-                    }
-                  }
-
-                }
-              }
-              else
-              {
-                {
-                  printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", atoi(v[1]), atoi(v[0]));
-                }
-              }
-
-            }
+            mat[atoi(v[0])][vet[atoi(v[1])].id] = vet[atoi(v[1])];
+            mat[atoi(v[0])][vet[atoi(v[1])].id].stock = atoi(v[2]);
+            mat[atoi(v[0])][vet[atoi(v[1])].id].flag = 1;
+            vet[atoi(v[1])].stock -= atoi(v[2]);
           }
           else
           {
-            {
-              printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", atoi(v[1]), atoi(v[0]));
-            }
+            mat[atoi(v[0])][vet[atoi(v[1])].id].stock += atoi(v[2]);
+            vet[atoi(v[1])].stock -= atoi(v[2]);
           }
 
         }
+        else
+        {
+          printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", atoi(v[1]), atoi(v[0]));
+        }
+
       }
       else
       {
-        {
-          printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", atoi(v[1]), atoi(v[0]));
-        }
+        printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", atoi(v[1]), atoi(v[0]));
       }
 
     }
+    else
+    {
+      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", atoi(v[1]), atoi(v[0]));
+    }
+
   }
   else
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", atoi(v[1]), atoi(v[0]));
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", atoi(v[1]), atoi(v[0]));
   }
 
 }
@@ -328,19 +300,15 @@ void command_r()
 
   if (vet[atoi(v[0])].peso != 0)
   {
+    if ((vet[atoi(v[0])].stock - atoi(v[1])) >= 0)
     {
-      if ((vet[atoi(v[0])].stock - atoi(v[1])) >= 0)
-      {
-        {
-          vet[atoi(v[0])].stock = vet[atoi(v[0])].stock - atoi(v[1]);
-        }
-      }
-      else
-      {
-        printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", atoi(v[1]), atoi(v[0]));
-      }
-
+      vet[atoi(v[0])].stock = vet[atoi(v[0])].stock - atoi(v[1]);
     }
+    else
+    {
+      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", atoi(v[1]), atoi(v[0]));
+    }
+
   }
   else
   {
@@ -365,27 +333,21 @@ void command_R()
 
   if (mat[atoi(v[0])][0].flag == 1)
   {
+    if (vet[atoi(v[1])].peso != 0)
     {
-      if (vet[atoi(v[1])].peso != 0)
-      {
-        {
-          mat[atoi(v[0])][vet[atoi(v[1])].id].peso = 0;
-          vet[atoi(v[1])].stock += mat[atoi(v[0])][vet[atoi(v[1])].id].stock;
-          mat[atoi(v[0])][vet[atoi(v[1])].id].stock = 0;
-        }
-      }
-      else
-      {
-        printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", atoi(v[1]), atoi(v[0]));
-      }
-
+      mat[atoi(v[0])][vet[atoi(v[1])].id].peso = 0;
+      vet[atoi(v[1])].stock += mat[atoi(v[0])][vet[atoi(v[1])].id].stock;
+      mat[atoi(v[0])][vet[atoi(v[1])].id].stock = 0;
     }
+    else
+    {
+      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", atoi(v[1]), atoi(v[0]));
+    }
+
   }
   else
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", atoi(v[1]), atoi(v[0]));
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", atoi(v[1]), atoi(v[0]));
   }
 
 }
@@ -407,16 +369,12 @@ void command_C()
 
   if (mat[atoi(v[0])][0].flag == 1)
   {
-    {
-      custo = calcula_custo(atoi(v[0]));
-      printf("Custo da encomenda %d %d.\n", atoi(v[0]), custo);
-    }
+    custo = calcula_custo(atoi(v[0]));
+    printf("Custo da encomenda %d %d.\n", atoi(v[0]), custo);
   }
   else
   {
-    {
-      printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", atoi(v[0]));
-    }
+    printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", atoi(v[0]));
   }
 
 }
@@ -438,24 +396,20 @@ void command_p()
 
   if (vet[atoi(v[0])].peso != 0)
   {
+    vet[atoi(v[0])].preco = atoi(v[1]);
+    for (count = 0; count < 500; count++)
     {
-      vet[atoi(v[0])].preco = atoi(v[1]);
-      for (count = 0; count < 500; count++)
+      if (mat[count][vet[atoi(v[0])].id].peso != 0)
       {
-        if (mat[count][vet[atoi(v[0])].id].peso != 0)
-        {
-          {
-            mat[count][vet[atoi(v[0])].id].preco = atoi(v[1]);
-          }
-        }
-        else
-        {
-          
-        }
-
+        mat[count][vet[atoi(v[0])].id].preco = atoi(v[1]);
+      }
+      else
+      {
+        
       }
 
     }
+
   }
   else
   {
@@ -480,27 +434,19 @@ void command_E()
 
   if (mat[atoi(v[0])][0].flag = 1)
   {
+    if (vet[atoi(v[1])].peso != 0)
     {
-      if (vet[atoi(v[1])].peso != 0)
-      {
-        {
-          printf("%s %d.\n", vet[atoi(v[1])].desc, mat[atoi(v[0])][atoi(v[1])].stock);
-        }
-      }
-      else
-      {
-        {
-          printf("Impossivel listar produto %d. Produto inexistente.\n", atoi(v[1]));
-        }
-      }
-
+      printf("%s %d.\n", vet[atoi(v[1])].desc, mat[atoi(v[0])][atoi(v[1])].stock);
     }
+    else
+    {
+      printf("Impossivel listar produto %d. Produto inexistente.\n", atoi(v[1]));
+    }
+
   }
   else
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", atoi(v[0]));
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", atoi(v[0]));
   }
 
 }
@@ -525,36 +471,13 @@ void command_m()
 
   if (vet[atoi(v[0])].peso != 0)
   {
+    for (count = 0; count < 500; count++)
     {
-      for (count = 0; count < 500; count++)
+      if (mat[count][vet[atoi(v[0])].id].peso != 0)
       {
-        if (mat[count][vet[atoi(v[0])].id].peso != 0)
-        {
-          {
-            nv2[count2] = mat[count][vet[atoi(v[0])].id];
-            nv2[count2].n_enc = count;
-            count2++;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      if (nv2[0].peso != 0)
-      {
-        {
-          bubble_sort_stock(conta_prod_2());
-          n = conta_prod_2() - 1;
-          printf("Maximo produto %d %d %d.\n", atoi(v[0]), nv2[n].n_enc, nv2[n].stock);
-          for (j = 0; j < 500; j++)
-          {
-            nv2[j].peso = 0;
-          }
-
-        }
+        nv2[count2] = mat[count][vet[atoi(v[0])].id];
+        nv2[count2].n_enc = count;
+        count2++;
       }
       else
       {
@@ -562,12 +485,27 @@ void command_m()
       }
 
     }
+
+    if (nv2[0].peso != 0)
+    {
+      bubble_sort_stock(conta_prod_2());
+      n = conta_prod_2() - 1;
+      printf("Maximo produto %d %d %d.\n", atoi(v[0]), nv2[n].n_enc, nv2[n].stock);
+      for (j = 0; j < 500; j++)
+      {
+        nv2[j].peso = 0;
+      }
+
+    }
+    else
+    {
+      
+    }
+
   }
   else
   {
-    {
-      printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", atoi(v[0]));
-    }
+    printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", atoi(v[0]));
   }
 
 }
@@ -608,55 +546,30 @@ void command_L()
 
   if (mat[atoi(v[0])][0].flag == 1)
   {
+    for (count = 0; count < 200; count++)
     {
-      for (count = 0; count < 200; count++)
+      if (mat[atoi(v[0])][count].peso != 0)
       {
-        if (mat[atoi(v[0])][count].peso != 0)
-        {
-          {
-            nv[count2] = mat[atoi(v[0])][count];
-            count2++;
-          }
-        }
-        else
-        {
-          {
-            count2++;
-          }
-        }
-
+        nv[count2] = mat[atoi(v[0])][count];
+        count2++;
+      }
+      else
+      {
+        count2++;
       }
 
-      n = (sizeof(nv)) / (sizeof(nv[0]));
-      for (k = 0; k < (n - 1); k++)
+    }
+
+    n = (sizeof(nv)) / (sizeof(nv[0]));
+    for (k = 0; k < (n - 1); k++)
+    {
+      for (j = k + 1; j < n; j++)
       {
-        for (j = k + 1; j < n; j++)
+        if (strcmp(nv[k].desc, nv[j].desc) > 0)
         {
-          if (strcmp(nv[k].desc, nv[j].desc) > 0)
-          {
-            {
-              temp = nv[k];
-              nv[k] = nv[j];
-              nv[j] = temp;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-      }
-
-      printf("Encomenda %d\n", atoi(v[0]));
-      for (m = 0; m < n; m++)
-      {
-        if (nv[m].peso != 0)
-        {
-          {
-            printf("* %s %d %d\n", nv[m].desc, nv[m].preco, nv[m].stock);
-          }
+          temp = nv[k];
+          nv[k] = nv[j];
+          nv[j] = temp;
         }
         else
         {
@@ -665,18 +578,31 @@ void command_L()
 
       }
 
-      for (c = 0; c < 200; c++)
+    }
+
+    printf("Encomenda %d\n", atoi(v[0]));
+    for (m = 0; m < n; m++)
+    {
+      if (nv[m].peso != 0)
       {
-        nv[c].peso = 0;
+        printf("* %s %d %d\n", nv[m].desc, nv[m].preco, nv[m].stock);
+      }
+      else
+      {
+        
       }
 
     }
+
+    for (c = 0; c < 200; c++)
+    {
+      nv[c].peso = 0;
+    }
+
   }
   else
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", atoi(v[0]));
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", atoi(v[0]));
   }
 
 }

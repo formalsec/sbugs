@@ -34,16 +34,12 @@ void inserir_jogo(lista_jogos lj, char *texto, pequipa pe1, pequipa pe2, int sco
   x->j = novo_jogo(texto, pe1, pe2, score1, score2);
   if (lj->tamanho == 0)
   {
-    {
-      lj->head = x;
-    }
+    lj->head = x;
   }
   else
   {
-    {
-      lj->tail->next = x;
-      x->prev = lj->tail;
-    }
+    lj->tail->next = x;
+    x->prev = lj->tail;
   }
 
   lj->tail = x;
@@ -54,13 +50,11 @@ void libertar_jogo(jlink x)
 {
   if (x != 0)
   {
-    {
-      free(x->j->nome);
-      x->j->e1 = 0;
-      x->j->e2 = 0;
-      free(x->j);
-      free(x);
-    }
+    free(x->j->nome);
+    x->j->e1 = 0;
+    x->j->e2 = 0;
+    free(x->j);
+    free(x);
   }
   else
   {
@@ -115,37 +109,29 @@ void elimina_jogo_lista_jogos(lista_jogos lj, jlink x)
 {
   if (lj->tamanho == 1)
   {
-    {
-      lj->head = 0;
-      lj->tail = 0;
-    }
+    lj->head = 0;
+    lj->tail = 0;
   }
   else
   {
     if ((x != lj->tail) && (x != lj->head))
     {
-      {
-        x->prev->next = x->next;
-        x->next->prev = x->prev;
-      }
+      x->prev->next = x->next;
+      x->next->prev = x->prev;
     }
     else
     {
       if (x == lj->head)
       {
-        {
-          lj->head = x->next;
-          lj->head->prev = 0;
-        }
+        lj->head = x->next;
+        lj->head->prev = 0;
       }
       else
       {
         if (x == lj->tail)
         {
-          {
-            lj->tail = x->prev;
-            lj->tail->next = 0;
-          }
+          lj->tail = x->prev;
+          lj->tail->next = 0;
         }
         else
         {
@@ -266,9 +252,7 @@ void expandir_hash_jogos(ht_jogos ht_j)
   {
     if (t[i] != 0)
     {
-      {
-        insere_jogo_hash_jogos(ht_j, t[i]);
-      }
+      insere_jogo_hash_jogos(ht_j, t[i]);
     }
     else
     {
@@ -286,9 +270,7 @@ int procura_jogo_hash_jogos(ht_jogos ht_j, char *texto)
   while (ht_j->hash_jogos[i] != 0)
     if (strcmp(ht_j->hash_jogos[i]->j->nome, texto) == 0)
   {
-    {
-      return i;
-    }
+    return i;
   }
   else
   {
@@ -318,21 +300,39 @@ void altera_scores(jlink x, int novo_s1, int novo_s2)
 {
   if (novo_s1 > novo_s2)
   {
+    if (x->j->s2 > x->j->s1)
     {
-      if (x->j->s2 > x->j->s1)
+      x->j->e1->vitorias++;
+      x->j->e2->vitorias--;
+    }
+    else
+    {
+      if (x->j->s1 == x->j->s2)
       {
-        {
-          x->j->e1->vitorias++;
-          x->j->e2->vitorias--;
-        }
+        x->j->e1->vitorias++;
+      }
+      else
+      {
+        
+      }
+
+    }
+
+  }
+  else
+  {
+    if (novo_s2 > novo_s1)
+    {
+      if (x->j->s1 > x->j->s2)
+      {
+        x->j->e2->vitorias++;
+        x->j->e1->vitorias--;
       }
       else
       {
         if (x->j->s1 == x->j->s2)
         {
-          {
-            x->j->e1->vitorias++;
-          }
+          x->j->e2->vitorias++;
         }
         else
         {
@@ -342,61 +342,25 @@ void altera_scores(jlink x, int novo_s1, int novo_s2)
       }
 
     }
-  }
-  else
-  {
-    if (novo_s2 > novo_s1)
-    {
-      {
-        if (x->j->s1 > x->j->s2)
-        {
-          {
-            x->j->e2->vitorias++;
-            x->j->e1->vitorias--;
-          }
-        }
-        else
-        {
-          if (x->j->s1 == x->j->s2)
-          {
-            {
-              x->j->e2->vitorias++;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-      }
-    }
     else
     {
+      if (x->j->s1 > x->j->s2)
       {
-        if (x->j->s1 > x->j->s2)
+        x->j->e1->vitorias--;
+      }
+      else
+      {
+        if (x->j->s2 > x->j->s1)
         {
-          {
-            x->j->e1->vitorias--;
-          }
+          x->j->e2->vitorias--;
         }
         else
         {
-          if (x->j->s2 > x->j->s1)
-          {
-            {
-              x->j->e2->vitorias--;
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
+
     }
 
   }

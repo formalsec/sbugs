@@ -28,9 +28,7 @@ int proximoidp()
   int i = 0;
   if (strcmp(stock[i].Descricao, "") == 0)
   {
-    {
-      return i;
-    }
+    return i;
   }
   else
   {
@@ -268,10 +266,8 @@ int adProd()
   produtoQtd = atoi(args[2]);
   if (dataBase[ide][0].Inicia == (-1))
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
-      return 1;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
+    return 1;
   }
   else
   {
@@ -280,10 +276,8 @@ int adProd()
 
   if (strcmp(stock[idp].Descricao, "") == 0)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
-      return 1;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
+    return 1;
   }
   else
   {
@@ -292,10 +286,8 @@ int adProd()
 
   if (produtoQtd > stock[idp].Quantidade)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
-      return 1;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
+    return 1;
   }
   else
   {
@@ -304,10 +296,8 @@ int adProd()
 
   if ((pesoTotalEnc(ide) + (stock[idp].Peso * produtoQtd)) > 200)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
-      return 1;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
+    return 1;
   }
   else
   {
@@ -336,10 +326,8 @@ int removeStock()
   produtoQtd = atoi(args[1]);
   if (strcmp(stock[idp].Descricao, "") == 0)
   {
-    {
-      printf("Impossivel remover stock do produto %d. Produto inexistente.\n", idp);
-      return 1;
-    }
+    printf("Impossivel remover stock do produto %d. Produto inexistente.\n", idp);
+    return 1;
   }
   else
   {
@@ -348,10 +336,8 @@ int removeStock()
 
   if ((stock[idp].Quantidade - produtoQtd) < 0)
   {
-    {
-      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", produtoQtd, idp);
-      return 1;
-    }
+    printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", produtoQtd, idp);
+    return 1;
   }
   else
   {
@@ -376,10 +362,8 @@ int removeProd()
   i = idpEnc(ide, idp);
   if (dataBase[ide][0].Inicia == (-1))
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
-      return 1;
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
+    return 1;
   }
   else
   {
@@ -388,10 +372,8 @@ int removeProd()
 
   if (strcmp(stock[idp].Descricao, "") == 0)
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
-      return 1;
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
+    return 1;
   }
   else
   {
@@ -400,9 +382,7 @@ int removeProd()
 
   if (strcmp(dataBase[ide][i].Descricao, stock[idp].Descricao) != 0)
   {
-    {
-      return 1;
-    }
+    return 1;
   }
   else
   {
@@ -430,10 +410,8 @@ int custoEnc()
   ide = atoi(args[0]);
   if (dataBase[ide][0].Inicia == (-1))
   {
-    {
-      printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ide);
-      return 1;
-    }
+    printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ide);
+    return 1;
   }
   else
   {
@@ -463,10 +441,8 @@ int alteraPreco()
   produtoPreco = atoi(args[1]);
   if (strcmp(stock[idp].Descricao, "") == 0)
   {
-    {
-      printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idp);
-      return 1;
-    }
+    printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idp);
+    return 1;
   }
   else
   {
@@ -477,20 +453,16 @@ int alteraPreco()
   {
     if (dataBase[i][0].Inicia != (-1))
     {
+      e = idpEnc(i, idp);
+      if ((strcmp(dataBase[i][e].Descricao, stock[idp].Descricao) == 0) && (dataBase[i][e].Inicia == 0))
       {
-        e = idpEnc(i, idp);
-        if ((strcmp(dataBase[i][e].Descricao, stock[idp].Descricao) == 0) && (dataBase[i][e].Inicia == 0))
-        {
-          {
-            dataBase[i][e].Preco = produtoPreco;
-          }
-        }
-        else
-        {
-          
-        }
-
+        dataBase[i][e].Preco = produtoPreco;
       }
+      else
+      {
+        
+      }
+
     }
     else
     {
@@ -517,27 +489,19 @@ int descQtd()
   i = idpEnc(ide, idp);
   if (dataBase[ide][0].Inicia != (-1))
   {
+    if (strcmp(stock[idp].Descricao, "") != 0)
     {
-      if (strcmp(stock[idp].Descricao, "") != 0)
-      {
-        {
-          printf("%s %d.\n", stock[idp].Descricao, dataBase[ide][i].Quantidade);
-        }
-      }
-      else
-      {
-        {
-          printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
-        }
-      }
-
+      printf("%s %d.\n", stock[idp].Descricao, dataBase[ide][i].Quantidade);
     }
+    else
+    {
+      printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
+    }
+
   }
   else
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
   }
 
   return 0;
@@ -557,56 +521,46 @@ int identificadorMax()
   idp = atoi(args[0]);
   if (strcmp(stock[idp].Descricao, "") != 0)
   {
+    for (i = 0; i < 500; i++)
     {
-      for (i = 0; i < 500; i++)
+      if (dataBase[i][0].Inicia != (-1))
       {
-        if (dataBase[i][0].Inicia != (-1))
+        a = idpEnc(i, idp);
+        if (strcmp(stock[idp].Descricao, dataBase[i][a].Descricao) == 0)
         {
+          if (dataBase[i][a].Quantidade > max)
           {
-            a = idpEnc(i, idp);
-            if (strcmp(stock[idp].Descricao, dataBase[i][a].Descricao) == 0)
-            {
-              {
-                if (dataBase[i][a].Quantidade > max)
-                {
-                  {
-                    max = dataBase[i][a].Quantidade;
-                    ide = i;
-                  }
-                }
-                else
-                {
-                  
-                }
-
-              }
-            }
-            else
-            {
-              
-            }
-
+            max = dataBase[i][a].Quantidade;
+            ide = i;
           }
+          else
+          {
+            
+          }
+
         }
         else
         {
-          break;
+          
         }
 
-      }
-
-      if (max != 0)
-      {
-        {
-          printf("Maximo produto %d %d %d.\n", idp, ide, max);
-        }
       }
       else
       {
-        
+        break;
       }
 
     }
+
+    if (max != 0)
+    {
+      printf("Maximo produto %d %d %d.\n", idp, ide, max);
+    }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -626,10 +580,8 @@ int listaProd()
   {
     if (strcmp(stock[e].Descricao, "") != 0)
     {
-      {
-        tab_final[e] = e;
-        counter++;
-      }
+      tab_final[e] = e;
+      counter++;
     }
     else
     {
@@ -661,10 +613,8 @@ int listaProdEnc()
   ide = atoi(args[0]);
   if (dataBase[ide][0].Inicia == (-1))
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
-      return 1;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
+    return 1;
   }
   else
   {
@@ -675,10 +625,8 @@ int listaProdEnc()
   {
     if ((strcmp(dataBase[ide][i].Descricao, "") != 0) && (dataBase[ide][i].Inicia == 0))
     {
-      {
-        tab_final[counter] = i;
-        counter++;
-      }
+      tab_final[counter] = i;
+      counter++;
     }
     else
     {

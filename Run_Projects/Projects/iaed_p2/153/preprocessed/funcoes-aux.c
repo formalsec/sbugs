@@ -33,9 +33,7 @@ linkjogo insertEndJogo(linkjogo headjogo, char *nome, char *equipa1, char *equip
   linkjogo x;
   if (headjogo == 0)
   {
-    {
-      return NEWjogo(nome, equipa1, equipa2, score1, score2);
-    }
+    return NEWjogo(nome, equipa1, equipa2, score1, score2);
   }
   else
   {
@@ -56,9 +54,7 @@ linkequipa insertEndEquipa(linkequipa headequipa, char *nome_equipa)
   linkequipa e;
   if (headequipa == 0)
   {
-    {
-      return NEWequipa(nome_equipa);
-    }
+    return NEWequipa(nome_equipa);
   }
   else
   {
@@ -82,26 +78,20 @@ linkjogo removeJogo(linkjogo headjogo, char *nome_jogo)
   {
     if (strcmp(t->nome, nome_jogo) == 0)
     {
+      if (t == headjogo)
       {
-        if (t == headjogo)
-        {
-          {
-            headjogo = t->next;
-          }
-        }
-        else
-        {
-          {
-            prev->next = t->next;
-          }
-        }
-
-        free(t->nome);
-        free(t->equipa1);
-        free(t->equipa2);
-        free(t);
-        break;
+        headjogo = t->next;
       }
+      else
+      {
+        prev->next = t->next;
+      }
+
+      free(t->nome);
+      free(t->equipa1);
+      free(t->equipa2);
+      free(t);
+      break;
     }
     else
     {
@@ -121,24 +111,18 @@ linkequipa removeEquipa(linkequipa headequipa, char *nome_equipa)
   {
     if (strcmp(t->nome, nome_equipa) == 0)
     {
+      if (t == headequipa)
       {
-        if (t == headequipa)
-        {
-          {
-            headequipa = t->next;
-          }
-        }
-        else
-        {
-          {
-            prev->next = t->next;
-          }
-        }
-
-        free(t->nome);
-        free(t);
-        break;
+        headequipa = t->next;
       }
+      else
+      {
+        prev->next = t->next;
+      }
+
+      free(t->nome);
+      free(t);
+      break;
     }
     else
     {
@@ -158,37 +142,29 @@ void procuraEquipa(linkjogo headjogo, char *nome, int contlinha)
   {
     if (strcmp(aux->equipa1, nome) == 0)
     {
+      if (aux->score1 > aux->score2)
       {
-        if (aux->score1 > aux->score2)
+        soma++;
+      }
+      else
+      {
+        
+      }
+
+    }
+    else
+    {
+      if (strcmp(aux->equipa2, nome) == 0)
+      {
+        if (aux->score2 > aux->score1)
         {
-          {
-            soma++;
-          }
+          soma++;
         }
         else
         {
           
         }
 
-      }
-    }
-    else
-    {
-      if (strcmp(aux->equipa2, nome) == 0)
-      {
-        {
-          if (aux->score2 > aux->score1)
-          {
-            {
-              soma++;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
       }
       else
       {
@@ -224,67 +200,55 @@ void listaGanhos(linkjogo headjogo, linkequipa headequipa, int contlinha, int ma
   equipas = (char **) malloc((sizeof(char *)) * quant);
   if (headjogo == 0)
   {
+    for (equipa = headequipa; equipa != 0; equipa = equipa->next)
     {
-      for (equipa = headequipa; equipa != 0; equipa = equipa->next)
+      strcpy(buffer, equipa->nome);
+      equipas[i] = (char *) malloc((sizeof(char)) * (strlen(buffer) + 1));
+      strcpy(equipas[i], buffer);
+      i++;
+    }
+
+  }
+  else
+  {
+    for (equipa = headequipa; equipa != 0; equipa = equipa->next)
+    {
+      for (jogo = headjogo; jogo != 0; jogo = jogo->next)
+      {
+        if ((strcmp(equipa->nome, jogo->equipa1) == 0) && (jogo->score1 > jogo->score2))
+        {
+          soma++;
+        }
+        else
+        {
+          if ((strcmp(equipa->nome, jogo->equipa2) == 0) && (jogo->score2 > jogo->score1))
+          {
+            soma++;
+          }
+          else
+          {
+            
+          }
+
+        }
+
+      }
+
+      if (soma == max)
       {
         strcpy(buffer, equipa->nome);
         equipas[i] = (char *) malloc((sizeof(char)) * (strlen(buffer) + 1));
         strcpy(equipas[i], buffer);
         i++;
+        soma = 0;
       }
-
-    }
-  }
-  else
-  {
-    {
-      for (equipa = headequipa; equipa != 0; equipa = equipa->next)
+      else
       {
-        for (jogo = headjogo; jogo != 0; jogo = jogo->next)
-        {
-          if ((strcmp(equipa->nome, jogo->equipa1) == 0) && (jogo->score1 > jogo->score2))
-          {
-            {
-              soma++;
-            }
-          }
-          else
-          {
-            if ((strcmp(equipa->nome, jogo->equipa2) == 0) && (jogo->score2 > jogo->score1))
-            {
-              {
-                soma++;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-        }
-
-        if (soma == max)
-        {
-          {
-            strcpy(buffer, equipa->nome);
-            equipas[i] = (char *) malloc((sizeof(char)) * (strlen(buffer) + 1));
-            strcpy(equipas[i], buffer);
-            i++;
-            soma = 0;
-          }
-        }
-        else
-        {
-          {
-            soma = 0;
-          }
-        }
-
+        soma = 0;
       }
 
     }
+
   }
 
   qsort(equipas, quant, sizeof(char *), compare);

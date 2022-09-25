@@ -86,9 +86,7 @@ ItemJ procura_lista_nome(linkJ head, char *nome)
   {
     if (strcmp(t->item->nome, nome) == 0)
     {
-      {
-        return t->item;
-      }
+      return t->item;
     }
     else
     {
@@ -115,9 +113,7 @@ void inserir_fim(lista *l, ItemJ jogo)
   n->prev = l->primeiro;
   if (l->ultimo)
   {
-    {
-      l->ultimo->next = n;
-    }
+    l->ultimo->next = n;
   }
   else
   {
@@ -145,18 +141,16 @@ void apaga_jogo(linkJ headsJ[], lista *l, char *nome, int i)
   {
     if (strcmp(t->item->nome, nome) == 0)
     {
+      if (t == headsJ[i])
       {
-        if (t == headsJ[i])
-        {
-          headsJ[i] = t->next;
-        }
-        else
-        {
-          prev->next = t->next;
-        }
-
-        break;
+        headsJ[i] = t->next;
       }
+      else
+      {
+        prev->next = t->next;
+      }
+
+      break;
     }
     else
     {
@@ -170,26 +164,24 @@ void apaga_jogo(linkJ headsJ[], lista *l, char *nome, int i)
 
   if (n && (!comp))
   {
+    if (n->prev)
     {
-      if (n->prev)
-      {
-        n->prev->next = n->next;
-      }
-      else
-      {
-        l->primeiro = n->next;
-      }
-
-      if (n->next)
-      {
-        n->next->prev = n->prev;
-      }
-      else
-      {
-        l->ultimo = n->prev;
-      }
-
+      n->prev->next = n->next;
     }
+    else
+    {
+      l->primeiro = n->next;
+    }
+
+    if (n->next)
+    {
+      n->next->prev = n->prev;
+    }
+    else
+    {
+      l->ultimo = n->prev;
+    }
+
   }
   else
   {

@@ -104,9 +104,7 @@ void adiciona_stock()
   }
   else
   {
-    {
-      prod[id].qnt = prod[id].qnt + quantidade;
-    }
+    prod[id].qnt = prod[id].qnt + quantidade;
   }
 
 }
@@ -147,40 +145,34 @@ void adiciona_prod_enc()
         }
         else
         {
+          for (u = 0; u < (maximo + 2); u++)
           {
-            for (u = 0; u < (maximo + 2); u++)
+            if (strlen(enc[a].prod[u].des) == 0)
             {
-              if (strlen(enc[a].prod[u].des) == 0)
+              strcpy(enc[a].prod[u].des, prod[b].des);
+              enc[a].prod[u].id = prod[b].id;
+              enc[a].prod[u].qnt = d;
+              enc[a].peso = enc[a].peso + (prod[b].peso * d);
+              break;
+            }
+            else
+            {
+              if (enc[a].prod[u].id == b)
               {
-                {
-                  strcpy(enc[a].prod[u].des, prod[b].des);
-                  enc[a].prod[u].id = prod[b].id;
-                  enc[a].prod[u].qnt = d;
-                  enc[a].peso = enc[a].peso + (prod[b].peso * d);
-                  break;
-                }
+                enc[a].prod[u].qnt = enc[a].prod[u].qnt + d;
+                enc[a].peso = enc[a].peso + (prod[b].peso * d);
+                break;
               }
               else
               {
-                if (enc[a].prod[u].id == b)
-                {
-                  {
-                    enc[a].prod[u].qnt = enc[a].prod[u].qnt + d;
-                    enc[a].peso = enc[a].peso + (prod[b].peso * d);
-                    break;
-                  }
-                }
-                else
-                {
-                  
-                }
-
+                
               }
 
             }
 
-            prod[b].qnt = prod[b].qnt - d;
           }
+
+          prod[b].qnt = prod[b].qnt - d;
         }
 
       }
@@ -230,37 +222,33 @@ void remove_prod_enc()
     }
     else
     {
+      quantidade_enc = 0;
+      for (k = 0; k < (maximo + 1); k++)
       {
-        quantidade_enc = 0;
-        for (k = 0; k < (maximo + 1); k++)
+        if (enc[a].prod[k].id == b)
         {
-          if (enc[a].prod[k].id == b)
-          {
-            {
-              quantidade_enc = quantidade_enc + enc[a].prod[k].qnt;
-              enc[a].prod[k].qnt = 0;
-              break;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-        enc[a].peso = enc[a].peso - (quantidade_enc * prod[b].peso);
-        prod[b].qnt = prod[b].qnt + quantidade_enc;
-        if ((enc[a].custo - (quantidade_enc * prod[b].preco)) < 0)
-        {
-          enc[a].custo = 0;
+          quantidade_enc = quantidade_enc + enc[a].prod[k].qnt;
+          enc[a].prod[k].qnt = 0;
+          break;
         }
         else
         {
-          enc[a].custo = enc[a].custo - (quantidade_enc * prod[b].preco);
+          
         }
 
       }
+
+      enc[a].peso = enc[a].peso - (quantidade_enc * prod[b].peso);
+      prod[b].qnt = prod[b].qnt + quantidade_enc;
+      if ((enc[a].custo - (quantidade_enc * prod[b].preco)) < 0)
+      {
+        enc[a].custo = 0;
+      }
+      else
+      {
+        enc[a].custo = enc[a].custo - (quantidade_enc * prod[b].preco);
+      }
+
     }
 
   }
@@ -276,25 +264,21 @@ void calcula_custo_enc()
   }
   else
   {
+    custo = 0;
+    for (k = 0; k < (maximo + 1); k++)
     {
-      custo = 0;
-      for (k = 0; k < (maximo + 1); k++)
+      if (enc[a].prod[k].qnt > 0)
       {
-        if (enc[a].prod[k].qnt > 0)
-        {
-          {
-            custo = custo + (prod[enc[a].prod[k].id].preco * enc[a].prod[k].qnt);
-          }
-        }
-        else
-        {
-          
-        }
-
+        custo = custo + (prod[enc[a].prod[k].id].preco * enc[a].prod[k].qnt);
+      }
+      else
+      {
+        
       }
 
-      printf("Custo da encomenda %d %d.\n", a, custo);
     }
+
+    printf("Custo da encomenda %d %d.\n", a, custo);
   }
 
 }
@@ -309,9 +293,7 @@ void altera_preco()
   }
   else
   {
-    {
-      prod[a].preco = b;
-    }
+    prod[a].preco = b;
   }
 
 }
@@ -332,26 +314,22 @@ void mostra_prod_encomenda()
     }
     else
     {
+      quantidade_na_encomenda = 0;
+      for (k = 0; k < (maximo + 1); k++)
       {
-        quantidade_na_encomenda = 0;
-        for (k = 0; k < (maximo + 1); k++)
+        if (enc[a].prod[k].id == b)
         {
-          if (enc[a].prod[k].id == b)
-          {
-            {
-              quantidade_na_encomenda = enc[a].prod[k].qnt;
-              break;
-            }
-          }
-          else
-          {
-            
-          }
-
+          quantidade_na_encomenda = enc[a].prod[k].qnt;
+          break;
+        }
+        else
+        {
+          
         }
 
-        printf("%s %d.\n", prod[b].des, quantidade_na_encomenda);
       }
+
+      printf("%s %d.\n", prod[b].des, quantidade_na_encomenda);
     }
 
   }
@@ -367,42 +345,26 @@ void encomenda_prod_repete()
   }
   else
   {
+    maior = 0;
+    for (k = 0; k < (max_enc + 1); k++)
     {
-      maior = 0;
-      for (k = 0; k < (max_enc + 1); k++)
+      if (enc[k].peso > 0)
       {
-        if (enc[k].peso > 0)
+        for (m = 0; m < (maximo + 1); m++)
         {
+          if ((enc[k].prod[m].id == a) && (enc[k].prod[m].qnt > maior))
           {
-            for (m = 0; m < (maximo + 1); m++)
-            {
-              if ((enc[k].prod[m].id == a) && (enc[k].prod[m].qnt > maior))
-              {
-                {
-                  maior = enc[k].prod[m].qnt;
-                  maior_enc = k;
-                  break;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
+            maior = enc[k].prod[m].qnt;
+            maior_enc = k;
+            break;
           }
-        }
-        else
-        {
-          
+          else
+          {
+            
+          }
+
         }
 
-      }
-
-      if (maior > 0)
-      {
-        printf("Maximo produto %d %d %d.\n", a, maior_enc, maior);
       }
       else
       {
@@ -410,6 +372,16 @@ void encomenda_prod_repete()
       }
 
     }
+
+    if (maior > 0)
+    {
+      printf("Maximo produto %d %d %d.\n", a, maior_enc, maior);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -484,17 +456,15 @@ void merge(produto preco_unidade[], int left, int meio, int right)
       }
       else
       {
+        if (auxiliar[m].id < auxiliar[k].id)
         {
-          if (auxiliar[m].id < auxiliar[k].id)
-          {
-            preco_unidade[x] = auxiliar[m--];
-          }
-          else
-          {
-            preco_unidade[x] = auxiliar[k++];
-          }
-
+          preco_unidade[x] = auxiliar[m--];
         }
+        else
+        {
+          preco_unidade[x] = auxiliar[k++];
+        }
+
       }
 
     }
@@ -512,85 +482,77 @@ void lista_encomenda()
   }
   else
   {
+    contador = 0;
+    if (strlen(enc[a].prod[0].des) == 0)
     {
-      contador = 0;
-      if (strlen(enc[a].prod[0].des) == 0)
+      printf("Encomenda %d\n", a);
+    }
+    else
+    {
+      final = 0;
+      for (k = 0; k < (maximo + 1); k++)
       {
+        if (strlen(enc[a].prod[k].des) != 0)
         {
-          printf("Encomenda %d\n", a);
+          final = final + 1;
         }
+        else
+        {
+          if (strlen(enc[a].prod[k].des) == 0)
+          {
+            break;
+          }
+          else
+          {
+            
+          }
+
+        }
+
       }
-      else
+
+      for (k = 0; k < (final + 1); k++)
       {
+        if (enc[a].prod[k].des != 0)
         {
-          final = 0;
-          for (k = 0; k < (maximo + 1); k++)
+          prod_na_enc[k] = enc[a].prod[k];
+        }
+        else
+        {
+          break;
+        }
+
+      }
+
+      left = 0;
+      right = final;
+      mergesort_char(prod_na_enc, left, right);
+      printf("Encomenda %d\n", a);
+      for (k = 0; k < (final + 1); k++)
+      {
+        if ((strlen(prod_na_enc[k].des) != 0) && (prod_na_enc[k].qnt > 0))
+        {
+          printf("* %s", prod_na_enc[k].des);
+          printf(" %d ", prod[prod_na_enc[k].id].preco);
+          printf("%d\n", prod_na_enc[k].qnt);
+        }
+        else
+        {
+          if (strlen(enc[a].prod[k].des) == 0)
           {
-            if (strlen(enc[a].prod[k].des) != 0)
-            {
-              final = final + 1;
-            }
-            else
-            {
-              if (strlen(enc[a].prod[k].des) == 0)
-              {
-                break;
-              }
-              else
-              {
-                
-              }
-
-            }
-
+            break;
           }
-
-          for (k = 0; k < (final + 1); k++)
+          else
           {
-            if (enc[a].prod[k].des != 0)
-            {
-              prod_na_enc[k] = enc[a].prod[k];
-            }
-            else
-            {
-              break;
-            }
-
-          }
-
-          left = 0;
-          right = final;
-          mergesort_char(prod_na_enc, left, right);
-          printf("Encomenda %d\n", a);
-          for (k = 0; k < (final + 1); k++)
-          {
-            if ((strlen(prod_na_enc[k].des) != 0) && (prod_na_enc[k].qnt > 0))
-            {
-              {
-                printf("* %s", prod_na_enc[k].des);
-                printf(" %d ", prod[prod_na_enc[k].id].preco);
-                printf("%d\n", prod_na_enc[k].qnt);
-              }
-            }
-            else
-            {
-              if (strlen(enc[a].prod[k].des) == 0)
-              {
-                break;
-              }
-              else
-              {
-                
-              }
-
-            }
-
+            
           }
 
         }
+
       }
 
     }
+
   }
 
 }

@@ -66,9 +66,7 @@ int main()
                   {
                     if (c != '\n')
                     {
-                      {
-                        printf("Comando inexistente: '%c'.\n", c);
-                      }
+                      printf("Comando inexistente: '%c'.\n", c);
                     }
                     else
                     {

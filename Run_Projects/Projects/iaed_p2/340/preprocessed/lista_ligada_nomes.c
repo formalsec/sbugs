@@ -29,19 +29,15 @@ void adiciona_elemento(Lista **lista, Lista *el, Lista **ultimo_jogo)
   Lista *prev;
   if (lista[0] == 0)
   {
-    {
-      lista[0] = el;
-      ultimo_jogo[0] = el;
-    }
+    lista[0] = el;
+    ultimo_jogo[0] = el;
   }
   else
   {
-    {
-      prev = ultimo_jogo[0];
-      prev->next = el;
-      el->previous = prev;
-      ultimo_jogo[0] = el;
-    }
+    prev = ultimo_jogo[0];
+    prev->next = el;
+    el->previous = prev;
+    ultimo_jogo[0] = el;
   }
 
 }
@@ -54,45 +50,35 @@ Lista **remove_el(Lista **lista, Lista **ultimo_jogo, char *nome)
   {
     if (strcmp(x->nome, nome) == 0)
     {
+      if (x == lista[0])
       {
-        if (x == lista[0])
+        lista[0] = x->next;
+        if (x->next == 0)
         {
-          {
-            lista[0] = x->next;
-            if (x->next == 0)
-            {
-              ultimo_jogo[0] = 0;
-            }
-            else
-            {
-              
-            }
-
-          }
+          ultimo_jogo[0] = 0;
         }
         else
         {
-          {
-            prev->next = x->next;
-            if (x->next != 0)
-            {
-              {
-                x->next->previous = prev;
-              }
-            }
-            else
-            {
-              {
-                ultimo_jogo[0] = prev;
-              }
-            }
-
-          }
+          
         }
 
-        free_el(x);
-        break;
       }
+      else
+      {
+        prev->next = x->next;
+        if (x->next != 0)
+        {
+          x->next->previous = prev;
+        }
+        else
+        {
+          ultimo_jogo[0] = prev;
+        }
+
+      }
+
+      free_el(x);
+      break;
     }
     else
     {

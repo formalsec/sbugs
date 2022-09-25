@@ -43,10 +43,8 @@ void search_and_add_teams_list(teams **lst_teams, char **best_teams, int number)
     {
       if (i->games_w == number)
       {
-        {
-          best_teams[n] = strduplicate(i->name);
-          n++;
-        }
+        best_teams[n] = strduplicate(i->name);
+        n++;
       }
       else
       {
@@ -75,9 +73,7 @@ void print_best_teams(char **best_teams, int nl, int max)
   int i = 0;
   if (best_teams[0] != 0)
   {
-    {
-      printf("%d Melhores %d\n", nl, max);
-    }
+    printf("%d Melhores %d\n", nl, max);
   }
   else
   {
@@ -111,9 +107,7 @@ void sort_the_list(char **best_teams)
 
   if (n > 1)
   {
-    {
-      qsort(best_teams, n, sizeof(char *), cmpstrings);
-    }
+    qsort(best_teams, n, sizeof(char *), cmpstrings);
   }
   else
   {

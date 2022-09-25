@@ -129,10 +129,8 @@ void IncrementaJogosGanhos(char *nome, nodeE **h)
   {
     if (!strcmp(n->e.nome, nome))
     {
-      {
-        n->e.jogosGanhos++;
-        break;
-      }
+      n->e.jogosGanhos++;
+      break;
     }
     else
     {
@@ -152,10 +150,8 @@ void DecrementaJogosGanhos(char *nome, nodeE **h)
   {
     if (!strcmp(n->e.nome, nome))
     {
-      {
-        n->e.jogosGanhos--;
-        break;
-      }
+      n->e.jogosGanhos--;
+      break;
     }
     else
     {
@@ -203,10 +199,8 @@ void AdicionaNovoJogo(int NL, nodeJ **htJ, nodeE **htE)
   headJ = htJ[ind];
   if (JogoExiste(buffer1, headJ))
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-      return;
-    }
+    printf("%d Jogo existente.\n", NL);
+    return;
   }
   else
   {
@@ -217,10 +211,8 @@ void AdicionaNovoJogo(int NL, nodeJ **htJ, nodeE **htE)
   indE2 = hashString(buffer3);
   if ((!EquipaExiste(buffer2, htE[indE1])) || (!EquipaExiste(buffer3, htE[indE2])))
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -229,21 +221,17 @@ void AdicionaNovoJogo(int NL, nodeJ **htJ, nodeE **htE)
 
   if (!headJ)
   {
-    {
-      htJ[ind] = calloc(1, sizeof(nodeJ));
-      n = htJ[ind];
-    }
+    htJ[ind] = calloc(1, sizeof(nodeJ));
+    n = htJ[ind];
   }
   else
   {
-    {
-      n = headJ;
-      while (n->next)
-        n = n->next;
-
-      n->next = calloc(1, sizeof(nodeJ));
+    n = headJ;
+    while (n->next)
       n = n->next;
-    }
+
+    n->next = calloc(1, sizeof(nodeJ));
+    n = n->next;
   }
 
   n->j.nome = malloc(strlen(buffer1) + 1);
@@ -295,10 +283,8 @@ void ListaJogos(int NL, nodeJ **htJ)
       {
         if ((n[j]->NL < val) || (val == (-1)))
         {
-          {
-            ind = j;
-            val = n[j]->NL;
-          }
+          ind = j;
+          val = n[j]->NL;
         }
         else
         {
@@ -315,17 +301,13 @@ void ListaJogos(int NL, nodeJ **htJ)
 
     if (ind == (-1))
     {
-      {
-        free(n);
-        return;
-      }
+      free(n);
+      return;
     }
     else
     {
-      {
-        printf("%d %s %s %s %d %d\n", NL, n[ind]->j.nome, n[ind]->j.equipa1, n[ind]->j.equipa2, n[ind]->j.score1, n[ind]->j.score2);
-        n[ind] = n[ind]->next;
-      }
+      printf("%d %s %s %s %d %d\n", NL, n[ind]->j.nome, n[ind]->j.equipa1, n[ind]->j.equipa2, n[ind]->j.score1, n[ind]->j.score2);
+      n[ind] = n[ind]->next;
     }
 
   }
@@ -347,17 +329,13 @@ void ProcuraJogo(int NL, nodeJ **htJ)
   n = JogoExiste(buffer1, htJ[ind]);
   if (!n)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
-    {
-      printf("%d %s %s %s %d %d\n", NL, n->j.nome, n->j.equipa1, n->j.equipa2, n->j.score1, n->j.score2);
-      return;
-    }
+    printf("%d %s %s %s %d %d\n", NL, n->j.nome, n->j.equipa1, n->j.equipa2, n->j.score1, n->j.score2);
+    return;
   }
 
 }
@@ -382,42 +360,34 @@ void ApagaJogo(int NL, nodeJ **htJ, nodeE **htE)
   headJ = htJ[ind];
   if (headJ)
   {
+    if (!strcmp(headJ->j.nome, buffer1))
     {
-      if (!strcmp(headJ->j.nome, buffer1))
+      tmp = headJ;
+      htJ[ind] = headJ->next;
+      flag = 1;
+    }
+    else
+    {
+      n = headJ;
+      while (n->next)
       {
+        if (!strcmp(n->next->j.nome, buffer1))
         {
-          tmp = headJ;
-          htJ[ind] = headJ->next;
+          tmp = n->next;
+          n->next = n->next->next;
           flag = 1;
+          break;
         }
-      }
-      else
-      {
+        else
         {
-          n = headJ;
-          while (n->next)
-          {
-            if (!strcmp(n->next->j.nome, buffer1))
-            {
-              {
-                tmp = n->next;
-                n->next = n->next->next;
-                flag = 1;
-                break;
-              }
-            }
-            else
-            {
-              
-            }
-
-            n = n->next;
-          }
-
+          
         }
+
+        n = n->next;
       }
 
     }
+
   }
   else
   {
@@ -426,41 +396,33 @@ void ApagaJogo(int NL, nodeJ **htJ, nodeE **htE)
 
   if (!flag)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
   else
   {
+    indE1 = hashString(tmp->j.equipa1);
+    indE2 = hashString(tmp->j.equipa2);
+    if (tmp->j.score1 > tmp->j.score2)
     {
-      indE1 = hashString(tmp->j.equipa1);
-      indE2 = hashString(tmp->j.equipa2);
-      if (tmp->j.score1 > tmp->j.score2)
+      DecrementaJogosGanhos(tmp->j.equipa1, &htE[indE1]);
+    }
+    else
+    {
+      if (tmp->j.score1 < tmp->j.score2)
       {
-        {
-          DecrementaJogosGanhos(tmp->j.equipa1, &htE[indE1]);
-        }
+        DecrementaJogosGanhos(tmp->j.equipa2, &htE[indE2]);
       }
       else
       {
-        if (tmp->j.score1 < tmp->j.score2)
-        {
-          {
-            DecrementaJogosGanhos(tmp->j.equipa2, &htE[indE2]);
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      free(tmp->j.equipa1);
-      free(tmp->j.equipa2);
-      free(tmp->j.nome);
-      free(tmp);
     }
+
+    free(tmp->j.equipa1);
+    free(tmp->j.equipa2);
+    free(tmp->j.nome);
+    free(tmp);
   }
 
 }
@@ -490,10 +452,8 @@ void AlteraScore(int NL, nodeJ **htJ, nodeE **htE)
   n = JogoExiste(buffer1, headJ);
   if (!n)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -558,10 +518,8 @@ void AdicionaNovaEquipa(int NL, nodeE **htE, int *numE)
   headE = htE[ind];
   if (EquipaExiste(buffer1, headE))
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-      return;
-    }
+    printf("%d Equipa existente.\n", NL);
+    return;
   }
   else
   {
@@ -570,21 +528,17 @@ void AdicionaNovaEquipa(int NL, nodeE **htE, int *numE)
 
   if (!headE)
   {
-    {
-      htE[ind] = calloc(1, sizeof(nodeE));
-      n = htE[ind];
-    }
+    htE[ind] = calloc(1, sizeof(nodeE));
+    n = htE[ind];
   }
   else
   {
-    {
-      n = headE;
-      while (n->next)
-        n = n->next;
-
-      n->next = calloc(1, sizeof(nodeE));
+    n = headE;
+    while (n->next)
       n = n->next;
-    }
+
+    n->next = calloc(1, sizeof(nodeE));
+    n = n->next;
   }
 
   n->e.nome = malloc(strlen(buffer1) + 1);
@@ -608,10 +562,8 @@ void ProcuraEquipa(int NL, nodeE **htE)
   n = EquipaExiste(buffer1, htE[ind]);
   if (!n)
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -646,18 +598,14 @@ void EquipasGanhadoras(int NL, nodeE **htE)
     {
       if (n[j]->e.jogosGanhos > jogosGanhos)
       {
-        {
-          jogosGanhos = n[j]->e.jogosGanhos;
-          numE = 1;
-        }
+        jogosGanhos = n[j]->e.jogosGanhos;
+        numE = 1;
       }
       else
       {
         if (n[j]->e.jogosGanhos == jogosGanhos)
         {
-          {
-            numE++;
-          }
+          numE++;
         }
         else
         {
@@ -673,10 +621,8 @@ void EquipasGanhadoras(int NL, nodeE **htE)
 
   if (!numE)
   {
-    {
-      free(n);
-      return;
-    }
+    free(n);
+    return;
   }
   else
   {
@@ -695,10 +641,8 @@ void EquipasGanhadoras(int NL, nodeE **htE)
     {
       if (n[j]->e.jogosGanhos == jogosGanhos)
       {
-        {
-          array[i] = n[j];
-          i++;
-        }
+        array[i] = n[j];
+        i++;
       }
       else
       {
@@ -733,23 +677,21 @@ void Terminar(nodeJ **htJ, nodeE **htE)
     headJ = htJ[i];
     if (headJ)
     {
+      nJ = headJ;
+      while (nJ->next)
       {
-        nJ = headJ;
-        while (nJ->next)
-        {
-          tmpJ = nJ->next;
-          nJ->next = nJ->next->next;
-          free(tmpJ->j.equipa1);
-          free(tmpJ->j.equipa2);
-          free(tmpJ->j.nome);
-          free(tmpJ);
-        }
-
-        free(nJ->j.equipa1);
-        free(nJ->j.equipa2);
-        free(nJ->j.nome);
-        free(nJ);
+        tmpJ = nJ->next;
+        nJ->next = nJ->next->next;
+        free(tmpJ->j.equipa1);
+        free(tmpJ->j.equipa2);
+        free(tmpJ->j.nome);
+        free(tmpJ);
       }
+
+      free(nJ->j.equipa1);
+      free(nJ->j.equipa2);
+      free(nJ->j.nome);
+      free(nJ);
     }
     else
     {
@@ -763,19 +705,17 @@ void Terminar(nodeJ **htJ, nodeE **htE)
     headE = htE[i];
     if (headE)
     {
+      nE = headE;
+      while (nE->next)
       {
-        nE = headE;
-        while (nE->next)
-        {
-          tmpE = nE->next;
-          nE->next = nE->next->next;
-          free(tmpE->e.nome);
-          free(tmpE);
-        }
-
-        free(nE->e.nome);
-        free(nE);
+        tmpE = nE->next;
+        nE->next = nE->next->next;
+        free(tmpE->e.nome);
+        free(tmpE);
       }
+
+      free(nE->e.nome);
+      free(nE);
     }
     else
     {

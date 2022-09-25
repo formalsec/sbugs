@@ -52,9 +52,7 @@ game *htGame_search(ent *ht_g, char *name)
   {
     if ((strcmp(test->name, name) == 0) && (test->score[0] != (-1)))
     {
-      {
-        return test;
-      }
+      return test;
     }
     else
     {
@@ -88,13 +86,11 @@ void ordListadd(game g)
   ordGameList = realloc(ordGameList, (sizeof(game)) * ordListsize);
   if (ordListsize > 1)
   {
+    for (i = ordListsize - 1; i > 0; i--)
     {
-      for (i = ordListsize - 1; i > 0; i--)
-      {
-        ordGameList[i] = ordGameList[i - 1];
-      }
-
+      ordGameList[i] = ordGameList[i - 1];
     }
+
   }
   else
   {
@@ -112,26 +108,22 @@ void ordListremove(game g)
   {
     if (strcmp(ordGameList[i].name, g.name) == 0)
     {
+      if (!(i == (ordListsize - 1)))
       {
-        if (!(i == (ordListsize - 1)))
+        for (j = i; j < (ordListsize - 1); j++)
         {
-          {
-            for (j = i; j < (ordListsize - 1); j++)
-            {
-              ordGameList[j] = ordGameList[j + 1];
-            }
-
-          }
-        }
-        else
-        {
-          
+          ordGameList[j] = ordGameList[j + 1];
         }
 
-        ordListsize--;
-        ordGameList = realloc(ordGameList, (sizeof(game)) * ordListsize);
-        break;
       }
+      else
+      {
+        
+      }
+
+      ordListsize--;
+      ordGameList = realloc(ordGameList, (sizeof(game)) * ordListsize);
+      break;
     }
     else
     {
@@ -147,55 +139,43 @@ void htGame_change(game *g, int score1, int score2)
   int i;
   if ((g->score[0] > g->score[1]) && (score1 < score2))
   {
-    {
-      removebestTeam(g->team[0]);
-      g->team[1]->wins++;
-      addbestTeam(g->team[1]);
-    }
+    removebestTeam(g->team[0]);
+    g->team[1]->wins++;
+    addbestTeam(g->team[1]);
   }
   else
   {
     if ((g->score[0] == g->score[1]) && (score1 < score2))
     {
-      {
-        g->team[1]->wins++;
-        addbestTeam(g->team[1]);
-      }
+      g->team[1]->wins++;
+      addbestTeam(g->team[1]);
     }
     else
     {
       if ((g->score[0] < g->score[1]) && (score1 > score2))
       {
-        {
-          removebestTeam(g->team[1]);
-          g->team[0]->wins++;
-          addbestTeam(g->team[0]);
-        }
+        removebestTeam(g->team[1]);
+        g->team[0]->wins++;
+        addbestTeam(g->team[0]);
       }
       else
       {
         if ((g->score[0] == g->score[1]) && (score1 > score2))
         {
-          {
-            g->team[0]->wins++;
-            addbestTeam(g->team[0]);
-          }
+          g->team[0]->wins++;
+          addbestTeam(g->team[0]);
         }
         else
         {
           if ((g->score[0] > g->score[1]) && (score1 == score2))
           {
-            {
-              removebestTeam(g->team[0]);
-            }
+            removebestTeam(g->team[0]);
           }
           else
           {
             if ((g->score[0] < g->score[1]) && (score1 == score2))
             {
-              {
-                removebestTeam(g->team[1]);
-              }
+              removebestTeam(g->team[1]);
             }
             else
             {
@@ -218,11 +198,9 @@ void htGame_change(game *g, int score1, int score2)
   {
     if (strcmp(ordGameList[i].name, g->name) == 0)
     {
-      {
-        ordGameList[i].score[0] = score1;
-        ordGameList[i].score[1] = score2;
-        break;
-      }
+      ordGameList[i].score[0] = score1;
+      ordGameList[i].score[1] = score2;
+      break;
     }
     else
     {
@@ -266,35 +244,29 @@ int htGame_insert(ent *ht_g, tent *ht_t, char *name, char *team1, char *team2, i
   test = ht_g->entries[index];
   if (test == 0)
   {
+    ht_g->entries[index] = alloc(name, t1, t2, score);
+    ordListadd(*ht_g->entries[index]);
+    if (score[0] > score[1])
     {
-      ht_g->entries[index] = alloc(name, t1, t2, score);
-      ordListadd(*ht_g->entries[index]);
-      if (score[0] > score[1])
-      {
-        {
-          t1->wins++;
-          addbestTeam(t1);
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (score[0] < score[1])
-      {
-        {
-          t2->wins++;
-          addbestTeam(t2);
-        }
-      }
-      else
-      {
-        
-      }
-
-      return 1;
+      t1->wins++;
+      addbestTeam(t1);
     }
+    else
+    {
+      
+    }
+
+    if (score[0] < score[1])
+    {
+      t2->wins++;
+      addbestTeam(t2);
+    }
+    else
+    {
+      
+    }
+
+    return 1;
   }
   else
   {
@@ -311,10 +283,8 @@ int htGame_insert(ent *ht_g, tent *ht_t, char *name, char *team1, char *team2, i
   ordListadd(*p->next);
   if (score[0] > score[1])
   {
-    {
-      t1->wins++;
-      addbestTeam(t1);
-    }
+    t1->wins++;
+    addbestTeam(t1);
   }
   else
   {
@@ -323,10 +293,8 @@ int htGame_insert(ent *ht_g, tent *ht_t, char *name, char *team1, char *team2, i
 
   if (score[0] < score[1])
   {
-    {
-      t2->wins++;
-      addbestTeam(t2);
-    }
+    t2->wins++;
+    addbestTeam(t2);
   }
   else
   {
@@ -344,36 +312,30 @@ void htGame_delete(ent *ht_g, char *name)
   index = hash(name);
   if (strcmp(ht_g->entries[index]->name, name) == 0)
   {
+    test = ht_g->entries[index];
+    if (test->score[0] > test->score[1])
     {
-      test = ht_g->entries[index];
-      if (test->score[0] > test->score[1])
-      {
-        {
-          removebestTeam(test->team[0]);
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (test->score[0] < test->score[1])
-      {
-        {
-          removebestTeam(test->team[1]);
-        }
-      }
-      else
-      {
-        
-      }
-
-      ordListremove(*test);
-      ht_g->entries[index] = ht_g->entries[index]->next;
-      free(test->name);
-      free(test);
-      return;
+      removebestTeam(test->team[0]);
     }
+    else
+    {
+      
+    }
+
+    if (test->score[0] < test->score[1])
+    {
+      removebestTeam(test->team[1]);
+    }
+    else
+    {
+      
+    }
+
+    ordListremove(*test);
+    ht_g->entries[index] = ht_g->entries[index]->next;
+    free(test->name);
+    free(test);
+    return;
   }
   else
   {
@@ -385,35 +347,29 @@ void htGame_delete(ent *ht_g, char *name)
     p = test->next;
     if (strcmp(p->name, name) == 0)
     {
+      test->next = p->next;
+      if (p->score[0] > p->score[1])
       {
-        test->next = p->next;
-        if (p->score[0] > p->score[1])
-        {
-          {
-            removebestTeam(p->team[0]);
-          }
-        }
-        else
-        {
-          
-        }
-
-        if (p->score[0] < p->score[1])
-        {
-          {
-            removebestTeam(p->team[1]);
-          }
-        }
-        else
-        {
-          
-        }
-
-        ordListremove(*p);
-        free(p->name);
-        free(p);
-        break;
+        removebestTeam(p->team[0]);
       }
+      else
+      {
+        
+      }
+
+      if (p->score[0] < p->score[1])
+      {
+        removebestTeam(p->team[1]);
+      }
+      else
+      {
+        
+      }
+
+      ordListremove(*p);
+      free(p->name);
+      free(p);
+      break;
     }
     else
     {

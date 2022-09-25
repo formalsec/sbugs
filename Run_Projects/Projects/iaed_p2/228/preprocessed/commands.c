@@ -38,10 +38,8 @@ void cmd_a(ht *games, ht *teams)
   score_team2 = new_sym_var(sizeof(int) * 8);
   if (find_in_ht(games, name))
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-      return;
-    }
+    printf("%d Jogo existente.\n", NL);
+    return;
   }
   else
   {
@@ -50,10 +48,8 @@ void cmd_a(ht *games, ht *teams)
 
   if (!find_in_ht(teams, team1name))
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -62,10 +58,8 @@ void cmd_a(ht *games, ht *teams)
 
   if (!find_in_ht(teams, team2name))
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -76,9 +70,7 @@ void cmd_a(ht *games, ht *teams)
   add_to_ht(games, new_game);
   if (score_team1 != score_team2)
   {
-    {
-      update_games_won(teams, team1name, team2name, score_team1, score_team2);
-    }
+    update_games_won(teams, team1name, team2name, score_team1, score_team2);
   }
   else
   {
@@ -116,10 +108,8 @@ void cmd_A(ht *teams)
   }
   else
   {
-    {
-      new_team = create_team(name);
-      add_to_ht(teams, new_team);
-    }
+    new_team = create_team(name);
+    add_to_ht(teams, new_team);
   }
 
 }
@@ -182,33 +172,27 @@ void cmd_r(ht *games, ht *teams)
   name[10 - 1] = '\0';
   if ((g = find_in_ht(games, name)) != 0)
   {
+    if (g->score1 > g->score2)
     {
-      if (g->score1 > g->score2)
-      {
-        {
-          t = find_in_ht(teams, g->team1);
-          t->games_won--;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (g->score2 > g->score1)
-      {
-        {
-          t = find_in_ht(teams, g->team2);
-          t->games_won--;
-        }
-      }
-      else
-      {
-        
-      }
-
-      remove_in_ht(games, name);
+      t = find_in_ht(teams, g->team1);
+      t->games_won--;
     }
+    else
+    {
+      
+    }
+
+    if (g->score2 > g->score1)
+    {
+      t = find_in_ht(teams, g->team2);
+      t->games_won--;
+    }
+    else
+    {
+      
+    }
+
+    remove_in_ht(games, name);
   }
   else
   {
@@ -235,43 +219,37 @@ void cmd_s(ht *games, ht *teams)
   new_score2 = new_sym_var(sizeof(int) * 8);
   if ((g = find_in_ht(games, name)) != 0)
   {
+    if (g->score1 > g->score2)
     {
-      if (g->score1 > g->score2)
-      {
-        {
-          t = find_in_ht(teams, g->team1);
-          t->games_won--;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (g->score2 > g->score1)
-      {
-        {
-          t = find_in_ht(teams, g->team2);
-          t->games_won--;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (new_score1 != new_score2)
-      {
-        update_games_won(teams, g->team1, g->team2, new_score1, new_score2);
-      }
-      else
-      {
-        
-      }
-
-      g->score1 = new_score1;
-      g->score2 = new_score2;
+      t = find_in_ht(teams, g->team1);
+      t->games_won--;
     }
+    else
+    {
+      
+    }
+
+    if (g->score2 > g->score1)
+    {
+      t = find_in_ht(teams, g->team2);
+      t->games_won--;
+    }
+    else
+    {
+      
+    }
+
+    if (new_score1 != new_score2)
+    {
+      update_games_won(teams, g->team1, g->team2, new_score1, new_score2);
+    }
+    else
+    {
+      
+    }
+
+    g->score1 = new_score1;
+    g->score2 = new_score2;
   }
   else
   {
@@ -321,21 +299,35 @@ void cmd_g(ht *teams)
 
   if (num_of_winners)
   {
-    {
-      winners = malloc(num_of_winners * (sizeof(char *)));
-      for (i = 0; i < num_of_winners; ++i)
-        winners[i] = malloc(1024 * (sizeof(char)));
+    winners = malloc(num_of_winners * (sizeof(char *)));
+    for (i = 0; i < num_of_winners; ++i)
+      winners[i] = malloc(1024 * (sizeof(char)));
 
-      i = 0;
-      for (n = teams->dll_head; n; n = n->next)
+    i = 0;
+    for (n = teams->dll_head; n; n = n->next)
+    {
+      w = n->data;
+      if (w->games_won == max)
       {
-        w = n->data;
-        if (w->games_won == max)
+        strcpy(winners[i], w->name);
+        i++;
+      }
+      else
+      {
+        
+      }
+
+    }
+
+    for (i = 0; i < num_of_winners; ++i)
+    {
+      for (k = i + 1; k < num_of_winners; ++k)
+      {
+        if (strcmp(winners[i], winners[k]) > 0)
         {
-          {
-            strcpy(winners[i], w->name);
-            i++;
-          }
+          strcpy(temp, winners[i]);
+          strcpy(winners[i], winners[k]);
+          strcpy(winners[k], temp);
         }
         else
         {
@@ -344,36 +336,16 @@ void cmd_g(ht *teams)
 
       }
 
-      for (i = 0; i < num_of_winners; ++i)
-      {
-        for (k = i + 1; k < num_of_winners; ++k)
-        {
-          if (strcmp(winners[i], winners[k]) > 0)
-          {
-            {
-              strcpy(temp, winners[i]);
-              strcpy(winners[i], winners[k]);
-              strcpy(winners[k], temp);
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-      }
-
-      printf("%d Melhores %d\n", NL, max);
-      for (i = 0; i < num_of_winners; ++i)
-        printf("%d * %s\n", NL, winners[i]);
-
-      for (i = 0; i < num_of_winners; ++i)
-        free(winners[i]);
-
-      free(winners);
     }
+
+    printf("%d Melhores %d\n", NL, max);
+    for (i = 0; i < num_of_winners; ++i)
+      printf("%d * %s\n", NL, winners[i]);
+
+    for (i = 0; i < num_of_winners; ++i)
+      free(winners[i]);
+
+    free(winners);
   }
   else
   {

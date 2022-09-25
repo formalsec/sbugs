@@ -61,75 +61,63 @@ void delete(int tamHash, char *text, int tamHashEquipa)
 
   if (prev == 0)
   {
+    if (head->item->pontos.score1 > head->item->pontos.score2)
     {
-      if (head->item->pontos.score1 > head->item->pontos.score2)
-      {
-        {
-          ptr = searchEquipa(tamHashEquipa, head->item->equipa1);
-          ptr->pontosVencedores = ptr->pontosVencedores - 1;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (head->item->pontos.score2 > head->item->pontos.score1)
-      {
-        {
-          ptr = searchEquipa(tamHashEquipa, head->item->equipa2);
-          ptr->pontosVencedores = ptr->pontosVencedores - 1;
-        }
-      }
-      else
-      {
-        
-      }
-
-      aux = heads[i]->next;
-      free(heads[i]->item->nome);
-      free(heads[i]->item->equipa1);
-      free(heads[i]->item->equipa2);
-      free(heads[i]->item);
-      free(heads[i]);
-      heads[i] = aux;
+      ptr = searchEquipa(tamHashEquipa, head->item->equipa1);
+      ptr->pontosVencedores = ptr->pontosVencedores - 1;
     }
+    else
+    {
+      
+    }
+
+    if (head->item->pontos.score2 > head->item->pontos.score1)
+    {
+      ptr = searchEquipa(tamHashEquipa, head->item->equipa2);
+      ptr->pontosVencedores = ptr->pontosVencedores - 1;
+    }
+    else
+    {
+      
+    }
+
+    aux = heads[i]->next;
+    free(heads[i]->item->nome);
+    free(heads[i]->item->equipa1);
+    free(heads[i]->item->equipa2);
+    free(heads[i]->item);
+    free(heads[i]);
+    heads[i] = aux;
   }
   else
   {
+    aux = head->next;
+    if (head->item->pontos.score1 > head->item->pontos.score2)
     {
-      aux = head->next;
-      if (head->item->pontos.score1 > head->item->pontos.score2)
-      {
-        {
-          ptr = searchEquipa(tamHashEquipa, head->item->equipa1);
-          ptr->pontosVencedores = ptr->pontosVencedores - 1;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (head->item->pontos.score2 > head->item->pontos.score1)
-      {
-        {
-          ptr = searchEquipa(tamHashEquipa, head->item->equipa2);
-          ptr->pontosVencedores = ptr->pontosVencedores - 1;
-        }
-      }
-      else
-      {
-        
-      }
-
-      free(head->item->nome);
-      free(head->item->equipa1);
-      free(head->item->equipa2);
-      free(head->item);
-      free(head);
-      prev->next = aux;
+      ptr = searchEquipa(tamHashEquipa, head->item->equipa1);
+      ptr->pontosVencedores = ptr->pontosVencedores - 1;
     }
+    else
+    {
+      
+    }
+
+    if (head->item->pontos.score2 > head->item->pontos.score1)
+    {
+      ptr = searchEquipa(tamHashEquipa, head->item->equipa2);
+      ptr->pontosVencedores = ptr->pontosVencedores - 1;
+    }
+    else
+    {
+      
+    }
+
+    free(head->item->nome);
+    free(head->item->equipa1);
+    free(head->item->equipa2);
+    free(head->item);
+    free(head);
+    prev->next = aux;
   }
 
 }
@@ -164,25 +152,23 @@ void deleteTudo(int i)
   head = heads[i];
   if (head != 0)
   {
+    aux = head->next;
+    while (aux != 0)
     {
-      aux = head->next;
-      while (aux != 0)
-      {
-        prev = aux;
-        aux = aux->next;
-        free(prev->item->equipa2);
-        free(prev->item->equipa1);
-        free(prev->item->nome);
-        free(prev->item);
-        free(prev);
-      }
-
-      free(heads[i]->item->nome);
-      free(heads[i]->item->equipa1);
-      free(heads[i]->item->equipa2);
-      free(heads[i]->item);
-      free(heads[i]);
+      prev = aux;
+      aux = aux->next;
+      free(prev->item->equipa2);
+      free(prev->item->equipa1);
+      free(prev->item->nome);
+      free(prev->item);
+      free(prev);
     }
+
+    free(heads[i]->item->nome);
+    free(heads[i]->item->equipa1);
+    free(heads[i]->item->equipa2);
+    free(heads[i]->item);
+    free(heads[i]);
   }
   else
   {
@@ -208,25 +194,23 @@ Item *HashToArray(int tamHash, int contadorJogos)
   }
   else
   {
+    array = (Item *) malloc((sizeof(Item)) * contadorJogos);
+    for (i = 0; i < contadorJogos; i++)
+      array[i] = 0;
+
+    for (i = 0; i < tamHash; ++i)
     {
-      array = (Item *) malloc((sizeof(Item)) * contadorJogos);
-      for (i = 0; i < contadorJogos; i++)
-        array[i] = 0;
-
-      for (i = 0; i < tamHash; ++i)
+      head = heads[i];
+      while (head != 0)
       {
-        head = heads[i];
-        while (head != 0)
-        {
-          array[j] = head->item;
-          head = head->next;
-          ++j;
-        }
-
+        array[j] = head->item;
+        head = head->next;
+        ++j;
       }
 
-      return array;
     }
+
+    return array;
   }
 
 }

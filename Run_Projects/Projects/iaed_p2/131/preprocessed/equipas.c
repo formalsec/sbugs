@@ -22,16 +22,12 @@ char *strdup(const char *palavra)
   ponteiro = malloc(strlen(palavra) + 1);
   if (ponteiro == 0)
   {
-    {
-      return ponteiro;
-    }
+    return ponteiro;
   }
   else
   {
-    {
-      strcpy(ponteiro, palavra);
-      return ponteiro;
-    }
+    strcpy(ponteiro, palavra);
+    return ponteiro;
   }
 
 }
@@ -92,12 +88,10 @@ link insertBegin(link head, char text[])
   x = NEW(text);
   if (head == 0)
   {
-    {
-      y->equipa = x;
-      y->next = 0;
-      y->previous = 0;
-      return y;
-    }
+    y->equipa = x;
+    y->next = 0;
+    y->previous = 0;
+    return y;
   }
   else
   {

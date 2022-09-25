@@ -122,10 +122,8 @@ void adiciona_jogo(int linha_input, jogo **ht_jogos, int *pt_max_ht_jogos, int *
   reslt_2 = new_sym_var(sizeof(int) * 8);
   if (procura_jogo_ht(ht_jogos, jogo_input, *pt_max_ht_jogos) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", linha_input);
-      return;
-    }
+    printf("%d Jogo existente.\n", linha_input);
+    return;
   }
   else
   {
@@ -134,10 +132,8 @@ void adiciona_jogo(int linha_input, jogo **ht_jogos, int *pt_max_ht_jogos, int *
 
   if (((equipa_1 = procura_equipa_ht(ht_equipas, equipa_1_input, *pt_max_ht_equipas)) == 0) || ((equipa_2 = procura_equipa_ht(ht_equipas, equipa_2_input, *pt_max_ht_equipas)) == 0))
   {
-    {
-      printf("%d Equipa inexistente.\n", linha_input);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", linha_input);
+    return;
   }
   else
   {
@@ -147,37 +143,29 @@ void adiciona_jogo(int linha_input, jogo **ht_jogos, int *pt_max_ht_jogos, int *
   insere_jogo(novo_jogo(jogo_input, equipa_1, equipa_2, reslt_1, reslt_2), pt_max_ht_jogos, ht_jogos, pt_num_elem_ht_jogos, lst_jogos);
   if (reslt_1 > reslt_2)
   {
+    if ((++equipa_1->num_vitorias) > (*max_vitorias))
     {
-      if ((++equipa_1->num_vitorias) > (*max_vitorias))
+      *max_vitorias = equipa_1->num_vitorias;
+    }
+    else
+    {
+      
+    }
+
+  }
+  else
+  {
+    if (reslt_2 > reslt_1)
+    {
+      if ((++equipa_2->num_vitorias) > (*max_vitorias))
       {
-        {
-          *max_vitorias = equipa_1->num_vitorias;
-        }
+        *max_vitorias = equipa_2->num_vitorias;
       }
       else
       {
         
       }
 
-    }
-  }
-  else
-  {
-    if (reslt_2 > reslt_1)
-    {
-      {
-        if ((++equipa_2->num_vitorias) > (*max_vitorias))
-        {
-          {
-            *max_vitorias = equipa_2->num_vitorias;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
     }
     else
     {
@@ -193,19 +181,15 @@ void lista_jogos_ordem_intro(int linha_input, lista_jogos *lst_jogos)
   jogo *jogo_aux;
   if (lst_jogos->jogo_inicial == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
+    for (jogo_aux = lst_jogos->jogo_inicial; jogo_aux != 0; jogo_aux = jogo_aux->seguinte)
     {
-      for (jogo_aux = lst_jogos->jogo_inicial; jogo_aux != 0; jogo_aux = jogo_aux->seguinte)
-      {
-        printf("%d %s %s %s %d %d\n", linha_input, jogo_aux->nome, jogo_aux->equipa_1->nome, jogo_aux->equipa_2->nome, jogo_aux->resultado_1, jogo_aux->resultado_2);
-      }
-
+      printf("%d %s %s %s %d %d\n", linha_input, jogo_aux->nome, jogo_aux->equipa_1->nome, jogo_aux->equipa_2->nome, jogo_aux->resultado_1, jogo_aux->resultado_2);
     }
+
   }
 
 }
@@ -222,15 +206,11 @@ void procura_jogo(int linha_input, jogo **ht_jogos, int *pt_max_ht_jogos)
   jogo_input[10 - 1] = '\0';
   if ((jogo_procurar = procura_jogo_ht(ht_jogos, jogo_input, *pt_max_ht_jogos)) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", linha_input);
-    }
+    printf("%d Jogo inexistente.\n", linha_input);
   }
   else
   {
-    {
-      printf("%d %s %s %s %d %d\n", linha_input, jogo_procurar->nome, jogo_procurar->equipa_1->nome, jogo_procurar->equipa_2->nome, jogo_procurar->resultado_1, jogo_procurar->resultado_2);
-    }
+    printf("%d %s %s %s %d %d\n", linha_input, jogo_procurar->nome, jogo_procurar->equipa_1->nome, jogo_procurar->equipa_2->nome, jogo_procurar->resultado_1, jogo_procurar->resultado_2);
   }
 
 }
@@ -246,9 +226,7 @@ void apaga_jogo(int linha_input, jogo **ht_jogos, int *pt_max_ht_jogos, int *pt_
   jogo_input[10 - 1] = '\0';
   if (remove_jogo_ht(jogo_input, ht_jogos, pt_max_ht_jogos, pt_num_elem_ht_jogos, lst_jogos) != 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", linha_input);
-    }
+    printf("%d Jogo inexistente.\n", linha_input);
   }
   else
   {
@@ -273,37 +251,29 @@ void altera_resultado(int linha_input, jogo **ht_jogos, int *pt_max_ht_jogos, in
   novo_reslt_2 = new_sym_var(sizeof(int) * 8);
   if ((jogo_alterar = procura_jogo_ht(ht_jogos, jogo_input, *pt_max_ht_jogos)) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", linha_input);
-      ;
-    }
+    printf("%d Jogo inexistente.\n", linha_input);
+    ;
   }
   else
   {
+    altera_resultados_jogo(jogo_alterar, novo_reslt_1, novo_reslt_2);
+    if (jogo_alterar->equipa_1->num_vitorias > (*pt_max_vitorias))
     {
-      altera_resultados_jogo(jogo_alterar, novo_reslt_1, novo_reslt_2);
-      if (jogo_alterar->equipa_1->num_vitorias > (*pt_max_vitorias))
+      *pt_max_vitorias = jogo_alterar->equipa_1->num_vitorias;
+    }
+    else
+    {
+      if (jogo_alterar->equipa_2->num_vitorias > (*pt_max_vitorias))
       {
-        {
-          *pt_max_vitorias = jogo_alterar->equipa_1->num_vitorias;
-        }
+        *pt_max_vitorias = jogo_alterar->equipa_2->num_vitorias;
       }
       else
       {
-        if (jogo_alterar->equipa_2->num_vitorias > (*pt_max_vitorias))
-        {
-          {
-            *pt_max_vitorias = jogo_alterar->equipa_2->num_vitorias;
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
     }
+
   }
 
 }
@@ -321,10 +291,8 @@ void adiciona_equipa(int linha_input, equipa **ht_equipas, int *pt_max_ht_eqp, i
   n_equipa = nova_equipa(equipa_input);
   if (insere_equipa(n_equipa, pt_max_ht_eqp, ht_equipas, num_elem_ht_equipas) == 0)
   {
-    {
-      liberta_equipa(n_equipa);
-      printf("%d Equipa existente.\n", linha_input);
-    }
+    liberta_equipa(n_equipa);
+    printf("%d Equipa existente.\n", linha_input);
   }
   else
   {
@@ -345,15 +313,11 @@ void procura_equipa(int linha_input, equipa **ht_equipas, int *pt_max_ht_eqp)
   equipa_input[10 - 1] = '\0';
   if ((equipa_procurar = procura_equipa_ht(ht_equipas, equipa_input, *pt_max_ht_eqp)) == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", linha_input);
-    }
+    printf("%d Equipa inexistente.\n", linha_input);
   }
   else
   {
-    {
-      printf("%d %s %d\n", linha_input, equipa_procurar->nome, equipa_procurar->num_vitorias);
-    }
+    printf("%d %s %d\n", linha_input, equipa_procurar->nome, equipa_procurar->num_vitorias);
   }
 
 }
@@ -367,17 +331,13 @@ void lista_equipas_mais_vitorias(int linha_input, equipa **ht_equipas, int max_h
   {
     if (ht_equipas[i] == 0)
     {
-      {
-        continue;
-      }
+      continue;
     }
     else
     {
       if (ht_equipas[i]->num_vitorias == max_vitorias)
       {
-        {
-          aux_equipas[j++] = ht_equipas[i]->nome;
-        }
+        aux_equipas[j++] = ht_equipas[i]->nome;
       }
       else
       {
@@ -390,15 +350,13 @@ void lista_equipas_mais_vitorias(int linha_input, equipa **ht_equipas, int max_h
 
   if (j != 0)
   {
+    qsort(aux_equipas, j, sizeof(char *), compara_strings);
+    printf("%d Melhores %d\n", linha_input, max_vitorias);
+    for (i = 0; i < j; i++)
     {
-      qsort(aux_equipas, j, sizeof(char *), compara_strings);
-      printf("%d Melhores %d\n", linha_input, max_vitorias);
-      for (i = 0; i < j; i++)
-      {
-        printf("%d * %s\n", linha_input, aux_equipas[i]);
-      }
-
+      printf("%d * %s\n", linha_input, aux_equipas[i]);
     }
+
   }
   else
   {

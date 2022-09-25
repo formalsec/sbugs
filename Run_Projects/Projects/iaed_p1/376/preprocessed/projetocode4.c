@@ -40,9 +40,7 @@ void addstock(int nprodutos)
   quant = new_sym_var(sizeof(int) * 8);
   if (nprodutos > idprod)
   {
-    {
-      p[idprod].quantidade = p[idprod].quantidade + quant;
-    }
+    p[idprod].quantidade = p[idprod].quantidade + quant;
   }
   else
   {
@@ -88,25 +86,21 @@ void addprodenc(int nencomendas, int nprodutos, int pesototalenc[500], int nprod
         }
         else
         {
+          if (e[idenc].p[idprod].preco == 0)
           {
-            if (e[idenc].p[idprod].preco == 0)
-            {
-              {
-                nprodenc[idenc]++;
-              }
-            }
-            else
-            {
-              
-            }
-
-            e[idenc].p[idprod].quantidade = e[idenc].p[idprod].quantidade + quant;
-            p[idprod].quantidade = p[idprod].quantidade - quant;
-            e[idenc].p[idprod].preco = p[idprod].preco;
-            e[idenc].p[idprod].peso = p[idprod].peso;
-            strcpy(e[idenc].p[idprod].descricao, p[idprod].descricao);
-            pesototalenc[idenc] = pesototalenc[idenc] + (e[idenc].p[idprod].peso * quant);
+            nprodenc[idenc]++;
           }
+          else
+          {
+            
+          }
+
+          e[idenc].p[idprod].quantidade = e[idenc].p[idprod].quantidade + quant;
+          p[idprod].quantidade = p[idprod].quantidade - quant;
+          e[idenc].p[idprod].preco = p[idprod].preco;
+          e[idenc].p[idprod].peso = p[idprod].peso;
+          strcpy(e[idenc].p[idprod].descricao, p[idprod].descricao);
+          pesototalenc[idenc] = pesototalenc[idenc] + (e[idenc].p[idprod].peso * quant);
         }
 
       }
@@ -135,9 +129,7 @@ void remstock(int nprodutos)
     }
     else
     {
-      {
-        p[idprod].quantidade = p[idprod].quantidade - quant;
-      }
+      p[idprod].quantidade = p[idprod].quantidade - quant;
     }
 
   }
@@ -162,11 +154,9 @@ void remprodenc(int nprodutos, int nencomendas, int pesototalenc[500])
     }
     else
     {
-      {
-        pesototalenc[idenc] = pesototalenc[idenc] - (e[idenc].p[idprod].peso * e[idenc].p[idprod].quantidade);
-        p[idprod].quantidade = p[idprod].quantidade + e[idenc].p[idprod].quantidade;
-        e[idenc].p[idprod].quantidade = 0;
-      }
+      pesototalenc[idenc] = pesototalenc[idenc] - (e[idenc].p[idprod].peso * e[idenc].p[idprod].quantidade);
+      p[idprod].quantidade = p[idprod].quantidade + e[idenc].p[idprod].quantidade;
+      e[idenc].p[idprod].quantidade = 0;
     }
 
   }
@@ -185,22 +175,20 @@ void enccost(int nencomendas)
   }
   else
   {
+    for (i = 0; i < 10000; i++)
     {
-      for (i = 0; i < 10000; i++)
+      if (e[idenc].p[i].preco > 0)
       {
-        if (e[idenc].p[i].preco > 0)
-        {
-          custo = custo + (e[idenc].p[i].preco * e[idenc].p[i].quantidade);
-        }
-        else
-        {
-          
-        }
-
+        custo = custo + (e[idenc].p[i].preco * e[idenc].p[i].quantidade);
+      }
+      else
+      {
+        
       }
 
-      printf("Custo da encomenda %d %d.\n", idenc, custo);
     }
+
+    printf("Custo da encomenda %d %d.\n", idenc, custo);
   }
 
 }
@@ -218,14 +206,12 @@ void mudaprecoprod(int nprodutos, int nencomendas)
   }
   else
   {
+    p[idprod].preco = precop;
+    for (x = 0; x < nencomendas; x++)
     {
-      p[idprod].preco = precop;
-      for (x = 0; x < nencomendas; x++)
-      {
-        e[x].p[idprod].preco = precop;
-      }
-
+      e[x].p[idprod].preco = precop;
     }
+
   }
 
 }
@@ -275,10 +261,8 @@ void prodocorremaisx(int nencomendas, int nprodutos)
   {
     if (e[i].p[idprod].quantidade > maxtimes)
     {
-      {
-        maxtimes = e[i].p[idprod].quantidade;
-        idenc = i;
-      }
+      maxtimes = e[i].p[idprod].quantidade;
+      idenc = i;
     }
     else
     {
@@ -429,44 +413,40 @@ void sortalfa(int nencomendas)
   }
   else
   {
+    for (x = 0; x < 10000; x++)
     {
-      for (x = 0; x < 10000; x++)
+      cp[x].preco = 0;
+      cp[x].quantidade = 0;
+    }
+
+    for (x = 0; x < 10000; x++)
+    {
+      if (e[idenc].p[x].preco > 0)
       {
-        cp[x].preco = 0;
-        cp[x].quantidade = 0;
+        cp[x] = e[idenc].p[x];
       }
-
-      for (x = 0; x < 10000; x++)
+      else
       {
-        if (e[idenc].p[x].preco > 0)
-        {
-          {
-            cp[x] = e[idenc].p[x];
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      mergesortalfa(cp, l, r);
-      printf("Encomenda %d\n", idenc);
-      for (x = 0; x < 10000; x++)
-      {
-        if (cp[x].quantidade > 0)
-        {
-          printf("* %s %d %d\n", cp[x].descricao, cp[x].preco, cp[x].quantidade);
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
     }
+
+    mergesortalfa(cp, l, r);
+    printf("Encomenda %d\n", idenc);
+    for (x = 0; x < 10000; x++)
+    {
+      if (cp[x].quantidade > 0)
+      {
+        printf("* %s %d %d\n", cp[x].descricao, cp[x].preco, cp[x].quantidade);
+      }
+      else
+      {
+        
+      }
+
+    }
+
   }
 
 }

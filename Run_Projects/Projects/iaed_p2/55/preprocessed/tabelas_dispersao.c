@@ -24,9 +24,7 @@ int eh_vazia_tabela_equipa(const tabela_equipa *tabela, int M)
   {
     if (tabela->cabecas_eq[i] != 0)
     {
-      {
-        return 0;
-      }
+      return 0;
     }
     else
     {
@@ -45,9 +43,7 @@ int eh_vazia_tabela_jogo(const tabela_jogo *tabela, int MJ)
   {
     if (tabela->cabecas_jg[i] != 0)
     {
-      {
-        return 0;
-      }
+      return 0;
     }
     else
     {
@@ -94,9 +90,7 @@ void liberta_tabela_equipa(tabela_equipa *tab_libertar, int M)
   {
     if (tab_libertar->cabecas_eq[i] != 0)
     {
-      {
-        liberta_lista_equipa(tab_libertar->cabecas_eq[i]);
-      }
+      liberta_lista_equipa(tab_libertar->cabecas_eq[i]);
     }
     else
     {
@@ -117,9 +111,7 @@ void liberta_tabela_jogo(tabela_jogo *tab_libertar, int MJ)
   {
     if (tab_libertar->cabecas_jg[i] != 0)
     {
-      {
-        liberta_lista_jogo(tab_libertar->cabecas_jg[i]);
-      }
+      liberta_lista_jogo(tab_libertar->cabecas_jg[i]);
     }
     else
     {
@@ -138,16 +130,12 @@ lista_equipa *insere_ou_cria_lista_equipa(tabela_equipa *tabela, char *equipa, i
   int indice = hash(equipa, M);
   if (tabela->cabecas_eq[indice] != 0)
   {
-    {
-      return tabela->cabecas_eq[indice];
-    }
+    return tabela->cabecas_eq[indice];
   }
   else
   {
-    {
-      tabela->cabecas_eq[indice] = cria_lista_equipa();
-      return tabela->cabecas_eq[indice];
-    }
+    tabela->cabecas_eq[indice] = cria_lista_equipa();
+    return tabela->cabecas_eq[indice];
   }
 
   puts("insere_lista_equipa: Erro\n");
@@ -164,16 +152,12 @@ lista *insere_ou_cria_lista_jogo(tabela_jogo *tabela, char *jogo, int MJ)
   int indice = hash(jogo, MJ);
   if (tabela->cabecas_jg[indice] != 0)
   {
-    {
-      return tabela->cabecas_jg[indice];
-    }
+    return tabela->cabecas_jg[indice];
   }
   else
   {
-    {
-      tabela->cabecas_jg[indice] = cria_lista();
-      return tabela->cabecas_jg[indice];
-    }
+    tabela->cabecas_jg[indice] = cria_lista();
+    return tabela->cabecas_jg[indice];
   }
 
   puts("insere_lista_equipa: Erro\n");
@@ -192,25 +176,14 @@ int retorna_contador_max_vitorias_tabela(const tabela_equipa *tabela, int M, int
   lista_equipa *lista;
   if (!eh_vazia_tabela_equipa(tabela, M))
   {
+    for (i = 0; i < M; i++)
     {
-      for (i = 0; i < M; i++)
+      if (tabela->cabecas_eq[i] != 0)
       {
-        if (tabela->cabecas_eq[i] != 0)
+        lista = tabela->cabecas_eq[i];
+        if (!eh_vazia_equipa(lista))
         {
-          {
-            lista = tabela->cabecas_eq[i];
-            if (!eh_vazia_equipa(lista))
-            {
-              {
-                contador_vitorias += Retorna_contador_max_vitorias(lista, max_vitorias);
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
+          contador_vitorias += Retorna_contador_max_vitorias(lista, max_vitorias);
         }
         else
         {
@@ -218,8 +191,13 @@ int retorna_contador_max_vitorias_tabela(const tabela_equipa *tabela, int M, int
         }
 
       }
+      else
+      {
+        
+      }
 
     }
+
   }
   else
   {
@@ -237,36 +215,23 @@ int retorna_max_vitorias_tabela(const tabela_equipa *tabela, int M)
   lista_equipa *lista;
   if (!eh_vazia_tabela_equipa(tabela, M))
   {
+    for (i = 0; i < M; i++)
     {
-      for (i = 0; i < M; i++)
+      if (tabela->cabecas_eq[i] != 0)
       {
-        if (tabela->cabecas_eq[i] != 0)
+        lista = tabela->cabecas_eq[i];
+        if (!eh_vazia_equipa(lista))
         {
+          maximo = Retorna_max_vitorias(lista);
+          if (maximo > maximo_vitorias)
           {
-            lista = tabela->cabecas_eq[i];
-            if (!eh_vazia_equipa(lista))
-            {
-              {
-                maximo = Retorna_max_vitorias(lista);
-                if (maximo > maximo_vitorias)
-                {
-                  {
-                    maximo_vitorias = maximo;
-                  }
-                }
-                else
-                {
-                  
-                }
-
-              }
-            }
-            else
-            {
-              
-            }
-
+            maximo_vitorias = maximo;
           }
+          else
+          {
+            
+          }
+
         }
         else
         {
@@ -274,8 +239,13 @@ int retorna_max_vitorias_tabela(const tabela_equipa *tabela, int M)
         }
 
       }
+      else
+      {
+        
+      }
 
     }
+
   }
   else
   {

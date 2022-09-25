@@ -53,12 +53,10 @@ void mergeSort(Item a[], int lo, int hi, int key)
 {
   if (hi > lo)
   {
-    {
-      int mid = (lo + hi) / 2;
-      mergeSort(a, lo, mid, key);
-      mergeSort(a, mid + 1, hi, key);
-      merge(a, lo, mid, hi, key);
-    }
+    int mid = (lo + hi) / 2;
+    mergeSort(a, lo, mid, key);
+    mergeSort(a, mid + 1, hi, key);
+    merge(a, lo, mid, hi, key);
   }
   else
   {
@@ -89,18 +87,14 @@ void adicionaProdEnco(int ide, int idp, int qtd)
   int i = indiceProdEnco(idp, ide);
   if (i >= 0)
   {
-    {
-      enco[ide].prod[i].qtd += qtd;
-    }
+    enco[ide].prod[i].qtd += qtd;
   }
   else
   {
-    {
-      i = enco[ide].N;
-      enco[ide].prod[i].id = idp;
-      enco[ide].prod[i].qtd = qtd;
-      enco[ide].N++;
-    }
+    i = enco[ide].N;
+    enco[ide].prod[i].id = idp;
+    enco[ide].prod[i].qtd = qtd;
+    enco[ide].N++;
   }
 
   prod[idp].qtd -= qtd;
@@ -145,16 +139,14 @@ void removeProdEnco(int ide, int idp)
   int i = indiceProdEnco(idp, ide);
   if (i >= 0)
   {
+    prod[idp].qtd += enco[ide].prod[i].qtd;
+    enco[ide].N--;
+    for (; i < enco[ide].N; i++)
     {
-      prod[idp].qtd += enco[ide].prod[i].qtd;
-      enco[ide].N--;
-      for (; i < enco[ide].N; i++)
-      {
-        enco[ide].prod[i].id = enco[ide].prod[i + 1].id;
-        enco[ide].prod[i].qtd = enco[ide].prod[i + 1].qtd;
-      }
-
+      enco[ide].prod[i].id = enco[ide].prod[i + 1].id;
+      enco[ide].prod[i].qtd = enco[ide].prod[i + 1].qtd;
     }
+
   }
   else
   {
@@ -173,10 +165,8 @@ int encomendaMaiorQuantProd(int idp)
   {
     if ((qtd = quantProdEnco(idp, i)) > max)
     {
-      {
-        ide = i;
-        max = qtd;
-      }
+      ide = i;
+      max = qtd;
     }
     else
     {
@@ -367,18 +357,16 @@ void case_m()
   }
   else
   {
+    int ide = encomendaMaiorQuantProd(idp);
+    if (ide >= 0)
     {
-      int ide = encomendaMaiorQuantProd(idp);
-      if (ide >= 0)
-      {
-        printf("Maximo produto %d %d %d.\n", idp, ide, quantProdEnco(idp, ide));
-      }
-      else
-      {
-        
-      }
-
+      printf("Maximo produto %d %d %d.\n", idp, ide, quantProdEnco(idp, ide));
     }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -429,11 +417,9 @@ void case_L()
   }
   else
   {
-    {
-      naturais(ord, enco[ide].N);
-      mergeSort(ord, 0, enco[ide].N - 1, ide);
-      imprimeEnco(ide, ord);
-    }
+    naturais(ord, enco[ide].N);
+    mergeSort(ord, 0, enco[ide].N - 1, ide);
+    imprimeEnco(ide, ord);
   }
 
 }

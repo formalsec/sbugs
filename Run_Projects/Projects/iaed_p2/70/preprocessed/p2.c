@@ -70,27 +70,25 @@ int main()
         }
         else
         {
+          add_jogo(lista_jogo, jog, equ, equ2, sc1, sc2);
+          insere_jogo(hash_game, jog, lista_jogo->last, m);
+          if (sc1 > sc2)
           {
-            add_jogo(lista_jogo, jog, equ, equ2, sc1, sc2);
-            insere_jogo(hash_game, jog, lista_jogo->last, m);
-            if (sc1 > sc2)
+            equ->i++;
+          }
+          else
+          {
+            if (sc2 > sc1)
             {
-              equ->i++;
+              equ2->i++;
             }
             else
             {
-              if (sc2 > sc1)
-              {
-                equ2->i++;
-              }
-              else
-              {
-                
-              }
-
+              
             }
 
           }
+
         }
 
       }
@@ -143,66 +141,49 @@ int main()
         sc2 = new_sym_var(sizeof(int) * 8);
         if ((game = encontra_jogo(hash_game, jog, m)) == 0)
       {
-        {
-          printf("%d Jogo inexistente.\n", nl);
-        }
+        printf("%d Jogo inexistente.\n", nl);
       }
       else
       {
+        if ((game->sc1 > game->sc2) && (sc1 < sc2))
         {
-          if ((game->sc1 > game->sc2) && (sc1 < sc2))
+          game->equipa1->i--;
+          game->equipa2->i++;
+        }
+        else
+        {
+          if ((game->sc1 < game->sc2) && (sc1 > sc2))
           {
-            {
-              game->equipa1->i--;
-              game->equipa2->i++;
-            }
+            game->equipa1->i++;
+            game->equipa2->i--;
           }
           else
           {
-            if ((game->sc1 < game->sc2) && (sc1 > sc2))
+            if ((game->sc1 == game->sc2) && (sc1 > sc2))
             {
-              {
-                game->equipa1->i++;
-                game->equipa2->i--;
-              }
+              game->equipa1->i++;
             }
             else
             {
-              if ((game->sc1 == game->sc2) && (sc1 > sc2))
+              if ((game->sc1 == game->sc2) && (sc1 < sc2))
               {
-                {
-                  game->equipa1->i++;
-                }
+                game->equipa2->i++;
               }
               else
               {
-                if ((game->sc1 == game->sc2) && (sc1 < sc2))
+                if ((game->sc1 > game->sc2) && (sc1 == sc2))
                 {
-                  {
-                    game->equipa2->i++;
-                  }
+                  game->equipa1->i--;
                 }
                 else
                 {
-                  if ((game->sc1 > game->sc2) && (sc1 == sc2))
+                  if ((game->sc1 < game->sc2) && (sc1 == sc2))
                   {
-                    {
-                      game->equipa1->i--;
-                    }
+                    game->equipa2->i--;
                   }
                   else
                   {
-                    if ((game->sc1 < game->sc2) && (sc1 == sc2))
-                    {
-                      {
-                        game->equipa2->i--;
-                      }
-                    }
-                    else
-                    {
-                      
-                    }
-
+                    
                   }
 
                 }
@@ -213,9 +194,10 @@ int main()
 
           }
 
-          game->sc1 = sc1;
-          game->sc2 = sc2;
         }
+
+        game->sc1 = sc1;
+        game->sc2 = sc2;
       }
 
         break;
@@ -264,17 +246,15 @@ int main()
         sc1 = encontr_melhor(equipas, m, sc1, &sc2);
         if (sc2 != 0)
       {
-        {
-          orde = (equipa **) malloc(sc2 * (sizeof(equipa)));
-          ord1 = orde;
-          proc(equipas, orde, sc1, m, sc2);
-          ordena_lista(ord1, 0, sc2 - 1);
-          printf("%d Melhores %d\n", nl, sc1);
-          for (sc1 = 0; sc1 < sc2; sc1++)
-            printf("%d * %s\n", nl, ord1[sc1]->nome);
+        orde = (equipa **) malloc(sc2 * (sizeof(equipa)));
+        ord1 = orde;
+        proc(equipas, orde, sc1, m, sc2);
+        ordena_lista(ord1, 0, sc2 - 1);
+        printf("%d Melhores %d\n", nl, sc1);
+        for (sc1 = 0; sc1 < sc2; sc1++)
+          printf("%d * %s\n", nl, ord1[sc1]->nome);
 
-          free(ord1);
-        }
+        free(ord1);
       }
       else
       {

@@ -32,11 +32,9 @@ void addProdToPack(int ide, int idp, int qtd)
   for (i = 0; (i < 200) && packages[ide][i].alive; i++)
     if (packages[ide][i].id == idp)
   {
-    {
-      packages[ide][i].quantity += qtd;
-      exists = 1;
-      break;
-    }
+    packages[ide][i].quantity += qtd;
+    exists = 1;
+    break;
   }
   else
   {
@@ -46,10 +44,8 @@ void addProdToPack(int ide, int idp, int qtd)
 
   if (!exists)
   {
-    {
-      packages[ide][i] = products[idp];
-      packages[ide][i].quantity = qtd;
-    }
+    packages[ide][i] = products[idp];
+    packages[ide][i].quantity = qtd;
   }
   else
   {
@@ -65,9 +61,7 @@ void removeProdFromPack(int ide, int idp)
   for (i = 0; (i < 200) && packages[ide][i].alive; i++)
     if (packages[ide][i].id == idp)
   {
-    {
-      found = i;
-    }
+    found = i;
   }
   else
   {
@@ -77,11 +71,9 @@ void removeProdFromPack(int ide, int idp)
 
   if (found >= 0)
   {
-    {
-      products[idp].quantity += packages[ide][found].quantity;
-      packages[ide][found] = packages[ide][i - 1];
-      packages[ide][i - 1].alive = 0;
-    }
+    products[idp].quantity += packages[ide][found].quantity;
+    packages[ide][found] = packages[ide][i - 1];
+    packages[ide][i - 1].alive = 0;
   }
   else
   {
@@ -99,22 +91,18 @@ int partitionAlfa(Product products[], int left, int right)
   for (j = left; j <= (right - 1); j++)
     if (strcmp(products[j].description, pivot.description) < 0)
   {
+    i++;
+    if (i != j)
     {
-      i++;
-      if (i != j)
-      {
-        {
-          holder = products[i];
-          products[i] = products[j];
-          products[j] = holder;
-        }
-      }
-      else
-      {
-        
-      }
-
+      holder = products[i];
+      products[i] = products[j];
+      products[j] = holder;
     }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -134,11 +122,9 @@ void sortProductsByAlfa(Product products[], int left, int right)
   int pivot;
   if (left < right)
   {
-    {
-      pivot = partitionAlfa(products, left, right);
-      sortProductsByAlfa(products, left, pivot - 1);
-      sortProductsByAlfa(products, pivot + 1, right);
-    }
+    pivot = partitionAlfa(products, left, right);
+    sortProductsByAlfa(products, left, pivot - 1);
+    sortProductsByAlfa(products, pivot + 1, right);
   }
   else
   {
@@ -229,18 +215,14 @@ void calcPackagePriceCmd()
   ide = new_sym_var(sizeof(int) * 8);
   if (!packageExists(ide))
   {
-    {
-      printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ide);
-    }
+    printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ide);
   }
   else
   {
-    {
-      for (i = 0; (i < 200) && packages[ide][i].alive; i++)
-        cost += products[packages[ide][i].id].price * packages[ide][i].quantity;
+    for (i = 0; (i < 200) && packages[ide][i].alive; i++)
+      cost += products[packages[ide][i].id].price * packages[ide][i].quantity;
 
-      printf("Custo da encomenda %d %d.\n", ide, cost);
-    }
+    printf("Custo da encomenda %d %d.\n", ide, cost);
   }
 
 }
@@ -265,23 +247,19 @@ void returnProdInfoCmd()
     }
     else
     {
+      for (i = 0; (i < 200) && packages[ide][i].alive; i++)
+        if (packages[ide][i].id == idp)
       {
-        for (i = 0; (i < 200) && packages[ide][i].alive; i++)
-          if (packages[ide][i].id == idp)
-        {
-          {
-            qtd = packages[ide][i].quantity;
-            break;
-          }
-        }
-        else
-        {
-          
-        }
-
-
-        printf("%s %d.\n", products[idp].description, qtd);
+        qtd = packages[ide][i].quantity;
+        break;
       }
+      else
+      {
+        
+      }
+
+
+      printf("%s %d.\n", products[idp].description, qtd);
     }
 
   }
@@ -296,22 +274,18 @@ void listPackageProdsCmd()
   ide = new_sym_var(sizeof(int) * 8);
   if (!packageExists(ide))
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
   }
   else
   {
-    {
-      for (items = 0; (items < 200) && packages[ide][items].alive; items++)
-        ;
+    for (items = 0; (items < 200) && packages[ide][items].alive; items++)
+      ;
 
-      sortProductsByAlfa(packages[ide], 0, items - 1);
-      printf("Encomenda %d\n", ide);
-      for (i = 0; i < items; i++)
-        printf("* %s %d %d\n", packages[ide][i].description, products[packages[ide][i].id].price, packages[ide][i].quantity);
+    sortProductsByAlfa(packages[ide], 0, items - 1);
+    printf("Encomenda %d\n", ide);
+    for (i = 0; i < items; i++)
+      printf("* %s %d %d\n", packages[ide][i].description, products[packages[ide][i].id].price, packages[ide][i].quantity);
 
-    }
   }
 
 }

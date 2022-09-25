@@ -43,46 +43,36 @@ void novo_jogo(int nl, linkJ headsJ[], linkE headsE[], lista *lst)
   n = procura_nome(nome, headsJ);
   if (n != 0)
   {
-    {
-      printf("%d Jogo existente.\n", nl);
-    }
+    printf("%d Jogo existente.\n", nl);
   }
   else
   {
     if ((eqp1 == 0) || (eqp2 == 0))
     {
-      {
-        printf("%d Equipa inexistente.\n", nl);
-      }
+      printf("%d Equipa inexistente.\n", nl);
     }
     else
     {
+      njogo = novoJogo(nome, equipa1, equipa2, score1, score2);
+      inserirJ(njogo, headsJ);
+      inserir_fim(lst, njogo);
+      if (score2 > score1)
       {
-        njogo = novoJogo(nome, equipa1, equipa2, score1, score2);
-        inserirJ(njogo, headsJ);
-        inserir_fim(lst, njogo);
-        if (score2 > score1)
+        eqp2->vitorias++;
+      }
+      else
+      {
+        if (score1 > score2)
         {
-          {
-            eqp2->vitorias++;
-          }
+          eqp1->vitorias++;
         }
         else
         {
-          if (score1 > score2)
-          {
-            {
-              eqp1->vitorias++;
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
+
     }
 
   }
@@ -107,15 +97,11 @@ void procura_jogo(int nl, linkJ headsJ[])
   jogo = procura_nome(nome, headsJ);
   if (jogo != 0)
   {
-    {
-      imprimeJogo(nl, jogo);
-    }
+    imprimeJogo(nl, jogo);
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-    }
+    printf("%d Jogo inexistente.\n", nl);
   }
 
 }
@@ -139,40 +125,32 @@ void apagar_jogo(int nl, linkJ headsJ[], lista *lst, linkE headsE[])
   i = chave(nome);
   if (jogo != 0)
   {
+    eqp1 = procura_equipa(jogo->equipa1, headsE);
+    eqp2 = procura_equipa(jogo->equipa2, headsE);
+    scr1 = jogo->score1;
+    scr2 = jogo->score2;
+    if (scr1 > scr2)
     {
-      eqp1 = procura_equipa(jogo->equipa1, headsE);
-      eqp2 = procura_equipa(jogo->equipa2, headsE);
-      scr1 = jogo->score1;
-      scr2 = jogo->score2;
-      if (scr1 > scr2)
+      eqp1->vitorias--;
+    }
+    else
+    {
+      if (scr2 > scr1)
       {
-        {
-          eqp1->vitorias--;
-        }
+        eqp2->vitorias--;
       }
       else
       {
-        if (scr2 > scr1)
-        {
-          {
-            eqp2->vitorias--;
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      apaga_jogo(headsJ, lst, nome, i);
     }
+
+    apaga_jogo(headsJ, lst, nome, i);
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-    }
+    printf("%d Jogo inexistente.\n", nl);
   }
 
 }
@@ -198,105 +176,83 @@ void altera_score(int nl, linkJ headsJ[], linkE headsE[])
   jogo = procura_nome(nome, headsJ);
   if (jogo != 0)
   {
+    eqp1 = procura_equipa(jogo->equipa1, headsE);
+    eqp2 = procura_equipa(jogo->equipa2, headsE);
+    scr1 = jogo->score1;
+    scr2 = jogo->score2;
+    if (scr1 > scr2)
     {
-      eqp1 = procura_equipa(jogo->equipa1, headsE);
-      eqp2 = procura_equipa(jogo->equipa2, headsE);
-      scr1 = jogo->score1;
-      scr2 = jogo->score2;
-      if (scr1 > scr2)
+      if (score1 < score2)
       {
-        {
-          if (score1 < score2)
-          {
-            {
-              eqp2->vitorias++;
-              eqp1->vitorias--;
-            }
-          }
-          else
-          {
-            if (score1 == score2)
-            {
-              {
-                eqp1->vitorias--;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-        }
+        eqp2->vitorias++;
+        eqp1->vitorias--;
       }
       else
       {
-        if (scr1 < scr2)
+        if (score1 == score2)
         {
-          {
-            if (score1 > score2)
-            {
-              {
-                eqp1->vitorias++;
-                eqp2->vitorias--;
-              }
-            }
-            else
-            {
-              if (score1 == score2)
-              {
-                {
-                  eqp2->vitorias--;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-          }
+          eqp1->vitorias--;
         }
         else
         {
-          {
-            if (score1 < score2)
-            {
-              {
-                eqp2->vitorias++;
-              }
-            }
-            else
-            {
-              if (score1 > score2)
-              {
-                {
-                  eqp1->vitorias++;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-          }
+          
         }
 
       }
 
-      jogo->score1 = score1;
-      jogo->score2 = score2;
     }
+    else
+    {
+      if (scr1 < scr2)
+      {
+        if (score1 > score2)
+        {
+          eqp1->vitorias++;
+          eqp2->vitorias--;
+        }
+        else
+        {
+          if (score1 == score2)
+          {
+            eqp2->vitorias--;
+          }
+          else
+          {
+            
+          }
+
+        }
+
+      }
+      else
+      {
+        if (score1 < score2)
+        {
+          eqp2->vitorias++;
+        }
+        else
+        {
+          if (score1 > score2)
+          {
+            eqp1->vitorias++;
+          }
+          else
+          {
+            
+          }
+
+        }
+
+      }
+
+    }
+
+    jogo->score1 = score1;
+    jogo->score2 = score2;
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-    }
+    printf("%d Jogo inexistente.\n", nl);
   }
 
 }
@@ -315,17 +271,13 @@ void nova_equipa(int nl, int *contadorequipas, linkE headsE[])
   aux = procura_equipa(equipa, headsE);
   if (aux == 0)
   {
-    {
-      nequipa = novaEquipa(equipa, 0);
-      inserirE(nequipa, headsE);
-      (*contadorequipas)++;
-    }
+    nequipa = novaEquipa(equipa, 0);
+    inserirE(nequipa, headsE);
+    (*contadorequipas)++;
   }
   else
   {
-    {
-      printf("%d Equipa existente.\n", nl);
-    }
+    printf("%d Equipa existente.\n", nl);
   }
 
 }
@@ -343,16 +295,12 @@ void procurar_equipa(int nl, linkE headsE[])
   eqp = procura_equipa(equipa, headsE);
   if (eqp == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", nl);
-    }
+    printf("%d Equipa inexistente.\n", nl);
   }
   else
   {
-    {
-      printf("%d ", nl);
-      imprimeEquipa(eqp);
-    }
+    printf("%d ", nl);
+    imprimeEquipa(eqp);
   }
 
 }

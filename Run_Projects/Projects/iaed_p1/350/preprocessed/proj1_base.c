@@ -119,24 +119,22 @@ void funcao_a()
   int qtd;
   if (contador_produtos < 10000)
   {
+    for (int descricao_index = 0; descricao_index < 10; descricao_index++)
     {
-      for (int descricao_index = 0; descricao_index < 10; descricao_index++)
-      {
-        descricao[descricao_index] = new_sym_var(sizeof(char) * 8);
-      }
-
-      descricao[10 - 1] = '\0';
-      preco = new_sym_var(sizeof(int) * 8);
-      peso = new_sym_var(sizeof(int) * 8);
-      qtd = new_sym_var(sizeof(int) * 8);
-      strcpy(sistema[contador_produtos].descricao, descricao);
-      sistema[contador_produtos].preco = preco;
-      sistema[contador_produtos].peso = peso;
-      sistema[contador_produtos].qtd = qtd;
-      sistema[contador_produtos].idp = contador_produtos;
-      printf("Novo produto %d.\n", contador_produtos);
-      contador_produtos++;
+      descricao[descricao_index] = new_sym_var(sizeof(char) * 8);
     }
+
+    descricao[10 - 1] = '\0';
+    preco = new_sym_var(sizeof(int) * 8);
+    peso = new_sym_var(sizeof(int) * 8);
+    qtd = new_sym_var(sizeof(int) * 8);
+    strcpy(sistema[contador_produtos].descricao, descricao);
+    sistema[contador_produtos].preco = preco;
+    sistema[contador_produtos].peso = peso;
+    sistema[contador_produtos].qtd = qtd;
+    sistema[contador_produtos].idp = contador_produtos;
+    printf("Novo produto %d.\n", contador_produtos);
+    contador_produtos++;
   }
   else
   {
@@ -166,12 +164,10 @@ void funcao_N()
 {
   if (contador_encomendas < 500)
   {
-    {
-      printf("Nova encomenda %d.\n", contador_encomendas);
-      sistema_e[contador_encomendas].peso_e = 0;
-      sistema_e[contador_encomendas].contador = 0;
-      contador_encomendas++;
-    }
+    printf("Nova encomenda %d.\n", contador_encomendas);
+    sistema_e[contador_encomendas].peso_e = 0;
+    sistema_e[contador_encomendas].contador = 0;
+    contador_encomendas++;
   }
   else
   {
@@ -213,31 +209,27 @@ void funcao_A()
         }
         else
         {
+          for (i = 0; i < sistema_e[ide].contador; i++)
           {
-            for (i = 0; i < sistema_e[ide].contador; i++)
+            if (sistema_e[ide].produtos[i].idp == idp)
             {
-              if (sistema_e[ide].produtos[i].idp == idp)
-              {
-                {
-                  sistema_e[ide].produtos[i].qtd += qtd;
-                  sistema_e[ide].peso_e += sistema[idp].peso * qtd;
-                  sistema[idp].qtd -= qtd;
-                  return;
-                }
-              }
-              else
-              {
-                
-              }
-
+              sistema_e[ide].produtos[i].qtd += qtd;
+              sistema_e[ide].peso_e += sistema[idp].peso * qtd;
+              sistema[idp].qtd -= qtd;
+              return;
+            }
+            else
+            {
+              
             }
 
-            sistema_e[ide].produtos[sistema_e[ide].contador] = sistema[idp];
-            sistema_e[ide].produtos[sistema_e[ide].contador].qtd = qtd;
-            sistema_e[ide].peso_e += sistema[idp].peso * qtd;
-            sistema[idp].qtd -= qtd;
-            sistema_e[ide].contador++;
           }
+
+          sistema_e[ide].produtos[sistema_e[ide].contador] = sistema[idp];
+          sistema_e[ide].produtos[sistema_e[ide].contador].qtd = qtd;
+          sistema_e[ide].peso_e += sistema[idp].peso * qtd;
+          sistema[idp].qtd -= qtd;
+          sistema_e[ide].contador++;
         }
 
       }
@@ -283,19 +275,15 @@ void funcao_R()
   idp = new_sym_var(sizeof(int) * 8);
   if (ide >= contador_encomendas)
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
-      return;
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
+    return;
   }
   else
   {
     if (sistema[idp].descricao[0] == '\0')
     {
-      {
-        printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
-        return;
-      }
+      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
+      return;
     }
     else
     {
@@ -308,15 +296,13 @@ void funcao_R()
   {
     if (sistema_e[ide].produtos[i].idp == idp)
     {
-      {
-        sistema[idp].qtd += sistema_e[ide].produtos[i].qtd;
-        sistema_e[ide].peso_e -= sistema[idp].peso * sistema_e[ide].produtos[i].qtd;
-        for (k = i; k < sistema_e[ide].contador; k++)
-          sistema_e[ide].produtos[k] = sistema_e[ide].produtos[k + 1];
+      sistema[idp].qtd += sistema_e[ide].produtos[i].qtd;
+      sistema_e[ide].peso_e -= sistema[idp].peso * sistema_e[ide].produtos[i].qtd;
+      for (k = i; k < sistema_e[ide].contador; k++)
+        sistema_e[ide].produtos[k] = sistema_e[ide].produtos[k + 1];
 
-        sistema_e[ide].contador--;
-        return;
-      }
+      sistema_e[ide].contador--;
+      return;
     }
     else
     {
@@ -340,15 +326,13 @@ void funcao_C()
   }
   else
   {
+    for (i = 0; i < sistema_e[ide].contador; i++)
     {
-      for (i = 0; i < sistema_e[ide].contador; i++)
-      {
-        idp = sistema_e[ide].produtos[i].idp;
-        soma += sistema[idp].preco * sistema_e[ide].produtos[i].qtd;
-      }
-
-      printf("Custo da encomenda %d %d.\n", ide, soma);
+      idp = sistema_e[ide].produtos[i].idp;
+      soma += sistema[idp].preco * sistema_e[ide].produtos[i].qtd;
     }
+
+    printf("Custo da encomenda %d %d.\n", ide, soma);
   }
 
 }
@@ -380,19 +364,15 @@ void funcao_E()
   idp = new_sym_var(sizeof(int) * 8);
   if (ide >= contador_encomendas)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
-      return;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
+    return;
   }
   else
   {
     if (sistema[idp].descricao[0] == '\0')
     {
-      {
-        printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
-        return;
-      }
+      printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
+      return;
     }
     else
     {
@@ -404,10 +384,8 @@ void funcao_E()
   for (i = 0; i < sistema_e[ide].contador; i++)
     if (sistema_e[ide].produtos[i].idp == idp)
   {
-    {
-      printf("%s %d.\n", sistema[idp].descricao, sistema_e[ide].produtos[i].qtd);
-      return;
-    }
+    printf("%s %d.\n", sistema[idp].descricao, sistema_e[ide].produtos[i].qtd);
+    return;
   }
   else
   {
@@ -429,10 +407,8 @@ void funcao_m()
   k = 0;
   if (sistema[idp].descricao[0] == '\0')
   {
-    {
-      printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idp);
-      return;
-    }
+    printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idp);
+    return;
   }
   else
   {
@@ -443,10 +419,8 @@ void funcao_m()
     for (i2 = 0; i2 < sistema_e[i1].contador; i2++)
     if ((sistema_e[i1].produtos[i2].idp == idp) && (sistema_e[i1].produtos[i2].qtd > k))
   {
-    {
-      k = sistema_e[i1].produtos[i2].qtd;
-      v = i1;
-    }
+    k = sistema_e[i1].produtos[i2].qtd;
+    v = i1;
   }
   else
   {
@@ -482,51 +456,41 @@ int particao(Produto a[], int l, int r, int comparacao)
   {
     if (comparacao == 0)
     {
+      if ((a[j].preco == v.preco) && (a[j].idp < v.idp))
       {
-        if ((a[j].preco == v.preco) && (a[j].idp < v.idp))
-        {
-          {
-            i++;
-            exch(&a[i], &a[j]);
-          }
-        }
-        else
-        {
-          
-        }
-
-        if (a[j].preco < v.preco)
-        {
-          {
-            i++;
-            exch(&a[i], &a[j]);
-          }
-        }
-        else
-        {
-          
-        }
-
+        i++;
+        exch(&a[i], &a[j]);
       }
+      else
+      {
+        
+      }
+
+      if (a[j].preco < v.preco)
+      {
+        i++;
+        exch(&a[i], &a[j]);
+      }
+      else
+      {
+        
+      }
+
     }
     else
     {
       if (comparacao == 1)
       {
+        if (strcmp(a[j].descricao, v.descricao) < 0)
         {
-          if (strcmp(a[j].descricao, v.descricao) < 0)
-          {
-            {
-              i++;
-              exch(&a[i], &a[j]);
-            }
-          }
-          else
-          {
-            
-          }
-
+          i++;
+          exch(&a[i], &a[j]);
         }
+        else
+        {
+          
+        }
+
       }
       else
       {
@@ -569,12 +533,10 @@ void funcao_l()
   printf("Produtos\n");
   if (!(contador_produtos == 0))
   {
-    {
-      quickSrt(ordered_sistema, 0, contador_produtos - 1, l);
-      for (i = 0; i < contador_produtos; i++)
-        printf("* %s %d %d\n", ordered_sistema[i].descricao, ordered_sistema[i].preco, ordered_sistema[i].qtd);
+    quickSrt(ordered_sistema, 0, contador_produtos - 1, l);
+    for (i = 0; i < contador_produtos; i++)
+      printf("* %s %d %d\n", ordered_sistema[i].descricao, ordered_sistema[i].preco, ordered_sistema[i].qtd);
 
-    }
   }
   else
   {
@@ -597,19 +559,17 @@ void funcao_L()
   }
   else
   {
+    for (i = 0; i < sistema_e[ide].contador; i++)
+      array_produtos[i] = sistema_e[ide].produtos[i];
+
+    printf("Encomenda %d\n", ide);
+    quickSrt(array_produtos, 0, sistema_e[ide].contador - 1, l);
+    for (i = 0; i < sistema_e[ide].contador; i++)
     {
-      for (i = 0; i < sistema_e[ide].contador; i++)
-        array_produtos[i] = sistema_e[ide].produtos[i];
-
-      printf("Encomenda %d\n", ide);
-      quickSrt(array_produtos, 0, sistema_e[ide].contador - 1, l);
-      for (i = 0; i < sistema_e[ide].contador; i++)
-      {
-        idp = array_produtos[i].idp;
-        printf("* %s %d %d\n", sistema[idp].descricao, sistema[idp].preco, array_produtos[i].qtd);
-      }
-
+      idp = array_produtos[i].idp;
+      printf("* %s %d %d\n", sistema[idp].descricao, sistema[idp].preco, array_produtos[i].qtd);
     }
+
   }
 
 }

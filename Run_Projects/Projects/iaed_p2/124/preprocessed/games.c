@@ -32,50 +32,42 @@ gLink gRemove(gLink head, char *name)
   {
     if (strcmp(aux->game->name, name) == 0)
     {
+      if ((aux->prev == 0) && (aux->next == 0))
       {
-        if ((aux->prev == 0) && (aux->next == 0))
+        head = 0;
+      }
+      else
+      {
+        if (aux->prev == 0)
         {
-          head = 0;
-        }
-        else
-        {
-          if (aux->prev == 0)
+          if (aux == head)
           {
-            {
-              if (aux == head)
-              {
-                head = aux->next;
-              }
-              else
-              {
-                
-              }
-
-              aux->next->prev = 0;
-            }
+            head = aux->next;
           }
           else
           {
-            if (aux->next == 0)
-            {
-              {
-                aux->prev->next = 0;
-              }
-            }
-            else
-            {
-              {
-                aux->prev->next = aux->next;
-                aux->next->prev = aux->prev;
-              }
-            }
+            
+          }
 
+          aux->next->prev = 0;
+        }
+        else
+        {
+          if (aux->next == 0)
+          {
+            aux->prev->next = 0;
+          }
+          else
+          {
+            aux->prev->next = aux->next;
+            aux->next->prev = aux->prev;
           }
 
         }
 
-        break;
       }
+
+      break;
     }
     else
     {
@@ -95,9 +87,7 @@ pGame gSearch(gLink head, char *name)
   {
     if (strcmp(aux->game->name, name) == 0)
     {
-      {
-        return aux->game;
-      }
+      return aux->game;
     }
     else
     {

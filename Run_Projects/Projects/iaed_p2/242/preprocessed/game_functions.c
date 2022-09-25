@@ -50,9 +50,7 @@ void insert_node(nodeGame **game_order, game *n_game)
   new_node->prev = 0;
   if ((*game_order) != 0)
   {
-    {
-      (*game_order)->prev = new_node;
-    }
+    (*game_order)->prev = new_node;
   }
   else
   {
@@ -87,46 +85,36 @@ void cmd_a(char *name, char *t1, char *t2, int g_t1, int g_t2, int NL, game **H_
   team *aux;
   if (hash_table_lookup_game(name, H_T_game))
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-    }
+    printf("%d Jogo existente.\n", NL);
   }
   else
   {
     if (!(hash_table_lookup_team(t1, H_T_team) && hash_table_lookup_team(t2, H_T_team)))
     {
-      {
-        printf("%d Equipa inexistente.\n", NL);
-      }
+      printf("%d Equipa inexistente.\n", NL);
     }
     else
     {
+      HTinsert_game(name, t1, t2, g_t1, g_t2, H_T_game, game_order);
+      if (g_t1 > g_t2)
       {
-        HTinsert_game(name, t1, t2, g_t1, g_t2, H_T_game, game_order);
-        if (g_t1 > g_t2)
+        aux = hash_table_lookup_team(t1, H_T_team);
+        aux->wins++;
+      }
+      else
+      {
+        if (g_t1 < g_t2)
         {
-          {
-            aux = hash_table_lookup_team(t1, H_T_team);
-            aux->wins++;
-          }
+          aux = hash_table_lookup_team(t2, H_T_team);
+          aux->wins++;
         }
         else
         {
-          if (g_t1 < g_t2)
-          {
-            {
-              aux = hash_table_lookup_team(t2, H_T_team);
-              aux->wins++;
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
+
     }
 
   }
@@ -137,16 +125,12 @@ void cmd_p(char *g, int NL, game **hash_table_game)
 {
   if (hash_table_lookup_game(g, hash_table_game) != 0)
   {
-    {
-      game *tmp = hash_table_lookup_game(g, hash_table_game);
-      printf("%d %s %s %s %d %d\n", NL, tmp->name, tmp->t1, tmp->t2, tmp->g_t1, tmp->g_t2);
-    }
+    game *tmp = hash_table_lookup_game(g, hash_table_game);
+    printf("%d %s %s %s %d %d\n", NL, tmp->name, tmp->t1, tmp->t2, tmp->g_t1, tmp->g_t2);
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
 
 }
@@ -170,98 +154,45 @@ void cmd_s(team **hash_table_team, game **hash_table_game, char *name, int g_t1,
   tmp_g = hash_table_lookup_game(name, hash_table_game);
   if (tmp_g != 0)
   {
+    if (tmp_g->g_t1 > tmp_g->g_t2)
     {
-      if (tmp_g->g_t1 > tmp_g->g_t2)
+      if (g_t1 == g_t2)
       {
-        {
-          if (g_t1 == g_t2)
-          {
-            {
-              tmp_t = hash_table_lookup_team(tmp_g->t1, hash_table_team);
-              tmp_t->wins--;
-            }
-          }
-          else
-          {
-            if (g_t1 < g_t2)
-            {
-              {
-                tmp_t = hash_table_lookup_team(tmp_g->t1, hash_table_team);
-                tmp_t->wins--;
-                tmp_t = hash_table_lookup_team(tmp_g->t2, hash_table_team);
-                tmp_t->wins++;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-        }
+        tmp_t = hash_table_lookup_team(tmp_g->t1, hash_table_team);
+        tmp_t->wins--;
       }
       else
       {
-        if (tmp_g->g_t1 == tmp_g->g_t2)
+        if (g_t1 < g_t2)
         {
-          {
-            if (g_t1 > g_t2)
-            {
-              {
-                tmp_t = hash_table_lookup_team(tmp_g->t1, hash_table_team);
-                tmp_t->wins++;
-              }
-            }
-            else
-            {
-              if (g_t1 < g_t2)
-              {
-                {
-                  tmp_t = hash_table_lookup_team(tmp_g->t2, hash_table_team);
-                  tmp_t->wins++;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-          }
+          tmp_t = hash_table_lookup_team(tmp_g->t1, hash_table_team);
+          tmp_t->wins--;
+          tmp_t = hash_table_lookup_team(tmp_g->t2, hash_table_team);
+          tmp_t->wins++;
         }
         else
         {
-          if (tmp_g->g_t1 < tmp_g->g_t2)
+          
+        }
+
+      }
+
+    }
+    else
+    {
+      if (tmp_g->g_t1 == tmp_g->g_t2)
+      {
+        if (g_t1 > g_t2)
+        {
+          tmp_t = hash_table_lookup_team(tmp_g->t1, hash_table_team);
+          tmp_t->wins++;
+        }
+        else
+        {
+          if (g_t1 < g_t2)
           {
-            {
-              if (g_t1 > g_t2)
-              {
-                {
-                  tmp_t = hash_table_lookup_team(tmp_g->t1, hash_table_team);
-                  tmp_t->wins++;
-                  tmp_t = hash_table_lookup_team(tmp_g->t2, hash_table_team);
-                  tmp_t->wins--;
-                }
-              }
-              else
-              {
-                if (g_t1 == g_t2)
-                {
-                  {
-                    tmp_t = hash_table_lookup_team(tmp_g->t2, hash_table_team);
-                    tmp_t->wins--;
-                  }
-                }
-                else
-                {
-                  
-                }
-
-              }
-
-            }
+            tmp_t = hash_table_lookup_team(tmp_g->t2, hash_table_team);
+            tmp_t->wins++;
           }
           else
           {
@@ -271,16 +202,47 @@ void cmd_s(team **hash_table_team, game **hash_table_game, char *name, int g_t1,
         }
 
       }
+      else
+      {
+        if (tmp_g->g_t1 < tmp_g->g_t2)
+        {
+          if (g_t1 > g_t2)
+          {
+            tmp_t = hash_table_lookup_team(tmp_g->t1, hash_table_team);
+            tmp_t->wins++;
+            tmp_t = hash_table_lookup_team(tmp_g->t2, hash_table_team);
+            tmp_t->wins--;
+          }
+          else
+          {
+            if (g_t1 == g_t2)
+            {
+              tmp_t = hash_table_lookup_team(tmp_g->t2, hash_table_team);
+              tmp_t->wins--;
+            }
+            else
+            {
+              
+            }
 
-      tmp_g->g_t1 = g_t1;
-      tmp_g->g_t2 = g_t2;
+          }
+
+        }
+        else
+        {
+          
+        }
+
+      }
+
     }
+
+    tmp_g->g_t1 = g_t1;
+    tmp_g->g_t2 = g_t2;
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
 
 }
@@ -342,23 +304,17 @@ game *delete_1game(game *head, char *name)
   {
     if (strcmp(t->name, name) == 0)
     {
+      if (t == head)
       {
-        if (t == head)
-        {
-          {
-            head = t->next;
-          }
-        }
-        else
-        {
-          {
-            prev->next = t->next;
-          }
-        }
-
-        FREEnode_game(t);
-        return head;
+        head = t->next;
       }
+      else
+      {
+        prev->next = t->next;
+      }
+
+      FREEnode_game(t);
+      return head;
     }
     else
     {
@@ -377,43 +333,35 @@ void delete_node(nodeGame **game_order, char *txt)
   {
     if (strcmp(t->Game->name, txt) == 0)
     {
+      if (t == (*game_order))
       {
-        if (t == (*game_order))
-        {
-          {
-            *game_order = t->next;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if (t->next != 0)
-        {
-          {
-            t->next->prev = t->prev;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if (t->prev != 0)
-        {
-          {
-            t->prev->next = t->next;
-          }
-        }
-        else
-        {
-          
-        }
-
-        free(t);
-        return;
+        *game_order = t->next;
       }
+      else
+      {
+        
+      }
+
+      if (t->next != 0)
+      {
+        t->next->prev = t->prev;
+      }
+      else
+      {
+        
+      }
+
+      if (t->prev != 0)
+      {
+        t->prev->next = t->next;
+      }
+      else
+      {
+        
+      }
+
+      free(t);
+      return;
     }
     else
     {
@@ -439,9 +387,7 @@ void reverse(nodeGame **list)
 
   if (temp != 0)
   {
-    {
-      *list = temp->prev;
-    }
+    *list = temp->prev;
   }
   else
   {
@@ -458,40 +404,32 @@ void cmd_r(team **H_T_team, game **H_T_game, char *name, int NL, nodeGame **game
   tmp_g = hash_table_lookup_game(name, H_T_game);
   if (tmp_g != 0)
   {
+    if (tmp_g->g_t1 > tmp_g->g_t2)
     {
-      if (tmp_g->g_t1 > tmp_g->g_t2)
+      tmp_t = hash_table_lookup_team(tmp_g->t1, H_T_team);
+      tmp_t->wins--;
+    }
+    else
+    {
+      if (tmp_g->g_t1 < tmp_g->g_t2)
       {
-        {
-          tmp_t = hash_table_lookup_team(tmp_g->t1, H_T_team);
-          tmp_t->wins--;
-        }
+        tmp_t = hash_table_lookup_team(tmp_g->t2, H_T_team);
+        tmp_t->wins--;
       }
       else
       {
-        if (tmp_g->g_t1 < tmp_g->g_t2)
-        {
-          {
-            tmp_t = hash_table_lookup_team(tmp_g->t2, H_T_team);
-            tmp_t->wins--;
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      index = hash(name);
-      delete_node(game_order, name);
-      H_T_game[index] = delete_1game(H_T_game[index], name);
     }
+
+    index = hash(name);
+    delete_node(game_order, name);
+    H_T_game[index] = delete_1game(H_T_game[index], name);
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
 
 }

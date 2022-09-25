@@ -11,23 +11,17 @@ int ganhou(int val1, int val2)
 {
   if (val1 > val2)
   {
-    {
-      return 1;
-    }
+    return 1;
   }
   else
   {
     if (val2 > val1)
     {
-      {
-        return 2;
-      }
+      return 2;
     }
     else
     {
-      {
-        return 0;
-      }
+      return 0;
     }
 
   }
@@ -72,59 +66,47 @@ void adiciona_jogo(int NL, jogo *tabela_hash[1000], equipa *tabela_hash_equipa[1
   strcpy(novo_jogo->equipa2, str3);
   if (procura_tabela(novo_jogo->nome, tabela_hash) != 0)
   {
+    printf("%d Jogo existente.\n", NL);
+    free(novo_jogo->nome);
+    free(novo_jogo->equipa1);
+    free(novo_jogo->equipa2);
+    free(novo_jogo);
+  }
+  else
+  {
+    equipa *equipa1 = procura_tabela_equipa(novo_jogo->equipa1, tabela_hash_equipa);
+    equipa *equipa2 = procura_tabela_equipa(novo_jogo->equipa2, tabela_hash_equipa);
+    if ((equipa1 == 0) || (equipa2 == 0))
     {
-      printf("%d Jogo existente.\n", NL);
+      printf("%d Equipa inexistente.\n", NL);
       free(novo_jogo->nome);
       free(novo_jogo->equipa1);
       free(novo_jogo->equipa2);
       free(novo_jogo);
     }
-  }
-  else
-  {
+    else
     {
-      equipa *equipa1 = procura_tabela_equipa(novo_jogo->equipa1, tabela_hash_equipa);
-      equipa *equipa2 = procura_tabela_equipa(novo_jogo->equipa2, tabela_hash_equipa);
-      if ((equipa1 == 0) || (equipa2 == 0))
+      inserir_tabela(novo_jogo, tabela_hash);
+      insere_fim_lista(novo_jogo->nome, inicio, fim);
+      if (ganhou(novo_jogo->score1, novo_jogo->score2) == 1)
       {
-        {
-          printf("%d Equipa inexistente.\n", NL);
-          free(novo_jogo->nome);
-          free(novo_jogo->equipa1);
-          free(novo_jogo->equipa2);
-          free(novo_jogo);
-        }
+        equipa1->ganhos = equipa1->ganhos + 1;
       }
       else
       {
+        if (ganhou(novo_jogo->score1, novo_jogo->score2) == 2)
         {
-          inserir_tabela(novo_jogo, tabela_hash);
-          insere_fim_lista(novo_jogo->nome, inicio, fim);
-          if (ganhou(novo_jogo->score1, novo_jogo->score2) == 1)
-          {
-            {
-              equipa1->ganhos = equipa1->ganhos + 1;
-            }
-          }
-          else
-          {
-            if (ganhou(novo_jogo->score1, novo_jogo->score2) == 2)
-            {
-              {
-                equipa2->ganhos = equipa2->ganhos + 1;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
+          equipa2->ganhos = equipa2->ganhos + 1;
         }
+        else
+        {
+          
+        }
+
       }
 
     }
+
   }
 
 }
@@ -143,18 +125,14 @@ void adiciona_equipa(int NL, equipa *tabela_hash_equipa[1000])
   strcpy(nova_equipa->nome, str1);
   if (procura_tabela_equipa(nova_equipa->nome, tabela_hash_equipa) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-      free(nova_equipa->nome);
-      free(nova_equipa);
-    }
+    printf("%d Equipa existente.\n", NL);
+    free(nova_equipa->nome);
+    free(nova_equipa);
   }
   else
   {
-    {
-      inserir_tabela_equipa(nova_equipa, tabela_hash_equipa);
-      nova_equipa->ganhos = 0;
-    }
+    inserir_tabela_equipa(nova_equipa, tabela_hash_equipa);
+    nova_equipa->ganhos = 0;
   }
 
 }
@@ -167,9 +145,7 @@ void lista_jogos(int NL, jogo *tabela_hash[1000], node_lista **inicio)
     jogo *el = procura_tabela(aux->nome, tabela_hash);
     if (el != 0)
     {
-      {
-        printf("%d %s %s %s %d %d\n", NL, el->nome, el->equipa1, el->equipa2, el->score1, el->score2);
-      }
+      printf("%d %s %s %s %d %d\n", NL, el->nome, el->equipa1, el->equipa2, el->score1, el->score2);
     }
     else
     {
@@ -194,15 +170,11 @@ void procura_jogo(int NL, jogo *tabela_hash[1000])
   aux = procura_tabela(nome, tabela_hash);
   if (aux != 0)
   {
-    {
-      printf("%d %s %s %s %d %d\n", NL, aux->nome, aux->equipa1, aux->equipa2, aux->score1, aux->score2);
-    }
+    printf("%d %s %s %s %d %d\n", NL, aux->nome, aux->equipa1, aux->equipa2, aux->score1, aux->score2);
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
 
 }
@@ -220,15 +192,11 @@ void procura_equipa(int NL, equipa *tabela_hash_equipa[1000])
   aux = procura_tabela_equipa(nome, tabela_hash_equipa);
   if (aux != 0)
   {
-    {
-      printf("%d %s %d\n", NL, aux->nome, aux->ganhos);
-    }
+    printf("%d %s %d\n", NL, aux->nome, aux->ganhos);
   }
   else
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-    }
+    printf("%d Equipa inexistente.\n", NL);
   }
 
 }
@@ -246,39 +214,31 @@ void apaga_jogo(int NL, jogo *tabela_hash[1000], equipa *tabela_hash_equipa[1000
   aux = procura_tabela(nome, tabela_hash);
   if (aux != 0)
   {
+    if (ganhou(aux->score1, aux->score2) == 1)
     {
-      if (ganhou(aux->score1, aux->score2) == 1)
+      equipa *equipa1 = procura_tabela_equipa(aux->equipa1, tabela_hash_equipa);
+      equipa1->ganhos = equipa1->ganhos - 1;
+    }
+    else
+    {
+      if (ganhou(aux->score1, aux->score2) == 2)
       {
-        {
-          equipa *equipa1 = procura_tabela_equipa(aux->equipa1, tabela_hash_equipa);
-          equipa1->ganhos = equipa1->ganhos - 1;
-        }
+        equipa *equipa2 = procura_tabela_equipa(aux->equipa2, tabela_hash_equipa);
+        equipa2->ganhos = equipa2->ganhos - 1;
       }
       else
       {
-        if (ganhou(aux->score1, aux->score2) == 2)
-        {
-          {
-            equipa *equipa2 = procura_tabela_equipa(aux->equipa2, tabela_hash_equipa);
-            equipa2->ganhos = equipa2->ganhos - 1;
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      remove_el_lista(aux->nome, inicio, fim);
-      apaga_tabela(aux->nome, tabela_hash);
     }
+
+    remove_el_lista(aux->nome, inicio, fim);
+    apaga_tabela(aux->nome, tabela_hash);
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
 
 }
@@ -300,103 +260,83 @@ void altera_score(int NL, jogo *tabela_hash[1000], equipa *tabela_hash_equipa[10
   aux = procura_tabela(nome, tabela_hash);
   if (aux != 0)
   {
+    equipa *equipa1;
+    equipa *equipa2;
+    equipa1 = procura_tabela_equipa(aux->equipa1, tabela_hash_equipa);
+    equipa2 = procura_tabela_equipa(aux->equipa2, tabela_hash_equipa);
+    if (aux->score1 == aux->score2)
     {
-      equipa *equipa1;
-      equipa *equipa2;
-      equipa1 = procura_tabela_equipa(aux->equipa1, tabela_hash_equipa);
-      equipa2 = procura_tabela_equipa(aux->equipa2, tabela_hash_equipa);
-      if (aux->score1 == aux->score2)
+      if (ganhou(novo_score1, novo_score2) == 2)
       {
-        {
-          if (ganhou(novo_score1, novo_score2) == 2)
-          {
-            {
-              equipa2->ganhos = equipa2->ganhos + 1;
-            }
-          }
-          else
-          {
-            if (ganhou(novo_score1, novo_score2) == 1)
-            {
-              {
-                equipa1->ganhos = equipa1->ganhos + 1;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-        }
+        equipa2->ganhos = equipa2->ganhos + 1;
       }
       else
       {
-        if (novo_score1 == novo_score2)
+        if (ganhou(novo_score1, novo_score2) == 1)
         {
-          {
-            if (ganhou(aux->score1, aux->score2) == 2)
-            {
-              {
-                equipa2->ganhos = equipa2->ganhos - 1;
-              }
-            }
-            else
-            {
-              if (ganhou(aux->score1, aux->score2) == 1)
-              {
-                {
-                  equipa1->ganhos = equipa1->ganhos - 1;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-          }
+          equipa1->ganhos = equipa1->ganhos + 1;
         }
         else
         {
-          if ((ganhou(aux->score1, aux->score2) == 1) && (ganhou(novo_score1, novo_score2) == 2))
+          
+        }
+
+      }
+
+    }
+    else
+    {
+      if (novo_score1 == novo_score2)
+      {
+        if (ganhou(aux->score1, aux->score2) == 2)
+        {
+          equipa2->ganhos = equipa2->ganhos - 1;
+        }
+        else
+        {
+          if (ganhou(aux->score1, aux->score2) == 1)
           {
-            {
-              equipa1->ganhos = equipa1->ganhos - 1;
-              equipa2->ganhos = equipa2->ganhos + 1;
-            }
+            equipa1->ganhos = equipa1->ganhos - 1;
           }
           else
           {
-            if ((ganhou(aux->score1, aux->score2) == 2) && (ganhou(novo_score1, novo_score2) == 1))
-            {
-              {
-                equipa2->ganhos = equipa2->ganhos - 1;
-                equipa1->ganhos = equipa1->ganhos + 1;
-              }
-            }
-            else
-            {
-              
-            }
+            
+          }
 
+        }
+
+      }
+      else
+      {
+        if ((ganhou(aux->score1, aux->score2) == 1) && (ganhou(novo_score1, novo_score2) == 2))
+        {
+          equipa1->ganhos = equipa1->ganhos - 1;
+          equipa2->ganhos = equipa2->ganhos + 1;
+        }
+        else
+        {
+          if ((ganhou(aux->score1, aux->score2) == 2) && (ganhou(novo_score1, novo_score2) == 1))
+          {
+            equipa2->ganhos = equipa2->ganhos - 1;
+            equipa1->ganhos = equipa1->ganhos + 1;
+          }
+          else
+          {
+            
           }
 
         }
 
       }
 
-      aux->score1 = novo_score1;
-      aux->score2 = novo_score2;
     }
+
+    aux->score1 = novo_score1;
+    aux->score2 = novo_score2;
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
 
 }
@@ -422,20 +362,16 @@ void equipas_mais_jogos(int NL, equipa *tabela_hash_equipa[1000])
     {
       if (aux->ganhos > maior)
       {
-        {
-          maior = aux->ganhos;
-          melhores[0] = aux->nome;
-          j = 1;
-        }
+        maior = aux->ganhos;
+        melhores[0] = aux->nome;
+        j = 1;
       }
       else
       {
         if (aux->ganhos == maior)
         {
-          {
-            melhores[j] = aux->nome;
-            j = j + 1;
-          }
+          melhores[j] = aux->nome;
+          j = j + 1;
         }
         else
         {
@@ -451,15 +387,13 @@ void equipas_mais_jogos(int NL, equipa *tabela_hash_equipa[1000])
 
   if (j != 0)
   {
+    printf("%d Melhores %d\n", NL, maior);
+    qsort(melhores, j, sizeof(char *), compara);
+    for (k = 0; k < j; ++k)
     {
-      printf("%d Melhores %d\n", NL, maior);
-      qsort(melhores, j, sizeof(char *), compara);
-      for (k = 0; k < j; ++k)
-      {
-        printf("%d * %s\n", NL, melhores[k]);
-      }
-
+      printf("%d * %s\n", NL, melhores[k]);
     }
+
   }
   else
   {

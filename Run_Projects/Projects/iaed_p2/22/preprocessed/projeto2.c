@@ -34,13 +34,11 @@ void comando_a(struct game **hash_games, struct team **hash_teams, struct game *
   s2 = new_sym_var(sizeof(int) * 8);
   if (gameExists(name, hash_games) == 0)
   {
-    {
-      printf("%d Jogo existente.\n", line);
-      free(name);
-      free(team1);
-      free(team2);
-      return;
-    }
+    printf("%d Jogo existente.\n", line);
+    free(name);
+    free(team1);
+    free(team2);
+    return;
   }
   else
   {
@@ -49,13 +47,11 @@ void comando_a(struct game **hash_games, struct team **hash_teams, struct game *
 
   if ((teamExists(team1, hash_teams) == (-1)) || (teamExists(team2, hash_teams) == (-1)))
   {
-    {
-      printf("%d Equipa inexistente.\n", line);
-      free(name);
-      free(team1);
-      free(team2);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", line);
+    free(name);
+    free(team1);
+    free(team2);
+    return;
   }
   else
   {
@@ -79,10 +75,8 @@ void comando_A(char *input, struct team **hash_teams)
   {
     if (strcmp(t->name, input) == 0)
     {
-      {
-        printf("%d Equipa existente.\n", line);
-        return;
-      }
+      printf("%d Equipa existente.\n", line);
+      return;
     }
     else
     {
@@ -94,15 +88,11 @@ void comando_A(char *input, struct team **hash_teams)
 
   if (hash_teams[key] == 0)
   {
-    {
-      addTeam(input, hash_teams, hash_teams[key]);
-    }
+    addTeam(input, hash_teams, hash_teams[key]);
   }
   else
   {
-    {
-      addTeam(input, hash_teams, t1);
-    }
+    addTeam(input, hash_teams, t1);
   }
 
   return;
@@ -113,9 +103,7 @@ void comando_l(struct game **firstGame)
   struct game *g;
   if (firstGame == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -147,11 +135,9 @@ void comando_s(struct game **hash_games)
   s2 = new_sym_var(sizeof(int) * 8);
   if (hash_games[hash(name)] == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", line);
-      free(name);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", line);
+    free(name);
+    return;
   }
   else
   {
@@ -162,11 +148,9 @@ void comando_s(struct game **hash_games)
   {
     if (strcmp(name, g->name) == 0)
     {
-      {
-        changeScore(g, s1, s2);
-        free(name);
-        return;
-      }
+      changeScore(g, s1, s2);
+      free(name);
+      return;
     }
     else
     {
@@ -185,10 +169,8 @@ void comando_p(char *input, struct game **hash_games)
   struct game *g;
   if (hash_games[hash(input)] == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", line);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", line);
+    return;
   }
   else
   {
@@ -199,10 +181,8 @@ void comando_p(char *input, struct game **hash_games)
   {
     if (strcmp(input, g->name) == 0)
     {
-      {
-        printf("%d %s %s %s %d %d\n", line, g->name, g->team1->name, g->team2->name, g->score1, g->score2);
-        return;
-      }
+      printf("%d %s %s %s %d %d\n", line, g->name, g->team1->name, g->team2->name, g->score1, g->score2);
+      return;
     }
     else
     {
@@ -220,10 +200,8 @@ void comando_P(char *input, struct team **hash_teams)
   struct team *t;
   if (hash_teams[hash(input)] == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", line);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", line);
+    return;
   }
   else
   {
@@ -234,10 +212,8 @@ void comando_P(char *input, struct team **hash_teams)
   {
     if (strcmp(input, t->name) == 0)
     {
-      {
-        printf("%d %s %d\n", line, input, t->wins);
-        return;
-      }
+      printf("%d %s %d\n", line, input, t->wins);
+      return;
     }
     else
     {
@@ -265,15 +241,13 @@ void comando_g(struct team **hash_teams)
 
   if (max == (-1))
   {
+    for (i = 0; i < 500; i++)
     {
-      for (i = 0; i < 500; i++)
-      {
-        free(teams[i]);
-      }
-
-      free(teams);
-      return;
+      free(teams[i]);
     }
+
+    free(teams);
+    return;
   }
   else
   {
@@ -284,24 +258,20 @@ void comando_g(struct team **hash_teams)
   {
     if (hash_teams[i] != 0)
     {
+      for (t = hash_teams[i]; t != 0; t = t->nextHash)
       {
-        for (t = hash_teams[i]; t != 0; t = t->nextHash)
+        if (t->wins == max)
         {
-          if (t->wins == max)
-          {
-            {
-              strcpy(teams[n], t->name);
-              n++;
-            }
-          }
-          else
-          {
-            
-          }
-
+          strcpy(teams[n], t->name);
+          n++;
+        }
+        else
+        {
+          
         }
 
       }
+
     }
     else
     {
@@ -330,10 +300,8 @@ void comando_r(char *input, struct game **hash_games, struct game **lastGame, st
   struct game *g;
   if (gameExists(input, hash_games) == (-1))
   {
-    {
-      printf("%d Jogo inexistente.\n", line);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", line);
+    return;
   }
   else
   {
@@ -344,10 +312,8 @@ void comando_r(char *input, struct game **hash_games, struct game **lastGame, st
   {
     if (strcmp(input, g->name) == 0)
     {
-      {
-        removeGame(g, hash_games, lastGame, firstGame);
-        return;
-      }
+      removeGame(g, hash_games, lastGame, firstGame);
+      return;
     }
     else
     {
@@ -364,16 +330,14 @@ void comando_x(struct game **hash_games, struct team **hash_teams, struct game *
   struct game *g1;
   if (firstGame != 0)
   {
+    g = firstGame;
+    while (g != 0)
     {
-      g = firstGame;
-      while (g != 0)
-      {
-        g1 = g->nextGeral;
-        freeGame(g);
-        g = g1;
-      }
-
+      g1 = g->nextGeral;
+      freeGame(g);
+      g = g1;
     }
+
   }
   else
   {

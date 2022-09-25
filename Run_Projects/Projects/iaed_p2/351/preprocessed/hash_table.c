@@ -33,23 +33,17 @@ void ht_delete_node(hash_table *ht, ht_node *node, ulong key)
   {
     if ((curr->info_struct == node->info_struct) && (curr->next == node->next))
     {
+      if (prev != 0)
       {
-        if (prev != 0)
-        {
-          {
-            prev->next = curr->next;
-          }
-        }
-        else
-        {
-          {
-            ht->bucket[key] = curr->next;
-          }
-        }
-
-        free(curr);
-        return;
+        prev->next = curr->next;
       }
+      else
+      {
+        ht->bucket[key] = curr->next;
+      }
+
+      free(curr);
+      return;
     }
     else
     {
@@ -69,24 +63,18 @@ void ht_delete_node_and_info(hash_table *ht, ht_node *node, ulong key, free_info
   {
     if ((curr->info_struct == node->info_struct) && (curr->next == node->next))
     {
+      if (prev != 0)
       {
-        if (prev != 0)
-        {
-          {
-            prev->next = curr->next;
-          }
-        }
-        else
-        {
-          {
-            ht->bucket[key] = curr->next;
-          }
-        }
-
-        func(curr->info_struct);
-        free(curr);
-        return;
+        prev->next = curr->next;
       }
+      else
+      {
+        ht->bucket[key] = curr->next;
+      }
+
+      func(curr->info_struct);
+      free(curr);
+      return;
     }
     else
     {

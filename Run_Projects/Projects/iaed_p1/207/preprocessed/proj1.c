@@ -42,17 +42,13 @@ int compareString(char str1[], char str2[])
   {
     if (str1[i] < str2[i])
     {
-      {
-        return -1;
-      }
+      return -1;
     }
     else
     {
       if (str1[i] > str2[i])
       {
-        {
-          return 1;
-        }
+        return 1;
       }
       else
       {
@@ -74,9 +70,7 @@ int linearProductSearch(Product productList[], int idp, int size)
   {
     if (productList[i].id == idp)
     {
-      {
-        return i;
-      }
+      return i;
     }
     else
     {
@@ -110,10 +104,8 @@ void addStock(int idp, int quantity)
 {
   if (idp >= NextProductID)
   {
-    {
-      printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idp);
-      return;
-    }
+    printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idp);
+    return;
   }
   else
   {
@@ -144,19 +136,15 @@ void removeStock(int idp, int quantity)
 {
   if (idp >= NextProductID)
   {
-    {
-      printf("Impossivel remover stock do produto %d. Produto inexistente.\n", idp);
-      return;
-    }
+    printf("Impossivel remover stock do produto %d. Produto inexistente.\n", idp);
+    return;
   }
   else
   {
     if (productList[idp].quantity < quantity)
     {
-      {
-        printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", quantity, idp);
-        return;
-      }
+      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", quantity, idp);
+      return;
     }
     else
     {
@@ -173,37 +161,29 @@ void addProduct(int idp, int ide, int quantity)
   int pos;
   if (ide >= NextOrderID)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
+    return;
   }
   else
   {
     if (idp >= NextProductID)
     {
-      {
-        printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
-        return;
-      }
+      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
+      return;
     }
     else
     {
       if (productList[idp].quantity < quantity)
       {
-        {
-          printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
-          return;
-        }
+        printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
+        return;
       }
       else
       {
         if ((orderList[ide].weight + (productList[idp].weight * quantity)) > 200)
         {
-          {
-            printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
-            return;
-          }
+          printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
+          return;
         }
         else
         {
@@ -219,41 +199,33 @@ void addProduct(int idp, int ide, int quantity)
   pos = linearProductSearch(orderList[ide].items, idp, orderList[ide].size);
   if (pos != (-1))
   {
-    {
-      orderList[ide].items[pos].quantity += quantity;
-    }
+    orderList[ide].items[pos].quantity += quantity;
   }
   else
   {
     if (orderList[ide].size < (200 - 1))
     {
-      {
-        orderList[ide].items[orderList[ide].size] = productList[idp];
-        orderList[ide].items[orderList[ide].size].quantity = quantity;
-        ++orderList[ide].size;
-      }
+      orderList[ide].items[orderList[ide].size] = productList[idp];
+      orderList[ide].items[orderList[ide].size].quantity = quantity;
+      ++orderList[ide].size;
     }
     else
     {
+      for (pos = 0; pos < orderList[ide].size; ++pos)
       {
-        for (pos = 0; pos < orderList[ide].size; ++pos)
+        if (orderList[ide].items[pos].quantity == 0)
         {
-          if (orderList[ide].items[pos].quantity == 0)
-          {
-            {
-              orderList[ide].items[pos] = productList[idp];
-              orderList[ide].items[pos].quantity = quantity;
-              break;
-            }
-          }
-          else
-          {
-            
-          }
-
+          orderList[ide].items[pos] = productList[idp];
+          orderList[ide].items[pos].quantity = quantity;
+          break;
+        }
+        else
+        {
+          
         }
 
       }
+
     }
 
   }
@@ -268,19 +240,15 @@ void removeProduct(int ide, int idp)
   int pos;
   if (ide >= NextOrderID)
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
-      return;
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
+    return;
   }
   else
   {
     if (idp >= NextProductID)
     {
-      {
-        printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
-        return;
-      }
+      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
+      return;
     }
     else
     {
@@ -300,10 +268,8 @@ void getOrderCost(int ide)
 {
   if (ide >= NextOrderID)
   {
-    {
-      printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ide);
-      return;
-    }
+    printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ide);
+    return;
   }
   else
   {
@@ -320,10 +286,8 @@ void changePrice(int idp, int price)
   int delta;
   if (idp >= NextProductID)
   {
-    {
-      printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idp);
-      return;
-    }
+    printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idp);
+    return;
   }
   else
   {
@@ -337,9 +301,7 @@ void changePrice(int idp, int price)
     pos = linearProductSearch(orderList[i].items, idp, orderList[i].size);
     if ((pos != (-1)) && (orderList[i].items[pos].quantity != 0))
     {
-      {
-        orderList[i].items[pos].price = price;
-      }
+      orderList[i].items[pos].price = price;
     }
     else
     {
@@ -356,19 +318,15 @@ void listProduct(int ide, int idp)
   int pos;
   if (ide >= NextOrderID)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
-      return;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
+    return;
   }
   else
   {
     if ((pos = linearProductSearch(orderList[ide].items, idp, orderList[ide].size)) == (-1))
     {
-      {
-        printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
-        return;
-      }
+      printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
+      return;
     }
     else
     {
@@ -388,10 +346,8 @@ void listOccurrences(int idp)
   int j;
   if (idp >= NextProductID)
   {
-    {
-      printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idp);
-      return;
-    }
+    printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idp);
+    return;
   }
   else
   {
@@ -406,11 +362,9 @@ void listOccurrences(int idp)
     {
       if ((orderList[i].items[j].id == idp) && (orderList[i].items[j].quantity > count))
       {
-        {
-          count = orderList[i].items[j].quantity;
-          most = i;
-          break;
-        }
+        count = orderList[i].items[j].quantity;
+        most = i;
+        break;
       }
       else
       {
@@ -423,9 +377,7 @@ void listOccurrences(int idp)
 
   if (most != (-1))
   {
-    {
-      printf("Maximo produto %d %d %d.\n", idp, most, count);
-    }
+    printf("Maximo produto %d %d %d.\n", idp, most, count);
   }
   else
   {
@@ -453,15 +405,11 @@ void mergeProducts(Product list[], Product temp[], int left, int middle, int rig
   {
     if ((temp[j].price < temp[i].price) || (i > middle))
     {
-      {
-        list[k] = temp[j--];
-      }
+      list[k] = temp[j--];
     }
     else
     {
-      {
-        list[k] = temp[i++];
-      }
+      list[k] = temp[i++];
     }
 
   }
@@ -487,15 +435,11 @@ void mergeOrder(Product list[], Product temp[], int left, int middle, int right)
   {
     if ((compareString(temp[j].description, temp[i].description) <= 0) || (i > middle))
     {
-      {
-        list[k] = temp[j--];
-      }
+      list[k] = temp[j--];
     }
     else
     {
-      {
-        list[k] = temp[i++];
-      }
+      list[k] = temp[i++];
     }
 
   }
@@ -506,17 +450,13 @@ void merge(Product list[], Product temp[], int left, int middle, int right, char
 {
   if (option == 'p')
   {
-    {
-      mergeProducts(list, temp, left, middle, right);
-    }
+    mergeProducts(list, temp, left, middle, right);
   }
   else
   {
     if (option == 'e')
     {
-      {
-        mergeOrder(list, temp, left, middle, right);
-      }
+      mergeOrder(list, temp, left, middle, right);
     }
     else
     {
@@ -532,9 +472,7 @@ void mergeSort(Product list[], Product temp[], int left, int right, char option)
   int middle = (left + right) / 2;
   if (left >= right)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -572,10 +510,8 @@ void listOrder(int ide)
   int i;
   if (ide >= NextOrderID)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
-      return;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
+    return;
   }
   else
   {
@@ -593,9 +529,7 @@ void listOrder(int ide)
   {
     if (list[i].quantity != 0)
     {
-      {
-        printf("* %s %d %d\n", list[i].description, list[i].price, list[i].quantity);
-      }
+      printf("* %s %d %d\n", list[i].description, list[i].price, list[i].quantity);
     }
     else
     {

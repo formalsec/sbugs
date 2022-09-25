@@ -46,15 +46,11 @@ void func_q()
   qtd = new_sym_var(sizeof(int) * 8);
   if (idpX >= idp)
   {
-    {
-      printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idpX);
-    }
+    printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idpX);
   }
   else
   {
-    {
-      prods[idpX].stock = prods[idpX].stock + qtd;
-    }
+    prods[idpX].stock = prods[idpX].stock + qtd;
   }
 
 }
@@ -77,41 +73,31 @@ void func_A()
   qtd = new_sym_var(sizeof(int) * 8);
   if (ideX >= ide)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idpX, ideX);
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idpX, ideX);
   }
   else
   {
     if (idpX >= idp)
     {
-      {
-        printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idpX, ideX);
-      }
+      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idpX, ideX);
     }
     else
     {
       if (qtd > prods[idpX].stock)
       {
-        {
-          printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idpX, ideX);
-        }
+        printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idpX, ideX);
       }
       else
       {
         if (200 < (pesos[ideX] + (prods[idpX].peso * qtd)))
         {
-          {
-            printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idpX, ideX);
-          }
+          printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idpX, ideX);
         }
         else
         {
-          {
-            encs[ideX][idpX].qnt = encs[ideX][idpX].qnt + qtd;
-            pesos[ideX] += qtd * prods[idpX].peso;
-            prods[idpX].stock = prods[idpX].stock - qtd;
-          }
+          encs[ideX][idpX].qnt = encs[ideX][idpX].qnt + qtd;
+          pesos[ideX] += qtd * prods[idpX].peso;
+          prods[idpX].stock = prods[idpX].stock - qtd;
         }
 
       }
@@ -128,23 +114,17 @@ void func_r()
   qtd = new_sym_var(sizeof(int) * 8);
   if (idpX >= idp)
   {
-    {
-      printf("Impossivel remover stock do produto %d. Produto inexistente.\n", idpX);
-    }
+    printf("Impossivel remover stock do produto %d. Produto inexistente.\n", idpX);
   }
   else
   {
     if (prods[idpX].stock < qtd)
     {
-      {
-        printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, idpX);
-      }
+      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, idpX);
     }
     else
     {
-      {
-        prods[idpX].stock = prods[idpX].stock - qtd;
-      }
+      prods[idpX].stock = prods[idpX].stock - qtd;
     }
 
   }
@@ -157,25 +137,19 @@ void func_R()
   idpX = new_sym_var(sizeof(int) * 8);
   if (ideX >= ide)
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idpX, ideX);
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idpX, ideX);
   }
   else
   {
     if (idpX >= idp)
     {
-      {
-        printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idpX, ideX);
-      }
+      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idpX, ideX);
     }
     else
     {
-      {
-        prods[idpX].stock += encs[ideX][idpX].qnt;
-        pesos[ideX] -= encs[ideX][idpX].qnt * prods[idpX].peso;
-        encs[ideX][idpX].qnt = 0;
-      }
+      prods[idpX].stock += encs[ideX][idpX].qnt;
+      pesos[ideX] -= encs[ideX][idpX].qnt * prods[idpX].peso;
+      encs[ideX][idpX].qnt = 0;
     }
 
   }
@@ -189,20 +163,16 @@ void func_C()
   ideX = new_sym_var(sizeof(int) * 8);
   if (ideX >= ide)
   {
-    {
-      printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ideX);
-    }
+    printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ideX);
   }
   else
   {
+    for (prodX = 0; prodX < 10000; prodX++)
     {
-      for (prodX = 0; prodX < 10000; prodX++)
-      {
-        precoATM = precoATM + (encs[ideX][prodX].qnt * prods[prodX].preco);
-      }
-
-      printf("Custo da encomenda %d %d.\n", ideX, precoATM);
+      precoATM = precoATM + (encs[ideX][prodX].qnt * prods[prodX].preco);
     }
+
+    printf("Custo da encomenda %d %d.\n", ideX, precoATM);
   }
 
 }
@@ -213,15 +183,11 @@ void func_p()
   prec = new_sym_var(sizeof(int) * 8);
   if (idpX >= idp)
   {
-    {
-      printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idpX);
-    }
+    printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idpX);
   }
   else
   {
-    {
-      prods[idpX].preco = prec;
-    }
+    prods[idpX].preco = prec;
   }
 
 }
@@ -232,23 +198,17 @@ void func_E()
   idpX = new_sym_var(sizeof(int) * 8);
   if (ideX >= ide)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ideX);
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ideX);
   }
   else
   {
     if (idpX >= idp)
     {
-      {
-        printf("Impossivel listar produto %d. Produto inexistente.\n", idpX);
-      }
+      printf("Impossivel listar produto %d. Produto inexistente.\n", idpX);
     }
     else
     {
-      {
-        printf("%s %d.\n", prods[idpX].desc, encs[ideX][idpX].qnt);
-      }
+      printf("%s %d.\n", prods[idpX].desc, encs[ideX][idpX].qnt);
     }
 
   }
@@ -263,44 +223,29 @@ void func_m()
   idpX = new_sym_var(sizeof(int) * 8);
   if (idpX >= idp)
   {
-    {
-      printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idpX);
-    }
+    printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idpX);
   }
   else
   {
+    if (ide != 0)
     {
-      if (ide != 0)
+      for (ideC = 0; ideC < ide; ideC++)
       {
+        if (encs[ideC][idpX].qnt > MAX)
         {
-          for (ideC = 0; ideC < ide; ideC++)
-          {
-            if (encs[ideC][idpX].qnt > MAX)
-            {
-              {
-                MAX = encs[ideC][idpX].qnt;
-                ideM = ideC;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-          if (MAX != 0)
-          {
-            {
-              printf("Maximo produto %d %d %d.\n", idpX, ideM, encs[ideM][idpX].qnt);
-            }
-          }
-          else
-          {
-            
-          }
-
+          MAX = encs[ideC][idpX].qnt;
+          ideM = ideC;
         }
+        else
+        {
+          
+        }
+
+      }
+
+      if (MAX != 0)
+      {
+        printf("Maximo produto %d %d %d.\n", idpX, ideM, encs[ideM][idpX].qnt);
       }
       else
       {
@@ -308,6 +253,11 @@ void func_m()
       }
 
     }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -316,35 +266,25 @@ int less_l(int y, int z)
 {
   if (prods[y].preco < prods[z].preco)
   {
-    {
-      return 1;
-    }
+    return 1;
   }
   else
   {
     if (prods[y].preco == prods[z].preco)
     {
+      if (y < z)
       {
-        if (y < z)
-        {
-          {
-            return 1;
-          }
-        }
-        else
-        {
-          {
-            return 0;
-          }
-        }
-
+        return 1;
       }
-    }
-    else
-    {
+      else
       {
         return 0;
       }
+
+    }
+    else
+    {
+      return 0;
     }
 
   }
@@ -371,15 +311,11 @@ void merge_l(int a[], int l, int m, int r)
   {
     if (less_l(aux[j], aux[i]))
     {
-      {
-        a[k] = aux[j--];
-      }
+      a[k] = aux[j--];
     }
     else
     {
-      {
-        a[k] = aux[i++];
-      }
+      a[k] = aux[i++];
     }
 
   }
@@ -430,17 +366,13 @@ int less_L(char y[], char z[])
   {
     if (y[k] > z[k])
     {
-      {
-        return 1;
-      }
+      return 1;
     }
     else
     {
       if (y[k] < z[k])
       {
-        {
-          return 0;
-        }
+        return 0;
       }
       else
       {
@@ -474,15 +406,11 @@ void merge_L(int a[], int l, int m, int r)
   {
     if (less_L(prods[aux[i]].desc, prods[aux[j]].desc))
     {
-      {
-        a[k] = aux[j--];
-      }
+      a[k] = aux[j--];
     }
     else
     {
-      {
-        a[k] = aux[i++];
-      }
+      a[k] = aux[i++];
     }
 
   }
@@ -515,47 +443,39 @@ void func_L()
   ideX = new_sym_var(sizeof(int) * 8);
   if (ideX >= ide)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ideX);
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ideX);
   }
   else
   {
+    for (idprod = 0; idprod < 10000; idprod++)
     {
-      for (idprod = 0; idprod < 10000; idprod++)
+      if (encs[ideX][idprod].qnt != 0)
       {
-        if (encs[ideX][idprod].qnt != 0)
-        {
-          {
-            listaP[k++] = idprod;
-          }
-        }
-        else
-        {
-          
-        }
-
+        listaP[k++] = idprod;
       }
-
-      mergesort_L(listaP, 0, k - 1);
-      printf("Encomenda %d\n", ideX);
-      for (idprod = 0; idprod < k; idprod++)
+      else
       {
-        c = listaP[idprod];
-        if (encs[ideX][c].qnt != 0)
-        {
-          {
-            printf("* %s %d %d\n", prods[c].desc, prods[c].preco, encs[ideX][c].qnt);
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
     }
+
+    mergesort_L(listaP, 0, k - 1);
+    printf("Encomenda %d\n", ideX);
+    for (idprod = 0; idprod < k; idprod++)
+    {
+      c = listaP[idprod];
+      if (encs[ideX][c].qnt != 0)
+      {
+        printf("* %s %d %d\n", prods[c].desc, prods[c].preco, encs[ideX][c].qnt);
+      }
+      else
+      {
+        
+      }
+
+    }
+
   }
 
 }

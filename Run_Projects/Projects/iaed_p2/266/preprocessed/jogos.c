@@ -27,9 +27,7 @@ void Printar(listajogos *list)
     jogo *entry = list->hashjogos[i];
     if (entry == 0)
     {
-      {
-        continue;
-      }
+      continue;
     }
     else
     {
@@ -42,9 +40,7 @@ void Printar(listajogos *list)
       printf("%s %s %s", entry->nomej, entry->equipa1->nomeeq, entry->equipa2->nomeeq);
       if (entry->proximoj == 0)
       {
-        {
-          break;
-        }
+        break;
       }
       else
       {
@@ -100,18 +96,14 @@ jogo *ProcuraJogoAuxiliar(listajogos *list, char *nomejogo)
   {
     if (strcmp(procurar->nomej, nomejogo) == 0)
     {
-      {
-        return procurar;
-        break;
-      }
+      return procurar;
+      break;
     }
     else
     {
-      {
-        int tentativa = (i + key) % 2497;
-        procurar = list->hashjogos[tentativa];
-        i++;
-      }
+      int tentativa = (i + key) % 2497;
+      procurar = list->hashjogos[tentativa];
+      i++;
     }
 
   }
@@ -128,18 +120,14 @@ equipa *ProcuraEquipaAuxiliar(listaequipas *list1, char *equipanome)
   {
     if (strcmp(procurar->nomeeq, equipanome) == 0)
     {
-      {
-        return procurar;
-        break;
-      }
+      return procurar;
+      break;
     }
     else
     {
-      {
-        int tentativa = (i + key) % 2497;
-        procurar = list1->hashequipas[tentativa];
-        i++;
-      }
+      int tentativa = (i + key) % 2497;
+      procurar = list1->hashequipas[tentativa];
+      i++;
     }
 
   }
@@ -189,10 +177,8 @@ listajogos *AdicionaJogo(listajogos *list, listaequipas *list1, char *nomejogo, 
   procuraequipa2 = ProcuraEquipaAuxiliar(list1, equipa2nome);
   if (procurajogo != 0)
   {
-    {
-      printf("%d Jogo existente.\n", comando);
-      return list;
-    }
+    printf("%d Jogo existente.\n", comando);
+    return list;
   }
   else
   {
@@ -201,10 +187,8 @@ listajogos *AdicionaJogo(listajogos *list, listaequipas *list1, char *nomejogo, 
 
   if (procuraequipa1 == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", comando);
-      return list;
-    }
+    printf("%d Equipa inexistente.\n", comando);
+    return list;
   }
   else
   {
@@ -213,85 +197,67 @@ listajogos *AdicionaJogo(listajogos *list, listaequipas *list1, char *nomejogo, 
 
   if (procuraequipa2 == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", comando);
-      return list;
-    }
+    printf("%d Equipa inexistente.\n", comando);
+    return list;
   }
   else
   {
+    novojogo = NovoJogo(nomejogo, equipa1nome, equipa2nome, score1recebido, score2recebido, list);
+    if (score1recebido > score2recebido)
     {
-      novojogo = NovoJogo(nomejogo, equipa1nome, equipa2nome, score1recebido, score2recebido, list);
-      if (score1recebido > score2recebido)
-      {
-        {
-          vitoria1 = Hash(equipa1nome);
-          list1->hashequipas[vitoria1]->vitorias++;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (score1recebido < score2recebido)
-      {
-        {
-          vitoria2 = Hash(equipa2nome);
-          list1->hashequipas[vitoria2]->vitorias++;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (list->hashjogos[key] == 0)
-      {
-        {
-          list->hashjogos[key] = novojogo;
-        }
-      }
-      else
-      {
-        {
-          for (i = 0; i < 2497; i++)
-          {
-            int tentativa = (i + key) % 2497;
-            novojogo->proximoj = list->hashjogos[tentativa];
-            if (novojogo->proximoj == 0)
-            {
-              {
-                list->hashjogos[tentativa] = novojogo;
-                break;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-        }
-      }
-
-      if (list->inicioj == 0)
-      {
-        {
-          list->inicioj = novojogo;
-        }
-      }
-      else
-      {
-        {
-          list->fimj->proximoj = novojogo;
-          novojogo->anteriorj = list->fimj;
-        }
-      }
-
-      list->fimj = novojogo;
+      vitoria1 = Hash(equipa1nome);
+      list1->hashequipas[vitoria1]->vitorias++;
     }
+    else
+    {
+      
+    }
+
+    if (score1recebido < score2recebido)
+    {
+      vitoria2 = Hash(equipa2nome);
+      list1->hashequipas[vitoria2]->vitorias++;
+    }
+    else
+    {
+      
+    }
+
+    if (list->hashjogos[key] == 0)
+    {
+      list->hashjogos[key] = novojogo;
+    }
+    else
+    {
+      for (i = 0; i < 2497; i++)
+      {
+        int tentativa = (i + key) % 2497;
+        novojogo->proximoj = list->hashjogos[tentativa];
+        if (novojogo->proximoj == 0)
+        {
+          list->hashjogos[tentativa] = novojogo;
+          break;
+        }
+        else
+        {
+          
+        }
+
+      }
+
+    }
+
+    if (list->inicioj == 0)
+    {
+      list->inicioj = novojogo;
+    }
+    else
+    {
+      list->fimj->proximoj = novojogo;
+      novojogo->anteriorj = list->fimj;
+    }
+
+    list->fimj = novojogo;
   }
 
   return list;
@@ -304,61 +270,47 @@ listaequipas *AdicionaEquipa(listaequipas *list1, char *equipanome, int comando)
   int i;
   if (procuraequipa != 0)
   {
-    {
-      printf("%d Equipa existente.\n", comando);
-      return list1;
-    }
+    printf("%d Equipa existente.\n", comando);
+    return list1;
   }
   else
   {
+    equipa *novaequipa = NovaEquipa(equipanome, list1);
+    if (list1->hashequipas[key] == 0)
     {
-      equipa *novaequipa = NovaEquipa(equipanome, list1);
-      if (list1->hashequipas[key] == 0)
-      {
-        {
-          list1->hashequipas[key] = novaequipa;
-        }
-      }
-      else
-      {
-        {
-          for (i = 0; i < 2497; i++)
-          {
-            int tentativa = (i + key) % 2497;
-            novaequipa->proximoeq = list1->hashequipas[tentativa];
-            if (novaequipa->proximoeq == 0)
-            {
-              {
-                list1->hashequipas[tentativa] = novaequipa;
-                break;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-        }
-      }
-
-      if (list1->inicioeq == 0)
-      {
-        {
-          list1->inicioeq = novaequipa;
-        }
-      }
-      else
-      {
-        {
-          list1->fimeq->proximoeq = novaequipa;
-          novaequipa->anterioreq = list1->fimeq;
-        }
-      }
-
-      list1->fimeq = novaequipa;
+      list1->hashequipas[key] = novaequipa;
     }
+    else
+    {
+      for (i = 0; i < 2497; i++)
+      {
+        int tentativa = (i + key) % 2497;
+        novaequipa->proximoeq = list1->hashequipas[tentativa];
+        if (novaequipa->proximoeq == 0)
+        {
+          list1->hashequipas[tentativa] = novaequipa;
+          break;
+        }
+        else
+        {
+          
+        }
+
+      }
+
+    }
+
+    if (list1->inicioeq == 0)
+    {
+      list1->inicioeq = novaequipa;
+    }
+    else
+    {
+      list1->fimeq->proximoeq = novaequipa;
+      novaequipa->anterioreq = list1->fimeq;
+    }
+
+    list1->fimeq = novaequipa;
   }
 
   return list1;
@@ -369,9 +321,7 @@ void ListaJogos(listajogos *list, int comando)
   jogo *listar = list->inicioj;
   if (listar == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -392,10 +342,8 @@ jogo *ProcuraJogo(listajogos *list, char *nomejogo, int comando)
   jogo *procurar = ProcuraJogoAuxiliar(list, nomejogo);
   if (procurar == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", comando);
-      return procurar;
-    }
+    printf("%d Jogo inexistente.\n", comando);
+    return procurar;
   }
   else
   {
@@ -411,10 +359,8 @@ equipa *ProcuraEquipa(listaequipas *list1, char *equipanome, int comando)
   equipa *procurar = ProcuraEquipaAuxiliar(list1, equipanome);
   if (procurar == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", comando);
-      return procurar;
-    }
+    printf("%d Equipa inexistente.\n", comando);
+    return procurar;
   }
   else
   {
@@ -434,116 +380,94 @@ listajogos *ApagaJogo(listajogos *list, listaequipas *list1, char *nomejogo, int
   jogo *remover = ProcuraJogoAuxiliar(list, nomejogo);
   if (remover == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", comando);
-      return list;
-    }
+    printf("%d Jogo inexistente.\n", comando);
+    return list;
   }
   else
   {
+    if (remover->score1 > remover->score2)
     {
-      if (remover->score1 > remover->score2)
-      {
-        {
-          vitoria1 = Hash(remover->equipa1->nomeeq);
-          list1->hashequipas[vitoria1]->vitorias--;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (remover->score1 < remover->score2)
-      {
-        {
-          vitoria2 = Hash(remover->equipa2->nomeeq);
-          list1->hashequipas[vitoria2]->vitorias--;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (remover->anteriorj != 0)
-      {
-        {
-          remover->anteriorj->proximoj = remover->proximoj;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (remover->proximoj != 0)
-      {
-        {
-          remover->proximoj->anteriorj = remover->anteriorj;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (remover == list->inicioj)
-      {
-        {
-          list->inicioj = remover->proximoj;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (remover == list->fimj)
-      {
-        {
-          list->fimj = remover->anteriorj;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (strcmp(nomejogo, list->hashjogos[key]->nomej) == 0)
-      {
-        {
-          list->hashjogos[key] = remover->proximoj;
-        }
-      }
-      else
-      {
-        {
-          for (i = 0; i < 2497; i++)
-          {
-            int tentativa = (i + key) % 2497;
-            remover->proximoj = list->hashjogos[tentativa];
-            if (strcmp(nomejogo, list->hashjogos[tentativa]->nomej) == 0)
-            {
-              {
-                list->hashjogos[tentativa] = remover->proximoj;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-        }
-      }
-
-      free(remover->nomej);
-      free(remover->equipa1);
-      free(remover->equipa2);
-      free(remover);
+      vitoria1 = Hash(remover->equipa1->nomeeq);
+      list1->hashequipas[vitoria1]->vitorias--;
     }
+    else
+    {
+      
+    }
+
+    if (remover->score1 < remover->score2)
+    {
+      vitoria2 = Hash(remover->equipa2->nomeeq);
+      list1->hashequipas[vitoria2]->vitorias--;
+    }
+    else
+    {
+      
+    }
+
+    if (remover->anteriorj != 0)
+    {
+      remover->anteriorj->proximoj = remover->proximoj;
+    }
+    else
+    {
+      
+    }
+
+    if (remover->proximoj != 0)
+    {
+      remover->proximoj->anteriorj = remover->anteriorj;
+    }
+    else
+    {
+      
+    }
+
+    if (remover == list->inicioj)
+    {
+      list->inicioj = remover->proximoj;
+    }
+    else
+    {
+      
+    }
+
+    if (remover == list->fimj)
+    {
+      list->fimj = remover->anteriorj;
+    }
+    else
+    {
+      
+    }
+
+    if (strcmp(nomejogo, list->hashjogos[key]->nomej) == 0)
+    {
+      list->hashjogos[key] = remover->proximoj;
+    }
+    else
+    {
+      for (i = 0; i < 2497; i++)
+      {
+        int tentativa = (i + key) % 2497;
+        remover->proximoj = list->hashjogos[tentativa];
+        if (strcmp(nomejogo, list->hashjogos[tentativa]->nomej) == 0)
+        {
+          list->hashjogos[tentativa] = remover->proximoj;
+        }
+        else
+        {
+          
+        }
+
+      }
+
+    }
+
+    free(remover->nomej);
+    free(remover->equipa1);
+    free(remover->equipa2);
+    free(remover);
   }
 
   return list;
@@ -558,10 +482,8 @@ listajogos *AlteraScore(listajogos *list, listaequipas *list1, char *nomejogo, i
   jogo *alterar = ProcuraJogoAuxiliar(list, nomejogo);
   if (alterar == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", comando);
-      return list;
-    }
+    printf("%d Jogo inexistente.\n", comando);
+    return list;
   }
   else
   {
@@ -570,120 +492,93 @@ listajogos *AlteraScore(listajogos *list, listaequipas *list1, char *nomejogo, i
 
   if (strcmp(nomejogo, list->hashjogos[key]->nomej) == 0)
   {
+    if (list->hashjogos[key]->score1 > list->hashjogos[key]->score2)
     {
-      if (list->hashjogos[key]->score1 > list->hashjogos[key]->score2)
-      {
-        {
-          vitoria1 = Hash(list->hashjogos[key]->equipa1->nomeeq);
-          list1->hashequipas[vitoria1]->vitorias--;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (list->hashjogos[key]->score1 < list->hashjogos[key]->score2)
-      {
-        {
-          vitoria2 = Hash(list->hashjogos[key]->equipa2->nomeeq);
-          list1->hashequipas[vitoria2]->vitorias--;
-        }
-      }
-      else
-      {
-        
-      }
-
-      list->hashjogos[key]->score1 = score1recebido;
-      list->hashjogos[key]->score2 = score2recebido;
-      if (score1recebido > score2recebido)
-      {
-        {
-          vitoria1 = Hash(list->hashjogos[key]->equipa1->nomeeq);
-          list1->hashequipas[vitoria1]->vitorias++;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (score1recebido < score2recebido)
-      {
-        {
-          vitoria2 = Hash(list->hashjogos[key]->equipa2->nomeeq);
-          list1->hashequipas[vitoria2]->vitorias++;
-        }
-      }
-      else
-      {
-        
-      }
-
+      vitoria1 = Hash(list->hashjogos[key]->equipa1->nomeeq);
+      list1->hashequipas[vitoria1]->vitorias--;
     }
+    else
+    {
+      
+    }
+
+    if (list->hashjogos[key]->score1 < list->hashjogos[key]->score2)
+    {
+      vitoria2 = Hash(list->hashjogos[key]->equipa2->nomeeq);
+      list1->hashequipas[vitoria2]->vitorias--;
+    }
+    else
+    {
+      
+    }
+
+    list->hashjogos[key]->score1 = score1recebido;
+    list->hashjogos[key]->score2 = score2recebido;
+    if (score1recebido > score2recebido)
+    {
+      vitoria1 = Hash(list->hashjogos[key]->equipa1->nomeeq);
+      list1->hashequipas[vitoria1]->vitorias++;
+    }
+    else
+    {
+      
+    }
+
+    if (score1recebido < score2recebido)
+    {
+      vitoria2 = Hash(list->hashjogos[key]->equipa2->nomeeq);
+      list1->hashequipas[vitoria2]->vitorias++;
+    }
+    else
+    {
+      
+    }
+
   }
   else
   {
+    for (i = 0; i < 2497; i++)
     {
-      for (i = 0; i < 2497; i++)
+      int tentativa = (i + key) % 2497;
+      alterar->proximoj = list->hashjogos[tentativa];
+      if (strcmp(nomejogo, list->hashjogos[tentativa]->nomej) == 0)
       {
-        int tentativa = (i + key) % 2497;
-        alterar->proximoj = list->hashjogos[tentativa];
-        if (strcmp(nomejogo, list->hashjogos[tentativa]->nomej) == 0)
+        if (list->hashjogos[tentativa]->score1 > list->hashjogos[tentativa]->score2)
         {
-          {
-            if (list->hashjogos[tentativa]->score1 > list->hashjogos[tentativa]->score2)
-            {
-              {
-                vitoria1 = Hash(list->hashjogos[tentativa]->equipa1->nomeeq);
-                list1->hashequipas[vitoria1]->vitorias--;
-              }
-            }
-            else
-            {
-              
-            }
+          vitoria1 = Hash(list->hashjogos[tentativa]->equipa1->nomeeq);
+          list1->hashequipas[vitoria1]->vitorias--;
+        }
+        else
+        {
+          
+        }
 
-            if (list->hashjogos[tentativa]->score1 < list->hashjogos[tentativa]->score2)
-            {
-              {
-                vitoria2 = Hash(list->hashjogos[tentativa]->equipa2->nomeeq);
-                list1->hashequipas[vitoria2]->vitorias--;
-              }
-            }
-            else
-            {
-              
-            }
+        if (list->hashjogos[tentativa]->score1 < list->hashjogos[tentativa]->score2)
+        {
+          vitoria2 = Hash(list->hashjogos[tentativa]->equipa2->nomeeq);
+          list1->hashequipas[vitoria2]->vitorias--;
+        }
+        else
+        {
+          
+        }
 
-            list->hashjogos[tentativa]->score1 = score1recebido;
-            list->hashjogos[tentativa]->score2 = score2recebido;
-            if (score1recebido > score2recebido)
-            {
-              {
-                vitoria1 = Hash(list->hashjogos[tentativa]->equipa1->nomeeq);
-                list1->hashequipas[vitoria1]->vitorias++;
-              }
-            }
-            else
-            {
-              
-            }
+        list->hashjogos[tentativa]->score1 = score1recebido;
+        list->hashjogos[tentativa]->score2 = score2recebido;
+        if (score1recebido > score2recebido)
+        {
+          vitoria1 = Hash(list->hashjogos[tentativa]->equipa1->nomeeq);
+          list1->hashequipas[vitoria1]->vitorias++;
+        }
+        else
+        {
+          
+        }
 
-            if (score1recebido < score2recebido)
-            {
-              {
-                vitoria2 = Hash(list->hashjogos[tentativa]->equipa2->nomeeq);
-                list1->hashequipas[vitoria2]->vitorias++;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
+        if (score1recebido < score2recebido)
+        {
+          vitoria2 = Hash(list->hashjogos[tentativa]->equipa2->nomeeq);
+          list1->hashequipas[vitoria2]->vitorias++;
         }
         else
         {
@@ -691,8 +586,13 @@ listajogos *AlteraScore(listajogos *list, listaequipas *list1, char *nomejogo, i
         }
 
       }
+      else
+      {
+        
+      }
 
     }
+
   }
 
   return list;
@@ -740,15 +640,13 @@ void OrdenaEquipas(listaequipas *list1, int comando)
 
   if (new->inicioeq != 0)
   {
+    printf("%d Melhores %d\n", comando, wins);
+    qsort(new, 1024, sizeof(new->inicioeq), cmp_str);
+    for (; new->inicioeq->proximoeq != 0; new->inicioeq = new->inicioeq->proximoeq)
     {
-      printf("%d Melhores %d\n", comando, wins);
-      qsort(new, 1024, sizeof(new->inicioeq), cmp_str);
-      for (; new->inicioeq->proximoeq != 0; new->inicioeq = new->inicioeq->proximoeq)
-      {
-        printf("%d * %s\n", comando, new->inicioeq->proximoeq->nomeeq);
-      }
-
+      printf("%d * %s\n", comando, new->inicioeq->proximoeq->nomeeq);
     }
+
   }
   else
   {

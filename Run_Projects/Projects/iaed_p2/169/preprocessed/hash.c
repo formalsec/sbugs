@@ -72,9 +72,7 @@ link2 lookupE(link2 head, char *nome)
   {
     if (strcmp(t->equipa, nome) == 0)
     {
-      {
-        return t;
-      }
+      return t;
     }
     else
     {
@@ -130,27 +128,21 @@ link1 delete(link1 head, char *nome)
   {
     if (strcmp(t->Jogo->nome, nome) == 0)
     {
+      if (t == head)
       {
-        if (t == head)
-        {
-          {
-            head = t->next;
-          }
-        }
-        else
-        {
-          {
-            prev->next = t->next;
-          }
-        }
-
-        free(t->Jogo->nome);
-        free(t->Jogo->equipa1);
-        free(t->Jogo->equipa2);
-        free(t->Jogo);
-        free(t);
-        break;
+        head = t->next;
       }
+      else
+      {
+        prev->next = t->next;
+      }
+
+      free(t->Jogo->nome);
+      free(t->Jogo->equipa1);
+      free(t->Jogo->equipa2);
+      free(t->Jogo);
+      free(t);
+      break;
     }
     else
     {
@@ -175,9 +167,7 @@ link1 lookupJ(link1 head, char *nome)
   {
     if (strcmp(t->Jogo->nome, nome) == 0)
     {
-      {
-        return t;
-      }
+      return t;
     }
     else
     {

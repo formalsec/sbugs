@@ -56,19 +56,15 @@ elem_eq *equipas_vencedoras(elem_eq **tab_eqs, int *maior)
       tmp = acede_equipa(aux);
       if (ganhos_equipa(tmp) > (*maior))
       {
-        {
-          *maior = ganhos_equipa(tmp);
-          melhores = liberta_lista_equipas(melhores);
-          melhores = adiciona_equipa_lista(melhores, tmp);
-        }
+        *maior = ganhos_equipa(tmp);
+        melhores = liberta_lista_equipas(melhores);
+        melhores = adiciona_equipa_lista(melhores, tmp);
       }
       else
       {
         if (ganhos_equipa(tmp) == (*maior))
         {
-          {
-            melhores = adiciona_equipa_lista(melhores, tmp);
-          }
+          melhores = adiciona_equipa_lista(melhores, tmp);
         }
         else
         {

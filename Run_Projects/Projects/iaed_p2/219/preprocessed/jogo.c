@@ -52,22 +52,18 @@ void adiciona_jogo(jogo *jg, lista_jogos *l_jogos)
   jogo *old_first;
   if (l_jogos->head == 0)
   {
-    {
-      l_jogos->head = jg;
-      jg->jogo_anterior = 0;
-      jg->jogo_seguinte = 0;
-      l_jogos->last = jg;
-    }
+    l_jogos->head = jg;
+    jg->jogo_anterior = 0;
+    jg->jogo_seguinte = 0;
+    l_jogos->last = jg;
   }
   else
   {
-    {
-      old_first = l_jogos->head;
-      old_first->jogo_anterior = jg;
-      jg->jogo_seguinte = old_first;
-      jg->jogo_anterior = 0;
-      l_jogos->head = jg;
-    }
+    old_first = l_jogos->head;
+    old_first->jogo_anterior = jg;
+    jg->jogo_seguinte = old_first;
+    jg->jogo_anterior = 0;
+    l_jogos->head = jg;
   }
 
   l_jogos->num_jogos++;
@@ -77,28 +73,20 @@ void retira_jogo(lista_jogos *l_jogos, jogo *jg)
 {
   if (jg->jogo_anterior == 0)
   {
-    {
-      l_jogos->head = jg->jogo_seguinte;
-    }
+    l_jogos->head = jg->jogo_seguinte;
   }
   else
   {
-    {
-      jg->jogo_anterior->jogo_seguinte = jg->jogo_seguinte;
-    }
+    jg->jogo_anterior->jogo_seguinte = jg->jogo_seguinte;
   }
 
   if (jg->jogo_seguinte == 0)
   {
-    {
-      l_jogos->last = jg->jogo_anterior;
-    }
+    l_jogos->last = jg->jogo_anterior;
   }
   else
   {
-    {
-      jg->jogo_seguinte->jogo_seguinte = jg->jogo_anterior;
-    }
+    jg->jogo_seguinte->jogo_seguinte = jg->jogo_anterior;
   }
 
 }

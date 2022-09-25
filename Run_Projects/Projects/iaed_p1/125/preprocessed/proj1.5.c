@@ -34,27 +34,25 @@ int binarySearch(int v[], int left, int b, int proc, int negativo)
   int meio = left + ((b - left) / 2);
   if (b >= left)
   {
+    if (v[meio] == proc)
     {
-      if (v[meio] == proc)
-      {
-        return meio;
-      }
-      else
-      {
-        
-      }
-
-      if (v[meio] > proc)
-      {
-        return binarySearch(v, left, meio - 1, proc, negativo);
-      }
-      else
-      {
-        
-      }
-
-      return binarySearch(v, meio + 1, b, proc, negativo);
+      return meio;
     }
+    else
+    {
+      
+    }
+
+    if (v[meio] > proc)
+    {
+      return binarySearch(v, left, meio - 1, proc, negativo);
+    }
+    else
+    {
+      
+    }
+
+    return binarySearch(v, meio + 1, b, proc, negativo);
   }
   else
   {
@@ -77,27 +75,25 @@ int binarySearchStr(int v[], int left, int b, int idp)
   int meio = left + ((b - left) / 2);
   if (b >= left)
   {
+    if (strcmp(prod[v[meio]].desc, prod[idp].desc) == 0)
     {
-      if (strcmp(prod[v[meio]].desc, prod[idp].desc) == 0)
-      {
-        return meio;
-      }
-      else
-      {
-        
-      }
-
-      if (strcmp(prod[v[meio]].desc, prod[idp].desc) > 0)
-      {
-        return binarySearchStr(v, left, meio - 1, idp);
-      }
-      else
-      {
-        
-      }
-
-      return binarySearchStr(v, meio + 1, b, idp);
+      return meio;
     }
+    else
+    {
+      
+    }
+
+    if (strcmp(prod[v[meio]].desc, prod[idp].desc) > 0)
+    {
+      return binarySearchStr(v, left, meio - 1, idp);
+    }
+    else
+    {
+      
+    }
+
+    return binarySearchStr(v, meio + 1, b, idp);
   }
   else
   {
@@ -153,19 +149,15 @@ void mover_array(int v[], int dim, int ponto, int casas)
   int contador;
   if (casas < 0)
   {
-    {
-      for (contador = ponto + 1; contador <= dim; contador++)
-        v[casas + contador] = v[contador];
+    for (contador = ponto + 1; contador <= dim; contador++)
+      v[casas + contador] = v[contador];
 
-    }
   }
   else
   {
-    {
-      for (contador = dim; contador >= ponto; contador--)
-        v[casas + contador] = v[contador];
+    for (contador = dim; contador >= ponto; contador--)
+      v[casas + contador] = v[contador];
 
-    }
   }
 
 }
@@ -246,75 +238,59 @@ void A()
       }
       else
       {
+        if (enc[ide].n == (-1))
         {
-          if (enc[ide].n == (-1))
+          enc[ide].peso = prod[idp].peso * qtd;
+          if (enc[ide].peso <= 200)
           {
-            {
-              enc[ide].peso = prod[idp].peso * qtd;
-              if (enc[ide].peso <= 200)
-              {
-                {
-                  enc[ide].n++;
-                  enc[ide].idp[0] = idp;
-                  enc[ide].qtd[0] = qtd;
-                  enc[ide].alfa[0] = idp;
-                  enc[ide].preco = prod[idp].preco * qtd;
-                  prod[idp].qtd -= qtd;
-                }
-              }
-              else
-              {
-                {
-                  printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
-                  enc[ide].peso = 0;
-                }
-              }
-
-            }
+            enc[ide].n++;
+            enc[ide].idp[0] = idp;
+            enc[ide].qtd[0] = qtd;
+            enc[ide].alfa[0] = idp;
+            enc[ide].preco = prod[idp].preco * qtd;
+            prod[idp].qtd -= qtd;
           }
           else
           {
-            {
-              enc[ide].peso += prod[idp].peso * qtd;
-              if (enc[ide].peso <= 200)
-              {
-                {
-                  index = binarySearch(enc[ide].idp, 0, enc[ide].n, idp, 1);
-                  if (index < 0)
-                  {
-                    {
-                      index = binarySearch(enc[ide].idp, 0, enc[ide].n, idp, 0);
-                      mover_array(enc[ide].idp, enc[ide].n, index, 1);
-                      enc[ide].idp[index] = idp;
-                      mover_array(enc[ide].qtd, enc[ide].n, index, 1);
-                      enc[ide].qtd[index] = qtd;
-                      index = binarySearchStr(enc[ide].alfa, 0, enc[ide].n, idp);
-                      mover_array(enc[ide].alfa, enc[ide].n, index, 1);
-                      enc[ide].alfa[index] = idp;
-                      enc[ide].n++;
-                    }
-                  }
-                  else
-                  {
-                    enc[ide].qtd[index] += qtd;
-                  }
-
-                  enc[ide].preco += prod[idp].preco * qtd;
-                  prod[idp].qtd -= qtd;
-                }
-              }
-              else
-              {
-                {
-                  printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
-                  enc[ide].peso -= prod[idp].peso * qtd;
-                }
-              }
-
-            }
+            printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
+            enc[ide].peso = 0;
           }
 
         }
+        else
+        {
+          enc[ide].peso += prod[idp].peso * qtd;
+          if (enc[ide].peso <= 200)
+          {
+            index = binarySearch(enc[ide].idp, 0, enc[ide].n, idp, 1);
+            if (index < 0)
+            {
+              index = binarySearch(enc[ide].idp, 0, enc[ide].n, idp, 0);
+              mover_array(enc[ide].idp, enc[ide].n, index, 1);
+              enc[ide].idp[index] = idp;
+              mover_array(enc[ide].qtd, enc[ide].n, index, 1);
+              enc[ide].qtd[index] = qtd;
+              index = binarySearchStr(enc[ide].alfa, 0, enc[ide].n, idp);
+              mover_array(enc[ide].alfa, enc[ide].n, index, 1);
+              enc[ide].alfa[index] = idp;
+              enc[ide].n++;
+            }
+            else
+            {
+              enc[ide].qtd[index] += qtd;
+            }
+
+            enc[ide].preco += prod[idp].preco * qtd;
+            prod[idp].qtd -= qtd;
+          }
+          else
+          {
+            printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
+            enc[ide].peso -= prod[idp].peso * qtd;
+          }
+
+        }
+
       }
 
     }
@@ -375,16 +351,14 @@ void R()
   index = binarySearch(enc[ide].idp, 0, enc[ide].n, idp, 1);
   if (index >= 0)
   {
-    {
-      enc[ide].peso -= enc[ide].qtd[index] * prod[idp].peso;
-      enc[ide].preco -= enc[ide].qtd[index] * prod[idp].preco;
-      prod[idp].qtd += enc[ide].qtd[index];
-      mover_array(enc[ide].idp, enc[ide].n + 1, index, -1);
-      mover_array(enc[ide].qtd, enc[ide].n + 1, index, -1);
-      index = binarySearchStr(enc[ide].alfa, 0, enc[ide].n, idp);
-      mover_array(enc[ide].alfa, enc[ide].n + 1, index, -1);
-      enc[ide].n--;
-    }
+    enc[ide].peso -= enc[ide].qtd[index] * prod[idp].peso;
+    enc[ide].preco -= enc[ide].qtd[index] * prod[idp].preco;
+    prod[idp].qtd += enc[ide].qtd[index];
+    mover_array(enc[ide].idp, enc[ide].n + 1, index, -1);
+    mover_array(enc[ide].qtd, enc[ide].n + 1, index, -1);
+    index = binarySearchStr(enc[ide].alfa, 0, enc[ide].n, idp);
+    mover_array(enc[ide].alfa, enc[ide].n + 1, index, -1);
+    enc[ide].n--;
   }
   else
   {
@@ -422,26 +396,22 @@ void p()
   }
   else
   {
+    for (contador = 0; contador <= ide_max; contador++)
     {
-      for (contador = 0; contador <= ide_max; contador++)
+      index = binarySearch(enc[contador].idp, 0, enc[contador].n, idp, 1);
+      if (index >= 0)
       {
-        index = binarySearch(enc[contador].idp, 0, enc[contador].n, idp, 1);
-        if (index >= 0)
-        {
-          {
-            enc[contador].preco -= enc[contador].qtd[index] * prod[idp].preco;
-            enc[contador].preco += enc[contador].qtd[index] * preco;
-          }
-        }
-        else
-        {
-          
-        }
-
+        enc[contador].preco -= enc[contador].qtd[index] * prod[idp].preco;
+        enc[contador].preco += enc[contador].qtd[index] * preco;
+      }
+      else
+      {
+        
       }
 
-      prod[idp].preco = preco;
     }
+
+    prod[idp].preco = preco;
   }
 
 }
@@ -465,19 +435,17 @@ void E()
     }
     else
     {
+      index = binarySearch(enc[ide].idp, 0, enc[ide].n, idp, 1);
+      printf("%s ", prod[idp].desc);
+      if (index >= 0)
       {
-        index = binarySearch(enc[ide].idp, 0, enc[ide].n, idp, 1);
-        printf("%s ", prod[idp].desc);
-        if (index >= 0)
-        {
-          printf("%d.\n", enc[ide].qtd[index]);
-        }
-        else
-        {
-          printf("0.\n");
-        }
-
+        printf("%d.\n", enc[ide].qtd[index]);
       }
+      else
+      {
+        printf("0.\n");
+      }
+
     }
 
   }
@@ -498,26 +466,15 @@ void m()
   }
   else
   {
+    for (contador = 0; contador <= ide_max; contador++)
     {
-      for (contador = 0; contador <= ide_max; contador++)
+      index = binarySearch(enc[contador].idp, 0, enc[contador].n, idp, 1);
+      if (index >= 0)
       {
-        index = binarySearch(enc[contador].idp, 0, enc[contador].n, idp, 1);
-        if (index >= 0)
+        if (enc[contador].qtd[index] > qtd)
         {
-          {
-            if (enc[contador].qtd[index] > qtd)
-            {
-              {
-                ide_procurado = contador;
-                qtd = enc[contador].qtd[index];
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
+          ide_procurado = contador;
+          qtd = enc[contador].qtd[index];
         }
         else
         {
@@ -525,17 +482,22 @@ void m()
         }
 
       }
-
-      if (qtd > 0)
-      {
-        printf("Maximo produto %d %d %d.\n", idp, ide_procurado, qtd);
-      }
       else
       {
         
       }
 
     }
+
+    if (qtd > 0)
+    {
+      printf("Maximo produto %d %d %d.\n", idp, ide_procurado, qtd);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -570,16 +532,14 @@ void L()
   }
   else
   {
+    printf("Encomenda %d\n", ide);
+    for (contador = 0; contador <= enc[ide].n; contador++)
     {
-      printf("Encomenda %d\n", ide);
-      for (contador = 0; contador <= enc[ide].n; contador++)
-      {
-        idp = enc[ide].alfa[contador];
-        index = binarySearch(enc[ide].idp, 0, enc[ide].n, idp, 1);
-        printf("* %s %d %d\n", prod[idp].desc, prod[idp].preco, enc[ide].qtd[index]);
-      }
-
+      idp = enc[ide].alfa[contador];
+      index = binarySearch(enc[ide].idp, 0, enc[ide].n, idp, 1);
+      printf("* %s %d %d\n", prod[idp].desc, prod[idp].preco, enc[ide].qtd[index]);
     }
+
   }
 
 }

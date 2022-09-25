@@ -35,11 +35,9 @@ void insertEnd_lista(lst_ptr lista, jogo_ptr j)
   link x;
   if (lista->head == 0)
   {
-    {
-      lista->head = NEW_jogo(j);
-      lista->tail = lista->head;
-      return;
-    }
+    lista->head = NEW_jogo(j);
+    lista->tail = lista->head;
+    return;
   }
   else
   {
@@ -107,31 +105,29 @@ void removeItemList_jogo(char *nome, lst_ptr lista)
     t_aux = t->next;
     if (strcmp(j->nome, nome) == 0)
     {
+      if (t == lista->head)
       {
-        if (t == lista->head)
-        {
-          lista->head = t->next;
-        }
-        else
-        {
-          prev->next = t->next;
-        }
-
-        if (t == lista->tail)
-        {
-          lista->tail = prev;
-        }
-        else
-        {
-          
-        }
-
-        free(j->nome);
-        free(j->equipa1);
-        free(j->equipa2);
-        free(j);
-        free(t);
+        lista->head = t->next;
       }
+      else
+      {
+        prev->next = t->next;
+      }
+
+      if (t == lista->tail)
+      {
+        lista->tail = prev;
+      }
+      else
+      {
+        
+      }
+
+      free(j->nome);
+      free(j->equipa1);
+      free(j->equipa2);
+      free(j);
+      free(t);
     }
     else
     {
@@ -155,19 +151,17 @@ link removeItemList_jogo_hash(char *nome, link head, lst_ptr lista)
     t_aux = t->next;
     if (strcmp(j->nome, nome) == 0)
     {
+      if (t == head)
       {
-        if (t == head)
-        {
-          head = t->next;
-        }
-        else
-        {
-          prev->next = t->next;
-        }
-
-        removeItemList_jogo(nome, lista);
-        free(t);
+        head = t->next;
       }
+      else
+      {
+        prev->next = t->next;
+      }
+
+      removeItemList_jogo(nome, lista);
+      free(t);
     }
     else
     {

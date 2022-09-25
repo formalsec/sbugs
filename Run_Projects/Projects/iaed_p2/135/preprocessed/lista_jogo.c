@@ -52,28 +52,20 @@ void remove_elemento(list *l, el_lista_jogo *elemento)
 {
   if (!elemento->previous)
   {
-    {
-      l->head = elemento->next;
-    }
+    l->head = elemento->next;
   }
   else
   {
-    {
-      elemento->previous->next = elemento->next;
-    }
+    elemento->previous->next = elemento->next;
   }
 
   if (!elemento->next)
   {
-    {
-      l->last = elemento->previous;
-    }
+    l->last = elemento->previous;
   }
   else
   {
-    {
-      elemento->next->previous = elemento->previous;
-    }
+    elemento->next->previous = elemento->previous;
   }
 
 }

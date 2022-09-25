@@ -32,17 +32,13 @@ void insereLista(Lista l, char *c)
   new->prox = 0;
   if (l->primeiro == 0)
   {
-    {
-      l->primeiro = new;
-      l->ult = new;
-    }
+    l->primeiro = new;
+    l->ult = new;
   }
   else
   {
-    {
-      l->ult->prox = new;
-      l->ult = new;
-    }
+    l->ult->prox = new;
+    l->ult = new;
   }
 
 }
@@ -53,26 +49,20 @@ void apagaLista(Lista l, char *c)
   Node aux;
   if (strcmp(atual->c, c) == 0)
   {
+    if (atual->prox == 0)
     {
-      if (atual->prox == 0)
-      {
-        {
-          l->ult = 0;
-          l->primeiro = 0;
-          free(atual);
-          return;
-        }
-      }
-      else
-      {
-        {
-          l->primeiro = l->primeiro->prox;
-          free(atual);
-          return;
-        }
-      }
-
+      l->ult = 0;
+      l->primeiro = 0;
+      free(atual);
+      return;
     }
+    else
+    {
+      l->primeiro = l->primeiro->prox;
+      free(atual);
+      return;
+    }
+
   }
   else
   {
@@ -83,21 +73,19 @@ void apagaLista(Lista l, char *c)
   {
     if (strcmp(atual->prox->c, c) == 0)
     {
+      aux = atual->prox;
+      atual->prox = atual->prox->prox;
+      if (atual->prox == 0)
       {
-        aux = atual->prox;
-        atual->prox = atual->prox->prox;
-        if (atual->prox == 0)
-        {
-          l->ult = atual;
-        }
-        else
-        {
-          
-        }
-
-        free(aux);
-        return;
+        l->ult = atual;
       }
+      else
+      {
+        
+      }
+
+      free(aux);
+      return;
     }
     else
     {

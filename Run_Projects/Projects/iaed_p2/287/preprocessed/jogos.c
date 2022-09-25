@@ -90,18 +90,16 @@ void apaga_tab_jogo(link_jogo *jogos, Key nome)
   {
     if (strcmp(temp->jogo->nome, nome) == 0)
     {
+      if (temp == jogos[i])
       {
-        if (temp == jogos[i])
-        {
-          jogos[i] = temp->next;
-        }
-        else
-        {
-          anterior->next = temp->next;
-        }
-
-        temp->jogo->nome = "APAGADO";
+        jogos[i] = temp->next;
       }
+      else
+      {
+        anterior->next = temp->next;
+      }
+
+      temp->jogo->nome = "APAGADO";
     }
     else
     {
@@ -163,18 +161,16 @@ void apaga_tab_jogos(link_jogo *jogos)
   {
     if (jogos[i] != 0)
     {
+      temp1 = jogos[i];
+      while (temp1 != 0)
       {
-        temp1 = jogos[i];
-        while (temp1 != 0)
-        {
-          jogo_temp = temp1->jogo;
-          temp2 = temp1;
-          temp1 = temp1->next;
-          apaga_jogo(jogo_temp);
-          free(temp2);
-        }
-
+        jogo_temp = temp1->jogo;
+        temp2 = temp1;
+        temp1 = temp1->next;
+        apaga_jogo(jogo_temp);
+        free(temp2);
       }
+
     }
     else
     {

@@ -68,17 +68,13 @@ int main(int argc, const char *argv[])
         string[strlen(string) - 1] = '\0';
         if (listTeams == 0)
       {
-        {
-          listTeams = createTeams(string);
-        }
+        listTeams = createTeams(string);
       }
       else
       {
         if (addTeam(string, listTeams) == 0)
         {
-          {
-            fprintf(outputFile, "%d Equipa existente.\n", commandNumber);
-          }
+          fprintf(outputFile, "%d Equipa existente.\n", commandNumber);
         }
         else
         {
@@ -114,26 +110,22 @@ int main(int argc, const char *argv[])
   freeTeams(listTeams);
   if (listGames != 0)
   {
+    while (listGames->nextGame != 0)
     {
-      while (listGames->nextGame != 0)
-      {
-        forFree = listGames;
-        listGames = forFree->nextGame;
-        freeGame(forFree);
-      }
-
-      if (listGames != 0)
-      {
-        {
-          freeGame(listGames);
-        }
-      }
-      else
-      {
-        
-      }
-
+      forFree = listGames;
+      listGames = forFree->nextGame;
+      freeGame(forFree);
     }
+
+    if (listGames != 0)
+    {
+      freeGame(listGames);
+    }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -149,37 +141,27 @@ void open_files(int argc, const char *argv[])
 {
   if ((argc > 1) && (argc < 4))
   {
+    inputFile = fopen(argv[1], "r");
+    if (argc == 3)
     {
-      inputFile = fopen(argv[1], "r");
-      if (argc == 3)
-      {
-        {
-          outputFile = fopen(argv[2], "w");
-        }
-      }
-      else
-      {
-        {
-          outputFile = stdout;
-        }
-      }
-
+      outputFile = fopen(argv[2], "w");
     }
+    else
+    {
+      outputFile = stdout;
+    }
+
   }
   else
   {
-    {
-      inputFile = stdin;
-      outputFile = stdout;
-    }
+    inputFile = stdin;
+    outputFile = stdout;
   }
 
   if ((!inputFile) || (!outputFile))
   {
-    {
-      perror("Couldn't open files");
-      exit(1);
-    }
+    perror("Couldn't open files");
+    exit(1);
   }
   else
   {

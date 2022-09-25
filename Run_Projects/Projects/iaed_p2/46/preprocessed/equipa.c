@@ -60,9 +60,7 @@ void InserirEquipa(linkEquipa *pheade, linkEquipa *ptaile, linkEquipa *tabEquipa
   i = hash(e->equipa->nome, 631);
   if (tabEquipas[i] != 0)
   {
-    {
-      e->nextHash = tabEquipas[i];
-    }
+    e->nextHash = tabEquipas[i];
   }
   else
   {
@@ -72,19 +70,15 @@ void InserirEquipa(linkEquipa *pheade, linkEquipa *ptaile, linkEquipa *tabEquipa
   tabEquipas[i] = e;
   if ((*pheade) != 0)
   {
-    {
-      e->nextList = *pheade;
-      (*pheade)->prevList = e;
-      *pheade = e;
-      ReposCima(pheade, ptaile, e);
-    }
+    e->nextList = *pheade;
+    (*pheade)->prevList = e;
+    *pheade = e;
+    ReposCima(pheade, ptaile, e);
   }
   else
   {
-    {
-      *pheade = e;
-      *ptaile = e;
-    }
+    *pheade = e;
+    *ptaile = e;
   }
 
 }
@@ -157,51 +151,39 @@ void ReposCima(linkEquipa *pheade, linkEquipa *ptaile, linkEquipa e)
   {
     if (aux == (*ptaile))
     {
+      if (e == (*pheade))
       {
-        if (e == (*pheade))
-        {
-          {
-            *pheade = (*pheade)->nextList;
-            (*pheade)->prevList = 0;
-          }
-        }
-        else
-        {
-          {
-            e->nextList->prevList = e->prevList;
-            e->prevList->nextList = e->nextList;
-          }
-        }
-
-        (*ptaile)->nextList = e;
-        e->prevList = *ptaile;
-        *ptaile = e;
-        e->nextList = 0;
+        *pheade = (*pheade)->nextList;
+        (*pheade)->prevList = 0;
       }
+      else
+      {
+        e->nextList->prevList = e->prevList;
+        e->prevList->nextList = e->nextList;
+      }
+
+      (*ptaile)->nextList = e;
+      e->prevList = *ptaile;
+      *ptaile = e;
+      e->nextList = 0;
     }
     else
     {
+      if (e == (*pheade))
       {
-        if (e == (*pheade))
-        {
-          {
-            *pheade = (*pheade)->nextList;
-            (*pheade)->prevList = 0;
-          }
-        }
-        else
-        {
-          {
-            e->nextList->prevList = e->prevList;
-            e->prevList->nextList = e->nextList;
-          }
-        }
-
-        e->nextList = aux->nextList;
-        e->prevList = aux;
-        aux->nextList = e;
-        e->nextList->prevList = e;
+        *pheade = (*pheade)->nextList;
+        (*pheade)->prevList = 0;
       }
+      else
+      {
+        e->nextList->prevList = e->prevList;
+        e->prevList->nextList = e->nextList;
+      }
+
+      e->nextList = aux->nextList;
+      e->prevList = aux;
+      aux->nextList = e;
+      e->nextList->prevList = e;
     }
 
   }
@@ -276,51 +258,39 @@ void ReposBaixo(linkEquipa *pheade, linkEquipa *ptaile, linkEquipa e)
   {
     if (aux == (*pheade))
     {
+      if (e == (*ptaile))
       {
-        if (e == (*ptaile))
-        {
-          {
-            *ptaile = (*ptaile)->prevList;
-            (*ptaile)->nextList = 0;
-          }
-        }
-        else
-        {
-          {
-            e->nextList->prevList = e->prevList;
-            e->prevList->nextList = e->nextList;
-          }
-        }
-
-        (*pheade)->prevList = e;
-        e->nextList = *pheade;
-        *pheade = e;
-        e->prevList = 0;
+        *ptaile = (*ptaile)->prevList;
+        (*ptaile)->nextList = 0;
       }
+      else
+      {
+        e->nextList->prevList = e->prevList;
+        e->prevList->nextList = e->nextList;
+      }
+
+      (*pheade)->prevList = e;
+      e->nextList = *pheade;
+      *pheade = e;
+      e->prevList = 0;
     }
     else
     {
+      if (e == (*ptaile))
       {
-        if (e == (*ptaile))
-        {
-          {
-            *ptaile = (*ptaile)->prevList;
-            (*ptaile)->nextList = 0;
-          }
-        }
-        else
-        {
-          {
-            e->nextList->prevList = e->prevList;
-            e->prevList->nextList = e->nextList;
-          }
-        }
-
-        e->prevList = aux->prevList;
-        e->nextList = aux;
-        aux->prevList = e;
-        e->prevList->nextList = e;
+        *ptaile = (*ptaile)->prevList;
+        (*ptaile)->nextList = 0;
       }
+      else
+      {
+        e->nextList->prevList = e->prevList;
+        e->prevList->nextList = e->nextList;
+      }
+
+      e->prevList = aux->prevList;
+      e->nextList = aux;
+      aux->prevList = e;
+      e->prevList->nextList = e;
     }
 
   }

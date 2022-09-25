@@ -119,10 +119,8 @@ void comando_A()
         }
         else
         {
-          {
-            encomendas[ide][idp] += qtd;
-            stock[idp].qtd -= qtd;
-          }
+          encomendas[ide][idp] += qtd;
+          stock[idp].qtd -= qtd;
         }
 
       }
@@ -151,9 +149,7 @@ void comando_r()
     }
     else
     {
-      {
-        stock[idp].qtd -= qtd;
-      }
+      stock[idp].qtd -= qtd;
     }
 
   }
@@ -178,10 +174,8 @@ void comando_R()
     }
     else
     {
-      {
-        stock[idp].qtd += encomendas[ide][idp];
-        encomendas[ide][idp] = 0;
-      }
+      stock[idp].qtd += encomendas[ide][idp];
+      encomendas[ide][idp] = 0;
     }
 
   }
@@ -200,12 +194,10 @@ void comando_C()
   }
   else
   {
-    {
-      for (idp = 0; idp < total_prod; idp++)
-        custo_total += stock[idp].preco * encomendas[ide][idp];
+    for (idp = 0; idp < total_prod; idp++)
+      custo_total += stock[idp].preco * encomendas[ide][idp];
 
-      printf("Custo da encomenda %d %d.\n", ide, custo_total);
-    }
+    printf("Custo da encomenda %d %d.\n", ide, custo_total);
   }
 
 }
@@ -264,29 +256,27 @@ void comando_m()
   }
   else
   {
+    maior = 0;
+    for (ide = 1; ide < total_enc; ide++)
+      if (encomendas[ide][idp] > encomendas[maior][idp])
     {
-      maior = 0;
-      for (ide = 1; ide < total_enc; ide++)
-        if (encomendas[ide][idp] > encomendas[maior][idp])
-      {
-        maior = ide;
-      }
-      else
-      {
-        
-      }
-
-
-      if ((total_enc > 0) && (encomendas[maior][idp] > 0))
-      {
-        printf("Maximo produto %d %d %d.\n", idp, maior, encomendas[maior][idp]);
-      }
-      else
-      {
-        
-      }
-
+      maior = ide;
     }
+    else
+    {
+      
+    }
+
+
+    if ((total_enc > 0) && (encomendas[maior][idp] > 0))
+    {
+      printf("Maximo produto %d %d %d.\n", idp, maior, encomendas[maior][idp]);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -362,30 +352,26 @@ void comando_L()
   }
   else
   {
+    for (i = 0; i < total_prod; i++)
     {
-      for (i = 0; i < total_prod; i++)
+      if (encomendas[ide][i] != 0)
       {
-        if (encomendas[ide][i] != 0)
-        {
-          {
-            enc_ordenada[j] = stock[i];
-            enc_ordenada[j].qtd = encomendas[ide][i];
-            j++;
-          }
-        }
-        else
-        {
-          
-        }
-
+        enc_ordenada[j] = stock[i];
+        enc_ordenada[j].qtd = encomendas[ide][i];
+        j++;
+      }
+      else
+      {
+        
       }
 
-      mergesort(enc_ordenada, 0, j - 1, 'L');
-      printf("Encomenda %d\n", ide);
-      for (i = 0; i <= (j - 1); i++)
-        printf("* %s %d %d\n", enc_ordenada[i].descr, enc_ordenada[i].preco, enc_ordenada[i].qtd);
-
     }
+
+    mergesort(enc_ordenada, 0, j - 1, 'L');
+    printf("Encomenda %d\n", ide);
+    for (i = 0; i <= (j - 1); i++)
+      printf("* %s %d %d\n", enc_ordenada[i].descr, enc_ordenada[i].preco, enc_ordenada[i].qtd);
+
   }
 
 }

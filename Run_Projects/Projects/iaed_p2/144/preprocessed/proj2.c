@@ -95,46 +95,36 @@ void adiciona_jogo(int *ptr, lJogo *jogos, lEquipa *equipas, LDupla lst_jgs)
   eq2 = procura_eq_hash(equipas, equipa2);
   if (jogo != 0)
   {
-    {
-      printf("%d Jogo existente.\n", *ptr);
-    }
+    printf("%d Jogo existente.\n", *ptr);
   }
   else
   {
     if ((eq1 == 0) || (eq2 == 0))
     {
-      {
-        printf("%d Equipa inexistente.\n", *ptr);
-      }
+      printf("%d Equipa inexistente.\n", *ptr);
     }
     else
     {
+      jogo = cria_jogo(nome_jogo, equipa1, equipa2, pontos1, pontos2);
+      insere_jg_hash(jogos, jogo);
+      insere_jg_lst(lst_jgs, jogo);
+      if (pontos1 > pontos2)
       {
-        jogo = cria_jogo(nome_jogo, equipa1, equipa2, pontos1, pontos2);
-        insere_jg_hash(jogos, jogo);
-        insere_jg_lst(lst_jgs, jogo);
-        if (pontos1 > pontos2)
+        eq1->pontos += 1;
+      }
+      else
+      {
+        if (pontos2 > pontos1)
         {
-          {
-            eq1->pontos += 1;
-          }
+          eq2->pontos += 1;
         }
         else
         {
-          if (pontos2 > pontos1)
-          {
-            {
-              eq2->pontos += 1;
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
+
     }
 
   }
@@ -155,15 +145,11 @@ void adiciona_equipa(int *ptr, lEquipa *equipas)
   ++(*ptr);
   if (equipa != 0)
   {
-    {
-      printf("%d Equipa existente.\n", *ptr);
-    }
+    printf("%d Equipa existente.\n", *ptr);
   }
   else
   {
-    {
-      insere_equipa_hash(equipas, cria_equipa(nome, 0));
-    }
+    insere_equipa_hash(equipas, cria_equipa(nome, 0));
   }
 
 }
@@ -193,15 +179,11 @@ void procura_jogo(int *ptr, lJogo *jogos)
   ++(*ptr);
   if (jogo == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", *ptr);
-    }
+    printf("%d Jogo inexistente.\n", *ptr);
   }
   else
   {
-    {
-      printf("%d %s %s %s %d %d\n", *ptr, jogo->nome, jogo->equipa1, jogo->equipa2, jogo->pontos1, jogo->pontos2);
-    }
+    printf("%d %s %s %s %d %d\n", *ptr, jogo->nome, jogo->equipa1, jogo->equipa2, jogo->pontos1, jogo->pontos2);
   }
 
 }
@@ -220,15 +202,11 @@ void procura_equipa(int *ptr, lEquipa *equipas)
   ++(*ptr);
   if (equipa == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", *ptr);
-    }
+    printf("%d Equipa inexistente.\n", *ptr);
   }
   else
   {
-    {
-      printf("%d %s %d\n", *ptr, equipa->nome, equipa->pontos);
-    }
+    printf("%d %s %d\n", *ptr, equipa->nome, equipa->pontos);
   }
 
 }
@@ -247,37 +225,29 @@ void apaga_jogo(int *ptr, lJogo *jogos, lEquipa *equipas, LDupla lst_jgs)
   ++(*ptr);
   if (jogo == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", *ptr);
-    }
+    printf("%d Jogo inexistente.\n", *ptr);
   }
   else
   {
+    if (jogo->pontos1 > jogo->pontos2)
     {
-      if (jogo->pontos1 > jogo->pontos2)
+      procura_eq_hash(equipas, jogo->equipa1)->pontos -= 1;
+    }
+    else
+    {
+      if (jogo->pontos2 > jogo->pontos1)
       {
-        {
-          procura_eq_hash(equipas, jogo->equipa1)->pontos -= 1;
-        }
+        procura_eq_hash(equipas, jogo->equipa2)->pontos -= 1;
       }
       else
       {
-        if (jogo->pontos2 > jogo->pontos1)
-        {
-          {
-            procura_eq_hash(equipas, jogo->equipa2)->pontos -= 1;
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      apaga_jg_lst(lst_jgs, nome);
-      apaga_jg_hash(jogos, nome);
     }
+
+    apaga_jg_lst(lst_jgs, nome);
+    apaga_jg_hash(jogos, nome);
   }
 
 }
@@ -302,106 +272,77 @@ void altera_pontos(int *ptr, lJogo *jogos, lEquipa *equipas, LDupla lst_jgs)
   ++(*ptr);
   if (jogo == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", *ptr);
-    }
+    printf("%d Jogo inexistente.\n", *ptr);
   }
   else
   {
+    pontos_ant1 = jogo->pontos1;
+    pontos_ant2 = jogo->pontos2;
+    if (pontos_ant1 == pontos_ant2)
     {
-      pontos_ant1 = jogo->pontos1;
-      pontos_ant2 = jogo->pontos2;
-      if (pontos_ant1 == pontos_ant2)
+      if (pontos1 > pontos2)
       {
-        {
-          if (pontos1 > pontos2)
-          {
-            {
-              procura_eq_hash(equipas, jogo->equipa1)->pontos += 1;
-            }
-          }
-          else
-          {
-            if (pontos1 < pontos2)
-            {
-              {
-                procura_eq_hash(equipas, jogo->equipa2)->pontos += 1;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-        }
+        procura_eq_hash(equipas, jogo->equipa1)->pontos += 1;
       }
       else
       {
-        if (pontos1 == pontos2)
+        if (pontos1 < pontos2)
         {
-          {
-            if (pontos_ant1 > pontos_ant2)
-            {
-              {
-                procura_eq_hash(equipas, jogo->equipa1)->pontos -= 1;
-              }
-            }
-            else
-            {
-              if (pontos_ant2 > pontos_ant1)
-              {
-                {
-                  procura_eq_hash(equipas, jogo->equipa2)->pontos -= 1;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-          }
+          procura_eq_hash(equipas, jogo->equipa2)->pontos += 1;
         }
         else
         {
-          if (pontos_ant1 > pontos_ant2)
-          {
-            {
-              if (pontos2 > pontos1)
-              {
-                {
-                  procura_eq_hash(equipas, jogo->equipa1)->pontos -= 1;
-                  procura_eq_hash(equipas, jogo->equipa2)->pontos += 1;
-                }
-              }
-              else
-              {
-                
-              }
+          
+        }
 
-            }
+      }
+
+    }
+    else
+    {
+      if (pontos1 == pontos2)
+      {
+        if (pontos_ant1 > pontos_ant2)
+        {
+          procura_eq_hash(equipas, jogo->equipa1)->pontos -= 1;
+        }
+        else
+        {
+          if (pontos_ant2 > pontos_ant1)
+          {
+            procura_eq_hash(equipas, jogo->equipa2)->pontos -= 1;
           }
           else
           {
-            if (pontos_ant2 > pontos_ant1)
-            {
-              {
-                if (pontos1 > pontos2)
-                {
-                  {
-                    procura_eq_hash(equipas, jogo->equipa2)->pontos -= 1;
-                    procura_eq_hash(equipas, jogo->equipa1)->pontos += 1;
-                  }
-                }
-                else
-                {
-                  
-                }
+            
+          }
 
-              }
+        }
+
+      }
+      else
+      {
+        if (pontos_ant1 > pontos_ant2)
+        {
+          if (pontos2 > pontos1)
+          {
+            procura_eq_hash(equipas, jogo->equipa1)->pontos -= 1;
+            procura_eq_hash(equipas, jogo->equipa2)->pontos += 1;
+          }
+          else
+          {
+            
+          }
+
+        }
+        else
+        {
+          if (pontos_ant2 > pontos_ant1)
+          {
+            if (pontos1 > pontos2)
+            {
+              procura_eq_hash(equipas, jogo->equipa2)->pontos -= 1;
+              procura_eq_hash(equipas, jogo->equipa1)->pontos += 1;
             }
             else
             {
@@ -409,16 +350,21 @@ void altera_pontos(int *ptr, lJogo *jogos, lEquipa *equipas, LDupla lst_jgs)
             }
 
           }
+          else
+          {
+            
+          }
 
         }
 
       }
 
-      jogo->pontos1 = pontos1;
-      jogo->pontos2 = pontos2;
-      procura_jg_lst(lst_jgs, nome_jogo)->jogo->pontos1 = pontos1;
-      procura_jg_lst(lst_jgs, nome_jogo)->jogo->pontos2 = pontos2;
     }
+
+    jogo->pontos1 = pontos1;
+    jogo->pontos2 = pontos2;
+    procura_jg_lst(lst_jgs, nome_jogo)->jogo->pontos1 = pontos1;
+    procura_jg_lst(lst_jgs, nome_jogo)->jogo->pontos2 = pontos2;
   }
 
 }
@@ -432,95 +378,83 @@ void melhores_equipas(int *ptr, lEquipa *equipas)
   ++(*ptr);
   if (hash_vazia(equipas) != 1)
   {
+    char **tabela;
+    lEquipa atual;
+    lEquipa prox;
+    for (i = 0; i < 1049; i++)
     {
-      char **tabela;
-      lEquipa atual;
-      lEquipa prox;
-      for (i = 0; i < 1049; i++)
+      for (atual = equipas[i]; atual != 0; atual = prox)
       {
-        for (atual = equipas[i]; atual != 0; atual = prox)
+        if (atual->equipa->pontos > max)
         {
-          if (atual->equipa->pontos > max)
-          {
-            {
-              max = atual->equipa->pontos;
-              num_els = 1;
-            }
-          }
-          else
-          {
-            if (atual->equipa->pontos == max)
-            {
-              {
-                num_els++;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-          prox = atual->prox;
+          max = atual->equipa->pontos;
+          num_els = 1;
         }
-
-      }
-
-      tabela = (char **) malloc((sizeof(char *)) * num_els);
-      for (i = 0; i < 1049; i++)
-      {
-        for (atual = equipas[i]; atual != 0; atual = prox)
+        else
         {
           if (atual->equipa->pontos == max)
           {
-            {
-              tabela[j] = str_dup(atual->equipa->nome);
-              j++;
-            }
+            num_els++;
           }
           else
           {
             
           }
 
-          if (j == num_els)
-          {
-            {
-              break;
-            }
-          }
-          else
-          {
-            
-          }
-
-          prox = atual->prox;
         }
 
-        if (j == num_els)
+        prox = atual->prox;
+      }
+
+    }
+
+    tabela = (char **) malloc((sizeof(char *)) * num_els);
+    for (i = 0; i < 1049; i++)
+    {
+      for (atual = equipas[i]; atual != 0; atual = prox)
+      {
+        if (atual->equipa->pontos == max)
         {
-          {
-            break;
-          }
+          tabela[j] = str_dup(atual->equipa->nome);
+          j++;
         }
         else
         {
           
         }
 
+        if (j == num_els)
+        {
+          break;
+        }
+        else
+        {
+          
+        }
+
+        prox = atual->prox;
       }
 
-      qsort(tabela, num_els, sizeof(tabela[0]), ordem_alfabetica);
-      printf("%d Melhores %d\n", *ptr, max);
-      for (i = 0; i < num_els; i++)
+      if (j == num_els)
       {
-        printf("%d * %s\n", *ptr, tabela[i]);
-        free(tabela[i]);
+        break;
+      }
+      else
+      {
+        
       }
 
-      free(tabela);
     }
+
+    qsort(tabela, num_els, sizeof(tabela[0]), ordem_alfabetica);
+    printf("%d Melhores %d\n", *ptr, max);
+    for (i = 0; i < num_els; i++)
+    {
+      printf("%d * %s\n", *ptr, tabela[i]);
+      free(tabela[i]);
+    }
+
+    free(tabela);
   }
   else
   {

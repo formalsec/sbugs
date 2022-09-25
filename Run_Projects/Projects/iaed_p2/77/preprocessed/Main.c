@@ -123,46 +123,36 @@ void novo_jogo(int linha, p_jogo *cab_j, p_jogo *fim_j, p_jogo *tab_j, p_equipa 
   pontos2 = new_sym_var(sizeof(int) * 8);
   if (existe_jogo(nome1, tab_j))
   {
-    {
-      printf("%d Jogo existente.\n", linha);
-    }
+    printf("%d Jogo existente.\n", linha);
   }
   else
   {
     if ((!encontra_equipa(nome2, tab_e)) || (!encontra_equipa(nome3, tab_e)))
     {
-      {
-        printf("%d Equipa inexistente.\n", linha);
-      }
+      printf("%d Equipa inexistente.\n", linha);
     }
     else
     {
+      jogo = (p_jogo) malloc(sizeof(struct jogo));
+      jogo->nome = novo_nome(nome1);
+      jogo->equipa1 = novo_nome(nome2);
+      jogo->equipa2 = novo_nome(nome3);
+      jogo->pontos1 = pontos1;
+      jogo->pontos2 = pontos2;
+      if ((*cab_j) == 0)
       {
-        jogo = (p_jogo) malloc(sizeof(struct jogo));
-        jogo->nome = novo_nome(nome1);
-        jogo->equipa1 = novo_nome(nome2);
-        jogo->equipa2 = novo_nome(nome3);
-        jogo->pontos1 = pontos1;
-        jogo->pontos2 = pontos2;
-        if ((*cab_j) == 0)
-        {
-          {
-            *cab_j = jogo;
-          }
-        }
-        else
-        {
-          {
-            (*fim_j)->prox = jogo;
-            jogo->ant = *fim_j;
-          }
-        }
-
-        *fim_j = jogo;
-        jogo->prox = 0;
-        ve_vitoria(jogo, tab_e);
-        insere_jogo(jogo, tab_j);
+        *cab_j = jogo;
       }
+      else
+      {
+        (*fim_j)->prox = jogo;
+        jogo->ant = *fim_j;
+      }
+
+      *fim_j = jogo;
+      jogo->prox = 0;
+      ve_vitoria(jogo, tab_e);
+      insere_jogo(jogo, tab_j);
     }
 
   }
@@ -192,15 +182,11 @@ void procura_jogo(int linha, p_jogo *tab_j)
   jogo = existe_jogo(nome, tab_j);
   if (jogo)
   {
-    {
-      printf("%d %s %s %s %d %d\n", linha, jogo->nome, jogo->equipa1, jogo->equipa2, jogo->pontos1, jogo->pontos2);
-    }
+    printf("%d %s %s %s %d %d\n", linha, jogo->nome, jogo->equipa1, jogo->equipa2, jogo->pontos1, jogo->pontos2);
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", linha);
-    }
+    printf("%d Jogo inexistente.\n", linha);
   }
 
 }
@@ -220,16 +206,12 @@ void apaga_jogo(int linha, p_jogo *tab_j, p_equipa *tab_e, p_jogo *fim_j, p_jogo
   jogo = encontra_jogo(nome, tab_j, posicao);
   if (jogo)
   {
-    {
-      remove_jogo(tab_j, posicao);
-      acerta_jogos(jogo, tab_e, cab_j, fim_j);
-    }
+    remove_jogo(tab_j, posicao);
+    acerta_jogos(jogo, tab_e, cab_j, fim_j);
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", linha);
-    }
+    printf("%d Jogo inexistente.\n", linha);
   }
 
   free(posicao);
@@ -252,18 +234,14 @@ void muda_resultado(int linha, p_jogo *tab_j, p_equipa *tab_e)
   jogo = existe_jogo(nome, tab_j);
   if (jogo)
   {
-    {
-      ve_derrota(jogo, tab_e);
-      jogo->pontos1 = new_pontos1;
-      jogo->pontos2 = new_pontos2;
-      ve_vitoria(jogo, tab_e);
-    }
+    ve_derrota(jogo, tab_e);
+    jogo->pontos1 = new_pontos1;
+    jogo->pontos2 = new_pontos2;
+    ve_vitoria(jogo, tab_e);
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", linha);
-    }
+    printf("%d Jogo inexistente.\n", linha);
   }
 
 }
@@ -280,34 +258,26 @@ void nova_equipa(int linha, p_equipa *tab_e, p_equipa *cab_e, p_equipa *fim_e, i
   nome[10 - 1] = '\0';
   if (encontra_equipa(nome, tab_e))
   {
-    {
-      printf("%d Equipa existente.\n", linha);
-    }
+    printf("%d Equipa existente.\n", linha);
   }
   else
   {
+    equipa = (p_equipa) malloc(sizeof(struct equipa));
+    equipa->nome = novo_nome(nome);
+    equipa->vitorias = 0;
+    equipa->prox = 0;
+    if ((*cab_e) == 0)
     {
-      equipa = (p_equipa) malloc(sizeof(struct equipa));
-      equipa->nome = novo_nome(nome);
-      equipa->vitorias = 0;
-      equipa->prox = 0;
-      if ((*cab_e) == 0)
-      {
-        {
-          *cab_e = equipa;
-        }
-      }
-      else
-      {
-        {
-          (*fim_e)->prox = equipa;
-        }
-      }
-
-      *fim_e = equipa;
-      insere_equipa(equipa, tab_e);
-      (*equipas)++;
+      *cab_e = equipa;
     }
+    else
+    {
+      (*fim_e)->prox = equipa;
+    }
+
+    *fim_e = equipa;
+    insere_equipa(equipa, tab_e);
+    (*equipas)++;
   }
 
 }
@@ -325,15 +295,11 @@ void procura_equipa(int linha, p_equipa *tab_e)
   equipa = encontra_equipa(nome, tab_e);
   if (equipa)
   {
-    {
-      printf("%d %s %d\n", linha, equipa->nome, equipa->vitorias);
-    }
+    printf("%d %s %d\n", linha, equipa->nome, equipa->vitorias);
   }
   else
   {
-    {
-      printf("%d Equipa inexistente.\n", linha);
-    }
+    printf("%d Equipa inexistente.\n", linha);
   }
 
 }
@@ -351,22 +317,18 @@ void melhores_equipas(int linha, p_equipa *cab_e, int *equipas)
   {
     if (equipa->vitorias == vitorias_max)
     {
-      {
-        melhores[i++] = equipa->nome;
-        n_melhores++;
-      }
+      melhores[i++] = equipa->nome;
+      n_melhores++;
     }
     else
     {
       if (equipa->vitorias > vitorias_max)
       {
-        {
-          vitorias_max = equipa->vitorias;
-          n_melhores = 1;
-          i = 0;
-          memset(melhores, 0, (sizeof(char *)) * n_melhores);
-          melhores[i++] = equipa->nome;
-        }
+        vitorias_max = equipa->vitorias;
+        n_melhores = 1;
+        i = 0;
+        memset(melhores, 0, (sizeof(char *)) * n_melhores);
+        melhores[i++] = equipa->nome;
       }
       else
       {
@@ -379,15 +341,13 @@ void melhores_equipas(int linha, p_equipa *cab_e, int *equipas)
 
   if (n_melhores)
   {
+    qsort(melhores, n_melhores, sizeof(char *), alfabetico_equipas);
+    printf("%d Melhores %d\n", linha, vitorias_max);
+    for (j = 0; j != n_melhores; j++)
     {
-      qsort(melhores, n_melhores, sizeof(char *), alfabetico_equipas);
-      printf("%d Melhores %d\n", linha, vitorias_max);
-      for (j = 0; j != n_melhores; j++)
-      {
-        printf("%d * %s\n", linha, melhores[j]);
-      }
-
+      printf("%d * %s\n", linha, melhores[j]);
     }
+
   }
   else
   {

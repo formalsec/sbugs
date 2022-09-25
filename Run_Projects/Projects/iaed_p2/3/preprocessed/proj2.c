@@ -61,9 +61,7 @@ char *strdup(const char *s)
   char *p = malloc(size);
   if (p)
   {
-    {
-      memcpy(p, s, size);
-    }
+    memcpy(p, s, size);
   }
   else
   {
@@ -124,10 +122,8 @@ void NJinsert(pNome jogo)
   pNome temp = headNomesJogos;
   if (headNomesJogos == 0)
   {
-    {
-      headNomesJogos = jogo;
-      return;
-    }
+    headNomesJogos = jogo;
+    return;
   }
   else
   {
@@ -154,15 +150,11 @@ void NJdelete(char *nome)
 
   if (curr == headNomesJogos)
   {
-    {
-      headNomesJogos = curr->next;
-    }
+    headNomesJogos = curr->next;
   }
   else
   {
-    {
-      prev->next = curr->next;
-    }
+    prev->next = curr->next;
   }
 
   freeNomeElemento(curr);
@@ -178,11 +170,9 @@ void NEinsert(pNome equipa)
   pNome current = headNomesEquipas;
   if ((headNomesEquipas == 0) || (strcmp(equipa->nome, current->nome) < 0))
   {
-    {
-      equipa->next = headNomesEquipas;
-      headNomesEquipas = equipa;
-      return;
-    }
+    equipa->next = headNomesEquipas;
+    headNomesEquipas = equipa;
+    return;
   }
   else
   {
@@ -228,15 +218,11 @@ pEquipa EQsearch(char *key)
   {
     if (strcmp(equipas[i]->name, key) == 0)
     {
-      {
-        return equipas[i];
-      }
+      return equipas[i];
     }
     else
     {
-      {
-        i = (i + 1) % EQ_M;
-      }
+      i = (i + 1) % EQ_M;
     }
 
   }
@@ -269,9 +255,7 @@ void EQmaxVictories(unsigned int nl)
     equipa = EQsearch(temp->nome);
     if (equipa->wins == max)
     {
-      {
-        printf("%u * %s\n", nl, equipa->name);
-      }
+      printf("%u * %s\n", nl, equipa->name);
     }
     else
     {
@@ -303,15 +287,11 @@ void JTinsert(pJogo jogo)
   {
     if (strcmp(jogos[i]->name, ":") == 0)
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {
-      {
-        i = (i + k) % JT_M;
-      }
+      i = (i + k) % JT_M;
     }
 
   }
@@ -327,15 +307,11 @@ pJogo JTsearch(char *key)
   {
     if (strcmp(jogos[i]->name, key) == 0)
     {
-      {
-        return jogos[i];
-      }
+      return jogos[i];
     }
     else
     {
-      {
-        i = (i + k) % JT_M;
-      }
+      i = (i + k) % JT_M;
     }
 
   }
@@ -351,15 +327,11 @@ void JTremove(char *key, pJogo dummy)
   {
     if (strcmp(jogos[i]->name, key) == 0)
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {
-      {
-        i = (i + k) % JT_M;
-      }
+      i = (i + k) % JT_M;
     }
 
   }
@@ -372,21 +344,39 @@ void JTupdateScore(pJogo jogo, int score1, int score2)
 {
   if (score1 > score2)
   {
+    if (jogo->score1 < jogo->score2)
     {
-      if (jogo->score1 < jogo->score2)
+      EQupdateVictory(jogo->equipa1, 1);
+      EQupdateVictory(jogo->equipa2, -1);
+    }
+    else
+    {
+      if (jogo->score1 == jogo->score2)
       {
-        {
-          EQupdateVictory(jogo->equipa1, 1);
-          EQupdateVictory(jogo->equipa2, -1);
-        }
+        EQupdateVictory(jogo->equipa1, 1);
+      }
+      else
+      {
+        
+      }
+
+    }
+
+  }
+  else
+  {
+    if (score1 < score2)
+    {
+      if (jogo->score1 > jogo->score2)
+      {
+        EQupdateVictory(jogo->equipa1, -1);
+        EQupdateVictory(jogo->equipa2, 1);
       }
       else
       {
         if (jogo->score1 == jogo->score2)
         {
-          {
-            EQupdateVictory(jogo->equipa1, 1);
-          }
+          EQupdateVictory(jogo->equipa2, 1);
         }
         else
         {
@@ -396,61 +386,25 @@ void JTupdateScore(pJogo jogo, int score1, int score2)
       }
 
     }
-  }
-  else
-  {
-    if (score1 < score2)
-    {
-      {
-        if (jogo->score1 > jogo->score2)
-        {
-          {
-            EQupdateVictory(jogo->equipa1, -1);
-            EQupdateVictory(jogo->equipa2, 1);
-          }
-        }
-        else
-        {
-          if (jogo->score1 == jogo->score2)
-          {
-            {
-              EQupdateVictory(jogo->equipa2, 1);
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-      }
-    }
     else
     {
+      if (jogo->score1 > jogo->score2)
       {
-        if (jogo->score1 > jogo->score2)
+        EQupdateVictory(jogo->equipa1, -1);
+      }
+      else
+      {
+        if (jogo->score1 < jogo->score2)
         {
-          {
-            EQupdateVictory(jogo->equipa1, -1);
-          }
+          EQupdateVictory(jogo->equipa2, -1);
         }
         else
         {
-          if (jogo->score1 < jogo->score2)
-          {
-            {
-              EQupdateVictory(jogo->equipa2, -1);
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
+
     }
 
   }
@@ -524,27 +478,21 @@ int main()
         score2 = new_sym_var(sizeof(int) * 8);
         if (JTsearch(nome) != 0)
       {
-        {
-          printf("%u Jogo existente.\n", nl);
-        }
+        printf("%u Jogo existente.\n", nl);
       }
       else
       {
         if ((EQsearch(equipa1) == 0) | (EQsearch(equipa2) == 0))
         {
-          {
-            printf("%u Equipa inexistente.\n", nl);
-          }
+          printf("%u Equipa inexistente.\n", nl);
         }
         else
         {
-          {
-            jogo = newGame(nome, equipa1, equipa2);
-            nomeJogo = newNomeElemento(nome);
-            JTinsert(jogo);
-            JTupdateScore(jogo, score1, score2);
-            NJinsert(nomeJogo);
-          }
+          jogo = newGame(nome, equipa1, equipa2);
+          nomeJogo = newNomeElemento(nome);
+          JTinsert(jogo);
+          JTupdateScore(jogo, score1, score2);
+          NJinsert(nomeJogo);
         }
 
       }
@@ -561,18 +509,14 @@ int main()
         nome[10 - 1] = '\0';
         if (EQsearch(nome) != 0)
       {
-        {
-          printf("%u Equipa existente.\n", nl);
-        }
+        printf("%u Equipa existente.\n", nl);
       }
       else
       {
-        {
-          equipa = newTeam(nome);
-          nomeEquipa = newNomeElemento(nome);
-          EQinsert(equipa);
-          NEinsert(nomeEquipa);
-        }
+        equipa = newTeam(nome);
+        nomeEquipa = newNomeElemento(nome);
+        EQinsert(equipa);
+        NEinsert(nomeEquipa);
       }
 
         break;
@@ -593,15 +537,11 @@ int main()
         jogo = JTsearch(nome);
         if (jogo != 0)
       {
-        {
-          JTprintJogo(nl, jogo);
-        }
+        JTprintJogo(nl, jogo);
       }
       else
       {
-        {
-          printf("%u Jogo inexistente.\n", nl);
-        }
+        printf("%u Jogo inexistente.\n", nl);
       }
 
         break;
@@ -617,15 +557,11 @@ int main()
         equipa = EQsearch(nome);
         if (equipa != 0)
       {
-        {
-          printf("%u %s %d\n", nl, equipa->name, equipa->wins);
-        }
+        printf("%u %s %d\n", nl, equipa->name, equipa->wins);
       }
       else
       {
-        {
-          printf("%u Equipa inexistente.\n", nl);
-        }
+        printf("%u Equipa inexistente.\n", nl);
       }
 
         break;
@@ -641,17 +577,13 @@ int main()
         jogo = JTsearch(nome);
         if (jogo != 0)
       {
-        {
-          JTupdateScore(jogo, 0, 0);
-          JTremove(nome, dummy);
-          NJdelete(nome);
-        }
+        JTupdateScore(jogo, 0, 0);
+        JTremove(nome, dummy);
+        NJdelete(nome);
       }
       else
       {
-        {
-          printf("%u Jogo inexistente.\n", nl);
-        }
+        printf("%u Jogo inexistente.\n", nl);
       }
 
         break;
@@ -669,15 +601,11 @@ int main()
         jogo = JTsearch(nome);
         if (jogo != 0)
       {
-        {
-          JTupdateScore(jogo, score1, score2);
-        }
+        JTupdateScore(jogo, score1, score2);
       }
       else
       {
-        {
-          printf("%u Jogo inexistente.\n", nl);
-        }
+        printf("%u Jogo inexistente.\n", nl);
       }
 
         break;
@@ -686,9 +614,7 @@ int main()
         nl += 1;
         if (headNomesEquipas == 0)
       {
-        {
-          break;
-        }
+        break;
       }
       else
       {

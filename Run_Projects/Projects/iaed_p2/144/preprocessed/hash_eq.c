@@ -39,9 +39,7 @@ Equipa procura_eq_lista(lEquipa inicio, char nome[1024])
 {
   if (inicio == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -50,9 +48,7 @@ Equipa procura_eq_lista(lEquipa inicio, char nome[1024])
 
   if (strcmp(nome, inicio->equipa->nome) == 0)
   {
-    {
-      return inicio->equipa;
-    }
+    return inicio->equipa;
   }
   else
   {
@@ -68,9 +64,7 @@ void destroi_lista_eq(lEquipa inicio)
   lEquipa aux;
   if (!inicio)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -135,9 +129,7 @@ int hash_vazia(lEquipa *equipas)
   {
     if (equipas[i] != 0)
     {
-      {
-        return 0;
-      }
+      return 0;
     }
     else
     {

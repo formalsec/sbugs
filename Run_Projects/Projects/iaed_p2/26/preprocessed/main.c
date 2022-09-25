@@ -13,9 +13,7 @@ char *cut_the_name(char *name)
   int len = strlen(name) + 1;
   if (name[len - 1] == '\n')
   {
-    {
-      name[len - 1] = '\0';
-    }
+    name[len - 1] = '\0';
   }
   else
   {
@@ -57,92 +55,74 @@ int main()
     letter = strtok(input, " ");
     if (letter[0] == 'x')
     {
-      {
-        condition = 1;
-        break;
-      }
+      condition = 1;
+      break;
     }
     else
     {
       if (strcmp(letter, "a") == 0)
       {
-        {
-          game_name = strtok(0, ":");
-          team1_name = strtok(0, ":");
-          team2_name = strtok(0, ":");
-          team1_score = atoi(strtok(0, ":"));
-          team2_score = atoi(strtok(0, "\n"));
-          create_game(game_name, team1_name, team2_name, team1_score, team2_score, games_hash_table, games_size, teams_hash_table, teams_size, counter, &games_number, &max_games_won, &teams_with_max_games_won, &number, &second_max_games_won, &teams_with_second_max_games_won);
-        }
+        game_name = strtok(0, ":");
+        team1_name = strtok(0, ":");
+        team2_name = strtok(0, ":");
+        team1_score = atoi(strtok(0, ":"));
+        team2_score = atoi(strtok(0, "\n"));
+        create_game(game_name, team1_name, team2_name, team1_score, team2_score, games_hash_table, games_size, teams_hash_table, teams_size, counter, &games_number, &max_games_won, &teams_with_max_games_won, &number, &second_max_games_won, &teams_with_second_max_games_won);
       }
       else
       {
         if (strcmp(letter, "A") == 0)
         {
-          {
-            team1_name = strtok(0, "\n");
-            team1_name = cut_the_name(team1_name);
-            create_team(team1_name, teams_hash_table, teams_size, counter, &teams_number, max_games_won, &teams_with_max_games_won);
-          }
+          team1_name = strtok(0, "\n");
+          team1_name = cut_the_name(team1_name);
+          create_team(team1_name, teams_hash_table, teams_size, counter, &teams_number, max_games_won, &teams_with_max_games_won);
         }
         else
         {
           if (strcmp(letter, "p") == 0)
           {
-            {
-              game_name = strtok(0, "\n");
-              game_name = cut_the_name(game_name);
-              key = games_search(game_name, games_hash_table, games_size);
-              game_errors(key, games_hash_table, counter);
-            }
+            game_name = strtok(0, "\n");
+            game_name = cut_the_name(game_name);
+            key = games_search(game_name, games_hash_table, games_size);
+            game_errors(key, games_hash_table, counter);
           }
           else
           {
             if (strcmp(letter, "P") == 0)
             {
-              {
-                team1_name = strtok(0, "\n");
-                team1_name = cut_the_name(team1_name);
-                key = teams_search(team1_name, teams_hash_table, teams_size);
-                team_errors(key, teams_hash_table, counter);
-              }
+              team1_name = strtok(0, "\n");
+              team1_name = cut_the_name(team1_name);
+              key = teams_search(team1_name, teams_hash_table, teams_size);
+              team_errors(key, teams_hash_table, counter);
             }
             else
             {
               if (letter[0] == 'g')
               {
-                {
-                  find_team_with_more_games_won(teams_hash_table, teams_size, teams_with_max_games_won, max_games_won, counter);
-                }
+                find_team_with_more_games_won(teams_hash_table, teams_size, teams_with_max_games_won, max_games_won, counter);
               }
               else
               {
                 if (strcmp(letter, "r") == 0)
                 {
-                  {
-                    game_name = strtok(0, "\n");
-                    game_name = cut_the_name(game_name);
-                    remove_game(game_name, games_hash_table, games_size, teams_hash_table, teams_size, &max_games_won, &teams_with_max_games_won, &second_max_games_won, &teams_with_second_max_games_won, teams_number, &games_number, counter);
-                  }
+                  game_name = strtok(0, "\n");
+                  game_name = cut_the_name(game_name);
+                  remove_game(game_name, games_hash_table, games_size, teams_hash_table, teams_size, &max_games_won, &teams_with_max_games_won, &second_max_games_won, &teams_with_second_max_games_won, teams_number, &games_number, counter);
                 }
                 else
                 {
                   if (strcmp(letter, "s") == 0)
                   {
-                    {
-                      game_name = strtok(0, ":");
-                      team1_score = atoi(strtok(0, ":"));
-                      team2_score = atoi(strtok(0, "\n"));
-                      change_score(game_name, team1_score, team2_score, games_hash_table, games_size, teams_hash_table, teams_size, &max_games_won, &teams_with_max_games_won, &second_max_games_won, &teams_with_second_max_games_won, teams_number, counter);
-                    }
+                    game_name = strtok(0, ":");
+                    team1_score = atoi(strtok(0, ":"));
+                    team2_score = atoi(strtok(0, "\n"));
+                    change_score(game_name, team1_score, team2_score, games_hash_table, games_size, teams_hash_table, teams_size, &max_games_won, &teams_with_max_games_won, &second_max_games_won, &teams_with_second_max_games_won, teams_number, counter);
                   }
                   else
                   {
                     if (letter[0] == 'l')
                     {
-                      {
-                        list_all_the_games(games_hash_table, games_size, games_number, counter);
-                      }
+                      list_all_the_games(games_hash_table, games_size, games_number, counter);
                     }
                     else
                     {

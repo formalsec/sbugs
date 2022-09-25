@@ -31,9 +31,7 @@ teamLink searchTeam(teamLink head, char *name)
   {
     if (strcmp(t->name, name) == 0)
     {
-      {
-        return t;
-      }
+      return t;
     }
     else
     {
@@ -85,12 +83,10 @@ void insertGameEnd(gameLink *head, Game *game, gameLink *tailGame)
   gameLink x;
   if ((*head) == 0)
   {
-    {
-      x = NEWgame(game);
-      *tailGame = x;
-      *head = x;
-      return;
-    }
+    x = NEWgame(game);
+    *tailGame = x;
+    *head = x;
+    return;
   }
   else
   {
@@ -109,9 +105,7 @@ gameLink searchGame(gameLink head, char *name)
   {
     if ((!t->deleted) && (strcmp(t->game->name, name) == 0))
     {
-      {
-        return t;
-      }
+      return t;
     }
     else
     {
@@ -131,23 +125,17 @@ void deleteGame(gameLink *head, char *name)
   {
     if (strcmp(t->game->name, name) == 0)
     {
+      if (t == (*head))
       {
-        if (t == (*head))
-        {
-          {
-            *head = t->next;
-          }
-        }
-        else
-        {
-          {
-            prev->next = t->next;
-          }
-        }
-
-        FREEgameNode(t);
-        break;
+        *head = t->next;
       }
+      else
+      {
+        prev->next = t->next;
+      }
+
+      FREEgameNode(t);
+      break;
     }
     else
     {

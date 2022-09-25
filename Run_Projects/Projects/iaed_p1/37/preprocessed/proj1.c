@@ -51,10 +51,8 @@ void processInput(char input[])
       sum = atoi(strtok(0, ":"));
       if (!(idtemp < counterProd))
       {
-        {
-          printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idtemp);
-          break;
-        }
+        printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idtemp);
+        break;
       }
       else
       {
@@ -77,15 +75,11 @@ void processInput(char input[])
 
       if (counterDel < 500)
       {
-        {
-          counterDel++;
-        }
+        counterDel++;
       }
       else
       {
-        {
-          printf("Impossivel adicionar mais encomendas.\n");
-        }
+        printf("Impossivel adicionar mais encomendas.\n");
       }
 
       printf("Nova encomenda %d.\n", counterDel - 1);
@@ -102,10 +96,8 @@ void processInput(char input[])
       qtd = atoi(strtok(0, ":"));
       if (!(ide < counterDel))
       {
-        {
-          printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
-          break;
-        }
+        printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
+        break;
       }
       else
       {
@@ -114,10 +106,8 @@ void processInput(char input[])
 
       if (!(idp < counterProd))
       {
-        {
-          printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
-          break;
-        }
+        printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
+        break;
       }
       else
       {
@@ -126,10 +116,8 @@ void processInput(char input[])
 
       if (prodList[idp].amount < qtd)
       {
-        {
-          printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
-          break;
-        }
+        printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
+        break;
       }
       else
       {
@@ -140,10 +128,8 @@ void processInput(char input[])
       weight = soloweight + delList[ide].totalWeight;
       if (weight > 200)
       {
-        {
-          printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
-          break;
-        }
+        printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
+        break;
       }
       else
       {
@@ -157,10 +143,8 @@ void processInput(char input[])
       {
         if (delList[ide].products[i][0] == idp)
         {
-          {
-            delList[ide].products[i][1] += qtd;
-            break;
-          }
+          delList[ide].products[i][1] += qtd;
+          break;
         }
         else
         {
@@ -169,11 +153,9 @@ void processInput(char input[])
 
         if (delList[ide].products[i][0] == (-1))
         {
-          {
-            delList[ide].products[i][0] = idp;
-            delList[ide].products[i][1] = qtd;
-            break;
-          }
+          delList[ide].products[i][0] = idp;
+          delList[ide].products[i][1] = qtd;
+          break;
         }
         else
         {
@@ -193,10 +175,8 @@ void processInput(char input[])
       quant = atoi(strtok(0, ":"));
       if (!(idp < counterProd))
       {
-        {
-          printf("Impossivel remover stock do produto %d. Produto inexistente.\n", idp);
-          break;
-        }
+        printf("Impossivel remover stock do produto %d. Produto inexistente.\n", idp);
+        break;
       }
       else
       {
@@ -206,10 +186,8 @@ void processInput(char input[])
       temp = prodList[idp].amount - quant;
       if (temp < 0)
       {
-        {
-          printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", quant, idp);
-          break;
-        }
+        printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", quant, idp);
+        break;
       }
       else
       {
@@ -229,10 +207,8 @@ void processInput(char input[])
       idp = atoi(strtok(0, ":"));
       if (!(ide < counterDel))
       {
-        {
-          printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
-          break;
-        }
+        printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
+        break;
       }
       else
       {
@@ -241,10 +217,8 @@ void processInput(char input[])
 
       if (!(idp < counterProd))
       {
-        {
-          printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
-          break;
-        }
+        printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
+        break;
       }
       else
       {
@@ -255,9 +229,7 @@ void processInput(char input[])
       {
         if (delList[ide].products[i][0] == (-1))
         {
-          {
-            break;
-          }
+          break;
         }
         else
         {
@@ -266,11 +238,9 @@ void processInput(char input[])
 
         if (delList[ide].products[i][0] == idp)
         {
-          {
-            j = i;
-            prodList[idp].amount += delList[ide].products[i][1];
-            break;
-          }
+          j = i;
+          prodList[idp].amount += delList[ide].products[i][1];
+          break;
         }
         else
         {
@@ -281,29 +251,23 @@ void processInput(char input[])
 
       if (j != (-1))
       {
+        tempid = delList[ide].products[j][0];
+        delList[ide].totalWeight -= prodList[tempid].weight * delList[ide].products[j][1];
+        for (i = j; i < 500; i++)
         {
-          tempid = delList[ide].products[j][0];
-          delList[ide].totalWeight -= prodList[tempid].weight * delList[ide].products[j][1];
-          for (i = j; i < 500; i++)
+          if (i == 199)
           {
-            if (i == 199)
-            {
-              {
-                delList[ide].products[i][0] = -1;
-                delList[ide].products[i][1] = -1;
-              }
-            }
-            else
-            {
-              {
-                delList[ide].products[i][0] = delList[ide].products[i + 1][0];
-                delList[ide].products[i][1] = delList[ide].products[i + 1][1];
-              }
-            }
-
+            delList[ide].products[i][0] = -1;
+            delList[ide].products[i][1] = -1;
+          }
+          else
+          {
+            delList[ide].products[i][0] = delList[ide].products[i + 1][0];
+            delList[ide].products[i][1] = delList[ide].products[i + 1][1];
           }
 
         }
+
       }
       else
       {
@@ -321,10 +285,8 @@ void processInput(char input[])
       ide = atoi(strtok(input + 2, ":"));
       if (!(ide < counterDel))
       {
-        {
-          printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ide);
-          break;
-        }
+        printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ide);
+        break;
       }
       else
       {
@@ -336,15 +298,11 @@ void processInput(char input[])
         num = delList[ide].products[i][0];
         if (num != (-1))
         {
-          {
-            calc += delList[ide].products[i][1] * prodList[num].price;
-          }
+          calc += delList[ide].products[i][1] * prodList[num].price;
         }
         else
         {
-          {
-            break;
-          }
+          break;
         }
 
       }
@@ -360,10 +318,8 @@ void processInput(char input[])
       price = atoi(strtok(0, ":"));
       if (!(idp < counterProd))
       {
-        {
-          printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idp);
-          break;
-        }
+        printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idp);
+        break;
       }
       else
       {
@@ -382,10 +338,8 @@ void processInput(char input[])
       idp = atoi(strtok(0, ":"));
       if (!(ide < counterDel))
       {
-        {
-          printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
-          break;
-        }
+        printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
+        break;
       }
       else
       {
@@ -394,10 +348,8 @@ void processInput(char input[])
 
       if (!(idp < counterProd))
       {
-        {
-          printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
-          break;
-        }
+        printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
+        break;
       }
       else
       {
@@ -408,9 +360,7 @@ void processInput(char input[])
       {
         if (delList[ide].products[i][0] == (-1))
         {
-          {
-            break;
-          }
+          break;
         }
         else
         {
@@ -419,10 +369,8 @@ void processInput(char input[])
 
         if (delList[ide].products[i][0] == idp)
         {
-          {
-            t = i;
-            break;
-          }
+          t = i;
+          break;
         }
         else
         {
@@ -433,15 +381,11 @@ void processInput(char input[])
 
       if (t == (-1))
       {
-        {
-          printf("%s 0.\n", prodList[idp].desc);
-        }
+        printf("%s 0.\n", prodList[idp].desc);
       }
       else
       {
-        {
-          printf("%s %d.\n", prodList[idp].desc, delList[ide].products[t][1]);
-        }
+        printf("%s %d.\n", prodList[idp].desc, delList[ide].products[t][1]);
       }
 
       break;
@@ -458,10 +402,8 @@ void processInput(char input[])
       idp = atoi(strtok(input + 2, ":"));
       if (!(idp < counterProd))
       {
-        {
-          printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idp);
-          break;
-        }
+        printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idp);
+        break;
       }
       else
       {
@@ -474,9 +416,7 @@ void processInput(char input[])
         {
           if (delList[i].products[j][0] == (-1))
           {
-            {
-              break;
-            }
+            break;
           }
           else
           {
@@ -485,12 +425,10 @@ void processInput(char input[])
 
           if ((delList[i].products[j][0] == idp) && (delList[i].products[j][1] > qua))
           {
-            {
-              qua = delList[i].products[j][1];
-              finalid = delList[i].products[j][0];
-              enc = i;
-              break;
-            }
+            qua = delList[i].products[j][1];
+            finalid = delList[i].products[j][0];
+            enc = i;
+            break;
           }
           else
           {
@@ -503,9 +441,7 @@ void processInput(char input[])
 
       if (!(finalid == (-1)))
       {
-        {
-          printf("Maximo produto %d %d %d.\n", finalid, enc, qua);
-        }
+        printf("Maximo produto %d %d %d.\n", finalid, enc, qua);
       }
       else
       {
@@ -534,12 +470,10 @@ void processInput(char input[])
         {
           if (obj[i].price > obj[i + 1].price)
           {
-            {
-              link = obj[i];
-              obj[i] = obj[i + 1];
-              obj[i + 1] = link;
-              pass = 0;
-            }
+            link = obj[i];
+            obj[i] = obj[i + 1];
+            obj[i + 1] = link;
+            pass = 0;
           }
           else
           {
@@ -584,10 +518,8 @@ void processInput(char input[])
       ide = atoi(strtok(input + 2, ":"));
       if (!(ide < counterDel))
       {
-        {
-          printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
-          break;
-        }
+        printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
+        break;
       }
       else
       {
@@ -599,19 +531,15 @@ void processInput(char input[])
         tempr = delList[ide].products[i][0];
         if (tempr > (-1))
         {
-          {
-            tempID = delList[ide].products[i][0];
-            price[i] = prodList[tempID].price;
-            quantity[i] = delList[ide].products[i][1];
-            strcpy(desc[i], prodList[tempID].desc);
-            arrSize = i + 1;
-          }
+          tempID = delList[ide].products[i][0];
+          price[i] = prodList[tempID].price;
+          quantity[i] = delList[ide].products[i][1];
+          strcpy(desc[i], prodList[tempID].desc);
+          arrSize = i + 1;
         }
         else
         {
-          {
-            break;
-          }
+          break;
         }
 
       }
@@ -620,10 +548,8 @@ void processInput(char input[])
       skip = 0;
       if (delList[ide].products[0][0] == (-1))
       {
-        {
-          skip = 1;
-          pass = 1;
-        }
+        skip = 1;
+        pass = 1;
       }
       else
       {
@@ -637,9 +563,7 @@ void processInput(char input[])
         {
           if ((i + 1) == arrSize)
           {
-            {
-              break;
-            }
+            break;
           }
           else
           {
@@ -648,18 +572,16 @@ void processInput(char input[])
 
           if (strcmp(desc[i], desc[i + 1]) > 0)
           {
-            {
-              strcpy(tempDesc, desc[i]);
-              tempPrice = price[i];
-              tempQuant = quantity[i];
-              strcpy(desc[i], desc[i + 1]);
-              price[i] = price[i + 1];
-              quantity[i] = quantity[i + 1];
-              strcpy(desc[i + 1], tempDesc);
-              price[i + 1] = tempPrice;
-              quantity[i + 1] = tempQuant;
-              pass = 0;
-            }
+            strcpy(tempDesc, desc[i]);
+            tempPrice = price[i];
+            tempQuant = quantity[i];
+            strcpy(desc[i], desc[i + 1]);
+            price[i] = price[i + 1];
+            quantity[i] = quantity[i + 1];
+            strcpy(desc[i + 1], tempDesc);
+            price[i + 1] = tempPrice;
+            quantity[i + 1] = tempQuant;
+            pass = 0;
           }
           else
           {
@@ -673,13 +595,11 @@ void processInput(char input[])
       printf("Encomenda %d\n", ide);
       if (skip == 0)
       {
+        for (i = 0; i < arrSize; i++)
         {
-          for (i = 0; i < arrSize; i++)
-          {
-            printf("* %s %d %d\n", desc[i], price[i], quantity[i]);
-          }
-
+          printf("* %s %d %d\n", desc[i], price[i], quantity[i]);
         }
+
       }
       else
       {

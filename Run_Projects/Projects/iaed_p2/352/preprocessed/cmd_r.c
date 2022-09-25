@@ -24,10 +24,8 @@ void cmd_r()
   aux = HashGames[indice_jogo];
   if (aux == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", nl);
+    return;
   }
   else
   {
@@ -36,111 +34,93 @@ void cmd_r()
 
   if (strcmp(aux->nome, nome_jogo) == 0)
   {
+    if (aux->score_1 > aux->score_2)
     {
-      if (aux->score_1 > aux->score_2)
-      {
-        {
-          indice_equipa = hash(aux->equipa_1);
-          HashTeams[indice_equipa]->vitorias--;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (aux->score_2 > aux->score_1)
-      {
-        {
-          indice_equipa = hash(aux->equipa_2);
-          HashTeams[indice_equipa]->vitorias--;
-        }
-      }
-      else
-      {
-        
-      }
-
+      indice_equipa = hash(aux->equipa_1);
+      HashTeams[indice_equipa]->vitorias--;
     }
+    else
+    {
+      
+    }
+
+    if (aux->score_2 > aux->score_1)
+    {
+      indice_equipa = hash(aux->equipa_2);
+      HashTeams[indice_equipa]->vitorias--;
+    }
+    else
+    {
+      
+    }
+
   }
   else
   {
+    while ((aux != 0) && (strcmp(aux->nome, nome_jogo) != 0))
     {
-      while ((aux != 0) && (strcmp(aux->nome, nome_jogo) != 0))
-      {
-        aux_prev = aux;
-        aux = aux->next;
-      }
+      aux_prev = aux;
+      aux = aux->next;
+    }
 
-      if (aux == 0)
+    if (aux == 0)
+    {
+      printf("%d Jogo inexistente.\n", nl);
+      return;
+    }
+    else
+    {
+      
+    }
+
+    if (aux->score_1 > aux->score_2)
+    {
+      indice_equipa = hash(aux->equipa_1);
+      if (strcmp(HashTeams[indice_equipa]->nome_equipa, aux->equipa_1) != 0)
       {
+        aux1 = HashTeams[indice_equipa];
+        while (strcmp(aux1->nome_equipa, aux->equipa_1) != 0)
         {
-          printf("%d Jogo inexistente.\n", nl);
-          return;
+          aux1 = aux1->next;
         }
+
+        aux1->vitorias--;
       }
       else
       {
-        
-      }
-
-      if (aux->score_1 > aux->score_2)
-      {
-        {
-          indice_equipa = hash(aux->equipa_1);
-          if (strcmp(HashTeams[indice_equipa]->nome_equipa, aux->equipa_1) != 0)
-          {
-            {
-              aux1 = HashTeams[indice_equipa];
-              while (strcmp(aux1->nome_equipa, aux->equipa_1) != 0)
-              {
-                aux1 = aux1->next;
-              }
-
-              aux1->vitorias--;
-            }
-          }
-          else
-          {
-            HashTeams[indice_equipa]->vitorias--;
-          }
-
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (aux->score_2 > aux->score_1)
-      {
-        {
-          indice_equipa = hash(aux->equipa_2);
-          if (strcmp(HashTeams[indice_equipa]->nome_equipa, aux->equipa_2) != 0)
-          {
-            {
-              aux1 = HashTeams[indice_equipa];
-              while (strcmp(aux1->nome_equipa, aux->equipa_2) != 0)
-              {
-                aux1 = aux1->next;
-              }
-
-              aux1->vitorias--;
-            }
-          }
-          else
-          {
-            HashTeams[indice_equipa]->vitorias--;
-          }
-
-        }
-      }
-      else
-      {
-        
+        HashTeams[indice_equipa]->vitorias--;
       }
 
     }
+    else
+    {
+      
+    }
+
+    if (aux->score_2 > aux->score_1)
+    {
+      indice_equipa = hash(aux->equipa_2);
+      if (strcmp(HashTeams[indice_equipa]->nome_equipa, aux->equipa_2) != 0)
+      {
+        aux1 = HashTeams[indice_equipa];
+        while (strcmp(aux1->nome_equipa, aux->equipa_2) != 0)
+        {
+          aux1 = aux1->next;
+        }
+
+        aux1->vitorias--;
+      }
+      else
+      {
+        HashTeams[indice_equipa]->vitorias--;
+      }
+
+    }
+    else
+    {
+      
+    }
+
   }
 
   temp = headgame;
@@ -151,10 +131,8 @@ void cmd_r()
 
   if ((temp == headgame) && (temp->next != 0))
   {
-    {
-      temp->next->prev = 0;
-      headgame = temp->next;
-    }
+    temp->next->prev = 0;
+    headgame = temp->next;
   }
   else
   {
@@ -170,10 +148,8 @@ void cmd_r()
       }
       else
       {
-        {
-          temp->prev->next = temp->next;
-          temp->next->prev = temp->prev;
-        }
+        temp->prev->next = temp->next;
+        temp->next->prev = temp->prev;
       }
 
     }
@@ -183,25 +159,21 @@ void cmd_r()
   free(temp);
   if (aux == HashGames[indice_jogo])
   {
-    {
-      aux = HashGames[indice_jogo]->next;
-      free(HashGames[indice_jogo]->equipa_1);
-      free(HashGames[indice_jogo]->equipa_2);
-      free(HashGames[indice_jogo]->nome);
-      free(HashGames[indice_jogo]);
-      HashGames[indice_jogo] = aux;
-    }
+    aux = HashGames[indice_jogo]->next;
+    free(HashGames[indice_jogo]->equipa_1);
+    free(HashGames[indice_jogo]->equipa_2);
+    free(HashGames[indice_jogo]->nome);
+    free(HashGames[indice_jogo]);
+    HashGames[indice_jogo] = aux;
   }
   else
   {
-    {
-      aux_seguinte = aux->next;
-      free(aux->equipa_1);
-      free(aux->equipa_2);
-      free(aux->nome);
-      free(aux);
-      aux_prev->next = aux_seguinte;
-    }
+    aux_seguinte = aux->next;
+    free(aux->equipa_1);
+    free(aux->equipa_2);
+    free(aux->nome);
+    free(aux);
+    aux_prev->next = aux_seguinte;
   }
 
 }

@@ -122,15 +122,13 @@ nodeGame *_del_game_(nodeGame *head, char *name)
 
   if ((temp != 0) && (strcmp(temp->game->name, name) == 0))
   {
-    {
-      aux = temp->next;
-      free(temp->game->name);
-      free(temp->game->team1);
-      free(temp->game->team2);
-      free(temp->game);
-      free(temp);
-      return aux;
-    }
+    aux = temp->next;
+    free(temp->game->name);
+    free(temp->game->team1);
+    free(temp->game->team2);
+    free(temp->game);
+    free(temp);
+    return aux;
   }
   else
   {

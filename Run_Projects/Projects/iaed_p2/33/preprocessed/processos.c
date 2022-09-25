@@ -122,27 +122,25 @@ void adiciona_jogo(Avl avl, Hashtable ht, Lista lst, int NL)
   link_ht = ht_verifica(nome_jogo, ht, 1, NL);
   if (link_ht == 0)
   {
+    for (i = 0; i < 2; i++)
     {
-      for (i = 0; i < 2; i++)
+      link_avl[i] = avl_verifica(avl, nome_equipas[i], 0, NL);
+      if (link_avl[i] == 0)
       {
-        link_avl[i] = avl_verifica(avl, nome_equipas[i], 0, NL);
-        if (link_avl[i] == 0)
-        {
-          return;
-        }
-        else
-        {
-          
-        }
-
-        equipas[i] = link_avl[i]->equipa;
+        return;
+      }
+      else
+      {
+        
       }
 
-      jogo = jogo_cria(nome_jogo, equipas, score);
-      link_lst = lst_insere(jogo, lst);
-      ht_insere(link_lst, ht);
-      equipa_atualiza_ganhos(equipas, score, 1);
+      equipas[i] = link_avl[i]->equipa;
     }
+
+    jogo = jogo_cria(nome_jogo, equipas, score);
+    link_lst = lst_insere(jogo, lst);
+    ht_insere(link_lst, ht);
+    equipa_atualiza_ganhos(equipas, score, 1);
   }
   else
   {
@@ -160,10 +158,8 @@ void adiciona_equipa(Avl avl, int NL)
   link = avl_verifica(avl, nome, 1, NL);
   if (link == 0)
   {
-    {
-      equipa = equipa_cria(nome);
-      avl->head = avl_insere(avl->head, equipa);
-    }
+    equipa = equipa_cria(nome);
+    avl->head = avl_insere(avl->head, equipa);
   }
   else
   {
@@ -219,10 +215,8 @@ void remove_jogo(Hashtable ht, Lista lst, int NL)
   link = ht_verifica(nome, ht, 0, NL);
   if (!(link == 0))
   {
-    {
-      equipa_atualiza_ganhos(link->lst->jogo->equipas, link->lst->jogo->score, 0);
-      ht_remove(link, lst, ht);
-    }
+    equipa_atualiza_ganhos(link->lst->jogo->equipas, link->lst->jogo->score, 0);
+    ht_remove(link, lst, ht);
   }
   else
   {
@@ -241,10 +235,8 @@ void altera_score(Hashtable ht, int NL)
   link = ht_verifica(nome, ht, 0, NL);
   if (!(link == 0))
   {
-    {
-      equipa_atualiza_ganhos_s(link->lst->jogo->equipas, link->lst->jogo->score, score);
-      jogo_atualiza_score(link->lst->jogo, score);
-    }
+    equipa_atualiza_ganhos_s(link->lst->jogo->equipas, link->lst->jogo->score, score);
+    jogo_atualiza_score(link->lst->jogo, score);
   }
   else
   {
@@ -258,10 +250,8 @@ void lista_melhores(Avl avl, int NL)
   int max_ganhos = avl_obtem_max_ganhos(avl->head, 0);
   if (!(avl->head == 0))
   {
-    {
-      printf("%d Melhores %d\n", NL, max_ganhos);
-      avl_print_melhores(avl->head, max_ganhos, NL);
-    }
+    printf("%d Melhores %d\n", NL, max_ganhos);
+    avl_print_melhores(avl->head, max_ganhos, NL);
   }
   else
   {

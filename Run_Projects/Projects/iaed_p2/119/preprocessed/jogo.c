@@ -34,10 +34,8 @@ void pushJogo(link_j *head, const char *name, const char *e1, const char *e2, in
   link_j x;
   if ((*head) == 0)
   {
-    {
-      *head = createJogo(name, e1, e2, s1, s2, 0);
-      return;
-    }
+    *head = createJogo(name, e1, e2, s1, s2, 0);
+    return;
   }
   else
   {
@@ -54,12 +52,10 @@ void popJogo(link_j *head, const char *name)
   link_j x = *head;
   if (strcmp(x->j.name, name) == 0)
   {
-    {
-      link_j x = *head;
-      *head = (*head)->next;
-      freeJogo(x);
-      return;
-    }
+    link_j x = *head;
+    *head = (*head)->next;
+    freeJogo(x);
+    return;
   }
   else
   {
@@ -70,12 +66,10 @@ void popJogo(link_j *head, const char *name)
   {
     if (strcmp(x->next->j.name, name) == 0)
     {
-      {
-        link_j tmp = x->next;
-        x->next = x->next->next;
-        freeJogo(tmp);
-        return;
-      }
+      link_j tmp = x->next;
+      x->next = x->next->next;
+      freeJogo(tmp);
+      return;
     }
     else
     {

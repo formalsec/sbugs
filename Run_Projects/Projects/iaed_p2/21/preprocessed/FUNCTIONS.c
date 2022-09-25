@@ -41,42 +41,32 @@ void fa(int counter)
   score2 = new_sym_var(sizeof(int) * 8);
   if (matchSearch(name) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", counter);
-    }
+    printf("%d Jogo existente.\n", counter);
   }
   else
   {
+    if ((teamSearch(team1) == 0) || (teamSearch(team2) == 0))
     {
-      if ((teamSearch(team1) == 0) || (teamSearch(team2) == 0))
+      printf("%d Equipa inexistente.\n", counter);
+    }
+    else
+    {
+      Team t;
+      m = newMatch(name, team1, team2, score1, score2);
+      matchInsert(m);
+      t = getWinTeam(m);
+      if ((THeadList != 0) && (((t != 0) && (t->score >= THeadList->team->score)) || ((t == 0) && (score1 >= THeadList->team->score))))
       {
-        {
-          printf("%d Equipa inexistente.\n", counter);
-        }
+        TfreeHead(THeadList);
+        TlistInit();
       }
       else
       {
-        {
-          Team t;
-          m = newMatch(name, team1, team2, score1, score2);
-          matchInsert(m);
-          t = getWinTeam(m);
-          if ((THeadList != 0) && (((t != 0) && (t->score >= THeadList->team->score)) || ((t == 0) && (score1 >= THeadList->team->score))))
-          {
-            {
-              TfreeHead(THeadList);
-              TlistInit();
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
+        
       }
 
     }
+
   }
 
   free(name);
@@ -96,28 +86,22 @@ void fA(int counter)
   name[10 - 1] = '\0';
   if (teamSearch(name) == 0)
   {
+    t = newTeam(name);
+    teamInsert(t);
+    if (!(((THeadList != 0) && (t != 0)) && (t->score < THeadList->team->score)))
     {
-      t = newTeam(name);
-      teamInsert(t);
-      if (!(((THeadList != 0) && (t != 0)) && (t->score < THeadList->team->score)))
-      {
-        {
-          TfreeHead(THeadList);
-          TlistInit();
-        }
-      }
-      else
-      {
-        
-      }
-
+      TfreeHead(THeadList);
+      TlistInit();
     }
+    else
+    {
+      
+    }
+
   }
   else
   {
-    {
-      printf("%d Equipa existente.\n", counter);
-    }
+    printf("%d Equipa existente.\n", counter);
   }
 
   free(name);
@@ -131,9 +115,7 @@ void fl(int counter)
   {
     if (strcmp(a->match->name, ":") != 0)
     {
-      {
-        printf("%d %s %s %s %d %d\n", counter, a->match->name, a->match->team1->name, a->match->team2->name, a->match->score1, a->match->score2);
-      }
+      printf("%d %s %s %s %d %d\n", counter, a->match->name, a->match->team1->name, a->match->team2->name, a->match->score1, a->match->score2);
     }
     else
     {
@@ -157,15 +139,11 @@ void fp(int counter)
   a = matchSearch(name);
   if (a == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", counter);
-    }
+    printf("%d Jogo inexistente.\n", counter);
   }
   else
   {
-    {
-      printf("%d %s %s %s %d %d\n", counter, a->match->name, a->match->team1->name, a->match->team2->name, a->match->score1, a->match->score2);
-    }
+    printf("%d %s %s %s %d %d\n", counter, a->match->name, a->match->team1->name, a->match->team2->name, a->match->score1, a->match->score2);
   }
 
   free(name);
@@ -184,15 +162,11 @@ void fP(int counter)
   n = teamSearch(name);
   if (n == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", counter);
-    }
+    printf("%d Equipa inexistente.\n", counter);
   }
   else
   {
-    {
-      printf("%d %s %d\n", counter, n->team->name, n->team->score);
-    }
+    printf("%d %s %d\n", counter, n->team->name, n->team->score);
   }
 
   free(name);
@@ -211,44 +185,36 @@ void fr(int counter)
   m = matchSearch(name);
   if (m == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", counter);
-    }
+    printf("%d Jogo inexistente.\n", counter);
   }
   else
   {
+    Team t;
+    int tscore;
+    int eq;
+    t = getWinTeam(m->match);
+    if (t != 0)
     {
-      Team t;
-      int tscore;
-      int eq;
-      t = getWinTeam(m->match);
-      if (t != 0)
-      {
-        {
-          tscore = t->score;
-        }
-      }
-      else
-      {
-        
-      }
-
-      eq = m->match->team1->score;
-      removeScores(m->match);
-      matchDelete(m->match);
-      if ((THeadList != 0) && (((t != 0) && (tscore >= THeadList->team->score)) || ((t == 0) && (eq >= THeadList->team->score))))
-      {
-        {
-          TfreeHead(THeadList);
-          TlistInit();
-        }
-      }
-      else
-      {
-        
-      }
-
+      tscore = t->score;
     }
+    else
+    {
+      
+    }
+
+    eq = m->match->team1->score;
+    removeScores(m->match);
+    matchDelete(m->match);
+    if ((THeadList != 0) && (((t != 0) && (tscore >= THeadList->team->score)) || ((t == 0) && (eq >= THeadList->team->score))))
+    {
+      TfreeHead(THeadList);
+      TlistInit();
+    }
+    else
+    {
+      
+    }
+
   }
 
   free(name);
@@ -271,45 +237,37 @@ void fs(int counter)
   match = matchSearch(name);
   if (match == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", counter);
-    }
+    printf("%d Jogo inexistente.\n", counter);
   }
   else
   {
+    Team win1;
+    Team win2;
+    Team loser1;
+    int win1score;
+    win1 = getWinTeam(match->match);
+    if (win1 != 0)
     {
-      Team win1;
-      Team win2;
-      Team loser1;
-      int win1score;
-      win1 = getWinTeam(match->match);
-      if (win1 != 0)
-      {
-        {
-          win1score = win1->score;
-        }
-      }
-      else
-      {
-        
-      }
-
-      loser1 = getLoserTeam(match->match);
-      changeScores(match->match, s1, s2);
-      win2 = getWinTeam(match->match);
-      if ((THeadList != 0) && (((((((win1 != 0) && (win2 != 0)) && (win1 != win2)) && (win1score >= THeadList->team->score)) || ((((loser1 != 0) && (win2 != 0)) && (win2 == loser1)) && (loser1->score >= THeadList->team->score))) || (((win1 == 0) && (win2 != 0)) && (win2->score >= THeadList->team->score))) || (((win1 != 0) && (win2 == 0)) && (win1score >= THeadList->team->score))))
-      {
-        {
-          TfreeHead(THeadList);
-          TlistInit();
-        }
-      }
-      else
-      {
-        
-      }
-
+      win1score = win1->score;
     }
+    else
+    {
+      
+    }
+
+    loser1 = getLoserTeam(match->match);
+    changeScores(match->match, s1, s2);
+    win2 = getWinTeam(match->match);
+    if ((THeadList != 0) && (((((((win1 != 0) && (win2 != 0)) && (win1 != win2)) && (win1score >= THeadList->team->score)) || ((((loser1 != 0) && (win2 != 0)) && (win2 == loser1)) && (loser1->score >= THeadList->team->score))) || (((win1 == 0) && (win2 != 0)) && (win2->score >= THeadList->team->score))) || (((win1 != 0) && (win2 == 0)) && (win1score >= THeadList->team->score))))
+    {
+      TfreeHead(THeadList);
+      TlistInit();
+    }
+    else
+    {
+      
+    }
+
   }
 
   free(name);
@@ -323,33 +281,26 @@ void fg(int counter)
   getchar();
   if (THeadList == 0)
   {
+    for (i = 0; i < 257; i++)
     {
-      for (i = 0; i < 257; i++)
+      for (aux = teamHeads[i]; aux != 0; aux = aux->next)
       {
-        for (aux = teamHeads[i]; aux != 0; aux = aux->next)
+        if (aux->team->score > max)
         {
-          if (aux->team->score > max)
+          TfreeHead(THeadList);
+          TlistInit();
+          addTeamNodeList(aux->team);
+          max = aux->team->score;
+        }
+        else
+        {
+          if (aux->team->score == max)
           {
-            {
-              TfreeHead(THeadList);
-              TlistInit();
-              addTeamNodeList(aux->team);
-              max = aux->team->score;
-            }
+            addTeamNodeList(aux->team);
           }
           else
           {
-            if (aux->team->score == max)
-            {
-              {
-                addTeamNodeList(aux->team);
-              }
-            }
-            else
-            {
-              
-            }
-
+            
           }
 
         }
@@ -357,6 +308,7 @@ void fg(int counter)
       }
 
     }
+
   }
   else
   {
@@ -365,14 +317,12 @@ void fg(int counter)
 
   if (THeadList != 0)
   {
+    printf("%d Melhores %d\n", counter, THeadList->team->score);
+    for (aux = THeadList; aux != 0; aux = aux->next)
     {
-      printf("%d Melhores %d\n", counter, THeadList->team->score);
-      for (aux = THeadList; aux != 0; aux = aux->next)
-      {
-        printf("%d * %s\n", counter, aux->team->name);
-      }
-
+      printf("%d * %s\n", counter, aux->team->name);
     }
+
   }
   else
   {

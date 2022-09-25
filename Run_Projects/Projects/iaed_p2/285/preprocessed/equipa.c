@@ -15,15 +15,11 @@ int procura_indice_equipas(Equipa *Hashtable, char *nome, int tamanho_Hashtable)
   {
     if (strcmp(Hashtable[indice]->Nome, nome) == 0)
     {
-      {
-        return indice;
-      }
+      return indice;
     }
     else
     {
-      {
-        indice = (indice + 1) % tamanho_Hashtable;
-      }
+      indice = (indice + 1) % tamanho_Hashtable;
     }
 
   }
@@ -38,9 +34,7 @@ int equipa_nova(char *nome, Equipa *Hashtable, int tamanho_Hashtable)
   {
     if (strcmp(Hashtable[Indice]->Nome, nome) == 0)
     {
-      {
-        return 1;
-      }
+      return 1;
     }
     else
     {
@@ -75,17 +69,13 @@ int procura_equipa(Equipa *Hashtable, int tamanho_Hashtable, int NL)
   indice = procura_indice_equipas(Hashtable, nome, tamanho_Hashtable);
   if (indice != (-1))
   {
-    {
-      printf("%d %s %d\n", NL, Hashtable[indice]->Nome, Hashtable[indice]->Vitorias);
-      return 0;
-    }
+    printf("%d %s %d\n", NL, Hashtable[indice]->Nome, Hashtable[indice]->Vitorias);
+    return 0;
   }
   else
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      return 0;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    return 0;
   }
 
 }
@@ -96,9 +86,7 @@ int verifica_equipas(char *equipa1, char *equipa2, Equipa *Hashtable, int tamanh
   int Indice2 = procura_indice_equipas(Hashtable, equipa2, tamanho_Hashtable);
   if ((Indice1 != (-1)) && (Indice2 != (-1)))
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -127,9 +115,7 @@ int print_lista_equipas(Lista_Equipas lista, int NL)
   char **arr2;
   if (lista == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -140,9 +126,7 @@ int print_lista_equipas(Lista_Equipas lista, int NL)
   {
     if (variavel->equipa->Vitorias > Max)
     {
-      {
-        Max = variavel->equipa->Vitorias;
-      }
+      Max = variavel->equipa->Vitorias;
     }
     else
     {
@@ -155,10 +139,8 @@ int print_lista_equipas(Lista_Equipas lista, int NL)
   {
     if (variavel->equipa->Vitorias == Max)
     {
-      {
-        melhores = insere_lista_equipas(melhores, variavel->equipa);
-        contador++;
-      }
+      melhores = insere_lista_equipas(melhores, variavel->equipa);
+      contador++;
     }
     else
     {
@@ -206,9 +188,7 @@ void mergesort(char **arr, int l, int r, char **arr2)
   int meio = (r + l) / 2;
   if (r <= l)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -239,15 +219,11 @@ void merge(char **arr, int l, int m, int r, char **arr2)
   {
     if (strcmp(arr2[j], arr2[i]) < 0)
     {
-      {
-        arr[k] = arr2[j--];
-      }
+      arr[k] = arr2[j--];
     }
     else
     {
-      {
-        arr[k] = arr2[i++];
-      }
+      arr[k] = arr2[i++];
     }
 
   }
@@ -259,10 +235,8 @@ int free_equipas(Lista_Equipas lista)
   Lista_Equipas variavel;
   if (lista == 0)
   {
-    {
-      free(lista);
-      return 0;
-    }
+    free(lista);
+    return 0;
   }
   else
   {

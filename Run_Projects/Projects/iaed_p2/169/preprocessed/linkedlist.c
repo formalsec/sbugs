@@ -34,28 +34,20 @@ void rm_node(list *l, node1 *n)
 {
   if (n->prev == 0)
   {
-    {
-      l->head = n->next;
-    }
+    l->head = n->next;
   }
   else
   {
-    {
-      n->prev->next = n->next;
-    }
+    n->prev->next = n->next;
   }
 
   if (n->next == 0)
   {
-    {
-      l->last = n->prev;
-    }
+    l->last = n->prev;
   }
   else
   {
-    {
-      n->next->prev = n->prev;
-    }
+    n->next->prev = n->prev;
   }
 
   free_node(n);
@@ -71,15 +63,11 @@ void add_last(list *l, char *n)
   strcpy(nn->Jogo->nome, n);
   if (l->last)
   {
-    {
-      l->last->next = nn;
-    }
+    l->last->next = nn;
   }
   else
   {
-    {
-      l->head = nn;
-    }
+    l->head = nn;
   }
 
   l->last = nn;
@@ -92,9 +80,7 @@ link1 search(list *l, char *n)
   {
     if (strcmp(x->Jogo->nome, n) == 0)
     {
-      {
-        return x;
-      }
+      return x;
     }
     else
     {

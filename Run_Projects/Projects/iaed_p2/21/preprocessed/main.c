@@ -60,9 +60,7 @@ int main()
 
     if (c == 'x')
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {

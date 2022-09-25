@@ -22,15 +22,11 @@ Node_list *add_node_list(List *lista, void *item)
   el->item = item;
   if (lista->head == 0)
   {
-    {
-      lista->head = el;
-    }
+    lista->head = el;
   }
   else
   {
-    {
-      lista->last->next = el;
-    }
+    lista->last->next = el;
   }
 
   lista->last = el;
@@ -43,9 +39,7 @@ List *remove_node_list(List *lista, Node_list *el, void free_item(void *))
   Node_list *nxt;
   if ((el == 0) || empty_list(lista))
   {
-    {
-      return lista;
-    }
+    return lista;
   }
   else
   {
@@ -54,37 +48,29 @@ List *remove_node_list(List *lista, Node_list *el, void free_item(void *))
 
   if ((el == lista->head) && (el == lista->last))
   {
-    {
-      lista->head = 0;
-      lista->last = 0;
-    }
+    lista->head = 0;
+    lista->last = 0;
   }
   else
   {
     if (el == lista->head)
     {
-      {
-        lista->head = el->next;
-        lista->head->previous = 0;
-      }
+      lista->head = el->next;
+      lista->head->previous = 0;
     }
     else
     {
       if (el == lista->last)
       {
-        {
-          lista->last = el->previous;
-          lista->last->next = 0;
-        }
+        lista->last = el->previous;
+        lista->last->next = 0;
       }
       else
       {
-        {
-          prev = el->previous;
-          nxt = el->next;
-          prev->next = nxt;
-          nxt->previous = prev;
-        }
+        prev = el->previous;
+        nxt = el->next;
+        prev->next = nxt;
+        nxt->previous = prev;
       }
 
     }
@@ -153,15 +139,11 @@ int height_bt(Node_bt *raiz)
 {
   if (raiz == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
-    {
-      return raiz->height;
-    }
+    return raiz->height;
   }
 
 }
@@ -192,15 +174,11 @@ int get_balance_bt(Node_bt *raiz)
 {
   if (raiz == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
-    {
-      return height_bt(raiz->l) - height_bt(raiz->r);
-    }
+    return height_bt(raiz->l) - height_bt(raiz->r);
   }
 
 }
@@ -210,9 +188,7 @@ Node_bt *balance_bt(Node_bt *raiz)
   int balance;
   if (raiz == 0)
   {
-    {
-      return raiz;
-    }
+    return raiz;
   }
   else
   {
@@ -223,43 +199,31 @@ Node_bt *balance_bt(Node_bt *raiz)
   balance = get_balance_bt(raiz);
   if (balance > 1)
   {
+    if (get_balance_bt(raiz->l) >= 0)
     {
-      if (get_balance_bt(raiz->l) >= 0)
-      {
-        {
-          raiz = rotR_bt(raiz);
-        }
-      }
-      else
-      {
-        {
-          raiz->l = rotL_bt(raiz->l);
-          raiz = rotR_bt(raiz);
-        }
-      }
-
+      raiz = rotR_bt(raiz);
     }
+    else
+    {
+      raiz->l = rotL_bt(raiz->l);
+      raiz = rotR_bt(raiz);
+    }
+
   }
   else
   {
     if (balance < (-1))
     {
+      if (get_balance_bt(raiz->r) <= 0)
       {
-        if (get_balance_bt(raiz->r) <= 0)
-        {
-          {
-            raiz = rotL_bt(raiz);
-          }
-        }
-        else
-        {
-          {
-            raiz->r = rotR_bt(raiz->r);
-            raiz = rotL_bt(raiz);
-          }
-        }
-
+        raiz = rotL_bt(raiz);
       }
+      else
+      {
+        raiz->r = rotR_bt(raiz->r);
+        raiz = rotL_bt(raiz);
+      }
+
     }
     else
     {
@@ -275,15 +239,11 @@ Node_bt *max_bt(Node_bt *raiz)
 {
   if ((raiz == 0) || (raiz->r == 0))
   {
-    {
-      return raiz;
-    }
+    return raiz;
   }
   else
   {
-    {
-      return max_bt(raiz->r);
-    }
+    return max_bt(raiz->r);
   }
 
 }
@@ -292,9 +252,7 @@ Node_bt *add_node_bt(int chave, Node_bt *raiz)
 {
   if (raiz == 0)
   {
-    {
-      return new_node_bt(chave, 0, 0);
-    }
+    return new_node_bt(chave, 0, 0);
   }
   else
   {
@@ -303,23 +261,17 @@ Node_bt *add_node_bt(int chave, Node_bt *raiz)
 
   if (chave < raiz->key)
   {
-    {
-      raiz->l = add_node_bt(chave, raiz->l);
-    }
+    raiz->l = add_node_bt(chave, raiz->l);
   }
   else
   {
     if (raiz->key < chave)
     {
-      {
-        raiz->r = add_node_bt(chave, raiz->r);
-      }
+      raiz->r = add_node_bt(chave, raiz->r);
     }
     else
     {
-      {
-        return raiz;
-      }
+      return raiz;
     }
 
   }
@@ -332,95 +284,75 @@ Node_bt *remove_node_bt(int chave, Node_bt *raiz, void free_item(void *))
 {
   if (raiz == 0)
   {
-    {
-      return raiz;
-    }
+    return raiz;
   }
   else
   {
     if (chave < raiz->key)
     {
-      {
-        raiz->l = remove_node_bt(chave, raiz->l, free_item);
-      }
+      raiz->l = remove_node_bt(chave, raiz->l, free_item);
     }
     else
     {
       if (raiz->key < chave)
       {
-        {
-          raiz->r = remove_node_bt(chave, raiz->r, free_item);
-        }
+        raiz->r = remove_node_bt(chave, raiz->r, free_item);
       }
       else
       {
+        if ((raiz->l != 0) && (raiz->r != 0))
         {
-          if ((raiz->l != 0) && (raiz->r != 0))
+          Node_bt *aux = max_bt(raiz->l);
+          Node_bt *aux2;
+          aux2 = (Node_bt *) malloc(sizeof(Node_bt));
+          aux2->count = raiz->count;
+          aux2->items = raiz->items;
+          raiz->key = aux->key;
+          raiz->count = aux->count;
+          raiz->items = aux->items;
+          aux->count = aux2->count;
+          aux->items = aux2->items;
+          free(aux2);
+          raiz->l = remove_node_bt(aux->key, raiz->l, free_item);
+        }
+        else
+        {
+          Node_bt *aux = raiz;
+          if ((raiz->l == 0) && (raiz->r == 0))
           {
-            {
-              Node_bt *aux = max_bt(raiz->l);
-              Node_bt *aux2;
-              aux2 = (Node_bt *) malloc(sizeof(Node_bt));
-              aux2->count = raiz->count;
-              aux2->items = raiz->items;
-              raiz->key = aux->key;
-              raiz->count = aux->count;
-              raiz->items = aux->items;
-              aux->count = aux2->count;
-              aux->items = aux2->items;
-              free(aux2);
-              raiz->l = remove_node_bt(aux->key, raiz->l, free_item);
-            }
+            raiz = 0;
           }
           else
           {
+            if (raiz->l == 0)
             {
-              Node_bt *aux = raiz;
-              if ((raiz->l == 0) && (raiz->r == 0))
-              {
-                {
-                  raiz = 0;
-                }
-              }
-              else
-              {
-                if (raiz->l == 0)
-                {
-                  {
-                    raiz = raiz->r;
-                  }
-                }
-                else
-                {
-                  {
-                    raiz = raiz->l;
-                  }
-                }
-
-              }
-
-              if (aux->count != 0)
-              {
-                {
-                  while (aux->count != 0)
-                  {
-                    aux->count -= 1;
-                    free_item(*(aux->items + aux->count));
-                  }
-
-                  free(aux->items);
-                }
-              }
-              else
-              {
-                
-              }
-
-              free(aux);
+              raiz = raiz->r;
             }
+            else
+            {
+              raiz = raiz->l;
+            }
+
           }
 
+          if (aux->count != 0)
+          {
+            while (aux->count != 0)
+            {
+              aux->count -= 1;
+              free_item(*(aux->items + aux->count));
+            }
+
+            free(aux->items);
+          }
+          else
+          {
+            
+          }
+
+          free(aux);
         }
+
       }
 
     }
@@ -435,23 +367,17 @@ Node_bt *search_bt(int chave, Node_bt *raiz)
 {
   if ((raiz == 0) || (chave == raiz->key))
   {
-    {
-      return raiz;
-    }
+    return raiz;
   }
   else
   {
     if (chave < raiz->key)
     {
-      {
-        return search_bt(chave, raiz->l);
-      }
+      return search_bt(chave, raiz->l);
     }
     else
     {
-      {
-        return search_bt(chave, raiz->r);
-      }
+      return search_bt(chave, raiz->r);
     }
 
   }
@@ -462,37 +388,27 @@ Node_bt *add_aux_bt(void *item, Node_bt *raiz, int key(void *))
 {
   if (key(item) == raiz->key)
   {
+    raiz->count += 1;
+    if (raiz->count == 1)
     {
-      raiz->count += 1;
-      if (raiz->count == 1)
-      {
-        {
-          raiz->items = (void **) malloc(sizeof(void *));
-        }
-      }
-      else
-      {
-        {
-          raiz->items = (void **) realloc(raiz->items, (sizeof(void *)) * raiz->count);
-        }
-      }
-
-      *(raiz->items + (raiz->count - 1)) = item;
+      raiz->items = (void **) malloc(sizeof(void *));
     }
+    else
+    {
+      raiz->items = (void **) realloc(raiz->items, (sizeof(void *)) * raiz->count);
+    }
+
+    *(raiz->items + (raiz->count - 1)) = item;
   }
   else
   {
     if (key(item) < raiz->key)
     {
-      {
-        raiz->l = add_item_bt(item, raiz->l, key);
-      }
+      raiz->l = add_item_bt(item, raiz->l, key);
     }
     else
     {
-      {
-        raiz->r = add_item_bt(item, raiz->r, key);
-      }
+      raiz->r = add_item_bt(item, raiz->r, key);
     }
 
   }
@@ -504,9 +420,7 @@ Node_bt *add_item_bt(void *item, Node_bt *raiz, int key(void *))
 {
   if (search_bt(key(item), raiz) == 0)
   {
-    {
-      raiz = add_node_bt(key(item), raiz);
-    }
+    raiz = add_node_bt(key(item), raiz);
   }
   else
   {
@@ -524,17 +438,32 @@ Node_bt *remove_item_bt(void *item, Node_bt *raiz, int key(void *), void free_it
   no = search_bt(key(item), raiz);
   if (no != 0)
   {
+    if (no->count == 1)
     {
-      if (no->count == 1)
+      if ((*no->items) == item)
       {
+        no->count -= 1;
+        free(no->items);
+        raiz = remove_node_bt(no->key, raiz, free_item);
+      }
+      else
+      {
+        
+      }
+
+    }
+    else
+    {
+      if (no->count > 1)
+      {
+        for (contador = 0; contador < no->count; contador++)
         {
-          if ((*no->items) == item)
+          if ((*(no->items + contador)) == item)
           {
-            {
-              no->count -= 1;
-              free(no->items);
-              raiz = remove_node_bt(no->key, raiz, free_item);
-            }
+            no->count -= 1;
+            *(no->items + contador) = *(no->items + no->count);
+            no->items = (void **) realloc(no->items, (sizeof(void *)) * no->count);
+            break;
           }
           else
           {
@@ -542,40 +471,15 @@ Node_bt *remove_item_bt(void *item, Node_bt *raiz, int key(void *), void free_it
           }
 
         }
+
       }
       else
       {
-        if (no->count > 1)
-        {
-          {
-            for (contador = 0; contador < no->count; contador++)
-            {
-              if ((*(no->items + contador)) == item)
-              {
-                {
-                  no->count -= 1;
-                  *(no->items + contador) = *(no->items + no->count);
-                  no->items = (void **) realloc(no->items, (sizeof(void *)) * no->count);
-                  break;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
     }
+
   }
   else
   {
@@ -590,9 +494,7 @@ void free_aux_bt(Node_bt *raiz, void free_item(void *))
   int contador;
   if (raiz == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -601,14 +503,12 @@ void free_aux_bt(Node_bt *raiz, void free_item(void *))
 
   if (raiz->count > 0)
   {
+    for (contador = 0; contador < raiz->count; contador++)
     {
-      for (contador = 0; contador < raiz->count; contador++)
-      {
-        free_item(*(raiz->items + contador));
-      }
-
-      free(raiz->items);
+      free_item(*(raiz->items + contador));
     }
+
+    free(raiz->items);
   }
   else
   {
@@ -657,21 +557,17 @@ Lp *double_lp(Lp *lp, char *key(void *), long hash(void *, long))
   {
     if (lp->table[cont] != 0)
     {
+      add_item_lp(new_lp, lp->table[cont], key, hash);
+      cont2++;
+      if (cont2 >= (lp->size / 2))
       {
-        add_item_lp(new_lp, lp->table[cont], key, hash);
-        cont2++;
-        if (cont2 >= (lp->size / 2))
-        {
-          {
-            break;
-          }
-        }
-        else
-        {
-          
-        }
-
+        break;
       }
+      else
+      {
+        
+      }
+
     }
     else
     {
@@ -690,9 +586,7 @@ Lp *add_item_lp(Lp *lp, void *item, char *key(void *), long hash(void *, long))
   char *chave = key(item);
   if ((lp->cap + 1) >= (lp->size / 2))
   {
-    {
-      lp = double_lp(lp, key, hash);
-    }
+    lp = double_lp(lp, key, hash);
   }
   else
   {
@@ -717,15 +611,11 @@ void *search_item_lp(Lp *lp, char *chave, char *key(void *), long hash(void *, l
   {
     if (strcmp(key(lp->table[pos]), chave) == 0)
     {
-      {
-        return lp->table[pos];
-      }
+      return lp->table[pos];
     }
     else
     {
-      {
-        pos = (pos + 1) % lp->size;
-      }
+      pos = (pos + 1) % lp->size;
     }
 
   }
@@ -744,24 +634,18 @@ void *delete_item_lp(Lp *lp, char *chave, char *key(void *), long hash(void *, l
   {
     if (strcmp(key(lp->table[pos]), chave) == 0)
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {
-      {
-        pos = (pos + 1) % lp->size;
-      }
+      pos = (pos + 1) % lp->size;
     }
 
   }
 
   if (lp->table[pos] == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {

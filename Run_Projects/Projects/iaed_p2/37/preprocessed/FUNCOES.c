@@ -40,10 +40,8 @@ void adicionaJogo(int NL, glink *pLGhead, glink *pLGtail, tlink *HashTeams, glin
   aux = searchGameHash(buffer + 1, HashGames, &JogoExistente);
   if (aux == 1)
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-      return;
-    }
+    printf("%d Jogo existente.\n", NL);
+    return;
   }
   else
   {
@@ -53,19 +51,17 @@ void adicionaJogo(int NL, glink *pLGhead, glink *pLGtail, tlink *HashTeams, glin
   aux = adicionaJogo_aux(equipa1, equipa2, HashTeams, &pTeam1, &pTeam2);
   if (aux == 0)
   {
-    {
-      NovoJogo = malloc(sizeof(struct Game));
-      NovoJogo->score1 = score1;
-      NovoJogo->score2 = score2;
-      NovoJogo->pEquipa1 = pTeam1;
-      NovoJogo->pEquipa2 = pTeam2;
-      NovoJogo->name = malloc((sizeof(char)) * (strlen(buffer) + 1));
-      strcpy(NovoJogo->name, buffer + 1);
-      put_game(NovoJogo, pLGhead, pLGtail);
-      indice = hash(buffer + 1);
-      Ginsert(&HashGames[indice], NovoJogo);
-      atualizaVitorias(NovoJogo, 0, 0, 0);
-    }
+    NovoJogo = malloc(sizeof(struct Game));
+    NovoJogo->score1 = score1;
+    NovoJogo->score2 = score2;
+    NovoJogo->pEquipa1 = pTeam1;
+    NovoJogo->pEquipa2 = pTeam2;
+    NovoJogo->name = malloc((sizeof(char)) * (strlen(buffer) + 1));
+    strcpy(NovoJogo->name, buffer + 1);
+    put_game(NovoJogo, pLGhead, pLGtail);
+    indice = hash(buffer + 1);
+    Ginsert(&HashGames[indice], NovoJogo);
+    atualizaVitorias(NovoJogo, 0, 0, 0);
   }
   else
   {
@@ -90,15 +86,13 @@ void adicionaEquipa(int NL, tlink *pLThead, tlink *pLTtail, tlink *HashTeams)
   aux = searchTeamHash(buffer + 1, HashTeams, &EquipaExistente);
   if (aux == 0)
   {
-    {
-      NovaEquipa = malloc(sizeof(struct Team));
-      NovaEquipa->vitorias = 0;
-      NovaEquipa->name = malloc((sizeof(char)) * (strlen(buffer + 1) + 1));
-      strcpy(NovaEquipa->name, buffer + 1);
-      put_team(NovaEquipa, pLThead, pLTtail);
-      indice = hash(buffer + 1);
-      Tinsert(&HashTeams[indice], NovaEquipa);
-    }
+    NovaEquipa = malloc(sizeof(struct Team));
+    NovaEquipa->vitorias = 0;
+    NovaEquipa->name = malloc((sizeof(char)) * (strlen(buffer + 1) + 1));
+    strcpy(NovaEquipa->name, buffer + 1);
+    put_team(NovaEquipa, pLThead, pLTtail);
+    indice = hash(buffer + 1);
+    Tinsert(&HashTeams[indice], NovaEquipa);
   }
   else
   {
@@ -145,13 +139,11 @@ void procuraJogo(int NL, glink *HashGames)
   aux = searchGameHash(buffer + 1, HashGames, &hit);
   if (aux == 1)
   {
-    {
-      nameTeam1 = hit->pEquipa1->name;
-      nameTeam2 = hit->pEquipa2->name;
-      score1 = hit->score1;
-      score2 = hit->score2;
-      printf("%d %s %s %s %d %d\n", NL, buffer + 1, nameTeam1, nameTeam2, score1, score2);
-    }
+    nameTeam1 = hit->pEquipa1->name;
+    nameTeam2 = hit->pEquipa2->name;
+    score1 = hit->score1;
+    score2 = hit->score2;
+    printf("%d %s %s %s %d %d\n", NL, buffer + 1, nameTeam1, nameTeam2, score1, score2);
   }
   else
   {
@@ -197,11 +189,9 @@ void apagaJogo(int NL, glink *pLGhead, glink *pLGtail, glink *HashGames)
   aux = searchGameHash(buffer + 1, HashGames, &hit);
   if (aux == 1)
   {
-    {
-      atualizaVitorias(hit, 1, 0, 0);
-      apagaJogoHash(buffer + 1, HashGames, hit);
-      apagaJogoLista(pLGhead, pLGtail, hit);
-    }
+    atualizaVitorias(hit, 1, 0, 0);
+    apagaJogoHash(buffer + 1, HashGames, hit);
+    apagaJogoLista(pLGhead, pLGtail, hit);
   }
   else
   {
@@ -228,11 +218,9 @@ void alteraScore(int NL, glink *HashGames)
   aux = searchGameHash(buffer + 1, HashGames, &hit);
   if (aux == 1)
   {
-    {
-      atualizaVitorias(hit, 2, newscore1, newscore2);
-      hit->score1 = newscore1;
-      hit->score2 = newscore2;
-    }
+    atualizaVitorias(hit, 2, newscore1, newscore2);
+    hit->score1 = newscore1;
+    hit->score2 = newscore2;
   }
   else
   {
@@ -265,11 +253,9 @@ void melhoresEquipas(int NL, tlink *pLThead)
   {
     if (c->pEquipa->vitorias == maxvitorias)
     {
-      {
-        melhores[i] = c->pEquipa->name;
-        count++;
-        i++;
-      }
+      melhores[i] = c->pEquipa->name;
+      count++;
+      i++;
     }
     else
     {
@@ -281,12 +267,10 @@ void melhoresEquipas(int NL, tlink *pLThead)
   qsort(melhores, count, sizeof(char *), cstring_cmp);
   if (count != 0)
   {
-    {
-      printf("%d Melhores %d\n", NL, maxvitorias);
-      for (i = 0; i < count; i++)
-        printf("%d * %s\n", NL, melhores[i]);
+    printf("%d Melhores %d\n", NL, maxvitorias);
+    for (i = 0; i < count; i++)
+      printf("%d * %s\n", NL, melhores[i]);
 
-    }
   }
   else
   {

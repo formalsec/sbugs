@@ -51,10 +51,8 @@ void ad_equipa(int *nl, BTlink *equipas)
   equipa = cria_equipa(nome);
   if (bintree_add_item(equipas, equipa, sizeof(*equipa), bt_free_equipa, bt_get_nome_equipa, nome_compare_func))
   {
-    {
-      printf("%d Equipa existente.\n", *nl);
-      return;
-    }
+    printf("%d Equipa existente.\n", *nl);
+    return;
   }
   else
   {
@@ -96,10 +94,8 @@ void ad_jogo(int *nl, BTlink *equipas, BTlink *jogos, int *i_jogos)
   s2 = new_sym_var(sizeof(int) * 8);
   if (bintree_search(*jogos, nome, bt_get_nome_jogo, nome_compare_func) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", *nl);
-      return;
-    }
+    printf("%d Jogo existente.\n", *nl);
+    return;
   }
   else
   {
@@ -110,10 +106,8 @@ void ad_jogo(int *nl, BTlink *equipas, BTlink *jogos, int *i_jogos)
   e2 = (Equipa *) bintree_search(*equipas, e2_nome, bt_get_nome_equipa, nome_compare_func);
   if ((e1 == 0) || (e2 == 0))
   {
-    {
-      printf("%d Equipa inexistente.\n", *nl);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", *nl);
+    return;
   }
   else
   {
@@ -123,17 +117,13 @@ void ad_jogo(int *nl, BTlink *equipas, BTlink *jogos, int *i_jogos)
   jogo = cria_jogo(nome, e1, e2, s1, s2, *nl);
   if (s1 > s2)
   {
-    {
-      alt_score_equipa(get_equipa1_jogo(jogo), 1);
-    }
+    alt_score_equipa(get_equipa1_jogo(jogo), 1);
   }
   else
   {
     if (s1 < s2)
     {
-      {
-        alt_score_equipa(get_equipa2_jogo(jogo), 1);
-      }
+      alt_score_equipa(get_equipa2_jogo(jogo), 1);
     }
     else
     {
@@ -160,15 +150,11 @@ void procura_jogo(int *nl, BTlink jogos)
   jogo = (Jogo *) bintree_search(jogos, nome, bt_get_nome_jogo, nome_compare_func);
   if (jogo == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", *nl);
-    }
+    printf("%d Jogo inexistente.\n", *nl);
   }
   else
   {
-    {
-      printf("%d %s %s %s %d %d\n", *nl, get_nome_jogo(jogo), get_nome_equipa(get_equipa1_jogo(jogo)), get_nome_equipa(get_equipa2_jogo(jogo)), get_score1_jogo(jogo), get_score2_jogo(jogo));
-    }
+    printf("%d %s %s %s %d %d\n", *nl, get_nome_jogo(jogo), get_nome_equipa(get_equipa1_jogo(jogo)), get_nome_equipa(get_equipa2_jogo(jogo)), get_score1_jogo(jogo), get_score2_jogo(jogo));
   }
 
 }
@@ -187,15 +173,11 @@ void procura_equipa(int *nl, BTlink equipas)
   equipa = (Equipa *) bintree_search(equipas, nome, bt_get_nome_equipa, nome_compare_func);
   if (equipa == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", *nl);
-    }
+    printf("%d Equipa inexistente.\n", *nl);
   }
   else
   {
-    {
-      printf("%d %s %d\n", *nl, get_nome_equipa(equipa), get_score_equipa(equipa));
-    }
+    printf("%d %s %d\n", *nl, get_nome_equipa(equipa), get_score_equipa(equipa));
   }
 
 }
@@ -213,10 +195,8 @@ void remove_jogo(int *nl, BTlink *jogos, int *i_jogos)
   nome[10 - 1] = '\0';
   if ((*jogos) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", *nl);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", *nl);
+    return;
   }
   else
   {
@@ -226,10 +206,8 @@ void remove_jogo(int *nl, BTlink *jogos, int *i_jogos)
   jogo = bintree_search(*jogos, nome, bt_get_nome_jogo, nome_compare_func);
   if (jogo == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", *nl);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", *nl);
+    return;
   }
   else
   {
@@ -238,17 +216,13 @@ void remove_jogo(int *nl, BTlink *jogos, int *i_jogos)
 
   if (get_score1_jogo(jogo) > get_score2_jogo(jogo))
   {
-    {
-      alt_score_equipa(get_equipa1_jogo(jogo), -1);
-    }
+    alt_score_equipa(get_equipa1_jogo(jogo), -1);
   }
   else
   {
     if (get_score1_jogo(jogo) < get_score2_jogo(jogo))
     {
-      {
-        alt_score_equipa(get_equipa2_jogo(jogo), -1);
-      }
+      alt_score_equipa(get_equipa2_jogo(jogo), -1);
     }
     else
     {
@@ -281,10 +255,8 @@ void altera_pontuacao(int *nl, BTlink *jogos)
   jogo = bintree_search(*jogos, nome, bt_get_nome_jogo, nome_compare_func);
   if (jogo == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", *nl);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", *nl);
+    return;
   }
   else
   {
@@ -368,17 +340,15 @@ void lista_jogos(int *nl, BTlink *jogos, int i_jogos)
   (*nl)++;
   if ((*jogos) != 0)
   {
+    lista_jogos = malloc((sizeof(Jogo *)) * i_jogos);
+    bintree_array(*jogos, lista_jogos, sizeof(Jogo *));
+    qsort(lista_jogos, i_jogos, sizeof(struct Jogo **), cmp_id);
+    for (i = 0; i < i_jogos; i++)
     {
-      lista_jogos = malloc((sizeof(Jogo *)) * i_jogos);
-      bintree_array(*jogos, lista_jogos, sizeof(Jogo *));
-      qsort(lista_jogos, i_jogos, sizeof(struct Jogo **), cmp_id);
-      for (i = 0; i < i_jogos; i++)
-      {
-        printf("%d %s %s %s %d %d\n", *nl, ((Jogo *) lista_jogos[i])->nome, get_nome_equipa(((Jogo *) lista_jogos[i])->e1), get_nome_equipa(((Jogo *) lista_jogos[i])->e2), ((Jogo *) lista_jogos[i])->s1, ((Jogo *) lista_jogos[i])->s2);
-      }
-
-      free(lista_jogos);
+      printf("%d %s %s %s %d %d\n", *nl, ((Jogo *) lista_jogos[i])->nome, get_nome_equipa(((Jogo *) lista_jogos[i])->e1), get_nome_equipa(((Jogo *) lista_jogos[i])->e2), ((Jogo *) lista_jogos[i])->s1, ((Jogo *) lista_jogos[i])->s2);
     }
+
+    free(lista_jogos);
   }
   else
   {
@@ -417,19 +387,15 @@ void condition(void *a, Link *lista)
 
   if (team_score > best)
   {
-    {
-      *lista = linkedlist_reset(*lista, free);
-      linkedlist_add_item(lista, a, sizeof(Equipa));
-      best = team_score;
-    }
+    *lista = linkedlist_reset(*lista, free);
+    linkedlist_add_item(lista, a, sizeof(Equipa));
+    best = team_score;
   }
   else
   {
     if (team_score == best)
     {
-      {
-        linkedlist_add_item(lista, a, sizeof(Equipa));
-      }
+      linkedlist_add_item(lista, a, sizeof(Equipa));
     }
     else
     {
@@ -448,17 +414,15 @@ void lista_equipas(int *nl, BTlink *equipas)
   (*nl)++;
   if ((*equipas) != 0)
   {
+    lista_equipas = bintree_to_list_condition(*equipas, condition);
+    count = linkedlist_get_length(lista_equipas);
+    printf("%d Melhores %d\n", *nl, get_score_equipa((Equipa *) linkedlist_get_item(lista_equipas, 0)));
+    for (i = 0; i < count; i++)
     {
-      lista_equipas = bintree_to_list_condition(*equipas, condition);
-      count = linkedlist_get_length(lista_equipas);
-      printf("%d Melhores %d\n", *nl, get_score_equipa((Equipa *) linkedlist_get_item(lista_equipas, 0)));
-      for (i = 0; i < count; i++)
-      {
-        printf("%d * %s\n", *nl, get_nome_equipa((Equipa *) linkedlist_get_item(lista_equipas, i)));
-      }
-
-      linkedlist_free(lista_equipas, free);
+      printf("%d * %s\n", *nl, get_nome_equipa((Equipa *) linkedlist_get_item(lista_equipas, i)));
     }
+
+    linkedlist_free(lista_equipas, free);
   }
   else
   {

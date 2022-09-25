@@ -15,10 +15,8 @@ void vitoria_eq1(Hequipas *TabEquipas, NodeJ *tmpJ)
   {
     if (strcmp(tmpE->aponta_equipa->nome, tmpJ->aponta_jogo->equipa1) == 0)
     {
-      {
-        tmpE->aponta_equipa->vitorias += 1;
-        break;
-      }
+      tmpE->aponta_equipa->vitorias += 1;
+      break;
     }
     else
     {
@@ -34,20 +32,16 @@ void vitoria_eq1(Hequipas *TabEquipas, NodeJ *tmpJ)
   {
     if (strcmp(tmpE->aponta_equipa->nome, tmpJ->aponta_jogo->equipa2) == 0)
     {
+      if (tmpE->aponta_equipa->vitorias > 0)
       {
-        if (tmpE->aponta_equipa->vitorias > 0)
-        {
-          {
-            tmpE->aponta_equipa->vitorias -= 1;
-            break;
-          }
-        }
-        else
-        {
-          
-        }
-
+        tmpE->aponta_equipa->vitorias -= 1;
+        break;
       }
+      else
+      {
+        
+      }
+
     }
     else
     {
@@ -70,20 +64,16 @@ void vitoria_eq2(Hequipas *TabEquipas, NodeJ *tmpJ)
   {
     if (strcmp(tmpE->aponta_equipa->nome, tmpJ->aponta_jogo->equipa1) == 0)
     {
+      if (tmpE->aponta_equipa->vitorias > 0)
       {
-        if (tmpE->aponta_equipa->vitorias > 0)
-        {
-          {
-            tmpE->aponta_equipa->vitorias -= 1;
-            break;
-          }
-        }
-        else
-        {
-          
-        }
-
+        tmpE->aponta_equipa->vitorias -= 1;
+        break;
       }
+      else
+      {
+        
+      }
+
     }
     else
     {
@@ -99,10 +89,8 @@ void vitoria_eq2(Hequipas *TabEquipas, NodeJ *tmpJ)
   {
     if (strcmp(tmpE->aponta_equipa->nome, tmpJ->aponta_jogo->equipa2) == 0)
     {
-      {
-        tmpE->aponta_equipa->vitorias += 1;
-        break;
-      }
+      tmpE->aponta_equipa->vitorias += 1;
+      break;
     }
     else
     {
@@ -124,10 +112,8 @@ void empate1(Hequipas *TabEquipas, NodeJ *tmpJ)
   {
     if (strcmp(tmpE->aponta_equipa->nome, tmpJ->aponta_jogo->equipa1) == 0)
     {
-      {
-        tmpE->aponta_equipa->vitorias += 1;
-        break;
-      }
+      tmpE->aponta_equipa->vitorias += 1;
+      break;
     }
     else
     {
@@ -149,10 +135,8 @@ void empate2(Hequipas *TabEquipas, NodeJ *tmpJ)
   {
     if (strcmp(tmpE->aponta_equipa->nome, tmpJ->aponta_jogo->equipa2) == 0)
     {
-      {
-        tmpE->aponta_equipa->vitorias += 1;
-        break;
-      }
+      tmpE->aponta_equipa->vitorias += 1;
+      break;
     }
     else
     {
@@ -174,20 +158,16 @@ void retira_eq1(Hequipas *TabEquipas, NodeJ *tmpJ)
   {
     if (strcmp(tmpE->aponta_equipa->nome, tmpJ->aponta_jogo->equipa1) == 0)
     {
+      if (tmpE->aponta_equipa->vitorias > 0)
       {
-        if (tmpE->aponta_equipa->vitorias > 0)
-        {
-          {
-            tmpE->aponta_equipa->vitorias -= 1;
-            break;
-          }
-        }
-        else
-        {
-          
-        }
-
+        tmpE->aponta_equipa->vitorias -= 1;
+        break;
       }
+      else
+      {
+        
+      }
+
     }
     else
     {
@@ -209,20 +189,16 @@ void retira_eq2(Hequipas *TabEquipas, NodeJ *tmpJ)
   {
     if (strcmp(tmpE->aponta_equipa->nome, tmpJ->aponta_jogo->equipa2) == 0)
     {
+      if (tmpE->aponta_equipa->vitorias > 0)
       {
-        if (tmpE->aponta_equipa->vitorias > 0)
-        {
-          {
-            tmpE->aponta_equipa->vitorias -= 1;
-            break;
-          }
-        }
-        else
-        {
-          
-        }
-
+        tmpE->aponta_equipa->vitorias -= 1;
+        break;
       }
+      else
+      {
+        
+      }
+
     }
     else
     {
@@ -244,28 +220,20 @@ void remove_jLista(Cabeca_cauda *extremos_lista_jogos, NodeJ *tmpJ)
 {
   if (tmpJ->aponta_jogo->anterior == 0)
   {
-    {
-      extremos_lista_jogos->cabeca = tmpJ->aponta_jogo->proximo;
-    }
+    extremos_lista_jogos->cabeca = tmpJ->aponta_jogo->proximo;
   }
   else
   {
-    {
-      tmpJ->aponta_jogo->anterior->proximo = tmpJ->aponta_jogo->proximo;
-    }
+    tmpJ->aponta_jogo->anterior->proximo = tmpJ->aponta_jogo->proximo;
   }
 
   if (tmpJ->aponta_jogo->proximo == 0)
   {
-    {
-      extremos_lista_jogos->cauda = tmpJ->aponta_jogo->anterior;
-    }
+    extremos_lista_jogos->cauda = tmpJ->aponta_jogo->anterior;
   }
   else
   {
-    {
-      tmpJ->aponta_jogo->proximo->anterior = tmpJ->aponta_jogo->anterior;
-    }
+    tmpJ->aponta_jogo->proximo->anterior = tmpJ->aponta_jogo->anterior;
   }
 
   free(tmpJ->aponta_jogo->nome);
@@ -280,23 +248,19 @@ void remove_jHash(Hjogos *TabJogos, NodeJ *tmpJ, int index)
   NodeJ *aux = TabJogos->cabecas[index];
   if (atual == tmpJ)
   {
-    {
-      TabJogos->cabecas[index] = atual->proximo;
-      free(atual);
-    }
+    TabJogos->cabecas[index] = atual->proximo;
+    free(atual);
   }
   else
   {
+    while (atual != tmpJ)
     {
-      while (atual != tmpJ)
-      {
-        aux = atual;
-        atual = atual->proximo;
-      }
-
-      aux->proximo = atual->proximo;
-      free(atual);
+      aux = atual;
+      atual = atual->proximo;
     }
+
+    aux->proximo = atual->proximo;
+    free(atual);
   }
 
 }
@@ -343,87 +307,71 @@ void a(Hequipas *TabEquipas, Hjogos *TabJogos, Cabeca_cauda *extremos_lista_jogo
   pontos2 = new_sym_var(sizeof(int) * 8);
   if (procuraJ(TabJogos, nome_aux))
   {
-    {
-      printf("%d Jogo existente.\n", *NL);
-      *NL += 1;
-    }
+    printf("%d Jogo existente.\n", *NL);
+    *NL += 1;
   }
   else
   {
+    if (!(procuraE(TabEquipas, equipa1_aux) && procuraE(TabEquipas, equipa2_aux)))
     {
-      if (!(procuraE(TabEquipas, equipa1_aux) && procuraE(TabEquipas, equipa2_aux)))
+      printf("%d Equipa inexistente.\n", *NL);
+      *NL += 1;
+    }
+    else
+    {
+      hash_insertJ(TabJogos, extremos_lista_jogos, nome_aux, equipa1_aux, equipa2_aux, pontos1, pontos2);
+      if (pontos1 > pontos2)
       {
+        index = hash(equipa1_aux, TabEquipas->capacidade);
+        tmp = TabEquipas->cabecas[index];
+        while (tmp != 0)
         {
-          printf("%d Equipa inexistente.\n", *NL);
-          *NL += 1;
-        }
-      }
-      else
-      {
-        {
-          hash_insertJ(TabJogos, extremos_lista_jogos, nome_aux, equipa1_aux, equipa2_aux, pontos1, pontos2);
-          if (pontos1 > pontos2)
+          if (strcmp(tmp->aponta_equipa->nome, equipa1_aux) == 0)
           {
-            {
-              index = hash(equipa1_aux, TabEquipas->capacidade);
-              tmp = TabEquipas->cabecas[index];
-              while (tmp != 0)
-              {
-                if (strcmp(tmp->aponta_equipa->nome, equipa1_aux) == 0)
-                {
-                  {
-                    tmp->aponta_equipa->vitorias += 1;
-                    break;
-                  }
-                }
-                else
-                {
-                  
-                }
-
-                tmp = tmp->proximo;
-              }
-
-            }
+            tmp->aponta_equipa->vitorias += 1;
+            break;
           }
           else
           {
-            if (pontos2 > pontos1)
+            
+          }
+
+          tmp = tmp->proximo;
+        }
+
+      }
+      else
+      {
+        if (pontos2 > pontos1)
+        {
+          index = hash(equipa2_aux, TabEquipas->capacidade);
+          tmp = TabEquipas->cabecas[index];
+          while (tmp != 0)
+          {
+            if (strcmp(tmp->aponta_equipa->nome, equipa2_aux) == 0)
             {
-              {
-                index = hash(equipa2_aux, TabEquipas->capacidade);
-                tmp = TabEquipas->cabecas[index];
-                while (tmp != 0)
-                {
-                  if (strcmp(tmp->aponta_equipa->nome, equipa2_aux) == 0)
-                  {
-                    {
-                      tmp->aponta_equipa->vitorias += 1;
-                      break;
-                    }
-                  }
-                  else
-                  {
-                    
-                  }
-
-                  tmp = tmp->proximo;
-                }
-
-              }
+              tmp->aponta_equipa->vitorias += 1;
+              break;
             }
             else
             {
               
             }
 
+            tmp = tmp->proximo;
           }
 
-          *NL += 1;
         }
+        else
+        {
+          
+        }
+
       }
 
+      *NL += 1;
     }
+
   }
 
 }
@@ -440,18 +388,14 @@ Equipa *A(Hequipas *TabEquipas, Equipa *cabeca_equipas, int *NL)
   buffer[10 - 1] = '\0';
   if (procuraE(TabEquipas, buffer))
   {
-    {
-      printf("%d Equipa existente.\n", *NL);
-      *NL += 1;
-      return cabeca_equipas;
-    }
+    printf("%d Equipa existente.\n", *NL);
+    *NL += 1;
+    return cabeca_equipas;
   }
   else
   {
-    {
-      *NL += 1;
-      return hash_insertE(TabEquipas, cabeca_equipas, buffer);
-    }
+    *NL += 1;
+    return hash_insertE(TabEquipas, cabeca_equipas, buffer);
   }
 
 }
@@ -482,35 +426,29 @@ void p(Hjogos *TabJogos, int *NL)
   nome_aux[10 - 1] = '\0';
   if (procuraJ(TabJogos, nome_aux))
   {
+    index = hash(nome_aux, TabJogos->capacidade);
+    tmp = TabJogos->cabecas[index];
+    while (tmp != 0)
     {
-      index = hash(nome_aux, TabJogos->capacidade);
-      tmp = TabJogos->cabecas[index];
-      while (tmp != 0)
+      if (strcmp(tmp->aponta_jogo->nome, nome_aux) == 0)
       {
-        if (strcmp(tmp->aponta_jogo->nome, nome_aux) == 0)
-        {
-          {
-            printf("%d %s %s %s %d %d\n", *NL, tmp->aponta_jogo->nome, tmp->aponta_jogo->equipa1, tmp->aponta_jogo->equipa2, tmp->aponta_jogo->pontos1, tmp->aponta_jogo->pontos2);
-            break;
-          }
-        }
-        else
-        {
-          
-        }
-
-        tmp = tmp->proximo;
+        printf("%d %s %s %s %d %d\n", *NL, tmp->aponta_jogo->nome, tmp->aponta_jogo->equipa1, tmp->aponta_jogo->equipa2, tmp->aponta_jogo->pontos1, tmp->aponta_jogo->pontos2);
+        break;
+      }
+      else
+      {
+        
       }
 
-      *NL += 1;
+      tmp = tmp->proximo;
     }
+
+    *NL += 1;
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", *NL);
-      *NL += 1;
-    }
+    printf("%d Jogo inexistente.\n", *NL);
+    *NL += 1;
   }
 
 }
@@ -529,35 +467,29 @@ void P(Hequipas *TabEquipas, int *NL)
   buffer[10 - 1] = '\0';
   if (procuraE(TabEquipas, buffer))
   {
+    index = hash(buffer, TabEquipas->capacidade);
+    tmp = TabEquipas->cabecas[index];
+    while (tmp != 0)
     {
-      index = hash(buffer, TabEquipas->capacidade);
-      tmp = TabEquipas->cabecas[index];
-      while (tmp != 0)
+      if (strcmp(tmp->aponta_equipa->nome, buffer) == 0)
       {
-        if (strcmp(tmp->aponta_equipa->nome, buffer) == 0)
-        {
-          {
-            printf("%d %s %d\n", *NL, tmp->aponta_equipa->nome, tmp->aponta_equipa->vitorias);
-            break;
-          }
-        }
-        else
-        {
-          
-        }
-
-        tmp = tmp->proximo;
+        printf("%d %s %d\n", *NL, tmp->aponta_equipa->nome, tmp->aponta_equipa->vitorias);
+        break;
+      }
+      else
+      {
+        
       }
 
-      *NL += 1;
+      tmp = tmp->proximo;
     }
+
+    *NL += 1;
   }
   else
   {
-    {
-      printf("%d Equipa inexistente.\n", *NL);
-      *NL += 1;
-    }
+    printf("%d Equipa inexistente.\n", *NL);
+    *NL += 1;
   }
 
 }
@@ -578,64 +510,52 @@ void r(int *NL, Hjogos *TabJogos, Hequipas *TabEquipas, Cabeca_cauda *extremos_l
   tmpJ = TabJogos->cabecas[index];
   if (!procuraJ(TabJogos, nome_aux))
   {
-    {
-      printf("%d Jogo inexistente.\n", *NL);
-      *NL += 1;
-    }
+    printf("%d Jogo inexistente.\n", *NL);
+    *NL += 1;
   }
   else
   {
+    while (tmpJ != 0)
     {
-      while (tmpJ != 0)
+      if (strcmp(tmpJ->aponta_jogo->nome, nome_aux) == 0)
       {
-        if (strcmp(tmpJ->aponta_jogo->nome, nome_aux) == 0)
+        if (tmpJ->aponta_jogo->pontos1 > tmpJ->aponta_jogo->pontos2)
         {
-          {
-            if (tmpJ->aponta_jogo->pontos1 > tmpJ->aponta_jogo->pontos2)
-            {
-              {
-                retira_eq1(TabEquipas, tmpJ);
-                remove_jLista(extremos_lista_jogos, tmpJ);
-                remove_jHash(TabJogos, tmpJ, index);
-                *NL += 1;
-                return;
-              }
-            }
-            else
-            {
-              if (tmpJ->aponta_jogo->pontos2 > tmpJ->aponta_jogo->pontos1)
-              {
-                {
-                  retira_eq2(TabEquipas, tmpJ);
-                  remove_jLista(extremos_lista_jogos, tmpJ);
-                  remove_jHash(TabJogos, tmpJ, index);
-                  *NL += 1;
-                  return;
-                }
-              }
-              else
-              {
-                {
-                  remove_jLista(extremos_lista_jogos, tmpJ);
-                  remove_jHash(TabJogos, tmpJ, index);
-                  *NL += 1;
-                  return;
-                }
-              }
-
-            }
-
-          }
+          retira_eq1(TabEquipas, tmpJ);
+          remove_jLista(extremos_lista_jogos, tmpJ);
+          remove_jHash(TabJogos, tmpJ, index);
+          *NL += 1;
+          return;
         }
         else
         {
-          
+          if (tmpJ->aponta_jogo->pontos2 > tmpJ->aponta_jogo->pontos1)
+          {
+            retira_eq2(TabEquipas, tmpJ);
+            remove_jLista(extremos_lista_jogos, tmpJ);
+            remove_jHash(TabJogos, tmpJ, index);
+            *NL += 1;
+            return;
+          }
+          else
+          {
+            remove_jLista(extremos_lista_jogos, tmpJ);
+            remove_jHash(TabJogos, tmpJ, index);
+            *NL += 1;
+            return;
+          }
+
         }
 
-        tmpJ = tmpJ->proximo;
+      }
+      else
+      {
+        
       }
 
+      tmpJ = tmpJ->proximo;
     }
+
   }
 
 }
@@ -658,129 +578,99 @@ void s(Hequipas *TabEquipas, Hjogos *TabJogos, int *NL)
   pontos2_novos = new_sym_var(sizeof(int) * 8);
   if (procuraJ(TabJogos, nome_aux))
   {
+    index = hash(nome_aux, TabJogos->capacidade);
+    tmpJ = TabJogos->cabecas[index];
+    while (tmpJ != 0)
     {
-      index = hash(nome_aux, TabJogos->capacidade);
-      tmpJ = TabJogos->cabecas[index];
-      while (tmpJ != 0)
+      if (strcmp(tmpJ->aponta_jogo->nome, nome_aux) == 0)
       {
-        if (strcmp(tmpJ->aponta_jogo->nome, nome_aux) == 0)
+        if (pontos1_novos > pontos2_novos)
         {
+          if (tmpJ->aponta_jogo->pontos2 > tmpJ->aponta_jogo->pontos1)
           {
-            if (pontos1_novos > pontos2_novos)
+            vitoria_eq1(TabEquipas, tmpJ);
+            atualizador(tmpJ, pontos1_novos, pontos2_novos);
+          }
+          else
+          {
+            if (tmpJ->aponta_jogo->pontos1 == tmpJ->aponta_jogo->pontos2)
             {
-              {
-                if (tmpJ->aponta_jogo->pontos2 > tmpJ->aponta_jogo->pontos1)
-                {
-                  {
-                    vitoria_eq1(TabEquipas, tmpJ);
-                    atualizador(tmpJ, pontos1_novos, pontos2_novos);
-                  }
-                }
-                else
-                {
-                  if (tmpJ->aponta_jogo->pontos1 == tmpJ->aponta_jogo->pontos2)
-                  {
-                    {
-                      empate1(TabEquipas, tmpJ);
-                      atualizador(tmpJ, pontos1_novos, pontos2_novos);
-                    }
-                  }
-                  else
-                  {
-                    {
-                      atualizador(tmpJ, pontos1_novos, pontos2_novos);
-                    }
-                  }
-
-                }
-
-                break;
-              }
+              empate1(TabEquipas, tmpJ);
+              atualizador(tmpJ, pontos1_novos, pontos2_novos);
             }
             else
             {
-              if (pontos2_novos > pontos1_novos)
+              atualizador(tmpJ, pontos1_novos, pontos2_novos);
+            }
+
+          }
+
+          break;
+        }
+        else
+        {
+          if (pontos2_novos > pontos1_novos)
+          {
+            if (tmpJ->aponta_jogo->pontos1 > tmpJ->aponta_jogo->pontos2)
+            {
+              vitoria_eq2(TabEquipas, tmpJ);
+              atualizador(tmpJ, pontos1_novos, pontos2_novos);
+            }
+            else
+            {
+              if (tmpJ->aponta_jogo->pontos1 == tmpJ->aponta_jogo->pontos2)
               {
-                {
-                  if (tmpJ->aponta_jogo->pontos1 > tmpJ->aponta_jogo->pontos2)
-                  {
-                    {
-                      vitoria_eq2(TabEquipas, tmpJ);
-                      atualizador(tmpJ, pontos1_novos, pontos2_novos);
-                    }
-                  }
-                  else
-                  {
-                    if (tmpJ->aponta_jogo->pontos1 == tmpJ->aponta_jogo->pontos2)
-                    {
-                      {
-                        empate2(TabEquipas, tmpJ);
-                        atualizador(tmpJ, pontos1_novos, pontos2_novos);
-                      }
-                    }
-                    else
-                    {
-                      {
-                        atualizador(tmpJ, pontos1_novos, pontos2_novos);
-                      }
-                    }
-
-                  }
-
-                  break;
-                }
+                empate2(TabEquipas, tmpJ);
+                atualizador(tmpJ, pontos1_novos, pontos2_novos);
               }
               else
               {
-                {
-                  if (tmpJ->aponta_jogo->pontos1 > tmpJ->aponta_jogo->pontos2)
-                  {
-                    {
-                      retira_eq1(TabEquipas, tmpJ);
-                      atualizador(tmpJ, pontos1_novos, pontos2_novos);
-                    }
-                  }
-                  else
-                  {
-                    if (tmpJ->aponta_jogo->pontos2 > tmpJ->aponta_jogo->pontos1)
-                    {
-                      {
-                        retira_eq2(TabEquipas, tmpJ);
-                        atualizador(tmpJ, pontos1_novos, pontos2_novos);
-                      }
-                    }
-                    else
-                    {
-                      {
-                        atualizador(tmpJ, pontos1_novos, pontos2_novos);
-                      }
-                    }
-
-                  }
-
-                  break;
-                }
+                atualizador(tmpJ, pontos1_novos, pontos2_novos);
               }
 
             }
 
+            break;
           }
-        }
-        else
-        {
-          
+          else
+          {
+            if (tmpJ->aponta_jogo->pontos1 > tmpJ->aponta_jogo->pontos2)
+            {
+              retira_eq1(TabEquipas, tmpJ);
+              atualizador(tmpJ, pontos1_novos, pontos2_novos);
+            }
+            else
+            {
+              if (tmpJ->aponta_jogo->pontos2 > tmpJ->aponta_jogo->pontos1)
+              {
+                retira_eq2(TabEquipas, tmpJ);
+                atualizador(tmpJ, pontos1_novos, pontos2_novos);
+              }
+              else
+              {
+                atualizador(tmpJ, pontos1_novos, pontos2_novos);
+              }
+
+            }
+
+            break;
+          }
+
         }
 
-        tmpJ = tmpJ->proximo;
+      }
+      else
+      {
+        
       }
 
+      tmpJ = tmpJ->proximo;
     }
+
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", *NL);
-    }
+    printf("%d Jogo inexistente.\n", *NL);
   }
 
   *NL += 1;
@@ -797,72 +687,64 @@ void g(int *NL, Equipa *cabeca_equipas)
   char **equipas_maior;
   if (tmp != 0)
   {
+    while (tmp != 0)
     {
-      while (tmp != 0)
+      if (tmp->vitorias > max)
       {
-        if (tmp->vitorias > max)
-        {
-          {
-            max = tmp->vitorias;
-          }
-        }
-        else
-        {
-          
-        }
-
-        tmp = tmp->proximo;
+        max = tmp->vitorias;
+      }
+      else
+      {
+        
       }
 
-      while (tmp2 != 0)
-      {
-        if (tmp2->vitorias == max)
-        {
-          {
-            contador_equipas += 1;
-          }
-        }
-        else
-        {
-          
-        }
-
-        tmp2 = tmp2->proximo;
-      }
-
-      equipas_maior = malloc((sizeof(char *)) * contador_equipas);
-      while (tmp3 != 0)
-      {
-        if (tmp3->vitorias == max)
-        {
-          {
-            equipas_maior[i] = malloc((sizeof(char)) * (strlen(tmp3->nome) + 1));
-            strcpy(equipas_maior[i], tmp3->nome);
-            i++;
-          }
-        }
-        else
-        {
-          
-        }
-
-        tmp3 = tmp3->proximo;
-      }
-
-      printf("%d Melhores %d\n", *NL, max);
-      sort(equipas_maior, contador_equipas);
-      for (i = 0; i < contador_equipas; i++)
-      {
-        printf("%d * %s\n", *NL, equipas_maior[i]);
-      }
-
-      for (i = 0; i < contador_equipas; i++)
-      {
-        free(equipas_maior[i]);
-      }
-
-      free(equipas_maior);
+      tmp = tmp->proximo;
     }
+
+    while (tmp2 != 0)
+    {
+      if (tmp2->vitorias == max)
+      {
+        contador_equipas += 1;
+      }
+      else
+      {
+        
+      }
+
+      tmp2 = tmp2->proximo;
+    }
+
+    equipas_maior = malloc((sizeof(char *)) * contador_equipas);
+    while (tmp3 != 0)
+    {
+      if (tmp3->vitorias == max)
+      {
+        equipas_maior[i] = malloc((sizeof(char)) * (strlen(tmp3->nome) + 1));
+        strcpy(equipas_maior[i], tmp3->nome);
+        i++;
+      }
+      else
+      {
+        
+      }
+
+      tmp3 = tmp3->proximo;
+    }
+
+    printf("%d Melhores %d\n", *NL, max);
+    sort(equipas_maior, contador_equipas);
+    for (i = 0; i < contador_equipas; i++)
+    {
+      printf("%d * %s\n", *NL, equipas_maior[i]);
+    }
+
+    for (i = 0; i < contador_equipas; i++)
+    {
+      free(equipas_maior[i]);
+    }
+
+    free(equipas_maior);
   }
   else
   {

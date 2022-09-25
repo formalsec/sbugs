@@ -43,9 +43,7 @@ TeamLink team_ht_search(TeamHT team_ht, char *team)
   {
     if (!strcmp(t->team, team))
     {
-      {
-        return t;
-      }
+      return t;
     }
     else
     {
@@ -62,16 +60,12 @@ void team_ht_search_print(TeamHT team_ht, char *team, unsigned long int NL)
   TeamLink res = team_ht_search(team_ht, team);
   if (res == 0)
   {
-    {
-      printf("%ld Equipa inexistente.\n", NL);
-      return;
-    }
+    printf("%ld Equipa inexistente.\n", NL);
+    return;
   }
   else
   {
-    {
-      printf("%ld %s %d\n", NL, res->team, res->games_won);
-    }
+    printf("%ld %s %d\n", NL, res->team, res->games_won);
   }
 
 }
@@ -80,23 +74,19 @@ void team_ht_insert(TeamHT *team_ht_ptr, char *team, unsigned long int NL)
 {
   if (team_ht_search(*team_ht_ptr, team) != 0)
   {
-    {
-      printf("%ld Equipa existente.\n", NL);
-      return;
-    }
+    printf("%ld Equipa existente.\n", NL);
+    return;
   }
   else
   {
-    {
-      int team_hash = name_hash(team_ht_ptr->size, team);
-      TeamLink t = (TeamLink) malloc(sizeof(struct TeamNode));
-      t->team = (char *) malloc((strlen(team) + 1) * (sizeof(char)));
-      strcpy(t->team, team);
-      t->games_won = 0;
-      t->next = team_ht_ptr->header[team_hash];
-      team_ht_ptr->header[team_hash] = t;
-      team_ht_ptr->teams_num++;
-    }
+    int team_hash = name_hash(team_ht_ptr->size, team);
+    TeamLink t = (TeamLink) malloc(sizeof(struct TeamNode));
+    t->team = (char *) malloc((strlen(team) + 1) * (sizeof(char)));
+    strcpy(t->team, team);
+    t->games_won = 0;
+    t->next = team_ht_ptr->header[team_hash];
+    team_ht_ptr->header[team_hash] = t;
+    team_ht_ptr->teams_num++;
   }
 
 }
@@ -120,53 +110,24 @@ void team_ht_print_best(TeamHT team_ht, unsigned long int NL)
   TeamLink *best_teams;
   if (team_ht.teams_num == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
+    for (i = 0; i < team_ht.size; i++)
     {
-      for (i = 0; i < team_ht.size; i++)
+      for (t = team_ht.header[i]; t != 0; t = t->next)
       {
-        for (t = team_ht.header[i]; t != 0; t = t->next)
+        if (t->games_won == best_score)
         {
-          if (t->games_won == best_score)
-          {
-            {
-              best_teams_num++;
-            }
-          }
-          else
-          {
-            if (t->games_won > best_score)
-            {
-              {
-                best_score = t->games_won;
-                best_teams_num = 1;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
+          best_teams_num++;
         }
-
-      }
-
-      best_teams = (TeamLink *) malloc(best_teams_num * (sizeof(TeamLink)));
-      for (i = 0; i < team_ht.size; i++)
-      {
-        for (t = team_ht.header[i]; t != 0; t = t->next)
+        else
         {
-          if (t->games_won == best_score)
+          if (t->games_won > best_score)
           {
-            {
-              best_teams[j++] = t;
-            }
+            best_score = t->games_won;
+            best_teams_num = 1;
           }
           else
           {
@@ -177,15 +138,34 @@ void team_ht_print_best(TeamHT team_ht, unsigned long int NL)
 
       }
 
-      qsort(best_teams, best_teams_num, sizeof(TeamLink), team_comp_name);
-      printf("%ld Melhores %d\n", NL, best_score);
-      for (i = 0; i < best_teams_num; i++)
+    }
+
+    best_teams = (TeamLink *) malloc(best_teams_num * (sizeof(TeamLink)));
+    for (i = 0; i < team_ht.size; i++)
+    {
+      for (t = team_ht.header[i]; t != 0; t = t->next)
       {
-        printf("%ld * %s\n", NL, best_teams[i]->team);
+        if (t->games_won == best_score)
+        {
+          best_teams[j++] = t;
+        }
+        else
+        {
+          
+        }
+
       }
 
-      free(best_teams);
     }
+
+    qsort(best_teams, best_teams_num, sizeof(TeamLink), team_comp_name);
+    printf("%ld Melhores %d\n", NL, best_score);
+    for (i = 0; i < best_teams_num; i++)
+    {
+      printf("%ld * %s\n", NL, best_teams[i]->team);
+    }
+
+    free(best_teams);
   }
 
 }

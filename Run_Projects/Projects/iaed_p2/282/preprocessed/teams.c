@@ -15,15 +15,11 @@ void add_team(Hash_table HT, int line)
   nome[10 - 1] = '\0';
   if (!search_HT(HT, nome))
   {
-    {
-      HT_insert(HT, nome);
-    }
+    HT_insert(HT, nome);
   }
   else
   {
-    {
-      printf("%d Equipa existente.\n", line);
-    }
+    printf("%d Equipa existente.\n", line);
   }
 
 }
@@ -41,15 +37,11 @@ void search_team_name(Hash_table HT, int line)
   p = search_HT(HT, nome);
   if (!p)
   {
-    {
-      printf("%d Equipa inexistente.\n", line);
-    }
+    printf("%d Equipa inexistente.\n", line);
   }
   else
   {
-    {
-      printf("%d %s %d\n", line, p->nome, p->vitorias);
-    }
+    printf("%d %s %d\n", line, p->nome, p->vitorias);
   }
 
 }
@@ -68,25 +60,21 @@ void print_most_wins(Hash_table HT, int line)
   last = create_teams_array(HT, array_teams, most_wins);
   if (array_teams[0] != 0)
   {
+    if (last > 0)
     {
-      if (last > 0)
-      {
-        {
-          merge_sort(array_teams, 0, last - 1);
-        }
-      }
-      else
-      {
-        
-      }
-
-      printf("%d Melhores %d\n", line, most_wins);
-      for (i = 0; i < last; i++)
-      {
-        printf("%d * %s\n", line, array_teams[i]->nome);
-      }
-
+      merge_sort(array_teams, 0, last - 1);
     }
+    else
+    {
+      
+    }
+
+    printf("%d Melhores %d\n", line, most_wins);
+    for (i = 0; i < last; i++)
+    {
+      printf("%d * %s\n", line, array_teams[i]->nome);
+    }
+
   }
   else
   {
@@ -107,9 +95,7 @@ int search_most_wins(Hash_table HT)
     {
       if (aux->vitorias > most_wins)
       {
-        {
-          most_wins = aux->vitorias;
-        }
+        most_wins = aux->vitorias;
       }
       else
       {
@@ -135,9 +121,7 @@ int create_teams_array(Hash_table HT, Node_team **head, int most_wins)
     {
       if (aux->vitorias == most_wins)
       {
-        {
-          head[u++] = aux;
-        }
+        head[u++] = aux;
       }
       else
       {
@@ -156,17 +140,13 @@ void merge_sort(Node_team **array_teams, int left, int right)
   int mid = (left + right) / 2;
   if (right <= left)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
-    {
-      merge_sort(array_teams, left, mid);
-      merge_sort(array_teams, mid + 1, right);
-      merge(array_teams, left, mid, right);
-    }
+    merge_sort(array_teams, left, mid);
+    merge_sort(array_teams, mid + 1, right);
+    merge(array_teams, left, mid, right);
   }
 
 }
@@ -196,15 +176,11 @@ void merge(Node_team **array_teams, int left, int mid, int right)
   {
     if (strcmp(array_teams_aux[j]->nome, array_teams_aux[i]->nome) < 0)
     {
-      {
-        array_teams[k] = array_teams_aux[j--];
-      }
+      array_teams[k] = array_teams_aux[j--];
     }
     else
     {
-      {
-        array_teams[k] = array_teams_aux[i++];
-      }
+      array_teams[k] = array_teams_aux[i++];
     }
 
   }

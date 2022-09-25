@@ -113,33 +113,29 @@ avl_link avl_balanco(avl_link h)
   fator = avl_obtem_fator(h);
   if (fator < (-1))
   {
+    if (avl_obtem_fator(h->l) <= 0)
     {
-      if (avl_obtem_fator(h->l) <= 0)
-      {
-        h = avl_rotacao_R(h);
-      }
-      else
-      {
-        h = avl_rotacao_LR(h);
-      }
-
+      h = avl_rotacao_R(h);
     }
+    else
+    {
+      h = avl_rotacao_LR(h);
+    }
+
   }
   else
   {
     if (fator > 1)
     {
+      if (avl_obtem_fator(h->r) >= 0)
       {
-        if (avl_obtem_fator(h->r) >= 0)
-        {
-          h = avl_rotacao_L(h);
-        }
-        else
-        {
-          h = avl_rotacao_RL(h);
-        }
-
+        h = avl_rotacao_L(h);
       }
+      else
+      {
+        h = avl_rotacao_RL(h);
+      }
+
     }
     else
     {
@@ -302,12 +298,10 @@ void avl_free_h(avl_link h)
 {
   if (!(h == 0))
   {
-    {
-      avl_free_h(h->l);
-      avl_free_h(h->r);
-      equipa_free(h->equipa);
-      free(h);
-    }
+    avl_free_h(h->l);
+    avl_free_h(h->r);
+    equipa_free(h->equipa);
+    free(h);
   }
   else
   {

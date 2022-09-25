@@ -70,18 +70,16 @@ node_jogo *encontra_hash_jg(hash_table_jogo *table, char *nome)
   node_jogo *tmp;
   if (table->tb[i] != 0)
   {
+    tmp = encontra_listnode_jg(table->tb[i], nome);
+    if (tmp != 0)
     {
-      tmp = encontra_listnode_jg(table->tb[i], nome);
-      if (tmp != 0)
-      {
-        return tmp;
-      }
-      else
-      {
-        
-      }
-
+      return tmp;
     }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -97,18 +95,16 @@ node_equipa *encontra_hash_eq(hash_table_equipa *table, char *nome)
   node_equipa *tmp;
   if (table->tb[i] != 0)
   {
+    tmp = encontra_listnode_eq(table->tb[i], nome);
+    if (tmp != 0)
     {
-      tmp = encontra_listnode_eq(table->tb[i], nome);
-      if (tmp != 0)
-      {
-        return tmp;
-      }
-      else
-      {
-        
-      }
-
+      return tmp;
     }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -125,40 +121,34 @@ void remove_jogo_hash(hash_table_jogo *table, char *nome)
   node_jogo *tmp;
   if (table->tb[i] != 0)
   {
+    tmp = table->tb[i];
+    while (tmp != 0)
     {
-      tmp = table->tb[i];
-      while (tmp != 0)
+      if (cont == 1)
       {
-        if (cont == 1)
-        {
-          {
-            table->tb[i] = delete_node_list(table->tb[i], nome);
-            return;
-          }
-        }
-        else
-        {
-          
-        }
-
-        tmp = tmp->next;
-        cont++;
-      }
-
-      tmp = encontra_listnode_jg(table->tb[i], nome);
-      if (tmp != 0)
-      {
-        {
-          table->tb[i] = delete_node_list(table->tb[i], nome);
-          table->tb[i] = 0;
-        }
+        table->tb[i] = delete_node_list(table->tb[i], nome);
+        return;
       }
       else
       {
         
       }
 
+      tmp = tmp->next;
+      cont++;
     }
+
+    tmp = encontra_listnode_jg(table->tb[i], nome);
+    if (tmp != 0)
+    {
+      table->tb[i] = delete_node_list(table->tb[i], nome);
+      table->tb[i] = 0;
+    }
+    else
+    {
+      
+    }
+
   }
   else
   {

@@ -18,16 +18,12 @@ void comando_A(int cont, lista_equipa le, ht_equipas ht_e)
   ptexto[10 - 1] = '\0';
   if (procura_equipa_hash_equipas(ht_e, ptexto) != (-1))
   {
-    {
-      printf("%d Equipa existente.\n", cont);
-    }
+    printf("%d Equipa existente.\n", cont);
   }
   else
   {
-    {
-      inserir_equipa(le, ptexto);
-      insere_equipa_hash_equipas(ht_e, le->head->e);
-    }
+    inserir_equipa(le, ptexto);
+    insere_equipa_hash_equipas(ht_e, le->head->e);
   }
 
   free(ptexto);
@@ -47,15 +43,11 @@ void comando_P(int cont, ht_equipas ht_e)
   i = procura_equipa_hash_equipas(ht_e, ptexto);
   if (i == (-1))
   {
-    {
-      printf("%d Equipa inexistente.\n", cont);
-    }
+    printf("%d Equipa inexistente.\n", cont);
   }
   else
   {
-    {
-      printf("%d %s %d\n", cont, ht_e->hash_equipas[i]->nome, ht_e->hash_equipas[i]->vitorias);
-    }
+    printf("%d %s %d\n", cont, ht_e->hash_equipas[i]->nome, ht_e->hash_equipas[i]->vitorias);
   }
 
   free(ptexto);
@@ -97,25 +89,19 @@ void comando_a(int cont, lista_jogos lj, ht_jogos ht_j, ht_equipas ht_e)
   ie2 = procura_equipa_hash_equipas(ht_e, ptexto_e2);
   if (procura_jogo_hash_jogos(ht_j, ptexto) != (-1))
   {
-    {
-      printf("%d Jogo existente.\n", cont);
-    }
+    printf("%d Jogo existente.\n", cont);
   }
   else
   {
     if ((ie1 == (-1)) || (ie2 == (-1)))
     {
-      {
-        printf("%d Equipa inexistente.\n", cont);
-      }
+      printf("%d Equipa inexistente.\n", cont);
     }
     else
     {
-      {
-        inserir_jogo(lj, ptexto, ht_e->hash_equipas[ie1], ht_e->hash_equipas[ie2], score1, score2);
-        insere_jogo_hash_jogos(ht_j, lj->tail);
-        aumenta_vitorias(lj->tail->j);
-      }
+      inserir_jogo(lj, ptexto, ht_e->hash_equipas[ie1], ht_e->hash_equipas[ie2], score1, score2);
+      insere_jogo_hash_jogos(ht_j, lj->tail);
+      aumenta_vitorias(lj->tail->j);
     }
 
   }
@@ -139,15 +125,11 @@ void comando_p(int cont, ht_jogos ht_j)
   i = procura_jogo_hash_jogos(ht_j, ptexto);
   if (i == (-1))
   {
-    {
-      printf("%d Jogo inexistente.\n", cont);
-    }
+    printf("%d Jogo inexistente.\n", cont);
   }
   else
   {
-    {
-      printf("%d %s %s %s %d %d\n", cont, ht_j->hash_jogos[i]->j->nome, ht_j->hash_jogos[i]->j->e1->nome, ht_j->hash_jogos[i]->j->e2->nome, ht_j->hash_jogos[i]->j->s1, ht_j->hash_jogos[i]->j->s2);
-    }
+    printf("%d %s %s %s %d %d\n", cont, ht_j->hash_jogos[i]->j->nome, ht_j->hash_jogos[i]->j->e1->nome, ht_j->hash_jogos[i]->j->e2->nome, ht_j->hash_jogos[i]->j->s1, ht_j->hash_jogos[i]->j->s2);
   }
 
   free(ptexto);
@@ -176,15 +158,11 @@ void comando_s(int cont, ht_jogos ht_j)
   i = procura_jogo_hash_jogos(ht_j, ptexto);
   if (i == (-1))
   {
-    {
-      printf("%d Jogo inexistente.\n", cont);
-    }
+    printf("%d Jogo inexistente.\n", cont);
   }
   else
   {
-    {
-      altera_scores(ht_j->hash_jogos[i], novo_s1, novo_s2);
-    }
+    altera_scores(ht_j->hash_jogos[i], novo_s1, novo_s2);
   }
 
   free(ptexto);
@@ -204,17 +182,13 @@ void comando_r(int cont, ht_jogos ht_j, lista_jogos lj)
   i = procura_jogo_hash_jogos(ht_j, ptexto);
   if (i == (-1))
   {
-    {
-      printf("%d Jogo inexistente.\n", cont);
-    }
+    printf("%d Jogo inexistente.\n", cont);
   }
   else
   {
-    {
-      diminui_vitorias(ht_j->hash_jogos[i]->j);
-      elimina_jogo_lista_jogos(lj, ht_j->hash_jogos[i]);
-      elimina_jogo_hash_jogos(ht_j, i);
-    }
+    diminui_vitorias(ht_j->hash_jogos[i]->j);
+    elimina_jogo_lista_jogos(lj, ht_j->hash_jogos[i]);
+    elimina_jogo_hash_jogos(ht_j, i);
   }
 
   free(ptexto);
@@ -228,12 +202,10 @@ void comando_g(int cont, lista_equipa le)
   }
   else
   {
-    {
-      procura_max_vitorias(le);
-      encontra_max_vitorias(cont, le);
-      le->max_vitorias = 0;
-      le->cont_equipas_max_vit = 0;
-    }
+    procura_max_vitorias(le);
+    encontra_max_vitorias(cont, le);
+    le->max_vitorias = 0;
+    le->cont_equipas_max_vit = 0;
   }
 
 }

@@ -95,11 +95,9 @@ void insereVetor(Vetor a, Equipa eq)
 {
   if (a->N == a->M)
   {
-    {
-      int novo_tam = a->M + a->M;
-      a->M = novo_tam;
-      a->vetor = realloc(a->vetor, novo_tam * (sizeof(struct equipa)));
-    }
+    int novo_tam = a->M + a->M;
+    a->M = novo_tam;
+    a->vetor = realloc(a->vetor, novo_tam * (sizeof(struct equipa)));
   }
   else
   {
@@ -215,10 +213,8 @@ void freeHT_eq(Hashtable_eq ht)
   {
     if (tab[i])
     {
-      {
-        free(tab[i]->nome);
-        free(tab[i]);
-      }
+      free(tab[i]->nome);
+      free(tab[i]);
     }
     else
     {

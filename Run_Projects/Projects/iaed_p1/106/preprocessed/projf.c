@@ -35,9 +35,7 @@ int in_encomenda(int idp, int ide)
   {
     if (lista_e[ide].lista_p_enc[i].idp == idp)
     {
-      {
-        return i;
-      }
+      return i;
     }
     else
     {
@@ -61,24 +59,20 @@ int ord_p_or_l(struct produto p2, struct produto p3, int k)
 {
   if (k == 0)
   {
-    {
-      return strcmp(p2.descricao, p3.descricao) < 0;
-    }
+    return strcmp(p2.descricao, p3.descricao) < 0;
   }
   else
   {
+    if (p2.preco == p3.preco)
     {
-      if (p2.preco == p3.preco)
-      {
-        return p2.idp < p3.idp;
-      }
-      else
-      {
-        
-      }
-
-      return p2.preco < p3.preco;
+      return p2.idp < p3.idp;
     }
+    else
+    {
+      
+    }
+
+    return p2.preco < p3.preco;
   }
 
 }
@@ -167,9 +161,7 @@ void q()
   }
   else
   {
-    {
-      lista_p[idp].stock += qtd;
-    }
+    lista_p[idp].stock += qtd;
   }
 
 }
@@ -221,21 +213,17 @@ void A()
         {
           if (in_encomenda(idp, ide) == (-1))
           {
-            {
-              lista_e[ide].lista_p_enc[lista_e[ide].n_p_d] = lista_p[idp];
-              lista_e[ide].lista_p_enc[lista_e[ide].n_p_d].stock = qtd;
-              lista_e[ide].peso += lista_p[idp].peso * qtd;
-              lista_p[idp].stock -= qtd;
-              lista_e[ide].n_p_d++;
-            }
+            lista_e[ide].lista_p_enc[lista_e[ide].n_p_d] = lista_p[idp];
+            lista_e[ide].lista_p_enc[lista_e[ide].n_p_d].stock = qtd;
+            lista_e[ide].peso += lista_p[idp].peso * qtd;
+            lista_p[idp].stock -= qtd;
+            lista_e[ide].n_p_d++;
           }
           else
           {
-            {
-              lista_e[ide].lista_p_enc[in_encomenda(idp, ide)].stock += qtd;
-              lista_e[ide].peso += lista_p[idp].peso * qtd;
-              lista_p[idp].stock -= qtd;
-            }
+            lista_e[ide].lista_p_enc[in_encomenda(idp, ide)].stock += qtd;
+            lista_e[ide].peso += lista_p[idp].peso * qtd;
+            lista_p[idp].stock -= qtd;
           }
 
         }
@@ -266,9 +254,7 @@ void r()
     }
     else
     {
-      {
-        lista_p[idp].stock -= qtd;
-      }
+      lista_p[idp].stock -= qtd;
     }
 
   }
@@ -295,11 +281,9 @@ void R()
     {
       if (in_encomenda(idp, ide) != (-1))
       {
-        {
-          lista_p[idp].stock += lista_e[ide].lista_p_enc[in_encomenda(idp, ide)].stock;
-          lista_e[ide].peso -= lista_e[ide].lista_p_enc[in_encomenda(idp, ide)].stock * lista_p[idp].peso;
-          lista_e[ide].lista_p_enc[in_encomenda(idp, ide)].stock = 0;
-        }
+        lista_p[idp].stock += lista_e[ide].lista_p_enc[in_encomenda(idp, ide)].stock;
+        lista_e[ide].peso -= lista_e[ide].lista_p_enc[in_encomenda(idp, ide)].stock * lista_p[idp].peso;
+        lista_e[ide].lista_p_enc[in_encomenda(idp, ide)].stock = 0;
       }
       else
       {
@@ -323,23 +307,21 @@ void C()
   }
   else
   {
+    lista_e[ide].preco = 0;
+    for (i = 0; i < lista_e[ide].n_p_d; i++)
     {
-      lista_e[ide].preco = 0;
-      for (i = 0; i < lista_e[ide].n_p_d; i++)
+      if (lista_e[ide].lista_p_enc[i].stock != 0)
       {
-        if (lista_e[ide].lista_p_enc[i].stock != 0)
-        {
-          lista_e[ide].preco += lista_e[ide].lista_p_enc[i].preco * lista_e[ide].lista_p_enc[i].stock;
-        }
-        else
-        {
-          
-        }
-
+        lista_e[ide].preco += lista_e[ide].lista_p_enc[i].preco * lista_e[ide].lista_p_enc[i].stock;
+      }
+      else
+      {
+        
       }
 
-      printf("Custo da encomenda %d %d.\n", ide, lista_e[ide].preco);
     }
+
+    printf("Custo da encomenda %d %d.\n", ide, lista_e[ide].preco);
   }
 
 }
@@ -357,24 +339,20 @@ void p()
   }
   else
   {
+    lista_p[idp].preco = n_preco;
+    for (j = 0; j < ne; j++)
     {
-      lista_p[idp].preco = n_preco;
-      for (j = 0; j < ne; j++)
+      if (in_encomenda(idp, j) >= 0)
       {
-        if (in_encomenda(idp, j) >= 0)
-        {
-          {
-            lista_e[j].lista_p_enc[in_encomenda(idp, j)].preco = n_preco;
-          }
-        }
-        else
-        {
-          
-        }
-
+        lista_e[j].lista_p_enc[in_encomenda(idp, j)].preco = n_preco;
+      }
+      else
+      {
+        
       }
 
     }
+
   }
 
 }
@@ -399,15 +377,11 @@ void E()
     {
       if (in_encomenda(idp, ide) != (-1))
       {
-        {
-          printf("%s %d.\n", lista_p[idp].descricao, lista_e[ide].lista_p_enc[in_encomenda(idp, ide)].stock);
-        }
+        printf("%s %d.\n", lista_p[idp].descricao, lista_e[ide].lista_p_enc[in_encomenda(idp, ide)].stock);
       }
       else
       {
-        {
-          printf("%s %d.\n", lista_p[idp].descricao, 0);
-        }
+        printf("%s %d.\n", lista_p[idp].descricao, 0);
       }
 
     }
@@ -429,27 +403,16 @@ void m()
   }
   else
   {
+    max = 0;
+    ide = -1;
+    for (a = 0; a < ne; a++)
     {
-      max = 0;
-      ide = -1;
-      for (a = 0; a < ne; a++)
+      if (in_encomenda(idp, a) != (-1))
       {
-        if (in_encomenda(idp, a) != (-1))
+        if (lista_e[a].lista_p_enc[in_encomenda(idp, a)].stock > max)
         {
-          {
-            if (lista_e[a].lista_p_enc[in_encomenda(idp, a)].stock > max)
-            {
-              {
-                max = lista_e[a].lista_p_enc[in_encomenda(idp, a)].stock;
-                ide = a;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
+          max = lista_e[a].lista_p_enc[in_encomenda(idp, a)].stock;
+          ide = a;
         }
         else
         {
@@ -457,19 +420,22 @@ void m()
         }
 
       }
-
-      if (ide != (-1))
-      {
-        {
-          printf("Maximo produto %d %d %d.\n", idp, ide, max);
-        }
-      }
       else
       {
         
       }
 
     }
+
+    if (ide != (-1))
+    {
+      printf("Maximo produto %d %d %d.\n", idp, ide, max);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -502,26 +468,24 @@ void L()
   }
   else
   {
+    for (i = 0; i < lista_e[ide].n_p_d; i++)
+      lista_ord[i] = lista_e[ide].lista_p_enc[i];
+
+    q_s(lista_ord, 0, lista_e[ide].n_p_d - 1, k);
+    printf("Encomenda %d\n", ide);
+    for (i = 0; i < lista_e[ide].n_p_d; i++)
     {
-      for (i = 0; i < lista_e[ide].n_p_d; i++)
-        lista_ord[i] = lista_e[ide].lista_p_enc[i];
-
-      q_s(lista_ord, 0, lista_e[ide].n_p_d - 1, k);
-      printf("Encomenda %d\n", ide);
-      for (i = 0; i < lista_e[ide].n_p_d; i++)
+      if (lista_ord[i].stock > 0)
       {
-        if (lista_ord[i].stock > 0)
-        {
-          printf("* %s %d %d\n", lista_ord[i].descricao, lista_ord[i].preco, lista_ord[i].stock);
-        }
-        else
-        {
-          
-        }
-
+        printf("* %s %d %d\n", lista_ord[i].descricao, lista_ord[i].preco, lista_ord[i].stock);
+      }
+      else
+      {
+        
       }
 
     }
+
   }
 
 }

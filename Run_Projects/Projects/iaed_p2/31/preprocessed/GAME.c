@@ -80,11 +80,9 @@ Game *add_order_game(Game *order_team, char *name, team *A, team *B, int sA, int
   Game *aux = order_team;
   if (!new)
   {
-    {
-      new = create_game(name, A, B, sA, sB);
-      new->NL = nl_g;
-      return new;
-    }
+    new = create_game(name, A, B, sA, sB);
+    new->NL = nl_g;
+    return new;
   }
   else
   {
@@ -93,11 +91,9 @@ Game *add_order_game(Game *order_team, char *name, team *A, team *B, int sA, int
 
   if (nl_g < new->NL)
   {
-    {
-      new = push_game(name, A, B, sA, sB, new);
-      new->NL = nl_g;
-      return new;
-    }
+    new = push_game(name, A, B, sA, sB, new);
+    new->NL = nl_g;
+    return new;
   }
   else
   {
@@ -109,12 +105,10 @@ Game *add_order_game(Game *order_team, char *name, team *A, team *B, int sA, int
   {
     if (nl_g < new->NL)
     {
-      {
-        new = push_game(name, A, B, sA, sB, new);
-        new->NL = nl_g;
-        aux->next = new;
-        return order_team;
-      }
+      new = push_game(name, A, B, sA, sB, new);
+      new->NL = nl_g;
+      aux->next = new;
+      return order_team;
     }
     else
     {

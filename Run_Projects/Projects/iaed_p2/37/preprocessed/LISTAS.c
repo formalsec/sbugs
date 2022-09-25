@@ -21,10 +21,8 @@ void put_team(pTeam pEquipa, tlink *pLThead, tlink *pLTtail)
   }
   else
   {
-    {
-      LTtail->next = NEWTeam(pEquipa, LTtail->next);
-      *pLTtail = LTtail->next;
-    }
+    LTtail->next = NEWTeam(pEquipa, LTtail->next);
+    *pLTtail = LTtail->next;
   }
 
 }
@@ -63,10 +61,8 @@ void put_game(pGame pJogo, glink *pLGhead, glink *pLGtail)
   }
   else
   {
-    {
-      LGtail->next = NEWGame(pJogo, LGtail->next, LGtail);
-      *pLGtail = LGtail->next;
-    }
+    LGtail->next = NEWGame(pJogo, LGtail->next, LGtail);
+    *pLGtail = LGtail->next;
   }
 
 }

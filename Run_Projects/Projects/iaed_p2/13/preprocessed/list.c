@@ -19,11 +19,9 @@ void add(item game)
   hashInsertGame(game);
   if (head == 0)
   {
-    {
-      head = new;
-      tail = new;
-      return;
-    }
+    head = new;
+    tail = new;
+    return;
   }
   else
   {
@@ -65,28 +63,26 @@ void listRemove(char *str)
   for (aux = head; aux != 0; aux = aux->next)
     if (!strcmp(str, getName(aux->game)))
   {
+    if (aux->prev == 0)
     {
-      if (aux->prev == 0)
-      {
-        head = aux->next;
-      }
-      else
-      {
-        aux->prev->next = aux->next;
-      }
-
-      if (aux->next == 0)
-      {
-        tail = aux->prev;
-      }
-      else
-      {
-        aux->next->prev = aux->prev;
-      }
-
-      free(aux);
-      break;
+      head = aux->next;
     }
+    else
+    {
+      aux->prev->next = aux->next;
+    }
+
+    if (aux->next == 0)
+    {
+      tail = aux->prev;
+    }
+    else
+    {
+      aux->next->prev = aux->prev;
+    }
+
+    free(aux);
+    break;
   }
   else
   {

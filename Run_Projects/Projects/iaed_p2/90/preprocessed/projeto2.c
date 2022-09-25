@@ -112,10 +112,8 @@ void add_game(t_node *t_teams_n, t_node **t_teams_v, t_node **t_games, list *l_g
   getchar();
   if (tree_lookup(*t_games, cmp_game_str, g_name) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", i_l);
-      return;
-    }
+    printf("%d Jogo existente.\n", i_l);
+    return;
   }
   else
   {
@@ -126,10 +124,8 @@ void add_game(t_node *t_teams_n, t_node **t_teams_v, t_node **t_games, list *l_g
   t2 = tree_lookup(t_teams_n, cmp_team_str, t2_name);
   if ((t1 == 0) || (t2 == 0))
   {
-    {
-      printf("%d Equipa inexistente.\n", i_l);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", i_l);
+    return;
   }
   else
   {
@@ -177,10 +173,8 @@ void add_team(t_node **t_teams_n, t_node **t_teams_v, int in_line)
   getchar();
   if (tree_lookup(*t_teams_n, cmp_team_str, t_name) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", in_line);
-      return;
-    }
+    printf("%d Equipa existente.\n", in_line);
+    return;
   }
   else
   {
@@ -222,10 +216,8 @@ void search_game(t_node *t_games, int in_line)
   g_nd = tree_lookup(t_games, cmp_game_str, g_name);
   if (g_nd == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", in_line);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", in_line);
+    return;
   }
   else
   {
@@ -250,10 +242,8 @@ void search_team(t_node *t_teams_n, int in_line)
   t = tree_lookup(t_teams_n, cmp_team_str, t_name);
   if (t == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", in_line);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", in_line);
+    return;
   }
   else
   {
@@ -279,10 +269,8 @@ void remove_game(t_node **t_games, t_node **t_teams_v, list **l, int in_line)
   g_nd = tree_lookup(*t_games, cmp_game_str, g_name);
   if (g_nd == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", in_line);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", in_line);
+    return;
   }
   else
   {
@@ -332,10 +320,8 @@ void change_score(t_node *t_games, t_node **t_teams_v, int in_line)
   g_nd = tree_lookup(t_games, cmp_game_str, g_name);
   if (g_nd == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", in_line);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", in_line);
+    return;
   }
   else
   {

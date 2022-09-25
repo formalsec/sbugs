@@ -157,18 +157,14 @@ void formats_input()
   {
     if (c == ':')
     {
-      {
-        c = ' ';
-        new_str[i2] = c;
-        i2++;
-      }
+      c = ' ';
+      new_str[i2] = c;
+      i2++;
     }
     else
     {
-      {
-        new_str[i2] = c;
-        i2++;
-      }
+      new_str[i2] = c;
+      i2++;
     }
 
   }
@@ -182,15 +178,11 @@ pTeam search2(char *name2)
   while (st[i] != 0)
     if (strcmp(st[i]->name, name2) == 0)
   {
-    {
-      return st[i];
-    }
+    return st[i];
   }
   else
   {
-    {
-      i = (i + 1) % M;
-    }
+    i = (i + 1) % M;
   }
 
 
@@ -210,15 +202,11 @@ void lookup_team()
   team3 = search2(team2);
   if (team3 == 0)
   {
-    {
-      printf("NL Equipa inexistente.\n");
-    }
+    printf("NL Equipa inexistente.\n");
   }
   else
   {
-    {
-      printf("NL %s %lu\n", team3->name, team3->nwinner);
-    }
+    printf("NL %s %lu\n", team3->name, team3->nwinner);
   }
 
 }
@@ -261,14 +249,10 @@ void print_table()
   {
     if (st1[i] == 0)
     {
-      {
-      }
     }
     else
     {
-      {
-        printf("NL %s %s %s %lu %lu\n", st1[i]->name2, st1[i]->hteam, st1[i]->ateam, st1[i]->hscore, st1[i]->ascore);
-      }
+      printf("NL %s %s %s %lu %lu\n", st1[i]->name2, st1[i]->hteam, st1[i]->ateam, st1[i]->hscore, st1[i]->ascore);
     }
 
   }

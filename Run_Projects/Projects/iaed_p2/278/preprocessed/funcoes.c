@@ -48,43 +48,35 @@ void adiciona_novo_jogo(lista *ls, link_j *heads_j, link_e *heads_e, int nl)
   getchar();
   if (!pesquisa_jogo(heads_j, buffer_nome))
   {
+    equipa1 = pesquisa_equipa(heads_e, buffer_equipa1);
+    equipa2 = pesquisa_equipa(heads_e, buffer_equipa2);
+    if (equipa1 && equipa2)
     {
-      equipa1 = pesquisa_equipa(heads_e, buffer_equipa1);
-      equipa2 = pesquisa_equipa(heads_e, buffer_equipa2);
-      if (equipa1 && equipa2)
+      i = hash(buffer_nome, 1000);
+      heads_j[i] = insere_jogo_inicio(ls, heads_j[i], buffer_nome, buffer_equipa1, buffer_equipa2, p1, p2);
+      if (p1 > p2)
       {
-        {
-          i = hash(buffer_nome, 1000);
-          heads_j[i] = insere_jogo_inicio(ls, heads_j[i], buffer_nome, buffer_equipa1, buffer_equipa2, p1, p2);
-          if (p1 > p2)
-          {
-            {
-              equipa1->e.vitorias++;
-            }
-          }
-          else
-          {
-            if (p1 < p2)
-            {
-              {
-                equipa2->e.vitorias++;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-        }
+        equipa1->e.vitorias++;
       }
       else
       {
-        printf("%d Equipa inexistente.\n", nl);
+        if (p1 < p2)
+        {
+          equipa2->e.vitorias++;
+        }
+        else
+        {
+          
+        }
+
       }
 
     }
+    else
+    {
+      printf("%d Equipa inexistente.\n", nl);
+    }
+
   }
   else
   {
@@ -107,11 +99,9 @@ void adiciona_nova_equipa(link_e *heads_e, int *contador_equipas, int nl)
   getchar();
   if (!pesquisa_equipa(heads_e, buffer_nome))
   {
-    {
-      i = hash(buffer_nome, 1000);
-      heads_e[i] = insere_equipa_inicio(heads_e[i], buffer_nome);
-      *contador_equipas = (*contador_equipas) + 1;
-    }
+    i = hash(buffer_nome, 1000);
+    heads_e[i] = insere_equipa_inicio(heads_e[i], buffer_nome);
+    *contador_equipas = (*contador_equipas) + 1;
   }
   else
   {
@@ -168,9 +158,7 @@ void procura_equipa(link_e *heads_e, int nl)
   equipa = pesquisa_equipa(heads_e, buffer_nome);
   if (equipa)
   {
-    {
-      printf("%d %s %d\n", nl, buffer_nome, equipa->e.vitorias);
-    }
+    printf("%d %s %d\n", nl, buffer_nome, equipa->e.vitorias);
   }
   else
   {
@@ -197,47 +185,39 @@ void apaga_jogo(link_j *heads_j, link_e *heads_e, lista *ls, int nl)
   t = pesquisa_jogo(heads_j, buffer_nome);
   if (t)
   {
+    if (t->j->p1 > t->j->p2)
     {
-      if (t->j->p1 > t->j->p2)
+      equipa = pesquisa_equipa(heads_e, t->j->equipa1);
+      equipa->e.vitorias--;
+    }
+    else
+    {
+      if (t->j->p1 < t->j->p2)
       {
-        {
-          equipa = pesquisa_equipa(heads_e, t->j->equipa1);
-          equipa->e.vitorias--;
-        }
-      }
-      else
-      {
-        if (t->j->p1 < t->j->p2)
-        {
-          {
-            equipa = pesquisa_equipa(heads_e, t->j->equipa2);
-            equipa->e.vitorias--;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      for (n = ls->head; n; n = n->next)
-        if (strcmp(n->j->nome, buffer_nome) == 0)
-      {
-        {
-          remove_node(ls, n);
-          break;
-        }
+        equipa = pesquisa_equipa(heads_e, t->j->equipa2);
+        equipa->e.vitorias--;
       }
       else
       {
         
       }
 
-
-      i = hash(buffer_nome, 1000);
-      heads_j[i] = apaga_node_jogo(heads_j[i], buffer_nome);
     }
+
+    for (n = ls->head; n; n = n->next)
+      if (strcmp(n->j->nome, buffer_nome) == 0)
+    {
+      remove_node(ls, n);
+      break;
+    }
+    else
+    {
+      
+    }
+
+
+    i = hash(buffer_nome, 1000);
+    heads_j[i] = apaga_node_jogo(heads_j[i], buffer_nome);
   }
   else
   {
@@ -267,72 +247,33 @@ void altera_score(link_j *heads_j, link_e *heads_e, int nl)
   t = pesquisa_jogo(heads_j, buffer_nome);
   if (t)
   {
+    equipa1 = pesquisa_equipa(heads_e, t->j->equipa1);
+    equipa2 = pesquisa_equipa(heads_e, t->j->equipa2);
+    if ((t->j->p1 > t->j->p2) && (p2 > p1))
     {
-      equipa1 = pesquisa_equipa(heads_e, t->j->equipa1);
-      equipa2 = pesquisa_equipa(heads_e, t->j->equipa2);
-      if ((t->j->p1 > t->j->p2) && (p2 > p1))
+      equipa1->e.vitorias--;
+      equipa2->e.vitorias++;
+    }
+    else
+    {
+      if ((t->j->p1 < t->j->p2) && (p2 < p1))
       {
-        {
-          equipa1->e.vitorias--;
-          equipa2->e.vitorias++;
-        }
+        equipa1->e.vitorias++;
+        equipa2->e.vitorias--;
       }
       else
       {
-        if ((t->j->p1 < t->j->p2) && (p2 < p1))
+        if (p1 == p2)
         {
+          if (t->j->p1 > t->j->p2)
           {
-            equipa1->e.vitorias++;
-            equipa2->e.vitorias--;
-          }
-        }
-        else
-        {
-          if (p1 == p2)
-          {
-            {
-              if (t->j->p1 > t->j->p2)
-              {
-                equipa1->e.vitorias--;
-              }
-              else
-              {
-                if (t->j->p1 < t->j->p2)
-                {
-                  equipa2->e.vitorias--;
-                }
-                else
-                {
-                  
-                }
-
-              }
-
-            }
+            equipa1->e.vitorias--;
           }
           else
           {
-            if (t->j->p1 == t->j->p2)
+            if (t->j->p1 < t->j->p2)
             {
-              {
-                if (p1 < p2)
-                {
-                  equipa2->e.vitorias++;
-                }
-                else
-                {
-                  if (p1 > p2)
-                  {
-                    equipa1->e.vitorias++;
-                  }
-                  else
-                  {
-                    
-                  }
-
-                }
-
-              }
+              equipa2->e.vitorias--;
             }
             else
             {
@@ -342,12 +283,41 @@ void altera_score(link_j *heads_j, link_e *heads_e, int nl)
           }
 
         }
+        else
+        {
+          if (t->j->p1 == t->j->p2)
+          {
+            if (p1 < p2)
+            {
+              equipa2->e.vitorias++;
+            }
+            else
+            {
+              if (p1 > p2)
+              {
+                equipa1->e.vitorias++;
+              }
+              else
+              {
+                
+              }
+
+            }
+
+          }
+          else
+          {
+            
+          }
+
+        }
 
       }
 
-      t->j->p1 = p1;
-      t->j->p2 = p2;
     }
+
+    t->j->p1 = p1;
+    t->j->p2 = p2;
   }
   else
   {
@@ -389,10 +359,8 @@ void equipa_vitorias(link_e *heads_e, int *contador_equipas, int nl)
     {
       if (equipa->e.vitorias == max)
       {
-        {
-          arr[conta_equipas] = equipa->e.nome;
-          conta_equipas++;
-        }
+        arr[conta_equipas] = equipa->e.nome;
+        conta_equipas++;
       }
       else
       {

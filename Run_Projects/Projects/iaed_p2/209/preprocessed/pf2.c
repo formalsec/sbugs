@@ -45,9 +45,7 @@ link lookup(link head, char *text)
   {
     if (strcmp(t->name, text) == 0)
     {
-      {
-        return t;
-      }
+      return t;
     }
     else
     {
@@ -66,9 +64,7 @@ link2 lookup2(link2 head, char *text)
   {
     if (strcmp(t->name, text) == 0)
     {
-      {
-        return t;
-      }
+      return t;
     }
     else
     {
@@ -105,9 +101,7 @@ void printgames(link2 head, int NL)
   link2 x = head;
   if (head == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -126,47 +120,37 @@ int delete_game(link2 head, char *text)
   {
     if (strcmp(t->name, text) == 0)
     {
+      if (t == head)
       {
-        if (t == head)
-        {
-          {
-            head = t->next;
-          }
-        }
-        else
-        {
-          {
-            prev->next = t->next;
-          }
-        }
-
-        if (t->score[0] > t->score[1])
-        {
-          {
-            t->team1->victories--;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if (t->score[0] < t->score[1])
-        {
-          {
-            t->team2->victories--;
-          }
-        }
-        else
-        {
-          
-        }
-
-        t->next = 0;
-        free(t->name);
-        free(t);
-        return 0;
+        head = t->next;
       }
+      else
+      {
+        prev->next = t->next;
+      }
+
+      if (t->score[0] > t->score[1])
+      {
+        t->team1->victories--;
+      }
+      else
+      {
+        
+      }
+
+      if (t->score[0] < t->score[1])
+      {
+        t->team2->victories--;
+      }
+      else
+      {
+        
+      }
+
+      t->next = 0;
+      free(t->name);
+      free(t);
+      return 0;
     }
     else
     {
@@ -240,10 +224,8 @@ void build_list2(int max, int size, link head, int NL)
   {
     if (t->victories == max)
     {
-      {
-        a[i] = t->name;
-        i++;
-      }
+      a[i] = t->name;
+      i++;
     }
     else
     {
@@ -258,11 +240,9 @@ void build_list2(int max, int size, link head, int NL)
     for (j = i + 1; j < size; j++)
       if (strcmp(a[i], a[j]) > 0)
     {
-      {
-        temp = a[i];
-        a[i] = a[j];
-        a[j] = temp;
-      }
+      temp = a[i];
+      a[i] = a[j];
+      a[j] = temp;
     }
     else
     {
@@ -289,18 +269,14 @@ void build_list(link head, int NL)
   {
     if (t->victories > max)
     {
-      {
-        size = 1;
-        max = t->victories;
-      }
+      size = 1;
+      max = t->victories;
     }
     else
     {
       if (t->victories == max)
       {
-        {
-          size++;
-        }
+        size++;
       }
       else
       {
@@ -313,9 +289,7 @@ void build_list(link head, int NL)
 
   if (size < 1)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -357,8 +331,6 @@ int main()
     space = getchar();
     if (space == '\n')
     {
-      {
-      }
     }
     else
     {
@@ -367,234 +339,182 @@ int main()
 
     if (choice == 'A')
     {
+      ptr = get_name();
+      if (lookup(head, ptr) == 0)
       {
-        ptr = get_name();
-        if (lookup(head, ptr) == 0)
-        {
-          {
-            head = insert_team(head, ptr);
-          }
-        }
-        else
-        {
-          {
-            printf("%d Equipa existente.\n", NL);
-          }
-        }
-
-        free(ptr);
+        head = insert_team(head, ptr);
       }
+      else
+      {
+        printf("%d Equipa existente.\n", NL);
+      }
+
+      free(ptr);
     }
     else
     {
       if (choice == 'P')
       {
+        ptr = get_name();
+        temp = lookup(head, ptr);
+        if (temp == 0)
         {
-          ptr = get_name();
-          temp = lookup(head, ptr);
-          if (temp == 0)
-          {
-            {
-              printf("%d Equipa inexistente.\n", NL);
-            }
-          }
-          else
-          {
-            {
-              printf("%d %s %d\n", NL, temp->name, temp->victories);
-            }
-          }
-
-          free(ptr);
+          printf("%d Equipa inexistente.\n", NL);
         }
+        else
+        {
+          printf("%d %s %d\n", NL, temp->name, temp->victories);
+        }
+
+        free(ptr);
       }
       else
       {
         if (choice == 'a')
         {
+          ptr = get_name();
+          ptr1 = get_name();
+          ptr2 = get_name();
+          s1 = getscore();
+          s2 = getscore();
+          temp = lookup(head, ptr1);
+          temp2 = lookup(head, ptr2);
+          if (lookup2(head2, ptr) != 0)
           {
-            ptr = get_name();
-            ptr1 = get_name();
-            ptr2 = get_name();
-            s1 = getscore();
-            s2 = getscore();
-            temp = lookup(head, ptr1);
-            temp2 = lookup(head, ptr2);
-            if (lookup2(head2, ptr) != 0)
+            printf("%d Jogo existente.\n", NL);
+          }
+          else
+          {
+            if ((temp == 0) || (temp2 == 0))
             {
-              {
-                printf("%d Jogo existente.\n", NL);
-              }
+              printf("%d Equipa inexistente.\n", NL);
             }
             else
             {
-              if ((temp == 0) || (temp2 == 0))
+              head2 = insert_game(head2, ptr, s1, s2, temp, temp2);
+              if (s1 > s2)
               {
-                {
-                  printf("%d Equipa inexistente.\n", NL);
-                }
+                temp->victories++;
               }
               else
               {
+                if (s1 < s2)
                 {
-                  head2 = insert_game(head2, ptr, s1, s2, temp, temp2);
-                  if (s1 > s2)
-                  {
-                    {
-                      temp->victories++;
-                    }
-                  }
-                  else
-                  {
-                    if (s1 < s2)
-                    {
-                      {
-                        temp2->victories++;
-                      }
-                    }
-                    else
-                    {
-                      
-                    }
-
-                  }
-
+                  temp2->victories++;
                 }
+                else
+                {
+                  
+                }
+
               }
 
             }
 
-            free(ptr);
-            free(ptr1);
-            free(ptr2);
           }
+
+          free(ptr);
+          free(ptr1);
+          free(ptr2);
         }
         else
         {
           if (choice == 'p')
           {
+            ptr = get_name();
+            tempg = lookup2(head2, ptr);
+            if (tempg == 0)
             {
-              ptr = get_name();
-              tempg = lookup2(head2, ptr);
-              if (tempg == 0)
-              {
-                {
-                  printf("%d Jogo inexistente.\n", NL);
-                }
-              }
-              else
-              {
-                {
-                  printf("%d %s %s %s %d %d\n", NL, tempg->name, tempg->team1->name, tempg->team2->name, tempg->score[0], tempg->score[1]);
-                }
-              }
-
-              free(ptr);
+              printf("%d Jogo inexistente.\n", NL);
             }
+            else
+            {
+              printf("%d %s %s %s %d %d\n", NL, tempg->name, tempg->team1->name, tempg->team2->name, tempg->score[0], tempg->score[1]);
+            }
+
+            free(ptr);
           }
           else
           {
             if (choice == 'l')
             {
-              {
-                printgames(head2, NL);
-              }
+              printgames(head2, NL);
             }
             else
             {
               if (choice == 'r')
               {
+                ptr = get_name();
+                if (delete_game(head2, ptr) == 1)
                 {
-                  ptr = get_name();
-                  if (delete_game(head2, ptr) == 1)
-                  {
-                    {
-                      printf("%d Jogo inexistente.\n", NL);
-                    }
-                  }
-                  else
-                  {
-                    
-                  }
-
-                  free(ptr);
+                  printf("%d Jogo inexistente.\n", NL);
                 }
+                else
+                {
+                  
+                }
+
+                free(ptr);
               }
               else
               {
                 if (choice == 's')
                 {
+                  ptr = get_name();
+                  s1 = getscore();
+                  s2 = getscore();
+                  tempg = lookup2(head2, ptr);
+                  if (tempg == 0)
                   {
-                    ptr = get_name();
-                    s1 = getscore();
-                    s2 = getscore();
-                    tempg = lookup2(head2, ptr);
-                    if (tempg == 0)
+                    printf("%d Jogo inexistente.\n", NL);
+                  }
+                  else
+                  {
+                    if (tempg->score[0] > tempg->score[1])
                     {
-                      {
-                        printf("%d Jogo inexistente.\n", NL);
-                      }
+                      tempg->team1->victories--;
                     }
                     else
                     {
+                      if (tempg->score[0] < tempg->score[1])
                       {
-                        if (tempg->score[0] > tempg->score[1])
-                        {
-                          {
-                            tempg->team1->victories--;
-                          }
-                        }
-                        else
-                        {
-                          if (tempg->score[0] < tempg->score[1])
-                          {
-                            {
-                              tempg->team2->victories--;
-                            }
-                          }
-                          else
-                          {
-                            
-                          }
-
-                        }
-
-                        tempg->score[0] = s1;
-                        tempg->score[1] = s2;
-                        if (s1 > s2)
-                        {
-                          {
-                            tempg->team1->victories++;
-                          }
-                        }
-                        else
-                        {
-                          if (s1 < s2)
-                          {
-                            {
-                              tempg->team2->victories++;
-                            }
-                          }
-                          else
-                          {
-                            
-                          }
-
-                        }
-
+                        tempg->team2->victories--;
                       }
+                      else
+                      {
+                        
+                      }
+
                     }
 
-                    free(ptr);
+                    tempg->score[0] = s1;
+                    tempg->score[1] = s2;
+                    if (s1 > s2)
+                    {
+                      tempg->team1->victories++;
+                    }
+                    else
+                    {
+                      if (s1 < s2)
+                      {
+                        tempg->team2->victories++;
+                      }
+                      else
+                      {
+                        
+                      }
+
+                    }
+
                   }
+
+                  free(ptr);
                 }
                 else
                 {
                   if (choice == 'g')
                   {
-                    {
-                      build_list(head, NL);
-                    }
+                    build_list(head, NL);
                   }
                   else
                   {

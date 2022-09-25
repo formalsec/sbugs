@@ -48,28 +48,26 @@ void cmd_a(int nl, pLista ls_jg, pTabEquipas ht_eq, pTabJogos ht_jg)
     }
     else
     {
+      jg_aux = novo_jogo(aux, eq_aux1, eq_aux2, golos1, golos2);
+      insere_jg(jg_aux, ht_jg);
+      adiciona_fim(ls_jg, jg_aux);
+      if (golos1 > golos2)
       {
-        jg_aux = novo_jogo(aux, eq_aux1, eq_aux2, golos1, golos2);
-        insere_jg(jg_aux, ht_jg);
-        adiciona_fim(ls_jg, jg_aux);
-        if (golos1 > golos2)
+        eq_aux1->jogos_ganhos += 1;
+      }
+      else
+      {
+        if (golos2 > golos1)
         {
-          eq_aux1->jogos_ganhos += 1;
+          eq_aux2->jogos_ganhos += 1;
         }
         else
         {
-          if (golos2 > golos1)
-          {
-            eq_aux2->jogos_ganhos += 1;
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
+
     }
 
   }
@@ -87,11 +85,9 @@ void cmd_A(int nl, pTabEquipas ht_eq)
   aux[10 - 1] = '\0';
   if (procura_eq(aux, ht_eq) == 0)
   {
-    {
-      pEquipa eq_aux;
-      eq_aux = nova_equipa(aux);
-      insere_eq(eq_aux, ht_eq);
-    }
+    pEquipa eq_aux;
+    eq_aux = nova_equipa(aux);
+    insere_eq(eq_aux, ht_eq);
   }
   else
   {
@@ -128,10 +124,8 @@ void cmd_p(int nl, pTabJogos ht_jg)
   }
   else
   {
-    {
-      printf("%d ", nl);
-      imprime_jogo(jg_aux);
-    }
+    printf("%d ", nl);
+    imprime_jogo(jg_aux);
   }
 
 }
@@ -153,10 +147,8 @@ void cmd_P(int nl, pTabEquipas ht_eq)
   }
   else
   {
-    {
-      printf("%d ", nl);
-      imprime_equipa(eq_aux);
-    }
+    printf("%d ", nl);
+    imprime_equipa(eq_aux);
   }
 
 }
@@ -178,28 +170,26 @@ void cmd_r(int nl, pLista ls_jg, pTabJogos ht_jg)
   }
   else
   {
+    if (jg_aux->golos1 > jg_aux->golos2)
     {
-      if (jg_aux->golos1 > jg_aux->golos2)
-      {
-        jg_aux->equipa1->jogos_ganhos -= 1;
-      }
-      else
-      {
-        
-      }
-
-      if (jg_aux->golos2 > jg_aux->golos1)
-      {
-        jg_aux->equipa2->jogos_ganhos -= 1;
-      }
-      else
-      {
-        
-      }
-
-      rm_no(ls_jg, jg_aux);
-      apaga_jg(aux, ht_jg);
+      jg_aux->equipa1->jogos_ganhos -= 1;
     }
+    else
+    {
+      
+    }
+
+    if (jg_aux->golos2 > jg_aux->golos1)
+    {
+      jg_aux->equipa2->jogos_ganhos -= 1;
+    }
+    else
+    {
+      
+    }
+
+    rm_no(ls_jg, jg_aux);
+    apaga_jg(aux, ht_jg);
   }
 
 }
@@ -225,46 +215,44 @@ void cmd_s(int nl, pTabJogos ht_jg)
   }
   else
   {
+    if (jg_aux->golos1 > jg_aux->golos2)
     {
-      if (jg_aux->golos1 > jg_aux->golos2)
-      {
-        jg_aux->equipa1->jogos_ganhos -= 1;
-      }
-      else
-      {
-        
-      }
-
-      if (jg_aux->golos2 > jg_aux->golos1)
-      {
-        jg_aux->equipa2->jogos_ganhos -= 1;
-      }
-      else
-      {
-        
-      }
-
-      if (golos1 > golos2)
-      {
-        jg_aux->equipa1->jogos_ganhos += 1;
-      }
-      else
-      {
-        
-      }
-
-      if (golos2 > golos1)
-      {
-        jg_aux->equipa2->jogos_ganhos += 1;
-      }
-      else
-      {
-        
-      }
-
-      jg_aux->golos1 = golos1;
-      jg_aux->golos2 = golos2;
+      jg_aux->equipa1->jogos_ganhos -= 1;
     }
+    else
+    {
+      
+    }
+
+    if (jg_aux->golos2 > jg_aux->golos1)
+    {
+      jg_aux->equipa2->jogos_ganhos -= 1;
+    }
+    else
+    {
+      
+    }
+
+    if (golos1 > golos2)
+    {
+      jg_aux->equipa1->jogos_ganhos += 1;
+    }
+    else
+    {
+      
+    }
+
+    if (golos2 > golos1)
+    {
+      jg_aux->equipa2->jogos_ganhos += 1;
+    }
+    else
+    {
+      
+    }
+
+    jg_aux->golos1 = golos1;
+    jg_aux->golos2 = golos2;
   }
 
 }
@@ -286,30 +274,26 @@ void cmd_g(int nl, pTabEquipas ht_eq)
 
   if (ht_eq->N > 0)
   {
+    int j = 0;
+    char **nomes = malloc((sizeof(char *)) * 100);
+    printf("%d Melhores %d\n", nl, max);
+    for (i = 0; i < ht_eq->max; i++)
+      if ((ht_eq->equipas[i] != 0) && (ht_eq->equipas[i]->jogos_ganhos == max))
     {
-      int j = 0;
-      char **nomes = malloc((sizeof(char *)) * 100);
-      printf("%d Melhores %d\n", nl, max);
-      for (i = 0; i < ht_eq->max; i++)
-        if ((ht_eq->equipas[i] != 0) && (ht_eq->equipas[i]->jogos_ganhos == max))
-      {
-        {
-          nomes[j] = ht_eq->equipas[i]->nome;
-          j++;
-        }
-      }
-      else
-      {
-        
-      }
-
-
-      qsort(nomes, j, sizeof(char *), compara);
-      for (i = 0; i < j; i++)
-        printf("%d * %s\n", nl, nomes[i]);
-
-      free(nomes);
+      nomes[j] = ht_eq->equipas[i]->nome;
+      j++;
     }
+    else
+    {
+      
+    }
+
+
+    qsort(nomes, j, sizeof(char *), compara);
+    for (i = 0; i < j; i++)
+      printf("%d * %s\n", nl, nomes[i]);
+
+    free(nomes);
   }
   else
   {

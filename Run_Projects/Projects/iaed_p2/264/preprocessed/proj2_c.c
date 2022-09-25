@@ -27,12 +27,10 @@ int get_higher_score(list_e *ls_e, list_e *ls_v)
   {
     if (t->jogos_ganhos > maior)
     {
-      {
-        for (t1 = ls_v->head; t1; t1 = ls_v->head)
-          delete_e(ls_v, t1);
+      for (t1 = ls_v->head; t1; t1 = ls_v->head)
+        delete_e(ls_v, t1);
 
-        maior = t->jogos_ganhos;
-      }
+      maior = t->jogos_ganhos;
     }
     else
     {
@@ -41,9 +39,7 @@ int get_higher_score(list_e *ls_e, list_e *ls_v)
 
     if (t->jogos_ganhos == maior)
     {
-      {
-        insertEnd_e(ls_v, t->nome);
-      }
+      insertEnd_e(ls_v, t->nome);
     }
     else
     {

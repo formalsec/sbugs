@@ -17,9 +17,7 @@ ItemTeam search_list_team(LinkTeam head, char *name)
   {
     if (strcmp(t->item->name, name) == 0)
     {
-      {
-        return t->item;
-      }
+      return t->item;
     }
     else
     {
@@ -37,9 +35,7 @@ void destroy_list_team(LinkTeam head)
   LinkTeam aux;
   if (head == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {

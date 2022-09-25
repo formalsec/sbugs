@@ -43,19 +43,15 @@ int main()
   {
     if (command != 'N')
     {
+      if (command != 'l')
       {
-        if (command != 'l')
-        {
-          {
-            getchar();
-          }
-        }
-        else
-        {
-          
-        }
-
+        getchar();
       }
+      else
+      {
+        
+      }
+
     }
     else
     {
@@ -106,10 +102,8 @@ int main()
       case 'q':
         if (id_occupied <= atoi(i0))
       {
-        {
-          printf("Impossivel adicionar produto %s ao stock. Produto inexistente.\n", i0);
-          break;
-        }
+        printf("Impossivel adicionar produto %s ao stock. Produto inexistente.\n", i0);
+        break;
       }
       else
       {
@@ -128,10 +122,8 @@ int main()
       case 'A':
         if (n_orders <= atoi(i0))
       {
-        {
-          printf("Impossivel adicionar produto %s a encomenda %s. Encomenda inexistente.\n", i1, i0);
-          break;
-        }
+        printf("Impossivel adicionar produto %s a encomenda %s. Encomenda inexistente.\n", i1, i0);
+        break;
       }
       else
       {
@@ -140,10 +132,8 @@ int main()
 
         if (id_occupied <= atoi(i1))
       {
-        {
-          printf("Impossivel adicionar produto %s a encomenda %s. Produto inexistente.\n", i1, i0);
-          break;
-        }
+        printf("Impossivel adicionar produto %s a encomenda %s. Produto inexistente.\n", i1, i0);
+        break;
       }
       else
       {
@@ -152,10 +142,8 @@ int main()
 
         if (stock[atoi(i1)].qtd < atoi(i2))
       {
-        {
-          printf("Impossivel adicionar produto %s a encomenda %s. Quantidade em stock insuficiente.\n", i1, i0);
-          break;
-        }
+        printf("Impossivel adicionar produto %s a encomenda %s. Quantidade em stock insuficiente.\n", i1, i0);
+        break;
       }
       else
       {
@@ -172,10 +160,8 @@ int main()
 
         if (j > 200)
       {
-        {
-          printf("Impossivel adicionar produto %s a encomenda %s. Peso da encomenda excede o maximo de 200.\n", i1, i0);
-          break;
-        }
+        printf("Impossivel adicionar produto %s a encomenda %s. Peso da encomenda excede o maximo de 200.\n", i1, i0);
+        break;
       }
       else
       {
@@ -188,10 +174,8 @@ int main()
       {
         if (orders[atoi(i0)].prod_ord[i] == atoi(i1))
         {
-          {
-            orders[atoi(i0)].qtd_ord[i] = orders[atoi(i0)].qtd_ord[i] + atoi(i2);
-            j = 1;
-          }
+          orders[atoi(i0)].qtd_ord[i] = orders[atoi(i0)].qtd_ord[i] + atoi(i2);
+          j = 1;
         }
         else
         {
@@ -203,11 +187,9 @@ int main()
 
         if (j == 0)
       {
-        {
-          orders[atoi(i0)].prod_ord[orders[atoi(i0)].n_diff_prod] = atoi(i1);
-          orders[atoi(i0)].qtd_ord[orders[atoi(i0)].n_diff_prod] = atoi(i2);
-          orders[atoi(i0)].n_diff_prod = orders[atoi(i0)].n_diff_prod + 1;
-        }
+        orders[atoi(i0)].prod_ord[orders[atoi(i0)].n_diff_prod] = atoi(i1);
+        orders[atoi(i0)].qtd_ord[orders[atoi(i0)].n_diff_prod] = atoi(i2);
+        orders[atoi(i0)].n_diff_prod = orders[atoi(i0)].n_diff_prod + 1;
       }
       else
       {
@@ -220,10 +202,8 @@ int main()
       case 'r':
         if (id_occupied <= atoi(i0))
       {
-        {
-          printf("Impossivel remover stock do produto %d. Produto inexistente.\n", atoi(i0));
-          break;
-        }
+        printf("Impossivel remover stock do produto %d. Produto inexistente.\n", atoi(i0));
+        break;
       }
       else
       {
@@ -232,10 +212,8 @@ int main()
 
         if (stock[atoi(i0)].qtd < atoi(i1))
       {
-        {
-          printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", atoi(i1), atoi(i0));
-          break;
-        }
+        printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", atoi(i1), atoi(i0));
+        break;
       }
       else
       {
@@ -248,10 +226,8 @@ int main()
       case 'R':
         if (n_orders <= atoi(i0))
       {
-        {
-          printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", atoi(i1), atoi(i0));
-          break;
-        }
+        printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", atoi(i1), atoi(i0));
+        break;
       }
       else
       {
@@ -260,10 +236,8 @@ int main()
 
         if (id_occupied <= atoi(i1))
       {
-        {
-          printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", atoi(i1), atoi(i0));
-          break;
-        }
+        printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", atoi(i1), atoi(i0));
+        break;
       }
       else
       {
@@ -275,10 +249,8 @@ int main()
       {
         if (orders[atoi(i0)].prod_ord[i] == atoi(i1))
         {
-          {
-            stock[atoi(i1)].qtd = stock[atoi(i1)].qtd + orders[atoi(i0)].qtd_ord[i];
-            orders[atoi(i0)].qtd_ord[i] = 0;
-          }
+          stock[atoi(i1)].qtd = stock[atoi(i1)].qtd + orders[atoi(i0)].qtd_ord[i];
+          orders[atoi(i0)].qtd_ord[i] = 0;
         }
         else
         {
@@ -293,10 +265,8 @@ int main()
       case 'C':
         if (n_orders <= atoi(i0))
       {
-        {
-          printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", atoi(i0));
-          break;
-        }
+        printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", atoi(i0));
+        break;
       }
       else
       {
@@ -317,10 +287,8 @@ int main()
       case 'p':
         if (id_occupied <= atoi(i0))
       {
-        {
-          printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", atoi(i0));
-          break;
-        }
+        printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", atoi(i0));
+        break;
       }
       else
       {
@@ -333,10 +301,8 @@ int main()
       case 'E':
         if (n_orders <= atoi(i0))
       {
-        {
-          printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", atoi(i0));
-          break;
-        }
+        printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", atoi(i0));
+        break;
       }
       else
       {
@@ -345,10 +311,8 @@ int main()
 
         if (id_occupied <= atoi(i1))
       {
-        {
-          printf("Impossivel listar produto %d. Produto inexistente.\n", atoi(i1));
-          break;
-        }
+        printf("Impossivel listar produto %d. Produto inexistente.\n", atoi(i1));
+        break;
       }
       else
       {
@@ -360,9 +324,7 @@ int main()
       {
         if (orders[atoi(i0)].prod_ord[i] == atoi(i1))
         {
-          {
-            printf("%s %d.\n", stock[atoi(i1)].desc, orders[atoi(i0)].qtd_ord[i]);
-          }
+          printf("%s %d.\n", stock[atoi(i1)].desc, orders[atoi(i0)].qtd_ord[i]);
         }
         else
         {
@@ -377,10 +339,8 @@ int main()
       case 'm':
         if (id_occupied <= atoi(i0))
       {
-        {
-          printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", atoi(i0));
-          break;
-        }
+        printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", atoi(i0));
+        break;
       }
       else
       {
@@ -396,19 +356,15 @@ int main()
         {
           if (orders[i].prod_ord[j] == atoi(i0))
           {
+            if (k <= orders[i].qtd_ord[j])
             {
-              if (k <= orders[i].qtd_ord[j])
-              {
-                {
-                  l = i;
-                }
-              }
-              else
-              {
-                
-              }
-
+              l = i;
             }
+            else
+            {
+              
+            }
+
           }
           else
           {
@@ -423,9 +379,7 @@ int main()
 
         if (k == 0)
       {
-        {
-          break;
-        }
+        break;
       }
       else
       {
@@ -444,17 +398,15 @@ int main()
         {
           if (stock[i].price > stock[j].price)
           {
-            {
-              k = stock[i].price;
-              stock[i].price = stock[j].price;
-              stock[j].price = k;
-              k = stock[i].qtd;
-              stock[i].qtd = stock[j].qtd;
-              stock[j].qtd = k;
-              strcpy(m, stock[i].desc);
-              strcpy(stock[i].desc, stock[j].desc);
-              strcpy(stock[j].desc, m);
-            }
+            k = stock[i].price;
+            stock[i].price = stock[j].price;
+            stock[j].price = k;
+            k = stock[i].qtd;
+            stock[i].qtd = stock[j].qtd;
+            stock[j].qtd = k;
+            strcpy(m, stock[i].desc);
+            strcpy(stock[i].desc, stock[j].desc);
+            strcpy(stock[j].desc, m);
           }
           else
           {
@@ -483,17 +435,15 @@ int main()
         {
           if (stock[i].id > stock[j].id)
           {
-            {
-              k = stock[i].price;
-              stock[i].price = stock[j].price;
-              stock[j].price = k;
-              k = stock[i].qtd;
-              stock[i].qtd = stock[j].qtd;
-              stock[j].qtd = k;
-              strcpy(m, stock[i].desc);
-              strcpy(stock[i].desc, stock[j].desc);
-              strcpy(stock[j].desc, m);
-            }
+            k = stock[i].price;
+            stock[i].price = stock[j].price;
+            stock[j].price = k;
+            k = stock[i].qtd;
+            stock[i].qtd = stock[j].qtd;
+            stock[j].qtd = k;
+            strcpy(m, stock[i].desc);
+            strcpy(stock[i].desc, stock[j].desc);
+            strcpy(stock[j].desc, m);
           }
           else
           {
@@ -511,10 +461,8 @@ int main()
       case 'L':
         if (n_orders <= atoi(i0))
       {
-        {
-          printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", atoi(i0));
-          break;
-        }
+        printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", atoi(i0));
+        break;
       }
       else
       {
@@ -529,14 +477,12 @@ int main()
         {
           if (strcmp(stock[i].desc, stock[j].desc) > 0)
           {
-            {
-              k = orders[atoi(i0)].prod_ord[i];
-              orders[atoi(i0)].prod_ord[i] = orders[atoi(i0)].prod_ord[j];
-              orders[atoi(i0)].prod_ord[j] = k;
-              k = orders[atoi(i0)].qtd_ord[i];
-              orders[atoi(i0)].qtd_ord[i] = orders[atoi(i0)].qtd_ord[j];
-              orders[atoi(i0)].qtd_ord[j] = k;
-            }
+            k = orders[atoi(i0)].prod_ord[i];
+            orders[atoi(i0)].prod_ord[i] = orders[atoi(i0)].prod_ord[j];
+            orders[atoi(i0)].prod_ord[j] = k;
+            k = orders[atoi(i0)].qtd_ord[i];
+            orders[atoi(i0)].qtd_ord[i] = orders[atoi(i0)].qtd_ord[j];
+            orders[atoi(i0)].qtd_ord[j] = k;
           }
           else
           {
@@ -555,9 +501,7 @@ int main()
       {
         if (orders[atoi(i0)].qtd_ord[i] != 0)
         {
-          {
-            printf("* %s %d %d\n", stock[orders[atoi(i0)].prod_ord[i]].desc, stock[orders[atoi(i0)].prod_ord[i]].price, orders[atoi(i0)].qtd_ord[i]);
-          }
+          printf("* %s %d %d\n", stock[orders[atoi(i0)].prod_ord[i]].desc, stock[orders[atoi(i0)].prod_ord[i]].price, orders[atoi(i0)].qtd_ord[i]);
         }
         else
         {

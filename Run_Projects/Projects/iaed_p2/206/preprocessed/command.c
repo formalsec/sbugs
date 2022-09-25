@@ -43,10 +43,8 @@ void a_addNewGame(Game_List *GL, Game_Hashtable *GH, Team_Hashtable *TH, int n)
   score2 = new_sym_var(sizeof(int) * 8);
   if ((existed_game = search_game_hashtable(GH, buffer_name)) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", n);
-      return;
-    }
+    printf("%d Jogo existente.\n", n);
+    return;
   }
   else
   {
@@ -55,10 +53,8 @@ void a_addNewGame(Game_List *GL, Game_Hashtable *GH, Team_Hashtable *TH, int n)
 
   if ((existed_team1 = search_team_hashtable(TH, buffer_team1)) == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", n);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", n);
+    return;
   }
   else
   {
@@ -67,10 +63,8 @@ void a_addNewGame(Game_List *GL, Game_Hashtable *GH, Team_Hashtable *TH, int n)
 
   if ((existed_team2 = search_team_hashtable(TH, buffer_team2)) == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", n);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", n);
+    return;
   }
   else
   {
@@ -82,9 +76,7 @@ void a_addNewGame(Game_List *GL, Game_Hashtable *GH, Team_Hashtable *TH, int n)
   add_last_game_list(GL, new_game);
   if (score1 > score2)
   {
-    {
-      existed_team1->winnings++;
-    }
+    existed_team1->winnings++;
   }
   else
   {
@@ -93,9 +85,7 @@ void a_addNewGame(Game_List *GL, Game_Hashtable *GH, Team_Hashtable *TH, int n)
 
   if (score1 < score2)
   {
-    {
-      existed_team2->winnings++;
-    }
+    existed_team2->winnings++;
   }
   else
   {
@@ -118,10 +108,8 @@ void A_addNewTeam(Team_List *TL, Team_Hashtable *TH, int n)
   buffer_name[10 - 1] = '\0';
   if ((existed_team = search_team_hashtable(TH, buffer_name)) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", n);
-      return;
-    }
+    printf("%d Equipa existente.\n", n);
+    return;
   }
   else
   {
@@ -157,10 +145,8 @@ void p_searchGame(Game_Hashtable *GH, int n)
   buffer_name[10 - 1] = '\0';
   if ((existed_game = search_game_hashtable(GH, buffer_name)) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", n);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", n);
+    return;
   }
   else
   {
@@ -183,10 +169,8 @@ void P_searchTeam(Team_Hashtable *TH, int n)
   buffer_name[10 - 1] = '\0';
   if ((existed_team = search_team_hashtable(TH, buffer_name)) == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", n);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", n);
+    return;
   }
   else
   {
@@ -213,10 +197,8 @@ void r_deleteGame(Game_List *GL, Game_Hashtable *GH, Team_Hashtable *TH, int n)
   buffer_name[10 - 1] = '\0';
   if ((existed_game = search_game_hashtable(GH, buffer_name)) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", n);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", n);
+    return;
   }
   else
   {
@@ -229,9 +211,7 @@ void r_deleteGame(Game_List *GL, Game_Hashtable *GH, Team_Hashtable *TH, int n)
   existed_team2 = search_team_hashtable(TH, existed_game->team2);
   if (old_score1 < old_score2)
   {
-    {
-      existed_team2->winnings--;
-    }
+    existed_team2->winnings--;
   }
   else
   {
@@ -240,9 +220,7 @@ void r_deleteGame(Game_List *GL, Game_Hashtable *GH, Team_Hashtable *TH, int n)
 
   if (old_score1 > old_score2)
   {
-    {
-      existed_team1->winnings--;
-    }
+    existed_team1->winnings--;
   }
   else
   {
@@ -274,10 +252,8 @@ void s_changeGameScore(Game_Hashtable *GH, Team_Hashtable *TH, int n)
   new_score2 = new_sym_var(sizeof(int) * 8);
   if ((existed_game = search_game_hashtable(GH, buffer_name)) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", n);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", n);
+    return;
   }
   else
   {
@@ -290,51 +266,39 @@ void s_changeGameScore(Game_Hashtable *GH, Team_Hashtable *TH, int n)
   old_score2 = existed_game->score2;
   if ((old_score1 < old_score2) && (new_score1 > new_score2))
   {
-    {
-      existed_team1->winnings++;
-      existed_team2->winnings--;
-    }
+    existed_team1->winnings++;
+    existed_team2->winnings--;
   }
   else
   {
     if ((old_score1 > old_score2) && (new_score1 < new_score2))
     {
-      {
-        existed_team1->winnings--;
-        existed_team2->winnings++;
-      }
+      existed_team1->winnings--;
+      existed_team2->winnings++;
     }
     else
     {
       if ((old_score1 == old_score2) && (new_score1 > new_score2))
       {
-        {
-          existed_team1->winnings++;
-        }
+        existed_team1->winnings++;
       }
       else
       {
         if ((old_score1 == old_score2) && (new_score1 < new_score2))
         {
-          {
-            existed_team2->winnings++;
-          }
+          existed_team2->winnings++;
         }
         else
         {
           if ((old_score1 < old_score2) && (new_score1 == new_score2))
           {
-            {
-              existed_team2->winnings--;
-            }
+            existed_team2->winnings--;
           }
           else
           {
             if ((old_score1 > old_score2) && (new_score1 == new_score2))
             {
-              {
-                existed_team1->winnings--;
-              }
+              existed_team1->winnings--;
             }
             else
             {
@@ -374,16 +338,12 @@ void g_findWinners(Team_List *TL, int n)
   {
     if (aux_team_node->team->winnings >= more_winnings)
     {
-      {
-        more_winnings = aux_team_node->team->winnings;
-        aux_team_node = aux_team_node->next;
-      }
+      more_winnings = aux_team_node->team->winnings;
+      aux_team_node = aux_team_node->next;
     }
     else
     {
-      {
-        aux_team_node = aux_team_node->next;
-      }
+      aux_team_node = aux_team_node->next;
     }
 
   }
@@ -392,17 +352,13 @@ void g_findWinners(Team_List *TL, int n)
   {
     if (aux_team_node2->team->winnings == more_winnings)
     {
-      {
-        winners[i] = aux_team_node2->team;
-        i++;
-        aux_team_node2 = aux_team_node2->next;
-      }
+      winners[i] = aux_team_node2->team;
+      i++;
+      aux_team_node2 = aux_team_node2->next;
     }
     else
     {
-      {
-        aux_team_node2 = aux_team_node2->next;
-      }
+      aux_team_node2 = aux_team_node2->next;
     }
 
   }
@@ -414,11 +370,9 @@ void g_findWinners(Team_List *TL, int n)
     {
       if (strcmp(winners[j]->name, winners[k]->name) > 0)
       {
-        {
-          aux_team = winners[j];
-          winners[j] = winners[k];
-          winners[k] = aux_team;
-        }
+        aux_team = winners[j];
+        winners[j] = winners[k];
+        winners[k] = aux_team;
       }
       else
       {
@@ -431,14 +385,12 @@ void g_findWinners(Team_List *TL, int n)
 
   if (number_of_teams != 0)
   {
+    printf("%d Melhores %d\n", n, more_winnings);
+    for (j = 0; j < number_of_teams; j++)
     {
-      printf("%d Melhores %d\n", n, more_winnings);
-      for (j = 0; j < number_of_teams; j++)
-      {
-        printf("%d * %s\n", n, winners[j]->name);
-      }
-
+      printf("%d * %s\n", n, winners[j]->name);
     }
+
   }
   else
   {

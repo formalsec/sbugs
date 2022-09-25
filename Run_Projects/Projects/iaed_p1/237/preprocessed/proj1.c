@@ -95,39 +95,35 @@ void add_prod_to_order()
         }
         else
         {
+          int i;
+          for (i = 0; ((encomendas[ide].carrinho_compras[i][0] != idp) && (encomendas[ide].carrinho_compras[i][0] != (-1))) && (encomendas[ide].carrinho_compras[i][0] != (-2)); i++)
+            ;
+
+          if (encomendas[ide].carrinho_compras[i][0] == (-2))
           {
-            int i;
-            for (i = 0; ((encomendas[ide].carrinho_compras[i][0] != idp) && (encomendas[ide].carrinho_compras[i][0] != (-1))) && (encomendas[ide].carrinho_compras[i][0] != (-2)); i++)
+            int j;
+            for (j = i + 1; (encomendas[ide].carrinho_compras[j][0] != idp) && (encomendas[ide].carrinho_compras[j][0] != (-1)); j++)
               ;
 
-            if (encomendas[ide].carrinho_compras[i][0] == (-2))
+            if (encomendas[ide].carrinho_compras[j][0] == idp)
             {
-              {
-                int j;
-                for (j = i + 1; (encomendas[ide].carrinho_compras[j][0] != idp) && (encomendas[ide].carrinho_compras[j][0] != (-1)); j++)
-                  ;
-
-                if (encomendas[ide].carrinho_compras[j][0] == idp)
-                {
-                  i = j;
-                }
-                else
-                {
-                  
-                }
-
-              }
+              i = j;
             }
             else
             {
               
             }
 
-            encomendas[ide].carrinho_compras[i][0] = idp;
-            encomendas[ide].carrinho_compras[i][1] += qtd;
-            encomendas[ide].peso += qtd * produtos[idp].peso;
-            produtos[idp].qt_stock -= qtd;
           }
+          else
+          {
+            
+          }
+
+          encomendas[ide].carrinho_compras[i][0] = idp;
+          encomendas[ide].carrinho_compras[i][1] += qtd;
+          encomendas[ide].peso += qtd * produtos[idp].peso;
+          produtos[idp].qt_stock -= qtd;
         }
 
       }
@@ -177,26 +173,22 @@ void remove_prod_from_order()
     }
     else
     {
+      int i;
+      for (i = 0; ((i < 200) && (encomendas[ide].carrinho_compras[i][0] != idp)) && (encomendas[ide].carrinho_compras[i][0] != (-1)); i++)
+        ;
+
+      if (encomendas[ide].carrinho_compras[i][0] == idp)
       {
-        int i;
-        for (i = 0; ((i < 200) && (encomendas[ide].carrinho_compras[i][0] != idp)) && (encomendas[ide].carrinho_compras[i][0] != (-1)); i++)
-          ;
-
-        if (encomendas[ide].carrinho_compras[i][0] == idp)
-        {
-          {
-            produtos[idp].qt_stock += encomendas[ide].carrinho_compras[i][1];
-            encomendas[ide].carrinho_compras[i][0] = -2;
-            encomendas[ide].peso -= encomendas[ide].carrinho_compras[i][1] * produtos[idp].peso;
-            encomendas[ide].carrinho_compras[i][1] = 0;
-          }
-        }
-        else
-        {
-          
-        }
-
+        produtos[idp].qt_stock += encomendas[ide].carrinho_compras[i][1];
+        encomendas[ide].carrinho_compras[i][0] = -2;
+        encomendas[ide].peso -= encomendas[ide].carrinho_compras[i][1] * produtos[idp].peso;
+        encomendas[ide].carrinho_compras[i][1] = 0;
       }
+      else
+      {
+        
+      }
+
     }
 
   }
@@ -212,25 +204,23 @@ void oder_cost()
   }
   else
   {
+    int custo = 0;
+    int i;
+    for (i = 0; (i < 200) && (encomendas[ide].carrinho_compras[i][0] != (-1)); i++)
     {
-      int custo = 0;
-      int i;
-      for (i = 0; (i < 200) && (encomendas[ide].carrinho_compras[i][0] != (-1)); i++)
+      int idp = encomendas[ide].carrinho_compras[i][0];
+      if (encomendas[ide].carrinho_compras[i][0] != (-2))
       {
-        int idp = encomendas[ide].carrinho_compras[i][0];
-        if (encomendas[ide].carrinho_compras[i][0] != (-2))
-        {
-          custo += encomendas[ide].carrinho_compras[i][1] * produtos[idp].preco;
-        }
-        else
-        {
-          
-        }
-
+        custo += encomendas[ide].carrinho_compras[i][1] * produtos[idp].preco;
+      }
+      else
+      {
+        
       }
 
-      printf("Custo da encomenda %d %d.\n", ide, custo);
     }
+
+    printf("Custo da encomenda %d %d.\n", ide, custo);
   }
 
 }
@@ -266,13 +256,11 @@ void desc_qtd_prod_from_order()
     }
     else
     {
-      {
-        int i;
-        for (i = 0; ((i < 200) && (encomendas[ide].carrinho_compras[i][0] != idp)) && (encomendas[ide].carrinho_compras[i][0] != (-1)); i++)
-          ;
+      int i;
+      for (i = 0; ((i < 200) && (encomendas[ide].carrinho_compras[i][0] != idp)) && (encomendas[ide].carrinho_compras[i][0] != (-1)); i++)
+        ;
 
-        printf("%s %d.\n", produtos[idp].desc, ((i == 200) || (encomendas[ide].carrinho_compras[i][0] == (-1))) ? (0) : (encomendas[ide].carrinho_compras[i][1]));
-      }
+      printf("%s %d.\n", produtos[idp].desc, ((i == 200) || (encomendas[ide].carrinho_compras[i][0] == (-1))) ? (0) : (encomendas[ide].carrinho_compras[i][1]));
     }
 
   }
@@ -288,51 +276,45 @@ void id_order_most_qtd_prod()
   }
   else
   {
+    int i;
+    int j;
+    int res[2] = {0, -1};
+    for (i = 0; i < ide_atual; i++)
     {
-      int i;
-      int j;
-      int res[2] = {0, -1};
-      for (i = 0; i < ide_atual; i++)
+      for (j = 0; (j < 200) && (encomendas[i].carrinho_compras[j][0] != (-1)); j++)
       {
-        for (j = 0; (j < 200) && (encomendas[i].carrinho_compras[j][0] != (-1)); j++)
+        if (encomendas[i].carrinho_compras[j][0] == idp)
         {
-          if (encomendas[i].carrinho_compras[j][0] == idp)
+          if (encomendas[i].carrinho_compras[j][1] > res[1])
           {
-            {
-              if (encomendas[i].carrinho_compras[j][1] > res[1])
-              {
-                {
-                  res[0] = i;
-                  res[1] = encomendas[i].carrinho_compras[j][1];
-                }
-              }
-              else
-              {
-                
-              }
-
-              break;
-            }
+            res[0] = i;
+            res[1] = encomendas[i].carrinho_compras[j][1];
           }
           else
           {
             
           }
 
+          break;
+        }
+        else
+        {
+          
         }
 
       }
 
-      if ((ide_atual > 0) && (res[1] != (-1)))
-      {
-        printf("Maximo produto %d %d %d.\n", idp, res[0], res[1]);
-      }
-      else
-      {
-        
-      }
-
     }
+
+    if ((ide_atual > 0) && (res[1] != (-1)))
+    {
+      printf("Maximo produto %d %d %d.\n", idp, res[0], res[1]);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -348,13 +330,11 @@ int less(int state, int x, int y)
   {
     if (x != y)
     {
-      {
-        int i = 0;
-        for (i = 0; (i < (63 - 1)) && (produtos[x].desc[i] == produtos[y].desc[i]); i++)
-          ;
+      int i = 0;
+      for (i = 0; (i < (63 - 1)) && (produtos[x].desc[i] == produtos[y].desc[i]); i++)
+        ;
 
-        res = (produtos[x].desc[i] < produtos[y].desc[i]) ? (1) : (0);
-      }
+      res = (produtos[x].desc[i] < produtos[y].desc[i]) ? (1) : (0);
     }
     else
     {
@@ -434,37 +414,35 @@ void order_prods_from_order_desc()
   }
   else
   {
+    int a[200];
+    int aux[200];
+    int i;
+    int j = 0;
+    int k;
+    int p;
+    for (i = 0; (i < 200) && (encomendas[ide].carrinho_compras[i][0] != (-1)); i++)
     {
-      int a[200];
-      int aux[200];
-      int i;
-      int j = 0;
-      int k;
-      int p;
-      for (i = 0; (i < 200) && (encomendas[ide].carrinho_compras[i][0] != (-1)); i++)
+      if (encomendas[ide].carrinho_compras[i][0] != (-2))
       {
-        if (encomendas[ide].carrinho_compras[i][0] != (-2))
-        {
-          a[j++] = encomendas[ide].carrinho_compras[i][0];
-        }
-        else
-        {
-          
-        }
-
+        a[j++] = encomendas[ide].carrinho_compras[i][0];
       }
-
-      merge_sort(0, a, aux, 0, j - 1);
-      printf("Encomenda %d\n", ide);
-      for (k = 0; k <= (j - 1); k++)
+      else
       {
-        for (p = 0; encomendas[ide].carrinho_compras[p][0] != a[k]; p++)
-          ;
-
-        printf("* %s %d %d\n", produtos[a[k]].desc, produtos[a[k]].preco, encomendas[ide].carrinho_compras[p][1]);
+        
       }
 
     }
+
+    merge_sort(0, a, aux, 0, j - 1);
+    printf("Encomenda %d\n", ide);
+    for (k = 0; k <= (j - 1); k++)
+    {
+      for (p = 0; encomendas[ide].carrinho_compras[p][0] != a[k]; p++)
+        ;
+
+      printf("* %s %d %d\n", produtos[a[k]].desc, produtos[a[k]].preco, encomendas[ide].carrinho_compras[p][1]);
+    }
+
   }
 
 }
@@ -539,12 +517,10 @@ void read_values_from_line(char s[])
 
   if (s[0] == 'a')
   {
-    {
-      for (i = 2; s[i] != ':'; i++)
-        descricao_prod[i - 2] = s[i];
+    for (i = 2; s[i] != ':'; i++)
+      descricao_prod[i - 2] = s[i];
 
-      descricao_prod[i - 2] = '\0';
-    }
+    descricao_prod[i - 2] = '\0';
   }
   else
   {
@@ -553,22 +529,20 @@ void read_values_from_line(char s[])
 
   if (s[1] != '\n')
   {
+    i = (s[0] == 'a') ? (i + 1) : (2);
+    for (j = i; s[j] != '\n'; j++)
     {
-      i = (s[0] == 'a') ? (i + 1) : (2);
-      for (j = i; s[j] != '\n'; j++)
+      if (s[j] == ':')
       {
-        if (s[j] == ':')
-        {
-          v_atual += 1;
-        }
-        else
-        {
-          valores[v_atual] = (valores[v_atual] * 10) + (s[j] - '0');
-        }
-
+        v_atual += 1;
+      }
+      else
+      {
+        valores[v_atual] = (valores[v_atual] * 10) + (s[j] - '0');
       }
 
     }
+
   }
   else
   {
@@ -587,11 +561,9 @@ int main()
     s[i++] = c;
     if (c == '\n')
     {
-      {
-        i = 0;
-        read_values_from_line(s);
-        call_function(s[0]);
-      }
+      i = 0;
+      read_values_from_line(s);
+      call_function(s[0]);
     }
     else
     {

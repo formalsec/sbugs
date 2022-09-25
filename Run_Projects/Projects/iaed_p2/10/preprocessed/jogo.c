@@ -9,16 +9,14 @@ pJogo criarJogo(char *nome, char *eq1, char *eq2, int pont1, int pont2, listaEq 
   pJogo novoJogo;
   if ((procurarEquipa(listaEquipas, eq1) != 0) && (procurarEquipa(listaEquipas, eq2) != 0))
   {
-    {
-      novoJogo = (pJogo) malloc(sizeof(struct jogo));
-      novoJogo->nome = (char *) malloc((sizeof(char)) * (strlen(nome) + 1));
-      strcpy(novoJogo->nome, nome);
-      novoJogo->equipa1 = procurarEquipa(listaEquipas, eq1);
-      novoJogo->equipa2 = procurarEquipa(listaEquipas, eq2);
-      novoJogo->pont1 = pont1;
-      novoJogo->pont2 = pont2;
-      return novoJogo;
-    }
+    novoJogo = (pJogo) malloc(sizeof(struct jogo));
+    novoJogo->nome = (char *) malloc((sizeof(char)) * (strlen(nome) + 1));
+    strcpy(novoJogo->nome, nome);
+    novoJogo->equipa1 = procurarEquipa(listaEquipas, eq1);
+    novoJogo->equipa2 = procurarEquipa(listaEquipas, eq2);
+    novoJogo->pont1 = pont1;
+    novoJogo->pont2 = pont2;
+    return novoJogo;
   }
   else
   {
@@ -34,15 +32,11 @@ void mostrarJogo(pJogo jogo, int numINP)
 {
   if (jogo != 0)
   {
-    {
-      printf("%d %s %s %s %d %d\n", numINP, jogo->nome, jogo->equipa1->nomeEquipa, jogo->equipa2->nomeEquipa, jogo->pont1, jogo->pont2);
-    }
+    printf("%d %s %s %s %d %d\n", numINP, jogo->nome, jogo->equipa1->nomeEquipa, jogo->equipa2->nomeEquipa, jogo->pont1, jogo->pont2);
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", numINP);
-    }
+    printf("%d Jogo inexistente.\n", numINP);
   }
 
 }
@@ -51,17 +45,13 @@ void adicionaVitoria(pJogo j)
 {
   if (j->pont1 > j->pont2)
   {
-    {
-      j->equipa1->numVitorias++;
-    }
+    j->equipa1->numVitorias++;
   }
   else
   {
     if (j->pont2 > j->pont1)
     {
-      {
-        j->equipa2->numVitorias++;
-      }
+      j->equipa2->numVitorias++;
     }
     else
     {
@@ -76,17 +66,13 @@ void retiraVitoria(pJogo j)
 {
   if (j->pont1 > j->pont2)
   {
-    {
-      j->equipa1->numVitorias--;
-    }
+    j->equipa1->numVitorias--;
   }
   else
   {
     if (j->pont2 > j->pont1)
     {
-      {
-        j->equipa2->numVitorias--;
-      }
+      j->equipa2->numVitorias--;
     }
     else
     {
@@ -101,10 +87,8 @@ void libertarJogo(pJogo jogo)
 {
   if (jogo != 0)
   {
-    {
-      free(jogo->nome);
-      free(jogo);
-    }
+    free(jogo->nome);
+    free(jogo);
   }
   else
   {

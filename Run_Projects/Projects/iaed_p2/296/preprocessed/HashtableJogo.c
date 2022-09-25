@@ -48,13 +48,11 @@ void ht_deletar_jogo(Hashtable_Jogo *ht, char *chave)
   {
     if (strcmp(tmp->chave, chave) == 0)
     {
-      {
-        ll_deletar_no(lista, tmp);
-        free(tmp->chave);
-        free(tmp);
-        ht->qtd--;
-        return;
-      }
+      ll_deletar_no(lista, tmp);
+      free(tmp->chave);
+      free(tmp);
+      ht->qtd--;
+      return;
     }
     else
     {

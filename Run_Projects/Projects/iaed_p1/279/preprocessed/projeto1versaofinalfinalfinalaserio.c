@@ -138,20 +138,18 @@ int partition(prod a[], int l, int r)
 
     if (i < j)
     {
-      {
-        ta.prod_id = a[i].prod_id;
-        strcpy(ta.prod_desc, a[i].prod_desc);
-        ta.prod_price = a[i].prod_price;
-        ta.prod_st = a[i].prod_st;
-        a[i].prod_id = a[j].prod_id;
-        strcpy(a[i].prod_desc, a[j].prod_desc);
-        a[i].prod_price = a[j].prod_price;
-        a[i].prod_st = a[j].prod_st;
-        a[j].prod_id = ta.prod_id;
-        strcpy(a[j].prod_desc, ta.prod_desc);
-        a[j].prod_price = ta.prod_price;
-        a[j].prod_st = ta.prod_st;
-      }
+      ta.prod_id = a[i].prod_id;
+      strcpy(ta.prod_desc, a[i].prod_desc);
+      ta.prod_price = a[i].prod_price;
+      ta.prod_st = a[i].prod_st;
+      a[i].prod_id = a[j].prod_id;
+      strcpy(a[i].prod_desc, a[j].prod_desc);
+      a[i].prod_price = a[j].prod_price;
+      a[i].prod_st = a[j].prod_st;
+      a[j].prod_id = ta.prod_id;
+      strcpy(a[j].prod_desc, ta.prod_desc);
+      a[j].prod_price = ta.prod_price;
+      a[j].prod_st = ta.prod_st;
     }
     else
     {
@@ -219,17 +217,13 @@ void addStock(prod v[])
   PP = existP(e, act, idp, v);
   if ((idp != v[PP].prod_id) || (strcmp(v[PP].prod_desc, "") == 0))
   {
-    {
-      printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idp);
-      return;
-    }
+    printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idp);
+    return;
   }
   else
   {
-    {
-      v[PP].prod_st += qtd;
-      return;
-    }
+    v[PP].prod_st += qtd;
+    return;
   }
 
 }
@@ -260,10 +254,8 @@ void addProdToOrder(prod v[], order t[])
   EE = existE(i, order_act, ide, t);
   if ((ide != t[EE].order_id) || (order_act == 0))
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
+    return;
   }
   else
   {
@@ -273,10 +265,8 @@ void addProdToOrder(prod v[], order t[])
   PP = existP(e, act, idp, v);
   if ((idp != v[PP].prod_id) || (strcmp(v[PP].prod_desc, "") == 0))
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
+    return;
   }
   else
   {
@@ -285,10 +275,8 @@ void addProdToOrder(prod v[], order t[])
 
   if (v[PP].prod_st < qtd)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
+    return;
   }
   else
   {
@@ -297,10 +285,8 @@ void addProdToOrder(prod v[], order t[])
 
   if (((v[PP].prod_w * qtd) + t[EE].order_w) > 200)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
+    return;
   }
   else
   {
@@ -310,22 +296,18 @@ void addProdToOrder(prod v[], order t[])
   LL = existPinE(o, t[EE].order_prod_act, idp, EE, t);
   if (v[PP].prod_id == t[EE].order_prods[LL])
   {
-    {
-      t[EE].order_qnt[LL] += qtd;
-      t[EE].order_w += v[PP].prod_w * qtd;
-      v[PP].prod_st -= qtd;
-      t[EE].order_prod_act++;
-    }
+    t[EE].order_qnt[LL] += qtd;
+    t[EE].order_w += v[PP].prod_w * qtd;
+    v[PP].prod_st -= qtd;
+    t[EE].order_prod_act++;
   }
   else
   {
-    {
-      t[EE].order_prods[t[EE].order_prod_act] = v[PP].prod_id;
-      t[EE].order_qnt[t[EE].order_prod_act] += qtd;
-      t[EE].order_w += v[PP].prod_w * qtd;
-      v[PP].prod_st -= qtd;
-      t[EE].order_prod_act++;
-    }
+    t[EE].order_prods[t[EE].order_prod_act] = v[PP].prod_id;
+    t[EE].order_qnt[t[EE].order_prod_act] += qtd;
+    t[EE].order_w += v[PP].prod_w * qtd;
+    v[PP].prod_st -= qtd;
+    t[EE].order_prod_act++;
   }
 
 }
@@ -341,10 +323,8 @@ void removeStockProd(prod v[])
   PP = existP(e, act, idp, v);
   if ((idp != v[PP].prod_id) || (strcmp(v[PP].prod_desc, "") == 0))
   {
-    {
-      printf("Impossivel remover stock do produto %d. Produto inexistente.\n", idp);
-      return;
-    }
+    printf("Impossivel remover stock do produto %d. Produto inexistente.\n", idp);
+    return;
   }
   else
   {
@@ -353,10 +333,8 @@ void removeStockProd(prod v[])
 
   if ((v[PP].prod_st - qtd) < 0)
   {
-    {
-      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, idp);
-      return;
-    }
+    printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, idp);
+    return;
   }
   else
   {
@@ -381,10 +359,8 @@ void removeProdFromOrder(prod v[], order t[])
   EE = existE(i, order_act, ide, t);
   if ((ide != t[EE].order_id) || (order_act == 0))
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
-      return;
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
+    return;
   }
   else
   {
@@ -394,10 +370,8 @@ void removeProdFromOrder(prod v[], order t[])
   PP = existP(e, act, idp, v);
   if ((idp != v[PP].prod_id) || (strcmp(v[PP].prod_desc, "") == 0))
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
-      return;
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
+    return;
   }
   else
   {
@@ -411,16 +385,14 @@ void removeProdFromOrder(prod v[], order t[])
   }
   else
   {
+    v[PP].prod_st += t[EE].order_qnt[LL];
+    t[EE].order_w -= v[PP].prod_w * t[EE].order_qnt[LL];
+    for (u = LL; u < (t[EE].order_prod_act + 1); u++)
     {
-      v[PP].prod_st += t[EE].order_qnt[LL];
-      t[EE].order_w -= v[PP].prod_w * t[EE].order_qnt[LL];
-      for (u = LL; u < (t[EE].order_prod_act + 1); u++)
-      {
-        t[EE].order_prods[u] = t[EE].order_prods[u + 1];
-        t[EE].order_qnt[u] = t[EE].order_qnt[u + 1];
-      }
-
+      t[EE].order_prods[u] = t[EE].order_prods[u + 1];
+      t[EE].order_qnt[u] = t[EE].order_qnt[u + 1];
     }
+
   }
 
 }
@@ -436,23 +408,19 @@ void costOrder(prod v[], order t[])
   EE = existE(i, order_act, ide, t);
   if ((ide != t[EE].order_id) || (order_act == 0))
   {
-    {
-      printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ide);
-      return;
-    }
+    printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ide);
+    return;
   }
   else
   {
     {
+      for (x = 0; x < t[EE].order_prod_act; x++)
       {
-        for (x = 0; x < t[EE].order_prod_act; x++)
-        {
-          total += t[EE].order_qnt[x] * v[t[EE].order_prods[x]].prod_price;
-        }
-
+        total += t[EE].order_qnt[x] * v[t[EE].order_prods[x]].prod_price;
       }
-      printf("Custo da encomenda %d %d.\n", ide, total);
+
     }
+    printf("Custo da encomenda %d %d.\n", ide, total);
   }
 
 }
@@ -468,16 +436,12 @@ void changeProdPrice(prod v[])
   PP = existP(e, act, idp, v);
   if ((idp != v[PP].prod_id) || (strcmp(v[PP].prod_desc, "") == 0))
   {
-    {
-      printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idp);
-      return;
-    }
+    printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idp);
+    return;
   }
   else
   {
-    {
-      v[PP].prod_price = preco;
-    }
+    v[PP].prod_price = preco;
   }
 
 }
@@ -497,10 +461,8 @@ void listProdQ(prod v[], order t[])
   EE = existE(i, order_act, ide, t);
   if ((ide != t[EE].order_id) || (order_act == 0))
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
-      return;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
+    return;
   }
   else
   {
@@ -510,10 +472,8 @@ void listProdQ(prod v[], order t[])
   PP = existP(e, act, idp, v);
   if ((idp != v[PP].prod_id) || (strcmp(v[PP].prod_desc, "") == 0))
   {
-    {
-      printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
-      return;
-    }
+    printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
+    return;
   }
   else
   {
@@ -545,10 +505,8 @@ void maxProd(prod v[], order t[])
   PP = existP(e, act, idp, v);
   if ((idp != v[PP].prod_id) || (strcmp(v[PP].prod_desc, "") == 0))
   {
-    {
-      printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idp);
-      return;
-    }
+    printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idp);
+    return;
   }
   else
   {
@@ -570,10 +528,8 @@ void maxProd(prod v[], order t[])
     {
       if ((idp == t[i].order_prods[x]) && (qntMax < t[i].order_qnt[x]))
       {
-        {
-          idMin = t[i].order_id;
-          qntMax = t[i].order_qnt[x];
-        }
+        idMin = t[i].order_id;
+        qntMax = t[i].order_qnt[x];
       }
       else
       {
@@ -631,10 +587,8 @@ void listProdInOrd(prod v[], order t[])
   EE = existE(i, order_act, ide, t);
   if ((ide != t[EE].order_id) || (order_act == 0))
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
-      return;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
+    return;
   }
   else
   {
@@ -643,10 +597,8 @@ void listProdInOrd(prod v[], order t[])
 
   if ((t[EE].order_prod_act == 0) || (t[EE].order_w == 0))
   {
-    {
-      printf("Encomenda %d\n", ide);
-      return;
-    }
+    printf("Encomenda %d\n", ide);
+    return;
   }
   else
   {
@@ -659,11 +611,9 @@ void listProdInOrd(prod v[], order t[])
     {
       if (t[EE].order_prods[n] == v[z].prod_id)
       {
-        {
-          strcpy(c[n].prod_desc, v[z].prod_desc);
-          c[n].prod_price = v[z].prod_price;
-          c[n].prod_st = t[EE].order_qnt[n];
-        }
+        strcpy(c[n].prod_desc, v[z].prod_desc);
+        c[n].prod_price = v[z].prod_price;
+        c[n].prod_st = t[EE].order_qnt[n];
       }
       else
       {

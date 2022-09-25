@@ -37,9 +37,7 @@ void inserehash(hashtable *st, Item elemento, char *nome)
   indice = hash(nome, st->M);
   if (st->tabela[indice] == 0)
   {
-    {
-      st->tabela[indice] = crialista();
-    }
+    st->tabela[indice] = crialista();
   }
   else
   {
@@ -56,9 +54,7 @@ void removehash(hashtable *st, Item elemento, char *nome)
   indice = hash(nome, st->M);
   if (st->tabela[indice] == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -83,9 +79,7 @@ void freehash(hashtable *st, int M, int controlo, void freeitem(Item))
   {
     if (st->tabela[i] != 0)
     {
-      {
-        freelista(st->tabela[i], controlo, freeitem);
-      }
+      freelista(st->tabela[i], controlo, freeitem);
     }
     else
     {

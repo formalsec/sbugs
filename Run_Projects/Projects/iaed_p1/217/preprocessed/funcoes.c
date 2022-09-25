@@ -23,10 +23,8 @@ void q(int idp, int qtd)
 {
   if (idp > (numeroProdutos - 1))
   {
-    {
-      printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idp);
-      return;
-    }
+    printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idp);
+    return;
   }
   else
   {
@@ -56,10 +54,8 @@ void A(int ide, int idp, int qtd)
   int k = 0;
   if (ide > (numEncomendas - 1))
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
+    return;
   }
   else
   {
@@ -68,10 +64,8 @@ void A(int ide, int idp, int qtd)
 
   if (idp > (numeroProdutos - 1))
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
+    return;
   }
   else
   {
@@ -80,10 +74,8 @@ void A(int ide, int idp, int qtd)
 
   if (qtd > vetorProdutos[idp].stock)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
+    return;
   }
   else
   {
@@ -92,10 +84,8 @@ void A(int ide, int idp, int qtd)
 
   if (((qtd * vetorProdutos[idp].peso) + vetorEncomendas[ide].peso) > 200)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
+    return;
   }
   else
   {
@@ -106,12 +96,10 @@ void A(int ide, int idp, int qtd)
   {
     if (vetorEncomendas[ide].produtos[k].id == idp)
     {
-      {
-        vetorEncomendas[ide].produtos[k].qtd += qtd;
-        vetorProdutos[idp].stock -= qtd;
-        vetorEncomendas[ide].peso += qtd * vetorProdutos[idp].peso;
-        return;
-      }
+      vetorEncomendas[ide].produtos[k].qtd += qtd;
+      vetorProdutos[idp].stock -= qtd;
+      vetorEncomendas[ide].peso += qtd * vetorProdutos[idp].peso;
+      return;
     }
     else
     {
@@ -120,9 +108,7 @@ void A(int ide, int idp, int qtd)
 
     if (vetorEncomendas[ide].produtos[k].id > (-1))
     {
-      {
-        j++;
-      }
+      j++;
     }
     else
     {
@@ -146,10 +132,8 @@ void r(int idp, int qtd)
 {
   if (idp > (numeroProdutos - 1))
   {
-    {
-      printf("Impossivel remover stock do produto %d. Produto inexistente.\n", idp);
-      return;
-    }
+    printf("Impossivel remover stock do produto %d. Produto inexistente.\n", idp);
+    return;
   }
   else
   {
@@ -158,15 +142,11 @@ void r(int idp, int qtd)
 
   if ((vetorProdutos[idp].stock - qtd) < 0)
   {
-    {
-      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, idp);
-    }
+    printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, idp);
   }
   else
   {
-    {
-      vetorProdutos[idp].stock -= qtd;
-    }
+    vetorProdutos[idp].stock -= qtd;
   }
 
 }
@@ -177,10 +157,8 @@ void R(int ide, int idp)
   int k = 0;
   if (ide > (numEncomendas - 1))
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
-      return;
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
+    return;
   }
   else
   {
@@ -189,10 +167,8 @@ void R(int ide, int idp)
 
   if (idp > (numeroProdutos - 1))
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
-      return;
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
+    return;
   }
   else
   {
@@ -203,13 +179,11 @@ void R(int ide, int idp)
   {
     if (vetorEncomendas[ide].produtos[k].id == idp)
     {
-      {
-        vetorEncomendas[ide].produtos[k].id = -1;
-        vetorProdutos[idp].stock += vetorEncomendas[ide].produtos[k].qtd;
-        vetorEncomendas[ide].peso -= vetorEncomendas[ide].produtos[k].qtd * vetorProdutos[idp].peso;
-        vetorEncomendas[ide].numProd--;
-        vetorEncomendas[ide].produtos[k].qtd = -1;
-      }
+      vetorEncomendas[ide].produtos[k].id = -1;
+      vetorProdutos[idp].stock += vetorEncomendas[ide].produtos[k].qtd;
+      vetorEncomendas[ide].peso -= vetorEncomendas[ide].produtos[k].qtd * vetorProdutos[idp].peso;
+      vetorEncomendas[ide].numProd--;
+      vetorEncomendas[ide].produtos[k].qtd = -1;
     }
     else
     {
@@ -218,9 +192,7 @@ void R(int ide, int idp)
 
     if (vetorEncomendas[ide].produtos[k].id > (-1))
     {
-      {
-        i++;
-      }
+      i++;
     }
     else
     {
@@ -239,10 +211,8 @@ void C(int ide)
   int total = 0;
   if (ide > (numEncomendas - 1))
   {
-    {
-      printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ide);
-      return;
-    }
+    printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ide);
+    return;
   }
   else
   {
@@ -253,10 +223,8 @@ void C(int ide)
   {
     if (vetorEncomendas[ide].produtos[k].id > (-1))
     {
-      {
-        total += vetorEncomendas[ide].produtos[k].qtd * vetorProdutos[vetorEncomendas[ide].produtos[k].id].preco;
-        i++;
-      }
+      total += vetorEncomendas[ide].produtos[k].qtd * vetorProdutos[vetorEncomendas[ide].produtos[k].id].preco;
+      i++;
     }
     else
     {
@@ -273,16 +241,12 @@ void p(int idp, int preco)
 {
   if (idp > (numeroProdutos - 1))
   {
-    {
-      printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idp);
-      return;
-    }
+    printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idp);
+    return;
   }
   else
   {
-    {
-      vetorProdutos[idp].preco = preco;
-    }
+    vetorProdutos[idp].preco = preco;
   }
 
 }
@@ -293,10 +257,8 @@ void E(int ide, int idp)
   int k = 0;
   if (ide > (numEncomendas - 1))
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
-      return;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
+    return;
   }
   else
   {
@@ -305,10 +267,8 @@ void E(int ide, int idp)
 
   if (idp > (numeroProdutos - 1))
   {
-    {
-      printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
-      return;
-    }
+    printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
+    return;
   }
   else
   {
@@ -319,10 +279,8 @@ void E(int ide, int idp)
   {
     if (vetorEncomendas[ide].produtos[k].id == idp)
     {
-      {
-        printf("%s %d.\n", vetorProdutos[idp].desc, vetorEncomendas[ide].produtos[k].qtd);
-        return;
-      }
+      printf("%s %d.\n", vetorProdutos[idp].desc, vetorEncomendas[ide].produtos[k].qtd);
+      return;
     }
     else
     {
@@ -331,9 +289,7 @@ void E(int ide, int idp)
 
     if (vetorEncomendas[ide].produtos[k].id > (-1))
     {
-      {
-        i++;
-      }
+      i++;
     }
     else
     {
@@ -355,10 +311,8 @@ void m(int idp)
   int maxEncomenda;
   if (idp > (numeroProdutos - 1))
   {
-    {
-      printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idp);
-      return;
-    }
+    printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idp);
+    return;
   }
   else
   {
@@ -373,10 +327,8 @@ void m(int idp)
     {
       if ((vetorEncomendas[j].produtos[k].id == idp) && (vetorEncomendas[j].produtos[k].qtd > max))
       {
-        {
-          max = vetorEncomendas[j].produtos[k].qtd;
-          maxEncomenda = j;
-        }
+        max = vetorEncomendas[j].produtos[k].qtd;
+        maxEncomenda = j;
       }
       else
       {
@@ -385,9 +337,7 @@ void m(int idp)
 
       if (vetorEncomendas[j].produtos[k].id > (-1))
       {
-        {
-          i++;
-        }
+        i++;
       }
       else
       {
@@ -401,9 +351,7 @@ void m(int idp)
 
   if (max != 0)
   {
-    {
-      printf("Maximo produto %d %d %d.\n", idp, maxEncomenda, max);
-    }
+    printf("Maximo produto %d %d %d.\n", idp, maxEncomenda, max);
   }
   else
   {
@@ -429,11 +377,9 @@ void l()
     {
       if (vetorProdutos[p[j]].preco > vetorProdutos[p[j + 1]].preco)
       {
-        {
-          tmp = p[j + 1];
-          p[j + 1] = p[j];
-          p[j] = tmp;
-        }
+        tmp = p[j + 1];
+        p[j + 1] = p[j];
+        p[j] = tmp;
       }
       else
       {
@@ -460,10 +406,8 @@ void L(int ide)
   int p[200];
   if (ide > (numEncomendas - 1))
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
-      return;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
+    return;
   }
   else
   {
@@ -474,10 +418,8 @@ void L(int ide)
   {
     if (vetorEncomendas[ide].produtos[j].id > (-1))
     {
-      {
-        p[i] = j;
-        i++;
-      }
+      p[i] = j;
+      i++;
     }
     else
     {
@@ -493,11 +435,9 @@ void L(int ide)
     {
       if (O(vetorProdutos[vetorEncomendas[ide].produtos[p[j]].id].desc, vetorProdutos[vetorEncomendas[ide].produtos[p[j + 1]].id].desc) == 1)
       {
-        {
-          tmp = p[j + 1];
-          p[j + 1] = p[j];
-          p[j] = tmp;
-        }
+        tmp = p[j + 1];
+        p[j + 1] = p[j];
+        p[j] = tmp;
       }
       else
       {
@@ -523,9 +463,7 @@ int O(char *a, char *b)
   {
     if (i == strlen(b))
     {
-      {
-        return 1;
-      }
+      return 1;
     }
     else
     {
@@ -534,9 +472,7 @@ int O(char *a, char *b)
 
     if (a[i] < b[i])
     {
-      {
-        return 0;
-      }
+      return 0;
     }
     else
     {
@@ -545,9 +481,7 @@ int O(char *a, char *b)
 
     if (a[i] > b[i])
     {
-      {
-        return 1;
-      }
+      return 1;
     }
     else
     {

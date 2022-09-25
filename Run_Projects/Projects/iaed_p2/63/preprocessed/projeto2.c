@@ -22,9 +22,7 @@ int main()
   {
     if (c != '\n')
     {
-      {
-        l_count++;
-      }
+      l_count++;
     }
     else
     {

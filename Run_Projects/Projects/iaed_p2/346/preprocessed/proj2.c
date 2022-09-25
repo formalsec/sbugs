@@ -33,10 +33,8 @@ void run_a(char nome[], char equipa1[], char equipa2[], int score1, int score2)
   {
     if (strcmp(jogo[i].jogo, nome) == 0)
     {
-      {
-        printf("%d Jogo existente.\n", NL);
-        return;
-      }
+      printf("%d Jogo existente.\n", NL);
+      return;
     }
     else
     {
@@ -49,9 +47,7 @@ void run_a(char nome[], char equipa1[], char equipa2[], int score1, int score2)
   {
     if (strcmp(equipas[i].equipa, equipa1) == 0)
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {
@@ -60,10 +56,8 @@ void run_a(char nome[], char equipa1[], char equipa2[], int score1, int score2)
 
     if ((i == (tamanhoequipa - 1)) && (strcmp(equipas[i].equipa, equipa1) != 0))
     {
-      {
-        printf("%d Equipa inexistente.\n", NL);
-        return;
-      }
+      printf("%d Equipa inexistente.\n", NL);
+      return;
     }
     else
     {
@@ -76,9 +70,7 @@ void run_a(char nome[], char equipa1[], char equipa2[], int score1, int score2)
   {
     if (strcmp(equipas[i].equipa, equipa2) == 0)
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {
@@ -87,10 +79,8 @@ void run_a(char nome[], char equipa1[], char equipa2[], int score1, int score2)
 
     if ((i == (tamanhoequipa - 1)) && (strcmp(equipas[i].equipa, equipa2) != 0))
     {
-      {
-        printf("%d Equipa inexistente.\n", NL);
-        return;
-      }
+      printf("%d Equipa inexistente.\n", NL);
+      return;
     }
     else
     {
@@ -103,66 +93,56 @@ void run_a(char nome[], char equipa1[], char equipa2[], int score1, int score2)
   {
     if (strcmp(jogo[i].jogo, nogame) == 0)
     {
+      strcpy(jogo[i].jogo, nome);
+      strcpy(jogo[i].equipa1, equipa1);
+      strcpy(jogo[i].equipa2, equipa2);
+      jogo[i].score1 = score1;
+      jogo[i].score2 = score2;
+      if (score1 > score2)
       {
-        strcpy(jogo[i].jogo, nome);
-        strcpy(jogo[i].equipa1, equipa1);
-        strcpy(jogo[i].equipa2, equipa2);
-        jogo[i].score1 = score1;
-        jogo[i].score2 = score2;
-        if (score1 > score2)
+        for (idx = 0; idx < tamanhoequipa; idx++)
         {
+          if (strcmp(equipas[idx].equipa, equipa1) == 0)
           {
-            for (idx = 0; idx < tamanhoequipa; idx++)
-            {
-              if (strcmp(equipas[idx].equipa, equipa1) == 0)
-              {
-                {
-                  equipas[idx].wins++;
-                  break;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
+            equipas[idx].wins++;
+            break;
           }
-        }
-        else
-        {
-          
-        }
-
-        if (score1 < score2)
-        {
+          else
           {
-            for (idx = 0; idx < tamanhoequipa; idx++)
-            {
-              if (strcmp(equipas[idx].equipa, equipa2) == 0)
-              {
-                {
-                  equipas[idx].wins++;
-                  break;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
+            
           }
-        }
-        else
-        {
-          
+
         }
 
-        return;
       }
+      else
+      {
+        
+      }
+
+      if (score1 < score2)
+      {
+        for (idx = 0; idx < tamanhoequipa; idx++)
+        {
+          if (strcmp(equipas[idx].equipa, equipa2) == 0)
+          {
+            equipas[idx].wins++;
+            break;
+          }
+          else
+          {
+            
+          }
+
+        }
+
+      }
+      else
+      {
+        
+      }
+
+      return;
     }
     else
     {
@@ -181,9 +161,7 @@ void run_l()
   {
     if (strcmp(jogo[i].jogo, nogame) == 0)
     {
-      {
-        return;
-      }
+      return;
     }
     else
     {
@@ -202,10 +180,8 @@ void run_p(char nome[])
   {
     if (strcmp(jogo[i].jogo, nome) == 0)
     {
-      {
-        printf("%d %s %s %s %d %d\n", NL, jogo[i].jogo, jogo[i].equipa1, jogo[i].equipa2, jogo[i].score1, jogo[i].score2);
-        return;
-      }
+      printf("%d %s %s %s %d %d\n", NL, jogo[i].jogo, jogo[i].equipa1, jogo[i].equipa2, jogo[i].score1, jogo[i].score2);
+      return;
     }
     else
     {
@@ -214,9 +190,7 @@ void run_p(char nome[])
 
     if ((i == (tamanhojogo - 1)) && (strcmp(jogo[i].jogo, nome) != 0))
     {
-      {
-        printf("%d Jogo inexistente.\n", NL);
-      }
+      printf("%d Jogo inexistente.\n", NL);
     }
     else
     {
@@ -236,80 +210,14 @@ void run_r(char nome[])
   {
     if (strcmp(jogo[i].jogo, nome) == 0)
     {
+      if (jogo[i].score1 > jogo[i].score2)
       {
-        if (jogo[i].score1 > jogo[i].score2)
+        for (idx = 0; idx < tamanhoequipa; idx++)
         {
+          if (strcmp(equipas[idx].equipa, jogo[i].equipa1) == 0)
           {
-            for (idx = 0; idx < tamanhoequipa; idx++)
-            {
-              if (strcmp(equipas[idx].equipa, jogo[i].equipa1) == 0)
-              {
-                {
-                  equipas[idx].wins--;
-                  break;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-          }
-        }
-        else
-        {
-          
-        }
-
-        if (jogo[i].score1 < jogo[i].score2)
-        {
-          {
-            for (idx = 0; idx < tamanhoequipa; idx++)
-            {
-              if (strcmp(equipas[idx].equipa, jogo[i].equipa2) == 0)
-              {
-                {
-                  equipas[idx].wins--;
-                  break;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-          }
-        }
-        else
-        {
-          
-        }
-
-        strcpy(jogo[i].jogo, empty);
-        strcpy(jogo[i].equipa1, empty);
-        strcpy(jogo[i].equipa2, empty);
-        jogo[i].score1 = 0;
-        jogo[i].score2 = 0;
-        for (idx = i + 1; idx < tamanhojogo; idx++)
-        {
-          if (strcmp(jogo[idx].jogo, empty) != 0)
-          {
-            {
-              strcpy(jogo[idx - 1].jogo, jogo[idx].jogo);
-              strcpy(jogo[idx - 1].equipa1, jogo[idx].equipa1);
-              strcpy(jogo[idx - 1].equipa2, jogo[idx].equipa2);
-              jogo[idx - 1].score1 = jogo[idx].score1;
-              jogo[idx - 1].score2 = jogo[idx].score2;
-              strcpy(jogo[idx].jogo, empty);
-              strcpy(jogo[idx].equipa1, empty);
-              strcpy(jogo[idx].equipa2, empty);
-              jogo[idx].score1 = 0;
-              jogo[idx].score2 = 0;
-            }
+            equipas[idx].wins--;
+            break;
           }
           else
           {
@@ -318,8 +226,62 @@ void run_r(char nome[])
 
         }
 
-        return;
       }
+      else
+      {
+        
+      }
+
+      if (jogo[i].score1 < jogo[i].score2)
+      {
+        for (idx = 0; idx < tamanhoequipa; idx++)
+        {
+          if (strcmp(equipas[idx].equipa, jogo[i].equipa2) == 0)
+          {
+            equipas[idx].wins--;
+            break;
+          }
+          else
+          {
+            
+          }
+
+        }
+
+      }
+      else
+      {
+        
+      }
+
+      strcpy(jogo[i].jogo, empty);
+      strcpy(jogo[i].equipa1, empty);
+      strcpy(jogo[i].equipa2, empty);
+      jogo[i].score1 = 0;
+      jogo[i].score2 = 0;
+      for (idx = i + 1; idx < tamanhojogo; idx++)
+      {
+        if (strcmp(jogo[idx].jogo, empty) != 0)
+        {
+          strcpy(jogo[idx - 1].jogo, jogo[idx].jogo);
+          strcpy(jogo[idx - 1].equipa1, jogo[idx].equipa1);
+          strcpy(jogo[idx - 1].equipa2, jogo[idx].equipa2);
+          jogo[idx - 1].score1 = jogo[idx].score1;
+          jogo[idx - 1].score2 = jogo[idx].score2;
+          strcpy(jogo[idx].jogo, empty);
+          strcpy(jogo[idx].equipa1, empty);
+          strcpy(jogo[idx].equipa2, empty);
+          jogo[idx].score1 = 0;
+          jogo[idx].score2 = 0;
+        }
+        else
+        {
+          
+        }
+
+      }
+
+      return;
     }
     else
     {
@@ -339,115 +301,97 @@ void run_s(char nome[], int score1, int score2)
   {
     if (strcmp(jogo[i].jogo, nome) == 0)
     {
+      if (jogo[i].score1 > jogo[i].score2)
       {
-        if (jogo[i].score1 > jogo[i].score2)
+        for (idx = 0; idx < tamanhoequipa; idx++)
         {
+          if (strcmp(equipas[idx].equipa, jogo[i].equipa1) == 0)
           {
-            for (idx = 0; idx < tamanhoequipa; idx++)
-            {
-              if (strcmp(equipas[idx].equipa, jogo[i].equipa1) == 0)
-              {
-                {
-                  equipas[idx].wins--;
-                  break;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
+            equipas[idx].wins--;
+            break;
           }
-        }
-        else
-        {
-          
-        }
-
-        if (jogo[i].score1 < jogo[i].score2)
-        {
+          else
           {
-            for (idx = 0; idx < tamanhoequipa; idx++)
-            {
-              if (strcmp(equipas[idx].equipa, jogo[i].equipa2) == 0)
-              {
-                {
-                  equipas[idx].wins--;
-                  break;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
+            
           }
-        }
-        else
-        {
-          
+
         }
 
-        jogo[i].score1 = score1;
-        jogo[i].score2 = score2;
-        if (score1 > score2)
-        {
-          {
-            for (idx = 0; idx < tamanhoequipa; idx++)
-            {
-              if (strcmp(equipas[idx].equipa, jogo[i].equipa1) == 0)
-              {
-                {
-                  equipas[idx].wins++;
-                  break;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-          }
-        }
-        else
-        {
-          
-        }
-
-        if (score1 < score2)
-        {
-          {
-            for (idx = 0; idx < tamanhoequipa; idx++)
-            {
-              if (strcmp(equipas[idx].equipa, jogo[i].equipa2) == 0)
-              {
-                {
-                  equipas[idx].wins++;
-                  break;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-          }
-        }
-        else
-        {
-          
-        }
-
-        return;
       }
+      else
+      {
+        
+      }
+
+      if (jogo[i].score1 < jogo[i].score2)
+      {
+        for (idx = 0; idx < tamanhoequipa; idx++)
+        {
+          if (strcmp(equipas[idx].equipa, jogo[i].equipa2) == 0)
+          {
+            equipas[idx].wins--;
+            break;
+          }
+          else
+          {
+            
+          }
+
+        }
+
+      }
+      else
+      {
+        
+      }
+
+      jogo[i].score1 = score1;
+      jogo[i].score2 = score2;
+      if (score1 > score2)
+      {
+        for (idx = 0; idx < tamanhoequipa; idx++)
+        {
+          if (strcmp(equipas[idx].equipa, jogo[i].equipa1) == 0)
+          {
+            equipas[idx].wins++;
+            break;
+          }
+          else
+          {
+            
+          }
+
+        }
+
+      }
+      else
+      {
+        
+      }
+
+      if (score1 < score2)
+      {
+        for (idx = 0; idx < tamanhoequipa; idx++)
+        {
+          if (strcmp(equipas[idx].equipa, jogo[i].equipa2) == 0)
+          {
+            equipas[idx].wins++;
+            break;
+          }
+          else
+          {
+            
+          }
+
+        }
+
+      }
+      else
+      {
+        
+      }
+
+      return;
     }
     else
     {
@@ -467,10 +411,8 @@ void run_A(char nome[])
   {
     if (strcmp(equipas[i].equipa, nome) == 0)
     {
-      {
-        printf("%d Equipa existente.\n", NL);
-        return;
-      }
+      printf("%d Equipa existente.\n", NL);
+      return;
     }
     else
     {
@@ -483,10 +425,8 @@ void run_A(char nome[])
   {
     if (strcmp(equipas[i].equipa, noteam) == 0)
     {
-      {
-        strcpy(equipas[i].equipa, nome);
-        return;
-      }
+      strcpy(equipas[i].equipa, nome);
+      return;
     }
     else
     {
@@ -504,10 +444,8 @@ void run_P(char nome[])
   {
     if (strcmp(equipas[i].equipa, nome) == 0)
     {
-      {
-        printf("%d %s %d\n", NL, nome, equipas[i].wins);
-        return;
-      }
+      printf("%d %s %d\n", NL, nome, equipas[i].wins);
+      return;
     }
     else
     {
@@ -532,9 +470,7 @@ void run_g()
   {
     if (equipas[i].wins > winsAux)
     {
-      {
-        winsAux = equipas[i].wins;
-      }
+      winsAux = equipas[i].wins;
     }
     else
     {
@@ -547,10 +483,8 @@ void run_g()
   {
     if ((equipas[i].wins == winsAux) && (strcmp(equipas[i].equipa, noteam) != 0))
     {
-      {
-        strcpy(ord[contAux].equipa, equipas[i].equipa);
-        contAux++;
-      }
+      strcpy(ord[contAux].equipa, equipas[i].equipa);
+      contAux++;
     }
     else
     {
@@ -561,9 +495,7 @@ void run_g()
 
   if (contAux == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {

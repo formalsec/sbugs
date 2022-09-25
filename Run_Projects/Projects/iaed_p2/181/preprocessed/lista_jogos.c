@@ -154,25 +154,19 @@ void remove_jogo(ListaJogos *lista, char *nome)
   {
     if (strcmp(t->jogo->nome, nome) == 0)
     {
+      if (t == lista->inicio)
       {
-        if (t == lista->inicio)
-        {
-          {
-            lista->inicio = lista->inicio->proximo;
-            free_NodeJogo(t);
-            break;
-          }
-        }
-        else
-        {
-          {
-            anterior->proximo = t->proximo;
-            free_NodeJogo(t);
-            break;
-          }
-        }
-
+        lista->inicio = lista->inicio->proximo;
+        free_NodeJogo(t);
+        break;
       }
+      else
+      {
+        anterior->proximo = t->proximo;
+        free_NodeJogo(t);
+        break;
+      }
+
     }
     else
     {

@@ -19,18 +19,14 @@ void insertJogo_T(Hash_table *t, Node *jogoIns)
   int i = hash(jogoIns->nome, t->capacity);
   if (t->table[i] == 0)
   {
-    {
-      Hash_node *head = 0;
-      head = insertJogo_N(head, jogoIns);
-      t->table[i] = head;
-    }
+    Hash_node *head = 0;
+    head = insertJogo_N(head, jogoIns);
+    t->table[i] = head;
   }
   else
   {
-    {
-      Hash_node *head = t->table[i];
-      insertJogo_N(head, jogoIns);
-    }
+    Hash_node *head = t->table[i];
+    insertJogo_N(head, jogoIns);
   }
 
 }
@@ -42,22 +38,18 @@ Hash_node *insertJogo_N(Hash_node *head, Node *jogoIns)
   new->next = 0;
   if (head == 0)
   {
-    {
-      head = new;
-      return head;
-    }
+    head = new;
+    return head;
   }
   else
   {
+    Hash_node *actual = head;
+    while (actual->next != 0)
     {
-      Hash_node *actual = head;
-      while (actual->next != 0)
-      {
-        actual = actual->next;
-      }
-
-      actual->next = new;
+      actual = actual->next;
     }
+
+    actual->next = new;
   }
 
   return new;
@@ -76,47 +68,41 @@ Node *removeTable(Hash_table *t, Hash_tableEq *equipasT, char *aux, int nl)
   node = t->table[h];
   if ((node != 0) && (!strcmp(node->jogo->nome, aux)))
   {
+    h1 = hash(node->jogo->equipa1, equipasT->capacity);
+    h2 = hash(node->jogo->equipa2, equipasT->capacity);
+    if (node->jogo->score1 > node->jogo->score2)
     {
-      h1 = hash(node->jogo->equipa1, equipasT->capacity);
-      h2 = hash(node->jogo->equipa2, equipasT->capacity);
-      if (node->jogo->score1 > node->jogo->score2)
+      nodeVit = equipasT->table[h1];
+      while (strcmp(nodeVit->equipa->nome, node->jogo->equipa1))
       {
-        {
-          nodeVit = equipasT->table[h1];
-          while (strcmp(nodeVit->equipa->nome, node->jogo->equipa1))
-          {
-            nodeVit = nodeVit->next;
-          }
+        nodeVit = nodeVit->next;
+      }
 
-          nodeVit->equipa->vitorias--;
+      nodeVit->equipa->vitorias--;
+    }
+    else
+    {
+      if (node->jogo->score1 < node->jogo->score2)
+      {
+        nodeVit = equipasT->table[h2];
+        while (strcmp(nodeVit->equipa->nome, node->jogo->equipa2))
+        {
+          nodeVit = nodeVit->next;
         }
+
+        nodeVit->equipa->vitorias--;
       }
       else
       {
-        if (node->jogo->score1 < node->jogo->score2)
-        {
-          {
-            nodeVit = equipasT->table[h2];
-            while (strcmp(nodeVit->equipa->nome, node->jogo->equipa2))
-            {
-              nodeVit = nodeVit->next;
-            }
-
-            nodeVit->equipa->vitorias--;
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      nodeList = node->jogo;
-      t->table[h] = node->next;
-      free(node);
-      return nodeList;
     }
+
+    nodeList = node->jogo;
+    t->table[h] = node->next;
+    free(node);
+    return nodeList;
   }
   else
   {
@@ -131,11 +117,9 @@ Node *removeTable(Hash_table *t, Hash_tableEq *equipasT, char *aux, int nl)
 
   if (node == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-      nodeList = 0;
-      return nodeList;
-    }
+    printf("%d Jogo inexistente.\n", nl);
+    nodeList = 0;
+    return nodeList;
   }
   else
   {
@@ -148,29 +132,25 @@ Node *removeTable(Hash_table *t, Hash_tableEq *equipasT, char *aux, int nl)
   h2 = hash(node->jogo->equipa2, equipasT->capacity);
   if (node->jogo->score1 > node->jogo->score2)
   {
+    nodeVit = equipasT->table[h1];
+    while (strcmp(nodeVit->equipa->nome, node->jogo->equipa1))
     {
-      nodeVit = equipasT->table[h1];
-      while (strcmp(nodeVit->equipa->nome, node->jogo->equipa1))
-      {
-        nodeVit = nodeVit->next;
-      }
-
-      nodeVit->equipa->vitorias--;
+      nodeVit = nodeVit->next;
     }
+
+    nodeVit->equipa->vitorias--;
   }
   else
   {
     if (node->jogo->score1 < node->jogo->score2)
     {
+      nodeVit = equipasT->table[h2];
+      while (strcmp(nodeVit->equipa->nome, node->jogo->equipa2))
       {
-        nodeVit = equipasT->table[h2];
-        while (strcmp(nodeVit->equipa->nome, node->jogo->equipa2))
-        {
-          nodeVit = nodeVit->next;
-        }
-
-        nodeVit->equipa->vitorias--;
+        nodeVit = nodeVit->next;
       }
+
+      nodeVit->equipa->vitorias--;
     }
     else
     {
@@ -213,24 +193,20 @@ void printTable(Hash_table *t)
     printf("%d: ", i);
     if (head == 0)
     {
-      {
-        vazios++;
-        printf("NULL");
-      }
+      vazios++;
+      printf("NULL");
     }
     else
     {
+      Hash_node *current = head;
+      colisoes--;
+      while (current != 0)
       {
-        Hash_node *current = head;
-        colisoes--;
-        while (current != 0)
-        {
-          colisoes++;
-          printf("%s ", current->jogo->nome);
-          current = current->next;
-        }
-
+        colisoes++;
+        printf("%s ", current->jogo->nome);
+        current = current->next;
       }
+
     }
 
     printf("\n");

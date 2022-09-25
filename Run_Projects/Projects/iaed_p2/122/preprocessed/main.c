@@ -25,73 +25,57 @@ int main()
     command = new_sym_var(sizeof(char) * 8);
     if (command == 'a')
     {
-      {
-        lineCounter++;
-        matches = a(matches, teams, lineCounter);
-      }
+      lineCounter++;
+      matches = a(matches, teams, lineCounter);
     }
     else
     {
       if (command == 'A')
       {
-        {
-          lineCounter++;
-          A(teams, lineCounter);
-        }
+        lineCounter++;
+        A(teams, lineCounter);
       }
       else
       {
         if (command == 'l')
         {
-          {
-            lineCounter++;
-            l(matches, lineCounter);
-          }
+          lineCounter++;
+          l(matches, lineCounter);
         }
         else
         {
           if (command == 'p')
           {
-            {
-              lineCounter++;
-              p(lineCounter);
-            }
+            lineCounter++;
+            p(lineCounter);
           }
           else
           {
             if (command == 'P')
             {
-              {
-                lineCounter++;
-                P(matches, teams, lineCounter);
-              }
+              lineCounter++;
+              P(matches, teams, lineCounter);
             }
             else
             {
               if (command == 'r')
               {
-                {
-                  lineCounter++;
-                  matches = r(matches, lineCounter);
-                }
+                lineCounter++;
+                matches = r(matches, lineCounter);
               }
               else
               {
                 if (command == 's')
                 {
-                  {
-                    lineCounter++;
-                    s(lineCounter);
-                  }
+                  lineCounter++;
+                  s(lineCounter);
                 }
                 else
                 {
                   if (command == 'g')
                   {
-                    {
-                      lineCounter++;
-                      g(matches, teams, lineCounter);
-                    }
+                    lineCounter++;
+                    g(matches, teams, lineCounter);
                   }
                   else
                   {

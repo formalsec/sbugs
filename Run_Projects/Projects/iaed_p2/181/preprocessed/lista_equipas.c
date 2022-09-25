@@ -115,19 +115,17 @@ int procura_equipaVitorias(ListaEquipas *lista, char **nomes_equipas, int vitori
   {
     if (node_equipa->equipa->vitorias == vitorias)
     {
+      nomes_equipas[posicao] = node_equipa->equipa->nome;
+      posicao++;
+      if (quantidade == posicao)
       {
-        nomes_equipas[posicao] = node_equipa->equipa->nome;
-        posicao++;
-        if (quantidade == posicao)
-        {
-          return posicao;
-        }
-        else
-        {
-          
-        }
-
+        return posicao;
       }
+      else
+      {
+        
+      }
+
     }
     else
     {
@@ -144,9 +142,7 @@ void mais_vitorias(ListaEquipas *lista, int *max_vitorias, int *quantidade)
   NodeEquipa *node_equipa;
   if (lista->inicio == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -157,10 +153,8 @@ void mais_vitorias(ListaEquipas *lista, int *max_vitorias, int *quantidade)
   {
     if (node_equipa->equipa->vitorias > (*max_vitorias))
     {
-      {
-        *max_vitorias = node_equipa->equipa->vitorias;
-        *quantidade = 1;
-      }
+      *max_vitorias = node_equipa->equipa->vitorias;
+      *quantidade = 1;
     }
     else
     {

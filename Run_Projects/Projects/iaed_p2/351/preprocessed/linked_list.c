@@ -21,17 +21,13 @@ void l_list_add_node_end(l_list *list, l_node *node)
 {
   if (list->head == 0)
   {
-    {
-      list->head = (list->last = node);
-    }
+    list->head = (list->last = node);
   }
   else
   {
-    {
-      list->last->next = node;
-      list->last = node;
-      node->next = 0;
-    }
+    list->last->next = node;
+    list->last = node;
+    node->next = 0;
   }
 
   list->n_elems++;
@@ -44,28 +40,22 @@ void l_list_remove_node_only(l_list *list, l_node *node)
   l_node *curr;
   if (list->head == node)
   {
+    if (node->next == 0)
     {
-      if (node->next == 0)
-      {
-        {
-          list->head = 0;
-          list->last = 0;
-          free(node);
-          list->n_elems--;
-          return;
-        }
-      }
-      else
-      {
-        {
-          list->head = node->next;
-          free(node);
-          list->n_elems--;
-          return;
-        }
-      }
-
+      list->head = 0;
+      list->last = 0;
+      free(node);
+      list->n_elems--;
+      return;
     }
+    else
+    {
+      list->head = node->next;
+      free(node);
+      list->n_elems--;
+      return;
+    }
+
   }
   else
   {
@@ -76,21 +66,19 @@ void l_list_remove_node_only(l_list *list, l_node *node)
   {
     if (curr == node)
     {
+      prev->next = node->next;
+      if (list->last == node)
       {
-        prev->next = node->next;
-        if (list->last == node)
-        {
-          list->last = prev;
-        }
-        else
-        {
-          
-        }
-
-        free(node);
-        list->n_elems--;
-        return;
+        list->last = prev;
       }
+      else
+      {
+        
+      }
+
+      free(node);
+      list->n_elems--;
+      return;
     }
     else
     {
@@ -108,30 +96,24 @@ void l_list_remove_node(l_list *list, l_node *node, void (*func)(void *))
   l_node *curr;
   if (list->head == node)
   {
+    if (node->next == 0)
     {
-      if (node->next == 0)
-      {
-        {
-          list->head = 0;
-          list->last = 0;
-          func(node->info_struct);
-          free(node);
-          list->n_elems--;
-          return;
-        }
-      }
-      else
-      {
-        {
-          list->head = node->next;
-          func(node->info_struct);
-          free(node);
-          list->n_elems--;
-          return;
-        }
-      }
-
+      list->head = 0;
+      list->last = 0;
+      func(node->info_struct);
+      free(node);
+      list->n_elems--;
+      return;
     }
+    else
+    {
+      list->head = node->next;
+      func(node->info_struct);
+      free(node);
+      list->n_elems--;
+      return;
+    }
+
   }
   else
   {
@@ -142,22 +124,20 @@ void l_list_remove_node(l_list *list, l_node *node, void (*func)(void *))
   {
     if (curr == node)
     {
+      prev->next = node->next;
+      if (list->last == node)
       {
-        prev->next = node->next;
-        if (list->last == node)
-        {
-          list->last = prev;
-        }
-        else
-        {
-          
-        }
-
-        func(node->info_struct);
-        free(node);
-        list->n_elems--;
-        return;
+        list->last = prev;
       }
+      else
+      {
+        
+      }
+
+      func(node->info_struct);
+      free(node);
+      list->n_elems--;
+      return;
     }
     else
     {

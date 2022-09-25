@@ -45,10 +45,8 @@ void print_targets(t_node *root, short max, int in_line)
   t = root->value;
   if (t->victs == max)
   {
-    {
-      print_targets(root->left, max, in_line);
-      printf("%d * %s\n", in_line, t->name);
-    }
+    print_targets(root->left, max, in_line);
+    printf("%d * %s\n", in_line, t->name);
   }
   else
   {

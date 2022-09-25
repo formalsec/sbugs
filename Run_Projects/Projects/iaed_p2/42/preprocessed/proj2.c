@@ -29,21 +29,17 @@ void retira_vitoria(int M, pJogo jogo, linkE *equipas)
   pEquipa equipa;
   if (jogo->score1 > jogo->score2)
   {
-    {
-      i = hash(jogo->equipa1, M);
-      equipa = SearchEquipa(jogo->equipa1, equipas[i]);
-      --equipa->vitorias;
-    }
+    i = hash(jogo->equipa1, M);
+    equipa = SearchEquipa(jogo->equipa1, equipas[i]);
+    --equipa->vitorias;
   }
   else
   {
     if (jogo->score1 < jogo->score2)
     {
-      {
-        i = hash(jogo->equipa2, M);
-        equipa = SearchEquipa(jogo->equipa2, equipas[i]);
-        --equipa->vitorias;
-      }
+      i = hash(jogo->equipa2, M);
+      equipa = SearchEquipa(jogo->equipa2, equipas[i]);
+      --equipa->vitorias;
     }
     else
     {
@@ -60,21 +56,17 @@ void atribui_vitoria(int M, pJogo jogo, linkE *equipas)
   pEquipa equipa;
   if (jogo->score1 > jogo->score2)
   {
-    {
-      i = hash(jogo->equipa1, M);
-      equipa = SearchEquipa(jogo->equipa1, equipas[i]);
-      ++equipa->vitorias;
-    }
+    i = hash(jogo->equipa1, M);
+    equipa = SearchEquipa(jogo->equipa1, equipas[i]);
+    ++equipa->vitorias;
   }
   else
   {
     if (jogo->score1 < jogo->score2)
     {
-      {
-        i = hash(jogo->equipa2, M);
-        equipa = SearchEquipa(jogo->equipa2, equipas[i]);
-        ++equipa->vitorias;
-      }
+      i = hash(jogo->equipa2, M);
+      equipa = SearchEquipa(jogo->equipa2, equipas[i]);
+      ++equipa->vitorias;
     }
     else
     {
@@ -127,12 +119,10 @@ int comando_a(int nl, int M, linkJ *jogos, linkE *equipas, lista *jogosCron)
     }
     else
     {
-      {
-        j = newJogo(nome, equipa1, equipa2, s1, s2);
-        jogos[i] = InsertJogo(j, jogos[i]);
-        atribui_vitoria(M, j, equipas);
-        jogosCron = InsertEndLista(j, jogosCron);
-      }
+      j = newJogo(nome, equipa1, equipa2, s1, s2);
+      jogos[i] = InsertJogo(j, jogos[i]);
+      atribui_vitoria(M, j, equipas);
+      jogosCron = InsertEndLista(j, jogosCron);
     }
 
   }
@@ -240,11 +230,9 @@ int comando_r(int nl, int M, linkJ *jogos, lista *jogosCron, linkE *equipas)
   }
   else
   {
-    {
-      retira_vitoria(M, j->jogo, equipas);
-      jogosCron = DeleteLista(nome, jogosCron);
-      jogos[i] = DeleteJogo(j, jogos[i]);
-    }
+    retira_vitoria(M, j->jogo, equipas);
+    jogosCron = DeleteLista(nome, jogosCron);
+    jogos[i] = DeleteJogo(j, jogos[i]);
   }
 
   return ++nl;
@@ -273,12 +261,10 @@ int comando_s(int nl, int M, linkJ *jogos, linkE *equipas)
   }
   else
   {
-    {
-      retira_vitoria(M, j->jogo, equipas);
-      j->jogo->score1 = s1;
-      j->jogo->score2 = s2;
-      atribui_vitoria(M, j->jogo, equipas);
-    }
+    retira_vitoria(M, j->jogo, equipas);
+    j->jogo->score1 = s1;
+    j->jogo->score2 = s2;
+    atribui_vitoria(M, j->jogo, equipas);
   }
 
   return ++nl;
@@ -303,10 +289,8 @@ int comando_g(int nl, int M, linkE *equipas)
     {
       if (x->equipa->vitorias > maior)
       {
-        {
-          maior = x->equipa->vitorias;
-          n = 1;
-        }
+        maior = x->equipa->vitorias;
+        n = 1;
       }
       else
       {
@@ -327,28 +311,26 @@ int comando_g(int nl, int M, linkE *equipas)
 
   if (n != 0)
   {
+    lista = (char **) malloc(n * (sizeof(char *)));
+    for (i = 0; i < M; i++)
+      for (x = equipas[i]; x != 0; x = x->next)
+      if (x->equipa->vitorias == maior)
     {
-      lista = (char **) malloc(n * (sizeof(char *)));
-      for (i = 0; i < M; i++)
-        for (x = equipas[i]; x != 0; x = x->next)
-        if (x->equipa->vitorias == maior)
-      {
-        lista[j++] = x->equipa->nome;
-      }
-      else
-      {
-        
-      }
-
-
-
-      qsort(lista, n, sizeof(char *), cmp_func);
-      printf("%d Melhores %d\n", nl, maior);
-      for (i = 0; i < n; i++)
-        printf("%d * %s\n", nl, lista[i]);
-
-      free(lista);
+      lista[j++] = x->equipa->nome;
     }
+    else
+    {
+      
+    }
+
+
+
+    qsort(lista, n, sizeof(char *), cmp_func);
+    printf("%d Melhores %d\n", nl, maior);
+    for (i = 0; i < n; i++)
+      printf("%d * %s\n", nl, lista[i]);
+
+    free(lista);
   }
   else
   {

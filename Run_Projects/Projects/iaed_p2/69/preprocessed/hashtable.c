@@ -24,17 +24,13 @@ void lista_por_ordem_add(lista *l, Jogo jogo1)
   ultimo->next = 0;
   if (l->head == 0)
   {
-    {
-      l->head = ultimo;
-      l->last = ultimo;
-    }
+    l->head = ultimo;
+    l->last = ultimo;
   }
   else
   {
-    {
-      l->last->next = ultimo;
-      l->last = ultimo;
-    }
+    l->last->next = ultimo;
+    l->last = ultimo;
   }
 
 }
@@ -48,37 +44,29 @@ void apagar_jogo_lista_por_ordem(lista *l, char *nome)
 
   if ((aux == l->head) && (aux == l->last))
   {
-    {
-      l->head = aux->next;
-      l->last = aux->next;
-      free(aux);
-    }
+    l->head = aux->next;
+    l->last = aux->next;
+    free(aux);
   }
   else
   {
     if (aux == l->head)
     {
-      {
-        l->head = aux->next;
-        free(aux);
-      }
+      l->head = aux->next;
+      free(aux);
     }
     else
     {
       if (aux == l->last)
       {
-        {
-          l->last = prev;
-          l->last->next = 0;
-          free(aux);
-        }
+        l->last = prev;
+        l->last->next = 0;
+        free(aux);
       }
       else
       {
-        {
-          prev->next = aux->next;
-          free(aux);
-        }
+        prev->next = aux->next;
+        free(aux);
       }
 
     }
@@ -211,24 +199,18 @@ lista_jogos Elimina_jogo_aux(lista_jogos head_jg, char *nome)
   {
     if (strcmp(aux->jogo->nome_jogo, nome) == 0)
     {
+      if (aux == head_jg)
       {
-        if (aux == head_jg)
-        {
-          {
-            head_jg = aux->next;
-          }
-        }
-        else
-        {
-          {
-            anterior->next = aux->next;
-          }
-        }
-
-        free_jogo(aux->jogo);
-        free(aux);
-        return head_jg;
+        head_jg = aux->next;
       }
+      else
+      {
+        anterior->next = aux->next;
+      }
+
+      free_jogo(aux->jogo);
+      free(aux);
+      return head_jg;
     }
     else
     {

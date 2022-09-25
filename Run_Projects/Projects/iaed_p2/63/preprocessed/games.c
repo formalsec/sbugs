@@ -80,9 +80,7 @@ node_teams *get_winner(node_games *game)
 {
   if (game->g.score1 > game->g.score2)
   {
-    {
-      return game->g.t_1;
-    }
+    return game->g.t_1;
   }
   else
   {
@@ -91,9 +89,7 @@ node_teams *get_winner(node_games *game)
 
   if (game->g.score1 < game->g.score2)
   {
-    {
-      return game->g.t_2;
-    }
+    return game->g.t_2;
   }
   else
   {
@@ -110,11 +106,9 @@ node_games *push_game(node_games *head, game g)
   new->next = 0;
   if (head == 0)
   {
-    {
-      new->prev = 0;
-      head = new;
-      return head;
-    }
+    new->prev = 0;
+    head = new;
+    return head;
   }
   else
   {
@@ -233,9 +227,7 @@ void print_games_in_order(node_games *head, int line_counter)
   node_games *tmp;
   if (head == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -267,70 +259,54 @@ void delete_swaps(node_games **head_games, node_games **games_table, node_games 
   game_prev_t = get_prev_table(game_found);
   if ((game_next_l == 0) && (game_prev_l == 0))
   {
-    {
-      *head_games = 0;
-    }
+    *head_games = 0;
   }
   else
   {
     if ((game_next_l == 0) && (game_prev_l != 0))
     {
-      {
-        game_prev_l->next = 0;
-        *head_games = game_prev_l;
-      }
+      game_prev_l->next = 0;
+      *head_games = game_prev_l;
     }
     else
     {
+      game_next_l->prev = game_prev_l;
+      if (game_prev_l != 0)
       {
-        game_next_l->prev = game_prev_l;
-        if (game_prev_l != 0)
-        {
-          {
-            game_prev_l->next = game_next_l;
-          }
-        }
-        else
-        {
-          
-        }
-
+        game_prev_l->next = game_next_l;
       }
+      else
+      {
+        
+      }
+
     }
 
   }
 
   if ((game_next_t == 0) && (game_prev_t == 0))
   {
-    {
-      games_table[index] = 0;
-    }
+    games_table[index] = 0;
   }
   else
   {
     if ((game_next_t == 0) && (game_prev_t != 0))
     {
-      {
-        game_prev_t->next_in_hash_table = 0;
-        games_table[index] = game_prev_t;
-      }
+      game_prev_t->next_in_hash_table = 0;
+      games_table[index] = game_prev_t;
     }
     else
     {
+      game_next_t->prev_in_hash_table = game_prev_t;
+      if (game_prev_t != 0)
       {
-        game_next_t->prev_in_hash_table = game_prev_t;
-        if (game_prev_t != 0)
-        {
-          {
-            game_prev_t->next_in_hash_table = game_next_t;
-          }
-        }
-        else
-        {
-          
-        }
-
+        game_prev_t->next_in_hash_table = game_next_t;
       }
+      else
+      {
+        
+      }
+
     }
 
   }

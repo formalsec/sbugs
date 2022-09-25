@@ -53,9 +53,7 @@ void insert_equipa(char *key, equipa value, int tblsz, equipa *eq, int N)
   eq[index]->vitorias = value->vitorias;
   if (N > (tblsz / 2))
   {
-    {
-      expand_equipa(tblsz, eq, N);
-    }
+    expand_equipa(tblsz, eq, N);
   }
   else
   {
@@ -74,9 +72,7 @@ void expand_equipa(int tblsz_equipa, equipa *eq, int N)
   {
     if (t[i] != 0)
     {
-      {
-        insert_equipa(t[i]->nome_equipa, t[i], tblsz_equipa + tblsz_equipa, eq, N);
-      }
+      insert_equipa(t[i]->nome_equipa, t[i], tblsz_equipa + tblsz_equipa, eq, N);
     }
     else
     {
@@ -108,9 +104,7 @@ void insert_jogo(char *key, jogo value, int tblsz, jogo *st, int M)
   st[index]->score2 = value->score2;
   if (M > (tblsz / 2))
   {
-    {
-      expand_jogo(tblsz, st, M);
-    }
+    expand_jogo(tblsz, st, M);
   }
   else
   {
@@ -129,9 +123,7 @@ void expand_jogo(int tblsz_jogo, jogo *st, int M)
   {
     if (t[i] != 0)
     {
-      {
-        insert_jogo(t[i]->nome, t[i], tblsz_jogo + tblsz_jogo, st, M);
-      }
+      insert_jogo(t[i]->nome, t[i], tblsz_jogo + tblsz_jogo, st, M);
     }
     else
     {
@@ -151,9 +143,7 @@ equipa search_equipa(char *key, int tblsz, equipa *eq)
   {
     if (strcmp(eq[index]->nome_equipa, key) == 0)
     {
-      {
-        return eq[index];
-      }
+      return eq[index];
     }
     else
     {
@@ -173,9 +163,7 @@ jogo search_jogo(char *key, int tblsz, jogo *st)
   {
     if (strcmp(st[index]->nome, key) == 0)
     {
-      {
-        return st[index];
-      }
+      return st[index];
     }
     else
     {
@@ -196,9 +184,7 @@ void delete_jogo(char *key, int tblsz, jogo *st, int M)
   {
     if (strcmp(st[index]->nome, key) == 0)
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {
@@ -209,9 +195,7 @@ void delete_jogo(char *key, int tblsz, jogo *st, int M)
 
   if (st[index] == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -243,9 +227,7 @@ int get_vitorias(char *key, int tblsz, equipa *eq)
   {
     if (strcmp(eq[index]->nome_equipa, key) == 0)
     {
-      {
-        return eq[index]->vitorias;
-      }
+      return eq[index]->vitorias;
     }
     else
     {
@@ -265,29 +247,23 @@ char *quem_ganhou(char *key, int tblsz, jogo *st)
   {
     if (strcmp(st[index]->nome, key) == 0)
     {
+      if (st[index]->score1 > st[index]->score2)
       {
-        if (st[index]->score1 > st[index]->score2)
+        return st[index]->equipa1;
+      }
+      else
+      {
+        if (st[index]->score1 < st[index]->score2)
         {
-          {
-            return st[index]->equipa1;
-          }
+          return st[index]->equipa2;
         }
         else
         {
-          if (st[index]->score1 < st[index]->score2)
-          {
-            {
-              return st[index]->equipa2;
-            }
-          }
-          else
-          {
-            return 0;
-          }
-
+          return 0;
         }
 
       }
+
     }
     else
     {
@@ -307,29 +283,23 @@ int quem_ganhou_int(char *key, int tblsz, jogo *st)
   {
     if (strcmp(st[index]->nome, key) == 0)
     {
+      if (st[index]->score1 > st[index]->score2)
       {
-        if (st[index]->score1 > st[index]->score2)
+        return 1;
+      }
+      else
+      {
+        if (st[index]->score1 < st[index]->score2)
         {
-          {
-            return 1;
-          }
+          return 2;
         }
         else
         {
-          if (st[index]->score1 < st[index]->score2)
-          {
-            {
-              return 2;
-            }
-          }
-          else
-          {
-            return 0;
-          }
-
+          return 0;
         }
 
       }
+
     }
     else
     {
@@ -349,11 +319,9 @@ void altera_score(char *key, int tblsz, int score1, int score2, jogo *st)
   {
     if (strcmp(st[index]->nome, key) == 0)
     {
-      {
-        st[index]->score1 = score1;
-        st[index]->score2 = score2;
-        return;
-      }
+      st[index]->score1 = score1;
+      st[index]->score2 = score2;
+      return;
     }
     else
     {
@@ -372,10 +340,8 @@ void altera_vitorias(char *key, int tblsz, int vit, equipa *eq)
   {
     if (strcmp(eq[index]->nome_equipa, key) == 0)
     {
-      {
-        eq[index]->vitorias += vit;
-        return;
-      }
+      eq[index]->vitorias += vit;
+      return;
     }
     else
     {
@@ -394,9 +360,7 @@ char *obtem_equipa1(char *key, int tblsz, jogo *st)
   {
     if (strcmp(st[index]->nome, key) == 0)
     {
-      {
-        return st[index]->equipa1;
-      }
+      return st[index]->equipa1;
     }
     else
     {
@@ -416,9 +380,7 @@ char *obtem_equipa2(char *key, int tblsz, jogo *st)
   {
     if (strcmp(st[index]->nome, key) == 0)
     {
-      {
-        return st[index]->equipa2;
-      }
+      return st[index]->equipa2;
     }
     else
     {

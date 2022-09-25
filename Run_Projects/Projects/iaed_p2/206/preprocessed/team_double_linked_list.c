@@ -24,15 +24,11 @@ void add_last_team_list(Team_List *TL, Team team)
   new_team_node->team = team;
   if (TL->last)
   {
-    {
-      TL->last->next = new_team_node;
-    }
+    TL->last->next = new_team_node;
   }
   else
   {
-    {
-      TL->head = new_team_node;
-    }
+    TL->head = new_team_node;
   }
 
   TL->last = new_team_node;

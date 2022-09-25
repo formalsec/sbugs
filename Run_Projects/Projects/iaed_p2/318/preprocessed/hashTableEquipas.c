@@ -28,18 +28,14 @@ void addHTE(equipa *equipa, HT_equipas *heads, int HT_tam)
   novo->equipa = equipa;
   if (heads[i])
   {
-    {
-      heads[i]->prev = novo;
-      heads[i]->prev->equipa = equipa;
-      heads[i]->prev->next = heads[i];
-      heads[i] = heads[i]->prev;
-    }
+    heads[i]->prev = novo;
+    heads[i]->prev->equipa = equipa;
+    heads[i]->prev->next = heads[i];
+    heads[i] = heads[i]->prev;
   }
   else
   {
-    {
-      heads[i] = novo;
-    }
+    heads[i] = novo;
   }
 
 }
@@ -54,33 +50,25 @@ void remHTE(char *nome, HT_equipas *heads, int HT_tam)
     equipa = HT_equipas->equipa;
     if (compare_strings(equipa->nome, nome) == 0)
     {
+      if (HT_equipas->prev == 0)
       {
-        if (HT_equipas->prev == 0)
-        {
-          {
-            heads[i] = HT_equipas->next;
-          }
-        }
-        else
-        {
-          {
-            HT_equipas->prev->next = HT_equipas->next;
-          }
-        }
-
-        if (HT_equipas->next != 0)
-        {
-          {
-            HT_equipas->next->prev = HT_equipas->prev;
-          }
-        }
-        else
-        {
-          
-        }
-
-        free(HT_equipas);
+        heads[i] = HT_equipas->next;
       }
+      else
+      {
+        HT_equipas->prev->next = HT_equipas->next;
+      }
+
+      if (HT_equipas->next != 0)
+      {
+        HT_equipas->next->prev = HT_equipas->prev;
+      }
+      else
+      {
+        
+      }
+
+      free(HT_equipas);
     }
     else
     {
@@ -103,10 +91,8 @@ equipa *searchEquipa(char *nome, HT_equipas *heads, int HT_tam)
     equipa_ = HT_equipas->equipa;
     if (compare_strings(equipa_->nome, nome) == 0)
     {
-      {
-        final = HT_equipas->equipa;
-        break;
-      }
+      final = HT_equipas->equipa;
+      break;
     }
     else
     {

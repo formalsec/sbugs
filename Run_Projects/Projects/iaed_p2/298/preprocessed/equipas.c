@@ -26,11 +26,9 @@ void add_equipa(EQUIPA **hashtable_equipas, EQUIPA *nova_equipa)
   }
   else
   {
-    {
-      unsigned long indice = hash(nova_equipa->nome);
-      nova_equipa->next = hashtable_equipas[indice];
-      hashtable_equipas[indice] = nova_equipa;
-    }
+    unsigned long indice = hash(nova_equipa->nome);
+    nova_equipa->next = hashtable_equipas[indice];
+    hashtable_equipas[indice] = nova_equipa;
   }
 
 }
@@ -45,23 +43,21 @@ EQUIPA *procura_equipa(EQUIPA **hashtable_equipas, char *nome)
   }
   else
   {
+    while (tmp != 0)
     {
-      while (tmp != 0)
+      if (strcmp(tmp->nome, nome) == 0)
       {
-        if (strcmp(tmp->nome, nome) == 0)
-        {
-          return tmp;
-        }
-        else
-        {
-          
-        }
-
-        tmp = tmp->next;
+        return tmp;
+      }
+      else
+      {
+        
       }
 
-      return 0;
+      tmp = tmp->next;
     }
+
+    return 0;
   }
 
 }
@@ -81,9 +77,7 @@ void remove_score(EQUIPA **hashtable_equipas, char *nome)
   }
   else
   {
-    {
-      equipa->score = 0;
-    }
+    equipa->score = 0;
   }
 
 }

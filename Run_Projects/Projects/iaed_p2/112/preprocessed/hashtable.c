@@ -20,9 +20,7 @@ int hash(char *nome_jogo, int *M)
 
   if (h < 0)
   {
-    {
-      h = h * (-1);
-    }
+    h = h * (-1);
   }
   else
   {
@@ -83,15 +81,11 @@ link STdelete(char *nome_jogo, int *M, pjogo *st, link *head)
   {
     if (strcmp(st[i]->nome_jogo, nome_jogo) == 0)
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {
-      {
-        i = (i + 1) % (*M);
-      }
+      i = (i + 1) % (*M);
     }
 
   }
@@ -100,36 +94,30 @@ link STdelete(char *nome_jogo, int *M, pjogo *st, link *head)
   {
     if (strcmp(t->jogo->nome_jogo, nome_jogo) == 0)
     {
+      if (t == (*head))
       {
-        if (t == (*head))
-        {
-          {
-            *head = t->next;
-            free(t->jogo->nome_jogo);
-            free(t->jogo->equipa1);
-            free(t->jogo->equipa2);
-            free(t->jogo);
-            free(t);
-            st[i] = 0;
-            break;
-          }
-        }
-        else
-        {
-          {
-            prev->next = t->next;
-            t->next = 0;
-            free(t->jogo->nome_jogo);
-            free(t->jogo->equipa1);
-            free(t->jogo->equipa2);
-            free(t->jogo);
-            free(t);
-            st[i] = 0;
-            break;
-          }
-        }
-
+        *head = t->next;
+        free(t->jogo->nome_jogo);
+        free(t->jogo->equipa1);
+        free(t->jogo->equipa2);
+        free(t->jogo);
+        free(t);
+        st[i] = 0;
+        break;
       }
+      else
+      {
+        prev->next = t->next;
+        t->next = 0;
+        free(t->jogo->nome_jogo);
+        free(t->jogo->equipa1);
+        free(t->jogo->equipa2);
+        free(t->jogo);
+        free(t);
+        st[i] = 0;
+        break;
+      }
+
     }
     else
     {
@@ -154,15 +142,11 @@ pjogo search(char *nome_jogo, int *M, pjogo *st)
   {
     if (strcmp(st[i]->nome_jogo, nome_jogo) == 0)
     {
-      {
-        return st[i];
-      }
+      return st[i];
     }
     else
     {
-      {
-        i = (i + 1) % (*M);
-      }
+      i = (i + 1) % (*M);
     }
 
   }
@@ -202,15 +186,11 @@ pequipa search_equipa(char *equipa, int *L, pequipa *ht)
   {
     if (strcmp(ht[i]->equipa, equipa) == 0)
     {
-      {
-        return ht[i];
-      }
+      return ht[i];
     }
     else
     {
-      {
-        i = (i + 1) % (*L);
-      }
+      i = (i + 1) % (*L);
     }
 
   }

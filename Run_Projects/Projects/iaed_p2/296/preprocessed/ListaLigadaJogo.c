@@ -130,11 +130,9 @@ void ll_deletar_jogo(Lista_Ligada_Jogo *l, char *chave)
   {
     if (strcmp(tmp->chave, chave) == 0)
     {
-      {
-        ll_deletar_no(l, tmp);
-        free_no_jogo(tmp);
-        return;
-      }
+      ll_deletar_no(l, tmp);
+      free_no_jogo(tmp);
+      return;
     }
     else
     {

@@ -51,11 +51,9 @@ void new_team(Teams *teams, HashTeams *hashtable, int NL)
   }
   else
   {
-    {
-      team *new_team = alloc_team(team_name);
-      add_last_team(teams, new_team);
-      add_team_to_hash(new_team, hashtable);
-    }
+    team *new_team = alloc_team(team_name);
+    add_last_team(teams, new_team);
+    add_team_to_hash(new_team, hashtable);
   }
 
 }
@@ -120,22 +118,18 @@ void find_most_winning_teams(Teams *teams, int NL)
   {
     if (team_x->wins > max_wins)
     {
-      {
-        max_wins = team_x->wins;
-        clean_winning_teams(W_teams, i);
-        i = 0;
-        W_teams[i] = team_x;
-        i++;
-      }
+      max_wins = team_x->wins;
+      clean_winning_teams(W_teams, i);
+      i = 0;
+      W_teams[i] = team_x;
+      i++;
     }
     else
     {
       if (team_x->wins == max_wins)
       {
-        {
-          W_teams[i] = team_x;
-          i++;
-        }
+        W_teams[i] = team_x;
+        i++;
       }
       else
       {
@@ -193,11 +187,9 @@ int partition(team **W_teams, int l, int r)
 
     if (i < j)
     {
-      {
-        team *t = W_teams[i];
-        W_teams[i] = W_teams[j];
-        W_teams[j] = t;
-      }
+      team *t = W_teams[i];
+      W_teams[i] = W_teams[j];
+      W_teams[j] = t;
     }
     else
     {
@@ -229,12 +221,10 @@ void print_winning_teams(team **W_teams, int i, int NL, int max_wins)
   int aux;
   if (i > 0)
   {
-    {
-      printf("%d Melhores %d\n", NL, max_wins);
-      for (aux = 0; aux < i; aux++)
-        printf("%d * %s\n", NL, W_teams[aux]->name);
+    printf("%d Melhores %d\n", NL, max_wins);
+    for (aux = 0; aux < i; aux++)
+      printf("%d * %s\n", NL, W_teams[aux]->name);
 
-    }
   }
   else
   {
@@ -366,23 +356,21 @@ void rehash_teams(HashTeams *hashtable, team **new_slots, team **old_slots, int 
   {
     if (old_slots[i] != 0)
     {
+      h = hash(old_slots[i]->name, new_cap);
+      inc = (1 + (3 * h)) % new_cap;
+      if (inc == 0)
       {
-        h = hash(old_slots[i]->name, new_cap);
-        inc = (1 + (3 * h)) % new_cap;
-        if (inc == 0)
-        {
-          inc++;
-        }
-        else
-        {
-          
-        }
-
-        while (new_slots[h] != 0)
-          h = (h + inc) % new_cap;
-
-        new_slots[h] = old_slots[i];
+        inc++;
       }
+      else
+      {
+        
+      }
+
+      while (new_slots[h] != 0)
+        h = (h + inc) % new_cap;
+
+      new_slots[h] = old_slots[i];
     }
     else
     {

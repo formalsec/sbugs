@@ -25,15 +25,11 @@ void merge(char **aux, char **a, int l, int m, int r)
   {
     if (strcmp(aux[j], aux[i]) < 0)
     {
-      {
-        a[k] = aux[j--];
-      }
+      a[k] = aux[j--];
     }
     else
     {
-      {
-        a[k] = aux[i++];
-      }
+      a[k] = aux[i++];
     }
 
   }
@@ -81,10 +77,8 @@ void listaVencedores(Hash_tableEq *equipasT, int nl)
       {
         if (node->equipa->vitorias > max)
         {
-          {
-            max = node->equipa->vitorias;
-            counter = 1;
-          }
+          max = node->equipa->vitorias;
+          counter = 1;
         }
         else
         {
@@ -106,13 +100,11 @@ void listaVencedores(Hash_tableEq *equipasT, int nl)
     {
       if (node->equipa->vitorias == max)
       {
-        {
-          strcpy(buffer, node->equipa->nome);
-          len = strlen(buffer) + 1;
-          backup[i2] = (char *) malloc((sizeof(char)) * len);
-          strcpy(backup[i2], node->equipa->nome);
-          i2++;
-        }
+        strcpy(buffer, node->equipa->nome);
+        len = strlen(buffer) + 1;
+        backup[i2] = (char *) malloc((sizeof(char)) * len);
+        strcpy(backup[i2], node->equipa->nome);
+        i2++;
       }
       else
       {
@@ -128,11 +120,9 @@ void listaVencedores(Hash_tableEq *equipasT, int nl)
   mergesort(aux, backup, 0, i2 - 1);
   if (max == (-1))
   {
-    {
-      free(backup);
-      free(aux);
-      return;
-    }
+    free(backup);
+    free(aux);
+    return;
   }
   else
   {

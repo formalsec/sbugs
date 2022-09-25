@@ -49,9 +49,7 @@ int prod_exists(int id)
 {
   if (((id >= 0) && (id < 10000)) && (strlen(stock[id].description) != 0))
   {
-    {
-      return 1;
-    }
+    return 1;
   }
   else
   {
@@ -69,15 +67,11 @@ void add_stock()
   qtd = new_sym_var(sizeof(int) * 8);
   if (prod_exists(idp))
   {
-    {
-      stock[idp].quantity += qtd;
-    }
+    stock[idp].quantity += qtd;
   }
   else
   {
-    {
-      printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idp);
-    }
+    printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idp);
   }
 
 }
@@ -90,27 +84,19 @@ void remove_stock()
   qtd = new_sym_var(sizeof(int) * 8);
   if (prod_exists(idp))
   {
+    if (stock[idp].quantity < qtd)
     {
-      if (stock[idp].quantity < qtd)
-      {
-        {
-          printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, idp);
-        }
-      }
-      else
-      {
-        {
-          stock[idp].quantity -= qtd;
-        }
-      }
-
+      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, idp);
     }
+    else
+    {
+      stock[idp].quantity -= qtd;
+    }
+
   }
   else
   {
-    {
-      printf("Impossivel remover stock do produto %d. Produto inexistente.\n", idp);
-    }
+    printf("Impossivel remover stock do produto %d. Produto inexistente.\n", idp);
   }
 
 }
@@ -123,15 +109,11 @@ void change_price()
   price = new_sym_var(sizeof(int) * 8);
   if (prod_exists(idp))
   {
-    {
-      stock[idp].price = price;
-    }
+    stock[idp].price = price;
   }
   else
   {
-    {
-      printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idp);
-    }
+    printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idp);
   }
 
 }
@@ -146,9 +128,7 @@ void sort_products()
   {
     if (!prod_exists(j))
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {

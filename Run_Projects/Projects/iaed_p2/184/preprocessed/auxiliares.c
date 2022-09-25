@@ -17,17 +17,15 @@ int vencedor(int p1, int p2)
   }
   else
   {
+    if (p1 > p2)
     {
-      if (p1 > p2)
-      {
-        return 1;
-      }
-      else
-      {
-        return 2;
-      }
-
+      return 1;
     }
+    else
+    {
+      return 2;
+    }
+
   }
 
 }
@@ -39,21 +37,17 @@ void vitorias(linkE head, int p1, int p2, char *equipa_1, char *equipa_2, hptr *
   vence = vencedor(p1, p2);
   if (vence == 1)
   {
-    {
-      aux = encontra_E(head, equipa_1);
-      ++aux->vitorias;
-      (*h1)->max_vit = aux->vitorias;
-    }
+    aux = encontra_E(head, equipa_1);
+    ++aux->vitorias;
+    (*h1)->max_vit = aux->vitorias;
   }
   else
   {
     if (vence == 2)
     {
-      {
-        aux = encontra_E(head, equipa_2);
-        ++aux->vitorias;
-        (*h1)->max_vit = aux->vitorias;
-      }
+      aux = encontra_E(head, equipa_2);
+      ++aux->vitorias;
+      (*h1)->max_vit = aux->vitorias;
     }
     else
     {
@@ -75,19 +69,15 @@ void retira_pontos(linkJ jogo, linkE headE, hptr *h1)
   vence = vencedor(p1, p2);
   if (vence == 1)
   {
-    {
-      aux = encontra_E(headE, jogo->equipa1);
-      --aux->vitorias;
-    }
+    aux = encontra_E(headE, jogo->equipa1);
+    --aux->vitorias;
   }
   else
   {
     if (vence == 2)
     {
-      {
-        aux = encontra_E(headE, jogo->equipa2);
-        --aux->vitorias;
-      }
+      aux = encontra_E(headE, jogo->equipa2);
+      --aux->vitorias;
     }
     else
     {
@@ -143,15 +133,13 @@ void aumenta(hptr *headH, int n)
 {
   if (n == 3)
   {
-    {
-      arm novo_arm;
-      hptr aux;
-      aux = (arm *) malloc(sizeof(arm));
-      novo_arm.cont = 0;
-      novo_arm.max_vit = 0;
-      *aux = novo_arm;
-      *headH = aux;
-    }
+    arm novo_arm;
+    hptr aux;
+    aux = (arm *) malloc(sizeof(arm));
+    novo_arm.cont = 0;
+    novo_arm.max_vit = 0;
+    *aux = novo_arm;
+    *headH = aux;
   }
   else
   {

@@ -61,10 +61,8 @@ void do_a(Team *hash_team_sys, Game *hash_game_sys, int *game_count, int nl_coun
   g_dummy = gameHashLookup(hash_game_sys, game_name);
   if (g_dummy)
   {
-    {
-      printf("%d Jogo existente.\n", nl_count);
-      return;
-    }
+    printf("%d Jogo existente.\n", nl_count);
+    return;
   }
   else
   {
@@ -75,38 +73,34 @@ void do_a(Team *hash_team_sys, Game *hash_game_sys, int *game_count, int nl_coun
   t2_dummy = teamHashLookup(hash_team_sys, t2_name);
   if (t1_dummy && t2_dummy)
   {
+    if (strcmp(t1_dummy->name, t2_dummy->name))
     {
-      if (strcmp(t1_dummy->name, t2_dummy->name))
+      g_dummy = createGame(game_name, t1_name, t2_name, t1_score, t2_score, nl_count);
+      insertGame(hash_game_sys, g_dummy);
+      ++(*game_count);
+      if (t1_score > t2_score)
       {
-        {
-          g_dummy = createGame(game_name, t1_name, t2_name, t1_score, t2_score, nl_count);
-          insertGame(hash_game_sys, g_dummy);
-          ++(*game_count);
-          if (t1_score > t2_score)
-          {
-            ++t1_dummy->wins;
-          }
-          else
-          {
-            if (t1_score < t2_score)
-            {
-              ++t2_dummy->wins;
-            }
-            else
-            {
-              
-            }
-
-          }
-
-        }
+        ++t1_dummy->wins;
       }
       else
       {
-        
+        if (t1_score < t2_score)
+        {
+          ++t2_dummy->wins;
+        }
+        else
+        {
+          
+        }
+
       }
 
     }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -138,10 +132,8 @@ void do_A(Team *hash_team_sys, int *team_count, int nl_count)
   t_dummy = teamHashLookup(hash_team_sys, name);
   if (t_dummy)
   {
-    {
-      printf("%d Equipa existente.\n", nl_count);
-      return;
-    }
+    printf("%d Equipa existente.\n", nl_count);
+    return;
   }
   else
   {
@@ -173,14 +165,12 @@ void do_l(Game *hash_game_sys, int nl_count)
 
   if (last_pos)
   {
+    qsort(sorted_games, last_pos, sizeof(Game), gameCmpNLine);
+    for (i = 0; i < last_pos; i++)
     {
-      qsort(sorted_games, last_pos, sizeof(Game), gameCmpNLine);
-      for (i = 0; i < last_pos; i++)
-      {
-        printf("%d %s %s %s %u %u\n", nl_count, sorted_games[i]->name, sorted_games[i]->team1, sorted_games[i]->team2, sorted_games[i]->t1_score, sorted_games[i]->t2_score);
-      }
-
+      printf("%d %s %s %s %u %u\n", nl_count, sorted_games[i]->name, sorted_games[i]->team1, sorted_games[i]->team2, sorted_games[i]->t1_score, sorted_games[i]->t2_score);
     }
+
   }
   else
   {
@@ -202,9 +192,7 @@ void do_p(Game *hash_game_sys, int nl_count)
   g_dummy = gameHashLookup(hash_game_sys, name);
   if (g_dummy)
   {
-    {
-      printf("%d %s %s %s %u %u\n", nl_count, g_dummy->name, g_dummy->team1, g_dummy->team2, g_dummy->t1_score, g_dummy->t2_score);
-    }
+    printf("%d %s %s %s %u %u\n", nl_count, g_dummy->name, g_dummy->team1, g_dummy->team2, g_dummy->t1_score, g_dummy->t2_score);
   }
   else
   {
@@ -226,9 +214,7 @@ void do_P(Team *hash_team_sys, int nl_count)
   t_dummy = teamHashLookup(hash_team_sys, name);
   if (t_dummy)
   {
-    {
-      printf("%d %s %u\n", nl_count, t_dummy->name, t_dummy->wins);
-    }
+    printf("%d %s %u\n", nl_count, t_dummy->name, t_dummy->wins);
   }
   else
   {
@@ -252,29 +238,27 @@ void do_r(Team *hash_team_sys, Game *hash_game_sys, int *game_count, int nl_coun
   trashed_game = gameHashLookup(hash_game_sys, name);
   if (trashed_game)
   {
+    t1_dummy = teamHashLookup(hash_team_sys, trashed_game->team1);
+    t2_dummy = teamHashLookup(hash_team_sys, trashed_game->team2);
+    if (trashed_game->t1_score > trashed_game->t2_score)
     {
-      t1_dummy = teamHashLookup(hash_team_sys, trashed_game->team1);
-      t2_dummy = teamHashLookup(hash_team_sys, trashed_game->team2);
-      if (trashed_game->t1_score > trashed_game->t2_score)
+      --t1_dummy->wins;
+    }
+    else
+    {
+      if (trashed_game->t1_score < trashed_game->t2_score)
       {
-        --t1_dummy->wins;
+        --t2_dummy->wins;
       }
       else
       {
-        if (trashed_game->t1_score < trashed_game->t2_score)
-        {
-          --t2_dummy->wins;
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      trashed_game->removed_state = 1;
-      --(*game_count);
     }
+
+    trashed_game->removed_state = 1;
+    --(*game_count);
   }
   else
   {
@@ -304,93 +288,79 @@ void do_s(Team *hash_team_sys, Game *hash_game_sys, int nl_count)
   g_dummy = gameHashLookup(hash_game_sys, name);
   if (g_dummy)
   {
+    old_t1_score = g_dummy->t1_score;
+    old_t2_score = g_dummy->t2_score;
+    g_dummy->t1_score = new_t1_score;
+    g_dummy->t2_score = new_t2_score;
+    t1_dummy = teamHashLookup(hash_team_sys, g_dummy->team1);
+    t2_dummy = teamHashLookup(hash_team_sys, g_dummy->team2);
+    if (old_t1_score < old_t2_score)
     {
-      old_t1_score = g_dummy->t1_score;
-      old_t2_score = g_dummy->t2_score;
-      g_dummy->t1_score = new_t1_score;
-      g_dummy->t2_score = new_t2_score;
-      t1_dummy = teamHashLookup(hash_team_sys, g_dummy->team1);
-      t2_dummy = teamHashLookup(hash_team_sys, g_dummy->team2);
-      if (old_t1_score < old_t2_score)
+      if (new_t1_score > new_t2_score)
       {
-        {
-          if (new_t1_score > new_t2_score)
-          {
-            {
-              ++t1_dummy->wins;
-              --t2_dummy->wins;
-            }
-          }
-          else
-          {
-            if (new_t1_score == new_t2_score)
-            {
-              --t2_dummy->wins;
-            }
-            else
-            {
-              
-            }
-
-          }
-
-        }
+        ++t1_dummy->wins;
+        --t2_dummy->wins;
       }
       else
       {
-        if (old_t1_score == old_t2_score)
+        if (new_t1_score == new_t2_score)
         {
-          {
-            if (new_t1_score > new_t2_score)
-            {
-              {
-                ++t1_dummy->wins;
-              }
-            }
-            else
-            {
-              if (new_t1_score < new_t2_score)
-              {
-                ++t2_dummy->wins;
-              }
-              else
-              {
-                
-              }
-
-            }
-
-          }
+          --t2_dummy->wins;
         }
         else
         {
-          {
-            if (new_t1_score < new_t2_score)
-            {
-              {
-                --t1_dummy->wins;
-                ++t2_dummy->wins;
-              }
-            }
-            else
-            {
-              if (new_t1_score == new_t2_score)
-              {
-                --t1_dummy->wins;
-              }
-              else
-              {
-                
-              }
-
-            }
-
-          }
+          
         }
 
       }
 
     }
+    else
+    {
+      if (old_t1_score == old_t2_score)
+      {
+        if (new_t1_score > new_t2_score)
+        {
+          ++t1_dummy->wins;
+        }
+        else
+        {
+          if (new_t1_score < new_t2_score)
+          {
+            ++t2_dummy->wins;
+          }
+          else
+          {
+            
+          }
+
+        }
+
+      }
+      else
+      {
+        if (new_t1_score < new_t2_score)
+        {
+          --t1_dummy->wins;
+          ++t2_dummy->wins;
+        }
+        else
+        {
+          if (new_t1_score == new_t2_score)
+          {
+            --t1_dummy->wins;
+          }
+          else
+          {
+            
+          }
+
+        }
+
+      }
+
+    }
+
   }
   else
   {
@@ -421,15 +391,13 @@ void do_g(Team *hash_team_sys, int nl_count)
 
   if (last_pos)
   {
+    qsort(sorted_teams, last_pos, sizeof(Team), teamCmpABC);
+    printf("%d Melhores %u\n", nl_count, max_wins);
+    for (i = 0; i < last_pos; i++)
     {
-      qsort(sorted_teams, last_pos, sizeof(Team), teamCmpABC);
-      printf("%d Melhores %u\n", nl_count, max_wins);
-      for (i = 0; i < last_pos; i++)
-      {
-        printf("%d * %s\n", nl_count, sorted_teams[i]->name);
-      }
-
+      printf("%d * %s\n", nl_count, sorted_teams[i]->name);
     }
+
   }
   else
   {

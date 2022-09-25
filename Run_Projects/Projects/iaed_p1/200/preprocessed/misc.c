@@ -16,9 +16,7 @@ void show_stock()
   {
     if (prod_exists(i))
     {
-      {
-        printf("* %s %d %d\n", stock[i].description, stock[i].price, stock[i].quantity);
-      }
+      printf("* %s %d %d\n", stock[i].description, stock[i].price, stock[i].quantity);
     }
     else
     {
@@ -39,9 +37,7 @@ void show_orders()
   {
     if (strlen(order[ide][i].description) != 0)
     {
-      {
-        printf("* %s %d %d\n", order[ide][i].description, order[ide][i].price, order[ide][i].quantity);
-      }
+      printf("* %s %d %d\n", order[ide][i].description, order[ide][i].price, order[ide][i].quantity);
     }
     else
     {
@@ -62,22 +58,18 @@ int partition(Product arr[], int low, int high)
   {
     if ((pivot.price > arr[j].price) || ((pivot.price == arr[j].price) && (pivot.id > arr[j].id)))
     {
+      i++;
+      if (i != j)
       {
-        i++;
-        if (i != j)
-        {
-          {
-            temp_prod = arr[i];
-            arr[i] = arr[j];
-            arr[j] = temp_prod;
-          }
-        }
-        else
-        {
-          
-        }
-
+        temp_prod = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp_prod;
       }
+      else
+      {
+        
+      }
+
     }
     else
     {
@@ -96,11 +88,9 @@ void price_sort(Product arr[], int low, int high)
 {
   if (low < high)
   {
-    {
-      int pi = partition(arr, low, high);
-      price_sort(arr, low, pi - 1);
-      price_sort(arr, pi + 1, high);
-    }
+    int pi = partition(arr, low, high);
+    price_sort(arr, low, pi - 1);
+    price_sort(arr, pi + 1, high);
   }
   else
   {
@@ -119,22 +109,18 @@ int alphabet_partition(Product arr[], int low, int high)
   {
     if (strcmp(arr[j].description, pivot.description) < 0)
     {
+      i++;
+      if (i != j)
       {
-        i++;
-        if (i != j)
-        {
-          {
-            temp_prod = arr[i];
-            arr[i] = arr[j];
-            arr[j] = temp_prod;
-          }
-        }
-        else
-        {
-          
-        }
-
+        temp_prod = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp_prod;
       }
+      else
+      {
+        
+      }
+
     }
     else
     {
@@ -153,11 +139,9 @@ void alphabet_sort(Product arr[], int low, int high)
 {
   if (low < high)
   {
-    {
-      int pi = alphabet_partition(arr, low, high);
-      alphabet_sort(arr, low, pi - 1);
-      alphabet_sort(arr, pi + 1, high);
-    }
+    int pi = alphabet_partition(arr, low, high);
+    alphabet_sort(arr, low, pi - 1);
+    alphabet_sort(arr, pi + 1, high);
   }
   else
   {

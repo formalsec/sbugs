@@ -76,10 +76,8 @@ void hashtableAdd(hashtable *hashtable, char *key, void *data)
   entry *entry = hashtable->entries[position];
   if (entry == 0)
   {
-    {
-      hashtable->entries[position] = entryCreate(key, data);
-      return;
-    }
+    hashtable->entries[position] = entryCreate(key, data);
+    return;
   }
   else
   {
@@ -152,12 +150,10 @@ void hashtableDel(hashtable *hashtable, char *key)
 
   if (strcmp(temp->key, key) == 0)
   {
-    {
-      hashtable->entries[position] = temp->next;
-      free(temp->key);
-      free(temp);
-      return;
-    }
+    hashtable->entries[position] = temp->next;
+    free(temp->key);
+    free(temp);
+    return;
   }
   else
   {
@@ -168,12 +164,10 @@ void hashtableDel(hashtable *hashtable, char *key)
   {
     if (strcmp(temp->key, key) == 0)
     {
-      {
-        prev->next = temp->next;
-        free(temp->key);
-        free(temp);
-        return;
-      }
+      prev->next = temp->next;
+      free(temp->key);
+      free(temp);
+      return;
     }
     else
     {

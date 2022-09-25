@@ -29,9 +29,7 @@ Link add_node_after(Link ant, Item item)
   Link aux;
   if (ant == 0)
   {
-    {
-      return add_node_before(ant, item);
-    }
+    return add_node_before(ant, item);
   }
   else
   {
@@ -61,9 +59,7 @@ Item get_item(Link node)
 {
   if (node != 0)
   {
-    {
-      return node->item;
-    }
+    return node->item;
   }
   else
   {
@@ -85,9 +81,7 @@ Link search_list(LinkedList lista, Key key)
   {
     if (strcmp(get_item(current)->value, key) == 0)
     {
-      {
-        return current;
-      }
+      return current;
     }
     else
     {
@@ -106,9 +100,7 @@ void push(LinkedList lista, Item i)
   lista->head = newNode;
   if (lista->tail == 0)
   {
-    {
-      lista->tail = newNode;
-    }
+    lista->tail = newNode;
   }
   else
   {
@@ -125,9 +117,7 @@ void append(LinkedList lista, Item i)
   lista->tail = newNode;
   if (lista->head == 0)
   {
-    {
-      lista->head = newNode;
-    }
+    lista->head = newNode;
   }
   else
   {
@@ -144,10 +134,8 @@ void insertInOrder(LinkedList lista, Item i)
   Link prev;
   if (is_empty(lista))
   {
-    {
-      append(lista, i);
-      return;
-    }
+    append(lista, i);
+    return;
   }
   else
   {
@@ -159,10 +147,8 @@ void insertInOrder(LinkedList lista, Item i)
 
   if (current == 0)
   {
-    {
-      append(lista, i);
-      return;
-    }
+    append(lista, i);
+    return;
   }
   else
   {
@@ -174,15 +160,11 @@ void insertInOrder(LinkedList lista, Item i)
   new->next = current;
   if (prev)
   {
-    {
-      prev->next = new;
-    }
+    prev->next = new;
   }
   else
   {
-    {
-      lista->head = new;
-    }
+    lista->head = new;
   }
 
   lista->load++;
@@ -193,9 +175,7 @@ void pop(LinkedList lista)
   Link aux;
   if ((lista->head == 0) || is_empty(lista))
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -216,24 +196,18 @@ void remove_element(LinkedList lista, Key k)
   {
     if (strcmp(k, current->item->value) == 0)
     {
+      if (current == lista->head)
       {
-        if (current == lista->head)
-        {
-          {
-            lista->head = current->next;
-          }
-        }
-        else
-        {
-          {
-            prev->next = current->next;
-          }
-        }
-
-        delete_node(current);
-        lista->load--;
-        break;
+        lista->head = current->next;
       }
+      else
+      {
+        prev->next = current->next;
+      }
+
+      delete_node(current);
+      lista->load--;
+      break;
     }
     else
     {
@@ -250,9 +224,7 @@ void destroy_list_nodes(LinkedList lista)
   Link aux;
   if (!lista)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -261,11 +233,9 @@ void destroy_list_nodes(LinkedList lista)
 
   if (!is_empty(lista))
   {
-    {
-      for (current = lista->head, aux = lista->head->next; current; aux = current->next, free(current), current = aux)
-        ;
+    for (current = lista->head, aux = lista->head->next; current; aux = current->next, free(current), current = aux)
+      ;
 
-    }
   }
   else
   {
@@ -283,35 +253,27 @@ void destroy_list_node(LinkedList lista, Key nome)
   {
     if (strcmp(nome, current->item->value) == 0)
     {
+      if (current == lista->head)
       {
-        if (current == lista->head)
-        {
-          {
-            lista->head = current->next;
-          }
-        }
-        else
-        {
-          {
-            prev->next = current->next;
-          }
-        }
-
-        free(current);
-        lista->load--;
-        if (current == lista->tail)
-        {
-          {
-            lista->tail = lista->head;
-          }
-        }
-        else
-        {
-          
-        }
-
-        break;
+        lista->head = current->next;
       }
+      else
+      {
+        prev->next = current->next;
+      }
+
+      free(current);
+      lista->load--;
+      if (current == lista->tail)
+      {
+        lista->tail = lista->head;
+      }
+      else
+      {
+        
+      }
+
+      break;
     }
     else
     {
@@ -328,9 +290,7 @@ void destroy_list(LinkedList lista)
   Link aux;
   if (lista == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -339,11 +299,9 @@ void destroy_list(LinkedList lista)
 
   if (lista->load != 0)
   {
-    {
-      for (current = lista->head, aux = lista->head->next; current; aux = current->next, delete_node(current), current = aux)
-        ;
+    for (current = lista->head, aux = lista->head->next; current; aux = current->next, delete_node(current), current = aux)
+      ;
 
-    }
   }
   else
   {

@@ -59,10 +59,8 @@ team **expand_t(team **teams_tab, long int *max_len)
   for (i = 0; i < old_m; i++)
     if ((*(teams_tab + i)) != 0)
   {
-    {
-      add_team_to_table(new_tab, *(teams_tab + i), max_len);
-      (*(max_len + 3))--;
-    }
+    add_team_to_table(new_tab, *(teams_tab + i), max_len);
+    (*(max_len + 3))--;
   }
   else
   {

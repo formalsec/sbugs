@@ -19,29 +19,25 @@ void add_equipa(int NL, list_equipas *teams, HT_equipas *HT_equipas, int HT_tam)
   nome[10 - 1] = '\0';
   if (searchEquipa(nome, HT_equipas, HT_tam))
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-      free(novo);
-    }
+    printf("%d Equipa existente.\n", NL);
+    free(novo);
   }
   else
   {
+    novo->nome = malloc((sizeof(char)) * (strlen(nome) + 1));
+    strcpy(novo->nome, nome);
+    novo->jogos_ganhos = 0;
+    if (teams->last)
     {
-      novo->nome = malloc((sizeof(char)) * (strlen(nome) + 1));
-      strcpy(novo->nome, nome);
-      novo->jogos_ganhos = 0;
-      if (teams->last)
-      {
-        teams->last->next = novo;
-      }
-      else
-      {
-        teams->head = novo;
-      }
-
-      teams->last = novo;
-      addHTE(novo, HT_equipas, HT_tam);
+      teams->last->next = novo;
     }
+    else
+    {
+      teams->head = novo;
+    }
+
+    teams->last = novo;
+    addHTE(novo, HT_equipas, HT_tam);
   }
 
 }
@@ -89,30 +85,24 @@ void encontra_equipas(int NL, list_equipas *teams)
   {
     if (equipa_->jogos_ganhos > melhor)
     {
-      {
-        melhor = equipa_->jogos_ganhos;
-        mem_u = 1;
-      }
+      melhor = equipa_->jogos_ganhos;
+      mem_u = 1;
     }
     else
     {
       if (equipa_->jogos_ganhos == melhor)
       {
+        mem_u += 1;
+        if (mem_u >= (mem_a - 1))
         {
-          mem_u += 1;
-          if (mem_u >= (mem_a - 1))
-          {
-            {
-              mem_a = mem_a + 100;
-              champs = realloc(champs, (sizeof(equipa_)) * mem_a);
-            }
-          }
-          else
-          {
-            
-          }
-
+          mem_a = mem_a + 100;
+          champs = realloc(champs, (sizeof(equipa_)) * mem_a);
         }
+        else
+        {
+          
+        }
+
       }
       else
       {
@@ -136,10 +126,8 @@ void encontra_equipas(int NL, list_equipas *teams)
   {
     if (equipa_->jogos_ganhos == melhor)
     {
-      {
-        champs[tam] = equipa_[0];
-        tam++;
-      }
+      champs[tam] = equipa_[0];
+      tam++;
     }
     else
     {

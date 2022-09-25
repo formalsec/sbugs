@@ -10,17 +10,13 @@ void command_A(link_team *htable_team, char *name, int NL_counter)
   link_team aux;
   if (lookup_team(htable_team, name) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", NL_counter);
-    }
+    printf("%d Equipa existente.\n", NL_counter);
   }
   else
   {
-    {
-      aux = NEWteam(name);
-      aux->next = htable_team[a];
-      htable_team[a] = aux;
-    }
+    aux = NEWteam(name);
+    aux->next = htable_team[a];
+    htable_team[a] = aux;
   }
 
 }
@@ -30,15 +26,11 @@ void command_P(link_team *htable_team, char *name, int NL_counter)
   link_team team = lookup_team(htable_team, name);
   if (team != 0)
   {
-    {
-      printf("%d %s %d\n", NL_counter, team->name, team->v);
-    }
+    printf("%d %s %d\n", NL_counter, team->name, team->v);
   }
   else
   {
-    {
-      printf("%d Equipa inexistente.\n", NL_counter);
-    }
+    printf("%d Equipa inexistente.\n", NL_counter);
   }
 
   return;
@@ -56,9 +48,7 @@ void command_g(link_team *htable_team, int mostvictories, int NL_counter)
     {
       if (aux->v == mostvictories)
       {
-        {
-          list_betterTeams = insert_lexicographical_order(&list_betterTeams, aux);
-        }
+        list_betterTeams = insert_lexicographical_order(&list_betterTeams, aux);
       }
       else
       {

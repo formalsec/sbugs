@@ -16,16 +16,12 @@ void criaEquipa(link *hashEquipas, ulong linha)
   buffer[10 - 1] = '\0';
   if (EhashSearch(hashEquipas, buffer) == 0)
   {
-    {
-      equipa = newEquipa(buffer);
-      hashEquipas = EhashInsert(hashEquipas, equipa);
-    }
+    equipa = newEquipa(buffer);
+    hashEquipas = EhashInsert(hashEquipas, equipa);
   }
   else
   {
-    {
-      printf("%ld Equipa existente.\n", linha);
-    }
+    printf("%ld Equipa existente.\n", linha);
   }
 
 }
@@ -60,10 +56,8 @@ void criaJogo(jlink *hashJogos, link *hashEquipas, ulong linha, ulong *ordem)
   s2 = new_sym_var(sizeof(int) * 8);
   if (JhashSearch(hashJogos, nome) != 0)
   {
-    {
-      printf("%ld Jogo existente.\n", linha);
-      return;
-    }
+    printf("%ld Jogo existente.\n", linha);
+    return;
   }
   else
   {
@@ -72,10 +66,8 @@ void criaJogo(jlink *hashJogos, link *hashEquipas, ulong linha, ulong *ordem)
 
   if ((EhashSearch(hashEquipas, e1) == 0) || (EhashSearch(hashEquipas, e2) == 0))
   {
-    {
-      printf("%ld Equipa inexistente.\n", linha);
-      return;
-    }
+    printf("%ld Equipa inexistente.\n", linha);
+    return;
   }
   else
   {
@@ -100,10 +92,8 @@ void escreveEquipa(link *hashEquipas, ulong linha)
   equipa = EhashSearch(hashEquipas, nome);
   if (equipa == 0)
   {
-    {
-      printf("%ld Equipa inexistente.\n", linha);
-      return;
-    }
+    printf("%ld Equipa inexistente.\n", linha);
+    return;
   }
   else
   {
@@ -126,10 +116,8 @@ void escreveJogo(jlink *hashJogos, ulong linha)
   jogo = JhashSearch(hashJogos, nome);
   if (jogo == 0)
   {
-    {
-      printf("%ld Jogo inexistente.\n", linha);
-      return;
-    }
+    printf("%ld Jogo inexistente.\n", linha);
+    return;
   }
   else
   {
@@ -150,10 +138,8 @@ void delJogo(jlink *hashJogos, ulong linha)
   nome[10 - 1] = '\0';
   if (JhashSearch(hashJogos, nome) == 0)
   {
-    {
-      printf("%ld Jogo inexistente.\n", linha);
-      return;
-    }
+    printf("%ld Jogo inexistente.\n", linha);
+    return;
   }
   else
   {
@@ -180,10 +166,8 @@ void alteraScore(jlink *hashJogos, ulong linha)
   jogo = JhashSearch(hashJogos, nome);
   if (jogo == 0)
   {
-    {
-      printf("%ld Jogo inexistente.\n", linha);
-      return;
-    }
+    printf("%ld Jogo inexistente.\n", linha);
+    return;
   }
   else
   {
@@ -192,21 +176,39 @@ void alteraScore(jlink *hashJogos, ulong linha)
 
   if (jogo->e1->pontos > jogo->e2->pontos)
   {
+    if (s1 == s2)
     {
-      if (s1 == s2)
+      jogo->e1->equipa->ganhos -= 1;
+    }
+    else
+    {
+      if (s1 < s2)
       {
-        {
-          jogo->e1->equipa->ganhos -= 1;
-        }
+        jogo->e1->equipa->ganhos -= 1;
+        jogo->e2->equipa->ganhos += 1;
       }
       else
       {
-        if (s1 < s2)
+        
+      }
+
+    }
+
+  }
+  else
+  {
+    if (jogo->e1->pontos < jogo->e2->pontos)
+    {
+      if (s1 == s2)
+      {
+        jogo->e2->equipa->ganhos -= 1;
+      }
+      else
+      {
+        if (s1 > s2)
         {
-          {
-            jogo->e1->equipa->ganhos -= 1;
-            jogo->e2->equipa->ganhos += 1;
-          }
+          jogo->e2->equipa->ganhos -= 1;
+          jogo->e1->equipa->ganhos += 1;
         }
         else
         {
@@ -216,61 +218,25 @@ void alteraScore(jlink *hashJogos, ulong linha)
       }
 
     }
-  }
-  else
-  {
-    if (jogo->e1->pontos < jogo->e2->pontos)
-    {
-      {
-        if (s1 == s2)
-        {
-          {
-            jogo->e2->equipa->ganhos -= 1;
-          }
-        }
-        else
-        {
-          if (s1 > s2)
-          {
-            {
-              jogo->e2->equipa->ganhos -= 1;
-              jogo->e1->equipa->ganhos += 1;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-      }
-    }
     else
     {
+      if (s1 > s2)
       {
-        if (s1 > s2)
+        jogo->e1->equipa->ganhos += 1;
+      }
+      else
+      {
+        if (s1 < s2)
         {
-          {
-            jogo->e1->equipa->ganhos += 1;
-          }
+          jogo->e2->equipa->ganhos += 1;
         }
         else
         {
-          if (s1 < s2)
-          {
-            {
-              jogo->e2->equipa->ganhos += 1;
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
+
     }
 
   }
@@ -302,9 +268,7 @@ void listaMelhoresEquipas(link *hashEquipas, ulong linha)
   lista = listaMaioresVitorias(hashEquipas, &maior, &count);
   if (lista == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {

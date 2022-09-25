@@ -87,32 +87,26 @@ void apagaJogo(ht_jogo *hashtable, ll_jogos **ll_head, ht_equipas *hashtable_equ
   jogo = st_search_jogo(hashtable, nome_jogo);
   if (jogo != 0)
   {
+    if (jogo->score1 > jogo->score2)
     {
-      if (jogo->score1 > jogo->score2)
-      {
-        {
-          equipa = st_search(hashtable_equipas, jogo->equipa1);
-          equipa->nr_vitorias--;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (jogo->score1 < jogo->score2)
-      {
-        {
-          equipa = st_search(hashtable_equipas, jogo->equipa2);
-          equipa->nr_vitorias--;
-        }
-      }
-      else
-      {
-        
-      }
-
+      equipa = st_search(hashtable_equipas, jogo->equipa1);
+      equipa->nr_vitorias--;
     }
+    else
+    {
+      
+    }
+
+    if (jogo->score1 < jogo->score2)
+    {
+      equipa = st_search(hashtable_equipas, jogo->equipa2);
+      equipa->nr_vitorias--;
+    }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -185,10 +179,8 @@ void tabScoresEquipas(ht_equipas *hashtable_equipas, int NL)
     {
       if (y->nr_vitorias == mais_vitorias)
       {
-        {
-          vetor[e] = y->nome;
-          e++;
-        }
+        vetor[e] = y->nome;
+        e++;
       }
       else
       {

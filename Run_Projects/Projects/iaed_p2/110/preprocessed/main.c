@@ -109,33 +109,25 @@ gamelist addGame(int NL, gamelist *list, heads *hash)
   s2 = new_sym_var(sizeof(int) * 8);
   if (game_searchList(*list, name) == 0)
   {
+    link team1 = hashSearch(*hash, t1);
+    link team2 = hashSearch(*hash, t2);
+    if ((team1 == 0) || (team2 == 0))
     {
-      link team1 = hashSearch(*hash, t1);
-      link team2 = hashSearch(*hash, t2);
-      if ((team1 == 0) || (team2 == 0))
-      {
-        {
-          printf("%d Equipa inexistente.\n", NL);
-        }
-      }
-      else
-      {
-        {
-          Game game = gameInit(name, getItem(team1), getItem(team2), s1, s2);
-          *list = game_insertListEnd(*list, game);
-          team1->Team->wins = game->t1->wins;
-          team2->Team->wins = game->t2->wins;
-        }
-      }
-
-      return *list;
+      printf("%d Equipa inexistente.\n", NL);
     }
+    else
+    {
+      Game game = gameInit(name, getItem(team1), getItem(team2), s1, s2);
+      *list = game_insertListEnd(*list, game);
+      team1->Team->wins = game->t1->wins;
+      team2->Team->wins = game->t2->wins;
+    }
+
+    return *list;
   }
   else
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-    }
+    printf("%d Jogo existente.\n", NL);
   }
 
   return *list;
@@ -184,10 +176,8 @@ void lookupGame(int NL, gamelist list)
   game2print = game_searchList(list, name);
   if (!game2print)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -212,10 +202,8 @@ gamelist deleteGame(int NL, gamelist *list)
   node = game_searchList(*list, name);
   if (node == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return *list;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return *list;
   }
   else
   {
@@ -283,22 +271,20 @@ void topWinners(int NL, heads hash)
 {
   if (!hashEmpty(hash))
   {
+    int i = 0;
+    maxes maxes = getHashMax(hash);
+    char **strings = malloc((sizeof(char **)) * maxes.maxOcc);
+    strings = getHashStrings(hash, maxes.max, strings);
+    qsort(strings, maxes.maxOcc, sizeof(char **), compare);
+    printf("%d Melhores %d\n", NL, maxes.max);
+    while (i < maxes.maxOcc)
     {
-      int i = 0;
-      maxes maxes = getHashMax(hash);
-      char **strings = malloc((sizeof(char **)) * maxes.maxOcc);
-      strings = getHashStrings(hash, maxes.max, strings);
-      qsort(strings, maxes.maxOcc, sizeof(char **), compare);
-      printf("%d Melhores %d\n", NL, maxes.max);
-      while (i < maxes.maxOcc)
-      {
-        printf("%d * %s\n", NL, strings[i]);
-        free(strings[i]);
-        i++;
-      }
-
-      free(strings);
+      printf("%d * %s\n", NL, strings[i]);
+      free(strings[i]);
+      i++;
     }
+
+    free(strings);
   }
   else
   {

@@ -19,37 +19,29 @@ void executa_A(hash_table_equipa *hash_table_equipa_p, lista *Equipa_lista, int 
   Test = hash_table_lookup_equipa(hash_table_equipa_p, buffer);
   if (Test == 0)
   {
+    struct str_node *Temp = 0;
+    Temp = (struct str_node *) malloc(sizeof(struct str_node));
+    Temp->equipa.nome = (char *) malloc((sizeof(char)) * (strlen(buffer) + 1));
+    strcpy(Temp->equipa.nome, buffer);
+    if (Equipa_lista->head == 0)
     {
-      struct str_node *Temp = 0;
-      Temp = (struct str_node *) malloc(sizeof(struct str_node));
-      Temp->equipa.nome = (char *) malloc((sizeof(char)) * (strlen(buffer) + 1));
-      strcpy(Temp->equipa.nome, buffer);
-      if (Equipa_lista->head == 0)
-      {
-        {
-          Temp->previous = 0;
-          Equipa_lista->last = Temp;
-        }
-      }
-      else
-      {
-        {
-          Equipa_lista->head->next = Temp;
-          Temp->previous = Equipa_lista->head;
-        }
-      }
-
-      Temp->next = 0;
-      Temp->equipa.score = 0;
-      Equipa_lista->head = Temp;
-      hash_table_equipa_insert(hash_table_equipa_p, Temp, Equipa_lista);
+      Temp->previous = 0;
+      Equipa_lista->last = Temp;
     }
+    else
+    {
+      Equipa_lista->head->next = Temp;
+      Temp->previous = Equipa_lista->head;
+    }
+
+    Temp->next = 0;
+    Temp->equipa.score = 0;
+    Equipa_lista->head = Temp;
+    hash_table_equipa_insert(hash_table_equipa_p, Temp, Equipa_lista);
   }
   else
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-    }
+    printf("%d Equipa existente.\n", NL);
   }
 
 }
@@ -67,15 +59,11 @@ void executa_P(hash_table_equipa *hash_table_equipa_p, int NL)
   Test = hash_table_lookup_equipa(hash_table_equipa_p, buffer);
   if (Test != 0)
   {
-    {
-      printf("%d %s %d\n", NL, Test->equipa.nome, Test->equipa.score);
-    }
+    printf("%d %s %d\n", NL, Test->equipa.nome, Test->equipa.score);
   }
   else
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-    }
+    printf("%d Equipa inexistente.\n", NL);
   }
 
 }
@@ -115,73 +103,57 @@ void executa_a(hash_table_equipa *hash_table_equipa_p, hash_table_jogo *hash_tab
   point2 = hash_table_lookup_equipa(hash_table_equipa_p, buffer_equipa2);
   if (Test1 == 0)
   {
+    if ((point1 != 0) && (point2 != 0))
     {
-      if ((point1 != 0) && (point2 != 0))
+      struct str_node_jogo *Temp = 0;
+      Temp = (struct str_node_jogo *) malloc(sizeof(struct str_node_jogo));
+      Temp->jogo.nome = (char *) malloc((sizeof(char)) * (strlen(buffer_nome) + 1));
+      strcpy(Temp->jogo.nome, buffer_nome);
+      Temp->jogo.equipa1 = point1;
+      Temp->jogo.equipa2 = point2;
+      if ((score1 - score2) < 0)
       {
-        {
-          struct str_node_jogo *Temp = 0;
-          Temp = (struct str_node_jogo *) malloc(sizeof(struct str_node_jogo));
-          Temp->jogo.nome = (char *) malloc((sizeof(char)) * (strlen(buffer_nome) + 1));
-          strcpy(Temp->jogo.nome, buffer_nome);
-          Temp->jogo.equipa1 = point1;
-          Temp->jogo.equipa2 = point2;
-          if ((score1 - score2) < 0)
-          {
-            {
-              point2->equipa.score = point2->equipa.score + 1;
-            }
-          }
-          else
-          {
-            if ((score1 - score2) > 0)
-            {
-              {
-                point1->equipa.score = point1->equipa.score + 1;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-          Temp->jogo.score[0] = score1;
-          Temp->jogo.score[1] = score2;
-          if (Jogos_lista_pointer->last == 0)
-          {
-            {
-              Temp->previous = 0;
-              Jogos_lista_pointer->last = Temp;
-            }
-          }
-          else
-          {
-            {
-              Jogos_lista_pointer->head->next = Temp;
-              Temp->previous = Jogos_lista_pointer->head;
-            }
-          }
-
-          Temp->next = 0;
-          Jogos_lista_pointer->head = Temp;
-          hash_table_jogo_insert(hash_table_jogo_p, Temp, Jogos_lista_pointer);
-        }
+        point2->equipa.score = point2->equipa.score + 1;
       }
       else
       {
+        if ((score1 - score2) > 0)
         {
-          printf("%d Equipa inexistente.\n", NL);
+          point1->equipa.score = point1->equipa.score + 1;
         }
+        else
+        {
+          
+        }
+
       }
 
+      Temp->jogo.score[0] = score1;
+      Temp->jogo.score[1] = score2;
+      if (Jogos_lista_pointer->last == 0)
+      {
+        Temp->previous = 0;
+        Jogos_lista_pointer->last = Temp;
+      }
+      else
+      {
+        Jogos_lista_pointer->head->next = Temp;
+        Temp->previous = Jogos_lista_pointer->head;
+      }
+
+      Temp->next = 0;
+      Jogos_lista_pointer->head = Temp;
+      hash_table_jogo_insert(hash_table_jogo_p, Temp, Jogos_lista_pointer);
     }
+    else
+    {
+      printf("%d Equipa inexistente.\n", NL);
+    }
+
   }
   else
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-    }
+    printf("%d Jogo existente.\n", NL);
   }
 
 }
@@ -199,15 +171,11 @@ void executa_p(hash_table_jogo *hash_table_jogo_p, int NL)
   Test = hash_table_jogo_lookup(hash_table_jogo_p, buffer);
   if (Test != 0)
   {
-    {
-      printf("%d %s %s %s %d %d\n", NL, Test->jogo.nome, Test->jogo.equipa1->equipa.nome, Test->jogo.equipa2->equipa.nome, Test->jogo.score[0], Test->jogo.score[1]);
-    }
+    printf("%d %s %s %s %d %d\n", NL, Test->jogo.nome, Test->jogo.equipa1->equipa.nome, Test->jogo.equipa2->equipa.nome, Test->jogo.score[0], Test->jogo.score[1]);
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
 
 }
@@ -241,58 +209,46 @@ void executa_s(hash_table_jogo *hash_table_jogo_p, int NL)
   Temp = hash_table_jogo_lookup(hash_table_jogo_p, buffer);
   if (Temp != 0)
   {
+    if ((Temp->jogo.score[0] - Temp->jogo.score[1]) < 0)
     {
-      if ((Temp->jogo.score[0] - Temp->jogo.score[1]) < 0)
-      {
-        {
-          Temp->jogo.equipa2->equipa.score = Temp->jogo.equipa2->equipa.score - 1;
-        }
-      }
-      else
-      {
-        if ((Temp->jogo.score[0] - Temp->jogo.score[1]) > 0)
-        {
-          {
-            Temp->jogo.equipa1->equipa.score = Temp->jogo.equipa1->equipa.score - 1;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      if ((novo_scor1 - novo_scor2) < 0)
-      {
-        {
-          Temp->jogo.equipa2->equipa.score = Temp->jogo.equipa2->equipa.score + 1;
-        }
-      }
-      else
-      {
-        if ((novo_scor1 - novo_scor2) > 0)
-        {
-          {
-            Temp->jogo.equipa1->equipa.score = Temp->jogo.equipa1->equipa.score + 1;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      Temp->jogo.score[0] = novo_scor1;
-      Temp->jogo.score[1] = novo_scor2;
+      Temp->jogo.equipa2->equipa.score = Temp->jogo.equipa2->equipa.score - 1;
     }
+    else
+    {
+      if ((Temp->jogo.score[0] - Temp->jogo.score[1]) > 0)
+      {
+        Temp->jogo.equipa1->equipa.score = Temp->jogo.equipa1->equipa.score - 1;
+      }
+      else
+      {
+        
+      }
+
+    }
+
+    if ((novo_scor1 - novo_scor2) < 0)
+    {
+      Temp->jogo.equipa2->equipa.score = Temp->jogo.equipa2->equipa.score + 1;
+    }
+    else
+    {
+      if ((novo_scor1 - novo_scor2) > 0)
+      {
+        Temp->jogo.equipa1->equipa.score = Temp->jogo.equipa1->equipa.score + 1;
+      }
+      else
+      {
+        
+      }
+
+    }
+
+    Temp->jogo.score[0] = novo_scor1;
+    Temp->jogo.score[1] = novo_scor2;
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
 
 }
@@ -314,97 +270,59 @@ void executa_r(hash_table_jogo *hash_table_jogo_p, lista2 *Jogos_lista, int NL)
   Temp = hash_table_jogo_lookup(hash_table_jogo_p, buffer);
   if (Temp != 0)
   {
+    int index;
+    index = hash(buffer, hash_table_jogo_p->M);
+    other = hash_table_jogo_p->entries[index];
+    while (strcmp(other->jogo.nome, buffer) != 0)
     {
-      int index;
-      index = hash(buffer, hash_table_jogo_p->M);
-      other = hash_table_jogo_p->entries[index];
-      while (strcmp(other->jogo.nome, buffer) != 0)
-      {
-        prev = other;
-        other = other->jogo.next;
-      }
+      prev = other;
+      other = other->jogo.next;
+    }
 
-      if (prev == 0)
+    if (prev == 0)
+    {
+      hash_table_jogo_p->entries[index] = Temp->jogo.next;
+    }
+    else
+    {
+      prev->jogo.next = Temp->jogo.next;
+    }
+
+    if (Temp->next != 0)
+    {
+      Temp->next->previous = Temp->previous;
+      lastt = 1;
+    }
+    else
+    {
+      
+    }
+
+    if (Temp->previous != 0)
+    {
+      Temp->previous->next = Temp->next;
+      headd = 1;
+    }
+    else
+    {
+      
+    }
+
+    if ((lastt == 0) && (headd == 0))
+    {
+      Jogos_lista->head = 0, Jogos_lista->last = 0;
+    }
+    else
+    {
+      if (headd == 0)
       {
-        {
-          hash_table_jogo_p->entries[index] = Temp->jogo.next;
-        }
+        Jogos_lista->last = Temp->next;
       }
       else
       {
+        if (lastt == 0)
         {
-          prev->jogo.next = Temp->jogo.next;
-        }
-      }
-
-      if (Temp->next != 0)
-      {
-        {
-          Temp->next->previous = Temp->previous;
-          lastt = 1;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (Temp->previous != 0)
-      {
-        {
-          Temp->previous->next = Temp->next;
-          headd = 1;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if ((lastt == 0) && (headd == 0))
-      {
-        {
-          Jogos_lista->head = 0, Jogos_lista->last = 0;
-        }
-      }
-      else
-      {
-        if (headd == 0)
-        {
-          {
-            Jogos_lista->last = Temp->next;
-          }
-        }
-        else
-        {
-          if (lastt == 0)
-          {
-            {
-              Jogos_lista->head = Temp->previous;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-      }
-
-      if ((Temp->jogo.score[0] - Temp->jogo.score[1]) < 0)
-      {
-        {
-          Temp->jogo.equipa2->equipa.score = Temp->jogo.equipa2->equipa.score - 1;
-        }
-      }
-      else
-      {
-        if ((Temp->jogo.score[0] - Temp->jogo.score[1]) > 0)
-        {
-          {
-            Temp->jogo.equipa1->equipa.score = Temp->jogo.equipa1->equipa.score - 1;
-          }
+          Jogos_lista->head = Temp->previous;
         }
         else
         {
@@ -413,15 +331,31 @@ void executa_r(hash_table_jogo *hash_table_jogo_p, lista2 *Jogos_lista, int NL)
 
       }
 
-      free(Temp->jogo.nome);
-      free(Temp);
     }
+
+    if ((Temp->jogo.score[0] - Temp->jogo.score[1]) < 0)
+    {
+      Temp->jogo.equipa2->equipa.score = Temp->jogo.equipa2->equipa.score - 1;
+    }
+    else
+    {
+      if ((Temp->jogo.score[0] - Temp->jogo.score[1]) > 0)
+      {
+        Temp->jogo.equipa1->equipa.score = Temp->jogo.equipa1->equipa.score - 1;
+      }
+      else
+      {
+        
+      }
+
+    }
+
+    free(Temp->jogo.nome);
+    free(Temp);
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
 
 }
@@ -445,21 +379,17 @@ void executa_g(lista *Equipa_lista, int NL)
   {
     if (Temp->equipa.score > maior)
     {
-      {
-        memset(vencedores, 0, i);
-        i = 1;
-        maior = Temp->equipa.score;
-        vencedores[0] = Temp->equipa;
-      }
+      memset(vencedores, 0, i);
+      i = 1;
+      maior = Temp->equipa.score;
+      vencedores[0] = Temp->equipa;
     }
     else
     {
       if (Temp->equipa.score == maior)
       {
-        {
-          vencedores[i] = Temp->equipa;
-          i = i + 1;
-        }
+        vencedores[i] = Temp->equipa;
+        i = i + 1;
       }
       else
       {
@@ -473,15 +403,13 @@ void executa_g(lista *Equipa_lista, int NL)
 
   if (i != 0)
   {
+    printf("%d Melhores %d\n", NL, maior);
+    qsort(vencedores, i, sizeof(vencedores[0]), comparador);
+    for (e = 0; e < i; e++)
     {
-      printf("%d Melhores %d\n", NL, maior);
-      qsort(vencedores, i, sizeof(vencedores[0]), comparador);
-      for (e = 0; e < i; e++)
-      {
-        printf("%d * %s\n", NL, vencedores[e].nome);
-      }
-
+      printf("%d * %s\n", NL, vencedores[e].nome);
     }
+
   }
   else
   {

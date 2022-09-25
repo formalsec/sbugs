@@ -61,15 +61,11 @@ void comando_q(char *input)
   stock = atoi(strtok(0, ""));
   if ((id < 0) || (id >= numP))
   {
-    {
-      printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", id);
-    }
+    printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", id);
   }
   else
   {
-    {
-      products[id].qtty += stock;
-    }
+    products[id].qtty += stock;
   }
 
 }
@@ -82,23 +78,17 @@ void comando_r(char *input)
   stock = atoi(strtok(0, ""));
   if ((id < 0) || (id >= numP))
   {
-    {
-      printf("Impossivel remover stock do produto %d. Produto inexistente.\n", id);
-    }
+    printf("Impossivel remover stock do produto %d. Produto inexistente.\n", id);
   }
   else
   {
     if (stock > products[id].qtty)
     {
-      {
-        printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", stock, id);
-      }
+      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", stock, id);
     }
     else
     {
-      {
-        products[id].qtty -= stock;
-      }
+      products[id].qtty -= stock;
     }
 
   }
@@ -113,15 +103,11 @@ void comando_p(char *input)
   newPrice = atoi(strtok(0, ""));
   if ((id < 0) || (id >= numP))
   {
-    {
-      printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", id);
-    }
+    printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", id);
   }
   else
   {
-    {
-      products[id].price = newPrice;
-    }
+    products[id].price = newPrice;
   }
 
 }
@@ -164,44 +150,34 @@ void comando_A(char *input)
   qtty = atoi(strtok(0, ""));
   if ((orderID < 0) || (orderID >= numO))
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", productID, orderID);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", productID, orderID);
+    return;
   }
   else
   {
     if ((productID < 0) || (productID >= numP))
     {
-      {
-        printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", productID, orderID);
-        return;
-      }
+      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", productID, orderID);
+      return;
     }
     else
     {
       if (products[productID].qtty < qtty)
       {
-        {
-          printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", productID, orderID);
-          return;
-        }
+        printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", productID, orderID);
+        return;
       }
       else
       {
         if ((orders[orderID].weight + (qtty * products[productID].weight)) > 200)
         {
-          {
-            printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", productID, orderID);
-            return;
-          }
+          printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", productID, orderID);
+          return;
         }
         else
         {
-          {
-            addOrder(qtty, orderID, productID);
-            return;
-          }
+          addOrder(qtty, orderID, productID);
+          return;
         }
 
       }
@@ -220,25 +196,19 @@ void comando_R(char *input)
   productID = atoi(strtok(0, ":"));
   if ((orderID < 0) || (orderID >= numO))
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", productID, orderID);
-      return;
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", productID, orderID);
+    return;
   }
   else
   {
     if ((productID < 0) || (productID >= numP))
     {
-      {
-        printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", productID, orderID);
-        return;
-      }
+      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", productID, orderID);
+      return;
     }
     else
     {
-      {
-        removeOrder(orderID, productID);
-      }
+      removeOrder(orderID, productID);
     }
 
   }
@@ -251,16 +221,12 @@ void comando_C(char *input)
   orderID = atoi(input);
   if ((orderID < 0) || (orderID >= numO))
   {
-    {
-      printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", orderID);
-      return;
-    }
+    printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", orderID);
+    return;
   }
   else
   {
-    {
-      calculatePrice(orderID);
-    }
+    calculatePrice(orderID);
   }
 
 }
@@ -274,41 +240,33 @@ void comando_E(char *input)
   productID = atoi(strtok(0, ":"));
   if ((orderID < 0) || (orderID >= numO))
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", orderID);
-      return;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", orderID);
+    return;
   }
   else
   {
     if ((productID < 0) || (productID >= numP))
     {
-      {
-        printf("Impossivel listar produto %d. Produto inexistente.\n", productID);
-        return;
-      }
+      printf("Impossivel listar produto %d. Produto inexistente.\n", productID);
+      return;
     }
     else
     {
+      for (i = 0; i < orders[orderID].numOrders; i++)
       {
-        for (i = 0; i < orders[orderID].numOrders; i++)
+        if (orders[orderID].ordered[i].id == productID)
         {
-          if (orders[orderID].ordered[i].id == productID)
-          {
-            {
-              printf("%s %d.\n", products[productID].description, orders[orderID].ordered[i].qtty);
-              return;
-            }
-          }
-          else
-          {
-            
-          }
-
+          printf("%s %d.\n", products[productID].description, orders[orderID].ordered[i].qtty);
+          return;
+        }
+        else
+        {
+          
         }
 
-        printf("%s %d.\n", products[productID].description, 0);
       }
+
+      printf("%s %d.\n", products[productID].description, 0);
     }
 
   }
@@ -325,10 +283,8 @@ void comando_m(char *input)
   productID = atoi(input);
   if ((productID < 0) || (productID >= numP))
   {
-    {
-      printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", productID);
-      return;
-    }
+    printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", productID);
+    return;
   }
   else
   {
@@ -352,10 +308,8 @@ void comando_m(char *input)
     {
       if ((orders[i].ordered[j].id == productID) && (orders[i].ordered[j].qtty > max))
       {
-        {
-          max = orders[i].ordered[j].qtty;
-          orderID = i;
-        }
+        max = orders[i].ordered[j].qtty;
+        orderID = i;
       }
       else
       {
@@ -368,15 +322,11 @@ void comando_m(char *input)
 
   if (max == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
-    {
-      printf("Maximo produto %d %d %d.\n", productID, orderID, max);
-    }
+    printf("Maximo produto %d %d %d.\n", productID, orderID, max);
   }
 
 }
@@ -391,10 +341,8 @@ void comando_L(char *input)
   orderID = atoi(input);
   if ((orderID < 0) || (orderID >= numO))
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", orderID);
-      return;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", orderID);
+    return;
   }
   else
   {
@@ -406,10 +354,8 @@ void comando_L(char *input)
   {
     if (orders[orderID].ordered[i].qtty != 0)
     {
-      {
-        sortedArray[j] = orders[orderID].ordered[i];
-        j++;
-      }
+      sortedArray[j] = orders[orderID].ordered[i];
+      j++;
     }
     else
     {
@@ -439,11 +385,9 @@ void sortAlphabetic(Product *sortedArray, int max)
     {
       if (strcmp(sortedArray[j].description, sortedArray[i].description) > 0)
       {
-        {
-          swap = sortedArray[i];
-          sortedArray[i] = sortedArray[j];
-          sortedArray[j] = swap;
-        }
+        swap = sortedArray[i];
+        sortedArray[i] = sortedArray[j];
+        sortedArray[j] = swap;
       }
       else
       {
@@ -484,13 +428,11 @@ void addOrder(int qtty, int orderID, int productID)
   {
     if (orders[orderID].ordered[i].id == products[productID].id)
     {
-      {
-        peso = products[productID].weight;
-        orders[orderID].ordered[i].qtty += qtty;
-        orders[orderID].weight += qtty * peso;
-        products[productID].qtty -= qtty;
-        return;
-      }
+      peso = products[productID].weight;
+      orders[orderID].ordered[i].qtty += qtty;
+      orders[orderID].weight += qtty * peso;
+      products[productID].qtty -= qtty;
+      return;
     }
     else
     {
@@ -517,12 +459,10 @@ void removeOrder(int orderID, int productID)
   {
     if (orders[orderID].ordered[i].id == productID)
     {
-      {
-        products[productID].qtty += orders[orderID].ordered[i].qtty;
-        orders[orderID].weight -= orders[orderID].ordered[i].qtty * products[productID].weight;
-        orders[orderID].ordered[i].qtty = 0;
-        return;
-      }
+      products[productID].qtty += orders[orderID].ordered[i].qtty;
+      orders[orderID].weight -= orders[orderID].ordered[i].qtty * products[productID].weight;
+      orders[orderID].ordered[i].qtty = 0;
+      return;
     }
     else
     {
@@ -553,27 +493,19 @@ void merge(Product *array, int l, int m, int r)
   {
     if (aux[j].price < aux[i].price)
     {
-      {
-        array[k] = aux[j--];
-      }
+      array[k] = aux[j--];
     }
     else
     {
+      if ((aux[j].id < aux[i].id) && (aux[j].price == aux[i].price))
       {
-        if ((aux[j].id < aux[i].id) && (aux[j].price == aux[i].price))
-        {
-          {
-            array[k] = aux[j--];
-          }
-        }
-        else
-        {
-          {
-            array[k] = aux[i++];
-          }
-        }
-
+        array[k] = aux[j--];
       }
+      else
+      {
+        array[k] = aux[i++];
+      }
+
     }
 
   }
@@ -585,12 +517,10 @@ void mergesort(Product *sortedArray, int start, int end)
   int m;
   if (start < end)
   {
-    {
-      m = (start + end) / 2;
-      mergesort(sortedArray, start, m);
-      mergesort(sortedArray, m + 1, end);
-      merge(sortedArray, start, m, end);
-    }
+    m = (start + end) / 2;
+    mergesort(sortedArray, start, m);
+    mergesort(sortedArray, m + 1, end);
+    merge(sortedArray, start, m, end);
   }
   else
   {

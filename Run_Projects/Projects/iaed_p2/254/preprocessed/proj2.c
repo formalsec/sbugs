@@ -228,11 +228,9 @@ equipa insert_ordem_alfabetica(equipa head, char *text)
   t->wins = 0;
   if ((head == 0) || (strcmp(head->nome, text) > 0))
   {
-    {
-      t->next = head;
-      head = t;
-      return head;
-    }
+    t->next = head;
+    head = t;
+    return head;
   }
   else
   {
@@ -243,11 +241,9 @@ equipa insert_ordem_alfabetica(equipa head, char *text)
   {
     if (strcmp(x->next->nome, t->nome) > 0)
     {
-      {
-        t->next = x->next;
-        x->next = t;
-        return head;
-      }
+      t->next = x->next;
+      x->next = t;
+      return head;
     }
     else
     {
@@ -272,19 +268,17 @@ jogo delete(jogo head, linked_list_jogo *lista_jogos, char *text)
   {
     if (strcmp(x1->ptr->nome, text) == 0)
     {
+      if (x1 == lista_jogos[0])
       {
-        if (x1 == lista_jogos[0])
-        {
-          lista_jogos[0] = x1->next;
-        }
-        else
-        {
-          prev1->next = x1->next;
-        }
-
-        free(x1);
-        break;
+        lista_jogos[0] = x1->next;
       }
+      else
+      {
+        prev1->next = x1->next;
+      }
+
+      free(x1);
+      break;
     }
     else
     {
@@ -297,22 +291,20 @@ jogo delete(jogo head, linked_list_jogo *lista_jogos, char *text)
   {
     if (strcmp(x->nome, text) == 0)
     {
+      if (x == head)
       {
-        if (x == head)
-        {
-          head = x->next;
-        }
-        else
-        {
-          prev->next = x->next;
-        }
-
-        free(x->nome);
-        free(x->equipa1);
-        free(x->equipa2);
-        free(x);
-        break;
+        head = x->next;
       }
+      else
+      {
+        prev->next = x->next;
+      }
+
+      free(x->nome);
+      free(x->equipa1);
+      free(x->equipa2);
+      free(x);
+      break;
     }
     else
     {
@@ -372,10 +364,8 @@ void adiciona_win(equipa head, char *text)
   {
     if (strcmp(x->nome, text) == 0)
     {
-      {
-        x->wins = x->wins + 1;
-        return;
-      }
+      x->wins = x->wins + 1;
+      return;
     }
     else
     {
@@ -394,10 +384,8 @@ void dimimui_win(equipa head, char *text)
   {
     if (strcmp(x->nome, text) == 0)
     {
-      {
-        x->wins = x->wins - 1;
-        return;
-      }
+      x->wins = x->wins - 1;
+      return;
     }
     else
     {
@@ -441,49 +429,37 @@ void adiciona_jogo(jogo *hash_table_jogo, equipa *hash_table_equipa, linked_list
   int key_equipa2 = devolvekey(equipa2_input);
   if (verifica_jogo_existente(hash_table_jogo[key], jogo_input) == 0)
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-    }
+    printf("%d Jogo existente.\n", NL);
   }
   else
   {
+    if (verifica_equipa_existente(hash_table_equipa[key_equipa1], equipa1_input) || verifica_equipa_existente(hash_table_equipa[key_equipa2], equipa2_input))
     {
-      if (verifica_equipa_existente(hash_table_equipa[key_equipa1], equipa1_input) || verifica_equipa_existente(hash_table_equipa[key_equipa2], equipa2_input))
+      printf("%d Equipa inexistente.\n", NL);
+      return;
+    }
+    else
+    {
+      hash_table_jogo[key] = insertbegin_jogo_lista_jogos(hash_table_jogo[key], lista_jogos, jogo_input, equipa1_input, equipa2_input, golos1_input, golos2_input);
+      if (golos1_input > golos2_input)
       {
-        {
-          printf("%d Equipa inexistente.\n", NL);
-          return;
-        }
+        adiciona_win(hash_table_equipa[key_equipa1], equipa1_input);
       }
       else
       {
+        if (golos2_input > golos1_input)
         {
-          hash_table_jogo[key] = insertbegin_jogo_lista_jogos(hash_table_jogo[key], lista_jogos, jogo_input, equipa1_input, equipa2_input, golos1_input, golos2_input);
-          if (golos1_input > golos2_input)
-          {
-            {
-              adiciona_win(hash_table_equipa[key_equipa1], equipa1_input);
-            }
-          }
-          else
-          {
-            if (golos2_input > golos1_input)
-            {
-              {
-                adiciona_win(hash_table_equipa[key_equipa2], equipa2_input);
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
+          adiciona_win(hash_table_equipa[key_equipa2], equipa2_input);
         }
+        else
+        {
+          
+        }
+
       }
 
     }
+
   }
 
 }
@@ -493,16 +469,12 @@ void adiciona_equipa(char *equipa1_input, equipa *hash_table_equipa)
   int key = devolvekey(equipa1_input);
   if (verifica_equipa_existente(hash_table_equipa[key], equipa1_input))
   {
-    {
-      hash_table_equipa[key] = insertbegin_equipa(hash_table_equipa[key], equipa1_input);
-      existe_equipas = 1;
-    }
+    hash_table_equipa[key] = insertbegin_equipa(hash_table_equipa[key], equipa1_input);
+    existe_equipas = 1;
   }
   else
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-    }
+    printf("%d Equipa existente.\n", NL);
   }
 
 }
@@ -516,10 +488,8 @@ void procura_equipa(equipa *hash_table_equipa, char *equipa1_input)
   {
     if (strcmp(x->nome, equipa1_input) == 0)
     {
-      {
-        printf("%d %s %d\n", NL, x->nome, x->wins);
-        return;
-      }
+      printf("%d %s %d\n", NL, x->nome, x->wins);
+      return;
     }
     else
     {
@@ -540,10 +510,8 @@ void procura_jogo(jogo *hash_table_jogo, char *jogo_input)
   {
     if (strcmp(x->nome, jogo_input) == 0)
     {
-      {
-        printf("%d %s %s %s %d %d\n", NL, x->nome, x->equipa1, x->equipa2, x->golos1, x->golos2);
-        return;
-      }
+      printf("%d %s %s %s %d %d\n", NL, x->nome, x->equipa1, x->equipa2, x->golos1, x->golos2);
+      return;
     }
     else
     {
@@ -559,10 +527,8 @@ void lista_jogos_existentes(linked_list_jogo head)
 {
   if (head != 0)
   {
-    {
-      lista_jogos_existentes(head->next);
-      printf("%d %s %s %s %d %d\n", NL, head->ptr->nome, head->ptr->equipa1, head->ptr->equipa2, head->ptr->golos1, head->ptr->golos2);
-    }
+    lista_jogos_existentes(head->next);
+    printf("%d %s %s %s %d %d\n", NL, head->ptr->nome, head->ptr->equipa1, head->ptr->equipa2, head->ptr->golos1, head->ptr->golos2);
   }
   else
   {
@@ -581,94 +547,78 @@ void altera_score(jogo *hash_table_jogo, linked_list_jogo *lista_jogos, equipa *
   aux = lista_jogos[0];
   if (verifica_jogo_existente(hash_table_jogo[key], jogo_input) == 1)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
   else
   {
+    for (; x != 0; x = x->next)
     {
-      for (; x != 0; x = x->next)
+      if (strcmp(x->nome, jogo_input) == 0)
       {
-        if (strcmp(x->nome, jogo_input) == 0)
+        if (x->golos1 > x->golos2)
         {
-          {
-            if (x->golos1 > x->golos2)
-            {
-              {
-                key_equipa = devolvekey(x->equipa1);
-                dimimui_win(hash_table_equipa[key_equipa], x->equipa1);
-              }
-            }
-            else
-            {
-              if (x->golos1 < x->golos2)
-              {
-                {
-                  key_equipa = devolvekey(x->equipa2);
-                  dimimui_win(hash_table_equipa[key_equipa], x->equipa2);
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-            x->golos1 = golos1_input;
-            x->golos2 = golos2_input;
-            if (x->golos1 > x->golos2)
-            {
-              {
-                key_equipa = devolvekey(x->equipa1);
-                adiciona_win(hash_table_equipa[key_equipa], x->equipa1);
-              }
-            }
-            else
-            {
-              if (x->golos1 < x->golos2)
-              {
-                {
-                  key_equipa = devolvekey(x->equipa2);
-                  adiciona_win(hash_table_equipa[key_equipa], x->equipa2);
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-            break;
-          }
+          key_equipa = devolvekey(x->equipa1);
+          dimimui_win(hash_table_equipa[key_equipa], x->equipa1);
         }
         else
         {
-          
+          if (x->golos1 < x->golos2)
+          {
+            key_equipa = devolvekey(x->equipa2);
+            dimimui_win(hash_table_equipa[key_equipa], x->equipa2);
+          }
+          else
+          {
+            
+          }
+
         }
 
+        x->golos1 = golos1_input;
+        x->golos2 = golos2_input;
+        if (x->golos1 > x->golos2)
+        {
+          key_equipa = devolvekey(x->equipa1);
+          adiciona_win(hash_table_equipa[key_equipa], x->equipa1);
+        }
+        else
+        {
+          if (x->golos1 < x->golos2)
+          {
+            key_equipa = devolvekey(x->equipa2);
+            adiciona_win(hash_table_equipa[key_equipa], x->equipa2);
+          }
+          else
+          {
+            
+          }
+
+        }
+
+        break;
       }
-
-      for (; aux != 0; aux = aux->next)
+      else
       {
-        if (strcmp(aux->ptr->nome, jogo_input) == 0)
-        {
-          {
-            aux->ptr->golos1 = golos1_input;
-            aux->ptr->golos2 = golos2_input;
-            return;
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
     }
+
+    for (; aux != 0; aux = aux->next)
+    {
+      if (strcmp(aux->ptr->nome, jogo_input) == 0)
+      {
+        aux->ptr->golos1 = golos1_input;
+        aux->ptr->golos2 = golos2_input;
+        return;
+      }
+      else
+      {
+        
+      }
+
+    }
+
   }
 
 }
@@ -681,53 +631,43 @@ void apaga_jogo(jogo *hash_table_jogo, linked_list_jogo *lista_jogos, equipa *ha
   x = hash_table_jogo[key];
   if (verifica_jogo_existente(hash_table_jogo[key], jogo_input) == 1)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
   else
   {
+    for (; x != 0; x = x->next)
     {
-      for (; x != 0; x = x->next)
+      if (strcmp(x->nome, jogo_input) == 0)
       {
-        if (strcmp(x->nome, jogo_input) == 0)
+        if (x->golos1 > x->golos2)
         {
-          {
-            if (x->golos1 > x->golos2)
-            {
-              {
-                key_equipa = devolvekey(x->equipa1);
-                dimimui_win(hash_table_equipa[key_equipa], x->equipa1);
-              }
-            }
-            else
-            {
-              if (x->golos1 < x->golos2)
-              {
-                {
-                  key_equipa = devolvekey(x->equipa2);
-                  dimimui_win(hash_table_equipa[key_equipa], x->equipa2);
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-            hash_table_jogo[key] = delete(hash_table_jogo[key], lista_jogos, jogo_input);
-            return;
-          }
+          key_equipa = devolvekey(x->equipa1);
+          dimimui_win(hash_table_equipa[key_equipa], x->equipa1);
         }
         else
         {
-          
+          if (x->golos1 < x->golos2)
+          {
+            key_equipa = devolvekey(x->equipa2);
+            dimimui_win(hash_table_equipa[key_equipa], x->equipa2);
+          }
+          else
+          {
+            
+          }
+
         }
 
+        hash_table_jogo[key] = delete(hash_table_jogo[key], lista_jogos, jogo_input);
+        return;
+      }
+      else
+      {
+        
       }
 
     }
+
   }
 
 }
@@ -741,10 +681,8 @@ void encontra_equipa_wins(equipa *hash_table_equipa)
   max_wins = encontra_max_wins(hash_table_equipa);
   if (existe_equipas == 0)
   {
-    {
-      liberta_equipas1(lista_equipas);
-      return;
-    }
+    liberta_equipas1(lista_equipas);
+    return;
   }
   else
   {

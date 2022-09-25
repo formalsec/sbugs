@@ -182,51 +182,45 @@ void A_MaisProdutoEnc()
       }
       else
       {
-        {
-          p = Stock[idp];
-          e = Pedidos[ide];
-          for (i = 0; i < e.next_item; i++)
-            peso_e += e.Itens[i].peso * e.Itens[i].qtd_e;
+        p = Stock[idp];
+        e = Pedidos[ide];
+        for (i = 0; i < e.next_item; i++)
+          peso_e += e.Itens[i].peso * e.Itens[i].qtd_e;
 
-          peso_e += p.peso * qtd_a_adicionar;
-          if (peso_e > 200)
+        peso_e += p.peso * qtd_a_adicionar;
+        if (peso_e > 200)
+        {
+          printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
+        }
+        else
+        {
+          local = p.Local_Enc[ide];
+          if (local != (-1))
           {
-            printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
+            e.Itens[local].qtd_e += qtd_a_adicionar;
           }
           else
           {
-            {
-              local = p.Local_Enc[ide];
-              if (local != (-1))
-              {
-                e.Itens[local].qtd_e += qtd_a_adicionar;
-              }
-              else
-              {
-                {
-                  item = e.Itens[e.next_item];
-                  size_d = strlen(p.descricao);
-                  for (i = 0; i < size_d; i++)
-                    item.descricao[i] = p.descricao[i];
+            item = e.Itens[e.next_item];
+            size_d = strlen(p.descricao);
+            for (i = 0; i < size_d; i++)
+              item.descricao[i] = p.descricao[i];
 
-                  item.idp = p.idp;
-                  item.descricao[size_d] = '\0';
-                  item.preco = p.preco;
-                  item.peso = p.peso;
-                  item.qtd_e = qtd_a_adicionar;
-                  e.Itens[e.next_item] = item;
-                  p.Local_Enc[ide] = e.next_item;
-                  Stock[idp] = p;
-                  e.next_item++;
-                }
-              }
-
-              Stock[idp].qtd -= qtd_a_adicionar;
-              Pedidos[ide] = e;
-            }
+            item.idp = p.idp;
+            item.descricao[size_d] = '\0';
+            item.preco = p.preco;
+            item.peso = p.peso;
+            item.qtd_e = qtd_a_adicionar;
+            e.Itens[e.next_item] = item;
+            p.Local_Enc[ide] = e.next_item;
+            Stock[idp] = p;
+            e.next_item++;
           }
 
+          Stock[idp].qtd -= qtd_a_adicionar;
+          Pedidos[ide] = e;
         }
+
       }
 
     }
@@ -285,54 +279,46 @@ void R_MenosProdutoEnc()
     }
     else
     {
+      local = Stock[idp].Local_Enc[ide];
+      if (local != (-1))
       {
-        local = Stock[idp].Local_Enc[ide];
-        if (local != (-1))
+        Stock[idp].qtd += Pedidos[ide].Itens[local].qtd_e;
+        e = Pedidos[ide];
+        if (e.next_item == 1)
         {
-          {
-            Stock[idp].qtd += Pedidos[ide].Itens[local].qtd_e;
-            e = Pedidos[ide];
-            if (e.next_item == 1)
-            {
-              {
-                item = e.Itens[0];
-                Stock[item.idp].Local_Enc[ide] = -1;
-                e.Itens[0] = item_nulo();
-              }
-            }
-            else
-            {
-              if (local < (e.next_item - 1))
-              {
-                {
-                  max = e.next_item - 1;
-                  for (i = local; i < max; i++)
-                  {
-                    e.Itens[i] = e.Itens[i + 1];
-                    item = e.Itens[i];
-                    Stock[item.idp].Local_Enc[ide] -= 1;
-                  }
-
-                  e.Itens[max] = item_nulo();
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-            e.next_item--;
-            Pedidos[ide] = e;
-          }
+          item = e.Itens[0];
+          Stock[item.idp].Local_Enc[ide] = -1;
+          e.Itens[0] = item_nulo();
         }
         else
         {
-          
+          if (local < (e.next_item - 1))
+          {
+            max = e.next_item - 1;
+            for (i = local; i < max; i++)
+            {
+              e.Itens[i] = e.Itens[i + 1];
+              item = e.Itens[i];
+              Stock[item.idp].Local_Enc[ide] -= 1;
+            }
+
+            e.Itens[max] = item_nulo();
+          }
+          else
+          {
+            
+          }
+
         }
 
+        e.next_item--;
+        Pedidos[ide] = e;
       }
+      else
+      {
+        
+      }
+
     }
 
   }
@@ -354,16 +340,14 @@ void C_CustoEncomenda()
   }
   else
   {
+    e = Pedidos[ide];
+    for (i = 0; i < e.next_item; i++)
     {
-      e = Pedidos[ide];
-      for (i = 0; i < e.next_item; i++)
-      {
-        item = e.Itens[i];
-        custo += item.qtd_e * item.preco;
-      }
-
-      printf("Custo da encomenda %d %d.\n", ide, custo);
+      item = e.Itens[i];
+      custo += item.qtd_e * item.preco;
     }
+
+    printf("Custo da encomenda %d %d.\n", ide, custo);
   }
 
   return;
@@ -385,26 +369,22 @@ void p_AlterarPrecoPrdt()
   }
   else
   {
+    Stock[idp].preco = preco_novo;
+    p = Stock[idp];
+    for (i = 0; i < 500; i++)
+      if (p.Local_Enc[i] != (-1))
     {
-      Stock[idp].preco = preco_novo;
-      p = Stock[idp];
-      for (i = 0; i < 500; i++)
-        if (p.Local_Enc[i] != (-1))
-      {
-        {
-          e = Pedidos[i];
-          local = p.Local_Enc[i];
-          e.Itens[local].preco = p.preco;
-          Pedidos[i] = e;
-        }
-      }
-      else
-      {
-        
-      }
-
-
+      e = Pedidos[i];
+      local = p.Local_Enc[i];
+      e.Itens[local].preco = p.preco;
+      Pedidos[i] = e;
     }
+    else
+    {
+      
+    }
+
+
   }
 
   return;
@@ -432,23 +412,19 @@ void E_ProdutoInfoEnc()
     }
     else
     {
+      stock_p = Stock[idp];
+      local = stock_p.Local_Enc[ide];
+      if (local == (-1))
       {
-        stock_p = Stock[idp];
-        local = stock_p.Local_Enc[ide];
-        if (local == (-1))
-        {
-          ammnt = 0;
-        }
-        else
-        {
-          {
-            p_e = Pedidos[ide].Itens[local];
-            ammnt = p_e.qtd_e;
-          }
-        }
-
-        printf("%s %d.\n", Stock[idp].descricao, ammnt);
+        ammnt = 0;
       }
+      else
+      {
+        p_e = Pedidos[ide].Itens[local];
+        ammnt = p_e.qtd_e;
+      }
+
+      printf("%s %d.\n", Stock[idp].descricao, ammnt);
     }
 
   }
@@ -473,29 +449,18 @@ void m_IdMaiorPedidoPrdt()
   }
   else
   {
+    p = Stock[idp];
+    for (i = 0; i < next_encomenda; i++)
     {
-      p = Stock[idp];
-      for (i = 0; i < next_encomenda; i++)
+      local = p.Local_Enc[i];
+      if (local != (-1))
       {
-        local = p.Local_Enc[i];
-        if (local != (-1))
+        e = Pedidos[i];
+        nr_occorencias = e.Itens[local].qtd_e;
+        if (nr_occorencias > max)
         {
-          {
-            e = Pedidos[i];
-            nr_occorencias = e.Itens[local].qtd_e;
-            if (nr_occorencias > max)
-            {
-              {
-                ide = i;
-                max = nr_occorencias;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
+          ide = i;
+          max = nr_occorencias;
         }
         else
         {
@@ -503,17 +468,22 @@ void m_IdMaiorPedidoPrdt()
         }
 
       }
-
-      if (max != (-1))
-      {
-        printf("Maximo produto %d %d %d.\n", idp, ide, max);
-      }
       else
       {
         
       }
 
     }
+
+    if (max != (-1))
+    {
+      printf("Maximo produto %d %d %d.\n", idp, ide, max);
+    }
+    else
+    {
+      
+    }
+
   }
 
   return;

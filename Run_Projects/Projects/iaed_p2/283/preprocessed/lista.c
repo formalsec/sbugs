@@ -42,19 +42,17 @@ Node *Modifica_next_jogo(Node *head, char name[])
   {
     if (strcmp(t->jogo->nome_jogo, name) == 0)
     {
+      if (t == head)
       {
-        if (t == head)
-        {
-          head = t->next;
-        }
-        else
-        {
-          prev->next = t->next;
-        }
-
-        free(t);
-        break;
+        head = t->next;
       }
+      else
+      {
+        prev->next = t->next;
+      }
+
+      free(t);
+      break;
     }
     else
     {

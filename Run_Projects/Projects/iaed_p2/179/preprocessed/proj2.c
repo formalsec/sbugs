@@ -135,48 +135,42 @@ void addGame(Ht_games *htg, Ht_teams htt, nodeGame *head_games, char name[1024],
   t2 = HTsearchTeam(htt, team2);
   if (HTsearchGame(*htg, name) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", inL);
-      return;
-    }
+    printf("%d Jogo existente.\n", inL);
+    return;
   }
   else
   {
     if ((t1 == 0) || (t2 == 0))
     {
-      {
-        printf("%d Equipa inexistente.\n", inL);
-        return;
-      }
+      printf("%d Equipa inexistente.\n", inL);
+      return;
     }
     else
     {
+      char *pname = allocateWrite(name);
+      char *pteam1 = allocateWrite(team1);
+      char *pteam2 = allocateWrite(team2);
+      Game new_game = newGame(pname, pteam1, pteam2, score1, score2);
+      *htg = HTinsertGame(*htg, new_game);
+      *head_games = pushGame(*head_games, new_game);
+      if (score1 > score2)
       {
-        char *pname = allocateWrite(name);
-        char *pteam1 = allocateWrite(team1);
-        char *pteam2 = allocateWrite(team2);
-        Game new_game = newGame(pname, pteam1, pteam2, score1, score2);
-        *htg = HTinsertGame(*htg, new_game);
-        *head_games = pushGame(*head_games, new_game);
-        if (score1 > score2)
+        t1->won++;
+      }
+      else
+      {
+        if (score1 < score2)
         {
-          t1->won++;
+          t2->won++;
         }
         else
         {
-          if (score1 < score2)
-          {
-            t2->won++;
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
-        pname = (pteam1 = (pteam2 = 0));
       }
+
+      pname = (pteam1 = (pteam2 = 0));
     }
 
   }
@@ -203,10 +197,8 @@ nodeGame eraseGame(Ht_games ht_games, Ht_teams ht_teams, nodeGame head, char *ga
   Game aux = HTsearchGame(ht_games, game_name);
   if (aux == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", inL);
-      return head;
-    }
+    printf("%d Jogo inexistente.\n", inL);
+    return head;
   }
   else
   {
@@ -258,14 +250,12 @@ void addTeam(Ht_teams *ht, nodeTeam *head, char *team_name, int inL)
   Team aux = HTsearchTeam(*ht, team_name);
   if (aux == 0)
   {
-    {
-      name = allocateWrite(team_name);
-      t = newTeam(name, 0);
-      *ht = HTinsertTeam(*ht, t);
-      *head = pushTeam(*head, t);
-      name = 0;
-      return;
-    }
+    name = allocateWrite(team_name);
+    t = newTeam(name, 0);
+    *ht = HTinsertTeam(*ht, t);
+    *head = pushTeam(*head, t);
+    name = 0;
+    return;
   }
   else
   {
@@ -280,10 +270,8 @@ void findTeam(Ht_teams ht, char *team_name, int inL)
   Team t = HTsearchTeam(ht, team_name);
   if (t != 0)
   {
-    {
-      outputTeam(t, inL);
-      return;
-    }
+    outputTeam(t, inL);
+    return;
   }
   else
   {
@@ -300,10 +288,8 @@ void updateScore(Ht_games ht_games, Ht_teams ht_teams, char *game_name, int scor
   Game game = HTsearchGame(ht_games, game_name);
   if (game == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", inL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", inL);
+    return;
   }
   else
   {
@@ -326,19 +312,17 @@ void bestTeams(nodeTeam head, int inL)
   }
   else
   {
-    {
-      int i;
-      int w = mostWins(head);
-      int n = countTeams(head, w);
-      Team *teams = nWinsTeams(head, n, w);
-      qsort(teams, n, sizeof(Team *), compareQsort);
-      printf("%d Melhores %d\n", inL, w);
-      for (i = 0; i < n; i++)
-        printf("%d * %s\n", inL, teams[i]->name);
+    int i;
+    int w = mostWins(head);
+    int n = countTeams(head, w);
+    Team *teams = nWinsTeams(head, n, w);
+    qsort(teams, n, sizeof(Team *), compareQsort);
+    printf("%d Melhores %d\n", inL, w);
+    for (i = 0; i < n; i++)
+      printf("%d * %s\n", inL, teams[i]->name);
 
-      free(teams);
-      teams = 0;
-    }
+    free(teams);
+    teams = 0;
   }
 
 }

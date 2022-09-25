@@ -19,21 +19,17 @@ node append(char game[], node Head)
   strcpy(temp->nome_jogo, game);
   if (Head == 0)
   {
-    {
-      return temp;
-    }
+    return temp;
   }
   else
   {
+    p = Head;
+    while (p->link != 0)
     {
-      p = Head;
-      while (p->link != 0)
-      {
-        p = p->link;
-      }
-
-      p->link = temp;
+      p = p->link;
     }
+
+    p->link = temp;
   }
 
   return Head;
@@ -46,21 +42,17 @@ void display(int contalinhas, int tblsz_jogo, node Head, jogo *st)
   temp = Head;
   if (temp == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
+    while (temp != 0)
     {
-      while (temp != 0)
-      {
-        display_jogo = search_jogo(temp->nome_jogo, tblsz_jogo, st);
-        printf("%d %s %s %s %d %d\n", contalinhas, display_jogo->nome, display_jogo->equipa1, display_jogo->equipa2, display_jogo->score1, display_jogo->score2);
-        temp = temp->link;
-      }
-
+      display_jogo = search_jogo(temp->nome_jogo, tblsz_jogo, st);
+      printf("%d %s %s %s %d %d\n", contalinhas, display_jogo->nome, display_jogo->equipa1, display_jogo->equipa2, display_jogo->score1, display_jogo->score2);
+      temp = temp->link;
     }
+
   }
 
 }
@@ -72,21 +64,17 @@ void display2(int contalinhas, int tblsz_jogo, node Head, equipa *eq)
   temp = Head;
   if (temp == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
+    while (temp != 0)
     {
-      while (temp != 0)
-      {
-        display_jogo = search_equipa(temp->nome_jogo, tblsz_jogo, eq);
-        printf("%d %s %d\n", contalinhas, display_jogo->nome_equipa, display_jogo->vitorias);
-        temp = temp->link;
-      }
-
+      display_jogo = search_equipa(temp->nome_jogo, tblsz_jogo, eq);
+      printf("%d %s %d\n", contalinhas, display_jogo->nome_equipa, display_jogo->vitorias);
+      temp = temp->link;
     }
+
   }
 
 }
@@ -106,41 +94,33 @@ tuplio get_max_vit(node Head, int tblsz, equipa *eq, tuplio tuplo)
   }
   else
   {
+    while (temp != 0)
     {
-      while (temp != 0)
+      m = get_vitorias(temp->nome_jogo, tblsz, eq);
+      if (max_vit < m)
       {
-        m = get_vitorias(temp->nome_jogo, tblsz, eq);
-        if (max_vit < m)
+        max_vit = m;
+        conta_eq_c_max_vit = 1;
+      }
+      else
+      {
+        if (max_vit == m)
         {
-          {
-            max_vit = m;
-            conta_eq_c_max_vit = 1;
-          }
+          conta_eq_c_max_vit += 1;
         }
         else
         {
-          {
-            if (max_vit == m)
-            {
-              {
-                conta_eq_c_max_vit += 1;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
+          
         }
 
-        temp = temp->link;
       }
 
-      tuplo->max_vitorias = max_vit;
-      tuplo->conta_eq_c_max_vit = conta_eq_c_max_vit;
-      return tuplo;
+      temp = temp->link;
     }
+
+    tuplo->max_vitorias = max_vit;
+    tuplo->conta_eq_c_max_vit = conta_eq_c_max_vit;
+    return tuplo;
   }
 
 }
@@ -152,29 +132,25 @@ node delete_node(char *nome, node Head)
   struct nodes *q;
   if (strcmp(nome, Head->nome_jogo) == 0)
   {
-    {
-      temp = Head;
-      Head = temp->link;
-      temp->link = 0;
-      free(temp->nome_jogo);
-      free(temp);
-    }
+    temp = Head;
+    Head = temp->link;
+    temp->link = 0;
+    free(temp->nome_jogo);
+    free(temp);
   }
   else
   {
+    q = Head;
+    while (strcmp(q->nome_jogo, nome) != 0)
     {
-      q = Head;
-      while (strcmp(q->nome_jogo, nome) != 0)
-      {
-        p = q;
-        q = q->link;
-      }
-
-      p->link = q->link;
-      q->link = 0;
-      free(q->nome_jogo);
-      free(q);
+      p = q;
+      q = q->link;
     }
+
+    p->link = q->link;
+    q->link = 0;
+    free(q->nome_jogo);
+    free(q);
   }
 
   return Head;
@@ -190,12 +166,10 @@ void obtem_equipas_com_max_vit(node Head, int max_vitorias, char **equipa_c_vito
   {
     if (get_vitorias(temp->nome_jogo, tblsz, eq) == max_vitorias)
     {
-      {
-        *equipa_c_vitorias = malloc((sizeof(char)) * (strlen(temp->nome_jogo) + 1));
-        strcpy(*equipa_c_vitorias, temp->nome_jogo);
-        equipa_c_vitorias++;
-        cont++;
-      }
+      *equipa_c_vitorias = malloc((sizeof(char)) * (strlen(temp->nome_jogo) + 1));
+      strcpy(*equipa_c_vitorias, temp->nome_jogo);
+      equipa_c_vitorias++;
+      cont++;
     }
     else
     {

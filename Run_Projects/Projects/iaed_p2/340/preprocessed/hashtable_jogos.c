@@ -27,18 +27,14 @@ void adiciona_j(table_j **heads, Jogo *jogo, int M)
   int key = hash(jogo->nome_jogo, M);
   if (heads[key] == 0)
   {
-    {
-      heads[key] = malloc(sizeof(table_j));
-      heads[key]->jogos = jogo;
-    }
+    heads[key] = malloc(sizeof(table_j));
+    heads[key]->jogos = jogo;
   }
   else
   {
-    {
-      x = heads[key]->jogos;
-      heads[key]->jogos = jogo;
-      jogo->next = x;
-    }
+    x = heads[key]->jogos;
+    heads[key]->jogos = jogo;
+    jogo->next = x;
   }
 
 }
@@ -50,9 +46,7 @@ Jogo *encontra_j(Jogo *head, char *nome)
   {
     if (strcmp(jogo->nome_jogo, nome) == 0)
     {
-      {
-        return jogo;
-      }
+      return jogo;
     }
     else
     {
@@ -70,18 +64,16 @@ Jogo *procura_jogo_hash(table_j **heads, Chave_j nome, int M)
   int key = hash(nome, M);
   if (heads[key] != 0)
   {
+    x = heads[key]->jogos;
+    if ((x = encontra_j(x, nome)) == 0)
     {
-      x = heads[key]->jogos;
-      if ((x = encontra_j(x, nome)) == 0)
-      {
-        return 0;
-      }
-      else
-      {
-        return x;
-      }
-
+      return 0;
     }
+    else
+    {
+      return x;
+    }
+
   }
   else
   {
@@ -98,38 +90,30 @@ int remove_j(table_j **heads, Chave_j nome, int M)
   int key = hash(nome, M);
   if ((x = procura_jogo_hash(heads, nome, M)) != 0)
   {
+    for (x = heads[key]->jogos, prev = 0; x != 0; prev = x, x = x->next)
     {
-      for (x = heads[key]->jogos, prev = 0; x != 0; prev = x, x = x->next)
+      if (strcmp(x->nome_jogo, nome) == 0)
       {
-        if (strcmp(x->nome_jogo, nome) == 0)
+        if (x == heads[key]->jogos)
         {
-          {
-            if (x == heads[key]->jogos)
-            {
-              {
-                heads[key]->jogos = x->next;
-              }
-            }
-            else
-            {
-              {
-                prev->next = x->next;
-              }
-            }
-
-            free_jogo(x);
-            break;
-          }
+          heads[key]->jogos = x->next;
         }
         else
         {
-          
+          prev->next = x->next;
         }
 
+        free_jogo(x);
+        break;
+      }
+      else
+      {
+        
       }
 
-      return 1;
     }
+
+    return 1;
   }
   else
   {
@@ -148,15 +132,13 @@ void free_hash_jogos(table_j **heads, int M)
   {
     if (heads[i] != 0)
     {
+      head = heads[i]->jogos;
+      for (x = head; head != 0; x = head)
       {
-        head = heads[i]->jogos;
-        for (x = head; head != 0; x = head)
-        {
-          head = head->next;
-          free_jogo(x);
-        }
-
+        head = head->next;
+        free_jogo(x);
       }
+
     }
     else
     {

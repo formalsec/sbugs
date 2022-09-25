@@ -13,18 +13,14 @@ games *new_game_at_end(games **list)
   games *new = calloc(1, sizeof(games));
   if ((*list) == 0)
   {
-    {
-      *list = new;
-      (*list)->last = new;
-    }
+    *list = new;
+    (*list)->last = new;
   }
   else
   {
-    {
-      new->prev = (*list)->last;
-      (*list)->last->next = new;
-      (*list)->last = new;
-    }
+    new->prev = (*list)->last;
+    (*list)->last->next = new;
+    (*list)->last = new;
   }
 
   return new;
@@ -35,10 +31,8 @@ teams *new_team_at_end(teams **list)
   teams *current = *list;
   if (current == 0)
   {
-    {
-      *list = calloc(1, sizeof(teams));
-      return *list;
-    }
+    *list = calloc(1, sizeof(teams));
+    return *list;
   }
   else
   {
@@ -49,10 +43,8 @@ teams *new_team_at_end(teams **list)
   {
     if (current->next == 0)
     {
-      {
-        current->next = calloc(1, sizeof(teams));
-        return current->next;
-      }
+      current->next = calloc(1, sizeof(teams));
+      return current->next;
     }
     else
     {
@@ -70,11 +62,9 @@ void new_name(char *name, game_names **name_list)
   strcpy(new_last->name, name);
   if ((*name_list) == 0)
   {
-    {
-      *name_list = new_last;
-      (*name_list)->last = new_last;
-      return;
-    }
+    *name_list = new_last;
+    (*name_list)->last = new_last;
+    return;
   }
   else
   {
@@ -91,37 +81,29 @@ void elim_game(games *game, games **head, game_names **names_pt)
   teams *winner;
   if (game->prev == 0)
   {
+    *head = game->next;
+    if ((*head) != 0)
     {
-      *head = game->next;
-      if ((*head) != 0)
-      {
-        {
-          (*head)->last = game->last;
-        }
-      }
-      else
-      {
-        
-      }
-
+      (*head)->last = game->last;
     }
+    else
+    {
+      
+    }
+
   }
   else
   {
+    game->prev->next = game->next;
+    if (game->next == 0)
     {
-      game->prev->next = game->next;
-      if (game->next == 0)
-      {
-        {
-          (*head)->last = game->prev;
-        }
-      }
-      else
-      {
-        
-      }
-
+      (*head)->last = game->prev;
     }
+    else
+    {
+      
+    }
+
   }
 
   if (game->next != 0)
@@ -151,40 +133,30 @@ void del_name(game_names *name, game_names **name_list)
   game_names *name_to_del = name;
   if (name_to_del->prev == 0)
   {
+    *name_list = name_to_del->next;
+    if ((*name_list) != 0)
     {
-      *name_list = name_to_del->next;
-      if ((*name_list) != 0)
-      {
-        {
-          (*name_list)->prev = 0;
-          (*name_list)->last = name_to_del->last;
-        }
-      }
-      else
-      {
-        
-      }
-
+      (*name_list)->prev = 0;
+      (*name_list)->last = name_to_del->last;
     }
+    else
+    {
+      
+    }
+
   }
   else
   {
+    name_to_del->prev->next = name_to_del->next;
+    if (name_to_del->next == 0)
     {
-      name_to_del->prev->next = name_to_del->next;
-      if (name_to_del->next == 0)
-      {
-        {
-          (*name_list)->last = name_to_del->prev;
-        }
-      }
-      else
-      {
-        {
-          name_to_del->next->prev = name_to_del->prev;
-        }
-      }
-
+      (*name_list)->last = name_to_del->prev;
     }
+    else
+    {
+      name_to_del->next->prev = name_to_del->prev;
+    }
+
   }
 
   free(name_to_del->name);

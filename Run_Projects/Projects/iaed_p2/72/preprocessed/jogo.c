@@ -38,10 +38,8 @@ void free_jogo(Jogo jg)
 {
   if (jg != 0)
   {
-    {
-      free(jg->nome);
-      free(jg);
-    }
+    free(jg->nome);
+    free(jg);
   }
   else
   {
@@ -76,78 +74,68 @@ void altera_score(Jogo jg, int score1, int score2)
 {
   if (jg->score1 == jg->score2)
   {
+    if (score1 > score2)
     {
-      if (score1 > score2)
-      {
-        adiciona_vitoria(jg->equipa1);
-      }
-      else
-      {
-        
-      }
-
-      if (score2 > score1)
-      {
-        adiciona_vitoria(jg->equipa2);
-      }
-      else
-      {
-        
-      }
-
+      adiciona_vitoria(jg->equipa1);
     }
+    else
+    {
+      
+    }
+
+    if (score2 > score1)
+    {
+      adiciona_vitoria(jg->equipa2);
+    }
+    else
+    {
+      
+    }
+
   }
   else
   {
     if (jg->score1 > jg->score2)
     {
+      if (score1 == score2)
       {
-        if (score1 == score2)
+        remove_vitoria(jg->equipa1);
+      }
+      else
+      {
+        if (score2 > score1)
         {
           remove_vitoria(jg->equipa1);
+          adiciona_vitoria(jg->equipa2);
         }
         else
         {
-          if (score2 > score1)
-          {
-            {
-              remove_vitoria(jg->equipa1);
-              adiciona_vitoria(jg->equipa2);
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
+
     }
     else
     {
+      if (score1 == score2)
       {
-        if (score1 == score2)
+        remove_vitoria(jg->equipa2);
+      }
+      else
+      {
+        if (score1 > score2)
         {
           remove_vitoria(jg->equipa2);
+          adiciona_vitoria(jg->equipa1);
         }
         else
         {
-          if (score1 > score2)
-          {
-            {
-              remove_vitoria(jg->equipa2);
-              adiciona_vitoria(jg->equipa1);
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
+
     }
 
   }

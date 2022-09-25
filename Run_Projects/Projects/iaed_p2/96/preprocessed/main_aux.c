@@ -12,17 +12,13 @@ void guarda_lista_ord(bloco_hash_jogo *head, bloco_hash_jogo *tail, jogo *j)
   novo_el->next = 0;
   if (head[0] == 0)
   {
-    {
-      head[0] = novo_el;
-      tail[0] = head[0];
-    }
+    head[0] = novo_el;
+    tail[0] = head[0];
   }
   else
   {
-    {
-      tail[0]->next = novo_el;
-      tail[0] = novo_el;
-    }
+    tail[0]->next = novo_el;
+    tail[0] = novo_el;
   }
 
 }
@@ -48,22 +44,16 @@ void apaga_lista_ord(bloco_hash_jogo *head_ord, bloco_hash_jogo *tail_ord, char 
 
   if (ante == 0)
   {
-    {
-      *head_ord = aux->next;
-    }
+    *head_ord = aux->next;
   }
   else
   {
-    {
-      ante->next = aux->next;
-    }
+    ante->next = aux->next;
   }
 
   if (aux == (*tail_ord))
   {
-    {
-      *tail_ord = ante;
-    }
+    *tail_ord = ante;
   }
   else
   {
@@ -90,23 +80,19 @@ void guarda_ord_alfabetica(bloco_hash_equipa *lista, equipa *e)
   novo_e->equipa = e;
   if (((*lista) == 0) || (strcmp((*lista)->equipa->nome, novo_e->equipa->nome) > 0))
   {
-    {
-      novo_e->next = *lista;
-      *lista = novo_e;
-    }
+    novo_e->next = *lista;
+    *lista = novo_e;
   }
   else
   {
+    aux = *lista;
+    while ((aux->next != 0) && (strcmp(aux->next->equipa->nome, e->nome) < 0))
     {
-      aux = *lista;
-      while ((aux->next != 0) && (strcmp(aux->next->equipa->nome, e->nome) < 0))
-      {
-        aux = aux->next;
-      }
-
-      novo_e->next = aux->next;
-      aux->next = novo_e;
+      aux = aux->next;
     }
+
+    novo_e->next = aux->next;
+    aux->next = novo_e;
   }
 
 }

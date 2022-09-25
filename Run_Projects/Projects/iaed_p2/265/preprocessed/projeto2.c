@@ -161,10 +161,8 @@ void adiciona_jogo(lugar_no_hash_j **hashtable_j, link **fila, lugar_no_hash_e *
   plac2 = new_sym_var(sizeof(int) * 8);
   if (encontrar_jogo_aux(dojogo, hashtable_j) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-      return;
-    }
+    printf("%d Jogo existente.\n", NL);
+    return;
   }
   else
   {
@@ -173,10 +171,8 @@ void adiciona_jogo(lugar_no_hash_j **hashtable_j, link **fila, lugar_no_hash_e *
 
   if ((equipe1 = encontrar_equipe_aux(daequipe1, hashtable_e)) == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -185,10 +181,8 @@ void adiciona_jogo(lugar_no_hash_j **hashtable_j, link **fila, lugar_no_hash_e *
 
   if ((equipe2 = encontrar_equipe_aux(daequipe2, hashtable_e)) == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -237,10 +231,8 @@ void encontrar_jogo(lugar_no_hash_j **hashtable_j, int NL)
   point = encontrar_jogo_aux(names, hashtable_j);
   if (point == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -339,10 +331,8 @@ void encontrar_equipe(lugar_no_hash_e **hashtable_e, int NL)
   point = encontrar_equipe_aux(names, hashtable_e);
   if (point == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    return;
   }
   else
   {

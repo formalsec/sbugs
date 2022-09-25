@@ -19,10 +19,8 @@ int main()
   {
     if (c == 'a')
     {
-      {
-        getchar();
-        headjogo = a(headjogo, headequipa, contlinha);
-      }
+      getchar();
+      headjogo = a(headjogo, headequipa, contlinha);
     }
     else
     {
@@ -31,10 +29,8 @@ int main()
 
     if (c == 'A')
     {
-      {
-        getchar();
-        headequipa = A(headequipa, contlinha);
-      }
+      getchar();
+      headequipa = A(headequipa, contlinha);
     }
     else
     {
@@ -43,10 +39,8 @@ int main()
 
     if (c == 's')
     {
-      {
-        getchar();
-        headjogo = s(headjogo, contlinha);
-      }
+      getchar();
+      headjogo = s(headjogo, contlinha);
     }
     else
     {
@@ -55,10 +49,8 @@ int main()
 
     if (c == 'r')
     {
-      {
-        getchar();
-        headjogo = r(headjogo, contlinha);
-      }
+      getchar();
+      headjogo = r(headjogo, contlinha);
     }
     else
     {
@@ -67,10 +59,8 @@ int main()
 
     if (c == 'P')
     {
-      {
-        getchar();
-        P(headjogo, headequipa, contlinha);
-      }
+      getchar();
+      P(headjogo, headequipa, contlinha);
     }
     else
     {
@@ -79,10 +69,8 @@ int main()
 
     if (c == 'p')
     {
-      {
-        getchar();
-        p(headjogo, contlinha);
-      }
+      getchar();
+      p(headjogo, contlinha);
     }
     else
     {
@@ -91,9 +79,7 @@ int main()
 
     if (c == 'l')
     {
-      {
-        l(headjogo, contlinha);
-      }
+      l(headjogo, contlinha);
     }
     else
     {
@@ -102,9 +88,7 @@ int main()
 
     if (c == 'g')
     {
-      {
-        g(headjogo, headequipa, contlinha);
-      }
+      g(headjogo, headequipa, contlinha);
     }
     else
     {
@@ -113,21 +97,19 @@ int main()
 
     if (c == 'x')
     {
+      for (aux_jogo = headjogo; aux_jogo != 0; aux_jogo = aux_jogo2)
       {
-        for (aux_jogo = headjogo; aux_jogo != 0; aux_jogo = aux_jogo2)
-        {
-          aux_jogo2 = aux_jogo->next;
-          headjogo = removeJogo(headjogo, aux_jogo->nome);
-        }
-
-        for (aux_equipa = headequipa; aux_equipa != 0; aux_equipa = aux_equipa2)
-        {
-          aux_equipa2 = aux_equipa->next;
-          headequipa = removeEquipa(headequipa, aux_equipa->nome);
-        }
-
-        break;
+        aux_jogo2 = aux_jogo->next;
+        headjogo = removeJogo(headjogo, aux_jogo->nome);
       }
+
+      for (aux_equipa = headequipa; aux_equipa != 0; aux_equipa = aux_equipa2)
+      {
+        aux_equipa2 = aux_equipa->next;
+        headequipa = removeEquipa(headequipa, aux_equipa->nome);
+      }
+
+      break;
     }
     else
     {

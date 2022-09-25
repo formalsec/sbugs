@@ -168,39 +168,31 @@ void func_r(Hash_jogo *hash_jg, Hash_equipa *hash_eq, int NL)
   nome_jogo[10 - 1] = '\0';
   if (HT_Get_Jogo(hash_jg, nome_jogo, &jogo) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
   else
   {
+    if (jogo->pontuacao_1 > jogo->pontuacao_2)
     {
-      if (jogo->pontuacao_1 > jogo->pontuacao_2)
+      HT_Get_Equipa(hash_eq, jogo->equipa_1, &equipa);
+      equipa->vitorias -= 1;
+    }
+    else
+    {
+      if (jogo->pontuacao_1 < jogo->pontuacao_2)
       {
-        {
-          HT_Get_Equipa(hash_eq, jogo->equipa_1, &equipa);
-          equipa->vitorias -= 1;
-        }
+        HT_Get_Equipa(hash_eq, jogo->equipa_2, &equipa);
+        equipa->vitorias -= 1;
       }
       else
       {
-        if (jogo->pontuacao_1 < jogo->pontuacao_2)
-        {
-          {
-            HT_Get_Equipa(hash_eq, jogo->equipa_2, &equipa);
-            equipa->vitorias -= 1;
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      remocao(jogo);
-      HT_Jogo_Delete(jogo, hash_jg);
     }
+
+    remocao(jogo);
+    HT_Jogo_Delete(jogo, hash_jg);
   }
 
 }
@@ -222,62 +214,50 @@ void func_s(Hash_jogo *hash_jg, Hash_equipa *hash_eq, int NL)
   pontuacao_2 = new_sym_var(sizeof(int) * 8);
   if (HT_Get_Jogo(hash_jg, nome_jogo, &jogo) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
   else
   {
+    if (jogo->pontuacao_1 > jogo->pontuacao_2)
     {
-      if (jogo->pontuacao_1 > jogo->pontuacao_2)
+      HT_Get_Equipa(hash_eq, jogo->equipa_1, &equipa);
+      equipa->vitorias -= 1;
+    }
+    else
+    {
+      if (jogo->pontuacao_1 < jogo->pontuacao_2)
       {
-        {
-          HT_Get_Equipa(hash_eq, jogo->equipa_1, &equipa);
-          equipa->vitorias -= 1;
-        }
+        HT_Get_Equipa(hash_eq, jogo->equipa_2, &equipa);
+        equipa->vitorias -= 1;
       }
       else
       {
-        if (jogo->pontuacao_1 < jogo->pontuacao_2)
-        {
-          {
-            HT_Get_Equipa(hash_eq, jogo->equipa_2, &equipa);
-            equipa->vitorias -= 1;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      jogo->pontuacao_1 = pontuacao_1;
-      jogo->pontuacao_2 = pontuacao_2;
-      if (jogo->pontuacao_1 > jogo->pontuacao_2)
-      {
-        {
-          HT_Get_Equipa(hash_eq, jogo->equipa_1, &equipa);
-          equipa->vitorias += 1;
-        }
-      }
-      else
-      {
-        if (jogo->pontuacao_1 < jogo->pontuacao_2)
-        {
-          {
-            HT_Get_Equipa(hash_eq, jogo->equipa_2, &equipa);
-            equipa->vitorias += 1;
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
     }
+
+    jogo->pontuacao_1 = pontuacao_1;
+    jogo->pontuacao_2 = pontuacao_2;
+    if (jogo->pontuacao_1 > jogo->pontuacao_2)
+    {
+      HT_Get_Equipa(hash_eq, jogo->equipa_1, &equipa);
+      equipa->vitorias += 1;
+    }
+    else
+    {
+      if (jogo->pontuacao_1 < jogo->pontuacao_2)
+      {
+        HT_Get_Equipa(hash_eq, jogo->equipa_2, &equipa);
+        equipa->vitorias += 1;
+      }
+      else
+      {
+        
+      }
+
+    }
+
   }
 
 }

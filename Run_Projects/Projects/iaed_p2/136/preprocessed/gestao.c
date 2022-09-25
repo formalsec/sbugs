@@ -92,26 +92,24 @@ void *encontra(fila Lst, chave c, int flag)
   {
     if (flag == (-5))
     {
+      if (strcmp(((equipa) aux_b->elem)->nome, c) == 0)
       {
-        if (strcmp(((equipa) aux_b->elem)->nome, c) == 0)
-        {
-          return aux_b->elem;
-        }
-        else
-        {
-          
-        }
-
-        if (strcmp(((equipa) aux_e->elem)->nome, c) == 0)
-        {
-          return aux_e->elem;
-        }
-        else
-        {
-          
-        }
-
+        return aux_b->elem;
       }
+      else
+      {
+        
+      }
+
+      if (strcmp(((equipa) aux_e->elem)->nome, c) == 0)
+      {
+        return aux_e->elem;
+      }
+      else
+      {
+        
+      }
+
     }
     else
     {
@@ -120,26 +118,24 @@ void *encontra(fila Lst, chave c, int flag)
 
     if (flag == (-6))
     {
+      if (strcmp(c, ((jogo) aux_b->elem)->nome) == 0)
       {
-        if (strcmp(c, ((jogo) aux_b->elem)->nome) == 0)
-        {
-          return aux_b->elem;
-        }
-        else
-        {
-          
-        }
-
-        if (strcmp(c, ((jogo) aux_e->elem)->nome) == 0)
-        {
-          return aux_e->elem;
-        }
-        else
-        {
-          
-        }
-
+        return aux_b->elem;
       }
+      else
+      {
+        
+      }
+
+      if (strcmp(c, ((jogo) aux_e->elem)->nome) == 0)
+      {
+        return aux_e->elem;
+      }
+      else
+      {
+        
+      }
+
     }
     else
     {
@@ -274,10 +270,8 @@ par_resultado maximo_vitorias(fila equipas_ord)
     {
       if (e1->vitorias > max.maximo)
       {
-        {
-          max.maximo = e1->vitorias;
-          max.num_venc = 1;
-        }
+        max.maximo = e1->vitorias;
+        max.num_venc = 1;
       }
       else
       {
@@ -294,10 +288,8 @@ par_resultado maximo_vitorias(fila equipas_ord)
     {
       if (e2->vitorias > max.maximo)
       {
-        {
-          max.maximo = e2->vitorias;
-          max.num_venc = 1;
-        }
+        max.maximo = e2->vitorias;
+        max.num_venc = 1;
       }
       else
       {
@@ -328,10 +320,8 @@ arvore *ARVbuild(arvore *raiz, fila equipas_ord, int maximo, int num_venc)
     e2 = (equipa) aux_e->elem;
     if (e1->vitorias == maximo)
     {
-      {
-        raiz = ARVadd(raiz, e1);
-        i++;
-      }
+      raiz = ARVadd(raiz, e1);
+      i++;
     }
     else
     {
@@ -340,10 +330,8 @@ arvore *ARVbuild(arvore *raiz, fila equipas_ord, int maximo, int num_venc)
 
     if (e2->vitorias == maximo)
     {
-      {
-        raiz = ARVadd(raiz, e2);
-        i++;
-      }
+      raiz = ARVadd(raiz, e2);
+      i++;
     }
     else
     {

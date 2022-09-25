@@ -26,9 +26,7 @@ Jogo *criaJogo(char *nome, Equipa *equipa1, Equipa *equipa2, int score1, int sco
   jogo->equipa2 = equipa2;
   if (score1 > score2)
   {
-    {
-      addJogosV(equipa1);
-    }
+    addJogosV(equipa1);
   }
   else
   {
@@ -37,9 +35,7 @@ Jogo *criaJogo(char *nome, Equipa *equipa1, Equipa *equipa2, int score1, int sco
 
   if (score1 < score2)
   {
-    {
-      addJogosV(equipa2);
-    }
+    addJogosV(equipa2);
   }
   else
   {
@@ -67,10 +63,8 @@ void alteraScore(Jogo *jogo, int score1_, int score2_)
   comp2 = score1_ - score2_;
   if ((comp1 > 0) && (comp2 < 0))
   {
-    {
-      jogo->equipa1->jogosVencidos--;
-      jogo->equipa2->jogosVencidos++;
-    }
+    jogo->equipa1->jogosVencidos--;
+    jogo->equipa2->jogosVencidos++;
   }
   else
   {
@@ -79,10 +73,8 @@ void alteraScore(Jogo *jogo, int score1_, int score2_)
 
   if ((comp1 < 0) && (comp2 > 0))
   {
-    {
-      jogo->equipa1->jogosVencidos++;
-      jogo->equipa2->jogosVencidos--;
-    }
+    jogo->equipa1->jogosVencidos++;
+    jogo->equipa2->jogosVencidos--;
   }
   else
   {
@@ -91,9 +83,7 @@ void alteraScore(Jogo *jogo, int score1_, int score2_)
 
   if ((comp1 == 0) && (comp2 > 0))
   {
-    {
-      jogo->equipa1->jogosVencidos++;
-    }
+    jogo->equipa1->jogosVencidos++;
   }
   else
   {
@@ -102,9 +92,7 @@ void alteraScore(Jogo *jogo, int score1_, int score2_)
 
   if ((comp1 == 0) && (comp2 < 0))
   {
-    {
-      jogo->equipa2->jogosVencidos++;
-    }
+    jogo->equipa2->jogosVencidos++;
   }
   else
   {
@@ -113,9 +101,7 @@ void alteraScore(Jogo *jogo, int score1_, int score2_)
 
   if ((comp1 > 0) && (comp2 == 0))
   {
-    {
-      jogo->equipa1->jogosVencidos--;
-    }
+    jogo->equipa1->jogosVencidos--;
   }
   else
   {
@@ -124,9 +110,7 @@ void alteraScore(Jogo *jogo, int score1_, int score2_)
 
   if ((comp1 < 0) && (comp2 == 0))
   {
-    {
-      jogo->equipa2->jogosVencidos--;
-    }
+    jogo->equipa2->jogosVencidos--;
   }
   else
   {

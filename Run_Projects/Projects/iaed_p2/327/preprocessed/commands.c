@@ -43,19 +43,15 @@ void cmd_a(int line, game_list *game_lst, game_ht *games, team_ht *teams)
   team2 = team_ht_search(teams, t2_name);
   if (game_ht_search(games, name))
   {
-    {
-      printf("%d Jogo existente.\n", line);
-      return;
-    }
+    printf("%d Jogo existente.\n", line);
+    return;
   }
   else
   {
     if ((!team1) || (!team2))
     {
-      {
-        printf("%d Equipa inexistente.\n", line);
-        return;
-      }
+      printf("%d Equipa inexistente.\n", line);
+      return;
     }
     else
     {
@@ -66,7 +62,7 @@ void cmd_a(int line, game_list *game_lst, game_ht *games, team_ht *teams)
 
   new_game = mk_game(name, team1, team2, score1, score2);
   node = add_game_list(game_lst, new_game);
-  game_ht_insert(games, node, 1);
+  game_ht_insert(games, node, true);
   return;
 }
 
@@ -82,10 +78,8 @@ void cmd_A(int line, team_ht *teams)
   name[10 - 1] = '\0';
   if (team_ht_search(teams, name))
   {
-    {
-      printf("%d Equipa existente.\n", line);
-      return;
-    }
+    printf("%d Equipa existente.\n", line);
+    return;
   }
   else
   {
@@ -162,10 +156,8 @@ void cmd_r(int line, game_list *game_lst, game_ht *games)
   node = game_ht_delete(games, name);
   if (!node)
   {
-    {
-      printf("%d Jogo inexistente.\n", line);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", line);
+    return;
   }
   else
   {

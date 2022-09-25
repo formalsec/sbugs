@@ -62,20 +62,18 @@ void GAMEdelete(char *name, GAMElink *Games)
     tmp = *link;
     if (strcmp(tmp->game->name, name) == 0)
     {
+      if (tmp == head)
       {
-        if (tmp == head)
-        {
-          *link = tmp->next;
-        }
-        else
-        {
-          (*prev)->next = tmp->next;
-        }
-
-        destroyGame(tmp->game);
-        free(tmp);
-        break;
+        *link = tmp->next;
       }
+      else
+      {
+        (*prev)->next = tmp->next;
+      }
+
+      destroyGame(tmp->game);
+      free(tmp);
+      break;
     }
     else
     {

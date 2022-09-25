@@ -116,10 +116,8 @@ void new_game(games **games_ht, game_names **name_list, teams **teams_ht, int in
   sc2 = new_sym_var(sizeof(int) * 8);
   if (search_game(name, games_ht) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", inp);
-      return;
-    }
+    printf("%d Jogo existente.\n", inp);
+    return;
   }
   else
   {
@@ -128,10 +126,8 @@ void new_game(games **games_ht, game_names **name_list, teams **teams_ht, int in
 
   if (((team1 = search_team(t1, teams_ht)) == 0) || ((team2 = search_team(t2, teams_ht)) == 0))
   {
-    {
-      printf("%d Equipa inexistente.\n", inp);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", inp);
+    return;
   }
   else
   {
@@ -181,10 +177,8 @@ void find_game(games **games_ht, int inp)
   name[10 - 1] = '\0';
   if ((game = search_game(name, games_ht)) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", inp);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", inp);
+    return;
   }
   else
   {
@@ -209,10 +203,8 @@ void del_game(games **games_ht, game_names **names_pt, int inp)
   game = search_game(name, games_ht);
   if (game == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", inp);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", inp);
+    return;
   }
   else
   {
@@ -241,10 +233,8 @@ void change_score(games **games_ht, int inp)
   sc2 = new_sym_var(sizeof(int) * 8);
   if ((game = search_game(name, games_ht)) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", inp);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", inp);
+    return;
   }
   else
   {
@@ -288,10 +278,8 @@ teams **new_team(teams **teams_ht, teams **teams_contiguous, int *teamc, int *te
   name[10 - 1] = '\0';
   if (search_team(name, teams_ht) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", inp);
-      return teams_contiguous;
-    }
+    printf("%d Equipa existente.\n", inp);
+    return teams_contiguous;
   }
   else
   {
@@ -304,10 +292,8 @@ teams **new_team(teams **teams_ht, teams **teams_contiguous, int *teamc, int *te
   strcpy(new->name, name);
   if ((*teamc) >= (*teams_sz))
   {
-    {
-      *teams_sz *= 2;
-      teams_contiguous = realloc(teams_contiguous, (*teams_sz) * (sizeof(teams *)));
-    }
+    *teams_sz *= 2;
+    teams_contiguous = realloc(teams_contiguous, (*teams_sz) * (sizeof(teams *)));
   }
   else
   {
@@ -330,10 +316,8 @@ void find_team(teams **teams_ht, int inp)
   name[10 - 1] = '\0';
   if ((team = search_team(name, teams_ht)) == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", inp);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", inp);
+    return;
   }
   else
   {
@@ -366,18 +350,14 @@ void best_teams(teams **teams_contig, int teamc, int inp)
     int winc;
     if ((winc = count_wins(teams_contig[i])) > most_wins)
     {
-      {
-        most_wins = winc;
-        bestc = 1;
-      }
+      most_wins = winc;
+      bestc = 1;
     }
     else
     {
       if (winc == most_wins)
       {
-        {
-          bestc++;
-        }
+        bestc++;
       }
       else
       {

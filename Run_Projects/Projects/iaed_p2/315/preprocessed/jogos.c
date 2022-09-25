@@ -43,21 +43,17 @@ void insert_end_list_jogos(lista_jogos *jogos, jogo novo_jogo)
   no_jogo node;
   if (jogos->head == 0)
   {
-    {
-      node = cria_no_jogo(novo_jogo);
-      node->prev = 0;
-      jogos->head = node;
-      jogos->last = node;
-    }
+    node = cria_no_jogo(novo_jogo);
+    node->prev = 0;
+    jogos->head = node;
+    jogos->last = node;
   }
   else
   {
-    {
-      node = cria_no_jogo(novo_jogo);
-      jogos->last->next = node;
-      node->prev = jogos->last;
-      jogos->last = node;
-    }
+    node = cria_no_jogo(novo_jogo);
+    jogos->last->next = node;
+    node->prev = jogos->last;
+    jogos->last = node;
   }
 
 }
@@ -83,26 +79,20 @@ void remove_jogo(no_jogo no)
   libertar_jogo(no->game);
   if (no->prev == 0)
   {
-    {
-      no->game.nome = 0;
-    }
+    no->game.nome = 0;
   }
   else
   {
     if (no->next == 0)
     {
-      {
-        no->prev->next = 0;
-        free(no);
-      }
+      no->prev->next = 0;
+      free(no);
     }
     else
     {
-      {
-        no->prev->next = no->next;
-        no->next->prev = no->prev;
-        free(no);
-      }
+      no->prev->next = no->next;
+      no->next->prev = no->prev;
+      free(no);
     }
 
   }
@@ -167,35 +157,27 @@ void remove_jogos(hash_table_jogos table_jogo, node_jogo node)
   remove_jogo(node->no_j);
   if (node->prev == 0)
   {
+    if (node->next == 0)
     {
-      if (node->next == 0)
-      {
-        table_jogo->table[h] = 0;
-      }
-      else
-      {
-        {
-          table_jogo->table[h] = node->next;
-          table_jogo->table[h]->prev = 0;
-        }
-      }
-
+      table_jogo->table[h] = 0;
     }
+    else
+    {
+      table_jogo->table[h] = node->next;
+      table_jogo->table[h]->prev = 0;
+    }
+
   }
   else
   {
     if (node->next == 0)
     {
-      {
-        node->prev->next = 0;
-      }
+      node->prev->next = 0;
     }
     else
     {
-      {
-        node->prev->next = node->next;
-        node->next->prev = node->prev;
-      }
+      node->prev->next = node->next;
+      node->next->prev = node->prev;
     }
 
   }

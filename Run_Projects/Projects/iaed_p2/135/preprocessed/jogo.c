@@ -17,23 +17,17 @@ pJogo cria_jogo(const char *nome, const char *e1, const char *e2, const int s1, 
   j->score2 = s2;
   if (s1 > s2)
   {
-    {
-      j->vencedora = strdup(e1);
-    }
+    j->vencedora = strdup(e1);
   }
   else
   {
     if (s1 < s2)
     {
-      {
-        j->vencedora = strdup(e2);
-      }
+      j->vencedora = strdup(e2);
     }
     else
     {
-      {
-        j->vencedora = 0;
-      }
+      j->vencedora = 0;
     }
 
   }
@@ -47,6 +41,20 @@ void altera_score_jogo(pJogo j, const int s1, const int s2)
   j->score2 = s2;
   if (s1 > s2)
   {
+    if (j->vencedora)
+    {
+      free(j->vencedora);
+    }
+    else
+    {
+      
+    }
+
+    j->vencedora = strdup(j->equipa1);
+  }
+  else
+  {
+    if (s1 < s2)
     {
       if (j->vencedora)
       {
@@ -57,40 +65,20 @@ void altera_score_jogo(pJogo j, const int s1, const int s2)
         
       }
 
-      j->vencedora = strdup(j->equipa1);
-    }
-  }
-  else
-  {
-    if (s1 < s2)
-    {
-      {
-        if (j->vencedora)
-        {
-          free(j->vencedora);
-        }
-        else
-        {
-          
-        }
-
-        j->vencedora = strdup(j->equipa2);
-      }
+      j->vencedora = strdup(j->equipa2);
     }
     else
     {
+      if (j->vencedora)
       {
-        if (j->vencedora)
-        {
-          free(j->vencedora);
-        }
-        else
-        {
-          
-        }
-
-        j->vencedora = 0;
+        free(j->vencedora);
       }
+      else
+      {
+        
+      }
+
+      j->vencedora = 0;
     }
 
   }

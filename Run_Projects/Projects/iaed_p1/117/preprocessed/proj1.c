@@ -151,15 +151,11 @@ void q()
   qtd = new_sym_var(sizeof(int) * 8);
   if (vetor_produtos[idp].id != (-1))
   {
-    {
-      vetor_produtos[idp].qtd += qtd;
-    }
+    vetor_produtos[idp].qtd += qtd;
   }
   else
   {
-    {
-      printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idp);
-    }
+    printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idp);
   }
 
 }
@@ -194,72 +190,56 @@ void A()
   qtd_prod = new_sym_var(sizeof(int) * 8);
   if (vetor_encomendas[ide].id == (-1))
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
   }
   else
   {
     if (vetor_produtos[idp].id == (-1))
     {
-      {
-        printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
-      }
+      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
     }
     else
     {
       if (vetor_produtos[idp].qtd < qtd_prod)
       {
-        {
-          printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
-        }
+        printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
       }
       else
       {
+        if ((pesoEncomenda(ide) + (vetor_produtos[idp].peso * qtd_prod)) > 200)
         {
-          if ((pesoEncomenda(ide) + (vetor_produtos[idp].peso * qtd_prod)) > 200)
+          printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
+        }
+        else
+        {
+          vetor_produtos[idp].qtd -= qtd_prod;
+          for (i = 0; i < 200; i++)
           {
+            if (vetor_encomendas[ide].item[i].id == idp)
             {
-              printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
+              vetor_encomendas[ide].item[i].qtd += qtd_prod;
+              break;
             }
-          }
-          else
-          {
+            else
             {
-              vetor_produtos[idp].qtd -= qtd_prod;
-              for (i = 0; i < 200; i++)
-              {
-                if (vetor_encomendas[ide].item[i].id == idp)
-                {
-                  {
-                    vetor_encomendas[ide].item[i].qtd += qtd_prod;
-                    break;
-                  }
-                }
-                else
-                {
-                  
-                }
-
-                if (vetor_encomendas[ide].item[i].id == (-1))
-                {
-                  {
-                    vetor_encomendas[ide].item[i].id = idp;
-                    vetor_encomendas[ide].item[i].qtd = qtd_prod;
-                    break;
-                  }
-                }
-                else
-                {
-                  
-                }
-
-              }
-
+              
             }
+
+            if (vetor_encomendas[ide].item[i].id == (-1))
+            {
+              vetor_encomendas[ide].item[i].id = idp;
+              vetor_encomendas[ide].item[i].qtd = qtd_prod;
+              break;
+            }
+            else
+            {
+              
+            }
+
           }
 
         }
+
       }
 
     }
@@ -276,27 +256,19 @@ void r()
   qtd = new_sym_var(sizeof(int) * 8);
   if (vetor_produtos[id].id != (-1))
   {
+    if ((vetor_produtos[id].qtd - qtd) < 0)
     {
-      if ((vetor_produtos[id].qtd - qtd) < 0)
-      {
-        {
-          printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, id);
-        }
-      }
-      else
-      {
-        {
-          vetor_produtos[id].qtd -= qtd;
-        }
-      }
-
+      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, id);
     }
+    else
+    {
+      vetor_produtos[id].qtd -= qtd;
+    }
+
   }
   else
   {
-    {
-      printf("Impossivel remover stock do produto %d. Produto inexistente.\n", id);
-    }
+    printf("Impossivel remover stock do produto %d. Produto inexistente.\n", id);
   }
 
 }
@@ -310,45 +282,37 @@ void R()
   idp = new_sym_var(sizeof(int) * 8);
   if (vetor_encomendas[ide].id == (-1))
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
   }
   else
   {
     if (vetor_produtos[idp].id == (-1))
     {
-      {
-        printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
-      }
+      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
     }
     else
     {
+      for (i = 0; i < 200; i++)
       {
-        for (i = 0; i < 200; i++)
+        if (vetor_encomendas[ide].item[i].id == idp)
         {
-          if (vetor_encomendas[ide].item[i].id == idp)
+          vetor_produtos[idp].qtd += vetor_encomendas[ide].item[i].qtd;
+          while (i < (200 - 1))
           {
-            {
-              vetor_produtos[idp].qtd += vetor_encomendas[ide].item[i].qtd;
-              while (i < (200 - 1))
-              {
-                vetor_encomendas[ide].item[i] = vetor_encomendas[ide].item[i + 1];
-                i++;
-              }
-
-              vetor_encomendas[ide].item[i].id = -1;
-              break;
-            }
-          }
-          else
-          {
-            
+            vetor_encomendas[ide].item[i] = vetor_encomendas[ide].item[i + 1];
+            i++;
           }
 
+          vetor_encomendas[ide].item[i].id = -1;
+          break;
+        }
+        else
+        {
+          
         }
 
       }
+
     }
 
   }
@@ -363,20 +327,16 @@ void C()
   ide = new_sym_var(sizeof(int) * 8);
   if (vetor_encomendas[ide].id == (-1))
   {
-    {
-      printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ide);
-    }
+    printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ide);
   }
   else
   {
+    for (i = 0; (i < 200) && (vetor_encomendas[ide].item[i].id != (-1)); i++)
     {
-      for (i = 0; (i < 200) && (vetor_encomendas[ide].item[i].id != (-1)); i++)
-      {
-        custo += vetor_produtos[vetor_encomendas[ide].item[i].id].preco * vetor_encomendas[ide].item[i].qtd;
-      }
-
-      printf("Custo da encomenda %d %d.\n", ide, custo);
+      custo += vetor_produtos[vetor_encomendas[ide].item[i].id].preco * vetor_encomendas[ide].item[i].qtd;
     }
+
+    printf("Custo da encomenda %d %d.\n", ide, custo);
   }
 
 }
@@ -389,15 +349,11 @@ void p()
   novo_preco = new_sym_var(sizeof(int) * 8);
   if (vetor_produtos[idp].id == (-1))
   {
-    {
-      printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idp);
-    }
+    printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idp);
   }
   else
   {
-    {
-      vetor_produtos[idp].preco = novo_preco;
-    }
+    vetor_produtos[idp].preco = novo_preco;
   }
 
 }
@@ -409,9 +365,7 @@ int quantidadeProdutoEnc(int idp, int ide)
   {
     if (vetor_encomendas[ide].item[i].id == idp)
     {
-      {
-        return vetor_encomendas[ide].item[i].qtd;
-      }
+      return vetor_encomendas[ide].item[i].qtd;
     }
     else
     {
@@ -431,23 +385,17 @@ void E()
   idp = new_sym_var(sizeof(int) * 8);
   if (vetor_encomendas[ide].id == (-1))
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
   }
   else
   {
     if (vetor_produtos[idp].id == (-1))
     {
-      {
-        printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
-      }
+      printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
     }
     else
     {
-      {
-        printf("%s %d.\n", vetor_produtos[idp].desc, quantidadeProdutoEnc(idp, ide));
-      }
+      printf("%s %d.\n", vetor_produtos[idp].desc, quantidadeProdutoEnc(idp, ide));
     }
 
   }
@@ -464,35 +412,17 @@ void m()
   idp = new_sym_var(sizeof(int) * 8);
   if (vetor_produtos[idp].id == (-1))
   {
-    {
-      printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idp);
-    }
+    printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idp);
   }
   else
   {
+    for (i = 0; (i < 500) && (vetor_encomendas[i].id != (-1)); i++)
     {
-      for (i = 0; (i < 500) && (vetor_encomendas[i].id != (-1)); i++)
+      qtd_enc = quantidadeProdutoEnc(idp, i);
+      if (qtd_enc > max_qtd)
       {
-        qtd_enc = quantidadeProdutoEnc(idp, i);
-        if (qtd_enc > max_qtd)
-        {
-          {
-            max_qtd = qtd_enc;
-            max_ide = i;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      if (max_ide != (-1))
-      {
-        {
-          printf("Maximo produto %d %d %d.\n", idp, max_ide, max_qtd);
-        }
+        max_qtd = qtd_enc;
+        max_ide = i;
       }
       else
       {
@@ -500,6 +430,16 @@ void m()
       }
 
     }
+
+    if (max_ide != (-1))
+    {
+      printf("Maximo produto %d %d %d.\n", idp, max_ide, max_qtd);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -508,23 +448,17 @@ int maiorPreco(int id1, int id2)
 {
   if (vetor_produtos[id1].preco > vetor_produtos[id2].preco)
   {
-    {
-      return 1;
-    }
+    return 1;
   }
   else
   {
     if (vetor_produtos[id1].preco < vetor_produtos[id2].preco)
     {
-      {
-        return 0;
-      }
+      return 0;
     }
     else
     {
-      {
-        return vetor_produtos[id1].id > vetor_produtos[id2].id;
-      }
+      return vetor_produtos[id1].id > vetor_produtos[id2].id;
     }
 
   }
@@ -548,9 +482,7 @@ int particaoPreco(int vec[], int inicio, int fim)
     {
       if (j == inicio)
       {
-        {
-          break;
-        }
+        break;
       }
       else
       {
@@ -562,13 +494,11 @@ int particaoPreco(int vec[], int inicio, int fim)
     if (i < j)
     {
       {
-        {
-          int p = vec[j];
-          vec[j] = vec[i];
-          vec[i] = p;
-        }
-        ;
+        int p = vec[j];
+        vec[j] = vec[i];
+        vec[i] = p;
       }
+      ;
     }
     else
     {
@@ -591,11 +521,9 @@ void ordenaPreco(int vetor_id[], int inicio, int fim)
   int i;
   if (inicio < fim)
   {
-    {
-      i = particaoPreco(vetor_id, inicio, fim);
-      ordenaPreco(vetor_id, inicio, i - 1);
-      ordenaPreco(vetor_id, i + 1, fim);
-    }
+    i = particaoPreco(vetor_id, inicio, fim);
+    ordenaPreco(vetor_id, inicio, i - 1);
+    ordenaPreco(vetor_id, i + 1, fim);
   }
   else
   {
@@ -645,9 +573,7 @@ int particaoAlfab(dados_encomenda vec[], int inicio, int fim)
     {
       if (j == inicio)
       {
-        {
-          break;
-        }
+        break;
       }
       else
       {
@@ -659,13 +585,11 @@ int particaoAlfab(dados_encomenda vec[], int inicio, int fim)
     if (i < j)
     {
       {
-        {
-          dados_encomenda p = vec[j];
-          vec[j] = vec[i];
-          vec[i] = p;
-        }
-        ;
+        dados_encomenda p = vec[j];
+        vec[j] = vec[i];
+        vec[i] = p;
       }
+      ;
     }
     else
     {
@@ -688,11 +612,9 @@ void ordenaAlfab(dados_encomenda vetor_dados[], int inicio, int fim)
   int i;
   if (inicio < fim)
   {
-    {
-      i = particaoAlfab(vetor_dados, inicio, fim);
-      ordenaAlfab(vetor_dados, 0, i - 1);
-      ordenaAlfab(vetor_dados, i + 1, fim);
-    }
+    i = particaoAlfab(vetor_dados, inicio, fim);
+    ordenaAlfab(vetor_dados, 0, i - 1);
+    ordenaAlfab(vetor_dados, i + 1, fim);
   }
   else
   {
@@ -710,25 +632,21 @@ void L()
   ide = new_sym_var(sizeof(int) * 8);
   if (vetor_encomendas[ide].id != (-1))
   {
+    for (j = 0; (j < 200) && (vetor_encomendas[ide].item[j].id != (-1)); j++)
+      ;
+
+    ordenaAlfab(vetor_encomendas[ide].item, 0, j - 1);
+    printf("Encomenda %d\n", ide);
+    for (i = 0; (i < 200) && (vetor_encomendas[ide].item[i].id != (-1)); i++)
     {
-      for (j = 0; (j < 200) && (vetor_encomendas[ide].item[j].id != (-1)); j++)
-        ;
-
-      ordenaAlfab(vetor_encomendas[ide].item, 0, j - 1);
-      printf("Encomenda %d\n", ide);
-      for (i = 0; (i < 200) && (vetor_encomendas[ide].item[i].id != (-1)); i++)
-      {
-        idp = vetor_encomendas[ide].item[i].id;
-        printf("* %s %d %d\n", vetor_produtos[idp].desc, vetor_produtos[idp].preco, vetor_encomendas[ide].item[i].qtd);
-      }
-
+      idp = vetor_encomendas[ide].item[i].id;
+      printf("* %s %d %d\n", vetor_produtos[idp].desc, vetor_produtos[idp].preco, vetor_encomendas[ide].item[i].qtd);
     }
+
   }
   else
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
   }
 
 }

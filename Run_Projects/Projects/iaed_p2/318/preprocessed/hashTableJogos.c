@@ -28,18 +28,14 @@ void addHTJ(jogo *jogo, HT_jogos *heads, int HT_tam)
   novo->p = jogo;
   if (heads[i])
   {
-    {
-      heads[i]->prev = novo;
-      heads[i]->prev->p = jogo;
-      heads[i]->prev->next = heads[i];
-      heads[i] = heads[i]->prev;
-    }
+    heads[i]->prev = novo;
+    heads[i]->prev->p = jogo;
+    heads[i]->prev->next = heads[i];
+    heads[i] = heads[i]->prev;
   }
   else
   {
-    {
-      heads[i] = novo;
-    }
+    heads[i] = novo;
   }
 
 }
@@ -54,34 +50,26 @@ void remHTJ(char *nome, HT_jogos *heads, int HT_tam)
     jogo = HT_jogos->p;
     if (strcmp(jogo->nome, nome) == 0)
     {
+      if (HT_jogos->prev == 0)
       {
-        if (HT_jogos->prev == 0)
-        {
-          {
-            heads[i] = HT_jogos->next;
-          }
-        }
-        else
-        {
-          {
-            HT_jogos->prev->next = HT_jogos->next;
-          }
-        }
-
-        if (HT_jogos->next != 0)
-        {
-          {
-            HT_jogos->next->prev = HT_jogos->prev;
-          }
-        }
-        else
-        {
-          
-        }
-
-        free(HT_jogos);
-        break;
+        heads[i] = HT_jogos->next;
       }
+      else
+      {
+        HT_jogos->prev->next = HT_jogos->next;
+      }
+
+      if (HT_jogos->next != 0)
+      {
+        HT_jogos->next->prev = HT_jogos->prev;
+      }
+      else
+      {
+        
+      }
+
+      free(HT_jogos);
+      break;
     }
     else
     {
@@ -104,10 +92,8 @@ jogo *searchJogo(char *nome, HT_jogos *heads, int HT_tam)
     jogo_ = HT_jogos->p;
     if (compare_strings(jogo_->nome, nome) == 0)
     {
-      {
-        final = HT_jogos->p;
-        break;
-      }
+      final = HT_jogos->p;
+      break;
     }
     else
     {

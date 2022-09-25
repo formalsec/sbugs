@@ -68,9 +68,7 @@ pNode searchHTG(pNode list, char *name)
   }
   else
   {
-    {
-      continue;
-    }
+    continue;
   }
 
 
@@ -87,19 +85,39 @@ void change_wins(pGNode gms, int scoret1, int scoret2)
 {
   if (gms->g->scoreteam1 > gms->g->scoreteam2)
   {
+    if (scoret1 == scoret2)
     {
-      if (scoret1 == scoret2)
+      gms->g->team1->wins -= 1;
+    }
+    else
+    {
+      if (scoret1 < scoret2)
       {
         gms->g->team1->wins -= 1;
+        gms->g->team2->wins += 1;
       }
       else
       {
-        if (scoret1 < scoret2)
+        
+      }
+
+    }
+
+  }
+  else
+  {
+    if (gms->g->scoreteam1 < gms->g->scoreteam2)
+    {
+      if (scoret1 > scoret2)
+      {
+        gms->g->team1->wins += 1;
+        gms->g->team2->wins -= 1;
+      }
+      else
+      {
+        if (scoret1 == scoret2)
         {
-          {
-            gms->g->team1->wins -= 1;
-            gms->g->team2->wins += 1;
-          }
+          gms->g->team2->wins -= 1;
         }
         else
         {
@@ -109,55 +127,25 @@ void change_wins(pGNode gms, int scoret1, int scoret2)
       }
 
     }
-  }
-  else
-  {
-    if (gms->g->scoreteam1 < gms->g->scoreteam2)
-    {
-      {
-        if (scoret1 > scoret2)
-        {
-          {
-            gms->g->team1->wins += 1;
-            gms->g->team2->wins -= 1;
-          }
-        }
-        else
-        {
-          if (scoret1 == scoret2)
-          {
-            gms->g->team2->wins -= 1;
-          }
-          else
-          {
-            
-          }
-
-        }
-
-      }
-    }
     else
     {
+      if (scoret1 > scoret2)
       {
-        if (scoret1 > scoret2)
+        gms->g->team1->wins += 1;
+      }
+      else
+      {
+        if (scoret1 < scoret2)
         {
-          gms->g->team1->wins += 1;
+          gms->g->team2->wins += 1;
         }
         else
         {
-          if (scoret1 < scoret2)
-          {
-            gms->g->team2->wins += 1;
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
+
     }
 
   }
@@ -174,21 +162,19 @@ pNode remove_gameaux(pNode head, pGNode game)
   {
     if (t->gms == game)
     {
+      if (t == head)
       {
-        if (t == head)
-        {
-          head = t->next;
-        }
-        else
-        {
-          prev->next = t->next;
-        }
-
-        free(t->gms->g);
-        free(t->gms);
-        free(t);
-        break;
+        head = t->next;
       }
+      else
+      {
+        prev->next = t->next;
+      }
+
+      free(t->gms->g);
+      free(t->gms);
+      free(t);
+      break;
     }
     else
     {
@@ -217,22 +203,20 @@ pNode remove_gamefinal(pNode head, pGNode game)
 
     if (t->gms == game)
     {
+      if (t == head)
       {
-        if (t == head)
-        {
-          head = t->next;
-        }
-        else
-        {
-          prev->next = t->next;
-        }
-
-        free(t->gms->g->name);
-        free(t->gms->g);
-        free(t->gms);
-        free(t);
-        break;
+        head = t->next;
       }
+      else
+      {
+        prev->next = t->next;
+      }
+
+      free(t->gms->g->name);
+      free(t->gms->g);
+      free(t->gms);
+      free(t);
+      break;
     }
     else
     {

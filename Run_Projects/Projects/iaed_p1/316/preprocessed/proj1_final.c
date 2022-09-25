@@ -50,15 +50,11 @@ void adiciona_stck()
   stock_novo = new_sym_var(sizeof(int) * 8);
   if (idp > (contador_idp_produto - 1))
   {
-    {
-      printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idp);
-    }
+    printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idp);
   }
   else
   {
-    {
-      total_produtos[idp].quantidade += stock_novo;
-    }
+    total_produtos[idp].quantidade += stock_novo;
   }
 
 }
@@ -111,36 +107,16 @@ void adiciona_prd_encomenda()
         }
         else
         {
+          numero_prd = total_encomendas[ide].numero_prd;
+          for (i = 0; i < numero_prd; i++)
           {
-            numero_prd = total_encomendas[ide].numero_prd;
-            for (i = 0; i < numero_prd; i++)
+            if (idp == total_encomendas[ide].n_produtos[i].identificador)
             {
-              if (idp == total_encomendas[ide].n_produtos[i].identificador)
-              {
-                {
-                  total_encomendas[ide].n_produtos[i].quantidade += quantidade;
-                  total_encomendas[ide].peso_total += peso_produto;
-                  total_produtos[idp].quantidade -= quantidade;
-                  flag = 1;
-                  break;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-            if (flag == 0)
-            {
-              {
-                total_encomendas[ide].n_produtos[total_encomendas[ide].numero_prd] = total_produtos[idp];
-                total_encomendas[ide].peso_total += peso_produto;
-                total_produtos[idp].quantidade -= quantidade;
-                total_encomendas[ide].n_produtos[total_encomendas[ide].numero_prd].quantidade = quantidade;
-                total_encomendas[ide].numero_prd++;
-              }
+              total_encomendas[ide].n_produtos[i].quantidade += quantidade;
+              total_encomendas[ide].peso_total += peso_produto;
+              total_produtos[idp].quantidade -= quantidade;
+              flag = 1;
+              break;
             }
             else
             {
@@ -148,6 +124,20 @@ void adiciona_prd_encomenda()
             }
 
           }
+
+          if (flag == 0)
+          {
+            total_encomendas[ide].n_produtos[total_encomendas[ide].numero_prd] = total_produtos[idp];
+            total_encomendas[ide].peso_total += peso_produto;
+            total_produtos[idp].quantidade -= quantidade;
+            total_encomendas[ide].n_produtos[total_encomendas[ide].numero_prd].quantidade = quantidade;
+            total_encomendas[ide].numero_prd++;
+          }
+          else
+          {
+            
+          }
+
         }
 
       }
@@ -205,30 +195,26 @@ void remove_prd_encomenda()
     }
     else
     {
+      for (i = 0; i < numero_produtos_en; i++)
       {
-        for (i = 0; i < numero_produtos_en; i++)
+        if (total_encomendas[ide].n_produtos[i].identificador == idp)
         {
-          if (total_encomendas[ide].n_produtos[i].identificador == idp)
-          {
-            {
-              total_encomendas[ide].numero_prd--;
-              total_encomendas[ide].peso_total -= total_encomendas[ide].n_produtos[i].peso * total_encomendas[ide].n_produtos[i].quantidade;
-              total_produtos[idp].quantidade += total_encomendas[ide].n_produtos[i].quantidade;
-              for (j = i; j < numero_produtos_en; j++)
-                total_encomendas[ide].n_produtos[j] = total_encomendas[ide].n_produtos[j + 1];
+          total_encomendas[ide].numero_prd--;
+          total_encomendas[ide].peso_total -= total_encomendas[ide].n_produtos[i].peso * total_encomendas[ide].n_produtos[i].quantidade;
+          total_produtos[idp].quantidade += total_encomendas[ide].n_produtos[i].quantidade;
+          for (j = i; j < numero_produtos_en; j++)
+            total_encomendas[ide].n_produtos[j] = total_encomendas[ide].n_produtos[j + 1];
 
-              total_encomendas[ide].n_produtos[j].identificador = 0;
-              break;
-            }
-          }
-          else
-          {
-            
-          }
-
+          total_encomendas[ide].n_produtos[j].identificador = 0;
+          break;
+        }
+        else
+        {
+          
         }
 
       }
+
     }
 
   }
@@ -249,12 +235,10 @@ void custo_encomenda()
   }
   else
   {
-    {
-      for (i = 0; i < numero_prd_encomenda; i++)
-        total += total_encomendas[ide].n_produtos[i].preco * total_encomendas[ide].n_produtos[i].quantidade;
+    for (i = 0; i < numero_prd_encomenda; i++)
+      total += total_encomendas[ide].n_produtos[i].preco * total_encomendas[ide].n_produtos[i].quantidade;
 
-      printf("Custo da encomenda %d %d.\n", ide, total);
-    }
+    printf("Custo da encomenda %d %d.\n", ide, total);
   }
 
 }
@@ -273,28 +257,24 @@ void altera_preco()
   }
   else
   {
+    total_produtos[idp].preco = preco_novo;
+    for (i = 0; i < contador_ide_encomenda; i++)
     {
-      total_produtos[idp].preco = preco_novo;
-      for (i = 0; i < contador_ide_encomenda; i++)
+      for (j = 0; j < total_encomendas[i].numero_prd; j++)
       {
-        for (j = 0; j < total_encomendas[i].numero_prd; j++)
+        if (total_encomendas[i].n_produtos[j].identificador == idp)
         {
-          if (total_encomendas[i].n_produtos[j].identificador == idp)
-          {
-            {
-              total_encomendas[i].n_produtos[j].preco = preco_novo;
-            }
-          }
-          else
-          {
-            
-          }
-
+          total_encomendas[i].n_produtos[j].preco = preco_novo;
+        }
+        else
+        {
+          
         }
 
       }
 
     }
+
   }
 
 }
@@ -320,34 +300,30 @@ void dercricao_prd_en()
     }
     else
     {
+      numero_prd = total_encomendas[ide].numero_prd;
+      for (i = 0; i < numero_prd; i++)
       {
-        numero_prd = total_encomendas[ide].numero_prd;
-        for (i = 0; i < numero_prd; i++)
+        if (idp == total_encomendas[ide].n_produtos[i].identificador)
         {
-          if (idp == total_encomendas[ide].n_produtos[i].identificador)
-          {
-            {
-              flag = i;
-              break;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-        if (flag == (-1))
-        {
-          printf("%s 0.\n", total_produtos[idp].string);
+          flag = i;
+          break;
         }
         else
         {
-          printf("%s %d.\n", total_produtos[idp].string, total_encomendas[ide].n_produtos[flag].quantidade);
+          
         }
 
       }
+
+      if (flag == (-1))
+      {
+        printf("%s 0.\n", total_produtos[idp].string);
+      }
+      else
+      {
+        printf("%s %d.\n", total_produtos[idp].string, total_encomendas[ide].n_produtos[flag].quantidade);
+      }
+
     }
 
   }
@@ -369,28 +345,17 @@ void listar_prd()
   }
   else
   {
+    for (i = 0; i < contador_ide_encomenda; i++)
     {
-      for (i = 0; i < contador_ide_encomenda; i++)
+      for (j = 0; j < total_encomendas[i].numero_prd; j++)
       {
-        for (j = 0; j < total_encomendas[i].numero_prd; j++)
+        if (total_encomendas[i].n_produtos[j].identificador == idp)
         {
-          if (total_encomendas[i].n_produtos[j].identificador == idp)
+          if (total_encomendas[i].n_produtos[j].quantidade > quantidade)
           {
-            {
-              if (total_encomendas[i].n_produtos[j].quantidade > quantidade)
-              {
-                {
-                  quantidade = total_encomendas[i].n_produtos[j].quantidade;
-                  posicao = i;
-                  flag = 1;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
+            quantidade = total_encomendas[i].n_produtos[j].quantidade;
+            posicao = i;
+            flag = 1;
           }
           else
           {
@@ -398,17 +363,20 @@ void listar_prd()
           }
 
         }
+        else
+        {
+          
+        }
 
       }
 
     }
+
   }
 
   if (flag == 1)
   {
-    {
-      printf("Maximo produto %d %d %d.\n", idp, total_encomendas[posicao].identificador_en, quantidade);
-    }
+    printf("Maximo produto %d %d %d.\n", idp, total_encomendas[posicao].identificador_en, quantidade);
   }
   else
   {
@@ -441,17 +409,13 @@ void ordena(Produto vetor[], int esquerda, int meio, int direita)
   {
     if (Esquerda[i].preco <= Direita[j].preco)
     {
-      {
-        vetor[k] = Esquerda[i];
-        i++;
-      }
+      vetor[k] = Esquerda[i];
+      i++;
     }
     else
     {
-      {
-        vetor[k] = Direita[j];
-        j++;
-      }
+      vetor[k] = Direita[j];
+      j++;
     }
 
     k++;
@@ -477,13 +441,11 @@ void ordena_partes(Produto vetor[], int esquerda, int direita)
 {
   if (esquerda < direita)
   {
-    {
-      int meio;
-      meio = esquerda + ((direita - esquerda) / 2);
-      ordena_partes(vetor, esquerda, meio);
-      ordena_partes(vetor, meio + 1, direita);
-      ordena(vetor, esquerda, meio, direita);
-    }
+    int meio;
+    meio = esquerda + ((direita - esquerda) / 2);
+    ordena_partes(vetor, esquerda, meio);
+    ordena_partes(vetor, meio + 1, direita);
+    ordena(vetor, esquerda, meio, direita);
   }
   else
   {
@@ -567,13 +529,11 @@ void ordena_partes_encomenda(Produto vetor[], int esquerda, int direita)
 {
   if (esquerda < direita)
   {
-    {
-      int meio;
-      meio = esquerda + ((direita - esquerda) / 2);
-      ordena_partes_encomenda(vetor, esquerda, meio);
-      ordena_partes_encomenda(vetor, meio + 1, direita);
-      ordena_encomenda(vetor, esquerda, meio, direita);
-    }
+    int meio;
+    meio = esquerda + ((direita - esquerda) / 2);
+    ordena_partes_encomenda(vetor, esquerda, meio);
+    ordena_partes_encomenda(vetor, meio + 1, direita);
+    ordena_encomenda(vetor, esquerda, meio, direita);
   }
   else
   {
@@ -602,22 +562,18 @@ void lista_produtos_encomedas()
   ide = new_sym_var(sizeof(int) * 8);
   if (ide > (contador_ide_encomenda - 1))
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
   }
   else
   {
+    n_prd = total_encomendas[ide].numero_prd;
+    for (i = 0; i < n_prd; i++)
     {
-      n_prd = total_encomendas[ide].numero_prd;
-      for (i = 0; i < n_prd; i++)
-      {
-        vetor_ord[i] = total_encomendas[ide].n_produtos[i];
-      }
-
-      ordena_partes_encomenda(vetor_ord, 0, total_encomendas[ide].numero_prd - 1);
-      printa_vetor_en(vetor_ord, ide);
+      vetor_ord[i] = total_encomendas[ide].n_produtos[i];
     }
+
+    ordena_partes_encomenda(vetor_ord, 0, total_encomendas[ide].numero_prd - 1);
+    printa_vetor_en(vetor_ord, ide);
   }
 
 }

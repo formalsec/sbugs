@@ -84,34 +84,28 @@ void a(tabela *jogos, tabela *equipas, int NL, lista *jogosL)
   scr2 = new_sym_var(sizeof(int) * 8);
   if (procuraTabela(jogos, nomeBuff) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-    }
+    printf("%d Jogo existente.\n", NL);
   }
   else
   {
     if (((eq1 = procuraTabela(equipas, eq1Buff)) == 0) || ((eq2 = procuraTabela(equipas, eq2Buff)) == 0))
     {
-      {
-        printf("%d Equipa inexistente.\n", NL);
-      }
+      printf("%d Equipa inexistente.\n", NL);
     }
     else
     {
+      if ((eq1 = vencedor(eq1, eq2, scr1, scr2)) != 0)
       {
-        if ((eq1 = vencedor(eq1, eq2, scr1, scr2)) != 0)
-        {
-          eq1->scr[1]++;
-        }
-        else
-        {
-          
-        }
-
-        jogo = novoDado(nomeBuff, eq1Buff, eq2Buff, scr1, scr2);
-        insereTabela(jogos, jogo);
-        insereFinalLista(jogosL, jogo);
+        eq1->scr[1]++;
       }
+      else
+      {
+        
+      }
+
+      jogo = novoDado(nomeBuff, eq1Buff, eq2Buff, scr1, scr2);
+      insereTabela(jogos, jogo);
+      insereFinalLista(jogosL, jogo);
     }
 
   }
@@ -134,12 +128,10 @@ void A(tabela *equipas, int NL, lista *equipasL)
   }
   else
   {
-    {
-      dados *equipa;
-      equipa = novoDado(buffer, 0, 0, -1, 0);
-      insereTabela(equipas, equipa);
-      insereFinalLista(equipasL, equipa);
-    }
+    dados *equipa;
+    equipa = novoDado(buffer, 0, 0, -1, 0);
+    insereTabela(equipas, equipa);
+    insereFinalLista(equipasL, equipa);
   }
 
 }
@@ -199,23 +191,21 @@ void r(tabela *jogos, tabela *equipas, int NL)
   }
   else
   {
+    dados *eq1;
+    dados *eq2;
+    jogo = procuraTabela(jogos, jogo->nome);
+    eq1 = procuraTabela(equipas, jogo->eq1);
+    eq2 = procuraTabela(equipas, jogo->eq2);
+    if ((eq1 = vencedor(eq1, eq2, jogo->scr[0], jogo->scr[1])) != 0)
     {
-      dados *eq1;
-      dados *eq2;
-      jogo = procuraTabela(jogos, jogo->nome);
-      eq1 = procuraTabela(equipas, jogo->eq1);
-      eq2 = procuraTabela(equipas, jogo->eq2);
-      if ((eq1 = vencedor(eq1, eq2, jogo->scr[0], jogo->scr[1])) != 0)
-      {
-        eq1->scr[1]--;
-      }
-      else
-      {
-        
-      }
-
-      jogo->scr[1] = -1;
+      eq1->scr[1]--;
     }
+    else
+    {
+      
+    }
+
+    jogo->scr[1] = -1;
   }
 
 }
@@ -241,89 +231,75 @@ void s(tabela *jogos, tabela *equipas, int NL)
   }
   else
   {
+    dados *eq1;
+    dados *eq2;
+    dados *res1;
+    dados *res2;
+    eq1 = procuraTabela(equipas, jogo->eq1);
+    eq2 = procuraTabela(equipas, jogo->eq2);
+    res1 = vencedor(eq1, eq2, jogo->scr[0], jogo->scr[1]);
+    res2 = vencedor(eq1, eq2, scr1, scr2);
+    if (res1 != res2)
     {
-      dados *eq1;
-      dados *eq2;
-      dados *res1;
-      dados *res2;
-      eq1 = procuraTabela(equipas, jogo->eq1);
-      eq2 = procuraTabela(equipas, jogo->eq2);
-      res1 = vencedor(eq1, eq2, jogo->scr[0], jogo->scr[1]);
-      res2 = vencedor(eq1, eq2, scr1, scr2);
-      if (res1 != res2)
+      if (res1 == eq1)
       {
+        if (res2 == 0)
         {
-          if (res1 == eq1)
+          eq1->scr[1]--;
+        }
+        else
+        {
+          if (res2 == eq2)
           {
-            {
-              if (res2 == 0)
-              {
-                eq1->scr[1]--;
-              }
-              else
-              {
-                if (res2 == eq2)
-                {
-                  {
-                    eq1->scr[1]--;
-                    eq2->scr[1]++;
-                  }
-                }
-                else
-                {
-                  
-                }
-
-              }
-
-            }
+            eq1->scr[1]--;
+            eq2->scr[1]++;
           }
           else
           {
-            if (res1 == 0)
+            
+          }
+
+        }
+
+      }
+      else
+      {
+        if (res1 == 0)
+        {
+          res2->scr[1]++;
+        }
+        else
+        {
+          if (res2 == eq1)
+          {
+            eq2->scr[1]--;
+            eq1->scr[1]++;
+          }
+          else
+          {
+            if (res2 == 0)
             {
-              {
-                res2->scr[1]++;
-              }
+              eq2->scr[1]--;
             }
             else
             {
-              {
-                if (res2 == eq1)
-                {
-                  {
-                    eq2->scr[1]--;
-                    eq1->scr[1]++;
-                  }
-                }
-                else
-                {
-                  if (res2 == 0)
-                  {
-                    eq2->scr[1]--;
-                  }
-                  else
-                  {
-                    
-                  }
-
-                }
-
-              }
+              
             }
 
           }
 
         }
-      }
-      else
-      {
-        
+
       }
 
-      jogo->scr[0] = scr1;
-      jogo->scr[1] = scr2;
     }
+    else
+    {
+      
+    }
+
+    jogo->scr[0] = scr1;
+    jogo->scr[1] = scr2;
   }
 
 }
@@ -358,9 +334,7 @@ void g(lista *equipasL, int NL)
   for (i = 0, max = 0; i < equipasL->n; i++)
     if (equipasL->vetor[i]->scr[1] > max)
   {
-    {
-      max = equipasL->vetor[i]->scr[1];
-    }
+    max = equipasL->vetor[i]->scr[1];
   }
   else
   {
@@ -382,10 +356,8 @@ void g(lista *equipasL, int NL)
   ;
   if (queue->n == 0)
   {
-    {
-      libLista(queue);
-      return;
-    }
+    libLista(queue);
+    return;
   }
   else
   {

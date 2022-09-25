@@ -143,10 +143,8 @@ void f_a(int NL, Jogos_sistema *jogos_sis, JHnode *Jhash, EHnode *Ehash)
   jogo = JHsearch(Jhash, nome);
   if (jogo != 0)
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-      return;
-    }
+    printf("%d Jogo existente.\n", NL);
+    return;
   }
   else
   {
@@ -157,10 +155,8 @@ void f_a(int NL, Jogos_sistema *jogos_sis, JHnode *Jhash, EHnode *Ehash)
   equipa2 = EHsearch(Ehash, equipa2_nome);
   if (!((equipa1 != 0) && (equipa2 != 0)))
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -216,10 +212,8 @@ void f_p(int NL, JHnode *Jhash)
   jogo = JHsearch(Jhash, nome);
   if (jogo != 0)
   {
-    {
-      printf("%d %s %s %s %d %d\n", NL, jogo->nome, jogo->e1->nome, jogo->e2->nome, jogo->s1, jogo->s2);
-      return;
-    }
+    printf("%d %s %s %s %d %d\n", NL, jogo->nome, jogo->e1->nome, jogo->e2->nome, jogo->s1, jogo->s2);
+    return;
   }
   else
   {
@@ -242,28 +236,26 @@ void f_r(int NL, JHnode *Jhash, Jogos_sistema *jogos_sis)
   jogo = JHsearch(Jhash, nome);
   if (jogo != 0)
   {
+    if (jogo->s1 > jogo->s2)
     {
-      if (jogo->s1 > jogo->s2)
+      jogo->e1->jogos_ganhos--;
+    }
+    else
+    {
+      if (jogo->s1 < jogo->s2)
       {
-        jogo->e1->jogos_ganhos--;
+        jogo->e2->jogos_ganhos--;
       }
       else
       {
-        if (jogo->s1 < jogo->s2)
-        {
-          jogo->e2->jogos_ganhos--;
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      JSdelete(jogos_sis, nome);
-      JHdelete(Jhash, nome);
-      return;
     }
+
+    JSdelete(jogos_sis, nome);
+    JHdelete(Jhash, nome);
+    return;
   }
   else
   {
@@ -290,45 +282,43 @@ void f_s(int NL, JHnode *Jhash)
   jogo = JHsearch(Jhash, nome);
   if (jogo != 0)
   {
+    if (jogo->s1 > jogo->s2)
     {
-      if (jogo->s1 > jogo->s2)
-      {
-        jogo->e1->jogos_ganhos--;
-      }
-      else
-      {
-        if (jogo->s1 < jogo->s2)
-        {
-          jogo->e2->jogos_ganhos--;
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      if (score1 > score2)
-      {
-        jogo->e1->jogos_ganhos++;
-      }
-      else
-      {
-        if (score1 < score2)
-        {
-          jogo->e2->jogos_ganhos++;
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      jogo->s1 = score1;
-      jogo->s2 = score2;
-      return;
+      jogo->e1->jogos_ganhos--;
     }
+    else
+    {
+      if (jogo->s1 < jogo->s2)
+      {
+        jogo->e2->jogos_ganhos--;
+      }
+      else
+      {
+        
+      }
+
+    }
+
+    if (score1 > score2)
+    {
+      jogo->e1->jogos_ganhos++;
+    }
+    else
+    {
+      if (score1 < score2)
+      {
+        jogo->e2->jogos_ganhos++;
+      }
+      else
+      {
+        
+      }
+
+    }
+
+    jogo->s1 = score1;
+    jogo->s2 = score2;
+    return;
   }
   else
   {
@@ -350,10 +340,8 @@ void f_A(int NL, EHnode *Ehash, Equipas_sistema *equipas_sis)
   nome[10 - 1] = '\0';
   if (EHsearch(Ehash, nome) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-      return;
-    }
+    printf("%d Equipa existente.\n", NL);
+    return;
   }
   else
   {
@@ -390,10 +378,8 @@ void f_P(int NL, EHnode *Ehash)
   equipa = EHsearch(Ehash, nome);
   if (equipa != 0)
   {
-    {
-      printf("%d %s %d\n", NL, equipa->nome, equipa->jogos_ganhos);
-      return;
-    }
+    printf("%d %s %d\n", NL, equipa->nome, equipa->jogos_ganhos);
+    return;
   }
   else
   {
@@ -425,11 +411,9 @@ void f_g(int NL, Equipas_sistema *equipas_sis)
   {
     if (node->equipa->jogos_ganhos > equipas_sis->n_max_vitorias)
     {
-      {
-        equipas_sis->n_max_vitorias = node->equipa->jogos_ganhos;
-        equipas_sis->n_equipas_max = 0;
-        i = 0;
-      }
+      equipas_sis->n_max_vitorias = node->equipa->jogos_ganhos;
+      equipas_sis->n_equipas_max = 0;
+      i = 0;
     }
     else
     {
@@ -438,22 +422,18 @@ void f_g(int NL, Equipas_sistema *equipas_sis)
 
     if (node->equipa->jogos_ganhos == equipas_sis->n_max_vitorias)
     {
+      equipas_sis->n_equipas_max++;
+      if (equipas_sis->n_equipas_max >= m)
       {
-        equipas_sis->n_equipas_max++;
-        if (equipas_sis->n_equipas_max >= m)
-        {
-          {
-            m += 50;
-            equipas_ord = realloc(equipas_ord, (sizeof(Equipa *)) * m);
-          }
-        }
-        else
-        {
-          
-        }
-
-        equipas_ord[i++] = node->equipa;
+        m += 50;
+        equipas_ord = realloc(equipas_ord, (sizeof(Equipa *)) * m);
       }
+      else
+      {
+        
+      }
+
+      equipas_ord[i++] = node->equipa;
     }
     else
     {

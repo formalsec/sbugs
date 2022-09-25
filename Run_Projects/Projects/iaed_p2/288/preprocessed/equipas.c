@@ -20,15 +20,13 @@ void alphasort(char **nomes, int count)
     {
       if (strcmp(nomes[i], nomes[j]) > 0)
       {
-        {
-          temp = malloc((sizeof(char)) * (strlen(nomes[i]) + 1));
-          strcpy(temp, nomes[i]);
-          nomes[i] = realloc(nomes[i], strlen(nomes[j]) + 1);
-          strcpy(nomes[i], nomes[j]);
-          nomes[j] = realloc(nomes[j], strlen(temp) + 1);
-          strcpy(nomes[j], temp);
-          free(temp);
-        }
+        temp = malloc((sizeof(char)) * (strlen(nomes[i]) + 1));
+        strcpy(temp, nomes[i]);
+        nomes[i] = realloc(nomes[i], strlen(nomes[j]) + 1);
+        strcpy(nomes[i], nomes[j]);
+        nomes[j] = realloc(nomes[j], strlen(temp) + 1);
+        strcpy(nomes[j], temp);
+        free(temp);
       }
       else
       {
@@ -138,10 +136,8 @@ node_equipas *A(int NL, node_equipas *n_equipas, hashtable_equipas *h_equipas)
   hash_e = hash(equipa, h_equipas->capacity);
   if (checkins(equipa, h_equipas, hash_e))
   {
-    {
-      n_equipas = make_node_e(equipa, n_equipas);
-      h_equipas->tb[hash_e] = make_hashnode_e(h_equipas->tb[hash_e], n_equipas);
-    }
+    n_equipas = make_node_e(equipa, n_equipas);
+    h_equipas->tb[hash_e] = make_hashnode_e(h_equipas->tb[hash_e], n_equipas);
   }
   else
   {
@@ -200,10 +196,8 @@ void g(int NL, hashtable_equipas *h_equipas)
     {
       if (checker->pointer->pontos > MAX)
       {
-        {
-          MAX = checker->pointer->pontos;
-          contador = 1;
-        }
+        MAX = checker->pointer->pontos;
+        contador = 1;
       }
       else
       {
@@ -224,40 +218,36 @@ void g(int NL, hashtable_equipas *h_equipas)
 
   if (MAX != (-1))
   {
+    equipas = malloc((sizeof(char *)) * (contador + 1));
+    for (i = 0; i < h_equipas->capacity; i++)
     {
-      equipas = malloc((sizeof(char *)) * (contador + 1));
-      for (i = 0; i < h_equipas->capacity; i++)
+      for (checker = h_equipas->tb[i]; checker != 0; checker = checker->next)
       {
-        for (checker = h_equipas->tb[i]; checker != 0; checker = checker->next)
+        if (checker->pointer->pontos == MAX)
         {
-          if (checker->pointer->pontos == MAX)
-          {
-            {
-              *(equipas + x) = malloc((sizeof(char)) * (strlen(checker->pointer->equipa) + 1));
-              strcpy(*(equipas + x), checker->pointer->equipa);
-              x++;
-            }
-          }
-          else
-          {
-            
-          }
-
+          *(equipas + x) = malloc((sizeof(char)) * (strlen(checker->pointer->equipa) + 1));
+          strcpy(*(equipas + x), checker->pointer->equipa);
+          x++;
+        }
+        else
+        {
+          
         }
 
       }
 
-      *(equipas + x) = '\0';
-      printf("%d Melhores %d\n", NL, MAX);
-      alphasort(equipas, contador);
-      for (y = 0; y < contador; y++)
-      {
-        printf("%d * %s\n", NL, equipas[y]);
-        free(equipas[y]);
-      }
-
-      free(equipas);
     }
+
+    *(equipas + x) = '\0';
+    printf("%d Melhores %d\n", NL, MAX);
+    alphasort(equipas, contador);
+    for (y = 0; y < contador; y++)
+    {
+      printf("%d * %s\n", NL, equipas[y]);
+      free(equipas[y]);
+    }
+
+    free(equipas);
   }
   else
   {

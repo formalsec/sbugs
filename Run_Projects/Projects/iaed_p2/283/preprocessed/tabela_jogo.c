@@ -94,53 +94,45 @@ void Remove_table(link *table, Jogo *j)
     {
       if ((table[hash_id]->next == 0) && (strcmp(j->nome_jogo, tmp->jogo->nome_jogo) == 0))
       {
-        {
-          table[hash_id] = table[hash_id]->next;
-          free_jogo(tmp->jogo);
-          free(tmp);
-          return;
-        }
+        table[hash_id] = table[hash_id]->next;
+        free_jogo(tmp->jogo);
+        free(tmp);
+        return;
       }
       else
       {
+        if (strcmp(tmp->jogo->nome_jogo, j->nome_jogo) == 0)
         {
-          if (strcmp(tmp->jogo->nome_jogo, j->nome_jogo) == 0)
+          tmp2 = tmp;
+          table[hash_id] = table[hash_id]->next;
+          free_jogo(tmp2->jogo);
+          free(tmp2);
+          return;
+        }
+        else
+        {
+          
+        }
+
+        while (tmp->next != 0)
+        {
+          if (strcmp(j->nome_jogo, tmp->next->jogo->nome_jogo) == 0)
           {
-            {
-              tmp2 = tmp;
-              table[hash_id] = table[hash_id]->next;
-              free_jogo(tmp2->jogo);
-              free(tmp2);
-              return;
-            }
+            tmp2 = tmp->next;
+            tmp->next = tmp2->next;
+            free_jogo(tmp2->jogo);
+            free(tmp2);
+            return;
           }
           else
           {
             
           }
 
-          while (tmp->next != 0)
-          {
-            if (strcmp(j->nome_jogo, tmp->next->jogo->nome_jogo) == 0)
-            {
-              {
-                tmp2 = tmp->next;
-                tmp->next = tmp2->next;
-                free_jogo(tmp2->jogo);
-                free(tmp2);
-                return;
-              }
-            }
-            else
-            {
-              
-            }
-
-            tmp = tmp->next;
-          }
-
-          return;
+          tmp = tmp->next;
         }
+
+        return;
       }
 
     }

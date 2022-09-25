@@ -65,14 +65,12 @@ void expandT(hash *hashtable)
   {
     if (hashtable->array[index] != 0)
     {
-      {
-        newHashval = hashvalT(hashtable, hashtable->array[index]);
-        while (newArray[newHashval] != 0)
-          newHashval = (newHashval + 1) % newSize;
+      newHashval = hashvalT(hashtable, hashtable->array[index]);
+      while (newArray[newHashval] != 0)
+        newHashval = (newHashval + 1) % newSize;
 
-        newArray[newHashval] = hashtable->array[index];
-        hashtable->array[index] = 0;
-      }
+      newArray[newHashval] = hashtable->array[index];
+      hashtable->array[index] = 0;
     }
     else
     {
@@ -113,10 +111,8 @@ void eraseT(hash *hashtable)
   {
     if (hashtable->array[index] != 0)
     {
-      {
-        free(hashtable->array[index]);
-        hashtable->array[index] = 0;
-      }
+      free(hashtable->array[index]);
+      hashtable->array[index] = 0;
     }
     else
     {
@@ -137,9 +133,7 @@ int next_size(int size)
   {
     if ((size % counter) == 0)
     {
-      {
-        ++size;
-      }
+      ++size;
     }
     else
     {

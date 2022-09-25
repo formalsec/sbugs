@@ -42,9 +42,7 @@ Node_ptr parse_instructions(int command, int counter, Hash_Array *game_hash, Has
       aux = comando_a(counter, game_hash, team_hash, top_game_list);
       if (aux != 0)
     {
-      {
-        top_game_list = aux;
-      }
+      top_game_list = aux;
     }
     else
     {
@@ -85,9 +83,7 @@ Node_ptr parse_instructions(int command, int counter, Hash_Array *game_hash, Has
 
   if (junk_flag)
   {
-    {
-      getchar();
-    }
+    getchar();
   }
   else
   {

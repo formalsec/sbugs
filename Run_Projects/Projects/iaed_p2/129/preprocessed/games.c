@@ -42,40 +42,32 @@ void push_game(game_table *games, game *game)
   pos = hash_game(game->name);
   if (games->table[pos] == 0)
   {
-    {
-      games->table[pos] = new_node;
-      new_node->previous_node = 0;
-    }
+    games->table[pos] = new_node;
+    new_node->previous_node = 0;
   }
   else
   {
+    taken_node = games->table[pos];
+    while (taken_node->next_node != 0)
     {
-      taken_node = games->table[pos];
-      while (taken_node->next_node != 0)
-      {
-        taken_node = taken_node->next_node;
-      }
-
-      taken_node->next_node = new_node;
-      new_node->previous_node = taken_node;
+      taken_node = taken_node->next_node;
     }
+
+    taken_node->next_node = new_node;
+    new_node->previous_node = taken_node;
   }
 
   if (games->latest_game == 0)
   {
-    {
-      games->first_game = new_node;
-      games->latest_game = new_node;
-      new_node->previous_game = 0;
-    }
+    games->first_game = new_node;
+    games->latest_game = new_node;
+    new_node->previous_game = 0;
   }
   else
   {
-    {
-      new_node->previous_game = games->latest_game;
-      games->latest_game->next_game = new_node;
-      games->latest_game = new_node;
-    }
+    new_node->previous_game = games->latest_game;
+    games->latest_game->next_game = new_node;
+    games->latest_game = new_node;
   }
 
 }
@@ -84,9 +76,7 @@ int same_game(game *game_1, game *game_2)
 {
   if (!strcmp(game_1->name, game_2->name))
   {
-    {
-      return 1;
-    }
+    return 1;
   }
   else
   {
@@ -118,27 +108,21 @@ void delete_game(game_table *games, game *game)
   node = games->table[key];
   if (same_game(node->game, game))
   {
-    {
-      games->table[key] = node->next_node;
-    }
+    games->table[key] = node->next_node;
   }
   else
   {
+    while (!same_game(node->game, game))
     {
-      while (!same_game(node->game, game))
-      {
-        node = node->next_node;
-      }
-
-      node->previous_node->next_node = node->next_node;
+      node = node->next_node;
     }
+
+    node->previous_node->next_node = node->next_node;
   }
 
   if (node->next_node != 0)
   {
-    {
-      node->next_node->previous_node = node->previous_node;
-    }
+    node->next_node->previous_node = node->previous_node;
   }
   else
   {
@@ -147,28 +131,20 @@ void delete_game(game_table *games, game *game)
 
   if (same_game(games->first_game->game, game))
   {
-    {
-      games->first_game = node->next_game;
-    }
+    games->first_game = node->next_game;
   }
   else
   {
-    {
-      node->previous_game->next_game = node->next_game;
-    }
+    node->previous_game->next_game = node->next_game;
   }
 
   if (same_game(games->latest_game->game, game))
   {
-    {
-      games->latest_game = node->previous_game;
-    }
+    games->latest_game = node->previous_game;
   }
   else
   {
-    {
-      node->next_game->previous_game = node->previous_game;
-    }
+    node->next_game->previous_game = node->previous_game;
   }
 
   free_game(node->game);
@@ -196,9 +172,7 @@ game *get_game(game_table *games, char *name)
   {
     if (!strcmp(node->game->name, name))
     {
-      {
-        return node->game;
-      }
+      return node->game;
     }
     else
     {
@@ -221,15 +195,11 @@ game *first_game(game_table *games)
 {
   if (games->first_game != 0)
   {
-    {
-      return games->first_game->game;
-    }
+    return games->first_game->game;
   }
   else
   {
-    {
-      return 0;
-    }
+    return 0;
   }
 
 }
@@ -240,15 +210,11 @@ game *next_game(game_table *games, game *game)
   next_game_node = get_node(games, game)->next_game;
   if (next_game_node != 0)
   {
-    {
-      return next_game_node->game;
-    }
+    return next_game_node->game;
   }
   else
   {
-    {
-      return 0;
-    }
+    return 0;
   }
 
 }
@@ -257,23 +223,17 @@ team *game_winner(game *game)
 {
   if (game->score_team_1 > game->score_team_2)
   {
-    {
-      return game->team_1;
-    }
+    return game->team_1;
   }
   else
   {
     if (game->score_team_1 < game->score_team_2)
     {
-      {
-        return game->team_2;
-      }
+      return game->team_2;
     }
     else
     {
-      {
-        return 0;
-      }
+      return 0;
     }
 
   }

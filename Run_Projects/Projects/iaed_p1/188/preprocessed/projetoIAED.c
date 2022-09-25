@@ -58,15 +58,11 @@ void add_stock()
   novaqtd = new_sym_var(sizeof(int) * 8);
   if (n_idp > (idp - 1))
   {
-    {
-      printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", n_idp);
-    }
+    printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", n_idp);
   }
   else
   {
-    {
-      tabP[n_idp].qtd += novaqtd;
-    }
+    tabP[n_idp].qtd += novaqtd;
   }
 
   return;
@@ -94,82 +90,72 @@ void add_produto()
   qtd = new_sym_var(sizeof(int) * 8);
   if (tabE[n_ide].estado == 1)
   {
+    if (n_idp > (idp - 1))
     {
-      if (n_idp > (idp - 1))
+      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", n_idp, n_ide);
+    }
+    else
+    {
+      if (tabP[n_idp].qtd < qtd)
       {
-        printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", n_idp, n_ide);
+        printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", n_idp, n_ide);
       }
       else
       {
-        if (tabP[n_idp].qtd < qtd)
+        if ((tabE[n_ide].pesoTotal + (qtd * tabP[n_idp].peso)) > 200)
         {
-          printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", n_idp, n_ide);
+          printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", n_idp, n_ide);
         }
         else
         {
-          if ((tabE[n_ide].pesoTotal + (qtd * tabP[n_idp].peso)) > 200)
+          for (i = 0; i <= (200 - 1); i++)
           {
-            printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", n_idp, n_ide);
+            if ((tabela_id[n_ide][i][0] == n_idp) && (tabela_id[n_ide][i][1] != 0))
+            {
+              tabela_id[n_ide][i][1] += qtd;
+              tabP[n_idp].qtd -= qtd;
+              tabE[n_ide].pesoTotal += tabP[n_idp].peso * qtd;
+              return;
+            }
+            else
+            {
+              
+            }
+
+            if ((tabela_id[n_ide][i][0] == 0) && (tabela_id[n_ide][i][1] == 0))
+            {
+              id_nada = i;
+            }
+            else
+            {
+              
+            }
+
+          }
+
+          if (id_nada != (-1))
+          {
+            tabela_id[n_ide][id_nada][0] = n_idp;
+            tabela_id[n_ide][id_nada][1] = qtd;
+            tabE[n_ide].pesoTotal += tabP[n_idp].peso * qtd;
           }
           else
           {
-            {
-              for (i = 0; i <= (200 - 1); i++)
-              {
-                if ((tabela_id[n_ide][i][0] == n_idp) && (tabela_id[n_ide][i][1] != 0))
-                {
-                  {
-                    tabela_id[n_ide][i][1] += qtd;
-                    tabP[n_idp].qtd -= qtd;
-                    tabE[n_ide].pesoTotal += tabP[n_idp].peso * qtd;
-                    return;
-                  }
-                }
-                else
-                {
-                  
-                }
-
-                if ((tabela_id[n_ide][i][0] == 0) && (tabela_id[n_ide][i][1] == 0))
-                {
-                  id_nada = i;
-                }
-                else
-                {
-                  
-                }
-
-              }
-
-              if (id_nada != (-1))
-              {
-                {
-                  tabela_id[n_ide][id_nada][0] = n_idp;
-                  tabela_id[n_ide][id_nada][1] = qtd;
-                  tabE[n_ide].pesoTotal += tabP[n_idp].peso * qtd;
-                }
-              }
-              else
-              {
-                
-              }
-
-              tabP[n_idp].qtd -= qtd;
-            }
+            
           }
 
+          tabP[n_idp].qtd -= qtd;
         }
 
       }
 
-      return;
     }
+
+    return;
   }
   else
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", n_idp, n_ide);
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", n_idp, n_ide);
   }
 
   ;
@@ -194,9 +180,7 @@ void r_stock()
     }
     else
     {
-      {
-        tabP[n_idp].qtd -= qtd;
-      }
+      tabP[n_idp].qtd -= qtd;
     }
 
   }
@@ -223,27 +207,23 @@ void r_produto()
     }
     else
     {
+      for (i = 0; i <= (200 - 1); i++)
       {
-        for (i = 0; i <= (200 - 1); i++)
+        if ((tabela_id[n_ide][i][0] == n_idp) && (tabela_id[n_ide][i][1] != 0))
         {
-          if ((tabela_id[n_ide][i][0] == n_idp) && (tabela_id[n_ide][i][1] != 0))
-          {
-            {
-              tabP[n_idp].qtd += tabela_id[n_ide][i][1];
-              tabE[n_ide].pesoTotal -= tabP[tabela_id[n_ide][i][0]].peso * tabela_id[n_ide][i][1];
-              tabela_id[n_ide][i][0] = 0;
-              tabela_id[n_ide][i][1] = 0;
-              return;
-            }
-          }
-          else
-          {
-            
-          }
-
+          tabP[n_idp].qtd += tabela_id[n_ide][i][1];
+          tabE[n_ide].pesoTotal -= tabP[tabela_id[n_ide][i][0]].peso * tabela_id[n_ide][i][1];
+          tabela_id[n_ide][i][0] = 0;
+          tabela_id[n_ide][i][1] = 0;
+          return;
+        }
+        else
+        {
+          
         }
 
       }
+
     }
 
   }
@@ -259,32 +239,24 @@ void custo()
   n_ide = new_sym_var(sizeof(int) * 8);
   if (tabE[n_ide].estado == 1)
   {
+    for (i = 0; i <= (200 - 1); i++)
     {
-      for (i = 0; i <= (200 - 1); i++)
+      if ((tabela_id[n_ide][i][0] == 0) && (tabela_id[n_ide][i][1] == 0))
       {
-        if ((tabela_id[n_ide][i][0] == 0) && (tabela_id[n_ide][i][1] == 0))
-        {
-          {
-            continue;
-          }
-        }
-        else
-        {
-          {
-            custo += tabP[tabela_id[n_ide][i][0]].preco * tabela_id[n_ide][i][1];
-          }
-        }
-
+        continue;
+      }
+      else
+      {
+        custo += tabP[tabela_id[n_ide][i][0]].preco * tabela_id[n_ide][i][1];
       }
 
-      printf("Custo da encomenda %d %d.\n", n_ide, custo);
     }
+
+    printf("Custo da encomenda %d %d.\n", n_ide, custo);
   }
   else
   {
-    {
-      printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", n_ide);
-    }
+    printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", n_ide);
   }
 
   return;
@@ -301,10 +273,8 @@ void muda_preco()
   {
     if (tabP[i].idp == n_idp)
     {
-      {
-        tabP[n_idp].preco = preco;
-        return;
-      }
+      tabP[n_idp].preco = preco;
+      return;
     }
     else
     {
@@ -336,25 +306,21 @@ void lista_E()
     }
     else
     {
+      for (i = 0; i <= (200 - 1); i++)
       {
-        for (i = 0; i <= (200 - 1); i++)
+        if ((tabela_id[n_ide][i][0] == n_idp) && (tabela_id[n_ide][i][1] != 0))
         {
-          if ((tabela_id[n_ide][i][0] == n_idp) && (tabela_id[n_ide][i][1] != 0))
-          {
-            {
-              printf("%s %d.\n", tabP[n_idp].descricao, tabela_id[n_ide][i][1]);
-              return;
-            }
-          }
-          else
-          {
-            
-          }
-
+          printf("%s %d.\n", tabP[n_idp].descricao, tabela_id[n_ide][i][1]);
+          return;
+        }
+        else
+        {
+          
         }
 
-        printf("%s %d.\n", tabP[n_idp].descricao, 0);
       }
+
+      printf("%s %d.\n", tabP[n_idp].descricao, 0);
     }
 
   }
@@ -377,29 +343,18 @@ void maximo_produto()
   }
   else
   {
+    for (i = 0; (i <= (500 - 1)) && (tabE[i].estado == 1); i++)
     {
-      for (i = 0; (i <= (500 - 1)) && (tabE[i].estado == 1); i++)
+      for (p = 0; p <= (200 - 1); p++)
       {
-        for (p = 0; p <= (200 - 1); p++)
+        if ((tabela_id[i][p][0] == n_idp) && (tabela_id[i][p][1] != 0))
         {
-          if ((tabela_id[i][p][0] == n_idp) && (tabela_id[i][p][1] != 0))
+          maximo_qtd1 = tabela_id[i][p][1];
+          if (maximo_qtd1 > maximo_qtd2)
           {
-            {
-              maximo_qtd1 = tabela_id[i][p][1];
-              if (maximo_qtd1 > maximo_qtd2)
-              {
-                {
-                  maximo_qtd2 = maximo_qtd1;
-                  maximo_ide = i;
-                  break;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
+            maximo_qtd2 = maximo_qtd1;
+            maximo_ide = i;
+            break;
           }
           else
           {
@@ -407,19 +362,24 @@ void maximo_produto()
           }
 
         }
+        else
+        {
+          
+        }
 
-      }
-
-      if (maximo_qtd1 != 0)
-      {
-        printf("Maximo produto %d %d %d.\n", n_idp, maximo_ide, maximo_qtd2);
-      }
-      else
-      {
-        
       }
 
     }
+
+    if (maximo_qtd1 != 0)
+    {
+      printf("Maximo produto %d %d %d.\n", n_idp, maximo_ide, maximo_qtd2);
+    }
+    else
+    {
+      
+    }
+
   }
 
   return;
@@ -434,45 +394,41 @@ void quicksort_L(char a[][63], int b[], int left, int right)
   char troca2[63];
   if (left < right)
   {
+    pivot = left;
+    i = left;
+    j = right;
+    while (i < j)
     {
-      pivot = left;
-      i = left;
-      j = right;
-      while (i < j)
+      while ((strcmp(a[i], a[pivot]) <= 0) && (i < right))
+        i++;
+
+      while (strcmp(a[j], a[pivot]) > 0)
+        j--;
+
+      if (i < j)
       {
-        while ((strcmp(a[i], a[pivot]) <= 0) && (i < right))
-          i++;
-
-        while (strcmp(a[j], a[pivot]) > 0)
-          j--;
-
-        if (i < j)
-        {
-          {
-            troca1 = b[i];
-            b[i] = b[j];
-            b[j] = troca1;
-            strcpy(troca2, a[i]);
-            strcpy(a[i], a[j]);
-            strcpy(a[j], troca2);
-          }
-        }
-        else
-        {
-          
-        }
-
+        troca1 = b[i];
+        b[i] = b[j];
+        b[j] = troca1;
+        strcpy(troca2, a[i]);
+        strcpy(a[i], a[j]);
+        strcpy(a[j], troca2);
+      }
+      else
+      {
+        
       }
 
-      troca1 = b[pivot];
-      b[pivot] = b[j];
-      b[j] = troca1;
-      strcpy(troca2, a[pivot]);
-      strcpy(a[pivot], a[j]);
-      strcpy(a[j], troca2);
-      quicksort_L(a, b, left, j - 1);
-      quicksort_L(a, b, j + 1, right);
     }
+
+    troca1 = b[pivot];
+    b[pivot] = b[j];
+    b[j] = troca1;
+    strcpy(troca2, a[pivot]);
+    strcpy(a[pivot], a[j]);
+    strcpy(a[j], troca2);
+    quicksort_L(a, b, left, j - 1);
+    quicksort_L(a, b, j + 1, right);
   }
   else
   {
@@ -494,69 +450,57 @@ void sort_L()
   n_ide = new_sym_var(sizeof(int) * 8);
   if (tabE[n_ide].estado == 1)
   {
+    for (i = 0; i <= (200 - 1); i++)
     {
-      for (i = 0; i <= (200 - 1); i++)
+      if ((tabela_id[n_ide][i][0] == 0) && (tabela_id[n_ide][i][1] == 0))
       {
-        if ((tabela_id[n_ide][i][0] == 0) && (tabela_id[n_ide][i][1] == 0))
-        {
-          {
-            continue;
-          }
-        }
-        else
-        {
-          {
-            count += 1;
-            tabP_ids[m] = tabela_id[n_ide][i][0];
-            strcpy(&tabP_desc[m][0], tabP[tabela_id[n_ide][i][0]].descricao);
-            m++;
-          }
-        }
-
-      }
-
-      if (count == 0)
-      {
-        {
-          printf("Encomenda %d\n", n_ide);
-          return;
-        }
+        continue;
       }
       else
       {
-        
+        count += 1;
+        tabP_ids[m] = tabela_id[n_ide][i][0];
+        strcpy(&tabP_desc[m][0], tabP[tabela_id[n_ide][i][0]].descricao);
+        m++;
       }
 
-      quicksort_L(tabP_desc, tabP_ids, 0, count - 1);
-      printf("Encomenda %d\n", n_ide);
-      for (p = 0; p <= (count - 1); p++)
-      {
-        for (i = 200 - 1; i >= 0; i--)
-        {
-          if ((tabela_id[n_ide][i][0] == tabP_ids[p]) && (tabela_id[n_ide][i][1] != 0))
-          {
-            {
-              printf("* %s %d %d\n", tabP[tabP_ids[p]].descricao, tabP[tabP_ids[p]].preco, tabela_id[n_ide][i][1]);
-            }
-          }
-          else
-          {
-            
-          }
+    }
 
+    if (count == 0)
+    {
+      printf("Encomenda %d\n", n_ide);
+      return;
+    }
+    else
+    {
+      
+    }
+
+    quicksort_L(tabP_desc, tabP_ids, 0, count - 1);
+    printf("Encomenda %d\n", n_ide);
+    for (p = 0; p <= (count - 1); p++)
+    {
+      for (i = 200 - 1; i >= 0; i--)
+      {
+        if ((tabela_id[n_ide][i][0] == tabP_ids[p]) && (tabela_id[n_ide][i][1] != 0))
+        {
+          printf("* %s %d %d\n", tabP[tabP_ids[p]].descricao, tabP[tabP_ids[p]].preco, tabela_id[n_ide][i][1]);
+        }
+        else
+        {
+          
         }
 
       }
 
-      return;
     }
+
+    return;
   }
   else
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", n_ide);
-      return;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", n_ide);
+    return;
   }
 
 }
@@ -570,45 +514,41 @@ void quicksort_l(int a[], int b[], int left, int right)
   int pivot;
   if (left < right)
   {
+    pivot = left;
+    i = left;
+    j = right;
+    while (i < j)
     {
-      pivot = left;
-      i = left;
-      j = right;
-      while (i < j)
+      while ((a[i] <= a[pivot]) && (i < right))
+        i++;
+
+      while (a[j] > a[pivot])
+        j--;
+
+      if (i < j)
       {
-        while ((a[i] <= a[pivot]) && (i < right))
-          i++;
-
-        while (a[j] > a[pivot])
-          j--;
-
-        if (i < j)
-        {
-          {
-            troca1 = b[i];
-            b[i] = b[j];
-            b[j] = troca1;
-            troca2 = a[i];
-            a[i] = a[j];
-            a[j] = troca2;
-          }
-        }
-        else
-        {
-          
-        }
-
+        troca1 = b[i];
+        b[i] = b[j];
+        b[j] = troca1;
+        troca2 = a[i];
+        a[i] = a[j];
+        a[j] = troca2;
+      }
+      else
+      {
+        
       }
 
-      troca1 = b[pivot];
-      b[pivot] = b[j];
-      b[j] = troca1;
-      troca2 = a[pivot];
-      a[pivot] = a[j];
-      a[j] = troca2;
-      quicksort_l(a, b, left, j - 1);
-      quicksort_l(a, b, j + 1, right);
     }
+
+    troca1 = b[pivot];
+    b[pivot] = b[j];
+    b[j] = troca1;
+    troca2 = a[pivot];
+    a[pivot] = a[j];
+    a[j] = troca2;
+    quicksort_l(a, b, left, j - 1);
+    quicksort_l(a, b, j + 1, right);
   }
   else
   {
@@ -634,59 +574,27 @@ void sort_l()
   quicksort_l(tabP_precos, tabP_ids, 0, idp - 1);
   if ((idp - 1) > 1)
   {
+    for (i = 1; i <= (idp - 1); i++)
     {
-      for (i = 1; i <= (idp - 1); i++)
+      if (tabP_precos[i] == tabP_precos[i - 1])
       {
-        if (tabP_precos[i] == tabP_precos[i - 1])
+        if (igual == 0)
         {
-          {
-            if (igual == 0)
-            {
-              {
-                primeiro = i - 1;
-                igual = 1;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
+          primeiro = i - 1;
+          igual = 1;
         }
         else
         {
-          if (igual == 1)
-          {
-            {
-              igual = 0;
-              quicksort_l(tabP_ids, tabP_precos, primeiro, i - 1);
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
-      }
-
-      if ((igual == 1) && (tabP_precos[idp - 1] == tabP_precos[idp - 2]))
-      {
-        {
-          igual = 0;
-          quicksort_l(tabP_ids, tabP_precos, primeiro, idp - 1);
-        }
       }
       else
       {
         if (igual == 1)
         {
-          {
-            igual = 0;
-            quicksort_l(tabP_ids, tabP_precos, primeiro, idp - 2);
-          }
+          igual = 0;
+          quicksort_l(tabP_ids, tabP_precos, primeiro, i - 1);
         }
         else
         {
@@ -696,6 +604,26 @@ void sort_l()
       }
 
     }
+
+    if ((igual == 1) && (tabP_precos[idp - 1] == tabP_precos[idp - 2]))
+    {
+      igual = 0;
+      quicksort_l(tabP_ids, tabP_precos, primeiro, idp - 1);
+    }
+    else
+    {
+      if (igual == 1)
+      {
+        igual = 0;
+        quicksort_l(tabP_ids, tabP_precos, primeiro, idp - 2);
+      }
+      else
+      {
+        
+      }
+
+    }
+
   }
   else
   {

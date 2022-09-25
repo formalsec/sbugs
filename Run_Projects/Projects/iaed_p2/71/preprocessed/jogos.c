@@ -49,19 +49,17 @@ jlink rem_aux2(jlink cabeca, Jogo jogo)
   {
     if (atual->jogo == jogo)
     {
+      if (atual == cabeca)
       {
-        if (atual == cabeca)
-        {
-          cabeca = atual->proximo;
-        }
-        else
-        {
-          anterior->proximo = atual->proximo;
-        }
-
-        FREEjlink(atual);
-        return cabeca;
+        cabeca = atual->proximo;
       }
+      else
+      {
+        anterior->proximo = atual->proximo;
+      }
+
+      FREEjlink(atual);
+      return cabeca;
     }
     else
     {
@@ -87,9 +85,7 @@ int existe_jogo_aux(jlink cabeca, char *nome)
   {
     if (strcmp(x->jogo->nome, nome) == 0)
     {
-      {
-        return 1;
-      }
+      return 1;
     }
     else
     {
@@ -138,35 +134,29 @@ jlink limpa_lista_jogos(jlink cabeca)
   jlink aux;
   if (cabeca == 0)
   {
-    {
-      free(cabeca);
-      return cabeca;
-    }
+    free(cabeca);
+    return cabeca;
   }
   else
   {
     if (cabeca->proximo == 0)
     {
-      {
-        FREEjlink(cabeca);
-        return 0;
-      }
+      FREEjlink(cabeca);
+      return 0;
     }
     else
     {
+      atual = cabeca->proximo;
+      while (atual != 0)
       {
+        aux = cabeca->proximo;
+        cabeca->proximo = aux->proximo;
+        FREEjlink(aux);
         atual = cabeca->proximo;
-        while (atual != 0)
-        {
-          aux = cabeca->proximo;
-          cabeca->proximo = aux->proximo;
-          FREEjlink(aux);
-          atual = cabeca->proximo;
-        }
-
-        FREEjlink(cabeca);
-        return 0;
       }
+
+      FREEjlink(cabeca);
+      return 0;
     }
 
   }

@@ -178,55 +178,43 @@ void comando_a(lista_jogos *listaj, char *nome, char *equipa1, char *equipa2, ch
   jogo *novo_jogo = cria_jogo();
   if (STsearchJogo(nome) == 0)
   {
+    if ((STsearchEquipa(equipa1) != 0) && (STsearchEquipa(equipa2) != 0))
     {
-      if ((STsearchEquipa(equipa1) != 0) && (STsearchEquipa(equipa2) != 0))
+      preenche_jogo(novo_jogo, nome, equipa1, equipa2, score1, score2);
+      adiciona_jogo(novo_jogo, listaj);
+      STinsertJogo(novo_jogo);
+      s1 = new_sym_var(sizeof(int) * 8);
+      s2 = new_sym_var(sizeof(int) * 8);
+      if (s1 > s2)
       {
-        {
-          preenche_jogo(novo_jogo, nome, equipa1, equipa2, score1, score2);
-          adiciona_jogo(novo_jogo, listaj);
-          STinsertJogo(novo_jogo);
-          s1 = new_sym_var(sizeof(int) * 8);
-          s2 = new_sym_var(sizeof(int) * 8);
-          if (s1 > s2)
-          {
-            {
-              auxequipa = STsearchEquipa(equipa1);
-              auxequipa->ganhos++;
-            }
-          }
-          else
-          {
-            if (s2 > s1)
-            {
-              {
-                auxequipa = STsearchEquipa(equipa2);
-                auxequipa->ganhos++;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-        }
+        auxequipa = STsearchEquipa(equipa1);
+        auxequipa->ganhos++;
       }
       else
       {
+        if (s2 > s1)
         {
-          printf("%d Equipa inexistente.\n", cont);
+          auxequipa = STsearchEquipa(equipa2);
+          auxequipa->ganhos++;
         }
+        else
+        {
+          
+        }
+
       }
 
     }
+    else
+    {
+      printf("%d Equipa inexistente.\n", cont);
+    }
+
   }
   else
   {
-    {
-      printf("%d Jogo existente.\n", cont);
-      free(novo_jogo);
-    }
+    printf("%d Jogo existente.\n", cont);
+    free(novo_jogo);
   }
 
 }
@@ -236,18 +224,14 @@ void comando_A(lista_equipas *listae, char *nome)
   equipa *novo_equipa = cria_equipa();
   if (STsearchEquipa(nome) == 0)
   {
-    {
-      preenche_equipa(novo_equipa, nome);
-      adiciona_equipa(novo_equipa, listae);
-      STinsertEquipa(novo_equipa);
-    }
+    preenche_equipa(novo_equipa, nome);
+    adiciona_equipa(novo_equipa, listae);
+    STinsertEquipa(novo_equipa);
   }
   else
   {
-    {
-      printf("%d Equipa existente.\n", cont);
-      free(novo_equipa);
-    }
+    printf("%d Equipa existente.\n", cont);
+    free(novo_equipa);
   }
 
 }
@@ -268,16 +252,12 @@ void comando_p(char *nome)
   jogo *auxjogo;
   if (STsearchJogo(nome) != 0)
   {
-    {
-      auxjogo = STsearchJogo(nome);
-      printf("%d %s %s %s %s %s\n", cont, auxjogo->nome, auxjogo->equipa1, auxjogo->equipa2, auxjogo->score1, auxjogo->score2);
-    }
+    auxjogo = STsearchJogo(nome);
+    printf("%d %s %s %s %s %s\n", cont, auxjogo->nome, auxjogo->equipa1, auxjogo->equipa2, auxjogo->score1, auxjogo->score2);
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", cont);
-    }
+    printf("%d Jogo inexistente.\n", cont);
   }
 
 }
@@ -287,16 +267,12 @@ void comando_P(char *nome)
   equipa *auxequipa;
   if (STsearchEquipa(nome) != 0)
   {
-    {
-      auxequipa = STsearchEquipa(nome);
-      printf("%d %s %d\n", cont, auxequipa->nome, auxequipa->ganhos);
-    }
+    auxequipa = STsearchEquipa(nome);
+    printf("%d %s %d\n", cont, auxequipa->nome, auxequipa->ganhos);
   }
   else
   {
-    {
-      printf("%d Equipa inexistente.\n", cont);
-    }
+    printf("%d Equipa inexistente.\n", cont);
   }
 
 }
@@ -313,101 +289,50 @@ void comando_s(char *nome, char *novo_s1, char *novo_s2)
   novo2 = new_sym_var(sizeof(int) * 8);
   if (STsearchJogo(nome) != 0)
   {
+    auxjogo = STsearchJogo(nome);
+    ant1 = new_sym_var(sizeof(int) * 8);
+    ant2 = new_sym_var(sizeof(int) * 8);
+    if (ant1 > ant2)
     {
-      auxjogo = STsearchJogo(nome);
-      ant1 = new_sym_var(sizeof(int) * 8);
-      ant2 = new_sym_var(sizeof(int) * 8);
-      if (ant1 > ant2)
+      if (novo2 > novo1)
       {
-        {
-          if (novo2 > novo1)
-          {
-            {
-              auxequipa = STsearchEquipa(auxjogo->equipa1);
-              auxequipa->ganhos--;
-              auxequipa = STsearchEquipa(auxjogo->equipa2);
-              auxequipa->ganhos++;
-            }
-          }
-          else
-          {
-            if (novo2 == novo1)
-            {
-              {
-                auxequipa = STsearchEquipa(auxjogo->equipa1);
-                auxequipa->ganhos--;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-        }
+        auxequipa = STsearchEquipa(auxjogo->equipa1);
+        auxequipa->ganhos--;
+        auxequipa = STsearchEquipa(auxjogo->equipa2);
+        auxequipa->ganhos++;
       }
       else
       {
-        if (ant2 > ant1)
+        if (novo2 == novo1)
         {
-          {
-            if (novo1 > novo2)
-            {
-              {
-                auxequipa = STsearchEquipa(auxjogo->equipa2);
-                auxequipa->ganhos--;
-                auxequipa = STsearchEquipa(auxjogo->equipa1);
-                auxequipa->ganhos++;
-              }
-            }
-            else
-            {
-              if (novo2 == novo1)
-              {
-                {
-                  auxequipa = STsearchEquipa(auxjogo->equipa2);
-                  auxequipa->ganhos--;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-          }
+          auxequipa = STsearchEquipa(auxjogo->equipa1);
+          auxequipa->ganhos--;
         }
         else
         {
-          if (ant1 == ant2)
+          
+        }
+
+      }
+
+    }
+    else
+    {
+      if (ant2 > ant1)
+      {
+        if (novo1 > novo2)
+        {
+          auxequipa = STsearchEquipa(auxjogo->equipa2);
+          auxequipa->ganhos--;
+          auxequipa = STsearchEquipa(auxjogo->equipa1);
+          auxequipa->ganhos++;
+        }
+        else
+        {
+          if (novo2 == novo1)
           {
-            {
-              if (novo1 > novo2)
-              {
-                {
-                  auxequipa = STsearchEquipa(auxjogo->equipa1);
-                  auxequipa->ganhos++;
-                }
-              }
-              else
-              {
-                if (novo2 > novo1)
-                {
-                  {
-                    auxequipa = STsearchEquipa(auxjogo->equipa2);
-                    auxequipa->ganhos++;
-                  }
-                }
-                else
-                {
-                  
-                }
-
-              }
-
-            }
+            auxequipa = STsearchEquipa(auxjogo->equipa2);
+            auxequipa->ganhos--;
           }
           else
           {
@@ -417,20 +342,49 @@ void comando_s(char *nome, char *novo_s1, char *novo_s2)
         }
 
       }
+      else
+      {
+        if (ant1 == ant2)
+        {
+          if (novo1 > novo2)
+          {
+            auxequipa = STsearchEquipa(auxjogo->equipa1);
+            auxequipa->ganhos++;
+          }
+          else
+          {
+            if (novo2 > novo1)
+            {
+              auxequipa = STsearchEquipa(auxjogo->equipa2);
+              auxequipa->ganhos++;
+            }
+            else
+            {
+              
+            }
 
-      free(auxjogo->score1);
-      free(auxjogo->score2);
-      auxjogo->score1 = malloc(((sizeof(char)) * strlen(novo_s1)) + 1);
-      auxjogo->score2 = malloc(((sizeof(char)) * strlen(novo_s2)) + 1);
-      strcpy(auxjogo->score1, novo_s1);
-      strcpy(auxjogo->score2, novo_s2);
+          }
+
+        }
+        else
+        {
+          
+        }
+
+      }
+
     }
+
+    free(auxjogo->score1);
+    free(auxjogo->score2);
+    auxjogo->score1 = malloc(((sizeof(char)) * strlen(novo_s1)) + 1);
+    auxjogo->score2 = malloc(((sizeof(char)) * strlen(novo_s2)) + 1);
+    strcpy(auxjogo->score1, novo_s1);
+    strcpy(auxjogo->score2, novo_s2);
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", cont);
-    }
+    printf("%d Jogo inexistente.\n", cont);
   }
 
 }
@@ -443,42 +397,34 @@ void comando_r(lista_jogos *listaj, char *nome)
   int s2;
   if (STsearchJogo(nome) != 0)
   {
+    auxjogo = STsearchJogo(nome);
+    s1 = new_sym_var(sizeof(int) * 8);
+    s2 = new_sym_var(sizeof(int) * 8);
+    if (s1 > s2)
     {
-      auxjogo = STsearchJogo(nome);
-      s1 = new_sym_var(sizeof(int) * 8);
-      s2 = new_sym_var(sizeof(int) * 8);
-      if (s1 > s2)
+      auxequipa = STsearchEquipa(auxjogo->equipa1);
+      auxequipa->ganhos--;
+    }
+    else
+    {
+      if (s2 < s1)
       {
-        {
-          auxequipa = STsearchEquipa(auxjogo->equipa1);
-          auxequipa->ganhos--;
-        }
+        auxequipa = STsearchEquipa(auxjogo->equipa2);
+        auxequipa->ganhos--;
       }
       else
       {
-        if (s2 < s1)
-        {
-          {
-            auxequipa = STsearchEquipa(auxjogo->equipa2);
-            auxequipa->ganhos--;
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      retira_jogo(listaj, auxjogo);
-      STdelete(nome);
     }
+
+    retira_jogo(listaj, auxjogo);
+    STdelete(nome);
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", cont);
-    }
+    printf("%d Jogo inexistente.\n", cont);
   }
 
 }
@@ -491,9 +437,7 @@ int comando_g(lista_equipas *listae)
   {
     if (auxequipa->ganhos > ganhostotal)
     {
-      {
-        ganhostotal = auxequipa->ganhos;
-      }
+      ganhostotal = auxequipa->ganhos;
     }
     else
     {
@@ -505,15 +449,11 @@ int comando_g(lista_equipas *listae)
 
   if (listae->num_equipas == 0)
   {
-    {
-      return -1;
-    }
+    return -1;
   }
   else
   {
-    {
-      printf("%d Melhores %d\n", cont, ganhostotal);
-    }
+    printf("%d Melhores %d\n", cont, ganhostotal);
   }
 
   aux_g(listae, ganhostotal);
@@ -527,9 +467,7 @@ void aux_g(lista_equipas *listae, int ganhostotal)
   {
     if (auxequipa->ganhos == ganhostotal)
     {
-      {
-        printf("%d * %s\n", cont, auxequipa->nome);
-      }
+      printf("%d * %s\n", cont, auxequipa->nome);
     }
     else
     {

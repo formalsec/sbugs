@@ -27,10 +27,8 @@ TeamsDataItem *teams_create_item(Team *t)
   TeamsDataItem *item = (TeamsDataItem *) malloc(sizeof(TeamsDataItem));
   if (errno > 0)
   {
-    {
-      perror("teams_create_item: malloc");
-      exit(errno);
-    }
+    perror("teams_create_item: malloc");
+    exit(errno);
   }
   else
   {
@@ -48,10 +46,8 @@ Teams *teams_new()
   Teams *tt = (Teams *) malloc(sizeof(Teams));
   if (errno > 0)
   {
-    {
-      perror("teams_new: malloc 1");
-      exit(errno);
-    }
+    perror("teams_new: malloc 1");
+    exit(errno);
   }
   else
   {
@@ -63,10 +59,8 @@ Teams *teams_new()
   tt->items = (TeamsDataItem **) calloc(100, sizeof(TeamsDataItem *));
   if (errno > 0)
   {
-    {
-      perror("teams_new: malloc 2");
-      exit(errno);
-    }
+    perror("teams_new: malloc 2");
+    exit(errno);
   }
   else
   {
@@ -89,10 +83,8 @@ void teams_free(Teams *tt)
   int i;
   if (tt == 0)
   {
-    {
-      printf("%s: null pointer\n", "teams_free");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "teams_free");
+    exit(1);
   }
   else
   {
@@ -123,10 +115,8 @@ void teams_add(Teams *tt, Team *t)
   TeamsDataItem *di;
   if (tt == 0)
   {
-    {
-      printf("%s: null pointer\n", "teams_add");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "teams_add");
+    exit(1);
   }
   else
   {
@@ -136,10 +126,8 @@ void teams_add(Teams *tt, Team *t)
   ;
   if (tt->count == 100)
   {
-    {
-      printf("Hash table is full");
-      exit(1);
-    }
+    printf("Hash table is full");
+    exit(1);
   }
   else
   {
@@ -165,10 +153,8 @@ Team *teams_get_team(Teams *tt, char *team_name)
   TeamsDataItem *di;
   if (tt == 0)
   {
-    {
-      printf("%s: null pointer\n", "teams_get_team");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "teams_get_team");
+    exit(1);
   }
   else
   {

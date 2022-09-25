@@ -41,9 +41,7 @@ void adiciona_jogo(Sistema *system, int cont_line)
   t2 = encontra_t(system->tabela_teams, equipa_2);
   if (encontra(system->tabela_jogos, nome_jogo) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", cont_line);
-    }
+    printf("%d Jogo existente.\n", cont_line);
   }
   else
   {
@@ -59,37 +57,29 @@ void adiciona_jogo(Sistema *system, int cont_line)
       }
       else
       {
+        new_game = cria_jogo(nome_jogo, equipa_1, equipa_2, score_1, score_2);
+        if (score_1 > score_2)
         {
-          new_game = cria_jogo(nome_jogo, equipa_1, equipa_2, score_1, score_2);
-          if (score_1 > score_2)
+          t1->numero_wins++;
+          introduz_table(system->tabela_jogos, new_game);
+          system->lista = add_last(system->lista, new_game);
+        }
+        else
+        {
+          if (score_1 < score_2)
           {
-            {
-              t1->numero_wins++;
-              introduz_table(system->tabela_jogos, new_game);
-              system->lista = add_last(system->lista, new_game);
-            }
+            t2->numero_wins++;
+            introduz_table(system->tabela_jogos, new_game);
+            system->lista = add_last(system->lista, new_game);
           }
           else
           {
-            if (score_1 < score_2)
-            {
-              {
-                t2->numero_wins++;
-                introduz_table(system->tabela_jogos, new_game);
-                system->lista = add_last(system->lista, new_game);
-              }
-            }
-            else
-            {
-              {
-                introduz_table(system->tabela_jogos, new_game);
-                system->lista = add_last(system->lista, new_game);
-              }
-            }
-
+            introduz_table(system->tabela_jogos, new_game);
+            system->lista = add_last(system->lista, new_game);
           }
 
         }
+
       }
 
     }
@@ -110,18 +100,14 @@ void adiciona_equipa(Sistema *system, int cont_line)
   name_team[10 - 1] = '\0';
   if (encontra_t(system->tabela_teams, name_team) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", cont_line);
-      return;
-    }
+    printf("%d Equipa existente.\n", cont_line);
+    return;
   }
   else
   {
-    {
-      new_team = cria_team(name_team);
-      introduz_table_t(system->tabela_teams, new_team);
-      return;
-    }
+    new_team = cria_team(name_team);
+    introduz_table_t(system->tabela_teams, new_team);
+    return;
   }
 
 }
@@ -192,36 +178,28 @@ void apaga_jogo(Sistema *system, int cont_line)
   }
   else
   {
+    if (j->score_1 > j->score_2)
     {
-      if (j->score_1 > j->score_2)
+      encontra_t(system->tabela_teams, j->equipa_1)->numero_wins--;
+      system->lista = Modifica_next_jogo(system->lista, j->nome_jogo);
+      Remove_table(system->tabela_jogos, j);
+    }
+    else
+    {
+      if (j->score_2 > j->score_1)
       {
-        {
-          encontra_t(system->tabela_teams, j->equipa_1)->numero_wins--;
-          system->lista = Modifica_next_jogo(system->lista, j->nome_jogo);
-          Remove_table(system->tabela_jogos, j);
-        }
+        encontra_t(system->tabela_teams, j->equipa_2)->numero_wins--;
+        system->lista = Modifica_next_jogo(system->lista, j->nome_jogo);
+        Remove_table(system->tabela_jogos, j);
       }
       else
       {
-        if (j->score_2 > j->score_1)
-        {
-          {
-            encontra_t(system->tabela_teams, j->equipa_2)->numero_wins--;
-            system->lista = Modifica_next_jogo(system->lista, j->nome_jogo);
-            Remove_table(system->tabela_jogos, j);
-          }
-        }
-        else
-        {
-          {
-            system->lista = Modifica_next_jogo(system->lista, j->nome_jogo);
-            Remove_table(system->tabela_jogos, j);
-          }
-        }
-
+        system->lista = Modifica_next_jogo(system->lista, j->nome_jogo);
+        Remove_table(system->tabela_jogos, j);
       }
 
     }
+
   }
 
 }
@@ -249,89 +227,77 @@ void altera_jogo(Sistema *system, int cont_line)
   }
   else
   {
+    estava_1 = aux->score_1;
+    estava_2 = aux->score_2;
+    aux->score_1 = score1;
+    aux->score_2 = score2;
+    if (score1 > score2)
     {
-      estava_1 = aux->score_1;
-      estava_2 = aux->score_2;
-      aux->score_1 = score1;
-      aux->score_2 = score2;
-      if (score1 > score2)
+      if (estava_2 > estava_1)
       {
-        {
-          if (estava_2 > estava_1)
-          {
-            {
-              encontra_t(system->tabela_teams, aux->equipa_1)->numero_wins++;
-              encontra_t(system->tabela_teams, aux->equipa_2)->numero_wins--;
-            }
-          }
-          else
-          {
-            if (estava_1 == estava_2)
-            {
-              encontra_t(system->tabela_teams, aux->equipa_1)->numero_wins++;
-            }
-            else
-            {
-              return;
-            }
-
-          }
-
-        }
+        encontra_t(system->tabela_teams, aux->equipa_1)->numero_wins++;
+        encontra_t(system->tabela_teams, aux->equipa_2)->numero_wins--;
       }
       else
       {
-        if (score1 == score2)
+        if (estava_1 == estava_2)
         {
-          {
-            if (estava_2 == estava_1)
-            {
-              return;
-            }
-            else
-            {
-              if (estava_1 > estava_2)
-              {
-                encontra_t(system->tabela_teams, aux->equipa_1)->numero_wins--;
-              }
-              else
-              {
-                encontra_t(system->tabela_teams, aux->equipa_2)->numero_wins--;
-              }
-
-            }
-
-          }
+          encontra_t(system->tabela_teams, aux->equipa_1)->numero_wins++;
         }
         else
         {
-          {
-            if (estava_1 > estava_2)
-            {
-              {
-                encontra_t(system->tabela_teams, aux->equipa_1)->numero_wins--;
-                encontra_t(system->tabela_teams, aux->equipa_2)->numero_wins++;
-              }
-            }
-            else
-            {
-              if (estava_2 == estava_1)
-              {
-                encontra_t(system->tabela_teams, aux->equipa_2)->numero_wins++;
-              }
-              else
-              {
-                return;
-              }
-
-            }
-
-          }
+          return;
         }
 
       }
 
     }
+    else
+    {
+      if (score1 == score2)
+      {
+        if (estava_2 == estava_1)
+        {
+          return;
+        }
+        else
+        {
+          if (estava_1 > estava_2)
+          {
+            encontra_t(system->tabela_teams, aux->equipa_1)->numero_wins--;
+          }
+          else
+          {
+            encontra_t(system->tabela_teams, aux->equipa_2)->numero_wins--;
+          }
+
+        }
+
+      }
+      else
+      {
+        if (estava_1 > estava_2)
+        {
+          encontra_t(system->tabela_teams, aux->equipa_1)->numero_wins--;
+          encontra_t(system->tabela_teams, aux->equipa_2)->numero_wins++;
+        }
+        else
+        {
+          if (estava_2 == estava_1)
+          {
+            encontra_t(system->tabela_teams, aux->equipa_2)->numero_wins++;
+          }
+          else
+          {
+            return;
+          }
+
+        }
+
+      }
+
+    }
+
   }
 
 }
@@ -350,27 +316,25 @@ void lista_teams(Sistema *system, int Equipa_existe, int cont_line)
   }
   else
   {
+    pointer = malloc(((sizeof(char *)) * 1551) / 20);
+    for (i = 0; i < (1551 / 20); i++)
+      pointer[i] = malloc((sizeof(char)) * 1024);
+
+    mais_wins = ve_maior(system->tabela_teams);
+    size = teams_maiores(system->tabela_teams, pointer, mais_wins);
+    pointer_1 = malloc((sizeof(char *)) * size);
+    merge_principal(pointer, pointer_1, 0, size - 1);
+    printf("%d Melhores %d\n", cont_line, mais_wins);
+    for (l = 0; l < size; l++)
     {
-      pointer = malloc(((sizeof(char *)) * 1551) / 20);
-      for (i = 0; i < (1551 / 20); i++)
-        pointer[i] = malloc((sizeof(char)) * 1024);
-
-      mais_wins = ve_maior(system->tabela_teams);
-      size = teams_maiores(system->tabela_teams, pointer, mais_wins);
-      pointer_1 = malloc((sizeof(char *)) * size);
-      merge_principal(pointer, pointer_1, 0, size - 1);
-      printf("%d Melhores %d\n", cont_line, mais_wins);
-      for (l = 0; l < size; l++)
-      {
-        printf("%d * %s\n", cont_line, pointer[l]);
-      }
-
-      for (i = 0; i < (1551 / 20); i++)
-        free(pointer[i]);
-
-      free(pointer);
-      free(pointer_1);
+      printf("%d * %s\n", cont_line, pointer[l]);
     }
+
+    for (i = 0; i < (1551 / 20); i++)
+      free(pointer[i]);
+
+    free(pointer);
+    free(pointer_1);
   }
 
 }

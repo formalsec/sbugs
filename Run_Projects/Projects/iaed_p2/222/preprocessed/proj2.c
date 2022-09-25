@@ -39,10 +39,8 @@ int __a__(listJogo *jogos, listEquipa *equipas, int NL)
   _score2 = atoi(token);
   if (!existJogo(jogos, _nomeJogo))
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-      return 0;
-    }
+    printf("%d Jogo existente.\n", NL);
+    return 0;
   }
   else
   {
@@ -51,10 +49,8 @@ int __a__(listJogo *jogos, listEquipa *equipas, int NL)
 
   if ((existEquipa(equipas, _nomeEquipa1) == 1) || (existEquipa(equipas, _nomeEquipa2) == 1))
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      return 0;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    return 0;
   }
   else
   {
@@ -102,10 +98,8 @@ int __A__(listEquipa *equipas, int NL)
   strcpy(_nomeEquipa, token);
   if (existEquipa(equipas, _nomeEquipa) == 0)
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-      return 0;
-    }
+    printf("%d Equipa existente.\n", NL);
+    return 0;
   }
   else
   {
@@ -150,10 +144,8 @@ int __p__(listJogo *jogos, int NL)
   {
     if (strcmp(_nomeJogo, currentNode->nomeJogo) == 0)
     {
-      {
-        printf("%d %s %s %s %d %d\n", NL, currentNode->nomeJogo, currentNode->nomeEquipa1, currentNode->nomeEquipa2, currentNode->resultado1, currentNode->resultado2);
-        return 0;
-      }
+      printf("%d %s %s %s %d %d\n", NL, currentNode->nomeJogo, currentNode->nomeEquipa1, currentNode->nomeEquipa2, currentNode->resultado1, currentNode->resultado2);
+      return 0;
     }
     else
     {
@@ -189,10 +181,8 @@ int __P__(listEquipa *equipas, int NL)
   {
     if (strcmp(_nomeEquipa, currentNode->nomeEquipa) == 0)
     {
-      {
-        printf("%d %s %d\n", NL, currentNode->nomeEquipa, currentNode->vitorias);
-        return 0;
-      }
+      printf("%d %s %d\n", NL, currentNode->nomeEquipa, currentNode->vitorias);
+      return 0;
     }
     else
     {
@@ -226,10 +216,8 @@ int __r__(listJogo *jogos, listEquipa *equipas, int NL)
   strcpy(_nomeJogo, token);
   if (existJogo(jogos, _nomeJogo))
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return 0;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return 0;
   }
   else
   {
@@ -285,10 +273,8 @@ int __s__(listJogo *jogos, listEquipa *equipas, int NL)
   _score2 = atoi(token);
   if (existJogo(jogos, _nomeJogo))
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return 0;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return 0;
   }
   else
   {
@@ -298,51 +284,39 @@ int __s__(listJogo *jogos, listEquipa *equipas, int NL)
   nJogo = searchListJogo(jogos, _nomeJogo);
   if ((nJogo->resultado1 > nJogo->resultado2) && (_score1 < _score2))
   {
-    {
-      searchListEquipa(equipas, nJogo->nomeEquipa1)->vitorias--;
-      searchListEquipa(equipas, nJogo->nomeEquipa2)->vitorias++;
-    }
+    searchListEquipa(equipas, nJogo->nomeEquipa1)->vitorias--;
+    searchListEquipa(equipas, nJogo->nomeEquipa2)->vitorias++;
   }
   else
   {
     if ((nJogo->resultado1 < nJogo->resultado2) && (_score1 > _score2))
     {
-      {
-        searchListEquipa(equipas, nJogo->nomeEquipa1)->vitorias++;
-        searchListEquipa(equipas, nJogo->nomeEquipa2)->vitorias--;
-      }
+      searchListEquipa(equipas, nJogo->nomeEquipa1)->vitorias++;
+      searchListEquipa(equipas, nJogo->nomeEquipa2)->vitorias--;
     }
     else
     {
       if ((nJogo->resultado1 == nJogo->resultado2) && (_score1 < _score2))
       {
-        {
-          searchListEquipa(equipas, nJogo->nomeEquipa2)->vitorias++;
-        }
+        searchListEquipa(equipas, nJogo->nomeEquipa2)->vitorias++;
       }
       else
       {
         if ((nJogo->resultado1 == nJogo->resultado2) && (_score1 > _score2))
         {
-          {
-            searchListEquipa(equipas, nJogo->nomeEquipa1)->vitorias++;
-          }
+          searchListEquipa(equipas, nJogo->nomeEquipa1)->vitorias++;
         }
         else
         {
           if ((nJogo->resultado1 > nJogo->resultado2) && (_score1 == _score2))
           {
-            {
-              searchListEquipa(equipas, nJogo->nomeEquipa1)->vitorias--;
-            }
+            searchListEquipa(equipas, nJogo->nomeEquipa1)->vitorias--;
           }
           else
           {
             if ((nJogo->resultado1 < nJogo->resultado2) && (_score1 == _score2))
             {
-              {
-                searchListEquipa(equipas, nJogo->nomeEquipa2)->vitorias--;
-              }
+              searchListEquipa(equipas, nJogo->nomeEquipa2)->vitorias--;
             }
             else
             {
@@ -383,20 +357,16 @@ int __g__(listEquipa *equipas, int NL)
   {
     if (currentNode->vitorias > numeroVitorias)
     {
-      {
-        numeroVitorias = currentNode->vitorias;
-        freeListEquipa(equipasAux);
-        equipasAux = mkListEquipa();
-        addNodeEquipa(equipasAux, currentNode->nomeEquipa);
-      }
+      numeroVitorias = currentNode->vitorias;
+      freeListEquipa(equipasAux);
+      equipasAux = mkListEquipa();
+      addNodeEquipa(equipasAux, currentNode->nomeEquipa);
     }
     else
     {
       if (currentNode->vitorias == numeroVitorias)
       {
-        {
-          addNodeEquipa(equipasAux, currentNode->nomeEquipa);
-        }
+        addNodeEquipa(equipasAux, currentNode->nomeEquipa);
       }
       else
       {
@@ -415,9 +385,7 @@ int __g__(listEquipa *equipas, int NL)
     {
       if (strcmp(currentNode->nomeEquipa, nodeToPrint->nomeEquipa) < 0)
       {
-        {
-          nodeToPrint = currentNode;
-        }
+        nodeToPrint = currentNode;
       }
       else
       {

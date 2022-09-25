@@ -38,10 +38,8 @@ void a(int NL, lista_jogos *lista, link_equipa *ht_equipas, link_jogo *ht_jogos)
   score2 = new_sym_var(sizeof(int) * 8);
   if (procura_jogo(nome_jogo, ht_jogos))
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-      return;
-    }
+    printf("%d Jogo existente.\n", NL);
+    return;
   }
   else
   {
@@ -50,10 +48,8 @@ void a(int NL, lista_jogos *lista, link_equipa *ht_equipas, link_jogo *ht_jogos)
 
   if ((!(equipa1 = procura_equipa(nome_equipa1, ht_equipas))) || (!(equipa2 = procura_equipa(nome_equipa2, ht_equipas))))
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -95,10 +91,8 @@ void A(int NL, link_equipa *ht_equipas, lista_equipas *lista_equipas)
   nome_equipa[10 - 1] = '\0';
   if (procura_equipa(nome_equipa, ht_equipas))
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-      return;
-    }
+    printf("%d Equipa existente.\n", NL);
+    return;
   }
   else
   {
@@ -122,10 +116,8 @@ void p(int NL, link_jogo *ht_jogos)
   nome_jogo[(1023 + 1) - 1] = '\0';
   if (!(jogo = procura_jogo(nome_jogo, ht_jogos)))
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -147,10 +139,8 @@ void P(int NL, link_equipa *ht_equipas)
   nome_equipa[(1023 + 1) - 1] = '\0';
   if (!(equipa = procura_equipa(nome_equipa, ht_equipas)))
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -184,10 +174,8 @@ void s(int NL, link_jogo *ht_jogos)
   score2 = new_sym_var(sizeof(int) * 8);
   if (!(jogo = procura_jogo(nome_jogo, ht_jogos)))
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -246,10 +234,8 @@ void r(int NL, lista_jogos *lista_jogos, link_jogo *ht_jogos)
   nome_jogo[(1023 + 1) - 1] = '\0';
   if (!(jogo = procura_jogo(nome_jogo, ht_jogos)))
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {

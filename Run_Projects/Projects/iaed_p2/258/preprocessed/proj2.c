@@ -34,9 +34,7 @@ int main()
     c = getchar();
     if (c == EOF)
     {
-      {
-        return 0;
-      }
+      return 0;
     }
     else
     {
@@ -45,9 +43,7 @@ int main()
 
     if ((c == '\n') || (c == ' '))
     {
-      {
-        continue;
-      }
+      continue;
     }
     else
     {
@@ -100,9 +96,7 @@ int main()
   {
     if (jogos.vetor[n] == 0)
     {
-      {
-        continue;
-      }
+      continue;
     }
     else
     {
@@ -118,9 +112,7 @@ int main()
   {
     if (equipas.vetor[n] == 0)
     {
-      {
-        continue;
-      }
+      continue;
     }
     else
     {

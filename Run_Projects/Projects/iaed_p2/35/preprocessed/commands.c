@@ -37,98 +37,84 @@ void a(Hashtable_JOGOS HTj, Hashtable_EQUIPAS HTe)
   score2 = new_sym_var(sizeof(int) * 8);
   if ((score1 >= 0) && (score2 >= 0))
   {
+    if (HashtableSearch_JOGOS(nome, HTj))
     {
-      if (HashtableSearch_JOGOS(nome, HTj))
+      if (NL == 0)
       {
-        {
-          if (NL == 0)
-          {
-            printf("%d Jogo existente.\n", 1);
-          }
-          else
-          {
-            printf("%ld Jogo existente.\n", NL);
-          }
-
-        }
+        printf("%d Jogo existente.\n", 1);
       }
       else
       {
-        {
-          if (((!HashtableSearch_EQUIPAS(equipa1, HTe)) || (!HashtableSearch_EQUIPAS(equipa2, HTe))) || (!(HashtableSearch_EQUIPAS(equipa1, HTe) && HashtableSearch_EQUIPAS(equipa2, HTe))))
-          {
-            {
-              if (NL == 0)
-              {
-                printf("%d Equipa inexistente.\n", 1);
-              }
-              else
-              {
-                printf("%ld Equipa inexistente.\n", NL);
-              }
-
-            }
-          }
-          else
-          {
-            {
-              strcpy(j.nome, nome);
-              strcpy(j.equipa1, equipa1);
-              strcpy(j.equipa2, equipa2);
-              j.score1 = score1;
-              j.score2 = score2;
-              HashtableInsert_JOGOS(HTj, insertNodeJogo(&listaDeJogos, j));
-              if (score1 > score2)
-              {
-                {
-                  key = hashU_EQUIPAS(equipa1, HTe);
-                  for (p = HTe->adj[key]; p != 0; p = p->next)
-                    if (!strcmp(p->e->e.nome, equipa1))
-                  {
-                    p->e->e.vitorias = p->e->e.vitorias + 1;
-                  }
-                  else
-                  {
-                    
-                  }
-
-
-                }
-              }
-              else
-              {
-                
-              }
-
-              if (score1 < score2)
-              {
-                {
-                  key = hashU_EQUIPAS(equipa2, HTe);
-                  for (p = HTe->adj[key]; p != 0; p = p->next)
-                    if (!strcmp(p->e->e.nome, equipa2))
-                  {
-                    p->e->e.vitorias = p->e->e.vitorias + 1;
-                  }
-                  else
-                  {
-                    
-                  }
-
-
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-          }
-
-        }
+        printf("%ld Jogo existente.\n", NL);
       }
 
     }
+    else
+    {
+      if (((!HashtableSearch_EQUIPAS(equipa1, HTe)) || (!HashtableSearch_EQUIPAS(equipa2, HTe))) || (!(HashtableSearch_EQUIPAS(equipa1, HTe) && HashtableSearch_EQUIPAS(equipa2, HTe))))
+      {
+        if (NL == 0)
+        {
+          printf("%d Equipa inexistente.\n", 1);
+        }
+        else
+        {
+          printf("%ld Equipa inexistente.\n", NL);
+        }
+
+      }
+      else
+      {
+        strcpy(j.nome, nome);
+        strcpy(j.equipa1, equipa1);
+        strcpy(j.equipa2, equipa2);
+        j.score1 = score1;
+        j.score2 = score2;
+        HashtableInsert_JOGOS(HTj, insertNodeJogo(&listaDeJogos, j));
+        if (score1 > score2)
+        {
+          key = hashU_EQUIPAS(equipa1, HTe);
+          for (p = HTe->adj[key]; p != 0; p = p->next)
+            if (!strcmp(p->e->e.nome, equipa1))
+          {
+            p->e->e.vitorias = p->e->e.vitorias + 1;
+          }
+          else
+          {
+            
+          }
+
+
+        }
+        else
+        {
+          
+        }
+
+        if (score1 < score2)
+        {
+          key = hashU_EQUIPAS(equipa2, HTe);
+          for (p = HTe->adj[key]; p != 0; p = p->next)
+            if (!strcmp(p->e->e.nome, equipa2))
+          {
+            p->e->e.vitorias = p->e->e.vitorias + 1;
+          }
+          else
+          {
+            
+          }
+
+
+        }
+        else
+        {
+          
+        }
+
+      }
+
+    }
+
   }
   else
   {
@@ -159,25 +145,21 @@ void A(Hashtable_EQUIPAS HTe)
   nome[10 - 1] = '\0';
   if (!HashtableSearch_EQUIPAS(nome, HTe))
   {
-    {
-      strcpy(e.nome, nome);
-      e.vitorias = 0;
-      HashtableInsert_EQUIPAS(HTe, insertNodeEquipa(&listaDeEquipas, e));
-    }
+    strcpy(e.nome, nome);
+    e.vitorias = 0;
+    HashtableInsert_EQUIPAS(HTe, insertNodeEquipa(&listaDeEquipas, e));
   }
   else
   {
+    if (NL == 0)
     {
-      if (NL == 0)
-      {
-        printf("%d Equipa existente.\n", 1);
-      }
-      else
-      {
-        printf("%ld Equipa existente.\n", NL);
-      }
-
+      printf("%d Equipa existente.\n", 1);
     }
+    else
+    {
+      printf("%ld Equipa existente.\n", NL);
+    }
+
   }
 
   if (NL == 0)
@@ -196,28 +178,24 @@ void l()
   linkJogo p;
   if (listaDeJogos == 0)
   {
+    if (NL == 0)
     {
-      if (NL == 0)
-      {
-        NL = NL + 2;
-      }
-      else
-      {
-        NL++;
-      }
-
-      return;
+      NL = NL + 2;
     }
+    else
+    {
+      NL++;
+    }
+
+    return;
   }
   else
   {
+    for (p = listaDeJogos; p != 0; p = p->next)
     {
-      for (p = listaDeJogos; p != 0; p = p->next)
-      {
-        printf("%ld %s %s %s %d %d\n", NL, p->j.nome, p->j.equipa1, p->j.equipa2, p->j.score1, p->j.score2);
-      }
-
+      printf("%ld %s %s %s %d %d\n", NL, p->j.nome, p->j.equipa1, p->j.equipa2, p->j.score1, p->j.score2);
     }
+
   }
 
   if (NL == 0)
@@ -245,34 +223,30 @@ void p(Hashtable_JOGOS HTj)
   nome[10 - 1] = '\0';
   if (HashtableSearch_JOGOS(nome, HTj))
   {
+    key = hashU_JOGOS(nome, HTj);
+    for (p = HTj->adj[key]; p != 0; p = p->next)
+      if (!strcmp(p->j->j.nome, nome))
     {
-      key = hashU_JOGOS(nome, HTj);
-      for (p = HTj->adj[key]; p != 0; p = p->next)
-        if (!strcmp(p->j->j.nome, nome))
-      {
-        printf("%ld %s %s %s %d %d\n", NL, p->j->j.nome, p->j->j.equipa1, p->j->j.equipa2, p->j->j.score1, p->j->j.score2);
-      }
-      else
-      {
-        
-      }
-
-
+      printf("%ld %s %s %s %d %d\n", NL, p->j->j.nome, p->j->j.equipa1, p->j->j.equipa2, p->j->j.score1, p->j->j.score2);
     }
+    else
+    {
+      
+    }
+
+
   }
   else
   {
+    if (NL == 0)
     {
-      if (NL == 0)
-      {
-        printf("%d Jogo inexistente.\n", 1);
-      }
-      else
-      {
-        printf("%ld Jogo inexistente.\n", NL);
-      }
-
+      printf("%d Jogo inexistente.\n", 1);
     }
+    else
+    {
+      printf("%ld Jogo inexistente.\n", NL);
+    }
+
   }
 
   if (NL == 0)
@@ -300,34 +274,30 @@ void P(Hashtable_EQUIPAS HTe)
   nome[10 - 1] = '\0';
   if (HashtableSearch_EQUIPAS(nome, HTe))
   {
+    key = hashU_EQUIPAS(nome, HTe);
+    for (p = HTe->adj[key]; p != 0; p = p->next)
+      if (!strcmp(p->e->e.nome, nome))
     {
-      key = hashU_EQUIPAS(nome, HTe);
-      for (p = HTe->adj[key]; p != 0; p = p->next)
-        if (!strcmp(p->e->e.nome, nome))
-      {
-        printf("%ld %s %d\n", NL, p->e->e.nome, p->e->e.vitorias);
-      }
-      else
-      {
-        
-      }
-
-
+      printf("%ld %s %d\n", NL, p->e->e.nome, p->e->e.vitorias);
     }
+    else
+    {
+      
+    }
+
+
   }
   else
   {
+    if (NL == 0)
     {
-      if (NL == 0)
-      {
-        printf("%d Equipa inexistente.\n", 1);
-      }
-      else
-      {
-        printf("%ld Equipa inexistente.\n", NL);
-      }
-
+      printf("%d Equipa inexistente.\n", 1);
     }
+    else
+    {
+      printf("%ld Equipa inexistente.\n", NL);
+    }
+
   }
 
   if (NL == 0)
@@ -356,58 +326,45 @@ void r(Hashtable_JOGOS HTj, Hashtable_EQUIPAS HTe)
   nome[10 - 1] = '\0';
   if (HashtableSearch_JOGOS(nome, HTj))
   {
+    key = hashU_JOGOS(nome, HTj);
+    for (pj = HTj->adj[key]; pj != 0; pj = pj->next)
     {
-      key = hashU_JOGOS(nome, HTj);
-      for (pj = HTj->adj[key]; pj != 0; pj = pj->next)
+      if (!strcmp(pj->j->j.nome, nome))
       {
-        if (!strcmp(pj->j->j.nome, nome))
+        if (pj->j->j.score1 > pj->j->j.score2)
         {
+          key = hashU_EQUIPAS(pj->j->j.equipa1, HTe);
+          for (pe = HTe->adj[key]; pe != 0; pe = pe->next)
+            if (!strcmp(pe->e->e.nome, pj->j->j.equipa1))
           {
-            if (pj->j->j.score1 > pj->j->j.score2)
-            {
-              {
-                key = hashU_EQUIPAS(pj->j->j.equipa1, HTe);
-                for (pe = HTe->adj[key]; pe != 0; pe = pe->next)
-                  if (!strcmp(pe->e->e.nome, pj->j->j.equipa1))
-                {
-                  pe->e->e.vitorias = pe->e->e.vitorias - 1;
-                }
-                else
-                {
-                  
-                }
-
-
-              }
-            }
-            else
-            {
-              
-            }
-
-            if (pj->j->j.score1 < pj->j->j.score2)
-            {
-              {
-                key = hashU_EQUIPAS(pj->j->j.equipa2, HTe);
-                for (pe = HTe->adj[key]; pe != 0; pe = pe->next)
-                  if (!strcmp(pe->e->e.nome, pj->j->j.equipa2))
-                {
-                  pe->e->e.vitorias = pe->e->e.vitorias - 1;
-                }
-                else
-                {
-                  
-                }
-
-
-              }
-            }
-            else
-            {
-              
-            }
-
+            pe->e->e.vitorias = pe->e->e.vitorias - 1;
           }
+          else
+          {
+            
+          }
+
+
+        }
+        else
+        {
+          
+        }
+
+        if (pj->j->j.score1 < pj->j->j.score2)
+        {
+          key = hashU_EQUIPAS(pj->j->j.equipa2, HTe);
+          for (pe = HTe->adj[key]; pe != 0; pe = pe->next)
+            if (!strcmp(pe->e->e.nome, pj->j->j.equipa2))
+          {
+            pe->e->e.vitorias = pe->e->e.vitorias - 1;
+          }
+          else
+          {
+            
+          }
+
+
         }
         else
         {
@@ -415,23 +372,26 @@ void r(Hashtable_JOGOS HTj, Hashtable_EQUIPAS HTe)
         }
 
       }
+      else
+      {
+        
+      }
 
-      HashtableDelete_JOGOS(nome, &listaDeJogos, HTj);
     }
+
+    HashtableDelete_JOGOS(nome, &listaDeJogos, HTj);
   }
   else
   {
+    if (NL == 0)
     {
-      if (NL == 0)
-      {
-        printf("%d Jogo inexistente.\n", 1);
-      }
-      else
-      {
-        printf("%ld Jogo inexistente.\n", NL);
-      }
-
+      printf("%d Jogo inexistente.\n", 1);
     }
+    else
+    {
+      printf("%ld Jogo inexistente.\n", NL);
+    }
+
   }
 
   if (NL == 0)
@@ -464,238 +424,211 @@ void s(Hashtable_JOGOS HTj, Hashtable_EQUIPAS HTe)
   score2 = new_sym_var(sizeof(int) * 8);
   if (HashtableSearch_JOGOS(nome, HTj))
   {
+    key = hashU_JOGOS(nome, HTj);
+    for (pj = HTj->adj[key]; pj != 0; pj = pj->next)
     {
-      key = hashU_JOGOS(nome, HTj);
-      for (pj = HTj->adj[key]; pj != 0; pj = pj->next)
+      if (!strcmp(pj->j->j.nome, nome))
       {
-        if (!strcmp(pj->j->j.nome, nome))
+        if (pj->j->j.score1 == pj->j->j.score2)
         {
+          if (score1 > score2)
           {
-            if (pj->j->j.score1 == pj->j->j.score2)
+            key = hashU_EQUIPAS(pj->j->j.equipa1, HTe);
+            for (pe = HTe->adj[key]; pe != 0; pe = pe->next)
+              if (!strcmp(pe->e->e.nome, pj->j->j.equipa1))
             {
-              {
-                if (score1 > score2)
-                {
-                  {
-                    key = hashU_EQUIPAS(pj->j->j.equipa1, HTe);
-                    for (pe = HTe->adj[key]; pe != 0; pe = pe->next)
-                      if (!strcmp(pe->e->e.nome, pj->j->j.equipa1))
-                    {
-                      pe->e->e.vitorias = pe->e->e.vitorias + 1;
-                    }
-                    else
-                    {
-                      
-                    }
-
-
-                  }
-                }
-                else
-                {
-                  
-                }
-
-                if (score1 < score2)
-                {
-                  {
-                    key = hashU_EQUIPAS(pj->j->j.equipa2, HTe);
-                    for (pe = HTe->adj[key]; pe != 0; pe = pe->next)
-                      if (!strcmp(pe->e->e.nome, pj->j->j.equipa2))
-                    {
-                      pe->e->e.vitorias = pe->e->e.vitorias + 1;
-                    }
-                    else
-                    {
-                      
-                    }
-
-
-                  }
-                }
-                else
-                {
-                  
-                }
-
-                pj->j->j.score1 = score1;
-                pj->j->j.score2 = score2;
-              }
+              pe->e->e.vitorias = pe->e->e.vitorias + 1;
             }
             else
             {
               
             }
 
-            if (pj->j->j.score1 > pj->j->j.score2)
-            {
-              {
-                if (score1 == score2)
-                {
-                  {
-                    key = hashU_EQUIPAS(pj->j->j.equipa1, HTe);
-                    for (pe = HTe->adj[key]; pe != 0; pe = pe->next)
-                      if (!strcmp(pe->e->e.nome, pj->j->j.equipa1))
-                    {
-                      if (pe->e->e.vitorias >= 1)
-                      {
-                        pe->e->e.vitorias = pe->e->e.vitorias - 1;
-                      }
-                      else
-                      {
-                        
-                      }
-
-                    }
-                    else
-                    {
-                      
-                    }
-
-
-                  }
-                }
-                else
-                {
-                  
-                }
-
-                if (score1 < score2)
-                {
-                  {
-                    key = hashU_EQUIPAS(pj->j->j.equipa2, HTe);
-                    for (pe = HTe->adj[key]; pe != 0; pe = pe->next)
-                      if (!strcmp(pe->e->e.nome, pj->j->j.equipa2))
-                    {
-                      pe->e->e.vitorias = pe->e->e.vitorias + 1;
-                    }
-                    else
-                    {
-                      
-                    }
-
-
-                    key = hashU_EQUIPAS(pj->j->j.equipa1, HTe);
-                    for (pe = HTe->adj[key]; pe != 0; pe = pe->next)
-                      if (!strcmp(pe->e->e.nome, pj->j->j.equipa1))
-                    {
-                      if (pe->e->e.vitorias >= 1)
-                      {
-                        pe->e->e.vitorias = pe->e->e.vitorias - 1;
-                      }
-                      else
-                      {
-                        
-                      }
-
-                    }
-                    else
-                    {
-                      
-                    }
-
-
-                  }
-                }
-                else
-                {
-                  
-                }
-
-                pj->j->j.score1 = score1;
-                pj->j->j.score2 = score2;
-              }
-            }
-            else
-            {
-              
-            }
-
-            if (pj->j->j.score1 < pj->j->j.score2)
-            {
-              {
-                if (score1 == score2)
-                {
-                  {
-                    key = hashU_EQUIPAS(pj->j->j.equipa2, HTe);
-                    for (pe = HTe->adj[key]; pe != 0; pe = pe->next)
-                      if (!strcmp(pe->e->e.nome, pj->j->j.equipa2))
-                    {
-                      if (pe->e->e.vitorias >= 1)
-                      {
-                        pe->e->e.vitorias = pe->e->e.vitorias - 1;
-                      }
-                      else
-                      {
-                        
-                      }
-
-                    }
-                    else
-                    {
-                      
-                    }
-
-
-                  }
-                }
-                else
-                {
-                  
-                }
-
-                if (score1 > score2)
-                {
-                  {
-                    key = hashU_EQUIPAS(pj->j->j.equipa1, HTe);
-                    for (pe = HTe->adj[key]; pe != 0; pe = pe->next)
-                      if (!strcmp(pe->e->e.nome, pj->j->j.equipa1))
-                    {
-                      pe->e->e.vitorias = pe->e->e.vitorias + 1;
-                    }
-                    else
-                    {
-                      
-                    }
-
-
-                    key = hashU_EQUIPAS(pj->j->j.equipa2, HTe);
-                    for (pe = HTe->adj[key]; pe != 0; pe = pe->next)
-                      if (!strcmp(pe->e->e.nome, pj->j->j.equipa2))
-                    {
-                      if (pe->e->e.vitorias >= 1)
-                      {
-                        pe->e->e.vitorias = pe->e->e.vitorias - 1;
-                      }
-                      else
-                      {
-                        
-                      }
-
-                    }
-                    else
-                    {
-                      
-                    }
-
-
-                  }
-                }
-                else
-                {
-                  
-                }
-
-                pj->j->j.score1 = score1;
-                pj->j->j.score2 = score2;
-              }
-            }
-            else
-            {
-              
-            }
 
           }
+          else
+          {
+            
+          }
+
+          if (score1 < score2)
+          {
+            key = hashU_EQUIPAS(pj->j->j.equipa2, HTe);
+            for (pe = HTe->adj[key]; pe != 0; pe = pe->next)
+              if (!strcmp(pe->e->e.nome, pj->j->j.equipa2))
+            {
+              pe->e->e.vitorias = pe->e->e.vitorias + 1;
+            }
+            else
+            {
+              
+            }
+
+
+          }
+          else
+          {
+            
+          }
+
+          pj->j->j.score1 = score1;
+          pj->j->j.score2 = score2;
+        }
+        else
+        {
+          
+        }
+
+        if (pj->j->j.score1 > pj->j->j.score2)
+        {
+          if (score1 == score2)
+          {
+            key = hashU_EQUIPAS(pj->j->j.equipa1, HTe);
+            for (pe = HTe->adj[key]; pe != 0; pe = pe->next)
+              if (!strcmp(pe->e->e.nome, pj->j->j.equipa1))
+            {
+              if (pe->e->e.vitorias >= 1)
+              {
+                pe->e->e.vitorias = pe->e->e.vitorias - 1;
+              }
+              else
+              {
+                
+              }
+
+            }
+            else
+            {
+              
+            }
+
+
+          }
+          else
+          {
+            
+          }
+
+          if (score1 < score2)
+          {
+            key = hashU_EQUIPAS(pj->j->j.equipa2, HTe);
+            for (pe = HTe->adj[key]; pe != 0; pe = pe->next)
+              if (!strcmp(pe->e->e.nome, pj->j->j.equipa2))
+            {
+              pe->e->e.vitorias = pe->e->e.vitorias + 1;
+            }
+            else
+            {
+              
+            }
+
+
+            key = hashU_EQUIPAS(pj->j->j.equipa1, HTe);
+            for (pe = HTe->adj[key]; pe != 0; pe = pe->next)
+              if (!strcmp(pe->e->e.nome, pj->j->j.equipa1))
+            {
+              if (pe->e->e.vitorias >= 1)
+              {
+                pe->e->e.vitorias = pe->e->e.vitorias - 1;
+              }
+              else
+              {
+                
+              }
+
+            }
+            else
+            {
+              
+            }
+
+
+          }
+          else
+          {
+            
+          }
+
+          pj->j->j.score1 = score1;
+          pj->j->j.score2 = score2;
+        }
+        else
+        {
+          
+        }
+
+        if (pj->j->j.score1 < pj->j->j.score2)
+        {
+          if (score1 == score2)
+          {
+            key = hashU_EQUIPAS(pj->j->j.equipa2, HTe);
+            for (pe = HTe->adj[key]; pe != 0; pe = pe->next)
+              if (!strcmp(pe->e->e.nome, pj->j->j.equipa2))
+            {
+              if (pe->e->e.vitorias >= 1)
+              {
+                pe->e->e.vitorias = pe->e->e.vitorias - 1;
+              }
+              else
+              {
+                
+              }
+
+            }
+            else
+            {
+              
+            }
+
+
+          }
+          else
+          {
+            
+          }
+
+          if (score1 > score2)
+          {
+            key = hashU_EQUIPAS(pj->j->j.equipa1, HTe);
+            for (pe = HTe->adj[key]; pe != 0; pe = pe->next)
+              if (!strcmp(pe->e->e.nome, pj->j->j.equipa1))
+            {
+              pe->e->e.vitorias = pe->e->e.vitorias + 1;
+            }
+            else
+            {
+              
+            }
+
+
+            key = hashU_EQUIPAS(pj->j->j.equipa2, HTe);
+            for (pe = HTe->adj[key]; pe != 0; pe = pe->next)
+              if (!strcmp(pe->e->e.nome, pj->j->j.equipa2))
+            {
+              if (pe->e->e.vitorias >= 1)
+              {
+                pe->e->e.vitorias = pe->e->e.vitorias - 1;
+              }
+              else
+              {
+                
+              }
+
+            }
+            else
+            {
+              
+            }
+
+
+          }
+          else
+          {
+            
+          }
+
+          pj->j->j.score1 = score1;
+          pj->j->j.score2 = score2;
         }
         else
         {
@@ -703,22 +636,25 @@ void s(Hashtable_JOGOS HTj, Hashtable_EQUIPAS HTe)
         }
 
       }
+      else
+      {
+        
+      }
 
     }
+
   }
   else
   {
+    if (NL == 0)
     {
-      if (NL == 0)
-      {
-        printf("%d Jogo inexistente.\n", 1);
-      }
-      else
-      {
-        printf("%ld Jogo inexistente.\n", NL);
-      }
-
+      printf("%d Jogo inexistente.\n", 1);
     }
+    else
+    {
+      printf("%ld Jogo inexistente.\n", NL);
+    }
+
   }
 
   if (NL == 0)
@@ -741,45 +677,41 @@ void g()
   linkEquipa p;
   if (listaDeEquipas != 0)
   {
+    for (p = listaDeEquipas; p != 0; p = p->next)
     {
-      for (p = listaDeEquipas; p != 0; p = p->next)
+      if (p->e.vitorias > best)
       {
-        if (p->e.vitorias > best)
-        {
-          best = p->e.vitorias;
-        }
-        else
-        {
-          
-        }
-
+        best = p->e.vitorias;
       }
-
-      for (p = listaDeEquipas; p != 0; p = p->next)
+      else
       {
-        if (p->e.vitorias == best)
-        {
-          {
-            strcpy(array[j].nome, p->e.nome);
-            array[j].vitorias = p->e.vitorias;
-            j++;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      qsort(array, j, sizeof(equipa), cstring_cmp);
-      printf("%ld Melhores %d\n", NL, best);
-      for (i = 0; i < j; i++)
-      {
-        printf("%ld * %s\n", NL, array[i].nome);
+        
       }
 
     }
+
+    for (p = listaDeEquipas; p != 0; p = p->next)
+    {
+      if (p->e.vitorias == best)
+      {
+        strcpy(array[j].nome, p->e.nome);
+        array[j].vitorias = p->e.vitorias;
+        j++;
+      }
+      else
+      {
+        
+      }
+
+    }
+
+    qsort(array, j, sizeof(equipa), cstring_cmp);
+    printf("%ld Melhores %d\n", NL, best);
+    for (i = 0; i < j; i++)
+    {
+      printf("%ld * %s\n", NL, array[i].nome);
+    }
+
   }
   else
   {

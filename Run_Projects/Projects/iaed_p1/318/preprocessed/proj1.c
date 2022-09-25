@@ -40,10 +40,8 @@ int calculates_or_changes_order_weight(char option[], int ide, int idp, int quan
 
   if (strncmp(option, "change", 6) == 0)
   {
-    {
-      list_of_orders[ide].total_weight = weight_atual;
-      return 0;
-    }
+    list_of_orders[ide].total_weight = weight_atual;
+    return 0;
   }
   else
   {
@@ -60,14 +58,12 @@ void remove_idp_from_list_of_idps(int idp, int ide)
   {
     if (list_of_orders[ide].list_of_idps[i] == idp)
     {
+      for (ii = i; ii < list_of_orders[ide].num_of_products; ii++)
       {
-        for (ii = i; ii < list_of_orders[ide].num_of_products; ii++)
-        {
-          list_of_orders[ide].list_of_idps[ii] = list_of_orders[ide].list_of_idps[ii + 1];
-        }
-
-        break;
+        list_of_orders[ide].list_of_idps[ii] = list_of_orders[ide].list_of_idps[ii + 1];
       }
+
+      break;
     }
     else
     {
@@ -171,24 +167,22 @@ void ordenate_idps(int list_to_ordenate[])
   {
     if (sistema[list_to_ordenate[left]].price == sistema[list_to_ordenate[right]].price)
     {
+      while (sistema[list_to_ordenate[left]].price == sistema[list_to_ordenate[right]].price)
       {
-        while (sistema[list_to_ordenate[left]].price == sistema[list_to_ordenate[right]].price)
+        if (right < idp_counter)
         {
-          if (right < idp_counter)
-          {
-            right++;
-          }
-          else
-          {
-            break;
-          }
-
+          right++;
+        }
+        else
+        {
+          break;
         }
 
-        save_r = right;
-        quicksort_by_price_or_idp_or_alpha("identifier", list_to_ordenate, left, right - 1);
-        flag++;
       }
+
+      save_r = right;
+      quicksort_by_price_or_idp_or_alpha("identifier", list_to_ordenate, left, right - 1);
+      flag++;
     }
     else
     {
@@ -197,10 +191,8 @@ void ordenate_idps(int list_to_ordenate[])
 
     if (flag == 0)
     {
-      {
-        left++;
-        right++;
-      }
+      left++;
+      right++;
     }
     else
     {
@@ -209,11 +201,9 @@ void ordenate_idps(int list_to_ordenate[])
 
     if (flag != 0)
     {
-      {
-        left = save_r;
-        right = save_r + 1;
-        flag = 0;
-      }
+      left = save_r;
+      right = save_r + 1;
+      flag = 0;
     }
     else
     {
@@ -254,17 +244,15 @@ void remove_stock_product(int idp, int quantity)
 {
   if (idp < idp_counter)
   {
+    if (sistema[idp].stock >= quantity)
     {
-      if (sistema[idp].stock >= quantity)
-      {
-        sistema[idp].stock -= quantity;
-      }
-      else
-      {
-        printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", quantity, idp);
-      }
-
+      sistema[idp].stock -= quantity;
     }
+    else
+    {
+      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", quantity, idp);
+    }
+
   }
   else
   {
@@ -328,53 +316,43 @@ void add_product_to_order(int ide, int idp, int quantity)
 {
   if (ide < ide_counter)
   {
+    if (idp < idp_counter)
     {
-      if (idp < idp_counter)
+      if (sistema[idp].stock >= quantity)
       {
+        if (calculates_or_changes_order_weight("calculate", ide, idp, quantity, '+') <= 200)
         {
-          if (sistema[idp].stock >= quantity)
+          if (list_of_orders[ide].lista_quantities[idp] == 0)
           {
-            {
-              if (calculates_or_changes_order_weight("calculate", ide, idp, quantity, '+') <= 200)
-              {
-                {
-                  if (list_of_orders[ide].lista_quantities[idp] == 0)
-                  {
-                    {
-                      list_of_orders[ide].list_of_idps[list_of_orders[ide].num_of_products] = idp;
-                      list_of_orders[ide].num_of_products++;
-                    }
-                  }
-                  else
-                  {
-                    
-                  }
-
-                  list_of_orders[ide].lista_quantities[idp] += quantity;
-                  calculates_or_changes_order_weight("change", ide, idp, quantity, '+');
-                  remove_stock_product(idp, quantity);
-                }
-              }
-              else
-              {
-                printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
-              }
-
-            }
+            list_of_orders[ide].list_of_idps[list_of_orders[ide].num_of_products] = idp;
+            list_of_orders[ide].num_of_products++;
           }
           else
           {
-            printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
+            
           }
 
+          list_of_orders[ide].lista_quantities[idp] += quantity;
+          calculates_or_changes_order_weight("change", ide, idp, quantity, '+');
+          remove_stock_product(idp, quantity);
         }
+        else
+        {
+          printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
+        }
+
       }
       else
       {
-        printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
+        printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
       }
 
     }
+    else
+    {
+      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
+    }
+
   }
   else
   {
@@ -387,33 +365,27 @@ void remove_product_from_order(int ide, int idp)
 {
   if (ide < ide_counter)
   {
+    if (idp < idp_counter)
     {
-      if (idp < idp_counter)
+      if (list_of_orders[ide].lista_quantities[idp] > 0)
       {
-        {
-          if (list_of_orders[ide].lista_quantities[idp] > 0)
-          {
-            {
-              add_stock_product(idp, list_of_orders[ide].lista_quantities[idp]);
-              calculates_or_changes_order_weight("change", ide, idp, list_of_orders[ide].lista_quantities[idp], '-');
-              list_of_orders[ide].lista_quantities[idp] = 0;
-              remove_idp_from_list_of_idps(idp, ide);
-              list_of_orders[ide].num_of_products--;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
+        add_stock_product(idp, list_of_orders[ide].lista_quantities[idp]);
+        calculates_or_changes_order_weight("change", ide, idp, list_of_orders[ide].lista_quantities[idp], '-');
+        list_of_orders[ide].lista_quantities[idp] = 0;
+        remove_idp_from_list_of_idps(idp, ide);
+        list_of_orders[ide].num_of_products--;
       }
       else
       {
-        printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
+        
       }
 
     }
+    else
+    {
+      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
+    }
+
   }
   else
   {
@@ -429,15 +401,13 @@ void cost_of_order(int ide)
   int idp;
   if (ide < ide_counter)
   {
+    for (i = 0; i < list_of_orders[ide].num_of_products; i++)
     {
-      for (i = 0; i < list_of_orders[ide].num_of_products; i++)
-      {
-        idp = list_of_orders[ide].list_of_idps[i];
-        cost += sistema[idp].price * list_of_orders[ide].lista_quantities[idp];
-      }
-
-      printf("Custo da encomenda %d %d.\n", ide, cost);
+      idp = list_of_orders[ide].list_of_idps[i];
+      cost += sistema[idp].price * list_of_orders[ide].lista_quantities[idp];
     }
+
+    printf("Custo da encomenda %d %d.\n", ide, cost);
   }
   else
   {
@@ -450,19 +420,15 @@ void quantity_of_product_in_order(int ide, int idp)
 {
   if (ide < ide_counter)
   {
+    if (idp < idp_counter)
     {
-      if (idp < idp_counter)
-      {
-        {
-          printf("%s %d.\n", sistema[idp].description, list_of_orders[ide].lista_quantities[idp]);
-        }
-      }
-      else
-      {
-        printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
-      }
-
+      printf("%s %d.\n", sistema[idp].description, list_of_orders[ide].lista_quantities[idp]);
     }
+    else
+    {
+      printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
+    }
+
   }
   else
   {
@@ -478,26 +444,12 @@ void order_w_more_qnt_product(int idp)
   int max_quantity = 0;
   if (idp < idp_counter)
   {
+    for (i = 0; i < ide_counter; i++)
     {
-      for (i = 0; i < ide_counter; i++)
+      if (list_of_orders[i].lista_quantities[idp] > max_quantity)
       {
-        if (list_of_orders[i].lista_quantities[idp] > max_quantity)
-        {
-          {
-            max_quantity = list_of_orders[i].lista_quantities[idp];
-            ide_w_more_qnt = i;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      if (max_quantity != 0)
-      {
-        printf("Maximo produto %d %d %d.\n", idp, ide_w_more_qnt, max_quantity);
+        max_quantity = list_of_orders[i].lista_quantities[idp];
+        ide_w_more_qnt = i;
       }
       else
       {
@@ -505,6 +457,16 @@ void order_w_more_qnt_product(int idp)
       }
 
     }
+
+    if (max_quantity != 0)
+    {
+      printf("Maximo produto %d %d %d.\n", idp, ide_w_more_qnt, max_quantity);
+    }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -520,21 +482,19 @@ void print_order_by_alpha(int ide)
   int list_to_ordenate[200];
   if (ide < ide_counter)
   {
+    for (i = 0; i < list_of_orders[ide].num_of_products; i++)
     {
-      for (i = 0; i < list_of_orders[ide].num_of_products; i++)
-      {
-        list_to_ordenate[i] = list_of_orders[ide].list_of_idps[i];
-      }
-
-      quicksort_by_price_or_idp_or_alpha("description", list_to_ordenate, 0, list_of_orders[ide].num_of_products - 1);
-      printf("Encomenda %d\n", ide);
-      for (i = 0; i < list_of_orders[ide].num_of_products; i++)
-      {
-        idp_to_print = list_to_ordenate[i];
-        printf("* %s %d %d\n", sistema[idp_to_print].description, sistema[idp_to_print].price, list_of_orders[ide].lista_quantities[idp_to_print]);
-      }
-
+      list_to_ordenate[i] = list_of_orders[ide].list_of_idps[i];
     }
+
+    quicksort_by_price_or_idp_or_alpha("description", list_to_ordenate, 0, list_of_orders[ide].num_of_products - 1);
+    printf("Encomenda %d\n", ide);
+    for (i = 0; i < list_of_orders[ide].num_of_products; i++)
+    {
+      idp_to_print = list_to_ordenate[i];
+      printf("* %s %d %d\n", sistema[idp_to_print].description, sistema[idp_to_print].price, list_of_orders[ide].lista_quantities[idp_to_print]);
+    }
+
   }
   else
   {

@@ -26,13 +26,11 @@ int main()
   {
     if (p->hashJogo[i] != 0)
     {
-      {
-        free(p->hashJogo[i]->nome);
-        free(p->hashJogo[i]->equipa1);
-        free(p->hashJogo[i]->equipa2);
-        free(p->hashJogo[i]);
-        p->hashJogo[i] = 0;
-      }
+      free(p->hashJogo[i]->nome);
+      free(p->hashJogo[i]->equipa1);
+      free(p->hashJogo[i]->equipa2);
+      free(p->hashJogo[i]);
+      p->hashJogo[i] = 0;
     }
     else
     {
@@ -47,11 +45,9 @@ int main()
   {
     if (p->hashEquipa[i] != 0)
     {
-      {
-        free(p->hashEquipa[i]->nome);
-        free(p->hashEquipa[i]);
-        p->hashEquipa[i] = 0;
-      }
+      free(p->hashEquipa[i]->nome);
+      free(p->hashEquipa[i]);
+      p->hashEquipa[i] = 0;
     }
     else
     {

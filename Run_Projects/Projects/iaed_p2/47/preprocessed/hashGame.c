@@ -20,19 +20,17 @@ gamelink remove_Game(gamelink head, gameKey k)
   {
     if (strcmp(k, current->GAME->Gamename) == 0)
     {
+      if (current == head)
       {
-        if (current == head)
-        {
-          head = current->next;
-        }
-        else
-        {
-          prev->next = current->next;
-        }
-
-        DELETENode_game(current);
-        return head;
+        head = current->next;
       }
+      else
+      {
+        prev->next = current->next;
+      }
+
+      DELETENode_game(current);
+      return head;
     }
     else
     {

@@ -58,10 +58,8 @@ void Partition(link_ord_teams *source, link_ord_teams **frontRef, link_ord_teams
     fast = fast->next;
     if (fast != 0)
     {
-      {
-        slow = slow->next;
-        fast = fast->next;
-      }
+      slow = slow->next;
+      fast = fast->next;
     }
     else
     {
@@ -97,17 +95,13 @@ link_ord_teams *SortedMerge(link_ord_teams *a, link_ord_teams *b)
 
   if ((b->t->vict < a->t->vict) || ((b->t->vict == a->t->vict) && (strcmp(a->t->name, b->t->name) < 0)))
   {
-    {
-      result = a;
-      result->next = SortedMerge(a->next, b);
-    }
+    result = a;
+    result->next = SortedMerge(a->next, b);
   }
   else
   {
-    {
-      result = b;
-      result->next = SortedMerge(a, b->next);
-    }
+    result = b;
+    result->next = SortedMerge(a, b->next);
   }
 
   return result;
@@ -120,9 +114,7 @@ void MergeSort(link_ord_teams **headRef)
   link_ord_teams *b;
   if ((head == 0) || (head->next == 0))
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -186,23 +178,21 @@ link_game *ht_find_game(char *name, int key)
   link_game *ptr = 0;
   if (head_game[key] != 0)
   {
+    ptr = head_game[key];
+    while (ptr != 0)
     {
-      ptr = head_game[key];
-      while (ptr != 0)
+      if (strcmp(ptr->g->name, name) == 0)
       {
-        if (strcmp(ptr->g->name, name) == 0)
-        {
-          return ptr;
-        }
-        else
-        {
-          
-        }
-
-        ptr = ptr->next;
+        return ptr;
+      }
+      else
+      {
+        
       }
 
+      ptr = ptr->next;
     }
+
   }
   else
   {
@@ -235,23 +225,21 @@ link_team *ht_find_team(char *name, int key)
   link_team *ptr = 0;
   if (head_team[key] != 0)
   {
+    ptr = head_team[key];
+    while (ptr != 0)
     {
-      ptr = head_team[key];
-      while (ptr != 0)
+      if (strcmp(ptr->t->name, name) == 0)
       {
-        if (strcmp(ptr->t->name, name) == 0)
-        {
-          return ptr;
-        }
-        else
-        {
-          
-        }
-
-        ptr = ptr->next;
+        return ptr;
+      }
+      else
+      {
+        
       }
 
+      ptr = ptr->next;
     }
+
   }
   else
   {
@@ -268,16 +256,12 @@ void insert_ord_games(p_game *g)
   ptr->prev = 0;
   if (head_ord_games == 0)
   {
-    {
-      ptr->next = 0;
-    }
+    ptr->next = 0;
   }
   else
   {
-    {
-      ptr->next = head_ord_games;
-      head_ord_games->prev = ptr;
-    }
+    ptr->next = head_ord_games;
+    head_ord_games->prev = ptr;
   }
 
   head_ord_games = ptr;
@@ -290,16 +274,12 @@ void insert_ord_teams(p_team *t)
   ptr->prev = 0;
   if (head_ord_teams == 0)
   {
-    {
-      ptr->next = 0;
-    }
+    ptr->next = 0;
   }
   else
   {
-    {
-      ptr->next = head_ord_teams;
-      head_ord_teams->prev = ptr;
-    }
+    ptr->next = head_ord_teams;
+    head_ord_teams->prev = ptr;
   }
 
   head_ord_teams = ptr;
@@ -351,35 +331,33 @@ void add_game(char *input, int nl)
     }
     else
     {
+      game->name = malloc((sizeof(char)) * (strlen(game_name) + 1));
+      game->team1 = malloc((sizeof(char)) * (strlen(team_1) + 1));
+      game->team2 = malloc((sizeof(char)) * (strlen(team_2) + 1));
+      strcpy(game->name, game_name);
+      strcpy(game->team1, team_1);
+      strcpy(game->team2, team_2);
+      game->score1 = score_1;
+      game->score2 = score_2;
+      if (score_1 > score_2)
       {
-        game->name = malloc((sizeof(char)) * (strlen(game_name) + 1));
-        game->team1 = malloc((sizeof(char)) * (strlen(team_1) + 1));
-        game->team2 = malloc((sizeof(char)) * (strlen(team_2) + 1));
-        strcpy(game->name, game_name);
-        strcpy(game->team1, team_1);
-        strcpy(game->team2, team_2);
-        game->score1 = score_1;
-        game->score2 = score_2;
-        if (score_1 > score_2)
+        ht_find_team(team_1, key_team_1)->t->vict++;
+      }
+      else
+      {
+        if (score_2 > score_1)
         {
-          ht_find_team(team_1, key_team_1)->t->vict++;
+          ht_find_team(team_2, key_team_2)->t->vict++;
         }
         else
         {
-          if (score_2 > score_1)
-          {
-            ht_find_team(team_2, key_team_2)->t->vict++;
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
-        ht_insert_game(game, key_game);
-        insert_ord_games(game);
       }
+
+      ht_insert_game(game, key_game);
+      insert_ord_games(game);
     }
 
   }
@@ -405,9 +383,7 @@ void find_game(char input[3500], int nl)
   }
   else
   {
-    {
-      printf("%d %s %s %s %d %d\n", nl, node->g->name, node->g->team1, node->g->team2, node->g->score1, node->g->score2);
-    }
+    printf("%d %s %s %s %d %d\n", nl, node->g->name, node->g->team1, node->g->team2, node->g->score1, node->g->score2);
   }
 
 }
@@ -418,17 +394,15 @@ void list_games(int nl)
   ptr = head_ord_games;
   if (ptr != 0)
   {
+    while (ptr->next != 0)
+      ptr = ptr->next;
+
+    while (ptr != 0)
     {
-      while (ptr->next != 0)
-        ptr = ptr->next;
-
-      while (ptr != 0)
-      {
-        printf("%d %s %s %s %d %d\n", nl, ptr->g->name, ptr->g->team1, ptr->g->team2, ptr->g->score1, ptr->g->score2);
-        ptr = ptr->prev;
-      }
-
+      printf("%d %s %s %s %d %d\n", nl, ptr->g->name, ptr->g->team1, ptr->g->team2, ptr->g->score1, ptr->g->score2);
+      ptr = ptr->prev;
     }
+
   }
   else
   {
@@ -460,104 +434,94 @@ void remove_game(char input[3500], int nl)
   }
   else
   {
+    node = ht_find_game(game_name, key);
+    node_ord = head_ord_games;
+    key_t1 = hash(node->g->team1);
+    key_t2 = hash(node->g->team2);
+    node_t1 = head_team[key_t1];
+    node_t2 = head_team[key_t2];
+    if (node->g->score1 > node->g->score2)
     {
-      node = ht_find_game(game_name, key);
-      node_ord = head_ord_games;
-      key_t1 = hash(node->g->team1);
-      key_t2 = hash(node->g->team2);
-      node_t1 = head_team[key_t1];
-      node_t2 = head_team[key_t2];
-      if (node->g->score1 > node->g->score2)
-      {
-        node_t1->t->vict--;
-      }
-      else
-      {
-        if (node->g->score1 < node->g->score2)
-        {
-          node_t2->t->vict--;
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      while (strcmp(node_ord->g->name, game_name) != 0)
-        node_ord = node_ord->next;
-
-      if ((node_ord->prev != 0) && (node_ord->next != 0))
-      {
-        {
-          node_ord->prev->next = node_ord->next;
-          node_ord->next->prev = node_ord->prev;
-        }
-      }
-      else
-      {
-        if ((node_ord->prev == 0) && (node_ord->next != 0))
-        {
-          {
-            head_ord_games = node_ord->next;
-            head_ord_games->prev = 0;
-          }
-        }
-        else
-        {
-          if ((node_ord->prev == 0) && (node_ord->next == 0))
-          {
-            head_ord_games = 0;
-          }
-          else
-          {
-            node_ord->prev->next = 0;
-          }
-
-        }
-
-      }
-
-      if ((node->prev != 0) && (node->next != 0))
-      {
-        {
-          node->prev->next = node->next;
-          node->next->prev = node->prev;
-        }
-      }
-      else
-      {
-        if ((node == head_game[key]) && (node->next != 0))
-        {
-          {
-            head_game[key] = node->next;
-            head_game[key] = 0;
-          }
-        }
-        else
-        {
-          if ((node == head_game[key]) && (node->next == 0))
-          {
-            head_game[key] = 0;
-          }
-          else
-          {
-            node->prev->next = 0;
-          }
-
-        }
-
-      }
-
-      free(node->g->name);
-      free(node->g->team1);
-      free(node->g->team2);
-      free(node->g);
-      free(node);
-      node = 0;
-      free(node_ord);
-      node_ord = 0;
+      node_t1->t->vict--;
     }
+    else
+    {
+      if (node->g->score1 < node->g->score2)
+      {
+        node_t2->t->vict--;
+      }
+      else
+      {
+        
+      }
+
+    }
+
+    while (strcmp(node_ord->g->name, game_name) != 0)
+      node_ord = node_ord->next;
+
+    if ((node_ord->prev != 0) && (node_ord->next != 0))
+    {
+      node_ord->prev->next = node_ord->next;
+      node_ord->next->prev = node_ord->prev;
+    }
+    else
+    {
+      if ((node_ord->prev == 0) && (node_ord->next != 0))
+      {
+        head_ord_games = node_ord->next;
+        head_ord_games->prev = 0;
+      }
+      else
+      {
+        if ((node_ord->prev == 0) && (node_ord->next == 0))
+        {
+          head_ord_games = 0;
+        }
+        else
+        {
+          node_ord->prev->next = 0;
+        }
+
+      }
+
+    }
+
+    if ((node->prev != 0) && (node->next != 0))
+    {
+      node->prev->next = node->next;
+      node->next->prev = node->prev;
+    }
+    else
+    {
+      if ((node == head_game[key]) && (node->next != 0))
+      {
+        head_game[key] = node->next;
+        head_game[key] = 0;
+      }
+      else
+      {
+        if ((node == head_game[key]) && (node->next == 0))
+        {
+          head_game[key] = 0;
+        }
+        else
+        {
+          node->prev->next = 0;
+        }
+
+      }
+
+    }
+
+    free(node->g->name);
+    free(node->g->team1);
+    free(node->g->team2);
+    free(node->g);
+    free(node);
+    node = 0;
+    free(node_ord);
+    node_ord = 0;
   }
 
 }
@@ -588,63 +552,56 @@ void change_score(char input[3500], int nl)
   }
   else
   {
+    node = head_game[key];
+    key_t1 = hash(node->g->team1);
+    key_t2 = hash(node->g->team2);
+    node_t1 = head_team[key_t1];
+    node_t2 = head_team[key_t2];
+    while (strcmp(node_t1->t->name, node->g->team1) != 0)
+      node_t1 = node_t1->next;
+
+    while (strcmp(node_t2->t->name, node->g->team2) != 0)
+      node_t2 = node_t2->next;
+
+    if ((node->g->score1 > node->g->score2) && (score_1 < score_2))
     {
-      node = head_game[key];
-      key_t1 = hash(node->g->team1);
-      key_t2 = hash(node->g->team2);
-      node_t1 = head_team[key_t1];
-      node_t2 = head_team[key_t2];
-      while (strcmp(node_t1->t->name, node->g->team1) != 0)
-        node_t1 = node_t1->next;
-
-      while (strcmp(node_t2->t->name, node->g->team2) != 0)
-        node_t2 = node_t2->next;
-
-      if ((node->g->score1 > node->g->score2) && (score_1 < score_2))
+      node_t1->t->vict--;
+      node_t2->t->vict++;
+    }
+    else
+    {
+      if ((node->g->score1 < node->g->score2) && (score_1 > score_2))
       {
-        {
-          node_t1->t->vict--;
-          node_t2->t->vict++;
-        }
+        node_t1->t->vict++;
+        node_t2->t->vict--;
       }
       else
       {
-        if ((node->g->score1 < node->g->score2) && (score_1 > score_2))
+        if ((node->g->score1 > node->g->score2) && (score_1 == score_2))
         {
-          {
-            node_t1->t->vict++;
-            node_t2->t->vict--;
-          }
+          node_t1->t->vict--;
         }
         else
         {
-          if ((node->g->score1 > node->g->score2) && (score_1 == score_2))
+          if ((node->g->score1 < node->g->score2) && (score_1 == score_2))
           {
-            node_t1->t->vict--;
+            node_t2->t->vict--;
           }
           else
           {
-            if ((node->g->score1 < node->g->score2) && (score_1 == score_2))
+            if ((node->g->score1 == node->g->score2) && (score_1 > score_2))
             {
-              node_t2->t->vict--;
+              node_t1->t->vict++;
             }
             else
             {
-              if ((node->g->score1 == node->g->score2) && (score_1 > score_2))
+              if ((node->g->score1 == node->g->score2) && (score_1 < score_2))
               {
-                node_t1->t->vict++;
+                node_t2->t->vict++;
               }
               else
               {
-                if ((node->g->score1 == node->g->score2) && (score_1 < score_2))
-                {
-                  node_t2->t->vict++;
-                }
-                else
-                {
-                  
-                }
-
+                
               }
 
             }
@@ -655,12 +612,13 @@ void change_score(char input[3500], int nl)
 
       }
 
-      while (strcmp(node->g->name, game_name) != 0)
-        node = node->next;
-
-      node->g->score1 = score_1;
-      node->g->score2 = score_2;
     }
+
+    while (strcmp(node->g->name, game_name) != 0)
+      node = node->next;
+
+    node->g->score1 = score_1;
+    node->g->score2 = score_2;
   }
 
 }
@@ -683,13 +641,11 @@ void add_team(char input[3500], int nl)
   }
   else
   {
-    {
-      team->name = malloc((sizeof(char)) * (strlen(team_name) + 1));
-      strcpy(team->name, team_name);
-      team->vict = 0;
-      ht_insert_team(team, key);
-      insert_ord_teams(team);
-    }
+    team->name = malloc((sizeof(char)) * (strlen(team_name) + 1));
+    strcpy(team->name, team_name);
+    team->vict = 0;
+    ht_insert_team(team, key);
+    insert_ord_teams(team);
   }
 
 }
@@ -713,9 +669,7 @@ void find_team(char input[3500], int nl)
   }
   else
   {
-    {
-      printf("%d %s %d\n", nl, node->t->name, node->t->vict);
-    }
+    printf("%d %s %d\n", nl, node->t->name, node->t->vict);
   }
 
 }
@@ -726,18 +680,16 @@ void list_teams(int nl)
   int score_max;
   if (head_ord_teams != 0)
   {
+    MergeSort(&head_ord_teams);
+    ptr = head_ord_teams;
+    printf("%d Melhores %d\n", nl, ptr->t->vict);
+    score_max = ptr->t->vict;
+    while ((ptr != 0) && (ptr->t->vict == score_max))
     {
-      MergeSort(&head_ord_teams);
-      ptr = head_ord_teams;
-      printf("%d Melhores %d\n", nl, ptr->t->vict);
-      score_max = ptr->t->vict;
-      while ((ptr != 0) && (ptr->t->vict == score_max))
-      {
-        printf("%d * %s\n", nl, ptr->t->name);
-        ptr = ptr->next;
-      }
-
+      printf("%d * %s\n", nl, ptr->t->name);
+      ptr = ptr->next;
     }
+
   }
   else
   {

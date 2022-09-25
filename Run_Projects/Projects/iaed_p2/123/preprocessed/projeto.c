@@ -52,9 +52,7 @@ Equipa *procuraequipa(hash_tabela *hashtabela, char *nome)
   {
     if (strcmp(entrada->nome, nome) == 0)
     {
-      {
-        return entrada;
-      }
+      return entrada;
     }
     else
     {
@@ -73,20 +71,16 @@ void hash_adicionarequipa(hash_tabela *hashtabela, char *nome, int linha)
   Equipa *entrada;
   if (procuraequipa(hashtabela, nome) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", linha);
-    }
+    printf("%d Equipa existente.\n", linha);
   }
   else
   {
-    {
-      entrada = malloc(sizeof(Equipa));
-      entrada->nome = (char *) malloc((sizeof(char)) * (strlen(nome) + 1));
-      strcpy(entrada->nome, nome);
-      entrada->vitorias = 0;
-      entrada->next = hashtabela->entradas[indice];
-      hashtabela->entradas[indice] = entrada;
-    }
+    entrada = malloc(sizeof(Equipa));
+    entrada->nome = (char *) malloc((sizeof(char)) * (strlen(nome) + 1));
+    strcpy(entrada->nome, nome);
+    entrada->vitorias = 0;
+    entrada->next = hashtabela->entradas[indice];
+    hashtabela->entradas[indice] = entrada;
   }
 
 }
@@ -141,9 +135,7 @@ Jogo *procurajogo(hash_tabela_jogo *hashtabela, char *nome)
   {
     if (strcmp(entrada->nome, nome) == 0)
     {
-      {
-        return entrada;
-      }
+      return entrada;
     }
     else
     {
@@ -162,60 +154,48 @@ void hash_adicionarjogo(hash_tabela_jogo *hashtabela, hash_tabela *hashtabelaequ
   Jogo *entrada;
   if (procurajogo(hashtabela, nome) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", linha);
-    }
+    printf("%d Jogo existente.\n", linha);
   }
   else
   {
+    if ((procuraequipa(hashtabelaequipas, equipa1) == 0) || (procuraequipa(hashtabelaequipas, equipa2) == 0))
     {
-      if ((procuraequipa(hashtabelaequipas, equipa1) == 0) || (procuraequipa(hashtabelaequipas, equipa2) == 0))
+      printf("%d Equipa inexistente.\n", linha);
+    }
+    else
+    {
+      entrada = malloc(sizeof(Jogo));
+      entrada->nome = (char *) malloc((sizeof(char)) * (strlen(nome) + 1));
+      entrada->equipa1 = (char *) malloc((sizeof(char)) * (strlen(equipa1) + 1));
+      entrada->equipa2 = (char *) malloc((sizeof(char)) * (strlen(equipa2) + 1));
+      strcpy(entrada->nome, nome);
+      strcpy(entrada->equipa1, equipa1);
+      strcpy(entrada->equipa2, equipa2);
+      entrada->score1 = score1;
+      entrada->score2 = score2;
+      if (score1 > score2)
       {
-        {
-          printf("%d Equipa inexistente.\n", linha);
-        }
+        adicionavitoria(hashtabelaequipas, equipa1);
       }
       else
       {
+        if (score2 > score1)
         {
-          entrada = malloc(sizeof(Jogo));
-          entrada->nome = (char *) malloc((sizeof(char)) * (strlen(nome) + 1));
-          entrada->equipa1 = (char *) malloc((sizeof(char)) * (strlen(equipa1) + 1));
-          entrada->equipa2 = (char *) malloc((sizeof(char)) * (strlen(equipa2) + 1));
-          strcpy(entrada->nome, nome);
-          strcpy(entrada->equipa1, equipa1);
-          strcpy(entrada->equipa2, equipa2);
-          entrada->score1 = score1;
-          entrada->score2 = score2;
-          if (score1 > score2)
-          {
-            {
-              adicionavitoria(hashtabelaequipas, equipa1);
-            }
-          }
-          else
-          {
-            if (score2 > score1)
-            {
-              {
-                adicionavitoria(hashtabelaequipas, equipa2);
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-          entrada->prox = hashtabela->entradasj[indice];
-          hashtabela->entradasj[indice] = entrada;
-          vetor[contador_vetor] = *entrada;
-          contador_vetor++;
+          adicionavitoria(hashtabelaequipas, equipa2);
         }
+        else
+        {
+          
+        }
+
       }
 
+      entrada->prox = hashtabela->entradasj[indice];
+      hashtabela->entradasj[indice] = entrada;
+      vetor[contador_vetor] = *entrada;
+      contador_vetor++;
     }
+
   }
 
 }
@@ -239,45 +219,35 @@ void apagajogo(hash_tabela_jogo *hashtabelaj, hash_tabela *hashtabelaequipas, ch
   {
     if (strcmp(J->nome, nome) == 0)
     {
+      if (anterior != 0)
       {
-        if (anterior != 0)
-        {
-          {
-            anterior->prox = J->prox;
-          }
-        }
-        else
-        {
-          {
-            hashtabelaj->entradasj[indice] = J->prox;
-          }
-        }
-
-        if (J->score1 > J->score2)
-        {
-          {
-            retiravitoria(hashtabelaequipas, J->equipa1);
-          }
-        }
-        else
-        {
-          if (J->score2 > J->score1)
-          {
-            {
-              retiravitoria(hashtabelaequipas, J->equipa2);
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-        free(J->nome);
-        free(J->equipa1);
-        free(J->equipa2);
+        anterior->prox = J->prox;
       }
+      else
+      {
+        hashtabelaj->entradasj[indice] = J->prox;
+      }
+
+      if (J->score1 > J->score2)
+      {
+        retiravitoria(hashtabelaequipas, J->equipa1);
+      }
+      else
+      {
+        if (J->score2 > J->score1)
+        {
+          retiravitoria(hashtabelaequipas, J->equipa2);
+        }
+        else
+        {
+          
+        }
+
+      }
+
+      free(J->nome);
+      free(J->equipa1);
+      free(J->equipa2);
     }
     else
     {
@@ -295,10 +265,8 @@ void alterascore(hash_tabela_jogo *hashtabelaj, hash_tabela *hashtabelaequipas, 
   Jogo *J = procurajogo(hashtabelaj, nome);
   if ((J->score1 > J->score2) && (score2 > score1))
   {
-    {
-      retiravitoria(hashtabelaequipas, J->equipa1);
-      adicionavitoria(hashtabelaequipas, J->equipa2);
-    }
+    retiravitoria(hashtabelaequipas, J->equipa1);
+    adicionavitoria(hashtabelaequipas, J->equipa2);
   }
   else
   {
@@ -307,42 +275,32 @@ void alterascore(hash_tabela_jogo *hashtabelaj, hash_tabela *hashtabelaequipas, 
 
   if ((J->score1 > J->score2) && (score2 == score1))
   {
-    {
-      retiravitoria(hashtabelaequipas, J->equipa1);
-    }
+    retiravitoria(hashtabelaequipas, J->equipa1);
   }
   else
   {
     if ((J->score1 == J->score2) && (score2 > score1))
     {
-      {
-        adicionavitoria(hashtabelaequipas, J->equipa2);
-      }
+      adicionavitoria(hashtabelaequipas, J->equipa2);
     }
     else
     {
       if ((J->score1 == J->score2) && (score1 > score2))
       {
-        {
-          adicionavitoria(hashtabelaequipas, J->equipa1);
-        }
+        adicionavitoria(hashtabelaequipas, J->equipa1);
       }
       else
       {
         if ((J->score1 < J->score2) && (score1 > score2))
         {
-          {
-            retiravitoria(hashtabelaequipas, J->equipa2);
-            adicionavitoria(hashtabelaequipas, J->equipa1);
-          }
+          retiravitoria(hashtabelaequipas, J->equipa2);
+          adicionavitoria(hashtabelaequipas, J->equipa1);
         }
         else
         {
           if ((J->score1 < J->score2) && (score1 == score2))
           {
-            {
-              retiravitoria(hashtabelaequipas, J->equipa2);
-            }
+            retiravitoria(hashtabelaequipas, J->equipa2);
           }
           else
           {
@@ -430,15 +388,11 @@ int main()
         J = procurajogo(hashtabelaj, nome);
         if (J == 0)
       {
-        {
-          printf("%d Jogo inexistente.\n", linha);
-        }
+        printf("%d Jogo inexistente.\n", linha);
       }
       else
       {
-        {
-          printf("%d %s %s %s %d %d\n", linha, J->nome, J->equipa1, J->equipa2, J->score1, J->score2);
-        }
+        printf("%d %s %s %s %d %d\n", linha, J->nome, J->equipa1, J->equipa2, J->score1, J->score2);
       }
 
         break;
@@ -454,15 +408,11 @@ int main()
         E = procuraequipa(hashtabela, nome);
         if (E == 0)
       {
-        {
-          printf("%d Equipa inexistente.\n", linha);
-        }
+        printf("%d Equipa inexistente.\n", linha);
       }
       else
       {
-        {
-          printf("%d %s %d\n", linha, E->nome, E->vitorias);
-        }
+        printf("%d %s %d\n", linha, E->nome, E->vitorias);
       }
 
         procuraequipa(hashtabela, nome);
@@ -478,15 +428,11 @@ int main()
         nome[10 - 1] = '\0';
         if (procurajogo(hashtabelaj, nome) == 0)
       {
-        {
-          printf("%d Jogo inexistente.\n", linha);
-        }
+        printf("%d Jogo inexistente.\n", linha);
       }
       else
       {
-        {
-          apagajogo(hashtabelaj, hashtabela, nome);
-        }
+        apagajogo(hashtabelaj, hashtabela, nome);
       }
 
         break;
@@ -503,15 +449,11 @@ int main()
         score2 = new_sym_var(sizeof(int) * 8);
         if (procurajogo(hashtabelaj, nome) == 0)
       {
-        {
-          printf("%d Jogo inexistente.\n", linha);
-        }
+        printf("%d Jogo inexistente.\n", linha);
       }
       else
       {
-        {
-          alterascore(hashtabelaj, hashtabela, nome, score1, score2);
-        }
+        alterascore(hashtabelaj, hashtabela, nome, score1, score2);
       }
 
         break;

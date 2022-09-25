@@ -57,11 +57,9 @@ void ptr_ord_jogo(ptr_jogo fila, ptr_jogo ptr)
     {
       if (elem->next == 0)
       {
-        {
-          elem->next = ptr;
-          ptr->last = elem;
-          return;
-        }
+        elem->next = ptr;
+        ptr->last = elem;
+        return;
       }
       else
       {
@@ -79,13 +77,11 @@ void ptr_ord_jogo(ptr_jogo fila, ptr_jogo ptr)
     {
       if ((anterior < 0) && (proximo > 0))
       {
-        {
-          ptr->next = elem->next;
-          elem->next = ptr;
-          ptr->next->last = ptr;
-          ptr->last = elem;
-          return;
-        }
+        ptr->next = elem->next;
+        elem->next = ptr;
+        ptr->next->last = ptr;
+        ptr->last = elem;
+        return;
       }
       else
       {
@@ -106,9 +102,7 @@ ptr_jogo percorre_fila(ptr_jogo elem, char *nome)
   {
     if (strcmp(elem->nome, nome) == 0)
     {
-      {
-        return elem;
-      }
+      return elem;
     }
     else
     {
@@ -133,21 +127,17 @@ void add_jogo_lista(ptr_jogo *head, ptr_jogo *tail, ptr_jogo jogo)
 {
   if (head[0] == 0)
   {
-    {
-      head[0] = jogo;
-      return;
-    }
+    head[0] = jogo;
+    return;
   }
   else
   {
     if (head[0]->next_ordem == 0)
     {
-      {
-        tail[0] = jogo;
-        head[0]->next_ordem = tail[0];
-        tail[0]->last_ordem = head[0];
-        return;
-      }
+      tail[0] = jogo;
+      head[0]->next_ordem = tail[0];
+      tail[0]->last_ordem = head[0];
+      return;
     }
     else
     {
@@ -166,59 +156,49 @@ void remove_jogo_lista(ptr_jogo *head, ptr_jogo *tail, ptr_jogo jogo)
 {
   if (head[0] == jogo)
   {
+    if (head[0]->next_ordem == 0)
     {
-      if (head[0]->next_ordem == 0)
+      head[0] = 0;
+      return;
+    }
+    else
+    {
+      if (head[0]->next_ordem == tail[0])
       {
-        {
-          head[0] = 0;
-          return;
-        }
+        head[0] = tail[0];
+        head[0]->last_ordem = 0;
+        tail[0] = 0;
+        return;
       }
       else
       {
-        if (head[0]->next_ordem == tail[0])
-        {
-          {
-            head[0] = tail[0];
-            head[0]->last_ordem = 0;
-            tail[0] = 0;
-            return;
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      head[0] = head[0]->next_ordem;
-      head[0]->last_ordem = 0;
-      return;
     }
+
+    head[0] = head[0]->next_ordem;
+    head[0]->last_ordem = 0;
+    return;
   }
   else
   {
     if (tail[0] == jogo)
     {
+      if (tail[0]->last_ordem == head[0])
       {
-        if (tail[0]->last_ordem == head[0])
-        {
-          {
-            head[0]->next_ordem = 0;
-            tail[0] = 0;
-            return;
-          }
-        }
-        else
-        {
-          
-        }
-
-        tail[0] = tail[0]->last_ordem;
-        tail[0]->next_ordem = 0;
+        head[0]->next_ordem = 0;
+        tail[0] = 0;
         return;
       }
+      else
+      {
+        
+      }
+
+      tail[0] = tail[0]->last_ordem;
+      tail[0]->next_ordem = 0;
+      return;
     }
     else
     {
@@ -271,11 +251,9 @@ void novo_jogo(int NL, ptr_jogo *h_jogo, ptr_equipa *h_equipa, int j, int e, ptr
   aux = percorre_fila(h_jogo[h_indice_j], ptr_j->nome);
   if ((h_jogo[h_indice_j] != 0) && (aux != 0))
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-      free_jogo(ptr_j);
-      return;
-    }
+    printf("%d Jogo existente.\n", NL);
+    free_jogo(ptr_j);
+    return;
   }
   else
   {
@@ -286,11 +264,9 @@ void novo_jogo(int NL, ptr_jogo *h_jogo, ptr_equipa *h_equipa, int j, int e, ptr
   p_equipa1 = devolve_ptr_e(h_equipa[h_indice_e], n_equipa1);
   if (p_equipa1 == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      free_jogo(ptr_j);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    free_jogo(ptr_j);
+    return;
   }
   else
   {
@@ -302,11 +278,9 @@ void novo_jogo(int NL, ptr_jogo *h_jogo, ptr_equipa *h_equipa, int j, int e, ptr
   p_equipa2 = devolve_ptr_e(h_equipa[h_indice_e], n_equipa2);
   if (p_equipa2 == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      free_jogo(ptr_j);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    free_jogo(ptr_j);
+    return;
   }
   else
   {
@@ -322,106 +296,49 @@ void novo_jogo(int NL, ptr_jogo *h_jogo, ptr_equipa *h_equipa, int j, int e, ptr
   ptr_j->last_ordem = 0;
   if (h_jogo[h_indice_j] == 0)
   {
+    h_jogo[h_indice_j] = ptr_j;
+    add_jogo_lista(head_jogo, tail_jogo, ptr_j);
+    if (score1 < score2)
     {
-      h_jogo[h_indice_j] = ptr_j;
-      add_jogo_lista(head_jogo, tail_jogo, ptr_j);
-      if (score1 < score2)
+      ptr_j->equipa2->jogos_ganhos++;
+      altera_fila(head_equipa, tail_equipa, ptr_j->equipa2, 1);
+    }
+    else
+    {
+      if (score1 > score2)
       {
-        {
-          ptr_j->equipa2->jogos_ganhos++;
-          altera_fila(head_equipa, tail_equipa, ptr_j->equipa2, 1);
-        }
+        ptr_j->equipa1->jogos_ganhos++;
+        altera_fila(head_equipa, tail_equipa, ptr_j->equipa1, 1);
       }
       else
       {
-        if (score1 > score2)
-        {
-          {
-            ptr_j->equipa1->jogos_ganhos++;
-            altera_fila(head_equipa, tail_equipa, ptr_j->equipa1, 1);
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      return;
     }
+
+    return;
   }
   else
   {
     if ((h_jogo[h_indice_j] != 0) && (h_jogo[h_indice_j]->next == 0))
     {
+      if (strcmp(h_jogo[h_indice_j]->nome, ptr_j->nome) < 0)
       {
-        if (strcmp(h_jogo[h_indice_j]->nome, ptr_j->nome) < 0)
+        ptr_j->last = h_jogo[h_indice_j];
+        h_jogo[h_indice_j]->next = ptr_j;
+        add_jogo_lista(head_jogo, tail_jogo, ptr_j);
+        if (score1 < score2)
         {
-          {
-            ptr_j->last = h_jogo[h_indice_j];
-            h_jogo[h_indice_j]->next = ptr_j;
-            add_jogo_lista(head_jogo, tail_jogo, ptr_j);
-            if (score1 < score2)
-            {
-              {
-                ptr_j->equipa2->jogos_ganhos++;
-                altera_fila(head_equipa, tail_equipa, ptr_j->equipa2, 1);
-              }
-            }
-            else
-            {
-              if (score1 > score2)
-              {
-                {
-                  ptr_j->equipa1->jogos_ganhos++;
-                  altera_fila(head_equipa, tail_equipa, ptr_j->equipa1, 1);
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-            return;
-          }
+          ptr_j->equipa2->jogos_ganhos++;
+          altera_fila(head_equipa, tail_equipa, ptr_j->equipa2, 1);
         }
         else
         {
-          if (strcmp(h_jogo[h_indice_j]->nome, ptr_j->nome) > 0)
+          if (score1 > score2)
           {
-            {
-              h_jogo[h_indice_j]->last = ptr_j;
-              ptr_j->next = h_jogo[h_indice_j];
-              h_jogo[h_indice_j] = ptr_j;
-              add_jogo_lista(head_jogo, tail_jogo, ptr_j);
-              if (score1 < score2)
-              {
-                {
-                  ptr_j->equipa2->jogos_ganhos++;
-                  altera_fila(head_equipa, tail_equipa, ptr_j->equipa2, 1);
-                }
-              }
-              else
-              {
-                if (score1 > score2)
-                {
-                  {
-                    ptr_j->equipa1->jogos_ganhos++;
-                    altera_fila(head_equipa, tail_equipa, ptr_j->equipa1, 1);
-                  }
-                }
-                else
-                {
-                  
-                }
-
-              }
-
-              return;
-            }
+            ptr_j->equipa1->jogos_ganhos++;
+            altera_fila(head_equipa, tail_equipa, ptr_j->equipa1, 1);
           }
           else
           {
@@ -430,12 +347,11 @@ void novo_jogo(int NL, ptr_jogo *h_jogo, ptr_equipa *h_equipa, int j, int e, ptr
 
         }
 
+        return;
       }
-    }
-    else
-    {
-      if (strcmp(h_jogo[h_indice_j]->nome, ptr_j->nome) > 0)
+      else
       {
+        if (strcmp(h_jogo[h_indice_j]->nome, ptr_j->nome) > 0)
         {
           h_jogo[h_indice_j]->last = ptr_j;
           ptr_j->next = h_jogo[h_indice_j];
@@ -443,19 +359,15 @@ void novo_jogo(int NL, ptr_jogo *h_jogo, ptr_equipa *h_equipa, int j, int e, ptr
           add_jogo_lista(head_jogo, tail_jogo, ptr_j);
           if (score1 < score2)
           {
-            {
-              ptr_j->equipa2->jogos_ganhos++;
-              altera_fila(head_equipa, tail_equipa, ptr_j->equipa2, 1);
-            }
+            ptr_j->equipa2->jogos_ganhos++;
+            altera_fila(head_equipa, tail_equipa, ptr_j->equipa2, 1);
           }
           else
           {
             if (score1 > score2)
             {
-              {
-                ptr_j->equipa1->jogos_ganhos++;
-                altera_fila(head_equipa, tail_equipa, ptr_j->equipa1, 1);
-              }
+              ptr_j->equipa1->jogos_ganhos++;
+              altera_fila(head_equipa, tail_equipa, ptr_j->equipa1, 1);
             }
             else
             {
@@ -466,36 +378,66 @@ void novo_jogo(int NL, ptr_jogo *h_jogo, ptr_equipa *h_equipa, int j, int e, ptr
 
           return;
         }
-      }
-      else
-      {
+        else
         {
-          ptr_ord_jogo(h_jogo[h_indice_j], ptr_j);
-          add_jogo_lista(head_jogo, tail_jogo, ptr_j);
-          if (score1 < score2)
+          
+        }
+
+      }
+
+    }
+    else
+    {
+      if (strcmp(h_jogo[h_indice_j]->nome, ptr_j->nome) > 0)
+      {
+        h_jogo[h_indice_j]->last = ptr_j;
+        ptr_j->next = h_jogo[h_indice_j];
+        h_jogo[h_indice_j] = ptr_j;
+        add_jogo_lista(head_jogo, tail_jogo, ptr_j);
+        if (score1 < score2)
+        {
+          ptr_j->equipa2->jogos_ganhos++;
+          altera_fila(head_equipa, tail_equipa, ptr_j->equipa2, 1);
+        }
+        else
+        {
+          if (score1 > score2)
           {
-            {
-              ptr_j->equipa2->jogos_ganhos++;
-              altera_fila(head_equipa, tail_equipa, ptr_j->equipa2, 1);
-            }
+            ptr_j->equipa1->jogos_ganhos++;
+            altera_fila(head_equipa, tail_equipa, ptr_j->equipa1, 1);
           }
           else
           {
-            if (score1 > score2)
-            {
-              {
-                ptr_j->equipa1->jogos_ganhos++;
-                altera_fila(head_equipa, tail_equipa, ptr_j->equipa1, 1);
-              }
-            }
-            else
-            {
-              
-            }
-
+            
           }
 
         }
+
+        return;
+      }
+      else
+      {
+        ptr_ord_jogo(h_jogo[h_indice_j], ptr_j);
+        add_jogo_lista(head_jogo, tail_jogo, ptr_j);
+        if (score1 < score2)
+        {
+          ptr_j->equipa2->jogos_ganhos++;
+          altera_fila(head_equipa, tail_equipa, ptr_j->equipa2, 1);
+        }
+        else
+        {
+          if (score1 > score2)
+          {
+            ptr_j->equipa1->jogos_ganhos++;
+            altera_fila(head_equipa, tail_equipa, ptr_j->equipa1, 1);
+          }
+          else
+          {
+            
+          }
+
+        }
+
       }
 
     }
@@ -520,10 +462,8 @@ void procura_jogo(int NL, ptr_jogo *h_jogo, int j)
   elem = percorre_fila(elem, nome_j);
   if (elem != 0)
   {
-    {
-      printf("%d %s %s %s %d %d\n", NL, elem->nome, elem->equipa1->nome, elem->equipa2->nome, elem->score1, elem->score2);
-      return;
-    }
+    printf("%d %s %s %s %d %d\n", NL, elem->nome, elem->equipa1->nome, elem->equipa2->nome, elem->score1, elem->score2);
+    return;
   }
   else
   {
@@ -552,80 +492,68 @@ void r_jogo(int NL, ptr_jogo *h_jogo, ptr_jogo *head_jogo, ptr_jogo *tail_jogo, 
   elem = percorre_fila(elem, nome_j);
   if (elem != 0)
   {
+    if (elem->score1 < elem->score2)
     {
-      if (elem->score1 < elem->score2)
+      elem->equipa2->jogos_ganhos--;
+      altera_fila(head_equipa, tail_equipa, elem->equipa2, 0);
+    }
+    else
+    {
+      if (elem->score1 > elem->score2)
       {
-        {
-          elem->equipa2->jogos_ganhos--;
-          altera_fila(head_equipa, tail_equipa, elem->equipa2, 0);
-        }
+        elem->equipa1->jogos_ganhos--;
+        altera_fila(head_equipa, tail_equipa, elem->equipa1, 0);
       }
       else
       {
-        if (elem->score1 > elem->score2)
-        {
-          {
-            elem->equipa1->jogos_ganhos--;
-            altera_fila(head_equipa, tail_equipa, elem->equipa1, 0);
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      if (elem == h_jogo[h_indice])
-      {
-        {
-          if (elem->next == 0)
-          {
-            {
-              remove_jogo_lista(head_jogo, tail_jogo, elem);
-              free_jogo(elem);
-              h_jogo[h_indice] = 0;
-              return;
-            }
-          }
-          else
-          {
-            
-          }
+    }
 
-          remove_jogo_lista(head_jogo, tail_jogo, elem);
-          h_jogo[h_indice] = elem->next;
-          h_jogo[h_indice]->last = 0;
-          free_jogo(elem);
-          return;
-        }
+    if (elem == h_jogo[h_indice])
+    {
+      if (elem->next == 0)
+      {
+        remove_jogo_lista(head_jogo, tail_jogo, elem);
+        free_jogo(elem);
+        h_jogo[h_indice] = 0;
+        return;
       }
       else
       {
-        if (elem->next == 0)
-        {
-          {
-            remove_jogo_lista(head_jogo, tail_jogo, elem);
-            elem->last->next = 0;
-            free_jogo(elem);
-            return;
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
       remove_jogo_lista(head_jogo, tail_jogo, elem);
-      anterior = elem->last;
-      proximo = elem->next;
-      anterior->next = proximo;
-      proximo->last = anterior;
+      h_jogo[h_indice] = elem->next;
+      h_jogo[h_indice]->last = 0;
       free_jogo(elem);
       return;
     }
+    else
+    {
+      if (elem->next == 0)
+      {
+        remove_jogo_lista(head_jogo, tail_jogo, elem);
+        elem->last->next = 0;
+        free_jogo(elem);
+        return;
+      }
+      else
+      {
+        
+      }
+
+    }
+
+    remove_jogo_lista(head_jogo, tail_jogo, elem);
+    anterior = elem->last;
+    proximo = elem->next;
+    anterior->next = proximo;
+    proximo->last = anterior;
+    free_jogo(elem);
+    return;
   }
   else
   {
@@ -656,98 +584,45 @@ void altera_score(int NL, ptr_jogo *h_jogo, int j, ptr_equipa *head, ptr_equipa 
   elem = percorre_fila(elem, nome_j);
   if (elem != 0)
   {
+    if (elem->score1 == elem->score2)
     {
-      if (elem->score1 == elem->score2)
+      if (score1 > score2)
       {
-        {
-          if (score1 > score2)
-          {
-            {
-              elem->equipa1->jogos_ganhos++;
-              altera_fila(head, tail, elem->equipa1, 1);
-            }
-          }
-          else
-          {
-            if (score1 < score2)
-            {
-              {
-                elem->equipa2->jogos_ganhos++;
-                altera_fila(head, tail, elem->equipa2, 1);
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-        }
+        elem->equipa1->jogos_ganhos++;
+        altera_fila(head, tail, elem->equipa1, 1);
       }
       else
       {
-        if (elem->score1 > elem->score2)
+        if (score1 < score2)
         {
-          {
-            if (score1 == score2)
-            {
-              {
-                elem->equipa1->jogos_ganhos--;
-                altera_fila(head, tail, elem->equipa1, 0);
-              }
-            }
-            else
-            {
-              if (score1 < score2)
-              {
-                {
-                  elem->equipa1->jogos_ganhos--;
-                  altera_fila(head, tail, elem->equipa1, 0);
-                  elem->equipa2->jogos_ganhos++;
-                  altera_fila(head, tail, elem->equipa2, 1);
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-          }
+          elem->equipa2->jogos_ganhos++;
+          altera_fila(head, tail, elem->equipa2, 1);
         }
         else
         {
-          if (elem->score1 < elem->score2)
+          
+        }
+
+      }
+
+    }
+    else
+    {
+      if (elem->score1 > elem->score2)
+      {
+        if (score1 == score2)
+        {
+          elem->equipa1->jogos_ganhos--;
+          altera_fila(head, tail, elem->equipa1, 0);
+        }
+        else
+        {
+          if (score1 < score2)
           {
-            {
-              if (score1 == score2)
-              {
-                {
-                  elem->equipa2->jogos_ganhos--;
-                  altera_fila(head, tail, elem->equipa2, 0);
-                }
-              }
-              else
-              {
-                if (score1 > score2)
-                {
-                  {
-                    elem->equipa2->jogos_ganhos--;
-                    altera_fila(head, tail, elem->equipa2, 0);
-                    elem->equipa1->jogos_ganhos++;
-                    altera_fila(head, tail, elem->equipa1, 1);
-                  }
-                }
-                else
-                {
-                  
-                }
-
-              }
-
-            }
+            elem->equipa1->jogos_ganhos--;
+            altera_fila(head, tail, elem->equipa1, 0);
+            elem->equipa2->jogos_ganhos++;
+            altera_fila(head, tail, elem->equipa2, 1);
           }
           else
           {
@@ -757,11 +632,44 @@ void altera_score(int NL, ptr_jogo *h_jogo, int j, ptr_equipa *head, ptr_equipa 
         }
 
       }
+      else
+      {
+        if (elem->score1 < elem->score2)
+        {
+          if (score1 == score2)
+          {
+            elem->equipa2->jogos_ganhos--;
+            altera_fila(head, tail, elem->equipa2, 0);
+          }
+          else
+          {
+            if (score1 > score2)
+            {
+              elem->equipa2->jogos_ganhos--;
+              altera_fila(head, tail, elem->equipa2, 0);
+              elem->equipa1->jogos_ganhos++;
+              altera_fila(head, tail, elem->equipa1, 1);
+            }
+            else
+            {
+              
+            }
 
-      elem->score1 = score1;
-      elem->score2 = score2;
-      return;
+          }
+
+        }
+        else
+        {
+          
+        }
+
+      }
+
     }
+
+    elem->score1 = score1;
+    elem->score2 = score2;
+    return;
   }
   else
   {

@@ -14,30 +14,24 @@ int compara_vitorias(const void *p, const void *q)
   int compara;
   if (((*b)->vitorias - (*a)->vitorias) == 0)
   {
+    compara = strcmp((*a)->nome, (*b)->nome);
+    if (compara < 0)
     {
-      compara = strcmp((*a)->nome, (*b)->nome);
-      if (compara < 0)
+      return -1;
+    }
+    else
+    {
+      if (compara > 0)
       {
-        {
-          return -1;
-        }
+        return 1;
       }
       else
       {
-        if (compara > 0)
-        {
-          {
-            return 1;
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
     }
+
   }
   else
   {
@@ -56,10 +50,8 @@ void ordenaEquipas(team_list *l, int num_equipas, int NL)
   Copy = malloc((sizeof(Equipa *)) * num_equipas);
   if (temp == 0)
   {
-    {
-      free(Copy);
-      return;
-    }
+    free(Copy);
+    return;
   }
   else
   {
@@ -79,9 +71,7 @@ void ordenaEquipas(team_list *l, int num_equipas, int NL)
   {
     if ((*(*(Copy + i))).vitorias != maior)
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {

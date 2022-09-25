@@ -172,33 +172,31 @@ void cria_jogo()
   {
     if (i && j)
     {
+      jogos = realloc(jogos, (sizeof(jogo)) * (n_jogos + 1));
+      jogos[n_jogos].nome = malloc((sizeof(char)) * (strlen(name) + 1));
+      strcpy(jogos[n_jogos].nome, name);
+      jogos[n_jogos].equipa1 = equipas[i - 1];
+      jogos[n_jogos].equipa2 = equipas[j - 1];
+      jogos[n_jogos].golos1 = score1;
+      jogos[n_jogos].golos2 = score2;
+      if (score1 > score2)
       {
-        jogos = realloc(jogos, (sizeof(jogo)) * (n_jogos + 1));
-        jogos[n_jogos].nome = malloc((sizeof(char)) * (strlen(name) + 1));
-        strcpy(jogos[n_jogos].nome, name);
-        jogos[n_jogos].equipa1 = equipas[i - 1];
-        jogos[n_jogos].equipa2 = equipas[j - 1];
-        jogos[n_jogos].golos1 = score1;
-        jogos[n_jogos].golos2 = score2;
-        if (score1 > score2)
+        equipas[i - 1].n_jogos_ganhos++;
+      }
+      else
+      {
+        if (score2 > score1)
         {
-          equipas[i - 1].n_jogos_ganhos++;
+          equipas[j - 1].n_jogos_ganhos++;
         }
         else
         {
-          if (score2 > score1)
-          {
-            equipas[j - 1].n_jogos_ganhos++;
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
-        n_jogos++;
       }
+
+      n_jogos++;
     }
     else
     {
@@ -243,29 +241,27 @@ void apaga_jogo()
   j = verifica_jogo(name, 1);
   if (j)
   {
+    if (jogos[j - 1].golos1 > jogos[j - 1].golos2)
     {
-      if (jogos[j - 1].golos1 > jogos[j - 1].golos2)
+      equipas[jogos[j - 1].equipa1.id].n_jogos_ganhos--;
+    }
+    else
+    {
+      if (jogos[j - 1].golos1 < jogos[j - 1].golos2)
       {
-        equipas[jogos[j - 1].equipa1.id].n_jogos_ganhos--;
+        equipas[jogos[j - 1].equipa2.id].n_jogos_ganhos--;
       }
       else
       {
-        if (jogos[j - 1].golos1 < jogos[j - 1].golos2)
-        {
-          equipas[jogos[j - 1].equipa2.id].n_jogos_ganhos--;
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      for (i = j - 1; i < (n_jogos - 1); i++)
-        jogos[i] = jogos[i + 1];
-
-      n_jogos--;
     }
+
+    for (i = j - 1; i < (n_jogos - 1); i++)
+      jogos[i] = jogos[i + 1];
+
+    n_jogos--;
   }
   else
   {
@@ -292,54 +288,43 @@ void altera_resultado()
   i = verifica_jogo(name, 1);
   if (i)
   {
+    if ((score1 >= score2) && (jogos[i - 1].golos2 >= jogos[i - 1].golos1))
     {
-      if ((score1 >= score2) && (jogos[i - 1].golos2 >= jogos[i - 1].golos1))
+      if (jogos[i - 1].golos2 > jogos[i - 1].golos1)
       {
-        {
-          if (jogos[i - 1].golos2 > jogos[i - 1].golos1)
-          {
-            equipas[jogos[i - 1].equipa2.id].n_jogos_ganhos--;
-          }
-          else
-          {
-            
-          }
-
-          if (score1 > score2)
-          {
-            equipas[jogos[i - 1].equipa1.id].n_jogos_ganhos++;
-          }
-          else
-          {
-            
-          }
-
-        }
+        equipas[jogos[i - 1].equipa2.id].n_jogos_ganhos--;
       }
       else
       {
-        if ((score2 >= score1) && (jogos[i - 1].golos1 >= jogos[i - 1].golos2))
+        
+      }
+
+      if (score1 > score2)
+      {
+        equipas[jogos[i - 1].equipa1.id].n_jogos_ganhos++;
+      }
+      else
+      {
+        
+      }
+
+    }
+    else
+    {
+      if ((score2 >= score1) && (jogos[i - 1].golos1 >= jogos[i - 1].golos2))
+      {
+        if (jogos[i - 1].golos1 > jogos[i - 1].golos2)
         {
-          {
-            if (jogos[i - 1].golos1 > jogos[i - 1].golos2)
-            {
-              equipas[jogos[i - 1].equipa1.id].n_jogos_ganhos--;
-            }
-            else
-            {
-              
-            }
+          equipas[jogos[i - 1].equipa1.id].n_jogos_ganhos--;
+        }
+        else
+        {
+          
+        }
 
-            if (score2 > score1)
-            {
-              equipas[jogos[i - 1].equipa2.id].n_jogos_ganhos++;
-            }
-            else
-            {
-              
-            }
-
-          }
+        if (score2 > score1)
+        {
+          equipas[jogos[i - 1].equipa2.id].n_jogos_ganhos++;
         }
         else
         {
@@ -347,10 +332,15 @@ void altera_resultado()
         }
 
       }
+      else
+      {
+        
+      }
 
-      jogos[i - 1].golos1 = score1;
-      jogos[i - 1].golos2 = score2;
     }
+
+    jogos[i - 1].golos1 = score1;
+    jogos[i - 1].golos2 = score2;
   }
   else
   {
@@ -369,14 +359,12 @@ void cria_equipa()
   }
   else
   {
-    {
-      equipas = realloc(equipas, (sizeof(equipa)) * (n_equipas + 1));
-      equipas[n_equipas].id = n_equipas;
-      equipas[n_equipas].nome_equipa = malloc((sizeof(char)) * (strlen(team_name) + 1));
-      strcpy(equipas[n_equipas].nome_equipa, team_name);
-      equipas[n_equipas].n_jogos_ganhos = 0;
-      n_equipas++;
-    }
+    equipas = realloc(equipas, (sizeof(equipa)) * (n_equipas + 1));
+    equipas[n_equipas].id = n_equipas;
+    equipas[n_equipas].nome_equipa = malloc((sizeof(char)) * (strlen(team_name) + 1));
+    strcpy(equipas[n_equipas].nome_equipa, team_name);
+    equipas[n_equipas].n_jogos_ganhos = 0;
+    n_equipas++;
   }
 
 }
@@ -433,11 +421,9 @@ void lista_melhores_equipas()
 
     if (equipas[i].n_jogos_ganhos == maior)
     {
-      {
-        cont++;
-        melhores_equipas = realloc(melhores_equipas, (sizeof(equipa)) * cont);
-        melhores_equipas[cont - 1] = equipas[i];
-      }
+      cont++;
+      melhores_equipas = realloc(melhores_equipas, (sizeof(equipa)) * cont);
+      melhores_equipas[cont - 1] = equipas[i];
     }
     else
     {
@@ -453,12 +439,10 @@ void lista_melhores_equipas()
     {
       if (strcmp(melhores_equipas[i].nome_equipa, melhores_equipas[i + 1].nome_equipa) > 0)
       {
-        {
-          aux = melhores_equipas[i];
-          melhores_equipas[i] = melhores_equipas[i + 1];
-          melhores_equipas[i + 1] = aux;
-          finish = 0;
-        }
+        aux = melhores_equipas[i];
+        melhores_equipas[i] = melhores_equipas[i + 1];
+        melhores_equipas[i + 1] = aux;
+        finish = 0;
       }
       else
       {

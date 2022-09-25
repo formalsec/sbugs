@@ -147,15 +147,11 @@ void AdicionaStock()
   idp_1 = Procura_Idp(idp1);
   if (s[idp_1].Quantidade >= 0)
   {
-    {
-      s[idp_1].Quantidade += qtd;
-    }
+    s[idp_1].Quantidade += qtd;
   }
   else
   {
-    {
-      printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idp1);
-    }
+    printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idp1);
   }
 
 }
@@ -173,28 +169,22 @@ void AdicionaProdutoEncomenda()
   idp_2 = Procura_Idp(idp2);
   if (ide1 >= ide)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp2, ide1);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp2, ide1);
+    return;
   }
   else
   {
     if (s[idp_2].Quantidade == (-1))
     {
-      {
-        printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp2, ide1);
-        return;
-      }
+      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp2, ide1);
+      return;
     }
     else
     {
       if (qtd1 > s[idp_2].Quantidade)
       {
-        {
-          printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp2, ide1);
-          return;
-        }
+        printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp2, ide1);
+        return;
       }
       else
       {
@@ -209,21 +199,17 @@ void AdicionaProdutoEncomenda()
   {
     if (t[ide1].Idp_qnt[0][i] == idp2)
     {
+      if ((t[ide1].Peso_total + (qtd1 * s[idp_2].Peso)) > 200)
       {
-        if ((t[ide1].Peso_total + (qtd1 * s[idp_2].Peso)) > 200)
-        {
-          {
-            printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp2, ide1);
-            return;
-          }
-        }
-        else
-        {
-          t[ide1].Peso_total += qtd1 * s[idp_2].Peso;
-        }
-
-        break;
+        printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp2, ide1);
+        return;
       }
+      else
+      {
+        t[ide1].Peso_total += qtd1 * s[idp_2].Peso;
+      }
+
+      break;
     }
     else
     {
@@ -240,19 +226,15 @@ void AdicionaProdutoEncomenda()
   {
     if ((t[ide1].Peso_total + (qtd1 * s[idp_2].Peso)) <= 200)
     {
-      {
-        t[ide1].Idp_qnt[0][t[ide1].Numero_produtos] = idp2;
-        t[ide1].Idp_qnt[1][t[ide1].Numero_produtos] = qtd1;
-        t[ide1].Peso_total += qtd1 * s[idp_2].Peso;
-        t[ide1].Numero_produtos++;
-      }
+      t[ide1].Idp_qnt[0][t[ide1].Numero_produtos] = idp2;
+      t[ide1].Idp_qnt[1][t[ide1].Numero_produtos] = qtd1;
+      t[ide1].Peso_total += qtd1 * s[idp_2].Peso;
+      t[ide1].Numero_produtos++;
     }
     else
     {
-      {
-        printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp2, ide1);
-        return;
-      }
+      printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp2, ide1);
+      return;
     }
 
   }
@@ -270,17 +252,15 @@ void RemoveStock()
   idp_3 = Procura_Idp(idp3);
   if (s[idp_3].Quantidade >= 0)
   {
+    if ((s[idp_3].Quantidade - qtd2) >= 0)
     {
-      if ((s[idp_3].Quantidade - qtd2) >= 0)
-      {
-        s[idp_3].Quantidade -= qtd2;
-      }
-      else
-      {
-        printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd2, idp3);
-      }
-
+      s[idp_3].Quantidade -= qtd2;
     }
+    else
+    {
+      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd2, idp3);
+    }
+
   }
   else
   {
@@ -300,35 +280,29 @@ void RemoveProdutoEncomenda()
   idp_4 = Procura_Idp(idp4);
   if (ide2 < ide)
   {
+    if (s[idp_4].Quantidade >= 0)
     {
-      if (s[idp_4].Quantidade >= 0)
+      for (i = 0; i < t[ide2].Numero_produtos; i++)
       {
+        if (t[ide2].Idp_qnt[0][i] == idp4)
         {
-          for (i = 0; i < t[ide2].Numero_produtos; i++)
-          {
-            if (t[ide2].Idp_qnt[0][i] == idp4)
-            {
-              {
-                s[idp_4].Quantidade += t[ide2].Idp_qnt[1][i];
-                t[ide2].Peso_total -= t[ide2].Idp_qnt[1][i] * s[idp_4].Peso;
-                t[ide2].Idp_qnt[1][i] = 0;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
+          s[idp_4].Quantidade += t[ide2].Idp_qnt[1][i];
+          t[ide2].Peso_total -= t[ide2].Idp_qnt[1][i] * s[idp_4].Peso;
+          t[ide2].Idp_qnt[1][i] = 0;
         }
-      }
-      else
-      {
-        printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp4, ide2);
+        else
+        {
+          
+        }
+
       }
 
     }
+    else
+    {
+      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp4, ide2);
+    }
+
   }
   else
   {
@@ -346,23 +320,21 @@ void CalculaCusto()
   ide3 = new_sym_var(sizeof(int) * 8);
   if (ide3 < ide)
   {
+    for (i = 0; i < t[ide3].Numero_produtos; i++)
     {
-      for (i = 0; i < t[ide3].Numero_produtos; i++)
+      j = Procura_Idp(t[ide3].Idp_qnt[0][i]);
+      if (j != idp)
       {
-        j = Procura_Idp(t[ide3].Idp_qnt[0][i]);
-        if (j != idp)
-        {
-          total += s[j].Preco * t[ide3].Idp_qnt[1][i];
-        }
-        else
-        {
-          
-        }
-
+        total += s[j].Preco * t[ide3].Idp_qnt[1][i];
+      }
+      else
+      {
+        
       }
 
-      printf("Custo da encomenda %d %d.\n", ide3, total);
     }
+
+    printf("Custo da encomenda %d %d.\n", ide3, total);
   }
   else
   {
@@ -382,9 +354,7 @@ void AlteraPrecoProduto()
   idp_5 = Procura_Idp(idp5);
   if (s[idp_5].Quantidade >= 0)
   {
-    {
-      s[idp_5].Preco = valor;
-    }
+    s[idp_5].Preco = valor;
   }
   else
   {
@@ -405,43 +375,37 @@ void ListaProdutoEncomenda()
   idp_6 = Procura_Idp(idp6);
   if (ide4 < ide)
   {
+    if (s[idp_6].Quantidade >= 0)
     {
-      if (s[idp_6].Quantidade >= 0)
+      for (i = 0; i < t[ide4].Numero_produtos; i++)
       {
+        if (t[ide4].Idp_qnt[0][i] == idp6)
         {
-          for (i = 0; i < t[ide4].Numero_produtos; i++)
-          {
-            if (t[ide4].Idp_qnt[0][i] == idp6)
-            {
-              {
-                in = 1;
-                printf("%s %d.\n", s[idp_6].Descricao, t[ide4].Idp_qnt[1][i]);
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-          if (!in)
-          {
-            printf("%s 0.\n", s[idp_6].Descricao);
-          }
-          else
-          {
-            
-          }
-
+          in = 1;
+          printf("%s %d.\n", s[idp_6].Descricao, t[ide4].Idp_qnt[1][i]);
         }
+        else
+        {
+          
+        }
+
+      }
+
+      if (!in)
+      {
+        printf("%s 0.\n", s[idp_6].Descricao);
       }
       else
       {
-        printf("Impossivel listar produto %d. Produto inexistente.\n", idp6);
+        
       }
 
     }
+    else
+    {
+      printf("Impossivel listar produto %d. Produto inexistente.\n", idp6);
+    }
+
   }
   else
   {
@@ -462,44 +426,25 @@ void ListaMaximoId()
   idp_7 = Procura_Idp(idp7);
   if (s[idp_7].Quantidade >= 0)
   {
+    if (ide != 0)
     {
-      if (ide != 0)
+      for (i = 0; i < ide; i++)
       {
+        for (j = 0; j < t[i].Numero_produtos; j++)
         {
-          for (i = 0; i < ide; i++)
+          if (t[i].Idp_qnt[0][j] == idp7)
           {
-            for (j = 0; j < t[i].Numero_produtos; j++)
+            if (t[i].Idp_qnt[1][j] > max_qnt)
             {
-              if (t[i].Idp_qnt[0][j] == idp7)
-              {
-                {
-                  if (t[i].Idp_qnt[1][j] > max_qnt)
-                  {
-                    {
-                      max_qnt = t[i].Idp_qnt[1][j];
-                      max_id = i;
-                    }
-                  }
-                  else
-                  {
-                    
-                  }
-
-                  break;
-                }
-              }
-              else
-              {
-                
-              }
-
+              max_qnt = t[i].Idp_qnt[1][j];
+              max_id = i;
+            }
+            else
+            {
+              
             }
 
-          }
-
-          if (max_qnt != 0)
-          {
-            printf("Maximo produto %d %d %d.\n", idp7, max_id, max_qnt);
+            break;
           }
           else
           {
@@ -507,6 +452,12 @@ void ListaMaximoId()
           }
 
         }
+
+      }
+
+      if (max_qnt != 0)
+      {
+        printf("Maximo produto %d %d %d.\n", idp7, max_id, max_qnt);
       }
       else
       {
@@ -514,6 +465,11 @@ void ListaMaximoId()
       }
 
     }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -581,13 +537,11 @@ int partition(int l, int r)
     if (i < j)
     {
       {
-        {
-          produto t = s[i];
-          s[i] = s[j];
-          s[j] = t;
-        }
-        ;
+        produto t = s[i];
+        s[i] = s[j];
+        s[j] = t;
       }
+      ;
     }
     else
     {
@@ -616,40 +570,20 @@ void ListaEncomendasOrdenadas()
   ide5 = new_sym_var(sizeof(int) * 8);
   if (ide5 < ide)
   {
+    for (i = 0; i < t[ide5].Numero_produtos; i++)
     {
-      for (i = 0; i < t[ide5].Numero_produtos; i++)
+      for (j = 0; j < ((t[ide5].Numero_produtos - i) - 1); j++)
       {
-        for (j = 0; j < ((t[ide5].Numero_produtos - i) - 1); j++)
+        pi = Procura_Idp(t[ide5].Idp_qnt[0][j]);
+        pj = Procura_Idp(t[ide5].Idp_qnt[0][j + 1]);
+        if (strcmp(s[pi].Descricao, s[pj].Descricao) > 0)
         {
-          pi = Procura_Idp(t[ide5].Idp_qnt[0][j]);
-          pj = Procura_Idp(t[ide5].Idp_qnt[0][j + 1]);
-          if (strcmp(s[pi].Descricao, s[pj].Descricao) > 0)
-          {
-            {
-              aux = t[ide5].Idp_qnt[0][j];
-              t[ide5].Idp_qnt[0][j] = t[ide5].Idp_qnt[0][j + 1];
-              t[ide5].Idp_qnt[0][j + 1] = aux;
-              aux = t[ide5].Idp_qnt[1][j];
-              t[ide5].Idp_qnt[1][j] = t[ide5].Idp_qnt[1][j + 1];
-              t[ide5].Idp_qnt[1][j + 1] = aux;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-      }
-
-      printf("Encomenda %d\n", ide5);
-      for (i = 0; i < t[ide5].Numero_produtos; i++)
-      {
-        j = Procura_Idp(t[ide5].Idp_qnt[0][i]);
-        if (t[ide5].Idp_qnt[1][i] != 0)
-        {
-          printf("* %s %d %d\n", s[j].Descricao, s[j].Preco, t[ide5].Idp_qnt[1][i]);
+          aux = t[ide5].Idp_qnt[0][j];
+          t[ide5].Idp_qnt[0][j] = t[ide5].Idp_qnt[0][j + 1];
+          t[ide5].Idp_qnt[0][j + 1] = aux;
+          aux = t[ide5].Idp_qnt[1][j];
+          t[ide5].Idp_qnt[1][j] = t[ide5].Idp_qnt[1][j + 1];
+          t[ide5].Idp_qnt[1][j + 1] = aux;
         }
         else
         {
@@ -659,12 +593,26 @@ void ListaEncomendasOrdenadas()
       }
 
     }
+
+    printf("Encomenda %d\n", ide5);
+    for (i = 0; i < t[ide5].Numero_produtos; i++)
+    {
+      j = Procura_Idp(t[ide5].Idp_qnt[0][i]);
+      if (t[ide5].Idp_qnt[1][i] != 0)
+      {
+        printf("* %s %d %d\n", s[j].Descricao, s[j].Preco, t[ide5].Idp_qnt[1][i]);
+      }
+      else
+      {
+        
+      }
+
+    }
+
   }
   else
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide5);
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide5);
   }
 
 }

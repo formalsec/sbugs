@@ -66,9 +66,7 @@ games *get_game(games **lst_games, char *name)
   {
     if (strcmp(head->name, name) == 0)
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {
@@ -84,17 +82,13 @@ int who_won(int score1, int score2)
 {
   if (score1 > score2)
   {
-    {
-      return 1;
-    }
+    return 1;
   }
   else
   {
     if (score2 > score1)
     {
-      {
-        return 2;
-      }
+      return 2;
     }
     else
     {
@@ -111,42 +105,32 @@ void remove_game(games **lst_games, games *game)
   games *head = lst_games[i];
   if ((strcmp(head->name, game->name) == 0) && (head->next == 0))
   {
-    {
-      lst_games[i] = 0;
-    }
+    lst_games[i] = 0;
   }
   else
   {
+    if (strcmp(head->name, game->name) == 0)
     {
-      if (strcmp(head->name, game->name) == 0)
-      {
-        {
-          lst_games[i] = game->next;
-        }
-      }
-      else
-      {
-        {
-          for (; head != 0; head = head->next)
-          {
-            if (strcmp(head->next->name, game->name) == 0)
-            {
-              {
-                break;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-          head->next = game->next;
-        }
-      }
-
+      lst_games[i] = game->next;
     }
+    else
+    {
+      for (; head != 0; head = head->next)
+      {
+        if (strcmp(head->next->name, game->name) == 0)
+        {
+          break;
+        }
+        else
+        {
+          
+        }
+
+      }
+
+      head->next = game->next;
+    }
+
   }
 
   free(game->name);

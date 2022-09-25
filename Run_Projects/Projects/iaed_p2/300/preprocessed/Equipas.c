@@ -43,19 +43,17 @@ pEquipa removeEquipaList(pEquipa head, char *nome)
   {
     if (strcmp(t->nome, nome) == 0)
     {
+      if (t == head)
       {
-        if (t == head)
-        {
-          head = t->next;
-        }
-        else
-        {
-          prev->next = t->next;
-        }
-
-        freeEquipa(t);
-        break;
+        head = t->next;
       }
+      else
+      {
+        prev->next = t->next;
+      }
+
+      freeEquipa(t);
+      break;
     }
     else
     {
@@ -74,9 +72,7 @@ pEquipa searchList(pEquipa head, char *nome)
   {
     if (strcmp(t->nome, nome) == 0)
     {
-      {
-        return t;
-      }
+      return t;
     }
     else
     {

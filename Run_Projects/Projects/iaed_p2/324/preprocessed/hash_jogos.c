@@ -17,21 +17,17 @@ void insert_new_node(node **head, jg_node *jg)
   new_node->next = 0;
   if ((*head) == 0)
   {
-    {
-      *head = new_node;
-    }
+    *head = new_node;
   }
   else
   {
+    current = *head;
+    while (current->next != 0)
     {
-      current = *head;
-      while (current->next != 0)
-      {
-        current = current->next;
-      }
-
-      current->next = new_node;
+      current = current->next;
     }
+
+    current->next = new_node;
   }
 
 }
@@ -42,19 +38,15 @@ void insert_into_table(node **hashtable, jg_node *jg)
   int location = get_location(jg->value);
   if (hashtable[location] == 0)
   {
-    {
-      head = 0;
-      insert_new_node(&head, jg);
-      hashtable[location] = head;
-    }
+    head = 0;
+    insert_new_node(&head, jg);
+    hashtable[location] = head;
   }
   else
   {
-    {
-      head = hashtable[location];
-      insert_new_node(&head, jg);
-      hashtable[location] = head;
-    }
+    head = hashtable[location];
+    insert_new_node(&head, jg);
+    hashtable[location] = head;
   }
 
 }

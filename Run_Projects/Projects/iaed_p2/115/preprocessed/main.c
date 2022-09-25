@@ -29,16 +29,12 @@ TeamsHash *adicionaEquipa(TeamsHash *HashT, int cont)
   i = verifyExistentTeam(HashT, eq1);
   if ((c > 0) && (i == (-1)))
   {
-    {
-      printf("%d Equipa existente.\n", cont);
-    }
+    printf("%d Equipa existente.\n", cont);
   }
   else
   {
-    {
-      newTNode = newTeam(eq1);
-      HashT = addTeam(HashT, i, newTNode);
-    }
+    newTNode = newTeam(eq1);
+    HashT = addTeam(HashT, i, newTNode);
   }
 
   free(eq1);
@@ -61,15 +57,11 @@ void procuraEquipa(TeamsHash *HashT, int cont)
   team = searchTeam(HashT, eq1);
   if (team == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", cont);
-    }
+    printf("%d Equipa inexistente.\n", cont);
   }
   else
   {
-    {
-      printf("%d %s %d\n", cont, team->name, team->wins);
-    }
+    printf("%d %s %d\n", cont, team->name, team->wins);
   }
 
   free(eq1);
@@ -115,37 +107,29 @@ GamesHash *adicionaJogo(GamesHash *HashG, TeamsHash *HashT, gameListP gameList, 
   free(jogo);
   if (a == (-1))
   {
-    {
-      printf("%d Jogo existente.\n", cont);
-    }
+    printf("%d Jogo existente.\n", cont);
   }
   else
   {
+    eq1 = (char *) malloc(((sizeof(char)) * strlen(nomeEq1)) + 1);
+    strcpy(eq1, nomeEq1);
+    eq2 = (char *) malloc(((sizeof(char)) * strlen(nomeEq2)) + 1);
+    strcpy(eq2, nomeEq2);
+    b = verifyExistentTeam(HashT, eq1);
+    d = verifyExistentTeam(HashT, eq2);
+    if ((b != (-1)) || (d != (-1)))
     {
-      eq1 = (char *) malloc(((sizeof(char)) * strlen(nomeEq1)) + 1);
-      strcpy(eq1, nomeEq1);
-      eq2 = (char *) malloc(((sizeof(char)) * strlen(nomeEq2)) + 1);
-      strcpy(eq2, nomeEq2);
-      b = verifyExistentTeam(HashT, eq1);
-      d = verifyExistentTeam(HashT, eq2);
-      if ((b != (-1)) || (d != (-1)))
-      {
-        {
-          printf("%d Equipa inexistente.\n", cont);
-        }
-      }
-      else
-      {
-        {
-          newGNode = newGame(HashT, nomeJogo, eq1, eq2, score1, score2);
-          HashG = addGameHash(HashG, a, newGNode);
-          addGameList(gameList, newGNode);
-        }
-      }
-
-      free(eq1);
-      free(eq2);
+      printf("%d Equipa inexistente.\n", cont);
     }
+    else
+    {
+      newGNode = newGame(HashT, nomeJogo, eq1, eq2, score1, score2);
+      HashG = addGameHash(HashG, a, newGNode);
+      addGameList(gameList, newGNode);
+    }
+
+    free(eq1);
+    free(eq2);
   }
 
   return HashG;
@@ -167,15 +151,11 @@ void procuraJogo(GamesHash *HashG, int cont)
   game = searchGame(HashG, jogo);
   if (game == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", cont);
-    }
+    printf("%d Jogo inexistente.\n", cont);
   }
   else
   {
-    {
-      printf("%d %s %s %s %d %d\n", cont, game->name, game->team1->name, game->team2->name, game->score1, game->score2);
-    }
+    printf("%d %s %s %s %d %d\n", cont, game->name, game->team1->name, game->team2->name, game->score1, game->score2);
   }
 
   free(jogo);
@@ -197,16 +177,12 @@ void apagaJogo(GamesHash *HashG, gameListP gameList, int cont)
   game = searchGame(HashG, jogo);
   if (game == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", cont);
-    }
+    printf("%d Jogo inexistente.\n", cont);
   }
   else
   {
-    {
-      removeWin(game);
-      deleteGame(gameList, HashG, jogo);
-    }
+    removeWin(game);
+    deleteGame(gameList, HashG, jogo);
   }
 
   free(jogo);
@@ -232,15 +208,11 @@ void alteraScore(GamesHash *HashG, int cont)
   a = verifyExistentGame(HashG, jogo);
   if (a != (-1))
   {
-    {
-      printf("%d Jogo inexistente.\n", cont);
-    }
+    printf("%d Jogo inexistente.\n", cont);
   }
   else
   {
-    {
-      changeScores(HashG, jogo, score1, score2);
-    }
+    changeScores(HashG, jogo, score1, score2);
   }
 
   free(jogo);
@@ -278,65 +250,49 @@ int main()
   {
     if (c == 'A')
     {
-      {
-        HashT = adicionaEquipa(HashT, cont);
-      }
+      HashT = adicionaEquipa(HashT, cont);
     }
     else
     {
       if (c == 'P')
       {
-        {
-          procuraEquipa(HashT, cont);
-        }
+        procuraEquipa(HashT, cont);
       }
       else
       {
         if (c == 'a')
         {
-          {
-            HashG = adicionaJogo(HashG, HashT, gameList, cont);
-          }
+          HashG = adicionaJogo(HashG, HashT, gameList, cont);
         }
         else
         {
           if (c == 'l')
           {
-            {
-              listGames(gameList, cont);
-            }
+            listGames(gameList, cont);
           }
           else
           {
             if (c == 'p')
             {
-              {
-                procuraJogo(HashG, cont);
-              }
+              procuraJogo(HashG, cont);
             }
             else
             {
               if (c == 'r')
               {
-                {
-                  apagaJogo(HashG, gameList, cont);
-                }
+                apagaJogo(HashG, gameList, cont);
               }
               else
               {
                 if (c == 's')
                 {
-                  {
-                    alteraScore(HashG, cont);
-                  }
+                  alteraScore(HashG, cont);
                 }
                 else
                 {
                   if (c == 'g')
                   {
-                    {
-                      vencedores(HashT, cont);
-                    }
+                    vencedores(HashT, cont);
                   }
                   else
                   {

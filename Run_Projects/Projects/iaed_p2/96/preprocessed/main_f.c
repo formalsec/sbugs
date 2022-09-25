@@ -16,20 +16,16 @@ void A(bloco_hash_equipa *table_e, bloco_hash_equipa *lista_e, int NL)
   nome_e[10 - 1] = '\0';
   if (procura_equipa_hash(table_e, nome_e) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-    }
+    printf("%d Equipa existente.\n", NL);
   }
   else
   {
-    {
-      e = malloc(sizeof(equipa));
-      e->nome = malloc((sizeof(char)) * (strlen(nome_e) + 1));
-      strcpy(e->nome, nome_e);
-      e->vitorias = 0;
-      guarda_lista_e(lista_e, e);
-      guarda_equipa_hash(table_e, e);
-    }
+    e = malloc(sizeof(equipa));
+    e->nome = malloc((sizeof(char)) * (strlen(nome_e) + 1));
+    strcpy(e->nome, nome_e);
+    e->vitorias = 0;
+    guarda_lista_e(lista_e, e);
+    guarda_equipa_hash(table_e, e);
   }
 
 }
@@ -67,52 +63,42 @@ void a(bloco_hash_jogo *table_j, bloco_hash_equipa *table_e, bloco_hash_jogo *li
   aux2 = procura_equipa_hash(table_e, equipa2);
   if (procura_jogo_hash(table_j, nome_j) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-    }
+    printf("%d Jogo existente.\n", NL);
   }
   else
   {
     if ((aux1 == 0) || (aux2 == 0))
     {
-      {
-        printf("%d Equipa inexistente.\n", NL);
-      }
+      printf("%d Equipa inexistente.\n", NL);
     }
     else
     {
+      jogo *j = malloc(sizeof(jogo));
+      j->nome = malloc((sizeof(char)) * (strlen(nome_j) + 1));
+      j->equipa1 = aux1;
+      j->equipa2 = aux2;
+      strcpy(j->nome, nome_j);
+      j->score1 = score1;
+      j->score2 = score2;
+      if (score1 > score2)
       {
-        jogo *j = malloc(sizeof(jogo));
-        j->nome = malloc((sizeof(char)) * (strlen(nome_j) + 1));
-        j->equipa1 = aux1;
-        j->equipa2 = aux2;
-        strcpy(j->nome, nome_j);
-        j->score1 = score1;
-        j->score2 = score2;
-        if (score1 > score2)
+        j->equipa1->vitorias += 1;
+      }
+      else
+      {
+        if (score1 < score2)
         {
-          {
-            j->equipa1->vitorias += 1;
-          }
+          j->equipa2->vitorias += 1;
         }
         else
         {
-          if (score1 < score2)
-          {
-            {
-              j->equipa2->vitorias += 1;
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
-        guarda_jogo_hash(table_j, j);
-        guarda_lista_ord(lista_ord_h, lista_ord_t, j);
       }
+
+      guarda_jogo_hash(table_j, j);
+      guarda_lista_ord(lista_ord_h, lista_ord_t, j);
     }
 
   }
@@ -132,15 +118,11 @@ void P(bloco_hash_equipa *table_e, int NL)
   aux = procura_equipa_hash(table_e, nome_e);
   if (aux == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-    }
+    printf("%d Equipa inexistente.\n", NL);
   }
   else
   {
-    {
-      printf("%d %s %d\n", NL, aux->nome, aux->vitorias);
-    }
+    printf("%d %s %d\n", NL, aux->nome, aux->vitorias);
   }
 
 }
@@ -158,15 +140,11 @@ void p(bloco_hash_jogo *table_j, int NL)
   aux = procura_jogo_hash(table_j, nome_j);
   if (aux == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
   else
   {
-    {
-      printf("%d %s %s %s %d %d\n", NL, aux->nome, aux->equipa1->nome, aux->equipa2->nome, aux->score1, aux->score2);
-    }
+    printf("%d %s %s %s %d %d\n", NL, aux->nome, aux->equipa1->nome, aux->equipa2->nome, aux->score1, aux->score2);
   }
 
 }
@@ -188,62 +166,50 @@ void s(bloco_hash_jogo *table_j, bloco_hash_equipa *table_e, int NL)
   aux = procura_jogo_hash(table_j, nome_j);
   if (aux == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
   else
   {
+    equipa *aux_e1;
+    equipa *aux_e2;
+    aux_e1 = procura_equipa_hash(table_e, aux->equipa1->nome);
+    aux_e2 = procura_equipa_hash(table_e, aux->equipa2->nome);
+    if (aux->score1 > aux->score2)
     {
-      equipa *aux_e1;
-      equipa *aux_e2;
-      aux_e1 = procura_equipa_hash(table_e, aux->equipa1->nome);
-      aux_e2 = procura_equipa_hash(table_e, aux->equipa2->nome);
-      if (aux->score1 > aux->score2)
-      {
-        {
-          aux_e1->vitorias--;
-        }
-      }
-      else
-      {
-        if (aux->score1 < aux->score2)
-        {
-          {
-            aux_e2->vitorias--;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      if (n_score1 > n_score2)
-      {
-        {
-          aux_e1->vitorias++;
-        }
-      }
-      else
-      {
-        if (n_score1 < n_score2)
-        {
-          {
-            aux_e2->vitorias++;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      aux->score1 = n_score1;
-      aux->score2 = n_score2;
+      aux_e1->vitorias--;
     }
+    else
+    {
+      if (aux->score1 < aux->score2)
+      {
+        aux_e2->vitorias--;
+      }
+      else
+      {
+        
+      }
+
+    }
+
+    if (n_score1 > n_score2)
+    {
+      aux_e1->vitorias++;
+    }
+    else
+    {
+      if (n_score1 < n_score2)
+      {
+        aux_e2->vitorias++;
+      }
+      else
+      {
+        
+      }
+
+    }
+
+    aux->score1 = n_score1;
+    aux->score2 = n_score2;
   }
 
 }
@@ -261,10 +227,8 @@ void r(bloco_hash_jogo *table_j, bloco_hash_jogo *lista_ord_h, bloco_hash_jogo *
   aux = procura_jogo_hash(table_j, nome_j);
   if (aux == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -273,17 +237,13 @@ void r(bloco_hash_jogo *table_j, bloco_hash_jogo *lista_ord_h, bloco_hash_jogo *
 
   if (aux->score1 > aux->score2)
   {
-    {
-      aux->equipa1->vitorias--;
-    }
+    aux->equipa1->vitorias--;
   }
   else
   {
     if (aux->score1 < aux->score2)
     {
-      {
-        aux->equipa2->vitorias--;
-      }
+      aux->equipa2->vitorias--;
     }
     else
     {
@@ -302,9 +262,7 @@ void l(bloco_hash_jogo *head, int NL)
   aux = *head;
   if (aux == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -329,9 +287,7 @@ void g(bloco_hash_equipa *lista_e, int NL)
   aux1 = lista_e[0];
   if (aux1 == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -344,9 +300,7 @@ void g(bloco_hash_equipa *lista_e, int NL)
   {
     if (aux1->equipa->vitorias > max_v)
     {
-      {
-        max_v = aux1->equipa->vitorias;
-      }
+      max_v = aux1->equipa->vitorias;
     }
     else
     {
@@ -361,9 +315,7 @@ void g(bloco_hash_equipa *lista_e, int NL)
   {
     if (aux1->equipa->vitorias == max_v)
     {
-      {
-        guarda_ord_alfabetica(lista_e_v, aux1->equipa);
-      }
+      guarda_ord_alfabetica(lista_e_v, aux1->equipa);
     }
     else
     {

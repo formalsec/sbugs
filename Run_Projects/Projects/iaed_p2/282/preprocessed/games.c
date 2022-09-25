@@ -34,51 +34,39 @@ void add_new_game(Hash_table_games HTG, Node_game_lst *Lst_jogos, Hash_table HT,
   golos_equipa2 = new_sym_var(sizeof(int) * 8);
   if (!search_HTG(HTG, nome_jogo))
   {
+    if ((search_HT(HT, equipa1) != 0) && (search_HT(HT, equipa2) != 0))
     {
-      if ((search_HT(HT, equipa1) != 0) && (search_HT(HT, equipa2) != 0))
+      Lst_jogos->head = insert_end(Lst_jogos, nome_jogo, equipa1, equipa2, golos_equipa1, golos_equipa2);
+      HT_games_insert(HTG, Lst_jogos->last, nome_jogo);
+      if (golos_equipa1 > golos_equipa2)
       {
-        {
-          Lst_jogos->head = insert_end(Lst_jogos, nome_jogo, equipa1, equipa2, golos_equipa1, golos_equipa2);
-          HT_games_insert(HTG, Lst_jogos->last, nome_jogo);
-          if (golos_equipa1 > golos_equipa2)
-          {
-            {
-              aux = search_HT(HT, equipa1);
-              aux->vitorias++;
-            }
-          }
-          else
-          {
-            if (golos_equipa2 > golos_equipa1)
-            {
-              {
-                aux = search_HT(HT, equipa2);
-                aux->vitorias++;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-        }
+        aux = search_HT(HT, equipa1);
+        aux->vitorias++;
       }
       else
       {
+        if (golos_equipa2 > golos_equipa1)
         {
-          printf("%d Equipa inexistente.\n", line);
+          aux = search_HT(HT, equipa2);
+          aux->vitorias++;
         }
+        else
+        {
+          
+        }
+
       }
 
     }
+    else
+    {
+      printf("%d Equipa inexistente.\n", line);
+    }
+
   }
   else
   {
-    {
-      printf("%d Jogo existente.\n", line);
-    }
+    printf("%d Jogo existente.\n", line);
   }
 
 }
@@ -96,15 +84,11 @@ void search_game(Hash_table_games HTG, int line)
   p = search_HTG(HTG, nome_jogo);
   if (!p)
   {
-    {
-      printf("%d Jogo inexistente.\n", line);
-    }
+    printf("%d Jogo inexistente.\n", line);
   }
   else
   {
-    {
-      printf("%d %s %s %s %d %d\n", line, p->node_game_ptr->jogo->nome, p->node_game_ptr->jogo->equipa1, p->node_game_ptr->jogo->equipa2, p->node_game_ptr->jogo->golos_equipa1, p->node_game_ptr->jogo->golos_equipa2);
-    }
+    printf("%d %s %s %s %d %d\n", line, p->node_game_ptr->jogo->nome, p->node_game_ptr->jogo->equipa1, p->node_game_ptr->jogo->equipa2, p->node_game_ptr->jogo->golos_equipa1, p->node_game_ptr->jogo->golos_equipa2);
   }
 
 }
@@ -113,13 +97,11 @@ void lst_games(Node_game *head, int line)
 {
   if (head != 0)
   {
+    for (; head != 0; head = head->next)
     {
-      for (; head != 0; head = head->next)
-      {
-        printf("%d %s %s %s %d %d\n", line, head->jogo->nome, head->jogo->equipa1, head->jogo->equipa2, head->jogo->golos_equipa1, head->jogo->golos_equipa2);
-      }
-
+      printf("%d %s %s %s %d %d\n", line, head->jogo->nome, head->jogo->equipa1, head->jogo->equipa2, head->jogo->golos_equipa1, head->jogo->golos_equipa2);
     }
+
   }
   else
   {
@@ -143,123 +125,97 @@ void remove_game(Hash_table_games HTG, Node_game_lst *Lst_jogos, Hash_table HT, 
   p = search_HTG(HTG, nome_jogo);
   if (!p)
   {
-    {
-      printf("%d Jogo inexistente.\n", line);
-    }
+    printf("%d Jogo inexistente.\n", line);
   }
   else
   {
+    if (p->node_game_ptr->jogo->golos_equipa1 > p->node_game_ptr->jogo->golos_equipa2)
     {
-      if (p->node_game_ptr->jogo->golos_equipa1 > p->node_game_ptr->jogo->golos_equipa2)
-      {
-        {
-          aux = search_HT(HT, p->node_game_ptr->jogo->equipa1);
-          aux->vitorias--;
-        }
-      }
-      else
-      {
-        if (p->node_game_ptr->jogo->golos_equipa2 > p->node_game_ptr->jogo->golos_equipa1)
-        {
-          {
-            aux = search_HT(HT, p->node_game_ptr->jogo->equipa2);
-            aux->vitorias--;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      if ((p->node_game_ptr->prev != 0) && (p->node_game_ptr->next != 0))
-      {
-        {
-          p->node_game_ptr->prev->next = p->node_game_ptr->next;
-          p->node_game_ptr->next->prev = p->node_game_ptr->prev;
-        }
-      }
-      else
-      {
-        if ((p->node_game_ptr->prev != 0) && (p->node_game_ptr->next == 0))
-        {
-          {
-            p->node_game_ptr->prev->next = 0;
-            Lst_jogos->last = p->node_game_ptr->prev;
-          }
-        }
-        else
-        {
-          if ((p->node_game_ptr->prev == 0) && (p->node_game_ptr->next != 0))
-          {
-            {
-              p->node_game_ptr->next->prev = 0;
-              Lst_jogos->head = p->node_game_ptr->next;
-            }
-          }
-          else
-          {
-            {
-              Lst_jogos->head = 0;
-            }
-          }
-
-        }
-
-      }
-
-      clear_node_game(p->node_game_ptr);
-      p->node_game_ptr = 0;
-      i = hash(nome_jogo);
-      if ((p->prev != 0) && (p->next != 0))
-      {
-        {
-          p->prev->next = p->next;
-          p->next->prev = p->prev;
-        }
-      }
-      else
-      {
-        if ((p->prev != 0) && (p->next == 0))
-        {
-          {
-            p->prev->next = 0;
-          }
-        }
-        else
-        {
-          if ((p->prev == 0) && (p->next != 0))
-          {
-            {
-              p->next->prev = 0;
-              if (HTG.heads[i] == p)
-              {
-                {
-                  HTG.heads[i] = p->next;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-          }
-          else
-          {
-            {
-              HTG.heads[i] = 0;
-            }
-          }
-
-        }
-
-      }
-
-      free(p);
-      p = 0;
+      aux = search_HT(HT, p->node_game_ptr->jogo->equipa1);
+      aux->vitorias--;
     }
+    else
+    {
+      if (p->node_game_ptr->jogo->golos_equipa2 > p->node_game_ptr->jogo->golos_equipa1)
+      {
+        aux = search_HT(HT, p->node_game_ptr->jogo->equipa2);
+        aux->vitorias--;
+      }
+      else
+      {
+        
+      }
+
+    }
+
+    if ((p->node_game_ptr->prev != 0) && (p->node_game_ptr->next != 0))
+    {
+      p->node_game_ptr->prev->next = p->node_game_ptr->next;
+      p->node_game_ptr->next->prev = p->node_game_ptr->prev;
+    }
+    else
+    {
+      if ((p->node_game_ptr->prev != 0) && (p->node_game_ptr->next == 0))
+      {
+        p->node_game_ptr->prev->next = 0;
+        Lst_jogos->last = p->node_game_ptr->prev;
+      }
+      else
+      {
+        if ((p->node_game_ptr->prev == 0) && (p->node_game_ptr->next != 0))
+        {
+          p->node_game_ptr->next->prev = 0;
+          Lst_jogos->head = p->node_game_ptr->next;
+        }
+        else
+        {
+          Lst_jogos->head = 0;
+        }
+
+      }
+
+    }
+
+    clear_node_game(p->node_game_ptr);
+    p->node_game_ptr = 0;
+    i = hash(nome_jogo);
+    if ((p->prev != 0) && (p->next != 0))
+    {
+      p->prev->next = p->next;
+      p->next->prev = p->prev;
+    }
+    else
+    {
+      if ((p->prev != 0) && (p->next == 0))
+      {
+        p->prev->next = 0;
+      }
+      else
+      {
+        if ((p->prev == 0) && (p->next != 0))
+        {
+          p->next->prev = 0;
+          if (HTG.heads[i] == p)
+          {
+            HTG.heads[i] = p->next;
+          }
+          else
+          {
+            
+          }
+
+        }
+        else
+        {
+          HTG.heads[i] = 0;
+        }
+
+      }
+
+    }
+
+    free(p);
+    p = 0;
   }
 
 }
@@ -282,34 +238,45 @@ void change_score(Hash_table_games HTG, Hash_table HT, int line)
   p = search_HTG(HTG, nome_jogo);
   if (!p)
   {
-    {
-      printf("%d Jogo inexistente.\n", line);
-    }
+    printf("%d Jogo inexistente.\n", line);
   }
   else
   {
+    if (p->node_game_ptr->jogo->golos_equipa1 > p->node_game_ptr->jogo->golos_equipa2)
     {
-      if (p->node_game_ptr->jogo->golos_equipa1 > p->node_game_ptr->jogo->golos_equipa2)
+      if (new_score1 <= new_score2)
       {
+        aux = search_HT(HT, p->node_game_ptr->jogo->equipa1);
+        aux->vitorias--;
+        if (new_score2 > new_score1)
         {
-          if (new_score1 <= new_score2)
-          {
-            {
-              aux = search_HT(HT, p->node_game_ptr->jogo->equipa1);
-              aux->vitorias--;
-              if (new_score2 > new_score1)
-              {
-                {
-                  aux = search_HT(HT, p->node_game_ptr->jogo->equipa2);
-                  aux->vitorias++;
-                }
-              }
-              else
-              {
-                
-              }
+          aux = search_HT(HT, p->node_game_ptr->jogo->equipa2);
+          aux->vitorias++;
+        }
+        else
+        {
+          
+        }
 
-            }
+      }
+      else
+      {
+        
+      }
+
+    }
+    else
+    {
+      if (p->node_game_ptr->jogo->golos_equipa2 > p->node_game_ptr->jogo->golos_equipa1)
+      {
+        if (new_score2 <= new_score1)
+        {
+          aux = search_HT(HT, p->node_game_ptr->jogo->equipa2);
+          aux->vitorias--;
+          if (new_score1 > new_score2)
+          {
+            aux = search_HT(HT, p->node_game_ptr->jogo->equipa1);
+            aux->vitorias++;
           }
           else
           {
@@ -317,72 +284,39 @@ void change_score(Hash_table_games HTG, Hash_table HT, int line)
           }
 
         }
+        else
+        {
+          
+        }
+
       }
       else
       {
-        if (p->node_game_ptr->jogo->golos_equipa2 > p->node_game_ptr->jogo->golos_equipa1)
+        if (new_score1 > new_score2)
         {
-          {
-            if (new_score2 <= new_score1)
-            {
-              {
-                aux = search_HT(HT, p->node_game_ptr->jogo->equipa2);
-                aux->vitorias--;
-                if (new_score1 > new_score2)
-                {
-                  {
-                    aux = search_HT(HT, p->node_game_ptr->jogo->equipa1);
-                    aux->vitorias++;
-                  }
-                }
-                else
-                {
-                  
-                }
-
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
+          aux = search_HT(HT, p->node_game_ptr->jogo->equipa1);
+          aux->vitorias++;
         }
         else
         {
+          if (new_score2 > new_score1)
           {
-            if (new_score1 > new_score2)
-            {
-              {
-                aux = search_HT(HT, p->node_game_ptr->jogo->equipa1);
-                aux->vitorias++;
-              }
-            }
-            else
-            {
-              if (new_score2 > new_score1)
-              {
-                {
-                  aux = search_HT(HT, p->node_game_ptr->jogo->equipa2);
-                  aux->vitorias++;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
+            aux = search_HT(HT, p->node_game_ptr->jogo->equipa2);
+            aux->vitorias++;
           }
+          else
+          {
+            
+          }
+
         }
 
       }
 
-      p->node_game_ptr->jogo->golos_equipa1 = new_score1;
-      p->node_game_ptr->jogo->golos_equipa2 = new_score2;
     }
+
+    p->node_game_ptr->jogo->golos_equipa1 = new_score1;
+    p->node_game_ptr->jogo->golos_equipa2 = new_score2;
   }
 
 }

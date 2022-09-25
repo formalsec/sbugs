@@ -71,34 +71,32 @@ void acommand(int nl, node_jg *table_jg, node_eq *table_eq, link *lista)
     }
     else
     {
+      njogo = malloc(sizeof(jg));
+      njogo->nome = malloc((sizeof(char)) * (strlen(nome) + 1));
+      strcpy(njogo->nome, nome);
+      njogo->eq1 = equipa1;
+      njogo->eq2 = equipa2;
+      njogo->scr1 = sc1;
+      njogo->scr2 = sc2;
+      table_jg[i] = push_jg(table_jg[i], njogo);
+      if (sc1 > sc2)
       {
-        njogo = malloc(sizeof(jg));
-        njogo->nome = malloc((sizeof(char)) * (strlen(nome) + 1));
-        strcpy(njogo->nome, nome);
-        njogo->eq1 = equipa1;
-        njogo->eq2 = equipa2;
-        njogo->scr1 = sc1;
-        njogo->scr2 = sc2;
-        table_jg[i] = push_jg(table_jg[i], njogo);
-        if (sc1 > sc2)
+        equipa1->vitorias++;
+      }
+      else
+      {
+        if (sc1 < sc2)
         {
-          equipa1->vitorias++;
+          equipa2->vitorias++;
         }
         else
         {
-          if (sc1 < sc2)
-          {
-            equipa2->vitorias++;
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
-        push_lista(lista, njogo);
       }
+
+      push_lista(lista, njogo);
     }
 
   }
@@ -123,14 +121,12 @@ void Acommand(int nl, node_eq *table_eq, node_eq *lista_eq)
   }
   else
   {
-    {
-      nequipa = malloc(sizeof(eq));
-      nequipa->des = malloc((sizeof(char)) * (strlen(dest) + 1));
-      strcpy(nequipa->des, dest);
-      nequipa->vitorias = 0;
-      table_eq[i] = push_eq(table_eq[i], nequipa);
-      lista_eq[0] = push_eq(lista_eq[0], nequipa);
-    }
+    nequipa = malloc(sizeof(eq));
+    nequipa->des = malloc((sizeof(char)) * (strlen(dest) + 1));
+    strcpy(nequipa->des, dest);
+    nequipa->vitorias = 0;
+    table_eq[i] = push_eq(table_eq[i], nequipa);
+    lista_eq[0] = push_eq(lista_eq[0], nequipa);
   }
 
 }
@@ -145,37 +141,18 @@ void gcommand(int nl, node_eq *lista_eq)
   getchar();
   if (lista_eq[0] != 0)
   {
+    for (atual = lista_eq[0]; atual != 0; atual = atual->next)
     {
-      for (atual = lista_eq[0]; atual != 0; atual = atual->next)
+      if (max < atual->equipa->vitorias)
       {
-        if (max < atual->equipa->vitorias)
-        {
-          {
-            max = atual->equipa->vitorias;
-            cont = 1;
-          }
-        }
-        else
-        {
-          if (max == atual->equipa->vitorias)
-          {
-            cont++;
-          }
-          else
-          {
-            
-          }
-
-        }
-
+        max = atual->equipa->vitorias;
+        cont = 1;
       }
-
-      lista = malloc((sizeof(eq *)) * cont);
-      for (atual = lista_eq[0]; atual != 0; atual = atual->next)
+      else
       {
         if (max == atual->equipa->vitorias)
         {
-          lista[i++] = atual->equipa;
+          cont++;
         }
         else
         {
@@ -184,13 +161,28 @@ void gcommand(int nl, node_eq *lista_eq)
 
       }
 
-      quicksort(lista, 0, cont - 1);
-      printf("%d Melhores %d\n", nl, max);
-      for (i = 0; i < cont; i++)
-        printf("%d * %s\n", nl, lista[i]->des);
-
-      free(lista);
     }
+
+    lista = malloc((sizeof(eq *)) * cont);
+    for (atual = lista_eq[0]; atual != 0; atual = atual->next)
+    {
+      if (max == atual->equipa->vitorias)
+      {
+        lista[i++] = atual->equipa;
+      }
+      else
+      {
+        
+      }
+
+    }
+
+    quicksort(lista, 0, cont - 1);
+    printf("%d Melhores %d\n", nl, max);
+    for (i = 0; i < cont; i++)
+      printf("%d * %s\n", nl, lista[i]->des);
+
+    free(lista);
   }
   else
   {
@@ -272,13 +264,11 @@ void rcommand(int nl, node_jg *table_jg, link *lista)
   }
   else
   {
-    {
-      sub_score(jogo);
-      remove_lista(lista, jogo);
-      table_jg[i] = remove_jg(table_jg[i], jogo);
-      free(jogo->nome);
-      free(jogo);
-    }
+    sub_score(jogo);
+    remove_lista(lista, jogo);
+    table_jg[i] = remove_jg(table_jg[i], jogo);
+    free(jogo->nome);
+    free(jogo);
   }
 
 }
@@ -304,28 +294,26 @@ void scommand(int nl, node_jg *table_jg)
   }
   else
   {
+    sub_score(jogo);
+    jogo->scr1 = sc1;
+    jogo->scr2 = sc2;
+    if (sc1 > sc2)
     {
-      sub_score(jogo);
-      jogo->scr1 = sc1;
-      jogo->scr2 = sc2;
-      if (sc1 > sc2)
+      jogo->eq1->vitorias++;
+    }
+    else
+    {
+      if (sc1 < sc2)
       {
-        jogo->eq1->vitorias++;
+        jogo->eq2->vitorias++;
       }
       else
       {
-        if (sc1 < sc2)
-        {
-          jogo->eq2->vitorias++;
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
     }
+
   }
 
 }
@@ -341,16 +329,14 @@ void xcommand(node_eq *table_eq, node_eq *lista_eq, node_jg *table_jg, link *lis
   {
     if (table_eq[i] != 0)
     {
+      for (eq = table_eq[i]; eq != 0; eq = eq_temp)
       {
-        for (eq = table_eq[i]; eq != 0; eq = eq_temp)
-        {
-          eq_temp = eq->next;
-          free(eq->equipa->des);
-          free(eq->equipa);
-          free(eq);
-        }
-
+        eq_temp = eq->next;
+        free(eq->equipa->des);
+        free(eq->equipa);
+        free(eq);
       }
+
     }
     else
     {
@@ -359,16 +345,14 @@ void xcommand(node_eq *table_eq, node_eq *lista_eq, node_jg *table_jg, link *lis
 
     if (table_jg[i] != 0)
     {
+      for (jg = table_jg[i]; jg != 0; jg = jg_temp)
       {
-        for (jg = table_jg[i]; jg != 0; jg = jg_temp)
-        {
-          jg_temp = jg->next;
-          free(jg->jogo->nome);
-          free(jg->jogo);
-          free(jg);
-        }
-
+        jg_temp = jg->next;
+        free(jg->jogo->nome);
+        free(jg->jogo);
+        free(jg);
       }
+
     }
     else
     {

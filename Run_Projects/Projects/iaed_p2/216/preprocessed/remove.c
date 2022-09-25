@@ -16,10 +16,8 @@ void rmvWin(list *tms, char *name)
   {
     if (strcmp(ptr->name, name) == 0)
     {
-      {
-        ptr->won--;
-        break;
-      }
+      ptr->won--;
+      break;
     }
     else
     {
@@ -35,17 +33,13 @@ void deleteNode(node *del_n, int flag)
 {
   if (flag == 0)
   {
-    {
-      free(del_n->name);
-      free(del_n->team1);
-      free(del_n->team2);
-    }
+    free(del_n->name);
+    free(del_n->team1);
+    free(del_n->team2);
   }
   else
   {
-    {
-      free(del_n->name);
-    }
+    free(del_n->name);
   }
 
   free(del_n);
@@ -55,28 +49,20 @@ void pop(list *ls, node *del, int flag)
 {
   if (del->previous == 0)
   {
-    {
-      ls->head = del->next;
-    }
+    ls->head = del->next;
   }
   else
   {
-    {
-      del->previous->next = del->next;
-    }
+    del->previous->next = del->next;
   }
 
   if (del->next == 0)
   {
-    {
-      ls->end = del->previous;
-    }
+    ls->end = del->previous;
   }
   else
   {
-    {
-      del->next->previous = del->previous;
-    }
+    del->next->previous = del->previous;
   }
 
   deleteNode(del, flag);
@@ -90,21 +76,17 @@ void eraseGames(list *ls, char name[1024])
   del = games[idx].head;
   if (del == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
     if (strcmp(del->point->name, name) == 0)
     {
-      {
-        aux = del->next;
-        pop(ls, del->point, 0);
-        free(del);
-        games[idx].head = aux;
-        return;
-      }
+      aux = del->next;
+      pop(ls, del->point, 0);
+      free(del);
+      games[idx].head = aux;
+      return;
     }
     else
     {
@@ -117,9 +99,7 @@ void eraseGames(list *ls, char name[1024])
   {
     if (strcmp(del->next->point->name, name) == 0)
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {
@@ -142,21 +122,17 @@ void eraseTeams(list *ls, char name[1024])
   del = teams[idx].head;
   if (del == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
     if (strcmp(del->point->name, name) == 0)
     {
-      {
-        aux = del->next;
-        pop(ls, del->point, 1);
-        free(del);
-        teams[idx].head = aux;
-        return;
-      }
+      aux = del->next;
+      pop(ls, del->point, 1);
+      free(del);
+      teams[idx].head = aux;
+      return;
     }
     else
     {
@@ -169,9 +145,7 @@ void eraseTeams(list *ls, char name[1024])
   {
     if (strcmp(del->next->point->name, name) == 0)
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {
@@ -201,10 +175,8 @@ void removeGame(list *ls, list *tms)
   search = getNodeGames(name);
   if (search == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", counter);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", counter);
+    return;
   }
   else
   {
@@ -215,19 +187,15 @@ void removeGame(list *ls, list *tms)
   team2 = getNodeTeams(search->point->team2);
   if (search->point->score1 > search->point->score2)
   {
-    {
-      rmvWin(tms, team1->point->name);
-      team1->point->won--;
-    }
+    rmvWin(tms, team1->point->name);
+    team1->point->won--;
   }
   else
   {
     if (search->point->score1 < search->point->score2)
     {
-      {
-        rmvWin(tms, team2->point->name);
-        team2->point->won--;
-      }
+      rmvWin(tms, team2->point->name);
+      team2->point->won--;
     }
     else
     {

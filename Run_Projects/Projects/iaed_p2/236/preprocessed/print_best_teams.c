@@ -46,9 +46,7 @@ void printBestTeams(team *team_hash_table[], int NL)
     {
       if (tmp_team->wins == wins)
       {
-        {
-          size++;
-        }
+        size++;
       }
       else
       {
@@ -63,37 +61,33 @@ void printBestTeams(team *team_hash_table[], int NL)
   names = malloc(size * (sizeof(char *)));
   if (size != 0)
   {
+    for (i = 0; i < 1000; ++i)
     {
-      for (i = 0; i < 1000; ++i)
+      tmp_team = team_hash_table[i];
+      while (tmp_team != 0)
       {
-        tmp_team = team_hash_table[i];
-        while (tmp_team != 0)
+        if (tmp_team->wins == wins)
         {
-          if (tmp_team->wins == wins)
-          {
-            {
-              names[iter] = tmp_team->name;
-              iter++;
-            }
-          }
-          else
-          {
-            
-          }
-
-          tmp_team = tmp_team->next;
+          names[iter] = tmp_team->name;
+          iter++;
+        }
+        else
+        {
+          
         }
 
-      }
-
-      merge_sort(names, 0, size - 1);
-      printf("%d Melhores %d\n", NL, wins);
-      for (i = 0; i < size; ++i)
-      {
-        printf("%d * %s\n", NL, names[i]);
+        tmp_team = tmp_team->next;
       }
 
     }
+
+    merge_sort(names, 0, size - 1);
+    printf("%d Melhores %d\n", NL, wins);
+    for (i = 0; i < size; ++i)
+    {
+      printf("%d * %s\n", NL, names[i]);
+    }
+
   }
   else
   {

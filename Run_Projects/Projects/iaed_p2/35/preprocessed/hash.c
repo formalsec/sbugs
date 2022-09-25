@@ -36,10 +36,8 @@ void HashtableInsert_JOGOS(Hashtable_JOGOS HT, linkJogo j)
   a->next = 0;
   if (HT->adj[key] == 0)
   {
-    {
-      HT->adj[key] = a;
-      return;
-    }
+    HT->adj[key] = a;
+    return;
   }
   else
   {
@@ -81,40 +79,36 @@ void HashtableDelete_JOGOS(char *v, struct nodeJogo **head, Hashtable_JOGOS HT)
   {
     if (!strcmp(p->j->j.nome, v))
     {
+      if ((temp != 0) && (!strcmp(temp->j->j.nome, v)))
       {
-        if ((temp != 0) && (!strcmp(temp->j->j.nome, v)))
-        {
-          {
-            HT->adj[key] = temp->next;
-            deleteNodeJogo(head, temp->j->j);
-            free(temp);
-            return;
-          }
-        }
-        else
-        {
-          
-        }
-
-        while ((temp != 0) && strcmp(temp->j->j.nome, v))
-        {
-          prev = temp;
-          temp = temp->next;
-        }
-
-        if (temp == 0)
-        {
-          return;
-        }
-        else
-        {
-          
-        }
-
-        prev->next = temp->next;
+        HT->adj[key] = temp->next;
         deleteNodeJogo(head, temp->j->j);
         free(temp);
+        return;
       }
+      else
+      {
+        
+      }
+
+      while ((temp != 0) && strcmp(temp->j->j.nome, v))
+      {
+        prev = temp;
+        temp = temp->next;
+      }
+
+      if (temp == 0)
+      {
+        return;
+      }
+      else
+      {
+        
+      }
+
+      prev->next = temp->next;
+      deleteNodeJogo(head, temp->j->j);
+      free(temp);
     }
     else
     {
@@ -178,10 +172,8 @@ void HashtableInsert_EQUIPAS(Hashtable_EQUIPAS HT, linkEquipa e)
   a->next = 0;
   if (HT->adj[key] == 0)
   {
-    {
-      HT->adj[key] = a;
-      return;
-    }
+    HT->adj[key] = a;
+    return;
   }
   else
   {
@@ -223,40 +215,36 @@ void HashtableDelete_EQUIPAS(char *v, struct nodeEquipa **head, Hashtable_EQUIPA
   {
     if (!strcmp(p->e->e.nome, v))
     {
+      if ((temp != 0) && (!strcmp(temp->e->e.nome, v)))
       {
-        if ((temp != 0) && (!strcmp(temp->e->e.nome, v)))
-        {
-          {
-            HT->adj[key] = temp->next;
-            deleteNodeEquipa(head, temp->e->e);
-            free(temp);
-            return;
-          }
-        }
-        else
-        {
-          
-        }
-
-        while ((temp != 0) && strcmp(temp->e->e.nome, v))
-        {
-          prev = temp;
-          temp = temp->next;
-        }
-
-        if (temp == 0)
-        {
-          return;
-        }
-        else
-        {
-          
-        }
-
-        prev->next = temp->next;
+        HT->adj[key] = temp->next;
         deleteNodeEquipa(head, temp->e->e);
         free(temp);
+        return;
       }
+      else
+      {
+        
+      }
+
+      while ((temp != 0) && strcmp(temp->e->e.nome, v))
+      {
+        prev = temp;
+        temp = temp->next;
+      }
+
+      if (temp == 0)
+      {
+        return;
+      }
+      else
+      {
+        
+      }
+
+      prev->next = temp->next;
+      deleteNodeEquipa(head, temp->e->e);
+      free(temp);
     }
     else
     {

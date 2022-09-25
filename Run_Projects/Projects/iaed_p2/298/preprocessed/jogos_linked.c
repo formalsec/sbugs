@@ -50,28 +50,20 @@ void remove_jogo_linked(JOGO_LIST *lista_de_jogos, JOGO *jogo)
 {
   if (jogo->prev == 0)
   {
-    {
-      lista_de_jogos->head = jogo->next;
-    }
+    lista_de_jogos->head = jogo->next;
   }
   else
   {
-    {
-      jogo->prev->next = jogo->next;
-    }
+    jogo->prev->next = jogo->next;
   }
 
   if (jogo->next == 0)
   {
-    {
-      lista_de_jogos->last = jogo->prev;
-    }
+    lista_de_jogos->last = jogo->prev;
   }
   else
   {
-    {
-      jogo->next->prev = jogo->prev;
-    }
+    jogo->next->prev = jogo->prev;
   }
 
   destroy_jogo(jogo);

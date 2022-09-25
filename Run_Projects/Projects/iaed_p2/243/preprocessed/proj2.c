@@ -121,10 +121,8 @@ void adiciona_Node_jogo(char *Nome, char *Equipa1, char *Equipa2, char *Score1, 
   b = atoi(aux->score2);
   if (a > b)
   {
-    {
-      equipas *e = procura_equipa(Equipa1);
-      e->contador += 1;
-    }
+    equipas *e = procura_equipa(Equipa1);
+    e->contador += 1;
   }
   else
   {
@@ -133,10 +131,8 @@ void adiciona_Node_jogo(char *Nome, char *Equipa1, char *Equipa2, char *Score1, 
 
   if (a < b)
   {
-    {
-      equipas *e = procura_equipa(Equipa2);
-      e->contador += 1;
-    }
+    equipas *e = procura_equipa(Equipa2);
+    e->contador += 1;
   }
   else
   {
@@ -373,20 +369,16 @@ int main()
       }
       else
       {
+        if ((procura_equipa(Equipa1) == 0) || (procura_equipa(Equipa2) == 0))
         {
-          if ((procura_equipa(Equipa1) == 0) || (procura_equipa(Equipa2) == 0))
-          {
-            printf("%d Equipa inexistente.\n", conta);
-          }
-          else
-          {
-            {
-              adiciona_Node_jogo(Nome, Equipa1, Equipa2, Score1, Score2);
-              adiciona_HashTable_Jogo(Nome);
-            }
-          }
-
+          printf("%d Equipa inexistente.\n", conta);
         }
+        else
+        {
+          adiciona_Node_jogo(Nome, Equipa1, Equipa2, Score1, Score2);
+          adiciona_HashTable_Jogo(Nome);
+        }
+
       }
 
         break;
@@ -413,10 +405,8 @@ int main()
         conta++;
         if (aux != 0)
       {
-        {
-          printf("%d ", conta);
-          lista_jogos(aux);
-        }
+        printf("%d ", conta);
+        lista_jogos(aux);
       }
       else
       {
@@ -436,54 +426,48 @@ int main()
         conta++;
         if (aux != 0)
       {
+        a = atoi(aux->score1);
+        b = atoi(aux->score2);
+        if (a > b)
         {
-          a = atoi(aux->score1);
-          b = atoi(aux->score2);
-          if (a > b)
+          equipas *e = procura_equipa(aux->team1);
+          if (e->contador == maior)
           {
-            {
-              equipas *e = procura_equipa(aux->team1);
-              if (e->contador == maior)
-              {
-                maior--;
-              }
-              else
-              {
-                
-              }
-
-              e->contador -= 1;
-            }
+            maior--;
           }
           else
           {
             
           }
 
-          if (a < b)
-          {
-            {
-              equipas *e = procura_equipa(aux->team2);
-              if (e->contador == maior)
-              {
-                maior--;
-              }
-              else
-              {
-                
-              }
-
-              e->contador -= 1;
-            }
-          }
-          else
-          {
-            
-          }
-
-          remove_HashTable_Jogo(Nome);
-          remove_Node_jogo(aux);
+          e->contador -= 1;
         }
+        else
+        {
+          
+        }
+
+        if (a < b)
+        {
+          equipas *e = procura_equipa(aux->team2);
+          if (e->contador == maior)
+          {
+            maior--;
+          }
+          else
+          {
+            
+          }
+
+          e->contador -= 1;
+        }
+        else
+        {
+          
+        }
+
+        remove_HashTable_Jogo(Nome);
+        remove_Node_jogo(aux);
       }
       else
       {
@@ -515,80 +499,70 @@ int main()
         conta++;
         if (aux != 0)
       {
+        a = atoi(aux->score1);
+        b = atoi(aux->score2);
+        if (a > b)
         {
-          a = atoi(aux->score1);
-          b = atoi(aux->score2);
-          if (a > b)
+          equipas *e = procura_equipa(aux->team1);
+          if (e->contador == maior)
           {
-            {
-              equipas *e = procura_equipa(aux->team1);
-              if (e->contador == maior)
-              {
-                maior--;
-              }
-              else
-              {
-                
-              }
-
-              e->contador -= 1;
-            }
+            maior--;
           }
           else
           {
             
           }
 
-          if (b > a)
-          {
-            {
-              equipas *e = procura_equipa(aux->team2);
-              if (e->contador == maior)
-              {
-                maior--;
-              }
-              else
-              {
-                
-              }
-
-              e->contador -= 1;
-            }
-          }
-          else
-          {
-            
-          }
-
-          aux->score1 = (char *) memcpy(realloc(aux->score1, (sizeof(char)) * (strlen(Score1) + 1)), Score1, (sizeof(char)) * (strlen(Score1) + 1));
-          aux->score2 = (char *) memcpy(realloc(aux->score2, (sizeof(char)) * (strlen(Score2) + 1)), Score2, (sizeof(char)) * (strlen(Score2) + 1));
-          a = atoi(aux->score1);
-          b = atoi(aux->score2);
-          if (a > b)
-          {
-            {
-              equipas *e = procura_equipa(aux->team1);
-              e->contador += 1;
-            }
-          }
-          else
-          {
-            
-          }
-
-          if (a < b)
-          {
-            {
-              equipas *e = procura_equipa(aux->team2);
-              e->contador += 1;
-            }
-          }
-          else
-          {
-            
-          }
-
+          e->contador -= 1;
         }
+        else
+        {
+          
+        }
+
+        if (b > a)
+        {
+          equipas *e = procura_equipa(aux->team2);
+          if (e->contador == maior)
+          {
+            maior--;
+          }
+          else
+          {
+            
+          }
+
+          e->contador -= 1;
+        }
+        else
+        {
+          
+        }
+
+        aux->score1 = (char *) memcpy(realloc(aux->score1, (sizeof(char)) * (strlen(Score1) + 1)), Score1, (sizeof(char)) * (strlen(Score1) + 1));
+        aux->score2 = (char *) memcpy(realloc(aux->score2, (sizeof(char)) * (strlen(Score2) + 1)), Score2, (sizeof(char)) * (strlen(Score2) + 1));
+        a = atoi(aux->score1);
+        b = atoi(aux->score2);
+        if (a > b)
+        {
+          equipas *e = procura_equipa(aux->team1);
+          e->contador += 1;
+        }
+        else
+        {
+          
+        }
+
+        if (a < b)
+        {
+          equipas *e = procura_equipa(aux->team2);
+          e->contador += 1;
+        }
+        else
+        {
+          
+        }
+
       }
       else
       {
@@ -611,10 +585,8 @@ int main()
       }
       else
       {
-        {
-          adiciona_Node_equipas(Equipa);
-          adiciona_HashTable_Equipas(Equipa);
-        }
+        adiciona_Node_equipas(Equipa);
+        adiciona_HashTable_Equipas(Equipa);
       }
 
         break;
@@ -630,10 +602,8 @@ int main()
         conta++;
         if (aux2 != 0)
       {
-        {
-          printf("%d ", conta);
-          lista_equipa(aux2);
-        }
+        printf("%d ", conta);
+        lista_equipa(aux2);
       }
       else
       {
@@ -647,22 +617,13 @@ int main()
         conta++;
         if (aux2 != 0)
       {
+        for (; aux2 != 0; aux2 = aux2->next2)
         {
-          for (; aux2 != 0; aux2 = aux2->next2)
+          if (aux2->contador != 0)
           {
-            if (aux2->contador != 0)
+            if (aux2->contador > maior)
             {
-              {
-                if (aux2->contador > maior)
-                {
-                  maior = aux2->contador;
-                }
-                else
-                {
-                  
-                }
-
-              }
+              maior = aux2->contador;
             }
             else
             {
@@ -670,46 +631,49 @@ int main()
             }
 
           }
-
-          printf("%d Melhores %d\n", conta, maior);
-          aux2 = l2->head2;
-          for (; aux2 != 0; aux2 = aux2->next2)
+          else
           {
-            if (aux2->contador == maior)
-            {
-              {
-                num++;
-                strcpy(item[i].nomeTeam, aux2->nomeE);
-                i++;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-          qsort(item, num, sizeof(equipas), compararNome);
-          for (j = 0; j < num; j++)
-          {
-            if (strcmp(item[j].nomeTeam, "\0") != 0)
-            {
-              printf("%d * %s\n", conta, item[j].nomeTeam);
-            }
-            else
-            {
-              
-            }
-
-          }
-
-          for (j = 0; j < num; j++)
-          {
-            strcpy(item[j].nomeTeam, "\0");
+            
           }
 
         }
+
+        printf("%d Melhores %d\n", conta, maior);
+        aux2 = l2->head2;
+        for (; aux2 != 0; aux2 = aux2->next2)
+        {
+          if (aux2->contador == maior)
+          {
+            num++;
+            strcpy(item[i].nomeTeam, aux2->nomeE);
+            i++;
+          }
+          else
+          {
+            
+          }
+
+        }
+
+        qsort(item, num, sizeof(equipas), compararNome);
+        for (j = 0; j < num; j++)
+        {
+          if (strcmp(item[j].nomeTeam, "\0") != 0)
+          {
+            printf("%d * %s\n", conta, item[j].nomeTeam);
+          }
+          else
+          {
+            
+          }
+
+        }
+
+        for (j = 0; j < num; j++)
+        {
+          strcpy(item[j].nomeTeam, "\0");
+        }
+
       }
       else
       {

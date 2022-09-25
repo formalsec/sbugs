@@ -36,19 +36,15 @@ void add_last_jogo(list_jogo *l, Jogo *j)
   newNode->jogo = j;
   if ((l->head == 0) && (l->last == 0))
   {
-    {
-      newNode->previous = 0;
-      l->head = newNode;
-      l->last = newNode;
-    }
+    newNode->previous = 0;
+    l->head = newNode;
+    l->last = newNode;
   }
   else
   {
-    {
-      newNode->previous = l->last;
-      l->last->next = newNode;
-      l->last = newNode;
-    }
+    newNode->previous = l->last;
+    l->last->next = newNode;
+    l->last = newNode;
   }
 
 }
@@ -61,30 +57,26 @@ void remove_jogo_aux(node_jogo *l_head, Jogo *j)
   }
   else
   {
+    if (l_head->previous != 0)
     {
-      if (l_head->previous != 0)
-      {
-        {
-          l_head->previous->next = l_head->next;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (l_head->next != 0)
-      {
-        l_head->next->previous = l_head->previous;
-      }
-      else
-      {
-        
-      }
-
-      free_jogo(j);
-      free(l_head);
+      l_head->previous->next = l_head->next;
     }
+    else
+    {
+      
+    }
+
+    if (l_head->next != 0)
+    {
+      l_head->next->previous = l_head->previous;
+    }
+    else
+    {
+      
+    }
+
+    free_jogo(j);
+    free(l_head);
   }
 
 }
@@ -94,10 +86,8 @@ void remove_jogo(list_jogo *l, Jogo *j)
   remove_jogo_aux(l->head, j);
   if (l->head == l->last)
   {
-    {
-      l->head = 0;
-      l->last = 0;
-    }
+    l->head = 0;
+    l->last = 0;
   }
   else
   {
@@ -124,20 +114,18 @@ void free_list_jogo(list_jogo *l)
   }
   else
   {
+    while (lastNode != l->head)
     {
-      while (lastNode != l->head)
-      {
-        newLast = lastNode->previous;
-        free_jogo(lastNode->jogo);
-        free(lastNode);
-        newLast->next = 0;
-        lastNode = newLast;
-      }
-
+      newLast = lastNode->previous;
       free_jogo(lastNode->jogo);
       free(lastNode);
-      free(l);
+      newLast->next = 0;
+      lastNode = newLast;
     }
+
+    free_jogo(lastNode->jogo);
+    free(lastNode);
+    free(l);
   }
 
 }

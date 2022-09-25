@@ -20,11 +20,9 @@ int comando_A(int counter, Hash_Array *team_hash)
   aux = hashtable_get(team_hash, team_name);
   if (aux != 0)
   {
-    {
-      free(team_name);
-      printf("%d Equipa existente.\n", counter);
-      return 1;
-    }
+    free(team_name);
+    printf("%d Equipa existente.\n", counter);
+    return 1;
   }
   else
   {
@@ -51,10 +49,8 @@ int comando_P(int counter, Hash_Array *team_hash)
   output = hashtable_get(team_hash, team_name);
   if (output == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", counter);
-      return 1;
-    }
+    printf("%d Equipa inexistente.\n", counter);
+    return 1;
   }
   else
   {
@@ -84,13 +80,11 @@ Node_ptr comando_a(int counter, Hash_Array *game_hash, Hash_Array *team_hash, No
   aux = hashtable_get(game_hash, game_name);
   if (aux != 0)
   {
-    {
-      free(game_name);
-      free(team1);
-      free(team2);
-      printf("%d Jogo existente.\n", counter);
-      return 0;
-    }
+    free(game_name);
+    free(team1);
+    free(team2);
+    printf("%d Jogo existente.\n", counter);
+    return 0;
   }
   else
   {
@@ -101,13 +95,11 @@ Node_ptr comando_a(int counter, Hash_Array *game_hash, Hash_Array *team_hash, No
   aux1 = hashtable_get(team_hash, team2);
   if ((aux == 0) || (aux1 == 0))
   {
-    {
-      free(team1);
-      free(team2);
-      free(game_name);
-      printf("%d Equipa inexistente.\n", counter);
-      return 0;
-    }
+    free(team1);
+    free(team2);
+    free(game_name);
+    printf("%d Equipa inexistente.\n", counter);
+    return 0;
   }
   else
   {
@@ -116,9 +108,7 @@ Node_ptr comando_a(int counter, Hash_Array *game_hash, Hash_Array *team_hash, No
 
   if (score1 > score2)
   {
-    {
-      winning_team = hashtable_get(team_hash, team1);
-    }
+    winning_team = hashtable_get(team_hash, team1);
   }
   else
   {
@@ -127,9 +117,7 @@ Node_ptr comando_a(int counter, Hash_Array *game_hash, Hash_Array *team_hash, No
 
   if (score1 < score2)
   {
-    {
-      winning_team = hashtable_get(team_hash, team2);
-    }
+    winning_team = hashtable_get(team_hash, team2);
   }
   else
   {
@@ -138,9 +126,7 @@ Node_ptr comando_a(int counter, Hash_Array *game_hash, Hash_Array *team_hash, No
 
   if (score1 == score2)
   {
-    {
-      winning_team = 0;
-    }
+    winning_team = 0;
   }
   else
   {
@@ -149,9 +135,7 @@ Node_ptr comando_a(int counter, Hash_Array *game_hash, Hash_Array *team_hash, No
 
   if (winning_team != 0)
   {
-    {
-      winning_team->score1 = winning_team->score1 + 1;
-    }
+    winning_team->score1 = winning_team->score1 + 1;
   }
   else
   {
@@ -176,9 +160,7 @@ int comando_l(int counter, Hash_Array *game_hash, Node_ptr top_game_list)
   Game *game;
   if (top_game_list == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -188,11 +170,9 @@ int comando_l(int counter, Hash_Array *game_hash, Node_ptr top_game_list)
   list_aux = top_game_list->first;
   if (list_aux == top_game_list)
   {
-    {
-      game = hashtable_get(game_hash, list_aux->value);
-      printf("%d %s %s %s %d %d\n", counter, list_aux->value, game->team1, game->team2, game->score1, game->score2);
-      return 0;
-    }
+    game = hashtable_get(game_hash, list_aux->value);
+    printf("%d %s %s %s %d %d\n", counter, list_aux->value, game->team1, game->team2, game->score1, game->score2);
+    return 0;
   }
   else
   {
@@ -222,10 +202,8 @@ int comando_p(int counter, Hash_Array *game_hash)
   game = hashtable_get(game_hash, game_name);
   if (game == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", counter);
-      return 1;
-    }
+    printf("%d Jogo inexistente.\n", counter);
+    return 1;
   }
   else
   {
@@ -250,10 +228,8 @@ Node_ptr comando_r(int counter, Hash_Array *game_hash, Hash_Array *team_hash, No
   game = hashtable_get(game_hash, game_name);
   if (game == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", counter);
-      return top_game_list;
-    }
+    printf("%d Jogo inexistente.\n", counter);
+    return top_game_list;
   }
   else
   {
@@ -262,9 +238,7 @@ Node_ptr comando_r(int counter, Hash_Array *game_hash, Hash_Array *team_hash, No
 
   if (game->score1 > game->score2)
   {
-    {
-      winning_team = hashtable_get(team_hash, game->team1);
-    }
+    winning_team = hashtable_get(team_hash, game->team1);
   }
   else
   {
@@ -273,9 +247,7 @@ Node_ptr comando_r(int counter, Hash_Array *game_hash, Hash_Array *team_hash, No
 
   if (game->score1 < game->score2)
   {
-    {
-      winning_team = hashtable_get(team_hash, game->team2);
-    }
+    winning_team = hashtable_get(team_hash, game->team2);
   }
   else
   {
@@ -284,9 +256,7 @@ Node_ptr comando_r(int counter, Hash_Array *game_hash, Hash_Array *team_hash, No
 
   if (game->score1 == game->score2)
   {
-    {
-      winning_team = 0;
-    }
+    winning_team = 0;
   }
   else
   {
@@ -295,9 +265,7 @@ Node_ptr comando_r(int counter, Hash_Array *game_hash, Hash_Array *team_hash, No
 
   if (winning_team != 0)
   {
-    {
-      winning_team->score1 = winning_team->score1 - 1;
-    }
+    winning_team->score1 = winning_team->score1 - 1;
   }
   else
   {
@@ -330,10 +298,8 @@ int comando_s(int counter, Hash_Array *game_hash, Hash_Array *team_hash)
   game = hashtable_get(game_hash, game_name);
   if (game == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", counter);
-      return 1;
-    }
+    printf("%d Jogo inexistente.\n", counter);
+    return 1;
   }
   else
   {
@@ -344,11 +310,9 @@ int comando_s(int counter, Hash_Array *game_hash, Hash_Array *team_hash)
   after = score1 - score2;
   if (((before * after) >= 1) || ((before == 0) && (after == 0)))
   {
-    {
-      game->score1 = score1;
-      game->score2 = score2;
-      return 1;
-    }
+    game->score1 = score1;
+    game->score2 = score2;
+    return 1;
   }
   else
   {
@@ -357,38 +321,32 @@ int comando_s(int counter, Hash_Array *game_hash, Hash_Array *team_hash)
 
   if (game->score1 == game->score2)
   {
+    if (score1 > score2)
     {
-      if (score1 > score2)
-      {
-        {
-          winning_team = hashtable_get(team_hash, game->team1);
-          winning_team->score1 = winning_team->score1 + 1;
-          game->score1 = score1;
-          game->score2 = score2;
-          return 1;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (score2 > score1)
-      {
-        {
-          winning_team = hashtable_get(team_hash, game->team2);
-          winning_team->score1 = winning_team->score1 + 1;
-          game->score1 = score1;
-          game->score2 = score2;
-          return 1;
-        }
-      }
-      else
-      {
-        
-      }
-
+      winning_team = hashtable_get(team_hash, game->team1);
+      winning_team->score1 = winning_team->score1 + 1;
+      game->score1 = score1;
+      game->score2 = score2;
+      return 1;
     }
+    else
+    {
+      
+    }
+
+    if (score2 > score1)
+    {
+      winning_team = hashtable_get(team_hash, game->team2);
+      winning_team->score1 = winning_team->score1 + 1;
+      game->score1 = score1;
+      game->score2 = score2;
+      return 1;
+    }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -397,28 +355,24 @@ int comando_s(int counter, Hash_Array *game_hash, Hash_Array *team_hash)
 
   if (score1 == score2)
   {
+    if (game->score1 > game->score2)
     {
-      if (game->score1 > game->score2)
-      {
-        {
-          winning_team = hashtable_get(team_hash, game->team1);
-          winning_team->score1 = winning_team->score1 - 1;
-          game->score1 = score1;
-          game->score2 = score2;
-          return 1;
-        }
-      }
-      else
-      {
-        
-      }
-
-      winning_team = hashtable_get(team_hash, game->team2);
+      winning_team = hashtable_get(team_hash, game->team1);
       winning_team->score1 = winning_team->score1 - 1;
       game->score1 = score1;
       game->score2 = score2;
       return 1;
     }
+    else
+    {
+      
+    }
+
+    winning_team = hashtable_get(team_hash, game->team2);
+    winning_team->score1 = winning_team->score1 - 1;
+    game->score1 = score1;
+    game->score2 = score2;
+    return 1;
   }
   else
   {
@@ -427,10 +381,8 @@ int comando_s(int counter, Hash_Array *game_hash, Hash_Array *team_hash)
 
   if (score1 > score2)
   {
-    {
-      winning_team = hashtable_get(team_hash, game->team1);
-      losing_team = hashtable_get(team_hash, game->team2);
-    }
+    winning_team = hashtable_get(team_hash, game->team1);
+    losing_team = hashtable_get(team_hash, game->team2);
   }
   else
   {
@@ -439,10 +391,8 @@ int comando_s(int counter, Hash_Array *game_hash, Hash_Array *team_hash)
 
   if (score1 < score2)
   {
-    {
-      winning_team = hashtable_get(team_hash, game->team2);
-      losing_team = hashtable_get(team_hash, game->team1);
-    }
+    winning_team = hashtable_get(team_hash, game->team2);
+    losing_team = hashtable_get(team_hash, game->team1);
   }
   else
   {
@@ -453,9 +403,7 @@ int comando_s(int counter, Hash_Array *game_hash, Hash_Array *team_hash)
   losing_team->score1 = losing_team->score1 - 1;
   if (losing_team->score1 < 0)
   {
-    {
-      losing_team->score1 = 0;
-    }
+    losing_team->score1 = 0;
   }
   else
   {

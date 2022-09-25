@@ -29,50 +29,48 @@ int main()
     comand = new_sym_var(sizeof(char) * 8);
     if (comand != '\n')
     {
+      nl++;
+      switch (comand)
       {
-        nl++;
-        switch (comand)
-        {
-          case 'a':
-            comand_a(nl, hasht_g, hasht_t, dl_g);
-            break;
+        case 'a':
+          comand_a(nl, hasht_g, hasht_t, dl_g);
+          break;
 
-          case 'A':
-            comand_A(nl, hasht_t);
-            break;
+        case 'A':
+          comand_A(nl, hasht_t);
+          break;
 
-          case 'l':
-            comand_l(nl, dl_g);
-            break;
+        case 'l':
+          comand_l(nl, dl_g);
+          break;
 
-          case 'p':
-            comand_p(nl, hasht_g);
-            break;
+        case 'p':
+          comand_p(nl, hasht_g);
+          break;
 
-          case 'P':
-            comand_P(nl, hasht_t);
-            break;
+        case 'P':
+          comand_P(nl, hasht_t);
+          break;
 
-          case 'r':
-            comand_r(nl, hasht_g, hasht_t, dl_g);
-            break;
+        case 'r':
+          comand_r(nl, hasht_g, hasht_t, dl_g);
+          break;
 
-          case 's':
-            comand_s(nl, hasht_g, hasht_t);
-            break;
+        case 's':
+          comand_s(nl, hasht_g, hasht_t);
+          break;
 
-          case 'g':
-            comand_g(nl, hasht_t);
-            break;
+        case 'g':
+          comand_g(nl, hasht_t);
+          break;
 
-          case 'x':
-            free_games(hasht_g, dl_g);
-            free_teams(hasht_t);
-            return 0;
-
-        }
+        case 'x':
+          free_games(hasht_g, dl_g);
+          free_teams(hasht_t);
+          return 0;
 
       }
+
     }
     else
     {

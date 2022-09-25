@@ -48,10 +48,8 @@ void addMatch(int debugLine, Hash_Table_Team *hash_Team, Hash_Table_Match *hash_
   {
     if (!strcmp(matchName, pHN->match->name))
     {
-      {
-        printf("%d Jogo existente.\n", debugLine);
-        return;
-      }
+      printf("%d Jogo existente.\n", debugLine);
+      return;
     }
     else
     {
@@ -63,10 +61,8 @@ void addMatch(int debugLine, Hash_Table_Team *hash_Team, Hash_Table_Match *hash_
 
   if ((!(t1 = teamExists(team1, hash_Team))) || (!(t2 = teamExists(team2, hash_Team))))
   {
-    {
-      printf("%d Equipa inexistente.\n", debugLine);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", debugLine);
+    return;
   }
   else
   {
@@ -105,10 +101,8 @@ void findMatch(int debugLine, Hash_Table_Match *t)
   {
     if (!strcmp(matchName, pHN->match->name))
     {
-      {
-        printf("%d %s %s %s %d %d\n", debugLine, pHN->match->name, pHN->match->team1, pHN->match->team2, pHN->match->score1, pHN->match->score2);
-        return;
-      }
+      printf("%d %s %s %s %d %d\n", debugLine, pHN->match->name, pHN->match->team1, pHN->match->team2, pHN->match->score1, pHN->match->score2);
+      return;
     }
     else
     {
@@ -125,8 +119,22 @@ void updateTeamScores(Team *t1, Team *t2, Match *match, LinkedList_Team *llT)
 {
   if (match->score1 > match->score2)
   {
+    if (t1->gamesWon == llT->maxVictories)
     {
-      if (t1->gamesWon == llT->maxVictories)
+      llT->maxTeamsVictories--;
+    }
+    else
+    {
+      
+    }
+
+    t1->gamesWon--;
+  }
+  else
+  {
+    if (match->score1 < match->score2)
+    {
+      if (t2->gamesWon == llT->maxVictories)
       {
         llT->maxTeamsVictories--;
       }
@@ -135,25 +143,7 @@ void updateTeamScores(Team *t1, Team *t2, Match *match, LinkedList_Team *llT)
         
       }
 
-      t1->gamesWon--;
-    }
-  }
-  else
-  {
-    if (match->score1 < match->score2)
-    {
-      {
-        if (t2->gamesWon == llT->maxVictories)
-        {
-          llT->maxTeamsVictories--;
-        }
-        else
-        {
-          
-        }
-
-        t2->gamesWon--;
-      }
+      t2->gamesWon--;
     }
     else
     {
@@ -164,9 +154,7 @@ void updateTeamScores(Team *t1, Team *t2, Match *match, LinkedList_Team *llT)
 
   if (llT->maxTeamsVictories == 0)
   {
-    {
-      updateMaxVictories(llT);
-    }
+    updateMaxVictories(llT);
   }
   else
   {
@@ -179,41 +167,33 @@ void freeLinkedListNode(List_Node_Match *lNM, LinkedList_Match *llM)
 {
   if ((lNM->prev == 0) && (lNM->next == 0))
   {
-    {
-      free(lNM);
-      llM->head = 0;
-      llM->tail = 0;
-    }
+    free(lNM);
+    llM->head = 0;
+    llM->tail = 0;
   }
   else
   {
     if ((lNM->prev == 0) && (lNM->next != 0))
     {
-      {
-        lNM->next->prev = lNM->prev;
-        llM->head = lNM->next;
-        free(lNM);
-      }
+      lNM->next->prev = lNM->prev;
+      llM->head = lNM->next;
+      free(lNM);
     }
     else
     {
       if ((lNM->prev != 0) && (lNM->next == 0))
       {
-        {
-          lNM->prev->next = lNM->next;
-          llM->tail = lNM->prev;
-          free(lNM);
-        }
+        lNM->prev->next = lNM->next;
+        llM->tail = lNM->prev;
+        free(lNM);
       }
       else
       {
         if ((lNM->prev != 0) && (lNM->next != 0))
         {
-          {
-            lNM->next->prev = lNM->prev;
-            lNM->prev->next = lNM->next;
-            free(lNM);
-          }
+          lNM->next->prev = lNM->prev;
+          lNM->prev->next = lNM->next;
+          free(lNM);
         }
         else
         {
@@ -238,43 +218,35 @@ void freeHashTableNode(Hash_Node_Match *hNM, int index, Hash_Table_Match *hTM)
 {
   if ((hNM->prev == 0) && (hNM->next == 0))
   {
-    {
-      free_nd_match(hNM);
-      free(hNM);
-      hTM->table[index] = 0;
-    }
+    free_nd_match(hNM);
+    free(hNM);
+    hTM->table[index] = 0;
   }
   else
   {
     if ((hNM->prev == 0) && (hNM->next != 0))
     {
-      {
-        hNM->next->prev = hNM->prev;
-        hTM->table[index] = hNM->next;
-        free_nd_match(hNM);
-        free(hNM);
-      }
+      hNM->next->prev = hNM->prev;
+      hTM->table[index] = hNM->next;
+      free_nd_match(hNM);
+      free(hNM);
     }
     else
     {
       if ((hNM->prev != 0) && (hNM->next == 0))
       {
-        {
-          hNM->prev->next = hNM->next;
-          free_nd_match(hNM);
-          free(hNM);
-        }
+        hNM->prev->next = hNM->next;
+        free_nd_match(hNM);
+        free(hNM);
       }
       else
       {
         if ((hNM->prev != 0) && (hNM->next != 0))
         {
-          {
-            hNM->prev->next = hNM->next;
-            hNM->next->prev = hNM->prev;
-            free_nd_match(hNM);
-            free(hNM);
-          }
+          hNM->prev->next = hNM->next;
+          hNM->next->prev = hNM->prev;
+          free_nd_match(hNM);
+          free(hNM);
         }
         else
         {
@@ -314,13 +286,11 @@ void deleteMatch(int debugLine, Hash_Table_Match *hash_Match, LinkedList_Team *l
   {
     if (!strcmp(matchName, pHN->match->name))
     {
-      {
-        t1 = teamExists(pHN->match->team1, hTT);
-        t2 = teamExists(pHN->match->team2, hTT);
-        updateTeamScores(t1, t2, pHN->match, ll_Teams);
-        freeMatch(pHN, index, hash_Match, ll_Matches);
-        return;
-      }
+      t1 = teamExists(pHN->match->team1, hTT);
+      t2 = teamExists(pHN->match->team2, hTT);
+      updateTeamScores(t1, t2, pHN->match, ll_Teams);
+      freeMatch(pHN, index, hash_Match, ll_Matches);
+      return;
     }
     else
     {
@@ -397,10 +367,8 @@ void changeMatchScore(int debugLine, Hash_Table_Match *hTM, Hash_Table_Team *hTT
   {
     if (!strcmp(matchName, pHN->match->name))
     {
-      {
-        changeScores(score1, score2, pHN->match, hTT, llT);
-        return;
-      }
+      changeScores(score1, score2, pHN->match, hTT, llT);
+      return;
     }
     else
     {

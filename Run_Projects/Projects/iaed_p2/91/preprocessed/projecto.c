@@ -13,11 +13,9 @@ void adiciona_jogo(int nl, TabelaJogos *tabJogos, TabelaEquipas *tabEquipas)
   Equipa *e2;
   if (procura_jogo(tabJogos, jogo->nome) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", nl);
-      free_jogo(jogo);
-      return;
-    }
+    printf("%d Jogo existente.\n", nl);
+    free_jogo(jogo);
+    return;
   }
   else
   {
@@ -28,11 +26,9 @@ void adiciona_jogo(int nl, TabelaJogos *tabJogos, TabelaEquipas *tabEquipas)
   e2 = procura_equipa(tabEquipas, jogo->equipas[1]);
   if ((e1 == 0) || (e2 == 0))
   {
-    {
-      printf("%d Equipa inexistente.\n", nl);
-      free_jogo(jogo);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", nl);
+    free_jogo(jogo);
+    return;
   }
   else
   {
@@ -41,17 +37,13 @@ void adiciona_jogo(int nl, TabelaJogos *tabJogos, TabelaEquipas *tabEquipas)
 
   if (jogo->scores[0] > jogo->scores[1])
   {
-    {
-      e1->score++;
-    }
+    e1->score++;
   }
   else
   {
     if (jogo->scores[0] < jogo->scores[1])
     {
-      {
-        e2->score++;
-      }
+      e2->score++;
     }
     else
     {
@@ -75,10 +67,8 @@ void adiciona_equipa(int nl, TabelaEquipas *tabEquipas)
   input[10 - 1] = '\0';
   if (procura_equipa(tabEquipas, input) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", nl);
-      return;
-    }
+    printf("%d Equipa existente.\n", nl);
+    return;
   }
   else
   {
@@ -98,9 +88,7 @@ void lista_jogos(int nl, TabelaJogos *tabJogos)
   {
     if (no->v != 0)
     {
-      {
-        printf("%d %s %s %s %d %d\n", nl, no->v->nome, no->v->equipas[0], no->v->equipas[1], no->v->scores[0], no->v->scores[1]);
-      }
+      printf("%d %s %s %s %d %d\n", nl, no->v->nome, no->v->equipas[0], no->v->equipas[1], no->v->scores[0], no->v->scores[1]);
     }
     else
     {
@@ -125,10 +113,8 @@ void procurar_jogo(int nl, TabelaJogos *tabJogos)
   jogo = procura_jogo(tabJogos, nome);
   if (jogo == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", nl);
+    return;
   }
   else
   {
@@ -151,10 +137,8 @@ void procurar_equipa(int nl, TabelaEquipas *tabEquipas)
   equipa = procura_equipa(tabEquipas, nome);
   if (equipa == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", nl);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", nl);
+    return;
   }
   else
   {
@@ -179,10 +163,8 @@ void apaga_jogo(int nl, TabelaJogos *tabJogos, TabelaEquipas *tabEquipas)
   jogo = procura_jogo(tabJogos, nome);
   if (jogo == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", nl);
+    return;
   }
   else
   {
@@ -193,17 +175,13 @@ void apaga_jogo(int nl, TabelaJogos *tabJogos, TabelaEquipas *tabEquipas)
   e2 = procura_equipa(tabEquipas, jogo->equipas[1]);
   if (jogo->scores[0] > jogo->scores[1])
   {
-    {
-      e1->score--;
-    }
+    e1->score--;
   }
   else
   {
     if (jogo->scores[0] < jogo->scores[1])
     {
-      {
-        e2->score--;
-      }
+      e2->score--;
     }
     else
     {
@@ -233,10 +211,8 @@ void altera_score(int nl, TabelaJogos *tabJogos, TabelaEquipas *tabEquipas)
   jogo = procura_jogo(tabJogos, nome);
   if (jogo == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", nl);
+    return;
   }
   else
   {
@@ -247,17 +223,13 @@ void altera_score(int nl, TabelaJogos *tabJogos, TabelaEquipas *tabEquipas)
   e2 = procura_equipa(tabEquipas, jogo->equipas[1]);
   if (jogo->scores[0] > jogo->scores[1])
   {
-    {
-      e1->score--;
-    }
+    e1->score--;
   }
   else
   {
     if (jogo->scores[0] < jogo->scores[1])
     {
-      {
-        e2->score--;
-      }
+      e2->score--;
     }
     else
     {
@@ -270,17 +242,13 @@ void altera_score(int nl, TabelaJogos *tabJogos, TabelaEquipas *tabEquipas)
   jogo->scores[1] = novosScores[1];
   if (jogo->scores[0] > jogo->scores[1])
   {
-    {
-      e1->score++;
-    }
+    e1->score++;
   }
   else
   {
     if (jogo->scores[0] < jogo->scores[1])
     {
-      {
-        e2->score++;
-      }
+      e2->score++;
     }
     else
     {
@@ -311,30 +279,24 @@ void melhores_equipas(int nl, TabelaEquipas *tabEquipas)
   {
     if (tabEquipas->equipas[i] != 0)
     {
+      if (tabEquipas->equipas[i]->score > jogosGanhos)
       {
-        if (tabEquipas->equipas[i]->score > jogosGanhos)
+        jogosGanhos = tabEquipas->equipas[i]->score;
+        numEquipas = 1;
+      }
+      else
+      {
+        if (tabEquipas->equipas[i]->score == jogosGanhos)
         {
-          {
-            jogosGanhos = tabEquipas->equipas[i]->score;
-            numEquipas = 1;
-          }
+          numEquipas++;
         }
         else
         {
-          if (tabEquipas->equipas[i]->score == jogosGanhos)
-          {
-            {
-              numEquipas++;
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
+
     }
     else
     {
@@ -349,10 +311,8 @@ void melhores_equipas(int nl, TabelaEquipas *tabEquipas)
   {
     if ((tabEquipas->equipas[i] != 0) && (tabEquipas->equipas[i]->score == jogosGanhos))
     {
-      {
-        equipas[j] = tabEquipas->equipas[i]->nome;
-        j++;
-      }
+      equipas[j] = tabEquipas->equipas[i]->nome;
+      j++;
     }
     else
     {

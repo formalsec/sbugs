@@ -47,10 +47,8 @@ int main()
         GAME *paux = 0;
         if (linkedlist == 0)
         {
-          {
-            NL++;
-            break;
-          }
+          NL++;
+          break;
         }
         else
         {
@@ -63,15 +61,11 @@ int main()
           printf("%d %s %s %s %d %d\n", NL, paux->name, paux->team1->name, paux->team2->name, paux->score[0], paux->score[1]);
           if (paux->pnext != 0)
           {
-            {
-              paux = paux->pnext;
-            }
+            paux = paux->pnext;
           }
           else
           {
-            {
-              break;
-            }
+            break;
           }
 
         }
@@ -92,15 +86,11 @@ int main()
         game = ht_get_game(ht_game, input);
         if (game != 0)
         {
-          {
-            printf("%d %s %s %s %d %d\n", NL, game->name, game->team1->name, game->team2->name, game->score[0], game->score[1]);
-          }
+          printf("%d %s %s %s %d %d\n", NL, game->name, game->team1->name, game->team2->name, game->score[0], game->score[1]);
         }
         else
         {
-          {
-            printf("%d Jogo inexistente.\n", NL);
-          }
+          printf("%d Jogo inexistente.\n", NL);
         }
 
         NL++;
@@ -119,15 +109,11 @@ int main()
         team = ht_get_team(ht_team, input);
         if (team != 0)
         {
-          {
-            printf("%d %s %d\n", NL, team->name, team->gameswon);
-          }
+          printf("%d %s %d\n", NL, team->name, team->gameswon);
         }
         else
         {
-          {
-            printf("%d Equipa inexistente.\n", NL);
-          }
+          printf("%d Equipa inexistente.\n", NL);
         }
 
         NL++;
@@ -146,15 +132,11 @@ int main()
         game = ht_get_game(ht_game, input);
         if (game != 0)
         {
-          {
-            linkedlist = ht_remove_game(ht_game, ht_team, game, linkedlist);
-          }
+          linkedlist = ht_remove_game(ht_game, ht_team, game, linkedlist);
         }
         else
         {
-          {
-            printf("%d Jogo inexistente.\n", NL);
-          }
+          printf("%d Jogo inexistente.\n", NL);
         }
 
         NL++;
@@ -178,98 +160,76 @@ int main()
         auxgame = ht_get_game(ht_game, name);
         if (auxgame == 0)
         {
-          {
-            printf("%d Jogo inexistente.\n", NL);
-            NL++;
-            break;
-          }
+          printf("%d Jogo inexistente.\n", NL);
+          NL++;
+          break;
         }
         else
         {
+          if (auxgame->score[0] > auxgame->score[1])
           {
-            if (auxgame->score[0] > auxgame->score[1])
+            j = 1;
+          }
+          else
+          {
+            if (auxgame->score[1] > auxgame->score[0])
             {
-              {
-                j = 1;
-              }
+              j = 2;
             }
             else
             {
-              if (auxgame->score[1] > auxgame->score[0])
-              {
-                {
-                  j = 2;
-                }
-              }
-              else
-              {
-                {
-                  j = 3;
-                }
-              }
-
+              j = 3;
             }
 
           }
+
         }
 
         auxgame->score[0] = score1;
         auxgame->score[1] = score2;
         if ((auxgame->score[1] > auxgame->score[0]) && (j == 1))
         {
-          {
-            TEAM *team = ht_get_team(ht_team, auxgame->team2->name);
-            TEAM *auxteam = ht_get_team(ht_team, auxgame->team1->name);
-            team->gameswon++;
-            auxteam->gameswon--;
-          }
+          TEAM *team = ht_get_team(ht_team, auxgame->team2->name);
+          TEAM *auxteam = ht_get_team(ht_team, auxgame->team1->name);
+          team->gameswon++;
+          auxteam->gameswon--;
         }
         else
         {
           if ((auxgame->score[1] == auxgame->score[0]) && (j == 1))
           {
-            {
-              TEAM *auxteam = ht_get_team(ht_team, auxgame->team1->name);
-              auxteam->gameswon--;
-            }
+            TEAM *auxteam = ht_get_team(ht_team, auxgame->team1->name);
+            auxteam->gameswon--;
           }
           else
           {
             if ((auxgame->score[1] > auxgame->score[0]) && (j == 3))
             {
-              {
-                TEAM *team = ht_get_team(ht_team, auxgame->team2->name);
-                team->gameswon++;
-              }
+              TEAM *team = ht_get_team(ht_team, auxgame->team2->name);
+              team->gameswon++;
             }
             else
             {
               if ((auxgame->score[0] > auxgame->score[1]) && (j == 3))
               {
-                {
-                  TEAM *auxteam = ht_get_team(ht_team, auxgame->team1->name);
-                  auxteam->gameswon++;
-                }
+                TEAM *auxteam = ht_get_team(ht_team, auxgame->team1->name);
+                auxteam->gameswon++;
               }
               else
               {
                 if ((auxgame->score[0] > auxgame->score[1]) && (j == 2))
                 {
-                  {
-                    TEAM *team = ht_get_team(ht_team, auxgame->team2->name);
-                    TEAM *auxteam = ht_get_team(ht_team, auxgame->team1->name);
-                    auxteam->gameswon++;
-                    team->gameswon--;
-                  }
+                  TEAM *team = ht_get_team(ht_team, auxgame->team2->name);
+                  TEAM *auxteam = ht_get_team(ht_team, auxgame->team1->name);
+                  auxteam->gameswon++;
+                  team->gameswon--;
                 }
                 else
                 {
                   if ((auxgame->score[0] == auxgame->score[1]) && (j == 2))
                   {
-                    {
-                      TEAM *team = ht_get_team(ht_team, auxgame->team2->name);
-                      team->gameswon--;
-                    }
+                    TEAM *team = ht_get_team(ht_team, auxgame->team2->name);
+                    team->gameswon--;
                   }
                   else
                   {

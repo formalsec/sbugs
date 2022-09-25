@@ -203,37 +203,19 @@ void funcao_A(encomenda conj_enc[500], produto sist[10000], long int encs_exist[
         }
         else
         {
+          int i;
+          int estado;
+          long int ind;
+          estado = 0;
+          i = 0;
+          ind = conj_enc[ienc].indice;
+          sist[iprd].qtd -= quantd;
+          for (i = 0; i < ind; i++)
           {
-            int i;
-            int estado;
-            long int ind;
-            estado = 0;
-            i = 0;
-            ind = conj_enc[ienc].indice;
-            sist[iprd].qtd -= quantd;
-            for (i = 0; i < ind; i++)
+            if (conj_enc[ienc].id[i] == iprd)
             {
-              if (conj_enc[ienc].id[i] == iprd)
-              {
-                {
-                  estado = 1;
-                  conj_enc[ienc].quant[i] += quantd;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-            if (estado == 0)
-            {
-              {
-                conj_enc[ienc].id[ind] = iprd;
-                conj_enc[ienc].quant[ind] = quantd;
-                ++conj_enc[ienc].indice;
-              }
+              estado = 1;
+              conj_enc[ienc].quant[i] += quantd;
             }
             else
             {
@@ -241,6 +223,18 @@ void funcao_A(encomenda conj_enc[500], produto sist[10000], long int encs_exist[
             }
 
           }
+
+          if (estado == 0)
+          {
+            conj_enc[ienc].id[ind] = iprd;
+            conj_enc[ienc].quant[ind] = quantd;
+            ++conj_enc[ienc].indice;
+          }
+          else
+          {
+            
+          }
+
         }
 
       }
@@ -294,42 +288,20 @@ void funcao_R(encomenda conj_enc[500], produto sist[10000], long int prods_exist
     }
     else
     {
+      long int ini;
+      long int i_prod_enc;
+      long int ind_p;
+      long int a;
+      long int estado;
+      ind_p = conj_enc[ienc].indice;
+      estado = 0;
+      for (i_prod_enc = 0; i_prod_enc < ind_p; i_prod_enc++)
       {
-        long int ini;
-        long int i_prod_enc;
-        long int ind_p;
-        long int a;
-        long int estado;
-        ind_p = conj_enc[ienc].indice;
-        estado = 0;
-        for (i_prod_enc = 0; i_prod_enc < ind_p; i_prod_enc++)
+        if (conj_enc[ienc].id[i_prod_enc] == iprd)
         {
-          if (conj_enc[ienc].id[i_prod_enc] == iprd)
-          {
-            {
-              a = i_prod_enc;
-              estado = 1;
-              sist[iprd].qtd += conj_enc[ienc].quant[i_prod_enc];
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-        if (estado == 1)
-        {
-          {
-            for (ini = a; ini < (ind_p - 1); ini++)
-            {
-              conj_enc[ienc].id[ini] = conj_enc[ienc].id[ini + 1];
-              conj_enc[ienc].quant[ini] = conj_enc[ienc].quant[ini + 1];
-            }
-
-            --conj_enc[ienc].indice;
-          }
+          a = i_prod_enc;
+          estado = 1;
+          sist[iprd].qtd += conj_enc[ienc].quant[i_prod_enc];
         }
         else
         {
@@ -337,6 +309,22 @@ void funcao_R(encomenda conj_enc[500], produto sist[10000], long int prods_exist
         }
 
       }
+
+      if (estado == 1)
+      {
+        for (ini = a; ini < (ind_p - 1); ini++)
+        {
+          conj_enc[ienc].id[ini] = conj_enc[ienc].id[ini + 1];
+          conj_enc[ienc].quant[ini] = conj_enc[ienc].quant[ini + 1];
+        }
+
+        --conj_enc[ienc].indice;
+      }
+      else
+      {
+        
+      }
+
     }
 
   }
@@ -353,21 +341,19 @@ void funcao_C(encomenda conj_enc[500], produto sist[10000], long int encs_exist[
   }
   else
   {
+    int i_prd_enc;
+    int ind_p;
+    int preco_t;
+    long int idprd;
+    preco_t = 0;
+    ind_p = conj_enc[ienc].indice;
+    for (i_prd_enc = 0; i_prd_enc < ind_p; i_prd_enc++)
     {
-      int i_prd_enc;
-      int ind_p;
-      int preco_t;
-      long int idprd;
-      preco_t = 0;
-      ind_p = conj_enc[ienc].indice;
-      for (i_prd_enc = 0; i_prd_enc < ind_p; i_prd_enc++)
-      {
-        idprd = conj_enc[ienc].id[i_prd_enc];
-        preco_t += conj_enc[ienc].quant[i_prd_enc] * sist[idprd].preco;
-      }
-
-      printf("Custo da encomenda %ld %d.\n", ienc, preco_t);
+      idprd = conj_enc[ienc].id[i_prd_enc];
+      preco_t += conj_enc[ienc].quant[i_prd_enc] * sist[idprd].preco;
     }
+
+    printf("Custo da encomenda %ld %d.\n", ienc, preco_t);
   }
 
 }
@@ -407,33 +393,19 @@ void funcao_E(encomenda conj_enc[500], produto sist[10000], long int encs_exist[
     }
     else
     {
+      long int quantd;
+      long int estado;
+      int i_prd_enc;
+      int ind_p;
+      estado = 0;
+      ind_p = conj_enc[ienc].indice;
+      for (i_prd_enc = 0; (i_prd_enc < ind_p) && (estado == 0); i_prd_enc++)
       {
-        long int quantd;
-        long int estado;
-        int i_prd_enc;
-        int ind_p;
-        estado = 0;
-        ind_p = conj_enc[ienc].indice;
-        for (i_prd_enc = 0; (i_prd_enc < ind_p) && (estado == 0); i_prd_enc++)
+        if (conj_enc[ienc].id[i_prd_enc] == iprd)
         {
-          if (conj_enc[ienc].id[i_prd_enc] == iprd)
-          {
-            {
-              estado = 1;
-              quantd = conj_enc[ienc].quant[i_prd_enc];
-              printf("%s %ld.\n", sist[iprd].descricao, quantd);
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-        if (estado == 0)
-        {
-          printf("%s %d.\n", sist[iprd].descricao, 0);
+          estado = 1;
+          quantd = conj_enc[ienc].quant[i_prd_enc];
+          printf("%s %ld.\n", sist[iprd].descricao, quantd);
         }
         else
         {
@@ -441,6 +413,16 @@ void funcao_E(encomenda conj_enc[500], produto sist[10000], long int encs_exist[
         }
 
       }
+
+      if (estado == 0)
+      {
+        printf("%s %d.\n", sist[iprd].descricao, 0);
+      }
+      else
+      {
+        
+      }
+
     }
 
   }
@@ -457,45 +439,41 @@ void funcao_m(encomenda conj_enc[500], long int prods_exist[10000], long int enc
   }
   else
   {
+    long int res_enc;
+    long int quantd;
+    long int id_enc;
+    long int i_prod_enc;
+    long int ind_p;
+    res_enc = 0;
+    quantd = -1;
+    for (id_enc = 0; encs_exist[id_enc] != 0; id_enc++)
     {
-      long int res_enc;
-      long int quantd;
-      long int id_enc;
-      long int i_prod_enc;
-      long int ind_p;
-      res_enc = 0;
-      quantd = -1;
-      for (id_enc = 0; encs_exist[id_enc] != 0; id_enc++)
+      ind_p = conj_enc[id_enc].indice;
+      for (i_prod_enc = 0; i_prod_enc < ind_p; i_prod_enc++)
       {
-        ind_p = conj_enc[id_enc].indice;
-        for (i_prod_enc = 0; i_prod_enc < ind_p; i_prod_enc++)
+        if ((conj_enc[id_enc].id[i_prod_enc] == iprd) && (conj_enc[id_enc].quant[i_prod_enc] > quantd))
         {
-          if ((conj_enc[id_enc].id[i_prod_enc] == iprd) && (conj_enc[id_enc].quant[i_prod_enc] > quantd))
-          {
-            {
-              quantd = conj_enc[id_enc].quant[i_prod_enc];
-              res_enc = id_enc;
-            }
-          }
-          else
-          {
-            
-          }
-
+          quantd = conj_enc[id_enc].quant[i_prod_enc];
+          res_enc = id_enc;
+        }
+        else
+        {
+          
         }
 
       }
 
-      if (quantd != (-1))
-      {
-        printf("Maximo produto %ld %ld %ld.\n", iprd, res_enc, quantd);
-      }
-      else
-      {
-        
-      }
-
     }
+
+    if (quantd != (-1))
+    {
+      printf("Maximo produto %ld %ld %ld.\n", iprd, res_enc, quantd);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -531,30 +509,28 @@ void funcao_L(produto sist[10000], encomenda conj_enc[500], long int encs_exist[
   }
   else
   {
+    long int iprd;
+    long int ind_p;
+    long int i;
+    long int iprd2;
+    long int aux[200];
+    long int aux2[200];
+    ind_p = conj_enc[ienc].indice;
+    for (i = 0; i < ind_p; i++)
     {
-      long int iprd;
-      long int ind_p;
-      long int i;
-      long int iprd2;
-      long int aux[200];
-      long int aux2[200];
-      ind_p = conj_enc[ienc].indice;
-      for (i = 0; i < ind_p; i++)
-      {
-        aux[i] = conj_enc[ienc].id[i];
-        aux2[i] = i;
-      }
-
-      selectionsort2(sist, aux, aux2, ind_p);
-      printf("Encomenda %ld\n", ienc);
-      for (i = 0; i < ind_p; i++)
-      {
-        iprd = aux[i];
-        iprd2 = aux2[i];
-        printf("* %s %ld %ld\n", sist[iprd].descricao, sist[iprd].preco, conj_enc[ienc].quant[iprd2]);
-      }
-
+      aux[i] = conj_enc[ienc].id[i];
+      aux2[i] = i;
     }
+
+    selectionsort2(sist, aux, aux2, ind_p);
+    printf("Encomenda %ld\n", ienc);
+    for (i = 0; i < ind_p; i++)
+    {
+      iprd = aux[i];
+      iprd2 = aux2[i];
+      printf("* %s %ld %ld\n", sist[iprd].descricao, sist[iprd].preco, conj_enc[ienc].quant[iprd2]);
+    }
+
   }
 
 }
@@ -670,10 +646,8 @@ void selectionsort2(produto sist[10000], long int vetor_num[], long int vetor_in
       result = strcmp(sist[vetor_num[j]].descricao, sist[vetor_num[min]].descricao);
       if (result < 0)
       {
-        {
-          min = j;
-          min2 = j;
-        }
+        min = j;
+        min2 = j;
       }
       else
       {

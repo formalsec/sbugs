@@ -37,54 +37,42 @@ void organiza_lexic(equipa *equipa, hash_equipa **equipas_lexic)
   j->next = 0;
   if ((*equipas_lexic) == 0)
   {
-    {
-      *equipas_lexic = j;
-    }
+    *equipas_lexic = j;
   }
   else
   {
+    for (ord = *equipas_lexic, anterior = 0; ord != 0; anterior = ord, ord = ord->next)
     {
-      for (ord = *equipas_lexic, anterior = 0; ord != 0; anterior = ord, ord = ord->next)
+      if (strcmp(j->equipa->nome, ord->equipa->nome) < 0)
       {
-        if (strcmp(j->equipa->nome, ord->equipa->nome) < 0)
+        if (ord == (*equipas_lexic))
         {
-          {
-            if (ord == (*equipas_lexic))
-            {
-              {
-                j->next = *equipas_lexic;
-                *equipas_lexic = j;
-              }
-            }
-            else
-            {
-              {
-                anterior->next = j;
-                j->next = ord;
-              }
-            }
-
-          }
+          j->next = *equipas_lexic;
+          *equipas_lexic = j;
         }
         else
         {
-          if ((strcmp(j->equipa->nome, ord->equipa->nome) > 0) && (ord->next == 0))
-          {
-            {
-              ord->next = j;
-              j->next = 0;
-            }
-          }
-          else
-          {
-            
-          }
+          anterior->next = j;
+          j->next = ord;
+        }
 
+      }
+      else
+      {
+        if ((strcmp(j->equipa->nome, ord->equipa->nome) > 0) && (ord->next == 0))
+        {
+          ord->next = j;
+          j->next = 0;
+        }
+        else
+        {
+          
         }
 
       }
 
     }
+
   }
 
 }
@@ -138,13 +126,11 @@ void adiciona_equipa(hash_equipa **hashtable_e, int NL, hash_equipa **equipas_le
   }
   else
   {
-    {
-      j = malloc(sizeof(hash_equipa));
-      j->equipa = cria_equipa(buffer);
-      j->next = hashtable_e[indice];
-      hashtable_e[indice] = j;
-      organiza_lexic(j->equipa, equipas_lexic);
-    }
+    j = malloc(sizeof(hash_equipa));
+    j->equipa = cria_equipa(buffer);
+    j->next = hashtable_e[indice];
+    hashtable_e[indice] = j;
+    organiza_lexic(j->equipa, equipas_lexic);
   }
 
 }
@@ -185,22 +171,20 @@ void mais_jogos_ganhos(hash_equipa *equipas_lexic, int NL, int max)
   hash_equipa *j;
   if (equipas_lexic != 0)
   {
+    printf("%d Melhores %d\n", NL, max);
+    for (j = equipas_lexic; j != 0; j = j->next)
     {
-      printf("%d Melhores %d\n", NL, max);
-      for (j = equipas_lexic; j != 0; j = j->next)
+      if (j->equipa->score == max)
       {
-        if (j->equipa->score == max)
-        {
-          printf("%d * %s\n", NL, j->equipa->nome);
-        }
-        else
-        {
-          
-        }
-
+        printf("%d * %s\n", NL, j->equipa->nome);
+      }
+      else
+      {
+        
       }
 
     }
+
   }
   else
   {
@@ -299,33 +283,31 @@ void adiciona_jogo(hash_jogo **hashtable_j, hash_equipa **hashtable_e, int NL, h
     }
     else
     {
+      j = malloc(sizeof(hash_jogo));
+      j->jogo = cria_jogo(hashtable_e, jogo, equipa1, equipa2, score1, score2);
+      ord = malloc(sizeof(hash_jogo));
+      ord->jogo = j->jogo;
+      if (score1 > score2)
       {
-        j = malloc(sizeof(hash_jogo));
-        j->jogo = cria_jogo(hashtable_e, jogo, equipa1, equipa2, score1, score2);
-        ord = malloc(sizeof(hash_jogo));
-        ord->jogo = j->jogo;
-        if (score1 > score2)
+        j->jogo->equipa1->score += 1;
+      }
+      else
+      {
+        if (score1 < score2)
         {
-          j->jogo->equipa1->score += 1;
+          j->jogo->equipa2->score += 1;
         }
         else
         {
-          if (score1 < score2)
-          {
-            j->jogo->equipa2->score += 1;
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
-        j->next = hashtable_j[indice];
-        hashtable_j[indice] = j;
-        ord->next = *jogos_ordem;
-        *jogos_ordem = ord;
       }
+
+      j->next = hashtable_j[indice];
+      hashtable_j[indice] = j;
+      ord->next = *jogos_ordem;
+      *jogos_ordem = ord;
     }
 
   }
@@ -360,19 +342,15 @@ void compara_scores(int a, int b, equipa *equipa1, equipa *equipa2)
         {
           if ((a < 0) && (b > 0))
           {
-            {
-              equipa1->score += 1;
-              equipa2->score -= 1;
-            }
+            equipa1->score += 1;
+            equipa2->score -= 1;
           }
           else
           {
             if ((a > 0) && (b < 0))
             {
-              {
-                equipa1->score -= 1;
-                equipa2->score += 1;
-              }
+              equipa1->score -= 1;
+              equipa2->score += 1;
             }
             else
             {
@@ -411,12 +389,10 @@ void altera_pontuacao(hash_jogo **hashtable_j, int NL)
   }
   else
   {
-    {
-      j = procura_jogo(hashtable_j, jogo);
-      compara_scores(j->score1 - j->score2, score1 - score2, j->equipa1, j->equipa2);
-      j->score1 = score1;
-      j->score2 = score2;
-    }
+    j = procura_jogo(hashtable_j, jogo);
+    compara_scores(j->score1 - j->score2, score1 - score2, j->equipa1, j->equipa2);
+    j->score1 = score1;
+    j->score2 = score2;
   }
 
 }
@@ -429,21 +405,17 @@ void apaga_jogo_ordenado(hash_jogo **jogos_ordem, char *jogo)
   {
     if (strcmp(j->jogo->nome, jogo) == 0)
     {
+      if (j == (*jogos_ordem))
       {
-        if (j == (*jogos_ordem))
-        {
-          *jogos_ordem = j->next;
-        }
-        else
-        {
-          {
-            anterior->next = j->next;
-            free(j);
-            break;
-          }
-        }
-
+        *jogos_ordem = j->next;
       }
+      else
+      {
+        anterior->next = j->next;
+        free(j);
+        break;
+      }
+
     }
     else
     {
@@ -472,38 +444,34 @@ void apaga_jogo_main(hash_jogo **hashtable_j, int NL, hash_jogo **jogos_ordem)
   }
   else
   {
+    indice = hash(jogo, 509);
+    for (j = hashtable_j[indice], anterior = 0; j != 0; anterior = j, j = j->next)
     {
-      indice = hash(jogo, 509);
-      for (j = hashtable_j[indice], anterior = 0; j != 0; anterior = j, j = j->next)
+      if (strcmp(j->jogo->nome, jogo) == 0)
       {
-        if (strcmp(j->jogo->nome, jogo) == 0)
+        if (j == hashtable_j[indice])
         {
-          {
-            if (j == hashtable_j[indice])
-            {
-              hashtable_j[indice] = j->next;
-            }
-            else
-            {
-              anterior->next = j->next;
-            }
-
-            compara_scores(j->jogo->score1 - j->jogo->score2, 0, j->jogo->equipa1, j->jogo->equipa2);
-            apaga_jogo_ordenado(jogos_ordem, jogo);
-            free(j->jogo->nome);
-            free(j->jogo);
-            free(j);
-            break;
-          }
+          hashtable_j[indice] = j->next;
         }
         else
         {
-          
+          anterior->next = j->next;
         }
 
+        compara_scores(j->jogo->score1 - j->jogo->score2, 0, j->jogo->equipa1, j->jogo->equipa2);
+        apaga_jogo_ordenado(jogos_ordem, jogo);
+        free(j->jogo->nome);
+        free(j->jogo);
+        free(j);
+        break;
+      }
+      else
+      {
+        
       }
 
     }
+
   }
 
 }

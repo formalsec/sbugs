@@ -79,17 +79,15 @@ void r(int ContadorProd, Produto armazem[10000])
   qtd = new_sym_var(sizeof(int) * 8);
   if (id < ContadorProd)
   {
+    if ((armazem[id].quantidade - qtd) >= 0)
     {
-      if ((armazem[id].quantidade - qtd) >= 0)
-      {
-        armazem[id].quantidade -= qtd;
-      }
-      else
-      {
-        printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, id);
-      }
-
+      armazem[id].quantidade -= qtd;
     }
+    else
+    {
+      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, id);
+    }
+
   }
   else
   {
@@ -110,26 +108,22 @@ void p(int ContadorProd, int ContadorEnc, Produto armazem[10000], Encomenda list
   price = new_sym_var(sizeof(int) * 8);
   if (id < ContadorProd)
   {
+    for (e = 0; e < ContadorEnc; e++)
     {
-      for (e = 0; e < ContadorEnc; e++)
+      if (lista_Enc[e].lista_idsProd_Enc[id] == id)
       {
-        if (lista_Enc[e].lista_idsProd_Enc[id] == id)
-        {
-          {
-            lista_Enc[e].precoEnc -= armazem[id].preco * lista_Enc[e].ProdutosEnc[id].quantidade;
-            armazem[id].preco = price;
-            lista_Enc[e].precoEnc += armazem[id].preco * lista_Enc[e].ProdutosEnc[id].quantidade;
-          }
-        }
-        else
-        {
-          
-        }
-
+        lista_Enc[e].precoEnc -= armazem[id].preco * lista_Enc[e].ProdutosEnc[id].quantidade;
+        armazem[id].preco = price;
+        lista_Enc[e].precoEnc += armazem[id].preco * lista_Enc[e].ProdutosEnc[id].quantidade;
+      }
+      else
+      {
+        
       }
 
-      armazem[id].preco = price;
     }
+
+    armazem[id].preco = price;
   }
   else
   {
@@ -181,43 +175,37 @@ void A(int ContadorEnc, int ContadorProd, Encomenda lista_Enc[500], Produto arma
         }
         else
         {
+          for (e = 0; e < lista_Enc[IdEnc].contador; e++)
           {
-            for (e = 0; e < lista_Enc[IdEnc].contador; e++)
+            if (lista_Enc[IdEnc].ProdutosEnc[e].descricao == armazem[IdProd].descricao)
             {
-              if (lista_Enc[IdEnc].ProdutosEnc[e].descricao == armazem[IdProd].descricao)
-              {
-                VarEstado = 1;
-              }
-              else
-              {
-                
-              }
-
-            }
-
-            if (VarEstado == 1)
-            {
-              {
-                lista_Enc[IdEnc].precoEnc += armazem[IdProd].preco * qtd;
-                lista_Enc[IdEnc].pesoEnc += armazem[IdProd].peso * qtd;
-                lista_Enc[IdEnc].ProdutosEnc[IdProd].quantidade += qtd;
-                armazem[IdProd].quantidade -= qtd;
-              }
+              VarEstado = 1;
             }
             else
             {
-              {
-                lista_Enc[IdEnc].precoEnc += armazem[IdProd].preco * qtd;
-                lista_Enc[IdEnc].pesoEnc += armazem[IdProd].peso * qtd;
-                strcpy(lista_Enc[IdEnc].ProdutosEnc[IdProd].descricao, armazem[IdProd].descricao);
-                lista_Enc[IdEnc].ProdutosEnc[IdProd].quantidade += qtd;
-                armazem[IdProd].quantidade -= qtd;
-                lista_Enc[IdEnc].contador += 1;
-                lista_Enc[IdEnc].lista_idsProd_Enc[IdProd] = IdProd;
-              }
+              
             }
 
           }
+
+          if (VarEstado == 1)
+          {
+            lista_Enc[IdEnc].precoEnc += armazem[IdProd].preco * qtd;
+            lista_Enc[IdEnc].pesoEnc += armazem[IdProd].peso * qtd;
+            lista_Enc[IdEnc].ProdutosEnc[IdProd].quantidade += qtd;
+            armazem[IdProd].quantidade -= qtd;
+          }
+          else
+          {
+            lista_Enc[IdEnc].precoEnc += armazem[IdProd].preco * qtd;
+            lista_Enc[IdEnc].pesoEnc += armazem[IdProd].peso * qtd;
+            strcpy(lista_Enc[IdEnc].ProdutosEnc[IdProd].descricao, armazem[IdProd].descricao);
+            lista_Enc[IdEnc].ProdutosEnc[IdProd].quantidade += qtd;
+            armazem[IdProd].quantidade -= qtd;
+            lista_Enc[IdEnc].contador += 1;
+            lista_Enc[IdEnc].lista_idsProd_Enc[IdProd] = IdProd;
+          }
+
         }
 
       }
@@ -258,22 +246,18 @@ void R(int ContadorProd, int ContadorEnc, Encomenda lista_Enc[500], Produto arma
   }
   else
   {
+    if (IdProd > (ContadorProd - 1))
     {
-      if (IdProd > (ContadorProd - 1))
-      {
-        printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", IdProd, IdEnc);
-      }
-      else
-      {
-        {
-          armazem[IdProd].quantidade += lista_Enc[IdEnc].ProdutosEnc[IdProd].quantidade;
-          lista_Enc[IdEnc].pesoEnc -= armazem[IdProd].peso * lista_Enc[IdEnc].ProdutosEnc[IdProd].quantidade;
-          lista_Enc[IdEnc].precoEnc -= armazem[IdProd].preco * lista_Enc[IdEnc].ProdutosEnc[IdProd].quantidade;
-          lista_Enc[IdEnc].ProdutosEnc[IdProd].quantidade = 0;
-        }
-      }
-
+      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", IdProd, IdEnc);
     }
+    else
+    {
+      armazem[IdProd].quantidade += lista_Enc[IdEnc].ProdutosEnc[IdProd].quantidade;
+      lista_Enc[IdEnc].pesoEnc -= armazem[IdProd].peso * lista_Enc[IdEnc].ProdutosEnc[IdProd].quantidade;
+      lista_Enc[IdEnc].precoEnc -= armazem[IdProd].preco * lista_Enc[IdEnc].ProdutosEnc[IdProd].quantidade;
+      lista_Enc[IdEnc].ProdutosEnc[IdProd].quantidade = 0;
+    }
+
   }
 
 }
@@ -293,34 +277,26 @@ void E(int ContadorEnc, int ContadorProd, Encomenda lista_Enc[500], Produto arma
   }
   else
   {
+    if (IdProd > (ContadorProd - 1))
     {
-      if (IdProd > (ContadorProd - 1))
+      printf("Impossivel listar produto %d. Produto inexistente.\n", IdProd);
+    }
+    else
+    {
+      if (lista_Enc[IdEnc].lista_idsProd_Enc[IdProd] == IdProd)
       {
-        printf("Impossivel listar produto %d. Produto inexistente.\n", IdProd);
+        strcpy(lista_Enc[IdEnc].ProdutosEnc[IdProd].descricao, armazem[IdProd].descricao);
+        printf("%s", lista_Enc[IdEnc].ProdutosEnc[IdProd].descricao);
+        printf(" %d.\n", lista_Enc[IdEnc].ProdutosEnc[IdProd].quantidade);
       }
       else
       {
-        {
-          if (lista_Enc[IdEnc].lista_idsProd_Enc[IdProd] == IdProd)
-          {
-            {
-              strcpy(lista_Enc[IdEnc].ProdutosEnc[IdProd].descricao, armazem[IdProd].descricao);
-              printf("%s", lista_Enc[IdEnc].ProdutosEnc[IdProd].descricao);
-              printf(" %d.\n", lista_Enc[IdEnc].ProdutosEnc[IdProd].quantidade);
-            }
-          }
-          else
-          {
-            {
-              printf("%s", armazem[IdProd].descricao);
-              printf(" 0.\n");
-            }
-          }
-
-        }
+        printf("%s", armazem[IdProd].descricao);
+        printf(" 0.\n");
       }
 
     }
+
   }
 
 }
@@ -340,34 +316,30 @@ void m(int ContadorEnc, int ContadorProd, Encomenda lista_Enc[500])
   }
   else
   {
+    for (e = 0; e < ContadorEnc; e++)
     {
-      for (e = 0; e < ContadorEnc; e++)
+      if (lista_Enc[e].ProdutosEnc[IdProd].quantidade > maiorQTD)
       {
-        if (lista_Enc[e].ProdutosEnc[IdProd].quantidade > maiorQTD)
-        {
-          {
-            maiorQTD = lista_Enc[e].ProdutosEnc[IdProd].quantidade;
-            EncAlvo = e;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      if (maiorQTD <= 0)
-      {
-        return;
+        maiorQTD = lista_Enc[e].ProdutosEnc[IdProd].quantidade;
+        EncAlvo = e;
       }
       else
       {
         
       }
 
-      printf("Maximo produto %d %d %d.\n", IdProd, EncAlvo, maiorQTD);
     }
+
+    if (maiorQTD <= 0)
+    {
+      return;
+    }
+    else
+    {
+      
+    }
+
+    printf("Maximo produto %d %d %d.\n", IdProd, EncAlvo, maiorQTD);
   }
 
 }
@@ -394,17 +366,13 @@ void merge(Produto arr[], int l, int m, int r)
   {
     if (L[i].preco <= R[j].preco)
     {
-      {
-        arr[k] = L[i];
-        i++;
-      }
+      arr[k] = L[i];
+      i++;
     }
     else
     {
-      {
-        arr[k] = R[j];
-        j++;
-      }
+      arr[k] = R[j];
+      j++;
     }
 
     k++;
@@ -430,12 +398,10 @@ void mergeSort(Produto arr[], int l, int r)
 {
   if (l < r)
   {
-    {
-      int m = l + ((r - l) / 2);
-      mergeSort(arr, l, m);
-      mergeSort(arr, m + 1, r);
-      merge(arr, l, m, r);
-    }
+    int m = l + ((r - l) / 2);
+    mergeSort(arr, l, m);
+    mergeSort(arr, m + 1, r);
+    merge(arr, l, m, r);
   }
   else
   {
@@ -480,52 +446,48 @@ void L(int ContadorEnc, int ContadorProd, Produto armazem[10000])
   }
   else
   {
+    for (e = 0; e < (lista_Enc[IdEnc].contador - 1); e++)
     {
-      for (e = 0; e < (lista_Enc[IdEnc].contador - 1); e++)
-      {
-        strcpy(aux[e], lista_Enc[IdEnc].ProdutosEnc[e].descricao);
-      }
+      strcpy(aux[e], lista_Enc[IdEnc].ProdutosEnc[e].descricao);
+    }
 
-      for (i = 0; i < (lista_Enc[IdEnc].contador - 1); i++)
+    for (i = 0; i < (lista_Enc[IdEnc].contador - 1); i++)
+    {
+      for (j = i + 1; j <= lista_Enc[IdEnc].contador; j++)
       {
-        for (j = i + 1; j <= lista_Enc[IdEnc].contador; j++)
+        if (strcmp(aux[i], aux[j]) > 0)
         {
-          if (strcmp(aux[i], aux[j]) > 0)
-          {
-            {
-              strcpy(temp, aux[i]);
-              strcpy(aux[i], aux[j]);
-              strcpy(aux[j], temp);
-            }
-          }
-          else
-          {
-            
-          }
-
+          strcpy(temp, aux[i]);
+          strcpy(aux[i], aux[j]);
+          strcpy(aux[j], temp);
         }
-
-      }
-
-      printf("Produtos\n");
-      for (e = 0; e <= lista_Enc[IdEnc].contador; e++)
-      {
-        for (i = 0; i < ContadorProd; i++)
+        else
         {
-          if (strcmp(lista_Enc[IdEnc].ProdutosEnc[e].descricao, armazem[i].descricao) == 0)
-          {
-            printf("* %s %d %d\n", aux[e], armazem[i].preco, armazem[i].quantidade);
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
 
     }
+
+    printf("Produtos\n");
+    for (e = 0; e <= lista_Enc[IdEnc].contador; e++)
+    {
+      for (i = 0; i < ContadorProd; i++)
+      {
+        if (strcmp(lista_Enc[IdEnc].ProdutosEnc[e].descricao, armazem[i].descricao) == 0)
+        {
+          printf("* %s %d %d\n", aux[e], armazem[i].preco, armazem[i].quantidade);
+        }
+        else
+        {
+          
+        }
+
+      }
+
+    }
+
   }
 
 }
@@ -540,11 +502,9 @@ int main()
   {
     if (c == 'a')
     {
-      {
-        a(ContadorProd, armazem);
-        ContadorProd++;
-        continue;
-      }
+      a(ContadorProd, armazem);
+      ContadorProd++;
+      continue;
     }
     else
     {
@@ -553,10 +513,8 @@ int main()
 
     if (c == 'q')
     {
-      {
-        q(ContadorProd, armazem);
-        continue;
-      }
+      q(ContadorProd, armazem);
+      continue;
     }
     else
     {
@@ -565,11 +523,9 @@ int main()
 
     if (c == 'N')
     {
-      {
-        N(ContadorEnc);
-        ContadorEnc++;
-        continue;
-      }
+      N(ContadorEnc);
+      ContadorEnc++;
+      continue;
     }
     else
     {
@@ -578,10 +534,8 @@ int main()
 
     if (c == 'A')
     {
-      {
-        A(ContadorEnc, ContadorProd, lista_Enc, armazem);
-        continue;
-      }
+      A(ContadorEnc, ContadorProd, lista_Enc, armazem);
+      continue;
     }
     else
     {
@@ -590,10 +544,8 @@ int main()
 
     if (c == 'r')
     {
-      {
-        r(ContadorProd, armazem);
-        continue;
-      }
+      r(ContadorProd, armazem);
+      continue;
     }
     else
     {
@@ -602,10 +554,8 @@ int main()
 
     if (c == 'R')
     {
-      {
-        R(ContadorProd, ContadorEnc, lista_Enc, armazem);
-        continue;
-      }
+      R(ContadorProd, ContadorEnc, lista_Enc, armazem);
+      continue;
     }
     else
     {
@@ -614,10 +564,8 @@ int main()
 
     if (c == 'C')
     {
-      {
-        C(ContadorEnc, lista_Enc);
-        continue;
-      }
+      C(ContadorEnc, lista_Enc);
+      continue;
     }
     else
     {
@@ -626,10 +574,8 @@ int main()
 
     if (c == 'p')
     {
-      {
-        p(ContadorProd, ContadorEnc, armazem, lista_Enc);
-        continue;
-      }
+      p(ContadorProd, ContadorEnc, armazem, lista_Enc);
+      continue;
     }
     else
     {
@@ -638,10 +584,8 @@ int main()
 
     if (c == 'E')
     {
-      {
-        E(ContadorEnc, ContadorProd, lista_Enc, armazem);
-        continue;
-      }
+      E(ContadorEnc, ContadorProd, lista_Enc, armazem);
+      continue;
     }
     else
     {
@@ -650,10 +594,8 @@ int main()
 
     if (c == 'm')
     {
-      {
-        m(ContadorEnc, ContadorProd, lista_Enc);
-        continue;
-      }
+      m(ContadorEnc, ContadorProd, lista_Enc);
+      continue;
     }
     else
     {
@@ -662,10 +604,8 @@ int main()
 
     if (c == 'l')
     {
-      {
-        l(ContadorProd, armazem);
-        continue;
-      }
+      l(ContadorProd, armazem);
+      continue;
     }
     else
     {
@@ -674,10 +614,8 @@ int main()
 
     if (c == 'L')
     {
-      {
-        L(ContadorEnc, ContadorProd, armazem);
-        continue;
-      }
+      L(ContadorEnc, ContadorProd, armazem);
+      continue;
     }
     else
     {

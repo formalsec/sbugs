@@ -34,9 +34,7 @@ jogo JsearchList(link head, Key v)
   {
     if (strcmp(v, aux->j->nome) == 0)
     {
-      {
-        return aux->j;
-      }
+      return aux->j;
     }
     else
     {
@@ -56,46 +54,36 @@ link removeJ(link head, Key k)
   {
     if (strcmp(k, aux->j->nome) == 0)
     {
+      if (aux == head)
       {
-        if (aux == head)
-        {
-          {
-            head = aux->next;
-          }
-        }
-        else
-        {
-          {
-            aux2->next = aux->next;
-          }
-        }
-
-        if (aux->j->score1 > aux->j->score2)
-        {
-          {
-            aux->j->equipa1->wins--;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if (aux->j->score1 < aux->j->score2)
-        {
-          {
-            aux->j->equipa2->wins--;
-          }
-        }
-        else
-        {
-          
-        }
-
-        freeJogo(aux->j);
-        free(aux);
-        return head;
+        head = aux->next;
       }
+      else
+      {
+        aux2->next = aux->next;
+      }
+
+      if (aux->j->score1 > aux->j->score2)
+      {
+        aux->j->equipa1->wins--;
+      }
+      else
+      {
+        
+      }
+
+      if (aux->j->score1 < aux->j->score2)
+      {
+        aux->j->equipa2->wins--;
+      }
+      else
+      {
+        
+      }
+
+      freeJogo(aux->j);
+      free(aux);
+      return head;
     }
     else
     {
@@ -201,9 +189,7 @@ void getMostWins(Elink *tops, int count)
       j = aux->e->wins;
       if (j > maxWins)
       {
-        {
-          maxWins = j;
-        }
+        maxWins = j;
       }
       else
       {
@@ -230,9 +216,7 @@ void getMostWins(Elink *tops, int count)
     {
       if (aux->e->wins == maxWins)
       {
-        {
-          k++;
-        }
+        k++;
       }
       else
       {
@@ -253,10 +237,8 @@ void getMostWins(Elink *tops, int count)
       {
         if (aux->e->wins == maxWins)
         {
-          {
-            Array[i] = aux->e;
-            i++;
-          }
+          Array[i] = aux->e;
+          i++;
         }
         else
         {
@@ -294,9 +276,7 @@ equipa EsearchList(Elink top, Point v)
   {
     if (strcmp(v, aux->e->nome) == 0)
     {
-      {
-        return aux->e;
-      }
+      return aux->e;
     }
     else
     {

@@ -32,15 +32,11 @@ void inserir_equipa(lista_equipa le, char *texto)
   x->e = nova_equipa(texto);
   if (le->head == 0)
   {
-    {
-      x->next = 0;
-    }
+    x->next = 0;
   }
   else
   {
-    {
-      x->next = le->head;
-    }
+    x->next = le->head;
   }
 
   le->head = x;
@@ -76,10 +72,8 @@ void procura_max_vitorias(lista_equipa le)
   {
     if (x->e->vitorias > le->max_vitorias)
     {
-      {
-        le->max_vitorias = x->e->vitorias;
-        le->cont_equipas_max_vit = 1;
-      }
+      le->max_vitorias = x->e->vitorias;
+      le->cont_equipas_max_vit = 1;
     }
     else
     {
@@ -113,10 +107,8 @@ void encontra_max_vitorias(int cont, lista_equipa le)
   {
     if (x->e->vitorias == le->max_vitorias)
     {
-      {
-        tab[i] = x->e->nome;
-        i++;
-      }
+      tab[i] = x->e->nome;
+      i++;
     }
     else
     {
@@ -214,9 +206,7 @@ void expandir_hash_equipas(ht_equipas ht_e)
   {
     if (t[i] != 0)
     {
-      {
-        insere_equipa_hash_equipas(ht_e, t[i]);
-      }
+      insere_equipa_hash_equipas(ht_e, t[i]);
     }
     else
     {
@@ -234,9 +224,7 @@ int procura_equipa_hash_equipas(ht_equipas ht_e, char *texto)
   while (ht_e->hash_equipas[i] != 0)
     if (strcmp(ht_e->hash_equipas[i]->nome, texto) == 0)
   {
-    {
-      return i;
-    }
+    return i;
   }
   else
   {

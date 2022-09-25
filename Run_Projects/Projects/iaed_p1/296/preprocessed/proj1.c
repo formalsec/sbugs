@@ -113,59 +113,55 @@ int Merge(int lim_inf, int lim_sup, int meio, int tab_final[], int string)
   int PRTAUX[200];
   if (string == 0)
   {
+    for (i = meio + 1; i > lim_inf; i--)
+      tab_aux[i - 1] = tab_final[i - 1];
+
+    for (j = meio; j < lim_sup; j++)
+      tab_aux[(lim_sup + meio) - j] = tab_final[j + 1];
+
+    for (k = lim_inf; k <= lim_sup; k++)
     {
-      for (i = meio + 1; i > lim_inf; i--)
-        tab_aux[i - 1] = tab_final[i - 1];
-
-      for (j = meio; j < lim_sup; j++)
-        tab_aux[(lim_sup + meio) - j] = tab_final[j + 1];
-
-      for (k = lim_inf; k <= lim_sup; k++)
+      if (stock[tab_aux[j]].preco < stock[tab_aux[i]].preco)
       {
-        if (stock[tab_aux[j]].preco < stock[tab_aux[i]].preco)
+        tab_final[k] = tab_aux[j--];
+      }
+      else
+      {
+        if ((stock[tab_aux[j]].preco == stock[tab_aux[i]].preco) && (stock[tab_aux[j]].id < stock[tab_aux[i]].id))
         {
           tab_final[k] = tab_aux[j--];
         }
         else
         {
-          if ((stock[tab_aux[j]].preco == stock[tab_aux[i]].preco) && (stock[tab_aux[j]].id < stock[tab_aux[i]].id))
-          {
-            tab_final[k] = tab_aux[j--];
-          }
-          else
-          {
-            tab_final[k] = tab_aux[i++];
-          }
-
+          tab_final[k] = tab_aux[i++];
         }
 
       }
 
     }
+
   }
   else
   {
+    for (i = meio + 1; i > lim_inf; i--)
+      PRTAUX[i - 1] = tab_final[i - 1];
+
+    for (j = meio; j < lim_sup; j++)
+      PRTAUX[(lim_sup + meio) - j] = tab_final[j + 1];
+
+    for (k = lim_inf; k <= lim_sup; k++)
     {
-      for (i = meio + 1; i > lim_inf; i--)
-        PRTAUX[i - 1] = tab_final[i - 1];
-
-      for (j = meio; j < lim_sup; j++)
-        PRTAUX[(lim_sup + meio) - j] = tab_final[j + 1];
-
-      for (k = lim_inf; k <= lim_sup; k++)
+      if (strcmp(ecm[tempE.id].prt[PRTAUX[j]].desc, ecm[tempE.id].prt[PRTAUX[i]].desc) < 0)
       {
-        if (strcmp(ecm[tempE.id].prt[PRTAUX[j]].desc, ecm[tempE.id].prt[PRTAUX[i]].desc) < 0)
-        {
-          tab_final[k] = PRTAUX[j--];
-        }
-        else
-        {
-          tab_final[k] = PRTAUX[i++];
-        }
-
+        tab_final[k] = PRTAUX[j--];
+      }
+      else
+      {
+        tab_final[k] = PRTAUX[i++];
       }
 
     }
+
   }
 
   return 0;
@@ -196,14 +192,12 @@ int cmd_a()
   {
     if (stock[e].id == (-1))
     {
-      {
-        strcpy(stock[e].desc, temp.desc);
-        stock[e].preco = temp.preco;
-        stock[e].peso = temp.peso;
-        stock[e].qtd = temp.qtd;
-        stock[e].id = e;
-        break;
-      }
+      strcpy(stock[e].desc, temp.desc);
+      stock[e].preco = temp.preco;
+      stock[e].peso = temp.peso;
+      stock[e].qtd = temp.qtd;
+      stock[e].id = e;
+      break;
     }
     else
     {
@@ -237,10 +231,8 @@ int cmd_N()
   {
     if (ecm[e].id == (-1))
     {
-      {
-        ecm[e].id = e;
-        break;
-      }
+      ecm[e].id = e;
+      break;
     }
     else
     {
@@ -258,73 +250,61 @@ int cmd_A()
   int e;
   if (ecm[tempE.id].id != (-1))
   {
+    if (stock[temp.id].id != (-1))
     {
-      if (stock[temp.id].id != (-1))
+      if (temp.qtd <= stock[temp.id].qtd)
       {
+        if ((ecm[tempE.id].peso + (temp.qtd * stock[temp.id].peso)) <= 200)
         {
-          if (temp.qtd <= stock[temp.id].qtd)
+          for (e = 0; e < 200; e++)
           {
+            if (ecm[tempE.id].prt[e].id == (-1))
             {
-              if ((ecm[tempE.id].peso + (temp.qtd * stock[temp.id].peso)) <= 200)
+              ecm[tempE.id].prt[e].id = temp.id;
+              strcpy(ecm[tempE.id].prt[e].desc, stock[temp.id].desc);
+              ecm[tempE.id].prt[e].preco = stock[temp.id].preco;
+              ecm[tempE.id].prt[e].peso = stock[temp.id].peso;
+              ecm[tempE.id].prt[e].qtd += temp.qtd;
+              ecm[tempE.id].peso += stock[temp.id].peso * temp.qtd;
+              stock[temp.id].qtd -= temp.qtd;
+              break;
+            }
+            else
+            {
+              if (ecm[tempE.id].prt[e].id == temp.id)
               {
-                {
-                  for (e = 0; e < 200; e++)
-                  {
-                    if (ecm[tempE.id].prt[e].id == (-1))
-                    {
-                      {
-                        ecm[tempE.id].prt[e].id = temp.id;
-                        strcpy(ecm[tempE.id].prt[e].desc, stock[temp.id].desc);
-                        ecm[tempE.id].prt[e].preco = stock[temp.id].preco;
-                        ecm[tempE.id].prt[e].peso = stock[temp.id].peso;
-                        ecm[tempE.id].prt[e].qtd += temp.qtd;
-                        ecm[tempE.id].peso += stock[temp.id].peso * temp.qtd;
-                        stock[temp.id].qtd -= temp.qtd;
-                        break;
-                      }
-                    }
-                    else
-                    {
-                      if (ecm[tempE.id].prt[e].id == temp.id)
-                      {
-                        {
-                          ecm[tempE.id].prt[e].qtd += temp.qtd;
-                          ecm[tempE.id].peso += stock[temp.id].peso * temp.qtd;
-                          stock[temp.id].qtd -= temp.qtd;
-                          break;
-                        }
-                      }
-                      else
-                      {
-                        
-                      }
-
-                    }
-
-                  }
-
-                }
+                ecm[tempE.id].prt[e].qtd += temp.qtd;
+                ecm[tempE.id].peso += stock[temp.id].peso * temp.qtd;
+                stock[temp.id].qtd -= temp.qtd;
+                break;
               }
               else
               {
-                printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", temp.id, tempE.id);
+                
               }
 
             }
-          }
-          else
-          {
-            printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", temp.id, tempE.id);
+
           }
 
         }
+        else
+        {
+          printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", temp.id, tempE.id);
+        }
+
       }
       else
       {
-        printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", temp.id, tempE.id);
+        printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", temp.id, tempE.id);
       }
 
     }
+    else
+    {
+      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", temp.id, tempE.id);
+    }
+
   }
   else
   {
@@ -338,17 +318,15 @@ int cmd_r()
 {
   if (stock[temp.id].id != (-1))
   {
+    if (temp.qtd <= stock[temp.id].qtd)
     {
-      if (temp.qtd <= stock[temp.id].qtd)
-      {
-        stock[temp.id].qtd -= temp.qtd;
-      }
-      else
-      {
-        printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", temp.qtd, temp.id);
-      }
-
+      stock[temp.id].qtd -= temp.qtd;
     }
+    else
+    {
+      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", temp.qtd, temp.id);
+    }
+
   }
   else
   {
@@ -364,43 +342,37 @@ int cmd_R()
   int counter = 0;
   if (ecm[tempE.id].id != (-1))
   {
+    if (stock[temp.id].id != (-1))
     {
-      if (stock[temp.id].id != (-1))
+      for (e = 0; e < 200; e++)
       {
+        if (ecm[tempE.id].prt[e].id == temp.id)
         {
-          for (e = 0; e < 200; e++)
+          stock[temp.id].qtd += ecm[tempE.id].prt[e].qtd;
+          ecm[tempE.id].peso -= ecm[tempE.id].prt[e].qtd * ecm[tempE.id].prt[e].peso;
+          ecm[tempE.id].prt[e].qtd = 0;
+        }
+        else
+        {
+          if (counter == 200)
           {
-            if (ecm[tempE.id].prt[e].id == temp.id)
-            {
-              {
-                stock[temp.id].qtd += ecm[tempE.id].prt[e].qtd;
-                ecm[tempE.id].peso -= ecm[tempE.id].prt[e].qtd * ecm[tempE.id].prt[e].peso;
-                ecm[tempE.id].prt[e].qtd = 0;
-              }
-            }
-            else
-            {
-              if (counter == 200)
-              {
-                printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", temp.id, tempE.id);
-              }
-              else
-              {
-                counter++;
-              }
-
-            }
-
+            printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", temp.id, tempE.id);
+          }
+          else
+          {
+            counter++;
           }
 
         }
-      }
-      else
-      {
-        printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", temp.id, tempE.id);
+
       }
 
     }
+    else
+    {
+      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", temp.id, tempE.id);
+    }
+
   }
   else
   {
@@ -416,22 +388,20 @@ int cmd_C()
   int custo = 0;
   if (ecm[tempE.id].id != (-1))
   {
+    for (e = 0; e < 200; e++)
     {
-      for (e = 0; e < 200; e++)
+      if (ecm[tempE.id].prt[e].id != (-1))
       {
-        if (ecm[tempE.id].prt[e].id != (-1))
-        {
-          custo += ecm[tempE.id].prt[e].preco * ecm[tempE.id].prt[e].qtd;
-        }
-        else
-        {
-          
-        }
-
+        custo += ecm[tempE.id].prt[e].preco * ecm[tempE.id].prt[e].qtd;
+      }
+      else
+      {
+        
       }
 
-      printf("Custo da encomenda %d %d.\n", tempE.id, custo);
     }
+
+    printf("Custo da encomenda %d %d.\n", tempE.id, custo);
   }
   else
   {
@@ -447,36 +417,32 @@ int cmd_p()
   int i;
   if (stock[temp.id].id != (-1))
   {
+    stock[temp.id].preco = temp.preco;
+    for (e = 0; e < 500; e++)
     {
-      stock[temp.id].preco = temp.preco;
-      for (e = 0; e < 500; e++)
+      if (ecm[e].id != (-1))
       {
-        if (ecm[e].id != (-1))
+        for (i = 0; i < 200; i++)
         {
+          if (ecm[e].prt[i].id == temp.id)
           {
-            for (i = 0; i < 200; i++)
-            {
-              if (ecm[e].prt[i].id == temp.id)
-              {
-                ecm[e].prt[i].preco = temp.preco;
-              }
-              else
-              {
-                
-              }
-
-            }
-
+            ecm[e].prt[i].preco = temp.preco;
           }
-        }
-        else
-        {
-          break;
+          else
+          {
+            
+          }
+
         }
 
       }
+      else
+      {
+        break;
+      }
 
     }
+
   }
   else
   {
@@ -492,32 +458,28 @@ int cmd_E()
   int qtd_prd = 0;
   if (ecm[tempE.id].id != (-1))
   {
+    if (stock[temp.id].id != (-1))
     {
-      if (stock[temp.id].id != (-1))
+      for (i = 0; i < 200; i++)
       {
+        if (ecm[tempE.id].prt[i].id == temp.id)
         {
-          for (i = 0; i < 200; i++)
-          {
-            if (ecm[tempE.id].prt[i].id == temp.id)
-            {
-              qtd_prd = ecm[tempE.id].prt[i].qtd;
-            }
-            else
-            {
-              
-            }
-
-          }
-
-          printf("%s %d.\n", stock[temp.id].desc, qtd_prd);
+          qtd_prd = ecm[tempE.id].prt[i].qtd;
         }
-      }
-      else
-      {
-        printf("Impossivel listar produto %d. Produto inexistente.\n", temp.id);
+        else
+        {
+          
+        }
+
       }
 
+      printf("%s %d.\n", stock[temp.id].desc, qtd_prd);
     }
+    else
+    {
+      printf("Impossivel listar produto %d. Produto inexistente.\n", temp.id);
+    }
+
   }
   else
   {
@@ -535,41 +497,25 @@ int cmd_m()
   int i;
   if (stock[temp.id].id != (-1))
   {
+    for (e = 0; e < 500; e++)
     {
-      for (e = 0; e < 500; e++)
+      if (ecm[e].id != (-1))
       {
-        if (ecm[e].id != (-1))
+        for (i = 0; i < 200; i++)
         {
+          if (ecm[e].prt[i].id == temp.id)
           {
-            for (i = 0; i < 200; i++)
+            if (e == 0)
             {
-              if (ecm[e].prt[i].id == temp.id)
+              max = ecm[e].prt[i].qtd;
+              ide = e;
+            }
+            else
+            {
+              if (ecm[e].prt[i].qtd > max)
               {
-                {
-                  if (e == 0)
-                  {
-                    {
-                      max = ecm[e].prt[i].qtd;
-                      ide = e;
-                    }
-                  }
-                  else
-                  {
-                    if (ecm[e].prt[i].qtd > max)
-                    {
-                      {
-                        max = ecm[e].prt[i].qtd;
-                        ide = e;
-                      }
-                    }
-                    else
-                    {
-                      
-                    }
-
-                  }
-
-                }
+                max = ecm[e].prt[i].qtd;
+                ide = e;
               }
               else
               {
@@ -579,24 +525,30 @@ int cmd_m()
             }
 
           }
-        }
-        else
-        {
-          break;
+          else
+          {
+            
+          }
+
         }
 
-      }
-
-      if (max != 0)
-      {
-        printf("Maximo produto %d %d %d.\n", temp.id, ide, max);
       }
       else
       {
-        
+        break;
       }
 
     }
+
+    if (max != 0)
+    {
+      printf("Maximo produto %d %d %d.\n", temp.id, ide, max);
+    }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -616,10 +568,8 @@ int cmd_l()
   {
     if (stock[e].id != (-1))
     {
-      {
-        tab_final[e] = stock[e].id;
-        counter++;
-      }
+      tab_final[e] = stock[e].id;
+      counter++;
     }
     else
     {
@@ -644,39 +594,35 @@ int cmd_L()
   int lim_sup = 0;
   if (ecm[tempE.id].id != (-1))
   {
+    for (j = 0; j < 200; j++)
     {
-      for (j = 0; j < 200; j++)
+      if (ecm[tempE.id].prt[j].id != (-1))
       {
-        if (ecm[tempE.id].prt[j].id != (-1))
-        {
-          {
-            PRT[lim_sup] = j;
-            lim_sup++;
-          }
-        }
-        else
-        {
-          
-        }
-
+        PRT[lim_sup] = j;
+        lim_sup++;
       }
-
-      MergeSort(0, lim_sup - 1, PRT, 1);
-      printf("Encomenda %d\n", tempE.id);
-      for (e = 0; e < lim_sup; e++)
+      else
       {
-        if (ecm[tempE.id].prt[PRT[e]].qtd > 0)
-        {
-          printf("* %s %d %d\n", ecm[tempE.id].prt[PRT[e]].desc, ecm[tempE.id].prt[PRT[e]].preco, ecm[tempE.id].prt[PRT[e]].qtd);
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
     }
+
+    MergeSort(0, lim_sup - 1, PRT, 1);
+    printf("Encomenda %d\n", tempE.id);
+    for (e = 0; e < lim_sup; e++)
+    {
+      if (ecm[tempE.id].prt[PRT[e]].qtd > 0)
+      {
+        printf("* %s %d %d\n", ecm[tempE.id].prt[PRT[e]].desc, ecm[tempE.id].prt[PRT[e]].preco, ecm[tempE.id].prt[PRT[e]].qtd);
+      }
+      else
+      {
+        
+      }
+
+    }
+
   }
   else
   {

@@ -147,72 +147,66 @@ int destroy(Link *Table, LinkJ *MainList, LinkJ *Tail, char *nome)
   int index = hashJogo(nome, 14149);
   if (link != 0)
   {
+    e_vencedora = vencedor(link->linkj->jogo);
+    if (e_vencedora != 0)
     {
-      e_vencedora = vencedor(link->linkj->jogo);
-      if (e_vencedora != 0)
-      {
-        e_vencedora->wins -= 1;
-      }
-      else
-      {
-        
-      }
+      e_vencedora->wins -= 1;
+    }
+    else
+    {
+      
+    }
 
-      free(link->linkj->jogo->nome);
-      free(link->linkj->jogo);
-      if (link->linkj->prev != 0)
-      {
-        link->linkj->prev->next = link->linkj->next;
-      }
-      else
-      {
-        *MainList = link->linkj->next;
-      }
+    free(link->linkj->jogo->nome);
+    free(link->linkj->jogo);
+    if (link->linkj->prev != 0)
+    {
+      link->linkj->prev->next = link->linkj->next;
+    }
+    else
+    {
+      *MainList = link->linkj->next;
+    }
 
-      if (link->linkj->next != 0)
-      {
-        link->linkj->next->prev = link->linkj->prev;
-      }
-      else
-      {
-        *Tail = link->linkj->prev;
-      }
+    if (link->linkj->next != 0)
+    {
+      link->linkj->next->prev = link->linkj->prev;
+    }
+    else
+    {
+      *Tail = link->linkj->prev;
+    }
 
-      free(link->linkj);
-      if ((link->prev == 0) && (link->next == 0))
+    free(link->linkj);
+    if ((link->prev == 0) && (link->next == 0))
+    {
+      Table[index] = 0;
+    }
+    else
+    {
+      if ((link->prev != 0) && (link->next == 0))
       {
-        Table[index] = 0;
+        link->prev->next = 0;
       }
       else
       {
-        if ((link->prev != 0) && (link->next == 0))
+        if ((link->prev == 0) && (link->next != 0))
         {
-          link->prev->next = 0;
+          Table[index] = link->next;
+          link->next->prev = 0;
         }
         else
         {
-          if ((link->prev == 0) && (link->next != 0))
-          {
-            {
-              Table[index] = link->next;
-              link->next->prev = 0;
-            }
-          }
-          else
-          {
-            {
-              link->prev->next = link->next;
-              link->next->prev = link->prev;
-            }
-          }
-
+          link->prev->next = link->next;
+          link->next->prev = link->prev;
         }
 
       }
 
-      free(link);
-      return 1;
     }
+
+    free(link);
+    return 1;
   }
   else
   {

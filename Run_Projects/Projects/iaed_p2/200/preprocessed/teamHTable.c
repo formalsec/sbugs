@@ -134,16 +134,14 @@ tlink *tLinkInsert(char *buffer0, tlink *link, tlink **HTteams)
   }
   else
   {
-    {
-      link->t = create_team(buffer0);
-      i = hash(link->t->name);
-      k = hashtwo(link->t->name);
-      while (HTteams[i] != 0)
-        i = (i + k) % (9677 * 2);
+    link->t = create_team(buffer0);
+    i = hash(link->t->name);
+    k = hashtwo(link->t->name);
+    while (HTteams[i] != 0)
+      i = (i + k) % (9677 * 2);
 
-      HTteams[i] = link;
-      return link;
-    }
+    HTteams[i] = link;
+    return link;
   }
 
 }
@@ -198,21 +196,17 @@ pTeam **search_el(pTeam **aux, tlink **HTteams, int count)
     {
       if (HTteams[i] != 0)
       {
+        taux = HTteams[i]->t;
+        if (equipa[j] != taux)
         {
-          taux = HTteams[i]->t;
-          if (equipa[j] != taux)
-          {
-            {
-              equipa[j] = taux;
-            }
-          }
-          else
-          {
-            
-          }
-
-          j++;
+          equipa[j] = taux;
         }
+        else
+        {
+          
+        }
+
+        j++;
       }
       else
       {
@@ -242,11 +236,9 @@ pTeam **abc_winners(pTeam **STteams, int counter)
     {
       if (strcmp(STteams[i]->name, STteams[j]->name) > 0)
       {
-        {
-          equipa[i] = STteams[i];
-          STteams[i] = STteams[j];
-          STteams[j] = equipa[i];
-        }
+        equipa[i] = STteams[i];
+        STteams[i] = STteams[j];
+        STteams[j] = equipa[i];
       }
       else
       {
@@ -272,26 +264,24 @@ tlink *change_win_team(tlink **HTteams, char *nome, int var)
     link = HTteams[i];
     if (strcmp(nome, link->t->name) == 0)
     {
+      if (var == 2)
       {
-        if (var == 2)
+        link->t->wins += 1;
+      }
+      else
+      {
+        if (var == 3)
         {
-          link->t->wins += 1;
+          link->t->wins -= 1;
         }
         else
         {
-          if (var == 3)
-          {
-            link->t->wins -= 1;
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
-        return link;
       }
+
+      return link;
     }
     else
     {
@@ -310,7 +300,7 @@ bool teamisEmpty(tlink **HTteams)
   {
     if (HTteams[i] != 0)
     {
-      return 0;
+      return false;
     }
     else
     {
@@ -319,7 +309,7 @@ bool teamisEmpty(tlink **HTteams)
 
   }
 
-  return 1;
+  return true;
 }
 
 void teamFree(pTeam *t)
@@ -337,9 +327,7 @@ void free_tTable(tlink *ttable)
     t = &ttable->t[i];
     if (t != 0)
     {
-      {
-        teamFree(t);
-      }
+      teamFree(t);
     }
     else
     {

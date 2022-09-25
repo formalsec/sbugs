@@ -24,43 +24,35 @@ int cmd_a(char *nome, char *eq1, char *eq2, int sc1, int sc2, jogo *HTjogo, equi
 {
   if (SearchJogo(nome, HTjogo) == 0)
   {
+    if ((SearchEquipa(eq1, HTequipa) != 0) && (SearchEquipa(eq2, HTequipa) != 0))
     {
-      if ((SearchEquipa(eq1, HTequipa) != 0) && (SearchEquipa(eq2, HTequipa) != 0))
+      InsertJogo(nome, eq1, eq2, sc1, sc2, HTjogo, id);
+      if (sc1 > sc2)
       {
-        {
-          InsertJogo(nome, eq1, eq2, sc1, sc2, HTjogo, id);
-          if (sc1 > sc2)
-          {
-            {
-              equipa aux = SearchEquipa(eq1, HTequipa);
-              aux->vitorias += 1;
-            }
-          }
-          else
-          {
-            if (sc2 > sc1)
-            {
-              {
-                equipa aux = SearchEquipa(eq2, HTequipa);
-                aux->vitorias += 1;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-          return 1;
-        }
+        equipa aux = SearchEquipa(eq1, HTequipa);
+        aux->vitorias += 1;
       }
       else
       {
-        printf("%d Equipa inexistente.\n", NL);
+        if (sc2 > sc1)
+        {
+          equipa aux = SearchEquipa(eq2, HTequipa);
+          aux->vitorias += 1;
+        }
+        else
+        {
+          
+        }
+
       }
 
+      return 1;
     }
+    else
+    {
+      printf("%d Equipa inexistente.\n", NL);
+    }
+
   }
   else
   {
@@ -111,10 +103,8 @@ void cmd_l(jogo *HTjogo, int NL, int id)
       {
         if (aux->id == i)
         {
-          {
-            printf("%d %s %s %s %d %d\n", NL, aux->nome, aux->eq1, aux->eq2, aux->sc1, aux->sc2);
-            break;
-          }
+          printf("%d %s %s %s %d %d\n", NL, aux->nome, aux->eq1, aux->eq2, aux->sc1, aux->sc2);
+          break;
         }
         else
         {
@@ -136,32 +126,26 @@ void cmd_r(char *nome, jogo *HTjogo, equipa *HTequipa, int NL)
   equipa temp;
   if (aux)
   {
+    if (aux->sc1 > aux->sc2)
     {
-      if (aux->sc1 > aux->sc2)
+      temp = SearchEquipa(aux->eq1, HTequipa);
+      temp->vitorias -= 1;
+    }
+    else
+    {
+      if (aux->sc2 > aux->sc1)
       {
-        {
-          temp = SearchEquipa(aux->eq1, HTequipa);
-          temp->vitorias -= 1;
-        }
+        temp = SearchEquipa(aux->eq2, HTequipa);
+        temp->vitorias -= 1;
       }
       else
       {
-        if (aux->sc2 > aux->sc1)
-        {
-          {
-            temp = SearchEquipa(aux->eq2, HTequipa);
-            temp->vitorias -= 1;
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      HTjogo[i] = RemoveJogo(HTjogo[i], nome);
     }
+
+    HTjogo[i] = RemoveJogo(HTjogo[i], nome);
   }
   else
   {
@@ -177,84 +161,43 @@ void cmd_s(char *nome, jogo *HTjogo, int sc1, int sc2, equipa *HTequipa, int NL)
   equipa eq2;
   if (aux)
   {
+    eq1 = SearchEquipa(aux->eq1, HTequipa);
+    eq2 = SearchEquipa(aux->eq2, HTequipa);
+    if (sc1 > sc2)
     {
-      eq1 = SearchEquipa(aux->eq1, HTequipa);
-      eq2 = SearchEquipa(aux->eq2, HTequipa);
-      if (sc1 > sc2)
+      if (aux->sc1 == aux->sc2)
       {
-        {
-          if (aux->sc1 == aux->sc2)
-          {
-            eq1->vitorias += 1;
-          }
-          else
-          {
-            if (aux->sc1 < aux->sc2)
-            {
-              {
-                eq2->vitorias -= 1;
-                eq1->vitorias += 1;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-        }
+        eq1->vitorias += 1;
       }
       else
       {
-        if (sc2 > sc1)
+        if (aux->sc1 < aux->sc2)
         {
-          {
-            if (aux->sc1 == aux->sc2)
-            {
-              eq2->vitorias += 1;
-            }
-            else
-            {
-              if (aux->sc2 < aux->sc1)
-              {
-                {
-                  eq1->vitorias -= 1;
-                  eq2->vitorias += 1;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-          }
+          eq2->vitorias -= 1;
+          eq1->vitorias += 1;
         }
         else
         {
-          if (sc1 == sc2)
+          
+        }
+
+      }
+
+    }
+    else
+    {
+      if (sc2 > sc1)
+      {
+        if (aux->sc1 == aux->sc2)
+        {
+          eq2->vitorias += 1;
+        }
+        else
+        {
+          if (aux->sc2 < aux->sc1)
           {
-            {
-              if (aux->sc1 > aux->sc2)
-              {
-                eq1->vitorias -= 1;
-              }
-              else
-              {
-                if (aux->sc2 > aux->sc1)
-                {
-                  eq2->vitorias -= 1;
-                }
-                else
-                {
-                  
-                }
-
-              }
-
-            }
+            eq1->vitorias -= 1;
+            eq2->vitorias += 1;
           }
           else
           {
@@ -264,10 +207,39 @@ void cmd_s(char *nome, jogo *HTjogo, int sc1, int sc2, equipa *HTequipa, int NL)
         }
 
       }
+      else
+      {
+        if (sc1 == sc2)
+        {
+          if (aux->sc1 > aux->sc2)
+          {
+            eq1->vitorias -= 1;
+          }
+          else
+          {
+            if (aux->sc2 > aux->sc1)
+            {
+              eq2->vitorias -= 1;
+            }
+            else
+            {
+              
+            }
 
-      aux->sc1 = sc1;
-      aux->sc2 = sc2;
+          }
+
+        }
+        else
+        {
+          
+        }
+
+      }
+
     }
+
+    aux->sc1 = sc1;
+    aux->sc2 = sc2;
   }
   else
   {
@@ -305,9 +277,7 @@ void cmd_g(equipa *HTequipa, int NL)
     {
       if (aux->vitorias == maior)
       {
-        {
-          lista = ListaEquipas(lista, aux->nome, aux->vitorias);
-        }
+        lista = ListaEquipas(lista, aux->nome, aux->vitorias);
       }
       else
       {
@@ -320,13 +290,11 @@ void cmd_g(equipa *HTequipa, int NL)
 
   if (lista)
   {
-    {
-      printf("%d Melhores %d\n", NL, maior);
-      for (aux = lista; aux != 0; aux = aux->nextE)
-        printf("%d * %s\n", NL, aux->nome);
+    printf("%d Melhores %d\n", NL, maior);
+    for (aux = lista; aux != 0; aux = aux->nextE)
+      printf("%d * %s\n", NL, aux->nome);
 
-      FreeListE(lista);
-    }
+    FreeListE(lista);
   }
   else
   {

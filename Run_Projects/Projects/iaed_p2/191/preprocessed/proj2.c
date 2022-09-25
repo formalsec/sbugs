@@ -17,9 +17,7 @@ static void copyGames(Game **src, Game *dest, int size)
   {
     if ((src[i] != 0) && (!src[i]->isDeleted))
     {
-      {
-        dest[j++] = *src[i];
-      }
+      dest[j++] = *src[i];
     }
     else
     {
@@ -39,9 +37,7 @@ static void copyTeams(Team **src, Team *dest, int size)
   {
     if ((src[i] != 0) && (!src[i]->isDeleted))
     {
-      {
-        dest[j++] = *src[i];
-      }
+      dest[j++] = *src[i];
     }
     else
     {
@@ -89,19 +85,15 @@ void addGame(HTG *htg, HTT *htt, int cmdCount, unsigned int id, unsigned int sco
   team2 = getTeam(htt, teamStr2);
   if (game != 0)
   {
-    {
-      printf("%d Jogo existente.\n", cmdCount);
-      return;
-    }
+    printf("%d Jogo existente.\n", cmdCount);
+    return;
   }
   else
   {
     if ((team1 == 0) || (team2 == 0))
     {
-      {
-        printf("%d Equipa inexistente.\n", cmdCount);
-        return;
-      }
+      printf("%d Equipa inexistente.\n", cmdCount);
+      return;
     }
     else
     {
@@ -120,10 +112,8 @@ void addTeam(HTT *htt, unsigned int id, int cmdCount, char *name)
   team = getTeam(htt, name);
   if (team != 0)
   {
-    {
-      printf("%d Equipa existente.\n", cmdCount);
-      return;
-    }
+    printf("%d Equipa existente.\n", cmdCount);
+    return;
   }
   else
   {
@@ -140,10 +130,8 @@ void searchTeam(HTT *htt, int cmdCount, char *name)
   team = getTeam(htt, name);
   if (team == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", cmdCount);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", cmdCount);
+    return;
   }
   else
   {
@@ -159,10 +147,8 @@ void searchGame(HTG *htg, int cmdCount, char *name)
   game = getGame(htg, name);
   if (game == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", cmdCount);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", cmdCount);
+    return;
   }
   else
   {
@@ -184,9 +170,7 @@ void listGames(HTG *htg, int cmdCount)
   vector = htg->items;
   if (size == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -210,10 +194,8 @@ void changeScore(HTG *htg, int cmdCount, char *name, unsigned int score[])
   game = getGame(htg, name);
   if (game == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", cmdCount);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", cmdCount);
+    return;
   }
   else
   {
@@ -222,21 +204,39 @@ void changeScore(HTG *htg, int cmdCount, char *name, unsigned int score[])
 
   if (game->score[0] > game->score[1])
   {
+    if (score[0] < score[1])
     {
-      if (score[0] < score[1])
+      game->team1->nWon--;
+      game->team2->nWon++;
+    }
+    else
+    {
+      if (score[0] == score[1])
       {
-        {
-          game->team1->nWon--;
-          game->team2->nWon++;
-        }
+        game->team1->nWon--;
+      }
+      else
+      {
+        
+      }
+
+    }
+
+  }
+  else
+  {
+    if (game->score[0] < game->score[1])
+    {
+      if (score[0] > score[1])
+      {
+        game->team1->nWon++;
+        game->team2->nWon--;
       }
       else
       {
         if (score[0] == score[1])
         {
-          {
-            game->team1->nWon--;
-          }
+          game->team2->nWon--;
         }
         else
         {
@@ -246,26 +246,19 @@ void changeScore(HTG *htg, int cmdCount, char *name, unsigned int score[])
       }
 
     }
-  }
-  else
-  {
-    if (game->score[0] < game->score[1])
+    else
     {
+      if (game->score[0] == game->score[1])
       {
         if (score[0] > score[1])
         {
-          {
-            game->team1->nWon++;
-            game->team2->nWon--;
-          }
+          game->team1->nWon++;
         }
         else
         {
-          if (score[0] == score[1])
+          if (score[0] < score[1])
           {
-            {
-              game->team2->nWon--;
-            }
+            game->team2->nWon++;
           }
           else
           {
@@ -274,35 +267,6 @@ void changeScore(HTG *htg, int cmdCount, char *name, unsigned int score[])
 
         }
 
-      }
-    }
-    else
-    {
-      if (game->score[0] == game->score[1])
-      {
-        {
-          if (score[0] > score[1])
-          {
-            {
-              game->team1->nWon++;
-            }
-          }
-          else
-          {
-            if (score[0] < score[1])
-            {
-              {
-                game->team2->nWon++;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-        }
       }
       else
       {
@@ -330,9 +294,7 @@ void listMostWon(HTT *htt, int cmdCount)
   vector = htt->items;
   if (size == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -346,9 +308,7 @@ void listMostWon(HTT *htt, int cmdCount)
   {
     if (teams[i].nWon != teams[0].nWon)
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {
@@ -381,10 +341,8 @@ void removeGame(HTG *htg, int cmdCount, char *name)
   game = getGame(htg, name);
   if (game == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", cmdCount);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", cmdCount);
+    return;
   }
   else
   {
@@ -393,17 +351,13 @@ void removeGame(HTG *htg, int cmdCount, char *name)
 
   if (game->score[0] > game->score[1])
   {
-    {
-      game->team1->nWon--;
-    }
+    game->team1->nWon--;
   }
   else
   {
     if (game->score[0] < game->score[1])
     {
-      {
-        game->team2->nWon--;
-      }
+      game->team2->nWon--;
     }
     else
     {

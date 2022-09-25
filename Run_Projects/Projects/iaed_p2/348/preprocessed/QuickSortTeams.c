@@ -48,9 +48,7 @@ int quickSortPartitionByTName(Team **teamsMostWins, int l, int h)
 
     if (i < j)
     {
-      {
-        swapProd(teamsMostWins, i, j);
-      }
+      swapProd(teamsMostWins, i, j);
     }
     else
     {

@@ -55,11 +55,9 @@ void adicionar_equipa(char *nome_equipa, hashtable_equipas *equipas)
   }
   else
   {
-    {
-      equipa_seguinte = equipas->vetor_hashes[hash].next;
-      equipas->vetor_hashes[hash].next = nova_equipa;
-      nova_equipa->next = equipa_seguinte;
-    }
+    equipa_seguinte = equipas->vetor_hashes[hash].next;
+    equipas->vetor_hashes[hash].next = nova_equipa;
+    nova_equipa->next = equipa_seguinte;
   }
 
 }
@@ -75,23 +73,21 @@ link_equipa *procurar_equipa(char *nome_equipa, hashtable_equipas *equipas)
   }
   else
   {
+    link_atual = equipas->vetor_hashes[hash].next;
+    while (link_atual != 0)
     {
-      link_atual = equipas->vetor_hashes[hash].next;
-      while (link_atual != 0)
+      if (!strcmp(link_atual->nome_equipa, nome_equipa))
       {
-        if (!strcmp(link_atual->nome_equipa, nome_equipa))
-        {
-          return link_atual;
-        }
-        else
-        {
-          link_atual = link_atual->next;
-        }
-
+        return link_atual;
+      }
+      else
+      {
+        link_atual = link_atual->next;
       }
 
-      return 0;
     }
+
+    return 0;
   }
 
 }
@@ -117,10 +113,8 @@ void listar_melhores_equipas(hashtable_equipas *equipas, int linha_input)
       {
         if (equipa_atual->numero_vitorias > maior_nmr_vitorias)
         {
-          {
-            maior_nmr_vitorias = equipa_atual->numero_vitorias;
-            numero_equipas = 1;
-          }
+          maior_nmr_vitorias = equipa_atual->numero_vitorias;
+          numero_equipas = 1;
         }
         else
         {
@@ -144,10 +138,8 @@ void listar_melhores_equipas(hashtable_equipas *equipas, int linha_input)
       {
         if (equipa_atual->numero_vitorias == maior_nmr_vitorias)
         {
-          {
-            array_equipas_vitoriosas[indice] = equipa_atual;
-            indice++;
-          }
+          array_equipas_vitoriosas[indice] = equipa_atual;
+          indice++;
         }
         else
         {

@@ -16,10 +16,8 @@ linkJogo insertNodeJogo(linkJogo *head, jogo j)
   newNode->next = 0;
   if ((*head) == 0)
   {
-    {
-      *head = newNode;
-      return newNode;
-    }
+    *head = newNode;
+    return newNode;
   }
   else
   {
@@ -39,11 +37,9 @@ void deleteNodeJogo(struct nodeJogo **head, jogo j)
   struct nodeJogo *prev;
   if ((temp != 0) && (!strcmp(temp->j.nome, j.nome)))
   {
-    {
-      *head = temp->next;
-      free(temp);
-      return;
-    }
+    *head = temp->next;
+    free(temp);
+    return;
   }
   else
   {
@@ -93,10 +89,8 @@ linkEquipa insertNodeEquipa(linkEquipa *head, equipa e)
   newNode->next = 0;
   if ((*head) == 0)
   {
-    {
-      *head = newNode;
-      return newNode;
-    }
+    *head = newNode;
+    return newNode;
   }
   else
   {
@@ -116,11 +110,9 @@ void deleteNodeEquipa(struct nodeEquipa **head, equipa e)
   struct nodeEquipa *prev;
   if ((temp != 0) && (!strcmp(temp->e.nome, e.nome)))
   {
-    {
-      *head = temp->next;
-      free(temp);
-      return;
-    }
+    *head = temp->next;
+    free(temp);
+    return;
   }
   else
   {

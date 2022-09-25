@@ -19,13 +19,11 @@ node **insert_END(node **ends, char *text)
   node *tail = ends[1];
   if (head == 0)
   {
-    {
-      head = NEW(text);
-      tail = head;
-      ends[0] = head;
-      ends[1] = tail;
-      return ends;
-    }
+    head = NEW(text);
+    tail = head;
+    ends[0] = head;
+    ends[1] = tail;
+    return ends;
   }
   else
   {
@@ -49,55 +47,45 @@ node **lst_delete(node **ends, char *text)
   {
     if (strcmp(t->text, text) == 0)
     {
+      if ((t == head) && (t == tail))
       {
-        if ((t == head) && (t == tail))
+        head = t->next;
+        tail = t->next;
+      }
+      else
+      {
+        if (t == head)
         {
+          head = t->next;
+          if (head != 0)
           {
-            head = t->next;
-            tail = t->next;
-          }
-        }
-        else
-        {
-          if (t == head)
-          {
-            {
-              head = t->next;
-              if (head != 0)
-              {
-                head->prev = 0;
-              }
-              else
-              {
-                
-              }
-
-            }
+            head->prev = 0;
           }
           else
           {
-            if (t == tail)
-            {
-              {
-                tail = t->prev;
-                tail->next = 0;
-              }
-            }
-            else
-            {
-              {
-                t->prev->next = t->next;
-                t->next->prev = t->prev;
-              }
-            }
+            
+          }
 
+        }
+        else
+        {
+          if (t == tail)
+          {
+            tail = t->prev;
+            tail->next = 0;
+          }
+          else
+          {
+            t->prev->next = t->next;
+            t->next->prev = t->prev;
           }
 
         }
 
-        free(t);
-        break;
       }
+
+      free(t);
+      break;
     }
     else
     {
@@ -118,10 +106,8 @@ void free_list(node **ends)
   node *next;
   if (head == 0)
   {
-    {
-      free(ends);
-      return;
-    }
+    free(ends);
+    return;
   }
   else
   {
@@ -178,12 +164,10 @@ void HT_G_free(Game **G, int *G_sz)
   {
     if (G[i] != 0)
     {
-      {
-        free(G[i]->n);
-        free(G[i]->t1);
-        free(G[i]->t2);
-        free(G[i]);
-      }
+      free(G[i]->n);
+      free(G[i]->t1);
+      free(G[i]->t2);
+      free(G[i]);
     }
     else
     {
@@ -203,10 +187,8 @@ void HT_T_free(Team **T, int *T_sz)
   {
     if (T[i] != 0)
     {
-      {
-        free(T[i]->n);
-        free(T[i]);
-      }
+      free(T[i]->n);
+      free(T[i]);
     }
     else
     {
@@ -228,9 +210,7 @@ Game **HT_G_expand(Game **G, int *G_sz)
   {
     if (temp_G[i] != 0)
     {
-      {
-        HT_G_insert(temp_G[i], G, G_sz);
-      }
+      HT_G_insert(temp_G[i], G, G_sz);
     }
     else
     {
@@ -286,9 +266,7 @@ Team **HT_T_insert(Team *t, Team **T, int *T_sz, int *T_n)
   T[i] = t;
   if ((*T_n) > ((*T_sz) / 2))
   {
-    {
-      T = HT_T_expand(T, T_sz, T_n);
-    }
+    T = HT_T_expand(T, T_sz, T_n);
   }
   else
   {
@@ -306,9 +284,7 @@ Game *HT_G_search(char *name, Game **G, int *G_sz)
   {
     if (strcmp(G[i]->n, name) == 0)
     {
-      {
-        return G[i];
-      }
+      return G[i];
     }
     else
     {
@@ -328,9 +304,7 @@ Team *HT_T_search(char *name, Team **T, int *T_sz)
   {
     if (strcmp(T[i]->n, name) == 0)
     {
-      {
-        return T[i];
-      }
+      return T[i];
     }
     else
     {

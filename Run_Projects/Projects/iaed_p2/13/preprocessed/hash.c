@@ -64,12 +64,10 @@ void hashInsert(hash *table, hash item, char *str)
   }
   else
   {
-    {
-      for (aux = table[pos]; aux->next != 0; aux = aux->next)
-        ;
+    for (aux = table[pos]; aux->next != 0; aux = aux->next)
+      ;
 
-      aux->next = item;
-    }
+    aux->next = item;
   }
 
 }
@@ -126,20 +124,18 @@ void *hashRemove(char *str)
 
   if (aux != 0)
   {
+    if (prev != 0)
     {
-      if (prev != 0)
-      {
-        prev->next = aux->next;
-      }
-      else
-      {
-        games[pos] = aux->next;
-      }
-
-      returnItem = aux->item;
-      free(aux);
-      return returnItem;
+      prev->next = aux->next;
     }
+    else
+    {
+      games[pos] = aux->next;
+    }
+
+    returnItem = aux->item;
+    free(aux);
+    return returnItem;
   }
   else
   {
@@ -187,22 +183,18 @@ char **getBestTeams(int *length, unsigned int *wins)
     for (aux = teams[i]; aux != 0; aux = aux->next)
       if (amountOfWins(aux->item) == high)
     {
-      {
-        amount++;
-        out = (char **) realloc(out, (sizeof(char *)) * amount);
-        out[amount - 1] = nameOfTeam(aux->item);
-      }
+      amount++;
+      out = (char **) realloc(out, (sizeof(char *)) * amount);
+      out[amount - 1] = nameOfTeam(aux->item);
     }
     else
     {
       if (amountOfWins(aux->item) > high)
       {
-        {
-          amount = 1;
-          out = (char **) realloc(out, sizeof(char *));
-          out[0] = nameOfTeam(aux->item);
-          high = amountOfWins(aux->item);
-        }
+        amount = 1;
+        out = (char **) realloc(out, sizeof(char *));
+        out[0] = nameOfTeam(aux->item);
+        high = amountOfWins(aux->item);
       }
       else
       {

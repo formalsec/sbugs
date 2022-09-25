@@ -28,16 +28,12 @@ Link_ addJgLista(Link_ head, Jogo *jogo)
 {
   if (head == 0)
   {
-    {
-      return criaNode_(jogo);
-    }
+    return criaNode_(jogo);
   }
   else
   {
-    {
-      head->next = addJgLista(head->next, jogo);
-      return head;
-    }
+    head->next = addJgLista(head->next, jogo);
+    return head;
   }
 
 }
@@ -50,23 +46,17 @@ Link_ apagaNode_(Link_ head, Jogo *jogo)
   {
     if (link->jogo == jogo)
     {
+      if (link == head)
       {
-        if (link == head)
-        {
-          {
-            head = link->next;
-          }
-        }
-        else
-        {
-          {
-            _link->next = link->next;
-          }
-        }
-
-        freeNode_(link);
-        break;
+        head = link->next;
       }
+      else
+      {
+        _link->next = link->next;
+      }
+
+      freeNode_(link);
+      break;
     }
     else
     {
@@ -86,23 +76,17 @@ Link_ apagaNode_caso(Link_ head, Jogo *jogo)
   {
     if (link->jogo == jogo)
     {
+      if (link == head)
       {
-        if (link == head)
-        {
-          {
-            head = link->next;
-          }
-        }
-        else
-        {
-          {
-            _link->next = link->next;
-          }
-        }
-
-        free(link);
-        break;
+        head = link->next;
       }
+      else
+      {
+        _link->next = link->next;
+      }
+
+      free(link);
+      break;
     }
     else
     {
@@ -140,9 +124,7 @@ Jogo *procuraJogo(Link_ head, char *nome)
   {
     if (strcmp(head->jogo->nome, nome) == 0)
     {
-      {
-        return head->jogo;
-      }
+      return head->jogo;
     }
     else
     {

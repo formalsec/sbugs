@@ -74,10 +74,8 @@ lista_ligada_jogos **adiciona_a_lista_ligada_j(jogo *jogo_new, lista_ligada_jogo
   new_node->next = 0;
   if ((*lista_ligada) == 0)
   {
-    {
-      *lista_ligada = new_node;
-      return lista_ligada;
-    }
+    *lista_ligada = new_node;
+    return lista_ligada;
   }
   else
   {
@@ -86,11 +84,9 @@ lista_ligada_jogos **adiciona_a_lista_ligada_j(jogo *jogo_new, lista_ligada_jogo
 
   if (node_aux->next == 0)
   {
-    {
-      new_node->next = node_aux;
-      *lista_ligada = new_node;
-      return lista_ligada;
-    }
+    new_node->next = node_aux;
+    *lista_ligada = new_node;
+    return lista_ligada;
   }
   else
   {
@@ -134,13 +130,11 @@ void apaga_jogo_hashtable(char *nome_jogo, node_htable_jogos **entrada_hash_jogo
   node_hash = entrada_hash_jogos[hash_index];
   if ((node_hash != 0) && (strcmp(node_hash->jogo->nome_jogo, nome_jogo) == 0))
   {
-    {
-      entrada_hash_jogos[hash_index] = entrada_hash_jogos[hash_index]->next;
-      free(node_hash->jogo->nome_jogo);
-      free(node_hash->jogo);
-      free(node_hash);
-      return;
-    }
+    entrada_hash_jogos[hash_index] = entrada_hash_jogos[hash_index]->next;
+    free(node_hash->jogo->nome_jogo);
+    free(node_hash->jogo);
+    free(node_hash);
+    return;
   }
   else
   {
@@ -165,11 +159,9 @@ void apaga_jogo_lista_ligada(char *nome_jogo, lista_ligada_jogos **lista_ligada)
   lista_ligada_jogos *node_aux;
   if (node->next == 0)
   {
-    {
-      *lista_ligada = 0;
-      free(*lista_ligada);
-      return;
-    }
+    *lista_ligada = 0;
+    free(*lista_ligada);
+    return;
   }
   else
   {
@@ -178,11 +170,9 @@ void apaga_jogo_lista_ligada(char *nome_jogo, lista_ligada_jogos **lista_ligada)
 
   if (strcmp(node->jogo->nome_jogo, nome_jogo) == 0)
   {
-    {
-      *lista_ligada = node->next;
-      free(node);
-      return;
-    }
+    *lista_ligada = node->next;
+    free(node);
+    return;
   }
   else
   {
@@ -193,12 +183,10 @@ void apaga_jogo_lista_ligada(char *nome_jogo, lista_ligada_jogos **lista_ligada)
   {
     if (strcmp(node->next->jogo->nome_jogo, nome_jogo) == 0)
     {
-      {
-        node_aux = node->next;
-        node->next = node->next->next;
-        free(node_aux);
-        return;
-      }
+      node_aux = node->next;
+      node->next = node->next->next;
+      free(node_aux);
+      return;
     }
     else
     {

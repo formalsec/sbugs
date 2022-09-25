@@ -79,21 +79,17 @@ void merge(produto vetor[], int left, int m, int right)
   {
     if (Left[i].preco <= Right[j].preco)
     {
-      {
-        strcpy(vetor[k].des, Left[i].des);
-        vetor[k].preco = Left[i].preco;
-        vetor[k].qtd = Left[i].qtd;
-        i++;
-      }
+      strcpy(vetor[k].des, Left[i].des);
+      vetor[k].preco = Left[i].preco;
+      vetor[k].qtd = Left[i].qtd;
+      i++;
     }
     else
     {
-      {
-        strcpy(vetor[k].des, Right[j].des);
-        vetor[k].preco = Right[j].preco;
-        vetor[k].qtd = Right[j].qtd;
-        j++;
-      }
+      strcpy(vetor[k].des, Right[j].des);
+      vetor[k].preco = Right[j].preco;
+      vetor[k].qtd = Right[j].qtd;
+      j++;
     }
 
     k++;
@@ -143,9 +139,7 @@ int procura_enc(int ide, encomenda vetor_enc[])
   {
     if (vetor_enc[i].idt == ide)
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {
@@ -164,9 +158,7 @@ int procura_prod(int idp, produto vetor_prod[])
   {
     if (vetor_prod[a].idt == idp)
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {
@@ -284,10 +276,8 @@ void q(produto vetor_prod[])
   i = procura_prod(idp, vetor_prod);
   if (i == dim_prod)
   {
-    {
-      printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idp);
-      return;
-    }
+    printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idp);
+    return;
   }
   else
   {
@@ -331,10 +321,8 @@ void A(encomenda vetor_enc[], produto vetor_prod[])
   a = procura_enc(ide, vetor_enc);
   if (a == dim_enc)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
+    return;
   }
   else
   {
@@ -345,10 +333,8 @@ void A(encomenda vetor_enc[], produto vetor_prod[])
   i = procura_prod(idp, vetor_prod);
   if (i == dim_prod)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
+    return;
   }
   else
   {
@@ -357,10 +343,8 @@ void A(encomenda vetor_enc[], produto vetor_prod[])
 
   if ((vetor_prod[i].qtd - qtd) < 0)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
+    return;
   }
   else
   {
@@ -372,26 +356,20 @@ void A(encomenda vetor_enc[], produto vetor_prod[])
   {
     if (vetor_enc[a].prod_idt[j] == idp)
     {
+      var_controlo = 1;
+      if ((vetor_enc[a].peso + (vetor_prod[i].peso * qtd)) <= 200)
       {
-        var_controlo = 1;
-        if ((vetor_enc[a].peso + (vetor_prod[i].peso * qtd)) <= 200)
-        {
-          {
-            vetor_enc[a].peso += vetor_prod[i].peso * qtd;
-            vetor_enc[a].prod_qtd[j] += qtd;
-            vetor_prod[i].qtd = vetor_prod[i].qtd - qtd;
-            break;
-          }
-        }
-        else
-        {
-          {
-            printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
-            return;
-          }
-        }
-
+        vetor_enc[a].peso += vetor_prod[i].peso * qtd;
+        vetor_enc[a].prod_qtd[j] += qtd;
+        vetor_prod[i].qtd = vetor_prod[i].qtd - qtd;
+        break;
       }
+      else
+      {
+        printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
+        return;
+      }
+
     }
     else
     {
@@ -402,21 +380,17 @@ void A(encomenda vetor_enc[], produto vetor_prod[])
 
   if (((var_controlo == 0) && (peso == vetor_enc[a].peso)) && ((vetor_enc[a].peso + (vetor_prod[i].peso * qtd)) <= 200))
   {
-    {
-      vetor_enc[a].peso += vetor_prod[i].peso * qtd;
-      vetor_enc[a].prod_idt[j] = idp;
-      vetor_enc[a].prod_qtd[j] = qtd;
-      vetor_enc[a].len += 1;
-      vetor_prod[i].qtd = vetor_prod[i].qtd - qtd;
-    }
+    vetor_enc[a].peso += vetor_prod[i].peso * qtd;
+    vetor_enc[a].prod_idt[j] = idp;
+    vetor_enc[a].prod_qtd[j] = qtd;
+    vetor_enc[a].len += 1;
+    vetor_prod[i].qtd = vetor_prod[i].qtd - qtd;
   }
   else
   {
     if ((var_controlo == 0) && ((vetor_enc[a].peso + (vetor_prod[i].peso * qtd)) > 200))
     {
-      {
-        printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
-      }
+      printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
     }
     else
     {
@@ -437,10 +411,8 @@ void r(produto vetor_prod[])
   i = procura_prod(idp, vetor_prod);
   if (i == dim_prod)
   {
-    {
-      printf("Impossivel remover stock do produto %d. Produto inexistente.\n", idp);
-      return;
-    }
+    printf("Impossivel remover stock do produto %d. Produto inexistente.\n", idp);
+    return;
   }
   else
   {
@@ -449,16 +421,12 @@ void r(produto vetor_prod[])
 
   if ((vetor_prod[i].qtd - qtd) >= 0)
   {
-    {
-      vetor_prod[i].qtd = vetor_prod[i].qtd - qtd;
-    }
+    vetor_prod[i].qtd = vetor_prod[i].qtd - qtd;
   }
   else
   {
-    {
-      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, idp);
-      return;
-    }
+    printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, idp);
+    return;
   }
 
 }
@@ -475,10 +443,8 @@ void R(encomenda vetor_enc[], produto vetor_prod[])
   i = procura_enc(ide, vetor_enc);
   if (i == dim_enc)
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
-      return;
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
+    return;
   }
   else
   {
@@ -488,10 +454,8 @@ void R(encomenda vetor_enc[], produto vetor_prod[])
   j = procura_prod(idp, vetor_prod);
   if (j == dim_prod)
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
-      return;
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
+    return;
   }
   else
   {
@@ -502,18 +466,16 @@ void R(encomenda vetor_enc[], produto vetor_prod[])
   {
     if (vetor_enc[i].prod_idt[a] == idp)
     {
+      vetor_prod[j].qtd += vetor_enc[i].prod_qtd[a];
+      vetor_enc[i].peso = vetor_enc[i].peso - (vetor_prod[j].peso * vetor_enc[i].prod_qtd[a]);
+      for (j = a; j < vetor_enc[i].len; j++)
       {
-        vetor_prod[j].qtd += vetor_enc[i].prod_qtd[a];
-        vetor_enc[i].peso = vetor_enc[i].peso - (vetor_prod[j].peso * vetor_enc[i].prod_qtd[a]);
-        for (j = a; j < vetor_enc[i].len; j++)
-        {
-          vetor_enc[i].prod_idt[j] = vetor_enc[i].prod_idt[j + 1];
-          vetor_enc[i].prod_qtd[j] = vetor_enc[i].prod_qtd[j + 1];
-        }
-
-        vetor_enc[i].len = vetor_enc[i].len - 1;
-        break;
+        vetor_enc[i].prod_idt[j] = vetor_enc[i].prod_idt[j + 1];
+        vetor_enc[i].prod_qtd[j] = vetor_enc[i].prod_qtd[j + 1];
       }
+
+      vetor_enc[i].len = vetor_enc[i].len - 1;
+      break;
     }
     else
     {
@@ -536,10 +498,8 @@ void C(encomenda vetor_enc[], produto vetor_prod[])
   i = procura_enc(ide, vetor_enc);
   if (i == dim_enc)
   {
-    {
-      printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ide);
-      return;
-    }
+    printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ide);
+    return;
   }
   else
   {
@@ -552,9 +512,7 @@ void C(encomenda vetor_enc[], produto vetor_prod[])
     {
       if (vetor_enc[i].prod_idt[j] == vetor_prod[a].idt)
       {
-        {
-          total = total + (vetor_prod[a].preco * vetor_enc[i].prod_qtd[j]);
-        }
+        total = total + (vetor_prod[a].preco * vetor_enc[i].prod_qtd[j]);
       }
       else
       {
@@ -578,10 +536,8 @@ void p(produto vetor_prod[])
   i = procura_prod(idp, vetor_prod);
   if (i == dim_prod)
   {
-    {
-      printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idp);
-      return;
-    }
+    printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idp);
+    return;
   }
   else
   {
@@ -603,10 +559,8 @@ void E(encomenda vetor_enc[], produto vetor_prod[])
   i = procura_enc(ide, vetor_enc);
   if (i == dim_enc)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
-      return;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
+    return;
   }
   else
   {
@@ -616,10 +570,8 @@ void E(encomenda vetor_enc[], produto vetor_prod[])
   a = procura_prod(idp, vetor_prod);
   if (a == dim_prod)
   {
-    {
-      printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
-      return;
-    }
+    printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
+    return;
   }
   else
   {
@@ -630,10 +582,8 @@ void E(encomenda vetor_enc[], produto vetor_prod[])
   {
     if (vetor_enc[i].prod_idt[j] == idp)
     {
-      {
-        printf("%s %d.\n", vetor_prod[a].des, vetor_enc[i].prod_qtd[j]);
-        break;
-      }
+      printf("%s %d.\n", vetor_prod[a].des, vetor_enc[i].prod_qtd[j]);
+      break;
     }
     else
     {
@@ -644,9 +594,7 @@ void E(encomenda vetor_enc[], produto vetor_prod[])
 
   if (j == vetor_enc[i].len)
   {
-    {
-      printf("%s 0.\n", vetor_prod[a].des);
-    }
+    printf("%s 0.\n", vetor_prod[a].des);
   }
   else
   {
@@ -669,10 +617,8 @@ void m(encomenda vetor_enc[], produto vetor_prod[])
   a = procura_prod(idp, vetor_prod);
   if (a == dim_prod)
   {
-    {
-      printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idp);
-      return;
-    }
+    printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idp);
+    return;
   }
   else
   {
@@ -685,32 +631,26 @@ void m(encomenda vetor_enc[], produto vetor_prod[])
     {
       if (vetor_enc[i].prod_idt[j] == idp)
       {
+        if (vetor_enc[i].prod_qtd[j] > qtd_max)
         {
-          if (vetor_enc[i].prod_qtd[j] > qtd_max)
+          qtd_max = vetor_enc[i].prod_qtd[j];
+          enc_max = vetor_enc[i].idt;
+          break;
+        }
+        else
+        {
+          if ((vetor_enc[i].prod_qtd[j] == qtd_max) && (enc_max > vetor_enc[i].idt))
           {
-            {
-              qtd_max = vetor_enc[i].prod_qtd[j];
-              enc_max = vetor_enc[i].idt;
-              break;
-            }
+            enc_max = vetor_enc[i].idt;
+            break;
           }
           else
           {
-            if ((vetor_enc[i].prod_qtd[j] == qtd_max) && (enc_max > vetor_enc[i].idt))
-            {
-              {
-                enc_max = vetor_enc[i].idt;
-                break;
-              }
-            }
-            else
-            {
-              
-            }
-
+            
           }
 
         }
+
       }
       else
       {
@@ -723,9 +663,7 @@ void m(encomenda vetor_enc[], produto vetor_prod[])
 
   if (enc_max != (-1))
   {
-    {
-      printf("Maximo produto %d %d %d.\n", idp, enc_max, qtd_max);
-    }
+    printf("Maximo produto %d %d %d.\n", idp, enc_max, qtd_max);
   }
   else
   {
@@ -766,44 +704,38 @@ void L(encomenda vetor_enc[], produto vetor_prod[])
   i = procura_enc(ide, vetor_enc);
   if (i == dim_enc)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
-      return;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
+    return;
   }
   else
   {
+    produto vetor[200];
+    for (j = 0; j < vetor_enc[i].len; j++)
     {
-      produto vetor[200];
-      for (j = 0; j < vetor_enc[i].len; j++)
+      for (a = 0; a < dim_prod; a++)
       {
-        for (a = 0; a < dim_prod; a++)
+        if (vetor_enc[i].prod_idt[j] == vetor_prod[a].idt)
         {
-          if (vetor_enc[i].prod_idt[j] == vetor_prod[a].idt)
-          {
-            {
-              strcpy(vetor[j].des, vetor_prod[a].des);
-              vetor[j].preco = vetor_prod[a].preco;
-              vetor[j].qtd = vetor_enc[i].prod_qtd[j];
-            }
-          }
-          else
-          {
-            
-          }
-
+          strcpy(vetor[j].des, vetor_prod[a].des);
+          vetor[j].preco = vetor_prod[a].preco;
+          vetor[j].qtd = vetor_enc[i].prod_qtd[j];
+        }
+        else
+        {
+          
         }
 
       }
 
-      insertion(vetor, 0, vetor_enc[i].len - 1);
-      printf("Encomenda %d\n", ide);
-      for (b = 0; b < vetor_enc[i].len; b++)
-      {
-        printf("* %s %d %d\n", vetor[b].des, vetor[b].preco, vetor[b].qtd);
-      }
-
     }
+
+    insertion(vetor, 0, vetor_enc[i].len - 1);
+    printf("Encomenda %d\n", ide);
+    for (b = 0; b < vetor_enc[i].len; b++)
+    {
+      printf("* %s %d %d\n", vetor[b].des, vetor[b].preco, vetor[b].qtd);
+    }
+
   }
 
 }

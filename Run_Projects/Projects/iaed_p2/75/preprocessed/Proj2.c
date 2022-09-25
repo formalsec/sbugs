@@ -137,37 +137,31 @@ lnk_dblist add_game(int nl, lnk_dblist p_auxlist, link_game *head_ghash, link_te
   Team *paux_team2 = searchTeam_Hash(13997, head_thash, t2_name);
   if (searchGame_Hash(4789, head_ghash, gm_name) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", nl);
-      return p_auxlist;
-    }
+    printf("%d Jogo existente.\n", nl);
+    return p_auxlist;
   }
   else
   {
     if ((paux_team1 == 0) || (paux_team2 == 0))
     {
-      {
-        printf("%d Equipa inexistente.\n", nl);
-        return p_auxlist;
-      }
+      printf("%d Equipa inexistente.\n", nl);
+      return p_auxlist;
     }
     else
     {
+      Game *ptr_ng = newGame(gm_name, paux_team1, paux_team2, t1_score, t2_score);
+      Team *ptr_winner = who_won(ptr_ng);
+      insertGame_Hash(4789, head_ghash, ptr_ng);
+      if (ptr_winner != 0)
       {
-        Game *ptr_ng = newGame(gm_name, paux_team1, paux_team2, t1_score, t2_score);
-        Team *ptr_winner = who_won(ptr_ng);
-        insertGame_Hash(4789, head_ghash, ptr_ng);
-        if (ptr_winner != 0)
-        {
-          change_victory(ptr_winner, 1);
-        }
-        else
-        {
-          
-        }
-
-        return insrtGHash_auxList(p_auxlist, ptr_ng);
+        change_victory(ptr_winner, 1);
       }
+      else
+      {
+        
+      }
+
+      return insrtGHash_auxList(p_auxlist, ptr_ng);
     }
 
   }
@@ -203,28 +197,24 @@ lnk_dblist delete_game(int nl, lnk_dblist p_auxlist, link_game *head_ghash, char
   Game *p_game = searchGame_Hash(4789, head_ghash, g_name);
   if (p_game == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-      return p_auxlist;
-    }
+    printf("%d Jogo inexistente.\n", nl);
+    return p_auxlist;
   }
   else
   {
+    Team *ptr_winner = who_won(p_game);
+    if (ptr_winner != 0)
     {
-      Team *ptr_winner = who_won(p_game);
-      if (ptr_winner != 0)
-      {
-        change_victory(ptr_winner, -1);
-      }
-      else
-      {
-        
-      }
-
-      new_head = removGHash_auxList(p_auxlist, p_game);
-      deleteGame_Hash(4789, head_ghash, g_name);
-      return new_head;
+      change_victory(ptr_winner, -1);
     }
+    else
+    {
+      
+    }
+
+    new_head = removGHash_auxList(p_auxlist, p_game);
+    deleteGame_Hash(4789, head_ghash, g_name);
+    return new_head;
   }
 
 }
@@ -238,34 +228,28 @@ void change_game(int nl, link_game *head_ghash, char *g_name, int score_t1, int 
   }
   else
   {
+    Team *ptr_winner = who_won(p_game);
+    if (ptr_winner != 0)
     {
-      Team *ptr_winner = who_won(p_game);
-      if (ptr_winner != 0)
-      {
-        {
-          change_victory(ptr_winner, -1);
-        }
-      }
-      else
-      {
-        
-      }
-
-      p_game->score1 = score_t1;
-      p_game->score2 = score_t2;
-      ptr_winner = who_won(p_game);
-      if (ptr_winner != 0)
-      {
-        {
-          change_victory(ptr_winner, 1);
-        }
-      }
-      else
-      {
-        
-      }
-
+      change_victory(ptr_winner, -1);
     }
+    else
+    {
+      
+    }
+
+    p_game->score1 = score_t1;
+    p_game->score2 = score_t2;
+    ptr_winner = who_won(p_game);
+    if (ptr_winner != 0)
+    {
+      change_victory(ptr_winner, 1);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -279,10 +263,8 @@ void add_team(int nl, link_team *head, char *name)
   }
   else
   {
-    {
-      p_team = newTeam(name);
-      insertTeam_Hash(13997, head, p_team);
-    }
+    p_team = newTeam(name);
+    insertTeam_Hash(13997, head, p_team);
   }
 
 }
@@ -314,18 +296,14 @@ void most_win(int nl, int size, link_team *head)
     {
       if (p_aux->pteam->victories == max)
       {
-        {
-          nr_teams++;
-        }
+        nr_teams++;
       }
       else
       {
         if (p_aux->pteam->victories > max)
         {
-          {
-            max = p_aux->pteam->victories;
-            nr_teams = 1;
-          }
+          max = p_aux->pteam->victories;
+          nr_teams = 1;
         }
         else
         {
@@ -341,49 +319,45 @@ void most_win(int nl, int size, link_team *head)
 
   if (nr_teams > 0)
   {
+    Team **vector = (Team **) malloc((sizeof(Team *)) * nr_teams);
+    int count = 0;
+    for (i = 0; i < size; i++)
     {
-      Team **vector = (Team **) malloc((sizeof(Team *)) * nr_teams);
-      int count = 0;
-      for (i = 0; i < size; i++)
+      p_aux = head[i];
+      while (p_aux != 0)
       {
-        p_aux = head[i];
-        while (p_aux != 0)
+        if (p_aux->pteam->victories == max)
         {
-          if (p_aux->pteam->victories == max)
-          {
-            {
-              vector[count] = p_aux->pteam;
-              count++;
-            }
-          }
-          else
-          {
-            
-          }
-
-          p_aux = p_aux->next;
-        }
-
-        if (count == nr_teams)
-        {
-          break;
+          vector[count] = p_aux->pteam;
+          count++;
         }
         else
         {
           
         }
 
+        p_aux = p_aux->next;
       }
 
-      qsort(vector, nr_teams, sizeof(Team *), compare);
-      printf("%d Melhores %d\n", nl, max);
-      for (i = 0; i < nr_teams; i++)
+      if (count == nr_teams)
       {
-        printf("%d * %s\n", nl, vector[i]->name);
+        break;
+      }
+      else
+      {
+        
       }
 
-      free(vector);
     }
+
+    qsort(vector, nr_teams, sizeof(Team *), compare);
+    printf("%d Melhores %d\n", nl, max);
+    for (i = 0; i < nr_teams; i++)
+    {
+      printf("%d * %s\n", nl, vector[i]->name);
+    }
+
+    free(vector);
   }
   else
   {

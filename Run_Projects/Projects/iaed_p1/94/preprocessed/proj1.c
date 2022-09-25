@@ -143,17 +143,13 @@ void merge_enc(int a[199][2], int left, int m, int right)
   {
     if (strcmp(vet_produtos[aux[i][0]].des, vet_produtos[aux[j][0]].des) > 0)
     {
-      {
-        copia_vetores_int(a[l], aux[j], 2);
-        --j;
-      }
+      copia_vetores_int(a[l], aux[j], 2);
+      --j;
     }
     else
     {
-      {
-        copia_vetores_int(a[l], aux[i], 2);
-        ++i;
-      }
+      copia_vetores_int(a[l], aux[i], 2);
+      ++i;
     }
 
   }
@@ -252,22 +248,18 @@ void A()
         }
         else
         {
+          if ((i = idp_na_encomenda(ide, idp)) != (-1))
           {
-            if ((i = idp_na_encomenda(ide, idp)) != (-1))
-            {
-              vet_encomendas[ide].produtos[i][1] += qtd;
-            }
-            else
-            {
-              {
-                vet_encomendas[ide].produtos[vet_encomendas[ide].count][0] = idp;
-                vet_encomendas[ide].produtos[vet_encomendas[ide].count][1] = qtd;
-                ++vet_encomendas[ide].count;
-              }
-            }
-
-            vet_produtos[idp].qtd -= qtd;
+            vet_encomendas[ide].produtos[i][1] += qtd;
           }
+          else
+          {
+            vet_encomendas[ide].produtos[vet_encomendas[ide].count][0] = idp;
+            vet_encomendas[ide].produtos[vet_encomendas[ide].count][1] = qtd;
+            ++vet_encomendas[ide].count;
+          }
+
+          vet_produtos[idp].qtd -= qtd;
         }
 
       }
@@ -324,13 +316,11 @@ void R()
     {
       if ((i = idp_na_encomenda(ide, idp)) != (-1))
       {
-        {
-          vet_produtos[idp].qtd += vet_encomendas[ide].produtos[i][1];
-          for (; i < vet_encomendas[ide].count; ++i)
-            copia_vetores_int(vet_encomendas[ide].produtos[i], vet_encomendas[ide].produtos[i + 1], 2);
+        vet_produtos[idp].qtd += vet_encomendas[ide].produtos[i][1];
+        for (; i < vet_encomendas[ide].count; ++i)
+          copia_vetores_int(vet_encomendas[ide].produtos[i], vet_encomendas[ide].produtos[i + 1], 2);
 
-          --vet_encomendas[ide].count;
-        }
+        --vet_encomendas[ide].count;
       }
       else
       {
@@ -355,12 +345,10 @@ void C()
   }
   else
   {
-    {
-      for (i = 0; i < vet_encomendas[ide].count; ++i)
-        preco += vet_encomendas[ide].produtos[i][1] * vet_produtos[vet_encomendas[ide].produtos[i][0]].preco;
+    for (i = 0; i < vet_encomendas[ide].count; ++i)
+      preco += vet_encomendas[ide].produtos[i][1] * vet_produtos[vet_encomendas[ide].produtos[i][0]].preco;
 
-      printf("Custo da encomenda %d %ld.\n", ide, preco);
-    }
+    printf("Custo da encomenda %d %ld.\n", ide, preco);
   }
 
 }
@@ -401,17 +389,15 @@ void E()
     }
     else
     {
+      if ((i = idp_na_encomenda(ide, idp)) != (-1))
       {
-        if ((i = idp_na_encomenda(ide, idp)) != (-1))
-        {
-          printf("%s %d.\n", vet_produtos[idp].des, vet_encomendas[ide].produtos[i][1]);
-        }
-        else
-        {
-          printf("%s 0.\n", vet_produtos[idp].des);
-        }
-
+        printf("%s %d.\n", vet_produtos[idp].des, vet_encomendas[ide].produtos[i][1]);
       }
+      else
+      {
+        printf("%s 0.\n", vet_produtos[idp].des);
+      }
+
     }
 
   }
@@ -432,31 +418,27 @@ void m()
   }
   else
   {
+    for (i = 0; i < enc_count; ++i)
+      if (((j = idp_na_encomenda(i, idp)) != (-1)) && (vet_encomendas[i].produtos[j][1] > maior))
     {
-      for (i = 0; i < enc_count; ++i)
-        if (((j = idp_na_encomenda(i, idp)) != (-1)) && (vet_encomendas[i].produtos[j][1] > maior))
-      {
-        {
-          maior = vet_encomendas[i].produtos[j][1];
-          ide = i;
-        }
-      }
-      else
-      {
-        
-      }
-
-
-      if (ide != (-1))
-      {
-        printf("Maximo produto %d %d %d.\n", idp, ide, maior);
-      }
-      else
-      {
-        
-      }
-
+      maior = vet_encomendas[i].produtos[j][1];
+      ide = i;
     }
+    else
+    {
+      
+    }
+
+
+    if (ide != (-1))
+    {
+      printf("Maximo produto %d %d %d.\n", idp, ide, maior);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -487,21 +469,19 @@ void L()
   }
   else
   {
+    for (i = 0; i < vet_encomendas[ide].count; ++i)
     {
-      for (i = 0; i < vet_encomendas[ide].count; ++i)
-      {
-        copia_enc[i][0] = vet_encomendas[ide].produtos[i][0];
-        copia_enc[i][1] = vet_encomendas[ide].produtos[i][1];
-      }
-
-      merge_sort_enc(copia_enc, 0, vet_encomendas[ide].count - 1);
-      printf("Encomenda %d\n", ide);
-      for (i = 0; i < vet_encomendas[ide].count; ++i)
-      {
-        printf("* %s %d %d\n", vet_produtos[copia_enc[i][0]].des, vet_produtos[copia_enc[i][0]].preco, copia_enc[i][1]);
-      }
-
+      copia_enc[i][0] = vet_encomendas[ide].produtos[i][0];
+      copia_enc[i][1] = vet_encomendas[ide].produtos[i][1];
     }
+
+    merge_sort_enc(copia_enc, 0, vet_encomendas[ide].count - 1);
+    printf("Encomenda %d\n", ide);
+    for (i = 0; i < vet_encomendas[ide].count; ++i)
+    {
+      printf("* %s %d %d\n", vet_produtos[copia_enc[i][0]].des, vet_produtos[copia_enc[i][0]].preco, copia_enc[i][1]);
+    }
+
   }
 
 }

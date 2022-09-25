@@ -29,19 +29,15 @@ Team findWinner(Game item, Team_Link *heads)
   Team x = 0;
   if (item->score1 > item->score2)
   {
-    {
-      x = searchTeam(item->team1, heads);
-      return x;
-    }
+    x = searchTeam(item->team1, heads);
+    return x;
   }
   else
   {
     if (item->score2 > item->score1)
     {
-      {
-        x = searchTeam(item->team2, heads);
-        return x;
-      }
+      x = searchTeam(item->team2, heads);
+      return x;
     }
     else
     {
@@ -94,21 +90,19 @@ void addGame(int l, Game_Link *headsG, List_Limits headAndTail, Team_Link *heads
     }
     else
     {
+      x = createGame(name, team1, team2, score1, score2);
+      insertGameTable(x, headsG);
+      insertGameList(x, headAndTail);
+      t = findWinner(x, headsT);
+      if (t != 0)
       {
-        x = createGame(name, team1, team2, score1, score2);
-        insertGameTable(x, headsG);
-        insertGameList(x, headAndTail);
-        t = findWinner(x, headsT);
-        if (t != 0)
-        {
-          t->victories++;
-        }
-        else
-        {
-          
-        }
-
+        t->victories++;
       }
+      else
+      {
+        
+      }
+
     }
 
   }
@@ -167,20 +161,18 @@ void removeGame(int l, Game_Link *headsG, List_Limits headAndTail, Team_Link *he
   pname = strdup(name);
   if (x != 0)
   {
+    i = hash(pname, 1049);
+    t = findWinner(x, headsT);
+    if (t != 0)
     {
-      i = hash(pname, 1049);
-      t = findWinner(x, headsT);
-      if (t != 0)
-      {
-        t->victories--;
-      }
-      else
-      {
-        
-      }
-
-      freeGame(x, i, headsG, headAndTail);
+      t->victories--;
     }
+    else
+    {
+      
+    }
+
+    freeGame(x, i, headsG, headAndTail);
   }
   else
   {
@@ -213,40 +205,36 @@ void changeScore(int l, Game_Link *headsG, Team_Link *headsT)
   }
   else
   {
+    t = findWinner(x, headsT);
+    x->score1 = score1;
+    x->score2 = score2;
+    s = findWinner(x, headsT);
+    if (((t != s) && (s != 0)) && (t != 0))
     {
-      t = findWinner(x, headsT);
-      x->score1 = score1;
-      x->score2 = score2;
-      s = findWinner(x, headsT);
-      if (((t != s) && (s != 0)) && (t != 0))
+      s->victories++;
+      t->victories--;
+    }
+    else
+    {
+      if ((t != s) && (t != 0))
       {
-        {
-          s->victories++;
-          t->victories--;
-        }
+        t->victories--;
       }
       else
       {
-        if ((t != s) && (t != 0))
+        if ((t != s) && (s != 0))
         {
-          t->victories--;
+          s->victories++;
         }
         else
         {
-          if ((t != s) && (s != 0))
-          {
-            s->victories++;
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
 
     }
+
   }
 
 }
@@ -263,10 +251,8 @@ void addTeam(int l, Team_Link *heads)
   name[10 - 1] = '\0';
   if (searchTeam(name, heads) == 0)
   {
-    {
-      x = createTeam(name);
-      insertTeam(x, heads);
-    }
+    x = createTeam(name);
+    insertTeam(x, heads);
   }
   else
   {
@@ -316,18 +302,16 @@ void printWinningTeams(int l, int M, int nTeams, Team_Link *heads)
     for (x = heads[i]; x != 0; x = x->next)
       if (x->item->victories == M)
     {
+      p[j++] = x->item;
+      if (j >= nTeams)
       {
-        p[j++] = x->item;
-        if (j >= nTeams)
-        {
-          break;
-        }
-        else
-        {
-          
-        }
-
+        break;
       }
+      else
+      {
+        
+      }
+
     }
     else
     {
@@ -358,10 +342,8 @@ void findWinningTeams(int l, Team_Link *heads)
     {
       if (x->item->victories > max)
       {
-        {
-          max = x->item->victories;
-          nTeams = 1;
-        }
+        max = x->item->victories;
+        nTeams = 1;
       }
       else
       {

@@ -127,27 +127,21 @@ void f_A()
         }
         else
         {
+          x = verifica_prod_em_enc(idp, v_enc[ide].prod_arr, v_enc[ide].n_prod);
+          if (x != (-1))
           {
-            x = verifica_prod_em_enc(idp, v_enc[ide].prod_arr, v_enc[ide].n_prod);
-            if (x != (-1))
-            {
-              {
-                v_enc[ide].prod_arr[x].stock += stock;
-                v_enc[ide].peso += stock * v_prod[idp].peso;
-              }
-            }
-            else
-            {
-              {
-                v_enc[ide].prod_arr[v_enc[ide].n_prod] = v_prod[idp];
-                v_enc[ide].prod_arr[v_enc[ide].n_prod].stock = stock;
-                v_enc[ide].peso += stock * v_prod[idp].peso;
-                v_enc[ide].n_prod++;
-              }
-            }
-
-            v_prod[idp].stock -= stock;
+            v_enc[ide].prod_arr[x].stock += stock;
+            v_enc[ide].peso += stock * v_prod[idp].peso;
           }
+          else
+          {
+            v_enc[ide].prod_arr[v_enc[ide].n_prod] = v_prod[idp];
+            v_enc[ide].prod_arr[v_enc[ide].n_prod].stock = stock;
+            v_enc[ide].peso += stock * v_prod[idp].peso;
+            v_enc[ide].n_prod++;
+          }
+
+          v_prod[idp].stock -= stock;
         }
 
       }
@@ -202,12 +196,10 @@ void f_R()
     }
     else
     {
-      {
-        x = verifica_prod_em_enc(idp, v_enc[ide].prod_arr, v_enc[ide].n_prod);
-        v_enc[ide].peso -= v_enc[ide].prod_arr[x].stock * v_prod[idp].peso;
-        v_prod[idp].stock += v_enc[ide].prod_arr[x].stock;
-        v_enc[ide].prod_arr[x].stock = 0;
-      }
+      x = verifica_prod_em_enc(idp, v_enc[ide].prod_arr, v_enc[ide].n_prod);
+      v_enc[ide].peso -= v_enc[ide].prod_arr[x].stock * v_prod[idp].peso;
+      v_prod[idp].stock += v_enc[ide].prod_arr[x].stock;
+      v_enc[ide].prod_arr[x].stock = 0;
     }
 
   }
@@ -224,10 +216,8 @@ void f_C()
   }
   else
   {
-    {
-      calcula_preco_enc(ide);
-      printf("Custo da encomenda %d %d.\n", ide, v_enc[ide].preco);
-    }
+    calcula_preco_enc(ide);
+    printf("Custo da encomenda %d %d.\n", ide, v_enc[ide].preco);
   }
 
 }
@@ -246,23 +236,21 @@ void f_p()
   }
   else
   {
+    v_prod[idp].preco = preco;
+    for (a = 0; a < pont_enc; a++)
     {
-      v_prod[idp].preco = preco;
-      for (a = 0; a < pont_enc; a++)
+      b = verifica_prod_em_enc(idp, v_enc[a].prod_arr, v_enc[a].n_prod);
+      if (b != (-1))
       {
-        b = verifica_prod_em_enc(idp, v_enc[a].prod_arr, v_enc[a].n_prod);
-        if (b != (-1))
-        {
-          v_enc[a].prod_arr[b].preco = preco;
-        }
-        else
-        {
-          
-        }
-
+        v_enc[a].prod_arr[b].preco = preco;
+      }
+      else
+      {
+        
       }
 
     }
+
   }
 
 }
@@ -286,18 +274,16 @@ void f_E()
     }
     else
     {
+      i = verifica_prod_em_enc(idp, v_enc[ide].prod_arr, v_enc[ide].n_prod);
+      if (i != (-1))
       {
-        i = verifica_prod_em_enc(idp, v_enc[ide].prod_arr, v_enc[ide].n_prod);
-        if (i != (-1))
-        {
-          printf("%s %d.\n", v_enc[ide].prod_arr[i].desc, v_enc[ide].prod_arr[i].stock);
-        }
-        else
-        {
-          printf("%s %d.\n", v_prod[idp].desc, 0);
-        }
-
+        printf("%s %d.\n", v_enc[ide].prod_arr[i].desc, v_enc[ide].prod_arr[i].stock);
       }
+      else
+      {
+        printf("%s %d.\n", v_prod[idp].desc, 0);
+      }
+
     }
 
   }
@@ -318,26 +304,15 @@ void f_m()
   }
   else
   {
+    for (i = 0; i < pont_enc; i++)
     {
-      for (i = 0; i < pont_enc; i++)
+      j = verifica_prod_em_enc(idp, v_enc[i].prod_arr, v_enc[i].n_prod);
+      if (j != (-1))
       {
-        j = verifica_prod_em_enc(idp, v_enc[i].prod_arr, v_enc[i].n_prod);
-        if (j != (-1))
+        if (v_enc[i].prod_arr[j].stock > qtd)
         {
-          {
-            if (v_enc[i].prod_arr[j].stock > qtd)
-            {
-              {
-                qtd = v_enc[i].prod_arr[j].stock;
-                ide = i;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
+          qtd = v_enc[i].prod_arr[j].stock;
+          ide = i;
         }
         else
         {
@@ -345,8 +320,13 @@ void f_m()
         }
 
       }
+      else
+      {
+        
+      }
 
     }
+
   }
 
   if (qtd > 0)
@@ -364,18 +344,16 @@ int compara_produtos(struct Produto p1, struct Produto p2, int estado_l)
 {
   if (estado_l)
   {
+    if (p1.preco == p2.preco)
     {
-      if (p1.preco == p2.preco)
-      {
-        return p1.id < p2.id;
-      }
-      else
-      {
-        
-      }
-
-      return p1.preco < p2.preco;
+      return p1.id < p2.id;
     }
+    else
+    {
+      
+    }
+
+    return p1.preco < p2.preco;
   }
   else
   {
@@ -470,25 +448,23 @@ void f_L()
   }
   else
   {
+    struct Produto v_prod_enc_c[1000];
+    for (i = 0; i < v_enc[ide].n_prod; i++)
+      v_prod_enc_c[i] = v_enc[ide].prod_arr[i];
+
+    printf("Encomenda %d\n", ide);
+    quicksort(v_prod_enc_c, 0, v_enc[ide].n_prod - 1, 0);
+    for (i = 0; i < v_enc[ide].n_prod; i++)
+      if (v_prod_enc_c[i].stock > 0)
     {
-      struct Produto v_prod_enc_c[1000];
-      for (i = 0; i < v_enc[ide].n_prod; i++)
-        v_prod_enc_c[i] = v_enc[ide].prod_arr[i];
-
-      printf("Encomenda %d\n", ide);
-      quicksort(v_prod_enc_c, 0, v_enc[ide].n_prod - 1, 0);
-      for (i = 0; i < v_enc[ide].n_prod; i++)
-        if (v_prod_enc_c[i].stock > 0)
-      {
-        printf("* %s %d %d\n", v_prod_enc_c[i].desc, v_prod_enc_c[i].preco, v_prod_enc_c[i].stock);
-      }
-      else
-      {
-        
-      }
-
-
+      printf("* %s %d %d\n", v_prod_enc_c[i].desc, v_prod_enc_c[i].preco, v_prod_enc_c[i].stock);
     }
+    else
+    {
+      
+    }
+
+
   }
 
 }

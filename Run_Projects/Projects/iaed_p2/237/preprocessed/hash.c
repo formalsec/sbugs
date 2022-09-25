@@ -58,35 +58,31 @@ entry *ht_pair_game(unsigned int key, char *buffer, Team *t1, Team *t2, int scor
   entrie->next = 0;
   if (score1 > score2)
   {
+    t1->wins++;
+    if (t1->wins > (*maxWins))
     {
-      t1->wins++;
-      if (t1->wins > (*maxWins))
+      *maxWins = t1->wins;
+    }
+    else
+    {
+      
+    }
+
+  }
+  else
+  {
+    if (score2 > score1)
+    {
+      t2->wins++;
+      if (t2->wins > (*maxWins))
       {
-        *maxWins = t1->wins;
+        *maxWins = t2->wins;
       }
       else
       {
         
       }
 
-    }
-  }
-  else
-  {
-    if (score2 > score1)
-    {
-      {
-        t2->wins++;
-        if (t2->wins > (*maxWins))
-        {
-          *maxWins = t2->wins;
-        }
-        else
-        {
-          
-        }
-
-      }
     }
     else
     {
@@ -114,10 +110,8 @@ Team *addTeam(ht *hashtable, int cmd_count)
   entrie = hashtable->entries[key];
   if (entrie == 0)
   {
-    {
-      hashtable->entries[key] = ht_pair_team(key, teamname);
-      return hashtable->entries[key]->t;
-    }
+    hashtable->entries[key] = ht_pair_team(key, teamname);
+    return hashtable->entries[key]->t;
   }
   else
   {
@@ -128,19 +122,15 @@ Team *addTeam(ht *hashtable, int cmd_count)
   {
     if ((strcmp(entrie->t->nome, teamname) != 0) && (entrie->next == 0))
     {
-      {
-        entrie->next = ht_pair_team(key, teamname);
-        return entrie->next->t;
-      }
+      entrie->next = ht_pair_team(key, teamname);
+      return entrie->next->t;
     }
     else
     {
       if (strcmp(entrie->t->nome, teamname) == 0)
       {
-        {
-          printf("%d Equipa existente.\n", cmd_count);
-          return 0;
-        }
+        printf("%d Equipa existente.\n", cmd_count);
+        return 0;
       }
       else
       {
@@ -165,9 +155,7 @@ Team *teamSearch(ht *hashtable, char *name)
   entrie = hashtable->entries[key];
   if (entrie == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -178,9 +166,7 @@ Team *teamSearch(ht *hashtable, char *name)
   {
     if (strcmp(entrie->t->nome, name) == 0)
     {
-      {
-        return entrie->t;
-      }
+      return entrie->t;
     }
     else
     {
@@ -206,15 +192,11 @@ void getTeam(ht *hashtable, int cmd_count)
   team = teamSearch(hashtable, name);
   if (team == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", cmd_count);
-    }
+    printf("%d Equipa inexistente.\n", cmd_count);
   }
   else
   {
-    {
-      printf("%d %s %d\n", cmd_count, team->nome, team->wins);
-    }
+    printf("%d %s %d\n", cmd_count, team->nome, team->wins);
   }
 
 }
@@ -224,9 +206,7 @@ int searchGame(entry *entrie, char *buffer)
   entry *aux = entrie;
   if (aux == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -235,25 +215,21 @@ int searchGame(entry *entrie, char *buffer)
 
   if (aux->game != 0)
   {
+    while (strcmp(aux->game->gameName, buffer) != 0)
     {
-      while (strcmp(aux->game->gameName, buffer) != 0)
+      if (aux->next == 0)
       {
-        if (aux->next == 0)
-        {
-          {
-            return 0;
-          }
-        }
-        else
-        {
-          
-        }
-
-        aux = aux->next;
+        return 0;
+      }
+      else
+      {
+        
       }
 
-      return 1;
+      aux = aux->next;
     }
+
+    return 1;
   }
   else
   {
@@ -277,20 +253,16 @@ void getGame(ht *game_ht, int cmd_count)
   entrie = game_ht->entries[key];
   if (!searchGame(entrie, name))
   {
-    {
-      printf("%d Jogo inexistente.\n", cmd_count);
-    }
+    printf("%d Jogo inexistente.\n", cmd_count);
   }
   else
   {
+    while ((entrie->game != 0) && (strcmp(entrie->game->gameName, name) != 0))
     {
-      while ((entrie->game != 0) && (strcmp(entrie->game->gameName, name) != 0))
-      {
-        entrie = entrie->next;
-      }
-
-      printf("%d %s %s %s %d %d\n", cmd_count, entrie->game->gameName, entrie->game->t1->nome, entrie->game->t2->nome, entrie->game->score1, entrie->game->score2);
+      entrie = entrie->next;
     }
+
+    printf("%d %s %s %s %d %d\n", cmd_count, entrie->game->gameName, entrie->game->t1->nome, entrie->game->t2->nome, entrie->game->score1, entrie->game->score2);
   }
 
 }
@@ -333,23 +305,19 @@ Game *addGame(ht *hashtable, ht *game_ht, int cmd_count, int *game_count, int *m
   entrie = game_ht->entries[key];
   if (entrie == 0)
   {
+    if ((t1 == 0) || (t2 == 0))
     {
-      if ((t1 == 0) || (t2 == 0))
-      {
-        {
-          printf("%d Equipa inexistente.\n", cmd_count);
-          return 0;
-        }
-      }
-      else
-      {
-        
-      }
-
-      game_ht->entries[key] = ht_pair_game(key, gameName, t1, t2, score1, score2, maxWins);
-      (*game_count)++;
-      return game_ht->entries[key]->game;
+      printf("%d Equipa inexistente.\n", cmd_count);
+      return 0;
     }
+    else
+    {
+      
+    }
+
+    game_ht->entries[key] = ht_pair_game(key, gameName, t1, t2, score1, score2, maxWins);
+    (*game_count)++;
+    return game_ht->entries[key]->game;
   }
   else
   {
@@ -360,20 +328,16 @@ Game *addGame(ht *hashtable, ht *game_ht, int cmd_count, int *game_count, int *m
   {
     if (((((strcmp(entrie->game->gameName, gameName) != 0) && (entrie->next == 0)) && (entrie->game != 0)) && (t1 != 0)) && (t2 != 0))
     {
-      {
-        entrie->next = ht_pair_game(key, gameName, t1, t2, score1, score2, maxWins);
-        (*game_count)++;
-        return entrie->next->game;
-      }
+      entrie->next = ht_pair_game(key, gameName, t1, t2, score1, score2, maxWins);
+      (*game_count)++;
+      return entrie->next->game;
     }
     else
     {
       if (strcmp(entrie->game->gameName, gameName) == 0)
       {
-        {
-          printf("%d Jogo existente.\n", cmd_count);
-          return 0;
-        }
+        printf("%d Jogo existente.\n", cmd_count);
+        return 0;
       }
       else
       {
@@ -388,10 +352,8 @@ Game *addGame(ht *hashtable, ht *game_ht, int cmd_count, int *game_count, int *m
 
   if ((t1 == 0) || (t2 == 0))
   {
-    {
-      printf("%d Equipa inexistente.\n", cmd_count);
-      return 0;
-    }
+    printf("%d Equipa inexistente.\n", cmd_count);
+    return 0;
   }
   else
   {
@@ -422,10 +384,8 @@ void changeScore(ht *game_ht, int cmd_count)
   entrie = game_ht->entries[key];
   if (!searchGame(entrie, buffer))
   {
-    {
-      printf("%d Jogo inexistente.\n", cmd_count);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", cmd_count);
+    return;
   }
   else
   {
@@ -439,17 +399,13 @@ void changeScore(ht *game_ht, int cmd_count)
 
   if (entrie->game->score1 > entrie->game->score2)
   {
-    {
-      entrie->game->t1->wins--;
-    }
+    entrie->game->t1->wins--;
   }
   else
   {
     if (entrie->game->score2 > entrie->game->score1)
     {
-      {
-        entrie->game->t2->wins--;
-      }
+      entrie->game->t2->wins--;
     }
     else
     {
@@ -460,17 +416,13 @@ void changeScore(ht *game_ht, int cmd_count)
 
   if (score1 > score2)
   {
-    {
-      entrie->game->t1->wins++;
-    }
+    entrie->game->t1->wins++;
   }
   else
   {
     if (score2 > score1)
     {
-      {
-        entrie->game->t2->wins++;
-      }
+      entrie->game->t2->wins++;
     }
     else
     {
@@ -520,15 +472,11 @@ void destroyTeam(ht *hashtable)
   {
     if (hashtable->entries[i] == 0)
     {
-      {
-        continue;
-      }
+      continue;
     }
     else
     {
-      {
-        destroyTeamEntry(hashtable->entries[i]);
-      }
+      destroyTeamEntry(hashtable->entries[i]);
     }
 
   }
@@ -544,15 +492,11 @@ void destroyGame(ht *hashtable)
   {
     if (hashtable->entries[i] == 0)
     {
-      {
-        continue;
-      }
+      continue;
     }
     else
     {
-      {
-        destroyGameEntry(hashtable->entries[i]);
-      }
+      destroyGameEntry(hashtable->entries[i]);
     }
 
   }

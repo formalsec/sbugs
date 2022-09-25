@@ -23,17 +23,13 @@ lista *InsertEndLista(pJogo j, lista *l)
   new->next = 0;
   if (l->head == 0)
   {
-    {
-      l->head = new;
-      l->tail = new;
-    }
+    l->head = new;
+    l->tail = new;
   }
   else
   {
-    {
-      l->tail->next = new;
-      l->tail = new;
-    }
+    l->tail->next = new;
+    l->tail = new;
   }
 
   return l;
@@ -48,30 +44,26 @@ lista *DeleteLista(char *nome, lista *l)
   {
     if (strcmp(x->jogo->nome, nome) == 0)
     {
+      if (x == l->head)
       {
-        if (x == l->head)
+        l->head = x->next;
+      }
+      else
+      {
+        if (x == l->tail)
         {
-          l->head = x->next;
+          l->tail = prev;
+          l->tail->next = 0;
         }
         else
         {
-          if (x == l->tail)
-          {
-            {
-              l->tail = prev;
-              l->tail->next = 0;
-            }
-          }
-          else
-          {
-            prev->next = x->next;
-          }
-
+          prev->next = x->next;
         }
 
-        free(x);
-        break;
       }
+
+      free(x);
+      break;
     }
     else
     {

@@ -116,26 +116,22 @@ void add_produto()
         }
         else
         {
+          stock[idp].qtd -= qtd;
+          for (i = 0; i < enc[ide].n_prod; i++)
+            if (enc[ide].produtos[i] == idp)
           {
-            stock[idp].qtd -= qtd;
-            for (i = 0; i < enc[ide].n_prod; i++)
-              if (enc[ide].produtos[i] == idp)
-            {
-              {
-                enc[ide].qtd[idp] += qtd;
-                return;
-              }
-            }
-            else
-            {
-              
-            }
-
-
-            enc[ide].qtd[idp] = qtd;
-            enc[ide].produtos[i] = idp;
-            enc[ide].n_prod++;
+            enc[ide].qtd[idp] += qtd;
+            return;
           }
+          else
+          {
+            
+          }
+
+
+          enc[ide].qtd[idp] = qtd;
+          enc[ide].produtos[i] = idp;
+          enc[ide].n_prod++;
         }
 
       }
@@ -191,27 +187,23 @@ void remove_produto()
     }
     else
     {
+      for (i = 0; i < enc[ide].n_prod; i++)
+        if (enc[ide].produtos[i] == idp)
       {
-        for (i = 0; i < enc[ide].n_prod; i++)
-          if (enc[ide].produtos[i] == idp)
-        {
-          {
-            for (j = i; j < (enc[ide].n_prod - 1); j++)
-              enc[ide].produtos[j] = enc[ide].produtos[j + 1];
+        for (j = i; j < (enc[ide].n_prod - 1); j++)
+          enc[ide].produtos[j] = enc[ide].produtos[j + 1];
 
-            enc[ide].n_prod--;
-            stock[idp].qtd += enc[ide].qtd[idp];
-            enc[ide].qtd[idp] = 0;
-            break;
-          }
-        }
-        else
-        {
-          
-        }
-
-
+        enc[ide].n_prod--;
+        stock[idp].qtd += enc[ide].qtd[idp];
+        enc[ide].qtd[idp] = 0;
+        break;
       }
+      else
+      {
+        
+      }
+
+
     }
 
   }
@@ -230,12 +222,10 @@ void custo_encomenda()
   }
   else
   {
-    {
-      for (i = 0; i < enc[ide].n_prod; i++)
-        total += enc[ide].qtd[enc[ide].produtos[i]] * stock[enc[ide].produtos[i]].preco;
+    for (i = 0; i < enc[ide].n_prod; i++)
+      total += enc[ide].qtd[enc[ide].produtos[i]] * stock[enc[ide].produtos[i]].preco;
 
-      printf("Custo da encomenda %d %d.\n", ide, total);
-    }
+    printf("Custo da encomenda %d %d.\n", ide, total);
   }
 
 }
@@ -295,31 +285,27 @@ void lista_encomenda_produto()
   }
   else
   {
+    for (i = 0; i < ind_e; i++)
+      if (enc[i].qtd[idp] > max)
     {
-      for (i = 0; i < ind_e; i++)
-        if (enc[i].qtd[idp] > max)
-      {
-        {
-          max = enc[i].qtd[idp];
-          max_e = i;
-        }
-      }
-      else
-      {
-        
-      }
-
-
-      if ((max != 0) && (ind_e != 0))
-      {
-        printf("Maximo produto %d %d %d.\n", idp, max_e, max);
-      }
-      else
-      {
-        
-      }
-
+      max = enc[i].qtd[idp];
+      max_e = i;
     }
+    else
+    {
+      
+    }
+
+
+    if ((max != 0) && (ind_e != 0))
+    {
+      printf("Maximo produto %d %d %d.\n", idp, max_e, max);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -345,17 +331,13 @@ void ordena_auxiliar(int a1[], int a2[], int l, int m, int r)
   {
     if ((aux1[j] < aux1[i]) || ((aux1[j] == aux1[i]) && (aux2[j] < aux2[i])))
     {
-      {
-        a1[k] = aux1[j];
-        a2[k] = aux2[j--];
-      }
+      a1[k] = aux1[j];
+      a2[k] = aux2[j--];
     }
     else
     {
-      {
-        a1[k] = aux1[i];
-        a2[k] = aux2[i++];
-      }
+      a1[k] = aux1[i];
+      a2[k] = aux2[i++];
     }
 
   }
@@ -386,19 +368,17 @@ void lista_todos_produtos()
   int i;
   if (ind_p != 0)
   {
+    for (i = 0; i < ind_p; i++)
     {
-      for (i = 0; i < ind_p; i++)
-      {
-        tab1[i] = stock[i].preco;
-        tab2[i] = i;
-      }
-
-      ordena(tab1, tab2, 0, ind_p - 1);
-      printf("Produtos\n");
-      for (i = 0; i < ind_p; i++)
-        printf("* %s %d %d\n", stock[tab2[i]].descricao, stock[tab2[i]].preco, stock[tab2[i]].qtd);
-
+      tab1[i] = stock[i].preco;
+      tab2[i] = i;
     }
+
+    ordena(tab1, tab2, 0, ind_p - 1);
+    printf("Produtos\n");
+    for (i = 0; i < ind_p; i++)
+      printf("* %s %d %d\n", stock[tab2[i]].descricao, stock[tab2[i]].preco, stock[tab2[i]].qtd);
+
   }
   else
   {
@@ -432,17 +412,15 @@ int ordena_s_auxiliar(char a1[10000][63], int a2[], int l, int r)
 
     if (i < j)
     {
+      strcpy(s, a1[i]);
+      strcpy(a1[i], a1[j]);
+      strcpy(a1[j], s);
       {
-        strcpy(s, a1[i]);
-        strcpy(a1[i], a1[j]);
-        strcpy(a1[j], s);
-        {
-          int t = a2[i];
-          a2[i] = a2[j];
-          a2[j] = t;
-        }
-        ;
+        int t = a2[i];
+        a2[i] = a2[j];
+        a2[j] = t;
       }
+      ;
     }
     else
     {
@@ -493,19 +471,17 @@ void lista_encomenda_produtos()
   }
   else
   {
+    for (i = 0; i < enc[ide].n_prod; i++)
     {
-      for (i = 0; i < enc[ide].n_prod; i++)
-      {
-        strcpy(tab1[i], stock[enc[ide].produtos[i]].descricao);
-        tab2[i] = enc[ide].produtos[i];
-      }
-
-      ordena_s(tab1, tab2, 0, enc[ide].n_prod - 1);
-      printf("Encomenda %d\n", ide);
-      for (i = 0; i < enc[ide].n_prod; i++)
-        printf("* %s %d %d\n", stock[tab2[i]].descricao, stock[tab2[i]].preco, enc[ide].qtd[tab2[i]]);
-
+      strcpy(tab1[i], stock[enc[ide].produtos[i]].descricao);
+      tab2[i] = enc[ide].produtos[i];
     }
+
+    ordena_s(tab1, tab2, 0, enc[ide].n_prod - 1);
+    printf("Encomenda %d\n", ide);
+    for (i = 0; i < enc[ide].n_prod; i++)
+      printf("* %s %d %d\n", stock[tab2[i]].descricao, stock[tab2[i]].preco, enc[ide].qtd[tab2[i]]);
+
   }
 
 }

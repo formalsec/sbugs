@@ -13,23 +13,17 @@ int obtainIdNumber(Logistics *l, int i)
   int Inumber;
   if (i == 0)
   {
-    {
-      Inumber = l->nextIdp++;
-    }
+    Inumber = l->nextIdp++;
   }
   else
   {
     if (i == 1)
     {
-      {
-        Inumber = l->nextIde++;
-      }
+      Inumber = l->nextIde++;
     }
     else
     {
-      {
-        fprintf(outputFile, "Wrong Initialisation of newInumber\n");
-      }
+      fprintf(outputFile, "Wrong Initialisation of newInumber\n");
     }
 
   }
@@ -42,9 +36,7 @@ int getProdPos(Logistics *l, int id)
   int i;
   if (id >= l->nextIdp)
   {
-    {
-      return -1;
-    }
+    return -1;
   }
   else
   {
@@ -55,9 +47,7 @@ int getProdPos(Logistics *l, int id)
   {
     if (getProdID(l->prods[i]) == id)
     {
-      {
-        return i;
-      }
+      return i;
     }
     else
     {
@@ -83,31 +73,23 @@ void separate(char *string, int num, int *tab)
   {
     if (string[i] == ':')
     {
-      {
-        spacing++;
-      }
+      spacing++;
     }
     else
     {
       if (spacing == 0)
       {
-        {
-          firstLen++;
-        }
+        firstLen++;
       }
       else
       {
         if (spacing == 1)
         {
-          {
-            secondLen++;
-          }
+          secondLen++;
         }
         else
         {
-          {
-            thirdLen++;
-          }
+          thirdLen++;
         }
 
       }
@@ -122,10 +104,8 @@ void separate(char *string, int num, int *tab)
   third = malloc((thirdLen + 1) * (sizeof(char)));
   if (((!first) || (!second)) || (!third))
   {
-    {
-      perror("allocation failed in separate");
-      exit(1);
-    }
+    perror("allocation failed in separate");
+    exit(1);
   }
   else
   {
@@ -137,11 +117,9 @@ void separate(char *string, int num, int *tab)
   tab[0] = atoi(first);
   if ((secondLen != 0) && (num > 1))
   {
-    {
-      strncpy(second, (string + firstLen) + 1, secondLen);
-      second[secondLen] = '\0';
-      tab[1] = atoi(second);
-    }
+    strncpy(second, (string + firstLen) + 1, secondLen);
+    second[secondLen] = '\0';
+    tab[1] = atoi(second);
   }
   else
   {
@@ -150,11 +128,9 @@ void separate(char *string, int num, int *tab)
 
   if ((thirdLen != 0) && (num == 3))
   {
-    {
-      strncpy(third, ((string + firstLen) + secondLen) + 2, thirdLen);
-      third[thirdLen] = '\0';
-      tab[2] = atoi(third);
-    }
+    strncpy(third, ((string + firstLen) + secondLen) + 2, thirdLen);
+    third[thirdLen] = '\0';
+    tab[2] = atoi(third);
   }
   else
   {
@@ -190,15 +166,11 @@ void mergeProds(Logistics *l, int left, int middle, int right)
     price2 = getProdPrice(aux->prods[i]);
     if ((price1 < price2) || ((price1 == price2) && (getProdID(aux->prods[j]) < getProdID(aux->prods[i]))))
     {
-      {
-        l->prods[k] = aux->prods[j--];
-      }
+      l->prods[k] = aux->prods[j--];
     }
     else
     {
-      {
-        l->prods[k] = aux->prods[i++];
-      }
+      l->prods[k] = aux->prods[i++];
     }
 
   }
@@ -211,9 +183,7 @@ void mergeSortProds(Logistics *l, int left, int right)
   int middle = (left + right) / 2;
   if (right <= left)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -232,10 +202,8 @@ Logistics *createLog()
   new->enco = malloc(500 * (sizeof(Encomenda)));
   if ((!new->prods) || (!new->enco))
   {
-    {
-      perror("Error Initialising logistics");
-      exit(1);
-    }
+    perror("Error Initialising logistics");
+    exit(1);
   }
   else
   {
@@ -258,37 +226,33 @@ void addProd(Logistics *l, char *string)
   id = obtainIdNumber(l, 0);
   if (id < 10000)
   {
+    while (string[nameLen] != ':')
     {
-      while (string[nameLen] != ':')
-      {
-        nameLen++;
-      }
-
-      restLen = strlen(string) - nameLen;
-      name = malloc((nameLen + 1) * (sizeof(char)));
-      rest = malloc((restLen + 1) * (sizeof(char)));
-      if (((!name) || (!rest)) || (nameLen > 63))
-      {
-        {
-          perror("malloc didnt work addProd");
-          exit(1);
-        }
-      }
-      else
-      {
-        
-      }
-
-      name = strncpy(name, string, nameLen);
-      rest = strncpy(rest, (string + nameLen) + 1, restLen);
-      name[nameLen] = '\0';
-      rest[restLen] = '\0';
-      separate(rest, 3, tab);
-      l->prods[id] = createProd(id, name, tab[0], tab[1], tab[2]);
-      free(name);
-      free(rest);
-      fprintf(outputFile, "Novo produto %d.\n", id);
+      nameLen++;
     }
+
+    restLen = strlen(string) - nameLen;
+    name = malloc((nameLen + 1) * (sizeof(char)));
+    rest = malloc((restLen + 1) * (sizeof(char)));
+    if (((!name) || (!rest)) || (nameLen > 63))
+    {
+      perror("malloc didnt work addProd");
+      exit(1);
+    }
+    else
+    {
+      
+    }
+
+    name = strncpy(name, string, nameLen);
+    rest = strncpy(rest, (string + nameLen) + 1, restLen);
+    name[nameLen] = '\0';
+    rest[restLen] = '\0';
+    separate(rest, 3, tab);
+    l->prods[id] = createProd(id, name, tab[0], tab[1], tab[2]);
+    free(name);
+    free(rest);
+    fprintf(outputFile, "Novo produto %d.\n", id);
   }
   else
   {
@@ -305,15 +269,11 @@ void addProdStock(Logistics *l, char *string)
   pos = getProdPos(l, tab[0]);
   if (pos == (-1))
   {
-    {
-      fprintf(outputFile, "Impossivel adicionar produto %d ao stock. Produto inexistente.\n", tab[0]);
-    }
+    fprintf(outputFile, "Impossivel adicionar produto %d ao stock. Produto inexistente.\n", tab[0]);
   }
   else
   {
-    {
-      l->prods[pos] = addStock(l->prods[pos], tab[1]);
-    }
+    l->prods[pos] = addStock(l->prods[pos], tab[1]);
   }
 
 }
@@ -326,23 +286,17 @@ void removeProdStock(Logistics *l, char *string)
   pos = getProdPos(l, tab[0]);
   if (pos == (-1))
   {
-    {
-      fprintf(outputFile, "Impossivel remover stock do produto %d. Produto inexistente.\n", tab[0]);
-    }
+    fprintf(outputFile, "Impossivel remover stock do produto %d. Produto inexistente.\n", tab[0]);
   }
   else
   {
     if (getProdStock(l->prods[pos]) < tab[1])
     {
-      {
-        fprintf(outputFile, "Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", tab[1], tab[0]);
-      }
+      fprintf(outputFile, "Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", tab[1], tab[0]);
     }
     else
     {
-      {
-        l->prods[pos] = removeStock(l->prods[pos], tab[1]);
-      }
+      l->prods[pos] = removeStock(l->prods[pos], tab[1]);
     }
 
   }
@@ -355,10 +309,8 @@ void addEncomenda(Logistics *l)
   id = obtainIdNumber(l, 1);
   if (id < 500)
   {
-    {
-      l->enco[id] = createEncomenda(id);
-      fprintf(outputFile, "Nova encomenda %d.\n", id);
-    }
+    l->enco[id] = createEncomenda(id);
+    fprintf(outputFile, "Nova encomenda %d.\n", id);
   }
   else
   {
@@ -377,42 +329,32 @@ void addProdInEnc(Logistics *l, char *string)
   pos = getProdPos(l, tab[1]);
   if (tab[0] >= l->nextIde)
   {
-    {
-      fprintf(outputFile, "Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", tab[1], tab[0]);
-    }
+    fprintf(outputFile, "Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", tab[1], tab[0]);
   }
   else
   {
     if (pos == (-1))
     {
-      {
-        fprintf(outputFile, "Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", tab[1], tab[0]);
-      }
+      fprintf(outputFile, "Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", tab[1], tab[0]);
     }
     else
     {
       if (getProdStock(l->prods[pos]) < tab[2])
       {
-        {
-          fprintf(outputFile, "Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", tab[1], tab[0]);
-        }
+        fprintf(outputFile, "Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", tab[1], tab[0]);
       }
       else
       {
         if ((getEncWeight(l->enco[tab[0]]) + (getProdWeight(l->prods[pos]) * tab[2])) > 200)
         {
-          {
-            fprintf(outputFile, "Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de %d.\n", tab[1], tab[0], 200);
-          }
+          fprintf(outputFile, "Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de %d.\n", tab[1], tab[0], 200);
         }
         else
         {
-          {
-            oldP = l->prods[pos];
-            newP = createProd(getProdID(oldP), oldP.name, getProdPrice(oldP), getProdWeight(oldP), tab[2]);
-            l->enco[tab[0]] = addEncProd(l->enco[tab[0]], newP);
-            l->prods[pos] = removeStock(oldP, tab[2]);
-          }
+          oldP = l->prods[pos];
+          newP = createProd(getProdID(oldP), oldP.name, getProdPrice(oldP), getProdWeight(oldP), tab[2]);
+          l->enco[tab[0]] = addEncProd(l->enco[tab[0]], newP);
+          l->prods[pos] = removeStock(oldP, tab[2]);
         }
 
       }
@@ -432,20 +374,16 @@ void changeProdPrice(Logistics *l, char *string)
   pos = getProdPos(l, tab[0]);
   if (pos == (-1))
   {
-    {
-      fprintf(outputFile, "Impossivel alterar preco do produto %d. Produto inexistente.\n", tab[0]);
-    }
+    fprintf(outputFile, "Impossivel alterar preco do produto %d. Produto inexistente.\n", tab[0]);
   }
   else
   {
+    l->prods[pos] = changePrice(l->prods[pos], tab[1]);
+    for (i = 0; i < l->nextIde; i++)
     {
-      l->prods[pos] = changePrice(l->prods[pos], tab[1]);
-      for (i = 0; i < l->nextIde; i++)
-      {
-        l->enco[i] = changeProdPriceInEnc(l->enco[i], tab[0], tab[1]);
-      }
-
+      l->enco[i] = changeProdPriceInEnc(l->enco[i], tab[0], tab[1]);
     }
+
   }
 
 }
@@ -459,25 +397,19 @@ void removeProdInEnc(Logistics *l, char *string)
   pos = getProdPos(l, tab[1]);
   if (tab[0] >= l->nextIde)
   {
-    {
-      fprintf(outputFile, "Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", tab[1], tab[0]);
-    }
+    fprintf(outputFile, "Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", tab[1], tab[0]);
   }
   else
   {
     if (pos == (-1))
     {
-      {
-        fprintf(outputFile, "Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", tab[1], tab[0]);
-      }
+      fprintf(outputFile, "Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", tab[1], tab[0]);
     }
     else
     {
-      {
-        stock = getProdStockInEnc(l->enco[tab[0]], getProdID(l->prods[pos]));
-        l->prods[pos] = addStock(l->prods[pos], stock);
-        l->enco[tab[0]] = removeEncProd(l->enco[tab[0]], getProdID(l->prods[pos]));
-      }
+      stock = getProdStockInEnc(l->enco[tab[0]], getProdID(l->prods[pos]));
+      l->prods[pos] = addStock(l->prods[pos], stock);
+      l->enco[tab[0]] = removeEncProd(l->enco[tab[0]], getProdID(l->prods[pos]));
     }
 
   }
@@ -491,16 +423,12 @@ void getPriceForEnc(Logistics *l, char *string)
   separate(string, 1, tab);
   if (tab[0] >= l->nextIde)
   {
-    {
-      fprintf(outputFile, "Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", tab[0]);
-    }
+    fprintf(outputFile, "Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", tab[0]);
   }
   else
   {
-    {
-      price = getEncPrice(l->enco[tab[0]]);
-      fprintf(outputFile, "Custo da encomenda %d %d.\n", tab[0], price);
-    }
+    price = getEncPrice(l->enco[tab[0]]);
+    fprintf(outputFile, "Custo da encomenda %d %d.\n", tab[0], price);
   }
 
 }
@@ -515,33 +443,15 @@ void mostFrequentProd(Logistics *l, char *string)
   pos = getProdPos(l, tab[0]);
   if (pos == (-1))
   {
-    {
-      fprintf(outputFile, "Impossivel listar maximo do produto %d. Produto inexistente.\n", tab[0]);
-    }
+    fprintf(outputFile, "Impossivel listar maximo do produto %d. Produto inexistente.\n", tab[0]);
   }
   else
   {
+    for (i = 0; i < l->nextIde; i++)
     {
-      for (i = 0; i < l->nextIde; i++)
+      if (getProdStockInEnc(l->enco[i], tab[0]) > getProdStockInEnc(l->enco[mPos], tab[0]))
       {
-        if (getProdStockInEnc(l->enco[i], tab[0]) > getProdStockInEnc(l->enco[mPos], tab[0]))
-        {
-          {
-            mPos = i;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      if ((l->nextIde > 0) && (getProdStockInEnc(l->enco[mPos], tab[0]) > 0))
-      {
-        {
-          fprintf(outputFile, "Maximo produto %d %d %d.\n", tab[0], mPos, getProdStockInEnc(l->enco[mPos], tab[0]));
-        }
+        mPos = i;
       }
       else
       {
@@ -549,6 +459,16 @@ void mostFrequentProd(Logistics *l, char *string)
       }
 
     }
+
+    if ((l->nextIde > 0) && (getProdStockInEnc(l->enco[mPos], tab[0]) > 0))
+    {
+      fprintf(outputFile, "Maximo produto %d %d %d.\n", tab[0], mPos, getProdStockInEnc(l->enco[mPos], tab[0]));
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -561,23 +481,17 @@ void printProdInEnc(Logistics *l, char *string)
   pos = getProdPos(l, tab[1]);
   if (tab[0] >= l->nextIde)
   {
-    {
-      fprintf(outputFile, "Impossivel listar encomenda %d. Encomenda inexistente.\n", tab[0]);
-    }
+    fprintf(outputFile, "Impossivel listar encomenda %d. Encomenda inexistente.\n", tab[0]);
   }
   else
   {
     if (pos == (-1))
     {
-      {
-        fprintf(outputFile, "Impossivel listar produto %d. Produto inexistente.\n", tab[1]);
-      }
+      fprintf(outputFile, "Impossivel listar produto %d. Produto inexistente.\n", tab[1]);
     }
     else
     {
-      {
-        fprintf(outputFile, "%s %d.\n", getProdName(l->prods[pos]), getProdStockInEnc(l->enco[tab[0]], tab[1]));
-      }
+      fprintf(outputFile, "%s %d.\n", getProdName(l->prods[pos]), getProdStockInEnc(l->enco[tab[0]], tab[1]));
     }
 
   }
@@ -603,16 +517,12 @@ void printEncProds(Logistics *l, char *string)
   separate(string, 1, tab);
   if (tab[0] >= l->nextIde)
   {
-    {
-      fprintf(outputFile, "Impossivel listar encomenda %d. Encomenda inexistente.\n", tab[0]);
-    }
+    fprintf(outputFile, "Impossivel listar encomenda %d. Encomenda inexistente.\n", tab[0]);
   }
   else
   {
-    {
-      fprintf(outputFile, "Encomenda %d\n", tab[0]);
-      listProd(l->enco[tab[0]]);
-    }
+    fprintf(outputFile, "Encomenda %d\n", tab[0]);
+    listProd(l->enco[tab[0]]);
   }
 
 }

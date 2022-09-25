@@ -45,42 +45,36 @@ void case_a()
   eq2 = (pEquipa) HTsearch(nome2, &htEquipas);
   if (HTsearch(nome, &htJogos) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", line);
-    }
+    printf("%d Jogo existente.\n", line);
   }
   else
   {
     if ((eq1 == 0) || (eq2 == 0))
     {
-      {
-        printf("%d Equipa inexistente.\n", line);
-      }
+      printf("%d Equipa inexistente.\n", line);
     }
     else
     {
+      if (sc1 > sc2)
       {
-        if (sc1 > sc2)
-        {
-          eq1->ganhos++;
-        }
-        else
-        {
-          
-        }
-
-        if (sc2 > sc1)
-        {
-          eq2->ganhos++;
-        }
-        else
-        {
-          
-        }
-
-        DLinsertEnd(NEWjogo(nome, eq1, eq2, sc1, sc2));
-        HTinsert((void *) head->prev, &htJogos);
+        eq1->ganhos++;
       }
+      else
+      {
+        
+      }
+
+      if (sc2 > sc1)
+      {
+        eq2->ganhos++;
+      }
+      else
+      {
+        
+      }
+
+      DLinsertEnd(NEWjogo(nome, eq1, eq2, sc1, sc2));
+      HTinsert((void *) head->prev, &htJogos);
     }
 
   }
@@ -110,15 +104,11 @@ void case_p()
   p = (link) HTsearch(nome, &htJogos);
   if (p == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", line);
-    }
+    printf("%d Jogo inexistente.\n", line);
   }
   else
   {
-    {
-      printf("%d %s %s %s %d %d\n", line, p->v->nome, p->v->eq1->nome, p->v->eq2->nome, p->v->sc1, p->v->sc2);
-    }
+    printf("%d %s %s %s %d %d\n", line, p->v->nome, p->v->eq1->nome, p->v->eq2->nome, p->v->sc1, p->v->sc2);
   }
 
 }
@@ -135,34 +125,30 @@ void case_r()
   p = (link) HTsearch(nome, &htJogos);
   if (p == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", line);
-    }
+    printf("%d Jogo inexistente.\n", line);
   }
   else
   {
+    if (p->v->sc1 > p->v->sc2)
     {
-      if (p->v->sc1 > p->v->sc2)
-      {
-        p->v->eq1->ganhos--;
-      }
-      else
-      {
-        
-      }
-
-      if (p->v->sc2 > p->v->sc1)
-      {
-        p->v->eq2->ganhos--;
-      }
-      else
-      {
-        
-      }
-
-      HTremove(nome, &htJogos);
-      DLremove_with_item_free(p);
+      p->v->eq1->ganhos--;
     }
+    else
+    {
+      
+    }
+
+    if (p->v->sc2 > p->v->sc1)
+    {
+      p->v->eq2->ganhos--;
+    }
+    else
+    {
+      
+    }
+
+    HTremove(nome, &htJogos);
+    DLremove_with_item_free(p);
   }
 
 }
@@ -183,50 +169,46 @@ void case_s()
   p = (link) HTsearch(nome, &htJogos);
   if (p == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", line);
-    }
+    printf("%d Jogo inexistente.\n", line);
   }
   else
   {
+    if (p->v->sc1 > p->v->sc2)
     {
-      if (p->v->sc1 > p->v->sc2)
-      {
-        p->v->eq1->ganhos--;
-      }
-      else
-      {
-        if (p->v->sc2 > p->v->sc1)
-        {
-          p->v->eq2->ganhos--;
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      if (sc1 > sc2)
-      {
-        p->v->eq1->ganhos++;
-      }
-      else
-      {
-        if (sc2 > sc1)
-        {
-          p->v->eq2->ganhos++;
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      p->v->sc1 = sc1;
-      p->v->sc2 = sc2;
+      p->v->eq1->ganhos--;
     }
+    else
+    {
+      if (p->v->sc2 > p->v->sc1)
+      {
+        p->v->eq2->ganhos--;
+      }
+      else
+      {
+        
+      }
+
+    }
+
+    if (sc1 > sc2)
+    {
+      p->v->eq1->ganhos++;
+    }
+    else
+    {
+      if (sc2 > sc1)
+      {
+        p->v->eq2->ganhos++;
+      }
+      else
+      {
+        
+      }
+
+    }
+
+    p->v->sc1 = sc1;
+    p->v->sc2 = sc2;
   }
 
 }
@@ -241,15 +223,11 @@ void case_A()
   nome[10 - 1] = '\0';
   if (HTsearch(nome, &htEquipas) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", line);
-    }
+    printf("%d Equipa existente.\n", line);
   }
   else
   {
-    {
-      HTinsert((void *) NEWequipa(nome), &htEquipas);
-    }
+    HTinsert((void *) NEWequipa(nome), &htEquipas);
   }
 
 }
@@ -266,15 +244,11 @@ void case_P()
   eq = (pEquipa) HTsearch(nome, &htEquipas);
   if (eq == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", line);
-    }
+    printf("%d Equipa inexistente.\n", line);
   }
   else
   {
-    {
-      printf("%d %s %d\n", line, nome, eq->ganhos);
-    }
+    printf("%d %s %d\n", line, nome, eq->ganhos);
   }
 
 }
@@ -296,30 +270,26 @@ void case_g()
     eq = (pEquipa) htEquipas.t[i];
     if (eq && (eq->ganhos >= max))
     {
+      if (eq->ganhos > max)
       {
-        if (eq->ganhos > max)
-        {
-          {
-            max = eq->ganhos;
-            count = 0;
-          }
-        }
-        else
-        {
-          
-        }
-
-        melhores[count] = eq;
-        if (count < (99999 - 1))
-        {
-          count++;
-        }
-        else
-        {
-          
-        }
-
+        max = eq->ganhos;
+        count = 0;
       }
+      else
+      {
+        
+      }
+
+      melhores[count] = eq;
+      if (count < (99999 - 1))
+      {
+        count++;
+      }
+      else
+      {
+        
+      }
+
     }
     else
     {

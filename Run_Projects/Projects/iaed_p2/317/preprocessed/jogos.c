@@ -63,12 +63,10 @@ void JHdelete(JHnode *Jhash, char *nome)
   }
   else
   {
-    {
-      for (node_ant = Jhash[i], node = node->next; strcmp(node->jogo->nome, nome) != 0; node = node->next)
-        node_ant = node;
+    for (node_ant = Jhash[i], node = node->next; strcmp(node->jogo->nome, nome) != 0; node = node->next)
+      node_ant = node;
 
-      node_ant->next = node->next;
-    }
+    node_ant->next = node->next;
   }
 
   free_jogo(node->jogo);
@@ -88,11 +86,9 @@ void JSinsert(Jogos_sistema *jogos_sis, Jogo *jogo)
   node->next = 0;
   if (jogos_sis->head == 0)
   {
-    {
-      jogos_sis->head = node;
-      jogos_sis->tail = node;
-      return;
-    }
+    jogos_sis->head = node;
+    jogos_sis->tail = node;
+    return;
   }
   else
   {
@@ -110,32 +106,28 @@ void JSdelete(Jogos_sistema *jogos_sis, char *nome)
   node = jogos_sis->head;
   if (strcmp(node->jogo->nome, nome) == 0)
   {
-    {
-      jogos_sis->head = node->next;
-    }
+    jogos_sis->head = node->next;
   }
   else
   {
+    node_ant = jogos_sis->head;
+    node = node->next;
+    while (strcmp(node->jogo->nome, nome) != 0)
     {
-      node_ant = jogos_sis->head;
+      node_ant = node;
       node = node->next;
-      while (strcmp(node->jogo->nome, nome) != 0)
-      {
-        node_ant = node;
-        node = node->next;
-      }
-
-      if (strcmp(node->jogo->nome, jogos_sis->tail->jogo->nome) == 0)
-      {
-        jogos_sis->tail = node_ant;
-      }
-      else
-      {
-        
-      }
-
-      node_ant->next = node->next;
     }
+
+    if (strcmp(node->jogo->nome, jogos_sis->tail->jogo->nome) == 0)
+    {
+      jogos_sis->tail = node_ant;
+    }
+    else
+    {
+      
+    }
+
+    node_ant->next = node->next;
   }
 
   free(node);

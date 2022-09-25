@@ -114,10 +114,8 @@ void aumenta_pontos(Tabela_hash *tabela, const char *nome)
   for (no = tabela->topos[i]; no != 0; no = no->proximo)
     if (strcmp(no->ponteiro->nome, nome) == 0)
   {
-    {
-      no->ponteiro->pontos += 1;
-      return;
-    }
+    no->ponteiro->pontos += 1;
+    return;
   }
   else
   {
@@ -135,10 +133,8 @@ void retira_pontos(Tabela_hash *tabela, const char *nome)
   for (no = tabela->topos[i]; no != 0; no = no->proximo)
     if (strcmp(no->ponteiro->nome, nome) == 0)
   {
-    {
-      no->ponteiro->pontos -= 1;
-      return;
-    }
+    no->ponteiro->pontos -= 1;
+    return;
   }
   else
   {
@@ -187,23 +183,19 @@ void procura_equipa(Tabela_hash *tabela, int contador)
   }
   else
   {
+    const size_t i = hash(nome, tabela->capacidade);
+    for (equipa = tabela->topos[i]; equipa != 0; equipa = equipa->proximo)
+      if (strcmp(equipa->ponteiro->nome, nome) == 0)
     {
-      const size_t i = hash(nome, tabela->capacidade);
-      for (equipa = tabela->topos[i]; equipa != 0; equipa = equipa->proximo)
-        if (strcmp(equipa->ponteiro->nome, nome) == 0)
-      {
-        {
-          printf("%d %s %d\n", contador, nome, equipa->ponteiro->pontos);
-          return;
-        }
-      }
-      else
-      {
-        
-      }
-
-
+      printf("%d %s %d\n", contador, nome, equipa->ponteiro->pontos);
+      return;
     }
+    else
+    {
+      
+    }
+
+
   }
 
 }
@@ -231,10 +223,8 @@ void vencedores(listE *lista_equipas, int contador)
   {
     if (e_atual->pontos > max_pontos)
     {
-      {
-        max_pontos = e_atual->pontos;
-        n_equipas = 1;
-      }
+      max_pontos = e_atual->pontos;
+      n_equipas = 1;
     }
     else
     {
@@ -257,10 +247,8 @@ void vencedores(listE *lista_equipas, int contador)
   {
     if (e_atual->pontos == max_pontos)
     {
-      {
-        vencedores[i] = malloc(((sizeof(char)) * strlen(e_atual->nome)) + 1);
-        strcpy(vencedores[i++], e_atual->nome);
-      }
+      vencedores[i] = malloc(((sizeof(char)) * strlen(e_atual->nome)) + 1);
+      strcpy(vencedores[i++], e_atual->nome);
     }
     else
     {
@@ -275,11 +263,9 @@ void vencedores(listE *lista_equipas, int contador)
     {
       if (strcmp(vencedores[n], vencedores[j]) > 0)
       {
-        {
-          guarda_nome = vencedores[n];
-          vencedores[n] = vencedores[j];
-          vencedores[j] = guarda_nome;
-        }
+        guarda_nome = vencedores[n];
+        vencedores[n] = vencedores[j];
+        vencedores[j] = guarda_nome;
       }
       else
       {

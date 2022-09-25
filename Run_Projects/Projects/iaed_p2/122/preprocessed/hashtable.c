@@ -117,12 +117,10 @@ void STdeletetable()
   {
     if (st[i] != 0)
     {
-      {
-        free(st[i]->name);
-        free(st[i]->team1);
-        free(st[i]->team2);
-        free(st[i]);
-      }
+      free(st[i]->name);
+      free(st[i]->team1);
+      free(st[i]->team2);
+      free(st[i]);
     }
     else
     {

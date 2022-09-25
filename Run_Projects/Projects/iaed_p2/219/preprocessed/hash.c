@@ -64,19 +64,15 @@ int insertBeginListJogo(int hashID, jogo *jg)
   auxjogo = searchListJogo(hashID, jg->nome);
   if (auxjogo == 0)
   {
-    {
-      novoNo = malloc(sizeof(struct node_jogo));
-      novoNo->j = jg;
-      novoNo->next = htj[hashID];
-      htj[hashID] = novoNo;
-      return 0;
-    }
+    novoNo = malloc(sizeof(struct node_jogo));
+    novoNo->j = jg;
+    novoNo->next = htj[hashID];
+    htj[hashID] = novoNo;
+    return 0;
   }
   else
   {
-    {
-      return -1;
-    }
+    return -1;
   }
 
 }
@@ -94,12 +90,10 @@ int removeItemJogo(int hashID, char *nome)
   link_jogo auxRem;
   if (strcmp(aux->j->nome, nome) == 0)
   {
-    {
-      htj[hashID] = aux->next;
-      free_jogo(aux->j);
-      free(aux);
-      return 0;
-    }
+    htj[hashID] = aux->next;
+    free_jogo(aux->j);
+    free(aux);
+    return 0;
   }
   else
   {
@@ -110,20 +104,16 @@ int removeItemJogo(int hashID, char *nome)
   {
     if (strcmp(aux->next->j->nome, nome) == 0)
     {
-      {
-        auxRem = aux->next;
-        aux->next = aux->next->next;
-        free_jogo(auxRem->j);
-        free(auxRem);
-        return 0;
-      }
+      auxRem = aux->next;
+      aux->next = aux->next->next;
+      free_jogo(auxRem->j);
+      free(auxRem);
+      return 0;
     }
     else
     {
-      {
-        auxRem = aux->next;
-        auxRem = aux->next;
-      }
+      auxRem = aux->next;
+      auxRem = aux->next;
     }
 
     aux = aux->next->next;
@@ -202,19 +192,15 @@ int insertBeginListEquipa(int hashID, equipa *eq)
   auxequipa = searchListEquipa(hashID, eq->nome);
   if (auxequipa == 0)
   {
-    {
-      novoNo = malloc(sizeof(struct node_equipa));
-      novoNo->e = eq;
-      novoNo->next = hte[hashID];
-      hte[hashID] = novoNo;
-      return 0;
-    }
+    novoNo = malloc(sizeof(struct node_equipa));
+    novoNo->e = eq;
+    novoNo->next = hte[hashID];
+    hte[hashID] = novoNo;
+    return 0;
   }
   else
   {
-    {
-      return -1;
-    }
+    return -1;
   }
 
 }

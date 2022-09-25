@@ -35,28 +35,20 @@ void apaga_nodej(listj *l, nodej *n)
 {
   if (n->previous == 0)
   {
-    {
-      l->head = n->next;
-    }
+    l->head = n->next;
   }
   else
   {
-    {
-      n->previous->next = n->next;
-    }
+    n->previous->next = n->next;
   }
 
   if (n->next == 0)
   {
-    {
-      l->last = n->previous;
-    }
+    l->last = n->previous;
   }
   else
   {
-    {
-      n->next->previous = n->previous;
-    }
+    n->next->previous = n->previous;
   }
 
   free_nodej(n);
@@ -70,15 +62,11 @@ void adiciona_j(listj *l, jogo *n)
   nn->j = n;
   if (l->last)
   {
-    {
-      l->last->next = nn;
-    }
+    l->last->next = nn;
   }
   else
   {
-    {
-      l->head = nn;
-    }
+    l->head = nn;
   }
 
   l->last = nn;

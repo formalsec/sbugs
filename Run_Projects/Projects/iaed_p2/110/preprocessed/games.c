@@ -13,33 +13,31 @@ Game gameInit(char *name, ptrTeam team1, ptrTeam team2, int score1, int score2)
 {
   if (strlen(name) < 1023)
   {
+    Game game = malloc(sizeof(struct games));
+    game->name = malloc((sizeof(char *)) * (strlen(name) + 1));
+    strcpy(game->name, name);
+    game->t1 = team1;
+    game->t2 = team2;
+    game->t1score = score1;
+    game->t2score = score2;
+    if (score1 > score2)
     {
-      Game game = malloc(sizeof(struct games));
-      game->name = malloc((sizeof(char *)) * (strlen(name) + 1));
-      strcpy(game->name, name);
-      game->t1 = team1;
-      game->t2 = team2;
-      game->t1score = score1;
-      game->t2score = score2;
-      if (score1 > score2)
+      game->t1->wins++;
+    }
+    else
+    {
+      if (score1 < score2)
       {
-        game->t1->wins++;
+        game->t2->wins++;
       }
       else
       {
-        if (score1 < score2)
-        {
-          game->t2->wins++;
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      return game;
     }
+
+    return game;
   }
   else
   {
@@ -127,11 +125,9 @@ Game gameChangeScore(Game game, int score1, int score2)
 {
   if (!gameEmpty(game))
   {
-    {
-      game->t1score = score1;
-      game->t2score = score2;
-      return game;
-    }
+    game->t1score = score1;
+    game->t2score = score2;
+    return game;
   }
   else
   {
@@ -145,10 +141,8 @@ void gamePrint(int NL, Game game)
 {
   if (!gameEmpty(game))
   {
-    {
-      printf("%d %s %s %s %d %d\n", NL, gameName(game), teamName(gameTeam1(game)), teamName(gameTeam2(game)), gameScoreT1(game), gameScoreT2(game));
-      return;
-    }
+    printf("%d %s %s %s %d %d\n", NL, gameName(game), teamName(gameTeam1(game)), teamName(gameTeam2(game)), gameScoreT1(game), gameScoreT2(game));
+    return;
   }
   else
   {

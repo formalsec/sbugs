@@ -192,11 +192,9 @@ void encomendaProduto()
         }
         else
         {
-          {
-            sistema[ide].lstPrdts[idp] += qnt;
-            sistema[ide].peso += qnt * produtos[idp].peso;
-            produtos[idp].quant -= qnt;
-          }
+          sistema[ide].lstPrdts[idp] += qnt;
+          sistema[ide].peso += qnt * produtos[idp].peso;
+          produtos[idp].quant -= qnt;
         }
 
       }
@@ -250,11 +248,9 @@ void removeProduto()
     }
     else
     {
-      {
-        produtos[idp].quant += sistema[ide].lstPrdts[idp];
-        sistema[ide].peso -= sistema[ide].lstPrdts[idp] * produtos[idp].peso;
-        sistema[ide].lstPrdts[idp] = 0;
-      }
+      produtos[idp].quant += sistema[ide].lstPrdts[idp];
+      sistema[ide].peso -= sistema[ide].lstPrdts[idp] * produtos[idp].peso;
+      sistema[ide].lstPrdts[idp] = 0;
     }
 
   }
@@ -273,22 +269,20 @@ void custoEncomenda()
   }
   else
   {
+    for (i = 0; i < id_prod; i++)
     {
-      for (i = 0; i < id_prod; i++)
+      if (sistema[ide].lstPrdts[i] != 0)
       {
-        if (sistema[ide].lstPrdts[i] != 0)
-        {
-          custo += sistema[ide].lstPrdts[i] * produtos[i].preco;
-        }
-        else
-        {
-          
-        }
-
+        custo += sistema[ide].lstPrdts[i] * produtos[i].preco;
+      }
+      else
+      {
+        
       }
 
-      printf("Custo da encomenda %d %d.\n", ide, custo);
     }
+
+    printf("Custo da encomenda %d %d.\n", ide, custo);
   }
 
 }
@@ -349,23 +343,11 @@ void identEncom()
   {
     if (id_encom > 0)
     {
+      for (i = 0; i < id_encom; i++)
       {
-        for (i = 0; i < id_encom; i++)
+        if (sistema[i].lstPrdts[idp] > sistema[encom].lstPrdts[idp])
         {
-          if (sistema[i].lstPrdts[idp] > sistema[encom].lstPrdts[idp])
-          {
-            encom = i;
-          }
-          else
-          {
-            
-          }
-
-        }
-
-        if (sistema[encom].lstPrdts[idp] > 0)
-        {
-          printf("Maximo produto %d %d %d.\n", idp, encom, sistema[encom].lstPrdts[idp]);
+          encom = i;
         }
         else
         {
@@ -373,6 +355,16 @@ void identEncom()
         }
 
       }
+
+      if (sistema[encom].lstPrdts[idp] > 0)
+      {
+        printf("Maximo produto %d %d %d.\n", idp, encom, sistema[encom].lstPrdts[idp]);
+      }
+      else
+      {
+        
+      }
+
     }
     else
     {
@@ -420,10 +412,8 @@ void listaEncom()
   ide = new_sym_var(sizeof(int) * 8);
   if (encomenda404(ide))
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
-      return;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
+    return;
   }
   else
   {

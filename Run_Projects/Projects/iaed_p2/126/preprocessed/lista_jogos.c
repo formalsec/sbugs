@@ -26,10 +26,8 @@ void LSTjg_adiciona(Lista_jg lista, Jogo jogo)
   }
   else
   {
-    {
-      lista->tail->prox = novo_node_jg(jogo, lista->tail->prox);
-      lista->tail = lista->tail->prox;
-    }
+    lista->tail->prox = novo_node_jg(jogo, lista->tail->prox);
+    lista->tail = lista->tail->prox;
   }
 
 }
@@ -55,28 +53,26 @@ void LSTjg_apaga(Lista_jg lista, Jogo jogo)
   {
     if (link->jogo == jogo)
     {
+      if (link == head)
       {
-        if (link == head)
-        {
-          lista->head = link->prox;
-        }
-        else
-        {
-          ant->prox = link->prox;
-        }
-
-        if (link == lista->tail)
-        {
-          lista->tail = ant;
-        }
-        else
-        {
-          
-        }
-
-        free(link);
-        break;
+        lista->head = link->prox;
       }
+      else
+      {
+        ant->prox = link->prox;
+      }
+
+      if (link == lista->tail)
+      {
+        lista->tail = ant;
+      }
+      else
+      {
+        
+      }
+
+      free(link);
+      break;
     }
     else
     {

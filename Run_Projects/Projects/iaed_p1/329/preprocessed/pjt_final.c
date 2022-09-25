@@ -39,55 +39,41 @@ void merge(int arr[], int l, int m, int r, int identificacao)
   {
     if (identificacao == 0)
     {
+      if (TABELA[L[i]][1] <= TABELA[R[j]][1])
       {
-        if (TABELA[L[i]][1] <= TABELA[R[j]][1])
+        arr[k] = L[i];
+        i++;
+      }
+      else
+      {
+        arr[k] = R[j];
+        j++;
+      }
+
+      k++;
+    }
+    else
+    {
+      if (identificacao == 1)
+      {
+        if (strcmp(TABELA_DESCRICAO[L[i]], TABELA_DESCRICAO[R[j]]) < 0)
         {
-          {
-            arr[k] = L[i];
-            i++;
-          }
+          arr[k] = L[i];
+          i++;
         }
         else
         {
-          {
-            arr[k] = R[j];
-            j++;
-          }
+          arr[k] = R[j];
+          j++;
         }
 
         k++;
       }
-    }
-    else
-    {
+      else
       {
-        if (identificacao == 1)
-        {
-          {
-            if (strcmp(TABELA_DESCRICAO[L[i]], TABELA_DESCRICAO[R[j]]) < 0)
-            {
-              {
-                arr[k] = L[i];
-                i++;
-              }
-            }
-            else
-            {
-              {
-                arr[k] = R[j];
-                j++;
-              }
-            }
-
-            k++;
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
+
     }
 
   }
@@ -114,12 +100,10 @@ void mergeSort(int arr[], int l, int r, int identificacao)
 {
   if (l < r)
   {
-    {
-      int m = l + ((r - l) / 2);
-      mergeSort(arr, l, m, identificacao);
-      mergeSort(arr, m + 1, r, identificacao);
-      merge(arr, l, m, r, identificacao);
-    }
+    int m = l + ((r - l) / 2);
+    mergeSort(arr, l, m, identificacao);
+    mergeSort(arr, m + 1, r, identificacao);
+    merge(arr, l, m, r, identificacao);
   }
   else
   {
@@ -236,16 +220,14 @@ int main()
   {
     if (comando == 'a')
     {
-      {
-        a(resto, descricao, &preco, &peso, &qnt);
-        strcpy(TABELA_DESCRICAO[ID], descricao);
-        TABELA[ID][0] = ID;
-        TABELA[ID][1] = preco;
-        TABELA[ID][2] = peso;
-        TABELA[ID][3] = qnt;
-        printf("Novo produto %d.\n", ID);
-        ++ID;
-      }
+      a(resto, descricao, &preco, &peso, &qnt);
+      strcpy(TABELA_DESCRICAO[ID], descricao);
+      TABELA[ID][0] = ID;
+      TABELA[ID][1] = preco;
+      TABELA[ID][2] = peso;
+      TABELA[ID][3] = qnt;
+      printf("Novo produto %d.\n", ID);
+      ++ID;
     }
     else
     {
@@ -254,24 +236,18 @@ int main()
 
     if (comando == 'q')
     {
+      int variavel = 0;
+      q(resto, &idp, &qnt);
+      if (TABELA[idp][2] == 0)
       {
-        int variavel = 0;
-        q(resto, &idp, &qnt);
-        if (TABELA[idp][2] == 0)
-        {
-          {
-            printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idp);
-          }
-        }
-        else
-        {
-          {
-            variavel = TABELA[idp][3] + qnt;
-            TABELA[idp][3] = variavel;
-          }
-        }
-
+        printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idp);
       }
+      else
+      {
+        variavel = TABELA[idp][3] + qnt;
+        TABELA[idp][3] = variavel;
+      }
+
     }
     else
     {
@@ -280,11 +256,9 @@ int main()
 
     if (comando == 'N')
     {
-      {
-        ENCOMENDA[IDE][10000] = 1;
-        printf("Nova encomenda %d.\n", IDE);
-        ++IDE;
-      }
+      ENCOMENDA[IDE][10000] = 1;
+      printf("Nova encomenda %d.\n", IDE);
+      ++IDE;
     }
     else
     {
@@ -293,50 +267,37 @@ int main()
 
     if (comando == 'A')
     {
+      int variavel;
+      int soma = 0;
+      A(resto, &ide, &idp, &qnt);
+      soma = calcula(TABELA, ENCOMENDA, ide, idp, qnt);
+      if (ENCOMENDA[ide][10000] == 0)
       {
-        int variavel;
-        int soma = 0;
-        A(resto, &ide, &idp, &qnt);
-        soma = calcula(TABELA, ENCOMENDA, ide, idp, qnt);
-        if (ENCOMENDA[ide][10000] == 0)
+        printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
+      }
+      else
+      {
+        if (TABELA[idp][2] == 0)
         {
-          {
-            printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
-          }
+          printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
         }
         else
         {
-          if (TABELA[idp][2] == 0)
+          if (TABELA[idp][3] < qnt)
           {
-            {
-              printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
-            }
+            printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
           }
           else
           {
-            if (TABELA[idp][3] < qnt)
+            if (soma > 200)
             {
-              {
-                printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
-              }
+              printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
             }
             else
             {
-              if (soma > 200)
-              {
-                {
-                  printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
-                }
-              }
-              else
-              {
-                {
-                  variavel = ENCOMENDA[ide][idp] + qnt;
-                  TABELA[idp][3] = TABELA[idp][3] - qnt;
-                  ENCOMENDA[ide][idp] = variavel;
-                }
-              }
-
+              variavel = ENCOMENDA[ide][idp] + qnt;
+              TABELA[idp][3] = TABELA[idp][3] - qnt;
+              ENCOMENDA[ide][idp] = variavel;
             }
 
           }
@@ -344,6 +305,7 @@ int main()
         }
 
       }
+
     }
     else
     {
@@ -352,34 +314,26 @@ int main()
 
     if (comando == 'r')
     {
+      int variavel = 0;
+      q(resto, &idp, &qnt);
+      if (TABELA[idp][1] == 0)
       {
-        int variavel = 0;
-        q(resto, &idp, &qnt);
-        if (TABELA[idp][1] == 0)
+        printf("Impossivel remover stock do produto %d. Produto inexistente.\n", idp);
+      }
+      else
+      {
+        if (TABELA[idp][3] < qnt)
         {
-          {
-            printf("Impossivel remover stock do produto %d. Produto inexistente.\n", idp);
-          }
+          printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qnt, idp);
         }
         else
         {
-          if (TABELA[idp][3] < qnt)
-          {
-            {
-              printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qnt, idp);
-            }
-          }
-          else
-          {
-            {
-              variavel = TABELA[idp][3] - qnt;
-              TABELA[idp][3] = variavel;
-            }
-          }
-
+          variavel = TABELA[idp][3] - qnt;
+          TABELA[idp][3] = variavel;
         }
 
       }
+
     }
     else
     {
@@ -388,33 +342,25 @@ int main()
 
     if (comando == 'R')
     {
+      R(resto, &ide, &idp);
+      if (ENCOMENDA[ide][10000] == 0)
       {
-        R(resto, &ide, &idp);
-        if (ENCOMENDA[ide][10000] == 0)
+        printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
+      }
+      else
+      {
+        if (TABELA[idp][2] == 0)
         {
-          {
-            printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
-          }
+          printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
         }
         else
         {
-          if (TABELA[idp][2] == 0)
-          {
-            {
-              printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
-            }
-          }
-          else
-          {
-            {
-              TABELA[idp][3] = TABELA[idp][3] + ENCOMENDA[ide][idp];
-              ENCOMENDA[ide][idp] = 0;
-            }
-          }
-
+          TABELA[idp][3] = TABELA[idp][3] + ENCOMENDA[ide][idp];
+          ENCOMENDA[ide][idp] = 0;
         }
 
       }
+
     }
     else
     {
@@ -423,29 +369,23 @@ int main()
 
     if (comando == 'C')
     {
+      int i;
+      int soma = 0;
+      C(resto, &ide);
+      if (ENCOMENDA[ide][10000] == 0)
       {
-        int i;
-        int soma = 0;
-        C(resto, &ide);
-        if (ENCOMENDA[ide][10000] == 0)
-        {
-          {
-            printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ide);
-          }
-        }
-        else
-        {
-          {
-            for (i = 0; i < 10000; i++)
-            {
-              soma += ENCOMENDA[ide][i] * TABELA[i][1];
-            }
-
-            printf("Custo da encomenda %d %d.\n", ide, soma);
-          }
-        }
-
+        printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ide);
       }
+      else
+      {
+        for (i = 0; i < 10000; i++)
+        {
+          soma += ENCOMENDA[ide][i] * TABELA[i][1];
+        }
+
+        printf("Custo da encomenda %d %d.\n", ide, soma);
+      }
+
     }
     else
     {
@@ -454,22 +394,16 @@ int main()
 
     if (comando == 'p')
     {
+      p(resto, &idp, &preco);
+      if (TABELA[idp][2] != 0)
       {
-        p(resto, &idp, &preco);
-        if (TABELA[idp][2] != 0)
-        {
-          {
-            TABELA[idp][1] = preco;
-          }
-        }
-        else
-        {
-          {
-            printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idp);
-          }
-        }
-
+        TABELA[idp][1] = preco;
       }
+      else
+      {
+        printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idp);
+      }
+
     }
     else
     {
@@ -478,32 +412,24 @@ int main()
 
     if (comando == 'E')
     {
+      R(resto, &ide, &idp);
+      if (ENCOMENDA[ide][10000] == 0)
       {
-        R(resto, &ide, &idp);
-        if (ENCOMENDA[ide][10000] == 0)
+        printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
+      }
+      else
+      {
+        if (TABELA[idp][2] == 0)
         {
-          {
-            printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
-          }
+          printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
         }
         else
         {
-          if (TABELA[idp][2] == 0)
-          {
-            {
-              printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
-            }
-          }
-          else
-          {
-            {
-              printf("%s %d.\n", TABELA_DESCRICAO[idp], ENCOMENDA[ide][idp]);
-            }
-          }
-
+          printf("%s %d.\n", TABELA_DESCRICAO[idp], ENCOMENDA[ide][idp]);
         }
 
       }
+
     }
     else
     {
@@ -512,52 +438,42 @@ int main()
 
     if (comando == 'm')
     {
+      int i;
+      int qtty = 0;
+      C(resto, &ide);
+      idp = ide;
+      ide = 0;
+      if ((TABELA[idp][0] == 0) && (TABELA[idp][2] == 0))
       {
-        int i;
-        int qtty = 0;
-        C(resto, &ide);
-        idp = ide;
-        ide = 0;
-        if ((TABELA[idp][0] == 0) && (TABELA[idp][2] == 0))
+        printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idp);
+      }
+      else
+      {
+        for (i = 0; i < 500; i++)
         {
+          if (ENCOMENDA[i][idp] > qtty)
           {
-            printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idp);
+            qtty = ENCOMENDA[i][idp];
+            ide = i;
           }
+          else
+          {
+            
+          }
+
+        }
+
+        if (qtty > 0)
+        {
+          printf("Maximo produto %d %d %d.\n", idp, ide, qtty);
         }
         else
         {
-          {
-            for (i = 0; i < 500; i++)
-            {
-              if (ENCOMENDA[i][idp] > qtty)
-              {
-                {
-                  qtty = ENCOMENDA[i][idp];
-                  ide = i;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-            if (qtty > 0)
-            {
-              {
-                printf("Maximo produto %d %d %d.\n", idp, ide, qtty);
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
+          
         }
 
       }
+
     }
     else
     {
@@ -566,19 +482,65 @@ int main()
 
     if (comando == 'l')
     {
+      int i;
+      int j = 0;
+      int identificacao = 0;
+      static int nova_lista[10000];
+      for (i = 0; i < (ID + 1); i++)
       {
-        int i;
-        int j = 0;
-        int identificacao = 0;
-        static int nova_lista[10000];
+        if (TABELA[i][2])
+        {
+          nova_lista[j] = i;
+          ++j;
+        }
+        else
+        {
+          
+        }
+
+      }
+
+      mergeSort(nova_lista, 0, j - 1, identificacao);
+      printf("Produtos\n");
+      for (i = 0; i < ID; i++)
+      {
+        if (TABELA[nova_lista[i]][2] > 0)
+        {
+          printf("* %s %d %d\n", TABELA_DESCRICAO[nova_lista[i]], TABELA[nova_lista[i]][1], TABELA[nova_lista[i]][3]);
+        }
+        else
+        {
+          
+        }
+
+      }
+
+    }
+    else
+    {
+      
+    }
+
+    if (comando == 'L')
+    {
+      int i;
+      int j = 0;
+      int last_id = -1;
+      int identificacao = 1;
+      static int nova_lista[10000];
+      C(resto, &ide);
+      if (ENCOMENDA[ide][10000] == 0)
+      {
+        printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
+      }
+      else
+      {
         for (i = 0; i < (ID + 1); i++)
         {
-          if (TABELA[i][2])
+          if (ENCOMENDA[ide][i])
           {
-            {
-              nova_lista[j] = i;
-              ++j;
-            }
+            nova_lista[j] = i;
+            ++j;
           }
           else
           {
@@ -588,14 +550,13 @@ int main()
         }
 
         mergeSort(nova_lista, 0, j - 1, identificacao);
-        printf("Produtos\n");
-        for (i = 0; i < ID; i++)
+        printf("Encomenda %d\n", ide);
+        for (i = 0; i < j; i++)
         {
-          if (TABELA[nova_lista[i]][2] > 0)
+          if ((ENCOMENDA[ide][nova_lista[i]] && (nova_lista[i] != last_id)) && TABELA[nova_lista[i]][1])
           {
-            {
-              printf("* %s %d %d\n", TABELA_DESCRICAO[nova_lista[i]], TABELA[nova_lista[i]][1], TABELA[nova_lista[i]][3]);
-            }
+            printf("* %s %d %d\n", TABELA_DESCRICAO[nova_lista[i]], TABELA[nova_lista[i]][1], ENCOMENDA[ide][nova_lista[i]]);
+            last_id = nova_lista[i];
           }
           else
           {
@@ -605,68 +566,7 @@ int main()
         }
 
       }
-    }
-    else
-    {
-      
-    }
 
-    if (comando == 'L')
-    {
-      {
-        int i;
-        int j = 0;
-        int last_id = -1;
-        int identificacao = 1;
-        static int nova_lista[10000];
-        C(resto, &ide);
-        if (ENCOMENDA[ide][10000] == 0)
-        {
-          {
-            printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
-          }
-        }
-        else
-        {
-          {
-            for (i = 0; i < (ID + 1); i++)
-            {
-              if (ENCOMENDA[ide][i])
-              {
-                {
-                  nova_lista[j] = i;
-                  ++j;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-            mergeSort(nova_lista, 0, j - 1, identificacao);
-            printf("Encomenda %d\n", ide);
-            for (i = 0; i < j; i++)
-            {
-              if ((ENCOMENDA[ide][nova_lista[i]] && (nova_lista[i] != last_id)) && TABELA[nova_lista[i]][1])
-              {
-                {
-                  printf("* %s %d %d\n", TABELA_DESCRICAO[nova_lista[i]], TABELA[nova_lista[i]][1], ENCOMENDA[ide][nova_lista[i]]);
-                  last_id = nova_lista[i];
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-          }
-        }
-
-      }
     }
     else
     {

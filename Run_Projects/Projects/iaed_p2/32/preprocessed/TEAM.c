@@ -24,17 +24,13 @@ void NewTeam(int line)
   l = searchHashTeam(name, t_heads[i]);
   if (!l)
   {
-    {
-      t_heads[i] = insertHashTeam(name, t_heads[i]);
-      freeTeamList(teams_list);
-      TeamListInit();
-    }
+    t_heads[i] = insertHashTeam(name, t_heads[i]);
+    freeTeamList(teams_list);
+    TeamListInit();
   }
   else
   {
-    {
-      printf("%d Equipa existente.\n", line);
-    }
+    printf("%d Equipa existente.\n", line);
   }
 
   free(name);
@@ -56,15 +52,11 @@ void SearchTeam(int line)
   l = searchHashTeam(name, t_heads[i]);
   if (l != 0)
   {
-    {
-      printf("%d %s %d\n", line, name, l->team->wins);
-    }
+    printf("%d %s %d\n", line, name, l->team->wins);
   }
   else
   {
-    {
-      printf("%d Equipa inexistente.\n", line);
-    }
+    printf("%d Equipa inexistente.\n", line);
   }
 
   free(name);
@@ -80,43 +72,34 @@ void MaxWins(int line)
   getchar();
   if (teams_list == 0)
   {
+    for (i = 0; i < 256; i++)
     {
-      for (i = 0; i < 256; i++)
+      for (index = t_heads[i]; index != 0; index = index->next)
       {
-        for (index = t_heads[i]; index != 0; index = index->next)
+        if (index->team->wins > max)
         {
-          if (index->team->wins > max)
+          if (teams_list != 0)
           {
-            {
-              if (teams_list != 0)
-              {
-                {
-                  freeTeamList(teams_list);
-                  TeamListInit();
-                }
-              }
-              else
-              {
-                
-              }
-
-              max = index->team->wins;
-              insertTeamList(index->team);
-            }
+            freeTeamList(teams_list);
+            TeamListInit();
           }
           else
           {
-            if (index->team->wins == max)
-            {
-              {
-                insertTeamList(index->team);
-              }
-            }
-            else
-            {
-              
-            }
+            
+          }
 
+          max = index->team->wins;
+          insertTeamList(index->team);
+        }
+        else
+        {
+          if (index->team->wins == max)
+          {
+            insertTeamList(index->team);
+          }
+          else
+          {
+            
           }
 
         }
@@ -124,6 +107,7 @@ void MaxWins(int line)
       }
 
     }
+
   }
   else
   {
@@ -132,16 +116,14 @@ void MaxWins(int line)
 
   if (teams_list != 0)
   {
+    i = hash_team(teams_list->team->name);
+    l = searchHashTeam(teams_list->team->name, t_heads[i]);
+    printf("%d Melhores %d\n", line, l->team->wins);
+    for (gl = teams_list; gl != 0; gl = gl->next)
     {
-      i = hash_team(teams_list->team->name);
-      l = searchHashTeam(teams_list->team->name, t_heads[i]);
-      printf("%d Melhores %d\n", line, l->team->wins);
-      for (gl = teams_list; gl != 0; gl = gl->next)
-      {
-        printf("%d * %s\n", line, gl->team->name);
-      }
-
+      printf("%d * %s\n", line, gl->team->name);
     }
+
   }
   else
   {
@@ -199,58 +181,44 @@ link insertHashTeam(char *name, link head)
   link prev;
   if (head == 0)
   {
-    {
-      head = newTeamLink(name);
-    }
+    head = newTeamLink(name);
   }
   else
   {
+    for (aux = head, prev = 0; aux != 0; prev = aux, aux = aux->next)
     {
-      for (aux = head, prev = 0; aux != 0; prev = aux, aux = aux->next)
+      if (strcmp(aux->team->name, name) < 0)
       {
-        if (strcmp(aux->team->name, name) < 0)
+        if (aux->next == 0)
         {
-          {
-            if (aux->next == 0)
-            {
-              {
-                aux->next = newTeamLink(name);
-                break;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
+          aux->next = newTeamLink(name);
+          break;
         }
         else
         {
-          {
-            if (aux == head)
-            {
-              {
-                head = newTeamLink(name);
-                head->next = aux;
-                break;
-              }
-            }
-            else
-            {
-              {
-                prev->next = newTeamLink(name);
-                prev->next->next = aux;
-                break;
-              }
-            }
+          
+        }
 
-          }
+      }
+      else
+      {
+        if (aux == head)
+        {
+          head = newTeamLink(name);
+          head->next = aux;
+          break;
+        }
+        else
+        {
+          prev->next = newTeamLink(name);
+          prev->next->next = aux;
+          break;
         }
 
       }
 
     }
+
   }
 
   return head;
@@ -279,12 +247,10 @@ void free_list(link head)
 {
   if (head != 0)
   {
-    {
-      free(head->team->name);
-      free(head->team);
-      free_list(head->next);
-      free(head);
-    }
+    free(head->team->name);
+    free(head->team);
+    free_list(head->next);
+    free(head);
   }
   else
   {
@@ -307,10 +273,8 @@ void freeTeamList(TeamsList t)
 {
   if (t != 0)
   {
-    {
-      freeTeamList(t->next);
-      free(t);
-    }
+    freeTeamList(t->next);
+    free(t);
   }
   else
   {
@@ -329,16 +293,12 @@ void insertTeamList(Team team)
 {
   if (teams_list == 0)
   {
-    {
-      teams_list = (teams_list_tail = newTeamIndex(team));
-    }
+    teams_list = (teams_list_tail = newTeamIndex(team));
   }
   else
   {
-    {
-      teams_list_tail->next = newTeamIndex(team);
-      teams_list_tail = teams_list_tail->next;
-    }
+    teams_list_tail->next = newTeamIndex(team);
+    teams_list_tail = teams_list_tail->next;
   }
 
 }

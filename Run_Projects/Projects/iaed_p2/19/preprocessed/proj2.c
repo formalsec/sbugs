@@ -47,11 +47,9 @@ link_equipas insertAtBegining(link_equipas head_list, link_equipas new_node)
   }
   else
   {
-    {
-      new_node->proximo = head_list;
-      head_list = new_node;
-      return new_node;
-    }
+    new_node->proximo = head_list;
+    head_list = new_node;
+    return new_node;
   }
 
 }
@@ -120,17 +118,13 @@ link *insere_hash(link *heads, int M, char *nome, char *equipa1, char *equipa2, 
   int chave = hash(nome, M);
   if (heads[chave] == 0)
   {
-    {
-      heads[chave] = NewNode(nome, equipa1, equipa2, score1, score2);
-    }
+    heads[chave] = NewNode(nome, equipa1, equipa2, score1, score2);
   }
   else
   {
-    {
-      j = NewNode(nome, equipa1, equipa2, score1, score2);
-      j->proximo = heads[chave];
-      heads[chave] = j;
-    }
+    j = NewNode(nome, equipa1, equipa2, score1, score2);
+    j->proximo = heads[chave];
+    heads[chave] = j;
   }
 
   return heads;
@@ -144,9 +138,7 @@ link verifica_jogo(link *heads, int M, char *nome)
   {
     if (strcmp(y->jogo.nome, nome) == 0)
     {
-      {
-        return y;
-      }
+      return y;
     }
     else
     {
@@ -208,9 +200,7 @@ int verifica_equipa(link_equipas listaDeEquipas, char *nome)
   {
     if (strcmp(k->equipas.equipa_nome, nome) == 0)
     {
-      {
-        return 1;
-      }
+      return 1;
     }
     else
     {
@@ -226,21 +216,17 @@ link *adiciona_jogo(int NL, link *heads, int M, char *nome, char *equipa1, char 
 {
   if (verifica_jogo(heads, M, nome) == 0)
   {
+    if ((verifica_equipa(listaDeEquipas, equipa1) == 0) && (verifica_equipa(listaDeEquipas, equipa2) == 0))
     {
-      if ((verifica_equipa(listaDeEquipas, equipa1) == 0) && (verifica_equipa(listaDeEquipas, equipa2) == 0))
-      {
-        {
-          heads = insere_hash(heads, M, nome, equipa1, equipa2, score1, score2);
-          *pflag = 1;
-          return heads;
-        }
-      }
-      else
-      {
-        printf("%d Equipa existente.\n", NL);
-      }
-
+      heads = insere_hash(heads, M, nome, equipa1, equipa2, score1, score2);
+      *pflag = 1;
+      return heads;
     }
+    else
+    {
+      printf("%d Equipa existente.\n", NL);
+    }
+
   }
   else
   {
@@ -255,10 +241,8 @@ link_equipas adiciona_equipa(link_equipas listaDeEquipas, char *nome, int NL)
 {
   if (verifica_equipa(listaDeEquipas, nome) == 1)
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-      return listaDeEquipas;
-    }
+    printf("%d Equipa existente.\n", NL);
+    return listaDeEquipas;
   }
   else
   {
@@ -283,10 +267,8 @@ void comando_p(link *heads, int M, char *nome, int NL)
   link k = verifica_jogo(heads, M, nome);
   if (verifica_jogo(heads, M, nome) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -305,19 +287,17 @@ link *comando_r(link *heads, int M, char *nome, int NL)
   {
     if (strcmp(h->jogo.nome, nome) == 0)
     {
+      if (h == heads[chave])
       {
-        if (h == heads[chave])
-        {
-          heads[chave] = h->proximo;
-        }
-        else
-        {
-          anterior->proximo = h->proximo;
-        }
-
-        apaga_no(h);
-        return heads;
+        heads[chave] = h->proximo;
       }
+      else
+      {
+        anterior->proximo = h->proximo;
+      }
+
+      apaga_no(h);
+      return heads;
     }
     else
     {
@@ -377,10 +357,8 @@ int main()
         heads = adiciona_jogo(NL, heads, M, nome, equipa1, equipa2, score1, score2, listaDeEquipas, pflag);
         if (flag == 1)
       {
-        {
-          listaDeEquipas = adiciona_equipa(listaDeEquipas, equipa1, NL);
-          listaDeEquipas = adiciona_equipa(listaDeEquipas, equipa2, NL);
-        }
+        listaDeEquipas = adiciona_equipa(listaDeEquipas, equipa1, NL);
+        listaDeEquipas = adiciona_equipa(listaDeEquipas, equipa2, NL);
       }
       else
       {

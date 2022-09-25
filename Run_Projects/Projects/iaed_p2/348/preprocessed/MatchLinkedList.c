@@ -45,15 +45,13 @@ void freeMatchLinkedList(LinkedList_Match *llM)
   List_Node_Match *temp;
   if (llM->head)
   {
+    while (llM->head->next)
     {
-      while (llM->head->next)
-      {
-        temp = llM->head;
-        llM->head = llM->head->next;
-        free(temp);
-      }
-
+      temp = llM->head;
+      llM->head = llM->head->next;
+      free(temp);
     }
+
   }
   else
   {

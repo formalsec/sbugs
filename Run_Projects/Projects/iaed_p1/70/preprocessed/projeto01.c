@@ -180,37 +180,29 @@ void executa_A(int enc, int identificador, int qtd)
   int i;
   if (enc >= ide)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", identificador, enc);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", identificador, enc);
+    return;
   }
   else
   {
     if (identificador >= idp)
     {
-      {
-        printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", identificador, enc);
-        return;
-      }
+      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", identificador, enc);
+      return;
     }
     else
     {
       if (sistema[identificador].qtd < qtd)
       {
-        {
-          printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", identificador, enc);
-          return;
-        }
+        printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", identificador, enc);
+        return;
       }
       else
       {
         if ((lista_enc[enc].peso + (sistema[identificador].peso * qtd)) > 200)
         {
-          {
-            printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", identificador, enc);
-            return;
-          }
+          printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", identificador, enc);
+          return;
         }
         else
         {
@@ -227,12 +219,10 @@ void executa_A(int enc, int identificador, int qtd)
   {
     if (lista_enc[enc].lista_artigos[i].idp == identificador)
     {
-      {
-        lista_enc[enc].lista_artigos[i].qtd += qtd;
-        lista_enc[enc].peso += qtd * sistema[identificador].peso;
-        sistema[identificador].qtd -= qtd;
-        return;
-      }
+      lista_enc[enc].lista_artigos[i].qtd += qtd;
+      lista_enc[enc].peso += qtd * sistema[identificador].peso;
+      sistema[identificador].qtd -= qtd;
+      return;
     }
     else
     {
@@ -285,31 +275,27 @@ void executa_R(int enc, int identificador)
     }
     else
     {
+      for (i = 0; i < lista_enc[enc].last; i++)
       {
-        for (i = 0; i < lista_enc[enc].last; i++)
+        if (lista_enc[enc].lista_artigos[i].idp == identificador)
         {
-          if (lista_enc[enc].lista_artigos[i].idp == identificador)
-          {
-            {
-              sistema[identificador].qtd += lista_enc[enc].lista_artigos[i].qtd;
-              lista_enc[enc].peso -= sistema[identificador].peso * lista_enc[enc].lista_artigos[i].qtd;
-              lista_enc[enc].last--;
-              break;
-            }
-          }
-          else
-          {
-            
-          }
-
+          sistema[identificador].qtd += lista_enc[enc].lista_artigos[i].qtd;
+          lista_enc[enc].peso -= sistema[identificador].peso * lista_enc[enc].lista_artigos[i].qtd;
+          lista_enc[enc].last--;
+          break;
         }
-
-        for (; i < (j - 1); i++)
+        else
         {
-          lista_enc[enc].lista_artigos[i] = lista_enc[enc].lista_artigos[i + 1];
+          
         }
 
       }
+
+      for (; i < (j - 1); i++)
+      {
+        lista_enc[enc].lista_artigos[i] = lista_enc[enc].lista_artigos[i + 1];
+      }
+
     }
 
   }
@@ -326,12 +312,10 @@ void executa_C(int enc)
   }
   else
   {
-    {
-      for (i = 0; i < lista_enc[enc].last; i++)
-        preco_enc += sistema[lista_enc[enc].lista_artigos[i].idp].preco * lista_enc[enc].lista_artigos[i].qtd;
+    for (i = 0; i < lista_enc[enc].last; i++)
+      preco_enc += sistema[lista_enc[enc].lista_artigos[i].idp].preco * lista_enc[enc].lista_artigos[i].qtd;
 
-      printf("Custo da encomenda %d %d.\n", enc, preco_enc);
-    }
+    printf("Custo da encomenda %d %d.\n", enc, preco_enc);
   }
 
 }
@@ -364,25 +348,21 @@ void executa_E(int enc, int identificador)
     }
     else
     {
+      for (i = 0; i < lista_enc[enc].last; i++)
       {
-        for (i = 0; i < lista_enc[enc].last; i++)
+        if (lista_enc[enc].lista_artigos[i].idp == identificador)
         {
-          if (lista_enc[enc].lista_artigos[i].idp == identificador)
-          {
-            {
-              printf("%s %d.\n", sistema[identificador].descricao, lista_enc[enc].lista_artigos[i].qtd);
-              return;
-            }
-          }
-          else
-          {
-            
-          }
-
+          printf("%s %d.\n", sistema[identificador].descricao, lista_enc[enc].lista_artigos[i].qtd);
+          return;
+        }
+        else
+        {
+          
         }
 
-        printf("%s 0.\n", sistema[identificador].descricao);
       }
+
+      printf("%s 0.\n", sistema[identificador].descricao);
     }
 
   }
@@ -397,46 +377,40 @@ void executa_m(int identificador)
   int max_enc = 0;
   if (identificador >= idp)
   {
-    {
-      printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", identificador);
-      return;
-      ;
-    }
+    printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", identificador);
+    return;
+    ;
   }
   else
   {
+    for (j = 0; j < ide; j++)
     {
-      for (j = 0; j < ide; j++)
+      for (i = 0; i < lista_enc[j].last; i++)
       {
-        for (i = 0; i < lista_enc[j].last; i++)
+        if ((lista_enc[j].lista_artigos[i].idp == identificador) && (lista_enc[j].lista_artigos[i].qtd > max))
         {
-          if ((lista_enc[j].lista_artigos[i].idp == identificador) && (lista_enc[j].lista_artigos[i].qtd > max))
-          {
-            {
-              max = lista_enc[j].lista_artigos[i].qtd;
-              max_enc = j;
-              break;
-            }
-          }
-          else
-          {
-            
-          }
-
+          max = lista_enc[j].lista_artigos[i].qtd;
+          max_enc = j;
+          break;
+        }
+        else
+        {
+          
         }
 
       }
 
-      if (max == 0)
-      {
-        return;
-      }
-      else
-      {
-        printf("Maximo produto %d %d %d.\n", identificador, max_enc, max);
-      }
-
     }
+
+    if (max == 0)
+    {
+      return;
+    }
+    else
+    {
+      printf("Maximo produto %d %d %d.\n", identificador, max_enc, max);
+    }
+
   }
 
 }
@@ -465,16 +439,14 @@ void executa_L(int enc)
   }
   else
   {
-    {
-      for (i = 0; i < lista_enc[enc].last; i++)
-        desord[i] = lista_enc[enc].lista_artigos[i];
+    for (i = 0; i < lista_enc[enc].last; i++)
+      desord[i] = lista_enc[enc].lista_artigos[i];
 
-      mergesort(desord, 0, lista_enc[enc].last - 1);
-      printf("Encomenda %d\n", enc);
-      for (i = 0; i < lista_enc[enc].last; i++)
-        printf("* %s %d %d\n", sistema[desord[i].idp].descricao, sistema[desord[i].idp].preco, desord[i].qtd);
+    mergesort(desord, 0, lista_enc[enc].last - 1);
+    printf("Encomenda %d\n", enc);
+    for (i = 0; i < lista_enc[enc].last; i++)
+      printf("* %s %d %d\n", sistema[desord[i].idp].descricao, sistema[desord[i].idp].preco, desord[i].qtd);
 
-    }
   }
 
 }
@@ -519,9 +491,7 @@ int partition(struct produto desordenado[], int left, int right)
 
     if (i < j)
     {
-      {
-        exch(desordenado, i, j);
-      }
+      exch(desordenado, i, j);
     }
     else
     {

@@ -26,19 +26,15 @@ void add_jogo_hash(JOGO_HASH **hashtable_jogos, JOGO *jogo)
   indice = hash(jogo->nome);
   if (hashtable_jogos[indice] == 0)
   {
-    {
-      hashtable_jogos[indice] = calloc(1, sizeof(JOGO_HASH));
-      hashtable_jogos[indice]->jogo_ptr = jogo;
-    }
+    hashtable_jogos[indice] = calloc(1, sizeof(JOGO_HASH));
+    hashtable_jogos[indice]->jogo_ptr = jogo;
   }
   else
   {
-    {
-      tmp = calloc(1, sizeof(JOGO_HASH));
-      tmp->next = hashtable_jogos[indice];
-      tmp->jogo_ptr = jogo;
-      hashtable_jogos[indice] = tmp;
-    }
+    tmp = calloc(1, sizeof(JOGO_HASH));
+    tmp->next = hashtable_jogos[indice];
+    tmp->jogo_ptr = jogo;
+    hashtable_jogos[indice] = tmp;
   }
 
 }

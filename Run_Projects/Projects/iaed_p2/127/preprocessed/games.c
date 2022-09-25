@@ -44,39 +44,29 @@ void delete_el(link *borders, link g)
 {
   if (g == (*borders))
   {
+    if (g == (*(borders + 1)))
     {
-      if (g == (*(borders + 1)))
-      {
-        {
-          *borders = 0;
-          *(borders + 1) = 0;
-        }
-      }
-      else
-      {
-        {
-          *borders = g->next;
-          (*borders)->prev = 0;
-        }
-      }
-
+      *borders = 0;
+      *(borders + 1) = 0;
     }
+    else
+    {
+      *borders = g->next;
+      (*borders)->prev = 0;
+    }
+
   }
   else
   {
     if (g == (*(borders + 1)))
     {
-      {
-        *(borders + 1) = g->prev;
-        (*(borders + 1))->next = 0;
-      }
+      *(borders + 1) = g->prev;
+      (*(borders + 1))->next = 0;
     }
     else
     {
-      {
-        g->prev->next = g->next;
-        g->next->prev = g->prev;
-      }
+      g->prev->next = g->next;
+      g->next->prev = g->prev;
     }
 
   }
@@ -118,10 +108,8 @@ link *expand_g(link *game_tab, long int *max_len)
   for (i = 0; i < old_m; i++)
     if ((*(game_tab + i)) != 0)
   {
-    {
-      add_game_to_table(new_tab, *(game_tab + i), max_len);
-      (*(max_len + 1))--;
-    }
+    add_game_to_table(new_tab, *(game_tab + i), max_len);
+    (*(max_len + 1))--;
   }
   else
   {

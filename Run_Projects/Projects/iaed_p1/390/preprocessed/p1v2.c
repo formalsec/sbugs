@@ -41,12 +41,10 @@ void pro_in_enc(int id_enc, int id_pro, int a)
   {
     if (cli[id_enc].carr[i].idp == id_pro)
     {
-      {
-        a = i;
-        a++;
-        a--;
-        return;
-      }
+      a = i;
+      a++;
+      a--;
+      return;
     }
     else
     {
@@ -145,17 +143,15 @@ void __N__()
 {
   if (ide < 500)
   {
-    {
-      Enc e;
-      e.carr[-1].qd = 0;
-      e.carr[-1].peso = 0;
-      e.carr[-1].preco = 0;
-      e.carr[-1].idp = 0;
-      e.carr[-1].desc[0] = '0';
-      e.prods = -1;
-      cli[ide] = e;
-      printf("Nova encomenda %d.\n", ide++);
-    }
+    Enc e;
+    e.carr[-1].qd = 0;
+    e.carr[-1].peso = 0;
+    e.carr[-1].preco = 0;
+    e.carr[-1].idp = 0;
+    e.carr[-1].desc[0] = '0';
+    e.prods = -1;
+    cli[ide] = e;
+    printf("Nova encomenda %d.\n", ide++);
   }
   else
   {
@@ -204,50 +200,40 @@ void __A__()
   qd = new_sym_var(sizeof(int) * 8);
   if (((eh_enc(id_enc) && eh_pro(id_pro)) && ((sys[id_pro].qd - qd) >= 0)) && ((peso_enc(ide) + (sys[id_pro].peso * qd)) <= 200))
   {
+    pro_in_enc(id_enc, id_pro, a);
+    if (ah_pro_in_enc(id_enc, id_pro))
     {
-      pro_in_enc(id_enc, id_pro, a);
-      if (ah_pro_in_enc(id_enc, id_pro))
-      {
-        {
-          cli[id_enc].prods++;
-          prod_novo_carr(id_enc, id_pro, qd);
-        }
-      }
-      else
-      {
-        cli[id_enc].carr[a].qd += qd;
-      }
-
-      sys[id_pro].qd -= qd;
-      return;
+      cli[id_enc].prods++;
+      prod_novo_carr(id_enc, id_pro, qd);
     }
+    else
+    {
+      cli[id_enc].carr[a].qd += qd;
+    }
+
+    sys[id_pro].qd -= qd;
+    return;
   }
   else
   {
     if (eh_enc(id_enc) == 0)
     {
-      {
-        printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", id_pro, id_enc);
-        return;
-      }
+      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", id_pro, id_enc);
+      return;
     }
     else
     {
       if (eh_pro(id_pro) == 0)
       {
-        {
-          printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", id_pro, id_enc);
-          return;
-        }
+        printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", id_pro, id_enc);
+        return;
       }
       else
       {
         if ((sys[id_pro].qd - qd) < 0)
         {
-          {
-            printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", id_pro, id_enc);
-            return;
-          }
+          printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", id_pro, id_enc);
+          return;
         }
         else
         {
@@ -282,9 +268,7 @@ int qd_pro_enc(int id_pro)
     {
       if (id_pro == cli[i].carr[j].idp)
       {
-        {
-          total += cli[i].carr[ide].qd;
-        }
+        total += cli[i].carr[ide].qd;
       }
       else
       {
@@ -351,10 +335,8 @@ void __R__()
     }
     else
     {
-      {
-        pro_in_enc(id_enc, id_pro, a);
-        cli[id_enc].carr[a].qd = 0;
-      }
+      pro_in_enc(id_enc, id_pro, a);
+      cli[id_enc].carr[a].qd = 0;
     }
 
   }
@@ -370,26 +352,20 @@ void __C__()
   id_enc = new_sym_var(sizeof(int) * 8);
   if (eh_enc(id_enc))
   {
+    if (cli[id_enc].prods == (-1))
     {
-      if (cli[id_enc].prods == (-1))
-      {
-        {
-          return;
-        }
-      }
-      else
-      {
-        {
-          for (i = 0; i < 10000; i++)
-          {
-            total += cli[id_enc].carr[i].preco * cli[id_enc].carr[i].qd;
-          }
-
-          printf("Custo da encomenda %d %d.\n", id_enc, total);
-        }
-      }
-
+      return;
     }
+    else
+    {
+      for (i = 0; i < 10000; i++)
+      {
+        total += cli[id_enc].carr[i].preco * cli[id_enc].carr[i].qd;
+      }
+
+      printf("Custo da encomenda %d %d.\n", id_enc, total);
+    }
+
   }
   else
   {
@@ -438,12 +414,10 @@ void __E__()
     }
     else
     {
-      {
-        pro_in_enc(id_enc, id_pro, a);
-        strcpy(desc, cli[id_enc].carr[a].desc);
-        qd = cli[id_enc].carr[a].qd;
-        printf("%s%c%d.\n", desc, ' ', qd);
-      }
+      pro_in_enc(id_enc, id_pro, a);
+      strcpy(desc, cli[id_enc].carr[a].desc);
+      qd = cli[id_enc].carr[a].qd;
+      printf("%s%c%d.\n", desc, ' ', qd);
     }
 
   }
@@ -462,43 +436,34 @@ void __m__()
   id_pro = new_sym_var(sizeof(int) * 8);
   if ((ide > 0) && eh_pro(id_pro))
   {
+    for (k = 0; k < ide; k++)
     {
-      for (k = 0; k < ide; k++)
+      if (ah_pro_in_enc(k, id_pro) == 0)
       {
-        if (ah_pro_in_enc(k, id_pro) == 0)
-        {
-          break;
-        }
-        else
-        {
-          return;
-        }
-
+        break;
+      }
+      else
+      {
+        return;
       }
 
-      for (i = 0; i < ide; i++)
-      {
-        pro_in_enc(i, id_pro, a);
-        if (cli[i].carr[a].qd > max)
-        {
-          {
-            max = cli[i].carr[a].qd;
-            ide_max = i;
-          }
-        }
-        else
-        {
-          if (cli[i].carr[a].qd == max)
-          {
-            if (ide_max < i)
-            {
-              ide_max = i;
-            }
-            else
-            {
-              
-            }
+    }
 
+    for (i = 0; i < ide; i++)
+    {
+      pro_in_enc(i, id_pro, a);
+      if (cli[i].carr[a].qd > max)
+      {
+        max = cli[i].carr[a].qd;
+        ide_max = i;
+      }
+      else
+      {
+        if (cli[i].carr[a].qd == max)
+        {
+          if (ide_max < i)
+          {
+            ide_max = i;
           }
           else
           {
@@ -506,22 +471,25 @@ void __m__()
           }
 
         }
+        else
+        {
+          
+        }
 
       }
 
-      pro_in_enc(ide_max, id_pro, a);
-      printf("Maximo produto %d %d %d.\n", id_pro, ide_max, cli[ide_max].carr[a].qd);
-      return;
     }
+
+    pro_in_enc(ide_max, id_pro, a);
+    printf("Maximo produto %d %d %d.\n", id_pro, ide_max, cli[ide_max].carr[a].qd);
+    return;
   }
   else
   {
     if (eh_pro(id_pro) == 0)
     {
-      {
-        printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", id_pro);
-        return;
-      }
+      printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", id_pro);
+      return;
     }
     else
     {
@@ -553,39 +521,29 @@ void merge(int a[10000][2], int l, int m, int r)
   {
     if ((aux[j][1] < aux[i][1]) || (i > m))
     {
-      {
-        a[k][0] = aux[j][0];
-        a[k][1] = aux[j--][1];
-      }
+      a[k][0] = aux[j][0];
+      a[k][1] = aux[j--][1];
     }
     else
     {
       if (aux[j][1] == aux[i][1])
       {
+        if (aux[j][0] < aux[i][0])
         {
-          if (aux[j][0] < aux[i][0])
-          {
-            {
-              a[k][0] = aux[j][0];
-              a[k][1] = aux[j--][1];
-            }
-          }
-          else
-          {
-            {
-              a[k][0] = aux[j][0];
-              a[k][1] = aux[i++][1];
-            }
-          }
-
+          a[k][0] = aux[j][0];
+          a[k][1] = aux[j--][1];
         }
+        else
+        {
+          a[k][0] = aux[j][0];
+          a[k][1] = aux[i++][1];
+        }
+
       }
       else
       {
-        {
-          a[k][0] = aux[i][0];
-          a[k][1] = aux[i++][1];
-        }
+        a[k][0] = aux[i][0];
+        a[k][1] = aux[i++][1];
       }
 
     }
@@ -662,76 +620,72 @@ void __L__()
   id_enc = new_sym_var(sizeof(int) * 8);
   if (eh_enc(id_enc))
   {
+    int i;
+    int j;
+    int k;
+    int m;
+    int l;
+    int h1;
+    int h2;
+    int hh1;
+    int hh2;
+    int list_chars[10000][2];
+    int str[10000][63];
+    next_char_alfa(0, id_enc, list_chars);
+    for (m = 0; m < (cli[id_enc].prods + 1); m++)
     {
-      int i;
-      int j;
-      int k;
-      int m;
-      int l;
-      int h1;
-      int h2;
-      int hh1;
-      int hh2;
-      int list_chars[10000][2];
-      int str[10000][63];
-      next_char_alfa(0, id_enc, list_chars);
-      for (m = 0; m < (cli[id_enc].prods + 1); m++)
+      A_para_a(list_chars[m][1]);
+    }
+
+    mergesort(list_chars, 0, cli[id_enc].prods + 1);
+    for (h1 = 0; h1 < (cli[id_enc].prods + 1); h1++)
+      for (h2 = 0; h2 < ((cli[id_enc].prods + 1) + 1); h2++)
+      str[h1][h2] = sys[list_chars[h1][0]].desc[h2];
+
+
+    for (i = 0; i < ((cli[id_enc].prods + 1) + 1); i++)
+    {
+      for (j = 0; j < (cli[id_enc].prods + 1); j++)
       {
-        A_para_a(list_chars[m][1]);
-      }
-
-      mergesort(list_chars, 0, cli[id_enc].prods + 1);
-      for (h1 = 0; h1 < (cli[id_enc].prods + 1); h1++)
-        for (h2 = 0; h2 < ((cli[id_enc].prods + 1) + 1); h2++)
-        str[h1][h2] = sys[list_chars[h1][0]].desc[h2];
-
-
-      for (i = 0; i < ((cli[id_enc].prods + 1) + 1); i++)
-      {
-        for (j = 0; j < (cli[id_enc].prods + 1); j++)
+        char igual1 = list_chars[i][1];
+        char igual2 = list_chars[i + 1][1];
+        char diff1 = str[i][j + 1];
+        char diff2 = str[i + 1][j + 1];
+        A_para_a(igual1);
+        A_para_a(igual2);
+        A_para_a(diff1);
+        A_para_a(diff2);
+        if ((igual1 == igual2) && (diff1 > diff2))
         {
-          char igual1 = list_chars[i][1];
-          char igual2 = list_chars[i + 1][1];
-          char diff1 = str[i][j + 1];
-          char diff2 = str[i + 1][j + 1];
-          A_para_a(igual1);
-          A_para_a(igual2);
-          A_para_a(diff1);
-          A_para_a(diff2);
-          if ((igual1 == igual2) && (diff1 > diff2))
-          {
-            {
-              next_char_alfa(j + 1, id_enc, list_chars);
-              mergesort(list_chars, 0, cli[id_enc].prods + 1);
-              for (hh1 = 0; hh1 < ((cli[id_enc].prods + 1) + 1); hh1++)
-                for (hh2 = 0; hh2 < (cli[id_enc].prods + 1); hh2++)
-                str[hh1][hh2] = sys[list_chars[hh1][0]].desc[hh2];
+          next_char_alfa(j + 1, id_enc, list_chars);
+          mergesort(list_chars, 0, cli[id_enc].prods + 1);
+          for (hh1 = 0; hh1 < ((cli[id_enc].prods + 1) + 1); hh1++)
+            for (hh2 = 0; hh2 < (cli[id_enc].prods + 1); hh2++)
+            str[hh1][hh2] = sys[list_chars[hh1][0]].desc[hh2];
 
 
-            }
-          }
-          else
-          {
-            
-          }
-
+        }
+        else
+        {
+          
         }
 
       }
 
-      printf("Encomenda %d\n", id_enc);
-      for (k = 1; k < ((cli[id_enc].prods + 1) + 1); k++)
-      {
-        printf("*%s %d %d\n", sys[list_chars[k][0]].desc, sys[list_chars[k][0]].preco, cli[id_enc].carr[list_chars[k][0]].qd);
-      }
-
-      for (l = 0; l < 10000; l++)
-      {
-        list_chars[l][0] = 0;
-        list_chars[l][1] = '0';
-      }
-
     }
+
+    printf("Encomenda %d\n", id_enc);
+    for (k = 1; k < ((cli[id_enc].prods + 1) + 1); k++)
+    {
+      printf("*%s %d %d\n", sys[list_chars[k][0]].desc, sys[list_chars[k][0]].preco, cli[id_enc].carr[list_chars[k][0]].qd);
+    }
+
+    for (l = 0; l < 10000; l++)
+    {
+      list_chars[l][0] = 0;
+      list_chars[l][1] = '0';
+    }
+
   }
   else
   {

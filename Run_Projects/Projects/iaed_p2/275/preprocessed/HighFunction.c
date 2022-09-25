@@ -11,23 +11,17 @@ void addJogo(TableJogos *table_jogos, linkJogo jogo, char *nome_jogo, char *nome
 {
   if (strcmp(jogo->nome, nome_jogo) == 0)
   {
-    {
-      printf("Jogo existente.\n");
-    }
+    printf("Jogo existente.\n");
   }
   else
   {
     if ((strcmp(jogo->equipa1, nome_equipa1) != 0) || (strcmp(jogo->equipa2, nome_equipa2) != 0))
     {
-      {
-        printf("Equipa inexistente.\n");
-      }
+      printf("Equipa inexistente.\n");
     }
     else
     {
-      {
-        STinsertJogo(table_jogos, nome_jogo, nome_equipa1, nome_equipa2, golos_equipa1, golos_equipa2);
-      }
+      STinsertJogo(table_jogos, nome_jogo, nome_equipa1, nome_equipa2, golos_equipa1, golos_equipa2);
     }
 
   }
@@ -38,15 +32,11 @@ void addEquipa(TableEquipas *table_equipas, linkEquipa equipa, char nome_equipa[
 {
   if (strcmp(equipa->nome, nome_equipa) == 0)
   {
-    {
-      printf("Equipa existente.\n");
-    }
+    printf("Equipa existente.\n");
   }
   else
   {
-    {
-      STinsertEquipa(nome_equipa, table_equipas);
-    }
+    STinsertEquipa(nome_equipa, table_equipas);
   }
 
 }
@@ -55,9 +45,7 @@ void findJogo(TableJogos *table_jogos, linkJogo jogo)
 {
   if (STsearchJogo(jogo->nome, table_jogos) == 0)
   {
-    {
-      printf("Jogo inexistente.\n");
-    }
+    printf("Jogo inexistente.\n");
   }
   else
   {
@@ -70,9 +58,7 @@ void findEquipa(TableEquipas *table_equipas, linkEquipa equipa)
 {
   if (STsearchEquipa(equipa->nome, table_equipas) == 0)
   {
-    {
-      printf("Equipa inexistente.\n");
-    }
+    printf("Equipa inexistente.\n");
   }
   else
   {
@@ -85,9 +71,7 @@ void removeJogo(TableJogos *table_jogos, linkJogo jogo)
 {
   if (STsearchJogo(jogo->nome, table_jogos) == 0)
   {
-    {
-      printf("Jogo inexistente.\n");
-    }
+    printf("Jogo inexistente.\n");
   }
   else
   {
@@ -103,9 +87,7 @@ void changeScore(TableJogos *table_jogos, linkJogo jogo, int score1_aux, int sco
 {
   if (STsearchJogo(jogo->nome, table_jogos) == 0)
   {
-    {
-      printf("Jogo inexistente.\n");
-    }
+    printf("Jogo inexistente.\n");
   }
   else
   {

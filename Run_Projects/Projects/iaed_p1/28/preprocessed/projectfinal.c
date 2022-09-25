@@ -129,9 +129,7 @@ int getProductsListPosition(int id)
   {
     if (productsList[i].id == id)
     {
-      {
-        return i;
-      }
+      return i;
     }
     else
     {
@@ -150,9 +148,7 @@ int getOrdersListPosition(int ide, int idp)
   {
     if (ordersList[ide].products[i] == idp)
     {
-      {
-        return i;
-      }
+      return i;
     }
     else
     {
@@ -193,17 +189,13 @@ void ordersMerge(int ide, int l, int m, int r)
     indexJ = getProductsListPosition(auxIDs[j]);
     if (strcmp(productsList[indexJ].desc, productsList[indexI].desc) < 0)
     {
-      {
-        ordersList[ide].products[k] = auxIDs[j];
-        ordersList[ide].quantProducts[k] = auxQuants[j--];
-      }
+      ordersList[ide].products[k] = auxIDs[j];
+      ordersList[ide].quantProducts[k] = auxQuants[j--];
     }
     else
     {
-      {
-        ordersList[ide].products[k] = auxIDs[i];
-        ordersList[ide].quantProducts[k] = auxQuants[i++];
-      }
+      ordersList[ide].products[k] = auxIDs[i];
+      ordersList[ide].quantProducts[k] = auxQuants[i++];
     }
 
   }
@@ -217,9 +209,7 @@ void ordersMergeSort(int ide, int l, int r)
   int m = (r + l) / 2;
   if (r <= l)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -252,35 +242,25 @@ void productsMerge(int l, int m, int r)
   {
     if (aux[j].price < aux[i].price)
     {
-      {
-        productsList[k] = aux[j--];
-      }
+      productsList[k] = aux[j--];
     }
     else
     {
       if (aux[j].price == aux[i].price)
       {
+        if (aux[j].id < aux[i].id)
         {
-          if (aux[j].id < aux[i].id)
-          {
-            {
-              productsList[k] = aux[j--];
-            }
-          }
-          else
-          {
-            {
-              productsList[k] = aux[i++];
-            }
-          }
-
+          productsList[k] = aux[j--];
         }
-      }
-      else
-      {
+        else
         {
           productsList[k] = aux[i++];
         }
+
+      }
+      else
+      {
+        productsList[k] = aux[i++];
       }
 
     }
@@ -295,9 +275,7 @@ void productsMergeSort(int l, int r)
   int m = (r + l) / 2;
   if (r <= l)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -338,16 +316,12 @@ void fq(char c[])
   qnt = atoi(token);
   if (idp < nProducts)
   {
-    {
-      index = getProductsListPosition(idp);
-      productsList[index].stock += qnt;
-    }
+    index = getProductsListPosition(idp);
+    productsList[index].stock += qnt;
   }
   else
   {
-    {
-      printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idp);
-    }
+    printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idp);
   }
 
 }
@@ -375,59 +349,45 @@ void fA(char c[])
   indexP = getProductsListPosition(idp);
   if (ide < nOrders)
   {
+    if (idp < nProducts)
     {
-      if (idp < nProducts)
+      if (qtd > productsList[indexP].stock)
       {
-        {
-          if (qtd > productsList[indexP].stock)
-          {
-            {
-              printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
-            }
-          }
-          else
-          {
-            {
-              if ((ordersList[ide].weight + (qtd * productsList[indexP].weight)) <= 200)
-              {
-                {
-                  ordersList[ide].weight += qtd * productsList[indexP].weight;
-                  productsList[indexP].stock -= qtd;
-                  indexO = getOrdersListPosition(ide, idp);
-                  if (indexO == (-1))
-                  {
-                    {
-                      ordersList[ide].products[ordersList[ide].numProducts] = idp;
-                      ordersList[ide].quantProducts[ordersList[ide].numProducts] = qtd;
-                      ordersList[ide].numProducts++;
-                    }
-                  }
-                  else
-                  {
-                    {
-                      ordersList[ide].quantProducts[indexO] += qtd;
-                    }
-                  }
-
-                  ordersList[ide].productsSorted = 0;
-                }
-              }
-              else
-              {
-                printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
-              }
-
-            }
-          }
-
-        }
+        printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
       }
       else
       {
-        printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
+        if ((ordersList[ide].weight + (qtd * productsList[indexP].weight)) <= 200)
+        {
+          ordersList[ide].weight += qtd * productsList[indexP].weight;
+          productsList[indexP].stock -= qtd;
+          indexO = getOrdersListPosition(ide, idp);
+          if (indexO == (-1))
+          {
+            ordersList[ide].products[ordersList[ide].numProducts] = idp;
+            ordersList[ide].quantProducts[ordersList[ide].numProducts] = qtd;
+            ordersList[ide].numProducts++;
+          }
+          else
+          {
+            ordersList[ide].quantProducts[indexO] += qtd;
+          }
+
+          ordersList[ide].productsSorted = 0;
+        }
+        else
+        {
+          printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
+        }
+
       }
 
     }
+    else
+    {
+      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
+    }
+
   }
   else
   {
@@ -448,22 +408,16 @@ void fr(char c[])
   qtd = atoi(token);
   if (idp < nProducts)
   {
+    index = getProductsListPosition(idp);
+    if (qtd > productsList[index].stock)
     {
-      index = getProductsListPosition(idp);
-      if (qtd > productsList[index].stock)
-      {
-        {
-          printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, idp);
-        }
-      }
-      else
-      {
-        {
-          productsList[index].stock -= qtd;
-        }
-      }
-
+      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, idp);
     }
+    else
+    {
+      productsList[index].stock -= qtd;
+    }
+
   }
   else
   {
@@ -485,36 +439,30 @@ void fR(char c[])
   idp = atoi(token);
   if (ide < nOrders)
   {
+    if (idp < nProducts)
     {
-      if (idp < nProducts)
+      indexO = getOrdersListPosition(ide, idp);
+      indexP = getProductsListPosition(idp);
+      if (indexO != (-1))
       {
-        {
-          indexO = getOrdersListPosition(ide, idp);
-          indexP = getProductsListPosition(idp);
-          if (indexO != (-1))
-          {
-            {
-              productsList[indexP].stock += ordersList[ide].quantProducts[indexO];
-              ordersList[ide].weight -= productsList[indexP].weight * ordersList[ide].quantProducts[indexO];
-              ordersList[ide].numProducts--;
-              ordersList[ide].products[indexO] = ordersList[ide].products[ordersList[ide].numProducts];
-              ordersList[ide].quantProducts[indexO] = ordersList[ide].quantProducts[ordersList[ide].numProducts];
-            }
-          }
-          else
-          {
-            
-          }
-
-          ordersList[ide].productsSorted = 0;
-        }
+        productsList[indexP].stock += ordersList[ide].quantProducts[indexO];
+        ordersList[ide].weight -= productsList[indexP].weight * ordersList[ide].quantProducts[indexO];
+        ordersList[ide].numProducts--;
+        ordersList[ide].products[indexO] = ordersList[ide].products[ordersList[ide].numProducts];
+        ordersList[ide].quantProducts[indexO] = ordersList[ide].quantProducts[ordersList[ide].numProducts];
       }
       else
       {
-        printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
+        
       }
 
+      ordersList[ide].productsSorted = 0;
     }
+    else
+    {
+      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
+    }
+
   }
   else
   {
@@ -534,15 +482,13 @@ void fC(char c[])
   ide = atoi(token);
   if (ide < nOrders)
   {
+    for (i = 0; i < ordersList[ide].numProducts; i++)
     {
-      for (i = 0; i < ordersList[ide].numProducts; i++)
-      {
-        index = getProductsListPosition(ordersList[ide].products[i]);
-        total += productsList[index].price * ordersList[ide].quantProducts[i];
-      }
-
-      printf("Custo da encomenda %d %d.\n", ide, total);
+      index = getProductsListPosition(ordersList[ide].products[i]);
+      total += productsList[index].price * ordersList[ide].quantProducts[i];
     }
+
+    printf("Custo da encomenda %d %d.\n", ide, total);
   }
   else
   {
@@ -563,11 +509,9 @@ void fp(char c[])
   newPrice = atoi(token);
   if (idp < nProducts)
   {
-    {
-      index = getProductsListPosition(idp);
-      productsList[index].price = newPrice;
-      priceSorted = 0;
-    }
+    index = getProductsListPosition(idp);
+    productsList[index].price = newPrice;
+    priceSorted = 0;
   }
   else
   {
@@ -589,21 +533,17 @@ void fE(char c[])
   idp = atoi(token);
   if (ide < nOrders)
   {
+    if (idp < nProducts)
     {
-      if (idp < nProducts)
-      {
-        {
-          indexO = getOrdersListPosition(ide, idp);
-          indexP = getProductsListPosition(idp);
-          printf("%s %d.\n", productsList[indexP].desc, ordersList[ide].quantProducts[indexO]);
-        }
-      }
-      else
-      {
-        printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
-      }
-
+      indexO = getOrdersListPosition(ide, idp);
+      indexP = getProductsListPosition(idp);
+      printf("%s %d.\n", productsList[indexP].desc, ordersList[ide].quantProducts[indexO]);
     }
+    else
+    {
+      printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
+    }
+
   }
   else
   {
@@ -625,28 +565,14 @@ void fm(char c[])
   idp = atoi(token);
   if (idp < nProducts)
   {
+    for (i = 0; i < nOrders; i++)
     {
-      for (i = 0; i < nOrders; i++)
+      index = getOrdersListPosition(i, idp);
+      if (ordersList[i].quantProducts[index] > max)
       {
-        index = getOrdersListPosition(i, idp);
-        if (ordersList[i].quantProducts[index] > max)
-        {
-          {
-            max = ordersList[i].quantProducts[index];
-            ide = i;
-            productIndex = index;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      if (max != 0)
-      {
-        printf("Maximo produto %d %d %d.\n", idp, ide, ordersList[ide].quantProducts[productIndex]);
+        max = ordersList[i].quantProducts[index];
+        ide = i;
+        productIndex = index;
       }
       else
       {
@@ -654,6 +580,16 @@ void fm(char c[])
       }
 
     }
+
+    if (max != 0)
+    {
+      printf("Maximo produto %d %d %d.\n", idp, ide, ordersList[ide].quantProducts[productIndex]);
+    }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -667,10 +603,8 @@ void fl()
   int i;
   if (priceSorted == 0)
   {
-    {
-      productsMergeSort(0, nProducts - 1);
-      priceSorted = 1;
-    }
+    productsMergeSort(0, nProducts - 1);
+    priceSorted = 1;
   }
   else
   {
@@ -695,27 +629,23 @@ void fL(char c[])
   ide = atoi(token);
   if (ide < nOrders)
   {
+    if (ordersList[ide].productsSorted == 0)
     {
-      if (ordersList[ide].productsSorted == 0)
-      {
-        {
-          ordersMergeSort(ide, 0, ordersList[ide].numProducts - 1);
-          ordersList[ide].productsSorted = 1;
-        }
-      }
-      else
-      {
-        
-      }
-
-      printf("Encomenda %d\n", ide);
-      for (j = 0; j < ordersList[ide].numProducts; j++)
-      {
-        indexJ = getProductsListPosition(ordersList[ide].products[j]);
-        printf("* %s %d %d\n", productsList[indexJ].desc, productsList[indexJ].price, ordersList[ide].quantProducts[j]);
-      }
-
+      ordersMergeSort(ide, 0, ordersList[ide].numProducts - 1);
+      ordersList[ide].productsSorted = 1;
     }
+    else
+    {
+      
+    }
+
+    printf("Encomenda %d\n", ide);
+    for (j = 0; j < ordersList[ide].numProducts; j++)
+    {
+      indexJ = getProductsListPosition(ordersList[ide].products[j]);
+      printf("* %s %d %d\n", productsList[indexJ].desc, productsList[indexJ].price, ordersList[ide].quantProducts[j]);
+    }
+
   }
   else
   {

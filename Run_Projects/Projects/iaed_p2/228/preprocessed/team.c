@@ -25,17 +25,13 @@ void update_games_won(ht *teams, char *team1, char *team2, int score_team1, int 
   team *t;
   if (score_team1 > score_team2)
   {
-    {
-      t = find_in_ht(teams, team1);
-      t->games_won++;
-    }
+    t = find_in_ht(teams, team1);
+    t->games_won++;
   }
   else
   {
-    {
-      t = find_in_ht(teams, team2);
-      t->games_won++;
-    }
+    t = find_in_ht(teams, team2);
+    t->games_won++;
   }
 
 }

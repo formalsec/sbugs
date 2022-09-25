@@ -135,52 +135,42 @@ void executa_a(jlink *heads_j, list_j *list_j, elink *heads_eq, int nl)
   k = hash(nome_eq2);
   if (lookup_j(heads_j[i], nome_jogo) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", nl);
-    }
+    printf("%d Jogo existente.\n", nl);
   }
   else
   {
     if (((eq1 = lookup_eq(heads_eq[j], nome_eq1)) == 0) || ((eq2 = lookup_eq(heads_eq[k], nome_eq2)) == 0))
     {
-      {
-        printf("%d Equipa inexistente.\n", nl);
-      }
+      printf("%d Equipa inexistente.\n", nl);
     }
     else
     {
+      jogo = malloc(sizeof(struct jogo));
+      jogo->equipa1 = eq1;
+      jogo->equipa2 = eq2;
+      jogo->score1 = score1;
+      jogo->score2 = score2;
+      jogo->nome = (char *) malloc((sizeof(char)) * (strlen(nome_jogo) + 1));
+      strcpy(jogo->nome, nome_jogo);
+      heads_j[i] = insertBegin_j(heads_j[i], jogo);
+      insertEndList(list_j, jogo);
+      if (score1 < score2)
       {
-        jogo = malloc(sizeof(struct jogo));
-        jogo->equipa1 = eq1;
-        jogo->equipa2 = eq2;
-        jogo->score1 = score1;
-        jogo->score2 = score2;
-        jogo->nome = (char *) malloc((sizeof(char)) * (strlen(nome_jogo) + 1));
-        strcpy(jogo->nome, nome_jogo);
-        heads_j[i] = insertBegin_j(heads_j[i], jogo);
-        insertEndList(list_j, jogo);
-        if (score1 < score2)
+        eq2->vitorias += 1;
+      }
+      else
+      {
+        if (score1 > score2)
         {
-          {
-            eq2->vitorias += 1;
-          }
+          eq1->vitorias += 1;
         }
         else
         {
-          if (score1 > score2)
-          {
-            {
-              eq1->vitorias += 1;
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
+
     }
 
   }
@@ -207,14 +197,12 @@ void executa_A(elink *heads_eq, int nl)
   }
   else
   {
-    {
-      equipa = malloc(sizeof(struct equipa));
-      equipa->nome = (char *) malloc((sizeof(char)) * (strlen(nome_eq) + 1));
-      strcpy(equipa->nome, nome_eq);
-      equipa->vitorias = 0;
-      i = hash(equipa->nome);
-      heads_eq[i] = insertBegin_eq(heads_eq[i], equipa);
-    }
+    equipa = malloc(sizeof(struct equipa));
+    equipa->nome = (char *) malloc((sizeof(char)) * (strlen(nome_eq) + 1));
+    strcpy(equipa->nome, nome_eq);
+    equipa->vitorias = 0;
+    i = hash(equipa->nome);
+    heads_eq[i] = insertBegin_eq(heads_eq[i], equipa);
   }
 
 }
@@ -245,9 +233,7 @@ void executa_p(jlink *heads_j, int nl)
   }
   else
   {
-    {
-      printf("%d %s %s %s %d %d\n", nl, jog->nome, jog->equipa1->nome, jog->equipa2->nome, jog->score1, jog->score2);
-    }
+    printf("%d %s %s %s %d %d\n", nl, jog->nome, jog->equipa1->nome, jog->equipa2->nome, jog->score1, jog->score2);
   }
 
 }
@@ -270,9 +256,7 @@ void executa_P(elink *heads_eq, int nl)
   }
   else
   {
-    {
-      printf("%d %s %d\n", nl, equipa->nome, equipa->vitorias);
-    }
+    printf("%d %s %d\n", nl, equipa->nome, equipa->vitorias);
   }
 
 }
@@ -299,44 +283,42 @@ void executa_s(jlink *heads_j, int nl)
   }
   else
   {
+    if ((jogo->score1 > jogo->score2) && (score1 <= score2))
     {
-      if ((jogo->score1 > jogo->score2) && (score1 <= score2))
-      {
-        jogo->equipa1->vitorias -= 1;
-      }
-      else
-      {
-        if ((jogo->score1 < jogo->score2) && (score1 >= score2))
-        {
-          jogo->equipa2->vitorias -= 1;
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      if ((jogo->score1 <= jogo->score2) && (score1 > score2))
-      {
-        jogo->equipa1->vitorias += 1;
-      }
-      else
-      {
-        if ((jogo->score1 >= jogo->score2) && (score1 < score2))
-        {
-          jogo->equipa2->vitorias += 1;
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      jogo->score1 = score1;
-      jogo->score2 = score2;
+      jogo->equipa1->vitorias -= 1;
     }
+    else
+    {
+      if ((jogo->score1 < jogo->score2) && (score1 >= score2))
+      {
+        jogo->equipa2->vitorias -= 1;
+      }
+      else
+      {
+        
+      }
+
+    }
+
+    if ((jogo->score1 <= jogo->score2) && (score1 > score2))
+    {
+      jogo->equipa1->vitorias += 1;
+    }
+    else
+    {
+      if ((jogo->score1 >= jogo->score2) && (score1 < score2))
+      {
+        jogo->equipa2->vitorias += 1;
+      }
+      else
+      {
+        
+      }
+
+    }
+
+    jogo->score1 = score1;
+    jogo->score2 = score2;
   }
 
 }
@@ -359,27 +341,25 @@ void executa_r(jlink *heads_j, list_j *list_j, int nl)
   }
   else
   {
+    if (jogo->score1 > jogo->score2)
     {
-      if (jogo->score1 > jogo->score2)
+      jogo->equipa1->vitorias -= 1;
+    }
+    else
+    {
+      if (jogo->score1 < jogo->score2)
       {
-        jogo->equipa1->vitorias -= 1;
+        jogo->equipa2->vitorias -= 1;
       }
       else
       {
-        if (jogo->score1 < jogo->score2)
-        {
-          jogo->equipa2->vitorias -= 1;
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      heads_j[i] = delete_jog(heads_j[i], nome_jogo);
-      *list_j = delete_j(*list_j, nome_jogo);
     }
+
+    heads_j[i] = delete_jog(heads_j[i], nome_jogo);
+    *list_j = delete_j(*list_j, nome_jogo);
   }
 
 }
@@ -391,28 +371,26 @@ jlink delete_jog(jlink head, char *nome)
   {
     if (strcmp(jogo->jog->nome, nome) == 0)
     {
+      if (jogo == head)
       {
-        if (jogo == head)
-        {
-          head = jogo->next;
-        }
-        else
-        {
-          jogo->prev->next = jogo->next;
-        }
-
-        if (jogo->next != 0)
-        {
-          jogo->next->prev = jogo->prev;
-        }
-        else
-        {
-          
-        }
-
-        free(jogo);
-        break;
+        head = jogo->next;
       }
+      else
+      {
+        jogo->prev->next = jogo->next;
+      }
+
+      if (jogo->next != 0)
+      {
+        jogo->next->prev = jogo->prev;
+      }
+      else
+      {
+        
+      }
+
+      free(jogo);
+      break;
     }
     else
     {
@@ -431,30 +409,28 @@ list_j delete_j(list_j list_j, char *nome)
   {
     if (strcmp(jogo->jog->nome, nome) == 0)
     {
+      if (jogo == list_j.head)
       {
-        if (jogo == list_j.head)
-        {
-          list_j.head = jogo->next;
-        }
-        else
-        {
-          jogo->prev->next = jogo->next;
-        }
-
-        if (jogo->next != 0)
-        {
-          jogo->next->prev = jogo->prev;
-        }
-        else
-        {
-          list_j.tail = jogo->prev;
-        }
-
-        free(jogo->jog->nome);
-        free(jogo->jog);
-        free(jogo);
-        break;
+        list_j.head = jogo->next;
       }
+      else
+      {
+        jogo->prev->next = jogo->next;
+      }
+
+      if (jogo->next != 0)
+      {
+        jogo->next->prev = jogo->prev;
+      }
+      else
+      {
+        list_j.tail = jogo->prev;
+      }
+
+      free(jogo->jog->nome);
+      free(jogo->jog);
+      free(jogo);
+      break;
     }
     else
     {
@@ -473,9 +449,7 @@ list_j *insertEndList(list_j *list_j, j jogo)
   j->next = 0;
   if (list_j->head == 0)
   {
-    {
-      list_j->head = j;
-    }
+    list_j->head = j;
   }
   else
   {

@@ -16,10 +16,8 @@ Product *product_new(const char *desc, int preco, int peso)
   p = (Product *) malloc(sizeof(Product));
   if (errno > 0)
   {
-    {
-      perror("product_new: malloc");
-      exit(errno);
-    }
+    perror("product_new: malloc");
+    exit(errno);
   }
   else
   {
@@ -38,10 +36,8 @@ void product_free(Product *p)
 {
   if (p == 0)
   {
-    {
-      printf("%s: null pointer\n", "product_free");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "product_free");
+    exit(1);
   }
   else
   {
@@ -57,10 +53,8 @@ int product_get_id(const Product *p)
 {
   if (p == 0)
   {
-    {
-      printf("%s: null pointer\n", "product_get_id");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "product_get_id");
+    exit(1);
   }
   else
   {
@@ -75,10 +69,8 @@ int product_get_price(const Product *p)
 {
   if (p == 0)
   {
-    {
-      printf("%s: null pointer\n", "product_get_price");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "product_get_price");
+    exit(1);
   }
   else
   {
@@ -93,10 +85,8 @@ int product_get_weight(const Product *p)
 {
   if (p == 0)
   {
-    {
-      printf("%s: null pointer\n", "product_get_weight");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "product_get_weight");
+    exit(1);
   }
   else
   {
@@ -111,10 +101,8 @@ char *product_get_desc(const Product *p)
 {
   if (p == 0)
   {
-    {
-      printf("%s: null pointer\n", "product_get_desc");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "product_get_desc");
+    exit(1);
   }
   else
   {
@@ -129,10 +117,8 @@ int product_set_price(Product *p, int new_price)
 {
   if (p == 0)
   {
-    {
-      printf("%s: null pointer\n", "product_set_price");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "product_set_price");
+    exit(1);
   }
   else
   {
@@ -148,10 +134,8 @@ char *product_to_string(const Product *p, char *buf, int buf_size)
 {
   if (p == 0)
   {
-    {
-      printf("%s: null pointer\n", "product_to_string");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "product_to_string");
+    exit(1);
   }
   else
   {
@@ -168,10 +152,8 @@ void product_print(const Product *p)
   char buf[100];
   if (p == 0)
   {
-    {
-      printf("%s: null pointer\n", "product_print");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "product_print");
+    exit(1);
   }
   else
   {

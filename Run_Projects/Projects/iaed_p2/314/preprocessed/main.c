@@ -42,53 +42,43 @@ void adiciona_jogo(int NL, listj *listajogo, linkj *headsj, linke *headse)
   getchar();
   if (STprocuraj(buffer1, 1483, headsj) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-    }
+    printf("%d Jogo existente.\n", NL);
   }
   else
   {
     if ((STprocurae(buffer2, 1483, headse) == 0) || (STprocurae(buffer3, 1483, headse) == 0))
     {
-      {
-        printf("%d Equipa inexistente.\n", NL);
-      }
+      printf("%d Equipa inexistente.\n", NL);
     }
     else
     {
+      j = malloc(sizeof(jogo));
+      j->nome = malloc((sizeof(char)) * (strlen(buffer1) + 1));
+      strcpy(j->nome, buffer1);
+      j->equipa1 = STprocurae(buffer2, 1483, headse);
+      j->equipa2 = STprocurae(buffer3, 1483, headse);
+      j->score1 = sc1;
+      j->score2 = sc2;
+      STinserej(j, 1483, headsj);
+      adiciona_j(listajogo, j);
+      if (j->score1 > j->score2)
       {
-        j = malloc(sizeof(jogo));
-        j->nome = malloc((sizeof(char)) * (strlen(buffer1) + 1));
-        strcpy(j->nome, buffer1);
-        j->equipa1 = STprocurae(buffer2, 1483, headse);
-        j->equipa2 = STprocurae(buffer3, 1483, headse);
-        j->score1 = sc1;
-        j->score2 = sc2;
-        STinserej(j, 1483, headsj);
-        adiciona_j(listajogo, j);
-        if (j->score1 > j->score2)
-        {
-          {
-            j->equipa1->jogosg++;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if (j->score2 > j->score1)
-        {
-          {
-            j->equipa2->jogosg++;
-          }
-        }
-        else
-        {
-          
-        }
-
+        j->equipa1->jogosg++;
       }
+      else
+      {
+        
+      }
+
+      if (j->score2 > j->score1)
+      {
+        j->equipa2->jogosg++;
+      }
+      else
+      {
+        
+      }
+
     }
 
   }
@@ -108,20 +98,16 @@ void adiciona_equipa(int NL, liste *listaequipas, linke *headse)
   getchar();
   if (STprocurae(buffer, 1483, headse) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-    }
+    printf("%d Equipa existente.\n", NL);
   }
   else
   {
-    {
-      eq = malloc(sizeof(equipa));
-      eq->nomeeq = malloc((sizeof(char)) * (strlen(buffer) + 1));
-      strcpy(eq->nomeeq, buffer);
-      eq->jogosg = 0;
-      adiciona_e(listaequipas, eq);
-      STinsertee(eq, 1483, headse);
-    }
+    eq = malloc(sizeof(equipa));
+    eq->nomeeq = malloc((sizeof(char)) * (strlen(buffer) + 1));
+    strcpy(eq->nomeeq, buffer);
+    eq->jogosg = 0;
+    adiciona_e(listaequipas, eq);
+    STinsertee(eq, 1483, headse);
   }
 
 }
@@ -138,16 +124,12 @@ void procura_jogo(int NL, linkj *headsj)
   getchar();
   if (STprocuraj(nome, 1483, headsj) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
   else
   {
-    {
-      jogo *jg = STprocuraj(nome, 1483, headsj);
-      printf("%d %s %s %s %d %d\n", NL, jg->nome, jg->equipa1->nomeeq, jg->equipa2->nomeeq, jg->score1, jg->score2);
-    }
+    jogo *jg = STprocuraj(nome, 1483, headsj);
+    printf("%d %s %s %s %d %d\n", NL, jg->nome, jg->equipa1->nomeeq, jg->equipa2->nomeeq, jg->score1, jg->score2);
   }
 
 }
@@ -165,16 +147,12 @@ void procura_equipa(int NL, linke *headse)
   getchar();
   if (STprocurae(nequipa, 1483, headse) == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-    }
+    printf("%d Equipa inexistente.\n", NL);
   }
   else
   {
-    {
-      eq = STprocurae(nequipa, 1483, headse);
-      printf("%d %s %d\n", NL, eq->nomeeq, eq->jogosg);
-    }
+    eq = STprocurae(nequipa, 1483, headse);
+    printf("%d %s %d\n", NL, eq->nomeeq, eq->jogosg);
   }
 
 }
@@ -196,61 +174,49 @@ void altera_pontuacao(int NL, linkj *headsj)
   getchar();
   if (STprocuraj(nome, 1483, headsj) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
   else
   {
+    jg = STprocuraj(nome, 1483, headsj);
+    if (jg->score1 > jg->score2)
     {
-      jg = STprocuraj(nome, 1483, headsj);
-      if (jg->score1 > jg->score2)
-      {
-        {
-          jg->equipa1->jogosg--;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (jg->score2 > jg->score1)
-      {
-        {
-          jg->equipa2->jogosg--;
-        }
-      }
-      else
-      {
-        
-      }
-
-      jg->score1 = score1;
-      jg->score2 = score2;
-      if (jg->score1 > jg->score2)
-      {
-        {
-          jg->equipa1->jogosg++;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (jg->score2 > jg->score1)
-      {
-        {
-          jg->equipa2->jogosg++;
-        }
-      }
-      else
-      {
-        
-      }
-
+      jg->equipa1->jogosg--;
     }
+    else
+    {
+      
+    }
+
+    if (jg->score2 > jg->score1)
+    {
+      jg->equipa2->jogosg--;
+    }
+    else
+    {
+      
+    }
+
+    jg->score1 = score1;
+    jg->score2 = score2;
+    if (jg->score1 > jg->score2)
+    {
+      jg->equipa1->jogosg++;
+    }
+    else
+    {
+      
+    }
+
+    if (jg->score2 > jg->score1)
+    {
+      jg->equipa2->jogosg++;
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -269,56 +235,46 @@ void remove_jogo(int NL, listj *listajogo, linkj *headsj)
   getchar();
   if (STprocuraj(nome, 1483, headsj) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
   else
   {
+    aux = listajogo->head;
+    while (aux)
     {
-      aux = listajogo->head;
-      while (aux)
+      if (strcmp(aux->j->nome, nome) == 0)
       {
-        if (strcmp(aux->j->nome, nome) == 0)
-        {
-          {
-            apaga_nodej(listajogo, aux);
-            break;
-          }
-        }
-        else
-        {
-          
-        }
-
-        aux = aux->next;
-      }
-
-      jg = STprocuraj(nome, 1483, headsj);
-      if (jg->score1 > jg->score2)
-      {
-        {
-          jg->equipa1->jogosg--;
-        }
+        apaga_nodej(listajogo, aux);
+        break;
       }
       else
       {
         
       }
 
-      if (jg->score2 > jg->score1)
-      {
-        {
-          jg->equipa2->jogosg--;
-        }
-      }
-      else
-      {
-        
-      }
-
-      STapagaj(jg, 1483, headsj);
+      aux = aux->next;
     }
+
+    jg = STprocuraj(nome, 1483, headsj);
+    if (jg->score1 > jg->score2)
+    {
+      jg->equipa1->jogosg--;
+    }
+    else
+    {
+      
+    }
+
+    if (jg->score2 > jg->score1)
+    {
+      jg->equipa2->jogosg--;
+    }
+    else
+    {
+      
+    }
+
+    STapagaj(jg, 1483, headsj);
   }
 
 }
@@ -348,10 +304,8 @@ void equipasvencedoras(int NL, liste *listaequipas)
   aux = listaequipas->head;
   if (aux == 0)
   {
-    {
-      free(vitoriosos);
-      return;
-    }
+    free(vitoriosos);
+    return;
   }
   else
   {
@@ -362,32 +316,26 @@ void equipasvencedoras(int NL, liste *listaequipas)
   {
     if (aux->e->jogosg == max)
     {
+      if (i >= tam)
       {
-        if (i >= tam)
-        {
-          {
-            tam = 2 * tam;
-            vitoriosos = realloc(vitoriosos, (sizeof(char *)) * tam);
-          }
-        }
-        else
-        {
-          
-        }
-
-        vitoriosos[i] = aux->e->nomeeq;
-        i++;
+        tam = 2 * tam;
+        vitoriosos = realloc(vitoriosos, (sizeof(char *)) * tam);
       }
+      else
+      {
+        
+      }
+
+      vitoriosos[i] = aux->e->nomeeq;
+      i++;
     }
     else
     {
       if (aux->e->jogosg > max)
       {
-        {
-          max = aux->e->jogosg;
-          vitoriosos[0] = aux->e->nomeeq;
-          i = 1;
-        }
+        max = aux->e->jogosg;
+        vitoriosos[0] = aux->e->nomeeq;
+        i = 1;
       }
       else
       {

@@ -112,10 +112,8 @@ void adiciona_jogo(tab_disp tab_jogos, tab_disp tab_equipas, jogo *j_1, jogo *j_
   score_e2 = new_sym_var(sizeof(int) * 8);
   if (procura_tab_jogo(tab_jogos, buf_nome) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", n_linha);
-      return;
-    }
+    printf("%d Jogo existente.\n", n_linha);
+    return;
   }
   else
   {
@@ -124,10 +122,8 @@ void adiciona_jogo(tab_disp tab_jogos, tab_disp tab_equipas, jogo *j_1, jogo *j_
 
   if (((e1 = procura_tab_equipa(tab_equipas, buf_e1)) == 0) || ((e2 = procura_tab_equipa(tab_equipas, buf_e2)) == 0))
   {
-    {
-      printf("%d Equipa inexistente.\n", n_linha);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", n_linha);
+    return;
   }
   else
   {
@@ -138,9 +134,7 @@ void adiciona_jogo(tab_disp tab_jogos, tab_disp tab_equipas, jogo *j_1, jogo *j_
   insere_tab_jogo(tab_jogos, *j_ult);
   if ((*j_1) == 0)
   {
-    {
-      *j_1 = *j_ult;
-    }
+    *j_1 = *j_ult;
   }
   else
   {
@@ -149,17 +143,13 @@ void adiciona_jogo(tab_disp tab_jogos, tab_disp tab_equipas, jogo *j_1, jogo *j_
 
   if (score_e1 > score_e2)
   {
-    {
-      e1->vitorias++;
-    }
+    e1->vitorias++;
   }
   else
   {
     if (score_e1 < score_e2)
     {
-      {
-        e2->vitorias++;
-      }
+      e2->vitorias++;
     }
     else
     {
@@ -183,10 +173,8 @@ void adiciona_equipa(tab_disp tab_equipas, int n_linha)
   buf[10 - 1] = '\0';
   if (procura_tab_equipa(tab_equipas, buf) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", n_linha);
-      return;
-    }
+    printf("%d Equipa existente.\n", n_linha);
+    return;
   }
   else
   {
@@ -222,10 +210,8 @@ void procura_jogo_nome(tab_disp tab_jogos, int n_linha)
   buf[10 - 1] = '\0';
   if ((j_aux = procura_tab_jogo(tab_jogos, buf)) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", n_linha);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", n_linha);
+    return;
   }
   else
   {
@@ -248,10 +234,8 @@ void retira_jogo(tab_disp tab_jogos, jogo *j_1, jogo *j_ult, int n_linha)
   buf[10 - 1] = '\0';
   if ((j_aux = procura_tab_jogo(tab_jogos, buf)) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", n_linha);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", n_linha);
+    return;
   }
   else
   {
@@ -260,17 +244,13 @@ void retira_jogo(tab_disp tab_jogos, jogo *j_1, jogo *j_ult, int n_linha)
 
   if (j_aux->score_e1 > j_aux->score_e2)
   {
-    {
-      j_aux->e1->vitorias--;
-    }
+    j_aux->e1->vitorias--;
   }
   else
   {
     if (j_aux->score_e2 > j_aux->score_e1)
     {
-      {
-        j_aux->e2->vitorias--;
-      }
+      j_aux->e2->vitorias--;
     }
     else
     {
@@ -281,28 +261,22 @@ void retira_jogo(tab_disp tab_jogos, jogo *j_1, jogo *j_ult, int n_linha)
 
   if (strcmp((*j_1)->nome, buf) == 0)
   {
+    *j_1 = (*j_1)->prox;
+    if ((*j_1) == 0)
     {
-      *j_1 = (*j_1)->prox;
-      if ((*j_1) == 0)
-      {
-        {
-          *j_ult = *j_1;
-        }
-      }
-      else
-      {
-        
-      }
-
+      *j_ult = *j_1;
     }
+    else
+    {
+      
+    }
+
   }
   else
   {
     if (strcmp((*j_ult)->nome, buf) == 0)
     {
-      {
-        *j_ult = (*j_ult)->ant;
-      }
+      *j_ult = (*j_ult)->ant;
     }
     else
     {
@@ -333,10 +307,8 @@ void altera_score(tab_disp tab_jogos, int n_linha)
   score_e2 = new_sym_var(sizeof(int) * 8);
   if ((jogo_aux = procura_tab_jogo(tab_jogos, buf)) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", n_linha);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", n_linha);
+    return;
   }
   else
   {
@@ -347,10 +319,8 @@ void altera_score(tab_disp tab_jogos, int n_linha)
   dif_depois = score_e1 - score_e2;
   if ((dif_antes * dif_depois) <= 0)
   {
-    {
-      jogo_aux->e1->vitorias += mudanca_vitorias(dif_antes, dif_depois);
-      jogo_aux->e2->vitorias += mudanca_vitorias((-1) * dif_antes, (-1) * dif_depois);
-    }
+    jogo_aux->e1->vitorias += mudanca_vitorias(dif_antes, dif_depois);
+    jogo_aux->e2->vitorias += mudanca_vitorias((-1) * dif_antes, (-1) * dif_depois);
   }
   else
   {
@@ -366,9 +336,7 @@ int mudanca_vitorias(int dif_antes, int dif_depois)
 {
   if (dif_depois > 0)
   {
-    {
-      return 1;
-    }
+    return 1;
   }
   else
   {
@@ -377,15 +345,11 @@ int mudanca_vitorias(int dif_antes, int dif_depois)
 
   if (dif_antes > 0)
   {
-    {
-      return -1;
-    }
+    return -1;
   }
   else
   {
-    {
-      return 0;
-    }
+    return 0;
   }
 
 }
@@ -402,10 +366,8 @@ void procura_equipa_nome(tab_disp tab_equipas, int n_linha)
   buffer[10 - 1] = '\0';
   if ((equipa_aux = procura_tab_equipa(tab_equipas, buffer)) == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", n_linha);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", n_linha);
+    return;
   }
   else
   {

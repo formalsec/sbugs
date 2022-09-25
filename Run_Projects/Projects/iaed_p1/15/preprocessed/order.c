@@ -15,10 +15,8 @@ Order *order_new()
   Order *order = (Order *) malloc(sizeof(Order));
   if (errno > 0)
   {
-    {
-      perror("order_new: criar_order");
-      exit(errno);
-    }
+    perror("order_new: criar_order");
+    exit(errno);
   }
   else
   {
@@ -38,10 +36,8 @@ void order_product_free(Order_Product *op)
 {
   if (op == 0)
   {
-    {
-      printf("%s: null pointer\n", "order_product_free");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "order_product_free");
+    exit(1);
   }
   else
   {
@@ -57,10 +53,8 @@ void order_free(Order *o)
   Order_Product *op;
   if (o == 0)
   {
-    {
-      printf("%s: null pointer\n", "order_free");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "order_free");
+    exit(1);
   }
   else
   {
@@ -83,10 +77,8 @@ int order_get_id(const Order *o)
 {
   if (o == 0)
   {
-    {
-      printf("%s: null pointer\n", "order_get_id");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "order_get_id");
+    exit(1);
   }
   else
   {
@@ -101,10 +93,8 @@ int order_get_count(const Order *o)
 {
   if (o == 0)
   {
-    {
-      printf("%s: null pointer\n", "order_get_count");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "order_get_count");
+    exit(1);
   }
   else
   {
@@ -121,10 +111,8 @@ int order_get_cost(const Order *o)
   int sum = 0;
   if (o == 0)
   {
-    {
-      printf("%s: null pointer\n", "order_get_cost");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "order_get_cost");
+    exit(1);
   }
   else
   {
@@ -146,10 +134,8 @@ int order_get_weight(const Order *o)
 {
   if (o == 0)
   {
-    {
-      printf("%s: null pointer\n", "order_get_weight");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "order_get_weight");
+    exit(1);
   }
   else
   {
@@ -165,10 +151,8 @@ Order_Product *order_get_product(const Order *o, int pid)
   Order_Product *op;
   if (o == 0)
   {
-    {
-      printf("%s: null pointer\n", "order_get_product");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "order_get_product");
+    exit(1);
   }
   else
   {
@@ -200,10 +184,8 @@ Order_Product *order_add_product(Order *o, const Product *p, int qtd)
   int weight;
   if (o == 0)
   {
-    {
-      printf("%s: null pointer\n", "order_add_product: Order");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "order_add_product: Order");
+    exit(1);
   }
   else
   {
@@ -213,10 +195,8 @@ Order_Product *order_add_product(Order *o, const Product *p, int qtd)
   ;
   if (p == 0)
   {
-    {
-      printf("%s: null pointer\n", "order_add_product: Product");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "order_add_product: Product");
+    exit(1);
   }
   else
   {
@@ -237,54 +217,46 @@ Order_Product *order_add_product(Order *o, const Product *p, int qtd)
   op = order_get_product(o, p->id);
   if (op != 0)
   {
-    {
-      op->qtd += qtd;
-    }
+    op->qtd += qtd;
   }
   else
   {
+    op = (Order_Product *) malloc(sizeof(Order_Product));
+    if (errno > 0)
     {
-      op = (Order_Product *) malloc(sizeof(Order_Product));
-      if (errno > 0)
-      {
-        {
-          perror("order_add_product: criar_order_product");
-          exit(errno);
-        }
-      }
-      else
-      {
-        
-      }
-
-      ;
-      op->product = p;
-      op->qtd = qtd;
-      op->next = 0;
-      op->previous = o->last_product;
-      o->count++;
-      if (o->last_product != 0)
-      {
-        o->last_product->next = op;
-      }
-      else
-      {
-        
-      }
-
-      o->last_product = op;
-      if (o->products == 0)
-      {
-        {
-          o->products = op;
-        }
-      }
-      else
-      {
-        
-      }
-
+      perror("order_add_product: criar_order_product");
+      exit(errno);
     }
+    else
+    {
+      
+    }
+
+    ;
+    op->product = p;
+    op->qtd = qtd;
+    op->next = 0;
+    op->previous = o->last_product;
+    o->count++;
+    if (o->last_product != 0)
+    {
+      o->last_product->next = op;
+    }
+    else
+    {
+      
+    }
+
+    o->last_product = op;
+    if (o->products == 0)
+    {
+      o->products = op;
+    }
+    else
+    {
+      
+    }
+
   }
 
   o->weight += weight;
@@ -296,10 +268,8 @@ int order_remove_product(Order *o, int pid)
   Order_Product *op;
   if (o == 0)
   {
-    {
-      printf("%s: null pointer\n", "order_remove_product");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "order_remove_product");
+    exit(1);
   }
   else
   {
@@ -321,9 +291,7 @@ int order_remove_product(Order *o, int pid)
   o->weight -= op->qtd * op->product->peso;
   if (op->previous == 0)
   {
-    {
-      o->products = op->next;
-    }
+    o->products = op->next;
   }
   else
   {
@@ -332,9 +300,7 @@ int order_remove_product(Order *o, int pid)
 
   if (op->next == 0)
   {
-    {
-      o->last_product = op->previous;
-    }
+    o->last_product = op->previous;
   }
   else
   {
@@ -343,9 +309,7 @@ int order_remove_product(Order *o, int pid)
 
   if (op->previous != 0)
   {
-    {
-      op->previous->next = op->next;
-    }
+    op->previous->next = op->next;
   }
   else
   {
@@ -362,10 +326,8 @@ void order_list_products(const Order *o)
   const Product *p;
   if (o == 0)
   {
-    {
-      printf("%s: null pointer\n", "order_list_products");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "order_list_products");
+    exit(1);
   }
   else
   {
@@ -393,10 +355,8 @@ const Product *order_product_get_product(const Order_Product *op)
 {
   if (op == 0)
   {
-    {
-      printf("%s: null pointer\n", "order_product_get_product");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "order_product_get_product");
+    exit(1);
   }
   else
   {
@@ -411,10 +371,8 @@ int order_product_get_quantity(const Order_Product *op)
 {
   if (op == 0)
   {
-    {
-      printf("%s: null pointer\n", "order_product_get_quantity");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "order_product_get_quantity");
+    exit(1);
   }
   else
   {
@@ -429,10 +387,8 @@ void order_print(const Order *o)
 {
   if (o == 0)
   {
-    {
-      printf("%s: null pointer\n", "order_print");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "order_print");
+    exit(1);
   }
   else
   {
@@ -447,10 +403,8 @@ void order_product_print(const Order_Product *op)
 {
   if (op == 0)
   {
-    {
-      printf("%s: null pointer\n", "order_product_print");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "order_product_print");
+    exit(1);
   }
   else
   {

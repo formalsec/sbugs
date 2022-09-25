@@ -27,10 +27,8 @@ void command_a(char *command, teamList **t, gameList **g, int nl)
 
     if (!(*t1name))
     {
-      {
-        printf("%d %s\n", nl, "Bad command format.");
-        return;
-      }
+      printf("%d %s\n", nl, "Bad command format.");
+      return;
     }
     else
     {
@@ -49,10 +47,8 @@ void command_a(char *command, teamList **t, gameList **g, int nl)
 
     if (!(*t2name))
     {
-      {
-        printf("%d %s\n", nl, "Bad command format.");
-        return;
-      }
+      printf("%d %s\n", nl, "Bad command format.");
+      return;
     }
     else
     {
@@ -71,10 +67,8 @@ void command_a(char *command, teamList **t, gameList **g, int nl)
 
     if (!(*sc1str))
     {
-      {
-        printf("%d %s\n", nl, "Bad command format.");
-        return;
-      }
+      printf("%d %s\n", nl, "Bad command format.");
+      return;
     }
     else
     {
@@ -93,10 +87,8 @@ void command_a(char *command, teamList **t, gameList **g, int nl)
 
     if (!(*sc2str))
     {
-      {
-        printf("%d %s\n", nl, "Bad command format.");
-        return;
-      }
+      printf("%d %s\n", nl, "Bad command format.");
+      return;
     }
     else
     {
@@ -110,10 +102,8 @@ void command_a(char *command, teamList **t, gameList **g, int nl)
   ;
   if (1 == 0)
   {
-    {
-      printf("%d %s\n", nl, "Bad command format.");
-      return;
-    }
+    printf("%d %s\n", nl, "Bad command format.");
+    return;
   }
   else
   {
@@ -124,10 +114,8 @@ void command_a(char *command, teamList **t, gameList **g, int nl)
   ;
   if (1 == 0)
   {
-    {
-      printf("%d %s\n", nl, "Bad command format.");
-      return;
-    }
+    printf("%d %s\n", nl, "Bad command format.");
+    return;
   }
   else
   {
@@ -138,10 +126,8 @@ void command_a(char *command, teamList **t, gameList **g, int nl)
   ;
   if (findGame(*g, name))
   {
-    {
-      printf("%d %s\n", nl, "Jogo existente.");
-      return;
-    }
+    printf("%d %s\n", nl, "Jogo existente.");
+    return;
   }
   else
   {
@@ -153,10 +139,8 @@ void command_a(char *command, teamList **t, gameList **g, int nl)
   team2 = findTeam(*t, t2name);
   if ((!team1) || (!team2))
   {
-    {
-      printf("%d %s\n", nl, "Equipa inexistente.");
-      return;
-    }
+    printf("%d %s\n", nl, "Equipa inexistente.");
+    return;
   }
   else
   {
@@ -190,10 +174,8 @@ void command_A(char *command, teamList **t, int nl)
   name[strlen(name) - 1] = '\0';
   if (findTeam(*t, name))
   {
-    {
-      printf("%d %s\n", nl, "Equipa existente.");
-      return;
-    }
+    printf("%d %s\n", nl, "Equipa existente.");
+    return;
   }
   else
   {
@@ -223,10 +205,8 @@ void command_p(char *command, gameList **g, int nl)
   game = findGame(*g, name);
   if (!game)
   {
-    {
-      printf("%d %s\n", nl, "Jogo inexistente.");
-      return;
-    }
+    printf("%d %s\n", nl, "Jogo inexistente.");
+    return;
   }
   else
   {
@@ -245,10 +225,8 @@ void command_P(char *command, teamList **t, int nl)
   team = findTeam(*t, name);
   if (!team)
   {
-    {
-      printf("%d %s\n", nl, "Equipa inexistente.");
-      return;
-    }
+    printf("%d %s\n", nl, "Equipa inexistente.");
+    return;
   }
   else
   {
@@ -267,10 +245,8 @@ void command_r(char *command, gameList **g, int nl)
   game = findGame(*g, name);
   if (!game)
   {
-    {
-      printf("%d %s\n", nl, "Jogo inexistente.");
-      return;
-    }
+    printf("%d %s\n", nl, "Jogo inexistente.");
+    return;
   }
   else
   {
@@ -314,10 +290,8 @@ void command_s(char *command, gameList **g, int nl)
 
     if (!(*sc1str))
     {
-      {
-        printf("%d %s\n", nl, "Bad command format.");
-        return;
-      }
+      printf("%d %s\n", nl, "Bad command format.");
+      return;
     }
     else
     {
@@ -336,10 +310,8 @@ void command_s(char *command, gameList **g, int nl)
 
     if (!(*sc2str))
     {
-      {
-        printf("%d %s\n", nl, "Bad command format.");
-        return;
-      }
+      printf("%d %s\n", nl, "Bad command format.");
+      return;
     }
     else
     {
@@ -353,10 +325,8 @@ void command_s(char *command, gameList **g, int nl)
   ;
   if (1 == 0)
   {
-    {
-      printf("%d %s\n", nl, "Bad command format.");
-      return;
-    }
+    printf("%d %s\n", nl, "Bad command format.");
+    return;
   }
   else
   {
@@ -367,10 +337,8 @@ void command_s(char *command, gameList **g, int nl)
   ;
   if (1 == 0)
   {
-    {
-      printf("%d %s\n", nl, "Bad command format.");
-      return;
-    }
+    printf("%d %s\n", nl, "Bad command format.");
+    return;
   }
   else
   {
@@ -382,10 +350,8 @@ void command_s(char *command, gameList **g, int nl)
   game = findGame(*g, name);
   if (!game)
   {
-    {
-      printf("%d %s\n", nl, "Jogo inexistente.");
-      return;
-    }
+    printf("%d %s\n", nl, "Jogo inexistente.");
+    return;
   }
   else
   {
@@ -469,11 +435,9 @@ void quickSort(char **names, int lo, int hi)
   int pi;
   if (lo < hi)
   {
-    {
-      pi = partition(names, lo, hi);
-      quickSort(names, lo, pi);
-      quickSort(names, pi + 1, hi);
-    }
+    pi = partition(names, lo, hi);
+    quickSort(names, lo, pi);
+    quickSort(names, pi + 1, hi);
   }
   else
   {
@@ -511,10 +475,8 @@ void command_g(teamList **t, int nl)
 
     if (cur->won > maxWon)
     {
-      {
-        maxWon = cur->won;
-        sizeWon = 1;
-      }
+      maxWon = cur->won;
+      sizeWon = 1;
     }
     else
     {
@@ -539,10 +501,8 @@ void command_g(teamList **t, int nl)
   {
     if (cur->won == maxWon)
     {
-      {
-        listNames[i] = cur->name;
-        i++;
-      }
+      listNames[i] = cur->name;
+      i++;
     }
     else
     {
