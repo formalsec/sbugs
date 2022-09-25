@@ -63,22 +63,18 @@ void add_new_game(d_b *data_base)
   game = search_game(data_base->hash_games, name);
   if (!game)
   {
+    first_team = search_team(data_base->hash_teams, team1);
+    second_team = search_team(data_base->hash_teams, team2);
+    if (first_team && second_team)
     {
-      first_team = search_team(data_base->hash_teams, team1);
-      second_team = search_team(data_base->hash_teams, team2);
-      if (first_team && second_team)
-      {
-        {
-          game = insert_game(data_base->game_list, name, first_team, second_team, first_score, second_score);
-          insert_hash_game(data_base->hash_games, game);
-        }
-      }
-      else
-      {
-        printf("%d Equipa inexistente.\n", data_base->NL);
-      }
-
+      game = insert_game(data_base->game_list, name, first_team, second_team, first_score, second_score);
+      insert_hash_game(data_base->hash_games, game);
     }
+    else
+    {
+      printf("%d Equipa inexistente.\n", data_base->NL);
+    }
+
   }
   else
   {
@@ -133,10 +129,8 @@ void remove_game(d_b *data_base)
   game = search_game(data_base->hash_games, name);
   if (game)
   {
-    {
-      remove_win(game->team_one, game->team_two, game->score_one, game->score_two);
-      delete_game_hash(data_base->hash_games, data_base->game_list, name);
-    }
+    remove_win(game->team_one, game->team_two, game->score_one, game->score_two);
+    delete_game_hash(data_base->hash_games, data_base->game_list, name);
   }
   else
   {
@@ -162,12 +156,10 @@ void score_change(d_b *data_base)
   game = search_game(data_base->hash_games, name);
   if (game)
   {
-    {
-      remove_win(game->team_one, game->team_two, game->score_one, game->score_two);
-      game->score_one = first_score;
-      game->score_two = second_score;
-      record_update(game->team_one, game->team_two, game->score_one, game->score_two);
-    }
+    remove_win(game->team_one, game->team_two, game->score_one, game->score_two);
+    game->score_one = first_score;
+    game->score_two = second_score;
+    record_update(game->team_one, game->team_two, game->score_one, game->score_two);
   }
   else
   {
@@ -189,10 +181,8 @@ void add_new_team(d_b *data_base)
   team = search_team(data_base->hash_teams, name);
   if (!team)
   {
-    {
-      data_base->teams_pile = push_team(data_base->teams_pile, name);
-      insert_hash_team(data_base->hash_teams, data_base->teams_pile);
-    }
+    data_base->teams_pile = push_team(data_base->teams_pile, name);
+    insert_hash_team(data_base->hash_teams, data_base->teams_pile);
   }
   else
   {
@@ -248,10 +238,8 @@ void best_teams(d_b *data_base)
   {
     if (head->wins == max)
     {
-      {
-        new_pile = push_team(new_pile, head->team_name);
-        size += 1;
-      }
+      new_pile = push_team(new_pile, head->team_name);
+      size += 1;
     }
     else
     {
@@ -263,18 +251,16 @@ void best_teams(d_b *data_base)
 
   if (new_pile)
   {
+    new_pile = sort_teams_pile(new_pile, size);
+    head = new_pile;
+    printf("%d Melhores %d\n", data_base->NL, max);
+    while (head)
     {
-      new_pile = sort_teams_pile(new_pile, size);
-      head = new_pile;
-      printf("%d Melhores %d\n", data_base->NL, max);
-      while (head)
-      {
-        printf("%d * %s\n", data_base->NL, head->team_name);
-        head = head->next;
-      }
-
-      destroy_pile(new_pile);
+      printf("%d * %s\n", data_base->NL, head->team_name);
+      head = head->next;
     }
+
+    destroy_pile(new_pile);
   }
   else
   {

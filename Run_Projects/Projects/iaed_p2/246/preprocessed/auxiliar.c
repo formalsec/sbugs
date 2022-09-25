@@ -68,22 +68,18 @@ link_game_order insertBegin(link_game_order head, link_game game)
   link_game_order x;
   if (head == 0)
   {
-    {
-      x = malloc(sizeof(struct order_game));
-      x->element = game;
-      x->next = 0;
-      return x;
-    }
+    x = malloc(sizeof(struct order_game));
+    x->element = game;
+    x->next = 0;
+    return x;
   }
   else
   {
-    {
-      x = malloc(sizeof(struct order_game));
-      x->element = game;
-      x->next = head;
-      head = x;
-      return head;
-    }
+    x = malloc(sizeof(struct order_game));
+    x->element = game;
+    x->next = head;
+    head = x;
+    return head;
   }
 
   return head;
@@ -97,9 +93,7 @@ link_game lookup_game(link_game *htable_game, char *nome)
   {
     if (strcmp(aux->name, nome) == 0)
     {
-      {
-        return aux;
-      }
+      return aux;
     }
     else
     {
@@ -119,9 +113,7 @@ link_team lookup_team(link_team *htable_team, char *nome)
   {
     if (strcmp(aux->name, nome) == 0)
     {
-      {
-        return aux;
-      }
+      return aux;
     }
     else
     {
@@ -151,23 +143,17 @@ link_game deletegame(link_game head, char *name)
   {
     if (strcmp(aux->name, name) == 0)
     {
+      if (aux == head)
       {
-        if (aux == head)
-        {
-          {
-            head = aux->next;
-          }
-        }
-        else
-        {
-          {
-            prev->next = aux->next;
-          }
-        }
-
-        freeGame(aux);
-        return head;
+        head = aux->next;
       }
+      else
+      {
+        prev->next = aux->next;
+      }
+
+      freeGame(aux);
+      return head;
     }
     else
     {
@@ -191,9 +177,7 @@ int Lookup_BiggerNumVictories(link_team *head)
     {
       if (aux->v > Vcounter)
       {
-        {
-          Vcounter = aux->v;
-        }
+        Vcounter = aux->v;
       }
       else
       {
@@ -216,10 +200,8 @@ link_Team_lexicographical_order insert_lexicographical_order(link_Team_lexicogra
   x->next = 0;
   if ((*head) == 0)
   {
-    {
-      x->next = *head;
-      return x;
-    }
+    x->next = *head;
+    return x;
   }
   else
   {
@@ -228,24 +210,20 @@ link_Team_lexicographical_order insert_lexicographical_order(link_Team_lexicogra
 
   if (strcmp((*head)->elemente->name, target->name) > 0)
   {
-    {
-      x->next = *head;
-      return x;
-    }
+    x->next = *head;
+    return x;
   }
   else
   {
+    aux = *head;
+    while ((aux->next != 0) && (strcmp(aux->next->elemente->name, x->elemente->name) < 0))
     {
-      aux = *head;
-      while ((aux->next != 0) && (strcmp(aux->next->elemente->name, x->elemente->name) < 0))
-      {
-        aux = aux->next;
-      }
-
-      x->next = aux->next;
-      aux->next = x;
-      return *head;
+      aux = aux->next;
     }
+
+    x->next = aux->next;
+    aux->next = x;
+    return *head;
   }
 
 }

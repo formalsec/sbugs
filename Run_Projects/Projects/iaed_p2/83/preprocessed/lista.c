@@ -20,17 +20,13 @@ void insertEnd(link *head, link *tail, Jogo Jogo)
   link x = NewNode(Jogo);
   if ((*head) == 0)
   {
-    {
-      *head = x;
-      *tail = *head;
-    }
+    *head = x;
+    *tail = *head;
   }
   else
   {
-    {
-      (*tail)->next = x;
-      *tail = x;
-    }
+    (*tail)->next = x;
+    *tail = x;
   }
 
 }
@@ -45,38 +41,30 @@ void delete(link *head, link *tail, Jogo Jogo)
   {
     if (Jogo == t->Jogo)
     {
+      if (t == (*head))
       {
-        if (t == (*head))
+        *head = t->next;
+        free(t);
+        return;
+      }
+      else
+      {
+        if (t == (*tail))
         {
-          {
-            *head = t->next;
-            free(t);
-            return;
-          }
+          prev->next = t->next;
+          free(t);
+          *tail = prev;
+          return;
         }
         else
         {
-          if (t == (*tail))
-          {
-            {
-              prev->next = t->next;
-              free(t);
-              *tail = prev;
-              return;
-            }
-          }
-          else
-          {
-            {
-              prev->next = t->next;
-              free(t);
-              return;
-            }
-          }
-
+          prev->next = t->next;
+          free(t);
+          return;
         }
 
       }
+
     }
     else
     {

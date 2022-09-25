@@ -72,11 +72,9 @@ void comandos(Node *head, Hash_table *jogosT, Hash_tableEq *equipasT, NodeEq *he
       {
         if (head->nome)
         {
-          {
-            free(head->nome);
-            free(head->equipa1);
-            free(head->equipa2);
-          }
+          free(head->nome);
+          free(head->equipa1);
+          free(head->equipa2);
         }
         else
         {

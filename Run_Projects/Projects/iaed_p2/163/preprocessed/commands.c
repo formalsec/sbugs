@@ -44,61 +44,45 @@ link a(link *hashtable, int size_table, team_ptr team_list, link game_list, int 
   aux_score_team2 = new_sym_var(sizeof(int) * 8);
   if (LookUpInTable(hashtable, aux_name, size_table) == 0)
   {
+    if (LookUpTeams(team_list, aux_team1_name) != 0)
     {
-      if (LookUpTeams(team_list, aux_team1_name) != 0)
+      if (LookUpTeams(team_list, aux_team2_name) != 0)
       {
+        if (aux_score_team1 > aux_score_team2)
         {
-          if (LookUpTeams(team_list, aux_team2_name) != 0)
+          LookUpTeams(team_list, aux_team1_name)->games_won += 1;
+        }
+        else
+        {
+          if (aux_score_team2 > aux_score_team1)
           {
-            {
-              if (aux_score_team1 > aux_score_team2)
-              {
-                {
-                  LookUpTeams(team_list, aux_team1_name)->games_won += 1;
-                }
-              }
-              else
-              {
-                if (aux_score_team2 > aux_score_team1)
-                {
-                  {
-                    LookUpTeams(team_list, aux_team2_name)->games_won += 1;
-                  }
-                }
-                else
-                {
-                  
-                }
-
-              }
-
-              InsertInTable(hashtable, size_table, aux_name, aux_team1_name, aux_team2_name, aux_score_team1, aux_score_team2);
-              game_list = InsertGameList(game_list, aux_name, aux_team1_name, aux_team2_name, aux_score_team1, aux_score_team2);
-            }
+            LookUpTeams(team_list, aux_team2_name)->games_won += 1;
           }
           else
           {
-            {
-              printf("%d Equipa inexistente.\n", nl);
-            }
+            
           }
 
         }
+
+        InsertInTable(hashtable, size_table, aux_name, aux_team1_name, aux_team2_name, aux_score_team1, aux_score_team2);
+        game_list = InsertGameList(game_list, aux_name, aux_team1_name, aux_team2_name, aux_score_team1, aux_score_team2);
       }
       else
       {
-        {
-          printf("%d Equipa inexistente.\n", nl);
-        }
+        printf("%d Equipa inexistente.\n", nl);
       }
 
     }
+    else
+    {
+      printf("%d Equipa inexistente.\n", nl);
+    }
+
   }
   else
   {
-    {
-      printf("%d Jogo existente.\n", nl);
-    }
+    printf("%d Jogo existente.\n", nl);
   }
 
   free(aux_name);
@@ -123,15 +107,11 @@ team_ptr A(team_ptr team_list, int nl)
   aux_team_name[10 - 1] = '\0';
   if (LookUpTeams(team_list, aux_team_name) == 0)
   {
-    {
-      team_list = InsertBeginTeamList(team_list, aux_team_name);
-    }
+    team_list = InsertBeginTeamList(team_list, aux_team_name);
   }
   else
   {
-    {
-      printf("%d Equipa existente.\n", nl);
-    }
+    printf("%d Equipa existente.\n", nl);
   }
 
   free(aux_team_name);
@@ -154,16 +134,12 @@ void p(link *hashtable, int size_table, int nl)
   aux_game_name[10 - 1] = '\0';
   if (LookUpInTable(hashtable, aux_game_name, size_table) != 0)
   {
-    {
-      game_ptr x = LookUpInTable(hashtable, aux_game_name, size_table);
-      printf("%d %s %s %s %d %d\n", nl, x->game_name, x->team1, x->team2, x->score_team1, x->score_team2);
-    }
+    game_ptr x = LookUpInTable(hashtable, aux_game_name, size_table);
+    printf("%d %s %s %s %d %d\n", nl, x->game_name, x->team1, x->team2, x->score_team1, x->score_team2);
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-    }
+    printf("%d Jogo inexistente.\n", nl);
   }
 
   free(aux_game_name);
@@ -185,16 +161,12 @@ void P(team_ptr team_list, int nl)
   aux_team_name[10 - 1] = '\0';
   if (LookUpTeams(team_list, aux_team_name) != 0)
   {
-    {
-      team_ptr x = LookUpTeams(team_list, aux_team_name);
-      printf("%d %s %d\n", nl, x->team_name, x->games_won);
-    }
+    team_ptr x = LookUpTeams(team_list, aux_team_name);
+    printf("%d %s %d\n", nl, x->team_name, x->games_won);
   }
   else
   {
-    {
-      printf("%d Equipa inexistente.\n", nl);
-    }
+    printf("%d Equipa inexistente.\n", nl);
   }
 
   free(aux_team_name);
@@ -207,10 +179,8 @@ void l(link *hashtable, int size_table, link game_list, int nl)
   {
     if (LookUpInTable(hashtable, x->this_game->game_name, size_table) != 0)
     {
-      {
-        game_ptr g = LookUpInTable(hashtable, x->this_game->game_name, size_table);
-        printf("%d %s %s %s %d %d\n", nl, g->game_name, g->team1, g->team2, g->score_team1, g->score_team2);
-      }
+      game_ptr g = LookUpInTable(hashtable, x->this_game->game_name, size_table);
+      printf("%d %s %s %s %d %d\n", nl, g->game_name, g->team1, g->team2, g->score_team1, g->score_team2);
     }
     else
     {
@@ -237,37 +207,29 @@ link r(link *hashtable, int size_table, link game_list, team_ptr team_list, int 
   aux_game_name[10 - 1] = '\0';
   if (LookUpInTable(hashtable, aux_game_name, size_table) != 0)
   {
+    if (LookUpTeams(team_list, LookUpInTable(hashtable, aux_game_name, size_table)->team1)->games_won > LookUpTeams(team_list, LookUpInTable(hashtable, aux_game_name, size_table)->team2)->games_won)
     {
-      if (LookUpTeams(team_list, LookUpInTable(hashtable, aux_game_name, size_table)->team1)->games_won > LookUpTeams(team_list, LookUpInTable(hashtable, aux_game_name, size_table)->team2)->games_won)
+      LookUpTeams(team_list, LookUpInTable(hashtable, aux_game_name, size_table)->team1)->games_won -= 1;
+    }
+    else
+    {
+      if (LookUpTeams(team_list, LookUpInTable(hashtable, aux_game_name, size_table)->team1)->games_won < LookUpTeams(team_list, LookUpInTable(hashtable, aux_game_name, size_table)->team2)->games_won)
       {
-        {
-          LookUpTeams(team_list, LookUpInTable(hashtable, aux_game_name, size_table)->team1)->games_won -= 1;
-        }
+        LookUpTeams(team_list, LookUpInTable(hashtable, aux_game_name, size_table)->team2)->games_won -= 1;
       }
       else
       {
-        if (LookUpTeams(team_list, LookUpInTable(hashtable, aux_game_name, size_table)->team1)->games_won < LookUpTeams(team_list, LookUpInTable(hashtable, aux_game_name, size_table)->team2)->games_won)
-        {
-          {
-            LookUpTeams(team_list, LookUpInTable(hashtable, aux_game_name, size_table)->team2)->games_won -= 1;
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      game_list = Remove(game_list, aux_game_name);
-      RemoveFromTable(hashtable, size_table, aux_game_name);
     }
+
+    game_list = Remove(game_list, aux_game_name);
+    RemoveFromTable(hashtable, size_table, aux_game_name);
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-    }
+    printf("%d Jogo inexistente.\n", nl);
   }
 
   free(aux_game_name);
@@ -294,36 +256,25 @@ link s(link *hashtable, int size_table, link game_list, team_ptr team_list, int 
   aux_score_team2 = new_sym_var(sizeof(int) * 8);
   if (LookUpInTable(hashtable, aux_game_name, size_table) != 0)
   {
+    if (LookUpInTable(hashtable, aux_game_name, size_table)->score_team1 < LookUpInTable(hashtable, aux_game_name, size_table)->score_team2)
     {
-      if (LookUpInTable(hashtable, aux_game_name, size_table)->score_team1 < LookUpInTable(hashtable, aux_game_name, size_table)->score_team2)
+      if (aux_score_team1 > aux_score_team2)
       {
-        {
-          if (aux_score_team1 > aux_score_team2)
-          {
-            LookUpTeams(team_list, LookUpInTable(hashtable, aux_game_name, size_table)->team2)->games_won -= 1;
-          }
-          else
-          {
-            
-          }
-
-        }
+        LookUpTeams(team_list, LookUpInTable(hashtable, aux_game_name, size_table)->team2)->games_won -= 1;
       }
       else
       {
-        if (LookUpInTable(hashtable, aux_game_name, size_table)->score_team1 > LookUpInTable(hashtable, aux_game_name, size_table)->score_team2)
-        {
-          {
-            if (aux_score_team2 > aux_score_team1)
-            {
-              LookUpTeams(team_list, LookUpInTable(hashtable, aux_game_name, size_table)->team1)->games_won -= 1;
-            }
-            else
-            {
-              
-            }
+        
+      }
 
-          }
+    }
+    else
+    {
+      if (LookUpInTable(hashtable, aux_game_name, size_table)->score_team1 > LookUpInTable(hashtable, aux_game_name, size_table)->score_team2)
+      {
+        if (aux_score_team2 > aux_score_team1)
+        {
+          LookUpTeams(team_list, LookUpInTable(hashtable, aux_game_name, size_table)->team1)->games_won -= 1;
         }
         else
         {
@@ -331,17 +282,20 @@ link s(link *hashtable, int size_table, link game_list, team_ptr team_list, int 
         }
 
       }
+      else
+      {
+        
+      }
 
-      LookUpInTable(hashtable, aux_game_name, size_table)->score_team1 = aux_score_team1;
-      LookUpInTable(hashtable, aux_game_name, size_table)->score_team2 = aux_score_team2;
-      game_list = ChangeScore(game_list, aux_game_name, aux_score_team1, aux_score_team2);
     }
+
+    LookUpInTable(hashtable, aux_game_name, size_table)->score_team1 = aux_score_team1;
+    LookUpInTable(hashtable, aux_game_name, size_table)->score_team2 = aux_score_team2;
+    game_list = ChangeScore(game_list, aux_game_name, aux_score_team1, aux_score_team2);
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-    }
+    printf("%d Jogo inexistente.\n", nl);
   }
 
   free(aux_game_name);
@@ -378,59 +332,55 @@ void g(team_ptr team_list, int nl)
   int i;
   if (team_list != 0)
   {
+    team_ptr x;
+    for (x = team_list; x != 0; x = x->next)
     {
-      team_ptr x;
-      for (x = team_list; x != 0; x = x->next)
+      if (x->games_won >= biggest_n_games_won)
       {
-        if (x->games_won >= biggest_n_games_won)
-        {
-          biggest_n_games_won = x->games_won;
-        }
-        else
-        {
-          
-        }
-
+        biggest_n_games_won = x->games_won;
       }
-
-      for (x = team_list; x != 0; x = x->next)
+      else
       {
-        if (x->games_won == biggest_n_games_won)
-        {
-          teams_array_size++;
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      for (i = 0, x = team_list; x != 0; i++, x = x->next)
-      {
-        if (x->games_won == biggest_n_games_won)
-        {
-          {
-            team_names[i] = (char *) malloc((sizeof(char)) * (strlen(x->team_name) + 1));
-            strcpy(team_names[i], x->team_name);
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      qsort(team_names, teams_array_size, sizeof(char *), compareStr);
-      printf("%d Melhores %d\n", nl, biggest_n_games_won);
-      for (i = 0; i < teams_array_size; i++)
-      {
-        printf("%d * %s\n", nl, team_names[i]);
-        free(team_names[i]);
+        
       }
 
     }
+
+    for (x = team_list; x != 0; x = x->next)
+    {
+      if (x->games_won == biggest_n_games_won)
+      {
+        teams_array_size++;
+      }
+      else
+      {
+        
+      }
+
+    }
+
+    for (i = 0, x = team_list; x != 0; i++, x = x->next)
+    {
+      if (x->games_won == biggest_n_games_won)
+      {
+        team_names[i] = (char *) malloc((sizeof(char)) * (strlen(x->team_name) + 1));
+        strcpy(team_names[i], x->team_name);
+      }
+      else
+      {
+        
+      }
+
+    }
+
+    qsort(team_names, teams_array_size, sizeof(char *), compareStr);
+    printf("%d Melhores %d\n", nl, biggest_n_games_won);
+    for (i = 0; i < teams_array_size; i++)
+    {
+      printf("%d * %s\n", nl, team_names[i]);
+      free(team_names[i]);
+    }
+
   }
   else
   {

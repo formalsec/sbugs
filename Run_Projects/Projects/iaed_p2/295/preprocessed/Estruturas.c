@@ -60,15 +60,11 @@ Equipa *procura_equipa(char nome_equipa[], lista_equipas *a)
   {
     if (strcmp(c->eq->nome_equipa, nome_equipa) == 0)
     {
-      {
-        return c->eq;
-      }
+      return c->eq;
     }
     else
     {
-      {
-        c = c->next;
-      }
+      c = c->next;
     }
 
   }
@@ -102,15 +98,11 @@ Jogo *procura_jogo(char nome_jogo[], lista_jogos *a)
   {
     if (strcmp(c->jog->nome_jogo, nome_jogo) == 0)
     {
-      {
-        return c->jog;
-      }
+      return c->jog;
     }
     else
     {
-      {
-        c = c->next;
-      }
+      c = c->next;
     }
 
   }
@@ -130,32 +122,26 @@ void insere_jogo(lista_jogos *a, Jogo *b, lista_equipas *c)
   atual->next = a->no[i];
   if (a->no[i] != 0)
   {
-    {
-      a->no[i] = atual;
-      a->no[i]->previous = 0;
-      a->no[i]->next->previous = atual;
-    }
+    a->no[i] = atual;
+    a->no[i]->previous = 0;
+    a->no[i]->next->previous = atual;
   }
   else
   {
-    {
-      a->no[i] = atual;
-      a->no[i]->previous = 0;
-    }
+    a->no[i] = atual;
+    a->no[i]->previous = 0;
   }
 
   if (b->resultado1 > b->resultado2)
   {
+    j = hash(b->equipa1);
+    d = c->no[j];
+    while (strcmp(d->eq->nome_equipa, b->equipa1) != 0)
     {
-      j = hash(b->equipa1);
-      d = c->no[j];
-      while (strcmp(d->eq->nome_equipa, b->equipa1) != 0)
-      {
-        d = d->next;
-      }
-
-      d->eq->n_vitorias++;
+      d = d->next;
     }
+
+    d->eq->n_vitorias++;
   }
   else
   {
@@ -164,16 +150,14 @@ void insere_jogo(lista_jogos *a, Jogo *b, lista_equipas *c)
 
   if (b->resultado1 < b->resultado2)
   {
+    j = hash(b->equipa2);
+    d = c->no[j];
+    while (strcmp(d->eq->nome_equipa, b->equipa2) != 0)
     {
-      j = hash(b->equipa2);
-      d = c->no[j];
-      while (strcmp(d->eq->nome_equipa, b->equipa2) != 0)
-      {
-        d = d->next;
-      }
-
-      d->eq->n_vitorias++;
+      d = d->next;
     }
+
+    d->eq->n_vitorias++;
   }
   else
   {
@@ -189,9 +173,7 @@ void insere_jogo_aux(lista_jogos_aux *a, Jogo_aux *b)
   atual->next = a->head;
   if (a->head == 0)
   {
-    {
-      a->head = atual;
-    }
+    a->head = atual;
   }
   else
   {
@@ -202,9 +184,7 @@ void insere_jogo_aux(lista_jogos_aux *a, Jogo_aux *b)
   atual->previous = a->last;
   if (a->last)
   {
-    {
-      a->last->next = atual;
-    }
+    a->last->next = atual;
   }
   else
   {
@@ -229,31 +209,27 @@ void muda_n_vitorias(lista_equipas *a, lista_jogos *b, char nome_jogo[])
 
   if (c->jog->resultado1 > c->jog->resultado2)
   {
+    j = hash(c->jog->equipa1);
+    d = a->no[j];
+    while (strcmp(d->eq->nome_equipa, c->jog->equipa1) != 0)
     {
-      j = hash(c->jog->equipa1);
-      d = a->no[j];
-      while (strcmp(d->eq->nome_equipa, c->jog->equipa1) != 0)
-      {
-        d = d->next;
-      }
-
-      d->eq->n_vitorias--;
+      d = d->next;
     }
+
+    d->eq->n_vitorias--;
   }
   else
   {
     if (c->jog->resultado1 < c->jog->resultado2)
     {
+      j = hash(c->jog->equipa2);
+      d = a->no[j];
+      while (strcmp(d->eq->nome_equipa, c->jog->equipa2) != 0)
       {
-        j = hash(c->jog->equipa2);
-        d = a->no[j];
-        while (strcmp(d->eq->nome_equipa, c->jog->equipa2) != 0)
-        {
-          d = d->next;
-        }
-
-        d->eq->n_vitorias--;
+        d = d->next;
       }
+
+      d->eq->n_vitorias--;
     }
     else
     {
@@ -282,63 +258,53 @@ no_jogos *remove_jogo(char nome_jogo[], lista_jogos *a, lista_equipas *c)
   {
     if (strcmp(f->jog->nome_jogo, b->nome_jogo) == 0)
     {
+      if ((f->next == 0) && (f->previous == 0))
       {
-        if ((f->next == 0) && (f->previous == 0))
+        free(f->jog->nome_jogo);
+        free(f->jog->equipa1);
+        free(f->jog->equipa2);
+        free(f->jog);
+        free(f);
+        f = 0;
+        return f;
+      }
+      else
+      {
+        if (f->previous == 0)
         {
-          {
-            free(f->jog->nome_jogo);
-            free(f->jog->equipa1);
-            free(f->jog->equipa2);
-            free(f->jog);
-            free(f);
-            f = 0;
-            return f;
-          }
+          g = f->next;
+          g->previous = 0;
+          free(f->jog->nome_jogo);
+          free(f->jog->equipa1);
+          free(f->jog->equipa2);
+          free(f->jog);
+          free(f);
+          return g;
         }
         else
         {
-          if (f->previous == 0)
+          h = f->next;
+          j = f->previous;
+          if (h != 0)
           {
-            {
-              g = f->next;
-              g->previous = 0;
-              free(f->jog->nome_jogo);
-              free(f->jog->equipa1);
-              free(f->jog->equipa2);
-              free(f->jog);
-              free(f);
-              return g;
-            }
+            h->previous = j;
           }
           else
           {
-            {
-              h = f->next;
-              j = f->previous;
-              if (h != 0)
-              {
-                {
-                  h->previous = j;
-                }
-              }
-              else
-              {
-                
-              }
-
-              j->next = h;
-              free(f->jog->nome_jogo);
-              free(f->jog->equipa1);
-              free(f->jog->equipa2);
-              free(f->jog);
-              free(f);
-              return d;
-            }
+            
           }
 
+          j->next = h;
+          free(f->jog->nome_jogo);
+          free(f->jog->equipa1);
+          free(f->jog->equipa2);
+          free(f->jog);
+          free(f);
+          return d;
         }
 
       }
+
     }
     else
     {
@@ -360,34 +326,60 @@ void muda_resultado(int nl, char nome_jogo[], int res_equipa1, int res_equipa2, 
   b = procura_jogo(nome_jogo, a);
   if (b != 0)
   {
+    if (b->resultado1 > b->resultado2)
     {
-      if (b->resultado1 > b->resultado2)
+      c = 1;
+    }
+    else
+    {
+      if (b->resultado1 < b->resultado2)
       {
-        {
-          c = 1;
-        }
+        c = 2;
       }
       else
       {
-        if (b->resultado1 < b->resultado2)
-        {
-          {
-            c = 2;
-          }
-        }
-        else
-        {
-          {
-            c = 0;
-          }
-        }
-
+        c = 0;
       }
 
-      b->resultado1 = res_equipa1;
-      b->resultado2 = res_equipa2;
-      if ((c == 1) && (res_equipa1 < res_equipa2))
+    }
+
+    b->resultado1 = res_equipa1;
+    b->resultado2 = res_equipa2;
+    if ((c == 1) && (res_equipa1 < res_equipa2))
+    {
+      f = hash(b->equipa1);
+      h = d->no[f];
+      while (strcmp(h->eq->nome_equipa, b->equipa1) != 0)
       {
+        h = h->next;
+      }
+
+      h->eq->n_vitorias--;
+      g = hash(b->equipa2);
+      h = d->no[g];
+      while (strcmp(h->eq->nome_equipa, b->equipa2) != 0)
+      {
+        h = h->next;
+      }
+
+      h->eq->n_vitorias++;
+    }
+    else
+    {
+      if ((c == 1) && (res_equipa1 == res_equipa2))
+      {
+        f = hash(b->equipa1);
+        h = d->no[f];
+        while (strcmp(h->eq->nome_equipa, b->equipa1) != 0)
+        {
+          h = h->next;
+        }
+
+        h->eq->n_vitorias--;
+      }
+      else
+      {
+        if ((c == 2) && (res_equipa1 > res_equipa2))
         {
           f = hash(b->equipa1);
           h = d->no[f];
@@ -396,7 +388,7 @@ void muda_resultado(int nl, char nome_jogo[], int res_equipa1, int res_equipa2, 
             h = h->next;
           }
 
-          h->eq->n_vitorias--;
+          h->eq->n_vitorias++;
           g = hash(b->equipa2);
           h = d->no[g];
           while (strcmp(h->eq->nome_equipa, b->equipa2) != 0)
@@ -404,28 +396,24 @@ void muda_resultado(int nl, char nome_jogo[], int res_equipa1, int res_equipa2, 
             h = h->next;
           }
 
-          h->eq->n_vitorias++;
+          h->eq->n_vitorias--;
         }
-      }
-      else
-      {
-        if ((c == 1) && (res_equipa1 == res_equipa2))
+        else
         {
+          if ((c == 2) && (res_equipa1 == res_equipa2))
           {
-            f = hash(b->equipa1);
-            h = d->no[f];
-            while (strcmp(h->eq->nome_equipa, b->equipa1) != 0)
+            g = hash(b->equipa2);
+            h = d->no[g];
+            while (strcmp(h->eq->nome_equipa, b->equipa2) != 0)
             {
               h = h->next;
             }
 
             h->eq->n_vitorias--;
           }
-        }
-        else
-        {
-          if ((c == 2) && (res_equipa1 > res_equipa2))
+          else
           {
+            if ((c == 0) && (res_equipa1 > res_equipa2))
             {
               f = hash(b->equipa1);
               h = d->no[f];
@@ -435,20 +423,10 @@ void muda_resultado(int nl, char nome_jogo[], int res_equipa1, int res_equipa2, 
               }
 
               h->eq->n_vitorias++;
-              g = hash(b->equipa2);
-              h = d->no[g];
-              while (strcmp(h->eq->nome_equipa, b->equipa2) != 0)
-              {
-                h = h->next;
-              }
-
-              h->eq->n_vitorias--;
             }
-          }
-          else
-          {
-            if ((c == 2) && (res_equipa1 == res_equipa2))
+            else
             {
+              if ((c == 0) && (res_equipa1 < res_equipa2))
               {
                 g = hash(b->equipa2);
                 h = d->no[g];
@@ -457,44 +435,11 @@ void muda_resultado(int nl, char nome_jogo[], int res_equipa1, int res_equipa2, 
                   h = h->next;
                 }
 
-                h->eq->n_vitorias--;
-              }
-            }
-            else
-            {
-              if ((c == 0) && (res_equipa1 > res_equipa2))
-              {
-                {
-                  f = hash(b->equipa1);
-                  h = d->no[f];
-                  while (strcmp(h->eq->nome_equipa, b->equipa1) != 0)
-                  {
-                    h = h->next;
-                  }
-
-                  h->eq->n_vitorias++;
-                }
+                h->eq->n_vitorias++;
               }
               else
               {
-                if ((c == 0) && (res_equipa1 < res_equipa2))
-                {
-                  {
-                    g = hash(b->equipa2);
-                    h = d->no[g];
-                    while (strcmp(h->eq->nome_equipa, b->equipa2) != 0)
-                    {
-                      h = h->next;
-                    }
-
-                    h->eq->n_vitorias++;
-                  }
-                }
-                else
-                {
-                  
-                }
-
+                
               }
 
             }
@@ -506,12 +451,11 @@ void muda_resultado(int nl, char nome_jogo[], int res_equipa1, int res_equipa2, 
       }
 
     }
+
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-    }
+    printf("%d Jogo inexistente.\n", nl);
   }
 
 }
@@ -549,18 +493,14 @@ void free_lista_equipas(lista_equipas_aux *a)
   {
     if (c->next != 0)
     {
-      {
-        d = c->next;
-        free(c);
-        c = d;
-      }
+      d = c->next;
+      free(c);
+      c = d;
     }
     else
     {
-      {
-        free(c);
-        break;
-      }
+      free(c);
+      break;
     }
 
   }
@@ -603,26 +543,22 @@ void free_lista_jogos(lista_jogos_aux *a)
   {
     if (c->next != 0)
     {
-      {
-        d = c->next;
-        free(c->jog->nome_jogo);
-        free(c->jog->equipa1);
-        free(c->jog->equipa2);
-        free(c->jog);
-        free(c);
-        c = d;
-      }
+      d = c->next;
+      free(c->jog->nome_jogo);
+      free(c->jog->equipa1);
+      free(c->jog->equipa2);
+      free(c->jog);
+      free(c);
+      c = d;
     }
     else
     {
-      {
-        free(c->jog->nome_jogo);
-        free(c->jog->equipa1);
-        free(c->jog->equipa2);
-        free(c->jog);
-        free(c);
-        break;
-      }
+      free(c->jog->nome_jogo);
+      free(c->jog->equipa1);
+      free(c->jog->equipa2);
+      free(c->jog);
+      free(c);
+      break;
     }
 
   }

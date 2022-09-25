@@ -17,11 +17,9 @@ int jogo_inexistente(char nome[], int tblsz_jogo, int contalinhas, jogo printado
   printado = search_jogo(aponta, tblsz_jogo, st);
   if (printado == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", contalinhas);
-      free(aponta);
-      return 1;
-    }
+    printf("%d Jogo inexistente.\n", contalinhas);
+    free(aponta);
+    return 1;
   }
   else
   {
@@ -40,11 +38,9 @@ int jogo_existente(char nome[], int tblsz_jogo, int contalinhas, jogo procura_jo
   procura_jogo = search_jogo(aponta, tblsz_jogo, st);
   if (procura_jogo != 0)
   {
-    {
-      printf("%d Jogo existente.\n", contalinhas);
-      free(aponta);
-      return 1;
-    }
+    printf("%d Jogo existente.\n", contalinhas);
+    free(aponta);
+    return 1;
   }
   else
   {
@@ -63,11 +59,9 @@ int equipa_inexistente(char nome[], int tblsz_equipa, int contalinhas, equipa pr
   procura_equipa = search_equipa(aponta, tblsz_equipa, eq);
   if (procura_equipa == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", contalinhas);
-      free(aponta);
-      return 1;
-    }
+    printf("%d Equipa inexistente.\n", contalinhas);
+    free(aponta);
+    return 1;
   }
   else
   {
@@ -86,11 +80,9 @@ int equipa_existente(char nome[], int tblsz_equipa, int contalinhas, equipa proc
   procura_equipa = search_equipa(aponta, tblsz_equipa, eq);
   if (procura_equipa != 0)
   {
-    {
-      printf("%d Equipa existente.\n", contalinhas);
-      free(aponta);
-      return 1;
-    }
+    printf("%d Equipa existente.\n", contalinhas);
+    free(aponta);
+    return 1;
   }
   else
   {
@@ -115,10 +107,8 @@ void free_hash_eq(equipa *eq, int tblsz_equipa)
   {
     if (eq[i] != 0)
     {
-      {
-        free(eq[i]->nome_equipa);
-        free(eq[i]);
-      }
+      free(eq[i]->nome_equipa);
+      free(eq[i]);
     }
     else
     {
@@ -137,12 +127,10 @@ void free_hash_st(jogo *st, int tblsz_jogo)
   {
     if (st[i] != 0)
     {
-      {
-        free(st[i]->nome);
-        free(st[i]->equipa1);
-        free(st[i]->equipa2);
-        free(st[i]);
-      }
+      free(st[i]->nome);
+      free(st[i]->equipa1);
+      free(st[i]->equipa2);
+      free(st[i]);
     }
     else
     {
@@ -188,34 +176,62 @@ void compara_resultados(int who_won_int, int score1, int score2, char nome[], in
 {
   if (who_won_int == 1)
   {
+    if (score1 > score2)
+    {
+      altera_score(nome, tblsz_jogo, score1, score2, st);
+    }
+    else
+    {
+      if (score2 > score1)
+      {
+        altera_vitorias(quem_ganhou(nome, tblsz_jogo, st), tblsz_equipa, -1, eq);
+        strcpy(team2, obtem_equipa2(nome, tblsz_jogo, st));
+        altera_vitorias(team2, tblsz_equipa, 1, eq);
+        altera_score(nome, tblsz_jogo, score1, score2, st);
+        free(aponta_nome_equipa);
+        return;
+      }
+      else
+      {
+        if (score2 == score1)
+        {
+          altera_vitorias(quem_ganhou(nome, tblsz_jogo, st), tblsz_equipa, -1, eq);
+          altera_score(nome, tblsz_jogo, score1, score2, st);
+        }
+        else
+        {
+          
+        }
+
+      }
+
+    }
+
+    free(aponta_nome_equipa);
+  }
+  else
+  {
+    if (who_won_int == 2)
     {
       if (score1 > score2)
       {
-        {
-          altera_score(nome, tblsz_jogo, score1, score2, st);
-        }
+        altera_vitorias(quem_ganhou(nome, tblsz_jogo, st), tblsz_equipa, -1, eq);
+        strcpy(team1, obtem_equipa1(nome, tblsz_jogo, st));
+        altera_vitorias(team1, tblsz_equipa, 1, eq);
+        altera_score(nome, tblsz_jogo, score1, score2, st);
       }
       else
       {
         if (score2 > score1)
         {
-          {
-            altera_vitorias(quem_ganhou(nome, tblsz_jogo, st), tblsz_equipa, -1, eq);
-            strcpy(team2, obtem_equipa2(nome, tblsz_jogo, st));
-            altera_vitorias(team2, tblsz_equipa, 1, eq);
-            altera_score(nome, tblsz_jogo, score1, score2, st);
-            free(aponta_nome_equipa);
-            return;
-          }
+          altera_score(nome, tblsz_jogo, score1, score2, st);
         }
         else
         {
           if (score2 == score1)
           {
-            {
-              altera_vitorias(quem_ganhou(nome, tblsz_jogo, st), tblsz_equipa, -1, eq);
-              altera_score(nome, tblsz_jogo, score1, score2, st);
-            }
+            altera_vitorias(quem_ganhou(nome, tblsz_jogo, st), tblsz_equipa, -1, eq);
+            altera_score(nome, tblsz_jogo, score1, score2, st);
           }
           else
           {
@@ -228,37 +244,29 @@ void compara_resultados(int who_won_int, int score1, int score2, char nome[], in
 
       free(aponta_nome_equipa);
     }
-  }
-  else
-  {
-    if (who_won_int == 2)
+    else
     {
+      if (who_won_int == 0)
       {
         if (score1 > score2)
         {
-          {
-            altera_vitorias(quem_ganhou(nome, tblsz_jogo, st), tblsz_equipa, -1, eq);
-            strcpy(team1, obtem_equipa1(nome, tblsz_jogo, st));
-            altera_vitorias(team1, tblsz_equipa, 1, eq);
-            altera_score(nome, tblsz_jogo, score1, score2, st);
-          }
+          altera_score(nome, tblsz_jogo, score1, score2, st);
+          strcpy(team1, obtem_equipa1(nome, tblsz_jogo, st));
+          altera_vitorias(team1, tblsz_equipa, 1, eq);
         }
         else
         {
           if (score2 > score1)
           {
-            {
-              altera_score(nome, tblsz_jogo, score1, score2, st);
-            }
+            altera_score(nome, tblsz_jogo, score1, score2, st);
+            strcpy(team2, obtem_equipa2(nome, tblsz_jogo, st));
+            altera_vitorias(team2, tblsz_equipa, 1, eq);
           }
           else
           {
             if (score2 == score1)
             {
-              {
-                altera_vitorias(quem_ganhou(nome, tblsz_jogo, st), tblsz_equipa, -1, eq);
-                altera_score(nome, tblsz_jogo, score1, score2, st);
-              }
+              altera_score(nome, tblsz_jogo, score1, score2, st);
             }
             else
             {
@@ -269,50 +277,6 @@ void compara_resultados(int who_won_int, int score1, int score2, char nome[], in
 
         }
 
-        free(aponta_nome_equipa);
-      }
-    }
-    else
-    {
-      if (who_won_int == 0)
-      {
-        {
-          if (score1 > score2)
-          {
-            {
-              altera_score(nome, tblsz_jogo, score1, score2, st);
-              strcpy(team1, obtem_equipa1(nome, tblsz_jogo, st));
-              altera_vitorias(team1, tblsz_equipa, 1, eq);
-            }
-          }
-          else
-          {
-            if (score2 > score1)
-            {
-              {
-                altera_score(nome, tblsz_jogo, score1, score2, st);
-                strcpy(team2, obtem_equipa2(nome, tblsz_jogo, st));
-                altera_vitorias(team2, tblsz_equipa, 1, eq);
-              }
-            }
-            else
-            {
-              if (score2 == score1)
-              {
-                {
-                  altera_score(nome, tblsz_jogo, score1, score2, st);
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-          }
-
-        }
       }
       else
       {
@@ -330,12 +294,10 @@ int erros_a(int stop, jogo game, char equipa1[], int tblsz_equipa, int contalinh
   stop = jogo_existente(game->nome, tblsz_jogo, contalinhas, procura_jogo, st);
   if (stop == 1)
   {
-    {
-      free(game->equipa2);
-      free(game->equipa1);
-      free(game->nome);
-      return 1;
-    }
+    free(game->equipa2);
+    free(game->equipa1);
+    free(game->nome);
+    return 1;
   }
   else
   {
@@ -345,12 +307,10 @@ int erros_a(int stop, jogo game, char equipa1[], int tblsz_equipa, int contalinh
   stop = equipa_inexistente(equipa1, tblsz_equipa, contalinhas, procura_equipa, eq);
   if (stop == 1)
   {
-    {
-      free(game->equipa2);
-      free(game->equipa1);
-      free(game->nome);
-      return 1;
-    }
+    free(game->equipa2);
+    free(game->equipa1);
+    free(game->nome);
+    return 1;
   }
   else
   {
@@ -360,12 +320,10 @@ int erros_a(int stop, jogo game, char equipa1[], int tblsz_equipa, int contalinh
   stop = equipa_inexistente(equipa2, tblsz_equipa, contalinhas, procura_equipa, eq);
   if (stop == 1)
   {
-    {
-      free(game->equipa2);
-      free(game->equipa1);
-      free(game->nome);
-      return 1;
-    }
+    free(game->equipa2);
+    free(game->equipa1);
+    free(game->nome);
+    return 1;
   }
   else
   {
@@ -379,17 +337,13 @@ void compara_score(int score1, int score2, int tblsz_equipa, equipa *eq, char eq
 {
   if (score1 > score2)
   {
-    {
-      altera_vitorias(equipa1, tblsz_equipa, 1, eq);
-    }
+    altera_vitorias(equipa1, tblsz_equipa, 1, eq);
   }
   else
   {
     if (score2 > score1)
     {
-      {
-        altera_vitorias(equipa2, tblsz_equipa, 1, eq);
-      }
+      altera_vitorias(equipa2, tblsz_equipa, 1, eq);
     }
     else
     {
@@ -513,10 +467,8 @@ int main()
         stop = equipa_existente(team_name, tblsz_equipa, contalinhas, procura_equipa, eq);
         if (stop == 1)
       {
-        {
-          free(aponta_nome_equipa);
-          break;
-        }
+        free(aponta_nome_equipa);
+        break;
       }
       else
       {
@@ -578,11 +530,9 @@ int main()
 
         if (quem_ganhou(nome, tblsz_jogo, st) == 0)
       {
-        {
-          delete_jogo(nome, tblsz_jogo, st, M);
-          Head = delete_node(nome, Head);
-          break;
-        }
+        delete_jogo(nome, tblsz_jogo, st, M);
+        Head = delete_node(nome, Head);
+        break;
       }
       else
       {
@@ -592,9 +542,7 @@ int main()
         strcpy(who_won, quem_ganhou(nome, tblsz_jogo, st));
         if (who_won != 0)
       {
-        {
-          altera_vitorias(who_won, tblsz_equipa, -1, eq);
-        }
+        altera_vitorias(who_won, tblsz_equipa, -1, eq);
       }
       else
       {
@@ -644,9 +592,7 @@ int main()
         stop = jogo_inexistente(nome, tblsz_jogo, contalinhas, *printado, st);
         if (stop == 1)
       {
-        {
-          break;
-        }
+        break;
       }
       else
       {
@@ -655,10 +601,8 @@ int main()
 
         if (quem_ganhou(nome, tblsz_jogo, st) != 0)
       {
-        {
-          aponta_nome_equipa = malloc((sizeof(char)) * (strlen(quem_ganhou(nome, tblsz_jogo, st)) + 1));
-          strcpy(aponta_nome_equipa, quem_ganhou(nome, tblsz_jogo, st));
-        }
+        aponta_nome_equipa = malloc((sizeof(char)) * (strlen(quem_ganhou(nome, tblsz_jogo, st)) + 1));
+        strcpy(aponta_nome_equipa, quem_ganhou(nome, tblsz_jogo, st));
       }
       else
       {
@@ -675,22 +619,20 @@ int main()
         tuplo = get_max_vit(Head_equipas, tblsz_equipa, eq, tuplo);
         if (tuplo->conta_eq_c_max_vit != 0)
       {
+        printf("%d Melhores %d\n", contalinhas, tuplo->max_vitorias);
+        equipas_c_vitorias = malloc((sizeof(char *)) * (tuplo->conta_eq_c_max_vit + 1));
+        obtem_equipas_com_max_vit(Head_equipas, tuplo->max_vitorias, equipas_c_vitorias, tblsz_equipa, eq);
+        qsort(equipas_c_vitorias, tuplo->conta_eq_c_max_vit, sizeof(char *), cmp_str);
+        for (i = 0; i < tuplo->conta_eq_c_max_vit; i++)
         {
-          printf("%d Melhores %d\n", contalinhas, tuplo->max_vitorias);
-          equipas_c_vitorias = malloc((sizeof(char *)) * (tuplo->conta_eq_c_max_vit + 1));
-          obtem_equipas_com_max_vit(Head_equipas, tuplo->max_vitorias, equipas_c_vitorias, tblsz_equipa, eq);
-          qsort(equipas_c_vitorias, tuplo->conta_eq_c_max_vit, sizeof(char *), cmp_str);
-          for (i = 0; i < tuplo->conta_eq_c_max_vit; i++)
-          {
-            count++;
-            printf("%d * %s\n", contalinhas, *equipas_c_vitorias);
-            free(*equipas_c_vitorias);
-            equipas_c_vitorias++;
-          }
-
-          equipas_c_vitorias -= count;
-          free(equipas_c_vitorias);
+          count++;
+          printf("%d * %s\n", contalinhas, *equipas_c_vitorias);
+          free(*equipas_c_vitorias);
+          equipas_c_vitorias++;
         }
+
+        equipas_c_vitorias -= count;
+        free(equipas_c_vitorias);
       }
       else
       {

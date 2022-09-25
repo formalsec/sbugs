@@ -96,10 +96,8 @@ void ht_equipas_insere(hashtable_equipas *hashtable, char *key)
   Equipa *equipa = hashtable->entradas[slot];
   if (equipa == 0)
   {
-    {
-      hashtable->entradas[slot] = ht_equipas_aloca(key);
-      return;
-    }
+    hashtable->entradas[slot] = ht_equipas_aloca(key);
+    return;
   }
   else
   {
@@ -110,10 +108,8 @@ void ht_equipas_insere(hashtable_equipas *hashtable, char *key)
   {
     if (strcmp(equipa->nome, key) == 0)
     {
-      {
-        equipa = ht_equipas_aloca(key);
-        return;
-      }
+      equipa = ht_equipas_aloca(key);
+      return;
     }
     else
     {
@@ -133,9 +129,7 @@ Equipa *ht_equipas_verifica(hashtable_equipas *hashtable, char *key)
   Equipa *equipa = hashtable->entradas[slot];
   if (equipa == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -146,9 +140,7 @@ Equipa *ht_equipas_verifica(hashtable_equipas *hashtable, char *key)
   {
     if (strcmp(equipa->nome, key) == 0)
     {
-      {
-        return equipa;
-      }
+      return equipa;
     }
     else
     {
@@ -206,9 +198,7 @@ void ht_jogos_apaga(hashtable_jogos *ht_jogos, char *key)
   Jogo *jogo = ht_jogos->entradas[b];
   if (jogo == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -219,48 +209,40 @@ void ht_jogos_apaga(hashtable_jogos *ht_jogos, char *key)
   {
     if (strcmp(jogo->nome, key) == 0)
     {
+      if ((jogo->next == 0) && (id == 0))
       {
-        if ((jogo->next == 0) && (id == 0))
-        {
-          {
-            ht_jogos->entradas[b] = 0;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if ((jogo->next == 0) && (id != 0))
-        {
-          {
-            prev->next = 0;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if ((jogo->next != 0) && (id != 0))
-        {
-          {
-            prev->next = jogo->next;
-          }
-        }
-        else
-        {
-          
-        }
-
-        free(jogo->nome);
-        free(jogo->equipa1->nome);
-        free(jogo->equipa1);
-        free(jogo->equipa2->nome);
-        free(jogo->equipa2);
-        free(jogo);
-        return;
+        ht_jogos->entradas[b] = 0;
       }
+      else
+      {
+        
+      }
+
+      if ((jogo->next == 0) && (id != 0))
+      {
+        prev->next = 0;
+      }
+      else
+      {
+        
+      }
+
+      if ((jogo->next != 0) && (id != 0))
+      {
+        prev->next = jogo->next;
+      }
+      else
+      {
+        
+      }
+
+      free(jogo->nome);
+      free(jogo->equipa1->nome);
+      free(jogo->equipa1);
+      free(jogo->equipa2->nome);
+      free(jogo->equipa2);
+      free(jogo);
+      return;
     }
     else
     {
@@ -281,9 +263,7 @@ Jogo *ht_jogos_verifica(hashtable_jogos *hashtable_j, char *key)
   Jogo *jogo = hashtable_j->entradas[slot];
   if (jogo == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -294,9 +274,7 @@ Jogo *ht_jogos_verifica(hashtable_jogos *hashtable_j, char *key)
   {
     if (strcmp(jogo->nome, key) == 0)
     {
-      {
-        return jogo;
-      }
+      return jogo;
     }
     else
     {

@@ -98,19 +98,17 @@ linkJogo remove_jogo(linkJogo head_jogos, char *nome)
   {
     if (strcmp(i->nome, nome) == 0)
     {
+      if (i == head_jogos)
       {
-        if (i == head_jogos)
-        {
-          head_jogos = i->next;
-        }
-        else
-        {
-          ant->next = i->next;
-        }
-
-        liberta_mem_jogo(i);
-        break;
+        head_jogos = i->next;
       }
+      else
+      {
+        ant->next = i->next;
+      }
+
+      liberta_mem_jogo(i);
+      break;
     }
     else
     {

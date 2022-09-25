@@ -14,32 +14,24 @@ int nameComp(char *c1, char *c2)
   int i;
   if (strcmp(c1, c2) < 0)
   {
-    {
-      lenght = strlen(c1);
-    }
+    lenght = strlen(c1);
   }
   else
   {
-    {
-      lenght = strlen(c2);
-    }
+    lenght = strlen(c2);
   }
 
   for (i = 0; i < lenght; i++)
   {
     if (c1[i] < c2[i])
     {
-      {
-        return -1;
-      }
+      return -1;
     }
     else
     {
       if (c1[i] > c2[i])
       {
-        {
-          return 1;
-        }
+        return 1;
       }
       else
       {
@@ -66,9 +58,7 @@ void selectionSortProd(Encomenda e)
     {
       if (nameComp(getProdName(e.prods[j]), getProdName(e.prods[temp])) == (-1))
       {
-        {
-          temp = j;
-        }
+        temp = j;
       }
       else
       {
@@ -91,9 +81,7 @@ int prodInEnc(Encomenda e, int idp)
   {
     if (getProdID(e.prods[i]) == idp)
     {
-      {
-        return i;
-      }
+      return i;
     }
     else
     {
@@ -111,10 +99,8 @@ Encomenda createEncomenda(int id)
   new.prods = malloc(10000 * (sizeof(Produto)));
   if (!new.prods)
   {
-    {
-      perror("Error of allocation in createEncomenda");
-      exit(1);
-    }
+    perror("Error of allocation in createEncomenda");
+    exit(1);
   }
   else
   {
@@ -132,9 +118,7 @@ Encomenda changeProdPriceInEnc(Encomenda e, int idp, int newPrice)
   int pos = prodInEnc(e, idp);
   if (pos != (-1))
   {
-    {
-      e.prods[pos] = changePrice(e.prods[pos], newPrice);
-    }
+    e.prods[pos] = changePrice(e.prods[pos], newPrice);
   }
   else
   {
@@ -149,16 +133,12 @@ Encomenda addEncProd(Encomenda e, Produto p)
   int pos = prodInEnc(e, getProdID(p));
   if (pos == (-1))
   {
-    {
-      e.prods[e.nProds] = p;
-      e.nProds++;
-    }
+    e.prods[e.nProds] = p;
+    e.nProds++;
   }
   else
   {
-    {
-      e.prods[pos] = addStock(e.prods[pos], getProdStock(p));
-    }
+    e.prods[pos] = addStock(e.prods[pos], getProdStock(p));
   }
 
   e.weight += getProdWeight(p) * getProdStock(p);
@@ -174,9 +154,7 @@ void free_enco(Encomenda e)
 {
   if (!e.prods)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -191,10 +169,8 @@ Encomenda removeEncProd(Encomenda e, int idp)
   int pos = prodInEnc(e, idp);
   if (pos != (-1))
   {
-    {
-      e.weight -= getProdStock(e.prods[pos]) * getProdWeight(e.prods[pos]);
-      e.prods[pos] = removeStock(e.prods[pos], getProdStock(e.prods[pos]));
-    }
+    e.weight -= getProdStock(e.prods[pos]) * getProdWeight(e.prods[pos]);
+    e.prods[pos] = removeStock(e.prods[pos], getProdStock(e.prods[pos]));
   }
   else
   {
@@ -209,9 +185,7 @@ int getProdStockInEnc(Encomenda e, int idp)
   int pos = prodInEnc(e, idp);
   if (pos != (-1))
   {
-    {
-      return getProdStock(e.prods[pos]);
-    }
+    return getProdStock(e.prods[pos]);
   }
   else
   {
@@ -235,9 +209,7 @@ int getEncPrice(Encomenda e)
   {
     if (getProdStock(e.prods[i]) != 0)
     {
-      {
-        total += getProdPrice(e.prods[i]) * getProdStock(e.prods[i]);
-      }
+      total += getProdPrice(e.prods[i]) * getProdStock(e.prods[i]);
     }
     else
     {
@@ -257,10 +229,8 @@ void listProd(Encomenda e)
   {
     if (getProdStock(e.prods[i]) > 0)
     {
-      {
-        fprintf(outputFile, "* ");
-        printProd(e.prods[i]);
-      }
+      fprintf(outputFile, "* ");
+      printProd(e.prods[i]);
     }
     else
     {

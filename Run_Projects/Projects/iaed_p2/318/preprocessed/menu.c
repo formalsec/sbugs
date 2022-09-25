@@ -21,10 +21,8 @@ int main(void)
     comando = new_sym_var(sizeof(char) * 8);
     if (comando == 'a')
     {
-      {
-        add_jovo(NL, jogos, HT_jogos, HT_equipas, HT_tam);
-        NL = NL + 1;
-      }
+      add_jovo(NL, jogos, HT_jogos, HT_equipas, HT_tam);
+      NL = NL + 1;
     }
     else
     {
@@ -33,10 +31,8 @@ int main(void)
 
     if (comando == 'l')
     {
-      {
-        lista_jogos(NL, jogos);
-        NL = NL + 1;
-      }
+      lista_jogos(NL, jogos);
+      NL = NL + 1;
     }
     else
     {
@@ -45,10 +41,8 @@ int main(void)
 
     if (comando == 'p')
     {
-      {
-        procura_jogo(NL, HT_jogos, HT_tam);
-        NL = NL + 1;
-      }
+      procura_jogo(NL, HT_jogos, HT_tam);
+      NL = NL + 1;
     }
     else
     {
@@ -57,10 +51,8 @@ int main(void)
 
     if (comando == 'r')
     {
-      {
-        apaga_jogo(NL, jogos, HT_jogos, HT_equipas, HT_tam);
-        NL = NL + 1;
-      }
+      apaga_jogo(NL, jogos, HT_jogos, HT_equipas, HT_tam);
+      NL = NL + 1;
     }
     else
     {
@@ -69,10 +61,8 @@ int main(void)
 
     if (comando == 's')
     {
-      {
-        altera_score(NL, HT_jogos, HT_equipas, HT_tam);
-        NL = NL + 1;
-      }
+      altera_score(NL, HT_jogos, HT_equipas, HT_tam);
+      NL = NL + 1;
     }
     else
     {
@@ -81,10 +71,8 @@ int main(void)
 
     if (comando == 'A')
     {
-      {
-        add_equipa(NL, teams, HT_equipas, HT_tam);
-        NL = NL + 1;
-      }
+      add_equipa(NL, teams, HT_equipas, HT_tam);
+      NL = NL + 1;
     }
     else
     {
@@ -93,10 +81,8 @@ int main(void)
 
     if (comando == 'P')
     {
-      {
-        procura_equipa(NL, HT_equipas, HT_tam);
-        NL = NL + 1;
-      }
+      procura_equipa(NL, HT_equipas, HT_tam);
+      NL = NL + 1;
     }
     else
     {
@@ -105,10 +91,8 @@ int main(void)
 
     if (comando == 'g')
     {
-      {
-        encontra_equipas(NL, teams);
-        NL = NL + 1;
-      }
+      encontra_equipas(NL, teams);
+      NL = NL + 1;
     }
     else
     {

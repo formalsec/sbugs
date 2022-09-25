@@ -15,16 +15,12 @@ void NewNodeTeam(linkTeam *head, char *teamName)
   new_node->next = 0;
   if ((*head) == 0)
   {
-    {
-      *head = new_node;
-    }
+    *head = new_node;
   }
   else
   {
-    {
-      new_node->next = *head;
-      *head = new_node;
-    }
+    new_node->next = *head;
+    *head = new_node;
   }
 
 }
@@ -121,9 +117,7 @@ int getMaxWins(linkTeam *HashTableTeam)
     {
       if (temp->teamWins > max)
       {
-        {
-          max = temp->teamWins;
-        }
+        max = temp->teamWins;
       }
       else
       {

@@ -98,24 +98,18 @@ void deleteHTG(HTG *table, Game *game)
   {
     if (!strcmp(vector[i]->name, key))
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {
-      {
-        i = (i + k) % factor;
-      }
+      i = (i + k) % factor;
     }
 
   }
 
   if (vector[i] == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -140,15 +134,11 @@ Game *getGame(HTG *table, char *name)
   {
     if (!strcmp(vector[i]->name, name))
     {
-      {
-        return vector[i];
-      }
+      return vector[i];
     }
     else
     {
-      {
-        i = (i + k) % factor;
-      }
+      i = (i + k) % factor;
     }
 
   }
@@ -167,23 +157,19 @@ void freeHTG(HTG *table)
   vector = table->items;
   if (size >= 0)
   {
+    for (i = 0; i < factor; i++)
     {
-      for (i = 0; i < factor; i++)
+      if (vector[i] != 0)
       {
-        if (vector[i] != 0)
-        {
-          {
-            freeGame(vector[i]);
-          }
-        }
-        else
-        {
-          
-        }
-
+        freeGame(vector[i]);
+      }
+      else
+      {
+        
       }
 
     }
+
   }
   else
   {

@@ -462,9 +462,7 @@ void a_NovoJogo(int *NL, Hsh_Eq **tabela_e, Hsh_Jg **tabela_j, Lst_Jgs *lst_j)
     }
     else
     {
-      {
-        NovoJogo_aux(nome_j, nome_e1, nome_e2, s1, s2, tabela_e, tabela_j, lst_j);
-      }
+      NovoJogo_aux(nome_j, nome_e1, nome_e2, s1, s2, tabela_e, tabela_j, lst_j);
     }
 
   }
@@ -560,86 +558,44 @@ void s_AlteraScore(int *NL, Hsh_Jg **tabela_j, Hsh_Eq **tabela_e)
   }
   else
   {
+    venceu_antes = vencedor(j);
+    j->score1 = s1;
+    j->score2 = s2;
+    venceu_agora = vencedor(j);
+    if (venceu_antes == 3)
     {
-      venceu_antes = vencedor(j);
-      j->score1 = s1;
-      j->score2 = s2;
-      venceu_agora = vencedor(j);
-      if (venceu_antes == 3)
+      if (venceu_agora == 1)
       {
-        {
-          if (venceu_agora == 1)
-          {
-            alterar_vitorias('+', j->equipa1, tabela_e);
-          }
-          else
-          {
-            if (venceu_agora == 2)
-            {
-              alterar_vitorias('+', j->equipa2, tabela_e);
-            }
-            else
-            {
-              
-            }
-
-          }
-
-        }
+        alterar_vitorias('+', j->equipa1, tabela_e);
       }
       else
       {
-        if (venceu_antes == 1)
+        if (venceu_agora == 2)
         {
-          {
-            if (venceu_agora == 2)
-            {
-              {
-                alterar_vitorias('-', j->equipa1, tabela_e);
-                alterar_vitorias('+', j->equipa2, tabela_e);
-              }
-            }
-            else
-            {
-              if (venceu_agora == 3)
-              {
-                alterar_vitorias('-', j->equipa1, tabela_e);
-              }
-              else
-              {
-                
-              }
-
-            }
-
-          }
+          alterar_vitorias('+', j->equipa2, tabela_e);
         }
         else
         {
-          if (venceu_antes == 2)
+          
+        }
+
+      }
+
+    }
+    else
+    {
+      if (venceu_antes == 1)
+      {
+        if (venceu_agora == 2)
+        {
+          alterar_vitorias('-', j->equipa1, tabela_e);
+          alterar_vitorias('+', j->equipa2, tabela_e);
+        }
+        else
+        {
+          if (venceu_agora == 3)
           {
-            {
-              if (venceu_agora == 1)
-              {
-                {
-                  alterar_vitorias('+', j->equipa1, tabela_e);
-                  alterar_vitorias('-', j->equipa2, tabela_e);
-                }
-              }
-              else
-              {
-                if (venceu_agora == 3)
-                {
-                  alterar_vitorias('-', j->equipa2, tabela_e);
-                }
-                else
-                {
-                  
-                }
-
-              }
-
-            }
+            alterar_vitorias('-', j->equipa1, tabela_e);
           }
           else
           {
@@ -649,8 +605,38 @@ void s_AlteraScore(int *NL, Hsh_Jg **tabela_j, Hsh_Eq **tabela_e)
         }
 
       }
+      else
+      {
+        if (venceu_antes == 2)
+        {
+          if (venceu_agora == 1)
+          {
+            alterar_vitorias('+', j->equipa1, tabela_e);
+            alterar_vitorias('-', j->equipa2, tabela_e);
+          }
+          else
+          {
+            if (venceu_agora == 3)
+            {
+              alterar_vitorias('-', j->equipa2, tabela_e);
+            }
+            else
+            {
+              
+            }
+
+          }
+
+        }
+        else
+        {
+          
+        }
+
+      }
 
     }
+
   }
 
   free(nome);
@@ -757,10 +743,8 @@ void g_MelhoresEquipas(int *NL, Lst_Eqs *lst_e)
   {
     if (nr_vitorias(aux) > max_vitorias)
     {
-      {
-        max_vitorias = nr_vitorias(aux);
-        nr_melhores_equipas = 0;
-      }
+      max_vitorias = nr_vitorias(aux);
+      nr_melhores_equipas = 0;
     }
     else
     {
@@ -769,13 +753,11 @@ void g_MelhoresEquipas(int *NL, Lst_Eqs *lst_e)
 
     if (nr_vitorias(aux) == max_vitorias)
     {
-      {
-        size_nome_eq = strlen(aux->equipa->nome);
-        nome_eq = malloc((size_nome_eq + 1) * (sizeof(char)));
-        strcpy(nome_eq, aux->equipa->nome);
-        a_ordenar[nr_melhores_equipas] = nome_eq;
-        nr_melhores_equipas++;
-      }
+      size_nome_eq = strlen(aux->equipa->nome);
+      nome_eq = malloc((size_nome_eq + 1) * (sizeof(char)));
+      strcpy(nome_eq, aux->equipa->nome);
+      a_ordenar[nr_melhores_equipas] = nome_eq;
+      nr_melhores_equipas++;
     }
     else
     {
@@ -784,10 +766,8 @@ void g_MelhoresEquipas(int *NL, Lst_Eqs *lst_e)
 
     if (nr_melhores_equipas == size_tabela)
     {
-      {
-        size_tabela = size_tabela * 2;
-        a_ordenar = (char **) realloc(a_ordenar, size_tabela * (sizeof(char *)));
-      }
+      size_tabela = size_tabela * 2;
+      a_ordenar = (char **) realloc(a_ordenar, size_tabela * (sizeof(char *)));
     }
     else
     {
@@ -826,67 +806,65 @@ void r_ApagaJogo(int *NL, Hsh_Jg **tabela_j, Lst_Jgs *lst_j, Hsh_Eq **tabela_e)
   }
   else
   {
+    venceu_antes = vencedor(j);
+    if (venceu_antes == 1)
     {
-      venceu_antes = vencedor(j);
-      if (venceu_antes == 1)
+      alterar_vitorias('-', j->equipa1, tabela_e);
+    }
+    else
+    {
+      if (venceu_antes == 2)
       {
-        alterar_vitorias('-', j->equipa1, tabela_e);
-      }
-      else
-      {
-        if (venceu_antes == 2)
-        {
-          alterar_vitorias('-', j->equipa2, tabela_e);
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      i = hash(nome, 1709);
-      hash_j = encontra_jogo_hash(nome, tabela_j[i]);
-      node_j = hash_j->node_j;
-      if (node_j->prev == 0)
-      {
-        lst_j->head = node_j->next;
-      }
-      else
-      {
-        node_j->prev->next = node_j->next;
-      }
-
-      if (node_j->next == 0)
-      {
-        lst_j->last = node_j->prev;
-      }
-      else
-      {
-        node_j->next->prev = node_j->prev;
-      }
-
-      free_Nd_Jg(node_j);
-      if (hash_j->prev == 0)
-      {
-        tabela_j[i] = hash_j->next;
-      }
-      else
-      {
-        hash_j->prev->next = hash_j->next;
-      }
-
-      if (hash_j->next != 0)
-      {
-        hash_j->next->prev = hash_j->prev;
+        alterar_vitorias('-', j->equipa2, tabela_e);
       }
       else
       {
         
       }
 
-      free(hash_j);
     }
+
+    i = hash(nome, 1709);
+    hash_j = encontra_jogo_hash(nome, tabela_j[i]);
+    node_j = hash_j->node_j;
+    if (node_j->prev == 0)
+    {
+      lst_j->head = node_j->next;
+    }
+    else
+    {
+      node_j->prev->next = node_j->next;
+    }
+
+    if (node_j->next == 0)
+    {
+      lst_j->last = node_j->prev;
+    }
+    else
+    {
+      node_j->next->prev = node_j->prev;
+    }
+
+    free_Nd_Jg(node_j);
+    if (hash_j->prev == 0)
+    {
+      tabela_j[i] = hash_j->next;
+    }
+    else
+    {
+      hash_j->prev->next = hash_j->next;
+    }
+
+    if (hash_j->next != 0)
+    {
+      hash_j->next->prev = hash_j->prev;
+    }
+    else
+    {
+      
+    }
+
+    free(hash_j);
   }
 
   return;

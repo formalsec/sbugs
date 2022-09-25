@@ -60,45 +60,37 @@ void remove_jogo_lst(lista_jogos *l, char *nome)
   {
     if (!strcmp(aux1->jogo->nome, nome))
     {
+      node_jogo *aux2 = aux1;
+      if (l->inicio == l->fim)
       {
-        node_jogo *aux2 = aux1;
-        if (l->inicio == l->fim)
+        l->inicio = (l->fim = 0);
+      }
+      else
+      {
+        if (aux1 == l->inicio)
         {
-          l->inicio = (l->fim = 0);
+          l->inicio = l->inicio->prox;
+          aux1->prox->ant = 0;
         }
         else
         {
-          if (aux1 == l->inicio)
+          if (aux1 == l->fim)
           {
-            {
-              l->inicio = l->inicio->prox;
-              aux1->prox->ant = 0;
-            }
+            l->fim = l->fim->ant;
+            aux1->ant->prox = 0;
           }
           else
           {
-            if (aux1 == l->fim)
-            {
-              {
-                l->fim = l->fim->ant;
-                aux1->ant->prox = 0;
-              }
-            }
-            else
-            {
-              {
-                aux1->ant->prox = aux1->prox;
-                aux1->prox->ant = aux1->ant;
-              }
-            }
-
+            aux1->ant->prox = aux1->prox;
+            aux1->prox->ant = aux1->ant;
           }
 
         }
 
-        free(aux2);
-        break;
       }
+
+      free(aux2);
+      break;
     }
     else
     {
@@ -185,10 +177,8 @@ void destroi_h_jogos(jogo **h_jogos, int tam_h_jogos)
   for (i = 0; i < tam_h_jogos; i++)
     if (h_jogos[i])
   {
-    {
-      free(h_jogos[i]->nome);
-      free(h_jogos[i]);
-    }
+    free(h_jogos[i]->nome);
+    free(h_jogos[i]);
   }
   else
   {

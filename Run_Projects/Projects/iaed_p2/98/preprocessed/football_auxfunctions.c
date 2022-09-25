@@ -32,17 +32,13 @@ void insertGameList(Game item, List_Limits headAndTail)
   x->next = 0;
   if (headAndTail->head == 0)
   {
-    {
-      x->prev = 0;
-      headAndTail->head = x;
-    }
+    x->prev = 0;
+    headAndTail->head = x;
   }
   else
   {
-    {
-      x->prev = headAndTail->tail;
-      headAndTail->tail->next = x;
-    }
+    x->prev = headAndTail->tail;
+    headAndTail->tail->next = x;
   }
 
   headAndTail->tail = x;
@@ -57,10 +53,8 @@ void insertGameTable(Game item, Game_Link *heads)
   x->prev = 0;
   if (heads[i] != 0)
   {
-    {
-      heads[i]->prev = x;
-      x->next = heads[i];
-    }
+    heads[i]->prev = x;
+    x->next = heads[i];
   }
   else
   {
@@ -86,19 +80,17 @@ void freeGame(Game item, int i, Game_Link *headsG, List_Limits headAndTail)
   Game_Link s2;
   if (headsG[i]->item == item)
   {
+    t1 = headsG[i];
+    headsG[i] = t1->next;
+    if (headsG[i] != 0)
     {
-      t1 = headsG[i];
-      headsG[i] = t1->next;
-      if (headsG[i] != 0)
-      {
-        headsG[i]->prev = 0;
-      }
-      else
-      {
-        
-      }
-
+      headsG[i]->prev = 0;
     }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -106,23 +98,19 @@ void freeGame(Game item, int i, Game_Link *headsG, List_Limits headAndTail)
     {
       if (t1->item == item)
       {
+        s1 = t1->prev;
+        s1->next = t1->next;
+        if (t1->next != 0)
         {
-          s1 = t1->prev;
-          s1->next = t1->next;
-          if (t1->next != 0)
-          {
-            {
-              s1 = t1->next;
-              s1->prev = t1->prev;
-            }
-          }
-          else
-          {
-            
-          }
-
-          break;
+          s1 = t1->next;
+          s1->prev = t1->prev;
         }
+        else
+        {
+          
+        }
+
+        break;
       }
       else
       {
@@ -135,54 +123,44 @@ void freeGame(Game item, int i, Game_Link *headsG, List_Limits headAndTail)
 
   if (headAndTail->head == headAndTail->tail)
   {
-    {
-      t2 = headAndTail->head;
-      headAndTail->head = 0;
-      headAndTail->tail = 0;
-    }
+    t2 = headAndTail->head;
+    headAndTail->head = 0;
+    headAndTail->tail = 0;
   }
   else
   {
     if (headAndTail->head->item == item)
     {
-      {
-        t2 = headAndTail->head;
-        headAndTail->head = t2->next;
-        headAndTail->head->prev = 0;
-      }
+      t2 = headAndTail->head;
+      headAndTail->head = t2->next;
+      headAndTail->head->prev = 0;
     }
     else
     {
       if (headAndTail->tail->item == item)
       {
-        {
-          t2 = headAndTail->tail;
-          headAndTail->tail = t2->prev;
-          headAndTail->tail->next = 0;
-        }
+        t2 = headAndTail->tail;
+        headAndTail->tail = t2->prev;
+        headAndTail->tail->next = 0;
       }
       else
       {
         for (t2 = headAndTail->head->next; t2 != 0; t2 = t2->next)
           if (t2->item == item)
         {
+          s2 = t2->prev;
+          s2->next = t2->next;
+          if (t2->next != 0)
           {
-            s2 = t2->prev;
-            s2->next = t2->next;
-            if (t2->next != 0)
-            {
-              {
-                s2 = t2->next;
-                s2->prev = t2->prev;
-              }
-            }
-            else
-            {
-              
-            }
-
-            break;
+            s2 = t2->next;
+            s2->prev = t2->prev;
           }
+          else
+          {
+            
+          }
+
+          break;
         }
         else
         {
@@ -209,10 +187,8 @@ Game searchGame(char name[], Game_Link *heads)
   for (t = heads[i]; t != 0; t = t->next)
     if (strcmp(t->item->name, pname) == 0)
   {
-    {
-      free(pname);
-      return t->item;
-    }
+    free(pname);
+    return t->item;
   }
   else
   {
@@ -249,10 +225,8 @@ Team searchTeam(char name[], Team_Link *heads)
   for (t = heads[i]; t != 0; t = t->next)
     if (strcmp(t->item->name, pname) == 0)
   {
-    {
-      free(pname);
-      return t->item;
-    }
+    free(pname);
+    return t->item;
   }
   else
   {

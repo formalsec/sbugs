@@ -48,10 +48,8 @@ void ht_set_game(int line, ht_game *hashtable, GAME *game)
   entry_game *entry = hashtable->entries[slot];
   if (entry == 0)
   {
-    {
-      hashtable->entries[slot] = ht_pair_game(game);
-      return;
-    }
+    hashtable->entries[slot] = ht_pair_game(game);
+    return;
   }
   else
   {
@@ -62,12 +60,10 @@ void ht_set_game(int line, ht_game *hashtable, GAME *game)
   {
     if (strcmp(entry->game->name, game->name) == 0)
     {
-      {
-        printf("%d Jogo existente.\n", line);
-        free(game->name);
-        free(game);
-        return;
-      }
+      printf("%d Jogo existente.\n", line);
+      free(game->name);
+      free(game);
+      return;
     }
     else
     {
@@ -90,9 +86,7 @@ GAME *ht_remove_game(ht_game *hashtable, ht_team *hashtable_team, GAME *game, GA
   entry_game *entry = hashtable->entries[slot];
   if (entry == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -103,77 +97,63 @@ GAME *ht_remove_game(ht_game *hashtable, ht_team *hashtable_team, GAME *game, GA
   {
     if (strcmp(entry->game->name, game->name) == 0)
     {
+      if (game->score[0] > game->score[1])
       {
-        if (game->score[0] > game->score[1])
-        {
-          {
-            aux = ht_get_team(hashtable_team, game->team1->name);
-            aux->gameswon--;
-          }
-        }
-        else
-        {
-          if (game->score[0] < game->score[1])
-          {
-            {
-              aux = ht_get_team(hashtable_team, game->team2->name);
-              aux->gameswon--;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-        if ((entry->next == 0) && (idx == 0))
-        {
-          {
-            hashtable->entries[slot] = 0;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if ((entry->next != 0) && (idx == 0))
-        {
-          {
-            hashtable->entries[slot] = entry->next;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if ((entry->next == 0) && (idx != 0))
-        {
-          {
-            prev->next = 0;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if ((entry->next != 0) && (idx != 0))
-        {
-          {
-            prev->next = entry->next;
-          }
-        }
-        else
-        {
-          
-        }
-
-        linkedlist = removeGameFromLinkedList(linkedlist, game);
-        return linkedlist;
+        aux = ht_get_team(hashtable_team, game->team1->name);
+        aux->gameswon--;
       }
+      else
+      {
+        if (game->score[0] < game->score[1])
+        {
+          aux = ht_get_team(hashtable_team, game->team2->name);
+          aux->gameswon--;
+        }
+        else
+        {
+          
+        }
+
+      }
+
+      if ((entry->next == 0) && (idx == 0))
+      {
+        hashtable->entries[slot] = 0;
+      }
+      else
+      {
+        
+      }
+
+      if ((entry->next != 0) && (idx == 0))
+      {
+        hashtable->entries[slot] = entry->next;
+      }
+      else
+      {
+        
+      }
+
+      if ((entry->next == 0) && (idx != 0))
+      {
+        prev->next = 0;
+      }
+      else
+      {
+        
+      }
+
+      if ((entry->next != 0) && (idx != 0))
+      {
+        prev->next = entry->next;
+      }
+      else
+      {
+        
+      }
+
+      linkedlist = removeGameFromLinkedList(linkedlist, game);
+      return linkedlist;
     }
     else
     {
@@ -194,9 +174,7 @@ GAME *ht_get_game(ht_game *hashtable, char *game)
   entry_game *entry = hashtable->entries[slot];
   if (entry == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -207,9 +185,7 @@ GAME *ht_get_game(ht_game *hashtable, char *game)
   {
     if (strcmp(entry->game->name, game) == 0)
     {
-      {
-        return entry->game;
-      }
+      return entry->game;
     }
     else
     {
@@ -231,18 +207,16 @@ void ht_dump_game(ht_game *hashtable)
   {
     if (hashtable->entries[i] != 0)
     {
+      entry = hashtable->entries[i];
+      while (entry != 0)
       {
-        entry = hashtable->entries[i];
-        while (entry != 0)
-        {
-          temp = entry->next;
-          free(entry->game->name);
-          free(entry->game);
-          free(entry);
-          entry = temp;
-        }
-
+        temp = entry->next;
+        free(entry->game->name);
+        free(entry->game);
+        free(entry);
+        entry = temp;
       }
+
     }
     else
     {
@@ -290,13 +264,11 @@ GAME *addGame(int line, ht_game *hashtable, ht_team *hashtable_team, GAME *linke
   gameaux = ht_get_game(hashtable, name);
   if (gameaux != 0)
   {
-    {
-      printf("%d Jogo existente.\n", line);
-      free(game);
-      free(team1);
-      free(team2);
-      return linkedlist;
-    }
+    printf("%d Jogo existente.\n", line);
+    free(game);
+    free(team1);
+    free(team2);
+    return linkedlist;
   }
   else
   {
@@ -308,58 +280,46 @@ GAME *addGame(int line, ht_game *hashtable, ht_team *hashtable_team, GAME *linke
   team = ht_get_team(hashtable_team, team1);
   if (team != 0)
   {
-    {
-      game->team1 = team;
-    }
+    game->team1 = team;
   }
   else
   {
-    {
-      printf("%d Equipa inexistente.\n", line);
-      free(game->name);
-      free(game);
-      free(team1);
-      free(team2);
-      return linkedlist;
-    }
+    printf("%d Equipa inexistente.\n", line);
+    free(game->name);
+    free(game);
+    free(team1);
+    free(team2);
+    return linkedlist;
   }
 
   teamaux = ht_get_team(hashtable_team, team2);
   if (teamaux != 0)
   {
-    {
-      game->team2 = teamaux;
-    }
+    game->team2 = teamaux;
   }
   else
   {
-    {
-      printf("%d Equipa inexistente.\n", line);
-      free(game->name);
-      free(game);
-      free(team1);
-      free(team2);
-      return linkedlist;
-    }
+    printf("%d Equipa inexistente.\n", line);
+    free(game->name);
+    free(game);
+    free(team1);
+    free(team2);
+    return linkedlist;
   }
 
   game->score[0] = score1;
   game->score[1] = score2;
   if (game->score[0] > game->score[1])
   {
-    {
-      TEAM *pteam = ht_get_team(hashtable_team, game->team1->name);
-      pteam->gameswon++;
-    }
+    TEAM *pteam = ht_get_team(hashtable_team, game->team1->name);
+    pteam->gameswon++;
   }
   else
   {
     if (game->score[1] > game->score[0])
     {
-      {
-        TEAM *pteam = ht_get_team(hashtable_team, game->team2->name);
-        pteam->gameswon++;
-      }
+      TEAM *pteam = ht_get_team(hashtable_team, game->team2->name);
+      pteam->gameswon++;
     }
     else
     {
@@ -379,21 +339,17 @@ GAME *addGameToLinkedList(GAME *linkedlist, GAME *game)
 {
   if (linkedlist == 0)
   {
-    {
-      linkedlist = game;
-    }
+    linkedlist = game;
   }
   else
   {
+    GAME *paux = linkedlist;
+    while (paux->pnext != 0)
     {
-      GAME *paux = linkedlist;
-      while (paux->pnext != 0)
-      {
-        paux = paux->pnext;
-      }
-
-      paux->pnext = game;
+      paux = paux->pnext;
     }
+
+    paux->pnext = game;
   }
 
   return linkedlist;
@@ -408,54 +364,44 @@ GAME *removeGameFromLinkedList(GAME *linkedlist, GAME *game)
   {
     if (strcmp(paux->name, game->name) == 0)
     {
+      if ((paux->pnext == 0) && (idx == 0))
       {
-        if ((paux->pnext == 0) && (idx == 0))
-        {
-          {
-            linkedlist = 0;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if ((paux->pnext != 0) && (idx == 0))
-        {
-          {
-            linkedlist = paux->pnext;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if ((paux->pnext == 0) && (idx != 0))
-        {
-          {
-            prev->pnext = 0;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if ((paux->pnext != 0) && (idx != 0))
-        {
-          {
-            prev->pnext = paux->pnext;
-          }
-        }
-        else
-        {
-          
-        }
-
-        free(paux);
-        return linkedlist;
+        linkedlist = 0;
       }
+      else
+      {
+        
+      }
+
+      if ((paux->pnext != 0) && (idx == 0))
+      {
+        linkedlist = paux->pnext;
+      }
+      else
+      {
+        
+      }
+
+      if ((paux->pnext == 0) && (idx != 0))
+      {
+        prev->pnext = 0;
+      }
+      else
+      {
+        
+      }
+
+      if ((paux->pnext != 0) && (idx != 0))
+      {
+        prev->pnext = paux->pnext;
+      }
+      else
+      {
+        
+      }
+
+      free(paux);
+      return linkedlist;
     }
     else
     {

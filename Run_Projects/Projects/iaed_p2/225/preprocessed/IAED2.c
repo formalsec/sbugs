@@ -146,10 +146,8 @@ void freeMemoryLlistT(linkT head, int mode)
     next = i->next;
     if (mode)
     {
-      {
-        free(i->team->tName);
-        free(i->team);
-      }
+      free(i->team->tName);
+      free(i->team);
     }
     else
     {
@@ -166,12 +164,10 @@ void free_node(linkG node, int mode)
 {
   if (mode)
   {
-    {
-      free(node->game->gName);
-      node->game->team1 = 0;
-      node->game->team2 = 0;
-      free(node->game);
-    }
+    free(node->game->gName);
+    node->game->team1 = 0;
+    node->game->team2 = 0;
+    free(node->game);
   }
   else
   {
@@ -219,40 +215,34 @@ linkG delete(linkG head, const char *name, int mode)
   {
     if (strcmp(t->game->gName, name) == 0)
     {
+      if (t == head)
       {
-        if (t == head)
+        head = t->next;
+      }
+      else
+      {
+        if (head == top)
         {
+          if (t->next == 0)
           {
-            head = t->next;
+            bottom = prev;
           }
+          else
+          {
+            
+          }
+
         }
         else
         {
-          {
-            if (head == top)
-            {
-              if (t->next == 0)
-              {
-                bottom = prev;
-              }
-              else
-              {
-                
-              }
-
-            }
-            else
-            {
-              
-            }
-
-            prev->next = t->next;
-          }
+          
         }
 
-        free_node(t, mode);
-        return head;
+        prev->next = t->next;
       }
+
+      free_node(t, mode);
+      return head;
     }
     else
     {
@@ -274,72 +264,58 @@ void a(char *gName, char *team1, char *team2, int score1, int score2)
   newG = (Game *) malloc(sizeof(Game));
   if (i != 0)
   {
-    {
-      printf("%d Jogo existente.\n", commands);
-      free(newG);
-    }
+    printf("%d Jogo existente.\n", commands);
+    free(newG);
   }
   else
   {
     if ((t1 == 0) || (t2 == 0))
     {
-      {
-        printf("%d Equipa inexistente.\n", commands);
-        free(newG);
-      }
+      printf("%d Equipa inexistente.\n", commands);
+      free(newG);
     }
     else
     {
+      while (gName[p] != '\0')
+        p++;
+
+      newG->gName = (char *) malloc((sizeof(char)) * (p + 1));
+      strcpy(newG->gName, gName);
+      newG->team1 = t1;
+      newG->team2 = t2;
+      newG->score1 = score1;
+      newG->score2 = score2;
+      if (newG->score1 > newG->score2)
       {
-        while (gName[p] != '\0')
-          p++;
-
-        newG->gName = (char *) malloc((sizeof(char)) * (p + 1));
-        strcpy(newG->gName, gName);
-        newG->team1 = t1;
-        newG->team2 = t2;
-        newG->score1 = score1;
-        newG->score2 = score2;
-        if (newG->score1 > newG->score2)
-        {
-          {
-            t1->team->wins++;
-            newG->winTeam = 1;
-          }
-        }
-        else
-        {
-          if (newG->score2 > newG->score1)
-          {
-            {
-              t2->team->wins++;
-              newG->winTeam = 2;
-            }
-          }
-          else
-          {
-            newG->winTeam = 0;
-          }
-
-        }
-
-        if (top == 0)
-        {
-          {
-            top = new_nodeG(newG);
-            bottom = top;
-          }
-        }
-        else
-        {
-          {
-            bottom->next = new_nodeG(newG);
-            bottom = bottom->next;
-          }
-        }
-
-        gameInsert(newG, hashT_game);
+        t1->team->wins++;
+        newG->winTeam = 1;
       }
+      else
+      {
+        if (newG->score2 > newG->score1)
+        {
+          t2->team->wins++;
+          newG->winTeam = 2;
+        }
+        else
+        {
+          newG->winTeam = 0;
+        }
+
+      }
+
+      if (top == 0)
+      {
+        top = new_nodeG(newG);
+        bottom = top;
+      }
+      else
+      {
+        bottom->next = new_nodeG(newG);
+        bottom = bottom->next;
+      }
+
+      gameInsert(newG, hashT_game);
     }
 
   }
@@ -381,28 +357,26 @@ void r(char *name)
   }
   else
   {
+    gN = hash(name, 30011);
+    if (i->game->score1 > i->game->score2)
     {
-      gN = hash(name, 30011);
-      if (i->game->score1 > i->game->score2)
+      i->game->team1->team->wins--;
+    }
+    else
+    {
+      if (i->game->score1 < i->game->score2)
       {
-        i->game->team1->team->wins--;
+        i->game->team2->team->wins--;
       }
       else
       {
-        if (i->game->score1 < i->game->score2)
-        {
-          i->game->team2->team->wins--;
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      hashT_game[gN] = delete(hashT_game[gN], name, 0);
-      top = delete(top, name, 1);
     }
+
+    hashT_game[gN] = delete(hashT_game[gN], name, 0);
+    top = delete(top, name, 1);
   }
 
 }
@@ -416,50 +390,44 @@ void s(char *name, int score1, int score2)
   }
   else
   {
+    if (i->game->winTeam == 1)
     {
-      if (i->game->winTeam == 1)
+      i->game->team1->team->wins--;
+    }
+    else
+    {
+      if (i->game->winTeam == 2)
       {
-        i->game->team1->team->wins--;
+        i->game->team2->team->wins--;
       }
       else
       {
-        if (i->game->winTeam == 2)
-        {
-          i->game->team2->team->wins--;
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      i->game->score1 = score1;
-      i->game->score2 = score2;
-      if (score1 > score2)
-      {
-        {
-          i->game->team1->team->wins++;
-          i->game->winTeam = 1;
-        }
-      }
-      else
-      {
-        if (score1 < score2)
-        {
-          {
-            i->game->team2->team->wins++;
-            i->game->winTeam = 2;
-          }
-        }
-        else
-        {
-          i->game->winTeam = 0;
-        }
-
+        
       }
 
     }
+
+    i->game->score1 = score1;
+    i->game->score2 = score2;
+    if (score1 > score2)
+    {
+      i->game->team1->team->wins++;
+      i->game->winTeam = 1;
+    }
+    else
+    {
+      if (score1 < score2)
+      {
+        i->game->team2->team->wins++;
+        i->game->winTeam = 2;
+      }
+      else
+      {
+        i->game->winTeam = 0;
+      }
+
+    }
+
   }
 
 }
@@ -472,37 +440,29 @@ void A(char *name)
   newT = (Team *) malloc(sizeof(Team));
   if (i != 0)
   {
-    {
-      printf("%d Equipa existente.\n", commands);
-      free(newT);
-    }
+    printf("%d Equipa existente.\n", commands);
+    free(newT);
   }
   else
   {
+    while (name[p] != '\0')
+      p++;
+
+    newT->tName = (char *) malloc((sizeof(char)) * (p + 1));
+    strcpy(newT->tName, name);
+    newT->wins = 0;
+    if (topT == 0)
     {
-      while (name[p] != '\0')
-        p++;
-
-      newT->tName = (char *) malloc((sizeof(char)) * (p + 1));
-      strcpy(newT->tName, name);
-      newT->wins = 0;
-      if (topT == 0)
-      {
-        {
-          topT = new_nodeT(newT);
-          bottomT = topT;
-        }
-      }
-      else
-      {
-        {
-          bottomT->next = new_nodeT(newT);
-          bottomT = bottomT->next;
-        }
-      }
-
-      teamInsert(newT, teams);
+      topT = new_nodeT(newT);
+      bottomT = topT;
     }
+    else
+    {
+      bottomT->next = new_nodeT(newT);
+      bottomT = bottomT->next;
+    }
+
+    teamInsert(newT, teams);
   }
 
 }
@@ -537,33 +497,27 @@ void g()
   {
     if ((i->team->wins > most_wins) || ((i->team->wins == 0) && (howMany == 0)))
     {
-      {
-        t = (Team *) realloc(t, sizeof(Team));
-        t[0] = *i->team;
-        most_wins = i->team->wins;
-        howMany = 1;
-      }
+      t = (Team *) realloc(t, sizeof(Team));
+      t[0] = *i->team;
+      most_wins = i->team->wins;
+      howMany = 1;
     }
     else
     {
       if (i->team->wins == most_wins)
       {
+        howMany++;
+        aux_x = (Team *) realloc(t, (sizeof(Team)) * howMany);
+        if (aux_x)
         {
-          howMany++;
-          aux_x = (Team *) realloc(t, (sizeof(Team)) * howMany);
-          if (aux_x)
-          {
-            {
-              t = aux_x;
-            }
-          }
-          else
-          {
-            
-          }
-
-          t[howMany - 1] = *i->team;
+          t = aux_x;
         }
+        else
+        {
+          
+        }
+
+        t[howMany - 1] = *i->team;
       }
       else
       {
@@ -589,13 +543,11 @@ void g()
       aux_aux = (char *) malloc(((sizeof(char)) * strlen(t_aux[j])) + 1);
       if (strcmp(t_aux[k], t_aux[j]) > 0)
       {
-        {
-          strcpy(aux_aux, t_aux[j]);
-          t_aux[j] = (char *) realloc(t_aux[j], ((sizeof(char)) * strlen(t_aux[k])) + 1);
-          strcpy(t_aux[j], t_aux[k]);
-          t_aux[k] = (char *) realloc(t_aux[k], ((sizeof(char)) * strlen(aux_aux)) + 1);
-          strcpy(t_aux[k], aux_aux);
-        }
+        strcpy(aux_aux, t_aux[j]);
+        t_aux[j] = (char *) realloc(t_aux[j], ((sizeof(char)) * strlen(t_aux[k])) + 1);
+        strcpy(t_aux[j], t_aux[k]);
+        t_aux[k] = (char *) realloc(t_aux[k], ((sizeof(char)) * strlen(aux_aux)) + 1);
+        strcpy(t_aux[k], aux_aux);
       }
       else
       {

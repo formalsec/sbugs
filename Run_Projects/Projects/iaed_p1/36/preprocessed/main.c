@@ -24,10 +24,8 @@ int partition(int *arr, int low, int high, produto *lista)
   {
     if (strcmp(lista[arr[j]].descricao, lista[pivot].descricao) < 0)
     {
-      {
-        i++;
-        swap(&arr[i], &arr[j]);
-      }
+      i++;
+      swap(&arr[i], &arr[j]);
     }
     else
     {
@@ -36,10 +34,8 @@ int partition(int *arr, int low, int high, produto *lista)
 
     if ((strcmp(lista[arr[j]].descricao, lista[pivot].descricao) == 0) && (lista[arr[j]].id < lista[pivot].id))
     {
-      {
-        i++;
-        swap(&arr[i], &arr[j]);
-      }
+      i++;
+      swap(&arr[i], &arr[j]);
     }
     else
     {
@@ -56,11 +52,9 @@ void quickSort(int *arr, int low, int high, produto *lista)
 {
   if (low < high)
   {
-    {
-      int pi = partition(arr, low, high, lista);
-      quickSort(arr, low, pi - 1, lista);
-      quickSort(arr, pi + 1, high, lista);
-    }
+    int pi = partition(arr, low, high, lista);
+    quickSort(arr, low, pi - 1, lista);
+    quickSort(arr, pi + 1, high, lista);
   }
   else
   {
@@ -95,17 +89,13 @@ void merge(produto *lista, int left, int med, int right)
   {
     if (arr1[i].preco <= arr2[j].preco)
     {
-      {
-        lista[k] = arr1[i];
-        i++;
-      }
+      lista[k] = arr1[i];
+      i++;
     }
     else
     {
-      {
-        lista[k] = arr2[j];
-        j++;
-      }
+      lista[k] = arr2[j];
+      j++;
     }
 
     k++;
@@ -131,12 +121,10 @@ void merge_sort(produto *lista, int left, int right)
 {
   if (left < right)
   {
-    {
-      int med = left + ((right - left) / 2);
-      merge_sort(lista, left, med);
-      merge_sort(lista, med + 1, right);
-      merge(lista, left, med, right);
-    }
+    int med = left + ((right - left) / 2);
+    merge_sort(lista, left, med);
+    merge_sort(lista, med + 1, right);
+    merge(lista, left, med, right);
   }
   else
   {
@@ -168,10 +156,8 @@ void command_q(char *idp, char *qtd, produto *lista, int id)
   int _qtd = atoi(qtd);
   if (_idp >= id)
   {
-    {
-      printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", _idp);
-      return;
-    }
+    printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", _idp);
+    return;
   }
   else
   {
@@ -200,10 +186,8 @@ void command_A(char *ide, char *idp, char *qtd, produto *lista, encomenda *encom
   node *p2;
   if (_ide >= encid)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", _idp, _ide);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", _idp, _ide);
+    return;
   }
   else
   {
@@ -212,10 +196,8 @@ void command_A(char *ide, char *idp, char *qtd, produto *lista, encomenda *encom
 
   if (_idp >= id)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", _idp, _ide);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", _idp, _ide);
+    return;
   }
   else
   {
@@ -224,10 +206,8 @@ void command_A(char *ide, char *idp, char *qtd, produto *lista, encomenda *encom
 
   if ((lista[_idp].qtd - lista[_idp].encomendado) < _qtd)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", _idp, _ide);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", _idp, _ide);
+    return;
   }
   else
   {
@@ -236,10 +216,8 @@ void command_A(char *ide, char *idp, char *qtd, produto *lista, encomenda *encom
 
   if ((encomendas[_ide].peso + (lista[_idp].peso * _qtd)) > 200)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", _idp, _ide);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", _idp, _ide);
+    return;
   }
   else
   {
@@ -255,11 +233,9 @@ void command_A(char *ide, char *idp, char *qtd, produto *lista, encomenda *encom
   }
   else
   {
-    {
-      p = push(&encomendas[_ide].head, _qtd, _idp);
-      p2 = push(&lista[_idp].head, 0, _ide);
-      set_connection(p, p2);
-    }
+    p = push(&encomendas[_ide].head, _qtd, _idp);
+    p2 = push(&lista[_idp].head, 0, _ide);
+    set_connection(p, p2);
   }
 
 }
@@ -270,10 +246,8 @@ void command_r(char *idp, char *qtd, produto *lista, int id)
   int _qtd = atoi(qtd);
   if (_idp >= id)
   {
-    {
-      printf("Impossivel remover stock do produto %d. Produto inexistente.\n", _idp);
-      return;
-    }
+    printf("Impossivel remover stock do produto %d. Produto inexistente.\n", _idp);
+    return;
   }
   else
   {
@@ -282,10 +256,8 @@ void command_r(char *idp, char *qtd, produto *lista, int id)
 
   if (((lista[_idp].qtd - _qtd) < 0) || (lista[_idp].encomendado > (lista[_idp].qtd - _qtd)))
   {
-    {
-      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", _qtd, _idp);
-      return;
-    }
+    printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", _qtd, _idp);
+    return;
   }
   else
   {
@@ -302,10 +274,8 @@ void command_R(char *ide, char *idp, produto *lista, encomenda *encomendas, int 
   node *p;
   if (_ide >= encid)
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", _idp, _ide);
-      return;
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", _idp, _ide);
+    return;
   }
   else
   {
@@ -314,10 +284,8 @@ void command_R(char *ide, char *idp, produto *lista, encomenda *encomendas, int 
 
   if (_idp >= id)
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", _idp, _ide);
-      return;
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", _idp, _ide);
+    return;
   }
   else
   {
@@ -327,12 +295,10 @@ void command_R(char *ide, char *idp, produto *lista, encomenda *encomendas, int 
   p = find(encomendas[_ide].head, _idp);
   if (p)
   {
-    {
-      encomendas[_ide].peso -= lista[_idp].peso * p->qtd;
-      lista[_idp].encomendado -= p->qtd;
-      deleteNode(&lista[_idp].head, p->connection);
-      deleteNode(&encomendas[_ide].head, p);
-    }
+    encomendas[_ide].peso -= lista[_idp].peso * p->qtd;
+    lista[_idp].encomendado -= p->qtd;
+    deleteNode(&lista[_idp].head, p->connection);
+    deleteNode(&encomendas[_ide].head, p);
   }
   else
   {
@@ -348,10 +314,8 @@ void command_C(char *ide, produto *lista, encomenda *encomendas, int encid)
   node *current;
   if (_ide >= encid)
   {
-    {
-      printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", _ide);
-      return;
-    }
+    printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", _ide);
+    return;
   }
   else
   {
@@ -374,10 +338,8 @@ void command_p(char *idp, char *preco, produto *lista, int id)
   int _preco = atoi(preco);
   if (_idp >= id)
   {
-    {
-      printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", _idp);
-      return;
-    }
+    printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", _idp);
+    return;
   }
   else
   {
@@ -394,10 +356,8 @@ void command_E(char *ide, char *idp, produto *lista, encomenda *encomendas, int 
   node *p;
   if (_ide >= encid)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", _ide);
-      return;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", _ide);
+    return;
   }
   else
   {
@@ -406,10 +366,8 @@ void command_E(char *ide, char *idp, produto *lista, encomenda *encomendas, int 
 
   if (_idp >= id)
   {
-    {
-      printf("Impossivel listar produto %d. Produto inexistente.\n", _idp);
-      return;
-    }
+    printf("Impossivel listar produto %d. Produto inexistente.\n", _idp);
+    return;
   }
   else
   {
@@ -438,10 +396,8 @@ void command_m(char *idp, produto *lista, int id)
   maximum = 0;
   if (_idp >= id)
   {
-    {
-      printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", _idp);
-      return;
-    }
+    printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", _idp);
+    return;
   }
   else
   {
@@ -452,17 +408,15 @@ void command_m(char *idp, produto *lista, int id)
   {
     if (current->connection->qtd == max)
     {
+      if (current->prodId < maximum->prodId)
       {
-        if (current->prodId < maximum->prodId)
-        {
-          maximum = current;
-        }
-        else
-        {
-          
-        }
-
+        maximum = current;
       }
+      else
+      {
+        
+      }
+
     }
     else
     {
@@ -471,10 +425,8 @@ void command_m(char *idp, produto *lista, int id)
 
     if (current->connection->qtd > max)
     {
-      {
-        max = current->connection->qtd;
-        maximum = current;
-      }
+      max = current->connection->qtd;
+      maximum = current;
     }
     else
     {
@@ -523,10 +475,8 @@ void command_L(char *ide, produto *lista, encomenda *encomendas, int encid)
   current = encomendas[_ide].head;
   if (_ide >= encid)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", _ide);
-      return;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", _ide);
+    return;
   }
   else
   {
@@ -543,12 +493,10 @@ void command_L(char *ide, produto *lista, encomenda *encomendas, int encid)
 
   if (encomendas[_ide].head)
   {
-    {
-      quickSort(array, 0, i - 1, lista);
-      for (n = 0; n != i; n++)
-        printf("* %s %d %d\n", lista[array[n]].descricao, lista[array[n]].preco, find(lista[array[n]].head, _ide)->connection->qtd);
+    quickSort(array, 0, i - 1, lista);
+    for (n = 0; n != i; n++)
+      printf("* %s %d %d\n", lista[array[n]].descricao, lista[array[n]].preco, find(lista[array[n]].head, _ide)->connection->qtd);
 
-    }
   }
   else
   {

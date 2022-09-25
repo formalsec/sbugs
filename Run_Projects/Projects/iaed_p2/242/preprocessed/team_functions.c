@@ -75,15 +75,11 @@ void cmd_A(char *t_name, int NL, team **hash_table_team)
 {
   if (hash_table_lookup_team(t_name, hash_table_team) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-    }
+    printf("%d Equipa existente.\n", NL);
   }
   else
   {
-    {
-      HTinsert_team(t_name, hash_table_team);
-    }
+    HTinsert_team(t_name, hash_table_team);
   }
 
 }
@@ -92,16 +88,12 @@ void cmd_P(char *t_name, int NL, team **hash_table_team)
 {
   if (hash_table_lookup_team(t_name, hash_table_team) != 0)
   {
-    {
-      team *tmp = hash_table_lookup_team(t_name, hash_table_team);
-      printf("%d %s %d\n", NL, tmp->name, tmp->wins);
-    }
+    team *tmp = hash_table_lookup_team(t_name, hash_table_team);
+    printf("%d %s %d\n", NL, tmp->name, tmp->wins);
   }
   else
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-    }
+    printf("%d Equipa inexistente.\n", NL);
   }
 
 }
@@ -118,9 +110,7 @@ int get_max(team **hash_t)
     {
       if (tmp->wins > max)
       {
-        {
-          max = tmp->wins;
-        }
+        max = tmp->wins;
       }
       else
       {
@@ -142,24 +132,20 @@ team *insert_alpha(team *head, char *t_name, int wins)
   x = new_team(t_name, wins);
   if ((head == 0) || (strcmp(head->name, t_name) > 0))
   {
-    {
-      x->next = head;
-      return x;
-    }
+    x->next = head;
+    return x;
   }
   else
   {
+    current = head;
+    while ((current->next != 0) && (strcmp(current->next->name, x->name) < 0))
     {
-      current = head;
-      while ((current->next != 0) && (strcmp(current->next->name, x->name) < 0))
-      {
-        current = current->next;
-      }
-
-      x->next = current->next;
-      current->next = x;
-      return head;
+      current = current->next;
     }
+
+    x->next = current->next;
+    current->next = x;
+    return head;
   }
 
 }
@@ -169,15 +155,13 @@ void print_max(team **max_teams, int NL)
   team *tmp = *max_teams;
   if (tmp != 0)
   {
+    printf("%d Melhores %d\n", NL, tmp->wins);
+    while (tmp != 0)
     {
-      printf("%d Melhores %d\n", NL, tmp->wins);
-      while (tmp != 0)
-      {
-        printf("%d * %s\n", NL, tmp->name);
-        tmp = tmp->next;
-      }
-
+      printf("%d * %s\n", NL, tmp->name);
+      tmp = tmp->next;
     }
+
   }
   else
   {
@@ -198,9 +182,7 @@ void cmd_g(team **max_teams, int NL, team **hash_t_team)
     {
       if (tmp->wins == max)
       {
-        {
-          *max_teams = insert_alpha(*max_teams, tmp->name, tmp->wins);
-        }
+        *max_teams = insert_alpha(*max_teams, tmp->name, tmp->wins);
       }
       else
       {

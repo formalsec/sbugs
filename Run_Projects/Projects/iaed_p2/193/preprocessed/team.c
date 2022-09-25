@@ -22,10 +22,8 @@ void deleteTeam(void *team)
 {
   if (team != 0)
   {
-    {
-      free(((Team *) team)->name);
-      free(team);
-    }
+    free(((Team *) team)->name);
+    free(team);
   }
   else
   {
@@ -38,9 +36,7 @@ void updateVictories(Team *team, int newVictories)
 {
   if (team != 0)
   {
-    {
-      team->victories += newVictories;
-    }
+    team->victories += newVictories;
   }
   else
   {
@@ -53,19 +49,15 @@ int compareTeamFunction(char *name, void *team)
 {
   if ((team != 0) && (name != 0))
   {
+    if (strcmp(name, ((Team *) team)->name) == 0)
     {
-      if (strcmp(name, ((Team *) team)->name) == 0)
-      {
-        {
-          return 1;
-        }
-      }
-      else
-      {
-        
-      }
-
+      return 1;
     }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -79,9 +71,7 @@ void printTeam(void *team, int *cmdCounter)
 {
   if (team != 0)
   {
-    {
-      printf("%d %s %d\n", *cmdCounter, ((Team *) team)->name, ((Team *) team)->victories);
-    }
+    printf("%d %s %d\n", *cmdCounter, ((Team *) team)->name, ((Team *) team)->victories);
   }
   else
   {

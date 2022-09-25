@@ -21,15 +21,11 @@ void printEquipa(Hash_equipa *hash_eq, char nome[], int NL)
   Equipa *equipa = 0;
   if (HT_Get_Equipa(hash_eq, nome, &equipa) == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-    }
+    printf("%d Equipa inexistente.\n", NL);
   }
   else
   {
-    {
-      printf("%d %s %d\n", NL, equipa->nome, equipa->vitorias);
-    }
+    printf("%d %s %d\n", NL, equipa->nome, equipa->vitorias);
   }
 
 }
@@ -70,9 +66,7 @@ int HT_Get_Equipa(Hash_equipa *hash, char *nome, Equipa **equipa_ptr)
   hash_value = calc_hash(nome, hash->size);
   if (hash->table_eq[hash_value] == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -84,18 +78,16 @@ int HT_Get_Equipa(Hash_equipa *hash, char *nome, Equipa **equipa_ptr)
   {
     if (strcmp(curr_node->eq->nome, nome) == 0)
     {
+      if (equipa_ptr)
       {
-        if (equipa_ptr)
-        {
-          *equipa_ptr = curr_node->eq;
-        }
-        else
-        {
-          
-        }
-
-        return 1;
+        *equipa_ptr = curr_node->eq;
       }
+      else
+      {
+        
+      }
+
+      return 1;
     }
     else
     {
@@ -142,20 +134,16 @@ void HT_Equipas_Insert(char nome[], Hash_equipa *hash, int NL)
   Equipa *eq;
   if (HT_Get_Equipa(hash, nome, 0) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-    }
+    printf("%d Equipa existente.\n", NL);
   }
   else
   {
-    {
-      eq = novaEquipa(nome);
-      hash_value = calc_hash(nome, hash->size);
-      node_tmp = (Node_equipa *) malloc(sizeof(Node_equipa));
-      node_tmp->eq = eq;
-      node_tmp->next = hash->table_eq[hash_value];
-      hash->table_eq[hash_value] = node_tmp;
-    }
+    eq = novaEquipa(nome);
+    hash_value = calc_hash(nome, hash->size);
+    node_tmp = (Node_equipa *) malloc(sizeof(Node_equipa));
+    node_tmp->eq = eq;
+    node_tmp->next = hash->table_eq[hash_value];
+    hash->table_eq[hash_value] = node_tmp;
   }
 
 }
@@ -172,38 +160,32 @@ void seleciona_equipas(Hash_equipa *hash_eq, int NL)
   {
     if (hash_eq->table_eq[i] != 0)
     {
+      current = hash_eq->table_eq[i];
+      while (current != 0)
       {
-        current = hash_eq->table_eq[i];
-        while (current != 0)
+        if (current->eq->vitorias > max)
         {
-          if (current->eq->vitorias > max)
+          max = current->eq->vitorias;
+          count = 0;
+          string[count] = current->eq->nome;
+        }
+        else
+        {
+          if (current->eq->vitorias == max)
           {
-            {
-              max = current->eq->vitorias;
-              count = 0;
-              string[count] = current->eq->nome;
-            }
+            count++;
+            string[count] = current->eq->nome;
           }
           else
           {
-            if (current->eq->vitorias == max)
-            {
-              {
-                count++;
-                string[count] = current->eq->nome;
-              }
-            }
-            else
-            {
-              
-            }
-
+            
           }
 
-          current = current->next;
         }
 
+        current = current->next;
       }
+
     }
     else
     {
@@ -214,21 +196,17 @@ void seleciona_equipas(Hash_equipa *hash_eq, int NL)
 
   if (max == (-1))
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
+    qsort(string, count + 1, sizeof(string[0]), cmp);
+    printf("%d Melhores %d\n", NL, max);
+    for (k = 0; k <= count; k++)
     {
-      qsort(string, count + 1, sizeof(string[0]), cmp);
-      printf("%d Melhores %d\n", NL, max);
-      for (k = 0; k <= count; k++)
-      {
-        printf("%d * %s\n", NL, string[k]);
-      }
-
+      printf("%d * %s\n", NL, string[k]);
     }
+
   }
 
 }

@@ -108,9 +108,7 @@ void comando_A(int NL, HT_eq equipas)
   nome = strdup(n);
   if (HTeq_procura(equipas, nome, 1013) == 0)
   {
-    {
-      HTeq_adiciona(equipas, nome, 1013);
-    }
+    HTeq_adiciona(equipas, nome, 1013);
   }
   else
   {
@@ -139,9 +137,7 @@ void comando_P(int NL, HT_eq equipas)
   }
   else
   {
-    {
-      printf("%d %s %d\n", NL, nome_equipa(eq), vitorias_equipa(eq));
-    }
+    printf("%d %s %d\n", NL, nome_equipa(eq), vitorias_equipa(eq));
   }
 
   free(nome);
@@ -189,23 +185,19 @@ void comando_a(int NL, HT_eq equipas, HT_jg jogos, Lista_jg lista)
   }
   else
   {
+    eq1 = HTeq_procura(equipas, nome_eq1, 1013);
+    eq2 = HTeq_procura(equipas, nome_eq2, 1013);
+    if ((eq1 == 0) || (eq2 == 0))
     {
-      eq1 = HTeq_procura(equipas, nome_eq1, 1013);
-      eq2 = HTeq_procura(equipas, nome_eq2, 1013);
-      if ((eq1 == 0) || (eq2 == 0))
-      {
-        printf("%d Equipa inexistente.\n", NL);
-      }
-      else
-      {
-        {
-          jogo = novo_jogo(nome, eq1, eq2, score1, score2);
-          HTjg_adiciona(jogos, nome, jogo, 1013);
-          LSTjg_adiciona(lista, jogo);
-        }
-      }
-
+      printf("%d Equipa inexistente.\n", NL);
     }
+    else
+    {
+      jogo = novo_jogo(nome, eq1, eq2, score1, score2);
+      HTjg_adiciona(jogos, nome, jogo, 1013);
+      LSTjg_adiciona(lista, jogo);
+    }
+
   }
 
   free(nome);
@@ -232,9 +224,7 @@ void comando_p(int NL, HT_jg jogos)
   }
   else
   {
-    {
-      escreve_jogo(jg, NL);
-    }
+    escreve_jogo(jg, NL);
   }
 
   free(nome);
@@ -265,39 +255,35 @@ void comando_s(int NL, HT_jg jogos)
   }
   else
   {
+    antigo_vencedor = vencedor_jogo(jogo);
+    atualiza_scores_jg(jogo, novo_score1, novo_score2);
+    novo_vencedor = vencedor_jogo(jogo);
+    if ((antigo_vencedor == 0) && (novo_vencedor != 0))
     {
-      antigo_vencedor = vencedor_jogo(jogo);
-      atualiza_scores_jg(jogo, novo_score1, novo_score2);
-      novo_vencedor = vencedor_jogo(jogo);
-      if ((antigo_vencedor == 0) && (novo_vencedor != 0))
+      altera_vitorias_eq(novo_vencedor, 1);
+    }
+    else
+    {
+      if ((antigo_vencedor != 0) && (novo_vencedor == 0))
       {
-        altera_vitorias_eq(novo_vencedor, 1);
+        altera_vitorias_eq(antigo_vencedor, -1);
       }
       else
       {
-        if ((antigo_vencedor != 0) && (novo_vencedor == 0))
+        if (antigo_vencedor != novo_vencedor)
         {
+          altera_vitorias_eq(novo_vencedor, 1);
           altera_vitorias_eq(antigo_vencedor, -1);
         }
         else
         {
-          if (antigo_vencedor != novo_vencedor)
-          {
-            {
-              altera_vitorias_eq(novo_vencedor, 1);
-              altera_vitorias_eq(antigo_vencedor, -1);
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
 
     }
+
   }
 
   free(nome);
@@ -328,21 +314,19 @@ void comando_r(int NL, HT_jg jogos, Lista_jg lista_jogos)
   }
   else
   {
+    vencedor = vencedor_jogo(jogo);
+    if (vencedor != 0)
     {
-      vencedor = vencedor_jogo(jogo);
-      if (vencedor != 0)
-      {
-        altera_vitorias_eq(vencedor, -1);
-      }
-      else
-      {
-        
-      }
-
-      LSTjg_apaga(lista_jogos, jogo);
-      HTjg_apaga(jogos, nome, jogo, 1013);
-      apaga_jogo(jogo);
+      altera_vitorias_eq(vencedor, -1);
     }
+    else
+    {
+      
+    }
+
+    LSTjg_apaga(lista_jogos, jogo);
+    HTjg_apaga(jogos, nome, jogo, 1013);
+    apaga_jogo(jogo);
   }
 
   free(nome);

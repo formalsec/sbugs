@@ -33,23 +33,19 @@ void InsertGame(link *head, link *tail, Game g)
   link aux = (link) malloc(sizeof(struct node));
   if ((*head) == 0)
   {
-    {
-      *head = aux;
-      (*head)->g = g;
-      (*head)->next = 0;
-      (*head)->prev = 0;
-      *tail = *head;
-    }
+    *head = aux;
+    (*head)->g = g;
+    (*head)->next = 0;
+    (*head)->prev = 0;
+    *tail = *head;
   }
   else
   {
-    {
-      aux->g = g;
-      aux->next = 0;
-      (*tail)->next = aux;
-      aux->prev = *tail;
-      *tail = aux;
-    }
+    aux->g = g;
+    aux->next = 0;
+    (*tail)->next = aux;
+    aux->prev = *tail;
+    *tail = aux;
   }
 
 }
@@ -148,17 +144,13 @@ Team NewTeam(char *name, Team *head)
   t->wins = 0;
   if ((*head) == 0)
   {
-    {
-      *head = t;
-      (*head)->next = 0;
-    }
+    *head = t;
+    (*head)->next = 0;
   }
   else
   {
-    {
-      t->next = *head;
-      *head = t;
-    }
+    t->next = *head;
+    *head = t;
   }
 
   return t;
@@ -174,10 +166,8 @@ int *MaxWins(Team *head, int *lst)
   {
     if (aux->wins > lst[0])
     {
-      {
-        lst[0] = aux->wins;
-        lst[1] = 1;
-      }
+      lst[0] = aux->wins;
+      lst[1] = 1;
     }
     else
     {

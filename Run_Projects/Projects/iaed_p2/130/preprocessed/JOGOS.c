@@ -74,46 +74,40 @@ Jlink Apaga_Jogo_Hash(Jlink head, Q q, pJogo p)
   {
     if (strcmp(t->j->nome, p->nome) == 0)
     {
+      if (!t->pass->prev)
       {
-        if (!t->pass->prev)
-        {
-          QUEUE_Pop(q);
-        }
-        else
-        {
-          if (!t->pass->next)
-          {
-            {
-              q->tail = q->tail->prev;
-              q->tail->next = 0;
-              free(t->pass);
-            }
-          }
-          else
-          {
-            {
-              Qlink ant = t->pass->prev;
-              Qlink prox = t->pass->next;
-              ant->next = prox;
-              prox->prev = ant;
-              free(t->pass);
-            }
-          }
-
-        }
-
-        if (t == head)
-        {
-          head = t->next;
-        }
-        else
-        {
-          pre->next = t->next;
-        }
-
-        FREE_Jnode(t);
-        break;
+        QUEUE_Pop(q);
       }
+      else
+      {
+        if (!t->pass->next)
+        {
+          q->tail = q->tail->prev;
+          q->tail->next = 0;
+          free(t->pass);
+        }
+        else
+        {
+          Qlink ant = t->pass->prev;
+          Qlink prox = t->pass->next;
+          ant->next = prox;
+          prox->prev = ant;
+          free(t->pass);
+        }
+
+      }
+
+      if (t == head)
+      {
+        head = t->next;
+      }
+      else
+      {
+        pre->next = t->next;
+      }
+
+      FREE_Jnode(t);
+      break;
     }
     else
     {
@@ -180,11 +174,9 @@ Qlink QUEUEput(Q q, pJogo p)
 {
   if (q->head == 0)
   {
-    {
-      q->head = (q->tail = NEWnode(p, q->head));
-      q->head->prev = 0;
-      return q->head;
-    }
+    q->head = (q->tail = NEWnode(p, q->head));
+    q->head->prev = 0;
+    return q->head;
   }
   else
   {

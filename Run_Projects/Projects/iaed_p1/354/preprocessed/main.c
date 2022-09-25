@@ -48,9 +48,7 @@ void Adiciona_Stock()
   qtd = new_sym_var(sizeof(int) * 8);
   if (idp < idp_at)
   {
-    {
-      Prod_exis[idp].qtd += qtd;
-    }
+    Prod_exis[idp].qtd += qtd;
   }
   else
   {
@@ -115,26 +113,22 @@ void Adiciona_Prod_Enc()
         {
           if (Encontra_IP(Enc_exis[ide], idp) >= 0)
           {
-            {
-              Enc_exis[ide].enc[Encontra_IP(Enc_exis[ide], idp)].qtd += qtd;
-              Prod_exis[idp].qtd -= qtd;
-              Enc_exis[ide].pes += Prod_exis[idp].peso * qtd;
-            }
+            Enc_exis[ide].enc[Encontra_IP(Enc_exis[ide], idp)].qtd += qtd;
+            Prod_exis[idp].qtd -= qtd;
+            Enc_exis[ide].pes += Prod_exis[idp].peso * qtd;
           }
           else
           {
-            {
-              produto p;
-              p.idp = Prod_exis[idp].idp;
-              strcpy(p.descricao, Prod_exis[idp].descricao);
-              p.preco = Prod_exis[idp].preco;
-              p.qtd = qtd;
-              p.peso = Prod_exis[idp].peso;
-              Prod_exis[idp].qtd -= qtd;
-              Enc_exis[ide].enc[Enc_exis[ide].qtd] = p;
-              Enc_exis[ide].pes += Prod_exis[idp].peso * qtd;
-              Enc_exis[ide].qtd++;
-            }
+            produto p;
+            p.idp = Prod_exis[idp].idp;
+            strcpy(p.descricao, Prod_exis[idp].descricao);
+            p.preco = Prod_exis[idp].preco;
+            p.qtd = qtd;
+            p.peso = Prod_exis[idp].peso;
+            Prod_exis[idp].qtd -= qtd;
+            Enc_exis[ide].enc[Enc_exis[ide].qtd] = p;
+            Enc_exis[ide].pes += Prod_exis[idp].peso * qtd;
+            Enc_exis[ide].qtd++;
           }
 
         }
@@ -191,22 +185,18 @@ void Remove_PE()
     }
     else
     {
+      if (Encontra_IP(Enc_exis[ide], idp) >= 0)
       {
-        if (Encontra_IP(Enc_exis[ide], idp) >= 0)
-        {
-          {
-            idpp = Encontra_IP(Enc_exis[ide], idp);
-            Prod_exis[idp].qtd += Enc_exis[ide].enc[idpp].qtd;
-            Enc_exis[ide].pes -= Enc_exis[ide].enc[idpp].qtd * Enc_exis[ide].enc[idpp].peso;
-            Enc_exis[ide].enc[idpp].qtd = 0;
-          }
-        }
-        else
-        {
-          
-        }
-
+        idpp = Encontra_IP(Enc_exis[ide], idp);
+        Prod_exis[idp].qtd += Enc_exis[ide].enc[idpp].qtd;
+        Enc_exis[ide].pes -= Enc_exis[ide].enc[idpp].qtd * Enc_exis[ide].enc[idpp].peso;
+        Enc_exis[ide].enc[idpp].qtd = 0;
       }
+      else
+      {
+        
+      }
+
     }
 
   }
@@ -226,12 +216,10 @@ void Custo_E()
   }
   else
   {
-    {
-      for (i = 0; i < Enc_exis[ide].qtd; i++)
-        res += Enc_exis[ide].enc[i].preco * Enc_exis[ide].enc[i].qtd;
+    for (i = 0; i < Enc_exis[ide].qtd; i++)
+      res += Enc_exis[ide].enc[i].preco * Enc_exis[ide].enc[i].qtd;
 
-      printf("Custo da encomenda %d %d.\n", ide, res);
-    }
+    printf("Custo da encomenda %d %d.\n", ide, res);
   }
 
 }
@@ -249,22 +237,20 @@ void Altera_Preco()
   }
   else
   {
+    Prod_exis[idp].preco = preco;
+    for (i = 0; i < ide_at; i++)
     {
-      Prod_exis[idp].preco = preco;
-      for (i = 0; i < ide_at; i++)
+      if (Encontra_IP(Enc_exis[i], idp) >= 0)
       {
-        if (Encontra_IP(Enc_exis[i], idp) >= 0)
-        {
-          Enc_exis[i].enc[Encontra_IP(Enc_exis[i], idp)].preco = preco;
-        }
-        else
-        {
-          
-        }
-
+        Enc_exis[i].enc[Encontra_IP(Enc_exis[i], idp)].preco = preco;
+      }
+      else
+      {
+        
       }
 
     }
+
   }
 
 }
@@ -288,28 +274,24 @@ void L_descricaoqtd()
     }
     else
     {
+      if (Encontra_IP(Enc_exis[ide], idp) >= 0)
       {
-        if (Encontra_IP(Enc_exis[ide], idp) >= 0)
+        idpe = Encontra_IP(Enc_exis[ide], idp);
+        printf("%s %d.\n", Enc_exis[ide].enc[idpe].descricao, Enc_exis[ide].enc[idpe].qtd);
+      }
+      else
+      {
+        if (Encontra_IP(Enc_exis[ide], idp) == (-2))
         {
-          {
-            idpe = Encontra_IP(Enc_exis[ide], idp);
-            printf("%s %d.\n", Enc_exis[ide].enc[idpe].descricao, Enc_exis[ide].enc[idpe].qtd);
-          }
+          printf("%s %d.\n", Prod_exis[idp].descricao, 0);
         }
         else
         {
-          if (Encontra_IP(Enc_exis[ide], idp) == (-2))
-          {
-            printf("%s %d.\n", Prod_exis[idp].descricao, 0);
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
+
     }
 
   }
@@ -329,57 +311,51 @@ void L_idep()
   }
   else
   {
+    for (i = 0; i < ide_at; i++)
+      if (Encontra_IP(Enc_exis[i], idp) != (-2))
     {
-      for (i = 0; i < ide_at; i++)
-        if (Encontra_IP(Enc_exis[i], idp) != (-2))
+      if (Enc_exis[i].enc[Encontra_IP(Enc_exis[i], idp)].qtd > max)
       {
+        max = Enc_exis[i].enc[Encontra_IP(Enc_exis[i], idp)].qtd;
+        res = i;
+      }
+      else
+      {
+        if (Enc_exis[i].enc[Encontra_IP(Enc_exis[i], idp)].qtd == max)
         {
-          if (Enc_exis[i].enc[Encontra_IP(Enc_exis[i], idp)].qtd > max)
+          if (i < res)
           {
-            {
-              max = Enc_exis[i].enc[Encontra_IP(Enc_exis[i], idp)].qtd;
-              res = i;
-            }
+            res = 1;
           }
           else
           {
-            if (Enc_exis[i].enc[Encontra_IP(Enc_exis[i], idp)].qtd == max)
-            {
-              if (i < res)
-              {
-                res = 1;
-              }
-              else
-              {
-                
-              }
-
-            }
-            else
-            {
-              
-            }
-
+            
           }
 
         }
-      }
-      else
-      {
-        
-      }
+        else
+        {
+          
+        }
 
-
-      if (res >= 0)
-      {
-        printf("Maximo produto %d %d %d.\n", idp, res, max);
-      }
-      else
-      {
-        
       }
 
     }
+    else
+    {
+      
+    }
+
+
+    if (res >= 0)
+    {
+      printf("Maximo produto %d %d %d.\n", idp, res, max);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -388,18 +364,16 @@ int less(produto a, produto v, char o)
 {
   if (o == 'l')
   {
+    if (a.preco == v.preco)
     {
-      if (a.preco == v.preco)
-      {
-        return a.idp < v.idp;
-      }
-      else
-      {
-        
-      }
-
-      return a.preco < v.preco;
+      return a.idp < v.idp;
     }
+    else
+    {
+      
+    }
+
+    return a.preco < v.preco;
   }
   else
   {
@@ -441,11 +415,9 @@ int partition(produto a[], int l, int r, char o)
 
     if (i < j)
     {
-      {
-        produto t = a[i];
-        a[i] = a[j];
-        a[j] = t;
-      }
+      produto t = a[i];
+      a[i] = a[j];
+      a[j] = t;
     }
     else
     {
@@ -510,24 +482,22 @@ void L_PED()
   }
   else
   {
+    for (i = 0; i < Enc_exis[ide].qtd; i++)
+      if (Enc_exis[ide].enc[i].qtd != 0)
     {
-      for (i = 0; i < Enc_exis[ide].qtd; i++)
-        if (Enc_exis[ide].enc[i].qtd != 0)
-      {
-        copia[j++] = Enc_exis[ide].enc[i];
-      }
-      else
-      {
-        
-      }
-
-
-      quicksort(copia, 0, j - 1, o);
-      printf("Encomenda %d\n", ide);
-      for (i = 0; i < j; i++)
-        printf("* %s %d %d\n", copia[i].descricao, copia[i].preco, copia[i].qtd);
-
+      copia[j++] = Enc_exis[ide].enc[i];
     }
+    else
+    {
+      
+    }
+
+
+    quicksort(copia, 0, j - 1, o);
+    printf("Encomenda %d\n", ide);
+    for (i = 0; i < j; i++)
+      printf("* %s %d %d\n", copia[i].descricao, copia[i].preco, copia[i].qtd);
+
   }
 
 }

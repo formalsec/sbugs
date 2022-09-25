@@ -68,10 +68,8 @@ Data adicionaJogo(Data data)
   h_team2 = teamHash(team2, 1000);
   if (gameHtNodeSelect(data->gamesHT[h_name], name))
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-      return data;
-    }
+    printf("%d Jogo existente.\n", NL);
+    return data;
   }
   else
   {
@@ -82,10 +80,8 @@ Data adicionaJogo(Data data)
   team2Node = teamHtNodeSelect(data->teamsHT[h_team2], team2);
   if ((team1Node == 0) || (team2Node == 0))
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      return data;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    return data;
   }
   else
   {
@@ -106,17 +102,15 @@ Data adicionaJogo(Data data)
 
   if (scoreTeam1 != scoreTeam2)
   {
+    if (scoreTeam1 > scoreTeam2)
     {
-      if (scoreTeam1 > scoreTeam2)
-      {
-        team1Node->link->team->games_won += 1;
-      }
-      else
-      {
-        team2Node->link->team->games_won += 1;
-      }
-
+      team1Node->link->team->games_won += 1;
     }
+    else
+    {
+      team2Node->link->team->games_won += 1;
+    }
+
   }
   else
   {
@@ -141,10 +135,8 @@ Data adicionaTeam(Data data)
   h_team = teamHash(newTeam, 1000);
   if (teamHtNodeSelect(data->teamsHT[h_team], newTeam))
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-      return data;
-    }
+    printf("%d Equipa existente.\n", NL);
+    return data;
   }
   else
   {
@@ -235,10 +227,8 @@ Data apagaJogo(Data data)
   gameNode = gameHtNodeSelect(data->gamesHT[h_name], name);
   if (gameNode == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return data;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return data;
   }
   else
   {
@@ -252,9 +242,7 @@ Data apagaJogo(Data data)
   team2 = teamHtNodeSelect(data->teamsHT[h_team2], gameNode->link->game->team2);
   if (gameNode->link->game->score1 > gameNode->link->game->score2)
   {
-    {
-      team1->link->team->games_won -= 1;
-    }
+    team1->link->team->games_won -= 1;
   }
   else
   {
@@ -302,10 +290,8 @@ Data alteraScore(Data data)
   gameNode = gameHtNodeSelect(data->gamesHT[h_name], name);
   if (gameNode == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return data;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return data;
   }
   else
   {
@@ -320,61 +306,49 @@ Data alteraScore(Data data)
   oldScore2 = gameNode->link->game->score2;
   if (findWinner(oldScore1, oldScore2) != findWinner(newScore1, newScore2))
   {
+    if (findWinner(oldScore1, oldScore2) == 0)
     {
-      if (findWinner(oldScore1, oldScore2) == 0)
+      if (newScore1 > newScore2)
       {
-        {
-          if (newScore1 > newScore2)
-          {
-            team1->link->team->games_won += 1;
-          }
-          else
-          {
-            team2->link->team->games_won += 1;
-          }
-
-        }
+        team1->link->team->games_won += 1;
       }
       else
       {
-        if (findWinner(newScore1, newScore2) == 0)
-        {
-          {
-            if (oldScore1 > oldScore2)
-            {
-              team1->link->team->games_won -= 1;
-            }
-            else
-            {
-              team2->link->team->games_won -= 1;
-            }
+        team2->link->team->games_won += 1;
+      }
 
-          }
+    }
+    else
+    {
+      if (findWinner(newScore1, newScore2) == 0)
+      {
+        if (oldScore1 > oldScore2)
+        {
+          team1->link->team->games_won -= 1;
         }
         else
         {
-          {
-            if (findWinner(oldScore1, oldScore2) > findWinner(newScore1, newScore2))
-            {
-              {
-                team1->link->team->games_won += 1;
-                team2->link->team->games_won -= 1;
-              }
-            }
-            else
-            {
-              {
-                team2->link->team->games_won += 1;
-                team1->link->team->games_won -= 1;
-              }
-            }
+          team2->link->team->games_won -= 1;
+        }
 
-          }
+      }
+      else
+      {
+        if (findWinner(oldScore1, oldScore2) > findWinner(newScore1, newScore2))
+        {
+          team1->link->team->games_won += 1;
+          team2->link->team->games_won -= 1;
+        }
+        else
+        {
+          team2->link->team->games_won += 1;
+          team1->link->team->games_won -= 1;
         }
 
       }
 
     }
+
   }
   else
   {
@@ -401,19 +375,33 @@ void printBest(Data data)
   n = teamNumberBest(data->Teamsdll, max);
   if (n > 0)
   {
-    {
-      v = malloc(n * (sizeof(char *)));
-      for (i = 0; i < n; i++)
-        v[i] = malloc(1024 * (sizeof(char)));
+    v = malloc(n * (sizeof(char *)));
+    for (i = 0; i < n; i++)
+      v[i] = malloc(1024 * (sizeof(char)));
 
-      for (; temp; temp = temp->previous)
+    for (; temp; temp = temp->previous)
+    {
+      if (temp->team->games_won == max)
       {
-        if (temp->team->games_won == max)
+        strcpy(v[contador], temp->team->name);
+        contador++;
+      }
+      else
+      {
+        
+      }
+
+    }
+
+    for (i = 0; i < n; i++)
+    {
+      for (j = i + 1; j < n; j++)
+      {
+        if (strcmp(v[i], v[j]) > 0)
         {
-          {
-            strcpy(v[contador], temp->team->name);
-            contador++;
-          }
+          strcpy(comp, v[i]);
+          strcpy(v[i], v[j]);
+          strcpy(v[j], comp);
         }
         else
         {
@@ -422,36 +410,16 @@ void printBest(Data data)
 
       }
 
-      for (i = 0; i < n; i++)
-      {
-        for (j = i + 1; j < n; j++)
-        {
-          if (strcmp(v[i], v[j]) > 0)
-          {
-            {
-              strcpy(comp, v[i]);
-              strcpy(v[i], v[j]);
-              strcpy(v[j], comp);
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-      }
-
-      printf("%d Melhores %d\n", NL, max);
-      for (i = 0; i < n; i++)
-        printf("%d * %s\n", NL, v[i]);
-
-      for (i = 0; i < n; i++)
-        free(v[i]);
-
-      free(v);
     }
+
+    printf("%d Melhores %d\n", NL, max);
+    for (i = 0; i < n; i++)
+      printf("%d * %s\n", NL, v[i]);
+
+    for (i = 0; i < n; i++)
+      free(v[i]);
+
+    free(v);
   }
   else
   {

@@ -87,19 +87,17 @@ void delete_h_j(link_j j)
   {
     if (strcmp(t->jo->nome, j->nome) == 0)
     {
+      if (t == head_h_j[i])
       {
-        if (t == head_h_j[i])
-        {
-          head_h_j[i] = t->next;
-        }
-        else
-        {
-          prev->next = t->next;
-        }
-
-        free(t);
-        break;
+        head_h_j[i] = t->next;
       }
+      else
+      {
+        prev->next = t->next;
+      }
+
+      free(t);
+      break;
     }
     else
     {

@@ -51,9 +51,7 @@ char *strdup(const char *str)
   char *dup = malloc(n);
   if (dup)
   {
-    {
-      strcpy(dup, str);
-    }
+    strcpy(dup, str);
   }
   else
   {

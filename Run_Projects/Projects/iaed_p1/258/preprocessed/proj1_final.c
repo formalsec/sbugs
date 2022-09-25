@@ -71,10 +71,8 @@ void processaDados()
     token = strtok(0, ":\n");
     if (token != 0)
     {
-      {
-        dados[i] = atoi(token);
-        i++;
-      }
+      dados[i] = atoi(token);
+      i++;
     }
     else
     {
@@ -100,43 +98,35 @@ void sortProdutos()
   {
     if (produtos[i].preco > produtos[i + 1].preco)
     {
+      trocaProdutos(i);
+      while ((produtos[i - 1].preco >= produtos[i].preco) && (i > 0))
       {
-        trocaProdutos(i);
-        while ((produtos[i - 1].preco >= produtos[i].preco) && (i > 0))
+        if (produtos[i - 1].preco > produtos[i].preco)
         {
-          if (produtos[i - 1].preco > produtos[i].preco)
+          trocaProdutos(i - 1);
+        }
+        else
+        {
+          if ((produtos[i].preco == produtos[i - 1].preco) && (produtos[i - 1].id > produtos[i].id))
           {
-            {
-              trocaProdutos(i - 1);
-            }
+            trocaProdutos(i - 1);
           }
           else
           {
-            if ((produtos[i].preco == produtos[i - 1].preco) && (produtos[i - 1].id > produtos[i].id))
-            {
-              {
-                trocaProdutos(i - 1);
-              }
-            }
-            else
-            {
-              
-            }
-
+            
           }
 
-          i--;
         }
 
+        i--;
       }
+
     }
     else
     {
       if ((produtos[i].preco == produtos[i + 1].preco) && (produtos[i].id > produtos[i + 1].id))
       {
-        {
-          trocaProdutos(i);
-        }
+        trocaProdutos(i);
       }
       else
       {
@@ -182,10 +172,8 @@ void sortListaProdutos(struct prodEnc listaProdutos[], int size)
       indP2 = procuraProduto(listaProdutos[i + 1].id);
       if (strcmp(produtos[indP1].descricao, produtos[indP2].descricao) > 0)
       {
-        {
-          trocaListaProdutos(listaProdutos, i);
-          mudanca = 1;
-        }
+        trocaListaProdutos(listaProdutos, i);
+        mudanca = 1;
       }
       else
       {
@@ -271,12 +259,10 @@ void adicionaListaProdutos(int idP, int indE, int quant)
   {
     if (idP == encomendas[indE].listaProdutos[i].id)
     {
-      {
-        encomendas[indE].listaProdutos[i].quant += quant;
-        produtos[indP].quantStock -= quant;
-        produtos[indP].quantNecessaria += quant;
-        return;
-      }
+      encomendas[indE].listaProdutos[i].quant += quant;
+      produtos[indP].quantStock -= quant;
+      produtos[indP].quantNecessaria += quant;
+      return;
     }
     else
     {
@@ -312,13 +298,11 @@ void removeListaProdutos(int idP, int indE)
   {
     if (idP == encomendas[indE].listaProdutos[i].id)
     {
-      {
-        produtos[indP].quantStock += encomendas[indE].listaProdutos[i].quant;
-        produtos[indP].quantNecessaria -= encomendas[indE].listaProdutos[i].quant;
-        troca(i, encomendas[indE].listaProdutos, encomendas[indE].numProdutos);
-        encomendas[indE].numProdutos -= 1;
-        return;
-      }
+      produtos[indP].quantStock += encomendas[indE].listaProdutos[i].quant;
+      produtos[indP].quantNecessaria -= encomendas[indE].listaProdutos[i].quant;
+      troca(i, encomendas[indE].listaProdutos, encomendas[indE].numProdutos);
+      encomendas[indE].numProdutos -= 1;
+      return;
     }
     else
     {
@@ -350,10 +334,8 @@ void comando_q()
   idProduto = atoi(dado1);
   if (procuraProduto(idProduto) < 0)
   {
-    {
-      printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idProduto);
-      return;
-    }
+    printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idProduto);
+    return;
   }
   else
   {
@@ -386,10 +368,8 @@ void comando_A()
   quantidade = dados[1];
   if ((indE = procuraEncomenda(idEncomenda)) < 0)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idProduto, idEncomenda);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idProduto, idEncomenda);
+    return;
   }
   else
   {
@@ -398,10 +378,8 @@ void comando_A()
 
   if ((indP = procuraProduto(idProduto)) < 0)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idProduto, idEncomenda);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idProduto, idEncomenda);
+    return;
   }
   else
   {
@@ -410,10 +388,8 @@ void comando_A()
 
   if (produtos[indP].quantStock < quantidade)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idProduto, idEncomenda);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idProduto, idEncomenda);
+    return;
   }
   else
   {
@@ -423,10 +399,8 @@ void comando_A()
   pesoProduto = produtos[indP].peso * quantidade;
   if ((pesoProduto + calculaPeso(indE)) > 200)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de %d.\n", idProduto, idEncomenda, 200);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de %d.\n", idProduto, idEncomenda, 200);
+    return;
   }
   else
   {
@@ -446,10 +420,8 @@ void comando_r()
   quantRetirar = dados[0];
   if ((indP = procuraProduto(idProduto)) < 0)
   {
-    {
-      printf("Impossivel remover stock do produto %d. Produto inexistente.\n", idProduto);
-      return;
-    }
+    printf("Impossivel remover stock do produto %d. Produto inexistente.\n", idProduto);
+    return;
   }
   else
   {
@@ -458,10 +430,8 @@ void comando_r()
 
   if (quantRetirar > produtos[indP].quantStock)
   {
-    {
-      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", quantRetirar, idProduto);
-      return;
-    }
+    printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", quantRetirar, idProduto);
+    return;
   }
   else
   {
@@ -482,10 +452,8 @@ void comando_R()
   idProduto = dados[0];
   if ((indE = procuraEncomenda(idEncomenda)) < 0)
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idProduto, idEncomenda);
-      return;
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idProduto, idEncomenda);
+    return;
   }
   else
   {
@@ -494,10 +462,8 @@ void comando_R()
 
   if ((indP = procuraProduto(idProduto)) < 0)
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idProduto, idEncomenda);
-      return;
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idProduto, idEncomenda);
+    return;
   }
   else
   {
@@ -515,10 +481,8 @@ void comando_C()
   idEncomenda = atoi(dado1);
   if ((indE = procuraEncomenda(idEncomenda)) < 0)
   {
-    {
-      printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", idEncomenda);
-      return;
-    }
+    printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", idEncomenda);
+    return;
   }
   else
   {
@@ -538,10 +502,8 @@ void comando_p()
   preco = dados[0];
   if ((indP = procuraProduto(idProduto)) < 0)
   {
-    {
-      printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idProduto);
-      return;
-    }
+    printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idProduto);
+    return;
   }
   else
   {
@@ -564,10 +526,8 @@ void comando_E()
   idProduto = dados[0];
   if ((indE = procuraEncomenda(idEncomenda)) < 0)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", idEncomenda);
-      return;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", idEncomenda);
+    return;
   }
   else
   {
@@ -576,10 +536,8 @@ void comando_E()
 
   if ((indP = procuraProduto(idProduto)) < 0)
   {
-    {
-      printf("Impossivel listar produto %d. Produto inexistente.\n", idProduto);
-      return;
-    }
+    printf("Impossivel listar produto %d. Produto inexistente.\n", idProduto);
+    return;
   }
   else
   {
@@ -590,10 +548,8 @@ void comando_E()
   {
     if (idProduto == encomendas[indE].listaProdutos[j].id)
     {
-      {
-        printf("%s %d.\n", produtos[indP].descricao, encomendas[indE].listaProdutos[j].quant);
-        return;
-      }
+      printf("%s %d.\n", produtos[indP].descricao, encomendas[indE].listaProdutos[j].quant);
+      return;
     }
     else
     {
@@ -617,10 +573,8 @@ void comando_m()
   idProduto = atoi(dado1);
   if (procuraProduto(idProduto) < 0)
   {
-    {
-      printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idProduto);
-      return;
-    }
+    printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idProduto);
+    return;
   }
   else
   {
@@ -642,21 +596,17 @@ void comando_m()
     {
       if (idProduto == encomendas[i].listaProdutos[j].id)
       {
+        prodEmEnc = 1;
+        if (encomendas[i].listaProdutos[j].quant > quantMax)
         {
-          prodEmEnc = 1;
-          if (encomendas[i].listaProdutos[j].quant > quantMax)
-          {
-            {
-              quantMax = encomendas[i].listaProdutos[j].quant;
-              idEnc = encomendas[i].id;
-            }
-          }
-          else
-          {
-            
-          }
-
+          quantMax = encomendas[i].listaProdutos[j].quant;
+          idEnc = encomendas[i].id;
         }
+        else
+        {
+          
+        }
+
       }
       else
       {
@@ -702,10 +652,8 @@ void comando_L()
   idEncomenda = atoi(dado1);
   if (idEncomenda >= quantEnc)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", idEncomenda);
-      return;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", idEncomenda);
+    return;
   }
   else
   {

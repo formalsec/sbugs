@@ -13,10 +13,8 @@ Stock *stock_init()
   Stock *stock = (Stock *) malloc(sizeof(Stock));
   if (errno > 0)
   {
-    {
-      perror("stock_init: criar_stock");
-      exit(errno);
-    }
+    perror("stock_init: criar_stock");
+    exit(errno);
   }
   else
   {
@@ -34,10 +32,8 @@ void stock_product_free(Stock_Product *sp)
 {
   if (sp == 0)
   {
-    {
-      printf("%s: null pointer\n", "stock_product_free");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "stock_product_free");
+    exit(1);
   }
   else
   {
@@ -54,10 +50,8 @@ void stock_free(Stock *s)
   Stock_Product *sp;
   if (s == 0)
   {
-    {
-      printf("%s: null pointer\n", "stock_free");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "stock_free");
+    exit(1);
   }
   else
   {
@@ -80,10 +74,8 @@ int stock_count(const Stock *s)
 {
   if (s == 0)
   {
-    {
-      printf("%s: null pointer\n", "stock_count");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "stock_count");
+    exit(1);
   }
   else
   {
@@ -99,10 +91,8 @@ Stock_Product *stock_get_product(const Stock *s, int pid)
   Stock_Product *sp;
   if (s == 0)
   {
-    {
-      printf("%s: null pointer\n", "stock_get_product");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "stock_get_product");
+    exit(1);
   }
   else
   {
@@ -133,10 +123,8 @@ Stock_Product *stock_add_product(Stock *s, const Product *p, int qtd)
   Stock_Product *sp;
   if (s == 0)
   {
-    {
-      printf("%s: null pointer\n", "stock_add_product: Stock");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "stock_add_product: Stock");
+    exit(1);
   }
   else
   {
@@ -146,10 +134,8 @@ Stock_Product *stock_add_product(Stock *s, const Product *p, int qtd)
   ;
   if (p == 0)
   {
-    {
-      printf("%s: null pointer\n", "stock_add_product: Product");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "stock_add_product: Product");
+    exit(1);
   }
   else
   {
@@ -169,10 +155,8 @@ Stock_Product *stock_add_product(Stock *s, const Product *p, int qtd)
   sp = (Stock_Product *) malloc(sizeof(Stock_Product));
   if (errno > 0)
   {
-    {
-      perror("stock_add_product: criar_stock_product");
-      exit(errno);
-    }
+    perror("stock_add_product: criar_stock_product");
+    exit(errno);
   }
   else
   {
@@ -198,9 +182,7 @@ Stock_Product *stock_add_product(Stock *s, const Product *p, int qtd)
   s->last_product = sp;
   if (s->products == 0)
   {
-    {
-      s->products = sp;
-    }
+    s->products = sp;
   }
   else
   {
@@ -214,10 +196,8 @@ Product *stock_product_get_product(const Stock_Product *sp)
 {
   if (sp == 0)
   {
-    {
-      printf("%s: null pointer\n", "stock_product_get_product");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "stock_product_get_product");
+    exit(1);
   }
   else
   {
@@ -232,10 +212,8 @@ int stock_product_get_quantity(const Stock_Product *sp)
 {
   if (sp == 0)
   {
-    {
-      printf("%s: null pointer\n", "stock_product_get_quantity");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "stock_product_get_quantity");
+    exit(1);
   }
   else
   {
@@ -250,10 +228,8 @@ int stock_product_get_reserved(const Stock_Product *sp)
 {
   if (sp == 0)
   {
-    {
-      printf("%s: null pointer\n", "stock_product_get_reserved");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "stock_product_get_reserved");
+    exit(1);
   }
   else
   {
@@ -268,10 +244,8 @@ int stock_product_get_available(const Stock_Product *sp)
 {
   if (sp == 0)
   {
-    {
-      printf("%s: null pointer\n", "stock_product_get_available");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "stock_product_get_available");
+    exit(1);
   }
   else
   {
@@ -286,10 +260,8 @@ int stock_product_update_quantity(Stock_Product *sp, int qtd)
 {
   if (sp == 0)
   {
-    {
-      printf("%s: null pointer\n", "stock_product_update_quantity");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "stock_product_update_quantity");
+    exit(1);
   }
   else
   {
@@ -299,9 +271,7 @@ int stock_product_update_quantity(Stock_Product *sp, int qtd)
   ;
   if ((stock_product_get_available(sp) + qtd) < 0)
   {
-    {
-      return -1;
-    }
+    return -1;
   }
   else
   {
@@ -316,10 +286,8 @@ int stock_product_reserve_quantity(Stock_Product *sp, int qtd)
 {
   if (sp == 0)
   {
-    {
-      printf("%s: null pointer\n", "stock_product_reserve_quantity");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "stock_product_reserve_quantity");
+    exit(1);
   }
   else
   {
@@ -344,10 +312,8 @@ char *stock_to_string(const Stock *s, char *buf, int buf_size)
 {
   if (s == 0)
   {
-    {
-      printf("%s: null pointer\n", "stock_to_string");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "stock_to_string");
+    exit(1);
   }
   else
   {
@@ -363,10 +329,8 @@ void stock_product_print(const Stock_Product *sp)
 {
   if (sp == 0)
   {
-    {
-      printf("%s: null pointer\n", "stock_product_print");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "stock_product_print");
+    exit(1);
   }
   else
   {
@@ -383,10 +347,8 @@ void stock_list_products(const Stock *s)
   const Product *p;
   if (s == 0)
   {
-    {
-      printf("%s: null pointer\n", "stock_list_products");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "stock_list_products");
+    exit(1);
   }
   else
   {
@@ -409,10 +371,8 @@ void stock_list_products_by_price(const Stock *s)
 {
   if (s == 0)
   {
-    {
-      printf("%s: null pointer\n", "stock_list_products_by_price");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "stock_list_products_by_price");
+    exit(1);
   }
   else
   {
@@ -428,10 +388,8 @@ void stock_print(const Stock *s)
   char buf[100];
   if (s == 0)
   {
-    {
-      printf("%s: null pointer\n", "stock_print");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "stock_print");
+    exit(1);
   }
   else
   {

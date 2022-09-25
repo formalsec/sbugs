@@ -47,48 +47,38 @@ link *command_a(link *game_list, link *game_tab, team **teams, long int *cont, l
   ptr_team2 = search_t(team2, teams, *(max_len + 2));
   if (ptr_game != 0)
   {
-    {
-      printf("%ld Jogo existente.\n", *cont);
-      return game_tab;
-    }
+    printf("%ld Jogo existente.\n", *cont);
+    return game_tab;
   }
   else
   {
     if ((ptr_team1 == 0) || (ptr_team2 == 0))
     {
-      {
-        printf("%ld Equipa inexistente.\n", *cont);
-        return game_tab;
-      }
+      printf("%ld Equipa inexistente.\n", *cont);
+      return game_tab;
     }
     else
     {
+      if (score1 > score2)
       {
-        if (score1 > score2)
+        ptr_team1->nr_wins++;
+      }
+      else
+      {
+        if (score2 > score1)
         {
-          {
-            ptr_team1->nr_wins++;
-          }
+          ptr_team2->nr_wins++;
         }
         else
         {
-          if (score2 > score1)
-          {
-            {
-              ptr_team2->nr_wins++;
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
-        new_game = create_game(name, ptr_team1->name, ptr_team2->name, score1, score2);
-        node = push(game_list, new_game);
-        return add_game_to_table(game_tab, node, max_len);
       }
+
+      new_game = create_game(name, ptr_team1->name, ptr_team2->name, score1, score2);
+      node = push(game_list, new_game);
+      return add_game_to_table(game_tab, node, max_len);
     }
 
   }
@@ -108,19 +98,15 @@ team **command_A(team **teams, team **last_team, long int *cont, long int *max_l
   (*cont)++;
   if (search_t(name, teams, *(max_len + 2)) == 0)
   {
-    {
-      new_team = create_team(name);
-      new_team->next = *last_team;
-      *last_team = new_team;
-      return add_team_to_table(teams, new_team, max_len);
-    }
+    new_team = create_team(name);
+    new_team->next = *last_team;
+    *last_team = new_team;
+    return add_team_to_table(teams, new_team, max_len);
   }
   else
   {
-    {
-      printf("%ld Equipa existente.\n", *cont);
-      return teams;
-    }
+    printf("%ld Equipa existente.\n", *cont);
+    return teams;
   }
 
 }
@@ -156,10 +142,8 @@ void command_p(link *game_tab, long int *cont, long int m)
   }
   else
   {
-    {
-      game = game_node->game;
-      printf("%ld %s %s %s %d %d\n", *cont, name, game->team1, game->team2, game->score_t1, game->score_t2);
-    }
+    game = game_node->game;
+    printf("%ld %s %s %s %d %d\n", *cont, name, game->team1, game->team2, game->score_t1, game->score_t2);
   }
 
 }
@@ -212,90 +196,78 @@ void command_s(link *game_t, team **teams_t, long int *cont, long int *max_len)
   }
   else
   {
+    game = game_node->game;
+    t1 = search_t(game->team1, teams_t, *(max_len + 2));
+    t2 = search_t(game->team2, teams_t, *(max_len + 2));
+    if (sc1 > sc2)
     {
-      game = game_node->game;
-      t1 = search_t(game->team1, teams_t, *(max_len + 2));
-      t2 = search_t(game->team2, teams_t, *(max_len + 2));
-      if (sc1 > sc2)
+      if (game->score_t1 < game->score_t2)
       {
-        {
-          if (game->score_t1 < game->score_t2)
-          {
-            {
-              t1->nr_wins++;
-              t2->nr_wins--;
-            }
-          }
-          else
-          {
-            if (game->score_t1 == game->score_t2)
-            {
-              t1->nr_wins++;
-            }
-            else
-            {
-              
-            }
-
-          }
-
-        }
+        t1->nr_wins++;
+        t2->nr_wins--;
       }
       else
       {
-        if (sc1 < sc2)
+        if (game->score_t1 == game->score_t2)
         {
-          {
-            if (game->score_t1 > game->score_t2)
-            {
-              {
-                t1->nr_wins--;
-                t2->nr_wins++;
-              }
-            }
-            else
-            {
-              if (game->score_t1 == game->score_t2)
-              {
-                t2->nr_wins++;
-              }
-              else
-              {
-                
-              }
-
-            }
-
-          }
+          t1->nr_wins++;
         }
         else
         {
-          {
-            if (game->score_t1 > game->score_t2)
-            {
-              t1->nr_wins--;
-            }
-            else
-            {
-              if (game->score_t1 < game->score_t2)
-              {
-                t2->nr_wins--;
-              }
-              else
-              {
-                
-              }
-
-            }
-
-          }
+          
         }
 
       }
 
-      game->score_t1 = sc1;
-      game->score_t2 = sc2;
     }
+    else
+    {
+      if (sc1 < sc2)
+      {
+        if (game->score_t1 > game->score_t2)
+        {
+          t1->nr_wins--;
+          t2->nr_wins++;
+        }
+        else
+        {
+          if (game->score_t1 == game->score_t2)
+          {
+            t2->nr_wins++;
+          }
+          else
+          {
+            
+          }
+
+        }
+
+      }
+      else
+      {
+        if (game->score_t1 > game->score_t2)
+        {
+          t1->nr_wins--;
+        }
+        else
+        {
+          if (game->score_t1 < game->score_t2)
+          {
+            t2->nr_wins--;
+          }
+          else
+          {
+            
+          }
+
+        }
+
+      }
+
+    }
+
+    game->score_t1 = sc1;
+    game->score_t2 = sc2;
   }
 
 }
@@ -310,19 +282,15 @@ void delete_game(link *game_list, link *game_tab, team **teams_tab, long int nod
   game = (*game_ptr)->game;
   if (game->score_t1 > game->score_t2)
   {
-    {
-      ptr_team1 = search_t(game->team1, teams_tab, *(max_len + 2));
-      ptr_team1->nr_wins--;
-    }
+    ptr_team1 = search_t(game->team1, teams_tab, *(max_len + 2));
+    ptr_team1->nr_wins--;
   }
   else
   {
     if (game->score_t1 < game->score_t2)
     {
-      {
-        ptr_team2 = search_t(game->team2, teams_tab, *(max_len + 2));
-        ptr_team2->nr_wins--;
-      }
+      ptr_team2 = search_t(game->team2, teams_tab, *(max_len + 2));
+      ptr_team2->nr_wins--;
     }
     else
     {
@@ -355,9 +323,7 @@ void command_r(link *game_list, link *game_tab, team **teams_tab, long int *cont
   }
   else
   {
-    {
-      delete_game(game_list, game_tab, teams_tab, node_ptr, max_len);
-    }
+    delete_game(game_list, game_tab, teams_tab, node_ptr, max_len);
   }
 
 }
@@ -391,22 +357,18 @@ long int winner_list(char **win_list, team *last_team, long int *max_wins)
   {
     if (t->nr_wins > prev->nr_wins)
     {
-      {
-        *win_list = t->name;
-        *max_wins = t->nr_wins;
-        prev = t;
-        c = 1;
-      }
+      *win_list = t->name;
+      *max_wins = t->nr_wins;
+      prev = t;
+      c = 1;
     }
     else
     {
       if (t->nr_wins == prev->nr_wins)
       {
-        {
-          *(win_list + c) = t->name;
-          prev = t;
-          c++;
-        }
+        *(win_list + c) = t->name;
+        prev = t;
+        c++;
       }
       else
       {
@@ -429,11 +391,9 @@ void command_g(team *last_team, long int *cont, long int *max_len)
   (*cont)++;
   if ((*(max_len + 3)) != 0)
   {
-    {
-      c = winner_list(aux_tab, last_team, &max_wins);
-      qsort(aux_tab, c, sizeof(char *), comp_strings);
-      print_list(aux_tab, c, max_wins, *cont);
-    }
+    c = winner_list(aux_tab, last_team, &max_wins);
+    qsort(aux_tab, c, sizeof(char *), comp_strings);
+    print_list(aux_tab, c, max_wins, *cont);
   }
   else
   {

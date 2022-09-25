@@ -75,37 +75,33 @@ void adiciona_equipa_fim(lista_equipa *l, elo_equipa novo_no)
 {
   if ((l->inicio == 0) && (l->fim == 0))
   {
+    if (0)
     {
-      if (0)
-      {
-        puts("Lista vazia");
-      }
-      else
-      {
-        
-      }
-
-      l->inicio = novo_no;
-      l->fim = novo_no;
-      novo_no->proximo = 0;
+      puts("Lista vazia");
     }
+    else
+    {
+      
+    }
+
+    l->inicio = novo_no;
+    l->fim = novo_no;
+    novo_no->proximo = 0;
   }
   else
   {
+    if (0)
     {
-      if (0)
-      {
-        puts("Lista com elemento");
-      }
-      else
-      {
-        
-      }
-
-      novo_no->proximo = 0;
-      l->fim->proximo = novo_no;
-      l->fim = novo_no;
+      puts("Lista com elemento");
     }
+    else
+    {
+      
+    }
+
+    novo_no->proximo = 0;
+    l->fim->proximo = novo_no;
+    l->fim = novo_no;
   }
 
   return;
@@ -115,37 +111,33 @@ void adiciona_fim(lista *l, elo_jogo novo_no)
 {
   if ((l->inicio == 0) && (l->fim == 0))
   {
+    if (0)
     {
-      if (0)
-      {
-        puts("Lista vazia");
-      }
-      else
-      {
-        
-      }
-
-      l->inicio = novo_no;
-      l->fim = novo_no;
-      novo_no->proximo = 0;
+      puts("Lista vazia");
     }
+    else
+    {
+      
+    }
+
+    l->inicio = novo_no;
+    l->fim = novo_no;
+    novo_no->proximo = 0;
   }
   else
   {
+    if (0)
     {
-      if (0)
-      {
-        puts("Lista com elemento");
-      }
-      else
-      {
-        
-      }
-
-      l->fim->proximo = novo_no;
-      l->fim = novo_no;
-      novo_no->proximo = 0;
+      puts("Lista com elemento");
     }
+    else
+    {
+      
+    }
+
+    l->fim->proximo = novo_no;
+    l->fim = novo_no;
+    novo_no->proximo = 0;
   }
 
   return;
@@ -155,37 +147,33 @@ void adiciona_fim_ponteiro(lista_ponteiro *l, elo_ponteiro novo_no)
 {
   if ((l->inicio == 0) && (l->fim == 0))
   {
+    if (0)
     {
-      if (0)
-      {
-        puts("Lista vazia");
-      }
-      else
-      {
-        
-      }
-
-      l->inicio = novo_no;
-      l->fim = novo_no;
-      novo_no->proximo = 0;
+      puts("Lista vazia");
     }
+    else
+    {
+      
+    }
+
+    l->inicio = novo_no;
+    l->fim = novo_no;
+    novo_no->proximo = 0;
   }
   else
   {
+    if (0)
     {
-      if (0)
-      {
-        puts("Lista com elemento");
-      }
-      else
-      {
-        
-      }
-
-      l->fim->proximo = novo_no;
-      l->fim = novo_no;
-      novo_no->proximo = 0;
+      puts("Lista com elemento");
     }
+    else
+    {
+      
+    }
+
+    l->fim->proximo = novo_no;
+    l->fim = novo_no;
+    novo_no->proximo = 0;
   }
 
   return;
@@ -195,36 +183,32 @@ void adiciona_inicio(lista *l, elo_jogo novo_no)
 {
   if ((l->inicio == 0) && (l->fim == 0))
   {
+    if (0)
     {
-      if (0)
-      {
-        puts("Lista vazia");
-      }
-      else
-      {
-        
-      }
-
-      l->inicio = novo_no;
-      l->fim = novo_no;
-      novo_no->proximo = 0;
+      puts("Lista vazia");
     }
+    else
+    {
+      
+    }
+
+    l->inicio = novo_no;
+    l->fim = novo_no;
+    novo_no->proximo = 0;
   }
   else
   {
+    if (0)
     {
-      if (0)
-      {
-        puts("Lista com elemento");
-      }
-      else
-      {
-        
-      }
-
-      novo_no->proximo = l->inicio;
-      l->inicio = novo_no;
+      puts("Lista com elemento");
     }
+    else
+    {
+      
+    }
+
+    novo_no->proximo = l->inicio;
+    l->inicio = novo_no;
   }
 
   return;
@@ -235,63 +219,53 @@ void remove_no_equipa(lista_equipa *l, elo_equipa no)
   elo_equipa no_velho = no;
   if (!eh_vazia_equipa(l))
   {
+    if (l->inicio == l->fim)
     {
-      if (l->inicio == l->fim)
+      liberta_no_equipa(no);
+      l->inicio = 0;
+      l->fim = 0;
+    }
+    else
+    {
+      if (l->inicio == no)
       {
+        if (0)
         {
-          liberta_no_equipa(no);
-          l->inicio = 0;
-          l->fim = 0;
-        }
-      }
-      else
-      {
-        if (l->inicio == no)
-        {
-          {
-            if (0)
-            {
-              printf("Remove primeiro da lista\n");
-            }
-            else
-            {
-              
-            }
-
-            l->inicio = no->proximo;
-            liberta_no_equipa(no_velho);
-          }
+          printf("Remove primeiro da lista\n");
         }
         else
         {
-          if (l->fim == no)
-          {
-            {
-              if (0)
-              {
-                printf("Remove ultimo da lista\n");
-              }
-              else
-              {
-                
-              }
+          
+        }
 
-              liberta_no_equipa(no_velho);
-            }
+        l->inicio = no->proximo;
+        liberta_no_equipa(no_velho);
+      }
+      else
+      {
+        if (l->fim == no)
+        {
+          if (0)
+          {
+            printf("Remove ultimo da lista\n");
           }
           else
           {
-            {
-              liberta_no_equipa(no_velho);
-            }
+            
           }
 
+          liberta_no_equipa(no_velho);
+        }
+        else
+        {
+          liberta_no_equipa(no_velho);
         }
 
       }
 
-      return;
     }
+
+    return;
   }
   else
   {
@@ -309,81 +283,71 @@ void remove_no_jogo(lista *l, elo_jogo no)
   elo_jogo t = l->inicio;
   if (!eh_vazia(l))
   {
+    if (l->inicio == l->fim)
     {
-      if (l->inicio == l->fim)
+      liberta_no_jogo(no);
+      l->inicio = 0;
+      l->fim = 0;
+      return;
+    }
+    else
+    {
+      
+    }
+
+    if (l->inicio == no)
+    {
+      if (0)
       {
-        {
-          liberta_no_jogo(no);
-          l->inicio = 0;
-          l->fim = 0;
-          return;
-        }
+        printf("Remove primeiro da lista\n");
       }
       else
       {
         
       }
 
-      if (l->inicio == no)
+      l->inicio = no->proximo;
+      liberta_no_jogo(no_velho);
+      return;
+    }
+    else
+    {
+      
+    }
+
+    for (t = l->inicio, seguidor = 0; t != 0; seguidor = t, t = t->proximo)
+    {
+      if (strcmp(*t->jogo, jogo) == 0)
       {
+        if (t == l->inicio)
         {
-          if (0)
-          {
-            printf("Remove primeiro da lista\n");
-          }
-          else
-          {
-            
-          }
-
-          l->inicio = no->proximo;
-          liberta_no_jogo(no_velho);
-          return;
-        }
-      }
-      else
-      {
-        
-      }
-
-      for (t = l->inicio, seguidor = 0; t != 0; seguidor = t, t = t->proximo)
-      {
-        if (strcmp(*t->jogo, jogo) == 0)
-        {
-          {
-            if (t == l->inicio)
-            {
-              l->inicio = t->proximo;
-            }
-            else
-            {
-              if (t == l->fim)
-              {
-                {
-                  l->fim = seguidor;
-                  seguidor->proximo = 0;
-                }
-              }
-              else
-              {
-                seguidor->proximo = t->proximo;
-              }
-
-            }
-
-            liberta_no_jogo(t);
-            return;
-          }
+          l->inicio = t->proximo;
         }
         else
         {
-          
+          if (t == l->fim)
+          {
+            l->fim = seguidor;
+            seguidor->proximo = 0;
+          }
+          else
+          {
+            seguidor->proximo = t->proximo;
+          }
+
         }
 
+        liberta_no_jogo(t);
+        return;
+      }
+      else
+      {
+        
       }
 
-      return;
     }
+
+    return;
   }
   else
   {
@@ -402,81 +366,71 @@ void remove_no_ponteiro(lista_ponteiro *l, elo_ponteiro no)
   elo_ponteiro t = l->inicio;
   if (!eh_vazia_ponteiros(l))
   {
+    if (l->inicio == l->fim)
     {
-      if (l->inicio == l->fim)
+      liberta_no_ponteiro(no);
+      l->inicio = 0;
+      l->fim = 0;
+      return;
+    }
+    else
+    {
+      
+    }
+
+    if (l->inicio == no)
+    {
+      if (0)
       {
-        {
-          liberta_no_ponteiro(no);
-          l->inicio = 0;
-          l->fim = 0;
-          return;
-        }
+        printf("Remove primeiro da lista\n");
       }
       else
       {
         
       }
 
-      if (l->inicio == no)
+      l->inicio = no->proximo;
+      liberta_no_ponteiro(no_velho);
+      return;
+    }
+    else
+    {
+      
+    }
+
+    for (t = l->inicio, seguidor = 0; t != 0; seguidor = t, t = t->proximo)
+    {
+      if (strcmp(*t->ponteiro->jogo, jogo) == 0)
       {
+        if (t == l->inicio)
         {
-          if (0)
-          {
-            printf("Remove primeiro da lista\n");
-          }
-          else
-          {
-            
-          }
-
-          l->inicio = no->proximo;
-          liberta_no_ponteiro(no_velho);
-          return;
-        }
-      }
-      else
-      {
-        
-      }
-
-      for (t = l->inicio, seguidor = 0; t != 0; seguidor = t, t = t->proximo)
-      {
-        if (strcmp(*t->ponteiro->jogo, jogo) == 0)
-        {
-          {
-            if (t == l->inicio)
-            {
-              l->inicio = t->proximo;
-            }
-            else
-            {
-              if (t == l->fim)
-              {
-                {
-                  l->fim = seguidor;
-                  seguidor->proximo = 0;
-                }
-              }
-              else
-              {
-                seguidor->proximo = t->proximo;
-              }
-
-            }
-
-            liberta_no_ponteiro(t);
-            return;
-          }
+          l->inicio = t->proximo;
         }
         else
         {
-          
+          if (t == l->fim)
+          {
+            l->fim = seguidor;
+            seguidor->proximo = 0;
+          }
+          else
+          {
+            seguidor->proximo = t->proximo;
+          }
+
         }
 
+        liberta_no_ponteiro(t);
+        return;
+      }
+      else
+      {
+        
       }
 
-      return;
     }
+
+    return;
   }
   else
   {
@@ -493,25 +447,21 @@ int Retorna_max_vitorias(const lista_equipa *le)
   elo_equipa inicio = le->inicio;
   if (!eh_vazia_equipa(le))
   {
+    while (inicio != 0)
     {
-      while (inicio != 0)
+      if ((*inicio->vitorias) > max_vitorias)
       {
-        if ((*inicio->vitorias) > max_vitorias)
-        {
-          {
-            max_vitorias = *inicio->vitorias;
-          }
-        }
-        else
-        {
-          
-        }
-
-        inicio = inicio->proximo;
+        max_vitorias = *inicio->vitorias;
+      }
+      else
+      {
+        
       }
 
-      return max_vitorias;
+      inicio = inicio->proximo;
     }
+
+    return max_vitorias;
   }
   else
   {
@@ -527,36 +477,30 @@ int Retorna_contador_max_vitorias(const lista_equipa *le, int max_vitorias)
   elo_equipa inicio = le->inicio;
   if (!eh_vazia_equipa(le))
   {
+    while (inicio != 0)
     {
-      while (inicio != 0)
+      if ((*inicio->vitorias) == max_vitorias)
       {
-        if ((*inicio->vitorias) == max_vitorias)
-        {
-          {
-            contador_vitorias++;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if ((*inicio->vitorias) > max_vitorias)
-        {
-          {
-            printf("Erro RRRRetorna_max_vitorias: vitorias > max_vitorias\n");
-          }
-        }
-        else
-        {
-          
-        }
-
-        inicio = inicio->proximo;
+        contador_vitorias++;
+      }
+      else
+      {
+        
       }
 
-      return contador_vitorias;
+      if ((*inicio->vitorias) > max_vitorias)
+      {
+        printf("Erro RRRRetorna_max_vitorias: vitorias > max_vitorias\n");
+      }
+      else
+      {
+        
+      }
+
+      inicio = inicio->proximo;
     }
+
+    return contador_vitorias;
   }
   else
   {
@@ -571,25 +515,21 @@ elo_equipa procura_no_equipa(const lista_equipa *le, char *equipa)
   elo_equipa inicio = le->inicio;
   if (!eh_vazia_equipa(le))
   {
+    while (inicio != 0)
     {
-      while (inicio != 0)
+      if (strcmp(*inicio->equipa, equipa) == 0)
       {
-        if (strcmp(*inicio->equipa, equipa) == 0)
-        {
-          {
-            return inicio;
-          }
-        }
-        else
-        {
-          
-        }
-
-        inicio = inicio->proximo;
+        return inicio;
+      }
+      else
+      {
+        
       }
 
-      return 0;
+      inicio = inicio->proximo;
     }
+
+    return 0;
   }
   else
   {
@@ -604,25 +544,21 @@ elo_jogo procura_no_jogo(const lista *l, char *jogo)
   elo_jogo inicio = l->inicio;
   if (!eh_vazia(l))
   {
+    while (inicio != 0)
     {
-      while (inicio != 0)
+      if (strcmp(*inicio->jogo, jogo) == 0)
       {
-        if (strcmp(*inicio->jogo, jogo) == 0)
-        {
-          {
-            return inicio;
-          }
-        }
-        else
-        {
-          
-        }
-
-        inicio = inicio->proximo;
+        return inicio;
+      }
+      else
+      {
+        
       }
 
-      return 0;
+      inicio = inicio->proximo;
     }
+
+    return 0;
   }
   else
   {
@@ -642,10 +578,8 @@ void altera_vitorias_empate(int s1, int s2, int s1v, int s2v, elo_equipa no1, el
   elo_equipa No_equipa2 = n2;
   if ((score_velho1 == score_velho2) && (score1 > score2))
   {
-    {
-      *No_equipa1->vitorias += 1;
-      return;
-    }
+    *No_equipa1->vitorias += 1;
+    return;
   }
   else
   {
@@ -654,10 +588,8 @@ void altera_vitorias_empate(int s1, int s2, int s1v, int s2v, elo_equipa no1, el
 
   if ((score_velho1 == score_velho2) && (score1 < score2))
   {
-    {
-      *No_equipa2->vitorias += 1;
-      return;
-    }
+    *No_equipa2->vitorias += 1;
+    return;
   }
   else
   {
@@ -676,10 +608,8 @@ void altera_vitorias_equipa1(int s1, int s2, int s1v, int s2v, elo_equipa no1, e
   elo_equipa No_equipa2 = n2;
   if ((score_velho1 > score_velho2) && (score1 == score2))
   {
-    {
-      *No_equipa1->vitorias -= 1;
-      return;
-    }
+    *No_equipa1->vitorias -= 1;
+    return;
   }
   else
   {
@@ -688,11 +618,9 @@ void altera_vitorias_equipa1(int s1, int s2, int s1v, int s2v, elo_equipa no1, e
 
   if ((score_velho1 > score_velho2) && (score1 < score2))
   {
-    {
-      *No_equipa1->vitorias -= 1;
-      *No_equipa2->vitorias += 1;
-      return;
-    }
+    *No_equipa1->vitorias -= 1;
+    *No_equipa2->vitorias += 1;
+    return;
   }
   else
   {
@@ -712,10 +640,8 @@ void altera_vitorias_equipa2(int s1, int s2, int s1v, int s2v, elo_equipa no1, e
   elo_equipa No_equipa2 = n2;
   if ((score_velho1 < score_velho2) && (score1 == score2))
   {
-    {
-      *No_equipa2->vitorias -= 1;
-      return;
-    }
+    *No_equipa2->vitorias -= 1;
+    return;
   }
   else
   {
@@ -724,11 +650,9 @@ void altera_vitorias_equipa2(int s1, int s2, int s1v, int s2v, elo_equipa no1, e
 
   if ((score_velho1 < score_velho2) && (score1 > score2))
   {
-    {
-      *No_equipa1->vitorias += 1;
-      *No_equipa2->vitorias -= 1;
-      return;
-    }
+    *No_equipa1->vitorias += 1;
+    *No_equipa2->vitorias -= 1;
+    return;
   }
   else
   {

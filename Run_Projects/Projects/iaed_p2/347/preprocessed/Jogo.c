@@ -66,10 +66,8 @@ void apropriar_htJ(htJ_t *hashtable, char *chaveJ, Jogo *jogo)
   entradaJ_t *entradaJ = hashtable->entradas[index];
   if (entradaJ == 0)
   {
-    {
-      hashtable->entradas[index] = par_htJ(chaveJ, jogo);
-      return;
-    }
+    hashtable->entradas[index] = par_htJ(chaveJ, jogo);
+    return;
   }
   else
   {
@@ -80,10 +78,8 @@ void apropriar_htJ(htJ_t *hashtable, char *chaveJ, Jogo *jogo)
   {
     if (strcmp(entradaJ->chaveJ, chaveJ) == 0)
     {
-      {
-        entradaJ->jogo = jogo;
-        return;
-      }
+      entradaJ->jogo = jogo;
+      return;
     }
     else
     {
@@ -135,9 +131,7 @@ void htJ_del(htJ_t *hashtable, char *chaveJ)
   entradaJ_t *entradaJ = hashtable->entradas[index];
   if (entradaJ == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -148,55 +142,45 @@ void htJ_del(htJ_t *hashtable, char *chaveJ)
   {
     if (strcmp(entradaJ->chaveJ, chaveJ) == 0)
     {
+      if ((entradaJ->proxJ == 0) && (id == 0))
       {
-        if ((entradaJ->proxJ == 0) && (id == 0))
-        {
-          {
-            hashtable->entradas[index] = 0;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if ((entradaJ->proxJ != 0) && (id == 0))
-        {
-          {
-            hashtable->entradas[index] = entradaJ->proxJ;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if ((entradaJ->proxJ == 0) && (id != 0))
-        {
-          {
-            ant->proxJ = 0;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if ((entradaJ->proxJ != 0) && (id != 0))
-        {
-          {
-            ant->proxJ = entradaJ->proxJ;
-          }
-        }
-        else
-        {
-          
-        }
-
-        free(entradaJ->chaveJ);
-        free(entradaJ);
-        return;
+        hashtable->entradas[index] = 0;
       }
+      else
+      {
+        
+      }
+
+      if ((entradaJ->proxJ != 0) && (id == 0))
+      {
+        hashtable->entradas[index] = entradaJ->proxJ;
+      }
+      else
+      {
+        
+      }
+
+      if ((entradaJ->proxJ == 0) && (id != 0))
+      {
+        ant->proxJ = 0;
+      }
+      else
+      {
+        
+      }
+
+      if ((entradaJ->proxJ != 0) && (id != 0))
+      {
+        ant->proxJ = entradaJ->proxJ;
+      }
+      else
+      {
+        
+      }
+
+      free(entradaJ->chaveJ);
+      free(entradaJ);
+      return;
     }
     else
     {

@@ -58,10 +58,8 @@ void restock(int pId, int stock)
 {
   if (isProductValid(pId) == 0)
   {
-    {
-      printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", pId);
-      return;
-    }
+    printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", pId);
+    return;
   }
   else
   {
@@ -75,19 +73,15 @@ void removeStock(int pId, int stockToRemove)
 {
   if (isProductValid(pId) == 0)
   {
-    {
-      printf("Impossivel remover stock do produto %d. Produto inexistente.\n", pId);
-      return;
-    }
+    printf("Impossivel remover stock do produto %d. Produto inexistente.\n", pId);
+    return;
   }
   else
   {
     if (products[pId].stock < stockToRemove)
     {
-      {
-        printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", stockToRemove, pId);
-        return;
-      }
+      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", stockToRemove, pId);
+      return;
     }
     else
     {
@@ -117,9 +111,7 @@ int packageContainsProduct(int pkId, int ptId)
   {
     if (packages[pkId].products[i].id == ptId)
     {
-      {
-        return i;
-      }
+      return i;
     }
     else
     {
@@ -137,37 +129,29 @@ void addProduct(int pkId, int ptId, int quantity)
   int index;
   if (isPackageValid(pkId) == 0)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", ptId, pkId);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", ptId, pkId);
+    return;
   }
   else
   {
     if (isProductValid(ptId) == 0)
     {
-      {
-        printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", ptId, pkId);
-        return;
-      }
+      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", ptId, pkId);
+      return;
     }
     else
     {
       if (products[ptId].stock < quantity)
       {
-        {
-          printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", ptId, pkId);
-          return;
-        }
+        printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", ptId, pkId);
+        return;
       }
       else
       {
         if (((products[ptId].weight * quantity) + packages[pkId].totalWeight) > 200)
         {
-          {
-            printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", ptId, pkId);
-            return;
-          }
+          printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", ptId, pkId);
+          return;
         }
         else
         {
@@ -183,18 +167,14 @@ void addProduct(int pkId, int ptId, int quantity)
   index = packageContainsProduct(pkId, ptId);
   if (index == (-1))
   {
-    {
-      product = products[ptId];
-      product.stock = quantity;
-      packages[pkId].products[packages[pkId].totalPackageProducts] = product;
-      packages[pkId].totalPackageProducts++;
-    }
+    product = products[ptId];
+    product.stock = quantity;
+    packages[pkId].products[packages[pkId].totalPackageProducts] = product;
+    packages[pkId].totalPackageProducts++;
   }
   else
   {
-    {
-      packages[pkId].products[index].stock += quantity;
-    }
+    packages[pkId].products[index].stock += quantity;
   }
 
   packages[pkId].totalWeight += products[ptId].weight * quantity;
@@ -217,19 +197,15 @@ void removeProduct(int pkId, int ptId)
   int i;
   if (isPackageValid(pkId) == 0)
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", ptId, pkId);
-      return;
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", ptId, pkId);
+    return;
   }
   else
   {
     if (isProductValid(ptId) == 0)
     {
-      {
-        printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", ptId, pkId);
-        return;
-      }
+      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", ptId, pkId);
+      return;
     }
     else
     {
@@ -241,9 +217,7 @@ void removeProduct(int pkId, int ptId)
   i = packageContainsProduct(pkId, ptId);
   if (i == (-1))
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -261,10 +235,8 @@ void packagePrice(int pkId)
   int price = 0;
   if (isPackageValid(pkId) == 0)
   {
-    {
-      printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", pkId);
-      return;
-    }
+    printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", pkId);
+    return;
   }
   else
   {
@@ -285,9 +257,7 @@ void setProductPrice(int ptId, int price)
   int j;
   if (isProductValid(ptId) == 0)
   {
-    {
-      printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", ptId);
-    }
+    printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", ptId);
   }
   else
   {
@@ -300,9 +270,7 @@ void setProductPrice(int ptId, int price)
     j = packageContainsProduct(i, ptId);
     if (j != (-1))
     {
-      {
-        packages[i].products[j].price = price;
-      }
+      packages[i].products[j].price = price;
     }
     else
     {
@@ -318,19 +286,15 @@ void productInfo(int pkId, int ptId)
   int i;
   if (isPackageValid(pkId) == 0)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", pkId);
-      return;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", pkId);
+    return;
   }
   else
   {
     if (isProductValid(ptId) == 0)
     {
-      {
-        printf("Impossivel listar produto %d. Produto inexistente.\n", ptId);
-        return;
-      }
+      printf("Impossivel listar produto %d. Produto inexistente.\n", ptId);
+      return;
     }
     else
     {
@@ -342,15 +306,11 @@ void productInfo(int pkId, int ptId)
   i = packageContainsProduct(pkId, ptId);
   if (i == (-1))
   {
-    {
-      printf("%s %d.\n", products[ptId].description, 0);
-    }
+    printf("%s %d.\n", products[ptId].description, 0);
   }
   else
   {
-    {
-      printf("%s %d.\n", packages[pkId].products[i].description, packages[pkId].products[i].stock);
-    }
+    printf("%s %d.\n", packages[pkId].products[i].description, packages[pkId].products[i].stock);
   }
 
 }
@@ -363,9 +323,7 @@ void mostValuablePackage(int ptId)
   int currentStock = 0;
   if (isProductValid(ptId) == 0)
   {
-    {
-      printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", ptId);
-    }
+    printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", ptId);
   }
   else
   {
@@ -377,10 +335,8 @@ void mostValuablePackage(int ptId)
     j = packageContainsProduct(i, ptId);
     if ((j != (-1)) && (packages[i].products[j].stock > currentStock))
     {
-      {
-        currentStock = packages[i].products[j].stock;
-        mvpk = i;
-      }
+      currentStock = packages[i].products[j].stock;
+      mvpk = i;
     }
     else
     {
@@ -391,9 +347,7 @@ void mostValuablePackage(int ptId)
 
   if (mvpk != (-1))
   {
-    {
-      printf("Maximo produto %d %d %d.\n", ptId, mvpk, currentStock);
-    }
+    printf("Maximo produto %d %d %d.\n", ptId, mvpk, currentStock);
   }
   else
   {
@@ -411,15 +365,11 @@ char compareByPrice(Product a, Product b)
 {
   if (a.price == b.price)
   {
-    {
-      return a.id < b.id;
-    }
+    return a.id < b.id;
   }
   else
   {
-    {
-      return a.price < b.price;
-    }
+    return a.price < b.price;
   }
 
 }
@@ -449,15 +399,11 @@ void merge(Product a[], int left, int m, int right, char (*compareFunction)(Prod
   {
     if ((*compareFunction)(aux[j], aux[i]))
     {
-      {
-        a[k] = aux[j--];
-      }
+      a[k] = aux[j--];
     }
     else
     {
-      {
-        a[k] = aux[i++];
-      }
+      a[k] = aux[i++];
     }
 
   }
@@ -469,9 +415,7 @@ void mergeSort(Product a[], int left, int right, char (*compareFuction)(Product,
   int m = (right + left) / 2;
   if (right <= left)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -488,10 +432,8 @@ void listProductsByDescription(int pkId)
   int i = 0;
   if (isPackageValid(pkId) == 0)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", pkId);
-      return;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", pkId);
+    return;
   }
   else
   {

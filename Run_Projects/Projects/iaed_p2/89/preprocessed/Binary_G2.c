@@ -107,43 +107,37 @@ BGlink BGdelete(BGlink link, Game game)
       }
       else
       {
+        if ((link->l != 0) && (link->r != 0))
         {
-          if ((link->l != 0) && (link->r != 0))
+          aux = BGmax(link->l);
+          game_aux = BGgetgame(link);
+          link->game = BGgetgame(aux);
+          aux->game = game_aux;
+          link->l = BGdelete(link->l, BGgetgame(aux));
+        }
+        else
+        {
+          aux = link;
+          if ((link->l == 0) && (link->r == 0))
           {
-            {
-              aux = BGmax(link->l);
-              game_aux = BGgetgame(link);
-              link->game = BGgetgame(aux);
-              aux->game = game_aux;
-              link->l = BGdelete(link->l, BGgetgame(aux));
-            }
+            link = 0;
           }
           else
           {
+            if (link->l == 0)
             {
-              aux = link;
-              if ((link->l == 0) && (link->r == 0))
-              {
-                link = 0;
-              }
-              else
-              {
-                if (link->l == 0)
-                {
-                  link = link->r;
-                }
-                else
-                {
-                  link = link->l;
-                }
-
-              }
-
-              free(aux);
+              link = link->r;
             }
+            else
+            {
+              link = link->l;
+            }
+
           }
 
+          free(aux);
         }
+
       }
 
     }

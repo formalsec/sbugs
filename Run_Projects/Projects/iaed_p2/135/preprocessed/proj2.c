@@ -104,36 +104,28 @@ void adiciona_novo_jogo(list *ls, hashtable_jogo *ht_jogo, hashtable_equipa *ht_
   s2 = new_sym_var(sizeof(int) * 8);
   if (procuraHash_jogo(ht_jogo, nome))
   {
-    {
-      printf("%d Jogo existente.\n", n_comando);
-    }
+    printf("%d Jogo existente.\n", n_comando);
   }
   else
   {
     if ((!procuraHash_equipa(ht_equipa, e1)) || (!procuraHash_equipa(ht_equipa, e2)))
     {
-      {
-        printf("%d Equipa inexistente.\n", n_comando);
-      }
+      printf("%d Equipa inexistente.\n", n_comando);
     }
     else
     {
+      j = cria_jogo(nome, e1, e2, s1, s2);
+      if (j->vencedora)
       {
-        j = cria_jogo(nome, e1, e2, s1, s2);
-        if (j->vencedora)
-        {
-          {
-            procuraHash_equipa(ht_equipa, j->vencedora)->n_ganhos++;
-          }
-        }
-        else
-        {
-          
-        }
-
-        el_j = adiciona_elemento(ls, j);
-        insereHash_jogo(ht_jogo, el_j);
+        procuraHash_equipa(ht_equipa, j->vencedora)->n_ganhos++;
       }
+      else
+      {
+        
+      }
+
+      el_j = adiciona_elemento(ls, j);
+      insereHash_jogo(ht_jogo, el_j);
     }
 
   }
@@ -152,18 +144,14 @@ void adiciona_nova_equipa(hashtable_equipa *ht_equipa, const int n_comando)
   nome[(1023 + 1) - 1] = '\0';
   if (procuraHash_equipa(ht_equipa, nome))
   {
-    {
-      printf("%d Equipa existente.\n", n_comando);
-    }
+    printf("%d Equipa existente.\n", n_comando);
   }
   else
   {
-    {
-      e = malloc(sizeof(equipa));
-      e->nome = strdup(nome);
-      e->n_ganhos = 0;
-      insereHash_equipa(ht_equipa, e);
-    }
+    e = malloc(sizeof(equipa));
+    e->nome = strdup(nome);
+    e->n_ganhos = 0;
+    insereHash_equipa(ht_equipa, e);
   }
 
 }
@@ -187,16 +175,12 @@ void procura_jogo(hashtable_jogo *ht_jogo, const int n_comando)
   e = procuraHash_jogo(ht_jogo, nome);
   if (!e)
   {
-    {
-      printf("%d Jogo inexistente.\n", n_comando);
-    }
+    printf("%d Jogo inexistente.\n", n_comando);
   }
   else
   {
-    {
-      j = e->j;
-      printf("%d %s %s %s %d %d\n", n_comando, nome, j->equipa1, j->equipa2, j->score1, j->score2);
-    }
+    j = e->j;
+    printf("%d %s %s %s %d %d\n", n_comando, nome, j->equipa1, j->equipa2, j->score1, j->score2);
   }
 
 }
@@ -214,15 +198,11 @@ void procura_equipa(hashtable_equipa *ht_equipa, const int n_comando)
   nome[(1023 + 1) - 1] = '\0';
   if (e = procuraHash_equipa(ht_equipa, nome))
   {
-    {
-      printf("%d %s %d\n", n_comando, nome, e->n_ganhos);
-    }
+    printf("%d %s %d\n", n_comando, nome, e->n_ganhos);
   }
   else
   {
-    {
-      printf("%d Equipa inexistente.\n", n_comando);
-    }
+    printf("%d Equipa inexistente.\n", n_comando);
   }
 
 }
@@ -241,28 +221,22 @@ void apaga_jogo(list *ls, hashtable_jogo *ht_jogo, hashtable_equipa *ht_equipa, 
   el = procuraHash_jogo(ht_jogo, nome);
   if (!el)
   {
-    {
-      printf("%d Jogo inexistente.\n", n_comando);
-    }
+    printf("%d Jogo inexistente.\n", n_comando);
   }
   else
   {
+    if (el->j->vencedora)
     {
-      if (el->j->vencedora)
-      {
-        {
-          equipa = procuraHash_equipa(ht_equipa, el->j->vencedora);
-          equipa->n_ganhos--;
-        }
-      }
-      else
-      {
-        
-      }
-
-      remove_elemento(ls, el);
-      apagaHash_jogo(ht_jogo, nome);
+      equipa = procuraHash_equipa(ht_equipa, el->j->vencedora);
+      equipa->n_ganhos--;
     }
+    else
+    {
+      
+    }
+
+    remove_elemento(ls, el);
+    apagaHash_jogo(ht_jogo, nome);
   }
 
 }
@@ -285,72 +259,26 @@ void altera_score(hashtable_jogo *ht_jogo, hashtable_equipa *ht_equipa, const in
   el = procuraHash_jogo(ht_jogo, nome);
   if (!el)
   {
-    {
-      printf("%d Jogo inexistente.\n", n_comando);
-    }
+    printf("%d Jogo inexistente.\n", n_comando);
   }
   else
   {
+    if (el->j->vencedora)
     {
-      if (el->j->vencedora)
-      {
-        {
-          vencedora_ant = strdup(el->j->vencedora);
-        }
-      }
-      else
-      {
-        {
-          vencedora_ant = 0;
-        }
-      }
+      vencedora_ant = strdup(el->j->vencedora);
+    }
+    else
+    {
+      vencedora_ant = 0;
+    }
 
-      altera_score_jogo(el->j, s1, s2);
-      if (el->j->vencedora && vencedora_ant)
+    altera_score_jogo(el->j, s1, s2);
+    if (el->j->vencedora && vencedora_ant)
+    {
+      if (strcmp(el->j->vencedora, vencedora_ant))
       {
-        {
-          if (strcmp(el->j->vencedora, vencedora_ant))
-          {
-            {
-              procuraHash_equipa(ht_equipa, el->j->vencedora)->n_ganhos++;
-              procuraHash_equipa(ht_equipa, vencedora_ant)->n_ganhos--;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-      }
-      else
-      {
-        if (el->j->vencedora)
-        {
-          {
-            procuraHash_equipa(ht_equipa, el->j->vencedora)->n_ganhos++;
-          }
-        }
-        else
-        {
-          if (vencedora_ant)
-          {
-            {
-              procuraHash_equipa(ht_equipa, vencedora_ant)->n_ganhos--;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-      }
-
-      if (vencedora_ant)
-      {
-        free(vencedora_ant);
+        procuraHash_equipa(ht_equipa, el->j->vencedora)->n_ganhos++;
+        procuraHash_equipa(ht_equipa, vencedora_ant)->n_ganhos--;
       }
       else
       {
@@ -358,6 +286,36 @@ void altera_score(hashtable_jogo *ht_jogo, hashtable_equipa *ht_equipa, const in
       }
 
     }
+    else
+    {
+      if (el->j->vencedora)
+      {
+        procuraHash_equipa(ht_equipa, el->j->vencedora)->n_ganhos++;
+      }
+      else
+      {
+        if (vencedora_ant)
+        {
+          procuraHash_equipa(ht_equipa, vencedora_ant)->n_ganhos--;
+        }
+        else
+        {
+          
+        }
+
+      }
+
+    }
+
+    if (vencedora_ant)
+    {
+      free(vencedora_ant);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -369,9 +327,7 @@ void lista_equipa_mais_ganhos(hashtable_equipa *ht_equipa, const int n_comando)
   maior_ganhos(ht_equipa, &maior_n_ganhos, &n_equipas);
   if (n_equipas)
   {
-    {
-      nome_equipas_maior_ganhos(ht_equipa, maior_n_ganhos, n_equipas, n_comando);
-    }
+    nome_equipas_maior_ganhos(ht_equipa, maior_n_ganhos, n_equipas, n_comando);
   }
   else
   {

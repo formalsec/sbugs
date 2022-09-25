@@ -113,10 +113,8 @@ void adiciona_equipa(char *texto)
   {
     if (strcmp(lista_equipas[contador].equipa, str) == 0)
     {
-      {
-        printf("%d Equipa existente.\n", numero_linha);
-        controlador = 1;
-      }
+      printf("%d Equipa existente.\n", numero_linha);
+      controlador = 1;
     }
     else
     {
@@ -128,10 +126,8 @@ void adiciona_equipa(char *texto)
 
   if (controlador == 0)
   {
-    {
-      strcpy(lista_equipas[contador_equipas].equipa, str);
-      contador_equipas++;
-    }
+    strcpy(lista_equipas[contador_equipas].equipa, str);
+    contador_equipas++;
   }
   else
   {
@@ -170,15 +166,13 @@ void adiciona_jogo(char *texto)
   {
     if (strcmp(lista_jogos[contador2].jogo, str1) == 0)
     {
-      {
-        memset(str1, 0, sizeof(str1));
-        memset(str2, 0, sizeof(str2));
-        memset(str3, 0, sizeof(str3));
-        memset(str4, 0, sizeof(str4));
-        memset(str5, 0, sizeof(str5));
-        printf("%d Jogo existente.\n", numero_linha);
-        return;
-      }
+      memset(str1, 0, sizeof(str1));
+      memset(str2, 0, sizeof(str2));
+      memset(str3, 0, sizeof(str3));
+      memset(str4, 0, sizeof(str4));
+      memset(str5, 0, sizeof(str5));
+      printf("%d Jogo existente.\n", numero_linha);
+      return;
     }
     else
     {
@@ -202,10 +196,8 @@ void adiciona_jogo(char *texto)
   {
     if (strcmp(lista_equipas[contador2].equipa, str2) == 0)
     {
-      {
-        controlador_equipas = 1;
-        index_equipa1 = contador2;
-      }
+      controlador_equipas = 1;
+      index_equipa1 = contador2;
     }
     else
     {
@@ -217,15 +209,13 @@ void adiciona_jogo(char *texto)
 
   if (controlador_equipas != 1)
   {
-    {
-      memset(str1, 0, sizeof(str1));
-      memset(str2, 0, sizeof(str2));
-      memset(str3, 0, sizeof(str3));
-      memset(str4, 0, sizeof(str4));
-      memset(str5, 0, sizeof(str5));
-      printf("%d Equipa inexistente.\n", numero_linha);
-      return;
-    }
+    memset(str1, 0, sizeof(str1));
+    memset(str2, 0, sizeof(str2));
+    memset(str3, 0, sizeof(str3));
+    memset(str4, 0, sizeof(str4));
+    memset(str5, 0, sizeof(str5));
+    printf("%d Equipa inexistente.\n", numero_linha);
+    return;
   }
   else
   {
@@ -247,10 +237,8 @@ void adiciona_jogo(char *texto)
   {
     if (strcmp(lista_equipas[contador2].equipa, str3) == 0)
     {
-      {
-        controlador_equipas = 1;
-        index_equipa2 = contador2;
-      }
+      controlador_equipas = 1;
+      index_equipa2 = contador2;
     }
     else
     {
@@ -262,15 +250,13 @@ void adiciona_jogo(char *texto)
 
   if (controlador_equipas != 1)
   {
-    {
-      memset(str1, 0, sizeof(str1));
-      memset(str2, 0, sizeof(str2));
-      memset(str3, 0, sizeof(str3));
-      memset(str4, 0, sizeof(str4));
-      memset(str5, 0, sizeof(str5));
-      printf("%d Equipa inexistente.\n", numero_linha);
-      return;
-    }
+    memset(str1, 0, sizeof(str1));
+    memset(str2, 0, sizeof(str2));
+    memset(str3, 0, sizeof(str3));
+    memset(str4, 0, sizeof(str4));
+    memset(str5, 0, sizeof(str5));
+    printf("%d Equipa inexistente.\n", numero_linha);
+    return;
   }
   else
   {
@@ -301,10 +287,8 @@ void adiciona_jogo(char *texto)
   lista_jogos[contador_jogos].existe = 1;
   if (lista_jogos[contador_jogos].score1 > lista_jogos[contador_jogos].score2)
   {
-    {
-      lista_equipas[index_equipa1].vitorias++;
-      lista_jogos[contador_jogos].vencedor = 1;
-    }
+    lista_equipas[index_equipa1].vitorias++;
+    lista_jogos[contador_jogos].vencedor = 1;
   }
   else
   {
@@ -313,10 +297,8 @@ void adiciona_jogo(char *texto)
 
   if (lista_jogos[contador_jogos].score2 > lista_jogos[contador_jogos].score1)
   {
-    {
-      lista_equipas[index_equipa2].vitorias++;
-      lista_jogos[contador_jogos].vencedor = 2;
-    }
+    lista_equipas[index_equipa2].vitorias++;
+    lista_jogos[contador_jogos].vencedor = 2;
   }
   else
   {
@@ -340,10 +322,8 @@ void lista_de_jogos()
   {
     if (lista_jogos[contador].existe == 1)
     {
-      {
-        printf("%d %s %s %s %d %d\n", numero_linha, lista_jogos[contador].jogo, lista_jogos[contador].equipa1, lista_jogos[contador].equipa2, lista_jogos[contador].score1, lista_jogos[contador].score2);
-        contador++;
-      }
+      printf("%d %s %s %s %d %d\n", numero_linha, lista_jogos[contador].jogo, lista_jogos[contador].equipa1, lista_jogos[contador].equipa2, lista_jogos[contador].score1, lista_jogos[contador].score2);
+      contador++;
     }
     else
     {
@@ -373,10 +353,8 @@ void procura_jogo(char *texto)
   {
     if (strcmp(lista_jogos[contador].jogo, str) == 0)
     {
-      {
-        controlador = 1;
-        index_jogo = contador;
-      }
+      controlador = 1;
+      index_jogo = contador;
     }
     else
     {
@@ -388,11 +366,9 @@ void procura_jogo(char *texto)
 
   if (controlador != 1)
   {
-    {
-      memset(str, 0, sizeof(str));
-      printf("%d Jogo inexistente.\n", numero_linha);
-      return;
-    }
+    memset(str, 0, sizeof(str));
+    printf("%d Jogo inexistente.\n", numero_linha);
+    return;
   }
   else
   {
@@ -422,10 +398,8 @@ void procura_equipa(char *texto)
   {
     if (strcmp(lista_equipas[contador].equipa, str) == 0)
     {
-      {
-        controlador = 1;
-        index_equipa = contador;
-      }
+      controlador = 1;
+      index_equipa = contador;
     }
     else
     {
@@ -437,11 +411,9 @@ void procura_equipa(char *texto)
 
   if (controlador != 1)
   {
-    {
-      memset(str, 0, sizeof(str));
-      printf("%d Equipa inexistente.\n", numero_linha);
-      return;
-    }
+    memset(str, 0, sizeof(str));
+    printf("%d Equipa inexistente.\n", numero_linha);
+    return;
   }
   else
   {
@@ -475,10 +447,8 @@ void apaga_jogo(char *texto)
   {
     if (strcmp(lista_jogos[contador].jogo, str) == 0)
     {
-      {
-        controlador = 1;
-        index_jogo = contador;
-      }
+      controlador = 1;
+      index_jogo = contador;
     }
     else
     {
@@ -490,11 +460,9 @@ void apaga_jogo(char *texto)
 
   if (controlador != 1)
   {
-    {
-      memset(str, 0, sizeof(str));
-      printf("%d Jogo inexistente.\n", numero_linha);
-      return;
-    }
+    memset(str, 0, sizeof(str));
+    printf("%d Jogo inexistente.\n", numero_linha);
+    return;
   }
   else
   {
@@ -507,24 +475,20 @@ void apaga_jogo(char *texto)
   contador5 = contador_equipas - 1;
   if (lista_jogos[contador3].vencedor == 1)
   {
+    while (contador5 >= 0)
     {
-      while (contador5 >= 0)
+      if (strcmp(lista_equipas[contador5].equipa, lista_jogos[contador3].equipa1) == 0)
       {
-        if (strcmp(lista_equipas[contador5].equipa, lista_jogos[contador3].equipa1) == 0)
-        {
-          {
-            lista_equipas[contador5].vitorias--;
-          }
-        }
-        else
-        {
-          
-        }
-
-        contador5--;
+        lista_equipas[contador5].vitorias--;
+      }
+      else
+      {
+        
       }
 
+      contador5--;
     }
+
   }
   else
   {
@@ -533,24 +497,20 @@ void apaga_jogo(char *texto)
 
   if (lista_jogos[contador3].vencedor == 2)
   {
+    while (contador5 >= 0)
     {
-      while (contador5 >= 0)
+      if (strcmp(lista_equipas[contador5].equipa, lista_jogos[contador3].equipa2) == 0)
       {
-        if (strcmp(lista_equipas[contador5].equipa, lista_jogos[contador3].equipa2) == 0)
-        {
-          {
-            lista_equipas[contador5].vitorias--;
-          }
-        }
-        else
-        {
-          
-        }
-
-        contador5--;
+        lista_equipas[contador5].vitorias--;
+      }
+      else
+      {
+        
       }
 
+      contador5--;
     }
+
   }
   else
   {
@@ -575,15 +535,13 @@ void apaga_jogo(char *texto)
 
   if (contador2 == index_jogo)
   {
-    {
-      memset(lista_jogos[contador3].jogo, 0, sizeof(lista_jogos[contador3].jogo));
-      memset(lista_jogos[contador3].equipa1, 0, sizeof(lista_jogos[contador3].equipa1));
-      memset(lista_jogos[contador3].equipa2, 0, sizeof(lista_jogos[contador3].equipa2));
-      lista_jogos[contador3].score1 = 0;
-      lista_jogos[contador3].score2 = 0;
-      lista_jogos[contador3].vencedor = 0;
-      lista_jogos[contador4].existe = 0;
-    }
+    memset(lista_jogos[contador3].jogo, 0, sizeof(lista_jogos[contador3].jogo));
+    memset(lista_jogos[contador3].equipa1, 0, sizeof(lista_jogos[contador3].equipa1));
+    memset(lista_jogos[contador3].equipa2, 0, sizeof(lista_jogos[contador3].equipa2));
+    lista_jogos[contador3].score1 = 0;
+    lista_jogos[contador3].score2 = 0;
+    lista_jogos[contador3].vencedor = 0;
+    lista_jogos[contador4].existe = 0;
   }
   else
   {
@@ -645,10 +603,8 @@ void altera_pontuacao(char *texto)
   {
     if (strcmp(lista_jogos[contador2].jogo, str1) == 0)
     {
-      {
-        controlador_jogo = 1;
-        index_jogo = contador2;
-      }
+      controlador_jogo = 1;
+      index_jogo = contador2;
     }
     else
     {
@@ -660,13 +616,11 @@ void altera_pontuacao(char *texto)
 
   if (controlador_jogo != 1)
   {
-    {
-      memset(str1, 0, sizeof(str1));
-      memset(str2, 0, sizeof(str2));
-      memset(str3, 0, sizeof(str3));
-      printf("%d Jogo inexistente.\n", numero_linha);
-      return;
-    }
+    memset(str1, 0, sizeof(str1));
+    memset(str2, 0, sizeof(str2));
+    memset(str3, 0, sizeof(str3));
+    printf("%d Jogo inexistente.\n", numero_linha);
+    return;
   }
   else
   {
@@ -677,9 +631,7 @@ void altera_pontuacao(char *texto)
   lista_jogos[index_jogo].score2 = new_sym_var(sizeof(int) * 8);
   if (lista_jogos[index_jogo].score1 > lista_jogos[index_jogo].score2)
   {
-    {
-      vencedor = 1;
-    }
+    vencedor = 1;
   }
   else
   {
@@ -688,9 +640,7 @@ void altera_pontuacao(char *texto)
 
   if (lista_jogos[index_jogo].score2 > lista_jogos[index_jogo].score1)
   {
-    {
-      vencedor = 2;
-    }
+    vencedor = 2;
   }
   else
   {
@@ -699,9 +649,7 @@ void altera_pontuacao(char *texto)
 
   if (lista_jogos[index_jogo].score2 == lista_jogos[index_jogo].score1)
   {
-    {
-      vencedor = 0;
-    }
+    vencedor = 0;
   }
   else
   {
@@ -710,121 +658,67 @@ void altera_pontuacao(char *texto)
 
   if (lista_jogos[index_jogo].vencedor != vencedor)
   {
+    contador = contador_equipas - 1;
+    while (contador >= 0)
     {
-      contador = contador_equipas - 1;
-      while (contador >= 0)
+      if (strcmp(lista_equipas[contador].equipa, lista_jogos[index_jogo].equipa1) == 0)
       {
-        if (strcmp(lista_equipas[contador].equipa, lista_jogos[index_jogo].equipa1) == 0)
-        {
-          {
-            index_equipa1 = contador;
-          }
-        }
-        else
-        {
-          
-        }
-
-        contador--;
-      }
-
-      contador = contador_equipas - 1;
-      while (contador >= 0)
-      {
-        if (strcmp(lista_equipas[contador].equipa, lista_jogos[index_jogo].equipa2) == 0)
-        {
-          {
-            index_equipa2 = contador;
-          }
-        }
-        else
-        {
-          
-        }
-
-        contador--;
-      }
-
-      if (vencedor == 0)
-      {
-        {
-          if (lista_jogos[index_jogo].vencedor == 1)
-          {
-            {
-              lista_equipas[index_equipa1].vitorias--;
-            }
-          }
-          else
-          {
-            
-          }
-
-          if (lista_jogos[index_jogo].vencedor == 2)
-          {
-            {
-              lista_equipas[index_equipa2].vitorias--;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
+        index_equipa1 = contador;
       }
       else
       {
         
       }
 
-      if (lista_jogos[index_jogo].vencedor == 0)
+      contador--;
+    }
+
+    contador = contador_equipas - 1;
+    while (contador >= 0)
+    {
+      if (strcmp(lista_equipas[contador].equipa, lista_jogos[index_jogo].equipa2) == 0)
       {
-        {
-          if (vencedor == 1)
-          {
-            {
-              lista_equipas[index_equipa1].vitorias++;
-            }
-          }
-          else
-          {
-            
-          }
-
-          if (vencedor == 2)
-          {
-            {
-              lista_equipas[index_equipa2].vitorias++;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
+        index_equipa2 = contador;
       }
       else
       {
         
       }
 
+      contador--;
+    }
+
+    if (vencedor == 0)
+    {
+      if (lista_jogos[index_jogo].vencedor == 1)
+      {
+        lista_equipas[index_equipa1].vitorias--;
+      }
+      else
+      {
+        
+      }
+
+      if (lista_jogos[index_jogo].vencedor == 2)
+      {
+        lista_equipas[index_equipa2].vitorias--;
+      }
+      else
+      {
+        
+      }
+
+    }
+    else
+    {
+      
+    }
+
+    if (lista_jogos[index_jogo].vencedor == 0)
+    {
       if (vencedor == 1)
       {
-        {
-          if (lista_jogos[index_jogo].vencedor == 2)
-          {
-            {
-              lista_equipas[index_equipa1].vitorias++;
-              lista_equipas[index_equipa2].vitorias--;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
+        lista_equipas[index_equipa1].vitorias++;
       }
       else
       {
@@ -833,28 +727,56 @@ void altera_pontuacao(char *texto)
 
       if (vencedor == 2)
       {
-        {
-          if (lista_jogos[index_jogo].vencedor == 1)
-          {
-            {
-              lista_equipas[index_equipa1].vitorias--;
-              lista_equipas[index_equipa2].vitorias++;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
+        lista_equipas[index_equipa2].vitorias++;
       }
       else
       {
         
       }
 
-      lista_jogos[index_jogo].vencedor = vencedor;
     }
+    else
+    {
+      
+    }
+
+    if (vencedor == 1)
+    {
+      if (lista_jogos[index_jogo].vencedor == 2)
+      {
+        lista_equipas[index_equipa1].vitorias++;
+        lista_equipas[index_equipa2].vitorias--;
+      }
+      else
+      {
+        
+      }
+
+    }
+    else
+    {
+      
+    }
+
+    if (vencedor == 2)
+    {
+      if (lista_jogos[index_jogo].vencedor == 1)
+      {
+        lista_equipas[index_equipa1].vitorias--;
+        lista_equipas[index_equipa2].vitorias++;
+      }
+      else
+      {
+        
+      }
+
+    }
+    else
+    {
+      
+    }
+
+    lista_jogos[index_jogo].vencedor = vencedor;
   }
   else
   {
@@ -874,9 +796,7 @@ void encontra_mais_vitorias()
   {
     if (lista_equipas[contador].vitorias > numero_vitorias)
     {
-      {
-        numero_vitorias = lista_equipas[contador].vitorias;
-      }
+      numero_vitorias = lista_equipas[contador].vitorias;
     }
     else
     {
@@ -889,25 +809,21 @@ void encontra_mais_vitorias()
   contador = 0;
   if (contador_equipas > 0)
   {
+    printf("%d Melhores %d\n", numero_linha, numero_vitorias);
+    while (contador < contador_equipas)
     {
-      printf("%d Melhores %d\n", numero_linha, numero_vitorias);
-      while (contador < contador_equipas)
+      if (lista_equipas[contador].vitorias == numero_vitorias)
       {
-        if (lista_equipas[contador].vitorias == numero_vitorias)
-        {
-          {
-            printf("%d * %s\n", numero_linha, lista_equipas[contador].equipa);
-          }
-        }
-        else
-        {
-          
-        }
-
-        contador++;
+        printf("%d * %s\n", numero_linha, lista_equipas[contador].equipa);
+      }
+      else
+      {
+        
       }
 
+      contador++;
     }
+
   }
   else
   {

@@ -62,10 +62,8 @@ game_node *search_game(game_link **hash_games, char *name)
   {
     if (!strcmp(hash_games[key]->link->game_name, name))
     {
-      {
-        game = hash_games[key]->link;
-        break;
-      }
+      game = hash_games[key]->link;
+      break;
     }
     else
     {
@@ -87,28 +85,24 @@ void delete_game_hash(game_link **hash_games, l_game *game_list, char *name)
   {
     if (!strcmp(hash_games[key]->link->game_name, name))
     {
+      if (previous)
       {
-        if (previous)
-        {
-          previous->next = hash_games[key]->next;
-        }
-        else
-        {
-          head = hash_games[key]->next;
-        }
-
-        delete_game(hash_games[key]->link, game_list);
-        free(hash_games[key]);
-        hash_games[key] = head;
-        break;
+        previous->next = hash_games[key]->next;
       }
+      else
+      {
+        head = hash_games[key]->next;
+      }
+
+      delete_game(hash_games[key]->link, game_list);
+      free(hash_games[key]);
+      hash_games[key] = head;
+      break;
     }
     else
     {
-      {
-        previous = hash_games[key];
-        hash_games[key] = hash_games[key]->next;
-      }
+      previous = hash_games[key];
+      hash_games[key] = hash_games[key]->next;
     }
 
   }
@@ -150,9 +144,7 @@ game_node *insert_game(l_game *game_list, char *name, t_node *first_team, t_node
   }
   else
   {
-    {
-      game_list->head = new_game;
-    }
+    game_list->head = new_game;
   }
 
   game_list->last = new_game;

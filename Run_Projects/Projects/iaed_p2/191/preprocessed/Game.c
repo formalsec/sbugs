@@ -22,17 +22,13 @@ Game *newGame(unsigned int id, unsigned int score[], Team *team1, Team *team2, c
   new->name = n;
   if (score[0] > score[1])
   {
-    {
-      new->team1->nWon++;
-    }
+    new->team1->nWon++;
   }
   else
   {
     if (score[0] < score[1])
     {
-      {
-        new->team2->nWon++;
-      }
+      new->team2->nWon++;
     }
     else
     {

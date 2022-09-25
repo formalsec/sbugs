@@ -45,9 +45,7 @@ tlink iLastList()
   {
     if (itheads[i] != 0)
     {
-      {
-        t = itheads[i];
-      }
+      t = itheads[i];
     }
     else
     {
@@ -66,9 +64,7 @@ int equipasVazioQ()
   {
     if (itheads[i] != 0)
     {
-      {
-        return 0;
-      }
+      return 0;
     }
     else
     {
@@ -89,16 +85,14 @@ void iTclear()
   {
     if (itheads[i] != 0)
     {
+      t = itheads[i];
+      while (t != 0)
       {
-        t = itheads[i];
-        while (t != 0)
-        {
-          tmp = t;
-          t = t->next;
-          free(tmp);
-        }
-
+        tmp = t;
+        t = t->next;
+        free(tmp);
       }
+
     }
     else
     {

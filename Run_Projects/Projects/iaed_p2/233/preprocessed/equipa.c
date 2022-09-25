@@ -41,10 +41,8 @@ void destroyHash()
   {
     if (hash_e[i] != 0)
     {
-      {
-        free(hash_e[i]->nome);
-        free(hash_e[i]);
-      }
+      free(hash_e[i]->nome);
+      free(hash_e[i]);
     }
     else
     {
@@ -71,10 +69,8 @@ int A()
   {
     if (strcmp(hash_e[i]->nome, nome) == 0)
     {
-      {
-        printf("%d Equipa existente.\n", NL);
-        return 0;
-      }
+      printf("%d Equipa existente.\n", NL);
+      return 0;
     }
     else
     {
@@ -90,9 +86,7 @@ int A()
   hash_e[i]->ganhos = 0;
   if ((nr_equipas++) > (tamanho_hash / 2))
   {
-    {
-      expand();
-    }
+    expand();
   }
   else
   {
@@ -125,9 +119,7 @@ void expand()
   {
     if (aux[i] != 0)
     {
-      {
-        insert(aux[i]);
-      }
+      insert(aux[i]);
     }
     else
     {
@@ -147,9 +139,7 @@ int procuraEquipa(char *nome)
   {
     if (strcmp(hash_e[aux]->nome, nome) == 0)
     {
-      {
-        return aux;
-      }
+      return aux;
     }
     else
     {
@@ -170,9 +160,7 @@ void printHash()
   {
     if (hash_e[i] != 0)
     {
-      {
-        printf("%s(%d) %d\n", hash_e[i]->nome, i, hash_e[i]->ganhos);
-      }
+      printf("%s(%d) %d\n", hash_e[i]->nome, i, hash_e[i]->ganhos);
     }
     else
     {
@@ -196,15 +184,11 @@ void P()
   aux = procuraEquipa(nome);
   if (aux != (-1))
   {
-    {
-      printf("%d %s %d\n", NL, hash_e[aux]->nome, hash_e[aux]->ganhos);
-    }
+    printf("%d %s %d\n", NL, hash_e[aux]->nome, hash_e[aux]->ganhos);
   }
   else
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-    }
+    printf("%d Equipa inexistente.\n", NL);
   }
 
 }
@@ -223,9 +207,7 @@ void heapify(equipa **array, int t, int i)
   int direita = (2 * i) + 2;
   if ((esquerda < t) && (strcmp(array[esquerda]->nome, array[pai]->nome) > 0))
   {
-    {
-      pai = esquerda;
-    }
+    pai = esquerda;
   }
   else
   {
@@ -234,9 +216,7 @@ void heapify(equipa **array, int t, int i)
 
   if ((direita < t) && (strcmp(array[direita]->nome, array[pai]->nome) > 0))
   {
-    {
-      pai = direita;
-    }
+    pai = direita;
   }
   else
   {
@@ -245,10 +225,8 @@ void heapify(equipa **array, int t, int i)
 
   if (pai != i)
   {
-    {
-      troca(array, i, pai);
-      heapify(array, t, pai);
-    }
+    troca(array, i, pai);
+    heapify(array, t, pai);
   }
   else
   {
@@ -264,75 +242,65 @@ void g()
   int mais_ganhos = -1;
   if (nr_equipas > 0)
   {
+    equipa **aux = malloc((sizeof(equipa *)) * nr_equipas);
+    for (i = 0; i < tamanho_hash; i++)
     {
-      equipa **aux = malloc((sizeof(equipa *)) * nr_equipas);
-      for (i = 0; i < tamanho_hash; i++)
+      if (hash_e[i] != 0)
       {
-        if (hash_e[i] != 0)
+        if (mais_ganhos == (-1))
         {
-          {
-            if (mais_ganhos == (-1))
-            {
-              {
-                aux[e++] = hash_e[i];
-                mais_ganhos = hash_e[i]->ganhos;
-              }
-            }
-            else
-            {
-              if (aux[0]->ganhos < hash_e[i]->ganhos)
-              {
-                {
-                  e = 0;
-                  aux[e++] = hash_e[i];
-                  mais_ganhos = hash_e[i]->ganhos;
-                }
-              }
-              else
-              {
-                if (aux[0]->ganhos == hash_e[i]->ganhos)
-                {
-                  {
-                    aux[e++] = hash_e[i];
-                  }
-                }
-                else
-                {
-                  
-                }
-
-              }
-
-            }
-
-          }
+          aux[e++] = hash_e[i];
+          mais_ganhos = hash_e[i]->ganhos;
         }
         else
         {
-          
+          if (aux[0]->ganhos < hash_e[i]->ganhos)
+          {
+            e = 0;
+            aux[e++] = hash_e[i];
+            mais_ganhos = hash_e[i]->ganhos;
+          }
+          else
+          {
+            if (aux[0]->ganhos == hash_e[i]->ganhos)
+            {
+              aux[e++] = hash_e[i];
+            }
+            else
+            {
+              
+            }
+
+          }
+
         }
 
       }
-
-      for (i = (e / 2) - 1; i >= 0; i--)
+      else
       {
-        heapify(aux, e, i);
+        
       }
 
-      for (i = e - 1; i >= 0; i--)
-      {
-        troca(aux, 0, i);
-        heapify(aux, i, 0);
-      }
-
-      printf("%d Melhores %d\n", NL, mais_ganhos);
-      for (i = 0; i < e; i++)
-      {
-        printf("%d * %s\n", NL, aux[i]->nome);
-      }
-
-      free(aux);
     }
+
+    for (i = (e / 2) - 1; i >= 0; i--)
+    {
+      heapify(aux, e, i);
+    }
+
+    for (i = e - 1; i >= 0; i--)
+    {
+      troca(aux, 0, i);
+      heapify(aux, i, 0);
+    }
+
+    printf("%d Melhores %d\n", NL, mais_ganhos);
+    for (i = 0; i < e; i++)
+    {
+      printf("%d * %s\n", NL, aux[i]->nome);
+    }
+
+    free(aux);
   }
   else
   {

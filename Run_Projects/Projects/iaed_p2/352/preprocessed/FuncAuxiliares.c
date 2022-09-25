@@ -41,7 +41,7 @@ bool equipa_nao_existe(char *equipa)
   indice = hash(equipa);
   if (HashTeams[indice] == 0)
   {
-    return 1;
+    return true;
   }
   else
   {
@@ -56,14 +56,14 @@ bool equipa_nao_existe(char *equipa)
 
   if (temp == 0)
   {
-    return 1;
+    return true;
   }
   else
   {
     
   }
 
-  return 0;
+  return false;
 }
 
 void MergeSort(EquipasOrd **headteam)
@@ -73,9 +73,7 @@ void MergeSort(EquipasOrd **headteam)
   EquipasOrd *b;
   if ((head == 0) || (head->next == 0))
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -110,17 +108,13 @@ EquipasOrd *SortedMerge(EquipasOrd *a, EquipasOrd *b)
 
   if (strcmp(a->team->nome_equipa, b->team->nome_equipa) <= 0)
   {
-    {
-      result = a;
-      result->next = SortedMerge(a->next, b);
-    }
+    result = a;
+    result->next = SortedMerge(a->next, b);
   }
   else
   {
-    {
-      result = b;
-      result->next = SortedMerge(a, b->next);
-    }
+    result = b;
+    result->next = SortedMerge(a, b->next);
   }
 
   return result;
@@ -137,10 +131,8 @@ void FrontBackSplit(EquipasOrd *source, EquipasOrd **frontRef, EquipasOrd **back
     fast = fast->next;
     if (fast != 0)
     {
-      {
-        slow = slow->next;
-        fast = fast->next;
-      }
+      slow = slow->next;
+      fast = fast->next;
     }
     else
     {
@@ -166,33 +158,27 @@ void FreeMemory()
   {
     if (HashGames[i] != 0)
     {
+      if (HashGames[i]->next != 0)
       {
-        if (HashGames[i]->next != 0)
+        while (HashGames[i] != 0)
         {
-          {
-            while (HashGames[i] != 0)
-            {
-              free(HashGames[i]->nome);
-              free(HashGames[i]->equipa_1);
-              free(HashGames[i]->equipa_2);
-              aux = HashGames[i]->next;
-              free(HashGames[i]);
-              HashGames[i] = aux;
-            }
-
-          }
-        }
-        else
-        {
-          {
-            free(HashGames[i]->nome);
-            free(HashGames[i]->equipa_1);
-            free(HashGames[i]->equipa_2);
-            free(HashGames[i]);
-          }
+          free(HashGames[i]->nome);
+          free(HashGames[i]->equipa_1);
+          free(HashGames[i]->equipa_2);
+          aux = HashGames[i]->next;
+          free(HashGames[i]);
+          HashGames[i] = aux;
         }
 
       }
+      else
+      {
+        free(HashGames[i]->nome);
+        free(HashGames[i]->equipa_1);
+        free(HashGames[i]->equipa_2);
+        free(HashGames[i]);
+      }
+
     }
     else
     {
@@ -205,29 +191,23 @@ void FreeMemory()
   {
     if (HashTeams[e] != 0)
     {
+      if (HashTeams[e]->next != 0)
       {
-        if (HashTeams[e]->next != 0)
+        while (HashTeams[e] != 0)
         {
-          {
-            while (HashTeams[e] != 0)
-            {
-              free(HashTeams[e]->nome_equipa);
-              aux1 = HashTeams[e]->next;
-              free(HashTeams[e]);
-              HashTeams[e] = aux1;
-            }
-
-          }
-        }
-        else
-        {
-          {
-            free(HashTeams[e]->nome_equipa);
-            free(HashTeams[e]);
-          }
+          free(HashTeams[e]->nome_equipa);
+          aux1 = HashTeams[e]->next;
+          free(HashTeams[e]);
+          HashTeams[e] = aux1;
         }
 
       }
+      else
+      {
+        free(HashTeams[e]->nome_equipa);
+        free(HashTeams[e]);
+      }
+
     }
     else
     {

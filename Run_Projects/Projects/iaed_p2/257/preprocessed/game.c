@@ -23,13 +23,11 @@ Game_list *__a__(int nl, Game_node **head_game, Team_node **head_team, Game_list
   aux[10 - 1] = '\0';
   if (search_game(aux, head_game) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", nl);
-      while ((c = getchar()) != '\n')
-        ;
+    printf("%d Jogo existente.\n", nl);
+    while ((c = getchar()) != '\n')
+      ;
 
-      return game_list;
-    }
+    return game_list;
   }
   else
   {
@@ -46,14 +44,12 @@ Game_list *__a__(int nl, Game_node **head_game, Team_node **head_team, Game_list
   aux[10 - 1] = '\0';
   if ((team1 = search_team(aux, head_team)) == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", nl);
-      free(new_game.name);
-      while ((c = getchar()) != '\n')
-        ;
+    printf("%d Equipa inexistente.\n", nl);
+    free(new_game.name);
+    while ((c = getchar()) != '\n')
+      ;
 
-      return game_list;
-    }
+    return game_list;
   }
   else
   {
@@ -71,11 +67,9 @@ Game_list *__a__(int nl, Game_node **head_game, Team_node **head_team, Game_list
   new_game.score[1] = new_sym_var(sizeof(int) * 8);
   if ((team2 = search_team(aux, head_team)) == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", nl);
-      free(new_game.name);
-      return game_list;
-    }
+    printf("%d Equipa inexistente.\n", nl);
+    free(new_game.name);
+    return game_list;
   }
   else
   {
@@ -85,19 +79,15 @@ Game_list *__a__(int nl, Game_node **head_game, Team_node **head_team, Game_list
   new_game.team2 = team2;
   if (new_game.score[0] < new_game.score[1])
   {
-    {
-      increase_vic(team2, max_victories);
-      new_game.winner = 2;
-    }
+    increase_vic(team2, max_victories);
+    new_game.winner = 2;
   }
   else
   {
     if (new_game.score[0] > new_game.score[1])
     {
-      {
-        increase_vic(team1, max_victories);
-        new_game.winner = 1;
-      }
+      increase_vic(team1, max_victories);
+      new_game.winner = 1;
     }
     else
     {
@@ -121,10 +111,8 @@ Game_list *__r__(int nl, Game_node **head_game, Game_list *game_list, Team_list_
   aux[10 - 1] = '\0';
   if (search_game(aux, head_game) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-      return game_list;
-    }
+    printf("%d Jogo inexistente.\n", nl);
+    return game_list;
   }
   else
   {
@@ -167,13 +155,11 @@ void __s__(int nl, Game_node **head_game, Team_list_node *team_list, int *max_vi
   aux[10 - 1] = '\0';
   if ((game_to_change = search_game(aux, head_game)) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-      while ((c = getchar()) != '\n')
-        ;
+    printf("%d Jogo inexistente.\n", nl);
+    while ((c = getchar()) != '\n')
+      ;
 
-      return;
-    }
+    return;
   }
   else
   {
@@ -184,23 +170,43 @@ void __s__(int nl, Game_node **head_game, Team_list_node *team_list, int *max_vi
   game_to_change->g.score[1] = new_sym_var(sizeof(int) * 8);
   if (game_to_change->g.winner == 1)
   {
+    if (game_to_change->g.score[0] < game_to_change->g.score[1])
     {
-      if (game_to_change->g.score[0] < game_to_change->g.score[1])
+      game_to_change->g.winner = 2;
+      increase_vic(game_to_change->g.team2, max_victories);
+      decrease_vic(game_to_change->g.team1, max_victories, team_list);
+    }
+    else
+    {
+      if (game_to_change->g.score[0] == game_to_change->g.score[1])
       {
-        {
-          game_to_change->g.winner = 2;
-          increase_vic(game_to_change->g.team2, max_victories);
-          decrease_vic(game_to_change->g.team1, max_victories, team_list);
-        }
+        game_to_change->g.winner = 0;
+        decrease_vic(game_to_change->g.team1, max_victories, team_list);
+      }
+      else
+      {
+        
+      }
+
+    }
+
+  }
+  else
+  {
+    if (game_to_change->g.winner == 2)
+    {
+      if (game_to_change->g.score[0] > game_to_change->g.score[1])
+      {
+        game_to_change->g.winner = 1;
+        increase_vic(game_to_change->g.team1, max_victories);
+        decrease_vic(game_to_change->g.team2, max_victories, team_list);
       }
       else
       {
         if (game_to_change->g.score[0] == game_to_change->g.score[1])
         {
-          {
-            game_to_change->g.winner = 0;
-            decrease_vic(game_to_change->g.team1, max_victories, team_list);
-          }
+          game_to_change->g.winner = 0;
+          decrease_vic(game_to_change->g.team2, max_victories, team_list);
         }
         else
         {
@@ -210,65 +216,27 @@ void __s__(int nl, Game_node **head_game, Team_list_node *team_list, int *max_vi
       }
 
     }
-  }
-  else
-  {
-    if (game_to_change->g.winner == 2)
-    {
-      {
-        if (game_to_change->g.score[0] > game_to_change->g.score[1])
-        {
-          {
-            game_to_change->g.winner = 1;
-            increase_vic(game_to_change->g.team1, max_victories);
-            decrease_vic(game_to_change->g.team2, max_victories, team_list);
-          }
-        }
-        else
-        {
-          if (game_to_change->g.score[0] == game_to_change->g.score[1])
-          {
-            {
-              game_to_change->g.winner = 0;
-              decrease_vic(game_to_change->g.team2, max_victories, team_list);
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-      }
-    }
     else
     {
+      if (game_to_change->g.score[0] > game_to_change->g.score[1])
       {
-        if (game_to_change->g.score[0] > game_to_change->g.score[1])
+        game_to_change->g.winner = 1;
+        increase_vic(game_to_change->g.team1, max_victories);
+      }
+      else
+      {
+        if (game_to_change->g.score[0] < game_to_change->g.score[1])
         {
-          {
-            game_to_change->g.winner = 1;
-            increase_vic(game_to_change->g.team1, max_victories);
-          }
+          game_to_change->g.winner = 2;
+          increase_vic(game_to_change->g.team2, max_victories);
         }
         else
         {
-          if (game_to_change->g.score[0] < game_to_change->g.score[1])
-          {
-            {
-              game_to_change->g.winner = 2;
-              increase_vic(game_to_change->g.team2, max_victories);
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
+
     }
 
   }
@@ -326,10 +294,8 @@ void increase_vic(Team_node *team, int *max_victories)
   {
     if (i > max_victories[0])
     {
-      {
-        max_victories[0] = i;
-        max_victories[1] = 1;
-      }
+      max_victories[0] = i;
+      max_victories[1] = 1;
     }
     else
     {
@@ -345,20 +311,16 @@ void decrease_vic(Team_node *team, int *max_victories, Team_list_node *team_list
   int i;
   if ((i = team->t.victories--) == max_victories[0])
   {
+    if (max_victories[1] == 1)
     {
-      if (max_victories[1] == 1)
-      {
-        {
-          max_victories[0]--;
-          max_victories[1] = search_i_victories(i - 1, team_list);
-        }
-      }
-      else
-      {
-        max_victories[1]--;
-      }
-
+      max_victories[0]--;
+      max_victories[1] = search_i_victories(i - 1, team_list);
     }
+    else
+    {
+      max_victories[1]--;
+    }
+
   }
   else
   {
@@ -379,10 +341,8 @@ Game_list *insert_game_list(Game_node *g, Game_list *game_list)
 {
   if (game_list->head == 0)
   {
-    {
-      game_list->head = (game_list->last = new_game_list_node(g));
-      return game_list;
-    }
+    game_list->head = (game_list->last = new_game_list_node(g));
+    return game_list;
   }
   else
   {
@@ -403,38 +363,34 @@ Game_list *delete_game_list(char *name, Game_list *game_list, Game_node **games_
   {
     if (aux->g == node)
     {
+      if (aux == game_list->last)
       {
-        if (aux == game_list->last)
+        if (aux == game_list->head)
         {
-          if (aux == game_list->head)
-          {
-            game_list->head = (game_list->last = 0);
-          }
-          else
-          {
-            game_list->last = aux->next;
-          }
-
+          game_list->head = (game_list->last = 0);
         }
         else
         {
-          if (aux == game_list->head)
-          {
-            {
-              prev->next = 0;
-              game_list->head = prev;
-            }
-          }
-          else
-          {
-            prev->next = aux->next;
-          }
-
+          game_list->last = aux->next;
         }
 
-        free(aux);
-        return game_list;
       }
+      else
+      {
+        if (aux == game_list->head)
+        {
+          prev->next = 0;
+          game_list->head = prev;
+        }
+        else
+        {
+          prev->next = aux->next;
+        }
+
+      }
+
+      free(aux);
+      return game_list;
     }
     else
     {

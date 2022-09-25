@@ -56,26 +56,22 @@ int max_vitorias_tab(tab_disp tab_equipas)
   {
     if (tab_equipas->tab[i] != 0)
     {
+      no_aux = tab_equipas->tab[i];
+      while (no_aux != 0)
       {
-        no_aux = tab_equipas->tab[i];
-        while (no_aux != 0)
+        num_equipas++;
+        if ((max_aux = ((equipa) no_aux->item)->vitorias) > max)
         {
-          num_equipas++;
-          if ((max_aux = ((equipa) no_aux->item)->vitorias) > max)
-          {
-            {
-              max = max_aux;
-            }
-          }
-          else
-          {
-            
-          }
-
-          no_aux = no_aux->prox;
+          max = max_aux;
+        }
+        else
+        {
+          
         }
 
+        no_aux = no_aux->prox;
       }
+
     }
     else
     {
@@ -86,15 +82,11 @@ int max_vitorias_tab(tab_disp tab_equipas)
 
   if (num_equipas == 0)
   {
-    {
-      return -1;
-    }
+    return -1;
   }
   else
   {
-    {
-      return max;
-    }
+    return max;
   }
 
 }
@@ -114,60 +106,52 @@ void mostra_equipas_max(tab_disp tab_equipas, int num_linha)
   max_vitorias = max_vitorias_tab(tab_equipas);
   if (max_vitorias != (-1))
   {
+    equipa *vetor_equipas = (equipa *) malloc(tamanho_max * (sizeof(equipa)));
+    for (i = 0; i < tab_equipas->tamanho; i++)
     {
-      equipa *vetor_equipas = (equipa *) malloc(tamanho_max * (sizeof(equipa)));
-      for (i = 0; i < tab_equipas->tamanho; i++)
+      if (tab_equipas->tab[i] != 0)
       {
-        if (tab_equipas->tab[i] != 0)
+        no_aux = tab_equipas->tab[i];
+        while (no_aux != 0)
         {
+          if (((equipa) no_aux->item)->vitorias == max_vitorias)
           {
-            no_aux = tab_equipas->tab[i];
-            while (no_aux != 0)
-            {
-              if (((equipa) no_aux->item)->vitorias == max_vitorias)
-              {
-                {
-                  vetor_equipas[tamanho_vetor++] = (equipa) no_aux->item;
-                }
-              }
-              else
-              {
-                
-              }
-
-              no_aux = no_aux->prox;
-              if (tamanho_vetor > (tamanho_max / 2))
-              {
-                {
-                  tamanho_max *= 2;
-                  vetor_equipas = (equipa *) realloc(vetor_equipas, tamanho_max);
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
+            vetor_equipas[tamanho_vetor++] = (equipa) no_aux->item;
           }
-        }
-        else
-        {
-          
+          else
+          {
+            
+          }
+
+          no_aux = no_aux->prox;
+          if (tamanho_vetor > (tamanho_max / 2))
+          {
+            tamanho_max *= 2;
+            vetor_equipas = (equipa *) realloc(vetor_equipas, tamanho_max);
+          }
+          else
+          {
+            
+          }
+
         }
 
       }
-
-      qsort(vetor_equipas, tamanho_vetor, sizeof(equipa), &ordem_alfa);
-      printf("%d Melhores %d\n", num_linha, max_vitorias);
-      for (i = 0; i < tamanho_vetor; i++)
+      else
       {
-        printf("%d * %s\n", num_linha, vetor_equipas[i]->nome);
+        
       }
 
-      free(vetor_equipas);
     }
+
+    qsort(vetor_equipas, tamanho_vetor, sizeof(equipa), &ordem_alfa);
+    printf("%d Melhores %d\n", num_linha, max_vitorias);
+    for (i = 0; i < tamanho_vetor; i++)
+    {
+      printf("%d * %s\n", num_linha, vetor_equipas[i]->nome);
+    }
+
+    free(vetor_equipas);
   }
   else
   {

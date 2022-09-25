@@ -11,9 +11,7 @@ void AddWin(game *game_v, int score1, int score2)
 {
   if (score1 > score2)
   {
-    {
-      ++game_v->team1->wins;
-    }
+    ++game_v->team1->wins;
   }
   else
   {
@@ -22,9 +20,7 @@ void AddWin(game *game_v, int score1, int score2)
 
   if (score2 > score1)
   {
-    {
-      ++game_v->team2->wins;
-    }
+    ++game_v->team2->wins;
   }
   else
   {
@@ -65,10 +61,8 @@ void __a__(teamstable *table_t, gametable *table_g, int NL)
   score2 = new_sym_var(sizeof(int) * 8);
   if (SearchGame(name, table_g) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-      return;
-    }
+    printf("%d Jogo existente.\n", NL);
+    return;
   }
   else
   {
@@ -79,10 +73,8 @@ void __a__(teamstable *table_t, gametable *table_g, int NL)
   team2 = SearchTeam(team2_c, table_t);
   if ((team1 == 0) || (team2 == 0))
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -101,9 +93,7 @@ void __a__(teamstable *table_t, gametable *table_g, int NL)
   AddWin(game_v, score1, score2);
   if (table_g->n_el >= (table_g->size / 2))
   {
-    {
-      *table_g = *ExpandGameTable(table_g);
-    }
+    *table_g = *ExpandGameTable(table_g);
   }
   else
   {
@@ -124,10 +114,8 @@ void __A__(teamstable *table_t, int NL)
   name[10 - 1] = '\0';
   if (SearchTeam(name, table_t) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-      return;
-    }
+    printf("%d Equipa existente.\n", NL);
+    return;
   }
   else
   {
@@ -141,9 +129,7 @@ void __A__(teamstable *table_t, int NL)
   InsertTeam(team_v, table_t);
   if (table_t->n_el >= (table_t->size / 2))
   {
-    {
-      *table_t = *ExpandTeamsTable(table_t);
-    }
+    *table_t = *ExpandTeamsTable(table_t);
   }
   else
   {
@@ -167,9 +153,7 @@ int partition(game **game_array, int left, int right)
     {
       if (j == left)
       {
-        {
-          break;
-        }
+        break;
       }
       else
       {
@@ -180,11 +164,9 @@ int partition(game **game_array, int left, int right)
 
     if (i < j)
     {
-      {
-        aux = game_array[i];
-        game_array[i] = game_array[j];
-        game_array[j] = aux;
-      }
+      aux = game_array[i];
+      game_array[i] = game_array[j];
+      game_array[j] = aux;
     }
     else
     {
@@ -204,9 +186,7 @@ void quicksort(game **game_array, int left, int right)
   int i;
   if (right <= left)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -228,10 +208,8 @@ void __l__(gametable *table_g, int NL)
   {
     if (table_g->table[i] != 0)
     {
-      {
-        game_array[j] = table_g->table[i];
-        ++j;
-      }
+      game_array[j] = table_g->table[i];
+      ++j;
     }
     else
     {
@@ -262,15 +240,11 @@ void __p__(gametable *table_g, int NL)
   game_v = SearchGame(name, table_g);
   if (game_v == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
   else
   {
-    {
-      printf("%d %s %s %s %d %d\n", NL, game_v->name, game_v->team1->name, game_v->team2->name, game_v->score1, game_v->score2);
-    }
+    printf("%d %s %s %s %d %d\n", NL, game_v->name, game_v->team1->name, game_v->team2->name, game_v->score1, game_v->score2);
   }
 
 }
@@ -288,10 +262,8 @@ void __P__(teamstable *table_t, int NL)
   team_v = SearchTeam(name, table_t);
   if (team_v == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -314,10 +286,8 @@ void __r__(gametable *table_g, int NL)
   game_v = SearchGame(name, table_g);
   if (game_v == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -326,9 +296,7 @@ void __r__(gametable *table_g, int NL)
 
   if (game_v->score1 > game_v->score2)
   {
-    {
-      --game_v->team1->wins;
-    }
+    --game_v->team1->wins;
   }
   else
   {
@@ -337,9 +305,7 @@ void __r__(gametable *table_g, int NL)
 
   if (game_v->score2 > game_v->score1)
   {
-    {
-      --game_v->team2->wins;
-    }
+    --game_v->team2->wins;
   }
   else
   {
@@ -367,10 +333,8 @@ void __s__(gametable *table_g, int NL)
   game_v = SearchGame(name, table_g);
   if (game_v == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -379,9 +343,7 @@ void __s__(gametable *table_g, int NL)
 
   if (game_v->score1 > game_v->score2)
   {
-    {
-      --game_v->team1->wins;
-    }
+    --game_v->team1->wins;
   }
   else
   {
@@ -390,9 +352,7 @@ void __s__(gametable *table_g, int NL)
 
   if (game_v->score2 > game_v->score1)
   {
-    {
-      --game_v->team2->wins;
-    }
+    --game_v->team2->wins;
   }
   else
   {
@@ -422,32 +382,26 @@ void __g__(teamstable *table_t, int NL)
   {
     if (table_t->table[i] != 0)
     {
+      if (table_t->table[i]->wins > n_wins)
       {
-        if (table_t->table[i]->wins > n_wins)
-        {
-          {
-            n_wins = table_t->table[i]->wins;
-            n_winners = 0;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if (table_t->table[i]->wins == n_wins)
-        {
-          {
-            teamptr_array[n_winners] = table_t->table[i]->name;
-            ++n_winners;
-          }
-        }
-        else
-        {
-          
-        }
-
+        n_wins = table_t->table[i]->wins;
+        n_winners = 0;
       }
+      else
+      {
+        
+      }
+
+      if (table_t->table[i]->wins == n_wins)
+      {
+        teamptr_array[n_winners] = table_t->table[i]->name;
+        ++n_winners;
+      }
+      else
+      {
+        
+      }
+
     }
     else
     {
@@ -459,9 +413,7 @@ void __g__(teamstable *table_t, int NL)
   qsort(teamptr_array, n_winners, sizeof(char *), cmpstr);
   if (n_winners > 0)
   {
-    {
-      printf("%d Melhores %d\n", NL, n_wins);
-    }
+    printf("%d Melhores %d\n", NL, n_wins);
   }
   else
   {
@@ -483,10 +435,8 @@ void __x__(teamstable *table_t, gametable *table_g)
   {
     if (table_t->table[i] != 0)
     {
-      {
-        free(table_t->table[i]->name);
-        free(table_t->table[i]);
-      }
+      free(table_t->table[i]->name);
+      free(table_t->table[i]);
     }
     else
     {
@@ -500,10 +450,8 @@ void __x__(teamstable *table_t, gametable *table_g)
   {
     if (table_g->table[i] != 0)
     {
-      {
-        free(table_g->table[i]->name);
-        free(table_g->table[i]);
-      }
+      free(table_g->table[i]->name);
+      free(table_g->table[i]);
     }
     else
     {

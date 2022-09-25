@@ -31,16 +31,12 @@ void adiciona_equipa(no_equipa *tabela_equipas[], char nome[], int *numero_equip
   int pos = hash(nome);
   if (!tabela_equipas[pos])
   {
-    {
-      tabela_equipas[pos] = novo;
-    }
+    tabela_equipas[pos] = novo;
   }
   else
   {
-    {
-      novo->proximo = tabela_equipas[pos];
-      tabela_equipas[pos] = novo;
-    }
+    novo->proximo = tabela_equipas[pos];
+    tabela_equipas[pos] = novo;
   }
 
   (*numero_equipas)++;
@@ -55,10 +51,8 @@ equipa *procura_equipa_lista(no_equipa *tabela_equipas[], char nome[])
   {
     if (!strcmp(i->equipa_do_no.nome, nome))
     {
-      {
-        res = &i->equipa_do_no;
-        return res;
-      }
+      res = &i->equipa_do_no;
+      return res;
     }
     else
     {
@@ -79,9 +73,7 @@ void altera_vitoria_equipa(no_equipa *tabela_equipas[], char nome[], int chave)
   }
   else
   {
-    {
-      alvo->vitorias--;
-    }
+    alvo->vitorias--;
   }
 
 }
@@ -116,10 +108,8 @@ int *procura_mais_vitorias(int numero_equipas, no_equipa *tabela_equipas[])
     for (aux = tabela_equipas[i]; aux; aux = aux->proximo, controlo++)
       if (aux->equipa_do_no.vitorias > max)
     {
-      {
-        max = aux->equipa_do_no.vitorias;
-        cont = 1;
-      }
+      max = aux->equipa_do_no.vitorias;
+      cont = 1;
     }
     else
     {
@@ -179,10 +169,8 @@ void lista_mais_vitorias(no_equipa *tabela_equipas[], int linha, int numero_equi
     {
       if (aux->equipa_do_no.vitorias == max)
       {
-        {
-          mais_vitorias[controlo] = aux->equipa_do_no.nome;
-          controlo++;
-        }
+        mais_vitorias[controlo] = aux->equipa_do_no.nome;
+        controlo++;
       }
       else
       {

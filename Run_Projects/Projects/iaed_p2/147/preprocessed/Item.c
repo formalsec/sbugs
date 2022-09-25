@@ -39,9 +39,7 @@ void list_insert(pList l, pJogo novo)
   novo->previous = l->last;
   if (l->last)
   {
-    {
-      l->last->next = novo;
-    }
+    l->last->next = novo;
   }
   else
   {
@@ -51,9 +49,7 @@ void list_insert(pList l, pJogo novo)
   l->last = novo;
   if (!l->head)
   {
-    {
-      l->head = novo;
-    }
+    l->head = novo;
   }
   else
   {
@@ -66,34 +62,26 @@ void list_delete(pList l, pJogo j)
 {
   if ((!j->previous) && (!j->next))
   {
-    {
-      l->head = (l->last = 0);
-    }
+    l->head = (l->last = 0);
   }
   else
   {
     if (j->previous && (!j->next))
     {
-      {
-        l->last = j->previous;
-        j->previous->next = 0;
-      }
+      l->last = j->previous;
+      j->previous->next = 0;
     }
     else
     {
       if ((!j->previous) && j->next)
       {
-        {
-          j->next->previous = 0;
-          l->head = j->next;
-        }
+        j->next->previous = 0;
+        l->head = j->next;
       }
       else
       {
-        {
-          j->previous->next = j->next;
-          j->next->previous = j->previous;
-        }
+        j->previous->next = j->next;
+        j->next->previous = j->previous;
       }
 
     }
@@ -107,9 +95,7 @@ char *dup(const char *s)
   char *dup = malloc(strlen(s) + 1);
   if (dup != 0)
   {
-    {
-      strcpy(dup, s);
-    }
+    strcpy(dup, s);
   }
   else
   {
@@ -137,23 +123,17 @@ pJogo cria_jogo(char *nome, char *equipa1, char *equipa2, int score1, int score2
   j->score2 = score2;
   if (score1 > score2)
   {
-    {
-      j->vencedora = dup(equipa1);
-    }
+    j->vencedora = dup(equipa1);
   }
   else
   {
     if (score1 < score2)
     {
-      {
-        j->vencedora = dup(equipa2);
-      }
+      j->vencedora = dup(equipa2);
     }
     else
     {
-      {
-        j->vencedora = 0;
-      }
+      j->vencedora = 0;
     }
 
   }

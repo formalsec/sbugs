@@ -43,9 +43,7 @@ void ChangeWins(Team team, int n)
 {
   if ((team->wins > 0) || (n > 0))
   {
-    {
-      team->wins += n;
-    }
+    team->wins += n;
   }
   else
   {

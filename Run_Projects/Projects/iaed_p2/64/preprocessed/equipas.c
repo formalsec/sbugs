@@ -16,10 +16,8 @@ void add_equipa(equipa *table_equipas, int linha)
   nome_equipa[10 - 1] = '\0';
   if (procura_equipa(table_equipas, nome_equipa) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", linha);
-      return;
-    }
+    printf("%d Equipa existente.\n", linha);
+    return;
   }
   else
   {
@@ -46,9 +44,7 @@ equipa searchList(equipa head, char *nome_equipa)
   {
     if (strcmp(aux->nome, nome_equipa) == 0)
     {
-      {
-        return aux;
-      }
+      return aux;
     }
     else
     {
@@ -85,15 +81,11 @@ void print_equipa(equipa *table_equipas, int linha)
   equipa = procura_equipa(table_equipas, nome_buf);
   if (equipa == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", linha);
-    }
+    printf("%d Equipa inexistente.\n", linha);
   }
   else
   {
-    {
-      printf("%d %s %d\n", linha, equipa->nome, *equipa->jogos_ganhos);
-    }
+    printf("%d %s %d\n", linha, equipa->nome, *equipa->jogos_ganhos);
   }
 
 }
@@ -110,18 +102,14 @@ void mais_vitorias(equipa *table_equipas, int linha)
     {
       if ((*aux->jogos_ganhos) == max)
       {
-        {
-          num++;
-        }
+        num++;
       }
       else
       {
         if ((*aux->jogos_ganhos) > max)
         {
-          {
-            num = 1;
-            max = *aux->jogos_ganhos;
-          }
+          num = 1;
+          max = *aux->jogos_ganhos;
         }
         else
         {
@@ -136,9 +124,7 @@ void mais_vitorias(equipa *table_equipas, int linha)
 
   if (num != 0)
   {
-    {
-      cria_e_ordena_vetor(table_equipas, max, num, linha);
-    }
+    cria_e_ordena_vetor(table_equipas, max, num, linha);
   }
   else
   {
@@ -160,10 +146,8 @@ void cria_e_ordena_vetor(equipa *table_equipas, int max, int num, int linha)
     {
       if ((*aux->jogos_ganhos) == max)
       {
-        {
-          vetor[j] = aux->nome;
-          j++;
-        }
+        vetor[j] = aux->nome;
+        j++;
       }
       else
       {

@@ -14,16 +14,12 @@ void DLinsertEnd(ItemDL v)
   p->next = 0;
   if (head == 0)
   {
-    {
-      head = p;
-    }
+    head = p;
   }
   else
   {
-    {
-      head->prev->next = p;
-      p->prev = head->prev;
-    }
+    head->prev->next = p;
+    p->prev = head->prev;
   }
 
   head->prev = p;
@@ -51,33 +47,29 @@ void DLremove_with_item_free(link p)
 
   if (p == head)
   {
+    if (p->next)
     {
-      if (p->next)
-      {
-        p->next->prev = p->prev;
-      }
-      else
-      {
-        
-      }
-
-      head = p->next;
+      p->next->prev = p->prev;
     }
+    else
+    {
+      
+    }
+
+    head = p->next;
   }
   else
   {
+    p->prev->next = p->next;
+    if (p->next)
     {
-      p->prev->next = p->next;
-      if (p->next)
-      {
-        p->next->prev = p->prev;
-      }
-      else
-      {
-        head->prev = p->prev;
-      }
-
+      p->next->prev = p->prev;
     }
+    else
+    {
+      head->prev = p->prev;
+    }
+
   }
 
   freeItemDL(p->v);

@@ -46,9 +46,7 @@ void STinsert_equipa(link_equipa p)
   st_equipa[i] = p;
   if ((N_equipa++) > (M_equipa / 2))
   {
-    {
-      expand_equipa();
-    }
+    expand_equipa();
   }
   else
   {
@@ -145,9 +143,7 @@ void STinsert_jogo(link_jogo p)
   st[i] = p;
   if ((N_jogo++) > (M_jogo / 2))
   {
-    {
-      expand_jogo();
-    }
+    expand_jogo();
   }
   else
   {
@@ -249,10 +245,8 @@ link_jogo insertEend_jogo(link_jogo head, link_jogo *fim, char *designacao, char
   STinsert_jogo(t);
   if (head == 0)
   {
-    {
-      *fim = t;
-      return t;
-    }
+    *fim = t;
+    return t;
   }
   else
   {
@@ -280,41 +274,35 @@ link_jogo delete_jogo(link_jogo head, link_jogo *fim, char *text)
   {
     if (strcmp(t->nome, text) == 0)
     {
+      if (t == head)
       {
-        if (t == head)
+        if (t == (*fim))
         {
-          {
-            if (t == (*fim))
-            {
-              *fim = 0;
-            }
-            else
-            {
-              
-            }
-
-            head = t->next;
-          }
+          *fim = 0;
         }
         else
         {
-          {
-            if (t == (*fim))
-            {
-              *fim = prev;
-            }
-            else
-            {
-              
-            }
-
-            prev->next = t->next;
-          }
+          
         }
 
-        FREE_jogo(t);
-        break;
+        head = t->next;
       }
+      else
+      {
+        if (t == (*fim))
+        {
+          *fim = prev;
+        }
+        else
+        {
+          
+        }
+
+        prev->next = t->next;
+      }
+
+      FREE_jogo(t);
+      break;
     }
     else
     {
@@ -431,46 +419,36 @@ void adiciona_um_novo_jogo(link_jogo *head_jogos, link_jogo *fim, int *nl)
   (*nl)++;
   if (STsearch_jogo(nome) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", *nl);
-    }
+    printf("%d Jogo existente.\n", *nl);
   }
   else
   {
     if ((STsearch_equipa(equipa1) == 0) || (STsearch_equipa(equipa2) == 0))
     {
-      {
-        printf("%d Equipa inexistente.\n", *nl);
-      }
+      printf("%d Equipa inexistente.\n", *nl);
     }
     else
     {
+      if (score1 > score2)
       {
-        if (score1 > score2)
+        link_equipa t = STsearch_equipa(equipa1);
+        t->vitoria++;
+      }
+      else
+      {
+        if (score2 > score1)
         {
-          {
-            link_equipa t = STsearch_equipa(equipa1);
-            t->vitoria++;
-          }
+          link_equipa t = STsearch_equipa(equipa2);
+          t->vitoria++;
         }
         else
         {
-          if (score2 > score1)
-          {
-            {
-              link_equipa t = STsearch_equipa(equipa2);
-              t->vitoria++;
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
-        *head_jogos = insertEend_jogo(*head_jogos, fim, nome, equipa1, equipa2, score1, score2);
       }
+
+      *head_jogos = insertEend_jogo(*head_jogos, fim, nome, equipa1, equipa2, score1, score2);
     }
 
   }
@@ -483,13 +461,11 @@ void lista_os_jogos(link_jogo head, int *nl)
   (*nl)++;
   if (head != 0)
   {
+    for (t = head; t != 0; t = t->next)
     {
-      for (t = head; t != 0; t = t->next)
-      {
-        printf("%d %s %s %s %d %d\n", *nl, t->nome, t->equipa1, t->equipa2, t->score1, t->score2);
-      }
-
+      printf("%d %s %s %s %d %d\n", *nl, t->nome, t->equipa1, t->equipa2, t->score1, t->score2);
     }
+
   }
   else
   {
@@ -512,15 +488,11 @@ void procura_um_jogo(int *nl)
   t = STsearch_jogo(nome);
   if (t == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", *nl);
-    }
+    printf("%d Jogo inexistente.\n", *nl);
   }
   else
   {
-    {
-      printf("%d %s %s %s %d %d\n", *nl, t->nome, t->equipa1, t->equipa2, t->score1, t->score2);
-    }
+    printf("%d %s %s %s %d %d\n", *nl, t->nome, t->equipa1, t->equipa2, t->score1, t->score2);
   }
 
 }
@@ -543,31 +515,25 @@ void apaga_um_jogo(link_jogo *head, link_jogo *fim, int *nl)
   }
   else
   {
+    if (t->score1 > t->score2)
     {
-      if (t->score1 > t->score2)
+      STsearch_equipa(t->equipa1)->vitoria--;
+    }
+    else
+    {
+      if (t->score2 > t->score1)
       {
-        {
-          STsearch_equipa(t->equipa1)->vitoria--;
-        }
+        STsearch_equipa(t->equipa2)->vitoria--;
       }
       else
       {
-        if (t->score2 > t->score1)
-        {
-          {
-            STsearch_equipa(t->equipa2)->vitoria--;
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      STdelete_jogo(nome);
-      *head = delete_jogo(*head, fim, nome);
     }
+
+    STdelete_jogo(nome);
+    *head = delete_jogo(*head, fim, nome);
   }
 
 }
@@ -594,56 +560,46 @@ void altera_score(int *nl)
   }
   else
   {
+    if (t->score1 > t->score2)
     {
-      if (t->score1 > t->score2)
-      {
-        {
-          link_equipa x = STsearch_equipa(t->equipa1);
-          x->vitoria--;
-        }
-      }
-      else
-      {
-        if (t->score2 > t->score1)
-        {
-          {
-            link_equipa x = STsearch_equipa(t->equipa2);
-            x->vitoria--;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      if (ponto1 > ponto2)
-      {
-        {
-          link_equipa x = STsearch_equipa(t->equipa1);
-          x->vitoria++;
-        }
-      }
-      else
-      {
-        if (ponto2 > ponto1)
-        {
-          {
-            link_equipa x = STsearch_equipa(t->equipa2);
-            x->vitoria++;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      t->score1 = ponto1;
-      t->score2 = ponto2;
+      link_equipa x = STsearch_equipa(t->equipa1);
+      x->vitoria--;
     }
+    else
+    {
+      if (t->score2 > t->score1)
+      {
+        link_equipa x = STsearch_equipa(t->equipa2);
+        x->vitoria--;
+      }
+      else
+      {
+        
+      }
+
+    }
+
+    if (ponto1 > ponto2)
+    {
+      link_equipa x = STsearch_equipa(t->equipa1);
+      x->vitoria++;
+    }
+    else
+    {
+      if (ponto2 > ponto1)
+      {
+        link_equipa x = STsearch_equipa(t->equipa2);
+        x->vitoria++;
+      }
+      else
+      {
+        
+      }
+
+    }
+
+    t->score1 = ponto1;
+    t->score2 = ponto2;
   }
 
 }
@@ -664,10 +620,8 @@ void adiciona_uma_equipa(int *nl)
   }
   else
   {
-    {
-      link_equipa t = New_EQUIPA(nome);
-      STinsert_equipa(t);
-    }
+    link_equipa t = New_EQUIPA(nome);
+    STinsert_equipa(t);
   }
 
 }
@@ -716,19 +670,15 @@ void mais_ganhos(int *nl)
   {
     if (st_equipa[i] != 0)
     {
+      if (st_equipa[i]->vitoria > ng)
       {
-        if (st_equipa[i]->vitoria > ng)
-        {
-          {
-            ng = st_equipa[i]->vitoria;
-          }
-        }
-        else
-        {
-          
-        }
-
+        ng = st_equipa[i]->vitoria;
       }
+      else
+      {
+        
+      }
+
     }
     else
     {
@@ -750,19 +700,15 @@ void mais_ganhos(int *nl)
   {
     if (st_equipa[i] != 0)
     {
+      if (st_equipa[i]->vitoria == ng)
       {
-        if (st_equipa[i]->vitoria == ng)
-        {
-          {
-            n_equipa++;
-          }
-        }
-        else
-        {
-          
-        }
-
+        n_equipa++;
       }
+      else
+      {
+        
+      }
+
     }
     else
     {
@@ -776,21 +722,17 @@ void mais_ganhos(int *nl)
   {
     if (st_equipa[i] != 0)
     {
+      if (st_equipa[i]->vitoria == ng)
       {
-        if (st_equipa[i]->vitoria == ng)
-        {
-          {
-            array[aux] = (char *) malloc((sizeof(char)) * (strlen(st_equipa[i]->nome) + 1));
-            strcpy(array[aux], st_equipa[i]->nome);
-            aux++;
-          }
-        }
-        else
-        {
-          
-        }
-
+        array[aux] = (char *) malloc((sizeof(char)) * (strlen(st_equipa[i]->nome) + 1));
+        strcpy(array[aux], st_equipa[i]->nome);
+        aux++;
       }
+      else
+      {
+        
+      }
+
     }
     else
     {

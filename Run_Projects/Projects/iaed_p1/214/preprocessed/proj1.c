@@ -88,10 +88,8 @@ int main()
         tmp[10 - 1] = '\0';
         if (strlen(listaProdutos[atoi(tmp)].desc) == 0)
         {
-          {
-            printf("Impossivel adicionar produto %s ao stock. Produto inexistente.\n", tmp);
-            break;
-          }
+          printf("Impossivel adicionar produto %s ao stock. Produto inexistente.\n", tmp);
+          break;
         }
         else
         {
@@ -135,10 +133,8 @@ int main()
         tmp2[10 - 1] = '\0';
         if (comandoE <= atoi(tmp))
         {
-          {
-            printf("Impossivel adicionar produto %s a encomenda %s. Encomenda inexistente.\n", tmp2, tmp);
-            break;
-          }
+          printf("Impossivel adicionar produto %s a encomenda %s. Encomenda inexistente.\n", tmp2, tmp);
+          break;
         }
         else
         {
@@ -147,10 +143,8 @@ int main()
 
         if (strlen(listaProdutos[atoi(tmp2)].desc) == 0)
         {
-          {
-            printf("Impossivel adicionar produto %s a encomenda %s. Produto inexistente.\n", tmp2, tmp);
-            break;
-          }
+          printf("Impossivel adicionar produto %s a encomenda %s. Produto inexistente.\n", tmp2, tmp);
+          break;
         }
         else
         {
@@ -165,10 +159,8 @@ int main()
         adiciona[10 - 1] = '\0';
         if (listaProdutos[atoi(tmp2)].stock < atoi(adiciona))
         {
-          {
-            printf("Impossivel adicionar produto %s a encomenda %s. Quantidade em stock insuficiente.\n", tmp2, tmp);
-            break;
-          }
+          printf("Impossivel adicionar produto %s a encomenda %s. Quantidade em stock insuficiente.\n", tmp2, tmp);
+          break;
         }
         else
         {
@@ -177,10 +169,8 @@ int main()
 
         if (((atoi(adiciona) * listaProdutos[atoi(tmp2)].peso) + listaEncomendas[atoi(tmp)].peso) > 200)
         {
-          {
-            printf("Impossivel adicionar produto %s a encomenda %s. Peso da encomenda excede o maximo de 200.\n", tmp2, tmp);
-            break;
-          }
+          printf("Impossivel adicionar produto %s a encomenda %s. Peso da encomenda excede o maximo de 200.\n", tmp2, tmp);
+          break;
         }
         else
         {
@@ -191,12 +181,10 @@ int main()
         {
           if (listaEncomendas[atoi(tmp)].idprodutos[i] == atoi(tmp2))
           {
-            {
-              listaEncomendas[atoi(tmp)].quantidadestock[i] += atoi(adiciona);
-              listaEncomendas[atoi(tmp)].peso = listaEncomendas[atoi(tmp)].peso + (atoi(adiciona) * listaProdutos[atoi(tmp2)].peso);
-              listaProdutos[atoi(tmp2)].stock -= atoi(adiciona);
-              goto fim;
-            }
+            listaEncomendas[atoi(tmp)].quantidadestock[i] += atoi(adiciona);
+            listaEncomendas[atoi(tmp)].peso = listaEncomendas[atoi(tmp)].peso + (atoi(adiciona) * listaProdutos[atoi(tmp2)].peso);
+            listaProdutos[atoi(tmp2)].stock -= atoi(adiciona);
+            goto fim;
           }
           else
           {
@@ -211,9 +199,7 @@ int main()
         listaProdutos[atoi(tmp2)].stock -= atoi(adiciona);
         if (altera)
         {
-          {
-            listaEncomendas[atoi(tmp)].numeroDeProdutos++;
-          }
+          listaEncomendas[atoi(tmp)].numeroDeProdutos++;
         }
         else
         {
@@ -235,10 +221,8 @@ int main()
         tmp[10 - 1] = '\0';
         if (strlen(listaProdutos[atoi(tmp)].desc) == 0)
         {
-          {
-            printf("Impossivel remover stock do produto %s. Produto inexistente.\n", tmp);
-            break;
-          }
+          printf("Impossivel remover stock do produto %s. Produto inexistente.\n", tmp);
+          break;
         }
         else
         {
@@ -253,10 +237,8 @@ int main()
         adiciona[10 - 1] = '\0';
         if (listaProdutos[atoi(tmp)].stock < atoi(adiciona))
         {
-          {
-            printf("Impossivel remover %s unidades do produto %i do stock. Quantidade insuficiente.\n", adiciona, listaProdutos[atoi(tmp)].id);
-            break;
-          }
+          printf("Impossivel remover %s unidades do produto %i do stock. Quantidade insuficiente.\n", adiciona, listaProdutos[atoi(tmp)].id);
+          break;
         }
         else
         {
@@ -283,10 +265,8 @@ int main()
         tmp2[10 - 1] = '\0';
         if (comandoE <= atoi(tmp))
         {
-          {
-            printf("Impossivel remover produto %s a encomenda %s. Encomenda inexistente.\n", tmp2, tmp);
-            break;
-          }
+          printf("Impossivel remover produto %s a encomenda %s. Encomenda inexistente.\n", tmp2, tmp);
+          break;
         }
         else
         {
@@ -295,10 +275,8 @@ int main()
 
         if (strlen(listaProdutos[atoi(tmp2)].desc) == 0)
         {
-          {
-            printf("Impossivel remover produto %s a encomenda %s. Produto inexistente.\n", tmp2, tmp);
-            break;
-          }
+          printf("Impossivel remover produto %s a encomenda %s. Produto inexistente.\n", tmp2, tmp);
+          break;
         }
         else
         {
@@ -309,21 +287,19 @@ int main()
         {
           if (listaEncomendas[atoi(tmp)].idprodutos[i] == atoi(tmp2))
           {
+            listaEncomendas[atoi(tmp)].peso -= listaEncomendas[atoi(tmp)].quantidadestock[i] * listaProdutos[atoi(tmp2)].peso;
+            listaEncomendas[atoi(tmp)].idprodutos[i] = listaEncomendas[atoi(tmp)].idprodutos[i + 1];
+            listaProdutos[atoi(tmp2)].stock += listaEncomendas[atoi(tmp)].quantidadestock[i];
+            listaEncomendas[atoi(tmp)].quantidadestock[i] = listaEncomendas[atoi(tmp)].quantidadestock[i + 1];
+            for (; i < (listaEncomendas[atoi(tmp)].numeroDeProdutos - 1); i++)
             {
-              listaEncomendas[atoi(tmp)].peso -= listaEncomendas[atoi(tmp)].quantidadestock[i] * listaProdutos[atoi(tmp2)].peso;
               listaEncomendas[atoi(tmp)].idprodutos[i] = listaEncomendas[atoi(tmp)].idprodutos[i + 1];
-              listaProdutos[atoi(tmp2)].stock += listaEncomendas[atoi(tmp)].quantidadestock[i];
               listaEncomendas[atoi(tmp)].quantidadestock[i] = listaEncomendas[atoi(tmp)].quantidadestock[i + 1];
-              for (; i < (listaEncomendas[atoi(tmp)].numeroDeProdutos - 1); i++)
-              {
-                listaEncomendas[atoi(tmp)].idprodutos[i] = listaEncomendas[atoi(tmp)].idprodutos[i + 1];
-                listaEncomendas[atoi(tmp)].quantidadestock[i] = listaEncomendas[atoi(tmp)].quantidadestock[i + 1];
-              }
-
-              listaEncomendas[atoi(tmp)].quantidadestock[i + 1] = 0;
-              listaEncomendas[atoi(tmp)].numeroDeProdutos--;
-              goto final;
             }
+
+            listaEncomendas[atoi(tmp)].quantidadestock[i + 1] = 0;
+            listaEncomendas[atoi(tmp)].numeroDeProdutos--;
+            goto final;
           }
           else
           {
@@ -347,10 +323,8 @@ int main()
         tmp[10 - 1] = '\0';
         if (comandoE <= atoi(tmp))
         {
-          {
-            printf("Impossivel calcular custo da encomenda %s. Encomenda inexistente.\n", tmp);
-            break;
-          }
+          printf("Impossivel calcular custo da encomenda %s. Encomenda inexistente.\n", tmp);
+          break;
         }
         else
         {
@@ -377,10 +351,8 @@ int main()
         tmp[10 - 1] = '\0';
         if (strlen(listaProdutos[atoi(tmp)].desc) == 0)
         {
-          {
-            printf("Impossivel alterar preco do produto %s. Produto inexistente.\n", tmp);
-            break;
-          }
+          printf("Impossivel alterar preco do produto %s. Produto inexistente.\n", tmp);
+          break;
         }
         else
         {
@@ -413,10 +385,8 @@ int main()
         tmp2[10 - 1] = '\0';
         if (comandoE <= atoi(tmp))
         {
-          {
-            printf("Impossivel listar encomenda %s. Encomenda inexistente.\n", tmp);
-            break;
-          }
+          printf("Impossivel listar encomenda %s. Encomenda inexistente.\n", tmp);
+          break;
         }
         else
         {
@@ -425,10 +395,8 @@ int main()
 
         if (strlen(listaProdutos[atoi(tmp2)].desc) == 0)
         {
-          {
-            printf("Impossivel listar produto %s. Produto inexistente.\n", tmp2);
-            break;
-          }
+          printf("Impossivel listar produto %s. Produto inexistente.\n", tmp2);
+          break;
         }
         else
         {
@@ -439,10 +407,8 @@ int main()
         {
           if (listaEncomendas[atoi(tmp)].idprodutos[i] == atoi(tmp2))
           {
-            {
-              printf("%s %i.\n", listaProdutos[atoi(tmp2)].desc, listaEncomendas[atoi(tmp)].quantidadestock[i]);
-              goto terminou;
-            }
+            printf("%s %i.\n", listaProdutos[atoi(tmp2)].desc, listaEncomendas[atoi(tmp)].quantidadestock[i]);
+            goto terminou;
           }
           else
           {
@@ -467,10 +433,8 @@ int main()
         tmp[10 - 1] = '\0';
         if (strlen(listaProdutos[atoi(tmp)].desc) == 0)
         {
-          {
-            printf("Impossivel listar maximo do produto %s. Produto inexistente.\n", tmp);
-            break;
-          }
+          printf("Impossivel listar maximo do produto %s. Produto inexistente.\n", tmp);
+          break;
         }
         else
         {
@@ -483,34 +447,21 @@ int main()
           {
             if (listaEncomendas[i].idprodutos[f] == atoi(tmp))
             {
+              if (ocorrenciaProduto < listaEncomendas[i].quantidadestock[f])
               {
-                if (ocorrenciaProduto < listaEncomendas[i].quantidadestock[f])
-                {
-                  {
-                    ocorrenciaProduto = listaEncomendas[i].quantidadestock[f];
-                    idOcorrencia = i;
-                  }
-                }
-                else
-                {
-                  
-                }
+                ocorrenciaProduto = listaEncomendas[i].quantidadestock[f];
+                idOcorrencia = i;
+              }
+              else
+              {
+                
+              }
 
-                if (ocorrenciaProduto == listaEncomendas[i].quantidadestock[f])
+              if (ocorrenciaProduto == listaEncomendas[i].quantidadestock[f])
+              {
+                if (idOcorrencia > i)
                 {
-                  {
-                    if (idOcorrencia > i)
-                    {
-                      {
-                        idOcorrencia = i;
-                      }
-                    }
-                    else
-                    {
-                      
-                    }
-
-                  }
+                  idOcorrencia = i;
                 }
                 else
                 {
@@ -518,6 +469,11 @@ int main()
                 }
 
               }
+              else
+              {
+                
+              }
+
             }
             else
             {
@@ -530,9 +486,7 @@ int main()
 
         if (ocorrenciaProduto != 0)
         {
-          {
-            printf("Maximo produto %s %i %i.\n", tmp, idOcorrencia, ocorrenciaProduto);
-          }
+          printf("Maximo produto %s %i %i.\n", tmp, idOcorrencia, ocorrenciaProduto);
         }
         else
         {

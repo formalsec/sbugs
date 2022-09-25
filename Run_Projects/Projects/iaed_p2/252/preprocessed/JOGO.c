@@ -47,15 +47,13 @@ void SearchGame(game_list *l, int NL)
   buffer[10 - 1] = '\0';
   if (toFind = FindGame(l, buffer))
   {
-    {
-      printf("%d ", NL);
-      printf("%s ", toFind->nome);
-      printf("%s ", toFind->equipa1);
-      printf("%s ", toFind->equipa2);
-      printf("%d ", toFind->score1);
-      printf("%d\n", toFind->score2);
-      return;
-    }
+    printf("%d ", NL);
+    printf("%s ", toFind->nome);
+    printf("%s ", toFind->equipa1);
+    printf("%s ", toFind->equipa2);
+    printf("%d ", toFind->score1);
+    printf("%d\n", toFind->score2);
+    return;
   }
   else
   {
@@ -80,97 +78,79 @@ game_list *apagaJogo(team_list *tl, game_list *l, int NL)
   buffer[10 - 1] = '\0';
   if (toDelete = FindGame(l, buffer))
   {
+    if (toDelete->score1 > toDelete->score2)
     {
-      if (toDelete->score1 > toDelete->score2)
-      {
-        {
-          FindTeam(tl, toDelete->equipa1)->vitorias--;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (toDelete->score2 > toDelete->score1)
-      {
-        {
-          FindTeam(tl, toDelete->equipa2)->vitorias--;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (toDelete->next != 0)
-      {
-        {
-          toDelete->next->previous = toDelete->previous;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (toDelete->previous != 0)
-      {
-        {
-          toDelete->previous->next = toDelete->next;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (toDelete == l->head)
-      {
-        {
-          l->head = toDelete->next;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (toDelete == l->last)
-      {
-        {
-          l->last = toDelete->previous;
-        }
-      }
-      else
-      {
-        
-      }
-
-      numHash = string_hash(buffer) % 100109;
-      JogoColisao = *(l->hashtable + numHash);
-      if (strcmp(JogoColisao->nome, buffer) == 0)
-      {
-        {
-          *(l->hashtable + numHash) = JogoColisao->collision;
-        }
-      }
-      else
-      {
-        {
-          for (; strcmp(JogoColisao->collision->nome, buffer) != 0; JogoColisao = JogoColisao->collision)
-            ;
-
-          JogoColisao->collision = JogoColisao->collision->collision;
-        }
-      }
-
-      free(toDelete->nome);
-      free(toDelete->equipa1);
-      free(toDelete->equipa2);
-      free(toDelete);
-      return l;
+      FindTeam(tl, toDelete->equipa1)->vitorias--;
     }
+    else
+    {
+      
+    }
+
+    if (toDelete->score2 > toDelete->score1)
+    {
+      FindTeam(tl, toDelete->equipa2)->vitorias--;
+    }
+    else
+    {
+      
+    }
+
+    if (toDelete->next != 0)
+    {
+      toDelete->next->previous = toDelete->previous;
+    }
+    else
+    {
+      
+    }
+
+    if (toDelete->previous != 0)
+    {
+      toDelete->previous->next = toDelete->next;
+    }
+    else
+    {
+      
+    }
+
+    if (toDelete == l->head)
+    {
+      l->head = toDelete->next;
+    }
+    else
+    {
+      
+    }
+
+    if (toDelete == l->last)
+    {
+      l->last = toDelete->previous;
+    }
+    else
+    {
+      
+    }
+
+    numHash = string_hash(buffer) % 100109;
+    JogoColisao = *(l->hashtable + numHash);
+    if (strcmp(JogoColisao->nome, buffer) == 0)
+    {
+      *(l->hashtable + numHash) = JogoColisao->collision;
+    }
+    else
+    {
+      for (; strcmp(JogoColisao->collision->nome, buffer) != 0; JogoColisao = JogoColisao->collision)
+        ;
+
+      JogoColisao->collision = JogoColisao->collision->collision;
+    }
+
+    free(toDelete->nome);
+    free(toDelete->equipa1);
+    free(toDelete->equipa2);
+    free(toDelete);
+    return l;
   }
   else
   {
@@ -200,111 +180,91 @@ game_list *ChangeScores(team_list *tl, game_list *l, char *buffer, int NL)
   int sc2;
   if (toChange = FindGame(l, buffer))
   {
+    sc1 = new_sym_var(sizeof(int) * 8);
+    sc2 = new_sym_var(sizeof(int) * 8);
+    if (toChange->score1 > toChange->score2)
     {
-      sc1 = new_sym_var(sizeof(int) * 8);
-      sc2 = new_sym_var(sizeof(int) * 8);
-      if (toChange->score1 > toChange->score2)
+      if (sc2 > sc1)
       {
-        {
-          if (sc2 > sc1)
-          {
-            {
-              FindTeam(tl, toChange->equipa1)->vitorias--;
-              FindTeam(tl, toChange->equipa2)->vitorias++;
-            }
-          }
-          else
-          {
-            
-          }
-
-          if (sc1 == sc2)
-          {
-            {
-              FindTeam(tl, toChange->equipa1)->vitorias--;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
+        FindTeam(tl, toChange->equipa1)->vitorias--;
+        FindTeam(tl, toChange->equipa2)->vitorias++;
       }
       else
       {
         
       }
 
-      if (toChange->score2 > toChange->score1)
+      if (sc1 == sc2)
       {
-        {
-          if (sc1 > sc2)
-          {
-            {
-              FindTeam(tl, toChange->equipa2)->vitorias--;
-              FindTeam(tl, toChange->equipa1)->vitorias++;
-            }
-          }
-          else
-          {
-            
-          }
-
-          if (sc1 == sc2)
-          {
-            {
-              FindTeam(tl, toChange->equipa2)->vitorias--;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
+        FindTeam(tl, toChange->equipa1)->vitorias--;
       }
       else
       {
         
       }
 
-      if (toChange->score2 == toChange->score1)
-      {
-        {
-          if (sc1 > sc2)
-          {
-            {
-              FindTeam(tl, toChange->equipa1)->vitorias++;
-            }
-          }
-          else
-          {
-            
-          }
-
-          if (sc2 > sc1)
-          {
-            {
-              FindTeam(tl, toChange->equipa2)->vitorias++;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-      }
-      else
-      {
-        
-      }
-
-      toChange->score1 = sc1;
-      toChange->score2 = sc2;
-      return l;
     }
+    else
+    {
+      
+    }
+
+    if (toChange->score2 > toChange->score1)
+    {
+      if (sc1 > sc2)
+      {
+        FindTeam(tl, toChange->equipa2)->vitorias--;
+        FindTeam(tl, toChange->equipa1)->vitorias++;
+      }
+      else
+      {
+        
+      }
+
+      if (sc1 == sc2)
+      {
+        FindTeam(tl, toChange->equipa2)->vitorias--;
+      }
+      else
+      {
+        
+      }
+
+    }
+    else
+    {
+      
+    }
+
+    if (toChange->score2 == toChange->score1)
+    {
+      if (sc1 > sc2)
+      {
+        FindTeam(tl, toChange->equipa1)->vitorias++;
+      }
+      else
+      {
+        
+      }
+
+      if (sc2 > sc1)
+      {
+        FindTeam(tl, toChange->equipa2)->vitorias++;
+      }
+      else
+      {
+        
+      }
+
+    }
+    else
+    {
+      
+    }
+
+    toChange->score1 = sc1;
+    toChange->score2 = sc2;
+    return l;
   }
   else
   {

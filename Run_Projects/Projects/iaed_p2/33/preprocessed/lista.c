@@ -24,17 +24,13 @@ lst_link lst_insere(pJogo jogo, Lista lst)
   lst_link link = lst_cria(jogo);
   if (lst->head == 0)
   {
-    {
-      lst->head = link;
-      link->prev = 0;
-    }
+    lst->head = link;
+    link->prev = 0;
   }
   else
   {
-    {
-      link->prev = lst->tail;
-      lst->tail->next = link;
-    }
+    link->prev = lst->tail;
+    lst->tail->next = link;
   }
 
   lst->tail = link;
@@ -49,35 +45,27 @@ void lst_remove(lst_link link, Lista lst)
   r = link->next;
   if (lst->head == lst->tail)
   {
-    {
-      lst->head = 0;
-      lst->tail = 0;
-    }
+    lst->head = 0;
+    lst->tail = 0;
   }
   else
   {
     if (lst->head == link)
     {
-      {
-        r->prev = 0;
-        lst->head = r;
-      }
+      r->prev = 0;
+      lst->head = r;
     }
     else
     {
       if (lst->tail == link)
       {
-        {
-          l->next = 0;
-          lst->tail = l;
-        }
+        l->next = 0;
+        lst->tail = l;
       }
       else
       {
-        {
-          l->next = r;
-          r->prev = l;
-        }
+        l->next = r;
+        r->prev = l;
       }
 
     }

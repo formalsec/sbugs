@@ -29,10 +29,8 @@ void pushEquipa(link_e *head, const char *name)
   link_e x;
   if ((*head) == 0)
   {
-    {
-      *head = createEquipa(name, 0);
-      return;
-    }
+    *head = createEquipa(name, 0);
+    return;
   }
   else
   {
@@ -49,11 +47,9 @@ void popEquipa(link_e *head, const char *name)
   link_e x = *head;
   if (strcmp(x->e.name, name) == 0)
   {
-    {
-      *head = (*head)->next;
-      freeEquipa(x);
-      return;
-    }
+    *head = (*head)->next;
+    freeEquipa(x);
+    return;
   }
   else
   {
@@ -64,12 +60,10 @@ void popEquipa(link_e *head, const char *name)
   {
     if (strcmp(x->next->e.name, name) == 0)
     {
-      {
-        link_e tmp = x->next;
-        x->next = x->next->next;
-        freeEquipa(tmp);
-        return;
-      }
+      link_e tmp = x->next;
+      x->next = x->next->next;
+      freeEquipa(tmp);
+      return;
     }
     else
     {
@@ -126,17 +120,15 @@ void incWin(HT_E Equipas, const char *name, int direction)
   Equipa *ptr = searchEquipa(Equipas, name);
   if (ptr != 0)
   {
+    if (direction > 0)
     {
-      if (direction > 0)
-      {
-        ptr->wins++;
-      }
-      else
-      {
-        ptr->wins--;
-      }
-
+      ptr->wins++;
     }
+    else
+    {
+      ptr->wins--;
+    }
+
   }
   else
   {

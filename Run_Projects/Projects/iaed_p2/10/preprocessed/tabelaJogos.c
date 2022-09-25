@@ -39,11 +39,9 @@ void adicionarJogoTabela(pTabela tabelaJogos, pJogo jogo, int ordem, int numINP)
 {
   if (jogo != 0)
   {
-    {
-      int h;
-      h = hash(jogo->nome);
-      tabelaJogos->entradaLista[h] = adicionarNovoJogo(jogo, tabelaJogos->entradaLista + h, ordem, numINP);
-    }
+    int h;
+    h = hash(jogo->nome);
+    tabelaJogos->entradaLista[h] = adicionarNovoJogo(jogo, tabelaJogos->entradaLista + h, ordem, numINP);
   }
   else
   {
@@ -74,10 +72,8 @@ void alteraPontuacao(pTabela tabelaJogos, char *nome, int pont1, int pont2, int 
   jogo = procurarJogoTabela(tabelaJogos, nome);
   if (jogo == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", numINP);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", numINP);
+    return;
   }
   else
   {
@@ -108,10 +104,8 @@ void listarJogos(pTabela tabelaJogos, int ordem, int numINP)
     {
       if ((entradas[i] != 0) && (entradas[i]->ordem <= k))
       {
-        {
-          mostrarJogo(entradas[i]->ptJogo, numINP);
-          entradas[i] = entradas[i]->proximo;
-        }
+        mostrarJogo(entradas[i]->ptJogo, numINP);
+        entradas[i] = entradas[i]->proximo;
       }
       else
       {

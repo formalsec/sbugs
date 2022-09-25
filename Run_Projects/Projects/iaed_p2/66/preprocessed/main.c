@@ -104,13 +104,11 @@ void AddGame(GameHash_ptr *game_hash, Game_link *game_list, TeamHash_ptr team_ha
   team2_name = StringDup(team2_buffer);
   if (GameHashSearch(*game_hash, name) != 0)
   {
-    {
-      free(name);
-      free(team1_name);
-      free(team2_name);
-      printf("%d Jogo existente.\n", NL);
-      return;
-    }
+    free(name);
+    free(team1_name);
+    free(team2_name);
+    printf("%d Jogo existente.\n", NL);
+    return;
   }
   else
   {
@@ -121,13 +119,11 @@ void AddGame(GameHash_ptr *game_hash, Game_link *game_list, TeamHash_ptr team_ha
   team2 = TeamHashSearch(team_hash, team2_name);
   if ((team1 == 0) || (team2 == 0))
   {
-    {
-      free(name);
-      free(team1_name);
-      free(team2_name);
-      printf("%d Equipa inexistente.\n", NL);
-      return;
-    }
+    free(name);
+    free(team1_name);
+    free(team2_name);
+    printf("%d Equipa inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -172,11 +168,9 @@ void AddTeam(TeamHash_ptr *team_hash, int NL)
   name = StringDup(buffer);
   if (TeamHashSearch(*team_hash, name) != 0)
   {
-    {
-      free(name);
-      printf("%d Equipa existente.\n", NL);
-      return;
-    }
+    free(name);
+    printf("%d Equipa existente.\n", NL);
+    return;
   }
   else
   {
@@ -192,16 +186,14 @@ void GameList(Game_link game_list, int NL)
   Game_link aux;
   if (game_list != 0)
   {
+    aux = game_list->prev;
+    do
     {
-      aux = game_list->prev;
-      do
-      {
-        printf("%d ", NL);
-        PrintGame(aux->game);
-        aux = aux->prev;
-      }
-      while (aux != game_list->prev);
+      printf("%d ", NL);
+      PrintGame(aux->game);
+      aux = aux->prev;
     }
+    while (aux != game_list->prev);
   }
   else
   {
@@ -225,10 +217,8 @@ void SearchGame(GameHash_ptr game_hash, int NL)
   game = GameHashSearch(game_hash, name);
   if (game != 0)
   {
-    {
-      printf("%d ", NL);
-      PrintGame(game);
-    }
+    printf("%d ", NL);
+    PrintGame(game);
   }
   else
   {
@@ -253,10 +243,8 @@ void SearchTeam(TeamHash_ptr team_hash, int NL)
   team = TeamHashSearch(team_hash, name);
   if (team != 0)
   {
-    {
-      printf("%d ", NL);
-      PrintTeam(team);
-    }
+    printf("%d ", NL);
+    PrintTeam(team);
   }
   else
   {
@@ -281,11 +269,9 @@ void DeleteGame(GameHash_ptr game_hash, Game_link *game_list, int NL)
   game = GameHashSearch(game_hash, name);
   if (game == 0)
   {
-    {
-      free(name);
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    free(name);
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -334,11 +320,9 @@ void ChangeScore(GameHash_ptr game_hash, int NL)
   game = GameHashSearch(game_hash, name);
   if (game == 0)
   {
-    {
-      free(name);
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    free(name);
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -380,29 +364,25 @@ void SearchBestTeams(TeamHash_ptr team_hash, int NL)
   for (i = 0; i < team_hash->M; i++)
     if (team_hash->hash_table[i] != 0)
   {
+    if (team_hash->hash_table[i]->wins > most_wins)
     {
-      if (team_hash->hash_table[i]->wins > most_wins)
+      most_wins = team_hash->hash_table[i]->wins;
+      K = N;
+      ArrayInsert(best_teams, team_hash->hash_table[i], &N);
+    }
+    else
+    {
+      if (team_hash->hash_table[i]->wins == most_wins)
       {
-        {
-          most_wins = team_hash->hash_table[i]->wins;
-          K = N;
-          ArrayInsert(best_teams, team_hash->hash_table[i], &N);
-        }
+        ArrayInsert(best_teams, team_hash->hash_table[i], &N);
       }
       else
       {
-        if (team_hash->hash_table[i]->wins == most_wins)
-        {
-          ArrayInsert(best_teams, team_hash->hash_table[i], &N);
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
     }
+
   }
   else
   {
@@ -412,10 +392,8 @@ void SearchBestTeams(TeamHash_ptr team_hash, int NL)
 
   if (N == 0)
   {
-    {
-      free(best_teams);
-      return;
-    }
+    free(best_teams);
+    return;
   }
   else
   {

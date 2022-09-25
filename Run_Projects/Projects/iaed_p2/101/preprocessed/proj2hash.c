@@ -74,11 +74,9 @@ int main()
         E2 = EProcura_Hash(EHash, J->Equipas[1], EM);
         if (JProcura_Hash(JHash, J->nome, JM) != 0)
       {
-        {
-          printf("%u Jogo existente.\n", NL++);
-          elimina_jogo(J);
-          continue;
-        }
+        printf("%u Jogo existente.\n", NL++);
+        elimina_jogo(J);
+        continue;
       }
       else
       {
@@ -87,11 +85,9 @@ int main()
 
         if (E1 == 0)
       {
-        {
-          printf("%u Equipa inexistente.\n", NL++);
-          elimina_jogo(J);
-          continue;
-        }
+        printf("%u Equipa inexistente.\n", NL++);
+        elimina_jogo(J);
+        continue;
       }
       else
       {
@@ -100,11 +96,9 @@ int main()
 
         if (E2 == 0)
       {
-        {
-          printf("%u Equipa inexistente.\n", NL++);
-          elimina_jogo(J);
-          continue;
-        }
+        printf("%u Equipa inexistente.\n", NL++);
+        elimina_jogo(J);
+        continue;
       }
       else
       {
@@ -131,10 +125,8 @@ int main()
         JInsere_Hash(JHash, J, JM);
         if ((++JN) > (JM / 2))
       {
-        {
-          JM = JM + JM;
-          JHash = Jexpande(JHash, JM);
-        }
+        JM = JM + JM;
+        JHash = Jexpande(JHash, JM);
       }
       else
       {
@@ -143,18 +135,14 @@ int main()
 
         if (Match_Lst->head == 0)
       {
-        {
-          Match_Lst->head = J;
-          Match_Lst->last = J;
-        }
+        Match_Lst->head = J;
+        Match_Lst->last = J;
       }
       else
       {
-        {
-          Match_Lst->last->next = J;
-          J->prev = Match_Lst->last;
-          Match_Lst->last = J;
-        }
+        Match_Lst->last->next = J;
+        J->prev = Match_Lst->last;
+        Match_Lst->last = J;
       }
 
         ++NL;
@@ -185,10 +173,8 @@ int main()
         J = JProcura_Hash(JHash, buffer, JM);
         if (J == 0)
       {
-        {
-          printf("%u Jogo inexistente.\n", NL++);
-          continue;
-        }
+        printf("%u Jogo inexistente.\n", NL++);
+        continue;
       }
       else
       {
@@ -209,10 +195,8 @@ int main()
         J = JProcura_Hash(JHash, buffer, JM);
         if (J == 0)
       {
-        {
-          printf("%u Jogo inexistente.\n", NL++);
-          continue;
-        }
+        printf("%u Jogo inexistente.\n", NL++);
+        continue;
       }
       else
       {
@@ -221,19 +205,15 @@ int main()
 
         if (J->score[0] > J->score[1])
       {
-        {
-          E1 = EProcura_Hash(EHash, J->Equipas[0], EM);
-          E1->jganhos--;
-        }
+        E1 = EProcura_Hash(EHash, J->Equipas[0], EM);
+        E1->jganhos--;
       }
       else
       {
         if (J->score[0] < J->score[1])
         {
-          {
-            E2 = EProcura_Hash(EHash, J->Equipas[1], EM);
-            E2->jganhos--;
-          }
+          E2 = EProcura_Hash(EHash, J->Equipas[1], EM);
+          E2->jganhos--;
         }
         else
         {
@@ -259,10 +239,8 @@ int main()
         J = JProcura_Hash(JHash, buffer, JM);
         if (J == 0)
       {
-        {
-          printf("%u Jogo inexistente.\n", NL++);
-          continue;
-        }
+        printf("%u Jogo inexistente.\n", NL++);
+        continue;
       }
       else
       {
@@ -322,11 +300,9 @@ int main()
         strcpy(E->nome, buffer);
         if (EProcura_Hash(EHash, E->nome, EM) != 0)
       {
-        {
-          printf("%u Equipa existente.\n", NL++);
-          elimina_equipa(E);
-          continue;
-        }
+        printf("%u Equipa existente.\n", NL++);
+        elimina_equipa(E);
+        continue;
       }
       else
       {
@@ -336,10 +312,8 @@ int main()
         EInsere_Hash(EHash, E, EM);
         if ((++EN) > (EM / 2))
       {
-        {
-          EM = EM + EM;
-          EHash = Eexpande(EHash, EM);
-        }
+        EM = EM + EM;
+        EHash = Eexpande(EHash, EM);
       }
       else
       {
@@ -348,17 +322,13 @@ int main()
 
         if (Team_Lst->head == 0)
       {
-        {
-          Team_Lst->head = E;
-          Team_Lst->last = E;
-        }
+        Team_Lst->head = E;
+        Team_Lst->last = E;
       }
       else
       {
-        {
-          Team_Lst->last->next = E;
-          Team_Lst->last = E;
-        }
+        Team_Lst->last->next = E;
+        Team_Lst->last = E;
       }
 
         ++NL;
@@ -374,10 +344,8 @@ int main()
         E = EProcura_Hash(EHash, buffer, EM);
         if (E == 0)
       {
-        {
-          printf("%u Equipa inexistente.\n", NL++);
-          continue;
-        }
+        printf("%u Equipa inexistente.\n", NL++);
+        continue;
       }
       else
       {
@@ -391,19 +359,17 @@ int main()
       case 'g':
         if (EN)
       {
+        Max = encontra_max(Team_Lst);
+        Nomes = (char **) malloc((sizeof(char *)) * EN);
+        NEquipas = encontra_melhores(Team_Lst, Max, Nomes);
+        qsort(Nomes, NEquipas, sizeof(char *), compare);
+        printf("%u Melhores %u\n", NL, Max);
+        for (i = 0; i < NEquipas; ++i)
         {
-          Max = encontra_max(Team_Lst);
-          Nomes = (char **) malloc((sizeof(char *)) * EN);
-          NEquipas = encontra_melhores(Team_Lst, Max, Nomes);
-          qsort(Nomes, NEquipas, sizeof(char *), compare);
-          printf("%u Melhores %u\n", NL, Max);
-          for (i = 0; i < NEquipas; ++i)
-          {
-            printf("%u * %s\n", NL, Nomes[i]);
-          }
-
-          free(Nomes);
+          printf("%u * %s\n", NL, Nomes[i]);
         }
+
+        free(Nomes);
       }
       else
       {

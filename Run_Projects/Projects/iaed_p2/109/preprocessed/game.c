@@ -29,10 +29,8 @@ GameLink insertGameList(GameLink head, Game game)
   GameLink last;
   if (!head)
   {
-    {
-      new->next = (new->prev = new);
-      return new;
-    }
+    new->next = (new->prev = new);
+    return new;
   }
   else
   {
@@ -59,11 +57,9 @@ GameLink removeGameList(GameLink head, char *name)
 
   if ((aux->next == head) && (!prev))
   {
-    {
-      head = 0;
-      freeGameNode(aux);
-      return 0;
-    }
+    head = 0;
+    freeGameNode(aux);
+    return 0;
   }
   else
   {
@@ -72,29 +68,23 @@ GameLink removeGameList(GameLink head, char *name)
 
   if (aux == head)
   {
-    {
-      prev = head->prev;
-      head = head->next;
-      prev->next = head;
-      head->prev = prev;
-    }
+    prev = head->prev;
+    head = head->next;
+    prev->next = head;
+    head->prev = prev;
   }
   else
   {
     if (aux->next == head)
     {
-      {
-        prev->next = head;
-        head->prev = prev;
-      }
+      prev->next = head;
+      head->prev = prev;
     }
     else
     {
-      {
-        temp = aux->next;
-        prev->next = temp;
-        temp->prev = prev;
-      }
+      temp = aux->next;
+      prev->next = temp;
+      temp->prev = prev;
     }
 
   }
@@ -137,10 +127,8 @@ HashGame gHashInsert(HashGame *table, Game game)
   (*table)->N++;
   if ((*table)->N >= ((*table)->M / 2))
   {
-    {
-      newtable = gHashExpand(*table);
-      return newtable;
-    }
+    newtable = gHashExpand(*table);
+    return newtable;
   }
   else
   {
@@ -158,9 +146,7 @@ HashGame gHashExpand(HashGame table)
   {
     if (table->games[i])
     {
-      {
-        gHashInsert(&newtable, table->games[i]);
-      }
+      gHashInsert(&newtable, table->games[i]);
     }
     else
     {
@@ -180,15 +166,11 @@ Game gHashSearch(HashGame table, char *name)
   while (table->games[i])
     if (strcmp(name, table->games[i]->name) == 0)
   {
-    {
-      return table->games[i];
-    }
+    return table->games[i];
   }
   else
   {
-    {
-      i = (i + 1) % table->M;
-    }
+    i = (i + 1) % table->M;
   }
 
 
@@ -204,24 +186,18 @@ void gHashDelete(HashGame table, char *name)
   {
     if (strcmp(name, table->games[i]->name) == 0)
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {
-      {
-        i = (i + 1) % table->M;
-      }
+      i = (i + 1) % table->M;
     }
 
   }
 
   if (!table->games[i])
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -258,9 +234,7 @@ void gHashFree(HashGame table)
   {
     if (table->games[i])
     {
-      {
-        freeGame(table->games[i]);
-      }
+      freeGame(table->games[i]);
     }
     else
     {
@@ -279,15 +253,13 @@ void gListFree(GameLink head)
   GameLink next;
   if (head)
   {
+    do
     {
-      do
-      {
-        next = current->next;
-        free(current);
-        current = next;
-      }
-      while (current != head);
+      next = current->next;
+      free(current);
+      current = next;
     }
+    while (current != head);
   }
   else
   {

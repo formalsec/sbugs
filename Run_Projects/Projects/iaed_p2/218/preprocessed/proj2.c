@@ -67,9 +67,7 @@ void addWin(char *teamName)
   {
     if (strcmp(tHeadCopy->value->name, teamName) == 0)
     {
-      {
-        tHeadCopy->value->winCount++;
-      }
+      tHeadCopy->value->winCount++;
     }
     else
     {
@@ -88,9 +86,7 @@ void removeWin(char *teamName)
   {
     if (strcmp(tHeadCopy->value->name, teamName) == 0)
     {
-      {
-        tHeadCopy->value->winCount--;
-      }
+      tHeadCopy->value->winCount--;
     }
     else
     {
@@ -137,54 +133,44 @@ void addGame(char command[])
   tIndex2 = hash(newptr->value->team2);
   if ((Teams[tIndex1] == 0) || (Teams[tIndex2] == 0))
   {
-    {
-      teamExists1 = 0;
-      teamExists2 = 0;
-    }
+    teamExists1 = 0;
+    teamExists2 = 0;
   }
   else
   {
+    for (tHead = Teams[tIndex1]; tHead != 0; tHead = tHead->next)
     {
-      for (tHead = Teams[tIndex1]; tHead != 0; tHead = tHead->next)
+      if (strcmp(tHead->value->name, newptr->value->team1) == 0)
       {
-        if (strcmp(tHead->value->name, newptr->value->team1) == 0)
-        {
-          {
-            teamExists1 = 1;
-          }
-        }
-        else
-        {
-          
-        }
-
+        teamExists1 = 1;
       }
-
-      for (tHead = Teams[tIndex2]; tHead != 0; tHead = tHead->next)
+      else
       {
-        if (strcmp(tHead->value->name, newptr->value->team2) == 0)
-        {
-          {
-            teamExists2 = 1;
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
     }
+
+    for (tHead = Teams[tIndex2]; tHead != 0; tHead = tHead->next)
+    {
+      if (strcmp(tHead->value->name, newptr->value->team2) == 0)
+      {
+        teamExists2 = 1;
+      }
+      else
+      {
+        
+      }
+
+    }
+
   }
 
   for (head = Games[index]; head != 0; head = head->hashNext)
   {
     if (strcmp(head->value->name, newptr->value->name) == 0)
     {
-      {
-        gameExists = 1;
-      }
+      gameExists = 1;
     }
     else
     {
@@ -195,110 +181,40 @@ void addGame(char command[])
 
   if (gameExists == 1)
   {
+    printf("%d %s\n", NL, "Jogo existente.");
+    free(newptr);
+    free(temp->name);
+    free(temp->team1);
+    free(temp->team2);
+    free(temp);
+  }
+  else
+  {
+    if ((teamExists1 == 0) || (teamExists2 == 0))
     {
-      printf("%d %s\n", NL, "Jogo existente.");
+      printf("%d %s\n", NL, "Equipa inexistente.");
       free(newptr);
       free(temp->name);
       free(temp->team1);
       free(temp->team2);
       free(temp);
     }
-  }
-  else
-  {
-    if ((teamExists1 == 0) || (teamExists2 == 0))
-    {
-      {
-        printf("%d %s\n", NL, "Equipa inexistente.");
-        free(newptr);
-        free(temp->name);
-        free(temp->team1);
-        free(temp->team2);
-        free(temp);
-      }
-    }
     else
     {
       if (Games[index] == 0)
       {
-        {
-          Games[index] = newptr;
-          if (ChronoHead == 0)
-          {
-            {
-              if (newptr->value->team1Score > newptr->value->team2Score)
-              {
-                {
-                  addWin(newptr->value->team1);
-                }
-              }
-              else
-              {
-                if (newptr->value->team1Score < newptr->value->team2Score)
-                {
-                  {
-                    addWin(newptr->value->team2);
-                  }
-                }
-                else
-                {
-                  
-                }
-
-              }
-
-              ChronoHead = newptr;
-              ChronoTail = newptr;
-            }
-          }
-          else
-          {
-            {
-              if (newptr->value->team1Score > newptr->value->team2Score)
-              {
-                {
-                  addWin(newptr->value->team1);
-                }
-              }
-              else
-              {
-                if (newptr->value->team1Score < newptr->value->team2Score)
-                {
-                  {
-                    addWin(newptr->value->team2);
-                  }
-                }
-                else
-                {
-                  
-                }
-
-              }
-
-              newptr->chronoPrev = ChronoTail;
-              ChronoTail->chronoNext = newptr;
-              ChronoTail = newptr;
-            }
-          }
-
-        }
-      }
-      else
-      {
+        Games[index] = newptr;
+        if (ChronoHead == 0)
         {
           if (newptr->value->team1Score > newptr->value->team2Score)
           {
-            {
-              addWin(newptr->value->team1);
-            }
+            addWin(newptr->value->team1);
           }
           else
           {
             if (newptr->value->team1Score < newptr->value->team2Score)
             {
-              {
-                addWin(newptr->value->team2);
-              }
+              addWin(newptr->value->team2);
             }
             else
             {
@@ -307,12 +223,58 @@ void addGame(char command[])
 
           }
 
-          newptr->hashNext = Games[index];
-          Games[index] = newptr;
+          ChronoHead = newptr;
+          ChronoTail = newptr;
+        }
+        else
+        {
+          if (newptr->value->team1Score > newptr->value->team2Score)
+          {
+            addWin(newptr->value->team1);
+          }
+          else
+          {
+            if (newptr->value->team1Score < newptr->value->team2Score)
+            {
+              addWin(newptr->value->team2);
+            }
+            else
+            {
+              
+            }
+
+          }
+
           newptr->chronoPrev = ChronoTail;
           ChronoTail->chronoNext = newptr;
           ChronoTail = newptr;
         }
+
+      }
+      else
+      {
+        if (newptr->value->team1Score > newptr->value->team2Score)
+        {
+          addWin(newptr->value->team1);
+        }
+        else
+        {
+          if (newptr->value->team1Score < newptr->value->team2Score)
+          {
+            addWin(newptr->value->team2);
+          }
+          else
+          {
+            
+          }
+
+        }
+
+        newptr->hashNext = Games[index];
+        Games[index] = newptr;
+        newptr->chronoPrev = ChronoTail;
+        ChronoTail->chronoNext = newptr;
+        ChronoTail = newptr;
       }
 
     }
@@ -335,46 +297,36 @@ void addTeam(char command[])
   newptr->next = 0;
   if (Teams[index] == 0)
   {
-    {
-      Teams[index] = newptr;
-    }
+    Teams[index] = newptr;
   }
   else
   {
+    for (tHead = Teams[index]; tHead != 0; tHead = tHead->next)
     {
-      for (tHead = Teams[index]; tHead != 0; tHead = tHead->next)
+      if (strcmp(tHead->value->name, command) == 0)
       {
-        if (strcmp(tHead->value->name, command) == 0)
-        {
-          {
-            teamExists = 1;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      if (teamExists == 1)
-      {
-        {
-          printf("%d %s\n", NL, "Equipa existente.");
-          free(newptr);
-          free(temp->name);
-          free(temp);
-        }
+        teamExists = 1;
       }
       else
       {
-        {
-          newptr->next = Teams[index];
-          Teams[index] = newptr;
-        }
+        
       }
 
     }
+
+    if (teamExists == 1)
+    {
+      printf("%d %s\n", NL, "Equipa existente.");
+      free(newptr);
+      free(temp->name);
+      free(temp);
+    }
+    else
+    {
+      newptr->next = Teams[index];
+      Teams[index] = newptr;
+    }
+
   }
 
 }
@@ -399,10 +351,8 @@ void searchGame(char command[])
   {
     if (strcmp(gHeadCopy->value->name, command) == 0)
     {
-      {
-        printIt = gHeadCopy;
-        gFound = 1;
-      }
+      printIt = gHeadCopy;
+      gFound = 1;
     }
     else
     {
@@ -413,17 +363,13 @@ void searchGame(char command[])
 
   if (gFound == 0)
   {
-    {
-      printf("%d %s\n", NL, "Jogo inexistente.");
-    }
+    printf("%d %s\n", NL, "Jogo inexistente.");
   }
   else
   {
     if (gFound == 1)
     {
-      {
-        printf("%d %s %s %s %d %d\n", NL, printIt->value->name, printIt->value->team1, printIt->value->team2, printIt->value->team1Score, printIt->value->team2Score);
-      }
+      printf("%d %s %s %s %d %d\n", NL, printIt->value->name, printIt->value->team1, printIt->value->team2, printIt->value->team1Score, printIt->value->team2Score);
     }
     else
     {
@@ -444,10 +390,8 @@ void searchTeam(char command[])
   {
     if (strcmp(tHeadCopy->value->name, command) == 0)
     {
-      {
-        printIt = tHeadCopy;
-        tFound = 1;
-      }
+      printIt = tHeadCopy;
+      tFound = 1;
     }
     else
     {
@@ -458,17 +402,13 @@ void searchTeam(char command[])
 
   if (tFound == 0)
   {
-    {
-      printf("%d %s\n", NL, "Equipa inexistente.");
-    }
+    printf("%d %s\n", NL, "Equipa inexistente.");
   }
   else
   {
     if (tFound == 1)
     {
-      {
-        printf("%d %s %d\n", NL, printIt->value->name, printIt->value->winCount);
-      }
+      printf("%d %s %d\n", NL, printIt->value->name, printIt->value->winCount);
     }
     else
     {
@@ -532,53 +472,43 @@ void changeScore(char command[])
   {
     if (strcmp(gCopy->value->name, theGame) == 0)
     {
+      if (gCopy->value->team1Score > gCopy->value->team2Score)
       {
-        if (gCopy->value->team1Score > gCopy->value->team2Score)
-        {
-          {
-            removeWin(gCopy->value->team1);
-          }
-        }
-        else
-        {
-          if (gCopy->value->team1Score < gCopy->value->team2Score)
-          {
-            {
-              removeWin(gCopy->value->team2);
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-        gCopy->value->team1Score = newScore1;
-        gCopy->value->team2Score = newScore2;
-        if (newScore1 > newScore2)
-        {
-          {
-            addWin(gCopy->value->team1);
-          }
-        }
-        else
-        {
-          if (newScore1 < newScore2)
-          {
-            {
-              addWin(gCopy->value->team2);
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-        found = 1;
+        removeWin(gCopy->value->team1);
       }
+      else
+      {
+        if (gCopy->value->team1Score < gCopy->value->team2Score)
+        {
+          removeWin(gCopy->value->team2);
+        }
+        else
+        {
+          
+        }
+
+      }
+
+      gCopy->value->team1Score = newScore1;
+      gCopy->value->team2Score = newScore2;
+      if (newScore1 > newScore2)
+      {
+        addWin(gCopy->value->team1);
+      }
+      else
+      {
+        if (newScore1 < newScore2)
+        {
+          addWin(gCopy->value->team2);
+        }
+        else
+        {
+          
+        }
+
+      }
+
+      found = 1;
     }
     else
     {
@@ -589,9 +519,7 @@ void changeScore(char command[])
 
   if (found == 0)
   {
-    {
-      printf("%d %s\n", NL, "Jogo inexistente.");
-    }
+    printf("%d %s\n", NL, "Jogo inexistente.");
   }
   else
   {
@@ -613,39 +541,29 @@ void removeFromChrono(struct gNode *removeIt)
 {
   if (removeIt == ChronoHead)
   {
+    if (ChronoHead->chronoNext == 0)
     {
-      if (ChronoHead->chronoNext == 0)
-      {
-        {
-          ChronoHead = 0;
-          ChronoTail = 0;
-        }
-      }
-      else
-      {
-        {
-          ChronoHead = ChronoHead->chronoNext;
-          ChronoHead->chronoPrev = 0;
-        }
-      }
-
+      ChronoHead = 0;
+      ChronoTail = 0;
     }
+    else
+    {
+      ChronoHead = ChronoHead->chronoNext;
+      ChronoHead->chronoPrev = 0;
+    }
+
   }
   else
   {
     if (removeIt == ChronoTail)
     {
-      {
-        ChronoTail = ChronoTail->chronoPrev;
-        ChronoTail->chronoNext = 0;
-      }
+      ChronoTail = ChronoTail->chronoPrev;
+      ChronoTail->chronoNext = 0;
     }
     else
     {
-      {
-        removeIt->chronoPrev->chronoNext = removeIt->chronoNext;
-        removeIt->chronoNext->chronoPrev = removeIt->chronoPrev;
-      }
+      removeIt->chronoPrev->chronoNext = removeIt->chronoNext;
+      removeIt->chronoNext->chronoPrev = removeIt->chronoPrev;
     }
 
   }
@@ -661,120 +579,89 @@ void removeGame(char command[])
   int index = hash(command);
   if (Games[index] == 0)
   {
-    {
-      found = 0;
-    }
+    found = 0;
   }
   else
   {
     if (strcmp(Games[index]->value->name, command) == 0)
     {
+      found = 1;
+      freeThisOne = Games[index];
+      Games[index] = Games[index]->hashNext;
+      if (freeThisOne->value->team1Score > freeThisOne->value->team2Score)
       {
-        found = 1;
-        freeThisOne = Games[index];
-        Games[index] = Games[index]->hashNext;
-        if (freeThisOne->value->team1Score > freeThisOne->value->team2Score)
+        removeWin(freeThisOne->value->team1);
+      }
+      else
+      {
+        if (freeThisOne->value->team1Score < freeThisOne->value->team2Score)
         {
-          {
-            removeWin(freeThisOne->value->team1);
-          }
+          removeWin(freeThisOne->value->team2);
         }
         else
         {
-          if (freeThisOne->value->team1Score < freeThisOne->value->team2Score)
-          {
-            {
-              removeWin(freeThisOne->value->team2);
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
-        removeFromChrono(freeThisOne);
       }
+
+      removeFromChrono(freeThisOne);
     }
     else
     {
+      for (gCopy = Games[index]; (gCopy != 0) && (found == 0); gCopy = gCopy->hashNext)
       {
-        for (gCopy = Games[index]; (gCopy != 0) && (found == 0); gCopy = gCopy->hashNext)
+        if (gCopy->hashNext != 0)
         {
-          if (gCopy->hashNext != 0)
+          if (strcmp(gCopy->hashNext->value->name, command) == 0)
           {
+            freeThisOne = gCopy->hashNext;
+            if (gCopy->hashNext->hashNext == 0)
             {
-              if (strcmp(gCopy->hashNext->value->name, command) == 0)
+              gCopy->hashNext = 0;
+              if (freeThisOne->value->team1Score > freeThisOne->value->team2Score)
               {
-                {
-                  freeThisOne = gCopy->hashNext;
-                  if (gCopy->hashNext->hashNext == 0)
-                  {
-                    {
-                      gCopy->hashNext = 0;
-                      if (freeThisOne->value->team1Score > freeThisOne->value->team2Score)
-                      {
-                        {
-                          removeWin(freeThisOne->value->team1);
-                        }
-                      }
-                      else
-                      {
-                        if (freeThisOne->value->team1Score < freeThisOne->value->team2Score)
-                        {
-                          {
-                            removeWin(freeThisOne->value->team2);
-                          }
-                        }
-                        else
-                        {
-                          
-                        }
-
-                      }
-
-                      removeFromChrono(freeThisOne);
-                    }
-                  }
-                  else
-                  {
-                    {
-                      gCopy->hashNext = gCopy->hashNext->hashNext;
-                      if (freeThisOne->value->team1Score > freeThisOne->value->team2Score)
-                      {
-                        {
-                          removeWin(freeThisOne->value->team1);
-                        }
-                      }
-                      else
-                      {
-                        if (freeThisOne->value->team1Score < freeThisOne->value->team2Score)
-                        {
-                          {
-                            removeWin(freeThisOne->value->team2);
-                          }
-                        }
-                        else
-                        {
-                          
-                        }
-
-                      }
-
-                      removeFromChrono(freeThisOne);
-                    }
-                  }
-
-                  found = 1;
-                }
+                removeWin(freeThisOne->value->team1);
               }
               else
               {
-                
+                if (freeThisOne->value->team1Score < freeThisOne->value->team2Score)
+                {
+                  removeWin(freeThisOne->value->team2);
+                }
+                else
+                {
+                  
+                }
+
               }
 
+              removeFromChrono(freeThisOne);
             }
+            else
+            {
+              gCopy->hashNext = gCopy->hashNext->hashNext;
+              if (freeThisOne->value->team1Score > freeThisOne->value->team2Score)
+              {
+                removeWin(freeThisOne->value->team1);
+              }
+              else
+              {
+                if (freeThisOne->value->team1Score < freeThisOne->value->team2Score)
+                {
+                  removeWin(freeThisOne->value->team2);
+                }
+                else
+                {
+                  
+                }
+
+              }
+
+              removeFromChrono(freeThisOne);
+            }
+
+            found = 1;
           }
           else
           {
@@ -782,17 +669,20 @@ void removeGame(char command[])
           }
 
         }
+        else
+        {
+          
+        }
 
       }
+
     }
 
   }
 
   if (found == 0)
   {
-    {
-      printf("%d %s\n", NL, "Jogo inexistente.");
-    }
+    printf("%d %s\n", NL, "Jogo inexistente.");
   }
   else
   {
@@ -816,35 +706,29 @@ void findBigWinners()
   {
     if (Teams[i] != 0)
     {
+      teamsExist = 1;
+      for (tHead = Teams[i]; tHead != 0; tHead = tHead->next)
       {
-        teamsExist = 1;
-        for (tHead = Teams[i]; tHead != 0; tHead = tHead->next)
+        if (tHead->value->winCount > maxWin)
         {
-          if (tHead->value->winCount > maxWin)
+          empates = 1;
+          maxWin = tHead->value->winCount;
+        }
+        else
+        {
+          if (tHead->value->winCount == maxWin)
           {
-            {
-              empates = 1;
-              maxWin = tHead->value->winCount;
-            }
+            empates += 1;
           }
           else
           {
-            if (tHead->value->winCount == maxWin)
-            {
-              {
-                empates += 1;
-              }
-            }
-            else
-            {
-              
-            }
-
+            
           }
 
         }
 
       }
+
     }
     else
     {
@@ -855,57 +739,51 @@ void findBigWinners()
 
   if (teamsExist == 1)
   {
+    bigWinners = malloc((sizeof(struct tNode *)) * empates);
+    for (i = 0; i < 1019; i++)
     {
-      bigWinners = malloc((sizeof(struct tNode *)) * empates);
-      for (i = 0; i < 1019; i++)
+      for (tHead = Teams[i]; tHead != 0; tHead = tHead->next)
       {
-        for (tHead = Teams[i]; tHead != 0; tHead = tHead->next)
+        if (tHead->value->winCount == maxWin)
         {
-          if (tHead->value->winCount == maxWin)
-          {
-            {
-              bigWinners[winnerCounter] = tHead;
-              winnerCounter += 1;
-            }
-          }
-          else
-          {
-            
-          }
-
+          bigWinners[winnerCounter] = tHead;
+          winnerCounter += 1;
+        }
+        else
+        {
+          
         }
 
       }
 
-      for (i = 0; i < (winnerCounter - 1); ++i)
-      {
-        for (j = 0; j < ((winnerCounter - i) - 1); ++j)
-        {
-          if (strcmp(bigWinners[j]->value->name, bigWinners[j + 1]->value->name) > 0)
-          {
-            {
-              storm = bigWinners[j];
-              bigWinners[j] = bigWinners[j + 1];
-              bigWinners[j + 1] = storm;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-      }
-
-      printf("%d Melhores %d\n", NL, maxWin);
-      for (i = 0; i < empates; ++i)
-      {
-        printf("%d * %s\n", NL, bigWinners[i]->value->name);
-      }
-
-      free(bigWinners);
     }
+
+    for (i = 0; i < (winnerCounter - 1); ++i)
+    {
+      for (j = 0; j < ((winnerCounter - i) - 1); ++j)
+      {
+        if (strcmp(bigWinners[j]->value->name, bigWinners[j + 1]->value->name) > 0)
+        {
+          storm = bigWinners[j];
+          bigWinners[j] = bigWinners[j + 1];
+          bigWinners[j + 1] = storm;
+        }
+        else
+        {
+          
+        }
+
+      }
+
+    }
+
+    printf("%d Melhores %d\n", NL, maxWin);
+    for (i = 0; i < empates; ++i)
+    {
+      printf("%d * %s\n", NL, bigWinners[i]->value->name);
+    }
+
+    free(bigWinners);
   }
   else
   {
@@ -927,9 +805,7 @@ int main()
     mander = getchar();
     if (mander == '\n')
     {
-      {
-        continue;
-      }
+      continue;
     }
     else
     {

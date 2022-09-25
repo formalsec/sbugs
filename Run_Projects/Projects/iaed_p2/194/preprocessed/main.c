@@ -32,10 +32,8 @@ int main()
         nJogos++;
         if (nJogos > (maxJ / 2))
       {
-        {
-          maxJ = maxJ * 2;
-          tabJ = JOGOexpand(tabJ, maxJ);
-        }
+        maxJ = maxJ * 2;
+        tabJ = JOGOexpand(tabJ, maxJ);
       }
       else
       {
@@ -50,10 +48,8 @@ int main()
         nEquipas++;
         if (nEquipas > (maxE / 2))
       {
-        {
-          maxE = maxE * 2;
-          tabE = EQUIPAexpand(tabE, maxE);
-        }
+        maxE = maxE * 2;
+        tabE = EQUIPAexpand(tabE, maxE);
       }
       else
       {

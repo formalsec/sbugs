@@ -136,9 +136,7 @@ int main()
 
     if (command != '\n')
     {
-      {
-        line++;
-      }
+      line++;
     }
     else
     {
@@ -158,10 +156,8 @@ void a(pGame *g, pTeam *t, int *id, char *name, char *team1, char *team2, int sc
   Team *team;
   if (searchG(g, name, 160) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", line);
-      return;
-    }
+    printf("%d Jogo existente.\n", line);
+    return;
   }
   else
   {
@@ -170,10 +166,8 @@ void a(pGame *g, pTeam *t, int *id, char *name, char *team1, char *team2, int sc
 
   if ((searchT(t, team1, 160) == 0) || (searchT(t, team2, 160) == 0))
   {
-    {
-      printf("%d Equipa inexistente.\n", line);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", line);
+    return;
   }
   else
   {
@@ -185,9 +179,7 @@ void a(pGame *g, pTeam *t, int *id, char *name, char *team1, char *team2, int sc
   (*id)++;
   if (score1 == score2)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -196,15 +188,11 @@ void a(pGame *g, pTeam *t, int *id, char *name, char *team1, char *team2, int sc
 
   if (score1 > score2)
   {
-    {
-      team = searchT(t, team1, 160);
-    }
+    team = searchT(t, team1, 160);
   }
   else
   {
-    {
-      team = searchT(t, team2, 160);
-    }
+    team = searchT(t, team2, 160);
   }
 
   team->cont++;
@@ -215,10 +203,8 @@ void A(pTeam *t, char *name, int *numTeams, int line)
   Team *team;
   if (searchT(t, name, 160) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", line);
-      return;
-    }
+    printf("%d Equipa existente.\n", line);
+    return;
   }
   else
   {
@@ -254,9 +240,7 @@ void l(pGame *heads, int gameId, int line)
   {
     if (table[i] == 0)
     {
-      {
-        continue;
-      }
+      continue;
     }
     else
     {
@@ -274,15 +258,11 @@ void p(pGame *g, char *name, int line)
   Game *game = searchG(g, name, 160);
   if (game == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", line);
-    }
+    printf("%d Jogo inexistente.\n", line);
   }
   else
   {
-    {
-      printf("%d %s %s %s %d %d\n", line, game->name, game->team1, game->team2, game->score1, game->score2);
-    }
+    printf("%d %s %s %s %d %d\n", line, game->name, game->team1, game->team2, game->score1, game->score2);
   }
 
 }
@@ -292,15 +272,11 @@ void P(pTeam *t, char *name, int line)
   Team *team = searchT(t, name, 160);
   if (team == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", line);
-    }
+    printf("%d Equipa inexistente.\n", line);
   }
   else
   {
-    {
-      printf("%d %s %d\n", line, team->name, team->cont);
-    }
+    printf("%d %s %d\n", line, team->name, team->cont);
   }
 
 }
@@ -312,10 +288,8 @@ void r(pGame *g, pTeam *t, char *name, int line)
   char *prevWinner;
   if (game == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", line);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", line);
+    return;
   }
   else
   {
@@ -324,23 +298,17 @@ void r(pGame *g, pTeam *t, char *name, int line)
 
   if (game->score1 != game->score2)
   {
+    if (game->score1 > game->score2)
     {
-      if (game->score1 > game->score2)
-      {
-        {
-          prevWinner = game->team1;
-        }
-      }
-      else
-      {
-        {
-          prevWinner = game->team2;
-        }
-      }
-
-      team = searchT(t, prevWinner, 160);
-      team->cont--;
+      prevWinner = game->team1;
     }
+    else
+    {
+      prevWinner = game->team2;
+    }
+
+    team = searchT(t, prevWinner, 160);
+    team->cont--;
   }
   else
   {
@@ -359,10 +327,8 @@ void s(pGame *g, pTeam *t, char *name, int score1, int score2, int line)
   Game *game = searchG(g, name, 160);
   if (game == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", line);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", line);
+    return;
   }
   else
   {
@@ -371,26 +337,68 @@ void s(pGame *g, pTeam *t, char *name, int score1, int score2, int line)
 
   if (score1 == score2)
   {
+    if (game->score1 != game->score2)
     {
-      if (game->score1 != game->score2)
+      if (game->score1 > game->score2)
       {
-        {
-          if (game->score1 > game->score2)
-          {
-            {
-              prevWinner = game->team1;
-            }
-          }
-          else
-          {
-            {
-              prevWinner = game->team2;
-            }
-          }
+        prevWinner = game->team1;
+      }
+      else
+      {
+        prevWinner = game->team2;
+      }
 
-          team2 = searchT(t, prevWinner, 160);
-          team2->cont--;
-        }
+      team2 = searchT(t, prevWinner, 160);
+      team2->cont--;
+    }
+    else
+    {
+      
+    }
+
+  }
+  else
+  {
+    if (game->score1 == game->score2)
+    {
+      if (score1 > score2)
+      {
+        newWinner = game->team1;
+      }
+      else
+      {
+        newWinner = game->team2;
+      }
+
+      team1 = searchT(t, newWinner, 160);
+      team1->cont++;
+    }
+    else
+    {
+      if (game->score1 > game->score2)
+      {
+        prevWinner = game->team1;
+      }
+      else
+      {
+        prevWinner = game->team2;
+      }
+
+      if (score1 > score2)
+      {
+        newWinner = game->team1;
+      }
+      else
+      {
+        newWinner = game->team2;
+      }
+
+      if (newWinner != prevWinner)
+      {
+        team1 = searchT(t, newWinner, 160);
+        team1->cont++;
+        team2 = searchT(t, prevWinner, 160);
+        team2->cont--;
       }
       else
       {
@@ -398,77 +406,7 @@ void s(pGame *g, pTeam *t, char *name, int score1, int score2, int line)
       }
 
     }
-  }
-  else
-  {
-    {
-      if (game->score1 == game->score2)
-      {
-        {
-          if (score1 > score2)
-          {
-            {
-              newWinner = game->team1;
-            }
-          }
-          else
-          {
-            {
-              newWinner = game->team2;
-            }
-          }
 
-          team1 = searchT(t, newWinner, 160);
-          team1->cont++;
-        }
-      }
-      else
-      {
-        {
-          if (game->score1 > game->score2)
-          {
-            {
-              prevWinner = game->team1;
-            }
-          }
-          else
-          {
-            {
-              prevWinner = game->team2;
-            }
-          }
-
-          if (score1 > score2)
-          {
-            {
-              newWinner = game->team1;
-            }
-          }
-          else
-          {
-            {
-              newWinner = game->team2;
-            }
-          }
-
-          if (newWinner != prevWinner)
-          {
-            {
-              team1 = searchT(t, newWinner, 160);
-              team1->cont++;
-              team2 = searchT(t, prevWinner, 160);
-              team2->cont--;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-      }
-
-    }
   }
 
   game->score1 = score1;
@@ -489,9 +427,7 @@ void g(pTeam *t, int numTeams, int line)
   char **table;
   if (numTeams == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -505,9 +441,7 @@ void g(pTeam *t, int numTeams, int line)
     {
       if (max == temp->team->cont)
       {
-        {
-          c++;
-        }
+        c++;
       }
       else
       {
@@ -516,10 +450,8 @@ void g(pTeam *t, int numTeams, int line)
 
       if (max < temp->team->cont)
       {
-        {
-          max = temp->team->cont;
-          c = 1;
-        }
+        max = temp->team->cont;
+        c = 1;
       }
       else
       {
@@ -539,10 +471,8 @@ void g(pTeam *t, int numTeams, int line)
     {
       if (max == temp->team->cont)
       {
-        {
-          table[j] = temp->team->name;
-          j++;
-        }
+        table[j] = temp->team->name;
+        j++;
       }
       else
       {

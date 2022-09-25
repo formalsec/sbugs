@@ -18,9 +18,7 @@ void freeNode(link *node, void (*freeFunction)(void *))
 {
   if (freeFunction != 0)
   {
-    {
-      freeFunction(node->dataPointer);
-    }
+    freeFunction(node->dataPointer);
   }
   else
   {
@@ -58,9 +56,7 @@ link *listSearch(List *list, char *key, int (*compareFunction)(char *, void *))
   link *t;
   if (compareFunction == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -71,9 +67,7 @@ link *listSearch(List *list, char *key, int (*compareFunction)(char *, void *))
   {
     if (compareFunction(key, t->dataPointer))
     {
-      {
-        return t;
-      }
+      return t;
     }
     else
     {
@@ -89,9 +83,7 @@ void listInsertEndNode(List *list, link *node)
 {
   if (list == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -100,15 +92,11 @@ void listInsertEndNode(List *list, link *node)
 
   if (list->head == 0)
   {
-    {
-      list->head = node;
-    }
+    list->head = node;
   }
   else
   {
-    {
-      list->tail->next = node;
-    }
+    list->tail->next = node;
   }
 
   list->tail = node;
@@ -119,9 +107,7 @@ void listInsertEnd(List *list, void *dataPointer)
   link *node;
   if (list == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -138,9 +124,7 @@ void listInsertBeforeNode(List *list, link *nextNode, link *node)
   link *t;
   if (((list == 0) || (nextNode == 0)) || (node == 0))
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -151,25 +135,19 @@ void listInsertBeforeNode(List *list, link *nextNode, link *node)
   {
     if (t == nextNode)
     {
+      if (t == list->head)
       {
-        if (t == list->head)
-        {
-          {
-            node->next = t;
-            list->head = node;
-            break;
-          }
-        }
-        else
-        {
-          {
-            node->next = t;
-            prev->next = node;
-            break;
-          }
-        }
-
+        node->next = t;
+        list->head = node;
+        break;
       }
+      else
+      {
+        node->next = t;
+        prev->next = node;
+        break;
+      }
+
     }
     else
     {
@@ -185,9 +163,7 @@ void listInsertBefore(List *list, link *nextNode, void *dataPointer)
   link *node;
   if (((list == 0) || (nextNode == 0)) || (dataPointer == 0))
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -206,47 +182,37 @@ void listRemoveElement(List *list, char *key, int (*compareFunction)(char *, voi
   {
     if (compareFunction(key, t->dataPointer))
     {
+      if ((t == list->head) && (t == list->tail))
       {
-        if ((t == list->head) && (t == list->tail))
+        list->head = 0;
+        list->tail = 0;
+      }
+      else
+      {
+        if (t == list->head)
         {
-          {
-            list->head = 0;
-            list->tail = 0;
-          }
+          list->head = list->head->next;
+          t->next = 0;
         }
         else
         {
-          if (t == list->head)
+          if (t == list->tail)
           {
-            {
-              list->head = list->head->next;
-              t->next = 0;
-            }
+            list->tail = prev;
+            prev->next = 0;
           }
           else
           {
-            if (t == list->tail)
-            {
-              {
-                list->tail = prev;
-                prev->next = 0;
-              }
-            }
-            else
-            {
-              {
-                prev->next = t->next;
-                t->next = 0;
-              }
-            }
-
+            prev->next = t->next;
+            t->next = 0;
           }
 
         }
 
-        freeNode(t, freeFunction);
-        break;
       }
+
+      freeNode(t, freeFunction);
+      break;
     }
     else
     {
@@ -271,9 +237,7 @@ int isListEmpty(List *list)
 {
   if (list->head == 0)
   {
-    {
-      return 1;
-    }
+    return 1;
   }
   else
   {

@@ -45,9 +45,7 @@ void addProduct(char d[], int p, int w, int s)
 {
   if ((((d == 0) || (p <= 0)) || (w <= 0)) || (s <= 0))
   {
-    {
-      printf("Argumentos nao sao validos\n");
-    }
+    printf("Argumentos nao sao validos\n");
   }
   else
   {
@@ -88,10 +86,8 @@ void addToOrder(int idOrder, int idProduct, int quantity)
   int i;
   if (idOrder >= orderCounter)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idProduct, idOrder);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idProduct, idOrder);
+    return;
   }
   else
   {
@@ -100,10 +96,8 @@ void addToOrder(int idOrder, int idProduct, int quantity)
 
   if (idProduct >= productCounter)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idProduct, idOrder);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idProduct, idOrder);
+    return;
   }
   else
   {
@@ -112,10 +106,8 @@ void addToOrder(int idOrder, int idProduct, int quantity)
 
   if ((products[idProduct].stock < quantity) || (products[idProduct].stock < 0))
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idProduct, idOrder);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idProduct, idOrder);
+    return;
   }
   else
   {
@@ -124,10 +116,8 @@ void addToOrder(int idOrder, int idProduct, int quantity)
 
   if ((orders[idOrder].totalOrderWeight + (products[idProduct].weight * quantity)) > 200)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idProduct, idOrder);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idProduct, idOrder);
+    return;
   }
   else
   {
@@ -136,17 +126,15 @@ void addToOrder(int idOrder, int idProduct, int quantity)
 
   if (orders[idOrder].productCounter == 0)
   {
-    {
-      strcpy(orders[idOrder].products[orders[idOrder].productCounter].description, products[idProduct].description);
-      orders[idOrder].products[orders[idOrder].productCounter].price = products[idProduct].price;
-      orders[idOrder].products[orders[idOrder].productCounter].weight = products[idProduct].weight;
-      orders[idOrder].products[orders[idOrder].productCounter].stock = quantity;
-      orders[idOrder].products[orders[idOrder].productCounter].id = products[idProduct].id;
-      orders[idOrder].totalOrderWeight += products[idProduct].weight * quantity;
-      products[idProduct].stock -= quantity;
-      orders[idOrder].productCounter++;
-      return;
-    }
+    strcpy(orders[idOrder].products[orders[idOrder].productCounter].description, products[idProduct].description);
+    orders[idOrder].products[orders[idOrder].productCounter].price = products[idProduct].price;
+    orders[idOrder].products[orders[idOrder].productCounter].weight = products[idProduct].weight;
+    orders[idOrder].products[orders[idOrder].productCounter].stock = quantity;
+    orders[idOrder].products[orders[idOrder].productCounter].id = products[idProduct].id;
+    orders[idOrder].totalOrderWeight += products[idProduct].weight * quantity;
+    products[idProduct].stock -= quantity;
+    orders[idOrder].productCounter++;
+    return;
   }
   else
   {
@@ -157,12 +145,10 @@ void addToOrder(int idOrder, int idProduct, int quantity)
   {
     if (orders[idOrder].products[i].id == idProduct)
     {
-      {
-        products[idProduct].stock -= quantity;
-        orders[idOrder].products[i].stock += quantity;
-        orders[idOrder].totalOrderWeight += products[idProduct].weight * quantity;
-        return;
-      }
+      products[idProduct].stock -= quantity;
+      orders[idOrder].products[i].stock += quantity;
+      orders[idOrder].totalOrderWeight += products[idProduct].weight * quantity;
+      return;
     }
     else
     {
@@ -186,10 +172,8 @@ void rmStock(int idProduct, int s)
 {
   if (idProduct >= productCounter)
   {
-    {
-      printf("Impossivel remover stock do produto %d. Produto inexistente.\n", idProduct);
-      return;
-    }
+    printf("Impossivel remover stock do produto %d. Produto inexistente.\n", idProduct);
+    return;
   }
   else
   {
@@ -198,10 +182,8 @@ void rmStock(int idProduct, int s)
 
   if ((products[idProduct].stock - s) < 0)
   {
-    {
-      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", s, idProduct);
-      return;
-    }
+    printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", s, idProduct);
+    return;
   }
   else
   {
@@ -216,10 +198,8 @@ void rmProduct(int idOrder, int idProduct)
   int i;
   if (idOrder >= orderCounter)
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idProduct, idOrder);
-      return;
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idProduct, idOrder);
+    return;
   }
   else
   {
@@ -228,10 +208,8 @@ void rmProduct(int idOrder, int idProduct)
 
   if (idProduct >= productCounter)
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idProduct, idOrder);
-      return;
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idProduct, idOrder);
+    return;
   }
   else
   {
@@ -243,11 +221,9 @@ void rmProduct(int idOrder, int idProduct)
 
   if (i < orders[idOrder].productCounter)
   {
-    {
-      products[idProduct].stock += orders[idOrder].products[i].stock;
-      orders[idOrder].totalOrderWeight -= products[idProduct].weight * orders[idOrder].products[i].stock;
-      orders[idOrder].products[i].stock = 0;
-    }
+    products[idProduct].stock += orders[idOrder].products[i].stock;
+    orders[idOrder].totalOrderWeight -= products[idProduct].weight * orders[idOrder].products[i].stock;
+    orders[idOrder].products[i].stock = 0;
   }
   else
   {
@@ -262,10 +238,8 @@ void orderCost(int idOrder)
   int cost = 0;
   if (idOrder >= orderCounter)
   {
-    {
-      printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", idOrder);
-      return;
-    }
+    printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", idOrder);
+    return;
   }
   else
   {
@@ -300,9 +274,7 @@ void changePrice(int idProduct, int newPrice)
     {
       if (orders[i].products[n].id == idProduct)
       {
-        {
-          orders[i].products[n].price = newPrice;
-        }
+        orders[i].products[n].price = newPrice;
       }
       else
       {
@@ -320,10 +292,8 @@ void listOrder(int idOrder, int idProduct)
   int i;
   if (idOrder >= orderCounter)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", idOrder);
-      return;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", idOrder);
+    return;
   }
   else
   {
@@ -332,10 +302,8 @@ void listOrder(int idOrder, int idProduct)
 
   if (idProduct >= productCounter)
   {
-    {
-      printf("Impossivel listar produto %d. Produto inexistente.\n", idProduct);
-      return;
-    }
+    printf("Impossivel listar produto %d. Produto inexistente.\n", idProduct);
+    return;
   }
   else
   {
@@ -346,10 +314,8 @@ void listOrder(int idOrder, int idProduct)
   {
     if (orders[idOrder].products[i].id == idProduct)
     {
-      {
-        printf("%s %d.\n", orders[idOrder].products[i].description, orders[idOrder].products[i].stock);
-        return;
-      }
+      printf("%s %d.\n", orders[idOrder].products[i].description, orders[idOrder].products[i].stock);
+      return;
     }
     else
     {
@@ -370,10 +336,8 @@ void orderWithMoreProducts(int idProduct)
   int maxProducts = 0;
   if (idProduct >= productCounter)
   {
-    {
-      printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idProduct);
-      return;
-    }
+    printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idProduct);
+    return;
   }
   else
   {
@@ -386,10 +350,8 @@ void orderWithMoreProducts(int idProduct)
     {
       if (((orders[i].products[n].id == idProduct) && (orders[i].products[n].stock > 0)) && (orders[i].products[n].stock >= maxProducts))
       {
-        {
-          maxProducts = orders[i].products[n].stock;
-          orderWithMoreProducts = i;
-        }
+        maxProducts = orders[i].products[n].stock;
+        orderWithMoreProducts = i;
       }
       else
       {
@@ -402,9 +364,7 @@ void orderWithMoreProducts(int idProduct)
 
   if (orderWithMoreProducts != (-1))
   {
-    {
-      printf("Maximo produto %d %d %d.\n", idProduct, orderWithMoreProducts, maxProducts);
-    }
+    printf("Maximo produto %d %d %d.\n", idProduct, orderWithMoreProducts, maxProducts);
   }
   else
   {
@@ -447,25 +407,21 @@ void mergePrice(Product arr[], int l, int m, int r)
   {
     if (L[i].price <= R[j].price)
     {
-      {
-        arr[k].id = L[i].id;
-        arr[k].price = L[i].price;
-        arr[k].weight = L[i].weight;
-        arr[k].stock = L[i].stock;
-        strcpy(arr[k].description, L[i].description);
-        i++;
-      }
+      arr[k].id = L[i].id;
+      arr[k].price = L[i].price;
+      arr[k].weight = L[i].weight;
+      arr[k].stock = L[i].stock;
+      strcpy(arr[k].description, L[i].description);
+      i++;
     }
     else
     {
-      {
-        arr[k].id = R[j].id;
-        arr[k].price = R[j].price;
-        arr[k].weight = R[j].weight;
-        arr[k].stock = R[j].stock;
-        strcpy(arr[k].description, R[j].description);
-        j++;
-      }
+      arr[k].id = R[j].id;
+      arr[k].price = R[j].price;
+      arr[k].weight = R[j].weight;
+      arr[k].stock = R[j].stock;
+      strcpy(arr[k].description, R[j].description);
+      j++;
     }
 
     k++;
@@ -499,12 +455,10 @@ void mergeSortPrice(Product arr[], int l, int r)
 {
   if (l < r)
   {
-    {
-      int m = l + ((r - l) / 2);
-      mergeSortPrice(arr, l, m);
-      mergeSortPrice(arr, m + 1, r);
-      mergePrice(arr, l, m, r);
-    }
+    int m = l + ((r - l) / 2);
+    mergeSortPrice(arr, l, m);
+    mergeSortPrice(arr, m + 1, r);
+    mergePrice(arr, l, m, r);
   }
   else
   {
@@ -561,25 +515,21 @@ void mergeDescription(Product arr[], int l, int m, int r)
   {
     if (strcmp(L[i].description, R[j].description) < 0)
     {
-      {
-        arr[k].id = L[i].id;
-        arr[k].price = L[i].price;
-        arr[k].weight = L[i].weight;
-        arr[k].stock = L[i].stock;
-        strcpy(arr[k].description, L[i].description);
-        i++;
-      }
+      arr[k].id = L[i].id;
+      arr[k].price = L[i].price;
+      arr[k].weight = L[i].weight;
+      arr[k].stock = L[i].stock;
+      strcpy(arr[k].description, L[i].description);
+      i++;
     }
     else
     {
-      {
-        arr[k].id = R[j].id;
-        arr[k].price = R[j].price;
-        arr[k].weight = R[j].weight;
-        arr[k].stock = R[j].stock;
-        strcpy(arr[k].description, R[j].description);
-        j++;
-      }
+      arr[k].id = R[j].id;
+      arr[k].price = R[j].price;
+      arr[k].weight = R[j].weight;
+      arr[k].stock = R[j].stock;
+      strcpy(arr[k].description, R[j].description);
+      j++;
     }
 
     k++;
@@ -613,12 +563,10 @@ void mergeSortDescription(Product arr[], int l, int r)
 {
   if (l < r)
   {
-    {
-      int m = l + ((r - l) / 2);
-      mergeSortDescription(arr, l, m);
-      mergeSortDescription(arr, m + 1, r);
-      mergeDescription(arr, l, m, r);
-    }
+    int m = l + ((r - l) / 2);
+    mergeSortDescription(arr, l, m);
+    mergeSortDescription(arr, m + 1, r);
+    mergeDescription(arr, l, m, r);
   }
   else
   {
@@ -633,10 +581,8 @@ void listOrderProducts(int idOrder)
   Product productsOrdered[500];
   if (idOrder >= orderCounter)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", idOrder);
-      return;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", idOrder);
+    return;
   }
   else
   {
@@ -654,9 +600,7 @@ void listOrderProducts(int idOrder)
   {
     if (productsOrdered[i].stock != 0)
     {
-      {
-        printf("* %s %d %d\n", productsOrdered[i].description, productsOrdered[i].price, productsOrdered[i].stock);
-      }
+      printf("* %s %d %d\n", productsOrdered[i].description, productsOrdered[i].price, productsOrdered[i].stock);
     }
     else
     {

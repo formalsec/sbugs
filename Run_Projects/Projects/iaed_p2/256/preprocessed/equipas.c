@@ -97,28 +97,20 @@ void rm_equipa(lista_e *l, equipa *n)
 {
   if (n->prev == 0)
   {
-    {
-      l->head = n->next;
-    }
+    l->head = n->next;
   }
   else
   {
-    {
-      n->prev->next = n->next;
-    }
+    n->prev->next = n->next;
   }
 
   if (n->next == 0)
   {
-    {
-      l->last = n->prev;
-    }
+    l->last = n->prev;
   }
   else
   {
-    {
-      n->next->prev = n->prev;
-    }
+    n->next->prev = n->prev;
   }
 
   free(n->nome);
@@ -129,28 +121,20 @@ void rm_jogo(lista_j *l, jogo *n)
 {
   if (n->prev == 0)
   {
-    {
-      l->head = n->next;
-    }
+    l->head = n->next;
   }
   else
   {
-    {
-      n->prev->next = n->next;
-    }
+    n->prev->next = n->next;
   }
 
   if (n->next == 0)
   {
-    {
-      l->last = n->prev;
-    }
+    l->last = n->prev;
   }
   else
   {
-    {
-      n->next->prev = n->prev;
-    }
+    n->next->prev = n->prev;
   }
 
   free(n->nome);

@@ -171,12 +171,10 @@ g_node *insertGameNode(g_node *head, char *name, char *team1, char *team2, int s
   pointer_g_node->next = 0;
   if (head != 0)
   {
-    {
-      for (aux = head; aux->next != 0; aux = aux->next)
-        ;
+    for (aux = head; aux->next != 0; aux = aux->next)
+      ;
 
-      aux->next = pointer_g_node;
-    }
+    aux->next = pointer_g_node;
   }
   else
   {
@@ -197,12 +195,10 @@ t_node *insertTeamNode(t_node *head, char *name)
   pointer_t_node->next = 0;
   if (head != 0)
   {
-    {
-      for (aux = head; aux->next != 0; aux = aux->next)
-        ;
+    for (aux = head; aux->next != 0; aux = aux->next)
+      ;
 
-      aux->next = pointer_t_node;
-    }
+    aux->next = pointer_t_node;
   }
   else
   {
@@ -259,10 +255,8 @@ void addGame(g_node **games, t_node **teams, game_slot **game_storage_head, int 
   g_head = games[key_game];
   if (findGame(g_head, name) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-      return;
-    }
+    printf("%d Jogo existente.\n", NL);
+    return;
   }
   else
   {
@@ -275,10 +269,8 @@ void addGame(g_node **games, t_node **teams, game_slot **game_storage_head, int 
   t2_head = teams[key_team2];
   if ((findTeam(t1_head, team1) == 0) || (findTeam(t2_head, team2) == 0))
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -324,10 +316,8 @@ void addTeam(t_node **teams, team_slot **team_storage_head, int NL)
   head = teams[key];
   if (findTeam(head, name) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-      return;
-    }
+    printf("%d Equipa existente.\n", NL);
+    return;
   }
   else
   {
@@ -358,10 +348,8 @@ void removeGame(g_node **games, t_node **teams, game_slot **game_storage_head, i
   pointer_g_node = findGame(g_head, name);
   if (pointer_g_node == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -399,22 +387,20 @@ void subtractWin(t_node **teams, g_node *pointer_g_node)
   score2 = pointer_g_node->pointer_game->score2;
   if ((score1 > score2) || (score2 > score1))
   {
+    if (score1 > score2)
     {
-      if (score1 > score2)
-      {
-        team = pointer_g_node->pointer_game->team1;
-      }
-      else
-      {
-        team = pointer_g_node->pointer_game->team2;
-      }
-
-      key_team = hash(team, 1009);
-      t_head = teams[key_team];
-      pointer_t_node = findTeam(t_head, team);
-      pointer_team = pointer_t_node->pointer_team;
-      pointer_team->wins -= 1;
+      team = pointer_g_node->pointer_game->team1;
     }
+    else
+    {
+      team = pointer_g_node->pointer_game->team2;
+    }
+
+    key_team = hash(team, 1009);
+    t_head = teams[key_team];
+    pointer_t_node = findTeam(t_head, team);
+    pointer_team = pointer_t_node->pointer_team;
+    pointer_team->wins -= 1;
   }
   else
   {
@@ -466,17 +452,13 @@ void deleteGameFromHashTable(g_node **games, g_node *head, char *name, int key)
   previous = findPreviousGame(head, name);
   if (previous != 0)
   {
-    {
-      pointer_g_node = previous->next;
-      previous->next = pointer_g_node->next;
-    }
+    pointer_g_node = previous->next;
+    previous->next = pointer_g_node->next;
   }
   else
   {
-    {
-      pointer_g_node = head;
-      games[key] = pointer_g_node->next;
-    }
+    pointer_g_node = head;
+    games[key] = pointer_g_node->next;
   }
 
   pointer_game = pointer_g_node->pointer_game;
@@ -536,17 +518,13 @@ void deleteTeamFromHashTable(t_node **teams, t_node *head, char *name, int key)
   previous = findPreviousTeam(head, name);
   if (previous != 0)
   {
-    {
-      pointer_t_node = previous->next;
-      previous->next = pointer_t_node->next;
-    }
+    pointer_t_node = previous->next;
+    previous->next = pointer_t_node->next;
   }
   else
   {
-    {
-      pointer_t_node = head;
-      teams[key] = pointer_t_node->next;
-    }
+    pointer_t_node = head;
+    teams[key] = pointer_t_node->next;
   }
 
   pointer_team = pointer_t_node->pointer_team;
@@ -563,17 +541,13 @@ void deleteTeamFromStorage(team_slot **team_storage_head, team *pointer_team)
   previous_pointer_slot = findPreviousTeamInStorage(*team_storage_head, pointer_team);
   if (previous_pointer_slot != 0)
   {
-    {
-      pointer_slot = previous_pointer_slot->next;
-      previous_pointer_slot->next = pointer_slot->next;
-    }
+    pointer_slot = previous_pointer_slot->next;
+    previous_pointer_slot->next = pointer_slot->next;
   }
   else
   {
-    {
-      pointer_slot = *team_storage_head;
-      *team_storage_head = pointer_slot->next;
-    }
+    pointer_slot = *team_storage_head;
+    *team_storage_head = pointer_slot->next;
   }
 
   free(pointer_slot);
@@ -597,10 +571,8 @@ void lookupGame(g_node **games, int NL)
   pointer_g_node = findGame(head, name);
   if (pointer_g_node == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -629,10 +601,8 @@ void lookupTeam(t_node **teams, int NL)
   pointer_t_node = findTeam(head, name);
   if (pointer_t_node == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -711,10 +681,8 @@ void changeGameScore(g_node **games, t_node **teams, int NL)
   pointer_g_node = findGame(g_head, name);
   if (pointer_g_node == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -784,33 +752,29 @@ void listWinners(team_slot *team_storage_head, int NL)
   char **array;
   if (team_storage_head != 0)
   {
+    WinsAndWinners(team_storage_head, &max_wins, &number_winners);
+    array = malloc(number_winners * (sizeof(char *)));
+    printf("%d Melhores %d\n", NL, max_wins);
+    for (pointer_slot = team_storage_head; pointer_slot != 0; pointer_slot = pointer_slot->next)
     {
-      WinsAndWinners(team_storage_head, &max_wins, &number_winners);
-      array = malloc(number_winners * (sizeof(char *)));
-      printf("%d Melhores %d\n", NL, max_wins);
-      for (pointer_slot = team_storage_head; pointer_slot != 0; pointer_slot = pointer_slot->next)
+      pointer_team = pointer_slot->pointer_team;
+      if (pointer_team->wins == max_wins)
       {
-        pointer_team = pointer_slot->pointer_team;
-        if (pointer_team->wins == max_wins)
-        {
-          {
-            array[i] = pointer_team->name;
-            ++i;
-          }
-        }
-        else
-        {
-          
-        }
-
+        array[i] = pointer_team->name;
+        ++i;
+      }
+      else
+      {
+        
       }
 
-      qsort(array, number_winners, sizeof(char *), compare_string);
-      for (i = 0; i < number_winners; ++i)
-        printf("%d * %s\n", NL, array[i]);
-
-      free(array);
     }
+
+    qsort(array, number_winners, sizeof(char *), compare_string);
+    for (i = 0; i < number_winners; ++i)
+      printf("%d * %s\n", NL, array[i]);
+
+    free(array);
   }
   else
   {
@@ -837,10 +801,8 @@ void WinsAndWinners(team_slot *team_storage_head, int *max_wins, int *number_win
 
     if (pointer_team->wins > (*max_wins))
     {
-      {
-        *max_wins = pointer_team->wins;
-        *number_winners = 1;
-      }
+      *max_wins = pointer_team->wins;
+      *number_winners = 1;
     }
     else
     {
@@ -1004,21 +966,19 @@ void listGames(g_node **games, game_slot *game_storage_head, int NL)
   int key;
   if (game_storage_head != 0)
   {
+    for (aux_last = game_storage_head; aux_last->next != 0; aux_last = aux_last->next)
+      ;
+
+    for (pointer_slot = aux_last; pointer_slot != 0; pointer_slot = pointer_slot->previous)
     {
-      for (aux_last = game_storage_head; aux_last->next != 0; aux_last = aux_last->next)
-        ;
-
-      for (pointer_slot = aux_last; pointer_slot != 0; pointer_slot = pointer_slot->previous)
-      {
-        name = pointer_slot->name;
-        key = hash(name, 1747);
-        head = games[key];
-        pointer_g_node = findGame(head, name);
-        pointer_game = pointer_g_node->pointer_game;
-        printf("%d %s %s %s %d %d\n", NL, pointer_game->name, pointer_game->team1, pointer_game->team2, pointer_game->score1, pointer_game->score2);
-      }
-
+      name = pointer_slot->name;
+      key = hash(name, 1747);
+      head = games[key];
+      pointer_g_node = findGame(head, name);
+      pointer_game = pointer_g_node->pointer_game;
+      printf("%d %s %s %s %d %d\n", NL, pointer_game->name, pointer_game->team1, pointer_game->team2, pointer_game->score1, pointer_game->score2);
     }
+
   }
   else
   {

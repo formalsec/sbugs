@@ -38,9 +38,7 @@ int obtemPont(Jogo j, int p)
 {
   if (p == 1)
   {
-    {
-      return j->score1;
-    }
+    return j->score1;
   }
   else
   {
@@ -54,9 +52,7 @@ Equipa obtemEquipa(Jogo j, int e)
 {
   if (e == 1)
   {
-    {
-      return j->equipa1;
-    }
+    return j->equipa1;
   }
   else
   {

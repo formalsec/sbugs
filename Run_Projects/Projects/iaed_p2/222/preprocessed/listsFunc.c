@@ -63,28 +63,20 @@ void removeNodeJogo(listJogo *l, nodeJogo *n)
 {
   if (n->previous == 0)
   {
-    {
-      l->head = n->next;
-    }
+    l->head = n->next;
   }
   else
   {
-    {
-      n->previous->next = n->next;
-    }
+    n->previous->next = n->next;
   }
 
   if (n->next == 0)
   {
-    {
-      l->last = n->previous;
-    }
+    l->last = n->previous;
   }
   else
   {
-    {
-      n->next->previous = n->previous;
-    }
+    n->next->previous = n->previous;
   }
 
   freeNodeJogo(n);
@@ -94,28 +86,20 @@ void removeNodeEquipa(listEquipa *l, nodeEquipa *n)
 {
   if (n->previous == 0)
   {
-    {
-      l->head = n->next;
-    }
+    l->head = n->next;
   }
   else
   {
-    {
-      n->previous->next = n->next;
-    }
+    n->previous->next = n->next;
   }
 
   if (n->next == 0)
   {
-    {
-      l->last = n->previous;
-    }
+    l->last = n->previous;
   }
   else
   {
-    {
-      n->next->previous = n->previous;
-    }
+    n->next->previous = n->previous;
   }
 
   freeNodeEquipa(n);
@@ -211,9 +195,7 @@ int existJogo(listJogo *lstJogo, char *_nomeJogo)
   {
     if (strcmp(currentNode->nomeJogo, _nomeJogo) == 0)
     {
-      {
-        return 0;
-      }
+      return 0;
     }
     else
     {

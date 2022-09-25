@@ -25,10 +25,8 @@ void listDeleteNode(link head)
 {
   if (!listEmpty(head))
   {
-    {
-      teamDestroy(head->Team);
-      free(head);
-    }
+    teamDestroy(head->Team);
+    free(head);
   }
   else
   {
@@ -148,9 +146,7 @@ int hashEmpty(heads hash)
   {
     if (!listEmpty(hash[i]))
     {
-      {
-        return 0;
-      }
+      return 0;
     }
     else
     {
@@ -166,18 +162,14 @@ void hashInsert(int NL, heads hashT, ptrTeam team)
 {
   if (hashSearch(hashT, team->name))
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-      teamDestroy(team);
-      return;
-    }
+    printf("%d Equipa existente.\n", NL);
+    teamDestroy(team);
+    return;
   }
   else
   {
-    {
-      int i = hash(team->name);
-      hashT[i] = insertListEnd(hashT[i], team);
-    }
+    int i = hash(team->name);
+    hashT[i] = insertListEnd(hashT[i], team);
   }
 
 }
@@ -204,9 +196,7 @@ maxes getHashMax(heads head)
   {
     if (head[i])
     {
-      {
-        maxes = getListMax(head[i], maxes);
-      }
+      maxes = getListMax(head[i], maxes);
     }
     else
     {
@@ -231,10 +221,8 @@ maxes getListMax(link head, maxes maxes)
     {
       if (current->Team->wins > maxes.max)
       {
-        {
-          maxes.max = current->Team->wins;
-          maxes.maxOcc = 1;
-        }
+        maxes.max = current->Team->wins;
+        maxes.maxOcc = 1;
       }
       else
       {
@@ -265,20 +253,16 @@ char **getHashStrings(heads head, int max, char **strings)
   {
     if (head[i] != 0)
     {
+      if ((aux = getListStrings(head[i], max)) != 0)
       {
-        if ((aux = getListStrings(head[i], max)) != 0)
-        {
-          {
-            strings[j] = aux;
-            j++;
-          }
-        }
-        else
-        {
-          
-        }
-
+        strings[j] = aux;
+        j++;
       }
+      else
+      {
+        
+      }
+
     }
     else
     {
@@ -297,11 +281,9 @@ char *getListStrings(link head, int max)
   for (current = head; current; current = current->next)
     if (current->Team->wins == max)
   {
-    {
-      string = malloc((sizeof(char *)) * strlen(current->Team->name));
-      strcpy(string, current->Team->name);
-      return string;
-    }
+    string = malloc((sizeof(char *)) * strlen(current->Team->name));
+    strcpy(string, current->Team->name);
+    return string;
   }
   else
   {

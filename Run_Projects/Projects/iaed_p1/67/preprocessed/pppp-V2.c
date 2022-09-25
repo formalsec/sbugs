@@ -45,107 +45,83 @@ int main()
   {
     if (n == 'a')
     {
-      {
-        n = getchar();
-        a();
-      }
+      n = getchar();
+      a();
     }
     else
     {
       if (n == 'q')
       {
-        {
-          n = getchar();
-          q();
-        }
+        n = getchar();
+        q();
       }
       else
       {
         if (n == 'N')
         {
-          {
-            N();
-          }
+          N();
         }
         else
         {
           if (n == 'A')
           {
-            {
-              n = getchar();
-              A();
-            }
+            n = getchar();
+            A();
           }
           else
           {
             if (n == 'r')
             {
-              {
-                n = getchar();
-                r();
-              }
+              n = getchar();
+              r();
             }
             else
             {
               if (n == 'R')
               {
-                {
-                  n = getchar();
-                  R();
-                }
+                n = getchar();
+                R();
               }
               else
               {
                 if (n == 'C')
                 {
-                  {
-                    n = getchar();
-                    C();
-                  }
+                  n = getchar();
+                  C();
                 }
                 else
                 {
                   if (n == 'p')
                   {
-                    {
-                      n = getchar();
-                      p();
-                    }
+                    n = getchar();
+                    p();
                   }
                   else
                   {
                     if (n == 'E')
                     {
-                      {
-                        n = getchar();
-                        E();
-                      }
+                      n = getchar();
+                      E();
                     }
                     else
                     {
                       if (n == 'm')
                       {
-                        {
-                          n = getchar();
-                          m();
-                        }
+                        n = getchar();
+                        m();
                       }
                       else
                       {
                         if (n == 'l')
                         {
-                          {
-                            l();
-                          }
+                          l();
                         }
                         else
                         {
                           if (n == 'L')
                           {
-                            {
-                              getchar();
-                              L();
-                            }
+                            getchar();
+                            L();
                           }
                           else
                           {
@@ -269,49 +245,43 @@ void A()
         }
         else
         {
+          Prod[iden].quantidade -= qtd;
+          Encom[encomenda].peso += Prod[iden].peso * qtd;
+          for (i = 0; i < 200; i++)
+            if (Encom[encomenda].produtos[i] == iden)
           {
-            Prod[iden].quantidade -= qtd;
-            Encom[encomenda].peso += Prod[iden].peso * qtd;
+            Encom[encomenda].quantidade[i] += qtd;
+            Existe = 1;
+            break;
+          }
+          else
+          {
+            
+          }
+
+
+          if (Existe == 0)
+          {
             for (i = 0; i < 200; i++)
-              if (Encom[encomenda].produtos[i] == iden)
+              if (Encom[encomenda].produtos[i] == (-1))
             {
-              {
-                Encom[encomenda].quantidade[i] += qtd;
-                Existe = 1;
-                break;
-              }
+              Encom[encomenda].produtos[i] = iden;
+              Encom[encomenda].quantidade[i] = qtd;
+              Encom[encomenda].numero_produtos += 1;
+              break;
             }
             else
             {
               
             }
 
-
-            if (Existe == 0)
-            {
-              for (i = 0; i < 200; i++)
-                if (Encom[encomenda].produtos[i] == (-1))
-              {
-                {
-                  Encom[encomenda].produtos[i] = iden;
-                  Encom[encomenda].quantidade[i] = qtd;
-                  Encom[encomenda].numero_produtos += 1;
-                  break;
-                }
-              }
-              else
-              {
-                
-              }
-
-
-            }
-            else
-            {
-              
-            }
 
           }
+          else
+          {
+            
+          }
+
         }
 
       }
@@ -366,26 +336,22 @@ void R()
     }
     else
     {
+      for (i = 0; i < 200; i++)
+        if (Encom[iden_enc].produtos[i] == iden_prod)
       {
-        for (i = 0; i < 200; i++)
-          if (Encom[iden_enc].produtos[i] == iden_prod)
-        {
-          {
-            Encom[iden_enc].peso -= Prod[iden_prod].peso * Encom[iden_enc].quantidade[i];
-            Prod[iden_prod].quantidade += Encom[iden_enc].quantidade[i];
-            Encom[iden_enc].produtos[i] = -1;
-            Encom[iden_enc].quantidade[i] = 0;
-            Encom[iden_enc].numero_produtos -= 1;
-            break;
-          }
-        }
-        else
-        {
-          
-        }
-
-
+        Encom[iden_enc].peso -= Prod[iden_prod].peso * Encom[iden_enc].quantidade[i];
+        Prod[iden_prod].quantidade += Encom[iden_enc].quantidade[i];
+        Encom[iden_enc].produtos[i] = -1;
+        Encom[iden_enc].quantidade[i] = 0;
+        Encom[iden_enc].numero_produtos -= 1;
+        break;
       }
+      else
+      {
+        
+      }
+
+
     }
 
   }
@@ -404,20 +370,18 @@ void C()
   }
   else
   {
+    for (i = 0; i < 200; i++)
+      if (Encom[iden].produtos[i] != (-1))
     {
-      for (i = 0; i < 200; i++)
-        if (Encom[iden].produtos[i] != (-1))
-      {
-        total += Prod[Encom[iden].produtos[i]].preco * Encom[iden].quantidade[i];
-      }
-      else
-      {
-        
-      }
-
-
-      printf("Custo da encomenda %d %d.\n", iden, total);
+      total += Prod[Encom[iden].produtos[i]].preco * Encom[iden].quantidade[i];
     }
+    else
+    {
+      
+    }
+
+
+    printf("Custo da encomenda %d %d.\n", iden, total);
   }
 
 }
@@ -463,19 +427,15 @@ void E()
       {
         if (Encom[iden_enc].produtos[i] == iden_prod)
         {
-          {
-            printf("%s %d.\n", Prod[iden_prod].descricao, Encom[iden_enc].quantidade[i]);
-            break;
-          }
+          printf("%s %d.\n", Prod[iden_prod].descricao, Encom[iden_enc].quantidade[i]);
+          break;
         }
         else
         {
           if (i == (200 - 1))
           {
-            {
-              printf("%s 0.\n", Prod[iden_prod].descricao);
-              break;
-            }
+            printf("%s 0.\n", Prod[iden_prod].descricao);
+            break;
           }
           else
           {
@@ -516,11 +476,9 @@ void m()
   {
     if (Encom[i].quantidade[j] > qtd)
     {
-      {
-        Existe = 1;
-        enc_max = i;
-        qtd = Encom[i].quantidade[j];
-      }
+      Existe = 1;
+      enc_max = i;
+      qtd = Encom[i].quantidade[j];
     }
     else
     {
@@ -612,26 +570,20 @@ void merge(int a[], int left, int m, int right, int prod[])
   {
     if (aux_preco[j] < aux_preco[i])
     {
-      {
-        a[k] = aux_preco[j];
-        prod[k] = aux_numero[j--];
-      }
+      a[k] = aux_preco[j];
+      prod[k] = aux_numero[j--];
     }
     else
     {
       if ((aux_preco[j] == aux_preco[i]) && (aux_numero[j] < aux_numero[i]))
       {
-        {
-          a[k] = aux_preco[j];
-          prod[k] = aux_numero[j--];
-        }
+        a[k] = aux_preco[j];
+        prod[k] = aux_numero[j--];
       }
       else
       {
-        {
-          a[k] = aux_preco[i];
-          prod[k] = aux_numero[i++];
-        }
+        a[k] = aux_preco[i];
+        prod[k] = aux_numero[i++];
       }
 
     }
@@ -651,72 +603,66 @@ void L()
   }
   else
   {
+    printf("Encomenda %d\n", iden_enc);
+    numero_prod = Encom[iden_enc].numero_produtos;
+    if (numero_prod != 0)
     {
-      printf("Encomenda %d\n", iden_enc);
-      numero_prod = Encom[iden_enc].numero_produtos;
-      if (numero_prod != 0)
+      int produtos[200];
+      int qtd[200];
+      char descricoes[200][64];
+      int i;
+      int j = 0;
+      for (i = 0; i <= 200; i++)
+        if (Encom[iden_enc].produtos[i] != (-1))
       {
-        {
-          int produtos[200];
-          int qtd[200];
-          char descricoes[200][64];
-          int i;
-          int j = 0;
-          for (i = 0; i <= 200; i++)
-            if (Encom[iden_enc].produtos[i] != (-1))
-          {
-            {
-              produtos[j] = Encom[iden_enc].produtos[i];
-              qtd[j] = Encom[iden_enc].quantidade[i];
-              strcpy(descricoes[j], Prod[Encom[iden_enc].produtos[i]].descricao);
-              j++;
-            }
-          }
-          else
-          {
-            
-          }
-
-
-          for (i = 0; i < numero_prod; i++)
-          {
-            int aux_prod;
-            int aux_qtd;
-            int min = i;
-            char aux_desc[64];
-            for (j = i + 1; j < numero_prod; j++)
-              if (strcmp(descricoes[j], descricoes[min]) < 0)
-            {
-              min = j;
-            }
-            else
-            {
-              
-            }
-
-
-            strcpy(aux_desc, descricoes[i]);
-            strcpy(descricoes[i], descricoes[min]);
-            strcpy(descricoes[min], aux_desc);
-            aux_prod = produtos[i];
-            produtos[i] = produtos[min];
-            produtos[min] = aux_prod;
-            aux_qtd = qtd[i];
-            qtd[i] = qtd[min];
-            qtd[min] = aux_qtd;
-          }
-
-          for (i = 0; i < numero_prod; i++)
-            printf("* %s %d %d\n", Prod[produtos[i]].descricao, Prod[produtos[i]].preco, qtd[i]);
-
-        }
+        produtos[j] = Encom[iden_enc].produtos[i];
+        qtd[j] = Encom[iden_enc].quantidade[i];
+        strcpy(descricoes[j], Prod[Encom[iden_enc].produtos[i]].descricao);
+        j++;
       }
       else
       {
         
       }
 
+
+      for (i = 0; i < numero_prod; i++)
+      {
+        int aux_prod;
+        int aux_qtd;
+        int min = i;
+        char aux_desc[64];
+        for (j = i + 1; j < numero_prod; j++)
+          if (strcmp(descricoes[j], descricoes[min]) < 0)
+        {
+          min = j;
+        }
+        else
+        {
+          
+        }
+
+
+        strcpy(aux_desc, descricoes[i]);
+        strcpy(descricoes[i], descricoes[min]);
+        strcpy(descricoes[min], aux_desc);
+        aux_prod = produtos[i];
+        produtos[i] = produtos[min];
+        produtos[min] = aux_prod;
+        aux_qtd = qtd[i];
+        qtd[i] = qtd[min];
+        qtd[min] = aux_qtd;
+      }
+
+      for (i = 0; i < numero_prod; i++)
+        printf("* %s %d %d\n", Prod[produtos[i]].descricao, Prod[produtos[i]].preco, qtd[i]);
+
     }
+    else
+    {
+      
+    }
+
   }
 
 }

@@ -57,28 +57,26 @@ void novo_jogo(lstJogos lista, hashJogos hash_jogos, hashEquipas hash_equipas, i
     }
     else
     {
+      jogo = criar_jogo(nome, e1, e2, golos1, golos2);
+      adicionar_jogo_lst(lista, jogo);
+      adicionar_jogo_hash(hash_jogos, jogo);
+      if (jogo->golos1 > jogo->golos2)
       {
-        jogo = criar_jogo(nome, e1, e2, golos1, golos2);
-        adicionar_jogo_lst(lista, jogo);
-        adicionar_jogo_hash(hash_jogos, jogo);
-        if (jogo->golos1 > jogo->golos2)
+        e1->equipa->vitorias++;
+      }
+      else
+      {
+        if (jogo->golos1 < jogo->golos2)
         {
-          e1->equipa->vitorias++;
+          e2->equipa->vitorias++;
         }
         else
         {
-          if (jogo->golos1 < jogo->golos2)
-          {
-            e2->equipa->vitorias++;
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
+
     }
 
   }
@@ -103,11 +101,9 @@ void nova_equipa(lstEquipas lista, hashEquipas hash_equipas, int nl)
   }
   else
   {
-    {
-      equipa = criar_equipa(nome);
-      adicionar_equipa_lst(lista, equipa);
-      adicionar_equipa_hash(hash_equipas, equipa);
-    }
+    equipa = criar_equipa(nome);
+    adicionar_equipa_lst(lista, equipa);
+    adicionar_equipa_hash(hash_equipas, equipa);
   }
 
 }
@@ -148,12 +144,10 @@ void procurar_jogo(hashJogos hash_jogos, int nl)
   }
   else
   {
-    {
-      jogo = aux->jogo;
-      e1 = jogo->equipa1;
-      e2 = jogo->equipa2;
-      printf("%d %s %s %s %d %d\n", nl, jogo->nome, e1->nome, e2->nome, jogo->golos1, jogo->golos2);
-    }
+    jogo = aux->jogo;
+    e1 = jogo->equipa1;
+    e2 = jogo->equipa2;
+    printf("%d %s %s %s %d %d\n", nl, jogo->nome, e1->nome, e2->nome, jogo->golos1, jogo->golos2);
   }
 
 }
@@ -176,10 +170,8 @@ void procurar_equipa(hashEquipas hash_equipas, int nl)
   }
   else
   {
-    {
-      equipa = aux->equipa;
-      printf("%d %s %d\n", nl, equipa->nome, equipa->vitorias);
-    }
+    equipa = aux->equipa;
+    printf("%d %s %d\n", nl, equipa->nome, equipa->vitorias);
   }
 
 }
@@ -205,32 +197,30 @@ void apagar_jogo(lstJogos lista, hashJogos hash_jogos, int nl)
   }
   else
   {
+    jogo = aux1->jogo;
+    e1 = jogo->equipa1;
+    e2 = jogo->equipa2;
+    if (jogo->golos1 > jogo->golos2)
     {
-      jogo = aux1->jogo;
-      e1 = jogo->equipa1;
-      e2 = jogo->equipa2;
-      if (jogo->golos1 > jogo->golos2)
+      e1->vitorias--;
+    }
+    else
+    {
+      if (jogo->golos1 < jogo->golos2)
       {
-        e1->vitorias--;
+        e2->vitorias--;
       }
       else
       {
-        if (jogo->golos1 < jogo->golos2)
-        {
-          e2->vitorias--;
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      aux2 = procurar_jogo_lst(lista, nome);
-      remover_jogo_hash(hash_jogos, aux1);
-      remover_jogo_lst(lista, aux2);
-      eliminar_jogo(jogo);
     }
+
+    aux2 = procurar_jogo_lst(lista, nome);
+    remover_jogo_hash(hash_jogos, aux1);
+    remover_jogo_lst(lista, aux2);
+    eliminar_jogo(jogo);
   }
 
 }
@@ -259,88 +249,78 @@ void alterar_pontuacao(hashJogos hash_jogos, int nl)
   }
   else
   {
+    jogo = aux->jogo;
+    e1 = jogo->equipa1;
+    e2 = jogo->equipa2;
+    if (jogo->golos1 == jogo->golos2)
     {
-      jogo = aux->jogo;
-      e1 = jogo->equipa1;
-      e2 = jogo->equipa2;
-      if (jogo->golos1 == jogo->golos2)
+      if (novo_golos1 > novo_golos2)
       {
-        {
-          if (novo_golos1 > novo_golos2)
-          {
-            e1->vitorias++;
-          }
-          else
-          {
-            if (novo_golos1 < novo_golos2)
-            {
-              e2->vitorias++;
-            }
-            else
-            {
-              
-            }
-
-          }
-
-        }
+        e1->vitorias++;
       }
       else
       {
-        if (novo_golos1 == novo_golos2)
+        if (novo_golos1 < novo_golos2)
         {
-          {
-            if (jogo->golos1 > jogo->golos2)
-            {
-              e1->vitorias--;
-            }
-            else
-            {
-              if (jogo->golos1 < jogo->golos2)
-              {
-                e2->vitorias--;
-              }
-              else
-              {
-                
-              }
-
-            }
-
-          }
+          e2->vitorias++;
         }
         else
         {
-          if ((jogo->golos1 > jogo->golos2) && (novo_golos1 < novo_golos2))
+          
+        }
+
+      }
+
+    }
+    else
+    {
+      if (novo_golos1 == novo_golos2)
+      {
+        if (jogo->golos1 > jogo->golos2)
+        {
+          e1->vitorias--;
+        }
+        else
+        {
+          if (jogo->golos1 < jogo->golos2)
           {
-            {
-              e1->vitorias--;
-              e2->vitorias++;
-            }
+            e2->vitorias--;
           }
           else
           {
-            if ((jogo->golos1 < jogo->golos2) && (novo_golos1 > novo_golos2))
-            {
-              {
-                e1->vitorias++;
-                e2->vitorias--;
-              }
-            }
-            else
-            {
-              
-            }
+            
+          }
 
+        }
+
+      }
+      else
+      {
+        if ((jogo->golos1 > jogo->golos2) && (novo_golos1 < novo_golos2))
+        {
+          e1->vitorias--;
+          e2->vitorias++;
+        }
+        else
+        {
+          if ((jogo->golos1 < jogo->golos2) && (novo_golos1 > novo_golos2))
+          {
+            e1->vitorias++;
+            e2->vitorias--;
+          }
+          else
+          {
+            
           }
 
         }
 
       }
 
-      jogo->golos1 = novo_golos1;
-      jogo->golos2 = novo_golos2;
     }
+
+    jogo->golos1 = novo_golos1;
+    jogo->golos2 = novo_golos2;
   }
 
 }
@@ -363,11 +343,9 @@ void mais_vitorias(lstEquipas lista, int nl)
     {
       if (aux->equipa->vitorias > max_vit)
       {
-        {
-          max_vit = aux->equipa->vitorias;
-          limpar_lst_equipas(lista_mais_vit);
-          adicionar_equipa_lst(lista_mais_vit, aux->equipa);
-        }
+        max_vit = aux->equipa->vitorias;
+        limpar_lst_equipas(lista_mais_vit);
+        adicionar_equipa_lst(lista_mais_vit, aux->equipa);
       }
       else
       {
@@ -381,22 +359,20 @@ void mais_vitorias(lstEquipas lista, int nl)
   comp = comp_lst_equipas(lista_mais_vit);
   if (comp > 0)
   {
+    nomes_mais_vit = (char **) malloc(comp * (sizeof(char *)));
+    aux = lista_mais_vit->primeiro;
+    for (i = 0; i < comp; i++)
     {
-      nomes_mais_vit = (char **) malloc(comp * (sizeof(char *)));
-      aux = lista_mais_vit->primeiro;
-      for (i = 0; i < comp; i++)
-      {
-        nomes_mais_vit[i] = aux->equipa->nome;
-        aux = aux->prox;
-      }
-
-      qsort(nomes_mais_vit, comp, sizeof(char *), comparar_str);
-      printf("%d Melhores %d\n", nl, max_vit);
-      for (i = 0; i < comp; i++)
-        printf("%d * %s\n", nl, nomes_mais_vit[i]);
-
-      free(nomes_mais_vit);
+      nomes_mais_vit[i] = aux->equipa->nome;
+      aux = aux->prox;
     }
+
+    qsort(nomes_mais_vit, comp, sizeof(char *), comparar_str);
+    printf("%d Melhores %d\n", nl, max_vit);
+    for (i = 0; i < comp; i++)
+      printf("%d * %s\n", nl, nomes_mais_vit[i]);
+
+    free(nomes_mais_vit);
   }
   else
   {

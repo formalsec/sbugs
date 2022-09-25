@@ -195,33 +195,14 @@ void add_prod_enc(int idp, int ide)
         }
         else
         {
+          for (i = 0; i < total_enc[a.nr_enc].nr_prod_enc; i++)
           {
-            for (i = 0; i < total_enc[a.nr_enc].nr_prod_enc; i++)
+            if (total_enc[a.nr_enc].prod_enc[i].idp == p.idp)
             {
-              if (total_enc[a.nr_enc].prod_enc[i].idp == p.idp)
-              {
-                {
-                  DENTRO = 1;
-                  total_enc[a.nr_enc].prod_enc[i].qtd += quantidade;
-                  total_prod[p.idp].qtd -= quantidade;
-                  break;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-            if (DENTRO == 0)
-            {
-              {
-                total_enc[a.nr_enc].prod_enc[i] = total_prod[p.idp];
-                total_enc[a.nr_enc].prod_enc[i].qtd = quantidade;
-                total_enc[a.nr_enc].nr_prod_enc++;
-                total_prod[p.idp].qtd -= quantidade;
-              }
+              DENTRO = 1;
+              total_enc[a.nr_enc].prod_enc[i].qtd += quantidade;
+              total_prod[p.idp].qtd -= quantidade;
+              break;
             }
             else
             {
@@ -229,6 +210,19 @@ void add_prod_enc(int idp, int ide)
             }
 
           }
+
+          if (DENTRO == 0)
+          {
+            total_enc[a.nr_enc].prod_enc[i] = total_prod[p.idp];
+            total_enc[a.nr_enc].prod_enc[i].qtd = quantidade;
+            total_enc[a.nr_enc].nr_prod_enc++;
+            total_prod[p.idp].qtd -= quantidade;
+          }
+          else
+          {
+            
+          }
+
         }
 
       }
@@ -282,24 +276,20 @@ void remove_prod_enc(int idp, int ide)
     }
     else
     {
+      for (i = 0; i < total_enc[a.nr_enc].nr_prod_enc; i++)
       {
-        for (i = 0; i < total_enc[a.nr_enc].nr_prod_enc; i++)
+        if (total_enc[a.nr_enc].prod_enc[i].idp == n.idp)
         {
-          if (total_enc[a.nr_enc].prod_enc[i].idp == n.idp)
-          {
-            {
-              total_prod[n.idp].qtd += total_enc[a.nr_enc].prod_enc[i].qtd;
-              total_enc[a.nr_enc].prod_enc[i].qtd = 0;
-            }
-          }
-          else
-          {
-            
-          }
-
+          total_prod[n.idp].qtd += total_enc[a.nr_enc].prod_enc[i].qtd;
+          total_enc[a.nr_enc].prod_enc[i].qtd = 0;
+        }
+        else
+        {
+          
         }
 
       }
+
     }
 
   }
@@ -318,14 +308,12 @@ void preco_enc(int ide)
   }
   else
   {
+    for (i = 0; i < total_enc[a.nr_enc].nr_prod_enc; i++)
     {
-      for (i = 0; i < total_enc[a.nr_enc].nr_prod_enc; i++)
-      {
-        total += total_enc[a.nr_enc].prod_enc[i].preco * total_enc[a.nr_enc].prod_enc[i].qtd;
-      }
-
-      printf("Custo da encomenda %d %d.\n", a.nr_enc, total);
+      total += total_enc[a.nr_enc].prod_enc[i].preco * total_enc[a.nr_enc].prod_enc[i].qtd;
     }
+
+    printf("Custo da encomenda %d %d.\n", a.nr_enc, total);
   }
 
 }
@@ -343,26 +331,24 @@ void change_preco(int idp)
   }
   else
   {
+    total_prod[n.idp].preco = preco;
+    for (i = 0; i < ide; i++)
     {
-      total_prod[n.idp].preco = preco;
-      for (i = 0; i < ide; i++)
+      for (j = 0; j < total_enc[i].nr_prod_enc; j++)
       {
-        for (j = 0; j < total_enc[i].nr_prod_enc; j++)
+        if (total_enc[i].prod_enc[j].idp == n.idp)
         {
-          if (total_enc[i].prod_enc[j].idp == n.idp)
-          {
-            total_enc[i].prod_enc[j].preco = preco;
-          }
-          else
-          {
-            
-          }
-
+          total_enc[i].prod_enc[j].preco = preco;
+        }
+        else
+        {
+          
         }
 
       }
 
     }
+
   }
 
 }
@@ -387,26 +373,12 @@ void desc_qtd_enc(int ide, int idp)
     }
     else
     {
+      for (i = 0; i < total_enc[a.nr_enc].nr_prod_enc; i++)
       {
-        for (i = 0; i < total_enc[a.nr_enc].nr_prod_enc; i++)
+        if (total_enc[a.nr_enc].prod_enc[i].idp == n.idp)
         {
-          if (total_enc[a.nr_enc].prod_enc[i].idp == n.idp)
-          {
-            {
-              DEFINE = 1;
-              printf("%s %d.\n", total_enc[a.nr_enc].prod_enc[i].desc, total_enc[a.nr_enc].prod_enc[i].qtd);
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-        if (DEFINE == 0)
-        {
-          printf("%s %d.\n", total_prod[n.idp].desc, 0);
+          DEFINE = 1;
+          printf("%s %d.\n", total_enc[a.nr_enc].prod_enc[i].desc, total_enc[a.nr_enc].prod_enc[i].qtd);
         }
         else
         {
@@ -414,6 +386,16 @@ void desc_qtd_enc(int ide, int idp)
         }
 
       }
+
+      if (DEFINE == 0)
+      {
+        printf("%s %d.\n", total_prod[n.idp].desc, 0);
+      }
+      else
+      {
+        
+      }
+
     }
 
   }
@@ -434,27 +416,16 @@ void enc_max_prod(int ide)
   }
   else
   {
+    for (i = 0; i < ide; i++)
     {
-      for (i = 0; i < ide; i++)
+      for (j = 0; j < total_enc[i].nr_prod_enc; j++)
       {
-        for (j = 0; j < total_enc[i].nr_prod_enc; j++)
+        if (total_enc[i].prod_enc[j].idp == n.idp)
         {
-          if (total_enc[i].prod_enc[j].idp == n.idp)
+          if (total_enc[i].prod_enc[j].qtd > maior)
           {
-            {
-              if (total_enc[i].prod_enc[j].qtd > maior)
-              {
-                {
-                  maior = total_enc[i].prod_enc[j].qtd;
-                  guarda = i;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
+            maior = total_enc[i].prod_enc[j].qtd;
+            guarda = i;
           }
           else
           {
@@ -462,19 +433,24 @@ void enc_max_prod(int ide)
           }
 
         }
+        else
+        {
+          
+        }
 
-      }
-
-      if (maior > 0)
-      {
-        printf("Maximo produto %d %d %d.\n", n.idp, guarda, maior);
-      }
-      else
-      {
-        
       }
 
     }
+
+    if (maior > 0)
+    {
+      printf("Maximo produto %d %d %d.\n", n.idp, guarda, maior);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -511,28 +487,26 @@ void ordem_alfabetica_enc()
   }
   else
   {
+    for (j = 0; j < total_enc[a.nr_enc].nr_prod_enc; j++)
     {
-      for (j = 0; j < total_enc[a.nr_enc].nr_prod_enc; j++)
+      copia[j] = total_enc[a.nr_enc].prod_enc[j];
+    }
+
+    selectionsort(copia, 0, total_enc[a.nr_enc].nr_prod_enc - 1);
+    printf("Encomenda %d\n", a.nr_enc);
+    for (i = 0; i < total_enc[a.nr_enc].nr_prod_enc; i++)
+    {
+      if (copia[i].qtd != 0)
       {
-        copia[j] = total_enc[a.nr_enc].prod_enc[j];
+        printf("* %s %d %d\n", copia[i].desc, copia[i].preco, copia[i].qtd);
       }
-
-      selectionsort(copia, 0, total_enc[a.nr_enc].nr_prod_enc - 1);
-      printf("Encomenda %d\n", a.nr_enc);
-      for (i = 0; i < total_enc[a.nr_enc].nr_prod_enc; i++)
+      else
       {
-        if (copia[i].qtd != 0)
-        {
-          printf("* %s %d %d\n", copia[i].desc, copia[i].preco, copia[i].qtd);
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
     }
+
   }
 
 }
@@ -542,20 +516,18 @@ void quicksort(prod copia[], int first, int last, int FLAG)
   int i;
   if (FLAG == 1)
   {
+    if (last <= first)
     {
-      if (last <= first)
-      {
-        return;
-      }
-      else
-      {
-        
-      }
-
-      i = partition(copia, first, last);
-      quicksort(copia, first, i - 1, 1);
-      quicksort(copia, i + 1, last, 1);
+      return;
     }
+    else
+    {
+      
+    }
+
+    i = partition(copia, first, last);
+    quicksort(copia, first, i - 1, 1);
+    quicksort(copia, i + 1, last, 1);
   }
   else
   {
@@ -573,39 +545,33 @@ int partition(prod copia[], int first, int last)
   {
     if (copia[j].preco < pivot.preco)
     {
+      i++;
       {
-        i++;
-        {
-          prod t = copia[i];
-          copia[i] = copia[j];
-          copia[j] = t;
-        }
-        ;
+        prod t = copia[i];
+        copia[i] = copia[j];
+        copia[j] = t;
       }
+      ;
     }
     else
     {
       if (copia[j].preco == pivot.preco)
       {
+        if (copia[j].idp < pivot.idp)
         {
-          if (copia[j].idp < pivot.idp)
+          i++;
           {
-            {
-              i++;
-              {
-                prod t = copia[i];
-                copia[i] = copia[j];
-                copia[j] = t;
-              }
-              ;
-            }
+            prod t = copia[i];
+            copia[i] = copia[j];
+            copia[j] = t;
           }
-          else
-          {
-            
-          }
-
+          ;
         }
+        else
+        {
+          
+        }
+
       }
       else
       {

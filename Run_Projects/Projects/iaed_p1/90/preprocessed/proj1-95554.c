@@ -134,10 +134,8 @@ void function_q()
   add_amount = new_sym_var(sizeof(int) * 8);
   if (strcmp(warehouse[p_id].description, "") == 0)
   {
-    {
-      printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", p_id);
-      return;
-    }
+    printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", p_id);
+    return;
   }
   else
   {
@@ -171,37 +169,29 @@ void function_A()
   qtt = new_sym_var(sizeof(int) * 8);
   if (shipping[o_id].state == 0)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", p_id, o_id);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", p_id, o_id);
+    return;
   }
   else
   {
     if (strcmp(warehouse[p_id].description, "") == 0)
     {
-      {
-        printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", p_id, o_id);
-        return;
-      }
+      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", p_id, o_id);
+      return;
     }
     else
     {
       if (warehouse[p_id].amount < qtt)
       {
-        {
-          printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", p_id, o_id);
-          return;
-        }
+        printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", p_id, o_id);
+        return;
       }
       else
       {
         if ((shipping[o_id].weight + (warehouse[p_id].weight * qtt)) > 200)
         {
-          {
-            printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", p_id, o_id);
-            return;
-          }
+          printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", p_id, o_id);
+          return;
         }
         else
         {
@@ -219,10 +209,8 @@ void function_A()
   {
     if (shipping[o_id].items[search_order].id == p_id)
     {
-      {
-        check = 1;
-        break;
-      }
+      check = 1;
+      break;
     }
     else
     {
@@ -233,24 +221,20 @@ void function_A()
 
   if (check == 0)
   {
-    {
-      search_order = shipping[o_id].n_products;
-      shipping[o_id].items[search_order] = warehouse[p_id];
-      shipping[o_id].n_products++;
-      shipping[o_id].items[search_order].amount = qtt;
-      warehouse[p_id].amount -= qtt;
-      shipping[o_id].weight += qtt * shipping[o_id].items[search_order].weight;
-    }
+    search_order = shipping[o_id].n_products;
+    shipping[o_id].items[search_order] = warehouse[p_id];
+    shipping[o_id].n_products++;
+    shipping[o_id].items[search_order].amount = qtt;
+    warehouse[p_id].amount -= qtt;
+    shipping[o_id].weight += qtt * shipping[o_id].items[search_order].weight;
   }
   else
   {
     if (check == 1)
     {
-      {
-        warehouse[p_id].amount -= qtt;
-        shipping[o_id].items[search_order].amount += qtt;
-        shipping[o_id].weight += qtt * shipping[o_id].items[search_order].weight;
-      }
+      warehouse[p_id].amount -= qtt;
+      shipping[o_id].items[search_order].amount += qtt;
+      shipping[o_id].weight += qtt * shipping[o_id].items[search_order].weight;
     }
     else
     {
@@ -269,19 +253,15 @@ void function_r()
   qtd = new_sym_var(sizeof(int) * 8);
   if (strcmp(warehouse[p_id].description, "") == 0)
   {
-    {
-      printf("Impossivel remover stock do produto %d. Produto inexistente.\n", p_id);
-      return;
-    }
+    printf("Impossivel remover stock do produto %d. Produto inexistente.\n", p_id);
+    return;
   }
   else
   {
     if (warehouse[p_id].amount < qtd)
     {
-      {
-        printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, p_id);
-        return;
-      }
+      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, p_id);
+      return;
     }
     else
     {
@@ -303,19 +283,15 @@ void function_R()
   p_id = new_sym_var(sizeof(int) * 8);
   if (shipping[o_id].state == 0)
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", p_id, o_id);
-      return;
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", p_id, o_id);
+    return;
   }
   else
   {
     if (strcmp(warehouse[p_id].description, "") == 0)
     {
-      {
-        printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", p_id, o_id);
-        return;
-      }
+      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", p_id, o_id);
+      return;
     }
     else
     {
@@ -328,17 +304,15 @@ void function_R()
   {
     if (shipping[o_id].items[search_order].id == p_id)
     {
+      warehouse[p_id].amount += shipping[o_id].items[search_order].amount;
+      shipping[o_id].weight -= shipping[o_id].items[search_order].amount * shipping[o_id].items[search_order].weight;
+      for (delete = search_order; delete < shipping[o_id].n_products; delete++)
       {
-        warehouse[p_id].amount += shipping[o_id].items[search_order].amount;
-        shipping[o_id].weight -= shipping[o_id].items[search_order].amount * shipping[o_id].items[search_order].weight;
-        for (delete = search_order; delete < shipping[o_id].n_products; delete++)
-        {
-          shipping[o_id].items[delete] = shipping[o_id].items[delete + 1];
-        }
-
-        --shipping[o_id].n_products;
-        break;
+        shipping[o_id].items[delete] = shipping[o_id].items[delete + 1];
       }
+
+      --shipping[o_id].n_products;
+      break;
     }
     else
     {
@@ -357,10 +331,8 @@ void function_C()
   o_id = new_sym_var(sizeof(int) * 8);
   if (shipping[o_id].state == 0)
   {
-    {
-      printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", o_id);
-      return;
-    }
+    printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", o_id);
+    return;
   }
   else
   {
@@ -385,10 +357,8 @@ void function_p()
   new_price = new_sym_var(sizeof(int) * 8);
   if (strcmp(warehouse[p_id].description, "") == 0)
   {
-    {
-      printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", p_id);
-      return;
-    }
+    printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", p_id);
+    return;
   }
   else
   {
@@ -402,9 +372,7 @@ void function_p()
     {
       if (shipping[search_order].items[search_items].id == p_id)
       {
-        {
-          shipping[search_order].items[search_items].price = new_price;
-        }
+        shipping[search_order].items[search_items].price = new_price;
       }
       else
       {
@@ -426,19 +394,15 @@ void function_E()
   p_id = new_sym_var(sizeof(int) * 8);
   if (shipping[o_id].state == 0)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", o_id);
-      return;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", o_id);
+    return;
   }
   else
   {
     if (strcmp(warehouse[p_id].description, "") == 0)
     {
-      {
-        printf("Impossivel listar produto %d. Produto inexistente.\n", p_id);
-        return;
-      }
+      printf("Impossivel listar produto %d. Produto inexistente.\n", p_id);
+      return;
     }
     else
     {
@@ -451,10 +415,8 @@ void function_E()
   {
     if ((shipping[o_id].items[search_order].id == p_id) && (shipping[o_id].items[search_order].amount != 0))
     {
-      {
-        printf("%s %d.\n", shipping[o_id].items[search_order].description, shipping[o_id].items[search_order].amount);
-        return;
-      }
+      printf("%s %d.\n", shipping[o_id].items[search_order].description, shipping[o_id].items[search_order].amount);
+      return;
     }
     else
     {
@@ -476,10 +438,8 @@ void function_m()
   p_id = new_sym_var(sizeof(int) * 8);
   if (strcmp(warehouse[p_id].description, "") == 0)
   {
-    {
-      printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", p_id);
-      return;
-    }
+    printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", p_id);
+    return;
   }
   else
   {
@@ -492,10 +452,8 @@ void function_m()
     {
       if ((shipping[search_order].items[search_items].id == p_id) && (shipping[search_order].items[search_items].amount > qtt_max))
       {
-        {
-          order_max = search_order;
-          qtt_max = shipping[search_order].items[search_items].amount;
-        }
+        order_max = search_order;
+        qtt_max = shipping[search_order].items[search_items].amount;
       }
       else
       {
@@ -508,9 +466,7 @@ void function_m()
 
   if (qtt_max != 0)
   {
-    {
-      printf("Maximo produto %d %d %d.\n", p_id, order_max, qtt_max);
-    }
+    printf("Maximo produto %d %d %d.\n", p_id, order_max, qtt_max);
   }
   else
   {
@@ -538,10 +494,8 @@ void function_L()
   o_id = new_sym_var(sizeof(int) * 8);
   if (shipping[o_id].state == 0)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", o_id);
-      return;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", o_id);
+    return;
   }
   else
   {

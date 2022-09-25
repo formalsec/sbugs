@@ -20,9 +20,7 @@ int ord_exists(int ide)
 {
   if ((ide >= 0) && (ide < order_counter))
   {
-    {
-      return 1;
-    }
+    return 1;
   }
   else
   {
@@ -40,9 +38,7 @@ int order_weight(int ide)
   {
     if (strlen(order[ide][i].description) != 0)
     {
-      {
-        weight_counter += order[ide][i].weight * order[ide][i].quantity;
-      }
+      weight_counter += order[ide][i].weight * order[ide][i].quantity;
     }
     else
     {
@@ -66,47 +62,53 @@ void add_to_order()
   quantity = new_sym_var(sizeof(int) * 8);
   if (!ord_exists(ide))
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
   }
   else
   {
     if (!prod_exists(idp))
     {
-      {
-        printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
-      }
+      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
     }
     else
     {
       if (stock[idp].quantity < quantity)
       {
-        {
-          printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
-        }
+        printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
       }
       else
       {
         if ((order_weight(ide) + (stock[idp].weight * quantity)) > 200)
         {
-          {
-            printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
-          }
+          printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
         }
         else
         {
+          stock[idp].quantity -= quantity;
+          for (i = 0; i < 200; i++)
           {
-            stock[idp].quantity -= quantity;
+            if ((strlen(order[ide][i].description) != 0) && (order[ide][i].id == idp))
+            {
+              order[ide][i].quantity += quantity;
+              j++;
+              break;
+            }
+            else
+            {
+              
+            }
+
+          }
+
+          if (j == 0)
+          {
             for (i = 0; i < 200; i++)
             {
-              if ((strlen(order[ide][i].description) != 0) && (order[ide][i].id == idp))
+              if (strlen(order[ide][i].description) == 0)
               {
-                {
-                  order[ide][i].quantity += quantity;
-                  j++;
-                  break;
-                }
+                order[ide][i] = stock[idp];
+                order[ide][i].quantity = quantity;
+                break;
               }
               else
               {
@@ -115,34 +117,12 @@ void add_to_order()
 
             }
 
-            if (j == 0)
-            {
-              {
-                for (i = 0; i < 200; i++)
-                {
-                  if (strlen(order[ide][i].description) == 0)
-                  {
-                    {
-                      order[ide][i] = stock[idp];
-                      order[ide][i].quantity = quantity;
-                      break;
-                    }
-                  }
-                  else
-                  {
-                    
-                  }
-
-                }
-
-              }
-            }
-            else
-            {
-              
-            }
-
           }
+          else
+          {
+            
+          }
+
         }
 
       }
@@ -161,30 +141,24 @@ void order_price()
   ide = new_sym_var(sizeof(int) * 8);
   if (!ord_exists(ide))
   {
-    {
-      printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ide);
-    }
+    printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ide);
   }
   else
   {
+    for (i = 0; i < 200; i++)
     {
-      for (i = 0; i < 200; i++)
+      if (strlen(order[ide][i].description) != 0)
       {
-        if (strlen(order[ide][i].description) != 0)
-        {
-          {
-            total_price += stock[order[ide][i].id].price * order[ide][i].quantity;
-          }
-        }
-        else
-        {
-          
-        }
-
+        total_price += stock[order[ide][i].id].price * order[ide][i].quantity;
+      }
+      else
+      {
+        
       }
 
-      printf("Custo da encomenda %d %d.\n", ide, total_price);
     }
+
+    printf("Custo da encomenda %d %d.\n", ide, total_price);
   }
 
 }
@@ -199,39 +173,31 @@ void order_desc_quantity()
   idp = new_sym_var(sizeof(int) * 8);
   if (!ord_exists(ide))
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
   }
   else
   {
     if (!prod_exists(idp))
     {
-      {
-        printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
-      }
+      printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
     }
     else
     {
+      for (i = 0; i < 200; i++)
       {
-        for (i = 0; i < 200; i++)
+        if ((strlen(order[ide][i].description) != 0) && (order[ide][i].id == idp))
         {
-          if ((strlen(order[ide][i].description) != 0) && (order[ide][i].id == idp))
-          {
-            {
-              quantity = order[ide][i].quantity;
-              break;
-            }
-          }
-          else
-          {
-            
-          }
-
+          quantity = order[ide][i].quantity;
+          break;
+        }
+        else
+        {
+          
         }
 
-        printf("%s %d.\n", stock[idp].description, quantity);
       }
+
+      printf("%s %d.\n", stock[idp].description, quantity);
     }
 
   }
@@ -248,45 +214,37 @@ void compare_orders()
   idp = new_sym_var(sizeof(int) * 8);
   if (!prod_exists(idp))
   {
-    {
-      printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idp);
-    }
+    printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idp);
   }
   else
   {
+    for (i = 0; i < order_counter; i++)
     {
-      for (i = 0; i < order_counter; i++)
+      for (j = 0; j < 200; j++)
       {
-        for (j = 0; j < 200; j++)
+        if (((strlen(order[i][j].description) != 0) && (order[i][j].id == idp)) && (order[i][j].quantity > highest_ide_quantity))
         {
-          if (((strlen(order[i][j].description) != 0) && (order[i][j].id == idp)) && (order[i][j].quantity > highest_ide_quantity))
-          {
-            {
-              highest_ide_quantity = order[i][j].quantity;
-              highest_ide = i;
-            }
-          }
-          else
-          {
-            
-          }
-
+          highest_ide_quantity = order[i][j].quantity;
+          highest_ide = i;
+        }
+        else
+        {
+          
         }
 
-      }
-
-      if (highest_ide_quantity != 0)
-      {
-        {
-          printf("Maximo produto %d %d %d.\n", idp, highest_ide, highest_ide_quantity);
-        }
-      }
-      else
-      {
-        
       }
 
     }
+
+    if (highest_ide_quantity != 0)
+    {
+      printf("Maximo produto %d %d %d.\n", idp, highest_ide, highest_ide_quantity);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -299,36 +257,30 @@ void sort_orders()
   ide = new_sym_var(sizeof(int) * 8);
   if (!ord_exists(ide))
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
   }
   else
   {
+    for (j = 0; j < 200; j++)
     {
-      for (j = 0; j < 200; j++)
+      if (strlen(order[ide][j].description) == 0)
       {
-        if (strlen(order[ide][j].description) == 0)
-        {
-          {
-            break;
-          }
-        }
-        else
-        {
-          
-        }
-
+        break;
       }
-
-      alphabet_sort(order[ide], 0, j - 1);
-      printf("Encomenda %d\n", ide);
-      for (i = 0; i < j; i++)
+      else
       {
-        printf("* %s %d %d\n", order[ide][i].description, stock[order[ide][i].id].price, order[ide][i].quantity);
+        
       }
 
     }
+
+    alphabet_sort(order[ide], 0, j - 1);
+    printf("Encomenda %d\n", ide);
+    for (i = 0; i < j; i++)
+    {
+      printf("* %s %d %d\n", order[ide][i].description, stock[order[ide][i].id].price, order[ide][i].quantity);
+    }
+
   }
 
 }
@@ -343,63 +295,49 @@ void remove_from_order()
   idp = new_sym_var(sizeof(int) * 8);
   if (!ord_exists(ide))
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
   }
   else
   {
     if (!prod_exists(idp))
     {
-      {
-        printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
-      }
+      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
     }
     else
     {
+      for (i = 0; i < 200; i++)
       {
-        for (i = 0; i < 200; i++)
+        if (strlen(order[ide][i].description) != 0)
         {
-          if (strlen(order[ide][i].description) != 0)
+          if (order[ide][i].id == idp)
           {
-            {
-              if (order[ide][i].id == idp)
-              {
-                {
-                  stock[order[ide][i].id].quantity += order[ide][i].quantity;
-                  j = i;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
+            stock[order[ide][i].id].quantity += order[ide][i].quantity;
+            j = i;
           }
           else
           {
-            {
-              break;
-            }
+            
           }
 
-        }
-
-        if ((i > 0) && (j >= 0))
-        {
-          {
-            order[ide][j] = order[ide][i - 1];
-            order[ide][i - 1].id = 0;
-            order[ide][i - 1].description[0] = '\0';
-          }
         }
         else
         {
-          
+          break;
         }
 
       }
+
+      if ((i > 0) && (j >= 0))
+      {
+        order[ide][j] = order[ide][i - 1];
+        order[ide][i - 1].id = 0;
+        order[ide][i - 1].description[0] = '\0';
+      }
+      else
+      {
+        
+      }
+
     }
 
   }

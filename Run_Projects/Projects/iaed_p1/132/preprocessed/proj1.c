@@ -115,30 +115,24 @@ void addStock()
   addQuantity = new_sym_var(sizeof(int) * 8);
   if (allProducts[addId].price == 0)
   {
-    {
-      printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", addId);
-    }
+    printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", addId);
   }
   else
   {
+    for (i = 0; i < countProd; i++)
     {
-      for (i = 0; i < countProd; i++)
+      if (allProducts[i].id == addId)
       {
-        if (allProducts[i].id == addId)
-        {
-          {
-            allProducts[i].stock += addQuantity;
-            break;
-          }
-        }
-        else
-        {
-          
-        }
-
+        allProducts[i].stock += addQuantity;
+        break;
+      }
+      else
+      {
+        
       }
 
     }
+
   }
 
 }
@@ -159,10 +153,8 @@ int calcWeight(int idp, int qtt)
   {
     if (allProducts[i].id == idp)
     {
-      {
-        individualWeight = allProducts[i].weight;
-        break;
-      }
+      individualWeight = allProducts[i].weight;
+      break;
     }
     else
     {
@@ -181,9 +173,7 @@ int getStock(int idp)
   {
     if (allProducts[i].id == idp)
     {
-      {
-        return allProducts[i].stock;
-      }
+      return allProducts[i].stock;
     }
     else
     {
@@ -202,10 +192,8 @@ void reduceStock(int idp, int removeQuantity)
   {
     if (allProducts[i].id == idp)
     {
-      {
-        allProducts[i].stock -= removeQuantity;
-        break;
-      }
+      allProducts[i].stock -= removeQuantity;
+      break;
     }
     else
     {
@@ -224,9 +212,7 @@ int getPrice(int idp, int qtt)
   {
     if (allProducts[i].id == idp)
     {
-      {
-        individualPrice = allProducts[i].price;
-      }
+      individualPrice = allProducts[i].price;
     }
     else
     {
@@ -245,76 +231,60 @@ void addProduct_2_Order(int orderId, int productId, int productQuantity)
   int id2Add;
   if (allOrders[orderId].id == (-1))
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", productId, orderId);
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", productId, orderId);
   }
   else
   {
     if (allProducts[productId].price == 0)
     {
-      {
-        printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", productId, orderId);
-      }
+      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", productId, orderId);
     }
     else
     {
       if (productQuantity > getStock(productId))
       {
-        {
-          printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", productId, orderId);
-        }
+        printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", productId, orderId);
       }
       else
       {
         if ((allOrders[orderId].weight + calcWeight(productId, productQuantity)) > 200)
         {
-          {
-            printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", productId, orderId);
-          }
+          printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", productId, orderId);
         }
         else
         {
+          for (i = 0; i < getNumOfProds(orderId); i++)
           {
-            for (i = 0; i < getNumOfProds(orderId); i++)
+            if (allOrders[orderId].orderProducts[i].id == productId)
             {
-              if (allOrders[orderId].orderProducts[i].id == productId)
-              {
-                {
-                  checker = 1;
-                  id2Add = i;
-                  break;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-            if (checker == 0)
-            {
-              {
-                allOrders[orderId].num_of_prods += 1;
-                allOrders[orderId].price += getPrice(productId, productQuantity);
-                allOrders[orderId].weight += calcWeight(productId, productQuantity);
-                reduceStock(productId, productQuantity);
-                allOrders[orderId].orderProducts[getNumOfProds(orderId) - 1].id = productId;
-                allOrders[orderId].orderProducts[getNumOfProds(orderId) - 1].quantity = productQuantity;
-              }
+              checker = 1;
+              id2Add = i;
+              break;
             }
             else
             {
-              {
-                allOrders[orderId].price += getPrice(productId, productQuantity);
-                allOrders[orderId].weight += calcWeight(productId, productQuantity);
-                reduceStock(productId, productQuantity);
-                allOrders[orderId].orderProducts[id2Add].quantity += productQuantity;
-              }
+              
             }
 
           }
+
+          if (checker == 0)
+          {
+            allOrders[orderId].num_of_prods += 1;
+            allOrders[orderId].price += getPrice(productId, productQuantity);
+            allOrders[orderId].weight += calcWeight(productId, productQuantity);
+            reduceStock(productId, productQuantity);
+            allOrders[orderId].orderProducts[getNumOfProds(orderId) - 1].id = productId;
+            allOrders[orderId].orderProducts[getNumOfProds(orderId) - 1].quantity = productQuantity;
+          }
+          else
+          {
+            allOrders[orderId].price += getPrice(productId, productQuantity);
+            allOrders[orderId].weight += calcWeight(productId, productQuantity);
+            reduceStock(productId, productQuantity);
+            allOrders[orderId].orderProducts[id2Add].quantity += productQuantity;
+          }
+
         }
 
       }
@@ -333,23 +303,17 @@ void removeStock()
   removeQuantity = new_sym_var(sizeof(int) * 8);
   if (allProducts[removeId].price == 0)
   {
-    {
-      printf("Impossivel remover stock do produto %d. Produto inexistente.\n", removeId);
-    }
+    printf("Impossivel remover stock do produto %d. Produto inexistente.\n", removeId);
   }
   else
   {
     if ((getStock(removeId) - removeQuantity) < 0)
     {
-      {
-        printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", removeQuantity, removeId);
-      }
+      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", removeQuantity, removeId);
     }
     else
     {
-      {
-        reduceStock(removeId, removeQuantity);
-      }
+      reduceStock(removeId, removeQuantity);
     }
 
   }
@@ -363,57 +327,47 @@ void removeProduct(int orderId, int productId)
   int j;
   if (allOrders[orderId].id == (-1))
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", productId, orderId);
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", productId, orderId);
   }
   else
   {
     if (allProducts[productId].price == 0)
     {
-      {
-        printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", productId, orderId);
-      }
+      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", productId, orderId);
     }
     else
     {
+      for (i = 0; i < 200; i++)
       {
-        for (i = 0; i < 200; i++)
+        if ((allOrders[orderId].orderProducts[i].id == productId) && (allOrders[orderId].orderProducts[i].quantity != 0))
         {
-          if ((allOrders[orderId].orderProducts[i].id == productId) && (allOrders[orderId].orderProducts[i].quantity != 0))
+          allOrders[orderId].num_of_prods -= 1;
+          removeQuantity = allOrders[orderId].orderProducts[i].quantity;
+          allOrders[orderId].weight -= calcWeight(productId, removeQuantity);
+          for (j = 0; j < countProd; j++)
           {
+            if (allProducts[j].id == productId)
             {
-              allOrders[orderId].num_of_prods -= 1;
-              removeQuantity = allOrders[orderId].orderProducts[i].quantity;
-              allOrders[orderId].weight -= calcWeight(productId, removeQuantity);
-              for (j = 0; j < countProd; j++)
-              {
-                if (allProducts[j].id == productId)
-                {
-                  {
-                    allProducts[j].stock += removeQuantity;
-                  }
-                }
-                else
-                {
-                  
-                }
-
-              }
-
-              allOrders[orderId].price -= getPrice(productId, removeQuantity);
-              deleteStruct(orderId, i);
-              break;
+              allProducts[j].stock += removeQuantity;
             }
-          }
-          else
-          {
-            
+            else
+            {
+              
+            }
+
           }
 
+          allOrders[orderId].price -= getPrice(productId, removeQuantity);
+          deleteStruct(orderId, i);
+          break;
+        }
+        else
+        {
+          
         }
 
       }
+
     }
 
   }
@@ -426,15 +380,11 @@ void getOrderCost()
   orderId = new_sym_var(sizeof(int) * 8);
   if (allOrders[orderId].id == (-1))
   {
-    {
-      printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", orderId);
-    }
+    printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", orderId);
   }
   else
   {
-    {
-      printf("Custo da encomenda %d %d.\n", orderId, allOrders[orderId].price);
-    }
+    printf("Custo da encomenda %d %d.\n", orderId, allOrders[orderId].price);
   }
 
 }
@@ -452,21 +402,34 @@ void changePrice()
   newPrice = new_sym_var(sizeof(int) * 8);
   if (allProducts[productId].price == 0)
   {
-    {
-      printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", productId);
-    }
+    printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", productId);
   }
   else
   {
+    for (i = 0; i < countProd; i++)
     {
-      for (i = 0; i < countProd; i++)
+      if (allProducts[i].id == productId)
       {
-        if (allProducts[i].id == productId)
+        inicialPrice = allProducts[i].price;
+        allProducts[i].price = newPrice;
+      }
+      else
+      {
+        
+      }
+
+    }
+
+    for (i = 0; i < countOrd; i++)
+    {
+      for (j = 0; j < 200; j++)
+      {
+        if (allOrders[i].orderProducts[j].id == productId)
         {
-          {
-            inicialPrice = allProducts[i].price;
-            allProducts[i].price = newPrice;
-          }
+          quantity = allOrders[i].orderProducts[j].quantity;
+          totalDifference = (newPrice - inicialPrice) * quantity;
+          allOrders[i].price += totalDifference;
+          break;
         }
         else
         {
@@ -475,29 +438,8 @@ void changePrice()
 
       }
 
-      for (i = 0; i < countOrd; i++)
-      {
-        for (j = 0; j < 200; j++)
-        {
-          if (allOrders[i].orderProducts[j].id == productId)
-          {
-            {
-              quantity = allOrders[i].orderProducts[j].quantity;
-              totalDifference = (newPrice - inicialPrice) * quantity;
-              allOrders[i].price += totalDifference;
-              break;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-      }
-
     }
+
   }
 
 }
@@ -513,54 +455,44 @@ void giveDescription()
   productId = new_sym_var(sizeof(int) * 8);
   if (allOrders[orderId].id == (-1))
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", orderId);
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", orderId);
   }
   else
   {
     if (allProducts[productId].price == 0)
     {
-      {
-        printf("Impossivel listar produto %d. Produto inexistente.\n", productId);
-      }
+      printf("Impossivel listar produto %d. Produto inexistente.\n", productId);
     }
     else
     {
+      for (i = 0; i <= getNumOfProds(orderId); i++)
       {
-        for (i = 0; i <= getNumOfProds(orderId); i++)
+        if (allOrders[orderId].orderProducts[i].id == productId)
         {
-          if (allOrders[orderId].orderProducts[i].id == productId)
-          {
-            {
-              productQuantity = allOrders[orderId].orderProducts[i].quantity;
-              break;
-            }
-          }
-          else
-          {
-            
-          }
-
+          productQuantity = allOrders[orderId].orderProducts[i].quantity;
+          break;
+        }
+        else
+        {
+          
         }
 
-        for (i = 0; i < countProd; i++)
-        {
-          if (allProducts[i].id == productId)
-          {
-            {
-              memmove(productDescription, allProducts[i].description, strlen(allProducts[i].description) + 1);
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-        printf("%s %d.\n", productDescription, productQuantity);
       }
+
+      for (i = 0; i < countProd; i++)
+      {
+        if (allProducts[i].id == productId)
+        {
+          memmove(productDescription, allProducts[i].description, strlen(allProducts[i].description) + 1);
+        }
+        else
+        {
+          
+        }
+
+      }
+
+      printf("%s %d.\n", productDescription, productQuantity);
     }
 
   }
@@ -577,34 +509,21 @@ void maxOccurrence()
   productId = new_sym_var(sizeof(int) * 8);
   if (allProducts[productId].price == 0)
   {
-    {
-      printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", productId);
-    }
+    printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", productId);
   }
   else
   {
+    for (i = 0; i < countOrd; i++)
     {
-      for (i = 0; i < countOrd; i++)
+      for (j = 0; j <= getNumOfProds(i); j++)
       {
-        for (j = 0; j <= getNumOfProds(i); j++)
+        if (allOrders[i].orderProducts[j].id == productId)
         {
-          if (allOrders[i].orderProducts[j].id == productId)
+          if (allOrders[i].orderProducts[j].quantity > biggestQuantity)
           {
-            {
-              if (allOrders[i].orderProducts[j].quantity > biggestQuantity)
-              {
-                {
-                  biggestQuantity = allOrders[i].orderProducts[j].quantity;
-                  biggestOrder = i;
-                  break;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
+            biggestQuantity = allOrders[i].orderProducts[j].quantity;
+            biggestOrder = i;
+            break;
           }
           else
           {
@@ -612,21 +531,24 @@ void maxOccurrence()
           }
 
         }
-
-      }
-
-      if (biggestQuantity > 0)
-      {
+        else
         {
-          printf("Maximo produto %d %d %d.\n", productId, biggestOrder, biggestQuantity);
+          
         }
-      }
-      else
-      {
-        
+
       }
 
     }
+
+    if (biggestQuantity > 0)
+    {
+      printf("Maximo produto %d %d %d.\n", productId, biggestOrder, biggestQuantity);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -690,21 +612,17 @@ void sortByDescription()
   orderId = new_sym_var(sizeof(int) * 8);
   if (allOrders[orderId].id == (-1))
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", orderId);
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", orderId);
   }
   else
   {
+    insertionSortDescription(allOrders[orderId].orderProducts, 0, getNumOfProds(orderId) - 1);
+    printf("Encomenda %d\n", orderId);
+    for (i = 0; i < getNumOfProds(orderId); i++)
     {
-      insertionSortDescription(allOrders[orderId].orderProducts, 0, getNumOfProds(orderId) - 1);
-      printf("Encomenda %d\n", orderId);
-      for (i = 0; i < getNumOfProds(orderId); i++)
-      {
-        printf("* %s %d %d\n", allProducts[allOrders[orderId].orderProducts[i].id].description, allProducts[allOrders[orderId].orderProducts[i].id].price, allOrders[orderId].orderProducts[i].quantity);
-      }
-
+      printf("* %s %d %d\n", allProducts[allOrders[orderId].orderProducts[i].id].description, allProducts[allOrders[orderId].orderProducts[i].id].price, allOrders[orderId].orderProducts[i].quantity);
     }
+
   }
 
 }

@@ -28,17 +28,13 @@ void merge(char *arr[], int l, int m, int r)
   {
     if (strcmp(L[i], R[j]) < 0)
     {
-      {
-        arr[k] = L[i];
-        i++;
-      }
+      arr[k] = L[i];
+      i++;
     }
     else
     {
-      {
-        arr[k] = R[j];
-        j++;
-      }
+      arr[k] = R[j];
+      j++;
     }
 
     k++;
@@ -66,12 +62,10 @@ void merge_sort(char *arr[], int l, int r)
 {
   if (l < r)
   {
-    {
-      int m = l + ((r - l) / 2);
-      merge_sort(arr, l, m);
-      merge_sort(arr, m + 1, r);
-      merge(arr, l, m, r);
-    }
+    int m = l + ((r - l) / 2);
+    merge_sort(arr, l, m);
+    merge_sort(arr, m + 1, r);
+    merge(arr, l, m, r);
   }
   else
   {

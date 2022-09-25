@@ -95,28 +95,20 @@ void rm_nodeG(listG *l, nodeG *n)
 {
   if (n->previous == 0)
   {
-    {
-      l->head = n->next;
-    }
+    l->head = n->next;
   }
   else
   {
-    {
-      n->previous->next = n->next;
-    }
+    n->previous->next = n->next;
   }
 
   if (n->next == 0)
   {
-    {
-      l->last = n->previous;
-    }
+    l->last = n->previous;
   }
   else
   {
-    {
-      n->next->previous = n->previous;
-    }
+    n->next->previous = n->previous;
   }
 
   free_nodeG(n);
@@ -133,15 +125,11 @@ void add_lastT(listT *l, const char *n)
   *nn->victories = 0;
   if (l->last)
   {
-    {
-      l->last->next = nn;
-    }
+    l->last->next = nn;
   }
   else
   {
-    {
-      l->head = nn;
-    }
+    l->head = nn;
   }
 
   l->last = nn;
@@ -164,15 +152,11 @@ void add_lastG(listG *l, const char *n, const char *T1, const char *T2, int *s1,
   *nn->score2 = *s2;
   if (l->last)
   {
-    {
-      l->last->next = nn;
-    }
+    l->last->next = nn;
   }
   else
   {
-    {
-      l->head = nn;
-    }
+    l->head = nn;
   }
 
   l->last = nn;
@@ -208,9 +192,7 @@ bool checkGame(listG *games, char *name)
   {
     if (strcmp(tmp->name, name) == 0)
     {
-      {
-        return 1;
-      }
+      return true;
     }
     else
     {
@@ -219,7 +201,7 @@ bool checkGame(listG *games, char *name)
 
   }
 
-  return 0;
+  return false;
 }
 
 bool checkTeam(listT *teams, char *name)
@@ -229,9 +211,7 @@ bool checkTeam(listT *teams, char *name)
   {
     if (strcmp(tmp->name, name) == 0)
     {
-      {
-        return 1;
-      }
+      return true;
     }
     else
     {
@@ -240,7 +220,7 @@ bool checkTeam(listT *teams, char *name)
 
   }
 
-  return 0;
+  return false;
 }
 
 void addTeam(listT *teams)
@@ -248,15 +228,11 @@ void addTeam(listT *teams)
   char *name = scan_and_allocate();
   if (!checkTeam(teams, name))
   {
-    {
-      add_lastT(teams, name);
-    }
+    add_lastT(teams, name);
   }
   else
   {
-    {
-      printf("%d Equipa existente.\n", count);
-    }
+    printf("%d Equipa existente.\n", count);
   }
 
   free(name);
@@ -268,23 +244,17 @@ void victory(listT *teams, char *T1, char *T2, int *s1, int *s2)
   nodeT *tmp;
   if ((*s1) > (*s2))
   {
-    {
-      name = T1;
-    }
+    name = T1;
   }
   else
   {
     if ((*s1) < (*s2))
     {
-      {
-        name = T2;
-      }
+      name = T2;
     }
     else
     {
-      {
-        return;
-      }
+      return;
     }
 
   }
@@ -293,9 +263,7 @@ void victory(listT *teams, char *T1, char *T2, int *s1, int *s2)
   {
     if (strcmp(tmp->name, name) == 0)
     {
-      {
-        tmp->victories++;
-      }
+      tmp->victories++;
     }
     else
     {
@@ -320,28 +288,20 @@ void addGame(listG *games, listT *teams)
   s2 = scan_int();
   if (!checkGame(games, name))
   {
+    if (checkTeam(teams, team1) && checkTeam(teams, team2))
     {
-      if (checkTeam(teams, team1) && checkTeam(teams, team2))
-      {
-        {
-          add_lastG(games, name, team1, team2, s1, s2);
-          victory(teams, team1, team2, s1, s2);
-        }
-      }
-      else
-      {
-        {
-          printf("%d Equipa inexistente.\n", count);
-        }
-      }
-
+      add_lastG(games, name, team1, team2, s1, s2);
+      victory(teams, team1, team2, s1, s2);
     }
+    else
+    {
+      printf("%d Equipa inexistente.\n", count);
+    }
+
   }
   else
   {
-    {
-      printf("%d Jogo existente.\n", count);
-    }
+    printf("%d Jogo existente.\n", count);
   }
 
   free(s2);
@@ -366,30 +326,24 @@ void removeGame(listG *games)
   char *name = scan_and_allocate();
   if (checkGame(games, name))
   {
+    nodeG *tmp;
+    for (tmp = games->head; tmp; tmp = tmp->next)
     {
-      nodeG *tmp;
-      for (tmp = games->head; tmp; tmp = tmp->next)
+      if (strcmp(tmp->name, name) == 0)
       {
-        if (strcmp(tmp->name, name) == 0)
-        {
-          {
-            rm_nodeG(games, tmp);
-          }
-        }
-        else
-        {
-          
-        }
-
+        rm_nodeG(games, tmp);
+      }
+      else
+      {
+        
       }
 
     }
+
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", count);
-    }
+    printf("%d Jogo inexistente.\n", count);
   }
 
   free(name);
@@ -402,31 +356,25 @@ void changeScore(listG *games)
   int *s2 = scan_int();
   if (checkGame(games, name))
   {
+    nodeG *tmp;
+    for (tmp = games->head; tmp; tmp = tmp->next)
     {
-      nodeG *tmp;
-      for (tmp = games->head; tmp; tmp = tmp->next)
+      if (strcmp(tmp->name, name) == 0)
       {
-        if (strcmp(tmp->name, name) == 0)
-        {
-          {
-            *tmp->score1 = *s1;
-            *tmp->score2 = *s2;
-          }
-        }
-        else
-        {
-          
-        }
-
+        *tmp->score1 = *s1;
+        *tmp->score2 = *s2;
+      }
+      else
+      {
+        
       }
 
     }
+
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", count);
-    }
+    printf("%d Jogo inexistente.\n", count);
   }
 
   free(name);
@@ -437,30 +385,24 @@ void searchGame(listG *games)
   char *name = scan_and_allocate();
   if (checkGame(games, name))
   {
+    nodeG *tmp;
+    for (tmp = games->head; tmp; tmp = tmp->next)
     {
-      nodeG *tmp;
-      for (tmp = games->head; tmp; tmp = tmp->next)
+      if (strcmp(tmp->name, name) == 0)
       {
-        if (strcmp(tmp->name, name) == 0)
-        {
-          {
-            printf("%d %s %s %s %d %d\n", count, tmp->name, tmp->team1, tmp->team2, *tmp->score1, *tmp->score2);
-          }
-        }
-        else
-        {
-          
-        }
-
+        printf("%d %s %s %s %d %d\n", count, tmp->name, tmp->team1, tmp->team2, *tmp->score1, *tmp->score2);
+      }
+      else
+      {
+        
       }
 
     }
+
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", count);
-    }
+    printf("%d Jogo inexistente.\n", count);
   }
 
   free(name);
@@ -471,30 +413,24 @@ void searchTeam(listT *teams)
   char *name = scan_and_allocate();
   if (checkTeam(teams, name))
   {
+    nodeT *tmp;
+    for (tmp = teams->head; tmp; tmp = tmp->next)
     {
-      nodeT *tmp;
-      for (tmp = teams->head; tmp; tmp = tmp->next)
+      if (strcmp(tmp->name, name) == 0)
       {
-        if (strcmp(tmp->name, name) == 0)
-        {
-          {
-            printf("%d %s %d\n", count, tmp->name, *tmp->victories);
-          }
-        }
-        else
-        {
-          
-        }
-
+        printf("%d %s %d\n", count, tmp->name, *tmp->victories);
+      }
+      else
+      {
+        
       }
 
     }
+
   }
   else
   {
-    {
-      printf("%d Equipa inexistente.\n", count);
-    }
+    printf("%d Equipa inexistente.\n", count);
   }
 
   free(name);

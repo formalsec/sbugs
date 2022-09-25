@@ -59,10 +59,8 @@ void A(struct Product prodList[10000], char line[5][100], int idp, int ide, stru
   auxQtd = atoi(line[2]);
   if (auxIde > ide)
   {
-    {
-      printf("Impossivel adicionar produto %i a encomenda %i. Encomenda inexistente.\n", auxIdp, auxIde);
-      return;
-    }
+    printf("Impossivel adicionar produto %i a encomenda %i. Encomenda inexistente.\n", auxIdp, auxIde);
+    return;
   }
   else
   {
@@ -71,10 +69,8 @@ void A(struct Product prodList[10000], char line[5][100], int idp, int ide, stru
 
   if (auxIdp >= idp)
   {
-    {
-      printf("Impossivel adicionar produto %i a encomenda %i. Produto inexistente.\n", auxIdp, auxIde);
-      return;
-    }
+    printf("Impossivel adicionar produto %i a encomenda %i. Produto inexistente.\n", auxIdp, auxIde);
+    return;
   }
   else
   {
@@ -83,10 +79,8 @@ void A(struct Product prodList[10000], char line[5][100], int idp, int ide, stru
 
   if (auxQtd > prodList[auxIdp].qtd)
   {
-    {
-      printf("Impossivel adicionar produto %i a encomenda %i. Quantidade em stock insuficiente.\n", auxIdp, auxIde);
-      return;
-    }
+    printf("Impossivel adicionar produto %i a encomenda %i. Quantidade em stock insuficiente.\n", auxIdp, auxIde);
+    return;
   }
   else
   {
@@ -96,10 +90,8 @@ void A(struct Product prodList[10000], char line[5][100], int idp, int ide, stru
   pesoTotal = pesoEncomenda(prodList, encomendas[auxIde]);
   if ((pesoTotal + (prodList[auxIdp].weight * auxQtd)) > 200)
   {
-    {
-      printf("Impossivel adicionar produto %i a encomenda %i. Peso da encomenda excede o maximo de 200.\n", auxIdp, auxIde);
-      return;
-    }
+    printf("Impossivel adicionar produto %i a encomenda %i. Peso da encomenda excede o maximo de 200.\n", auxIdp, auxIde);
+    return;
   }
   else
   {
@@ -110,11 +102,9 @@ void A(struct Product prodList[10000], char line[5][100], int idp, int ide, stru
   {
     if (encomendas[auxIde].prodIdp[i] == auxIdp)
     {
-      {
-        encomendas[auxIde].prodQtd[i] += auxQtd;
-        prodList[auxIdp].qtd -= auxQtd;
-        return;
-      }
+      encomendas[auxIde].prodQtd[i] += auxQtd;
+      prodList[auxIdp].qtd -= auxQtd;
+      return;
     }
     else
     {
@@ -150,10 +140,8 @@ void r(struct Product prodList[10000], char line[5][100], int idp)
   auxQtd = atoi(line[1]);
   if (auxIdp >= idp)
   {
-    {
-      printf("Impossivel remover stock do produto %i. Produto inexistente.\n", auxIdp);
-      return;
-    }
+    printf("Impossivel remover stock do produto %i. Produto inexistente.\n", auxIdp);
+    return;
   }
   else
   {
@@ -162,10 +150,8 @@ void r(struct Product prodList[10000], char line[5][100], int idp)
 
   if (prodList[auxIdp].qtd < auxQtd)
   {
-    {
-      printf("Impossivel remover %i unidades do produto %i do stock. Quantidade insuficiente.\n", auxQtd, auxIdp);
-      return;
-    }
+    printf("Impossivel remover %i unidades do produto %i do stock. Quantidade insuficiente.\n", auxQtd, auxIdp);
+    return;
   }
   else
   {
@@ -185,10 +171,8 @@ void R(char line[5][100], int idp, int ide, struct Encomenda encomendas[500], st
   auxIdp = atoi(line[1]);
   if (auxIde > ide)
   {
-    {
-      printf("Impossivel remover produto %i a encomenda %i. Encomenda inexistente.\n", auxIdp, auxIde);
-      return;
-    }
+    printf("Impossivel remover produto %i a encomenda %i. Encomenda inexistente.\n", auxIdp, auxIde);
+    return;
   }
   else
   {
@@ -197,10 +181,8 @@ void R(char line[5][100], int idp, int ide, struct Encomenda encomendas[500], st
 
   if (auxIdp >= idp)
   {
-    {
-      printf("Impossivel remover produto %i a encomenda %i. Produto inexistente.\n", auxIdp, auxIde);
-      return;
-    }
+    printf("Impossivel remover produto %i a encomenda %i. Produto inexistente.\n", auxIdp, auxIde);
+    return;
   }
   else
   {
@@ -211,11 +193,9 @@ void R(char line[5][100], int idp, int ide, struct Encomenda encomendas[500], st
   {
     if (encomendas[auxIde].prodIdp[pos] == auxIdp)
     {
-      {
-        prodList[auxIdp].qtd += encomendas[auxIde].prodQtd[pos];
-        encomendas[auxIde].prodQtd[pos] = 0;
-        return;
-      }
+      prodList[auxIdp].qtd += encomendas[auxIde].prodQtd[pos];
+      encomendas[auxIde].prodQtd[pos] = 0;
+      return;
     }
     else
     {
@@ -234,10 +214,8 @@ void C(int ide, struct Encomenda encomendas[500], char line[5][100], struct Prod
   auxIde = atoi(line[0]);
   if (auxIde > ide)
   {
-    {
-      printf("Impossivel calcular custo da encomenda %i. Encomenda inexistente.\n", auxIde);
-      return;
-    }
+    printf("Impossivel calcular custo da encomenda %i. Encomenda inexistente.\n", auxIde);
+    return;
   }
   else
   {
@@ -261,10 +239,8 @@ void p(struct Product prodList[10000], char line[5][100], int idp)
   price = atoi(line[1]);
   if (auxIdp >= idp)
   {
-    {
-      printf("Impossivel alterar preco do produto %i. Produto inexistente.\n", auxIdp);
-      return;
-    }
+    printf("Impossivel alterar preco do produto %i. Produto inexistente.\n", auxIdp);
+    return;
   }
   else
   {
@@ -284,10 +260,8 @@ void E(int ide, struct Encomenda encomendas[500], char line[5][100], struct Prod
   auxIdp = atoi(line[1]);
   if (auxIde > ide)
   {
-    {
-      printf("Impossivel listar encomenda %i. Encomenda inexistente.\n", auxIde);
-      return;
-    }
+    printf("Impossivel listar encomenda %i. Encomenda inexistente.\n", auxIde);
+    return;
   }
   else
   {
@@ -296,10 +270,8 @@ void E(int ide, struct Encomenda encomendas[500], char line[5][100], struct Prod
 
   if (auxIdp >= idp)
   {
-    {
-      printf("Impossivel listar produto %i. Produto inexistente.\n", auxIdp);
-      return;
-    }
+    printf("Impossivel listar produto %i. Produto inexistente.\n", auxIdp);
+    return;
   }
   else
   {
@@ -310,10 +282,8 @@ void E(int ide, struct Encomenda encomendas[500], char line[5][100], struct Prod
   {
     if (encomendas[auxIde].prodIdp[pos] == auxIdp)
     {
-      {
-        printf("%s %i.\n", prodList[auxIdp].desc, encomendas[auxIde].prodQtd[pos]);
-        return;
-      }
+      printf("%s %i.\n", prodList[auxIdp].desc, encomendas[auxIde].prodQtd[pos]);
+      return;
     }
     else
     {
@@ -335,10 +305,8 @@ void m(int ide, struct Encomenda encomendas[500], char line[5][100], int idp)
   auxIdp = atoi(line[0]);
   if (auxIdp >= idp)
   {
-    {
-      printf("Impossivel listar maximo do produto %i. Produto inexistente.\n", auxIdp);
-      return;
-    }
+    printf("Impossivel listar maximo do produto %i. Produto inexistente.\n", auxIdp);
+    return;
   }
   else
   {
@@ -351,20 +319,16 @@ void m(int ide, struct Encomenda encomendas[500], char line[5][100], int idp)
     {
       if (encomendas[i].prodIdp[p] == auxIdp)
       {
+        if (encomendas[i].prodQtd[p] > qtd)
         {
-          if (encomendas[i].prodQtd[p] > qtd)
-          {
-            {
-              qtd = encomendas[i].prodQtd[p];
-              auxIde = i;
-            }
-          }
-          else
-          {
-            
-          }
-
+          qtd = encomendas[i].prodQtd[p];
+          auxIde = i;
         }
+        else
+        {
+          
+        }
+
       }
       else
       {
@@ -377,9 +341,7 @@ void m(int ide, struct Encomenda encomendas[500], char line[5][100], int idp)
 
   if (qtd != 0)
   {
-    {
-      printf("Maximo produto %i %i %i.\n", auxIdp, auxIde, qtd);
-    }
+    printf("Maximo produto %i %i %i.\n", auxIdp, auxIde, qtd);
   }
   else
   {
@@ -427,12 +389,10 @@ int partition(struct Product prodListSorted[10000], int l, int r)
 
     if (i < j)
     {
-      {
-        struct Product tmp;
-        tmp = prodListSorted[i];
-        prodListSorted[i] = prodListSorted[j];
-        prodListSorted[j] = tmp;
-      }
+      struct Product tmp;
+      tmp = prodListSorted[i];
+      prodListSorted[i] = prodListSorted[j];
+      prodListSorted[j] = tmp;
     }
     else
     {
@@ -515,12 +475,10 @@ int partition1(struct Product produ[1000], int l, int r)
 
     if (i < j)
     {
-      {
-        struct Product tmp;
-        tmp = produ[i];
-        produ[i] = produ[j];
-        produ[j] = tmp;
-      }
+      struct Product tmp;
+      tmp = produ[i];
+      produ[i] = produ[j];
+      produ[j] = tmp;
     }
     else
     {
@@ -549,10 +507,8 @@ void L(int ide, struct Encomenda encomendas[500], char line[5][100], struct Prod
   auxIde = atoi(line[0]);
   if (auxIde > ide)
   {
-    {
-      printf("Impossivel listar encomenda %i. Encomenda inexistente.\n", auxIde);
-      return;
-    }
+    printf("Impossivel listar encomenda %i. Encomenda inexistente.\n", auxIde);
+    return;
   }
   else
   {
@@ -572,9 +528,7 @@ void L(int ide, struct Encomenda encomendas[500], char line[5][100], struct Prod
   {
     if (singleEncomenda.prods[i].qtd != 0)
     {
-      {
-        printf("* %s %i %i\n", singleEncomenda.prods[i].desc, singleEncomenda.prods[i].price, singleEncomenda.prods[i].qtd);
-      }
+      printf("* %s %i %i\n", singleEncomenda.prods[i].desc, singleEncomenda.prods[i].price, singleEncomenda.prods[i].qtd);
     }
     else
     {

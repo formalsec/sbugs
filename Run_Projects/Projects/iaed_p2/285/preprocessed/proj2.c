@@ -52,30 +52,22 @@ int main()
         score_equipa_fora = new_sym_var(sizeof(int) * 8);
         if (procura(nome, HashTable_Jogos, 50051) == 0)
       {
+        if (verifica_equipas(equipa_casa, equipa_fora, HashTable_Equipas, 50051) == 0)
         {
-          if (verifica_equipas(equipa_casa, equipa_fora, HashTable_Equipas, 50051) == 0)
-          {
-            {
-              jogo = novo_jogo(nome, equipa_casa, equipa_fora, score_equipa_casa, score_equipa_fora);
-              HashTable_Jogos = insere(jogo, HashTable_Jogos, 50051);
-              lista = insere_lista(lista, jogo);
-              HashTable_Equipas = atribui_vitoria(HashTable_Equipas, jogo->Equipa_Casa, jogo->Equipa_Fora, jogo->Score_Equipa_Casa, jogo->Score_Equipa_Fora, 50051);
-            }
-          }
-          else
-          {
-            {
-              printf("%d Equipa inexistente.\n", NL);
-            }
-          }
-
+          jogo = novo_jogo(nome, equipa_casa, equipa_fora, score_equipa_casa, score_equipa_fora);
+          HashTable_Jogos = insere(jogo, HashTable_Jogos, 50051);
+          lista = insere_lista(lista, jogo);
+          HashTable_Equipas = atribui_vitoria(HashTable_Equipas, jogo->Equipa_Casa, jogo->Equipa_Fora, jogo->Score_Equipa_Casa, jogo->Score_Equipa_Fora, 50051);
         }
+        else
+        {
+          printf("%d Equipa inexistente.\n", NL);
+        }
+
       }
       else
       {
-        {
-          printf("%d Jogo existente.\n", NL);
-        }
+        printf("%d Jogo existente.\n", NL);
       }
 
         NL += 1;
@@ -90,17 +82,13 @@ int main()
         nome[10 - 1] = '\0';
         if (equipa_nova(nome, HashTable_Equipas, 50051) == 0)
       {
-        {
-          equipa = nova_equipa(nome);
-          HashTable_Equipas = insere_equipa(equipa, HashTable_Equipas, 50051);
-          lista_equipas = insere_lista_equipas(lista_equipas, equipa);
-        }
+        equipa = nova_equipa(nome);
+        HashTable_Equipas = insere_equipa(equipa, HashTable_Equipas, 50051);
+        lista_equipas = insere_lista_equipas(lista_equipas, equipa);
       }
       else
       {
-        {
-          printf("%d Equipa existente.\n", NL);
-        }
+        printf("%d Equipa existente.\n", NL);
       }
 
         NL += 1;
@@ -126,15 +114,11 @@ int main()
         jogo = procura(nome, HashTable_Jogos, 50051);
         if (jogo != 0)
       {
-        {
-          printf("%d %s %s %s %d %d\n", NL, jogo->Nome, jogo->Equipa_Casa, jogo->Equipa_Fora, jogo->Score_Equipa_Casa, jogo->Score_Equipa_Fora);
-        }
+        printf("%d %s %s %s %d %d\n", NL, jogo->Nome, jogo->Equipa_Casa, jogo->Equipa_Fora, jogo->Score_Equipa_Casa, jogo->Score_Equipa_Fora);
       }
       else
       {
-        {
-          printf("%d Jogo inexistente.\n", NL);
-        }
+        printf("%d Jogo inexistente.\n", NL);
       }
 
         NL += 1;
@@ -150,17 +134,13 @@ int main()
         jogo = procura(nome, HashTable_Jogos, 50051);
         if (jogo != 0)
       {
-        {
-          HashTable_Equipas = retira_vitoria(HashTable_Equipas, jogo->Equipa_Casa, jogo->Equipa_Fora, jogo->Score_Equipa_Casa, jogo->Score_Equipa_Fora, 50051);
-          lista = apaga_na_lista(lista, nome);
-          HashTable_Jogos = apaga_jogo(HashTable_Jogos, nome, 50051);
-        }
+        HashTable_Equipas = retira_vitoria(HashTable_Equipas, jogo->Equipa_Casa, jogo->Equipa_Fora, jogo->Score_Equipa_Casa, jogo->Score_Equipa_Fora, 50051);
+        lista = apaga_na_lista(lista, nome);
+        HashTable_Jogos = apaga_jogo(HashTable_Jogos, nome, 50051);
       }
       else
       {
-        {
-          printf("%d Jogo inexistente.\n", NL);
-        }
+        printf("%d Jogo inexistente.\n", NL);
       }
 
         NL += 1;
@@ -176,17 +156,13 @@ int main()
         jogo = procura(nome, HashTable_Jogos, 50051);
         if (jogo != 0)
       {
-        {
-          HashTable_Equipas = retira_vitoria(HashTable_Equipas, jogo->Equipa_Casa, jogo->Equipa_Fora, jogo->Score_Equipa_Casa, jogo->Score_Equipa_Fora, 50051);
-          HashTable_Jogos = altera_score(nome, HashTable_Jogos, 50051);
-          HashTable_Equipas = atribui_vitoria(HashTable_Equipas, jogo->Equipa_Casa, jogo->Equipa_Fora, jogo->Score_Equipa_Casa, jogo->Score_Equipa_Fora, 50051);
-        }
+        HashTable_Equipas = retira_vitoria(HashTable_Equipas, jogo->Equipa_Casa, jogo->Equipa_Fora, jogo->Score_Equipa_Casa, jogo->Score_Equipa_Fora, 50051);
+        HashTable_Jogos = altera_score(nome, HashTable_Jogos, 50051);
+        HashTable_Equipas = atribui_vitoria(HashTable_Equipas, jogo->Equipa_Casa, jogo->Equipa_Fora, jogo->Score_Equipa_Casa, jogo->Score_Equipa_Fora, 50051);
       }
       else
       {
-        {
-          printf("%d Jogo inexistente.\n", NL);
-        }
+        printf("%d Jogo inexistente.\n", NL);
       }
 
         NL += 1;

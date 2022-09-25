@@ -42,39 +42,35 @@ void merge(int arr[], int l, int m, int r)
 
   if (flag == 0)
   {
+    for (k = l; k <= r; k++)
     {
-      for (k = l; k <= r; k++)
+      if ((prods[aux[j]].preco < prods[aux[i]].preco) || (i > m))
       {
-        if ((prods[aux[j]].preco < prods[aux[i]].preco) || (i > m))
-        {
-          arr[k] = aux[j--];
-        }
-        else
-        {
-          arr[k] = aux[i++];
-        }
-
+        arr[k] = aux[j--];
+      }
+      else
+      {
+        arr[k] = aux[i++];
       }
 
     }
+
   }
   else
   {
+    for (k = l; k <= r; k++)
     {
-      for (k = l; k <= r; k++)
+      if ((strcmp(prods[aux[j]].desc, prods[aux[i]].desc) < 0) || (i > m))
       {
-        if ((strcmp(prods[aux[j]].desc, prods[aux[i]].desc) < 0) || (i > m))
-        {
-          arr[k] = aux[j--];
-        }
-        else
-        {
-          arr[k] = aux[i++];
-        }
-
+        arr[k] = aux[j--];
+      }
+      else
+      {
+        arr[k] = aux[i++];
       }
 
     }
+
   }
 
 }
@@ -175,41 +171,35 @@ void add_prod_enc(char input[1024])
         }
         else
         {
+          for (i = 0; (i < qtd_prod[id_e]) && (j == 0); i++)
           {
-            for (i = 0; (i < qtd_prod[id_e]) && (j == 0); i++)
+            if (id_p == e.conj_prod[i])
             {
-              if (id_p == e.conj_prod[i])
-              {
-                {
-                  e.conj_qtds[i] += quant;
-                  j++;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-            if (j == 0)
-            {
-              {
-                e.conj_prod[qtd_prod[id_e]] = id_p;
-                e.conj_qtds[qtd_prod[id_e]] = quant;
-                qtd_prod[id_e]++;
-              }
+              e.conj_qtds[i] += quant;
+              j++;
             }
             else
             {
               
             }
 
-            e.preco += p.preco * quant;
-            e.peso += p.peso * quant;
-            e.id = id_e;
-            prods[id_p].qtd -= quant;
           }
+
+          if (j == 0)
+          {
+            e.conj_prod[qtd_prod[id_e]] = id_p;
+            e.conj_qtds[qtd_prod[id_e]] = quant;
+            qtd_prod[id_e]++;
+          }
+          else
+          {
+            
+          }
+
+          e.preco += p.preco * quant;
+          e.peso += p.peso * quant;
+          e.id = id_e;
+          prods[id_p].qtd -= quant;
         }
 
       }
@@ -268,31 +258,27 @@ void remove_produto_enc(char input[1024])
     }
     else
     {
+      while ((e.conj_prod[i] != id_p) && (i < qtd_prod[id_e]))
+        i++;
+
+      if (i != qtd_prod[id_e])
       {
-        while ((e.conj_prod[i] != id_p) && (i < qtd_prod[id_e]))
-          i++;
-
-        if (i != qtd_prod[id_e])
+        e.preco -= prods[id_p].preco * e.conj_qtds[i];
+        e.peso -= prods[id_p].peso * e.conj_qtds[i];
+        prods[id_p].qtd += e.conj_qtds[i];
+        for (j = i; j < qtd_prod[id_e]; j++)
         {
-          {
-            e.preco -= prods[id_p].preco * e.conj_qtds[i];
-            e.peso -= prods[id_p].peso * e.conj_qtds[i];
-            prods[id_p].qtd += e.conj_qtds[i];
-            for (j = i; j < qtd_prod[id_e]; j++)
-            {
-              e.conj_prod[j] = e.conj_prod[j + 1];
-              e.conj_qtds[j] = e.conj_qtds[j + 1];
-            }
-
-            qtd_prod[id_e]--;
-          }
-        }
-        else
-        {
-          
+          e.conj_prod[j] = e.conj_prod[j + 1];
+          e.conj_qtds[j] = e.conj_qtds[j + 1];
         }
 
+        qtd_prod[id_e]--;
       }
+      else
+      {
+        
+      }
+
     }
 
   }
@@ -334,31 +320,27 @@ void altera_preco(char input[1024])
   }
   else
   {
+    prods[id_p].preco = preco_novo;
+    for (i = 0; i < ide; i++)
     {
-      prods[id_p].preco = preco_novo;
-      for (i = 0; i < ide; i++)
+      e = encom[i];
+      for (j = 0; j < qtd_prod[i]; j++)
       {
-        e = encom[i];
-        for (j = 0; j < qtd_prod[i]; j++)
+        if (id_p == e.conj_prod[j])
         {
-          if (id_p == e.conj_prod[j])
-          {
-            {
-              e.preco -= preco_antigo * e.conj_qtds[j];
-              e.preco += preco_novo * e.conj_qtds[j];
-            }
-          }
-          else
-          {
-            
-          }
-
+          e.preco -= preco_antigo * e.conj_qtds[j];
+          e.preco += preco_novo * e.conj_qtds[j];
+        }
+        else
+        {
+          
         }
 
-        encom[i] = e;
       }
 
+      encom[i] = e;
     }
+
   }
 
 }
@@ -385,26 +367,12 @@ void desc_qtd_enc(char input[1024])
     }
     else
     {
+      for (i = 0; i < qtd_prod[id_e]; i++)
       {
-        for (i = 0; i < qtd_prod[id_e]; i++)
+        if (e.conj_prod[i] == id_p)
         {
-          if (e.conj_prod[i] == id_p)
-          {
-            {
-              printf("%s %d.\n", prods[id_p].desc, e.conj_qtds[i]);
-              j++;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-        if (j == 0)
-        {
-          printf("%s %d.\n", prods[id_p].desc, 0);
+          printf("%s %d.\n", prods[id_p].desc, e.conj_qtds[i]);
+          j++;
         }
         else
         {
@@ -412,6 +380,16 @@ void desc_qtd_enc(char input[1024])
         }
 
       }
+
+      if (j == 0)
+      {
+        printf("%s %d.\n", prods[id_p].desc, 0);
+      }
+      else
+      {
+        
+      }
+
     }
 
   }
@@ -455,10 +433,8 @@ void prod_ocorre_enc(char input[1024])
 
     if (medidor > maior)
     {
-      {
-        maior = medidor;
-        id_e = i;
-      }
+      maior = medidor;
+      id_e = i;
     }
     else
     {
@@ -511,19 +487,17 @@ void ordena_enc_alf(char input[1024])
   }
   else
   {
+    for (i = 0; i < qtd_prod[id_e]; i++)
     {
-      for (i = 0; i < qtd_prod[id_e]; i++)
-      {
-        aux1[i] = e.conj_prod[i];
-        aux2[e.conj_prod[i]] = e.conj_qtds[i];
-      }
-
-      merge_sort(aux1, 0, qtd_prod[id_e] - 1);
-      printf("Encomenda %d\n", id_e);
-      for (k = 0; k < qtd_prod[id_e]; k++)
-        printf("* %s %d %d\n", prods[aux1[k]].desc, prods[aux1[k]].preco, aux2[aux1[k]]);
-
+      aux1[i] = e.conj_prod[i];
+      aux2[e.conj_prod[i]] = e.conj_qtds[i];
     }
+
+    merge_sort(aux1, 0, qtd_prod[id_e] - 1);
+    printf("Encomenda %d\n", id_e);
+    for (k = 0; k < qtd_prod[id_e]; k++)
+      printf("* %s %d %d\n", prods[aux1[k]].desc, prods[aux1[k]].preco, aux2[aux1[k]]);
+
   }
 
 }

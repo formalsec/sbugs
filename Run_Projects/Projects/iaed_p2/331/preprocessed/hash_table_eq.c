@@ -64,25 +64,21 @@ int max_wins(ht_teams lst_eq)
   {
     if (lst_eq[i])
     {
+      eq = lst_eq[i]->head;
+      while (eq)
       {
-        eq = lst_eq[i]->head;
-        while (eq)
+        if (eq->vitorias > max)
         {
-          if (eq->vitorias > max)
-          {
-            {
-              max = eq->vitorias;
-            }
-          }
-          else
-          {
-            
-          }
-
-          eq = eq->next;
+          max = eq->vitorias;
+        }
+        else
+        {
+          
         }
 
+        eq = eq->next;
       }
+
     }
     else
     {

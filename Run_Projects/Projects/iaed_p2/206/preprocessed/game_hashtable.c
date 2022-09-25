@@ -34,9 +34,7 @@ void insert_game_hashtable(Game_Hashtable *GH, Game game)
   int position = index;
   if (GH->count > (GH->size / 2))
   {
-    {
-      expand_game_hashtable(GH);
-    }
+    expand_game_hashtable(GH);
   }
   else
   {
@@ -64,9 +62,7 @@ void expand_game_hashtable(Game_Hashtable *GH)
   {
     if (aux_game_table[i] != 0)
     {
-      {
-        insert_game_hashtable(GH, aux_game_table[i]);
-      }
+      insert_game_hashtable(GH, aux_game_table[i]);
     }
     else
     {
@@ -86,9 +82,7 @@ Game search_game_hashtable(Game_Hashtable *GH, char *name)
   {
     if (strcmp(GH->game_table[position]->name, name) == 0)
     {
-      {
-        return GH->game_table[position];
-      }
+      return GH->game_table[position];
     }
     else
     {
@@ -111,33 +105,27 @@ void remove_game_hashtable(Game_Hashtable *GH, char *name)
   {
     if (strcmp(GH->game_table[position]->name, name) == 0)
     {
+      free_game_hashtable_table(GH, position);
+      GH->game_table[position] = 0;
+      for (i = position; GH->game_table[i] != 0; i = (index++) % GH->size)
       {
-        free_game_hashtable_table(GH, position);
-        GH->game_table[position] = 0;
-        for (i = position; GH->game_table[i] != 0; i = (index++) % GH->size)
-        {
-          aux_game = GH->game_table[i];
-          GH->game_table[i] = 0;
-          insert_game_hashtable(GH, aux_game);
-        }
-
-        break;
+        aux_game = GH->game_table[i];
+        GH->game_table[i] = 0;
+        insert_game_hashtable(GH, aux_game);
       }
+
+      break;
     }
     else
     {
-      {
-        position = (index++) % GH->size;
-      }
+      position = (index++) % GH->size;
     }
 
   }
 
   if (GH->game_table[position] == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {

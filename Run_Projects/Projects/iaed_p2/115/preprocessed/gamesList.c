@@ -20,18 +20,14 @@ void addGameList(gameListP gameList, gameNodeP game)
 {
   if (gameList->head == 0)
   {
-    {
-      gameList->head = game;
-      gameList->last = game;
-    }
+    gameList->head = game;
+    gameList->last = game;
   }
   else
   {
-    {
-      game->nextL = gameList->head;
-      gameList->head->previous = game;
-      gameList->head = game;
-    }
+    game->nextL = gameList->head;
+    gameList->head->previous = game;
+    gameList->head = game;
   }
 
 }
@@ -41,13 +37,11 @@ void listGames(gameListP gameList, int cont)
   gameNodeP x;
   if (gameList->head != 0)
   {
+    for (x = gameList->last; x != 0; x = x->previous)
     {
-      for (x = gameList->last; x != 0; x = x->previous)
-      {
-        printf("%d %s %s %s %d %d\n", cont, x->game->name, x->game->team1->name, x->game->team2->name, x->game->score1, x->game->score2);
-      }
-
+      printf("%d %s %s %s %d %d\n", cont, x->game->name, x->game->team1->name, x->game->team2->name, x->game->score1, x->game->score2);
     }
+
   }
   else
   {

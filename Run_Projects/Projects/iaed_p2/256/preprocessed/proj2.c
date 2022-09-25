@@ -26,12 +26,10 @@ int maior_aux(lista_e *principal, lista_e *temp)
   {
     if (d->vitorias > maior)
     {
-      {
-        for (d1 = temp->head; d1; d1 = temp->head)
-          rm_equipa(temp, d1);
+      for (d1 = temp->head; d1; d1 = temp->head)
+        rm_equipa(temp, d1);
 
-        maior = d->vitorias;
-      }
+      maior = d->vitorias;
     }
     else
     {
@@ -40,9 +38,7 @@ int maior_aux(lista_e *principal, lista_e *temp)
 
     if (d->vitorias == maior)
     {
-      {
-        add_last_equipa(temp, d->nome);
-      }
+      add_last_equipa(temp, d->nome);
     }
     else
     {
@@ -98,44 +94,36 @@ int main()
         o = new_sym_var(sizeof(int) * 8);
         if (lookup_j(t) == 0)
       {
+        if ((lookup_e(s) != 0) && (lookup_e(r) != 0))
         {
-          if ((lookup_e(s) != 0) && (lookup_e(r) != 0))
+          add_last_jogo(lk, t, lookup_e(s), lookup_e(r), k, o);
+          hash_jogo_insert(lk->last);
+          if (k > o)
           {
-            {
-              add_last_jogo(lk, t, lookup_e(s), lookup_e(r), k, o);
-              hash_jogo_insert(lk->last);
-              if (k > o)
-              {
-                {
-                  lookup_e(s)->vitorias += 1;
-                  break;
-                }
-              }
-              else
-              {
-                
-              }
-
-              if (k < o)
-              {
-                {
-                  lookup_e(r)->vitorias += 1;
-                  break;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
+            lookup_e(s)->vitorias += 1;
+            break;
           }
           else
           {
-            printf("%d Equipa inexistente.\n", y);
+            
+          }
+
+          if (k < o)
+          {
+            lookup_e(r)->vitorias += 1;
+            break;
+          }
+          else
+          {
+            
           }
 
         }
+        else
+        {
+          printf("%d Equipa inexistente.\n", y);
+        }
+
       }
       else
       {
@@ -159,10 +147,8 @@ int main()
       }
       else
       {
-        {
-          add_last_equipa(ls, s);
-          hash_equipa_insert(ls->last);
-        }
+        add_last_equipa(ls, s);
+        hash_equipa_insert(ls->last);
       }
 
         break;
@@ -240,60 +226,45 @@ int main()
         a = lookup_j(t);
         if (a != 0)
         {
+          if ((k > o) && (a->resultado1 < a->resultado2))
           {
-            if ((k > o) && (a->resultado1 < a->resultado2))
+            a->e1->vitorias += 1;
+            a->e2->vitorias -= 1;
+          }
+          else
+          {
+            if ((k > o) && (a->resultado1 == a->resultado2))
             {
-              {
-                a->e1->vitorias += 1;
-                a->e2->vitorias -= 1;
-              }
+              a->e1->vitorias += 1;
             }
             else
             {
-              if ((k > o) && (a->resultado1 == a->resultado2))
+              if ((k == o) && (a->resultado1 > a->resultado2))
               {
-                {
-                  a->e1->vitorias += 1;
-                }
+                a->e1->vitorias -= 1;
               }
               else
               {
-                if ((k == o) && (a->resultado1 > a->resultado2))
+                if ((k == o) && (a->resultado1 < a->resultado2))
                 {
-                  {
-                    a->e1->vitorias -= 1;
-                  }
+                  a->e2->vitorias -= 1;
                 }
                 else
                 {
-                  if ((k == o) && (a->resultado1 < a->resultado2))
+                  if ((k < o) && (a->resultado1 > a->resultado2))
                   {
-                    {
-                      a->e2->vitorias -= 1;
-                    }
+                    a->e1->vitorias -= 1;
+                    a->e2->vitorias += 1;
                   }
                   else
                   {
-                    if ((k < o) && (a->resultado1 > a->resultado2))
+                    if ((k < o) && (a->resultado1 == a->resultado2))
                     {
-                      {
-                        a->e1->vitorias -= 1;
-                        a->e2->vitorias += 1;
-                      }
+                      a->e2->vitorias += 1;
                     }
                     else
                     {
-                      if ((k < o) && (a->resultado1 == a->resultado2))
-                      {
-                        {
-                          a->e2->vitorias += 1;
-                        }
-                      }
-                      else
-                      {
-                        
-                      }
-
+                      
                     }
 
                   }
@@ -304,9 +275,10 @@ int main()
 
             }
 
-            a->resultado1 = k;
-            a->resultado2 = o;
           }
+
+          a->resultado1 = k;
+          a->resultado2 = o;
         }
         else
         {
@@ -330,31 +302,25 @@ int main()
         a = lookup_j(t);
         if (a != 0)
         {
+          if (a->resultado1 > a->resultado2)
           {
-            if (a->resultado1 > a->resultado2)
+            a->e1->vitorias -= 1;
+          }
+          else
+          {
+            if (a->resultado1 < a->resultado2)
             {
-              {
-                a->e1->vitorias -= 1;
-              }
+              a->e2->vitorias -= 1;
             }
             else
             {
-              if (a->resultado1 < a->resultado2)
-              {
-                {
-                  a->e2->vitorias -= 1;
-                }
-              }
-              else
-              {
-                
-              }
-
+              
             }
 
-            hash_delete_j(t);
-            rm_jogo(lk, a);
           }
+
+          hash_delete_j(t);
+          rm_jogo(lk, a);
         }
         else
         {

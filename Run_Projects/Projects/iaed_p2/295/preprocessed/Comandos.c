@@ -22,20 +22,16 @@ void comando_A(int nl, lista_equipas *a, lista_equipas_aux *b)
   c = procura_equipa(nome_equipa, a);
   if (c != 0)
   {
-    {
-      printf("%d Equipa existente.\n", nl);
-    }
+    printf("%d Equipa existente.\n", nl);
   }
   else
   {
-    {
-      e = malloc(sizeof(Equipa));
-      e->nome_equipa = malloc((sizeof(char)) * (strlen(nome_equipa) + 1));
-      strcpy(e->nome_equipa, nome_equipa);
-      e->n_vitorias = 0;
-      insere_equipa(a, e);
-      insere_equipa_aux(b, e);
-    }
+    e = malloc(sizeof(Equipa));
+    e->nome_equipa = malloc((sizeof(char)) * (strlen(nome_equipa) + 1));
+    strcpy(e->nome_equipa, nome_equipa);
+    e->n_vitorias = 0;
+    insere_equipa(a, e);
+    insere_equipa_aux(b, e);
   }
 
 }
@@ -77,42 +73,36 @@ void comando_a(int nl, lista_equipas *a, lista_jogos *b, lista_jogos_aux *c, lis
   e = procura_jogo(nome_jogo, b);
   if (e != 0)
   {
-    {
-      printf("%d Jogo existente.\n", nl);
-    }
+    printf("%d Jogo existente.\n", nl);
   }
   else
   {
     if ((d == 0) || (f == 0))
     {
-      {
-        printf("%d Equipa inexistente.\n", nl);
-      }
+      printf("%d Equipa inexistente.\n", nl);
     }
     else
     {
-      {
-        i = malloc(sizeof(Jogo));
-        i->nome_jogo = malloc((sizeof(char)) * (strlen(nome_jogo) + 1));
-        strcpy(i->nome_jogo, nome_jogo);
-        i->equipa1 = malloc((sizeof(char)) * (strlen(nome_equipa1) + 1));
-        strcpy(i->equipa1, nome_equipa1);
-        i->equipa2 = malloc((sizeof(char)) * (strlen(nome_equipa2) + 1));
-        strcpy(i->equipa2, nome_equipa2);
-        i->resultado1 = res_equipa1;
-        i->resultado2 = res_equipa2;
-        h = malloc(sizeof(Jogo_aux));
-        h->nome_jogo = malloc((sizeof(char)) * (strlen(nome_jogo) + 1));
-        strcpy(h->nome_jogo, nome_jogo);
-        h->equipa1 = malloc((sizeof(char)) * (strlen(nome_equipa1) + 1));
-        strcpy(h->equipa1, nome_equipa1);
-        h->equipa2 = malloc((sizeof(char)) * (strlen(nome_equipa2) + 1));
-        strcpy(h->equipa2, nome_equipa2);
-        h->resultado1 = res_equipa1;
-        h->resultado2 = res_equipa2;
-        insere_jogo(b, i, g);
-        insere_jogo_aux(c, h);
-      }
+      i = malloc(sizeof(Jogo));
+      i->nome_jogo = malloc((sizeof(char)) * (strlen(nome_jogo) + 1));
+      strcpy(i->nome_jogo, nome_jogo);
+      i->equipa1 = malloc((sizeof(char)) * (strlen(nome_equipa1) + 1));
+      strcpy(i->equipa1, nome_equipa1);
+      i->equipa2 = malloc((sizeof(char)) * (strlen(nome_equipa2) + 1));
+      strcpy(i->equipa2, nome_equipa2);
+      i->resultado1 = res_equipa1;
+      i->resultado2 = res_equipa2;
+      h = malloc(sizeof(Jogo_aux));
+      h->nome_jogo = malloc((sizeof(char)) * (strlen(nome_jogo) + 1));
+      strcpy(h->nome_jogo, nome_jogo);
+      h->equipa1 = malloc((sizeof(char)) * (strlen(nome_equipa1) + 1));
+      strcpy(h->equipa1, nome_equipa1);
+      h->equipa2 = malloc((sizeof(char)) * (strlen(nome_equipa2) + 1));
+      strcpy(h->equipa2, nome_equipa2);
+      h->resultado1 = res_equipa1;
+      h->resultado2 = res_equipa2;
+      insere_jogo(b, i, g);
+      insere_jogo_aux(c, h);
     }
 
   }
@@ -132,15 +122,11 @@ void comando_P(int nl, lista_equipas *a)
   b = procura_equipa(nome_equipa, a);
   if (b != 0)
   {
-    {
-      printf("%d %s %d\n", nl, b->nome_equipa, b->n_vitorias);
-    }
+    printf("%d %s %d\n", nl, b->nome_equipa, b->n_vitorias);
   }
   else
   {
-    {
-      printf("%d Equipa inexistente.\n", nl);
-    }
+    printf("%d Equipa inexistente.\n", nl);
   }
 
 }
@@ -158,15 +144,11 @@ void comando_p(int nl, lista_jogos *a)
   b = procura_jogo(nome_jogo, a);
   if (b != 0)
   {
-    {
-      printf("%d %s %s %s %d %d\n", nl, b->nome_jogo, b->equipa1, b->equipa2, b->resultado1, b->resultado2);
-    }
+    printf("%d %s %s %s %d %d\n", nl, b->nome_jogo, b->equipa1, b->equipa2, b->resultado1, b->resultado2);
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-    }
+    printf("%d Jogo inexistente.\n", nl);
   }
 
 }
@@ -186,15 +168,11 @@ void comando_r(int nl, lista_jogos *a, lista_equipas *b)
   i = hash(nome_jogo);
   if (c != 0)
   {
-    {
-      a->no[i] = remove_jogo(nome_jogo, a, b);
-    }
+    a->no[i] = remove_jogo(nome_jogo, a, b);
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-    }
+    printf("%d Jogo inexistente.\n", nl);
   }
 
 }
@@ -228,45 +206,35 @@ void comando_l(int nl, lista_jogos *a, lista_jogos_aux *b)
     d = procura_jogo(c->jog->nome_jogo, a);
     if (d != 0)
     {
+      for (; g; g = g->next)
       {
-        for (; g; g = g->next)
+        if (strcmp(d->nome_jogo, g->jog->nome_jogo) == 0)
         {
-          if (strcmp(d->nome_jogo, g->jog->nome_jogo) == 0)
-          {
-            {
-              e++;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-        if (e == 0)
-        {
-          {
-            printf("%d %s %s %s %d %d\n", nl, d->nome_jogo, d->equipa1, d->equipa2, d->resultado1, d->resultado2);
-            c = c->next;
-            e = 0;
-          }
+          e++;
         }
         else
         {
-          {
-            c = c->next;
-            e = 0;
-          }
+          
         }
 
       }
+
+      if (e == 0)
+      {
+        printf("%d %s %s %s %d %d\n", nl, d->nome_jogo, d->equipa1, d->equipa2, d->resultado1, d->resultado2);
+        c = c->next;
+        e = 0;
+      }
+      else
+      {
+        c = c->next;
+        e = 0;
+      }
+
     }
     else
     {
-      {
-        c = c->next;
-      }
+      c = c->next;
     }
 
   }
@@ -287,16 +255,12 @@ void comando_g(int nl, lista_equipas_aux *b)
   {
     if (c->eq->n_vitorias > n_vitorias)
     {
-      {
-        n_vitorias = c->eq->n_vitorias;
-        c = c->next;
-      }
+      n_vitorias = c->eq->n_vitorias;
+      c = c->next;
     }
     else
     {
-      {
-        c = c->next;
-      }
+      c = c->next;
     }
 
   }
@@ -305,18 +269,14 @@ void comando_g(int nl, lista_equipas_aux *b)
   {
     if (d->eq->n_vitorias == n_vitorias)
     {
-      {
-        lista_nos[i] = d;
-        d = d->next;
-        i++;
-        j++;
-      }
+      lista_nos[i] = d;
+      d = d->next;
+      i++;
+      j++;
     }
     else
     {
-      {
-        d = d->next;
-      }
+      d = d->next;
     }
 
   }
@@ -324,14 +284,12 @@ void comando_g(int nl, lista_equipas_aux *b)
   mergesort(lista_nos, 0, i - 1);
   if (b->head)
   {
+    printf("%d Melhores %d\n", nl, n_vitorias);
+    for (i = 0; i < j; i++)
     {
-      printf("%d Melhores %d\n", nl, n_vitorias);
-      for (i = 0; i < j; i++)
-      {
-        printf("%d * %s\n", nl, lista_nos[i]->eq->nome_equipa);
-      }
-
+      printf("%d * %s\n", nl, lista_nos[i]->eq->nome_equipa);
     }
+
   }
   else
   {

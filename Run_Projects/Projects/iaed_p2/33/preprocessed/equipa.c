@@ -20,17 +20,15 @@ void equipa_atualiza_ganhos(pEquipa equipas[], int score[], int opcao)
   {
     if (score[i] > score[j])
     {
+      if (opcao == 1)
       {
-        if (opcao == 1)
-        {
-          equipas[i]->ganhos++;
-        }
-        else
-        {
-          equipas[i]->ganhos--;
-        }
-
+        equipas[i]->ganhos++;
       }
+      else
+      {
+        equipas[i]->ganhos--;
+      }
+
     }
     else
     {
@@ -67,21 +65,17 @@ void equipa_atualiza_ganhos_s(pEquipa equipas[], int score_antigo[], int score_n
   {
     if (score_antigo[i] > score_antigo[j])
     {
+      if (score_novo[j] > score_novo[i])
       {
-        if (score_novo[j] > score_novo[i])
-        {
-          {
-            equipas[j]->ganhos++;
-            equipas[i]->ganhos--;
-            break;
-          }
-        }
-        else
-        {
-          
-        }
-
+        equipas[j]->ganhos++;
+        equipas[i]->ganhos--;
+        break;
       }
+      else
+      {
+        
+      }
+
     }
     else
     {

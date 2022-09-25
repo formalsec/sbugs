@@ -46,10 +46,8 @@ TeamHash_ptr TeamHashInsert(TeamHash_ptr *team_hash, Team_ptr team)
   (*team_hash)->N++;
   if ((*team_hash)->N >= ((*team_hash)->M / 2))
   {
-    {
-      TeamHash_ptr new_hash = TeamHashExpand(*team_hash);
-      return new_hash;
-    }
+    TeamHash_ptr new_hash = TeamHashExpand(*team_hash);
+    return new_hash;
   }
   else
   {

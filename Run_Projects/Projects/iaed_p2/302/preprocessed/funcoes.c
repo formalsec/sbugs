@@ -45,34 +45,28 @@ node_jogo *func_a(int cont, hash_table_jogo *syst_jogos, hash_table_equipa *syst
     }
     else
     {
+      tmp = cria_node_jg(buf_jg, buf_t1, buf_t2, s1, s2);
+      if (s1 > s2)
       {
-        tmp = cria_node_jg(buf_jg, buf_t1, buf_t2, s1, s2);
-        if (s1 > s2)
+        tmp2 = encontra_hash_eq(syst_eq, buf_t1);
+        tmp2->vitorias++;
+      }
+      else
+      {
+        if (s1 < s2)
         {
-          {
-            tmp2 = encontra_hash_eq(syst_eq, buf_t1);
-            tmp2->vitorias++;
-          }
+          tmp2 = encontra_hash_eq(syst_eq, buf_t2);
+          tmp2->vitorias++;
         }
         else
         {
-          if (s1 < s2)
-          {
-            {
-              tmp2 = encontra_hash_eq(syst_eq, buf_t2);
-              tmp2->vitorias++;
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
-        insere_jogo_hash(syst_jogos, tmp);
-        head_lista_jogos = _insere_jogo_lista(head_lista_jogos, tmp, &syst_jogos->last);
       }
+
+      insere_jogo_hash(syst_jogos, tmp);
+      head_lista_jogos = _insere_jogo_lista(head_lista_jogos, tmp, &syst_jogos->last);
     }
 
   }
@@ -125,33 +119,27 @@ node_jogo *func_r(int cont, hash_table_jogo *syst_jogos, hash_table_equipa *syst
   }
   else
   {
+    if (tmp->s1 > tmp->s2)
     {
-      if (tmp->s1 > tmp->s2)
+      tmp2 = encontra_hash_eq(syst_eq, tmp->t1);
+      tmp2->vitorias--;
+    }
+    else
+    {
+      if (tmp->s2 > tmp->s1)
       {
-        {
-          tmp2 = encontra_hash_eq(syst_eq, tmp->t1);
-          tmp2->vitorias--;
-        }
+        tmp2 = encontra_hash_eq(syst_eq, tmp->t2);
+        tmp2->vitorias--;
       }
       else
       {
-        if (tmp->s2 > tmp->s1)
-        {
-          {
-            tmp2 = encontra_hash_eq(syst_eq, tmp->t2);
-            tmp2->vitorias--;
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      head_lista_jogos = remove_node_list(head_lista_jogos, tmp, &syst_jogos->last);
-      remove_jogo_hash(syst_jogos, buf_jg);
     }
+
+    head_lista_jogos = remove_node_list(head_lista_jogos, tmp, &syst_jogos->last);
+    remove_jogo_hash(syst_jogos, buf_jg);
   }
 
   return head_lista_jogos;
@@ -182,18 +170,37 @@ void func_s(int cont, hash_table_jogo *syst_jogos, hash_table_equipa *syst_eq)
   }
   else
   {
+    t1 = encontra_hash_eq(syst_eq, tmp->t1);
+    t2 = encontra_hash_eq(syst_eq, tmp->t2);
+    if (tmp->s1 > tmp->s2)
     {
-      t1 = encontra_hash_eq(syst_eq, tmp->t1);
-      t2 = encontra_hash_eq(syst_eq, tmp->t2);
-      if (tmp->s1 > tmp->s2)
+      estado1 = 1;
+    }
+    else
+    {
+      if (tmp->s1 < tmp->s2)
       {
-        estado1 = 1;
+        estado2 = 1;
       }
       else
       {
-        if (tmp->s1 < tmp->s2)
+        
+      }
+
+    }
+
+    if (estado1)
+    {
+      if (s1 == s2)
+      {
+        diminui_vitorias(t1);
+      }
+      else
+      {
+        if (s2 > s1)
         {
-          estado2 = 1;
+          diminui_vitorias(t1);
+          aumenta_vitorias(t2);
         }
         else
         {
@@ -202,94 +209,55 @@ void func_s(int cont, hash_table_jogo *syst_jogos, hash_table_equipa *syst_eq)
 
       }
 
-      if (estado1)
+    }
+    else
+    {
+      if (estado2)
       {
+        if (s1 == s2)
         {
-          if (s1 == s2)
-          {
-            {
-              diminui_vitorias(t1);
-            }
-          }
-          else
-          {
-            if (s2 > s1)
-            {
-              {
-                diminui_vitorias(t1);
-                aumenta_vitorias(t2);
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-        }
-      }
-      else
-      {
-        if (estado2)
-        {
-          {
-            if (s1 == s2)
-            {
-              {
-                diminui_vitorias(t2);
-              }
-            }
-            else
-            {
-              if (s1 > s2)
-              {
-                {
-                  aumenta_vitorias(t1);
-                  diminui_vitorias(t2);
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-          }
+          diminui_vitorias(t2);
         }
         else
         {
+          if (s1 > s2)
           {
-            if (s1 > s2)
-            {
-              {
-                aumenta_vitorias(t1);
-              }
-            }
-            else
-            {
-              if (s2 > s1)
-              {
-                {
-                  aumenta_vitorias(t2);
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
+            aumenta_vitorias(t1);
+            diminui_vitorias(t2);
           }
+          else
+          {
+            
+          }
+
+        }
+
+      }
+      else
+      {
+        if (s1 > s2)
+        {
+          aumenta_vitorias(t1);
+        }
+        else
+        {
+          if (s2 > s1)
+          {
+            aumenta_vitorias(t2);
+          }
+          else
+          {
+            
+          }
+
         }
 
       }
 
-      tmp->s1 = s1;
-      tmp->s2 = s2;
     }
+
+    tmp->s1 = s1;
+    tmp->s2 = s2;
   }
 
 }
@@ -310,10 +278,8 @@ void func_A(int cont, hash_table_equipa *syst_eq)
   }
   else
   {
-    {
-      tmp = cria_node_eq(buf_t1);
-      insere_eq_hash(syst_eq, tmp);
-    }
+    tmp = cria_node_eq(buf_t1);
+    insere_eq_hash(syst_eq, tmp);
   }
 
 }
@@ -357,21 +323,17 @@ void func_g(int cont, hash_table_equipa *syst_eq)
       contem = 1;
       if (tmp->vitorias == vitorias)
       {
-        {
-          vetor[k] = tmp->nome;
-          k++;
-        }
+        vetor[k] = tmp->nome;
+        k++;
       }
       else
       {
         if (tmp->vitorias > vitorias)
         {
-          {
-            k = 0;
-            vetor[k] = tmp->nome;
-            k++;
-            vitorias = tmp->vitorias;
-          }
+          k = 0;
+          vetor[k] = tmp->nome;
+          k++;
+          vitorias = tmp->vitorias;
         }
         else
         {
@@ -387,15 +349,13 @@ void func_g(int cont, hash_table_equipa *syst_eq)
 
   if (contem)
   {
+    qsort(vetor, k, sizeof(char *), compara);
+    printf("%d Melhores %d\n", cont, vitorias);
+    for (j = 0; j < k; j++)
     {
-      qsort(vetor, k, sizeof(char *), compara);
-      printf("%d Melhores %d\n", cont, vitorias);
-      for (j = 0; j < k; j++)
-      {
-        printf("%d * %s\n", cont, vetor[j]);
-      }
-
+      printf("%d * %s\n", cont, vetor[j]);
     }
+
   }
   else
   {

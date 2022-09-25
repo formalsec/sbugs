@@ -124,19 +124,17 @@ void comando_a()
 {
   if (productsNumber < 10000)
   {
+    for (int product_index = 0; product_index < 10; product_index++)
     {
-      for (int product_index = 0; product_index < 10; product_index++)
-      {
-        product[productsNumber].name[product_index] = new_sym_var(sizeof(char) * 8);
-      }
-
-      product[productsNumber].name[10 - 1] = '\0';
-      product[productsNumber].price = new_sym_var(sizeof(int) * 8);
-      product[productsNumber].weight = new_sym_var(sizeof(int) * 8);
-      product[productsNumber].stock = new_sym_var(sizeof(int) * 8);
-      printf("Novo produto %d.\n", productsNumber);
-      productsNumber++;
+      product[productsNumber].name[product_index] = new_sym_var(sizeof(char) * 8);
     }
+
+    product[productsNumber].name[10 - 1] = '\0';
+    product[productsNumber].price = new_sym_var(sizeof(int) * 8);
+    product[productsNumber].weight = new_sym_var(sizeof(int) * 8);
+    product[productsNumber].stock = new_sym_var(sizeof(int) * 8);
+    printf("Novo produto %d.\n", productsNumber);
+    productsNumber++;
   }
   else
   {
@@ -166,12 +164,10 @@ void comando_N()
 {
   if (ordersNumber < 500)
   {
-    {
-      printf("Nova encomenda %d.\n", ordersNumber);
-      order[ordersNumber].totalWeight = 0;
-      order[ordersNumber].productsNumber = 0;
-      ordersNumber++;
-    }
+    printf("Nova encomenda %d.\n", ordersNumber);
+    order[ordersNumber].totalWeight = 0;
+    order[ordersNumber].productsNumber = 0;
+    ordersNumber++;
   }
   else
   {
@@ -213,25 +209,21 @@ void comando_A()
         }
         else
         {
+          i = find_product(ido, idp);
+          if (i < order[ido].productsNumber)
           {
-            i = find_product(ido, idp);
-            if (i < order[ido].productsNumber)
-            {
-              order[ido].productOrdered[i].qty += qty;
-            }
-            else
-            {
-              {
-                order[ido].productOrdered[i].id = idp;
-                strcpy(order[ido].productOrdered[i].name, product[idp].name);
-                order[ido].productOrdered[i].qty = qty;
-                order[ido].productsNumber++;
-              }
-            }
-
-            order[ido].totalWeight += product[idp].weight * qty;
-            product[idp].stock -= qty;
+            order[ido].productOrdered[i].qty += qty;
           }
+          else
+          {
+            order[ido].productOrdered[i].id = idp;
+            strcpy(order[ido].productOrdered[i].name, product[idp].name);
+            order[ido].productOrdered[i].qty = qty;
+            order[ido].productsNumber++;
+          }
+
+          order[ido].totalWeight += product[idp].weight * qty;
+          product[idp].stock -= qty;
         }
 
       }
@@ -343,18 +335,16 @@ void comando_E()
     }
     else
     {
+      i = find_product(ido, idp);
+      if (i < order[ido].productsNumber)
       {
-        i = find_product(ido, idp);
-        if (i < order[ido].productsNumber)
-        {
-          printf("%s %d.\n", order[ido].productOrdered[i].name, order[ido].productOrdered[i].qty);
-        }
-        else
-        {
-          printf("%s 0.\n", product[idp].name);
-        }
-
+        printf("%s %d.\n", order[ido].productOrdered[i].name, order[ido].productOrdered[i].qty);
       }
+      else
+      {
+        printf("%s 0.\n", product[idp].name);
+      }
+
     }
 
   }
@@ -381,10 +371,8 @@ void comando_m()
       {
         if (order[i].productOrdered[j].qty > maxProductQuantity)
         {
-          {
-            maxProductQuantity = order[i].productOrdered[j].qty;
-            maxIDOrder = i;
-          }
+          maxProductQuantity = order[i].productOrdered[j].qty;
+          maxIDOrder = i;
         }
         else
         {
@@ -435,18 +423,16 @@ void comando_L()
   }
   else
   {
-    {
-      int indPO[10000];
-      int i;
-      for (i = 0; i < productsNumber; i++)
-        indPO[i] = i;
+    int indPO[10000];
+    int i;
+    for (i = 0; i < productsNumber; i++)
+      indPO[i] = i;
 
-      quicksort(indPO, 0, order[idOrder].productsNumber - 1, pocmp);
-      printf("Encomenda %d\n", idOrder);
-      for (i = 0; i < order[idOrder].productsNumber; i++)
-        printf("* %s %d %d\n", order[idOrder].productOrdered[indPO[i]].name, product[order[idOrder].productOrdered[indPO[i]].id].price, order[idOrder].productOrdered[indPO[i]].qty);
+    quicksort(indPO, 0, order[idOrder].productsNumber - 1, pocmp);
+    printf("Encomenda %d\n", idOrder);
+    for (i = 0; i < order[idOrder].productsNumber; i++)
+      printf("* %s %d %d\n", order[idOrder].productOrdered[indPO[i]].name, product[order[idOrder].productOrdered[indPO[i]].id].price, order[idOrder].productOrdered[indPO[i]].qty);
 
-    }
   }
 
 }
@@ -474,24 +460,20 @@ void remove_product(int ido, int idp)
   i = find_product(ido, idp);
   if (i < order[ido].productsNumber)
   {
+    order[ido].totalWeight -= product[idp].weight * order[ido].productOrdered[i].qty;
+    product[idp].stock += order[ido].productOrdered[i].qty;
+    order[ido].productsNumber--;
+    if (i != order[ido].productsNumber)
     {
-      order[ido].totalWeight -= product[idp].weight * order[ido].productOrdered[i].qty;
-      product[idp].stock += order[ido].productOrdered[i].qty;
-      order[ido].productsNumber--;
-      if (i != order[ido].productsNumber)
-      {
-        {
-          order[ido].productOrdered[i].id = order[ido].productOrdered[order[ido].productsNumber].id;
-          strcpy(order[ido].productOrdered[i].name, order[ido].productOrdered[order[ido].productsNumber].name);
-          order[ido].productOrdered[i].qty = order[ido].productOrdered[order[ido].productsNumber].qty;
-        }
-      }
-      else
-      {
-        
-      }
-
+      order[ido].productOrdered[i].id = order[ido].productOrdered[order[ido].productsNumber].id;
+      strcpy(order[ido].productOrdered[i].name, order[ido].productOrdered[order[ido].productsNumber].name);
+      order[ido].productOrdered[i].qty = order[ido].productOrdered[order[ido].productsNumber].qty;
     }
+    else
+    {
+      
+    }
+
   }
   else
   {

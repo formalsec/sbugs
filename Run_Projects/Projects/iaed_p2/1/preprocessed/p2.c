@@ -53,44 +53,34 @@ Lista_de_jogos *existe_jogo(Variaveis_mais_ou_menos_globais variaveis, char *nom
   Lista_de_jogos *jogo_a_procurar;
   if (variaveis.cabeca_jogos == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
+    jogo_a_procurar = variaveis.cabeca_jogos;
+    while (1)
     {
-      jogo_a_procurar = variaveis.cabeca_jogos;
-      while (1)
+      if (strcmp(nome_do_jogo_a_procurar, jogo_a_procurar->nome) == 0)
       {
-        if (strcmp(nome_do_jogo_a_procurar, jogo_a_procurar->nome) == 0)
+        return jogo_a_procurar;
+        break;
+      }
+      else
+      {
+        if (jogo_a_procurar->seguinte == 0)
         {
-          {
-            return jogo_a_procurar;
-            break;
-          }
+          return 0;
+          break;
         }
         else
         {
-          if (jogo_a_procurar->seguinte == 0)
-          {
-            {
-              return 0;
-              break;
-            }
-          }
-          else
-          {
-            {
-              jogo_a_procurar = jogo_a_procurar->seguinte;
-            }
-          }
-
+          jogo_a_procurar = jogo_a_procurar->seguinte;
         }
 
       }
 
     }
+
   }
 
 }
@@ -100,44 +90,34 @@ Lista_de_equipas *existe_equipa(Variaveis_mais_ou_menos_globais variaveis, char 
   Lista_de_equipas *equipa_a_procurar;
   if (variaveis.cabeca_equipas == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
+    equipa_a_procurar = variaveis.cabeca_equipas;
+    while (1)
     {
-      equipa_a_procurar = variaveis.cabeca_equipas;
-      while (1)
+      if (strcmp(nome_da_equipa_a_procurar, equipa_a_procurar->nome) == 0)
       {
-        if (strcmp(nome_da_equipa_a_procurar, equipa_a_procurar->nome) == 0)
+        return equipa_a_procurar;
+        break;
+      }
+      else
+      {
+        if (equipa_a_procurar->seguinte == 0)
         {
-          {
-            return equipa_a_procurar;
-            break;
-          }
+          return 0;
+          break;
         }
         else
         {
-          if (equipa_a_procurar->seguinte == 0)
-          {
-            {
-              return 0;
-              break;
-            }
-          }
-          else
-          {
-            {
-              equipa_a_procurar = equipa_a_procurar->seguinte;
-            }
-          }
-
+          equipa_a_procurar = equipa_a_procurar->seguinte;
         }
 
       }
 
     }
+
   }
 
 }
@@ -150,19 +130,15 @@ Variaveis_mais_ou_menos_globais limpa_lista_de_equipas_da_memoria(Variaveis_mais
   {
     if (equipa_a_limpar->anterior == 0)
     {
-      {
-        free(equipa_a_limpar->nome);
-        free(equipa_a_limpar);
-        break;
-      }
+      free(equipa_a_limpar->nome);
+      free(equipa_a_limpar);
+      break;
     }
     else
     {
-      {
-        equipa_a_limpar = equipa_a_limpar->anterior;
-        free(equipa_a_limpar->seguinte->nome);
-        free(equipa_a_limpar->seguinte);
-      }
+      equipa_a_limpar = equipa_a_limpar->anterior;
+      free(equipa_a_limpar->seguinte->nome);
+      free(equipa_a_limpar->seguinte);
     }
 
   }
@@ -178,23 +154,19 @@ Variaveis_mais_ou_menos_globais limpa_lista_de_jogos_da_memoria(Variaveis_mais_o
   {
     if (jogo_a_limpar->anterior == 0)
     {
-      {
-        free(jogo_a_limpar->nome);
-        free(jogo_a_limpar->nome_equipa_1);
-        free(jogo_a_limpar->nome_equipa_2);
-        free(jogo_a_limpar);
-        break;
-      }
+      free(jogo_a_limpar->nome);
+      free(jogo_a_limpar->nome_equipa_1);
+      free(jogo_a_limpar->nome_equipa_2);
+      free(jogo_a_limpar);
+      break;
     }
     else
     {
-      {
-        jogo_a_limpar = jogo_a_limpar->anterior;
-        free(jogo_a_limpar->seguinte->nome);
-        free(jogo_a_limpar->seguinte->nome_equipa_1);
-        free(jogo_a_limpar->seguinte->nome_equipa_2);
-        free(jogo_a_limpar->seguinte);
-      }
+      jogo_a_limpar = jogo_a_limpar->anterior;
+      free(jogo_a_limpar->seguinte->nome);
+      free(jogo_a_limpar->seguinte->nome_equipa_1);
+      free(jogo_a_limpar->seguinte->nome_equipa_2);
+      free(jogo_a_limpar->seguinte);
     }
 
   }
@@ -206,9 +178,7 @@ Variaveis_mais_ou_menos_globais limpa_memoria_das_listas(Variaveis_mais_ou_menos
 {
   if (variaveis.cabeca_equipas != 0)
   {
-    {
-      variaveis = limpa_lista_de_equipas_da_memoria(variaveis);
-    }
+    variaveis = limpa_lista_de_equipas_da_memoria(variaveis);
   }
   else
   {
@@ -217,9 +187,7 @@ Variaveis_mais_ou_menos_globais limpa_memoria_das_listas(Variaveis_mais_ou_menos
 
   if (variaveis.cabeca_jogos != 0)
   {
-    {
-      variaveis = limpa_lista_de_jogos_da_memoria(variaveis);
-    }
+    variaveis = limpa_lista_de_jogos_da_memoria(variaveis);
   }
   else
   {
@@ -252,12 +220,10 @@ Variaveis_mais_ou_menos_globais adiciona_nova_equipa_por_listas(char *comando_do
   equipa_a_adicionar->nome = realoca_memoria_da_string(nome_aux);
   if (variaveis.cabeca_equipas == 0)
   {
-    {
-      variaveis.cabeca_equipas = equipa_a_adicionar;
-      variaveis.cauda_equipas = equipa_a_adicionar;
-      variaveis.numero_de_equipas++;
-      return variaveis;
-    }
+    variaveis.cabeca_equipas = equipa_a_adicionar;
+    variaveis.cauda_equipas = equipa_a_adicionar;
+    variaveis.numero_de_equipas++;
+    return variaveis;
   }
   else
   {
@@ -267,70 +233,58 @@ Variaveis_mais_ou_menos_globais adiciona_nova_equipa_por_listas(char *comando_do
   equipa_a_procurar = existe_equipa(variaveis, equipa_a_adicionar->nome);
   if (equipa_a_procurar == 0)
   {
+    equipa_a_procurar = variaveis.cabeca_equipas;
+    if (strcmp(equipa_a_procurar->nome, equipa_a_adicionar->nome) >= 0)
     {
-      equipa_a_procurar = variaveis.cabeca_equipas;
-      if (strcmp(equipa_a_procurar->nome, equipa_a_adicionar->nome) >= 0)
+      equipa_a_adicionar->seguinte = equipa_a_procurar;
+      equipa_a_adicionar->anterior = 0;
+      equipa_a_procurar->anterior = equipa_a_adicionar;
+      variaveis.cabeca_equipas = equipa_a_adicionar;
+      variaveis.numero_de_equipas++;
+      return variaveis;
+    }
+    else
+    {
+      
+    }
+
+    while (1)
+    {
+      if (equipa_a_procurar->seguinte == 0)
       {
-        {
-          equipa_a_adicionar->seguinte = equipa_a_procurar;
-          equipa_a_adicionar->anterior = 0;
-          equipa_a_procurar->anterior = equipa_a_adicionar;
-          variaveis.cabeca_equipas = equipa_a_adicionar;
-          variaveis.numero_de_equipas++;
-          return variaveis;
-        }
+        equipa_a_adicionar->anterior = variaveis.cauda_equipas;
+        variaveis.cauda_equipas->seguinte = equipa_a_adicionar;
+        variaveis.cauda_equipas = equipa_a_adicionar;
+        variaveis.numero_de_equipas++;
+        return variaveis;
       }
       else
       {
-        
-      }
-
-      while (1)
-      {
-        if (equipa_a_procurar->seguinte == 0)
+        if (strcmp(equipa_a_procurar->seguinte->nome, equipa_a_adicionar->nome) >= 0)
         {
-          {
-            equipa_a_adicionar->anterior = variaveis.cauda_equipas;
-            variaveis.cauda_equipas->seguinte = equipa_a_adicionar;
-            variaveis.cauda_equipas = equipa_a_adicionar;
-            variaveis.numero_de_equipas++;
-            return variaveis;
-          }
+          equipa_a_adicionar->seguinte = equipa_a_procurar->seguinte;
+          equipa_a_adicionar->anterior = equipa_a_procurar;
+          equipa_a_procurar->seguinte->anterior = equipa_a_adicionar;
+          equipa_a_procurar->seguinte = equipa_a_adicionar;
+          variaveis.numero_de_equipas++;
+          return variaveis;
         }
         else
         {
-          {
-            if (strcmp(equipa_a_procurar->seguinte->nome, equipa_a_adicionar->nome) >= 0)
-            {
-              {
-                equipa_a_adicionar->seguinte = equipa_a_procurar->seguinte;
-                equipa_a_adicionar->anterior = equipa_a_procurar;
-                equipa_a_procurar->seguinte->anterior = equipa_a_adicionar;
-                equipa_a_procurar->seguinte = equipa_a_adicionar;
-                variaveis.numero_de_equipas++;
-                return variaveis;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
+          
         }
 
-        equipa_a_procurar = equipa_a_procurar->seguinte;
       }
 
+      equipa_a_procurar = equipa_a_procurar->seguinte;
     }
+
   }
   else
   {
-    {
-      free(equipa_a_adicionar->nome);
-      free(equipa_a_adicionar);
-      printf("%d Equipa existente.\n", variaveis.numero_da_linha_do_comando);
-    }
+    free(equipa_a_adicionar->nome);
+    free(equipa_a_adicionar);
+    printf("%d Equipa existente.\n", variaveis.numero_da_linha_do_comando);
   }
 
   return variaveis;
@@ -359,12 +313,10 @@ Variaveis_mais_ou_menos_globais adiciona_nova_equipa(char *comando_do_utilizador
   equipa_a_adicionar->nome = realoca_memoria_da_string(nome_aux);
   if (variaveis.cabeca_equipas == 0)
   {
-    {
-      variaveis.cabeca_equipas = equipa_a_adicionar;
-      variaveis.cauda_equipas = equipa_a_adicionar;
-      variaveis.numero_de_equipas++;
-      return variaveis;
-    }
+    variaveis.cabeca_equipas = equipa_a_adicionar;
+    variaveis.cauda_equipas = equipa_a_adicionar;
+    variaveis.numero_de_equipas++;
+    return variaveis;
   }
   else
   {
@@ -374,70 +326,58 @@ Variaveis_mais_ou_menos_globais adiciona_nova_equipa(char *comando_do_utilizador
   equipa_a_procurar = existe_equipa(variaveis, equipa_a_adicionar->nome);
   if (equipa_a_procurar == 0)
   {
+    equipa_a_procurar = variaveis.cabeca_equipas;
+    if (strcmp(equipa_a_procurar->nome, equipa_a_adicionar->nome) >= 0)
     {
-      equipa_a_procurar = variaveis.cabeca_equipas;
-      if (strcmp(equipa_a_procurar->nome, equipa_a_adicionar->nome) >= 0)
+      equipa_a_adicionar->seguinte = equipa_a_procurar;
+      equipa_a_adicionar->anterior = 0;
+      equipa_a_procurar->anterior = equipa_a_adicionar;
+      variaveis.cabeca_equipas = equipa_a_adicionar;
+      variaveis.numero_de_equipas++;
+      return variaveis;
+    }
+    else
+    {
+      
+    }
+
+    while (1)
+    {
+      if (equipa_a_procurar->seguinte == 0)
       {
-        {
-          equipa_a_adicionar->seguinte = equipa_a_procurar;
-          equipa_a_adicionar->anterior = 0;
-          equipa_a_procurar->anterior = equipa_a_adicionar;
-          variaveis.cabeca_equipas = equipa_a_adicionar;
-          variaveis.numero_de_equipas++;
-          return variaveis;
-        }
+        equipa_a_adicionar->anterior = variaveis.cauda_equipas;
+        variaveis.cauda_equipas->seguinte = equipa_a_adicionar;
+        variaveis.cauda_equipas = equipa_a_adicionar;
+        variaveis.numero_de_equipas++;
+        return variaveis;
       }
       else
       {
-        
-      }
-
-      while (1)
-      {
-        if (equipa_a_procurar->seguinte == 0)
+        if (strcmp(equipa_a_procurar->seguinte->nome, equipa_a_adicionar->nome) >= 0)
         {
-          {
-            equipa_a_adicionar->anterior = variaveis.cauda_equipas;
-            variaveis.cauda_equipas->seguinte = equipa_a_adicionar;
-            variaveis.cauda_equipas = equipa_a_adicionar;
-            variaveis.numero_de_equipas++;
-            return variaveis;
-          }
+          equipa_a_adicionar->seguinte = equipa_a_procurar->seguinte;
+          equipa_a_adicionar->anterior = equipa_a_procurar;
+          equipa_a_procurar->seguinte->anterior = equipa_a_adicionar;
+          equipa_a_procurar->seguinte = equipa_a_adicionar;
+          variaveis.numero_de_equipas++;
+          return variaveis;
         }
         else
         {
-          {
-            if (strcmp(equipa_a_procurar->seguinte->nome, equipa_a_adicionar->nome) >= 0)
-            {
-              {
-                equipa_a_adicionar->seguinte = equipa_a_procurar->seguinte;
-                equipa_a_adicionar->anterior = equipa_a_procurar;
-                equipa_a_procurar->seguinte->anterior = equipa_a_adicionar;
-                equipa_a_procurar->seguinte = equipa_a_adicionar;
-                variaveis.numero_de_equipas++;
-                return variaveis;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
+          
         }
 
-        equipa_a_procurar = equipa_a_procurar->seguinte;
       }
 
+      equipa_a_procurar = equipa_a_procurar->seguinte;
     }
+
   }
   else
   {
-    {
-      free(equipa_a_adicionar->nome);
-      free(equipa_a_adicionar);
-      printf("%d Equipa existente.\n", variaveis.numero_da_linha_do_comando);
-    }
+    free(equipa_a_adicionar->nome);
+    free(equipa_a_adicionar);
+    printf("%d Equipa existente.\n", variaveis.numero_da_linha_do_comando);
   }
 
   return variaveis;
@@ -465,36 +405,34 @@ Variaveis_mais_ou_menos_globais adiciona_novo_jogo(char *comando_do_utilizador, 
   {
     if ((comando_do_utilizador[i] == ':') || (comando_do_utilizador[i] == '\n'))
     {
+      aux_componente[contador_componente] = '\0';
+      switch (paragens)
       {
-        aux_componente[contador_componente] = '\0';
-        switch (paragens)
-        {
-          case 0:
-            nome_aux[contador_componente] = '\0';
-            break;
+        case 0:
+          nome_aux[contador_componente] = '\0';
+          break;
 
-          case 1:
-            nome_equipa_1_aux[contador_componente] = '\0';
-            break;
+        case 1:
+          nome_equipa_1_aux[contador_componente] = '\0';
+          break;
 
-          case 2:
-            nome_equipa_2_aux[contador_componente] = '\0';
-            break;
+        case 2:
+          nome_equipa_2_aux[contador_componente] = '\0';
+          break;
 
-          case 3:
-            jogo_a_adicionar->score_equipa_1 = atoi(aux_componente);
-            break;
+        case 3:
+          jogo_a_adicionar->score_equipa_1 = atoi(aux_componente);
+          break;
 
-          case 4:
-            jogo_a_adicionar->score_equipa_2 = atoi(aux_componente);
-            break;
+        case 4:
+          jogo_a_adicionar->score_equipa_2 = atoi(aux_componente);
+          break;
 
-        }
-
-        paragens++;
-        contador_componente = 0;
-        continue;
       }
+
+      paragens++;
+      contador_componente = 0;
+      continue;
     }
     else
     {
@@ -534,102 +472,82 @@ Variaveis_mais_ou_menos_globais adiciona_novo_jogo(char *comando_do_utilizador, 
   jogo_a_procurar = existe_jogo(variaveis, jogo_a_adicionar->nome);
   if (jogo_a_procurar == 0)
   {
+    equipa1 = existe_equipa(variaveis, jogo_a_adicionar->nome_equipa_1);
+    if (equipa1 != 0)
     {
-      equipa1 = existe_equipa(variaveis, jogo_a_adicionar->nome_equipa_1);
-      if (equipa1 != 0)
-      {
-        {
-          equipa2 = existe_equipa(variaveis, jogo_a_adicionar->nome_equipa_2);
-        }
-      }
-      else
-      {
-        
-      }
-
-      if ((equipa1 == 0) || (equipa2 == 0))
-      {
-        {
-          free(jogo_a_adicionar->nome);
-          free(jogo_a_adicionar->nome_equipa_1);
-          free(jogo_a_adicionar->nome_equipa_2);
-          free(jogo_a_adicionar);
-          printf("%d Equipa inexistente.\n", variaveis.numero_da_linha_do_comando);
-          return variaveis;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (variaveis.cabeca_jogos == 0)
-      {
-        {
-          variaveis.cabeca_jogos = jogo_a_adicionar;
-          variaveis.cauda_jogos = jogo_a_adicionar;
-          variaveis.numero_de_jogos++;
-        }
-      }
-      else
-      {
-        {
-          jogo_a_adicionar->anterior = variaveis.cauda_jogos;
-          variaveis.cauda_jogos->seguinte = jogo_a_adicionar;
-          variaveis.cauda_jogos = jogo_a_adicionar;
-          variaveis.numero_de_jogos++;
-        }
-      }
-
+      equipa2 = existe_equipa(variaveis, jogo_a_adicionar->nome_equipa_2);
     }
-  }
-  else
-  {
+    else
+    {
+      
+    }
+
+    if ((equipa1 == 0) || (equipa2 == 0))
     {
       free(jogo_a_adicionar->nome);
       free(jogo_a_adicionar->nome_equipa_1);
       free(jogo_a_adicionar->nome_equipa_2);
       free(jogo_a_adicionar);
-      printf("%d Jogo existente.\n", variaveis.numero_da_linha_do_comando);
+      printf("%d Equipa inexistente.\n", variaveis.numero_da_linha_do_comando);
       return variaveis;
     }
+    else
+    {
+      
+    }
+
+    if (variaveis.cabeca_jogos == 0)
+    {
+      variaveis.cabeca_jogos = jogo_a_adicionar;
+      variaveis.cauda_jogos = jogo_a_adicionar;
+      variaveis.numero_de_jogos++;
+    }
+    else
+    {
+      jogo_a_adicionar->anterior = variaveis.cauda_jogos;
+      variaveis.cauda_jogos->seguinte = jogo_a_adicionar;
+      variaveis.cauda_jogos = jogo_a_adicionar;
+      variaveis.numero_de_jogos++;
+    }
+
+  }
+  else
+  {
+    free(jogo_a_adicionar->nome);
+    free(jogo_a_adicionar->nome_equipa_1);
+    free(jogo_a_adicionar->nome_equipa_2);
+    free(jogo_a_adicionar);
+    printf("%d Jogo existente.\n", variaveis.numero_da_linha_do_comando);
+    return variaveis;
   }
 
   if (jogo_a_adicionar->score_equipa_1 > jogo_a_adicionar->score_equipa_2)
   {
+    equipa1->jogos_ganhos++;
+    if (equipa1->jogos_ganhos > variaveis.numero_maior_de_jogos_ganhos)
     {
-      equipa1->jogos_ganhos++;
-      if (equipa1->jogos_ganhos > variaveis.numero_maior_de_jogos_ganhos)
+      variaveis.numero_maior_de_jogos_ganhos++;
+    }
+    else
+    {
+      
+    }
+
+  }
+  else
+  {
+    if (jogo_a_adicionar->score_equipa_1 < jogo_a_adicionar->score_equipa_2)
+    {
+      equipa2->jogos_ganhos++;
+      if (equipa2->jogos_ganhos > variaveis.numero_maior_de_jogos_ganhos)
       {
-        {
-          variaveis.numero_maior_de_jogos_ganhos++;
-        }
+        variaveis.numero_maior_de_jogos_ganhos++;
       }
       else
       {
         
       }
 
-    }
-  }
-  else
-  {
-    if (jogo_a_adicionar->score_equipa_1 < jogo_a_adicionar->score_equipa_2)
-    {
-      {
-        equipa2->jogos_ganhos++;
-        if (equipa2->jogos_ganhos > variaveis.numero_maior_de_jogos_ganhos)
-        {
-          {
-            variaveis.numero_maior_de_jogos_ganhos++;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
     }
     else
     {
@@ -658,10 +576,8 @@ Variaveis_mais_ou_menos_globais procura_equipa(char *comando_do_utilizador, Vari
   nome_da_equipa_a_procurar[contador_componente] = '\0';
   if (variaveis.cabeca_equipas == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", variaveis.numero_da_linha_do_comando);
-      return variaveis;
-    }
+    printf("%d Equipa inexistente.\n", variaveis.numero_da_linha_do_comando);
+    return variaveis;
   }
   else
   {
@@ -671,15 +587,11 @@ Variaveis_mais_ou_menos_globais procura_equipa(char *comando_do_utilizador, Vari
   equipa_a_procurar = existe_equipa(variaveis, nome_da_equipa_a_procurar);
   if (equipa_a_procurar == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", variaveis.numero_da_linha_do_comando);
-    }
+    printf("%d Equipa inexistente.\n", variaveis.numero_da_linha_do_comando);
   }
   else
   {
-    {
-      printf("%d %s %d\n", variaveis.numero_da_linha_do_comando, nome_da_equipa_a_procurar, equipa_a_procurar->jogos_ganhos);
-    }
+    printf("%d %s %d\n", variaveis.numero_da_linha_do_comando, nome_da_equipa_a_procurar, equipa_a_procurar->jogos_ganhos);
   }
 
   return variaveis;
@@ -702,10 +614,8 @@ Variaveis_mais_ou_menos_globais procura_jogo(char *comando_do_utilizador, Variav
   nome_do_jogo_a_procurar[contador_componente] = '\0';
   if (variaveis.cabeca_jogos == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", variaveis.numero_da_linha_do_comando);
-      return variaveis;
-    }
+    printf("%d Jogo inexistente.\n", variaveis.numero_da_linha_do_comando);
+    return variaveis;
   }
   else
   {
@@ -715,15 +625,11 @@ Variaveis_mais_ou_menos_globais procura_jogo(char *comando_do_utilizador, Variav
   jogo_a_procurar = existe_jogo(variaveis, nome_do_jogo_a_procurar);
   if (jogo_a_procurar == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", variaveis.numero_da_linha_do_comando);
-    }
+    printf("%d Jogo inexistente.\n", variaveis.numero_da_linha_do_comando);
   }
   else
   {
-    {
-      printf("%d %s %s %s %d %d\n", variaveis.numero_da_linha_do_comando, jogo_a_procurar->nome, jogo_a_procurar->nome_equipa_1, jogo_a_procurar->nome_equipa_2, jogo_a_procurar->score_equipa_1, jogo_a_procurar->score_equipa_2);
-    }
+    printf("%d %s %s %s %d %d\n", variaveis.numero_da_linha_do_comando, jogo_a_procurar->nome, jogo_a_procurar->nome_equipa_1, jogo_a_procurar->nome_equipa_2, jogo_a_procurar->score_equipa_1, jogo_a_procurar->score_equipa_2);
   }
 
   return variaveis;
@@ -747,139 +653,109 @@ Variaveis_mais_ou_menos_globais apaga_jogo(char *comando_do_utilizador, Variavei
   nome_do_jogo_a_procurar[contador_componente] = '\0';
   if (variaveis.cabeca_jogos == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", variaveis.numero_da_linha_do_comando);
-    }
+    printf("%d Jogo inexistente.\n", variaveis.numero_da_linha_do_comando);
   }
   else
   {
+    jogo_a_procurar = variaveis.cabeca_jogos;
+    while (1)
     {
-      jogo_a_procurar = variaveis.cabeca_jogos;
-      while (1)
+      if (strcmp(nome_do_jogo_a_procurar, jogo_a_procurar->nome) == 0)
       {
-        if (strcmp(nome_do_jogo_a_procurar, jogo_a_procurar->nome) == 0)
+        if (jogo_a_procurar->score_equipa_1 > jogo_a_procurar->score_equipa_2)
         {
-          {
-            if (jogo_a_procurar->score_equipa_1 > jogo_a_procurar->score_equipa_2)
-            {
-              {
-                equipa_a_retirar_vitoria = existe_equipa(variaveis, jogo_a_procurar->nome_equipa_1);
-                equipa_a_retirar_vitoria->jogos_ganhos--;
-              }
-            }
-            else
-            {
-              if (jogo_a_procurar->score_equipa_1 < jogo_a_procurar->score_equipa_2)
-              {
-                {
-                  equipa_a_retirar_vitoria = existe_equipa(variaveis, jogo_a_procurar->nome_equipa_2);
-                  equipa_a_retirar_vitoria->jogos_ganhos--;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-            if (jogo_a_procurar->anterior != 0)
-            {
-              {
-                jogo_a_procurar->anterior->seguinte = jogo_a_procurar->seguinte;
-              }
-            }
-            else
-            {
-              
-            }
-
-            if (jogo_a_procurar->seguinte != 0)
-            {
-              {
-                jogo_a_procurar->seguinte->anterior = jogo_a_procurar->anterior;
-              }
-            }
-            else
-            {
-              
-            }
-
-            if (jogo_a_procurar == variaveis.cabeca_jogos)
-            {
-              {
-                if (jogo_a_procurar->seguinte == 0)
-                {
-                  {
-                    variaveis.cabeca_jogos = 0;
-                  }
-                }
-                else
-                {
-                  {
-                    variaveis.cabeca_jogos = jogo_a_procurar->seguinte;
-                  }
-                }
-
-              }
-            }
-            else
-            {
-              
-            }
-
-            if (jogo_a_procurar == variaveis.cauda_jogos)
-            {
-              {
-                if (jogo_a_procurar->anterior == 0)
-                {
-                  {
-                    variaveis.cauda_jogos = 0;
-                  }
-                }
-                else
-                {
-                  {
-                    variaveis.cauda_jogos = jogo_a_procurar->anterior;
-                  }
-                }
-
-              }
-            }
-            else
-            {
-              
-            }
-
-            free(jogo_a_procurar->nome);
-            free(jogo_a_procurar->nome_equipa_1);
-            free(jogo_a_procurar->nome_equipa_2);
-            free(jogo_a_procurar);
-            variaveis.numero_de_jogos--;
-            break;
-          }
+          equipa_a_retirar_vitoria = existe_equipa(variaveis, jogo_a_procurar->nome_equipa_1);
+          equipa_a_retirar_vitoria->jogos_ganhos--;
         }
         else
         {
-          if (jogo_a_procurar->seguinte == 0)
+          if (jogo_a_procurar->score_equipa_1 < jogo_a_procurar->score_equipa_2)
           {
-            {
-              printf("%d Jogo inexistente.\n", variaveis.numero_da_linha_do_comando);
-              break;
-            }
+            equipa_a_retirar_vitoria = existe_equipa(variaveis, jogo_a_procurar->nome_equipa_2);
+            equipa_a_retirar_vitoria->jogos_ganhos--;
           }
           else
           {
-            {
-              jogo_a_procurar = jogo_a_procurar->seguinte;
-            }
+            
           }
 
+        }
+
+        if (jogo_a_procurar->anterior != 0)
+        {
+          jogo_a_procurar->anterior->seguinte = jogo_a_procurar->seguinte;
+        }
+        else
+        {
+          
+        }
+
+        if (jogo_a_procurar->seguinte != 0)
+        {
+          jogo_a_procurar->seguinte->anterior = jogo_a_procurar->anterior;
+        }
+        else
+        {
+          
+        }
+
+        if (jogo_a_procurar == variaveis.cabeca_jogos)
+        {
+          if (jogo_a_procurar->seguinte == 0)
+          {
+            variaveis.cabeca_jogos = 0;
+          }
+          else
+          {
+            variaveis.cabeca_jogos = jogo_a_procurar->seguinte;
+          }
+
+        }
+        else
+        {
+          
+        }
+
+        if (jogo_a_procurar == variaveis.cauda_jogos)
+        {
+          if (jogo_a_procurar->anterior == 0)
+          {
+            variaveis.cauda_jogos = 0;
+          }
+          else
+          {
+            variaveis.cauda_jogos = jogo_a_procurar->anterior;
+          }
+
+        }
+        else
+        {
+          
+        }
+
+        free(jogo_a_procurar->nome);
+        free(jogo_a_procurar->nome_equipa_1);
+        free(jogo_a_procurar->nome_equipa_2);
+        free(jogo_a_procurar);
+        variaveis.numero_de_jogos--;
+        break;
+      }
+      else
+      {
+        if (jogo_a_procurar->seguinte == 0)
+        {
+          printf("%d Jogo inexistente.\n", variaveis.numero_da_linha_do_comando);
+          break;
+        }
+        else
+        {
+          jogo_a_procurar = jogo_a_procurar->seguinte;
         }
 
       }
 
     }
+
   }
 
   return variaveis;
@@ -890,34 +766,26 @@ void lista_todos_jogos(Variaveis_mais_ou_menos_globais variaveis)
   Lista_de_jogos *jogo_a_procurar;
   if (variaveis.cabeca_jogos == 0)
   {
-    {
-      return;
-      printf("(##DEBUG##) %d Nao ha jogos!.\n", variaveis.numero_da_linha_do_comando);
-    }
+    return;
+    printf("(##DEBUG##) %d Nao ha jogos!.\n", variaveis.numero_da_linha_do_comando);
   }
   else
   {
+    jogo_a_procurar = variaveis.cabeca_jogos;
+    while (1)
     {
-      jogo_a_procurar = variaveis.cabeca_jogos;
-      while (1)
+      printf("%d %s %s %s %d %d\n", variaveis.numero_da_linha_do_comando, jogo_a_procurar->nome, jogo_a_procurar->nome_equipa_1, jogo_a_procurar->nome_equipa_2, jogo_a_procurar->score_equipa_1, jogo_a_procurar->score_equipa_2);
+      if (jogo_a_procurar->seguinte == 0)
       {
-        printf("%d %s %s %s %d %d\n", variaveis.numero_da_linha_do_comando, jogo_a_procurar->nome, jogo_a_procurar->nome_equipa_1, jogo_a_procurar->nome_equipa_2, jogo_a_procurar->score_equipa_1, jogo_a_procurar->score_equipa_2);
-        if (jogo_a_procurar->seguinte == 0)
-        {
-          {
-            break;
-          }
-        }
-        else
-        {
-          {
-            jogo_a_procurar = jogo_a_procurar->seguinte;
-          }
-        }
-
+        break;
+      }
+      else
+      {
+        jogo_a_procurar = jogo_a_procurar->seguinte;
       }
 
     }
+
   }
 
   return;
@@ -928,44 +796,34 @@ void equipas_que_ganharam_mais_jogos(Variaveis_mais_ou_menos_globais variaveis)
   Lista_de_equipas *equipa_a_procurar;
   if (variaveis.cabeca_equipas == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
+    equipa_a_procurar = variaveis.cabeca_equipas;
+    printf("%d Melhores %d\n", variaveis.numero_da_linha_do_comando, variaveis.numero_maior_de_jogos_ganhos);
+    while (1)
     {
-      equipa_a_procurar = variaveis.cabeca_equipas;
-      printf("%d Melhores %d\n", variaveis.numero_da_linha_do_comando, variaveis.numero_maior_de_jogos_ganhos);
-      while (1)
+      if (equipa_a_procurar->jogos_ganhos == variaveis.numero_maior_de_jogos_ganhos)
       {
-        if (equipa_a_procurar->jogos_ganhos == variaveis.numero_maior_de_jogos_ganhos)
-        {
-          {
-            printf("%d * %s\n", variaveis.numero_da_linha_do_comando, equipa_a_procurar->nome);
-          }
-        }
-        else
-        {
-          
-        }
+        printf("%d * %s\n", variaveis.numero_da_linha_do_comando, equipa_a_procurar->nome);
+      }
+      else
+      {
+        
+      }
 
-        if (equipa_a_procurar->seguinte == 0)
-        {
-          {
-            break;
-          }
-        }
-        else
-        {
-          {
-            equipa_a_procurar = equipa_a_procurar->seguinte;
-          }
-        }
-
+      if (equipa_a_procurar->seguinte == 0)
+      {
+        break;
+      }
+      else
+      {
+        equipa_a_procurar = equipa_a_procurar->seguinte;
       }
 
     }
+
   }
 
   return;
@@ -989,28 +847,26 @@ Variaveis_mais_ou_menos_globais altera_score(char *comando_do_utilizador, Variav
   {
     if ((comando_do_utilizador[i] == ':') || (comando_do_utilizador[i] == '\n'))
     {
+      aux_componente[contador_componente] = '\0';
+      switch (paragens)
       {
-        aux_componente[contador_componente] = '\0';
-        switch (paragens)
-        {
-          case 0:
-            nome_do_jogo_a_procurar[contador_componente] = '\0';
-            break;
+        case 0:
+          nome_do_jogo_a_procurar[contador_componente] = '\0';
+          break;
 
-          case 1:
-            score_1_novo = atoi(aux_componente);
-            break;
+        case 1:
+          score_1_novo = atoi(aux_componente);
+          break;
 
-          case 2:
-            score_2_novo = atoi(aux_componente);
-            break;
+        case 2:
+          score_2_novo = atoi(aux_componente);
+          break;
 
-        }
-
-        paragens++;
-        contador_componente = 0;
-        continue;
       }
+
+      paragens++;
+      contador_componente = 0;
+      continue;
     }
     else
     {
@@ -1039,83 +895,67 @@ Variaveis_mais_ou_menos_globais altera_score(char *comando_do_utilizador, Variav
   jogo_a_procurar = existe_jogo(variaveis, nome_do_jogo_a_procurar);
   if (jogo_a_procurar == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", variaveis.numero_da_linha_do_comando);
-    }
+    printf("%d Jogo inexistente.\n", variaveis.numero_da_linha_do_comando);
   }
   else
   {
+    equipa1 = existe_equipa(variaveis, jogo_a_procurar->nome_equipa_1);
+    equipa2 = existe_equipa(variaveis, jogo_a_procurar->nome_equipa_2);
+    if (jogo_a_procurar->score_equipa_1 > jogo_a_procurar->score_equipa_2)
     {
-      equipa1 = existe_equipa(variaveis, jogo_a_procurar->nome_equipa_1);
-      equipa2 = existe_equipa(variaveis, jogo_a_procurar->nome_equipa_2);
-      if (jogo_a_procurar->score_equipa_1 > jogo_a_procurar->score_equipa_2)
-      {
-        {
-          equipa1->jogos_ganhos--;
-        }
-      }
-      else
-      {
-        if (jogo_a_procurar->score_equipa_1 < jogo_a_procurar->score_equipa_2)
-        {
-          {
-            equipa2->jogos_ganhos--;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      jogo_a_procurar->score_equipa_1 = score_1_novo;
-      jogo_a_procurar->score_equipa_2 = score_2_novo;
-      if (jogo_a_procurar->score_equipa_1 > jogo_a_procurar->score_equipa_2)
-      {
-        {
-          equipa1->jogos_ganhos++;
-          if (equipa1->jogos_ganhos > variaveis.numero_maior_de_jogos_ganhos)
-          {
-            {
-              variaveis.numero_maior_de_jogos_ganhos++;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-      }
-      else
-      {
-        if (jogo_a_procurar->score_equipa_1 < jogo_a_procurar->score_equipa_2)
-        {
-          {
-            equipa2->jogos_ganhos++;
-            if (equipa2->jogos_ganhos > variaveis.numero_maior_de_jogos_ganhos)
-            {
-              {
-                variaveis.numero_maior_de_jogos_ganhos++;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      return variaveis;
+      equipa1->jogos_ganhos--;
     }
+    else
+    {
+      if (jogo_a_procurar->score_equipa_1 < jogo_a_procurar->score_equipa_2)
+      {
+        equipa2->jogos_ganhos--;
+      }
+      else
+      {
+        
+      }
+
+    }
+
+    jogo_a_procurar->score_equipa_1 = score_1_novo;
+    jogo_a_procurar->score_equipa_2 = score_2_novo;
+    if (jogo_a_procurar->score_equipa_1 > jogo_a_procurar->score_equipa_2)
+    {
+      equipa1->jogos_ganhos++;
+      if (equipa1->jogos_ganhos > variaveis.numero_maior_de_jogos_ganhos)
+      {
+        variaveis.numero_maior_de_jogos_ganhos++;
+      }
+      else
+      {
+        
+      }
+
+    }
+    else
+    {
+      if (jogo_a_procurar->score_equipa_1 < jogo_a_procurar->score_equipa_2)
+      {
+        equipa2->jogos_ganhos++;
+        if (equipa2->jogos_ganhos > variaveis.numero_maior_de_jogos_ganhos)
+        {
+          variaveis.numero_maior_de_jogos_ganhos++;
+        }
+        else
+        {
+          
+        }
+
+      }
+      else
+      {
+        
+      }
+
+    }
+
+    return variaveis;
   }
 
   return variaveis;

@@ -34,10 +34,8 @@ void adiciona_jogo(lista *lista_jogos, pTabela_jogos tabela_jogos, pTabela_equip
   score[1] = new_sym_var(sizeof(unsigned int) * 8);
   if (procura_jogo_tabela(tabela_jogos, buffer[0]) != 0)
   {
-    {
-      printf("%u Jogo existente.\n", Num_Linha);
-      return;
-    }
+    printf("%u Jogo existente.\n", Num_Linha);
+    return;
   }
   else
   {
@@ -46,10 +44,8 @@ void adiciona_jogo(lista *lista_jogos, pTabela_jogos tabela_jogos, pTabela_equip
 
   if ((procura_equipa_tabela(tabela_equipas, buffer[1]) == 0) || (procura_equipa_tabela(tabela_equipas, buffer[2]) == 0))
   {
-    {
-      printf("%u Equipa inexistente.\n", Num_Linha);
-      return;
-    }
+    printf("%u Equipa inexistente.\n", Num_Linha);
+    return;
   }
   else
   {
@@ -164,10 +160,8 @@ void apaga_jogo(pTabela_jogos tabela_jogos, lista *lista_jogos, pTabela_equipas 
   nome_jogo[10 - 1] = '\0';
   if ((jogo = remove_jogo_tabela(tabela_jogos, nome_jogo)) == 0)
   {
-    {
-      printf("%u Jogo inexistente.\n", Num_Linha);
-      return;
-    }
+    printf("%u Jogo inexistente.\n", Num_Linha);
+    return;
   }
   else
   {
@@ -205,10 +199,8 @@ void altera_pontuacao(pTabela_jogos tabela_jogos, pTabela_equipas tabela_equipas
   novo_score[1] = new_sym_var(sizeof(unsigned int) * 8);
   if ((jogo = procura_jogo_tabela(tabela_jogos, nome_jogo)) == 0)
   {
-    {
-      printf("%u Jogo inexistente.\n", Num_Linha);
-      return;
-    }
+    printf("%u Jogo inexistente.\n", Num_Linha);
+    return;
   }
   else
   {
@@ -220,20 +212,16 @@ void altera_pontuacao(pTabela_jogos tabela_jogos, pTabela_equipas tabela_equipas
   vencedor_atual = obtem_vencedor_jogo(jogo);
   if ((vencedor_anterior != 0) && (vencedor_atual != 0))
   {
+    if (strcmp(vencedor_anterior, vencedor_atual) != 0)
     {
-      if (strcmp(vencedor_anterior, vencedor_atual) != 0)
-      {
-        {
-          altera_vitorias_equipa(procura_equipa_tabela(tabela_equipas, vencedor_anterior), -1);
-          altera_vitorias_equipa(procura_equipa_tabela(tabela_equipas, vencedor_atual), 1);
-        }
-      }
-      else
-      {
-        
-      }
-
+      altera_vitorias_equipa(procura_equipa_tabela(tabela_equipas, vencedor_anterior), -1);
+      altera_vitorias_equipa(procura_equipa_tabela(tabela_equipas, vencedor_atual), 1);
     }
+    else
+    {
+      
+    }
+
   }
   else
   {

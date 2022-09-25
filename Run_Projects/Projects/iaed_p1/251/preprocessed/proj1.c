@@ -126,22 +126,18 @@ void A(int ide, int idp, int qtd)
         {
           if (find_prod(ide, idp) == 200)
           {
-            {
-              encomendas[ide].peso_total += produtos[idp].peso * qtd;
-              encomendas[ide].idps[encomendas[ide].counterPE] = idp;
-              encomendas[ide].qtds[encomendas[ide].counterPE] = qtd;
-              encomendas[ide].counterPE++;
-              produtos[idp].qtd -= qtd;
-            }
+            encomendas[ide].peso_total += produtos[idp].peso * qtd;
+            encomendas[ide].idps[encomendas[ide].counterPE] = idp;
+            encomendas[ide].qtds[encomendas[ide].counterPE] = qtd;
+            encomendas[ide].counterPE++;
+            produtos[idp].qtd -= qtd;
           }
           else
           {
-            {
-              i = find_prod(ide, idp);
-              encomendas[ide].qtds[i] += qtd;
-              encomendas[ide].peso_total += produtos[idp].peso * qtd;
-              produtos[idp].qtd -= qtd;
-            }
+            i = find_prod(ide, idp);
+            encomendas[ide].qtds[i] += qtd;
+            encomendas[ide].peso_total += produtos[idp].peso * qtd;
+            produtos[idp].qtd -= qtd;
           }
 
         }
@@ -193,18 +189,16 @@ void R(int ide, int idp)
     {
       if (find_prod(ide, idp) != 200)
       {
+        i = find_prod(ide, idp);
+        produtos[idp].qtd += encomendas[ide].qtds[i];
+        encomendas[ide].peso_total -= produtos[idp].peso * encomendas[ide].qtds[i];
+        for (posicao = i; posicao < 200; posicao++)
         {
-          i = find_prod(ide, idp);
-          produtos[idp].qtd += encomendas[ide].qtds[i];
-          encomendas[ide].peso_total -= produtos[idp].peso * encomendas[ide].qtds[i];
-          for (posicao = i; posicao < 200; posicao++)
-          {
-            encomendas[ide].idps[posicao] = encomendas[ide].idps[posicao + 1];
-            encomendas[ide].qtds[posicao] = encomendas[ide].qtds[posicao + 1];
-          }
-
-          encomendas[ide].counterPE--;
+          encomendas[ide].idps[posicao] = encomendas[ide].idps[posicao + 1];
+          encomendas[ide].qtds[posicao] = encomendas[ide].qtds[posicao + 1];
         }
+
+        encomendas[ide].counterPE--;
       }
       else
       {
@@ -227,12 +221,10 @@ void C(int ide)
   }
   else
   {
-    {
-      for (i = 0; i < encomendas[ide].counterPE; i++)
-        custo_total += produtos[encomendas[ide].idps[i]].preco * encomendas[ide].qtds[i];
+    for (i = 0; i < encomendas[ide].counterPE; i++)
+      custo_total += produtos[encomendas[ide].idps[i]].preco * encomendas[ide].qtds[i];
 
-      printf("Custo da encomenda %d %d.\n", ide, custo_total);
-    }
+    printf("Custo da encomenda %d %d.\n", ide, custo_total);
   }
 
 }
@@ -266,19 +258,17 @@ void E(int ide, int idp)
     }
     else
     {
+      i = find_prod(ide, idp);
+      if (i == 200)
       {
-        i = find_prod(ide, idp);
-        if (i == 200)
-        {
-          q = 0;
-        }
-        else
-        {
-          q = encomendas[ide].qtds[i];
-        }
-
-        printf("%s %d.\n", produtos[idp].descricao, q);
+        q = 0;
       }
+      else
+      {
+        q = encomendas[ide].qtds[i];
+      }
+
+      printf("%s %d.\n", produtos[idp].descricao, q);
     }
 
   }
@@ -297,29 +287,13 @@ void m(int idp)
   }
   else
   {
+    for (i = 0; i < 500; i++)
     {
-      for (i = 0; i < 500; i++)
+      find = find_prod(i, idp);
+      if ((find != 200) && (max_qtd < encomendas[i].qtds[find]))
       {
-        find = find_prod(i, idp);
-        if ((find != 200) && (max_qtd < encomendas[i].qtds[find]))
-        {
-          {
-            max_qtd = encomendas[i].qtds[find_prod(i, idp)];
-            max_index = i;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      if (max_index != (-1))
-      {
-        {
-          printf("Maximo produto %d %d %d.\n", idp, max_index, max_qtd);
-        }
+        max_qtd = encomendas[i].qtds[find_prod(i, idp)];
+        max_index = i;
       }
       else
       {
@@ -327,6 +301,16 @@ void m(int idp)
       }
 
     }
+
+    if (max_index != (-1))
+    {
+      printf("Maximo produto %d %d %d.\n", idp, max_index, max_qtd);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -360,38 +344,34 @@ void L(int ide)
   }
   else
   {
+    printf("Encomenda %d\n", ide);
+    for (i = 0; i < encomendas[ide].counterPE; i++)
     {
-      printf("Encomenda %d\n", ide);
-      for (i = 0; i < encomendas[ide].counterPE; i++)
+      produtos_aux[i] = produtos[encomendas[ide].idps[i]];
+      produtos_aux[i].qtd = encomendas[ide].qtds[i];
+      strcpy(produtos_aux[i].descricao, produtos[encomendas[ide].idps[i]].descricao);
+    }
+
+    for (i = 0; i < encomendas[ide].counterPE; i++)
+      for (j = i + 1; j < encomendas[ide].counterPE; j++)
+    {
+      if (strcmp(produtos_aux[i].descricao, produtos_aux[j].descricao) > 0)
       {
-        produtos_aux[i] = produtos[encomendas[ide].idps[i]];
-        produtos_aux[i].qtd = encomendas[ide].qtds[i];
-        strcpy(produtos_aux[i].descricao, produtos[encomendas[ide].idps[i]].descricao);
+        aux = produtos_aux[i];
+        produtos_aux[i] = produtos_aux[j];
+        produtos_aux[j] = aux;
       }
-
-      for (i = 0; i < encomendas[ide].counterPE; i++)
-        for (j = i + 1; j < encomendas[ide].counterPE; j++)
+      else
       {
-        if (strcmp(produtos_aux[i].descricao, produtos_aux[j].descricao) > 0)
-        {
-          {
-            aux = produtos_aux[i];
-            produtos_aux[i] = produtos_aux[j];
-            produtos_aux[j] = aux;
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
-
-
-      for (i = 0; i < encomendas[ide].counterPE; i++)
-        printf("* %s %d %d\n", produtos_aux[i].descricao, produtos_aux[i].preco, produtos_aux[i].qtd);
 
     }
+
+
+    for (i = 0; i < encomendas[ide].counterPE; i++)
+      printf("* %s %d %d\n", produtos_aux[i].descricao, produtos_aux[i].preco, produtos_aux[i].qtd);
+
   }
 
 }

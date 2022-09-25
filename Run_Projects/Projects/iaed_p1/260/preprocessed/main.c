@@ -44,10 +44,8 @@ void insert_product(Product *product)
   for (i = 0; i < product_count; i++)
     if (((*products[i]->price) > (*product->price)) || (((*product->price) == (*products[i]->price)) && (product->id < products[i]->id)))
   {
-    {
-      insert_pos = i;
-      break;
-    }
+    insert_pos = i;
+    break;
   }
   else
   {
@@ -133,23 +131,19 @@ void remove_product(int o_id, int p_id)
     }
     else
     {
+      int pos;
+      if ((pos = find_product_pos(o_id, p_id)) > (-1))
       {
-        int pos;
-        if ((pos = find_product_pos(o_id, p_id)) > (-1))
-        {
-          {
-            int id = orders[o_id].p_refs[pos].id;
-            add_stock(orders[o_id].p_refs[pos].id, orders[o_id].p_refs[pos].stock);
-            orders[o_id].weight -= p_info[id].weight * orders[o_id].p_refs[pos].stock;
-            orders[o_id].p_refs[pos].stock = 0;
-          }
-        }
-        else
-        {
-          
-        }
-
+        int id = orders[o_id].p_refs[pos].id;
+        add_stock(orders[o_id].p_refs[pos].id, orders[o_id].p_refs[pos].stock);
+        orders[o_id].weight -= p_info[id].weight * orders[o_id].p_refs[pos].stock;
+        orders[o_id].p_refs[pos].stock = 0;
       }
+      else
+      {
+        
+      }
+
     }
 
   }
@@ -164,20 +158,18 @@ void alter_price(int p_id, int new_price)
   }
   else
   {
-    {
-      Product *prod;
-      int i;
-      *p_info[p_id].price = new_price;
-      for (i = 0; products[i]->id != p_id; i++)
-        ;
+    Product *prod;
+    int i;
+    *p_info[p_id].price = new_price;
+    for (i = 0; products[i]->id != p_id; i++)
+      ;
 
-      prod = products[i];
-      for (; i < product_count; products[i] = products[i + 1], i++)
-        ;
+    prod = products[i];
+    for (; i < product_count; products[i] = products[i + 1], i++)
+      ;
 
-      product_count--;
-      insert_product(prod);
-    }
+    product_count--;
+    insert_product(prod);
   }
 
 }
@@ -208,28 +200,24 @@ void add_to_order(int o_id, int p_id, int stock)
         }
         else
         {
+          Product_ref p_ref;
+          int pos;
+          p_info[p_id].stock -= stock;
+          orders[o_id].weight += p_info[p_id].weight * stock;
+          if ((pos = find_product_pos(o_id, p_id)) > (-1))
           {
-            Product_ref p_ref;
-            int pos;
-            p_info[p_id].stock -= stock;
-            orders[o_id].weight += p_info[p_id].weight * stock;
-            if ((pos = find_product_pos(o_id, p_id)) > (-1))
-            {
-              {
-                orders[o_id].p_refs[pos].stock += stock;
-                return;
-              }
-            }
-            else
-            {
-              
-            }
-
-            p_ref.id = p_id;
-            p_ref.stock = stock;
-            insert_into_order(orders[o_id].p_refs, orders[o_id].ref_cnt, p_ref);
-            orders[o_id].ref_cnt++;
+            orders[o_id].p_refs[pos].stock += stock;
+            return;
           }
+          else
+          {
+            
+          }
+
+          p_ref.id = p_id;
+          p_ref.stock = stock;
+          insert_into_order(orders[o_id].p_refs, orders[o_id].ref_cnt, p_ref);
+          orders[o_id].ref_cnt++;
         }
 
       }
@@ -257,35 +245,31 @@ void find_most_product(int p_id)
   }
   else
   {
+    int x;
+    int pos;
+    int order = -1;
+    int stock = 0;
+    for (x = 0; x < order_count; x++)
+      if (((pos = find_product_pos(x, p_id)) > (-1)) && (orders[x].p_refs[pos].stock > stock))
     {
-      int x;
-      int pos;
-      int order = -1;
-      int stock = 0;
-      for (x = 0; x < order_count; x++)
-        if (((pos = find_product_pos(x, p_id)) > (-1)) && (orders[x].p_refs[pos].stock > stock))
-      {
-        {
-          order = x;
-          stock = orders[x].p_refs[pos].stock;
-        }
-      }
-      else
-      {
-        
-      }
-
-
-      if (stock)
-      {
-        printf("Maximo produto %d %d %d.\n", p_id, order, stock);
-      }
-      else
-      {
-        
-      }
-
+      order = x;
+      stock = orders[x].p_refs[pos].stock;
     }
+    else
+    {
+      
+    }
+
+
+    if (stock)
+    {
+      printf("Maximo produto %d %d %d.\n", p_id, order, stock);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -298,14 +282,12 @@ void calc_order_cost(int o_id)
   }
   else
   {
-    {
-      int i;
-      int total = 0;
-      for (i = 0; i < orders[o_id].ref_cnt; i++)
-        total += orders[o_id].p_refs[i].stock * (*p_info[orders[o_id].p_refs[i].id].price);
+    int i;
+    int total = 0;
+    for (i = 0; i < orders[o_id].ref_cnt; i++)
+      total += orders[o_id].p_refs[i].stock * (*p_info[orders[o_id].p_refs[i].id].price);
 
-      printf("Custo da encomenda %d %d.\n", o_id, total);
-    }
+    printf("Custo da encomenda %d %d.\n", o_id, total);
   }
 
 }
@@ -324,23 +306,19 @@ void show_product(int o_id, int p_id)
     }
     else
     {
+      int pos;
+      if ((pos = find_product_pos(o_id, p_id)) > (-1))
       {
-        int pos;
-        if ((pos = find_product_pos(o_id, p_id)) > (-1))
-        {
-          {
-            int id = orders[o_id].p_refs[pos].id;
-            printf("%s %d.\n", p_info[id].desc, orders[o_id].p_refs[pos].stock);
-            return;
-          }
-        }
-        else
-        {
-          
-        }
-
-        printf("%s 0.\n", p_info[p_id].desc);
+        int id = orders[o_id].p_refs[pos].id;
+        printf("%s %d.\n", p_info[id].desc, orders[o_id].p_refs[pos].stock);
+        return;
       }
+      else
+      {
+        
+      }
+
+      printf("%s 0.\n", p_info[p_id].desc);
     }
 
   }
@@ -355,24 +333,20 @@ void show_order(int o_id)
   }
   else
   {
+    int i;
+    printf("Encomenda %d\n", o_id);
+    for (i = 0; i < orders[o_id].ref_cnt; i++)
+      if (orders[o_id].p_refs[i].stock)
     {
-      int i;
-      printf("Encomenda %d\n", o_id);
-      for (i = 0; i < orders[o_id].ref_cnt; i++)
-        if (orders[o_id].p_refs[i].stock)
-      {
-        {
-          int id = orders[o_id].p_refs[i].id;
-          printf("* %s %d %d\n", p_info[id].desc, *p_info[id].price, orders[o_id].p_refs[i].stock);
-        }
-      }
-      else
-      {
-        
-      }
-
-
+      int id = orders[o_id].p_refs[i].id;
+      printf("* %s %d %d\n", p_info[id].desc, *p_info[id].price, orders[o_id].p_refs[i].stock);
     }
+    else
+    {
+      
+    }
+
+
   }
 
 }

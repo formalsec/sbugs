@@ -73,9 +73,7 @@ jogo *procura_j(jogo *heads[], char *nome)
   {
     if (!strcmp(aux->nome, nome))
     {
-      {
-        return aux;
-      }
+      return aux;
     }
     else
     {
@@ -96,19 +94,17 @@ void rem_no(jogo *heads[], char *nome)
   {
     if (!strcmp(aux->nome, nome))
     {
+      if (aux == heads[i])
       {
-        if (aux == heads[i])
-        {
-          heads[i] = aux->next;
-        }
-        else
-        {
-          aux_ant->next = aux->next;
-        }
-
-        free_no(aux);
-        break;
+        heads[i] = aux->next;
       }
+      else
+      {
+        aux_ant->next = aux->next;
+      }
+
+      free_no(aux);
+      break;
     }
     else
     {
@@ -171,9 +167,7 @@ equipa *procura_e(equipa *heads[], char *nome)
   {
     if (!strcmp(aux->nome, nome))
     {
-      {
-        return aux;
-      }
+      return aux;
     }
     else
     {
@@ -194,19 +188,17 @@ void rem_eq(equipa *heads[], char *nome)
   {
     if (!strcmp(aux->nome, nome))
     {
+      if (aux == heads[i])
       {
-        if (aux == heads[i])
-        {
-          heads[i] = aux->next;
-        }
-        else
-        {
-          aux_ant->next = aux->next;
-        }
-
-        free_eq(aux);
-        break;
+        heads[i] = aux->next;
       }
+      else
+      {
+        aux_ant->next = aux->next;
+      }
+
+      free_eq(aux);
+      break;
     }
     else
     {
@@ -249,9 +241,7 @@ void adiciona_fim(lista_jogo *lista, jogo *jogo)
   }
   else
   {
-    {
-      lista->head = aux;
-    }
+    lista->head = aux;
   }
 
   lista->last = aux;
@@ -265,29 +255,27 @@ jogo *elimina_jo(lista_jogo *lista, char *nome)
   {
     if (!strcmp(aux->jogo_lista->nome, nome))
     {
+      if (aux->prev == 0)
       {
-        if (aux->prev == 0)
-        {
-          lista->head = aux->next;
-        }
-        else
-        {
-          aux->prev->next = aux->next;
-        }
-
-        if (aux->next == 0)
-        {
-          lista->last = aux->prev;
-        }
-        else
-        {
-          aux->next->prev = aux->prev;
-        }
-
-        aux_ret = aux->jogo_lista;
-        free(aux);
-        return aux_ret;
+        lista->head = aux->next;
       }
+      else
+      {
+        aux->prev->next = aux->next;
+      }
+
+      if (aux->next == 0)
+      {
+        lista->last = aux->prev;
+      }
+      else
+      {
+        aux->next->prev = aux->prev;
+      }
+
+      aux_ret = aux->jogo_lista;
+      free(aux);
+      return aux_ret;
     }
     else
     {
@@ -326,21 +314,19 @@ int adiciona_lex(lista_equipa *lista, equipa *equipa)
   aux->equipa_lista = equipa;
   if ((!lista->head) || (strcmp(equipa->nome, lista->last->equipa_lista->nome) > 0))
   {
+    aux->prev = lista->last;
+    aux->next = 0;
+    if (lista->last)
     {
-      aux->prev = lista->last;
-      aux->next = 0;
-      if (lista->last)
-      {
-        lista->last->next = aux;
-      }
-      else
-      {
-        lista->head = aux;
-      }
-
-      lista->last = aux;
-      return 0;
+      lista->last->next = aux;
     }
+    else
+    {
+      lista->head = aux;
+    }
+
+    lista->last = aux;
+    return 0;
   }
   else
   {
@@ -351,26 +337,20 @@ int adiciona_lex(lista_equipa *lista, equipa *equipa)
   {
     if (strcmp(equipa->nome, aux_comp->equipa_lista->nome) < 0)
     {
+      aux->next = aux_comp;
+      if (lista->head == aux_comp)
       {
-        aux->next = aux_comp;
-        if (lista->head == aux_comp)
-        {
-          {
-            lista->head = aux;
-            aux->prev = 0;
-          }
-        }
-        else
-        {
-          {
-            aux->prev = aux_comp->prev;
-            aux_comp->prev->next = aux;
-          }
-        }
-
-        aux_comp->prev = aux;
-        return 0;
+        lista->head = aux;
+        aux->prev = 0;
       }
+      else
+      {
+        aux->prev = aux_comp->prev;
+        aux_comp->prev->next = aux;
+      }
+
+      aux_comp->prev = aux;
+      return 0;
     }
     else
     {

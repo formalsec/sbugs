@@ -100,26 +100,20 @@ void add_product_to_order()
         }
         else
         {
+          if (orders[oid].product_quantities[pid])
           {
-            if (orders[oid].product_quantities[pid])
-            {
-              {
-                orders[oid].product_quantities[pid] += qty;
-                products[pid].stock -= qty;
-              }
-            }
-            else
-            {
-              {
-                orders[oid].product_quantities[pid] = qty;
-                orders[oid].pid_in_order[orders[oid].products_in] = pid;
-                orders[oid].products_in++;
-                products[pid].stock -= qty;
-              }
-            }
-
-            orders[oid].weight += products[pid].weight * qty;
+            orders[oid].product_quantities[pid] += qty;
+            products[pid].stock -= qty;
           }
+          else
+          {
+            orders[oid].product_quantities[pid] = qty;
+            orders[oid].pid_in_order[orders[oid].products_in] = pid;
+            orders[oid].products_in++;
+            products[pid].stock -= qty;
+          }
+
+          orders[oid].weight += products[pid].weight * qty;
         }
 
       }
@@ -175,31 +169,12 @@ void remove_product_from_order()
     }
     else
     {
+      for (i = 0; i < orders[oid].products_in; i++)
       {
-        for (i = 0; i < orders[oid].products_in; i++)
+        if (orders[oid].pid_in_order[i] == pid)
         {
-          if (orders[oid].pid_in_order[i] == pid)
-          {
-            {
-              orders[oid].pid_in_order[i] = orders[oid].pid_in_order[orders[oid].products_in - 1];
-              found = 1;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-        if (found)
-        {
-          {
-            orders[oid].weight -= products[pid].weight * orders[oid].product_quantities[pid];
-            products[pid].stock += orders[oid].product_quantities[pid];
-            orders[oid].product_quantities[pid] = 0;
-            orders[oid].products_in--;
-          }
+          orders[oid].pid_in_order[i] = orders[oid].pid_in_order[orders[oid].products_in - 1];
+          found = 1;
         }
         else
         {
@@ -207,6 +182,19 @@ void remove_product_from_order()
         }
 
       }
+
+      if (found)
+      {
+        orders[oid].weight -= products[pid].weight * orders[oid].product_quantities[pid];
+        products[pid].stock += orders[oid].product_quantities[pid];
+        orders[oid].product_quantities[pid] = 0;
+        orders[oid].products_in--;
+      }
+      else
+      {
+        
+      }
+
     }
 
   }
@@ -227,16 +215,14 @@ void calculate_cost()
   }
   else
   {
+    for (i = 0; i < orders[oid].products_in; i++)
     {
-      for (i = 0; i < orders[oid].products_in; i++)
-      {
-        pid = orders[oid].pid_in_order[i];
-        qty = orders[oid].product_quantities[pid];
-        cost += qty * products[pid].price;
-      }
-
-      printf("Custo da encomenda %d %d.\n", oid, cost);
+      pid = orders[oid].pid_in_order[i];
+      qty = orders[oid].product_quantities[pid];
+      cost += qty * products[pid].price;
     }
+
+    printf("Custo da encomenda %d %d.\n", oid, cost);
   }
 
 }
@@ -296,31 +282,27 @@ void order_product_ocurrence()
   }
   else
   {
+    for (k = 0; k < orders_counter; k++)
+      if (orders[k].product_quantities[pid] > max)
     {
-      for (k = 0; k < orders_counter; k++)
-        if (orders[k].product_quantities[pid] > max)
-      {
-        {
-          max = orders[k].product_quantities[pid];
-          order = k;
-        }
-      }
-      else
-      {
-        
-      }
-
-
-      if ((order != (-1)) && max)
-      {
-        printf("Maximo produto %d %d %d.\n", pid, order, max);
-      }
-      else
-      {
-        
-      }
-
+      max = orders[k].product_quantities[pid];
+      order = k;
     }
+    else
+    {
+      
+    }
+
+
+    if ((order != (-1)) && max)
+    {
+      printf("Maximo produto %d %d %d.\n", pid, order, max);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -373,10 +355,8 @@ int divide_by_price(product prod[], int low, int high, int split)
   {
     if (compare_price(prod[j], price) < 0)
     {
-      {
-        i++;
-        swap_products(&prod[i], &prod[j]);
-      }
+      i++;
+      swap_products(&prod[i], &prod[j]);
     }
     else
     {
@@ -400,10 +380,8 @@ int divide_by_description(product prod[], int low, int high, int split)
   {
     if (compare_descriptions(prod[j], description) < 0)
     {
-      {
-        i++;
-        swap_products(&prod[i], &prod[j]);
-      }
+      i++;
+      swap_products(&prod[i], &prod[j]);
     }
     else
     {
@@ -421,28 +399,26 @@ void quicksort(product prod[], int low, int high, char type[])
   int d;
   if (low < high)
   {
+    if (!strcmp(type, "price"))
     {
-      if (!strcmp(type, "price"))
-      {
-        d = divide_by_price(prod, low, high, (low + high) / 2);
-      }
-      else
-      {
-        
-      }
-
-      if (!strcmp(type, "description"))
-      {
-        d = divide_by_description(prod, low, high, (low + high) / 2);
-      }
-      else
-      {
-        
-      }
-
-      quicksort(prod, low, d - 1, type);
-      quicksort(prod, d + 1, high, type);
+      d = divide_by_price(prod, low, high, (low + high) / 2);
     }
+    else
+    {
+      
+    }
+
+    if (!strcmp(type, "description"))
+    {
+      d = divide_by_description(prod, low, high, (low + high) / 2);
+    }
+    else
+    {
+      
+    }
+
+    quicksort(prod, low, d - 1, type);
+    quicksort(prod, d + 1, high, type);
   }
   else
   {
@@ -477,19 +453,17 @@ void alphabetical_sort()
   }
   else
   {
+    for (i = 0; i < orders[oid].products_in; i++)
     {
-      for (i = 0; i < orders[oid].products_in; i++)
-      {
-        prod[i] = products[orders[oid].pid_in_order[i]];
-        prod[i].stock = orders[oid].product_quantities[orders[oid].pid_in_order[i]];
-      }
-
-      quicksort(prod, 0, orders[oid].products_in - 1, "description");
-      printf("Encomenda %d\n", oid);
-      for (i = 0; i < orders[oid].products_in; i++)
-        printf("* %s %d %d\n", prod[i].description, prod[i].price, prod[i].stock);
-
+      prod[i] = products[orders[oid].pid_in_order[i]];
+      prod[i].stock = orders[oid].product_quantities[orders[oid].pid_in_order[i]];
     }
+
+    quicksort(prod, 0, orders[oid].products_in - 1, "description");
+    printf("Encomenda %d\n", oid);
+    for (i = 0; i < orders[oid].products_in; i++)
+      printf("* %s %d %d\n", prod[i].description, prod[i].price, prod[i].stock);
+
   }
 
 }

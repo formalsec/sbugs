@@ -23,9 +23,7 @@ int hashFunction(char *text)
 
   if (final < 0)
   {
-    {
-      final *= -1;
-    }
+    final *= -1;
   }
   else
   {
@@ -46,16 +44,12 @@ void NewNodeMatch(linkMatch *head, char *matchName, char *team1, char *team2, un
   new_node->next = 0;
   if ((*head) == 0)
   {
-    {
-      *head = new_node;
-    }
+    *head = new_node;
   }
   else
   {
-    {
-      new_node->next = *head;
-      *head = new_node;
-    }
+    new_node->next = *head;
+    *head = new_node;
   }
 
 }
@@ -83,12 +77,10 @@ void FreeNodeMatch(linkMatch toDelete)
 {
   if (toDelete != 0)
   {
-    {
-      free(toDelete->matchName);
-      free(toDelete->team1);
-      free(toDelete->team2);
-      free(toDelete);
-    }
+    free(toDelete->matchName);
+    free(toDelete->team1);
+    free(toDelete->team2);
+    free(toDelete);
   }
   else
   {

@@ -11,48 +11,38 @@ void command_a(char name[], char team1[], char team2[], int score1, int score2, 
 {
   if (search_game(games, name) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", counter);
-    }
+    printf("%d Jogo existente.\n", counter);
   }
   else
   {
     if ((search_team(teams, team1) == 0) || (search_team(teams, team2) == 0))
     {
-      {
-        printf("%d Equipa inexistente.\n", counter);
-      }
+      printf("%d Equipa inexistente.\n", counter);
     }
     else
     {
+      ItemGame game = newItem_game(name, team1, team2, score1, score2);
+      insert_game(games, game);
+      append_list(list, game);
+      if (score1 > score2)
       {
-        ItemGame game = newItem_game(name, team1, team2, score1, score2);
-        insert_game(games, game);
-        append_list(list, game);
-        if (score1 > score2)
+        ItemTeam team = search_team(teams, team1);
+        team->numGamesWon++;
+      }
+      else
+      {
+        if (score1 < score2)
         {
-          {
-            ItemTeam team = search_team(teams, team1);
-            team->numGamesWon++;
-          }
+          ItemTeam team = search_team(teams, team2);
+          team->numGamesWon++;
         }
         else
         {
-          if (score1 < score2)
-          {
-            {
-              ItemTeam team = search_team(teams, team2);
-              team->numGamesWon++;
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
+
     }
 
   }
@@ -63,15 +53,11 @@ void command_A(char name[], int counter, LinkTeam *teams)
 {
   if (search_team(teams, name) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", counter);
-    }
+    printf("%d Equipa existente.\n", counter);
   }
   else
   {
-    {
-      insert_team(teams, newItem_team(name));
-    }
+    insert_team(teams, newItem_team(name));
   }
 
 }
@@ -85,16 +71,12 @@ void command_p(char name[], int counter, LinkGame *games)
 {
   if (search_game(games, name) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", counter);
-    }
+    printf("%d Jogo inexistente.\n", counter);
   }
   else
   {
-    {
-      printf("%d ", counter);
-      showItem_game(search_game(games, name));
-    }
+    printf("%d ", counter);
+    showItem_game(search_game(games, name));
   }
 
 }
@@ -103,16 +85,12 @@ void command_P(char name[], int counter, LinkTeam *teams)
 {
   if (search_team(teams, name) == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", counter);
-    }
+    printf("%d Equipa inexistente.\n", counter);
   }
   else
   {
-    {
-      printf("%d ", counter);
-      showItem_team(search_team(teams, name));
-    }
+    printf("%d ", counter);
+    showItem_team(search_team(teams, name));
   }
 
 }
@@ -121,37 +99,29 @@ void command_r(char name[], int counter, LinkGame *games, LinkTeam *teams, Linke
 {
   if (search_game(games, name) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", counter);
-    }
+    printf("%d Jogo inexistente.\n", counter);
   }
   else
   {
+    if (search_game(games, name)->score1 > search_game(games, name)->score2)
     {
-      if (search_game(games, name)->score1 > search_game(games, name)->score2)
+      search_team(teams, search_game(games, name)->team1)->numGamesWon--;
+    }
+    else
+    {
+      if (search_game(games, name)->score1 < search_game(games, name)->score2)
       {
-        {
-          search_team(teams, search_game(games, name)->team1)->numGamesWon--;
-        }
+        search_team(teams, search_game(games, name)->team2)->numGamesWon--;
       }
       else
       {
-        if (search_game(games, name)->score1 < search_game(games, name)->score2)
-        {
-          {
-            search_team(teams, search_game(games, name)->team2)->numGamesWon--;
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      delete_game(games, name);
-      remove_elem_list(list, name);
     }
+
+    delete_game(games, name);
+    remove_elem_list(list, name);
   }
 
 }
@@ -162,124 +132,95 @@ void command_s(char name[], int score1, int score2, int counter, LinkGame *games
   int finalWin = 0;
   if (search_game(games, name) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", counter);
-    }
+    printf("%d Jogo inexistente.\n", counter);
   }
   else
   {
+    if (search_game(games, name)->score1 > search_game(games, name)->score2)
     {
-      if (search_game(games, name)->score1 > search_game(games, name)->score2)
+      initWin = 1;
+    }
+    else
+    {
+      if (search_game(games, name)->score1 < search_game(games, name)->score2)
       {
-        {
-          initWin = 1;
-        }
+        initWin = 2;
       }
       else
       {
-        if (search_game(games, name)->score1 < search_game(games, name)->score2)
-        {
-          {
-            initWin = 2;
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      if (score1 > score2)
+    }
+
+    if (score1 > score2)
+    {
+      finalWin = 1;
+    }
+    else
+    {
+      if (score1 < score2)
       {
-        {
-          finalWin = 1;
-        }
+        finalWin = 2;
       }
       else
       {
-        if (score1 < score2)
-        {
-          {
-            finalWin = 2;
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      if (((initWin == 1) && (finalWin == 2)) && (search_team(teams, search_game(games, name)->team1)->numGamesWon > 0))
+    }
+
+    if (((initWin == 1) && (finalWin == 2)) && (search_team(teams, search_game(games, name)->team1)->numGamesWon > 0))
+    {
+      search_team(teams, search_game(games, name)->team1)->numGamesWon--;
+      search_team(teams, search_game(games, name)->team2)->numGamesWon++;
+    }
+    else
+    {
+      if ((initWin == 1) && (finalWin == 2))
       {
-        {
-          search_team(teams, search_game(games, name)->team1)->numGamesWon--;
-          search_team(teams, search_game(games, name)->team2)->numGamesWon++;
-        }
+        search_team(teams, search_game(games, name)->team2)->numGamesWon++;
       }
       else
       {
-        if ((initWin == 1) && (finalWin == 2))
+        if (((initWin == 2) && (finalWin == 1)) && (search_team(teams, search_game(games, name)->team2)->numGamesWon > 0))
         {
-          {
-            search_team(teams, search_game(games, name)->team2)->numGamesWon++;
-          }
+          search_team(teams, search_game(games, name)->team1)->numGamesWon++;
+          search_team(teams, search_game(games, name)->team2)->numGamesWon--;
         }
         else
         {
-          if (((initWin == 2) && (finalWin == 1)) && (search_team(teams, search_game(games, name)->team2)->numGamesWon > 0))
+          if ((initWin == 2) && (finalWin == 1))
           {
-            {
-              search_team(teams, search_game(games, name)->team1)->numGamesWon++;
-              search_team(teams, search_game(games, name)->team2)->numGamesWon--;
-            }
+            search_team(teams, search_game(games, name)->team1)->numGamesWon++;
           }
           else
           {
-            if ((initWin == 2) && (finalWin == 1))
+            if ((initWin == 1) && (finalWin == 0))
             {
-              {
-                search_team(teams, search_game(games, name)->team1)->numGamesWon++;
-              }
+              search_team(teams, search_game(games, name)->team1)->numGamesWon--;
             }
             else
             {
-              if ((initWin == 1) && (finalWin == 0))
+              if ((initWin == 2) && (finalWin == 0))
               {
-                {
-                  search_team(teams, search_game(games, name)->team1)->numGamesWon--;
-                }
+                search_team(teams, search_game(games, name)->team2)->numGamesWon--;
               }
               else
               {
-                if ((initWin == 2) && (finalWin == 0))
+                if ((initWin == 0) && (finalWin == 1))
                 {
-                  {
-                    search_team(teams, search_game(games, name)->team2)->numGamesWon--;
-                  }
+                  search_team(teams, search_game(games, name)->team1)->numGamesWon++;
                 }
                 else
                 {
-                  if ((initWin == 0) && (finalWin == 1))
+                  if ((initWin == 0) && (finalWin == 2))
                   {
-                    {
-                      search_team(teams, search_game(games, name)->team1)->numGamesWon++;
-                    }
+                    search_team(teams, search_game(games, name)->team2)->numGamesWon++;
                   }
                   else
                   {
-                    if ((initWin == 0) && (finalWin == 2))
-                    {
-                      {
-                        search_team(teams, search_game(games, name)->team2)->numGamesWon++;
-                      }
-                    }
-                    else
-                    {
-                      
-                    }
-
+                    
                   }
 
                 }
@@ -294,11 +235,12 @@ void command_s(char name[], int score1, int score2, int counter, LinkGame *games
 
       }
 
-      search_game(games, name)->score1 = score1;
-      search_game(games, name)->score2 = score2;
-      search_list(list, name)->score1 = score1;
-      search_list(list, name)->score2 = score2;
     }
+
+    search_game(games, name)->score1 = score1;
+    search_game(games, name)->score2 = score2;
+    search_list(list, name)->score1 = score1;
+    search_list(list, name)->score2 = score2;
   }
 
 }
@@ -325,20 +267,16 @@ void command_g(int counter, LinkTeam *teams)
     {
       if (head->item->numGamesWon == maxGamesWon)
       {
-        {
-          highTeams[size] = head->item->name;
-          size++;
-        }
+        highTeams[size] = head->item->name;
+        size++;
       }
       else
       {
         if (head->item->numGamesWon > maxGamesWon)
         {
-          {
-            maxGamesWon = head->item->numGamesWon;
-            highTeams[0] = head->item->name;
-            size = 1;
-          }
+          maxGamesWon = head->item->numGamesWon;
+          highTeams[0] = head->item->name;
+          size = 1;
         }
         else
         {
@@ -353,21 +291,17 @@ void command_g(int counter, LinkTeam *teams)
 
   if (size == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
+    qsort(highTeams, size, sizeof(char *), cmpfunc);
+    printf("%d Melhores %d\n", counter, maxGamesWon);
+    for (i = 0; i < size; i++)
     {
-      qsort(highTeams, size, sizeof(char *), cmpfunc);
-      printf("%d Melhores %d\n", counter, maxGamesWon);
-      for (i = 0; i < size; i++)
-      {
-        printf("%d * %s\n", counter, highTeams[i]);
-      }
-
+      printf("%d * %s\n", counter, highTeams[i]);
     }
+
   }
 
 }

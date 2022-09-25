@@ -115,30 +115,26 @@ void print_melhores_equipas(pTabela_equipas tabela, unsigned int Num_Linha)
   {
     if (tabela->equipas[i] != 0)
     {
+      num_equipas_percorridas++;
+      if ((vitorias_equipa = obtem_vitorias_equipa(tabela->equipas[i])) > maximo_vitorias)
       {
-        num_equipas_percorridas++;
-        if ((vitorias_equipa = obtem_vitorias_equipa(tabela->equipas[i])) > maximo_vitorias)
+        maximo_vitorias = vitorias_equipa;
+        j = 0;
+        melhores_equipas_buffer[j++] = obtem_nome_equipa(tabela->equipas[i]);
+      }
+      else
+      {
+        if (vitorias_equipa == maximo_vitorias)
         {
-          {
-            maximo_vitorias = vitorias_equipa;
-            j = 0;
-            melhores_equipas_buffer[j++] = obtem_nome_equipa(tabela->equipas[i]);
-          }
+          melhores_equipas_buffer[j++] = obtem_nome_equipa(tabela->equipas[i]);
         }
         else
         {
-          if (vitorias_equipa == maximo_vitorias)
-          {
-            melhores_equipas_buffer[j++] = obtem_nome_equipa(tabela->equipas[i]);
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
+
     }
     else
     {
@@ -153,13 +149,11 @@ void print_melhores_equipas(pTabela_equipas tabela, unsigned int Num_Linha)
   }
   else
   {
-    {
-      melhores_equipas = (char **) malloc((sizeof(char *)) * j);
-      for (i = 0; i < j; i++)
-        melhores_equipas[i] = melhores_equipas_buffer[i];
+    melhores_equipas = (char **) malloc((sizeof(char *)) * j);
+    for (i = 0; i < j; i++)
+      melhores_equipas[i] = melhores_equipas_buffer[i];
 
-      free(melhores_equipas_buffer);
-    }
+    free(melhores_equipas_buffer);
   }
 
   qsort(melhores_equipas, (int) j, sizeof(char *), comparador);

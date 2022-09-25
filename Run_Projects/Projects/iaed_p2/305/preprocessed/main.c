@@ -19,19 +19,15 @@ int error_check_a(Game *g, Game **G, int *G_sz, Team **T, int *T_sz, int *NL)
 {
   if (HT_G_search(g->n, G, G_sz) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", *NL);
-      return 1;
-    }
+    printf("%d Jogo existente.\n", *NL);
+    return 1;
   }
   else
   {
     if ((HT_T_search(g->t1, T, T_sz) == 0) || (HT_T_search(g->t2, T, T_sz) == 0))
     {
-      {
-        printf("%d Equipa inexistente.\n", *NL);
-        return 1;
-      }
+      printf("%d Equipa inexistente.\n", *NL);
+      return 1;
     }
     else
     {
@@ -50,60 +46,47 @@ void update_games_won(char *slct, Game *g, Team **T, int *T_sz)
   int l;
   if ((l = strcmp(slct, "tie 1") == 0) || (strcmp(slct, "tie 2") == 0))
   {
+    if (l && (t1_HT->w > 0))
     {
-      if (l && (t1_HT->w > 0))
+      t1_HT->w -= 1;
+    }
+    else
+    {
+      if (t2_HT->w > 0)
       {
-        t1_HT->w -= 1;
+        t2_HT->w -= 1;
       }
       else
       {
-        if (t2_HT->w > 0)
-        {
-          t2_HT->w -= 1;
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
     }
+
   }
   else
   {
+    if (g->s1 > g->s2)
     {
-      if (g->s1 > g->s2)
+      t1_HT->w += 1;
+      if ((strcmp(slct, "g not new") == 0) && (t2_HT->w > 0))
       {
-        {
-          t1_HT->w += 1;
-          if ((strcmp(slct, "g not new") == 0) && (t2_HT->w > 0))
-          {
-            t2_HT->w -= 1;
-          }
-          else
-          {
-            
-          }
-
-        }
+        t2_HT->w -= 1;
       }
       else
       {
-        if (g->s1 < g->s2)
-        {
-          {
-            t2_HT->w += 1;
-            if ((strcmp(slct, "g not new") == 0) && (t1_HT->w > 0))
-            {
-              t1_HT->w -= 1;
-            }
-            else
-            {
-              
-            }
+        
+      }
 
-          }
+    }
+    else
+    {
+      if (g->s1 < g->s2)
+      {
+        t2_HT->w += 1;
+        if ((strcmp(slct, "g not new") == 0) && (t1_HT->w > 0))
+        {
+          t1_HT->w -= 1;
         }
         else
         {
@@ -111,8 +94,13 @@ void update_games_won(char *slct, Game *g, Team **T, int *T_sz)
         }
 
       }
+      else
+      {
+        
+      }
 
     }
+
   }
 
 }
@@ -125,12 +113,10 @@ Team **A(Team **T, int *T_sz, int *T_n, int *NL)
   nt->w = 0;
   if (HT_T_search(nt->n, T, T_sz) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", *NL);
-      free(nt->n);
-      free(nt);
-      return T;
-    }
+    printf("%d Equipa existente.\n", *NL);
+    free(nt->n);
+    free(nt);
+    return T;
   }
   else
   {
@@ -151,15 +137,11 @@ void p(Game **G, int *G_sz, int *NL)
   srch = HT_G_search(name, G, G_sz);
   if (srch == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", *NL);
-    }
+    printf("%d Jogo inexistente.\n", *NL);
   }
   else
   {
-    {
-      printf("%d %s %s %s %d %d\n", *NL, srch->n, srch->t1, srch->t2, srch->s1, srch->s2);
-    }
+    printf("%d %s %s %s %d %d\n", *NL, srch->n, srch->t1, srch->t2, srch->s1, srch->s2);
   }
 
   free(name);
@@ -174,15 +156,11 @@ void P(Team **T, int *T_n, int *NL)
   srch = HT_T_search(name, T, T_n);
   if (srch == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", *NL);
-    }
+    printf("%d Equipa inexistente.\n", *NL);
   }
   else
   {
-    {
-      printf("%d %s %d\n", *NL, srch->n, srch->w);
-    }
+    printf("%d %s %d\n", *NL, srch->n, srch->w);
   }
 
   free(name);
@@ -196,9 +174,7 @@ void l(node **ends, Game **G, int *G_sz, int *G_n, int *NL)
   getchar();
   if ((*G_n) == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -299,26 +275,22 @@ void s(Game **G, int *G_sz, Team **T, int *T_sz, int *NL)
 
   if ((((srch->s1 > srch->s2) && (new_s1 > new_s2)) || ((srch->s1 < srch->s2) && (new_s1 < new_s2))) || ((srch->s1 == srch->s2) && (new_s1 == new_s2)))
   {
-    {
-      needs_update = 0;
-    }
+    needs_update = 0;
   }
   else
   {
     if (new_s1 == new_s2)
     {
+      its_a_tie = 1;
+      if (srch->s1 > srch->s2)
       {
-        its_a_tie = 1;
-        if (srch->s1 > srch->s2)
-        {
-          prev_greater = "tie 1";
-        }
-        else
-        {
-          prev_greater = "tie 2";
-        }
-
+        prev_greater = "tie 1";
       }
+      else
+      {
+        prev_greater = "tie 2";
+      }
+
     }
     else
     {
@@ -331,25 +303,23 @@ void s(Game **G, int *G_sz, Team **T, int *T_sz, int *NL)
   srch->s2 = new_s2;
   if (needs_update)
   {
+    if (its_a_tie)
     {
-      if (its_a_tie)
+      update_games_won(prev_greater, srch, T, T_sz);
+    }
+    else
+    {
+      if (g_prev_tied)
       {
-        update_games_won(prev_greater, srch, T, T_sz);
+        update_games_won("g not new prev tied", srch, T, T_sz);
       }
       else
       {
-        if (g_prev_tied)
-        {
-          update_games_won("g not new prev tied", srch, T, T_sz);
-        }
-        else
-        {
-          update_games_won("g not new", srch, T, T_sz);
-        }
-
+        update_games_won("g not new", srch, T, T_sz);
       }
 
     }
+
   }
   else
   {
@@ -369,10 +339,8 @@ void g(Team **T, int *T_sz, int *T_n, int *NL)
   getchar();
   if ((*T_n) == 0)
   {
-    {
-      free(t_names);
-      return;
-    }
+    free(t_names);
+    return;
   }
   else
   {
@@ -383,32 +351,26 @@ void g(Team **T, int *T_sz, int *T_n, int *NL)
   {
     if (T[i] != 0)
     {
+      if (T[i]->w > max)
       {
-        if (T[i]->w > max)
+        max = T[i]->w;
+        len_t_names = 1;
+        t_names[0] = T[i]->n;
+      }
+      else
+      {
+        if (T[i]->w == max)
         {
-          {
-            max = T[i]->w;
-            len_t_names = 1;
-            t_names[0] = T[i]->n;
-          }
+          len_t_names += 1;
+          t_names[len_t_names - 1] = T[i]->n;
         }
         else
         {
-          if (T[i]->w == max)
-          {
-            {
-              len_t_names += 1;
-              t_names[len_t_names - 1] = T[i]->n;
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
+
     }
     else
     {
@@ -458,13 +420,11 @@ int main()
         reads_input_game_full(ng);
         if (error_check_a(ng, G, G_sz, T, T_sz, NL))
       {
-        {
-          free(ng->n);
-          free(ng->t1);
-          free(ng->t2);
-          free(ng);
-          break;
-        }
+        free(ng->n);
+        free(ng->t1);
+        free(ng->t2);
+        free(ng);
+        break;
       }
       else
       {
@@ -476,9 +436,7 @@ int main()
         HT_G_insert(ng, G, G_sz);
         if ((*G_n) > ((*G_sz) / 2))
       {
-        {
-          G = HT_G_expand(G, G_sz);
-        }
+        G = HT_G_expand(G, G_sz);
       }
       else
       {

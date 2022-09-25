@@ -25,9 +25,7 @@ ptr_jogo procurajogo(hashtable *hjogos, char *nome)
   l = lehash(hjogos, nome);
   if (l == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -40,9 +38,7 @@ ptr_jogo procurajogo(hashtable *hjogos, char *nome)
     procura = (ptr_jogo) lenode(node_aux);
     if (!strcmp(procura->nome_jogo, nome))
     {
-      {
-        return procura;
-      }
+      return procura;
     }
     else
     {
@@ -63,9 +59,7 @@ ptr_equipa procuraequipa(hashtable *hequipas, char *nome)
   l = lehash(hequipas, nome);
   if (l == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -78,9 +72,7 @@ ptr_equipa procuraequipa(hashtable *hequipas, char *nome)
     procura = (ptr_equipa) lenode(node_aux);
     if (!strcmp(procura->nome_equipa, nome))
     {
-      {
-        return procura;
-      }
+      return procura;
     }
     else
     {
@@ -100,10 +92,8 @@ void adiciona_jogo(char *nome, char *eq1, char *eq2, int sc1, int sc2, hashtable
   ptr_equipa e2;
   if (procurajogo(hjogos, nome) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-      return;
-    }
+    printf("%d Jogo existente.\n", NL);
+    return;
   }
   else
   {
@@ -114,10 +104,8 @@ void adiciona_jogo(char *nome, char *eq1, char *eq2, int sc1, int sc2, hashtable
   e2 = procuraequipa(hequipas, eq2);
   if ((e1 == 0) || (e2 == 0))
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -133,9 +121,7 @@ void adiciona_jogo(char *nome, char *eq1, char *eq2, int sc1, int sc2, hashtable
   j->sc2 = sc2;
   if (sc1 > sc2)
   {
-    {
-      e1->score += 1;
-    }
+    e1->score += 1;
   }
   else
   {
@@ -144,9 +130,7 @@ void adiciona_jogo(char *nome, char *eq1, char *eq2, int sc1, int sc2, hashtable
 
   if (sc2 > sc1)
   {
-    {
-      e2->score += 1;
-    }
+    e2->score += 1;
   }
   else
   {
@@ -179,10 +163,8 @@ void procura_jogo(hashtable *hjogos, char *nome, int NL)
   jogo_encontrar = procurajogo(hjogos, nome);
   if (jogo_encontrar == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -199,10 +181,8 @@ void apaga_jogo(hashtable *hjogos, list *ljogos, char *nome, int NL)
   jogo_eliminar = procurajogo(hjogos, nome);
   if (jogo_eliminar == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -211,9 +191,7 @@ void apaga_jogo(hashtable *hjogos, list *ljogos, char *nome, int NL)
 
   if (jogo_eliminar->sc1 > jogo_eliminar->sc2)
   {
-    {
-      jogo_eliminar->eq1->score -= 1;
-    }
+    jogo_eliminar->eq1->score -= 1;
   }
   else
   {
@@ -222,9 +200,7 @@ void apaga_jogo(hashtable *hjogos, list *ljogos, char *nome, int NL)
 
   if (jogo_eliminar->sc2 > jogo_eliminar->sc1)
   {
-    {
-      jogo_eliminar->eq2->score -= 1;
-    }
+    jogo_eliminar->eq2->score -= 1;
   }
   else
   {
@@ -243,10 +219,8 @@ void altera_score(hashtable *hjogos, char *nome, int newsc1, int newsc2, int NL)
   jogo_mudar = procurajogo(hjogos, nome);
   if (jogo_mudar == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -255,31 +229,25 @@ void altera_score(hashtable *hjogos, char *nome, int newsc1, int newsc2, int NL)
 
   if (newsc1 > newsc2)
   {
+    if (jogo_mudar->sc2 > jogo_mudar->sc1)
     {
-      if (jogo_mudar->sc2 > jogo_mudar->sc1)
-      {
-        {
-          jogo_mudar->eq2->score -= 1;
-          jogo_mudar->eq1->score += 1;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (jogo_mudar->sc1 == jogo_mudar->sc2)
-      {
-        {
-          jogo_mudar->eq1->score += 1;
-        }
-      }
-      else
-      {
-        
-      }
-
+      jogo_mudar->eq2->score -= 1;
+      jogo_mudar->eq1->score += 1;
     }
+    else
+    {
+      
+    }
+
+    if (jogo_mudar->sc1 == jogo_mudar->sc2)
+    {
+      jogo_mudar->eq1->score += 1;
+    }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -288,31 +256,25 @@ void altera_score(hashtable *hjogos, char *nome, int newsc1, int newsc2, int NL)
 
   if (newsc2 > newsc1)
   {
+    if (jogo_mudar->sc1 > jogo_mudar->sc2)
     {
-      if (jogo_mudar->sc1 > jogo_mudar->sc2)
-      {
-        {
-          jogo_mudar->eq1->score -= 1;
-          jogo_mudar->eq2->score += 1;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (jogo_mudar->sc1 == jogo_mudar->sc2)
-      {
-        {
-          jogo_mudar->eq2->score += 1;
-        }
-      }
-      else
-      {
-        
-      }
-
+      jogo_mudar->eq1->score -= 1;
+      jogo_mudar->eq2->score += 1;
     }
+    else
+    {
+      
+    }
+
+    if (jogo_mudar->sc1 == jogo_mudar->sc2)
+    {
+      jogo_mudar->eq2->score += 1;
+    }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -321,30 +283,24 @@ void altera_score(hashtable *hjogos, char *nome, int newsc1, int newsc2, int NL)
 
   if (newsc2 == newsc1)
   {
+    if (jogo_mudar->sc1 > jogo_mudar->sc2)
     {
-      if (jogo_mudar->sc1 > jogo_mudar->sc2)
-      {
-        {
-          jogo_mudar->eq1->score -= 1;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (jogo_mudar->sc2 > jogo_mudar->sc1)
-      {
-        {
-          jogo_mudar->eq2->score -= 1;
-        }
-      }
-      else
-      {
-        
-      }
-
+      jogo_mudar->eq1->score -= 1;
     }
+    else
+    {
+      
+    }
+
+    if (jogo_mudar->sc2 > jogo_mudar->sc1)
+    {
+      jogo_mudar->eq2->score -= 1;
+    }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -361,10 +317,8 @@ void adiciona_equipa(char *nome, hashtable *hequipas, int NL)
   ptr_equipa e;
   if (procuraequipa(hequipas, nome) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-      return;
-    }
+    printf("%d Equipa existente.\n", NL);
+    return;
   }
   else
   {
@@ -385,10 +339,8 @@ void procura_equipa(hashtable *hequipas, char *nome, int NL)
   equipa_encontrar = procuraequipa(hequipas, nome);
   if (equipa_encontrar == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -432,9 +384,7 @@ void mais_vitorias(hashtable *hequipas, int M, int NL)
     ptr_lista = indice_hastable(hequipas, i);
     if (ptr_lista == 0)
     {
-      {
-        continue;
-      }
+      continue;
     }
     else
     {
@@ -446,9 +396,7 @@ void mais_vitorias(hashtable *hequipas, int M, int NL)
       eq = (ptr_equipa) lenode(ptr_node);
       if (max > eq->score)
       {
-        {
-          continue;
-        }
+        continue;
       }
       else
       {
@@ -457,10 +405,8 @@ void mais_vitorias(hashtable *hequipas, int M, int NL)
 
       if (max == eq->score)
       {
-        {
-          adicionalista(vitorias, (Item) eq->nome_equipa);
-          continue;
-        }
+        adicionalista(vitorias, (Item) eq->nome_equipa);
+        continue;
       }
       else
       {
@@ -469,13 +415,11 @@ void mais_vitorias(hashtable *hequipas, int M, int NL)
 
       if (max < eq->score)
       {
-        {
-          max = eq->score;
-          freelista(vitorias, 0, free);
-          vitorias = crialista();
-          adicionalista(vitorias, (Item) eq->nome_equipa);
-          continue;
-        }
+        max = eq->score;
+        freelista(vitorias, 0, free);
+        vitorias = crialista();
+        adicionalista(vitorias, (Item) eq->nome_equipa);
+        continue;
       }
       else
       {
@@ -488,10 +432,8 @@ void mais_vitorias(hashtable *hequipas, int M, int NL)
 
   if (lista_vazia(vitorias))
   {
-    {
-      free(vitorias);
-      return;
-    }
+    free(vitorias);
+    return;
   }
   else
   {
@@ -514,12 +456,10 @@ void imprime_eq_vitorias(nodetree *nt, int NL)
 {
   if (nt != 0)
   {
-    {
-      imprime_eq_vitorias(nodetree_left(nt), NL);
-      printf("%d * %s\n", NL, nodetree_item(nt));
-      imprime_eq_vitorias(nodetree_right(nt), NL);
-      free(nt);
-    }
+    imprime_eq_vitorias(nodetree_left(nt), NL);
+    printf("%d * %s\n", NL, nodetree_item(nt));
+    imprime_eq_vitorias(nodetree_right(nt), NL);
+    free(nt);
   }
   else
   {

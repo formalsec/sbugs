@@ -25,17 +25,13 @@ void adicionar_equipa_lst(lstEquipas lista, ptrEquipa equipa)
   nova_equipa->prox = 0;
   if (lista->primeiro == 0)
   {
-    {
-      lista->primeiro = nova_equipa;
-      lista->ultimo = nova_equipa;
-    }
+    lista->primeiro = nova_equipa;
+    lista->ultimo = nova_equipa;
   }
   else
   {
-    {
-      lista->ultimo->prox = nova_equipa;
-      lista->ultimo = nova_equipa;
-    }
+    lista->ultimo->prox = nova_equipa;
+    lista->ultimo = nova_equipa;
   }
 
 }
@@ -61,35 +57,27 @@ void remover_equipa_lst(lstEquipas lista, linkEquipa equipa)
 {
   if ((equipa == lista->primeiro) && (equipa == lista->ultimo))
   {
-    {
-      lista->primeiro = 0;
-      lista->ultimo = 0;
-    }
+    lista->primeiro = 0;
+    lista->ultimo = 0;
   }
   else
   {
     if (equipa == lista->primeiro)
     {
-      {
-        lista->primeiro = equipa->prox;
-        lista->primeiro->ant = 0;
-      }
+      lista->primeiro = equipa->prox;
+      lista->primeiro->ant = 0;
     }
     else
     {
       if (equipa == lista->ultimo)
       {
-        {
-          lista->ultimo = equipa->ant;
-          lista->ultimo->prox = 0;
-        }
+        lista->ultimo = equipa->ant;
+        lista->ultimo->prox = 0;
       }
       else
       {
-        {
-          equipa->ant->prox = equipa->prox;
-          equipa->prox->ant = equipa->ant;
-        }
+        equipa->ant->prox = equipa->prox;
+        equipa->prox->ant = equipa->ant;
       }
 
     }
@@ -165,19 +153,15 @@ void adicionar_jogo_lst(lstJogos lista, ptrJogo jogo)
   novo_jogo->prox = 0;
   if (lista->primeiro == 0)
   {
-    {
-      novo_jogo->ant = 0;
-      lista->primeiro = novo_jogo;
-      lista->ultimo = novo_jogo;
-    }
+    novo_jogo->ant = 0;
+    lista->primeiro = novo_jogo;
+    lista->ultimo = novo_jogo;
   }
   else
   {
-    {
-      novo_jogo->ant = lista->ultimo;
-      lista->ultimo->prox = novo_jogo;
-      lista->ultimo = novo_jogo;
-    }
+    novo_jogo->ant = lista->ultimo;
+    lista->ultimo->prox = novo_jogo;
+    lista->ultimo = novo_jogo;
   }
 
 }
@@ -203,35 +187,27 @@ void remover_jogo_lst(lstJogos lista, linkJogo jogo)
 {
   if ((jogo == lista->primeiro) && (jogo == lista->ultimo))
   {
-    {
-      lista->primeiro = 0;
-      lista->ultimo = 0;
-    }
+    lista->primeiro = 0;
+    lista->ultimo = 0;
   }
   else
   {
     if (jogo == lista->primeiro)
     {
-      {
-        lista->primeiro = jogo->prox;
-        lista->primeiro->ant = 0;
-      }
+      lista->primeiro = jogo->prox;
+      lista->primeiro->ant = 0;
     }
     else
     {
       if (jogo == lista->ultimo)
       {
-        {
-          lista->ultimo = jogo->ant;
-          lista->ultimo->prox = 0;
-        }
+        lista->ultimo = jogo->ant;
+        lista->ultimo->prox = 0;
       }
       else
       {
-        {
-          jogo->ant->prox = jogo->prox;
-          jogo->prox->ant = jogo->ant;
-        }
+        jogo->ant->prox = jogo->prox;
+        jogo->prox->ant = jogo->ant;
       }
 
     }

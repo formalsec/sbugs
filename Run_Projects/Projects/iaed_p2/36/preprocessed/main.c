@@ -103,10 +103,8 @@ int main()
         temporario = procuraEquipa(lista_equipas, nome);
         if (temporario != 0)
         {
-          {
-            printf("%d %s %d\n", nl, nome, temporario->vitorias);
-            break;
-          }
+          printf("%d %s %d\n", nl, nome, temporario->vitorias);
+          break;
         }
         else
         {
@@ -125,9 +123,7 @@ int main()
         get_string(nome);
         if (adicionaEquipa(lista_equipas, nome) == 0)
         {
-          {
-            printf("%d Equipa existente.\n", nl);
-          }
+          printf("%d Equipa existente.\n", nl);
         }
         else
         {
@@ -147,10 +143,8 @@ int main()
         j = procuraJogo(lista_jogos, nome);
         if (!j)
         {
-          {
-            printf("%d Jogo inexistente.\n", nl);
-            break;
-          }
+          printf("%d Jogo inexistente.\n", nl);
+          break;
         }
         else
         {

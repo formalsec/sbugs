@@ -22,46 +22,36 @@ void add_game(unsigned int ln, game_table *games, team_table *teams)
   getchar();
   if (get_game(games, game_name) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", ln);
-      free(game_name);
-    }
+    printf("%d Jogo existente.\n", ln);
+    free(game_name);
   }
   else
   {
     if (((team_1 = get_team(teams, team_name_1)) == 0) || ((team_2 = get_team(teams, team_name_2)) == 0))
     {
-      {
-        printf("%d Equipa inexistente.\n", ln);
-        free(game_name);
-      }
+      printf("%d Equipa inexistente.\n", ln);
+      free(game_name);
     }
     else
     {
+      new_game(games, game_name, team_1, team_2, score_1, score_2);
+      if (score_1 > score_2)
       {
-        new_game(games, game_name, team_1, team_2, score_1, score_2);
-        if (score_1 > score_2)
+        update_team_wins(team_1, 1);
+      }
+      else
+      {
+        if (score_1 < score_2)
         {
-          {
-            update_team_wins(team_1, 1);
-          }
+          update_team_wins(team_2, 1);
         }
         else
         {
-          if (score_1 < score_2)
-          {
-            {
-              update_team_wins(team_2, 1);
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
+
     }
 
   }
@@ -77,16 +67,12 @@ void add_team(unsigned int ln, team_table *teams)
   name = get_string_until('\n');
   if (get_team(teams, name) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", ln);
-      free(name);
-    }
+    printf("%d Equipa existente.\n", ln);
+    free(name);
   }
   else
   {
-    {
-      new_team(teams, name);
-    }
+    new_team(teams, name);
   }
 
 }
@@ -106,59 +92,47 @@ void change_game_score(unsigned int ln, game_table *games)
   getchar();
   if ((game = get_game(games, name)) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", ln);
-    }
+    printf("%d Jogo inexistente.\n", ln);
   }
   else
   {
+    winner = game_winner(game);
+    update_score(game, score_1, score_2);
+    new_winner = game_winner(game);
+    if ((winner != 0) && (new_winner != 0))
     {
-      winner = game_winner(game);
-      update_score(game, score_1, score_2);
-      new_winner = game_winner(game);
-      if ((winner != 0) && (new_winner != 0))
+      if (!same_team(winner, new_winner))
       {
-        {
-          if (!same_team(winner, new_winner))
-          {
-            {
-              update_team_wins(winner, -1);
-              update_team_wins(new_winner, 1);
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
+        update_team_wins(winner, -1);
+        update_team_wins(new_winner, 1);
       }
       else
       {
-        if (winner != 0)
+        
+      }
+
+    }
+    else
+    {
+      if (winner != 0)
+      {
+        update_team_wins(winner, -1);
+      }
+      else
+      {
+        if (new_winner != 0)
         {
-          {
-            update_team_wins(winner, -1);
-          }
+          update_team_wins(new_winner, 1);
         }
         else
         {
-          if (new_winner != 0)
-          {
-            {
-              update_team_wins(new_winner, 1);
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
 
     }
+
   }
 
   free(name);
@@ -172,16 +146,12 @@ void find_game(unsigned int ln, game_table *games)
   name = get_string_until('\n');
   if ((game = get_game(games, name)) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", ln);
-    }
+    printf("%d Jogo inexistente.\n", ln);
   }
   else
   {
-    {
-      printf("%d ", ln);
-      print_game(game);
-    }
+    printf("%d ", ln);
+    print_game(game);
   }
 
   free(name);
@@ -195,16 +165,12 @@ void find_team(unsigned int ln, team_table *teams)
   name = get_string_until('\n');
   if ((team = get_team(teams, name)) == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", ln);
-    }
+    printf("%d Equipa inexistente.\n", ln);
   }
   else
   {
-    {
-      printf("%d ", ln);
-      print_team(team);
-    }
+    printf("%d ", ln);
+    print_team(team);
   }
 
   free(name);
@@ -232,14 +198,12 @@ void list_top_winners(unsigned int ln, team_table *teams)
   team_names = get_top_winners_names(teams);
   if (team_names[0] != 0)
   {
+    printf("%d Melhores %d\n", ln, get_max_win_number(teams));
+    for (i = 0; team_names[i] != 0; i++)
     {
-      printf("%d Melhores %d\n", ln, get_max_win_number(teams));
-      for (i = 0; team_names[i] != 0; i++)
-      {
-        printf("%d * %s\n", ln, team_names[i]);
-      }
-
+      printf("%d * %s\n", ln, team_names[i]);
     }
+
   }
   else
   {
@@ -257,27 +221,21 @@ void remove_game(unsigned int ln, game_table *games)
   name = get_string_until('\n');
   if ((game = get_game(games, name)) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", ln);
-    }
+    printf("%d Jogo inexistente.\n", ln);
   }
   else
   {
+    winner = game_winner(game);
+    if (winner != 0)
     {
-      winner = game_winner(game);
-      if (winner != 0)
-      {
-        {
-          update_team_wins(winner, -1);
-        }
-      }
-      else
-      {
-        
-      }
-
-      delete_game(games, game);
+      update_team_wins(winner, -1);
     }
+    else
+    {
+      
+    }
+
+    delete_game(games, game);
   }
 
   free(name);

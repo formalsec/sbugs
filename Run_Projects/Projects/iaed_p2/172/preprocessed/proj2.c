@@ -36,44 +36,36 @@ void a(int NL, int M, Game *stg, Team *stt, link *head, link *tail)
   t2[10 - 1] = '\0';
   if (STsearchG(name, M, stg) == 0)
   {
+    if ((STsearchT(t1, M, stt) != 0) && (STsearchT(t2, M, stt) != 0))
     {
-      if ((STsearchT(t1, M, stt) != 0) && (STsearchT(t2, M, stt) != 0))
+      g = NewGame(head, tail, name, t1, t2);
+      STinsertG(g, M, stg);
+      if (g->s1 > g->s2)
       {
-        {
-          g = NewGame(head, tail, name, t1, t2);
-          STinsertG(g, M, stg);
-          if (g->s1 > g->s2)
-          {
-            {
-              t = STsearchT(t1, M, stt);
-              t->wins += 1;
-            }
-          }
-          else
-          {
-            
-          }
-
-          if (g->s1 < g->s2)
-          {
-            {
-              t = STsearchT(t2, M, stt);
-              t->wins += 1;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
+        t = STsearchT(t1, M, stt);
+        t->wins += 1;
       }
       else
       {
-        printf("%d Equipa inexistente.\n", NL);
+        
+      }
+
+      if (g->s1 < g->s2)
+      {
+        t = STsearchT(t2, M, stt);
+        t->wins += 1;
+      }
+      else
+      {
+        
       }
 
     }
+    else
+    {
+      printf("%d Equipa inexistente.\n", NL);
+    }
+
   }
   else
   {
@@ -94,10 +86,8 @@ void A(int NL, int M, Team *stt, Team *head)
   name[10 - 1] = '\0';
   if (STsearchT(name, M, stt) == 0)
   {
-    {
-      t = NewTeam(name, head);
-      STinsertT(t, M, stt);
-    }
+    t = NewTeam(name, head);
+    STinsertT(t, M, stt);
   }
   else
   {
@@ -169,33 +159,27 @@ void r(int NL, int M, Game *stg, Team *stt, link *head, link *tail)
   g = STsearchG(name, M, stg);
   if (g)
   {
+    if (g->s1 > g->s2)
     {
-      if (g->s1 > g->s2)
+      t = STsearchT(g->t1, M, stt);
+      t->wins -= 1;
+    }
+    else
+    {
+      if (g->s1 < g->s2)
       {
-        {
-          t = STsearchT(g->t1, M, stt);
-          t->wins -= 1;
-        }
+        t = STsearchT(g->t2, M, stt);
+        t->wins -= 1;
       }
       else
       {
-        if (g->s1 < g->s2)
-        {
-          {
-            t = STsearchT(g->t2, M, stt);
-            t->wins -= 1;
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      RemoveGame(head, tail, name);
-      STdeleteG(name, M, stg);
     }
+
+    RemoveGame(head, tail, name);
+    STdeleteG(name, M, stg);
   }
   else
   {
@@ -223,68 +207,53 @@ void s(int NL, int M, Game *stg, Team *stt)
   g = STsearchG(name, M, stg);
   if (g)
   {
+    if ((g->s1 > g->s2) && (s1 < s2))
     {
-      if ((g->s1 > g->s2) && (s1 < s2))
+      t1 = STsearchT(g->t1, M, stt);
+      t1->wins -= 1;
+      t2 = STsearchT(g->t2, M, stt);
+      t2->wins += 1;
+    }
+    else
+    {
+      if ((g->s1 < g->s2) && (s1 > s2))
       {
-        {
-          t1 = STsearchT(g->t1, M, stt);
-          t1->wins -= 1;
-          t2 = STsearchT(g->t2, M, stt);
-          t2->wins += 1;
-        }
+        t1 = STsearchT(g->t1, M, stt);
+        t1->wins += 1;
+        t2 = STsearchT(g->t2, M, stt);
+        t2->wins -= 1;
       }
       else
       {
-        if ((g->s1 < g->s2) && (s1 > s2))
+        if ((g->s1 == g->s2) && (s1 < s2))
         {
-          {
-            t1 = STsearchT(g->t1, M, stt);
-            t1->wins += 1;
-            t2 = STsearchT(g->t2, M, stt);
-            t2->wins -= 1;
-          }
+          t2 = STsearchT(g->t2, M, stt);
+          t2->wins += 1;
         }
         else
         {
-          if ((g->s1 == g->s2) && (s1 < s2))
+          if ((g->s1 == g->s2) && (s1 > s2))
           {
-            {
-              t2 = STsearchT(g->t2, M, stt);
-              t2->wins += 1;
-            }
+            t1 = STsearchT(g->t1, M, stt);
+            t1->wins += 1;
           }
           else
           {
-            if ((g->s1 == g->s2) && (s1 > s2))
+            if ((g->s1 > g->s2) && (s1 == s2))
             {
-              {
-                t1 = STsearchT(g->t1, M, stt);
-                t1->wins += 1;
-              }
+              t1 = STsearchT(g->t1, M, stt);
+              t1->wins -= 1;
             }
             else
             {
-              if ((g->s1 > g->s2) && (s1 == s2))
+              if ((g->s1 < g->s2) && (s1 == s2))
               {
-                {
-                  t1 = STsearchT(g->t1, M, stt);
-                  t1->wins -= 1;
-                }
+                t2 = STsearchT(g->t2, M, stt);
+                t2->wins -= 1;
               }
               else
               {
-                if ((g->s1 < g->s2) && (s1 == s2))
-                {
-                  {
-                    t2 = STsearchT(g->t2, M, stt);
-                    t2->wins -= 1;
-                  }
-                }
-                else
-                {
-                  
-                }
-
+                
               }
 
             }
@@ -295,9 +264,10 @@ void s(int NL, int M, Game *stg, Team *stt)
 
       }
 
-      g->s1 = s1;
-      g->s2 = s2;
     }
+
+    g->s1 = s1;
+    g->s2 = s2;
   }
   else
   {
@@ -336,9 +306,7 @@ void g(int NL, Team *head)
   {
     if (aux->wins == lst[0])
     {
-      {
-        sort[teams++] = aux->name;
-      }
+      sort[teams++] = aux->name;
     }
     else
     {
@@ -350,13 +318,11 @@ void g(int NL, Team *head)
 
   if (teams > 0)
   {
-    {
-      qsort(sort, teams, sizeof(char *), compare);
-      printf("%d Melhores %d\n", NL, lst[0]);
-      for (i = 0; i < teams; i++)
-        printf("%d * %s\n", NL, sort[i]);
+    qsort(sort, teams, sizeof(char *), compare);
+    printf("%d Melhores %d\n", NL, lst[0]);
+    for (i = 0; i < teams; i++)
+      printf("%d * %s\n", NL, sort[i]);
 
-    }
   }
   else
   {

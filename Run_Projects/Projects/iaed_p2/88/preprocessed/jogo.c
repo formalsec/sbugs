@@ -17,9 +17,7 @@ jogo novo_jogo(char *nome, equipa e1, equipa e2, int score_e1, int score_e2, jog
   jogo_aux->prox = 0;
   if (ultimo_jogo != 0)
   {
-    {
-      ultimo_jogo->prox = jogo_aux;
-    }
+    ultimo_jogo->prox = jogo_aux;
   }
   else
   {
@@ -34,9 +32,7 @@ void liberta_jogo(void *j)
   free(((jogo) j)->nome);
   if (((jogo) j)->prox != 0)
   {
-    {
-      ((jogo) j)->prox->ant = ((jogo) j)->ant;
-    }
+    ((jogo) j)->prox->ant = ((jogo) j)->ant;
   }
   else
   {
@@ -45,9 +41,7 @@ void liberta_jogo(void *j)
 
   if (((jogo) j)->ant != 0)
   {
-    {
-      ((jogo) j)->ant->prox = ((jogo) j)->prox;
-    }
+    ((jogo) j)->ant->prox = ((jogo) j)->prox;
   }
   else
   {

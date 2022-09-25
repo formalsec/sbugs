@@ -74,9 +74,7 @@ Equipa *procura_nome_equipa(Lista_jogos_equipas *lje, char *atr1)
   {
     if (strcmp(equipa->nome, atr1) == 0)
     {
-      {
-        return equipa;
-      }
+      return equipa;
     }
     else
     {
@@ -114,9 +112,7 @@ Jogo *procura_nome_jogo(Lista_jogos_equipas *lje, char *atr1)
   {
     if (strcmp(jogo->nome, atr1) == 0)
     {
-      {
-        return jogo;
-      }
+      return jogo;
     }
     else
     {
@@ -138,9 +134,7 @@ int procura_max_vitorias(Lista_jogos_equipas *lje)
   {
     if (equipa->vitorias > max_vitorias)
     {
-      {
-        max_vitorias = equipa->vitorias;
-      }
+      max_vitorias = equipa->vitorias;
     }
     else
     {
@@ -163,23 +157,17 @@ Tabela_equipas *procura_equipa_vitorias(Lista_jogos_equipas *lje, int num_max_vi
   {
     if (equipa->vitorias == num_max_vitorias)
     {
+      if (max_vitorias->primeira_equipa == 0)
       {
-        if (max_vitorias->primeira_equipa == 0)
-        {
-          {
-            max_vitorias->primeira_equipa = equipa;
-          }
-        }
-        else
-        {
-          {
-            max_vitorias->ultima_equipa->prox_vit_max = equipa;
-            equipa->anterior_vit_max = max_vitorias->ultima_equipa;
-          }
-        }
-
-        max_vitorias->ultima_equipa = equipa;
+        max_vitorias->primeira_equipa = equipa;
       }
+      else
+      {
+        max_vitorias->ultima_equipa->prox_vit_max = equipa;
+        equipa->anterior_vit_max = max_vitorias->ultima_equipa;
+      }
+
+      max_vitorias->ultima_equipa = equipa;
     }
     else
     {
@@ -199,10 +187,8 @@ void ordena_equipa_vitorias(Tabela_equipas *max_vitorias, int NL, int num_max_vi
   Equipa *equipa_menor;
   if (max_vitorias->primeira_equipa == 0)
   {
-    {
-      free(max_vitorias);
-      return;
-    }
+    free(max_vitorias);
+    return;
   }
   else
   {
@@ -215,97 +201,77 @@ void ordena_equipa_vitorias(Tabela_equipas *max_vitorias, int NL, int num_max_vi
   {
     if (equipa_1->prox_vit_max == 0)
     {
-      {
-        printf("%d * %s\n", NL, equipa_1->nome);
-        max_vitorias->primeira_equipa = 0;
-        max_vitorias->ultima_equipa = 0;
-        free(max_vitorias);
-        return;
-      }
+      printf("%d * %s\n", NL, equipa_1->nome);
+      max_vitorias->primeira_equipa = 0;
+      max_vitorias->ultima_equipa = 0;
+      free(max_vitorias);
+      return;
     }
     else
     {
+      equipa_2 = equipa_1->prox_vit_max;
+      while (equipa_2 != 0)
       {
-        equipa_2 = equipa_1->prox_vit_max;
-        while (equipa_2 != 0)
+        if (strcmp(equipa_1->nome, equipa_2->nome) > 0)
         {
-          if (strcmp(equipa_1->nome, equipa_2->nome) > 0)
-          {
-            {
-              equipa_menor = equipa_2;
-            }
-          }
-          else
-          {
-            if (strcmp(equipa_1->nome, equipa_2->nome) < 0)
-            {
-              {
-                equipa_menor = equipa_1;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-          equipa_2 = equipa_2->prox_vit_max;
-          equipa_1 = equipa_menor;
-        }
-
-        printf("%d * %s\n", NL, equipa_menor->nome);
-        if (equipa_menor == max_vitorias->primeira_equipa)
-        {
-          {
-            max_vitorias->primeira_equipa = max_vitorias->primeira_equipa->prox_vit_max;
-          }
+          equipa_menor = equipa_2;
         }
         else
         {
-          
-        }
-
-        if (equipa_menor->anterior_vit_max == 0)
-        {
+          if (strcmp(equipa_1->nome, equipa_2->nome) < 0)
           {
-            if (equipa_menor->prox_vit_max == 0)
-            {
-              {
-                max_vitorias->primeira_equipa = 0;
-                max_vitorias->ultima_equipa = 0;
-              }
-            }
-            else
-            {
-              {
-                equipa_menor->prox_vit_max->anterior_vit_max = 0;
-              }
-            }
-
-          }
-        }
-        else
-        {
-          if (equipa_menor->prox_vit_max == 0)
-          {
-            {
-              equipa_menor->anterior_vit_max->prox_vit_max = 0;
-              max_vitorias->ultima_equipa = max_vitorias->ultima_equipa->anterior_vit_max;
-            }
+            equipa_menor = equipa_1;
           }
           else
           {
-            {
-              equipa_menor->anterior_vit_max->prox_vit_max = equipa_menor->prox_vit_max;
-              equipa_menor->prox_vit_max->anterior_vit_max = equipa_menor->anterior_vit_max;
-            }
+            
           }
 
         }
 
-        equipa_1 = max_vitorias->primeira_equipa;
+        equipa_2 = equipa_2->prox_vit_max;
+        equipa_1 = equipa_menor;
       }
+
+      printf("%d * %s\n", NL, equipa_menor->nome);
+      if (equipa_menor == max_vitorias->primeira_equipa)
+      {
+        max_vitorias->primeira_equipa = max_vitorias->primeira_equipa->prox_vit_max;
+      }
+      else
+      {
+        
+      }
+
+      if (equipa_menor->anterior_vit_max == 0)
+      {
+        if (equipa_menor->prox_vit_max == 0)
+        {
+          max_vitorias->primeira_equipa = 0;
+          max_vitorias->ultima_equipa = 0;
+        }
+        else
+        {
+          equipa_menor->prox_vit_max->anterior_vit_max = 0;
+        }
+
+      }
+      else
+      {
+        if (equipa_menor->prox_vit_max == 0)
+        {
+          equipa_menor->anterior_vit_max->prox_vit_max = 0;
+          max_vitorias->ultima_equipa = max_vitorias->ultima_equipa->anterior_vit_max;
+        }
+        else
+        {
+          equipa_menor->anterior_vit_max->prox_vit_max = equipa_menor->prox_vit_max;
+          equipa_menor->prox_vit_max->anterior_vit_max = equipa_menor->anterior_vit_max;
+        }
+
+      }
+
+      equipa_1 = max_vitorias->primeira_equipa;
     }
 
   }

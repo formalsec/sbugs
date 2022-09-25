@@ -27,15 +27,11 @@ int procura_indice(Jogo *Hashtable, char *nome, int tamanho_Hashtable)
   {
     if (strcmp(Hashtable[indice]->Nome, nome) == 0)
     {
-      {
-        return indice;
-      }
+      return indice;
     }
     else
     {
-      {
-        indice = (indice + 1) % tamanho_Hashtable;
-      }
+      indice = (indice + 1) % tamanho_Hashtable;
     }
 
   }
@@ -132,11 +128,9 @@ Equipa *atribui_vitoria(Equipa *Hashtable, char *equipa1, char *equipa2, int sco
   int Indice;
   if (score1 > score2)
   {
-    {
-      Indice = procura_indice_equipas(Hashtable, equipa1, tamanho_Hashtable);
-      Hashtable[Indice]->Vitorias++;
-      return Hashtable;
-    }
+    Indice = procura_indice_equipas(Hashtable, equipa1, tamanho_Hashtable);
+    Hashtable[Indice]->Vitorias++;
+    return Hashtable;
   }
   else
   {
@@ -145,11 +139,9 @@ Equipa *atribui_vitoria(Equipa *Hashtable, char *equipa1, char *equipa2, int sco
 
   if (score2 > score1)
   {
-    {
-      Indice = procura_indice_equipas(Hashtable, equipa2, tamanho_Hashtable);
-      Hashtable[Indice]->Vitorias++;
-      return Hashtable;
-    }
+    Indice = procura_indice_equipas(Hashtable, equipa2, tamanho_Hashtable);
+    Hashtable[Indice]->Vitorias++;
+    return Hashtable;
   }
   else
   {
@@ -164,11 +156,9 @@ Equipa *retira_vitoria(Equipa *Hashtable, char *equipa1, char *equipa2, int scor
   int Indice;
   if (score1 > score2)
   {
-    {
-      Indice = procura_indice_equipas(Hashtable, equipa1, tamanho_Hashtable);
-      Hashtable[Indice]->Vitorias--;
-      return Hashtable;
-    }
+    Indice = procura_indice_equipas(Hashtable, equipa1, tamanho_Hashtable);
+    Hashtable[Indice]->Vitorias--;
+    return Hashtable;
   }
   else
   {
@@ -177,11 +167,9 @@ Equipa *retira_vitoria(Equipa *Hashtable, char *equipa1, char *equipa2, int scor
 
   if (score2 > score1)
   {
-    {
-      Indice = procura_indice_equipas(Hashtable, equipa2, tamanho_Hashtable);
-      Hashtable[Indice]->Vitorias--;
-      return Hashtable;
-    }
+    Indice = procura_indice_equipas(Hashtable, equipa2, tamanho_Hashtable);
+    Hashtable[Indice]->Vitorias--;
+    return Hashtable;
   }
   else
   {

@@ -38,10 +38,8 @@ void freeListaEquipa(listaEquipa *Lista)
   nodeEquipa *aux;
   if (Lista == 0)
   {
-    {
-      free(Lista);
-      return;
-    }
+    free(Lista);
+    return;
   }
   else
   {
@@ -63,10 +61,8 @@ void freeListaMaisEquipas(listaEquipa *Lista)
   nodeEquipa *aux;
   if (Lista == 0)
   {
-    {
-      free(Lista);
-      return;
-    }
+    free(Lista);
+    return;
   }
   else
   {
@@ -87,11 +83,9 @@ listaEquipa *insereInicioListaEquipa(listaEquipa *Lista, equipa *Equipa)
 {
   if (Lista == 0)
   {
-    {
-      Lista = criaListaEquipa();
-      Lista->head = (Lista->tail = criaNodeEquipa(Equipa, 0, 0));
-      return Lista;
-    }
+    Lista = criaListaEquipa();
+    Lista->head = (Lista->tail = criaNodeEquipa(Equipa, 0, 0));
+    return Lista;
   }
   else
   {
@@ -100,10 +94,8 @@ listaEquipa *insereInicioListaEquipa(listaEquipa *Lista, equipa *Equipa)
 
   if (Lista->head == 0)
   {
-    {
-      Lista->head = (Lista->tail = criaNodeEquipa(Equipa, 0, 0));
-      return Lista;
-    }
+    Lista->head = (Lista->tail = criaNodeEquipa(Equipa, 0, 0));
+    return Lista;
   }
   else
   {
@@ -119,11 +111,9 @@ listaEquipa *insereFimListaEquipa(listaEquipa *Lista, equipa *Equipa)
 {
   if (Lista == 0)
   {
-    {
-      Lista = criaListaEquipa();
-      Lista->head = (Lista->tail = criaNodeEquipa(Equipa, 0, 0));
-      return Lista;
-    }
+    Lista = criaListaEquipa();
+    Lista->head = (Lista->tail = criaNodeEquipa(Equipa, 0, 0));
+    return Lista;
   }
   else
   {
@@ -132,10 +122,8 @@ listaEquipa *insereFimListaEquipa(listaEquipa *Lista, equipa *Equipa)
 
   if (Lista->head == 0)
   {
-    {
-      Lista->head = (Lista->tail = criaNodeEquipa(Equipa, 0, 0));
-      return Lista;
-    }
+    Lista->head = (Lista->tail = criaNodeEquipa(Equipa, 0, 0));
+    return Lista;
   }
   else
   {
@@ -153,9 +141,7 @@ equipa *procuraListaEquipa(listaEquipa *Lista, char *nome)
   char *auxNome;
   if (Lista == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -164,9 +150,7 @@ equipa *procuraListaEquipa(listaEquipa *Lista, char *nome)
 
   if (Lista->head == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -183,9 +167,7 @@ equipa *procuraListaEquipa(listaEquipa *Lista, char *nome)
 
   if (auxNode == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -194,9 +176,7 @@ equipa *procuraListaEquipa(listaEquipa *Lista, char *nome)
 
   if (strcmp(auxNome, nome) != 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -211,26 +191,22 @@ listaEquipa *removeListaEquipa(listaEquipa *Lista, char *nome)
   char *auxNome;
   if (Lista->head == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
+    nodeEquipa *auxNode = Lista->head;
+    auxNome = auxNode->Equipa->nome;
+    while (strcmp(auxNome, nome) != 0)
     {
-      nodeEquipa *auxNode = Lista->head;
+      auxNode = auxNode->next;
       auxNome = auxNode->Equipa->nome;
-      while (strcmp(auxNome, nome) != 0)
-      {
-        auxNode = auxNode->next;
-        auxNome = auxNode->Equipa->nome;
-      }
-
-      auxNode->previous->next = auxNode->next;
-      auxNode->next->previous = auxNode->previous;
-      free(auxNode);
-      return Lista;
     }
+
+    auxNode->previous->next = auxNode->next;
+    auxNode->next->previous = auxNode->previous;
+    free(auxNode);
+    return Lista;
   }
 
 }
@@ -241,9 +217,7 @@ int encontraMaxVitorias(listaEquipa *ListaDeEquipas)
   nodeEquipa *auxNode;
   if ((ListaDeEquipas == 0) || (ListaDeEquipas->head == 0))
   {
-    {
-      return -1;
-    }
+    return -1;
   }
   else
   {
@@ -255,9 +229,7 @@ int encontraMaxVitorias(listaEquipa *ListaDeEquipas)
   {
     if (auxNode->Equipa->numeroVitorias > max)
     {
-      {
-        max = auxNode->Equipa->numeroVitorias;
-      }
+      max = auxNode->Equipa->numeroVitorias;
     }
     else
     {

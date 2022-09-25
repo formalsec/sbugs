@@ -97,11 +97,9 @@ void N(Encomenda enco[500], int enco_proximo)
 {
   if (enco_proximo <= (500 - 1))
   {
-    {
-      enco[enco_proximo].peso = 0;
-      enco[enco_proximo].num_produtos = 0;
-      printf("Nova encomenda %d.\n", enco_proximo);
-    }
+    enco[enco_proximo].peso = 0;
+    enco[enco_proximo].num_produtos = 0;
+    printf("Nova encomenda %d.\n", enco_proximo);
   }
   else
   {
@@ -143,23 +141,19 @@ void A(Produto prod[10000], Encomenda enco[500], int prod_proximo, int enco_prox
         }
         else
         {
+          if ((in_order = produto_in_encomenda(idp, enco[ide])) != (-1))
           {
-            if ((in_order = produto_in_encomenda(idp, enco[ide])) != (-1))
-            {
-              enco[ide].produtos[in_order].quantidade += qnt;
-            }
-            else
-            {
-              {
-                enco[ide].produtos[enco[ide].num_produtos].id_produto = idp;
-                enco[ide].produtos[enco[ide].num_produtos].quantidade = qnt;
-                enco[ide].num_produtos += 1;
-              }
-            }
-
-            prod[idp].stock -= qnt;
-            enco[ide].peso += prod[idp].peso * qnt;
+            enco[ide].produtos[in_order].quantidade += qnt;
           }
+          else
+          {
+            enco[ide].produtos[enco[ide].num_produtos].id_produto = idp;
+            enco[ide].produtos[enco[ide].num_produtos].quantidade = qnt;
+            enco[ide].num_produtos += 1;
+          }
+
+          prod[idp].stock -= qnt;
+          enco[ide].peso += prod[idp].peso * qnt;
         }
 
       }
@@ -216,12 +210,10 @@ void R(Produto prod[10000], Encomenda enco[500], int prod_proximo, int enco_prox
     {
       if ((in_order = produto_in_encomenda(idp, enco[ide])) != (-1))
       {
-        {
-          prod[idp].stock += enco[ide].produtos[in_order].quantidade;
-          enco[ide].peso -= enco[ide].produtos[in_order].quantidade * prod[idp].peso;
-          enco[ide].num_produtos -= 1;
-          repor_vetor(enco[ide].produtos, in_order, enco[ide].num_produtos);
-        }
+        prod[idp].stock += enco[ide].produtos[in_order].quantidade;
+        enco[ide].peso -= enco[ide].produtos[in_order].quantidade * prod[idp].peso;
+        enco[ide].num_produtos -= 1;
+        repor_vetor(enco[ide].produtos, in_order, enco[ide].num_produtos);
       }
       else
       {
@@ -248,16 +240,14 @@ void C(Produto prod[10000], Encomenda enco[500], int enco_proximo)
   }
   else
   {
+    for (i = 0; i < enco[ide].num_produtos; i++)
     {
-      for (i = 0; i < enco[ide].num_produtos; i++)
-      {
-        idp = enco[ide].produtos[i].id_produto;
-        in_order = produto_in_encomenda(idp, enco[ide]);
-        custo += prod[idp].preco * enco[ide].produtos[in_order].quantidade;
-      }
-
-      printf("Custo da encomenda %d %d.\n", ide, custo);
+      idp = enco[ide].produtos[i].id_produto;
+      in_order = produto_in_encomenda(idp, enco[ide]);
+      custo += prod[idp].preco * enco[ide].produtos[in_order].quantidade;
     }
+
+    printf("Custo da encomenda %d %d.\n", ide, custo);
   }
 
 }
@@ -298,17 +288,15 @@ void E(Produto prod[10000], Encomenda enco[500], int prod_proximo, int enco_prox
     }
     else
     {
+      if ((in_order = produto_in_encomenda(idp, enco[ide])) != (-1))
       {
-        if ((in_order = produto_in_encomenda(idp, enco[ide])) != (-1))
-        {
-          printf("%s %d.\n", prod[idp].descricao, enco[ide].produtos[in_order].quantidade);
-        }
-        else
-        {
-          printf("%s %d.\n", prod[idp].descricao, 0);
-        }
-
+        printf("%s %d.\n", prod[idp].descricao, enco[ide].produtos[in_order].quantidade);
       }
+      else
+      {
+        printf("%s %d.\n", prod[idp].descricao, 0);
+      }
+
     }
 
   }
@@ -328,25 +316,14 @@ void m(Encomenda enco[500], int prod_proximo, int enco_proximo)
   }
   else
   {
+    for (i = 0; i < enco_proximo; i++)
     {
-      for (i = 0; i < enco_proximo; i++)
+      in_order = produto_in_encomenda(idp, enco[i]);
+      if (in_order != (-1))
       {
-        in_order = produto_in_encomenda(idp, enco[i]);
-        if (in_order != (-1))
+        if (enco[i].produtos[in_order].quantidade > enco[maior].produtos[produto_in_encomenda(idp, enco[maior])].quantidade)
         {
-          {
-            if (enco[i].produtos[in_order].quantidade > enco[maior].produtos[produto_in_encomenda(idp, enco[maior])].quantidade)
-            {
-              {
-                maior = i;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
+          maior = i;
         }
         else
         {
@@ -354,17 +331,22 @@ void m(Encomenda enco[500], int prod_proximo, int enco_proximo)
         }
 
       }
-
-      if (maior != (-1))
-      {
-        printf("Maximo produto %d %d %d.\n", idp, maior, enco[maior].produtos[produto_in_encomenda(idp, enco[maior])].quantidade);
-      }
       else
       {
         
       }
 
     }
+
+    if (maior != (-1))
+    {
+      printf("Maximo produto %d %d %d.\n", idp, maior, enco[maior].produtos[produto_in_encomenda(idp, enco[maior])].quantidade);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -379,34 +361,28 @@ int partition(ToSort a[], int left, int right, int alphaSwitch)
   {
     if (alphaSwitch == 1)
     {
-      {
-        while (strcmp(a[i].desc, a[pivot].desc) < 0)
-          i++;
+      while (strcmp(a[i].desc, a[pivot].desc) < 0)
+        i++;
 
-        while ((strcmp(a[j].desc, a[pivot].desc) >= 0) && (j > left))
-          j--;
+      while ((strcmp(a[j].desc, a[pivot].desc) >= 0) && (j > left))
+        j--;
 
-      }
     }
     else
     {
-      {
-        while (a[i].to_sort < a[pivot].to_sort)
-          i++;
+      while (a[i].to_sort < a[pivot].to_sort)
+        i++;
 
-        while ((a[j].to_sort >= a[pivot].to_sort) && (j > left))
-          j--;
+      while ((a[j].to_sort >= a[pivot].to_sort) && (j > left))
+        j--;
 
-      }
     }
 
     if (i < j)
     {
-      {
-        temp = a[i];
-        a[i] = a[j];
-        a[j] = temp;
-      }
+      temp = a[i];
+      a[i] = a[j];
+      a[j] = temp;
     }
     else
     {
@@ -426,11 +402,9 @@ void quicksort(ToSort a[], int left, int right, int alphaSwitch)
   int i;
   if (left < right)
   {
-    {
-      i = partition(a, left, right, alphaSwitch);
-      quicksort(a, left, i - 1, alphaSwitch);
-      quicksort(a, i + 1, right, alphaSwitch);
-    }
+    i = partition(a, left, right, alphaSwitch);
+    quicksort(a, left, i - 1, alphaSwitch);
+    quicksort(a, i + 1, right, alphaSwitch);
   }
   else
   {
@@ -456,37 +430,31 @@ void l(Produto prod[10000], int prod_proximo)
   {
     if (lista[i].to_sort == lista[i - 1].to_sort)
     {
+      if (low == (-1))
       {
-        if (low == (-1))
-        {
-          low = i - 1;
-        }
-        else
-        {
-          
-        }
-
-        lista[i - 1].to_sort = lista[i - 1].id_produto;
+        low = i - 1;
       }
+      else
+      {
+        
+      }
+
+      lista[i - 1].to_sort = lista[i - 1].id_produto;
     }
     else
     {
+      if (low != (-1))
       {
-        if (low != (-1))
-        {
-          {
-            high = i - 1;
-            lista[high].to_sort = lista[high].id_produto;
-            quicksort(lista, low, high, 0);
-            low = -1;
-          }
-        }
-        else
-        {
-          
-        }
-
+        high = i - 1;
+        lista[high].to_sort = lista[high].id_produto;
+        quicksort(lista, low, high, 0);
+        low = -1;
       }
+      else
+      {
+        
+      }
+
     }
 
   }
@@ -512,22 +480,20 @@ void L(Produto prod[10000], Encomenda enco[500], int enco_proximo)
   }
   else
   {
+    for (i = 0; i < enco[ide].num_produtos; i++)
     {
-      for (i = 0; i < enco[ide].num_produtos; i++)
-      {
-        lista[i].id_produto = enco[ide].produtos[i].id_produto;
-        lista[i].desc = prod[lista[i].id_produto].descricao;
-      }
-
-      quicksort(lista, 0, enco[ide].num_produtos - 1, 1);
-      printf("Encomenda %d\n", ide);
-      for (i = 0; i < enco[ide].num_produtos; i++)
-      {
-        idp = lista[i].id_produto;
-        printf("* %s %d %d\n", prod[idp].descricao, prod[idp].preco, enco[ide].produtos[produto_in_encomenda(idp, enco[ide])].quantidade);
-      }
-
+      lista[i].id_produto = enco[ide].produtos[i].id_produto;
+      lista[i].desc = prod[lista[i].id_produto].descricao;
     }
+
+    quicksort(lista, 0, enco[ide].num_produtos - 1, 1);
+    printf("Encomenda %d\n", ide);
+    for (i = 0; i < enco[ide].num_produtos; i++)
+    {
+      idp = lista[i].id_produto;
+      printf("* %s %d %d\n", prod[idp].descricao, prod[idp].preco, enco[ide].produtos[produto_in_encomenda(idp, enco[ide])].quantidade);
+    }
+
   }
 
 }

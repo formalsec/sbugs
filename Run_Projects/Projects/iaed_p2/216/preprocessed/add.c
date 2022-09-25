@@ -16,10 +16,8 @@ void addWin(list *tms, char *name)
   {
     if (strcmp(ptr->name, name) == 0)
     {
-      {
-        ptr->won++;
-        break;
-      }
+      ptr->won++;
+      break;
     }
     else
     {
@@ -37,17 +35,13 @@ void push(int idx, node *n_node, int flag)
   info->point = n_node;
   if (flag == 0)
   {
-    {
-      info->next = games[idx].head;
-      games[idx].head = info;
-    }
+    info->next = games[idx].head;
+    games[idx].head = info;
   }
   else
   {
-    {
-      info->next = teams[idx].head;
-      teams[idx].head = info;
-    }
+    info->next = teams[idx].head;
+    teams[idx].head = info;
   }
 
 }
@@ -90,77 +84,63 @@ void addGame(list *ls, list *tms)
   testTeam2 = getNodeTeams(team2);
   if (testName != 0)
   {
-    {
-      printf("%d Jogo existente.\n", counter);
-      free(n_game);
-      return;
-    }
+    printf("%d Jogo existente.\n", counter);
+    free(n_game);
+    return;
   }
   else
   {
     if ((testTeam1 == 0) || (testTeam2 == 0))
     {
-      {
-        printf("%d Equipa inexistente.\n", counter);
-        free(n_game);
-        return;
-      }
+      printf("%d Equipa inexistente.\n", counter);
+      free(n_game);
+      return;
     }
     else
     {
+      n_game->name = (char *) malloc((sizeof(char)) * (strlen(name) + 1));
+      n_game->team1 = (char *) malloc((sizeof(char)) * (strlen(team1) + 1));
+      n_game->team2 = (char *) malloc((sizeof(char)) * (strlen(team2) + 1));
+      strcpy(n_game->name, name);
+      strcpy(n_game->team1, team1);
+      strcpy(n_game->team2, team2);
+      n_game->score1 = score1;
+      n_game->score2 = score2;
+      n_game->next = (n_game->previous = 0);
+      if (ls->head == 0)
       {
-        n_game->name = (char *) malloc((sizeof(char)) * (strlen(name) + 1));
-        n_game->team1 = (char *) malloc((sizeof(char)) * (strlen(team1) + 1));
-        n_game->team2 = (char *) malloc((sizeof(char)) * (strlen(team2) + 1));
-        strcpy(n_game->name, name);
-        strcpy(n_game->team1, team1);
-        strcpy(n_game->team2, team2);
-        n_game->score1 = score1;
-        n_game->score2 = score2;
-        n_game->next = (n_game->previous = 0);
-        if (ls->head == 0)
-        {
-          {
-            ls->head = n_game;
-            idx = getHashKey(n_game->name);
-            push(idx, n_game, 0);
-          }
-        }
-        else
-        {
-          {
-            n_game->previous = ls->end;
-            ls->end->next = n_game;
-            idx = getHashKey(n_game->name);
-            push(idx, n_game, 0);
-          }
-        }
-
-        if (score1 > score2)
-        {
-          {
-            addWin(tms, team1);
-            testTeam1->point->won++;
-          }
-        }
-        else
-        {
-          if (score1 < score2)
-          {
-            {
-              addWin(tms, team2);
-              testTeam2->point->won++;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-        ls->end = n_game;
+        ls->head = n_game;
+        idx = getHashKey(n_game->name);
+        push(idx, n_game, 0);
       }
+      else
+      {
+        n_game->previous = ls->end;
+        ls->end->next = n_game;
+        idx = getHashKey(n_game->name);
+        push(idx, n_game, 0);
+      }
+
+      if (score1 > score2)
+      {
+        addWin(tms, team1);
+        testTeam1->point->won++;
+      }
+      else
+      {
+        if (score1 < score2)
+        {
+          addWin(tms, team2);
+          testTeam2->point->won++;
+        }
+        else
+        {
+          
+        }
+
+      }
+
+      ls->end = n_game;
     }
 
   }
@@ -187,36 +167,28 @@ void addTeam(list *ls)
   testTeam = getNodeTeams(n_team->name);
   if (testTeam != 0)
   {
-    {
-      printf("%d Equipa existente.\n", counter);
-      free(n_team->name);
-      free(n_team);
-      return;
-    }
+    printf("%d Equipa existente.\n", counter);
+    free(n_team->name);
+    free(n_team);
+    return;
   }
   else
   {
+    if (ls->head == 0)
     {
-      if (ls->head == 0)
-      {
-        {
-          ls->head = n_team;
-          idx = getHashKey(n_team->name);
-          push(idx, n_team, 1);
-        }
-      }
-      else
-      {
-        {
-          n_team->previous = ls->end;
-          ls->end->next = n_team;
-          idx = getHashKey(n_team->name);
-          push(idx, n_team, 1);
-        }
-      }
-
-      ls->end = n_team;
+      ls->head = n_team;
+      idx = getHashKey(n_team->name);
+      push(idx, n_team, 1);
     }
+    else
+    {
+      n_team->previous = ls->end;
+      ls->end->next = n_team;
+      idx = getHashKey(n_team->name);
+      push(idx, n_team, 1);
+    }
+
+    ls->end = n_team;
   }
 
 }

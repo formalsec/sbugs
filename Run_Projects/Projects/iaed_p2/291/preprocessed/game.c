@@ -42,17 +42,15 @@ void print_games(game_link *games)
     }
     else
     {
+      aux = games[i];
+      printf("Jogo %d", i);
+      while (aux != 0)
       {
-        aux = games[i];
-        printf("Jogo %d", i);
-        while (aux != 0)
-        {
-          printf(":-:%s", aux->name);
-          aux = aux->next;
-        }
-
-        printf("\n");
+        printf(":-:%s", aux->name);
+        aux = aux->next;
       }
+
+      printf("\n");
     }
 
   }
@@ -68,15 +66,11 @@ int existing_game(game_link *hashtable, char buffer[1024])
   {
     if (strcmp(aux->name, buffer))
     {
-      {
-        aux = aux->next;
-      }
+      aux = aux->next;
     }
     else
     {
-      {
-        return 1;
-      }
+      return 1;
     }
 
   }
@@ -101,9 +95,7 @@ game_link prev(game_link *games, game_link atual)
   game_link aux = games[hashU(atual->name)];
   if (!strcmp(aux->name, atual->name))
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -153,10 +145,8 @@ void free_ord(game_list n)
   game_list aux;
   if (n->game == 0)
   {
-    {
-      free(n);
-      return;
-    }
+    free(n);
+    return;
   }
   else
   {

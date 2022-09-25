@@ -9,16 +9,12 @@ void adicionaequipa(equipas *hashtable_equipas, char *nome_equipa, int NL)
   int id;
   if (lookupequipa(hashtable_equipas, nome_equipa) == 0)
   {
-    {
-      id = hash(nome_equipa);
-      hashtable_equipas[id] = insertBeginequipas(hashtable_equipas[id], nome_equipa);
-    }
+    id = hash(nome_equipa);
+    hashtable_equipas[id] = insertBeginequipas(hashtable_equipas[id], nome_equipa);
   }
   else
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-    }
+    printf("%d Equipa existente.\n", NL);
   }
 
 }
@@ -30,50 +26,38 @@ int adicionajogo(jogos *hashtable_jogos, equipas *hashtable_equipas, char *nome,
   equipas y = lookupequipa(hashtable_equipas, equipa2);
   if (lookupjogo(hashtable_jogos, nome) == 0)
   {
+    if ((lookupequipa(hashtable_equipas, equipa1) != 0) && (lookupequipa(hashtable_equipas, equipa2) != 0))
     {
-      if ((lookupequipa(hashtable_equipas, equipa1) != 0) && (lookupequipa(hashtable_equipas, equipa2) != 0))
+      hashtable_jogos[id] = insertBeginjogos(hashtable_jogos[id], nome, equipa1, equipa2, score1, score2, num_jogos);
+      if (score1 > score2)
       {
-        {
-          hashtable_jogos[id] = insertBeginjogos(hashtable_jogos[id], nome, equipa1, equipa2, score1, score2, num_jogos);
-          if (score1 > score2)
-          {
-            {
-              x->vitorias++;
-            }
-          }
-          else
-          {
-            
-          }
-
-          if (score1 < score2)
-          {
-            {
-              y->vitorias++;
-            }
-          }
-          else
-          {
-            
-          }
-
-          return 1;
-        }
+        x->vitorias++;
       }
       else
       {
-        {
-          printf("%d Equipa inexistente.\n", NL);
-        }
+        
       }
 
+      if (score1 < score2)
+      {
+        y->vitorias++;
+      }
+      else
+      {
+        
+      }
+
+      return 1;
     }
+    else
+    {
+      printf("%d Equipa inexistente.\n", NL);
+    }
+
   }
   else
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-    }
+    printf("%d Jogo existente.\n", NL);
   }
 
   return 0;
@@ -92,9 +76,7 @@ void listaordemjogos(jogos *hashtable_jogos, int num_jogos, int NL)
       {
         if (x->num_jogos == e)
         {
-          {
-            printf("%d %s %s %s %d %d\n", NL, x->nome, x->equipa1, x->equipa2, x->score1, x->score2);
-          }
+          printf("%d %s %s %s %d %d\n", NL, x->nome, x->equipa1, x->equipa2, x->score1, x->score2);
         }
         else
         {
@@ -114,15 +96,11 @@ void procurajogo(jogos *hashtable_jogos, char *nome, int NL)
   jogos x = lookupjogo(hashtable_jogos, nome);
   if (x != 0)
   {
-    {
-      printf("%d %s %s %s %d %d\n", NL, x->nome, x->equipa1, x->equipa2, x->score1, x->score2);
-    }
+    printf("%d %s %s %s %d %d\n", NL, x->nome, x->equipa1, x->equipa2, x->score1, x->score2);
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
 
 }
@@ -136,69 +114,55 @@ jogos apagajogo(jogos *hashtable_jogos, equipas *hashtable_equipas, char *nome, 
   equipas z;
   if (lookupjogo(hashtable_jogos, nome) != 0)
   {
+    y = lookupequipa(hashtable_equipas, x->equipa1);
+    z = lookupequipa(hashtable_equipas, x->equipa2);
+    if (x->score1 > x->score2)
     {
-      y = lookupequipa(hashtable_equipas, x->equipa1);
-      z = lookupequipa(hashtable_equipas, x->equipa2);
-      if (x->score1 > x->score2)
+      y->vitorias--;
+    }
+    else
+    {
+      if (x->score1 < x->score2)
       {
-        {
-          y->vitorias--;
-        }
+        z->vitorias--;
       }
       else
       {
-        if (x->score1 < x->score2)
-        {
-          {
-            z->vitorias--;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      for (x = hashtable_jogos[id], anterior = 0; x != 0; anterior = x, x = x->next)
-      {
-        if (strcmp(x->nome, nome) == 0)
-        {
-          {
-            if (x == hashtable_jogos[id])
-            {
-              {
-                hashtable_jogos[id] = x->next;
-              }
-            }
-            else
-            {
-              {
-                anterior->next = x->next;
-              }
-            }
-
-            free(x->nome);
-            free(x->equipa1);
-            free(x->equipa2);
-            free(x);
-            return hashtable_jogos[id];
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
     }
+
+    for (x = hashtable_jogos[id], anterior = 0; x != 0; anterior = x, x = x->next)
+    {
+      if (strcmp(x->nome, nome) == 0)
+      {
+        if (x == hashtable_jogos[id])
+        {
+          hashtable_jogos[id] = x->next;
+        }
+        else
+        {
+          anterior->next = x->next;
+        }
+
+        free(x->nome);
+        free(x->equipa1);
+        free(x->equipa2);
+        free(x);
+        return hashtable_jogos[id];
+      }
+      else
+      {
+        
+      }
+
+    }
+
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
 
   return hashtable_jogos[id];
@@ -209,15 +173,11 @@ void procuraequipa(equipas *hashtable_equipas, char *nome_equipa, int NL)
   equipas x = lookupequipa(hashtable_equipas, nome_equipa);
   if (x != 0)
   {
-    {
-      printf("%d %s %d\n", NL, x->nome_equipa, x->vitorias);
-    }
+    printf("%d %s %d\n", NL, x->nome_equipa, x->vitorias);
   }
   else
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-    }
+    printf("%d Equipa inexistente.\n", NL);
   }
 
 }
@@ -229,93 +189,43 @@ void alterascore(jogos *hashtable_jogos, equipas *hashtable_equipas, char *nome,
   equipas z;
   if (lookupjogo(hashtable_jogos, nome) != 0)
   {
+    x = lookupjogo(hashtable_jogos, nome);
+    y = lookupequipa(hashtable_equipas, x->equipa1);
+    z = lookupequipa(hashtable_equipas, x->equipa2);
+    if (x->score1 == x->score2)
     {
-      x = lookupjogo(hashtable_jogos, nome);
-      y = lookupequipa(hashtable_equipas, x->equipa1);
-      z = lookupequipa(hashtable_equipas, x->equipa2);
-      if (x->score1 == x->score2)
+      if (score1 > score2)
       {
-        {
-          if (score1 > score2)
-          {
-            {
-              y->vitorias++;
-            }
-          }
-          else
-          {
-            if (score1 < score2)
-            {
-              {
-                z->vitorias++;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-        }
+        y->vitorias++;
       }
       else
       {
-        if (x->score1 < x->score2)
+        if (score1 < score2)
         {
-          {
-            if (score1 == score2)
-            {
-              {
-                z->vitorias--;
-              }
-            }
-            else
-            {
-              if (score1 > score2)
-              {
-                {
-                  y->vitorias++;
-                  z->vitorias--;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-          }
+          z->vitorias++;
         }
         else
         {
-          if (x->score1 > x->score2)
+          
+        }
+
+      }
+
+    }
+    else
+    {
+      if (x->score1 < x->score2)
+      {
+        if (score1 == score2)
+        {
+          z->vitorias--;
+        }
+        else
+        {
+          if (score1 > score2)
           {
-            {
-              if (score1 == score2)
-              {
-                {
-                  y->vitorias--;
-                }
-              }
-              else
-              {
-                if (score1 < score2)
-                {
-                  {
-                    y->vitorias--;
-                    z->vitorias++;
-                  }
-                }
-                else
-                {
-                  
-                }
-
-              }
-
-            }
+            y->vitorias++;
+            z->vitorias--;
           }
           else
           {
@@ -325,16 +235,44 @@ void alterascore(jogos *hashtable_jogos, equipas *hashtable_equipas, char *nome,
         }
 
       }
+      else
+      {
+        if (x->score1 > x->score2)
+        {
+          if (score1 == score2)
+          {
+            y->vitorias--;
+          }
+          else
+          {
+            if (score1 < score2)
+            {
+              y->vitorias--;
+              z->vitorias++;
+            }
+            else
+            {
+              
+            }
 
-      x->score1 = score1;
-      x->score2 = score2;
+          }
+
+        }
+        else
+        {
+          
+        }
+
+      }
+
     }
+
+    x->score1 = score1;
+    x->score2 = score2;
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
 
 }

@@ -40,9 +40,7 @@ Equipa *search_lista_e(LinkE head, char *nome)
   {
     if (strcmp(head->equipa->nome, nome) == 0)
     {
-      {
-        return head->equipa;
-      }
+      return head->equipa;
     }
     else
     {
@@ -59,10 +57,8 @@ int add_e_to_hash(LinkE *Table, Equipa *equipa)
   int index = hashEquipa(equipa->nome, 12049);
   if (search_lista_e(Table[index], equipa->nome) == 0)
   {
-    {
-      Table[index] = add_e_to_list(Table[index], equipa);
-      return 1;
-    }
+    Table[index] = add_e_to_list(Table[index], equipa);
+    return 1;
   }
   else
   {

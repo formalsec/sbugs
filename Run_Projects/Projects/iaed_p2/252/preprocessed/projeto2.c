@@ -44,11 +44,9 @@ int main()
         nome_equipa[10 - 1] = '\0';
         if (FindTeam(lista_equipas, nome_equipa))
       {
-        {
-          printf("%d Equipa existente.\n", NL);
-          num_equipas--;
-          break;
-        }
+        printf("%d Equipa existente.\n", NL);
+        num_equipas--;
+        break;
       }
       else
       {

@@ -81,10 +81,8 @@ void destroi_h_equipas(equipa **h_equipas, int tam_h_equipas)
   for (i = 0; i < tam_h_equipas; i++)
     if (h_equipas[i])
   {
-    {
-      free(h_equipas[i]->nome);
-      free(h_equipas[i]);
-    }
+    free(h_equipas[i]->nome);
+    free(h_equipas[i]);
   }
   else
   {

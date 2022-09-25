@@ -15,10 +15,8 @@ Competition *comp_new(char *name)
   Competition *competition = (Competition *) malloc(sizeof(Competition));
   if (errno > 0)
   {
-    {
-      perror("comp_new: create_competition");
-      exit(errno);
-    }
+    perror("comp_new: create_competition");
+    exit(errno);
   }
   else
   {
@@ -38,10 +36,8 @@ Comp_node *comp_new_node(Game *g)
   Comp_node *cn = (Comp_node *) malloc(sizeof(Comp_node));
   if (errno > 0)
   {
-    {
-      perror("comp_new_node: malloc");
-      exit(errno);
-    }
+    perror("comp_new_node: malloc");
+    exit(errno);
   }
   else
   {
@@ -57,10 +53,8 @@ void comp_node_free(Comp_node *cn)
 {
   if (cn == 0)
   {
-    {
-      printf("%s: null pointer\n", "comp_node_free");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "comp_node_free");
+    exit(1);
   }
   else
   {
@@ -77,10 +71,8 @@ void competition_free(Competition *c)
   Comp_node *cn;
   if (c == 0)
   {
-    {
-      printf("%s: null pointer\n", "competition_free");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "competition_free");
+    exit(1);
   }
   else
   {
@@ -105,10 +97,8 @@ void comp_add_game(Competition *c, Game *g)
   Comp_node *cn;
   if (c == 0)
   {
-    {
-      printf("%s: null pointer\n", "comp_add_game");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "comp_add_game");
+    exit(1);
   }
   else
   {
@@ -137,10 +127,8 @@ Comp_node *_comp_find_game(Competition *c, char *game_name)
   Comp_node *cn;
   if (c == 0)
   {
-    {
-      printf("%s: null pointer\n", "_comp_find_game");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "_comp_find_game");
+    exit(1);
   }
   else
   {
@@ -186,10 +174,8 @@ int comp_remove_game(Competition *c, char *game_name)
   Comp_node *cn;
   if (c == 0)
   {
-    {
-      printf("%s: null pointer\n", "competition_remove_game");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "competition_remove_game");
+    exit(1);
   }
   else
   {
@@ -210,9 +196,7 @@ int comp_remove_game(Competition *c, char *game_name)
   c->count--;
   if (cn->previous == 0)
   {
-    {
-      c->first = cn->next;
-    }
+    c->first = cn->next;
   }
   else
   {
@@ -221,9 +205,7 @@ int comp_remove_game(Competition *c, char *game_name)
 
   if (cn->next == 0)
   {
-    {
-      c->last = cn->previous;
-    }
+    c->last = cn->previous;
   }
   else
   {
@@ -232,9 +214,7 @@ int comp_remove_game(Competition *c, char *game_name)
 
   if (cn->previous != 0)
   {
-    {
-      cn->previous->next = cn->next;
-    }
+    cn->previous->next = cn->next;
   }
   else
   {
@@ -250,10 +230,8 @@ Game *comp_set_score(Competition *c, char *game_name, int s1, int s2)
   Comp_node *cn;
   if (c == 0)
   {
-    {
-      printf("%s: null pointer\n", "comp_set_score");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "comp_set_score");
+    exit(1);
   }
   else
   {
@@ -268,10 +246,8 @@ Game *comp_set_score(Competition *c, char *game_name, int s1, int s2)
   }
   else
   {
-    {
-      game_set_score(cn->game, s1, s2);
-      return cn->game;
-    }
+    game_set_score(cn->game, s1, s2);
+    return cn->game;
   }
 
 }
@@ -283,10 +259,8 @@ int comp_get_victories(Competition *c, char *team_name)
   Team *team;
   if (c == 0)
   {
-    {
-      printf("%s: null pointer\n", "comp_get_victories");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "comp_get_victories");
+    exit(1);
   }
   else
   {
@@ -319,10 +293,8 @@ void competition_print(Competition *c)
   char last_game[100];
   if (c == 0)
   {
-    {
-      printf("%s: null pointer\n", "competition_print");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "competition_print");
+    exit(1);
   }
   else
   {
@@ -357,10 +329,8 @@ void comp_print_games(Competition *c, int nl)
   char buf[(1023 + (2 * 1023)) + 10];
   if (c == 0)
   {
-    {
-      printf("%s: null pointer\n", "competition_print");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "competition_print");
+    exit(1);
   }
   else
   {

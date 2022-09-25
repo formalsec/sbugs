@@ -42,49 +42,37 @@ void comando_a(Jogos *jogos, Jogo_hash *j, Equipas_hash *e, int M, int E, int NL
   x = Search(j, nome_jogo, M);
   if (x == 0)
   {
+    if ((um != 0) && (dois != 0))
     {
-      if ((um != 0) && (dois != 0))
+      x = adiciona_jogo(jogos, nome_jogo, um, dois, s1, s2);
+      insert_jogo(j, x, M);
+      if (s1 > s2)
       {
-        {
-          x = adiciona_jogo(jogos, nome_jogo, um, dois, s1, s2);
-          insert_jogo(j, x, M);
-          if (s1 > s2)
-          {
-            {
-              um->jogos_ganhos++;
-            }
-          }
-          else
-          {
-            if (s2 > s1)
-            {
-              {
-                dois->jogos_ganhos++;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-        }
+        um->jogos_ganhos++;
       }
       else
       {
+        if (s2 > s1)
         {
-          printf("%d Equipa inexistente.\n", NL);
+          dois->jogos_ganhos++;
         }
+        else
+        {
+          
+        }
+
       }
 
     }
+    else
+    {
+      printf("%d Equipa inexistente.\n", NL);
+    }
+
   }
   else
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-    }
+    printf("%d Jogo existente.\n", NL);
   }
 
 }
@@ -112,15 +100,11 @@ void comando_p(Jogo_hash *j, int M, int NL)
   x = Search(j, buffer, M);
   if (x != 0)
   {
-    {
-      printf("%d %s %s %s %d %d\n", NL, x->nome, x->equipa1->nome_equipa, x->equipa2->nome_equipa, x->score1, x->score2);
-    }
+    printf("%d %s %s %s %d %d\n", NL, x->nome, x->equipa1->nome_equipa, x->equipa2->nome_equipa, x->score1, x->score2);
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
 
 }
@@ -139,39 +123,31 @@ void comando_r(Jogos *jogos, Jogo_hash *j, Equipas_hash *e, int M, int E, int NL
   x = Search(j, buffer, M);
   if (x != 0)
   {
+    if (x->score1 > x->score2)
     {
-      if (x->score1 > x->score2)
+      e1 = SearchE(e, x->equipa1->nome_equipa, E);
+      e1->jogos_ganhos--;
+    }
+    else
+    {
+      if (x->score1 < x->score2)
       {
-        {
-          e1 = SearchE(e, x->equipa1->nome_equipa, E);
-          e1->jogos_ganhos--;
-        }
+        e1 = SearchE(e, x->equipa2->nome_equipa, E);
+        e1->jogos_ganhos--;
       }
       else
       {
-        if (x->score1 < x->score2)
-        {
-          {
-            e1 = SearchE(e, x->equipa2->nome_equipa, E);
-            e1->jogos_ganhos--;
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      delete_jogo(j, x, M);
-      delete_jogoP(jogos, x);
     }
+
+    delete_jogo(j, x, M);
+    delete_jogoP(jogos, x);
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
 
 }
@@ -195,62 +171,47 @@ void comando_s(Jogo_hash *j, Equipas_hash *e, int M, int E, int NL)
   x = Search(j, buffer, M);
   if (x != 0)
   {
+    e1 = SearchE(e, x->equipa1->nome_equipa, E);
+    e2 = SearchE(e, x->equipa2->nome_equipa, E);
+    if ((x->score1 > x->score2) && (s1 == s2))
     {
-      e1 = SearchE(e, x->equipa1->nome_equipa, E);
-      e2 = SearchE(e, x->equipa2->nome_equipa, E);
-      if ((x->score1 > x->score2) && (s1 == s2))
+      e1->jogos_ganhos--;
+    }
+    else
+    {
+      if ((x->score1 > x->score2) && (s1 < s2))
       {
-        {
-          e1->jogos_ganhos--;
-        }
+        e1->jogos_ganhos--;
+        e2->jogos_ganhos++;
       }
       else
       {
-        if ((x->score1 > x->score2) && (s1 < s2))
+        if ((x->score1 == x->score2) && (s1 < s2))
         {
-          {
-            e1->jogos_ganhos--;
-            e2->jogos_ganhos++;
-          }
+          e2->jogos_ganhos++;
         }
         else
         {
-          if ((x->score1 == x->score2) && (s1 < s2))
+          if ((x->score1 < x->score2) && (s1 == s2))
           {
-            {
-              e2->jogos_ganhos++;
-            }
+            e2->jogos_ganhos--;
           }
           else
           {
-            if ((x->score1 < x->score2) && (s1 == s2))
+            if ((x->score1 < x->score2) && (s1 > s2))
             {
-              {
-                e2->jogos_ganhos--;
-              }
+              e1->jogos_ganhos++;
+              e2->jogos_ganhos--;
             }
             else
             {
-              if ((x->score1 < x->score2) && (s1 > s2))
+              if ((x->score1 == x->score2) && (s1 > s2))
               {
-                {
-                  e1->jogos_ganhos++;
-                  e2->jogos_ganhos--;
-                }
+                e1->jogos_ganhos++;
               }
               else
               {
-                if ((x->score1 == x->score2) && (s1 > s2))
-                {
-                  {
-                    e1->jogos_ganhos++;
-                  }
-                }
-                else
-                {
-                  
-                }
-
+                
               }
 
             }
@@ -261,15 +222,14 @@ void comando_s(Jogo_hash *j, Equipas_hash *e, int M, int E, int NL)
 
       }
 
-      x->score1 = s1;
-      x->score2 = s2;
     }
+
+    x->score1 = s1;
+    x->score2 = s2;
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
 
 }
@@ -285,16 +245,12 @@ int comando_A(Equipas_hash *e, int E, int total_equipas, int NL)
   buffer[10 - 1] = '\0';
   if (SearchE(e, buffer, E) == 0)
   {
-    {
-      insert_equipa(e, buffer, E);
-      total_equipas++;
-    }
+    insert_equipa(e, buffer, E);
+    total_equipas++;
   }
   else
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-    }
+    printf("%d Equipa existente.\n", NL);
   }
 
   return total_equipas;
@@ -313,15 +269,11 @@ void comando_P(Equipas_hash *e, int E, int NL)
   e1 = SearchE(e, buffer, E);
   if (e1 != 0)
   {
-    {
-      printf("%d %s %d\n", NL, e1->nome_equipa, e1->jogos_ganhos);
-    }
+    printf("%d %s %d\n", NL, e1->nome_equipa, e1->jogos_ganhos);
   }
   else
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-    }
+    printf("%d Equipa inexistente.\n", NL);
   }
 
 }
@@ -343,63 +295,57 @@ void comando_g(Equipas_hash *e, int E, int total_equipas, int NL)
   long total = 0;
   if (total_equipas > 0)
   {
+    array = malloc(total_equipas * (sizeof(struct str_equipa)));
+    for (i = 0; i < E; i++)
     {
-      array = malloc(total_equipas * (sizeof(struct str_equipa)));
-      for (i = 0; i < E; i++)
+      aux = e[i];
+      for (k = 0; aux != 0; aux = aux->next, k++)
       {
-        aux = e[i];
-        for (k = 0; aux != 0; aux = aux->next, k++)
+        if (aux->jogos_ganhos > max)
         {
-          if (aux->jogos_ganhos > max)
-          {
-            {
-              max = aux->jogos_ganhos;
-            }
-          }
-          else
-          {
-            
-          }
-
+          max = aux->jogos_ganhos;
+        }
+        else
+        {
+          
         }
 
       }
 
-      i = 0;
-      k = 0;
-      while (i < E)
-      {
-        aux = e[i];
-        while (aux != 0)
-        {
-          if (aux->jogos_ganhos == max)
-          {
-            {
-              array[k] = aux;
-              total++;
-              k++;
-            }
-          }
-          else
-          {
-            
-          }
-
-          aux = aux->next;
-        }
-
-        i++;
-      }
-
-      qsort(array, total, sizeof(struct str_equipa *), compare);
-      printf("%d Melhores %ld\n", NL, max);
-      for (i = 0; i < total; i++)
-      {
-        printf("%d * %s\n", NL, array[i]->nome_equipa);
-      }
-
-      free(array);
     }
+
+    i = 0;
+    k = 0;
+    while (i < E)
+    {
+      aux = e[i];
+      while (aux != 0)
+      {
+        if (aux->jogos_ganhos == max)
+        {
+          array[k] = aux;
+          total++;
+          k++;
+        }
+        else
+        {
+          
+        }
+
+        aux = aux->next;
+      }
+
+      i++;
+    }
+
+    qsort(array, total, sizeof(struct str_equipa *), compare);
+    printf("%d Melhores %ld\n", NL, max);
+    for (i = 0; i < total; i++)
+    {
+      printf("%d * %s\n", NL, array[i]->nome_equipa);
+    }
+
+    free(array);
   }
   else
   {

@@ -20,9 +20,7 @@ Node_team *search_team(Node_team *head, char *nome)
   {
     if (strcmp(head->nome, nome) == 0)
     {
-      {
-        return head;
-      }
+      return head;
     }
     else
     {
@@ -68,17 +66,13 @@ Node_game *insert_end(Node_game_lst *Lst_jogos, char *nome_jogo, char *equipa1, 
   new->next = 0;
   if (Lst_jogos->head == 0)
   {
-    {
-      new->prev = 0;
-      Lst_jogos->head = new;
-    }
+    new->prev = 0;
+    Lst_jogos->head = new;
   }
   else
   {
-    {
-      Lst_jogos->last->next = new;
-      new->prev = Lst_jogos->last;
-    }
+    Lst_jogos->last->next = new;
+    new->prev = Lst_jogos->last;
   }
 
   Lst_jogos->last = new;
@@ -129,9 +123,7 @@ Node_g_ht *insert_begin_games(Node_g_ht *head, Node_game *node_game_ptr)
   new->prev = 0;
   if (head != 0)
   {
-    {
-      head->prev = new;
-    }
+    head->prev = new;
   }
   else
   {
@@ -147,9 +139,7 @@ Node_g_ht *search_game_lst(Node_g_ht *head, char *nome)
   {
     if (strcmp(head->node_game_ptr->jogo->nome, nome) == 0)
     {
-      {
-        return head;
-      }
+      return head;
     }
     else
     {

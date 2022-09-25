@@ -37,22 +37,18 @@ int partition(Product products[], int left, int right)
   for (j = left; j <= (right - 1); j++)
     if ((products[j].price < pivot.price) || ((products[j].price == pivot.price) && (products[j].id < pivot.id)))
   {
+    i++;
+    if (i != j)
     {
-      i++;
-      if (i != j)
-      {
-        {
-          holder = products[i];
-          products[i] = products[j];
-          products[j] = holder;
-        }
-      }
-      else
-      {
-        
-      }
-
+      holder = products[i];
+      products[i] = products[j];
+      products[j] = holder;
     }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -72,11 +68,9 @@ void sortProductsByPrice(Product products[], int left, int right)
   int pivot;
   if (left < right)
   {
-    {
-      pivot = partition(products, left, right);
-      sortProductsByPrice(products, left, pivot - 1);
-      sortProductsByPrice(products, pivot + 1, right);
-    }
+    pivot = partition(products, left, right);
+    sortProductsByPrice(products, left, pivot - 1);
+    sortProductsByPrice(products, pivot + 1, right);
   }
   else
   {
@@ -168,50 +162,42 @@ void biggestOccurrenceCmd()
   idp = new_sym_var(sizeof(int) * 8);
   if (!productExists(idp))
   {
-    {
-      printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idp);
-    }
+    printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idp);
   }
   else
   {
+    for (j = 0; j < packageCount; j++)
+      for (i = 0; (i < 200) && packages[j][i].alive; i++)
+      if (packages[j][i].id == idp)
     {
-      for (j = 0; j < packageCount; j++)
-        for (i = 0; (i < 200) && packages[j][i].alive; i++)
-        if (packages[j][i].id == idp)
+      if (packages[j][i].quantity > qtd)
       {
-        {
-          if (packages[j][i].quantity > qtd)
-          {
-            {
-              qtd = packages[j][i].quantity;
-              ide = j;
-            }
-          }
-          else
-          {
-            
-          }
-
-          break;
-        }
+        qtd = packages[j][i].quantity;
+        ide = j;
       }
       else
       {
         
       }
 
-
-
-      if (qtd > 0)
-      {
-        printf("Maximo produto %d %d %d.\n", idp, ide, qtd);
-      }
-      else
-      {
-        
-      }
-
+      break;
     }
+    else
+    {
+      
+    }
+
+
+
+    if (qtd > 0)
+    {
+      printf("Maximo produto %d %d %d.\n", idp, ide, qtd);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }

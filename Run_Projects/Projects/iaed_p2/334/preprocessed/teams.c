@@ -38,15 +38,11 @@ teamList *addTeam(teamList *t, char *name)
 
   if (!head)
   {
-    {
-      newTeam->next = 0;
-    }
+    newTeam->next = 0;
   }
   else
   {
-    {
-      newTeam->next = head;
-    }
+    newTeam->next = head;
   }
 
   head = newTeam;
@@ -72,20 +68,16 @@ gameList *addGame(gameList *g, char *name, teamList *team1, teamList *team2, int
 
   if (!head)
   {
-    {
-      head = newGame;
-      newGame->prev = 0;
-    }
+    head = newGame;
+    newGame->prev = 0;
   }
   else
   {
-    {
-      while (tail->next)
-        tail = tail->next;
+    while (tail->next)
+      tail = tail->next;
 
-      tail->next = newGame;
-      newGame->prev = tail;
-    }
+    tail->next = newGame;
+    newGame->prev = tail;
   }
 
   newGame->next = 0;

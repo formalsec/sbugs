@@ -26,11 +26,9 @@ void add_team(teams **lst_teams, int nl)
   }
   else
   {
-    {
-      teams *team = (teams *) malloc(sizeof(teams));
-      team = new_team(team, name_aux);
-      insert_new_team(lst_teams, team);
-    }
+    teams *team = (teams *) malloc(sizeof(teams));
+    team = new_team(team, name_aux);
+    insert_new_team(lst_teams, team);
   }
 
 }
@@ -80,33 +78,27 @@ void add_game(games **lst_games, teams **lst_teams, int nl, stacks **stack, stac
       }
       else
       {
+        games *game = (games *) malloc(sizeof(games));
+        game = new_game(game, name_aux, team1_aux, team2_aux, score1, score2);
+        insert_new_game(lst_games, game);
+        insert_game_stack(name_aux, stack, head_stack);
+        if (who_won(score1, score2) == 1)
         {
-          games *game = (games *) malloc(sizeof(games));
-          game = new_game(game, name_aux, team1_aux, team2_aux, score1, score2);
-          insert_new_game(lst_games, game);
-          insert_game_stack(name_aux, stack, head_stack);
-          if (who_won(score1, score2) == 1)
+          add_victory(lst_teams, team1_aux);
+        }
+        else
+        {
+          if (who_won(score1, score2) == 2)
           {
-            {
-              add_victory(lst_teams, team1_aux);
-            }
+            add_victory(lst_teams, team2_aux);
           }
           else
           {
-            if (who_won(score1, score2) == 2)
-            {
-              {
-                add_victory(lst_teams, team2_aux);
-              }
-            }
-            else
-            {
-              
-            }
-
+            
           }
 
         }
+
       }
 
     }
@@ -126,16 +118,12 @@ void search_game(games **lst_games, int nl)
   name_aux[10 - 1] = '\0';
   if (look_game(lst_games, name_aux) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-    }
+    printf("%d Jogo inexistente.\n", nl);
   }
   else
   {
-    {
-      games *game = get_game(lst_games, name_aux);
-      printf("%d %s %s %s %d %d\n", nl, game->name, game->team1, game->team2, game->score1, game->score2);
-    }
+    games *game = get_game(lst_games, name_aux);
+    printf("%d %s %s %s %d %d\n", nl, game->name, game->team1, game->team2, game->score1, game->score2);
   }
 
 }
@@ -151,16 +139,12 @@ void search_team(teams **lst_teams, int nl)
   name_aux[10 - 1] = '\0';
   if (look_team(lst_teams, name_aux) == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", nl);
-    }
+    printf("%d Equipa inexistente.\n", nl);
   }
   else
   {
-    {
-      teams *team = get_team(lst_teams, name_aux);
-      printf("%d %s %d\n", nl, team->name, team->games_w);
-    }
+    teams *team = get_team(lst_teams, name_aux);
+    printf("%d %s %d\n", nl, team->name, team->games_w);
   }
 
 }
@@ -180,82 +164,66 @@ void change_score(games **lst_games, teams **lst_teams, int nl)
   score2 = new_sym_var(sizeof(int) * 8);
   if (look_game(lst_games, name_aux) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-    }
+    printf("%d Jogo inexistente.\n", nl);
   }
   else
   {
+    games *game = get_game(lst_games, name_aux);
+    int old = who_won(game->score1, game->score2);
+    int new = who_won(score1, score2);
+    if (old != new)
     {
-      games *game = get_game(lst_games, name_aux);
-      int old = who_won(game->score1, game->score2);
-      int new = who_won(score1, score2);
-      if (old != new)
+      if (new == 0)
       {
+        if (old == 1)
         {
-          if (new == 0)
-          {
-            {
-              if (old == 1)
-              {
-                remove_victory(lst_teams, game->team1);
-              }
-              else
-              {
-                remove_victory(lst_teams, game->team2);
-              }
-
-            }
-          }
-          else
-          {
-            if (old == 0)
-            {
-              {
-                if (new == 1)
-                {
-                  add_victory(lst_teams, game->team1);
-                }
-                else
-                {
-                  add_victory(lst_teams, game->team2);
-                }
-
-              }
-            }
-            else
-            {
-              {
-                if (new == 1)
-                {
-                  {
-                    remove_victory(lst_teams, game->team2);
-                    add_victory(lst_teams, game->team1);
-                  }
-                }
-                else
-                {
-                  {
-                    remove_victory(lst_teams, game->team1);
-                    add_victory(lst_teams, game->team2);
-                  }
-                }
-
-              }
-            }
-
-          }
-
+          remove_victory(lst_teams, game->team1);
         }
+        else
+        {
+          remove_victory(lst_teams, game->team2);
+        }
+
       }
       else
       {
-        
+        if (old == 0)
+        {
+          if (new == 1)
+          {
+            add_victory(lst_teams, game->team1);
+          }
+          else
+          {
+            add_victory(lst_teams, game->team2);
+          }
+
+        }
+        else
+        {
+          if (new == 1)
+          {
+            remove_victory(lst_teams, game->team2);
+            add_victory(lst_teams, game->team1);
+          }
+          else
+          {
+            remove_victory(lst_teams, game->team1);
+            add_victory(lst_teams, game->team2);
+          }
+
+        }
+
       }
 
-      game->score1 = score1;
-      game->score2 = score2;
     }
+    else
+    {
+      
+    }
+
+    game->score1 = score1;
+    game->score2 = score2;
   }
 
 }
@@ -271,39 +239,31 @@ void delete_game(games **lst_games, teams **lst_teams, int nl, stacks **stack, s
   name_aux[10 - 1] = '\0';
   if (look_game(lst_games, name_aux) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-    }
+    printf("%d Jogo inexistente.\n", nl);
   }
   else
   {
+    games *game;
+    game = get_game(lst_games, name_aux);
+    if (who_won(game->score1, game->score2) == 1)
     {
-      games *game;
-      game = get_game(lst_games, name_aux);
-      if (who_won(game->score1, game->score2) == 1)
+      remove_victory(lst_teams, game->team1);
+    }
+    else
+    {
+      if (who_won(game->score1, game->score2) == 2)
       {
-        {
-          remove_victory(lst_teams, game->team1);
-        }
+        remove_victory(lst_teams, game->team2);
       }
       else
       {
-        if (who_won(game->score1, game->score2) == 2)
-        {
-          {
-            remove_victory(lst_teams, game->team2);
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      remove_game_stack(stack, game, head_stack);
-      remove_game(lst_games, game);
     }
+
+    remove_game_stack(stack, game, head_stack);
+    remove_game(lst_games, game);
   }
 
 }

@@ -39,11 +39,9 @@ Item hash_table_insert(hash_table *ht, Item item)
   {
     if (!strcmp(hi->item->name, item->name))
     {
-      {
-        Item temp = hi->item;
-        hi->item = item;
-        return temp;
-      }
+      Item temp = hi->item;
+      hi->item = item;
+      return temp;
     }
     else
     {
@@ -69,9 +67,7 @@ Item hash_table_search(hash_table *ht, Key value)
   {
     if (!strcmp(hi->item->name, value))
     {
-      {
-        return hi->item;
-      }
+      return hi->item;
     }
     else
     {
@@ -93,26 +89,20 @@ Item hash_table_remove(hash_table *ht, Key value)
   {
     if (!strcmp(hi->item->name, value))
     {
+      Item temp = hi->item;
+      if (hi2 != 0)
       {
-        Item temp = hi->item;
-        if (hi2 != 0)
-        {
-          {
-            hi2->next = hi->next;
-          }
-        }
-        else
-        {
-          {
-            ht->table[i] = hi->next;
-          }
-        }
-
-        free(hi);
-        hi = 0;
-        ht->num_items--;
-        return temp;
+        hi2->next = hi->next;
       }
+      else
+      {
+        ht->table[i] = hi->next;
+      }
+
+      free(hi);
+      hi = 0;
+      ht->num_items--;
+      return temp;
     }
     else
     {

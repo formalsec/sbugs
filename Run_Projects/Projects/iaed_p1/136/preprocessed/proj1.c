@@ -126,15 +126,11 @@ void adicionar_stock()
   prod.quantidade = new_sym_var(sizeof(int) * 8);
   if (prod.id >= indice_produto)
   {
-    {
-      printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", prod.id);
-    }
+    printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", prod.id);
   }
   else
   {
-    {
-      vetor_produtos[prod.id].quantidade += prod.quantidade;
-    }
+    vetor_produtos[prod.id].quantidade += prod.quantidade;
   }
 
 }
@@ -158,54 +154,42 @@ void adiciona_produto()
   prod.quantidade = new_sym_var(sizeof(int) * 8);
   if (ord.id >= indice_encomenda)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", prod.id, ord.id);
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", prod.id, ord.id);
   }
   else
   {
     if (prod.id >= indice_produto)
     {
-      {
-        printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", prod.id, ord.id);
-      }
+      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", prod.id, ord.id);
     }
     else
     {
       if (prod.quantidade > vetor_produtos[prod.id].quantidade)
       {
-        {
-          printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", prod.id, ord.id);
-        }
+        printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", prod.id, ord.id);
       }
       else
       {
         if (((vetor_produtos[prod.id].peso * prod.quantidade) + vetor_encomendas[ord.id].peso) > 200)
         {
-          {
-            printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", prod.id, ord.id);
-          }
+          printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", prod.id, ord.id);
         }
         else
         {
           if (vetor_encomendas[ord.id].produtos[prod.id].quantidade != 0)
           {
-            {
-              vetor_encomendas[ord.id].peso += vetor_produtos[prod.id].peso * prod.quantidade;
-              vetor_encomendas[ord.id].produtos[prod.id].quantidade += prod.quantidade;
-              vetor_produtos[prod.id].quantidade -= prod.quantidade;
-            }
+            vetor_encomendas[ord.id].peso += vetor_produtos[prod.id].peso * prod.quantidade;
+            vetor_encomendas[ord.id].produtos[prod.id].quantidade += prod.quantidade;
+            vetor_produtos[prod.id].quantidade -= prod.quantidade;
           }
           else
           {
-            {
-              prod.preco = vetor_produtos[prod.id].preco;
-              prod.peso = vetor_produtos[prod.id].peso;
-              strcpy(prod.descricao, vetor_produtos[prod.id].descricao);
-              vetor_encomendas[ord.id].produtos[prod.id] = prod;
-              vetor_encomendas[ord.id].peso += vetor_produtos[prod.id].peso * prod.quantidade;
-              vetor_produtos[prod.id].quantidade -= prod.quantidade;
-            }
+            prod.preco = vetor_produtos[prod.id].preco;
+            prod.peso = vetor_produtos[prod.id].peso;
+            strcpy(prod.descricao, vetor_produtos[prod.id].descricao);
+            vetor_encomendas[ord.id].produtos[prod.id] = prod;
+            vetor_encomendas[ord.id].peso += vetor_produtos[prod.id].peso * prod.quantidade;
+            vetor_produtos[prod.id].quantidade -= prod.quantidade;
           }
 
         }
@@ -225,23 +209,17 @@ void remove_stock()
   prod.quantidade = new_sym_var(sizeof(int) * 8);
   if (prod.id >= indice_produto)
   {
-    {
-      printf("Impossivel remover stock do produto %d. Produto inexistente.\n", prod.id);
-    }
+    printf("Impossivel remover stock do produto %d. Produto inexistente.\n", prod.id);
   }
   else
   {
     if ((vetor_produtos[prod.id].quantidade - prod.quantidade) < 0)
     {
-      {
-        printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", prod.quantidade, prod.id);
-      }
+      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", prod.quantidade, prod.id);
     }
     else
     {
-      {
-        vetor_produtos[prod.id].quantidade = vetor_produtos[prod.id].quantidade - prod.quantidade;
-      }
+      vetor_produtos[prod.id].quantidade = vetor_produtos[prod.id].quantidade - prod.quantidade;
     }
 
   }
@@ -256,27 +234,21 @@ void remove_produto()
   prod.id = new_sym_var(sizeof(int) * 8);
   if (ord.id >= indice_encomenda)
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", prod.id, ord.id);
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", prod.id, ord.id);
   }
   else
   {
     if (prod.id >= indice_produto)
     {
-      {
-        printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", prod.id, ord.id);
-      }
+      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", prod.id, ord.id);
     }
     else
     {
-      {
-        vetor_produtos[prod.id].quantidade += vetor_encomendas[ord.id].produtos[prod.id].quantidade;
-        vetor_encomendas[ord.id].peso -= vetor_produtos[prod.id].peso * vetor_encomendas[ord.id].produtos[prod.id].quantidade;
-        vetor_encomendas[ord.id].produtos[prod.id].quantidade = 0;
-        vetor_encomendas[ord.id].produtos[prod.id].peso = 0;
-        vetor_encomendas[ord.id].produtos[prod.id].preco = 0;
-      }
+      vetor_produtos[prod.id].quantidade += vetor_encomendas[ord.id].produtos[prod.id].quantidade;
+      vetor_encomendas[ord.id].peso -= vetor_produtos[prod.id].peso * vetor_encomendas[ord.id].produtos[prod.id].quantidade;
+      vetor_encomendas[ord.id].produtos[prod.id].quantidade = 0;
+      vetor_encomendas[ord.id].produtos[prod.id].peso = 0;
+      vetor_encomendas[ord.id].produtos[prod.id].preco = 0;
     }
 
   }
@@ -291,20 +263,16 @@ void calcula_custo()
   ord.id = new_sym_var(sizeof(int) * 8);
   if (ord.id >= indice_encomenda)
   {
-    {
-      printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ord.id);
-    }
+    printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ord.id);
   }
   else
   {
+    for (i = 0; i < indice_produto; i++)
     {
-      for (i = 0; i < indice_produto; i++)
-      {
-        total += vetor_encomendas[ord.id].produtos[i].preco * vetor_encomendas[ord.id].produtos[i].quantidade;
-      }
-
-      printf("Custo da encomenda %d %d.\n", ord.id, total);
+      total += vetor_encomendas[ord.id].produtos[i].preco * vetor_encomendas[ord.id].produtos[i].quantidade;
     }
+
+    printf("Custo da encomenda %d %d.\n", ord.id, total);
   }
 
 }
@@ -317,30 +285,24 @@ void altera_preco()
   prod.preco = new_sym_var(sizeof(int) * 8);
   if (prod.id > indice_produto)
   {
-    {
-      printf("Impossivel alterar o preco do produto %d. Produto inexistente.\n", prod.id);
-    }
+    printf("Impossivel alterar o preco do produto %d. Produto inexistente.\n", prod.id);
   }
   else
   {
+    vetor_produtos[prod.id].preco = prod.preco;
+    for (i = 0; i < indice_encomenda; i++)
     {
-      vetor_produtos[prod.id].preco = prod.preco;
-      for (i = 0; i < indice_encomenda; i++)
+      if (vetor_encomendas[i].produtos[prod.id].quantidade != 0)
       {
-        if (vetor_encomendas[i].produtos[prod.id].quantidade != 0)
-        {
-          {
-            vetor_encomendas[i].produtos[prod.id].preco = prod.preco;
-          }
-        }
-        else
-        {
-          
-        }
-
+        vetor_encomendas[i].produtos[prod.id].preco = prod.preco;
+      }
+      else
+      {
+        
       }
 
     }
+
   }
 
 }
@@ -353,23 +315,17 @@ void informacao_produto_encomenda()
   prod.id = new_sym_var(sizeof(int) * 8);
   if (ord.id >= indice_encomenda)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ord.id);
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ord.id);
   }
   else
   {
     if (prod.id >= indice_produto)
     {
-      {
-        printf("Impossivel listar produto %d. Produto inexistente.\n", prod.id);
-      }
+      printf("Impossivel listar produto %d. Produto inexistente.\n", prod.id);
     }
     else
     {
-      {
-        printf("%s %d.\n", vetor_produtos[prod.id].descricao, vetor_encomendas[ord.id].produtos[prod.id].quantidade);
-      }
+      printf("%s %d.\n", vetor_produtos[prod.id].descricao, vetor_encomendas[ord.id].produtos[prod.id].quantidade);
     }
 
   }
@@ -384,50 +340,40 @@ void ocorrencia_produto()
   prod.id = new_sym_var(sizeof(int) * 8);
   if (prod.id >= indice_produto)
   {
-    {
-      printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", prod.id);
-    }
+    printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", prod.id);
   }
   else
   {
+    for (j = 0; j < indice_encomenda; j++)
     {
-      for (j = 0; j < indice_encomenda; j++)
+      if (vetor_encomendas[j].produtos[prod.id].quantidade > vetor_encomendas[maior_encomenda].produtos[prod.id].quantidade)
       {
-        if (vetor_encomendas[j].produtos[prod.id].quantidade > vetor_encomendas[maior_encomenda].produtos[prod.id].quantidade)
-        {
-          {
-            maior_encomenda = vetor_encomendas[j].id;
-          }
-        }
-        else
-        {
-          if ((vetor_encomendas[j].produtos[prod.id].quantidade == vetor_encomendas[maior_encomenda].produtos[prod.id].quantidade) && (vetor_encomendas[j].id < maior_encomenda))
-          {
-            {
-              maior_encomenda = vetor_encomendas[j].id;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-      }
-
-      if (maior_encomenda != 0)
-      {
-        {
-          printf("Maximo produto %d %d %d\n", prod.id, maior_encomenda, vetor_encomendas[maior_encomenda].produtos[prod.id].quantidade);
-        }
+        maior_encomenda = vetor_encomendas[j].id;
       }
       else
       {
-        
+        if ((vetor_encomendas[j].produtos[prod.id].quantidade == vetor_encomendas[maior_encomenda].produtos[prod.id].quantidade) && (vetor_encomendas[j].id < maior_encomenda))
+        {
+          maior_encomenda = vetor_encomendas[j].id;
+        }
+        else
+        {
+          
+        }
+
       }
 
     }
+
+    if (maior_encomenda != 0)
+    {
+      printf("Maximo produto %d %d %d\n", prod.id, maior_encomenda, vetor_encomendas[maior_encomenda].produtos[prod.id].quantidade);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -468,53 +414,41 @@ void merge(produto vetor_produtos[], int left, int m, int right, int key)
   k = left;
   if (key == 0)
   {
+    while ((i < n1) && (j < n2))
     {
-      while ((i < n1) && (j < n2))
+      if (aux_left[i].preco <= aux_right[j].preco)
       {
-        if (aux_left[i].preco <= aux_right[j].preco)
-        {
-          {
-            vetor_produtos[k] = aux_left[i];
-            i++;
-          }
-        }
-        else
-        {
-          {
-            vetor_produtos[k] = aux_right[j];
-            j++;
-          }
-        }
-
-        k++;
+        vetor_produtos[k] = aux_left[i];
+        i++;
+      }
+      else
+      {
+        vetor_produtos[k] = aux_right[j];
+        j++;
       }
 
+      k++;
     }
+
   }
   else
   {
+    while ((i < n1) && (j < n2))
     {
-      while ((i < n1) && (j < n2))
+      if (strcmp(aux_left[i].descricao, aux_right[j].descricao) < 0)
       {
-        if (strcmp(aux_left[i].descricao, aux_right[j].descricao) < 0)
-        {
-          {
-            vetor_produtos[k] = aux_left[i];
-            i++;
-          }
-        }
-        else
-        {
-          {
-            vetor_produtos[k] = aux_right[j];
-            j++;
-          }
-        }
-
-        k++;
+        vetor_produtos[k] = aux_left[i];
+        i++;
+      }
+      else
+      {
+        vetor_produtos[k] = aux_right[j];
+        j++;
       }
 
+      k++;
     }
+
   }
 
   while (i < n1)
@@ -537,12 +471,10 @@ void mergesort(produto vetor_produtos[], int left, int right, int key)
 {
   if (left < right)
   {
-    {
-      int m = left + ((right - 1) / 2);
-      mergesort(vetor_produtos, left, m, key);
-      mergesort(vetor_produtos, m + 1, right, key);
-      merge(vetor_produtos, left, m, right, key);
-    }
+    int m = left + ((right - 1) / 2);
+    mergesort(vetor_produtos, left, m, key);
+    mergesort(vetor_produtos, m + 1, right, key);
+    merge(vetor_produtos, left, m, right, key);
   }
   else
   {
@@ -561,37 +493,31 @@ void ordena_alfa()
   ord.id = new_sym_var(sizeof(int) * 8);
   if (ord.id >= indice_encomenda)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ord.id);
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ord.id);
   }
   else
   {
+    for (j = 0; j < 200; j++)
     {
-      for (j = 0; j < 200; j++)
+      if (vetor_encomendas[ord.id].produtos[j].quantidade != 0)
       {
-        if (vetor_encomendas[ord.id].produtos[j].quantidade != 0)
-        {
-          {
-            vetor_aux[k] = vetor_encomendas[ord.id].produtos[j];
-            k++;
-          }
-        }
-        else
-        {
-          
-        }
-
+        vetor_aux[k] = vetor_encomendas[ord.id].produtos[j];
+        k++;
       }
-
-      mergesort(vetor_aux, 0, k - 1, 1);
-      printf("Encomenda %d\n", ord.id);
-      for (i = 0; i < k; i++)
+      else
       {
-        printf("* %s %d %d\n", vetor_aux[i].descricao, vetor_aux[i].preco, vetor_aux[i].quantidade);
+        
       }
 
     }
+
+    mergesort(vetor_aux, 0, k - 1, 1);
+    printf("Encomenda %d\n", ord.id);
+    for (i = 0; i < k; i++)
+    {
+      printf("* %s %d %d\n", vetor_aux[i].descricao, vetor_aux[i].preco, vetor_aux[i].quantidade);
+    }
+
   }
 
 }

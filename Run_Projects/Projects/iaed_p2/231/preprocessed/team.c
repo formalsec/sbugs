@@ -44,11 +44,9 @@ TeamNode *searchTeam(TeamNode *head, char *n)
   node = head;
   if (head == 0)
   {
-    {
-      ret = malloc(sizeof(TeamNode));
-      ret->exists = 0;
-      return ret;
-    }
+    ret = malloc(sizeof(TeamNode));
+    ret->exists = 0;
+    return ret;
   }
   else
   {

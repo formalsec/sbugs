@@ -28,12 +28,10 @@ void freeBTTeam(BTTeam *node)
 {
   if (node != 0)
   {
-    {
-      freeBTTeam(node->left);
-      freeBTTeam(node->right);
-      freeTeam(node->team);
-      freeBTTeamNode(node);
-    }
+    freeBTTeam(node->left);
+    freeBTTeam(node->right);
+    freeTeam(node->team);
+    freeBTTeamNode(node);
   }
   else
   {
@@ -204,41 +202,35 @@ BTTeam *AVLbalanceBBTeam(BTTeam *node)
   balanceFactor = balanceBBTeam(node);
   if (balanceFactor > 1)
   {
+    if (balanceBBTeam(node->left) >= 0)
     {
-      if (balanceBBTeam(node->left) >= 0)
-      {
-        node = rotRBTTeam(node);
-      }
-      else
-      {
-        node = rotLRBTTeam(node);
-      }
-
+      node = rotRBTTeam(node);
     }
+    else
+    {
+      node = rotLRBTTeam(node);
+    }
+
   }
   else
   {
     if (balanceFactor < (-1))
     {
+      if (balanceBBTeam(node->right) <= 0)
       {
-        if (balanceBBTeam(node->right) <= 0)
-        {
-          node = rotLBTTeam(node);
-        }
-        else
-        {
-          node = rotRLBTTeam(node);
-        }
-
+        node = rotLBTTeam(node);
       }
+      else
+      {
+        node = rotRLBTTeam(node);
+      }
+
     }
     else
     {
-      {
-        hleft = heightBBTeam(node->left);
-        hright = heightBBTeam(node->right);
-        node->height = (hleft > hright) ? (hleft + 1) : (hright + 1);
-      }
+      hleft = heightBBTeam(node->left);
+      hright = heightBBTeam(node->right);
+      node->height = (hleft > hright) ? (hleft + 1) : (hright + 1);
     }
 
   }
@@ -319,38 +311,34 @@ BTTeam *deleteRBTTeam(BTTeam *node, char *name)
     {
       if ((node->left != 0) && (node->right != 0))
       {
-        {
-          aux = maxBBTeam(node->left);
-          x = node->team;
-          node->team = aux->team;
-          aux->team = x;
-          node->left = deleteRBTTeam(node->left, name);
-        }
+        aux = maxBBTeam(node->left);
+        x = node->team;
+        node->team = aux->team;
+        aux->team = x;
+        node->left = deleteRBTTeam(node->left, name);
       }
       else
       {
+        aux = node;
+        if ((node->left == 0) && (node->right == 0))
         {
-          aux = node;
-          if ((node->left == 0) && (node->right == 0))
+          node = 0;
+        }
+        else
+        {
+          if (node->left == 0)
           {
-            node = 0;
+            node = node->right;
           }
           else
           {
-            if (node->left == 0)
-            {
-              node = node->right;
-            }
-            else
-            {
-              node = node->left;
-            }
-
+            node = node->left;
           }
 
-          freeTeam(aux->team);
-          freeBTTeamNode(aux);
         }
+
+        freeTeam(aux->team);
+        freeBTTeamNode(aux);
       }
 
     }
@@ -370,34 +358,28 @@ void findBestTeams(TeamList **result, BTTeam *node, int *best)
   int wins;
   if (node != 0)
   {
+    findBestTeams(result, node->right, best);
+    wins = getTeamWins(node->team);
+    if (wins == (*best))
     {
-      findBestTeams(result, node->right, best);
-      wins = getTeamWins(node->team);
-      if (wins == (*best))
+      shiftTeamList(result, node->team);
+    }
+    else
+    {
+      if (wins > (*best))
       {
-        {
-          shiftTeamList(result, node->team);
-        }
+        clearTeamList(result);
+        shiftTeamList(result, node->team);
+        *best = wins;
       }
       else
       {
-        if (wins > (*best))
-        {
-          {
-            clearTeamList(result);
-            shiftTeamList(result, node->team);
-            *best = wins;
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      findBestTeams(result, node->left, best);
     }
+
+    findBestTeams(result, node->left, best);
   }
   else
   {

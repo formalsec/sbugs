@@ -27,11 +27,9 @@ void insertEnd(link *head, Item item)
   link new = newNode(item);
   if ((*head) == 0)
   {
-    {
-      new->next = *head;
-      *head = new;
-      return;
-    }
+    new->next = *head;
+    *head = new;
+    return;
   }
   else
   {
@@ -50,11 +48,9 @@ void insertSorted(link *head, Item item)
   link new = newNode(item);
   if ((((*head) == 0) || more_wins(item, (*head)->item)) || (equals_wins(item, (*head)->item) && less_abc(item, (*head)->item)))
   {
-    {
-      new->next = *head;
-      *head = new;
-      return;
-    }
+    new->next = *head;
+    *head = new;
+    return;
   }
   else
   {
@@ -63,10 +59,8 @@ void insertSorted(link *head, Item item)
 
   if ((*head)->item == item)
   {
-    {
-      free(new);
-      return;
-    }
+    free(new);
+    return;
   }
   else
   {
@@ -78,9 +72,7 @@ void insertSorted(link *head, Item item)
   {
     if (more_wins(item, temp->next->item) || (equals_wins(temp->next->item, item) && less_abc(item, temp->next->item)))
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {
@@ -89,10 +81,8 @@ void insertSorted(link *head, Item item)
 
     if (temp->next->item == item)
     {
-      {
-        free(new);
-        return;
-      }
+      free(new);
+      return;
     }
     else
     {
@@ -112,9 +102,7 @@ void removeNode(link *head, Item item)
   link temp2;
   if ((*head) == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -123,12 +111,10 @@ void removeNode(link *head, Item item)
 
   if (equals_abc(item, (*head)->item))
   {
-    {
-      temp = (*head)->next;
-      free(*head);
-      *head = temp;
-      return;
-    }
+    temp = (*head)->next;
+    free(*head);
+    *head = temp;
+    return;
   }
   else
   {
@@ -138,9 +124,7 @@ void removeNode(link *head, Item item)
   temp = *head;
   if (temp->next == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -152,9 +136,7 @@ void removeNode(link *head, Item item)
     temp = temp->next;
     if (temp->next == 0)
     {
-      {
-        return;
-      }
+      return;
     }
     else
     {

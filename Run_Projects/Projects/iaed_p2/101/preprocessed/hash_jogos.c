@@ -87,17 +87,15 @@ int JRemove_Hash(Jogo **Hash, Chave x, int M, int N)
 
   if (Hash[i] != 0)
   {
+    Hash[i] = 0;
+    N--;
+    for (j = (i + 1) % M; Hash[j] != 0; j = (j + 1) % M, N--)
     {
-      Hash[i] = 0;
-      N--;
-      for (j = (i + 1) % M; Hash[j] != 0; j = (j + 1) % M, N--)
-      {
-        v = Hash[j];
-        Hash[j] = 0;
-        JInsere_Hash(Hash, v, M);
-      }
-
+      v = Hash[j];
+      Hash[j] = 0;
+      JInsere_Hash(Hash, v, M);
     }
+
   }
   else
   {

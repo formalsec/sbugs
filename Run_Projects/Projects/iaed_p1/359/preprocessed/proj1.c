@@ -85,10 +85,8 @@ void adicionastock()
   {
     if (sistemaprod[i].idp == id)
     {
-      {
-        sistemaprod[i].qtd += qtd;
-        return;
-      }
+      sistemaprod[i].qtd += qtd;
+      return;
     }
     else
     {
@@ -108,20 +106,16 @@ int verificaaux(int ide, int idp, char operacao[])
   {
     if (sistemaenc[i].ide >= 0)
     {
+      if (sistemaenc[i].ide == ide)
       {
-        if (sistemaenc[i].ide == ide)
-        {
-          {
-            estado = 1;
-            break;
-          }
-        }
-        else
-        {
-          
-        }
-
+        estado = 1;
+        break;
       }
+      else
+      {
+        
+      }
+
     }
     else
     {
@@ -132,64 +126,48 @@ int verificaaux(int ide, int idp, char operacao[])
 
   if (estado)
   {
+    for (i = 0; i < 10000; i++)
     {
-      for (i = 0; i < 10000; i++)
+      if (sistemaprod[i].preco >= 0)
       {
-        if (sistemaprod[i].preco >= 0)
+        if (sistemaprod[i].idp == idp)
         {
-          {
-            if (sistemaprod[i].idp == idp)
-            {
-              {
-                return 1;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
+          return 1;
         }
         else
         {
-          break;
+          
         }
 
-      }
-
-      if (strcmp(operacao, "listar") != 0)
-      {
-        {
-          printf("Impossivel %s produto %d a encomenda %d. Produto inexistente.\n", operacao, idp, ide);
-        }
       }
       else
       {
-        {
-          printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
-        }
+        break;
       }
 
     }
+
+    if (strcmp(operacao, "listar") != 0)
+    {
+      printf("Impossivel %s produto %d a encomenda %d. Produto inexistente.\n", operacao, idp, ide);
+    }
+    else
+    {
+      printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
+    }
+
   }
   else
   {
+    if (strcmp(operacao, "listar") != 0)
     {
-      if (strcmp(operacao, "listar") != 0)
-      {
-        {
-          printf("Impossivel %s produto %d a encomenda %d. Encomenda inexistente.\n", operacao, idp, ide);
-        }
-      }
-      else
-      {
-        {
-          printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
-        }
-      }
-
+      printf("Impossivel %s produto %d a encomenda %d. Encomenda inexistente.\n", operacao, idp, ide);
     }
+    else
+    {
+      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
+    }
+
   }
 
   return 0;
@@ -203,72 +181,58 @@ int adicionaprod_aux(int ide, int idp, int qtd)
   {
     if (sistemaprod[i].idp >= 0)
     {
+      if (sistemaprod[i].idp == idp)
       {
-        if (sistemaprod[i].idp == idp)
+        if (sistemaprod[i].qtd < qtd)
         {
-          {
-            if (sistemaprod[i].qtd < qtd)
-            {
-              {
-                printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
-                return 0;
-              }
-            }
-            else
-            {
-              
-            }
-
-            for (r = 0; r < 500; r++)
-            {
-              if (sistemaenc[r].ide >= 0)
-              {
-                {
-                  if (sistemaenc[r].ide == ide)
-                  {
-                    {
-                      if ((sistemaenc[r].peso + (sistemaprod[i].peso * qtd)) > 200)
-                      {
-                        {
-                          printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
-                          return 0;
-                        }
-                      }
-                      else
-                      {
-                        
-                      }
-
-                    }
-                  }
-                  else
-                  {
-                    
-                  }
-
-                }
-              }
-              else
-              {
-                break;
-              }
-
-            }
-
-          }
+          printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
+          return 0;
         }
         else
         {
           
         }
 
+        for (r = 0; r < 500; r++)
+        {
+          if (sistemaenc[r].ide >= 0)
+          {
+            if (sistemaenc[r].ide == ide)
+            {
+              if ((sistemaenc[r].peso + (sistemaprod[i].peso * qtd)) > 200)
+              {
+                printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
+                return 0;
+              }
+              else
+              {
+                
+              }
+
+            }
+            else
+            {
+              
+            }
+
+          }
+          else
+          {
+            break;
+          }
+
+        }
+
       }
+      else
+      {
+        
+      }
+
     }
     else
     {
-      {
-        break;
-      }
+      break;
     }
 
   }
@@ -291,88 +255,76 @@ void adicionaprod()
   qtd = new_sym_var(sizeof(int) * 8);
   if (verificaaux(ide, idp, "adicionar"))
   {
+    if (adicionaprod_aux(ide, idp, qtd))
     {
-      if (adicionaprod_aux(ide, idp, qtd))
+      for (i = 0; i < 10000; i++)
       {
+        if (sistemaprod[i].idp == idp)
         {
-          for (i = 0; i < 10000; i++)
-          {
-            if (sistemaprod[i].idp == idp)
-            {
-              {
-                indaux = i;
-                break;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-          for (i = 0; i < 500; i++)
-          {
-            if (sistemaenc[i].ide == ide)
-            {
-              {
-                for (r = 0; r < 200; r++)
-                {
-                  if (sistemaenc[i].lista[r].idp == idp)
-                  {
-                    {
-                      sistemaenc[i].lista[r].qtd += qtd;
-                      sistemaprod[indaux].qtd -= qtd;
-                      sistemaenc[i].peso += sistemaprod[indaux].peso * qtd;
-                      return;
-                    }
-                  }
-                  else
-                  {
-                    
-                  }
-
-                }
-
-                for (r = 0; r < 200; r++)
-                {
-                  if (sistemaenc[i].lista[r].qtd == 0)
-                  {
-                    {
-                      indaux_enc = r;
-                      break;
-                    }
-                  }
-                  else
-                  {
-                    
-                  }
-
-                }
-
-                aux = sistemaprod[indaux];
-                aux.qtd = qtd;
-                sistemaenc[i].lista[indaux_enc] = aux;
-                sistemaprod[indaux].qtd -= qtd;
-                sistemaenc[i].peso += aux.peso * aux.qtd;
-                return;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
+          indaux = i;
+          break;
         }
+        else
+        {
+          
+        }
+
       }
-      else
+
+      for (i = 0; i < 500; i++)
       {
-        
+        if (sistemaenc[i].ide == ide)
+        {
+          for (r = 0; r < 200; r++)
+          {
+            if (sistemaenc[i].lista[r].idp == idp)
+            {
+              sistemaenc[i].lista[r].qtd += qtd;
+              sistemaprod[indaux].qtd -= qtd;
+              sistemaenc[i].peso += sistemaprod[indaux].peso * qtd;
+              return;
+            }
+            else
+            {
+              
+            }
+
+          }
+
+          for (r = 0; r < 200; r++)
+          {
+            if (sistemaenc[i].lista[r].qtd == 0)
+            {
+              indaux_enc = r;
+              break;
+            }
+            else
+            {
+              
+            }
+
+          }
+
+          aux = sistemaprod[indaux];
+          aux.qtd = qtd;
+          sistemaenc[i].lista[indaux_enc] = aux;
+          sistemaprod[indaux].qtd -= qtd;
+          sistemaenc[i].peso += aux.peso * aux.qtd;
+          return;
+        }
+        else
+        {
+          
+        }
+
       }
 
     }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -392,32 +344,26 @@ void removestock()
   {
     if (sistemaprod[i].idp >= 0)
     {
+      if (sistemaprod[i].idp == idp)
       {
-        if (sistemaprod[i].idp == idp)
+        if (sistemaprod[i].qtd >= qtd)
         {
-          {
-            if (sistemaprod[i].qtd >= qtd)
-            {
-              {
-                sistemaprod[i].qtd -= qtd;
-                return;
-              }
-            }
-            else
-            {
-              
-            }
-
-            printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, idp);
-            return;
-          }
+          sistemaprod[i].qtd -= qtd;
+          return;
         }
         else
         {
           
         }
 
+        printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, idp);
+        return;
       }
+      else
+      {
+        
+      }
+
     }
     else
     {
@@ -440,86 +386,72 @@ void removeprodencomenda()
   idp = new_sym_var(sizeof(int) * 8);
   if (verificaaux(ide, idp, "remover"))
   {
+    for (i = 0; i < 10000; i++)
     {
-      for (i = 0; i < 10000; i++)
+      if (sistemaprod[i].idp >= 0)
       {
-        if (sistemaprod[i].idp >= 0)
+        if (sistemaprod[i].idp == idp)
         {
-          {
-            if (sistemaprod[i].idp == idp)
-            {
-              {
-                indaux = i;
-                break;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
+          indaux = i;
+          break;
         }
         else
         {
-          break;
+          
         }
 
       }
-
-      for (r = 0; r < 500; r++)
+      else
       {
-        if (sistemaenc[r].ide >= 0)
-        {
-          {
-            if (sistemaenc[r].ide == ide)
-            {
-              {
-                for (i = 0; i < 200; i++)
-                {
-                  if (sistemaenc[r].lista[i].idp >= 0)
-                  {
-                    {
-                      if (sistemaenc[r].lista[i].idp == idp)
-                      {
-                        {
-                          sistemaenc[r].peso -= sistemaenc[r].lista[i].qtd * sistemaprod[indaux].peso;
-                          sistemaprod[indaux].qtd += sistemaenc[r].lista[i].qtd;
-                          sistemaenc[r].lista[i].qtd = 0;
-                          return;
-                        }
-                      }
-                      else
-                      {
-                        
-                      }
-
-                    }
-                  }
-                  else
-                  {
-                    break;
-                  }
-
-                }
-
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-        }
-        else
-        {
-          break;
-        }
-
+        break;
       }
 
     }
+
+    for (r = 0; r < 500; r++)
+    {
+      if (sistemaenc[r].ide >= 0)
+      {
+        if (sistemaenc[r].ide == ide)
+        {
+          for (i = 0; i < 200; i++)
+          {
+            if (sistemaenc[r].lista[i].idp >= 0)
+            {
+              if (sistemaenc[r].lista[i].idp == idp)
+              {
+                sistemaenc[r].peso -= sistemaenc[r].lista[i].qtd * sistemaprod[indaux].peso;
+                sistemaprod[indaux].qtd += sistemaenc[r].lista[i].qtd;
+                sistemaenc[r].lista[i].qtd = 0;
+                return;
+              }
+              else
+              {
+                
+              }
+
+            }
+            else
+            {
+              break;
+            }
+
+          }
+
+        }
+        else
+        {
+          
+        }
+
+      }
+      else
+      {
+        break;
+      }
+
+    }
+
   }
   else
   {
@@ -539,35 +471,29 @@ void custoencomenda()
   {
     if (sistemaenc[i].ide >= 0)
     {
+      if (sistemaenc[i].ide == ide)
       {
-        if (sistemaenc[i].ide == ide)
+        for (r = 0; r < 200; r++)
         {
+          if (sistemaenc[i].lista[r].preco > 0)
           {
-            for (r = 0; r < 200; r++)
-            {
-              if (sistemaenc[i].lista[r].preco > 0)
-              {
-                {
-                  custo += sistemaenc[i].lista[r].qtd * sistemaenc[i].lista[r].preco;
-                }
-              }
-              else
-              {
-                break;
-              }
-
-            }
-
-            printf("Custo da encomenda %d %d.\n", ide, custo);
-            return;
+            custo += sistemaenc[i].lista[r].qtd * sistemaenc[i].lista[r].preco;
           }
-        }
-        else
-        {
-          
+          else
+          {
+            break;
+          }
+
         }
 
+        printf("Custo da encomenda %d %d.\n", ide, custo);
+        return;
       }
+      else
+      {
+        
+      }
+
     }
     else
     {
@@ -592,20 +518,16 @@ void alterapreco()
   {
     if (sistemaprod[i].preco > 0)
     {
+      if (sistemaprod[i].idp == idp)
       {
-        if (sistemaprod[i].idp == idp)
-        {
-          {
-            estado = 0;
-            sistemaprod[i].preco = preco;
-          }
-        }
-        else
-        {
-          
-        }
-
+        estado = 0;
+        sistemaprod[i].preco = preco;
       }
+      else
+      {
+        
+      }
+
     }
     else
     {
@@ -616,53 +538,43 @@ void alterapreco()
 
   if (estado)
   {
-    {
-      printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idp);
-    }
+    printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idp);
   }
   else
   {
+    for (i = 0; i < 500; i++)
     {
-      for (i = 0; i < 500; i++)
+      if (sistemaenc[i].ide >= 0)
       {
-        if (sistemaenc[i].ide >= 0)
+        for (r = 0; r < 200; r++)
         {
+          if (sistemaenc[i].lista[r].idp >= 0)
           {
-            for (r = 0; r < 200; r++)
+            if (sistemaenc[i].lista[r].idp == idp)
             {
-              if (sistemaenc[i].lista[r].idp >= 0)
-              {
-                {
-                  if (sistemaenc[i].lista[r].idp == idp)
-                  {
-                    {
-                      sistemaenc[i].lista[r].preco = preco;
-                    }
-                  }
-                  else
-                  {
-                    
-                  }
-
-                }
-              }
-              else
-              {
-                break;
-              }
-
+              sistemaenc[i].lista[r].preco = preco;
+            }
+            else
+            {
+              
             }
 
           }
-        }
-        else
-        {
-          break;
+          else
+          {
+            break;
+          }
+
         }
 
       }
+      else
+      {
+        break;
+      }
 
     }
+
   }
 
 }
@@ -677,84 +589,70 @@ void prodsencomenda()
   idp = new_sym_var(sizeof(int) * 8);
   if (verificaaux(ide, idp, "listar"))
   {
+    for (r = 0; r < 500; r++)
     {
-      for (r = 0; r < 500; r++)
+      if (sistemaenc[r].ide >= 0)
       {
-        if (sistemaenc[r].ide >= 0)
+        if (sistemaenc[r].ide == ide)
         {
+          for (i = 0; i < 200; i++)
           {
-            if (sistemaenc[r].ide == ide)
+            if (sistemaenc[r].lista[i].idp >= 0)
             {
+              if (sistemaenc[r].lista[i].idp == idp)
               {
-                for (i = 0; i < 200; i++)
-                {
-                  if (sistemaenc[r].lista[i].idp >= 0)
-                  {
-                    {
-                      if (sistemaenc[r].lista[i].idp == idp)
-                      {
-                        {
-                          printf("%s %d.\n", sistemaenc[r].lista[i].desc, sistemaenc[r].lista[i].qtd);
-                          return;
-                        }
-                      }
-                      else
-                      {
-                        
-                      }
-
-                    }
-                  }
-                  else
-                  {
-                    break;
-                  }
-
-                }
-
+                printf("%s %d.\n", sistemaenc[r].lista[i].desc, sistemaenc[r].lista[i].qtd);
+                return;
               }
+              else
+              {
+                
+              }
+
             }
             else
             {
-              
+              break;
             }
 
           }
+
         }
         else
         {
-          break;
+          
         }
 
       }
-
-      for (i = 0; i < 10000; i++)
+      else
       {
-        if (sistemaprod[i].idp >= 0)
-        {
-          {
-            if (sistemaprod[i].idp == idp)
-            {
-              {
-                printf("%s 0.\n", sistemaprod[i].desc);
-                return;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-        }
-        else
-        {
-          break;
-        }
-
+        break;
       }
 
     }
+
+    for (i = 0; i < 10000; i++)
+    {
+      if (sistemaprod[i].idp >= 0)
+      {
+        if (sistemaprod[i].idp == idp)
+        {
+          printf("%s 0.\n", sistemaprod[i].desc);
+          return;
+        }
+        else
+        {
+          
+        }
+
+      }
+      else
+      {
+        break;
+      }
+
+    }
+
   }
   else
   {
@@ -776,20 +674,16 @@ void nrprodmax()
   {
     if (sistemaprod[i].idp >= 0)
     {
+      if (sistemaprod[i].idp == idp)
       {
-        if (sistemaprod[i].idp == idp)
-        {
-          {
-            estado = 1;
-            break;
-          }
-        }
-        else
-        {
-          
-        }
-
+        estado = 1;
+        break;
       }
+      else
+      {
+        
+      }
+
     }
     else
     {
@@ -800,49 +694,41 @@ void nrprodmax()
 
   if (estado)
   {
+    for (i = 0; i < 500; i++)
     {
-      for (i = 0; i < 500; i++)
+      if (sistemaenc[i].ide >= 0)
       {
-        if (sistemaenc[i].ide >= 0)
+        for (r = 0; r < 200; r++)
         {
+          if (sistemaenc[i].lista[r].qtd >= 0)
           {
-            for (r = 0; r < 200; r++)
+            if ((sistemaenc[i].lista[r].idp == idp) && (sistemaenc[i].lista[r].qtd > max))
             {
-              if (sistemaenc[i].lista[r].qtd >= 0)
-              {
-                {
-                  if ((sistemaenc[i].lista[r].idp == idp) && (sistemaenc[i].lista[r].qtd > max))
-                  {
-                    {
-                      max = sistemaenc[i].lista[r].qtd;
-                      maxide = i;
-                      break;
-                    }
-                  }
-                  else
-                  {
-                    
-                  }
-
-                }
-              }
-              else
-              {
-                break;
-              }
-
+              max = sistemaenc[i].lista[r].qtd;
+              maxide = i;
+              break;
+            }
+            else
+            {
+              
             }
 
           }
-        }
-        else
-        {
-          break;
+          else
+          {
+            break;
+          }
+
         }
 
       }
+      else
+      {
+        break;
+      }
 
     }
+
   }
   else
   {
@@ -851,17 +737,13 @@ void nrprodmax()
 
   if (estado == 0)
   {
-    {
-      printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idp);
-    }
+    printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idp);
   }
   else
   {
     if (max > 0)
     {
-      {
-        printf("Maximo produto %d %d %d.\n", idp, maxide, max);
-      }
+      printf("Maximo produto %d %d %d.\n", idp, maxide, max);
     }
     else
     {
@@ -891,24 +773,18 @@ void mergeprods(int l, int m, int r)
   {
     if (aux[j].preco < aux[i].preco)
     {
-      {
-        sistemaprod[k] = aux[j--];
-      }
+      sistemaprod[k] = aux[j--];
     }
     else
     {
       if ((aux[j].preco == aux[i].preco) && (aux[j].idp < aux[i].idp))
       {
-        {
-          ;
-          sistemaprod[k] = aux[j--];
-        }
+        ;
+        sistemaprod[k] = aux[j--];
       }
       else
       {
-        {
-          sistemaprod[k] = aux[i++];
-        }
+        sistemaprod[k] = aux[i++];
       }
 
     }
@@ -942,10 +818,8 @@ void todosprod()
   {
     if (sistemaprod[i].idp == (-1))
     {
-      {
-        r = i - 1;
-        break;
-      }
+      r = i - 1;
+      break;
     }
     else
     {
@@ -982,15 +856,11 @@ void merge_enc(int ide, int l, int m, int r)
   {
     if (strcmp(auxenc[ide].lista[j].desc, auxenc[ide].lista[i].desc) < 0)
     {
-      {
-        sistemaenc[ide].lista[k] = auxenc[ide].lista[j--];
-      }
+      sistemaenc[ide].lista[k] = auxenc[ide].lista[j--];
     }
     else
     {
-      {
-        sistemaenc[ide].lista[k] = auxenc[ide].lista[i++];
-      }
+      sistemaenc[ide].lista[k] = auxenc[ide].lista[i++];
     }
 
   }
@@ -1024,10 +894,8 @@ void tdsprosencomenda()
   {
     if (sistemaenc[ide].lista[i].idp == (-1))
     {
-      {
-        r = i - 1;
-        break;
-      }
+      r = i - 1;
+      break;
     }
     else
     {
@@ -1041,25 +909,21 @@ void tdsprosencomenda()
   {
     if (sistemaenc[i].ide == ide)
     {
+      printf("Encomenda %d\n", ide);
+      for (r = 0; r < 200; r++)
       {
-        printf("Encomenda %d\n", ide);
-        for (r = 0; r < 200; r++)
+        if (sistemaenc[i].lista[r].qtd > 0)
         {
-          if (sistemaenc[i].lista[r].qtd > 0)
-          {
-            {
-              printf("* %s %d %d\n", sistemaenc[i].lista[r].desc, sistemaenc[i].lista[r].preco, sistemaenc[i].lista[r].qtd);
-            }
-          }
-          else
-          {
-            
-          }
-
+          printf("* %s %d %d\n", sistemaenc[i].lista[r].desc, sistemaenc[i].lista[r].preco, sistemaenc[i].lista[r].qtd);
+        }
+        else
+        {
+          
         }
 
-        return;
       }
+
+      return;
     }
     else
     {

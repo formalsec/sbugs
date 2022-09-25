@@ -89,10 +89,8 @@ void list_put_team(team **team_hash, char *name, int NL)
   team *aux;
   if (!team_hash[index])
   {
-    {
-      team_hash[index] = create_team(name);
-      return;
-    }
+    team_hash[index] = create_team(name);
+    return;
   }
   else
   {
@@ -104,10 +102,8 @@ void list_put_team(team **team_hash, char *name, int NL)
   {
     if (!strcmp(aux->name, name))
     {
-      {
-        printf("%d Equipa existente.\n", NL);
-        return;
-      }
+      printf("%d Equipa existente.\n", NL);
+      return;
     }
     else
     {
@@ -154,10 +150,8 @@ team *add_order_team(team *order_team, char *name)
   team *aux = 0;
   if (!new)
   {
-    {
-      new = create_team(name);
-      return new;
-    }
+    new = create_team(name);
+    return new;
   }
   else
   {
@@ -166,10 +160,8 @@ team *add_order_team(team *order_team, char *name)
 
   if (strcmp(name, new->name) < 0)
   {
-    {
-      new = push_team(name, new);
-      return new;
-    }
+    new = push_team(name, new);
+    return new;
   }
   else
   {
@@ -182,11 +174,9 @@ team *add_order_team(team *order_team, char *name)
   {
     if (strcmp(name, new->name) < 0)
     {
-      {
-        new = push_team(name, new);
-        aux->next = new;
-        return order_team;
-      }
+      new = push_team(name, new);
+      aux->next = new;
+      return order_team;
     }
     else
     {

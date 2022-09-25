@@ -15,9 +15,7 @@ link insertEnd(link *head, pjogo teste)
   new->jogo = teste;
   if ((*head) == 0)
   {
-    {
-      return new;
-    }
+    return new;
   }
   else
   {
@@ -39,9 +37,7 @@ link insertEnd_equipas(link *head, pequipa teste)
   new->equipa = teste;
   if ((*head) == 0)
   {
-    {
-      return new;
-    }
+    return new;
   }
   else
   {

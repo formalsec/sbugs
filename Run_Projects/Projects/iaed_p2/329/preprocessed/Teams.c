@@ -59,9 +59,7 @@ pTeam searchList(pnode node, char *name)
     }
     else
     {
-      {
-        continue;
-      }
+      continue;
     }
 
   }

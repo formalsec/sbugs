@@ -96,52 +96,42 @@ void a(HashTable jogos, HashTable equipas, LinkedList jogos_list, int NL)
   score2 = new_sym_var(sizeof(int) * 8);
   if (search(jogos, buffer))
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-    }
+    printf("%d Jogo existente.\n", NL);
   }
   else
   {
     if ((!search(equipas, buffer1)) || (!search(equipas, buffer2)))
     {
-      {
-        printf("%d Equipa inexistente.\n", NL);
-      }
+      printf("%d Equipa inexistente.\n", NL);
     }
     else
     {
+      j = malloc(sizeof(Jogo));
+      j->nome = strdup(buffer);
+      j->equipa1 = strdup(buffer1);
+      j->equipa2 = strdup(buffer2);
+      j->score1 = score1;
+      j->score2 = score2;
+      new = newItem(JOGO, j);
+      insert(jogos, new);
+      append(jogos_list, new);
+      if (score1 > score2)
       {
-        j = malloc(sizeof(Jogo));
-        j->nome = strdup(buffer);
-        j->equipa1 = strdup(buffer1);
-        j->equipa2 = strdup(buffer2);
-        j->score1 = score1;
-        j->score2 = score2;
-        new = newItem(JOGO, j);
-        insert(jogos, new);
-        append(jogos_list, new);
-        if (score1 > score2)
+        atualiza_score(equipas, buffer1, 1);
+      }
+      else
+      {
+        if (score2 > score1)
         {
-          {
-            atualiza_score(equipas, buffer1, 1);
-          }
+          atualiza_score(equipas, buffer2, 1);
         }
         else
         {
-          if (score2 > score1)
-          {
-            {
-              atualiza_score(equipas, buffer2, 1);
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
+
     }
 
   }
@@ -161,20 +151,16 @@ void A(HashTable equipas, LinkedList equipas_list, int NL)
   buffer[10 - 1] = '\0';
   if (search(equipas, buffer))
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-    }
+    printf("%d Equipa existente.\n", NL);
   }
   else
   {
-    {
-      e = malloc(sizeof(Equipa));
-      e->nome = strdup(buffer);
-      e->jogos_ganhos = 0;
-      new = newItem(EQUIPA, e);
-      insert(equipas, new);
-      append(equipas_list, new);
-    }
+    e = malloc(sizeof(Equipa));
+    e->nome = strdup(buffer);
+    e->jogos_ganhos = 0;
+    new = newItem(EQUIPA, e);
+    insert(equipas, new);
+    append(equipas_list, new);
   }
 
 }
@@ -185,14 +171,12 @@ void l(LinkedList jogos_list, int NL)
   Link atual;
   if (!is_empty(jogos_list))
   {
+    for (atual = jogos_list->head; atual != 0; atual = atual->next)
     {
-      for (atual = jogos_list->head; atual != 0; atual = atual->next)
-      {
-        j = atual->item->data.jogo;
-        printf("%d %s %s %s %d %d\n", NL, j->nome, j->equipa1, j->equipa2, j->score1, j->score2);
-      }
-
+      j = atual->item->data.jogo;
+      printf("%d %s %s %s %d %d\n", NL, j->nome, j->equipa1, j->equipa2, j->score1, j->score2);
     }
+
   }
   else
   {
@@ -215,16 +199,12 @@ void p(HashTable jogos, int NL)
   jogo_item = search(jogos, buffer);
   if (jogo_item)
   {
-    {
-      j = jogo_item->data.jogo;
-      printf("%d %s %s %s %d %d\n", NL, buffer, j->equipa1, j->equipa2, j->score1, j->score2);
-    }
+    j = jogo_item->data.jogo;
+    printf("%d %s %s %s %d %d\n", NL, buffer, j->equipa1, j->equipa2, j->score1, j->score2);
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
 
 }
@@ -242,15 +222,11 @@ void P(HashTable equipas, int NL)
   equipa_node = search(equipas, buffer);
   if (equipa_node)
   {
-    {
-      printf("%d %s %d\n", NL, buffer, equipa_node->data.equipa->jogos_ganhos);
-    }
+    printf("%d %s %d\n", NL, buffer, equipa_node->data.equipa->jogos_ganhos);
   }
   else
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-    }
+    printf("%d Equipa inexistente.\n", NL);
   }
 
 }
@@ -270,42 +246,32 @@ void r(HashTable jogos, HashTable equipas, LinkedList jogos_list, int NL)
   jogo_item = search(jogos, buffer);
   if (jogo_item)
   {
+    jogo = jogo_item->data.jogo;
+    if (encontra_vencedor(jogo))
     {
-      jogo = jogo_item->data.jogo;
-      if (encontra_vencedor(jogo))
-      {
-        {
-          vencedor = strdup(encontra_vencedor(jogo));
-        }
-      }
-      else
-      {
-        {
-          vencedor = 0;
-        }
-      }
-
-      destroy_list_node(jogos_list, buffer);
-      delete(jogos, buffer);
-      if (vencedor)
-      {
-        {
-          atualiza_score(equipas, vencedor, -1);
-        }
-      }
-      else
-      {
-        
-      }
-
-      free(vencedor);
+      vencedor = strdup(encontra_vencedor(jogo));
     }
+    else
+    {
+      vencedor = 0;
+    }
+
+    destroy_list_node(jogos_list, buffer);
+    delete(jogos, buffer);
+    if (vencedor)
+    {
+      atualiza_score(equipas, vencedor, -1);
+    }
+    else
+    {
+      
+    }
+
+    free(vencedor);
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
 
 }
@@ -332,61 +298,49 @@ void s(HashTable jogos, HashTable equipas, int NL)
   jogo_item = search(jogos, buffer);
   if (jogo_item)
   {
+    jogo = jogo_item->data.jogo;
+    vencedor = encontra_vencedor(jogo);
+    jogo->score1 = score1;
+    jogo->score2 = score2;
+    vencedor_apos_update = encontra_vencedor(jogo);
+    if (vencedor && vencedor_apos_update)
     {
-      jogo = jogo_item->data.jogo;
-      vencedor = encontra_vencedor(jogo);
-      jogo->score1 = score1;
-      jogo->score2 = score2;
-      vencedor_apos_update = encontra_vencedor(jogo);
-      if (vencedor && vencedor_apos_update)
+      if (strcmp(vencedor, vencedor_apos_update) != 0)
       {
-        {
-          if (strcmp(vencedor, vencedor_apos_update) != 0)
-          {
-            {
-              atualiza_score(equipas, vencedor_apos_update, 1);
-              atualiza_score(equipas, vencedor, -1);
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
+        atualiza_score(equipas, vencedor_apos_update, 1);
+        atualiza_score(equipas, vencedor, -1);
       }
       else
       {
-        if (vencedor && (!vencedor_apos_update))
+        
+      }
+
+    }
+    else
+    {
+      if (vencedor && (!vencedor_apos_update))
+      {
+        atualiza_score(equipas, vencedor, -1);
+      }
+      else
+      {
+        if ((!vencedor) && vencedor_apos_update)
         {
-          {
-            atualiza_score(equipas, vencedor, -1);
-          }
+          atualiza_score(equipas, vencedor_apos_update, 1);
         }
         else
         {
-          if ((!vencedor) && vencedor_apos_update)
-          {
-            {
-              atualiza_score(equipas, vencedor_apos_update, 1);
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
 
     }
+
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
 
   free(nome);
@@ -401,16 +355,14 @@ void g(LinkedList equipas_list, int NL)
   sortedMaxEquipas = findMaxVitorias(equipas_list);
   if (!is_empty(sortedMaxEquipas))
   {
+    max = get_first_item(sortedMaxEquipas)->data.equipa->jogos_ganhos;
+    printf("%d Melhores %d\n", NL, max);
+    for (atual = sortedMaxEquipas->head; atual != 0; atual = atual->next)
     {
-      max = get_first_item(sortedMaxEquipas)->data.equipa->jogos_ganhos;
-      printf("%d Melhores %d\n", NL, max);
-      for (atual = sortedMaxEquipas->head; atual != 0; atual = atual->next)
-      {
-        e = atual->item;
-        printf("%d * %s\n", NL, e->value);
-      }
-
+      e = atual->item;
+      printf("%d * %s\n", NL, e->value);
     }
+
   }
   else
   {
@@ -431,20 +383,16 @@ LinkedList findMaxVitorias(LinkedList equipas)
     aux = current->item->data.equipa->jogos_ganhos;
     if (aux > max)
     {
-      {
-        max = aux;
-        destroy_list_nodes(maxEquipas);
-        maxEquipas = list_init();
-        insertInOrder(maxEquipas, current->item);
-      }
+      max = aux;
+      destroy_list_nodes(maxEquipas);
+      maxEquipas = list_init();
+      insertInOrder(maxEquipas, current->item);
     }
     else
     {
       if (aux == max)
       {
-        {
-          insertInOrder(maxEquipas, current->item);
-        }
+        insertInOrder(maxEquipas, current->item);
       }
       else
       {
@@ -471,17 +419,13 @@ char *encontra_vencedor(Jogo *jogo)
 {
   if (jogo->score1 > jogo->score2)
   {
-    {
-      return jogo->equipa1;
-    }
+    return jogo->equipa1;
   }
   else
   {
     if (jogo->score2 > jogo->score1)
     {
-      {
-        return jogo->equipa2;
-      }
+      return jogo->equipa2;
     }
     else
     {

@@ -95,53 +95,45 @@ void Remove_table_t(link_t *table, Team *t)
     {
       if ((table[hash_id]->next == 0) && (strcmp(t->name_team, tmp->team->name_team) == 0))
       {
-        {
-          table[hash_id] = table[hash_id]->next;
-          free_team(tmp->team);
-          free(tmp);
-          return;
-        }
+        table[hash_id] = table[hash_id]->next;
+        free_team(tmp->team);
+        free(tmp);
+        return;
       }
       else
       {
+        if (strcmp(tmp->team->name_team, t->name_team) == 0)
         {
-          if (strcmp(tmp->team->name_team, t->name_team) == 0)
+          tmp2 = tmp;
+          table[hash_id] = table[hash_id]->next;
+          free_team(tmp2->team);
+          free(tmp2);
+          return;
+        }
+        else
+        {
+          
+        }
+
+        while (tmp->next != 0)
+        {
+          if (strcmp(t->name_team, tmp->next->team->name_team) == 0)
           {
-            {
-              tmp2 = tmp;
-              table[hash_id] = table[hash_id]->next;
-              free_team(tmp2->team);
-              free(tmp2);
-              return;
-            }
+            tmp2 = tmp->next;
+            tmp->next = tmp2->next;
+            free_team(tmp2->team);
+            free(tmp2);
+            return;
           }
           else
           {
             
           }
 
-          while (tmp->next != 0)
-          {
-            if (strcmp(t->name_team, tmp->next->team->name_team) == 0)
-            {
-              {
-                tmp2 = tmp->next;
-                tmp->next = tmp2->next;
-                free_team(tmp2->team);
-                free(tmp2);
-                return;
-              }
-            }
-            else
-            {
-              
-            }
-
-            tmp = tmp->next;
-          }
-
-          return;
+          tmp = tmp->next;
         }
+
+        return;
       }
 
     }
@@ -163,23 +155,21 @@ int ve_maior(link_t *table)
     }
     else
     {
+      tmp = table[i];
+      while (tmp != 0)
       {
-        tmp = table[i];
-        while (tmp != 0)
+        if (tmp->team->numero_wins > maior)
         {
-          if (tmp->team->numero_wins > maior)
-          {
-            maior = tmp->team->numero_wins;
-          }
-          else
-          {
-            
-          }
-
-          tmp = tmp->next;
+          maior = tmp->team->numero_wins;
+        }
+        else
+        {
+          
         }
 
+        tmp = tmp->next;
       }
+
     }
 
   }
@@ -196,26 +186,22 @@ int teams_maiores(link_t *table, char **vec, int maior)
   {
     if (table[i] != 0)
     {
+      tmp = table[i];
+      while (tmp != 0)
       {
-        tmp = table[i];
-        while (tmp != 0)
+        if (tmp->team->numero_wins == maior)
         {
-          if (tmp->team->numero_wins == maior)
-          {
-            {
-              strcpy(vec[cont_teams], tmp->team->name_team);
-              cont_teams++;
-            }
-          }
-          else
-          {
-            
-          }
-
-          tmp = tmp->next;
+          strcpy(vec[cont_teams], tmp->team->name_team);
+          cont_teams++;
+        }
+        else
+        {
+          
         }
 
+        tmp = tmp->next;
       }
+
     }
     else
     {

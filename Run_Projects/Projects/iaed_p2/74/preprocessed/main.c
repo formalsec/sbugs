@@ -99,9 +99,7 @@ int main()
         nome[10 - 1] = '\0';
         if (strcmp(nome, ant->str) == 0)
       {
-        {
-          ant = ant->ant;
-        }
+        ant = ant->ant;
       }
       else
       {

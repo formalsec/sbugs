@@ -18,9 +18,7 @@ int main()
   {
     if (command == '\n')
     {
-      {
-        continue;
-      }
+      continue;
     }
     else
     {

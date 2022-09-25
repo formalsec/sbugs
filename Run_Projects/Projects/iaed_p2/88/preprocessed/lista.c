@@ -17,17 +17,13 @@ no *insere(no *cabeca, void *item)
   no *no_aux = novo_no(item);
   if (cabeca == 0)
   {
-    {
-      return no_aux;
-    }
+    return no_aux;
   }
   else
   {
-    {
-      no_aux->prox = cabeca;
-      cabeca = no_aux;
-      return cabeca;
-    }
+    no_aux->prox = cabeca;
+    cabeca = no_aux;
+    return cabeca;
   }
 
 }
@@ -40,27 +36,21 @@ no *retira(no *cabeca, void *item, int (*igual)(void *, void *), void (*liberta_
   {
     if ((*igual)(no_aux->item, item))
     {
+      if (no_aux == cabeca)
       {
-        if (no_aux == cabeca)
-        {
-          {
-            (*liberta_item)(no_aux->item);
-            cabeca = no_aux->prox;
-            free(no_aux);
-            return cabeca;
-          }
-        }
-        else
-        {
-          {
-            no_ant->prox = no_aux->prox;
-            (*liberta_item)(no_aux->item);
-            free(no_aux);
-            return cabeca;
-          }
-        }
-
+        (*liberta_item)(no_aux->item);
+        cabeca = no_aux->prox;
+        free(no_aux);
+        return cabeca;
       }
+      else
+      {
+        no_ant->prox = no_aux->prox;
+        (*liberta_item)(no_aux->item);
+        free(no_aux);
+        return cabeca;
+      }
+
     }
     else
     {
@@ -81,9 +71,7 @@ void *procura(no *cabeca, void *item, int (*igual)(void *, void *))
   {
     if ((*igual)(no_aux->item, item))
     {
-      {
-        return no_aux->item;
-      }
+      return no_aux->item;
     }
     else
     {

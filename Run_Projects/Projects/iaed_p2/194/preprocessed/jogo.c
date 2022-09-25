@@ -69,15 +69,11 @@ pJogo JOGOsearch(char *nome, pJogo *tabJ, int max)
   {
     if (strcmp(tabJ[i]->nome, nome) == 0)
     {
-      {
-        return tabJ[i];
-      }
+      return tabJ[i];
     }
     else
     {
-      {
-        i = (i + 1) % max;
-      }
+      i = (i + 1) % max;
     }
 
   }
@@ -95,32 +91,28 @@ void JOGOdelete(char *nome, pJogo *tabJ, int max)
   {
     if (strcmp(tabJ[i]->nome, nome) == 0)
     {
+      if (tabJ[i] == 0)
       {
-        if (tabJ[i] == 0)
-        {
-          return;
-        }
-        else
-        {
-          
-        }
-
-        free(tabJ[i]);
-        tabJ[i] = 0;
-        for (j = (i + 1) % max; tabJ[j] != 0; j = (j + 1) % max)
-        {
-          p = tabJ[j];
-          tabJ[j] = 0;
-          JOGOinsert(p, tabJ, max);
-        }
-
+        return;
       }
+      else
+      {
+        
+      }
+
+      free(tabJ[i]);
+      tabJ[i] = 0;
+      for (j = (i + 1) % max; tabJ[j] != 0; j = (j + 1) % max)
+      {
+        p = tabJ[j];
+        tabJ[j] = 0;
+        JOGOinsert(p, tabJ, max);
+      }
+
     }
     else
     {
-      {
-        i = (i + 1) % max;
-      }
+      i = (i + 1) % max;
     }
 
   }
@@ -136,9 +128,7 @@ pJogo *JOGOexpand(pJogo *tabJ, int max)
   {
     if (t[i] != 0)
     {
-      {
-        JOGOinsert(t[i], tabJ, max);
-      }
+      JOGOinsert(t[i], tabJ, max);
     }
     else
     {
@@ -166,9 +156,7 @@ qlink JOGOappend(DLinkedList list, pJogo jogo)
   list->tail = newNode;
   if (list->head == 0)
   {
-    {
-      list->head = newNode;
-    }
+    list->head = newNode;
   }
   else
   {
@@ -226,25 +214,19 @@ void JOGOQdelete(qlink jogo, DLinkedList list)
   qlink current = jogo;
   if (strcmp(current->jogo->nome, list->head->jogo->nome) == 0)
   {
-    {
-      pop(list);
-    }
+    pop(list);
   }
   else
   {
     if (strcmp(current->jogo->nome, list->tail->jogo->nome) == 0)
     {
-      {
-        removeLastNode(list);
-      }
+      removeLastNode(list);
     }
     else
     {
-      {
-        current->prev->next = current->next;
-        current->next->prev = current->prev;
-        free(current);
-      }
+      current->prev->next = current->next;
+      current->next->prev = current->prev;
+      free(current);
     }
 
   }

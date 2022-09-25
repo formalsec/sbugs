@@ -122,23 +122,21 @@ link_j apaga_node_jogo(link_j head, char *nome)
   {
     if (strcmp(t->j->nome, nome) == 0)
     {
+      if (t == head)
       {
-        if (t == head)
-        {
-          head = t->next;
-        }
-        else
-        {
-          prev->next = t->next;
-        }
-
-        free(t->j->nome);
-        free(t->j->equipa1);
-        free(t->j->equipa2);
-        free(t->j);
-        free(t);
-        return head;
+        head = t->next;
       }
+      else
+      {
+        prev->next = t->next;
+      }
+
+      free(t->j->nome);
+      free(t->j->equipa1);
+      free(t->j->equipa2);
+      free(t->j);
+      free(t);
+      return head;
     }
     else
     {

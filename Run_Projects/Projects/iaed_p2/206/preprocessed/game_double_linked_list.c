@@ -26,15 +26,11 @@ void add_last_game_list(Game_List *GL, Game game)
   new_game_node->game = game;
   if (GL->last != 0)
   {
-    {
-      GL->last->next = new_game_node;
-    }
+    GL->last->next = new_game_node;
   }
   else
   {
-    {
-      GL->head = new_game_node;
-    }
+    GL->head = new_game_node;
   }
 
   GL->last = new_game_node;
@@ -47,42 +43,30 @@ void remove_game_list(Game_List *GL, char *name)
   {
     if (strcmp(name, aux_game_node->game->name) == 0)
     {
+      if (aux_game_node->previous == 0)
       {
-        if (aux_game_node->previous == 0)
-        {
-          {
-            GL->head = aux_game_node->next;
-          }
-        }
-        else
-        {
-          {
-            aux_game_node->previous->next = aux_game_node->next;
-          }
-        }
-
-        if (aux_game_node->next == 0)
-        {
-          {
-            GL->last = aux_game_node->previous;
-          }
-        }
-        else
-        {
-          {
-            aux_game_node->next->previous = aux_game_node->previous;
-          }
-        }
-
-        free_game_node(aux_game_node);
-        break;
+        GL->head = aux_game_node->next;
       }
+      else
+      {
+        aux_game_node->previous->next = aux_game_node->next;
+      }
+
+      if (aux_game_node->next == 0)
+      {
+        GL->last = aux_game_node->previous;
+      }
+      else
+      {
+        aux_game_node->next->previous = aux_game_node->previous;
+      }
+
+      free_game_node(aux_game_node);
+      break;
     }
     else
     {
-      {
-        aux_game_node = aux_game_node->next;
-      }
+      aux_game_node = aux_game_node->next;
     }
 
   }

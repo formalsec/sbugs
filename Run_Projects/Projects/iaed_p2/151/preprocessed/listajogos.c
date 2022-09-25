@@ -21,18 +21,14 @@ linkjg add_lista(lista l, jogo *novo_jogo)
   new->jogo = novo_jogo;
   if (l->head == 0)
   {
-    {
-      l->head = (l->last = new);
-      new->prev = 0;
-    }
+    l->head = (l->last = new);
+    new->prev = 0;
   }
   else
   {
-    {
-      l->last->next = new;
-      new->prev = l->last;
-      l->last = new;
-    }
+    l->last->next = new;
+    new->prev = l->last;
+    l->last = new;
   }
 
   return new;
@@ -42,25 +38,19 @@ void remove_lista(linkjg no, lista l)
 {
   if (no == l->head)
   {
-    {
-      l->head = l->head->next;
-    }
+    l->head = l->head->next;
   }
   else
   {
     if (no == l->last)
     {
-      {
-        l->last = l->last->prev;
-        l->last->next = 0;
-      }
+      l->last = l->last->prev;
+      l->last->next = 0;
     }
     else
     {
-      {
-        no->prev->next = no->next;
-        no->next->prev = no->prev;
-      }
+      no->prev->next = no->next;
+      no->next->prev = no->prev;
     }
 
   }

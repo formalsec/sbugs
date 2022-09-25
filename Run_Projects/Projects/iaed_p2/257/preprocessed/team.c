@@ -20,10 +20,8 @@ Team_list_node *__A__(int nl, Team_node **head, Team_list_node *team_list)
   aux[10 - 1] = '\0';
   if (search_team(aux, head) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", nl);
-      return team_list;
-    }
+    printf("%d Equipa existente.\n", nl);
+    return team_list;
   }
   else
   {
@@ -74,9 +72,7 @@ void __g__(int nl, int *max_victories, Team_list_node *team_list)
   {
     if (aux->t->t.victories == max_victories[0])
     {
-      {
-        printf("%d * %s\n", nl, aux->t->t.name);
-      }
+      printf("%d * %s\n", nl, aux->t->t.name);
     }
     else
     {
@@ -112,25 +108,19 @@ Team_list_node *insert_team_list(Team_node *team, Team_list_node *head)
   {
     if (strcmp(aux->t->t.name, team->t.name) > 0)
     {
+      if (aux == head)
       {
-        if (aux == head)
-        {
-          {
-            head = new_team_list_node(team);
-            head->next = aux;
-            return head;
-          }
-        }
-        else
-        {
-          {
-            prev->next = new_team_list_node(team);
-            prev->next->next = aux;
-            return head;
-          }
-        }
-
+        head = new_team_list_node(team);
+        head->next = aux;
+        return head;
       }
+      else
+      {
+        prev->next = new_team_list_node(team);
+        prev->next->next = aux;
+        return head;
+      }
+
     }
     else
     {

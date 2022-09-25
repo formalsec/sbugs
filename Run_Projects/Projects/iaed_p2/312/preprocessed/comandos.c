@@ -11,25 +11,21 @@ acede_equipa_normal *adiciona_equipa_fim(equipas *p, acede_equipa_normal *a)
 {
   if (a->head == 0)
   {
-    {
-      no_equipa_normal *b = malloc(sizeof(no_equipa_normal));
-      b->p = p;
-      b->next = 0;
-      a->head = b;
-      a->last = b;
-      return a;
-    }
+    no_equipa_normal *b = malloc(sizeof(no_equipa_normal));
+    b->p = p;
+    b->next = 0;
+    a->head = b;
+    a->last = b;
+    return a;
   }
   else
   {
-    {
-      no_equipa_normal *b = a->last;
-      a->last = malloc(sizeof(no_equipa_normal));
-      a->last->p = p;
-      a->last->next = 0;
-      b->next = a->last;
-      return a;
-    }
+    no_equipa_normal *b = a->last;
+    a->last = malloc(sizeof(no_equipa_normal));
+    a->last->p = p;
+    a->last->next = 0;
+    b->next = a->last;
+    return a;
   }
 
 }
@@ -50,25 +46,21 @@ acede_jogo_normal *adiciona_jogo_fim(jogo_normal *p, acede_jogo_normal *a)
 {
   if (a->head == 0)
   {
-    {
-      no_jogo_normal *b = malloc(sizeof(no_jogo_normal));
-      b->p = p;
-      b->next = 0;
-      a->head = b;
-      a->last = b;
-      return a;
-    }
+    no_jogo_normal *b = malloc(sizeof(no_jogo_normal));
+    b->p = p;
+    b->next = 0;
+    a->head = b;
+    a->last = b;
+    return a;
   }
   else
   {
-    {
-      no_jogo_normal *b = a->last;
-      a->last = malloc(sizeof(no_jogo_normal));
-      a->last->p = p;
-      a->last->next = 0;
-      b->next = a->last;
-      return a;
-    }
+    no_jogo_normal *b = a->last;
+    a->last = malloc(sizeof(no_jogo_normal));
+    a->last->p = p;
+    a->last->next = 0;
+    b->next = a->last;
+    return a;
   }
 
 }
@@ -129,9 +121,7 @@ jogos *procura_jogo(acede_jogos *lista, char *nome)
   {
     if (strcmp(a->p->nome, nome) == 0)
     {
-      {
-        return a->p;
-      }
+      return a->p;
     }
     else
     {
@@ -153,55 +143,47 @@ no_jogo *remove_jogo(acede_jogos *lista, char *nome)
   {
     if (strcmp(c->p->nome, nome) == 0)
     {
+      if ((c->next == 0) && (c->previous == 0))
       {
-        if ((c->next == 0) && (c->previous == 0))
+        free(c->p->nome);
+        free(c->p);
+        free(c);
+        c = 0;
+        return c;
+      }
+      else
+      {
+        if (c->previous == 0)
         {
-          {
-            free(c->p->nome);
-            free(c->p);
-            free(c);
-            c = 0;
-            return c;
-          }
+          no_jogo *a = c->next;
+          a->previous = 0;
+          free(c->p->nome);
+          free(c->p);
+          free(c);
+          return a;
         }
         else
         {
-          if (c->previous == 0)
+          no_jogo *a = c->next;
+          no_jogo *b = c->previous;
+          if (a != 0)
           {
-            {
-              no_jogo *a = c->next;
-              a->previous = 0;
-              free(c->p->nome);
-              free(c->p);
-              free(c);
-              return a;
-            }
+            a->previous = b;
           }
           else
           {
-            {
-              no_jogo *a = c->next;
-              no_jogo *b = c->previous;
-              if (a != 0)
-              {
-                a->previous = b;
-              }
-              else
-              {
-                
-              }
-
-              b->next = a;
-              free(c->p->nome);
-              free(c->p);
-              free(c);
-              return q;
-            }
+            
           }
 
+          b->next = a;
+          free(c->p->nome);
+          free(c->p);
+          free(c);
+          return q;
         }
 
       }
+
     }
     else
     {
@@ -280,9 +262,7 @@ equipas *procura_equipa(lista_equipas *lista, char *nome)
   {
     if (strcmp(a->p->nome, nome) == 0)
     {
-      {
-        return a->p;
-      }
+      return a->p;
     }
     else
     {
@@ -443,35 +423,29 @@ void func_a(int NL, lista_equipas *lista_ligada_equipas, acede_jogos *lista_liga
       }
       else
       {
+        b = equipa_procura(equipa1, lista_ligada_equipas);
+        c = equipa_procura(equipa2, lista_ligada_equipas);
+        v = cria_no_jogo(nome, b, c, res1, res2);
+        q = cria_no_jogo_normal(nome, b, c, res1, res2);
+        jogos_insere(v, lista_ligada_jogos);
+        adiciona_jogo_fim(q, jogos_normais);
+        if (res1 > res2)
         {
-          b = equipa_procura(equipa1, lista_ligada_equipas);
-          c = equipa_procura(equipa2, lista_ligada_equipas);
-          v = cria_no_jogo(nome, b, c, res1, res2);
-          q = cria_no_jogo_normal(nome, b, c, res1, res2);
-          jogos_insere(v, lista_ligada_jogos);
-          adiciona_jogo_fim(q, jogos_normais);
-          if (res1 > res2)
+          b->vitorias += 1;
+        }
+        else
+        {
+          if (res1 < res2)
           {
-            {
-              b->vitorias += 1;
-            }
+            c->vitorias += 1;
           }
           else
           {
-            if (res1 < res2)
-            {
-              {
-                c->vitorias += 1;
-              }
-            }
-            else
-            {
-              
-            }
-
+            
           }
 
         }
+
       }
 
     }
@@ -492,17 +466,13 @@ void func_A(int NL, lista_equipas *lista_ligada_equipas, acede_equipa_normal *eq
   a[10 - 1] = '\0';
   if (equipa_procura(a, lista_ligada_equipas) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-    }
+    printf("%d Equipa existente.\n", NL);
   }
   else
   {
-    {
-      v = cria_no_equipa(a);
-      equipa_insere(v, lista_ligada_equipas);
-      adiciona_equipa_fim(v, equipas_normais);
-    }
+    v = cria_no_equipa(a);
+    equipa_insere(v, lista_ligada_equipas);
+    adiciona_equipa_fim(v, equipas_normais);
   }
 
 }
@@ -516,56 +486,48 @@ void func_l(int NL, acede_jogo_normal *jogos_normais, acede_jogos *lista_ligada_
   int estado = 0;
   if (jogos_normais == 0)
   {
-    {
-    }
   }
   else
   {
+    no_jogo_normal *a = jogos_normais->head;
+    while (a != 0)
     {
-      no_jogo_normal *a = jogos_normais->head;
-      while (a != 0)
+      for (i = contador - 1; i >= 0; i--)
       {
-        for (i = contador - 1; i >= 0; i--)
+        if (strcmp(lista[i], a->p->nome) == 0)
         {
-          if (strcmp(lista[i], a->p->nome) == 0)
-          {
-            estado = 1;
-          }
-          else
-          {
-            
-          }
-
-        }
-
-        if (estado != 1)
-        {
-          {
-            if ((b = jogos_procura(a->p->nome, lista_ligada_jogos)) != 0)
-            {
-              {
-                printf("%d %s %s %s %d %d\n", NL, a->p->nome, a->p->equipa1->nome, a->p->equipa2->nome, b->resultado1, b->resultado2);
-                lista[contador] = a->p->nome;
-                contador += 1;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
+          estado = 1;
         }
         else
         {
           
         }
 
-        a = a->next;
-        estado = 0;
       }
 
+      if (estado != 1)
+      {
+        if ((b = jogos_procura(a->p->nome, lista_ligada_jogos)) != 0)
+        {
+          printf("%d %s %s %s %d %d\n", NL, a->p->nome, a->p->equipa1->nome, a->p->equipa2->nome, b->resultado1, b->resultado2);
+          lista[contador] = a->p->nome;
+          contador += 1;
+        }
+        else
+        {
+          
+        }
+
+      }
+      else
+      {
+        
+      }
+
+      a = a->next;
+      estado = 0;
     }
+
   }
 
 }
@@ -583,15 +545,11 @@ void func_p(int NL, acede_jogos *lista_ligada_jogos)
   b = jogos_procura(a, lista_ligada_jogos);
   if (b == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
   else
   {
-    {
-      printf("%d %s %s %s %d %d\n", NL, b->nome, b->equipa1->nome, b->equipa2->nome, b->resultado1, b->resultado2);
-    }
+    printf("%d %s %s %s %d %d\n", NL, b->nome, b->equipa1->nome, b->equipa2->nome, b->resultado1, b->resultado2);
   }
 
 }
@@ -609,37 +567,29 @@ void func_r(int NL, acede_jogos *lista_ligada_jogos)
   b = jogos_procura(a, lista_ligada_jogos);
   if (b == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
   else
   {
+    if (b->resultado1 > b->resultado2)
     {
-      if (b->resultado1 > b->resultado2)
-      {
-        {
-          b->equipa1->vitorias -= 1;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (b->resultado1 < b->resultado2)
-      {
-        {
-          b->equipa2->vitorias -= 1;
-        }
-      }
-      else
-      {
-        
-      }
-
-      jogos_apaga(b->nome, lista_ligada_jogos);
+      b->equipa1->vitorias -= 1;
     }
+    else
+    {
+      
+    }
+
+    if (b->resultado1 < b->resultado2)
+    {
+      b->equipa2->vitorias -= 1;
+    }
+    else
+    {
+      
+    }
+
+    jogos_apaga(b->nome, lista_ligada_jogos);
   }
 
 }
@@ -657,15 +607,11 @@ void func_P(int NL, lista_equipas *lista_ligada_equipas)
   b = equipa_procura(a, lista_ligada_equipas);
   if (b == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-    }
+    printf("%d Equipa inexistente.\n", NL);
   }
   else
   {
-    {
-      printf("%d %s %d\n", NL, b->nome, b->vitorias);
-    }
+    printf("%d %s %d\n", NL, b->nome, b->vitorias);
   }
 
 }
@@ -687,66 +633,49 @@ void func_s(int NL, acede_jogos *lista_ligada_jogos)
   jogo = jogos_procura(a, lista_ligada_jogos);
   if (jogo == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
   else
   {
+    if ((b > c) && (jogo->resultado1 < jogo->resultado2))
     {
-      if ((b > c) && (jogo->resultado1 < jogo->resultado2))
+      jogo->equipa1->vitorias += 1;
+      jogo->equipa2->vitorias -= 1;
+    }
+    else
+    {
+      if ((b < c) && (jogo->resultado1 > jogo->resultado2))
       {
-        {
-          jogo->equipa1->vitorias += 1;
-          jogo->equipa2->vitorias -= 1;
-        }
+        jogo->equipa1->vitorias -= 1;
+        jogo->equipa2->vitorias += 1;
       }
       else
       {
-        if ((b < c) && (jogo->resultado1 > jogo->resultado2))
+        if ((b == c) && (jogo->resultado1 > jogo->resultado2))
         {
-          {
-            jogo->equipa1->vitorias -= 1;
-            jogo->equipa2->vitorias += 1;
-          }
+          jogo->equipa1->vitorias -= 1;
         }
         else
         {
-          if ((b == c) && (jogo->resultado1 > jogo->resultado2))
+          if ((b == c) && (jogo->resultado1 < jogo->resultado2))
           {
-            {
-              jogo->equipa1->vitorias -= 1;
-            }
+            jogo->equipa2->vitorias -= 1;
           }
           else
           {
-            if ((b == c) && (jogo->resultado1 < jogo->resultado2))
+            if ((b > c) && (jogo->resultado1 == jogo->resultado2))
             {
-              {
-                jogo->equipa2->vitorias -= 1;
-              }
+              jogo->equipa1->vitorias += 1;
             }
             else
             {
-              if ((b > c) && (jogo->resultado1 == jogo->resultado2))
+              if ((b < c) && (jogo->resultado1 == jogo->resultado2))
               {
-                {
-                  jogo->equipa1->vitorias += 1;
-                }
+                jogo->equipa2->vitorias += 1;
               }
               else
               {
-                if ((b < c) && (jogo->resultado1 == jogo->resultado2))
-                {
-                  {
-                    jogo->equipa2->vitorias += 1;
-                  }
-                }
-                else
-                {
-                  
-                }
-
+                
               }
 
             }
@@ -757,9 +686,10 @@ void func_s(int NL, acede_jogos *lista_ligada_jogos)
 
       }
 
-      jogo->resultado1 = b;
-      jogo->resultado2 = c;
     }
+
+    jogo->resultado1 = b;
+    jogo->resultado2 = c;
   }
 
 }
@@ -774,60 +704,52 @@ void func_g(int NL, acede_equipa_normal *equipas_normais)
   no_equipa_normal *b = equipas_normais->head;
   if (equipas_normais->head == 0)
   {
-    {
-    }
   }
   else
   {
+    while (a != 0)
     {
-      while (a != 0)
+      if (a->p->vitorias > i)
       {
-        if (a->p->vitorias > i)
-        {
-          i = a->p->vitorias;
-        }
-        else
-        {
-          
-        }
-
-        a = a->next;
-      }
-
-      while (b != 0)
-      {
-        if (b->p->vitorias == i)
-        {
-          {
-            lista_equipas_vitorias[0][contador] = b->p;
-            contador += 1;
-          }
-        }
-        else
-        {
-          
-        }
-
-        b = b->next;
-      }
-
-      if (contador == 1)
-      {
-        {
-        }
+        i = a->p->vitorias;
       }
       else
       {
-        mergesort(lista_equipas_vitorias, 0, contador - 1);
+        
       }
 
-      printf("%d Melhores %d\n", NL, i);
-      for (c = 0; c < contador; c++)
-      {
-        printf("%d * %s\n", NL, lista_equipas_vitorias[0][c]->nome);
-      }
-
+      a = a->next;
     }
+
+    while (b != 0)
+    {
+      if (b->p->vitorias == i)
+      {
+        lista_equipas_vitorias[0][contador] = b->p;
+        contador += 1;
+      }
+      else
+      {
+        
+      }
+
+      b = b->next;
+    }
+
+    if (contador == 1)
+    {
+    }
+    else
+    {
+      mergesort(lista_equipas_vitorias, 0, contador - 1);
+    }
+
+    printf("%d Melhores %d\n", NL, i);
+    for (c = 0; c < contador; c++)
+    {
+      printf("%d * %s\n", NL, lista_equipas_vitorias[0][c]->nome);
+    }
+
   }
 
 }
@@ -886,25 +808,23 @@ void free_da_hash_jogo(acede_jogos *lista_ligada_jogos)
     }
     else
     {
+      while (aux1)
       {
-        while (aux1)
+        if (aux1->next != 0)
         {
-          if (aux1->next != 0)
-          {
-            aux2 = aux1->next;
-          }
-          else
-          {
-            aux2 = 0;
-          }
-
-          free(aux1->p->nome);
-          free(aux1->p);
-          free(aux1);
-          aux1 = aux2;
+          aux2 = aux1->next;
+        }
+        else
+        {
+          aux2 = 0;
         }
 
+        free(aux1->p->nome);
+        free(aux1->p);
+        free(aux1);
+        aux1 = aux2;
       }
+
     }
 
   }

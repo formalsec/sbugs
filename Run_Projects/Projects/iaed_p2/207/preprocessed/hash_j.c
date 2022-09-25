@@ -46,9 +46,7 @@ int procura_jogo(char *jogo_nome, PRINCIPAL p)
   {
     if (strcmp(p->hashJogo[hashIndex]->nome, jogo_nome) == 0)
     {
-      {
-        return hashIndex;
-      }
+      return hashIndex;
     }
     else
     {
@@ -67,10 +65,8 @@ int insert_jogo(JOGO j, PRINCIPAL p)
   int i;
   if (p->tamanho_jogos >= (p->cap_jogos * 0.7))
   {
-    {
-      p->cap_jogos += 20;
-      p->hashJogo = (JOGO *) realloc(p->hashJogo, (sizeof(JOGO)) * p->cap_jogos);
-    }
+    p->cap_jogos += 20;
+    p->hashJogo = (JOGO *) realloc(p->hashJogo, (sizeof(JOGO)) * p->cap_jogos);
   }
   else
   {

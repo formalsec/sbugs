@@ -60,19 +60,15 @@ void add_game(unsigned int NL, game **first_game, game **last_game, glink **game
   getchar();
   if (game_table_search(game_table, name) != 0)
   {
-    {
-      printf("%u Jogo existente.\n", NL);
-      return;
-    }
+    printf("%u Jogo existente.\n", NL);
+    return;
   }
   else
   {
     if ((team_table_search(team_table, team1) == 0) || (team_table_search(team_table, team2) == 0))
     {
-      {
-        printf("%u Equipa inexistente.\n", NL);
-        return;
-      }
+      printf("%u Equipa inexistente.\n", NL);
+      return;
     }
     else
     {
@@ -182,10 +178,8 @@ void change_score(unsigned int NL, glink **game_table, tlink **team_table)
   match = game_table_search(game_table, name);
   if (match == 0)
   {
-    {
-      printf("%u Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%u Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -252,10 +246,8 @@ void change_score(unsigned int NL, glink **game_table, tlink **team_table)
         }
         else
         {
-          {
-            remove_victory(team_table, old_winner);
-            give_victory(team_table, new_winner);
-          }
+          remove_victory(team_table, old_winner);
+          give_victory(team_table, new_winner);
         }
 
       }
@@ -280,23 +272,19 @@ void best_teams(unsigned int NL, tlink **team_table)
     {
       if (node->t->victories > most)
       {
-        {
-          most = node->t->victories;
-          free(list);
-          total = 1;
-          list = (team *) malloc(total * (sizeof(team)));
-          list[0] = *node->t;
-        }
+        most = node->t->victories;
+        free(list);
+        total = 1;
+        list = (team *) malloc(total * (sizeof(team)));
+        list[0] = *node->t;
       }
       else
       {
         if (node->t->victories == most)
         {
-          {
-            total++;
-            list = (team *) realloc(list, total * (sizeof(team)));
-            list[total - 1] = *node->t;
-          }
+          total++;
+          list = (team *) realloc(list, total * (sizeof(team)));
+          list[total - 1] = *node->t;
         }
         else
         {
@@ -311,23 +299,19 @@ void best_teams(unsigned int NL, tlink **team_table)
 
   if (most == (-1))
   {
-    {
-      free(orig_list);
-      return;
-    }
+    free(orig_list);
+    return;
   }
   else
   {
+    qsort(list, total, sizeof(team), compare_func);
+    printf("%u Melhores %d\n", NL, most);
+    for (i = 0; i < total; i++)
     {
-      qsort(list, total, sizeof(team), compare_func);
-      printf("%u Melhores %d\n", NL, most);
-      for (i = 0; i < total; i++)
-      {
-        printf("%u * %s\n", NL, list[i].name);
-      }
-
-      free(list);
+      printf("%u * %s\n", NL, list[i].name);
     }
+
+    free(list);
   }
 
 }

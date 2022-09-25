@@ -44,11 +44,9 @@ void adiciona_jogo_lista(link_jogo jogo, lista_jogos *lista)
 {
   if (!lista->primeiro)
   {
-    {
-      lista->primeiro = jogo;
-      lista->ultimo = jogo;
-      return;
-    }
+    lista->primeiro = jogo;
+    lista->ultimo = jogo;
+    return;
   }
   else
   {
@@ -64,10 +62,8 @@ void adiciona_jogo_ht(link_jogo jogo, link_jogo *ht)
   int i = hash(jogo->nome_jogo);
   if (!ht[i])
   {
-    {
-      ht[i] = jogo;
-      return;
-    }
+    ht[i] = jogo;
+    return;
   }
   else
   {
@@ -104,27 +100,25 @@ void remove_jogo_lista(link_jogo jogo, lista_jogos *lista)
   {
     if (strcmp(t->nome_jogo, jogo->nome_jogo) == 0)
     {
+      if (t == lista->primeiro)
       {
-        if (t == lista->primeiro)
-        {
-          lista->primeiro = t->next_lista;
-        }
-        else
-        {
-          prev->next_lista = t->next_lista;
-        }
-
-        if (t->next_lista == 0)
-        {
-          lista->ultimo = prev;
-        }
-        else
-        {
-          
-        }
-
-        break;
+        lista->primeiro = t->next_lista;
       }
+      else
+      {
+        prev->next_lista = t->next_lista;
+      }
+
+      if (t->next_lista == 0)
+      {
+        lista->ultimo = prev;
+      }
+      else
+      {
+        
+      }
+
+      break;
     }
     else
     {
@@ -144,18 +138,16 @@ void remove_jogo_ht(link_jogo jogo, link_jogo *ht)
   {
     if (strcmp(t->nome_jogo, jogo->nome_jogo) == 0)
     {
+      if (t == ht[i])
       {
-        if (t == ht[i])
-        {
-          ht[i] = t->next_ht;
-        }
-        else
-        {
-          prev->next_ht = t->next_ht;
-        }
-
-        break;
+        ht[i] = t->next_ht;
       }
+      else
+      {
+        prev->next_ht = t->next_ht;
+      }
+
+      break;
     }
     else
     {

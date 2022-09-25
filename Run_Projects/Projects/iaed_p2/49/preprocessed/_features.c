@@ -43,10 +43,8 @@ void new_match(int nl, int id, hashM *hashMt, hash *hashT, link head)
     }
     else
     {
-      {
-        head = insert(pbuffer, score1, score2, id, head);
-        insertM(hashMt, head);
-      }
+      head = insert(pbuffer, score1, score2, id, head);
+      insertM(hashMt, head);
     }
 
   }
@@ -75,10 +73,8 @@ void add_team(int nl, hash *hashT)
   }
   else
   {
-    {
-      printf("%d Equipa existente.\n", nl);
-      free(name);
-    }
+    printf("%d Equipa existente.\n", nl);
+    free(name);
   }
 
 }
@@ -92,12 +88,10 @@ void list_all_matches(int nl, hashM *hashMt)
   {
     if (hashMt->array[index] != 0)
     {
-      {
-        auxC[0] = hashMt->array[index]->name;
-        auxC[1] = hashMt->array[index]->team1;
-        auxC[2] = hashMt->array[index]->team2;
-        aux[index] = create(auxC, hashMt->array[index]->score1, hashMt->array[index]->score2, hashMt->array[index]->id);
-      }
+      auxC[0] = hashMt->array[index]->name;
+      auxC[1] = hashMt->array[index]->team1;
+      auxC[2] = hashMt->array[index]->team2;
+      aux[index] = create(auxC, hashMt->array[index]->score1, hashMt->array[index]->score2, hashMt->array[index]->id);
     }
     else
     {
@@ -124,13 +118,11 @@ void list_all_matches(int nl, hashM *hashMt)
   {
     if (aux[index] != 0)
     {
-      {
-        free(aux[index]->name);
-        free(aux[index]->team1);
-        free(aux[index]->team2);
-        free(aux[index]);
-        aux[index] = 0;
-      }
+      free(aux[index]->name);
+      free(aux[index]->team1);
+      free(aux[index]->team2);
+      free(aux[index]);
+      aux[index] = 0;
     }
     else
     {
@@ -190,20 +182,13 @@ void search_team(int nl, hashM *hashMt, hash *hashT)
   }
   else
   {
+    for (; index < hashMt->size; index++)
     {
-      for (; index < hashMt->size; index++)
+      if (hashMt->array[index] != 0)
       {
-        if (hashMt->array[index] != 0)
+        if (((strcmp(hashMt->array[index]->team1, team) == 0) && (hashMt->array[index]->score1 > hashMt->array[index]->score2)) || ((strcmp(hashMt->array[index]->team2, team) == 0) && (hashMt->array[index]->score1 < hashMt->array[index]->score2)))
         {
-          if (((strcmp(hashMt->array[index]->team1, team) == 0) && (hashMt->array[index]->score1 > hashMt->array[index]->score2)) || ((strcmp(hashMt->array[index]->team2, team) == 0) && (hashMt->array[index]->score1 < hashMt->array[index]->score2)))
-          {
-            ++matchesWon;
-          }
-          else
-          {
-            
-          }
-
+          ++matchesWon;
         }
         else
         {
@@ -211,9 +196,14 @@ void search_team(int nl, hashM *hashMt, hash *hashT)
         }
 
       }
+      else
+      {
+        
+      }
 
-      printf("%d %s %d\n", nl, team, matchesWon);
     }
+
+    printf("%d %s %d\n", nl, team, matchesWon);
   }
 
 }
@@ -230,14 +220,12 @@ void delete_match(int nl, hashM *hashMt)
   buffer[10 - 1] = '\0';
   if (searchM(hashMt, buffer) != 0)
   {
-    {
-      hashval = hash_position(hashMt, buffer);
-      free(hashMt->array[hashval]->name);
-      free(hashMt->array[hashval]->team1);
-      free(hashMt->array[hashval]->team2);
-      free(hashMt->array[hashval]);
-      hashMt->array[hashval] = 0;
-    }
+    hashval = hash_position(hashMt, buffer);
+    free(hashMt->array[hashval]->name);
+    free(hashMt->array[hashval]->team1);
+    free(hashMt->array[hashval]->team2);
+    free(hashMt->array[hashval]);
+    hashMt->array[hashval] = 0;
   }
   else
   {
@@ -262,11 +250,9 @@ void change_score(int nl, hashM *hashMt)
   score2 = new_sym_var(sizeof(int) * 8);
   if (searchM(hashMt, buffer) != 0)
   {
-    {
-      hashval = hash_position(hashMt, buffer);
-      hashMt->array[hashval]->score1 = score1;
-      hashMt->array[hashval]->score2 = score2;
-    }
+    hashval = hash_position(hashMt, buffer);
+    hashMt->array[hashval]->score1 = score1;
+    hashMt->array[hashval]->score2 = score2;
   }
   else
   {

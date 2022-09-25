@@ -109,19 +109,15 @@ void adiciona_jogo(list ls, hash_j hash_j, hash_eq hash_eq, int NL)
   sc2 = new_sym_var(sizeof(int) * 8);
   if (STsearch_jogo(hash_j, n_jogo))
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-      return;
-    }
+    printf("%d Jogo existente.\n", NL);
+    return;
   }
   else
   {
     if ((!STsearch_eq(hash_eq, eq1)) || (!STsearch_eq(hash_eq, eq2)))
     {
-      {
-        printf("%d Equipa inexistente.\n", NL);
-        return;
-      }
+      printf("%d Equipa inexistente.\n", NL);
+      return;
     }
     else
     {
@@ -156,10 +152,8 @@ void procura_jogo(hash_j hash_j, int NL)
   j = STsearch_jogo(hash_j, n_jogo);
   if (!j)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -182,10 +176,8 @@ void adiciona_equipa(hash_eq hash_eq, int NL)
   n_eq[10 - 1] = '\0';
   if (STsearch_eq(hash_eq, n_eq))
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-      return;
-    }
+    printf("%d Equipa existente.\n", NL);
+    return;
   }
   else
   {
@@ -209,10 +201,8 @@ void procura_equipa(hash_eq hash_eq, int NL)
   eq = STsearch_eq(hash_eq, n_eq);
   if (!eq)
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -236,10 +226,8 @@ void remove_jogo(list ls, hash_j hash_j, hash_eq hash_eq, int NL)
   j = STsearch_jogo(hash_j, n_jogo);
   if (!j)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -277,10 +265,8 @@ void altera_score(hash_j hash_j, hash_eq hash_eq, int NL)
   j = STsearch_jogo(hash_j, n_jogo);
   if (!j)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {

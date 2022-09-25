@@ -52,9 +52,7 @@ GameLink game_ht_search(GameHT game_ht, char *game_name)
   {
     if (!strcmp(g->game_name, game_name))
     {
-      {
-        return g;
-      }
+      return g;
     }
     else
     {
@@ -71,16 +69,12 @@ void game_ht_search_print(GameHT game_ht, char *game_name, unsigned long int NL)
   GameLink res = game_ht_search(game_ht, game_name);
   if (res == 0)
   {
-    {
-      printf("%ld Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%ld Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
-    {
-      printf("%ld %s %s %s %d %d\n", NL, res->game_name, res->team1, res->team2, res->score1, res->score2);
-    }
+    printf("%ld %s %s %s %d %d\n", NL, res->game_name, res->team1, res->team2, res->score1, res->score2);
   }
 
 }
@@ -90,23 +84,17 @@ static TeamLink game_winner(TeamHT team_ht, GameLink game)
   char *winner_name;
   if (game->score1 == game->score2)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
     if (game->score1 > game->score2)
     {
-      {
-        winner_name = game->team1;
-      }
+      winner_name = game->team1;
     }
     else
     {
-      {
-        winner_name = game->team2;
-      }
+      winner_name = game->team2;
     }
 
   }
@@ -118,71 +106,57 @@ void game_ht_insert(GameHT *game_ht_ptr, char *game_name, char *team1, char *tea
 {
   if (game_ht_search(*game_ht_ptr, game_name) != 0)
   {
-    {
-      printf("%ld Jogo existente.\n", NL);
-      return;
-    }
+    printf("%ld Jogo existente.\n", NL);
+    return;
   }
   else
   {
     if ((team_ht_search(*game_ht_ptr->team_ht_ptr, team1) == 0) || (team_ht_search(*game_ht_ptr->team_ht_ptr, team2) == 0))
     {
-      {
-        printf("%ld Equipa inexistente.\n", NL);
-        return;
-      }
+      printf("%ld Equipa inexistente.\n", NL);
+      return;
     }
     else
     {
+      GameLink game;
+      int hash;
+      TeamLink winner;
+      game = game_create(game_name, team1, team2, score1, score2);
+      hash = name_hash(game_ht_ptr->size, game_name);
+      game->ht_next = game_ht_ptr->ht_header[hash];
+      if (game->ht_next != 0)
       {
-        GameLink game;
-        int hash;
-        TeamLink winner;
-        game = game_create(game_name, team1, team2, score1, score2);
-        hash = name_hash(game_ht_ptr->size, game_name);
-        game->ht_next = game_ht_ptr->ht_header[hash];
-        if (game->ht_next != 0)
-        {
-          {
-            game->ht_next->ht_previous = game;
-          }
-        }
-        else
-        {
-          
-        }
-
-        game_ht_ptr->ht_header[hash] = game;
-        if (game_ht_ptr->table_head == 0)
-        {
-          {
-            game_ht_ptr->table_head = game;
-            game_ht_ptr->table_tail = game;
-          }
-        }
-        else
-        {
-          {
-            game_ht_ptr->table_tail->table_next = game;
-            game->table_previous = game_ht_ptr->table_tail;
-            game_ht_ptr->table_tail = game;
-          }
-        }
-
-        winner = game_winner(*game_ht_ptr->team_ht_ptr, game);
-        if (winner != 0)
-        {
-          {
-            winner->games_won++;
-          }
-        }
-        else
-        {
-          
-        }
-
-        game_ht_ptr->items_num++;
+        game->ht_next->ht_previous = game;
       }
+      else
+      {
+        
+      }
+
+      game_ht_ptr->ht_header[hash] = game;
+      if (game_ht_ptr->table_head == 0)
+      {
+        game_ht_ptr->table_head = game;
+        game_ht_ptr->table_tail = game;
+      }
+      else
+      {
+        game_ht_ptr->table_tail->table_next = game;
+        game->table_previous = game_ht_ptr->table_tail;
+        game_ht_ptr->table_tail = game;
+      }
+
+      winner = game_winner(*game_ht_ptr->team_ht_ptr, game);
+      if (winner != 0)
+      {
+        winner->games_won++;
+      }
+      else
+      {
+        
+      }
+
+      game_ht_ptr->items_num++;
     }
 
   }
@@ -202,100 +176,80 @@ void game_ht_delete(GameHT *game_ht_ptr, char *game_name, unsigned long int NL)
   GameLink game = game_ht_search(*game_ht_ptr, game_name);
   if (game == 0)
   {
-    {
-      printf("%ld Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%ld Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
+    int hash = name_hash(game_ht_ptr->size, game_name);
+    TeamLink winner = game_winner(*game_ht_ptr->team_ht_ptr, game);
+    if (winner != 0)
     {
-      int hash = name_hash(game_ht_ptr->size, game_name);
-      TeamLink winner = game_winner(*game_ht_ptr->team_ht_ptr, game);
-      if (winner != 0)
-      {
-        {
-          winner->games_won--;
-        }
-      }
-      else
-      {
-        
-      }
+      winner->games_won--;
+    }
+    else
+    {
+      
+    }
 
-      game_ht_ptr->items_num--;
-      if (game_ht_ptr->ht_header[hash] == game)
-      {
-        {
-          game_ht_ptr->ht_header[hash] = game->ht_next;
-        }
-      }
-      else
-      {
-        
-      }
+    game_ht_ptr->items_num--;
+    if (game_ht_ptr->ht_header[hash] == game)
+    {
+      game_ht_ptr->ht_header[hash] = game->ht_next;
+    }
+    else
+    {
+      
+    }
 
-      if (game->ht_previous != 0)
-      {
-        {
-          game->ht_previous->ht_next = game->ht_next;
-        }
-      }
-      else
-      {
-        
-      }
+    if (game->ht_previous != 0)
+    {
+      game->ht_previous->ht_next = game->ht_next;
+    }
+    else
+    {
+      
+    }
 
-      if (game->ht_next != 0)
-      {
-        {
-          game->ht_next->ht_previous = game->ht_previous;
-        }
-      }
-      else
-      {
-        
-      }
+    if (game->ht_next != 0)
+    {
+      game->ht_next->ht_previous = game->ht_previous;
+    }
+    else
+    {
+      
+    }
 
-      if ((game_ht_ptr->table_head == game) && (game_ht_ptr->table_tail == game))
+    if ((game_ht_ptr->table_head == game) && (game_ht_ptr->table_tail == game))
+    {
+      game_ht_ptr->table_head = 0;
+      game_ht_ptr->table_tail = 0;
+    }
+    else
+    {
+      if (game_ht_ptr->table_head == game)
       {
-        {
-          game_ht_ptr->table_head = 0;
-          game_ht_ptr->table_tail = 0;
-        }
+        game_ht_ptr->table_head = game->table_next;
+        game->table_next->table_previous = 0;
       }
       else
       {
-        if (game_ht_ptr->table_head == game)
+        if (game_ht_ptr->table_tail == game)
         {
-          {
-            game_ht_ptr->table_head = game->table_next;
-            game->table_next->table_previous = 0;
-          }
+          game_ht_ptr->table_tail = game->table_previous;
+          game->table_previous->table_next = 0;
         }
         else
         {
-          if (game_ht_ptr->table_tail == game)
-          {
-            {
-              game_ht_ptr->table_tail = game->table_previous;
-              game->table_previous->table_next = 0;
-            }
-          }
-          else
-          {
-            {
-              game->table_previous->table_next = game->table_next;
-              game->table_next->table_previous = game->table_previous;
-            }
-          }
-
+          game->table_previous->table_next = game->table_next;
+          game->table_next->table_previous = game->table_previous;
         }
 
       }
 
-      game_node_free(game);
     }
+
+    game_node_free(game);
   }
 
 }
@@ -305,55 +259,43 @@ void game_ht_change_score(GameHT game_ht, char *game_name, int score1, int score
   GameLink game = game_ht_search(game_ht, game_name);
   if (game == 0)
   {
-    {
-      printf("%ld Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%ld Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
+    TeamLink winner_before;
+    TeamLink winner_after;
+    winner_before = game_winner(*game_ht.team_ht_ptr, game);
+    game->score1 = score1;
+    game->score2 = score2;
+    winner_after = game_winner(*game_ht.team_ht_ptr, game);
+    if (winner_before == winner_after)
     {
-      TeamLink winner_before;
-      TeamLink winner_after;
-      winner_before = game_winner(*game_ht.team_ht_ptr, game);
-      game->score1 = score1;
-      game->score2 = score2;
-      winner_after = game_winner(*game_ht.team_ht_ptr, game);
-      if (winner_before == winner_after)
+      return;
+    }
+    else
+    {
+      if (winner_before != 0)
       {
-        {
-          return;
-        }
+        winner_before->games_won--;
       }
       else
       {
-        {
-          if (winner_before != 0)
-          {
-            {
-              winner_before->games_won--;
-            }
-          }
-          else
-          {
-            
-          }
+        
+      }
 
-          if (winner_after != 0)
-          {
-            {
-              winner_after->games_won++;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
+      if (winner_after != 0)
+      {
+        winner_after->games_won++;
+      }
+      else
+      {
+        
       }
 
     }
+
   }
 
 }
@@ -363,19 +305,15 @@ void game_ht_print_order(GameHT game_ht, unsigned long int NL)
   GameLink t;
   if (game_ht.items_num == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
+    for (t = game_ht.table_head; t != 0; t = t->table_next)
     {
-      for (t = game_ht.table_head; t != 0; t = t->table_next)
-      {
-        printf("%ld %s %s %s %d %d\n", NL, t->game_name, t->team1, t->team2, t->score1, t->score2);
-      }
-
+      printf("%ld %s %s %s %d %d\n", NL, t->game_name, t->team1, t->team2, t->score1, t->score2);
     }
+
   }
 
 }

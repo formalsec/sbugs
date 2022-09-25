@@ -112,10 +112,8 @@ void AdicionaJogo()
   lookup_jogo(jogo, novo_nome);
   if (i == 1)
   {
-    {
-      i = 0;
-      return;
-    }
+    i = 0;
+    return;
   }
   else
   {
@@ -126,30 +124,22 @@ void AdicionaJogo()
   strcpy(nova_equipa1, token);
   if (isEmpty(equipa) != 0)
   {
-    {
-      verifica(equipa, nova_equipa1);
-      if (j != 2)
-      {
-        {
-          printf("%d Equipa inexistente.\n", contador);
-          return;
-        }
-      }
-      else
-      {
-        {
-          j = 0;
-        }
-      }
-
-    }
-  }
-  else
-  {
+    verifica(equipa, nova_equipa1);
+    if (j != 2)
     {
       printf("%d Equipa inexistente.\n", contador);
       return;
     }
+    else
+    {
+      j = 0;
+    }
+
+  }
+  else
+  {
+    printf("%d Equipa inexistente.\n", contador);
+    return;
   }
 
   token = strtok(0, ":");
@@ -157,16 +147,12 @@ void AdicionaJogo()
   verifica(equipa, nova_equipa2);
   if (j != 2)
   {
-    {
-      printf("%d Equipa inexistente.\n", contador);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", contador);
+    return;
   }
   else
   {
-    {
-      j = 0;
-    }
+    j = 0;
   }
 
   token = strtok(0, ":");
@@ -176,22 +162,18 @@ void AdicionaJogo()
   novojogo = (Jogo) malloc(sizeof(struct node_jogos));
   if (jogo == 0)
   {
-    {
-      jogo = (jogoatual = novojogo);
-    }
+    jogo = (jogoatual = novojogo);
   }
   else
   {
+    jogoatual = jogo;
+    while (jogoatual->next != 0)
     {
-      jogoatual = jogo;
-      while (jogoatual->next != 0)
-      {
-        jogoatual = jogoatual->next;
-      }
-
-      jogoatual->next = novojogo;
-      jogoatual = novojogo;
+      jogoatual = jogoatual->next;
     }
+
+    jogoatual->next = novojogo;
+    jogoatual = novojogo;
   }
 
   strcpy(novojogo->nome, novo_nome);
@@ -203,53 +185,41 @@ void AdicionaJogo()
   nscore2 = atoi(novojogo->score2);
   if (nscore1 > nscore2)
   {
+    equipaatual = equipa;
+    while (equipaatual != 0)
     {
-      equipaatual = equipa;
-      while (equipaatual != 0)
+      if (strcmp(equipaatual->nome, novojogo->equipa1) == 0)
       {
-        if (strcmp(equipaatual->nome, novojogo->equipa1) == 0)
-        {
-          {
-            equipaatual->vitorias += 1;
-            break;
-          }
-        }
-        else
-        {
-          {
-            equipaatual = equipaatual->next;
-          }
-        }
-
+        equipaatual->vitorias += 1;
+        break;
+      }
+      else
+      {
+        equipaatual = equipaatual->next;
       }
 
     }
+
   }
   else
   {
     if (nscore2 > nscore1)
     {
+      equipaatual = equipa;
+      while (equipaatual != 0)
       {
-        equipaatual = equipa;
-        while (equipaatual != 0)
+        if (strcmp(equipaatual->nome, novojogo->equipa2) == 0)
         {
-          if (strcmp(equipaatual->nome, novojogo->equipa2) == 0)
-          {
-            {
-              equipaatual->vitorias += 1;
-              break;
-            }
-          }
-          else
-          {
-            {
-              equipaatual = equipaatual->next;
-            }
-          }
-
+          equipaatual->vitorias += 1;
+          break;
+        }
+        else
+        {
+          equipaatual = equipaatual->next;
         }
 
       }
+
     }
     else
     {
@@ -272,39 +242,31 @@ void AdicionaEquipa()
   lookup(equipa, novo_nome);
   if (i == 3)
   {
-    {
-      i = 0;
-      return;
-    }
+    i = 0;
+    return;
   }
   else
   {
+    novaequipa = (Equipa) malloc(sizeof(struct node_equipas));
+    if (equipa == 0)
     {
-      novaequipa = (Equipa) malloc(sizeof(struct node_equipas));
-      if (equipa == 0)
-      {
-        {
-          equipa = (equipaatual = novaequipa);
-        }
-      }
-      else
-      {
-        {
-          equipaatual = equipa;
-          while (equipaatual->next != 0)
-          {
-            equipaatual = equipaatual->next;
-          }
-
-          equipaatual->next = novaequipa;
-          equipaatual = novaequipa;
-        }
-      }
-
-      strcpy(novaequipa->nome, novo_nome);
-      novaequipa->vitorias = 0;
-      equipaatual->next = 0;
+      equipa = (equipaatual = novaequipa);
     }
+    else
+    {
+      equipaatual = equipa;
+      while (equipaatual->next != 0)
+      {
+        equipaatual = equipaatual->next;
+      }
+
+      equipaatual->next = novaequipa;
+      equipaatual = novaequipa;
+    }
+
+    strcpy(novaequipa->nome, novo_nome);
+    novaequipa->vitorias = 0;
+    equipaatual->next = 0;
   }
 
 }
@@ -315,16 +277,14 @@ void ListaJogos()
   int nscore2;
   if (jogo != 0)
   {
+    jogoatual = jogo;
+    do
     {
-      jogoatual = jogo;
-      do
-      {
-        nscore1 = atoi(jogoatual->score1);
-        nscore2 = atoi(jogoatual->score2);
-        printf("%d %s %s %s %d %d\n", contador, jogoatual->nome, jogoatual->equipa1, jogoatual->equipa2, nscore1, nscore2);
-      }
-      while ((jogoatual = jogoatual->next) != 0);
+      nscore1 = atoi(jogoatual->score1);
+      nscore2 = atoi(jogoatual->score2);
+      printf("%d %s %s %s %d %d\n", contador, jogoatual->nome, jogoatual->equipa1, jogoatual->equipa2, nscore1, nscore2);
     }
+    while ((jogoatual = jogoatual->next) != 0);
   }
   else
   {
@@ -346,16 +306,12 @@ int ProcuraJogo()
   {
     if (strcmp(jogoatual->nome, novo_nome) == 0)
     {
-      {
-        printf("%d %s %s %s %s %s\n", contador, jogoatual->nome, jogoatual->equipa1, jogoatual->equipa2, jogoatual->score1, jogoatual->score2);
-        return 0;
-      }
+      printf("%d %s %s %s %s %s\n", contador, jogoatual->nome, jogoatual->equipa1, jogoatual->equipa2, jogoatual->score1, jogoatual->score2);
+      return 0;
     }
     else
     {
-      {
-        jogoatual = jogoatual->next;
-      }
+      jogoatual = jogoatual->next;
     }
 
   }
@@ -377,16 +333,12 @@ int ProcuraEquipa()
   {
     if (strcmp(equipaatual->nome, novo_nome) == 0)
     {
-      {
-        printf("%d %s %d\n", contador, equipaatual->nome, equipaatual->vitorias);
-        return 0;
-      }
+      printf("%d %s %d\n", contador, equipaatual->nome, equipaatual->vitorias);
+      return 0;
     }
     else
     {
-      {
-        equipaatual = equipaatual->next;
-      }
+      equipaatual = equipaatual->next;
     }
 
   }
@@ -411,111 +363,85 @@ void ApagaJogo()
   verifica_jogos(jogoatual, novo_nome);
   if (a != 2)
   {
-    {
-      printf("%d Jogo inexistente.\n", contador);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", contador);
+    return;
   }
   else
   {
-    {
-      a = 0;
-    }
+    a = 0;
   }
 
   while (jogoatual != 0)
   {
     if (strcmp(jogoatual->nome, novo_nome) == 0)
     {
+      oldscore1 = atoi(jogoatual->score1);
+      oldscore2 = atoi(jogoatual->score2);
+      if (oldscore1 > oldscore2)
       {
-        oldscore1 = atoi(jogoatual->score1);
-        oldscore2 = atoi(jogoatual->score2);
-        if (oldscore1 > oldscore2)
+        while (equipaatual != 0)
         {
+          if (strcmp(jogoatual->equipa1, equipaatual->nome) == 0)
           {
-            while (equipaatual != 0)
-            {
-              if (strcmp(jogoatual->equipa1, equipaatual->nome) == 0)
-              {
-                {
-                  equipaatual->vitorias -= 1;
-                  break;
-                }
-              }
-              else
-              {
-                {
-                  equipaatual = equipaatual->next;
-                }
-              }
-
-            }
-
-          }
-        }
-        else
-        {
-          if (oldscore2 > oldscore1)
-          {
-            {
-              while (equipaatual != 0)
-              {
-                if (strcmp(jogoatual->equipa2, equipaatual->nome) == 0)
-                {
-                  {
-                    equipaatual->vitorias -= 1;
-                    break;
-                  }
-                }
-                else
-                {
-                  {
-                    equipaatual = equipaatual->next;
-                  }
-                }
-
-              }
-
-            }
+            equipaatual->vitorias -= 1;
+            break;
           }
           else
           {
-            
+            equipaatual = equipaatual->next;
           }
 
         }
 
-        if (jogoatual != jogo)
+      }
+      else
+      {
+        if (oldscore2 > oldscore1)
         {
+          while (equipaatual != 0)
           {
-            jogoanterior->next = jogoatual->next;
+            if (strcmp(jogoatual->equipa2, equipaatual->nome) == 0)
+            {
+              equipaatual->vitorias -= 1;
+              break;
+            }
+            else
+            {
+              equipaatual = equipaatual->next;
+            }
+
           }
+
         }
         else
         {
-          {
-            jogo = jogo->next;
-          }
+          
         }
 
-        break;
       }
+
+      if (jogoatual != jogo)
+      {
+        jogoanterior->next = jogoatual->next;
+      }
+      else
+      {
+        jogo = jogo->next;
+      }
+
+      break;
     }
     else
     {
-      {
-        jogoanterior = jogoatual;
-        jogoatual = jogoatual->next;
-      }
+      jogoanterior = jogoatual;
+      jogoatual = jogoatual->next;
     }
 
   }
 
   if (jogoatual == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", contador);
-    }
+    printf("%d Jogo inexistente.\n", contador);
   }
   else
   {
@@ -546,159 +472,125 @@ void AlteraPontuacao()
   verifica_jogos(jogoatual, novo_nome);
   if (a != 2)
   {
-    {
-      printf("%d Jogo inexistente.\n", contador);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", contador);
+    return;
   }
   else
   {
-    {
-      a = 0;
-    }
+    a = 0;
   }
 
   while (jogoatual != 0)
   {
     if (strcmp(jogoatual->nome, novo_nome) == 0)
     {
+      equipaatual = equipa;
+      oldscore1 = atoi(jogoatual->score1);
+      oldscore2 = atoi(jogoatual->score2);
+      if (oldscore1 > oldscore2)
+      {
+        while (equipaatual != 0)
+        {
+          if (strcmp(jogoatual->equipa1, equipaatual->nome) == 0)
+          {
+            equipaatual->vitorias -= 1;
+            break;
+          }
+          else
+          {
+            equipaatual = equipaatual->next;
+          }
+
+        }
+
+      }
+      else
+      {
+        if (oldscore2 > oldscore1)
+        {
+          while (equipaatual != 0)
+          {
+            if (strcmp(jogoatual->equipa2, equipaatual->nome) == 0)
+            {
+              equipaatual->vitorias -= 1;
+              break;
+            }
+            else
+            {
+              equipaatual = equipaatual->next;
+            }
+
+          }
+
+        }
+        else
+        {
+          
+        }
+
+      }
+
+      strcpy(jogoatual->score1, novo_score1);
+      strcpy(jogoatual->score2, novo_score2);
+      nscore1 = atoi(jogoatual->score1);
+      nscore2 = atoi(jogoatual->score2);
+      if (nscore1 > nscore2)
       {
         equipaatual = equipa;
-        oldscore1 = atoi(jogoatual->score1);
-        oldscore2 = atoi(jogoatual->score2);
-        if (oldscore1 > oldscore2)
+        while (equipaatual != 0)
         {
+          if (strcmp(equipaatual->nome, novojogo->equipa1) == 0)
           {
-            while (equipaatual != 0)
-            {
-              if (strcmp(jogoatual->equipa1, equipaatual->nome) == 0)
-              {
-                {
-                  equipaatual->vitorias -= 1;
-                  break;
-                }
-              }
-              else
-              {
-                {
-                  equipaatual = equipaatual->next;
-                }
-              }
-
-            }
-
-          }
-        }
-        else
-        {
-          if (oldscore2 > oldscore1)
-          {
-            {
-              while (equipaatual != 0)
-              {
-                if (strcmp(jogoatual->equipa2, equipaatual->nome) == 0)
-                {
-                  {
-                    equipaatual->vitorias -= 1;
-                    break;
-                  }
-                }
-                else
-                {
-                  {
-                    equipaatual = equipaatual->next;
-                  }
-                }
-
-              }
-
-            }
+            equipaatual->vitorias += 1;
+            break;
           }
           else
           {
-            
+            equipaatual = equipaatual->next;
           }
 
         }
 
-        strcpy(jogoatual->score1, novo_score1);
-        strcpy(jogoatual->score2, novo_score2);
-        nscore1 = atoi(jogoatual->score1);
-        nscore2 = atoi(jogoatual->score2);
-        if (nscore1 > nscore2)
-        {
-          {
-            equipaatual = equipa;
-            while (equipaatual != 0)
-            {
-              if (strcmp(equipaatual->nome, novojogo->equipa1) == 0)
-              {
-                {
-                  equipaatual->vitorias += 1;
-                  break;
-                }
-              }
-              else
-              {
-                {
-                  equipaatual = equipaatual->next;
-                }
-              }
-
-            }
-
-          }
-        }
-        else
-        {
-          if (nscore2 > nscore1)
-          {
-            {
-              equipaatual = equipa;
-              while (equipaatual != 0)
-              {
-                if (strcmp(equipaatual->nome, novojogo->equipa2) == 0)
-                {
-                  {
-                    equipaatual->vitorias += 1;
-                    break;
-                  }
-                }
-                else
-                {
-                  {
-                    equipaatual = equipaatual->next;
-                  }
-                }
-
-              }
-
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-        break;
       }
+      else
+      {
+        if (nscore2 > nscore1)
+        {
+          equipaatual = equipa;
+          while (equipaatual != 0)
+          {
+            if (strcmp(equipaatual->nome, novojogo->equipa2) == 0)
+            {
+              equipaatual->vitorias += 1;
+              break;
+            }
+            else
+            {
+              equipaatual = equipaatual->next;
+            }
+
+          }
+
+        }
+        else
+        {
+          
+        }
+
+      }
+
+      break;
     }
     else
     {
-      {
-        jogoatual = jogoatual->next;
-      }
+      jogoatual = jogoatual->next;
     }
 
   }
 
   if (jogoatual == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", contador);
-    }
+    printf("%d Jogo inexistente.\n", contador);
   }
   else
   {
@@ -712,9 +604,7 @@ void EncontraVencedor()
   equipaatual = equipa;
   if (equipaatual == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -738,10 +628,8 @@ Equipa lookup(Equipa equipa, char *nome)
   {
     if (strcmp(t->nome, nome) == 0)
     {
-      {
-        i = 3;
-        printf("%d Equipa existente.\n", contador);
-      }
+      i = 3;
+      printf("%d Equipa existente.\n", contador);
     }
     else
     {
@@ -760,10 +648,8 @@ Jogo lookup_jogo(Jogo jogo, char *nome)
   {
     if (strcmp(t->nome, nome) == 0)
     {
-      {
-        printf("%d Jogo existente.\n", contador);
-        i = 1;
-      }
+      printf("%d Jogo existente.\n", contador);
+      i = 1;
     }
     else
     {
@@ -782,9 +668,7 @@ Jogo verifica_jogos(Jogo jogo, char *nome)
   {
     if (strcmp(t->nome, nome) == 0)
     {
-      {
-        a = 2;
-      }
+      a = 2;
     }
     else
     {
@@ -803,9 +687,7 @@ Equipa verifica(Equipa equipa, char *nome)
   {
     if (strcmp(t->nome, nome) == 0)
     {
-      {
-        j = 2;
-      }
+      j = 2;
     }
     else
     {
@@ -835,14 +717,12 @@ void ListaEquipas()
 {
   if (equipa != 0)
   {
+    equipaatual = equipa;
+    do
     {
-      equipaatual = equipa;
-      do
-      {
-        printf("%s %d\n", equipaatual->nome, equipaatual->vitorias);
-      }
-      while ((equipaatual = equipaatual->next) != 0);
+      printf("%s %d\n", equipaatual->nome, equipaatual->vitorias);
     }
+    while ((equipaatual = equipaatual->next) != 0);
   }
   else
   {
@@ -881,10 +761,8 @@ Equipa Ordena(Equipa equipa)
     {
       if (ptr1->vitorias < ptr1->next->vitorias)
       {
-        {
-          troca(ptr1, ptr1->next);
-          swapped = 1;
-        }
+        troca(ptr1, ptr1->next);
+        swapped = 1;
       }
       else
       {

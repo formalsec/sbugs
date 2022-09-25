@@ -81,19 +81,15 @@ void AddToOrder()
   quantidade = new_sym_var(sizeof(int) * 8);
   if (ide >= cont_egeral)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
-      estado = 1;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
+    estado = 1;
   }
   else
   {
     if (idp >= cont_pgeral)
     {
-      {
-        printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
-        estado = 1;
-      }
+      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
+      estado = 1;
     }
     else
     {
@@ -106,32 +102,28 @@ void AddToOrder()
   {
     if (evetor[ide].prod[x].identificador == idp)
     {
+      estado = 1;
+      peso_atual = evetor[ide].peso_e;
+      peso_entrar = quantidade * pvetor[idp].peso;
+      if ((pvetor[idp].quantidade - quantidade) < 0)
       {
-        estado = 1;
-        peso_atual = evetor[ide].peso_e;
-        peso_entrar = quantidade * pvetor[idp].peso;
-        if ((pvetor[idp].quantidade - quantidade) < 0)
+        printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
+      }
+      else
+      {
+        if ((peso_atual + peso_entrar) > 200)
         {
-          printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
+          printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
         }
         else
         {
-          if ((peso_atual + peso_entrar) > 200)
-          {
-            printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
-          }
-          else
-          {
-            {
-              evetor[ide].prod[x].quantidade += quantidade;
-              pvetor[idp].quantidade -= quantidade;
-              evetor[ide].peso_e += peso_entrar;
-            }
-          }
-
+          evetor[ide].prod[x].quantidade += quantidade;
+          pvetor[idp].quantidade -= quantidade;
+          evetor[ide].peso_e += peso_entrar;
         }
 
       }
+
     }
     else
     {
@@ -142,36 +134,30 @@ void AddToOrder()
 
   if (estado == 0)
   {
+    tamanho = evetor[ide].qt_prod;
+    peso_produto = pvetor[idp].peso * quantidade;
+    if ((pvetor[idp].quantidade - quantidade) < 0)
     {
-      tamanho = evetor[ide].qt_prod;
-      peso_produto = pvetor[idp].peso * quantidade;
-      if ((pvetor[idp].quantidade - quantidade) < 0)
+      printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
+    }
+    else
+    {
+      if ((evetor[ide].peso_e + peso_produto) > 200)
       {
-        printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
+        printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
       }
       else
       {
-        if ((evetor[ide].peso_e + peso_produto) > 200)
-        {
-          {
-            printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
-          }
-        }
-        else
-        {
-          {
-            evetor[ide].prod[tamanho].identificador = idp;
-            strcpy(evetor[ide].prod[tamanho].descricao, pvetor[idp].descricao);
-            evetor[ide].prod[tamanho].quantidade = quantidade;
-            pvetor[idp].quantidade -= quantidade;
-            evetor[ide].peso_e += peso_produto;
-            evetor[ide].qt_prod += 1;
-          }
-        }
-
+        evetor[ide].prod[tamanho].identificador = idp;
+        strcpy(evetor[ide].prod[tamanho].descricao, pvetor[idp].descricao);
+        evetor[ide].prod[tamanho].quantidade = quantidade;
+        pvetor[idp].quantidade -= quantidade;
+        evetor[ide].peso_e += peso_produto;
+        evetor[ide].qt_prod += 1;
       }
 
     }
+
   }
   else
   {
@@ -235,11 +221,9 @@ void RemoveFromOrder()
   {
     if (evetor[ide].prod[i].identificador == idp)
     {
-      {
-        pvetor[idp].quantidade += evetor[ide].prod[i].quantidade;
-        evetor[ide].peso_e -= evetor[ide].prod[i].quantidade * pvetor[idp].peso;
-        evetor[ide].prod[i].quantidade = 0;
-      }
+      pvetor[idp].quantidade += evetor[ide].prod[i].quantidade;
+      evetor[ide].peso_e -= evetor[ide].prod[i].quantidade * pvetor[idp].peso;
+      evetor[ide].prod[i].quantidade = 0;
     }
     else
     {
@@ -263,22 +247,20 @@ void OrderCost()
   }
   else
   {
+    for (i = 0; i < evetor[ide].qt_prod; i++)
     {
-      for (i = 0; i < evetor[ide].qt_prod; i++)
+      if (evetor[ide].prod[i].quantidade > 0)
       {
-        if (evetor[ide].prod[i].quantidade > 0)
-        {
-          total += evetor[ide].prod[i].quantidade * pvetor[evetor[ide].prod[i].identificador].preco;
-        }
-        else
-        {
-          continue;
-        }
-
+        total += evetor[ide].prod[i].quantidade * pvetor[evetor[ide].prod[i].identificador].preco;
+      }
+      else
+      {
+        continue;
       }
 
-      printf("Custo da encomenda %d %d.\n", ide, total);
     }
+
+    printf("Custo da encomenda %d %d.\n", ide, total);
   }
 
 }
@@ -322,33 +304,29 @@ void OrderProperties()
     }
     else
     {
+      for (i = 0; i < evetor[ide].qt_prod; i++)
       {
-        for (i = 0; i < evetor[ide].qt_prod; i++)
+        if (evetor[ide].prod[i].identificador == idp)
         {
-          if (evetor[ide].prod[i].identificador == idp)
-          {
-            {
-              printf("%s %d.\n", pvetor[idp].descricao, evetor[ide].prod[i].quantidade);
-              estado = 1;
-            }
-          }
-          else
-          {
-            continue;
-          }
-
-        }
-
-        if (estado == 0)
-        {
-          printf("%s 0.\n", pvetor[idp].descricao);
+          printf("%s %d.\n", pvetor[idp].descricao, evetor[ide].prod[i].quantidade);
+          estado = 1;
         }
         else
         {
-          
+          continue;
         }
 
       }
+
+      if (estado == 0)
+      {
+        printf("%s 0.\n", pvetor[idp].descricao);
+      }
+      else
+      {
+        
+      }
+
     }
 
   }
@@ -371,28 +349,17 @@ void LargestProductinOrder()
   }
   else
   {
+    for (i = 0; i < cont_egeral; i++)
     {
-      for (i = 0; i < cont_egeral; i++)
+      for (e = 0; e < evetor[i].qt_prod; e++)
       {
-        for (e = 0; e < evetor[i].qt_prod; e++)
+        if (evetor[i].prod[e].identificador == idp)
         {
-          if (evetor[i].prod[e].identificador == idp)
+          if (evetor[i].prod[e].quantidade > maior)
           {
-            {
-              if (evetor[i].prod[e].quantidade > maior)
-              {
-                {
-                  maior = evetor[i].prod[e].quantidade;
-                  maior2 = i;
-                  estado = 1;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
+            maior = evetor[i].prod[e].quantidade;
+            maior2 = i;
+            estado = 1;
           }
           else
           {
@@ -400,10 +367,15 @@ void LargestProductinOrder()
           }
 
         }
+        else
+        {
+          
+        }
 
       }
 
     }
+
   }
 
   if (estado == 1)
@@ -447,19 +419,15 @@ void Merge(int arr[10000], int ids[10000], int l, int m, int r)
   {
     if (L[i] <= R[j])
     {
-      {
-        arr[k] = L[i];
-        ids[k] = P[i];
-        i++;
-      }
+      arr[k] = L[i];
+      ids[k] = P[i];
+      i++;
     }
     else
     {
-      {
-        arr[k] = R[j];
-        ids[k] = Q[j];
-        j++;
-      }
+      arr[k] = R[j];
+      ids[k] = Q[j];
+      j++;
     }
 
     k++;
@@ -487,12 +455,10 @@ void MergeSort(int arr[10000], int ids[10000], int l, int r)
 {
   if (l < r)
   {
-    {
-      int m = l + ((r - l) / 2);
-      MergeSort(arr, ids, l, m);
-      MergeSort(arr, ids, m + 1, r);
-      Merge(arr, ids, l, m, r);
-    }
+    int m = l + ((r - l) / 2);
+    MergeSort(arr, ids, l, m);
+    MergeSort(arr, ids, m + 1, r);
+    Merge(arr, ids, l, m, r);
   }
   else
   {
@@ -532,14 +498,12 @@ void AlphabeticalSort(char arr[10000][64], int ids[10000], int ide)
     {
       if (strcmp(arr[j - 1], arr[j]) > 0)
       {
-        {
-          strcpy(aux, arr[j - 1]);
-          aux2 = ids[j - 1];
-          strcpy(arr[j - 1], arr[j]);
-          ids[j - 1] = ids[j];
-          strcpy(arr[j], aux);
-          ids[j] = aux2;
-        }
+        strcpy(aux, arr[j - 1]);
+        aux2 = ids[j - 1];
+        strcpy(arr[j - 1], arr[j]);
+        ids[j - 1] = ids[j];
+        strcpy(arr[j], aux);
+        ids[j] = aux2;
       }
       else
       {
@@ -568,35 +532,31 @@ void SortName()
   }
   else
   {
+    for (e = 0; e < evetor[ide].qt_prod; e++)
     {
-      for (e = 0; e < evetor[ide].qt_prod; e++)
-      {
-        ids[e] = evetor[ide].prod[e].identificador;
-        strcpy(arr[e], evetor[ide].prod[e].descricao);
-      }
+      ids[e] = evetor[ide].prod[e].identificador;
+      strcpy(arr[e], evetor[ide].prod[e].descricao);
+    }
 
-      AlphabeticalSort(arr, ids, ide);
-      printf("Encomenda %d\n", ide);
-      for (x = 0; x < evetor[ide].qt_prod; x++)
+    AlphabeticalSort(arr, ids, ide);
+    printf("Encomenda %d\n", ide);
+    for (x = 0; x < evetor[ide].qt_prod; x++)
+    {
+      for (l = 0; l < evetor[ide].qt_prod; l++)
       {
-        for (l = 0; l < evetor[ide].qt_prod; l++)
+        if ((evetor[ide].prod[l].identificador == ids[x]) && (evetor[ide].prod[l].quantidade > 0))
         {
-          if ((evetor[ide].prod[l].identificador == ids[x]) && (evetor[ide].prod[l].quantidade > 0))
-          {
-            {
-              printf("* %s %d %d\n", pvetor[ids[x]].descricao, pvetor[ids[x]].preco, evetor[ide].prod[l].quantidade);
-            }
-          }
-          else
-          {
-            
-          }
-
+          printf("* %s %d %d\n", pvetor[ids[x]].descricao, pvetor[ids[x]].preco, evetor[ide].prod[l].quantidade);
+        }
+        else
+        {
+          
         }
 
       }
 
     }
+
   }
 
 }
@@ -608,10 +568,8 @@ int main()
   {
     if (c == 'a')
     {
-      {
-        AddProduct();
-        cont_pgeral += 1;
-      }
+      AddProduct();
+      cont_pgeral += 1;
     }
     else
     {
@@ -623,10 +581,8 @@ int main()
       {
         if (c == 'N')
         {
-          {
-            NewOrder();
-            cont_egeral += 1;
-          }
+          NewOrder();
+          cont_egeral += 1;
         }
         else
         {

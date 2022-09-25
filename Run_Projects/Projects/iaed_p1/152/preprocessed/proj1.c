@@ -178,10 +178,8 @@ void ad_encomenda()
         }
         else
         {
-          {
-            encomenda[ide][idp].qtd += qtd;
-            stock[idp].qtd -= qtd;
-          }
+          encomenda[ide][idp].qtd += qtd;
+          stock[idp].qtd -= qtd;
         }
 
       }
@@ -235,10 +233,8 @@ void remove_encomenda()
     }
     else
     {
-      {
-        stock[idp].qtd += encomenda[ide][idp].qtd;
-        encomenda[ide][idp].qtd = 0;
-      }
+      stock[idp].qtd += encomenda[ide][idp].qtd;
+      encomenda[ide][idp].qtd = 0;
     }
 
   }
@@ -257,12 +253,10 @@ void custo()
   }
   else
   {
-    {
-      for (idp = 0; idp < ip; idp++)
-        custo += stock[idp].preco * encomenda[ide][idp].qtd;
+    for (idp = 0; idp < ip; idp++)
+      custo += stock[idp].preco * encomenda[ide][idp].qtd;
 
-      printf("Custo da encomenda %d %d.\n", ide, custo);
-    }
+    printf("Custo da encomenda %d %d.\n", ide, custo);
   }
 
 }
@@ -322,42 +316,38 @@ void max_produto()
   }
   else
   {
+    while (ide < ie)
     {
-      while (ide < ie)
+      if (encomenda[ide][idp].qtd > 0)
       {
-        if (encomenda[ide][idp].qtd > 0)
+        if (encomenda[ide][idp].qtd > encomenda[i_max][idp].qtd)
         {
-          {
-            if (encomenda[ide][idp].qtd > encomenda[i_max][idp].qtd)
-            {
-              i_max = ide;
-            }
-            else
-            {
-              
-            }
-
-            vazia = 0;
-          }
+          i_max = ide;
         }
         else
         {
           
         }
 
-        ide++;
-      }
-
-      if ((ide > 0) && (vazia == 0))
-      {
-        printf("Maximo produto %d %d %d.\n", idp, i_max, encomenda[i_max][idp].qtd);
+        vazia = 0;
       }
       else
       {
         
       }
 
+      ide++;
     }
+
+    if ((ide > 0) && (vazia == 0))
+    {
+      printf("Maximo produto %d %d %d.\n", idp, i_max, encomenda[i_max][idp].qtd);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -387,25 +377,21 @@ void lista_encomenda()
   }
   else
   {
+    printf("Encomenda %d\n", ide);
+    for (idp = 0; idp < ip; idp++)
+      if (encomenda[ide][idp].qtd > 0)
     {
-      printf("Encomenda %d\n", ide);
-      for (idp = 0; idp < ip; idp++)
-        if (encomenda[ide][idp].qtd > 0)
-      {
-        {
-          lista[k] = idp;
-          k++;
-        }
-      }
-      else
-      {
-        
-      }
-
-
-      mergesort(lista, 0, k - 1, 0);
-      imprime_lista(lista, k, encomenda[ide]);
+      lista[k] = idp;
+      k++;
     }
+    else
+    {
+      
+    }
+
+
+    mergesort(lista, 0, k - 1, 0);
+    imprime_lista(lista, k, encomenda[ide]);
   }
 
 }
@@ -456,18 +442,16 @@ int condicao(int criterio, int a, int b)
 {
   if (criterio == 1)
   {
+    if (stock[a].preco == stock[b].preco)
     {
-      if (stock[a].preco == stock[b].preco)
-      {
-        return a > b;
-      }
-      else
-      {
-        
-      }
-
-      return stock[a].preco > stock[b].preco;
+      return a > b;
     }
+    else
+    {
+      
+    }
+
+    return stock[a].preco > stock[b].preco;
   }
   else
   {

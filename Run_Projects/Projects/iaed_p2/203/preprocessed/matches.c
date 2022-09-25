@@ -33,18 +33,14 @@ Matches *add_match_to_list(Matches **head, char *m_name, char *m_team1, char *m_
   new_match->next = 0;
   if ((*head) == 0)
   {
-    {
-      *head = new_match;
-    }
+    *head = new_match;
   }
   else
   {
-    {
-      while (last->next != 0)
-        last = last->next;
+    while (last->next != 0)
+      last = last->next;
 
-      last->next = new_match;
-    }
+    last->next = new_match;
   }
 
   return *head;
@@ -57,9 +53,7 @@ bool match_exists(Matches **head, char *name)
   {
     if (strcmp(current->match_name, name) == 0)
     {
-      {
-        return 1;
-      }
+      return true;
     }
     else
     {
@@ -68,7 +62,7 @@ bool match_exists(Matches **head, char *name)
 
   }
 
-  return 0;
+  return false;
 }
 
 bool team_exists_match(Matches **head, char *name)
@@ -78,9 +72,7 @@ bool team_exists_match(Matches **head, char *name)
   {
     if (strcmp(current->match_name, name) == 0)
     {
-      {
-        return 1;
-      }
+      return true;
     }
     else
     {
@@ -89,7 +81,7 @@ bool team_exists_match(Matches **head, char *name)
 
   }
 
-  return 0;
+  return false;
 }
 
 Matches *delete_match_from_list(Matches **head, char *m_name)
@@ -101,23 +93,17 @@ Matches *delete_match_from_list(Matches **head, char *m_name)
   {
     if (strcmp(current->match_name, m_name) == 0)
     {
+      if (prev == 0)
       {
-        if (prev == 0)
-        {
-          {
-            *head = current->next;
-          }
-        }
-        else
-        {
-          {
-            prev->next = current->next;
-          }
-        }
-
-        free(current);
-        return *head;
+        *head = current->next;
       }
+      else
+      {
+        prev->next = current->next;
+      }
+
+      free(current);
+      return *head;
     }
     else
     {
@@ -136,9 +122,7 @@ void print_match_found(Matches **head, char *name)
   {
     if (strcmp(current->match_name, name) == 0)
     {
-      {
-        printf(" %s %s %s %d %d\n", current->match_name, current->team1, current->team2, current->score1, current->score2);
-      }
+      printf(" %s %s %s %d %d\n", current->match_name, current->team1, current->team2, current->score1, current->score2);
     }
     else
     {

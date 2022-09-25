@@ -66,28 +66,20 @@ int main()
         k = hash_key_p(r1, Hash_table_j);
         if (find_game(Hash_table_j[k], r1))
       {
+        if (find_team(Hash_table[i], r2) && find_team(Hash_table[j], r3))
         {
-          if (find_team(Hash_table[i], r2) && find_team(Hash_table[j], r3))
-          {
-            {
-              a(r1, r2, r3, l1, l2, l_jogos, Hash_table, i, j);
-              a__2(r1, r2, r3, l1, l2, Hash_table_j[k]);
-            }
-          }
-          else
-          {
-            {
-              printf("%d Equipa inexistente.\n", Contador);
-            }
-          }
-
+          a(r1, r2, r3, l1, l2, l_jogos, Hash_table, i, j);
+          a__2(r1, r2, r3, l1, l2, Hash_table_j[k]);
         }
+        else
+        {
+          printf("%d Equipa inexistente.\n", Contador);
+        }
+
       }
       else
       {
-        {
-          printf("%d Jogo existente.\n", Contador);
-        }
+        printf("%d Jogo existente.\n", Contador);
       }
 
         Contador++;
@@ -148,15 +140,11 @@ int main()
         i = hash_key_e(r1, Hash_table);
         if (find_team(Hash_table[i], r1) == 0)
       {
-        {
-          A(r1, Hash_table[i]);
-        }
+        A(r1, Hash_table[i]);
       }
       else
       {
-        {
-          printf("%d Equipa existente.\n", Contador);
-        }
+        printf("%d Equipa existente.\n", Contador);
       }
 
         Contador++;
@@ -172,15 +160,11 @@ int main()
         i = hash_key_e(r1, Hash_table);
         if (find_team(Hash_table[i], r1))
       {
-        {
-          P(l_jogos, r1, Contador);
-        }
+        P(l_jogos, r1, Contador);
       }
       else
       {
-        {
-          printf("%d Equipa inexistente.\n", Contador);
-        }
+        printf("%d Equipa inexistente.\n", Contador);
       }
 
         Contador++;

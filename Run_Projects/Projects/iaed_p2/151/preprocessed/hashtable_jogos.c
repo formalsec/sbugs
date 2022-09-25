@@ -47,19 +47,15 @@ void HashJogos_insere(item_hash_jg *hash_jogos, linkjg pno)
   new->pno = pno;
   if (hash_jogos[key] != 0)
   {
-    {
-      new->next = hash_jogos[key];
-      new->prev = 0;
-      hash_jogos[key]->prev = new;
-      hash_jogos[key] = new;
-    }
+    new->next = hash_jogos[key];
+    new->prev = 0;
+    hash_jogos[key]->prev = new;
+    hash_jogos[key] = new;
   }
   else
   {
-    {
-      hash_jogos[key] = new;
-      hash_jogos[key]->next = (hash_jogos[key]->prev = 0);
-    }
+    hash_jogos[key] = new;
+    hash_jogos[key]->next = (hash_jogos[key]->prev = 0);
   }
 
 }

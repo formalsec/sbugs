@@ -131,20 +131,18 @@ void add_prod_enc()
         }
         else
         {
+          int i = ind(idp, ide);
+          if (i == (-1))
           {
-            int i = ind(idp, ide);
-            if (i == (-1))
-            {
-              i = novo_prod_enc(idp, ide);
-            }
-            else
-            {
-              
-            }
-
-            encomendas[ide].produtos[i].qtd += qtd;
-            prods[idp].qtd -= qtd;
+            i = novo_prod_enc(idp, ide);
           }
+          else
+          {
+            
+          }
+
+          encomendas[ide].produtos[i].qtd += qtd;
+          prods[idp].qtd -= qtd;
         }
 
       }
@@ -198,21 +196,17 @@ void rm_prod_enc()
     }
     else
     {
+      int i = ind(idp, ide);
+      if (i != (-1))
       {
-        int i = ind(idp, ide);
-        if (i != (-1))
-        {
-          {
-            prods[idp].qtd += encomendas[ide].produtos[i].qtd;
-            encomendas[ide].produtos[i].qtd = 0;
-          }
-        }
-        else
-        {
-          
-        }
-
+        prods[idp].qtd += encomendas[ide].produtos[i].qtd;
+        encomendas[ide].produtos[i].qtd = 0;
       }
+      else
+      {
+        
+      }
+
     }
 
   }
@@ -229,14 +223,12 @@ void cost()
   }
   else
   {
-    {
-      int i;
-      int val = 0;
-      for (i = 0; i < encomendas[ide].numprods; i++)
-        val += encomendas[ide].produtos[i].qtd * encomendas[ide].produtos[i].preco;
+    int i;
+    int val = 0;
+    for (i = 0; i < encomendas[ide].numprods; i++)
+      val += encomendas[ide].produtos[i].qtd * encomendas[ide].produtos[i].preco;
 
-      printf("Custo da encomenda %d %d.\n", ide, val);
-    }
+    printf("Custo da encomenda %d %d.\n", ide, val);
   }
 
 }
@@ -273,10 +265,8 @@ void alt_preco()
   }
   else
   {
-    {
-      prods[idp].preco = preco;
-      update_preco(idp);
-    }
+    prods[idp].preco = preco;
+    update_preco(idp);
   }
 
 }
@@ -299,18 +289,16 @@ void prod_info()
     }
     else
     {
+      int i = ind(idp, ide);
+      if (i == (-1))
       {
-        int i = ind(idp, ide);
-        if (i == (-1))
-        {
-          printf("%s %d.\n", prods[idp].desc, 0);
-        }
-        else
-        {
-          printf("%s %d.\n", encomendas[ide].produtos[i].desc, encomendas[ide].produtos[i].qtd);
-        }
-
+        printf("%s %d.\n", prods[idp].desc, 0);
       }
+      else
+      {
+        printf("%s %d.\n", encomendas[ide].produtos[i].desc, encomendas[ide].produtos[i].qtd);
+      }
+
     }
 
   }
@@ -327,30 +315,16 @@ void max_prod()
   }
   else
   {
+    int i;
+    int ide = 0;
+    int high = 0;
+    for (i = 0; i < num_e; i++)
     {
-      int i;
-      int ide = 0;
-      int high = 0;
-      for (i = 0; i < num_e; i++)
+      int j = ind(idp, i);
+      if ((j >= 0) && (encomendas[i].produtos[j].qtd > high))
       {
-        int j = ind(idp, i);
-        if ((j >= 0) && (encomendas[i].produtos[j].qtd > high))
-        {
-          {
-            ide = i;
-            high = encomendas[i].produtos[j].qtd;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      if (high > 0)
-      {
-        printf("Maximo produto %d %d %d.\n", idp, ide, high);
+        ide = i;
+        high = encomendas[i].produtos[j].qtd;
       }
       else
       {
@@ -358,6 +332,16 @@ void max_prod()
       }
 
     }
+
+    if (high > 0)
+    {
+      printf("Maximo produto %d %d %d.\n", idp, ide, high);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -482,24 +466,22 @@ void sort_name()
   }
   else
   {
+    cpyprods(a, encomendas[ide].produtos, r);
+    mergesort_n(l, r);
+    printf("Encomenda %d\n", ide);
+    for (l = 0; l <= r; l++)
     {
-      cpyprods(a, encomendas[ide].produtos, r);
-      mergesort_n(l, r);
-      printf("Encomenda %d\n", ide);
-      for (l = 0; l <= r; l++)
+      if (a[l].qtd > 0)
       {
-        if (a[l].qtd > 0)
-        {
-          printf("* %s %d %d\n", a[l].desc, a[l].preco, a[l].qtd);
-        }
-        else
-        {
-          
-        }
-
+        printf("* %s %d %d\n", a[l].desc, a[l].preco, a[l].qtd);
+      }
+      else
+      {
+        
       }
 
     }
+
   }
 
 }

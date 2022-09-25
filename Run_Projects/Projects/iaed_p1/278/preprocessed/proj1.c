@@ -51,18 +51,14 @@ int SepararDados(char LINHA[], char ARMAZEM_DADOS[][63])
   {
     if (LINHA[p] == ':')
     {
-      {
-        ARMAZEM_DADOS[a][b] = '\0';
-        b = 0;
-        a++;
-      }
+      ARMAZEM_DADOS[a][b] = '\0';
+      b = 0;
+      a++;
     }
     else
     {
-      {
-        ARMAZEM_DADOS[a][b] = LINHA[p];
-        b++;
-      }
+      ARMAZEM_DADOS[a][b] = LINHA[p];
+      b++;
     }
 
     p++;
@@ -120,9 +116,7 @@ void merge_l(int tabelaF[], int baixo, int cima, int mid)
     {
       if ((STOCK_LOJA[tabela_aux[j]].preco == STOCK_LOJA[tabela_aux[i]].preco) && (STOCK_LOJA[tabela_aux[j]].identificacao_produto < STOCK_LOJA[tabela_aux[i]].identificacao_produto))
       {
-        {
-          tabelaF[k] = tabela_aux[j--];
-        }
+        tabelaF[k] = tabela_aux[j--];
       }
       else
       {
@@ -140,9 +134,7 @@ void merge_sort(int baixo, int cima, int tabelaF[], int string, int encomenda)
   int mid = (cima + baixo) / 2;
   if (cima <= baixo)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -179,9 +171,7 @@ void adiciona_produto()
     }
     else
     {
-      {
-        break;
-      }
+      break;
     }
 
   }
@@ -203,15 +193,11 @@ void adiciona_stock()
   SepararDados(LINHA, ARMAZEM_DADOS);
   if (STOCK_LOJA[atoi(ARMAZEM_DADOS[0])].identificacao_produto != (-1))
   {
-    {
-      STOCK_LOJA[atoi(ARMAZEM_DADOS[0])].qtd += atoi(ARMAZEM_DADOS[1]);
-    }
+    STOCK_LOJA[atoi(ARMAZEM_DADOS[0])].qtd += atoi(ARMAZEM_DADOS[1]);
   }
   else
   {
-    {
-      printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", atoi(ARMAZEM_DADOS[0]));
-    }
+    printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", atoi(ARMAZEM_DADOS[0]));
   }
 
 }
@@ -249,97 +235,75 @@ void adiciona_encomenda()
   permissao = 1;
   if (ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].identificacao_encomenda != (-1))
   {
+    if (STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].identificacao_produto != (-1))
     {
-      if (STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].identificacao_produto != (-1))
+      if (STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].qtd >= atoi(ARMAZEM_DADOS[2]))
       {
+        ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].peso_encomenda += atoi(ARMAZEM_DADOS[2]) * STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].peso;
+        if (ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].peso_encomenda > 200)
         {
-          if (STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].qtd >= atoi(ARMAZEM_DADOS[2]))
+          ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].peso_encomenda -= atoi(ARMAZEM_DADOS[2]) * STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].peso;
+          printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", atoi(ARMAZEM_DADOS[1]), atoi(ARMAZEM_DADOS[0]));
+        }
+        else
+        {
+          STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].qtd -= atoi(ARMAZEM_DADOS[2]);
+          for (i = 0; i < 200; ++i)
           {
+            if (ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][0] == atoi(ARMAZEM_DADOS[1]))
             {
-              ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].peso_encomenda += atoi(ARMAZEM_DADOS[2]) * STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].peso;
-              if (ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].peso_encomenda > 200)
+              ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][1] += atoi(ARMAZEM_DADOS[2]);
+              i = 200;
+              permissao = 0;
+            }
+            else
+            {
+              
+            }
+
+          }
+
+          if (permissao)
+          {
+            for (i = 0; i < 200; ++i)
+            {
+              if (ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][0] == (-1))
               {
-                {
-                  ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].peso_encomenda -= atoi(ARMAZEM_DADOS[2]) * STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].peso;
-                  printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", atoi(ARMAZEM_DADOS[1]), atoi(ARMAZEM_DADOS[0]));
-                }
+                ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][0] = atoi(ARMAZEM_DADOS[1]);
+                ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][1] = atoi(ARMAZEM_DADOS[2]);
+                break;
               }
               else
               {
-                {
-                  STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].qtd -= atoi(ARMAZEM_DADOS[2]);
-                  for (i = 0; i < 200; ++i)
-                  {
-                    if (ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][0] == atoi(ARMAZEM_DADOS[1]))
-                    {
-                      {
-                        ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][1] += atoi(ARMAZEM_DADOS[2]);
-                        i = 200;
-                        permissao = 0;
-                      }
-                    }
-                    else
-                    {
-                      
-                    }
-
-                  }
-
-                  if (permissao)
-                  {
-                    {
-                      for (i = 0; i < 200; ++i)
-                      {
-                        if (ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][0] == (-1))
-                        {
-                          {
-                            ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][0] = atoi(ARMAZEM_DADOS[1]);
-                            ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][1] = atoi(ARMAZEM_DADOS[2]);
-                            break;
-                          }
-                        }
-                        else
-                        {
-                          
-                        }
-
-                      }
-
-                    }
-                  }
-                  else
-                  {
-                    
-                  }
-
-                }
+                
               }
 
             }
+
           }
           else
           {
-            {
-              printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", atoi(ARMAZEM_DADOS[1]), atoi(ARMAZEM_DADOS[0]));
-            }
+            
           }
 
         }
+
       }
       else
       {
-        {
-          printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", atoi(ARMAZEM_DADOS[1]), atoi(ARMAZEM_DADOS[0]));
-        }
+        printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", atoi(ARMAZEM_DADOS[1]), atoi(ARMAZEM_DADOS[0]));
       }
 
     }
+    else
+    {
+      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", atoi(ARMAZEM_DADOS[1]), atoi(ARMAZEM_DADOS[0]));
+    }
+
   }
   else
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", atoi(ARMAZEM_DADOS[1]), atoi(ARMAZEM_DADOS[0]));
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", atoi(ARMAZEM_DADOS[1]), atoi(ARMAZEM_DADOS[0]));
   }
 
 }
@@ -353,27 +317,19 @@ void remove_stock()
   SepararDados(LINHA, ARMAZEM_DADOS);
   if (STOCK_LOJA[atoi(ARMAZEM_DADOS[0])].identificacao_produto != (-1))
   {
+    if ((STOCK_LOJA[atoi(ARMAZEM_DADOS[0])].qtd - atoi(ARMAZEM_DADOS[1])) >= 0)
     {
-      if ((STOCK_LOJA[atoi(ARMAZEM_DADOS[0])].qtd - atoi(ARMAZEM_DADOS[1])) >= 0)
-      {
-        {
-          STOCK_LOJA[atoi(ARMAZEM_DADOS[0])].qtd -= atoi(ARMAZEM_DADOS[1]);
-        }
-      }
-      else
-      {
-        {
-          printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", atoi(ARMAZEM_DADOS[1]), atoi(ARMAZEM_DADOS[0]));
-        }
-      }
-
+      STOCK_LOJA[atoi(ARMAZEM_DADOS[0])].qtd -= atoi(ARMAZEM_DADOS[1]);
     }
+    else
+    {
+      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", atoi(ARMAZEM_DADOS[1]), atoi(ARMAZEM_DADOS[0]));
+    }
+
   }
   else
   {
-    {
-      printf("Impossivel remover stock do produto %d. Produto inexistente.\n", atoi(ARMAZEM_DADOS[0]));
-    }
+    printf("Impossivel remover stock do produto %d. Produto inexistente.\n", atoi(ARMAZEM_DADOS[0]));
   }
 
 }
@@ -388,44 +344,34 @@ void remove_produto_encomenda()
   SepararDados(LINHA, ARMAZEM_DADOS);
   if (ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].identificacao_encomenda != (-1))
   {
+    if (STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].identificacao_produto != (-1))
     {
-      if (STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].identificacao_produto != (-1))
+      for (i = 0; i < 200; i++)
       {
+        if (ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][0] == atoi(ARMAZEM_DADOS[1]))
         {
-          for (i = 0; i < 200; i++)
-          {
-            if (ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][0] == atoi(ARMAZEM_DADOS[1]))
-            {
-              {
-                ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].peso_encomenda -= STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].peso * ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][1];
-                STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].qtd += ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][1];
-                ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][1] = 0;
-                break;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
+          ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].peso_encomenda -= STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].peso * ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][1];
+          STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].qtd += ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][1];
+          ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][1] = 0;
+          break;
         }
-      }
-      else
-      {
+        else
         {
-          printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", atoi(ARMAZEM_DADOS[1]), atoi(ARMAZEM_DADOS[0]));
+          
         }
+
       }
 
     }
+    else
+    {
+      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", atoi(ARMAZEM_DADOS[1]), atoi(ARMAZEM_DADOS[0]));
+    }
+
   }
   else
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", atoi(ARMAZEM_DADOS[1]), atoi(ARMAZEM_DADOS[0]));
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", atoi(ARMAZEM_DADOS[1]), atoi(ARMAZEM_DADOS[0]));
   }
 
 }
@@ -441,30 +387,24 @@ void calcula_custa_encomenda()
   SepararDados(LINHA, ARMAZEM_DADOS);
   if (ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].identificacao_encomenda == atoi(ARMAZEM_DADOS[0]))
   {
+    for (i = 0; i < 200; i++)
     {
-      for (i = 0; i < 200; i++)
+      if (ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][0] != (-1))
       {
-        if (ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][0] != (-1))
-        {
-          {
-            preco += STOCK_LOJA[ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][0]].preco * ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][1];
-          }
-        }
-        else
-        {
-          
-        }
-
+        preco += STOCK_LOJA[ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][0]].preco * ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][1];
+      }
+      else
+      {
+        
       }
 
-      printf("Custo da encomenda %d %d.\n", atoi(ARMAZEM_DADOS[0]), preco);
     }
+
+    printf("Custo da encomenda %d %d.\n", atoi(ARMAZEM_DADOS[0]), preco);
   }
   else
   {
-    {
-      printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", atoi(ARMAZEM_DADOS[0]));
-    }
+    printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", atoi(ARMAZEM_DADOS[0]));
   }
 
 }
@@ -478,15 +418,11 @@ void altera_preco()
   SepararDados(LINHA, ARMAZEM_DADOS);
   if (STOCK_LOJA[atoi(ARMAZEM_DADOS[0])].identificacao_produto != (-1))
   {
-    {
-      STOCK_LOJA[atoi(ARMAZEM_DADOS[0])].preco = atoi(ARMAZEM_DADOS[1]);
-    }
+    STOCK_LOJA[atoi(ARMAZEM_DADOS[0])].preco = atoi(ARMAZEM_DADOS[1]);
   }
   else
   {
-    {
-      printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", atoi(ARMAZEM_DADOS[0]));
-    }
+    printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", atoi(ARMAZEM_DADOS[0]));
   }
 
 }
@@ -502,51 +438,41 @@ void lista_descricao_qtd()
   SepararDados(LINHA, ARMAZEM_DADOS);
   if (ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].identificacao_encomenda != (-1))
   {
+    if (STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].identificacao_produto != (-1))
     {
-      if (STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].identificacao_produto != (-1))
+      for (i = 0; i < 200; i++)
       {
+        if (ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][0] == atoi(ARMAZEM_DADOS[1]))
         {
-          for (i = 0; i < 200; i++)
-          {
-            if (ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][0] == atoi(ARMAZEM_DADOS[1]))
-            {
-              {
-                ativo = 1;
-                break;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-          if (ativo)
-          {
-            printf("%s %d.\n", STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].NOME_PRODUTO, ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][1]);
-          }
-          else
-          {
-            printf("%s %d.\n", STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].NOME_PRODUTO, 0);
-          }
-
+          ativo = 1;
+          break;
         }
+        else
+        {
+          
+        }
+
+      }
+
+      if (ativo)
+      {
+        printf("%s %d.\n", STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].NOME_PRODUTO, ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][1]);
       }
       else
       {
-        {
-          printf("Impossivel listar produto %d. Produto inexistente.\n", atoi(ARMAZEM_DADOS[1]));
-        }
+        printf("%s %d.\n", STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].NOME_PRODUTO, 0);
       }
 
     }
+    else
+    {
+      printf("Impossivel listar produto %d. Produto inexistente.\n", atoi(ARMAZEM_DADOS[1]));
+    }
+
   }
   else
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", atoi(ARMAZEM_DADOS[0]));
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", atoi(ARMAZEM_DADOS[0]));
   }
 
 }
@@ -565,27 +491,16 @@ void maior_qtd_encomenda()
   SepararDados(LINHA, ARMAZEM_DADOS);
   if (STOCK_LOJA[atoi(ARMAZEM_DADOS[0])].identificacao_produto != (-1))
   {
+    for (i = 0; i < 500; i++)
     {
-      for (i = 0; i < 500; i++)
+      for (p = 0; p < 200; p++)
       {
-        for (p = 0; p < 200; p++)
+        if ((ENCOMENDAS[i].info_encomenda[p][0] != (-1)) && (ENCOMENDAS[i].info_encomenda[p][0] == atoi(ARMAZEM_DADOS[0])))
         {
-          if ((ENCOMENDAS[i].info_encomenda[p][0] != (-1)) && (ENCOMENDAS[i].info_encomenda[p][0] == atoi(ARMAZEM_DADOS[0])))
+          if (ENCOMENDAS[i].info_encomenda[p][1] > contagem)
           {
-            {
-              if (ENCOMENDAS[i].info_encomenda[p][1] > contagem)
-              {
-                {
-                  contagem = ENCOMENDAS[i].info_encomenda[p][1];
-                  guarda_encomenda = i;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
+            contagem = ENCOMENDAS[i].info_encomenda[p][1];
+            guarda_encomenda = i;
           }
           else
           {
@@ -593,34 +508,37 @@ void maior_qtd_encomenda()
           }
 
         }
+        else
+        {
+          
+        }
 
-      }
-
-      if ((ENCOMENDAS[0].identificacao_encomenda == (-1)) || (contagem == 0))
-      {
-        autorizacao = 0;
-      }
-      else
-      {
-        
-      }
-
-      if (autorizacao)
-      {
-        printf("Maximo produto %d %d %d.\n", atoi(ARMAZEM_DADOS[0]), guarda_encomenda, contagem);
-      }
-      else
-      {
-        
       }
 
     }
+
+    if ((ENCOMENDAS[0].identificacao_encomenda == (-1)) || (contagem == 0))
+    {
+      autorizacao = 0;
+    }
+    else
+    {
+      
+    }
+
+    if (autorizacao)
+    {
+      printf("Maximo produto %d %d %d.\n", atoi(ARMAZEM_DADOS[0]), guarda_encomenda, contagem);
+    }
+    else
+    {
+      
+    }
+
   }
   else
   {
-    {
-      printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", atoi(ARMAZEM_DADOS[0]));
-    }
+    printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", atoi(ARMAZEM_DADOS[0]));
   }
 
 }
@@ -636,9 +554,7 @@ void produtos_ordenados_preco()
   {
     if (STOCK_LOJA[i].identificacao_produto != (-1))
     {
-      {
-        conta++;
-      }
+      conta++;
     }
     else
     {
@@ -674,38 +590,34 @@ void lista_produtos_encomenda()
   encomenda = atoi(LINHA);
   if (ENCOMENDAS[atoi(LINHA)].identificacao_encomenda != (-1))
   {
+    for (i = 0; i < 200; ++i)
     {
-      for (i = 0; i < 200; ++i)
+      if (ENCOMENDAS[atoi(LINHA)].info_encomenda[i][0] != (-1))
       {
-        if (ENCOMENDAS[atoi(LINHA)].info_encomenda[i][0] != (-1))
-        {
-          {
-            tabelaF[cima] = i;
-            cima++;
-            conta++;
-          }
-        }
-        else
-        {
-          break;
-        }
-
-      }
-
-      merge_sort(baixo, cima - 1, tabelaF, 1, encomenda);
-      printf("Encomenda %d\n", encomenda);
-      for (i = 0; i < conta; i++)
-        if (ENCOMENDAS[encomenda].info_encomenda[tabelaF[i]][1] > 0)
-      {
-        printf("* %s %d %d\n", STOCK_LOJA[ENCOMENDAS[encomenda].info_encomenda[tabelaF[i]][0]].NOME_PRODUTO, STOCK_LOJA[ENCOMENDAS[encomenda].info_encomenda[tabelaF[i]][0]].preco, ENCOMENDAS[encomenda].info_encomenda[tabelaF[i]][1]);
+        tabelaF[cima] = i;
+        cima++;
+        conta++;
       }
       else
       {
-        
+        break;
       }
 
-
     }
+
+    merge_sort(baixo, cima - 1, tabelaF, 1, encomenda);
+    printf("Encomenda %d\n", encomenda);
+    for (i = 0; i < conta; i++)
+      if (ENCOMENDAS[encomenda].info_encomenda[tabelaF[i]][1] > 0)
+    {
+      printf("* %s %d %d\n", STOCK_LOJA[ENCOMENDAS[encomenda].info_encomenda[tabelaF[i]][0]].NOME_PRODUTO, STOCK_LOJA[ENCOMENDAS[encomenda].info_encomenda[tabelaF[i]][0]].preco, ENCOMENDAS[encomenda].info_encomenda[tabelaF[i]][1]);
+    }
+    else
+    {
+      
+    }
+
+
   }
   else
   {

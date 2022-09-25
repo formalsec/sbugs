@@ -141,15 +141,11 @@ void __a__()
   sys[npr].qtd = new_sym_var(sizeof(int) * 8);
   if (npr >= 10000)
   {
-    {
-      memset(&sys[npr], 0, sizeof(System));
-    }
+    memset(&sys[npr], 0, sizeof(System));
   }
   else
   {
-    {
-      printf("Novo produto %d.\n", npr++);
-    }
+    printf("Novo produto %d.\n", npr++);
   }
 
 }
@@ -162,15 +158,11 @@ void __q__()
   qtd = new_sym_var(sizeof(int) * 8);
   if (idp < npr)
   {
-    {
-      sys[idp].qtd += qtd;
-    }
+    sys[idp].qtd += qtd;
   }
   else
   {
-    {
-      printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idp);
-    }
+    printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idp);
   }
 
 }
@@ -179,9 +171,7 @@ void __N__()
 {
   if (nenc < 500)
   {
-    {
-      printf("Nova encomenda %d.\n", nenc++);
-    }
+    printf("Nova encomenda %d.\n", nenc++);
   }
   else
   {
@@ -202,10 +192,8 @@ void __A__()
   qtd = new_sym_var(sizeof(int) * 8);
   if (ide >= nenc)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
+    return;
   }
   else
   {
@@ -214,10 +202,8 @@ void __A__()
 
   if (idp >= npr)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
+    return;
   }
   else
   {
@@ -226,10 +212,8 @@ void __A__()
 
   if (sys[idp].qtd < qtd)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
+    return;
   }
   else
   {
@@ -243,10 +227,8 @@ void __A__()
 
   if ((weighttotal + (sys[idp].weight * qtd)) > 200)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
+    return;
   }
   else
   {
@@ -265,23 +247,17 @@ void __r__()
   qtd = new_sym_var(sizeof(int) * 8);
   if (idp >= npr)
   {
-    {
-      printf("Impossivel remover stock do produto %d. Produto inexistente.\n", idp);
-    }
+    printf("Impossivel remover stock do produto %d. Produto inexistente.\n", idp);
   }
   else
   {
     if (sys[idp].qtd < qtd)
     {
-      {
-        printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, idp);
-      }
+      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, idp);
     }
     else
     {
-      {
-        sys[idp].qtd -= qtd;
-      }
+      sys[idp].qtd -= qtd;
     }
 
   }
@@ -296,10 +272,8 @@ void __R__()
   idp = new_sym_var(sizeof(int) * 8);
   if (ide >= nenc)
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
-      return;
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
+    return;
   }
   else
   {
@@ -308,10 +282,8 @@ void __R__()
 
   if (idp >= npr)
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
-      return;
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
+    return;
   }
   else
   {
@@ -330,10 +302,8 @@ void __C__()
   ide = new_sym_var(sizeof(int) * 8);
   if (ide >= nenc)
   {
-    {
-      printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ide);
-      return;
-    }
+    printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ide);
+    return;
   }
   else
   {
@@ -356,15 +326,11 @@ void __p__()
   price = new_sym_var(sizeof(int) * 8);
   if (idp >= npr)
   {
-    {
-      printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idp);
-    }
+    printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idp);
   }
   else
   {
-    {
-      sys[idp].price = price;
-    }
+    sys[idp].price = price;
   }
 
 }
@@ -377,10 +343,8 @@ void __E__()
   idp = new_sym_var(sizeof(int) * 8);
   if (npr <= idp)
   {
-    {
-      printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
-      return;
-    }
+    printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
+    return;
   }
   else
   {
@@ -389,10 +353,8 @@ void __E__()
 
   if (nenc <= ide)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
-      return;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
+    return;
   }
   else
   {
@@ -412,10 +374,8 @@ void __m__()
   idp = new_sym_var(sizeof(int) * 8);
   if (npr <= idp)
   {
-    {
-      printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idp);
-      return;
-    }
+    printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idp);
+    return;
   }
   else
   {
@@ -426,11 +386,9 @@ void __m__()
   {
     if (sys[idp].enc[i] > qtdmax)
     {
-      {
-        qtdmax = sys[idp].enc[i];
-        encmax = i;
-        flag = 1;
-      }
+      qtdmax = sys[idp].enc[i];
+      encmax = i;
+      flag = 1;
     }
     else
     {
@@ -441,9 +399,7 @@ void __m__()
 
   if (flag)
   {
-    {
-      printf("Maximo produto %d %d %d.\n", idp, encmax, qtdmax);
-    }
+    printf("Maximo produto %d %d %d.\n", idp, encmax, qtdmax);
   }
   else
   {
@@ -487,10 +443,8 @@ void __L__()
   ide = new_sym_var(sizeof(int) * 8);
   if (nenc <= ide)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
-      return;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
+    return;
   }
   else
   {
@@ -503,11 +457,9 @@ void __L__()
   {
     if (sys[l].enc[ide] != 0)
     {
-      {
-        strcpy(lp[num].desc, sys[l].desc);
-        lp[num].price = sys[l].price;
-        lp[num++].qtd = sys[l].enc[ide];
-      }
+      strcpy(lp[num].desc, sys[l].desc);
+      lp[num].price = sys[l].price;
+      lp[num++].qtd = sys[l].enc[ide];
     }
     else
     {

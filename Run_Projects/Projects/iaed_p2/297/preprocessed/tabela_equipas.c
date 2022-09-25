@@ -69,10 +69,8 @@ equipas *expand_e(equipas *tb_e)
   for (i = 0; i < (tb_e->capacidade / 2); i++)
     if (old->tb[i])
   {
-    {
-      tb_e = insere_e(old->tb[i]->vitorias, old->tb[i]->flag, tb_e);
-      free_equipa(old->tb[i]);
-    }
+    tb_e = insere_e(old->tb[i]->vitorias, old->tb[i]->flag, tb_e);
+    free_equipa(old->tb[i]);
   }
   else
   {
@@ -181,26 +179,24 @@ char **encontra_melhores(size_t n_strings, size_t max, equipas *tb_e)
   {
     if (tb_e->tb[i])
     {
+      if (tb_e->tb[i]->vitorias == max)
       {
-        if (tb_e->tb[i]->vitorias == max)
-        {
-          melhores[j++] = make_str(tb_e->tb[i]->flag);
-        }
-        else
-        {
-          
-        }
-
-        if (j == n_strings)
-        {
-          break;
-        }
-        else
-        {
-          
-        }
-
+        melhores[j++] = make_str(tb_e->tb[i]->flag);
       }
+      else
+      {
+        
+      }
+
+      if (j == n_strings)
+      {
+        break;
+      }
+      else
+      {
+        
+      }
+
     }
     else
     {

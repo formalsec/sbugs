@@ -217,45 +217,35 @@ void a(int NL, HashTable *hashtable, HashTable2 *hash_eq, list2 *ls)
   name->score2 = score2;
   if (ht_get(hashtable, key) != 1)
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-    }
+    printf("%d Jogo existente.\n", NL);
   }
   else
   {
     if ((check_eq(hash_eq, eq1) == 1) || (check_eq(hash_eq, eq2) == 1))
     {
-      {
-        printf("%d Equipa inexistente.\n", NL);
-      }
+      printf("%d Equipa inexistente.\n", NL);
     }
     else
     {
+      if (score1 > score2)
       {
-        if (score1 > score2)
+        vit_handler(hash_eq, eq1);
+      }
+      else
+      {
+        if (score1 < score2)
         {
-          {
-            vit_handler(hash_eq, eq1);
-          }
+          vit_handler(hash_eq, eq2);
         }
         else
         {
-          if (score1 < score2)
-          {
-            {
-              vit_handler(hash_eq, eq2);
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
-        ht_insert(hashtable, name);
-        add_list2(ls, name);
       }
+
+      ht_insert(hashtable, name);
+      add_list2(ls, name);
     }
 
   }
@@ -267,11 +257,9 @@ void l(int NL, list2 *ls)
   List *n;
   if (ls->head != 0)
   {
-    {
-      for (n = ls->head; n; n = n->next)
-        printf("%d %s %s %s %d %d\n", NL, n->key, n->eq1, n->eq2, n->score1, n->score2);
+    for (n = ls->head; n; n = n->next)
+      printf("%d %s %s %s %d %d\n", NL, n->key, n->eq1, n->eq2, n->score1, n->score2);
 
-    }
   }
   else
   {
@@ -295,26 +283,22 @@ void p(int NL, HashTable *hashtable)
   i = hash(nome, hashtable->size);
   if (ht_get(hashtable, nome) == 1)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
   else
   {
+    for (jogo = hashtable->array[i]; jogo != 0; jogo = jogo->next)
+      if (strcmp(jogo->key, nome) == 0)
     {
-      for (jogo = hashtable->array[i]; jogo != 0; jogo = jogo->next)
-        if (strcmp(jogo->key, nome) == 0)
-      {
-        break;
-      }
-      else
-      {
-        
-      }
-
-
-      printf("%d %s %s %s %d %d\n", NL, jogo->key, jogo->eq1, jogo->eq2, jogo->score1, jogo->score2);
+      break;
     }
+    else
+    {
+      
+    }
+
+
+    printf("%d %s %s %s %d %d\n", NL, jogo->key, jogo->eq1, jogo->eq2, jogo->score1, jogo->score2);
   }
 
 }
@@ -339,77 +323,75 @@ void r(int NL, HashTable *hashtable, list2 *ls, HashTable2 *ht_eq)
   }
   else
   {
+    for (tmp = ls->head; tmp != 0; tmp = tmp->next)
+      if (strcmp(tmp->key, nome) == 0)
     {
-      for (tmp = ls->head; tmp != 0; tmp = tmp->next)
-        if (strcmp(tmp->key, nome) == 0)
-      {
-        break;
-      }
-      else
-      {
-        
-      }
-
-
-      if (tmp->previous == 0)
-      {
-        ls->head = tmp->next;
-      }
-      else
-      {
-        tmp->previous->next = tmp->next;
-      }
-
-      if (tmp->next == 0)
-      {
-        ls->last = tmp->previous;
-      }
-      else
-      {
-        tmp->next->previous = tmp->previous;
-      }
-
-      free_node(tmp);
-      for (a = hashtable->array[i]; a != 0; a = a->next)
-        if (strcmp(a->key, nome) == 0)
-      {
-        break;
-      }
-      else
-      {
-        
-      }
-
-
-      if (a->score1 > a->score2)
-      {
-        vit_handler_aux(ht_eq, a->eq1);
-      }
-      else
-      {
-        
-      }
-
-      if (a->score1 < a->score2)
-      {
-        vit_handler_aux(ht_eq, a->eq2);
-      }
-      else
-      {
-        
-      }
-
-      if (a == hashtable->array[i])
-      {
-        hashtable->array[i] = a->next;
-      }
-      else
-      {
-        a->previous->next = a->next;
-      }
-
-      free_node(a);
+      break;
     }
+    else
+    {
+      
+    }
+
+
+    if (tmp->previous == 0)
+    {
+      ls->head = tmp->next;
+    }
+    else
+    {
+      tmp->previous->next = tmp->next;
+    }
+
+    if (tmp->next == 0)
+    {
+      ls->last = tmp->previous;
+    }
+    else
+    {
+      tmp->next->previous = tmp->previous;
+    }
+
+    free_node(tmp);
+    for (a = hashtable->array[i]; a != 0; a = a->next)
+      if (strcmp(a->key, nome) == 0)
+    {
+      break;
+    }
+    else
+    {
+      
+    }
+
+
+    if (a->score1 > a->score2)
+    {
+      vit_handler_aux(ht_eq, a->eq1);
+    }
+    else
+    {
+      
+    }
+
+    if (a->score1 < a->score2)
+    {
+      vit_handler_aux(ht_eq, a->eq2);
+    }
+    else
+    {
+      
+    }
+
+    if (a == hashtable->array[i])
+    {
+      hashtable->array[i] = a->next;
+    }
+    else
+    {
+      a->previous->next = a->next;
+    }
+
+    free_node(a);
   }
 
 }
@@ -431,89 +413,45 @@ void s(int NL, HashTable *hashtable, HashTable2 *hash_eq, list2 *ls)
   score2 = new_sym_var(sizeof(int) * 8);
   if (ht_get(hashtable, nome) == 1)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
   else
   {
+    tmp = ht_lookup(hashtable, nome);
+    if (tmp->score1 == tmp->score2)
     {
-      tmp = ht_lookup(hashtable, nome);
-      if (tmp->score1 == tmp->score2)
+      if (score1 > score2)
       {
-        {
-          if (score1 > score2)
-          {
-            vit_handler(hash_eq, tmp->eq1);
-          }
-          else
-          {
-            if (score1 < score2)
-            {
-              vit_handler(hash_eq, tmp->eq2);
-            }
-            else
-            {
-              
-            }
-
-          }
-
-        }
+        vit_handler(hash_eq, tmp->eq1);
       }
       else
       {
-        if (tmp->score1 > tmp->score2)
+        if (score1 < score2)
         {
-          {
-            if (score1 < score2)
-            {
-              {
-                vit_handler(hash_eq, tmp->eq2);
-                vit_handler_aux(hash_eq, tmp->eq1);
-              }
-            }
-            else
-            {
-              if (score1 == score2)
-              {
-                vit_handler_aux(hash_eq, tmp->eq1);
-              }
-              else
-              {
-                
-              }
-
-            }
-
-          }
+          vit_handler(hash_eq, tmp->eq2);
         }
         else
         {
-          if (tmp->score1 < tmp->score2)
+          
+        }
+
+      }
+
+    }
+    else
+    {
+      if (tmp->score1 > tmp->score2)
+      {
+        if (score1 < score2)
+        {
+          vit_handler(hash_eq, tmp->eq2);
+          vit_handler_aux(hash_eq, tmp->eq1);
+        }
+        else
+        {
+          if (score1 == score2)
           {
-            {
-              if (score1 > score2)
-              {
-                {
-                  vit_handler(hash_eq, tmp->eq1);
-                  vit_handler_aux(hash_eq, tmp->eq2);
-                }
-              }
-              else
-              {
-                if (score1 == score2)
-                {
-                  vit_handler_aux(hash_eq, tmp->eq2);
-                }
-                else
-                {
-                  
-                }
-
-              }
-
-            }
+            vit_handler_aux(hash_eq, tmp->eq1);
           }
           else
           {
@@ -523,10 +461,40 @@ void s(int NL, HashTable *hashtable, HashTable2 *hash_eq, list2 *ls)
         }
 
       }
+      else
+      {
+        if (tmp->score1 < tmp->score2)
+        {
+          if (score1 > score2)
+          {
+            vit_handler(hash_eq, tmp->eq1);
+            vit_handler_aux(hash_eq, tmp->eq2);
+          }
+          else
+          {
+            if (score1 == score2)
+            {
+              vit_handler_aux(hash_eq, tmp->eq2);
+            }
+            else
+            {
+              
+            }
 
-      score_handler(hashtable, nome, score1, score2);
-      list2_handler(ls, nome, score1, score2);
+          }
+
+        }
+        else
+        {
+          
+        }
+
+      }
+
     }
+
+    score_handler(hashtable, nome, score1, score2);
+    list2_handler(ls, nome, score1, score2);
   }
 
 }

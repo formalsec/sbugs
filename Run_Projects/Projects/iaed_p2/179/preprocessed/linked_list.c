@@ -20,19 +20,17 @@ nodeGame popGame(nodeGame head, char *game_name)
   {
     if (strcmp(aux->ptr->name, game_name) == 0)
     {
+      if (aux == head)
       {
-        if (aux == head)
-        {
-          head = aux->next;
-        }
-        else
-        {
-          prev->next = aux->next;
-        }
-
-        free(aux);
-        break;
+        head = aux->next;
       }
+      else
+      {
+        prev->next = aux->next;
+      }
+
+      free(aux);
+      break;
     }
     else
     {

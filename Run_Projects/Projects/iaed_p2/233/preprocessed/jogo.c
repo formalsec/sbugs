@@ -42,129 +42,109 @@ int a()
   aux2 = procuraEquipa(equipa2);
   if (head == 0)
   {
+    if ((aux1 == (-1)) || (aux2 == (-1)))
     {
-      if ((aux1 == (-1)) || (aux2 == (-1)))
-      {
-        {
-          printf("%d Equipa inexistente.\n", NL);
-          return 0;
-        }
-      }
-      else
-      {
-        
-      }
-
-      head = malloc(sizeof(jogo));
-      head->nome = malloc((sizeof(char)) * (strlen(nome) + 1));
-      strcpy(head->nome, nome);
-      head->equipa1 = hash_e[aux1];
-      head->equipa2 = hash_e[aux2];
-      head->score1 = score1;
-      head->score2 = score2;
-      head->next = 0;
-      head->ant = 0;
-      if (score1 > score2)
-      {
-        {
-          hash_e[aux1]->ganhos++;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (score2 > score1)
-      {
-        {
-          hash_e[aux2]->ganhos++;
-        }
-      }
-      else
-      {
-        
-      }
-
+      printf("%d Equipa inexistente.\n", NL);
+      return 0;
     }
+    else
+    {
+      
+    }
+
+    head = malloc(sizeof(jogo));
+    head->nome = malloc((sizeof(char)) * (strlen(nome) + 1));
+    strcpy(head->nome, nome);
+    head->equipa1 = hash_e[aux1];
+    head->equipa2 = hash_e[aux2];
+    head->score1 = score1;
+    head->score2 = score2;
+    head->next = 0;
+    head->ant = 0;
+    if (score1 > score2)
+    {
+      hash_e[aux1]->ganhos++;
+    }
+    else
+    {
+      
+    }
+
+    if (score2 > score1)
+    {
+      hash_e[aux2]->ganhos++;
+    }
+    else
+    {
+      
+    }
+
   }
   else
   {
+    aux = head;
+    while (aux->next != 0)
     {
-      aux = head;
-      while (aux->next != 0)
-      {
-        if (strcmp(aux->nome, nome) == 0)
-        {
-          {
-            printf("%d Jogo existente.\n", NL);
-            return 0;
-          }
-        }
-        else
-        {
-          
-        }
-
-        aux = aux->next;
-      }
-
       if (strcmp(aux->nome, nome) == 0)
       {
-        {
-          printf("%d Jogo existente.\n", NL);
-          return 0;
-        }
+        printf("%d Jogo existente.\n", NL);
+        return 0;
       }
       else
       {
         
       }
 
-      if ((aux1 == (-1)) || (aux2 == (-1)))
-      {
-        {
-          printf("%d Equipa inexistente.\n", NL);
-          return 0;
-        }
-      }
-      else
-      {
-        
-      }
-
-      aux->next = malloc(sizeof(jogo));
-      aux->next->nome = malloc((sizeof(char)) * (strlen(nome) + 1));
-      strcpy(aux->next->nome, nome);
-      aux->next->equipa1 = hash_e[aux1];
-      aux->next->equipa2 = hash_e[aux2];
-      aux->next->score1 = score1;
-      aux->next->score2 = score2;
-      aux->next->next = 0;
-      aux->next->ant = aux;
-      if (score1 > score2)
-      {
-        {
-          hash_e[aux1]->ganhos++;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (score2 > score1)
-      {
-        {
-          hash_e[aux2]->ganhos++;
-        }
-      }
-      else
-      {
-        
-      }
-
+      aux = aux->next;
     }
+
+    if (strcmp(aux->nome, nome) == 0)
+    {
+      printf("%d Jogo existente.\n", NL);
+      return 0;
+    }
+    else
+    {
+      
+    }
+
+    if ((aux1 == (-1)) || (aux2 == (-1)))
+    {
+      printf("%d Equipa inexistente.\n", NL);
+      return 0;
+    }
+    else
+    {
+      
+    }
+
+    aux->next = malloc(sizeof(jogo));
+    aux->next->nome = malloc((sizeof(char)) * (strlen(nome) + 1));
+    strcpy(aux->next->nome, nome);
+    aux->next->equipa1 = hash_e[aux1];
+    aux->next->equipa2 = hash_e[aux2];
+    aux->next->score1 = score1;
+    aux->next->score2 = score2;
+    aux->next->next = 0;
+    aux->next->ant = aux;
+    if (score1 > score2)
+    {
+      hash_e[aux1]->ganhos++;
+    }
+    else
+    {
+      
+    }
+
+    if (score2 > score1)
+    {
+      hash_e[aux2]->ganhos++;
+    }
+    else
+    {
+      
+    }
+
   }
 
   return 1;
@@ -203,9 +183,7 @@ jogo *procurarJogo(char *nome)
   {
     if (strcmp(aux->nome, nome) == 0)
     {
-      {
-        return aux;
-      }
+      return aux;
     }
     else
     {
@@ -231,77 +209,61 @@ void r()
   aux = procurarJogo(nome);
   if (aux != 0)
   {
+    if (aux->score1 > aux->score2)
     {
-      if (aux->score1 > aux->score2)
+      aux->equipa1->ganhos--;
+    }
+    else
+    {
+      
+    }
+
+    if (aux->score2 > aux->score1)
+    {
+      aux->equipa2->ganhos--;
+    }
+    else
+    {
+      
+    }
+
+    if (aux->ant == 0)
+    {
+      head = aux->next;
+      if (aux->next != 0)
       {
-        {
-          aux->equipa1->ganhos--;
-        }
+        aux->next->ant = 0;
       }
       else
       {
         
       }
 
-      if (aux->score2 > aux->score1)
+      free(aux->nome);
+      free(aux);
+    }
+    else
+    {
+      if (aux->next == 0)
       {
-        {
-          aux->equipa2->ganhos--;
-        }
+        aux->ant->next = 0;
+        free(aux->nome);
+        free(aux);
       }
       else
       {
-        
-      }
-
-      if (aux->ant == 0)
-      {
-        {
-          head = aux->next;
-          if (aux->next != 0)
-          {
-            {
-              aux->next->ant = 0;
-            }
-          }
-          else
-          {
-            
-          }
-
-          free(aux->nome);
-          free(aux);
-        }
-      }
-      else
-      {
-        if (aux->next == 0)
-        {
-          {
-            aux->ant->next = 0;
-            free(aux->nome);
-            free(aux);
-          }
-        }
-        else
-        {
-          {
-            aux->ant->next = aux->next;
-            aux->next->ant = aux->ant;
-            free(aux->nome);
-            free(aux);
-          }
-        }
-
+        aux->ant->next = aux->next;
+        aux->next->ant = aux->ant;
+        free(aux->nome);
+        free(aux);
       }
 
     }
+
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
 
 }
@@ -319,15 +281,11 @@ void p()
   aux = procurarJogo(nome);
   if (aux != 0)
   {
-    {
-      printf("%d %s %s %s %d %d\n", NL, aux->nome, aux->equipa1->nome, aux->equipa2->nome, aux->score1, aux->score2);
-    }
+    printf("%d %s %s %s %d %d\n", NL, aux->nome, aux->equipa1->nome, aux->equipa2->nome, aux->score1, aux->score2);
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
 
 }
@@ -349,102 +307,80 @@ void s()
   aux = procurarJogo(nome);
   if (aux != 0)
   {
+    if (aux->score1 > aux->score2)
     {
-      if (aux->score1 > aux->score2)
+      if (score2 > score1)
       {
-        {
-          if (score2 > score1)
-          {
-            {
-              aux->equipa1->ganhos--;
-              aux->equipa2->ganhos++;
-            }
-          }
-          else
-          {
-            if (score1 == score2)
-            {
-              {
-                aux->equipa1->ganhos--;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-        }
+        aux->equipa1->ganhos--;
+        aux->equipa2->ganhos++;
       }
       else
       {
-        if (aux->score1 < aux->score2)
+        if (score1 == score2)
         {
-          {
-            if (score1 > score2)
-            {
-              {
-                aux->equipa1->ganhos++;
-                aux->equipa2->ganhos--;
-              }
-            }
-            else
-            {
-              if (score1 == score2)
-              {
-                {
-                  aux->equipa2->ganhos--;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-          }
+          aux->equipa1->ganhos--;
         }
         else
         {
-          {
-            if (score1 > score2)
-            {
-              {
-                aux->equipa1->ganhos++;
-              }
-            }
-            else
-            {
-              
-            }
-
-            if (score2 > score1)
-            {
-              {
-                aux->equipa2->ganhos++;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
+          
         }
 
       }
 
-      aux->score1 = score1;
-      aux->score2 = score2;
     }
+    else
+    {
+      if (aux->score1 < aux->score2)
+      {
+        if (score1 > score2)
+        {
+          aux->equipa1->ganhos++;
+          aux->equipa2->ganhos--;
+        }
+        else
+        {
+          if (score1 == score2)
+          {
+            aux->equipa2->ganhos--;
+          }
+          else
+          {
+            
+          }
+
+        }
+
+      }
+      else
+      {
+        if (score1 > score2)
+        {
+          aux->equipa1->ganhos++;
+        }
+        else
+        {
+          
+        }
+
+        if (score2 > score1)
+        {
+          aux->equipa2->ganhos++;
+        }
+        else
+        {
+          
+        }
+
+      }
+
+    }
+
+    aux->score1 = score1;
+    aux->score2 = score2;
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
 
 }

@@ -42,9 +42,7 @@ Jogo *expand_jogos(int *max_jogos, int *N_jogos, Jogo *TabJogos)
   {
     if (aux[i] != 0)
     {
-      {
-        TabJogosinsert(max_jogos, N_jogos, TabJogos, aux[i]);
-      }
+      TabJogosinsert(max_jogos, N_jogos, TabJogos, aux[i]);
     }
     else
     {
@@ -79,24 +77,18 @@ void TabJogosdelete(int *max_jogos, int *N_jogos, Jogo *TabJogos, char *string)
   {
     if (strcmp(string, TabJogos[i]->nome) == 0)
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {
-      {
-        i = (i + 1) % (*max_jogos);
-      }
+      i = (i + 1) % (*max_jogos);
     }
 
   }
 
   if (TabJogos[i] == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -123,15 +115,11 @@ Jogo TabJogossearch(int *max_jogos, Jogo *TabJogos, char *string)
   {
     if (strcmp(string, TabJogos[i]->nome) == 0)
     {
-      {
-        return TabJogos[i];
-      }
+      return TabJogos[i];
     }
     else
     {
-      {
-        i = (i + 1) % (*max_jogos);
-      }
+      i = (i + 1) % (*max_jogos);
     }
 
   }
@@ -146,9 +134,7 @@ void freeTabJogos(int *max_jogos, Jogo *TabJogos)
   {
     if (TabJogos[i] != 0)
     {
-      {
-        freeJogo(TabJogos[i]);
-      }
+      freeJogo(TabJogos[i]);
     }
     else
     {
@@ -188,9 +174,7 @@ Equipa *expand_equipas(int *max_equipas, int *N_equipas, Equipa *TabEquipas)
   {
     if (aux[i] != 0)
     {
-      {
-        TabEquipasinsert(max_equipas, N_equipas, TabEquipas, aux[i]);
-      }
+      TabEquipasinsert(max_equipas, N_equipas, TabEquipas, aux[i]);
     }
     else
     {
@@ -222,15 +206,11 @@ Equipa TabEquipassearch(int *max_equipas, Equipa *TabEquipas, char *string)
   {
     if (strcmp(string, TabEquipas[i]->nome) == 0)
     {
-      {
-        return TabEquipas[i];
-      }
+      return TabEquipas[i];
     }
     else
     {
-      {
-        i = (i + 1) % (*max_equipas);
-      }
+      i = (i + 1) % (*max_equipas);
     }
 
   }
@@ -245,9 +225,7 @@ void freeTabEquipas(int *max_equipas, Equipa *TabEquipas)
   {
     if (TabEquipas[i] != 0)
     {
-      {
-        freeEquipa(TabEquipas[i]);
-      }
+      freeEquipa(TabEquipas[i]);
     }
     else
     {

@@ -32,9 +32,7 @@ int verificaExiste(hash_table_equipa *t, char *word)
   {
     if (strcmp(n->equipa1, word) == 0)
     {
-      {
-        return 0;
-      }
+      return 0;
     }
     else
     {
@@ -52,15 +50,11 @@ char *aloca_memoria(const char *s)
   void *new = malloc(len);
   if (new == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
-    {
-      return (char *) memcpy(new, s, len);
-    }
+    return (char *) memcpy(new, s, len);
   }
 
 }
@@ -88,11 +82,9 @@ void adiciona_equipa(hash_table_equipa *HashEquipa, int *Nr_linha)
   n = hash(buffer, HashEquipa->capacidade_equipa);
   if (verificaExiste(HashEquipa, buffer) == 0)
   {
-    {
-      printf("%d Equipa existente.\n", *Nr_linha);
-      *Nr_linha += 1;
-      return;
-    }
+    printf("%d Equipa existente.\n", *Nr_linha);
+    *Nr_linha += 1;
+    return;
   }
   else
   {
@@ -119,11 +111,9 @@ void procura_equipa(hash_table_equipa *eq, int *Nr_linha)
   {
     if (strcmp(equipa, equipa_aux->equipa1) == 0)
     {
-      {
-        printf("%d %s %ld\n", *Nr_linha, equipa, equipa_aux->vitorias);
-        *Nr_linha += 1;
-        return;
-      }
+      printf("%d %s %ld\n", *Nr_linha, equipa, equipa_aux->vitorias);
+      *Nr_linha += 1;
+      return;
     }
     else
     {
@@ -148,9 +138,7 @@ void printa_melhores(char **vetor, size_t comp, int *Nr_linha, int maior)
   size_t i;
   if (comp != 0)
   {
-    {
-      printf("%d Melhores %d\n", *Nr_linha, maior);
-    }
+    printf("%d Melhores %d\n", *Nr_linha, maior);
   }
   else
   {
@@ -179,9 +167,7 @@ void maisGanhos(hash_table_equipa *eq, int *Nr_linha)
     {
       if (equipa_aux->vitorias > maior_aux)
       {
-        {
-          maior_aux = equipa_aux->vitorias;
-        }
+        maior_aux = equipa_aux->vitorias;
       }
       else
       {
@@ -195,10 +181,8 @@ void maisGanhos(hash_table_equipa *eq, int *Nr_linha)
 
   if (cont_aux == 0)
   {
-    {
-      *Nr_linha += 1;
-      return;
-    }
+    *Nr_linha += 1;
+    return;
   }
   else
   {
@@ -212,10 +196,8 @@ void maisGanhos(hash_table_equipa *eq, int *Nr_linha)
     {
       if (equipa_aux->vitorias == maior)
       {
-        {
-          vetor[cont] = equipa_aux->equipa1;
-          cont++;
-        }
+        vetor[cont] = equipa_aux->equipa1;
+        cont++;
       }
       else
       {

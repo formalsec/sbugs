@@ -196,26 +196,22 @@ void Comando_R()
     }
     else
     {
+      uint i;
+      for (i = 0; (i < 200) && Vet_Eco[Id_Eco][i].Preco; i++)
       {
-        uint i;
-        for (i = 0; (i < 200) && Vet_Eco[Id_Eco][i].Preco; i++)
+        if (Vet_Eco[Id_Eco][i].Id == Id_Prod)
         {
-          if (Vet_Eco[Id_Eco][i].Id == Id_Prod)
-          {
-            {
-              Vet_Prod[Id_Prod].Stock += Vet_Eco[Id_Eco][i].Stock;
-              Vet_Eco[Id_Eco][i].Stock = 0;
-              break;
-            }
-          }
-          else
-          {
-            
-          }
-
+          Vet_Prod[Id_Prod].Stock += Vet_Eco[Id_Eco][i].Stock;
+          Vet_Eco[Id_Eco][i].Stock = 0;
+          break;
+        }
+        else
+        {
+          
         }
 
       }
+
     }
 
   }
@@ -257,38 +253,32 @@ void Comando_A()
         }
         else
         {
+          uint i;
+          for (i = 0; i < 200; i++)
           {
-            uint i;
-            for (i = 0; i < 200; i++)
+            if (!Vet_Eco[Id_Eco][i].Preco)
             {
-              if (!Vet_Eco[Id_Eco][i].Preco)
+              Vet_Eco[Id_Eco][i] = Vet_Prod[Id_Prod];
+              Vet_Eco[Id_Eco][i].Stock = Quant;
+              break;
+            }
+            else
+            {
+              if (Vet_Eco[Id_Eco][i].Id == Id_Prod)
               {
-                {
-                  Vet_Eco[Id_Eco][i] = Vet_Prod[Id_Prod];
-                  Vet_Eco[Id_Eco][i].Stock = Quant;
-                  break;
-                }
+                Vet_Eco[Id_Eco][i].Stock += Quant;
+                break;
               }
               else
               {
-                if (Vet_Eco[Id_Eco][i].Id == Id_Prod)
-                {
-                  {
-                    Vet_Eco[Id_Eco][i].Stock += Quant;
-                    break;
-                  }
-                }
-                else
-                {
-                  
-                }
-
+                
               }
 
             }
 
-            Vet_Prod[Id_Prod].Stock -= Quant;
           }
+
+          Vet_Prod[Id_Prod].Stock -= Quant;
         }
 
       }
@@ -309,14 +299,12 @@ void Comando_C()
   }
   else
   {
-    {
-      uint i;
-      uint Custo = 0;
-      for (i = 0; (i < 200) && Vet_Eco[Id_Eco][i].Preco; i++)
-        Custo += Vet_Eco[Id_Eco][i].Preco * Vet_Eco[Id_Eco][i].Stock;
+    uint i;
+    uint Custo = 0;
+    for (i = 0; (i < 200) && Vet_Eco[Id_Eco][i].Preco; i++)
+      Custo += Vet_Eco[Id_Eco][i].Preco * Vet_Eco[Id_Eco][i].Stock;
 
-      printf("Custo da encomenda %u %u.\n", Id_Eco, Custo);
-    }
+    printf("Custo da encomenda %u %u.\n", Id_Eco, Custo);
   }
 
 }
@@ -362,31 +350,27 @@ void Comando_p()
   }
   else
   {
+    uint i;
+    uint j;
+    Vet_Prod[Id_Prod].Preco = Preco;
+    for (i = 0; i < Cont_Eco; i++)
     {
-      uint i;
-      uint j;
-      Vet_Prod[Id_Prod].Preco = Preco;
-      for (i = 0; i < Cont_Eco; i++)
+      for (j = 0; (j < 200) && Vet_Eco[i][j].Preco; j++)
       {
-        for (j = 0; (j < 200) && Vet_Eco[i][j].Preco; j++)
+        if (Vet_Eco[i][j].Id == Id_Prod)
         {
-          if (Vet_Eco[i][j].Id == Id_Prod)
-          {
-            {
-              Vet_Eco[i][j].Preco = Preco;
-              break;
-            }
-          }
-          else
-          {
-            
-          }
-
+          Vet_Eco[i][j].Preco = Preco;
+          break;
+        }
+        else
+        {
+          
         }
 
       }
 
     }
+
   }
 
 }
@@ -401,25 +385,13 @@ void Comando_m()
   }
   else
   {
+    uint i;
+    uint Maior_Id = 0;
+    for (i = 0; i < Cont_Eco; i++)
     {
-      uint i;
-      uint Maior_Id = 0;
-      for (i = 0; i < Cont_Eco; i++)
+      if (Devolve_Quant(i, Id_Prod) > Devolve_Quant(Maior_Id, Id_Prod))
       {
-        if (Devolve_Quant(i, Id_Prod) > Devolve_Quant(Maior_Id, Id_Prod))
-        {
-          Maior_Id = i;
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      if (Devolve_Quant(Maior_Id, Id_Prod))
-      {
-        printf("Maximo produto %u %u %u.\n", Id_Prod, Maior_Id, Devolve_Quant(Maior_Id, Id_Prod));
+        Maior_Id = i;
       }
       else
       {
@@ -427,6 +399,16 @@ void Comando_m()
       }
 
     }
+
+    if (Devolve_Quant(Maior_Id, Id_Prod))
+    {
+      printf("Maximo produto %u %u %u.\n", Id_Prod, Maior_Id, Devolve_Quant(Maior_Id, Id_Prod));
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -442,41 +424,37 @@ void Comando_L()
   }
   else
   {
+    int i;
+    int j;
+    int k;
+    int lim = -1;
+    printf("Encomenda %u\n", Id_Eco);
+    for (i = 0, k = 0; (i < 200) && Vet_Eco[Id_Eco][i].Preco; i++, k++)
     {
-      int i;
-      int j;
-      int k;
-      int lim = -1;
-      printf("Encomenda %u\n", Id_Eco);
-      for (i = 0, k = 0; (i < 200) && Vet_Eco[Id_Eco][i].Preco; i++, k++)
+      if (!Vet_Eco[Id_Eco][i].Stock)
       {
-        if (!Vet_Eco[Id_Eco][i].Stock)
-        {
-          k--;
-        }
-        else
-        {
-          {
-            Copia_Eco[k] = Vet_Eco[Id_Eco][i];
-            lim++;
-          }
-        }
-
+        k--;
       }
-
-      for (i = 1; i <= lim; i++)
+      else
       {
-        Produto P = Copia_Eco[i];
-        for (j = i - 1; (j >= 0) && (strcmp(P.Descricao, Copia_Eco[j].Descricao) < 0); j--)
-          Copia_Eco[j + 1] = Copia_Eco[j];
-
-        Copia_Eco[j + 1] = P;
+        Copia_Eco[k] = Vet_Eco[Id_Eco][i];
+        lim++;
       }
-
-      for (i = 0; i <= lim; i++)
-        printf("* %s %u %u\n", Copia_Eco[i].Descricao, Copia_Eco[i].Preco, Copia_Eco[i].Stock);
 
     }
+
+    for (i = 1; i <= lim; i++)
+    {
+      Produto P = Copia_Eco[i];
+      for (j = i - 1; (j >= 0) && (strcmp(P.Descricao, Copia_Eco[j].Descricao) < 0); j--)
+        Copia_Eco[j + 1] = Copia_Eco[j];
+
+      Copia_Eco[j + 1] = P;
+    }
+
+    for (i = 0; i <= lim; i++)
+      printf("* %s %u %u\n", Copia_Eco[i].Descricao, Copia_Eco[i].Preco, Copia_Eco[i].Stock);
+
   }
 
 }
@@ -530,17 +508,15 @@ void Comando_l()
   }
   else
   {
-    {
-      uint i;
-      for (i = 0; i <= (Cont_Prod - 1); i++)
-        Vet_Ordenado[i] = Vet_Prod[i];
+    uint i;
+    for (i = 0; i <= (Cont_Prod - 1); i++)
+      Vet_Ordenado[i] = Vet_Prod[i];
 
-      Mergesort(0, Cont_Prod - 1);
-      printf("Produtos\n");
-      for (i = 0; i <= (Cont_Prod - 1); i++)
-        printf("* %s %u %u\n", Vet_Ordenado[i].Descricao, Vet_Ordenado[i].Preco, Vet_Ordenado[i].Stock);
+    Mergesort(0, Cont_Prod - 1);
+    printf("Produtos\n");
+    for (i = 0; i <= (Cont_Prod - 1); i++)
+      printf("* %s %u %u\n", Vet_Ordenado[i].Descricao, Vet_Ordenado[i].Preco, Vet_Ordenado[i].Stock);
 
-    }
   }
 
 }
@@ -553,10 +529,8 @@ uint Devolve_Quant(uint Id_Eco, uint Id_Prod)
   {
     if (Vet_Eco[Id_Eco][i].Id == Id_Prod)
     {
-      {
-        Quant = Vet_Eco[Id_Eco][i].Stock;
-        break;
-      }
+      Quant = Vet_Eco[Id_Eco][i].Stock;
+      break;
     }
     else
     {

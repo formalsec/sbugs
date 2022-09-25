@@ -64,57 +64,45 @@ void a()
   score2 = new_sym_var(sizeof(int) * 8);
   if (haJogo(nome) != 1)
   {
+    if (haEquipa(equipa1) && haEquipa(equipa2))
     {
-      if (haEquipa(equipa1) && haEquipa(equipa2))
+      eq1 = Tsearch(equipa1);
+      eq2 = Tsearch(equipa2);
+      jogo = novoJogo(nome, eq1, eq2, score1, score2);
+      Ginsert(jogo);
+      listOrd = GinsertEnd(listOrd, jogo);
+      if (score1 > score2)
       {
-        {
-          eq1 = Tsearch(equipa1);
-          eq2 = Tsearch(equipa2);
-          jogo = novoJogo(nome, eq1, eq2, score1, score2);
-          Ginsert(jogo);
-          listOrd = GinsertEnd(listOrd, jogo);
-          if (score1 > score2)
-          {
-            {
-              iTdelete(eq1);
-              aumentaVitorias(eq1);
-              iTinsert(eq1);
-            }
-          }
-          else
-          {
-            
-          }
-
-          if (score2 > score1)
-          {
-            {
-              iTdelete(eq2);
-              aumentaVitorias(eq2);
-              iTinsert(eq2);
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
+        iTdelete(eq1);
+        aumentaVitorias(eq1);
+        iTinsert(eq1);
       }
       else
       {
-        {
-          printf("%d Equipa inexistente.\n", nl);
-        }
+        
+      }
+
+      if (score2 > score1)
+      {
+        iTdelete(eq2);
+        aumentaVitorias(eq2);
+        iTinsert(eq2);
+      }
+      else
+      {
+        
       }
 
     }
+    else
+    {
+      printf("%d Equipa inexistente.\n", nl);
+    }
+
   }
   else
   {
-    {
-      printf("%d Jogo existente.\n", nl);
-    }
+    printf("%d Jogo existente.\n", nl);
   }
 
   free(nome);
@@ -136,17 +124,13 @@ void A()
   nome[10 - 1] = '\0';
   if (haEquipa(nome) == 0)
   {
-    {
-      equipa = novaEquipa(nome);
-      Tinsert(equipa);
-      iTinsert(equipa);
-    }
+    equipa = novaEquipa(nome);
+    Tinsert(equipa);
+    iTinsert(equipa);
   }
   else
   {
-    {
-      printf("%d Equipa existente.\n", nl);
-    }
+    printf("%d Equipa existente.\n", nl);
   }
 
   free(nome);
@@ -177,17 +161,13 @@ void p()
   nome[10 - 1] = '\0';
   if (haJogo(nome))
   {
-    {
-      jogo = Gsearch(nome);
-      printf("%d ", nl);
-      imprimeJogo(jogo);
-    }
+    jogo = Gsearch(nome);
+    printf("%d ", nl);
+    imprimeJogo(jogo);
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-    }
+    printf("%d Jogo inexistente.\n", nl);
   }
 
   free(nome);
@@ -207,17 +187,13 @@ void P()
   nome[10 - 1] = '\0';
   if (haEquipa(nome))
   {
-    {
-      equipa = Tsearch(nome);
-      printf("%d ", nl);
-      imprimeEquipa(equipa);
-    }
+    equipa = Tsearch(nome);
+    printf("%d ", nl);
+    imprimeEquipa(equipa);
   }
   else
   {
-    {
-      printf("%d Equipa inexistente.\n", nl);
-    }
+    printf("%d Equipa inexistente.\n", nl);
   }
 
   free(nome);
@@ -241,47 +217,39 @@ void r()
   nome[10 - 1] = '\0';
   if (haJogo(nome))
   {
+    jogo = Gsearch(nome);
+    pont1 = obtemPont(jogo, 1);
+    pont2 = obtemPont(jogo, 2);
+    e1 = obtemEquipa(jogo, 1);
+    e2 = obtemEquipa(jogo, 2);
+    if (pont1 > pont2)
     {
-      jogo = Gsearch(nome);
-      pont1 = obtemPont(jogo, 1);
-      pont2 = obtemPont(jogo, 2);
-      e1 = obtemEquipa(jogo, 1);
-      e2 = obtemEquipa(jogo, 2);
-      if (pont1 > pont2)
-      {
-        {
-          iTdelete(e1);
-          diminuiVitorias(e1);
-          iTinsert(e1);
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (pont2 > pont1)
-      {
-        {
-          iTdelete(e2);
-          diminuiVitorias(e2);
-          iTinsert(e2);
-        }
-      }
-      else
-      {
-        
-      }
-
-      Gdelete(jogo);
-      listOrd = GremoveItem(listOrd, jogo, 1);
+      iTdelete(e1);
+      diminuiVitorias(e1);
+      iTinsert(e1);
     }
+    else
+    {
+      
+    }
+
+    if (pont2 > pont1)
+    {
+      iTdelete(e2);
+      diminuiVitorias(e2);
+      iTinsert(e2);
+    }
+    else
+    {
+      
+    }
+
+    Gdelete(jogo);
+    listOrd = GremoveItem(listOrd, jogo, 1);
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-    }
+    printf("%d Jogo inexistente.\n", nl);
   }
 
   free(nome);
@@ -309,134 +277,112 @@ void s()
   score2 = new_sym_var(sizeof(int) * 8);
   if (haJogo(nome))
   {
+    jogo = Gsearch(nome);
+    s1 = obtemPont(jogo, 1);
+    s2 = obtemPont(jogo, 2);
+    e1 = obtemEquipa(jogo, 1);
+    e2 = obtemEquipa(jogo, 2);
+    if (s1 > s2)
     {
-      jogo = Gsearch(nome);
-      s1 = obtemPont(jogo, 1);
-      s2 = obtemPont(jogo, 2);
-      e1 = obtemEquipa(jogo, 1);
-      e2 = obtemEquipa(jogo, 2);
-      if (s1 > s2)
+      if (score1 == score2)
       {
-        {
-          if (score1 == score2)
-          {
-            {
-              iTdelete(e1);
-              diminuiVitorias(e1);
-              iTinsert(e1);
-            }
-          }
-          else
-          {
-            
-          }
-
-          if (score1 < score2)
-          {
-            {
-              iTdelete(e1);
-              diminuiVitorias(e1);
-              iTinsert(e1);
-              iTdelete(e2);
-              aumentaVitorias(e2);
-              iTinsert(e2);
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
+        iTdelete(e1);
+        diminuiVitorias(e1);
+        iTinsert(e1);
       }
       else
       {
         
       }
 
-      if (s2 > s1)
+      if (score1 < score2)
       {
-        {
-          if (score1 == score2)
-          {
-            {
-              iTdelete(e2);
-              diminuiVitorias(e2);
-              iTinsert(e2);
-            }
-          }
-          else
-          {
-            
-          }
-
-          if (score2 < score1)
-          {
-            {
-              iTdelete(e1);
-              aumentaVitorias(e1);
-              iTinsert(e1);
-              iTdelete(e2);
-              diminuiVitorias(e2);
-              iTinsert(e2);
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
+        iTdelete(e1);
+        diminuiVitorias(e1);
+        iTinsert(e1);
+        iTdelete(e2);
+        aumentaVitorias(e2);
+        iTinsert(e2);
       }
       else
       {
         
       }
 
-      if (s1 == s2)
-      {
-        {
-          if (score1 > score2)
-          {
-            {
-              iTdelete(e1);
-              aumentaVitorias(e1);
-              iTinsert(e1);
-            }
-          }
-          else
-          {
-            
-          }
-
-          if (score1 < score2)
-          {
-            {
-              iTdelete(e2);
-              aumentaVitorias(e2);
-              iTinsert(e2);
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-      }
-      else
-      {
-        
-      }
-
-      alteraPont(jogo, score1, score2);
     }
+    else
+    {
+      
+    }
+
+    if (s2 > s1)
+    {
+      if (score1 == score2)
+      {
+        iTdelete(e2);
+        diminuiVitorias(e2);
+        iTinsert(e2);
+      }
+      else
+      {
+        
+      }
+
+      if (score2 < score1)
+      {
+        iTdelete(e1);
+        aumentaVitorias(e1);
+        iTinsert(e1);
+        iTdelete(e2);
+        diminuiVitorias(e2);
+        iTinsert(e2);
+      }
+      else
+      {
+        
+      }
+
+    }
+    else
+    {
+      
+    }
+
+    if (s1 == s2)
+    {
+      if (score1 > score2)
+      {
+        iTdelete(e1);
+        aumentaVitorias(e1);
+        iTinsert(e1);
+      }
+      else
+      {
+        
+      }
+
+      if (score1 < score2)
+      {
+        iTdelete(e2);
+        aumentaVitorias(e2);
+        iTinsert(e2);
+      }
+      else
+      {
+        
+      }
+
+    }
+    else
+    {
+      
+    }
+
+    alteraPont(jogo, score1, score2);
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-    }
+    printf("%d Jogo inexistente.\n", nl);
   }
 
   free(nome);
@@ -451,20 +397,18 @@ void g()
   char *nome;
   if (equipasVazioQ() == 0)
   {
+    list = iLastList();
+    sortlist(list);
+    e = list->equipa;
+    v = obterVitorias(e);
+    printf("%d Melhores %d\n", nl, v);
+    for (t = list; t != 0; t = t->next)
     {
-      list = iLastList();
-      sortlist(list);
-      e = list->equipa;
-      v = obterVitorias(e);
-      printf("%d Melhores %d\n", nl, v);
-      for (t = list; t != 0; t = t->next)
-      {
-        e = t->equipa;
-        nome = obterNomeEquipa(e);
-        printf("%d * %s\n", nl, nome);
-      }
-
+      e = t->equipa;
+      nome = obterNomeEquipa(e);
+      printf("%d * %s\n", nl, nome);
     }
+
   }
   else
   {
@@ -483,10 +427,8 @@ int main()
   {
     if (c == 'a')
     {
-      {
-        a();
-        ++nl;
-      }
+      a();
+      ++nl;
     }
     else
     {
@@ -495,10 +437,8 @@ int main()
 
     if (c == 'A')
     {
-      {
-        A();
-        ++nl;
-      }
+      A();
+      ++nl;
     }
     else
     {
@@ -507,10 +447,8 @@ int main()
 
     if (c == 'l')
     {
-      {
-        l();
-        ++nl;
-      }
+      l();
+      ++nl;
     }
     else
     {
@@ -519,10 +457,8 @@ int main()
 
     if (c == 'p')
     {
-      {
-        p();
-        ++nl;
-      }
+      p();
+      ++nl;
     }
     else
     {
@@ -531,10 +467,8 @@ int main()
 
     if (c == 'P')
     {
-      {
-        P();
-        ++nl;
-      }
+      P();
+      ++nl;
     }
     else
     {
@@ -543,10 +477,8 @@ int main()
 
     if (c == 'r')
     {
-      {
-        r();
-        ++nl;
-      }
+      r();
+      ++nl;
     }
     else
     {
@@ -555,10 +487,8 @@ int main()
 
     if (c == 's')
     {
-      {
-        s();
-        ++nl;
-      }
+      s();
+      ++nl;
     }
     else
     {
@@ -567,10 +497,8 @@ int main()
 
     if (c == 'g')
     {
-      {
-        g();
-        ++nl;
-      }
+      g();
+      ++nl;
     }
     else
     {
@@ -579,13 +507,11 @@ int main()
 
     if (c == 'x')
     {
-      {
-        Gclear();
-        Tclear();
-        iTclear();
-        apagaLista(listOrd);
-        exit(0);
-      }
+      Gclear();
+      Tclear();
+      iTclear();
+      apagaLista(listOrd);
+      exit(0);
     }
     else
     {

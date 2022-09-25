@@ -129,20 +129,18 @@ link delete_Jogo(link h, char *nome)
   {
     if (strcmp(t->j->nome, nome) == 0)
     {
+      if (t == h)
       {
-        if (t == h)
-        {
-          h = t->next;
-        }
-        else
-        {
-          prev->next = t->next;
-        }
-
-        free(t->j);
-        free(t);
-        break;
+        h = t->next;
       }
+      else
+      {
+        prev->next = t->next;
+      }
+
+      free(t->j);
+      free(t);
+      break;
     }
     else
     {
@@ -295,51 +293,41 @@ void a(int NL)
   score2 = new_sym_var(sizeof(int) * 8);
   if ((STsearch_Equipa(equipa1) == 0) || (STsearch_Equipa(equipa2) == 0))
   {
-    {
-      printf("%d Equipa inexistente\n", NL);
-      return;
-    }
+    printf("%d Equipa inexistente\n", NL);
+    return;
   }
   else
   {
     if (STsearch_Jogo(nome) != 0)
     {
-      {
-        printf("%d Jogo existente\n", NL);
-        return;
-      }
+      printf("%d Jogo existente\n", NL);
+      return;
     }
     else
     {
+      if (score1 > score2)
       {
-        if (score1 > score2)
+        t = STsearch_Equipa(equipa1);
+        t->e->jogos_ganhos++;
+      }
+      else
+      {
+        if (score2 > score1)
         {
-          {
-            t = STsearch_Equipa(equipa1);
-            t->e->jogos_ganhos++;
-          }
+          t = STsearch_Equipa(equipa2);
+          t->e->jogos_ganhos++;
         }
         else
         {
-          if (score2 > score1)
-          {
-            {
-              t = STsearch_Equipa(equipa2);
-              t->e->jogos_ganhos++;
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
-        j = create_jogo(nome, equipa1, equipa2, score1, score2);
-        STinsert_Jogo(j);
-        jogos[counter_jogos] = j;
-        counter_jogos++;
       }
+
+      j = create_jogo(nome, equipa1, equipa2, score1, score2);
+      STinsert_Jogo(j);
+      jogos[counter_jogos] = j;
+      counter_jogos++;
     }
 
   }
@@ -368,17 +356,13 @@ void p(int NL)
   nome[10 - 1] = '\0';
   if (STsearch_Jogo(nome) == 0)
   {
-    {
-      printf("%d Jogo inexistente\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente\n", NL);
+    return;
   }
   else
   {
-    {
-      t = STsearch_Jogo(nome);
-      printf("%d %s %s %s %d %d\n", NL, t->j->nome, t->j->equipa1, t->j->equipa2, t->j->score1, t->j->score2);
-    }
+    t = STsearch_Jogo(nome);
+    printf("%d %s %s %s %d %d\n", NL, t->j->nome, t->j->equipa1, t->j->equipa2, t->j->score1, t->j->score2);
   }
 
 }
@@ -396,40 +380,32 @@ void r(int NL)
   nome[10 - 1] = '\0';
   if (STsearch_Jogo(nome) == 0)
   {
-    {
-      printf("%d Jogo inexistente", NL);
-      return;
-    }
+    printf("%d Jogo inexistente", NL);
+    return;
   }
   else
   {
+    t = STsearch_Jogo(nome);
+    if (t->j->score1 > t->j->score2)
     {
-      t = STsearch_Jogo(nome);
-      if (t->j->score1 > t->j->score2)
+      p = STsearch_Equipa(t->j->equipa1);
+      p->e->jogos_ganhos--;
+    }
+    else
+    {
+      if (t->j->score2 > t->j->score1)
       {
-        {
-          p = STsearch_Equipa(t->j->equipa1);
-          p->e->jogos_ganhos--;
-        }
+        p = STsearch_Equipa(t->j->equipa2);
+        p->e->jogos_ganhos--;
       }
       else
       {
-        if (t->j->score2 > t->j->score1)
-        {
-          {
-            p = STsearch_Equipa(t->j->equipa2);
-            p->e->jogos_ganhos--;
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      STdelete_Jogo(nome);
     }
+
+    STdelete_Jogo(nome);
   }
 
 }
@@ -452,127 +428,103 @@ void s(int NL)
   newscore2 = new_sym_var(sizeof(int) * 8);
   if (STsearch_Jogo(nome) == 0)
   {
-    {
-      printf("%d Jogo inexistente\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente\n", NL);
+    return;
   }
   else
   {
+    t = STsearch_Jogo(nome);
+    if (t->j->score1 > t->j->score2)
     {
-      t = STsearch_Jogo(nome);
-      if (t->j->score1 > t->j->score2)
+      if (newscore1 > newscore2)
       {
-        {
-          if (newscore1 > newscore2)
-          {
-            {
-              t->j->score1 = newscore1;
-              t->j->score2 = newscore2;
-              return;
-            }
-          }
-          else
-          {
-            if (newscore2 > newscore1)
-            {
-              {
-                t1 = STsearch_Equipa(t->j->equipa1);
-                t1->e->jogos_ganhos--;
-                t2 = STsearch_Equipa(t->j->equipa2);
-                t2->e->jogos_ganhos++;
-                t->j->score1 = newscore1;
-                t->j->score2 = newscore2;
-                return;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-        }
+        t->j->score1 = newscore1;
+        t->j->score2 = newscore2;
+        return;
       }
       else
       {
-        if (t->j->score2 > t->j->score1)
+        if (newscore2 > newscore1)
         {
-          {
-            if (newscore1 > newscore2)
-            {
-              {
-                t1 = STsearch_Equipa(t->j->equipa1);
-                t1->e->jogos_ganhos++;
-                t2 = STsearch_Equipa(t->j->equipa2);
-                t2->e->jogos_ganhos--;
-                t->j->score1 = newscore1;
-                t->j->score2 = newscore2;
-                return;
-              }
-            }
-            else
-            {
-              if (newscore2 > newscore1)
-              {
-                {
-                  t->j->score1 = newscore1;
-                  t->j->score2 = newscore2;
-                  return;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-          }
+          t1 = STsearch_Equipa(t->j->equipa1);
+          t1->e->jogos_ganhos--;
+          t2 = STsearch_Equipa(t->j->equipa2);
+          t2->e->jogos_ganhos++;
+          t->j->score1 = newscore1;
+          t->j->score2 = newscore2;
+          return;
         }
         else
         {
-          {
-            if (newscore1 > newscore2)
-            {
-              {
-                t1 = STsearch_Equipa(t->j->equipa1);
-                t1->e->jogos_ganhos++;
-                t->j->score1 = newscore1;
-                t->j->score2 = newscore2;
-                return;
-              }
-            }
-            else
-            {
-              if (newscore2 > newscore1)
-              {
-                {
-                  t2 = STsearch_Equipa(t->j->equipa2);
-                  t2->e->jogos_ganhos++;
-                  t->j->score1 = newscore1;
-                  t->j->score2 = newscore2;
-                  return;
-                }
-              }
-              else
-              {
-                {
-                  t->j->score1 = newscore1;
-                  t->j->score2 = newscore2;
-                  return;
-                }
-              }
-
-            }
-
-          }
+          
         }
 
       }
 
     }
+    else
+    {
+      if (t->j->score2 > t->j->score1)
+      {
+        if (newscore1 > newscore2)
+        {
+          t1 = STsearch_Equipa(t->j->equipa1);
+          t1->e->jogos_ganhos++;
+          t2 = STsearch_Equipa(t->j->equipa2);
+          t2->e->jogos_ganhos--;
+          t->j->score1 = newscore1;
+          t->j->score2 = newscore2;
+          return;
+        }
+        else
+        {
+          if (newscore2 > newscore1)
+          {
+            t->j->score1 = newscore1;
+            t->j->score2 = newscore2;
+            return;
+          }
+          else
+          {
+            
+          }
+
+        }
+
+      }
+      else
+      {
+        if (newscore1 > newscore2)
+        {
+          t1 = STsearch_Equipa(t->j->equipa1);
+          t1->e->jogos_ganhos++;
+          t->j->score1 = newscore1;
+          t->j->score2 = newscore2;
+          return;
+        }
+        else
+        {
+          if (newscore2 > newscore1)
+          {
+            t2 = STsearch_Equipa(t->j->equipa2);
+            t2->e->jogos_ganhos++;
+            t->j->score1 = newscore1;
+            t->j->score2 = newscore2;
+            return;
+          }
+          else
+          {
+            t->j->score1 = newscore1;
+            t->j->score2 = newscore2;
+            return;
+          }
+
+        }
+
+      }
+
+    }
+
   }
 
 }
@@ -589,18 +541,14 @@ void A(int NL)
   nome[10 - 1] = '\0';
   if (STsearch_Equipa(nome) != 0)
   {
-    {
-      printf("%d Equipa existente\n", NL);
-      return;
-    }
+    printf("%d Equipa existente\n", NL);
+    return;
   }
   else
   {
-    {
-      t = create_equipa(nome);
-      STinsert_Equipa(t);
-      return;
-    }
+    t = create_equipa(nome);
+    STinsert_Equipa(t);
+    return;
   }
 
 }
@@ -617,18 +565,14 @@ void P(int NL)
   nome[10 - 1] = '\0';
   if (STsearch_Equipa(nome) == 0)
   {
-    {
-      printf("%d Equipa inexistente\n", NL);
-      return;
-    }
+    printf("%d Equipa inexistente\n", NL);
+    return;
   }
   else
   {
-    {
-      t = STsearch_Equipa(nome);
-      printf("%d %s %d\n", NL, t->e->nome, t->e->jogos_ganhos);
-      return;
-    }
+    t = STsearch_Equipa(nome);
+    printf("%d %s %d\n", NL, t->e->nome, t->e->jogos_ganhos);
+    return;
   }
 
 }
@@ -667,10 +611,8 @@ void g(int NL)
     {
       if (t->e->jogos_ganhos == max)
       {
-        {
-          max_jogos[cnt] = t->e;
-          cnt++;
-        }
+        max_jogos[cnt] = t->e;
+        cnt++;
       }
       else
       {
@@ -687,11 +629,9 @@ void g(int NL)
     {
       if (strcmp(max_jogos[i]->nome, max_jogos[j]->nome) < 0)
       {
-        {
-          tmp = max_jogos[i];
-          max_jogos[i] = max_jogos[j];
-          max_jogos[j] = tmp;
-        }
+        tmp = max_jogos[i];
+        max_jogos[i] = max_jogos[j];
+        max_jogos[j] = tmp;
       }
       else
       {
@@ -704,14 +644,12 @@ void g(int NL)
 
   if (cnt > 0)
   {
+    printf("%d Melhores  %d\n", NL, max);
+    for (i = 0; i < cnt; i++)
     {
-      printf("%d Melhores  %d\n", NL, max);
-      for (i = 0; i < cnt; i++)
-      {
-        printf("%d * %s\n", NL, max_jogos[i]->nome);
-      }
-
+      printf("%d * %s\n", NL, max_jogos[i]->nome);
     }
+
   }
   else
   {
@@ -737,10 +675,8 @@ int main()
     c = new_sym_var(sizeof(char) * 8);
     if (c == 'a')
     {
-      {
-        a(NL);
-        NL++;
-      }
+      a(NL);
+      NL++;
     }
     else
     {
@@ -749,10 +685,8 @@ int main()
 
     if (c == 'l')
     {
-      {
-        l(NL);
-        NL++;
-      }
+      l(NL);
+      NL++;
     }
     else
     {
@@ -761,10 +695,8 @@ int main()
 
     if (c == 'p')
     {
-      {
-        p(NL);
-        NL++;
-      }
+      p(NL);
+      NL++;
     }
     else
     {
@@ -773,10 +705,8 @@ int main()
 
     if (c == 'r')
     {
-      {
-        r(NL);
-        NL++;
-      }
+      r(NL);
+      NL++;
     }
     else
     {
@@ -785,10 +715,8 @@ int main()
 
     if (c == 's')
     {
-      {
-        s(NL);
-        NL++;
-      }
+      s(NL);
+      NL++;
     }
     else
     {
@@ -797,10 +725,8 @@ int main()
 
     if (c == 'A')
     {
-      {
-        A(NL);
-        NL++;
-      }
+      A(NL);
+      NL++;
     }
     else
     {
@@ -809,10 +735,8 @@ int main()
 
     if (c == 'P')
     {
-      {
-        P(NL);
-        NL++;
-      }
+      P(NL);
+      NL++;
     }
     else
     {
@@ -821,9 +745,7 @@ int main()
 
     if (c == 'x')
     {
-      {
-        x();
-      }
+      x();
     }
     else
     {
@@ -832,10 +754,8 @@ int main()
 
     if (c == 'g')
     {
-      {
-        g(NL);
-        NL++;
-      }
+      g(NL);
+      NL++;
     }
     else
     {

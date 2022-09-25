@@ -72,14 +72,12 @@ void InsereNaHashTable(Node **hash_table, Node *node, int tipo)
   i = GeraHash((tipo == 0) ? (((Jogo *) node->tipo_node)->nome) : (((Equipa *) node->tipo_node)->nome));
   if (hash_table[i])
   {
-    {
-      atual = hash_table[i];
-      while (atual->drt)
-        atual = atual->drt;
+    atual = hash_table[i];
+    while (atual->drt)
+      atual = atual->drt;
 
-      node->esq = atual;
-      atual->drt = node;
-    }
+    node->esq = atual;
+    atual->drt = node;
   }
   else
   {
@@ -96,9 +94,7 @@ void *ProcuraNaHashTable(char *nome, Node **hash_table, int tipo)
   {
     if (!strcmp((tipo == 0) ? (((Jogo *) node->tipo_node)->nome) : (((Equipa *) node->tipo_node)->nome), nome))
     {
-      {
-        return node->tipo_node;
-      }
+      return node->tipo_node;
     }
     else
     {
@@ -115,39 +111,31 @@ void InsereNaLista(Lista *lista, void *el, int tipo)
 {
   if (!lista->cabeca)
   {
-    {
-      lista->cabeca = el;
-      lista->ultimo = el;
-    }
+    lista->cabeca = el;
+    lista->ultimo = el;
   }
   else
   {
+    if (tipo == 0)
     {
-      if (tipo == 0)
+      ((Jogo *) el)->esq = lista->ultimo;
+      ((Jogo *) lista->ultimo)->drt = el;
+    }
+    else
+    {
+      if (tipo == 1)
       {
-        {
-          ((Jogo *) el)->esq = lista->ultimo;
-          ((Jogo *) lista->ultimo)->drt = el;
-        }
+        ((Equipa *) el)->esq = lista->ultimo;
+        ((Equipa *) lista->ultimo)->drt = el;
       }
       else
       {
-        if (tipo == 1)
-        {
-          {
-            ((Equipa *) el)->esq = lista->ultimo;
-            ((Equipa *) lista->ultimo)->drt = el;
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      lista->ultimo = el;
     }
+
+    lista->ultimo = el;
   }
 
 }
@@ -177,149 +165,123 @@ void LimpaElemento(char *nome, Node **hash_table, Lista *lista, void *(*LimpaEl)
   v = GeraHash(nome);
   if (hash_table[v])
   {
+    node = hash_table[v];
+    while (strcmp((sel == 0) ? (((Jogo *) node->tipo_node)->nome) : (((Equipa *) node->tipo_node)->nome), nome))
     {
-      node = hash_table[v];
-      while (strcmp((sel == 0) ? (((Jogo *) node->tipo_node)->nome) : (((Equipa *) node->tipo_node)->nome), nome))
+      node = node->drt;
+      if (!node)
       {
-        node = node->drt;
-        if (!node)
-        {
-          return;
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      if (sel == 0)
-      {
-        {
-          if (((Jogo *) node->tipo_node)->drt && ((Jogo *) node->tipo_node)->esq)
-          {
-            {
-              ((Jogo *) node->tipo_node)->esq->drt = ((Jogo *) node->tipo_node)->drt;
-              ((Jogo *) node->tipo_node)->drt->esq = ((Jogo *) node->tipo_node)->esq;
-            }
-          }
-          else
-          {
-            if (((Jogo *) node->tipo_node)->esq)
-            {
-              {
-                ((Jogo *) node->tipo_node)->esq->drt = 0;
-                lista->ultimo = ((Jogo *) node->tipo_node)->esq;
-              }
-            }
-            else
-            {
-              if (((Jogo *) node->tipo_node)->drt)
-              {
-                {
-                  ((Jogo *) node->tipo_node)->drt->esq = 0;
-                  lista->cabeca = ((Jogo *) node->tipo_node)->drt;
-                }
-              }
-              else
-              {
-                {
-                  lista->cabeca = 0;
-                  lista->ultimo = 0;
-                }
-              }
-
-            }
-
-          }
-
-        }
+        return;
       }
       else
       {
-        if (sel == 1)
-        {
-          {
-            if (((Equipa *) node->tipo_node)->drt && ((Equipa *) node->tipo_node)->esq)
-            {
-              {
-                ((Equipa *) node->tipo_node)->esq->drt = ((Equipa *) node->tipo_node)->drt;
-                ((Equipa *) node->tipo_node)->drt->esq = ((Equipa *) node->tipo_node)->esq;
-              }
-            }
-            else
-            {
-              if (((Equipa *) node->tipo_node)->esq)
-              {
-                {
-                  ((Equipa *) node->tipo_node)->esq->drt = 0;
-                  lista->ultimo = ((Equipa *) node->tipo_node)->esq;
-                }
-              }
-              else
-              {
-                if (((Equipa *) node->tipo_node)->drt)
-                {
-                  {
-                    ((Equipa *) node->tipo_node)->drt->esq = 0;
-                    lista->cabeca = ((Equipa *) node->tipo_node)->drt;
-                  }
-                }
-                else
-                {
-                  {
-                    lista->cabeca = 0;
-                    lista->ultimo = 0;
-                  }
-                }
-
-              }
-
-            }
-
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      LimpaEl(node->tipo_node);
-      if (node->esq && node->drt)
-      {
-        {
-          node->esq->drt = node->drt;
-          node->drt->esq = node->esq;
-        }
-      }
-      else
-      {
-        if (node->esq)
-        {
-          node->esq->drt = 0;
-        }
-        else
-        {
-          if (node->drt)
-          {
-            {
-              node->drt->esq = 0;
-              hash_table[v] = node->drt;
-            }
-          }
-          else
-          {
-            hash_table[v] = 0;
-          }
-
-        }
-
-      }
-
-      free(node);
     }
+
+    if (sel == 0)
+    {
+      if (((Jogo *) node->tipo_node)->drt && ((Jogo *) node->tipo_node)->esq)
+      {
+        ((Jogo *) node->tipo_node)->esq->drt = ((Jogo *) node->tipo_node)->drt;
+        ((Jogo *) node->tipo_node)->drt->esq = ((Jogo *) node->tipo_node)->esq;
+      }
+      else
+      {
+        if (((Jogo *) node->tipo_node)->esq)
+        {
+          ((Jogo *) node->tipo_node)->esq->drt = 0;
+          lista->ultimo = ((Jogo *) node->tipo_node)->esq;
+        }
+        else
+        {
+          if (((Jogo *) node->tipo_node)->drt)
+          {
+            ((Jogo *) node->tipo_node)->drt->esq = 0;
+            lista->cabeca = ((Jogo *) node->tipo_node)->drt;
+          }
+          else
+          {
+            lista->cabeca = 0;
+            lista->ultimo = 0;
+          }
+
+        }
+
+      }
+
+    }
+    else
+    {
+      if (sel == 1)
+      {
+        if (((Equipa *) node->tipo_node)->drt && ((Equipa *) node->tipo_node)->esq)
+        {
+          ((Equipa *) node->tipo_node)->esq->drt = ((Equipa *) node->tipo_node)->drt;
+          ((Equipa *) node->tipo_node)->drt->esq = ((Equipa *) node->tipo_node)->esq;
+        }
+        else
+        {
+          if (((Equipa *) node->tipo_node)->esq)
+          {
+            ((Equipa *) node->tipo_node)->esq->drt = 0;
+            lista->ultimo = ((Equipa *) node->tipo_node)->esq;
+          }
+          else
+          {
+            if (((Equipa *) node->tipo_node)->drt)
+            {
+              ((Equipa *) node->tipo_node)->drt->esq = 0;
+              lista->cabeca = ((Equipa *) node->tipo_node)->drt;
+            }
+            else
+            {
+              lista->cabeca = 0;
+              lista->ultimo = 0;
+            }
+
+          }
+
+        }
+
+      }
+      else
+      {
+        
+      }
+
+    }
+
+    LimpaEl(node->tipo_node);
+    if (node->esq && node->drt)
+    {
+      node->esq->drt = node->drt;
+      node->drt->esq = node->esq;
+    }
+    else
+    {
+      if (node->esq)
+      {
+        node->esq->drt = 0;
+      }
+      else
+      {
+        if (node->drt)
+        {
+          node->drt->esq = 0;
+          hash_table[v] = node->drt;
+        }
+        else
+        {
+          hash_table[v] = 0;
+        }
+
+      }
+
+    }
+
+    free(node);
   }
   else
   {
@@ -342,16 +304,14 @@ void LimpezaGeral(Node **hash_table, Lista *lista, void *(*LimpaEl)(void *))
   {
     if (hash_table[i])
     {
+      node_aux = hash_table[i];
+      while (node_aux)
       {
-        node_aux = hash_table[i];
-        while (node_aux)
-        {
-          del_aux = node_aux;
-          node_aux = node_aux->drt;
-          free(del_aux);
-        }
-
+        del_aux = node_aux;
+        node_aux = node_aux->drt;
+        free(del_aux);
       }
+
     }
     else
     {

@@ -30,10 +30,8 @@ int main()
       case 'a':
         if (NJ >= (M / 2))
       {
-        {
-          M = 2 * M;
-          tab_dispersao = expande(tab_dispersao, M);
-        }
+        M = 2 * M;
+        tab_dispersao = expande(tab_dispersao, M);
       }
       else
       {

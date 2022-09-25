@@ -56,11 +56,9 @@ void Gclear()
   {
     if (gheads[i] != 0)
     {
-      {
-        for (t = gheads[i]; t != 0; t = GremoveItem(t, t->jogo, 1))
-          ;
+      for (t = gheads[i]; t != 0; t = GremoveItem(t, t->jogo, 1))
+        ;
 
-      }
     }
     else
     {
@@ -77,9 +75,7 @@ int haJogo(char *v)
   int i = hash(v, M);
   if (Glookup(gheads[i], v) == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {

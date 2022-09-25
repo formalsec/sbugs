@@ -126,11 +126,9 @@ void A()
   {
     if (Encomendas[iden_enc].produtosEncomenda[percorrer].identificador == ide_pro)
     {
-      {
-        Encomendas[iden_enc].produtosEncomenda[percorrer].quant_stk += qtd;
-        Encomendas[iden_enc].peso_encomenda += produtos[ide_pro].peso * qtd;
-        produtos[ide_pro].quant_stk -= qtd;
-      }
+      Encomendas[iden_enc].produtosEncomenda[percorrer].quant_stk += qtd;
+      Encomendas[iden_enc].peso_encomenda += produtos[ide_pro].peso * qtd;
+      produtos[ide_pro].quant_stk -= qtd;
     }
     else
     {
@@ -202,10 +200,8 @@ void R()
   {
     if (Encomendas[iden_enc].produtosEncomenda[i].identificador == ide_pro)
     {
-      {
-        Encomendas[iden_enc].produtosEncomenda[i].peso = 0;
-        produtos[ide_pro].quant_stk++;
-      }
+      Encomendas[iden_enc].produtosEncomenda[i].peso = 0;
+      produtos[ide_pro].quant_stk++;
     }
     else
     {
@@ -228,13 +224,11 @@ void C()
   }
   else
   {
+    for (i = 0; i < Encomendas[idencom].n_produtos; i++)
     {
-      for (i = 0; i < Encomendas[idencom].n_produtos; i++)
-      {
-        custo += Encomendas[idencom].produtosEncomenda[i].preco * Encomendas[idencom].produtosEncomenda[i].quant_stk;
-      }
-
+      custo += Encomendas[idencom].produtosEncomenda[i].preco * Encomendas[idencom].produtosEncomenda[i].quant_stk;
     }
+
   }
 
   printf("Custo da encomenda %d %d\n", idencom, custo);

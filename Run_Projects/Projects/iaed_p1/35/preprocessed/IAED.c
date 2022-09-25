@@ -62,17 +62,13 @@ void add_stock(char input[100])
   i = atoi(token);
   if (lstproducts[i] == 0)
   {
-    {
-      printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", i);
-    }
+    printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", i);
   }
   else
   {
-    {
-      token = strtok(0, "\0");
-      qtd = atoi(token);
-      lstproducts[i]->stock += qtd;
-    }
+    token = strtok(0, "\0");
+    qtd = atoi(token);
+    lstproducts[i]->stock += qtd;
   }
 
 }
@@ -86,29 +82,21 @@ void remove_stock(char input[100])
   i = atoi(token);
   if (lstproducts[i] == 0)
   {
-    {
-      printf("Impossivel remover stock do produto %d. Produto inexistente.\n", i);
-    }
+    printf("Impossivel remover stock do produto %d. Produto inexistente.\n", i);
   }
   else
   {
+    token = strtok(0, "\0");
+    qtd = atoi(token);
+    if (lstproducts[i]->stock >= qtd)
     {
-      token = strtok(0, "\0");
-      qtd = atoi(token);
-      if (lstproducts[i]->stock >= qtd)
-      {
-        {
-          lstproducts[i]->stock -= qtd;
-        }
-      }
-      else
-      {
-        {
-          printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, i);
-        }
-      }
-
+      lstproducts[i]->stock -= qtd;
     }
+    else
+    {
+      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, i);
+    }
+
   }
 
 }
@@ -139,78 +127,60 @@ void add_product_to_order(char input[100])
   qtd = atoi(token);
   if (lstorders[ide] == 0)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
   }
   else
   {
     if (lstproducts[idp] == 0)
     {
-      {
-        printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
-      }
+      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
     }
     else
     {
       if (qtd > lstproducts[idp]->stock)
       {
-        {
-          printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
-        }
+        printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
       }
       else
       {
+        if ((lstorders[ide]->orderweight + (lstproducts[idp]->weight * qtd)) <= 200)
         {
-          if ((lstorders[ide]->orderweight + (lstproducts[idp]->weight * qtd)) <= 200)
+          for (i = 0; i < lstorders[ide]->sizelstproducts; i++)
           {
+            if (strcmp(lstproducts[idp]->desc, lstorders[ide]->orderlstproducts[i].desc) == 0)
             {
-              for (i = 0; i < lstorders[ide]->sizelstproducts; i++)
-              {
-                if (strcmp(lstproducts[idp]->desc, lstorders[ide]->orderlstproducts[i].desc) == 0)
-                {
-                  {
-                    flag++;
-                    c = i;
-                  }
-                }
-                else
-                {
-                  
-                }
-
-              }
-
-              if (flag == 0)
-              {
-                {
-                  lstorders[ide]->orderlstproducts[lstorders[ide]->sizelstproducts] = *lstproducts[idp];
-                  lstorders[ide]->orderlstproducts[lstorders[ide]->sizelstproducts].stock = qtd;
-                  lstorders[ide]->sizelstproducts++;
-                  lstorders[ide]->orderweight += lstproducts[idp]->weight * qtd;
-                  lstproducts[idp]->stock -= qtd;
-                  lstproducts[idp]->times_in_order++;
-                }
-              }
-              else
-              {
-                {
-                  lstorders[ide]->orderlstproducts[c].stock += qtd;
-                  lstproducts[idp]->stock -= qtd;
-                  lstorders[ide]->orderweight += lstproducts[idp]->weight * qtd;
-                }
-              }
-
+              flag++;
+              c = i;
             }
+            else
+            {
+              
+            }
+
+          }
+
+          if (flag == 0)
+          {
+            lstorders[ide]->orderlstproducts[lstorders[ide]->sizelstproducts] = *lstproducts[idp];
+            lstorders[ide]->orderlstproducts[lstorders[ide]->sizelstproducts].stock = qtd;
+            lstorders[ide]->sizelstproducts++;
+            lstorders[ide]->orderweight += lstproducts[idp]->weight * qtd;
+            lstproducts[idp]->stock -= qtd;
+            lstproducts[idp]->times_in_order++;
           }
           else
           {
-            {
-              printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
-            }
+            lstorders[ide]->orderlstproducts[c].stock += qtd;
+            lstproducts[idp]->stock -= qtd;
+            lstorders[ide]->orderweight += lstproducts[idp]->weight * qtd;
           }
 
         }
+        else
+        {
+          printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
+        }
+
       }
 
     }
@@ -233,61 +203,51 @@ void remove_product_from_order(char input[100])
   idp = atoi(token);
   if (lstorders[ide] == 0)
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
   }
   else
   {
     if (lstproducts[idp] == 0)
     {
-      {
-        printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
-      }
+      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
     }
     else
     {
+      for (i = 0; i < lstorders[ide]->sizelstproducts; i++)
       {
-        for (i = 0; i < lstorders[ide]->sizelstproducts; i++)
+        if (strcmp(lstorders[ide]->orderlstproducts[i].desc, lstproducts[idp]->desc) == 0)
         {
-          if (strcmp(lstorders[ide]->orderlstproducts[i].desc, lstproducts[idp]->desc) == 0)
+          flag = i;
+          lstproducts[idp]->stock += lstorders[ide]->orderlstproducts[flag].stock;
+          lstorders[ide]->orderweight -= lstorders[ide]->orderlstproducts[flag].weight * lstorders[ide]->orderlstproducts[flag].stock;
+          if (flag == (lstorders[ide]->sizelstproducts - 1))
           {
-            {
-              flag = i;
-              lstproducts[idp]->stock += lstorders[ide]->orderlstproducts[flag].stock;
-              lstorders[ide]->orderweight -= lstorders[ide]->orderlstproducts[flag].weight * lstorders[ide]->orderlstproducts[flag].stock;
-              if (flag == (lstorders[ide]->sizelstproducts - 1))
-              {
-                {
-                  lstorders[ide]->orderlstproducts[flag].id = 0;
-                  strcpy(lstorders[ide]->orderlstproducts[flag].desc, "\0");
-                  lstorders[ide]->orderlstproducts[flag].price = 0;
-                  lstorders[ide]->orderlstproducts[flag].weight = 0;
-                  lstorders[ide]->orderlstproducts[flag].stock = 0;
-                }
-              }
-              else
-              {
-                
-              }
-
-              for (c = flag; c < (lstorders[ide]->sizelstproducts - 1); c++)
-              {
-                lstorders[ide]->orderlstproducts[c] = lstorders[ide]->orderlstproducts[c + 1];
-              }
-
-              lstorders[ide]->sizelstproducts--;
-              lstproducts[idp]->times_in_order--;
-            }
+            lstorders[ide]->orderlstproducts[flag].id = 0;
+            strcpy(lstorders[ide]->orderlstproducts[flag].desc, "\0");
+            lstorders[ide]->orderlstproducts[flag].price = 0;
+            lstorders[ide]->orderlstproducts[flag].weight = 0;
+            lstorders[ide]->orderlstproducts[flag].stock = 0;
           }
           else
           {
             
           }
 
+          for (c = flag; c < (lstorders[ide]->sizelstproducts - 1); c++)
+          {
+            lstorders[ide]->orderlstproducts[c] = lstorders[ide]->orderlstproducts[c + 1];
+          }
+
+          lstorders[ide]->sizelstproducts--;
+          lstproducts[idp]->times_in_order--;
+        }
+        else
+        {
+          
         }
 
       }
+
     }
 
   }
@@ -302,20 +262,16 @@ void calc_order_cost(char input[100])
   ide = atoi(input);
   if (lstorders[ide] == 0)
   {
-    {
-      printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ide);
-    }
+    printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ide);
   }
   else
   {
+    for (i = 0; i < lstorders[ide]->sizelstproducts; i++)
     {
-      for (i = 0; i < lstorders[ide]->sizelstproducts; i++)
-      {
-        total += lstproducts[lstorders[ide]->orderlstproducts[i].id]->price * lstorders[ide]->orderlstproducts[i].stock;
-      }
-
-      printf("Custo da encomenda %d %d.\n", ide, total);
+      total += lstproducts[lstorders[ide]->orderlstproducts[i].id]->price * lstorders[ide]->orderlstproducts[i].stock;
     }
+
+    printf("Custo da encomenda %d %d.\n", ide, total);
   }
 
 }
@@ -331,15 +287,11 @@ void change_product_price(char input[100])
   new_price = atoi(token);
   if (lstproducts[idp] == 0)
   {
-    {
-      printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idp);
-    }
+    printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idp);
   }
   else
   {
-    {
-      lstproducts[idp]->price = new_price;
-    }
+    lstproducts[idp]->price = new_price;
   }
 
 }
@@ -357,42 +309,22 @@ void list_product_in_order(char input[100])
   idp = atoi(token);
   if (lstorders[ide] == 0)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
   }
   else
   {
     if (lstproducts[idp] == 0)
     {
-      {
-        printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
-      }
+      printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
     }
     else
     {
+      for (i = 0; i < lstorders[ide]->sizelstproducts; i++)
       {
-        for (i = 0; i < lstorders[ide]->sizelstproducts; i++)
+        if (strcmp(lstproducts[idp]->desc, lstorders[ide]->orderlstproducts[i].desc) == 0)
         {
-          if (strcmp(lstproducts[idp]->desc, lstorders[ide]->orderlstproducts[i].desc) == 0)
-          {
-            {
-              flag++;
-              printf("%s %d.\n", lstorders[ide]->orderlstproducts[i].desc, lstorders[ide]->orderlstproducts[i].stock);
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-        if (flag == 0)
-        {
-          {
-            printf("%s 0.\n", lstproducts[idp]->desc);
-          }
+          flag++;
+          printf("%s %d.\n", lstorders[ide]->orderlstproducts[i].desc, lstorders[ide]->orderlstproducts[i].stock);
         }
         else
         {
@@ -400,6 +332,16 @@ void list_product_in_order(char input[100])
         }
 
       }
+
+      if (flag == 0)
+      {
+        printf("%s 0.\n", lstproducts[idp]->desc);
+      }
+      else
+      {
+        
+      }
+
     }
 
   }
@@ -416,37 +358,31 @@ void show_order_of_max_times_product(char input[100], int max)
   idp = atoi(input);
   if (lstproducts[idp] == 0)
   {
-    {
-      printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idp);
-    }
+    printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idp);
   }
   else
   {
     if (lstproducts[idp]->times_in_order != 0)
     {
+      for (ide = 0; ide < max; ide++)
       {
-        for (ide = 0; ide < max; ide++)
+        for (i = 0; i < lstorders[ide]->sizelstproducts; i++)
         {
-          for (i = 0; i < lstorders[ide]->sizelstproducts; i++)
+          if ((strcmp(lstorders[ide]->orderlstproducts[i].desc, lstproducts[idp]->desc) == 0) && (lstorders[ide]->orderlstproducts[i].stock > qtd))
           {
-            if ((strcmp(lstorders[ide]->orderlstproducts[i].desc, lstproducts[idp]->desc) == 0) && (lstorders[ide]->orderlstproducts[i].stock > qtd))
-            {
-              {
-                final_ide = ide;
-                qtd = lstorders[final_ide]->orderlstproducts[i].stock;
-              }
-            }
-            else
-            {
-              
-            }
-
+            final_ide = ide;
+            qtd = lstorders[final_ide]->orderlstproducts[i].stock;
+          }
+          else
+          {
+            
           }
 
         }
 
-        printf("Maximo produto %d %d %d.\n", idp, final_ide, qtd);
       }
+
+      printf("Maximo produto %d %d %d.\n", idp, final_ide, qtd);
     }
     else
     {
@@ -472,35 +408,25 @@ void merge(PRODUCT a[], int left, int m, int right)
   {
     if ((aux[j].price < aux[i].price) || (i > m))
     {
-      {
-        a[k] = aux[j--];
-      }
+      a[k] = aux[j--];
     }
     else
     {
       if (aux[j].id == aux[i].id)
       {
+        if (aux[j].id < aux[i].id)
         {
-          if (aux[j].id < aux[i].id)
-          {
-            {
-              a[k] = aux[j--];
-            }
-          }
-          else
-          {
-            {
-              a[k] = aux[i++];
-            }
-          }
-
+          a[k] = aux[j--];
         }
-      }
-      else
-      {
+        else
         {
           a[k] = aux[i++];
         }
+
+      }
+      else
+      {
+        a[k] = aux[i++];
       }
 
     }
@@ -541,15 +467,11 @@ void merge_alphabet(PRODUCT a[], int left, int m, int right)
   {
     if ((strcmp(aux[j].desc, aux[i].desc) < 0) || (i > m))
     {
-      {
-        a[k] = aux[j--];
-      }
+      a[k] = aux[j--];
     }
     else
     {
-      {
-        a[k] = aux[i++];
-      }
+      a[k] = aux[i++];
     }
 
   }
@@ -600,27 +522,23 @@ void print_lst_products_in_order(char input[100])
   ide = atoi(input);
   if (lstorders[ide] == 0)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
   }
   else
   {
+    order_aux->sizelstproducts = lstorders[ide]->sizelstproducts;
+    for (i = 0; i < lstorders[ide]->sizelstproducts; i++)
     {
-      order_aux->sizelstproducts = lstorders[ide]->sizelstproducts;
-      for (i = 0; i < lstorders[ide]->sizelstproducts; i++)
-      {
-        order_aux->orderlstproducts[i] = lstorders[ide]->orderlstproducts[i];
-      }
-
-      mergesort_alphabet(order_aux->orderlstproducts, 0, order_aux->sizelstproducts - 1);
-      printf("Encomenda %d\n", ide);
-      for (i = 0; i < order_aux->sizelstproducts; i++)
-      {
-        printf("* %s %d %d\n", order_aux->orderlstproducts[i].desc, lstproducts[order_aux->orderlstproducts[i].id]->price, order_aux->orderlstproducts[i].stock);
-      }
-
+      order_aux->orderlstproducts[i] = lstorders[ide]->orderlstproducts[i];
     }
+
+    mergesort_alphabet(order_aux->orderlstproducts, 0, order_aux->sizelstproducts - 1);
+    printf("Encomenda %d\n", ide);
+    for (i = 0; i < order_aux->sizelstproducts; i++)
+    {
+      printf("* %s %d %d\n", order_aux->orderlstproducts[i].desc, lstproducts[order_aux->orderlstproducts[i].id]->price, order_aux->orderlstproducts[i].stock);
+    }
+
   }
 
   free(order_aux);

@@ -25,17 +25,13 @@ void insere_lista_ult(lista *ls, jogos *jogo)
   novo_node->previous = ls->last;
   if (ls->head == 0)
   {
-    {
-      ls->head = novo_node;
-      ls->last = novo_node;
-    }
+    ls->head = novo_node;
+    ls->last = novo_node;
   }
   else
   {
-    {
-      ls->last->next = novo_node;
-      ls->last = novo_node;
-    }
+    ls->last->next = novo_node;
+    ls->last = novo_node;
   }
 
 }
@@ -50,35 +46,27 @@ void remove_lista(lista *ls, char *nome)
 
   if ((aux == ls->last) && (aux == ls->head))
   {
-    {
-      ls->head = 0;
-      ls->last = 0;
-    }
+    ls->head = 0;
+    ls->last = 0;
   }
   else
   {
     if (aux->previous == 0)
     {
-      {
-        aux->next->previous = 0;
-        ls->head = aux->next;
-      }
+      aux->next->previous = 0;
+      ls->head = aux->next;
     }
     else
     {
       if (aux->next == 0)
       {
-        {
-          aux->previous->next = 0;
-          ls->last = aux->previous;
-        }
+        aux->previous->next = 0;
+        ls->last = aux->previous;
       }
       else
       {
-        {
-          aux->previous->next = aux->next;
-          aux->next->previous = aux->previous;
-        }
+        aux->previous->next = aux->next;
+        aux->next->previous = aux->previous;
       }
 
     }
@@ -139,9 +127,7 @@ void insere_hash_jogos(hashtable_jogos *hash_table, jogos *jogo)
   hash_table->n_elem++;
   if (hash_table->n_elem >= (hash_table->tamanho / 2))
   {
-    {
-      expandir_hash_jogos(hash_table);
-    }
+    expandir_hash_jogos(hash_table);
   }
   else
   {
@@ -157,9 +143,7 @@ jogos *procura_hash_jogos(hashtable_jogos *hash_table, char *nome)
   {
     if (!strcmp(hash_table->hash[i]->nome, nome))
     {
-      {
-        return hash_table->hash[i];
-      }
+      return hash_table->hash[i];
     }
     else
     {
@@ -179,9 +163,7 @@ void remove_hash_jogos(hashtable_jogos *hash_table, char *nome)
   {
     if (!strcmp(hash_table->hash[i]->nome, nome))
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {
@@ -213,9 +195,7 @@ void expandir_hash_jogos(hashtable_jogos *hash_table)
   {
     if (hash_table->hash[i] != 0)
     {
-      {
-        insere_hash_jogos(nova_hash, hash_table->hash[i]);
-      }
+      insere_hash_jogos(nova_hash, hash_table->hash[i]);
     }
     else
     {
@@ -237,12 +217,10 @@ void free_hash_jogos(hashtable_jogos *hash_table)
   {
     if (hash_table->hash[i] != 0)
     {
-      {
-        free(hash_table->hash[i]->nome);
-        free(hash_table->hash[i]->equipa1);
-        free(hash_table->hash[i]->equipa2);
-        free(hash_table->hash[i]);
-      }
+      free(hash_table->hash[i]->nome);
+      free(hash_table->hash[i]->equipa1);
+      free(hash_table->hash[i]->equipa2);
+      free(hash_table->hash[i]);
     }
     else
     {

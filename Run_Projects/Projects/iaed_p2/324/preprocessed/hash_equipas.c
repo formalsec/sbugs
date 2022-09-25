@@ -17,21 +17,17 @@ void insert_new_e_node(e_node **head, char *nome_equipa)
   new_node->next = 0;
   if ((*head) == 0)
   {
-    {
-      *head = new_node;
-    }
+    *head = new_node;
   }
   else
   {
+    current = *head;
+    while (current->next != 0)
     {
-      current = *head;
-      while (current->next != 0)
-      {
-        current = current->next;
-      }
-
-      current->next = new_node;
+      current = current->next;
     }
+
+    current->next = new_node;
   }
 
 }
@@ -42,19 +38,15 @@ void insert_into_equipas(e_node **hashtable, char *nome)
   int location = get_location(nome);
   if (hashtable[location] == 0)
   {
-    {
-      head = 0;
-      insert_new_e_node(&head, nome);
-      hashtable[location] = head;
-    }
+    head = 0;
+    insert_new_e_node(&head, nome);
+    hashtable[location] = head;
   }
   else
   {
-    {
-      head = hashtable[location];
-      insert_new_e_node(&head, nome);
-      hashtable[location] = head;
-    }
+    head = hashtable[location];
+    insert_new_e_node(&head, nome);
+    hashtable[location] = head;
   }
 
 }

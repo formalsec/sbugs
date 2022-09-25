@@ -25,23 +25,21 @@ void HTinsert(void *pItem, HashTable *ht)
   ht->t[i] = pItem;
   if ((ht->N++) > (ht->M / 2))
   {
+    int i;
+    void **tmp = ht->t;
+    *ht = HTinit(ht->M, ht->keyfunc);
+    for (i = 0; i < (ht->M / 2); i++)
+      if (tmp[i] != 0)
     {
-      int i;
-      void **tmp = ht->t;
-      *ht = HTinit(ht->M, ht->keyfunc);
-      for (i = 0; i < (ht->M / 2); i++)
-        if (tmp[i] != 0)
-      {
-        HTinsert(tmp[i], ht);
-      }
-      else
-      {
-        
-      }
-
-
-      free(tmp);
+      HTinsert(tmp[i], ht);
     }
+    else
+    {
+      
+    }
+
+
+    free(tmp);
   }
   else
   {
@@ -97,10 +95,8 @@ void HTdestroy_with_item_free(HashTable *ht)
   for (i = 0; i < ht->M; i++)
     if (ht->t[i] != 0)
   {
-    {
-      free((Itemkey) ht->keyfunc(ht->t[i]));
-      free(ht->t[i]);
-    }
+    free((Itemkey) ht->keyfunc(ht->t[i]));
+    free(ht->t[i]);
   }
   else
   {

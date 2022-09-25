@@ -58,9 +58,7 @@ int procura_equipa(char *key, equipa *ht)
   {
     if (strcmp(ht[(h + i) % M]->nome_equipa, key) == 0)
     {
-      {
-        return (h + i) % M;
-      }
+      return (h + i) % M;
     }
     else
     {
@@ -72,9 +70,7 @@ int procura_equipa(char *key, equipa *ht)
 
   if ((ht[(h + i) % M] != 0) && (strcmp(ht[(h + i) % M]->nome_equipa, key) == 0))
   {
-    {
-      return (h + i) % M;
-    }
+    return (h + i) % M;
   }
   else
   {
@@ -91,9 +87,7 @@ void free_tabela_eq(equipa *ht)
   {
     if (ht[i] != 0)
     {
-      {
-        free_equipa(ht[i]);
-      }
+      free_equipa(ht[i]);
     }
     else
     {

@@ -35,28 +35,22 @@ link_jogo *a(int NL, pt_nome *nomes_jogos, link_jogo *jogos, link_equipa *equipa
   score2 = new_sym_var(sizeof(int) * 8);
   if (jogo_existe(nome, jogos))
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-      return jogos;
-    }
+    printf("%d Jogo existente.\n", NL);
+    return jogos;
   }
   else
   {
     if (!equipa_existe(equipa1, equipas))
     {
-      {
-        printf("%d Equipa inexistente.\n", NL);
-        return jogos;
-      }
+      printf("%d Equipa inexistente.\n", NL);
+      return jogos;
     }
     else
     {
       if (!equipa_existe(equipa2, equipas))
       {
-        {
-          printf("%d Equipa inexistente.\n", NL);
-          return jogos;
-        }
+        printf("%d Equipa inexistente.\n", NL);
+        return jogos;
       }
       else
       {
@@ -102,18 +96,14 @@ link_equipa *A(int NL, link_equipa *equipas)
   nome[10 - 1] = '\0';
   if (equipa_existe(nome, equipas))
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-      return equipas;
-    }
+    printf("%d Equipa existente.\n", NL);
+    return equipas;
   }
   else
   {
-    {
-      equipa = nova_equipa(nome);
-      insere_equipa_tabela(equipa, equipas);
-      return equipas;
-    }
+    equipa = nova_equipa(nome);
+    insere_equipa_tabela(equipa, equipas);
+    return equipas;
   }
 
 }
@@ -185,18 +175,14 @@ link_jogo *r(int NL, pt_nome *nomes_jogos, link_jogo *jogos)
   nome[10 - 1] = '\0';
   if (!jogo_existe(nome, jogos))
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return jogos;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return jogos;
   }
   else
   {
-    {
-      apaga_jogo_tabela(nome, jogos);
-      *nomes_jogos = apaga_nome_lista(*nomes_jogos, nome);
-      return jogos;
-    }
+    apaga_jogo_tabela(nome, jogos);
+    *nomes_jogos = apaga_nome_lista(*nomes_jogos, nome);
+    return jogos;
   }
 
 }
@@ -218,59 +204,50 @@ link_jogo *s(int NL, link_jogo *jogos)
   jogo = procura_jogo(nome, jogos);
   if (jogo == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return jogos;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return jogos;
   }
   else
   {
+    if ((jogo->score1 > jogo->score2) && (score1 < score2))
     {
-      if ((jogo->score1 > jogo->score2) && (score1 < score2))
+      jogo->equipa1->vitorias--;
+      jogo->equipa2->vitorias++;
+    }
+    else
+    {
+      if ((jogo->score1 < jogo->score2) && (score1 > score2))
       {
-        {
-          jogo->equipa1->vitorias--;
-          jogo->equipa2->vitorias++;
-        }
+        jogo->equipa2->vitorias--;
+        jogo->equipa1->vitorias++;
       }
       else
       {
-        if ((jogo->score1 < jogo->score2) && (score1 > score2))
+        if ((jogo->score1 > jogo->score2) && (score1 == score2))
         {
-          {
-            jogo->equipa2->vitorias--;
-            jogo->equipa1->vitorias++;
-          }
+          jogo->equipa1->vitorias--;
         }
         else
         {
-          if ((jogo->score1 > jogo->score2) && (score1 == score2))
+          if ((jogo->score1 < jogo->score2) && (score1 == score2))
           {
-            jogo->equipa1->vitorias--;
+            jogo->equipa2->vitorias--;
           }
           else
           {
-            if ((jogo->score1 < jogo->score2) && (score1 == score2))
+            if ((jogo->score1 == jogo->score2) && (score1 > score2))
             {
-              jogo->equipa2->vitorias--;
+              jogo->equipa1->vitorias++;
             }
             else
             {
-              if ((jogo->score1 == jogo->score2) && (score1 > score2))
+              if ((jogo->score1 == jogo->score2) && (score1 < score2))
               {
-                jogo->equipa1->vitorias++;
+                jogo->equipa2->vitorias++;
               }
               else
               {
-                if ((jogo->score1 == jogo->score2) && (score1 < score2))
-                {
-                  jogo->equipa2->vitorias++;
-                }
-                else
-                {
-                  
-                }
-
+                
               }
 
             }
@@ -281,10 +258,11 @@ link_jogo *s(int NL, link_jogo *jogos)
 
       }
 
-      jogo->score1 = score1;
-      jogo->score2 = score2;
-      return jogos;
     }
+
+    jogo->score1 = score1;
+    jogo->score2 = score2;
+    return jogos;
   }
 
 }
@@ -306,22 +284,20 @@ void g(int NL, link_equipa *equipas)
     {
       if (aux->equipa->vitorias == max_score)
       {
+        comp = strlen(aux->equipa->nome) + 1;
+        if (comp > max_comp)
         {
-          comp = strlen(aux->equipa->nome) + 1;
-          if (comp > max_comp)
-          {
-            max_comp = comp;
-          }
-          else
-          {
-            
-          }
-
-          nomes[size] = (pt_nome) malloc(sizeof(struct nome));
-          nomes[size]->nome = (char *) malloc(comp * (sizeof(char)));
-          strcpy(nomes[size]->nome, aux->equipa->nome);
-          size++;
+          max_comp = comp;
         }
+        else
+        {
+          
+        }
+
+        nomes[size] = (pt_nome) malloc(sizeof(struct nome));
+        nomes[size]->nome = (char *) malloc(comp * (sizeof(char)));
+        strcpy(nomes[size]->nome, aux->equipa->nome);
+        size++;
       }
       else
       {

@@ -16,9 +16,7 @@ void free_Equipa(Equipa e)
 {
   if (e != 0)
   {
-    {
-      free(e->nome);
-    }
+    free(e->nome);
   }
   else
   {
@@ -48,9 +46,7 @@ void free_Jogo(Jogo j)
 {
   if (j != 0)
   {
-    {
-      free(j->nome);
-    }
+    free(j->nome);
   }
   else
   {

@@ -74,10 +74,8 @@ node_equipas **melhores_equipas(Equipas *equipas, long *numero_melhores)
   {
     if (equipa->jogos_ganhos > max_jogos_ganhos)
     {
-      {
-        max_jogos_ganhos = equipa->jogos_ganhos;
-        i = 1;
-      }
+      max_jogos_ganhos = equipa->jogos_ganhos;
+      i = 1;
     }
     else
     {

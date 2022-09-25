@@ -101,35 +101,27 @@ void merge(Produto produtos[], int lim_esq, int meio, int lim_dir)
   {
     if (auxiliar[j].preco < auxiliar[i].preco)
     {
-      {
-        produtos[k] = auxiliar[j];
-        j--;
-      }
+      produtos[k] = auxiliar[j];
+      j--;
     }
     else
     {
       if (auxiliar[i].preco < auxiliar[j].preco)
       {
-        {
-          produtos[k] = auxiliar[i];
-          i++;
-        }
+        produtos[k] = auxiliar[i];
+        i++;
       }
       else
       {
         if (auxiliar[j].id < auxiliar[i].id)
         {
-          {
-            produtos[k] = auxiliar[j];
-            j--;
-          }
+          produtos[k] = auxiliar[j];
+          j--;
         }
         else
         {
-          {
-            produtos[k] = auxiliar[i];
-            i++;
-          }
+          produtos[k] = auxiliar[i];
+          i++;
         }
 
       }
@@ -145,11 +137,9 @@ void mergesort(Produto produtos[], int lim_esq, int lim_dir)
   int meio = (lim_dir + lim_esq) / 2;
   if (!(lim_dir <= lim_esq))
   {
-    {
-      mergesort(produtos, lim_esq, meio);
-      mergesort(produtos, meio + 1, lim_dir);
-      merge(produtos, lim_esq, meio, lim_dir);
-    }
+    mergesort(produtos, lim_esq, meio);
+    mergesort(produtos, meio + 1, lim_dir);
+    merge(produtos, lim_esq, meio, lim_dir);
   }
   else
   {
@@ -169,10 +159,8 @@ void ordena(Produto vetor[], int len)
     {
       if (strcmp(vetor[i].descricao, vetor[i + 1].descricao) > 0)
       {
-        {
-          troca(vetor, i);
-          ha_troca = 1;
-        }
+        troca(vetor, i);
+        ha_troca = 1;
       }
       else
       {
@@ -243,42 +231,34 @@ void func_A(int ide, int idp, int qtd)
         }
         else
         {
+          for (i = 0; i < sistema_encomendas[ide].cont; i++)
           {
-            for (i = 0; i < sistema_encomendas[ide].cont; i++)
+            if (mesmosProdutos(sistema_encomendas[ide].item[i], sistema_produtos[idp]))
             {
-              if (mesmosProdutos(sistema_encomendas[ide].item[i], sistema_produtos[idp]))
-              {
-                {
-                  contem = 1;
-                  break;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-            if (contem)
-            {
-              {
-                sistema_encomendas[ide].item[i].qtd += qtd;
-              }
+              contem = 1;
+              break;
             }
             else
             {
-              {
-                sistema_encomendas[ide].item[sistema_encomendas[ide].cont] = sistema_produtos[idp];
-                sistema_encomendas[ide].item[sistema_encomendas[ide].cont].qtd = qtd;
-                sistema_encomendas[ide].cont++;
-              }
+              
             }
 
-            sistema_encomendas[ide].peso += sistema_produtos[idp].peso * qtd;
-            sistema_encomendas[ide].preco += sistema_produtos[idp].preco * qtd;
-            sistema_produtos[idp].qtd -= qtd;
           }
+
+          if (contem)
+          {
+            sistema_encomendas[ide].item[i].qtd += qtd;
+          }
+          else
+          {
+            sistema_encomendas[ide].item[sistema_encomendas[ide].cont] = sistema_produtos[idp];
+            sistema_encomendas[ide].item[sistema_encomendas[ide].cont].qtd = qtd;
+            sistema_encomendas[ide].cont++;
+          }
+
+          sistema_encomendas[ide].peso += sistema_produtos[idp].peso * qtd;
+          sistema_encomendas[ide].preco += sistema_produtos[idp].preco * qtd;
+          sistema_produtos[idp].qtd -= qtd;
         }
 
       }
@@ -326,34 +306,30 @@ void func_R(int ide, int idp)
     }
     else
     {
+      for (i = 0; i < sistema_encomendas[ide].cont; i++)
       {
-        for (i = 0; i < sistema_encomendas[ide].cont; i++)
+        if (mesmosProdutos(sistema_encomendas[ide].item[i], sistema_produtos[idp]))
         {
-          if (mesmosProdutos(sistema_encomendas[ide].item[i], sistema_produtos[idp]))
+          sistema_produtos[idp].qtd += sistema_encomendas[ide].item[i].qtd;
+          sistema_encomendas[ide].peso -= sistema_encomendas[ide].item[i].qtd * sistema_encomendas[ide].item[i].peso;
+          sistema_encomendas[ide].preco -= sistema_encomendas[ide].item[i].qtd * sistema_encomendas[ide].item[i].preco;
+          j = i;
+          while (j != sistema_encomendas[ide].cont)
           {
-            {
-              sistema_produtos[idp].qtd += sistema_encomendas[ide].item[i].qtd;
-              sistema_encomendas[ide].peso -= sistema_encomendas[ide].item[i].qtd * sistema_encomendas[ide].item[i].peso;
-              sistema_encomendas[ide].preco -= sistema_encomendas[ide].item[i].qtd * sistema_encomendas[ide].item[i].preco;
-              j = i;
-              while (j != sistema_encomendas[ide].cont)
-              {
-                sistema_encomendas[ide].item[j] = sistema_encomendas[ide].item[j + 1];
-                j++;
-              }
-
-              sistema_encomendas[ide].cont--;
-              break;
-            }
-          }
-          else
-          {
-            
+            sistema_encomendas[ide].item[j] = sistema_encomendas[ide].item[j + 1];
+            j++;
           }
 
+          sistema_encomendas[ide].cont--;
+          break;
+        }
+        else
+        {
+          
         }
 
       }
+
     }
 
   }
@@ -383,31 +359,27 @@ void func_p(int idp, int preco)
   }
   else
   {
+    sistema_produtos[idp].preco = preco;
+    for (i = 0; i < cont_encomenda; i++)
     {
-      sistema_produtos[idp].preco = preco;
-      for (i = 0; i < cont_encomenda; i++)
+      for (j = 0; j < sistema_encomendas[i].cont; j++)
       {
-        for (j = 0; j < sistema_encomendas[i].cont; j++)
+        if (mesmosProdutos(sistema_encomendas[i].item[j], sistema_produtos[idp]))
         {
-          if (mesmosProdutos(sistema_encomendas[i].item[j], sistema_produtos[idp]))
-          {
-            {
-              sistema_encomendas[i].preco -= sistema_encomendas[i].item[j].qtd * sistema_encomendas[i].item[j].preco;
-              sistema_encomendas[i].item[j].preco = preco;
-              sistema_encomendas[i].preco += sistema_encomendas[i].item[j].qtd * sistema_encomendas[i].item[j].preco;
-              break;
-            }
-          }
-          else
-          {
-            
-          }
-
+          sistema_encomendas[i].preco -= sistema_encomendas[i].item[j].qtd * sistema_encomendas[i].item[j].preco;
+          sistema_encomendas[i].item[j].preco = preco;
+          sistema_encomendas[i].preco += sistema_encomendas[i].item[j].qtd * sistema_encomendas[i].item[j].preco;
+          break;
+        }
+        else
+        {
+          
         }
 
       }
 
     }
+
   }
 
 }
@@ -427,25 +399,21 @@ void func_E(int ide, int idp)
     }
     else
     {
+      for (i = 0; i < sistema_encomendas[ide].cont; i++)
       {
-        for (i = 0; i < sistema_encomendas[ide].cont; i++)
+        if (mesmosProdutos(sistema_encomendas[ide].item[i], sistema_produtos[idp]))
         {
-          if (mesmosProdutos(sistema_encomendas[ide].item[i], sistema_produtos[idp]))
-          {
-            {
-              printf("%s %d.\n", sistema_produtos[idp].descricao, sistema_encomendas[ide].item[i].qtd);
-              return;
-            }
-          }
-          else
-          {
-            
-          }
-
+          printf("%s %d.\n", sistema_produtos[idp].descricao, sistema_encomendas[ide].item[i].qtd);
+          return;
+        }
+        else
+        {
+          
         }
 
-        printf("%s %d.\n", sistema_produtos[idp].descricao, 0);
       }
+
+      printf("%s %d.\n", sistema_produtos[idp].descricao, 0);
     }
 
   }
@@ -465,39 +433,35 @@ void func_m(int idp)
   }
   else
   {
+    for (i = 0; i < cont_encomenda; i++)
     {
-      for (i = 0; i < cont_encomenda; i++)
+      for (j = 0; j < sistema_encomendas[i].cont; j++)
       {
-        for (j = 0; j < sistema_encomendas[i].cont; j++)
+        if (mesmosProdutos(sistema_encomendas[i].item[j], sistema_produtos[idp]) && (qtd < sistema_encomendas[i].item[j].qtd))
         {
-          if (mesmosProdutos(sistema_encomendas[i].item[j], sistema_produtos[idp]) && (qtd < sistema_encomendas[i].item[j].qtd))
-          {
-            {
-              qtd = sistema_encomendas[i].item[j].qtd;
-              ide = i;
-              contem = 1;
-              break;
-            }
-          }
-          else
-          {
-            
-          }
-
+          qtd = sistema_encomendas[i].item[j].qtd;
+          ide = i;
+          contem = 1;
+          break;
+        }
+        else
+        {
+          
         }
 
       }
 
-      if (contem)
-      {
-        printf("Maximo produto %d %d %d.\n", idp, ide, qtd);
-      }
-      else
-      {
-        
-      }
-
     }
+
+    if (contem)
+    {
+      printf("Maximo produto %d %d %d.\n", idp, ide, qtd);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -519,11 +483,9 @@ void func_L(int ide)
   }
   else
   {
-    {
-      ordena(sistema_encomendas[ide].item, sistema_encomendas[ide].cont);
-      printf("Encomenda %d\n", ide);
-      print_produtos(sistema_encomendas[ide].cont, sistema_encomendas[ide].item);
-    }
+    ordena(sistema_encomendas[ide].item, sistema_encomendas[ide].cont);
+    printf("Encomenda %d\n", ide);
+    print_produtos(sistema_encomendas[ide].cont, sistema_encomendas[ide].item);
   }
 
 }

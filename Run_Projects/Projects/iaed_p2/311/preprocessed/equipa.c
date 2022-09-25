@@ -60,19 +60,17 @@ link_E deleteE(link_E head, char *nome)
   {
     if (strcmp(t->equipa->nome, nome) == 0)
     {
+      if (t == head)
       {
-        if (t == head)
-        {
-          head = t->next;
-        }
-        else
-        {
-          prev->next = t->next;
-        }
-
-        free(t);
-        break;
+        head = t->next;
       }
+      else
+      {
+        prev->next = t->next;
+      }
+
+      free(t);
+      break;
     }
     else
     {

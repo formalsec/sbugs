@@ -105,10 +105,8 @@ void novo_jogo(int contador_input, EQUIPA **ht_eq, JOGO **ht_jg, LISTA **lista)
   jogo = procura_jogo_aux(nome, ht_jg);
   if (jogo != 0)
   {
-    {
-      printf("%d Jogo existente.\n", contador_input);
-      return;
-    }
+    printf("%d Jogo existente.\n", contador_input);
+    return;
   }
   else
   {
@@ -119,10 +117,8 @@ void novo_jogo(int contador_input, EQUIPA **ht_eq, JOGO **ht_jg, LISTA **lista)
   equipa2_aux = procura_equipa_aux(equipa2, ht_eq);
   if ((equipa1_aux == 0) || (equipa2_aux == 0))
   {
-    {
-      printf("%d Equipa inexistente.\n", contador_input);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", contador_input);
+    return;
   }
   else
   {
@@ -151,10 +147,8 @@ void nova_equipa(int contador_input, EQUIPA **ht, LISTA_EQ **lista)
   eq = procura_equipa_aux(nome, ht);
   if (eq != 0)
   {
-    {
-      printf("%d Equipa existente.\n", contador_input);
-      return;
-    }
+    printf("%d Equipa existente.\n", contador_input);
+    return;
   }
   else
   {
@@ -198,10 +192,8 @@ void procura_jogo(int contador_input, JOGO **ht_jg)
   jogo = procura_jogo_aux(nome, ht_jg);
   if (jogo == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", contador_input);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", contador_input);
+    return;
   }
   else
   {
@@ -224,10 +216,8 @@ void procura_equipa(int contador_input, EQUIPA **ht)
   equipa = procura_equipa_aux(nome, ht);
   if (equipa == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", contador_input);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", contador_input);
+    return;
   }
   else
   {
@@ -250,10 +240,8 @@ void apaga_jogo(int contador_input, JOGO **ht_jg, LISTA **lista)
   jogo = procura_jogo_aux(nome, ht_jg);
   if (jogo == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", contador_input);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", contador_input);
+    return;
   }
   else
   {
@@ -299,10 +287,8 @@ void altera_score(int contador_input, JOGO **ht_jg)
   jogo = procura_jogo_aux(nome, ht_jg);
   if (jogo == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", contador_input);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", contador_input);
+    return;
   }
   else
   {
@@ -311,19 +297,39 @@ void altera_score(int contador_input, JOGO **ht_jg)
 
   if (jogo->score1 > jogo->score2)
   {
+    if (score1 == score2)
     {
-      if (score1 == score2)
+      jogo->equipa1->jogos_ganhos--;
+    }
+    else
+    {
+      if (score1 < score2)
       {
         jogo->equipa1->jogos_ganhos--;
+        jogo->equipa2->jogos_ganhos++;
       }
       else
       {
-        if (score1 < score2)
+        
+      }
+
+    }
+
+  }
+  else
+  {
+    if (jogo->score1 < jogo->score2)
+    {
+      if (score1 == score2)
+      {
+        jogo->equipa2->jogos_ganhos--;
+      }
+      else
+      {
+        if (score1 > score2)
         {
-          {
-            jogo->equipa1->jogos_ganhos--;
-            jogo->equipa2->jogos_ganhos++;
-          }
+          jogo->equipa1->jogos_ganhos++;
+          jogo->equipa2->jogos_ganhos--;
         }
         else
         {
@@ -333,24 +339,19 @@ void altera_score(int contador_input, JOGO **ht_jg)
       }
 
     }
-  }
-  else
-  {
-    if (jogo->score1 < jogo->score2)
+    else
     {
+      if (jogo->score1 == jogo->score2)
       {
-        if (score1 == score2)
+        if (score1 > score2)
         {
-          jogo->equipa2->jogos_ganhos--;
+          jogo->equipa1->jogos_ganhos++;
         }
         else
         {
-          if (score1 > score2)
+          if (score1 < score2)
           {
-            {
-              jogo->equipa1->jogos_ganhos++;
-              jogo->equipa2->jogos_ganhos--;
-            }
+            jogo->equipa2->jogos_ganhos++;
           }
           else
           {
@@ -359,31 +360,6 @@ void altera_score(int contador_input, JOGO **ht_jg)
 
         }
 
-      }
-    }
-    else
-    {
-      if (jogo->score1 == jogo->score2)
-      {
-        {
-          if (score1 > score2)
-          {
-            jogo->equipa1->jogos_ganhos++;
-          }
-          else
-          {
-            if (score1 < score2)
-            {
-              jogo->equipa2->jogos_ganhos++;
-            }
-            else
-            {
-              
-            }
-
-          }
-
-        }
       }
       else
       {

@@ -23,53 +23,51 @@ int main()
   {
     if (fgets(input, 3096 - 1, stdin) != 0)
     {
+      NL++;
+      switch (SeparaInput(input, input_separado))
       {
-        NL++;
-        switch (SeparaInput(input, input_separado))
-        {
-          case 'a':
-            jogo = CriaJogo(input_separado);
-            AdicionaNovoJogo(NL, jogo, hash_table_jogos, hash_table_equipas, lista_jogos);
-            break;
+        case 'a':
+          jogo = CriaJogo(input_separado);
+          AdicionaNovoJogo(NL, jogo, hash_table_jogos, hash_table_equipas, lista_jogos);
+          break;
 
-          case 'l':
-            ListaJogosIntroduzidos(NL, lista_jogos);
-            break;
+        case 'l':
+          ListaJogosIntroduzidos(NL, lista_jogos);
+          break;
 
-          case 'p':
-            ProcuraJogo(NL, input_separado, hash_table_jogos);
-            break;
+        case 'p':
+          ProcuraJogo(NL, input_separado, hash_table_jogos);
+          break;
 
-          case 'r':
-            ApagaJogo(NL, input_separado, hash_table_jogos, hash_table_equipas, lista_jogos);
-            break;
+        case 'r':
+          ApagaJogo(NL, input_separado, hash_table_jogos, hash_table_equipas, lista_jogos);
+          break;
 
-          case 's':
-            AlteraScore(NL, input_separado, hash_table_jogos, hash_table_equipas);
-            break;
+        case 's':
+          AlteraScore(NL, input_separado, hash_table_jogos, hash_table_equipas);
+          break;
 
-          case 'A':
-            equipa = CriaEquipa(input_separado);
-            AdicionaNovaEquipa(NL, equipa, hash_table_equipas, lista_equipas);
-            break;
+        case 'A':
+          equipa = CriaEquipa(input_separado);
+          AdicionaNovaEquipa(NL, equipa, hash_table_equipas, lista_equipas);
+          break;
 
-          case 'P':
-            ProcuraEquipa(NL, input_separado, hash_table_equipas);
-            break;
+        case 'P':
+          ProcuraEquipa(NL, input_separado, hash_table_equipas);
+          break;
 
-          case 'g':
-            OrdenaEquipas(NL, lista_equipas);
-            break;
+        case 'g':
+          OrdenaEquipas(NL, lista_equipas);
+          break;
 
-          case 'x':
-            LimpezaGeral(hash_table_jogos, lista_jogos, DestroiJogo);
-            LimpezaGeral(hash_table_equipas, lista_equipas, DestroiEquipa);
-            return 0;
-            break;
-
-        }
+        case 'x':
+          LimpezaGeral(hash_table_jogos, lista_jogos, DestroiJogo);
+          LimpezaGeral(hash_table_equipas, lista_equipas, DestroiEquipa);
+          return 0;
+          break;
 
       }
+
     }
     else
     {

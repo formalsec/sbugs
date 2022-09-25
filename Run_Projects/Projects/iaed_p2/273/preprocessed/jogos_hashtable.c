@@ -31,9 +31,7 @@ jogo *insere_jogo(jogo *novo_jogo, int *pt_max_ht_jogos, jogo **hashtable_jogos,
   {
     if (strcmp(hashtable_jogos[i]->nome, novo_jogo->nome) == 0)
     {
-      {
-        return 0;
-      }
+      return 0;
     }
     else
     {
@@ -48,23 +46,17 @@ jogo *insere_jogo(jogo *novo_jogo, int *pt_max_ht_jogos, jogo **hashtable_jogos,
   novo_jogo->seguinte = 0;
   if (lst_jogos->jogo_final != 0)
   {
-    {
-      lst_jogos->jogo_final->seguinte = novo_jogo;
-    }
+    lst_jogos->jogo_final->seguinte = novo_jogo;
   }
   else
   {
-    {
-      lst_jogos->jogo_inicial = novo_jogo;
-    }
+    lst_jogos->jogo_inicial = novo_jogo;
   }
 
   lst_jogos->jogo_final = novo_jogo;
   if (((*pt_num_elem)++) > ((*pt_max_ht_jogos) / 2))
   {
-    {
-      hashtable_jogos = expande_hashtable_jogos(hashtable_jogos, pt_max_ht_jogos, pt_num_elem, lst_jogos);
-    }
+    hashtable_jogos = expande_hashtable_jogos(hashtable_jogos, pt_max_ht_jogos, pt_num_elem, lst_jogos);
   }
   else
   {
@@ -81,9 +73,7 @@ void liberta_hashtable_jogos(jogo **ht_jogos, int max_ht_jogos)
   {
     if (ht_jogos[i] != 0)
     {
-      {
-        liberta_jogo(ht_jogos[i]);
-      }
+      liberta_jogo(ht_jogos[i]);
     }
     else
     {
@@ -105,9 +95,7 @@ jogo **expande_hashtable_jogos(jogo **ht_jogos, int *pt_max_ht_jogos, int *pt_nu
   {
     if (hastable_antiga[i] != 0)
     {
-      {
-        insere_jogo(hastable_antiga[i], pt_max_ht_jogos, ht_jogos, pt_num_elem, lst_jogos);
-      }
+      insere_jogo(hastable_antiga[i], pt_max_ht_jogos, ht_jogos, pt_num_elem, lst_jogos);
     }
     else
     {
@@ -127,15 +115,11 @@ jogo *procura_jogo_ht(jogo **ht_jogos, char nome_jogo_procurar[], int max_ht_jog
   {
     if (strcmp(ht_jogos[i]->nome, nome_jogo_procurar) == 0)
     {
-      {
-        return ht_jogos[i];
-      }
+      return ht_jogos[i];
     }
     else
     {
-      {
-        i = (i + 1) % max_ht_jogos;
-      }
+      i = (i + 1) % max_ht_jogos;
     }
 
   }
@@ -151,24 +135,18 @@ int remove_jogo_ht(char nome_jogo_eliminar[], jogo **ht_jogos, int *pt_max_ht_jo
   {
     if (strcmp(ht_jogos[i]->nome, nome_jogo_eliminar) == 0)
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {
-      {
-        i = (i + 1) % (*pt_max_ht_jogos);
-      }
+      i = (i + 1) % (*pt_max_ht_jogos);
     }
 
   }
 
   if (ht_jogos[i] == 0)
   {
-    {
-      return -1;
-    }
+    return -1;
   }
   else
   {
@@ -178,28 +156,20 @@ int remove_jogo_ht(char nome_jogo_eliminar[], jogo **ht_jogos, int *pt_max_ht_jo
   altera_resultados_jogo(ht_jogos[i], 0, 0);
   if (ht_jogos[i]->anterior == 0)
   {
-    {
-      lst_jogos->jogo_inicial = ht_jogos[i]->seguinte;
-    }
+    lst_jogos->jogo_inicial = ht_jogos[i]->seguinte;
   }
   else
   {
-    {
-      ht_jogos[i]->anterior->seguinte = ht_jogos[i]->seguinte;
-    }
+    ht_jogos[i]->anterior->seguinte = ht_jogos[i]->seguinte;
   }
 
   if (ht_jogos[i]->seguinte == 0)
   {
-    {
-      lst_jogos->jogo_final = ht_jogos[i]->anterior;
-    }
+    lst_jogos->jogo_final = ht_jogos[i]->anterior;
   }
   else
   {
-    {
-      ht_jogos[i]->seguinte->anterior = ht_jogos[i]->anterior;
-    }
+    ht_jogos[i]->seguinte->anterior = ht_jogos[i]->anterior;
   }
 
   liberta_jogo(ht_jogos[i]);

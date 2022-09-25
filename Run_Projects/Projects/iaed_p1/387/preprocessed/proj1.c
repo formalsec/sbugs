@@ -114,40 +114,34 @@ void ad_prod_enc()
       }
       else
       {
+        id_qtd_encomendas = enc_exis[ide].qnt_prod;
+        for (i = 0; i < id_qtd_encomendas; i++)
         {
-          id_qtd_encomendas = enc_exis[ide].qnt_prod;
-          for (i = 0; i < id_qtd_encomendas; i++)
-          {
-            peso_total += enc_exis[ide].lista[i].stock * enc_exis[ide].lista[i].peso;
-          }
+          peso_total += enc_exis[ide].lista[i].stock * enc_exis[ide].lista[i].peso;
+        }
 
-          if ((peso_total + (stock * prod_exis[idp].peso)) > 200)
+        if ((peso_total + (stock * prod_exis[idp].peso)) > 200)
+        {
+          printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
+        }
+        else
+        {
+          if (existe_prod_lista(idp, enc_exis[ide].lista, enc_exis[ide].qnt_prod) == (-1))
           {
-            printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
+            enc_exis[ide].lista[id_qtd_encomendas] = prod_exis[idp];
+            enc_exis[ide].lista[id_qtd_encomendas].stock = stock;
+            enc_exis[ide].qnt_prod++;
+            prod_exis[idp].stock -= stock;
           }
           else
           {
-            if (existe_prod_lista(idp, enc_exis[ide].lista, enc_exis[ide].qnt_prod) == (-1))
-            {
-              {
-                enc_exis[ide].lista[id_qtd_encomendas] = prod_exis[idp];
-                enc_exis[ide].lista[id_qtd_encomendas].stock = stock;
-                enc_exis[ide].qnt_prod++;
-                prod_exis[idp].stock -= stock;
-              }
-            }
-            else
-            {
-              {
-                idp_enc = existe_prod_lista(idp, enc_exis[ide].lista, enc_exis[ide].qnt_prod);
-                enc_exis[ide].lista[idp_enc].stock += stock;
-                prod_exis[idp].stock -= stock;
-              }
-            }
-
+            idp_enc = existe_prod_lista(idp, enc_exis[ide].lista, enc_exis[ide].qnt_prod);
+            enc_exis[ide].lista[idp_enc].stock += stock;
+            prod_exis[idp].stock -= stock;
           }
 
         }
+
       }
 
     }
@@ -200,21 +194,17 @@ void remove_prod_enc()
     }
     else
     {
+      idprod_enc = existe_prod_lista(idp, enc_exis[ide].lista, enc_exis[ide].qnt_prod);
+      if (idprod_enc > (-1))
       {
-        idprod_enc = existe_prod_lista(idp, enc_exis[ide].lista, enc_exis[ide].qnt_prod);
-        if (idprod_enc > (-1))
-        {
-          {
-            prod_exis[idp].stock += enc_exis[ide].lista[idprod_enc].stock;
-            enc_exis[ide].lista[idprod_enc].stock = 0;
-          }
-        }
-        else
-        {
-          
-        }
-
+        prod_exis[idp].stock += enc_exis[ide].lista[idprod_enc].stock;
+        enc_exis[ide].lista[idprod_enc].stock = 0;
       }
+      else
+      {
+        
+      }
+
     }
 
   }
@@ -233,12 +223,10 @@ void custo_enc()
   }
   else
   {
-    {
-      for (i = 0; i < enc_exis[ide].qnt_prod; i++)
-        total += enc_exis[ide].lista[i].stock * enc_exis[ide].lista[i].preco;
+    for (i = 0; i < enc_exis[ide].qnt_prod; i++)
+      total += enc_exis[ide].lista[i].stock * enc_exis[ide].lista[i].preco;
 
-      printf("Custo da encomenda %d %d.\n", ide, total);
-    }
+    printf("Custo da encomenda %d %d.\n", ide, total);
   }
 
 }
@@ -257,23 +245,21 @@ void altera_preco()
   }
   else
   {
+    prod_exis[idp].preco = novo_preco;
+    for (i = 0; i < ide_atual; i++)
     {
-      prod_exis[idp].preco = novo_preco;
-      for (i = 0; i < ide_atual; i++)
+      idprod_enc = existe_prod_lista(idp, enc_exis[i].lista, enc_exis[i].qnt_prod);
+      if (idprod_enc != (-1))
       {
-        idprod_enc = existe_prod_lista(idp, enc_exis[i].lista, enc_exis[i].qnt_prod);
-        if (idprod_enc != (-1))
-        {
-          enc_exis[i].lista[idprod_enc].preco = novo_preco;
-        }
-        else
-        {
-          
-        }
-
+        enc_exis[i].lista[idprod_enc].preco = novo_preco;
+      }
+      else
+      {
+        
       }
 
     }
+
   }
 
 }
@@ -297,18 +283,16 @@ void desc_qtd_prod_enc()
     }
     else
     {
+      idprod_enc = existe_prod_lista(idp, enc_exis[ide].lista, enc_exis[ide].qnt_prod);
+      if (idprod_enc > (-1))
       {
-        idprod_enc = existe_prod_lista(idp, enc_exis[ide].lista, enc_exis[ide].qnt_prod);
-        if (idprod_enc > (-1))
-        {
-          printf("%s %d.\n", prod_exis[idp].des, enc_exis[ide].lista[idprod_enc].stock);
-        }
-        else
-        {
-          printf("%s 0.\n", prod_exis[idp].des);
-        }
-
+        printf("%s %d.\n", prod_exis[idp].des, enc_exis[ide].lista[idprod_enc].stock);
       }
+      else
+      {
+        printf("%s 0.\n", prod_exis[idp].des);
+      }
+
     }
 
   }
@@ -329,24 +313,15 @@ void max_prod()
   }
   else
   {
+    for (i = 0; i < ide_atual; i++)
     {
-      for (i = 0; i < ide_atual; i++)
+      idprod_enc = existe_prod_lista(idp, enc_exis[i].lista, enc_exis[i].qnt_prod);
+      if (idprod_enc != (-1))
       {
-        idprod_enc = existe_prod_lista(idp, enc_exis[i].lista, enc_exis[i].qnt_prod);
-        if (idprod_enc != (-1))
+        if (enc_exis[i].lista[idprod_enc].stock > qtd_max)
         {
-          if (enc_exis[i].lista[idprod_enc].stock > qtd_max)
-          {
-            {
-              qtd_max = enc_exis[i].lista[idprod_enc].stock;
-              ide_max = i;
-            }
-          }
-          else
-          {
-            
-          }
-
+          qtd_max = enc_exis[i].lista[idprod_enc].stock;
+          ide_max = i;
         }
         else
         {
@@ -354,17 +329,22 @@ void max_prod()
         }
 
       }
-
-      if (qtd_max > 0)
-      {
-        printf("Maximo produto %d %d %d.\n", idp, ide_max, qtd_max);
-      }
       else
       {
         
       }
 
     }
+
+    if (qtd_max > 0)
+    {
+      printf("Maximo produto %d %d %d.\n", idp, ide_max, qtd_max);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -373,17 +353,15 @@ int compara_prod(Produto a, Produto v)
 {
   if (opcao == 0)
   {
+    if (a.preco == v.preco)
     {
-      if (a.preco == v.preco)
-      {
-        return a.idp < v.idp;
-      }
-      else
-      {
-        return a.preco < v.preco;
-      }
-
+      return a.idp < v.idp;
     }
+    else
+    {
+      return a.preco < v.preco;
+    }
+
   }
   else
   {
@@ -429,11 +407,9 @@ void quicksort(Produto a[], int l, int r)
 
     if (i < j)
     {
-      {
-        Produto t = a[i];
-        a[i] = a[j];
-        a[j] = t;
-      }
+      Produto t = a[i];
+      a[i] = a[j];
+      a[j] = t;
     }
     else
     {
@@ -484,25 +460,23 @@ void ordena_encomenda()
   }
   else
   {
+    qtd = enc_exis[ide].qnt_prod;
+    opcao = 1;
+    quicksort(enc_exis[ide].lista, 0, qtd - 1);
+    printf("Encomenda %d\n", ide);
+    for (i = 0; i < qtd; i++)
     {
-      qtd = enc_exis[ide].qnt_prod;
-      opcao = 1;
-      quicksort(enc_exis[ide].lista, 0, qtd - 1);
-      printf("Encomenda %d\n", ide);
-      for (i = 0; i < qtd; i++)
+      if (enc_exis[ide].lista[i].stock > 0)
       {
-        if (enc_exis[ide].lista[i].stock > 0)
-        {
-          printf("* %s %d %d\n", enc_exis[ide].lista[i].des, enc_exis[ide].lista[i].preco, enc_exis[ide].lista[i].stock);
-        }
-        else
-        {
-          
-        }
-
+        printf("* %s %d %d\n", enc_exis[ide].lista[i].des, enc_exis[ide].lista[i].preco, enc_exis[ide].lista[i].stock);
+      }
+      else
+      {
+        
       }
 
     }
+
   }
 
 }

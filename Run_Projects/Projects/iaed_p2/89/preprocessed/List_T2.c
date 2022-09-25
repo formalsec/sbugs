@@ -23,35 +23,27 @@ LTlink LTinsert(LTlink LThead, Team team)
   LTlink prev;
   if (LThead == 0)
   {
-    {
-      x = LTnew(team);
-      return x;
-    }
+    x = LTnew(team);
+    return x;
   }
   else
   {
+    for (x = LThead, prev = 0; (x != 0) && Tless(team, LTgetteam(x)); prev = x, x = x->next)
+      ;
+
+    if (x == LThead)
     {
-      for (x = LThead, prev = 0; (x != 0) && Tless(team, LTgetteam(x)); prev = x, x = x->next)
-        ;
-
-      if (x == LThead)
-      {
-        {
-          x = LTnew(team);
-          x->next = LThead;
-          return x;
-        }
-      }
-      else
-      {
-        {
-          x = LTnew(team);
-          x->next = prev->next;
-          prev->next = x;
-        }
-      }
-
+      x = LTnew(team);
+      x->next = LThead;
+      return x;
     }
+    else
+    {
+      x = LTnew(team);
+      x->next = prev->next;
+      prev->next = x;
+    }
+
   }
 
   return LThead;
@@ -65,21 +57,17 @@ LTlink LTdelete(LTlink LThead, Team team)
   {
     if (strcmp(Tgetname(team), Tgetname(LTgetteam(x))) == 0)
     {
+      if (x == LThead)
       {
-        if (x == LThead)
-        {
-          {
-            LThead = x->next;
-          }
-        }
-        else
-        {
-          prev->next = x->next;
-        }
-
-        free(x);
-        break;
+        LThead = x->next;
       }
+      else
+      {
+        prev->next = x->next;
+      }
+
+      free(x);
+      break;
     }
     else
     {
@@ -109,14 +97,12 @@ void LTprint(LTlink LThead, int NL)
   int max;
   if (LThead != 0)
   {
-    {
-      x = LThead;
-      max = Tgetwins(LTgetteam(x));
-      printf("%d Melhores %d\n", NL, max);
-      for (; (x != 0) && (Tgetwins(LTgetteam(x)) == max); x = x->next)
-        printf("%d * %s\n", NL, Tgetname(LTgetteam(x)));
+    x = LThead;
+    max = Tgetwins(LTgetteam(x));
+    printf("%d Melhores %d\n", NL, max);
+    for (; (x != 0) && (Tgetwins(LTgetteam(x)) == max); x = x->next)
+      printf("%d * %s\n", NL, Tgetname(LTgetteam(x)));
 
-    }
   }
   else
   {

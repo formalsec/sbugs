@@ -59,25 +59,23 @@ int main()
 
     if ((c == 'a') || (c == 'A'))
     {
+      if (CheckHashGame(n_games, m_games))
       {
-        if (CheckHashGame(n_games, m_games))
+        hash_game = ExpandGames(hash_game, n_games, m_games);
+      }
+      else
+      {
+        if (CheckHashTeam(n_teams, m_teams))
         {
-          hash_game = ExpandGames(hash_game, n_games, m_games);
+          hash_team = ExpandTeams(hash_team, n_teams, m_teams);
         }
         else
         {
-          if (CheckHashTeam(n_teams, m_teams))
-          {
-            hash_team = ExpandTeams(hash_team, n_teams, m_teams);
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
+
     }
     else
     {

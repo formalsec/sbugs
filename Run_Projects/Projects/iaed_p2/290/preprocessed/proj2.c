@@ -233,19 +233,17 @@ int delete_game()
   {
     if (strcmp(t->name, game) == 0)
     {
+      if (t == head)
       {
-        if (t == head)
-        {
-          head = t->next;
-        }
-        else
-        {
-          prev->next = t->next;
-        }
-
-        free(t->name);
-        free(t);
+        head = t->next;
       }
+      else
+      {
+        prev->next = t->next;
+      }
+
+      free(t->name);
+      free(t);
     }
     else
     {

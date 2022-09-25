@@ -18,10 +18,8 @@ void deletes_team(fut_team team)
 {
   if (team)
   {
-    {
-      free(team->name);
-      free(team);
-    }
+    free(team->name);
+    free(team);
   }
   else
   {

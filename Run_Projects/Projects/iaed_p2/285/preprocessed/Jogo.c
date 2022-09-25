@@ -26,9 +26,7 @@ Jogo procura(char *nome, Jogo *Hashtable, int tamanho_Hashtable)
   int indice = procura_indice(Hashtable, nome, tamanho_Hashtable);
   if (indice != (-1))
   {
-    {
-      return Hashtable[indice];
-    }
+    return Hashtable[indice];
   }
   else
   {
@@ -54,23 +52,17 @@ Lista apaga_na_lista(Lista lista, char *nome)
   {
     if (strcmp(variavel->jogo->Nome, nome) == 0)
     {
+      if (variavel == lista)
       {
-        if (variavel == lista)
-        {
-          {
-            lista = variavel->next;
-          }
-        }
-        else
-        {
-          {
-            variavel2->next = variavel->next;
-          }
-        }
-
-        free(variavel);
-        break;
+        lista = variavel->next;
       }
+      else
+      {
+        variavel2->next = variavel->next;
+      }
+
+      free(variavel);
+      break;
     }
     else
     {
@@ -86,9 +78,7 @@ int print_lista(Lista lista, int NL)
 {
   if (lista == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -105,10 +95,8 @@ int free_jogos(Lista lista)
   Lista variavel;
   if (lista == 0)
   {
-    {
-      free(lista);
-      return 0;
-    }
+    free(lista);
+    return 0;
   }
   else
   {

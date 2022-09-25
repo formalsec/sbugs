@@ -30,29 +30,21 @@ void HashEquipa(team_list *l, Equipa *nova_equipa)
   numHash = string_hash(nova_equipa->nome) % 100109;
   if ((*(l->hashtable + numHash)) == 0)
   {
-    {
-      *(l->hashtable + numHash) = nova_equipa;
-    }
+    *(l->hashtable + numHash) = nova_equipa;
   }
   else
   {
-    {
-      nova_equipa->collision = *(l->hashtable + numHash);
-      *(l->hashtable + numHash) = nova_equipa;
-    }
+    nova_equipa->collision = *(l->hashtable + numHash);
+    *(l->hashtable + numHash) = nova_equipa;
   }
 
   if (l->head == 0)
   {
-    {
-      l->head = nova_equipa;
-    }
+    l->head = nova_equipa;
   }
   else
   {
-    {
-      l->last->next = nova_equipa;
-    }
+    l->last->next = nova_equipa;
   }
 
   l->last = nova_equipa;
@@ -67,29 +59,21 @@ void HashJogo(game_list *l, Jogo *novo_jogo)
   numHash = string_hash(novo_jogo->nome) % 100109;
   if ((*(l->hashtable + numHash)) == 0)
   {
-    {
-      *(l->hashtable + numHash) = novo_jogo;
-    }
+    *(l->hashtable + numHash) = novo_jogo;
   }
   else
   {
-    {
-      novo_jogo->collision = *(l->hashtable + numHash);
-      *(l->hashtable + numHash) = novo_jogo;
-    }
+    novo_jogo->collision = *(l->hashtable + numHash);
+    *(l->hashtable + numHash) = novo_jogo;
   }
 
   if (l->head == 0)
   {
-    {
-      l->head = novo_jogo;
-    }
+    l->head = novo_jogo;
   }
   else
   {
-    {
-      l->last->next = novo_jogo;
-    }
+    l->last->next = novo_jogo;
   }
 
   l->last = novo_jogo;

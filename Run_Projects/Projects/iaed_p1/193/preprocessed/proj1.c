@@ -241,27 +241,23 @@ void adicionar_produto_encomenda()
         }
         else
         {
+          for (i = 0; i < nprod_encomenda(lst_enc[ide]); i++)
+            if (idp == id_produto(lst_enc[ide].produto[i]))
           {
-            for (i = 0; i < nprod_encomenda(lst_enc[ide]); i++)
-              if (idp == id_produto(lst_enc[ide].produto[i]))
-            {
-              {
-                lst_enc[ide].produto[i].qntdd += qntdd;
-                stock[ind].qntdd -= qntdd;
-                return;
-              }
-            }
-            else
-            {
-              
-            }
-
-
-            lst_enc[ide].produto[lst_enc[ide].n_prod] = stock[ind];
-            lst_enc[ide].produto[lst_enc[ide].n_prod].qntdd = qntdd;
+            lst_enc[ide].produto[i].qntdd += qntdd;
             stock[ind].qntdd -= qntdd;
-            lst_enc[ide].n_prod++;
+            return;
           }
+          else
+          {
+            
+          }
+
+
+          lst_enc[ide].produto[lst_enc[ide].n_prod] = stock[ind];
+          lst_enc[ide].produto[lst_enc[ide].n_prod].qntdd = qntdd;
+          stock[ind].qntdd -= qntdd;
+          lst_enc[ide].n_prod++;
         }
 
       }
@@ -323,10 +319,8 @@ void remover_produto_encomenda()
       for (i = 0; i < nprod_encomenda(lst_enc[ide]); i++)
         if (idp == id_produto(lst_enc[ide].produto[i]))
       {
-        {
-          stock[ind].qntdd += lst_enc[ide].produto[i].qntdd;
-          lst_enc[ide].produto[i].qntdd = 0;
-        }
+        stock[ind].qntdd += lst_enc[ide].produto[i].qntdd;
+        lst_enc[ide].produto[i].qntdd = 0;
       }
       else
       {
@@ -352,12 +346,10 @@ void calcular_custo_encomenda()
   }
   else
   {
-    {
-      for (i = 0; i < nprod_encomenda(lst_enc[ide]); i++)
-        res += qntdd_produto(lst_enc[ide].produto[i]) * preco_produto(lst_enc[ide].produto[i]);
+    for (i = 0; i < nprod_encomenda(lst_enc[ide]); i++)
+      res += qntdd_produto(lst_enc[ide].produto[i]) * preco_produto(lst_enc[ide].produto[i]);
 
-      printf("Custo da encomenda %d %d.\n", ide, res);
-    }
+    printf("Custo da encomenda %d %d.\n", ide, res);
   }
 
 }
@@ -378,22 +370,20 @@ void alterar_preco_produto()
   }
   else
   {
+    stock[ind].preco = preco;
+    for (i = 0; i < qntdd_enc; i++)
+      for (j = 0; j < nprod_encomenda(lst_enc[i]); j++)
+      if (idp == id_produto(lst_enc[i].produto[j]))
     {
-      stock[ind].preco = preco;
-      for (i = 0; i < qntdd_enc; i++)
-        for (j = 0; j < nprod_encomenda(lst_enc[i]); j++)
-        if (idp == id_produto(lst_enc[i].produto[j]))
-      {
-        lst_enc[i].produto[j].preco = preco;
-      }
-      else
-      {
-        
-      }
-
-
-
+      lst_enc[i].produto[j].preco = preco;
     }
+    else
+    {
+      
+    }
+
+
+
   }
 
 }
@@ -419,23 +409,19 @@ void listar_desc_qntdd_produto()
     }
     else
     {
+      for (i = 0; i < nprod_encomenda(lst_enc[ide]); i++)
+        if (idp == id_produto(lst_enc[ide].produto[i]))
       {
-        for (i = 0; i < nprod_encomenda(lst_enc[ide]); i++)
-          if (idp == id_produto(lst_enc[ide].produto[i]))
-        {
-          {
-            printf("%s %d.\n", lst_enc[ide].produto[i].desc, qntdd_produto(lst_enc[ide].produto[i]));
-            return;
-          }
-        }
-        else
-        {
-          
-        }
-
-
-        printf("%s 0.\n", stock[ind].desc);
+        printf("%s %d.\n", lst_enc[ide].produto[i].desc, qntdd_produto(lst_enc[ide].produto[i]));
+        return;
       }
+      else
+      {
+        
+      }
+
+
+      printf("%s 0.\n", stock[ind].desc);
     }
 
   }
@@ -458,33 +444,29 @@ void listar_max_produto()
   }
   else
   {
+    for (i = 0; i < qntdd_enc; i++)
+      for (j = 0; j < nprod_encomenda(lst_enc[i]); j++)
+      if ((idp == id_produto(lst_enc[i].produto[j])) && (qntdd_produto(lst_enc[i].produto[j]) > qntdd_max))
     {
-      for (i = 0; i < qntdd_enc; i++)
-        for (j = 0; j < nprod_encomenda(lst_enc[i]); j++)
-        if ((idp == id_produto(lst_enc[i].produto[j])) && (qntdd_produto(lst_enc[i].produto[j]) > qntdd_max))
-      {
-        {
-          qntdd_max = qntdd_produto(lst_enc[i].produto[j]);
-          ide = i;
-        }
-      }
-      else
-      {
-        
-      }
-
-
-
-      if (qntdd_max)
-      {
-        printf("Maximo produto %d %d %d.\n", idp, ide, qntdd_max);
-      }
-      else
-      {
-        
-      }
-
+      qntdd_max = qntdd_produto(lst_enc[i].produto[j]);
+      ide = i;
     }
+    else
+    {
+      
+    }
+
+
+
+    if (qntdd_max)
+    {
+      printf("Maximo produto %d %d %d.\n", idp, ide, qntdd_max);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -510,21 +492,19 @@ void lista_encomenda_alf()
   }
   else
   {
+    mergesort_desc(0, nprod_encomenda(lst_enc[ide]) - 1, ide);
+    printf("Encomenda %d\n", ide);
+    for (i = 0; i < nprod_encomenda(lst_enc[ide]); i++)
+      if (lst_enc[ide].produto[i].qntdd > 0)
     {
-      mergesort_desc(0, nprod_encomenda(lst_enc[ide]) - 1, ide);
-      printf("Encomenda %d\n", ide);
-      for (i = 0; i < nprod_encomenda(lst_enc[ide]); i++)
-        if (lst_enc[ide].produto[i].qntdd > 0)
-      {
-        printf("* %s %d %d\n", lst_enc[ide].produto[i].desc, lst_enc[ide].produto[i].preco, lst_enc[ide].produto[i].qntdd);
-      }
-      else
-      {
-        
-      }
-
-
+      printf("* %s %d %d\n", lst_enc[ide].produto[i].desc, lst_enc[ide].produto[i].preco, lst_enc[ide].produto[i].qntdd);
     }
+    else
+    {
+      
+    }
+
+
   }
 
 }
@@ -536,97 +516,73 @@ int main()
     reader = getchar();
     if (reader == 'a')
     {
-      {
-        novo_produto();
-      }
+      novo_produto();
     }
     else
     {
       if (reader == 'q')
       {
-        {
-          adicionar_produto_stock();
-        }
+        adicionar_produto_stock();
       }
       else
       {
         if (reader == 'N')
         {
-          {
-            nova_encomenda();
-          }
+          nova_encomenda();
         }
         else
         {
           if (reader == 'A')
           {
-            {
-              adicionar_produto_encomenda();
-            }
+            adicionar_produto_encomenda();
           }
           else
           {
             if (reader == 'r')
             {
-              {
-                remover_produto_stock();
-              }
+              remover_produto_stock();
             }
             else
             {
               if (reader == 'R')
               {
-                {
-                  remover_produto_encomenda();
-                }
+                remover_produto_encomenda();
               }
               else
               {
                 if (reader == 'C')
                 {
-                  {
-                    calcular_custo_encomenda();
-                  }
+                  calcular_custo_encomenda();
                 }
                 else
                 {
                   if (reader == 'p')
                   {
-                    {
-                      alterar_preco_produto();
-                    }
+                    alterar_preco_produto();
                   }
                   else
                   {
                     if (reader == 'E')
                     {
-                      {
-                        listar_desc_qntdd_produto();
-                      }
+                      listar_desc_qntdd_produto();
                     }
                     else
                     {
                       if (reader == 'm')
                       {
-                        {
-                          listar_max_produto();
-                        }
+                        listar_max_produto();
                       }
                       else
                       {
                         if (reader == 'l')
                         {
-                          {
-                            listar_produtos_ord();
-                          }
+                          listar_produtos_ord();
                         }
                         else
                         {
                           if (reader == 'L')
                           {
-                            {
-                              lista_encomenda_alf();
-                            }
+                            lista_encomenda_alf();
                           }
                           else
                           {

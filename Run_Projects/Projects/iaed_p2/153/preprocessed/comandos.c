@@ -39,15 +39,31 @@ linkjogo a(linkjogo headjogo, linkequipa headequipa, int contlinha)
   score2 = new_sym_var(sizeof(int) * 8);
   if (headjogo != 0)
   {
+    for (a = headjogo; a != 0; a = a->next)
     {
-      for (a = headjogo; a != 0; a = a->next)
+      if (strcmp(a->nome, nome) == 0)
       {
-        if (strcmp(a->nome, nome) == 0)
+        cont++;
+        break;
+      }
+      else
+      {
+        
+      }
+
+    }
+
+    if (cont == 1)
+    {
+      printf("%d Jogo existente.\n", contlinha);
+    }
+    else
+    {
+      for (b = headequipa; b != 0; b = b->next)
+      {
+        if ((strcmp(b->nome, equipa1) == 0) || (strcmp(b->nome, equipa2) == 0))
         {
-          {
-            cont++;
-            break;
-          }
+          cont1++;
         }
         else
         {
@@ -56,90 +72,50 @@ linkjogo a(linkjogo headjogo, linkequipa headequipa, int contlinha)
 
       }
 
-      if (cont == 1)
+      if (cont1 != 2)
       {
-        {
-          printf("%d Jogo existente.\n", contlinha);
-        }
+        printf("%d Equipa inexistente.\n", contlinha);
       }
       else
       {
-        {
-          for (b = headequipa; b != 0; b = b->next)
-          {
-            if ((strcmp(b->nome, equipa1) == 0) || (strcmp(b->nome, equipa2) == 0))
-            {
-              {
-                cont1++;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-          if (cont1 != 2)
-          {
-            {
-              printf("%d Equipa inexistente.\n", contlinha);
-            }
-          }
-          else
-          {
-            {
-              headjogo = insertEndJogo(headjogo, nome, equipa1, equipa2, score1, score2);
-            }
-          }
-
-        }
+        headjogo = insertEndJogo(headjogo, nome, equipa1, equipa2, score1, score2);
       }
 
     }
+
   }
   else
   {
     if (headequipa == 0)
     {
-      {
-        printf("%d Equipa inexistente.\n", contlinha);
-      }
+      printf("%d Equipa inexistente.\n", contlinha);
     }
     else
     {
       if (headequipa != 0)
       {
+        for (c = headequipa; c != 0; c = c->next)
         {
-          for (c = headequipa; c != 0; c = c->next)
+          if ((strcmp(c->nome, equipa1) == 0) || (strcmp(c->nome, equipa2) == 0))
           {
-            if ((strcmp(c->nome, equipa1) == 0) || (strcmp(c->nome, equipa2) == 0))
-            {
-              {
-                cont2++;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-          if (cont2 != 2)
-          {
-            {
-              printf("%d Equipa inexistente.\n", contlinha);
-            }
+            cont2++;
           }
           else
           {
-            {
-              headjogo = insertEndJogo(headjogo, nome, equipa1, equipa2, score1, score2);
-            }
+            
           }
 
         }
+
+        if (cont2 != 2)
+        {
+          printf("%d Equipa inexistente.\n", contlinha);
+        }
+        else
+        {
+          headjogo = insertEndJogo(headjogo, nome, equipa1, equipa2, score1, score2);
+        }
+
       }
       else
       {
@@ -166,42 +142,32 @@ linkequipa A(linkequipa headequipa, int contlinha)
   nome_equipa[10 - 1] = '\0';
   if (headequipa == 0)
   {
-    {
-      headequipa = insertEndEquipa(headequipa, nome_equipa);
-    }
+    headequipa = insertEndEquipa(headequipa, nome_equipa);
   }
   else
   {
+    for (aux = headequipa; aux != 0; aux = aux->next)
     {
-      for (aux = headequipa; aux != 0; aux = aux->next)
+      if (strcmp(aux->nome, nome_equipa) == 0)
       {
-        if (strcmp(aux->nome, nome_equipa) == 0)
-        {
-          {
-            cont++;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      if (cont > 0)
-      {
-        {
-          printf("%d Equipa existente.\n", contlinha);
-        }
+        cont++;
       }
       else
       {
-        {
-          headequipa = insertEndEquipa(headequipa, nome_equipa);
-        }
+        
       }
 
     }
+
+    if (cont > 0)
+    {
+      printf("%d Equipa existente.\n", contlinha);
+    }
+    else
+    {
+      headequipa = insertEndEquipa(headequipa, nome_equipa);
+    }
+
   }
 
   return headequipa;
@@ -226,10 +192,8 @@ linkjogo s(linkjogo headjogo, int contlinha)
   {
     if (strcmp(nome_jogo, aux->nome) == 0)
     {
-      {
-        cont++;
-        break;
-      }
+      cont++;
+      break;
     }
     else
     {
@@ -240,16 +204,12 @@ linkjogo s(linkjogo headjogo, int contlinha)
 
   if (cont != 1)
   {
-    {
-      printf("%d Jogo inexistente.\n", contlinha);
-    }
+    printf("%d Jogo inexistente.\n", contlinha);
   }
   else
   {
-    {
-      aux->score1 = score1;
-      aux->score2 = score2;
-    }
+    aux->score1 = score1;
+    aux->score2 = score2;
   }
 
   return headjogo;
@@ -270,10 +230,8 @@ linkjogo r(linkjogo headjogo, int contlinha)
   {
     if (strcmp(aux->nome, nome_jogo) == 0)
     {
-      {
-        cont++;
-        break;
-      }
+      cont++;
+      break;
     }
     else
     {
@@ -284,15 +242,11 @@ linkjogo r(linkjogo headjogo, int contlinha)
 
   if (cont != 1)
   {
-    {
-      printf("%d Jogo inexistente.\n", contlinha);
-    }
+    printf("%d Jogo inexistente.\n", contlinha);
   }
   else
   {
-    {
-      headjogo = removeJogo(headjogo, nome_jogo);
-    }
+    headjogo = removeJogo(headjogo, nome_jogo);
   }
 
   return headjogo;
@@ -313,10 +267,8 @@ void P(linkjogo headjogo, linkequipa headequipa, int contlinha)
   {
     if (strcmp(aux->nome, nome) == 0)
     {
-      {
-        cont++;
-        break;
-      }
+      cont++;
+      break;
     }
     else
     {
@@ -327,15 +279,11 @@ void P(linkjogo headjogo, linkequipa headequipa, int contlinha)
 
   if (cont != 1)
   {
-    {
-      printf("%d Equipa inexistente.\n", contlinha);
-    }
+    printf("%d Equipa inexistente.\n", contlinha);
   }
   else
   {
-    {
-      procuraEquipa(headjogo, nome, contlinha);
-    }
+    procuraEquipa(headjogo, nome, contlinha);
   }
 
 }
@@ -355,10 +303,8 @@ void p(linkjogo headjogo, int contlinha)
   {
     if (strcmp(aux->nome, nome_jogo) == 0)
     {
-      {
-        cont++;
-        break;
-      }
+      cont++;
+      break;
     }
     else
     {
@@ -369,15 +315,11 @@ void p(linkjogo headjogo, int contlinha)
 
   if (cont != 1)
   {
-    {
-      printf("%d Jogo inexistente.\n", contlinha);
-    }
+    printf("%d Jogo inexistente.\n", contlinha);
   }
   else
   {
-    {
-      printf("%d %s %s %s %d %d\n", contlinha, nome_jogo, aux->equipa1, aux->equipa2, aux->score1, aux->score2);
-    }
+    printf("%d %s %s %s %d %d\n", contlinha, nome_jogo, aux->equipa1, aux->equipa2, aux->score1, aux->score2);
   }
 
 }
@@ -387,19 +329,15 @@ void l(linkjogo headjogo, int contlinha)
   linkjogo aux;
   if (headjogo == 0)
   {
-    {
-      ;
-    }
+    ;
   }
   else
   {
+    for (aux = headjogo; aux != 0; aux = aux->next)
     {
-      for (aux = headjogo; aux != 0; aux = aux->next)
-      {
-        printf("%d %s %s %s %d %d\n", contlinha, aux->nome, aux->equipa1, aux->equipa2, aux->score1, aux->score2);
-      }
-
+      printf("%d %s %s %s %d %d\n", contlinha, aux->nome, aux->equipa1, aux->equipa2, aux->score1, aux->score2);
     }
+
   }
 
 }
@@ -413,84 +351,68 @@ void g(linkjogo headjogo, linkequipa headequipa, int contlinha)
   int quant = 1;
   if (headequipa == 0)
   {
-    {
-      ;
-    }
+    ;
   }
   else
   {
     if (headjogo == 0)
     {
+      for (equipa = headequipa; equipa != 0; equipa = equipa->next)
       {
-        for (equipa = headequipa; equipa != 0; equipa = equipa->next)
-        {
-          quant++;
-        }
-
-        quant--;
-        listaGanhos(headjogo, headequipa, contlinha, max, quant);
+        quant++;
       }
+
+      quant--;
+      listaGanhos(headjogo, headequipa, contlinha, max, quant);
     }
     else
     {
+      for (equipa = headequipa; equipa != 0; equipa = equipa->next)
       {
-        for (equipa = headequipa; equipa != 0; equipa = equipa->next)
+        for (jogo = headjogo; jogo != 0; jogo = jogo->next)
         {
-          for (jogo = headjogo; jogo != 0; jogo = jogo->next)
+          if ((strcmp(equipa->nome, jogo->equipa1) == 0) && (jogo->score1 > jogo->score2))
           {
-            if ((strcmp(equipa->nome, jogo->equipa1) == 0) && (jogo->score1 > jogo->score2))
-            {
-              {
-                soma++;
-              }
-            }
-            else
-            {
-              if ((strcmp(equipa->nome, jogo->equipa2) == 0) && (jogo->score2 > jogo->score1))
-              {
-                {
-                  soma++;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-          }
-
-          if (soma > max)
-          {
-            {
-              max = soma;
-              soma = 0;
-              quant = 1;
-            }
+            soma++;
           }
           else
           {
-            if (soma == max)
+            if ((strcmp(equipa->nome, jogo->equipa2) == 0) && (jogo->score2 > jogo->score1))
             {
-              {
-                soma = 0;
-                quant++;
-              }
+              soma++;
             }
             else
             {
-              {
-                soma = 0;
-              }
+              
             }
 
           }
 
         }
 
-        listaGanhos(headjogo, headequipa, contlinha, max, quant);
+        if (soma > max)
+        {
+          max = soma;
+          soma = 0;
+          quant = 1;
+        }
+        else
+        {
+          if (soma == max)
+          {
+            soma = 0;
+            quant++;
+          }
+          else
+          {
+            soma = 0;
+          }
+
+        }
+
       }
+
+      listaGanhos(headjogo, headequipa, contlinha, max, quant);
     }
 
   }

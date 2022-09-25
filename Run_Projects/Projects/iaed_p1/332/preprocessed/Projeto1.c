@@ -36,99 +36,77 @@ void guarda_variaveis(char s[100000])
   j = strlen(s);
   if (j > 1)
   {
+    if (s[0] == 'a')
     {
-      if (s[0] == 'a')
+      for (e = 2; e < j; e++)
       {
+        if (s[e] != ':')
         {
-          for (e = 2; e < j; e++)
-          {
-            if (s[e] != ':')
-            {
-              {
-                d[f] = s[e];
-                d[f + 1] = '\0';
-                f++;
-              }
-            }
-            else
-            {
-              {
-                g = e;
-                break;
-              }
-            }
-
-          }
-
-          variaveis[0] = 0;
-          variaveis[1] = 0;
-          variaveis[2] = 0;
-          for (e = g + 1; e < j; e++)
-          {
-            if (s[e] == '\0')
-            {
-              {
-                break;
-              }
-            }
-            else
-            {
-              if (s[e] == ':')
-              {
-                {
-                  h += 1;
-                }
-              }
-              else
-              {
-                {
-                  variaveis[h] = ((variaveis[h] * 10) + s[e]) - '0';
-                }
-              }
-
-            }
-
-          }
-
+          d[f] = s[e];
+          d[f + 1] = '\0';
+          f++;
         }
+        else
+        {
+          g = e;
+          break;
+        }
+
       }
-      else
+
+      variaveis[0] = 0;
+      variaveis[1] = 0;
+      variaveis[2] = 0;
+      for (e = g + 1; e < j; e++)
       {
+        if (s[e] == '\0')
         {
-          variaveis[0] = 0;
-          variaveis[1] = 0;
-          variaveis[2] = 0;
-          for (e = 2; e < j; e++)
+          break;
+        }
+        else
+        {
+          if (s[e] == ':')
           {
-            if (s[e] == '\0')
-            {
-              {
-                break;
-              }
-            }
-            else
-            {
-              if (s[e] == ':')
-              {
-                {
-                  h += 1;
-                }
-              }
-              else
-              {
-                {
-                  variaveis[h] = ((variaveis[h] * 10) + s[e]) - '0';
-                }
-              }
-
-            }
-
+            h += 1;
+          }
+          else
+          {
+            variaveis[h] = ((variaveis[h] * 10) + s[e]) - '0';
           }
 
         }
+
       }
 
     }
+    else
+    {
+      variaveis[0] = 0;
+      variaveis[1] = 0;
+      variaveis[2] = 0;
+      for (e = 2; e < j; e++)
+      {
+        if (s[e] == '\0')
+        {
+          break;
+        }
+        else
+        {
+          if (s[e] == ':')
+          {
+            h += 1;
+          }
+          else
+          {
+            variaveis[h] = ((variaveis[h] * 10) + s[e]) - '0';
+          }
+
+        }
+
+      }
+
+    }
+
   }
   else
   {
@@ -323,45 +301,37 @@ void comando_A()
         }
         else
         {
+          produtos[variaveis[1]].quantidade -= variaveis[2];
+          enc[variaveis[0]].peso += produtos[variaveis[1]].peso * variaveis[2];
+          for (w = 0; w < ind_prod; w++)
           {
-            produtos[variaveis[1]].quantidade -= variaveis[2];
-            enc[variaveis[0]].peso += produtos[variaveis[1]].peso * variaveis[2];
-            for (w = 0; w < ind_prod; w++)
+            if (enc[variaveis[0]].prod_enc[w] == variaveis[1])
             {
-              if (enc[variaveis[0]].prod_enc[w] == variaveis[1])
+              enc[variaveis[0]].qnt_prod_enc[w] += variaveis[2];
+              break;
+            }
+            else
+            {
+              if (enc[variaveis[0]].prod_enc[w] == 10000)
               {
+                enc[variaveis[0]].prod_enc[w] = produtos[variaveis[1]].idp;
+                enc[variaveis[0]].qnt_prod_enc[w] += variaveis[2];
+                for (x = 0; x < 63; x++)
                 {
-                  enc[variaveis[0]].qnt_prod_enc[w] += variaveis[2];
-                  break;
+                  enc[variaveis[0]].desc_prod_enc[w][x] = produtos[variaveis[1]].descricao[x];
                 }
+
+                break;
               }
               else
               {
-                {
-                  if (enc[variaveis[0]].prod_enc[w] == 10000)
-                  {
-                    {
-                      enc[variaveis[0]].prod_enc[w] = produtos[variaveis[1]].idp;
-                      enc[variaveis[0]].qnt_prod_enc[w] += variaveis[2];
-                      for (x = 0; x < 63; x++)
-                      {
-                        enc[variaveis[0]].desc_prod_enc[w][x] = produtos[variaveis[1]].descricao[x];
-                      }
-
-                      break;
-                    }
-                  }
-                  else
-                  {
-                    
-                  }
-
-                }
+                
               }
 
             }
 
           }
+
         }
 
       }
@@ -386,9 +356,7 @@ void comando_r()
     }
     else
     {
-      {
-        produtos[variaveis[0]].quantidade -= variaveis[1];
-      }
+      produtos[variaveis[0]].quantidade -= variaveis[1];
     }
 
   }
@@ -410,25 +378,21 @@ void comando_R()
     }
     else
     {
+      for (w = 0; w < 200; w++)
       {
-        for (w = 0; w < 200; w++)
+        if (enc[variaveis[0]].prod_enc[w] == variaveis[1])
         {
-          if (enc[variaveis[0]].prod_enc[w] == variaveis[1])
-          {
-            {
-              produtos[enc[variaveis[0]].prod_enc[w]].quantidade += enc[variaveis[0]].qnt_prod_enc[w];
-              enc[variaveis[0]].peso -= enc[variaveis[0]].qnt_prod_enc[w] * produtos[variaveis[1]].peso;
-              enc[variaveis[0]].qnt_prod_enc[w] = 0;
-            }
-          }
-          else
-          {
-            
-          }
-
+          produtos[enc[variaveis[0]].prod_enc[w]].quantidade += enc[variaveis[0]].qnt_prod_enc[w];
+          enc[variaveis[0]].peso -= enc[variaveis[0]].qnt_prod_enc[w] * produtos[variaveis[1]].peso;
+          enc[variaveis[0]].qnt_prod_enc[w] = 0;
+        }
+        else
+        {
+          
         }
 
       }
+
     }
 
   }
@@ -445,24 +409,13 @@ void comando_C()
   }
   else
   {
+    for (w = 0; w < 200; w++)
     {
-      for (w = 0; w < 200; w++)
+      if (enc[variaveis[0]].prod_enc[w] != 10000)
       {
-        if (enc[variaveis[0]].prod_enc[w] != 10000)
+        if (enc[variaveis[0]].qnt_prod_enc[w] > 0)
         {
-          {
-            if (enc[variaveis[0]].qnt_prod_enc[w] > 0)
-            {
-              {
-                custo += produtos[enc[variaveis[0]].prod_enc[w]].preco * enc[variaveis[0]].qnt_prod_enc[w];
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
+          custo += produtos[enc[variaveis[0]].prod_enc[w]].preco * enc[variaveis[0]].qnt_prod_enc[w];
         }
         else
         {
@@ -470,9 +423,14 @@ void comando_C()
         }
 
       }
+      else
+      {
+        
+      }
 
-      printf("Custo da encomenda %d %d.\n", variaveis[0], custo);
     }
+
+    printf("Custo da encomenda %d %d.\n", variaveis[0], custo);
   }
 
 }
@@ -509,30 +467,13 @@ void comando_E()
     }
     else
     {
+      for (a = 0; a < 200; a++)
       {
-        for (a = 0; a < 200; a++)
+        if (enc[variaveis[0]].prod_enc[a] == produtos[variaveis[1]].idp)
         {
-          if (enc[variaveis[0]].prod_enc[a] == produtos[variaveis[1]].idp)
-          {
-            {
-              estado = 1;
-              b = produtos[variaveis[1]].idp;
-              printf("%s %d.\n", produtos[b].descricao, enc[variaveis[0]].qnt_prod_enc[a]);
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-        if (estado == 0)
-        {
-          {
-            c = produtos[variaveis[1]].idp;
-            printf("%s %d.\n", produtos[c].descricao, 0);
-          }
+          estado = 1;
+          b = produtos[variaveis[1]].idp;
+          printf("%s %d.\n", produtos[b].descricao, enc[variaveis[0]].qnt_prod_enc[a]);
         }
         else
         {
@@ -540,6 +481,17 @@ void comando_E()
         }
 
       }
+
+      if (estado == 0)
+      {
+        c = produtos[variaveis[1]].idp;
+        printf("%s %d.\n", produtos[c].descricao, 0);
+      }
+      else
+      {
+        
+      }
+
     }
 
   }
@@ -567,20 +519,16 @@ void comando_m()
     {
       if (enc[b].prod_enc[c] == variaveis[0])
       {
+        if (enc[b].qnt_prod_enc[c] > k)
         {
-          if (enc[b].qnt_prod_enc[c] > k)
-          {
-            {
-              k = enc[b].qnt_prod_enc[c];
-              i = b;
-            }
-          }
-          else
-          {
-            
-          }
-
+          k = enc[b].qnt_prod_enc[c];
+          i = b;
         }
+        else
+        {
+          
+        }
+
       }
       else
       {
@@ -632,28 +580,24 @@ void comando_L()
   int lidps[10000];
   if (variaveis[0] >= encomenda)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", variaveis[0]);
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", variaveis[0]);
   }
   else
   {
+    printf("Encomenda %d\n", variaveis[0]);
+    for (a = 0; a < ind_prod; a++)
     {
-      printf("Encomenda %d\n", variaveis[0]);
-      for (a = 0; a < ind_prod; a++)
+      if (enc[variaveis[0]].qnt_prod_enc[a] > 0)
       {
-        if (enc[variaveis[0]].qnt_prod_enc[a] > 0)
-        {
-          lidps[b++] = enc[variaveis[0]].prod_enc[a];
-        }
-        else
-        {
-          
-        }
-
+        lidps[b++] = enc[variaveis[0]].prod_enc[a];
+      }
+      else
+      {
+        
       }
 
     }
+
   }
 
   mergesort_L(lidps, l, b - 1);
@@ -663,10 +607,8 @@ void comando_L()
     {
       if (lidps[a] == enc[variaveis[0]].prod_enc[c])
       {
-        {
-          printf("* %s %d %d\n", produtos[lidps[a]].descricao, produtos[lidps[a]].preco, enc[variaveis[0]].qnt_prod_enc[c]);
-          break;
-        }
+        printf("* %s %d %d\n", produtos[lidps[a]].descricao, produtos[lidps[a]].preco, enc[variaveis[0]].qnt_prod_enc[c]);
+        break;
       }
       else
       {
@@ -747,9 +689,7 @@ int main()
   {
     if (c == 'x')
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {

@@ -45,10 +45,8 @@ void ht_set(ht_jogo *hashtable, ll_jogos **ll_head, ht_equipas *hashtable_equipa
   link_jogo *new;
   if (jogo != 0)
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-      return;
-    }
+    printf("%d Jogo existente.\n", NL);
+    return;
   }
   else
   {
@@ -57,10 +55,8 @@ void ht_set(ht_jogo *hashtable, ll_jogos **ll_head, ht_equipas *hashtable_equipa
 
   if ((estado_equipa1 == 0) || (estado_equipa2 == 0))
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -69,9 +65,7 @@ void ht_set(ht_jogo *hashtable, ll_jogos **ll_head, ht_equipas *hashtable_equipa
 
   if (score1 > score2)
   {
-    {
-      estado_equipa1->nr_vitorias++;
-    }
+    estado_equipa1->nr_vitorias++;
   }
   else
   {
@@ -80,9 +74,7 @@ void ht_set(ht_jogo *hashtable, ll_jogos **ll_head, ht_equipas *hashtable_equipa
 
   if (score1 < score2)
   {
-    {
-      estado_equipa2->nr_vitorias++;
-    }
+    estado_equipa2->nr_vitorias++;
   }
   else
   {
@@ -101,9 +93,7 @@ link_jogo *st_search_jogo(ht_jogo *hashtable, const char *nome)
   {
     if (strcmp(x->nome, nome) == 0)
     {
-      {
-        return x;
-      }
+      return x;
     }
     else
     {
@@ -121,10 +111,8 @@ void ht_search(ht_jogo *hashtable, const char *nome, int NL)
   link_jogo *x = st_search_jogo(hashtable, nome);
   if (x == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -142,10 +130,8 @@ void ht_del(ht_jogo *hashtable, const char *nome, int NL)
   link_jogo *anterior;
   if (x == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -156,57 +142,47 @@ void ht_del(ht_jogo *hashtable, const char *nome, int NL)
   {
     if (strcmp(x->nome, nome) == 0)
     {
+      if ((x->next == 0) && (indice == 0))
       {
-        if ((x->next == 0) && (indice == 0))
-        {
-          {
-            hashtable->links[slot] = 0;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if ((x->next != 0) && (indice == 0))
-        {
-          {
-            hashtable->links[slot] = x->next;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if ((x->next == 0) && (indice != 0))
-        {
-          {
-            anterior->next = 0;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if ((x->next != 0) && (indice != 0))
-        {
-          {
-            anterior->next = x->next;
-          }
-        }
-        else
-        {
-          
-        }
-
-        free(x->nome);
-        free(x->equipa1);
-        free(x->equipa2);
-        free(x);
-        return;
+        hashtable->links[slot] = 0;
       }
+      else
+      {
+        
+      }
+
+      if ((x->next != 0) && (indice == 0))
+      {
+        hashtable->links[slot] = x->next;
+      }
+      else
+      {
+        
+      }
+
+      if ((x->next == 0) && (indice != 0))
+      {
+        anterior->next = 0;
+      }
+      else
+      {
+        
+      }
+
+      if ((x->next != 0) && (indice != 0))
+      {
+        anterior->next = x->next;
+      }
+      else
+      {
+        
+      }
+
+      free(x->nome);
+      free(x->equipa1);
+      free(x->equipa2);
+      free(x);
+      return;
     }
     else
     {
@@ -228,10 +204,8 @@ void ht_change(ht_jogo *hashtable, ht_equipas *hashtable_equipas, const char *no
   link_equipa *equipa2;
   if (x == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -242,29 +216,25 @@ void ht_change(ht_jogo *hashtable, ht_equipas *hashtable_equipas, const char *no
   equipa2 = st_search(hashtable_equipas, x->equipa2);
   if (score1 > score2)
   {
+    if (x->score1 < x->score2)
     {
-      if (x->score1 < x->score2)
-      {
-        {
-          equipa1->nr_vitorias++;
-          equipa2->nr_vitorias--;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (x->score1 == x->score2)
-      {
-        equipa1->nr_vitorias++;
-      }
-      else
-      {
-        
-      }
-
+      equipa1->nr_vitorias++;
+      equipa2->nr_vitorias--;
     }
+    else
+    {
+      
+    }
+
+    if (x->score1 == x->score2)
+    {
+      equipa1->nr_vitorias++;
+    }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -273,29 +243,25 @@ void ht_change(ht_jogo *hashtable, ht_equipas *hashtable_equipas, const char *no
 
   if (score1 < score2)
   {
+    if (x->score1 > x->score2)
     {
-      if (x->score1 > x->score2)
-      {
-        {
-          equipa1->nr_vitorias--;
-          equipa2->nr_vitorias++;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (x->score1 == x->score2)
-      {
-        equipa2->nr_vitorias++;
-      }
-      else
-      {
-        
-      }
-
+      equipa1->nr_vitorias--;
+      equipa2->nr_vitorias++;
     }
+    else
+    {
+      
+    }
+
+    if (x->score1 == x->score2)
+    {
+      equipa2->nr_vitorias++;
+    }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -304,26 +270,24 @@ void ht_change(ht_jogo *hashtable, ht_equipas *hashtable_equipas, const char *no
 
   if (score1 == score2)
   {
+    if (x->score1 > x->score2)
     {
-      if (x->score1 > x->score2)
-      {
-        equipa1->nr_vitorias--;
-      }
-      else
-      {
-        
-      }
-
-      if (x->score1 < x->score2)
-      {
-        equipa2->nr_vitorias--;
-      }
-      else
-      {
-        
-      }
-
+      equipa1->nr_vitorias--;
     }
+    else
+    {
+      
+    }
+
+    if (x->score1 < x->score2)
+    {
+      equipa2->nr_vitorias--;
+    }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -342,10 +306,8 @@ void insertEndJogos(ll_jogos **head_ref, link_jogo *jogo)
   novo_node->next = 0;
   if ((*head_ref) == 0)
   {
-    {
-      *head_ref = novo_node;
-      return;
-    }
+    *head_ref = novo_node;
+    return;
   }
   else
   {
@@ -365,11 +327,9 @@ void deleteNode(ll_jogos **head_ref, link_jogo *jogo)
   ll_jogos *anterior;
   if ((temp != 0) && (temp->jogo == jogo))
   {
-    {
-      *head_ref = temp->next;
-      free(temp);
-      return;
-    }
+    *head_ref = temp->next;
+    free(temp);
+    return;
   }
   else
   {

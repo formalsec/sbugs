@@ -53,9 +53,7 @@ linkEquipa searchListEquipa(linkEquipa head, char *name)
   {
     if (strcmp(equipa->nome, name) == 0)
     {
-      {
-        return equipa;
-      }
+      return equipa;
     }
     else
     {
@@ -74,9 +72,7 @@ linkJogo searchListJogo(linkJogo head, char *name)
   {
     if (strcmp(jogo->nome, name) == 0)
     {
-      {
-        return jogo;
-      }
+      return jogo;
     }
     else
     {
@@ -96,23 +92,17 @@ linkEquipa removeFromListEquipa(linkEquipa head, char *name)
   {
     if (strcmp(equipa->nome, name) == 0)
     {
+      if (equipa == head)
       {
-        if (equipa == head)
-        {
-          {
-            head = equipa->next;
-          }
-        }
-        else
-        {
-          {
-            prev->next = equipa->next;
-          }
-        }
-
-        free(equipa->next);
-        free(equipa);
+        head = equipa->next;
       }
+      else
+      {
+        prev->next = equipa->next;
+      }
+
+      free(equipa->next);
+      free(equipa);
     }
     else
     {
@@ -132,23 +122,17 @@ linkJogo removeFromListJogo(linkJogo head, char *name)
   {
     if (strcmp(jogo->nome, name) == 0)
     {
+      if (jogo == head)
       {
-        if (jogo == head)
-        {
-          {
-            head = jogo->next;
-          }
-        }
-        else
-        {
-          {
-            prev->next = jogo->next;
-          }
-        }
-
-        free(jogo->next);
-        free(jogo);
+        head = jogo->next;
       }
+      else
+      {
+        prev->next = jogo->next;
+      }
+
+      free(jogo->next);
+      free(jogo);
     }
     else
     {
@@ -165,9 +149,7 @@ linkJogo insertEnd(linkJogo head, char *jogo_nome, char *equipa1_nome, char *equ
   linkJogo jogo;
   if (head == 0)
   {
-    {
-      return NEWjogo(jogo_nome, equipa1_nome, equipa2_nome, resultado1, resultado2);
-    }
+    return NEWjogo(jogo_nome, equipa1_nome, equipa2_nome, resultado1, resultado2);
   }
   else
   {

@@ -72,15 +72,13 @@ void insertEnd_list(h_t_ordered_list *lst, list_games *g)
   ordered_list_g z;
   if (lst->head == 0)
   {
-    {
-      y = malloc(sizeof(struct OL_G));
-      y->game = g;
-      y->next = 0;
-      y->prev = 0;
-      lst->head = y;
-      lst->tail = y;
-      return;
-    }
+    y = malloc(sizeof(struct OL_G));
+    y->game = g;
+    y->next = 0;
+    y->prev = 0;
+    lst->head = y;
+    lst->tail = y;
+    return;
   }
   else
   {
@@ -102,54 +100,46 @@ void remove_list(h_t_ordered_list *lst, char *token)
   {
     if (strcmp(head_aux->game->name, token) == 0)
     {
+      if ((head_aux == lst->head) && (head_aux == lst->tail))
       {
-        if ((head_aux == lst->head) && (head_aux == lst->tail))
-        {
-          {
-            free(head_aux);
-            lst->head = 0;
-            lst->tail = 0;
-            return;
-          }
-        }
-        else
-        {
-          
-        }
+        free(head_aux);
+        lst->head = 0;
+        lst->tail = 0;
+        return;
+      }
+      else
+      {
+        
+      }
 
-        if (head_aux == lst->head)
-        {
-          {
-            lst->head->next->prev = 0;
-            lst->head = head_aux->next;
-            free(head_aux);
-            return;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if (head_aux == lst->tail)
-        {
-          {
-            lst->tail->prev->next = 0;
-            lst->tail = head_aux->prev;
-            free(head_aux);
-            return;
-          }
-        }
-        else
-        {
-          
-        }
-
-        head_aux->prev->next = head_aux->next;
-        head_aux->next->prev = head_aux->prev;
+      if (head_aux == lst->head)
+      {
+        lst->head->next->prev = 0;
+        lst->head = head_aux->next;
         free(head_aux);
         return;
       }
+      else
+      {
+        
+      }
+
+      if (head_aux == lst->tail)
+      {
+        lst->tail->prev->next = 0;
+        lst->tail = head_aux->prev;
+        free(head_aux);
+        return;
+      }
+      else
+      {
+        
+      }
+
+      head_aux->prev->next = head_aux->next;
+      head_aux->next->prev = head_aux->prev;
+      free(head_aux);
+      return;
     }
     else
     {
@@ -217,49 +207,47 @@ void delete_game_aux(hash_table_games *game_ht, char *token)
   {
     if (strcmp(temp->name, token) == 0)
     {
+      if ((i == 0) && (temp->next == 0))
       {
-        if ((i == 0) && (temp->next == 0))
-        {
-          game_ht->table[h] = 0;
-        }
-        else
-        {
-          
-        }
-
-        if ((i == 0) && (temp->next != 0))
-        {
-          game_ht->table[h] = temp->next;
-        }
-        else
-        {
-          
-        }
-
-        if ((i != 0) && (temp->next == 0))
-        {
-          aux->next = 0;
-        }
-        else
-        {
-          
-        }
-
-        if ((i != 0) && (temp->next != 0))
-        {
-          aux->next = temp->next;
-        }
-        else
-        {
-          
-        }
-
-        free(temp->name);
-        free(temp->team1);
-        free(temp->team2);
-        free(temp);
-        return;
+        game_ht->table[h] = 0;
       }
+      else
+      {
+        
+      }
+
+      if ((i == 0) && (temp->next != 0))
+      {
+        game_ht->table[h] = temp->next;
+      }
+      else
+      {
+        
+      }
+
+      if ((i != 0) && (temp->next == 0))
+      {
+        aux->next = 0;
+      }
+      else
+      {
+        
+      }
+
+      if ((i != 0) && (temp->next != 0))
+      {
+        aux->next = temp->next;
+      }
+      else
+      {
+        
+      }
+
+      free(temp->name);
+      free(temp->team1);
+      free(temp->team2);
+      free(temp);
+      return;
     }
     else
     {
@@ -287,11 +275,9 @@ void change_score_aux(list_games *g, hash_table_teams *team_ht, int score1, int 
   t2 = search_team_aux(team_ht, g->team2);
   if ((score1 > score2) && (old_score1 < old_score2))
   {
-    {
-      t1->victories++;
-      t2->victories--;
-      return;
-    }
+    t1->victories++;
+    t2->victories--;
+    return;
   }
   else
   {
@@ -300,11 +286,9 @@ void change_score_aux(list_games *g, hash_table_teams *team_ht, int score1, int 
 
   if ((score1 < score2) && (old_score1 > old_score2))
   {
-    {
-      t1->victories--;
-      t2->victories++;
-      return;
-    }
+    t1->victories--;
+    t2->victories++;
+    return;
   }
   else
   {
@@ -313,10 +297,8 @@ void change_score_aux(list_games *g, hash_table_teams *team_ht, int score1, int 
 
   if ((score1 == score2) && (old_score1 > old_score2))
   {
-    {
-      t1->victories--;
-      return;
-    }
+    t1->victories--;
+    return;
   }
   else
   {
@@ -325,10 +307,8 @@ void change_score_aux(list_games *g, hash_table_teams *team_ht, int score1, int 
 
   if ((score1 == score2) && (old_score1 < old_score2))
   {
-    {
-      t2->victories--;
-      return;
-    }
+    t2->victories--;
+    return;
   }
   else
   {
@@ -337,10 +317,8 @@ void change_score_aux(list_games *g, hash_table_teams *team_ht, int score1, int 
 
   if ((score1 > score2) && (old_score1 == old_score2))
   {
-    {
-      t1->victories++;
-      return;
-    }
+    t1->victories++;
+    return;
   }
   else
   {
@@ -349,9 +327,7 @@ void change_score_aux(list_games *g, hash_table_teams *team_ht, int score1, int 
 
   if ((score1 < score2) && (old_score1 == old_score2))
   {
-    {
-      t2->victories++;
-    }
+    t2->victories++;
   }
   else
   {

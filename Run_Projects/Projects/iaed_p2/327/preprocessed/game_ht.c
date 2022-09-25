@@ -85,7 +85,7 @@ game_node *game_ht_delete(game_ht *games, char *name)
   {
     v = games->ht[j];
     games->ht[j] = 0;
-    game_ht_insert(games, v, 1);
+    game_ht_insert(games, v, true);
   }
 
   return aux;
@@ -116,7 +116,7 @@ void game_ht_expand(game_ht *games)
   for (i = 0; i < (games->M / 2); i++)
     if (t[i] != 0)
   {
-    game_ht_insert(games, t[i], 0);
+    game_ht_insert(games, t[i], false);
   }
   else
   {

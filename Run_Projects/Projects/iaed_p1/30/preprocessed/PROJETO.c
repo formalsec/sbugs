@@ -95,37 +95,31 @@ void A(encomenda e[], produto v[], int idelivre, int idplivre)
         }
         else
         {
+          for (i = 0; i < e[ide].prodstot; i++)
+            if (strcmp(e[ide].ve[i].desc, v[idp].desc) == 0)
           {
-            for (i = 0; i < e[ide].prodstot; i++)
-              if (strcmp(e[ide].ve[i].desc, v[idp].desc) == 0)
-            {
-              {
-                existe = 1;
-                indice = i;
-              }
-            }
-            else
-            {
-              
-            }
-
-
-            if (existe)
-            {
-              e[ide].ve[indice].qtd += qtd;
-            }
-            else
-            {
-              {
-                e[ide].ve[e[ide].prodstot] = v[idp];
-                e[ide].ve[e[ide].prodstot].qtd = qtd;
-                e[ide].prodstot++;
-              }
-            }
-
-            e[ide].pesotot += v[idp].peso * qtd;
-            v[idp].qtd -= qtd;
+            existe = 1;
+            indice = i;
           }
+          else
+          {
+            
+          }
+
+
+          if (existe)
+          {
+            e[ide].ve[indice].qtd += qtd;
+          }
+          else
+          {
+            e[ide].ve[e[ide].prodstot] = v[idp];
+            e[ide].ve[e[ide].prodstot].qtd = qtd;
+            e[ide].prodstot++;
+          }
+
+          e[ide].pesotot += v[idp].peso * qtd;
+          v[idp].qtd -= qtd;
         }
 
       }
@@ -183,30 +177,26 @@ void R(encomenda e[], produto v[], int idelivre, int idplivre)
     }
     else
     {
+      for (i = 0; i < e[ide].prodstot; i++)
+        if (strcmp(e[ide].ve[i].desc, v[idp].desc) == 0)
       {
-        for (i = 0; i < e[ide].prodstot; i++)
-          if (strcmp(e[ide].ve[i].desc, v[idp].desc) == 0)
+        indice = i;
+        e[ide].pesotot -= e[ide].ve[indice].qtd * e[ide].ve[indice].peso;
+        v[idp].qtd += e[ide].ve[indice].qtd;
+        while (indice < (e[ide].prodstot - 1))
         {
-          {
-            indice = i;
-            e[ide].pesotot -= e[ide].ve[indice].qtd * e[ide].ve[indice].peso;
-            v[idp].qtd += e[ide].ve[indice].qtd;
-            while (indice < (e[ide].prodstot - 1))
-            {
-              e[ide].ve[indice] = e[ide].ve[indice + 1];
-              indice++;
-            }
-
-            e[ide].prodstot--;
-          }
-        }
-        else
-        {
-          
+          e[ide].ve[indice] = e[ide].ve[indice + 1];
+          indice++;
         }
 
-
+        e[ide].prodstot--;
       }
+      else
+      {
+        
+      }
+
+
     }
 
   }
@@ -226,15 +216,13 @@ void C(encomenda e[], int idelivre)
   }
   else
   {
+    while (i < e[ide].prodstot)
     {
-      while (i < e[ide].prodstot)
-      {
-        precotot += e[ide].ve[i].qtd * e[ide].ve[i].preco;
-        i++;
-      }
-
-      printf("Custo da encomenda %d %d.\n", ide, precotot);
+      precotot += e[ide].ve[i].qtd * e[ide].ve[i].preco;
+      i++;
     }
+
+    printf("Custo da encomenda %d %d.\n", ide, precotot);
   }
 
 }
@@ -254,22 +242,20 @@ void p(encomenda e[], produto v[], int idelivre, int idplivre)
   }
   else
   {
+    v[idp].preco = preco;
+    for (i = 0; i < idelivre; i++)
+      for (j = 0; j < e[i].prodstot; j++)
+      if (strcmp(v[idp].desc, e[i].ve[j].desc) == 0)
     {
-      v[idp].preco = preco;
-      for (i = 0; i < idelivre; i++)
-        for (j = 0; j < e[i].prodstot; j++)
-        if (strcmp(v[idp].desc, e[i].ve[j].desc) == 0)
-      {
-        e[i].ve[j].preco = preco;
-      }
-      else
-      {
-        
-      }
-
-
-
+      e[i].ve[j].preco = preco;
     }
+    else
+    {
+      
+    }
+
+
+
   }
 
 }
@@ -295,20 +281,18 @@ void E(encomenda e[], produto v[], int idelivre, int idplivre)
     }
     else
     {
+      for (i = 0; i < e[ide].prodstot; i++)
+        if (strcmp(e[ide].ve[i].desc, v[idp].desc) == 0)
       {
-        for (i = 0; i < e[ide].prodstot; i++)
-          if (strcmp(e[ide].ve[i].desc, v[idp].desc) == 0)
-        {
-          qtd = e[ide].ve[i].qtd;
-        }
-        else
-        {
-          
-        }
-
-
-        printf("%s %d.\n", v[idp].desc, qtd);
+        qtd = e[ide].ve[i].qtd;
       }
+      else
+      {
+        
+      }
+
+
+      printf("%s %d.\n", v[idp].desc, qtd);
     }
 
   }
@@ -332,34 +316,14 @@ void m(encomenda e[], produto v[], int idelivre, int idplivre)
   {
     if (idelivre > 0)
     {
+      for (contador1 = 0; contador1 < idelivre; contador1++)
+        for (contador2 = 0; contador2 < e[contador1].prodstot; contador2++)
+        if (strcmp(e[contador1].ve[contador2].desc, v[idp].desc) == 0)
       {
-        for (contador1 = 0; contador1 < idelivre; contador1++)
-          for (contador2 = 0; contador2 < e[contador1].prodstot; contador2++)
-          if (strcmp(e[contador1].ve[contador2].desc, v[idp].desc) == 0)
+        if (e[contador1].ve[contador2].qtd > qtdmax)
         {
-          if (e[contador1].ve[contador2].qtd > qtdmax)
-          {
-            {
-              qtdmax = e[contador1].ve[contador2].qtd;
-              idemin = contador1;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-        else
-        {
-          
-        }
-
-
-
-        if (qtdmax > 0)
-        {
-          printf("Maximo produto %d %d %d.\n", idp, idemin, qtdmax);
+          qtdmax = e[contador1].ve[contador2].qtd;
+          idemin = contador1;
         }
         else
         {
@@ -367,6 +331,22 @@ void m(encomenda e[], produto v[], int idelivre, int idplivre)
         }
 
       }
+      else
+      {
+        
+      }
+
+
+
+      if (qtdmax > 0)
+      {
+        printf("Maximo produto %d %d %d.\n", idp, idemin, qtdmax);
+      }
+      else
+      {
+        
+      }
+
     }
     else
     {
@@ -387,11 +367,9 @@ void l(produto v[], int idplivre)
     for (j = 0; j < ((idplivre - 1) - i); j++)
     if (v[j].preco > v[j + 1].preco)
   {
-    {
-      p = v[j];
-      v[j] = v[j + 1];
-      v[j + 1] = p;
-    }
+    p = v[j];
+    v[j] = v[j + 1];
+    v[j + 1] = p;
   }
   else
   {
@@ -422,42 +400,38 @@ void L(encomenda e[], int idelivre)
   }
   else
   {
+    for (i = 0; i < (e[ide].prodstot - 1); i++)
     {
-      for (i = 0; i < (e[ide].prodstot - 1); i++)
+      feito = 1;
+      for (j = 0; j < ((e[ide].prodstot - 1) + (0 - i)); j++)
+        if (strcmp(e[ide].ve[j].desc, e[ide].ve[j + 1].desc) > 0)
       {
-        feito = 1;
-        for (j = 0; j < ((e[ide].prodstot - 1) + (0 - i)); j++)
-          if (strcmp(e[ide].ve[j].desc, e[ide].ve[j + 1].desc) > 0)
-        {
-          {
-            t = e[ide].ve[j];
-            e[ide].ve[j] = e[ide].ve[j + 1];
-            e[ide].ve[j + 1] = t;
-            feito = 0;
-          }
-        }
-        else
-        {
-          
-        }
-
-
-        if (feito)
-        {
-          break;
-        }
-        else
-        {
-          
-        }
-
+        t = e[ide].ve[j];
+        e[ide].ve[j] = e[ide].ve[j + 1];
+        e[ide].ve[j + 1] = t;
+        feito = 0;
+      }
+      else
+      {
+        
       }
 
-      printf("Encomenda %d\n", ide);
-      for (cont = 0; cont < e[ide].prodstot; cont++)
-        printf("* %s %d %d\n", e[ide].ve[cont].desc, e[ide].ve[cont].preco, e[ide].ve[cont].qtd);
+
+      if (feito)
+      {
+        break;
+      }
+      else
+      {
+        
+      }
 
     }
+
+    printf("Encomenda %d\n", ide);
+    for (cont = 0; cont < e[ide].prodstot; cont++)
+      printf("* %s %d %d\n", e[ide].ve[cont].desc, e[ide].ve[cont].preco, e[ide].ve[cont].qtd);
+
   }
 
 }

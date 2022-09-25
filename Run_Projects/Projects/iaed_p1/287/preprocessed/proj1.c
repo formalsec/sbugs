@@ -42,18 +42,14 @@ void separa_input(char input[], char dados[][63])
   {
     if (input[o] == ':')
     {
-      {
-        dados[i][e] = '\0';
-        e = 0;
-        i++;
-      }
+      dados[i][e] = '\0';
+      e = 0;
+      i++;
     }
     else
     {
-      {
-        dados[i][e] = input[o];
-        e++;
-      }
+      dados[i][e] = input[o];
+      e++;
     }
 
     o++;
@@ -179,19 +175,17 @@ void adicionanovoproduto(char input[])
   {
     if (vec_prod[e].preco == (-1))
     {
+      vec_prod[e].preco = euros;
+      vec_prod[e].peso = kg;
+      vec_prod[e].stock = quantidade;
+      vec_prod[e].identificador = e;
+      for (i = 0; i < 63; i++)
       {
-        vec_prod[e].preco = euros;
-        vec_prod[e].peso = kg;
-        vec_prod[e].stock = quantidade;
-        vec_prod[e].identificador = e;
-        for (i = 0; i < 63; i++)
-        {
-          vec_prod[e].descricao[i] = dados[0][i];
-        }
-
-        vec_prod[e].descricao[i] = '\0';
-        break;
+        vec_prod[e].descricao[i] = dados[0][i];
       }
+
+      vec_prod[e].descricao[i] = '\0';
+      break;
     }
     else
     {
@@ -234,17 +228,15 @@ void remove_stock(char input[])
   quantidade = str_para_int(dados[1]);
   if (vec_prod[idp].identificador == idp)
   {
+    if (vec_prod[idp].stock >= quantidade)
     {
-      if (vec_prod[idp].stock >= quantidade)
-      {
-        vec_prod[idp].stock -= quantidade;
-      }
-      else
-      {
-        printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", quantidade, idp);
-      }
-
+      vec_prod[idp].stock -= quantidade;
     }
+    else
+    {
+      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", quantidade, idp);
+    }
+
   }
   else
   {
@@ -291,10 +283,8 @@ void ordena_produtos_sistema()
   {
     if (vec_prod[i].preco != (-1))
     {
-      {
-        vetor_precos[p] = vec_prod[i].preco;
-        p++;
-      }
+      vetor_precos[p] = vec_prod[i].preco;
+      p++;
     }
     else
     {
@@ -324,26 +314,22 @@ void ordena_produtos_sistema()
     {
       if (vetor_precos[e] != vetor_precos[e - 1])
       {
+        if (vec_prod[i].preco == vetor_precos[e])
         {
-          if (vec_prod[i].preco == vetor_precos[e])
+          printf("* ");
+          l = strlen(vec_prod[i].descricao);
+          for (m = 0; m < l; m++)
           {
-            {
-              printf("* ");
-              l = strlen(vec_prod[i].descricao);
-              for (m = 0; m < l; m++)
-              {
-                putchar(vec_prod[i].descricao[m]);
-              }
-
-              printf(" %d %d\n", vec_prod[i].preco, vec_prod[i].stock);
-            }
-          }
-          else
-          {
-            
+            putchar(vec_prod[i].descricao[m]);
           }
 
+          printf(" %d %d\n", vec_prod[i].preco, vec_prod[i].stock);
         }
+        else
+        {
+          
+        }
+
       }
       else
       {
@@ -363,11 +349,9 @@ void cria_encomenda()
   {
     if (vec_encomendas[i].identificador == (-1))
     {
-      {
-        vec_encomendas[i].identificador = i;
-        vec_encomendas[i].peso = 0;
-        break;
-      }
+      vec_encomendas[i].identificador = i;
+      vec_encomendas[i].peso = 0;
+      break;
     }
     else
     {
@@ -403,10 +387,8 @@ void adiciona_prod_encomenda(char input[])
   {
     if (vec_encomendas[i].identificador == ide)
     {
-      {
-        contador++;
-        peso_enc = vec_encomendas[i].peso;
-      }
+      contador++;
+      peso_enc = vec_encomendas[i].peso;
     }
     else
     {
@@ -428,23 +410,19 @@ void adiciona_prod_encomenda(char input[])
   {
     if (vec_prod[i].identificador == idp)
     {
+      peso_prod = vec_prod[i].peso;
+      contador5++;
+      e = i;
+      if ((vec_prod[i].stock < quantidade) && (contador != 0))
       {
-        peso_prod = vec_prod[i].peso;
-        contador5++;
-        e = i;
-        if ((vec_prod[i].stock < quantidade) && (contador != 0))
-        {
-          {
-            contador2++;
-            printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
-          }
-        }
-        else
-        {
-          
-        }
-
+        contador2++;
+        printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
       }
+      else
+      {
+        
+      }
+
     }
     else
     {
@@ -464,10 +442,8 @@ void adiciona_prod_encomenda(char input[])
 
   if (((((peso_enc + (quantidade * peso_prod)) > 200) && (contador5 != 0)) && (contador != 0)) && (contador2 == 0))
   {
-    {
-      contador4++;
-      printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
-    }
+    contador4++;
+    printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
   }
   else
   {
@@ -476,69 +452,59 @@ void adiciona_prod_encomenda(char input[])
 
   if ((((contador2 == 0) && (contador == 1)) && (contador4 == 0)) && (contador5 != 0))
   {
+    vec_prod[e].stock -= quantidade;
+    for (i = 0; i < 500; i++)
     {
-      vec_prod[e].stock -= quantidade;
-      for (i = 0; i < 500; i++)
+      if (vec_encomendas[i].identificador == ide)
       {
-        if (vec_encomendas[i].identificador == ide)
+        vec_encomendas[i].peso = peso_enc + (quantidade * peso_prod);
+        for (e = 0; e < 200; e++)
         {
+          if (vec_encomendas[i].produtos[e][0] == idp)
           {
-            vec_encomendas[i].peso = peso_enc + (quantidade * peso_prod);
-            for (e = 0; e < 200; e++)
+            vec_encomendas[i].produtos[e][1] += quantidade;
+            contador3++;
+            break;
+          }
+          else
+          {
+            
+          }
+
+        }
+
+        if (contador3 == 0)
+        {
+          for (e = 0; e < 200; e++)
+          {
+            if (vec_encomendas[i].produtos[e][0] == (-1))
             {
-              if (vec_encomendas[i].produtos[e][0] == idp)
-              {
-                {
-                  vec_encomendas[i].produtos[e][1] += quantidade;
-                  contador3++;
-                  break;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-            if (contador3 == 0)
-            {
-              {
-                for (e = 0; e < 200; e++)
-                {
-                  if (vec_encomendas[i].produtos[e][0] == (-1))
-                  {
-                    {
-                      vec_encomendas[i].produtos[e][0] = idp;
-                      vec_encomendas[i].produtos[e][1] = quantidade;
-                      break;
-                    }
-                  }
-                  else
-                  {
-                    
-                  }
-
-                }
-
-              }
+              vec_encomendas[i].produtos[e][0] = idp;
+              vec_encomendas[i].produtos[e][1] = quantidade;
+              break;
             }
             else
             {
               
             }
 
-            break;
           }
+
         }
         else
         {
           
         }
 
+        break;
+      }
+      else
+      {
+        
       }
 
     }
+
   }
   else
   {
@@ -563,9 +529,7 @@ void remove_prod_encomenda(char input[])
   idp = str_para_int(dados[1]);
   if (vec_encomendas[ide].identificador == ide)
   {
-    {
-      contador++;
-    }
+    contador++;
   }
   else
   {
@@ -585,10 +549,8 @@ void remove_prod_encomenda(char input[])
   {
     if (vec_prod[i].identificador == idp)
     {
-      {
-        contador2++;
-        peso_produto = vec_prod[i].peso;
-      }
+      contador2++;
+      peso_produto = vec_prod[i].peso;
     }
     else
     {
@@ -608,41 +570,35 @@ void remove_prod_encomenda(char input[])
 
   if ((contador2 == 1) && (contador == 1))
   {
+    for (i = 0; i < 500; i++)
     {
-      for (i = 0; i < 500; i++)
+      if (vec_encomendas[i].identificador == ide)
       {
-        if (vec_encomendas[i].identificador == ide)
+        for (e = 0; e < 200; e++)
         {
+          if (vec_encomendas[i].produtos[e][0] == idp)
           {
-            for (e = 0; e < 200; e++)
-            {
-              if (vec_encomendas[i].produtos[e][0] == idp)
-              {
-                {
-                  vec_prod[idp].stock += vec_encomendas[i].produtos[e][1];
-                  vec_encomendas[i].peso -= peso_produto * vec_encomendas[i].produtos[e][1];
-                  vec_encomendas[i].produtos[e][0] = -1;
-                  vec_encomendas[i].produtos[e][1] = -1;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-            break;
+            vec_prod[idp].stock += vec_encomendas[i].produtos[e][1];
+            vec_encomendas[i].peso -= peso_produto * vec_encomendas[i].produtos[e][1];
+            vec_encomendas[i].produtos[e][0] = -1;
+            vec_encomendas[i].produtos[e][1] = -1;
           }
-        }
-        else
-        {
-          
+          else
+          {
+            
+          }
+
         }
 
+        break;
+      }
+      else
+      {
+        
       }
 
     }
+
   }
   else
   {
@@ -675,9 +631,7 @@ void calcula_custo(char input[])
     {
       if (vec_prod[e].identificador == vec_encomendas[ide].produtos[i][0])
       {
-        {
-          precos[i] = vec_prod[e].preco;
-        }
+        precos[i] = vec_prod[e].preco;
       }
       else
       {
@@ -738,10 +692,8 @@ void lista_descricao_quantidade(char input[])
 
   if (vec_encomendas[ide].identificador != ide)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
-      contador2++;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
+    contador2++;
   }
   else
   {
@@ -761,10 +713,8 @@ void lista_descricao_quantidade(char input[])
   {
     if (vec_encomendas[ide].produtos[i][0] == idp)
     {
-      {
-        contador1++;
-        break;
-      }
+      contador1++;
+      break;
     }
     else
     {
@@ -775,34 +725,20 @@ void lista_descricao_quantidade(char input[])
 
   if (((contador != 0) && (contador1 != 0)) && (contador2 == 0))
   {
+    if (vec_encomendas[ide].identificador == ide)
     {
-      if (vec_encomendas[ide].identificador == ide)
+      for (i = 0; i < 200; i++)
       {
+        if (vec_encomendas[ide].produtos[i][0] == idp)
         {
-          for (i = 0; i < 200; i++)
+          for (m = 0; m < 10000; m++)
           {
-            if (vec_encomendas[ide].produtos[i][0] == idp)
+            if (vec_prod[m].identificador == idp)
             {
-              {
-                for (m = 0; m < 10000; m++)
-                {
-                  if (vec_prod[m].identificador == idp)
-                  {
-                    {
-                      for (n = 0; (n < 63) && (vec_prod[m].descricao[n] != '\0'); n++)
-                        putchar(vec_prod[m].descricao[n]);
+              for (n = 0; (n < 63) && (vec_prod[m].descricao[n] != '\0'); n++)
+                putchar(vec_prod[m].descricao[n]);
 
-                      printf(" %d.\n", vec_encomendas[ide].produtos[i][1]);
-                    }
-                  }
-                  else
-                  {
-                    
-                  }
-
-                }
-
-              }
+              printf(" %d.\n", vec_encomendas[ide].produtos[i][1]);
             }
             else
             {
@@ -812,33 +748,6 @@ void lista_descricao_quantidade(char input[])
           }
 
         }
-      }
-      else
-      {
-        
-      }
-
-    }
-  }
-  else
-  {
-    
-  }
-
-  if (((contador != 0) && (contador1 == 0)) && (contador2 == 0))
-  {
-    {
-      for (m = 0; m < 10000; m++)
-      {
-        if (vec_prod[m].identificador == idp)
-        {
-          {
-            for (n = 0; (n < 63) && (vec_prod[m].descricao[n] != '\0'); n++)
-              putchar(vec_prod[m].descricao[n]);
-
-            printf(" 0.\n");
-          }
-        }
         else
         {
           
@@ -847,6 +756,35 @@ void lista_descricao_quantidade(char input[])
       }
 
     }
+    else
+    {
+      
+    }
+
+  }
+  else
+  {
+    
+  }
+
+  if (((contador != 0) && (contador1 == 0)) && (contador2 == 0))
+  {
+    for (m = 0; m < 10000; m++)
+    {
+      if (vec_prod[m].identificador == idp)
+      {
+        for (n = 0; (n < 63) && (vec_prod[m].descricao[n] != '\0'); n++)
+          putchar(vec_prod[m].descricao[n]);
+
+        printf(" 0.\n");
+      }
+      else
+      {
+        
+      }
+
+    }
+
   }
   else
   {
@@ -870,10 +808,8 @@ void max_prod(char input[])
   idp = str_para_int(dados[0]);
   if (vec_prod[idp].identificador != idp)
   {
-    {
-      printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idp);
-      contador++;
-    }
+    printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idp);
+    contador++;
   }
   else
   {
@@ -886,11 +822,9 @@ void max_prod(char input[])
     {
       if ((vec_encomendas[i].produtos[e][0] == idp) && (vec_encomendas[i].produtos[e][1] > max))
       {
-        {
-          max = vec_encomendas[i].produtos[e][1];
-          ide = i;
-          contador1++;
-        }
+        max = vec_encomendas[i].produtos[e][1];
+        ide = i;
+        contador1++;
       }
       else
       {
@@ -931,58 +865,52 @@ void ordena_produtos_encomeda(char input[])
   }
   else
   {
+    for (i = 0; i < 200; i++)
     {
-      for (i = 0; i < 200; i++)
+      for (e = 0; e < 10000; e++)
       {
-        for (e = 0; e < 10000; e++)
+        if ((vec_prod[e].identificador == vec_encomendas[ide].produtos[i][0]) && (vec_prod[e].identificador != (-1)))
         {
-          if ((vec_prod[e].identificador == vec_encomendas[ide].produtos[i][0]) && (vec_prod[e].identificador != (-1)))
-          {
-            {
-              vec_indices[tamanho] = e;
-              tamanho++;
-              break;
-            }
-          }
-          else
-          {
-            
-          }
-
+          vec_indices[tamanho] = e;
+          tamanho++;
+          break;
+        }
+        else
+        {
+          
         }
 
-      }
-
-      merge_sort_funcao_L(vec_indices, 0, tamanho - 1);
-      printf("Encomenda %d\n", ide);
-      for (i = 0; i < tamanho; i++)
-      {
-        printf("* ");
-        for (e = 0; (e < 63) && (vec_prod[vec_indices[i]].descricao[e] != '\0'); e++)
-        {
-          putchar(vec_prod[vec_indices[i]].descricao[e]);
-        }
-
-        for (k = 0; k < 200; k++)
-        {
-          if (vec_encomendas[ide].produtos[k][0] == vec_indices[i])
-          {
-            {
-              quantidade = vec_encomendas[ide].produtos[k][1];
-              break;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-        printf(" %d %d\n", vec_prod[vec_indices[i]].preco, quantidade);
       }
 
     }
+
+    merge_sort_funcao_L(vec_indices, 0, tamanho - 1);
+    printf("Encomenda %d\n", ide);
+    for (i = 0; i < tamanho; i++)
+    {
+      printf("* ");
+      for (e = 0; (e < 63) && (vec_prod[vec_indices[i]].descricao[e] != '\0'); e++)
+      {
+        putchar(vec_prod[vec_indices[i]].descricao[e]);
+      }
+
+      for (k = 0; k < 200; k++)
+      {
+        if (vec_encomendas[ide].produtos[k][0] == vec_indices[i])
+        {
+          quantidade = vec_encomendas[ide].produtos[k][1];
+          break;
+        }
+        else
+        {
+          
+        }
+
+      }
+
+      printf(" %d %d\n", vec_prod[vec_indices[i]].preco, quantidade);
+    }
+
   }
 
 }

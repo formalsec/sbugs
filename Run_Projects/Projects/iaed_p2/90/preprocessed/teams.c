@@ -25,9 +25,7 @@ int cmp_teams_vct(void *a, void *b)
 {
   if (((team *) a)->victs != ((team *) b)->victs)
   {
-    {
-      return ((team *) a)->victs - ((team *) b)->victs;
-    }
+    return ((team *) a)->victs - ((team *) b)->victs;
   }
   else
   {

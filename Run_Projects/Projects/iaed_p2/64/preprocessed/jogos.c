@@ -33,10 +33,8 @@ void add_jogo(equipa *table_equipas, jogo *table_jogos, jogo *head, jogo *tail, 
   score2 = new_sym_var(sizeof(int) * 8);
   if (procura_jogo(table_jogos, nome_jogo) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", linha);
-      return;
-    }
+    printf("%d Jogo existente.\n", linha);
+    return;
   }
   else
   {
@@ -45,10 +43,8 @@ void add_jogo(equipa *table_equipas, jogo *table_jogos, jogo *head, jogo *tail, 
 
   if ((procura_equipa(table_equipas, nome_equipa1) == 0) || (procura_equipa(table_equipas, nome_equipa2) == 0))
   {
-    {
-      printf("%d Equipa inexistente.\n", linha);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", linha);
+    return;
   }
   else
   {
@@ -76,17 +72,13 @@ jogo insere_jogo(jogo *head, equipa *table_equipas, char *nome_jogo, char *nome_
   novo->equipa2 = procura_equipa(table_equipas, nome_equipa2);
   if (score1 > score2)
   {
-    {
-      (*novo->equipa1->jogos_ganhos)++;
-    }
+    (*novo->equipa1->jogos_ganhos)++;
   }
   else
   {
     if (score2 > score1)
     {
-      {
-        (*novo->equipa2->jogos_ganhos)++;
-      }
+      (*novo->equipa2->jogos_ganhos)++;
     }
     else
     {
@@ -110,11 +102,9 @@ void add_jogo_lista(jogo *head, jogo *tail, jogo *table_jogos, char *nome_jogo)
   novo->next_lista = 0;
   if ((*head) == 0)
   {
-    {
-      *tail = novo;
-      *head = novo;
-      return;
-    }
+    *tail = novo;
+    *head = novo;
+    return;
   }
   else
   {
@@ -140,9 +130,7 @@ jogo searchList_jogo(jogo head, char *nome_jogo)
   {
     if (strcmp(aux->nome, nome_jogo) == 0)
     {
-      {
-        return aux;
-      }
+      return aux;
     }
     else
     {
@@ -179,15 +167,11 @@ void print_jogo(jogo *table_jogos, int linha)
   jogo = procura_jogo(table_jogos, nome_jogo);
   if (jogo == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", linha);
-    }
+    printf("%d Jogo inexistente.\n", linha);
   }
   else
   {
-    {
-      printf("%d %s %s %s %d %d\n", linha, jogo->nome, jogo->equipa1->nome, jogo->equipa2->nome, *jogo->score1, *jogo->score2);
-    }
+    printf("%d %s %s %s %d %d\n", linha, jogo->nome, jogo->equipa1->nome, jogo->equipa2->nome, *jogo->score1, *jogo->score2);
   }
 
 }
@@ -209,10 +193,8 @@ void altera_score(jogo *table_jogos, int linha)
   jogo = procura_jogo(table_jogos, nome_jogo);
   if (jogo == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", linha);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", linha);
+    return;
   }
   else
   {
@@ -221,23 +203,12 @@ void altera_score(jogo *table_jogos, int linha)
 
   if ((*jogo->score1) > (*jogo->score2))
   {
+    if (score1 <= score2)
     {
-      if (score1 <= score2)
+      (*jogo->equipa1->jogos_ganhos)--;
+      if (score1 < score2)
       {
-        {
-          (*jogo->equipa1->jogos_ganhos)--;
-          if (score1 < score2)
-          {
-            {
-              (*jogo->equipa2->jogos_ganhos)++;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
+        (*jogo->equipa2->jogos_ganhos)++;
       }
       else
       {
@@ -245,28 +216,22 @@ void altera_score(jogo *table_jogos, int linha)
       }
 
     }
+    else
+    {
+      
+    }
+
   }
   else
   {
     if ((*jogo->score1) < (*jogo->score2))
     {
+      if (score1 >= score2)
       {
-        if (score1 >= score2)
+        (*jogo->equipa2->jogos_ganhos)--;
+        if (score1 > score2)
         {
-          {
-            (*jogo->equipa2->jogos_ganhos)--;
-            if (score1 > score2)
-            {
-              {
-                (*jogo->equipa1->jogos_ganhos)++;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
+          (*jogo->equipa1->jogos_ganhos)++;
         }
         else
         {
@@ -274,32 +239,31 @@ void altera_score(jogo *table_jogos, int linha)
         }
 
       }
+      else
+      {
+        
+      }
+
     }
     else
     {
+      if (score1 > score2)
       {
-        if (score1 > score2)
+        (*jogo->equipa1->jogos_ganhos)++;
+      }
+      else
+      {
+        if (score1 < score2)
         {
-          {
-            (*jogo->equipa1->jogos_ganhos)++;
-          }
+          (*jogo->equipa2->jogos_ganhos)++;
         }
         else
         {
-          if (score1 < score2)
-          {
-            {
-              (*jogo->equipa2->jogos_ganhos)++;
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
+
     }
 
   }
@@ -325,10 +289,8 @@ void remove_jogo(jogo *head, jogo *tail, jogo *table_jogos, int linha)
   teste = procura_jogo(table_jogos, nome_jogo);
   if (teste == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", linha);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", linha);
+    return;
   }
   else
   {
@@ -337,17 +299,13 @@ void remove_jogo(jogo *head, jogo *tail, jogo *table_jogos, int linha)
 
   if ((*teste->score1) > (*teste->score2))
   {
-    {
-      (*teste->equipa1->jogos_ganhos)--;
-    }
+    (*teste->equipa1->jogos_ganhos)--;
   }
   else
   {
     if ((*teste->score1) < (*teste->score2))
     {
-      {
-        (*teste->equipa2->jogos_ganhos)--;
-      }
+      (*teste->equipa2->jogos_ganhos)--;
     }
     else
     {
@@ -360,43 +318,33 @@ void remove_jogo(jogo *head, jogo *tail, jogo *table_jogos, int linha)
   {
     if (strcmp(aux->nome, nome_jogo) == 0)
     {
+      if ((aux == (*head)) && (aux == (*tail)))
       {
-        if ((aux == (*head)) && (aux == (*tail)))
+        *head = 0;
+        *tail = 0;
+      }
+      else
+      {
+        if (aux == (*head))
         {
-          {
-            *head = 0;
-            *tail = 0;
-          }
+          *head = aux->next_lista;
         }
         else
         {
-          if (aux == (*head))
+          if (aux == (*tail))
           {
-            {
-              *head = aux->next_lista;
-            }
+            *tail = prev;
+            (*tail)->next_lista = 0;
           }
           else
           {
-            if (aux == (*tail))
-            {
-              {
-                *tail = prev;
-                (*tail)->next_lista = 0;
-              }
-            }
-            else
-            {
-              {
-                prev->next_lista = aux->next_lista;
-              }
-            }
-
+            prev->next_lista = aux->next_lista;
           }
 
         }
 
       }
+
     }
     else
     {
@@ -417,26 +365,20 @@ jogo remove_jogo_hash(jogo head, char *nome_jogo)
   {
     if (strcmp(aux->nome, nome_jogo) == 0)
     {
+      if (aux == head)
       {
-        if (aux == head)
-        {
-          {
-            head = aux->next;
-          }
-        }
-        else
-        {
-          {
-            prev->next = aux->next;
-          }
-        }
-
-        free(aux->nome);
-        free(aux->score1);
-        free(aux->score2);
-        free(aux);
-        return head;
+        head = aux->next;
       }
+      else
+      {
+        prev->next = aux->next;
+      }
+
+      free(aux->nome);
+      free(aux->score1);
+      free(aux->score2);
+      free(aux);
+      return head;
     }
     else
     {

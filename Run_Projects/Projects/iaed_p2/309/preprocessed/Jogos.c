@@ -31,36 +31,28 @@ void DeleteNode2(hashtable2 *hash2, hash_node2 *n, int key)
   seguinte = hash2->heads2[key]->next2;
   if (n == atual)
   {
-    {
-      hash2->heads2[key] = seguinte;
-      free(atual);
-    }
+    hash2->heads2[key] = seguinte;
+    free(atual);
   }
   else
   {
+    while (n != seguinte)
     {
-      while (n != seguinte)
-      {
-        atual = atual->next2;
-        seguinte = seguinte->next2;
-      }
-
-      if (seguinte->next2 == 0)
-      {
-        {
-          atual->next2 = 0;
-          free(seguinte);
-        }
-      }
-      else
-      {
-        {
-          atual->next2 = seguinte->next2;
-          free(seguinte);
-        }
-      }
-
+      atual = atual->next2;
+      seguinte = seguinte->next2;
     }
+
+    if (seguinte->next2 == 0)
+    {
+      atual->next2 = 0;
+      free(seguinte);
+    }
+    else
+    {
+      atual->next2 = seguinte->next2;
+      free(seguinte);
+    }
+
   }
 
 }
@@ -79,9 +71,7 @@ int CheckGame(hashtable2 *tb, char *buffer, int key)
   {
     if (strcmp(n->pointer2->nomej, buffer) == 0)
     {
-      {
-        return 0;
-      }
+      return 0;
     }
     else
     {
@@ -100,10 +90,8 @@ void IncreaseWins(hashtable *tb, char *buffer, int key)
   {
     if (strcmp(n->pointer->nome, buffer) == 0)
     {
-      {
-        n->pointer->cont_ganhos += 1;
-        break;
-      }
+      n->pointer->cont_ganhos += 1;
+      break;
     }
     else
     {
@@ -121,22 +109,16 @@ void DecreaseWins(hashtable *tb, char *buffer, int key)
   {
     if (strcmp(n->pointer->nome, buffer) == 0)
     {
+      if (n->pointer->cont_ganhos == 0)
       {
-        if (n->pointer->cont_ganhos == 0)
-        {
-          {
-            break;
-          }
-        }
-        else
-        {
-          {
-            n->pointer->cont_ganhos -= 1;
-            break;
-          }
-        }
-
+        break;
       }
+      else
+      {
+        n->pointer->cont_ganhos -= 1;
+        break;
+      }
+
     }
     else
     {
@@ -153,34 +135,51 @@ void ChangeWins(int s1, int s2, int snew1, int snew2, hashtable *hash, hash_node
   int key3 = Hashcode(n->pointer2->equipa2);
   if ((s1 > s2) && (snew1 < snew2))
   {
-    {
-      DecreaseWins(hash, n->pointer2->equipa1, key2);
-      IncreaseWins(hash, n->pointer2->equipa2, key3);
-    }
+    DecreaseWins(hash, n->pointer2->equipa1, key2);
+    IncreaseWins(hash, n->pointer2->equipa2, key3);
   }
   else
   {
     if ((s2 > s1) && (snew2 < snew1))
     {
-      {
-        DecreaseWins(hash, n->pointer2->equipa2, key3);
-        IncreaseWins(hash, n->pointer2->equipa1, key2);
-      }
+      DecreaseWins(hash, n->pointer2->equipa2, key3);
+      IncreaseWins(hash, n->pointer2->equipa1, key2);
     }
     else
     {
       if (s1 == s2)
       {
+        if (snew2 < snew1)
         {
-          if (snew2 < snew1)
+          IncreaseWins(hash, n->pointer2->equipa1, key2);
+        }
+        else
+        {
+          if (snew1 < snew2)
           {
-            IncreaseWins(hash, n->pointer2->equipa1, key2);
+            IncreaseWins(hash, n->pointer2->equipa2, key3);
           }
           else
           {
-            if (snew1 < snew2)
+            
+          }
+
+        }
+
+      }
+      else
+      {
+        if (snew1 == snew2)
+        {
+          if (s1 > s2)
+          {
+            DecreaseWins(hash, n->pointer2->equipa1, key2);
+          }
+          else
+          {
+            if (s2 > s1)
             {
-              IncreaseWins(hash, n->pointer2->equipa2, key3);
+              DecreaseWins(hash, n->pointer2->equipa2, key3);
             }
             else
             {
@@ -189,31 +188,6 @@ void ChangeWins(int s1, int s2, int snew1, int snew2, hashtable *hash, hash_node
 
           }
 
-        }
-      }
-      else
-      {
-        if (snew1 == snew2)
-        {
-          {
-            if (s1 > s2)
-            {
-              DecreaseWins(hash, n->pointer2->equipa1, key2);
-            }
-            else
-            {
-              if (s2 > s1)
-              {
-                DecreaseWins(hash, n->pointer2->equipa2, key3);
-              }
-              else
-              {
-                
-              }
-
-            }
-
-          }
         }
         else
         {
@@ -263,73 +237,57 @@ void AddGame(int NL, Jogo *headJ, hashtable *hash, hashtable2 *hash2)
   key = Hashcode(buffer1), key2 = Hashcode(buffer2), key3 = Hashcode(buffer3);
   if (CheckGame(hash2, buffer1, key))
   {
+    if ((!CheckTeam(hash, buffer2, key2)) && (!CheckTeam(hash, buffer3, key3)))
     {
-      if ((!CheckTeam(hash, buffer2, key2)) && (!CheckTeam(hash, buffer3, key3)))
+      new = malloc(sizeof(Node_Jogo));
+      new->previous2 = headJ->last;
+      new->next2 = 0;
+      new->nomej = malloc((sizeof(char)) * (strlen(buffer1) + 1));
+      new->equipa1 = malloc((sizeof(char)) * (strlen(buffer2) + 1));
+      new->equipa2 = malloc((sizeof(char)) * (strlen(buffer3) + 1));
+      strcpy(new->nomej, buffer1);
+      strcpy(new->equipa1, buffer2);
+      strcpy(new->equipa2, buffer3);
+      new->score1 = s1;
+      new->score2 = s2;
+      if (headJ->last)
       {
-        {
-          new = malloc(sizeof(Node_Jogo));
-          new->previous2 = headJ->last;
-          new->next2 = 0;
-          new->nomej = malloc((sizeof(char)) * (strlen(buffer1) + 1));
-          new->equipa1 = malloc((sizeof(char)) * (strlen(buffer2) + 1));
-          new->equipa2 = malloc((sizeof(char)) * (strlen(buffer3) + 1));
-          strcpy(new->nomej, buffer1);
-          strcpy(new->equipa1, buffer2);
-          strcpy(new->equipa2, buffer3);
-          new->score1 = s1;
-          new->score2 = s2;
-          if (headJ->last)
-          {
-            {
-              headJ->last->next2 = new;
-            }
-          }
-          else
-          {
-            {
-              headJ->head = new;
-            }
-          }
-
-          headJ->last = new;
-          if (s1 > s2)
-          {
-            {
-              IncreaseWins(hash, buffer2, key2);
-            }
-          }
-          else
-          {
-            if (s2 > s1)
-            {
-              {
-                IncreaseWins(hash, buffer3, key3);
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-          hash2->heads2[key] = AddNode2(new, hash2->heads2[key]);
-        }
+        headJ->last->next2 = new;
       }
       else
       {
-        {
-          printf("%d Equipa inexistente.\n", NL);
-        }
+        headJ->head = new;
       }
 
+      headJ->last = new;
+      if (s1 > s2)
+      {
+        IncreaseWins(hash, buffer2, key2);
+      }
+      else
+      {
+        if (s2 > s1)
+        {
+          IncreaseWins(hash, buffer3, key3);
+        }
+        else
+        {
+          
+        }
+
+      }
+
+      hash2->heads2[key] = AddNode2(new, hash2->heads2[key]);
     }
+    else
+    {
+      printf("%d Equipa inexistente.\n", NL);
+    }
+
   }
   else
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-    }
+    printf("%d Jogo existente.\n", NL);
   }
 
 }
@@ -349,30 +307,24 @@ void SearchGame(int NL, hashtable2 *hash2)
   key = Hashcode(buffer);
   if (!CheckGame(hash2, buffer, key))
   {
+    for (n = hash2->heads2[key]; n != 0; n = n->next2)
     {
-      for (n = hash2->heads2[key]; n != 0; n = n->next2)
+      if (strcmp(n->pointer2->nomej, buffer) == 0)
       {
-        if (strcmp(n->pointer2->nomej, buffer) == 0)
-        {
-          {
-            printf("%d %s %s %s %d %d\n", NL, n->pointer2->nomej, n->pointer2->equipa1, n->pointer2->equipa2, n->pointer2->score1, n->pointer2->score2);
-            break;
-          }
-        }
-        else
-        {
-          
-        }
-
+        printf("%d %s %s %s %d %d\n", NL, n->pointer2->nomej, n->pointer2->equipa1, n->pointer2->equipa2, n->pointer2->score1, n->pointer2->score2);
+        break;
+      }
+      else
+      {
+        
       }
 
     }
+
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
 
 }
@@ -396,34 +348,28 @@ void ChangeScore(int NL, hashtable *hash, hashtable2 *hash2)
   key = Hashcode(buffer);
   if (!CheckGame(hash2, buffer, key))
   {
+    for (n = hash2->heads2[key]; n != 0; n = n->next2)
     {
-      for (n = hash2->heads2[key]; n != 0; n = n->next2)
+      if (strcmp(n->pointer2->nomej, buffer) == 0)
       {
-        if (strcmp(n->pointer2->nomej, buffer) == 0)
-        {
-          {
-            int s1 = n->pointer2->score1;
-            int s2 = n->pointer2->score2;
-            n->pointer2->score1 = snew1;
-            n->pointer2->score2 = snew2;
-            ChangeWins(s1, s2, snew1, snew2, hash, n);
-            break;
-          }
-        }
-        else
-        {
-          
-        }
-
+        int s1 = n->pointer2->score1;
+        int s2 = n->pointer2->score2;
+        n->pointer2->score1 = snew1;
+        n->pointer2->score2 = snew2;
+        ChangeWins(s1, s2, snew1, snew2, hash, n);
+        break;
+      }
+      else
+      {
+        
       }
 
     }
+
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
 
 }
@@ -443,83 +389,65 @@ void DeleteGame(int NL, Jogo *headJ, hashtable *hash, hashtable2 *hash2)
   key = Hashcode(buffer);
   if (!CheckGame(hash2, buffer, key))
   {
+    for (n = hash2->heads2[key]; n != 0; n = n->next2)
     {
-      for (n = hash2->heads2[key]; n != 0; n = n->next2)
+      if (strcmp(n->pointer2->nomej, buffer) == 0)
       {
-        if (strcmp(n->pointer2->nomej, buffer) == 0)
+        int key2 = Hashcode(n->pointer2->equipa1);
+        int key3 = Hashcode(n->pointer2->equipa2);
+        if (n->pointer2->score1 > n->pointer2->score2)
         {
-          {
-            int key2 = Hashcode(n->pointer2->equipa1);
-            int key3 = Hashcode(n->pointer2->equipa2);
-            if (n->pointer2->score1 > n->pointer2->score2)
-            {
-              {
-                DecreaseWins(hash, n->pointer2->equipa1, key2);
-              }
-            }
-            else
-            {
-              if (n->pointer2->score2 > n->pointer2->score1)
-              {
-                {
-                  DecreaseWins(hash, n->pointer2->equipa2, key3);
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-            if (n->pointer2->previous2 == 0)
-            {
-              {
-                headJ->head = n->pointer2->next2;
-              }
-            }
-            else
-            {
-              {
-                n->pointer2->previous2->next2 = n->pointer2->next2;
-              }
-            }
-
-            if (n->pointer2->next2 == 0)
-            {
-              {
-                headJ->last = n->pointer2->previous2;
-              }
-            }
-            else
-            {
-              {
-                n->pointer2->next2->previous2 = n->pointer2->previous2;
-              }
-            }
-
-            free(n->pointer2->nomej);
-            free(n->pointer2->equipa1);
-            free(n->pointer2->equipa2);
-            free(n->pointer2);
-            DeleteNode2(hash2, n, key);
-            break;
-          }
+          DecreaseWins(hash, n->pointer2->equipa1, key2);
         }
         else
         {
-          
+          if (n->pointer2->score2 > n->pointer2->score1)
+          {
+            DecreaseWins(hash, n->pointer2->equipa2, key3);
+          }
+          else
+          {
+            
+          }
+
         }
 
+        if (n->pointer2->previous2 == 0)
+        {
+          headJ->head = n->pointer2->next2;
+        }
+        else
+        {
+          n->pointer2->previous2->next2 = n->pointer2->next2;
+        }
+
+        if (n->pointer2->next2 == 0)
+        {
+          headJ->last = n->pointer2->previous2;
+        }
+        else
+        {
+          n->pointer2->next2->previous2 = n->pointer2->previous2;
+        }
+
+        free(n->pointer2->nomej);
+        free(n->pointer2->equipa1);
+        free(n->pointer2->equipa2);
+        free(n->pointer2);
+        DeleteNode2(hash2, n, key);
+        break;
+      }
+      else
+      {
+        
       }
 
     }
+
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
 
 }

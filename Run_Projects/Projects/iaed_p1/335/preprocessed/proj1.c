@@ -46,11 +46,9 @@ int partition(product caixa[], int l, int r)
 
     if (i < j)
     {
-      {
-        product t = caixa[i];
-        caixa[i] = caixa[j];
-        caixa[j] = t;
-      }
+      product t = caixa[i];
+      caixa[i] = caixa[j];
+      caixa[j] = t;
     }
     else
     {
@@ -142,10 +140,8 @@ int produto_na_caixa(int idp, product caixa[])
   {
     if (caixa[i].idp == idp)
     {
-      {
-        prod_in = 1;
-        break;
-      }
+      prod_in = 1;
+      break;
     }
     else
     {
@@ -175,14 +171,12 @@ void adiciona_produto_enc(int qtd, product produto, product encomenda[])
   }
   else
   {
-    {
-      i = tamanho_encomenda(encomenda);
-      encomenda[i].idp = produto.idp;
-      strcpy(encomenda[i].desc, produto.desc);
-      encomenda[i].preco = produto.preco;
-      encomenda[i].peso = produto.peso;
-      encomenda[i].qtd = qtd;
-    }
+    i = tamanho_encomenda(encomenda);
+    encomenda[i].idp = produto.idp;
+    strcpy(encomenda[i].desc, produto.desc);
+    encomenda[i].preco = produto.preco;
+    encomenda[i].peso = produto.peso;
+    encomenda[i].qtd = qtd;
   }
 
 }
@@ -193,15 +187,13 @@ void remove_produto_enc(int id, product encomenda[])
   int tam_enc = tamanho_encomenda(encomenda);
   if (i >= 0)
   {
+    sistema[id].qtd += encomenda[i].qtd;
+    for (; (i + 1) < tam_enc; i++)
     {
-      sistema[id].qtd += encomenda[i].qtd;
-      for (; (i + 1) < tam_enc; i++)
-      {
-        encomenda[i] = encomenda[i + 1];
-      }
-
-      encomenda[i].qtd = 0;
+      encomenda[i] = encomenda[i + 1];
     }
+
+    encomenda[i].qtd = 0;
   }
   else
   {
@@ -245,22 +237,18 @@ int id_maxqtd_enc(int ide, product produto, product encomendas[500][200])
     {
       if (encomendas[i][j].idp == produto.idp)
       {
+        if (encomendas[i][j].qtd > max)
         {
-          if (encomendas[i][j].qtd > max)
-          {
-            {
-              max = encomendas[i][j].qtd;
-              enc_max = i;
-            }
-          }
-          else
-          {
-            
-          }
-
-          prod_in = 1;
-          break;
+          max = encomendas[i][j].qtd;
+          enc_max = i;
         }
+        else
+        {
+          
+        }
+
+        prod_in = 1;
+        break;
       }
       else
       {
@@ -324,14 +312,12 @@ void ordena_desc(int n_prod, product armazem[])
       if (descr_ordenada(armazem[j], armazem[j - 1]))
     {
       {
-        {
-          product t = armazem[j];
-          armazem[j] = armazem[j - 1];
-          armazem[j - 1] = t;
-        }
-        ;
-        done = 0;
+        product t = armazem[j];
+        armazem[j] = armazem[j - 1];
+        armazem[j - 1] = t;
       }
+      ;
+      done = 0;
     }
     else
     {
@@ -423,10 +409,8 @@ void A()
         }
         else
         {
-          {
-            adiciona_produto_enc(qtd_in, sistema[pr_in], encomendas[enc_in]);
-            sistema[pr_in].qtd -= qtd_in;
-          }
+          adiciona_produto_enc(qtd_in, sistema[pr_in], encomendas[enc_in]);
+          sistema[pr_in].qtd -= qtd_in;
         }
 
       }
@@ -514,10 +498,8 @@ void p()
   }
   else
   {
-    {
-      sistema[pr_in].preco = p;
-      atualiza_encomendas(ids[1], sistema[pr_in], encomendas);
-    }
+    sistema[pr_in].preco = p;
+    atualiza_encomendas(ids[1], sistema[pr_in], encomendas);
   }
 
 }
@@ -541,10 +523,8 @@ void E()
     }
     else
     {
-      {
-        id_pr_enc = produto_na_caixa(pr_in, encomendas[enc_in]);
-        printf("%s %d.\n", sistema[pr_in].desc, encomendas[enc_in][id_pr_enc].qtd);
-      }
+      id_pr_enc = produto_na_caixa(pr_in, encomendas[enc_in]);
+      printf("%s %d.\n", sistema[pr_in].desc, encomendas[enc_in][id_pr_enc].qtd);
     }
 
   }
@@ -562,18 +542,16 @@ void m()
   }
   else
   {
+    id_enc = id_maxqtd_enc(ids[1], sistema[pr_in], encomendas);
+    if (id_enc >= 0)
     {
-      id_enc = id_maxqtd_enc(ids[1], sistema[pr_in], encomendas);
-      if (id_enc >= 0)
-      {
-        printf("Maximo produto %d %d %d.\n", pr_in, id_enc, encomendas[id_enc][produto_na_caixa(pr_in, encomendas[id_enc])].qtd);
-      }
-      else
-      {
-        
-      }
-
+      printf("Maximo produto %d %d %d.\n", pr_in, id_enc, encomendas[id_enc][produto_na_caixa(pr_in, encomendas[id_enc])].qtd);
     }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -601,18 +579,16 @@ void L()
   }
   else
   {
-    {
-      int i;
-      int tam = tamanho_encomenda(encomendas[enc_in]);
-      for (i = 0; i < tam; i++)
-        aux[i] = encomendas[enc_in][i];
+    int i;
+    int tam = tamanho_encomenda(encomendas[enc_in]);
+    for (i = 0; i < tam; i++)
+      aux[i] = encomendas[enc_in][i];
 
-      ordena_desc(tam, aux);
-      printf("Encomenda %d\n", enc_in);
-      for (i = 0; i < tam; i++)
-        printf("* %s %d %d\n", aux[i].desc, aux[i].preco, aux[i].qtd);
+    ordena_desc(tam, aux);
+    printf("Encomenda %d\n", enc_in);
+    for (i = 0; i < tam; i++)
+      printf("* %s %d %d\n", aux[i].desc, aux[i].preco, aux[i].qtd);
 
-    }
   }
 
 }

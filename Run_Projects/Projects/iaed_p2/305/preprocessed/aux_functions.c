@@ -10,25 +10,21 @@ char *read_string(char terminator)
   char *str;
   if (terminator == ':')
   {
+    for (int temp_index = 0; temp_index < 10; temp_index++)
     {
-      for (int temp_index = 0; temp_index < 10; temp_index++)
-      {
-        temp[temp_index] = new_sym_var(sizeof(char) * 8);
-      }
-
-      temp[10 - 1] = '\0';
+      temp[temp_index] = new_sym_var(sizeof(char) * 8);
     }
+
+    temp[10 - 1] = '\0';
   }
   else
   {
+    for (int temp_index = 0; temp_index < 10; temp_index++)
     {
-      for (int temp_index = 0; temp_index < 10; temp_index++)
-      {
-        temp[temp_index] = new_sym_var(sizeof(char) * 8);
-      }
-
-      temp[10 - 1] = '\0';
+      temp[temp_index] = new_sym_var(sizeof(char) * 8);
     }
+
+    temp[10 - 1] = '\0';
   }
 
   getchar();
@@ -58,11 +54,9 @@ int error_check_r_s(Game *srch, char *name, int *NL)
 {
   if (srch == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", *NL);
-      free(name);
-      return 1;
-    }
+    printf("%d Jogo inexistente.\n", *NL);
+    free(name);
+    return 1;
   }
   else
   {

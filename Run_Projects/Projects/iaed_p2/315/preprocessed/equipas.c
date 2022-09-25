@@ -28,60 +28,50 @@ node_equipa adicionar_ordem_alfabetica(node_equipa head, char *equipa)
 {
   if (head == 0)
   {
-    {
-      node_equipa new = criar_node_equipa(equipa);
-      return new;
-    }
+    node_equipa new = criar_node_equipa(equipa);
+    return new;
   }
   else
   {
     if (strcmp(head->nome_equipa, equipa) > 0)
     {
-      {
-        node_equipa new = criar_node_equipa(equipa);
-        new->next = head;
-        return new;
-      }
+      node_equipa new = criar_node_equipa(equipa);
+      new->next = head;
+      return new;
     }
     else
     {
+      node_equipa aux;
+      for (aux = head; aux->next != 0; aux = aux->next)
       {
-        node_equipa aux;
-        for (aux = head; aux->next != 0; aux = aux->next)
+        if (strcmp(aux->next->nome_equipa, equipa) > 0)
         {
-          if (strcmp(aux->next->nome_equipa, equipa) > 0)
-          {
-            {
-              node_equipa team;
-              node_equipa aux2;
-              team = criar_node_equipa(equipa);
-              aux2 = aux->next;
-              aux->next = team;
-              team->next = aux2;
-              break;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-        if (aux->next == 0)
-        {
-          {
-            node_equipa team = criar_node_equipa(equipa);
-            aux->next = team;
-          }
+          node_equipa team;
+          node_equipa aux2;
+          team = criar_node_equipa(equipa);
+          aux2 = aux->next;
+          aux->next = team;
+          team->next = aux2;
+          break;
         }
         else
         {
           
         }
 
-        return head;
       }
+
+      if (aux->next == 0)
+      {
+        node_equipa team = criar_node_equipa(equipa);
+        aux->next = team;
+      }
+      else
+      {
+        
+      }
+
+      return head;
     }
 
   }

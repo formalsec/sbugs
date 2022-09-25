@@ -23,9 +23,7 @@ nodetree *insere_tree(nodetree *nt, ItemT item)
 {
   if (nt == 0)
   {
-    {
-      return cria_nodetree(item);
-    }
+    return cria_nodetree(item);
   }
   else
   {
@@ -34,15 +32,11 @@ nodetree *insere_tree(nodetree *nt, ItemT item)
 
   if (strcmp(item, nt->item) < 0)
   {
-    {
-      nt->l = insere_tree(nt->l, item);
-    }
+    nt->l = insere_tree(nt->l, item);
   }
   else
   {
-    {
-      nt->r = insere_tree(nt->r, item);
-    }
+    nt->r = insere_tree(nt->r, item);
   }
 
   return nt;

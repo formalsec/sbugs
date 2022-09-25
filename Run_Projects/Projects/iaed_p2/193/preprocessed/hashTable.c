@@ -11,9 +11,7 @@ HashTable *createHashTable(int buckets)
   HashTable *hashTable;
   if (buckets < 1)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -36,9 +34,7 @@ void deleteHashTable(HashTable *hashTable, void (*freeFunction)(void *))
   int i;
   if (hashTable == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -70,9 +66,7 @@ void hashTableInsert(HashTable *hashTable, char *key, void *dataPointer)
   int index;
   if (((hashTable == 0) || (key == 0)) || (dataPointer == 0))
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -88,9 +82,7 @@ void hashTableRemove(HashTable *hashTable, char *key, int (*compareFunction)(cha
   int index;
   if (((hashTable == 0) || (key == 0)) || (compareFunction == 0))
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -106,9 +98,7 @@ link *hashTableSearch(HashTable *hashTable, char *key, int (*compareFunction)(ch
   int index;
   if (((hashTable == 0) || (key == 0)) || (compareFunction == 0))
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {

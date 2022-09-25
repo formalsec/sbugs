@@ -33,26 +33,22 @@ void matchInsert(Match match)
   int i = hashM(match->name, 199999);
   if (matchHeads[i] == 0)
   {
-    {
-      matchHeads[i] = (matchNode) malloc(sizeof(struct matchnode));
-      matchHeads[i]->match = match;
-      matchHeads[i]->next = 0;
-    }
+    matchHeads[i] = (matchNode) malloc(sizeof(struct matchnode));
+    matchHeads[i]->match = match;
+    matchHeads[i]->next = 0;
   }
   else
   {
+    matchNode t;
+    matchNode prev;
+    matchNode newNode = (matchNode) malloc(sizeof(struct matchnode));
+    newNode->match = match;
+    newNode->next = 0;
+    for (t = matchHeads[i], prev = 0; t != 0; prev = t, t = t->next)
     {
-      matchNode t;
-      matchNode prev;
-      matchNode newNode = (matchNode) malloc(sizeof(struct matchnode));
-      newNode->match = match;
-      newNode->next = 0;
-      for (t = matchHeads[i], prev = 0; t != 0; prev = t, t = t->next)
-      {
-      }
-
-      prev->next = newNode;
     }
+
+    prev->next = newNode;
   }
 
   addMatchNodeList(match);
@@ -67,24 +63,18 @@ void matchDelete(Match match)
   {
     if (strcmp(t->match->name, match->name) == 0)
     {
+      if (t == matchHeads[i])
       {
-        if (t == matchHeads[i])
-        {
-          {
-            matchHeads[i] = t->next;
-          }
-        }
-        else
-        {
-          {
-            prev->next = t->next;
-          }
-        }
-
-        strcpy(t->match->name, ":");
-        free(t);
-        break;
+        matchHeads[i] = t->next;
       }
+      else
+      {
+        prev->next = t->next;
+      }
+
+      strcpy(t->match->name, ":");
+      free(t);
+      break;
     }
     else
     {
@@ -103,9 +93,7 @@ matchNode matchSearch(char *name)
   {
     if (strcmp(aux->match->name, name) == 0)
     {
-      {
-        return aux;
-      }
+      return aux;
     }
     else
     {
@@ -121,10 +109,8 @@ void matchHashListFREE(matchNode m)
 {
   if (m != 0)
   {
-    {
-      matchHashListFREE(m->next);
-      free(m);
-    }
+    matchHashListFREE(m->next);
+    free(m);
   }
   else
   {
@@ -161,16 +147,12 @@ void addMatchNodeList(Match match)
 {
   if (head == 0)
   {
-    {
-      head = (tail = newMatchNode(match, head));
-    }
+    head = (tail = newMatchNode(match, head));
   }
   else
   {
-    {
-      tail->next = newMatchNode(match, tail->next);
-      tail = tail->next;
-    }
+    tail->next = newMatchNode(match, tail->next);
+    tail = tail->next;
   }
 
 }
@@ -179,11 +161,9 @@ void MfreeHead(matchNode node)
 {
   if (node != 0)
   {
-    {
-      freeMatch(node->match);
-      MfreeHead(node->next);
-      free(node);
-    }
+    freeMatch(node->match);
+    MfreeHead(node->next);
+    free(node);
   }
   else
   {

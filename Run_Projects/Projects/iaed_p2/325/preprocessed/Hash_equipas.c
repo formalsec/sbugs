@@ -23,16 +23,12 @@ Equipas_hash insertBeginE(Equipas_hash head, char *buffer)
   Equipas_hash x = NEWE(buffer);
   if (head == 0)
   {
-    {
-      head = x;
-      x->next = 0;
-    }
+    head = x;
+    x->next = 0;
   }
   else
   {
-    {
-      x->next = head;
-    }
+    x->next = head;
   }
 
   return x;
@@ -57,9 +53,7 @@ Equipas_hash search_listE(Equipas_hash head, char *n)
   {
     if (strcmp(new->nome_equipa, n) == 0)
     {
-      {
-        return new;
-      }
+      return new;
     }
     else
     {

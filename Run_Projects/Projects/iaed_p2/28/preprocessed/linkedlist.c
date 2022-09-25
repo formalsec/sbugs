@@ -13,10 +13,8 @@ ListNode *new_node(void *structPointer)
   ListNode *p = malloc(sizeof(ListNode));
   if (!p)
   {
-    {
-      perror("new_node: no memory for a new node");
-      exit(1);
-    }
+    perror("new_node: no memory for a new node");
+    exit(1);
   }
   else
   {
@@ -295,10 +293,8 @@ void splitList(ListNode *source, ListNode **frontRef, ListNode **backRef)
     fast = fast->next;
     if (fast != 0)
     {
-      {
-        slow = slow->next;
-        fast = fast->next;
-      }
+      slow = slow->next;
+      fast = fast->next;
     }
     else
     {
@@ -317,17 +313,13 @@ ListNode *sortedMerge(ListNode *a, ListNode *b)
   ListNode *result = 0;
   if (a == 0)
   {
-    {
-      return b;
-    }
+    return b;
   }
   else
   {
     if (b == 0)
     {
-      {
-        return a;
-      }
+      return a;
     }
     else
     {
@@ -338,17 +330,13 @@ ListNode *sortedMerge(ListNode *a, ListNode *b)
 
   if (strcmp(((struct equipa *) a->structPointer)->nome, ((struct equipa *) b->structPointer)->nome) <= 0)
   {
-    {
-      result = a;
-      result->next = sortedMerge(a->next, b);
-    }
+    result = a;
+    result->next = sortedMerge(a->next, b);
   }
   else
   {
-    {
-      result = b;
-      result->next = sortedMerge(a, b->next);
-    }
+    result = b;
+    result->next = sortedMerge(a, b->next);
   }
 
   return result;
@@ -361,9 +349,7 @@ void mergeSort(ListNode **head_ref)
   ListNode *b;
   if ((head == 0) || (head->next == 0))
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {

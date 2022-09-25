@@ -25,9 +25,7 @@ linkjogo lookup_jogo(linkjogo head, char *name)
   {
     if (strcmp(t->jogo->name, name) == 0)
     {
-      {
-        return t;
-      }
+      return t;
     }
     else
     {
@@ -72,12 +70,10 @@ linkjogo insertBegin_jogo(Hash *HashTable, linkjogo head, char name[], char equi
   x = NEW_jogo(HashTable, name, equipa1, equipa2, score1, score2, m);
   if (head == 0)
   {
-    {
-      y->jogo = x;
-      y->nextHash = 0;
-      y->previousHash = 0;
-      return y;
-    }
+    y->jogo = x;
+    y->nextHash = 0;
+    y->previousHash = 0;
+    return y;
   }
   else
   {
@@ -121,19 +117,15 @@ void add_last(list *lista, char name[], Hash_Jogo *HashTable, int m)
   lst->jogo = t->jogo;
   if (lista->head == 0)
   {
-    {
-      lista->head = lst;
-      lista->tail = lst;
-    }
+    lista->head = lst;
+    lista->tail = lst;
   }
   else
   {
-    {
-      antiga_tail = lista->tail;
-      antiga_tail->nextLista = lst;
-      lst->previouslista = antiga_tail;
-      lista->tail = lst;
-    }
+    antiga_tail = lista->tail;
+    antiga_tail->nextLista = lst;
+    lst->previouslista = antiga_tail;
+    lista->tail = lst;
   }
 
 }
@@ -165,39 +157,31 @@ void procurar_ordenado(list *ponteiro_lista_unica, linkjogo linkjogo)
 
   if ((y->previouslista == 0) && (y->nextLista != 0))
   {
-    {
-      ydepois = y->nextLista;
-      ydepois->previouslista = 0;
-      ponteiro_lista_unica->head = ydepois;
-    }
+    ydepois = y->nextLista;
+    ydepois->previouslista = 0;
+    ponteiro_lista_unica->head = ydepois;
   }
   else
   {
     if ((y->previouslista != 0) && (y->nextLista == 0))
     {
-      {
-        yantes = y->previouslista;
-        yantes->nextLista = 0;
-        ponteiro_lista_unica->tail = yantes;
-      }
+      yantes = y->previouslista;
+      yantes->nextLista = 0;
+      ponteiro_lista_unica->tail = yantes;
     }
     else
     {
       if ((y->previouslista == 0) && (y->nextLista == 0))
       {
-        {
-          ponteiro_lista_unica->head = 0;
-          ponteiro_lista_unica->tail = 0;
-        }
+        ponteiro_lista_unica->head = 0;
+        ponteiro_lista_unica->tail = 0;
       }
       else
       {
-        {
-          yantes = y->previouslista;
-          ydepois = y->nextLista;
-          yantes->nextLista = ydepois;
-          ydepois->previouslista = yantes;
-        }
+        yantes = y->previouslista;
+        ydepois = y->nextLista;
+        yantes->nextLista = ydepois;
+        ydepois->previouslista = yantes;
       }
 
     }

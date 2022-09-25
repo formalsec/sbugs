@@ -38,10 +38,8 @@ void a(int cont, table_eq tab_eq, table_jogos tab_j, listagem lst)
   score2 = new_sym_var(sizeof(int) * 8);
   if (SearchJogo(nome, tab_j))
   {
-    {
-      printf("%d Jogo existente.\n", cont);
-      return;
-    }
+    printf("%d Jogo existente.\n", cont);
+    return;
   }
   else
   {
@@ -50,10 +48,8 @@ void a(int cont, table_eq tab_eq, table_jogos tab_j, listagem lst)
 
   if ((SearchEquipa(equipa1, tab_eq) == 0) || (SearchEquipa(equipa2, tab_eq) == 0))
   {
-    {
-      printf("%d Equipa inexistente.\n", cont);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", cont);
+    return;
   }
   else
   {
@@ -90,10 +86,8 @@ void p(int cont, table_jogos tab_j)
   nome[10 - 1] = '\0';
   if (SearchJogo(nome, tab_j) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", cont);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", cont);
+    return;
   }
   else
   {
@@ -116,10 +110,8 @@ void r(int cont, table_jogos tab_j, table_eq tab_eq, listagem lst)
   nome[10 - 1] = '\0';
   if (SearchJogo(nome, tab_j) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", cont);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", cont);
+    return;
   }
   else
   {
@@ -128,9 +120,7 @@ void r(int cont, table_jogos tab_j, table_eq tab_eq, listagem lst)
 
   if (SearchJogo(nome, tab_j)->winner != 0)
   {
-    {
-      SearchEquipa(SearchJogo(nome, tab_j)->winner, tab_eq)->vitorias--;
-    }
+    SearchEquipa(SearchJogo(nome, tab_j)->winner, tab_eq)->vitorias--;
   }
   else
   {
@@ -158,10 +148,8 @@ void s(int cont, table_jogos tab_j, table_eq tab_eq)
   score2 = new_sym_var(sizeof(int) * 8);
   if (SearchJogo(nome, tab_j) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", cont);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", cont);
+    return;
   }
   else
   {
@@ -171,10 +159,8 @@ void s(int cont, table_jogos tab_j, table_eq tab_eq)
   match = SearchJogo(nome, tab_j);
   if (match->winner != 0)
   {
-    {
-      old_winner = malloc(((sizeof(char)) * strlen(match->winner)) + 1);
-      strcpy(old_winner, match->winner);
-    }
+    old_winner = malloc(((sizeof(char)) * strlen(match->winner)) + 1);
+    strcpy(old_winner, match->winner);
   }
   else
   {
@@ -198,10 +184,8 @@ void A(int cont, table_eq tab_eq)
   nome[10 - 1] = '\0';
   if (SearchEquipa(nome, tab_eq))
   {
-    {
-      printf("%d Equipa existente.\n", cont);
-      return;
-    }
+    printf("%d Equipa existente.\n", cont);
+    return;
   }
   else
   {
@@ -224,11 +208,9 @@ void P(int cont, table_eq tab_eq)
   nome[10 - 1] = '\0';
   if (SearchEquipa(nome, tab_eq) == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", cont);
-      cont++;
-      return;
-    }
+    printf("%d Equipa inexistente.\n", cont);
+    cont++;
+    return;
   }
   else
   {
@@ -263,9 +245,7 @@ void g(int cont, table_eq tab_eq)
     {
       if (temp->equipa->vitorias == max_wins)
       {
-        {
-          nr_eq++;
-        }
+        nr_eq++;
       }
       else
       {
@@ -274,10 +254,8 @@ void g(int cont, table_eq tab_eq)
 
       if (temp->equipa->vitorias > max_wins)
       {
-        {
-          max_wins = temp->equipa->vitorias;
-          nr_eq = 1;
-        }
+        max_wins = temp->equipa->vitorias;
+        nr_eq = 1;
       }
       else
       {
@@ -291,9 +269,7 @@ void g(int cont, table_eq tab_eq)
 
   if (nr_eq == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -308,11 +284,9 @@ void g(int cont, table_eq tab_eq)
     {
       if (temp->equipa->vitorias == max_wins)
       {
-        {
-          vetor[j] = malloc(((sizeof(char)) * strlen(temp->equipa->nome)) + 1);
-          strcpy(vetor[j], temp->equipa->nome);
-          j++;
-        }
+        vetor[j] = malloc(((sizeof(char)) * strlen(temp->equipa->nome)) + 1);
+        strcpy(vetor[j], temp->equipa->nome);
+        j++;
       }
       else
       {

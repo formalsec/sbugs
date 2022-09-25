@@ -39,17 +39,13 @@ void InsertEnd(List l, Game g)
   SetGame(new, g);
   if (Head(l) != 0)
   {
-    {
-      SetPrev(new, End(l));
-      SetNext(End(l), new);
-    }
+    SetPrev(new, End(l));
+    SetNext(End(l), new);
   }
   else
   {
-    {
-      SetHead(l, new);
-      SetPrev(new, 0);
-    }
+    SetHead(l, new);
+    SetPrev(new, 0);
   }
 
   SetEnd(l, new);
@@ -60,35 +56,27 @@ void RemoveGame(Node node, List l)
   Team winner;
   if ((Prev(node) != 0) && (Next(node) != 0))
   {
-    {
-      SetNext(Prev(node), Next(node));
-      SetPrev(Next(node), Prev(node));
-    }
+    SetNext(Prev(node), Next(node));
+    SetPrev(Next(node), Prev(node));
   }
   else
   {
     if (Prev(node) != 0)
     {
-      {
-        SetNext(Prev(node), 0);
-        SetEnd(l, Prev(node));
-      }
+      SetNext(Prev(node), 0);
+      SetEnd(l, Prev(node));
     }
     else
     {
       if (Next(node) != 0)
       {
-        {
-          SetPrev(Next(node), 0);
-          SetHead(l, Next(node));
-        }
+        SetPrev(Next(node), 0);
+        SetHead(l, Next(node));
       }
       else
       {
-        {
-          SetEnd(l, 0);
-          SetHead(l, 0);
-        }
+        SetEnd(l, 0);
+        SetHead(l, 0);
       }
 
     }
@@ -115,16 +103,14 @@ void DestroyList(List l)
   Node head = Head(l);
   if (head != 0)
   {
+    for (aux = Next(head); aux != 0; head = aux, aux = Next(aux))
     {
-      for (aux = Next(head); aux != 0; head = aux, aux = Next(aux))
-      {
-        DestroyGame(NodeGame(head));
-        DestroyNode(head);
-      }
-
       DestroyGame(NodeGame(head));
       DestroyNode(head);
     }
+
+    DestroyGame(NodeGame(head));
+    DestroyNode(head);
   }
   else
   {

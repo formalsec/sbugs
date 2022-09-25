@@ -32,20 +32,16 @@ gameNodeP newGame(TeamsHash *HashT, char *name, char *eq1, char *eq2, int score1
   {
     if (strcmp(x->team->name, eq1) == 0)
     {
+      game->team1 = x->team;
+      if (score1 > score2)
       {
-        game->team1 = x->team;
-        if (score1 > score2)
-        {
-          {
-            x->team->wins++;
-          }
-        }
-        else
-        {
-          
-        }
-
+        x->team->wins++;
       }
+      else
+      {
+        
+      }
+
     }
     else
     {
@@ -58,20 +54,16 @@ gameNodeP newGame(TeamsHash *HashT, char *name, char *eq1, char *eq2, int score1
   {
     if (strcmp(x->team->name, eq2) == 0)
     {
+      game->team2 = x->team;
+      if (score2 > score1)
       {
-        game->team2 = x->team;
-        if (score2 > score1)
-        {
-          {
-            x->team->wins++;
-          }
-        }
-        else
-        {
-          
-        }
-
+        x->team->wins++;
       }
+      else
+      {
+        
+      }
+
     }
     else
     {
@@ -101,17 +93,13 @@ void removeWin(Game *game)
 {
   if (game->score1 > game->score2)
   {
-    {
-      game->team1->wins--;
-    }
+    game->team1->wins--;
   }
   else
   {
     if (game->score1 < game->score2)
     {
-      {
-        game->team2->wins--;
-      }
+      game->team2->wins--;
     }
     else
     {

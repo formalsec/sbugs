@@ -30,11 +30,9 @@ void adicionalista(list *lista, Item elemento)
   new_node->next = 0;
   if (lista_vazia(lista))
   {
-    {
-      lista->head = new_node;
-      lista->tail = new_node;
-      return;
-    }
+    lista->head = new_node;
+    lista->tail = new_node;
+    return;
   }
   else
   {
@@ -54,34 +52,26 @@ void removelista(list *lista, Item elemento)
   {
     if (atual->item == elemento)
     {
+      if (atual == lista->head)
       {
-        if (atual == lista->head)
-        {
-          {
-            lista->head = atual->next;
-          }
-        }
-        else
-        {
-          {
-            prev->next = atual->next;
-          }
-        }
-
-        if (atual == lista->tail)
-        {
-          {
-            lista->tail = prev;
-          }
-        }
-        else
-        {
-          
-        }
-
-        free(atual);
-        break;
+        lista->head = atual->next;
       }
+      else
+      {
+        prev->next = atual->next;
+      }
+
+      if (atual == lista->tail)
+      {
+        lista->tail = prev;
+      }
+      else
+      {
+        
+      }
+
+      free(atual);
+      break;
     }
     else
     {
@@ -99,28 +89,11 @@ void freelista(list *lista, int controlo, void (*freeitem)(Item))
   link prox;
   if (!lista_vazia(lista))
   {
+    for (atual = lista->head, prox = lista->head->next; prox != 0; atual = prox, prox = prox->next)
     {
-      for (atual = lista->head, prox = lista->head->next; prox != 0; atual = prox, prox = prox->next)
-      {
-        if (controlo == 1)
-        {
-          {
-            freeitem(atual->item);
-          }
-        }
-        else
-        {
-          
-        }
-
-        free(atual);
-      }
-
       if (controlo == 1)
       {
-        {
-          freeitem(atual->item);
-        }
+        freeitem(atual->item);
       }
       else
       {
@@ -129,6 +102,17 @@ void freelista(list *lista, int controlo, void (*freeitem)(Item))
 
       free(atual);
     }
+
+    if (controlo == 1)
+    {
+      freeitem(atual->item);
+    }
+    else
+    {
+      
+    }
+
+    free(atual);
   }
   else
   {

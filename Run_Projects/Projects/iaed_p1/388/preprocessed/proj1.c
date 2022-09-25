@@ -152,19 +152,15 @@ void quicksort(prod *clprod, int e, int d, int estado)
 
   if (estado == 1)
   {
-    {
-      i = divprod(clprod, e, d);
-      quicksort(clprod, e, i - 1, 1);
-      quicksort(clprod, i + 1, d, 1);
-    }
+    i = divprod(clprod, e, d);
+    quicksort(clprod, e, i - 1, 1);
+    quicksort(clprod, i + 1, d, 1);
   }
   else
   {
-    {
-      i = divenco(clprod, e, d);
-      quicksort(clprod, e, i - 1, 0);
-      quicksort(clprod, i + 1, d, 0);
-    }
+    i = divenco(clprod, e, d);
+    quicksort(clprod, e, i - 1, 0);
+    quicksort(clprod, i + 1, d, 0);
   }
 
 }
@@ -248,24 +244,20 @@ void Acommand(int idp, int ide, prod *lprod, enco *lenco)
         }
         else
         {
+          fres = ifinder(idpa, lenco[idea].produtos, lenco[idea].idprod);
+          if (fres == (-1))
           {
-            fres = ifinder(idpa, lenco[idea].produtos, lenco[idea].idprod);
-            if (fres == (-1))
-            {
-              {
-                lenco[idea].idprod[lenco[idea].produtos] = lprod[idpa].id;
-                lenco[idea].qtprod[lenco[idea].produtos] += qtda;
-                lenco[idea].produtos++;
-              }
-            }
-            else
-            {
-              lenco[idea].qtprod[fres] += qtda;
-            }
-
-            lenco[idea].peso += lprod[idpa].kg * qtda;
-            lprod[idpa].qtd -= qtda;
+            lenco[idea].idprod[lenco[idea].produtos] = lprod[idpa].id;
+            lenco[idea].qtprod[lenco[idea].produtos] += qtda;
+            lenco[idea].produtos++;
           }
+          else
+          {
+            lenco[idea].qtprod[fres] += qtda;
+          }
+
+          lenco[idea].peso += lprod[idpa].kg * qtda;
+          lprod[idpa].qtd -= qtda;
         }
 
       }
@@ -312,36 +304,30 @@ void Rcommand(int idp, int ide, prod *lprod, enco *lenco)
   idpa = new_sym_var(sizeof(int) * 8);
   if (ide > idea)
   {
+    if (idp <= idpa)
     {
-      if (idp <= idpa)
+      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idpa, idea);
+    }
+    else
+    {
+      fres = ifinder(idpa, lenco[idea].produtos, lenco[idea].idprod);
+      if (fres != (-1))
       {
-        printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idpa, idea);
+        lenco[idea].produtos--;
+        lenco[idea].peso -= lprod[idpa].kg * lenco[idea].qtprod[fres];
+        lprod[idpa].qtd += lenco[idea].qtprod[fres];
+        lenco[idea].idprod[fres] = lenco[idea].idprod[lenco[idea].produtos];
+        lenco[idea].qtprod[fres] = lenco[idea].qtprod[lenco[idea].produtos];
+        lenco[idea].idprod[lenco[idea].produtos] = 0;
+        lenco[idea].qtprod[lenco[idea].produtos] = 0;
       }
       else
       {
-        {
-          fres = ifinder(idpa, lenco[idea].produtos, lenco[idea].idprod);
-          if (fres != (-1))
-          {
-            {
-              lenco[idea].produtos--;
-              lenco[idea].peso -= lprod[idpa].kg * lenco[idea].qtprod[fres];
-              lprod[idpa].qtd += lenco[idea].qtprod[fres];
-              lenco[idea].idprod[fres] = lenco[idea].idprod[lenco[idea].produtos];
-              lenco[idea].qtprod[fres] = lenco[idea].qtprod[lenco[idea].produtos];
-              lenco[idea].idprod[lenco[idea].produtos] = 0;
-              lenco[idea].qtprod[lenco[idea].produtos] = 0;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
+        
       }
 
     }
+
   }
   else
   {
@@ -359,14 +345,12 @@ void Ccommand(int ide, prod *lprod, enco *lenco)
   idea = new_sym_var(sizeof(int) * 8);
   if (idea < ide)
   {
+    for (i = 0; i < lenco[idea].produtos; i++)
     {
-      for (i = 0; i < lenco[idea].produtos; i++)
-      {
-        res += lprod[lenco[idea].idprod[i]].preco * lenco[idea].qtprod[i];
-      }
-
-      printf("Custo da encomenda %d %d.\n", idea, res);
+      res += lprod[lenco[idea].idprod[i]].preco * lenco[idea].qtprod[i];
     }
+
+    printf("Custo da encomenda %d %d.\n", idea, res);
   }
   else
   {
@@ -413,10 +397,8 @@ void Ecommand(int idp, int ide, prod *lprod, enco *lenco)
     }
     else
     {
-      {
-        i = ifinder(idpa, lenco[idea].produtos, lenco[idea].idprod);
-        printf("%s %d.\n", lprod[idpa].des, lenco[idea].qtprod[i]);
-      }
+      i = ifinder(idpa, lenco[idea].produtos, lenco[idea].idprod);
+      printf("%s %d.\n", lprod[idpa].des, lenco[idea].qtprod[i]);
     }
 
   }
@@ -438,36 +420,22 @@ void mcommand(int idp, int ide, enco *lenco)
   }
   else
   {
+    for (i = 0; i < ide; i++)
     {
-      for (i = 0; i < ide; i++)
+      j = ifinder(idpa, lenco[i].produtos, lenco[i].idprod);
+      if (j == (-1))
       {
-        j = ifinder(idpa, lenco[i].produtos, lenco[i].idprod);
-        if (j == (-1))
-        {
-          continue;
-        }
-        else
-        {
-          
-        }
-
-        if (max < lenco[i].qtprod[j])
-        {
-          {
-            max = lenco[i].qtprod[j];
-            idea = i;
-          }
-        }
-        else
-        {
-          
-        }
-
+        continue;
+      }
+      else
+      {
+        
       }
 
-      if (max != 0)
+      if (max < lenco[i].qtprod[j])
       {
-        printf("Maximo produto %d %d %d.\n", idpa, idea, max);
+        max = lenco[i].qtprod[j];
+        idea = i;
       }
       else
       {
@@ -475,6 +443,16 @@ void mcommand(int idp, int ide, enco *lenco)
       }
 
     }
+
+    if (max != 0)
+    {
+      printf("Maximo produto %d %d %d.\n", idpa, idea, max);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -510,19 +488,17 @@ void Lcommand(int ide, prod *lprod, enco *lenco)
   idea = new_sym_var(sizeof(int) * 8);
   if (idea < ide)
   {
+    for (i = 0; i < lenco[idea].produtos; i++)
     {
-      for (i = 0; i < lenco[idea].produtos; i++)
-      {
-        clprod[i] = lprod[lenco[idea].idprod[i]];
-        clprod[i].qtd = lenco[idea].qtprod[i];
-      }
-
-      quicksort(clprod, 0, lenco[idea].produtos - 1, 0);
-      printf("Encomenda %d\n", idea);
-      for (i = 0; i < lenco[idea].produtos; i++)
-        printf("* %s %d %d\n", clprod[i].des, clprod[i].preco, clprod[i].qtd);
-
+      clprod[i] = lprod[lenco[idea].idprod[i]];
+      clprod[i].qtd = lenco[idea].qtprod[i];
     }
+
+    quicksort(clprod, 0, lenco[idea].produtos - 1, 0);
+    printf("Encomenda %d\n", idea);
+    for (i = 0; i < lenco[idea].produtos; i++)
+      printf("* %s %d %d\n", clprod[i].des, clprod[i].preco, clprod[i].qtd);
+
   }
   else
   {

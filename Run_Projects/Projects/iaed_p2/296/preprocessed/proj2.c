@@ -48,11 +48,9 @@ void quicksort(char **a, int l, int r)
 
     if (i < j)
     {
-      {
-        char *t = a[i];
-        a[i] = a[j];
-        a[j] = t;
-      }
+      char *t = a[i];
+      a[i] = a[j];
+      a[j] = t;
     }
     else
     {
@@ -91,32 +89,28 @@ void cmd_a(Hashtable_Jogo *htj, Hashtable_Equipa *hte, Lista_Ligada_Jogo *jogos,
   }
   else
   {
+    e1 = ht_pesquisar_equipa(hte, ne1);
+    e2 = ht_pesquisar_equipa(hte, ne2);
+    if (e1 && e2)
     {
-      e1 = ht_pesquisar_equipa(hte, ne1);
-      e2 = ht_pesquisar_equipa(hte, ne2);
-      if (e1 && e2)
+      jogo = j_criar(e1, e2, se1, se2);
+      ll_inserir_jogo(jogos, jogo, chave);
+      ht_inserir_jogo(htj, jogo, chave);
+      if (vencedor(jogo))
       {
-        {
-          jogo = j_criar(e1, e2, se1, se2);
-          ll_inserir_jogo(jogos, jogo, chave);
-          ht_inserir_jogo(htj, jogo, chave);
-          if (vencedor(jogo))
-          {
-            vencedor(jogo)->vitorias++;
-          }
-          else
-          {
-            
-          }
-
-        }
+        vencedor(jogo)->vitorias++;
       }
       else
       {
-        printf("%d Equipa inexistente.\n", nl);
+        
       }
 
     }
+    else
+    {
+      printf("%d Equipa inexistente.\n", nl);
+    }
+
   }
 
 }
@@ -130,11 +124,9 @@ void cmd_A(Hashtable_Equipa *hte, Lista_Ligada_Equipa *equipas, int nl, char *ch
   }
   else
   {
-    {
-      equipa = e_criar(chave);
-      ll_inserir_equipa(equipas, equipa, chave);
-      ht_inserir_equipa(hte, equipa, chave);
-    }
+    equipa = e_criar(chave);
+    ll_inserir_equipa(equipas, equipa, chave);
+    ht_inserir_equipa(hte, equipa, chave);
   }
 
 }
@@ -180,19 +172,17 @@ void cmd_r(Hashtable_Jogo *htj, Lista_Ligada_Jogo *jogos, int nl, char *chave)
   Jogo *jogo = ht_pesquisar_jogo(htj, chave);
   if (jogo)
   {
+    if (vencedor(jogo))
     {
-      if (vencedor(jogo))
-      {
-        vencedor(jogo)->vitorias--;
-      }
-      else
-      {
-        
-      }
-
-      ht_deletar_jogo(htj, chave);
-      ll_deletar_jogo(jogos, chave);
+      vencedor(jogo)->vitorias--;
     }
+    else
+    {
+      
+    }
+
+    ht_deletar_jogo(htj, chave);
+    ll_deletar_jogo(jogos, chave);
   }
   else
   {
@@ -209,52 +199,46 @@ void cmd_s(Hashtable_Jogo *htj, int nl, char *chave, int se1_novo, int se2_novo)
   Equipa *e_nova;
   if (antigo)
   {
+    novo = j_criar(antigo->equipa_1, antigo->equipa_2, se1_novo, se2_novo);
+    e_antiga = vencedor(antigo);
+    e_nova = vencedor(novo);
+    if (e_antiga != e_nova)
     {
-      novo = j_criar(antigo->equipa_1, antigo->equipa_2, se1_novo, se2_novo);
-      e_antiga = vencedor(antigo);
-      e_nova = vencedor(novo);
-      if (e_antiga != e_nova)
+      if (e_nova)
       {
+        if (e_antiga)
         {
-          if (e_nova)
-          {
-            {
-              if (e_antiga)
-              {
-                e_antiga->vitorias--;
-              }
-              else
-              {
-                
-              }
-
-              e_nova->vitorias++;
-            }
-          }
-          else
-          {
-            if (e_antiga)
-            {
-              e_antiga->vitorias--;
-            }
-            else
-            {
-              
-            }
-
-          }
-
+          e_antiga->vitorias--;
         }
+        else
+        {
+          
+        }
+
+        e_nova->vitorias++;
       }
       else
       {
-        
+        if (e_antiga)
+        {
+          e_antiga->vitorias--;
+        }
+        else
+        {
+          
+        }
+
       }
 
-      antigo->score_equipa_1 = novo->score_equipa_1;
-      antigo->score_equipa_2 = novo->score_equipa_2;
-      free(novo);
     }
+    else
+    {
+      
+    }
+
+    antigo->score_equipa_1 = novo->score_equipa_1;
+    antigo->score_equipa_2 = novo->score_equipa_2;
+    free(novo);
   }
   else
   {
@@ -274,55 +258,47 @@ void cmd_g(Lista_Ligada_Equipa *equipas, int nl)
   No_Equipa *n = equipas->inicio;
   if (equipas->inicio)
   {
+    equipas_filt = malloc((sizeof(char *)) * valor_aux);
+    while (n)
     {
-      equipas_filt = malloc((sizeof(char *)) * valor_aux);
-      while (n)
+      if (n->equipa->vitorias > maior)
       {
-        if (n->equipa->vitorias > maior)
+        maior = n->equipa->vitorias;
+        index_aux = 0;
+        equipas_filt[index_aux++] = n->chave;
+      }
+      else
+      {
+        if (n->equipa->vitorias == maior)
         {
+          if (index_aux >= valor_aux)
           {
-            maior = n->equipa->vitorias;
-            index_aux = 0;
-            equipas_filt[index_aux++] = n->chave;
-          }
-        }
-        else
-        {
-          if (n->equipa->vitorias == maior)
-          {
-            {
-              if (index_aux >= valor_aux)
-              {
-                {
-                  valor_aux += valor_adiciona_aux;
-                  equipas_filt = realloc(equipas_filt, (sizeof(char *)) * valor_aux);
-                }
-              }
-              else
-              {
-                
-              }
-
-              equipas_filt[index_aux++] = n->chave;
-            }
+            valor_aux += valor_adiciona_aux;
+            equipas_filt = realloc(equipas_filt, (sizeof(char *)) * valor_aux);
           }
           else
           {
             
           }
 
+          equipas_filt[index_aux++] = n->chave;
+        }
+        else
+        {
+          
         }
 
-        n = n->prox;
       }
 
-      quicksort(equipas_filt, 0, index_aux - 1);
-      printf("%d Melhores %d\n", nl, maior);
-      for (i = 0; i < index_aux; i++)
-        printf("%d * %s\n", nl, equipas_filt[i]);
-
-      free(equipas_filt);
+      n = n->prox;
     }
+
+    quicksort(equipas_filt, 0, index_aux - 1);
+    printf("%d Melhores %d\n", nl, maior);
+    for (i = 0; i < index_aux; i++)
+      printf("%d * %s\n", nl, equipas_filt[i]);
+
+    free(equipas_filt);
   }
   else
   {

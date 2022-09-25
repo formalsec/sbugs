@@ -42,9 +42,7 @@ void EquipaInsere(int *max_equipas, int *n_equipas, p_equipa equipa, p_equipa **
   (*p_tab_e)[i] = equipa;
   if (((*n_equipas)++) > ((*max_equipas) / 2))
   {
-    {
-      Equipaexpande(max_equipas, n_equipas, p_tab_e);
-    }
+    Equipaexpande(max_equipas, n_equipas, p_tab_e);
   }
   else
   {
@@ -62,10 +60,8 @@ void Equipaexpande(int *max_equipas, int *n_equipas, p_equipa **p_tab_e)
   {
     if (t[i] != 0)
     {
-      {
-        *n_equipas = (*n_equipas) - 1;
-        EquipaInsere(max_equipas, n_equipas, t[i], p_tab_e);
-      }
+      *n_equipas = (*n_equipas) - 1;
+      EquipaInsere(max_equipas, n_equipas, t[i], p_tab_e);
     }
     else
     {
@@ -84,15 +80,11 @@ p_equipa EquipaProcura(int *max_equipas, char *nome, p_equipa **p_tab_e)
   {
     if (strcmp((*p_tab_e)[key]->nome, nome) == 0)
     {
-      {
-        return (*p_tab_e)[key];
-      }
+      return (*p_tab_e)[key];
     }
     else
     {
-      {
-        key = (key + 1) % (*max_equipas);
-      }
+      key = (key + 1) % (*max_equipas);
     }
 
   }
@@ -124,9 +116,7 @@ void JogoInsereHash(int *max_jogos, int *n_jogos, p_jogo jogo, p_jogo **p_tab_j)
   (*p_tab_j)[i] = jogo;
   if (((*n_jogos)++) > ((*max_jogos) / 2))
   {
-    {
-      Jogoexpande(max_jogos, n_jogos, p_tab_j);
-    }
+    Jogoexpande(max_jogos, n_jogos, p_tab_j);
   }
   else
   {
@@ -144,10 +134,8 @@ void Jogoexpande(int *max_jogos, int *n_jogos, p_jogo **p_tab_j)
   {
     if (t[i] != 0)
     {
-      {
-        *n_jogos = (*n_jogos) - 1;
-        JogoInsereHash(max_jogos, n_jogos, t[i], p_tab_j);
-      }
+      *n_jogos = (*n_jogos) - 1;
+      JogoInsereHash(max_jogos, n_jogos, t[i], p_tab_j);
     }
     else
     {
@@ -166,15 +154,11 @@ p_jogo JogoProcura(int *max_jogos, char *nome, p_jogo **p_tab_j)
   {
     if (strcmp((*p_tab_j)[key]->nome_j, nome) == 0)
     {
-      {
-        return (*p_tab_j)[key];
-      }
+      return (*p_tab_j)[key];
     }
     else
     {
-      {
-        key = (key + 1) % (*max_jogos);
-      }
+      key = (key + 1) % (*max_jogos);
     }
 
   }
@@ -187,35 +171,29 @@ void JogoInsereLista(p_jogo jogo, link *head, link *tail)
   link new;
   if ((*head) == 0)
   {
-    {
-      *head = malloc(sizeof(struct node));
-      (*head)->next = 0;
-      (*head)->prev = 0;
-      (*head)->jogo = jogo;
-    }
+    *head = malloc(sizeof(struct node));
+    (*head)->next = 0;
+    (*head)->prev = 0;
+    (*head)->jogo = jogo;
   }
   else
   {
     if ((*tail) == 0)
     {
-      {
-        *tail = malloc(sizeof(struct node));
-        (*tail)->jogo = jogo;
-        (*tail)->next = 0;
-        (*tail)->prev = *head;
-        (*head)->next = *tail;
-      }
+      *tail = malloc(sizeof(struct node));
+      (*tail)->jogo = jogo;
+      (*tail)->next = 0;
+      (*tail)->prev = *head;
+      (*head)->next = *tail;
     }
     else
     {
-      {
-        new = malloc(sizeof(struct node));
-        new->jogo = jogo;
-        new->prev = *tail;
-        new->next = 0;
-        (*tail)->next = new;
-        *tail = new;
-      }
+      new = malloc(sizeof(struct node));
+      new->jogo = jogo;
+      new->prev = *tail;
+      new->next = 0;
+      (*tail)->next = new;
+      *tail = new;
     }
 
   }
@@ -257,43 +235,37 @@ void JogoApagaLista(p_jogo jogo, link *head, link *tail)
   link aux;
   if ((*head)->jogo == jogo)
   {
-    {
-      aux = (*head)->next;
-      free((*head)->jogo->nome_j);
-      free((*head)->jogo);
-      free(*head);
-      *head = aux;
-    }
+    aux = (*head)->next;
+    free((*head)->jogo->nome_j);
+    free((*head)->jogo);
+    free(*head);
+    *head = aux;
   }
   else
   {
     if ((*tail)->jogo == jogo)
     {
-      {
-        aux = (*tail)->prev;
-        free((*tail)->jogo->nome_j);
-        free((*tail)->jogo);
-        free(*tail);
-        aux->next = 0;
-        *tail = aux;
-      }
+      aux = (*tail)->prev;
+      free((*tail)->jogo->nome_j);
+      free((*tail)->jogo);
+      free(*tail);
+      aux->next = 0;
+      *tail = aux;
     }
     else
     {
+      link t;
+      t = *head;
+      while (t->jogo != jogo)
       {
-        link t;
-        t = *head;
-        while (t->jogo != jogo)
-        {
-          t = t->next;
-        }
-
-        t->prev->next = t->next;
-        t->next->prev = t->prev;
-        free(t->jogo->nome_j);
-        free(t->jogo);
-        free(t);
+        t = t->next;
       }
+
+      t->prev->next = t->next;
+      t->next->prev = t->prev;
+      free(t->jogo->nome_j);
+      free(t->jogo);
+      free(t);
     }
 
   }

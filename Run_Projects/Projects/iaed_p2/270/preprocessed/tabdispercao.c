@@ -180,11 +180,9 @@ void liberta_te(pTabEquipas tab_dispercao)
   for (; i < tab_dispercao->max; i++)
     if (tab_dispercao->equipas[i] != 0)
   {
-    {
-      liberta_equipa(tab_dispercao->equipas[i]);
-      tab_dispercao->equipas[i] = 0;
-      tab_dispercao->N--;
-    }
+    liberta_equipa(tab_dispercao->equipas[i]);
+    tab_dispercao->equipas[i] = 0;
+    tab_dispercao->N--;
   }
   else
   {
@@ -202,11 +200,9 @@ void liberta_tj(pTabJogos tab_dispercao)
   for (; i < tab_dispercao->max; i++)
     if (tab_dispercao->jogos[i] != 0)
   {
-    {
-      liberta_jogo(tab_dispercao->jogos[i]);
-      tab_dispercao->jogos[i] = 0;
-      tab_dispercao->N--;
-    }
+    liberta_jogo(tab_dispercao->jogos[i]);
+    tab_dispercao->jogos[i] = 0;
+    tab_dispercao->N--;
   }
   else
   {

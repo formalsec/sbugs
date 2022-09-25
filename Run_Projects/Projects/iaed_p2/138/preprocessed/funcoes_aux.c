@@ -28,26 +28,20 @@ int verifica_se_jogo_existe(int chave, char nome[], noh *cabeca[])
 {
   if (cabeca[chave] != 0)
   {
+    noh *noh_temp = cabeca[chave];
+    while (noh_temp != 0)
     {
-      noh *noh_temp = cabeca[chave];
-      while (noh_temp != 0)
+      if (strcmp(noh_temp->jogo->nome, nome) == 0)
       {
-        if (strcmp(noh_temp->jogo->nome, nome) == 0)
-        {
-          {
-            return 1;
-          }
-        }
-        else
-        {
-          {
-            noh_temp = noh_temp->prox;
-          }
-        }
-
+        return 1;
+      }
+      else
+      {
+        noh_temp = noh_temp->prox;
       }
 
     }
+
   }
   else
   {
@@ -61,26 +55,20 @@ int verifica_se_equipa_existe(int chave, char equipa[], noh_equipa *cabeca_equip
 {
   if (cabeca_equipa[chave] != 0)
   {
+    noh_equipa *noh_temp = cabeca_equipa[chave];
+    while (noh_temp != 0)
     {
-      noh_equipa *noh_temp = cabeca_equipa[chave];
-      while (noh_temp != 0)
+      if (strcmp(noh_temp->equipa, equipa) == 0)
       {
-        if (strcmp(noh_temp->equipa, equipa) == 0)
-        {
-          {
-            return 1;
-          }
-        }
-        else
-        {
-          {
-            noh_temp = noh_temp->prox;
-          }
-        }
-
+        return 1;
+      }
+      else
+      {
+        noh_temp = noh_temp->prox;
       }
 
     }
+
   }
   else
   {
@@ -107,20 +95,18 @@ void free_total(int *contador_input, noh *cabeca[], noh_equipa *cabeca_equipa[],
   {
     if (cabeca[i] != 0)
     {
+      noh_temp = cabeca[i];
+      while (noh_temp != 0)
       {
-        noh_temp = cabeca[i];
-        while (noh_temp != 0)
-        {
-          noh_apagar = noh_temp;
-          noh_temp = noh_temp->prox;
-          free(noh_apagar->jogo->nome);
-          free(noh_apagar->jogo->equipa1);
-          free(noh_apagar->jogo->equipa2);
-          free(noh_apagar->jogo);
-          free(noh_apagar);
-        }
-
+        noh_apagar = noh_temp;
+        noh_temp = noh_temp->prox;
+        free(noh_apagar->jogo->nome);
+        free(noh_apagar->jogo->equipa1);
+        free(noh_apagar->jogo->equipa2);
+        free(noh_apagar->jogo);
+        free(noh_apagar);
       }
+
     }
     else
     {
@@ -129,17 +115,15 @@ void free_total(int *contador_input, noh *cabeca[], noh_equipa *cabeca_equipa[],
 
     if (cabeca_equipa[i] != 0)
     {
+      noh_temp_eq = cabeca_equipa[i];
+      while (noh_temp_eq != 0)
       {
-        noh_temp_eq = cabeca_equipa[i];
-        while (noh_temp_eq != 0)
-        {
-          noh_apagar_eq = noh_temp_eq;
-          noh_temp_eq = noh_temp_eq->prox;
-          free(noh_apagar_eq->equipa);
-          free(noh_apagar_eq);
-        }
-
+        noh_apagar_eq = noh_temp_eq;
+        noh_temp_eq = noh_temp_eq->prox;
+        free(noh_apagar_eq->equipa);
+        free(noh_apagar_eq);
       }
+
     }
     else
     {
@@ -150,16 +134,14 @@ void free_total(int *contador_input, noh *cabeca[], noh_equipa *cabeca_equipa[],
 
   if (fila_jogos->cabeca != 0)
   {
+    noh_temp = fila_jogos->cabeca;
+    while (noh_temp != 0)
     {
-      noh_temp = fila_jogos->cabeca;
-      while (noh_temp != 0)
-      {
-        noh_apagar = noh_temp;
-        noh_temp = noh_temp->prox_fila;
-        free(noh_apagar);
-      }
-
+      noh_apagar = noh_temp;
+      noh_temp = noh_temp->prox_fila;
+      free(noh_apagar);
     }
+
   }
   else
   {
@@ -182,39 +164,33 @@ void lista_com_equipas_melhores_e_sort(int *contador_input, int max, noh_equipa 
   {
     if (cabeca_equipa[i] != 0)
     {
+      noh_temp_eq = cabeca_equipa[i];
+      while (noh_temp_eq != 0)
       {
-        noh_temp_eq = cabeca_equipa[i];
-        while (noh_temp_eq != 0)
+        if (noh_temp_eq->jogos_ganhos == max)
         {
-          if (noh_temp_eq->jogos_ganhos == max)
+          len = strlen(noh_temp_eq->equipa);
+          lista[cont] = malloc((sizeof(char)) * (len + 1));
+          strcpy(lista[cont], noh_temp_eq->equipa);
+          cont++;
+          if (cont >= 500)
           {
-            {
-              len = strlen(noh_temp_eq->equipa);
-              lista[cont] = malloc((sizeof(char)) * (len + 1));
-              strcpy(lista[cont], noh_temp_eq->equipa);
-              cont++;
-              if (cont >= 500)
-              {
-                {
-                  lista = realloc(lista, (sizeof(char *)) * 1000);
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
+            lista = realloc(lista, (sizeof(char *)) * 1000);
           }
           else
           {
             
           }
 
-          noh_temp_eq = noh_temp_eq->prox;
+        }
+        else
+        {
+          
         }
 
+        noh_temp_eq = noh_temp_eq->prox;
       }
+
     }
     else
     {

@@ -42,10 +42,8 @@ void new_game(hash_table_games *game_ht, hash_table_teams *team_ht, h_t_ordered_
   score2 = new_sym_var(sizeof(int) * 8);
   if ((g = search_game_aux(game_ht, pName)) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-      return;
-    }
+    printf("%d Jogo existente.\n", NL);
+    return;
   }
   else
   {
@@ -54,10 +52,8 @@ void new_game(hash_table_games *game_ht, hash_table_teams *team_ht, h_t_ordered_
 
   if (((l = search_team_aux(team_ht, pTeam1)) == 0) || ((ll = search_team_aux(team_ht, pTeam2)) == 0))
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -68,9 +64,7 @@ void new_game(hash_table_games *game_ht, hash_table_teams *team_ht, h_t_ordered_
   insertEnd_list(lst, g);
   if (score1 > score2)
   {
-    {
-      l->victories++;
-    }
+    l->victories++;
   }
   else
   {
@@ -79,9 +73,7 @@ void new_game(hash_table_games *game_ht, hash_table_teams *team_ht, h_t_ordered_
 
   if (score1 < score2)
   {
-    {
-      ll->victories++;
-    }
+    ll->victories++;
   }
   else
   {
@@ -108,10 +100,8 @@ void search_game(hash_table_games *game_ht, int NL)
   name[10 - 1] = '\0';
   if ((g = search_game_aux(game_ht, pName)) != 0)
   {
-    {
-      printf("%d %s %s %s %d %d\n", NL, g->name, g->team1, g->team2, g->score1, g->score2);
-      return;
-    }
+    printf("%d %s %s %s %d %d\n", NL, g->name, g->team1, g->team2, g->score1, g->score2);
+    return;
   }
   else
   {
@@ -134,12 +124,10 @@ void delete_game(hash_table_games *game_ht, hash_table_teams *team_ht, h_t_order
   name[10 - 1] = '\0';
   if ((g = search_game_aux(game_ht, pName)) != 0)
   {
-    {
-      change_score_aux(g, team_ht, 0, 0);
-      remove_list(lst, pName);
-      delete_game_aux(game_ht, pName);
-      return;
-    }
+    change_score_aux(g, team_ht, 0, 0);
+    remove_list(lst, pName);
+    delete_game_aux(game_ht, pName);
+    return;
   }
   else
   {
@@ -166,10 +154,8 @@ void change_score(hash_table_games *game_ht, hash_table_teams *team_ht, int NL)
   score2 = new_sym_var(sizeof(int) * 8);
   if ((g = search_game_aux(game_ht, pName)) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -192,10 +178,8 @@ void new_team(hash_table_teams *team_ht, int NL)
   name[10 - 1] = '\0';
   if ((l = search_team_aux(team_ht, pName)) == 0)
   {
-    {
-      insertBegin_teams(team_ht, pName);
-      return;
-    }
+    insertBegin_teams(team_ht, pName);
+    return;
   }
   else
   {
@@ -218,10 +202,8 @@ void search_team(hash_table_teams *team_ht, int NL)
   name[10 - 1] = '\0';
   if ((l = search_team_aux(team_ht, pName)) != 0)
   {
-    {
-      printf("%d %s %d\n", NL, l->name, l->victories);
-      return;
-    }
+    printf("%d %s %d\n", NL, l->name, l->victories);
+    return;
   }
   else
   {
@@ -299,23 +281,21 @@ void command_x(hash_table_games *game_ht, hash_table_teams *team_ht, h_t_ordered
   ordered_list_g head_aux = lst->head;
   if (team_ht != 0)
   {
+    for (i = 0; i < team_ht->size; i++)
     {
-      for (i = 0; i < team_ht->size; i++)
+      list = team_ht->table[i];
+      while (list != 0)
       {
-        list = team_ht->table[i];
-        while (list != 0)
-        {
-          temp = list;
-          list = list->next;
-          free(temp->name);
-          free(temp);
-        }
-
+        temp = list;
+        list = list->next;
+        free(temp->name);
+        free(temp);
       }
 
-      free(team_ht->table);
-      free(team_ht);
     }
+
+    free(team_ht->table);
+    free(team_ht);
   }
   else
   {
@@ -324,25 +304,23 @@ void command_x(hash_table_games *game_ht, hash_table_teams *team_ht, h_t_ordered
 
   if (game_ht != 0)
   {
+    for (j = 0; j < game_ht->size; j++)
     {
-      for (j = 0; j < game_ht->size; j++)
+      g = game_ht->table[j];
+      while (g != 0)
       {
-        g = game_ht->table[j];
-        while (g != 0)
-        {
-          aux = g;
-          g = g->next;
-          free(aux->name);
-          free(aux->team1);
-          free(aux->team2);
-          free(aux);
-        }
-
+        aux = g;
+        g = g->next;
+        free(aux->name);
+        free(aux->team1);
+        free(aux->team2);
+        free(aux);
       }
 
-      free(game_ht->table);
-      free(game_ht);
     }
+
+    free(game_ht->table);
+    free(game_ht);
   }
   else
   {

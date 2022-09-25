@@ -21,73 +21,57 @@ int main()
   {
     if (c == 'a')
     {
-      {
-        NL++;
-        a(NL, ht, ht_eq, ls);
-      }
+      NL++;
+      a(NL, ht, ht_eq, ls);
     }
     else
     {
       if (c == 'l')
       {
-        {
-          NL++;
-          l(NL, ls);
-        }
+        NL++;
+        l(NL, ls);
       }
       else
       {
         if (c == 'p')
         {
-          {
-            NL++;
-            p(NL, ht);
-          }
+          NL++;
+          p(NL, ht);
         }
         else
         {
           if (c == 'r')
           {
-            {
-              NL++;
-              r(NL, ht, ls, ht_eq);
-            }
+            NL++;
+            r(NL, ht, ls, ht_eq);
           }
           else
           {
             if (c == 's')
             {
-              {
-                NL++;
-                s(NL, ht, ht_eq, ls);
-              }
+              NL++;
+              s(NL, ht, ht_eq, ls);
             }
             else
             {
               if (c == 'A')
               {
-                {
-                  NL++;
-                  A(NL, ht_eq);
-                }
+                NL++;
+                A(NL, ht_eq);
               }
               else
               {
                 if (c == 'P')
                 {
-                  {
-                    NL++;
-                    P(NL, ht_eq);
-                  }
+                  NL++;
+                  P(NL, ht_eq);
                 }
                 else
                 {
                   if (c == 'g')
                   {
-                    {
-                      NL++;
-                      g(NL, ht_eq);
-                    }
+                    NL++;
+                    g(NL, ht_eq);
                   }
                   else
                   {

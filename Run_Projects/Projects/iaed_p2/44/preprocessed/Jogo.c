@@ -18,17 +18,13 @@ jogo novoJogo(char *nom, equipa eq1, equipa eq2, int res1, int res2)
   j->score2 = res2;
   if (j->score1 > j->score2)
   {
-    {
-      j->equipa1->wins++;
-    }
+    j->equipa1->wins++;
   }
   else
   {
     if (j->score1 < j->score2)
     {
-      {
-        j->equipa2->wins++;
-      }
+      j->equipa2->wins++;
     }
     else
     {
@@ -44,10 +40,8 @@ void freeJogo(jogo j)
 {
   if (j)
   {
-    {
-      free(j->nome);
-      free(j);
-    }
+    free(j->nome);
+    free(j);
   }
   else
   {
@@ -60,9 +54,7 @@ void printJogo(jogo j)
 {
   if (j)
   {
-    {
-      printf("%s %s %s %d %d\n", j->nome, j->equipa1->nome, j->equipa2->nome, j->score1, j->score2);
-    }
+    printf("%s %s %s %d %d\n", j->nome, j->equipa1->nome, j->equipa2->nome, j->score1, j->score2);
   }
   else
   {

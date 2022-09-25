@@ -12,17 +12,13 @@ void adiciona_fim(limites_lista *lista, Jogo *jogo)
   n->prev = lista->last;
   if (lista->head == 0)
   {
-    {
-      lista->head = n;
-      lista->last = n;
-    }
+    lista->head = n;
+    lista->last = n;
   }
   else
   {
-    {
-      lista->last->next = n;
-      lista->last = n;
-    }
+    lista->last->next = n;
+    lista->last = n;
   }
 
 }
@@ -185,22 +181,18 @@ void apaga_jogo_hash(link_jogo *heads, char *nome)
   aux = heads[i];
   if (strcmp(aux->jogo->nome, nome) == 0)
   {
-    {
-      t = aux;
-      heads[i] = aux->next;
-    }
+    t = aux;
+    heads[i] = aux->next;
   }
   else
   {
+    while (strcmp(aux->next->jogo->nome, nome) != 0)
     {
-      while (strcmp(aux->next->jogo->nome, nome) != 0)
-      {
-        aux = aux->next;
-      }
-
-      t = aux->next;
-      aux->next = t->next;
+      aux = aux->next;
     }
+
+    t = aux->next;
+    aux->next = t->next;
   }
 
   free(t);
@@ -212,48 +204,38 @@ void apaga_jogo_lista(limites_lista *lista, char *nome)
   link_lista aux = lista->head;
   if (strcmp(aux->jogo->nome, nome) == 0)
   {
+    t = aux;
+    if (lista->head == lista->last)
     {
-      t = aux;
-      if (lista->head == lista->last)
-      {
-        {
-          lista->head = 0;
-          lista->last = 0;
-        }
-      }
-      else
-      {
-        {
-          lista->head = aux->next;
-          lista->head->prev = lista->last;
-          lista->last->next = 0;
-        }
-      }
-
+      lista->head = 0;
+      lista->last = 0;
     }
+    else
+    {
+      lista->head = aux->next;
+      lista->head->prev = lista->last;
+      lista->last->next = 0;
+    }
+
   }
   else
   {
+    while (strcmp(aux->jogo->nome, nome) != 0)
     {
-      while (strcmp(aux->jogo->nome, nome) != 0)
-      {
-        aux = aux->next;
-      }
-
-      t = aux;
-      if (aux->next != 0)
-      {
-        aux->next->prev = t->prev;
-      }
-      else
-      {
-        {
-          lista->last = aux->prev;
-        }
-      }
-
-      aux->prev->next = t->next;
+      aux = aux->next;
     }
+
+    t = aux;
+    if (aux->next != 0)
+    {
+      aux->next->prev = t->prev;
+    }
+    else
+    {
+      lista->last = aux->prev;
+    }
+
+    aux->prev->next = t->next;
   }
 
   free(t);

@@ -61,9 +61,7 @@ team *searchListTeams(team_node *head, char *name)
   {
     if (!strcmp(head->tptr->name, name))
     {
-      {
-        return head->tptr;
-      }
+      return head->tptr;
     }
     else
     {
@@ -115,11 +113,9 @@ void searchTeam(team_node **hastable, int line)
   t = searchHashTeams(hastable, name);
   if (!t)
   {
-    {
-      printf("%d Equipa inexistente.\n", line);
-      free(name);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", line);
+    free(name);
+    return;
   }
   else
   {
@@ -142,11 +138,9 @@ void addTeam(team_node **hashtable, int line)
   name[10 - 1] = '\0';
   if (searchHashTeams(hashtable, name))
   {
-    {
-      printf("%d Equipa existente.\n", line);
-      free(name);
-      return;
-    }
+    printf("%d Equipa existente.\n", line);
+    free(name);
+    return;
   }
   else
   {
@@ -169,36 +163,30 @@ void findChampions(team_node **hashtable, int line)
   {
     if (hashtable[i] != 0)
     {
+      team_node *t = hashtable[i];
+      while (t)
       {
-        team_node *t = hashtable[i];
-        while (t)
+        if (t->tptr->number_of_wins > max_wins)
         {
-          if (t->tptr->number_of_wins > max_wins)
+          max_wins = t->tptr->number_of_wins;
+          number_of_teams = 1;
+        }
+        else
+        {
+          if (t->tptr->number_of_wins == max_wins)
           {
-            {
-              max_wins = t->tptr->number_of_wins;
-              number_of_teams = 1;
-            }
+            number_of_teams++;
           }
           else
           {
-            if (t->tptr->number_of_wins == max_wins)
-            {
-              {
-                number_of_teams++;
-              }
-            }
-            else
-            {
-              
-            }
-
+            
           }
 
-          t = t->next;
         }
 
+        t = t->next;
       }
+
     }
     else
     {
@@ -209,50 +197,44 @@ void findChampions(team_node **hashtable, int line)
 
   if (max_wins > (-1))
   {
+    char **strings = (char **) malloc((sizeof(char *)) * number_of_teams);
+    int j = 0;
+    for (i = 0; i < 1061; i++)
     {
-      char **strings = (char **) malloc((sizeof(char *)) * number_of_teams);
-      int j = 0;
-      for (i = 0; i < 1061; i++)
+      if (hashtable[i] != 0)
       {
-        if (hashtable[i] != 0)
+        team_node *t = hashtable[i];
+        while (t)
         {
+          if (t->tptr->number_of_wins == max_wins)
           {
-            team_node *t = hashtable[i];
-            while (t)
-            {
-              if (t->tptr->number_of_wins == max_wins)
-              {
-                {
-                  strings[j] = t->tptr->name;
-                  j++;
-                }
-              }
-              else
-              {
-                
-              }
-
-              t = t->next;
-            }
-
+            strings[j] = t->tptr->name;
+            j++;
           }
-        }
-        else
-        {
-          
+          else
+          {
+            
+          }
+
+          t = t->next;
         }
 
       }
-
-      qsort(strings, number_of_teams, sizeof(char *), compare);
-      printf("%d Melhores %d\n", line, max_wins);
-      for (i = 0; i < number_of_teams; i++)
+      else
       {
-        printf("%d * %s\n", line, strings[i]);
+        
       }
 
-      free(strings);
     }
+
+    qsort(strings, number_of_teams, sizeof(char *), compare);
+    printf("%d Melhores %d\n", line, max_wins);
+    for (i = 0; i < number_of_teams; i++)
+    {
+      printf("%d * %s\n", line, strings[i]);
+    }
+
+    free(strings);
   }
   else
   {

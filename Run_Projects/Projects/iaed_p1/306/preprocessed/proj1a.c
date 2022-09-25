@@ -50,17 +50,13 @@ void merge(Item a[], Item b[], int l, int m, int r)
   for (k = l; k <= r; k++)
     if ((aux[j] < aux[i]) || (i > m))
   {
-    {
-      b[k] = aux1[j];
-      a[k] = aux[j--];
-    }
+    b[k] = aux1[j];
+    a[k] = aux[j--];
   }
   else
   {
-    {
-      b[k] = aux1[i];
-      a[k] = aux[i++];
-    }
+    b[k] = aux1[i];
+    a[k] = aux[i++];
   }
 
 
@@ -168,13 +164,11 @@ void A()
         }
         else
         {
-          {
-            encomendas[ide_aux].qtd_prod[idp_aux] += qtd;
-            encomendas[ide_aux].peso += produtos[idp_aux].peso * qtd;
-            encomendas[ide_aux].preco += produtos[idp_aux].preco * qtd;
-            encomendas[ide_aux].contador++;
-            produtos[idp_aux].quantidade -= qtd;
-          }
+          encomendas[ide_aux].qtd_prod[idp_aux] += qtd;
+          encomendas[ide_aux].peso += produtos[idp_aux].peso * qtd;
+          encomendas[ide_aux].preco += produtos[idp_aux].preco * qtd;
+          encomendas[ide_aux].contador++;
+          produtos[idp_aux].quantidade -= qtd;
         }
 
       }
@@ -224,24 +218,20 @@ void R()
     }
     else
     {
+      qtd = encomendas[ide_aux].qtd_prod[idp_aux];
+      if (qtd > 0)
       {
-        qtd = encomendas[ide_aux].qtd_prod[idp_aux];
-        if (qtd > 0)
-        {
-          {
-            produtos[idp_aux].quantidade += qtd;
-            encomendas[ide_aux].peso -= produtos[idp_aux].peso * qtd;
-            encomendas[ide_aux].preco -= produtos[idp_aux].preco * qtd;
-            encomendas[ide_aux].qtd_prod[idp_aux] = 0;
-            encomendas[ide_aux].contador--;
-          }
-        }
-        else
-        {
-          
-        }
-
+        produtos[idp_aux].quantidade += qtd;
+        encomendas[ide_aux].peso -= produtos[idp_aux].peso * qtd;
+        encomendas[ide_aux].preco -= produtos[idp_aux].preco * qtd;
+        encomendas[ide_aux].qtd_prod[idp_aux] = 0;
+        encomendas[ide_aux].contador--;
       }
+      else
+      {
+        
+      }
+
     }
 
   }
@@ -272,17 +262,15 @@ void p()
   }
   else
   {
+    int i;
+    for (i = 0; i < ide; i++)
     {
-      int i;
-      for (i = 0; i < ide; i++)
-      {
-        qtd = encomendas[i].qtd_prod[idp_aux];
-        encomendas[i].preco -= produtos[idp_aux].preco * qtd;
-        encomendas[i].preco += preco_aux * qtd;
-      }
-
-      produtos[idp_aux].preco = preco_aux;
+      qtd = encomendas[i].qtd_prod[idp_aux];
+      encomendas[i].preco -= produtos[idp_aux].preco * qtd;
+      encomendas[i].preco += preco_aux * qtd;
     }
+
+    produtos[idp_aux].preco = preco_aux;
   }
 
 }
@@ -319,33 +307,29 @@ void m()
   }
   else
   {
+    int i;
+    int max = 0;
+    for (i = 0; i < ide; i++)
+      if (encomendas[i].qtd_prod[idp_aux] > max)
     {
-      int i;
-      int max = 0;
-      for (i = 0; i < ide; i++)
-        if (encomendas[i].qtd_prod[idp_aux] > max)
-      {
-        {
-          max = encomendas[i].qtd_prod[idp_aux];
-          ide_aux = i;
-        }
-      }
-      else
-      {
-        
-      }
-
-
-      if (max > 0)
-      {
-        printf("Maximo produto %d %d %d.\n", idp_aux, ide_aux, max);
-      }
-      else
-      {
-        
-      }
-
+      max = encomendas[i].qtd_prod[idp_aux];
+      ide_aux = i;
     }
+    else
+    {
+      
+    }
+
+
+    if (max > 0)
+    {
+      printf("Maximo produto %d %d %d.\n", idp_aux, ide_aux, max);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -376,10 +360,8 @@ void L_aux(char str[10000][63], int contador)
     for (j = 0; j < idp; j++)
     if (strcmp(str[i], produtos[j].descricao) == 0)
   {
-    {
-      printf("* %s %d %d\n", str[i], produtos[j].preco, encomendas[ide_aux].qtd_prod[j]);
-      break;
-    }
+    printf("* %s %d %d\n", str[i], produtos[j].preco, encomendas[ide_aux].qtd_prod[j]);
+    break;
   }
   else
   {
@@ -399,30 +381,26 @@ void L()
   }
   else
   {
+    int i;
+    int j = 0;
+    int contador;
+    char str[10000][63] = {0};
+    contador = encomendas[ide_aux].contador;
+    printf("Encomenda %d\n", ide_aux);
+    for (i = 0; i < idp; i++)
+      if (encomendas[ide_aux].qtd_prod[i] > 0)
     {
-      int i;
-      int j = 0;
-      int contador;
-      char str[10000][63] = {0};
-      contador = encomendas[ide_aux].contador;
-      printf("Encomenda %d\n", ide_aux);
-      for (i = 0; i < idp; i++)
-        if (encomendas[ide_aux].qtd_prod[i] > 0)
-      {
-        {
-          strcpy(str[j], produtos[i].descricao);
-          j++;
-        }
-      }
-      else
-      {
-        
-      }
-
-
-      InsertionSort_str(str, 0, contador - 1);
-      L_aux(str, contador);
+      strcpy(str[j], produtos[i].descricao);
+      j++;
     }
+    else
+    {
+      
+    }
+
+
+    InsertionSort_str(str, 0, contador - 1);
+    L_aux(str, contador);
   }
 
 }

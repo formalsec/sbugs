@@ -47,58 +47,54 @@ void apaga_jogo_tabela(char *nome, link_jogo *jogos)
   tmp = jogos[indice];
   if (strcmp(tmp->jogo->nome, nome) == 0)
   {
+    jogos[indice] = tmp->next;
+    if (tmp->jogo->score1 > tmp->jogo->score2)
     {
-      jogos[indice] = tmp->next;
-      if (tmp->jogo->score1 > tmp->jogo->score2)
+      tmp->jogo->equipa1->vitorias--;
+    }
+    else
+    {
+      if (tmp->jogo->score1 < tmp->jogo->score2)
       {
-        tmp->jogo->equipa1->vitorias--;
+        tmp->jogo->equipa2->vitorias--;
       }
       else
       {
-        if (tmp->jogo->score1 < tmp->jogo->score2)
-        {
-          tmp->jogo->equipa2->vitorias--;
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      free_jogo(tmp->jogo);
-      free(tmp);
     }
+
+    free_jogo(tmp->jogo);
+    free(tmp);
   }
   else
   {
-    {
-      while (strcmp(tmp->next->jogo->nome, nome) != 0)
-        tmp = tmp->next;
+    while (strcmp(tmp->next->jogo->nome, nome) != 0)
+      tmp = tmp->next;
 
-      aux = tmp->next;
-      tmp->next = tmp->next->next;
-      if (aux->jogo->score1 > aux->jogo->score2)
+    aux = tmp->next;
+    tmp->next = tmp->next->next;
+    if (aux->jogo->score1 > aux->jogo->score2)
+    {
+      aux->jogo->equipa1->vitorias--;
+    }
+    else
+    {
+      if (aux->jogo->score1 < aux->jogo->score2)
       {
-        aux->jogo->equipa1->vitorias--;
+        aux->jogo->equipa2->vitorias--;
       }
       else
       {
-        if (aux->jogo->score1 < aux->jogo->score2)
-        {
-          aux->jogo->equipa2->vitorias--;
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      free_jogo(aux->jogo);
-      free(aux);
-      free(tmp);
     }
+
+    free_jogo(aux->jogo);
+    free(aux);
+    free(tmp);
   }
 
 }
@@ -138,23 +134,19 @@ pt_nome apaga_nome_lista(pt_nome nomes_jogos, char *nome)
   pt_nome head = nomes_jogos;
   if (strcmp(nomes_jogos->nome, nome) == 0)
   {
-    {
-      head = nomes_jogos->next;
-      free(nomes_jogos->nome);
-      free(nomes_jogos);
-    }
+    head = nomes_jogos->next;
+    free(nomes_jogos->nome);
+    free(nomes_jogos);
   }
   else
   {
-    {
-      while ((nomes_jogos->next != 0) && (strcmp(nomes_jogos->next->nome, nome) != 0))
-        nomes_jogos = nomes_jogos->next;
+    while ((nomes_jogos->next != 0) && (strcmp(nomes_jogos->next->nome, nome) != 0))
+      nomes_jogos = nomes_jogos->next;
 
-      aux = nomes_jogos->next;
-      nomes_jogos->next = nomes_jogos->next->next;
-      free(aux->nome);
-      free(aux);
-    }
+    aux = nomes_jogos->next;
+    nomes_jogos->next = nomes_jogos->next->next;
+    free(aux->nome);
+    free(aux);
   }
 
   return head;

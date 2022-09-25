@@ -14,19 +14,15 @@ void insere_fim_lista(char *el, node_lista **inicio, node_lista **fim)
   node->next = 0;
   if ((*inicio) == 0)
   {
-    {
-      *inicio = node;
-      *fim = node;
-      return;
-    }
+    *inicio = node;
+    *fim = node;
+    return;
   }
   else
   {
-    {
-      (*fim)->next = node;
-      node->prev = *fim;
-      *fim = node;
-    }
+    (*fim)->next = node;
+    node->prev = *fim;
+    *fim = node;
   }
 
 }
@@ -41,47 +37,37 @@ void remove_el_lista(char *nome, node_lista **inicio, node_lista **fim)
 
   if (atual->prev == 0)
   {
+    if (atual->next == 0)
     {
-      if (atual->next == 0)
-      {
-        {
-          *inicio = 0;
-          *fim = 0;
-        }
-      }
-      else
-      {
-        {
-          *inicio = atual->next;
-          (*inicio)->prev = 0;
-        }
-      }
-
-      free(atual);
-      return;
+      *inicio = 0;
+      *fim = 0;
     }
+    else
+    {
+      *inicio = atual->next;
+      (*inicio)->prev = 0;
+    }
+
+    free(atual);
+    return;
   }
   else
   {
     if (atual->next == 0)
     {
-      {
-        atual->prev->next = 0;
-        *fim = atual->prev;
-        free(atual);
-        return;
-      }
+      atual->prev->next = 0;
+      *fim = atual->prev;
+      free(atual);
+      return;
     }
     else
     {
       if ((atual->prev != 0) && (atual->next != 0))
       {
-        {
-          atual->prev->next = atual->next;
-          atual->next->prev = atual->prev;
-          free(atual);
-          return;
-        }
+        atual->prev->next = atual->next;
+        atual->next->prev = atual->prev;
+        free(atual);
+        return;
       }
       else
       {

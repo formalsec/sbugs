@@ -20,19 +20,17 @@ teamlink remove_TEAM(teamlink head, teamKey k)
   {
     if (strcmp(k, current->TEAM->Teamname) == 0)
     {
+      if (current == head)
       {
-        if (current == head)
-        {
-          head = current->next;
-        }
-        else
-        {
-          prev->next = current->next;
-        }
-
-        DELETENode_team(current);
-        return head;
+        head = current->next;
       }
+      else
+      {
+        prev->next = current->next;
+      }
+
+      DELETENode_team(current);
+      return head;
     }
     else
     {

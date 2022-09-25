@@ -36,9 +36,7 @@ int nao_existe_jogo(info jogo[1073], char in_nome[1023], saved value[1])
   {
     if ((strcmp(jogo[c].nome, in_nome) == 0) && (jogo[c].deleted != 1))
     {
-      {
-        return 0;
-      }
+      return 0;
     }
     else
     {
@@ -58,9 +56,7 @@ int nao_existe_equipa(lista equipa[1073], char in_nome[1023], saved value[1])
   {
     if (strcmp(equipa[c].nome, in_nome) == 0)
     {
-      {
-        return 0;
-      }
+      return 0;
     }
     else
     {
@@ -100,68 +96,56 @@ void a(info jogo[1073], lista equipa[1073], saved value[1])
   equipa2[10 - 1] = '\0';
   if (!nao_existe_jogo(jogo, in_nome, value))
   {
-    {
-      printf("%d Jogo existente\n", value[0].NL);
-      value[0].NL++;
-    }
+    printf("%d Jogo existente\n", value[0].NL);
+    value[0].NL++;
   }
   else
   {
     if (nao_existe_equipa(equipa, equipa1, value) || nao_existe_equipa(equipa, equipa2, value))
     {
-      {
-        printf("%d Equipa inexistente\n", value[0].NL);
-        value[0].NL++;
-      }
+      printf("%d Equipa inexistente\n", value[0].NL);
+      value[0].NL++;
     }
     else
     {
+      jogo[value[0].n].score1 = new_sym_var(sizeof(int) * 8);
+      jogo[value[0].n].score2 = new_sym_var(sizeof(int) * 8);
+      if (jogo[value[0].n].score1 > jogo[value[0].n].score2)
       {
-        jogo[value[0].n].score1 = new_sym_var(sizeof(int) * 8);
-        jogo[value[0].n].score2 = new_sym_var(sizeof(int) * 8);
-        if (jogo[value[0].n].score1 > jogo[value[0].n].score2)
-        {
-          {
-            strcpy(equipa_vencedora, equipa1);
-          }
-        }
-        else
-        {
-          
-        }
-
-        if (jogo[value[0].n].score1 < jogo[value[0].n].score2)
-        {
-          {
-            strcpy(equipa_vencedora, equipa2);
-          }
-        }
-        else
-        {
-          
-        }
-
-        if (jogo[value[0].n].score1 != jogo[value[0].n].score2)
-        {
-          {
-            while (strcmp(equipa[c].nome, equipa_vencedora) != 0)
-            {
-              c++;
-            }
-
-            equipa[c].vitorias++;
-          }
-        }
-        else
-        {
-          
-        }
-
-        strcpy(jogo[value[0].n].nome, in_nome);
-        strcpy(jogo[value[0].n].equipa1, equipa1);
-        strcpy(jogo[value[0].n].equipa2, equipa2);
-        value[0].n++;
+        strcpy(equipa_vencedora, equipa1);
       }
+      else
+      {
+        
+      }
+
+      if (jogo[value[0].n].score1 < jogo[value[0].n].score2)
+      {
+        strcpy(equipa_vencedora, equipa2);
+      }
+      else
+      {
+        
+      }
+
+      if (jogo[value[0].n].score1 != jogo[value[0].n].score2)
+      {
+        while (strcmp(equipa[c].nome, equipa_vencedora) != 0)
+        {
+          c++;
+        }
+
+        equipa[c].vitorias++;
+      }
+      else
+      {
+        
+      }
+
+      strcpy(jogo[value[0].n].nome, in_nome);
+      strcpy(jogo[value[0].n].equipa1, equipa1);
+      strcpy(jogo[value[0].n].equipa2, equipa2);
+      value[0].n++;
     }
 
   }
@@ -175,10 +159,8 @@ void l(info jogo[1073], saved value[1])
   {
     if (jogo[c].deleted != 1)
     {
-      {
-        printf("%d %s %s %s %d %d\n", value[0].NL, jogo[c].nome, jogo[c].equipa1, jogo[c].equipa2, jogo[c].score1, jogo[c].score2);
-        value[0].NL++;
-      }
+      printf("%d %s %s %s %d %d\n", value[0].NL, jogo[c].nome, jogo[c].equipa1, jogo[c].equipa2, jogo[c].score1, jogo[c].score2);
+      value[0].NL++;
     }
     else
     {
@@ -202,22 +184,18 @@ void p(info jogo[1073], saved value[1])
   in_nome[10 - 1] = '\0';
   if (nao_existe_jogo(jogo, in_nome, value))
   {
-    {
-      printf("%d Jogo inexistente\n", value[0].NL);
-      value[0].NL++;
-    }
+    printf("%d Jogo inexistente\n", value[0].NL);
+    value[0].NL++;
   }
   else
   {
+    while (strcmp(jogo[c].nome, in_nome) != 0)
     {
-      while (strcmp(jogo[c].nome, in_nome) != 0)
-      {
-        c++;
-      }
-
-      printf("%d %s %s %s %d %d\n", value[0].NL, jogo[c].nome, jogo[c].equipa1, jogo[c].equipa2, jogo[c].score1, jogo[c].score2);
-      value[0].NL++;
+      c++;
     }
+
+    printf("%d %s %s %s %d %d\n", value[0].NL, jogo[c].nome, jogo[c].equipa1, jogo[c].equipa2, jogo[c].score1, jogo[c].score2);
+    value[0].NL++;
   }
 
 }
@@ -238,22 +216,18 @@ void s(info jogo[1073], saved value[1])
   in_score2 = new_sym_var(sizeof(int) * 8);
   if (nao_existe_jogo(jogo, in_nome, value))
   {
-    {
-      printf("%d Jogo inexistente\n", value[0].NL);
-      value[0].NL++;
-    }
+    printf("%d Jogo inexistente\n", value[0].NL);
+    value[0].NL++;
   }
   else
   {
+    while (strcmp(jogo[c].nome, in_nome) != 0)
     {
-      while (strcmp(jogo[c].nome, in_nome) != 0)
-      {
-        c++;
-      }
-
-      jogo[c].score1 = in_score1;
-      jogo[c].score2 = in_score2;
+      c++;
     }
+
+    jogo[c].score1 = in_score1;
+    jogo[c].score2 = in_score2;
   }
 
 }
@@ -270,21 +244,17 @@ void r(info jogo[1073], saved value[1])
   in_nome[10 - 1] = '\0';
   if (nao_existe_jogo(jogo, in_nome, value))
   {
-    {
-      printf("%d Jogo inexistente\n", value[0].NL);
-      value[0].NL++;
-    }
+    printf("%d Jogo inexistente\n", value[0].NL);
+    value[0].NL++;
   }
   else
   {
+    while (strcmp(jogo[c].nome, in_nome) != 0)
     {
-      while (strcmp(jogo[c].nome, in_nome) != 0)
-      {
-        c++;
-      }
-
-      jogo[c].deleted = 1;
+      c++;
     }
+
+    jogo[c].deleted = 1;
   }
 
 }
@@ -300,17 +270,13 @@ void A(lista equipa[1073], saved value[1])
   in_nome[10 - 1] = '\0';
   if (!nao_existe_equipa(equipa, in_nome, value))
   {
-    {
-      printf("%d Equipa existente\n", value[0].NL);
-      value[0].NL++;
-    }
+    printf("%d Equipa existente\n", value[0].NL);
+    value[0].NL++;
   }
   else
   {
-    {
-      strcpy(equipa[value[0].e].nome, in_nome);
-      value[0].e++;
-    }
+    strcpy(equipa[value[0].e].nome, in_nome);
+    value[0].e++;
   }
 
 }
@@ -327,22 +293,18 @@ void P(lista equipa[1073], saved value[1])
   in_nome[10 - 1] = '\0';
   if (nao_existe_equipa(equipa, in_nome, value))
   {
-    {
-      printf("%d Equipa inexistente\n", value[0].NL);
-      value[0].NL++;
-    }
+    printf("%d Equipa inexistente\n", value[0].NL);
+    value[0].NL++;
   }
   else
   {
+    while (strcmp(equipa[c].nome, in_nome) != 0)
     {
-      while (strcmp(equipa[c].nome, in_nome) != 0)
-      {
-        c++;
-      }
-
-      printf("%d %s %d\n", value[0].NL, in_nome, equipa[c].vitorias);
-      value[0].NL++;
+      c++;
     }
+
+    printf("%d %s %d\n", value[0].NL, in_nome, equipa[c].vitorias);
+    value[0].NL++;
   }
 
 }
@@ -360,64 +322,58 @@ void g(lista equipa[1073], saved value[1])
   char temp[1023];
   if (value[0].e > 0)
   {
+    while (c1 < value[0].e)
     {
-      while (c1 < value[0].e)
+      total_vitorias += equipa[c1].vitorias;
+      c1++;
+    }
+
+    printf("%d Melhores %d\n", value[0].NL, total_vitorias);
+    value[0].NL++;
+    while (c2 < value[0].e)
+    {
+      if (equipa[c2].vitorias > 0)
       {
-        total_vitorias += equipa[c1].vitorias;
-        c1++;
+        strcpy(str[c3], equipa[c2].nome);
+        c3++;
+      }
+      else
+      {
+        
       }
 
-      printf("%d Melhores %d\n", value[0].NL, total_vitorias);
-      value[0].NL++;
-      while (c2 < value[0].e)
+      c2++;
+    }
+
+    while (c4 < value[0].e)
+    {
+      while (c5 < value[0].e)
       {
-        if (equipa[c2].vitorias > 0)
+        if (strcmp(str[c4], str[c5]) > 0)
         {
-          {
-            strcpy(str[c3], equipa[c2].nome);
-            c3++;
-          }
+          strcpy(temp, str[c4]);
+          strcpy(str[c4], str[c5]);
+          strcpy(str[c5], temp);
         }
         else
         {
           
         }
 
-        c2++;
+        c5++;
       }
 
-      while (c4 < value[0].e)
-      {
-        while (c5 < value[0].e)
-        {
-          if (strcmp(str[c4], str[c5]) > 0)
-          {
-            {
-              strcpy(temp, str[c4]);
-              strcpy(str[c4], str[c5]);
-              strcpy(str[c5], temp);
-            }
-          }
-          else
-          {
-            
-          }
-
-          c5++;
-        }
-
-        c4++;
-      }
-
-      c6 = value[0].e - 1;
-      while (c6 > 0)
-      {
-        printf("%d * %s\n", value[0].NL, str[c6]);
-        value[0].NL++;
-        c6--;
-      }
-
+      c4++;
     }
+
+    c6 = value[0].e - 1;
+    while (c6 > 0)
+    {
+      printf("%d * %s\n", value[0].NL, str[c6]);
+      value[0].NL++;
+      c6--;
+    }
+
   }
   else
   {
@@ -434,9 +390,7 @@ int main()
     letra = new_sym_var(sizeof(char) * 8);
     if (letra == 'a')
     {
-      {
-        a(jogo, equipa, value);
-      }
+      a(jogo, equipa, value);
     }
     else
     {
@@ -445,9 +399,7 @@ int main()
 
     if (letra == 'l')
     {
-      {
-        l(jogo, value);
-      }
+      l(jogo, value);
     }
     else
     {
@@ -456,9 +408,7 @@ int main()
 
     if (letra == 'p')
     {
-      {
-        p(jogo, value);
-      }
+      p(jogo, value);
     }
     else
     {
@@ -467,9 +417,7 @@ int main()
 
     if (letra == 's')
     {
-      {
-        s(jogo, value);
-      }
+      s(jogo, value);
     }
     else
     {
@@ -478,9 +426,7 @@ int main()
 
     if (letra == 'r')
     {
-      {
-        r(jogo, value);
-      }
+      r(jogo, value);
     }
     else
     {
@@ -489,9 +435,7 @@ int main()
 
     if (letra == 'A')
     {
-      {
-        A(equipa, value);
-      }
+      A(equipa, value);
     }
     else
     {
@@ -500,9 +444,7 @@ int main()
 
     if (letra == 'P')
     {
-      {
-        P(equipa, value);
-      }
+      P(equipa, value);
     }
     else
     {
@@ -511,9 +453,7 @@ int main()
 
     if (letra == 'g')
     {
-      {
-        g(equipa, value);
-      }
+      g(equipa, value);
     }
     else
     {

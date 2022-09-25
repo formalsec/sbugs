@@ -52,28 +52,24 @@ int find_winner(Team *teams, int *num)
   {
     if (teams[i])
     {
+      if (teams[i]->wins > max)
       {
-        if (teams[i]->wins > max)
+        max = teams[i]->wins;
+        *num = 1;
+      }
+      else
+      {
+        if (teams[i]->wins == max)
         {
-          {
-            max = teams[i]->wins;
-            *num = 1;
-          }
+          (*num)++;
         }
         else
         {
-          if (teams[i]->wins == max)
-          {
-            (*num)++;
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
+
     }
     else
     {

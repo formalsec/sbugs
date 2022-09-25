@@ -29,19 +29,15 @@ team analisaVitorias(char *equipa1, char *equipa2, int V1, int V2, team equipa)
   team equipaVencedora;
   if (V1 > V2)
   {
-    {
-      equipaVencedora = searchTeams(equipa1, equipa);
-      equipaVencedora->vitorias += 1;
-    }
+    equipaVencedora = searchTeams(equipa1, equipa);
+    equipaVencedora->vitorias += 1;
   }
   else
   {
     if (V2 > V1)
     {
-      {
-        equipaVencedora = searchTeams(equipa2, equipa);
-        equipaVencedora->vitorias += 1;
-      }
+      equipaVencedora = searchTeams(equipa2, equipa);
+      equipaVencedora->vitorias += 1;
     }
     else
     {
@@ -60,9 +56,7 @@ team searchTeams(char *text, team head)
   {
     if (strcmp(t->nome, text) == 0)
     {
-      {
-        return t;
-      }
+      return t;
     }
     else
     {
@@ -80,8 +74,22 @@ void Remove_Vitoria(char *equipa1, char *equipa2, int V1, int V2, team equipa)
   team equipaVencedora;
   if (V1 >= V2)
   {
+    equipaVencedora = searchTeams(equipa1, equipa);
+    if (equipaVencedora->vitorias > 0)
     {
-      equipaVencedora = searchTeams(equipa1, equipa);
+      equipaVencedora->vitorias -= 1;
+    }
+    else
+    {
+      
+    }
+
+  }
+  else
+  {
+    if (V2 >= V1)
+    {
+      equipaVencedora = searchTeams(equipa2, equipa);
       if (equipaVencedora->vitorias > 0)
       {
         equipaVencedora->vitorias -= 1;
@@ -91,24 +99,6 @@ void Remove_Vitoria(char *equipa1, char *equipa2, int V1, int V2, team equipa)
         
       }
 
-    }
-  }
-  else
-  {
-    if (V2 >= V1)
-    {
-      {
-        equipaVencedora = searchTeams(equipa2, equipa);
-        if (equipaVencedora->vitorias > 0)
-        {
-          equipaVencedora->vitorias -= 1;
-        }
-        else
-        {
-          
-        }
-
-      }
     }
     else
     {
@@ -165,13 +155,11 @@ team libertaequipa(team equipa)
 {
   if (equipa != 0)
   {
-    {
-      team old;
-      old = equipa;
-      equipa = equipa->next;
-      free(old->nome);
-      free(old);
-    }
+    team old;
+    old = equipa;
+    equipa = equipa->next;
+    free(old->nome);
+    free(old);
   }
   else
   {

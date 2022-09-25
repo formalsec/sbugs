@@ -23,11 +23,9 @@ void A(TEAM *hashT[], int row)
   {
     if ((searcher_team->link == 0) && (strcmp(searcher_team->name, "\0") == 0))
     {
-      {
-        new_team = searcher_team;
-        strcpy(new_team->name, name);
-        return;
-      }
+      new_team = searcher_team;
+      strcpy(new_team->name, name);
+      return;
     }
     else
     {
@@ -36,12 +34,10 @@ void A(TEAM *hashT[], int row)
 
     if ((searcher_team->link == 0) && (strcmp(searcher_team->name, "\0") != 0))
     {
-      {
-        new_team = (TEAM *) calloc(1, sizeof(TEAM *));
-        strcpy(new_team->name, name);
-        searcher_team->link = new_team;
-        return;
-      }
+      new_team = (TEAM *) calloc(1, sizeof(TEAM *));
+      strcpy(new_team->name, name);
+      searcher_team->link = new_team;
+      return;
     }
     else
     {

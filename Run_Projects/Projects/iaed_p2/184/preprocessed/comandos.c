@@ -74,10 +74,8 @@ void a(linkJ *headJptr, linkE headE, hptr *h1)
     }
     else
     {
-      {
-        insereInicio_J(headJptr, jogo, e1, e2, p1, p2);
-        vitorias(headE, p1, p2, e1, e2, h1);
-      }
+      insereInicio_J(headJptr, jogo, e1, e2, p1, p2);
+      vitorias(headE, p1, p2, e1, e2, h1);
     }
 
   }
@@ -109,11 +107,9 @@ void p(linkJ *headJptr, hptr *h1)
   }
   else
   {
-    {
-      g1 = obj->golos1;
-      g2 = obj->golos2;
-      printf("%d %s %s %s %d %d\n", linha, obj->nome_jogo, obj->equipa1, obj->equipa2, g1, g2);
-    }
+    g1 = obj->golos1;
+    g2 = obj->golos2;
+    printf("%d %s %s %s %d %d\n", linha, obj->nome_jogo, obj->equipa1, obj->equipa2, g1, g2);
   }
 
   free(jogo);
@@ -161,10 +157,8 @@ void r(linkJ *headJptr, hptr *h1, linkE headE)
   }
   else
   {
-    {
-      retira_pontos(aux, headE, h1);
-      elimina_J(headJptr, jogo);
-    }
+    retira_pontos(aux, headE, h1);
+    elimina_J(headJptr, jogo);
   }
 
   free(jogo);
@@ -192,12 +186,10 @@ void s(linkJ *headJptr, hptr *h1, linkE headE)
   }
   else
   {
-    {
-      retira_pontos(aux, headE, h1);
-      vitorias(headE, p1, p2, aux->equipa1, aux->equipa2, h1);
-      aux->golos1 = p1;
-      aux->golos2 = p2;
-    }
+    retira_pontos(aux, headE, h1);
+    vitorias(headE, p1, p2, aux->equipa1, aux->equipa2, h1);
+    aux->golos1 = p1;
+    aux->golos2 = p2;
   }
 
   free(jogo);
@@ -218,26 +210,22 @@ void l(linkJ headJ, hptr *h1)
   {
     if (headJ->next == 0)
     {
-      {
-        g1 = headJ->golos1;
-        g2 = headJ->golos2;
-        printf("%d %s %s %s %d %d\n", linha, headJ->nome_jogo, headJ->equipa1, headJ->equipa2, g1, g2);
-      }
+      g1 = headJ->golos1;
+      g2 = headJ->golos2;
+      printf("%d %s %s %s %d %d\n", linha, headJ->nome_jogo, headJ->equipa1, headJ->equipa2, g1, g2);
     }
     else
     {
+      for (t = headJ->prev; t != headJ; t = t->prev)
       {
-        for (t = headJ->prev; t != headJ; t = t->prev)
-        {
-          g1 = t->golos1;
-          g2 = t->golos2;
-          printf("%d %s %s %s %d %d\n", linha, t->nome_jogo, t->equipa1, t->equipa2, g1, g2);
-        }
-
-        g1 = headJ->golos1;
-        g2 = headJ->golos2;
-        printf("%d %s %s %s %d %d\n", linha, headJ->nome_jogo, headJ->equipa1, headJ->equipa2, g1, g2);
+        g1 = t->golos1;
+        g2 = t->golos2;
+        printf("%d %s %s %s %d %d\n", linha, t->nome_jogo, t->equipa1, t->equipa2, g1, g2);
       }
+
+      g1 = headJ->golos1;
+      g2 = headJ->golos2;
+      printf("%d %s %s %s %d %d\n", linha, headJ->nome_jogo, headJ->equipa1, headJ->equipa2, g1, g2);
     }
 
   }
@@ -254,9 +242,7 @@ void g(linkE headE, hptr *h1)
   nomes = (char **) malloc(1093 * (sizeof(char *)));
   if (headE == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -267,11 +253,9 @@ void g(linkE headE, hptr *h1)
   {
     if (aux->vitorias == (*h1)->max_vit)
     {
-      {
-        nomes[i] = aux->nome_equipa;
-        i++;
-        cont++;
-      }
+      nomes[i] = aux->nome_equipa;
+      i++;
+      cont++;
     }
     else
     {

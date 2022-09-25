@@ -94,27 +94,21 @@ void corrige_wins(hash_eq hash_eq, pJogo j, char *old_vencedora)
   {
     if ((!j->vencedora) && old_vencedora)
     {
-      {
-        STsearch_eq(hash_eq, old_vencedora)->wins--;
-        return;
-      }
+      STsearch_eq(hash_eq, old_vencedora)->wins--;
+      return;
     }
     else
     {
       if (j->vencedora && (!old_vencedora))
       {
-        {
-          STsearch_eq(hash_eq, j->vencedora)->wins++;
-          return;
-        }
+        STsearch_eq(hash_eq, j->vencedora)->wins++;
+        return;
       }
       else
       {
-        {
-          STsearch_eq(hash_eq, old_vencedora)->wins--;
-          STsearch_eq(hash_eq, j->vencedora)->wins++;
-          return;
-        }
+        STsearch_eq(hash_eq, old_vencedora)->wins--;
+        STsearch_eq(hash_eq, j->vencedora)->wins++;
+        return;
       }
 
     }
@@ -143,10 +137,8 @@ void calcula_max(hash_eq hash, int *max, int *num_eq)
 
       if (temp->eq->wins > (*max))
       {
-        {
-          *num_eq = 1;
-          *max = temp->eq->wins;
-        }
+        *num_eq = 1;
+        *max = temp->eq->wins;
       }
       else
       {
@@ -183,9 +175,7 @@ void imprime_vencedoras(hash_eq hash, int max, int num_eq, int NL)
     {
       if (temp->eq->wins == max)
       {
-        {
-          equipas[j++] = strdup(temp->eq->n_eq);
-        }
+        equipas[j++] = strdup(temp->eq->n_eq);
       }
       else
       {

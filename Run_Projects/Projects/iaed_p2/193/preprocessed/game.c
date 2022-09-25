@@ -27,12 +27,10 @@ void deleteGame(void *game)
 {
   if (game != 0)
   {
-    {
-      free(((Game *) game)->name);
-      free(((Game *) game)->teams);
-      free(((Game *) game)->scores);
-      free(game);
-    }
+    free(((Game *) game)->name);
+    free(((Game *) game)->teams);
+    free(((Game *) game)->scores);
+    free(game);
   }
   else
   {
@@ -45,19 +43,15 @@ int compareGameFunction(char *name, void *game)
 {
   if ((game != 0) && (name != 0))
   {
+    if (strcmp(name, ((Team *) game)->name) == 0)
     {
-      if (strcmp(name, ((Team *) game)->name) == 0)
-      {
-        {
-          return 1;
-        }
-      }
-      else
-      {
-        
-      }
-
+      return 1;
     }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -71,9 +65,7 @@ void printGame(void *game, int *cmdCounter)
 {
   if (game != 0)
   {
-    {
-      printf("%d %s %s %s %d %d\n", *cmdCounter, ((Game *) game)->name, ((Game *) game)->teams[0]->name, ((Game *) game)->teams[1]->name, ((Game *) game)->scores[0], ((Game *) game)->scores[1]);
-    }
+    printf("%d %s %s %s %d %d\n", *cmdCounter, ((Game *) game)->name, ((Game *) game)->teams[0]->name, ((Game *) game)->teams[1]->name, ((Game *) game)->scores[0], ((Game *) game)->scores[1]);
   }
   else
   {

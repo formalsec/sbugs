@@ -24,10 +24,8 @@ void adic_equipa(equipa_pont *tabela_hash, int nl)
   {
     if (strcmp(i->nome_equipa, buffer) == 0)
     {
-      {
-        printf("%d Equipa existente.\n", nl);
-        return;
-      }
+      printf("%d Equipa existente.\n", nl);
+      return;
     }
     else
     {
@@ -61,10 +59,8 @@ void procura_equipa(equipa_pont *tabela_hash_equipas, int nl)
   {
     if (strcmp(nome, i->nome_equipa) == 0)
     {
-      {
-        printf("%d %s %d\n", nl, i->nome_equipa, *i->vitorias);
-        return;
-      }
+      printf("%d %s %d\n", nl, i->nome_equipa, *i->vitorias);
+      return;
     }
     else
     {
@@ -94,18 +90,14 @@ int descobre_max_vit(equipa_pont *tabela_hash_equipas, int *tamanho)
     {
       if ((*e->vitorias) > max_vitorias)
       {
-        {
-          max_vitorias = *e->vitorias;
-          *tamanho = 1;
-        }
+        max_vitorias = *e->vitorias;
+        *tamanho = 1;
       }
       else
       {
         if ((*e->vitorias) == max_vitorias)
         {
-          {
-            (*tamanho)++;
-          }
+          (*tamanho)++;
         }
         else
         {
@@ -132,9 +124,7 @@ void mais_vencedoras(equipa_pont *tabela_hash_equipas, int nl)
   max_vitorias = descobre_max_vit(tabela_hash_equipas, &tamanho);
   if (tamanho == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -148,10 +138,8 @@ void mais_vencedoras(equipa_pont *tabela_hash_equipas, int nl)
     {
       if ((*e->vitorias) == max_vitorias)
       {
-        {
-          array[indice_array] = e->nome_equipa;
-          indice_array++;
-        }
+        array[indice_array] = e->nome_equipa;
+        indice_array++;
       }
       else
       {

@@ -48,10 +48,8 @@ void ht_set_team(int line, ht_team *hashtable, TEAM *team)
   entry_team *entry = hashtable->entries[slot];
   if (entry == 0)
   {
-    {
-      hashtable->entries[slot] = ht_pair_team(team);
-      return;
-    }
+    hashtable->entries[slot] = ht_pair_team(team);
+    return;
   }
   else
   {
@@ -62,12 +60,10 @@ void ht_set_team(int line, ht_team *hashtable, TEAM *team)
   {
     if (strcmp(entry->team->name, team->name) == 0)
     {
-      {
-        printf("%d Equipa existente.\n", line);
-        free(team->name);
-        free(team);
-        return;
-      }
+      printf("%d Equipa existente.\n", line);
+      free(team->name);
+      free(team);
+      return;
     }
     else
     {
@@ -87,9 +83,7 @@ TEAM *ht_get_team(ht_team *hashtable, char *team)
   entry_team *entry = hashtable->entries[slot];
   if (entry == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -100,9 +94,7 @@ TEAM *ht_get_team(ht_team *hashtable, char *team)
   {
     if (strcmp(entry->team->name, team) == 0)
     {
-      {
-        return entry->team;
-      }
+      return entry->team;
     }
     else
     {
@@ -124,20 +116,18 @@ void ht_dump_team(ht_team *hashtable)
   {
     if (hashtable->entries[i] != 0)
     {
+      entry = hashtable->entries[i];
+      while (entry != 0)
       {
-        entry = hashtable->entries[i];
-        while (entry != 0)
-        {
-          temp = entry->next;
-          free(entry->team->name);
-          free(entry->team);
-          free(entry);
-          entry = temp;
-        }
-
-        temp = entry;
-        free(temp);
+        temp = entry->next;
+        free(entry->team->name);
+        free(entry->team);
+        free(entry);
+        entry = temp;
       }
+
+      temp = entry;
+      free(temp);
     }
     else
     {
@@ -159,22 +149,37 @@ void find_max(ht_team *hashtable, int line)
   {
     if (hashtable->entries[i] != 0)
     {
+      entry = hashtable->entries[i]->next;
+      if (hashtable->entries[i]->team->gameswon > max)
       {
-        entry = hashtable->entries[i]->next;
-        if (hashtable->entries[i]->team->gameswon > max)
+        max = hashtable->entries[i]->team->gameswon;
+        maxTeamNumber = 1;
+      }
+      else
+      {
+        if (hashtable->entries[i]->team->gameswon == max)
         {
-          {
-            max = hashtable->entries[i]->team->gameswon;
-            maxTeamNumber = 1;
-          }
+          maxTeamNumber++;
         }
         else
         {
-          if (hashtable->entries[i]->team->gameswon == max)
+          
+        }
+
+      }
+
+      while (entry != 0)
+      {
+        if (entry->team->gameswon > max)
+        {
+          max = entry->team->gameswon;
+          maxTeamNumber = 1;
+        }
+        else
+        {
+          if (entry->team->gameswon == max)
           {
-            {
-              maxTeamNumber++;
-            }
+            maxTeamNumber++;
           }
           else
           {
@@ -183,35 +188,10 @@ void find_max(ht_team *hashtable, int line)
 
         }
 
-        while (entry != 0)
-        {
-          if (entry->team->gameswon > max)
-          {
-            {
-              max = entry->team->gameswon;
-              maxTeamNumber = 1;
-            }
-          }
-          else
-          {
-            if (entry->team->gameswon == max)
-            {
-              {
-                maxTeamNumber++;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-          temp = entry->next;
-          entry = temp;
-        }
-
+        temp = entry->next;
+        entry = temp;
       }
+
     }
     else
     {
@@ -234,39 +214,33 @@ void order_array(ht_team *hashtable, int max, int maxTeamNumber, int line)
   {
     if (hashtable->entries[i] != 0)
     {
+      entry = hashtable->entries[i]->next;
+      if (hashtable->entries[i]->team->gameswon == max)
       {
-        entry = hashtable->entries[i]->next;
-        if (hashtable->entries[i]->team->gameswon == max)
+        teams[j] = *hashtable->entries[i]->team;
+        j++;
+      }
+      else
+      {
+        
+      }
+
+      while (entry != 0)
+      {
+        if (entry->team->gameswon == max)
         {
-          {
-            teams[j] = *hashtable->entries[i]->team;
-            j++;
-          }
+          teams[j] = *hashtable->entries[i]->team;
+          j++;
         }
         else
         {
           
         }
 
-        while (entry != 0)
-        {
-          if (entry->team->gameswon == max)
-          {
-            {
-              teams[j] = *hashtable->entries[i]->team;
-              j++;
-            }
-          }
-          else
-          {
-            
-          }
-
-          temp = entry->next;
-          entry = temp;
-        }
-
+        temp = entry->next;
+        entry = temp;
       }
+
     }
     else
     {
@@ -277,24 +251,20 @@ void order_array(ht_team *hashtable, int max, int maxTeamNumber, int line)
 
   if (maxTeamNumber > 1)
   {
+    mergesort_alphabet(teams, 0, maxTeamNumber - 1);
+    printf("%d Melhores %d\n", line, max);
+    for (i = 0; i < maxTeamNumber; i++)
     {
-      mergesort_alphabet(teams, 0, maxTeamNumber - 1);
-      printf("%d Melhores %d\n", line, max);
-      for (i = 0; i < maxTeamNumber; i++)
-      {
-        printf("%d * %s\n", line, teams[i].name);
-      }
-
+      printf("%d * %s\n", line, teams[i].name);
     }
+
   }
   else
   {
     if (maxTeamNumber == 1)
     {
-      {
-        printf("%d Melhores %d\n", line, max);
-        printf("%d * %s\n", line, teams[0].name);
-      }
+      printf("%d Melhores %d\n", line, max);
+      printf("%d * %s\n", line, teams[0].name);
     }
     else
     {
@@ -320,15 +290,11 @@ void merge_alphabet(TEAM a[], int left, int m, int right)
   {
     if (strcmp(aux[j].name, aux[i].name) < 0)
     {
-      {
-        a[k] = aux[j--];
-      }
+      a[k] = aux[j--];
     }
     else
     {
-      {
-        a[k] = aux[i++];
-      }
+      a[k] = aux[i++];
     }
 
   }

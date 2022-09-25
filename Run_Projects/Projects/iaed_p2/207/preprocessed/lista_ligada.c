@@ -67,19 +67,17 @@ NODE delete_node(NODE head, char *nome)
   {
     if (strcmp(t->jogo->nome, nome) == 0)
     {
+      if (t == head)
       {
-        if (t == head)
-        {
-          head = t->next;
-        }
-        else
-        {
-          prev->next = t->next;
-        }
-
-        FREEnode(t);
-        break;
+        head = t->next;
       }
+      else
+      {
+        prev->next = t->next;
+      }
+
+      FREEnode(t);
+      break;
     }
     else
     {

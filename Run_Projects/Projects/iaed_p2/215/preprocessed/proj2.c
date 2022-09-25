@@ -50,9 +50,7 @@ Equipa *procura_equipa(char argv[])
   {
     if (!strcmp(x->nome, argv))
     {
-      {
-        return x;
-      }
+      return x;
     }
     else
     {
@@ -72,9 +70,7 @@ Jogo *procura_jogo(char argv[])
   {
     if (!strcmp(x->nome, argv))
     {
-      {
-        return x;
-      }
+      return x;
     }
     else
     {
@@ -113,11 +109,9 @@ void adiciona_jogo(char argv[])
   eqp_2 = procura_equipa(eqp_2_2);
   if (!(!procura_jogo(name)))
   {
-    {
-      printf("%d %s\n", id_output, "Jogo existente.");
-      id_output++;
-      return;
-    }
+    printf("%d %s\n", id_output, "Jogo existente.");
+    id_output++;
+    return;
   }
   else
   {
@@ -126,11 +120,9 @@ void adiciona_jogo(char argv[])
 
   if (!eqp_1)
   {
-    {
-      printf("%d %s\n", id_output, "Equipa inexistente.");
-      id_output++;
-      return;
-    }
+    printf("%d %s\n", id_output, "Equipa inexistente.");
+    id_output++;
+    return;
   }
   else
   {
@@ -139,11 +131,9 @@ void adiciona_jogo(char argv[])
 
   if (!eqp_2)
   {
-    {
-      printf("%d %s\n", id_output, "Equipa inexistente.");
-      id_output++;
-      return;
-    }
+    printf("%d %s\n", id_output, "Equipa inexistente.");
+    id_output++;
+    return;
   }
   else
   {
@@ -160,17 +150,13 @@ void adiciona_jogo(char argv[])
   jogos[hash].head->next = x;
   if (scr_1_2 > scr_2_2)
   {
-    {
-      jogos[hash].head->equipa_1->num_vitorias++;
-    }
+    jogos[hash].head->equipa_1->num_vitorias++;
   }
   else
   {
     if (scr_1_2 < scr_2_2)
     {
-      {
-        jogos[hash].head->equipa_2->num_vitorias++;
-      }
+      jogos[hash].head->equipa_2->num_vitorias++;
     }
     else
     {
@@ -181,17 +167,13 @@ void adiciona_jogo(char argv[])
 
   if (!head_cron)
   {
-    {
-      head_cron = jogos[hash].head;
-      tail_cron = jogos[hash].head;
-    }
+    head_cron = jogos[hash].head;
+    tail_cron = jogos[hash].head;
   }
   else
   {
-    {
-      tail_cron->prox_cron = jogos[hash].head;
-      tail_cron = jogos[hash].head;
-    }
+    tail_cron->prox_cron = jogos[hash].head;
+    tail_cron = jogos[hash].head;
   }
 
   id_output++;
@@ -205,38 +187,30 @@ void adiciona_equipa(char argv[])
   x = equipas[hash].head;
   if (procura_equipa(argv) != 0)
   {
-    {
-      printf("%d %s\n", id_output, "Equipa existente.");
-      id_output++;
-    }
+    printf("%d %s\n", id_output, "Equipa existente.");
+    id_output++;
   }
   else
   {
+    if (!x)
     {
-      if (!x)
-      {
-        {
-          equipas[hash].head = malloc(sizeof(struct Equipa));
-          strcpy(equipas[hash].head->nome, argv);
-          equipas[hash].head->num_vitorias = 0;
-          equipas[hash].head->next = 0;
-          id_output++;
-          return;
-        }
-      }
-      else
-      {
-        {
-          x = malloc(sizeof(struct Equipa));
-          x->next = equipas[hash].head;
-          equipas[hash].head = x;
-          strcpy(x->nome, argv);
-          x->num_vitorias = 0;
-          id_output++;
-        }
-      }
-
+      equipas[hash].head = malloc(sizeof(struct Equipa));
+      strcpy(equipas[hash].head->nome, argv);
+      equipas[hash].head->num_vitorias = 0;
+      equipas[hash].head->next = 0;
+      id_output++;
+      return;
     }
+    else
+    {
+      x = malloc(sizeof(struct Equipa));
+      x->next = equipas[hash].head;
+      equipas[hash].head = x;
+      strcpy(x->nome, argv);
+      x->num_vitorias = 0;
+      id_output++;
+    }
+
   }
 
 }
@@ -266,21 +240,17 @@ void procura_jogos(char argv[])
   x = procura_jogo(argv);
   if (!x)
   {
-    {
-      printf("%d %s\n", id_output, "Jogo inexistente.");
-      id_output++;
-    }
+    printf("%d %s\n", id_output, "Jogo inexistente.");
+    id_output++;
   }
   else
   {
-    {
-      strcpy(eqp_1, x->equipa_1->nome);
-      strcpy(eqp_2, x->equipa_2->nome);
-      scr_1 = x->score_1;
-      scr_2 = x->score_2;
-      printf("%d %s %s %s %d %d\n", id_output, name, eqp_1, eqp_2, scr_1, scr_2);
-      id_output++;
-    }
+    strcpy(eqp_1, x->equipa_1->nome);
+    strcpy(eqp_2, x->equipa_2->nome);
+    scr_1 = x->score_1;
+    scr_2 = x->score_2;
+    printf("%d %s %s %s %d %d\n", id_output, name, eqp_1, eqp_2, scr_1, scr_2);
+    id_output++;
   }
 
 }
@@ -292,18 +262,14 @@ void procura_equipas(char argv[])
   x = procura_equipa(argv);
   if (!x)
   {
-    {
-      printf("%d %s\n", id_output, "Equipa inexistente.");
-      id_output++;
-    }
+    printf("%d %s\n", id_output, "Equipa inexistente.");
+    id_output++;
   }
   else
   {
-    {
-      num_jogos_ganhos = x->num_vitorias;
-      printf("%d %s %d\n", id_output, argv, num_jogos_ganhos);
-      id_output++;
-    }
+    num_jogos_ganhos = x->num_vitorias;
+    printf("%d %s %d\n", id_output, argv, num_jogos_ganhos);
+    id_output++;
   }
 
 }
@@ -320,9 +286,7 @@ void apaga_jogo(char argv[])
   {
     if (!strcmp(x->nome, argv))
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {
@@ -337,9 +301,7 @@ void apaga_jogo(char argv[])
   {
     if (!strcmp(x->nome, argv))
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {
@@ -352,87 +314,65 @@ void apaga_jogo(char argv[])
 
   if (!x)
   {
-    {
-      printf("%d %s\n", id_output, "Jogo inexistente.");
-      id_output++;
-    }
+    printf("%d %s\n", id_output, "Jogo inexistente.");
+    id_output++;
   }
   else
   {
+    if (x->score_1 > x->score_2)
     {
-      if (x->score_1 > x->score_2)
+      x->equipa_1->num_vitorias--;
+    }
+    else
+    {
+      if (x->score_1 < x->score_2)
       {
-        {
-          x->equipa_1->num_vitorias--;
-        }
-      }
-      else
-      {
-        if (x->score_1 < x->score_2)
-        {
-          {
-            x->equipa_2->num_vitorias--;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      if (head_cron == x)
-      {
-        {
-          head_cron = x->next;
-        }
-      }
-      else
-      {
-        {
-          prev_cron->prox_cron = x->prox_cron;
-        }
-      }
-
-      if (tail_cron == x)
-      {
-        {
-          if (head_cron == x)
-          {
-            {
-              tail_cron = 0;
-            }
-          }
-          else
-          {
-            {
-              tail_cron = prev_cron;
-            }
-          }
-
-        }
+        x->equipa_2->num_vitorias--;
       }
       else
       {
         
       }
 
-      if (jogos[hash].head == x)
+    }
+
+    if (head_cron == x)
+    {
+      head_cron = x->next;
+    }
+    else
+    {
+      prev_cron->prox_cron = x->prox_cron;
+    }
+
+    if (tail_cron == x)
+    {
+      if (head_cron == x)
       {
-        {
-          jogos[hash].head = x->next;
-        }
+        tail_cron = 0;
       }
       else
       {
-        {
-          prev->next = x->next;
-        }
+        tail_cron = prev_cron;
       }
 
-      free(x);
-      id_output++;
     }
+    else
+    {
+      
+    }
+
+    if (jogos[hash].head == x)
+    {
+      jogos[hash].head = x->next;
+    }
+    else
+    {
+      prev->next = x->next;
+    }
+
+    free(x);
+    id_output++;
   }
 
 }
@@ -457,49 +397,32 @@ void altera_score(char argv[])
   x = procura_jogo(name);
   if (!x)
   {
-    {
-      printf("%d %s\n", id_output, "Jogo inexistente.");
-      id_output++;
-    }
+    printf("%d %s\n", id_output, "Jogo inexistente.");
+    id_output++;
   }
   else
   {
+    if (x->score_1 > x->score_2)
     {
-      if (x->score_1 > x->score_2)
+      if (scr_2_2 > scr_1_2)
       {
-        {
-          if (scr_2_2 > scr_1_2)
-          {
-            {
-              x->equipa_1->num_vitorias--;
-              x->equipa_2->num_vitorias++;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
+        x->equipa_1->num_vitorias--;
+        x->equipa_2->num_vitorias++;
       }
       else
       {
-        if (x->score_1 < x->score_2)
-        {
-          {
-            if (scr_1_2 > scr_2_2)
-            {
-              {
-                x->equipa_1->num_vitorias++;
-                x->equipa_2->num_vitorias--;
-              }
-            }
-            else
-            {
-              
-            }
+        
+      }
 
-          }
+    }
+    else
+    {
+      if (x->score_1 < x->score_2)
+      {
+        if (scr_1_2 > scr_2_2)
+        {
+          x->equipa_1->num_vitorias++;
+          x->equipa_2->num_vitorias--;
         }
         else
         {
@@ -507,11 +430,16 @@ void altera_score(char argv[])
         }
 
       }
+      else
+      {
+        
+      }
 
-      x->score_1 = scr_1_2;
-      x->score_2 = scr_2_2;
-      id_output++;
     }
+
+    x->score_1 = scr_1_2;
+    x->score_2 = scr_2_2;
+    id_output++;
   }
 
 }
@@ -525,9 +453,7 @@ int maximo_vitorias()
   {
     if (!equipas[i].head)
     {
-      {
-        continue;
-      }
+      continue;
     }
     else
     {
@@ -538,9 +464,7 @@ int maximo_vitorias()
     {
       if (x->num_vitorias > max)
       {
-        {
-          max = x->num_vitorias;
-        }
+        max = x->num_vitorias;
       }
       else
       {
@@ -568,9 +492,7 @@ void encontra_mais_vitorias()
   {
     if (!equipas[i].head)
     {
-      {
-        continue;
-      }
+      continue;
     }
     else
     {
@@ -581,10 +503,8 @@ void encontra_mais_vitorias()
     {
       if (x->num_vitorias == num_max_vitorias)
       {
-        {
-          equipas_mais_vitorias[j] = x;
-          j++;
-        }
+        equipas_mais_vitorias[j] = x;
+        j++;
       }
       else
       {
@@ -602,11 +522,9 @@ void encontra_mais_vitorias()
     {
       if (strcmp(equipas_mais_vitorias[j]->nome, equipas_mais_vitorias[j + 1]->nome) > 0)
       {
-        {
-          temp = equipas_mais_vitorias[j];
-          equipas_mais_vitorias[j] = equipas_mais_vitorias[j + 1];
-          equipas_mais_vitorias[j + 1] = temp;
-        }
+        temp = equipas_mais_vitorias[j];
+        equipas_mais_vitorias[j] = equipas_mais_vitorias[j + 1];
+        equipas_mais_vitorias[j + 1] = temp;
       }
       else
       {
@@ -619,14 +537,12 @@ void encontra_mais_vitorias()
 
   if (n > 0)
   {
+    printf("%d %s %d\n", id_output, "Melhores", num_max_vitorias);
+    for (i = 0; i < n; i++)
     {
-      printf("%d %s %d\n", id_output, "Melhores", num_max_vitorias);
-      for (i = 0; i < n; i++)
-      {
-        printf("%d %s %s\n", id_output, "*", equipas_mais_vitorias[i]->nome);
-      }
-
+      printf("%d %s %s\n", id_output, "*", equipas_mais_vitorias[i]->nome);
     }
+
   }
   else
   {
@@ -733,15 +649,13 @@ int main()
   {
     if (jogos[i].head)
     {
+      for (x = jogos[i].head; x;)
       {
-        for (x = jogos[i].head; x;)
-        {
-          temp_J = x;
-          x = x->next;
-          free(temp_J);
-        }
-
+        temp_J = x;
+        x = x->next;
+        free(temp_J);
       }
+
     }
     else
     {
@@ -754,15 +668,13 @@ int main()
   {
     if (equipas[i].head)
     {
+      for (y = equipas[i].head; y;)
       {
-        for (y = equipas[i].head; y;)
-        {
-          temp_E = y;
-          y = y->next;
-          free(temp_E);
-        }
-
+        temp_E = y;
+        y = y->next;
+        free(temp_E);
       }
+
     }
     else
     {

@@ -14,10 +14,8 @@ Lista_equipas *A(int NL, char s[], hashtable_equipas *ht_equipa, Lista_equipas *
   Equipa *a = ht_equipas_verifica(ht_equipa, s);
   if (a != 0)
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-      return lista_equipa;
-    }
+    printf("%d Equipa existente.\n", NL);
+    return lista_equipa;
   }
   else
   {
@@ -32,15 +30,11 @@ Lista_equipas *A(int NL, char s[], hashtable_equipas *ht_equipa, Lista_equipas *
   novo->prev = lista_equipa->last;
   if (lista_equipa->head == 0)
   {
-    {
-      lista_equipa->head = novo;
-    }
+    lista_equipa->head = novo;
   }
   else
   {
-    {
-      lista_equipa->last->next = novo;
-    }
+    lista_equipa->last->next = novo;
   }
 
   lista_equipa->last = novo;
@@ -53,10 +47,8 @@ void P(int NL, char s[], hashtable_equipas *ht_equipa)
   Equipa *a = ht_equipas_verifica(ht_equipa, s);
   if (a == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -80,9 +72,7 @@ void g(int NL, Lista_equipas *lista_equipa, hashtable_equipas *ht_equipa)
   e = malloc((sizeof(char *)) * 10003);
   if (lista_equipa->head == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -95,9 +85,7 @@ void g(int NL, Lista_equipas *lista_equipa, hashtable_equipas *ht_equipa)
     c += 1;
     if (a->vitorias >= melhor)
     {
-      {
-        melhor = a->vitorias;
-      }
+      melhor = a->vitorias;
     }
     else
     {
@@ -112,9 +100,7 @@ void g(int NL, Lista_equipas *lista_equipa, hashtable_equipas *ht_equipa)
     a = ht_equipas_verifica(ht_equipa, descobre->nome);
     if (melhor == a->vitorias)
     {
-      {
-        e[j++] = a->nome;
-      }
+      e[j++] = a->nome;
     }
     else
     {

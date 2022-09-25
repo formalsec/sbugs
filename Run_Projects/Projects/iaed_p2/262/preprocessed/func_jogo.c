@@ -74,19 +74,17 @@ jogo RemoveJogo(jogo head, char *nome)
   {
     if (strcmp(t->nome, nome) == 0)
     {
+      if (t == head)
       {
-        if (t == head)
-        {
-          head = t->nextJ;
-        }
-        else
-        {
-          prev->nextJ = t->nextJ;
-        }
-
-        FreeJogo(t);
-        return head;
+        head = t->nextJ;
       }
+      else
+      {
+        prev->nextJ = t->nextJ;
+      }
+
+      FreeJogo(t);
+      return head;
     }
     else
     {

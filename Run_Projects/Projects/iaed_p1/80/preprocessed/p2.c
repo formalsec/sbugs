@@ -81,17 +81,13 @@ void por_produto_enc(encomenda iden_encomenda[500], produto p[10000], int idp, i
   m = verifica(iden_encomenda[ide].pro, idp, n);
   if (m != (-1))
   {
-    {
-      iden_encomenda[ide].qtp[m] += qtp;
-    }
+    iden_encomenda[ide].qtp[m] += qtp;
   }
   else
   {
-    {
-      iden_encomenda[ide].qtp[n] = qtp;
-      iden_encomenda[ide].pro[n] = idp;
-      iden_encomenda[ide].n_elem++;
-    }
+    iden_encomenda[ide].qtp[n] = qtp;
+    iden_encomenda[ide].pro[n] = idp;
+    iden_encomenda[ide].n_elem++;
   }
 
   iden_encomenda[ide].peso -= p[idp].peso * qtp;
@@ -108,18 +104,16 @@ void remove_produto(encomenda iden_encomenda[500], int idp, int ide, produto p[1
   m = verifica(iden_encomenda[ide].pro, idp, n);
   if (m != (-1))
   {
+    p[idp].qtp += iden_encomenda[ide].qtp[m];
+    iden_encomenda[ide].peso += iden_encomenda[ide].qtp[m] * p[idp].peso;
+    for (i = m + 1; m < n; m++)
     {
-      p[idp].qtp += iden_encomenda[ide].qtp[m];
-      iden_encomenda[ide].peso += iden_encomenda[ide].qtp[m] * p[idp].peso;
-      for (i = m + 1; m < n; m++)
-      {
-        iden_encomenda[ide].pro[m] = iden_encomenda[ide].pro[i];
-        iden_encomenda[ide].qtp[m] = iden_encomenda[ide].qtp[i];
-        i++;
-      }
-
-      iden_encomenda[ide].n_elem--;
+      iden_encomenda[ide].pro[m] = iden_encomenda[ide].pro[i];
+      iden_encomenda[ide].qtp[m] = iden_encomenda[ide].qtp[i];
+      i++;
     }
+
+    iden_encomenda[ide].n_elem--;
   }
   else
   {
@@ -156,20 +150,16 @@ void maximo_produto(encomenda iden_encomenda[500], int idp, int n_enc)
     m = verifica(iden_encomenda[i].pro, idp, iden_encomenda[i].n_elem);
     if (m != (-1))
     {
+      if (qtp < iden_encomenda[i].qtp[m])
       {
-        if (qtp < iden_encomenda[i].qtp[m])
-        {
-          {
-            ide = i;
-            qtp = iden_encomenda[i].qtp[m];
-          }
-        }
-        else
-        {
-          
-        }
-
+        ide = i;
+        qtp = iden_encomenda[i].qtp[m];
       }
+      else
+      {
+        
+      }
+
     }
     else
     {
@@ -213,11 +203,9 @@ int particao(int idp_ord[10000], int inicio, int fim, produto p[10000])
 
     if (i < j)
     {
-      {
-        aux = idp_ord[i];
-        idp_ord[i] = idp_ord[j];
-        idp_ord[j] = aux;
-      }
+      aux = idp_ord[i];
+      idp_ord[i] = idp_ord[j];
+      idp_ord[j] = aux;
     }
     else
     {
@@ -272,15 +260,13 @@ void ordena_enc(encomenda enc, produto p[10000])
     {
       if (strcmp(desc, p[pro[j]].descricao) > 0)
       {
-        {
-          strcpy(desc, p[pro[j]].descricao);
-          aux = pro[i];
-          pro[i] = pro[j];
-          pro[j] = aux;
-          aux = qtp[i];
-          qtp[i] = qtp[j];
-          qtp[j] = aux;
-        }
+        strcpy(desc, p[pro[j]].descricao);
+        aux = pro[i];
+        pro[i] = pro[j];
+        pro[j] = aux;
+        aux = qtp[i];
+        qtp[i] = qtp[j];
+        qtp[j] = aux;
       }
       else
       {
@@ -328,10 +314,8 @@ int main()
         qtp = new_sym_var(sizeof(int) * 8);
         if (idp >= iden)
       {
-        {
-          printf("Impossivel adicionar produto %d ", idp);
-          printf("ao stock. Produto inexistente.\n");
-        }
+        printf("Impossivel adicionar produto %d ", idp);
+        printf("ao stock. Produto inexistente.\n");
       }
       else
       {
@@ -437,9 +421,7 @@ int main()
       }
       else
       {
-        {
-          printf("Custo da encomenda %d %d.\n", ide, custo(iden_encomenda, iden_pro, ide));
-        }
+        printf("Custo da encomenda %d %d.\n", ide, custo(iden_encomenda, iden_pro, ide));
       }
 
         break;
@@ -453,10 +435,8 @@ int main()
       }
       else
       {
-        {
-          iden_pro[idp].preco = arg1;
-          ord_lis = 0;
-        }
+        iden_pro[idp].preco = arg1;
+        ord_lis = 0;
       }
 
         break;
@@ -476,22 +456,16 @@ int main()
         }
         else
         {
+          arg1 = verifica(iden_encomenda[ide].pro, idp, iden_encomenda[ide].n_elem);
+          if (arg1 == (-1))
           {
-            arg1 = verifica(iden_encomenda[ide].pro, idp, iden_encomenda[ide].n_elem);
-            if (arg1 == (-1))
-            {
-              {
-                printf("%s 0.\n", iden_pro[idp].descricao);
-              }
-            }
-            else
-            {
-              {
-                printf("%s %d.\n", iden_pro[idp].descricao, iden_encomenda[ide].qtp[arg1]);
-              }
-            }
-
+            printf("%s 0.\n", iden_pro[idp].descricao);
           }
+          else
+          {
+            printf("%s %d.\n", iden_pro[idp].descricao, iden_encomenda[ide].qtp[arg1]);
+          }
+
         }
 
       }
@@ -506,9 +480,7 @@ int main()
       }
       else
       {
-        {
-          maximo_produto(iden_encomenda, idp, iden_enc);
-        }
+        maximo_produto(iden_encomenda, idp, iden_enc);
       }
 
         break;
@@ -541,10 +513,8 @@ int main()
       }
       else
       {
-        {
-          printf("Encomenda %d\n", ide);
-          ordena_enc(iden_encomenda[ide], iden_pro);
-        }
+        printf("Encomenda %d\n", ide);
+        ordena_enc(iden_encomenda[ide], iden_pro);
       }
 
         break;

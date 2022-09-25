@@ -83,21 +83,19 @@ link_J semi_deleteJ(link_J head, char *nome)
   {
     if (strcmp(t->jogo->nome, nome) == 0)
     {
+      if (t == head)
       {
-        if (t == head)
-        {
-          head = t->next;
-        }
-        else
-        {
-          prev->next = t->next;
-        }
-
-        free(t->jogo->nome);
-        t->jogo->nome = 0;
-        free(t);
-        break;
+        head = t->next;
       }
+      else
+      {
+        prev->next = t->next;
+      }
+
+      free(t->jogo->nome);
+      t->jogo->nome = 0;
+      free(t);
+      break;
     }
     else
     {
@@ -117,19 +115,17 @@ link_J deleteJ(link_J head)
   {
     if (t->jogo->nome == 0)
     {
+      if (t == head)
       {
-        if (t == head)
-        {
-          head = t->next;
-        }
-        else
-        {
-          prev->next = t->next;
-        }
-
-        free_nodeJ(t);
-        break;
+        head = t->next;
       }
+      else
+      {
+        prev->next = t->next;
+      }
+
+      free_nodeJ(t);
+      break;
     }
     else
     {

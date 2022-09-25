@@ -17,9 +17,7 @@ Team createTeam(char *name)
   newTeam.name = malloc(len + (1 * (sizeof(char))));
   if (!newTeam.name)
   {
-    {
-      perror("createTeam Failed malloc");
-    }
+    perror("createTeam Failed malloc");
   }
   else
   {
@@ -46,24 +44,20 @@ int isTeam(char *name, Team team)
   len2 = strlen(team.name);
   if (len == len2)
   {
+    for (i = 0; i < len; i++)
     {
-      for (i = 0; i < len; i++)
+      if (name[i] != team.name[i])
       {
-        if (name[i] != team.name[i])
-        {
-          {
-            return 0;
-          }
-        }
-        else
-        {
-          
-        }
-
+        return 0;
+      }
+      else
+      {
+        
       }
 
-      return 1;
     }
+
+    return 1;
   }
   else
   {
@@ -79,9 +73,7 @@ void addVictory(Teams *teamsList, char *team)
   {
     if (isTeam(team, teamsList->team))
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {
@@ -100,9 +92,7 @@ void removeVictory(Teams *teamsList, char *team)
   {
     if (isTeam(team, teamsList->team))
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {
@@ -121,9 +111,7 @@ Teams *createTeams(char *name)
   new = malloc(sizeof(Teams));
   if (!new)
   {
-    {
-      perror("createTeams Failed malloc");
-    }
+    perror("createTeams Failed malloc");
   }
   else
   {
@@ -141,16 +129,14 @@ int addTeam(char *name, Teams *teamsList)
   test = searchTeam(teamsList, name);
   if (isTeam("NULL123", test) == 1)
   {
+    while (teamsList->nextTeam != 0)
     {
-      while (teamsList->nextTeam != 0)
-      {
-        teamsList = teamsList->nextTeam;
-      }
-
-      teamsList->nextTeam = createTeams(name);
-      freeTeam(test);
-      return 1;
+      teamsList = teamsList->nextTeam;
     }
+
+    teamsList->nextTeam = createTeams(name);
+    freeTeam(test);
+    return 1;
   }
   else
   {
@@ -164,9 +150,7 @@ Team searchTeam(Teams *teamsList, char *name)
 {
   if (teamsList == 0)
   {
-    {
-      return createTeam("NULL123");
-    }
+    return createTeam("NULL123");
   }
   else
   {
@@ -177,9 +161,7 @@ Team searchTeam(Teams *teamsList, char *name)
   {
     if (isTeam(name, teamsList->team) == 1)
     {
-      {
-        return teamsList->team;
-      }
+      return teamsList->team;
     }
     else
     {
@@ -191,9 +173,7 @@ Team searchTeam(Teams *teamsList, char *name)
 
   if (isTeam(name, teamsList->team) == 1)
   {
-    {
-      return teamsList->team;
-    }
+    return teamsList->team;
   }
   else
   {
@@ -207,19 +187,17 @@ void freeTeams(Teams *teamsList)
 {
   if (teamsList != 0)
   {
+    Teams *next;
+    while (teamsList->nextTeam != 0)
     {
-      Teams *next;
-      while (teamsList->nextTeam != 0)
-      {
-        next = teamsList->nextTeam;
-        teamsList->nextTeam = next->nextTeam;
-        freeTeam(next->team);
-        free(next);
-      }
-
-      freeTeam(teamsList->team);
-      free(teamsList);
+      next = teamsList->nextTeam;
+      teamsList->nextTeam = next->nextTeam;
+      freeTeam(next->team);
+      free(next);
     }
+
+    freeTeam(teamsList->team);
+    free(teamsList);
   }
   else
   {
@@ -233,29 +211,21 @@ void printTeam(Teams *teamsList, char *name, int commandNumber)
   Team team;
   if (teamsList != 0)
   {
+    team = searchTeam(teamsList, name);
+    if (isTeam("NULL123", team) == 0)
     {
-      team = searchTeam(teamsList, name);
-      if (isTeam("NULL123", team) == 0)
-      {
-        {
-          fprintf(outputFile, "%d %s %d\n", commandNumber, name, team.victories);
-        }
-      }
-      else
-      {
-        {
-          freeTeam(team);
-          fprintf(outputFile, "%d Equipa inexistente.\n", commandNumber);
-        }
-      }
-
+      fprintf(outputFile, "%d %s %d\n", commandNumber, name, team.victories);
     }
+    else
+    {
+      freeTeam(team);
+      fprintf(outputFile, "%d Equipa inexistente.\n", commandNumber);
+    }
+
   }
   else
   {
-    {
-      fprintf(outputFile, "%d Equipa inexistente.\n", commandNumber);
-    }
+    fprintf(outputFile, "%d Equipa inexistente.\n", commandNumber);
   }
 
 }
@@ -266,32 +236,24 @@ int nameComp(char *c1, char *c2)
   int i;
   if (strcmp(c1, c2) < 0)
   {
-    {
-      lenght = strlen(c1);
-    }
+    lenght = strlen(c1);
   }
   else
   {
-    {
-      lenght = strlen(c2);
-    }
+    lenght = strlen(c2);
   }
 
   for (i = 0; i < lenght; i++)
   {
     if (c1[i] < c2[i])
     {
-      {
-        return -1;
-      }
+      return -1;
     }
     else
     {
       if (c1[i] > c2[i])
       {
-        {
-          return 1;
-        }
+        return 1;
       }
       else
       {
@@ -318,9 +280,7 @@ void sort(char **list, int size)
     {
       if (nameComp(list[j], list[temp]) == (-1))
       {
-        {
-          temp = j;
-        }
+        temp = j;
       }
       else
       {
@@ -346,48 +306,19 @@ void printBest(Teams *teamsList, int commandNumber)
   Teams *move;
   if (teamsList != 0)
   {
+    move = teamsList;
+    while (move->nextTeam != 0)
     {
-      move = teamsList;
-      while (move->nextTeam != 0)
-      {
-        if (move->team.victories > max)
-        {
-          {
-            max = move->team.victories;
-            num = 0;
-          }
-        }
-        else
-        {
-          if (move->team.victories == max)
-          {
-            {
-              num++;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-        move = move->nextTeam;
-      }
-
       if (move->team.victories > max)
       {
-        {
-          max = move->team.victories;
-        }
+        max = move->team.victories;
+        num = 0;
       }
       else
       {
         if (move->team.victories == max)
         {
-          {
-            num++;
-          }
+          num++;
         }
         else
         {
@@ -396,32 +327,18 @@ void printBest(Teams *teamsList, int commandNumber)
 
       }
 
-      list = malloc(num * (sizeof(char *)));
-      while (teamsList->nextTeam != 0)
-      {
-        if (teamsList->team.victories == max)
-        {
-          {
-            list[i] = malloc(1024 * (sizeof(char)));
-            strcpy(list[i], teamsList->team.name);
-            i++;
-          }
-        }
-        else
-        {
-          
-        }
+      move = move->nextTeam;
+    }
 
-        teamsList = teamsList->nextTeam;
-      }
-
-      if (teamsList->team.victories == max)
+    if (move->team.victories > max)
+    {
+      max = move->team.victories;
+    }
+    else
+    {
+      if (move->team.victories == max)
       {
-        {
-          list[i] = malloc(1024 * (sizeof(char)));
-          strcpy(list[i], teamsList->team.name);
-          i++;
-        }
+        num++;
       }
       else
       {
@@ -429,6 +346,35 @@ void printBest(Teams *teamsList, int commandNumber)
       }
 
     }
+
+    list = malloc(num * (sizeof(char *)));
+    while (teamsList->nextTeam != 0)
+    {
+      if (teamsList->team.victories == max)
+      {
+        list[i] = malloc(1024 * (sizeof(char)));
+        strcpy(list[i], teamsList->team.name);
+        i++;
+      }
+      else
+      {
+        
+      }
+
+      teamsList = teamsList->nextTeam;
+    }
+
+    if (teamsList->team.victories == max)
+    {
+      list[i] = malloc(1024 * (sizeof(char)));
+      strcpy(list[i], teamsList->team.name);
+      i++;
+    }
+    else
+    {
+      
+    }
+
   }
   else
   {

@@ -44,27 +44,25 @@ void adiciona_jogo(Jogo **jogos, int dim, Equipa **equipas, int conta_linhas)
     }
     else
     {
+      novo_jogo = novoJogo(nome, equipa1, equipa2, score1, score2, conta_linhas);
+      HTinsere_jogo(novo_jogo, jogos, dim);
+      if (score1 > score2)
       {
-        novo_jogo = novoJogo(nome, equipa1, equipa2, score1, score2, conta_linhas);
-        HTinsere_jogo(novo_jogo, jogos, dim);
-        if (score1 > score2)
+        soma_vitorias(HTprocura_equipa(equipa1, equipas, dim));
+      }
+      else
+      {
+        if (score2 > score1)
         {
-          soma_vitorias(HTprocura_equipa(equipa1, equipas, dim));
+          soma_vitorias(HTprocura_equipa(equipa2, equipas, dim));
         }
         else
         {
-          if (score2 > score1)
-          {
-            soma_vitorias(HTprocura_equipa(equipa2, equipas, dim));
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
+
     }
 
   }
@@ -110,29 +108,27 @@ void apaga_jogo(Jogo **jogos, Equipa **equipas, int dim, int conta_linhas)
   nome[10 - 1] = '\0';
   if (HTprocura_jogo(nome, jogos, dim) != 0)
   {
+    jogo = HTprocura_jogo(nome, jogos, dim);
+    equipa1 = HTprocura_equipa(jogo->equipa1, equipas, dim);
+    equipa2 = HTprocura_equipa(jogo->equipa2, equipas, dim);
+    if (jogo->score_equipa1 > jogo->score_equipa2)
     {
-      jogo = HTprocura_jogo(nome, jogos, dim);
-      equipa1 = HTprocura_equipa(jogo->equipa1, equipas, dim);
-      equipa2 = HTprocura_equipa(jogo->equipa2, equipas, dim);
-      if (jogo->score_equipa1 > jogo->score_equipa2)
+      subtrai_vitorias(equipa1);
+    }
+    else
+    {
+      if (jogo->score_equipa2 > jogo->score_equipa1)
       {
-        subtrai_vitorias(equipa1);
+        subtrai_vitorias(equipa2);
       }
       else
       {
-        if (jogo->score_equipa2 > jogo->score_equipa1)
-        {
-          subtrai_vitorias(equipa2);
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      HTremove_jogo(jogo, jogos, dim);
     }
+
+    HTremove_jogo(jogo, jogos, dim);
   }
   else
   {
@@ -159,46 +155,44 @@ void altera_score(Jogo **jogos, Equipa **equipas, int dim, int conta_linhas)
   score2_novo = new_sym_var(sizeof(int) * 8);
   if (HTprocura_jogo(nome, jogos, dim) != 0)
   {
+    jogo = HTprocura_jogo(nome, jogos, dim);
+    equipa1 = HTprocura_equipa(jogo->equipa1, equipas, dim);
+    equipa2 = HTprocura_equipa(jogo->equipa2, equipas, dim);
+    if (jogo->score_equipa1 > jogo->score_equipa2)
     {
-      jogo = HTprocura_jogo(nome, jogos, dim);
-      equipa1 = HTprocura_equipa(jogo->equipa1, equipas, dim);
-      equipa2 = HTprocura_equipa(jogo->equipa2, equipas, dim);
-      if (jogo->score_equipa1 > jogo->score_equipa2)
+      subtrai_vitorias(equipa1);
+    }
+    else
+    {
+      if (jogo->score_equipa2 > jogo->score_equipa1)
       {
-        subtrai_vitorias(equipa1);
+        subtrai_vitorias(equipa2);
       }
       else
       {
-        if (jogo->score_equipa2 > jogo->score_equipa1)
-        {
-          subtrai_vitorias(equipa2);
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      alteraScore(jogo, score1_novo, score2_novo);
-      if (score1_novo > score2_novo)
-      {
-        soma_vitorias(equipa1);
-      }
-      else
-      {
-        if (score2_novo > score1_novo)
-        {
-          soma_vitorias(equipa2);
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
     }
+
+    alteraScore(jogo, score1_novo, score2_novo);
+    if (score1_novo > score2_novo)
+    {
+      soma_vitorias(equipa1);
+    }
+    else
+    {
+      if (score2_novo > score1_novo)
+      {
+        soma_vitorias(equipa2);
+      }
+      else
+      {
+        
+      }
+
+    }
+
   }
   else
   {
@@ -223,10 +217,8 @@ void adiciona_equipa(Equipa **equipas, int dim, int conta_linhas)
   }
   else
   {
-    {
-      nova_equipa = novaEquipa(nome);
-      HTinsere_equipa(nova_equipa, equipas, dim);
-    }
+    nova_equipa = novaEquipa(nome);
+    HTinsere_equipa(nova_equipa, equipas, dim);
   }
 
 }

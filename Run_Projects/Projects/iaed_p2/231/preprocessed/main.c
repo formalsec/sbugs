@@ -76,6 +76,16 @@ int main()
         MT2 = hashTeam(team2);
         if (teamHashTable[MT1] == 0)
       {
+        printf("%d Equipa inexistente.\n", nCommand);
+        free(gameName);
+        free(team);
+        free(team2);
+        break;
+      }
+      else
+      {
+        t = searchTeam(teamHashTable[MT1], team);
+        if (t->exists == 0)
         {
           printf("%d Equipa inexistente.\n", nCommand);
           free(gameName);
@@ -83,13 +93,20 @@ int main()
           free(team2);
           break;
         }
-      }
-      else
-      {
+        else
         {
-          t = searchTeam(teamHashTable[MT1], team);
-          if (t->exists == 0)
+          if (teamHashTable[MT2] == 0)
           {
+            printf("%d Equipa inexistente.\n", nCommand);
+            free(gameName);
+            free(team);
+            free(team2);
+            break;
+          }
+          else
+          {
+            t2 = searchTeam(teamHashTable[MT2], team2);
+            if (t->exists == 0)
             {
               printf("%d Equipa inexistente.\n", nCommand);
               free(gameName);
@@ -97,78 +114,37 @@ int main()
               free(team2);
               break;
             }
-          }
-          else
-          {
+            else
             {
-              if (teamHashTable[MT2] == 0)
+              if (gameHashTable[M] == 0)
               {
+                gameHashTable[M] = addGame(0, gameName, t, t2, score1, score2, nGames);
+                nGames++;
+              }
+              else
+              {
+                g = searchGame(gameHashTable[M], gameName);
+                if (g->id != 0)
                 {
-                  printf("%d Equipa inexistente.\n", nCommand);
+                  printf("%d Jogo existente.\n", nCommand);
                   free(gameName);
                   free(team);
                   free(team2);
                   break;
                 }
-              }
-              else
-              {
+                else
                 {
-                  t2 = searchTeam(teamHashTable[MT2], team2);
-                  if (t->exists == 0)
-                  {
-                    {
-                      printf("%d Equipa inexistente.\n", nCommand);
-                      free(gameName);
-                      free(team);
-                      free(team2);
-                      break;
-                    }
-                  }
-                  else
-                  {
-                    {
-                      if (gameHashTable[M] == 0)
-                      {
-                        {
-                          gameHashTable[M] = addGame(0, gameName, t, t2, score1, score2, nGames);
-                          nGames++;
-                        }
-                      }
-                      else
-                      {
-                        {
-                          g = searchGame(gameHashTable[M], gameName);
-                          if (g->id != 0)
-                          {
-                            {
-                              printf("%d Jogo existente.\n", nCommand);
-                              free(gameName);
-                              free(team);
-                              free(team2);
-                              break;
-                            }
-                          }
-                          else
-                          {
-                            {
-                              gameHashTable[M] = addGame(gameHashTable[M], gameName, t, t2, score1, score2, nGames);
-                            }
-                          }
-
-                        }
-                      }
-
-                    }
-                  }
-
+                  gameHashTable[M] = addGame(gameHashTable[M], gameName, t, t2, score1, score2, nGames);
                 }
+
               }
 
             }
+
           }
 
         }
+
       }
 
         free(gameName);
@@ -188,34 +164,26 @@ int main()
         M = hashGame(gameName);
         if (gameHashTable[M] == 0)
       {
+        printf("%d Jogo inexistente.", nCommand);
+        free(gameName);
+        nCommand++;
+        break;
+      }
+      else
+      {
+        g = searchGame(gameHashTable[M], gameName);
+        if (g->id != 0)
+        {
+          printf("%d %s %s %s %d %d", nCommand, gameName, g->team1->name, g->team2->name, g->score1, g->score2);
+        }
+        else
         {
           printf("%d Jogo inexistente.", nCommand);
           free(gameName);
           nCommand++;
           break;
         }
-      }
-      else
-      {
-        {
-          g = searchGame(gameHashTable[M], gameName);
-          if (g->id != 0)
-          {
-            {
-              printf("%d %s %s %s %d %d", nCommand, gameName, g->team1->name, g->team2->name, g->score1, g->score2);
-            }
-          }
-          else
-          {
-            {
-              printf("%d Jogo inexistente.", nCommand);
-              free(gameName);
-              nCommand++;
-              break;
-            }
-          }
 
-        }
       }
 
         free(gameName);
@@ -233,35 +201,27 @@ int main()
         M = hashGame(gameName);
         if (gameHashTable[M] == 0)
       {
+        printf("%d Jogo inexistente.", nCommand);
+        free(gameName);
+        nCommand++;
+        break;
+      }
+      else
+      {
+        g = searchGame(gameHashTable[M], gameName);
+        if (g->id != 0)
+        {
+          gameHashTable[M] = deleteGame(gameHashTable[M], g);
+          nGames--;
+        }
+        else
         {
           printf("%d Jogo inexistente.", nCommand);
           free(gameName);
           nCommand++;
           break;
         }
-      }
-      else
-      {
-        {
-          g = searchGame(gameHashTable[M], gameName);
-          if (g->id != 0)
-          {
-            {
-              gameHashTable[M] = deleteGame(gameHashTable[M], g);
-              nGames--;
-            }
-          }
-          else
-          {
-            {
-              printf("%d Jogo inexistente.", nCommand);
-              free(gameName);
-              nCommand++;
-              break;
-            }
-          }
 
-        }
       }
 
         free(gameName);
@@ -281,32 +241,26 @@ int main()
         M = hashGame(gameName);
         if (gameHashTable[M] == 0)
       {
+        printf("%d Jogo inexistente.", nCommand);
+        free(gameName);
+        nCommand++;
+        break;
+      }
+      else
+      {
+        g = searchGame(gameHashTable[M], gameName);
+        if (g->id != 0)
+        {
+          changeScore(g, score1, score2);
+        }
+        else
         {
           printf("%d Jogo inexistente.", nCommand);
           free(gameName);
           nCommand++;
           break;
         }
-      }
-      else
-      {
-        {
-          g = searchGame(gameHashTable[M], gameName);
-          if (g->id != 0)
-          {
-            changeScore(g, score1, score2);
-          }
-          else
-          {
-            {
-              printf("%d Jogo inexistente.", nCommand);
-              free(gameName);
-              nCommand++;
-              break;
-            }
-          }
 
-        }
       }
 
         free(gameName);
@@ -324,29 +278,23 @@ int main()
         M = hashTeam(team);
         if (teamHashTable[M] != 0)
       {
+        t = searchTeam(teamHashTable[M], team);
+        if (t->exists == 0)
         {
-          t = searchTeam(teamHashTable[M], team);
-          if (t->exists == 0)
-          {
-            teamHashTable[M] = addTeam(teamHashTable[M], team);
-          }
-          else
-          {
-            {
-              printf("%d Equipa existente.\n", nCommand);
-              free(team);
-              nCommand++;
-              break;
-            }
-          }
-
+          teamHashTable[M] = addTeam(teamHashTable[M], team);
         }
+        else
+        {
+          printf("%d Equipa existente.\n", nCommand);
+          free(team);
+          nCommand++;
+          break;
+        }
+
       }
       else
       {
-        {
-          teamHashTable[M] = addTeam(0, team);
-        }
+        teamHashTable[M] = addTeam(0, team);
       }
 
         free(team);
@@ -364,18 +312,14 @@ int main()
         M = hashTeam(team);
         if (teamHashTable[M] != 0)
       {
-        {
-          t = searchTeam(teamHashTable[M], team);
-        }
+        t = searchTeam(teamHashTable[M], team);
       }
       else
       {
-        {
-          printf("%d Equipa inexistente.\n", nCommand);
-          free(team);
-          nCommand++;
-          break;
-        }
+        printf("%d Equipa inexistente.\n", nCommand);
+        free(team);
+        nCommand++;
+        break;
       }
 
         if (t->exists == 1)

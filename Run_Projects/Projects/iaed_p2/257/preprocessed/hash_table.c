@@ -122,20 +122,18 @@ void delete_game_table(char *name, Game_node **head)
   {
     if (strcmp(name, aux->g.name) == 0)
     {
+      if (aux == head[i])
       {
-        if (aux == head[i])
-        {
-          head[i] = aux->next;
-        }
-        else
-        {
-          prev->next = aux->next;
-        }
-
-        free(aux->g.name);
-        free(aux);
-        return;
+        head[i] = aux->next;
       }
+      else
+      {
+        prev->next = aux->next;
+      }
+
+      free(aux->g.name);
+      free(aux);
+      return;
     }
     else
     {
@@ -155,20 +153,18 @@ void delete_team_table(char *name, Team_node **head)
   {
     if (strcmp(name, aux->t.name) == 0)
     {
+      if (aux == head[i])
       {
-        if (aux == head[i])
-        {
-          head[i] = aux->next;
-        }
-        else
-        {
-          prev->next = aux->next;
-        }
-
-        free(aux->t.name);
-        free(aux);
-        return;
+        head[i] = aux->next;
       }
+      else
+      {
+        prev->next = aux->next;
+      }
+
+      free(aux->t.name);
+      free(aux);
+      return;
     }
     else
     {

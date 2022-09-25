@@ -22,9 +22,7 @@ void sortlist(tlink head)
     {
       if (strcmp(i->equipa->nome, j->equipa->nome) > 0)
       {
-        {
-          swap(i, j);
-        }
+        swap(i, j);
       }
       else
       {

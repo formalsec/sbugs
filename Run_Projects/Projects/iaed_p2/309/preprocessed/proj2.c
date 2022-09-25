@@ -20,73 +20,57 @@ int main()
   {
     if (c == 'a')
     {
-      {
-        NL += 1;
-        AddGame(NL, headJ, hash, hash2);
-      }
+      NL += 1;
+      AddGame(NL, headJ, hash, hash2);
     }
     else
     {
       if (c == 'A')
       {
-        {
-          NL += 1;
-          headE = AddTeam(NL, headE, hash);
-        }
+        NL += 1;
+        headE = AddTeam(NL, headE, hash);
       }
       else
       {
         if (c == 'l')
         {
-          {
-            NL += 1;
-            PrintGames(NL, headJ);
-          }
+          NL += 1;
+          PrintGames(NL, headJ);
         }
         else
         {
           if (c == 'p')
           {
-            {
-              NL += 1;
-              SearchGame(NL, hash2);
-            }
+            NL += 1;
+            SearchGame(NL, hash2);
           }
           else
           {
             if (c == 'P')
             {
-              {
-                NL += 1;
-                SearchTeam(NL, hash);
-              }
+              NL += 1;
+              SearchTeam(NL, hash);
             }
             else
             {
               if (c == 'r')
               {
-                {
-                  NL += 1;
-                  DeleteGame(NL, headJ, hash, hash2);
-                }
+                NL += 1;
+                DeleteGame(NL, headJ, hash, hash2);
               }
               else
               {
                 if (c == 's')
                 {
-                  {
-                    NL += 1;
-                    ChangeScore(NL, hash, hash2);
-                  }
+                  NL += 1;
+                  ChangeScore(NL, hash, hash2);
                 }
                 else
                 {
                   if (c == 'g')
                   {
-                    {
-                      NL += 1;
-                      FindTeamsWithMaxVictories(NL, headE);
-                    }
+                    NL += 1;
+                    FindTeamsWithMaxVictories(NL, headE);
                   }
                   else
                   {

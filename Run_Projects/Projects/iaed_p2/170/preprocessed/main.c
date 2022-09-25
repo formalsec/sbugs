@@ -51,15 +51,11 @@ void A(HT_Team Teams, int NL)
   name[10 - 1] = '\0';
   if (SearchHT_Team(Teams, name) != 0)
   {
-    {
-      ErrorTeam1(NL);
-    }
+    ErrorTeam1(NL);
   }
   else
   {
-    {
-      InsertHT_Team(Teams, NewTeam(name));
-    }
+    InsertHT_Team(Teams, NewTeam(name));
   }
 
 }
@@ -77,15 +73,11 @@ void P(HT_Team Teams, int NL)
   team = SearchHT_Team(Teams, name);
   if (team == 0)
   {
-    {
-      ErrorTeam2(NL);
-    }
+    ErrorTeam2(NL);
   }
   else
   {
-    {
-      PrintTeam(team, NL);
-    }
+    PrintTeam(team, NL);
   }
 
 }
@@ -123,45 +115,35 @@ void a(HT_Game Games, HT_Team Teams, List Glist, int NL)
   T2 = SearchHT_Team(Teams, team2);
   if (SearchHT_Game(Games, game_name) != 0)
   {
-    {
-      ErrorGame1(NL);
-    }
+    ErrorGame1(NL);
   }
   else
   {
     if ((T1 == 0) || (T2 == 0))
     {
-      {
-        ErrorTeam2(NL);
-      }
+      ErrorTeam2(NL);
     }
     else
     {
+      InsertHT_Game(Games, NewGame(game_name, team1, team2, score1, score2));
+      if (score1 > score2)
       {
-        InsertHT_Game(Games, NewGame(game_name, team1, team2, score1, score2));
-        if (score1 > score2)
+        ChangeWins(T1, 1);
+      }
+      else
+      {
+        if (score2 > score1)
         {
-          {
-            ChangeWins(T1, 1);
-          }
+          ChangeWins(T2, 1);
         }
         else
         {
-          if (score2 > score1)
-          {
-            {
-              ChangeWins(T2, 1);
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
-        Append_List(Glist, game_name);
       }
+
+      Append_List(Glist, game_name);
     }
 
   }
@@ -181,15 +163,11 @@ void p(HT_Game Games, int NL)
   game = SearchHT_Game(Games, name);
   if (game == 0)
   {
-    {
-      ErrorGame2(NL);
-    }
+    ErrorGame2(NL);
   }
   else
   {
-    {
-      PrintGame(game, NL);
-    }
+    PrintGame(game, NL);
   }
 
 }
@@ -211,41 +189,33 @@ void r(HT_Game Games, HT_Team Teams, List Glist, int NL)
   game = SearchHT_Game(Games, name);
   if (game == 0)
   {
-    {
-      ErrorGame2(NL);
-    }
+    ErrorGame2(NL);
   }
   else
   {
+    score1 = Score1(game);
+    score2 = Score2(game);
+    T1 = SearchHT_Team(Teams, Team1(game));
+    T2 = SearchHT_Team(Teams, Team2(game));
+    RemoveHT_Game(Games, game);
+    Remove_List(Glist, name);
+    if (score1 > score2)
     {
-      score1 = Score1(game);
-      score2 = Score2(game);
-      T1 = SearchHT_Team(Teams, Team1(game));
-      T2 = SearchHT_Team(Teams, Team2(game));
-      RemoveHT_Game(Games, game);
-      Remove_List(Glist, name);
-      if (score1 > score2)
+      ChangeWins(T1, -1);
+    }
+    else
+    {
+      if (score1 < score2)
       {
-        {
-          ChangeWins(T1, -1);
-        }
+        ChangeWins(T2, -1);
       }
       else
       {
-        if (score1 < score2)
-        {
-          {
-            ChangeWins(T2, -1);
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
     }
+
   }
 
 }
@@ -271,46 +241,56 @@ void s(HT_Game Games, HT_Team Teams, int NL)
   game = SearchHT_Game(Games, name);
   if (game == 0)
   {
-    {
-      ErrorGame2(NL);
-    }
+    ErrorGame2(NL);
   }
   else
   {
+    old_score1 = Score1(game);
+    old_score2 = Score2(game);
+    ChangeScore(game, score1, score2);
+    T1 = SearchHT_Team(Teams, Team1(game));
+    T2 = SearchHT_Team(Teams, Team2(game));
+    if ((old_score1 > old_score2) && ((score1 < score2) || (score1 == score2)))
     {
-      old_score1 = Score1(game);
-      old_score2 = Score2(game);
-      ChangeScore(game, score1, score2);
-      T1 = SearchHT_Team(Teams, Team1(game));
-      T2 = SearchHT_Team(Teams, Team2(game));
-      if ((old_score1 > old_score2) && ((score1 < score2) || (score1 == score2)))
+      ChangeWins(T1, -1);
+      if (score1 < score2)
       {
-        {
-          ChangeWins(T1, -1);
-          if (score1 < score2)
-          {
-            {
-              ChangeWins(T2, 1);
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
+        ChangeWins(T2, 1);
       }
       else
       {
-        if ((old_score1 < old_score2) && ((score1 > score2) || (score1 == score2)))
+        
+      }
+
+    }
+    else
+    {
+      if ((old_score1 < old_score2) && ((score1 > score2) || (score1 == score2)))
+      {
+        ChangeWins(T2, -1);
+        if (score1 > score2)
         {
+          ChangeWins(T1, 1);
+        }
+        else
+        {
+          
+        }
+
+      }
+      else
+      {
+        if (old_score1 == old_score2)
+        {
+          if (score1 > score2)
           {
-            ChangeWins(T2, -1);
-            if (score1 > score2)
+            ChangeWins(T1, 1);
+          }
+          else
+          {
+            if (score1 < score2)
             {
-              {
-                ChangeWins(T1, 1);
-              }
+              ChangeWins(T2, 1);
             }
             else
             {
@@ -318,45 +298,17 @@ void s(HT_Game Games, HT_Team Teams, int NL)
             }
 
           }
+
         }
         else
         {
-          if (old_score1 == old_score2)
-          {
-            {
-              if (score1 > score2)
-              {
-                {
-                  ChangeWins(T1, 1);
-                }
-              }
-              else
-              {
-                if (score1 < score2)
-                {
-                  {
-                    ChangeWins(T2, 1);
-                  }
-                }
-                else
-                {
-                  
-                }
-
-              }
-
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
 
     }
+
   }
 
 }

@@ -225,41 +225,35 @@ void adicionaProdutoEncomenda(int ide, int idp, int qtd)
         }
         else
         {
+          produtoExiste = 0;
+          for (i = 0; i < bdEncomendas[ide].n_produtos; i++)
+            if (idp == bdEncomendas[ide].produtos[i].idp)
           {
-            produtoExiste = 0;
-            for (i = 0; i < bdEncomendas[ide].n_produtos; i++)
-              if (idp == bdEncomendas[ide].produtos[i].idp)
-            {
-              {
-                produtoExiste++;
-                bdEncomendas[ide].produtos[i].qtd += qtd;
-                bdEncomendas[ide].peso += qtd * bdProdutos[idp].peso;
-                bdProdutos[idp].pedidos += qtd;
-                return;
-              }
-            }
-            else
-            {
-              
-            }
-
-
-            if (!produtoExiste)
-            {
-              {
-                produtoExiste = bdEncomendas[ide].n_produtos++;
-                bdEncomendas[ide].produtos[produtoExiste].idp = idp;
-                bdEncomendas[ide].produtos[produtoExiste].qtd = qtd;
-                bdEncomendas[ide].peso += qtd * bdProdutos[idp].peso;
-                bdProdutos[idp].pedidos += qtd;
-              }
-            }
-            else
-            {
-              
-            }
-
+            produtoExiste++;
+            bdEncomendas[ide].produtos[i].qtd += qtd;
+            bdEncomendas[ide].peso += qtd * bdProdutos[idp].peso;
+            bdProdutos[idp].pedidos += qtd;
+            return;
           }
+          else
+          {
+            
+          }
+
+
+          if (!produtoExiste)
+          {
+            produtoExiste = bdEncomendas[ide].n_produtos++;
+            bdEncomendas[ide].produtos[produtoExiste].idp = idp;
+            bdEncomendas[ide].produtos[produtoExiste].qtd = qtd;
+            bdEncomendas[ide].peso += qtd * bdProdutos[idp].peso;
+            bdProdutos[idp].pedidos += qtd;
+          }
+          else
+          {
+            
+          }
+
         }
 
       }
@@ -308,28 +302,24 @@ void removeProdutoEncomenda(int ide, int idp)
     }
     else
     {
+      for (i = 0; i < bdEncomendas[ide].n_produtos; i++)
       {
-        for (i = 0; i < bdEncomendas[ide].n_produtos; i++)
+        if (idp == bdEncomendas[ide].produtos[i].idp)
         {
-          if (idp == bdEncomendas[ide].produtos[i].idp)
-          {
-            {
-              peso = bdProdutos[idp].peso;
-              qtd = bdEncomendas[ide].produtos[i].qtd;
-              bdEncomendas[ide].peso -= qtd * peso;
-              bdProdutos[idp].pedidos -= qtd;
-              aux_removeProduto(ide, i);
-              break;
-            }
-          }
-          else
-          {
-            
-          }
-
+          peso = bdProdutos[idp].peso;
+          qtd = bdEncomendas[ide].produtos[i].qtd;
+          bdEncomendas[ide].peso -= qtd * peso;
+          bdProdutos[idp].pedidos -= qtd;
+          aux_removeProduto(ide, i);
+          break;
+        }
+        else
+        {
+          
         }
 
       }
+
     }
 
   }
@@ -356,17 +346,15 @@ void custoEncomenda(int ide)
   }
   else
   {
+    res = 0;
+    for (i = 0; i < bdEncomendas[ide].n_produtos; i++)
     {
-      res = 0;
-      for (i = 0; i < bdEncomendas[ide].n_produtos; i++)
-      {
-        qtd = bdEncomendas[ide].produtos[i].qtd;
-        idp = bdEncomendas[ide].produtos[i].idp;
-        res += bdProdutos[idp].preco * qtd;
-      }
-
-      printf("Custo da encomenda %d %d.\n", ide, res);
+      qtd = bdEncomendas[ide].produtos[i].qtd;
+      idp = bdEncomendas[ide].produtos[i].idp;
+      res += bdProdutos[idp].preco * qtd;
     }
+
+    printf("Custo da encomenda %d %d.\n", ide, res);
   }
 
 }
@@ -400,32 +388,28 @@ void infoProdutoEncomenda(int ide, int idp)
     }
     else
     {
+      produtoEncomendado = 0;
+      for (i = 0; i < bdEncomendas[ide].n_produtos; i++)
+        if (idp == bdEncomendas[ide].produtos[i].idp)
       {
-        produtoEncomendado = 0;
-        for (i = 0; i < bdEncomendas[ide].n_produtos; i++)
-          if (idp == bdEncomendas[ide].produtos[i].idp)
-        {
-          {
-            produtoEncomendado++;
-            printf("%s %d.\n", bdProdutos[idp].desc, bdEncomendas[ide].produtos[i].qtd);
-          }
-        }
-        else
-        {
-          
-        }
-
-
-        if (!produtoEncomendado)
-        {
-          printf("%s 0.\n", bdProdutos[idp].desc);
-        }
-        else
-        {
-          
-        }
-
+        produtoEncomendado++;
+        printf("%s %d.\n", bdProdutos[idp].desc, bdEncomendas[ide].produtos[i].qtd);
       }
+      else
+      {
+        
+      }
+
+
+      if (!produtoEncomendado)
+      {
+        printf("%s 0.\n", bdProdutos[idp].desc);
+      }
+      else
+      {
+        
+      }
+
     }
 
   }
@@ -446,26 +430,22 @@ void maiorEncomendaProduto(int idp)
   {
     if ((IDEncomenda > 0) && (bdProdutos[idp].pedidos > 0))
     {
+      qtd = 0;
+      for (i = 0; i < IDEncomenda; i++)
+        for (j = 0; j < bdEncomendas[i].n_produtos; j++)
+        if ((idp == bdEncomendas[i].produtos[j].idp) && (bdEncomendas[i].produtos[j].qtd > qtd))
       {
-        qtd = 0;
-        for (i = 0; i < IDEncomenda; i++)
-          for (j = 0; j < bdEncomendas[i].n_produtos; j++)
-          if ((idp == bdEncomendas[i].produtos[j].idp) && (bdEncomendas[i].produtos[j].qtd > qtd))
-        {
-          {
-            qtd = bdEncomendas[i].produtos[j].qtd;
-            ide = i;
-          }
-        }
-        else
-        {
-          
-        }
-
-
-
-        printf("Maximo produto %d %d %d.\n", idp, ide, qtd);
+        qtd = bdEncomendas[i].produtos[j].qtd;
+        ide = i;
       }
+      else
+      {
+        
+      }
+
+
+
+      printf("Maximo produto %d %d %d.\n", idp, ide, qtd);
     }
     else
     {
@@ -491,12 +471,10 @@ void mergesortProdutos(produto vetor[], int l, int r)
 {
   if (l < r)
   {
-    {
-      int m = (l + r) / 2;
-      mergesortProdutos(vetor, l, m);
-      mergesortProdutos(vetor, m + 1, r);
-      aux_mergesortProdutos(vetor, l, m, r);
-    }
+    int m = (l + r) / 2;
+    mergesortProdutos(vetor, l, m);
+    mergesortProdutos(vetor, m + 1, r);
+    aux_mergesortProdutos(vetor, l, m, r);
   }
   else
   {
@@ -544,12 +522,10 @@ void reordenaProdutos(produto vetor[], int end)
   {
     if (vetor[i].idp != i)
     {
-      {
-        idp = vetor[i].idp;
-        aux = vetor[idp];
-        vetor[idp] = vetor[i];
-        vetor[i] = aux;
-      }
+      idp = vetor[i].idp;
+      aux = vetor[idp];
+      vetor[idp] = vetor[i];
+      vetor[i] = aux;
     }
     else
     {
@@ -564,13 +540,11 @@ void mergesortEncomendas(infoProduto vetor[], int l, int r)
 {
   if (l < r)
   {
-    {
-      int m;
-      m = (l + r) / 2;
-      mergesortEncomendas(vetor, l, m);
-      mergesortEncomendas(vetor, m + 1, r);
-      aux_mergesortEncomendas(vetor, l, m, r);
-    }
+    int m;
+    m = (l + r) / 2;
+    mergesortEncomendas(vetor, l, m);
+    mergesortEncomendas(vetor, m + 1, r);
+    aux_mergesortEncomendas(vetor, l, m, r);
   }
   else
   {
@@ -624,17 +598,15 @@ void ordEncomendaDesc(int ide)
   }
   else
   {
+    mergesortEncomendas(bdEncomendas[ide].produtos, 0, bdEncomendas[ide].n_produtos - 1);
+    printf("Encomenda %d\n", ide);
+    for (i = 0; i < bdEncomendas[ide].n_produtos; i++)
     {
-      mergesortEncomendas(bdEncomendas[ide].produtos, 0, bdEncomendas[ide].n_produtos - 1);
-      printf("Encomenda %d\n", ide);
-      for (i = 0; i < bdEncomendas[ide].n_produtos; i++)
-      {
-        idp = bdEncomendas[ide].produtos[i].idp;
-        qtd = bdEncomendas[ide].produtos[i].qtd;
-        printf("* %s %d %d\n", bdProdutos[idp].desc, bdProdutos[idp].preco, qtd);
-      }
-
+      idp = bdEncomendas[ide].produtos[i].idp;
+      qtd = bdEncomendas[ide].produtos[i].qtd;
+      printf("* %s %d %d\n", bdProdutos[idp].desc, bdProdutos[idp].preco, qtd);
     }
+
   }
 
 }

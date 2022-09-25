@@ -31,15 +31,11 @@ void Merge(int a[], int l, int m, int r)
   {
     if (aux[j] < aux[i])
     {
-      {
-        a[k] = aux[j--];
-      }
+      a[k] = aux[j--];
     }
     else
     {
-      {
-        a[k] = aux[i++];
-      }
+      a[k] = aux[i++];
     }
 
   }
@@ -51,9 +47,7 @@ void MergeSort(int a[], int l, int r)
   int m = (l + r) / 2;
   if (r <= l)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -76,11 +70,9 @@ void OrdenarDes(char a[][64], int l, int r)
     {
       if (strcmp(a[i], a[j]) > 0)
       {
-        {
-          strcpy(temp, a[i]);
-          strcpy(a[i], a[j]);
-          strcpy(a[j], temp);
-        }
+        strcpy(temp, a[i]);
+        strcpy(a[i], a[j]);
+        strcpy(a[j], temp);
       }
       else
       {
@@ -111,10 +103,8 @@ void AdicionaStock()
   qtd = atoi(strtok(0, ":"));
   if (idp >= np)
   {
-    {
-      printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idp);
-      return;
-    }
+    printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idp);
+    return;
   }
   else
   {
@@ -145,10 +135,8 @@ void AdicionarProdutoEncomenda()
   qtd = atoi(strtok(0, ":"));
   if (encomendas[ide][0][0] != 1)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
+    return;
   }
   else
   {
@@ -157,10 +145,8 @@ void AdicionarProdutoEncomenda()
 
   if (idp >= np)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
+    return;
   }
   else
   {
@@ -169,10 +155,8 @@ void AdicionarProdutoEncomenda()
 
   if (stock[idp][2] < qtd)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
+    return;
   }
   else
   {
@@ -181,10 +165,8 @@ void AdicionarProdutoEncomenda()
 
   if ((encomendas[ide][0][1] + (stock[idp][1] * qtd)) > 200)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
+    return;
   }
   else
   {
@@ -195,10 +177,8 @@ void AdicionarProdutoEncomenda()
   {
     if (encomendas[ide][a][0] == idp)
     {
-      {
-        encomendas[ide][0][2] = encomendas[ide][0][2] - 1;
-        break;
-      }
+      encomendas[ide][0][2] = encomendas[ide][0][2] - 1;
+      break;
     }
     else
     {
@@ -223,10 +203,8 @@ void RemoveStock()
   qtd = atoi(strtok(0, ":"));
   if (idp >= np)
   {
-    {
-      printf("Impossivel remover stock do produto %d. Produto inexistente.\n", idp);
-      return;
-    }
+    printf("Impossivel remover stock do produto %d. Produto inexistente.\n", idp);
+    return;
   }
   else
   {
@@ -235,10 +213,8 @@ void RemoveStock()
 
   if (stock[idp][2] < qtd)
   {
-    {
-      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, idp);
-      return;
-    }
+    printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, idp);
+    return;
   }
   else
   {
@@ -257,10 +233,8 @@ void RemoveProdutoEncomenda()
   idp = atoi(strtok(0, ":"));
   if (encomendas[ide][0][0] != 1)
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
-      return;
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
+    return;
   }
   else
   {
@@ -269,10 +243,8 @@ void RemoveProdutoEncomenda()
 
   if (idp >= np)
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
-      return;
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
+    return;
   }
   else
   {
@@ -283,20 +255,18 @@ void RemoveProdutoEncomenda()
   {
     if (encomendas[ide][a][0] == idp)
     {
+      encomendas[ide][0][1] = encomendas[ide][0][1] - (stock[idp][1] * encomendas[ide][a][1]);
+      stock[idp][2] = stock[idp][2] + encomendas[ide][a][1];
+      while (a <= encomendas[ide][0][2])
       {
-        encomendas[ide][0][1] = encomendas[ide][0][1] - (stock[idp][1] * encomendas[ide][a][1]);
-        stock[idp][2] = stock[idp][2] + encomendas[ide][a][1];
-        while (a <= encomendas[ide][0][2])
-        {
-          encomendas[ide][a][0] = encomendas[ide][a + 1][0];
-          encomendas[ide][a][1] = encomendas[ide][a + 1][1];
-          encomendas[ide][a][2] = encomendas[ide][a + 1][2];
-          a++;
-        }
-
-        encomendas[ide][0][2] = encomendas[ide][0][2] - 1;
-        break;
+        encomendas[ide][a][0] = encomendas[ide][a + 1][0];
+        encomendas[ide][a][1] = encomendas[ide][a + 1][1];
+        encomendas[ide][a][2] = encomendas[ide][a + 1][2];
+        a++;
       }
+
+      encomendas[ide][0][2] = encomendas[ide][0][2] - 1;
+      break;
     }
     else
     {
@@ -315,10 +285,8 @@ void CustoEncomenda()
   ide = atoi(dados);
   if (encomendas[ide][0][0] != 1)
   {
-    {
-      printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ide);
-      return;
-    }
+    printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ide);
+    return;
   }
   else
   {
@@ -343,10 +311,8 @@ void AlterarPreco()
   preco = atoi(strtok(0, ":"));
   if (idp >= np)
   {
-    {
-      printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idp);
-      return;
-    }
+    printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idp);
+    return;
   }
   else
   {
@@ -360,10 +326,8 @@ void AlterarPreco()
     {
       if (encomendas[ide][a][0] == idp)
       {
-        {
-          encomendas[ide][a][2] = preco * encomendas[ide][a][1];
-          break;
-        }
+        encomendas[ide][a][2] = preco * encomendas[ide][a][1];
+        break;
       }
       else
       {
@@ -386,10 +350,8 @@ void DeQdoProdutonaEncomenda()
   idp = atoi(strtok(0, ":"));
   if (encomendas[ide][0][0] != 1)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
-      return;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
+    return;
   }
   else
   {
@@ -398,10 +360,8 @@ void DeQdoProdutonaEncomenda()
 
   if (idp >= np)
   {
-    {
-      printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
-      return;
-    }
+    printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
+    return;
   }
   else
   {
@@ -412,10 +372,8 @@ void DeQdoProdutonaEncomenda()
   {
     if (encomendas[ide][a][0] == idp)
     {
-      {
-        qtd = encomendas[ide][a][1];
-        break;
-      }
+      qtd = encomendas[ide][a][1];
+      break;
     }
     else
     {
@@ -437,10 +395,8 @@ void EncomendaOndeApareceMais()
   idp = atoi(dados);
   if (idp >= np)
   {
-    {
-      printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idp);
-      return;
-    }
+    printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idp);
+    return;
   }
   else
   {
@@ -453,20 +409,16 @@ void EncomendaOndeApareceMais()
     {
       if (encomendas[ide][a][0] == idp)
       {
+        if (encomendas[ide][a][1] > qtd)
         {
-          if (encomendas[ide][a][1] > qtd)
-          {
-            {
-              e = ide;
-              qtd = encomendas[e][a][1];
-            }
-          }
-          else
-          {
-            
-          }
-
+          e = ide;
+          qtd = encomendas[e][a][1];
         }
+        else
+        {
+          
+        }
+
       }
       else
       {
@@ -479,9 +431,7 @@ void EncomendaOndeApareceMais()
 
   if (qtd != 0)
   {
-    {
-      printf("Maximo produto %d %d %d.\n", idp, e, qtd);
-    }
+    printf("Maximo produto %d %d %d.\n", idp, e, qtd);
   }
   else
   {
@@ -508,21 +458,17 @@ void ProdutosDoMaisBaratoParaOMaisCaro()
     {
       if (precos[c] == stock[a][0])
       {
+        printf("* %s %d %d\n", descricao[a], stock[a][0], stock[a][2]);
+        c++;
+        if (precos[c - 1] != precos[c])
         {
-          printf("* %s %d %d\n", descricao[a], stock[a][0], stock[a][2]);
-          c++;
-          if (precos[c - 1] != precos[c])
-          {
-            {
-              break;
-            }
-          }
-          else
-          {
-            
-          }
-
+          break;
         }
+        else
+        {
+          
+        }
+
       }
       else
       {
@@ -545,10 +491,8 @@ void ProdutosDaEncomendaPorOrdemAlfabetica()
   ide = atoi(dados);
   if (encomendas[ide][0][0] != 1)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
-      return;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
+    return;
   }
   else
   {

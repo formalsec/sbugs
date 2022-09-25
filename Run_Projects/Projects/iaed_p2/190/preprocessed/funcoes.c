@@ -41,10 +41,8 @@ int a(int i, char *str, int *keyJogo, int *tamHash, int *contadorJogos, int *tam
   score2 = new_sym_var(sizeof(int) * 8);
   if (search(*tamHash, nome) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", i);
-      return 0;
-    }
+    printf("%d Jogo existente.\n", i);
+    return 0;
   }
   else
   {
@@ -53,10 +51,8 @@ int a(int i, char *str, int *keyJogo, int *tamHash, int *contadorJogos, int *tam
 
   if ((searchEquipa(*tamHashEquipa, equipa1) == 0) || (searchEquipa(*tamHashEquipa, equipa2) == 0))
   {
-    {
-      printf("%d Equipa inexistente.\n", i);
-      return 0;
-    }
+    printf("%d Equipa inexistente.\n", i);
+    return 0;
   }
   else
   {
@@ -65,10 +61,8 @@ int a(int i, char *str, int *keyJogo, int *tamHash, int *contadorJogos, int *tam
 
   if (score1 > score2)
   {
-    {
-      ptr = searchEquipa(*tamHashEquipa, equipa1);
-      ptr->pontosVencedores = ptr->pontosVencedores + 1;
-    }
+    ptr = searchEquipa(*tamHashEquipa, equipa1);
+    ptr->pontosVencedores = ptr->pontosVencedores + 1;
   }
   else
   {
@@ -77,10 +71,8 @@ int a(int i, char *str, int *keyJogo, int *tamHash, int *contadorJogos, int *tam
 
   if (score2 > score1)
   {
-    {
-      ptr = searchEquipa(*tamHashEquipa, equipa2);
-      ptr->pontosVencedores = ptr->pontosVencedores + 1;
-    }
+    ptr = searchEquipa(*tamHashEquipa, equipa2);
+    ptr->pontosVencedores = ptr->pontosVencedores + 1;
   }
   else
   {
@@ -115,10 +107,8 @@ int A(int i, char *str, int *tamHashEquipa, int *contadorEquipas)
   nome[10 - 1] = '\0';
   if (searchEquipa(*tamHashEquipa, nome) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", i);
-      return 0;
-    }
+    printf("%d Equipa existente.\n", i);
+    return 0;
   }
   else
   {
@@ -146,17 +136,13 @@ int p(int i, char *str, int *tamHash)
   nome[10 - 1] = '\0';
   if (search(*tamHash, nome) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", i);
-      return 0;
-    }
+    printf("%d Jogo inexistente.\n", i);
+    return 0;
   }
   else
   {
-    {
-      ptr = search(*tamHash, nome);
-      printf("%d %s %s %s %d %d\n", i, ptr->nome, ptr->equipa1, ptr->equipa2, ptr->pontos.score1, ptr->pontos.score2);
-    }
+    ptr = search(*tamHash, nome);
+    printf("%d %s %s %s %d %d\n", i, ptr->nome, ptr->equipa1, ptr->equipa2, ptr->pontos.score1, ptr->pontos.score2);
   }
 
   return 0;
@@ -174,17 +160,13 @@ int P(int i, char *str, int *tamHashEquipa)
   nome[10 - 1] = '\0';
   if (searchEquipa(*tamHashEquipa, nome) == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", i);
-      return 0;
-    }
+    printf("%d Equipa inexistente.\n", i);
+    return 0;
   }
   else
   {
-    {
-      ptr = searchEquipa(*tamHashEquipa, nome);
-      printf("%d %s %d\n", i, ptr->nomeEquipa, ptr->pontosVencedores);
-    }
+    ptr = searchEquipa(*tamHashEquipa, nome);
+    printf("%d %s %d\n", i, ptr->nomeEquipa, ptr->pontosVencedores);
   }
 
   return 0;
@@ -241,15 +223,13 @@ int l(int e, int contadorJogos, int tamHash)
   }
   else
   {
+    qsort(array, contadorJogos, sizeof(Item), compara_ints);
+    for (j = 0; j < contadorJogos; ++j)
     {
-      qsort(array, contadorJogos, sizeof(Item), compara_ints);
-      for (j = 0; j < contadorJogos; ++j)
-      {
-        printA = array[j];
-        printf("%d %s %s %s %d %d\n", e, printA->nome, printA->equipa1, printA->equipa2, printA->pontos.score1, printA->pontos.score2);
-      }
-
+      printA = array[j];
+      printf("%d %s %s %s %d %d\n", e, printA->nome, printA->equipa1, printA->equipa2, printA->pontos.score1, printA->pontos.score2);
     }
+
   }
 
   free(array);
@@ -306,68 +286,60 @@ int g(int e, int tamHashEquipa, int contadorEquipas)
   }
   else
   {
+    best = (ItemEquipa *) malloc((sizeof(ItemEquipa)) * contadorEquipas);
+    for (i = 0; i < contadorEquipas; ++i)
     {
-      best = (ItemEquipa *) malloc((sizeof(ItemEquipa)) * contadorEquipas);
-      for (i = 0; i < contadorEquipas; ++i)
+      if (array[i]->pontosVencedores == pontosMax)
       {
-        if (array[i]->pontosVencedores == pontosMax)
+        best[j] = array[i];
+        j++;
+      }
+      else
+      {
+        if (array[i]->pontosVencedores > pontosMax)
         {
+          for (k = 0; k < contadorEquipas; ++k)
           {
+            best[k] = 0;
+            pontosMax = array[i]->pontosVencedores;
+            j = 0;
             best[j] = array[i];
             j++;
           }
+
         }
         else
         {
-          if (array[i]->pontosVencedores > pontosMax)
-          {
-            {
-              for (k = 0; k < contadorEquipas; ++k)
-              {
-                best[k] = 0;
-                pontosMax = array[i]->pontosVencedores;
-                j = 0;
-                best[j] = array[i];
-                j++;
-              }
-
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
-      }
-
-      if ((j > 1) && (best[0] != 0))
-      {
-        qsort(best, j, sizeof(ItemEquipa), compareEquipas);
-      }
-      else
-      {
-        
-      }
-
-      if (contadorEquipas > 0)
-      {
-        {
-          printf("%d Melhores %d\n", e, best[0]->pontosVencedores);
-          for (k = 0; k < j; ++k)
-          {
-            printf("%d * %s\n", e, best[k]->nomeEquipa);
-          }
-
-        }
-      }
-      else
-      {
-        
       }
 
     }
+
+    if ((j > 1) && (best[0] != 0))
+    {
+      qsort(best, j, sizeof(ItemEquipa), compareEquipas);
+    }
+    else
+    {
+      
+    }
+
+    if (contadorEquipas > 0)
+    {
+      printf("%d Melhores %d\n", e, best[0]->pontosVencedores);
+      for (k = 0; k < j; ++k)
+      {
+        printf("%d * %s\n", e, best[k]->nomeEquipa);
+      }
+
+    }
+    else
+    {
+      
+    }
+
   }
 
   free(best);
@@ -386,10 +358,8 @@ int r(int i, char *str, int tamHash, int tamHashEquipa, int *contadorJogos)
   nome[10 - 1] = '\0';
   if (search(tamHash, nome) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", i);
-      return 0;
-    }
+    printf("%d Jogo inexistente.\n", i);
+    return 0;
   }
   else
   {
@@ -418,33 +388,86 @@ int s(int i, char *str, int tamHash, int tamHashEquipa)
   score2 = new_sym_var(sizeof(int) * 8);
   if (search(tamHash, nome) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", i);
-      return 0;
-    }
+    printf("%d Jogo inexistente.\n", i);
+    return 0;
   }
   else
   {
+    jogo = search(tamHash, nome);
+    if (jogo->pontos.score1 > jogo->pontos.score2)
     {
-      jogo = search(tamHash, nome);
+      if (score1 < score2)
+      {
+        ptr = searchEquipa(tamHashEquipa, jogo->equipa1);
+        ptr->pontosVencedores = ptr->pontosVencedores - 1;
+        ptr = searchEquipa(tamHashEquipa, jogo->equipa2);
+        ptr->pontosVencedores = ptr->pontosVencedores + 1;
+      }
+      else
+      {
+        
+      }
+
+    }
+    else
+    {
+      
+    }
+
+    if (jogo->pontos.score2 > jogo->pontos.score1)
+    {
+      if (score2 < score1)
+      {
+        ptr = searchEquipa(tamHashEquipa, jogo->equipa2);
+        ptr->pontosVencedores = ptr->pontosVencedores - 1;
+        ptr = searchEquipa(tamHashEquipa, jogo->equipa1);
+        ptr->pontosVencedores = ptr->pontosVencedores + 1;
+      }
+      else
+      {
+        
+      }
+
+    }
+    else
+    {
+      
+    }
+
+    if (jogo->pontos.score1 == jogo->pontos.score2)
+    {
+      if (score1 > score2)
+      {
+        ptr = searchEquipa(tamHashEquipa, jogo->equipa1);
+        ptr->pontosVencedores = ptr->pontosVencedores + 1;
+      }
+      else
+      {
+        
+      }
+
+      if (score2 > score1)
+      {
+        ptr = searchEquipa(tamHashEquipa, jogo->equipa2);
+        ptr->pontosVencedores = ptr->pontosVencedores + 1;
+      }
+      else
+      {
+        
+      }
+
+    }
+    else
+    {
+      
+    }
+
+    if (score2 == score1)
+    {
       if (jogo->pontos.score1 > jogo->pontos.score2)
       {
-        {
-          if (score1 < score2)
-          {
-            {
-              ptr = searchEquipa(tamHashEquipa, jogo->equipa1);
-              ptr->pontosVencedores = ptr->pontosVencedores - 1;
-              ptr = searchEquipa(tamHashEquipa, jogo->equipa2);
-              ptr->pontosVencedores = ptr->pontosVencedores + 1;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
+        ptr = searchEquipa(tamHashEquipa, jogo->equipa1);
+        ptr->pontosVencedores = ptr->pontosVencedores - 1;
       }
       else
       {
@@ -453,99 +476,22 @@ int s(int i, char *str, int tamHash, int tamHashEquipa)
 
       if (jogo->pontos.score2 > jogo->pontos.score1)
       {
-        {
-          if (score2 < score1)
-          {
-            {
-              ptr = searchEquipa(tamHashEquipa, jogo->equipa2);
-              ptr->pontosVencedores = ptr->pontosVencedores - 1;
-              ptr = searchEquipa(tamHashEquipa, jogo->equipa1);
-              ptr->pontosVencedores = ptr->pontosVencedores + 1;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
+        ptr = searchEquipa(tamHashEquipa, jogo->equipa2);
+        ptr->pontosVencedores = ptr->pontosVencedores - 1;
       }
       else
       {
         
       }
 
-      if (jogo->pontos.score1 == jogo->pontos.score2)
-      {
-        {
-          if (score1 > score2)
-          {
-            {
-              ptr = searchEquipa(tamHashEquipa, jogo->equipa1);
-              ptr->pontosVencedores = ptr->pontosVencedores + 1;
-            }
-          }
-          else
-          {
-            
-          }
-
-          if (score2 > score1)
-          {
-            {
-              ptr = searchEquipa(tamHashEquipa, jogo->equipa2);
-              ptr->pontosVencedores = ptr->pontosVencedores + 1;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (score2 == score1)
-      {
-        {
-          if (jogo->pontos.score1 > jogo->pontos.score2)
-          {
-            {
-              ptr = searchEquipa(tamHashEquipa, jogo->equipa1);
-              ptr->pontosVencedores = ptr->pontosVencedores - 1;
-            }
-          }
-          else
-          {
-            
-          }
-
-          if (jogo->pontos.score2 > jogo->pontos.score1)
-          {
-            {
-              ptr = searchEquipa(tamHashEquipa, jogo->equipa2);
-              ptr->pontosVencedores = ptr->pontosVencedores - 1;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-      }
-      else
-      {
-        
-      }
-
-      jogo->pontos.score1 = score1;
-      jogo->pontos.score2 = score2;
     }
+    else
+    {
+      
+    }
+
+    jogo->pontos.score1 = score1;
+    jogo->pontos.score2 = score2;
   }
 
   return 0;

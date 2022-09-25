@@ -35,17 +35,13 @@ linke insereListe(linke head, equipa *eq)
   e->equipa = eq;
   if (head == 0)
   {
-    {
-      e->next = 0;
-      head = e;
-    }
+    e->next = 0;
+    head = e;
   }
   else
   {
-    {
-      e->next = head;
-      head = e;
-    }
+    e->next = head;
+    head = e;
   }
 
   return head;
@@ -62,9 +58,7 @@ equipa *procuraListe(linke head, char *nome)
   linke tmp = head;
   if (tmp == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -78,9 +72,7 @@ equipa *procuraListe(linke head, char *nome)
 
   if ((tmp != 0) && (strcmp(tmp->equipa->nomeeq, nome) == 0))
   {
-    {
-      return tmp->equipa;
-    }
+    return tmp->equipa;
   }
   else
   {

@@ -24,10 +24,8 @@ void deleteGame(GAME i)
 {
   if (i)
   {
-    {
-      free(i->Gamename);
-      free(i);
-    }
+    free(i->Gamename);
+    free(i);
   }
   else
   {
@@ -53,23 +51,17 @@ TEAM winner(GAME i)
 {
   if (i->scoreHome > i->scoreAway)
   {
-    {
-      return i->Team1;
-    }
+    return i->Team1;
   }
   else
   {
     if (i->scoreHome < i->scoreAway)
     {
-      {
-        return i->Team2;
-      }
+      return i->Team2;
     }
     else
     {
-      {
-        return 0;
-      }
+      return 0;
     }
 
   }

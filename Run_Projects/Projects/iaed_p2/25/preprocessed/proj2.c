@@ -129,10 +129,8 @@ void FrontBackSplit(team_link source, team_link *frontRef, team_link *backRef)
     fast = fast->next;
     if (fast != 0)
     {
-      {
-        slow = slow->next;
-        fast = fast->next;
-      }
+      slow = slow->next;
+      fast = fast->next;
     }
     else
     {
@@ -168,17 +166,13 @@ team_link SortedMerge(team_link a, team_link b)
 
   if (strcmp(a->name, b->name) < 0)
   {
-    {
-      result = a;
-      result->next = SortedMerge(a->next, b);
-    }
+    result = a;
+    result->next = SortedMerge(a->next, b);
   }
   else
   {
-    {
-      result = b;
-      result->next = SortedMerge(a, b->next);
-    }
+    result = b;
+    result->next = SortedMerge(a, b->next);
   }
 
   return result;
@@ -216,12 +210,10 @@ void free_teams(team_link *teams_head)
   team_link next_t;
   if ((*teams_head) != 0)
   {
-    {
-      for (t = *teams_head, next_t = t->next; next_t != 0; t = next_t, next_t = next_t->next)
-        FREE_team(t);
-
+    for (t = *teams_head, next_t = t->next; next_t != 0; t = next_t, next_t = next_t->next)
       FREE_team(t);
-    }
+
+    FREE_team(t);
   }
   else
   {
@@ -328,10 +320,8 @@ void insertEnd_game(game_link *games_head, char *name, char *team1, char *team2,
   game_link g;
   if ((*games_head) == 0)
   {
-    {
-      *games_head = NEW_game(name, team1, team2, score1, score2);
-      return;
-    }
+    *games_head = NEW_game(name, team1, team2, score1, score2);
+    return;
   }
   else
   {
@@ -360,19 +350,17 @@ void delete_game(game_link *games_head, char *name)
   {
     if (strcmp(g->name, name) == 0)
     {
+      if (g == (*games_head))
       {
-        if (g == (*games_head))
-        {
-          *games_head = g->next;
-        }
-        else
-        {
-          prev->next = g->next;
-        }
-
-        FREE_game(g);
-        return;
+        *games_head = g->next;
       }
+      else
+      {
+        prev->next = g->next;
+      }
+
+      FREE_game(g);
+      return;
     }
     else
     {
@@ -420,10 +408,8 @@ void adiciona_jogo(int *line, team_link *teams_head, game_link *games_head)
   score2 = new_sym_var(sizeof(int) * 8);
   if (games_lookup(games_head, name) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", *line);
-      return;
-    }
+    printf("%d Jogo existente.\n", *line);
+    return;
   }
   else
   {
@@ -432,10 +418,8 @@ void adiciona_jogo(int *line, team_link *teams_head, game_link *games_head)
 
   if ((teams_lookup(teams_head, team1) == 0) || (teams_lookup(teams_head, team2) == 0))
   {
-    {
-      printf("%d Equipa inexistente.\n", *line);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", *line);
+    return;
   }
   else
   {

@@ -32,11 +32,9 @@ int main(void)
         aux_jogo = Comando_a(contador, hash_table_equipa, hash_table_jogo);
         if (aux_jogo != 0)
       {
-        {
-          hash_table_jogo_insert(aux_jogo, hash_table_jogo);
-          aux_node = lista_insert(aux_jogo, head);
-          head = aux_node;
-        }
+        hash_table_jogo_insert(aux_jogo, hash_table_jogo);
+        aux_node = lista_insert(aux_jogo, head);
+        head = aux_node;
       }
       else
       {
@@ -50,10 +48,8 @@ int main(void)
         aux_equipa = Comando_A(contador, hash_table_equipa);
         if (aux_equipa != 0)
       {
-        {
-          aux_equipa->vitorias = 0;
-          hash_table_equipa_insert(aux_equipa, hash_table_equipa);
-        }
+        aux_equipa->vitorias = 0;
+        hash_table_equipa_insert(aux_equipa, hash_table_equipa);
       }
       else
       {
@@ -82,11 +78,9 @@ int main(void)
         aux_jogo = Comando_r(contador, hash_table_jogo, hash_table_equipa);
         if (aux_jogo != 0)
       {
-        {
-          hash_table_jogo_delete(aux_jogo->nome_jogo, hash_table_jogo);
-          aux_node = lista_delete(aux_jogo->nome_jogo, head);
-          head = aux_node;
-        }
+        hash_table_jogo_delete(aux_jogo->nome_jogo, hash_table_jogo);
+        aux_node = lista_delete(aux_jogo->nome_jogo, head);
+        head = aux_node;
       }
       else
       {

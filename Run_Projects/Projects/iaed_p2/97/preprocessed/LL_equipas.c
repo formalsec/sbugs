@@ -17,12 +17,10 @@ elem_eq *apaga_primeira_equipa_lista(elem_eq *cabeca)
   elem_eq *antigo;
   if (cabeca != 0)
   {
-    {
-      antigo = cabeca;
-      cabeca = cabeca->prox;
-      liberta_equipa(antigo->equipa);
-      free(antigo);
-    }
+    antigo = cabeca;
+    cabeca = cabeca->prox;
+    liberta_equipa(antigo->equipa);
+    free(antigo);
   }
   else
   {
@@ -70,9 +68,7 @@ elem_eq *encontra_equipa_lista(elem_eq *cabeca, char *nome)
   {
     if (!strcmp(nome_equipa(cabeca->equipa), nome))
     {
-      {
-        return cabeca;
-      }
+      return cabeca;
     }
     else
     {

@@ -21,10 +21,8 @@ equipa **adiciona_equipa(int cont_linhas, equipa **h_equipas, int *tam_h_equipas
   nome[10 - 1] = '\0';
   if (procura_equipa_h(nome, h_equipas, *tam_h_equipas))
   {
-    {
-      printf("%d Equipa existente.\n", cont_linhas);
-      return h_equipas;
-    }
+    printf("%d Equipa existente.\n", cont_linhas);
+    return h_equipas;
   }
   else
   {
@@ -49,10 +47,8 @@ void procura_equipa(int cont_linhas, equipa **h_equipas, int tam_h_equipas)
   nome[10 - 1] = '\0';
   if (equipa = procura_equipa_h(nome, h_equipas, tam_h_equipas))
   {
-    {
-      printf("%d %s %d\n", cont_linhas, equipa->nome, equipa->vitorias);
-      return;
-    }
+    printf("%d %s %d\n", cont_linhas, equipa->nome, equipa->vitorias);
+    return;
   }
   else
   {
@@ -66,69 +62,63 @@ void encontra_melhores_equipas(int cont_linhas, equipa **h_equipas, int tam_h_eq
 {
   if (cont_equipas)
   {
+    int max = -1;
+    int num_max = 0;
+    int i;
+    int j = 0;
+    int k;
+    int l;
+    char **melhores_equipas;
+    for (i = 0; i < tam_h_equipas; i++)
     {
-      int max = -1;
-      int num_max = 0;
-      int i;
-      int j = 0;
-      int k;
-      int l;
-      char **melhores_equipas;
-      for (i = 0; i < tam_h_equipas; i++)
+      if (h_equipas[i])
       {
-        if (h_equipas[i])
+        if (h_equipas[i]->vitorias > max)
         {
-          {
-            if (h_equipas[i]->vitorias > max)
-            {
-              {
-                max = h_equipas[i]->vitorias;
-                num_max = 1;
-              }
-            }
-            else
-            {
-              if (h_equipas[i]->vitorias == max)
-              {
-                num_max++;
-              }
-              else
-              {
-                
-              }
-
-            }
-
-          }
+          max = h_equipas[i]->vitorias;
+          num_max = 1;
         }
         else
         {
-          
+          if (h_equipas[i]->vitorias == max)
+          {
+            num_max++;
+          }
+          else
+          {
+            
+          }
+
         }
 
-      }
-
-      melhores_equipas = (char **) malloc((sizeof(char *)) * num_max);
-      for (k = 0; k < tam_h_equipas; k++)
-        if (h_equipas[k] && (h_equipas[k]->vitorias == max))
-      {
-        melhores_equipas[j++] = h_equipas[k]->nome;
       }
       else
       {
         
       }
 
-
-      qsort(melhores_equipas, num_max, sizeof(char *), comparador);
-      printf("%d Melhores %d\n", cont_linhas, max);
-      for (l = 0; l < j; l++)
-      {
-        printf("%d * %s\n", cont_linhas, melhores_equipas[l]);
-      }
-
-      free(melhores_equipas);
     }
+
+    melhores_equipas = (char **) malloc((sizeof(char *)) * num_max);
+    for (k = 0; k < tam_h_equipas; k++)
+      if (h_equipas[k] && (h_equipas[k]->vitorias == max))
+    {
+      melhores_equipas[j++] = h_equipas[k]->nome;
+    }
+    else
+    {
+      
+    }
+
+
+    qsort(melhores_equipas, num_max, sizeof(char *), comparador);
+    printf("%d Melhores %d\n", cont_linhas, max);
+    for (l = 0; l < j; l++)
+    {
+      printf("%d * %s\n", cont_linhas, melhores_equipas[l]);
+    }
+
+    free(melhores_equipas);
   }
   else
   {
@@ -169,10 +159,8 @@ jogo **adiciona_jogo(int cont_linhas, jogo **h_jogos, lista_jogos *lst_jogos, in
   golos_fora = new_sym_var(sizeof(int) * 8);
   if (procura_jogo_h(nome_jogo, h_jogos, *tam_h_jogos))
   {
-    {
-      printf("%d Jogo existente.\n", cont_linhas);
-      return h_jogos;
-    }
+    printf("%d Jogo existente.\n", cont_linhas);
+    return h_jogos;
   }
   else
   {
@@ -181,10 +169,8 @@ jogo **adiciona_jogo(int cont_linhas, jogo **h_jogos, lista_jogos *lst_jogos, in
 
   if (!((eq_casa = procura_equipa_h(nome_casa, h_equipas, *tam_h_equipas)) && (eq_fora = procura_equipa_h(nome_fora, h_equipas, *tam_h_equipas))))
   {
-    {
-      printf("%d Equipa inexistente.\n", cont_linhas);
-      return h_jogos;
-    }
+    printf("%d Equipa inexistente.\n", cont_linhas);
+    return h_jogos;
   }
   else
   {
@@ -210,10 +196,8 @@ void procura_jogo(int cont_linhas, jogo **h_jogos, int tam_h_jogos)
   nome[10 - 1] = '\0';
   if (jogo = procura_jogo_h(nome, h_jogos, tam_h_jogos))
   {
-    {
-      printf("%d %s %s %s %d %d\n", cont_linhas, jogo->nome, jogo->eq_casa->nome, jogo->eq_fora->nome, jogo->golos_casa, jogo->golos_fora);
-      return;
-    }
+    printf("%d %s %s %s %d %d\n", cont_linhas, jogo->nome, jogo->eq_casa->nome, jogo->eq_fora->nome, jogo->golos_casa, jogo->golos_fora);
+    return;
   }
   else
   {
@@ -239,23 +223,21 @@ jogo **remove_jogo(int cont_linhas, jogo **h_jogos, lista_jogos *lst_jogos, int 
   for (; h_jogos[i]; i = (i + 1) % (*tam_h_jogos))
     if (!strcmp(h_jogos[i]->nome, nome))
   {
+    repor_score(h_jogos[i]->eq_casa, h_jogos[i]->eq_fora, h_jogos[i]->golos_casa, h_jogos[i]->golos_fora);
+    remove_jogo_lst(lst_jogos, nome);
+    free(h_jogos[i]->nome);
+    free(h_jogos[i]);
+    h_jogos[i] = 0;
+    (*cont_jogos)--;
+    for (j = (i + 1) % (*tam_h_jogos); h_jogos[j]; j = (j + 1) % (*tam_h_jogos))
     {
-      repor_score(h_jogos[i]->eq_casa, h_jogos[i]->eq_fora, h_jogos[i]->golos_casa, h_jogos[i]->golos_fora);
-      remove_jogo_lst(lst_jogos, nome);
-      free(h_jogos[i]->nome);
-      free(h_jogos[i]);
-      h_jogos[i] = 0;
       (*cont_jogos)--;
-      for (j = (i + 1) % (*tam_h_jogos); h_jogos[j]; j = (j + 1) % (*tam_h_jogos))
-      {
-        (*cont_jogos)--;
-        aux = h_jogos[j];
-        h_jogos[j] = 0;
-        h_jogos = insere_jogo_h(h_jogos, aux, cont_jogos, tam_h_jogos);
-      }
-
-      return h_jogos;
+      aux = h_jogos[j];
+      h_jogos[j] = 0;
+      h_jogos = insere_jogo_h(h_jogos, aux, cont_jogos, tam_h_jogos);
     }
+
+    return h_jogos;
   }
   else
   {
@@ -287,12 +269,10 @@ void altera_score(int cont_linhas, jogo **h_jogos, int tam_h_jogos)
   }
   else
   {
-    {
-      repor_score(jogo->eq_casa, jogo->eq_fora, jogo->golos_casa, jogo->golos_fora);
-      jogo->golos_casa = novos_golos_casa;
-      jogo->golos_fora = novos_golos_fora;
-      atribui_vitoria(jogo->eq_casa, jogo->eq_fora, jogo->golos_casa, jogo->golos_fora);
-    }
+    repor_score(jogo->eq_casa, jogo->eq_fora, jogo->golos_casa, jogo->golos_fora);
+    jogo->golos_casa = novos_golos_casa;
+    jogo->golos_fora = novos_golos_fora;
+    atribui_vitoria(jogo->eq_casa, jogo->eq_fora, jogo->golos_casa, jogo->golos_fora);
   }
 
 }

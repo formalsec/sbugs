@@ -26,18 +26,14 @@ Teams *add_team_to_list(Teams **head, char *name)
   new_team->next = 0;
   if ((*head) == 0)
   {
-    {
-      *head = new_team;
-    }
+    *head = new_team;
   }
   else
   {
-    {
-      while (current->next != 0)
-        current = current->next;
+    while (current->next != 0)
+      current = current->next;
 
-      current->next = new_team;
-    }
+    current->next = new_team;
   }
 
   return *head;
@@ -52,23 +48,17 @@ Teams *delete_team_from_list(Teams **head, char *t_name)
   {
     if (strcmp(current->team_name, t_name) == 0)
     {
+      if (prev == 0)
       {
-        if (prev == 0)
-        {
-          {
-            *head = current->next;
-          }
-        }
-        else
-        {
-          {
-            prev->next = current->next;
-          }
-        }
-
-        free(current);
-        return *head;
+        *head = current->next;
       }
+      else
+      {
+        prev->next = current->next;
+      }
+
+      free(current);
+      return *head;
     }
     else
     {
@@ -87,9 +77,7 @@ Teams *add_team_highest(Teams **teams_highest, Teams **teams, int highest_won)
   {
     if (current->matches_won == highest_won)
     {
-      {
-        *teams_highest = add_team_to_list(teams_highest, current->team_name);
-      }
+      *teams_highest = add_team_to_list(teams_highest, current->team_name);
     }
     else
     {
@@ -109,9 +97,7 @@ Teams *increment_matches_won(Teams **head, char *name)
   {
     if (strcmp(current->team_name, name) == 0)
     {
-      {
-        current->matches_won++;
-      }
+      current->matches_won++;
     }
     else
     {
@@ -130,9 +116,7 @@ Teams *decrement_matches_won(Teams **head, char *name)
   {
     if (strcmp(current->team_name, name) == 0)
     {
-      {
-        current->matches_won--;
-      }
+      current->matches_won--;
     }
     else
     {
@@ -151,9 +135,7 @@ bool team_exists(Teams **head, char *name)
   {
     if (strcmp(current->team_name, name) == 0)
     {
-      {
-        return 1;
-      }
+      return true;
     }
     else
     {
@@ -162,7 +144,7 @@ bool team_exists(Teams **head, char *name)
 
   }
 
-  return 0;
+  return false;
 }
 
 int max_won(Teams **head)
@@ -173,9 +155,7 @@ int max_won(Teams **head)
   {
     if (max < current->matches_won)
     {
-      {
-        max = current->matches_won;
-      }
+      max = current->matches_won;
     }
     else
     {
@@ -194,9 +174,7 @@ void print_matches_won(Teams **head, char *name)
   {
     if (strcmp(current->team_name, name) == 0)
     {
-      {
-        printf("%s %d\n", current->team_name, current->matches_won);
-      }
+      printf("%s %d\n", current->team_name, current->matches_won);
     }
     else
     {
@@ -237,27 +215,23 @@ void sort_teams_alpha(Teams **head)
   current = *head;
   if (current)
   {
+    while (current && current->next)
     {
-      while (current && current->next)
+      memset(tmp, 0, 1024);
+      if (strcmp(current->team_name, current->next->team_name) > 0)
       {
-        memset(tmp, 0, 1024);
-        if (strcmp(current->team_name, current->next->team_name) > 0)
-        {
-          {
-            strcpy(tmp, current->team_name);
-            strcpy(current->team_name, current->next->team_name);
-            strcpy(current->next->team_name, tmp);
-          }
-        }
-        else
-        {
-          
-        }
-
-        current = current->next;
+        strcpy(tmp, current->team_name);
+        strcpy(current->team_name, current->next->team_name);
+        strcpy(current->next->team_name, tmp);
+      }
+      else
+      {
+        
       }
 
+      current = current->next;
     }
+
   }
   else
   {

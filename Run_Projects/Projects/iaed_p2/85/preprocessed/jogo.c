@@ -93,26 +93,20 @@ void altera_score_aux(pJogo j, int sc1, int sc2)
   j->sc2 = sc2;
   if (sc1 > sc2)
   {
-    {
-      free(j->vencedora);
-      j->vencedora = strdup(j->eq1);
-    }
+    free(j->vencedora);
+    j->vencedora = strdup(j->eq1);
   }
   else
   {
     if (sc1 < sc2)
     {
-      {
-        free(j->vencedora);
-        j->vencedora = strdup(j->eq2);
-      }
+      free(j->vencedora);
+      j->vencedora = strdup(j->eq2);
     }
     else
     {
-      {
-        free(j->vencedora);
-        j->vencedora = 0;
-      }
+      free(j->vencedora);
+      j->vencedora = 0;
     }
 
   }
@@ -129,26 +123,20 @@ void remove_el(list ls, pJogo j)
   {
     if (j->previous && (!j->next))
     {
-      {
-        ls->last = j->previous;
-        j->previous->next = 0;
-      }
+      ls->last = j->previous;
+      j->previous->next = 0;
     }
     else
     {
       if ((!j->previous) && j->next)
       {
-        {
-          j->next->previous = 0;
-          ls->head = j->next;
-        }
+        j->next->previous = 0;
+        ls->head = j->next;
       }
       else
       {
-        {
-          j->previous->next = j->next;
-          j->next->previous = j->previous;
-        }
+        j->previous->next = j->next;
+        j->next->previous = j->previous;
       }
 
     }

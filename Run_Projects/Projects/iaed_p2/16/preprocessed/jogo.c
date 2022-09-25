@@ -22,25 +22,19 @@ jogo *criaJogo(char *nome, char *equipa1, char *equipa2, int score1, int score2,
   novoJogo->score2 = score2;
   if (novoJogo->score1 == novoJogo->score2)
   {
-    {
-      return novoJogo;
-    }
+    return novoJogo;
   }
   else
   {
     if (novoJogo->score1 > novoJogo->score2)
     {
-      {
-        equipaVencedora = procuraHashTableEquipa(headsEquipas, equipa1, M_E);
-        equipaVencedora->numeroVitorias += 1;
-      }
+      equipaVencedora = procuraHashTableEquipa(headsEquipas, equipa1, M_E);
+      equipaVencedora->numeroVitorias += 1;
     }
     else
     {
-      {
-        equipaVencedora = procuraHashTableEquipa(headsEquipas, equipa2, M_E);
-        equipaVencedora->numeroVitorias += 1;
-      }
+      equipaVencedora = procuraHashTableEquipa(headsEquipas, equipa2, M_E);
+      equipaVencedora->numeroVitorias += 1;
     }
 
   }

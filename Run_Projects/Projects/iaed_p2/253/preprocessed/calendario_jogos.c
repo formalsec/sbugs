@@ -141,10 +141,8 @@ void adiciona_jogo(listJogos *lista_jogos, Tabela_hash *calendario, Tabela_hash 
   g_fora = new_sym_var(sizeof(int) * 8);
   if (verifica_j(calendario, nome) == 0)
   {
-    {
-      printf("%d Jogo existente.\n", contador);
-      return;
-    }
+    printf("%d Jogo existente.\n", contador);
+    return;
   }
   else
   {
@@ -153,10 +151,8 @@ void adiciona_jogo(listJogos *lista_jogos, Tabela_hash *calendario, Tabela_hash 
 
   if ((verifica_e(tabela, casa) == 1) || (verifica_e(tabela, fora) == 1))
   {
-    {
-      printf("%d Equipa inexistente.\n", contador);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", contador);
+    return;
   }
   else
   {
@@ -218,23 +214,19 @@ void procura_jogo(Tabela_hash *calendario, int contador)
   }
   else
   {
+    const size_t i = hash(nome, calendario->capacidade);
+    for (no = calendario->topos[i]; no != 0; no = no->proximo)
+      if (strcmp(no->pont_jogo->nome, nome) == 0)
     {
-      const size_t i = hash(nome, calendario->capacidade);
-      for (no = calendario->topos[i]; no != 0; no = no->proximo)
-        if (strcmp(no->pont_jogo->nome, nome) == 0)
-      {
-        {
-          printf("%d %s %s %s %d %d\n", contador, no->pont_jogo->nome, no->pont_jogo->eqcasa, no->pont_jogo->eqfora, no->pont_jogo->golos_casa, no->pont_jogo->golos_fora);
-          return;
-        }
-      }
-      else
-      {
-        
-      }
-
-
+      printf("%d %s %s %s %d %d\n", contador, no->pont_jogo->nome, no->pont_jogo->eqcasa, no->pont_jogo->eqfora, no->pont_jogo->golos_casa, no->pont_jogo->golos_fora);
+      return;
     }
+    else
+    {
+      
+    }
+
+
   }
 
 }
@@ -256,10 +248,8 @@ void apaga_jogo(Tabela_hash *calendario, Tabela_hash *tabela, listJogos *lista_j
   jogo = calendario->topos[i];
   if (verifica_j(calendario, nome) == 1)
   {
-    {
-      printf("%d Jogo inexistente.\n", contador);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", contador);
+    return;
   }
   else
   {
@@ -268,30 +258,28 @@ void apaga_jogo(Tabela_hash *calendario, Tabela_hash *tabela, listJogos *lista_j
 
   if ((jogo != 0) && (strcmp(jogo->pont_jogo->nome, nome) == 0))
   {
+    if (jogo->pont_jogo->golos_casa > jogo->pont_jogo->golos_fora)
     {
-      if (jogo->pont_jogo->golos_casa > jogo->pont_jogo->golos_fora)
-      {
-        retira_pontos(tabela, jogo->pont_jogo->eqcasa);
-      }
-      else
-      {
-        
-      }
-
-      if (jogo->pont_jogo->golos_casa < jogo->pont_jogo->golos_fora)
-      {
-        retira_pontos(tabela, jogo->pont_jogo->eqfora);
-      }
-      else
-      {
-        
-      }
-
-      rm_jogo(lista_jogos, jogo->pont_jogo);
-      calendario->topos[i] = jogo->proximo;
-      free(jogo);
-      return;
+      retira_pontos(tabela, jogo->pont_jogo->eqcasa);
     }
+    else
+    {
+      
+    }
+
+    if (jogo->pont_jogo->golos_casa < jogo->pont_jogo->golos_fora)
+    {
+      retira_pontos(tabela, jogo->pont_jogo->eqfora);
+    }
+    else
+    {
+      
+    }
+
+    rm_jogo(lista_jogos, jogo->pont_jogo);
+    calendario->topos[i] = jogo->proximo;
+    free(jogo);
+    return;
   }
   else
   {
@@ -347,24 +335,20 @@ void altera_resultado(Tabela_hash *calendario, Tabela_hash *tabela, int contador
   }
   else
   {
+    const size_t i = hash(nome, calendario->capacidade);
+    for (jogo = calendario->topos[i]; jogo != 0; jogo = jogo->proximo)
+      if (strcmp(jogo->pont_jogo->nome, nome) == 0)
     {
-      const size_t i = hash(nome, calendario->capacidade);
-      for (jogo = calendario->topos[i]; jogo != 0; jogo = jogo->proximo)
-        if (strcmp(jogo->pont_jogo->nome, nome) == 0)
-      {
-        {
-          altera_pontos(tabela, jogo, score_casa, score_fora);
-          jogo->pont_jogo->golos_casa = score_casa;
-          jogo->pont_jogo->golos_fora = score_fora;
-        }
-      }
-      else
-      {
-        
-      }
-
-
+      altera_pontos(tabela, jogo, score_casa, score_fora);
+      jogo->pont_jogo->golos_casa = score_casa;
+      jogo->pont_jogo->golos_fora = score_fora;
     }
+    else
+    {
+      
+    }
+
+
   }
 
 }
@@ -373,19 +357,39 @@ void altera_pontos(Tabela_hash *tabela, No_hash *jogo, int score_casa, int score
 {
   if (jogo->pont_jogo->golos_casa > jogo->pont_jogo->golos_fora)
   {
+    if (score_casa < score_fora)
     {
-      if (score_casa < score_fora)
+      retira_pontos(tabela, jogo->pont_jogo->eqcasa);
+      aumenta_pontos(tabela, jogo->pont_jogo->eqfora);
+    }
+    else
+    {
+      if (score_casa == score_fora)
       {
-        {
-          retira_pontos(tabela, jogo->pont_jogo->eqcasa);
-          aumenta_pontos(tabela, jogo->pont_jogo->eqfora);
-        }
+        retira_pontos(tabela, jogo->pont_jogo->eqcasa);
+      }
+      else
+      {
+        
+      }
+
+    }
+
+  }
+  else
+  {
+    if (jogo->pont_jogo->golos_casa < jogo->pont_jogo->golos_fora)
+    {
+      if (score_casa > score_fora)
+      {
+        aumenta_pontos(tabela, jogo->pont_jogo->eqcasa);
+        retira_pontos(tabela, jogo->pont_jogo->eqfora);
       }
       else
       {
         if (score_casa == score_fora)
         {
-          retira_pontos(tabela, jogo->pont_jogo->eqcasa);
+          retira_pontos(tabela, jogo->pont_jogo->eqfora);
         }
         else
         {
@@ -395,26 +399,19 @@ void altera_pontos(Tabela_hash *tabela, No_hash *jogo, int score_casa, int score
       }
 
     }
-  }
-  else
-  {
-    if (jogo->pont_jogo->golos_casa < jogo->pont_jogo->golos_fora)
+    else
     {
+      if (jogo->pont_jogo->golos_casa == jogo->pont_jogo->golos_fora)
       {
         if (score_casa > score_fora)
         {
-          {
-            aumenta_pontos(tabela, jogo->pont_jogo->eqcasa);
-            retira_pontos(tabela, jogo->pont_jogo->eqfora);
-          }
+          aumenta_pontos(tabela, jogo->pont_jogo->eqcasa);
         }
         else
         {
-          if (score_casa == score_fora)
+          if (score_casa < score_fora)
           {
-            {
-              retira_pontos(tabela, jogo->pont_jogo->eqfora);
-            }
+            aumenta_pontos(tabela, jogo->pont_jogo->eqfora);
           }
           else
           {
@@ -423,31 +420,6 @@ void altera_pontos(Tabela_hash *tabela, No_hash *jogo, int score_casa, int score
 
         }
 
-      }
-    }
-    else
-    {
-      if (jogo->pont_jogo->golos_casa == jogo->pont_jogo->golos_fora)
-      {
-        {
-          if (score_casa > score_fora)
-          {
-            aumenta_pontos(tabela, jogo->pont_jogo->eqcasa);
-          }
-          else
-          {
-            if (score_casa < score_fora)
-            {
-              aumenta_pontos(tabela, jogo->pont_jogo->eqfora);
-            }
-            else
-            {
-              
-            }
-
-          }
-
-        }
       }
       else
       {

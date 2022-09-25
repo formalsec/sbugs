@@ -49,24 +49,22 @@ void NewGame(Node *hash_game, Team *hash_team, List l, int NL, int *m_game, int 
     }
     else
     {
+      g = InitGame();
+      SetName(name, g);
+      SetScore(score_1, score_2, g);
+      SetTeams(t1, t2, g);
+      InsertEnd(l, g);
+      HashGamesInsert(hash_game, End(l), m_game);
+      if ((winner = Winner(g)) != 0)
       {
-        g = InitGame();
-        SetName(name, g);
-        SetScore(score_1, score_2, g);
-        SetTeams(t1, t2, g);
-        InsertEnd(l, g);
-        HashGamesInsert(hash_game, End(l), m_game);
-        if ((winner = Winner(g)) != 0)
-        {
-          IncWins(winner);
-        }
-        else
-        {
-          
-        }
-
-        (*n_games)++;
+        IncWins(winner);
       }
+      else
+      {
+        
+      }
+
+      (*n_games)++;
     }
 
   }
@@ -91,12 +89,10 @@ void NewTeam(Team *hash_team, int *m, int NL, int *n_teams)
   }
   else
   {
-    {
-      t = InitTeam();
-      SetTeamName(t, name);
-      HashTeamsInsert(hash_team, t, m);
-      (*n_teams)++;
-    }
+    t = InitTeam();
+    SetTeamName(t, name);
+    HashTeamsInsert(hash_team, t, m);
+    (*n_teams)++;
   }
 
 }
@@ -170,10 +166,8 @@ void DeleteGame(Node *hash_game, List l, int *m, int NL, int *n_games)
   getchar();
   if ((node = HashRemoveGame(name, m, hash_game)) != 0)
   {
-    {
-      RemoveGame(node, l);
-      (*n_games)--;
-    }
+    RemoveGame(node, l);
+    (*n_games)--;
   }
   else
   {
@@ -203,10 +197,8 @@ void ChangeScore(Node *hash_game, int *m, int NL)
   getchar();
   if ((i = GameSearch(name, m, hash_game)) == (-1))
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -235,10 +227,8 @@ void ChangeScore(Node *hash_game, int *m, int NL)
       }
       else
       {
-        {
-          DecWins(old_winner);
-          IncWins(new_winner);
-        }
+        DecWins(old_winner);
+        IncWins(new_winner);
       }
 
     }
@@ -268,29 +258,25 @@ void FindBest(Team *hash_team, int *n_teams, int NL)
   {
     if (hash_team[i] != 0)
     {
+      n++;
+      if (Wins(hash_team[i]) > best)
       {
-        n++;
-        if (Wins(hash_team[i]) > best)
+        best = Wins(hash_team[i]);
+        count = 1;
+      }
+      else
+      {
+        if (Wins(hash_team[i]) == best)
         {
-          {
-            best = Wins(hash_team[i]);
-            count = 1;
-          }
+          count++;
         }
         else
         {
-          if (Wins(hash_team[i]) == best)
-          {
-            count++;
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
+
     }
     else
     {

@@ -28,10 +28,8 @@ void append(link *L, const char *str)
   link y;
   if ((*L) == 0)
   {
-    {
-      *L = newNode(str, 0);
-      return;
-    }
+    *L = newNode(str, 0);
+    return;
   }
   else
   {
@@ -52,11 +50,9 @@ void removeStr(link *L, const char *str)
   link x = *L;
   if (strcmp(x->str, str) == 0)
   {
-    {
-      *L = (*L)->next;
-      freeStr(x);
-      return;
-    }
+    *L = (*L)->next;
+    freeStr(x);
+    return;
   }
   else
   {
@@ -67,12 +63,10 @@ void removeStr(link *L, const char *str)
   {
     if (strcmp(x->next->str, str) == 0)
     {
-      {
-        link tmp = x->next;
-        x->next = x->next->next;
-        freeStr(tmp);
-        return;
-      }
+      link tmp = x->next;
+      x->next = x->next->next;
+      freeStr(tmp);
+      return;
     }
     else
     {
@@ -90,10 +84,8 @@ void insertSorted(link *L, const char *equipa)
   link y;
   if ((*L) == 0)
   {
-    {
-      *L = newNode(equipa, 0);
-      return;
-    }
+    *L = newNode(equipa, 0);
+    return;
   }
   else
   {
@@ -103,11 +95,9 @@ void insertSorted(link *L, const char *equipa)
   x = *L;
   if (strcmp(equipa, x->str) < 0)
   {
-    {
-      link tmp = newNode(equipa, x);
-      *L = tmp;
-      return;
-    }
+    link tmp = newNode(equipa, x);
+    *L = tmp;
+    return;
   }
   else
   {
@@ -118,11 +108,9 @@ void insertSorted(link *L, const char *equipa)
   {
     if (strcmp(equipa, x->next->str) < 0)
     {
-      {
-        y = newNode(equipa, x->next);
-        x->next = y;
-        return;
-      }
+      y = newNode(equipa, x->next);
+      x->next = y;
+      return;
     }
     else
     {

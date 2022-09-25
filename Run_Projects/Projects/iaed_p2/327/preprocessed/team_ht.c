@@ -120,32 +120,26 @@ void team_ht_print_most_wins(int line, team_ht *teams)
   {
     if (t = teams->ht[i])
     {
+      if (t->wins > max_wins)
       {
-        if (t->wins > max_wins)
-        {
-          {
-            max_wins = t->wins;
-            num = 0;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if (t->wins == max_wins)
-        {
-          {
-            lst[num] = t;
-            num++;
-          }
-        }
-        else
-        {
-          
-        }
-
+        max_wins = t->wins;
+        num = 0;
       }
+      else
+      {
+        
+      }
+
+      if (t->wins == max_wins)
+      {
+        lst[num] = t;
+        num++;
+      }
+      else
+      {
+        
+      }
+
     }
     else
     {

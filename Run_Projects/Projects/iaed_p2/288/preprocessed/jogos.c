@@ -191,28 +191,26 @@ void a(int NL, lista_jogos *jogos, hashtable_jogos *h_jogos, hashtable_equipas *
     }
     else
     {
+      make_node_j(jogo, equipa1, equipa2, sc1, sc2, jogos);
+      h_jogos->tb[hash_j] = make_hashnode_j(h_jogos->tb[hash_j], jogos->last);
+      if (sc1 > sc2)
       {
-        make_node_j(jogo, equipa1, equipa2, sc1, sc2, jogos);
-        h_jogos->tb[hash_j] = make_hashnode_j(h_jogos->tb[hash_j], jogos->last);
-        if (sc1 > sc2)
-        {
-          altera_v(h_equipas, equipa1, hash_e1);
-        }
-        else
-        {
-          
-        }
-
-        if (sc2 > sc1)
-        {
-          altera_v(h_equipas, equipa2, hash_e2);
-        }
-        else
-        {
-          
-        }
-
+        altera_v(h_equipas, equipa1, hash_e1);
       }
+      else
+      {
+        
+      }
+
+      if (sc2 > sc1)
+      {
+        altera_v(h_equipas, equipa2, hash_e2);
+      }
+      else
+      {
+        
+      }
+
     }
 
   }
@@ -246,19 +244,17 @@ void p(int NL, hashtable_jogos *h_jogos)
   }
   else
   {
+    for (checker = h_jogos->tb[hash_j]; checker != 0; checker = checker->next)
+      if (strcmp(checker->pointer->jogo, jogo) == 0)
     {
-      for (checker = h_jogos->tb[hash_j]; checker != 0; checker = checker->next)
-        if (strcmp(checker->pointer->jogo, jogo) == 0)
-      {
-        printf("%d %s %s %s %d %d\n", NL, checker->pointer->jogo, checker->pointer->equipa1, checker->pointer->equipa2, checker->pointer->sc1, checker->pointer->sc2);
-      }
-      else
-      {
-        
-      }
-
-
+      printf("%d %s %s %s %d %d\n", NL, checker->pointer->jogo, checker->pointer->equipa1, checker->pointer->equipa2, checker->pointer->sc1, checker->pointer->sc2);
     }
+    else
+    {
+      
+    }
+
+
   }
 
 }
@@ -288,60 +284,56 @@ void s(int NL, hashtable_jogos *h_jogos, hashtable_equipas *h_equipas)
   }
   else
   {
+    for (checker = h_jogos->tb[hash_j]; checker != 0; checker = checker->next)
+      if (strcmp(checker->pointer->jogo, jogo) == 0)
     {
-      for (checker = h_jogos->tb[hash_j]; checker != 0; checker = checker->next)
-        if (strcmp(checker->pointer->jogo, jogo) == 0)
+      hash_e1 = hash(checker->pointer->equipa1, h_equipas->capacity);
+      hash_e2 = hash(checker->pointer->equipa2, h_equipas->capacity);
+      if (checker->pointer->sc1 > checker->pointer->sc2)
       {
-        {
-          hash_e1 = hash(checker->pointer->equipa1, h_equipas->capacity);
-          hash_e2 = hash(checker->pointer->equipa2, h_equipas->capacity);
-          if (checker->pointer->sc1 > checker->pointer->sc2)
-          {
-            altera_v2(h_equipas, checker->pointer->equipa1, hash_e1);
-          }
-          else
-          {
-            
-          }
-
-          if (checker->pointer->sc2 > checker->pointer->sc1)
-          {
-            altera_v2(h_equipas, checker->pointer->equipa2, hash_e2);
-          }
-          else
-          {
-            
-          }
-
-          checker->pointer->sc1 = sc1;
-          checker->pointer->sc2 = sc2;
-          if (checker->pointer->sc1 > checker->pointer->sc2)
-          {
-            altera_v(h_equipas, checker->pointer->equipa1, hash_e1);
-          }
-          else
-          {
-            
-          }
-
-          if (checker->pointer->sc2 > checker->pointer->sc1)
-          {
-            altera_v(h_equipas, checker->pointer->equipa2, hash_e2);
-          }
-          else
-          {
-            
-          }
-
-        }
+        altera_v2(h_equipas, checker->pointer->equipa1, hash_e1);
       }
       else
       {
         
       }
 
+      if (checker->pointer->sc2 > checker->pointer->sc1)
+      {
+        altera_v2(h_equipas, checker->pointer->equipa2, hash_e2);
+      }
+      else
+      {
+        
+      }
+
+      checker->pointer->sc1 = sc1;
+      checker->pointer->sc2 = sc2;
+      if (checker->pointer->sc1 > checker->pointer->sc2)
+      {
+        altera_v(h_equipas, checker->pointer->equipa1, hash_e1);
+      }
+      else
+      {
+        
+      }
+
+      if (checker->pointer->sc2 > checker->pointer->sc1)
+      {
+        altera_v(h_equipas, checker->pointer->equipa2, hash_e2);
+      }
+      else
+      {
+        
+      }
 
     }
+    else
+    {
+      
+    }
+
+
   }
 
 }
@@ -368,76 +360,72 @@ void r(int NL, lista_jogos *jogos, hashtable_jogos *h_jogos, hashtable_equipas *
   }
   else
   {
+    for (checker = h_jogos->tb[hash_j]; checker != 0; checker = checker->next)
     {
-      for (checker = h_jogos->tb[hash_j]; checker != 0; checker = checker->next)
+      if (strcmp(checker->pointer->jogo, jogo) == 0)
       {
-        if (strcmp(checker->pointer->jogo, jogo) == 0)
-        {
-          break;
-        }
-        else
-        {
-          
-        }
-
-        previous = checker;
-      }
-
-      hash_e1 = hash(checker->pointer->equipa1, h_equipas->capacity);
-      hash_e2 = hash(checker->pointer->equipa2, h_equipas->capacity);
-      if (checker->pointer->sc1 > checker->pointer->sc2)
-      {
-        altera_v2(h_equipas, checker->pointer->equipa1, hash_e1);
+        break;
       }
       else
       {
         
       }
 
-      if (checker->pointer->sc2 > checker->pointer->sc1)
-      {
-        altera_v2(h_equipas, checker->pointer->equipa2, hash_e2);
-      }
-      else
-      {
-        
-      }
-
-      if (checker->pointer->previous == 0)
-      {
-        jogos->head = checker->pointer->next;
-      }
-      else
-      {
-        checker->pointer->previous->next = checker->pointer->next;
-      }
-
-      if (checker->pointer->next == 0)
-      {
-        jogos->last = checker->pointer->previous;
-      }
-      else
-      {
-        checker->pointer->next->previous = checker->pointer->previous;
-      }
-
-      free_node(checker->pointer);
-      if (checker == h_jogos->tb[hash_j])
-      {
-        {
-          h_jogos->tb[hash_j] = checker->next;
-          free(checker);
-          return;
-        }
-      }
-      else
-      {
-        
-      }
-
-      previous->next = checker->next;
-      free(checker);
+      previous = checker;
     }
+
+    hash_e1 = hash(checker->pointer->equipa1, h_equipas->capacity);
+    hash_e2 = hash(checker->pointer->equipa2, h_equipas->capacity);
+    if (checker->pointer->sc1 > checker->pointer->sc2)
+    {
+      altera_v2(h_equipas, checker->pointer->equipa1, hash_e1);
+    }
+    else
+    {
+      
+    }
+
+    if (checker->pointer->sc2 > checker->pointer->sc1)
+    {
+      altera_v2(h_equipas, checker->pointer->equipa2, hash_e2);
+    }
+    else
+    {
+      
+    }
+
+    if (checker->pointer->previous == 0)
+    {
+      jogos->head = checker->pointer->next;
+    }
+    else
+    {
+      checker->pointer->previous->next = checker->pointer->next;
+    }
+
+    if (checker->pointer->next == 0)
+    {
+      jogos->last = checker->pointer->previous;
+    }
+    else
+    {
+      checker->pointer->next->previous = checker->pointer->previous;
+    }
+
+    free_node(checker->pointer);
+    if (checker == h_jogos->tb[hash_j])
+    {
+      h_jogos->tb[hash_j] = checker->next;
+      free(checker);
+      return;
+    }
+    else
+    {
+      
+    }
+
+    previous->next = checker->next;
+    free(checker);
   }
 
 }

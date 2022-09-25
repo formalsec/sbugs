@@ -97,13 +97,11 @@ void ht_remove(ht_link link, Lista lst, Hashtable ht)
   }
   else
   {
-    {
-      x = ht->heads[i];
-      while (!(x->next == link))
-        x = x->next;
+    x = ht->heads[i];
+    while (!(x->next == link))
+      x = x->next;
 
-      x->next = link->next;
-    }
+    x->next = link->next;
   }
 
   lst_remove(link->lst, lst);

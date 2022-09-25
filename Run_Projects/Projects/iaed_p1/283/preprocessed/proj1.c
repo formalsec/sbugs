@@ -36,17 +36,15 @@ int less(product a, product v)
 {
   if (a.price == v.price)
   {
+    if (a.idp < v.idp)
     {
-      if (a.idp < v.idp)
-      {
-        return 1;
-      }
-      else
-      {
-        
-      }
-
+      return 1;
     }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -259,75 +257,61 @@ void adicionaproduto()
   }
   else
   {
+    if (arg2 >= maxidp)
     {
-      if (arg2 >= maxidp)
+      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", arg2, arg1);
+    }
+    else
+    {
+      if (produtos[arg2].quantity < arg3)
       {
-        printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", arg2, arg1);
+        printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", arg2, arg1);
       }
       else
       {
+        if (encomendas[arg1].produtos[arg2].quantity != 0)
         {
-          if (produtos[arg2].quantity < arg3)
+          peso = produtos[arg2].weight;
+          quantidade = arg3;
+          peso_t = peso * quantidade;
+          pesoencomenda = peso_t + encomendas[arg1].pesomax;
+          if (pesoencomenda >= 201)
           {
-            printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", arg2, arg1);
+            printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", arg2, encomendas[arg1].ide);
           }
           else
           {
-            {
-              if (encomendas[arg1].produtos[arg2].quantity != 0)
-              {
-                {
-                  peso = produtos[arg2].weight;
-                  quantidade = arg3;
-                  peso_t = peso * quantidade;
-                  pesoencomenda = peso_t + encomendas[arg1].pesomax;
-                  if (pesoencomenda >= 201)
-                  {
-                    printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", arg2, encomendas[arg1].ide);
-                  }
-                  else
-                  {
-                    {
-                      encomendas[arg1].pesomax += peso_t;
-                      encomendas[arg1].produtos[arg2].quantity += arg3;
-                      produtos[arg2].quantity -= arg3;
-                      strcpy(encomendas[arg1].produtos[arg2].description, produtos[arg2].description);
-                    }
-                  }
-
-                }
-              }
-              else
-              {
-                {
-                  peso = produtos[arg2].weight;
-                  quantidade = arg3;
-                  peso_t = peso * quantidade;
-                  pesoencomenda = peso_t + encomendas[arg1].pesomax;
-                  if (pesoencomenda >= 201)
-                  {
-                    printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", arg2, encomendas[arg1].ide);
-                  }
-                  else
-                  {
-                    {
-                      encomendas[arg1].pesomax += peso_t;
-                      encomendas[arg1].produtos[arg2].quantity = arg3;
-                      produtos[arg2].quantity -= arg3;
-                      strcpy(encomendas[arg1].produtos[arg2].description, produtos[arg2].description);
-                    }
-                  }
-
-                }
-              }
-
-            }
+            encomendas[arg1].pesomax += peso_t;
+            encomendas[arg1].produtos[arg2].quantity += arg3;
+            produtos[arg2].quantity -= arg3;
+            strcpy(encomendas[arg1].produtos[arg2].description, produtos[arg2].description);
           }
 
         }
+        else
+        {
+          peso = produtos[arg2].weight;
+          quantidade = arg3;
+          peso_t = peso * quantidade;
+          pesoencomenda = peso_t + encomendas[arg1].pesomax;
+          if (pesoencomenda >= 201)
+          {
+            printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", arg2, encomendas[arg1].ide);
+          }
+          else
+          {
+            encomendas[arg1].pesomax += peso_t;
+            encomendas[arg1].produtos[arg2].quantity = arg3;
+            produtos[arg2].quantity -= arg3;
+            strcpy(encomendas[arg1].produtos[arg2].description, produtos[arg2].description);
+          }
+
+        }
+
       }
 
     }
+
   }
 
   return;
@@ -346,22 +330,18 @@ void removestock()
   }
   else
   {
+    atual = produtos[arg2].quantity;
+    produtos[arg2].quantity -= arg3;
+    if (produtos[arg2].quantity < 0)
     {
-      atual = produtos[arg2].quantity;
-      produtos[arg2].quantity -= arg3;
-      if (produtos[arg2].quantity < 0)
-      {
-        {
-          printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", arg3, arg2);
-          produtos[arg2].quantity = atual;
-        }
-      }
-      else
-      {
-        
-      }
-
+      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", arg3, arg2);
+      produtos[arg2].quantity = atual;
     }
+    else
+    {
+      
+    }
+
   }
 
   return;
@@ -382,24 +362,20 @@ void removeproduto()
   }
   else
   {
+    if (arg2 >= maxidp)
     {
-      if (arg2 >= maxidp)
-      {
-        printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", arg2, arg1);
-      }
-      else
-      {
-        {
-          c = encomendas[arg1].produtos[arg2].quantity;
-          produtos[arg2].quantity += c;
-          encomendas[arg1].produtos[arg2].quantity = 0;
-          peso = produtos[arg2].weight;
-          pesototal = peso * c;
-          encomendas[arg1].pesomax -= pesototal;
-        }
-      }
-
+      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", arg2, arg1);
     }
+    else
+    {
+      c = encomendas[arg1].produtos[arg2].quantity;
+      produtos[arg2].quantity += c;
+      encomendas[arg1].produtos[arg2].quantity = 0;
+      peso = produtos[arg2].weight;
+      pesototal = peso * c;
+      encomendas[arg1].pesomax -= pesototal;
+    }
+
   }
 
   return;
@@ -420,17 +396,15 @@ int calculapreco()
   }
   else
   {
+    for (x = 0; encomendas[arg1].produtos[x].description < encomendas[arg1].produtos[maxidp].description; x++)
     {
-      for (x = 0; encomendas[arg1].produtos[x].description < encomendas[arg1].produtos[maxidp].description; x++)
-      {
-        quantidade = encomendas[arg1].produtos[x].quantity;
-        preco = produtos[x].price;
-        precototal = quantidade * preco;
-        contador += precototal;
-      }
-
-      printf("Custo da encomenda %d %d.\n", arg1, contador);
+      quantidade = encomendas[arg1].produtos[x].quantity;
+      preco = produtos[x].price;
+      precototal = quantidade * preco;
+      contador += precototal;
     }
+
+    printf("Custo da encomenda %d %d.\n", arg1, contador);
   }
 
   return 0;
@@ -463,26 +437,20 @@ void lista()
   arg2 = new_sym_var(sizeof(int) * 8);
   if (arg1 >= maxide)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", arg1);
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", arg1);
   }
   else
   {
+    if (arg2 >= maxidp)
     {
-      if (arg2 >= maxidp)
-      {
-        printf("Impossivel listar produto %d. Produto inexistente.\n", arg2);
-      }
-      else
-      {
-        {
-          quantidade += encomendas[arg1].produtos[arg2].quantity;
-          printf("%s %d.\n", produtos[arg2].description, quantidade);
-        }
-      }
-
+      printf("Impossivel listar produto %d. Produto inexistente.\n", arg2);
     }
+    else
+    {
+      quantidade += encomendas[arg1].produtos[arg2].quantity;
+      printf("%s %d.\n", produtos[arg2].description, quantidade);
+    }
+
   }
 
   return;
@@ -503,56 +471,24 @@ int maximo()
   }
   else
   {
+    for (x = 0; x < maxidp; x++)
     {
-      for (x = 0; x < maxidp; x++)
-      {
-        c += encomendas[x].produtos[arg1].quantity;
-      }
+      c += encomendas[x].produtos[arg1].quantity;
+    }
 
-      if (c != 0)
+    if (c != 0)
+    {
+      for (x = 0; x <= maxide; x++)
       {
+        if (encomendas[x].produtos[arg1].quantity != 0)
         {
-          for (x = 0; x <= maxide; x++)
+          quantidade = encomendas[x].produtos[arg1].quantity;
+          if (quantidade == contador)
           {
-            if (encomendas[x].produtos[arg1].quantity != 0)
+            if (encomendas[x].ide < encomendaide)
             {
-              {
-                quantidade = encomendas[x].produtos[arg1].quantity;
-                if (quantidade == contador)
-                {
-                  {
-                    if (encomendas[x].ide < encomendaide)
-                    {
-                      {
-                        contador = encomendas[x].produtos[arg1].quantity;
-                        encomendaide = encomendas[x].ide;
-                      }
-                    }
-                    else
-                    {
-                      
-                    }
-
-                  }
-                }
-                else
-                {
-                  
-                }
-
-                if (quantidade > contador)
-                {
-                  {
-                    contador = encomendas[x].produtos[arg1].quantity;
-                    encomendaide = encomendas[x].ide;
-                  }
-                }
-                else
-                {
-                  
-                }
-
-              }
+              contador = encomendas[x].produtos[arg1].quantity;
+              encomendaide = encomendas[x].ide;
             }
             else
             {
@@ -560,16 +496,36 @@ int maximo()
             }
 
           }
+          else
+          {
+            
+          }
 
-          printf("Maximo produto %d %d %d.\n", arg1, encomendaide, contador);
+          if (quantidade > contador)
+          {
+            contador = encomendas[x].produtos[arg1].quantity;
+            encomendaide = encomendas[x].ide;
+          }
+          else
+          {
+            
+          }
+
         }
-      }
-      else
-      {
-        
+        else
+        {
+          
+        }
+
       }
 
+      printf("Maximo produto %d %d %d.\n", arg1, encomendaide, contador);
     }
+    else
+    {
+      
+    }
+
   }
 
   return 0;
@@ -614,15 +570,37 @@ int listaalfabetica()
   }
   else
   {
+    for (x = 0; x < maxidp; x++)
     {
+      if (encomendas[arg1].produtos[x].quantity != 0)
+      {
+        id = produtos[x].idp;
+        len += 1;
+      }
+      else
+      {
+        
+      }
+
+    }
+
+    if (len == 1)
+    {
+      printf("Encomenda %d\n", arg1);
+      printf("* %s %d %d\n", encomendas[arg1].produtos[id].description, produtos[id].price, encomendas[arg1].produtos[id].quantity);
+    }
+    else
+    {
+      printf("Encomenda %d\n", arg1);
       for (x = 0; x < maxidp; x++)
       {
         if (encomendas[arg1].produtos[x].quantity != 0)
         {
-          {
-            id = produtos[x].idp;
-            len += 1;
-          }
+          vetor[x].price = encomendas[arg1].produtos[x].price;
+          vetor[x].idp = encomendas[arg1].produtos[x].idp;
+          vetor[x].quantity = encomendas[arg1].produtos[x].quantity;
+          strcpy(vetor[x].description, encomendas[arg1].produtos[x].description);
+          tamanho++;
         }
         else
         {
@@ -631,44 +609,12 @@ int listaalfabetica()
 
       }
 
-      if (len == 1)
-      {
-        {
-          printf("Encomenda %d\n", arg1);
-          printf("* %s %d %d\n", encomendas[arg1].produtos[id].description, produtos[id].price, encomendas[arg1].produtos[id].quantity);
-        }
-      }
-      else
-      {
-        {
-          printf("Encomenda %d\n", arg1);
-          for (x = 0; x < maxidp; x++)
-          {
-            if (encomendas[arg1].produtos[x].quantity != 0)
-            {
-              {
-                vetor[x].price = encomendas[arg1].produtos[x].price;
-                vetor[x].idp = encomendas[arg1].produtos[x].idp;
-                vetor[x].quantity = encomendas[arg1].produtos[x].quantity;
-                strcpy(vetor[x].description, encomendas[arg1].produtos[x].description);
-                tamanho++;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-          quicksort_nome(vetor, 0, len);
-          for (x = 0; x < len; x++)
-            printf("* %s %d %d\n", vetor[x].description, vetor[x].price, vetor[x].quantity);
-
-        }
-      }
+      quicksort_nome(vetor, 0, len);
+      for (x = 0; x < len; x++)
+        printf("* %s %d %d\n", vetor[x].description, vetor[x].price, vetor[x].quantity);
 
     }
+
   }
 
   return 0;

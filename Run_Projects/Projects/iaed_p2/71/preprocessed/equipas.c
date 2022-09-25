@@ -47,9 +47,7 @@ int existe_eq_aux(elink cabeca, char *nome)
   {
     if (strcmp(x->equipa->nome, nome) == 0)
     {
-      {
-        return 1;
-      }
+      return 1;
     }
     else
     {
@@ -98,35 +96,29 @@ elink limpa_lista_eq(elink cabeca)
   elink aux;
   if (cabeca == 0)
   {
-    {
-      free(cabeca);
-      return cabeca;
-    }
+    free(cabeca);
+    return cabeca;
   }
   else
   {
     if (cabeca->proxima == 0)
     {
-      {
-        FREEelink(cabeca);
-        return 0;
-      }
+      FREEelink(cabeca);
+      return 0;
     }
     else
     {
+      atual = cabeca->proxima;
+      while (atual != 0)
       {
+        aux = cabeca->proxima;
+        cabeca->proxima = aux->proxima;
+        FREEelink(aux);
         atual = cabeca->proxima;
-        while (atual != 0)
-        {
-          aux = cabeca->proxima;
-          cabeca->proxima = aux->proxima;
-          FREEelink(aux);
-          atual = cabeca->proxima;
-        }
-
-        FREEelink(cabeca);
-        return 0;
       }
+
+      FREEelink(cabeca);
+      return 0;
     }
 
   }
@@ -154,9 +146,7 @@ int calcula_max_ganhos(elink *hash_equipas, int max_ganhos)
     {
       if (link->equipa->total_ganhos > max_ganhos)
       {
-        {
-          max_ganhos = link->equipa->total_ganhos;
-        }
+        max_ganhos = link->equipa->total_ganhos;
       }
       else
       {

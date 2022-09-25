@@ -33,53 +33,41 @@ void a_adicionaNovoJogo(lista_jogo *lst_jogo, Item **hashtable_jogo, Item **hash
   score2 = new_sym_var(sizeof(int) * 8);
   if (procura_item(nome, hashtable_jogo))
   {
-    {
-      printf("%d Jogo existente.\n", contador);
-    }
+    printf("%d Jogo existente.\n", contador);
   }
   else
   {
+    if ((!procura_item(equipa1, hashtable_equipa)) || (!procura_item(equipa2, hashtable_equipa)))
     {
-      if ((!procura_item(equipa1, hashtable_equipa)) || (!procura_item(equipa2, hashtable_equipa)))
+      printf("%d Equipa inexistente.\n", contador);
+    }
+    else
+    {
+      Item *novo_jogo = cria_jogo(nome, equipa1, equipa2, score1, score2);
+      insere_hashtable(novo_jogo, hashtable_jogo);
+      adiciona_vitoria(hashtable_equipa, novo_jogo);
+      if (lst_jogo->last)
       {
-        {
-          printf("%d Equipa inexistente.\n", contador);
-        }
+        novo_jogo->prev = lst_jogo->last;
+        lst_jogo->last->next = novo_jogo;
       }
       else
       {
-        {
-          Item *novo_jogo = cria_jogo(nome, equipa1, equipa2, score1, score2);
-          insere_hashtable(novo_jogo, hashtable_jogo);
-          adiciona_vitoria(hashtable_equipa, novo_jogo);
-          if (lst_jogo->last)
-          {
-            {
-              novo_jogo->prev = lst_jogo->last;
-              lst_jogo->last->next = novo_jogo;
-            }
-          }
-          else
-          {
-            
-          }
+        
+      }
 
-          lst_jogo->last = novo_jogo;
-          if (!lst_jogo->head)
-          {
-            {
-              lst_jogo->head = novo_jogo;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
+      lst_jogo->last = novo_jogo;
+      if (!lst_jogo->head)
+      {
+        lst_jogo->head = novo_jogo;
+      }
+      else
+      {
+        
       }
 
     }
+
   }
 
 }
@@ -95,54 +83,42 @@ Item *A_adicionaNovaEquipa(Item *head_equipa, Item **hashtable, int contador)
   nome[10 - 1] = '\0';
   if (procura_item(nome, hashtable))
   {
-    {
-      printf("%d Equipa existente.\n", contador);
-      return head_equipa;
-    }
+    printf("%d Equipa existente.\n", contador);
+    return head_equipa;
   }
   else
   {
+    Item *nova_equipa = cria_equipa(nome);
+    insere_hashtable(nova_equipa, hashtable);
+    if (!head_equipa)
     {
-      Item *nova_equipa = cria_equipa(nome);
-      insere_hashtable(nova_equipa, hashtable);
-      if (!head_equipa)
+      return nova_equipa;
+    }
+    else
+    {
+      if (strcmp(nova_equipa->nome, head_equipa->nome) < 0)
       {
-        {
-          return nova_equipa;
-        }
+        nova_equipa->next = head_equipa;
+        return nova_equipa;
       }
       else
       {
+        Item *anterior = head_equipa;
+        Item *head = head_equipa;
+        head_equipa = head_equipa->next;
+        while (head_equipa && (strcmp(nova_equipa->nome, head_equipa->nome) > 0))
         {
-          if (strcmp(nova_equipa->nome, head_equipa->nome) < 0)
-          {
-            {
-              nova_equipa->next = head_equipa;
-              return nova_equipa;
-            }
-          }
-          else
-          {
-            {
-              Item *anterior = head_equipa;
-              Item *head = head_equipa;
-              head_equipa = head_equipa->next;
-              while (head_equipa && (strcmp(nova_equipa->nome, head_equipa->nome) > 0))
-              {
-                anterior = head_equipa;
-                head_equipa = head_equipa->next;
-              }
-
-              nova_equipa->next = head_equipa;
-              anterior->next = nova_equipa;
-              return head;
-            }
-          }
-
+          anterior = head_equipa;
+          head_equipa = head_equipa->next;
         }
+
+        nova_equipa->next = head_equipa;
+        anterior->next = nova_equipa;
+        return head;
       }
 
     }
+
   }
 
 }
@@ -171,15 +147,11 @@ void p_procuraJogo(Item **hashtable, int contador)
   jogo = procura_item(nome, hashtable);
   if (jogo)
   {
-    {
-      printf("%d %s %s %s %d %d\n", contador, jogo->nome, jogo->equipa1, jogo->equipa2, jogo->score1, jogo->score2);
-    }
+    printf("%d %s %s %s %d %d\n", contador, jogo->nome, jogo->equipa1, jogo->equipa2, jogo->score1, jogo->score2);
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", contador);
-    }
+    printf("%d Jogo inexistente.\n", contador);
   }
 
 }
@@ -197,15 +169,11 @@ void P_procuraEquipa(Item **hashtable, int contador)
   equipa = procura_item(nome, hashtable);
   if (equipa)
   {
-    {
-      printf("%d %s %d\n", contador, nome, equipa->vitorias);
-    }
+    printf("%d %s %d\n", contador, nome, equipa->vitorias);
   }
   else
   {
-    {
-      printf("%d Equipa inexistente.\n", contador);
-    }
+    printf("%d Equipa inexistente.\n", contador);
   }
 
 }
@@ -221,9 +189,7 @@ void r_apagaJogo(lista_jogo *lst_jogo, Item **hashtable_jogo, Item **hashtable_e
   nome[10 - 1] = '\0';
   if (!apaga_jogo(nome, hashtable_jogo, hashtable_equipa, lst_jogo))
   {
-    {
-      printf("%d Jogo inexistente.\n", contador);
-    }
+    printf("%d Jogo inexistente.\n", contador);
   }
   else
   {
@@ -248,18 +214,14 @@ void s_alteraPontuacao(Item **hashtable_jogo, Item **hashtable_equipa, int conta
   score2 = new_sym_var(sizeof(int) * 8);
   if (!(jogo = procura_item(nome, hashtable_jogo)))
   {
-    {
-      printf("%d Jogo inexistente.\n", contador);
-    }
+    printf("%d Jogo inexistente.\n", contador);
   }
   else
   {
-    {
-      retira_vitoria(hashtable_equipa, jogo);
-      jogo->score1 = score1;
-      jogo->score2 = score2;
-      adiciona_vitoria(hashtable_equipa, jogo);
-    }
+    retira_vitoria(hashtable_equipa, jogo);
+    jogo->score1 = score1;
+    jogo->score2 = score2;
+    adiciona_vitoria(hashtable_equipa, jogo);
   }
 
 }
@@ -272,9 +234,7 @@ void g_encontraEquipasMaisVitorias(Item *head_equipa, int contador)
   {
     if (equipa->vitorias > maior_vitoria)
     {
-      {
-        maior_vitoria = equipa->vitorias;
-      }
+      maior_vitoria = equipa->vitorias;
     }
     else
     {
@@ -286,9 +246,7 @@ void g_encontraEquipasMaisVitorias(Item *head_equipa, int contador)
 
   if (head_equipa)
   {
-    {
-      printf("%d Melhores %d\n", contador, maior_vitoria);
-    }
+    printf("%d Melhores %d\n", contador, maior_vitoria);
   }
   else
   {
@@ -299,9 +257,7 @@ void g_encontraEquipasMaisVitorias(Item *head_equipa, int contador)
   {
     if (head_equipa->vitorias == maior_vitoria)
     {
-      {
-        printf("%d * %s\n", contador, head_equipa->nome);
-      }
+      printf("%d * %s\n", contador, head_equipa->nome);
     }
     else
     {

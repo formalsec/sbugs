@@ -12,10 +12,8 @@ node *new_node(int qtd, int prodId)
   node *p = malloc(sizeof(node));
   if (!p)
   {
-    {
-      perror("new_node: no memory for a new node");
-      exit(1);
-    }
+    perror("new_node: no memory for a new node");
+    exit(1);
   }
   else
   {

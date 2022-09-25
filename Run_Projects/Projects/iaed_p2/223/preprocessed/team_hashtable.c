@@ -41,9 +41,7 @@ int haEquipa(char *v)
   int i = hash(v, N);
   if (Tlookup(theads[i], v) == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -61,11 +59,9 @@ void Tclear()
   {
     if (theads[i] != 0)
     {
-      {
-        for (t = theads[i]; t != 0; t = TremoveItem(t, t->equipa, 1))
-          ;
+      for (t = theads[i]; t != 0; t = TremoveItem(t, t->equipa, 1))
+        ;
 
-      }
     }
     else
     {

@@ -36,102 +36,100 @@ int CommandProcess()
     cmd = new_sym_var(sizeof(char) * 8);
     if (filled)
     {
+      switch (cmd)
       {
-        switch (cmd)
+        case 'a':
+          cmd = new_sym_var(sizeof(char) * 8);
+          for (int desc_index = 0; desc_index < 10; desc_index++)
         {
-          case 'a':
-            cmd = new_sym_var(sizeof(char) * 8);
-            for (int desc_index = 0; desc_index < 10; desc_index++)
-          {
-            desc[desc_index] = new_sym_var(sizeof(char) * 8);
-          }
-
-            desc[10 - 1] = '\0';
-            price = new_sym_var(sizeof(uint) * 8);
-            weight = new_sym_var(sizeof(uint) * 8);
-            qty = new_sym_var(sizeof(uint) * 8);
-            CreateProd(desc, price, weight, qty);
-            break;
-
-          case 'q':
-            cmd = new_sym_var(sizeof(char) * 8);
-            id_prod = new_sym_var(sizeof(uint) * 8);
-            qty = new_sym_var(sizeof(uint) * 8);
-            AddStock(id_prod, qty);
-            break;
-
-          case 'N':
-            CreateEncomenda();
-            break;
-
-          case 'A':
-            cmd = new_sym_var(sizeof(char) * 8);
-            id_encom = new_sym_var(sizeof(uint) * 8);
-            id_prod = new_sym_var(sizeof(uint) * 8);
-            qty = new_sym_var(sizeof(uint) * 8);
-            AddProd(id_encom, id_prod, qty);
-            break;
-
-          case 'r':
-            cmd = new_sym_var(sizeof(char) * 8);
-            id_prod = new_sym_var(sizeof(uint) * 8);
-            qty = new_sym_var(sizeof(uint) * 8);
-            RemoveStock(id_prod, qty);
-            break;
-
-          case 'R':
-            cmd = new_sym_var(sizeof(char) * 8);
-            id_encom = new_sym_var(sizeof(uint) * 8);
-            id_prod = new_sym_var(sizeof(uint) * 8);
-            RemoveProd(id_encom, id_prod);
-            break;
-
-          case 'C':
-            cmd = new_sym_var(sizeof(char) * 8);
-            id_encom = new_sym_var(sizeof(uint) * 8);
-            ListEncomTotalPrice(id_encom);
-            break;
-
-          case 'p':
-            cmd = new_sym_var(sizeof(char) * 8);
-            id_prod = new_sym_var(sizeof(uint) * 8);
-            price = new_sym_var(sizeof(uint) * 8);
-            ProdNewPrice(id_prod, price);
-            break;
-
-          case 'E':
-            cmd = new_sym_var(sizeof(char) * 8);
-            id_encom = new_sym_var(sizeof(uint) * 8);
-            id_prod = new_sym_var(sizeof(uint) * 8);
-            ListDescPrice(id_encom, id_prod);
-            break;
-
-          case 'm':
-            cmd = new_sym_var(sizeof(char) * 8);
-            id_prod = new_sym_var(sizeof(uint) * 8);
-            EncomMaxProd(id_prod);
-            break;
-
-          case 'l':
-            ListProdByPrice();
-            break;
-
-          case 'L':
-            cmd = new_sym_var(sizeof(char) * 8);
-            id_encom = new_sym_var(sizeof(uint) * 8);
-            ListEncomProdByDesc(id_encom);
-            break;
-
-          case 'x':
-            return 0;
-
-          default:
-            printf("Invalid command!\n");
-            break;
-
+          desc[desc_index] = new_sym_var(sizeof(char) * 8);
         }
 
+          desc[10 - 1] = '\0';
+          price = new_sym_var(sizeof(uint) * 8);
+          weight = new_sym_var(sizeof(uint) * 8);
+          qty = new_sym_var(sizeof(uint) * 8);
+          CreateProd(desc, price, weight, qty);
+          break;
+
+        case 'q':
+          cmd = new_sym_var(sizeof(char) * 8);
+          id_prod = new_sym_var(sizeof(uint) * 8);
+          qty = new_sym_var(sizeof(uint) * 8);
+          AddStock(id_prod, qty);
+          break;
+
+        case 'N':
+          CreateEncomenda();
+          break;
+
+        case 'A':
+          cmd = new_sym_var(sizeof(char) * 8);
+          id_encom = new_sym_var(sizeof(uint) * 8);
+          id_prod = new_sym_var(sizeof(uint) * 8);
+          qty = new_sym_var(sizeof(uint) * 8);
+          AddProd(id_encom, id_prod, qty);
+          break;
+
+        case 'r':
+          cmd = new_sym_var(sizeof(char) * 8);
+          id_prod = new_sym_var(sizeof(uint) * 8);
+          qty = new_sym_var(sizeof(uint) * 8);
+          RemoveStock(id_prod, qty);
+          break;
+
+        case 'R':
+          cmd = new_sym_var(sizeof(char) * 8);
+          id_encom = new_sym_var(sizeof(uint) * 8);
+          id_prod = new_sym_var(sizeof(uint) * 8);
+          RemoveProd(id_encom, id_prod);
+          break;
+
+        case 'C':
+          cmd = new_sym_var(sizeof(char) * 8);
+          id_encom = new_sym_var(sizeof(uint) * 8);
+          ListEncomTotalPrice(id_encom);
+          break;
+
+        case 'p':
+          cmd = new_sym_var(sizeof(char) * 8);
+          id_prod = new_sym_var(sizeof(uint) * 8);
+          price = new_sym_var(sizeof(uint) * 8);
+          ProdNewPrice(id_prod, price);
+          break;
+
+        case 'E':
+          cmd = new_sym_var(sizeof(char) * 8);
+          id_encom = new_sym_var(sizeof(uint) * 8);
+          id_prod = new_sym_var(sizeof(uint) * 8);
+          ListDescPrice(id_encom, id_prod);
+          break;
+
+        case 'm':
+          cmd = new_sym_var(sizeof(char) * 8);
+          id_prod = new_sym_var(sizeof(uint) * 8);
+          EncomMaxProd(id_prod);
+          break;
+
+        case 'l':
+          ListProdByPrice();
+          break;
+
+        case 'L':
+          cmd = new_sym_var(sizeof(char) * 8);
+          id_encom = new_sym_var(sizeof(uint) * 8);
+          ListEncomProdByDesc(id_encom);
+          break;
+
+        case 'x':
+          return 0;
+
+        default:
+          printf("Invalid command!\n");
+          break;
+
       }
+
     }
     else
     {
@@ -240,10 +238,8 @@ void AddStock(uint id, uint qty)
 {
   if (id >= g_total_products)
   {
-    {
-      printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", id);
-      return;
-    }
+    printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", id);
+    return;
   }
   else
   {
@@ -259,10 +255,8 @@ void RemoveStock(uint id, uint qty_rem)
   uint qty_prod;
   if (id >= g_total_products)
   {
-    {
-      printf("Impossivel remover stock do produto %d. Produto inexistente.\n", id);
-      return;
-    }
+    printf("Impossivel remover stock do produto %d. Produto inexistente.\n", id);
+    return;
   }
   else
   {
@@ -272,10 +266,8 @@ void RemoveStock(uint id, uint qty_rem)
   qty_prod = GetProdutoQty(id);
   if (qty_prod < qty_rem)
   {
-    {
-      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qty_rem, id);
-      return;
-    }
+    printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qty_rem, id);
+    return;
   }
   else
   {
@@ -299,28 +291,22 @@ void AddProd(uint id_encom, uint id_prod, uint qty)
   int prod_weight = 0;
   if (id_encom >= g_total_packages)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", id_prod, id_encom);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", id_prod, id_encom);
+    return;
   }
   else
   {
     if (id_prod >= g_total_products)
     {
-      {
-        printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", id_prod, id_encom);
-        return;
-      }
+      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", id_prod, id_encom);
+      return;
     }
     else
     {
       if (GetProdutoQty(id_prod) < qty)
       {
-        {
-          printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", id_prod, id_encom);
-          return;
-        }
+        printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", id_prod, id_encom);
+        return;
       }
       else
       {
@@ -335,10 +321,8 @@ void AddProd(uint id_encom, uint id_prod, uint qty)
   prod_weight = GetProdPeso(id_prod) * qty;
   if ((encom_pre_weight + prod_weight) > 200)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", id_prod, id_encom);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", id_prod, id_encom);
+    return;
   }
   else
   {
@@ -355,19 +339,15 @@ void RemoveProd(uint id_encom, uint id_prod)
   int qty = 0;
   if (id_encom >= g_total_packages)
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", id_prod, id_encom);
-      return;
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", id_prod, id_encom);
+    return;
   }
   else
   {
     if (id_prod >= g_total_products)
     {
-      {
-        printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", id_prod, id_encom);
-        return;
-      }
+      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", id_prod, id_encom);
+      return;
     }
     else
     {
@@ -388,10 +368,8 @@ void ListEncomTotalPrice(uint id)
   uint id_prod = 0;
   if (id >= g_total_packages)
   {
-    {
-      printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", id);
-      return;
-    }
+    printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", id);
+    return;
   }
   else
   {
@@ -411,10 +389,8 @@ void ProdNewPrice(uint id, uint price)
 {
   if (id >= g_total_products)
   {
-    {
-      printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", id);
-      return;
-    }
+    printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", id);
+    return;
   }
   else
   {
@@ -430,19 +406,15 @@ void ListDescPrice(uint id_encom, uint id_prod)
   char *desc;
   if (id_encom >= g_total_packages)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", id_encom);
-      return;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", id_encom);
+    return;
   }
   else
   {
     if (id_prod >= g_total_products)
     {
-      {
-        printf("Impossivel listar produto %d. Produto inexistente.\n", id_prod);
-        return;
-      }
+      printf("Impossivel listar produto %d. Produto inexistente.\n", id_prod);
+      return;
     }
     else
     {
@@ -465,10 +437,8 @@ void EncomMaxProd(uint id_prod)
   max_amount = 0;
   if (id_prod >= g_total_products)
   {
-    {
-      printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", id_prod);
-      return;
-    }
+    printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", id_prod);
+    return;
   }
   else
   {
@@ -480,10 +450,8 @@ void EncomMaxProd(uint id_prod)
     encom_prod_qty = GetEncomQtyProd(i, id_prod);
     if (encom_prod_qty > max_amount)
     {
-      {
-        max_amount = encom_prod_qty;
-        id_encom = i;
-      }
+      max_amount = encom_prod_qty;
+      id_encom = i;
     }
     else
     {
@@ -494,9 +462,7 @@ void EncomMaxProd(uint id_prod)
 
   if (id_encom == (-1))
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -526,15 +492,11 @@ void MergeSortOrder(int arr[], int arr_aux[], uint l_bound, uint mid_index, uint
   {
     if ((*p_less_key_func)(arr_aux[right_ptr], arr_aux[left_ptr]) || (left_ptr > mid_index))
     {
-      {
-        arr[index] = arr_aux[right_ptr--];
-      }
+      arr[index] = arr_aux[right_ptr--];
     }
     else
     {
-      {
-        arr[index] = arr_aux[left_ptr++];
-      }
+      arr[index] = arr_aux[left_ptr++];
     }
 
   }
@@ -547,9 +509,7 @@ void MergeSortRecursive(int arr[], int arr_aux[], uint l_bound, uint r_bound, in
   int mid_index = (l_bound + r_bound) / 2;
   if (r_bound <= l_bound)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -575,31 +535,25 @@ int CompareProdPrice(int id_1, int id_2)
   int price_2 = GetProdPrice(id_2);
   if (price_1 < price_2)
   {
-    {
-      return 1;
-    }
+    return 1;
   }
   else
   {
     if (price_1 == price_2)
     {
+      if (id_1 < id_2)
       {
-        if (id_1 < id_2)
-        {
-          return 1;
-        }
-        else
-        {
-          return 0;
-        }
-
+        return 1;
       }
-    }
-    else
-    {
+      else
       {
         return 0;
       }
+
+    }
+    else
+    {
+      return 0;
     }
 
   }
@@ -643,31 +597,25 @@ int CompareProdDesc(int id_1, int id_2)
   int comp = strcmp(buf_1, buf_2);
   if (comp < 0)
   {
-    {
-      return 1;
-    }
+    return 1;
   }
   else
   {
     if (comp == 0)
     {
+      if (id_1 < id_2)
       {
-        if (id_1 < id_2)
-        {
-          return 1;
-        }
-        else
-        {
-          return 0;
-        }
-
+        return 1;
       }
-    }
-    else
-    {
+      else
       {
         return 0;
       }
+
+    }
+    else
+    {
+      return 0;
     }
 
   }
@@ -684,10 +632,8 @@ void ListEncomProdByDesc(uint id_encom)
   int qty_prod;
   if (id_encom >= g_total_packages)
   {
-    {
-      printf("Impossivel listar encomenda %u. Encomenda inexistente.\n", id_encom);
-      return;
-    }
+    printf("Impossivel listar encomenda %u. Encomenda inexistente.\n", id_encom);
+    return;
   }
   else
   {
@@ -701,11 +647,9 @@ void ListEncomProdByDesc(uint id_encom)
     qty_prod = GetEncomQtyProd(id_encom, id);
     if (qty_prod > 0)
     {
-      {
-        array_ids[counter] = id;
-        total_prod++;
-        counter++;
-      }
+      array_ids[counter] = id;
+      total_prod++;
+      counter++;
     }
     else
     {

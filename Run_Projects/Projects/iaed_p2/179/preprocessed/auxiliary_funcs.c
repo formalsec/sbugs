@@ -60,25 +60,23 @@ int mostWins(nodeTeam head)
   }
   else
   {
+    unsigned int w = head->ptr->won;
+    nodeTeam aux;
+    for (aux = head->next; aux != 0; aux = aux->next)
     {
-      unsigned int w = head->ptr->won;
-      nodeTeam aux;
-      for (aux = head->next; aux != 0; aux = aux->next)
+      if (aux->ptr->won > w)
       {
-        if (aux->ptr->won > w)
-        {
-          w = aux->ptr->won;
-        }
-        else
-        {
-          
-        }
-
+        w = aux->ptr->won;
+      }
+      else
+      {
+        
       }
 
-      aux = 0;
-      return w;
     }
+
+    aux = 0;
+    return w;
   }
 
 }
@@ -113,10 +111,8 @@ Team *nWinsTeams(nodeTeam head, int n, unsigned int w)
   {
     if (aux->ptr->won == w)
     {
-      {
-        teams[i] = aux->ptr;
-        i++;
-      }
+      teams[i] = aux->ptr;
+      i++;
     }
     else
     {
@@ -133,19 +129,39 @@ void changeWins(Ht_teams ht, Game *game, int score1, int score2, int prev1, int 
 {
   if (score1 > score2)
   {
+    if (prev2 > prev1)
     {
-      if (prev2 > prev1)
+      addVictory(ht, (*game)->team1);
+      withdrawVictory(ht, (*game)->team2);
+    }
+    else
+    {
+      if (prev1 == prev2)
       {
-        {
-          addVictory(ht, (*game)->team1);
-          withdrawVictory(ht, (*game)->team2);
-        }
+        addVictory(ht, (*game)->team1);
+      }
+      else
+      {
+        
+      }
+
+    }
+
+  }
+  else
+  {
+    if (score2 > score1)
+    {
+      if (prev1 > prev2)
+      {
+        addVictory(ht, (*game)->team2);
+        withdrawVictory(ht, (*game)->team1);
       }
       else
       {
         if (prev1 == prev2)
         {
-          addVictory(ht, (*game)->team1);
+          addVictory(ht, (*game)->team2);
         }
         else
         {
@@ -155,55 +171,25 @@ void changeWins(Ht_teams ht, Game *game, int score1, int score2, int prev1, int 
       }
 
     }
-  }
-  else
-  {
-    if (score2 > score1)
-    {
-      {
-        if (prev1 > prev2)
-        {
-          {
-            addVictory(ht, (*game)->team2);
-            withdrawVictory(ht, (*game)->team1);
-          }
-        }
-        else
-        {
-          if (prev1 == prev2)
-          {
-            addVictory(ht, (*game)->team2);
-          }
-          else
-          {
-            
-          }
-
-        }
-
-      }
-    }
     else
     {
+      if (prev1 > prev2)
       {
-        if (prev1 > prev2)
+        withdrawVictory(ht, (*game)->team1);
+      }
+      else
+      {
+        if (prev2 > prev1)
         {
-          withdrawVictory(ht, (*game)->team1);
+          withdrawVictory(ht, (*game)->team2);
         }
         else
         {
-          if (prev2 > prev1)
-          {
-            withdrawVictory(ht, (*game)->team2);
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
+
     }
 
   }

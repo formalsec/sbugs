@@ -137,19 +137,15 @@ void winner(char *team_1, char *team_2, int score_1, int score_2)
   pteam current_team;
   if (score_1 > score_2)
   {
-    {
-      current_team = search_team_in_table(team_1);
-      current_team->wins++;
-    }
+    current_team = search_team_in_table(team_1);
+    current_team->wins++;
   }
   else
   {
     if (score_2 > score_1)
     {
-      {
-        current_team = search_team_in_table(team_2);
-        current_team->wins++;
-      }
+      current_team = search_team_in_table(team_2);
+      current_team->wins++;
     }
     else
     {
@@ -165,19 +161,15 @@ void remove_win(char *team_1, char *team_2, int score_1, int score_2)
   pteam current_team;
   if (score_1 > score_2)
   {
-    {
-      current_team = search_team_in_table(team_1);
-      current_team->wins--;
-    }
+    current_team = search_team_in_table(team_1);
+    current_team->wins--;
   }
   else
   {
     if (score_2 > score_1)
     {
-      {
-        current_team = search_team_in_table(team_2);
-        current_team->wins--;
-      }
+      current_team = search_team_in_table(team_2);
+      current_team->wins--;
     }
     else
     {
@@ -223,10 +215,8 @@ void list_games()
   {
     if (matchtable[i] != 0)
     {
-      {
-        matches[nrMatches] = matchtable[i];
-        nrMatches++;
-      }
+      matches[nrMatches] = matchtable[i];
+      nrMatches++;
     }
     else
     {
@@ -237,12 +227,10 @@ void list_games()
 
   if (nrMatches > 0)
   {
-    {
-      qsort(matches, nrMatches, sizeof(pmatch), matchSort);
-      for (i = 0; i < nrMatches; i++)
-        printf("%d %s %s %s %d %d\n", nl, matches[i]->id, matches[i]->team1, matches[i]->team2, matches[i]->score1, matches[i]->score2);
+    qsort(matches, nrMatches, sizeof(pmatch), matchSort);
+    for (i = 0; i < nrMatches; i++)
+      printf("%d %s %s %s %d %d\n", nl, matches[i]->id, matches[i]->team1, matches[i]->team2, matches[i]->score1, matches[i]->score2);
 
-    }
   }
   else
   {
@@ -329,18 +317,16 @@ void best_teams()
   for (i = 0; i < 20111; i++)
     if (teamtable[i] != 0)
   {
+    verify = 1;
+    if (teamtable[i]->wins > max_wins)
     {
-      verify = 1;
-      if (teamtable[i]->wins > max_wins)
-      {
-        max_wins = teamtable[i]->wins;
-      }
-      else
-      {
-        
-      }
-
+      max_wins = teamtable[i]->wins;
     }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -350,31 +336,27 @@ void best_teams()
 
   if (verify == 1)
   {
+    printf("%d Melhores %d\n", nl, max_wins);
+    for (i = 0; i < 20111; i++)
+      if (teamtable[i] != 0)
     {
-      printf("%d Melhores %d\n", nl, max_wins);
-      for (i = 0; i < 20111; i++)
-        if (teamtable[i] != 0)
+      if (teamtable[i]->wins == max_wins)
       {
-        if (teamtable[i]->wins == max_wins)
-        {
-          {
-            team_array[team_counter] = teamtable[i]->name;
-            team_counter++;
-          }
-        }
-        else
-        {
-          
-        }
-
+        team_array[team_counter] = teamtable[i]->name;
+        team_counter++;
       }
       else
       {
         
       }
 
-
     }
+    else
+    {
+      
+    }
+
+
   }
   else
   {
@@ -383,15 +365,13 @@ void best_teams()
 
   if (team_counter > 0)
   {
+    int j;
+    qsort(team_array, team_counter, sizeof(char *), sortComp);
+    for (j = 0; j < team_counter; j++)
     {
-      int j;
-      qsort(team_array, team_counter, sizeof(char *), sortComp);
-      for (j = 0; j < team_counter; j++)
-      {
-        printf("%d * %s\n", nl, team_array[j]);
-      }
-
+      printf("%d * %s\n", nl, team_array[j]);
     }
+
   }
   else
   {
@@ -416,9 +396,7 @@ void free_all()
   for (i = 0; i < 40897; i++)
     if (matchtable[i] != 0)
   {
-    {
-      free_match(matchtable[i]);
-    }
+    free_match(matchtable[i]);
   }
   else
   {
@@ -430,10 +408,8 @@ void free_all()
   for (i = 0; i < 20111; i++)
     if (teamtable[i] != 0)
   {
-    {
-      free(teamtable[i]->name);
-      free(teamtable[i]);
-    }
+    free(teamtable[i]->name);
+    free(teamtable[i]);
   }
   else
   {
@@ -493,17 +469,13 @@ int main()
       {
         if ((search_team_in_table(t1) == 0) || (search_team_in_table(t2) == 0))
         {
-          {
-            printf("%d Equipa inexistente.\n", nl);
-          }
+          printf("%d Equipa inexistente.\n", nl);
         }
         else
         {
-          {
-            winner(t1, t2, s1, s2);
-            add_match(match_id, t1, t2, s1, s2);
-            entry++;
-          }
+          winner(t1, t2, s1, s2);
+          add_match(match_id, t1, t2, s1, s2);
+          entry++;
         }
 
       }
@@ -579,10 +551,8 @@ int main()
       }
       else
       {
-        {
-          remove_win(match_to_remove->team1, match_to_remove->team2, match_to_remove->score1, match_to_remove->score2);
-          remove_match(match_to_remove);
-        }
+        remove_win(match_to_remove->team1, match_to_remove->team2, match_to_remove->score1, match_to_remove->score2);
+        remove_match(match_to_remove);
       }
 
         break;

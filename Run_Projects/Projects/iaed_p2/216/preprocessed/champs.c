@@ -24,10 +24,8 @@ void bubble(list *aux)
     {
       if (getHashKey(ptr->name) > getHashKey(ptr->next->name))
       {
-        {
-          swap(ptr->name, ptr->next->name);
-          flag = 1;
-        }
+        swap(ptr->name, ptr->next->name);
+        flag = 1;
       }
       else
       {
@@ -48,82 +46,68 @@ void findChamps(list *tms)
   node *ptr = tms->head;
   if (tms == 0)
   {
-    {
-      free(aux);
-      return;
-    }
+    free(aux);
+    return;
   }
   else
   {
+    while (ptr)
     {
-      while (ptr)
+      if (m_wins < ptr->won)
       {
-        if (m_wins < ptr->won)
-        {
-          {
-            m_wins = ptr->won;
-          }
-        }
-        else
-        {
-          
-        }
-
-        ptr = ptr->next;
-      }
-
-      ptr = tms->head;
-      while (ptr)
-      {
-        if (m_wins == ptr->won)
-        {
-          {
-            if (aux->head == 0)
-            {
-              {
-                aux->head = ptr;
-              }
-            }
-            else
-            {
-              {
-                ptr->previous = aux->end;
-                aux->end->next = ptr;
-              }
-            }
-
-            aux->end = ptr;
-          }
-        }
-        else
-        {
-          
-        }
-
-        printf("%s\n", ptr->name);
-        ptr = ptr->next;
-      }
-
-      bubble(aux);
-      if (aux != 0)
-      {
-        {
-          printf("%d Melhores %d\n", counter, m_wins);
-          ptr = aux->head;
-          while (ptr)
-          {
-            printf("%d * %s\n", counter, ptr->name);
-            ptr = ptr->next;
-          }
-
-        }
+        m_wins = ptr->won;
       }
       else
       {
         
       }
 
+      ptr = ptr->next;
     }
+
+    ptr = tms->head;
+    while (ptr)
+    {
+      if (m_wins == ptr->won)
+      {
+        if (aux->head == 0)
+        {
+          aux->head = ptr;
+        }
+        else
+        {
+          ptr->previous = aux->end;
+          aux->end->next = ptr;
+        }
+
+        aux->end = ptr;
+      }
+      else
+      {
+        
+      }
+
+      printf("%s\n", ptr->name);
+      ptr = ptr->next;
+    }
+
+    bubble(aux);
+    if (aux != 0)
+    {
+      printf("%d Melhores %d\n", counter, m_wins);
+      ptr = aux->head;
+      while (ptr)
+      {
+        printf("%d * %s\n", counter, ptr->name);
+        ptr = ptr->next;
+      }
+
+    }
+    else
+    {
+      
+    }
+
   }
 
   deleteList(aux, 1);

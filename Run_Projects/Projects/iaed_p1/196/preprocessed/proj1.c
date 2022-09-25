@@ -218,9 +218,7 @@ void adiciona_stock(char info[])
   }
   else
   {
-    {
-      memoriaPRD[idp].stock += qtd;
-    }
+    memoriaPRD[idp].stock += qtd;
   }
 
 }
@@ -263,19 +261,17 @@ void adiciona_prd(char info[])
         }
         else
         {
+          memoriaENC[ide].peso += memoriaPRD[idp].peso * qtd;
+          memoriaPRD[idp].stock -= qtd;
+          if (memoriaENC[ide].interior[idp] == (-1))
           {
-            memoriaENC[ide].peso += memoriaPRD[idp].peso * qtd;
-            memoriaPRD[idp].stock -= qtd;
-            if (memoriaENC[ide].interior[idp] == (-1))
-            {
-              memoriaENC[ide].interior[idp] = qtd;
-            }
-            else
-            {
-              memoriaENC[ide].interior[idp] += qtd;
-            }
-
+            memoriaENC[ide].interior[idp] = qtd;
           }
+          else
+          {
+            memoriaENC[ide].interior[idp] += qtd;
+          }
+
         }
 
       }
@@ -325,21 +321,17 @@ void retira_prd(char info[])
     }
     else
     {
+      if (memoriaENC[ide].interior[idp] != (-1))
       {
-        if (memoriaENC[ide].interior[idp] != (-1))
-        {
-          {
-            memoriaPRD[idp].stock += memoriaENC[ide].interior[idp];
-            memoriaENC[ide].peso -= memoriaENC[ide].interior[idp] * memoriaPRD[idp].peso;
-            memoriaENC[ide].interior[idp] = -1;
-          }
-        }
-        else
-        {
-          
-        }
-
+        memoriaPRD[idp].stock += memoriaENC[ide].interior[idp];
+        memoriaENC[ide].peso -= memoriaENC[ide].interior[idp] * memoriaPRD[idp].peso;
+        memoriaENC[ide].interior[idp] = -1;
       }
+      else
+      {
+        
+      }
+
     }
 
   }
@@ -357,22 +349,20 @@ void custo_enc(char info[])
   }
   else
   {
+    for (idp = 0; idp < idp_gb; idp++)
     {
-      for (idp = 0; idp < idp_gb; idp++)
+      if (memoriaENC[ide].interior[idp] != (-1))
       {
-        if (memoriaENC[ide].interior[idp] != (-1))
-        {
-          total += memoriaPRD[idp].preco * memoriaENC[ide].interior[idp];
-        }
-        else
-        {
-          
-        }
-
+        total += memoriaPRD[idp].preco * memoriaENC[ide].interior[idp];
+      }
+      else
+      {
+        
       }
 
-      printf("Custo da encomenda %d %d.\n", ide, total);
     }
+
+    printf("Custo da encomenda %d %d.\n", ide, total);
   }
 
 }
@@ -408,17 +398,15 @@ void prd_em_enc(char info[])
     }
     else
     {
+      if (memoriaENC[ide].interior[idp] != (-1))
       {
-        if (memoriaENC[ide].interior[idp] != (-1))
-        {
-          printf("%s %d.\n", memoriaPRD[idp].desc, memoriaENC[ide].interior[idp]);
-        }
-        else
-        {
-          printf("%s 0.\n", memoriaPRD[idp].desc);
-        }
-
+        printf("%s %d.\n", memoriaPRD[idp].desc, memoriaENC[ide].interior[idp]);
       }
+      else
+      {
+        printf("%s 0.\n", memoriaPRD[idp].desc);
+      }
+
     }
 
   }
@@ -444,10 +432,8 @@ void max_prd(char info[])
   {
     if (memoriaENC[ide].interior[idp] > max_stock)
     {
-      {
-        max_stock = memoriaENC[ide].interior[idp];
-        max_ide = ide;
-      }
+      max_stock = memoriaENC[ide].interior[idp];
+      max_ide = ide;
     }
     else
     {
@@ -515,33 +501,29 @@ void l_prds_enc(char info[])
   }
   else
   {
+    for (idp = 0; idp < idp_gb; idp++)
     {
-      for (idp = 0; idp < idp_gb; idp++)
+      if (memoriaENC[ide].interior[idp] != (-1))
       {
-        if (memoriaENC[ide].interior[idp] != (-1))
-        {
-          {
-            copia_produtos[j++] = memoriaPRD[idp];
-            total_prd++;
-          }
-        }
-        else
-        {
-          
-        }
-
+        copia_produtos[j++] = memoriaPRD[idp];
+        total_prd++;
       }
-
-      idp_max = total_prd - 1;
-      ordena_descs(0, idp_max, copia_produtos);
-      printf("Encomenda %d\n", ide);
-      for (idp = 0; idp <= idp_max; idp++)
+      else
       {
-        produto = copia_produtos[idp];
-        printf("* %s %d %d\n", produto.desc, produto.preco, memoriaENC[ide].interior[produto.id]);
+        
       }
 
     }
+
+    idp_max = total_prd - 1;
+    ordena_descs(0, idp_max, copia_produtos);
+    printf("Encomenda %d\n", ide);
+    for (idp = 0; idp <= idp_max; idp++)
+    {
+      produto = copia_produtos[idp];
+      printf("* %s %d %d\n", produto.desc, produto.preco, memoriaENC[ide].interior[produto.id]);
+    }
+
   }
 
 }

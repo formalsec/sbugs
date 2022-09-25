@@ -78,10 +78,8 @@ node_jogo *_insere_jogo_lista(node_jogo *head, node_jogo *jogo, node_jogo **last
 {
   if (head == 0)
   {
-    {
-      *last = jogo;
-      return head = jogo;
-    }
+    *last = jogo;
+    return head = jogo;
   }
   else
   {
@@ -175,11 +173,9 @@ node_jogo *delete_node_list(node_jogo *head, char *nome)
   node_jogo *prev;
   if ((tmp != 0) && (strcmp(tmp->nome, nome) == 0))
   {
-    {
-      head = tmp->next;
-      free_node_jg(tmp);
-      return head;
-    }
+    head = tmp->next;
+    free_node_jg(tmp);
+    return head;
   }
   else
   {
@@ -220,9 +216,7 @@ node_jogo *remove_node_list(node_jogo *head, node_jogo *jogo, node_jogo **last)
 
   if (tmp == jogo)
   {
-    {
-      head = tmp->next_list;
-    }
+    head = tmp->next_list;
   }
   else
   {
@@ -231,9 +225,7 @@ node_jogo *remove_node_list(node_jogo *head, node_jogo *jogo, node_jogo **last)
 
   if (jogo->next_list != 0)
   {
-    {
-      jogo->next_list->prev_list = jogo->prev_list;
-    }
+    jogo->next_list->prev_list = jogo->prev_list;
   }
   else
   {
@@ -242,9 +234,7 @@ node_jogo *remove_node_list(node_jogo *head, node_jogo *jogo, node_jogo **last)
 
   if (jogo->prev_list != 0)
   {
-    {
-      jogo->prev_list->next_list = jogo->next_list;
-    }
+    jogo->prev_list->next_list = jogo->next_list;
   }
   else
   {

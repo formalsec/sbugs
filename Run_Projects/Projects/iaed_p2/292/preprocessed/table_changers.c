@@ -42,39 +42,33 @@ void Inseret(struct Jogos **jogos, struct Jogos **first, char rest[], int M, int
   t2[10 - 1] = '\0';
   s1 = new_sym_var(sizeof(int) * 8);
   s2 = new_sym_var(sizeof(int) * 8);
-  game = encontraJogo(jogos, ID, 0, M, NL, false_g);
+  game = encontraJogo(jogos, ID, false, M, NL, false_g);
   if (strcmp(game->ID, "none"))
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-      return;
-    }
+    printf("%d Jogo existente.\n", NL);
+    return;
   }
   else
   {
     
   }
 
-  equipa1 = encontraEquipa(equipas, t1, 0, N, NL, false_t);
+  equipa1 = encontraEquipa(equipas, t1, false, N, NL, false_t);
   if (!strcmp(equipa1->ID, "NONE"))
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    return;
   }
   else
   {
     
   }
 
-  equipa2 = encontraEquipa(equipas, t2, 0, N, NL, false_t);
+  equipa2 = encontraEquipa(equipas, t2, false, N, NL, false_t);
   if (!strcmp(equipa2->ID, "NONE"))
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -93,38 +87,30 @@ void Inseret(struct Jogos **jogos, struct Jogos **first, char rest[], int M, int
   id = hash(ID, M);
   if (jogos[id] == 0)
   {
-    {
-      jogos[id] = novoJogo;
-      novoJogo->next_tabela = 0;
-    }
+    jogos[id] = novoJogo;
+    novoJogo->next_tabela = 0;
   }
   else
   {
+    struct Jogos *aux = jogos[id];
+    while (aux->next_tabela)
     {
-      struct Jogos *aux = jogos[id];
-      while (aux->next_tabela)
-      {
-        aux = aux->next_tabela;
-      }
-
-      aux->next_tabela = novoJogo;
-      novoJogo->next_tabela = 0;
+      aux = aux->next_tabela;
     }
+
+    aux->next_tabela = novoJogo;
+    novoJogo->next_tabela = 0;
   }
 
   if (s1 > s2)
   {
-    {
-      equipa1->wins = equipa1->wins + 1;
-    }
+    equipa1->wins = equipa1->wins + 1;
   }
   else
   {
     if (s1 < s2)
     {
-      {
-        equipa2->wins = equipa2->wins + 1;
-      }
+      equipa2->wins = equipa2->wins + 1;
     }
     else
     {
@@ -135,23 +121,19 @@ void Inseret(struct Jogos **jogos, struct Jogos **first, char rest[], int M, int
 
   if ((*first) == 0)
   {
-    {
-      *first = novoJogo;
-      novoJogo->next = 0;
-      novoJogo->prev = 0;
-      *top = novoJogo;
-      return;
-    }
+    *first = novoJogo;
+    novoJogo->next = 0;
+    novoJogo->prev = 0;
+    *top = novoJogo;
+    return;
   }
   else
   {
-    {
-      jogo = *top;
-      jogo->next = novoJogo;
-      novoJogo->next = 0;
-      novoJogo->prev = jogo;
-      *top = novoJogo;
-    }
+    jogo = *top;
+    jogo->next = novoJogo;
+    novoJogo->next = 0;
+    novoJogo->prev = jogo;
+    *top = novoJogo;
   }
 
   return;
@@ -162,13 +144,11 @@ int InseretEquipa(struct Equipas **equipas, char ID[], int N, int NL, struct Equ
   struct Equipas *novaEquipa;
   struct Equipas *equipa1;
   int id;
-  equipa1 = encontraEquipa(equipas, ID, 0, N, NL, false_t);
+  equipa1 = encontraEquipa(equipas, ID, false, N, NL, false_t);
   if (strcmp(equipa1->ID, "NONE"))
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-      return 0;
-    }
+    printf("%d Equipa existente.\n", NL);
+    return 0;
   }
   else
   {
@@ -182,23 +162,19 @@ int InseretEquipa(struct Equipas **equipas, char ID[], int N, int NL, struct Equ
   id = hash(ID, N);
   if (equipas[id] == 0)
   {
-    {
-      equipas[id] = novaEquipa;
-      novaEquipa->next = 0;
-    }
+    equipas[id] = novaEquipa;
+    novaEquipa->next = 0;
   }
   else
   {
+    struct Equipas *prev = equipas[id];
+    while (prev->next)
     {
-      struct Equipas *prev = equipas[id];
-      while (prev->next)
-      {
-        prev = prev->next;
-      }
-
-      prev->next = novaEquipa;
-      novaEquipa->next = 0;
+      prev = prev->next;
     }
+
+    prev->next = novaEquipa;
+    novaEquipa->next = 0;
   }
 
   return 1;
@@ -227,144 +203,34 @@ void alteraScore(struct Jogos **jogos, char resto[], int M, int NL, struct Equip
   {
     if (!strcmp(id, next->ID))
     {
+      equipa1 = encontraEquipa(equipas, next->team_1, false, N, NL, false_t);
+      equipa2 = encontraEquipa(equipas, next->team_2, false, N, NL, false_t);
+      if (s1 > s2)
       {
-        equipa1 = encontraEquipa(equipas, next->team_1, 0, N, NL, false_t);
-        equipa2 = encontraEquipa(equipas, next->team_2, 0, N, NL, false_t);
-        if (s1 > s2)
+        if ((next->score1 == 0) && (next->score2 == 0))
         {
-          {
-            if ((next->score1 == 0) && (next->score2 == 0))
-            {
-              {
-                equipa1->wins = equipa1->wins + 1;
-              }
-            }
-            else
-            {
-              if (next->score1 < next->score2)
-              {
-                {
-                  equipa1->wins = equipa1->wins + 1;
-                  if (equipa2->wins > 0)
-                  {
-                    equipa2->wins = equipa2->wins - 1;
-                  }
-                  else
-                  {
-                    
-                  }
-
-                }
-              }
-              else
-              {
-                if (next->score1 == next->score2)
-                {
-                  {
-                    equipa1->wins = equipa1->wins + 1;
-                  }
-                }
-                else
-                {
-                  
-                }
-
-              }
-
-            }
-
-          }
+          equipa1->wins = equipa1->wins + 1;
         }
         else
         {
-          if (s1 < s2)
+          if (next->score1 < next->score2)
           {
+            equipa1->wins = equipa1->wins + 1;
+            if (equipa2->wins > 0)
             {
-              if ((next->score1 == 0) && (next->score2 == 0))
-              {
-                {
-                  equipa2->wins = equipa2->wins + 1;
-                }
-              }
-              else
-              {
-                if (next->score1 > next->score2)
-                {
-                  {
-                    if (equipa1->wins > 0)
-                    {
-                      equipa1->wins = equipa1->wins - 1;
-                    }
-                    else
-                    {
-                      
-                    }
-
-                    equipa2->wins = equipa2->wins + 1;
-                  }
-                }
-                else
-                {
-                  if (next->score1 == next->score2)
-                  {
-                    {
-                      equipa2->wins = equipa2->wins + 1;
-                    }
-                  }
-                  else
-                  {
-                    
-                  }
-
-                }
-
-              }
-
+              equipa2->wins = equipa2->wins - 1;
             }
+            else
+            {
+              
+            }
+
           }
           else
           {
-            if (s1 == s2)
+            if (next->score1 == next->score2)
             {
-              {
-                if (next->score1 > next->score2)
-                {
-                  {
-                    if (equipa1->wins > 0)
-                    {
-                      equipa1->wins = equipa1->wins - 1;
-                    }
-                    else
-                    {
-                      
-                    }
-
-                  }
-                }
-                else
-                {
-                  if (next->score1 < next->score2)
-                  {
-                    {
-                      if (equipa2->wins > 0)
-                      {
-                        equipa2->wins = equipa2->wins - 1;
-                      }
-                      else
-                      {
-                        
-                      }
-
-                    }
-                  }
-                  else
-                  {
-                    
-                  }
-
-                }
-
-              }
+              equipa1->wins = equipa1->wins + 1;
             }
             else
             {
@@ -375,10 +241,96 @@ void alteraScore(struct Jogos **jogos, char resto[], int M, int NL, struct Equip
 
         }
 
-        next->score1 = s1;
-        next->score2 = s2;
-        return;
       }
+      else
+      {
+        if (s1 < s2)
+        {
+          if ((next->score1 == 0) && (next->score2 == 0))
+          {
+            equipa2->wins = equipa2->wins + 1;
+          }
+          else
+          {
+            if (next->score1 > next->score2)
+            {
+              if (equipa1->wins > 0)
+              {
+                equipa1->wins = equipa1->wins - 1;
+              }
+              else
+              {
+                
+              }
+
+              equipa2->wins = equipa2->wins + 1;
+            }
+            else
+            {
+              if (next->score1 == next->score2)
+              {
+                equipa2->wins = equipa2->wins + 1;
+              }
+              else
+              {
+                
+              }
+
+            }
+
+          }
+
+        }
+        else
+        {
+          if (s1 == s2)
+          {
+            if (next->score1 > next->score2)
+            {
+              if (equipa1->wins > 0)
+              {
+                equipa1->wins = equipa1->wins - 1;
+              }
+              else
+              {
+                
+              }
+
+            }
+            else
+            {
+              if (next->score1 < next->score2)
+              {
+                if (equipa2->wins > 0)
+                {
+                  equipa2->wins = equipa2->wins - 1;
+                }
+                else
+                {
+                  
+                }
+
+              }
+              else
+              {
+                
+              }
+
+            }
+
+          }
+          else
+          {
+            
+          }
+
+        }
+
+      }
+
+      next->score1 = s1;
+      next->score2 = s2;
+      return;
     }
     else
     {
@@ -400,13 +352,11 @@ void deleteGame(struct Jogos **jogos, struct Jogos **tabela, char nome[], struct
   int score1;
   int score2;
   int x = hash(nome, M);
-  bool encontrou = 0;
+  bool encontrou = false;
   if ((elemento != 0) && (!strcmp(elemento->ID, nome)))
   {
-    {
-      *tabela = elemento->next;
-      encontrou = 1;
-    }
+    *tabela = elemento->next;
+    encontrou = true;
   }
   else
   {
@@ -415,50 +365,44 @@ void deleteGame(struct Jogos **jogos, struct Jogos **tabela, char nome[], struct
 
   if (!encontrou)
   {
+    elemento = encontraJogo(jogos, nome, false, M, NL, false_g);
+    if (!strcmp(elemento->ID, "none"))
     {
-      elemento = encontraJogo(jogos, nome, 0, M, NL, false_g);
-      if (!strcmp(elemento->ID, "none"))
-      {
-        {
-          printf("%d Jogo inexistente.\n", NL);
-          return;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (elemento->next != 0)
-      {
-        elemento->next->prev = elemento->prev;
-      }
-      else
-      {
-        
-      }
-
-      if (elemento == (*top))
-      {
-        {
-          *top = elemento->prev;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (elemento->prev != 0)
-      {
-        elemento->prev->next = elemento->next;
-      }
-      else
-      {
-        
-      }
-
+      printf("%d Jogo inexistente.\n", NL);
+      return;
     }
+    else
+    {
+      
+    }
+
+    if (elemento->next != 0)
+    {
+      elemento->next->prev = elemento->prev;
+    }
+    else
+    {
+      
+    }
+
+    if (elemento == (*top))
+    {
+      *top = elemento->prev;
+    }
+    else
+    {
+      
+    }
+
+    if (elemento->prev != 0)
+    {
+      elemento->prev->next = elemento->next;
+    }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -468,60 +412,48 @@ void deleteGame(struct Jogos **jogos, struct Jogos **tabela, char nome[], struct
   elemento = jogos[x];
   if ((jogos[x] != 0) && (!strcmp(elemento->ID, nome)))
   {
+    if (elemento->next_tabela != 0)
     {
-      if (elemento->next_tabela != 0)
+      jogos[x] = elemento->next_tabela;
+    }
+    else
+    {
+      if (elemento->next_tabela == 0)
       {
-        {
-          jogos[x] = elemento->next_tabela;
-        }
+        jogos[x] = 0;
       }
       else
       {
-        if (elemento->next_tabela == 0)
-        {
-          {
-            jogos[x] = 0;
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
     }
+
   }
   else
   {
+    while ((elemento != 0) && strcmp(elemento->ID, nome))
     {
-      while ((elemento != 0) && strcmp(elemento->ID, nome))
-      {
-        anterior = elemento;
-        elemento = elemento->next_tabela;
-      }
-
-      anterior->next_tabela = elemento->next_tabela;
+      anterior = elemento;
+      elemento = elemento->next_tabela;
     }
+
+    anterior->next_tabela = elemento->next_tabela;
   }
 
   score1 = elemento->score1;
   score2 = elemento->score2;
   if (score1 > score2)
   {
-    {
-      equipa1 = encontraEquipa(equipas, elemento->team_1, 0, N, NL, false_t);
-      equipa1->wins = equipa1->wins - 1;
-    }
+    equipa1 = encontraEquipa(equipas, elemento->team_1, false, N, NL, false_t);
+    equipa1->wins = equipa1->wins - 1;
   }
   else
   {
     if (score2 > score1)
     {
-      {
-        equipa1 = encontraEquipa(equipas, elemento->team_2, 0, N, NL, false_t);
-        equipa1->wins = equipa1->wins - 1;
-      }
+      equipa1 = encontraEquipa(equipas, elemento->team_2, false, N, NL, false_t);
+      equipa1->wins = equipa1->wins - 1;
     }
     else
     {
@@ -555,18 +487,16 @@ void freeStruct(struct Jogos **head, struct Equipas **equipas, int N)
   {
     if (equipas[i] != 0)
     {
+      struct Equipas *prev;
+      struct Equipas *temp = equipas[i];
+      while (temp != 0)
       {
-        struct Equipas *prev;
-        struct Equipas *temp = equipas[i];
-        while (temp != 0)
-        {
-          prev = temp;
-          temp = temp->next;
-          free(prev->ID);
-          free(prev);
-        }
-
+        prev = temp;
+        temp = temp->next;
+        free(prev->ID);
+        free(prev);
       }
+
     }
     else
     {

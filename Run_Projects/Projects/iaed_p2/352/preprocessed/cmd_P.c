@@ -19,10 +19,8 @@ void cmd_P()
   aux = HashTeams[indice_equipa];
   if (aux == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", nl);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", nl);
+    return;
   }
   else
   {
@@ -31,27 +29,23 @@ void cmd_P()
 
   if (strcmp(aux->nome_equipa, nome_equipa) != 0)
   {
+    while ((aux != 0) && strcmp(aux->nome_equipa, nome_equipa))
     {
-      while ((aux != 0) && strcmp(aux->nome_equipa, nome_equipa))
-      {
-        aux = aux->next;
-      }
+      aux = aux->next;
+    }
 
-      if (aux == 0)
-      {
-        {
-          printf("%d Equipa inexistente.\n", nl);
-          return;
-        }
-      }
-      else
-      {
-        
-      }
-
-      printf("%d %s %d\n", nl, aux->nome_equipa, aux->vitorias);
+    if (aux == 0)
+    {
+      printf("%d Equipa inexistente.\n", nl);
       return;
     }
+    else
+    {
+      
+    }
+
+    printf("%d %s %d\n", nl, aux->nome_equipa, aux->vitorias);
+    return;
   }
   else
   {

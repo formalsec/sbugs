@@ -19,12 +19,10 @@ void lista_melhores_aux(lista_equipas *heads_eq, int mais_vitorias, int tamanho,
     {
       if (aux->equipa->vitorias == mais_vitorias)
       {
-        {
-          size = strlen(aux->equipa->nome) + 1;
-          Equipas_mais_vit[k] = malloc(size);
-          strcpy(Equipas_mais_vit[k], aux->equipa->nome);
-          k++;
-        }
+        size = strlen(aux->equipa->nome) + 1;
+        Equipas_mais_vit[k] = malloc(size);
+        strcpy(Equipas_mais_vit[k], aux->equipa->nome);
+        k++;
       }
       else
       {

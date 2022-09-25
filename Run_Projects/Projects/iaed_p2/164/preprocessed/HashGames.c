@@ -95,10 +95,8 @@ Node *ExpandGames(Node *hash_game, int *n_games, int *m)
   for (; count < (*n_games); i++)
     if (hash_game[i] != 0)
   {
-    {
-      HashGamesInsert(new_hash_game, hash_game[i], m);
-      count++;
-    }
+    HashGamesInsert(new_hash_game, hash_game[i], m);
+    count++;
   }
   else
   {

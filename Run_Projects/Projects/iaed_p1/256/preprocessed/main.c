@@ -68,11 +68,9 @@ int partition(Product v[], int l, int r)
 
     if (i < j)
     {
-      {
-        Product C = v[i];
-        v[i] = v[j];
-        v[j] = C;
-      }
+      Product C = v[i];
+      v[i] = v[j];
+      v[j] = C;
     }
     else
     {
@@ -95,11 +93,9 @@ void quicksort(Product v[], int l, int r)
 {
   if (r > l)
   {
-    {
-      int i = partition(v, l, r);
-      quicksort(v, l, i - 1);
-      quicksort(v, i + 1, r);
-    }
+    int i = partition(v, l, r);
+    quicksort(v, l, i - 1);
+    quicksort(v, i + 1, r);
   }
   else
   {
@@ -114,7 +110,7 @@ bool productInOrder(int idp, int ide)
   for (i = 0; i < orders[ide].numOfProds; i++)
     if (orders[ide].products[i].id == idp)
   {
-    return 1;
+    return true;
   }
   else
   {
@@ -122,7 +118,7 @@ bool productInOrder(int idp, int ide)
   }
 
 
-  return 0;
+  return false;
 }
 
 Product createProduct(char *str[])
@@ -173,14 +169,12 @@ void newOrder()
   ORDERID++;
   if (ORDERID < 500)
   {
-    {
-      o.id = ORDERID;
-      o.weight = 0;
-      o.numOfProds = 0;
-      orders[ORDERID] = o;
-      NUMBEROFORDERS++;
-      printf("Nova encomenda %d.\n", o.id);
-    }
+    o.id = ORDERID;
+    o.weight = 0;
+    o.numOfProds = 0;
+    orders[ORDERID] = o;
+    NUMBEROFORDERS++;
+    printf("Nova encomenda %d.\n", o.id);
   }
   else
   {
@@ -220,44 +214,36 @@ void addProductToOrder(char *str[])
         }
         else
         {
+          if (!productInOrder(idp, ide))
           {
-            if (!productInOrder(idp, ide))
+            strcpy(orders[ide].products[orders[ide].numOfProds].desc, p.desc);
+            orders[ide].products[orders[ide].numOfProds].id = p.id;
+            orders[ide].products[orders[ide].numOfProds].price = p.price;
+            orders[ide].products[orders[ide].numOfProds].weight = p.weight;
+            orders[ide].products[orders[ide].numOfProds].quant = qtd;
+            products[p.id].quant -= qtd;
+            orders[ide].weight += qtd * p.weight;
+            orders[ide].numOfProds++;
+          }
+          else
+          {
+            for (i = 0; i < orders[ide].numOfProds; i++)
             {
+              if (orders[ide].products[i].id == idp)
               {
-                strcpy(orders[ide].products[orders[ide].numOfProds].desc, p.desc);
-                orders[ide].products[orders[ide].numOfProds].id = p.id;
-                orders[ide].products[orders[ide].numOfProds].price = p.price;
-                orders[ide].products[orders[ide].numOfProds].weight = p.weight;
-                orders[ide].products[orders[ide].numOfProds].quant = qtd;
+                orders[ide].products[i].quant += qtd;
                 products[p.id].quant -= qtd;
                 orders[ide].weight += qtd * p.weight;
-                orders[ide].numOfProds++;
               }
-            }
-            else
-            {
+              else
               {
-                for (i = 0; i < orders[ide].numOfProds; i++)
-                {
-                  if (orders[ide].products[i].id == idp)
-                  {
-                    {
-                      orders[ide].products[i].quant += qtd;
-                      products[p.id].quant -= qtd;
-                      orders[ide].weight += qtd * p.weight;
-                    }
-                  }
-                  else
-                  {
-                    
-                  }
-
-                }
-
+                
               }
+
             }
 
           }
+
         }
 
       }
@@ -309,47 +295,39 @@ void removeFromOrder(char *str[])
     }
     else
     {
+      if (productInOrder(idp, ide))
       {
-        if (productInOrder(idp, ide))
+        for (i = 0; i < orders[ide].numOfProds; ++i)
         {
+          if ((orders[ide].products[i].id == idp) || (flag == 1))
           {
-            for (i = 0; i < orders[ide].numOfProds; ++i)
+            if (flag == 0)
             {
-              if ((orders[ide].products[i].id == idp) || (flag == 1))
-              {
-                {
-                  if (flag == 0)
-                  {
-                    {
-                      orders[ide].weight -= products[idp].weight * orders[ide].products[i].quant;
-                      products[idp].quant += orders[ide].products[i].quant;
-                    }
-                  }
-                  else
-                  {
-                    
-                  }
-
-                  orders[ide].products[i] = orders[ide].products[i + 1];
-                  flag = 1;
-                }
-              }
-              else
-              {
-                
-              }
-
+              orders[ide].weight -= products[idp].weight * orders[ide].products[i].quant;
+              products[idp].quant += orders[ide].products[i].quant;
+            }
+            else
+            {
+              
             }
 
-            orders[ide].numOfProds--;
+            orders[ide].products[i] = orders[ide].products[i + 1];
+            flag = 1;
           }
-        }
-        else
-        {
-          
+          else
+          {
+            
+          }
+
         }
 
+        orders[ide].numOfProds--;
       }
+      else
+      {
+        
+      }
+
     }
 
   }
@@ -367,20 +345,18 @@ void getCost(char input[])
   }
   else
   {
+    for (i = 0; i < orders[ide].numOfProds; ++i)
+      if ((orders[ide].products[i].quant > 0) && (orders[ide].products[i].price > 0))
     {
-      for (i = 0; i < orders[ide].numOfProds; ++i)
-        if ((orders[ide].products[i].quant > 0) && (orders[ide].products[i].price > 0))
-      {
-        cost += orders[ide].products[i].price * orders[ide].products[i].quant;
-      }
-      else
-      {
-        
-      }
-
-
-      printf("Custo da encomenda %d %d.\n", ide, cost);
+      cost += orders[ide].products[i].price * orders[ide].products[i].quant;
     }
+    else
+    {
+      
+    }
+
+
+    printf("Custo da encomenda %d %d.\n", ide, cost);
   }
 
 }
@@ -397,22 +373,20 @@ void changePrice(char *str[])
   }
   else
   {
+    products[idp].price = price;
+    for (i = 0; i < NUMBEROFORDERS; i++)
+      for (j = 0; j < orders[i].numOfProds; j++)
+      if (orders[i].products[j].id == idp)
     {
-      products[idp].price = price;
-      for (i = 0; i < NUMBEROFORDERS; i++)
-        for (j = 0; j < orders[i].numOfProds; j++)
-        if (orders[i].products[j].id == idp)
-      {
-        orders[i].products[j].price = price;
-      }
-      else
-      {
-        
-      }
-
-
-
+      orders[i].products[j].price = price;
     }
+    else
+    {
+      
+    }
+
+
+
   }
 
 }
@@ -441,22 +415,18 @@ void listProductInOrder(char *str[])
       }
       else
       {
+        for (i = 0; i < orders[ide].numOfProds; i++)
+          if (orders[ide].products[i].id == idp)
         {
-          for (i = 0; i < orders[ide].numOfProds; i++)
-            if (orders[ide].products[i].id == idp)
-          {
-            {
-              printf("%s %d.\n", p.desc, orders[ide].products[i].quant);
-              break;
-            }
-          }
-          else
-          {
-            
-          }
-
-
+          printf("%s %d.\n", p.desc, orders[ide].products[i].quant);
+          break;
         }
+        else
+        {
+          
+        }
+
+
       }
 
     }
@@ -478,32 +448,28 @@ void orderWithMostProduct(char *str[])
   }
   else
   {
+    for (i = 0; i < NUMBEROFORDERS; i++)
+      for (j = 0; j < orders[i].numOfProds; j++)
+      if ((orders[i].products[j].id == idp) && (orders[i].products[j].quant > mostQuant))
     {
-      for (i = 0; i < NUMBEROFORDERS; i++)
-        for (j = 0; j < orders[i].numOfProds; j++)
-        if ((orders[i].products[j].id == idp) && (orders[i].products[j].quant > mostQuant))
-      {
-        {
-          ide = i, mostQuant = orders[i].products[j].quant;
-        }
-      }
-      else
-      {
-        
-      }
-
-
-
-      if (mostQuant > 0)
-      {
-        printf("Maximo produto %d %d %d.\n", idp, ide, mostQuant);
-      }
-      else
-      {
-        
-      }
-
+      ide = i, mostQuant = orders[i].products[j].quant;
     }
+    else
+    {
+      
+    }
+
+
+
+    if (mostQuant > 0)
+    {
+      printf("Maximo produto %d %d %d.\n", idp, ide, mostQuant);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -523,11 +489,9 @@ void listPerPrice()
     for (j = i + 1; j < NUMBEROFPRODUCTS; j++)
       if ((arr_temp[j].price == arr_temp[i].price) && (arr_temp[j].id < arr_temp[i].id))
     {
-      {
-        Product C = arr_temp[j];
-        arr_temp[j] = arr_temp[i];
-        arr_temp[i] = C;
-      }
+      Product C = arr_temp[j];
+      arr_temp[j] = arr_temp[i];
+      arr_temp[i] = C;
     }
     else
     {
@@ -557,34 +521,30 @@ void listAlphabetically(char input[])
   }
   else
   {
+    numOfProds = orders[ide].numOfProds;
+    for (i = 0; i < numOfProds; ++i)
+      array_temp[i] = orders[ide].products[i];
+
+    for (i = 0; i < numOfProds; ++i)
+      for (j = 0; j < numOfProds; ++j)
+      if (strcmp(array_temp[j].desc, array_temp[i].desc) > 0)
     {
-      numOfProds = orders[ide].numOfProds;
-      for (i = 0; i < numOfProds; ++i)
-        array_temp[i] = orders[ide].products[i];
-
-      for (i = 0; i < numOfProds; ++i)
-        for (j = 0; j < numOfProds; ++j)
-        if (strcmp(array_temp[j].desc, array_temp[i].desc) > 0)
-      {
-        {
-          Product C = array_temp[j];
-          array_temp[j] = array_temp[i];
-          array_temp[i] = C;
-        }
-      }
-      else
-      {
-        
-      }
-
-
-
-      ;
-      printf("Encomenda %d\n", ide);
-      for (i = 0; i < numOfProds; i++)
-        printf("* %s %d %d\n", array_temp[i].desc, array_temp[i].price, array_temp[i].quant);
-
+      Product C = array_temp[j];
+      array_temp[j] = array_temp[i];
+      array_temp[i] = C;
     }
+    else
+    {
+      
+    }
+
+
+
+    ;
+    printf("Encomenda %d\n", ide);
+    for (i = 0; i < numOfProds; i++)
+      printf("* %s %d %d\n", array_temp[i].desc, array_temp[i].price, array_temp[i].quant);
+
   }
 
 }

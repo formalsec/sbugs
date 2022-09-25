@@ -12,15 +12,13 @@ char *get_arg()
 {
   char input_char;
   int i = 0;
-  while (1)
+  while (true)
   {
     input_char = getchar();
     if (input_char == '\n')
     {
-      {
-        argument[i] = '\0';
-        return argument;
-      }
+      argument[i] = '\0';
+      return argument;
     }
     else
     {
@@ -29,10 +27,8 @@ char *get_arg()
 
     if (input_char == ':')
     {
-      {
-        argument[i] = '\0';
-        return argument;
-      }
+      argument[i] = '\0';
+      return argument;
     }
     else
     {
@@ -95,10 +91,8 @@ void handler_q()
   int qtd = atoi(get_arg());
   if (!existe_produto(idp))
   {
-    {
-      printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idp);
-      return;
-    }
+    printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idp);
+    return;
   }
   else
   {
@@ -124,10 +118,8 @@ void handler_A()
   sprintf(msg_err, "Impossivel adicionar produto %d a encomenda %d.", idp, ide);
   if (!existe_encomenda(ide))
   {
-    {
-      printf("%s Encomenda inexistente.\n", msg_err);
-      return;
-    }
+    printf("%s Encomenda inexistente.\n", msg_err);
+    return;
   }
   else
   {
@@ -136,10 +128,8 @@ void handler_A()
 
   if (!existe_produto(idp))
   {
-    {
-      printf("%s Produto inexistente.\n", msg_err);
-      return;
-    }
+    printf("%s Produto inexistente.\n", msg_err);
+    return;
   }
   else
   {
@@ -148,10 +138,8 @@ void handler_A()
 
   if (qtd > produtos[idp].qtd)
   {
-    {
-      printf("%s Quantidade em stock insuficiente.\n", msg_err);
-      return;
-    }
+    printf("%s Quantidade em stock insuficiente.\n", msg_err);
+    return;
   }
   else
   {
@@ -160,10 +148,8 @@ void handler_A()
 
   if (peso_final > 200)
   {
-    {
-      printf("%s Peso da encomenda excede o maximo de %d.\n", msg_err, 200);
-      return;
-    }
+    printf("%s Peso da encomenda excede o maximo de %d.\n", msg_err, 200);
+    return;
   }
   else
   {
@@ -182,10 +168,8 @@ void handler_r()
   sprintf(msg_err, "Impossivel remover stock do produto %d. ", idp);
   if (!existe_produto(idp))
   {
-    {
-      printf("%sProduto inexistente.\n", msg_err);
-      return;
-    }
+    printf("%sProduto inexistente.\n", msg_err);
+    return;
   }
   else
   {
@@ -194,10 +178,8 @@ void handler_r()
 
   if ((produtos[idp].qtd - qtd) < 0)
   {
-    {
-      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, idp);
-      return;
-    }
+    printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, idp);
+    return;
   }
   else
   {
@@ -215,10 +197,8 @@ void handler_R()
   sprintf(msg_err, "Impossivel remover produto %d a encomenda %d. ", idp, ide);
   if (!existe_encomenda(ide))
   {
-    {
-      printf("%sEncomenda inexistente.\n", msg_err);
-      return;
-    }
+    printf("%sEncomenda inexistente.\n", msg_err);
+    return;
   }
   else
   {
@@ -227,10 +207,8 @@ void handler_R()
 
   if (!existe_produto(idp))
   {
-    {
-      printf("%sProduto inexistente.\n", msg_err);
-      return;
-    }
+    printf("%sProduto inexistente.\n", msg_err);
+    return;
   }
   else
   {
@@ -249,10 +227,8 @@ void handler_C()
   int i;
   if (!existe_encomenda(ide))
   {
-    {
-      printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ide);
-      return;
-    }
+    printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ide);
+    return;
   }
   else
   {
@@ -271,10 +247,8 @@ void handler_p()
   int preco = atoi(get_arg());
   if (!existe_produto(idp))
   {
-    {
-      printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idp);
-      return;
-    }
+    printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idp);
+    return;
   }
   else
   {
@@ -290,10 +264,8 @@ void handler_E()
   int idp = atoi(get_arg());
   if (!existe_encomenda(ide))
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
-      return;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
+    return;
   }
   else
   {
@@ -302,10 +274,8 @@ void handler_E()
 
   if (!existe_produto(idp))
   {
-    {
-      printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
-      return;
-    }
+    printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
+    return;
   }
   else
   {
@@ -323,10 +293,8 @@ void handler_m()
   int qtd = 0;
   if (!existe_produto(idp))
   {
-    {
-      printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idp);
-      return;
-    }
+    printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idp);
+    return;
   }
   else
   {
@@ -346,10 +314,8 @@ void handler_m()
 
     if (encomendas[i].produtos[idp].qtd > qtd)
     {
-      {
-        ide_res = i;
-        qtd = encomendas[i].produtos[idp].qtd;
-      }
+      ide_res = i;
+      qtd = encomendas[i].produtos[idp].qtd;
     }
     else
     {
@@ -561,10 +527,8 @@ void handler_L()
   struct produto pdt;
   if (!existe_encomenda(ide))
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
-      return;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
+    return;
   }
   else
   {
@@ -576,10 +540,8 @@ void handler_L()
   {
     if (encomendas[ide].produtos[i].qtd > 0)
     {
-      {
-        nr_ids++;
-        ls_idps[nr_ids] = i;
-      }
+      nr_ids++;
+      ls_idps[nr_ids] = i;
     }
     else
     {
@@ -600,11 +562,9 @@ void handler_L()
 
   if (index_range[1] == 0)
   {
-    {
-      pdt = produtos[ls_idps[0]];
-      printf("* %s %d %d\n", pdt.descricao, pdt.preco, encomendas[ide].produtos[ls_idps[0]].qtd);
-      return;
-    }
+    pdt = produtos[ls_idps[0]];
+    printf("* %s %d %d\n", pdt.descricao, pdt.preco, encomendas[ide].produtos[ls_idps[0]].qtd);
+    return;
   }
   else
   {
@@ -623,14 +583,12 @@ void handler_L()
 int main()
 {
   char command;
-  while (1)
+  while (true)
   {
     command = getchar();
     if (command == 'x')
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {

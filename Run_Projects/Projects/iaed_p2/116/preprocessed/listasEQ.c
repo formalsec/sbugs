@@ -28,16 +28,12 @@ Link addEqLista(Link head, Equipa *equipa)
 {
   if (head == 0)
   {
-    {
-      return criaNode(equipa);
-    }
+    return criaNode(equipa);
   }
   else
   {
-    {
-      head->next = addEqLista(head->next, equipa);
-      return head;
-    }
+    head->next = addEqLista(head->next, equipa);
+    return head;
   }
 
 }
@@ -50,23 +46,17 @@ Link apagaNode(Link head, Equipa *equipa)
   {
     if (link->equipa == equipa)
     {
+      if (link == head)
       {
-        if (link == head)
-        {
-          {
-            head = link->next;
-          }
-        }
-        else
-        {
-          {
-            _link->next = link->next;
-          }
-        }
-
-        freeNode(link);
-        break;
+        head = link->next;
       }
+      else
+      {
+        _link->next = link->next;
+      }
+
+      freeNode(link);
+      break;
     }
     else
     {
@@ -94,9 +84,7 @@ Equipa *procuraEquipa(Link head, char *nome)
   {
     if (strcmp(head->equipa->nome, nome) == 0)
     {
-      {
-        return head->equipa;
-      }
+      return head->equipa;
     }
     else
     {

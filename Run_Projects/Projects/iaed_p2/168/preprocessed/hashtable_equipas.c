@@ -25,13 +25,11 @@ void HTinsere_equipa(Equipa *equipa, Equipa **equipas, int dim)
   }
   else
   {
-    {
-      equipa_aux = equipas[chave];
-      while (equipa_aux->next != 0)
-        equipa_aux = equipa_aux->next;
+    equipa_aux = equipas[chave];
+    while (equipa_aux->next != 0)
+      equipa_aux = equipa_aux->next;
 
-      equipa_aux->next = equipa;
-    }
+    equipa_aux->next = equipa;
   }
 
 }
@@ -46,21 +44,19 @@ Equipa *HTprocura_equipa(char *nome, Equipa **equipas, int dim)
   }
   else
   {
+    equipa_aux = equipas[chave];
+    while ((strcmp(nome, equipa_aux->nome) != 0) && (equipa_aux->next != 0))
+      equipa_aux = equipa_aux->next;
+
+    if (strcmp(nome, equipa_aux->nome) == 0)
     {
-      equipa_aux = equipas[chave];
-      while ((strcmp(nome, equipa_aux->nome) != 0) && (equipa_aux->next != 0))
-        equipa_aux = equipa_aux->next;
-
-      if (strcmp(nome, equipa_aux->nome) == 0)
-      {
-        return equipa_aux;
-      }
-      else
-      {
-        return 0;
-      }
-
+      return equipa_aux;
     }
+    else
+    {
+      return 0;
+    }
+
   }
 
 }
@@ -73,39 +69,35 @@ void quicksort_equipas(Equipa **equipas, int first, int last)
   Equipa *temp;
   if (first < last)
   {
+    prim = first;
+    i = first;
+    j = last;
+    while (i < j)
     {
-      prim = first;
-      i = first;
-      j = last;
-      while (i < j)
+      while ((strcmp(equipas[i]->nome, equipas[prim]->nome) <= 0) && (i < last))
+        i++;
+
+      while (strcmp(equipas[j]->nome, equipas[prim]->nome) > 0)
+        j--;
+
+      if (i < j)
       {
-        while ((strcmp(equipas[i]->nome, equipas[prim]->nome) <= 0) && (i < last))
-          i++;
-
-        while (strcmp(equipas[j]->nome, equipas[prim]->nome) > 0)
-          j--;
-
-        if (i < j)
-        {
-          {
-            temp = equipas[i];
-            equipas[i] = equipas[j];
-            equipas[j] = temp;
-          }
-        }
-        else
-        {
-          
-        }
-
+        temp = equipas[i];
+        equipas[i] = equipas[j];
+        equipas[j] = temp;
+      }
+      else
+      {
+        
       }
 
-      temp = equipas[prim];
-      equipas[prim] = equipas[j];
-      equipas[j] = temp;
-      quicksort_equipas(equipas, first, j - 1);
-      quicksort_equipas(equipas, j + 1, last);
     }
+
+    temp = equipas[prim];
+    equipas[prim] = equipas[j];
+    equipas[j] = temp;
+    quicksort_equipas(equipas, first, j - 1);
+    quicksort_equipas(equipas, j + 1, last);
   }
   else
   {
@@ -148,11 +140,9 @@ void HTencontra_mais_vitorias(Equipa **equipas, int dim, int conta_linhas)
     {
       if (aux->numero_vitorias == max_vitorias)
       {
-        {
-          equipas_vencedoras[j] = aux;
-          j++;
-          equipas_vencedoras = realloc(equipas_vencedoras, (j + 1) * (sizeof(Equipa)));
-        }
+        equipas_vencedoras[j] = aux;
+        j++;
+        equipas_vencedoras = realloc(equipas_vencedoras, (j + 1) * (sizeof(Equipa)));
       }
       else
       {
@@ -166,10 +156,8 @@ void HTencontra_mais_vitorias(Equipa **equipas, int dim, int conta_linhas)
 
   if (j == 0)
   {
-    {
-      free(equipas_vencedoras);
-      return;
-    }
+    free(equipas_vencedoras);
+    return;
   }
   else
   {

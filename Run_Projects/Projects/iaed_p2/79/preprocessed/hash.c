@@ -56,11 +56,9 @@ void insere_equipa(pListas lista_equipas, link_equipa nova_equipa)
 {
   if (lista_equipas->head_equipas == 0)
   {
-    {
-      lista_equipas->head_equipas = nova_equipa;
-      lista_equipas->tail_equipas = nova_equipa;
-      return;
-    }
+    lista_equipas->head_equipas = nova_equipa;
+    lista_equipas->tail_equipas = nova_equipa;
+    return;
   }
   else
   {
@@ -76,11 +74,9 @@ void insere_jogo_hash(pListas lista_jogos, link_jogo novo_jogo)
 {
   if (lista_jogos->head_jogos == 0)
   {
-    {
-      lista_jogos->head_jogos = novo_jogo;
-      lista_jogos->tail_jogos = novo_jogo;
-      return;
-    }
+    lista_jogos->head_jogos = novo_jogo;
+    lista_jogos->tail_jogos = novo_jogo;
+    return;
   }
   else
   {
@@ -96,11 +92,9 @@ void insere_jogo_lista_ordenada(pLst_Ord lista_jogos, link_jogo novo_jogo)
 {
   if (lista_jogos->head_jogos == 0)
   {
-    {
-      lista_jogos->head_jogos = novo_jogo;
-      lista_jogos->tail_jogos = novo_jogo;
-      return;
-    }
+    lista_jogos->head_jogos = novo_jogo;
+    lista_jogos->tail_jogos = novo_jogo;
+    return;
   }
   else
   {
@@ -118,9 +112,7 @@ link_equipa procura_equipa(pListas *listas, char *nome, int m)
   link_equipa link;
   if (listas[index]->head_equipas == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -149,9 +141,7 @@ link_jogo procura_jogo(pListas *listas, char *nome, int m)
   link_jogo link;
   if (listas[index]->head_jogos == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -182,28 +172,26 @@ void elimina_hash(pListas lista_jogos, char *nome)
   {
     if (!strcmp(link->jogo->nome, nome))
     {
+      if (link == lista_jogos->head_jogos)
       {
-        if (link == lista_jogos->head_jogos)
-        {
-          lista_jogos->head_jogos = link->next;
-        }
-        else
-        {
-          prev->next = link->next;
-        }
-
-        if (link == lista_jogos->tail_jogos)
-        {
-          lista_jogos->tail_jogos = prev;
-        }
-        else
-        {
-          
-        }
-
-        free(link);
-        break;
+        lista_jogos->head_jogos = link->next;
       }
+      else
+      {
+        prev->next = link->next;
+      }
+
+      if (link == lista_jogos->tail_jogos)
+      {
+        lista_jogos->tail_jogos = prev;
+      }
+      else
+      {
+        
+      }
+
+      free(link);
+      break;
     }
     else
     {
@@ -223,32 +211,30 @@ void elimina_lista_ordenada(pLst_Ord lista_jogos, char *nome)
   {
     if (!strcmp(link->jogo->nome, nome))
     {
+      if (link == lista_jogos->head_jogos)
       {
-        if (link == lista_jogos->head_jogos)
-        {
-          lista_jogos->head_jogos = link->next;
-        }
-        else
-        {
-          prev->next = link->next;
-        }
-
-        if (link == lista_jogos->tail_jogos)
-        {
-          lista_jogos->tail_jogos = prev;
-        }
-        else
-        {
-          
-        }
-
-        free(link->jogo->equipa_1);
-        free(link->jogo->equipa_2);
-        free(link->jogo->nome);
-        free(link->jogo);
-        free(link);
-        break;
+        lista_jogos->head_jogos = link->next;
       }
+      else
+      {
+        prev->next = link->next;
+      }
+
+      if (link == lista_jogos->tail_jogos)
+      {
+        lista_jogos->tail_jogos = prev;
+      }
+      else
+      {
+        
+      }
+
+      free(link->jogo->equipa_1);
+      free(link->jogo->equipa_2);
+      free(link->jogo->nome);
+      free(link->jogo);
+      free(link);
+      break;
     }
     else
     {
@@ -274,11 +260,9 @@ void adiciona_equipa(int NL, pListas *listas, pLst_Ord lista_ordenada, int m)
   index = hashU(nome, m);
   if (procura_equipa(listas, nome, m) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-      free(nova_equipa);
-      return;
-    }
+    printf("%d Equipa existente.\n", NL);
+    free(nova_equipa);
+    return;
   }
   else
   {
@@ -328,12 +312,10 @@ void adiciona_jogo(int NL, pListas *listas, pLst_Ord lista_ordenada, int m)
   index = hashU(nome, m);
   if (procura_jogo(listas, nome, m) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-      free(novo_jogo_hash);
-      free(novo_jogo_lista_ordenada);
-      return;
-    }
+    printf("%d Jogo existente.\n", NL);
+    free(novo_jogo_hash);
+    free(novo_jogo_lista_ordenada);
+    return;
   }
   else
   {
@@ -342,12 +324,10 @@ void adiciona_jogo(int NL, pListas *listas, pLst_Ord lista_ordenada, int m)
 
   if ((procura_equipa(listas, equipa_1, m) == 0) || (procura_equipa(listas, equipa_2, m) == 0))
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      free(novo_jogo_hash);
-      free(novo_jogo_lista_ordenada);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    free(novo_jogo_hash);
+    free(novo_jogo_lista_ordenada);
+    return;
   }
   else
   {
@@ -356,19 +336,15 @@ void adiciona_jogo(int NL, pListas *listas, pLst_Ord lista_ordenada, int m)
 
   if (pontuacao_1 > pontuacao_2)
   {
-    {
-      equipa_vencedora = procura_equipa(listas, equipa_1, m);
-      equipa_vencedora->equipa->vitorias++;
-    }
+    equipa_vencedora = procura_equipa(listas, equipa_1, m);
+    equipa_vencedora->equipa->vitorias++;
   }
   else
   {
     if (pontuacao_2 > pontuacao_1)
     {
-      {
-        equipa_vencedora = procura_equipa(listas, equipa_2, m);
-        equipa_vencedora->equipa->vitorias++;
-      }
+      equipa_vencedora = procura_equipa(listas, equipa_2, m);
+      equipa_vencedora->equipa->vitorias++;
     }
     else
     {
@@ -404,10 +380,8 @@ void consulta_equipa(int NL, pListas *listas, int m)
   link = procura_equipa(listas, nome, m);
   if (link == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -433,10 +407,8 @@ void consulta_jogo(int NL, pListas *listas, int m)
   link = procura_jogo(listas, nome, m);
   if (link == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -453,9 +425,7 @@ void jogos_ordenados(int NL, pLst_Ord lista_ordenada)
   link_jogo link;
   if (lista_ordenada->head_jogos == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -487,10 +457,8 @@ void remove_jogo(int NL, pListas *listas, pLst_Ord lista_ordenada, int m)
   link = procura_jogo(listas, nome, m);
   if (link == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -501,19 +469,15 @@ void remove_jogo(int NL, pListas *listas, pLst_Ord lista_ordenada, int m)
   pontuacao_2 = link->jogo->pontuacao[1];
   if (pontuacao_1 > pontuacao_2)
   {
-    {
-      equipa_vencedora = procura_equipa(listas, link->jogo->equipa_1, m);
-      equipa_vencedora->equipa->vitorias--;
-    }
+    equipa_vencedora = procura_equipa(listas, link->jogo->equipa_1, m);
+    equipa_vencedora->equipa->vitorias--;
   }
   else
   {
     if (pontuacao_2 > pontuacao_1)
     {
-      {
-        equipa_vencedora = procura_equipa(listas, link->jogo->equipa_2, m);
-        equipa_vencedora->equipa->vitorias--;
-      }
+      equipa_vencedora = procura_equipa(listas, link->jogo->equipa_2, m);
+      equipa_vencedora->equipa->vitorias--;
     }
     else
     {
@@ -549,10 +513,8 @@ void altera_pontuacao(int NL, pListas *listas, int m)
   link = procura_jogo(listas, nome, m);
   if (link == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -565,59 +527,47 @@ void altera_pontuacao(int NL, pListas *listas, int m)
   link->jogo->pontuacao[1] = pontuacao_2_nova;
   if ((pontuacao_1_antiga < pontuacao_2_antiga) && (pontuacao_1_nova == pontuacao_2_nova))
   {
-    {
-      equipa_derrotada = procura_equipa(listas, link->jogo->equipa_2, m);
-      equipa_derrotada->equipa->vitorias--;
-    }
+    equipa_derrotada = procura_equipa(listas, link->jogo->equipa_2, m);
+    equipa_derrotada->equipa->vitorias--;
   }
   else
   {
     if ((pontuacao_1_antiga < pontuacao_2_antiga) && (pontuacao_1_nova > pontuacao_2_nova))
     {
-      {
-        equipa_vencedora = procura_equipa(listas, link->jogo->equipa_1, m);
-        equipa_derrotada = procura_equipa(listas, link->jogo->equipa_2, m);
-        equipa_vencedora->equipa->vitorias++;
-        equipa_derrotada->equipa->vitorias--;
-      }
+      equipa_vencedora = procura_equipa(listas, link->jogo->equipa_1, m);
+      equipa_derrotada = procura_equipa(listas, link->jogo->equipa_2, m);
+      equipa_vencedora->equipa->vitorias++;
+      equipa_derrotada->equipa->vitorias--;
     }
     else
     {
       if ((pontuacao_1_antiga > pontuacao_2_antiga) && (pontuacao_1_nova == pontuacao_2_nova))
       {
-        {
-          equipa_derrotada = procura_equipa(listas, link->jogo->equipa_1, m);
-          equipa_derrotada->equipa->vitorias--;
-        }
+        equipa_derrotada = procura_equipa(listas, link->jogo->equipa_1, m);
+        equipa_derrotada->equipa->vitorias--;
       }
       else
       {
         if ((pontuacao_1_antiga > pontuacao_2_antiga) && (pontuacao_1_nova < pontuacao_2_nova))
         {
-          {
-            equipa_vencedora = procura_equipa(listas, link->jogo->equipa_2, m);
-            equipa_derrotada = procura_equipa(listas, link->jogo->equipa_1, m);
-            equipa_vencedora->equipa->vitorias++;
-            equipa_derrotada->equipa->vitorias--;
-          }
+          equipa_vencedora = procura_equipa(listas, link->jogo->equipa_2, m);
+          equipa_derrotada = procura_equipa(listas, link->jogo->equipa_1, m);
+          equipa_vencedora->equipa->vitorias++;
+          equipa_derrotada->equipa->vitorias--;
         }
         else
         {
           if ((pontuacao_1_antiga == pontuacao_2_antiga) && (pontuacao_1_nova < pontuacao_2_nova))
           {
-            {
-              equipa_vencedora = procura_equipa(listas, link->jogo->equipa_2, m);
-              equipa_vencedora->equipa->vitorias++;
-            }
+            equipa_vencedora = procura_equipa(listas, link->jogo->equipa_2, m);
+            equipa_vencedora->equipa->vitorias++;
           }
           else
           {
             if ((pontuacao_1_antiga == pontuacao_2_antiga) && (pontuacao_1_nova > pontuacao_2_nova))
             {
-              {
-                equipa_vencedora = procura_equipa(listas, link->jogo->equipa_1, m);
-                equipa_vencedora->equipa->vitorias++;
-              }
+              equipa_vencedora = procura_equipa(listas, link->jogo->equipa_1, m);
+              equipa_vencedora->equipa->vitorias++;
             }
             else
             {
@@ -659,10 +609,8 @@ void ordena_equipas_vitorias(int NL, pLst_Ord lista_ordenada)
   pEquipa *equipas_vencedoras = (pEquipa *) malloc((sizeof(pEquipa)) * lista_ordenada->cont_equipas);
   if (!lista_ordenada->cont_equipas)
   {
-    {
-      free(equipas_vencedoras);
-      return;
-    }
+    free(equipas_vencedoras);
+    return;
   }
   else
   {
@@ -715,12 +663,10 @@ void free_jogos(link_jogo head_jogos, int flag_struct)
   {
     if (flag_struct == 0)
     {
-      {
-        free(link->jogo->nome);
-        free(link->jogo->equipa_1);
-        free(link->jogo->equipa_2);
-        free(link->jogo);
-      }
+      free(link->jogo->nome);
+      free(link->jogo->equipa_1);
+      free(link->jogo->equipa_2);
+      free(link->jogo);
     }
     else
     {

@@ -35,15 +35,11 @@ Team *add_end_team(List_Teams *l, char *eq)
   new->prev = l->last;
   if (l->last)
   {
-    {
-      l->last->next = new;
-    }
+    l->last->next = new;
   }
   else
   {
-    {
-      l->head = new;
-    }
+    l->head = new;
   }
 
   l->last = new;
@@ -57,9 +53,7 @@ Team *search_team(List_Teams *l, char *nome)
   {
     if (!strcmp(t->nome_eq, nome))
     {
-      {
-        return t;
-      }
+      return t;
     }
     else
     {
@@ -91,28 +85,20 @@ void remove_team(List_Teams *l, char *eq)
   t = search_team(l, eq);
   if (t->prev == 0)
   {
-    {
-      l->head = t->next;
-    }
+    l->head = t->next;
   }
   else
   {
-    {
-      t->prev->next = t->next;
-    }
+    t->prev->next = t->next;
   }
 
   if (t->next == 0)
   {
-    {
-      l->last = t->prev;
-    }
+    l->last = t->prev;
   }
   else
   {
-    {
-      t->next->prev = t->prev;
-    }
+    t->next->prev = t->prev;
   }
 
   free_team(t);

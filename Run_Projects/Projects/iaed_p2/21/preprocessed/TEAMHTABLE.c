@@ -27,65 +27,51 @@ void teamInsert(Team team)
   int i = hashT(team->name);
   if (teamHeads[i] == 0)
   {
-    {
-      teamHeads[i] = (teamNode) malloc(sizeof(struct teamnode));
-      teamHeads[i]->team = team;
-      teamHeads[i]->next = 0;
-    }
+    teamHeads[i] = (teamNode) malloc(sizeof(struct teamnode));
+    teamHeads[i]->team = team;
+    teamHeads[i]->next = 0;
   }
   else
   {
+    teamNode newNode = (teamNode) malloc(sizeof(struct teamnode));
+    teamNode t;
+    teamNode prev;
+    newNode->team = team;
+    for (t = teamHeads[i], prev = 0; t != 0; prev = t, t = t->next)
     {
-      teamNode newNode = (teamNode) malloc(sizeof(struct teamnode));
-      teamNode t;
-      teamNode prev;
-      newNode->team = team;
-      for (t = teamHeads[i], prev = 0; t != 0; prev = t, t = t->next)
+      if (strcmp(t->team->name, team->name) > 0)
       {
-        if (strcmp(t->team->name, team->name) > 0)
+        if (t == teamHeads[i])
         {
-          {
-            if (t == teamHeads[i])
-            {
-              {
-                newNode->next = teamHeads[i];
-                teamHeads[i] = newNode;
-                break;
-              }
-            }
-            else
-            {
-              {
-                newNode->next = t;
-                prev->next = newNode;
-                break;
-              }
-            }
-
-          }
+          newNode->next = teamHeads[i];
+          teamHeads[i] = newNode;
+          break;
         }
         else
         {
-          {
-            if (t->next == 0)
-            {
-              {
-                newNode->next = 0;
-                t->next = newNode;
-                break;
-              }
-            }
-            else
-            {
-              
-            }
+          newNode->next = t;
+          prev->next = newNode;
+          break;
+        }
 
-          }
+      }
+      else
+      {
+        if (t->next == 0)
+        {
+          newNode->next = 0;
+          t->next = newNode;
+          break;
+        }
+        else
+        {
+          
         }
 
       }
 
     }
+
   }
 
 }
@@ -99,34 +85,26 @@ void teamDelete(Team team)
   {
     if (strcmp(t->team->name, team->name) == 0)
     {
+      if (t == teamHeads[i])
       {
-        if (t == teamHeads[i])
+        teamHeads[i] = t->next;
+      }
+      else
+      {
+        if (t->next == 0)
         {
-          {
-            teamHeads[i] = t->next;
-          }
+          prev->next = 0;
         }
         else
         {
-          if (t->next == 0)
-          {
-            {
-              prev->next = 0;
-            }
-          }
-          else
-          {
-            {
-              prev->next = t->next;
-            }
-          }
-
+          prev->next = t->next;
         }
 
-        free(t->team);
-        free(t);
-        break;
       }
+
+      free(t->team);
+      free(t);
+      break;
     }
     else
     {
@@ -145,9 +123,7 @@ teamNode teamSearch(char *name)
   {
     if (strcmp(aux->team->name, name) == 0)
     {
-      {
-        return aux;
-      }
+      return aux;
     }
     else
     {
@@ -163,11 +139,9 @@ void teamHashListFREE(teamNode t)
 {
   if (t != 0)
   {
-    {
-      freeTeam(t->team);
-      teamHashListFREE(t->next);
-      free(t);
-    }
+    freeTeam(t->team);
+    teamHashListFREE(t->next);
+    free(t);
   }
   else
   {
@@ -203,22 +177,18 @@ void addTeamNodeList(Team t)
 {
   if (THeadList == 0)
   {
-    {
-      THeadList = newTeamNode(t, THeadList);
-    }
+    THeadList = newTeamNode(t, THeadList);
   }
   else
   {
+    teamNode aux;
+    aux = THeadList;
+    while (aux->next != 0)
     {
-      teamNode aux;
-      aux = THeadList;
-      while (aux->next != 0)
-      {
-        aux = aux->next;
-      }
-
-      aux->next = newTeamNode(t, 0);
+      aux = aux->next;
     }
+
+    aux->next = newTeamNode(t, 0);
   }
 
 }
@@ -227,10 +197,8 @@ void TfreeHead(teamNode node)
 {
   if (node != 0)
   {
-    {
-      TfreeHead(node->next);
-      free(node);
-    }
+    TfreeHead(node->next);
+    free(node);
   }
   else
   {

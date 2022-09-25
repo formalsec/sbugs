@@ -34,12 +34,10 @@ int insertG(pGame *heads, Game *game, int m)
   pGame prev;
   if (heads[h] == 0)
   {
-    {
-      heads[h] = malloc(sizeof(struct nodeG));
-      heads[h]->game = game;
-      heads[h]->next = 0;
-      return 0;
-    }
+    heads[h] = malloc(sizeof(struct nodeG));
+    heads[h]->game = game;
+    heads[h]->next = 0;
+    return 0;
   }
   else
   {
@@ -51,10 +49,8 @@ int insertG(pGame *heads, Game *game, int m)
   {
     if (strcmp(temp->game->name, game->name) == 0)
     {
-      {
-        freeGame(game);
-        return 1;
-      }
+      freeGame(game);
+      return 1;
     }
     else
     {
@@ -79,9 +75,7 @@ Game *searchG(pGame *heads, char *name, int m)
   {
     if (strcmp(name, temp->game->name) == 0)
     {
-      {
-        return temp->game;
-      }
+      return temp->game;
     }
     else
     {
@@ -103,24 +97,18 @@ int deleteG(pGame *heads, char *name, int m)
   {
     if (strcmp(name, temp->game->name) == 0)
     {
+      if (prev != 0)
       {
-        if (prev != 0)
-        {
-          {
-            prev->next = temp->next;
-          }
-        }
-        else
-        {
-          {
-            heads[h] = temp->next;
-          }
-        }
-
-        freeGame(temp->game);
-        free(temp);
-        return 0;
+        prev->next = temp->next;
       }
+      else
+      {
+        heads[h] = temp->next;
+      }
+
+      freeGame(temp->game);
+      free(temp);
+      return 0;
     }
     else
     {
@@ -171,12 +159,10 @@ int insertT(pTeam *heads, Team *team, int m)
   pTeam prev;
   if (heads[h] == 0)
   {
-    {
-      heads[h] = malloc(sizeof(struct nodeT));
-      heads[h]->team = team;
-      heads[h]->next = 0;
-      return 0;
-    }
+    heads[h] = malloc(sizeof(struct nodeT));
+    heads[h]->team = team;
+    heads[h]->next = 0;
+    return 0;
   }
   else
   {
@@ -188,10 +174,8 @@ int insertT(pTeam *heads, Team *team, int m)
   {
     if (strcmp(temp->team->name, team->name) == 0)
     {
-      {
-        freeTeam(team);
-        return 1;
-      }
+      freeTeam(team);
+      return 1;
     }
     else
     {
@@ -216,9 +200,7 @@ Team *searchT(pTeam *heads, char *name, int m)
   {
     if (strcmp(name, temp->team->name) == 0)
     {
-      {
-        return temp->team;
-      }
+      return temp->team;
     }
     else
     {

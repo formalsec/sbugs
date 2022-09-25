@@ -48,32 +48,28 @@ void insert_in_list_order(T_Node **team_head, T_Node *new_node)
   {
     if (strcmp(new_node->data->name, (*team_head)->data->name) < 0)
     {
-      {
-        new_node->next = *team_head;
-        new_node->next->prev = new_node;
-        *team_head = new_node;
-      }
+      new_node->next = *team_head;
+      new_node->next->prev = new_node;
+      *team_head = new_node;
     }
     else
     {
+      T_Node *temp = *team_head;
+      while (temp->next && (strcmp(new_node->data->name, temp->next->data->name) > 0))
+        temp = temp->next;
+
+      new_node->next = temp->next;
+      if (temp->next)
       {
-        T_Node *temp = *team_head;
-        while (temp->next && (strcmp(new_node->data->name, temp->next->data->name) > 0))
-          temp = temp->next;
-
-        new_node->next = temp->next;
-        if (temp->next)
-        {
-          new_node->next->prev = new_node;
-        }
-        else
-        {
-          
-        }
-
-        temp->next = new_node;
-        new_node->prev = temp;
+        new_node->next->prev = new_node;
       }
+      else
+      {
+        
+      }
+
+      temp->next = new_node;
+      new_node->prev = temp;
     }
 
   }
@@ -153,12 +149,10 @@ void alter_score(char *game_name, int score_1, int score_2, G_Node **g_hashtab, 
   G_Node *game_node;
   if (game_node = (G_Node *) locate_node(game_name, (void *) g_hashtab))
   {
-    {
-      remove_wins(game_node->data, t_hashtab);
-      add_wins(game_node->data, score_1, score_2, t_hashtab);
-      game_node->data->score[0] = score_1;
-      game_node->data->score[1] = score_2;
-    }
+    remove_wins(game_node->data, t_hashtab);
+    add_wins(game_node->data, score_1, score_2, t_hashtab);
+    game_node->data->score[0] = score_1;
+    game_node->data->score[1] = score_2;
   }
   else
   {
@@ -183,23 +177,21 @@ void add_game(char *name, char *team_1, char *team_2, int score_1, int score_2, 
     }
     else
     {
-      {
-        Game *new_game = malloc(sizeof(Game));
-        G_Node *hash_node = malloc(sizeof(G_Node));
-        G_Node *list_node = malloc(sizeof(G_Node));
-        new_game->name = malloc(((sizeof(char)) * strlen(name)) + 1);
-        strcpy(new_game->name, name);
-        new_game->team_1 = team_node_1->data->name;
-        new_game->team_2 = team_node_2->data->name;
-        new_game->score[0] = score_1;
-        new_game->score[1] = score_2;
-        hash_node->data = (list_node->data = new_game);
-        hash_node->next = (list_node->next = 0);
-        hash_node->prev = (list_node->prev = 0);
-        add_wins(new_game, new_game->score[0], new_game->score[1], t_hashtab);
-        insert_node((void **) (&g_hashtab[hash(name)]), (void *) hash_node, 0, 0);
-        insert_node((void **) g_head, (void *) list_node, g_tail, 1);
-      }
+      Game *new_game = malloc(sizeof(Game));
+      G_Node *hash_node = malloc(sizeof(G_Node));
+      G_Node *list_node = malloc(sizeof(G_Node));
+      new_game->name = malloc(((sizeof(char)) * strlen(name)) + 1);
+      strcpy(new_game->name, name);
+      new_game->team_1 = team_node_1->data->name;
+      new_game->team_2 = team_node_2->data->name;
+      new_game->score[0] = score_1;
+      new_game->score[1] = score_2;
+      hash_node->data = (list_node->data = new_game);
+      hash_node->next = (list_node->next = 0);
+      hash_node->prev = (list_node->prev = 0);
+      add_wins(new_game, new_game->score[0], new_game->score[1], t_hashtab);
+      insert_node((void **) (&g_hashtab[hash(name)]), (void *) hash_node, 0, false);
+      insert_node((void **) g_head, (void *) list_node, g_tail, true);
     }
 
   }
@@ -279,17 +271,15 @@ void remove_game(char *name, G_Node **g_hashtab, T_Node **t_hashtab, G_Node **g_
   G_Node *game_hash_node;
   if (game_hash_node = (G_Node *) locate_node(name, (void *) g_hashtab))
   {
-    {
-      G_Node *game_list_node = *g_head;
-      while (game_list_node && strcmp(game_list_node->data->name, name))
-        game_list_node = game_list_node->next;
+    G_Node *game_list_node = *g_head;
+    while (game_list_node && strcmp(game_list_node->data->name, name))
+      game_list_node = game_list_node->next;
 
-      remove_wins(game_hash_node->data, t_hashtab);
-      free(game_hash_node->data->name);
-      free(game_hash_node->data);
-      remove_node(game_hash_node, (void **) (&g_hashtab[hash(name)]), 0, 0);
-      remove_node(game_list_node, (void **) g_head, g_tail, 1);
-    }
+    remove_wins(game_hash_node->data, t_hashtab);
+    free(game_hash_node->data->name);
+    free(game_hash_node->data);
+    remove_node(game_hash_node, (void **) (&g_hashtab[hash(name)]), 0, false);
+    remove_node(game_list_node, (void **) g_head, g_tail, true);
   }
   else
   {
@@ -302,19 +292,17 @@ void add_team(char *team_name, T_Node **t_hashtab, T_Node **t_head, int cmd_cnt)
 {
   if (!locate_node(team_name, (void *) t_hashtab))
   {
-    {
-      T_Node *team_hash_node = malloc(sizeof(T_Node));
-      T_Node *team_list_node = malloc(sizeof(T_Node));
-      Team *team = malloc(sizeof(Team));
-      team->name = malloc(((sizeof(char)) * strlen(team_name)) + 1);
-      strcpy(team->name, team_name);
-      team->wins = 0;
-      team_hash_node->data = (team_list_node->data = team);
-      team_hash_node->next = (team_list_node->next = 0);
-      team_hash_node->prev = (team_list_node->prev = 0);
-      insert_node((void **) (&t_hashtab[hash(team_name)]), (void *) team_hash_node, 0, 0);
-      insert_in_list_order(t_head, team_list_node);
-    }
+    T_Node *team_hash_node = malloc(sizeof(T_Node));
+    T_Node *team_list_node = malloc(sizeof(T_Node));
+    Team *team = malloc(sizeof(Team));
+    team->name = malloc(((sizeof(char)) * strlen(team_name)) + 1);
+    strcpy(team->name, team_name);
+    team->wins = 0;
+    team_hash_node->data = (team_list_node->data = team);
+    team_hash_node->next = (team_list_node->next = 0);
+    team_hash_node->prev = (team_list_node->prev = 0);
+    insert_node((void **) (&t_hashtab[hash(team_name)]), (void *) team_hash_node, 0, false);
+    insert_in_list_order(t_head, team_list_node);
   }
   else
   {
@@ -392,7 +380,7 @@ void free_memory_aux(void *lst_head, void **hashtab)
     node_hsh = locate_node(node_lst->data->name, hashtab);
     if (hashtab[hash(node_lst->data->name)])
     {
-      remove_node(node_hsh, &hashtab[hash(node_lst->data->name)], 0, 0);
+      remove_node(node_hsh, &hashtab[hash(node_lst->data->name)], 0, false);
     }
     else
     {

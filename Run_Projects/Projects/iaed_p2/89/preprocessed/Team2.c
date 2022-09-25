@@ -9,10 +9,8 @@ void addTeam(char *name, BTlink *BThead, int NL)
   Team team = BTsearch(*BThead, name);
   if (!team)
   {
-    {
-      team = Tnew(name);
-      *BThead = BTinsert(*BThead, team);
-    }
+    team = Tnew(name);
+    *BThead = BTinsert(*BThead, team);
   }
   else
   {

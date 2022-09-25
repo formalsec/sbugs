@@ -18,16 +18,14 @@ void A(Hash_Equipa *ptr_HTE, Lista_Equipas *CE, int *Contador_Instrucoes)
   *Contador_Instrucoes += 1;
   if (!hash_procura_Equipa(ptr_HTE, equipa))
   {
-    {
-      int index = hash(equipa);
-      aux = malloc(sizeof(Equipas));
-      aux->nome = malloc(strlen(equipa) + 1);
-      strcpy(aux->nome, equipa);
-      aux->vitorias = 0;
-      aux->proximo = CE->topo;
-      CE->topo = aux;
-      hash_insercao_EQUIPAS(ptr_HTE, index, aux);
-    }
+    int index = hash(equipa);
+    aux = malloc(sizeof(Equipas));
+    aux->nome = malloc(strlen(equipa) + 1);
+    strcpy(aux->nome, equipa);
+    aux->vitorias = 0;
+    aux->proximo = CE->topo;
+    CE->topo = aux;
+    hash_insercao_EQUIPAS(ptr_HTE, index, aux);
   }
   else
   {
@@ -78,54 +76,48 @@ void a(Hash_Jogo *ptr_HTJ, Hash_Equipa *ptr_HTE, Lista_Jogos *CJ, int *Contador_
     }
     else
     {
+      int index = hash(nome_jogo);
+      aux = malloc(sizeof(Jogo));
+      aux->nome = malloc(strlen(nome_jogo) + 1);
+      strcpy(aux->nome, nome_jogo);
+      aux->equipa1 = malloc(strlen(equipa01) + 1);
+      strcpy(aux->equipa1, equipa01);
+      aux->equipa2 = malloc(strlen(equipa02) + 1);
+      strcpy(aux->equipa2, equipa02);
+      aux->pontuacao1 = pontuacao01;
+      aux->pontuacao2 = pontuacao02;
+      if (pontuacao01 > pontuacao02)
       {
-        int index = hash(nome_jogo);
-        aux = malloc(sizeof(Jogo));
-        aux->nome = malloc(strlen(nome_jogo) + 1);
-        strcpy(aux->nome, nome_jogo);
-        aux->equipa1 = malloc(strlen(equipa01) + 1);
-        strcpy(aux->equipa1, equipa01);
-        aux->equipa2 = malloc(strlen(equipa02) + 1);
-        strcpy(aux->equipa2, equipa02);
-        aux->pontuacao1 = pontuacao01;
-        aux->pontuacao2 = pontuacao02;
-        if (pontuacao01 > pontuacao02)
-        {
-          {
-            Equipas *aux_t = hash_procura_Equipa(ptr_HTE, equipa01);
-            aux_t->vitorias += 1;
-          }
-        }
-        else
-        {
-          if (pontuacao01 < pontuacao02)
-          {
-            {
-              Equipas *aux_t = hash_procura_Equipa(ptr_HTE, equipa02);
-              aux_t->vitorias += 1;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-        aux->proximo = 0;
-        aux->anterior = CJ->fim;
-        if (!CJ->fim)
-        {
-          CJ->topo = aux;
-        }
-        else
-        {
-          CJ->fim->proximo = aux;
-        }
-
-        CJ->fim = aux;
-        hash_insercao_JOGOS(ptr_HTJ, index, aux);
+        Equipas *aux_t = hash_procura_Equipa(ptr_HTE, equipa01);
+        aux_t->vitorias += 1;
       }
+      else
+      {
+        if (pontuacao01 < pontuacao02)
+        {
+          Equipas *aux_t = hash_procura_Equipa(ptr_HTE, equipa02);
+          aux_t->vitorias += 1;
+        }
+        else
+        {
+          
+        }
+
+      }
+
+      aux->proximo = 0;
+      aux->anterior = CJ->fim;
+      if (!CJ->fim)
+      {
+        CJ->topo = aux;
+      }
+      else
+      {
+        CJ->fim->proximo = aux;
+      }
+
+      CJ->fim = aux;
+      hash_insercao_JOGOS(ptr_HTJ, index, aux);
     }
 
   }
@@ -149,10 +141,8 @@ void P(Hash_Equipa *ptr_HTE, int *Contador_Instrucoes)
   }
   else
   {
-    {
-      Equipas *aux = hash_procura_Equipa(ptr_HTE, nome_equipa);
-      printf("%d %s %d\n", *Contador_Instrucoes, aux->nome, aux->vitorias);
-    }
+    Equipas *aux = hash_procura_Equipa(ptr_HTE, nome_equipa);
+    printf("%d %s %d\n", *Contador_Instrucoes, aux->nome, aux->vitorias);
   }
 
 }
@@ -174,10 +164,8 @@ void p(Hash_Jogo *ptr_HTJ, int *Contador_Instrucoes)
   }
   else
   {
-    {
-      Jogo *aux = hash_procura_Jogo(ptr_HTJ, nome_jogo);
-      printf("%d %s %s %s %d %d\n", *Contador_Instrucoes, aux->nome, aux->equipa1, aux->equipa2, aux->pontuacao1, aux->pontuacao2);
-    }
+    Jogo *aux = hash_procura_Jogo(ptr_HTJ, nome_jogo);
+    printf("%d %s %s %s %d %d\n", *Contador_Instrucoes, aux->nome, aux->equipa1, aux->equipa2, aux->pontuacao1, aux->pontuacao2);
   }
 
 }
@@ -240,106 +228,80 @@ void s(Hash_Jogo *ptr_HTJ, Hash_Equipa *ptr_HTE, int *Contador_Instrucoes)
   aux_j = hash_procura_Jogo(ptr_HTJ, nome_jogo);
   if (aux_j == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", *Contador_Instrucoes);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", *Contador_Instrucoes);
+    return;
   }
   else
   {
     if (aux_j->pontuacao1 > aux_j->pontuacao2)
     {
+      if (pontuacao_nova1 > pontuacao_nova2)
       {
-        if (pontuacao_nova1 > pontuacao_nova2)
+        atualiza_pontuacoes(aux_j, pontuacao_nova1, pontuacao_nova2);
+      }
+      else
+      {
+        if (pontuacao_nova1 < pontuacao_nova2)
         {
-          {
-            atualiza_pontuacoes(aux_j, pontuacao_nova1, pontuacao_nova2);
-          }
+          atualiza_pontuacoes(aux_j, pontuacao_nova1, pontuacao_nova2);
+          retira_vitoria(ptr_HTE, aux_j->equipa1);
+          adiciona_vitoria(ptr_HTE, aux_j->equipa2);
         }
         else
         {
-          if (pontuacao_nova1 < pontuacao_nova2)
-          {
-            {
-              atualiza_pontuacoes(aux_j, pontuacao_nova1, pontuacao_nova2);
-              retira_vitoria(ptr_HTE, aux_j->equipa1);
-              adiciona_vitoria(ptr_HTE, aux_j->equipa2);
-            }
-          }
-          else
-          {
-            {
-              atualiza_pontuacoes(aux_j, pontuacao_nova1, pontuacao_nova2);
-              retira_vitoria(ptr_HTE, aux_j->equipa1);
-            }
-          }
-
+          atualiza_pontuacoes(aux_j, pontuacao_nova1, pontuacao_nova2);
+          retira_vitoria(ptr_HTE, aux_j->equipa1);
         }
 
       }
+
     }
     else
     {
       if (aux_j->pontuacao1 < aux_j->pontuacao2)
       {
+        if (pontuacao_nova1 < pontuacao_nova2)
         {
-          if (pontuacao_nova1 < pontuacao_nova2)
+          atualiza_pontuacoes(aux_j, pontuacao_nova1, pontuacao_nova2);
+        }
+        else
+        {
+          if (pontuacao_nova1 > pontuacao_nova2)
           {
-            {
-              atualiza_pontuacoes(aux_j, pontuacao_nova1, pontuacao_nova2);
-            }
+            atualiza_pontuacoes(aux_j, pontuacao_nova1, pontuacao_nova2);
+            adiciona_vitoria(ptr_HTE, aux_j->equipa1);
+            retira_vitoria(ptr_HTE, aux_j->equipa2);
           }
           else
           {
-            if (pontuacao_nova1 > pontuacao_nova2)
-            {
-              {
-                atualiza_pontuacoes(aux_j, pontuacao_nova1, pontuacao_nova2);
-                adiciona_vitoria(ptr_HTE, aux_j->equipa1);
-                retira_vitoria(ptr_HTE, aux_j->equipa2);
-              }
-            }
-            else
-            {
-              {
-                atualiza_pontuacoes(aux_j, pontuacao_nova1, pontuacao_nova2);
-                retira_vitoria(ptr_HTE, aux_j->equipa2);
-              }
-            }
-
+            atualiza_pontuacoes(aux_j, pontuacao_nova1, pontuacao_nova2);
+            retira_vitoria(ptr_HTE, aux_j->equipa2);
           }
 
         }
+
       }
       else
       {
+        if (pontuacao_nova1 == pontuacao_nova2)
         {
-          if (pontuacao_nova1 == pontuacao_nova2)
+          atualiza_pontuacoes(aux_j, pontuacao_nova1, pontuacao_nova2);
+        }
+        else
+        {
+          if (pontuacao_nova1 > pontuacao_nova2)
           {
-            {
-              atualiza_pontuacoes(aux_j, pontuacao_nova1, pontuacao_nova2);
-            }
+            atualiza_pontuacoes(aux_j, pontuacao_nova1, pontuacao_nova2);
+            adiciona_vitoria(ptr_HTE, aux_j->equipa1);
           }
           else
           {
-            if (pontuacao_nova1 > pontuacao_nova2)
-            {
-              {
-                atualiza_pontuacoes(aux_j, pontuacao_nova1, pontuacao_nova2);
-                adiciona_vitoria(ptr_HTE, aux_j->equipa1);
-              }
-            }
-            else
-            {
-              {
-                atualiza_pontuacoes(aux_j, pontuacao_nova1, pontuacao_nova2);
-                adiciona_vitoria(ptr_HTE, aux_j->equipa2);
-              }
-            }
-
+            atualiza_pontuacoes(aux_j, pontuacao_nova1, pontuacao_nova2);
+            adiciona_vitoria(ptr_HTE, aux_j->equipa2);
           }
 
         }
+
       }
 
     }
@@ -405,11 +367,9 @@ void g(Lista_Equipas *CE, int *Contador_Instrucoes)
   {
     if (aux_e->vitorias == Maximo_Vitorias)
     {
-      {
-        Lista_Equipas_Maiores[Contador_aux] = malloc((sizeof(char)) * (strlen(aux_e->nome) + 1));
-        strcpy(Lista_Equipas_Maiores[Contador_aux], aux_e->nome);
-        Contador_aux++;
-      }
+      Lista_Equipas_Maiores[Contador_aux] = malloc((sizeof(char)) * (strlen(aux_e->nome) + 1));
+      strcpy(Lista_Equipas_Maiores[Contador_aux], aux_e->nome);
+      Contador_aux++;
     }
     else
     {
@@ -433,28 +393,20 @@ void apaga_lista_jogos(Lista_Jogos *CJ, cabeca_JOGO *no_jogo)
 {
   if (no_jogo->ptrJOGO->anterior == 0)
   {
-    {
-      CJ->topo = no_jogo->ptrJOGO->proximo;
-    }
+    CJ->topo = no_jogo->ptrJOGO->proximo;
   }
   else
   {
-    {
-      no_jogo->ptrJOGO->anterior->proximo = no_jogo->ptrJOGO->proximo;
-    }
+    no_jogo->ptrJOGO->anterior->proximo = no_jogo->ptrJOGO->proximo;
   }
 
   if (no_jogo->ptrJOGO->proximo == 0)
   {
-    {
-      CJ->fim = no_jogo->ptrJOGO->anterior;
-    }
+    CJ->fim = no_jogo->ptrJOGO->anterior;
   }
   else
   {
-    {
-      no_jogo->ptrJOGO->proximo->anterior = no_jogo->ptrJOGO->anterior;
-    }
+    no_jogo->ptrJOGO->proximo->anterior = no_jogo->ptrJOGO->anterior;
   }
 
   free(no_jogo->ptrJOGO->nome);
@@ -469,11 +421,9 @@ void limpa_hash(Hash_Jogo *ptr_HTJ, cabeca_JOGO *no_jogo, int index)
   cabeca_JOGO *prox = ptr_HTJ->gaveta_JOGO[index];
   if ((atual != 0) && (atual == no_jogo))
   {
-    {
-      ptr_HTJ->gaveta_JOGO[index] = atual->proximo;
-      free(atual);
-      return;
-    }
+    ptr_HTJ->gaveta_JOGO[index] = atual->proximo;
+    free(atual);
+    return;
   }
   else
   {
@@ -506,59 +456,47 @@ void r(Hash_Jogo *ptr_HTJ, Hash_Equipa *ptr_HTE, Lista_Jogos *CJ, int *Contador_
   aux_j = hash_procura_Jogo(ptr_HTJ, nome_jogo);
   if (!hash_procura_Jogo(ptr_HTJ, nome_jogo))
   {
-    {
-      printf("%d Jogo inexistente.\n", *Contador_Instrucoes);
-    }
+    printf("%d Jogo inexistente.\n", *Contador_Instrucoes);
   }
   else
   {
+    for (; aux_no != 0; aux_no = aux_no->proximo)
     {
-      for (; aux_no != 0; aux_no = aux_no->proximo)
+      if (strcmp(aux_no->ptrJOGO->nome, nome_jogo) == 0)
       {
-        if (strcmp(aux_no->ptrJOGO->nome, nome_jogo) == 0)
+        if (aux_no->ptrJOGO->pontuacao1 > aux_no->ptrJOGO->pontuacao2)
         {
-          {
-            if (aux_no->ptrJOGO->pontuacao1 > aux_no->ptrJOGO->pontuacao2)
-            {
-              {
-                retira_vitoria(ptr_HTE, aux_j->equipa1);
-                apaga_lista_jogos(CJ, aux_no);
-                limpa_hash(ptr_HTJ, aux_no, index);
-                return;
-              }
-            }
-            else
-            {
-              if (aux_no->ptrJOGO->pontuacao2 > aux_no->ptrJOGO->pontuacao1)
-              {
-                {
-                  retira_vitoria(ptr_HTE, aux_j->equipa2);
-                  apaga_lista_jogos(CJ, aux_no);
-                  limpa_hash(ptr_HTJ, aux_no, index);
-                  return;
-                }
-              }
-              else
-              {
-                {
-                  apaga_lista_jogos(CJ, aux_no);
-                  limpa_hash(ptr_HTJ, aux_no, index);
-                  return;
-                }
-              }
-
-            }
-
-          }
+          retira_vitoria(ptr_HTE, aux_j->equipa1);
+          apaga_lista_jogos(CJ, aux_no);
+          limpa_hash(ptr_HTJ, aux_no, index);
+          return;
         }
         else
         {
-          
+          if (aux_no->ptrJOGO->pontuacao2 > aux_no->ptrJOGO->pontuacao1)
+          {
+            retira_vitoria(ptr_HTE, aux_j->equipa2);
+            apaga_lista_jogos(CJ, aux_no);
+            limpa_hash(ptr_HTJ, aux_no, index);
+            return;
+          }
+          else
+          {
+            apaga_lista_jogos(CJ, aux_no);
+            limpa_hash(ptr_HTJ, aux_no, index);
+            return;
+          }
+
         }
 
       }
+      else
+      {
+        
+      }
 
     }
+
   }
 
 }

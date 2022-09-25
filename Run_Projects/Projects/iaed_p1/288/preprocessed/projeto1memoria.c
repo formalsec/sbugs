@@ -174,10 +174,8 @@ void adiciona_prod()
   q = new_sym_var(sizeof(int) * 8);
   if (e >= ides_encomendas)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", p, e);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", p, e);
+    return;
   }
   else
   {
@@ -186,10 +184,8 @@ void adiciona_prod()
 
   if (p >= idps_sistema)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", p, e);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", p, e);
+    return;
   }
   else
   {
@@ -198,10 +194,8 @@ void adiciona_prod()
 
   if (sistema[p].qtd < q)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", p, e);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", p, e);
+    return;
   }
   else
   {
@@ -210,10 +204,8 @@ void adiciona_prod()
 
   if ((sistema_encomendas[e].peso + (sistema[p].peso * q)) > 200)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", p, e);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", p, e);
+    return;
   }
   else
   {
@@ -234,10 +226,8 @@ void remove_stock()
   q = new_sym_var(sizeof(int) * 8);
   if (p >= idps_sistema)
   {
-    {
-      printf("Impossivel remover stock do produto %d. Produto inexistente.\n", p);
-      return;
-    }
+    printf("Impossivel remover stock do produto %d. Produto inexistente.\n", p);
+    return;
   }
   else
   {
@@ -246,10 +236,8 @@ void remove_stock()
 
   if ((sistema[p].qtd - q) < 0)
   {
-    {
-      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", q, p);
-      return;
-    }
+    printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", q, p);
+    return;
   }
   else
   {
@@ -267,10 +255,8 @@ void remove_prod()
   p = new_sym_var(sizeof(int) * 8);
   if (e >= ides_encomendas)
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", p, e);
-      return;
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", p, e);
+    return;
   }
   else
   {
@@ -279,10 +265,8 @@ void remove_prod()
 
   if (p >= idps_sistema)
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", p, e);
-      return;
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", p, e);
+    return;
   }
   else
   {
@@ -301,10 +285,8 @@ void custo_encomenda()
   e = new_sym_var(sizeof(int) * 8);
   if (e >= ides_encomendas)
   {
-    {
-      printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", e);
-      return;
-    }
+    printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", e);
+    return;
   }
   else
   {
@@ -323,10 +305,8 @@ void altera_preco()
   novo_preco = new_sym_var(sizeof(int) * 8);
   if (p >= idps_sistema)
   {
-    {
-      printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", p);
-      return;
-    }
+    printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", p);
+    return;
   }
   else
   {
@@ -357,10 +337,8 @@ void des_qtd_enc()
   p = new_sym_var(sizeof(int) * 8);
   if (e >= ides_encomendas)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", e);
-      return;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", e);
+    return;
   }
   else
   {
@@ -369,10 +347,8 @@ void des_qtd_enc()
 
   if (p >= idps_sistema)
   {
-    {
-      printf("Impossivel listar produto %d. Produto inexistente.\n", p);
-      return;
-    }
+    printf("Impossivel listar produto %d. Produto inexistente.\n", p);
+    return;
   }
   else
   {
@@ -391,10 +367,8 @@ void prod_mais_qtd()
   p = new_sym_var(sizeof(int) * 8);
   if (p >= idps_sistema)
   {
-    {
-      printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", p);
-      return;
-    }
+    printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", p);
+    return;
   }
   else
   {
@@ -414,10 +388,8 @@ void prod_mais_qtd()
   {
     if (sistema_encomendas[i].produtos[p] > max)
     {
-      {
-        max = sistema_encomendas[i].produtos[p];
-        ecom = i;
-      }
+      max = sistema_encomendas[i].produtos[p];
+      ecom = i;
     }
     else
     {
@@ -508,12 +480,10 @@ void mergesort_l(PRODUTO a[], int l, int r)
 {
   if (l < r)
   {
-    {
-      int m = l + ((r - l) / 2);
-      mergesort_l(a, l, m);
-      mergesort_l(a, m + 1, r);
-      merge_l(a, l, m, r);
-    }
+    int m = l + ((r - l) / 2);
+    mergesort_l(a, l, m);
+    mergesort_l(a, m + 1, r);
+    merge_l(a, l, m, r);
   }
   else
   {
@@ -531,10 +501,8 @@ void ordem_prod_enc()
   e = new_sym_var(sizeof(int) * 8);
   if (e >= ides_encomendas)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", e);
-      return;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", e);
+    return;
   }
   else
   {
@@ -546,11 +514,9 @@ void ordem_prod_enc()
   {
     if (sistema_encomendas[e].produtos[i] != 0)
     {
-      {
-        copia_encomenda[contador_prod] = sistema[i];
-        copia_encomenda[contador_prod].qtd = sistema_encomendas[e].produtos[i];
-        contador_prod += 1;
-      }
+      copia_encomenda[contador_prod] = sistema[i];
+      copia_encomenda[contador_prod].qtd = sistema_encomendas[e].produtos[i];
+      contador_prod += 1;
     }
     else
     {
@@ -615,12 +581,10 @@ void mergesort_L(PRODUTO a[], int l, int r)
 {
   if (l < r)
   {
-    {
-      int m = l + ((r - l) / 2);
-      mergesort_L(a, l, m);
-      mergesort_L(a, m + 1, r);
-      merge_L(a, l, m, r);
-    }
+    int m = l + ((r - l) / 2);
+    mergesort_L(a, l, m);
+    mergesort_L(a, m + 1, r);
+    merge_L(a, l, m, r);
   }
   else
   {

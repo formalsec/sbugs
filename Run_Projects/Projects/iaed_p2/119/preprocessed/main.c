@@ -24,10 +24,8 @@ void comm_A(HT_E Equipas, link *leaderboard)
   str[10 - 1] = '\0';
   if (searchEquipa(Equipas, str) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-      return;
-    }
+    printf("%d Equipa existente.\n", NL);
+    return;
   }
   else
   {
@@ -50,10 +48,8 @@ void comm_P(HT_E Equipas)
   ptr = searchEquipa(Equipas, str);
   if (ptr == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -94,10 +90,8 @@ void comm_a(HT_J Jogos, HT_E Equipas, link *inputJogos)
   ptr_e2 = searchEquipa(Equipas, e2);
   if ((ptr_e1 == 0) || (ptr_e2 == 0))
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -107,10 +101,8 @@ void comm_a(HT_J Jogos, HT_E Equipas, link *inputJogos)
   ptr = searchJogo(Jogos, str);
   if (ptr != 0)
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-      return;
-    }
+    printf("%d Jogo existente.\n", NL);
+    return;
   }
   else
   {
@@ -150,10 +142,8 @@ void comm_p(HT_J Jogos)
   ptr = searchJogo(Jogos, str);
   if (ptr == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -187,10 +177,8 @@ void comm_r(HT_J Jogos, HT_E Equipas, link *inputJogos)
   ptr = searchJogo(Jogos, str);
   if (ptr == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -234,10 +222,8 @@ void comm_s(HT_J Jogos, HT_E Equipas)
   ptr = searchJogo(Jogos, str);
   if (ptr == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -312,9 +298,7 @@ void comm_g(HT_E Equipas, link *leaderboard)
     ptr = searchEquipa(Equipas, y->str);
     if (ptr->wins == max)
     {
-      {
-        printf("%d * %s\n", NL, ptr->name);
-      }
+      printf("%d * %s\n", NL, ptr->name);
     }
     else
     {

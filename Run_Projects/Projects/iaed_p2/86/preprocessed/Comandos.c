@@ -72,15 +72,11 @@ void newTeam(int *nrCommand, teamLink *hashTeamTable)
   buffer[10 - 1] = '\0';
   if (searchTeamHash(hashTeamTable, buffer) == 0)
   {
-    {
-      insertTeamHash(hashTeamTable, buffer);
-    }
+    insertTeamHash(hashTeamTable, buffer);
   }
   else
   {
-    {
-      printf("%d Equipa existente.\n", *nrCommand);
-    }
+    printf("%d Equipa existente.\n", *nrCommand);
   }
 
 }
@@ -117,10 +113,8 @@ void newGame(int *nrCommand, teamLink *hashTeamTable, gameLink *headGame, gameLi
   score2 = new_sym_var(sizeof(int) * 8);
   if (searchGameHash(hashGameTable, gameName) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", *nrCommand);
-      return;
-    }
+    printf("%d Jogo existente.\n", *nrCommand);
+    return;
   }
   else
   {
@@ -130,10 +124,8 @@ void newGame(int *nrCommand, teamLink *hashTeamTable, gameLink *headGame, gameLi
   team1 = searchTeamHash(hashTeamTable, team1Name);
   if (team1 == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", *nrCommand);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", *nrCommand);
+    return;
   }
   else
   {
@@ -143,10 +135,8 @@ void newGame(int *nrCommand, teamLink *hashTeamTable, gameLink *headGame, gameLi
   team2 = searchTeamHash(hashTeamTable, team2Name);
   if (team2 == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", *nrCommand);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", *nrCommand);
+    return;
   }
   else
   {
@@ -158,17 +148,13 @@ void newGame(int *nrCommand, teamLink *hashTeamTable, gameLink *headGame, gameLi
   insertGameHash(hashGameTable, newGame);
   if (score1 > score2)
   {
-    {
-      team1->gamesWon++;
-    }
+    team1->gamesWon++;
   }
   else
   {
     if (score2 > score1)
     {
-      {
-        team2->gamesWon++;
-      }
+      team2->gamesWon++;
     }
     else
     {
@@ -187,10 +173,8 @@ void listGames(int *nrCommand, gameLink *headGame)
   {
     if (!t->deleted)
     {
-      {
-        game = t->game;
-        printf("%d %s %s %s %d %d\n", *nrCommand, game->name, game->team1->name, game->team2->name, *game->score, *(game->score + 1));
-      }
+      game = t->game;
+      printf("%d %s %s %s %d %d\n", *nrCommand, game->name, game->team1->name, game->team2->name, *game->score, *(game->score + 1));
     }
     else
     {
@@ -215,16 +199,12 @@ void searchGameByName(int *nrCommand, gameLink *hashGameTable)
   gameLink = searchGameHash(hashGameTable, name);
   if (gameLink == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", *nrCommand);
-    }
+    printf("%d Jogo inexistente.\n", *nrCommand);
   }
   else
   {
-    {
-      game = gameLink->game;
-      printf("%d %s %s %s %d %d\n", *nrCommand, game->name, game->team1->name, game->team2->name, game->score[0], game->score[1]);
-    }
+    game = gameLink->game;
+    printf("%d %s %s %s %d %d\n", *nrCommand, game->name, game->team1->name, game->team2->name, game->score[0], game->score[1]);
   }
 
 }
@@ -242,15 +222,11 @@ void searchTeamByName(int *nrCommand, teamLink *hashTeamTable)
   team = searchTeamHash(hashTeamTable, name);
   if (team == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", *nrCommand);
-    }
+    printf("%d Equipa inexistente.\n", *nrCommand);
   }
   else
   {
-    {
-      printf("%d %s %d\n", *nrCommand, team->name, team->gamesWon);
-    }
+    printf("%d %s %d\n", *nrCommand, team->name, team->gamesWon);
   }
 
 }
@@ -269,38 +245,30 @@ void deleteGameByName(int *nrCommand, gameLink *hashGameTable, gameLink *headGam
   gameLink_ = searchGameHash(hashGameTable, name);
   if (gameLink_ == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", *nrCommand);
-    }
+    printf("%d Jogo inexistente.\n", *nrCommand);
   }
   else
   {
+    if (gameLink_->game->score[0] > gameLink_->game->score[1])
     {
-      if (gameLink_->game->score[0] > gameLink_->game->score[1])
+      gameLink_->game->team1->gamesWon--;
+    }
+    else
+    {
+      if (gameLink_->game->score[0] < gameLink_->game->score[1])
       {
-        {
-          gameLink_->game->team1->gamesWon--;
-        }
+        gameLink_->game->team2->gamesWon--;
       }
       else
       {
-        if (gameLink_->game->score[0] < gameLink_->game->score[1])
-        {
-          {
-            gameLink_->game->team2->gamesWon--;
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      gameLinkList = searchGame(*headGame, name);
-      gameLinkList->deleted = 1;
-      deleteGameHash(hashGameTable, name);
     }
+
+    gameLinkList = searchGame(*headGame, name);
+    gameLinkList->deleted = 1;
+    deleteGameHash(hashGameTable, name);
   }
 
 }
@@ -323,59 +291,47 @@ void changeScore(int *nrCommand, gameLink *hashGameTable)
   gameLink = searchGameHash(hashGameTable, name);
   if (gameLink == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", *nrCommand);
-    }
+    printf("%d Jogo inexistente.\n", *nrCommand);
   }
   else
   {
+    game = gameLink->game;
+    if (game->score[0] > game->score[1])
     {
-      game = gameLink->game;
-      if (game->score[0] > game->score[1])
+      game->team1->gamesWon--;
+    }
+    else
+    {
+      if (game->score[0] < game->score[1])
       {
-        {
-          game->team1->gamesWon--;
-        }
+        game->team2->gamesWon--;
       }
       else
       {
-        if (game->score[0] < game->score[1])
-        {
-          {
-            game->team2->gamesWon--;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      game->score[0] = score1;
-      game->score[1] = score2;
-      if (game->score[0] > game->score[1])
-      {
-        {
-          game->team1->gamesWon++;
-        }
-      }
-      else
-      {
-        if (score2 > score1)
-        {
-          {
-            game->team2->gamesWon++;
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
     }
+
+    game->score[0] = score1;
+    game->score[1] = score2;
+    if (game->score[0] > game->score[1])
+    {
+      game->team1->gamesWon++;
+    }
+    else
+    {
+      if (score2 > score1)
+      {
+        game->team2->gamesWon++;
+      }
+      else
+      {
+        
+      }
+
+    }
+
   }
 
 }
@@ -396,10 +352,8 @@ void bestTeams(int *nrCommand, teamLink *hashTeamTable)
     {
       if (max < t->gamesWon)
       {
-        {
-          teamNr = 0;
-          max = t->gamesWon;
-        }
+        teamNr = 0;
+        max = t->gamesWon;
       }
       else
       {
@@ -408,9 +362,7 @@ void bestTeams(int *nrCommand, teamLink *hashTeamTable)
 
       if (max == t->gamesWon)
       {
-        {
-          teamNr++;
-        }
+        teamNr++;
       }
       else
       {
@@ -423,38 +375,34 @@ void bestTeams(int *nrCommand, teamLink *hashTeamTable)
 
   if (teamNr > 0)
   {
+    index = 0;
+    bestOnes = (char **) malloc((sizeof(char *)) * teamNr);
+    for (i = 0; i < 2131; i++)
     {
-      index = 0;
-      bestOnes = (char **) malloc((sizeof(char *)) * teamNr);
-      for (i = 0; i < 2131; i++)
+      for (t = hashTeamTable[i]; t != 0; t = t->next)
       {
-        for (t = hashTeamTable[i]; t != 0; t = t->next)
+        if (t->gamesWon == max)
         {
-          if (t->gamesWon == max)
-          {
-            {
-              bestOnes[index] = t->name;
-              index++;
-            }
-          }
-          else
-          {
-            
-          }
-
+          bestOnes[index] = t->name;
+          index++;
+        }
+        else
+        {
+          
         }
 
       }
 
-      qsort(bestOnes, teamNr, sizeof(char *), compare);
-      printf("%d Melhores %d\n", *nrCommand, max);
-      for (i = 0; i < teamNr; i++)
-      {
-        printf("%d * %s\n", *nrCommand, bestOnes[i]);
-      }
-
-      free(bestOnes);
     }
+
+    qsort(bestOnes, teamNr, sizeof(char *), compare);
+    printf("%d Melhores %d\n", *nrCommand, max);
+    for (i = 0; i < teamNr; i++)
+    {
+      printf("%d * %s\n", *nrCommand, bestOnes[i]);
+    }
+
+    free(bestOnes);
   }
   else
   {

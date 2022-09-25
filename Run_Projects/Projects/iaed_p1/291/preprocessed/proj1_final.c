@@ -85,17 +85,35 @@ void __A__(int n_prod, int n_enc, Produto l_prod[10000], Encomenda l_enc[500])
         }
         else
         {
+          l_enc[ide].peso += quant * l_prod[idp].peso;
+          l_prod[idp].qtd -= quant;
+          for (i = 0; i < l_enc[ide].n_prod_enc; i++)
           {
-            l_enc[ide].peso += quant * l_prod[idp].peso;
-            l_prod[idp].qtd -= quant;
-            for (i = 0; i < l_enc[ide].n_prod_enc; i++)
+            if (l_enc[ide].qtd_prod[i][0] == idp)
             {
-              if (l_enc[ide].qtd_prod[i][0] == idp)
+              l_enc[ide].qtd_prod[i][1] += quant;
+              return;
+            }
+            else
+            {
+              
+            }
+
+          }
+
+          if (l_enc[ide].n_prod_enc < 200)
+          {
+            l_enc[ide].qtd_prod[l_enc[ide].n_prod_enc][1] = quant;
+            l_enc[ide].qtd_prod[l_enc[ide].n_prod_enc++][0] = idp;
+          }
+          else
+          {
+            for (i = 0; i < 200; i++)
+            {
+              if (l_enc[ide].qtd_prod[i][1] == 0)
               {
-                {
-                  l_enc[ide].qtd_prod[i][1] += quant;
-                  return;
-                }
+                l_enc[ide].qtd_prod[i][0] = idp;
+                l_enc[ide].qtd_prod[i][1] = quant;
               }
               else
               {
@@ -104,36 +122,8 @@ void __A__(int n_prod, int n_enc, Produto l_prod[10000], Encomenda l_enc[500])
 
             }
 
-            if (l_enc[ide].n_prod_enc < 200)
-            {
-              {
-                l_enc[ide].qtd_prod[l_enc[ide].n_prod_enc][1] = quant;
-                l_enc[ide].qtd_prod[l_enc[ide].n_prod_enc++][0] = idp;
-              }
-            }
-            else
-            {
-              {
-                for (i = 0; i < 200; i++)
-                {
-                  if (l_enc[ide].qtd_prod[i][1] == 0)
-                  {
-                    {
-                      l_enc[ide].qtd_prod[i][0] = idp;
-                      l_enc[ide].qtd_prod[i][1] = quant;
-                    }
-                  }
-                  else
-                  {
-                    
-                  }
-
-                }
-
-              }
-            }
-
           }
+
         }
 
       }
@@ -188,25 +178,21 @@ void __R__(int n_prod, int n_enc, Produto l_prod[10000], Encomenda l_enc[500])
     }
     else
     {
+      for (i = 0; i < l_enc[ide].n_prod_enc; i++)
       {
-        for (i = 0; i < l_enc[ide].n_prod_enc; i++)
+        if (l_enc[ide].qtd_prod[i][0] == idp)
         {
-          if (l_enc[ide].qtd_prod[i][0] == idp)
-          {
-            {
-              l_enc[ide].peso -= l_enc[ide].qtd_prod[i][1] * l_prod[idp].peso;
-              l_prod[idp].qtd += l_enc[ide].qtd_prod[i][1];
-              l_enc[ide].qtd_prod[i][1] = 0;
-            }
-          }
-          else
-          {
-            
-          }
-
+          l_enc[ide].peso -= l_enc[ide].qtd_prod[i][1] * l_prod[idp].peso;
+          l_prod[idp].qtd += l_enc[ide].qtd_prod[i][1];
+          l_enc[ide].qtd_prod[i][1] = 0;
+        }
+        else
+        {
+          
         }
 
       }
+
     }
 
   }
@@ -223,14 +209,12 @@ void __C__(int n_enc, Produto l_prod[10000], Encomenda l_enc[500])
   }
   else
   {
-    {
-      int i;
-      int custo = 0;
-      for (i = 0; i < l_enc[ide].n_prod_enc; i++)
-        custo += l_enc[ide].qtd_prod[i][1] * l_prod[l_enc[ide].qtd_prod[i][0]].preco;
+    int i;
+    int custo = 0;
+    for (i = 0; i < l_enc[ide].n_prod_enc; i++)
+      custo += l_enc[ide].qtd_prod[i][1] * l_prod[l_enc[ide].qtd_prod[i][0]].preco;
 
-      printf("Custo da encomenda %d %d.\n", ide, custo);
-    }
+    printf("Custo da encomenda %d %d.\n", ide, custo);
   }
 
 }
@@ -271,25 +255,21 @@ void __E__(int n_prod, int n_enc, Produto l_prod[10000], Encomenda l_enc[500])
     }
     else
     {
+      for (i = 0; i < l_enc[ide].n_prod_enc; i++)
       {
-        for (i = 0; i < l_enc[ide].n_prod_enc; i++)
+        if (l_enc[ide].qtd_prod[i][0] == idp)
         {
-          if (l_enc[ide].qtd_prod[i][0] == idp)
-          {
-            {
-              printf("%s %d.\n", l_prod[idp].descricao, l_enc[ide].qtd_prod[i][1]);
-              return;
-            }
-          }
-          else
-          {
-            
-          }
-
+          printf("%s %d.\n", l_prod[idp].descricao, l_enc[ide].qtd_prod[i][1]);
+          return;
+        }
+        else
+        {
+          
         }
 
-        printf("%s 0.\n", l_prod[idp].descricao);
       }
+
+      printf("%s 0.\n", l_prod[idp].descricao);
     }
 
   }
@@ -306,31 +286,20 @@ void __m__(int n_prod, int n_enc, Encomenda l_enc[500])
   }
   else
   {
+    int max_qtd = 0;
+    int max_ide = 0;
+    int i;
+    int j;
+    for (i = 0; i < n_enc; i++)
     {
-      int max_qtd = 0;
-      int max_ide = 0;
-      int i;
-      int j;
-      for (i = 0; i < n_enc; i++)
+      for (j = 0; j < l_enc[i].n_prod_enc; j++)
       {
-        for (j = 0; j < l_enc[i].n_prod_enc; j++)
+        if (l_enc[i].qtd_prod[j][0] == idp)
         {
-          if (l_enc[i].qtd_prod[j][0] == idp)
+          if (l_enc[i].qtd_prod[j][1] > max_qtd)
           {
-            {
-              if (l_enc[i].qtd_prod[j][1] > max_qtd)
-              {
-                {
-                  max_qtd = l_enc[i].qtd_prod[j][1];
-                  max_ide = i;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
+            max_qtd = l_enc[i].qtd_prod[j][1];
+            max_ide = i;
           }
           else
           {
@@ -338,19 +307,24 @@ void __m__(int n_prod, int n_enc, Encomenda l_enc[500])
           }
 
         }
+        else
+        {
+          
+        }
 
-      }
-
-      if (max_qtd != 0)
-      {
-        printf("Maximo produto %d %d %d.\n", idp, max_ide, max_qtd);
-      }
-      else
-      {
-        
       }
 
     }
+
+    if (max_qtd != 0)
+    {
+      printf("Maximo produto %d %d %d.\n", idp, max_ide, max_qtd);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -455,9 +429,7 @@ int partition_preco(Produto v[10000], int e, int d)
     {
       if (j == e)
       {
-        {
-          break;
-        }
+        break;
       }
       else
       {
@@ -468,9 +440,7 @@ int partition_preco(Produto v[10000], int e, int d)
 
     if (i < j)
     {
-      {
-        troca_prod(v, i, j);
-      }
+      troca_prod(v, i, j);
     }
     else
     {
@@ -524,25 +494,23 @@ void __L__(int n_enc, Produto l_prod[10000], Encomenda l_enc[500])
   }
   else
   {
+    int i;
+    quicksort_desc(l_enc[ide].qtd_prod, 0, l_enc[ide].n_prod_enc - 1, l_prod);
+    printf("Encomenda %d\n", ide);
+    for (i = 0; i < l_enc[ide].n_prod_enc; i++)
     {
-      int i;
-      quicksort_desc(l_enc[ide].qtd_prod, 0, l_enc[ide].n_prod_enc - 1, l_prod);
-      printf("Encomenda %d\n", ide);
-      for (i = 0; i < l_enc[ide].n_prod_enc; i++)
+      if (l_enc[ide].qtd_prod[i][1] != 0)
       {
-        if (l_enc[ide].qtd_prod[i][1] != 0)
-        {
-          printf("* %s %d %d\n", l_prod[l_enc[ide].qtd_prod[i][0]].descricao, l_prod[l_enc[ide].qtd_prod[i][0]].preco, l_enc[ide].qtd_prod[i][1]);
-        }
-        else
-        {
-          
-        }
-
+        printf("* %s %d %d\n", l_prod[l_enc[ide].qtd_prod[i][0]].descricao, l_prod[l_enc[ide].qtd_prod[i][0]].preco, l_enc[ide].qtd_prod[i][1]);
+      }
+      else
+      {
+        
       }
 
-      return;
     }
+
+    return;
   }
 
 }

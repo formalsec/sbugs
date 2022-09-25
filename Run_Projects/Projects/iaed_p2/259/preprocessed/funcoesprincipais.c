@@ -36,45 +36,37 @@ void cmd_a(jogo *heads_jogos[], equipa *heads_equipas[], int n_linha, lista_jogo
   golos2 = new_sym_var(sizeof(int) * 8);
   if (procura_j(heads_jogos, nome))
   {
-    {
-      printf("%d Jogo existente.\n", n_linha);
-    }
+    printf("%d Jogo existente.\n", n_linha);
   }
   else
   {
+    if ((aux1 = procura_e(heads_equipas, equipa1)) && (aux2 = procura_e(heads_equipas, equipa2)))
     {
-      if ((aux1 = procura_e(heads_equipas, equipa1)) && (aux2 = procura_e(heads_equipas, equipa2)))
+      jogo_aux = adi_no(heads_jogos, nome, aux1, aux2, golos1, golos2);
+      adiciona_fim(jogos_ordenados, jogo_aux);
+      if (golos1 > golos2)
       {
-        {
-          jogo_aux = adi_no(heads_jogos, nome, aux1, aux2, golos1, golos2);
-          adiciona_fim(jogos_ordenados, jogo_aux);
-          if (golos1 > golos2)
-          {
-            aux1->vitoria += 1;
-          }
-          else
-          {
-            if (golos2 > golos1)
-            {
-              aux2->vitoria += 1;
-            }
-            else
-            {
-              
-            }
-
-          }
-
-        }
+        aux1->vitoria += 1;
       }
       else
       {
+        if (golos2 > golos1)
         {
-          printf("%d Equipa inexistente.\n", n_linha);
+          aux2->vitoria += 1;
         }
+        else
+        {
+          
+        }
+
       }
 
     }
+    else
+    {
+      printf("%d Equipa inexistente.\n", n_linha);
+    }
+
   }
 
 }
@@ -92,15 +84,11 @@ void cmd_A(equipa *heads_equipas[], int n_linha)
   aux = procura_e(heads_equipas, nome);
   if (aux)
   {
-    {
-      printf("%d Equipa existente.\n", n_linha);
-    }
+    printf("%d Equipa existente.\n", n_linha);
   }
   else
   {
-    {
-      adi_eq(heads_equipas, nome);
-    }
+    adi_eq(heads_equipas, nome);
   }
 
 }
@@ -173,28 +161,24 @@ void cmd_r(jogo *heads_jogos[], lista_jogo *jogos_ordenados, int n_linha)
   aux = elimina_jo(jogos_ordenados, nome);
   if (aux)
   {
+    if (aux->golos1 > aux->golos2)
     {
-      if (aux->golos1 > aux->golos2)
+      aux->equipa1->vitoria -= 1;
+    }
+    else
+    {
+      if (aux->golos2 > aux->golos1)
       {
-        {
-          aux->equipa1->vitoria -= 1;
-        }
+        aux->equipa2->vitoria -= 1;
       }
       else
       {
-        if (aux->golos2 > aux->golos1)
-        {
-          aux->equipa2->vitoria -= 1;
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      rem_no(heads_jogos, nome);
     }
+
+    rem_no(heads_jogos, nome);
   }
   else
   {
@@ -220,44 +204,42 @@ void cmd_s(jogo *heads_jogos[], int n_linha)
   aux = procura_j(heads_jogos, nome);
   if (aux)
   {
+    if (aux->golos1 > aux->golos2)
     {
-      if (aux->golos1 > aux->golos2)
+      aux->equipa1->vitoria -= 1;
+    }
+    else
+    {
+      if (aux->golos2 > aux->golos1)
       {
-        aux->equipa1->vitoria -= 1;
+        aux->equipa2->vitoria -= 1;
       }
       else
       {
-        if (aux->golos2 > aux->golos1)
-        {
-          aux->equipa2->vitoria -= 1;
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      aux->golos1 = golos1;
-      aux->golos2 = golos2;
-      if (golos1 > golos2)
-      {
-        aux->equipa1->vitoria += 1;
-      }
-      else
-      {
-        if (golos2 > golos1)
-        {
-          aux->equipa2->vitoria += 1;
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
     }
+
+    aux->golos1 = golos1;
+    aux->golos2 = golos2;
+    if (golos1 > golos2)
+    {
+      aux->equipa1->vitoria += 1;
+    }
+    else
+    {
+      if (golos2 > golos1)
+      {
+        aux->equipa2->vitoria += 1;
+      }
+      else
+      {
+        
+      }
+
+    }
+
   }
   else
   {
@@ -294,35 +276,33 @@ void cmd_g(equipa *heads_equipas[], int n_linha)
 
   if (max_vitoria >= 0)
   {
+    equipas_ordenadas = inic_lista_e();
+    for (i = 0; i < 8059; i++)
     {
-      equipas_ordenadas = inic_lista_e();
-      for (i = 0; i < 8059; i++)
+      aux = heads_equipas[i];
+      while (aux)
       {
-        aux = heads_equipas[i];
-        while (aux)
+        if (aux->vitoria == max_vitoria)
         {
-          if (aux->vitoria == max_vitoria)
-          {
-            adiciona_lex(equipas_ordenadas, aux);
-          }
-          else
-          {
-            
-          }
-
-          aux = aux->next;
+          adiciona_lex(equipas_ordenadas, aux);
+        }
+        else
+        {
+          
         }
 
+        aux = aux->next;
       }
 
-      printf("%d Melhores %d\n", n_linha, max_vitoria);
-      for (aux_2 = equipas_ordenadas->head; aux_2; aux_2 = aux_2->next)
-      {
-        printf("%d * %s\n", n_linha, aux_2->equipa_lista->nome);
-      }
-
-      free_lista_e(equipas_ordenadas);
     }
+
+    printf("%d Melhores %d\n", n_linha, max_vitoria);
+    for (aux_2 = equipas_ordenadas->head; aux_2; aux_2 = aux_2->next)
+    {
+      printf("%d * %s\n", n_linha, aux_2->equipa_lista->nome);
+    }
+
+    free_lista_e(equipas_ordenadas);
   }
   else
   {

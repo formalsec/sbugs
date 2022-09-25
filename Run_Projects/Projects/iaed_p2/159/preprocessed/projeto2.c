@@ -67,9 +67,7 @@ int main()
     Ne = Te->N;
     if ((Ne++) > (Te->M / 2))
     {
-      {
-        Te = expand_e(Te);
-      }
+      Te = expand_e(Te);
     }
     else
     {
@@ -78,10 +76,8 @@ int main()
 
     if ((Nt++) > (Tj->M / 2))
     {
-      {
-        Tj = expand_j(Tj);
-        Jogos = realloc(Jogos, (sizeof(Jogo)) * Tj->M);
-      }
+      Tj = expand_j(Tj);
+      Jogos = realloc(Jogos, (sizeof(Jogo)) * Tj->M);
     }
     else
     {

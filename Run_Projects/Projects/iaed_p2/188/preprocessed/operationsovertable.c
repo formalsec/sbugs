@@ -67,25 +67,21 @@ campeonato removeHashEl(campeonato head, char *text)
   {
     if (strcmp(t->j->nome, text) == 0)
     {
+      if (t == head)
       {
-        if (t == head)
-        {
-          {
-            head = t->next;
-          }
-        }
-        else
-        {
-          prev->next = t->next;
-        }
-
-        free(t->j->equipa1);
-        free(t->j->equipa2);
-        free(t->j->nome);
-        free(t->j);
-        free(t);
-        return head;
+        head = t->next;
       }
+      else
+      {
+        prev->next = t->next;
+      }
+
+      free(t->j->equipa1);
+      free(t->j->equipa2);
+      free(t->j->nome);
+      free(t->j);
+      free(t);
+      return head;
     }
     else
     {
@@ -101,27 +97,23 @@ campeonato insertBeginList(campeonato head, game jogo)
 {
   if (head != 0)
   {
-    {
-      campeonato new = (campeonato) malloc(sizeof(struct item));
-      new->j = (game) malloc(sizeof(struct jogo));
-      new->j->nome = (char *) malloc((sizeof(char)) * (strlen(jogo->nome) + 1));
-      strcpy(new->j->nome, jogo->nome);
-      new->j->nome = strdup(jogo->nome);
-      new->j->equipa1 = strdup(jogo->equipa1);
-      new->j->equipa2 = strdup(jogo->equipa2);
-      new->j->score1 = jogo->score1;
-      new->j->score2 = jogo->score2;
-      new->next = head;
-      return new;
-    }
+    campeonato new = (campeonato) malloc(sizeof(struct item));
+    new->j = (game) malloc(sizeof(struct jogo));
+    new->j->nome = (char *) malloc((sizeof(char)) * (strlen(jogo->nome) + 1));
+    strcpy(new->j->nome, jogo->nome);
+    new->j->nome = strdup(jogo->nome);
+    new->j->equipa1 = strdup(jogo->equipa1);
+    new->j->equipa2 = strdup(jogo->equipa2);
+    new->j->score1 = jogo->score1;
+    new->j->score2 = jogo->score2;
+    new->next = head;
+    return new;
   }
   else
   {
-    {
-      campeonato new = NEW_NODE(jogo);
-      new->next = head;
-      return new;
-    }
+    campeonato new = NEW_NODE(jogo);
+    new->next = head;
+    return new;
   }
 
 }
@@ -185,9 +177,7 @@ copa *InsereEnd(copa *head, game j)
   copa *x;
   if (head == 0)
   {
-    {
-      return NOVA_COPA(j);
-    }
+    return NOVA_COPA(j);
   }
   else
   {
@@ -209,24 +199,20 @@ copa *RLista(copa *head, char *nome)
   {
     if (strcmp(t->text, nome) == 0)
     {
+      if (t == head)
       {
-        if (t == head)
-        {
-          {
-            head = t->next;
-          }
-        }
-        else
-        {
-          prev->next = t->next;
-        }
-
-        free(t->text);
-        free(t->Pequipa);
-        free(t->Sequipa);
-        free(t);
-        return head;
+        head = t->next;
       }
+      else
+      {
+        prev->next = t->next;
+      }
+
+      free(t->text);
+      free(t->Pequipa);
+      free(t->Sequipa);
+      free(t);
+      return head;
     }
     else
     {
@@ -245,9 +231,7 @@ copa *Search_Copas(copa *head, char *nome)
   {
     if (strcmp(t->text, nome) == 0)
     {
-      {
-        return t;
-      }
+      return t;
     }
     else
     {
@@ -264,16 +248,14 @@ campeonato libertahashtable(campeonato jogo)
 {
   if (jogo != 0)
   {
-    {
-      campeonato old;
-      old = jogo;
-      jogo = jogo->next;
-      free(old->j->equipa1);
-      free(old->j->equipa2);
-      free(old->j->nome);
-      free(old->j);
-      free(old);
-    }
+    campeonato old;
+    old = jogo;
+    jogo = jogo->next;
+    free(old->j->equipa1);
+    free(old->j->equipa2);
+    free(old->j->nome);
+    free(old->j);
+    free(old);
   }
   else
   {
@@ -287,15 +269,13 @@ copa *libertalista(copa *lista)
 {
   if (lista != 0)
   {
-    {
-      copa *old;
-      old = lista;
-      lista = lista->next;
-      free(old->Pequipa);
-      free(old->Sequipa);
-      free(old->text);
-      free(old);
-    }
+    copa *old;
+    old = lista;
+    lista = lista->next;
+    free(old->Pequipa);
+    free(old->Sequipa);
+    free(old->text);
+    free(old);
   }
   else
   {

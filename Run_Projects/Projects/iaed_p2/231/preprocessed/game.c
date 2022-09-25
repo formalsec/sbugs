@@ -96,19 +96,17 @@ GameNode *deleteGame(GameNode *head, GameNode *game)
 
   if (strcmp(game->name, head->name) == 0)
   {
+    if (head->next != 0)
     {
-      if (head->next != 0)
-      {
-        node = head->next;
-      }
-      else
-      {
-        
-      }
-
-      free(head);
-      return node;
+      node = head->next;
     }
+    else
+    {
+      
+    }
+
+    free(head);
+    return node;
   }
   else
   {
@@ -119,25 +117,21 @@ GameNode *deleteGame(GameNode *head, GameNode *game)
   {
     if (strcmp(node->next->name, game->name) == 0)
     {
+      if (node->next->next != 0)
       {
-        if (node->next->next != 0)
-        {
-          node->next = node->next->next;
-        }
-        else
-        {
-          
-        }
-
-        free(game);
-        return head;
+        node->next = node->next->next;
       }
+      else
+      {
+        
+      }
+
+      free(game);
+      return head;
     }
     else
     {
-      {
-        node = node->next;
-      }
+      node = node->next;
     }
 
   }

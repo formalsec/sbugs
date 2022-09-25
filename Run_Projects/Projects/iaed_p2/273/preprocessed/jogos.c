@@ -39,21 +39,39 @@ void altera_resultados_jogo(jogo *jogo, int novo_reslt_1, int novo_reslt_2)
 {
   if (jogo->resultado_1 > jogo->resultado_2)
   {
+    if (novo_reslt_2 > novo_reslt_1)
     {
-      if (novo_reslt_2 > novo_reslt_1)
+      jogo->equipa_1->num_vitorias--;
+      jogo->equipa_2->num_vitorias++;
+    }
+    else
+    {
+      if (novo_reslt_1 == novo_reslt_2)
       {
-        {
-          jogo->equipa_1->num_vitorias--;
-          jogo->equipa_2->num_vitorias++;
-        }
+        jogo->equipa_1->num_vitorias--;
+      }
+      else
+      {
+        
+      }
+
+    }
+
+  }
+  else
+  {
+    if (jogo->resultado_2 > jogo->resultado_1)
+    {
+      if (novo_reslt_1 > novo_reslt_2)
+      {
+        jogo->equipa_2->num_vitorias--;
+        jogo->equipa_1->num_vitorias++;
       }
       else
       {
         if (novo_reslt_1 == novo_reslt_2)
         {
-          {
-            jogo->equipa_1->num_vitorias--;
-          }
+          jogo->equipa_2->num_vitorias--;
         }
         else
         {
@@ -63,26 +81,19 @@ void altera_resultados_jogo(jogo *jogo, int novo_reslt_1, int novo_reslt_2)
       }
 
     }
-  }
-  else
-  {
-    if (jogo->resultado_2 > jogo->resultado_1)
+    else
     {
+      if (jogo->resultado_1 == jogo->resultado_2)
       {
         if (novo_reslt_1 > novo_reslt_2)
         {
-          {
-            jogo->equipa_2->num_vitorias--;
-            jogo->equipa_1->num_vitorias++;
-          }
+          jogo->equipa_1->num_vitorias++;
         }
         else
         {
-          if (novo_reslt_1 == novo_reslt_2)
+          if (novo_reslt_2 > novo_reslt_1)
           {
-            {
-              jogo->equipa_2->num_vitorias--;
-            }
+            jogo->equipa_2->num_vitorias++;
           }
           else
           {
@@ -91,35 +102,6 @@ void altera_resultados_jogo(jogo *jogo, int novo_reslt_1, int novo_reslt_2)
 
         }
 
-      }
-    }
-    else
-    {
-      if (jogo->resultado_1 == jogo->resultado_2)
-      {
-        {
-          if (novo_reslt_1 > novo_reslt_2)
-          {
-            {
-              jogo->equipa_1->num_vitorias++;
-            }
-          }
-          else
-          {
-            if (novo_reslt_2 > novo_reslt_1)
-            {
-              {
-                jogo->equipa_2->num_vitorias++;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-        }
       }
       else
       {

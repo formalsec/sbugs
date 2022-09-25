@@ -78,11 +78,9 @@ node_jg remove_jg(node_jg head, jg *jogo)
   node_jg temp;
   if (atual->jogo == jogo)
   {
-    {
-      head = head->next;
-      free(atual);
-      return head;
-    }
+    head = head->next;
+    free(atual);
+    return head;
   }
   else
   {
@@ -93,12 +91,10 @@ node_jg remove_jg(node_jg head, jg *jogo)
   {
     if (atual->next->jogo == jogo)
     {
-      {
-        temp = atual->next->next;
-        free(atual->next);
-        atual->next = temp;
-        return head;
-      }
+      temp = atual->next->next;
+      free(atual->next);
+      atual->next = temp;
+      return head;
     }
     else
     {
@@ -123,14 +119,12 @@ void push_lista(link *lista, jg *njogo)
   node_jg new;
   if (l_jg_empty(lista->head))
   {
-    {
-      new = malloc(sizeof(struct node_jg));
-      new->jogo = njogo;
-      new->next = 0;
-      lista->head = new;
-      lista->tail = new;
-      return;
-    }
+    new = malloc(sizeof(struct node_jg));
+    new->jogo = njogo;
+    new->next = 0;
+    lista->head = new;
+    lista->tail = new;
+    return;
   }
   else
   {
@@ -147,11 +141,9 @@ void remove_lista(link *lista, jg *jogo)
   node_jg temp;
   if (atual->jogo == jogo)
   {
-    {
-      lista->head = lista->head->next;
-      free(atual);
-      return;
-    }
+    lista->head = lista->head->next;
+    free(atual);
+    return;
   }
   else
   {
@@ -162,23 +154,19 @@ void remove_lista(link *lista, jg *jogo)
   {
     if ((atual->next->jogo == jogo) && (atual->next == lista->tail))
     {
-      {
-        lista->tail = atual;
-        free(atual->next);
-        lista->tail->next = 0;
-        return;
-      }
+      lista->tail = atual;
+      free(atual->next);
+      lista->tail->next = 0;
+      return;
     }
     else
     {
       if (atual->next->jogo == jogo)
       {
-        {
-          temp = atual->next->next;
-          free(atual->next);
-          atual->next = temp;
-          return;
-        }
+        temp = atual->next->next;
+        free(atual->next);
+        atual->next = temp;
+        return;
       }
       else
       {

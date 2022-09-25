@@ -38,46 +38,36 @@ void cmd_a(link_jg *heads_jg, link_eq *heads_eq, list *jogos, int M, int m, int 
   equipa2 = HT_eq_search(nome2, heads_eq, m);
   if (HT_jg_search(nome_jogo, heads_jg, M) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-    }
+    printf("%d Jogo existente.\n", NL);
   }
   else
   {
     if ((equipa1 == 0) || (equipa2 == 0))
     {
-      {
-        printf("%d Equipa inexistente.\n", NL);
-      }
+      printf("%d Equipa inexistente.\n", NL);
     }
     else
     {
+      novo_jogo = LS_jg_insert(newJogo(nome_jogo, equipa1, equipa2, score1, score2), jogos);
+      HT_jg_insert(novo_jogo, heads_jg, M);
+      if (score1 > score2)
       {
-        novo_jogo = LS_jg_insert(newJogo(nome_jogo, equipa1, equipa2, score1, score2), jogos);
-        HT_jg_insert(novo_jogo, heads_jg, M);
-        if (score1 > score2)
-        {
-          {
-            equipa1->jogos_ganhos++;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if (score2 > score1)
-        {
-          {
-            equipa2->jogos_ganhos++;
-          }
-        }
-        else
-        {
-          
-        }
-
+        equipa1->jogos_ganhos++;
       }
+      else
+      {
+        
+      }
+
+      if (score2 > score1)
+      {
+        equipa2->jogos_ganhos++;
+      }
+      else
+      {
+        
+      }
+
     }
 
   }
@@ -109,15 +99,11 @@ void cmd_p(link_jg *heads_jg, int M, int NL)
   a = HT_jg_search(nome_jogo, heads_jg, M);
   if (a == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
   else
   {
-    {
-      printf("%d %s %s %s %d %d\n", NL, a->jogo->nome, a->jogo->equipa1->nome, a->jogo->equipa2->nome, a->jogo->score1, a->jogo->score2);
-    }
+    printf("%d %s %s %s %d %d\n", NL, a->jogo->nome, a->jogo->equipa1->nome, a->jogo->equipa2->nome, a->jogo->score1, a->jogo->score2);
   }
 
 }
@@ -135,37 +121,29 @@ void cmd_r(link_jg *heads_jg, list *jogos, int M, int NL)
   a = HT_jg_search(nome_jogo, heads_jg, M);
   if (a == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
   else
   {
+    if (a->jogo->score1 > a->jogo->score2)
     {
-      if (a->jogo->score1 > a->jogo->score2)
+      a->jogo->equipa1->jogos_ganhos--;
+    }
+    else
+    {
+      if (a->jogo->score1 < a->jogo->score2)
       {
-        {
-          a->jogo->equipa1->jogos_ganhos--;
-        }
+        a->jogo->equipa2->jogos_ganhos--;
       }
       else
       {
-        if (a->jogo->score1 < a->jogo->score2)
-        {
-          {
-            a->jogo->equipa2->jogos_ganhos--;
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      HT_jg_delete(a, heads_jg, M);
-      LS_jg_delete(a, jogos);
     }
+
+    HT_jg_delete(a, heads_jg, M);
+    LS_jg_delete(a, jogos);
   }
 
 }
@@ -174,35 +152,27 @@ void muda_score(ptr_equipa equipa1, ptr_equipa equipa2, ptr_jogo jogo, int novos
 {
   if ((jogo->score1 > jogo->score2) && (novoscore1 < novoscore2))
   {
-    {
-      equipa1->jogos_ganhos--;
-      equipa2->jogos_ganhos++;
-    }
+    equipa1->jogos_ganhos--;
+    equipa2->jogos_ganhos++;
   }
   else
   {
     if ((jogo->score2 > jogo->score1) && (novoscore1 > novoscore2))
     {
-      {
-        equipa1->jogos_ganhos++;
-        equipa2->jogos_ganhos--;
-      }
+      equipa1->jogos_ganhos++;
+      equipa2->jogos_ganhos--;
     }
     else
     {
       if ((jogo->score1 > jogo->score2) && (novoscore1 == novoscore2))
       {
-        {
-          equipa1->jogos_ganhos--;
-        }
+        equipa1->jogos_ganhos--;
       }
       else
       {
         if ((jogo->score2 > jogo->score1) && (novoscore1 == novoscore2))
         {
-          {
-            equipa2->jogos_ganhos--;
-          }
+          equipa2->jogos_ganhos--;
         }
         else
         {
@@ -221,17 +191,13 @@ void muda_score_igual(ptr_equipa equipa1, ptr_equipa equipa2, ptr_jogo jogo, int
 {
   if ((jogo->score2 == jogo->score1) && (novoscore1 < novoscore2))
   {
-    {
-      equipa2->jogos_ganhos++;
-    }
+    equipa2->jogos_ganhos++;
   }
   else
   {
     if ((jogo->score2 == jogo->score1) && (novoscore1 > novoscore2))
     {
-      {
-        equipa1->jogos_ganhos++;
-      }
+      equipa1->jogos_ganhos++;
     }
     else
     {
@@ -261,20 +227,16 @@ void cmd_s(link_jg *heads_jg, int M, int NL)
   a = HT_jg_search(nome_jogo, heads_jg, M);
   if (a == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
   else
   {
-    {
-      equipa1 = a->jogo->equipa1;
-      equipa2 = a->jogo->equipa2;
-      muda_score(equipa1, equipa2, a->jogo, novoscore1, novoscore2);
-      muda_score_igual(equipa1, equipa2, a->jogo, novoscore1, novoscore2);
-      a->jogo->score1 = novoscore1;
-      a->jogo->score2 = novoscore2;
-    }
+    equipa1 = a->jogo->equipa1;
+    equipa2 = a->jogo->equipa2;
+    muda_score(equipa1, equipa2, a->jogo, novoscore1, novoscore2);
+    muda_score_igual(equipa1, equipa2, a->jogo, novoscore1, novoscore2);
+    a->jogo->score1 = novoscore1;
+    a->jogo->score2 = novoscore2;
   }
 
 }
@@ -291,17 +253,13 @@ void cmd_A(link_eq *heads_eq, int m, int *numeq, int NL)
   nome[10 - 1] = '\0';
   if (HT_eq_search(nome, heads_eq, m) == 0)
   {
-    {
-      equipa = newEquipa(nome, 0);
-      HT_eq_insert(equipa, heads_eq, m);
-      *numeq = (*numeq) + 1;
-    }
+    equipa = newEquipa(nome, 0);
+    HT_eq_insert(equipa, heads_eq, m);
+    *numeq = (*numeq) + 1;
   }
   else
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-    }
+    printf("%d Equipa existente.\n", NL);
   }
 
 }
@@ -319,15 +277,11 @@ void cmd_P(link_eq *heads_eq, int M, int NL)
   equipa = HT_eq_search(nome, heads_eq, M);
   if (equipa == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-    }
+    printf("%d Equipa inexistente.\n", NL);
   }
   else
   {
-    {
-      printf("%d %s %d\n", NL, equipa->nome, equipa->jogos_ganhos);
-    }
+    printf("%d %s %d\n", NL, equipa->nome, equipa->jogos_ganhos);
   }
 
 }
@@ -348,58 +302,54 @@ void cmd_g(link_eq *heads_eq, int m, int *numeq, int NL)
   ptr_equipa *array = 0;
   if ((*numeq) > 0)
   {
+    for (i = 0; i < m; i++)
     {
-      for (i = 0; i < m; i++)
+      temp = heads_eq[i];
+      while (temp != 0)
       {
-        temp = heads_eq[i];
-        while (temp != 0)
+        if (temp->link_team->jogos_ganhos > j)
         {
-          if (temp->link_team->jogos_ganhos > j)
-          {
-            j = temp->link_team->jogos_ganhos;
-          }
-          else
-          {
-            
-          }
-
-          temp = temp->next;
+          j = temp->link_team->jogos_ganhos;
+        }
+        else
+        {
+          
         }
 
+        temp = temp->next;
       }
 
-      array = malloc((*numeq) * (sizeof(struct equipa)));
-      for (i = 0; i < m; i++)
-      {
-        temp = heads_eq[i];
-        while (temp != 0)
-        {
-          if (temp->link_team->jogos_ganhos == j)
-          {
-            {
-              array[k] = temp->link_team;
-              k++;
-            }
-          }
-          else
-          {
-            
-          }
-
-          temp = temp->next;
-        }
-
-      }
-
-      qsort(array, k, sizeof(struct equipa *), comparador_por_vitorias);
-      printf("%d Melhores %d\n", NL, array[0]->jogos_ganhos);
-      for (i = 0; i < k; i++)
-      {
-        printf("%d * %s\n", NL, array[i]->nome);
-      }
-
-      free(array);
     }
+
+    array = malloc((*numeq) * (sizeof(struct equipa)));
+    for (i = 0; i < m; i++)
+    {
+      temp = heads_eq[i];
+      while (temp != 0)
+      {
+        if (temp->link_team->jogos_ganhos == j)
+        {
+          array[k] = temp->link_team;
+          k++;
+        }
+        else
+        {
+          
+        }
+
+        temp = temp->next;
+      }
+
+    }
+
+    qsort(array, k, sizeof(struct equipa *), comparador_por_vitorias);
+    printf("%d Melhores %d\n", NL, array[0]->jogos_ganhos);
+    for (i = 0; i < k; i++)
+    {
+      printf("%d * %s\n", NL, array[i]->nome);
+    }
+
+    free(array);
   }
   else
   {

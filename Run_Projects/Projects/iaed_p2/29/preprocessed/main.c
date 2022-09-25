@@ -86,15 +86,11 @@ void processaLinha(char *input)
       test = htGame_search(hashGames, name);
       if (test == 0)
       {
-        {
-          printf("%d Jogo inexistente.\n", debug);
-        }
+        printf("%d Jogo inexistente.\n", debug);
       }
       else
       {
-        {
-          printf("%d %s %s %s %d %d\n", debug, name, test->team[0]->name, test->team[1]->name, test->score[0], test->score[1]);
-        }
+        printf("%d %s %s %s %d %d\n", debug, name, test->team[0]->name, test->team[1]->name, test->score[0], test->score[1]);
       }
 
       break;
@@ -106,10 +102,8 @@ void processaLinha(char *input)
       strcpy(name, strtok(input + 2, "\n"));
       if (htGame_search(hashGames, name) == 0)
       {
-        {
-          printf("%d Jogo inexistente.\n", debug);
-          break;
-        }
+        printf("%d Jogo inexistente.\n", debug);
+        break;
       }
       else
       {
@@ -137,10 +131,8 @@ void processaLinha(char *input)
       t = htGame_search(hashGames, name);
       if (t == 0)
       {
-        {
-          printf("%d Jogo inexistente.\n", debug);
-          break;
-        }
+        printf("%d Jogo inexistente.\n", debug);
+        break;
       }
       else
       {
@@ -159,10 +151,8 @@ void processaLinha(char *input)
       t = htTeam_search(hashTeams, name);
       if (t == 0)
       {
-        {
-          printf("%d Equipa inexistente.\n", debug);
-          break;
-        }
+        printf("%d Equipa inexistente.\n", debug);
+        break;
       }
       else
       {

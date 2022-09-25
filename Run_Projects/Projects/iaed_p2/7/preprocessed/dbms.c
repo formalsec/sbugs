@@ -198,10 +198,8 @@ void add_match(DBMS dbms, const char *match_name, const char *team1_name, const 
   Team team2 = search_team(db->teams_table, team2_name, dbms->M);
   if (search_match(db->matches_table, match_name, dbms->M))
   {
-    {
-      printf("%u Jogo existente.\n", dbms->NL);
-      return;
-    }
+    printf("%u Jogo existente.\n", dbms->NL);
+    return;
   }
   else
   {
@@ -210,10 +208,8 @@ void add_match(DBMS dbms, const char *match_name, const char *team1_name, const 
 
   if ((!team1) || (!team2))
   {
-    {
-      printf("%u Equipa inexistente.\n", dbms->NL);
-      return;
-    }
+    printf("%u Equipa inexistente.\n", dbms->NL);
+    return;
   }
   else
   {
@@ -237,10 +233,8 @@ void add_team(DBMS dbms, const char *team_name)
   Team team;
   if (search_team(db->teams_table, team_name, dbms->M))
   {
-    {
-      printf("%u Equipa existente.\n", dbms->NL);
-      return;
-    }
+    printf("%u Equipa existente.\n", dbms->NL);
+    return;
   }
   else
   {
@@ -258,10 +252,8 @@ void list_team(DBMS dbms, const char *team_name)
   Team team = search_team(db->teams_table, team_name, dbms->M);
   if (team == 0)
   {
-    {
-      printf("%u Equipa inexistente.\n", dbms->NL);
-      return;
-    }
+    printf("%u Equipa inexistente.\n", dbms->NL);
+    return;
   }
   else
   {
@@ -277,10 +269,8 @@ void list_match(DBMS dbms, const char *match_name)
   Match match = search_match(db->matches_table, match_name, dbms->M);
   if (match == 0)
   {
-    {
-      printf("%u Jogo inexistente.\n", dbms->NL);
-      return;
-    }
+    printf("%u Jogo inexistente.\n", dbms->NL);
+    return;
   }
   else
   {
@@ -321,10 +311,8 @@ void change_match_score(DBMS dbms, const char *match_name, const uint score_1, c
   Team new_winning_team = 0;
   if (match == 0)
   {
-    {
-      printf("%u Jogo inexistente.\n", dbms->NL);
-      return;
-    }
+    printf("%u Jogo inexistente.\n", dbms->NL);
+    return;
   }
   else
   {
@@ -419,39 +407,35 @@ m_link remove_m_node(m_link head, M_DLL *list, m_Key key)
   {
     if (strcmp(key, curr->match->name) == 0)
     {
+      if (curr == head)
       {
-        if (curr == head)
-        {
-          head = curr->ht_next;
-        }
-        else
-        {
-          prev->ht_next = curr->ht_next;
-        }
-
-        if (curr == list->head)
-        {
-          pop(list);
-        }
-        else
-        {
-          if (curr == list->tail)
-          {
-            remove_last(list);
-          }
-          else
-          {
-            {
-              curr->l_prev->l_next = curr->l_next;
-              curr->l_next->l_prev = curr->l_prev;
-            }
-          }
-
-        }
-
-        free_m_node(curr);
-        return head;
+        head = curr->ht_next;
       }
+      else
+      {
+        prev->ht_next = curr->ht_next;
+      }
+
+      if (curr == list->head)
+      {
+        pop(list);
+      }
+      else
+      {
+        if (curr == list->tail)
+        {
+          remove_last(list);
+        }
+        else
+        {
+          curr->l_prev->l_next = curr->l_next;
+          curr->l_next->l_prev = curr->l_prev;
+        }
+
+      }
+
+      free_m_node(curr);
+      return head;
     }
     else
     {
@@ -475,10 +459,8 @@ void remove_match(DBMS dbms, const char *match_name)
   Match match = search_match(db->matches_table, match_name, dbms->M);
   if (match == 0)
   {
-    {
-      printf("%u Jogo inexistente.\n", dbms->NL);
-      return;
-    }
+    printf("%u Jogo inexistente.\n", dbms->NL);
+    return;
   }
   else
   {
@@ -487,17 +469,13 @@ void remove_match(DBMS dbms, const char *match_name)
 
   if (match->score_1 > match->score_2)
   {
-    {
-      match->team_1->matches_won--;
-    }
+    match->team_1->matches_won--;
   }
   else
   {
     if (match->score_1 < match->score_2)
     {
-      {
-        match->team_2->matches_won--;
-      }
+      match->team_2->matches_won--;
     }
     else
     {
@@ -565,18 +543,14 @@ void list_best_teams(DBMS dbms)
     {
       if (current->team->matches_won == most_matches_won)
       {
-        {
-          number_max_teams++;
-        }
+        number_max_teams++;
       }
       else
       {
         if (current->team->matches_won > most_matches_won)
         {
-          {
-            most_matches_won = current->team->matches_won;
-            number_max_teams = 1;
-          }
+          most_matches_won = current->team->matches_won;
+          number_max_teams = 1;
         }
         else
         {
@@ -596,10 +570,8 @@ void list_best_teams(DBMS dbms)
     {
       if (current->team->matches_won == most_matches_won)
       {
-        {
-          team_list[j] = current->team;
-          j++;
-        }
+        team_list[j] = current->team;
+        j++;
       }
       else
       {
@@ -635,19 +607,17 @@ t_link remove_t_node(t_link head, const char *k)
   {
     if (strcmp(k, curr->team->name) == 0)
     {
+      if (curr == head)
       {
-        if (curr == head)
-        {
-          head = curr->next;
-        }
-        else
-        {
-          prev->next = curr->next;
-        }
-
-        free_t_node(curr);
-        return head;
+        head = curr->next;
       }
+      else
+      {
+        prev->next = curr->next;
+      }
+
+      free_t_node(curr);
+      return head;
     }
     else
     {

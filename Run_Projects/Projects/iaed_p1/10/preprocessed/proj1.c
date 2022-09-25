@@ -120,15 +120,11 @@ int less_price(Produto p1, Produto p2)
   int res = p1.preco - p2.preco;
   if ((res < 0) || ((res == 0) && (p1.idp < p2.idp)))
   {
-    {
-      return 1;
-    }
+    return 1;
   }
   else
   {
-    {
-      return 0;
-    }
+    return 0;
   }
 
 }
@@ -138,15 +134,11 @@ int less_abc(Produto p1, Produto p2)
   int res = strcmp(p1.desc, p2.desc);
   if ((res < 0) || ((res == 0) && (p1.idp < p2.idp)))
   {
-    {
-      return 1;
-    }
+    return 1;
   }
   else
   {
-    {
-      return 0;
-    }
+    return 0;
   }
 
 }
@@ -171,17 +163,13 @@ int partition(Produto produtos[], int left, int right, char method)
     case 'l':
       if ((less_price(p1, p2) && less_price(p2, p3)) || (less_price(p3, p2) && less_price(p2, p1)))
     {
-      {
-        p1 = p2;
-      }
+      p1 = p2;
     }
     else
     {
       if ((less_price(p1, p3) && less_price(p3, p2)) || (less_price(p2, p3) && less_price(p3, p1)))
       {
-        {
-          p1 = p3;
-        }
+        p1 = p3;
       }
       else
       {
@@ -206,15 +194,11 @@ int partition(Produto produtos[], int left, int right, char method)
 
       if (i < j)
       {
-        {
-          exch(&produtos[i], &produtos[j]);
-        }
+        exch(&produtos[i], &produtos[j]);
       }
       else
       {
-        {
-          return j + 1;
-        }
+        return j + 1;
       }
 
     }
@@ -224,17 +208,13 @@ int partition(Produto produtos[], int left, int right, char method)
     case 'L':
       if ((less_abc(p1, p2) && less_abc(p2, p3)) || (less_abc(p3, p2) && less_abc(p2, p1)))
     {
-      {
-        p1 = p2;
-      }
+      p1 = p2;
     }
     else
     {
       if ((less_abc(p1, p3) && less_abc(p3, p2)) || (less_abc(p2, p3) && less_abc(p3, p1)))
       {
-        {
-          p1 = p3;
-        }
+        p1 = p3;
       }
       else
       {
@@ -259,15 +239,11 @@ int partition(Produto produtos[], int left, int right, char method)
 
       if (i < j)
       {
-        {
-          exch(&produtos[i], &produtos[j]);
-        }
+        exch(&produtos[i], &produtos[j]);
       }
       else
       {
-        {
-          return j + 1;
-        }
+        return j + 1;
       }
 
     }
@@ -286,11 +262,9 @@ void quicksort(Produto produtos[], int left, int right, char method)
 {
   if (left < (right - 1))
   {
-    {
-      int i = partition(produtos, left, right, method);
-      quicksort(produtos, left, i, method);
-      quicksort(produtos, i, right, method);
-    }
+    int i = partition(produtos, left, right, method);
+    quicksort(produtos, left, i, method);
+    quicksort(produtos, i, right, method);
   }
   else
   {
@@ -338,9 +312,7 @@ int procuraProduto_Encomenda(int idp, Encomenda enc)
   {
     if (enc.produtos[i][0] == idp)
     {
-      {
-        return i;
-      }
+      return i;
     }
     else
     {
@@ -384,10 +356,8 @@ void adicionarStock(char *command, Produto produtos[])
   idp = atoi(token = strtok(0, ":"));
   if (idp >= CURRENT_IDP)
   {
-    {
-      printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idp);
-      return;
-    }
+    printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idp);
+    return;
   }
   else
   {
@@ -422,10 +392,8 @@ void encomendarProduto(char *command, Produto produtos[], Encomenda encomendas[]
   idp = atoi(token = strtok(0, ":"));
   if (ide >= CURRENT_IDE)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
+    return;
   }
   else
   {
@@ -434,10 +402,8 @@ void encomendarProduto(char *command, Produto produtos[], Encomenda encomendas[]
 
   if (idp >= CURRENT_IDP)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
+    return;
   }
   else
   {
@@ -447,10 +413,8 @@ void encomendarProduto(char *command, Produto produtos[], Encomenda encomendas[]
   qtd = atoi(token = strtok(0, "\n"));
   if ((qtd - produtos[idp].qtd) > 0)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
+    return;
   }
   else
   {
@@ -459,10 +423,8 @@ void encomendarProduto(char *command, Produto produtos[], Encomenda encomendas[]
 
   if ((encomendas[ide].peso + (qtd * produtos[idp].peso)) > 200)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
+    return;
   }
   else
   {
@@ -472,17 +434,13 @@ void encomendarProduto(char *command, Produto produtos[], Encomenda encomendas[]
   id = procuraProduto_Encomenda(idp, encomendas[ide]);
   if (id != (-1))
   {
-    {
-      encomendas[ide].produtos[id][1] += qtd;
-    }
+    encomendas[ide].produtos[id][1] += qtd;
   }
   else
   {
-    {
-      n = encomendas[ide].nprodutos++;
-      encomendas[ide].produtos[n][0] = idp;
-      encomendas[ide].produtos[n][1] = qtd;
-    }
+    n = encomendas[ide].nprodutos++;
+    encomendas[ide].produtos[n][0] = idp;
+    encomendas[ide].produtos[n][1] = qtd;
   }
 
   encomendas[ide].peso += qtd * produtos[idp].peso;
@@ -498,10 +456,8 @@ void removerStock(char *command, Produto produtos[])
   idp = atoi(token = strtok(0, ":"));
   if (idp >= CURRENT_IDP)
   {
-    {
-      printf("Impossivel remover stock do produto %d. Produto inexistente.\n", idp);
-      return;
-    }
+    printf("Impossivel remover stock do produto %d. Produto inexistente.\n", idp);
+    return;
   }
   else
   {
@@ -511,10 +467,8 @@ void removerStock(char *command, Produto produtos[])
   qtd = atoi(token = strtok(0, "\n"));
   if ((qtd - produtos[idp].qtd) > 0)
   {
-    {
-      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, idp);
-      return;
-    }
+    printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, idp);
+    return;
   }
   else
   {
@@ -538,10 +492,8 @@ void removerProdutoDeEncomenda(char *command, Produto produtos[], Encomenda enco
   idp = atoi(token = strtok(0, "\n"));
   if (ide >= CURRENT_IDE)
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
-      return;
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
+    return;
   }
   else
   {
@@ -550,10 +502,8 @@ void removerProdutoDeEncomenda(char *command, Produto produtos[], Encomenda enco
 
   if (idp >= CURRENT_IDP)
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
-      return;
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
+    return;
   }
   else
   {
@@ -563,18 +513,16 @@ void removerProdutoDeEncomenda(char *command, Produto produtos[], Encomenda enco
   id = procuraProduto_Encomenda(idp, encomendas[ide]);
   if (id != (-1))
   {
+    qtd = encomendas[ide].produtos[id][1];
+    encomendas[ide].peso -= qtd * produtos[idp].peso;
+    produtos[idp].qtd += qtd;
+    n = encomendas[ide].nprodutos--;
+    for (i = id; i < n; i++)
     {
-      qtd = encomendas[ide].produtos[id][1];
-      encomendas[ide].peso -= qtd * produtos[idp].peso;
-      produtos[idp].qtd += qtd;
-      n = encomendas[ide].nprodutos--;
-      for (i = id; i < n; i++)
-      {
-        encomendas[ide].produtos[i][0] = encomendas[ide].produtos[i + 1][0];
-        encomendas[ide].produtos[i][1] = encomendas[ide].produtos[i + 1][1];
-      }
-
+      encomendas[ide].produtos[i][0] = encomendas[ide].produtos[i + 1][0];
+      encomendas[ide].produtos[i][1] = encomendas[ide].produtos[i + 1][1];
     }
+
   }
   else
   {
@@ -594,10 +542,8 @@ void calcularCustoEncomenda(char *command, Produto produtos[], Encomenda encomen
   ide = atoi(token = strtok(0, "\n"));
   if (ide >= CURRENT_IDE)
   {
-    {
-      printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ide);
-      return;
-    }
+    printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ide);
+    return;
   }
   else
   {
@@ -623,10 +569,8 @@ void alterarPreco(char *command, Produto produtos[])
   idp = atoi(token = strtok(0, ":"));
   if (idp >= CURRENT_IDP)
   {
-    {
-      printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idp);
-      return;
-    }
+    printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idp);
+    return;
   }
   else
   {
@@ -648,10 +592,8 @@ void listarProdutoEmEncomenda(char *command, Produto produtos[], Encomenda encom
   ide = atoi(token = strtok(0, ":"));
   if (ide >= CURRENT_IDE)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
-      return;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
+    return;
   }
   else
   {
@@ -661,10 +603,8 @@ void listarProdutoEmEncomenda(char *command, Produto produtos[], Encomenda encom
   idp = atoi(token = strtok(0, ":"));
   if (idp >= CURRENT_IDP)
   {
-    {
-      printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
-      return;
-    }
+    printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
+    return;
   }
   else
   {
@@ -674,15 +614,11 @@ void listarProdutoEmEncomenda(char *command, Produto produtos[], Encomenda encom
   id = procuraProduto_Encomenda(idp, encomendas[ide]);
   if (id != (-1))
   {
-    {
-      qtd = encomendas[ide].produtos[id][1];
-    }
+    qtd = encomendas[ide].produtos[id][1];
   }
   else
   {
-    {
-      qtd = 0;
-    }
+    qtd = 0;
   }
 
   printf("%s %d.\n", produtos[idp].desc, qtd);
@@ -700,10 +636,8 @@ void listarEncomendaComProdutoMax(char *command, Encomenda encomendas[])
   idp = atoi(token = strtok(0, "\n"));
   if (idp >= CURRENT_IDP)
   {
-    {
-      printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idp);
-      return;
-    }
+    printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idp);
+    return;
   }
   else
   {
@@ -712,9 +646,7 @@ void listarEncomendaComProdutoMax(char *command, Encomenda encomendas[])
 
   if (CURRENT_IDE <= 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -728,10 +660,8 @@ void listarEncomendaComProdutoMax(char *command, Encomenda encomendas[])
     id = procuraProduto_Encomenda(idp, encomendas[i]);
     if ((id != (-1)) && (encomendas[i].produtos[id][1] > max))
     {
-      {
-        max = encomendas[i].produtos[id][1];
-        max_ide = encomendas[i].ide;
-      }
+      max = encomendas[i].produtos[id][1];
+      max_ide = encomendas[i].ide;
     }
     else
     {
@@ -742,9 +672,7 @@ void listarEncomendaComProdutoMax(char *command, Encomenda encomendas[])
 
   if (max_ide != (-1))
   {
-    {
-      printf("Maximo produto %d %d %d.\n", idp, max_ide, max);
-    }
+    printf("Maximo produto %d %d %d.\n", idp, max_ide, max);
   }
   else
   {
@@ -771,10 +699,8 @@ void listarProdutosEmEncomendaPorABC(char *command, Produto produtos[], Encomend
   ide = atoi(token = strtok(0, "\n"));
   if (ide >= CURRENT_IDE)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
-      return;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
+    return;
   }
   else
   {

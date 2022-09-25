@@ -62,10 +62,8 @@ void adiciona_stock()
   {
     if (inventario[i].idp == ex.idp)
     {
-      {
-        ESTADO = 1;
-        inventario[i].qtd += ex.qtd;
-      }
+      ESTADO = 1;
+      inventario[i].qtd += ex.qtd;
     }
     else
     {
@@ -128,35 +126,15 @@ void adiciona_produto_encomenda()
         }
         else
         {
+          for (i = 0; i < todas_encomendas[q.ide].cont_produtos; i++)
           {
-            for (i = 0; i < todas_encomendas[q.ide].cont_produtos; i++)
+            if (todas_encomendas[q.ide].produtos_na_encomenda[i].idp == p.idp)
             {
-              if (todas_encomendas[q.ide].produtos_na_encomenda[i].idp == p.idp)
-              {
-                {
-                  ESTADO = 1;
-                  todas_encomendas[q.ide].produtos_na_encomenda[i].qtd += p.qtd;
-                  todas_encomendas[q.ide].peso += inventario[p.idp].peso * p.qtd;
-                  todas_encomendas[q.ide].preco += inventario[p.idp].preco * p.qtd;
-                  inventario[p.idp].qtd -= p.qtd;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-            if (ESTADO == 0)
-            {
-              {
-                todas_encomendas[q.ide].produtos_na_encomenda[i] = inventario[p.idp];
-                todas_encomendas[q.ide].peso += inventario[p.idp].peso * p.qtd;
-                todas_encomendas[q.ide].preco += inventario[p.idp].preco * p.qtd;
-                inventario[p.idp].qtd -= p.qtd;
-                todas_encomendas[q.ide].cont_produtos++;
-              }
+              ESTADO = 1;
+              todas_encomendas[q.ide].produtos_na_encomenda[i].qtd += p.qtd;
+              todas_encomendas[q.ide].peso += inventario[p.idp].peso * p.qtd;
+              todas_encomendas[q.ide].preco += inventario[p.idp].preco * p.qtd;
+              inventario[p.idp].qtd -= p.qtd;
             }
             else
             {
@@ -164,6 +142,20 @@ void adiciona_produto_encomenda()
             }
 
           }
+
+          if (ESTADO == 0)
+          {
+            todas_encomendas[q.ide].produtos_na_encomenda[i] = inventario[p.idp];
+            todas_encomendas[q.ide].peso += inventario[p.idp].peso * p.qtd;
+            todas_encomendas[q.ide].preco += inventario[p.idp].preco * p.qtd;
+            inventario[p.idp].qtd -= p.qtd;
+            todas_encomendas[q.ide].cont_produtos++;
+          }
+          else
+          {
+            
+          }
+
         }
 
       }
@@ -188,31 +180,17 @@ void remove_da_encomenda()
   {
     if (todas_encomendas[i].ide == b.ide)
     {
+      ESTADO = 1;
+      for (j = 0; j < cont; j++)
       {
-        ESTADO = 1;
-        for (j = 0; j < cont; j++)
+        if (inventario[j].idp == a.idp)
         {
-          if (inventario[j].idp == a.idp)
-          {
-            {
-              ESTADO2 = 1;
-              todas_encomendas[b.ide].preco -= inventario[j].preco * todas_encomendas[b.ide].produtos_na_encomenda[a.idp].qtd;
-              todas_encomendas[b.ide].peso -= inventario[j].peso * todas_encomendas[b.ide].produtos_na_encomenda[a.idp].qtd;
-              inventario[j].qtd += todas_encomendas[b.ide].produtos_na_encomenda[a.idp].qtd;
-              todas_encomendas[b.ide].produtos_na_encomenda[a.idp].idp = 0;
-              todas_encomendas[b.ide].cont_produtos--;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-        if (ESTADO2 == 0)
-        {
-          printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", a.idp, b.ide);
+          ESTADO2 = 1;
+          todas_encomendas[b.ide].preco -= inventario[j].preco * todas_encomendas[b.ide].produtos_na_encomenda[a.idp].qtd;
+          todas_encomendas[b.ide].peso -= inventario[j].peso * todas_encomendas[b.ide].produtos_na_encomenda[a.idp].qtd;
+          inventario[j].qtd += todas_encomendas[b.ide].produtos_na_encomenda[a.idp].qtd;
+          todas_encomendas[b.ide].produtos_na_encomenda[a.idp].idp = 0;
+          todas_encomendas[b.ide].cont_produtos--;
         }
         else
         {
@@ -220,6 +198,16 @@ void remove_da_encomenda()
         }
 
       }
+
+      if (ESTADO2 == 0)
+      {
+        printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", a.idp, b.ide);
+      }
+      else
+      {
+        
+      }
+
     }
     else
     {
@@ -251,21 +239,17 @@ void remove_stock()
   {
     if (inventario[i].idp == a.idp)
     {
+      ESTADO = 1;
+      if (inventario[i].qtd > a.qtd)
       {
-        ESTADO = 1;
-        if (inventario[i].qtd > a.qtd)
-        {
-          {
-            ESTADO2 = 1;
-            inventario[i].qtd = inventario[i].qtd - a.qtd;
-          }
-        }
-        else
-        {
-          
-        }
-
+        ESTADO2 = 1;
+        inventario[i].qtd = inventario[i].qtd - a.qtd;
       }
+      else
+      {
+        
+      }
+
     }
     else
     {
@@ -304,10 +288,8 @@ void custo()
   {
     if (todas_encomendas[i].ide == b.ide)
     {
-      {
-        ESTADO = 1;
-        printf("Custo da encomenda %d %d.\n", b.ide, todas_encomendas[i].preco);
-      }
+      ESTADO = 1;
+      printf("Custo da encomenda %d %d.\n", b.ide, todas_encomendas[i].preco);
     }
     else
     {

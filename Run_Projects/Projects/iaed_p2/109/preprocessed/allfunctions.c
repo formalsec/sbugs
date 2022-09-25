@@ -17,15 +17,11 @@ void _addTeam_(HashTeam *table, int NL)
   team = tHashSearch(*table, buffer);
   if (team)
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-    }
+    printf("%d Equipa existente.\n", NL);
   }
   else
   {
-    {
-      *table = tHashInsert(table, newTeam(buffer));
-    }
+    *table = tHashInsert(table, newTeam(buffer));
   }
 
 }
@@ -43,16 +39,12 @@ void _searchTeam_(HashTeam table, int NL)
   team = tHashSearch(table, buffer);
   if (!team)
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-    }
+    printf("%d Equipa inexistente.\n", NL);
   }
   else
   {
-    {
-      printf("%d ", NL);
-      printTeam(team);
-    }
+    printf("%d ", NL);
+    printTeam(team);
   }
 
 }
@@ -92,46 +84,36 @@ void _addGame_(HashGame *gTable, GameLink *gList, HashTeam tTable, int NL)
   t2 = tHashSearch(tTable, team2);
   if (game)
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-    }
+    printf("%d Jogo existente.\n", NL);
   }
   else
   {
     if ((!t1) || (!t2))
     {
-      {
-        printf("%d Equipa inexistente.\n", NL);
-      }
+      printf("%d Equipa inexistente.\n", NL);
     }
     else
     {
+      if (score1 > score2)
       {
-        if (score1 > score2)
+        t1->wins++;
+      }
+      else
+      {
+        if (score2 > score1)
         {
-          {
-            t1->wins++;
-          }
+          t2->wins++;
         }
         else
         {
-          if (score2 > score1)
-          {
-            {
-              t2->wins++;
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
-        game = newGame(name, t1, t2, score1, score2);
-        *gTable = gHashInsert(gTable, game);
-        *gList = insertGameList(*gList, game);
       }
+
+      game = newGame(name, t1, t2, score1, score2);
+      *gTable = gHashInsert(gTable, game);
+      *gList = insertGameList(*gList, game);
     }
 
   }
@@ -151,16 +133,12 @@ void _searchGame_(HashGame table, int NL)
   game = gHashSearch(table, buffer);
   if (game)
   {
-    {
-      printf("%d ", NL);
-      printGame(game);
-    }
+    printf("%d ", NL);
+    printGame(game);
   }
   else
   {
-    {
-      printf("%u Jogo inexistente.\n", NL);
-    }
+    printf("%u Jogo inexistente.\n", NL);
   }
 
 }
@@ -178,37 +156,29 @@ void _deleteGame_(HashGame table, GameLink *list, int NL)
   game = gHashSearch(table, buffer);
   if (!game)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
   else
   {
+    if (game->score1 > game->score2)
     {
-      if (game->score1 > game->score2)
+      game->team1->wins--;
+    }
+    else
+    {
+      if (game->score1 < game->score2)
       {
-        {
-          game->team1->wins--;
-        }
+        game->team2->wins--;
       }
       else
       {
-        if (game->score1 < game->score2)
-        {
-          {
-            game->team2->wins--;
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      gHashDelete(table, buffer);
-      *list = removeGameList(*list, buffer);
     }
+
+    gHashDelete(table, buffer);
+    *list = removeGameList(*list, buffer);
   }
 
 }
@@ -218,16 +188,14 @@ void _listGames_(GameLink list, int NL)
   GameLink aux;
   if (list)
   {
+    aux = list->prev;
+    do
     {
-      aux = list->prev;
-      do
-      {
-        printf("%d ", NL);
-        printGame(aux->game);
-        aux = aux->prev;
-      }
-      while (aux != list->prev);
+      printf("%d ", NL);
+      printGame(aux->game);
+      aux = aux->prev;
     }
+    while (aux != list->prev);
   }
   else
   {
@@ -255,113 +223,91 @@ void _changeScore_(HashGame table, int NL)
   game = gHashSearch(table, buffer);
   if (!game)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
   else
   {
+    oldS1 = game->score1;
+    oldS2 = game->score2;
+    game->score1 = score1;
+    game->score2 = score2;
+    if (oldS1 == oldS2)
     {
-      oldS1 = game->score1;
-      oldS2 = game->score2;
-      game->score1 = score1;
-      game->score2 = score2;
-      if (oldS1 == oldS2)
+      if (score1 > score2)
       {
-        {
-          if (score1 > score2)
-          {
-            {
-              game->team1->wins++;
-            }
-          }
-          else
-          {
-            if (score2 > score1)
-            {
-              {
-                game->team2->wins++;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-        }
+        game->team1->wins++;
       }
       else
       {
-        
-      }
-
-      if (oldS1 > oldS2)
-      {
+        if (score2 > score1)
         {
-          if (score1 == score2)
-          {
-            {
-              game->team1->wins--;
-            }
-          }
-          else
-          {
-            if (score2 > score1)
-            {
-              {
-                game->team1->wins--;
-                game->team2->wins++;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
+          game->team2->wins++;
         }
-      }
-      else
-      {
-        
-      }
-
-      if (oldS2 > oldS1)
-      {
+        else
         {
-          if (score2 == score1)
-          {
-            {
-              game->team2->wins--;
-            }
-          }
-          else
-          {
-            if (score1 > score2)
-            {
-              {
-                game->team2->wins--;
-                game->team1->wins++;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
+          
         }
-      }
-      else
-      {
-        
+
       }
 
     }
+    else
+    {
+      
+    }
+
+    if (oldS1 > oldS2)
+    {
+      if (score1 == score2)
+      {
+        game->team1->wins--;
+      }
+      else
+      {
+        if (score2 > score1)
+        {
+          game->team1->wins--;
+          game->team2->wins++;
+        }
+        else
+        {
+          
+        }
+
+      }
+
+    }
+    else
+    {
+      
+    }
+
+    if (oldS2 > oldS1)
+    {
+      if (score2 == score1)
+      {
+        game->team2->wins--;
+      }
+      else
+      {
+        if (score1 > score2)
+        {
+          game->team2->wins--;
+          game->team1->wins++;
+        }
+        else
+        {
+          
+        }
+
+      }
+
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -377,28 +323,17 @@ void _winningTeams_(HashTeam table, int NL)
   getMaxWins(table, &max, &qty);
   if (max != (-1))
   {
+    unsorted = (Team *) malloc(qty * (sizeof(struct team)));
+    printf("%d Melhores %d\n", NL, max);
+    for (i = 0; i < table->M; i++)
     {
-      unsorted = (Team *) malloc(qty * (sizeof(struct team)));
-      printf("%d Melhores %d\n", NL, max);
-      for (i = 0; i < table->M; i++)
+      if (table->teams[i])
       {
-        if (table->teams[i])
+        aux = table->teams[i];
+        if (aux->wins == max)
         {
-          {
-            aux = table->teams[i];
-            if (aux->wins == max)
-            {
-              {
-                *(unsorted + j) = aux;
-                j++;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
+          *(unsorted + j) = aux;
+          j++;
         }
         else
         {
@@ -406,10 +341,15 @@ void _winningTeams_(HashTeam table, int NL)
         }
 
       }
+      else
+      {
+        
+      }
 
-      sortAndPrint(unsorted, j, NL);
-      free(unsorted);
     }
+
+    sortAndPrint(unsorted, j, NL);
+    free(unsorted);
   }
   else
   {
@@ -427,31 +367,25 @@ int getMaxWins(HashTeam table, int *max, int *qty)
   {
     if (table->teams[i])
     {
+      if (table->teams[i]->wins > tempmax)
       {
-        if (table->teams[i]->wins > tempmax)
-        {
-          {
-            tempqty = 0;
-            tempmax = table->teams[i]->wins;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if (table->teams[i]->wins == tempmax)
-        {
-          {
-            tempqty++;
-          }
-        }
-        else
-        {
-          
-        }
-
+        tempqty = 0;
+        tempmax = table->teams[i]->wins;
       }
+      else
+      {
+        
+      }
+
+      if (table->teams[i]->wins == tempmax)
+      {
+        tempqty++;
+      }
+      else
+      {
+        
+      }
+
     }
     else
     {

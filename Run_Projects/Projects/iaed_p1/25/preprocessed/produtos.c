@@ -14,10 +14,8 @@ Produto createProd(int id, char *name, int price, int weight, int stock)
   new.name = malloc(63 * (sizeof(char)));
   if (!new.name)
   {
-    {
-      perror("failed to allocate name of Produto");
-      exit(1);
-    }
+    perror("failed to allocate name of Produto");
+    exit(1);
   }
   else
   {
@@ -85,9 +83,7 @@ void free_prod(Produto p)
 {
   if (!p.name)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {

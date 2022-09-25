@@ -62,10 +62,8 @@ void cmd_a(size_t count, sistema *s)
   s2 = new_sym_var(sizeof(size_t) * 8);
   if (procura_j(buf1, s->tb_j) != (-1))
   {
-    {
-      printf("%lu Jogo existente.\n", count);
-      return;
-    }
+    printf("%lu Jogo existente.\n", count);
+    return;
   }
   else
   {
@@ -80,39 +78,35 @@ void cmd_a(size_t count, sistema *s)
   }
   else
   {
+    if ((!strcmp(buf2, buf3)) == 0)
     {
-      if ((!strcmp(buf2, buf3)) == 0)
+      jogo *j = make_jogo(buf1, buf2, buf3, s1, s2);
+      s->tb_j = insere_j(j, s->tb_j);
+      if (s1 > s2)
       {
-        {
-          jogo *j = make_jogo(buf1, buf2, buf3, s1, s2);
-          s->tb_j = insere_j(j, s->tb_j);
-          if (s1 > s2)
-          {
-            s->tb_e->tb[h1]->vitorias++;
-          }
-          else
-          {
-            
-          }
-
-          if (s1 < s2)
-          {
-            s->tb_e->tb[h2]->vitorias++;
-          }
-          else
-          {
-            
-          }
-
-          push_last(j, s->l);
-        }
+        s->tb_e->tb[h1]->vitorias++;
       }
       else
       {
         
       }
 
+      if (s1 < s2)
+      {
+        s->tb_e->tb[h2]->vitorias++;
+      }
+      else
+      {
+        
+      }
+
+      push_last(j, s->l);
     }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -209,70 +203,62 @@ void cmd_s(size_t count, sistema *s)
   h = procura_j(buf1, s->tb_j);
   if (h != (-1))
   {
+    he1 = procura_e(s->tb_j->tb[h]->equipa1, s->tb_e);
+    he2 = procura_e(s->tb_j->tb[h]->equipa2, s->tb_e);
+    if ((s1 < s2) && (s->tb_j->tb[h]->score1 >= s->tb_j->tb[h]->score2))
     {
-      he1 = procura_e(s->tb_j->tb[h]->equipa1, s->tb_e);
-      he2 = procura_e(s->tb_j->tb[h]->equipa2, s->tb_e);
-      if ((s1 < s2) && (s->tb_j->tb[h]->score1 >= s->tb_j->tb[h]->score2))
+      if (s->tb_j->tb[h]->score1 > s->tb_j->tb[h]->score2)
       {
-        {
-          if (s->tb_j->tb[h]->score1 > s->tb_j->tb[h]->score2)
-          {
-            s->tb_e->tb[he1]->vitorias--;
-          }
-          else
-          {
-            
-          }
-
-          s->tb_e->tb[he2]->vitorias++;
-        }
+        s->tb_e->tb[he1]->vitorias--;
       }
       else
       {
         
       }
 
-      if ((s1 == s2) && (s->tb_j->tb[h]->score1 != s->tb_j->tb[h]->score2))
-      {
-        {
-          if (s->tb_j->tb[h]->score1 > s->tb_j->tb[h]->score2)
-          {
-            s->tb_e->tb[he1]->vitorias--;
-          }
-          else
-          {
-            s->tb_e->tb[he2]->vitorias--;
-          }
-
-        }
-      }
-      else
-      {
-        
-      }
-
-      if ((s1 > s2) && (s->tb_j->tb[h]->score1 <= s->tb_j->tb[h]->score2))
-      {
-        {
-          if (s->tb_j->tb[h]->score1 < s->tb_j->tb[h]->score2)
-          {
-            s->tb_e->tb[he2]->vitorias--;
-          }
-          else
-          {
-            
-          }
-
-          s->tb_e->tb[he1]->vitorias++;
-        }
-      }
-      else
-      {
-        
-      }
-
-      atualiza_score(h, s1, s2, s);
+      s->tb_e->tb[he2]->vitorias++;
     }
+    else
+    {
+      
+    }
+
+    if ((s1 == s2) && (s->tb_j->tb[h]->score1 != s->tb_j->tb[h]->score2))
+    {
+      if (s->tb_j->tb[h]->score1 > s->tb_j->tb[h]->score2)
+      {
+        s->tb_e->tb[he1]->vitorias--;
+      }
+      else
+      {
+        s->tb_e->tb[he2]->vitorias--;
+      }
+
+    }
+    else
+    {
+      
+    }
+
+    if ((s1 > s2) && (s->tb_j->tb[h]->score1 <= s->tb_j->tb[h]->score2))
+    {
+      if (s->tb_j->tb[h]->score1 < s->tb_j->tb[h]->score2)
+      {
+        s->tb_e->tb[he2]->vitorias--;
+      }
+      else
+      {
+        
+      }
+
+      s->tb_e->tb[he1]->vitorias++;
+    }
+    else
+    {
+      
+    }
+
+    atualiza_score(h, s1, s2, s);
   }
   else
   {
@@ -308,31 +294,29 @@ void cmd_r(size_t count, sistema *s)
   }
   else
   {
+    node *n = procura_l(buf1, s->l);
+    he1 = procura_e(s->tb_j->tb[h]->equipa1, s->tb_e);
+    he2 = procura_e(s->tb_j->tb[h]->equipa2, s->tb_e);
+    if (s->tb_j->tb[h]->score1 > s->tb_j->tb[h]->score2)
     {
-      node *n = procura_l(buf1, s->l);
-      he1 = procura_e(s->tb_j->tb[h]->equipa1, s->tb_e);
-      he2 = procura_e(s->tb_j->tb[h]->equipa2, s->tb_e);
-      if (s->tb_j->tb[h]->score1 > s->tb_j->tb[h]->score2)
-      {
-        s->tb_e->tb[he1]->vitorias--;
-      }
-      else
-      {
-        
-      }
-
-      if (s->tb_j->tb[h]->score1 < s->tb_j->tb[h]->score2)
-      {
-        s->tb_e->tb[he2]->vitorias--;
-      }
-      else
-      {
-        
-      }
-
-      remove_jogo(h, s->tb_j);
-      remove_node(n, s->l);
+      s->tb_e->tb[he1]->vitorias--;
     }
+    else
+    {
+      
+    }
+
+    if (s->tb_j->tb[h]->score1 < s->tb_j->tb[h]->score2)
+    {
+      s->tb_e->tb[he2]->vitorias--;
+    }
+    else
+    {
+      
+    }
+
+    remove_jogo(h, s->tb_j);
+    remove_node(n, s->l);
   }
 
 }

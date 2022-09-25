@@ -54,34 +54,21 @@ int main()
         eq2 = lookup_e(e2);
         if (lookup_j(n) == 0)
         {
+          if ((eq1 != 0) && (eq2 != 0))
           {
-            if ((eq1 != 0) && (eq2 != 0))
+            insertEnd_j(ls_j, n, eq1, eq2, s1, s2);
+            insert_h_j(ls_j->last);
+            if (s1 != s2)
             {
+              if (s1 > s2)
               {
-                insertEnd_j(ls_j, n, eq1, eq2, s1, s2);
-                insert_h_j(ls_j->last);
-                if (s1 != s2)
+                venc = eq1;
+              }
+              else
+              {
+                if (s1 < s2)
                 {
-                  {
-                    if (s1 > s2)
-                    {
-                      venc = eq1;
-                    }
-                    else
-                    {
-                      if (s1 < s2)
-                      {
-                        venc = eq2;
-                      }
-                      else
-                      {
-                        
-                      }
-
-                    }
-
-                    venc->jogos_ganhos += 1;
-                  }
+                  venc = eq2;
                 }
                 else
                 {
@@ -89,13 +76,20 @@ int main()
                 }
 
               }
+
+              venc->jogos_ganhos += 1;
             }
             else
             {
-              printf("%d Equipa inexistente.\n", count);
+              
             }
 
           }
+          else
+          {
+            printf("%d Equipa inexistente.\n", count);
+          }
+
         }
         else
         {
@@ -116,10 +110,8 @@ int main()
         n[10 - 1] = '\0';
         if (lookup_e(n) == 0)
         {
-          {
-            insertEnd_e(ls_e, n);
-            insert_h_e(ls_e->last);
-          }
+          insertEnd_e(ls_e, n);
+          insert_h_e(ls_e->last);
         }
         else
         {
@@ -151,9 +143,7 @@ int main()
         t = lookup_j(n);
         if (t != 0)
         {
-          {
-            printf("%d %s %s %s %d %d\n", count, t->nome, t->equ1->nome, t->equ2->nome, t->sco1, t->sco2);
-          }
+          printf("%d %s %s %s %d %d\n", count, t->nome, t->equ1->nome, t->equ2->nome, t->sco1, t->sco2);
         }
         else
         {
@@ -199,39 +189,35 @@ int main()
         j = lookup_j(n);
         if (j != 0)
         {
+          s1 = j->sco1;
+          s2 = j->sco2;
+          if (s1 != s2)
           {
-            s1 = j->sco1;
-            s2 = j->sco2;
-            if (s1 != s2)
+            if (s1 > s2)
             {
-              {
-                if (s1 > s2)
-                {
-                  j->equ1->jogos_ganhos -= 1;
-                }
-                else
-                {
-                  if (s1 < s2)
-                  {
-                    j->equ2->jogos_ganhos -= 1;
-                  }
-                  else
-                  {
-                    
-                  }
-
-                }
-
-              }
+              j->equ1->jogos_ganhos -= 1;
             }
             else
             {
-              
+              if (s1 < s2)
+              {
+                j->equ2->jogos_ganhos -= 1;
+              }
+              else
+              {
+                
+              }
+
             }
 
-            delete_h_j(j);
-            delete_j(ls_j, j);
           }
+          else
+          {
+            
+          }
+
+          delete_h_j(j);
+          delete_j(ls_j, j);
         }
         else
         {
@@ -256,52 +242,45 @@ int main()
         t = lookup_j(n);
         if (t != 0)
         {
+          if ((t->sco1 == t->sco2) && (s1 > s2))
           {
-            if ((t->sco1 == t->sco2) && (s1 > s2))
+            t->equ1->jogos_ganhos++;
+          }
+          else
+          {
+            if ((t->sco1 == t->sco2) && (s1 < s2))
             {
-              t->equ1->jogos_ganhos++;
+              t->equ2->jogos_ganhos++;
             }
             else
             {
-              if ((t->sco1 == t->sco2) && (s1 < s2))
+              if ((t->sco1 > t->sco2) && (s1 == s2))
               {
-                t->equ2->jogos_ganhos++;
+                t->equ1->jogos_ganhos--;
               }
               else
               {
-                if ((t->sco1 > t->sco2) && (s1 == s2))
+                if ((t->sco1 > t->sco2) && (s1 < s2))
                 {
                   t->equ1->jogos_ganhos--;
+                  t->equ2->jogos_ganhos++;
                 }
                 else
                 {
-                  if ((t->sco1 > t->sco2) && (s1 < s2))
+                  if ((t->sco1 < t->sco2) && (s1 == s2))
                   {
-                    {
-                      t->equ1->jogos_ganhos--;
-                      t->equ2->jogos_ganhos++;
-                    }
+                    t->equ2->jogos_ganhos--;
                   }
                   else
                   {
-                    if ((t->sco1 < t->sco2) && (s1 == s2))
+                    if ((t->sco1 < t->sco2) && (s1 > s2))
                     {
+                      t->equ1->jogos_ganhos++;
                       t->equ2->jogos_ganhos--;
                     }
                     else
                     {
-                      if ((t->sco1 < t->sco2) && (s1 > s2))
-                      {
-                        {
-                          t->equ1->jogos_ganhos++;
-                          t->equ2->jogos_ganhos--;
-                        }
-                      }
-                      else
-                      {
-                        
-                      }
-
+                      
                     }
 
                   }
@@ -312,9 +291,10 @@ int main()
 
             }
 
-            t->sco1 = s1;
-            t->sco2 = s2;
           }
+
+          t->sco1 = s1;
+          t->sco2 = s2;
         }
         else
         {

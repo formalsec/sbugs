@@ -24,9 +24,7 @@ glink GinsertEnd(glink head, Jogo jogo)
   glink x;
   if (head == 0)
   {
-    {
-      return GNEW(jogo);
-    }
+    return GNEW(jogo);
   }
   else
   {
@@ -47,9 +45,7 @@ glink Glookup(glink head, char *v)
   {
     if (strcmp(t->jogo->nome, v) == 0)
     {
-      {
-        return t;
-      }
+      return t;
     }
     else
     {
@@ -69,34 +65,26 @@ glink GremoveItem(glink head, Jogo jogo, int n)
   {
     if (strcmp(t->jogo->nome, jogo->nome) == 0)
     {
+      if (t == head)
       {
-        if (t == head)
-        {
-          {
-            head = t->next;
-          }
-        }
-        else
-        {
-          {
-            prev->next = t->next;
-          }
-        }
-
-        if (n == 1)
-        {
-          {
-            libertaJogo(jogo);
-          }
-        }
-        else
-        {
-          
-        }
-
-        free(t);
-        break;
+        head = t->next;
       }
+      else
+      {
+        prev->next = t->next;
+      }
+
+      if (n == 1)
+      {
+        libertaJogo(jogo);
+      }
+      else
+      {
+        
+      }
+
+      free(t);
+      break;
     }
     else
     {

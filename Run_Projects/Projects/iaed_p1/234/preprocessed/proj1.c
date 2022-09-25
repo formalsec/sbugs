@@ -113,20 +113,18 @@ void add_product()
 {
   if (n < 10000)
   {
+    for (int x_index = 0; x_index < 10; x_index++)
     {
-      for (int x_index = 0; x_index < 10; x_index++)
-      {
-        x[n].description[x_index] = new_sym_var(sizeof(char) * 8);
-      }
-
-      x[n].description[10 - 1] = '\0';
-      x[n].price = new_sym_var(sizeof(unsigned long) * 8);
-      x[n].weight = new_sym_var(sizeof(unsigned long) * 8);
-      x[n].quantity = new_sym_var(sizeof(unsigned long) * 8);
-      x[n].idp = n;
-      printf("Novo produto %d.\n", n);
-      n++;
+      x[n].description[x_index] = new_sym_var(sizeof(char) * 8);
     }
+
+    x[n].description[10 - 1] = '\0';
+    x[n].price = new_sym_var(sizeof(unsigned long) * 8);
+    x[n].weight = new_sym_var(sizeof(unsigned long) * 8);
+    x[n].quantity = new_sym_var(sizeof(unsigned long) * 8);
+    x[n].idp = n;
+    printf("Novo produto %d.\n", n);
+    n++;
   }
   else
   {
@@ -156,11 +154,9 @@ void new_order()
 {
   if (l < 500)
   {
-    {
-      y[l].ide = l;
-      printf("Nova encomenda %d.\n", l);
-      l++;
-    }
+    y[l].ide = l;
+    printf("Nova encomenda %d.\n", l);
+    l++;
   }
   else
   {
@@ -198,52 +194,44 @@ void add_to_order()
       }
       else
       {
+        for (i = 0; i < m[ide]; i++)
         {
-          for (i = 0; i < m[ide]; i++)
+          total_weight += y[ide].p[i].weight * y[ide].p[i].quantity;
+          if (y[ide].p[i].idp == idp)
           {
-            total_weight += y[ide].p[i].weight * y[ide].p[i].quantity;
-            if (y[ide].p[i].idp == idp)
-            {
-              existing = i;
-            }
-            else
-            {
-              
-            }
-
-          }
-
-          total_weight += x[idp].weight * quantity;
-          if (total_weight <= 200)
-          {
-            {
-              if (existing != 0)
-              {
-                {
-                  y[ide].p[existing].quantity += quantity;
-                  x[idp].quantity -= quantity;
-                }
-              }
-              else
-              {
-                {
-                  y[ide].p[m[ide]].price = x[idp].price;
-                  y[ide].p[m[ide]].weight = x[idp].weight;
-                  y[ide].p[m[ide]].quantity = quantity;
-                  x[idp].quantity -= quantity;
-                  y[ide].p[m[ide]].idp = idp;
-                  m[ide]++;
-                }
-              }
-
-            }
+            existing = i;
           }
           else
           {
-            printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
+            
           }
 
         }
+
+        total_weight += x[idp].weight * quantity;
+        if (total_weight <= 200)
+        {
+          if (existing != 0)
+          {
+            y[ide].p[existing].quantity += quantity;
+            x[idp].quantity -= quantity;
+          }
+          else
+          {
+            y[ide].p[m[ide]].price = x[idp].price;
+            y[ide].p[m[ide]].weight = x[idp].weight;
+            y[ide].p[m[ide]].quantity = quantity;
+            x[idp].quantity -= quantity;
+            y[ide].p[m[ide]].idp = idp;
+            m[ide]++;
+          }
+
+        }
+        else
+        {
+          printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
+        }
+
       }
 
     }
@@ -297,29 +285,11 @@ void rem_from_order()
     }
     else
     {
+      for (i = 0; i < m[ide]; i++)
       {
-        for (i = 0; i < m[ide]; i++)
+        if (y[ide].p[i].idp == idp)
         {
-          if (y[ide].p[i].idp == idp)
-          {
-            {
-              temp = i;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-        if (temp != (-1))
-        {
-          {
-            x[idp].quantity += y[ide].p[temp].quantity;
-            y[ide].p[temp].quantity = 0;
-            memmove(m + temp, (m + temp) + 1, (sizeof(*m)) * ((m[ide] - temp) - 1));
-          }
+          temp = i;
         }
         else
         {
@@ -327,6 +297,18 @@ void rem_from_order()
         }
 
       }
+
+      if (temp != (-1))
+      {
+        x[idp].quantity += y[ide].p[temp].quantity;
+        y[ide].p[temp].quantity = 0;
+        memmove(m + temp, (m + temp) + 1, (sizeof(*m)) * ((m[ide] - temp) - 1));
+      }
+      else
+      {
+        
+      }
+
     }
 
   }
@@ -345,14 +327,12 @@ void order_cost()
   }
   else
   {
+    for (i = 0; i < m[ide]; i++)
     {
-      for (i = 0; i < m[ide]; i++)
-      {
-        total_cost += y[ide].p[i].price * y[ide].p[i].quantity;
-      }
-
-      printf("Custo da encomenda %d %lu.\n", ide, total_cost);
+      total_cost += y[ide].p[i].price * y[ide].p[i].quantity;
     }
+
+    printf("Custo da encomenda %d %lu.\n", ide, total_cost);
   }
 
 }
@@ -365,15 +345,11 @@ void change_price()
   price = new_sym_var(sizeof(unsigned long) * 8);
   if (idp >= n)
   {
-    {
-      printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idp);
-    }
+    printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idp);
   }
   else
   {
-    {
-      x[idp].price = price;
-    }
+    x[idp].price = price;
   }
 
 }
@@ -397,21 +373,19 @@ void product_from_order()
     }
     else
     {
+      for (i = 0; i < m[ide]; i++)
       {
-        for (i = 0; i < m[ide]; i++)
+        if (y[ide].p[i].idp == idp)
         {
-          if (y[ide].p[i].idp == idp)
-          {
-            printf("%s %lu", x[idp].description, y[ide].p[i].quantity);
-          }
-          else
-          {
-            
-          }
-
+          printf("%s %lu", x[idp].description, y[ide].p[i].quantity);
+        }
+        else
+        {
+          
         }
 
       }
+
     }
 
   }

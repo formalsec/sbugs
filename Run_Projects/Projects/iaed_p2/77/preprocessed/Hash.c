@@ -76,16 +76,12 @@ p_jogo encontra_jogo(char *nome, p_jogo *tab_j, int *pos)
   {
     if (!strcmp(nome, tab_j[posicao]->nome))
     {
-      {
-        *pos = posicao;
-        break;
-      }
+      *pos = posicao;
+      break;
     }
     else
     {
-      {
-        posicao = (posicao + 1) % 79999;
-      }
+      posicao = (posicao + 1) % 79999;
     }
 
   }
@@ -101,15 +97,11 @@ p_equipa encontra_equipa(char *nome, p_equipa *tabela_equipas)
   {
     if (!strcmp(nome, tabela_equipas[posicao]->nome))
     {
-      {
-        return tabela_equipas[posicao];
-      }
+      return tabela_equipas[posicao];
     }
     else
     {
-      {
-        posicao = (posicao + 1) % 79999;
-      }
+      posicao = (posicao + 1) % 79999;
     }
 
   }

@@ -109,10 +109,8 @@ int main()
         i = hash(input + 2);
         if (does_game_exist(input + 2, heads_games[i]))
       {
-        {
-          aux_game = locate_game(input + 2, heads_games[i]);
-          printf("%d %s %s %s %d %d\n", NL, aux_game->g->name, aux_game->g->t1->name, aux_game->g->t2->name, aux_game->g->score_t1, aux_game->g->score_t2);
-        }
+        aux_game = locate_game(input + 2, heads_games[i]);
+        printf("%d %s %s %s %d %d\n", NL, aux_game->g->name, aux_game->g->t1->name, aux_game->g->t2->name, aux_game->g->score_t1, aux_game->g->score_t2);
       }
       else
       {
@@ -125,9 +123,7 @@ int main()
         i = hash(input + 2);
         if (does_game_exist(input + 2, heads_games[i]))
       {
-        {
-          heads_games[i] = delete_game(input + 2, heads_games[i], list_games);
-        }
+        heads_games[i] = delete_game(input + 2, heads_games[i], list_games);
       }
       else
       {
@@ -154,10 +150,8 @@ int main()
         i = hash(input + 2);
         if (does_team_exist(input + 2, heads_teams[i]))
       {
-        {
-          aux_team = locate_team(input + 2, heads_teams[i]);
-          printf("%d %s %d\n", NL, aux_team->t->name, aux_team->t->wins);
-        }
+        aux_team = locate_team(input + 2, heads_teams[i]);
+        printf("%d %s %d\n", NL, aux_team->t->name, aux_team->t->wins);
       }
       else
       {
@@ -205,10 +199,8 @@ Link_team insert_team(Link_team head, char input[3082])
   Link_team temp = malloc(sizeof(struct node_team));
   if (does_team_exist(input, head))
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-      return head;
-    }
+    printf("%d Equipa existente.\n", NL);
+    return head;
   }
   else
   {
@@ -334,10 +326,8 @@ Instruction get_score(char input[3082], Instruction reader)
 
   if (reader.score1 == (-1))
   {
-    {
-      reader.score1 = n;
-      reader.input_index = i + 1;
-    }
+    reader.score1 = n;
+    reader.input_index = i + 1;
   }
   else
   {
@@ -355,11 +345,9 @@ Winners create_game(char input[3082], Link_team *heads_teams, Link_game *heads_g
   reader = get_game_info(input, reader.input_index);
   if (does_game_exist(reader.game, heads_games[reader.hash_index]))
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-      free(new_game);
-      return winners;
-    }
+    printf("%d Jogo existente.\n", NL);
+    free(new_game);
+    return winners;
   }
   else
   {
@@ -368,11 +356,9 @@ Winners create_game(char input[3082], Link_team *heads_teams, Link_game *heads_g
 
   if (!does_team_exist(reader.team1, heads_teams[hash(reader.team1)]))
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      free(new_game);
-      return winners;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    free(new_game);
+    return winners;
   }
   else
   {
@@ -381,11 +367,9 @@ Winners create_game(char input[3082], Link_team *heads_teams, Link_game *heads_g
 
   if (!does_team_exist(reader.team2, heads_teams[hash(reader.team2)]))
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      free(new_game);
-      return winners;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    free(new_game);
+    return winners;
   }
   else
   {
@@ -400,19 +384,15 @@ Winners create_game(char input[3082], Link_team *heads_teams, Link_game *heads_g
   new_game->score_t2 = reader.score2;
   if (new_game->score_t1 > new_game->score_t2)
   {
-    {
-      new_game->t1->wins++;
-      winners = are_they_winners(new_game->t1->wins, reader, heads_teams, winners);
-    }
+    new_game->t1->wins++;
+    winners = are_they_winners(new_game->t1->wins, reader, heads_teams, winners);
   }
   else
   {
     if (new_game->score_t2 > new_game->score_t1)
     {
-      {
-        new_game->t2->wins++;
-        winners = are_they_winners(new_game->t2->wins, reader, heads_teams, winners);
-      }
+      new_game->t2->wins++;
+      winners = are_they_winners(new_game->t2->wins, reader, heads_teams, winners);
     }
     else
     {
@@ -490,53 +470,49 @@ Link_game delete_game(char input[1024], Link_game head, Game *list_games)
   {
     if (strcmp(temp->g->name, input) == 0)
     {
+      if (temp == head)
       {
-        if (temp == head)
-        {
-          head = temp->next;
-        }
-        else
-        {
-          prev->next = temp->next;
-        }
+        head = temp->next;
+      }
+      else
+      {
+        prev->next = temp->next;
+      }
 
-        for (i = 0; list_games[i] != 0; i++)
-          if (strcmp(list_games[i]->name, input) == 0)
-        {
-          {
-            for (; list_games[i] != 0; i++)
-              list_games[i] = list_games[i + 1];
+      for (i = 0; list_games[i] != 0; i++)
+        if (strcmp(list_games[i]->name, input) == 0)
+      {
+        for (; list_games[i] != 0; i++)
+          list_games[i] = list_games[i + 1];
 
-            list_games[i] = 0;
-          }
+        list_games[i] = 0;
+      }
+      else
+      {
+        
+      }
+
+
+      if (temp->g->score_t1 > temp->g->score_t2)
+      {
+        temp->g->t1->wins--;
+      }
+      else
+      {
+        if (temp->g->score_t1 < temp->g->score_t2)
+        {
+          temp->g->t2->wins--;
         }
         else
         {
           
         }
 
-
-        if (temp->g->score_t1 > temp->g->score_t2)
-        {
-          temp->g->t1->wins--;
-        }
-        else
-        {
-          if (temp->g->score_t1 < temp->g->score_t2)
-          {
-            temp->g->t2->wins--;
-          }
-          else
-          {
-            
-          }
-
-        }
-
-        free(temp->g->name);
-        free(temp->g);
-        free(temp);
       }
+
+      free(temp->g->name);
+      free(temp->g);
+      free(temp);
     }
     else
     {
@@ -573,10 +549,8 @@ void rectify_score(char input[1024], Link_game *heads_games, int i)
   temp_game = locate_game(temp, heads_games[hash_temp]);
   if (!does_game_exist(temp_game->g->name, heads_games[hash_temp]))
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -594,19 +568,39 @@ void rectify_score(char input[1024], Link_game *heads_games, int i)
 
   if (temp_game->g->score_t1 > temp_game->g->score_t2)
   {
+    if (reader.score1 < reader.score2)
     {
-      if (reader.score1 < reader.score2)
+      temp_game->g->t1->wins--;
+      temp_game->g->t2->wins++;
+    }
+    else
+    {
+      if (reader.score1 == reader.score2)
       {
-        {
-          temp_game->g->t1->wins--;
-          temp_game->g->t2->wins++;
-        }
+        temp_game->g->t1->wins--;
+      }
+      else
+      {
+        
+      }
+
+    }
+
+  }
+  else
+  {
+    if (temp_game->g->score_t1 < temp_game->g->score_t2)
+    {
+      if (reader.score1 > reader.score2)
+      {
+        temp_game->g->t1->wins++;
+        temp_game->g->t2->wins--;
       }
       else
       {
         if (reader.score1 == reader.score2)
         {
-          temp_game->g->t1->wins--;
+          temp_game->g->t2->wins--;
         }
         else
         {
@@ -616,59 +610,27 @@ void rectify_score(char input[1024], Link_game *heads_games, int i)
       }
 
     }
-  }
-  else
-  {
+    else
     {
-      if (temp_game->g->score_t1 < temp_game->g->score_t2)
+      if (reader.score1 > reader.score2)
       {
-        {
-          if (reader.score1 > reader.score2)
-          {
-            {
-              temp_game->g->t1->wins++;
-              temp_game->g->t2->wins--;
-            }
-          }
-          else
-          {
-            if (reader.score1 == reader.score2)
-            {
-              temp_game->g->t2->wins--;
-            }
-            else
-            {
-              
-            }
-
-          }
-
-        }
+        temp_game->g->t1->wins++;
       }
       else
       {
-        if (reader.score1 > reader.score2)
+        if (reader.score1 < reader.score2)
         {
-          {
-            temp_game->g->t1->wins++;
-          }
+          temp_game->g->t2->wins++;
         }
         else
         {
-          if (reader.score1 < reader.score2)
-          {
-            temp_game->g->t2->wins++;
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
 
     }
+
   }
 
   temp_game->g->score_t1 = reader.score1;
@@ -680,26 +642,22 @@ Winners are_they_winners(int wins, Instruction reader, Link_team *heads_teams, W
   Link_team temp_head;
   if (wins == winners.max_wins)
   {
-    {
-      ;
-      temp_head = winners.teams;
-      winners.teams = locate_team(reader.team1, heads_teams[hash(reader.team1)]);
-      winners.teams->next = temp_head;
-      winners.how_many_teams++;
-    }
+    ;
+    temp_head = winners.teams;
+    winners.teams = locate_team(reader.team1, heads_teams[hash(reader.team1)]);
+    winners.teams->next = temp_head;
+    winners.how_many_teams++;
   }
   else
   {
     if (wins > winners.max_wins)
     {
-      {
-        ;
-        free(winners.teams);
-        winners.teams = locate_team(reader.team1, heads_teams[hash(reader.team1)]);
-        winners.teams->next = 0;
-        winners.max_wins = wins;
-        winners.how_many_teams = 1;
-      }
+      ;
+      free(winners.teams);
+      winners.teams = locate_team(reader.team1, heads_teams[hash(reader.team1)]);
+      winners.teams->next = 0;
+      winners.max_wins = wins;
+      winners.how_many_teams = 1;
     }
     else
     {

@@ -183,18 +183,14 @@ void adiciona_stock()
       case 1:
         if (prod >= idp)
       {
-        {
-          printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", prod);
-        }
+        printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", prod);
       }
       else
       {
-        {
-          while ((c = getchar()) != '\n')
-            j = (j * 10) + (c - 48);
+        while ((c = getchar()) != '\n')
+          j = (j * 10) + (c - 48);
 
-          stock_prod[prod] += j;
-        }
+        stock_prod[prod] += j;
       }
 
         ++atual;
@@ -239,19 +235,15 @@ void adiciona_produto()
 
         if (enc >= ide)
       {
-        {
-          printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", prod, enc);
-          return;
-        }
+        printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", prod, enc);
+        return;
       }
       else
       {
         if (prod >= idp)
         {
-          {
-            printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", prod, enc);
-            return;
-          }
+          printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", prod, enc);
+          return;
         }
         else
         {
@@ -280,49 +272,41 @@ void adiciona_produto()
         }
         else
         {
+          if (nmr_prod_enc[enc] > 0)
           {
-            if (nmr_prod_enc[enc] > 0)
+            for (; i < nmr_prod_enc[enc]; ++i)
             {
+              if (prod == encomenda[enc][i])
               {
-                for (; i < nmr_prod_enc[enc]; ++i)
-                {
-                  if (prod == encomenda[enc][i])
-                  {
-                    {
-                      repetido = 'y';
-                      posicao_repetido = i;
-                    }
-                  }
-                  else
-                  {
-                    
-                  }
-
-                }
-
+                repetido = 'y';
+                posicao_repetido = i;
               }
-            }
-            else
-            {
-              
-            }
-
-            if (repetido == 'y')
-            {
-              stock_enc[enc][posicao_repetido] += qnt;
-            }
-            else
-            {
+              else
               {
-                encomenda[enc][nmr_prod_enc[enc]] = prod;
-                stock_enc[enc][nmr_prod_enc[enc]] = qnt;
-                nmr_prod_enc[enc] += 1;
+                
               }
+
             }
 
-            peso_enc[enc] += peso_prod[prod] * qnt;
-            stock_prod[prod] -= qnt;
           }
+          else
+          {
+            
+          }
+
+          if (repetido == 'y')
+          {
+            stock_enc[enc][posicao_repetido] += qnt;
+          }
+          else
+          {
+            encomenda[enc][nmr_prod_enc[enc]] = prod;
+            stock_enc[enc][nmr_prod_enc[enc]] = qnt;
+            nmr_prod_enc[enc] += 1;
+          }
+
+          peso_enc[enc] += peso_prod[prod] * qnt;
+          stock_prod[prod] -= qnt;
         }
 
       }
@@ -359,20 +343,18 @@ void retira_stock()
       }
       else
       {
+        while ((c = getchar()) != '\n')
+          j = (j * 10) + (c - 48);
+
+        if (j > stock_prod[prod])
         {
-          while ((c = getchar()) != '\n')
-            j = (j * 10) + (c - 48);
-
-          if (j > stock_prod[prod])
-          {
-            printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", j, prod);
-          }
-          else
-          {
-            stock_prod[prod] -= j;
-          }
-
+          printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", j, prod);
         }
+        else
+        {
+          stock_prod[prod] -= j;
+        }
+
       }
 
         ++atual;
@@ -420,44 +402,38 @@ void retira_produto()
         }
         else
         {
+          while (i < nmr_prod_enc[enc])
           {
-            while (i < nmr_prod_enc[enc])
+            if (encomenda[enc][i] == prod)
             {
-              if (encomenda[enc][i] == prod)
-              {
-                {
-                  posicao = i;
-                  aux = 'y';
-                }
-              }
-              else
-              {
-                
-              }
-
-              ++i;
-            }
-
-            if (aux == 'y')
-            {
-              {
-                stock_prod[prod] += stock_enc[enc][posicao];
-                peso_enc[enc] -= stock_enc[enc][posicao] * peso_prod[prod];
-                for (; posicao < nmr_prod_enc[enc]; ++posicao)
-                {
-                  stock_enc[enc][posicao] = stock_enc[enc][posicao + 1];
-                  encomenda[enc][posicao] = encomenda[enc][posicao + 1];
-                }
-
-                --nmr_prod_enc[enc];
-              }
+              posicao = i;
+              aux = 'y';
             }
             else
             {
               
             }
 
+            ++i;
           }
+
+          if (aux == 'y')
+          {
+            stock_prod[prod] += stock_enc[enc][posicao];
+            peso_enc[enc] -= stock_enc[enc][posicao] * peso_prod[prod];
+            for (; posicao < nmr_prod_enc[enc]; ++posicao)
+            {
+              stock_enc[enc][posicao] = stock_enc[enc][posicao + 1];
+              encomenda[enc][posicao] = encomenda[enc][posicao + 1];
+            }
+
+            --nmr_prod_enc[enc];
+          }
+          else
+          {
+            
+          }
+
         }
 
       }
@@ -486,12 +462,10 @@ void custo_encomenda()
   }
   else
   {
-    {
-      for (; i < nmr_prod_enc[enc]; ++i)
-        total += stock_enc[enc][i] * preco_prod[encomenda[enc][i]][0];
+    for (; i < nmr_prod_enc[enc]; ++i)
+      total += stock_enc[enc][i] * preco_prod[encomenda[enc][i]][0];
 
-      printf("Custo da encomenda %d %d.\n", enc, total);
-    }
+    printf("Custo da encomenda %d %d.\n", enc, total);
   }
 
 }
@@ -520,12 +494,10 @@ void altera_preco()
       }
       else
       {
-        {
-          while ((c = getchar()) != '\n')
-            j = (j * 10) + (c - 48);
+        while ((c = getchar()) != '\n')
+          j = (j * 10) + (c - 48);
 
-          preco_prod[prod][0] = j;
-        }
+        preco_prod[prod][0] = j;
       }
 
         ++atual;
@@ -574,37 +546,33 @@ void produto_em_encomenda()
         }
         else
         {
+          while (i < nmr_prod_enc[enc])
           {
-            while (i < nmr_prod_enc[enc])
+            if (encomenda[enc][i] == prod)
             {
-              if (encomenda[enc][i] == prod)
-              {
-                {
-                  aux = 'y';
-                  posicao = i;
-                }
-              }
-              else
-              {
-                
-              }
-
-              ++i;
-            }
-
-            for (; descr[prod][j] != '\0'; ++j)
-              printf("%c", descr[prod][j]);
-
-            if (aux == 'y')
-            {
-              printf(" %d.\n", stock_enc[enc][posicao]);
+              aux = 'y';
+              posicao = i;
             }
             else
             {
-              printf(" 0.\n");
+              
             }
 
+            ++i;
           }
+
+          for (; descr[prod][j] != '\0'; ++j)
+            printf("%c", descr[prod][j]);
+
+          if (aux == 'y')
+          {
+            printf(" %d.\n", stock_enc[enc][posicao]);
+          }
+          else
+          {
+            printf(" 0.\n");
+          }
+
         }
 
       }
@@ -630,10 +598,8 @@ void produto_mais_vezes()
 
   if (prod >= idp)
   {
-    {
-      printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", prod);
-      return;
-    }
+    printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", prod);
+    return;
   }
   else
   {
@@ -646,10 +612,8 @@ void produto_mais_vezes()
     {
       if ((prod == encomenda[i][j]) && (stock_enc[i][j] > quant_max))
       {
-        {
-          enc_max = i;
-          quant_max = stock_enc[i][j];
-        }
+        enc_max = i;
+        quant_max = stock_enc[i][j];
       }
       else
       {
@@ -708,15 +672,13 @@ int particao_precos(int ord[][2], int menor, int maior)
   {
     if ((ord[j][0] < pivot) || ((ord[j][0] == pivot) && (ord[maior][1] > ord[j][1])))
     {
-      {
-        i++;
-        trocado_preco = ord[i][0];
-        trocado_idp = ord[i][1];
-        ord[i][0] = ord[j][0];
-        ord[i][1] = ord[j][1];
-        ord[j][0] = trocado_preco;
-        ord[j][1] = trocado_idp;
-      }
+      i++;
+      trocado_preco = ord[i][0];
+      trocado_idp = ord[i][1];
+      ord[i][0] = ord[j][0];
+      ord[i][1] = ord[j][1];
+      ord[j][0] = trocado_preco;
+      ord[j][1] = trocado_idp;
     }
     else
     {
@@ -739,11 +701,9 @@ void quicksort_precos(int ord[][2], int menor, int maior)
   int pivot;
   if (menor < maior)
   {
-    {
-      pivot = particao_precos(ord, menor, maior);
-      quicksort_precos(ord, menor, pivot - 1);
-      quicksort_precos(ord, pivot + 1, maior);
-    }
+    pivot = particao_precos(ord, menor, maior);
+    quicksort_precos(ord, menor, pivot - 1);
+    quicksort_precos(ord, pivot + 1, maior);
   }
   else
   {
@@ -763,10 +723,8 @@ void descr_ordem()
 
   if (enc >= ide)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", enc);
-      return;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", enc);
+    return;
   }
   else
   {
@@ -804,15 +762,13 @@ int particao_descr(int ord[], int s_e[], int menor, int maior)
   {
     if ((strcmp(descr[ord[j]], descr[pivot]) < 0) || ((strcmp(descr[ord[j]], descr[pivot]) == 0) && (pivot > ord[j])))
     {
-      {
-        ++i;
-        t = ord[i];
-        ord[i] = ord[j];
-        ord[j] = t;
-        s = s_e[i];
-        s_e[i] = s_e[j];
-        s_e[j] = s;
-      }
+      ++i;
+      t = ord[i];
+      ord[i] = ord[j];
+      ord[j] = t;
+      s = s_e[i];
+      s_e[i] = s_e[j];
+      s_e[j] = s;
     }
     else
     {
@@ -835,11 +791,9 @@ void quicksort_descr(int ord[], int s_e[], int menor, int maior)
   int pivot;
   if (menor < maior)
   {
-    {
-      pivot = particao_descr(ord, s_e, menor, maior);
-      quicksort_descr(ord, s_e, menor, maior - 1);
-      quicksort_descr(ord, s_e, pivot + 1, maior);
-    }
+    pivot = particao_descr(ord, s_e, menor, maior);
+    quicksort_descr(ord, s_e, menor, maior - 1);
+    quicksort_descr(ord, s_e, pivot + 1, maior);
   }
   else
   {

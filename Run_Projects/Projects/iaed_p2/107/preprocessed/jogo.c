@@ -43,10 +43,8 @@ void adiciona_jogo(no_equipa *tabela_equipas[], lista_jogos **fila_jogos, no_jog
 
   if ((*fila_jogos)->fim)
   {
-    {
-      (*fila_jogos)->fim->proximo = novo_no;
-      novo_no->anterior = (*fila_jogos)->fim;
-    }
+    (*fila_jogos)->fim->proximo = novo_no;
+    novo_no->anterior = (*fila_jogos)->fim;
   }
   else
   {
@@ -60,28 +58,22 @@ void adiciona_jogo(no_equipa *tabela_equipas[], lista_jogos **fila_jogos, no_jog
   }
   else
   {
-    {
-      novo->proximo = tabela_jogos[pos];
-      tabela_jogos[pos]->anterior = novo;
-      tabela_jogos[pos] = novo;
-    }
+    novo->proximo = tabela_jogos[pos];
+    tabela_jogos[pos]->anterior = novo;
+    tabela_jogos[pos] = novo;
   }
 
   if (score1 > score2)
   {
-    {
-      alvo = procura_equipa_lista(tabela_equipas, equipa1);
-      alvo->vitorias++;
-    }
+    alvo = procura_equipa_lista(tabela_equipas, equipa1);
+    alvo->vitorias++;
   }
   else
   {
     if (score2 > score1)
     {
-      {
-        alvo = procura_equipa_lista(tabela_equipas, equipa2);
-        alvo->vitorias++;
-      }
+      alvo = procura_equipa_lista(tabela_equipas, equipa2);
+      alvo->vitorias++;
     }
     else
     {
@@ -100,9 +92,7 @@ no_jogo_tabela *procura_jogo_lista(no_jogo_tabela *tabela_jogos[], char nome[])
   {
     if (!strcmp(nome, i->jogo1.nome))
     {
-      {
-        return i;
-      }
+      return i;
     }
     else
     {
@@ -130,23 +120,17 @@ void apaga_jogo(no_equipa *tabela_equipas[], lista_jogos **fila_jogos, no_jogo_t
   i = procura_jogo_lista(tabela_jogos, nome);
   if (i->anterior)
   {
-    {
-      i->anterior->proximo = i->proximo;
-    }
+    i->anterior->proximo = i->proximo;
   }
   else
   {
-    {
-      int pos = hash(nome);
-      tabela_jogos[pos] = i->proximo;
-    }
+    int pos = hash(nome);
+    tabela_jogos[pos] = i->proximo;
   }
 
   if (i->proximo)
   {
-    {
-      i->proximo->anterior = i->anterior;
-    }
+    i->proximo->anterior = i->anterior;
   }
   else
   {
@@ -155,35 +139,27 @@ void apaga_jogo(no_equipa *tabela_equipas[], lista_jogos **fila_jogos, no_jogo_t
 
   if ((i->pos_fila == (*fila_jogos)->fim) && (i->pos_fila == (*fila_jogos)->inicio))
   {
-    {
-      (*fila_jogos)->inicio = i->pos_fila->proximo;
-      (*fila_jogos)->fim = i->pos_fila->proximo;
-    }
+    (*fila_jogos)->inicio = i->pos_fila->proximo;
+    (*fila_jogos)->fim = i->pos_fila->proximo;
   }
   else
   {
     if (!i->pos_fila->anterior)
     {
-      {
-        (*fila_jogos)->inicio = i->pos_fila->proximo;
-        (*fila_jogos)->inicio->anterior = 0;
-      }
+      (*fila_jogos)->inicio = i->pos_fila->proximo;
+      (*fila_jogos)->inicio->anterior = 0;
     }
     else
     {
       if (i->pos_fila == (*fila_jogos)->fim)
       {
-        {
-          (*fila_jogos)->fim = i->pos_fila->anterior;
-          (*fila_jogos)->fim->proximo = 0;
-        }
+        (*fila_jogos)->fim = i->pos_fila->anterior;
+        (*fila_jogos)->fim->proximo = 0;
       }
       else
       {
-        {
-          i->pos_fila->anterior->proximo = i->pos_fila->proximo;
-          i->pos_fila->proximo->anterior = i->pos_fila->anterior;
-        }
+        i->pos_fila->anterior->proximo = i->pos_fila->proximo;
+        i->pos_fila->proximo->anterior = i->pos_fila->anterior;
       }
 
     }
@@ -198,9 +174,7 @@ void apaga_jogo(no_equipa *tabela_equipas[], lista_jogos **fila_jogos, no_jogo_t
   {
     if (i->jogo1.score2 > i->jogo1.score1)
     {
-      {
-        altera_vitoria_equipa(tabela_equipas, i->jogo1.equipa2, 2);
-      }
+      altera_vitoria_equipa(tabela_equipas, i->jogo1.equipa2, 2);
     }
     else
     {
@@ -223,63 +197,51 @@ void altera_score(no_equipa *tabela_equipas[], no_jogo_tabela *tabela_jogos[], c
   jogo_alvo = &aux->jogo1;
   if (score_novo1 == score_novo2)
   {
+    if (jogo_alvo->score1 > jogo_alvo->score2)
     {
-      if (jogo_alvo->score1 > jogo_alvo->score2)
+      altera_vitoria_equipa(tabela_equipas, jogo_alvo->equipa1, 2);
+    }
+    else
+    {
+      if (jogo_alvo->score2 > jogo_alvo->score1)
       {
-        altera_vitoria_equipa(tabela_equipas, jogo_alvo->equipa1, 2);
+        altera_vitoria_equipa(tabela_equipas, jogo_alvo->equipa2, 2);
       }
       else
       {
-        if (jogo_alvo->score2 > jogo_alvo->score1)
-        {
-          {
-            altera_vitoria_equipa(tabela_equipas, jogo_alvo->equipa2, 2);
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
     }
+
   }
   else
   {
     if (jogo_alvo->score1 == jogo_alvo->score2)
     {
+      if (score_novo1 > score_novo2)
       {
-        if (score_novo1 > score_novo2)
-        {
-          altera_vitoria_equipa(tabela_equipas, jogo_alvo->equipa1, 3);
-        }
-        else
-        {
-          {
-            altera_vitoria_equipa(tabela_equipas, jogo_alvo->equipa2, 3);
-          }
-        }
-
+        altera_vitoria_equipa(tabela_equipas, jogo_alvo->equipa1, 3);
       }
+      else
+      {
+        altera_vitoria_equipa(tabela_equipas, jogo_alvo->equipa2, 3);
+      }
+
     }
     else
     {
       if ((score_novo1 > score_novo2) && (!(jogo_alvo->score1 > jogo_alvo->score2)))
       {
-        {
-          altera_vitoria_equipa(tabela_equipas, jogo_alvo->equipa2, 2);
-          altera_vitoria_equipa(tabela_equipas, jogo_alvo->equipa1, 3);
-        }
+        altera_vitoria_equipa(tabela_equipas, jogo_alvo->equipa2, 2);
+        altera_vitoria_equipa(tabela_equipas, jogo_alvo->equipa1, 3);
       }
       else
       {
         if ((score_novo2 > score_novo1) && (!(jogo_alvo->score2 > jogo_alvo->score1)))
         {
-          {
-            altera_vitoria_equipa(tabela_equipas, jogo_alvo->equipa2, 3);
-            altera_vitoria_equipa(tabela_equipas, jogo_alvo->equipa1, 2);
-          }
+          altera_vitoria_equipa(tabela_equipas, jogo_alvo->equipa2, 3);
+          altera_vitoria_equipa(tabela_equipas, jogo_alvo->equipa1, 2);
         }
         else
         {

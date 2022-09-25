@@ -19,25 +19,21 @@ link_e insere_alfabetica(link_e primeiro, link_e y)
   link_e anterior;
   if ((primeiro == 0) || (strcmp(y->equipa->nome, primeiro->equipa->nome) < 0))
   {
-    {
-      y->proximo = primeiro;
-      return y;
-    }
+    y->proximo = primeiro;
+    return y;
   }
   else
   {
+    anterior = primeiro;
+    x = primeiro->proximo;
+    while ((x != 0) && (strcmp(y->equipa->nome, x->equipa->nome) > 0))
     {
-      anterior = primeiro;
-      x = primeiro->proximo;
-      while ((x != 0) && (strcmp(y->equipa->nome, x->equipa->nome) > 0))
-      {
-        anterior = x;
-        x = x->proximo;
-      }
-
-      y->proximo = x;
-      anterior->proximo = y;
+      anterior = x;
+      x = x->proximo;
     }
+
+    y->proximo = x;
+    anterior->proximo = y;
   }
 
   return primeiro;

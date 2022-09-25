@@ -20,9 +20,7 @@ listaJogo adicionarNovoJogo(pJogo novoJogo, listaJogo *listaJogos, int ordem, in
   listaJogo noAnt;
   if ((*listaJogos) == 0)
   {
-    {
-      return novoJogoLista(novoJogo, ordem);
-    }
+    return novoJogoLista(novoJogo, ordem);
   }
   else
   {
@@ -33,10 +31,8 @@ listaJogo adicionarNovoJogo(pJogo novoJogo, listaJogo *listaJogos, int ordem, in
   {
     if (strcmp(no->ptJogo->nome, novoJogo->nome) == 0)
     {
-      {
-        printf("%d Jogo existente.\n", numINP);
-        return *listaJogos;
-      }
+      printf("%d Jogo existente.\n", numINP);
+      return *listaJogos;
     }
     else
     {
@@ -56,9 +52,7 @@ pJogo procurarJogoLista(listaJogo *listaJogos, char *nome)
   {
     if (strcmp(no->ptJogo->nome, nome) == 0)
     {
-      {
-        return no->ptJogo;
-      }
+      return no->ptJogo;
     }
     else
     {
@@ -76,50 +70,42 @@ void apagarJogoLista(listaJogo *listaJogos, char *nome, int numINP)
   listaJogo noAnt;
   if ((*listaJogos) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", numINP);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", numINP);
+    return;
   }
   else
   {
+    for (no = *listaJogos, noAnt = 0; no != 0; noAnt = no, no = no->proximo)
     {
-      for (no = *listaJogos, noAnt = 0; no != 0; noAnt = no, no = no->proximo)
+      if (strcmp(no->ptJogo->nome, nome) == 0)
       {
-        if (strcmp(no->ptJogo->nome, nome) == 0)
+        if (noAnt == 0)
         {
-          {
-            if (noAnt == 0)
-            {
-              {
-                *listaJogos = no->proximo;
-                retiraVitoria(no->ptJogo);
-                libertarJogo(no->ptJogo);
-                free(no);
-                return;
-              }
-            }
-            else
-            {
-              
-            }
-
-            noAnt->proximo = no->proximo;
-            retiraVitoria(no->ptJogo);
-            libertarJogo(no->ptJogo);
-            free(no);
-            return;
-          }
+          *listaJogos = no->proximo;
+          retiraVitoria(no->ptJogo);
+          libertarJogo(no->ptJogo);
+          free(no);
+          return;
         }
         else
         {
           
         }
 
+        noAnt->proximo = no->proximo;
+        retiraVitoria(no->ptJogo);
+        libertarJogo(no->ptJogo);
+        free(no);
+        return;
+      }
+      else
+      {
+        
       }
 
-      printf("%d Jogo inexistente.\n", numINP);
     }
+
+    printf("%d Jogo inexistente.\n", numINP);
   }
 
 }

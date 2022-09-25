@@ -17,10 +17,8 @@ void searchGame()
   get = getNodeGames(name);
   if (get == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", counter);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", counter);
+    return;
   }
   else
   {
@@ -42,10 +40,8 @@ void searchTeam()
   get = getNodeTeams(team);
   if (get == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", counter);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", counter);
+    return;
   }
   else
   {

@@ -40,10 +40,8 @@ void free_match(Match m)
 {
   if (m)
   {
-    {
-      free(m->name);
-      free(m);
-    }
+    free(m->name);
+    free(m);
   }
   else
   {

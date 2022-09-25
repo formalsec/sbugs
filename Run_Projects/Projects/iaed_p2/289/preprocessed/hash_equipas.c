@@ -25,21 +25,17 @@ link_eq insertEqBeginList(link_eq head, ptr_equipa link_team)
 {
   if (head == 0)
   {
-    {
-      link_eq first_node = malloc(sizeof(struct node_eq));
-      first_node->link_team = link_team;
-      first_node->next = 0;
-      return first_node;
-    }
+    link_eq first_node = malloc(sizeof(struct node_eq));
+    first_node->link_team = link_team;
+    first_node->next = 0;
+    return first_node;
   }
   else
   {
-    {
-      link_eq new_node = malloc(sizeof(struct node_eq));
-      new_node->link_team = link_team;
-      new_node->next = head;
-      return new_node;
-    }
+    link_eq new_node = malloc(sizeof(struct node_eq));
+    new_node->link_team = link_team;
+    new_node->next = head;
+    return new_node;
   }
 
 }

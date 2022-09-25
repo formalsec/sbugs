@@ -63,17 +63,13 @@ void insertNode(Hashtable *ht, List *linkNode, char id)
 
   if (ht->list[ind] == 0)
   {
-    {
-      linkNode->next = 0;
-      ht->list[ind] = linkNode;
-    }
+    linkNode->next = 0;
+    ht->list[ind] = linkNode;
   }
   else
   {
-    {
-      linkNode->next = ht->list[ind];
-      ht->list[ind] = linkNode;
-    }
+    linkNode->next = ht->list[ind];
+    ht->list[ind] = linkNode;
   }
 
 }
@@ -144,33 +140,27 @@ void removeGameNode(Game *gameNode)
     tempInfo = (Game *) temp->data;
     if (strcmp(tempInfo->name, gameNode->name) == 0)
     {
+      previousNode->next = temp->next;
+      freeData(tempInfo, 'g');
+      free(temp->data);
+      temp->data = 0;
+      if (previousNode == temp)
       {
-        previousNode->next = temp->next;
-        freeData(tempInfo, 'g');
-        free(temp->data);
-        temp->data = 0;
-        if (previousNode == temp)
-        {
-          {
-            htGames->list[ind] = temp->next;
-          }
-        }
-        else
-        {
-          
-        }
-
-        free(temp);
-        temp = 0;
-        return;
+        htGames->list[ind] = temp->next;
       }
+      else
+      {
+        
+      }
+
+      free(temp);
+      temp = 0;
+      return;
     }
     else
     {
-      {
-        previousNode = list;
-        list = list->next;
-      }
+      previousNode = list;
+      list = list->next;
     }
 
   }

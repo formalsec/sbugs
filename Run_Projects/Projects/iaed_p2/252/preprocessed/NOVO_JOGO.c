@@ -39,10 +39,8 @@ int gameErrors(char *nome_jogo, char *equipa1, char *equipa2, game_list *l, team
 {
   if (FindGame(l, nome_jogo))
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-      return -1;
-    }
+    printf("%d Jogo existente.\n", NL);
+    return -1;
   }
   else
   {
@@ -51,10 +49,8 @@ int gameErrors(char *nome_jogo, char *equipa1, char *equipa2, game_list *l, team
 
   if (!FindTeam(tl, equipa1))
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      return -1;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    return -1;
   }
   else
   {
@@ -63,10 +59,8 @@ int gameErrors(char *nome_jogo, char *equipa1, char *equipa2, game_list *l, team
 
   if (!FindTeam(tl, equipa2))
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      return -1;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    return -1;
   }
   else
   {
@@ -83,10 +77,8 @@ game_list *gameAdd(char *nome_jogo, char *equipa1, char *equipa2, game_list *l, 
   Jogo *novo_jogo = (Jogo *) malloc(sizeof(Jogo));
   if (gameErrors(nome_jogo, equipa1, equipa2, l, tl, NL) == (-1))
   {
-    {
-      free(novo_jogo);
-      return l;
-    }
+    free(novo_jogo);
+    return l;
   }
   else
   {
@@ -105,9 +97,7 @@ game_list *gameAdd(char *nome_jogo, char *equipa1, char *equipa2, game_list *l, 
   novo_jogo->score2 = sc2;
   if (sc1 > sc2)
   {
-    {
-      FindTeam(tl, equipa1)->vitorias++;
-    }
+    FindTeam(tl, equipa1)->vitorias++;
   }
   else
   {
@@ -116,9 +106,7 @@ game_list *gameAdd(char *nome_jogo, char *equipa1, char *equipa2, game_list *l, 
 
   if (sc2 > sc1)
   {
-    {
-      FindTeam(tl, equipa2)->vitorias++;
-    }
+    FindTeam(tl, equipa2)->vitorias++;
   }
   else
   {

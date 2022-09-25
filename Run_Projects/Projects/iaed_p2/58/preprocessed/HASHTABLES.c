@@ -108,12 +108,10 @@ void apaga_tab_dispersao(pJogo *tab_dispersao, char *nome_recebido, unsigned int
       aux = funcao_dispersao(tab_dispersao[j]->nome, M);
       if (aux <= i)
       {
-        {
-          tab_dispersao[i] = tab_dispersao[j];
-          tab_dispersao[j] = 0;
-          i = j;
-          break;
-        }
+        tab_dispersao[i] = tab_dispersao[j];
+        tab_dispersao[j] = 0;
+        i = j;
+        break;
       }
       else
       {
@@ -137,15 +135,13 @@ pJogo *expande(pJogo *tab_dispersao, unsigned int M)
   {
     if (tab_dispersao[i] != 0)
     {
+      j = funcao_dispersao(tab_dispersao[i]->nome, M);
+      while (nova_tab_dispersao[j] != 0)
       {
-        j = funcao_dispersao(tab_dispersao[i]->nome, M);
-        while (nova_tab_dispersao[j] != 0)
-        {
-          j = (j + 1) % M;
-        }
-
-        nova_tab_dispersao[j] = tab_dispersao[i];
+        j = (j + 1) % M;
       }
+
+      nova_tab_dispersao[j] = tab_dispersao[i];
     }
     else
     {
@@ -165,10 +161,8 @@ void free_tab_dispersao(pJogo *tab_dispersao, unsigned int M)
   {
     if (tab_dispersao[i] != 0)
     {
-      {
-        free(tab_dispersao[i]->nome);
-        free(tab_dispersao[i]);
-      }
+      free(tab_dispersao[i]->nome);
+      free(tab_dispersao[i]);
     }
     else
     {

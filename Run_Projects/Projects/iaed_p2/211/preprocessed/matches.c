@@ -60,9 +60,7 @@ ptr_match *search_match(hash_table_matches *hash_matches, char d[])
   {
     if (strcmp(aux->node->desc, d) == 0)
     {
-      {
-        return aux;
-      }
+      return aux;
     }
     else
     {

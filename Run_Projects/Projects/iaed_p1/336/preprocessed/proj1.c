@@ -54,65 +54,63 @@ int main()
     c = new_sym_var(sizeof(char) * 8);
     if (estado == 1)
     {
+      switch (c)
       {
-        switch (c)
-        {
-          case 'a':
-            idp++;
-            command_a_(sto, idp);
-            break;
+        case 'a':
+          idp++;
+          command_a_(sto, idp);
+          break;
 
-          case 'q':
-            command_q_(sto);
-            break;
+        case 'q':
+          command_q_(sto);
+          break;
 
-          case 'N':
-            ide++;
-            command_N_(enc, ide, ati);
-            break;
+        case 'N':
+          ide++;
+          command_N_(enc, ide, ati);
+          break;
 
-          case 'A':
-            command_A_(enc, sto, ati);
-            break;
+        case 'A':
+          command_A_(enc, sto, ati);
+          break;
 
-          case 'r':
-            command_r_(sto);
-            break;
+        case 'r':
+          command_r_(sto);
+          break;
 
-          case 'R':
-            command_R_(enc, sto, ati);
-            break;
+        case 'R':
+          command_R_(enc, sto, ati);
+          break;
 
-          case 'C':
-            command_C_(enc, sto, ati);
-            break;
+        case 'C':
+          command_C_(enc, sto, ati);
+          break;
 
-          case 'p':
-            command_p_(sto);
-            break;
+        case 'p':
+          command_p_(sto);
+          break;
 
-          case 'E':
-            command_E_(enc, sto, ati);
-            break;
+        case 'E':
+          command_E_(enc, sto, ati);
+          break;
 
-          case 'm':
-            command_m_(enc, sto, ati);
-            break;
+        case 'm':
+          command_m_(enc, sto, ati);
+          break;
 
-          case 'l':
-            command_l_(sto, idp);
-            break;
+        case 'l':
+          command_l_(sto, idp);
+          break;
 
-          case 'L':
-            command_L_(enc, sto, ati, idp);
-            break;
+        case 'L':
+          command_L_(enc, sto, ati, idp);
+          break;
 
-          case 'x':
-            return 0;
-
-        }
+        case 'x':
+          return 0;
 
       }
+
     }
     else
     {
@@ -140,10 +138,8 @@ int prcur_aux(ENCOMENDA enc[500], int idp, int ide, int numprod)
   {
     if (enc[ide].pro[i].idp == idp)
     {
-      {
-        prcur = i;
-        break;
-      }
+      prcur = i;
+      break;
     }
     else
     {
@@ -176,31 +172,27 @@ void merge(PRODUCT ord[10000], int l, int m, int r, int estado)
   {
     if (estado)
     {
+      if (e[ie].preco <= d[id].preco)
       {
-        if (e[ie].preco <= d[id].preco)
-        {
-          ord[k++] = e[ie++];
-        }
-        else
-        {
-          ord[k++] = d[id++];
-        }
-
+        ord[k++] = e[ie++];
       }
+      else
+      {
+        ord[k++] = d[id++];
+      }
+
     }
     else
     {
+      if (strcmp(d[id].describe, e[ie].describe) > 0)
       {
-        if (strcmp(d[id].describe, e[ie].describe) > 0)
-        {
-          ord[k++] = e[ie++];
-        }
-        else
-        {
-          ord[k++] = d[id++];
-        }
-
+        ord[k++] = e[ie++];
       }
+      else
+      {
+        ord[k++] = d[id++];
+      }
+
     }
 
   }
@@ -218,12 +210,10 @@ void mergesort(PRODUCT ord[10000], int l, int h, int estado)
   int mid;
   if (l < h)
   {
-    {
-      mid = (l + h) / 2;
-      mergesort(ord, l, mid, estado);
-      mergesort(ord, mid + 1, h, estado);
-      merge(ord, l, mid, h, estado);
-    }
+    mid = (l + h) / 2;
+    mergesort(ord, l, mid, estado);
+    mergesort(ord, mid + 1, h, estado);
+    merge(ord, l, mid, h, estado);
   }
   else
   {
@@ -255,9 +245,7 @@ void command_q_(PRODUCT sto[10000])
   qtd = new_sym_var(sizeof(int) * 8);
   if (sto[idp].preco != 0)
   {
-    {
-      sto[idp].qtd += qtd;
-    }
+    sto[idp].qtd += qtd;
   }
   else
   {
@@ -285,82 +273,62 @@ void command_A_(ENCOMENDA enc[500], PRODUCT sto[10000], int ati[500][2])
   qtd = new_sym_var(sizeof(int) * 8);
   if (ati[ide][0] != 1)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
   }
   else
   {
+    if (sto[idp].preco == 0)
     {
-      if (sto[idp].preco == 0)
+      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
+    }
+    else
+    {
+      if (sto[idp].qtd < qtd)
       {
-        {
-          printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
-        }
+        printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
       }
       else
       {
+        if ((enc[ide].peso + (sto[idp].peso * qtd)) > 200)
         {
-          if (sto[idp].qtd < qtd)
+          printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
+        }
+        else
+        {
+          prcur = prcur_aux(enc, idp, ide, ati[ide][1]);
+          if (prcur == (-1))
           {
+            for (i = 0; i < 500; i++)
             {
-              printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
-            }
-          }
-          else
-          {
-            {
-              if ((enc[ide].peso + (sto[idp].peso * qtd)) > 200)
+              if (enc[ide].pro[i].qtd == 0)
               {
-                {
-                  printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
-                }
+                prcur = i;
+                break;
               }
               else
               {
-                {
-                  prcur = prcur_aux(enc, idp, ide, ati[ide][1]);
-                  if (prcur == (-1))
-                  {
-                    {
-                      for (i = 0; i < 500; i++)
-                      {
-                        if (enc[ide].pro[i].qtd == 0)
-                        {
-                          {
-                            prcur = i;
-                            break;
-                          }
-                        }
-                        else
-                        {
-                          
-                        }
-
-                      }
-
-                      enc[ide].pro[prcur].idp = sto[idp].idp;
-                      enc[ide].pro[prcur].qtd = qtd;
-                      ati[ide][1] += 1;
-                    }
-                  }
-                  else
-                  {
-                    enc[ide].pro[prcur].qtd += qtd;
-                  }
-
-                  sto[idp].qtd -= qtd;
-                  enc[ide].peso += sto[idp].peso * qtd;
-                }
+                
               }
 
             }
+
+            enc[ide].pro[prcur].idp = sto[idp].idp;
+            enc[ide].pro[prcur].qtd = qtd;
+            ati[ide][1] += 1;
+          }
+          else
+          {
+            enc[ide].pro[prcur].qtd += qtd;
           }
 
+          sto[idp].qtd -= qtd;
+          enc[ide].peso += sto[idp].peso * qtd;
         }
+
       }
 
     }
+
   }
 
 }
@@ -377,17 +345,15 @@ void command_r_(PRODUCT sto[10000])
   }
   else
   {
+    if (sto[idp].qtd < qtd)
     {
-      if (sto[idp].qtd < qtd)
-      {
-        printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, idp);
-      }
-      else
-      {
-        sto[idp].qtd -= qtd;
-      }
-
+      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, idp);
     }
+    else
+    {
+      sto[idp].qtd -= qtd;
+    }
+
   }
 
 }
@@ -406,35 +372,29 @@ void command_R_(ENCOMENDA enc[500], PRODUCT sto[10000], int ati[500][2])
   }
   else
   {
+    if (sto[idp].preco == 0)
     {
-      if (sto[idp].preco == 0)
+      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
+    }
+    else
+    {
+      prcur = prcur_aux(enc, idp, ide, ati[ide][1]);
+      if (prcur != (-1))
       {
-        printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
+        enc[ide].peso -= sto[idp].peso * enc[ide].pro[prcur].qtd;
+        sto[idp].qtd += enc[ide].pro[prcur].qtd;
+        for (i = prcur; i < ati[ide][1]; i++)
+          enc[ide].pro[i] = enc[ide].pro[i + 1];
+
+        ati[ide][1] -= 1;
       }
       else
       {
-        {
-          prcur = prcur_aux(enc, idp, ide, ati[ide][1]);
-          if (prcur != (-1))
-          {
-            {
-              enc[ide].peso -= sto[idp].peso * enc[ide].pro[prcur].qtd;
-              sto[idp].qtd += enc[ide].pro[prcur].qtd;
-              for (i = prcur; i < ati[ide][1]; i++)
-                enc[ide].pro[i] = enc[ide].pro[i + 1];
-
-              ati[ide][1] -= 1;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
+        
       }
 
     }
+
   }
 
 }
@@ -453,26 +413,22 @@ void command_C_(ENCOMENDA enc[500], PRODUCT sto[10000], int ati[500][2])
   }
   else
   {
+    for (i = 0; i < 10000; i++)
     {
-      for (i = 0; i < 10000; i++)
+      prcur = prcur_aux(enc, i, ide, ati[ide][1]);
+      if (enc[ide].pro[prcur].idp == sto[i].idp)
       {
-        prcur = prcur_aux(enc, i, ide, ati[ide][1]);
-        if (enc[ide].pro[prcur].idp == sto[i].idp)
-        {
-          {
-            subtotal = sto[i].preco * enc[ide].pro[prcur].qtd;
-            total += subtotal;
-          }
-        }
-        else
-        {
-          
-        }
-
+        subtotal = sto[i].preco * enc[ide].pro[prcur].qtd;
+        total += subtotal;
+      }
+      else
+      {
+        
       }
 
-      printf("Custo da encomenda %d %d.\n", ide, total);
     }
+
+    printf("Custo da encomenda %d %d.\n", ide, total);
   }
 
 }
@@ -507,28 +463,24 @@ void command_E_(ENCOMENDA enc[500], PRODUCT sto[10000], int ati[500][2])
   }
   else
   {
+    if (sto[idp].preco == 0)
     {
-      if (sto[idp].preco == 0)
+      printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
+    }
+    else
+    {
+      prcur = prcur_aux(enc, idp, ide, ati[ide][1]);
+      if (prcur != (-1))
       {
-        printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
+        printf("%s %d.\n", sto[idp].describe, enc[ide].pro[prcur].qtd);
       }
       else
       {
-        {
-          prcur = prcur_aux(enc, idp, ide, ati[ide][1]);
-          if (prcur != (-1))
-          {
-            printf("%s %d.\n", sto[idp].describe, enc[ide].pro[prcur].qtd);
-          }
-          else
-          {
-            printf("%s %d.\n", sto[idp].describe, 0);
-          }
-
-        }
+        printf("%s %d.\n", sto[idp].describe, 0);
       }
 
     }
+
   }
 
 }
@@ -547,47 +499,41 @@ void command_m_(ENCOMENDA enc[500], PRODUCT sto[10000], int ati[500][2])
   }
   else
   {
+    for (a = 0; a < 500; a++)
     {
-      for (a = 0; a < 500; a++)
+      if (ati[a][0])
       {
-        if (ati[a][0])
+        for (i = 0; i < ati[a][1]; i++)
         {
+          if ((enc[a].pro[i].qtd > maior) && (enc[a].pro[i].idp == idp))
           {
-            for (i = 0; i < ati[a][1]; i++)
-            {
-              if ((enc[a].pro[i].qtd > maior) && (enc[a].pro[i].idp == idp))
-              {
-                {
-                  maior = enc[a].pro[i].qtd;
-                  ide = a;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
+            maior = enc[a].pro[i].qtd;
+            ide = a;
           }
-        }
-        else
-        {
-          break;
+          else
+          {
+            
+          }
+
         }
 
-      }
-
-      if (maior != 0)
-      {
-        printf("Maximo produto %d %d %d.\n", idp, ide, maior);
       }
       else
       {
-        
+        break;
       }
 
     }
+
+    if (maior != 0)
+    {
+      printf("Maximo produto %d %d %d.\n", idp, ide, maior);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -625,36 +571,32 @@ void command_L_(ENCOMENDA enc[500], PRODUCT sto[10000], int ati[500][2], int idp
   }
   else
   {
+    for (e = 0; e < ati[ide][1]; e++)
     {
-      for (e = 0; e < ati[ide][1]; e++)
+      for (p = 0; p <= idp; p++)
       {
-        for (p = 0; p <= idp; p++)
+        if (enc[ide].pro[e].idp == sto[p].idp)
         {
-          if (enc[ide].pro[e].idp == sto[p].idp)
-          {
-            {
-              ord[e] = sto[p];
-              break;
-            }
-          }
-          else
-          {
-            
-          }
-
+          ord[e] = sto[p];
+          break;
+        }
+        else
+        {
+          
         }
 
       }
 
-      mergesort(ord, 0, ati[ide][1] - 1, 0);
-      printf("Encomenda %d\n", ide);
-      for (p = 0; p < ati[ide][1]; p++)
-      {
-        prcur = prcur_aux(enc, ord[p].idp, ide, ati[ide][1]);
-        printf("* %s %d %d\n", ord[p].describe, ord[p].preco, enc[ide].pro[prcur].qtd);
-      }
-
     }
+
+    mergesort(ord, 0, ati[ide][1] - 1, 0);
+    printf("Encomenda %d\n", ide);
+    for (p = 0; p < ati[ide][1]; p++)
+    {
+      prcur = prcur_aux(enc, ord[p].idp, ide, ati[ide][1]);
+      printf("* %s %d %d\n", ord[p].describe, ord[p].preco, enc[ide].pro[prcur].qtd);
+    }
+
   }
 
 }

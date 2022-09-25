@@ -34,11 +34,9 @@ void linkedlist_add_item(Link *list, void *data, int size)
 {
   if ((*list) == 0)
   {
-    {
-      *list = create_node(data, size);
-      linkedlist_set_length(*list, 1);
-      return;
-    }
+    *list = create_node(data, size);
+    linkedlist_set_length(*list, 1);
+    return;
   }
   else
   {
@@ -69,10 +67,8 @@ void linkedlist_delete_item_aux(Link *head, int i, int *count, void (*free_data)
 
   if ((*count) != (i - 1))
   {
-    {
-      (*count)++;
-      linkedlist_delete_item_aux(&(*head)->next, i, count, free_data);
-    }
+    (*count)++;
+    linkedlist_delete_item_aux(&(*head)->next, i, count, free_data);
   }
   else
   {
@@ -86,10 +82,8 @@ void linkedlist_delete_item(Link *head, int i, void (*free_data)(void *))
   int count = 0;
   if ((*head) == 0)
   {
-    {
-      free_node(*head, free_data);
-      *head = 0;
-    }
+    free_node(*head, free_data);
+    *head = 0;
   }
   else
   {
@@ -112,10 +106,8 @@ void linkedlist_delete_item_cmp_aux(Link *head, void *info, void *(*get_info)(vo
 
   if (compare(info, get_info((*head)->next->data)))
   {
-    {
-      delete_item_aux(*head, (*head)->next, free_data);
-      return;
-    }
+    delete_item_aux(*head, (*head)->next, free_data);
+    return;
   }
   else
   {
@@ -138,11 +130,9 @@ void linkedlist_delete_item_cmp(Link *head, void *info, void *(*get_info)(void *
 
   if (compare(info, get_info((*head)->data)))
   {
-    {
-      free_node(*head, free_data);
-      *head = 0;
-      return;
-    }
+    free_node(*head, free_data);
+    *head = 0;
+    return;
   }
   else
   {
@@ -156,10 +146,8 @@ void linkedlist_free(Link head, void (*free_data)(void *))
 {
   if (head != 0)
   {
-    {
-      linkedlist_free(head->next, free_data);
-      free_node(head, free_data);
-    }
+    linkedlist_free(head->next, free_data);
+    free_node(head, free_data);
   }
   else
   {
@@ -172,10 +160,8 @@ void linkedlist_traverse(Link head, void (*func)(void *))
 {
   if (head != 0)
   {
-    {
-      func(head->data);
-      linkedlist_traverse(head->next, func);
-    }
+    func(head->data);
+    linkedlist_traverse(head->next, func);
   }
   else
   {
@@ -197,10 +183,8 @@ void *linkedlist_get_item_aux(Link head, int i, int *count)
 
   if (i != (*count))
   {
-    {
-      (*count)++;
-      return linkedlist_get_item_aux(head->next, i, count);
-    }
+    (*count)++;
+    return linkedlist_get_item_aux(head->next, i, count);
   }
   else
   {
@@ -221,9 +205,7 @@ void *linkedlist_get_item_cmp(Link head, void *info, void *(*get_info)(void *), 
   int cmp_aux;
   if (head == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {

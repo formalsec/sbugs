@@ -39,10 +39,8 @@ void comm_q(int contador_prod)
   idp = new_sym_var(sizeof(int) * 8);
   if (idp < contador_prod)
   {
-    {
-      qtd = new_sym_var(sizeof(int) * 8);
-      produtos[idp].qtd += qtd;
-    }
+    qtd = new_sym_var(sizeof(int) * 8);
+    produtos[idp].qtd += qtd;
   }
   else
   {
@@ -71,45 +69,37 @@ void comm_A(int contador_prod, int contador_enc)
   }
   else
   {
+    if (idp >= contador_prod)
     {
-      if (idp >= contador_prod)
+      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
+    }
+    else
+    {
+      qtd = new_sym_var(sizeof(int) * 8);
+      if (produtos[idp].qtd < qtd)
       {
-        printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
+        printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
       }
       else
       {
+        for (i = 0; (i < contador_prod) && (peso <= 200); i++)
+          peso += produtos[i].peso * encomendas[ide][i];
+
+        peso += produtos[idp].peso * qtd;
+        if (peso > 200)
         {
-          qtd = new_sym_var(sizeof(int) * 8);
-          if (produtos[idp].qtd < qtd)
-          {
-            printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
-          }
-          else
-          {
-            {
-              for (i = 0; (i < contador_prod) && (peso <= 200); i++)
-                peso += produtos[i].peso * encomendas[ide][i];
-
-              peso += produtos[idp].peso * qtd;
-              if (peso > 200)
-              {
-                printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
-              }
-              else
-              {
-                {
-                  encomendas[ide][idp] += qtd;
-                  produtos[idp].qtd -= qtd;
-                }
-              }
-
-            }
-          }
-
+          printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
         }
+        else
+        {
+          encomendas[ide][idp] += qtd;
+          produtos[idp].qtd -= qtd;
+        }
+
       }
 
     }
+
   }
 
 }
@@ -125,18 +115,16 @@ void comm_r(int contador_prod)
   }
   else
   {
+    qtd = new_sym_var(sizeof(int) * 8);
+    if (qtd > produtos[idp].qtd)
     {
-      qtd = new_sym_var(sizeof(int) * 8);
-      if (qtd > produtos[idp].qtd)
-      {
-        printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, idp);
-      }
-      else
-      {
-        produtos[idp].qtd -= qtd;
-      }
-
+      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, idp);
     }
+    else
+    {
+      produtos[idp].qtd -= qtd;
+    }
+
   }
 
 }
@@ -153,20 +141,16 @@ void comm_R(int contador_prod, int contador_enc)
   }
   else
   {
+    if (idp >= contador_prod)
     {
-      if (idp >= contador_prod)
-      {
-        printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
-      }
-      else
-      {
-        {
-          produtos[idp].qtd += encomendas[ide][idp];
-          encomendas[ide][idp] = 0;
-        }
-      }
-
+      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
     }
+    else
+    {
+      produtos[idp].qtd += encomendas[ide][idp];
+      encomendas[ide][idp] = 0;
+    }
+
   }
 
 }
@@ -183,12 +167,10 @@ void comm_C(int contador_prod, int contador_enc)
   }
   else
   {
-    {
-      for (i = 0; i < contador_prod; i++)
-        total += encomendas[ide][i] * produtos[i].preco;
+    for (i = 0; i < contador_prod; i++)
+      total += encomendas[ide][i] * produtos[i].preco;
 
-      printf("Custo da encomenda %d %d.\n", ide, total);
-    }
+    printf("Custo da encomenda %d %d.\n", ide, total);
   }
 
 }
@@ -219,18 +201,16 @@ void comm_E(int contador_prod, int contador_enc)
   }
   else
   {
+    idp = new_sym_var(sizeof(int) * 8);
+    if (idp >= contador_prod)
     {
-      idp = new_sym_var(sizeof(int) * 8);
-      if (idp >= contador_prod)
-      {
-        printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
-      }
-      else
-      {
-        printf("%s %d.\n", produtos[idp].nome, encomendas[ide][idp]);
-      }
-
+      printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
     }
+    else
+    {
+      printf("%s %d.\n", produtos[idp].nome, encomendas[ide][idp]);
+    }
+
   }
 
 }
@@ -248,26 +228,12 @@ void comm_m(int contador_prod, int contador_enc)
   }
   else
   {
+    for (ide = 0; ide < contador_enc; ide++)
     {
-      for (ide = 0; ide < contador_enc; ide++)
+      if (encomendas[ide][idp] > qtd)
       {
-        if (encomendas[ide][idp] > qtd)
-        {
-          {
-            ide_max = ide;
-            qtd = encomendas[ide][idp];
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      if (qtd > 0)
-      {
-        printf("Maximo produto %d %d %d.\n", idp, ide_max, qtd);
+        ide_max = ide;
+        qtd = encomendas[ide][idp];
       }
       else
       {
@@ -275,6 +241,16 @@ void comm_m(int contador_prod, int contador_enc)
       }
 
     }
+
+    if (qtd > 0)
+    {
+      printf("Maximo produto %d %d %d.\n", idp, ide_max, qtd);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -360,32 +336,30 @@ void comm_L(int contador_prod, int contador_enc)
   }
   else
   {
+    printf("Encomenda %d\n", ide);
+    for (i = 0; i < contador_prod; i++)
+      if (encomendas[ide][i] != 0)
     {
-      printf("Encomenda %d\n", ide);
-      for (i = 0; i < contador_prod; i++)
-        if (encomendas[ide][i] != 0)
-      {
-        ord[contador++] = i;
-      }
-      else
-      {
-        
-      }
-
-
-      mergesort(0, 0, contador - 1);
-      for (j = 0; j < contador; j++)
-        if (encomendas[ide][ord[j]] > 0)
-      {
-        printf("* %s %d %d\n", produtos[ord[j]].nome, produtos[ord[j]].preco, encomendas[ide][ord[j]]);
-      }
-      else
-      {
-        
-      }
-
-
+      ord[contador++] = i;
     }
+    else
+    {
+      
+    }
+
+
+    mergesort(0, 0, contador - 1);
+    for (j = 0; j < contador; j++)
+      if (encomendas[ide][ord[j]] > 0)
+    {
+      printf("* %s %d %d\n", produtos[ord[j]].nome, produtos[ord[j]].preco, encomendas[ide][ord[j]]);
+    }
+    else
+    {
+      
+    }
+
+
   }
 
 }

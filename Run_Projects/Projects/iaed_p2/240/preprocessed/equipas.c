@@ -65,10 +65,8 @@ lista_ligada_equipas **adiciona_a_lista_ligada_e(equipa *equipa_new, lista_ligad
   new_node->next = 0;
   if ((*lista_ligada) == 0)
   {
-    {
-      *lista_ligada = new_node;
-      return lista_ligada;
-    }
+    *lista_ligada = new_node;
+    return lista_ligada;
   }
   else
   {
@@ -77,11 +75,9 @@ lista_ligada_equipas **adiciona_a_lista_ligada_e(equipa *equipa_new, lista_ligad
 
   if (strcmp(ultimo->equipa->nome_equipa, equipa_new->nome_equipa) > 0)
   {
-    {
-      new_node->next = ultimo;
-      *lista_ligada = new_node;
-      return lista_ligada;
-    }
+    new_node->next = ultimo;
+    *lista_ligada = new_node;
+    return lista_ligada;
   }
   else
   {
@@ -90,10 +86,8 @@ lista_ligada_equipas **adiciona_a_lista_ligada_e(equipa *equipa_new, lista_ligad
 
   if (ultimo->next == 0)
   {
-    {
-      ultimo->next = new_node;
-      return lista_ligada;
-    }
+    ultimo->next = new_node;
+    return lista_ligada;
   }
   else
   {

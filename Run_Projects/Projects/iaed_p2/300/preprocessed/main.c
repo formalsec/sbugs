@@ -41,51 +41,39 @@ void funcao_a(node **headsJ, pEquipa *heads, list *Lista, int nl, int m)
   score2 = new_sym_var(sizeof(int) * 8);
   if (STsearchJ(headsJ, nome, m) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", nl);
-    }
+    printf("%d Jogo existente.\n", nl);
   }
   else
   {
+    if ((STsearch(heads, equipa1, m) == 0) || (STsearch(heads, equipa2, m) == 0))
     {
-      if ((STsearch(heads, equipa1, m) == 0) || (STsearch(heads, equipa2, m) == 0))
+      printf("%d Equipa inexistente.\n", nl);
+    }
+    else
+    {
+      if (score1 > score2)
       {
-        {
-          printf("%d Equipa inexistente.\n", nl);
-        }
+        Primeira = STsearch(heads, equipa1, m);
+        Primeira->vitorias++;
       }
       else
       {
+        if (score1 < score2)
         {
-          if (score1 > score2)
-          {
-            {
-              Primeira = STsearch(heads, equipa1, m);
-              Primeira->vitorias++;
-            }
-          }
-          else
-          {
-            if (score1 < score2)
-            {
-              {
-                Segunda = STsearch(heads, equipa2, m);
-                Segunda->vitorias++;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-          a = add_last(Lista, nome, equipa1, equipa2, score1, score2);
-          STinsertJ(headsJ, a, m);
+          Segunda = STsearch(heads, equipa2, m);
+          Segunda->vitorias++;
         }
+        else
+        {
+          
+        }
+
       }
 
+      a = add_last(Lista, nome, equipa1, equipa2, score1, score2);
+      STinsertJ(headsJ, a, m);
     }
+
   }
 
 }
@@ -108,15 +96,11 @@ void funcao_p(node **headsJ, int nl, int m)
   Search = STsearchJ(headsJ, nome, m);
   if (Search == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-    }
+    printf("%d Jogo inexistente.\n", nl);
   }
   else
   {
-    {
-      printJogo(Search, nl);
-    }
+    printJogo(Search, nl);
   }
 
 }
@@ -137,56 +121,46 @@ void funcao_r(node **headsJ, pEquipa *heads, int nl, list *Lista, int m)
   Search = STsearchJ(headsJ, nome, m);
   if (Search == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-    }
+    printf("%d Jogo inexistente.\n", nl);
   }
   else
   {
+    Primeira = STsearch(heads, Search->jogo->equipa1, m);
+    Segunda = STsearch(heads, Search->jogo->equipa2, m);
+    if (Search->jogo->score1 > Search->jogo->score2)
     {
-      Primeira = STsearch(heads, Search->jogo->equipa1, m);
-      Segunda = STsearch(heads, Search->jogo->equipa2, m);
-      if (Search->jogo->score1 > Search->jogo->score2)
+      Primeira->vitorias--;
+    }
+    else
+    {
+      if (Search->jogo->score1 < Search->jogo->score2)
       {
-        {
-          Primeira->vitorias--;
-        }
+        Segunda->vitorias--;
       }
       else
       {
-        if (Search->jogo->score1 < Search->jogo->score2)
-        {
-          {
-            Segunda->vitorias--;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      STdeleteJ(headsJ, nome, m);
-      node = Lista->head;
-      while (node != 0)
-      {
-        if (strcmp(node->jogo->nome, nome) == 0)
-        {
-          {
-            rm_node(Lista, node);
-            break;
-          }
-        }
-        else
-        {
-          
-        }
-
-        node = node->next;
+        
       }
 
     }
+
+    STdeleteJ(headsJ, nome, m);
+    node = Lista->head;
+    while (node != 0)
+    {
+      if (strcmp(node->jogo->nome, nome) == 0)
+      {
+        rm_node(Lista, node);
+        break;
+      }
+      else
+      {
+        
+      }
+
+      node = node->next;
+    }
+
   }
 
 }
@@ -209,123 +183,95 @@ void funcao_s(node **headsJ, pEquipa *heads, int nl, int m)
   score2 = new_sym_var(sizeof(int) * 8);
   if (STsearchJ(headsJ, nome, m) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-    }
+    printf("%d Jogo inexistente.\n", nl);
   }
   else
   {
+    Search = STsearchJ(headsJ, nome, m);
+    Primeira = STsearch(heads, Search->jogo->equipa1, m);
+    Segunda = STsearch(heads, Search->jogo->equipa2, m);
+    if (Search->jogo->score1 > Search->jogo->score2)
     {
-      Search = STsearchJ(headsJ, nome, m);
-      Primeira = STsearch(heads, Search->jogo->equipa1, m);
-      Segunda = STsearch(heads, Search->jogo->equipa2, m);
-      if (Search->jogo->score1 > Search->jogo->score2)
+      if (score1 > score2)
       {
-        {
-          if (score1 > score2)
-          {
-            {
-              Search->jogo->score1 = score1;
-              Search->jogo->score2 = score2;
-            }
-          }
-          else
-          {
-            if (score2 > score1)
-            {
-              {
-                Primeira->vitorias--;
-                Search->jogo->score1 = score1;
-                Search->jogo->score2 = score2;
-                Segunda->vitorias++;
-              }
-            }
-            else
-            {
-              {
-                Primeira->vitorias--;
-                Search->jogo->score1 = score1;
-                Search->jogo->score2 = score2;
-              }
-            }
-
-          }
-
-        }
+        Search->jogo->score1 = score1;
+        Search->jogo->score2 = score2;
       }
       else
       {
-        if (Search->jogo->score1 < Search->jogo->score2)
+        if (score2 > score1)
         {
-          {
-            if (score1 < score2)
-            {
-              {
-                Search->jogo->score1 = score1;
-                Search->jogo->score2 = score2;
-              }
-            }
-            else
-            {
-              if (score1 > score2)
-              {
-                {
-                  Segunda->vitorias--;
-                  Search->jogo->score1 = score1;
-                  Search->jogo->score2 = score2;
-                  Primeira->vitorias++;
-                }
-              }
-              else
-              {
-                {
-                  Segunda->vitorias--;
-                  Search->jogo->score1 = score1;
-                  Search->jogo->score2 = score2;
-                }
-              }
-
-            }
-
-          }
+          Primeira->vitorias--;
+          Search->jogo->score1 = score1;
+          Search->jogo->score2 = score2;
+          Segunda->vitorias++;
         }
         else
         {
-          {
-            if (score1 < score2)
-            {
-              {
-                Search->jogo->score1 = score1;
-                Search->jogo->score2 = score2;
-                Segunda->vitorias++;
-              }
-            }
-            else
-            {
-              if (score1 > score2)
-              {
-                {
-                  Search->jogo->score1 = score1;
-                  Search->jogo->score2 = score2;
-                  Primeira->vitorias++;
-                }
-              }
-              else
-              {
-                {
-                  Search->jogo->score1 = score1;
-                  Search->jogo->score2 = score2;
-                }
-              }
-
-            }
-
-          }
+          Primeira->vitorias--;
+          Search->jogo->score1 = score1;
+          Search->jogo->score2 = score2;
         }
 
       }
 
     }
+    else
+    {
+      if (Search->jogo->score1 < Search->jogo->score2)
+      {
+        if (score1 < score2)
+        {
+          Search->jogo->score1 = score1;
+          Search->jogo->score2 = score2;
+        }
+        else
+        {
+          if (score1 > score2)
+          {
+            Segunda->vitorias--;
+            Search->jogo->score1 = score1;
+            Search->jogo->score2 = score2;
+            Primeira->vitorias++;
+          }
+          else
+          {
+            Segunda->vitorias--;
+            Search->jogo->score1 = score1;
+            Search->jogo->score2 = score2;
+          }
+
+        }
+
+      }
+      else
+      {
+        if (score1 < score2)
+        {
+          Search->jogo->score1 = score1;
+          Search->jogo->score2 = score2;
+          Segunda->vitorias++;
+        }
+        else
+        {
+          if (score1 > score2)
+          {
+            Search->jogo->score1 = score1;
+            Search->jogo->score2 = score2;
+            Primeira->vitorias++;
+          }
+          else
+          {
+            Search->jogo->score1 = score1;
+            Search->jogo->score2 = score2;
+          }
+
+        }
+
+      }
+
+    }
+
   }
 
 }
@@ -341,15 +287,11 @@ void funcao_A(pEquipa *heads, int nl, int m)
   nome[10 - 1] = '\0';
   if (STsearch(heads, nome, m) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", nl);
-    }
+    printf("%d Equipa existente.\n", nl);
   }
   else
   {
-    {
-      STinsert(heads, nome, m);
-    }
+    STinsert(heads, nome, m);
   }
 
 }
@@ -365,15 +307,11 @@ void funcao_P(pEquipa *heads, int nl, int m)
   nome[10 - 1] = '\0';
   if (STsearch(heads, nome, m) == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", nl);
-    }
+    printf("%d Equipa inexistente.\n", nl);
   }
   else
   {
-    {
-      printEquipa(STsearch(heads, nome, m), nl);
-    }
+    printEquipa(STsearch(heads, nome, m), nl);
   }
 
 }
@@ -402,9 +340,7 @@ void funcao_g(pEquipa *heads, int nl, int m)
     {
       if (aux->vitorias > maior)
       {
-        {
-          maior = aux->vitorias;
-        }
+        maior = aux->vitorias;
       }
       else
       {
@@ -423,9 +359,7 @@ void funcao_g(pEquipa *heads, int nl, int m)
     {
       if (aux->vitorias == maior)
       {
-        {
-          equipas++;
-        }
+        equipas++;
       }
       else
       {
@@ -439,9 +373,7 @@ void funcao_g(pEquipa *heads, int nl, int m)
 
   if (equipas == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -456,10 +388,8 @@ void funcao_g(pEquipa *heads, int nl, int m)
     {
       if (aux->vitorias == maior)
       {
-        {
-          maiores[v] = aux->nome;
-          v++;
-        }
+        maiores[v] = aux->nome;
+        v++;
       }
       else
       {

@@ -92,9 +92,7 @@ int main()
   {
     if (jogos.ordem[n] == 0)
     {
-      {
-        continue;
-      }
+      continue;
     }
     else
     {

@@ -20,11 +20,9 @@ int hash_key_e(char *name, lista_equipas *Hash_table[])
 
   if (!Hash_table[key])
   {
-    {
-      Hash_table[key] = malloc(sizeof(lista_equipas));
-      Hash_table[key]->head = 0;
-      Hash_table[key]->last = 0;
-    }
+    Hash_table[key] = malloc(sizeof(lista_equipas));
+    Hash_table[key]->head = 0;
+    Hash_table[key]->last = 0;
   }
   else
   {
@@ -46,11 +44,9 @@ int hash_key_p(char *name, lista_jogos *Hash_table[])
 
   if (!Hash_table[key])
   {
-    {
-      Hash_table[key] = malloc(sizeof(lista_jogos));
-      Hash_table[key]->head = 0;
-      Hash_table[key]->last = 0;
-    }
+    Hash_table[key] = malloc(sizeof(lista_jogos));
+    Hash_table[key]->head = 0;
+    Hash_table[key]->last = 0;
   }
   else
   {
@@ -68,10 +64,8 @@ int find_game(lista_jogos *l, char jogo[])
   {
     if (strcmp(jogo, search->jogo) == 0)
     {
-      {
-        logico = 0;
-        break;
-      }
+      logico = 0;
+      break;
     }
     else
     {
@@ -91,10 +85,8 @@ int find_team(lista_equipas *l, char equipa[])
   {
     if (strcmp(equipa, search->name) == 0)
     {
-      {
-        logico = 1;
-        break;
-      }
+      logico = 1;
+      break;
     }
     else
     {
@@ -113,10 +105,8 @@ void atualiza_v(lista_equipas *l, char equipa[])
   {
     if (strcmp(equipa, search->name) == 0)
     {
-      {
-        search->Jogos_ganhos += 1;
-        break;
-      }
+      search->Jogos_ganhos += 1;
+      break;
     }
     else
     {
@@ -134,10 +124,8 @@ void retira_v(lista_equipas *l, char equipa[])
   {
     if (strcmp(equipa, search->name) == 0)
     {
-      {
-        search->Jogos_ganhos -= 1;
-        break;
-      }
+      search->Jogos_ganhos -= 1;
+      break;
     }
     else
     {
@@ -152,28 +140,20 @@ void remove_jogo(node_jogos *element, lista_jogos *l)
 {
   if (!element->previous)
   {
-    {
-      l->head = element->next;
-    }
+    l->head = element->next;
   }
   else
   {
-    {
-      element->previous->next = element->next;
-    }
+    element->previous->next = element->next;
   }
 
   if (!element->next)
   {
-    {
-      l->last = element->previous;
-    }
+    l->last = element->previous;
   }
   else
   {
-    {
-      element->next->previous = element->previous;
-    }
+    element->next->previous = element->previous;
   }
 
   free(element->jogo);
@@ -186,28 +166,20 @@ void remove_equipa(node_equipas *element, lista_equipas *l)
 {
   if (!element->previous)
   {
-    {
-      l->head = element->next;
-    }
+    l->head = element->next;
   }
   else
   {
-    {
-      element->previous->next = element->next;
-    }
+    element->previous->next = element->next;
   }
 
   if (!element->next)
   {
-    {
-      l->last = element->previous;
-    }
+    l->last = element->previous;
   }
   else
   {
-    {
-      element->next->previous = element->previous;
-    }
+    element->next->previous = element->previous;
   }
 
   free(element->name);
@@ -247,9 +219,7 @@ void free_hash(lista_equipas *Hash_table[])
   {
     if (Hash_table[k])
     {
-      {
-        free_lista_equipas(Hash_table[k]);
-      }
+      free_lista_equipas(Hash_table[k]);
     }
     else
     {
@@ -267,9 +237,7 @@ void free_hash_j(lista_jogos *Hash_table[])
   {
     if (Hash_table[k])
     {
-      {
-        free_lista_jogos(Hash_table[k]);
-      }
+      free_lista_jogos(Hash_table[k]);
     }
     else
     {
@@ -299,17 +267,13 @@ void a(char jogo[], char equipa1[], char equipa2[], int score1, int score2, list
   }
   else
   {
-    {
-      l->head = new_node;
-    }
+    l->head = new_node;
   }
 
   l->last = new_node;
   if (score1 > score2)
   {
-    {
-      atualiza_v(Hash_table[i], equipa1);
-    }
+    atualiza_v(Hash_table[i], equipa1);
   }
   else
   {
@@ -318,9 +282,7 @@ void a(char jogo[], char equipa1[], char equipa2[], int score1, int score2, list
 
   if (score1 < score2)
   {
-    {
-      atualiza_v(Hash_table[j], equipa2);
-    }
+    atualiza_v(Hash_table[j], equipa2);
   }
   else
   {
@@ -348,9 +310,7 @@ void a__2(char jogo[], char equipa1[], char equipa2[], int score1, int score2, l
   }
   else
   {
-    {
-      l->head = new_node;
-    }
+    l->head = new_node;
   }
 
   l->last = new_node;
@@ -373,10 +333,8 @@ void p(lista_jogos *l, char jogo[], int Contador)
   {
     if (strcmp(jogo, search->jogo) == 0)
     {
-      {
-        printf("%d %s %s %s %d %d\n", Contador, search->jogo, search->equipa1, search->equipa2, search->valor1, search->valor2);
-        return;
-      }
+      printf("%d %s %s %s %d %d\n", Contador, search->jogo, search->equipa1, search->equipa2, search->valor1, search->valor2);
+      return;
     }
     else
     {
@@ -396,34 +354,28 @@ void r(lista_jogos *l, char jogo[], int Contador, lista_equipas *Hash_table[])
   {
     if (strcmp(jogo, search->jogo) == 0)
     {
+      if (search->valor1 > search->valor2)
       {
-        if (search->valor1 > search->valor2)
-        {
-          {
-            i = hash_key_e(search->equipa1, Hash_table);
-            retira_v(Hash_table[i], search->equipa1);
-          }
-        }
-        else
-        {
-          
-        }
-
-        if (search->valor1 < search->valor2)
-        {
-          {
-            i = hash_key_e(search->equipa2, Hash_table);
-            retira_v(Hash_table[i], search->equipa2);
-          }
-        }
-        else
-        {
-          
-        }
-
-        remove_jogo(search, l);
-        return;
+        i = hash_key_e(search->equipa1, Hash_table);
+        retira_v(Hash_table[i], search->equipa1);
       }
+      else
+      {
+        
+      }
+
+      if (search->valor1 < search->valor2)
+      {
+        i = hash_key_e(search->equipa2, Hash_table);
+        retira_v(Hash_table[i], search->equipa2);
+      }
+      else
+      {
+        
+      }
+
+      remove_jogo(search, l);
+      return;
     }
     else
     {
@@ -442,10 +394,8 @@ void r__2(lista_jogos *l, char jogo[])
   {
     if (strcmp(jogo, search->jogo) == 0)
     {
-      {
-        remove_jogo(search, l);
-        return;
-      }
+      remove_jogo(search, l);
+      return;
     }
     else
     {
@@ -464,59 +414,49 @@ void s(char jogo[], int score1, int score2, lista_jogos *l, int Contador, lista_
   {
     if (strcmp(jogo, search->jogo) == 0)
     {
+      if (search->valor1 > search->valor2)
       {
-        if (search->valor1 > search->valor2)
-        {
-          {
-            i = hash_key_e(search->equipa1, Hash_table);
-            retira_v(Hash_table[i], search->equipa1);
-          }
-        }
-        else
-        {
-          
-        }
-
-        if (search->valor1 < search->valor2)
-        {
-          {
-            i = hash_key_e(search->equipa2, Hash_table);
-            retira_v(Hash_table[i], search->equipa2);
-          }
-        }
-        else
-        {
-          
-        }
-
-        search->valor1 = score1;
-        search->valor2 = score2;
-        if (search->valor1 > search->valor2)
-        {
-          {
-            i = hash_key_e(search->equipa1, Hash_table);
-            atualiza_v(Hash_table[i], search->equipa1);
-          }
-        }
-        else
-        {
-          
-        }
-
-        if (search->valor1 < search->valor2)
-        {
-          {
-            i = hash_key_e(search->equipa2, Hash_table);
-            atualiza_v(Hash_table[i], search->equipa2);
-          }
-        }
-        else
-        {
-          
-        }
-
-        return;
+        i = hash_key_e(search->equipa1, Hash_table);
+        retira_v(Hash_table[i], search->equipa1);
       }
+      else
+      {
+        
+      }
+
+      if (search->valor1 < search->valor2)
+      {
+        i = hash_key_e(search->equipa2, Hash_table);
+        retira_v(Hash_table[i], search->equipa2);
+      }
+      else
+      {
+        
+      }
+
+      search->valor1 = score1;
+      search->valor2 = score2;
+      if (search->valor1 > search->valor2)
+      {
+        i = hash_key_e(search->equipa1, Hash_table);
+        atualiza_v(Hash_table[i], search->equipa1);
+      }
+      else
+      {
+        
+      }
+
+      if (search->valor1 < search->valor2)
+      {
+        i = hash_key_e(search->equipa2, Hash_table);
+        atualiza_v(Hash_table[i], search->equipa2);
+      }
+      else
+      {
+        
+      }
+
+      return;
     }
     else
     {
@@ -535,11 +475,9 @@ void s__2(char jogo[], int score1, int score2, lista_jogos *l)
   {
     if (strcmp(jogo, search->jogo) == 0)
     {
-      {
-        search->valor1 = score1;
-        search->valor2 = score2;
-        return;
-      }
+      search->valor1 = score1;
+      search->valor2 = score2;
+      return;
     }
     else
     {
@@ -560,15 +498,11 @@ void A(char equipa[], lista_equipas *l)
   new_node->Jogos_ganhos = 0;
   if (l->last)
   {
-    {
-      l->last->next = new_node;
-    }
+    l->last->next = new_node;
   }
   else
   {
-    {
-      l->head = new_node;
-    }
+    l->head = new_node;
   }
 
   l->last = new_node;
@@ -582,9 +516,7 @@ void P(lista_jogos *l, char equipa[], int Contador)
   {
     if ((strcmp(search->equipa1, equipa) == 0) && (search->valor1 > search->valor2))
     {
-      {
-        vitorias += 1;
-      }
+      vitorias += 1;
     }
     else
     {
@@ -593,9 +525,7 @@ void P(lista_jogos *l, char equipa[], int Contador)
 
     if ((strcmp(search->equipa2, equipa) == 0) && (search->valor1 < search->valor2))
     {
-      {
-        vitorias += 1;
-      }
+      vitorias += 1;
     }
     else
     {
@@ -615,15 +545,11 @@ int Alphabetic(char *A, char *B)
   strcpy(New_B, B);
   if (strcmp(New_A, New_B) < 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
-    {
-      return 1;
-    }
+    return 1;
   }
 
 }
@@ -655,41 +581,33 @@ void merge(char *a[], int l, int m, int r)
   {
     if (Alphabetic(aux[j], aux[i]) == 0)
     {
+      if (a[k])
       {
-        if (a[k])
-        {
-          {
-            free(a[k]);
-          }
-        }
-        else
-        {
-          
-        }
-
-        a[k] = malloc((sizeof(char)) * (strlen(aux[j]) + 1));
-        strcpy(a[k], aux[j]);
-        j -= 1;
+        free(a[k]);
       }
+      else
+      {
+        
+      }
+
+      a[k] = malloc((sizeof(char)) * (strlen(aux[j]) + 1));
+      strcpy(a[k], aux[j]);
+      j -= 1;
     }
     else
     {
+      if (a[k])
       {
-        if (a[k])
-        {
-          {
-            free(a[k]);
-          }
-        }
-        else
-        {
-          
-        }
-
-        a[k] = malloc((sizeof(char)) * (strlen(aux[i]) + 1));
-        strcpy(a[k], aux[i]);
-        i += 1;
+        free(a[k]);
       }
+      else
+      {
+        
+      }
+
+      a[k] = malloc((sizeof(char)) * (strlen(aux[i]) + 1));
+      strcpy(a[k], aux[i]);
+      i += 1;
     }
 
   }
@@ -698,9 +616,7 @@ void merge(char *a[], int l, int m, int r)
   {
     if (aux[i])
     {
-      {
-        free(aux[i]);
-      }
+      free(aux[i]);
     }
     else
     {
@@ -741,23 +657,19 @@ void g(lista_equipas *Hash_table[], int Contador)
   {
     if (Hash_table[k])
     {
+      for (search = Hash_table[k]->head; search != 0; search = search->next)
       {
-        for (search = Hash_table[k]->head; search != 0; search = search->next)
+        if (search->Jogos_ganhos > melhor)
         {
-          if (search->Jogos_ganhos > melhor)
-          {
-            {
-              melhor = search->Jogos_ganhos;
-            }
-          }
-          else
-          {
-            
-          }
-
+          melhor = search->Jogos_ganhos;
+        }
+        else
+        {
+          
         }
 
       }
+
     }
     else
     {
@@ -770,25 +682,21 @@ void g(lista_equipas *Hash_table[], int Contador)
   {
     if (Hash_table[k])
     {
+      for (search = Hash_table[k]->head; search != 0; search = search->next)
       {
-        for (search = Hash_table[k]->head; search != 0; search = search->next)
+        if (search->Jogos_ganhos == melhor)
         {
-          if (search->Jogos_ganhos == melhor)
-          {
-            {
-              nomes_equipas[i] = malloc(((sizeof(char)) * strlen(search->name)) + 1);
-              strcpy(nomes_equipas[i], search->name);
-              i++;
-            }
-          }
-          else
-          {
-            
-          }
-
+          nomes_equipas[i] = malloc(((sizeof(char)) * strlen(search->name)) + 1);
+          strcpy(nomes_equipas[i], search->name);
+          i++;
+        }
+        else
+        {
+          
         }
 
       }
+
     }
     else
     {
@@ -799,9 +707,7 @@ void g(lista_equipas *Hash_table[], int Contador)
 
   if (!nomes_equipas[0])
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {

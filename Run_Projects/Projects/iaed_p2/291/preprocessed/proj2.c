@@ -50,10 +50,8 @@ int main()
         buffer[10 - 1] = '\0';
         if (existing_team(teams, buffer))
         {
-          {
-            printf("%d Equipa existente.\n", contador);
-            break;
-          }
+          printf("%d Equipa existente.\n", contador);
+          break;
         }
         else
         {
@@ -77,9 +75,7 @@ int main()
         i = find(teams, buffer, contador);
         if (i == 1)
         {
-          {
-            break;
-          }
+          break;
         }
         else
         {
@@ -91,19 +87,15 @@ int main()
         {
           if (!strcmp(game_list_aux->game->team1, buffer))
           {
+            if (game_list_aux->game->score1 > game_list_aux->game->score2)
             {
-              if (game_list_aux->game->score1 > game_list_aux->game->score2)
-              {
-                {
-                  i++;
-                }
-              }
-              else
-              {
-                
-              }
-
+              i++;
             }
+            else
+            {
+              
+            }
+
           }
           else
           {
@@ -112,19 +104,15 @@ int main()
 
           if (!strcmp(game_list_aux->game->team2, buffer))
           {
+            if (game_list_aux->game->score2 > game_list_aux->game->score1)
             {
-              if (game_list_aux->game->score2 > game_list_aux->game->score1)
-              {
-                {
-                  i++;
-                }
-              }
-              else
-              {
-                
-              }
-
+              i++;
             }
+            else
+            {
+              
+            }
+
           }
           else
           {
@@ -178,10 +166,8 @@ int main()
         getchar();
         if (existing_game(games, buffer))
         {
-          {
-            printf("%d Jogo existente.\n", contador);
-            break;
-          }
+          printf("%d Jogo existente.\n", contador);
+          break;
         }
         else
         {
@@ -190,10 +176,8 @@ int main()
 
         if (!(existing_team(teams, t1) && existing_team(teams, t2)))
         {
-          {
-            printf("%d Equipa inexistente.\n", contador);
-            break;
-          }
+          printf("%d Equipa inexistente.\n", contador);
+          break;
         }
         else
         {
@@ -228,10 +212,8 @@ int main()
         buffer[10 - 1] = '\0';
         if (!existing_game(games, buffer))
         {
-          {
-            printf("%d Jogo inexistente.\n", contador);
-            break;
-          }
+          printf("%d Jogo inexistente.\n", contador);
+          break;
         }
         else
         {
@@ -268,10 +250,8 @@ int main()
         s2[10 - 1] = '\0';
         if (!existing_game(games, buffer))
         {
-          {
-            printf("%d Jogo inexistente.\n", contador);
-            break;
-          }
+          printf("%d Jogo inexistente.\n", contador);
+          break;
         }
         else
         {
@@ -295,10 +275,8 @@ int main()
         buffer[10 - 1] = '\0';
         if (!existing_game(games, buffer))
         {
-          {
-            printf("%d Jogo inexistente.\n", contador);
-            break;
-          }
+          printf("%d Jogo inexistente.\n", contador);
+          break;
         }
         else
         {
@@ -314,54 +292,42 @@ int main()
         game_link_aux = games[hashU(buffer)];
         if (game_link_aux->next == 0)
         {
-          {
-            game_link_aux = game_link_aux->next;
-            free_game_node(games[hashU(buffer)]);
-            games[hashU(buffer)] = game_link_aux;
-          }
+          game_link_aux = game_link_aux->next;
+          free_game_node(games[hashU(buffer)]);
+          games[hashU(buffer)] = game_link_aux;
         }
         else
         {
+          if (!strcmp(game_link_aux->name, buffer))
           {
-            if (!strcmp(game_link_aux->name, buffer))
-            {
-              {
-                games[hashU(buffer)] = game_link_aux->next;
-                free_game_node(game_link_aux);
-              }
-            }
-            else
-            {
-              {
-                while (strcmp(game_link_aux->next->name, buffer))
-                {
-                  game_link_aux = game_link_aux->next;
-                }
-
-                game_link_aux2 = game_link_aux->next;
-                game_link_aux->next = game_link_aux->next->next;
-                free_game_node(game_link_aux2);
-              }
-            }
-
+            games[hashU(buffer)] = game_link_aux->next;
+            free_game_node(game_link_aux);
           }
+          else
+          {
+            while (strcmp(game_link_aux->next->name, buffer))
+            {
+              game_link_aux = game_link_aux->next;
+            }
+
+            game_link_aux2 = game_link_aux->next;
+            game_link_aux->next = game_link_aux->next->next;
+            free_game_node(game_link_aux2);
+          }
+
         }
 
         if (game_list_aux->prev == 0)
         {
-          {
-            games_sorted = games_sorted->next;
-            games_sorted->prev = 0;
-            free(game_list_aux);
-          }
+          games_sorted = games_sorted->next;
+          games_sorted->prev = 0;
+          free(game_list_aux);
         }
         else
         {
-          {
-            game_list_aux->prev->next = game_list_aux->next;
-            game_list_aux->next->prev = game_list_aux->prev;
-            free(game_list_aux);
-          }
+          game_list_aux->prev->next = game_list_aux->next;
+          game_list_aux->next->prev = game_list_aux->prev;
+          free(game_list_aux);
         }
 
         break;

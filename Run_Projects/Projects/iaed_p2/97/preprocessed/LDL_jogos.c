@@ -19,27 +19,23 @@ void apaga_lista_jogos(lista *l)
   elem_j *tmp;
   if (l->fim != l->inicio)
   {
+    while (l->fim != l->inicio)
     {
-      while (l->fim != l->inicio)
-      {
-        tmp = l->fim->ante;
-        liberta_jogo(l->fim->jogo);
-        free(l->fim);
-        l->fim = tmp;
-      }
-
-      liberta_jogo(l->inicio->jogo);
-      free(l->inicio);
+      tmp = l->fim->ante;
+      liberta_jogo(l->fim->jogo);
+      free(l->fim);
+      l->fim = tmp;
     }
+
+    liberta_jogo(l->inicio->jogo);
+    free(l->inicio);
   }
   else
   {
     if (l->inicio != 0)
     {
-      {
-        liberta_jogo(l->inicio->jogo);
-        free(l->inicio);
-      }
+      liberta_jogo(l->inicio->jogo);
+      free(l->inicio);
     }
     else
     {
@@ -74,9 +70,7 @@ void adiciona_jogo_lista(lista *l, Item_j *el)
   add->ante = l->fim;
   if (l->fim != 0)
   {
-    {
-      l->fim->prox = add;
-    }
+    l->fim->prox = add;
   }
   else
   {
@@ -86,9 +80,7 @@ void adiciona_jogo_lista(lista *l, Item_j *el)
   l->fim = add;
   if (l->inicio == 0)
   {
-    {
-      l->inicio = l->fim;
-    }
+    l->inicio = l->fim;
   }
   else
   {
@@ -101,48 +93,38 @@ void remove_jogo_lista(lista *l, elem_j *el)
 {
   if ((l->inicio == el) && (l->fim == el))
   {
-    {
-      l->inicio = 0;
-      l->fim = 0;
-    }
+    l->inicio = 0;
+    l->fim = 0;
   }
   else
   {
     if ((l->inicio != el) && (l->fim != el))
     {
-      {
-        el->ante->prox = el->prox;
-        el->prox->ante = el->ante;
-      }
+      el->ante->prox = el->prox;
+      el->prox->ante = el->ante;
     }
     else
     {
+      if (l->inicio == el)
       {
-        if (l->inicio == el)
-        {
-          {
-            l->inicio = el->prox;
-            l->inicio->ante = 0;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if (l->fim == el)
-        {
-          {
-            l->fim = el->ante;
-            l->fim->prox = 0;
-          }
-        }
-        else
-        {
-          
-        }
-
+        l->inicio = el->prox;
+        l->inicio->ante = 0;
       }
+      else
+      {
+        
+      }
+
+      if (l->fim == el)
+      {
+        l->fim = el->ante;
+        l->fim->prox = 0;
+      }
+      else
+      {
+        
+      }
+
     }
 
   }
@@ -158,9 +140,7 @@ elem_j *encontra_jogo_lista(lista *l, char *nome)
   {
     if (!strcmp(tmp->jogo->nome, nome))
     {
-      {
-        return tmp;
-      }
+      return tmp;
     }
     else
     {

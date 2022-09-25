@@ -46,9 +46,7 @@ void expandir_equipas(TabelaEquipas *tabela)
   {
     if (tabela->equipas[i] != 0)
     {
-      {
-        inserir_equipa(tab, tabela->equipas[i]);
-      }
+      inserir_equipa(tab, tabela->equipas[i]);
     }
     else
     {
@@ -71,15 +69,11 @@ Equipa *procura_equipa(TabelaEquipas *tabela, char *nome)
   {
     if (strcmp(tabela->equipas[i]->nome, nome) == 0)
     {
-      {
-        return tabela->equipas[i];
-      }
+      return tabela->equipas[i];
     }
     else
     {
-      {
-        i = (i + 1) % tabela->capacidade;
-      }
+      i = (i + 1) % tabela->capacidade;
     }
 
   }
@@ -94,10 +88,8 @@ void free_tabela_equipas(TabelaEquipas *tabela)
   {
     if (tabela->equipas[i] != 0)
     {
-      {
-        free(tabela->equipas[i]->nome);
-        free(tabela->equipas[i]);
-      }
+      free(tabela->equipas[i]->nome);
+      free(tabela->equipas[i]);
     }
     else
     {
@@ -142,9 +134,7 @@ int partition(char **equipas, int left, int right)
 
     if (i < j)
     {
-      {
-        swap(&equipas[i], &equipas[j]);
-      }
+      swap(&equipas[i], &equipas[j]);
     }
     else
     {
@@ -155,9 +145,7 @@ int partition(char **equipas, int left, int right)
 
   if (strcmp(equipas[i], equipas[right]) > 0)
   {
-    {
-      swap(&equipas[i], &equipas[right]);
-    }
+    swap(&equipas[i], &equipas[right]);
   }
   else
   {

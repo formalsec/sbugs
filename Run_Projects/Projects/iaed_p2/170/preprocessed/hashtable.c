@@ -48,9 +48,7 @@ void DeleteHT_Team(HT_Team Teams)
   {
     if (Teams->ht[i] != 0)
     {
-      {
-        DeleteTeam(Teams->ht[i]);
-      }
+      DeleteTeam(Teams->ht[i]);
     }
     else
     {
@@ -79,9 +77,7 @@ void InsertHT_Team(HT_Team Teams, Team team)
   Teams->num++;
   if (Teams->num > (Teams->size / 2))
   {
-    {
-      ExpandHT_Team(Teams);
-    }
+    ExpandHT_Team(Teams);
   }
   else
   {
@@ -99,9 +95,7 @@ Team SearchHT_Team(HT_Team Teams, char *name)
   {
     if (strcmp(NameTeam(Teams->ht[i]), name) == 0)
     {
-      {
-        return Teams->ht[i];
-      }
+      return Teams->ht[i];
     }
     else
     {
@@ -126,9 +120,7 @@ void ExpandHT_Team(HT_Team Teams)
     team = Teams->ht[i];
     if (team != 0)
     {
-      {
-        InsertHT_Team(tmp_teams, team);
-      }
+      InsertHT_Team(tmp_teams, team);
     }
     else
     {
@@ -153,9 +145,7 @@ void HighestWin(HT_Team Teams, int NL)
   int win = 0;
   if (Teams->num == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -167,19 +157,15 @@ void HighestWin(HT_Team Teams, int NL)
     team = Teams->ht[i];
     if (team != 0)
     {
+      if (team->wins > win)
       {
-        if (team->wins > win)
-        {
-          {
-            win = team->wins;
-          }
-        }
-        else
-        {
-          
-        }
-
+        win = team->wins;
       }
+      else
+      {
+        
+      }
+
     }
     else
     {
@@ -193,21 +179,17 @@ void HighestWin(HT_Team Teams, int NL)
     team = Teams->ht[i];
     if (team != 0)
     {
+      if (team->wins == win)
       {
-        if (team->wins == win)
-        {
-          {
-            nteams++;
-            teams = (Team *) realloc(teams, (sizeof(Team)) * nteams);
-            teams[nteams - 1] = team;
-          }
-        }
-        else
-        {
-          
-        }
-
+        nteams++;
+        teams = (Team *) realloc(teams, (sizeof(Team)) * nteams);
+        teams[nteams - 1] = team;
       }
+      else
+      {
+        
+      }
+
     }
     else
     {
@@ -249,9 +231,7 @@ void DeleteHT_Game(HT_Game Games)
   {
     if (Games->ht[i] != 0)
     {
-      {
-        DeleteGame(Games->ht[i]);
-      }
+      DeleteGame(Games->ht[i]);
     }
     else
     {
@@ -280,9 +260,7 @@ void InsertHT_Game(HT_Game Games, Game game)
   Games->num++;
   if (Games->num > (Games->size / 2))
   {
-    {
-      ExpandHT_Game(Games);
-    }
+    ExpandHT_Game(Games);
   }
   else
   {
@@ -325,9 +303,7 @@ Game SearchHT_Game(HT_Game Games, char *name)
   {
     if (strcmp(NameGame(Games->ht[i]), name) == 0)
     {
-      {
-        return Games->ht[i];
-      }
+      return Games->ht[i];
     }
     else
     {
@@ -352,9 +328,7 @@ void ExpandHT_Game(HT_Game Games)
     game = Games->ht[i];
     if (game != 0)
     {
-      {
-        InsertHT_Game(tmp_game, game);
-      }
+      InsertHT_Game(tmp_game, game);
     }
     else
     {

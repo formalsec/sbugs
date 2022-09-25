@@ -8,9 +8,7 @@ node *ListDelete(node *head, char *string)
 {
   if (head == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -19,15 +17,13 @@ node *ListDelete(node *head, char *string)
 
   if (strcmp(head->name, string) == 0)
   {
-    {
-      node *new_head;
-      new_head = head->next;
-      free(head->name);
-      free(head->team1);
-      free(head->team2);
-      free(head);
-      return new_head;
-    }
+    node *new_head;
+    new_head = head->next;
+    free(head->name);
+    free(head->team1);
+    free(head->team2);
+    free(head);
+    return new_head;
   }
   else
   {

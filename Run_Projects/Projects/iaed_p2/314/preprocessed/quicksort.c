@@ -25,9 +25,7 @@ int partition(char **a, int l, int r)
     {
       if (j == l)
       {
-        {
-          break;
-        }
+        break;
       }
       else
       {
@@ -39,13 +37,11 @@ int partition(char **a, int l, int r)
     if (i < j)
     {
       {
-        {
-          char *t = a[i];
-          a[i] = a[j];
-          a[j] = t;
-        }
-        ;
+        char *t = a[i];
+        a[i] = a[j];
+        a[j] = t;
       }
+      ;
     }
     else
     {

@@ -207,71 +207,61 @@ void changeProduct(int n)
   delimiter = ":";
   if (n == 4)
   {
-    {
-      ide = strtok(input, delimiter);
-      idp = strtok(0, delimiter);
-      showDetails(atoi(ide), atoi(idp));
-    }
+    ide = strtok(input, delimiter);
+    idp = strtok(0, delimiter);
+    showDetails(atoi(ide), atoi(idp));
   }
   else
   {
     if (n == 5)
     {
-      {
-        ide = strtok(input, delimiter);
-        idp = strtok(0, delimiter);
-        remProductFromOrder(atoi(ide), atoi(idp));
-      }
+      ide = strtok(input, delimiter);
+      idp = strtok(0, delimiter);
+      remProductFromOrder(atoi(ide), atoi(idp));
     }
     else
     {
       if (n == 6)
       {
-        {
-          moreTimesProduct(atoi(input));
-        }
+        moreTimesProduct(atoi(input));
       }
       else
       {
         if (n == 7)
         {
-          {
-            calculatesOrderPrice(atoi(input));
-          }
+          calculatesOrderPrice(atoi(input));
         }
         else
         {
+          idp = strtok(input, delimiter);
+          qtd = strtok(0, delimiter);
+          if (n == 1)
           {
-            idp = strtok(input, delimiter);
-            qtd = strtok(0, delimiter);
-            if (n == 1)
-            {
-              addStock(atoi(idp), atoi(qtd));
-            }
-            else
-            {
-              
-            }
-
-            if (n == 2)
-            {
-              remStock(atoi(idp), atoi(qtd));
-            }
-            else
-            {
-              
-            }
-
-            if (n == 3)
-            {
-              changePrice(atoi(idp), atoi(qtd));
-            }
-            else
-            {
-              
-            }
-
+            addStock(atoi(idp), atoi(qtd));
           }
+          else
+          {
+            
+          }
+
+          if (n == 2)
+          {
+            remStock(atoi(idp), atoi(qtd));
+          }
+          else
+          {
+            
+          }
+
+          if (n == 3)
+          {
+            changePrice(atoi(idp), atoi(qtd));
+          }
+          else
+          {
+            
+          }
+
         }
 
       }
@@ -287,17 +277,13 @@ void addStock(int idp, int qtd)
   int foundIDP = findIDP(idp);
   if (foundIDP == (-2))
   {
-    {
-      printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idp);
-      return;
-    }
+    printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idp);
+    return;
   }
   else
   {
-    {
-      productsList[foundIDP].total_stock += qtd;
-      return;
-    }
+    productsList[foundIDP].total_stock += qtd;
+    return;
   }
 
 }
@@ -311,22 +297,18 @@ void remStock(int idp, int qtd)
   }
   else
   {
+    if (productsList[foundIDP].total_stock >= qtd)
     {
-      if (productsList[foundIDP].total_stock >= qtd)
-      {
-        {
-          productsList[foundIDP].total_stock -= qtd;
-          return;
-        }
-      }
-      else
-      {
-        
-      }
-
-      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, idp);
+      productsList[foundIDP].total_stock -= qtd;
       return;
     }
+    else
+    {
+      
+    }
+
+    printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, idp);
+    return;
   }
 
 }
@@ -342,29 +324,25 @@ void changePrice(int idp, int qtd)
   }
   else
   {
+    for (i = 0; i < numOrders; i++)
     {
-      for (i = 0; i < numOrders; i++)
+      for (j = 0; j < ordersList[i].products_counter; j++)
       {
-        for (j = 0; j < ordersList[i].products_counter; j++)
+        if (ordersList[i].productsOrderList[j].identifier == idp)
         {
-          if (ordersList[i].productsOrderList[j].identifier == idp)
-          {
-            {
-              ordersList[i].productsOrderList[j].price = qtd;
-            }
-          }
-          else
-          {
-            
-          }
-
+          ordersList[i].productsOrderList[j].price = qtd;
+        }
+        else
+        {
+          
         }
 
       }
 
-      productsList[idp].price = qtd;
-      return;
     }
+
+    productsList[idp].price = qtd;
+    return;
   }
 
 }
@@ -396,12 +374,10 @@ void showDetails(int ide, int idp)
       }
       else
       {
-        {
-          total = o.productsOrderList[exists].total_stock;
-          ordersList[foundIDE] = o;
-          printf("%s %d.\n", productsList[idp].description, total);
-          return;
-        }
+        total = o.productsOrderList[exists].total_stock;
+        ordersList[foundIDE] = o;
+        printf("%s %d.\n", productsList[idp].description, total);
+        return;
       }
 
     }
@@ -421,15 +397,13 @@ void calculatesOrderPrice(int ide)
   }
   else
   {
+    for (i = 0; i < ordersList[ide].products_counter; i++)
     {
-      for (i = 0; i < ordersList[ide].products_counter; i++)
-      {
-        total += ordersList[ide].productsOrderList[i].price * ordersList[ide].productsOrderList[i].total_stock;
-      }
-
-      printf("Custo da encomenda %d %d.\n", ide, total);
-      return;
+      total += ordersList[ide].productsOrderList[i].price * ordersList[ide].productsOrderList[i].total_stock;
     }
+
+    printf("Custo da encomenda %d %d.\n", ide, total);
+    return;
   }
 
 }
@@ -514,37 +488,31 @@ void addProductToOrder(int ide, int idp, int qtd)
         }
         else
         {
+          Order o = ordersList[foundIDE];
+          Product p = productsList[foundIDP];
+          exists = findProductAtOrder(o, foundIDP);
+          if (exists == (-3))
           {
-            Order o = ordersList[foundIDE];
-            Product p = productsList[foundIDP];
-            exists = findProductAtOrder(o, foundIDP);
-            if (exists == (-3))
-            {
-              {
-                k = o.products_counter;
-                o.productsOrderList[k] = p;
-                o.productsOrderList[k].total_stock = qtd;
-                o.products_counter++;
-                o.order_weight += p.p_weight * qtd;
-                ordersList[foundIDE] = o;
-                p.total_stock -= qtd;
-                productsList[foundIDP] = p;
-                return;
-              }
-            }
-            else
-            {
-              {
-                o.productsOrderList[exists].total_stock += qtd;
-                o.order_weight += p.p_weight * qtd;
-                p.total_stock -= qtd;
-                ordersList[foundIDE] = o;
-                productsList[foundIDP] = p;
-                return;
-              }
-            }
-
+            k = o.products_counter;
+            o.productsOrderList[k] = p;
+            o.productsOrderList[k].total_stock = qtd;
+            o.products_counter++;
+            o.order_weight += p.p_weight * qtd;
+            ordersList[foundIDE] = o;
+            p.total_stock -= qtd;
+            productsList[foundIDP] = p;
+            return;
           }
+          else
+          {
+            o.productsOrderList[exists].total_stock += qtd;
+            o.order_weight += p.p_weight * qtd;
+            p.total_stock -= qtd;
+            ordersList[foundIDE] = o;
+            productsList[foundIDP] = p;
+            return;
+          }
+
         }
 
       }
@@ -582,18 +550,16 @@ void remProductFromOrder(int ide, int idp)
       }
       else
       {
+        qtd = o.productsOrderList[exists].total_stock;
+        productsList[foundIDP].total_stock += qtd;
+        o.order_weight -= productsList[foundIDP].p_weight * qtd;
+        for (i = exists; i < o.products_counter; i++)
         {
-          qtd = o.productsOrderList[exists].total_stock;
-          productsList[foundIDP].total_stock += qtd;
-          o.order_weight -= productsList[foundIDP].p_weight * qtd;
-          for (i = exists; i < o.products_counter; i++)
-          {
-            o.productsOrderList[i] = o.productsOrderList[i + 1];
-          }
-
-          o.products_counter--;
-          ordersList[foundIDE] = o;
+          o.productsOrderList[i] = o.productsOrderList[i + 1];
         }
+
+        o.products_counter--;
+        ordersList[foundIDE] = o;
       }
 
     }
@@ -625,24 +591,13 @@ void moreTimesProduct(int idp)
     {
       if (ordersList[i].productsOrderList[j].identifier == idp)
       {
+        if (ordersList[i].productsOrderList[j].total_stock > max)
         {
-          if (ordersList[i].productsOrderList[j].total_stock > max)
+          max = ordersList[i].productsOrderList[j].total_stock;
+          if (max > lastmax)
           {
-            {
-              max = ordersList[i].productsOrderList[j].total_stock;
-              if (max > lastmax)
-              {
-                {
-                  lastmax = max;
-                  foundIDE = ordersList[i].order_number;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
+            lastmax = max;
+            foundIDE = ordersList[i].order_number;
           }
           else
           {
@@ -650,6 +605,11 @@ void moreTimesProduct(int idp)
           }
 
         }
+        else
+        {
+          
+        }
+
       }
       else
       {
@@ -678,9 +638,7 @@ int findIDE(int ide)
   {
     if (ordersList[i].order_number == ide)
     {
-      {
-        return ide;
-      }
+      return ide;
     }
     else
     {
@@ -699,9 +657,7 @@ int findIDP(int idp)
   {
     if (productsList[i].identifier == idp)
     {
-      {
-        return idp;
-      }
+      return idp;
     }
     else
     {
@@ -795,11 +751,9 @@ void quickSort(Product *list, int low, int high)
 {
   if (low < high)
   {
-    {
-      int pi = partition(list, low, high);
-      quickSort(list, low, pi - 1);
-      quickSort(list, pi + 1, high);
-    }
+    int pi = partition(list, low, high);
+    quickSort(list, low, pi - 1);
+    quickSort(list, pi + 1, high);
   }
   else
   {
@@ -822,26 +776,24 @@ int comparePrice(Product old, Product new)
     }
     else
     {
+      if (old.price == new.price)
       {
-        if (old.price == new.price)
+        if (old.identifier < new.identifier)
         {
-          if (old.identifier < new.identifier)
-          {
-            return 1;
-          }
-          else
-          {
-            
-          }
-
+          return 1;
         }
         else
         {
           
         }
 
-        return 0;
       }
+      else
+      {
+        
+      }
+
+      return 0;
     }
 
   }
@@ -865,10 +817,8 @@ void printOrderProductsList(Order *ordersList)
   foundIDE = findIDE(ide);
   if (foundIDE == (-1))
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
-      return;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
+    return;
   }
   else
   {
@@ -900,11 +850,9 @@ void sortProductsOrder(Product *list, int n)
     {
       if (strcmp(list[i].description, list[j].description) > 0)
       {
-        {
-          temp = list[i];
-          list[i] = list[j];
-          list[j] = temp;
-        }
+        temp = list[i];
+        list[i] = list[j];
+        list[j] = temp;
       }
       else
       {

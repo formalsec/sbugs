@@ -72,21 +72,19 @@ void deleteTudoE(int i)
   head = headsEquipa[i];
   if (head != 0)
   {
+    aux = head->next;
+    while (aux != 0)
     {
-      aux = head->next;
-      while (aux != 0)
-      {
-        prev = aux;
-        aux = aux->next;
-        free(prev->item->nomeEquipa);
-        free(prev->item);
-        free(prev);
-      }
-
-      free(headsEquipa[i]->item->nomeEquipa);
-      free(headsEquipa[i]->item);
-      free(headsEquipa[i]);
+      prev = aux;
+      aux = aux->next;
+      free(prev->item->nomeEquipa);
+      free(prev->item);
+      free(prev);
     }
+
+    free(headsEquipa[i]->item->nomeEquipa);
+    free(headsEquipa[i]->item);
+    free(headsEquipa[i]);
   }
   else
   {

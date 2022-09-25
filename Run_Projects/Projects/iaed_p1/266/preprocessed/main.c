@@ -27,20 +27,16 @@ int in_order(product products[], int idp, int iter)
   {
     if (products[i].id == idp)
     {
+      if ((idp == 0) && (products[i].weight == 0))
       {
-        if ((idp == 0) && (products[i].weight == 0))
-        {
-          {
-            return -1;
-          }
-        }
-        else
-        {
-          
-        }
-
-        return i;
+        return -1;
       }
+      else
+      {
+        
+      }
+
+      return i;
     }
     else
     {
@@ -74,26 +70,20 @@ void merge(product arr[], int l, int m, int r)
   {
     if ((*L[i].price) < (*R[j].price))
     {
-      {
-        arr[k] = L[i];
-        i++;
-      }
+      arr[k] = L[i];
+      i++;
     }
     else
     {
       if (((*L[i].price) == (*R[j].price)) && (L[i].id < R[j].id))
       {
-        {
-          arr[k] = L[i];
-          i++;
-        }
+        arr[k] = L[i];
+        i++;
       }
       else
       {
-        {
-          arr[k] = R[j];
-          j++;
-        }
+        arr[k] = R[j];
+        j++;
       }
 
     }
@@ -123,12 +113,10 @@ void merge_sort(product arr[], int l, int r)
 {
   if (l < r)
   {
-    {
-      int m = l + ((r - l) / 2);
-      merge_sort(arr, l, m);
-      merge_sort(arr, m + 1, r);
-      merge(arr, l, m, r);
-    }
+    int m = l + ((r - l) / 2);
+    merge_sort(arr, l, m);
+    merge_sort(arr, m + 1, r);
+    merge(arr, l, m, r);
   }
   else
   {
@@ -180,9 +168,7 @@ void alphabetic_sort(product products[], int size, int ide)
     {
       if (strcmp(copy[i].desc, copy[j].desc) > 0)
       {
-        {
-          swap(&copy[i], &copy[j]);
-        }
+        swap(&copy[i], &copy[j]);
       }
       else
       {
@@ -338,45 +324,34 @@ int main()
       }
       else
       {
+        int orid;
+        int prid;
+        qtd = -1;
+        for (orid = 0; orid < order_counter; ++orid)
         {
-          int orid;
-          int prid;
-          qtd = -1;
-          for (orid = 0; orid < order_counter; ++orid)
+          o = orders[orid];
+          for (prid = 0; prid < o.iter; ++prid)
           {
-            o = orders[orid];
-            for (prid = 0; prid < o.iter; ++prid)
+            if ((o.products[prid].id == idp) && (o.products[prid].qtd > qtd))
             {
-              if ((o.products[prid].id == idp) && (o.products[prid].qtd > qtd))
-              {
-                {
-                  qtd = o.products[prid].qtd;
-                  ide = o.id;
-                }
-              }
-              else
-              {
-                
-              }
-
+              qtd = o.products[prid].qtd;
+              ide = o.id;
+            }
+            else
+            {
+              
             }
 
           }
 
-          if (qtd != (-1))
-          {
-            {
-              product_index = in_order(orders[ide].products, idp, orders[ide].iter);
-              if (orders[ide].products[product_index].qtd != 0)
-              {
-                printf("Maximo produto %d %d %d.\n", idp, ide, qtd);
-              }
-              else
-              {
-                
-              }
+        }
 
-            }
+        if (qtd != (-1))
+        {
+          product_index = in_order(orders[ide].products, idp, orders[ide].iter);
+          if (orders[ide].products[product_index].qtd != 0)
+          {
+            printf("Maximo produto %d %d %d.\n", idp, ide, qtd);
           }
           else
           {
@@ -384,6 +359,11 @@ int main()
           }
 
         }
+        else
+        {
+          
+        }
+
       }
 
         break;
@@ -405,10 +385,8 @@ int main()
         qtd = new_sym_var(sizeof(int) * 8);
         if ((order_counter - ide) <= 0)
       {
-        {
-          printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
-          break;
-        }
+        printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
+        break;
       }
       else
       {
@@ -439,27 +417,23 @@ int main()
           }
           else
           {
+            product_index = in_order(orders[ide].products, idp, orders[ide].iter);
+            if (product_index != (-1))
             {
-              product_index = in_order(orders[ide].products, idp, orders[ide].iter);
-              if (product_index != (-1))
-              {
-                orders[ide].products[product_index].qtd = orders[ide].products[product_index].qtd + qtd;
-              }
-              else
-              {
-                {
-                  p.id = idp;
-                  strcpy(p.desc, system[idp].desc);
-                  p.price = system[idp].price;
-                  p.weight = system[idp].weight;
-                  p.qtd = qtd;
-                  orders[ide].products[orders[ide].iter] = p;
-                  orders[ide].iter++;
-                }
-              }
-
-              system[idp].qtd = system[idp].qtd - qtd;
+              orders[ide].products[product_index].qtd = orders[ide].products[product_index].qtd + qtd;
             }
+            else
+            {
+              p.id = idp;
+              strcpy(p.desc, system[idp].desc);
+              p.price = system[idp].price;
+              p.weight = system[idp].weight;
+              p.qtd = qtd;
+              orders[ide].products[orders[ide].iter] = p;
+              orders[ide].iter++;
+            }
+
+            system[idp].qtd = system[idp].qtd - qtd;
           }
 
         }
@@ -485,18 +459,16 @@ int main()
         }
         else
         {
+          product_index = in_order(orders[ide].products, idp, orders[ide].iter);
+          if (product_index == (-1))
           {
-            product_index = in_order(orders[ide].products, idp, orders[ide].iter);
-            if (product_index == (-1))
-            {
-              printf("%s 0.\n", system[idp].desc);
-            }
-            else
-            {
-              printf("%s %d.\n", orders[ide].products[product_index].desc, orders[ide].products[product_index].qtd);
-            }
-
+            printf("%s 0.\n", system[idp].desc);
           }
+          else
+          {
+            printf("%s %d.\n", orders[ide].products[product_index].desc, orders[ide].products[product_index].qtd);
+          }
+
         }
 
       }
@@ -520,21 +492,17 @@ int main()
         }
         else
         {
+          product_index = in_order(orders[ide].products, idp, orders[ide].iter);
+          if (product_index != (-1))
           {
-            product_index = in_order(orders[ide].products, idp, orders[ide].iter);
-            if (product_index != (-1))
-            {
-              {
-                system[idp].qtd = system[idp].qtd + orders[ide].products[product_index].qtd;
-                orders[ide].products[product_index].qtd = 0;
-              }
-            }
-            else
-            {
-              
-            }
-
+            system[idp].qtd = system[idp].qtd + orders[ide].products[product_index].qtd;
+            orders[ide].products[product_index].qtd = 0;
           }
+          else
+          {
+            
+          }
+
         }
 
       }
@@ -551,13 +519,11 @@ int main()
       }
       else
       {
-        {
-          price = 0;
-          for (i = 0; i < orders[ide].iter; ++i)
-            price = (orders[ide].products[i].qtd * (*orders[ide].products[i].price)) + price;
+        price = 0;
+        for (i = 0; i < orders[ide].iter; ++i)
+          price = (orders[ide].products[i].qtd * (*orders[ide].products[i].price)) + price;
 
-          printf("Custo da encomenda %d %d.\n", ide, price);
-        }
+        printf("Custo da encomenda %d %d.\n", ide, price);
       }
 
         break;

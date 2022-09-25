@@ -167,12 +167,10 @@ void A(int NL, HashTable2 *hashtable)
   }
   else
   {
-    {
-      eq->nome = malloc((sizeof(char)) * (strlen(nome) + 1));
-      strcpy(eq->nome, nome);
-      eq->vitoria = 0;
-      ht_insert_eq(hashtable, eq);
-    }
+    eq->nome = malloc((sizeof(char)) * (strlen(nome) + 1));
+    strcpy(eq->nome, nome);
+    eq->vitoria = 0;
+    ht_insert_eq(hashtable, eq);
   }
 
 }
@@ -194,10 +192,8 @@ void P(int NL, HashTable2 *hashtable)
   }
   else
   {
-    {
-      eq = ht_lookup_eq(hashtable, nome);
-      printf("%d %s %d\n", NL, eq->nome, eq->vitoria);
-    }
+    eq = ht_lookup_eq(hashtable, nome);
+    printf("%d %s %d\n", NL, eq->nome, eq->vitoria);
   }
 
 }
@@ -219,10 +215,8 @@ void g(int NL, HashTable2 *hashtable)
     {
       if (m->vitoria > j)
       {
-        {
-          j = m->vitoria;
-          cont = 1;
-        }
+        j = m->vitoria;
+        cont = 1;
       }
       else
       {
@@ -257,11 +251,9 @@ void g(int NL, HashTable2 *hashtable)
     {
       if (m->vitoria == j)
       {
-        {
-          tab[k] = malloc((sizeof(char)) * (strlen(m->nome) + 1));
-          strcpy(tab[k], m->nome);
-          k++;
-        }
+        tab[k] = malloc((sizeof(char)) * (strlen(m->nome) + 1));
+        strcpy(tab[k], m->nome);
+        k++;
       }
       else
       {
@@ -278,15 +270,13 @@ void g(int NL, HashTable2 *hashtable)
     {
       if (strcmp(tab[x], tab[y]) > 0)
       {
-        {
-          tmp = malloc((sizeof(char)) * (strlen(tab[x]) + 1));
-          strcpy(tmp, tab[x]);
-          tab[x] = realloc(tab[x], strlen(tab[y]) + 1);
-          strcpy(tab[x], tab[y]);
-          tab[y] = realloc(tab[y], strlen(tmp) + 1);
-          strcpy(tab[y], tmp);
-          free(tmp);
-        }
+        tmp = malloc((sizeof(char)) * (strlen(tab[x]) + 1));
+        strcpy(tmp, tab[x]);
+        tab[x] = realloc(tab[x], strlen(tab[y]) + 1);
+        strcpy(tab[x], tab[y]);
+        tab[y] = realloc(tab[y], strlen(tmp) + 1);
+        strcpy(tab[y], tmp);
+        free(tmp);
       }
       else
       {

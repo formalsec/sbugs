@@ -24,17 +24,13 @@ void adicionarUltimoLista(lista *listaJ, jogo *nJogo)
   ItemList *no = malloc(sizeof(ItemList));
   if (listaJ->head == 0)
   {
-    {
-      listaJ->head = no;
-      no->previous = 0;
-    }
+    listaJ->head = no;
+    no->previous = 0;
   }
   else
   {
-    {
-      no->previous = listaJ->last;
-      listaJ->last->next = no;
-    }
+    no->previous = listaJ->last;
+    listaJ->last->next = no;
   }
 
   no->next = 0;
@@ -97,9 +93,7 @@ ItemFirstHT *procurarElemento(ItemFirstHT *head, char *key)
   {
     if (strcmp(head->jogo->nome, key) == 0)
     {
-      {
-        return head;
-      }
+      return head;
     }
     else
     {
@@ -165,10 +159,8 @@ void alterarPontuacaoP(jogo *nJogo, int score1, int score2)
 {
   if ((score1 < score2) && (nJogo->pScore > nJogo->sScore))
   {
-    {
-      nJogo->pEquipa->vitorias -= 1;
-      nJogo->sEquipa->vitorias += 1;
-    }
+    nJogo->pEquipa->vitorias -= 1;
+    nJogo->sEquipa->vitorias += 1;
   }
   else
   {
@@ -189,10 +181,8 @@ void alterarPontuacaoS(jogo *nJogo, int score1, int score2)
 {
   if ((score1 > score2) && (nJogo->pScore < nJogo->sScore))
   {
-    {
-      nJogo->pEquipa->vitorias += 1;
-      nJogo->sEquipa->vitorias -= 1;
-    }
+    nJogo->pEquipa->vitorias += 1;
+    nJogo->sEquipa->vitorias -= 1;
   }
   else
   {
@@ -239,25 +229,19 @@ void removerElementoHT(ItemFirstHT *head, int pos, ItemFirstHT **headsJogo)
   {
     if (head->next == 0)
     {
-      {
-        head->previous->next = 0;
-      }
+      head->previous->next = 0;
     }
     else
     {
       if (head->previous == 0)
       {
-        {
-          headsJogo[pos] = head->next;
-          head->next->previous = 0;
-        }
+        headsJogo[pos] = head->next;
+        head->next->previous = 0;
       }
       else
       {
-        {
-          head->previous->next = head->next;
-          head->next->previous = head->previous;
-        }
+        head->previous->next = head->next;
+        head->next->previous = head->previous;
       }
 
     }
@@ -273,48 +257,38 @@ void removerElementoLista(lista *listaJ, jogo *jogo)
   {
     if (head->jogo == jogo)
     {
+      if ((head->next == 0) && (head->previous == 0))
       {
-        if ((head->next == 0) && (head->previous == 0))
+        listaJ->head = 0;
+      }
+      else
+      {
+        if (head->next == 0)
         {
-          {
-            listaJ->head = 0;
-          }
+          head->previous->next = 0;
+          listaJ->last = head->previous;
         }
         else
         {
-          if (head->next == 0)
+          if (head->previous == 0)
           {
-            {
-              head->previous->next = 0;
-              listaJ->last = head->previous;
-            }
+            listaJ->head = head->next;
+            head->next->previous = 0;
           }
           else
           {
-            if (head->previous == 0)
-            {
-              {
-                listaJ->head = head->next;
-                head->next->previous = 0;
-              }
-            }
-            else
-            {
-              {
-                head->previous->next = head->next;
-                head->next->previous = head->previous;
-              }
-            }
-
+            head->previous->next = head->next;
+            head->next->previous = head->previous;
           }
 
         }
 
-        freeJogo(head->jogo);
-        free(head);
-        head = 0;
-        break;
       }
+
+      freeJogo(head->jogo);
+      free(head);
+      head = 0;
+      break;
     }
     else
     {
@@ -332,30 +306,28 @@ int HTRemoverElemento(ItemFirstHT **headsJogo, int capacidadeJ, char *nomeJogo, 
   ItemFirstHT *head = procurarElemento(headsJogo[i], nomeJogo);
   if (head != 0)
   {
+    if (head->jogo->pScore > head->jogo->sScore)
     {
-      if (head->jogo->pScore > head->jogo->sScore)
+      head->jogo->pEquipa->vitorias -= 1;
+    }
+    else
+    {
+      if (head->jogo->pScore < head->jogo->sScore)
       {
-        head->jogo->pEquipa->vitorias -= 1;
+        head->jogo->sEquipa->vitorias -= 1;
       }
       else
       {
-        if (head->jogo->pScore < head->jogo->sScore)
-        {
-          head->jogo->sEquipa->vitorias -= 1;
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      removerElementoHT(head, i, headsJogo);
-      removerElementoLista(listaJ, head->jogo);
-      free(head);
-      head = 0;
-      return 1;
     }
+
+    removerElementoHT(head, i, headsJogo);
+    removerElementoLista(listaJ, head->jogo);
+    free(head);
+    head = 0;
+    return 1;
   }
   else
   {

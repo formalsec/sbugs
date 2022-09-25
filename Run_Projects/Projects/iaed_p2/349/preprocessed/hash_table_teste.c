@@ -75,10 +75,8 @@ void ht_set_jogos(ht_jogos *hashtable, const char *nome, const char *equipa1, co
   entry_jogos *entry = hashtable->entries[slot];
   if (entry == 0)
   {
-    {
-      hashtable->entries[slot] = ht_pair_jogos(nome, equipa1, equipa2, score1, score2);
-      return;
-    }
+    hashtable->entries[slot] = ht_pair_jogos(nome, equipa1, equipa2, score1, score2);
+    return;
   }
   else
   {
@@ -89,17 +87,15 @@ void ht_set_jogos(ht_jogos *hashtable, const char *nome, const char *equipa1, co
   {
     if (strcmp(entry->jogo->nome, nome) == 0)
     {
-      {
-        free(entry->jogo->equipa1);
-        free(entry->jogo->equipa2);
-        entry->jogo->equipa1 = malloc(strlen(equipa1) + 1);
-        entry->jogo->equipa2 = malloc(strlen(equipa2) + 1);
-        entry->jogo->score1 = score1;
-        entry->jogo->score2 = score2;
-        strcpy(entry->jogo->equipa1, equipa1);
-        strcpy(entry->jogo->equipa2, equipa2);
-        return;
-      }
+      free(entry->jogo->equipa1);
+      free(entry->jogo->equipa2);
+      entry->jogo->equipa1 = malloc(strlen(equipa1) + 1);
+      entry->jogo->equipa2 = malloc(strlen(equipa2) + 1);
+      entry->jogo->score1 = score1;
+      entry->jogo->score2 = score2;
+      strcpy(entry->jogo->equipa1, equipa1);
+      strcpy(entry->jogo->equipa2, equipa2);
+      return;
     }
     else
     {
@@ -119,9 +115,7 @@ jogo *ht_get_jogos(ht_jogos *hashtable, const char *nome)
   entry_jogos *entry = hashtable->entries[slot];
   if (entry == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -132,9 +126,7 @@ jogo *ht_get_jogos(ht_jogos *hashtable, const char *nome)
   {
     if (strcmp(entry->jogo->nome, nome) == 0)
     {
-      {
-        return entry->jogo;
-      }
+      return entry->jogo;
     }
     else
     {
@@ -155,9 +147,7 @@ void ht_del_jogos(ht_jogos *hashtable, const char *nome)
   entry_jogos *entry = hashtable->entries[bucket];
   if (entry == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -168,58 +158,48 @@ void ht_del_jogos(ht_jogos *hashtable, const char *nome)
   {
     if (strcmp(entry->jogo->nome, nome) == 0)
     {
+      if ((entry->next == 0) && (idx == 0))
       {
-        if ((entry->next == 0) && (idx == 0))
-        {
-          {
-            hashtable->entries[bucket] = 0;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if ((entry->next != 0) && (idx == 0))
-        {
-          {
-            hashtable->entries[bucket] = entry->next;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if ((entry->next == 0) && (idx != 0))
-        {
-          {
-            prev->next = 0;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if ((entry->next != 0) && (idx != 0))
-        {
-          {
-            prev->next = entry->next;
-          }
-        }
-        else
-        {
-          
-        }
-
-        free(entry->jogo->nome);
-        free(entry->jogo->equipa1);
-        free(entry->jogo->equipa2);
-        free(entry->jogo);
-        free(entry);
-        return;
+        hashtable->entries[bucket] = 0;
       }
+      else
+      {
+        
+      }
+
+      if ((entry->next != 0) && (idx == 0))
+      {
+        hashtable->entries[bucket] = entry->next;
+      }
+      else
+      {
+        
+      }
+
+      if ((entry->next == 0) && (idx != 0))
+      {
+        prev->next = 0;
+      }
+      else
+      {
+        
+      }
+
+      if ((entry->next != 0) && (idx != 0))
+      {
+        prev->next = entry->next;
+      }
+      else
+      {
+        
+      }
+
+      free(entry->jogo->nome);
+      free(entry->jogo->equipa1);
+      free(entry->jogo->equipa2);
+      free(entry->jogo);
+      free(entry);
+      return;
     }
     else
     {
@@ -241,9 +221,7 @@ void ht_dump_jogos(ht_jogos *hashtable)
     entry_jogos *entry = hashtable->entries[i];
     if (entry == 0)
     {
-      {
-        continue;
-      }
+      continue;
     }
     else
     {
@@ -256,9 +234,7 @@ void ht_dump_jogos(ht_jogos *hashtable)
       printf("%s=%s=%s=%d=%d", entry->jogo->nome, entry->jogo->equipa1, entry->jogo->equipa2, entry->jogo->score1, entry->jogo->score2);
       if (entry->next == 0)
       {
-        {
-          break;
-        }
+        break;
       }
       else
       {
@@ -320,10 +296,8 @@ void ht_set_equipas(ht_equipas *hashtable, const char *nome, int vitorias)
   entry_equipas *entry = hashtable->entries[slot];
   if (entry == 0)
   {
-    {
-      hashtable->entries[slot] = ht_pair_equipas(nome, vitorias);
-      return;
-    }
+    hashtable->entries[slot] = ht_pair_equipas(nome, vitorias);
+    return;
   }
   else
   {
@@ -334,10 +308,8 @@ void ht_set_equipas(ht_equipas *hashtable, const char *nome, int vitorias)
   {
     if (strcmp(entry->equipa->nome, nome) == 0)
     {
-      {
-        entry->equipa->vitorias = vitorias;
-        return;
-      }
+      entry->equipa->vitorias = vitorias;
+      return;
     }
     else
     {
@@ -357,9 +329,7 @@ equipa *ht_get_equipas(ht_equipas *hashtable, const char *nome)
   entry_equipas *entry = hashtable->entries[slot];
   if (entry == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -370,9 +340,7 @@ equipa *ht_get_equipas(ht_equipas *hashtable, const char *nome)
   {
     if (strcmp(entry->equipa->nome, nome) == 0)
     {
-      {
-        return entry->equipa;
-      }
+      return entry->equipa;
     }
     else
     {
@@ -393,9 +361,7 @@ void ht_dump_equipas(ht_equipas *hashtable)
     entry_equipas *entry = hashtable->entries[i];
     if (entry == 0)
     {
-      {
-        continue;
-      }
+      continue;
     }
     else
     {
@@ -408,9 +374,7 @@ void ht_dump_equipas(ht_equipas *hashtable)
       printf("%s=%d", entry->equipa->nome, entry->equipa->vitorias);
       if (entry->next == 0)
       {
-        {
-          break;
-        }
+        break;
       }
       else
       {
@@ -457,10 +421,8 @@ int adicionaJogo(int nl, ht_jogos *hashtable_jogos, ht_equipas *hashtable_equipa
   jogo = ht_get_jogos(hashtable_jogos, nome);
   if (jogo != 0)
   {
-    {
-      printf("%d Jogo existente.\n", nl);
-      return 0;
-    }
+    printf("%d Jogo existente.\n", nl);
+    return 0;
   }
   else
   {
@@ -470,10 +432,8 @@ int adicionaJogo(int nl, ht_jogos *hashtable_jogos, ht_equipas *hashtable_equipa
   equipa = ht_get_equipas(hashtable_equipas, equipa1);
   if (equipa == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", nl);
-      return 0;
-    }
+    printf("%d Equipa inexistente.\n", nl);
+    return 0;
   }
   else
   {
@@ -483,10 +443,8 @@ int adicionaJogo(int nl, ht_jogos *hashtable_jogos, ht_equipas *hashtable_equipa
   equipa = ht_get_equipas(hashtable_equipas, equipa2);
   if (equipa == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", nl);
-      return 0;
-    }
+    printf("%d Equipa inexistente.\n", nl);
+    return 0;
   }
   else
   {
@@ -496,10 +454,8 @@ int adicionaJogo(int nl, ht_jogos *hashtable_jogos, ht_equipas *hashtable_equipa
   ht_set_jogos(hashtable_jogos, nome, equipa1, equipa2, score1, score2);
   if (score1 > score2)
   {
-    {
-      equipa = ht_get_equipas(hashtable_equipas, equipa1);
-      equipa->vitorias += 1;
-    }
+    equipa = ht_get_equipas(hashtable_equipas, equipa1);
+    equipa->vitorias += 1;
   }
   else
   {
@@ -508,10 +464,8 @@ int adicionaJogo(int nl, ht_jogos *hashtable_jogos, ht_equipas *hashtable_equipa
 
   if (score1 < score2)
   {
-    {
-      equipa = ht_get_equipas(hashtable_equipas, equipa2);
-      equipa->vitorias += 1;
-    }
+    equipa = ht_get_equipas(hashtable_equipas, equipa2);
+    equipa->vitorias += 1;
   }
   else
   {
@@ -536,10 +490,8 @@ int adicionaEquipa(int nl, ht_equipas *hashtable)
   equipa = ht_get_equipas(hashtable, nome);
   if (equipa != 0)
   {
-    {
-      printf("%d Equipa existente.\n", nl);
-      return 0;
-    }
+    printf("%d Equipa existente.\n", nl);
+    return 0;
   }
   else
   {
@@ -564,10 +516,8 @@ int procuraJogo(int nl, ht_jogos *hashtable_jogos)
   jogo = ht_get_jogos(hashtable_jogos, nome);
   if (jogo == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-      return 0;
-    }
+    printf("%d Jogo inexistente.\n", nl);
+    return 0;
   }
   else
   {
@@ -592,10 +542,8 @@ int procuraEquipa(int nl, ht_equipas *hashtable_equipas)
   equipa = ht_get_equipas(hashtable_equipas, nome);
   if (equipa == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", nl);
-      return 0;
-    }
+    printf("%d Equipa inexistente.\n", nl);
+    return 0;
   }
   else
   {
@@ -625,10 +573,8 @@ int alteraScore(int nl, ht_jogos *hashtable_jogos, ht_equipas *hashtable_equipas
   jogo = ht_get_jogos(hashtable_jogos, nome);
   if (jogo == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-      return 0;
-    }
+    printf("%d Jogo inexistente.\n", nl);
+    return 0;
   }
   else
   {
@@ -637,34 +583,28 @@ int alteraScore(int nl, ht_jogos *hashtable_jogos, ht_equipas *hashtable_equipas
 
   if (jogo->score1 > jogo->score2)
   {
+    equipa = ht_get_equipas(hashtable_equipas, jogo->equipa1);
+    equipa->vitorias -= 1;
+    if (novo_score1 > novo_score2)
     {
       equipa = ht_get_equipas(hashtable_equipas, jogo->equipa1);
-      equipa->vitorias -= 1;
-      if (novo_score1 > novo_score2)
-      {
-        {
-          equipa = ht_get_equipas(hashtable_equipas, jogo->equipa1);
-          equipa->vitorias += 1;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (novo_score1 < novo_score2)
-      {
-        {
-          equipa = ht_get_equipas(hashtable_equipas, jogo->equipa2);
-          equipa->vitorias += 1;
-        }
-      }
-      else
-      {
-        
-      }
-
+      equipa->vitorias += 1;
     }
+    else
+    {
+      
+    }
+
+    if (novo_score1 < novo_score2)
+    {
+      equipa = ht_get_equipas(hashtable_equipas, jogo->equipa2);
+      equipa->vitorias += 1;
+    }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -673,34 +613,28 @@ int alteraScore(int nl, ht_jogos *hashtable_jogos, ht_equipas *hashtable_equipas
 
   if (jogo->score1 < jogo->score2)
   {
+    equipa = ht_get_equipas(hashtable_equipas, jogo->equipa2);
+    equipa->vitorias -= 1;
+    if (novo_score1 > novo_score2)
+    {
+      equipa = ht_get_equipas(hashtable_equipas, jogo->equipa1);
+      equipa->vitorias += 1;
+    }
+    else
+    {
+      
+    }
+
+    if (novo_score1 < novo_score2)
     {
       equipa = ht_get_equipas(hashtable_equipas, jogo->equipa2);
-      equipa->vitorias -= 1;
-      if (novo_score1 > novo_score2)
-      {
-        {
-          equipa = ht_get_equipas(hashtable_equipas, jogo->equipa1);
-          equipa->vitorias += 1;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (novo_score1 < novo_score2)
-      {
-        {
-          equipa = ht_get_equipas(hashtable_equipas, jogo->equipa2);
-          equipa->vitorias += 1;
-        }
-      }
-      else
-      {
-        
-      }
-
+      equipa->vitorias += 1;
     }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -727,10 +661,8 @@ int removeJogo(int nl, ht_jogos *hashtable_jogos, ht_equipas *hashtable_equipas)
   jogo = ht_get_jogos(hashtable_jogos, nome);
   if (jogo == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-      return 0;
-    }
+    printf("%d Jogo inexistente.\n", nl);
+    return 0;
   }
   else
   {
@@ -739,10 +671,8 @@ int removeJogo(int nl, ht_jogos *hashtable_jogos, ht_equipas *hashtable_equipas)
 
   if (jogo->score1 > jogo->score2)
   {
-    {
-      equipa = ht_get_equipas(hashtable_equipas, jogo->equipa1);
-      equipa->vitorias -= 1;
-    }
+    equipa = ht_get_equipas(hashtable_equipas, jogo->equipa1);
+    equipa->vitorias -= 1;
   }
   else
   {
@@ -751,10 +681,8 @@ int removeJogo(int nl, ht_jogos *hashtable_jogos, ht_equipas *hashtable_equipas)
 
   if (jogo->score1 < jogo->score2)
   {
-    {
-      equipa = ht_get_equipas(hashtable_equipas, jogo->equipa2);
-      equipa->vitorias -= 1;
-    }
+    equipa = ht_get_equipas(hashtable_equipas, jogo->equipa2);
+    equipa->vitorias -= 1;
   }
   else
   {

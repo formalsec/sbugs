@@ -56,10 +56,8 @@ void adiciona_novo_jogo()
   equipa2->nome = jogo->equipa2;
   if (list_jogo_lookup(jogos, jogo) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", nl);
-      return;
-    }
+    printf("%d Jogo existente.\n", nl);
+    return;
   }
   else
   {
@@ -69,10 +67,8 @@ void adiciona_novo_jogo()
   link_equipa1 = list_equipa_lookup(equipas, equipa1);
   if (link_equipa1 == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", nl);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", nl);
+    return;
   }
   else
   {
@@ -82,10 +78,8 @@ void adiciona_novo_jogo()
   link_equipa2 = list_equipa_lookup(equipas, equipa2);
   if (link_equipa2 == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", nl);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", nl);
+    return;
   }
   else
   {
@@ -95,17 +89,13 @@ void adiciona_novo_jogo()
   jogos = list_jogo_insert_end(jogos, jogo);
   if (jogo->score1 > jogo->score2)
   {
-    {
-      link_equipa1->equipa->total_vitorias++;
-    }
+    link_equipa1->equipa->total_vitorias++;
   }
   else
   {
     if (jogo->score2 > jogo->score1)
     {
-      {
-        link_equipa2->equipa->total_vitorias++;
-      }
+      link_equipa2->equipa->total_vitorias++;
     }
     else
     {
@@ -132,10 +122,8 @@ void adiciona_nova_equipa()
   free(buffer);
   if (list_equipa_lookup(equipas, equipa) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", nl);
-      return;
-    }
+    printf("%d Equipa existente.\n", nl);
+    return;
   }
   else
   {
@@ -167,10 +155,8 @@ void procura_equipa()
   e = list_equipa_lookup(equipas, equipa);
   if (e == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", nl);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", nl);
+    return;
   }
   else
   {
@@ -197,10 +183,8 @@ void procura_jogo()
   link = list_jogo_lookup(jogos, jogo);
   if (link == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", nl);
+    return;
   }
   else
   {
@@ -229,10 +213,8 @@ void apaga_jogo()
   j = list_jogo_lookup(jogos, jogo);
   if (j == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", nl);
+    return;
   }
   else
   {
@@ -241,21 +223,17 @@ void apaga_jogo()
 
   if (j->jogo->score1 > j->jogo->score2)
   {
-    {
-      equipa->nome = j->jogo->equipa1;
-      e = list_equipa_lookup(equipas, equipa);
-      e->equipa->total_vitorias--;
-    }
+    equipa->nome = j->jogo->equipa1;
+    e = list_equipa_lookup(equipas, equipa);
+    e->equipa->total_vitorias--;
   }
   else
   {
     if (j->jogo->score2 > j->jogo->score1)
     {
-      {
-        equipa->nome = j->jogo->equipa2;
-        e = list_equipa_lookup(equipas, equipa);
-        e->equipa->total_vitorias--;
-      }
+      equipa->nome = j->jogo->equipa2;
+      e = list_equipa_lookup(equipas, equipa);
+      e->equipa->total_vitorias--;
     }
     else
     {
@@ -288,10 +266,8 @@ void altera_pontuacao()
   j = list_jogo_lookup(jogos, jogo);
   if (j == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", nl);
+    return;
   }
   else
   {
@@ -300,21 +276,17 @@ void altera_pontuacao()
 
   if (j->jogo->score1 > j->jogo->score2)
   {
-    {
-      equipa->nome = j->jogo->equipa1;
-      e = list_equipa_lookup(equipas, equipa);
-      e->equipa->total_vitorias--;
-    }
+    equipa->nome = j->jogo->equipa1;
+    e = list_equipa_lookup(equipas, equipa);
+    e->equipa->total_vitorias--;
   }
   else
   {
     if (j->jogo->score2 > j->jogo->score1)
     {
-      {
-        equipa->nome = j->jogo->equipa2;
-        e = list_equipa_lookup(equipas, equipa);
-        e->equipa->total_vitorias--;
-      }
+      equipa->nome = j->jogo->equipa2;
+      e = list_equipa_lookup(equipas, equipa);
+      e->equipa->total_vitorias--;
     }
     else
     {
@@ -327,21 +299,17 @@ void altera_pontuacao()
   j->jogo->score2 = jogo->score2;
   if (j->jogo->score1 > j->jogo->score2)
   {
-    {
-      equipa->nome = j->jogo->equipa1;
-      e = list_equipa_lookup(equipas, equipa);
-      e->equipa->total_vitorias++;
-    }
+    equipa->nome = j->jogo->equipa1;
+    e = list_equipa_lookup(equipas, equipa);
+    e->equipa->total_vitorias++;
   }
   else
   {
     if (j->jogo->score2 > j->jogo->score1)
     {
-      {
-        equipa->nome = j->jogo->equipa2;
-        e = list_equipa_lookup(equipas, equipa);
-        e->equipa->total_vitorias++;
-      }
+      equipa->nome = j->jogo->equipa2;
+      e = list_equipa_lookup(equipas, equipa);
+      e->equipa->total_vitorias++;
     }
     else
     {
@@ -361,10 +329,8 @@ void equipas_venceram_mais()
   {
     if (e->equipa->total_vitorias > max)
     {
-      {
-        vencedoras = 0;
-        max = e->equipa->total_vitorias;
-      }
+      vencedoras = 0;
+      max = e->equipa->total_vitorias;
     }
     else
     {
@@ -373,9 +339,7 @@ void equipas_venceram_mais()
 
     if (e->equipa->total_vitorias == max)
     {
-      {
-        vencedoras = list_equipa_insert_sorted(vencedoras, e->equipa);
-      }
+      vencedoras = list_equipa_insert_sorted(vencedoras, e->equipa);
     }
     else
     {
@@ -387,10 +351,8 @@ void equipas_venceram_mais()
 
   if (vencedoras != 0)
   {
-    {
-      printf("%d Melhores %d\n", nl, max);
-      list_equipa_print(vencedoras, nl);
-    }
+    printf("%d Melhores %d\n", nl, max);
+    list_equipa_print(vencedoras, nl);
   }
   else
   {
@@ -403,9 +365,7 @@ void ler_comando(char comando)
 {
   if (comando == 'x')
   {
-    {
-      EOF;
-    }
+    EOF;
   }
   else
   {

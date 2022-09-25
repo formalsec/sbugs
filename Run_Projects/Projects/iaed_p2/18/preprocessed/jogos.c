@@ -18,9 +18,7 @@ char **separate(char *string, int separator)
   temp = malloc(separator * (sizeof(char *)));
   if (!temp)
   {
-    {
-      perror("separate Failed malloc");
-    }
+    perror("separate Failed malloc");
   }
   else
   {
@@ -32,9 +30,7 @@ char **separate(char *string, int separator)
     temp[j] = malloc(1024 * (sizeof(char)));
     if (!temp[j])
     {
-      {
-        perror("separate Failed malloc");
-      }
+      perror("separate Failed malloc");
     }
     else
     {
@@ -71,9 +67,7 @@ int test(char *n1, char *n2)
   {
     if (n1[i] == n2[i])
     {
-      {
-        comp++;
-      }
+      comp++;
     }
     else
     {
@@ -84,9 +78,7 @@ int test(char *n1, char *n2)
 
   if (comp == len)
   {
-    {
-      return 1;
-    }
+    return 1;
   }
   else
   {
@@ -100,9 +92,7 @@ int isGame(Game *game, char *name)
 {
   if (game == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -113,9 +103,7 @@ int isGame(Game *game, char *name)
   {
     if ((strcmp(game->name, name) == 0) && (test(name, game->name) == 1))
     {
-      {
-        return 1;
-      }
+      return 1;
     }
     else
     {
@@ -127,9 +115,7 @@ int isGame(Game *game, char *name)
 
   if ((strcmp(game->name, name) == 0) && (test(name, game->name) == 1))
   {
-    {
-      return 1;
-    }
+    return 1;
   }
   else
   {
@@ -149,9 +135,7 @@ Game *createGame(char *gameName, Team team1, Team team2, int scoreTeam1, int sco
   newGame->teamsScores = malloc(2 * (sizeof(int)));
   if ((((!newGame) || (!newGame->name)) || (!newGame->teams)) || (!newGame->teamsScores))
   {
-    {
-      perror("createGame Failed malloc");
-    }
+    perror("createGame Failed malloc");
   }
   else
   {
@@ -172,9 +156,7 @@ int addGame(Game *game, char *gameName, Team team1, Team team2, int scoreTeam1, 
   Game *new;
   if (isGame(game, gameName) == 1)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -202,33 +184,25 @@ void prepareGame(Game **gameList, Teams *teamsList, char *string, int commandNum
   t2 = searchTeam(teamsList, temp[2]);
   if (isGame(*gameList, temp[0]) == 1)
   {
-    {
-      fprintf(outputFile, "%d Jogo existente.\n", commandNumber);
-      test = 0;
-    }
+    fprintf(outputFile, "%d Jogo existente.\n", commandNumber);
+    test = 0;
   }
   else
   {
     if ((isTeam("NULL123", t1) == 1) || (isTeam("NULL123", t2) == 1))
     {
-      {
-        fprintf(outputFile, "%d Equipa inexistente.\n", commandNumber);
-        test = 0;
-      }
+      fprintf(outputFile, "%d Equipa inexistente.\n", commandNumber);
+      test = 0;
     }
     else
     {
       if ((*gameList) == 0)
       {
-        {
-          *gameList = createGame(temp[0], t1, t2, atoi(temp[3]), atoi(temp[4]));
-        }
+        *gameList = createGame(temp[0], t1, t2, atoi(temp[3]), atoi(temp[4]));
       }
       else
       {
-        {
-          addGame(*gameList, temp[0], t1, t2, atoi(temp[3]), atoi(temp[4]));
-        }
+        addGame(*gameList, temp[0], t1, t2, atoi(temp[3]), atoi(temp[4]));
       }
 
     }
@@ -237,29 +211,23 @@ void prepareGame(Game **gameList, Teams *teamsList, char *string, int commandNum
 
   if (test == 1)
   {
+    if (atoi(temp[3]) > atoi(temp[4]))
     {
-      if (atoi(temp[3]) > atoi(temp[4]))
+      addVictory(teamsList, temp[1]);
+    }
+    else
+    {
+      if (atoi(temp[3]) < atoi(temp[4]))
       {
-        {
-          addVictory(teamsList, temp[1]);
-        }
+        addVictory(teamsList, temp[2]);
       }
       else
       {
-        if (atoi(temp[3]) < atoi(temp[4]))
-        {
-          {
-            addVictory(teamsList, temp[2]);
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
     }
+
   }
   else
   {
@@ -274,9 +242,7 @@ void prepareGame(Game **gameList, Teams *teamsList, char *string, int commandNum
   free(temp);
   if (isTeam("NULL123", t1) == 1)
   {
-    {
-      freeTeam(t1);
-    }
+    freeTeam(t1);
   }
   else
   {
@@ -285,9 +251,7 @@ void prepareGame(Game **gameList, Teams *teamsList, char *string, int commandNum
 
   if (isTeam("NULL123", t2) == 1)
   {
-    {
-      freeTeam(t2);
-    }
+    freeTeam(t2);
   }
   else
   {
@@ -302,55 +266,45 @@ void changeScore(Game *game, Teams *teamsList, char *string, int commandNumber)
   char **temp = separate(string, 3);
   if (isGame(game, temp[0]) == 1)
   {
+    while (game->nextGame != 0)
     {
-      while (game->nextGame != 0)
+      if (test(game->name, temp[0]) == 1)
       {
-        if (test(game->name, temp[0]) == 1)
-        {
-          {
-            break;
-          }
-        }
-        else
-        {
-          
-        }
-
-        game = game->nextGame;
-      }
-
-      if ((game->teamsScores[0] < game->teamsScores[1]) && (atoi(temp[1]) > atoi(temp[2])))
-      {
-        {
-          removeVictory(teamsList, game->teams[0].name);
-          addVictory(teamsList, game->teams[1].name);
-        }
+        break;
       }
       else
       {
-        if ((game->teamsScores[0] > game->teamsScores[1]) && (atoi(temp[1]) < atoi(temp[2])))
-        {
-          {
-            removeVictory(teamsList, game->teams[1].name);
-            addVictory(teamsList, game->teams[0].name);
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      game->teamsScores[0] = atoi(temp[1]);
-      game->teamsScores[1] = atoi(temp[2]);
+      game = game->nextGame;
     }
+
+    if ((game->teamsScores[0] < game->teamsScores[1]) && (atoi(temp[1]) > atoi(temp[2])))
+    {
+      removeVictory(teamsList, game->teams[0].name);
+      addVictory(teamsList, game->teams[1].name);
+    }
+    else
+    {
+      if ((game->teamsScores[0] > game->teamsScores[1]) && (atoi(temp[1]) < atoi(temp[2])))
+      {
+        removeVictory(teamsList, game->teams[1].name);
+        addVictory(teamsList, game->teams[0].name);
+      }
+      else
+      {
+        
+      }
+
+    }
+
+    game->teamsScores[0] = atoi(temp[1]);
+    game->teamsScores[1] = atoi(temp[2]);
   }
   else
   {
-    {
-      fprintf(outputFile, "%d Jogo inexistente.\n", commandNumber);
-    }
+    fprintf(outputFile, "%d Jogo inexistente.\n", commandNumber);
   }
 
   for (i = 0; i < 3; i++)
@@ -369,80 +323,64 @@ Game *removeGame(Game *game, Teams *teamsList, char *gameName, int commandNumber
   move = game;
   if (isGame(move, gameName) == 1)
   {
+    while (move->nextGame != 0)
     {
-      while (move->nextGame != 0)
+      if (test(move->name, gameName) == 1)
       {
-        if (test(move->name, gameName) == 1)
-        {
-          {
-            break;
-          }
-        }
-        else
-        {
-          
-        }
-
-        temp = move;
-        move = move->nextGame;
-        comp++;
-      }
-
-      if (move->teamsScores[0] < move->teamsScores[1])
-      {
-        {
-          removeVictory(teamsList, move->teams[1].name);
-        }
+        break;
       }
       else
       {
-        if (move->teamsScores[0] > move->teamsScores[1])
-        {
-          {
-            removeVictory(teamsList, move->teams[0].name);
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      if (comp == 0)
+      temp = move;
+      move = move->nextGame;
+      comp++;
+    }
+
+    if (move->teamsScores[0] < move->teamsScores[1])
+    {
+      removeVictory(teamsList, move->teams[1].name);
+    }
+    else
+    {
+      if (move->teamsScores[0] > move->teamsScores[1])
       {
-        {
-          temp = game->nextGame;
-          freeGame(game);
-          return temp;
-        }
+        removeVictory(teamsList, move->teams[0].name);
       }
       else
       {
-        if (move->nextGame == 0)
-        {
-          {
-            temp->nextGame = 0;
-            freeGame(move);
-          }
-        }
-        else
-        {
-          {
-            temp->nextGame = move->nextGame;
-            freeGame(move);
-          }
-        }
-
+        
       }
 
     }
+
+    if (comp == 0)
+    {
+      temp = game->nextGame;
+      freeGame(game);
+      return temp;
+    }
+    else
+    {
+      if (move->nextGame == 0)
+      {
+        temp->nextGame = 0;
+        freeGame(move);
+      }
+      else
+      {
+        temp->nextGame = move->nextGame;
+        freeGame(move);
+      }
+
+    }
+
   }
   else
   {
-    {
-      fprintf(outputFile, "%d Jogo inexistente.\n", commandNumber);
-    }
+    fprintf(outputFile, "%d Jogo inexistente.\n", commandNumber);
   }
 
   return game;
@@ -468,31 +406,25 @@ void searchGame(Game *game, char *gameName, int commandNumber)
   name[len] = '\0';
   if (isGame(game, name) == 1)
   {
+    while (game->nextGame != 0)
     {
-      while (game->nextGame != 0)
+      if (test(game->name, name) == 1)
       {
-        if (test(game->name, name) == 1)
-        {
-          {
-            break;
-          }
-        }
-        else
-        {
-          
-        }
-
-        game = game->nextGame;
+        break;
+      }
+      else
+      {
+        
       }
 
-      printGame(game, commandNumber);
+      game = game->nextGame;
     }
+
+    printGame(game, commandNumber);
   }
   else
   {
-    {
-      fprintf(outputFile, "%d Jogo inexistente.\n", commandNumber);
-    }
+    fprintf(outputFile, "%d Jogo inexistente.\n", commandNumber);
   }
 
   free(name);
@@ -502,15 +434,13 @@ void printGames(Game *game, int commandNumber)
 {
   if (game != 0)
   {
+    while (game->nextGame != 0)
     {
-      while (game->nextGame != 0)
-      {
-        printGame(game, commandNumber);
-        game = game->nextGame;
-      }
-
       printGame(game, commandNumber);
+      game = game->nextGame;
     }
+
+    printGame(game, commandNumber);
   }
   else
   {

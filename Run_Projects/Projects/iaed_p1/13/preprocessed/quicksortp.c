@@ -50,11 +50,9 @@ int partition(struct Pr Pr[10000 + 1], int l, int r)
 
     if (i < j)
     {
-      {
-        Pr[10000] = Pr[i];
-        Pr[i] = Pr[j];
-        Pr[j] = Pr[10000];
-      }
+      Pr[10000] = Pr[i];
+      Pr[i] = Pr[j];
+      Pr[j] = Pr[10000];
     }
     else
     {

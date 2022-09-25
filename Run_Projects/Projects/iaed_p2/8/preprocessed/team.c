@@ -15,10 +15,8 @@ Team *team_new(const char *name)
   t = (Team *) malloc(sizeof(Team));
   if (errno > 0)
   {
-    {
-      perror("team_new: malloc");
-      exit(errno);
-    }
+    perror("team_new: malloc");
+    exit(errno);
   }
   else
   {
@@ -34,10 +32,8 @@ void team_free(Team *t)
 {
   if (t == 0)
   {
-    {
-      printf("%s: null pointer\n", "team_free");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "team_free");
+    exit(1);
   }
   else
   {
@@ -53,10 +49,8 @@ char *team_get_name(const Team *t)
 {
   if (t == 0)
   {
-    {
-      printf("%s: null pointer\n", "team_get_name");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "team_get_name");
+    exit(1);
   }
   else
   {
@@ -71,10 +65,8 @@ char *team_to_string(const Team *t, char *buf, int buf_size)
 {
   if (t == 0)
   {
-    {
-      printf("%s: null pointer\n", "team_to_string");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "team_to_string");
+    exit(1);
   }
   else
   {
@@ -91,10 +83,8 @@ void team_print(const Team *t)
   char buf[100];
   if (t == 0)
   {
-    {
-      printf("%s: null pointer\n", "team_print");
-      exit(1);
-    }
+    printf("%s: null pointer\n", "team_print");
+    exit(1);
   }
   else
   {

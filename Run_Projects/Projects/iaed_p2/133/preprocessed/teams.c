@@ -76,9 +76,7 @@ teams *get_team(teams **lst_teams, char *name)
   {
     if (strcmp(head->name, name) == 0)
     {
-      {
-        return head;
-      }
+      return head;
     }
     else
     {
@@ -101,9 +99,7 @@ int most_wins(teams **lst_teams)
     {
       if (head->games_w > best_res)
       {
-        {
-          best_res = head->games_w;
-        }
+        best_res = head->games_w;
       }
       else
       {

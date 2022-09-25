@@ -41,9 +41,7 @@ Equipa EsearchList(link head, char *nome)
   {
     if (strcmp(nome, p->equipa->nome) == 0)
     {
-      {
-        return p->equipa;
-      }
+      return p->equipa;
     }
     else
     {
@@ -122,23 +120,19 @@ Equipa *listaMaioresVitorias(link *hashEquipas, int *maior, int *count)
     {
       if (t->equipa->ganhos == (*maior))
       {
-        {
-          *count += 1;
-          lista = realloc(lista, (sizeof(Equipa)) * (*count));
-          lista[(*count) - 1] = t->equipa;
-        }
+        *count += 1;
+        lista = realloc(lista, (sizeof(Equipa)) * (*count));
+        lista[(*count) - 1] = t->equipa;
       }
       else
       {
         if (t->equipa->ganhos > (*maior))
         {
-          {
-            *maior = t->equipa->ganhos;
-            *count = 1;
-            free(lista);
-            lista = malloc(sizeof(Equipa));
-            lista[(*count) - 1] = t->equipa;
-          }
+          *maior = t->equipa->ganhos;
+          *count = 1;
+          free(lista);
+          lista = malloc(sizeof(Equipa));
+          lista[(*count) - 1] = t->equipa;
         }
         else
         {

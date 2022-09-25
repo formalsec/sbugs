@@ -198,15 +198,11 @@ void addStock(char array[][64])
   stock = atoi(array[1]);
   if (idp > lastP)
   {
-    {
-      printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idp);
-    }
+    printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idp);
   }
   else
   {
-    {
-      armazem[idp].qtd += stock;
-    }
+    armazem[idp].qtd += stock;
   }
 
 }
@@ -229,43 +225,33 @@ void addProdutoEncomenda(char array[][64])
   qtd = atoi(array[2]);
   if (naoExisteEncomenda(ide))
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
   }
   else
   {
     if (naoExisteProduto(idp))
     {
-      {
-        printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
-      }
+      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
     }
     else
     {
       if (naoExisteStock(idp, qtd))
       {
-        {
-          printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
-        }
+        printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
       }
       else
       {
         if (limitePeso(ide, idp, qtd))
         {
-          {
-            printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
-          }
+          printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
         }
         else
         {
-          {
-            pedidos[ide].counter++;
-            pedidos[ide].lista[pedidos[ide].counter] = armazem[idp];
-            pedidos[ide].lista[pedidos[ide].counter].qtd = qtd;
-            armazem[idp].qtd -= qtd;
-            pedidos[ide].peso += armazem[idp].peso * qtd;
-          }
+          pedidos[ide].counter++;
+          pedidos[ide].lista[pedidos[ide].counter] = armazem[idp];
+          pedidos[ide].lista[pedidos[ide].counter].qtd = qtd;
+          armazem[idp].qtd -= qtd;
+          pedidos[ide].peso += armazem[idp].peso * qtd;
         }
 
       }
@@ -295,9 +281,7 @@ int limitePeso(int x, int y, int z)
 {
   if (((armazem[y].peso * z) > 200) || (((armazem[y].peso * z) + pedidos[x].peso) > 200))
   {
-    {
-      return 1;
-    }
+    return 1;
   }
   else
   {
@@ -315,23 +299,17 @@ void removeStock(char array[][64])
   qtd = atoi(array[1]);
   if (naoExisteProduto(idp))
   {
-    {
-      printf("Impossivel remover stock do produto %d. Produto inexistente.\n", idp);
-    }
+    printf("Impossivel remover stock do produto %d. Produto inexistente.\n", idp);
   }
   else
   {
     if (naoExisteStock(idp, qtd))
     {
-      {
-        printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, idp);
-      }
+      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, idp);
     }
     else
     {
-      {
-        armazem[idp].qtd -= qtd;
-      }
+      armazem[idp].qtd -= qtd;
     }
 
   }
@@ -349,40 +327,32 @@ void removeProdutoEncomenda(char array[][64])
   idp = atoi(array[1]);
   if (naoExisteEncomenda(ide))
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
   }
   else
   {
     if (naoExisteProduto(idp))
     {
-      {
-        printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
-      }
+      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
     }
     else
     {
+      for (i = 0; i <= pedidos[ide].counter; i++)
       {
-        for (i = 0; i <= pedidos[ide].counter; i++)
+        if (pedidos[ide].lista[i].idp == idp)
         {
-          if (pedidos[ide].lista[i].idp == idp)
-          {
-            {
-              qtd = pedidos[ide].lista[i].qtd;
-              pedidos[ide].lista[i].qtd = 0;
-              armazem[idp].qtd += qtd;
-              pedidos[ide].peso -= armazem[idp].peso * qtd;
-            }
-          }
-          else
-          {
-            
-          }
-
+          qtd = pedidos[ide].lista[i].qtd;
+          pedidos[ide].lista[i].qtd = 0;
+          armazem[idp].qtd += qtd;
+          pedidos[ide].peso -= armazem[idp].peso * qtd;
+        }
+        else
+        {
+          
         }
 
       }
+
     }
 
   }
@@ -398,20 +368,16 @@ void calculaCustoEncomenda(char array[][64])
   precoE = 0;
   if (naoExisteEncomenda(ide))
   {
-    {
-      printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ide);
-    }
+    printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ide);
   }
   else
   {
+    for (i = 0; i <= pedidos[ide].counter; i++)
     {
-      for (i = 0; i <= pedidos[ide].counter; i++)
-      {
-        precoE += pedidos[ide].lista[i].preco * pedidos[ide].lista[i].qtd;
-      }
-
-      printf("Custo da encomenda %d %d.\n", ide, precoE);
+      precoE += pedidos[ide].lista[i].preco * pedidos[ide].lista[i].qtd;
     }
+
+    printf("Custo da encomenda %d %d.\n", ide, precoE);
   }
 
 }
@@ -426,34 +392,28 @@ void alteraPreco(char array[][64])
   preco = atoi(array[1]);
   if (naoExisteProduto(idp))
   {
-    {
-      printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idp);
-    }
+    printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idp);
   }
   else
   {
+    armazem[idp].preco = preco;
+    for (i = 0; i <= lastE; i++)
     {
-      armazem[idp].preco = preco;
-      for (i = 0; i <= lastE; i++)
+      for (j = 0; j <= pedidos[i].counter; j++)
       {
-        for (j = 0; j <= pedidos[i].counter; j++)
+        if (pedidos[i].lista[j].idp == idp)
         {
-          if (pedidos[i].lista[j].idp == idp)
-          {
-            {
-              pedidos[i].lista[j].preco = preco;
-            }
-          }
-          else
-          {
-            
-          }
-
+          pedidos[i].lista[j].preco = preco;
+        }
+        else
+        {
+          
         }
 
       }
 
     }
+
   }
 
 }
@@ -466,23 +426,17 @@ void E_lista(char array[][64])
   idp = atoi(array[1]);
   if (naoExisteEncomenda(ide))
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
   }
   else
   {
     if (naoExisteProduto(idp))
     {
-      {
-        printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
-      }
+      printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
     }
     else
     {
-      {
-        printf("%s %d.\n", armazem[idp].descricao, pedidos[ide].lista[idp].qtd);
-      }
+      printf("%s %d.\n", armazem[idp].descricao, pedidos[ide].lista[idp].qtd);
     }
 
   }

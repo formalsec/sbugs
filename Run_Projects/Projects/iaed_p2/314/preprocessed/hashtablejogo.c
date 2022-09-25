@@ -35,17 +35,13 @@ linkj insereinicioListj(linkj head, jogo *jg)
   j->jogo = jg;
   if (head == 0)
   {
-    {
-      j->next = 0;
-      head = j;
-    }
+    j->next = 0;
+    head = j;
   }
   else
   {
-    {
-      j->next = head;
-      head = j;
-    }
+    j->next = head;
+    head = j;
   }
 
   return head;
@@ -62,9 +58,7 @@ linkj removeItemListj(linkj head, jogo *jg)
   linkj tmp = head;
   if (tmp == 0)
   {
-    {
-      return head;
-    }
+    return head;
   }
   else
   {
@@ -73,13 +67,11 @@ linkj removeItemListj(linkj head, jogo *jg)
 
   if ((tmp != 0) && (strcmp(tmp->jogo->nome, jg->nome) == 0))
   {
-    {
-      free(tmp->jogo->nome);
-      free(tmp->jogo);
-      free(tmp);
-      head = head->next;
-      return head;
-    }
+    free(tmp->jogo->nome);
+    free(tmp->jogo);
+    free(tmp);
+    head = head->next;
+    return head;
   }
   else
   {
@@ -107,9 +99,7 @@ jogo *procuraListj(linkj head, char *nome)
   linkj tmp = head;
   if (tmp == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -123,9 +113,7 @@ jogo *procuraListj(linkj head, char *nome)
 
   if ((tmp != 0) && (strcmp(tmp->jogo->nome, nome) == 0))
   {
-    {
-      return tmp->jogo;
-    }
+    return tmp->jogo;
   }
   else
   {

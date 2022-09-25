@@ -39,79 +39,63 @@ void create_team(char *name, team *hash_table, int size, int counter, int *teams
   int i;
   if (hash_table[key].name == 0)
   {
+    hash_table[key].name = malloc((sizeof(char)) * name_size);
+    strcpy(hash_table[key].name, name);
+    (*teams_number)++;
+    if (max_games_won == 0)
     {
-      hash_table[key].name = malloc((sizeof(char)) * name_size);
-      strcpy(hash_table[key].name, name);
-      (*teams_number)++;
-      if (max_games_won == 0)
-      {
-        {
-          (*teams_with_max_games_won)++;
-        }
-      }
-      else
-      {
-        
-      }
-
+      (*teams_with_max_games_won)++;
     }
+    else
+    {
+      
+    }
+
   }
   else
   {
+    if (strcmp(hash_table[key].name, name) == 0)
     {
-      if (strcmp(hash_table[key].name, name) == 0)
+      printf("%d Equipa existente.\n", counter);
+    }
+    else
+    {
+      for (i = key + 1; i < size; i++)
       {
+        if ((hash_table[i].name != 0) && (strcmp(hash_table[i].name, name) == 0))
         {
           printf("%d Equipa existente.\n", counter);
+          break;
         }
-      }
-      else
-      {
+        else
         {
-          for (i = key + 1; i < size; i++)
+          if (hash_table[i].name == 0)
           {
-            if ((hash_table[i].name != 0) && (strcmp(hash_table[i].name, name) == 0))
+            hash_table[i].name = malloc((sizeof(char)) * name_size);
+            strcpy(hash_table[i].name, name);
+            (*teams_number)++;
+            if (max_games_won == 0)
             {
-              {
-                printf("%d Equipa existente.\n", counter);
-                break;
-              }
+              (*teams_with_max_games_won)++;
             }
             else
             {
-              if (hash_table[i].name == 0)
-              {
-                {
-                  hash_table[i].name = malloc((sizeof(char)) * name_size);
-                  strcpy(hash_table[i].name, name);
-                  (*teams_number)++;
-                  if (max_games_won == 0)
-                  {
-                    {
-                      (*teams_with_max_games_won)++;
-                    }
-                  }
-                  else
-                  {
-                    
-                  }
-
-                  break;
-                }
-              }
-              else
-              {
-                
-              }
-
+              
             }
 
+            break;
+          }
+          else
+          {
+            
           }
 
         }
+
       }
 
     }
+
   }
 
 }
@@ -122,31 +106,25 @@ int teams_search(char *name, team *hash_table, int size)
   int i = key;
   if ((hash_table[key].name != 0) && (strcmp(hash_table[key].name, name) == 0))
   {
-    {
-      return key;
-    }
+    return key;
   }
   else
   {
     if ((hash_table[key].name != 0) && (strcmp(hash_table[key].name, name) != 0))
     {
+      for (i = key + 1; i < size; i++)
       {
-        for (i = key + 1; i < size; i++)
+        if ((hash_table[i].name != 0) && (strcmp(hash_table[i].name, name) == 0))
         {
-          if ((hash_table[i].name != 0) && (strcmp(hash_table[i].name, name) == 0))
-          {
-            {
-              return i;
-            }
-          }
-          else
-          {
-            
-          }
-
+          return i;
+        }
+        else
+        {
+          
         }
 
       }
+
     }
     else
     {
@@ -162,15 +140,11 @@ void team_errors(int found, team *hash_table, int counter)
 {
   if (found != (-1))
   {
-    {
-      printf("%d %s %d\n", counter, hash_table[found].name, hash_table[found].games_won);
-    }
+    printf("%d %s %d\n", counter, hash_table[found].name, hash_table[found].games_won);
   }
   else
   {
-    {
-      printf("%d Equipa inexistente.\n", counter);
-    }
+    printf("%d Equipa inexistente.\n", counter);
   }
 
 }
@@ -181,37 +155,29 @@ void team_increase_games_won(char *name, team *hash_table, int size, int *max_ga
   hash_table[key].games_won++;
   if (hash_table[key].games_won == (*max_games_won))
   {
-    {
-      (*teams_with_max_games_won)++;
-    }
+    (*teams_with_max_games_won)++;
   }
   else
   {
     if (hash_table[key].games_won == (*second_max_games_won))
     {
-      {
-        (*teams_with_second_max_games_won)++;
-      }
+      (*teams_with_second_max_games_won)++;
     }
     else
     {
       if (hash_table[key].games_won > (*max_games_won))
       {
-        {
-          *second_max_games_won = *max_games_won;
-          *teams_with_second_max_games_won = *teams_with_max_games_won;
-          *max_games_won = hash_table[key].games_won;
-          *teams_with_max_games_won = 1;
-        }
+        *second_max_games_won = *max_games_won;
+        *teams_with_second_max_games_won = *teams_with_max_games_won;
+        *max_games_won = hash_table[key].games_won;
+        *teams_with_max_games_won = 1;
       }
       else
       {
         if (hash_table[key].games_won > (*second_max_games_won))
         {
-          {
-            *second_max_games_won = hash_table[key].games_won;
-            *teams_with_second_max_games_won = 1;
-          }
+          *second_max_games_won = hash_table[key].games_won;
+          *teams_with_second_max_games_won = 1;
         }
         else
         {
@@ -233,44 +199,28 @@ void team_decrease_games_won(char *name, team *hash_table, int size, int *max_ga
   int j = 0;
   if (hash_table[key].games_won == (*max_games_won))
   {
+    (*teams_with_max_games_won)--;
+    if ((*teams_with_max_games_won) == 0)
     {
-      (*teams_with_max_games_won)--;
-      if ((*teams_with_max_games_won) == 0)
+      *teams_with_max_games_won = *teams_with_second_max_games_won;
+      *max_games_won = *second_max_games_won;
+      *teams_with_second_max_games_won = 0;
+      *second_max_games_won = 0;
+      for (i = 0; (i < size) && (j < teams_number); i++)
       {
+        if (hash_table[i].name != 0)
         {
-          *teams_with_max_games_won = *teams_with_second_max_games_won;
-          *max_games_won = *second_max_games_won;
-          *teams_with_second_max_games_won = 0;
-          *second_max_games_won = 0;
-          for (i = 0; (i < size) && (j < teams_number); i++)
+          j++;
+          if ((hash_table[i].games_won > (*second_max_games_won)) && (hash_table[i].games_won < (*max_games_won)))
           {
-            if (hash_table[i].name != 0)
+            *teams_with_second_max_games_won = 1;
+            *second_max_games_won = hash_table[i].games_won;
+          }
+          else
+          {
+            if (hash_table[i].games_won == (*second_max_games_won))
             {
-              {
-                j++;
-                if ((hash_table[i].games_won > (*second_max_games_won)) && (hash_table[i].games_won < (*max_games_won)))
-                {
-                  {
-                    *teams_with_second_max_games_won = 1;
-                    *second_max_games_won = hash_table[i].games_won;
-                  }
-                }
-                else
-                {
-                  if (hash_table[i].games_won == (*second_max_games_won))
-                  {
-                    {
-                      (*teams_with_second_max_games_won)++;
-                    }
-                  }
-                  else
-                  {
-                    
-                  }
-
-                }
-
-              }
+              (*teams_with_second_max_games_won)++;
             }
             else
             {
@@ -280,53 +230,43 @@ void team_decrease_games_won(char *name, team *hash_table, int size, int *max_ga
           }
 
         }
-      }
-      else
-      {
-        
+        else
+        {
+          
+        }
+
       }
 
     }
+    else
+    {
+      
+    }
+
   }
   else
   {
     if (hash_table[key].games_won == (*second_max_games_won))
     {
+      (*teams_with_second_max_games_won)--;
+      if ((*teams_with_second_max_games_won) == 0)
       {
-        (*teams_with_second_max_games_won)--;
-        if ((*teams_with_second_max_games_won) == 0)
+        *second_max_games_won = 0;
+        for (i = 0; (i < size) && (j < teams_number); i++)
         {
+          if (hash_table[i].name != 0)
           {
-            *second_max_games_won = 0;
-            for (i = 0; (i < size) && (j < teams_number); i++)
+            j++;
+            if ((hash_table[i].games_won > (*second_max_games_won)) && (hash_table[i].games_won < (*max_games_won)))
             {
-              if (hash_table[i].name != 0)
+              *teams_with_second_max_games_won = 1;
+              *second_max_games_won = hash_table[i].games_won;
+            }
+            else
+            {
+              if (hash_table[i].games_won == (*second_max_games_won))
               {
-                {
-                  j++;
-                  if ((hash_table[i].games_won > (*second_max_games_won)) && (hash_table[i].games_won < (*max_games_won)))
-                  {
-                    {
-                      *teams_with_second_max_games_won = 1;
-                      *second_max_games_won = hash_table[i].games_won;
-                    }
-                  }
-                  else
-                  {
-                    if (hash_table[i].games_won == (*second_max_games_won))
-                    {
-                      {
-                        (*teams_with_second_max_games_won)++;
-                      }
-                    }
-                    else
-                    {
-                      
-                    }
-
-                  }
-
-                }
+                (*teams_with_second_max_games_won)++;
               }
               else
               {
@@ -336,13 +276,19 @@ void team_decrease_games_won(char *name, team *hash_table, int size, int *max_ga
             }
 
           }
-        }
-        else
-        {
-          
+          else
+          {
+            
+          }
+
         }
 
       }
+      else
+      {
+        
+      }
+
     }
     else
     {
@@ -365,12 +311,10 @@ void find_team_with_more_games_won(team *hash_table, int size, int teams_with_ma
   {
     if ((hash_table[i].name != 0) && (hash_table[i].games_won == max_games_won))
     {
-      {
-        teams_list[j].name = malloc((sizeof(char)) * 1024);
-        strcpy(teams_list[j].name, hash_table[i].name);
-        teams_list[j].games_won = hash_table[i].games_won;
-        j++;
-      }
+      teams_list[j].name = malloc((sizeof(char)) * 1024);
+      strcpy(teams_list[j].name, hash_table[i].name);
+      teams_list[j].games_won = hash_table[i].games_won;
+      j++;
     }
     else
     {
@@ -385,14 +329,12 @@ void find_team_with_more_games_won(team *hash_table, int size, int teams_with_ma
     {
       if (strcmp(teams_list[i].name, teams_list[j].name) > 0)
       {
-        {
-          strcpy(aux_name, teams_list[i].name);
-          aux_games_won = teams_list[i].games_won;
-          strcpy(teams_list[i].name, teams_list[j].name);
-          teams_list[i].games_won = teams_list[j].games_won;
-          strcpy(teams_list[j].name, aux_name);
-          teams_list[j].games_won = aux_games_won;
-        }
+        strcpy(aux_name, teams_list[i].name);
+        aux_games_won = teams_list[i].games_won;
+        strcpy(teams_list[i].name, teams_list[j].name);
+        teams_list[i].games_won = teams_list[j].games_won;
+        strcpy(teams_list[j].name, aux_name);
+        teams_list[j].games_won = aux_games_won;
       }
       else
       {
@@ -421,9 +363,7 @@ void free_teams(team *hash_table, int size)
   {
     if (hash_table[i].name != 0)
     {
-      {
-        free(hash_table[i].name);
-      }
+      free(hash_table[i].name);
     }
     else
     {
@@ -459,100 +399,84 @@ void create_game(char *name, char *team1, char *team2, int score1, int score2, g
   int z = 0;
   if ((hash_table[key].name != 0) && (strcmp(hash_table[key].name, name) == 0))
   {
-    {
-      printf("%d Jogo existente.\n", counter);
-      return;
-    }
+    printf("%d Jogo existente.\n", counter);
+    return;
   }
   else
   {
+    if (hash_table[key].name != 0)
     {
-      if (hash_table[key].name != 0)
+      for (i = key + 1; i < size; i++)
       {
+        if ((hash_table[i].name != 0) && (strcmp(hash_table[i].name, name) == 0))
         {
-          for (i = key + 1; i < size; i++)
-          {
-            if ((hash_table[i].name != 0) && (strcmp(hash_table[i].name, name) == 0))
-            {
-              {
-                printf("%d Jogo existente.\n", counter);
-                return;
-              }
-            }
-            else
-            {
-              if ((hash_table[i].name == 0) && (z == 0))
-              {
-                {
-                  key = i;
-                  z++;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-          }
-
-        }
-      }
-      else
-      {
-        
-      }
-
-      key_team1 = teams_search(team1, teams_hash_table, teams_size);
-      key_team2 = teams_search(team2, teams_hash_table, teams_size);
-      if ((key_team1 == (-1)) || (key_team2 == (-1)))
-      {
-        {
-          printf("%d Equipa inexistente.\n", counter);
+          printf("%d Jogo existente.\n", counter);
           return;
-        }
-      }
-      else
-      {
-        
-      }
-
-      hash_table[key].name = malloc((sizeof(char)) * length);
-      strcpy(hash_table[key].name, name);
-      length = strlen(team1) + 1;
-      hash_table[key].team1 = malloc((sizeof(char)) * length);
-      strcpy(hash_table[key].team1, team1);
-      length = strlen(team2) + 1;
-      hash_table[key].team2 = malloc((sizeof(char)) * length);
-      strcpy(hash_table[key].team2, team2);
-      hash_table[key].score1 = score1;
-      hash_table[key].score2 = score2;
-      hash_table[key].number = *number;
-      if (score1 > score2)
-      {
-        {
-          team_increase_games_won(team1, teams_hash_table, teams_size, max_games_won, teams_with_max_games_won, second_max_games_won, teams_with_second_max_games_won);
-        }
-      }
-      else
-      {
-        if (score2 > score1)
-        {
-          {
-            team_increase_games_won(team2, teams_hash_table, teams_size, max_games_won, teams_with_max_games_won, second_max_games_won, teams_with_second_max_games_won);
-          }
         }
         else
         {
-          
+          if ((hash_table[i].name == 0) && (z == 0))
+          {
+            key = i;
+            z++;
+          }
+          else
+          {
+            
+          }
+
         }
 
       }
 
-      (*games_number)++;
-      (*number)++;
     }
+    else
+    {
+      
+    }
+
+    key_team1 = teams_search(team1, teams_hash_table, teams_size);
+    key_team2 = teams_search(team2, teams_hash_table, teams_size);
+    if ((key_team1 == (-1)) || (key_team2 == (-1)))
+    {
+      printf("%d Equipa inexistente.\n", counter);
+      return;
+    }
+    else
+    {
+      
+    }
+
+    hash_table[key].name = malloc((sizeof(char)) * length);
+    strcpy(hash_table[key].name, name);
+    length = strlen(team1) + 1;
+    hash_table[key].team1 = malloc((sizeof(char)) * length);
+    strcpy(hash_table[key].team1, team1);
+    length = strlen(team2) + 1;
+    hash_table[key].team2 = malloc((sizeof(char)) * length);
+    strcpy(hash_table[key].team2, team2);
+    hash_table[key].score1 = score1;
+    hash_table[key].score2 = score2;
+    hash_table[key].number = *number;
+    if (score1 > score2)
+    {
+      team_increase_games_won(team1, teams_hash_table, teams_size, max_games_won, teams_with_max_games_won, second_max_games_won, teams_with_second_max_games_won);
+    }
+    else
+    {
+      if (score2 > score1)
+      {
+        team_increase_games_won(team2, teams_hash_table, teams_size, max_games_won, teams_with_max_games_won, second_max_games_won, teams_with_second_max_games_won);
+      }
+      else
+      {
+        
+      }
+
+    }
+
+    (*games_number)++;
+    (*number)++;
   }
 
 }
@@ -563,31 +487,25 @@ int games_search(char *name, game *hash_table, int size)
   int i = key;
   if ((hash_table[key].name != 0) && (strcmp(hash_table[key].name, name) == 0))
   {
-    {
-      return key;
-    }
+    return key;
   }
   else
   {
     if (((hash_table[key].name != 0) && (strcmp(hash_table[key].name, name) != 0)) || (hash_table[key].name == 0))
     {
+      for (i = key + 1; i < size; i++)
       {
-        for (i = key + 1; i < size; i++)
+        if ((hash_table[i].name != 0) && (strcmp(hash_table[i].name, name) == 0))
         {
-          if ((hash_table[i].name != 0) && (strcmp(hash_table[i].name, name) == 0))
-          {
-            {
-              return i;
-            }
-          }
-          else
-          {
-            
-          }
-
+          return i;
+        }
+        else
+        {
+          
         }
 
       }
+
     }
     else
     {
@@ -603,15 +521,11 @@ void game_errors(int found, game *hash_table, int counter)
 {
   if (found != (-1))
   {
-    {
-      printf("%d %s %s %s %d %d\n", counter, hash_table[found].name, hash_table[found].team1, hash_table[found].team2, hash_table[found].score1, hash_table[found].score2);
-    }
+    printf("%d %s %s %s %d %d\n", counter, hash_table[found].name, hash_table[found].team1, hash_table[found].team2, hash_table[found].score1, hash_table[found].score2);
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", counter);
-    }
+    printf("%d Jogo inexistente.\n", counter);
   }
 
 }
@@ -621,45 +535,37 @@ void remove_game(char *game_name, game *hash_table, int games_size, team *teams_
   int found = games_search(game_name, hash_table, games_size);
   if (found == (-1))
   {
-    {
-      printf("%d Jogo inexistente.\n", counter);
-    }
+    printf("%d Jogo inexistente.\n", counter);
   }
   else
   {
+    if (hash_table[found].score1 > hash_table[found].score2)
     {
-      if (hash_table[found].score1 > hash_table[found].score2)
+      team_decrease_games_won(hash_table[found].team1, teams_hash_table, teams_size, max_games_won, teams_with_max_games_won, second_max_games_won, teams_with_second_max_games_won, teams_number);
+    }
+    else
+    {
+      if (hash_table[found].score2 > hash_table[found].score1)
       {
-        {
-          team_decrease_games_won(hash_table[found].team1, teams_hash_table, teams_size, max_games_won, teams_with_max_games_won, second_max_games_won, teams_with_second_max_games_won, teams_number);
-        }
+        team_decrease_games_won(hash_table[found].team2, teams_hash_table, teams_size, max_games_won, teams_with_max_games_won, second_max_games_won, teams_with_second_max_games_won, teams_number);
       }
       else
       {
-        if (hash_table[found].score2 > hash_table[found].score1)
-        {
-          {
-            team_decrease_games_won(hash_table[found].team2, teams_hash_table, teams_size, max_games_won, teams_with_max_games_won, second_max_games_won, teams_with_second_max_games_won, teams_number);
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      free(hash_table[found].name);
-      free(hash_table[found].team1);
-      free(hash_table[found].team2);
-      hash_table[found].name = 0;
-      hash_table[found].team1 = 0;
-      hash_table[found].team2 = 0;
-      hash_table[found].score1 = 0;
-      hash_table[found].score2 = 0;
-      hash_table[found].number = 0;
-      (*games_number)--;
     }
+
+    free(hash_table[found].name);
+    free(hash_table[found].team1);
+    free(hash_table[found].team2);
+    hash_table[found].name = 0;
+    hash_table[found].team1 = 0;
+    hash_table[found].team2 = 0;
+    hash_table[found].score1 = 0;
+    hash_table[found].score2 = 0;
+    hash_table[found].number = 0;
+    (*games_number)--;
   }
 
 }
@@ -669,96 +575,45 @@ void change_score(char *game_name, int team1_score, int team2_score, game *hash_
   int found = games_search(game_name, hash_table, games_size);
   if (found == (-1))
   {
-    {
-      printf("%d Jogo inexistente.\n", counter);
-    }
+    printf("%d Jogo inexistente.\n", counter);
   }
   else
   {
+    if (hash_table[found].score1 > hash_table[found].score2)
     {
-      if (hash_table[found].score1 > hash_table[found].score2)
+      if (team1_score < team2_score)
       {
-        {
-          if (team1_score < team2_score)
-          {
-            {
-              team_decrease_games_won(hash_table[found].team1, teams_hash_table, teams_size, max_games_won, teams_with_max_games_won, second_max_games_won, teams_with_second_max_games_won, teams_number);
-              team_increase_games_won(hash_table[found].team2, teams_hash_table, teams_size, max_games_won, teams_with_max_games_won, second_max_games_won, teams_with_second_max_games_won);
-            }
-          }
-          else
-          {
-            if (team1_score == team2_score)
-            {
-              {
-                team_decrease_games_won(hash_table[found].team1, teams_hash_table, teams_size, max_games_won, teams_with_max_games_won, second_max_games_won, teams_with_second_max_games_won, teams_number);
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-        }
+        team_decrease_games_won(hash_table[found].team1, teams_hash_table, teams_size, max_games_won, teams_with_max_games_won, second_max_games_won, teams_with_second_max_games_won, teams_number);
+        team_increase_games_won(hash_table[found].team2, teams_hash_table, teams_size, max_games_won, teams_with_max_games_won, second_max_games_won, teams_with_second_max_games_won);
       }
       else
       {
-        if (hash_table[found].score2 > hash_table[found].score1)
+        if (team1_score == team2_score)
         {
-          {
-            if (team2_score < team1_score)
-            {
-              {
-                team_decrease_games_won(hash_table[found].team2, teams_hash_table, teams_size, max_games_won, teams_with_max_games_won, second_max_games_won, teams_with_second_max_games_won, teams_number);
-                team_increase_games_won(hash_table[found].team1, teams_hash_table, teams_size, max_games_won, teams_with_max_games_won, second_max_games_won, teams_with_second_max_games_won);
-              }
-            }
-            else
-            {
-              if (team1_score == team2_score)
-              {
-                {
-                  team_decrease_games_won(hash_table[found].team2, teams_hash_table, teams_size, max_games_won, teams_with_max_games_won, second_max_games_won, teams_with_second_max_games_won, teams_number);
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-          }
+          team_decrease_games_won(hash_table[found].team1, teams_hash_table, teams_size, max_games_won, teams_with_max_games_won, second_max_games_won, teams_with_second_max_games_won, teams_number);
         }
         else
         {
-          if (hash_table[found].score2 == hash_table[found].score1)
+          
+        }
+
+      }
+
+    }
+    else
+    {
+      if (hash_table[found].score2 > hash_table[found].score1)
+      {
+        if (team2_score < team1_score)
+        {
+          team_decrease_games_won(hash_table[found].team2, teams_hash_table, teams_size, max_games_won, teams_with_max_games_won, second_max_games_won, teams_with_second_max_games_won, teams_number);
+          team_increase_games_won(hash_table[found].team1, teams_hash_table, teams_size, max_games_won, teams_with_max_games_won, second_max_games_won, teams_with_second_max_games_won);
+        }
+        else
+        {
+          if (team1_score == team2_score)
           {
-            {
-              if (team1_score > team2_score)
-              {
-                {
-                  team_increase_games_won(hash_table[found].team1, teams_hash_table, teams_size, max_games_won, teams_with_max_games_won, second_max_games_won, teams_with_second_max_games_won);
-                }
-              }
-              else
-              {
-                if (team2_score > team1_score)
-                {
-                  {
-                    team_increase_games_won(hash_table[found].team2, teams_hash_table, teams_size, max_games_won, teams_with_max_games_won, second_max_games_won, teams_with_second_max_games_won);
-                  }
-                }
-                else
-                {
-                  
-                }
-
-              }
-
-            }
+            team_decrease_games_won(hash_table[found].team2, teams_hash_table, teams_size, max_games_won, teams_with_max_games_won, second_max_games_won, teams_with_second_max_games_won, teams_number);
           }
           else
           {
@@ -768,10 +623,39 @@ void change_score(char *game_name, int team1_score, int team2_score, game *hash_
         }
 
       }
+      else
+      {
+        if (hash_table[found].score2 == hash_table[found].score1)
+        {
+          if (team1_score > team2_score)
+          {
+            team_increase_games_won(hash_table[found].team1, teams_hash_table, teams_size, max_games_won, teams_with_max_games_won, second_max_games_won, teams_with_second_max_games_won);
+          }
+          else
+          {
+            if (team2_score > team1_score)
+            {
+              team_increase_games_won(hash_table[found].team2, teams_hash_table, teams_size, max_games_won, teams_with_max_games_won, second_max_games_won, teams_with_second_max_games_won);
+            }
+            else
+            {
+              
+            }
 
-      hash_table[found].score1 = team1_score;
-      hash_table[found].score2 = team2_score;
+          }
+
+        }
+        else
+        {
+          
+        }
+
+      }
+
     }
+
+    hash_table[found].score1 = team1_score;
+    hash_table[found].score2 = team2_score;
   }
 
 }
@@ -792,21 +676,19 @@ void list_all_the_games(game *hash_table, int size, int games_number, int counte
   {
     if (hash_table[i].name != 0)
     {
-      {
-        length = strlen(hash_table[i].name) + 1;
-        games_list[j].name = malloc((sizeof(char)) * length);
-        strcpy(games_list[j].name, hash_table[i].name);
-        length = strlen(hash_table[i].team1) + 1;
-        games_list[j].team1 = malloc((sizeof(char)) * length);
-        strcpy(games_list[j].team1, hash_table[i].team1);
-        length = strlen(hash_table[i].team2) + 1;
-        games_list[j].team2 = malloc((sizeof(char)) * length);
-        strcpy(games_list[j].team2, hash_table[i].team2);
-        games_list[j].score1 = hash_table[i].score1;
-        games_list[j].score2 = hash_table[i].score2;
-        games_list[j].number = hash_table[i].number;
-        j++;
-      }
+      length = strlen(hash_table[i].name) + 1;
+      games_list[j].name = malloc((sizeof(char)) * length);
+      strcpy(games_list[j].name, hash_table[i].name);
+      length = strlen(hash_table[i].team1) + 1;
+      games_list[j].team1 = malloc((sizeof(char)) * length);
+      strcpy(games_list[j].team1, hash_table[i].team1);
+      length = strlen(hash_table[i].team2) + 1;
+      games_list[j].team2 = malloc((sizeof(char)) * length);
+      strcpy(games_list[j].team2, hash_table[i].team2);
+      games_list[j].score1 = hash_table[i].score1;
+      games_list[j].score2 = hash_table[i].score2;
+      games_list[j].number = hash_table[i].number;
+      j++;
     }
     else
     {
@@ -821,44 +703,42 @@ void list_all_the_games(game *hash_table, int size, int games_number, int counte
     {
       if (games_list[i].number > games_list[j].number)
       {
-        {
-          length = strlen(games_list[i].name) + 1;
-          aux_name = malloc((sizeof(char)) * length);
-          strcpy(aux_name, games_list[i].name);
-          length = strlen(games_list[i].team1) + 1;
-          aux_team1 = malloc((sizeof(char)) * length);
-          strcpy(aux_team1, games_list[i].team1);
-          length = strlen(games_list[i].team2) + 1;
-          aux_team2 = malloc((sizeof(char)) * length);
-          strcpy(aux_team2, games_list[i].team2);
-          aux_score1 = games_list[i].score1;
-          aux_score2 = games_list[i].score2;
-          aux_number = games_list[i].number;
-          length = strlen(games_list[j].name) + 1;
-          games_list[i].name = malloc((sizeof(char)) * length);
-          strcpy(games_list[i].name, games_list[j].name);
-          length = strlen(games_list[j].team1) + 1;
-          games_list[i].team1 = malloc((sizeof(char)) * length);
-          strcpy(games_list[i].team1, games_list[j].team1);
-          length = strlen(games_list[j].team2) + 1;
-          games_list[i].team2 = malloc((sizeof(char)) * length);
-          strcpy(games_list[i].team2, games_list[j].team2);
-          games_list[i].score1 = games_list[j].score1;
-          games_list[i].score2 = games_list[j].score2;
-          games_list[i].number = games_list[j].number;
-          length = strlen(aux_name) + 1;
-          games_list[j].name = malloc((sizeof(char)) * length);
-          strcpy(games_list[j].name, aux_name);
-          length = strlen(aux_team1) + 1;
-          games_list[j].team1 = malloc((sizeof(char)) * length);
-          strcpy(games_list[j].team1, aux_team1);
-          length = strlen(aux_team2) + 1;
-          games_list[j].team2 = malloc((sizeof(char)) * length);
-          strcpy(games_list[j].team2, aux_team2);
-          games_list[j].score1 = aux_score1;
-          games_list[j].score2 = aux_score2;
-          games_list[j].number = aux_number;
-        }
+        length = strlen(games_list[i].name) + 1;
+        aux_name = malloc((sizeof(char)) * length);
+        strcpy(aux_name, games_list[i].name);
+        length = strlen(games_list[i].team1) + 1;
+        aux_team1 = malloc((sizeof(char)) * length);
+        strcpy(aux_team1, games_list[i].team1);
+        length = strlen(games_list[i].team2) + 1;
+        aux_team2 = malloc((sizeof(char)) * length);
+        strcpy(aux_team2, games_list[i].team2);
+        aux_score1 = games_list[i].score1;
+        aux_score2 = games_list[i].score2;
+        aux_number = games_list[i].number;
+        length = strlen(games_list[j].name) + 1;
+        games_list[i].name = malloc((sizeof(char)) * length);
+        strcpy(games_list[i].name, games_list[j].name);
+        length = strlen(games_list[j].team1) + 1;
+        games_list[i].team1 = malloc((sizeof(char)) * length);
+        strcpy(games_list[i].team1, games_list[j].team1);
+        length = strlen(games_list[j].team2) + 1;
+        games_list[i].team2 = malloc((sizeof(char)) * length);
+        strcpy(games_list[i].team2, games_list[j].team2);
+        games_list[i].score1 = games_list[j].score1;
+        games_list[i].score2 = games_list[j].score2;
+        games_list[i].number = games_list[j].number;
+        length = strlen(aux_name) + 1;
+        games_list[j].name = malloc((sizeof(char)) * length);
+        strcpy(games_list[j].name, aux_name);
+        length = strlen(aux_team1) + 1;
+        games_list[j].team1 = malloc((sizeof(char)) * length);
+        strcpy(games_list[j].team1, aux_team1);
+        length = strlen(aux_team2) + 1;
+        games_list[j].team2 = malloc((sizeof(char)) * length);
+        strcpy(games_list[j].team2, aux_team2);
+        games_list[j].score1 = aux_score1;
+        games_list[j].score2 = aux_score2;
+        games_list[j].number = aux_number;
       }
       else
       {
@@ -885,11 +765,9 @@ void free_games(game *hash_table, int size)
   {
     if (hash_table[i].name != 0)
     {
-      {
-        free(hash_table[i].name);
-        free(hash_table[i].team1);
-        free(hash_table[i].team2);
-      }
+      free(hash_table[i].name);
+      free(hash_table[i].team1);
+      free(hash_table[i].team2);
     }
     else
     {

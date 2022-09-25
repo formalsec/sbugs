@@ -46,21 +46,17 @@ void adiciona_lista_jogo(Lista_jogo *lista, Jogo *jogo)
   node->jogo = jogo;
   if ((lista->head == 0) && (lista->tail == 0))
   {
-    {
-      node->previous = 0;
-      node->next = 0;
-      lista->head = node;
-      lista->tail = node;
-    }
+    node->previous = 0;
+    node->next = 0;
+    lista->head = node;
+    lista->tail = node;
   }
   else
   {
-    {
-      node->previous = lista->tail;
-      node->next = 0;
-      lista->tail->next = node;
-      lista->tail = node;
-    }
+    node->previous = lista->tail;
+    node->next = 0;
+    lista->tail->next = node;
+    lista->tail = node;
   }
 
 }
@@ -73,17 +69,13 @@ Node_jogo *procura_lista_jogo(Lista_jogo *lista, char *jogo)
   {
     if (strcmp(node_inicio->jogo->nome, jogo) == 0)
     {
-      {
-        return node_inicio;
-      }
+      return node_inicio;
     }
     else
     {
       if (strcmp(node_fim->jogo->nome, jogo) == 0)
       {
-        {
-          return node_fim;
-        }
+        return node_fim;
       }
       else
       {
@@ -98,19 +90,15 @@ Node_jogo *procura_lista_jogo(Lista_jogo *lista, char *jogo)
 
   if ((node_inicio == node_fim) && (node_inicio != 0))
   {
+    if (strcmp(node_inicio->jogo->nome, jogo) == 0)
     {
-      if (strcmp(node_inicio->jogo->nome, jogo) == 0)
-      {
-        {
-          return node_inicio;
-        }
-      }
-      else
-      {
-        
-      }
-
+      return node_inicio;
     }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -126,48 +114,36 @@ void remove_lista_jogo(Lista_jogo *lista, Jogo *jogo)
   node = procura_lista_jogo(lista, jogo->nome);
   if (node != 0)
   {
+    if ((node == lista->head) && (node == lista->tail))
     {
-      if ((node == lista->head) && (node == lista->tail))
+      lista->head = 0;
+      lista->tail = 0;
+    }
+    else
+    {
+      if (node == lista->head)
       {
-        {
-          lista->head = 0;
-          lista->tail = 0;
-        }
+        node->next->previous = 0;
+        lista->head = node->next;
       }
       else
       {
+        if (node == lista->tail)
         {
-          if (node == lista->head)
-          {
-            {
-              node->next->previous = 0;
-              lista->head = node->next;
-            }
-          }
-          else
-          {
-            if (node == lista->tail)
-            {
-              {
-                node->previous->next = 0;
-                lista->tail = node->previous;
-              }
-            }
-            else
-            {
-              {
-                node->previous->next = node->next;
-                node->next->previous = node->previous;
-              }
-            }
-
-          }
-
+          node->previous->next = 0;
+          lista->tail = node->previous;
         }
+        else
+        {
+          node->previous->next = node->next;
+          node->next->previous = node->previous;
+        }
+
       }
 
-      free(node);
     }
+
+    free(node);
   }
   else
   {
@@ -221,9 +197,7 @@ void adiciona_hashtable_jogo(Hashtable_jogo *hashtable, Jogo *jogo)
   int i = hash_jogo(jogo->nome, hashtable->tamanho);
   if ((*(hashtable->tabela + i)) == 0)
   {
-    {
-      *(hashtable->tabela + i) = cria_lista_jogo();
-    }
+    *(hashtable->tabela + i) = cria_lista_jogo();
   }
   else
   {
@@ -238,20 +212,16 @@ Jogo *procura_hashtable_jogo(Hashtable_jogo *hashtable, char *chave)
   int i = hash_jogo(chave, hashtable->tamanho);
   if ((*(hashtable->tabela + i)) != 0)
   {
+    Node_jogo *node = procura_lista_jogo(*(hashtable->tabela + i), chave);
+    if (node != 0)
     {
-      Node_jogo *node = procura_lista_jogo(*(hashtable->tabela + i), chave);
-      if (node != 0)
-      {
-        {
-          return node->jogo;
-        }
-      }
-      else
-      {
-        
-      }
-
+      return node->jogo;
     }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -267,9 +237,7 @@ Jogo *remove_hashtable_jogo(Hashtable_jogo *hashtable, char *chave)
   Jogo *jogo = procura_lista_jogo(*(hashtable->tabela + i), chave)->jogo;
   if (jogo != 0)
   {
-    {
-      remove_lista_jogo(*(hashtable->tabela + i), jogo);
-    }
+    remove_lista_jogo(*(hashtable->tabela + i), jogo);
   }
   else
   {
@@ -278,10 +246,8 @@ Jogo *remove_hashtable_jogo(Hashtable_jogo *hashtable, char *chave)
 
   if ((*(hashtable->tabela + i))->head == 0)
   {
-    {
-      free(*(hashtable->tabela + i));
-      *(hashtable->tabela + i) = 0;
-    }
+    free(*(hashtable->tabela + i));
+    *(hashtable->tabela + i) = 0;
   }
   else
   {
@@ -298,18 +264,16 @@ void liberta_hashtable_jogo(Hashtable_jogo *hashtable)
   {
     if ((*(hashtable->tabela + i)) != 0)
     {
+      Node_jogo *node = (*(hashtable->tabela + i))->head;
+      Node_jogo *aux;
+      while (node != 0)
       {
-        Node_jogo *node = (*(hashtable->tabela + i))->head;
-        Node_jogo *aux;
-        while (node != 0)
-        {
-          aux = node->next;
-          free(node);
-          node = aux;
-        }
-
-        free(*(hashtable->tabela + i));
+        aux = node->next;
+        free(node);
+        node = aux;
       }
+
+      free(*(hashtable->tabela + i));
     }
     else
     {

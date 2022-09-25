@@ -38,21 +38,17 @@ void adiciona_lista_equipa(Lista_equipa *lista, Equipa *equipa)
   node->equipa = equipa;
   if ((lista->head == 0) && (lista->tail == 0))
   {
-    {
-      node->previous = 0;
-      node->next = 0;
-      lista->head = node;
-      lista->tail = node;
-    }
+    node->previous = 0;
+    node->next = 0;
+    lista->head = node;
+    lista->tail = node;
   }
   else
   {
-    {
-      node->previous = lista->tail;
-      node->next = 0;
-      lista->tail->next = node;
-      lista->tail = node;
-    }
+    node->previous = lista->tail;
+    node->next = 0;
+    lista->tail->next = node;
+    lista->tail = node;
   }
 
 }
@@ -65,17 +61,13 @@ Equipa *procura_lista_equipa(Lista_equipa *lista, char *equipa)
   {
     if (strcmp(node_inicio->equipa->nome, equipa) == 0)
     {
-      {
-        return node_inicio->equipa;
-      }
+      return node_inicio->equipa;
     }
     else
     {
       if (strcmp(node_fim->equipa->nome, equipa) == 0)
       {
-        {
-          return node_fim->equipa;
-        }
+        return node_fim->equipa;
       }
       else
       {
@@ -90,19 +82,15 @@ Equipa *procura_lista_equipa(Lista_equipa *lista, char *equipa)
 
   if ((node_inicio == node_fim) && (node_inicio != 0))
   {
+    if (strcmp(node_inicio->equipa->nome, equipa) == 0)
     {
-      if (strcmp(node_inicio->equipa->nome, equipa) == 0)
-      {
-        {
-          return node_inicio->equipa;
-        }
-      }
-      else
-      {
-        
-      }
-
+      return node_inicio->equipa;
     }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -146,9 +134,7 @@ void adiciona_hashtable_equipa(Hashtable_equipa *hashtable, Equipa *equipa)
   int i = hash_equipa(equipa->nome, hashtable->tamanho);
   if ((*(hashtable->tabela + i)) == 0)
   {
-    {
-      *(hashtable->tabela + i) = cria_lista_equipa();
-    }
+    *(hashtable->tabela + i) = cria_lista_equipa();
   }
   else
   {
@@ -163,10 +149,8 @@ Equipa *procura_hashtable_equipa(Hashtable_equipa *hashtable, char *chave)
   int i = hash_equipa(chave, hashtable->tamanho);
   if ((*(hashtable->tabela + i)) != 0)
   {
-    {
-      Equipa *equipa = procura_lista_equipa(*(hashtable->tabela + i), chave);
-      return equipa;
-    }
+    Equipa *equipa = procura_lista_equipa(*(hashtable->tabela + i), chave);
+    return equipa;
   }
   else
   {
@@ -187,131 +171,107 @@ Tabela_equipas *maximas_vitorias_equipa(Hashtable_equipa *hashtable)
   {
     if ((*(hashtable->tabela + i)) != 0)
     {
+      Node_equipa *node_inicio = (*(hashtable->tabela + i))->head;
+      Node_equipa *node_fim = (*(hashtable->tabela + i))->tail;
+      while ((node_inicio != node_fim) && (node_fim->next != node_inicio))
       {
-        Node_equipa *node_inicio = (*(hashtable->tabela + i))->head;
-        Node_equipa *node_fim = (*(hashtable->tabela + i))->tail;
-        while ((node_inicio != node_fim) && (node_fim->next != node_inicio))
+        if ((node_inicio->equipa->vitorias > node_fim->equipa->vitorias) || (node_inicio->equipa->vitorias < node_fim->equipa->vitorias))
         {
-          if ((node_inicio->equipa->vitorias > node_fim->equipa->vitorias) || (node_inicio->equipa->vitorias < node_fim->equipa->vitorias))
+          Node_equipa *node;
+          if (node_inicio->equipa->vitorias > node_fim->equipa->vitorias)
           {
-            {
-              Node_equipa *node;
-              if (node_inicio->equipa->vitorias > node_fim->equipa->vitorias)
-              {
-                {
-                  node = node_inicio;
-                }
-              }
-              else
-              {
-                {
-                  node = node_fim;
-                }
-              }
-
-              if (node->equipa->vitorias > max_vitorias)
-              {
-                {
-                  n_equipas = 1;
-                  max_vitorias = node->equipa->vitorias;
-                  equipas = (Equipa **) realloc(equipas, sizeof(Equipa *));
-                  *equipas = node->equipa;
-                }
-              }
-              else
-              {
-                if (node->equipa->vitorias == max_vitorias)
-                {
-                  {
-                    n_equipas++;
-                    equipas = (Equipa **) realloc(equipas, n_equipas * (sizeof(Equipa *)));
-                    *(equipas + (n_equipas - 1)) = node->equipa;
-                  }
-                }
-                else
-                {
-                  
-                }
-
-              }
-
-            }
+            node = node_inicio;
           }
           else
           {
-            {
-              if (node_inicio->equipa->vitorias > max_vitorias)
-              {
-                {
-                  n_equipas = 2;
-                  max_vitorias = node_inicio->equipa->vitorias;
-                  equipas = (Equipa **) realloc(equipas, 2 * (sizeof(Equipa *)));
-                  *equipas = node_inicio->equipa;
-                  *(equipas + 1) = node_fim->equipa;
-                }
-              }
-              else
-              {
-                if (node_inicio->equipa->vitorias == max_vitorias)
-                {
-                  {
-                    n_equipas += 2;
-                    equipas = (Equipa **) realloc(equipas, n_equipas * (sizeof(Equipa *)));
-                    *(equipas + ((n_equipas - 1) - 1)) = node_inicio->equipa;
-                    *(equipas + (n_equipas - 1)) = node_fim->equipa;
-                  }
-                }
-                else
-                {
-                  
-                }
-
-              }
-
-            }
+            node = node_fim;
           }
 
-          node_inicio = node_inicio->next;
-          node_fim = node_fim->previous;
-        }
-
-        if ((node_inicio == node_fim) && (node_inicio != 0))
-        {
+          if (node->equipa->vitorias > max_vitorias)
           {
-            if (node_inicio->equipa->vitorias > max_vitorias)
+            n_equipas = 1;
+            max_vitorias = node->equipa->vitorias;
+            equipas = (Equipa **) realloc(equipas, sizeof(Equipa *));
+            *equipas = node->equipa;
+          }
+          else
+          {
+            if (node->equipa->vitorias == max_vitorias)
             {
-              {
-                n_equipas = 1;
-                max_vitorias = node_inicio->equipa->vitorias;
-                equipas = (Equipa **) realloc(equipas, sizeof(Equipa *));
-                *equipas = node_inicio->equipa;
-              }
+              n_equipas++;
+              equipas = (Equipa **) realloc(equipas, n_equipas * (sizeof(Equipa *)));
+              *(equipas + (n_equipas - 1)) = node->equipa;
             }
             else
             {
-              if (node_inicio->equipa->vitorias == max_vitorias)
-              {
-                {
-                  n_equipas++;
-                  equipas = (Equipa **) realloc(equipas, n_equipas * (sizeof(Equipa *)));
-                  *(equipas + (n_equipas - 1)) = node_inicio->equipa;
-                }
-              }
-              else
-              {
-                
-              }
-
+              
             }
 
           }
+
         }
         else
         {
-          
+          if (node_inicio->equipa->vitorias > max_vitorias)
+          {
+            n_equipas = 2;
+            max_vitorias = node_inicio->equipa->vitorias;
+            equipas = (Equipa **) realloc(equipas, 2 * (sizeof(Equipa *)));
+            *equipas = node_inicio->equipa;
+            *(equipas + 1) = node_fim->equipa;
+          }
+          else
+          {
+            if (node_inicio->equipa->vitorias == max_vitorias)
+            {
+              n_equipas += 2;
+              equipas = (Equipa **) realloc(equipas, n_equipas * (sizeof(Equipa *)));
+              *(equipas + ((n_equipas - 1) - 1)) = node_inicio->equipa;
+              *(equipas + (n_equipas - 1)) = node_fim->equipa;
+            }
+            else
+            {
+              
+            }
+
+          }
+
+        }
+
+        node_inicio = node_inicio->next;
+        node_fim = node_fim->previous;
+      }
+
+      if ((node_inicio == node_fim) && (node_inicio != 0))
+      {
+        if (node_inicio->equipa->vitorias > max_vitorias)
+        {
+          n_equipas = 1;
+          max_vitorias = node_inicio->equipa->vitorias;
+          equipas = (Equipa **) realloc(equipas, sizeof(Equipa *));
+          *equipas = node_inicio->equipa;
+        }
+        else
+        {
+          if (node_inicio->equipa->vitorias == max_vitorias)
+          {
+            n_equipas++;
+            equipas = (Equipa **) realloc(equipas, n_equipas * (sizeof(Equipa *)));
+            *(equipas + (n_equipas - 1)) = node_inicio->equipa;
+          }
+          else
+          {
+            
+          }
+
         }
 
       }
+      else
+      {
+        
+      }
+
     }
     else
     {
@@ -333,9 +293,7 @@ void liberta_hashtable_equipa(Hashtable_equipa *hashtable)
   {
     if ((*(hashtable->tabela + i)) != 0)
     {
-      {
-        liberta_lista_equipa(*(hashtable->tabela + i));
-      }
+      liberta_lista_equipa(*(hashtable->tabela + i));
     }
     else
     {

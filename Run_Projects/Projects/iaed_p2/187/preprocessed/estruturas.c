@@ -60,11 +60,9 @@ NodeJ *remove_lista_tabelaJ(NodeJ *cabeca, char *nomenclatura)
 
   if (strcmp(t->nome, nomenclatura) == 0)
   {
-    {
-      t = cabeca->next_tabela;
-      freeJ(cabeca);
-      return t;
-    }
+    t = cabeca->next_tabela;
+    freeJ(cabeca);
+    return t;
   }
   else
   {
@@ -77,11 +75,9 @@ NodeJ *remove_lista_tabelaJ(NodeJ *cabeca, char *nomenclatura)
     t = t->next_tabela;
     if (strcmp(t->nome, nomenclatura) == 0)
     {
-      {
-        tant->next_tabela = t->next_tabela;
-        freeJ(t);
-        return cabeca;
-      }
+      tant->next_tabela = t->next_tabela;
+      freeJ(t);
+      return cabeca;
     }
     else
     {
@@ -207,11 +203,9 @@ NodeE *remove_listaE(NodeE *cabeca, char *nomenclatura)
   t = cabeca;
   if (strcmp(t->nome, nomenclatura) == 0)
   {
-    {
-      t = cabeca->next;
-      freeE(cabeca);
-      return t;
-    }
+    t = cabeca->next;
+    freeE(cabeca);
+    return t;
   }
   else
   {
@@ -224,11 +218,9 @@ NodeE *remove_listaE(NodeE *cabeca, char *nomenclatura)
     t = t->next;
     if (strcmp(t->nome, nomenclatura) == 0)
     {
-      {
-        tant->next = t->next;
-        freeE(t);
-        return cabeca;
-      }
+      tant->next = t->next;
+      freeE(t);
+      return cabeca;
     }
     else
     {
@@ -260,23 +252,21 @@ NodeE *encontra_listaE(NodeE *cabeca, char *nomenclatura)
     }
     else
     {
+      while (t->next != 0)
       {
-        while (t->next != 0)
+        t = t->next;
+        if (strcmp(t->nome, nomenclatura) == 0)
         {
-          t = t->next;
-          if (strcmp(t->nome, nomenclatura) == 0)
-          {
-            return t;
-          }
-          else
-          {
-            
-          }
-
+          return t;
+        }
+        else
+        {
+          
         }
 
-        return 0;
       }
+
+      return 0;
     }
 
   }
@@ -356,12 +346,10 @@ NodeJ *insertEnd_listaJ(NodeJ *cabeca, NodeJ **cauda, NodeJ **tabela, char *nome
   hash_table_insertJ(tabela, x);
   if (cabeca == 0)
   {
-    {
-      x->prev_lista = 0;
-      *cauda = x;
-      cabeca = x;
-      return cabeca;
-    }
+    x->prev_lista = 0;
+    *cauda = x;
+    cabeca = x;
+    return cabeca;
   }
   else
   {
@@ -378,10 +366,8 @@ NodeJ *apagaNodeJ(NodeJ *cabeca, NodeJ **cauda, NodeJ *del)
 {
   if (cabeca == (*cauda))
   {
-    {
-      cabeca = 0;
-      *cauda = 0;
-    }
+    cabeca = 0;
+    *cauda = 0;
   }
   else
   {
@@ -393,17 +379,13 @@ NodeJ *apagaNodeJ(NodeJ *cabeca, NodeJ **cauda, NodeJ *del)
     {
       if ((*cauda) == del)
       {
-        {
-          *cauda = del->prev_lista;
-          (*cauda)->next_lista = 0;
-        }
+        *cauda = del->prev_lista;
+        (*cauda)->next_lista = 0;
       }
       else
       {
-        {
-          del->next_lista->prev_lista = del->prev_lista;
-          del->prev_lista->next_lista = del->next_lista;
-        }
+        del->next_lista->prev_lista = del->prev_lista;
+        del->prev_lista->next_lista = del->next_lista;
       }
 
     }
@@ -495,10 +477,8 @@ void print_tableJ(int cont, NodeJ **hash_table)
     }
     else
     {
-      {
-        printf("\t\t%i\t", i);
-        print_listaJ(cont, hash_table[i]);
-      }
+      printf("\t\t%i\t", i);
+      print_listaJ(cont, hash_table[i]);
     }
 
   }

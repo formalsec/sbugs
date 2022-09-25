@@ -64,15 +64,11 @@ int Smaller(struct Product p1, struct Product p2)
 {
   if (p1.productPrice == p2.productPrice)
   {
-    {
-      return p1.productIdentifier < p2.productIdentifier;
-    }
+    return p1.productIdentifier < p2.productIdentifier;
   }
   else
   {
-    {
-      return p1.productPrice < p2.productPrice;
-    }
+    return p1.productPrice < p2.productPrice;
   }
 
   return 0;
@@ -92,9 +88,7 @@ int PriceSort(struct Product new[10000], int l, int r)
     {
       if (l == j)
       {
-        {
-          break;
-        }
+        break;
       }
       else
       {
@@ -105,9 +99,7 @@ int PriceSort(struct Product new[10000], int l, int r)
 
     if (i < j)
     {
-      {
-        Switch(new[i], new[r]);
-      }
+      Switch(new[i], new[r]);
     }
     else
     {
@@ -160,9 +152,7 @@ void AddStock(struct Product shelf[10000], int pidentifier, char received[100])
   sAUX = atoi(new[1]);
   if (pID >= pidentifier)
   {
-    {
-      printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", pID);
-    }
+    printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", pID);
   }
   else
   {
@@ -191,10 +181,8 @@ void OrderAddProd(struct Product shelf[10000], struct Order warehouse[500], char
   sAUX = atoi(new[2]);
   if (orID >= oridentifier)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", pID, orID);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", pID, orID);
+    return;
   }
   else
   {
@@ -203,10 +191,8 @@ void OrderAddProd(struct Product shelf[10000], struct Order warehouse[500], char
 
   if (pID >= pidentifier)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", pID, orID);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", pID, orID);
+    return;
   }
   else
   {
@@ -215,10 +201,8 @@ void OrderAddProd(struct Product shelf[10000], struct Order warehouse[500], char
 
   if (sAUX > shelf[pID].productStock)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", pID, orID);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", pID, orID);
+    return;
   }
   else
   {
@@ -229,10 +213,8 @@ void OrderAddProd(struct Product shelf[10000], struct Order warehouse[500], char
   totalWeight = warehouse[orID].orderWeight + (shelf[pID].productWeight * sAUX);
   if (totalWeight > 200)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", pID, orID);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", pID, orID);
+    return;
   }
   else
   {
@@ -241,24 +223,20 @@ void OrderAddProd(struct Product shelf[10000], struct Order warehouse[500], char
 
   if (warehouse[orID].prodt[pID].productStock != 0)
   {
-    {
-      warehouse[orID].prodt[pID].productStock += sAUX;
-      warehouse[orID].orderWeight = totalWeight;
-      shelf[pID].productStock -= sAUX;
-      return;
-    }
+    warehouse[orID].prodt[pID].productStock += sAUX;
+    warehouse[orID].orderWeight = totalWeight;
+    shelf[pID].productStock -= sAUX;
+    return;
   }
   else
   {
-    {
-      warehouse[orID].prodt[pID].productIdentifier = pID;
-      strcpy(warehouse[orID].prodt[pID].productDescription, shelf[pID].productDescription);
-      warehouse[orID].prodt[pID].productPrice = shelf[pID].productPrice;
-      warehouse[orID].prodt[pID].productWeight = shelf[pID].productWeight;
-      warehouse[orID].prodt[pID].productStock = sAUX;
-      warehouse[orID].orderWeight = totalWeight;
-      shelf[pID].productStock -= sAUX;
-    }
+    warehouse[orID].prodt[pID].productIdentifier = pID;
+    strcpy(warehouse[orID].prodt[pID].productDescription, shelf[pID].productDescription);
+    warehouse[orID].prodt[pID].productPrice = shelf[pID].productPrice;
+    warehouse[orID].prodt[pID].productWeight = shelf[pID].productWeight;
+    warehouse[orID].prodt[pID].productStock = sAUX;
+    warehouse[orID].orderWeight = totalWeight;
+    shelf[pID].productStock -= sAUX;
   }
 
 }
@@ -273,10 +251,8 @@ void RemoveStock(struct Product shelf[10000], int pidentifier, char received[100
   sAUX = atoi(new[1]);
   if (pID >= pidentifier)
   {
-    {
-      printf("Impossivel remover stock do produto %d. Produto inexistente.\n", pID);
-      return;
-    }
+    printf("Impossivel remover stock do produto %d. Produto inexistente.\n", pID);
+    return;
   }
   else
   {
@@ -285,10 +261,8 @@ void RemoveStock(struct Product shelf[10000], int pidentifier, char received[100
 
   if ((shelf[pID].productStock - sAUX) < 0)
   {
-    {
-      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", sAUX, pID);
-      return;
-    }
+    printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", sAUX, pID);
+    return;
   }
   else
   {
@@ -308,10 +282,8 @@ void RemoveProduct(struct Order warehouse[500], struct Product shelf[10000], int
   pID = atoi(new[1]);
   if (orID >= oridentifier)
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", pID, orID);
-      return;
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", pID, orID);
+    return;
   }
   else
   {
@@ -320,10 +292,8 @@ void RemoveProduct(struct Order warehouse[500], struct Product shelf[10000], int
 
   if (pID >= pidentifier)
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", pID, orID);
-      return;
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", pID, orID);
+    return;
   }
   else
   {
@@ -343,10 +313,8 @@ void OrderPrice(struct Order warehouse[500], int oridentifier, char received[100
   orID = atoi(received);
   if (orID >= oridentifier)
   {
-    {
-      printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", orID);
-      return;
-    }
+    printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", orID);
+    return;
   }
   else
   {
@@ -373,10 +341,8 @@ void ChangePrice(struct Product shelf[10000], struct Order warehouse[500], int o
   prAUX = atoi(new[1]);
   if (pID >= pidentifier)
   {
-    {
-      printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", pID);
-      return;
-    }
+    printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", pID);
+    return;
   }
   else
   {
@@ -387,9 +353,7 @@ void ChangePrice(struct Product shelf[10000], struct Order warehouse[500], int o
   {
     if (strcmp(warehouse[i].prodt[pID].productDescription, shelf[pID].productDescription) == 0)
     {
-      {
-        warehouse[i].prodt[pID].productPrice = prAUX;
-      }
+      warehouse[i].prodt[pID].productPrice = prAUX;
     }
     else
     {
@@ -414,10 +378,8 @@ void ListDescStock(struct Order warehouse[500], struct Product shelf[10000], int
   pID = atoi(new[1]);
   if (orID >= oridentifier)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", orID);
-      return;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", orID);
+    return;
   }
   else
   {
@@ -426,10 +388,8 @@ void ListDescStock(struct Order warehouse[500], struct Product shelf[10000], int
 
   if (pID >= pidentifier)
   {
-    {
-      printf("Impossivel listar produto %d. Produto inexistente.\n", pID);
-      return;
-    }
+    printf("Impossivel listar produto %d. Produto inexistente.\n", pID);
+    return;
   }
   else
   {
@@ -440,10 +400,8 @@ void ListDescStock(struct Order warehouse[500], struct Product shelf[10000], int
   {
     if (warehouse[orID].prodt[i].productIdentifier == pID)
     {
-      {
-        stock = warehouse[orID].prodt[i].productStock;
-        break;
-      }
+      stock = warehouse[orID].prodt[i].productStock;
+      break;
     }
     else
     {
@@ -466,56 +424,39 @@ void ListBiggest(struct Order warehouse[500], int oridentifier, int pidentifier,
   pID = atoi(received);
   if (pID >= pidentifier)
   {
-    {
-      printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", pID);
-      return;
-    }
+    printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", pID);
+    return;
   }
   else
   {
+    for (i = 0; i < oridentifier; i++)
     {
-      for (i = 0; i < oridentifier; i++)
+      for (e = 0; e < 100; e++)
       {
-        for (e = 0; e < 100; e++)
+        if (warehouse[i].prodt[e].productIdentifier == pID)
         {
-          if (warehouse[i].prodt[e].productIdentifier == pID)
+          stock = warehouse[i].prodt[e].productStock;
+          if (stock == biggest)
           {
+            if (orID > i)
             {
-              stock = warehouse[i].prodt[e].productStock;
-              if (stock == biggest)
-              {
-                {
-                  if (orID > i)
-                  {
-                    {
-                      orID = i;
-                    }
-                  }
-                  else
-                  {
-                    
-                  }
-
-                }
-              }
-              else
-              {
-                
-              }
-
-              if (stock > biggest)
-              {
-                {
-                  biggest = warehouse[i].prodt[e].productStock;
-                  orID = i;
-                }
-              }
-              else
-              {
-                
-              }
-
+              orID = i;
             }
+            else
+            {
+              
+            }
+
+          }
+          else
+          {
+            
+          }
+
+          if (stock > biggest)
+          {
+            biggest = warehouse[i].prodt[e].productStock;
+            orID = i;
           }
           else
           {
@@ -523,22 +464,25 @@ void ListBiggest(struct Order warehouse[500], int oridentifier, int pidentifier,
           }
 
         }
-
-      }
-
-      if (biggest != 0)
-      {
+        else
         {
-          printf("Maximo produto %d %d %d.\n", pID, orID, biggest);
-          return;
+          
         }
-      }
-      else
-      {
-        
+
       }
 
     }
+
+    if (biggest != 0)
+    {
+      printf("Maximo produto %d %d %d.\n", pID, orID, biggest);
+      return;
+    }
+    else
+    {
+      
+    }
+
   }
 
 }

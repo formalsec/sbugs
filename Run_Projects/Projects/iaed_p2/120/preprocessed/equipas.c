@@ -64,9 +64,7 @@ Team *search_team(NodeTeam *head, char *name)
     currentName = current->team->name;
     if (strcmp(currentName, name) == 0)
     {
-      {
-        return current->team;
-      }
+      return current->team;
     }
     else
     {

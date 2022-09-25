@@ -56,62 +56,48 @@ void addMatch(int commandCounter, linkMatch *HashTableMatch, linkTeam *HashTable
   team2 = getTeam(list2, team2Name);
   if (getMatch(listMatch, matchName) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", commandCounter);
-    }
+    printf("%d Jogo existente.\n", commandCounter);
   }
   else
   {
     if ((team1 == 0) || (team2 == 0))
     {
-      {
-        printf("%d Equipa inexistente.\n", commandCounter);
-      }
+      printf("%d Equipa inexistente.\n", commandCounter);
     }
     else
     {
+      if (listMatch == 0)
       {
-        if (listMatch == 0)
+        head = 0;
+        NewNodeMatch(&head, matchName, team1Name, team2Name, score1, score2);
+        HashTableMatch[indexMatch] = head;
+        addNode(headSTACK, tailSTACK, matchName);
+      }
+      else
+      {
+        head = listMatch;
+        NewNodeMatch(&head, matchName, team1Name, team2Name, score1, score2);
+        HashTableMatch[indexMatch] = head;
+        addNode(headSTACK, tailSTACK, matchName);
+      }
+
+      if (whoWonTheGame(score1, score2) == 1)
+      {
+        team1->teamWins++;
+      }
+      else
+      {
+        if (whoWonTheGame(score1, score2) == 2)
         {
-          {
-            head = 0;
-            NewNodeMatch(&head, matchName, team1Name, team2Name, score1, score2);
-            HashTableMatch[indexMatch] = head;
-            addNode(headSTACK, tailSTACK, matchName);
-          }
+          team2->teamWins++;
         }
         else
         {
-          {
-            head = listMatch;
-            NewNodeMatch(&head, matchName, team1Name, team2Name, score1, score2);
-            HashTableMatch[indexMatch] = head;
-            addNode(headSTACK, tailSTACK, matchName);
-          }
-        }
-
-        if (whoWonTheGame(score1, score2) == 1)
-        {
-          {
-            team1->teamWins++;
-          }
-        }
-        else
-        {
-          if (whoWonTheGame(score1, score2) == 2)
-          {
-            {
-              team2->teamWins++;
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
+
     }
 
   }
@@ -143,86 +129,25 @@ void deleteMatch(int commandCounter, linkMatch *HashTableMatch, linkTeam *HashTa
   temp = getMatch(list, matchName);
   if (temp == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", commandCounter);
-    }
+    printf("%d Jogo inexistente.\n", commandCounter);
   }
   else
   {
+    if (temp->score1 > temp->score2)
     {
-      if (temp->score1 > temp->score2)
+      index1 = hashFunction(temp->team1);
+      list1 = HashTableTeam[index1];
+      team1 = getTeam(list1, temp->team1);
+      team1->teamWins--;
+    }
+    else
+    {
+      if (temp->score2 > temp->score1)
       {
-        {
-          index1 = hashFunction(temp->team1);
-          list1 = HashTableTeam[index1];
-          team1 = getTeam(list1, temp->team1);
-          team1->teamWins--;
-        }
-      }
-      else
-      {
-        if (temp->score2 > temp->score1)
-        {
-          {
-            index2 = hashFunction(temp->team2);
-            list2 = HashTableTeam[index2];
-            team2 = getTeam(list2, temp->team2);
-            team2->teamWins--;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      deleteMatchStack(headSTACK, tailSTACK, matchName);
-      if (list->next == 0)
-      {
-        {
-          flag = 1;
-        }
-      }
-      else
-      {
-        
-      }
-
-      for (temp = list, prev = 0; temp != 0; prev = temp, temp = temp->next)
-      {
-        if (strcmp(matchName, temp->matchName) == 0)
-        {
-          {
-            if (temp == list)
-            {
-              {
-                HashTableMatch[index] = temp->next;
-                return;
-              }
-            }
-            else
-            {
-              {
-                prev->next = temp->next;
-              }
-            }
-
-            FreeNodeMatch(temp);
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      if (flag == 1)
-      {
-        {
-          HashTableMatch[index] = 0;
-        }
+        index2 = hashFunction(temp->team2);
+        list2 = HashTableTeam[index2];
+        team2 = getTeam(list2, temp->team2);
+        team2->teamWins--;
       }
       else
       {
@@ -230,6 +155,49 @@ void deleteMatch(int commandCounter, linkMatch *HashTableMatch, linkTeam *HashTa
       }
 
     }
+
+    deleteMatchStack(headSTACK, tailSTACK, matchName);
+    if (list->next == 0)
+    {
+      flag = 1;
+    }
+    else
+    {
+      
+    }
+
+    for (temp = list, prev = 0; temp != 0; prev = temp, temp = temp->next)
+    {
+      if (strcmp(matchName, temp->matchName) == 0)
+      {
+        if (temp == list)
+        {
+          HashTableMatch[index] = temp->next;
+          return;
+        }
+        else
+        {
+          prev->next = temp->next;
+        }
+
+        FreeNodeMatch(temp);
+      }
+      else
+      {
+        
+      }
+
+    }
+
+    if (flag == 1)
+    {
+      HashTableMatch[index] = 0;
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -251,15 +219,11 @@ void searchForMatch(int commandCounter, linkMatch *HashTableMatch)
   temp = getMatch(list, matchName);
   if (temp == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", commandCounter);
-    }
+    printf("%d Jogo inexistente.\n", commandCounter);
   }
   else
   {
-    {
-      printf("%d %s %s %s %u %u\n", commandCounter, matchName, temp->team1, temp->team2, temp->score1, temp->score2);
-    }
+    printf("%d %s %s %s %u %u\n", commandCounter, matchName, temp->team1, temp->team2, temp->score1, temp->score2);
   }
 
 }
@@ -293,95 +257,71 @@ void changeScore(int commandCounter, linkMatch *HashTableMatch, linkTeam *HashTa
   temp = getMatch(list, matchName);
   if (temp == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", commandCounter);
-    }
+    printf("%d Jogo inexistente.\n", commandCounter);
   }
   else
   {
+    beforeChanging = whoWonTheGame(temp->score1, temp->score2);
+    afterChanging = whoWonTheGame(score1, score2);
+    temp->score1 = score1;
+    temp->score2 = score2;
+    index1 = hashFunction(temp->team1);
+    list1 = HashTableTeam[index1];
+    team1 = getTeam(list1, temp->team1);
+    index2 = hashFunction(temp->team2);
+    list2 = HashTableTeam[index2];
+    team2 = getTeam(list2, temp->team2);
+    if ((beforeChanging == 0) && (afterChanging != beforeChanging))
     {
-      beforeChanging = whoWonTheGame(temp->score1, temp->score2);
-      afterChanging = whoWonTheGame(score1, score2);
-      temp->score1 = score1;
-      temp->score2 = score2;
-      index1 = hashFunction(temp->team1);
-      list1 = HashTableTeam[index1];
-      team1 = getTeam(list1, temp->team1);
-      index2 = hashFunction(temp->team2);
-      list2 = HashTableTeam[index2];
-      team2 = getTeam(list2, temp->team2);
-      if ((beforeChanging == 0) && (afterChanging != beforeChanging))
+      if (afterChanging == 1)
       {
-        {
-          if (afterChanging == 1)
-          {
-            {
-              team1->teamWins++;
-            }
-          }
-          else
-          {
-            {
-              team2->teamWins++;
-            }
-          }
-
-        }
+        team1->teamWins++;
       }
       else
       {
-        if (beforeChanging != afterChanging)
-        {
-          {
-            if (afterChanging == 0)
-            {
-              {
-                if (beforeChanging == 1)
-                {
-                  {
-                    team1->teamWins--;
-                  }
-                }
-                else
-                {
-                  {
-                    team2->teamWins--;
-                  }
-                }
-
-              }
-            }
-            else
-            {
-              {
-                if (beforeChanging == 1)
-                {
-                  {
-                    team1->teamWins--;
-                    team2->teamWins++;
-                  }
-                }
-                else
-                {
-                  {
-                    team2->teamWins--;
-                    team1->teamWins++;
-                  }
-                }
-
-              }
-            }
-
-          }
-        }
-        else
-        {
-          
-        }
-
+        team2->teamWins++;
       }
 
     }
+    else
+    {
+      if (beforeChanging != afterChanging)
+      {
+        if (afterChanging == 0)
+        {
+          if (beforeChanging == 1)
+          {
+            team1->teamWins--;
+          }
+          else
+          {
+            team2->teamWins--;
+          }
+
+        }
+        else
+        {
+          if (beforeChanging == 1)
+          {
+            team1->teamWins--;
+            team2->teamWins++;
+          }
+          else
+          {
+            team2->teamWins--;
+            team1->teamWins++;
+          }
+
+        }
+
+      }
+      else
+      {
+        
+      }
+
+    }
+
   }
 
 }
@@ -402,31 +342,23 @@ void addTeam(int commandCounter, linkTeam *HashTableTeam)
   list = HashTableTeam[index];
   if (teamInTable(list, teamName) != (-1))
   {
-    {
-      printf("%d Equipa existente.\n", commandCounter);
-    }
+    printf("%d Equipa existente.\n", commandCounter);
   }
   else
   {
+    if (list == 0)
     {
-      if (list == 0)
-      {
-        {
-          head = 0;
-          NewNodeTeam(&head, teamName);
-          HashTableTeam[index] = head;
-        }
-      }
-      else
-      {
-        {
-          head = list;
-          NewNodeTeam(&head, teamName);
-          HashTableTeam[index] = head;
-        }
-      }
-
+      head = 0;
+      NewNodeTeam(&head, teamName);
+      HashTableTeam[index] = head;
     }
+    else
+    {
+      head = list;
+      NewNodeTeam(&head, teamName);
+      HashTableTeam[index] = head;
+    }
+
   }
 
 }
@@ -448,15 +380,11 @@ void searchForTeam(int commandCounter, linkTeam *HashTableTeam)
   temp = getTeam(list, teamName);
   if (temp == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", commandCounter);
-    }
+    printf("%d Equipa inexistente.\n", commandCounter);
   }
   else
   {
-    {
-      printf("%d %s %d\n", commandCounter, temp->teamName, temp->teamWins);
-    }
+    printf("%d %s %d\n", commandCounter, temp->teamName, temp->teamWins);
   }
 
 }
@@ -492,9 +420,7 @@ void showBestTeams(int commandCounter, linkTeam *HashTableTeam, StackNode **Stac
     {
       if (temp->teamWins == max)
       {
-        {
-          addNodeBegin(StackTeams, temp->teamName);
-        }
+        addNodeBegin(StackTeams, temp->teamName);
       }
       else
       {
@@ -508,11 +434,9 @@ void showBestTeams(int commandCounter, linkTeam *HashTableTeam, StackNode **Stac
 
   if (isStackEmpty(StackTeams) != 1)
   {
-    {
-      printf("%d Melhores %d\n", commandCounter, max);
-      MergeSort(StackTeams);
-      printTeams(commandCounter, StackTeams);
-    }
+    printf("%d Melhores %d\n", commandCounter, max);
+    MergeSort(StackTeams);
+    printTeams(commandCounter, StackTeams);
   }
   else
   {

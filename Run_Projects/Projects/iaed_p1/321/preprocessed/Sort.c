@@ -43,14 +43,12 @@ void fixDown(int arr[], int r, int k)
   if (largest != k)
   {
     {
-      {
-        int t = *(&arr[k]);
-        *(&arr[k]) = *(&arr[largest]);
-        *(&arr[largest]) = t;
-      }
-      ;
-      fixDown(arr, r, largest);
+      int t = *(&arr[k]);
+      *(&arr[k]) = *(&arr[largest]);
+      *(&arr[largest]) = t;
     }
+    ;
+    fixDown(arr, r, largest);
   }
   else
   {

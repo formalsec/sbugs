@@ -42,10 +42,8 @@ void apaga_jogo(jogo j)
 {
   if (j)
   {
-    {
-      free(j->nome);
-      free(j);
-    }
+    free(j->nome);
+    free(j);
   }
   else
   {

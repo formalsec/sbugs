@@ -62,9 +62,7 @@ int existeProd(int idp)
   {
     if (sistemaprod[i].idp == idp)
     {
-      {
-        return 1;
-      }
+      return 1;
     }
     else
     {
@@ -83,9 +81,7 @@ int existeEnc(int ide)
   {
     if (sistemaenc[i].ide == ide)
     {
-      {
-        return 1;
-      }
+      return 1;
     }
     else
     {
@@ -130,15 +126,11 @@ void merge(Produto a[], int l, int m, int r)
   {
     if ((aux[j].preco < aux[i].preco) || (i > m))
     {
-      {
-        a[k] = aux[j--];
-      }
+      a[k] = aux[j--];
     }
     else
     {
-      {
-        a[k] = aux[i++];
-      }
+      a[k] = aux[i++];
     }
 
   }
@@ -150,9 +142,7 @@ void mergesort(Produto a[], int l, int r)
   int m = (r + l) / 2;
   if (r <= l)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -179,9 +169,7 @@ int partition(Produto a[], int l, int r)
     {
       if (j == l)
       {
-        {
-          break;
-        }
+        break;
       }
       else
       {
@@ -192,11 +180,9 @@ int partition(Produto a[], int l, int r)
 
     if (i < j)
     {
-      {
-        t = a[i];
-        a[i] = a[j];
-        a[j] = t;
-      }
+      t = a[i];
+      a[i] = a[j];
+      a[j] = t;
     }
     else
     {
@@ -216,9 +202,7 @@ void quicksort(Produto a[], int l, int r)
   int i;
   if (r <= l)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -265,15 +249,11 @@ void q()
   qtd = new_sym_var(sizeof(int) * 8);
   if (existeProd(idp))
   {
-    {
-      sistemaprod[idp].stock += qtd;
-    }
+    sistemaprod[idp].stock += qtd;
   }
   else
   {
-    {
-      printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idp);
-    }
+    printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idp);
   }
 
 }
@@ -302,84 +282,64 @@ void A()
   qtd = new_sym_var(sizeof(int) * 8);
   if (existeEnc(ide))
   {
+    if (existeProd(idp))
     {
-      if (existeProd(idp))
+      if (sistemaprod[idp].stock >= qtd)
       {
+        if ((pesoEnc(ide) + (sistemaprod[idp].peso * qtd)) <= 200)
         {
-          if (sistemaprod[idp].stock >= qtd)
+          while (((i < 200) && (sistemaenc[ide].vetor[i].idp != (-1))) && (encontrou == 0))
           {
+            if (sistemaenc[ide].vetor[i].idp == idp)
             {
-              if ((pesoEnc(ide) + (sistemaprod[idp].peso * qtd)) <= 200)
-              {
-                {
-                  while (((i < 200) && (sistemaenc[ide].vetor[i].idp != (-1))) && (encontrou == 0))
-                  {
-                    if (sistemaenc[ide].vetor[i].idp == idp)
-                    {
-                      {
-                        sistemaenc[ide].vetor[i].stock += qtd;
-                        sistemaprod[idp].stock -= qtd;
-                        encontrou = 1;
-                      }
-                    }
-                    else
-                    {
-                      
-                    }
-
-                    i++;
-                  }
-
-                  if (encontrou == 0)
-                  {
-                    {
-                      sistemaenc[ide].vetor[i].idp = idp;
-                      memcpy(sistemaenc[ide].vetor[i].desc, sistemaprod[idp].desc, strlen(sistemaprod[idp].desc) + 1);
-                      sistemaenc[ide].vetor[i].preco = sistemaprod[idp].preco;
-                      sistemaenc[ide].vetor[i].peso = sistemaprod[idp].peso;
-                      sistemaenc[ide].vetor[i].stock = qtd;
-                      sistemaprod[idp].stock -= qtd;
-                    }
-                  }
-                  else
-                  {
-                    
-                  }
-
-                }
-              }
-              else
-              {
-                {
-                  printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
-                }
-              }
-
+              sistemaenc[ide].vetor[i].stock += qtd;
+              sistemaprod[idp].stock -= qtd;
+              encontrou = 1;
             }
+            else
+            {
+              
+            }
+
+            i++;
+          }
+
+          if (encontrou == 0)
+          {
+            sistemaenc[ide].vetor[i].idp = idp;
+            memcpy(sistemaenc[ide].vetor[i].desc, sistemaprod[idp].desc, strlen(sistemaprod[idp].desc) + 1);
+            sistemaenc[ide].vetor[i].preco = sistemaprod[idp].preco;
+            sistemaenc[ide].vetor[i].peso = sistemaprod[idp].peso;
+            sistemaenc[ide].vetor[i].stock = qtd;
+            sistemaprod[idp].stock -= qtd;
           }
           else
           {
-            {
-              printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
-            }
+            
           }
 
         }
+        else
+        {
+          printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
+        }
+
       }
       else
       {
-        {
-          printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
-        }
+        printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
       }
 
     }
+    else
+    {
+      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
+    }
+
   }
   else
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
   }
 
 }
@@ -392,27 +352,19 @@ void r()
   qtd = new_sym_var(sizeof(int) * 8);
   if (existeProd(idp))
   {
+    if (sistemaprod[idp].stock >= qtd)
     {
-      if (sistemaprod[idp].stock >= qtd)
-      {
-        {
-          sistemaprod[idp].stock -= qtd;
-        }
-      }
-      else
-      {
-        {
-          printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, idp);
-        }
-      }
-
+      sistemaprod[idp].stock -= qtd;
     }
+    else
+    {
+      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, idp);
+    }
+
   }
   else
   {
-    {
-      printf("Impossivel remover stock do produto %d. Produto inexistente.\n", idp);
-    }
+    printf("Impossivel remover stock do produto %d. Produto inexistente.\n", idp);
   }
 
 }
@@ -427,44 +379,34 @@ void R()
   idp = new_sym_var(sizeof(int) * 8);
   if (existeEnc(ide))
   {
+    if (existeProd(idp))
     {
-      if (existeProd(idp))
+      while (((i < 200) && (sistemaenc[ide].vetor[i].idp != (-1))) && (encontrou == 0))
       {
+        if (sistemaenc[ide].vetor[i].idp == idp)
         {
-          while (((i < 200) && (sistemaenc[ide].vetor[i].idp != (-1))) && (encontrou == 0))
-          {
-            if (sistemaenc[ide].vetor[i].idp == idp)
-            {
-              {
-                sistemaprod[idp].stock += sistemaenc[ide].vetor[i].stock;
-                sistemaenc[ide].vetor[i].stock = 0;
-                encontrou = 1;
-              }
-            }
-            else
-            {
-              
-            }
-
-            i++;
-          }
-
+          sistemaprod[idp].stock += sistemaenc[ide].vetor[i].stock;
+          sistemaenc[ide].vetor[i].stock = 0;
+          encontrou = 1;
         }
-      }
-      else
-      {
+        else
         {
-          printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
+          
         }
+
+        i++;
       }
 
     }
+    else
+    {
+      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
+    }
+
   }
   else
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
   }
 
 }
@@ -477,21 +419,17 @@ void C()
   ide = new_sym_var(sizeof(int) * 8);
   if (existeEnc(ide))
   {
+    while ((i < 10000) && (sistemaenc[ide].vetor[i].idp != (-1)))
     {
-      while ((i < 10000) && (sistemaenc[ide].vetor[i].idp != (-1)))
-      {
-        custo += sistemaenc[ide].vetor[i].preco * sistemaenc[ide].vetor[i].stock;
-        i++;
-      }
-
-      printf("Custo da encomenda %d %d.\n", ide, custo);
+      custo += sistemaenc[ide].vetor[i].preco * sistemaenc[ide].vetor[i].stock;
+      i++;
     }
+
+    printf("Custo da encomenda %d %d.\n", ide, custo);
   }
   else
   {
-    {
-      printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ide);
-    }
+    printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ide);
   }
 
 }
@@ -507,39 +445,33 @@ void p()
   preco = new_sym_var(sizeof(int) * 8);
   if (existeProd(idp))
   {
+    sistemaprod[idp].preco = preco;
+    while ((i < 500) && (sistemaenc[i].ide != (-1)))
     {
-      sistemaprod[idp].preco = preco;
-      while ((i < 500) && (sistemaenc[i].ide != (-1)))
+      j = 0;
+      encontrou = 0;
+      while (((j < 200) && (sistemaenc[i].vetor[j].idp != (-1))) && (encontrou == 0))
       {
-        j = 0;
-        encontrou = 0;
-        while (((j < 200) && (sistemaenc[i].vetor[j].idp != (-1))) && (encontrou == 0))
+        if (sistemaenc[i].vetor[j].idp == idp)
         {
-          if (sistemaenc[i].vetor[j].idp == idp)
-          {
-            {
-              sistemaenc[i].vetor[j].preco = preco;
-              encontrou = 1;
-            }
-          }
-          else
-          {
-            
-          }
-
-          j++;
+          sistemaenc[i].vetor[j].preco = preco;
+          encontrou = 1;
+        }
+        else
+        {
+          
         }
 
-        i++;
+        j++;
       }
 
+      i++;
     }
+
   }
   else
   {
-    {
-      printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idp);
-    }
+    printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idp);
   }
 
 }
@@ -554,44 +486,34 @@ void E()
   idp = new_sym_var(sizeof(int) * 8);
   if (existeEnc(ide))
   {
+    if (existeProd(idp))
     {
-      if (existeProd(idp))
+      while ((i < 200) && (sistemaenc[ide].vetor[i].idp != (-1)))
       {
+        if (sistemaenc[ide].vetor[i].idp == idp)
         {
-          while ((i < 200) && (sistemaenc[ide].vetor[i].idp != (-1)))
-          {
-            if (sistemaenc[ide].vetor[i].idp == idp)
-            {
-              {
-                qtd = sistemaenc[ide].vetor[i].stock;
-                break;
-              }
-            }
-            else
-            {
-              
-            }
-
-            i++;
-          }
-
-          printf("%s %d.\n", sistemaprod[idp].desc, qtd);
+          qtd = sistemaenc[ide].vetor[i].stock;
+          break;
         }
-      }
-      else
-      {
+        else
         {
-          printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
+          
         }
+
+        i++;
       }
 
+      printf("%s %d.\n", sistemaprod[idp].desc, qtd);
     }
+    else
+    {
+      printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
+    }
+
   }
   else
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
   }
 
 }
@@ -607,60 +529,50 @@ void m()
   idp = new_sym_var(sizeof(int) * 8);
   if (existeProd(idp))
   {
+    while ((i < 500) && (sistemaenc[i].ide != (-1)))
     {
-      while ((i < 500) && (sistemaenc[i].ide != (-1)))
+      j = 0;
+      encontrou = 0;
+      while (((j < 200) && (sistemaenc[i].vetor[j].idp != (-1))) && (encontrou == 0))
       {
-        j = 0;
-        encontrou = 0;
-        while (((j < 200) && (sistemaenc[i].vetor[j].idp != (-1))) && (encontrou == 0))
+        if (sistemaenc[i].vetor[j].idp == idp)
         {
-          if (sistemaenc[i].vetor[j].idp == idp)
+          if (sistemaenc[i].vetor[j].stock > qtd)
           {
-            {
-              if (sistemaenc[i].vetor[j].stock > qtd)
-              {
-                {
-                  qtd = sistemaenc[i].vetor[j].stock;
-                  ide = i;
-                }
-              }
-              else
-              {
-                
-              }
-
-              encontrou = 1;
-            }
+            qtd = sistemaenc[i].vetor[j].stock;
+            ide = i;
           }
           else
           {
             
           }
 
-          j++;
+          encontrou = 1;
         }
-
-        i++;
-      }
-
-      if (qtd != 0)
-      {
+        else
         {
-          printf("Maximo produto %d %d %d.\n", idp, ide, qtd);
+          
         }
-      }
-      else
-      {
-        
+
+        j++;
       }
 
+      i++;
     }
+
+    if (qtd != 0)
+    {
+      printf("Maximo produto %d %d %d.\n", idp, ide, qtd);
+    }
+    else
+    {
+      
+    }
+
   }
   else
   {
-    {
-      printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idp);
-    }
+    printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idp);
   }
 
 }
@@ -698,38 +610,32 @@ void L()
   ide = new_sym_var(sizeof(int) * 8);
   if (existeEnc(ide))
   {
+    while ((i < 200) && (sistemaenc[ide].vetor[i].idp != (-1)))
     {
-      while ((i < 200) && (sistemaenc[ide].vetor[i].idp != (-1)))
-      {
-        i++;
-      }
-
-      quicksort(sistemaenc[ide].vetor, 0, i - 1);
-      i = 0;
-      printf("Encomenda %d\n", ide);
-      while ((i < 200) && (sistemaenc[ide].vetor[i].idp != (-1)))
-      {
-        if (sistemaenc[ide].vetor[i].stock != 0)
-        {
-          {
-            printf("* %s %d %d\n", sistemaenc[ide].vetor[i].desc, sistemaenc[ide].vetor[i].preco, sistemaenc[ide].vetor[i].stock);
-          }
-        }
-        else
-        {
-          
-        }
-
-        i++;
-      }
-
+      i++;
     }
+
+    quicksort(sistemaenc[ide].vetor, 0, i - 1);
+    i = 0;
+    printf("Encomenda %d\n", ide);
+    while ((i < 200) && (sistemaenc[ide].vetor[i].idp != (-1)))
+    {
+      if (sistemaenc[ide].vetor[i].stock != 0)
+      {
+        printf("* %s %d %d\n", sistemaenc[ide].vetor[i].desc, sistemaenc[ide].vetor[i].preco, sistemaenc[ide].vetor[i].stock);
+      }
+      else
+      {
+        
+      }
+
+      i++;
+    }
+
   }
   else
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
   }
 
 }
@@ -743,9 +649,7 @@ int main()
   {
     if (c == 'a')
     {
-      {
-        a();
-      }
+      a();
     }
     else
     {
@@ -754,9 +658,7 @@ int main()
 
     if (c == 'q')
     {
-      {
-        q();
-      }
+      q();
     }
     else
     {
@@ -765,9 +667,7 @@ int main()
 
     if (c == 'N')
     {
-      {
-        N();
-      }
+      N();
     }
     else
     {
@@ -776,9 +676,7 @@ int main()
 
     if (c == 'A')
     {
-      {
-        A();
-      }
+      A();
     }
     else
     {
@@ -787,9 +685,7 @@ int main()
 
     if (c == 'r')
     {
-      {
-        r();
-      }
+      r();
     }
     else
     {
@@ -798,9 +694,7 @@ int main()
 
     if (c == 'R')
     {
-      {
-        R();
-      }
+      R();
     }
     else
     {
@@ -809,9 +703,7 @@ int main()
 
     if (c == 'C')
     {
-      {
-        C();
-      }
+      C();
     }
     else
     {
@@ -820,9 +712,7 @@ int main()
 
     if (c == 'p')
     {
-      {
-        p();
-      }
+      p();
     }
     else
     {
@@ -831,9 +721,7 @@ int main()
 
     if (c == 'E')
     {
-      {
-        E();
-      }
+      E();
     }
     else
     {
@@ -842,9 +730,7 @@ int main()
 
     if (c == 'm')
     {
-      {
-        m();
-      }
+      m();
     }
     else
     {
@@ -853,9 +739,7 @@ int main()
 
     if (c == 'l')
     {
-      {
-        l();
-      }
+      l();
     }
     else
     {
@@ -864,9 +748,7 @@ int main()
 
     if (c == 'L')
     {
-      {
-        L();
-      }
+      L();
     }
     else
     {
@@ -875,9 +757,7 @@ int main()
 
     if (c == 'x')
     {
-      {
-        exit(0);
-      }
+      exit(0);
     }
     else
     {

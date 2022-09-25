@@ -73,26 +73,24 @@ void collisions(link **h)
   for (i = 0; i < 30011; i++)
     if (h[i])
   {
+    int j = 0;
+    head = h[i]->next;
+    while (head)
     {
-      int j = 0;
-      head = h[i]->next;
-      while (head)
-      {
-        count++;
-        j++;
-        head = head->next;
-      }
-
-      if (j > max)
-      {
-        max = j;
-      }
-      else
-      {
-        
-      }
-
+      count++;
+      j++;
+      head = head->next;
     }
+
+    if (j > max)
+    {
+      max = j;
+    }
+    else
+    {
+      
+    }
+
   }
   else
   {

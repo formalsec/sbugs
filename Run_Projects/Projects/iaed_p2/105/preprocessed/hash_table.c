@@ -50,54 +50,44 @@ void apaga_tabela(char *nome, jogo *tabela_hash[1000])
   {
     if (strcmp(aux->nome, nome) == 0)
     {
+      if ((aux->next == 0) && (i == 0))
       {
-        if ((aux->next == 0) && (i == 0))
+        tabela_hash[index] = 0;
+      }
+      else
+      {
+        if ((aux->next != 0) && (i == 0))
         {
-          {
-            tabela_hash[index] = 0;
-          }
+          tabela_hash[index] = aux->next;
         }
         else
         {
-          if ((aux->next != 0) && (i == 0))
+          if ((aux->next == 0) && (i != 0))
           {
-            {
-              tabela_hash[index] = aux->next;
-            }
+            prev->next = 0;
           }
           else
           {
-            if ((aux->next == 0) && (i != 0))
+            if ((aux->next != 0) && (i != 0))
             {
-              {
-                prev->next = 0;
-              }
+              prev->next = aux->next;
             }
             else
             {
-              if ((aux->next != 0) && (i != 0))
-              {
-                {
-                  prev->next = aux->next;
-                }
-              }
-              else
-              {
-                
-              }
-
+              
             }
 
           }
 
         }
 
-        free(aux->nome);
-        free(aux->equipa1);
-        free(aux->equipa2);
-        free(aux);
-        return;
       }
+
+      free(aux->nome);
+      free(aux->equipa1);
+      free(aux->equipa2);
+      free(aux);
+      return;
     }
     else
     {
@@ -126,9 +116,7 @@ void apaga_mem_jogo(jogo *tabela_hash[1000])
       el = el->next;
       if (apaga != 0)
       {
-        {
-          free(apaga);
-        }
+        free(apaga);
       }
       else
       {

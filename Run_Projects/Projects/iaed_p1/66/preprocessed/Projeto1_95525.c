@@ -67,10 +67,8 @@ int command_m(int p)
   for (k = 0; k < j; k++)
     if (encomendas[k].produtos[p] > m)
   {
-    {
-      m = encomendas[k].produtos[p];
-      e = k;
-    }
+    m = encomendas[k].produtos[p];
+    e = k;
   }
   else
   {
@@ -233,10 +231,8 @@ int main()
             }
             else
             {
-              {
-                command_A(ide, idp, qtd);
-                command_r(idp, qtd);
-              }
+              command_A(ide, idp, qtd);
+              command_r(idp, qtd);
             }
 
           }
@@ -252,17 +248,15 @@ int main()
         qtd = new_sym_var(sizeof(int) * 8);
         if (i > idp)
       {
+        if (qtd > inventario[idp].qtd)
         {
-          if (qtd > inventario[idp].qtd)
-          {
-            printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, idp);
-          }
-          else
-          {
-            command_r(idp, qtd);
-          }
-
+          printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, idp);
         }
+        else
+        {
+          command_r(idp, qtd);
+        }
+
       }
       else
       {
@@ -286,10 +280,8 @@ int main()
         }
         else
         {
-          {
-            command_q(idp, encomendas[ide].produtos[idp]);
-            command_R(ide, idp, encomendas[ide].produtos[idp]);
-          }
+          command_q(idp, encomendas[ide].produtos[idp]);
+          command_R(ide, idp, encomendas[ide].produtos[idp]);
         }
 
       }
@@ -314,23 +306,19 @@ int main()
         preco = new_sym_var(sizeof(int) * 8);
         if (i > idp)
       {
+        for (ide = 0; ide <= j; ide++)
+          if (encomendas[ide].produtos[idp] != 0)
         {
-          for (ide = 0; ide <= j; ide++)
-            if (encomendas[ide].produtos[idp] != 0)
-          {
-            {
-              encomendas[ide].preco = encomendas[ide].preco - (inventario[idp].preco * encomendas[ide].produtos[idp]);
-              encomendas[ide].preco = encomendas[ide].preco + (preco * encomendas[ide].produtos[idp]);
-            }
-          }
-          else
-          {
-            
-          }
-
-
-          inventario[idp].preco = preco;
+          encomendas[ide].preco = encomendas[ide].preco - (inventario[idp].preco * encomendas[ide].produtos[idp]);
+          encomendas[ide].preco = encomendas[ide].preco + (preco * encomendas[ide].produtos[idp]);
         }
+        else
+        {
+          
+        }
+
+
+        inventario[idp].preco = preco;
       }
       else
       {
@@ -403,29 +391,25 @@ int main()
       }
       else
       {
+        printf("Encomenda %d\n", ide);
+        c = 0;
+        for (k = 0; k < i; k++)
+          if (encomendas[ide].produtos[k] != 0)
         {
-          printf("Encomenda %d\n", ide);
-          c = 0;
-          for (k = 0; k < i; k++)
-            if (encomendas[ide].produtos[k] != 0)
-          {
-            {
-              temp[c] = inventario[k];
-              temp[c].qtd = encomendas[ide].produtos[k];
-              c++;
-            }
-          }
-          else
-          {
-            
-          }
-
-
-          mergesort(temp, 0, c - 1, 1);
-          for (k = 0; k < c; k++)
-            printf("* %s %d %d\n", temp[k].desc, temp[k].preco, temp[k].qtd);
-
+          temp[c] = inventario[k];
+          temp[c].qtd = encomendas[ide].produtos[k];
+          c++;
         }
+        else
+        {
+          
+        }
+
+
+        mergesort(temp, 0, c - 1, 1);
+        for (k = 0; k < c; k++)
+          printf("* %s %d %d\n", temp[k].desc, temp[k].preco, temp[k].qtd);
+
       }
 
         break;

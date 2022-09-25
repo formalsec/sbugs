@@ -51,15 +51,11 @@ int search_team_index_in_hash(hash_teams table, char *team_name)
   {
     if (strcmp(table->table[hash]->value->name, team_name) == 0)
     {
-      {
-        return hash;
-      }
+      return hash;
     }
     else
     {
-      {
-        hash = (hash + 1) % table->max_size;
-      }
+      hash = (hash + 1) % table->max_size;
     }
 
   }
@@ -78,9 +74,7 @@ void expands_team_hash(hash_teams table)
   {
     if (aux[i] != 0)
     {
-      {
-        insert_team_hash(table, aux[i]);
-      }
+      insert_team_hash(table, aux[i]);
     }
     else
     {
@@ -96,10 +90,8 @@ void destroy_teams_hash(hash_teams table)
 {
   if (table)
   {
-    {
-      free(table->table);
-      free(table);
-    }
+    free(table->table);
+    free(table);
   }
   else
   {
@@ -152,15 +144,11 @@ int search_game_index_in_hash(hash_games table, char *game_name)
   {
     if (strcmp(table->table[hash]->value->name, game_name) == 0)
     {
-      {
-        return hash;
-      }
+      return hash;
     }
     else
     {
-      {
-        hash = (hash + 1) % table->max_size;
-      }
+      hash = (hash + 1) % table->max_size;
     }
 
   }
@@ -179,9 +167,7 @@ void expands_games_hash(hash_games table)
   {
     if (temp[i] != 0)
     {
-      {
-        insert_games_hash(table, temp[i]);
-      }
+      insert_games_hash(table, temp[i]);
     }
     else
     {
@@ -212,10 +198,8 @@ void destroy_games_hash(hash_games table)
 {
   if (table)
   {
-    {
-      free(table->table);
-      free(table);
-    }
+    free(table->table);
+    free(table);
   }
   else
   {

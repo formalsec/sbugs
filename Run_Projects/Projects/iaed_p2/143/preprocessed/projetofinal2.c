@@ -102,31 +102,25 @@ Hash_Equipa *add_nova_equipa(int NL, Hash_Equipa *hash)
   nome_equipa[10 - 1] = '\0';
   if (Equipa_search(hash->tam_hash, nome_equipa, hash->equipas) == 0)
   {
+    p = (equipa) malloc(sizeof(struct Equipa));
+    p->nome = (char *) malloc((sizeof(char)) * (strlen(nome_equipa) + 1));
+    strcpy(p->nome, nome_equipa);
+    p->n_vitorias = 0;
+    Equipa_insert(hash->tam_hash, hash->equipas, p);
+    hash->n_equipas++;
+    if (hash->n_equipas == (hash->tam_hash / 2))
     {
-      p = (equipa) malloc(sizeof(struct Equipa));
-      p->nome = (char *) malloc((sizeof(char)) * (strlen(nome_equipa) + 1));
-      strcpy(p->nome, nome_equipa);
-      p->n_vitorias = 0;
-      Equipa_insert(hash->tam_hash, hash->equipas, p);
-      hash->n_equipas++;
-      if (hash->n_equipas == (hash->tam_hash / 2))
-      {
-        {
-          hash->equipas = Equipa_expand(&hash->tam_hash, hash->equipas);
-        }
-      }
-      else
-      {
-        
-      }
-
+      hash->equipas = Equipa_expand(&hash->tam_hash, hash->equipas);
     }
+    else
+    {
+      
+    }
+
   }
   else
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-    }
+    printf("%d Equipa existente.\n", NL);
   }
 
   return hash;
@@ -145,10 +139,8 @@ void procura_equipa(int NL, Hash_Equipa *E, equipa *e)
   e1 = Equipa_search(E->tam_hash, nome_equipa, e);
   if (e1 != 0)
   {
-    {
-      printf("%d %s %d\n", NL, e1->nome, e1->n_vitorias);
-      return;
-    }
+    printf("%d %s %d\n", NL, e1->nome, e1->n_vitorias);
+    return;
   }
   else
   {
@@ -190,71 +182,57 @@ Hash_Jogos *add_novo_jogo(int NL, Hash_Jogos *hash_j, Hash_Equipa *hash_e, equip
   score2 = new_sym_var(sizeof(int) * 8);
   if (Jogo_search(hash_j->tam_hash, nome_jogo, hash_j->jogos) == 0)
   {
+    e1 = Equipa_search(hash_e->tam_hash, equipa1, e);
+    e2 = Equipa_search(hash_e->tam_hash, equipa2, e);
+    if ((e1 != 0) && (e2 != 0))
     {
-      e1 = Equipa_search(hash_e->tam_hash, equipa1, e);
-      e2 = Equipa_search(hash_e->tam_hash, equipa2, e);
-      if ((e1 != 0) && (e2 != 0))
+      p = (jogo) malloc(sizeof(struct Jogo));
+      p->nome = (char *) malloc((sizeof(char)) * (strlen(nome_jogo) + 1));
+      strcpy(p->nome, nome_jogo);
+      p->equipa1 = e1;
+      p->equipa2 = e2;
+      p->ordem_input = hash_j->n_jogos;
+      p->score_equipa1 = score1;
+      p->score_equipa2 = score2;
+      if (score1 > score2)
       {
-        {
-          p = (jogo) malloc(sizeof(struct Jogo));
-          p->nome = (char *) malloc((sizeof(char)) * (strlen(nome_jogo) + 1));
-          strcpy(p->nome, nome_jogo);
-          p->equipa1 = e1;
-          p->equipa2 = e2;
-          p->ordem_input = hash_j->n_jogos;
-          p->score_equipa1 = score1;
-          p->score_equipa2 = score2;
-          if (score1 > score2)
-          {
-            {
-              e1->n_vitorias++;
-            }
-          }
-          else
-          {
-            if (score1 < score2)
-            {
-              {
-                e2->n_vitorias++;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-          Jogo_insert(hash_j->tam_hash, hash_j->jogos, p);
-          hash_j->n_jogos++;
-          hash_j->numero_jogos++;
-          if (hash_j->n_jogos == (hash_j->tam_hash / 2))
-          {
-            {
-              hash_j->jogos = Jogo_expand(&hash_j->tam_hash, hash_j->jogos);
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
+        e1->n_vitorias++;
       }
       else
       {
+        if (score1 < score2)
         {
-          printf("%d Equipa inexistente.\n", NL);
+          e2->n_vitorias++;
         }
+        else
+        {
+          
+        }
+
+      }
+
+      Jogo_insert(hash_j->tam_hash, hash_j->jogos, p);
+      hash_j->n_jogos++;
+      hash_j->numero_jogos++;
+      if (hash_j->n_jogos == (hash_j->tam_hash / 2))
+      {
+        hash_j->jogos = Jogo_expand(&hash_j->tam_hash, hash_j->jogos);
+      }
+      else
+      {
+        
       }
 
     }
+    else
+    {
+      printf("%d Equipa inexistente.\n", NL);
+    }
+
   }
   else
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-    }
+    printf("%d Jogo existente.\n", NL);
   }
 
   return hash_j;
@@ -271,10 +249,8 @@ void todos_jogos(int NL, Hash_Jogos *J, jogo *j)
   {
     if (j[i] != 0)
     {
-      {
-        v_jogos[s] = j[i];
-        s++;
-      }
+      v_jogos[s] = j[i];
+      s++;
     }
     else
     {
@@ -300,39 +276,35 @@ void quicksort(jogo *J, int first, int last)
   jogo temp;
   if (first < last)
   {
+    pivot = first;
+    i = first;
+    j = last;
+    while (i < j)
     {
-      pivot = first;
-      i = first;
-      j = last;
-      while (i < j)
+      while ((J[i]->ordem_input <= J[pivot]->ordem_input) && (i < last))
+        i++;
+
+      while (J[j]->ordem_input > J[pivot]->ordem_input)
+        j--;
+
+      if (i < j)
       {
-        while ((J[i]->ordem_input <= J[pivot]->ordem_input) && (i < last))
-          i++;
-
-        while (J[j]->ordem_input > J[pivot]->ordem_input)
-          j--;
-
-        if (i < j)
-        {
-          {
-            temp = J[i];
-            J[i] = J[j];
-            J[j] = temp;
-          }
-        }
-        else
-        {
-          
-        }
-
+        temp = J[i];
+        J[i] = J[j];
+        J[j] = temp;
+      }
+      else
+      {
+        
       }
 
-      temp = J[pivot];
-      J[pivot] = J[j];
-      J[j] = temp;
-      quicksort(J, first, j - 1);
-      quicksort(J, j + 1, last);
     }
+
+    temp = J[pivot];
+    J[pivot] = J[j];
+    J[j] = temp;
+    quicksort(J, first, j - 1);
+    quicksort(J, j + 1, last);
   }
   else
   {
@@ -354,10 +326,8 @@ void procura_jogo(int NL, Hash_Jogos *J, jogo *j)
   j1 = Jogo_search(J->tam_hash, nome_jogo, j);
   if (j1 != 0)
   {
-    {
-      printf("%d %s %s %s %d %d\n", NL, j1->nome, j1->equipa1->nome, j1->equipa2->nome, j1->score_equipa1, j1->score_equipa2);
-      return;
-    }
+    printf("%d %s %s %s %d %d\n", NL, j1->nome, j1->equipa1->nome, j1->equipa2->nome, j1->score_equipa1, j1->score_equipa2);
+    return;
   }
   else
   {
@@ -380,37 +350,29 @@ void apaga_jogo(int NL, Hash_Jogos *J, jogo *j)
   p = Jogo_search(J->tam_hash, nome_jogo, j);
   if (p != 0)
   {
+    if (p->score_equipa1 > p->score_equipa2)
     {
-      if (p->score_equipa1 > p->score_equipa2)
+      p->equipa1->n_vitorias--;
+      Jogo_delete(J->tam_hash, nome_jogo, j);
+      J->numero_jogos--;
+    }
+    else
+    {
+      if (p->score_equipa1 < p->score_equipa2)
       {
-        {
-          p->equipa1->n_vitorias--;
-          Jogo_delete(J->tam_hash, nome_jogo, j);
-          J->numero_jogos--;
-        }
+        p->equipa2->n_vitorias--;
+        Jogo_delete(J->tam_hash, nome_jogo, j);
+        J->numero_jogos--;
       }
       else
       {
-        if (p->score_equipa1 < p->score_equipa2)
-        {
-          {
-            p->equipa2->n_vitorias--;
-            Jogo_delete(J->tam_hash, nome_jogo, j);
-            J->numero_jogos--;
-          }
-        }
-        else
-        {
-          {
-            Jogo_delete(J->tam_hash, nome_jogo, j);
-            J->numero_jogos--;
-          }
-        }
-
+        Jogo_delete(J->tam_hash, nome_jogo, j);
+        J->numero_jogos--;
       }
 
-      return;
     }
+
+    return;
   }
   else
   {
@@ -437,91 +399,41 @@ void altera_score(int NL, Hash_Jogos *J, jogo *j)
   jogo = Jogo_search(J->tam_hash, nome_jogo, j);
   if (jogo != 0)
   {
+    if (jogo->score_equipa1 > jogo->score_equipa2)
     {
-      if (jogo->score_equipa1 > jogo->score_equipa2)
+      if (score1 < score2)
       {
-        {
-          if (score1 < score2)
-          {
-            {
-              jogo->equipa2->n_vitorias++;
-              jogo->equipa1->n_vitorias--;
-            }
-          }
-          else
-          {
-            if (score1 == score2)
-            {
-              {
-                jogo->equipa1->n_vitorias--;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-        }
+        jogo->equipa2->n_vitorias++;
+        jogo->equipa1->n_vitorias--;
       }
       else
       {
-        if (jogo->score_equipa1 < jogo->score_equipa2)
+        if (score1 == score2)
         {
-          {
-            if (score1 > score2)
-            {
-              {
-                jogo->equipa1->n_vitorias++;
-                jogo->equipa2->n_vitorias--;
-              }
-            }
-            else
-            {
-              if (score1 == score2)
-              {
-                {
-                  jogo->equipa2->n_vitorias--;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-          }
+          jogo->equipa1->n_vitorias--;
         }
         else
         {
-          if (jogo->score_equipa1 == jogo->score_equipa2)
+          
+        }
+
+      }
+
+    }
+    else
+    {
+      if (jogo->score_equipa1 < jogo->score_equipa2)
+      {
+        if (score1 > score2)
+        {
+          jogo->equipa1->n_vitorias++;
+          jogo->equipa2->n_vitorias--;
+        }
+        else
+        {
+          if (score1 == score2)
           {
-            {
-              if (score1 < score2)
-              {
-                {
-                  jogo->equipa2->n_vitorias++;
-                }
-              }
-              else
-              {
-                
-              }
-
-              if (score1 > score2)
-              {
-                {
-                  jogo->equipa1->n_vitorias++;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
+            jogo->equipa2->n_vitorias--;
           }
           else
           {
@@ -531,11 +443,41 @@ void altera_score(int NL, Hash_Jogos *J, jogo *j)
         }
 
       }
+      else
+      {
+        if (jogo->score_equipa1 == jogo->score_equipa2)
+        {
+          if (score1 < score2)
+          {
+            jogo->equipa2->n_vitorias++;
+          }
+          else
+          {
+            
+          }
 
-      jogo->score_equipa1 = score1;
-      jogo->score_equipa2 = score2;
-      return;
+          if (score1 > score2)
+          {
+            jogo->equipa1->n_vitorias++;
+          }
+          else
+          {
+            
+          }
+
+        }
+        else
+        {
+          
+        }
+
+      }
+
     }
+
+    jogo->score_equipa1 = score1;
+    jogo->score_equipa2 = score2;
+    return;
   }
   else
   {
@@ -566,31 +508,25 @@ void equipas_ganharam_mais_jogos(int NL, Hash_Equipa *E, equipa *e)
   {
     if (e[x])
     {
+      if (e[x]->n_vitorias > max_vitorias)
       {
-        if (e[x]->n_vitorias > max_vitorias)
-        {
-          {
-            s = 0;
-            max_vitorias = e[x]->n_vitorias;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if (e[x]->n_vitorias == max_vitorias)
-        {
-          {
-            s++;
-          }
-        }
-        else
-        {
-          
-        }
-
+        s = 0;
+        max_vitorias = e[x]->n_vitorias;
       }
+      else
+      {
+        
+      }
+
+      if (e[x]->n_vitorias == max_vitorias)
+      {
+        s++;
+      }
+      else
+      {
+        
+      }
+
     }
     else
     {
@@ -604,21 +540,17 @@ void equipas_ganharam_mais_jogos(int NL, Hash_Equipa *E, equipa *e)
   {
     if (e[i])
     {
+      if (e[i]->n_vitorias == max_vitorias)
       {
-        if (e[i]->n_vitorias == max_vitorias)
-        {
-          {
-            vetor_strings[t] = (char *) malloc(((sizeof(char)) * strlen(e[i]->nome)) + 1);
-            strcpy(vetor_strings[t], e[i]->nome);
-            t++;
-          }
-        }
-        else
-        {
-          
-        }
-
+        vetor_strings[t] = (char *) malloc(((sizeof(char)) * strlen(e[i]->nome)) + 1);
+        strcpy(vetor_strings[t], e[i]->nome);
+        t++;
       }
+      else
+      {
+        
+      }
+
     }
     else
     {

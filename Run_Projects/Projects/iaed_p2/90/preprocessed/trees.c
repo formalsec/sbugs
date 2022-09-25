@@ -18,9 +18,7 @@ short height(t_node *target)
 {
   if (target == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -54,9 +52,7 @@ t_node *l_r_rotate(t_node *root)
 {
   if (root == 0)
   {
-    {
-      return root;
-    }
+    return root;
   }
   else
   {
@@ -71,9 +67,7 @@ t_node *r_l_rotate(t_node *root)
 {
   if (root == 0)
   {
-    {
-      return root;
-    }
+    return root;
   }
   else
   {
@@ -88,9 +82,7 @@ short get_balance(t_node *node)
 {
   if (node == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -146,9 +138,7 @@ t_node *tree_insert(t_node *root, int (*cmp)(void *val, void *nod), void *value)
 {
   if (root == 0)
   {
-    {
-      return new_node(value);
-    }
+    return new_node(value);
   }
   else
   {
@@ -193,27 +183,21 @@ t_node *tree_remove(t_node *root, int (*cmp)(void *val, void *nd), void *value)
     }
     else
     {
+      if ((root->left == 0) || (root->right == 0))
       {
-        if ((root->left == 0) || (root->right == 0))
-        {
-          {
-            temp = root;
-            root = (root->left) ? (root->left) : (root->right);
-            free(temp);
-          }
-        }
-        else
-        {
-          {
-            temp = min_node(root->right);
-            aux = root->value;
-            root->value = temp->value;
-            temp->value = aux;
-            root->right = tree_remove(root->right, cmp, temp->value);
-          }
-        }
-
+        temp = root;
+        root = (root->left) ? (root->left) : (root->right);
+        free(temp);
       }
+      else
+      {
+        temp = min_node(root->right);
+        aux = root->value;
+        root->value = temp->value;
+        temp->value = aux;
+        root->right = tree_remove(root->right, cmp, temp->value);
+      }
+
     }
 
   }
@@ -236,9 +220,7 @@ t_node *fix_balance(t_node *root)
   short bal;
   if (root == 0)
   {
-    {
-      return root;
-    }
+    return root;
   }
   else
   {
@@ -248,39 +230,33 @@ t_node *fix_balance(t_node *root)
   bal = get_balance(root);
   if (bal > 1)
   {
+    if (get_balance(root->left) >= 0)
     {
-      if (get_balance(root->left) >= 0)
-      {
-        root = right_rotate(root);
-      }
-      else
-      {
-        root = l_r_rotate(root);
-      }
-
+      root = right_rotate(root);
     }
+    else
+    {
+      root = l_r_rotate(root);
+    }
+
   }
   else
   {
     if (bal < (-1))
     {
+      if (get_balance(root->right) <= 0)
       {
-        if (get_balance(root->right) <= 0)
-        {
-          root = left_rotate(root);
-        }
-        else
-        {
-          root = r_l_rotate(root);
-        }
-
+        root = left_rotate(root);
       }
+      else
+      {
+        root = r_l_rotate(root);
+      }
+
     }
     else
     {
-      {
-        root->height = ((height(root->left) > height(root->right)) ? (height(root->left)) : (height(root->right))) + 1;
-      }
+      root->height = ((height(root->left) > height(root->right)) ? (height(root->left)) : (height(root->right))) + 1;
     }
 
   }
@@ -292,9 +268,7 @@ void destroy_tree(t_node *root, void (*del)(void *nd))
 {
   if (root == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -312,9 +286,7 @@ void free_tree(t_node *root)
 {
   if (root == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {

@@ -25,13 +25,11 @@ void HTinsere_jogo(Jogo *jogo, Jogo **jogos, int dim)
   }
   else
   {
-    {
-      jogo_aux = jogos[chave];
-      while (jogo_aux->next != 0)
-        jogo_aux = jogo_aux->next;
+    jogo_aux = jogos[chave];
+    while (jogo_aux->next != 0)
+      jogo_aux = jogo_aux->next;
 
-      jogo_aux->next = jogo;
-    }
+    jogo_aux->next = jogo;
   }
 
 }
@@ -44,39 +42,35 @@ void quicksort_jogos(Jogo **jogos, int first, int last)
   Jogo *temp;
   if (first < last)
   {
+    prim = first;
+    i = first;
+    j = last;
+    while (i < j)
     {
-      prim = first;
-      i = first;
-      j = last;
-      while (i < j)
+      while ((jogos[i]->linha_n <= jogos[prim]->linha_n) && (i < last))
+        i++;
+
+      while (jogos[j]->linha_n > jogos[prim]->linha_n)
+        j--;
+
+      if (i < j)
       {
-        while ((jogos[i]->linha_n <= jogos[prim]->linha_n) && (i < last))
-          i++;
-
-        while (jogos[j]->linha_n > jogos[prim]->linha_n)
-          j--;
-
-        if (i < j)
-        {
-          {
-            temp = jogos[i];
-            jogos[i] = jogos[j];
-            jogos[j] = temp;
-          }
-        }
-        else
-        {
-          
-        }
-
+        temp = jogos[i];
+        jogos[i] = jogos[j];
+        jogos[j] = temp;
+      }
+      else
+      {
+        
       }
 
-      temp = jogos[prim];
-      jogos[prim] = jogos[j];
-      jogos[j] = temp;
-      quicksort_jogos(jogos, first, j - 1);
-      quicksort_jogos(jogos, j + 1, last);
     }
+
+    temp = jogos[prim];
+    jogos[prim] = jogos[j];
+    jogos[j] = temp;
+    quicksort_jogos(jogos, first, j - 1);
+    quicksort_jogos(jogos, j + 1, last);
   }
   else
   {
@@ -152,21 +146,19 @@ Jogo *HTprocura_jogo(char *nome, Jogo **jogos, int dim)
   }
   else
   {
+    jogo_aux = jogos[chave];
+    while ((strcmp(nome, jogo_aux->nome) != 0) && (jogo_aux->next != 0))
+      jogo_aux = jogo_aux->next;
+
+    if (strcmp(nome, jogo_aux->nome) == 0)
     {
-      jogo_aux = jogos[chave];
-      while ((strcmp(nome, jogo_aux->nome) != 0) && (jogo_aux->next != 0))
-        jogo_aux = jogo_aux->next;
-
-      if (strcmp(nome, jogo_aux->nome) == 0)
-      {
-        return jogo_aux;
-      }
-      else
-      {
-        return 0;
-      }
-
+      return jogo_aux;
     }
+    else
+    {
+      return 0;
+    }
+
   }
 
 }

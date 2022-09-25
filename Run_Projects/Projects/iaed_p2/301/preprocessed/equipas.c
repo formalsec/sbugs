@@ -29,11 +29,9 @@ NodeEq *adicionaEquipas(NodeEq *headEq, Hash_tableEq *equipasT, int nl)
   {
     if (!strcmp(node->equipa->nome, aux_string))
     {
-      {
-        printf("%d Equipa existente.\n", nl);
-        free(aux_string);
-        return headEq;
-      }
+      printf("%d Equipa existente.\n", nl);
+      free(aux_string);
+      return headEq;
     }
     else
     {
@@ -91,11 +89,9 @@ void procuraEquipa(Hash_tableEq *equipasT, int nl)
   {
     if (!strcmp(node->equipa->nome, ptr_buffer))
     {
-      {
-        printf("%d %s %d\n", nl, node->equipa->nome, node->equipa->vitorias);
-        free(ptr_buffer);
-        return;
-      }
+      printf("%d %s %d\n", nl, node->equipa->nome, node->equipa->vitorias);
+      free(ptr_buffer);
+      return;
     }
     else
     {

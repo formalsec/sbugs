@@ -37,24 +37,18 @@ Tree *insertTree(Tree *t, struct node *x)
   Tree *n;
   if (t == 0)
   {
-    {
-      n = newNode(x);
-      return n;
-    }
+    n = newNode(x);
+    return n;
   }
   else
   {
     if (strcmp(x->game.nome, t->x->game.nome) < 0)
     {
-      {
-        t->l = insertTree(t->l, x);
-      }
+      t->l = insertTree(t->l, x);
     }
     else
     {
-      {
-        t->r = insertTree(t->r, x);
-      }
+      t->r = insertTree(t->r, x);
     }
 
   }
@@ -113,10 +107,8 @@ Tree *deleteR(Tree *h, char *nome, link *head, link *last, int nl)
   struct node *x;
   if (h == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-      return h;
-    }
+    printf("%d Jogo inexistente.\n", nl);
+    return h;
   }
   else
   {
@@ -132,44 +124,38 @@ Tree *deleteR(Tree *h, char *nome, link *head, link *last, int nl)
       }
       else
       {
+        if ((h->l != 0) && (h->r != 0))
         {
-          if ((h->l != 0) && (h->r != 0))
+          aux = max(h->l);
+          x = h->x;
+          h->x = aux->x;
+          aux->x = x;
+          h->l = deleteR(h->l, aux->x->game.nome, head, last, nl);
+        }
+        else
+        {
+          aux = h;
+          if ((h->l == 0) && (h->r == 0))
           {
-            {
-              aux = max(h->l);
-              x = h->x;
-              h->x = aux->x;
-              aux->x = x;
-              h->l = deleteR(h->l, aux->x->game.nome, head, last, nl);
-            }
+            h = 0;
           }
           else
           {
+            if (h->l == 0)
             {
-              aux = h;
-              if ((h->l == 0) && (h->r == 0))
-              {
-                h = 0;
-              }
-              else
-              {
-                if (h->l == 0)
-                {
-                  h = h->r;
-                }
-                else
-                {
-                  h = h->l;
-                }
-
-              }
-
-              rmNode(aux->x, head, last);
-              free(aux);
+              h = h->r;
             }
+            else
+            {
+              h = h->l;
+            }
+
           }
 
+          rmNode(aux->x, head, last);
+          free(aux);
         }
+
       }
 
     }
@@ -200,15 +186,13 @@ void freeTree(Tree *node)
 {
   if (node != 0)
   {
-    {
-      freeTree(node->r);
-      free(node->x->game.nome);
-      free(node->x->game.equipa1);
-      free(node->x->game.equipa2);
-      free(node->x);
-      freeTree(node->l);
-      free(node);
-    }
+    freeTree(node->r);
+    free(node->x->game.nome);
+    free(node->x->game.equipa1);
+    free(node->x->game.equipa2);
+    free(node->x);
+    freeTree(node->l);
+    free(node);
   }
   else
   {
@@ -314,41 +298,35 @@ Tree *AVLbalance(Tree *h)
   balanceFactor = balance(h);
   if (balanceFactor > 1)
   {
+    if (balance(h->l) >= 0)
     {
-      if (balance(h->l) >= 0)
-      {
-        h = rotR(h);
-      }
-      else
-      {
-        h = rotLR(h);
-      }
-
+      h = rotR(h);
     }
+    else
+    {
+      h = rotLR(h);
+    }
+
   }
   else
   {
     if (balanceFactor < (-1))
     {
+      if (balance(h->r) <= 0)
       {
-        if (balance(h->r) <= 0)
-        {
-          h = rotL(h);
-        }
-        else
-        {
-          h = rotRL(h);
-        }
-
+        h = rotL(h);
       }
+      else
+      {
+        h = rotRL(h);
+      }
+
     }
     else
     {
-      {
-        hleft = height(h->l);
-        hright = height(h->r);
-        h->height = (hleft > hright) ? (hleft + 1) : (hright + 1);
-      }
+      hleft = height(h->l);
+      hright = height(h->r);
+      h->height = (hleft > hright) ? (hleft + 1) : (hright + 1);
     }
 
   }
@@ -389,24 +367,18 @@ Tree2 *insertTree2(Tree2 *t, char *x)
   Tree2 *n;
   if (t == 0)
   {
-    {
-      n = newNode2(x);
-      return n;
-    }
+    n = newNode2(x);
+    return n;
   }
   else
   {
     if (strcmp(x, t->x) < 0)
     {
-      {
-        t->l = insertTree2(t->l, x);
-      }
+      t->l = insertTree2(t->l, x);
     }
     else
     {
-      {
-        t->r = insertTree2(t->r, x);
-      }
+      t->r = insertTree2(t->r, x);
     }
 
   }
@@ -543,41 +515,35 @@ Tree2 *AVLbalance2(Tree2 *h)
   balanceFactor = balance2(h);
   if (balanceFactor > 1)
   {
+    if (balance2(h->l) >= 0)
     {
-      if (balance2(h->l) >= 0)
-      {
-        h = rotR2(h);
-      }
-      else
-      {
-        h = rotLR2(h);
-      }
-
+      h = rotR2(h);
     }
+    else
+    {
+      h = rotLR2(h);
+    }
+
   }
   else
   {
     if (balanceFactor < (-1))
     {
+      if (balance2(h->r) <= 0)
       {
-        if (balance2(h->r) <= 0)
-        {
-          h = rotL2(h);
-        }
-        else
-        {
-          h = rotRL2(h);
-        }
-
+        h = rotL2(h);
       }
+      else
+      {
+        h = rotRL2(h);
+      }
+
     }
     else
     {
-      {
-        hleft = height2(h->l);
-        hright = height2(h->r);
-        h->height = (hleft > hright) ? (hleft + 1) : (hright + 1);
-      }
+      hleft = height2(h->l);
+      hright = height2(h->r);
+      h->height = (hleft > hright) ? (hleft + 1) : (hright + 1);
     }
 
   }
@@ -589,12 +555,10 @@ void freeTree2(Tree2 *node)
 {
   if (node != 0)
   {
-    {
-      freeTree2(node->r);
-      free(node->x);
-      freeTree2(node->l);
-      free(node);
-    }
+    freeTree2(node->r);
+    free(node->x);
+    freeTree2(node->l);
+    free(node);
   }
   else
   {
@@ -631,19 +595,17 @@ void printMostWins(Tree2 *t, int win, int nl)
 {
   if (t != 0)
   {
+    printMostWins(t->l, win, nl);
+    if (t->win == win)
     {
-      printMostWins(t->l, win, nl);
-      if (t->win == win)
-      {
-        printf("%d * %s\n", nl, t->x);
-      }
-      else
-      {
-        
-      }
-
-      printMostWins(t->r, win, nl);
+      printf("%d * %s\n", nl, t->x);
     }
+    else
+    {
+      
+    }
+
+    printMostWins(t->r, win, nl);
   }
   else
   {

@@ -109,18 +109,14 @@ void maior_ganhos(hashtable_equipa *ht, int *maior_n_ganhos, int *n_equipas)
     {
       if (head->e->n_ganhos > (*maior_n_ganhos))
       {
-        {
-          *maior_n_ganhos = head->e->n_ganhos;
-          *n_equipas = 1;
-        }
+        *maior_n_ganhos = head->e->n_ganhos;
+        *n_equipas = 1;
       }
       else
       {
         if (head->e->n_ganhos == (*maior_n_ganhos))
         {
-          {
-            (*n_equipas)++;
-          }
+          (*n_equipas)++;
         }
         else
         {
@@ -157,10 +153,8 @@ void nome_equipas_maior_ganhos(hashtable_equipa *ht, const int maior_n_ganhos, c
     {
       if (head->e->n_ganhos == maior_n_ganhos)
       {
-        {
-          equipas[j] = strdup(head->e->nome);
-          j++;
-        }
+        equipas[j] = strdup(head->e->nome);
+        j++;
       }
       else
       {

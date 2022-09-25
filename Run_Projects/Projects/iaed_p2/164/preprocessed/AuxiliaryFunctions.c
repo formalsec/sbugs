@@ -34,9 +34,7 @@ int partition(char **vetor, int l, int r)
 
     if (i < j)
     {
-      {
-        exch(vetor, i, j);
-      }
+      exch(vetor, i, j);
     }
     else
     {
@@ -81,11 +79,9 @@ char **CreatesTeamNames(char **team_names, Team *hash_team, int count, int best)
   for (; n < count; i++)
     if ((hash_team[i] != 0) && (Wins(hash_team[i]) == best))
   {
-    {
-      team_names[n] = (char *) malloc(1024);
-      strcpy(team_names[n], TeamName(hash_team[i]));
-      n++;
-    }
+    team_names[n] = (char *) malloc(1024);
+    strcpy(team_names[n], TeamName(hash_team[i]));
+    n++;
   }
   else
   {

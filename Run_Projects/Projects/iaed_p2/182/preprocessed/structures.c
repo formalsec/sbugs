@@ -16,40 +16,34 @@ int new_team(tlink **team_table, char *name)
   new_team->victories = 0;
   if (team_table[key] == 0)
   {
-    {
-      team_table[key] = malloc(sizeof(tlink));
-      team_table[key]->next = 0;
-      team_table[key]->t = new_team;
-      return 1;
-    }
+    team_table[key] = malloc(sizeof(tlink));
+    team_table[key]->next = 0;
+    team_table[key]->t = new_team;
+    return 1;
   }
   else
   {
+    while (aux != 0)
     {
-      while (aux != 0)
+      if (strcmp(aux->t->name, name) == 0)
       {
-        if (strcmp(aux->t->name, name) == 0)
-        {
-          {
-            free(new_team->name);
-            free(new_team);
-            return 0;
-          }
-        }
-        else
-        {
-          
-        }
-
-        aux = aux->next;
+        free(new_team->name);
+        free(new_team);
+        return 0;
+      }
+      else
+      {
+        
       }
 
-      aux = malloc(sizeof(tlink));
-      aux->next = team_table[key];
-      aux->t = new_team;
-      team_table[key] = aux;
-      return 1;
+      aux = aux->next;
     }
+
+    aux = malloc(sizeof(tlink));
+    aux->next = team_table[key];
+    aux->t = new_team;
+    team_table[key] = aux;
+    return 1;
   }
 
 }
@@ -63,10 +57,8 @@ team *team_table_search(tlink **team_table, char *name)
   {
     if (strcmp(runthrough->t->name, name) == 0)
     {
-      {
-        result = runthrough->t;
-        return result;
-      }
+      result = runthrough->t;
+      return result;
     }
     else
     {
@@ -149,55 +141,45 @@ void new_game(glink **game_table, tlink **team_table, game **first_game, game **
 
   if ((*first_game) == 0)
   {
-    {
-      new_game->previous = 0;
-      new_game->next = 0;
-      *last_game = (*first_game = new_game);
-    }
+    new_game->previous = 0;
+    new_game->next = 0;
+    *last_game = (*first_game = new_game);
   }
   else
   {
     if (first_game[0]->next == 0)
     {
-      {
-        new_game->previous = *last_game;
-        new_game->next = 0;
-        last_game[0]->next = new_game;
-        first_game[0]->next = new_game;
-        *last_game = new_game;
-      }
+      new_game->previous = *last_game;
+      new_game->next = 0;
+      last_game[0]->next = new_game;
+      first_game[0]->next = new_game;
+      *last_game = new_game;
     }
     else
     {
-      {
-        new_game->previous = *last_game;
-        new_game->next = 0;
-        last_game[0]->next = new_game;
-        *last_game = new_game;
-      }
+      new_game->previous = *last_game;
+      new_game->next = 0;
+      last_game[0]->next = new_game;
+      *last_game = new_game;
     }
 
   }
 
   if (game_table[key] == 0)
   {
-    {
-      game_table[key] = malloc(sizeof(glink));
-      game_table[key]->next = 0;
-      game_table[key]->g = new_game;
-    }
+    game_table[key] = malloc(sizeof(glink));
+    game_table[key]->next = 0;
+    game_table[key]->g = new_game;
   }
   else
   {
-    {
-      while (aux != 0)
-        aux = aux->next;
+    while (aux != 0)
+      aux = aux->next;
 
-      aux = malloc(sizeof(glink));
-      aux->next = game_table[key];
-      aux->g = new_game;
-      game_table[key] = aux;
-    }
+    aux = malloc(sizeof(glink));
+    aux->next = game_table[key];
+    aux->g = new_game;
+    game_table[key] = aux;
   }
 
 }
@@ -211,10 +193,8 @@ game *game_table_search(glink **game_table, char *name)
   {
     if (strcmp(runthrough->g->name, name) == 0)
     {
-      {
-        result = runthrough->g;
-        return result;
-      }
+      result = runthrough->g;
+      return result;
     }
     else
     {
@@ -236,132 +216,112 @@ void delete_game(game **first_game, game **last_game, glink **game_table, tlink 
   table_aux = game_table[key];
   if (strcmp(table_aux->g->name, name) == 0)
   {
+    if (table_aux->g->score1 < table_aux->g->score2)
     {
-      if (table_aux->g->score1 < table_aux->g->score2)
+      remove_victory(team_table, table_aux->g->team2);
+    }
+    else
+    {
+      if (table_aux->g->score2 < table_aux->g->score1)
       {
-        remove_victory(team_table, table_aux->g->team2);
+        remove_victory(team_table, table_aux->g->team1);
       }
       else
       {
-        if (table_aux->g->score2 < table_aux->g->score1)
-        {
-          remove_victory(team_table, table_aux->g->team1);
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      game_table[key] = game_table[key]->next;
-      free(table_aux);
     }
+
+    game_table[key] = game_table[key]->next;
+    free(table_aux);
   }
   else
   {
+    glink *table_prev = 0;
+    while (table_aux != 0)
     {
-      glink *table_prev = 0;
-      while (table_aux != 0)
+      if (strcmp(table_aux->g->name, name) == 0)
       {
-        if (strcmp(table_aux->g->name, name) == 0)
+        table_prev->next = table_aux->next;
+        if (table_aux->g->score1 < table_aux->g->score2)
         {
-          {
-            table_prev->next = table_aux->next;
-            if (table_aux->g->score1 < table_aux->g->score2)
-            {
-              remove_victory(team_table, table_aux->g->team2);
-            }
-            else
-            {
-              if (table_aux->g->score2 < table_aux->g->score1)
-              {
-                remove_victory(team_table, table_aux->g->team1);
-              }
-              else
-              {
-                
-              }
-
-            }
-
-            table_prev->next = table_aux->next;
-            free(table_aux);
-            break;
-          }
+          remove_victory(team_table, table_aux->g->team2);
         }
         else
         {
-          
+          if (table_aux->g->score2 < table_aux->g->score1)
+          {
+            remove_victory(team_table, table_aux->g->team1);
+          }
+          else
+          {
+            
+          }
+
         }
 
-        table_prev = table_aux;
-        table_aux = table_aux->next;
+        table_prev->next = table_aux->next;
+        free(table_aux);
+        break;
+      }
+      else
+      {
+        
       }
 
+      table_prev = table_aux;
+      table_aux = table_aux->next;
     }
+
   }
 
   runthrough = *first_game;
   if (strcmp(first_game[0]->name, name) == 0)
   {
+    if (first_game == last_game)
     {
-      if (first_game == last_game)
-      {
-        {
-          *first_game = (*last_game = 0);
-          destroy_game(runthrough);
-        }
-      }
-      else
-      {
-        {
-          *first_game = first_game[0]->next;
-          destroy_game(runthrough);
-        }
-      }
-
+      *first_game = (*last_game = 0);
+      destroy_game(runthrough);
     }
+    else
+    {
+      *first_game = first_game[0]->next;
+      destroy_game(runthrough);
+    }
+
   }
   else
   {
+    while (runthrough != 0)
     {
-      while (runthrough != 0)
+      if (strcmp(runthrough->name, name) == 0)
       {
-        if (strcmp(runthrough->name, name) == 0)
+        if (runthrough == (*last_game))
         {
-          {
-            if (runthrough == (*last_game))
-            {
-              {
-                *last_game = runthrough->previous;
-                last_game[0]->next = 0;
-                destroy_game(runthrough);
-                break;
-              }
-            }
-            else
-            {
-              {
-                game_aux = runthrough->previous;
-                game_aux->next = runthrough->next;
-                runthrough->next->previous = game_aux;
-                destroy_game(runthrough);
-                break;
-              }
-            }
-
-          }
+          *last_game = runthrough->previous;
+          last_game[0]->next = 0;
+          destroy_game(runthrough);
+          break;
         }
         else
         {
-          
+          game_aux = runthrough->previous;
+          game_aux->next = runthrough->next;
+          runthrough->next->previous = game_aux;
+          destroy_game(runthrough);
+          break;
         }
 
-        runthrough = runthrough->next;
+      }
+      else
+      {
+        
       }
 
+      runthrough = runthrough->next;
     }
+
   }
 
 }

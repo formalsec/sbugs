@@ -83,10 +83,8 @@ void insert_game(game *t, char *name, char *team1, char *team2, int *score1, int
   t_list->score2 = *score2;
   if (game_head == 0)
   {
-    {
-      t_list->next = game_head;
-      game_head = t_list;
-    }
+    t_list->next = game_head;
+    game_head = t_list;
   }
   else
   {
@@ -113,10 +111,8 @@ void insert_team(team *t, char *name)
   t_list->wins = 0;
   if (team_head == 0)
   {
-    {
-      t_list->next = team_head;
-      team_head = t_list;
-    }
+    t_list->next = team_head;
+    team_head = t_list;
   }
   else
   {
@@ -247,48 +243,38 @@ void a(int *l)
   (*l)++;
   if (game_search(name) != 0)
   {
-    {
-      free(p);
-      printf("%d Jogo existente.\n", *l);
-    }
+    free(p);
+    printf("%d Jogo existente.\n", *l);
   }
   else
   {
     if ((team_search(team1) == 0) || (team_search(team2) == 0))
     {
-      {
-        free(p);
-        printf("%d Equipa inexistente.\n", *l);
-      }
+      free(p);
+      printf("%d Equipa inexistente.\n", *l);
     }
     else
     {
+      insert_game(p, name, team1, team2, &score1, &score2);
+      if (score1 > score2)
       {
-        insert_game(p, name, team1, team2, &score1, &score2);
-        if (score1 > score2)
+        team_search(game_search(name)->team1)->wins += 1;
+        teamlist_search(game_search(name)->team1)->wins += 1;
+      }
+      else
+      {
+        if (score2 > score1)
         {
-          {
-            team_search(game_search(name)->team1)->wins += 1;
-            teamlist_search(game_search(name)->team1)->wins += 1;
-          }
+          team_search(game_search(name)->team2)->wins += 1;
+          teamlist_search(game_search(name)->team2)->wins += 1;
         }
         else
         {
-          if (score2 > score1)
-          {
-            {
-              team_search(game_search(name)->team2)->wins += 1;
-              teamlist_search(game_search(name)->team2)->wins += 1;
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
+
     }
 
   }
@@ -309,16 +295,12 @@ void A(int *l)
   (*l)++;
   if (team_search(name) == 0)
   {
-    {
-      insert_team(p, name);
-    }
+    insert_team(p, name);
   }
   else
   {
-    {
-      printf("%d Equipa existente.\n", *l);
-      free(p);
-    }
+    printf("%d Equipa existente.\n", *l);
+    free(p);
   }
 
 }
@@ -395,42 +377,34 @@ void r(int *l)
   getchar();
   if (game_search(name) == 0)
   {
-    {
-      (*l)++;
-      printf("%d Jogo inexistente.\n", *l);
-    }
+    (*l)++;
+    printf("%d Jogo inexistente.\n", *l);
   }
   else
   {
+    int score1 = game_search(name)->score1;
+    int score2 = game_search(name)->score2;
+    if (score1 > score2)
     {
-      int score1 = game_search(name)->score1;
-      int score2 = game_search(name)->score2;
-      if (score1 > score2)
+      team_search(game_search(name)->team1)->wins -= 1;
+      teamlist_search(game_search(name)->team1)->wins -= 1;
+    }
+    else
+    {
+      if (score2 > score1)
       {
-        {
-          team_search(game_search(name)->team1)->wins -= 1;
-          teamlist_search(game_search(name)->team1)->wins -= 1;
-        }
+        team_search(game_search(name)->team2)->wins -= 1;
+        teamlist_search(game_search(name)->team2)->wins -= 1;
       }
       else
       {
-        if (score2 > score1)
-        {
-          {
-            team_search(game_search(name)->team2)->wins -= 1;
-            teamlist_search(game_search(name)->team2)->wins -= 1;
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      game_delete_hash(name);
-      game_delete_list(name);
     }
+
+    game_delete_hash(name);
+    game_delete_list(name);
   }
 
 }
@@ -451,40 +425,34 @@ void s(int *l)
   getchar();
   if (game_search(name) != 0)
   {
+    score1 = new_sym_var(sizeof(int) * 8);
+    score2 = new_sym_var(sizeof(int) * 8);
+    getchar();
+    node = gamelist_search(name);
+    tmp = game_search(name);
+    tmp->score1 = score1;
+    tmp->score2 = score2;
+    node->score1 = score1;
+    node->score2 = score2;
+    if (score1 > score2)
     {
-      score1 = new_sym_var(sizeof(int) * 8);
-      score2 = new_sym_var(sizeof(int) * 8);
-      getchar();
-      node = gamelist_search(name);
-      tmp = game_search(name);
-      tmp->score1 = score1;
-      tmp->score2 = score2;
-      node->score1 = score1;
-      node->score2 = score2;
-      if (score1 > score2)
+      team_search(game_search(name)->team1)->wins += 1;
+      teamlist_search(game_search(name)->team1)->wins += 1;
+    }
+    else
+    {
+      if (score2 > score1)
       {
-        {
-          team_search(game_search(name)->team1)->wins += 1;
-          teamlist_search(game_search(name)->team1)->wins += 1;
-        }
+        team_search(game_search(name)->team2)->wins += 1;
+        teamlist_search(game_search(name)->team2)->wins += 1;
       }
       else
       {
-        if (score2 > score1)
-        {
-          {
-            team_search(game_search(name)->team2)->wins += 1;
-            teamlist_search(game_search(name)->team2)->wins += 1;
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
     }
+
   }
   else
   {

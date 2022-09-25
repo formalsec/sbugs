@@ -68,20 +68,18 @@ void new_game(Games *games, HashGames *hashtable_games, HashTeams *hashtable_tea
   score_t2 = new_sym_var(sizeof(int) * 8);
   if (verify_conditions_to_add_game(NL, game_name, t1_name, t2_name, hashtable_games, hashtable_teams) != 0)
   {
+    game *new_game = alloc_game(game_name, t1_name, t2_name, score_t1, score_t2);
+    add_last_game(games, new_game);
+    add_game_to_hash(new_game, hashtable_games);
+    if (strcmp(new_game->winner, "NONE") != 0)
     {
-      game *new_game = alloc_game(game_name, t1_name, t2_name, score_t1, score_t2);
-      add_last_game(games, new_game);
-      add_game_to_hash(new_game, hashtable_games);
-      if (strcmp(new_game->winner, "NONE") != 0)
-      {
-        sum_win_in_team(new_game->winner, hashtable_teams);
-      }
-      else
-      {
-        
-      }
-
+      sum_win_in_team(new_game->winner, hashtable_teams);
     }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -224,43 +222,39 @@ void remove_game(Games *games, HashGames *hashtable, int NL, HashTeams *hashtabl
   game_x = hash_lookfor_game(hashtable, game_name);
   if (game_x != 0)
   {
+    int h = hash(game_x->name, hashtable->cap);
+    int inc = (1 + (3 * h)) % hashtable->cap;
+    if (inc == 0)
     {
-      int h = hash(game_x->name, hashtable->cap);
-      int inc = (1 + (3 * h)) % hashtable->cap;
-      if (inc == 0)
-      {
-        inc++;
-      }
-      else
-      {
-        
-      }
+      inc++;
+    }
+    else
+    {
+      
+    }
 
-      while ((hashtable->slots[h].game_slot != 0) || (hashtable->slots[h].occ == 1))
+    while ((hashtable->slots[h].game_slot != 0) || (hashtable->slots[h].occ == 1))
+    {
+      if ((hashtable->slots[h].game_slot != 0) && (strcmp(hashtable->slots[h].game_slot->name, game_name) == 0))
       {
-        if ((hashtable->slots[h].game_slot != 0) && (strcmp(hashtable->slots[h].game_slot->name, game_name) == 0))
+        if (strcmp(game_x->winner, "NONE") != 0)
         {
-          {
-            if (strcmp(game_x->winner, "NONE") != 0)
-            {
-              remove_team_win(hashtable_teams, game_x->winner);
-            }
-            else
-            {
-              
-            }
-
-            erase_game_node(games, game_x, hashtable, h);
-          }
+          remove_team_win(hashtable_teams, game_x->winner);
         }
         else
         {
-          h = (h + inc) % hashtable->cap;
+          
         }
 
+        erase_game_node(games, game_x, hashtable, h);
+      }
+      else
+      {
+        h = (h + inc) % hashtable->cap;
       }
 
     }
+
   }
   else
   {
@@ -311,20 +305,18 @@ void change_game_score(HashGames *hashtable_games, HashTeams *hashtable_teams, i
   game_x = hash_lookfor_game(hashtable_games, game_name);
   if (game_x != 0)
   {
+    strcpy(new_winner, choose_winner(score_t1, score_t2, game_x->t1_name, game_x->t2_name));
+    if (strcmp(new_winner, game_x->winner) != 0)
     {
-      strcpy(new_winner, choose_winner(score_t1, score_t2, game_x->t1_name, game_x->t2_name));
-      if (strcmp(new_winner, game_x->winner) != 0)
-      {
-        change_winner(game_x, new_winner, hashtable_teams);
-      }
-      else
-      {
-        
-      }
-
-      game_x->score_t1 = score_t1;
-      game_x->score_t2 = score_t2;
+      change_winner(game_x, new_winner, hashtable_teams);
     }
+    else
+    {
+      
+    }
+
+    game_x->score_t1 = score_t1;
+    game_x->score_t2 = score_t2;
   }
   else
   {
@@ -478,25 +470,23 @@ void rehash_games(HashGames *hashtable, Slot *new_slots, Slot *old_slots, int ne
   {
     if (old_slots[i].game_slot != 0)
     {
+      new_size++;
+      h = hash(old_slots[i].game_slot->name, new_cap);
+      inc = (1 + (3 * h)) % new_cap;
+      if (inc == 0)
       {
-        new_size++;
-        h = hash(old_slots[i].game_slot->name, new_cap);
-        inc = (1 + (3 * h)) % new_cap;
-        if (inc == 0)
-        {
-          inc++;
-        }
-        else
-        {
-          
-        }
-
-        while (new_slots[h].game_slot != 0)
-          h = (h + inc) % new_cap;
-
-        new_slots[h].game_slot = old_slots[i].game_slot;
-        new_slots[h].occ = 1;
+        inc++;
       }
+      else
+      {
+        
+      }
+
+      while (new_slots[h].game_slot != 0)
+        h = (h + inc) % new_cap;
+
+      new_slots[h].game_slot = old_slots[i].game_slot;
+      new_slots[h].occ = 1;
     }
     else
     {

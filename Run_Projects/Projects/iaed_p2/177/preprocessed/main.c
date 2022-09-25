@@ -51,24 +51,18 @@ int main()
         score2 = new_sym_var(sizeof(int) * 8);
         if (pertence_jogo(jogos, nome) == 1)
       {
-        {
-          printf("%d Jogo existente.\n", nl);
-        }
+        printf("%d Jogo existente.\n", nl);
       }
       else
       {
         if ((pertence_equipa(equipas, equipa1) == 0) || (pertence_equipa(equipas, equipa2) == 0))
         {
-          {
-            printf("%d Equipa inexistente.\n", nl);
-          }
+          printf("%d Equipa inexistente.\n", nl);
         }
         else
         {
-          {
-            jogos = insere_jogo(jogos, lista_jogos, nome, equipa1, equipa2, score1, score2);
-            equipas = insere_vitoria(equipas, equipa1, equipa2, score1, score2);
-          }
+          jogos = insere_jogo(jogos, lista_jogos, nome, equipa1, equipa2, score1, score2);
+          equipas = insere_vitoria(equipas, equipa1, equipa2, score1, score2);
         }
 
       }
@@ -90,15 +84,11 @@ int main()
         nome[10 - 1] = '\0';
         if (pertence_jogo(jogos, nome) == 0)
       {
-        {
-          printf("%d Jogo inexistente.\n", nl);
-        }
+        printf("%d Jogo inexistente.\n", nl);
       }
       else
       {
-        {
-          print_jogo(jogos, nome, nl);
-        }
+        print_jogo(jogos, nome, nl);
       }
 
         break;
@@ -113,16 +103,12 @@ int main()
         nome[10 - 1] = '\0';
         if (pertence_jogo(jogos, nome) == 0)
       {
-        {
-          printf("%d Jogo inexistente.\n", nl);
-        }
+        printf("%d Jogo inexistente.\n", nl);
       }
       else
       {
-        {
-          equipas = elimina_vitoria(equipas, jogos, nome);
-          jogos = elimina_jogo(jogos, nome);
-        }
+        equipas = elimina_vitoria(equipas, jogos, nome);
+        jogos = elimina_jogo(jogos, nome);
       }
 
         break;
@@ -139,16 +125,12 @@ int main()
         score2 = new_sym_var(sizeof(int) * 8);
         if (pertence_jogo(jogos, nome) == 0)
       {
-        {
-          printf("%d Jogo inexistente.\n", nl);
-        }
+        printf("%d Jogo inexistente.\n", nl);
       }
       else
       {
-        {
-          equipas = atualiza_vitoria(equipas, jogos, nome, score1, score2);
-          jogos = altera_score(jogos, nome, score1, score2);
-        }
+        equipas = atualiza_vitoria(equipas, jogos, nome, score1, score2);
+        jogos = altera_score(jogos, nome, score1, score2);
       }
 
         break;
@@ -163,15 +145,11 @@ int main()
         nome[10 - 1] = '\0';
         if (pertence_equipa(equipas, nome) == 1)
       {
-        {
-          printf("%d Equipa existente.\n", nl);
-        }
+        printf("%d Equipa existente.\n", nl);
       }
       else
       {
-        {
-          equipas = insere_equipa(equipas, nome, 0);
-        }
+        equipas = insere_equipa(equipas, nome, 0);
       }
 
         break;
@@ -186,16 +164,12 @@ int main()
         nome[10 - 1] = '\0';
         if (pertence_equipa(equipas, nome) == 0)
       {
-        {
-          printf("%d Equipa inexistente.\n", nl);
-        }
+        printf("%d Equipa inexistente.\n", nl);
       }
       else
       {
-        {
-          n_jogos_ganhos = jogos_ganhos(equipas, nome);
-          printf("%d %s %d\n", nl, nome, n_jogos_ganhos);
-        }
+        n_jogos_ganhos = jogos_ganhos(equipas, nome);
+        printf("%d %s %d\n", nl, nome, n_jogos_ganhos);
       }
 
         break;

@@ -11,13 +11,11 @@ ptrTeam teamInit(char *name)
 {
   if (strlen(name) < 1023)
   {
-    {
-      ptrTeam team = malloc(sizeof(struct team));
-      team->name = malloc(((sizeof(char *)) * strlen(name)) + 1);
-      strcpy(team->name, name);
-      team->wins = 0;
-      return team;
-    }
+    ptrTeam team = malloc(sizeof(struct team));
+    team->name = malloc(((sizeof(char *)) * strlen(name)) + 1);
+    strcpy(team->name, name);
+    team->wins = 0;
+    return team;
   }
   else
   {
@@ -64,10 +62,8 @@ void teamPrint(int NL, ptrTeam team)
 {
   if (!teamEmpty(team))
   {
-    {
-      printf("%d %s %d\n", NL, teamName(team), teamWins(team));
-      return;
-    }
+    printf("%d %s %d\n", NL, teamName(team), teamWins(team));
+    return;
   }
   else
   {

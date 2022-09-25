@@ -62,9 +62,7 @@ Game *search_game(NodeGame *head, char *nameGame)
     currentName = current->game->name;
     if (strcmp(currentName, nameGame) == 0)
     {
-      {
-        return current->game;
-      }
+      return current->game;
     }
     else
     {
@@ -106,24 +104,18 @@ NodeGame *remove_el_hash(NodeGame *head, char *gameName)
   {
     if (strcmp(t->game->name, gameName) == 0)
     {
+      if (t == head)
       {
-        if (t == head)
-        {
-          {
-            head = t->next;
-          }
-        }
-        else
-        {
-          {
-            prev->next = t->next;
-          }
-        }
-
-        free_game(t->game);
-        free(t);
-        break;
+        head = t->next;
       }
+      else
+      {
+        prev->next = t->next;
+      }
+
+      free_game(t->game);
+      free(t);
+      break;
     }
     else
     {
@@ -143,23 +135,17 @@ NodeGame *remove_el_list(NodeGame *head, char *gameName)
   {
     if (strcmp(t->game->name, gameName) == 0)
     {
+      if (t == head)
       {
-        if (t == head)
-        {
-          {
-            head = t->next;
-          }
-        }
-        else
-        {
-          {
-            prev->next = t->next;
-          }
-        }
-
-        free(t);
-        break;
+        head = t->next;
       }
+      else
+      {
+        prev->next = t->next;
+      }
+
+      free(t);
+      break;
     }
     else
     {

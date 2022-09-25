@@ -45,9 +45,7 @@ void liberta_tab(tab_disp t, void (*liberta_item)(void *))
   {
     if (t->tab[i] != 0)
     {
-      {
-        liberta_lista(t->tab[i], liberta_item);
-      }
+      liberta_lista(t->tab[i], liberta_item);
     }
     else
     {

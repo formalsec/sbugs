@@ -30,15 +30,11 @@ int VerificaEncomenda(int utilizadosenc, int ide)
 {
   if (ide >= utilizadosenc)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
-    {
-      return 1;
-    }
+    return 1;
   }
 
 }
@@ -47,15 +43,11 @@ int VerificaProduto(int utilizadosprod, int idp)
 {
   if (idp >= utilizadosprod)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
-    {
-      return 1;
-    }
+    return 1;
   }
 
 }
@@ -64,15 +56,11 @@ int VerificaStock(int idp, int qtd)
 {
   if (sistemaprod[idp].stock >= qtd)
   {
-    {
-      return 1;
-    }
+    return 1;
   }
   else
   {
-    {
-      return 0;
-    }
+    return 0;
   }
 
 }
@@ -81,9 +69,7 @@ int VerificaPeso(int ide, int idp, int qtd)
 {
   if ((sistemaenc[ide].pesoenc + (sistemaprod[idp].pesoprod * qtd)) > 200)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -100,12 +86,10 @@ int EncontraProduto(int qtd, int ide, int idp)
   {
     if (sistemaenc[ide].Vprodutos[i].idp == sistemaprod[idp].idp)
     {
-      {
-        sistemaenc[ide].Vprodutos[i].stock += qtd;
-        sistemaprod[idp].stock -= qtd;
-        sistemaenc[ide].pesoenc += sistemaprod[idp].pesoprod * qtd;
-        return 1;
-      }
+      sistemaenc[ide].Vprodutos[i].stock += qtd;
+      sistemaprod[idp].stock -= qtd;
+      sistemaenc[ide].pesoenc += sistemaprod[idp].pesoprod * qtd;
+      return 1;
     }
     else
     {
@@ -136,22 +120,20 @@ void RemoveDaEncomenda(int ide, int idp)
   {
     if (sistemaenc[ide].Vprodutos[i].idp == idp)
     {
-      {
-        sistemaprod[idp].stock += sistemaenc[ide].Vprodutos[i].stock;
-        sistemaenc[ide].pesoenc -= sistemaenc[ide].Vprodutos[i].stock * sistemaenc[ide].Vprodutos[i].pesoprod;
-        sistemaenc[ide].Vprodutos[i].idp = sistemaenc[ide].Vprodutos[sistemaenc[ide].elementos - 1].idp;
-        sistemaenc[ide].Vprodutos[i].stock = sistemaenc[ide].Vprodutos[sistemaenc[ide].elementos - 1].stock;
-        sistemaenc[ide].Vprodutos[i].pesoprod = sistemaenc[ide].Vprodutos[sistemaenc[ide].elementos - 1].pesoprod;
-        sistemaenc[ide].Vprodutos[i].preco = sistemaenc[ide].Vprodutos[sistemaenc[ide].elementos - 1].preco;
-        strcpy(sistemaenc[ide].Vprodutos[i].descricao, sistemaenc[ide].Vprodutos[sistemaenc[ide].elementos - 1].descricao);
-        sistemaenc[ide].Vprodutos[sistemaenc[ide].elementos - 1].idp = -1;
-        sistemaenc[ide].Vprodutos[sistemaenc[ide].elementos - 1].stock = 0;
-        sistemaenc[ide].Vprodutos[sistemaenc[ide].elementos - 1].pesoprod = 0;
-        sistemaenc[ide].Vprodutos[sistemaenc[ide].elementos - 1].preco = 0;
-        strcpy(sistemaenc[ide].Vprodutos[sistemaenc[ide].elementos - 1].descricao, "");
-        sistemaenc[ide].elementos--;
-        break;
-      }
+      sistemaprod[idp].stock += sistemaenc[ide].Vprodutos[i].stock;
+      sistemaenc[ide].pesoenc -= sistemaenc[ide].Vprodutos[i].stock * sistemaenc[ide].Vprodutos[i].pesoprod;
+      sistemaenc[ide].Vprodutos[i].idp = sistemaenc[ide].Vprodutos[sistemaenc[ide].elementos - 1].idp;
+      sistemaenc[ide].Vprodutos[i].stock = sistemaenc[ide].Vprodutos[sistemaenc[ide].elementos - 1].stock;
+      sistemaenc[ide].Vprodutos[i].pesoprod = sistemaenc[ide].Vprodutos[sistemaenc[ide].elementos - 1].pesoprod;
+      sistemaenc[ide].Vprodutos[i].preco = sistemaenc[ide].Vprodutos[sistemaenc[ide].elementos - 1].preco;
+      strcpy(sistemaenc[ide].Vprodutos[i].descricao, sistemaenc[ide].Vprodutos[sistemaenc[ide].elementos - 1].descricao);
+      sistemaenc[ide].Vprodutos[sistemaenc[ide].elementos - 1].idp = -1;
+      sistemaenc[ide].Vprodutos[sistemaenc[ide].elementos - 1].stock = 0;
+      sistemaenc[ide].Vprodutos[sistemaenc[ide].elementos - 1].pesoprod = 0;
+      sistemaenc[ide].Vprodutos[sistemaenc[ide].elementos - 1].preco = 0;
+      strcpy(sistemaenc[ide].Vprodutos[sistemaenc[ide].elementos - 1].descricao, "");
+      sistemaenc[ide].elementos--;
+      break;
     }
     else
     {
@@ -190,19 +172,15 @@ void merge(int precos[], int esquerda, int centro, int direita, int indices[])
   {
     if (auxp1[i1] <= auxp2[i2])
     {
-      {
-        precos[f] = auxp1[i1];
-        indices[f] = auxid1[i1];
-        i1++;
-      }
+      precos[f] = auxp1[i1];
+      indices[f] = auxid1[i1];
+      i1++;
     }
     else
     {
-      {
-        precos[f] = auxp2[i2];
-        indices[f] = auxid2[i2];
-        i2++;
-      }
+      precos[f] = auxp2[i2];
+      indices[f] = auxid2[i2];
+      i2++;
     }
 
     f++;
@@ -230,12 +208,10 @@ void mergesort(int precos[], int esquerda, int direita, int indices[])
 {
   if (esquerda < direita)
   {
-    {
-      int centro = esquerda + ((direita - esquerda) / 2);
-      mergesort(precos, esquerda, centro, indices);
-      mergesort(precos, centro + 1, direita, indices);
-      merge(precos, esquerda, centro, direita, indices);
-    }
+    int centro = esquerda + ((direita - esquerda) / 2);
+    mergesort(precos, esquerda, centro, indices);
+    mergesort(precos, centro + 1, direita, indices);
+    merge(precos, esquerda, centro, direita, indices);
   }
   else
   {
@@ -256,20 +232,18 @@ void quicksort(char descricao[][64], int left, int right, int indices[])
     j = i;
     if (strcmp(descricao[j], descricao[pivot]) < 0)
     {
+      strcpy(str, descricao[j]);
+      aux = indices[j];
+      while (j > pivot)
       {
-        strcpy(str, descricao[j]);
-        aux = indices[j];
-        while (j > pivot)
-        {
-          strcpy(descricao[j], descricao[j - 1]);
-          indices[j] = indices[j - 1];
-          j--;
-        }
-
-        strcpy(descricao[j], str);
-        indices[j] = aux;
-        pivot++;
+        strcpy(descricao[j], descricao[j - 1]);
+        indices[j] = indices[j - 1];
+        j--;
       }
+
+      strcpy(descricao[j], str);
+      indices[j] = aux;
+      pivot++;
     }
     else
     {
@@ -280,9 +254,7 @@ void quicksort(char descricao[][64], int left, int right, int indices[])
 
   if ((pivot - 1) >= left)
   {
-    {
-      quicksort(descricao, left, pivot - 1, indices);
-    }
+    quicksort(descricao, left, pivot - 1, indices);
   }
   else
   {
@@ -291,9 +263,7 @@ void quicksort(char descricao[][64], int left, int right, int indices[])
 
   if ((pivot + 1) <= right)
   {
-    {
-      quicksort(descricao, pivot + 1, right, indices);
-    }
+    quicksort(descricao, pivot + 1, right, indices);
   }
   else
   {
@@ -321,10 +291,8 @@ void comando_q(int idp, int utilizadosprod, int qtd)
   {
     if (idp == sistemaprod[i].idp)
     {
-      {
-        sistemaprod[i].stock += qtd;
-        break;
-      }
+      sistemaprod[i].stock += qtd;
+      break;
     }
     else
     {
@@ -335,9 +303,7 @@ void comando_q(int idp, int utilizadosprod, int qtd)
 
   if (i >= utilizadosprod)
   {
-    {
-      printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idp);
-    }
+    printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idp);
   }
   else
   {
@@ -359,47 +325,35 @@ void comando_A(int qtd, int ide, int idp)
 {
   if (VerificaEncomenda(utilizadosenc, ide) == 0)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
   }
   else
   {
     if (VerificaProduto(utilizadosprod, idp) == 0)
     {
-      {
-        printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
-      }
+      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
     }
     else
     {
       if (VerificaStock(idp, qtd) == 0)
       {
-        {
-          printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
-        }
+        printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
       }
       else
       {
         if (VerificaPeso(ide, idp, qtd) == 0)
         {
-          {
-            printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
-          }
+          printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
         }
         else
         {
           if (EncontraProduto(qtd, ide, idp) == 1)
           {
-            {
-              return;
-            }
+            return;
           }
           else
           {
-            {
-              AdicionaProdEncomenda(qtd, ide, idp);
-            }
+            AdicionaProdEncomenda(qtd, ide, idp);
           }
 
         }
@@ -416,23 +370,17 @@ void comando_r(int qtd, produto prod)
 {
   if (VerificaProduto(utilizadosprod, prod.idp) == 0)
   {
-    {
-      printf("Impossivel remover stock do produto %d. Produto inexistente.\n", prod.idp);
-    }
+    printf("Impossivel remover stock do produto %d. Produto inexistente.\n", prod.idp);
   }
   else
   {
     if (VerificaStock(prod.idp, qtd) == 0)
     {
-      {
-        printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, prod.idp);
-      }
+      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, prod.idp);
     }
     else
     {
-      {
-        sistemaprod[prod.idp].stock -= qtd;
-      }
+      sistemaprod[prod.idp].stock -= qtd;
     }
 
   }
@@ -443,23 +391,17 @@ void comando_R(int ide, int idp)
 {
   if (VerificaEncomenda(utilizadosenc, ide) == 0)
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idp, ide);
   }
   else
   {
     if (VerificaProduto(utilizadosprod, idp) == 0)
     {
-      {
-        printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
-      }
+      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
     }
     else
     {
-      {
-        RemoveDaEncomenda(ide, idp);
-      }
+      RemoveDaEncomenda(ide, idp);
     }
 
   }
@@ -472,20 +414,16 @@ void comando_C(int ide)
   int custo = 0;
   if (VerificaEncomenda(utilizadosenc, ide) == 0)
   {
-    {
-      printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ide);
-    }
+    printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ide);
   }
   else
   {
+    for (i = 0; i < sistemaenc[ide].elementos; i++)
     {
-      for (i = 0; i < sistemaenc[ide].elementos; i++)
-      {
-        custo += sistemaenc[ide].Vprodutos[i].preco * sistemaenc[ide].Vprodutos[i].stock;
-      }
-
-      printf("Custo da encomenda %d %d.\n", ide, custo);
+      custo += sistemaenc[ide].Vprodutos[i].preco * sistemaenc[ide].Vprodutos[i].stock;
     }
+
+    printf("Custo da encomenda %d %d.\n", ide, custo);
   }
 
 }
@@ -496,34 +434,28 @@ void comando_p(int idp, int preco)
   int j;
   if (VerificaProduto(utilizadosprod, idp) == 0)
   {
-    {
-      printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idp);
-    }
+    printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idp);
   }
   else
   {
+    sistemaprod[idp].preco = preco;
+    for (i = 0; i < utilizadosenc; i++)
     {
-      sistemaprod[idp].preco = preco;
-      for (i = 0; i < utilizadosenc; i++)
+      for (j = 0; j < sistemaenc[i].elementos; j++)
       {
-        for (j = 0; j < sistemaenc[i].elementos; j++)
+        if (sistemaenc[i].Vprodutos[j].idp == idp)
         {
-          if (sistemaenc[i].Vprodutos[j].idp == idp)
-          {
-            {
-              sistemaenc[i].Vprodutos[j].preco = preco;
-            }
-          }
-          else
-          {
-            
-          }
-
+          sistemaenc[i].Vprodutos[j].preco = preco;
+        }
+        else
+        {
+          
         }
 
       }
 
     }
+
   }
 
 }
@@ -533,39 +465,31 @@ void comando_E(int ide, int idp)
   int i;
   if (VerificaEncomenda(utilizadosenc, ide) == 0)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
   }
   else
   {
     if (VerificaProduto(utilizadosprod, idp) == 0)
     {
-      {
-        printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
-      }
+      printf("Impossivel listar produto %d. Produto inexistente.\n", idp);
     }
     else
     {
+      for (i = 0; i < sistemaenc[ide].elementos; i++)
       {
-        for (i = 0; i < sistemaenc[ide].elementos; i++)
+        if (sistemaenc[ide].Vprodutos[i].idp == idp)
         {
-          if (sistemaenc[ide].Vprodutos[i].idp == idp)
-          {
-            {
-              printf("%s %d.\n", sistemaenc[ide].Vprodutos[i].descricao, sistemaenc[ide].Vprodutos[i].stock);
-              return;
-            }
-          }
-          else
-          {
-            
-          }
-
+          printf("%s %d.\n", sistemaenc[ide].Vprodutos[i].descricao, sistemaenc[ide].Vprodutos[i].stock);
+          return;
+        }
+        else
+        {
+          
         }
 
-        printf("%s 0.\n", sistemaprod[idp].descricao);
       }
+
+      printf("%s 0.\n", sistemaprod[idp].descricao);
     }
 
   }
@@ -581,34 +505,21 @@ void comando_m(int idp)
   int j;
   if (VerificaProduto(utilizadosprod, idp) == 0)
   {
-    {
-      printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idp);
-    }
+    printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", idp);
   }
   else
   {
+    for (i = 0; i < utilizadosenc; i++)
     {
-      for (i = 0; i < utilizadosenc; i++)
+      for (j = 0; j < sistemaenc[i].elementos; j++)
       {
-        for (j = 0; j < sistemaenc[i].elementos; j++)
+        if (sistemaenc[i].Vprodutos[j].idp == idp)
         {
-          if (sistemaenc[i].Vprodutos[j].idp == idp)
+          if (sistemaenc[i].Vprodutos[j].stock > qtd)
           {
-            {
-              if (sistemaenc[i].Vprodutos[j].stock > qtd)
-              {
-                {
-                  qtd = sistemaenc[i].Vprodutos[j].stock;
-                  ide = i;
-                  flag = 1;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
+            qtd = sistemaenc[i].Vprodutos[j].stock;
+            ide = i;
+            flag = 1;
           }
           else
           {
@@ -616,21 +527,24 @@ void comando_m(int idp)
           }
 
         }
-
-      }
-
-      if (flag == 1)
-      {
+        else
         {
-          printf("Maximo produto %d %d %d.\n", idp, ide, qtd);
+          
         }
-      }
-      else
-      {
-        
+
       }
 
     }
+
+    if (flag == 1)
+    {
+      printf("Maximo produto %d %d %d.\n", idp, ide, qtd);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -662,27 +576,23 @@ void comando_L(int ide)
   int indices[200];
   if (VerificaEncomenda(utilizadosenc, ide) == 0)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide);
   }
   else
   {
+    for (i = 0; i <= sistemaenc[ide].elementos; i++)
     {
-      for (i = 0; i <= sistemaenc[ide].elementos; i++)
-      {
-        strcpy(descricoes[i], sistemaenc[ide].Vprodutos[i].descricao);
-        indices[i] = i;
-      }
-
-      quicksort(descricoes, 0, sistemaenc[ide].elementos - 1, indices);
-      printf("Encomenda %d\n", ide);
-      for (i = 0; i < sistemaenc[ide].elementos; i++)
-      {
-        printf("* %s %d %d\n", sistemaenc[ide].Vprodutos[indices[i]].descricao, sistemaenc[ide].Vprodutos[indices[i]].preco, sistemaenc[ide].Vprodutos[indices[i]].stock);
-      }
-
+      strcpy(descricoes[i], sistemaenc[ide].Vprodutos[i].descricao);
+      indices[i] = i;
     }
+
+    quicksort(descricoes, 0, sistemaenc[ide].elementos - 1, indices);
+    printf("Encomenda %d\n", ide);
+    for (i = 0; i < sistemaenc[ide].elementos; i++)
+    {
+      printf("* %s %d %d\n", sistemaenc[ide].Vprodutos[indices[i]].descricao, sistemaenc[ide].Vprodutos[indices[i]].preco, sistemaenc[ide].Vprodutos[indices[i]].stock);
+    }
+
   }
 
 }

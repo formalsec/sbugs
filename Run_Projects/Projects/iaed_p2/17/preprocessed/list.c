@@ -27,9 +27,7 @@ Link add_node_after_list(Link prev, ItemGame item)
   Link aux;
   if (prev == 0)
   {
-    {
-      return add_node_before_list(prev, item);
-    }
+    return add_node_before_list(prev, item);
   }
   else
   {
@@ -57,9 +55,7 @@ ItemGame search_list(LinkedList list, char *name)
   {
     if (strcmp(t->item->name, name) == 0)
     {
-      {
-        return t->item;
-      }
+      return t->item;
     }
     else
     {
@@ -77,9 +73,7 @@ void append_list(LinkedList list, ItemGame item)
   list->tail = newNode;
   if (list->head == 0)
   {
-    {
-      list->head = newNode;
-    }
+    list->head = newNode;
   }
   else
   {
@@ -97,35 +91,27 @@ void remove_elem_list(LinkedList list, char *name)
   {
     if (strcmp(name, t->item->name) == 0)
     {
+      if (t == list->head)
       {
-        if (t == list->head)
-        {
-          {
-            list->head = t->next;
-          }
-        }
-        else
-        {
-          {
-            prev->next = t->next;
-          }
-        }
-
-        list->load--;
-        delete_node_list(t);
-        if (t == list->tail)
-        {
-          {
-            list->tail = list->head;
-          }
-        }
-        else
-        {
-          
-        }
-
-        break;
+        list->head = t->next;
       }
+      else
+      {
+        prev->next = t->next;
+      }
+
+      list->load--;
+      delete_node_list(t);
+      if (t == list->tail)
+      {
+        list->tail = list->head;
+      }
+      else
+      {
+        
+      }
+
+      break;
     }
     else
     {
@@ -153,9 +139,7 @@ void destroy_list(LinkedList list)
   Link aux;
   if (list == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -164,12 +148,10 @@ void destroy_list(LinkedList list)
 
   if (list->load != 0)
   {
+    for (t = list->head, aux = list->head->next; t != 0; aux = t->next, delete_node_list(t), t = aux)
     {
-      for (t = list->head, aux = list->head->next; t != 0; aux = t->next, delete_node_list(t), t = aux)
-      {
-      }
-
     }
+
   }
   else
   {

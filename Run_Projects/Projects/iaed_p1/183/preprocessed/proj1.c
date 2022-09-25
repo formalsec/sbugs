@@ -185,12 +185,10 @@ void merge_sort(produto lista[], int l, int r)
 {
   if (l < r)
   {
-    {
-      int meio = ((int) (r + l)) / 2;
-      merge_sort(lista, l, meio);
-      merge_sort(lista, meio + 1, r);
-      merge(lista, l, meio, r);
-    }
+    int meio = ((int) (r + l)) / 2;
+    merge_sort(lista, l, meio);
+    merge_sort(lista, meio + 1, r);
+    merge(lista, l, meio, r);
   }
   else
   {
@@ -215,15 +213,11 @@ produto funcao_q(produto armazem[], int idp, int quantidade)
 {
   if (armazem[idp].iden == (-2))
   {
-    {
-      printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idp);
-    }
+    printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idp);
   }
   else
   {
-    {
-      armazem[idp].quanti += quantidade;
-    }
+    armazem[idp].quanti += quantidade;
   }
 
   return armazem[idp];
@@ -278,16 +272,14 @@ encomenda funcao_A(encomenda encomendas[], int ide, int idp, int quantidade)
         }
         else
         {
-          {
-            encomendas[ide].v_encomendas[i].preco = armazem[idp].preco;
-            encomendas[ide].v_encomendas[i].quanti = armazem[idp].quanti;
-            encomendas[ide].v_encomendas[i].peso = armazem[idp].peso;
-            encomendas[ide].v_encomendas[i].iden = armazem[idp].iden;
-            strcpy(encomendas[ide].v_encomendas[i].desc, armazem[idp].desc);
-            encomendas[ide].peso_enc += armazem[idp].peso;
-            armazem[idp].quanti -= quantidade;
-            i++;
-          }
+          encomendas[ide].v_encomendas[i].preco = armazem[idp].preco;
+          encomendas[ide].v_encomendas[i].quanti = armazem[idp].quanti;
+          encomendas[ide].v_encomendas[i].peso = armazem[idp].peso;
+          encomendas[ide].v_encomendas[i].iden = armazem[idp].iden;
+          strcpy(encomendas[ide].v_encomendas[i].desc, armazem[idp].desc);
+          encomendas[ide].peso_enc += armazem[idp].peso;
+          armazem[idp].quanti -= quantidade;
+          i++;
         }
 
       }
@@ -313,9 +305,7 @@ produto funcao_r(produto armazem[], int idp, int quantidade)
     }
     else
     {
-      {
-        armazem[idp].quanti -= quantidade;
-      }
+      armazem[idp].quanti -= quantidade;
     }
 
   }
@@ -338,28 +328,24 @@ encomenda funcao_R(encomenda encomendas[], int ide, int idp)
     }
     else
     {
+      for (i = 0; i < 10000; i++)
       {
-        for (i = 0; i < 10000; i++)
+        if (encomendas[ide].v_encomendas[i].iden == idp)
         {
-          if (encomendas[ide].v_encomendas[i].iden == idp)
-          {
-            {
-              armazem[idp].quanti += encomendas[ide].v_encomendas[i].quanti;
-              encomendas[ide].v_encomendas[i].iden = 250;
-              encomendas[ide].v_encomendas[i].preco = 0;
-              encomendas[ide].v_encomendas[i].peso = 0;
-              encomendas[ide].v_encomendas[i].quanti = 0;
-              strcpy(encomendas[ide].v_encomendas[i].desc, vazia);
-            }
-          }
-          else
-          {
-            
-          }
-
+          armazem[idp].quanti += encomendas[ide].v_encomendas[i].quanti;
+          encomendas[ide].v_encomendas[i].iden = 250;
+          encomendas[ide].v_encomendas[i].preco = 0;
+          encomendas[ide].v_encomendas[i].peso = 0;
+          encomendas[ide].v_encomendas[i].quanti = 0;
+          strcpy(encomendas[ide].v_encomendas[i].desc, vazia);
+        }
+        else
+        {
+          
         }
 
       }
+
     }
 
   }
@@ -377,13 +363,11 @@ void funcao_C(encomenda encomendas[], int ide)
   }
   else
   {
+    for (m = 0; m < 500; m++)
     {
-      for (m = 0; m < 500; m++)
-      {
-        total += encomendas[ide].v_encomendas[m].preco;
-      }
-
+      total += encomendas[ide].v_encomendas[m].preco;
     }
+
   }
 
   printf("Custo da encomenda %d %d.\n", ide, total);
@@ -396,18 +380,30 @@ void funcao_p(produto armazem[], int idp, int valor_numerico)
   int k;
   if (armazem[idp].iden == (-2))
   {
-    {
-      printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idp);
-    }
+    printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", idp);
   }
   else
   {
+    for (k = 0; k < 10000; k++)
     {
-      for (k = 0; k < 10000; k++)
+      if (armazem[k].iden == idp)
       {
-        if (armazem[k].iden == idp)
+        armazem[k].preco = valor_numerico;
+      }
+      else
+      {
+        
+      }
+
+    }
+
+    for (i = 0; i < 500; i++)
+    {
+      for (j = 0; j < 200; j++)
+      {
+        if (encomendas[i].v_encomendas[j].iden == idp)
         {
-          armazem[k].preco = valor_numerico;
+          encomendas[i].v_encomendas[j].preco = valor_numerico;
         }
         else
         {
@@ -416,24 +412,8 @@ void funcao_p(produto armazem[], int idp, int valor_numerico)
 
       }
 
-      for (i = 0; i < 500; i++)
-      {
-        for (j = 0; j < 200; j++)
-        {
-          if (encomendas[i].v_encomendas[j].iden == idp)
-          {
-            encomendas[i].v_encomendas[j].preco = valor_numerico;
-          }
-          else
-          {
-            
-          }
-
-        }
-
-      }
-
     }
+
   }
 
 }
@@ -453,21 +433,19 @@ void funcao_E(encomenda encomendas[], int ide, int idp)
     }
     else
     {
+      for (i = 0; i < 200; i++)
       {
-        for (i = 0; i < 200; i++)
+        if (encomendas[ide].v_encomendas[i].iden == idp)
         {
-          if (encomendas[ide].v_encomendas[i].iden == idp)
-          {
-            printf("%s %d\n", encomendas[ide].v_encomendas[i].desc, encomendas[ide].v_encomendas[i].quanti);
-          }
-          else
-          {
-            
-          }
-
+          printf("%s %d\n", encomendas[ide].v_encomendas[i].desc, encomendas[ide].v_encomendas[i].quanti);
+        }
+        else
+        {
+          
         }
 
       }
+
     }
 
   }
@@ -529,35 +507,31 @@ void funcao_m(encomenda encomendas[], produto armazem[], int idp)
     {
       if (encomendas[i].v_encomendas[j].iden == idp)
       {
+        contador[i]++;
+        if (contador[i] > maior)
         {
-          contador[i]++;
-          if (contador[i] > maior)
+          maior = contador[i];
+        }
+        else
+        {
+          
+        }
+
+      }
+      else
+      {
+        if (encomendas[i].v_encomendas[j].iden != idp)
+        {
+          contador_idp_inexistente++;
+          if (contador_idp_inexistente == 10000)
           {
-            maior = contador[i];
+            break;
           }
           else
           {
             
           }
 
-        }
-      }
-      else
-      {
-        if (encomendas[i].v_encomendas[j].iden != idp)
-        {
-          {
-            contador_idp_inexistente++;
-            if (contador_idp_inexistente == 10000)
-            {
-              break;
-            }
-            else
-            {
-              
-            }
-
-          }
         }
         else
         {
@@ -624,11 +598,9 @@ void funcao_l(produto armazem[])
     {
       if (novo_armazem[j].preco > novo_armazem[j + 1].preco)
       {
-        {
-          copia_produto_2(auxiliar, novo_armazem, j);
-          copia_produto_3(novo_armazem, novo_armazem, j);
-          copia_produto_4(novo_armazem, auxiliar, j);
-        }
+        copia_produto_2(auxiliar, novo_armazem, j);
+        copia_produto_3(novo_armazem, novo_armazem, j);
+        copia_produto_4(novo_armazem, auxiliar, j);
       }
       else
       {
@@ -655,20 +627,18 @@ void funcao_L(encomenda encomendas[], int ide)
   }
   else
   {
+    int i;
+    int r;
+    produto lista_de_prod_da_enc[200];
+    copia_produtos(lista_de_prod_da_enc, encomendas[ide].v_encomendas);
+    r = descobre_tamanho(lista_de_prod_da_enc);
+    merge_sort(lista_de_prod_da_enc, 0, r);
+    printf("Encomenda %d\n", ide);
+    for (i = 0; i < r; i++)
     {
-      int i;
-      int r;
-      produto lista_de_prod_da_enc[200];
-      copia_produtos(lista_de_prod_da_enc, encomendas[ide].v_encomendas);
-      r = descobre_tamanho(lista_de_prod_da_enc);
-      merge_sort(lista_de_prod_da_enc, 0, r);
-      printf("Encomenda %d\n", ide);
-      for (i = 0; i < r; i++)
-      {
-        printf("%s %d %d\n", lista_de_prod_da_enc[i].desc, lista_de_prod_da_enc[i].preco, lista_de_prod_da_enc[i].quanti);
-      }
-
+      printf("%s %d %d\n", lista_de_prod_da_enc[i].desc, lista_de_prod_da_enc[i].preco, lista_de_prod_da_enc[i].quanti);
     }
+
   }
 
 }

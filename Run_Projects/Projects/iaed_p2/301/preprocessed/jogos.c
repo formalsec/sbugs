@@ -62,13 +62,11 @@ Node *adicionaJogo(Node *head, Hash_table *jogosT, Hash_tableEq *equipasT, int n
   {
     if (!strcmp(node->jogo->nome, aux_string))
     {
-      {
-        printf("%d Jogo existente.\n", nl);
-        free(aux_string);
-        free(aux_equipa1);
-        free(aux_equipa2);
-        return head;
-      }
+      printf("%d Jogo existente.\n", nl);
+      free(aux_string);
+      free(aux_equipa1);
+      free(aux_equipa2);
+      return head;
     }
     else
     {
@@ -86,10 +84,8 @@ Node *adicionaJogo(Node *head, Hash_table *jogosT, Hash_tableEq *equipasT, int n
   {
     if (!strcmp(nodeEq1->equipa->nome, aux_equipa1))
     {
-      {
-        control++;
-        break;
-      }
+      control++;
+      break;
     }
     else
     {
@@ -103,10 +99,8 @@ Node *adicionaJogo(Node *head, Hash_table *jogosT, Hash_tableEq *equipasT, int n
   {
     if (!strcmp(nodeEq2->equipa->nome, aux_equipa2))
     {
-      {
-        control++;
-        break;
-      }
+      control++;
+      break;
     }
     else
     {
@@ -118,13 +112,11 @@ Node *adicionaJogo(Node *head, Hash_table *jogosT, Hash_tableEq *equipasT, int n
 
   if (control < 2)
   {
-    {
-      printf("%d Equipa inexistente.\n", nl);
-      free(aux_string);
-      free(aux_equipa1);
-      free(aux_equipa2);
-      return head;
-    }
+    printf("%d Equipa inexistente.\n", nl);
+    free(aux_string);
+    free(aux_equipa1);
+    free(aux_equipa2);
+    return head;
   }
   else
   {
@@ -133,17 +125,13 @@ Node *adicionaJogo(Node *head, Hash_table *jogosT, Hash_tableEq *equipasT, int n
 
   if (score1_buffer > score2_buffer)
   {
-    {
-      nodeEq1->equipa->vitorias++;
-    }
+    nodeEq1->equipa->vitorias++;
   }
   else
   {
     if (score2_buffer > score1_buffer)
     {
-      {
-        nodeEq2->equipa->vitorias++;
-      }
+      nodeEq2->equipa->vitorias++;
     }
     else
     {
@@ -197,11 +185,9 @@ Node *removeJogo(Hash_table *jogosT, Hash_tableEq *equipasT, Node *head, int nl)
   strcpy(nome_ptr, nome_buffer);
   if (head == 0)
   {
-    {
-      free(nome_ptr);
-      printf("%d Jogo inexistente.\n", nl);
-      return head;
-    }
+    free(nome_ptr);
+    printf("%d Jogo inexistente.\n", nl);
+    return head;
   }
   else
   {
@@ -210,59 +196,53 @@ Node *removeJogo(Hash_table *jogosT, Hash_tableEq *equipasT, Node *head, int nl)
 
   if (!strcmp(head->nome, nome_ptr))
   {
+    node = head->next;
+    if (node != 0)
     {
-      node = head->next;
-      if (node != 0)
-      {
-        node->prev = 0;
-      }
-      else
-      {
-        
-      }
-
-      removeTable(jogosT, equipasT, nome_ptr, nl);
-      free(nome_ptr);
-      free(head->nome);
-      free(head->equipa1);
-      free(head->equipa2);
-      free(head);
-      return node;
+      node->prev = 0;
     }
+    else
+    {
+      
+    }
+
+    removeTable(jogosT, equipasT, nome_ptr, nl);
+    free(nome_ptr);
+    free(head->nome);
+    free(head->equipa1);
+    free(head->equipa2);
+    free(head);
+    return node;
   }
   else
   {
+    node = removeTable(jogosT, equipasT, nome_ptr, nl);
+    if (!node)
     {
-      node = removeTable(jogosT, equipasT, nome_ptr, nl);
-      if (!node)
-      {
-        {
-          free(nome_ptr);
-          return head;
-        }
-      }
-      else
-      {
-        
-      }
-
-      node->prev->next = node->next;
-      if (node->next != 0)
-      {
-        node->next->prev = node->prev;
-      }
-      else
-      {
-        
-      }
-
       free(nome_ptr);
-      free(node->nome);
-      free(node->equipa1);
-      free(node->equipa2);
-      free(node);
       return head;
     }
+    else
+    {
+      
+    }
+
+    node->prev->next = node->next;
+    if (node->next != 0)
+    {
+      node->next->prev = node->prev;
+    }
+    else
+    {
+      
+    }
+
+    free(nome_ptr);
+    free(node->nome);
+    free(node->equipa1);
+    free(node->equipa2);
+    free(node);
+    return head;
   }
 
 }
@@ -300,11 +280,9 @@ void alteraScore(Hash_table *jogosT, Hash_tableEq *equipasT, int nl)
 
   if (node == 0)
   {
-    {
-      free(buffer);
-      printf("%d Jogo inexistente.\n", nl);
-      return;
-    }
+    free(buffer);
+    printf("%d Jogo inexistente.\n", nl);
+    return;
   }
   else
   {
@@ -319,68 +297,53 @@ void alteraScore(Hash_table *jogosT, Hash_tableEq *equipasT, int nl)
   {
     if (!strcmp(node->jogo->nome, buffer))
     {
+      nodeEq1 = equipasT->table[h2];
+      nodeEq2 = equipasT->table[h3];
+      while (strcmp(nodeEq1->equipa->nome, equipa1))
+        nodeEq1 = nodeEq1->next;
+
+      while (strcmp(nodeEq2->equipa->nome, equipa2))
+        nodeEq2 = nodeEq2->next;
+
+      if ((node->jogo->score1 > node->jogo->score2) && (new_score1 < new_score2))
       {
-        nodeEq1 = equipasT->table[h2];
-        nodeEq2 = equipasT->table[h3];
-        while (strcmp(nodeEq1->equipa->nome, equipa1))
-          nodeEq1 = nodeEq1->next;
-
-        while (strcmp(nodeEq2->equipa->nome, equipa2))
-          nodeEq2 = nodeEq2->next;
-
-        if ((node->jogo->score1 > node->jogo->score2) && (new_score1 < new_score2))
+        nodeEq1->equipa->vitorias--;
+        nodeEq2->equipa->vitorias++;
+      }
+      else
+      {
+        if ((node->jogo->score1 < node->jogo->score2) && (new_score1 > new_score2))
         {
-          {
-            nodeEq1->equipa->vitorias--;
-            nodeEq2->equipa->vitorias++;
-          }
+          nodeEq1->equipa->vitorias++;
+          nodeEq2->equipa->vitorias--;
         }
         else
         {
-          if ((node->jogo->score1 < node->jogo->score2) && (new_score1 > new_score2))
+          if ((node->jogo->score1 == node->jogo->score2) && (new_score1 > new_score2))
           {
-            {
-              nodeEq1->equipa->vitorias++;
-              nodeEq2->equipa->vitorias--;
-            }
+            nodeEq1->equipa->vitorias++;
           }
           else
           {
-            if ((node->jogo->score1 == node->jogo->score2) && (new_score1 > new_score2))
+            if ((node->jogo->score1 == node->jogo->score2) && (new_score1 < new_score2))
             {
-              {
-                nodeEq1->equipa->vitorias++;
-              }
+              nodeEq2->equipa->vitorias++;
             }
             else
             {
-              if ((node->jogo->score1 == node->jogo->score2) && (new_score1 < new_score2))
+              if ((node->jogo->score1 > node->jogo->score2) && (new_score1 == new_score2))
               {
-                {
-                  nodeEq2->equipa->vitorias++;
-                }
+                nodeEq1->equipa->vitorias--;
               }
               else
               {
-                if ((node->jogo->score1 > node->jogo->score2) && (new_score1 == new_score2))
+                if ((node->jogo->score1 < node->jogo->score2) && (new_score1 == new_score2))
                 {
-                  {
-                    nodeEq1->equipa->vitorias--;
-                  }
+                  nodeEq2->equipa->vitorias--;
                 }
                 else
                 {
-                  if ((node->jogo->score1 < node->jogo->score2) && (new_score1 == new_score2))
-                  {
-                    {
-                      nodeEq2->equipa->vitorias--;
-                    }
-                  }
-                  else
-                  {
-                    
-                  }
-
+                  
                 }
 
               }
@@ -391,11 +354,12 @@ void alteraScore(Hash_table *jogosT, Hash_tableEq *equipasT, int nl)
 
         }
 
-        node->jogo->score1 = new_score1;
-        node->jogo->score2 = new_score2;
-        free(buffer);
-        return;
       }
+
+      node->jogo->score1 = new_score1;
+      node->jogo->score2 = new_score2;
+      free(buffer);
+      return;
     }
     else
     {
@@ -446,12 +410,10 @@ void procuraJogo(Hash_table *t, int nl)
   {
     if (!strcmp(node->jogo->nome, nomeJogo))
     {
-      {
-        nodeJ = node->jogo;
-        printf("%d %s %s %s %d %d\n", nl, nodeJ->nome, nodeJ->equipa1, nodeJ->equipa2, nodeJ->score1, nodeJ->score2);
-        free(nomeJogo);
-        return;
-      }
+      nodeJ = node->jogo;
+      printf("%d %s %s %s %d %d\n", nl, nodeJ->nome, nodeJ->equipa1, nodeJ->equipa2, nodeJ->score1, nodeJ->score2);
+      free(nomeJogo);
+      return;
     }
     else
     {

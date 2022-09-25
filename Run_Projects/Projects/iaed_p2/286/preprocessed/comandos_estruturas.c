@@ -69,10 +69,8 @@ int procura_jogo_p(jogos *headj, char *nome, int num)
   {
     if (strcmp(t->nome, nome) == 0)
     {
-      {
-        printf("%d %s %s %s %d %d\n", num, nome, t->equipa1, t->equipa2, t->score1, t->score2);
-        return 0;
-      }
+      printf("%d %s %s %s %d %d\n", num, nome, t->equipa1, t->equipa2, t->score1, t->score2);
+      return 0;
     }
     else
     {
@@ -99,10 +97,8 @@ void lista_equipa_P(equipas *head, char *nome, int num)
   {
     if (strcmp(t->nome_equipa, nome) == 0)
     {
-      {
-        printf("%d %s %d\n", num, nome, t->vitoria);
-        return;
-      }
+      printf("%d %s %d\n", num, nome, t->vitoria);
+      return;
     }
     else
     {
@@ -130,69 +126,55 @@ jogos *elimina_jogo_r(equipas **ht, jogos *headj, char *nome, int num)
   {
     if (strcmp(t->nome, nome) == 0)
     {
+      i = 1;
+      if (t == headj)
       {
-        i = 1;
-        if (t == headj)
+        if (t->score1 > t->score2)
         {
-          {
-            if (t->score1 > t->score2)
-            {
-              {
-                HT_tira_vitoria(ht, t->equipa1);
-              }
-            }
-            else
-            {
-              if (t->score2 > t->score1)
-              {
-                {
-                  HT_tira_vitoria(ht, t->equipa2);
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-            headj = t->next;
-          }
+          HT_tira_vitoria(ht, t->equipa1);
         }
         else
         {
+          if (t->score2 > t->score1)
           {
-            if (t->score1 > t->score2)
-            {
-              {
-                HT_tira_vitoria(ht, t->equipa1);
-              }
-            }
-            else
-            {
-              if (t->score2 > t->score1)
-              {
-                {
-                  HT_tira_vitoria(ht, t->equipa2);
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-            anterior->next = t->next;
+            HT_tira_vitoria(ht, t->equipa2);
           }
+          else
+          {
+            
+          }
+
         }
 
-        free(t->nome);
-        free(t->equipa1);
-        free(t->equipa2);
-        free(t);
-        break;
+        headj = t->next;
       }
+      else
+      {
+        if (t->score1 > t->score2)
+        {
+          HT_tira_vitoria(ht, t->equipa1);
+        }
+        else
+        {
+          if (t->score2 > t->score1)
+          {
+            HT_tira_vitoria(ht, t->equipa2);
+          }
+          else
+          {
+            
+          }
+
+        }
+
+        anterior->next = t->next;
+      }
+
+      free(t->nome);
+      free(t->equipa1);
+      free(t->equipa2);
+      free(t);
+      break;
     }
     else
     {
@@ -209,9 +191,7 @@ void verifica(int i, int num)
 {
   if (i == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", num);
-    }
+    printf("%d Jogo inexistente.\n", num);
   }
   else
   {
@@ -228,68 +208,54 @@ jogos *elimina_jogo_lista(jogos *head, char *nome, equipas *head_e)
   {
     if (strcmp(t->nome, nome) == 0)
     {
+      if (t == head)
       {
-        if (t == head)
+        if (t->score1 > t->score2)
         {
-          {
-            if (t->score1 > t->score2)
-            {
-              {
-                tirar_vitoria_lista(head_e, t->equipa1);
-              }
-            }
-            else
-            {
-              if (t->score2 > t->score1)
-              {
-                {
-                  tirar_vitoria_lista(head_e, t->equipa2);
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-            head = t->next;
-          }
+          tirar_vitoria_lista(head_e, t->equipa1);
         }
         else
         {
+          if (t->score2 > t->score1)
           {
-            if (t->score1 > t->score2)
-            {
-              {
-                tirar_vitoria_lista(head_e, t->equipa1);
-              }
-            }
-            else
-            {
-              if (t->score2 > t->score1)
-              {
-                {
-                  tirar_vitoria_lista(head_e, t->equipa2);
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-            anterior->next = t->next;
+            tirar_vitoria_lista(head_e, t->equipa2);
           }
+          else
+          {
+            
+          }
+
         }
 
-        free(t->nome);
-        free(t->equipa1);
-        free(t->equipa2);
-        free(t);
-        break;
+        head = t->next;
       }
+      else
+      {
+        if (t->score1 > t->score2)
+        {
+          tirar_vitoria_lista(head_e, t->equipa1);
+        }
+        else
+        {
+          if (t->score2 > t->score1)
+          {
+            tirar_vitoria_lista(head_e, t->equipa2);
+          }
+          else
+          {
+            
+          }
+
+        }
+
+        anterior->next = t->next;
+      }
+
+      free(t->nome);
+      free(t->equipa1);
+      free(t->equipa2);
+      free(t);
+      break;
     }
     else
     {
@@ -316,60 +282,50 @@ int altera_score_lista(equipas **ht, jogos *headj, char *nome, int score1, int s
   {
     if (strcmp(t->nome, nome) == 0)
     {
+      if (t->score1 > t->score2)
       {
-        if (t->score1 > t->score2)
-        {
-          {
-            HT_tira_vitoria(ht, t->equipa1);
-            tirar_vitoria_lista(head_e, t->equipa1);
-          }
-        }
-        else
-        {
-          
-        }
-
-        if (t->score2 > t->score1)
-        {
-          {
-            HT_tira_vitoria(ht, t->equipa2);
-            tirar_vitoria_lista(head_e, t->equipa2);
-          }
-        }
-        else
-        {
-          
-        }
-
-        t->score1 = score1;
-        t->score2 = score2;
-        i1 = HTprocura(ht, t->equipa1);
-        i2 = HTprocura(ht, t->equipa2);
-        if (((i1 == 1) && (i2 == 1)) && (score1 > score2))
-        {
-          {
-            HT_soma_vitoria(ht, t->equipa1);
-            soma_vitoria(head_e, t->equipa1);
-          }
-        }
-        else
-        {
-          if (((i1 == 1) && (i2 == 1)) && (score2 > score1))
-          {
-            {
-              HT_soma_vitoria(ht, t->equipa2);
-              soma_vitoria(head_e, t->equipa2);
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-        break;
+        HT_tira_vitoria(ht, t->equipa1);
+        tirar_vitoria_lista(head_e, t->equipa1);
       }
+      else
+      {
+        
+      }
+
+      if (t->score2 > t->score1)
+      {
+        HT_tira_vitoria(ht, t->equipa2);
+        tirar_vitoria_lista(head_e, t->equipa2);
+      }
+      else
+      {
+        
+      }
+
+      t->score1 = score1;
+      t->score2 = score2;
+      i1 = HTprocura(ht, t->equipa1);
+      i2 = HTprocura(ht, t->equipa2);
+      if (((i1 == 1) && (i2 == 1)) && (score1 > score2))
+      {
+        HT_soma_vitoria(ht, t->equipa1);
+        soma_vitoria(head_e, t->equipa1);
+      }
+      else
+      {
+        if (((i1 == 1) && (i2 == 1)) && (score2 > score1))
+        {
+          HT_soma_vitoria(ht, t->equipa2);
+          soma_vitoria(head_e, t->equipa2);
+        }
+        else
+        {
+          
+        }
+
+      }
+
+      break;
     }
     else
     {
@@ -381,9 +337,7 @@ int altera_score_lista(equipas **ht, jogos *headj, char *nome, int score1, int s
 
   if (t == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", num);
-    }
+    printf("%d Jogo inexistente.\n", num);
   }
   else
   {
@@ -394,11 +348,9 @@ int altera_score_lista(equipas **ht, jogos *headj, char *nome, int score1, int s
   {
     if (strcmp(head->nome, nome) == 0)
     {
-      {
-        head->score1 = score1;
-        head->score2 = score2;
-        break;
-      }
+      head->score1 = score1;
+      head->score2 = score2;
+      break;
     }
     else
     {
@@ -420,19 +372,15 @@ int *maior_numero_vitorias(equipas *head_e, int *v)
   {
     if (i->vitoria > v[1])
     {
-      {
-        v[0] = 0;
-        v[1] = i->vitoria;
-        v[0] = v[0] + 1;
-      }
+      v[0] = 0;
+      v[1] = i->vitoria;
+      v[0] = v[0] + 1;
     }
     else
     {
       if (i->vitoria == v[1])
       {
-        {
-          v[0] = v[0] + 1;
-        }
+        v[0] = v[0] + 1;
       }
       else
       {
@@ -455,10 +403,8 @@ char **maior_equipas(equipas *head_e, int num_equipas, int max_vitorias)
   {
     if (i->vitoria == max_vitorias)
     {
-      {
-        nome[cont] = i->nome_equipa;
-        cont++;
-      }
+      nome[cont] = i->nome_equipa;
+      cont++;
     }
     else
     {
@@ -476,9 +422,7 @@ void mergesort(char **nome, char **aux, int left, int right)
   int m = (right + left) / 2;
   if (right <= left)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -585,9 +529,7 @@ int procura_jogo(jogos *headj, char *nome)
   {
     if (strcmp(t->nome, nome) == 0)
     {
-      {
-        return 1;
-      }
+      return 1;
     }
     else
     {
@@ -614,9 +556,7 @@ int procura_equipa(equipas *head, char *nome)
   {
     if (strcmp(t->nome_equipa, nome) == 0)
     {
-      {
-        return 1;
-      }
+      return 1;
     }
     else
     {
@@ -642,10 +582,8 @@ void tirar_vitoria_lista(equipas *head, char *equipa_vitoria)
   {
     if (strcmp(t->nome_equipa, equipa_vitoria) == 0)
     {
-      {
-        t->vitoria = t->vitoria - 1;
-        break;
-      }
+      t->vitoria = t->vitoria - 1;
+      break;
     }
     else
     {
@@ -670,9 +608,7 @@ void soma_vitoria(equipas *head_e, char *equipa_vitoria)
   {
     if (strcmp(t->nome_equipa, equipa_vitoria) == 0)
     {
-      {
-        t->vitoria = t->vitoria + 1;
-      }
+      t->vitoria = t->vitoria + 1;
     }
     else
     {

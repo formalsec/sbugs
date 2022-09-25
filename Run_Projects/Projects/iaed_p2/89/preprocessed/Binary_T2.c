@@ -107,43 +107,37 @@ BTlink BTdelete(BTlink link, Team team)
       }
       else
       {
+        if ((link->l != 0) && (link->r != 0))
         {
-          if ((link->l != 0) && (link->r != 0))
+          aux = BTmax(link->l);
+          team_aux = BTgetteam(link);
+          link->team = BTgetteam(aux);
+          aux->team = team_aux;
+          link->l = BTdelete(link->l, BTgetteam(aux));
+        }
+        else
+        {
+          aux = link;
+          if ((link->l == 0) && (link->r == 0))
           {
-            {
-              aux = BTmax(link->l);
-              team_aux = BTgetteam(link);
-              link->team = BTgetteam(aux);
-              aux->team = team_aux;
-              link->l = BTdelete(link->l, BTgetteam(aux));
-            }
+            link = 0;
           }
           else
           {
+            if (link->l == 0)
             {
-              aux = link;
-              if ((link->l == 0) && (link->r == 0))
-              {
-                link = 0;
-              }
-              else
-              {
-                if (link->l == 0)
-                {
-                  link = link->r;
-                }
-                else
-                {
-                  link = link->l;
-                }
-
-              }
-
-              free(aux);
+              link = link->r;
             }
+            else
+            {
+              link = link->l;
+            }
+
           }
 
+          free(aux);
         }
+
       }
 
     }
@@ -166,39 +160,31 @@ int Ttraverse(BTlink link, LTlink *head, int i)
 
   if ((*head) != 0)
   {
-    {
-      if (Tgetwins(BTgetteam(link)) == Tgetwins(LTgetteam(*head)))
-      {
-        {
-          *head = LTinsert(*head, BTgetteam(link));
-          i++;
-        }
-      }
-      else
-      {
-        if (Tgetwins(BTgetteam(link)) > Tgetwins(LTgetteam(*head)))
-        {
-          {
-            *head = LTclear(*head);
-            *head = LTinsert(*head, BTgetteam(link));
-            i = 1;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-    }
-  }
-  else
-  {
+    if (Tgetwins(BTgetteam(link)) == Tgetwins(LTgetteam(*head)))
     {
       *head = LTinsert(*head, BTgetteam(link));
       i++;
     }
+    else
+    {
+      if (Tgetwins(BTgetteam(link)) > Tgetwins(LTgetteam(*head)))
+      {
+        *head = LTclear(*head);
+        *head = LTinsert(*head, BTgetteam(link));
+        i = 1;
+      }
+      else
+      {
+        
+      }
+
+    }
+
+  }
+  else
+  {
+    *head = LTinsert(*head, BTgetteam(link));
+    i++;
   }
 
   i = Ttraverse(link->l, head, i);

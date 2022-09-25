@@ -18,15 +18,13 @@ Node_ptr push(char *value, Node_ptr top)
   new = malloc(sizeof(struct node));
   if (top == 0)
   {
-    {
-      new->value = value;
-      new->next = 0;
-      new->prev = 0;
-      top = new;
-      top->size = 0;
-      top->first = top;
-      return top;
-    }
+    new->value = value;
+    new->next = 0;
+    new->prev = 0;
+    top = new;
+    top->size = 0;
+    top->first = top;
+    return top;
   }
   else
   {
@@ -64,11 +62,9 @@ Node_ptr delete_index(int index, Node_ptr top)
 
   if ((top->prev == 0) && (top->next == 0))
   {
-    {
-      free(top);
-      top = 0;
-      return top;
-    }
+    free(top);
+    top = 0;
+    return top;
   }
   else
   {
@@ -77,10 +73,8 @@ Node_ptr delete_index(int index, Node_ptr top)
 
   if ((top->prev != 0) && (top->next != 0))
   {
-    {
-      top->prev->next = top->next;
-      top->next->prev = top->prev;
-    }
+    top->prev->next = top->next;
+    top->next->prev = top->prev;
   }
   else
   {
@@ -89,10 +83,8 @@ Node_ptr delete_index(int index, Node_ptr top)
 
   if ((top->next == 0) && (top->prev != 0))
   {
-    {
-      top->prev->next = 0;
-      aux->first = top->prev;
-    }
+    top->prev->next = 0;
+    aux->first = top->prev;
   }
   else
   {
@@ -101,11 +93,9 @@ Node_ptr delete_index(int index, Node_ptr top)
 
   if ((top->prev == 0) && (top->next != 0))
   {
-    {
-      aux = top->next;
-      aux->first = top->first;
-      top->next->prev = 0;
-    }
+    aux = top->next;
+    aux->first = top->first;
+    top->next->prev = 0;
   }
   else
   {

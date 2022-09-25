@@ -95,10 +95,8 @@ void a_executa(int NL, link_jogo *jogos_hashtable, Lista_jogos jogos_ls, link_eq
   s2 = new_sym_var(sizeof(int) * 8);
   if (procura_tab_jogo(nome, jogos_hashtable) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-      return;
-    }
+    printf("%d Jogo existente.\n", NL);
+    return;
   }
   else
   {
@@ -109,10 +107,8 @@ void a_executa(int NL, link_jogo *jogos_hashtable, Lista_jogos jogos_ls, link_eq
   equipa2 = procura_tab_equi(e2, equipas, 997);
   if ((equipa1 == 0) || (equipa2 == 0))
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -124,10 +120,8 @@ void a_executa(int NL, link_jogo *jogos_hashtable, Lista_jogos jogos_ls, link_eq
   adiciona_jogo_ls(jogo, jogos_ls);
   if (s1 > s2)
   {
-    {
-      campea = procura_tab_equi(e1, equipas, 997);
-      campea->vitorias++;
-    }
+    campea = procura_tab_equi(e1, equipas, 997);
+    campea->vitorias++;
   }
   else
   {
@@ -136,10 +130,8 @@ void a_executa(int NL, link_jogo *jogos_hashtable, Lista_jogos jogos_ls, link_eq
 
   if (s2 > s1)
   {
-    {
-      campea = procura_tab_equi(e2, equipas, 997);
-      campea->vitorias++;
-    }
+    campea = procura_tab_equi(e2, equipas, 997);
+    campea->vitorias++;
   }
   else
   {
@@ -156,9 +148,7 @@ void l_executa(int NL, Lista_jogos jogos_ls)
   {
     if (temp->jogo && (strcmp("APAGADO", temp->jogo->nome) != 0))
     {
-      {
-        printf("%d %s %s %s %d %d\n", NL, temp->jogo->nome, temp->jogo->equipa1, temp->jogo->equipa2, temp->jogo->score_e1, temp->jogo->score_e2);
-      }
+      printf("%d %s %s %s %d %d\n", NL, temp->jogo->nome, temp->jogo->equipa1, temp->jogo->equipa2, temp->jogo->score_e1, temp->jogo->score_e2);
     }
     else
     {
@@ -183,10 +173,8 @@ void p_executa(int NL, link_jogo *jogos_hashtable)
   jogo = procura_tab_jogo(buffer, jogos_hashtable);
   if (jogo == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -211,10 +199,8 @@ void r_executa(int NL, link_jogo *jogos_hashtable, link_equi *equipas)
   jogo = procura_tab_jogo(buffer, jogos_hashtable);
   if (jogo == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -263,10 +249,8 @@ void s_executa(int NL, link_jogo *jogos_hashtable, link_equi *equipas)
   jogo = procura_tab_jogo(buffer, jogos_hashtable);
   if (jogo == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -327,10 +311,8 @@ void A_executa(int NL, link_equi *equipas, int tamanho)
   nome[10 - 1] = '\0';
   if (procura_tab_equi(nome, equipas, tamanho) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-      return;
-    }
+    printf("%d Equipa existente.\n", NL);
+    return;
   }
   else
   {
@@ -354,10 +336,8 @@ void P_executa(int NL, link_equi *equipas, int tamanho)
   equipa = procura_tab_equi(buffer, equipas, tamanho);
   if (equipa == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -381,25 +361,23 @@ void g_executa(int NL, link_equi *equipas)
   {
     if (equipas[i] != 0)
     {
+      link_temp = equipas[i];
+      while (link_temp != 0)
       {
-        link_temp = equipas[i];
-        while (link_temp != 0)
+        equi_temp = link_temp->equipa;
+        estado = 1;
+        if (equi_temp->vitorias > max_vitorias)
         {
-          equi_temp = link_temp->equipa;
-          estado = 1;
-          if (equi_temp->vitorias > max_vitorias)
-          {
-            max_vitorias = equi_temp->vitorias;
-          }
-          else
-          {
-            
-          }
-
-          link_temp = link_temp->next;
+          max_vitorias = equi_temp->vitorias;
+        }
+        else
+        {
+          
         }
 
+        link_temp = link_temp->next;
       }
+
     }
     else
     {
@@ -410,57 +388,51 @@ void g_executa(int NL, link_equi *equipas)
 
   if (estado == 1)
   {
+    for (i = 0; i < 997; i++)
     {
-      for (i = 0; i < 997; i++)
+      if (equipas[i] != 0)
       {
-        if (equipas[i] != 0)
+        link_temp = equipas[i];
+        while (link_temp != 0)
         {
+          equi_temp = link_temp->equipa;
+          if (equi_temp->vitorias == max_vitorias)
           {
-            link_temp = equipas[i];
-            while (link_temp != 0)
-            {
-              equi_temp = link_temp->equipa;
-              if (equi_temp->vitorias == max_vitorias)
-              {
-                {
-                  nomes_equipas[e] = equi_temp->nome;
-                  e++;
-                }
-              }
-              else
-              {
-                
-              }
-
-              link_temp = link_temp->next;
-            }
-
+            nomes_equipas[e] = equi_temp->nome;
+            e++;
           }
-        }
-        else
-        {
-          
+          else
+          {
+            
+          }
+
+          link_temp = link_temp->next;
         }
 
       }
-
-      n_equipas = e;
-      qsort(nomes_equipas, n_equipas, sizeof(char *), compara_equipas);
-      printf("%d Melhores %d\n", NL, max_vitorias);
-      for (i = 0; i < n_equipas; i++)
+      else
       {
-        if (nomes_equipas[i] != 0)
-        {
-          printf("%d * %s\n", NL, nomes_equipas[i]);
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
     }
+
+    n_equipas = e;
+    qsort(nomes_equipas, n_equipas, sizeof(char *), compara_equipas);
+    printf("%d Melhores %d\n", NL, max_vitorias);
+    for (i = 0; i < n_equipas; i++)
+    {
+      if (nomes_equipas[i] != 0)
+      {
+        printf("%d * %s\n", NL, nomes_equipas[i]);
+      }
+      else
+      {
+        
+      }
+
+    }
+
   }
   else
   {

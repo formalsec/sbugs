@@ -28,10 +28,8 @@ void addTeam(int debugLine, Hash_Table_Team *t, LinkedList_Team *llT)
   {
     if (!strcmp(teamName, pHN->team->name))
     {
-      {
-        printf("%d Equipa existente.\n", debugLine);
-        return;
-      }
+      printf("%d Equipa existente.\n", debugLine);
+      return;
     }
     else
     {
@@ -62,10 +60,8 @@ void findTeam(int debugLine, Hash_Table_Team *t)
   {
     if (!strcmp(teamName, pHN->team->name))
     {
-      {
-        printf("%d %s %d\n", debugLine, pHN->team->name, pHN->team->gamesWon);
-        return;
-      }
+      printf("%d %s %d\n", debugLine, pHN->team->name, pHN->team->gamesWon);
+      return;
     }
     else
     {
@@ -74,9 +70,7 @@ void findTeam(int debugLine, Hash_Table_Team *t)
 
     if (pHN->next != 0)
     {
-      {
-        pHN = pHN->next;
-      }
+      pHN = pHN->next;
     }
     else
     {
@@ -95,9 +89,7 @@ void listTeamsMostWinsByName(int debugLine, LinkedList_Team *llT)
   List_Node_Team *lNT = llT->head;
   if (llT->maxTeamsVictories == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -111,11 +103,9 @@ void listTeamsMostWinsByName(int debugLine, LinkedList_Team *llT)
     {
       if (lNT->team->gamesWon == llT->maxVictories)
       {
-        {
-          teamsMostWins[i] = lNT->team;
-          lNT = lNT->next;
-          break;
-        }
+        teamsMostWins[i] = lNT->team;
+        lNT = lNT->next;
+        break;
       }
       else
       {
@@ -147,9 +137,7 @@ Team *teamExists(char *teamName, Hash_Table_Team *t)
   {
     if (!strcmp(teamName, pHN->team->name))
     {
-      {
-        return pHN->team;
-      }
+      return pHN->team;
     }
     else
     {
@@ -158,9 +146,7 @@ Team *teamExists(char *teamName, Hash_Table_Team *t)
 
     if (pHN->next != 0)
     {
-      {
-        pHN = pHN->next;
-      }
+      pHN = pHN->next;
     }
     else
     {
@@ -181,18 +167,14 @@ void updateMaxVictories(LinkedList_Team *llT)
   {
     if (lNT->team->gamesWon > maxGamesWon)
     {
-      {
-        maxGamesWon = lNT->team->gamesWon;
-        maxTeams = 1;
-      }
+      maxGamesWon = lNT->team->gamesWon;
+      maxTeams = 1;
     }
     else
     {
       if (lNT->team->gamesWon == maxGamesWon)
       {
-        {
-          maxTeams++;
-        }
+        maxTeams++;
       }
       else
       {
@@ -231,17 +213,13 @@ void updateScoreValues(Team *team1, Team *team2, int score1, int score2, LinkedL
 
   if (score1 > score2)
   {
-    {
-      team1->gamesWon++;
-    }
+    team1->gamesWon++;
   }
   else
   {
     if (score1 < score2)
     {
-      {
-        team2->gamesWon++;
-      }
+      team2->gamesWon++;
     }
     else
     {
@@ -269,10 +247,8 @@ void updateScoreValues(Team *team1, Team *team2, int score1, int score2, LinkedL
 
   if (maxGamesWon > ll_Teams->maxVictories)
   {
-    {
-      ll_Teams->maxVictories = maxGamesWon;
-      ll_Teams->maxTeamsVictories = 0;
-    }
+    ll_Teams->maxVictories = maxGamesWon;
+    ll_Teams->maxTeamsVictories = 0;
   }
   else
   {

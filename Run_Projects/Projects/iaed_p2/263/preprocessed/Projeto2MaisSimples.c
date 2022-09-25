@@ -73,9 +73,7 @@ game *LooksUpInGameHash(game **hashtablegame, char *name_game)
   {
     if (strcmp(aux->name_game, name_game) == 0)
     {
-      {
-        return aux;
-      }
+      return aux;
     }
     else
     {
@@ -104,23 +102,17 @@ game *DeleteGame(game *head, char *name_game)
   {
     if (strcmp(t->name_game, name_game) == 0)
     {
+      if (t == head)
       {
-        if (t == head)
-        {
-          {
-            head = t->next;
-          }
-        }
-        else
-        {
-          {
-            prev->next = t->next;
-          }
-        }
-
-        FreeGameInfo(t);
-        return head;
+        head = t->next;
       }
+      else
+      {
+        prev->next = t->next;
+      }
+
+      FreeGameInfo(t);
+      return head;
     }
     else
     {
@@ -141,9 +133,7 @@ team *LooksUpInTeamHash(team **hashtableteam, char *name_team)
   {
     if (strcmp(aux->name_team, name_team) == 0)
     {
-      {
-        return aux;
-      }
+      return aux;
     }
     else
     {
@@ -179,56 +169,44 @@ void AddsGame(char *name_game, char *team1, char *team2, int score1, int score2,
   game *auxgame;
   if (LooksUpInGameHash(hashtablegame, name_game) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-    }
+    printf("%d Jogo existente.\n", NL);
   }
   else
   {
     if (LooksUpInTeamHash(hashtableteam, team1) == 0)
     {
-      {
-        printf("%d Equipa inexistente.\n", NL);
-      }
+      printf("%d Equipa inexistente.\n", NL);
     }
     else
     {
       if (LooksUpInTeamHash(hashtableteam, team2) == 0)
       {
-        {
-          printf("%d Equipa inexistente.\n", NL);
-        }
+        printf("%d Equipa inexistente.\n", NL);
       }
       else
       {
+        index = ReturnsHashGameIndex(name_game);
+        hashtablegame[index] = PutsAsHeadListGame(hashtablegame[index], name_game, team1, team2, score1, score2, order);
+        auxgame = LooksUpInGameHash(hashtablegame, name_game);
+        if (auxgame->score1 > auxgame->score2)
         {
-          index = ReturnsHashGameIndex(name_game);
-          hashtablegame[index] = PutsAsHeadListGame(hashtablegame[index], name_game, team1, team2, score1, score2, order);
-          auxgame = LooksUpInGameHash(hashtablegame, name_game);
-          if (auxgame->score1 > auxgame->score2)
+          aux = LooksUpInTeamHash(hashtableteam, team1);
+          aux->wins += 1;
+        }
+        else
+        {
+          if (auxgame->score1 < auxgame->score2)
           {
-            {
-              aux = LooksUpInTeamHash(hashtableteam, team1);
-              aux->wins += 1;
-            }
+            aux = LooksUpInTeamHash(hashtableteam, team2);
+            aux->wins += 1;
           }
           else
           {
-            if (auxgame->score1 < auxgame->score2)
-            {
-              {
-                aux = LooksUpInTeamHash(hashtableteam, team2);
-                aux->wins += 1;
-              }
-            }
-            else
-            {
-              
-            }
-
+            
           }
 
         }
+
       }
 
     }
@@ -242,16 +220,12 @@ void AddsTeam(char *name_team, team **hashtableteam, int NL)
   int index;
   if (LooksUpInTeamHash(hashtableteam, name_team) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-    }
+    printf("%d Equipa existente.\n", NL);
   }
   else
   {
-    {
-      index = ReturnsHashTeamIndex(name_team);
-      hashtableteam[index] = PutsAsHeadListTeam(hashtableteam[index], name_team);
-    }
+    index = ReturnsHashTeamIndex(name_team);
+    hashtableteam[index] = PutsAsHeadListTeam(hashtableteam[index], name_team);
   }
 
 }
@@ -261,16 +235,12 @@ void PrintsGame(char *name_game, game **hashtablegame, int NL)
   game *auxgame;
   if (LooksUpInGameHash(hashtablegame, name_game) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
   else
   {
-    {
-      auxgame = LooksUpInGameHash(hashtablegame, name_game);
-      printf("%d %s %s %s %d %d\n", NL, auxgame->name_game, auxgame->team1, auxgame->team2, auxgame->score1, auxgame->score2);
-    }
+    auxgame = LooksUpInGameHash(hashtablegame, name_game);
+    printf("%d %s %s %s %d %d\n", NL, auxgame->name_game, auxgame->team1, auxgame->team2, auxgame->score1, auxgame->score2);
   }
 
 }
@@ -280,16 +250,12 @@ void PrintsTeam(char *name_team, team **hashtableteam, int NL)
   team *aux;
   if (LooksUpInTeamHash(hashtableteam, name_team) == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-    }
+    printf("%d Equipa inexistente.\n", NL);
   }
   else
   {
-    {
-      aux = LooksUpInTeamHash(hashtableteam, name_team);
-      printf("%d %s %d\n", NL, aux->name_team, aux->wins);
-    }
+    aux = LooksUpInTeamHash(hashtableteam, name_team);
+    printf("%d %s %d\n", NL, aux->name_team, aux->wins);
   }
 
 }
@@ -303,104 +269,49 @@ void ChangesScore(char *name_game, int score1, int score2, game **hashtablegame,
   oldgame = LooksUpInGameHash(hashtablegame, name_game);
   if (oldgame == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
   else
   {
+    if (oldgame->score1 > oldgame->score2)
     {
-      if (oldgame->score1 > oldgame->score2)
+      if (score1 == score2)
       {
-        {
-          if (score1 == score2)
-          {
-            {
-              aux = LooksUpInTeamHash(hashtableteam, oldgame->team1);
-              aux->wins -= 1;
-            }
-          }
-          else
-          {
-            if (score1 < score2)
-            {
-              {
-                aux1 = LooksUpInTeamHash(hashtableteam, oldgame->team1);
-                aux2 = LooksUpInTeamHash(hashtableteam, oldgame->team2);
-                aux1->wins -= 1;
-                aux2->wins += 1;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-        }
+        aux = LooksUpInTeamHash(hashtableteam, oldgame->team1);
+        aux->wins -= 1;
       }
       else
       {
-        if (oldgame->score1 == oldgame->score2)
+        if (score1 < score2)
         {
-          {
-            if (score1 > score2)
-            {
-              {
-                aux = LooksUpInTeamHash(hashtableteam, oldgame->team1);
-                aux->wins += 1;
-              }
-            }
-            else
-            {
-              if (score1 < score2)
-              {
-                {
-                  aux = LooksUpInTeamHash(hashtableteam, oldgame->team2);
-                  aux->wins += 1;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-          }
+          aux1 = LooksUpInTeamHash(hashtableteam, oldgame->team1);
+          aux2 = LooksUpInTeamHash(hashtableteam, oldgame->team2);
+          aux1->wins -= 1;
+          aux2->wins += 1;
         }
         else
         {
-          if (oldgame->score1 < oldgame->score2)
+          
+        }
+
+      }
+
+    }
+    else
+    {
+      if (oldgame->score1 == oldgame->score2)
+      {
+        if (score1 > score2)
+        {
+          aux = LooksUpInTeamHash(hashtableteam, oldgame->team1);
+          aux->wins += 1;
+        }
+        else
+        {
+          if (score1 < score2)
           {
-            {
-              if (score1 > score2)
-              {
-                {
-                  aux1 = LooksUpInTeamHash(hashtableteam, oldgame->team1);
-                  aux2 = LooksUpInTeamHash(hashtableteam, oldgame->team2);
-                  aux1->wins += 1;
-                  aux2->wins -= 1;
-                }
-              }
-              else
-              {
-                if (score1 == score2)
-                {
-                  {
-                    aux = LooksUpInTeamHash(hashtableteam, oldgame->team2);
-                    aux->wins -= 1;
-                  }
-                }
-                else
-                {
-                  
-                }
-
-              }
-
-            }
+            aux = LooksUpInTeamHash(hashtableteam, oldgame->team2);
+            aux->wins += 1;
           }
           else
           {
@@ -410,10 +321,43 @@ void ChangesScore(char *name_game, int score1, int score2, game **hashtablegame,
         }
 
       }
+      else
+      {
+        if (oldgame->score1 < oldgame->score2)
+        {
+          if (score1 > score2)
+          {
+            aux1 = LooksUpInTeamHash(hashtableteam, oldgame->team1);
+            aux2 = LooksUpInTeamHash(hashtableteam, oldgame->team2);
+            aux1->wins += 1;
+            aux2->wins -= 1;
+          }
+          else
+          {
+            if (score1 == score2)
+            {
+              aux = LooksUpInTeamHash(hashtableteam, oldgame->team2);
+              aux->wins -= 1;
+            }
+            else
+            {
+              
+            }
 
-      oldgame->score1 = score1;
-      oldgame->score2 = score2;
+          }
+
+        }
+        else
+        {
+          
+        }
+
+      }
+
     }
+
+    oldgame->score1 = score1;
+    oldgame->score2 = score2;
   }
 
 }
@@ -432,10 +376,8 @@ void ListsGames(game **hashtablegame, int order, int NL)
       {
         if (aux->order == e)
         {
-          {
-            printf("%d %s %s %s %d %d\n", NL, aux->name_game, aux->team1, aux->team2, aux->score1, aux->score2);
-            break;
-          }
+          printf("%d %s %s %s %d %d\n", NL, aux->name_game, aux->team1, aux->team2, aux->score1, aux->score2);
+          break;
         }
         else
         {
@@ -459,27 +401,21 @@ void ErasesGame(char *name_game, game **hashtablegame, team **hashtableteam, int
   erasinggame = LooksUpInGameHash(hashtablegame, name_game);
   if (erasinggame == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
   else
   {
     if (erasinggame->score1 > erasinggame->score2)
     {
-      {
-        aux = LooksUpInTeamHash(hashtableteam, erasinggame->team1);
-        aux->wins -= 1;
-      }
+      aux = LooksUpInTeamHash(hashtableteam, erasinggame->team1);
+      aux->wins -= 1;
     }
     else
     {
       if (erasinggame->score1 < erasinggame->score2)
       {
-        {
-          aux = LooksUpInTeamHash(hashtableteam, erasinggame->team2);
-          aux->wins -= 1;
-        }
+        aux = LooksUpInTeamHash(hashtableteam, erasinggame->team2);
+        aux->wins -= 1;
       }
       else
       {

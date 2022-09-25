@@ -141,10 +141,8 @@ void command_q()
   clear_input_buffer();
   if (p_id >= catalog_end)
   {
-    {
-      printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", p_id);
-      return;
-    }
+    printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", p_id);
+    return;
   }
   else
   {
@@ -177,37 +175,29 @@ void command_A()
   product_index = index_from_pid(item.p_id);
   if (order_id >= order_list_end)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", item.p_id, order_id);
-      return;
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", item.p_id, order_id);
+    return;
   }
   else
   {
     if (item.p_id >= catalog_end)
     {
-      {
-        printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", item.p_id, order_id);
-        return;
-      }
+      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", item.p_id, order_id);
+      return;
     }
     else
     {
       if (item.qty > catalog[product_index].qty_available)
       {
-        {
-          printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", item.p_id, order_id);
-          return;
-        }
+        printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", item.p_id, order_id);
+        return;
       }
       else
       {
         if ((order_list[order_id].current_weight + (item.qty * catalog[product_index].weight)) > 200)
         {
-          {
-            printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", item.p_id, order_id);
-            return;
-          }
+          printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", item.p_id, order_id);
+          return;
         }
         else
         {
@@ -236,19 +226,15 @@ void command_r()
   product_index = index_from_pid(p_id);
   if (p_id >= catalog_end)
   {
-    {
-      printf("Impossivel remover stock do produto %d. Produto inexistente.\n", p_id);
-      return;
-    }
+    printf("Impossivel remover stock do produto %d. Produto inexistente.\n", p_id);
+    return;
   }
   else
   {
     if (stock_diff > catalog[product_index].qty_available)
     {
-      {
-        printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", stock_diff, p_id);
-        return;
-      }
+      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", stock_diff, p_id);
+      return;
     }
     else
     {
@@ -270,19 +256,15 @@ void command_R()
   clear_input_buffer();
   if (order_id >= order_list_end)
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", product_id, order_id);
-      return;
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", product_id, order_id);
+    return;
   }
   else
   {
     if (product_id >= catalog_end)
     {
-      {
-        printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", product_id, order_id);
-        return;
-      }
+      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", product_id, order_id);
+      return;
     }
     else
     {
@@ -302,10 +284,8 @@ void command_C()
   clear_input_buffer();
   if (order_id >= order_list_end)
   {
-    {
-      printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", order_id);
-      return;
-    }
+    printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", order_id);
+    return;
   }
   else
   {
@@ -325,10 +305,8 @@ void command_p()
   clear_input_buffer();
   if (product_id >= catalog_end)
   {
-    {
-      printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", product_id);
-      return;
-    }
+    printf("Impossivel alterar preco do produto %d. Produto inexistente.\n", product_id);
+    return;
   }
   else
   {
@@ -348,19 +326,15 @@ void command_E()
   clear_input_buffer();
   if (order_id >= order_list_end)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", order_id);
-      return;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", order_id);
+    return;
   }
   else
   {
     if (product_id >= catalog_end)
     {
-      {
-        printf("Impossivel listar produto %d. Produto inexistente.\n", product_id);
-        return;
-      }
+      printf("Impossivel listar produto %d. Produto inexistente.\n", product_id);
+      return;
     }
     else
     {
@@ -380,18 +354,14 @@ void command_m()
   clear_input_buffer();
   if (product_id >= catalog_end)
   {
-    {
-      printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", product_id);
-      return;
-    }
+    printf("Impossivel listar maximo do produto %d. Produto inexistente.\n", product_id);
+    return;
   }
   else
   {
     if (order_list_end == 0)
     {
-      {
-        return;
-      }
+      return;
     }
     else
     {
@@ -428,10 +398,8 @@ void command_L()
   clear_input_buffer();
   if (order_id >= order_list_end)
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", order_id);
-      return;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", order_id);
+    return;
   }
   else
   {
@@ -458,12 +426,10 @@ void add_product_catalog(product p)
   {
     if (p.price < catalog[k].price)
     {
-      {
-        temp = catalog[k];
-        catalog[k] = p;
-        p = temp;
-        break;
-      }
+      temp = catalog[k];
+      catalog[k] = p;
+      p = temp;
+      break;
     }
     else
     {
@@ -494,10 +460,8 @@ void add_item_order(order_item new_item, int order_id)
   {
     if (order_list[order_id].item_list[k].p_id == new_item.p_id)
     {
-      {
-        order_list[order_id].item_list[k].qty += new_item.qty;
-        return;
-      }
+      order_list[order_id].item_list[k].qty += new_item.qty;
+      return;
     }
     else
     {
@@ -511,11 +475,9 @@ void add_item_order(order_item new_item, int order_id)
     current_item_pid = order_list[order_id].item_list[k].p_id;
     if (strcmp(catalog[index_from_pid(new_item.p_id)].name, catalog[index_from_pid(current_item_pid)].name) < 0)
     {
-      {
-        temp = order_list[order_id].item_list[k];
-        order_list[order_id].item_list[k] = new_item;
-        new_item = temp;
-      }
+      temp = order_list[order_id].item_list[k];
+      order_list[order_id].item_list[k] = new_item;
+      new_item = temp;
     }
     else
     {
@@ -539,9 +501,7 @@ void remove_product_order(int order_id, int product_id)
   {
     if (order_list[order_id].item_list[k].p_id == product_id)
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {
@@ -552,9 +512,7 @@ void remove_product_order(int order_id, int product_id)
 
   if (k == max)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -605,9 +563,7 @@ void update_price(int product_id, int new_price)
   {
     if ((new_price < catalog[k].price) || ((new_price == catalog[k].price) && (product_id < catalog[k].p_id)))
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {
@@ -618,8 +574,19 @@ void update_price(int product_id, int new_price)
 
   if (k < old_product_index)
   {
+    for (i = k; i <= old_product_index; i++)
     {
-      for (i = k; i <= old_product_index; i++)
+      temp = catalog[i];
+      catalog[i] = new;
+      new = temp;
+    }
+
+  }
+  else
+  {
+    if (k > old_product_index)
+    {
+      for (i = k - 1; i >= old_product_index; i--)
       {
         temp = catalog[i];
         catalog[i] = new;
@@ -627,26 +594,9 @@ void update_price(int product_id, int new_price)
       }
 
     }
-  }
-  else
-  {
-    if (k > old_product_index)
-    {
-      {
-        for (i = k - 1; i >= old_product_index; i--)
-        {
-          temp = catalog[i];
-          catalog[i] = new;
-          new = temp;
-        }
-
-      }
-    }
     else
     {
-      {
-        catalog[old_product_index].price = new_price;
-      }
+      catalog[old_product_index].price = new_price;
     }
 
   }
@@ -663,11 +613,9 @@ void print_item(int order_id, int product_id)
   {
     if (order_list[order_id].item_list[k].p_id == product_id)
     {
-      {
-        qty = order_list[order_id].item_list[k].qty;
-        printf("%s %d.\n", catalog[index_from_pid(product_id)].name, qty);
-        return;
-      }
+      qty = order_list[order_id].item_list[k].qty;
+      printf("%s %d.\n", catalog[index_from_pid(product_id)].name, qty);
+      return;
     }
     else
     {
@@ -691,10 +639,8 @@ void print_most_item(int product_id)
   {
     if (item_qty_order(k, product_id) > most_quantity)
     {
-      {
-        most_order_id = k;
-        most_quantity = item_qty_order(k, product_id);
-      }
+      most_order_id = k;
+      most_quantity = item_qty_order(k, product_id);
     }
     else
     {
@@ -705,9 +651,7 @@ void print_most_item(int product_id)
 
   if (most_order_id == (-1))
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -726,9 +670,7 @@ int item_qty_order(int order_id, int product_id)
   {
     if (order_list[order_id].item_list[k].p_id == product_id)
     {
-      {
-        return order_list[order_id].item_list[k].qty;
-      }
+      return order_list[order_id].item_list[k].qty;
     }
     else
     {
@@ -747,9 +689,7 @@ int index_from_pid(int p_id)
   {
     if (catalog[k].p_id == p_id)
     {
-      {
-        return k;
-      }
+      return k;
     }
     else
     {

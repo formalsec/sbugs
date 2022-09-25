@@ -21,7 +21,7 @@ void equipas_maior_vitorias(int NL, hashtable_equipas *hash_equipas);
 int main()
 {
   int NL = 1;
-  int estado = 1;
+  int estado = true;
   lista *ls = init_lista();
   hashtable_jogos *hash_jogos = init_hash_jogos(31);
   hashtable_equipas *hash_equipas = init_hash_equipas(31);
@@ -70,7 +70,7 @@ int main()
         break;
 
       case 'x':
-        estado = 0;
+        estado = false;
         free_lista(ls);
         free_hash_jogos(hash_jogos);
         free_hash_equipas(hash_equipas);
@@ -113,28 +113,22 @@ void add_jogo(int NL, hashtable_jogos *hash_jogos, hashtable_equipas *hash_equip
   score2 = new_sym_var(sizeof(int) * 8);
   if (procura_hash_jogos(hash_jogos, nome) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-      return;
-    }
+    printf("%d Jogo existente.\n", NL);
+    return;
   }
   else
   {
     if (procura_hash_equipas(hash_equipas, equipa1) == 0)
     {
-      {
-        printf("%d Equipa inexistente.\n", NL);
-        return;
-      }
+      printf("%d Equipa inexistente.\n", NL);
+      return;
     }
     else
     {
       if (procura_hash_equipas(hash_equipas, equipa2) == 0)
       {
-        {
-          printf("%d Equipa inexistente.\n", NL);
-          return;
-        }
+        printf("%d Equipa inexistente.\n", NL);
+        return;
       }
       else
       {
@@ -158,19 +152,15 @@ void add_jogo(int NL, hashtable_jogos *hash_jogos, hashtable_equipas *hash_equip
   insere_lista_ult(ls, novo_jogo);
   if (score1 > score2)
   {
-    {
-      equipa = procura_hash_equipas(hash_equipas, equipa1);
-      equipa->vitorias++;
-    }
+    equipa = procura_hash_equipas(hash_equipas, equipa1);
+    equipa->vitorias++;
   }
   else
   {
     if (score1 < score2)
     {
-      {
-        equipa = procura_hash_equipas(hash_equipas, equipa2);
-        equipa->vitorias++;
-      }
+      equipa = procura_hash_equipas(hash_equipas, equipa2);
+      equipa->vitorias++;
     }
     else
     {
@@ -209,10 +199,8 @@ void procura_jogo(int NL, hashtable_jogos *hash_jogos)
   nome[10 - 1] = '\0';
   if ((jogo = procura_hash_jogos(hash_jogos, nome)) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -240,10 +228,8 @@ void remove_jogo(int NL, hashtable_jogos *hash_jogos, hashtable_equipas *hash_eq
   nome[10 - 1] = '\0';
   if ((jogo = procura_hash_jogos(hash_jogos, nome)) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -252,19 +238,15 @@ void remove_jogo(int NL, hashtable_jogos *hash_jogos, hashtable_equipas *hash_eq
 
   if (jogo->score1 > jogo->score2)
   {
-    {
-      equipa = procura_hash_equipas(hash_equipas, jogo->equipa1);
-      equipa->vitorias--;
-    }
+    equipa = procura_hash_equipas(hash_equipas, jogo->equipa1);
+    equipa->vitorias--;
   }
   else
   {
     if (jogo->score1 < jogo->score2)
     {
-      {
-        equipa = procura_hash_equipas(hash_equipas, jogo->equipa2);
-        equipa->vitorias--;
-      }
+      equipa = procura_hash_equipas(hash_equipas, jogo->equipa2);
+      equipa->vitorias--;
     }
     else
     {
@@ -295,10 +277,8 @@ void altera_score(int NL, hashtable_jogos *hash_jogos, hashtable_equipas *hash_e
   score2 = new_sym_var(sizeof(int) * 8);
   if ((jogo = procura_hash_jogos(hash_jogos, nome)) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -309,21 +289,39 @@ void altera_score(int NL, hashtable_jogos *hash_jogos, hashtable_equipas *hash_e
   equipa2 = procura_hash_equipas(hash_equipas, jogo->equipa2);
   if (jogo->score1 > jogo->score2)
   {
+    if (score1 < score2)
     {
-      if (score1 < score2)
+      equipa1->vitorias--;
+      equipa2->vitorias++;
+    }
+    else
+    {
+      if (score1 == score2)
       {
-        {
-          equipa1->vitorias--;
-          equipa2->vitorias++;
-        }
+        equipa1->vitorias--;
+      }
+      else
+      {
+        
+      }
+
+    }
+
+  }
+  else
+  {
+    if (jogo->score1 < jogo->score2)
+    {
+      if (score1 > score2)
+      {
+        equipa1->vitorias++;
+        equipa2->vitorias--;
       }
       else
       {
         if (score1 == score2)
         {
-          {
-            equipa1->vitorias--;
-          }
+          equipa2->vitorias--;
         }
         else
         {
@@ -333,26 +331,19 @@ void altera_score(int NL, hashtable_jogos *hash_jogos, hashtable_equipas *hash_e
       }
 
     }
-  }
-  else
-  {
-    if (jogo->score1 < jogo->score2)
+    else
     {
+      if (jogo->score1 == jogo->score2)
       {
         if (score1 > score2)
         {
-          {
-            equipa1->vitorias++;
-            equipa2->vitorias--;
-          }
+          equipa1->vitorias++;
         }
         else
         {
-          if (score1 == score2)
+          if (score1 < score2)
           {
-            {
-              equipa2->vitorias--;
-            }
+            equipa2->vitorias++;
           }
           else
           {
@@ -361,35 +352,6 @@ void altera_score(int NL, hashtable_jogos *hash_jogos, hashtable_equipas *hash_e
 
         }
 
-      }
-    }
-    else
-    {
-      if (jogo->score1 == jogo->score2)
-      {
-        {
-          if (score1 > score2)
-          {
-            {
-              equipa1->vitorias++;
-            }
-          }
-          else
-          {
-            if (score1 < score2)
-            {
-              {
-                equipa2->vitorias++;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-        }
       }
       else
       {
@@ -416,10 +378,8 @@ void add_equipa(int NL, hashtable_equipas *hash_equipas)
   nome[10 - 1] = '\0';
   if (procura_hash_equipas(hash_equipas, nome) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-      return;
-    }
+    printf("%d Equipa existente.\n", NL);
+    return;
   }
   else
   {
@@ -445,10 +405,8 @@ void procura_equipa(int NL, hashtable_equipas *hash_equipas)
   nome[10 - 1] = '\0';
   if ((equipa = procura_hash_equipas(hash_equipas, nome)) == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -469,9 +427,7 @@ void equipas_maior_vitorias(int NL, hashtable_equipas *hash_equipas)
   char **vitorias_equipas;
   if (hash_equipas->n_elem == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -482,30 +438,24 @@ void equipas_maior_vitorias(int NL, hashtable_equipas *hash_equipas)
   {
     if (hash_equipas->hash[i] != 0)
     {
+      if (hash_equipas->hash[i]->vitorias > vitorias)
       {
-        if (hash_equipas->hash[i]->vitorias > vitorias)
+        vitorias = hash_equipas->hash[i]->vitorias;
+        numero_equipas = 1;
+      }
+      else
+      {
+        if (hash_equipas->hash[i]->vitorias == vitorias)
         {
-          {
-            vitorias = hash_equipas->hash[i]->vitorias;
-            numero_equipas = 1;
-          }
+          numero_equipas++;
         }
         else
         {
-          if (hash_equipas->hash[i]->vitorias == vitorias)
-          {
-            {
-              numero_equipas++;
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
+
     }
     else
     {
@@ -519,20 +469,16 @@ void equipas_maior_vitorias(int NL, hashtable_equipas *hash_equipas)
   {
     if (hash_equipas->hash[i] != 0)
     {
+      if ((hash_equipas->hash[i]->vitorias == vitorias) && (j < numero_equipas))
       {
-        if ((hash_equipas->hash[i]->vitorias == vitorias) && (j < numero_equipas))
-        {
-          {
-            vitorias_equipas[j] = hash_equipas->hash[i]->nome;
-            j++;
-          }
-        }
-        else
-        {
-          
-        }
-
+        vitorias_equipas[j] = hash_equipas->hash[i]->nome;
+        j++;
       }
+      else
+      {
+        
+      }
+
     }
     else
     {

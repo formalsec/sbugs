@@ -67,10 +67,8 @@ void a(long line)
     }
     else
     {
-      {
-        novo_jogo = cria_jogo(nomes[0], tabela_Equi[i], tabela_Equi[j], sc1, sc2);
-        insert_Jo(novo_jogo);
-      }
+      novo_jogo = cria_jogo(nomes[0], tabela_Equi[i], tabela_Equi[j], sc1, sc2);
+      insert_Jo(novo_jogo);
     }
 
   }
@@ -93,10 +91,8 @@ void A(long line)
   }
   else
   {
-    {
-      nova_equipa = cria_equipa(str);
-      insert_Eq(nova_equipa);
-    }
+    nova_equipa = cria_equipa(str);
+    insert_Eq(nova_equipa);
   }
 
 }
@@ -128,9 +124,7 @@ void p(long line)
   }
   else
   {
-    {
-      printf("%ld %s %s %s %d %d\n", line, tabela_Jo[i]->nome, tabela_Jo[i]->e1->nome, tabela_Jo[i]->e2->nome, tabela_Jo[i]->sc1, tabela_Jo[i]->sc2);
-    }
+    printf("%ld %s %s %s %d %d\n", line, tabela_Jo[i]->nome, tabela_Jo[i]->e1->nome, tabela_Jo[i]->e2->nome, tabela_Jo[i]->sc1, tabela_Jo[i]->sc2);
   }
 
 }
@@ -151,9 +145,7 @@ void P(long line)
   }
   else
   {
-    {
-      printf("%ld %s %d\n", line, tabela_Equi[i]->nome, tabela_Equi[i]->vit);
-    }
+    printf("%ld %s %d\n", line, tabela_Equi[i]->nome, tabela_Equi[i]->vit);
   }
 
 }
@@ -200,13 +192,11 @@ void s(long line)
   }
   else
   {
-    {
-      ant_venc = vencedor(tabela_Jo[i]->sc1, tabela_Jo[i]->sc2);
-      novo_venc = vencedor(sc1, sc2);
-      tabela_Jo[i]->sc1 = sc1;
-      tabela_Jo[i]->sc2 = sc2;
-      atualiza_vencedores(ant_venc, novo_venc, tabela_Jo[i]->e1, tabela_Jo[i]->e2);
-    }
+    ant_venc = vencedor(tabela_Jo[i]->sc1, tabela_Jo[i]->sc2);
+    novo_venc = vencedor(sc1, sc2);
+    tabela_Jo[i]->sc1 = sc1;
+    tabela_Jo[i]->sc2 = sc2;
+    atualiza_vencedores(ant_venc, novo_venc, tabela_Jo[i]->e1, tabela_Jo[i]->e2);
   }
 
 }
@@ -230,33 +220,27 @@ void g(long line)
   for (i = 0; i < tabEq_size; ++i)
     if (tabela_Equi[i] != 0)
   {
+    if (tabela_Equi[i]->vit == max)
     {
-      if (tabela_Equi[i]->vit == max)
+      campeoes[j] = tabela_Equi[i];
+      ++j;
+    }
+    else
+    {
+      if (tabela_Equi[i]->vit > max)
       {
-        {
-          campeoes[j] = tabela_Equi[i];
-          ++j;
-        }
+        j = 0;
+        max = tabela_Equi[i]->vit;
+        campeoes[j] = tabela_Equi[i];
+        ++j;
       }
       else
       {
-        if (tabela_Equi[i]->vit > max)
-        {
-          {
-            j = 0;
-            max = tabela_Equi[i]->vit;
-            campeoes[j] = tabela_Equi[i];
-            ++j;
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
     }
+
   }
   else
   {

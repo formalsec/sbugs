@@ -61,28 +61,20 @@ void pop_jogo(list_games *lst, jogo *game)
 {
   if (game->prev != 0)
   {
-    {
-      game->prev->next = game->next;
-    }
+    game->prev->next = game->next;
   }
   else
   {
-    {
-      lst->head = game->next;
-    }
+    lst->head = game->next;
   }
 
   if (game->next != 0)
   {
-    {
-      game->next->prev = game->prev;
-    }
+    game->next->prev = game->prev;
   }
   else
   {
-    {
-      lst->last = game->prev;
-    }
+    lst->last = game->prev;
   }
 
   free_jogo(game);
@@ -112,9 +104,7 @@ jogo_hash *procura_nome_jogo(char nome[1024], hash_table_jogos *hash_jogos)
   {
     if (strcmp(temp->pointr_jogo->nome_jogo, nome) == 0)
     {
-      {
-        return temp;
-      }
+      return temp;
     }
     else
     {
@@ -134,21 +124,15 @@ int n_jogos_ganhos(list_games *lst_jogos, char equipa[1024])
   {
     if (strcmp(pointr->equipa_1, equipa) == 0)
     {
+      if (pointr->score_1 > pointr->score_2)
       {
-        if (pointr->score_1 > pointr->score_2)
-        {
-          {
-            jogos_ganhos++;
-          }
-        }
-        else
-        {
-          {
-            jogos_ganhos = jogos_ganhos;
-          }
-        }
-
+        jogos_ganhos++;
       }
+      else
+      {
+        jogos_ganhos = jogos_ganhos;
+      }
+
     }
     else
     {
@@ -157,21 +141,15 @@ int n_jogos_ganhos(list_games *lst_jogos, char equipa[1024])
 
     if (strcmp(pointr->equipa_2, equipa) == 0)
     {
+      if (pointr->score_2 > pointr->score_1)
       {
-        if (pointr->score_2 > pointr->score_1)
-        {
-          {
-            jogos_ganhos++;
-          }
-        }
-        else
-        {
-          {
-            jogos_ganhos = jogos_ganhos;
-          }
-        }
-
+        jogos_ganhos++;
       }
+      else
+      {
+        jogos_ganhos = jogos_ganhos;
+      }
+
     }
     else
     {
@@ -192,9 +170,7 @@ equipa_hash *procura_nome_equipa(char nome[1024], hash_table_equipas *hash_equip
   {
     if (strcmp(temp->pointr_equipa->nome_equipa, nome) == 0)
     {
-      {
-        return temp;
-      }
+      return temp;
     }
     else
     {
@@ -287,43 +263,35 @@ void apaga_jogo(list_games *lst_jogos, char nome[1024], hash_table_jogos *hash_j
   jogo_hash *temp;
   if (verifica_jogo != 0)
   {
+    if (strcmp(verifica_jogo->pointr_jogo->nome_jogo, nome) == 0)
     {
-      if (strcmp(verifica_jogo->pointr_jogo->nome_jogo, nome) == 0)
+      temp = verifica_jogo->next;
+      pop_jogo(lst_jogos, verifica_jogo->pointr_jogo);
+      free(verifica_jogo);
+      hash_jogos->vetor[chave_jogo] = temp;
+    }
+    else
+    {
+      
+    }
+
+    while (verifica_jogo->next != 0)
+    {
+      if (strcmp(verifica_jogo->next->pointr_jogo->nome_jogo, nome) == 0)
       {
-        {
-          temp = verifica_jogo->next;
-          pop_jogo(lst_jogos, verifica_jogo->pointr_jogo);
-          free(verifica_jogo);
-          hash_jogos->vetor[chave_jogo] = temp;
-        }
+        break;
       }
       else
       {
-        
+        verifica_jogo = verifica_jogo->next;
       }
 
-      while (verifica_jogo->next != 0)
-      {
-        if (strcmp(verifica_jogo->next->pointr_jogo->nome_jogo, nome) == 0)
-        {
-          {
-            break;
-          }
-        }
-        else
-        {
-          {
-            verifica_jogo = verifica_jogo->next;
-          }
-        }
-
-      }
-
-      temp = verifica_jogo->next;
-      pop_jogo(lst_jogos, temp->pointr_jogo);
-      free(temp);
-      verifica_jogo->next = temp->next;
     }
+
+    temp = verifica_jogo->next;
+    pop_jogo(lst_jogos, temp->pointr_jogo);
+    free(temp);
+    verifica_jogo->next = temp->next;
   }
   else
   {
@@ -379,45 +347,33 @@ void comando_a(int NL, list_games *lst_jogos, hash_table_jogos *hash_jogos, hash
   pointr_equipa_2 = procura_nome_equipa(equipa_2, hash_equipas);
   if (pointr_jogo == 0)
   {
+    if ((pointr_equipa_1 != 0) && (pointr_equipa_2 != 0))
     {
-      if ((pointr_equipa_1 != 0) && (pointr_equipa_2 != 0))
+      if (lst_jogos->head == 0)
       {
-        {
-          if (lst_jogos->head == 0)
-          {
-            {
-              lst_jogos->head = novo_jogo;
-              chave_jogo = codigo_hash(novo_jogo->nome_jogo);
-              push_jogo(chave_jogo, novo_jogo, hash_jogos);
-            }
-          }
-          else
-          {
-            {
-              novo_jogo->prev = lst_jogos->last;
-              lst_jogos->last->next = novo_jogo;
-              chave_jogo = codigo_hash(novo_jogo->nome_jogo);
-              push_jogo(chave_jogo, novo_jogo, hash_jogos);
-            }
-          }
-
-          lst_jogos->last = novo_jogo;
-        }
+        lst_jogos->head = novo_jogo;
+        chave_jogo = codigo_hash(novo_jogo->nome_jogo);
+        push_jogo(chave_jogo, novo_jogo, hash_jogos);
       }
       else
       {
-        {
-          printf("%d Equipa inexistente.\n", NL);
-        }
+        novo_jogo->prev = lst_jogos->last;
+        lst_jogos->last->next = novo_jogo;
+        chave_jogo = codigo_hash(novo_jogo->nome_jogo);
+        push_jogo(chave_jogo, novo_jogo, hash_jogos);
       }
 
+      lst_jogos->last = novo_jogo;
     }
+    else
+    {
+      printf("%d Equipa inexistente.\n", NL);
+    }
+
   }
   else
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-    }
+    printf("%d Jogo existente.\n", NL);
   }
 
 }
@@ -442,33 +398,25 @@ void comando_A(int NL, list_teams *lst_equipas, hash_table_equipas *hash_equipas
   pointr_equipa = procura_nome_equipa(nome, hash_equipas);
   if (pointr_equipa == 0)
   {
+    if (lst_equipas->head == 0)
     {
-      if (lst_equipas->head == 0)
-      {
-        {
-          lst_equipas->head = nova_equipa;
-          chave_equipa = codigo_hash(nova_equipa->nome_equipa);
-          push_equipa(chave_equipa, nova_equipa, hash_equipas);
-        }
-      }
-      else
-      {
-        {
-          nova_equipa->prev = lst_equipas->last;
-          lst_equipas->last->next = nova_equipa;
-          chave_equipa = codigo_hash(nova_equipa->nome_equipa);
-          push_equipa(chave_equipa, nova_equipa, hash_equipas);
-        }
-      }
-
-      lst_equipas->last = nova_equipa;
+      lst_equipas->head = nova_equipa;
+      chave_equipa = codigo_hash(nova_equipa->nome_equipa);
+      push_equipa(chave_equipa, nova_equipa, hash_equipas);
     }
+    else
+    {
+      nova_equipa->prev = lst_equipas->last;
+      lst_equipas->last->next = nova_equipa;
+      chave_equipa = codigo_hash(nova_equipa->nome_equipa);
+      push_equipa(chave_equipa, nova_equipa, hash_equipas);
+    }
+
+    lst_equipas->last = nova_equipa;
   }
   else
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-    }
+    printf("%d Equipa existente.\n", NL);
   }
 
 }
@@ -487,16 +435,12 @@ void comando_P(int NL, list_games *lst_jogos, hash_table_equipas *hash_equipas)
   pointr_team = procura_nome_equipa(equipa, hash_equipas);
   if (pointr_team != 0)
   {
-    {
-      wins = n_jogos_ganhos(lst_jogos, equipa);
-      printf("%d %s %d\n", NL, equipa, wins);
-    }
+    wins = n_jogos_ganhos(lst_jogos, equipa);
+    printf("%d %s %d\n", NL, equipa, wins);
   }
   else
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-    }
+    printf("%d Equipa inexistente.\n", NL);
   }
 
 }
@@ -514,15 +458,11 @@ void comando_r(int NL, list_games *lst_jogos, hash_table_jogos *hash_jogos)
   pointr_jogo = procura_nome_jogo(nome, hash_jogos);
   if (pointr_jogo != 0)
   {
-    {
-      apaga_jogo(lst_jogos, nome, hash_jogos);
-    }
+    apaga_jogo(lst_jogos, nome, hash_jogos);
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
 
 }
@@ -540,15 +480,11 @@ void comando_p(int NL, hash_table_jogos *hash_jogos)
   pointer_jogo = procura_nome_jogo(nome, hash_jogos);
   if (pointer_jogo != 0)
   {
-    {
-      printf("%d %s %s %s %d %d\n", NL, pointer_jogo->pointr_jogo->nome_jogo, pointer_jogo->pointr_jogo->equipa_1, pointer_jogo->pointr_jogo->equipa_2, pointer_jogo->pointr_jogo->score_1, pointer_jogo->pointr_jogo->score_2);
-    }
+    printf("%d %s %s %s %d %d\n", NL, pointer_jogo->pointr_jogo->nome_jogo, pointer_jogo->pointr_jogo->equipa_1, pointer_jogo->pointr_jogo->equipa_2, pointer_jogo->pointr_jogo->score_1, pointer_jogo->pointr_jogo->score_2);
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
 
 }
@@ -570,16 +506,12 @@ void comando_s(int NL, hash_table_jogos *hash_jogos)
   pointer_jogo = procura_nome_jogo(nome, hash_jogos);
   if (pointer_jogo != 0)
   {
-    {
-      pointer_jogo->pointr_jogo->score_1 = score_1;
-      pointer_jogo->pointr_jogo->score_2 = score_2;
-    }
+    pointer_jogo->pointr_jogo->score_1 = score_1;
+    pointer_jogo->pointr_jogo->score_2 = score_2;
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
 
 }

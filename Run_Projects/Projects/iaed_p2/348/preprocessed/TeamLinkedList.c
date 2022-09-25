@@ -38,15 +38,13 @@ void freeTeamLinkedList(LinkedList_Team *llT)
   List_Node_Team *temp;
   if (llT->head)
   {
+    while (llT->head->next)
     {
-      while (llT->head->next)
-      {
-        temp = llT->head;
-        llT->head = llT->head->next;
-        free(temp);
-      }
-
+      temp = llT->head;
+      llT->head = llT->head->next;
+      free(temp);
     }
+
   }
   else
   {

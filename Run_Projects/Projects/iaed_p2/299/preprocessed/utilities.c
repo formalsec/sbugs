@@ -23,17 +23,13 @@ teams *get_winner(games *game)
   teams *winner = 0;
   if (game->sc[0] > game->sc[1])
   {
-    {
-      winner = game->team1;
-    }
+    winner = game->team1;
   }
   else
   {
     if (game->sc[1] > game->sc[0])
     {
-      {
-        winner = game->team2;
-      }
+      winner = game->team2;
     }
     else
     {
@@ -128,21 +124,19 @@ void clear_system(games **games_ht, game_names **names_pt, teams **teams_ht, tea
   int i;
   if ((*names_pt) != 0)
   {
+    int hash_id;
+    games *curr_game;
+    game_names *curr_name = (*names_pt)->last->prev;
+    for (; curr_name != 0; curr_name = curr_name->prev)
     {
-      int hash_id;
-      games *curr_game;
-      game_names *curr_name = (*names_pt)->last->prev;
-      for (; curr_name != 0; curr_name = curr_name->prev)
-      {
-        hash_id = hash(curr_name->next->name, 23269);
-        curr_game = curr_name->next->game;
-        elim_game(curr_game, &games_ht[hash_id], names_pt);
-      }
-
-      hash_id = hash((*names_pt)->name, 23269);
-      curr_game = (*names_pt)->game;
+      hash_id = hash(curr_name->next->name, 23269);
+      curr_game = curr_name->next->game;
       elim_game(curr_game, &games_ht[hash_id], names_pt);
     }
+
+    hash_id = hash((*names_pt)->name, 23269);
+    curr_game = (*names_pt)->game;
+    elim_game(curr_game, &games_ht[hash_id], names_pt);
   }
   else
   {

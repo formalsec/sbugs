@@ -40,53 +40,47 @@ void add_game(Game **game_hash, team **team_hash, int NL)
   game = game_hash[index];
   if (!game)
   {
+    if (!(A = get_team(team_hash, teamA)))
     {
-      if (!(A = get_team(team_hash, teamA)))
-      {
-        {
-          printf("%d Equipa inexistente.\n", NL);
-          return;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (!(B = get_team(team_hash, teamB)))
-      {
-        {
-          printf("%d Equipa inexistente.\n", NL);
-          return;
-        }
-      }
-      else
-      {
-        
-      }
-
-      game = create_game(name_game, A, B, scoreA, scoreB);
-      game->NL = NL;
-      if (scoreA > scoreB)
-      {
-        A->vitories++;
-      }
-      else
-      {
-        if (scoreB > scoreA)
-        {
-          B->vitories++;
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      game_hash[index] = game;
+      printf("%d Equipa inexistente.\n", NL);
       return;
     }
+    else
+    {
+      
+    }
+
+    if (!(B = get_team(team_hash, teamB)))
+    {
+      printf("%d Equipa inexistente.\n", NL);
+      return;
+    }
+    else
+    {
+      
+    }
+
+    game = create_game(name_game, A, B, scoreA, scoreB);
+    game->NL = NL;
+    if (scoreA > scoreB)
+    {
+      A->vitories++;
+    }
+    else
+    {
+      if (scoreB > scoreA)
+      {
+        B->vitories++;
+      }
+      else
+      {
+        
+      }
+
+    }
+
+    game_hash[index] = game;
+    return;
   }
   else
   {
@@ -97,10 +91,8 @@ void add_game(Game **game_hash, team **team_hash, int NL)
   {
     if (!strcmp(game->name, name_game))
     {
-      {
-        printf("%d Jogo existente.\n", NL);
-        return;
-      }
+      printf("%d Jogo existente.\n", NL);
+      return;
     }
     else
     {
@@ -120,10 +112,8 @@ void add_game(Game **game_hash, team **team_hash, int NL)
 
   if (!(A = get_team(team_hash, teamA)))
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -132,10 +122,8 @@ void add_game(Game **game_hash, team **team_hash, int NL)
 
   if (!(B = get_team(team_hash, teamB)))
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -212,10 +200,8 @@ void search_game(Game **game_hash, int NL)
   for (; s; s = s->next)
     if (!strcmp(s->name, name))
   {
-    {
-      printf("%d %s %s %s %d %d\n", NL, s->name, s->A->name, s->B->name, s->scoreA, s->scoreB);
-      return;
-    }
+    printf("%d %s %s %s %d %d\n", NL, s->name, s->A->name, s->B->name, s->scoreA, s->scoreB);
+    return;
   }
   else
   {
@@ -247,9 +233,7 @@ void change_score_game(Game **game_hash, int NL)
   {
     if (!strcmp(game->name, name_game))
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {
@@ -261,10 +245,8 @@ void change_score_game(Game **game_hash, int NL)
 
   if (!game)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -273,21 +255,39 @@ void change_score_game(Game **game_hash, int NL)
 
   if (game->scoreA > game->scoreB)
   {
+    if (new_scoreA < new_scoreB)
     {
-      if (new_scoreA < new_scoreB)
+      game->A->vitories--;
+      game->B->vitories++;
+    }
+    else
+    {
+      if (new_scoreA == new_scoreB)
       {
-        {
-          game->A->vitories--;
-          game->B->vitories++;
-        }
+        game->A->vitories--;
+      }
+      else
+      {
+        
+      }
+
+    }
+
+  }
+  else
+  {
+    if (game->scoreA < game->scoreB)
+    {
+      if (new_scoreA > new_scoreB)
+      {
+        game->A->vitories++;
+        game->B->vitories--;
       }
       else
       {
         if (new_scoreA == new_scoreB)
         {
-          {
-            game->A->vitories--;
-          }
+          game->B->vitories--;
         }
         else
         {
@@ -297,26 +297,19 @@ void change_score_game(Game **game_hash, int NL)
       }
 
     }
-  }
-  else
-  {
-    if (game->scoreA < game->scoreB)
+    else
     {
+      if (game->scoreA == game->scoreB)
       {
         if (new_scoreA > new_scoreB)
         {
-          {
-            game->A->vitories++;
-            game->B->vitories--;
-          }
+          game->A->vitories++;
         }
         else
         {
-          if (new_scoreA == new_scoreB)
+          if (new_scoreA < new_scoreB)
           {
-            {
-              game->B->vitories--;
-            }
+            game->B->vitories++;
           }
           else
           {
@@ -325,35 +318,6 @@ void change_score_game(Game **game_hash, int NL)
 
         }
 
-      }
-    }
-    else
-    {
-      if (game->scoreA == game->scoreB)
-      {
-        {
-          if (new_scoreA > new_scoreB)
-          {
-            {
-              game->A->vitories++;
-            }
-          }
-          else
-          {
-            if (new_scoreA < new_scoreB)
-            {
-              {
-                game->B->vitories++;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-        }
       }
       else
       {
@@ -384,10 +348,8 @@ void delete_game(Game **game_hash, int NL)
   delete = game_hash[index];
   if (!delete)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -396,31 +358,25 @@ void delete_game(Game **game_hash, int NL)
 
   if (!strcmp(delete->name, name))
   {
+    if (delete->scoreA > delete->scoreB)
     {
-      if (delete->scoreA > delete->scoreB)
+      delete->A->vitories--;
+    }
+    else
+    {
+      if (delete->scoreB > delete->scoreA)
       {
-        {
-          delete->A->vitories--;
-        }
+        delete->B->vitories--;
       }
       else
       {
-        if (delete->scoreB > delete->scoreA)
-        {
-          {
-            delete->B->vitories--;
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      game_hash[index] = pop_game(game_hash[index]);
-      return;
     }
+
+    game_hash[index] = pop_game(game_hash[index]);
+    return;
   }
   else
   {
@@ -433,32 +389,26 @@ void delete_game(Game **game_hash, int NL)
   {
     if (!strcmp(delete->name, name))
     {
+      if (delete->scoreA > delete->scoreB)
       {
-        if (delete->scoreA > delete->scoreB)
+        delete->A->vitories--;
+      }
+      else
+      {
+        if (delete->scoreB > delete->scoreA)
         {
-          {
-            delete->A->vitories--;
-          }
+          delete->B->vitories--;
         }
         else
         {
-          if (delete->scoreB > delete->scoreA)
-          {
-            {
-              delete->B->vitories--;
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
-        delete = pop_game(delete);
-        aux->next = delete;
-        return;
       }
+
+      delete = pop_game(delete);
+      aux->next = delete;
+      return;
     }
     else
     {
@@ -498,10 +448,8 @@ void team_search(team **team_hash, int NL)
   {
     if (!strcmp(lookteam->name, name))
     {
-      {
-        printf("%d %s %d\n", NL, lookteam->name, lookteam->vitories);
-        return;
-      }
+      printf("%d %s %d\n", NL, lookteam->name, lookteam->vitories);
+      return;
     }
     else
     {
@@ -526,19 +474,15 @@ void most_vitories(team **team_hash, int NL)
     {
       if (!print)
       {
-        {
-          print = create_team(point->name);
-          print->vitories = point->vitories;
-        }
+        print = create_team(point->name);
+        print->vitories = point->vitories;
       }
       else
       {
         if (point->vitories >= print->vitories)
         {
-          {
-            print = push_team(point->name, print);
-            print->vitories = point->vitories;
-          }
+          print = push_team(point->name, print);
+          print->vitories = point->vitories;
         }
         else
         {

@@ -29,13 +29,11 @@ gamelist game_insertListEnd(gamelist list, Game game)
 {
   if (game_listEmpty(list))
   {
-    {
-      gamelist aux = list;
-      gamelink node = game_listAddNode(game, 0, 0);
-      node->prev = node;
-      aux->head = (aux->tail = node);
-      return aux;
-    }
+    gamelist aux = list;
+    gamelink node = game_listAddNode(game, 0, 0);
+    node->prev = node;
+    aux->head = (aux->tail = node);
+    return aux;
   }
   else
   {
@@ -76,38 +74,34 @@ gamelink game_searchList(gamelist list, char *key)
 {
   if (!game_listEmpty(list))
   {
+    if (strcmp(list->head->game->name, key) == 0)
     {
-      if (strcmp(list->head->game->name, key) == 0)
+      return list->head;
+    }
+    else
+    {
+      if (strcmp(list->tail->game->name, key) == 0)
       {
-        return list->head;
+        return list->tail;
       }
       else
       {
-        if (strcmp(list->tail->game->name, key) == 0)
+        gamelink node;
+        for (node = list->head; node != 0; node = node->next)
+          if (strcmp(node->game->name, key) == 0)
         {
-          return list->tail;
+          return node;
         }
         else
         {
-          {
-            gamelink node;
-            for (node = list->head; node != 0; node = node->next)
-              if (strcmp(node->game->name, key) == 0)
-            {
-              return node;
-            }
-            else
-            {
-              
-            }
-
-
-          }
+          
         }
+
 
       }
 
     }
+
   }
   else
   {
@@ -121,44 +115,34 @@ gamelist game_removeList(gamelist list, gamelink node2Delete)
 {
   if (node2Delete)
   {
+    if (list->tail == list->head)
     {
-      if (list->tail == list->head)
+      list->head = (list->tail = 0);
+    }
+    else
+    {
+      if (node2Delete == list->head)
       {
-        {
-          list->head = (list->tail = 0);
-        }
+        list->head = node2Delete->next;
+        list->head->prev = list->tail;
       }
       else
       {
-        if (node2Delete == list->head)
+        if (node2Delete == list->tail)
         {
-          {
-            list->head = node2Delete->next;
-            list->head->prev = list->tail;
-          }
+          list->tail = node2Delete->prev;
+          list->tail->next = 0;
         }
         else
         {
-          if (node2Delete == list->tail)
-          {
-            {
-              list->tail = node2Delete->prev;
-              list->tail->next = 0;
-            }
-          }
-          else
-          {
-            {
-              node2Delete->next->prev = node2Delete->prev;
-              node2Delete->prev->next = node2Delete->next;
-            }
-          }
-
+          node2Delete->next->prev = node2Delete->prev;
+          node2Delete->prev->next = node2Delete->next;
         }
 
       }
 
     }
+
   }
   else
   {
@@ -184,59 +168,23 @@ gamelist game_changeScore(int NL, gamelist list, char *key, int news1, int news2
   gamelink node = game_searchList(list, key);
   if (node)
   {
+    int s1 = gameScoreT1(node->game);
+    int s2 = gameScoreT2(node->game);
+    node->game = gameChangeScore(node->game, news1, news2);
+    if (s1 != s2)
     {
-      int s1 = gameScoreT1(node->game);
-      int s2 = gameScoreT2(node->game);
-      node->game = gameChangeScore(node->game, news1, news2);
-      if (s1 != s2)
+      if (s1 > s2)
       {
-        {
-          if (s1 > s2)
-          {
-            node->game->t1->wins--;
-          }
-          else
-          {
-            
-          }
-
-          if (s1 < s2)
-          {
-            node->game->t2->wins--;
-          }
-          else
-          {
-            
-          }
-
-        }
+        node->game->t1->wins--;
       }
       else
       {
         
       }
 
-      if (news1 == news2)
+      if (s1 < s2)
       {
-        return list;
-      }
-      else
-      {
-        
-      }
-
-      if (news1 > news2)
-      {
-        node->game->t1->wins++;
-      }
-      else
-      {
-        
-      }
-
-      if (news1 < news2)
-      {
-        node->game->t2->wins++;
+        node->game->t2->wins--;
       }
       else
       {
@@ -244,12 +192,42 @@ gamelist game_changeScore(int NL, gamelist list, char *key, int news1, int news2
       }
 
     }
+    else
+    {
+      
+    }
+
+    if (news1 == news2)
+    {
+      return list;
+    }
+    else
+    {
+      
+    }
+
+    if (news1 > news2)
+    {
+      node->game->t1->wins++;
+    }
+    else
+    {
+      
+    }
+
+    if (news1 < news2)
+    {
+      node->game->t2->wins++;
+    }
+    else
+    {
+      
+    }
+
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
 
   return list;

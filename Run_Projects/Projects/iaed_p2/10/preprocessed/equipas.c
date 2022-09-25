@@ -18,10 +18,8 @@ void libertarEquipa(pEquipa equipaFree)
 {
   if (equipaFree != 0)
   {
-    {
-      free(equipaFree->nomeEquipa);
-      free(equipaFree);
-    }
+    free(equipaFree->nomeEquipa);
+    free(equipaFree);
   }
   else
   {
@@ -34,15 +32,11 @@ void mostrarEquipa(pEquipa equipa, int numINP)
 {
   if (equipa != 0)
   {
-    {
-      printf("%d %s %d\n", numINP, equipa->nomeEquipa, equipa->numVitorias);
-    }
+    printf("%d %s %d\n", numINP, equipa->nomeEquipa, equipa->numVitorias);
   }
   else
   {
-    {
-      printf("%d Equipa inexistente.\n", numINP);
-    }
+    printf("%d Equipa inexistente.\n", numINP);
   }
 
 }
@@ -60,12 +54,10 @@ listaEq adicionarNovaEquipa(pEquipa novaEquipa, listaEq listaEquipas, int numINP
   listaEq novoNo;
   if (listaEquipas == 0)
   {
-    {
-      listaEquipas = (listaEq) malloc(sizeof(struct noEquipa));
-      listaEquipas->ptrEquipa = novaEquipa;
-      listaEquipas->proximo = 0;
-      return listaEquipas;
-    }
+    listaEquipas = (listaEq) malloc(sizeof(struct noEquipa));
+    listaEquipas->ptrEquipa = novaEquipa;
+    listaEquipas->proximo = 0;
+    return listaEquipas;
   }
   else
   {
@@ -78,35 +70,27 @@ listaEq adicionarNovaEquipa(pEquipa novaEquipa, listaEq listaEquipas, int numINP
   {
     if (strcmp(noAtual->ptrEquipa->nomeEquipa, novaEquipa->nomeEquipa) == 0)
     {
-      {
-        printf("%d Equipa existente.\n", numINP);
-        libertarEquipa(novoNo->ptrEquipa);
-        free(novoNo);
-        return listaEquipas;
-      }
+      printf("%d Equipa existente.\n", numINP);
+      libertarEquipa(novoNo->ptrEquipa);
+      free(novoNo);
+      return listaEquipas;
     }
     else
     {
       if (strcmp(noAtual->ptrEquipa->nomeEquipa, novaEquipa->nomeEquipa) > 0)
       {
+        if (noAtual == listaEquipas)
         {
-          if (noAtual == listaEquipas)
-          {
-            {
-              novoNo->proximo = noAtual;
-              return novoNo;
-            }
-          }
-          else
-          {
-            {
-              novoNo->proximo = noAtual;
-              noAnterior->proximo = novoNo;
-              return listaEquipas;
-            }
-          }
-
+          novoNo->proximo = noAtual;
+          return novoNo;
         }
+        else
+        {
+          novoNo->proximo = noAtual;
+          noAnterior->proximo = novoNo;
+          return listaEquipas;
+        }
+
       }
       else
       {
@@ -129,9 +113,7 @@ pEquipa procurarEquipa(listaEq listaEquipas, char *nome)
   {
     if (strcmp(no->ptrEquipa->nomeEquipa, nome) == 0)
     {
-      {
-        return no->ptrEquipa;
-      }
+      return no->ptrEquipa;
     }
     else
     {
@@ -153,9 +135,7 @@ int maxVitorias(listaEq listaEquipas)
   {
     if (max < no->ptrEquipa->numVitorias)
     {
-      {
-        max = no->ptrEquipa->numVitorias;
-      }
+      max = no->ptrEquipa->numVitorias;
     }
     else
     {
@@ -179,19 +159,15 @@ void melhoresEquipas(listaEq listaEquipas, int numINP)
   {
     if ((noLista->ptrEquipa->numVitorias == max) && (first == 1))
     {
-      {
-        printf("%d Melhores %d\n", numINP, max);
-        printf("%d * %s\n", numINP, noLista->ptrEquipa->nomeEquipa);
-        first = 0;
-      }
+      printf("%d Melhores %d\n", numINP, max);
+      printf("%d * %s\n", numINP, noLista->ptrEquipa->nomeEquipa);
+      first = 0;
     }
     else
     {
       if ((noLista->ptrEquipa->numVitorias == max) && (first == 0))
       {
-        {
-          printf("%d * %s\n", numINP, noLista->ptrEquipa->nomeEquipa);
-        }
+        printf("%d * %s\n", numINP, noLista->ptrEquipa->nomeEquipa);
       }
       else
       {

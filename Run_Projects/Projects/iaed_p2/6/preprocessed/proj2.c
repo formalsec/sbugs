@@ -95,10 +95,8 @@ void addMatch(hash_table *matches, hash_table *teams, link *ordered_matches, lin
   name = (token = strtok(0, ":"));
   if (hash_table_search(matches, name) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-      return;
-    }
+    printf("%d Jogo existente.\n", NL);
+    return;
   }
   else
   {
@@ -108,10 +106,8 @@ void addMatch(hash_table *matches, hash_table *teams, link *ordered_matches, lin
   team1 = (token = strtok(0, ":"));
   if ((item1 = hash_table_search(teams, team1)) == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -121,10 +117,8 @@ void addMatch(hash_table *matches, hash_table *teams, link *ordered_matches, lin
   team2 = (token = strtok(0, ":"));
   if ((item2 = hash_table_search(teams, team2)) == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -138,23 +132,19 @@ void addMatch(hash_table *matches, hash_table *teams, link *ordered_matches, lin
   insertEnd(ordered_matches, item);
   if (score1 > score2)
   {
-    {
-      team = item1->content;
-      team->record++;
-      removeNode(ordered_teams, item1);
-      insertSorted(ordered_teams, item1);
-    }
+    team = item1->content;
+    team->record++;
+    removeNode(ordered_teams, item1);
+    insertSorted(ordered_teams, item1);
   }
   else
   {
     if (score2 > score1)
     {
-      {
-        team = item2->content;
-        team->record++;
-        removeNode(ordered_teams, item2);
-        insertSorted(ordered_teams, item2);
-      }
+      team = item2->content;
+      team->record++;
+      removeNode(ordered_teams, item2);
+      insertSorted(ordered_teams, item2);
     }
     else
     {
@@ -174,18 +164,14 @@ void addTeam(hash_table *teams, link *ordered_teams, char *command)
   name = (token = strtok(0, "\n"));
   if (hash_table_search(teams, name) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-      return;
-    }
+    printf("%d Equipa existente.\n", NL);
+    return;
   }
   else
   {
-    {
-      item = newTeam(name);
-      hash_table_insert(teams, item);
-      insertSorted(ordered_teams, item);
-    }
+    item = newTeam(name);
+    hash_table_insert(teams, item);
+    insertSorted(ordered_teams, item);
   }
 
 }
@@ -211,17 +197,13 @@ void searchMatch(hash_table *matches, char *command)
   name = (token = strtok(0, "\n"));
   if ((item = hash_table_search(matches, name)) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
-    {
-      printf("%d ", NL);
-      printItem(item);
-    }
+    printf("%d ", NL);
+    printItem(item);
   }
 
 }
@@ -235,16 +217,12 @@ void searchTeam(hash_table *teams, char *command)
   name = (token = strtok(0, "\n"));
   if ((item = hash_table_search(teams, name)) == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-    }
+    printf("%d Equipa inexistente.\n", NL);
   }
   else
   {
-    {
-      printf("%d ", NL);
-      printItem(item);
-    }
+    printf("%d ", NL);
+    printItem(item);
   }
 
 }
@@ -261,55 +239,45 @@ void removeMatch(hash_table *matches, hash_table *teams, link *ordered_matches, 
   name = (token = strtok(0, "\n"));
   if ((item = hash_table_search(matches, name)) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
+    item = hash_table_remove(matches, name);
+    removeNode(ordered_matches, item);
+    match = item->content;
+    if (match->score1 != match->score2)
     {
-      item = hash_table_remove(matches, name);
-      removeNode(ordered_matches, item);
-      match = item->content;
-      if (match->score1 != match->score2)
+      if (match->score1 > match->score2)
       {
-        {
-          if (match->score1 > match->score2)
-          {
-            {
-              item_team = hash_table_search(teams, match->team1);
-              team = item_team->content;
-            }
-          }
-          else
-          {
-            if (match->score2 > match->score1)
-            {
-              {
-                item_team = hash_table_search(teams, match->team2);
-                team = item_team->content;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-          team->record--;
-          removeNode(ordered_teams, item_team);
-          insertSorted(ordered_teams, item_team);
-        }
+        item_team = hash_table_search(teams, match->team1);
+        team = item_team->content;
       }
       else
       {
-        
+        if (match->score2 > match->score1)
+        {
+          item_team = hash_table_search(teams, match->team2);
+          team = item_team->content;
+        }
+        else
+        {
+          
+        }
+
       }
 
-      freeItem(item);
+      team->record--;
+      removeNode(ordered_teams, item_team);
+      insertSorted(ordered_teams, item_team);
     }
+    else
+    {
+      
+    }
+
+    freeItem(item);
   }
 
 }
@@ -328,76 +296,27 @@ void changeScore(hash_table *matches, hash_table *teams, link *ordered_teams, ch
   name = (token = strtok(0, ":"));
   if ((item = hash_table_search(matches, name)) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
+    score1 = atoi(token = strtok(0, ":"));
+    score2 = atoi(token = strtok(0, "\n"));
+    match = item->content;
+    if (match->score1 != match->score2)
     {
-      score1 = atoi(token = strtok(0, ":"));
-      score2 = atoi(token = strtok(0, "\n"));
-      match = item->content;
-      if (match->score1 != match->score2)
+      if (match->score1 > match->score2)
       {
-        {
-          if (match->score1 > match->score2)
-          {
-            {
-              item = hash_table_search(teams, match->team1);
-              team = item->content;
-            }
-          }
-          else
-          {
-            if (match->score2 > match->score1)
-            {
-              {
-                item = hash_table_search(teams, match->team2);
-                team = item->content;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-          team->record--;
-          removeNode(ordered_teams, item);
-          insertSorted(ordered_teams, item);
-        }
+        item = hash_table_search(teams, match->team1);
+        team = item->content;
       }
       else
       {
-        
-      }
-
-      match->score1 = score1;
-      match->score2 = score2;
-      if (score1 > score2)
-      {
+        if (match->score2 > match->score1)
         {
-          item = hash_table_search(teams, match->team1);
+          item = hash_table_search(teams, match->team2);
           team = item->content;
-          team->record++;
-          removeNode(ordered_teams, item);
-          insertSorted(ordered_teams, item);
-        }
-      }
-      else
-      {
-        if (score2 > score1)
-        {
-          {
-            item = hash_table_search(teams, match->team2);
-            team = item->content;
-            team->record++;
-            removeNode(ordered_teams, item);
-            insertSorted(ordered_teams, item);
-          }
         }
         else
         {
@@ -406,7 +325,42 @@ void changeScore(hash_table *matches, hash_table *teams, link *ordered_teams, ch
 
       }
 
+      team->record--;
+      removeNode(ordered_teams, item);
+      insertSorted(ordered_teams, item);
     }
+    else
+    {
+      
+    }
+
+    match->score1 = score1;
+    match->score2 = score2;
+    if (score1 > score2)
+    {
+      item = hash_table_search(teams, match->team1);
+      team = item->content;
+      team->record++;
+      removeNode(ordered_teams, item);
+      insertSorted(ordered_teams, item);
+    }
+    else
+    {
+      if (score2 > score1)
+      {
+        item = hash_table_search(teams, match->team2);
+        team = item->content;
+        team->record++;
+        removeNode(ordered_teams, item);
+        insertSorted(ordered_teams, item);
+      }
+      else
+      {
+        
+      }
+
+    }
+
   }
 
 }
@@ -419,11 +373,9 @@ void getTopTeams(link ordered_teams)
   Team team;
   if (node != 0)
   {
-    {
-      item = node->item;
-      team = item->content;
-      printf("%d Melhores %d\n", NL, team->record);
-    }
+    item = node->item;
+    team = item->content;
+    printf("%d Melhores %d\n", NL, team->record);
   }
   else
   {
@@ -437,9 +389,7 @@ void getTopTeams(link ordered_teams)
     next = node->next;
     if ((next == 0) || (!equals_wins(next->item, node->item)))
     {
-      {
-        return;
-      }
+      return;
     }
     else
     {

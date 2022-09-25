@@ -73,10 +73,8 @@ void inserirNoFimDaLista(Lista *L, void *info)
   P = criarNo(info);
   if (!L->Inicio)
   {
-    {
-      L->Inicio = P;
-      return;
-    }
+    L->Inicio = P;
+    return;
   }
   else
   {
@@ -342,10 +340,8 @@ void mostrarEquipaNJogosGanhos(Lista *L, int n, int NL)
     E = (Equipa *) P->info;
     if (E->nJogos == n)
     {
-      {
-        printf("%d * %s", NL, E->nome);
-        printf("\n");
-      }
+      printf("%d * %s", NL, E->nome);
+      printf("\n");
     }
     else
     {
@@ -414,17 +410,13 @@ void actualizarResultados(Lista *LJ, Lista *LE)
     n = quemGanhou(J->resultado);
     if (n == 0)
     {
-      {
-        J->equipa1->nJogos++;
-      }
+      J->equipa1->nJogos++;
     }
     else
     {
       if (n == 1)
       {
-        {
-          J->equipa2->nJogos++;
-        }
+        J->equipa2->nJogos++;
       }
       else
       {
@@ -466,12 +458,10 @@ void eliminarNoListaJogos(Lista *L, Jogo *J)
   aux = (Jogo *) P->info;
   if (strcmp(aux->nome, J->nome) == 0)
   {
-    {
-      L->Inicio = P->Prox;
-      LibertaNoJogo(P);
-      free(P);
-      return;
-    }
+    L->Inicio = P->Prox;
+    LibertaNoJogo(P);
+    free(P);
+    return;
   }
   else
   {
@@ -536,60 +526,52 @@ int main()
     string = corrigeString(buffer);
     if (string[0] == 'a')
     {
+      token = strtok(string, " ");
+      token = strtok(0, ":");
+      nome = token;
+      jogo1 = procurarJogo(Lista_Jogos, nome);
+      if (jogo1)
       {
-        token = strtok(string, " ");
-        token = strtok(0, ":");
-        nome = token;
-        jogo1 = procurarJogo(Lista_Jogos, nome);
-        if (jogo1)
-        {
-          {
-            printf("%d Jogo existente.", NL);
-            NL++;
-            continue;
-          }
-        }
-        else
-        {
-          
-        }
-
-        token = strtok(0, ":");
-        equipa1 = procurarEquipa(Lista_Equipas, token);
-        if (!equipa1)
-        {
-          {
-            printf("%d Equipa inexistente.\n", NL);
-            continue;
-          }
-        }
-        else
-        {
-          
-        }
-
-        token = strtok(0, ":");
-        equipa2 = procurarEquipa(Lista_Equipas, token);
-        if (!equipa2)
-        {
-          {
-            printf("%d Equipa inexistente.\n", NL);
-            continue;
-          }
-        }
-        else
-        {
-          
-        }
-
-        token = strtok(0, ":");
-        score1 = atoi(token);
-        token = strtok(0, ":");
-        score2 = atoi(token);
-        res = criarScore(score1, score2);
-        jogo1 = criarJogo(nome, equipa1, equipa2, res);
-        inserirNoFimDaLista(Lista_Jogos, jogo1);
+        printf("%d Jogo existente.", NL);
+        NL++;
+        continue;
       }
+      else
+      {
+        
+      }
+
+      token = strtok(0, ":");
+      equipa1 = procurarEquipa(Lista_Equipas, token);
+      if (!equipa1)
+      {
+        printf("%d Equipa inexistente.\n", NL);
+        continue;
+      }
+      else
+      {
+        
+      }
+
+      token = strtok(0, ":");
+      equipa2 = procurarEquipa(Lista_Equipas, token);
+      if (!equipa2)
+      {
+        printf("%d Equipa inexistente.\n", NL);
+        continue;
+      }
+      else
+      {
+        
+      }
+
+      token = strtok(0, ":");
+      score1 = atoi(token);
+      token = strtok(0, ":");
+      score2 = atoi(token);
+      res = criarScore(score1, score2);
+      jogo1 = criarJogo(nome, equipa1, equipa2, res);
+      inserirNoFimDaLista(Lista_Jogos, jogo1);
     }
     else
     {
@@ -598,9 +580,7 @@ int main()
 
     if (string[0] == 'l')
     {
-      {
-        mostrarLista(Lista_Jogos, mostrarJogo, NL);
-      }
+      mostrarLista(Lista_Jogos, mostrarJogo, NL);
     }
     else
     {
@@ -609,27 +589,23 @@ int main()
 
     if (string[0] == 'p')
     {
+      token = strtok(string, " ");
+      token = strtok(0, " ");
+      jogo1 = procurarJogo(Lista_Jogos, token);
+      if (!jogo1)
       {
-        token = strtok(string, " ");
-        token = strtok(0, " ");
-        jogo1 = procurarJogo(Lista_Jogos, token);
-        if (!jogo1)
-        {
-          {
-            printf("%d Jogo inexistente.", NL);
-            printf("\n");
-            NL++;
-            continue;
-          }
-        }
-        else
-        {
-          
-        }
-
-        mostrarJogo(jogo1, NL);
+        printf("%d Jogo inexistente.", NL);
         printf("\n");
+        NL++;
+        continue;
       }
+      else
+      {
+        
+      }
+
+      mostrarJogo(jogo1, NL);
+      printf("\n");
     }
     else
     {
@@ -638,27 +614,23 @@ int main()
 
     if (string[0] == 'r')
     {
+      token = strtok(string, " ");
+      token = strtok(0, " ");
+      nome = corrigeString(token);
+      jogo1 = procurarJogo(Lista_Jogos, nome);
+      if (!jogo1)
       {
-        token = strtok(string, " ");
-        token = strtok(0, " ");
-        nome = corrigeString(token);
-        jogo1 = procurarJogo(Lista_Jogos, nome);
-        if (!jogo1)
-        {
-          {
-            printf("%d Jogo inexistente.", NL);
-            printf("\n");
-            NL++;
-            continue;
-          }
-        }
-        else
-        {
-          
-        }
-
-        eliminarNoListaJogos(Lista_Jogos, jogo1);
+        printf("%d Jogo inexistente.", NL);
+        printf("\n");
+        NL++;
+        continue;
       }
+      else
+      {
+        
+      }
+
+      eliminarNoListaJogos(Lista_Jogos, jogo1);
     }
     else
     {
@@ -667,28 +639,24 @@ int main()
 
     if (string[0] == 's')
     {
+      token = strtok(string, " ");
+      token = strtok(0, ":");
+      jogo1 = procurarJogo(Lista_Jogos, corrigeString(token));
+      if (!jogo1)
       {
-        token = strtok(string, " ");
-        token = strtok(0, ":");
-        jogo1 = procurarJogo(Lista_Jogos, corrigeString(token));
-        if (!jogo1)
-        {
-          {
-            printf("%d NL Jogo inexistente.", NL);
-            NL++;
-            continue;
-          }
-        }
-        else
-        {
-          
-        }
-
-        token = strtok(0, ":");
-        jogo1->resultado->n1 = atoi(token);
-        token = strtok(0, ":");
-        jogo1->resultado->n2 = atoi(token);
+        printf("%d NL Jogo inexistente.", NL);
+        NL++;
+        continue;
       }
+      else
+      {
+        
+      }
+
+      token = strtok(0, ":");
+      jogo1->resultado->n1 = atoi(token);
+      token = strtok(0, ":");
+      jogo1->resultado->n2 = atoi(token);
     }
     else
     {
@@ -697,27 +665,23 @@ int main()
 
     if (string[0] == 'A')
     {
+      token = strtok(string, " ");
+      token = strtok(0, " ");
+      nome = corrigeString(token);
+      equipa1 = procurarEquipa(Lista_Equipas, nome);
+      if (equipa1)
       {
-        token = strtok(string, " ");
-        token = strtok(0, " ");
-        nome = corrigeString(token);
-        equipa1 = procurarEquipa(Lista_Equipas, nome);
-        if (equipa1)
-        {
-          {
-            printf("%d Equipa existente.", NL);
-            NL++;
-            continue;
-          }
-        }
-        else
-        {
-          
-        }
-
-        equipa1 = criarEquipa(nome);
-        inserirNoFimDaLista(Lista_Equipas, equipa1);
+        printf("%d Equipa existente.", NL);
+        NL++;
+        continue;
       }
+      else
+      {
+        
+      }
+
+      equipa1 = criarEquipa(nome);
+      inserirNoFimDaLista(Lista_Equipas, equipa1);
     }
     else
     {
@@ -726,29 +690,25 @@ int main()
 
     if (string[0] == 'P')
     {
+      token = strtok(string, " ");
+      token = strtok(0, " ");
+      nome = corrigeString(token);
+      equipa1 = procurarEquipa(Lista_Equipas, nome);
+      if (!equipa1)
       {
-        token = strtok(string, " ");
-        token = strtok(0, " ");
-        nome = corrigeString(token);
-        equipa1 = procurarEquipa(Lista_Equipas, nome);
-        if (!equipa1)
-        {
-          {
-            printf("%d Equipa inexistente.", NL);
-            printf("\n");
-            NL++;
-            continue;
-          }
-        }
-        else
-        {
-          
-        }
-
-        printf("%d ", NL);
-        mostrarEquipa(equipa1, NL);
+        printf("%d Equipa inexistente.", NL);
         printf("\n");
+        NL++;
+        continue;
       }
+      else
+      {
+        
+      }
+
+      printf("%d ", NL);
+      mostrarEquipa(equipa1, NL);
+      printf("\n");
     }
     else
     {
@@ -757,10 +717,8 @@ int main()
 
     if (string[0] == 'g')
     {
-      {
-        n = equipaMaisJogosGanhos(Lista_Equipas);
-        mostrarEquipaNJogosGanhos(Lista_Equipas, n, NL);
-      }
+      n = equipaMaisJogosGanhos(Lista_Equipas);
+      mostrarEquipaNJogosGanhos(Lista_Equipas, n, NL);
     }
     else
     {

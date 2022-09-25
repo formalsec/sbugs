@@ -22,16 +22,34 @@ void atualiza_jogos_ganhos(noh_equipa *cabeca_equipa[], int chave_equipa1, int c
   noh_equipa *noh_temp;
   if (score1 > score2)
   {
+    noh_temp = cabeca_equipa[chave_equipa1];
+    while (noh_temp != 0)
     {
-      noh_temp = cabeca_equipa[chave_equipa1];
+      if (strcmp(noh_temp->equipa, equipa1) == 0)
+      {
+        noh_temp->jogos_ganhos += 1;
+        return;
+      }
+      else
+      {
+        
+      }
+
+      noh_temp = noh_temp->prox;
+    }
+
+  }
+  else
+  {
+    if (score2 > score1)
+    {
+      noh_temp = cabeca_equipa[chave_equipa2];
       while (noh_temp != 0)
       {
-        if (strcmp(noh_temp->equipa, equipa1) == 0)
+        if (strcmp(noh_temp->equipa, equipa2) == 0)
         {
-          {
-            noh_temp->jogos_ganhos += 1;
-            return;
-          }
+          noh_temp->jogos_ganhos += 1;
+          return;
         }
         else
         {
@@ -41,32 +59,6 @@ void atualiza_jogos_ganhos(noh_equipa *cabeca_equipa[], int chave_equipa1, int c
         noh_temp = noh_temp->prox;
       }
 
-    }
-  }
-  else
-  {
-    if (score2 > score1)
-    {
-      {
-        noh_temp = cabeca_equipa[chave_equipa2];
-        while (noh_temp != 0)
-        {
-          if (strcmp(noh_temp->equipa, equipa2) == 0)
-          {
-            {
-              noh_temp->jogos_ganhos += 1;
-              return;
-            }
-          }
-          else
-          {
-            
-          }
-
-          noh_temp = noh_temp->prox;
-        }
-
-      }
     }
     else
     {
@@ -93,49 +85,39 @@ void adiciona_jogo_lista_fila(int chave, jogo *jogo_temp, noh *cabeca[], fila *f
   novo_pntr_fila->ant_fila = 0;
   if (cabeca[chave] == 0)
   {
-    {
-      cabeca[chave] = novo_pntr;
-    }
+    cabeca[chave] = novo_pntr;
   }
   else
   {
+    noh *noh_temp = cabeca[chave];
+    while (1 > 0)
     {
-      noh *noh_temp = cabeca[chave];
-      while (1 > 0)
+      if (noh_temp->prox == 0)
       {
-        if (noh_temp->prox == 0)
-        {
-          {
-            noh_temp->prox = novo_pntr;
-            break;
-          }
-        }
-        else
-        {
-          
-        }
-
-        noh_temp = noh_temp->prox;
+        noh_temp->prox = novo_pntr;
+        break;
+      }
+      else
+      {
+        
       }
 
+      noh_temp = noh_temp->prox;
     }
+
   }
 
   if (fila_jogos->cabeca == 0)
   {
-    {
-      fila_jogos->cabeca = novo_pntr_fila;
-      fila_jogos->tail = novo_pntr_fila;
-    }
+    fila_jogos->cabeca = novo_pntr_fila;
+    fila_jogos->tail = novo_pntr_fila;
   }
   else
   {
-    {
-      noh *tail_antiga = fila_jogos->tail;
-      tail_antiga->prox_fila = novo_pntr_fila;
-      novo_pntr->ant_fila = tail_antiga;
-      fila_jogos->tail = novo_pntr_fila;
-    }
+    noh *tail_antiga = fila_jogos->tail;
+    tail_antiga->prox_fila = novo_pntr_fila;
+    novo_pntr->ant_fila = tail_antiga;
+    fila_jogos->tail = novo_pntr_fila;
   }
 
 }
@@ -146,91 +128,77 @@ void apaga_da_fila(char nome[], fila *fila_jogos)
   noh *noh_temp = fila_jogos->cabeca;
   if (noh_temp != 0)
   {
+    if (strcmp(noh_temp->jogo->nome, nome) == 0)
     {
-      if (strcmp(noh_temp->jogo->nome, nome) == 0)
+      if (noh_temp->prox_fila != 0)
       {
-        {
-          if (noh_temp->prox_fila != 0)
-          {
-            {
-              fila_jogos->cabeca = fila_jogos->cabeca->prox_fila;
-              free(noh_temp->jogo->nome);
-              free(noh_temp->jogo->equipa1);
-              free(noh_temp->jogo->equipa2);
-              free(noh_temp);
-              return;
-            }
-          }
-          else
-          {
-            {
-              free(noh_temp->jogo->nome);
-              free(noh_temp->jogo->equipa1);
-              free(noh_temp->jogo->equipa2);
-              free(noh_temp);
-              fila_jogos->cabeca = 0;
-              return;
-            }
-          }
-
-        }
+        fila_jogos->cabeca = fila_jogos->cabeca->prox_fila;
+        free(noh_temp->jogo->nome);
+        free(noh_temp->jogo->equipa1);
+        free(noh_temp->jogo->equipa2);
+        free(noh_temp);
+        return;
       }
       else
       {
-        
+        free(noh_temp->jogo->nome);
+        free(noh_temp->jogo->equipa1);
+        free(noh_temp->jogo->equipa2);
+        free(noh_temp);
+        fila_jogos->cabeca = 0;
+        return;
       }
 
-      while (noh_temp != 0)
+    }
+    else
+    {
+      
+    }
+
+    while (noh_temp != 0)
+    {
+      if (strcmp(noh_temp->prox_fila->jogo->nome, nome) == 0)
       {
-        if (strcmp(noh_temp->prox_fila->jogo->nome, nome) == 0)
+        if (noh_temp->prox_fila->prox_fila != 0)
         {
-          {
-            if (noh_temp->prox_fila->prox_fila != 0)
-            {
-              {
-                noh_apagar = noh_temp->prox_fila;
-                noh_temp->prox_fila = noh_temp->prox_fila->prox_fila;
-                free(noh_apagar->jogo->nome);
-                free(noh_apagar->jogo->equipa1);
-                free(noh_apagar->jogo->equipa2);
-                free(noh_apagar);
-                return;
-              }
-            }
-            else
-            {
-              
-            }
-
-            if (noh_temp->prox_fila->prox_fila == 0)
-            {
-              {
-                noh_apagar = noh_temp->prox_fila;
-                free(noh_apagar->jogo->nome);
-                free(noh_apagar->jogo->equipa1);
-                free(noh_apagar->jogo->equipa2);
-                free(noh_apagar);
-                noh_temp->prox_fila = 0;
-                fila_jogos->tail = noh_temp;
-                return;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
+          noh_apagar = noh_temp->prox_fila;
+          noh_temp->prox_fila = noh_temp->prox_fila->prox_fila;
+          free(noh_apagar->jogo->nome);
+          free(noh_apagar->jogo->equipa1);
+          free(noh_apagar->jogo->equipa2);
+          free(noh_apagar);
+          return;
         }
         else
         {
           
         }
 
-        noh_temp = noh_temp->prox_fila;
+        if (noh_temp->prox_fila->prox_fila == 0)
+        {
+          noh_apagar = noh_temp->prox_fila;
+          free(noh_apagar->jogo->nome);
+          free(noh_apagar->jogo->equipa1);
+          free(noh_apagar->jogo->equipa2);
+          free(noh_apagar);
+          noh_temp->prox_fila = 0;
+          fila_jogos->tail = noh_temp;
+          return;
+        }
+        else
+        {
+          
+        }
+
+      }
+      else
+      {
+        
       }
 
+      noh_temp = noh_temp->prox_fila;
     }
+
   }
   else
   {
@@ -246,25 +214,21 @@ void incrementa_uma_decrementa_outra(noh_equipa *cabeca_equipa[], char equipa1[]
   chave = calcula_chave(equipa1);
   if (cabeca_equipa[chave] != 0)
   {
+    noh_temp = cabeca_equipa[chave];
+    while (noh_temp != 0)
     {
-      noh_temp = cabeca_equipa[chave];
-      while (noh_temp != 0)
+      if (strcmp(noh_temp->equipa, equipa1) == 0)
       {
-        if (strcmp(noh_temp->equipa, equipa1) == 0)
-        {
-          {
-            noh_temp->jogos_ganhos += 1;
-          }
-        }
-        else
-        {
-          
-        }
-
-        noh_temp = noh_temp->prox;
+        noh_temp->jogos_ganhos += 1;
+      }
+      else
+      {
+        
       }
 
+      noh_temp = noh_temp->prox;
     }
+
   }
   else
   {
@@ -274,25 +238,21 @@ void incrementa_uma_decrementa_outra(noh_equipa *cabeca_equipa[], char equipa1[]
   chave = calcula_chave(equipa2);
   if (cabeca_equipa[chave] != 0)
   {
+    noh_temp = cabeca_equipa[chave];
+    while (noh_temp != 0)
     {
-      noh_temp = cabeca_equipa[chave];
-      while (noh_temp != 0)
+      if (strcmp(noh_temp->equipa, equipa2) == 0)
       {
-        if (strcmp(noh_temp->equipa, equipa2) == 0)
-        {
-          {
-            noh_temp->jogos_ganhos -= 1;
-          }
-        }
-        else
-        {
-          
-        }
-
-        noh_temp = noh_temp->prox;
+        noh_temp->jogos_ganhos -= 1;
+      }
+      else
+      {
+        
       }
 
+      noh_temp = noh_temp->prox;
     }
+
   }
   else
   {
@@ -308,25 +268,21 @@ void incrementa_uma(noh_equipa *cabeca_equipa[], char equipa[])
   chave = calcula_chave(equipa);
   if (cabeca_equipa[chave] != 0)
   {
+    noh_temp = cabeca_equipa[chave];
+    while (noh_temp != 0)
     {
-      noh_temp = cabeca_equipa[chave];
-      while (noh_temp != 0)
+      if (strcmp(noh_temp->equipa, equipa) == 0)
       {
-        if (strcmp(noh_temp->equipa, equipa) == 0)
-        {
-          {
-            noh_temp->jogos_ganhos += 1;
-          }
-        }
-        else
-        {
-          
-        }
-
-        noh_temp = noh_temp->prox;
+        noh_temp->jogos_ganhos += 1;
+      }
+      else
+      {
+        
       }
 
+      noh_temp = noh_temp->prox;
     }
+
   }
   else
   {
@@ -342,25 +298,21 @@ void decrementa_uma(noh_equipa *cabeca_equipa[], char equipa[])
   chave = calcula_chave(equipa);
   if (cabeca_equipa[chave] != 0)
   {
+    noh_temp = cabeca_equipa[chave];
+    while (noh_temp != 0)
     {
-      noh_temp = cabeca_equipa[chave];
-      while (noh_temp != 0)
+      if (strcmp(noh_temp->equipa, equipa) == 0)
       {
-        if (strcmp(noh_temp->equipa, equipa) == 0)
-        {
-          {
-            noh_temp->jogos_ganhos -= 1;
-          }
-        }
-        else
-        {
-          
-        }
-
-        noh_temp = noh_temp->prox;
+        noh_temp->jogos_ganhos -= 1;
+      }
+      else
+      {
+        
       }
 
+      noh_temp = noh_temp->prox;
     }
+
   }
   else
   {

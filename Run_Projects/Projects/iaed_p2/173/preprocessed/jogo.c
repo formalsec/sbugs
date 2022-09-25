@@ -20,9 +20,7 @@ int get_id_jogo(Jogo *jogo)
 {
   if (jogo == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {

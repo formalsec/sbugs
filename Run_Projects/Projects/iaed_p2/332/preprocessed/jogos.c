@@ -76,97 +76,36 @@ void adiciona_jogo(int nl, jogo *ht_jg, equipa *ht_eq)
   verif_eq2 = procura_equipa(nome_eq2, ht_eq);
   if (ht_jg[0] != 0)
   {
+    if (strcmp(ht_jg[0]->nome_jogo, novo->nome_jogo) == 0)
     {
-      if (strcmp(ht_jg[0]->nome_jogo, novo->nome_jogo) == 0)
+      printf("%d Jogo existente.\n", nl);
+      free_jogo(novo);
+    }
+    else
+    {
+      if (verif > 0)
       {
-        {
-          printf("%d Jogo existente.\n", nl);
-          free_jogo(novo);
-        }
+        printf("%d Jogo existente.\n", nl);
+        free_jogo(novo);
       }
       else
       {
-        if (verif > 0)
-        {
-          {
-            printf("%d Jogo existente.\n", nl);
-            free_jogo(novo);
-          }
-        }
-        else
-        {
-          if ((verif_eq1 == (-1)) || (verif_eq2 == (-1)))
-          {
-            {
-              printf("%d Equipa inexistente.\n", nl);
-              free_jogo(novo);
-            }
-          }
-          else
-          {
-            {
-              if (score1 > score2)
-              {
-                {
-                  ht_eq[verif_eq1]->vitorias += 1;
-                }
-              }
-              else
-              {
-                if (score2 > score1)
-                {
-                  {
-                    ht_eq[verif_eq2]->vitorias += 1;
-                  }
-                }
-                else
-                {
-                  
-                }
-
-              }
-
-              novo->next = ht_jg[0];
-              novo->prev = 0;
-              ht_jg[0]->prev = novo;
-              aux_jg = ht_jg[0];
-              ht_jg[0] = novo;
-              tab_insert_jg(aux_jg, ht_jg);
-            }
-          }
-
-        }
-
-      }
-
-    }
-  }
-  else
-  {
-    {
-      if ((verif_eq1 == (-1)) || (verif_eq2 == (-1)))
-      {
+        if ((verif_eq1 == (-1)) || (verif_eq2 == (-1)))
         {
           printf("%d Equipa inexistente.\n", nl);
           free_jogo(novo);
         }
-      }
-      else
-      {
+        else
         {
           if (score1 > score2)
           {
-            {
-              ht_eq[verif_eq1]->vitorias += 1;
-            }
+            ht_eq[verif_eq1]->vitorias += 1;
           }
           else
           {
             if (score2 > score1)
             {
-              {
-                ht_eq[verif_eq2]->vitorias += 1;
-              }
+              ht_eq[verif_eq2]->vitorias += 1;
             }
             else
             {
@@ -175,13 +114,50 @@ void adiciona_jogo(int nl, jogo *ht_jg, equipa *ht_eq)
 
           }
 
-          novo->next = 0;
+          novo->next = ht_jg[0];
           novo->prev = 0;
+          ht_jg[0]->prev = novo;
+          aux_jg = ht_jg[0];
           ht_jg[0] = novo;
+          tab_insert_jg(aux_jg, ht_jg);
         }
+
       }
 
     }
+
+  }
+  else
+  {
+    if ((verif_eq1 == (-1)) || (verif_eq2 == (-1)))
+    {
+      printf("%d Equipa inexistente.\n", nl);
+      free_jogo(novo);
+    }
+    else
+    {
+      if (score1 > score2)
+      {
+        ht_eq[verif_eq1]->vitorias += 1;
+      }
+      else
+      {
+        if (score2 > score1)
+        {
+          ht_eq[verif_eq2]->vitorias += 1;
+        }
+        else
+        {
+          
+        }
+
+      }
+
+      novo->next = 0;
+      novo->prev = 0;
+      ht_jg[0] = novo;
+    }
+
   }
 
   free(nome_jogo);
@@ -202,37 +178,27 @@ void encontra_jogo(int nl, jogo *ht_jg)
   indice = procura_jogo(nome, ht_jg);
   if (ht_jg[0] != 0)
   {
+    if (strcmp(ht_jg[0]->nome_jogo, nome) == 0)
     {
-      if (strcmp(ht_jg[0]->nome_jogo, nome) == 0)
+      printf("%d %s %s %s %d %d\n", nl, ht_jg[0]->nome_jogo, ht_jg[0]->nome_eq1, ht_jg[0]->nome_eq2, ht_jg[0]->score_eq1, ht_jg[0]->score_eq2);
+    }
+    else
+    {
+      if (indice > 0)
       {
-        {
-          printf("%d %s %s %s %d %d\n", nl, ht_jg[0]->nome_jogo, ht_jg[0]->nome_eq1, ht_jg[0]->nome_eq2, ht_jg[0]->score_eq1, ht_jg[0]->score_eq2);
-        }
+        printf("%d %s %s %s %d %d\n", nl, ht_jg[indice]->nome_jogo, ht_jg[indice]->nome_eq1, ht_jg[indice]->nome_eq2, ht_jg[indice]->score_eq1, ht_jg[indice]->score_eq2);
       }
       else
       {
-        if (indice > 0)
-        {
-          {
-            printf("%d %s %s %s %d %d\n", nl, ht_jg[indice]->nome_jogo, ht_jg[indice]->nome_eq1, ht_jg[indice]->nome_eq2, ht_jg[indice]->score_eq1, ht_jg[indice]->score_eq2);
-          }
-        }
-        else
-        {
-          {
-            printf("%d Jogo inexistente.\n", nl);
-          }
-        }
-
+        printf("%d Jogo inexistente.\n", nl);
       }
 
     }
+
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-    }
+    printf("%d Jogo inexistente.\n", nl);
   }
 
   free(nome);
@@ -257,127 +223,101 @@ void altera_score(int nl, jogo *ht_jg, equipa *ht_eq)
   indice = procura_jogo(nome, ht_jg);
   if (ht_jg[0] != 0)
   {
+    if (strcmp(ht_jg[0]->nome_jogo, nome) == 0)
     {
-      if (strcmp(ht_jg[0]->nome_jogo, nome) == 0)
+      eq1 = procura_equipa(ht_jg[0]->nome_eq1, ht_eq);
+      eq2 = procura_equipa(ht_jg[0]->nome_eq2, ht_eq);
+      if (ht_jg[0]->score_eq1 > ht_jg[0]->score_eq2)
       {
-        {
-          eq1 = procura_equipa(ht_jg[0]->nome_eq1, ht_eq);
-          eq2 = procura_equipa(ht_jg[0]->nome_eq2, ht_eq);
-          if (ht_jg[0]->score_eq1 > ht_jg[0]->score_eq2)
-          {
-            {
-              ht_eq[eq1]->vitorias -= 1;
-            }
-          }
-          else
-          {
-            if (ht_jg[0]->score_eq2 > ht_jg[0]->score_eq1)
-            {
-              {
-                ht_eq[eq2]->vitorias -= 1;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-          ht_jg[0]->score_eq1 = novo_score1;
-          ht_jg[0]->score_eq2 = novo_score2;
-          if (novo_score1 > novo_score2)
-          {
-            {
-              ht_eq[eq1]->vitorias += 1;
-            }
-          }
-          else
-          {
-            if (novo_score2 > novo_score1)
-            {
-              {
-                ht_eq[eq2]->vitorias += 1;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-        }
+        ht_eq[eq1]->vitorias -= 1;
       }
       else
       {
-        if (indice > 0)
+        if (ht_jg[0]->score_eq2 > ht_jg[0]->score_eq1)
         {
-          {
-            eq1 = procura_equipa(ht_jg[indice]->nome_eq1, ht_eq);
-            eq2 = procura_equipa(ht_jg[indice]->nome_eq2, ht_eq);
-            if (ht_jg[indice]->score_eq1 > ht_jg[indice]->score_eq2)
-            {
-              {
-                ht_eq[eq1]->vitorias -= 1;
-              }
-            }
-            else
-            {
-              if (ht_jg[indice]->score_eq2 > ht_jg[indice]->score_eq1)
-              {
-                {
-                  ht_eq[eq2]->vitorias -= 1;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-            ht_jg[indice]->score_eq1 = novo_score1;
-            ht_jg[indice]->score_eq2 = novo_score2;
-            if (novo_score1 > novo_score2)
-            {
-              {
-                ht_eq[eq1]->vitorias += 1;
-              }
-            }
-            else
-            {
-              if (novo_score2 > novo_score1)
-              {
-                {
-                  ht_eq[eq2]->vitorias += 1;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-          }
+          ht_eq[eq2]->vitorias -= 1;
         }
         else
         {
-          {
-            printf("%d Jogo inexistente.\n", nl);
-          }
+          
+        }
+
+      }
+
+      ht_jg[0]->score_eq1 = novo_score1;
+      ht_jg[0]->score_eq2 = novo_score2;
+      if (novo_score1 > novo_score2)
+      {
+        ht_eq[eq1]->vitorias += 1;
+      }
+      else
+      {
+        if (novo_score2 > novo_score1)
+        {
+          ht_eq[eq2]->vitorias += 1;
+        }
+        else
+        {
+          
         }
 
       }
 
     }
+    else
+    {
+      if (indice > 0)
+      {
+        eq1 = procura_equipa(ht_jg[indice]->nome_eq1, ht_eq);
+        eq2 = procura_equipa(ht_jg[indice]->nome_eq2, ht_eq);
+        if (ht_jg[indice]->score_eq1 > ht_jg[indice]->score_eq2)
+        {
+          ht_eq[eq1]->vitorias -= 1;
+        }
+        else
+        {
+          if (ht_jg[indice]->score_eq2 > ht_jg[indice]->score_eq1)
+          {
+            ht_eq[eq2]->vitorias -= 1;
+          }
+          else
+          {
+            
+          }
+
+        }
+
+        ht_jg[indice]->score_eq1 = novo_score1;
+        ht_jg[indice]->score_eq2 = novo_score2;
+        if (novo_score1 > novo_score2)
+        {
+          ht_eq[eq1]->vitorias += 1;
+        }
+        else
+        {
+          if (novo_score2 > novo_score1)
+          {
+            ht_eq[eq2]->vitorias += 1;
+          }
+          else
+          {
+            
+          }
+
+        }
+
+      }
+      else
+      {
+        printf("%d Jogo inexistente.\n", nl);
+      }
+
+    }
+
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-    }
+    printf("%d Jogo inexistente.\n", nl);
   }
 
   free(nome);
@@ -388,21 +328,19 @@ void lista_jogos(int nl, jogo *ht_jg)
   jogo aux;
   if (ht_jg[0] != 0)
   {
+    aux = ht_jg[0];
+    while (aux->next != 0)
     {
-      aux = ht_jg[0];
-      while (aux->next != 0)
-      {
-        aux = aux->next;
-      }
-
-      while (aux->prev != 0)
-      {
-        printf("%d %s %s %s %d %d\n", nl, aux->nome_jogo, aux->nome_eq1, aux->nome_eq2, aux->score_eq1, aux->score_eq2);
-        aux = aux->prev;
-      }
-
-      printf("%d %s %s %s %d %d\n", nl, ht_jg[0]->nome_jogo, ht_jg[0]->nome_eq1, ht_jg[0]->nome_eq2, ht_jg[0]->score_eq1, ht_jg[0]->score_eq2);
+      aux = aux->next;
     }
+
+    while (aux->prev != 0)
+    {
+      printf("%d %s %s %s %d %d\n", nl, aux->nome_jogo, aux->nome_eq1, aux->nome_eq2, aux->score_eq1, aux->score_eq2);
+      aux = aux->prev;
+    }
+
+    printf("%d %s %s %s %d %d\n", nl, ht_jg[0]->nome_jogo, ht_jg[0]->nome_eq1, ht_jg[0]->nome_eq2, ht_jg[0]->score_eq1, ht_jg[0]->score_eq2);
   }
   else
   {

@@ -19,12 +19,10 @@ void destroi_jogo(Jogo jogo)
 {
   if (jogo)
   {
-    {
-      free(jogo->nome);
-      free(jogo->equipa1);
-      free(jogo->equipa2);
-      free(jogo);
-    }
+    free(jogo->nome);
+    free(jogo->equipa1);
+    free(jogo->equipa2);
+    free(jogo);
   }
   else
   {
@@ -43,9 +41,7 @@ Jogo procura_jg_lista(lJogo inicio, char nome[1024])
 {
   if (inicio == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -54,9 +50,7 @@ Jogo procura_jg_lista(lJogo inicio, char nome[1024])
 
   if (strcmp(nome, inicio->jogo->nome) == 0)
   {
-    {
-      return inicio->jogo;
-    }
+    return inicio->jogo;
   }
   else
   {
@@ -82,23 +76,17 @@ lJogo apaga_jg_lista(lJogo inicio, char nome[1024])
   {
     if (strcmp(t->jogo->nome, nome) == 0)
     {
+      if (t == inicio)
       {
-        if (t == inicio)
-        {
-          {
-            inicio = t->prox;
-          }
-        }
-        else
-        {
-          {
-            ant->prox = t->prox;
-          }
-        }
-
-        apaga_nodulos(t);
-        return inicio;
+        inicio = t->prox;
       }
+      else
+      {
+        ant->prox = t->prox;
+      }
+
+      apaga_nodulos(t);
+      return inicio;
     }
     else
     {
@@ -116,9 +104,7 @@ void destroi_lista_jg(lJogo inicio)
   lJogo aux;
   if (!inicio)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -192,9 +178,7 @@ ligacao cria_nodulo(ligacao prox, ligacao ant, Jogo jogo)
   novo->prox = prox;
   if (ant != 0)
   {
-    {
-      ant->prox = novo;
-    }
+    ant->prox = novo;
   }
   else
   {
@@ -203,9 +187,7 @@ ligacao cria_nodulo(ligacao prox, ligacao ant, Jogo jogo)
 
   if (prox != 0)
   {
-    {
-      prox->ant = novo;
-    }
+    prox->ant = novo;
   }
   else
   {
@@ -226,9 +208,7 @@ void insere_jg_lst(LDupla lista, Jogo jogo)
   lista->resto = novo;
   if (lista->inicio == 0)
   {
-    {
-      lista->inicio = novo;
-    }
+    lista->inicio = novo;
   }
   else
   {
@@ -243,9 +223,7 @@ void ultimo(LDupla lista)
   ligacao aux = lista->resto;
   if ((lista == 0) || (lista->tamanho == 0))
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -255,15 +233,11 @@ void ultimo(LDupla lista)
   lista->resto = aux->ant;
   if (lista->resto != 0)
   {
-    {
-      lista->resto->prox = 0;
-    }
+    lista->resto->prox = 0;
   }
   else
   {
-    {
-      lista->inicio = 0;
-    }
+    lista->inicio = 0;
   }
 
   apaga_nodulo_jg(aux);
@@ -275,9 +249,7 @@ void primeiro(LDupla lista)
   ligacao aux = lista->inicio;
   if ((lista->inicio == 0) || (lista->tamanho == 0))
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -287,15 +259,11 @@ void primeiro(LDupla lista)
   lista->inicio = aux->prox;
   if (lista->inicio != 0)
   {
-    {
-      lista->inicio->ant = 0;
-    }
+    lista->inicio->ant = 0;
   }
   else
   {
-    {
-      lista->resto = 0;
-    }
+    lista->resto = 0;
   }
 
   apaga_nodulo_jg(aux);
@@ -309,9 +277,7 @@ ligacao procura_jg_lst(LDupla lista, char nome[1024])
   {
     if (strcmp(nome, atual->jogo->nome) == 0)
     {
-      {
-        return atual;
-      }
+      return atual;
     }
     else
     {
@@ -328,9 +294,7 @@ void apaga_jg_lst(LDupla lista, char nome[1024])
   ligacao atual = procura_jg_lst(lista, nome);
   if ((lista == 0) || (lista->tamanho == 0))
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -339,26 +303,20 @@ void apaga_jg_lst(LDupla lista, char nome[1024])
 
   if (atual == lista->inicio)
   {
-    {
-      primeiro(lista);
-    }
+    primeiro(lista);
   }
   else
   {
     if (atual == lista->resto)
     {
-      {
-        ultimo(lista);
-      }
+      ultimo(lista);
     }
     else
     {
-      {
-        atual->ant->prox = atual->prox;
-        atual->prox->ant = atual->ant;
-        apaga_nodulo_jg(atual);
-        lista->tamanho--;
-      }
+      atual->ant->prox = atual->prox;
+      atual->prox->ant = atual->ant;
+      apaga_nodulo_jg(atual);
+      lista->tamanho--;
     }
 
   }
@@ -371,9 +329,7 @@ void destroi_lista(LDupla lista)
   ligacao aux;
   if (lista == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -382,13 +338,11 @@ void destroi_lista(LDupla lista)
 
   if (lista->tamanho != 0)
   {
+    for (atual = lista->inicio, aux = lista->inicio->prox; atual != 0; aux = atual->prox, apaga_nodulo_jg(atual), atual = aux)
     {
-      for (atual = lista->inicio, aux = lista->inicio->prox; atual != 0; aux = atual->prox, apaga_nodulo_jg(atual), atual = aux)
-      {
-        ;
-      }
-
+      ;
     }
+
   }
   else
   {

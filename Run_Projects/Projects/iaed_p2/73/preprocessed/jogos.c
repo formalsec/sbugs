@@ -59,36 +59,28 @@ void inserir_jogo(char *nome_jogo, link_equipa *equipa1, link_equipa *equipa2, i
   hash = hash_function_jogos(nome_jogo, tabela_jogos->tamanho_maximo);
   if (tabela_jogos->vetor_hashes[hash].next == 0)
   {
-    {
-      no_novo_jogo->jogo_next_hashtable = 0;
-      tabela_jogos->vetor_hashes[hash].next = no_novo_jogo;
-    }
+    no_novo_jogo->jogo_next_hashtable = 0;
+    tabela_jogos->vetor_hashes[hash].next = no_novo_jogo;
   }
   else
   {
-    {
-      no_novo_jogo->jogo_next_hashtable = tabela_jogos->vetor_hashes[hash].next;
-      tabela_jogos->vetor_hashes[hash].next = no_novo_jogo;
-    }
+    no_novo_jogo->jogo_next_hashtable = tabela_jogos->vetor_hashes[hash].next;
+    tabela_jogos->vetor_hashes[hash].next = no_novo_jogo;
   }
 
   if (lista_jogos->head == 0)
   {
-    {
-      lista_jogos->head = no_novo_jogo;
-      lista_jogos->tail = no_novo_jogo;
-      no_novo_jogo->jogo_anterior_lista = 0;
-      no_novo_jogo->jogo_next_lista = 0;
-    }
+    lista_jogos->head = no_novo_jogo;
+    lista_jogos->tail = no_novo_jogo;
+    no_novo_jogo->jogo_anterior_lista = 0;
+    no_novo_jogo->jogo_next_lista = 0;
   }
   else
   {
-    {
-      lista_jogos->tail->jogo_next_lista = no_novo_jogo;
-      no_novo_jogo->jogo_anterior_lista = lista_jogos->tail;
-      no_novo_jogo->jogo_next_lista = 0;
-      lista_jogos->tail = no_novo_jogo;
-    }
+    lista_jogos->tail->jogo_next_lista = no_novo_jogo;
+    no_novo_jogo->jogo_anterior_lista = lista_jogos->tail;
+    no_novo_jogo->jogo_next_lista = 0;
+    lista_jogos->tail = no_novo_jogo;
   }
 
   if (score1 > score2)
@@ -135,23 +127,21 @@ link_jogo *procurar_jogo(char *nome_jogo, hashtable_jogos *tabela_jogos)
   }
   else
   {
+    link_atual = tabela_jogos->vetor_hashes[hash].next;
+    while (link_atual != 0)
     {
-      link_atual = tabela_jogos->vetor_hashes[hash].next;
-      while (link_atual != 0)
+      if (!strcmp(link_atual->pointer_jogo->nome_jogo, nome_jogo))
       {
-        if (!strcmp(link_atual->pointer_jogo->nome_jogo, nome_jogo))
-        {
-          return link_atual;
-        }
-        else
-        {
-          link_atual = link_atual->jogo_next_hashtable;
-        }
-
+        return link_atual;
+      }
+      else
+      {
+        link_atual = link_atual->jogo_next_hashtable;
       }
 
-      return 0;
     }
+
+    return 0;
   }
 
 }
@@ -165,72 +155,58 @@ void apagar_jogo(char *nome_jogo, hashtable_jogos *tabela_jogos, lista_ord_jogos
   hash = hash_function_jogos(nome_jogo, tabela_jogos->tamanho_maximo);
   if (strcmp(nome_jogo, tabela_jogos->vetor_hashes[hash].next->pointer_jogo->nome_jogo) == 0)
   {
-    {
-      jogo_alvo = tabela_jogos->vetor_hashes[hash].next;
-      jogo_next = jogo_alvo->jogo_next_hashtable;
-      tabela_jogos->vetor_hashes[hash].next = jogo_next;
-    }
+    jogo_alvo = tabela_jogos->vetor_hashes[hash].next;
+    jogo_next = jogo_alvo->jogo_next_hashtable;
+    tabela_jogos->vetor_hashes[hash].next = jogo_next;
   }
   else
   {
+    jogo_anterior = tabela_jogos->vetor_hashes[hash].next;
+    while (1)
     {
-      jogo_anterior = tabela_jogos->vetor_hashes[hash].next;
-      while (1)
+      if (strcmp(jogo_anterior->jogo_next_hashtable->pointer_jogo->nome_jogo, nome_jogo) == 0)
       {
-        if (strcmp(jogo_anterior->jogo_next_hashtable->pointer_jogo->nome_jogo, nome_jogo) == 0)
-        {
-          {
-            jogo_alvo = jogo_anterior->jogo_next_hashtable;
-            jogo_next = jogo_alvo->jogo_next_hashtable;
-            jogo_anterior->jogo_next_hashtable = jogo_next;
-            break;
-          }
-        }
-        else
-        {
-          jogo_anterior = jogo_anterior->jogo_next_hashtable;
-        }
-
+        jogo_alvo = jogo_anterior->jogo_next_hashtable;
+        jogo_next = jogo_alvo->jogo_next_hashtable;
+        jogo_anterior->jogo_next_hashtable = jogo_next;
+        break;
+      }
+      else
+      {
+        jogo_anterior = jogo_anterior->jogo_next_hashtable;
       }
 
     }
+
   }
 
   if ((jogo_alvo->jogo_anterior_lista == 0) && (jogo_alvo->jogo_next_lista == 0))
   {
-    {
-      lista_jogos->head = 0;
-      lista_jogos->tail = 0;
-    }
+    lista_jogos->head = 0;
+    lista_jogos->tail = 0;
   }
   else
   {
     if (jogo_alvo->jogo_anterior_lista == 0)
     {
-      {
-        jogo_next = jogo_alvo->jogo_next_lista;
-        lista_jogos->head = jogo_next;
-        jogo_next->jogo_anterior_lista = 0;
-      }
+      jogo_next = jogo_alvo->jogo_next_lista;
+      lista_jogos->head = jogo_next;
+      jogo_next->jogo_anterior_lista = 0;
     }
     else
     {
       if (jogo_alvo->jogo_next_lista == 0)
       {
-        {
-          jogo_anterior = jogo_alvo->jogo_anterior_lista;
-          lista_jogos->tail = jogo_anterior;
-          jogo_anterior->jogo_next_lista = 0;
-        }
+        jogo_anterior = jogo_alvo->jogo_anterior_lista;
+        lista_jogos->tail = jogo_anterior;
+        jogo_anterior->jogo_next_lista = 0;
       }
       else
       {
-        {
-          jogo_next = jogo_alvo->jogo_next_lista;
-          jogo_anterior = jogo_alvo->jogo_anterior_lista;
-          jogo_anterior->jogo_next_lista = jogo_next;
-          jogo_next->jogo_anterior_lista = jogo_anterior;
-        }
+        jogo_next = jogo_alvo->jogo_next_lista;
+        jogo_anterior = jogo_alvo->jogo_anterior_lista;
+        jogo_anterior->jogo_next_lista = jogo_next;
+        jogo_next->jogo_anterior_lista = jogo_anterior;
       }
 
     }

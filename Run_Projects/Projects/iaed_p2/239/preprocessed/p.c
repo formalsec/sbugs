@@ -22,10 +22,8 @@ void p(GAME *hashG[], int row)
   {
     if (searcher_game->link == 0)
     {
-      {
-        printf("%d Jogo inexistente.", row);
-        return;
-      }
+      printf("%d Jogo inexistente.", row);
+      return;
     }
     else
     {

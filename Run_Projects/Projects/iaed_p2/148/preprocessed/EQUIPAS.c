@@ -74,9 +74,7 @@ ItemE procura_lista_equipa(linkE head, char *nome)
   {
     if (strcmp(t->item->equipa, nome) == 0)
     {
-      {
-        return t->item;
-      }
+      return t->item;
     }
     else
     {
@@ -99,9 +97,7 @@ int numero_vitorias(linkE headsE[])
     {
       if (t->item->vitorias > vitorias)
       {
-        {
-          vitorias = t->item->vitorias;
-        }
+        vitorias = t->item->vitorias;
       }
       else
       {
@@ -129,11 +125,9 @@ void nome_equipas(int vitorias, int nl, int contadorequipas, linkE headsE[])
     {
       if (t->item->vitorias == vitorias)
       {
-        {
-          equipas[j] = (char *) malloc((sizeof(char)) * (strlen(t->item->equipa) + 1));
-          strcpy(equipas[j], t->item->equipa);
-          j++;
-        }
+        equipas[j] = (char *) malloc((sizeof(char)) * (strlen(t->item->equipa) + 1));
+        strcpy(equipas[j], t->item->equipa);
+        j++;
       }
       else
       {
@@ -146,16 +140,14 @@ void nome_equipas(int vitorias, int nl, int contadorequipas, linkE headsE[])
 
   if (j > 0)
   {
+    qsort(equipas, j, sizeof(char *), compara);
+    printf("%d Melhores %d\n", nl, vitorias);
+    for (x = 0; x < j; x++)
     {
-      qsort(equipas, j, sizeof(char *), compara);
-      printf("%d Melhores %d\n", nl, vitorias);
-      for (x = 0; x < j; x++)
-      {
-        printf("%d * %s\n", nl, equipas[x]);
-        free(equipas[x]);
-      }
-
+      printf("%d * %s\n", nl, equipas[x]);
+      free(equipas[x]);
     }
+
   }
   else
   {

@@ -28,9 +28,7 @@ int verificaExiste_jogo(hash_table *hashJogo, char *jogo)
   {
     if (strcmp(n->informacoes_jogo->nome_jogo, jogo) == 0)
     {
-      {
-        return 0;
-      }
+      return 0;
     }
     else
     {
@@ -49,9 +47,7 @@ int verificaEquipaDentro_aux_1(hash_table_equipa *t, char *equipa1, size_t h)
   {
     if (strcmp(n->equipa1, equipa1) == 0)
     {
-      {
-        return 0;
-      }
+      return 0;
     }
     else
     {
@@ -70,9 +66,7 @@ int verificaEquipaDentro_aux_2(hash_table_equipa *t, char *equipa2, size_t h)
   {
     if (strcmp(n->equipa1, equipa2) == 0)
     {
-      {
-        return 0;
-      }
+      return 0;
     }
     else
     {
@@ -90,10 +84,8 @@ void aumentaGanhos(hash_table_equipa *hashEquipa, hash_node_equipa *equipaAux, s
   {
     if (strcmp(equipaAux->equipa1, equipa) == 0)
     {
-      {
-        equipaAux->vitorias += 1;
-        return;
-      }
+      equipaAux->vitorias += 1;
+      return;
     }
     else
     {
@@ -142,11 +134,9 @@ void adiciona_jogo(hash_table *hash_jogo, int *Nr_linha, hash_table_equipa *hash
   {
     if (strcmp(n->informacoes_jogo->nome_jogo, nome_jogo) == 0)
     {
-      {
-        printf("%d Jogo existente.\n", *Nr_linha);
-        *Nr_linha += 1;
-        return;
-      }
+      printf("%d Jogo existente.\n", *Nr_linha);
+      *Nr_linha += 1;
+      return;
     }
     else
     {
@@ -159,11 +149,9 @@ void adiciona_jogo(hash_table *hash_jogo, int *Nr_linha, hash_table_equipa *hash
   h_eq2 = hash(equipa2, hashEquipa->capacidade_equipa);
   if ((verificaEquipaDentro_aux_1(hashEquipa, equipa1, h_eq1) == 1) || (verificaEquipaDentro_aux_2(hashEquipa, equipa2, h_eq2) == 1))
   {
-    {
-      printf("%d Equipa inexistente.\n", *Nr_linha);
-      *Nr_linha += 1;
-      return;
-    }
+    printf("%d Equipa inexistente.\n", *Nr_linha);
+    *Nr_linha += 1;
+    return;
   }
   else
   {
@@ -172,10 +160,8 @@ void adiciona_jogo(hash_table *hash_jogo, int *Nr_linha, hash_table_equipa *hash
 
   if (pontos1 > pontos2)
   {
-    {
-      equipa_aux = hashEquipa->tb[h_eq1];
-      aumentaGanhos(hashEquipa, equipa_aux, h_eq1, equipa1);
-    }
+    equipa_aux = hashEquipa->tb[h_eq1];
+    aumentaGanhos(hashEquipa, equipa_aux, h_eq1, equipa1);
   }
   else
   {
@@ -184,10 +170,8 @@ void adiciona_jogo(hash_table *hash_jogo, int *Nr_linha, hash_table_equipa *hash
 
   if (pontos1 < pontos2)
   {
-    {
-      equipa_aux = hashEquipa->tb[h_eq2];
-      aumentaGanhos(hashEquipa, equipa_aux, h_eq2, equipa2);
-    }
+    equipa_aux = hashEquipa->tb[h_eq2];
+    aumentaGanhos(hashEquipa, equipa_aux, h_eq2, equipa2);
   }
   else
   {
@@ -205,15 +189,11 @@ void adiciona_jogo(hash_table *hash_jogo, int *Nr_linha, hash_table_equipa *hash
   novo_jogo->proximo = 0;
   if (Lista_jogos->fim != 0)
   {
-    {
-      Lista_jogos->fim->proximo = novo_jogo;
-    }
+    Lista_jogos->fim->proximo = novo_jogo;
   }
   else
   {
-    {
-      Lista_jogos->inicio = novo_jogo;
-    }
+    Lista_jogos->inicio = novo_jogo;
   }
 
   Lista_jogos->fim = novo_jogo;
@@ -242,11 +222,9 @@ void procura_jogo(hash_table *t, int *Nr_linha)
   {
     if (strcmp(jogo_aux->informacoes_jogo->nome_jogo, jogo) == 0)
     {
-      {
-        print_info_jogo(Nr_linha, jogo_aux);
-        *Nr_linha += 1;
-        return;
-      }
+      print_info_jogo(Nr_linha, jogo_aux);
+      *Nr_linha += 1;
+      return;
     }
     else
     {
@@ -265,10 +243,8 @@ void tiraVitorias(hash_table_equipa *eq, hash_node_equipa *equipa_aux, char *equ
   {
     if (strcmp(equipa_aux->equipa1, equipa) == 0)
     {
-      {
-        equipa_aux->vitorias -= 1;
-        return;
-      }
+      equipa_aux->vitorias -= 1;
+      return;
     }
     else
     {
@@ -285,10 +261,8 @@ void acrescenta_vitorias(hash_table_equipa *eq, hash_node_equipa *equipa_aux, ch
   {
     if (strcmp(equipa_aux->equipa1, equipa) == 0)
     {
-      {
-        equipa_aux->vitorias += 1;
-        return;
-      }
+      equipa_aux->vitorias += 1;
+      return;
     }
     else
     {
@@ -319,11 +293,9 @@ void altera_score(hash_table *t, int *Nr_linha, hash_table_equipa *eq)
   pontos_novo2 = new_sym_var(sizeof(int) * 8);
   if (verificaExiste_jogo(t, jogo) == 1)
   {
-    {
-      printf("%d Jogo inexistente.\n", *Nr_linha);
-      *Nr_linha += 1;
-      return;
-    }
+    printf("%d Jogo inexistente.\n", *Nr_linha);
+    *Nr_linha += 1;
+    return;
   }
   else
   {
@@ -335,60 +307,50 @@ void altera_score(hash_table *t, int *Nr_linha, hash_table_equipa *eq)
   {
     if (strcmp(jogo_aux->informacoes_jogo->nome_jogo, jogo) == 0)
     {
+      h_eq1 = hash(jogo_aux->informacoes_jogo->equipa1, eq->capacidade_equipa);
+      h_eq2 = hash(jogo_aux->informacoes_jogo->equipa2, eq->capacidade_equipa);
+      if (jogo_aux->informacoes_jogo->pontos1 > jogo_aux->informacoes_jogo->pontos2)
       {
-        h_eq1 = hash(jogo_aux->informacoes_jogo->equipa1, eq->capacidade_equipa);
-        h_eq2 = hash(jogo_aux->informacoes_jogo->equipa2, eq->capacidade_equipa);
-        if (jogo_aux->informacoes_jogo->pontos1 > jogo_aux->informacoes_jogo->pontos2)
-        {
-          {
-            equipa_aux = eq->tb[h_eq1];
-            tiraVitorias(eq, equipa_aux, jogo_aux->informacoes_jogo->equipa1, h_eq1);
-          }
-        }
-        else
-        {
-          
-        }
-
-        if (jogo_aux->informacoes_jogo->pontos2 > jogo_aux->informacoes_jogo->pontos1)
-        {
-          {
-            equipa_aux = eq->tb[h_eq2];
-            tiraVitorias(eq, equipa_aux, jogo_aux->informacoes_jogo->equipa2, h_eq2);
-          }
-        }
-        else
-        {
-          
-        }
-
-        jogo_aux->informacoes_jogo->pontos1 = pontos_novo1;
-        jogo_aux->informacoes_jogo->pontos2 = pontos_novo2;
-        if (pontos_novo1 > pontos_novo2)
-        {
-          {
-            equipa_aux = eq->tb[h_eq1];
-            acrescenta_vitorias(eq, equipa_aux, jogo_aux->informacoes_jogo->equipa1, h_eq1);
-          }
-        }
-        else
-        {
-          
-        }
-
-        if (pontos_novo2 > pontos_novo1)
-        {
-          {
-            equipa_aux = eq->tb[h_eq2];
-            acrescenta_vitorias(eq, equipa_aux, jogo_aux->informacoes_jogo->equipa2, h_eq2);
-          }
-        }
-        else
-        {
-          
-        }
-
+        equipa_aux = eq->tb[h_eq1];
+        tiraVitorias(eq, equipa_aux, jogo_aux->informacoes_jogo->equipa1, h_eq1);
       }
+      else
+      {
+        
+      }
+
+      if (jogo_aux->informacoes_jogo->pontos2 > jogo_aux->informacoes_jogo->pontos1)
+      {
+        equipa_aux = eq->tb[h_eq2];
+        tiraVitorias(eq, equipa_aux, jogo_aux->informacoes_jogo->equipa2, h_eq2);
+      }
+      else
+      {
+        
+      }
+
+      jogo_aux->informacoes_jogo->pontos1 = pontos_novo1;
+      jogo_aux->informacoes_jogo->pontos2 = pontos_novo2;
+      if (pontos_novo1 > pontos_novo2)
+      {
+        equipa_aux = eq->tb[h_eq1];
+        acrescenta_vitorias(eq, equipa_aux, jogo_aux->informacoes_jogo->equipa1, h_eq1);
+      }
+      else
+      {
+        
+      }
+
+      if (pontos_novo2 > pontos_novo1)
+      {
+        equipa_aux = eq->tb[h_eq2];
+        acrescenta_vitorias(eq, equipa_aux, jogo_aux->informacoes_jogo->equipa2, h_eq2);
+      }
+      else
+      {
+        
+      }
+
     }
     else
     {
@@ -404,28 +366,20 @@ void remove_no(inicioFimJogos *lista, hash_node *jogo_aux)
 {
   if (jogo_aux->informacoes_jogo->anterior == 0)
   {
-    {
-      lista->inicio = jogo_aux->informacoes_jogo->proximo;
-    }
+    lista->inicio = jogo_aux->informacoes_jogo->proximo;
   }
   else
   {
-    {
-      jogo_aux->informacoes_jogo->anterior->proximo = jogo_aux->informacoes_jogo->proximo;
-    }
+    jogo_aux->informacoes_jogo->anterior->proximo = jogo_aux->informacoes_jogo->proximo;
   }
 
   if (jogo_aux->informacoes_jogo->proximo == 0)
   {
-    {
-      lista->fim = jogo_aux->informacoes_jogo->anterior;
-    }
+    lista->fim = jogo_aux->informacoes_jogo->anterior;
   }
   else
   {
-    {
-      jogo_aux->informacoes_jogo->proximo->anterior = jogo_aux->informacoes_jogo->anterior;
-    }
+    jogo_aux->informacoes_jogo->proximo->anterior = jogo_aux->informacoes_jogo->anterior;
   }
 
   free(jogo_aux->informacoes_jogo->equipa1);
@@ -436,11 +390,9 @@ void removeDaHash(hash_node *temp, hash_node *ant, hash_table *t, char *nome_jog
 {
   if (strcmp(temp->informacoes_jogo->nome_jogo, nome_jogo) == 0)
   {
-    {
-      t->tb_jogo[h] = temp->proximoNo;
-      free(temp);
-      return;
-    }
+    t->tb_jogo[h] = temp->proximoNo;
+    free(temp);
+    return;
   }
   else
   {
@@ -455,9 +407,7 @@ void removeDaHash(hash_node *temp, hash_node *ant, hash_table *t, char *nome_jog
 
   if (temp == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -484,53 +434,45 @@ void remove_jogo_aux(hash_table *t, hash_table_equipa *eq, inicioFimJogos *lista
   {
     if (strcmp(jogo_aux->informacoes_jogo->nome_jogo, nome_jogo) == 0)
     {
+      if (jogo_aux->informacoes_jogo->pontos1 > jogo_aux->informacoes_jogo->pontos2)
       {
-        if (jogo_aux->informacoes_jogo->pontos1 > jogo_aux->informacoes_jogo->pontos2)
-        {
-          {
-            h_eq1 = hash(jogo_aux->informacoes_jogo->equipa1, eq->capacidade_equipa);
-            equipa_aux = eq->tb[h_eq1];
-            tiraVitorias(eq, equipa_aux, jogo_aux->informacoes_jogo->equipa1, h_eq1);
-            remove_no(lista, jogo_aux);
-            removeDaHash(temp, ant, t, nome_jogo, h);
-            return;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if (jogo_aux->informacoes_jogo->pontos2 > jogo_aux->informacoes_jogo->pontos1)
-        {
-          {
-            h_eq2 = hash(jogo_aux->informacoes_jogo->equipa2, eq->capacidade_equipa);
-            equipa_aux_2 = eq->tb[h_eq2];
-            tiraVitorias(eq, equipa_aux_2, jogo_aux->informacoes_jogo->equipa2, h_eq2);
-            remove_no(lista, jogo_aux);
-            removeDaHash(temp, ant, t, nome_jogo, h);
-            return;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if (jogo_aux->informacoes_jogo->pontos2 == jogo_aux->informacoes_jogo->pontos1)
-        {
-          {
-            remove_no(lista, jogo_aux);
-            removeDaHash(temp, ant, t, nome_jogo, h);
-            return;
-          }
-        }
-        else
-        {
-          
-        }
-
+        h_eq1 = hash(jogo_aux->informacoes_jogo->equipa1, eq->capacidade_equipa);
+        equipa_aux = eq->tb[h_eq1];
+        tiraVitorias(eq, equipa_aux, jogo_aux->informacoes_jogo->equipa1, h_eq1);
+        remove_no(lista, jogo_aux);
+        removeDaHash(temp, ant, t, nome_jogo, h);
+        return;
       }
+      else
+      {
+        
+      }
+
+      if (jogo_aux->informacoes_jogo->pontos2 > jogo_aux->informacoes_jogo->pontos1)
+      {
+        h_eq2 = hash(jogo_aux->informacoes_jogo->equipa2, eq->capacidade_equipa);
+        equipa_aux_2 = eq->tb[h_eq2];
+        tiraVitorias(eq, equipa_aux_2, jogo_aux->informacoes_jogo->equipa2, h_eq2);
+        remove_no(lista, jogo_aux);
+        removeDaHash(temp, ant, t, nome_jogo, h);
+        return;
+      }
+      else
+      {
+        
+      }
+
+      if (jogo_aux->informacoes_jogo->pontos2 == jogo_aux->informacoes_jogo->pontos1)
+      {
+        remove_no(lista, jogo_aux);
+        removeDaHash(temp, ant, t, nome_jogo, h);
+        return;
+      }
+      else
+      {
+        
+      }
+
     }
     else
     {
@@ -552,11 +494,9 @@ void remove_jogo(hash_table *t, hash_table_equipa *eq, inicioFimJogos *lista, in
   nome_jogo[10 - 1] = '\0';
   if (verificaExiste_jogo(t, nome_jogo) == 1)
   {
-    {
-      printf("%d Jogo inexistente.\n", *Nr_linha);
-      *Nr_linha += 1;
-      return;
-    }
+    printf("%d Jogo inexistente.\n", *Nr_linha);
+    *Nr_linha += 1;
+    return;
   }
   else
   {
@@ -572,10 +512,8 @@ void lista_todos(inicioFimJogos *inicioFim, int *Nr_linha)
   NoListaJogos *aux = inicioFim->inicio;
   if (aux == 0)
   {
-    {
-      *Nr_linha += 1;
-      return;
-    }
+    *Nr_linha += 1;
+    return;
   }
   else
   {
@@ -617,13 +555,11 @@ void liberta_dupla(inicioFimJogos *lista)
     NoListaJogos *temp = lista->inicio;
     if (lista->inicio)
     {
-      {
-        lista->inicio = lista->inicio->proximo;
-        free(temp->nome_jogo);
-        free(temp->equipa1);
-        free(temp->equipa2);
-        free(temp);
-      }
+      lista->inicio = lista->inicio->proximo;
+      free(temp->nome_jogo);
+      free(temp->equipa1);
+      free(temp->equipa2);
+      free(temp);
     }
     else
     {

@@ -126,28 +126,26 @@ void adiciona_novo_jogo(lista_jogos *heads_jg, lista_equipas *heads_eq, lista *l
     }
     else
     {
+      jogo = novo_jogo(nome, eq1, eq2, sc1, sc2);
+      lista_por_ordem_add(lst, jogo);
+      JGinserir(heads_jg, jogo);
+      if (sc1 > sc2)
       {
-        jogo = novo_jogo(nome, eq1, eq2, sc1, sc2);
-        lista_por_ordem_add(lst, jogo);
-        JGinserir(heads_jg, jogo);
-        if (sc1 > sc2)
+        eq_1->equipa->vitorias += 1;
+      }
+      else
+      {
+        if (sc2 > sc1)
         {
-          eq_1->equipa->vitorias += 1;
+          eq_2->equipa->vitorias += 1;
         }
         else
         {
-          if (sc2 > sc1)
-          {
-            eq_2->equipa->vitorias += 1;
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
+
     }
 
   }
@@ -170,10 +168,8 @@ void adiciona_nova_equipa(lista_equipas *heads_eq, int count)
   nome[10 - 1] = '\0';
   if (EQprocurar(heads_eq, nome) == 0)
   {
-    {
-      equipa = nova_equipa(nome);
-      EQinserir(heads_eq, equipa);
-    }
+    equipa = nova_equipa(nome);
+    EQinserir(heads_eq, equipa);
   }
   else
   {
@@ -201,9 +197,7 @@ void procura_jogo(lista_jogos *heads_jg, int count)
   }
   else
   {
-    {
-      printf("%d %s %s %s %d %d\n", count, jogo_procurado->jogo->nome_jogo, jogo_procurado->jogo->equipa1, jogo_procurado->jogo->equipa2, jogo_procurado->jogo->sc1, jogo_procurado->jogo->sc2);
-    }
+    printf("%d %s %s %s %d %d\n", count, jogo_procurado->jogo->nome_jogo, jogo_procurado->jogo->equipa1, jogo_procurado->jogo->equipa2, jogo_procurado->jogo->sc1, jogo_procurado->jogo->sc2);
   }
 
   free(nome);
@@ -227,9 +221,7 @@ void procura_equipa(lista_equipas *heads_eq, int count)
   }
   else
   {
-    {
-      printf("%d %s %d\n", count, equipa_procurada->equipa->nome, equipa_procurada->equipa->vitorias);
-    }
+    printf("%d %s %d\n", count, equipa_procurada->equipa->nome, equipa_procurada->equipa->vitorias);
   }
 
   free(nome);
@@ -254,33 +246,27 @@ void apagar_jogo(lista_jogos *heads_jg, lista_equipas *heads_eq, lista *lst, int
   }
   else
   {
+    if (jogo_el->jogo->sc1 > jogo_el->jogo->sc2)
     {
-      if (jogo_el->jogo->sc1 > jogo_el->jogo->sc2)
+      equipa_procurada = EQprocurar(heads_eq, jogo_el->jogo->equipa1);
+      equipa_procurada->equipa->vitorias -= 1;
+    }
+    else
+    {
+      if (jogo_el->jogo->sc1 < jogo_el->jogo->sc2)
       {
-        {
-          equipa_procurada = EQprocurar(heads_eq, jogo_el->jogo->equipa1);
-          equipa_procurada->equipa->vitorias -= 1;
-        }
+        equipa_procurada = EQprocurar(heads_eq, jogo_el->jogo->equipa2);
+        equipa_procurada->equipa->vitorias -= 1;
       }
       else
       {
-        if (jogo_el->jogo->sc1 < jogo_el->jogo->sc2)
-        {
-          {
-            equipa_procurada = EQprocurar(heads_eq, jogo_el->jogo->equipa2);
-            equipa_procurada->equipa->vitorias -= 1;
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      apagar_jogo_lista_por_ordem(lst, nome);
-      Elimina_jogo(heads_jg, nome);
     }
+
+    apagar_jogo_lista_por_ordem(lst, nome);
+    Elimina_jogo(heads_jg, nome);
   }
 
   free(nome);
@@ -309,56 +295,46 @@ void alterar_score(lista_jogos *heads_jg, lista_equipas *heads_eq, int count)
   }
   else
   {
+    if (jogo_el->jogo->sc1 > jogo_el->jogo->sc2)
     {
-      if (jogo_el->jogo->sc1 > jogo_el->jogo->sc2)
+      eq_procurada = EQprocurar(heads_eq, jogo_el->jogo->equipa1);
+      eq_procurada->equipa->vitorias -= 1;
+    }
+    else
+    {
+      if (jogo_el->jogo->sc1 < jogo_el->jogo->sc2)
       {
-        {
-          eq_procurada = EQprocurar(heads_eq, jogo_el->jogo->equipa1);
-          eq_procurada->equipa->vitorias -= 1;
-        }
+        eq_procurada = EQprocurar(heads_eq, jogo_el->jogo->equipa2);
+        eq_procurada->equipa->vitorias -= 1;
       }
       else
       {
-        if (jogo_el->jogo->sc1 < jogo_el->jogo->sc2)
-        {
-          {
-            eq_procurada = EQprocurar(heads_eq, jogo_el->jogo->equipa2);
-            eq_procurada->equipa->vitorias -= 1;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      jogo_el->jogo->sc1 = novo_sc1;
-      jogo_el->jogo->sc2 = novo_sc2;
-      if (novo_sc1 > novo_sc2)
-      {
-        {
-          eq_procurada = EQprocurar(heads_eq, jogo_el->jogo->equipa1);
-          eq_procurada->equipa->vitorias += 1;
-        }
-      }
-      else
-      {
-        if (novo_sc2 > novo_sc1)
-        {
-          {
-            eq_procurada = EQprocurar(heads_eq, jogo_el->jogo->equipa2);
-            eq_procurada->equipa->vitorias += 1;
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
     }
+
+    jogo_el->jogo->sc1 = novo_sc1;
+    jogo_el->jogo->sc2 = novo_sc2;
+    if (novo_sc1 > novo_sc2)
+    {
+      eq_procurada = EQprocurar(heads_eq, jogo_el->jogo->equipa1);
+      eq_procurada->equipa->vitorias += 1;
+    }
+    else
+    {
+      if (novo_sc2 > novo_sc1)
+      {
+        eq_procurada = EQprocurar(heads_eq, jogo_el->jogo->equipa2);
+        eq_procurada->equipa->vitorias += 1;
+      }
+      else
+      {
+        
+      }
+
+    }
+
   }
 
   free(nome);
@@ -377,10 +353,8 @@ void lista_melhores(lista_equipas *heads_eq, int count)
     {
       if (aux->equipa->vitorias > mais_vitorias)
       {
-        {
-          mais_vitorias = aux->equipa->vitorias;
-          tamanho = 1;
-        }
+        mais_vitorias = aux->equipa->vitorias;
+        tamanho = 1;
       }
       else
       {

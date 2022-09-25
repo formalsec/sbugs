@@ -8,57 +8,45 @@ orderedTeams *pushTeam(orderedTeams *head, Team *team)
 {
   if (team == 0)
   {
-    {
-      return head;
-    }
+    return head;
   }
   else
   {
+    orderedTeams *novo;
+    orderedTeams *aux;
+    orderedTeams *last;
+    novo = malloc(sizeof(orderedTeams));
+    aux = (last = head);
+    if (aux == 0)
     {
-      orderedTeams *novo;
-      orderedTeams *aux;
-      orderedTeams *last;
-      novo = malloc(sizeof(orderedTeams));
-      aux = (last = head);
-      if (aux == 0)
+      novo->team = team;
+      novo->next = 0;
+      return novo;
+    }
+    else
+    {
+      while ((aux != 0) && (strcmp(aux->team->nome, team->nome) < 0))
       {
-        {
-          novo->team = team;
-          novo->next = 0;
-          return novo;
-        }
+        last = aux;
+        aux = aux->next;
+      }
+
+      if (aux == last)
+      {
+        novo->team = team;
+        novo->next = aux;
+        return novo;
       }
       else
       {
-        {
-          while ((aux != 0) && (strcmp(aux->team->nome, team->nome) < 0))
-          {
-            last = aux;
-            aux = aux->next;
-          }
-
-          if (aux == last)
-          {
-            {
-              novo->team = team;
-              novo->next = aux;
-              return novo;
-            }
-          }
-          else
-          {
-            {
-              last->next = novo;
-              novo->team = team;
-              novo->next = aux;
-              return head;
-            }
-          }
-
-        }
+        last->next = novo;
+        novo->team = team;
+        novo->next = aux;
+        return head;
       }
 
     }
+
   }
 
 }
@@ -68,9 +56,7 @@ void printTeams(orderedTeams *head, int cmd_count, int maxWins)
   orderedTeams *aux;
   if (head == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -114,9 +100,7 @@ void updateMaxWins(orderedTeams *head, int *maxWins)
   {
     if (aux->team->wins > (*maxWins))
     {
-      {
-        *maxWins = aux->team->wins;
-      }
+      *maxWins = aux->team->wins;
     }
     else
     {

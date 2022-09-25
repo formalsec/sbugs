@@ -22,56 +22,47 @@ void change_victories(node_team *n_team1, node_team *n_team2, int old_score[2], 
 {
   if (!((((old_score[0] < old_score[1]) && (new_score[0] < new_score[1])) || ((old_score[0] > old_score[1]) && (new_score[0] > new_score[1]))) || ((old_score[0] == old_score[1]) && (new_score[0] == new_score[1]))))
   {
+    if ((old_score[0] > old_score[1]) && (new_score[0] == new_score[1]))
     {
-      if ((old_score[0] > old_score[1]) && (new_score[0] == new_score[1]))
+      n_team1->victories = n_team1->victories - 1;
+    }
+    else
+    {
+      if ((old_score[0] < old_score[1]) && (new_score[0] == new_score[1]))
       {
-        n_team1->victories = n_team1->victories - 1;
+        n_team2->victories = n_team2->victories - 1;
       }
       else
       {
-        if ((old_score[0] < old_score[1]) && (new_score[0] == new_score[1]))
+        if (old_score[0] > old_score[1])
         {
-          n_team2->victories = n_team2->victories - 1;
+          n_team1->victories = n_team1->victories - 1;
+          n_team2->victories = n_team2->victories + 1;
         }
         else
         {
-          if (old_score[0] > old_score[1])
+          if (old_score[0] < old_score[1])
           {
-            {
-              n_team1->victories = n_team1->victories - 1;
-              n_team2->victories = n_team2->victories + 1;
-            }
+            n_team1->victories = n_team1->victories + 1;
+            n_team2->victories = n_team2->victories - 1;
           }
           else
           {
-            if (old_score[0] < old_score[1])
+            if (old_score[0] == old_score[1])
             {
+              if (new_score[0] < new_score[1])
               {
-                n_team1->victories = n_team1->victories + 1;
-                n_team2->victories = n_team2->victories - 1;
-              }
-            }
-            else
-            {
-              if (old_score[0] == old_score[1])
-              {
-                {
-                  if (new_score[0] < new_score[1])
-                  {
-                    n_team2->victories = n_team2->victories + 1;
-                  }
-                  else
-                  {
-                    n_team1->victories = n_team1->victories + 1;
-                  }
-
-                }
+                n_team2->victories = n_team2->victories + 1;
               }
               else
               {
-                
+                n_team1->victories = n_team1->victories + 1;
               }
 
+            }
+            else
+            {
+              
             }
 
           }
@@ -81,6 +72,7 @@ void change_victories(node_team *n_team1, node_team *n_team2, int old_score[2], 
       }
 
     }
+
   }
   else
   {

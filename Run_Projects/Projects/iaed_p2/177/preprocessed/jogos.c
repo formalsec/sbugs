@@ -22,9 +22,7 @@ void print(lista *l, int nl)
   {
     if (x->eliminado == 0)
     {
-      {
-        printf("%d %s %s %s %d %d\n", nl, x->nome, x->equipa1, x->equipa2, x->score1, x->score2);
-      }
+      printf("%d %s %s %s %d %d\n", nl, x->nome, x->equipa1, x->equipa2, x->score1, x->score2);
     }
     else
     {
@@ -70,12 +68,10 @@ jogo destroi_jogo(jogo st)
   {
     if (st->v[i] != 0)
     {
-      {
-        free(st->v[i]->nome);
-        free(st->v[i]->equipa1);
-        free(st->v[i]->equipa2);
-        free(st->v[i]);
-      }
+      free(st->v[i]->nome);
+      free(st->v[i]->equipa1);
+      free(st->v[i]->equipa2);
+      free(st->v[i]);
     }
     else
     {
@@ -112,9 +108,7 @@ jogo re_hash_jogo(jogo st)
   {
     if (st->v[i] != 0)
     {
-      {
-        st1 = insere(st1, st->v[i], st->v[i]->nome);
-      }
+      st1 = insere(st1, st->v[i], st->v[i]->nome);
     }
     else
     {
@@ -134,9 +128,7 @@ jogo insere_jogo(jogo st, lista *l, char *nome, char *equipa1, char *equipa2, in
   st->elementos += 1;
   if ((2 * st->elementos) >= st->tamanho)
   {
-    {
-      st = re_hash_jogo(st);
-    }
+    st = re_hash_jogo(st);
   }
   else
   {
@@ -162,18 +154,14 @@ jogo insere_jogo(jogo st, lista *l, char *nome, char *equipa1, char *equipa2, in
   st->v[i]->next = 0;
   if (l->head == 0)
   {
-    {
-      l->head = st->v[i];
-      l->last = st->v[i];
-    }
+    l->head = st->v[i];
+    l->last = st->v[i];
   }
   else
   {
-    {
-      pPerson prev_last = l->last;
-      prev_last->next = st->v[i];
-      l->last = st->v[i];
-    }
+    pPerson prev_last = l->last;
+    prev_last->next = st->v[i];
+    l->last = st->v[i];
   }
 
   return st;
@@ -187,15 +175,11 @@ int pertence_jogo(jogo st1, char *nome)
   {
     if ((strcmp(st1->v[i]->nome, nome) == 0) && (st1->v[i]->eliminado == 0))
     {
-      {
-        return 1;
-      }
+      return 1;
     }
     else
     {
-      {
-        i = (i + 1) % st1->tamanho;
-      }
+      i = (i + 1) % st1->tamanho;
     }
 
   }
@@ -211,16 +195,12 @@ void print_jogo(jogo st1, char *nome, int nl)
   {
     if ((strcmp(st1->v[i]->nome, nome) == 0) && (st1->v[i]->eliminado == 0))
     {
-      {
-        printf("%d %s %s %s %d %d\n", nl, st1->v[i]->nome, st1->v[i]->equipa1, st1->v[i]->equipa2, st1->v[i]->score1, st1->v[i]->score2);
-        return;
-      }
+      printf("%d %s %s %s %d %d\n", nl, st1->v[i]->nome, st1->v[i]->equipa1, st1->v[i]->equipa2, st1->v[i]->score1, st1->v[i]->score2);
+      return;
     }
     else
     {
-      {
-        i = (i + 1) % st1->tamanho;
-      }
+      i = (i + 1) % st1->tamanho;
     }
 
   }
@@ -235,17 +215,13 @@ jogo altera_score(jogo st1, char *nome, int novo_score1, int novo_score2)
   {
     if ((strcmp(st1->v[i]->nome, nome) == 0) && (st1->v[i]->eliminado == 0))
     {
-      {
-        st1->v[i]->score1 = novo_score1;
-        st1->v[i]->score2 = novo_score2;
-        return st1;
-      }
+      st1->v[i]->score1 = novo_score1;
+      st1->v[i]->score2 = novo_score2;
+      return st1;
     }
     else
     {
-      {
-        i = (i + 1) % st1->tamanho;
-      }
+      i = (i + 1) % st1->tamanho;
     }
 
   }
@@ -261,9 +237,7 @@ jogo elimina_jogo(jogo st, char *nome)
   {
     if ((strcmp(st->v[i]->nome, nome) == 0) && (st->v[i]->eliminado == 0))
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {

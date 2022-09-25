@@ -48,49 +48,43 @@ void command_a(int *nl, JOGO_HASH **hashtable_jogos, JOGO_LIST *lista_de_jogos, 
   }
   else
   {
+    equipa1_procurada = procura_equipa(hashtable_equipas, equipa1);
+    if (equipa1_procurada == 0)
     {
-      equipa1_procurada = procura_equipa(hashtable_equipas, equipa1);
-      if (equipa1_procurada == 0)
+      printf("%d Equipa inexistente.\n", *nl);
+    }
+    else
+    {
+      equipa2_procurada = procura_equipa(hashtable_equipas, equipa2);
+      if (equipa2_procurada == 0)
       {
         printf("%d Equipa inexistente.\n", *nl);
       }
       else
       {
+        novo_jogo = cria_jogo(lista_de_jogos, nome, equipa1, equipa2, score1, score2);
+        add_jogo_hash(hashtable_jogos, novo_jogo);
+        if (score1 > score2)
         {
-          equipa2_procurada = procura_equipa(hashtable_equipas, equipa2);
-          if (equipa2_procurada == 0)
+          add_score(hashtable_equipas, equipa1);
+        }
+        else
+        {
+          if (score1 < score2)
           {
-            printf("%d Equipa inexistente.\n", *nl);
+            add_score(hashtable_equipas, equipa2);
           }
           else
           {
-            {
-              novo_jogo = cria_jogo(lista_de_jogos, nome, equipa1, equipa2, score1, score2);
-              add_jogo_hash(hashtable_jogos, novo_jogo);
-              if (score1 > score2)
-              {
-                add_score(hashtable_equipas, equipa1);
-              }
-              else
-              {
-                if (score1 < score2)
-                {
-                  add_score(hashtable_equipas, equipa2);
-                }
-                else
-                {
-                  
-                }
-
-              }
-
-            }
+            
           }
 
         }
+
       }
 
     }
+
   }
 
 }
@@ -146,19 +140,17 @@ void command_r(int *nl, JOGO_HASH **hashtable_jogos, EQUIPA **hashtable_equipas,
   }
   else
   {
+    nome_equipa_win = maior_score_jogo(hashtable_jogos, nome);
+    if (nome_equipa_win != 0)
     {
-      nome_equipa_win = maior_score_jogo(hashtable_jogos, nome);
-      if (nome_equipa_win != 0)
-      {
-        remove_score(hashtable_equipas, nome_equipa_win);
-      }
-      else
-      {
-        
-      }
-
-      remove_jogo(hashtable_jogos, lista_de_jogos, nome);
+      remove_score(hashtable_equipas, nome_equipa_win);
     }
+    else
+    {
+      
+    }
+
+    remove_jogo(hashtable_jogos, lista_de_jogos, nome);
   }
 
 }
@@ -186,43 +178,35 @@ void command_s(int *nl, JOGO_HASH **hashtable_jogos, EQUIPA **hashtable_equipas)
   }
   else
   {
+    nome_win = maior_score_jogo(hashtable_jogos, nome);
+    altera_score(hashtable_jogos, nome, score1, score2);
+    nome_next_win = maior_score_jogo(hashtable_jogos, nome);
+    if (((nome_win != 0) && (nome_next_win != 0)) && (strcmp(nome_win, nome_next_win) != 0))
     {
-      nome_win = maior_score_jogo(hashtable_jogos, nome);
-      altera_score(hashtable_jogos, nome, score1, score2);
-      nome_next_win = maior_score_jogo(hashtable_jogos, nome);
-      if (((nome_win != 0) && (nome_next_win != 0)) && (strcmp(nome_win, nome_next_win) != 0))
+      add_score(hashtable_equipas, nome_next_win);
+      remove_score(hashtable_equipas, nome_win);
+    }
+    else
+    {
+      if ((nome_win != 0) && (nome_next_win == 0))
       {
-        {
-          add_score(hashtable_equipas, nome_next_win);
-          remove_score(hashtable_equipas, nome_win);
-        }
+        remove_score(hashtable_equipas, nome_win);
       }
       else
       {
-        if ((nome_win != 0) && (nome_next_win == 0))
+        if ((nome_win == 0) && (nome_next_win != 0))
         {
-          {
-            remove_score(hashtable_equipas, nome_win);
-          }
+          add_score(hashtable_equipas, nome_next_win);
         }
         else
         {
-          if ((nome_win == 0) && (nome_next_win != 0))
-          {
-            {
-              add_score(hashtable_equipas, nome_next_win);
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
 
     }
+
   }
 
 }
@@ -245,10 +229,8 @@ void command_A(int *nl, EQUIPA **hashtable_equipas)
   }
   else
   {
-    {
-      nova_equipa = cria_equipa(nome);
-      add_equipa(hashtable_equipas, nova_equipa);
-    }
+    nova_equipa = cria_equipa(nome);
+    add_equipa(hashtable_equipas, nova_equipa);
   }
 
 }
@@ -270,9 +252,7 @@ void command_P(int *nl, EQUIPA **hashtable_equipas)
   }
   else
   {
-    {
-      printf("%d %s %d\n", *nl, nome, equipa_procurada->score);
-    }
+    printf("%d %s %d\n", *nl, nome, equipa_procurada->score);
   }
 
 }
@@ -287,19 +267,17 @@ void command_g(int *nl, EQUIPA **hashtable_equipas)
   num_jogos = num_equipas(hashtable_equipas, maior_score);
   if (num_jogos != 0)
   {
+    lista_nomes = malloc((sizeof(char *)) * (num_jogos + 1));
+    cria_lista_nomes(lista_nomes, hashtable_equipas, maior_score);
+    qsort(lista_nomes, num_jogos, sizeof(char *), compara_nomes);
+    printf("%d Melhores %d\n", *nl, maior_score);
+    for (i = 0; i < num_jogos; i++)
     {
-      lista_nomes = malloc((sizeof(char *)) * (num_jogos + 1));
-      cria_lista_nomes(lista_nomes, hashtable_equipas, maior_score);
-      qsort(lista_nomes, num_jogos, sizeof(char *), compara_nomes);
-      printf("%d Melhores %d\n", *nl, maior_score);
-      for (i = 0; i < num_jogos; i++)
-      {
-        printf("%d * %s\n", *nl, lista_nomes[i]);
-        free(lista_nomes[i]);
-      }
-
-      free(lista_nomes);
+      printf("%d * %s\n", *nl, lista_nomes[i]);
+      free(lista_nomes[i]);
     }
+
+    free(lista_nomes);
   }
   else
   {

@@ -23,9 +23,7 @@ game *searchListGames(list_games *list, char *name)
   {
     if (!strcmp(t->gameptr->name, name))
     {
-      {
-        return t->gameptr;
-      }
+      return t->gameptr;
     }
     else
     {
@@ -46,11 +44,9 @@ void addLast(list_games *l, game *g)
   new_last->previous = l->last;
   if (!l->head)
   {
-    {
-      l->head = new_last;
-      l->last = new_last;
-      return;
-    }
+    l->head = new_last;
+    l->last = new_last;
+    return;
   }
   else
   {
@@ -68,56 +64,44 @@ void removeFromList(list_games *list, char *name)
   {
     if (!strcmp(t->gameptr->name, name))
     {
+      if (t == list->head)
       {
-        if (t == list->head)
+        list->head = t->next;
+        if (t->next != 0)
         {
-          {
-            list->head = t->next;
-            if (t->next != 0)
-            {
-              {
-                t->next->previous = 0;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
+          t->next->previous = 0;
         }
         else
         {
-          if (t == list->last)
-          {
-            {
-              list->last = t->previous;
-              if (t->previous != 0)
-              {
-                {
-                  t->previous->next = 0;
-                }
-              }
-              else
-              {
-                
-              }
+          
+        }
 
-            }
+      }
+      else
+      {
+        if (t == list->last)
+        {
+          list->last = t->previous;
+          if (t->previous != 0)
+          {
+            t->previous->next = 0;
           }
           else
           {
-            {
-              t->previous->next = t->next;
-              t->next->previous = t->previous;
-            }
+            
           }
 
         }
+        else
+        {
+          t->previous->next = t->next;
+          t->next->previous = t->previous;
+        }
 
-        free(t);
-        break;
       }
+
+      free(t);
+      break;
     }
     else
     {
@@ -234,25 +218,21 @@ void addGame(list_games *lgptr, list_games **hashgames, team_node **hasteams, in
   score2 = new_sym_var(sizeof(int) * 8);
   if (searchHashGames(hashgames, match_name_buffer))
   {
-    {
-      printf("%d Jogo existente.\n", line);
-      free(match_name_buffer);
-      free(team1_buffer);
-      free(team2_buffer);
-      return;
-    }
+    printf("%d Jogo existente.\n", line);
+    free(match_name_buffer);
+    free(team1_buffer);
+    free(team2_buffer);
+    return;
   }
   else
   {
     if ((!searchHashTeams(hasteams, team1_buffer)) || (!searchHashTeams(hasteams, team2_buffer)))
     {
-      {
-        printf("%d Equipa inexistente.\n", line);
-        free(match_name_buffer);
-        free(team1_buffer);
-        free(team2_buffer);
-        return;
-      }
+      printf("%d Equipa inexistente.\n", line);
+      free(match_name_buffer);
+      free(team1_buffer);
+      free(team2_buffer);
+      return;
     }
     else
     {
@@ -267,17 +247,13 @@ void addGame(list_games *lgptr, list_games **hashgames, team_node **hasteams, in
   addLast(lgptr, new_game);
   if (score1 > score2)
   {
-    {
-      searchHashTeams(hasteams, team1_buffer)->number_of_wins++;
-    }
+    searchHashTeams(hasteams, team1_buffer)->number_of_wins++;
   }
   else
   {
     if (score1 < score2)
     {
-      {
-        searchHashTeams(hasteams, team2_buffer)->number_of_wins++;
-      }
+      searchHashTeams(hasteams, team2_buffer)->number_of_wins++;
     }
     else
     {
@@ -314,11 +290,9 @@ void searchGame(list_games **hastable, int line)
   g = searchHashGames(hastable, name);
   if (!g)
   {
-    {
-      printf("%d Jogo inexistente.\n", line);
-      free(name);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", line);
+    free(name);
+    return;
   }
   else
   {
@@ -342,11 +316,9 @@ void deleteGame(list_games *lgprt, list_games **hashgames, team_node **hashteams
   g = searchHashGames(hashgames, name);
   if (!g)
   {
-    {
-      printf("%d Jogo inexistente.\n", line);
-      free(name);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", line);
+    free(name);
+    return;
   }
   else
   {
@@ -355,17 +327,13 @@ void deleteGame(list_games *lgprt, list_games **hashgames, team_node **hashteams
 
   if (g->score_team1 > g->score_team2)
   {
-    {
-      searchHashTeams(hashteams, g->team1)->number_of_wins--;
-    }
+    searchHashTeams(hashteams, g->team1)->number_of_wins--;
   }
   else
   {
     if (g->score_team1 < g->score_team2)
     {
-      {
-        searchHashTeams(hashteams, g->team2)->number_of_wins--;
-      }
+      searchHashTeams(hashteams, g->team2)->number_of_wins--;
     }
     else
     {
@@ -399,11 +367,9 @@ void changeScore(list_games **hashgames, team_node **hashteams, int line)
   g = searchHashGames(hashgames, name);
   if (!g)
   {
-    {
-      printf("%d Jogo inexistente.\n", line);
-      free(name);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", line);
+    free(name);
+    return;
   }
   else
   {
@@ -414,21 +380,39 @@ void changeScore(list_games **hashgames, team_node **hashteams, int line)
   old_score2 = g->score_team2;
   if (old_score1 > old_score2)
   {
+    if (new_score1 < new_score2)
     {
-      if (new_score1 < new_score2)
+      searchHashTeams(hashteams, g->team1)->number_of_wins--;
+      searchHashTeams(hashteams, g->team2)->number_of_wins++;
+    }
+    else
+    {
+      if (new_score1 == new_score2)
       {
-        {
-          searchHashTeams(hashteams, g->team1)->number_of_wins--;
-          searchHashTeams(hashteams, g->team2)->number_of_wins++;
-        }
+        searchHashTeams(hashteams, g->team1)->number_of_wins--;
       }
       else
       {
-        if (new_score1 == new_score2)
+        
+      }
+
+    }
+
+  }
+  else
+  {
+    if (old_score2 > old_score1)
+    {
+      if (new_score2 < new_score1)
+      {
+        searchHashTeams(hashteams, g->team2)->number_of_wins--;
+        searchHashTeams(hashteams, g->team1)->number_of_wins++;
+      }
+      else
+      {
+        if (new_score2 == new_score1)
         {
-          {
-            searchHashTeams(hashteams, g->team1)->number_of_wins--;
-          }
+          searchHashTeams(hashteams, g->team2)->number_of_wins--;
         }
         else
         {
@@ -438,61 +422,25 @@ void changeScore(list_games **hashgames, team_node **hashteams, int line)
       }
 
     }
-  }
-  else
-  {
-    if (old_score2 > old_score1)
-    {
-      {
-        if (new_score2 < new_score1)
-        {
-          {
-            searchHashTeams(hashteams, g->team2)->number_of_wins--;
-            searchHashTeams(hashteams, g->team1)->number_of_wins++;
-          }
-        }
-        else
-        {
-          if (new_score2 == new_score1)
-          {
-            {
-              searchHashTeams(hashteams, g->team2)->number_of_wins--;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-      }
-    }
     else
     {
+      if (new_score1 > new_score2)
       {
-        if (new_score1 > new_score2)
+        searchHashTeams(hashteams, g->team1)->number_of_wins++;
+      }
+      else
+      {
+        if (new_score2 > new_score1)
         {
-          {
-            searchHashTeams(hashteams, g->team1)->number_of_wins++;
-          }
+          searchHashTeams(hashteams, g->team2)->number_of_wins++;
         }
         else
         {
-          if (new_score2 > new_score1)
-          {
-            {
-              searchHashTeams(hashteams, g->team2)->number_of_wins++;
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
+
     }
 
   }

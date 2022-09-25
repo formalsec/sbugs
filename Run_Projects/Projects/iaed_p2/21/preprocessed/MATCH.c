@@ -16,17 +16,13 @@ Team getWinTeam(Match match)
 {
   if (match->score1 > match->score2)
   {
-    {
-      return match->team1;
-    }
+    return match->team1;
   }
   else
   {
     if (match->score1 < match->score2)
     {
-      {
-        return match->team2;
-      }
+      return match->team2;
     }
     else
     {
@@ -42,17 +38,13 @@ Team getLoserTeam(Match match)
 {
   if (match->score1 < match->score2)
   {
-    {
-      return match->team1;
-    }
+    return match->team1;
   }
   else
   {
     if (match->score1 > match->score2)
     {
-      {
-        return match->team2;
-      }
+      return match->team2;
     }
     else
     {
@@ -68,17 +60,13 @@ void removeScores(Match match)
 {
   if (match->score1 > match->score2)
   {
-    {
-      match->team1->score--;
-    }
+    match->team1->score--;
   }
   else
   {
     if (match->score1 < match->score2)
     {
-      {
-        match->team2->score--;
-      }
+      match->team2->score--;
     }
     else
     {
@@ -101,17 +89,13 @@ void updateTeamScore(Match match)
 {
   if (match->score1 > match->score2)
   {
-    {
-      match->team1->score++;
-    }
+    match->team1->score++;
   }
   else
   {
     if (match->score1 < match->score2)
     {
-      {
-        match->team2->score++;
-      }
+      match->team2->score++;
     }
     else
     {

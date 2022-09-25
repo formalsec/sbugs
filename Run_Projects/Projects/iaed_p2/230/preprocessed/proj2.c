@@ -37,10 +37,8 @@ void comando_a(int commandLine)
   score2 = new_sym_var(sizeof(int) * 8);
   if (searchNode(htGames, game, 'g') != 0)
   {
-    {
-      printf("%d Jogo existente.\n", commandLine);
-      return;
-    }
+    printf("%d Jogo existente.\n", commandLine);
+    return;
   }
   else
   {
@@ -49,10 +47,8 @@ void comando_a(int commandLine)
 
   if (searchNode(htTeams, team1, 't') == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", commandLine);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", commandLine);
+    return;
   }
   else
   {
@@ -61,10 +57,8 @@ void comando_a(int commandLine)
 
   if (searchNode(htTeams, team2, 't') == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", commandLine);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", commandLine);
+    return;
   }
   else
   {
@@ -101,10 +95,8 @@ void comando_p(int commandLine)
   game[10 - 1] = '\0';
   if ((node = searchNode(htGames, game, 'g')) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", commandLine);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", commandLine);
+    return;
   }
   else
   {
@@ -127,10 +119,8 @@ void comando_r(int commandLine)
   game[10 - 1] = '\0';
   if ((node = searchNode(htGames, game, 'g')) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", commandLine);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", commandLine);
+    return;
   }
   else
   {
@@ -153,10 +143,8 @@ void comando_s(int commandLine)
   score2 = new_sym_var(sizeof(int) * 8);
   if ((node = searchNode(htGames, game, 'g')) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", commandLine);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", commandLine);
+    return;
   }
   else
   {
@@ -178,10 +166,8 @@ void comando_A(int commandLine)
   team1[10 - 1] = '\0';
   if (searchNode(htTeams, team1, 't') != 0)
   {
-    {
-      printf("%d Equipa existente.\n", commandLine);
-      return;
-    }
+    printf("%d Equipa existente.\n", commandLine);
+    return;
   }
   else
   {
@@ -203,10 +189,8 @@ void comando_P(int commandLine)
   team1[10 - 1] = '\0';
   if ((node = searchNode(htTeams, team1, 't')) == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", commandLine);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", commandLine);
+    return;
   }
   else
   {

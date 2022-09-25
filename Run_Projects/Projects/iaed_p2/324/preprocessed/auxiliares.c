@@ -15,10 +15,8 @@ int existe_equipa(e_node **hashtable, int location, char *texto)
   {
     if (strcmp(aux->nome, texto) == 0)
     {
-      {
-        procura = 1;
-        break;
-      }
+      procura = 1;
+      break;
     }
     else
     {
@@ -36,25 +34,21 @@ void remove_vitoria(node *aux, e_node **equipas)
   int location;
   if (aux->jogo->score1 > aux->jogo->score2)
   {
+    location = get_location(aux->jogo->equipa1);
+    for (tmp = equipas[location]; tmp != 0; tmp = tmp->next)
     {
-      location = get_location(aux->jogo->equipa1);
-      for (tmp = equipas[location]; tmp != 0; tmp = tmp->next)
+      if (strcmp(aux->jogo->equipa1, tmp->nome) == 0)
       {
-        if (strcmp(aux->jogo->equipa1, tmp->nome) == 0)
-        {
-          {
-            tmp->vitorias -= 1;
-            break;
-          }
-        }
-        else
-        {
-          
-        }
-
+        tmp->vitorias -= 1;
+        break;
+      }
+      else
+      {
+        
       }
 
     }
+
   }
   else
   {
@@ -63,25 +57,21 @@ void remove_vitoria(node *aux, e_node **equipas)
 
   if (aux->jogo->score1 < aux->jogo->score2)
   {
+    location = get_location(aux->jogo->equipa2);
+    for (tmp = equipas[location]; tmp != 0; tmp = tmp->next)
     {
-      location = get_location(aux->jogo->equipa2);
-      for (tmp = equipas[location]; tmp != 0; tmp = tmp->next)
+      if (strcmp(aux->jogo->equipa2, tmp->nome) == 0)
       {
-        if (strcmp(aux->jogo->equipa2, tmp->nome) == 0)
-        {
-          {
-            tmp->vitorias -= 1;
-            break;
-          }
-        }
-        else
-        {
-          
-        }
-
+        tmp->vitorias -= 1;
+        break;
+      }
+      else
+      {
+        
       }
 
     }
+
   }
   else
   {
@@ -136,24 +126,20 @@ void listar_vencedores(e_node **equipas, int maior, int conta, int NL)
   {
     if (equipas[i] != 0)
     {
+      for (aux = equipas[i]; aux != 0; aux = aux->next)
       {
-        for (aux = equipas[i]; aux != 0; aux = aux->next)
+        if (aux->vitorias == maior)
         {
-          if (aux->vitorias == maior)
-          {
-            {
-              strcpy(lista[j].vencedor, aux->nome);
-              j++;
-            }
-          }
-          else
-          {
-            
-          }
-
+          strcpy(lista[j].vencedor, aux->nome);
+          j++;
+        }
+        else
+        {
+          
         }
 
       }
+
     }
     else
     {
@@ -170,21 +156,17 @@ void listar_vencedores(e_node **equipas, int maior, int conta, int NL)
     {
       if (i != (tmp - 1))
       {
+        if (strcmp(lista[i].vencedor, lista[i + 1].vencedor) > 0)
         {
-          if (strcmp(lista[i].vencedor, lista[i + 1].vencedor) > 0)
-          {
-            {
-              palavra = copia_produto(lista[i]);
-              lista[i] = copia_produto(lista[i + 1]);
-              lista[i + 1] = copia_produto(palavra);
-            }
-          }
-          else
-          {
-            
-          }
-
+          palavra = copia_produto(lista[i]);
+          lista[i] = copia_produto(lista[i + 1]);
+          lista[i + 1] = copia_produto(palavra);
         }
+        else
+        {
+          
+        }
+
       }
       else
       {

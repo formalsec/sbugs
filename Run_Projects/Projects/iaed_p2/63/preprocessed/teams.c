@@ -43,11 +43,9 @@ node_teams *push_team(node_teams *head, team t)
   new->next = 0;
   if (head == 0)
   {
-    {
-      new->prev = 0;
-      head = new;
-      return head;
-    }
+    new->prev = 0;
+    head = new;
+    return head;
   }
   else
   {

@@ -21,12 +21,10 @@ void deletes_match(match game)
 {
   if (game)
   {
-    {
-      free(game->name);
-      free(game->team1);
-      free(game->team2);
-      free(game);
-    }
+    free(game->name);
+    free(game->team1);
+    free(game->team2);
+    free(game);
   }
   else
   {
@@ -52,9 +50,7 @@ dl_link create_dl_node(dl_link next, dl_link previous, match game)
   new->previous = previous;
   if (previous != 0)
   {
-    {
-      previous->next = new;
-    }
+    previous->next = new;
   }
   else
   {
@@ -63,9 +59,7 @@ dl_link create_dl_node(dl_link next, dl_link previous, match game)
 
   if (next != 0)
   {
-    {
-      next->previous = new;
-    }
+    next->previous = new;
   }
   else
   {
@@ -107,9 +101,7 @@ void insert_begin(dl_list lst, match game)
   lst->head = new;
   if (dl_list_is_empty(lst))
   {
-    {
-      lst->tail = new;
-    }
+    lst->tail = new;
   }
   else
   {
@@ -135,15 +127,11 @@ void remove_begin(dl_list lst)
   lst->head = old_head->next;
   if (lst->head != 0)
   {
-    {
-      lst->head->previous = 0;
-    }
+    lst->head->previous = 0;
   }
   else
   {
-    {
-      lst->tail = 0;
-    }
+    lst->tail = 0;
   }
 
   deletes_dl_node(old_head);
@@ -166,15 +154,11 @@ void remove_end(dl_list lst)
   lst->tail = old_tail->previous;
   if (lst->tail != 0)
   {
-    {
-      lst->tail->next = 0;
-    }
+    lst->tail->next = 0;
   }
   else
   {
-    {
-      lst->head = 0;
-    }
+    lst->head = 0;
   }
 
   deletes_dl_node(old_tail);
@@ -203,26 +187,20 @@ void remove_node(dl_list lst, dl_link del_node)
 
   if (del_node == lst->head)
   {
-    {
-      remove_begin(lst);
-    }
+    remove_begin(lst);
   }
   else
   {
     if (del_node == lst->tail)
     {
-      {
-        remove_end(lst);
-      }
+      remove_end(lst);
     }
     else
     {
-      {
-        del_node->previous->next = del_node->next;
-        del_node->next->previous = del_node->previous;
-        deletes_dl_node(del_node);
-        lst->size--;
-      }
+      del_node->previous->next = del_node->next;
+      del_node->next->previous = del_node->previous;
+      deletes_dl_node(del_node);
+      lst->size--;
     }
 
   }
@@ -244,11 +222,9 @@ void dl_list_destroy(dl_list lst)
 
   if (!dl_list_is_empty(lst))
   {
-    {
-      for (ite = lst->head, ite_aux = lst->head->next; ite != 0; ite_aux = ite->next, deletes_dl_node(ite), ite = ite_aux)
-        ;
+    for (ite = lst->head, ite_aux = lst->head->next; ite != 0; ite_aux = ite->next, deletes_dl_node(ite), ite = ite_aux)
+      ;
 
-    }
   }
   else
   {

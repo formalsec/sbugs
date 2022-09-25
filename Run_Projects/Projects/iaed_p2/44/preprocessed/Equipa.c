@@ -20,10 +20,8 @@ void freeEquipa(equipa e)
 {
   if (e)
   {
-    {
-      free(e->nome);
-      free(e);
-    }
+    free(e->nome);
+    free(e);
   }
   else
   {
@@ -36,9 +34,7 @@ void printEquipa(equipa e)
 {
   if (e)
   {
-    {
-      printf("%s\n", e->nome);
-    }
+    printf("%s\n", e->nome);
   }
   else
   {

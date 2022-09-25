@@ -60,9 +60,7 @@ Equipa *findPointerEquipa(char args[])
   {
     if (!strcmp(temp->name, args))
     {
-      {
-        return temp;
-      }
+      return temp;
     }
     else
     {
@@ -85,9 +83,7 @@ jogo *findPointerJogo(char args[])
   {
     if (!strcmp(temp->nome, args))
     {
-      {
-        return temp;
-      }
+      return temp;
     }
     else
     {
@@ -111,15 +107,13 @@ void adicionaEquipa(char args[])
   temp = teams[key].dados;
   if (temp == 0)
   {
-    {
-      teams[key].dados = malloc(sizeof(Equipa));
-      temp = teams[key].dados;
-      strcpy(temp->name, nome);
-      temp->next = 0;
-      temp->jogosGanhos = 0;
-      NL += 1;
-      return;
-    }
+    teams[key].dados = malloc(sizeof(Equipa));
+    temp = teams[key].dados;
+    strcpy(temp->name, nome);
+    temp->next = 0;
+    temp->jogosGanhos = 0;
+    NL += 1;
+    return;
   }
   else
   {
@@ -130,11 +124,9 @@ void adicionaEquipa(char args[])
   {
     if (!strcmp(temp->name, nome))
     {
-      {
-        printf("%d Equipa existente.\n", NL);
-        NL += 1;
-        return;
-      }
+      printf("%d Equipa existente.\n", NL);
+      NL += 1;
+      return;
     }
     else
     {
@@ -164,17 +156,15 @@ void addOrdenados(char nome[1023], char equipa1[1023], char equipa2[1023], int r
   temp = ordenados[0].jogoH;
   if (temp == 0)
   {
-    {
-      ordenados[0].jogoH = malloc(sizeof(jogo));
-      temp = ordenados[0].jogoH;
-      strcpy(temp->nome, nome);
-      temp->equipa1 = etemp1;
-      temp->equipa2 = etemp2;
-      temp->result1 = res1;
-      temp->result2 = res2;
-      temp->next = 0;
-      return;
-    }
+    ordenados[0].jogoH = malloc(sizeof(jogo));
+    temp = ordenados[0].jogoH;
+    strcpy(temp->nome, nome);
+    temp->equipa1 = etemp1;
+    temp->equipa2 = etemp2;
+    temp->result1 = res1;
+    temp->result2 = res2;
+    temp->next = 0;
+    return;
   }
   else
   {
@@ -224,56 +214,48 @@ void adicionaJogo(char args[])
   temp = games[key].jogoH;
   if (temp == 0)
   {
+    etemp1 = findPointerEquipa(equipa1);
+    etemp2 = findPointerEquipa(equipa2);
+    if ((etemp1 == 0) || (etemp2 == 0))
     {
-      etemp1 = findPointerEquipa(equipa1);
-      etemp2 = findPointerEquipa(equipa2);
-      if ((etemp1 == 0) || (etemp2 == 0))
-      {
-        {
-          printf("%d Equipa inexistente.\n", NL);
-          NL += 1;
-          return;
-        }
-      }
-      else
-      {
-        
-      }
-
-      games[key].jogoH = malloc(sizeof(jogo));
-      temp = games[key].jogoH;
-      strcpy(temp->nome, nome);
-      temp->equipa1 = etemp1;
-      temp->equipa2 = etemp2;
-      temp->result1 = res1;
-      temp->result2 = res2;
-      temp->next = 0;
-      if (res1 > res2)
-      {
-        {
-          etemp1->jogosGanhos += 1;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (res2 > res1)
-      {
-        {
-          etemp2->jogosGanhos += 1;
-        }
-      }
-      else
-      {
-        
-      }
-
+      printf("%d Equipa inexistente.\n", NL);
       NL += 1;
-      addOrdenados(nome, equipa1, equipa2, res1, res2);
       return;
     }
+    else
+    {
+      
+    }
+
+    games[key].jogoH = malloc(sizeof(jogo));
+    temp = games[key].jogoH;
+    strcpy(temp->nome, nome);
+    temp->equipa1 = etemp1;
+    temp->equipa2 = etemp2;
+    temp->result1 = res1;
+    temp->result2 = res2;
+    temp->next = 0;
+    if (res1 > res2)
+    {
+      etemp1->jogosGanhos += 1;
+    }
+    else
+    {
+      
+    }
+
+    if (res2 > res1)
+    {
+      etemp2->jogosGanhos += 1;
+    }
+    else
+    {
+      
+    }
+
+    NL += 1;
+    addOrdenados(nome, equipa1, equipa2, res1, res2);
+    return;
   }
   else
   {
@@ -284,11 +266,9 @@ void adicionaJogo(char args[])
   {
     if (!strcmp(temp->nome, nome))
     {
-      {
-        printf("%d Jogo existente.\n", NL);
-        NL += 1;
-        return;
-      }
+      printf("%d Jogo existente.\n", NL);
+      NL += 1;
+      return;
     }
     else
     {
@@ -303,11 +283,9 @@ void adicionaJogo(char args[])
   etemp2 = findPointerEquipa(equipa2);
   if ((etemp1 == 0) || (etemp2 == 0))
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      NL += 1;
-      return;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    NL += 1;
+    return;
   }
   else
   {
@@ -322,9 +300,7 @@ void adicionaJogo(char args[])
   prev->next->result2 = res2;
   if (res1 > res2)
   {
-    {
-      etemp1->jogosGanhos += 1;
-    }
+    etemp1->jogosGanhos += 1;
   }
   else
   {
@@ -333,9 +309,7 @@ void adicionaJogo(char args[])
 
   if (res2 > res1)
   {
-    {
-      etemp2->jogosGanhos += 1;
-    }
+    etemp2->jogosGanhos += 1;
   }
   else
   {
@@ -358,11 +332,9 @@ void procuraJogo(char args[])
   {
     if (!strcmp(temp->nome, args))
     {
-      {
-        printf("%d %s %s %s %d %d\n", NL, temp->nome, temp->equipa1->name, temp->equipa2->name, temp->result1, temp->result2);
-        NL += 1;
-        return;
-      }
+      printf("%d %s %s %s %d %d\n", NL, temp->nome, temp->equipa1->name, temp->equipa2->name, temp->result1, temp->result2);
+      NL += 1;
+      return;
     }
     else
     {
@@ -387,11 +359,9 @@ void procuraEquipa(char args[])
   {
     if (!strcmp(temp->name, args))
     {
-      {
-        printf("%d %s %d\n", NL, temp->name, temp->jogosGanhos);
-        NL += 1;
-        return;
-      }
+      printf("%d %s %d\n", NL, temp->name, temp->jogosGanhos);
+      NL += 1;
+      return;
     }
     else
     {
@@ -438,11 +408,9 @@ void alteraScore(char args[])
   temp = findPointerJogo(nome);
   if (temp == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      NL += 1;
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    NL += 1;
+    return;
   }
   else
   {
@@ -455,10 +423,8 @@ void alteraScore(char args[])
   temp->result2 = res2;
   if ((res1 > res2) && (oldRes1 < oldRes2))
   {
-    {
-      temp->equipa1->jogosGanhos += 1;
-      temp->equipa2->jogosGanhos -= 1;
-    }
+    temp->equipa1->jogosGanhos += 1;
+    temp->equipa2->jogosGanhos -= 1;
   }
   else
   {
@@ -467,10 +433,8 @@ void alteraScore(char args[])
 
   if ((res1 < res2) && (oldRes1 > oldRes2))
   {
-    {
-      temp->equipa2->jogosGanhos += 1;
-      temp->equipa1->jogosGanhos -= 1;
-    }
+    temp->equipa2->jogosGanhos += 1;
+    temp->equipa1->jogosGanhos -= 1;
   }
   else
   {
@@ -479,9 +443,7 @@ void alteraScore(char args[])
 
   if ((res1 == res2) && (oldRes1 < oldRes2))
   {
-    {
-      temp->equipa2->jogosGanhos -= 1;
-    }
+    temp->equipa2->jogosGanhos -= 1;
   }
   else
   {
@@ -490,9 +452,7 @@ void alteraScore(char args[])
 
   if ((res1 == res2) && (oldRes1 > oldRes2))
   {
-    {
-      temp->equipa1->jogosGanhos -= 1;
-    }
+    temp->equipa1->jogosGanhos -= 1;
   }
   else
   {
@@ -501,9 +461,7 @@ void alteraScore(char args[])
 
   if ((res1 > res2) && (oldRes1 == oldRes2))
   {
-    {
-      temp->equipa1->jogosGanhos -= 1;
-    }
+    temp->equipa1->jogosGanhos -= 1;
   }
   else
   {
@@ -512,9 +470,7 @@ void alteraScore(char args[])
 
   if ((res1 < res2) && (oldRes1 == oldRes2))
   {
-    {
-      temp->equipa2->jogosGanhos -= 1;
-    }
+    temp->equipa2->jogosGanhos -= 1;
   }
   else
   {
@@ -542,11 +498,9 @@ void apagaJogo(char args[])
   prev = games[key].jogoH;
   if (temp == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      NL += 1;
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    NL += 1;
+    return;
   }
   else
   {
@@ -555,34 +509,28 @@ void apagaJogo(char args[])
 
   if (!strcmp(temp->nome, nome))
   {
+    if (temp->result1 > temp->result2)
     {
-      if (temp->result1 > temp->result2)
-      {
-        {
-          temp->equipa1->jogosGanhos -= 1;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (temp->result1 < temp->result2)
-      {
-        {
-          temp->equipa2->jogosGanhos -= 1;
-        }
-      }
-      else
-      {
-        
-      }
-
-      games[key].jogoH = temp->next;
-      free(temp);
-      NL += 1;
-      return;
+      temp->equipa1->jogosGanhos -= 1;
     }
+    else
+    {
+      
+    }
+
+    if (temp->result1 < temp->result2)
+    {
+      temp->equipa2->jogosGanhos -= 1;
+    }
+    else
+    {
+      
+    }
+
+    games[key].jogoH = temp->next;
+    free(temp);
+    NL += 1;
+    return;
   }
   else
   {
@@ -593,34 +541,28 @@ void apagaJogo(char args[])
   {
     if (!strcmp(temp->nome, nome))
     {
+      if (temp->result1 > temp->result2)
       {
-        if (temp->result1 > temp->result2)
-        {
-          {
-            temp->equipa1->jogosGanhos -= 1;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if (temp->result1 < temp->result2)
-        {
-          {
-            temp->equipa2->jogosGanhos -= 1;
-          }
-        }
-        else
-        {
-          
-        }
-
-        prev->next = temp->next;
-        free(temp);
-        NL += 1;
-        return;
+        temp->equipa1->jogosGanhos -= 1;
       }
+      else
+      {
+        
+      }
+
+      if (temp->result1 < temp->result2)
+      {
+        temp->equipa2->jogosGanhos -= 1;
+      }
+      else
+      {
+        
+      }
+
+      prev->next = temp->next;
+      free(temp);
+      NL += 1;
+      return;
     }
     else
     {
@@ -655,9 +597,7 @@ void maiorVictoria()
     {
       if (temp->jogosGanhos == max)
       {
-        {
-          counter += 1;
-        }
+        counter += 1;
       }
       else
       {
@@ -666,10 +606,8 @@ void maiorVictoria()
 
       if (temp->jogosGanhos > max)
       {
-        {
-          max = temp->jogosGanhos;
-          counter = 1;
-        }
+        max = temp->jogosGanhos;
+        counter = 1;
       }
       else
       {
@@ -691,11 +629,9 @@ void maiorVictoria()
     {
       if (temp->jogosGanhos == max)
       {
-        {
-          sort[counter] = malloc(1023 * (sizeof(char)));
-          strcpy(sort[counter], temp->name);
-          counter += 1;
-        }
+        sort[counter] = malloc(1023 * (sizeof(char)));
+        strcpy(sort[counter], temp->name);
+        counter += 1;
       }
       else
       {
@@ -714,11 +650,9 @@ void maiorVictoria()
     {
       if (strcmp(sort[i], sort[j]) > 0)
       {
-        {
-          strcpy(tmp, sort[i]);
-          strcpy(sort[i], sort[j]);
-          strcpy(sort[j], tmp);
-        }
+        strcpy(tmp, sort[i]);
+        strcpy(sort[i], sort[j]);
+        strcpy(sort[j], tmp);
       }
       else
       {

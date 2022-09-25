@@ -16,11 +16,9 @@ void altScore(list *ls, char *name, int n_score1, int n_score2)
   {
     if (strcmp(ptr->name, name) == 0)
     {
-      {
-        ptr->score1 = n_score1;
-        ptr->score2 = n_score2;
-        break;
-      }
+      ptr->score1 = n_score1;
+      ptr->score2 = n_score2;
+      break;
     }
     else
     {
@@ -53,115 +51,93 @@ void changeScore(list *ls, list *tms)
   n_res = getNodeGames(name);
   if (n_res == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", counter);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", counter);
+    return;
   }
   else
   {
+    p_scr1 = n_res->point->score1;
+    p_scr2 = n_res->point->score2;
+    altScore(ls, name, n_score1, n_score2);
+    n_res->point->score1 = n_score1;
+    n_res->point->score2 = n_score2;
+    team1 = getNodeTeams(n_res->point->team1);
+    team2 = getNodeTeams(n_res->point->team2);
+    if (p_scr1 > p_scr2)
     {
-      p_scr1 = n_res->point->score1;
-      p_scr2 = n_res->point->score2;
-      altScore(ls, name, n_score1, n_score2);
-      n_res->point->score1 = n_score1;
-      n_res->point->score2 = n_score2;
-      team1 = getNodeTeams(n_res->point->team1);
-      team2 = getNodeTeams(n_res->point->team2);
-      if (p_scr1 > p_scr2)
+      if (n_score1 < n_score2)
       {
-        {
-          if (n_score1 < n_score2)
-          {
-            {
-              addWin(tms, team2->point->name);
-              team2->point->won++;
-              rmvWin(tms, team1->point->name);
-              team1->point->won--;
-            }
-          }
-          else
-          {
-            if (n_score1 == n_score2)
-            {
-              {
-                rmvWin(tms, team1->point->name);
-                team1->point->won--;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-        }
+        addWin(tms, team2->point->name);
+        team2->point->won++;
+        rmvWin(tms, team1->point->name);
+        team1->point->won--;
       }
       else
       {
-        if (p_scr1 < p_scr2)
+        if (n_score1 == n_score2)
         {
-          {
-            if (n_score1 > n_score2)
-            {
-              {
-                addWin(tms, team1->point->name);
-                team1->point->won++;
-                rmvWin(tms, team2->point->name);
-                team2->point->won--;
-              }
-            }
-            else
-            {
-              if (n_score1 == n_score2)
-              {
-                {
-                  rmvWin(tms, team2->point->name);
-                  team2->point->won--;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-          }
+          rmvWin(tms, team1->point->name);
+          team1->point->won--;
         }
         else
         {
-          {
-            if (n_score1 > n_score2)
-            {
-              {
-                addWin(tms, team1->point->name);
-                team1->point->won++;
-              }
-            }
-            else
-            {
-              if (n_score1 < n_score2)
-              {
-                {
-                  addWin(tms, team2->point->name);
-                  team2->point->won++;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-          }
+          
         }
 
       }
 
     }
+    else
+    {
+      if (p_scr1 < p_scr2)
+      {
+        if (n_score1 > n_score2)
+        {
+          addWin(tms, team1->point->name);
+          team1->point->won++;
+          rmvWin(tms, team2->point->name);
+          team2->point->won--;
+        }
+        else
+        {
+          if (n_score1 == n_score2)
+          {
+            rmvWin(tms, team2->point->name);
+            team2->point->won--;
+          }
+          else
+          {
+            
+          }
+
+        }
+
+      }
+      else
+      {
+        if (n_score1 > n_score2)
+        {
+          addWin(tms, team1->point->name);
+          team1->point->won++;
+        }
+        else
+        {
+          if (n_score1 < n_score2)
+          {
+            addWin(tms, team2->point->name);
+            team2->point->won++;
+          }
+          else
+          {
+            
+          }
+
+        }
+
+      }
+
+    }
+
   }
 
 }

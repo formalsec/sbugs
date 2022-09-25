@@ -91,9 +91,7 @@ void imprime_lista(lista_intruduzidos_t *entrada, int nl)
 {
   if (entrada == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -133,15 +131,13 @@ void remove_jogo(htable_entrada_jogo_t **ht, char *nome)
   htable_entrada_jogo_t *prev;
   if ((bucket != 0) && (strcmp(bucket->jogo->nome, nome) == 0))
   {
-    {
-      ht[hash] = ht[hash]->next;
-      free(bucket->jogo->nome);
-      free(bucket->jogo->eq1);
-      free(bucket->jogo->eq2);
-      free(bucket->jogo);
-      free(bucket);
-      return;
-    }
+    ht[hash] = ht[hash]->next;
+    free(bucket->jogo->nome);
+    free(bucket->jogo->eq1);
+    free(bucket->jogo->eq2);
+    free(bucket->jogo);
+    free(bucket);
+    return;
   }
   else
   {
@@ -156,9 +152,7 @@ void remove_jogo(htable_entrada_jogo_t **ht, char *nome)
 
   if (bucket == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -196,11 +190,9 @@ void retira_da_lista(lista_intruduzidos_t **lista, char *nome)
   bucket = *lista;
   if ((bucket != 0) && (strcmp(bucket->jogo->nome, nome) == 0))
   {
-    {
-      *lista = bucket->next;
-      free(bucket);
-      return;
-    }
+    *lista = bucket->next;
+    free(bucket);
+    return;
   }
   else
   {
@@ -215,9 +207,7 @@ void retira_da_lista(lista_intruduzidos_t **lista, char *nome)
 
   if (bucket == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {

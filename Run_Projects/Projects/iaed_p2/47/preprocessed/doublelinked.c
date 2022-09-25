@@ -194,12 +194,10 @@ void remove_Game_list(GameLinkedList list, gameKey k)
     }
     else
     {
-      {
-        current->prev->next = current->next;
-        current->next->prev = current->prev;
-        delete_node(current);
-        list->n_elementos--;
-      }
+      current->prev->next = current->next;
+      current->next->prev = current->prev;
+      delete_node(current);
+      list->n_elementos--;
     }
 
   }
@@ -221,12 +219,10 @@ void destroy_list(GameLinkedList list)
 
   if (list->n_elementos != 0)
   {
+    for (current = list->head, aux = list->head->next; current != 0; aux = current->next, delete_node(current), current = aux)
     {
-      for (current = list->head, aux = list->head->next; current != 0; aux = current->next, delete_node(current), current = aux)
-      {
-      }
-
     }
+
   }
   else
   {

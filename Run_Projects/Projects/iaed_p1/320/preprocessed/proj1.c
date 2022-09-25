@@ -105,78 +105,62 @@ void function_A(int total_o, int total_p)
         }
         else
         {
+          number_add = add_prod_order[ido];
+          acc_weight = qtd * product_line[idp].weight;
+          if (number_add == 0)
           {
-            number_add = add_prod_order[ido];
-            acc_weight = qtd * product_line[idp].weight;
-            if (number_add == 0)
+            product_line[idp].quantity -= qtd;
+            order_line[ido][0].id = idp;
+            order_line[ido][0].quantity = qtd;
+            add_prod_order[ido] += 1;
+          }
+          else
+          {
+            for (l = 0; l < number_add; l++)
             {
+              if (order_line[ido][l].id == idp)
               {
-                product_line[idp].quantity -= qtd;
-                order_line[ido][0].id = idp;
-                order_line[ido][0].quantity = qtd;
-                add_prod_order[ido] += 1;
+                state = 1;
+                break;
               }
+              else
+              {
+                
+              }
+
+            }
+
+            if (state != 0)
+            {
+              if (weight_calculater_order(ido, number_add, acc_weight) <= 200)
+              {
+                order_line[ido][l].quantity += qtd;
+                product_line[idp].quantity -= qtd;
+              }
+              else
+              {
+                printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ido);
+              }
+
             }
             else
             {
+              if (weight_calculater_order(ido, number_add, acc_weight) <= 200)
               {
-                for (l = 0; l < number_add; l++)
-                {
-                  if (order_line[ido][l].id == idp)
-                  {
-                    {
-                      state = 1;
-                      break;
-                    }
-                  }
-                  else
-                  {
-                    
-                  }
-
-                }
-
-                if (state != 0)
-                {
-                  {
-                    if (weight_calculater_order(ido, number_add, acc_weight) <= 200)
-                    {
-                      {
-                        order_line[ido][l].quantity += qtd;
-                        product_line[idp].quantity -= qtd;
-                      }
-                    }
-                    else
-                    {
-                      printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ido);
-                    }
-
-                  }
-                }
-                else
-                {
-                  {
-                    if (weight_calculater_order(ido, number_add, acc_weight) <= 200)
-                    {
-                      {
-                        product_line[idp].quantity -= qtd;
-                        order_line[ido][number_add].id = idp;
-                        order_line[ido][number_add].quantity = qtd;
-                        add_prod_order[ido] += 1;
-                      }
-                    }
-                    else
-                    {
-                      printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ido);
-                    }
-
-                  }
-                }
-
+                product_line[idp].quantity -= qtd;
+                order_line[ido][number_add].id = idp;
+                order_line[ido][number_add].quantity = qtd;
+                add_prod_order[ido] += 1;
               }
+              else
+              {
+                printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ido);
+              }
+
             }
 
           }
+
         }
 
       }
@@ -231,25 +215,21 @@ void function_R(int total_ord, int total_prod)
     }
     else
     {
+      for (i = 0; i < add_prod_order[ido]; i++)
       {
-        for (i = 0; i < add_prod_order[ido]; i++)
+        if (order_line[ido][i].id == idp)
         {
-          if (order_line[ido][i].id == idp)
-          {
-            {
-              product_line[idp].quantity += order_line[ido][i].quantity;
-              order_line[ido][i] = order_line[ido][add_prod_order[ido] - 1];
-              add_prod_order[ido] -= 1;
-            }
-          }
-          else
-          {
-            
-          }
-
+          product_line[idp].quantity += order_line[ido][i].quantity;
+          order_line[ido][i] = order_line[ido][add_prod_order[ido] - 1];
+          add_prod_order[ido] -= 1;
+        }
+        else
+        {
+          
         }
 
       }
+
     }
 
   }
@@ -336,12 +316,10 @@ void function_C(int total_ord)
   }
   else
   {
-    {
-      for (i = 0; i < add_prod_order[ido]; i++)
-        acc += order_line[ido][i].quantity * product_line[order_line[ido][i].id].price;
+    for (i = 0; i < add_prod_order[ido]; i++)
+      acc += order_line[ido][i].quantity * product_line[order_line[ido][i].id].price;
 
-      printf("Custo da encomenda %d %d.\n", ido, acc);
-    }
+    printf("Custo da encomenda %d %d.\n", ido, acc);
   }
 
 }
@@ -366,28 +344,26 @@ void function_E(int total_prod, int total_ord)
     }
     else
     {
+      for (i = 0; i < add_prod_order[ido]; i++)
+        if (order_line[ido][i].id == idp)
       {
-        for (i = 0; i < add_prod_order[ido]; i++)
-          if (order_line[ido][i].id == idp)
-        {
-          state = i;
-        }
-        else
-        {
-          
-        }
-
-
-        if (state != (-1))
-        {
-          printf("%s %d.\n", product_line[idp].desc, order_line[ido][state].quantity);
-        }
-        else
-        {
-          printf("%s 0.\n", product_line[idp].desc);
-        }
-
+        state = i;
       }
+      else
+      {
+        
+      }
+
+
+      if (state != (-1))
+      {
+        printf("%s %d.\n", product_line[idp].desc, order_line[ido][state].quantity);
+      }
+      else
+      {
+        printf("%s 0.\n", product_line[idp].desc);
+      }
+
     }
 
   }
@@ -409,34 +385,32 @@ void function_L(int total_ord)
   }
   else
   {
+    for (i = 0; i < add_prod_order[ido]; i++)
     {
-      for (i = 0; i < add_prod_order[ido]; i++)
+      min = i;
+      for (j = i + 1; j < add_prod_order[ido]; j++)
+        if (strcmp(product_line[order_line[ido][j].id].desc, product_line[order_line[ido][min].id].desc) < 0)
       {
-        min = i;
-        for (j = i + 1; j < add_prod_order[ido]; j++)
-          if (strcmp(product_line[order_line[ido][j].id].desc, product_line[order_line[ido][min].id].desc) < 0)
-        {
-          min = j;
-        }
-        else
-        {
-          
-        }
-
-
-        aux = order_line[ido][i];
-        order_line[ido][i] = order_line[ido][min];
-        order_line[ido][min] = aux;
+        min = j;
+      }
+      else
+      {
+        
       }
 
-      printf("Encomenda %d\n", ido);
-      while (l < add_prod_order[ido])
-      {
-        printf("* %s %d %d\n", product_line[order_line[ido][l].id].desc, product_line[order_line[ido][l].id].price, order_line[ido][l].quantity);
-        l++;
-      }
 
+      aux = order_line[ido][i];
+      order_line[ido][i] = order_line[ido][min];
+      order_line[ido][min] = aux;
     }
+
+    printf("Encomenda %d\n", ido);
+    while (l < add_prod_order[ido])
+    {
+      printf("* %s %d %d\n", product_line[order_line[ido][l].id].desc, product_line[order_line[ido][l].id].price, order_line[ido][l].quantity);
+      l++;
+    }
+
   }
 
 }
@@ -455,37 +429,33 @@ void function_m(int total, int total_ord)
   }
   else
   {
+    for (i = 0; i < total_ord; i++)
     {
-      for (i = 0; i < total_ord; i++)
+      for (l = 0; l < add_prod_order[i]; l++)
       {
-        for (l = 0; l < add_prod_order[i]; l++)
+        if ((order_line[i][l].id == idp) && (order_line[i][l].quantity > acc))
         {
-          if ((order_line[i][l].id == idp) && (order_line[i][l].quantity > acc))
-          {
-            {
-              acc = order_line[i][l].quantity;
-              final = i;
-            }
-          }
-          else
-          {
-            
-          }
-
+          acc = order_line[i][l].quantity;
+          final = i;
+        }
+        else
+        {
+          
         }
 
       }
 
-      if (acc == 0)
-      {
-        return;
-      }
-      else
-      {
-        printf("Maximo produto %d %d %d.\n", idp, final, acc);
-      }
-
     }
+
+    if (acc == 0)
+    {
+      return;
+    }
+    else
+    {
+      printf("Maximo produto %d %d %d.\n", idp, final, acc);
+    }
+
   }
 
 }

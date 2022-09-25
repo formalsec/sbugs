@@ -16,23 +16,19 @@ int get_comando(PRINCIPAL p)
   fgets(cmd_temp, (sizeof(char)) * 3200, stdin);
   if (((cmd_temp[0] != 'g') && (cmd_temp[0] != 'l')) && (cmd_temp[0] != 'x'))
   {
-    {
-      comando = strdup(cmd_temp);
-      comando = comando + 2;
-      exit = exe_comando(cmd_temp[0], comando, p);
-      comando = comando - 2;
-      free(comando);
-      free(cmd_temp);
-      return exit;
-    }
+    comando = strdup(cmd_temp);
+    comando = comando + 2;
+    exit = exe_comando(cmd_temp[0], comando, p);
+    comando = comando - 2;
+    free(comando);
+    free(cmd_temp);
+    return exit;
   }
   else
   {
-    {
-      exit = exe_comando(cmd_temp[0], " ", p);
-      free(cmd_temp);
-      return exit;
-    }
+    exit = exe_comando(cmd_temp[0], " ", p);
+    free(cmd_temp);
+    return exit;
   }
 
 }

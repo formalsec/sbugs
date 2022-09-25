@@ -25,15 +25,11 @@ void printJogo(Hash_jogo *hash_jg, char nome[], int NL)
   Jogo *jogo = 0;
   if (HT_Get_Jogo(hash_jg, nome, &jogo) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
   else
   {
-    {
-      printf("%d %s %s %s %d %d\n", NL, jogo->nome, jogo->equipa_1, jogo->equipa_2, jogo->pontuacao_1, jogo->pontuacao_2);
-    }
+    printf("%d %s %s %s %d %d\n", NL, jogo->nome, jogo->equipa_1, jogo->equipa_2, jogo->pontuacao_1, jogo->pontuacao_2);
   }
 
 }
@@ -46,33 +42,27 @@ void insere(Jogo *jogo_ptr)
   novono->next = 0;
   if (cabeca == 0)
   {
-    {
-      cabeca = novono;
-    }
+    cabeca = novono;
   }
   else
   {
+    Node_jogo *current = cabeca;
+    while (1)
     {
-      Node_jogo *current = cabeca;
-      while (1)
+      if (current->next == 0)
       {
-        if (current->next == 0)
-        {
-          {
-            current->next = novono;
-            break;
-          }
-        }
-        else
-        {
-          
-        }
-
-        current = current->next;
+        current->next = novono;
+        break;
+      }
+      else
+      {
+        
       }
 
-      ;
+      current = current->next;
     }
+
+    ;
   }
 
   ;
@@ -117,25 +107,21 @@ void remover(Jogo *jogo_ptr)
   struct Node_jogo *apaga;
   if (cabeca->jg == jogo_ptr)
   {
-    {
-      apaga = cabeca;
-      cabeca = cabeca->next;
-      free(apaga);
-    }
+    apaga = cabeca;
+    cabeca = cabeca->next;
+    free(apaga);
   }
   else
   {
+    aux = cabeca;
+    while (aux->next->jg != jogo_ptr)
     {
-      aux = cabeca;
-      while (aux->next->jg != jogo_ptr)
-      {
-        aux = aux->next;
-      }
-
-      apaga = aux->next;
-      aux->next = apaga->next;
-      free(apaga);
+      aux = aux->next;
     }
+
+    apaga = aux->next;
+    aux->next = apaga->next;
+    free(apaga);
   }
 
 }
@@ -146,9 +132,7 @@ void remocao(Jogo *jogo_ptr)
   ap = pesquisa(jogo_ptr);
   if (ap != 0)
   {
-    {
-      remover(jogo_ptr);
-    }
+    remover(jogo_ptr);
   }
   else
   {
@@ -174,9 +158,7 @@ int HT_Get_Jogo(Hash_jogo *hash, char *nome, Jogo **jogo_ptr)
   hash_value = calc_hash(nome, hash->size);
   if (hash->table_jg[hash_value] == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -188,20 +170,16 @@ int HT_Get_Jogo(Hash_jogo *hash, char *nome, Jogo **jogo_ptr)
   {
     if (strcmp(curr_node->jg->nome, nome) == 0)
     {
+      if (jogo_ptr)
       {
-        if (jogo_ptr)
-        {
-          {
-            *jogo_ptr = curr_node->jg;
-          }
-        }
-        else
-        {
-          
-        }
-
-        return 1;
+        *jogo_ptr = curr_node->jg;
       }
+      else
+      {
+        
+      }
+
+      return 1;
     }
     else
     {
@@ -223,65 +201,53 @@ void HT_Jogos_Insert(char nome_jogo[], char equipa_1[], char equipa_2[], int pon
   Equipa *equipa2;
   if (HT_Get_Jogo(hash_jg, nome_jogo, 0) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-      return;
-    }
+    printf("%d Jogo existente.\n", NL);
+    return;
   }
   else
   {
     if (HT_Get_Equipa(hash_eq, equipa_1, 0) == 0)
     {
-      {
-        printf("%d Equipa inexistente.\n", NL);
-        return;
-      }
+      printf("%d Equipa inexistente.\n", NL);
+      return;
     }
     else
     {
       if (HT_Get_Equipa(hash_eq, equipa_2, 0) == 0)
       {
-        {
-          printf("%d Equipa inexistente.\n", NL);
-          return;
-        }
+        printf("%d Equipa inexistente.\n", NL);
+        return;
       }
       else
       {
+        HT_Get_Equipa(hash_eq, equipa_1, &equipa1);
+        HT_Get_Equipa(hash_eq, equipa_2, &equipa2);
+        jg = novoJogo(nome_jogo, equipa_1, equipa_2, pontuacao_1, pontuacao_2);
+        hash_value = calc_hash(nome_jogo, hash_jg->size);
+        node_tmp = (Node_jogo *) malloc(sizeof(Node_jogo));
+        node_tmp->jg = jg;
+        node_tmp->next = hash_jg->table_jg[hash_value];
+        hash_jg->table_jg[hash_value] = node_tmp;
+        insere(jg);
+        if (jg->pontuacao_1 > jg->pontuacao_2)
         {
-          HT_Get_Equipa(hash_eq, equipa_1, &equipa1);
-          HT_Get_Equipa(hash_eq, equipa_2, &equipa2);
-          jg = novoJogo(nome_jogo, equipa_1, equipa_2, pontuacao_1, pontuacao_2);
-          hash_value = calc_hash(nome_jogo, hash_jg->size);
-          node_tmp = (Node_jogo *) malloc(sizeof(Node_jogo));
-          node_tmp->jg = jg;
-          node_tmp->next = hash_jg->table_jg[hash_value];
-          hash_jg->table_jg[hash_value] = node_tmp;
-          insere(jg);
-          if (jg->pontuacao_1 > jg->pontuacao_2)
+          HT_Get_Equipa(hash_eq, jg->equipa_1, &equipa1);
+          equipa1->vitorias += 1;
+        }
+        else
+        {
+          if (jg->pontuacao_1 < jg->pontuacao_2)
           {
-            {
-              HT_Get_Equipa(hash_eq, jg->equipa_1, &equipa1);
-              equipa1->vitorias += 1;
-            }
+            HT_Get_Equipa(hash_eq, jg->equipa_2, &equipa2);
+            equipa2->vitorias += 1;
           }
           else
           {
-            if (jg->pontuacao_1 < jg->pontuacao_2)
-            {
-              {
-                HT_Get_Equipa(hash_eq, jg->equipa_2, &equipa2);
-                equipa2->vitorias += 1;
-              }
-            }
-            else
-            {
-              
-            }
-
+            
           }
 
         }
+
       }
 
     }
@@ -298,9 +264,7 @@ int HT_Jogo_Delete(Jogo *jogo_ptr, Hash_jogo *hash_jg)
   hash_value = calc_hash(jogo_ptr->nome, hash_jg->size);
   if (hash_jg->table_jg[hash_value] == 0)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -313,30 +277,22 @@ int HT_Jogo_Delete(Jogo *jogo_ptr, Hash_jogo *hash_jg)
   {
     if (strcmp(curr_node->jg->nome, jogo_ptr->nome) == 0)
     {
+      if (aux)
       {
-        if (aux)
-        {
-          {
-            aux->next = curr_node->next;
-          }
-        }
-        else
-        {
-          {
-            hash_jg->table_jg[hash_value] = curr_node->next;
-          }
-        }
-
-        delete_Node_Jogo(curr_node);
-        return 1;
+        aux->next = curr_node->next;
       }
+      else
+      {
+        hash_jg->table_jg[hash_value] = curr_node->next;
+      }
+
+      delete_Node_Jogo(curr_node);
+      return 1;
     }
     else
     {
-      {
-        aux = curr_node;
-        curr_node = curr_node->next;
-      }
+      aux = curr_node;
+      curr_node = curr_node->next;
     }
 
   }

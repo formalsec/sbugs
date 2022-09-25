@@ -42,9 +42,7 @@ equipa *insere_equipa(equipa *nova_equipa, int *pt_max_ht_equipas, equipa **hash
   {
     if (strcmp(hashtable_equipas[i]->nome, nova_equipa->nome) == 0)
     {
-      {
-        return 0;
-      }
+      return 0;
     }
     else
     {
@@ -57,9 +55,7 @@ equipa *insere_equipa(equipa *nova_equipa, int *pt_max_ht_equipas, equipa **hash
   hashtable_equipas[i] = nova_equipa;
   if (((*pt_num_elem)++) > ((*pt_max_ht_equipas) / 2))
   {
-    {
-      hashtable_equipas = expande_hashtable_equipas(hashtable_equipas, pt_max_ht_equipas, pt_num_elem);
-    }
+    hashtable_equipas = expande_hashtable_equipas(hashtable_equipas, pt_max_ht_equipas, pt_num_elem);
   }
   else
   {
@@ -76,9 +72,7 @@ void liberta_hashtable_equipas(equipa **ht_equipas, int max_ht_equipas)
   {
     if (ht_equipas[i] != 0)
     {
-      {
-        liberta_equipa(ht_equipas[i]);
-      }
+      liberta_equipa(ht_equipas[i]);
     }
     else
     {
@@ -100,9 +94,7 @@ equipa **expande_hashtable_equipas(equipa **ht_equipas, int *pt_max_ht_equipas, 
   {
     if (hastable_antiga[i] != 0)
     {
-      {
-        insere_equipa(hastable_antiga[i], pt_max_ht_equipas, ht_equipas, pt_num_elem);
-      }
+      insere_equipa(hastable_antiga[i], pt_max_ht_equipas, ht_equipas, pt_num_elem);
     }
     else
     {
@@ -122,15 +114,11 @@ equipa *procura_equipa_ht(equipa **ht_equipas, char nome_equipa_procurar[], int 
   {
     if (strcmp(ht_equipas[i]->nome, nome_equipa_procurar) == 0)
     {
-      {
-        return ht_equipas[i];
-      }
+      return ht_equipas[i];
     }
     else
     {
-      {
-        i = (i + 1) % max_ht_equipas;
-      }
+      i = (i + 1) % max_ht_equipas;
     }
 
   }

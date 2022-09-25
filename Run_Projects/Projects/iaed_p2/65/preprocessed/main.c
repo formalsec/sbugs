@@ -134,27 +134,21 @@ void add_game(int NL, nodeGame *games_ht[], nodeTeam *teams_ht[], indexNode **in
   game_addr = search_game_ht(games_ht, game_name, 7919);
   if (game_addr != 0)
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-    }
+    printf("%d Jogo existente.\n", NL);
   }
   else
   {
     if ((team1_addr == 0) || (team2_addr == 0))
     {
-      {
-        printf("%d Equipa inexistente.\n", NL);
-      }
+      printf("%d Equipa inexistente.\n", NL);
     }
     else
     {
-      {
-        add_game_ht(games_ht, index_games, game_name, *total_g, score1, score2, team1_name, team2_name, 7919);
-        game_addr = search_game_ht(games_ht, game_name, 7919);
-        change_win(score1, score2, game_addr, teams_ht, 1);
-        (*current_g)++;
-        (*total_g)++;
-      }
+      add_game_ht(games_ht, index_games, game_name, *total_g, score1, score2, team1_name, team2_name, 7919);
+      game_addr = search_game_ht(games_ht, game_name, 7919);
+      change_win(score1, score2, game_addr, teams_ht, 1);
+      (*current_g)++;
+      (*total_g)++;
     }
 
   }
@@ -223,15 +217,11 @@ void search_game(int NL, nodeGame *games_ht[])
   addr = search_game_ht(games_ht, game_name, 7919);
   if (addr == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
   else
   {
-    {
-      print_game(NL, addr->game);
-    }
+    print_game(NL, addr->game);
   }
 
 }
@@ -251,19 +241,15 @@ void del_game(int NL, nodeGame *games_ht[], nodeTeam *teams_ht[], int *current_g
   game_addr = search_game_ht(games_ht, game_name, 7919);
   if (game_addr == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
   else
   {
-    {
-      score1 = game_addr->game->score1;
-      score2 = game_addr->game->score2;
-      change_win(score1, score2, game_addr, teams_ht, -1);
-      del_game_ht(games_ht, game_name, 7919);
-      (*current_g)--;
-    }
+    score1 = game_addr->game->score1;
+    score2 = game_addr->game->score2;
+    change_win(score1, score2, game_addr, teams_ht, -1);
+    del_game_ht(games_ht, game_name, 7919);
+    (*current_g)--;
   }
 
 }
@@ -287,20 +273,16 @@ void edit_score(int NL, nodeGame *games_ht[], nodeTeam *teams_ht[])
   game_addr = search_game_ht(games_ht, game_name, 7919);
   if (game_addr == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
   else
   {
-    {
-      score1 = game_addr->game->score1;
-      score2 = game_addr->game->score2;
-      change_win(score1, score2, game_addr, teams_ht, -1);
-      change_win(new_score1, new_score2, game_addr, teams_ht, 1);
-      game_addr->game->score1 = new_score1;
-      game_addr->game->score2 = new_score2;
-    }
+    score1 = game_addr->game->score1;
+    score2 = game_addr->game->score2;
+    change_win(score1, score2, game_addr, teams_ht, -1);
+    change_win(new_score1, new_score2, game_addr, teams_ht, 1);
+    game_addr->game->score1 = new_score1;
+    game_addr->game->score2 = new_score2;
   }
 
 }
@@ -318,16 +300,12 @@ void add_team(int NL, nodeTeam *teams_ht[], indexNode **index_teams, int *t)
   team_addr = search_team_ht(teams_ht, team_name, 7919);
   if (team_addr != 0)
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-    }
+    printf("%d Equipa existente.\n", NL);
   }
   else
   {
-    {
-      add_team_ht(teams_ht, index_teams, team_name, 7919);
-      (*t)++;
-    }
+    add_team_ht(teams_ht, index_teams, team_name, 7919);
+    (*t)++;
   }
 
 }
@@ -345,15 +323,11 @@ void search_team(int NL, nodeTeam *teams_ht[])
   team_addr = search_team_ht(teams_ht, team_name, 7919);
   if (team_addr == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-    }
+    printf("%d Equipa inexistente.\n", NL);
   }
   else
   {
-    {
-      print_team(NL, team_addr->team);
-    }
+    print_team(NL, team_addr->team);
   }
 
 }
@@ -409,21 +383,17 @@ void copy_addr_t(int *acc, Team **teams, nodeTeam *teams_list, int *wins)
   {
     if ((teams_list->team->wins == (*wins)) && not_in_list_t(*acc, teams_list->team->name, teams))
     {
-      {
-        teams[*acc] = teams_list->team;
-        (*acc)++;
-      }
+      teams[*acc] = teams_list->team;
+      (*acc)++;
     }
     else
     {
       if (teams_list->team->wins > (*wins))
       {
-        {
-          *acc = 0;
-          teams[*acc] = teams_list->team;
-          *wins = teams_list->team->wins;
-          (*acc)++;
-        }
+        *acc = 0;
+        teams[*acc] = teams_list->team;
+        *wins = teams_list->team->wins;
+        (*acc)++;
       }
       else
       {
@@ -468,19 +438,15 @@ void change_win(int score1, int score2, nodeGame *game_addr, nodeTeam *teams_ht[
   nodeTeam *winner_addr;
   if (score1 > score2)
   {
-    {
-      winner_addr = search_team_ht(teams_ht, game_addr->game->team1, 7919);
-      change_wins_directly(winner_addr, value);
-    }
+    winner_addr = search_team_ht(teams_ht, game_addr->game->team1, 7919);
+    change_wins_directly(winner_addr, value);
   }
   else
   {
     if (score2 > score1)
     {
-      {
-        winner_addr = search_team_ht(teams_ht, game_addr->game->team2, 7919);
-        change_wins_directly(winner_addr, value);
-      }
+      winner_addr = search_team_ht(teams_ht, game_addr->game->team2, 7919);
+      change_wins_directly(winner_addr, value);
     }
     else
     {

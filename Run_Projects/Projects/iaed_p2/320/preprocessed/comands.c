@@ -51,35 +51,29 @@ void comand_a(int nl, dlist_games **hasht_g, dlist_teams **hasht_t, dlist_games 
     }
     else
     {
+      p_g = new_game(g_name, name_t1, name_t2, score1, score2);
+      if (score1 > score2)
       {
-        p_g = new_game(g_name, name_t1, name_t2, score1, score2);
-        if (score1 > score2)
-        {
-          {
-            p_t = search_hasht_t(hasht_t, name_t1)->p_t;
-            p_t->n_wins++;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if (score1 < score2)
-        {
-          {
-            p_t = search_hasht_t(hasht_t, name_t2)->p_t;
-            p_t->n_wins++;
-          }
-        }
-        else
-        {
-          
-        }
-
-        other = addlast_dlist_games(dl_g, p_g);
-        insert_hasht_g(hasht_g, p_g, other);
+        p_t = search_hasht_t(hasht_t, name_t1)->p_t;
+        p_t->n_wins++;
       }
+      else
+      {
+        
+      }
+
+      if (score1 < score2)
+      {
+        p_t = search_hasht_t(hasht_t, name_t2)->p_t;
+        p_t->n_wins++;
+      }
+      else
+      {
+        
+      }
+
+      other = addlast_dlist_games(dl_g, p_g);
+      insert_hasht_g(hasht_g, p_g, other);
     }
 
   }
@@ -102,10 +96,8 @@ void comand_A(int nl, dlist_teams **hasht_t)
   }
   else
   {
-    {
-      p_t = new_team(t_name);
-      insert_hasht_t(hasht_t, p_t);
-    }
+    p_t = new_team(t_name);
+    insert_hasht_t(hasht_t, p_t);
   }
 
 }
@@ -184,38 +176,32 @@ void comand_r(int nl, dlist_games **hasht_g, dlist_teams **hasht_t, dlist_games 
   }
   else
   {
+    score1 = n_dl->p_g->score1;
+    score2 = n_dl->p_g->score2;
+    if (score1 > score2)
     {
-      score1 = n_dl->p_g->score1;
-      score2 = n_dl->p_g->score2;
-      if (score1 > score2)
-      {
-        {
-          p_t = search_hasht_t(hasht_t, n_dl->p_g->name_t1)->p_t;
-          p_t->n_wins--;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (score1 < score2)
-      {
-        {
-          p_t = search_hasht_t(hasht_t, n_dl->p_g->name_t2)->p_t;
-          p_t->n_wins--;
-        }
-      }
-      else
-      {
-        
-      }
-
-      other = n_dl->other;
-      h = hashf(g_name);
-      rm_node_dlist_games(hasht_g[h], n_dl);
-      rm_node_dlist_games(dl_g, other);
+      p_t = search_hasht_t(hasht_t, n_dl->p_g->name_t1)->p_t;
+      p_t->n_wins--;
     }
+    else
+    {
+      
+    }
+
+    if (score1 < score2)
+    {
+      p_t = search_hasht_t(hasht_t, n_dl->p_g->name_t2)->p_t;
+      p_t->n_wins--;
+    }
+    else
+    {
+      
+    }
+
+    other = n_dl->other;
+    h = hashf(g_name);
+    rm_node_dlist_games(hasht_g[h], n_dl);
+    rm_node_dlist_games(dl_g, other);
   }
 
 }
@@ -243,87 +229,18 @@ void comand_s(int nl, dlist_games **hasht_g, dlist_teams **hasht_t)
   }
   else
   {
+    pscore1 = n_dl->p_g->score1;
+    pscore2 = n_dl->p_g->score2;
+    n_dl->p_g->score1 = score1;
+    n_dl->p_g->score2 = score2;
+    if ((pscore1 > pscore2) && (score1 <= score2))
     {
-      pscore1 = n_dl->p_g->score1;
-      pscore2 = n_dl->p_g->score2;
-      n_dl->p_g->score1 = score1;
-      n_dl->p_g->score2 = score2;
-      if ((pscore1 > pscore2) && (score1 <= score2))
+      n_dl_t = search_hasht_t(hasht_t, n_dl->p_g->name_t1);
+      n_dl_t->p_t->n_wins--;
+      if (score1 < score2)
       {
-        {
-          n_dl_t = search_hasht_t(hasht_t, n_dl->p_g->name_t1);
-          n_dl_t->p_t->n_wins--;
-          if (score1 < score2)
-          {
-            {
-              n_dl_t = search_hasht_t(hasht_t, n_dl->p_g->name_t2);
-              n_dl_t->p_t->n_wins++;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-      }
-      else
-      {
-        
-      }
-
-      if ((pscore1 < pscore2) && (score1 >= score2))
-      {
-        {
-          n_dl_t = search_hasht_t(hasht_t, n_dl->p_g->name_t2);
-          n_dl_t->p_t->n_wins--;
-          if (score1 > score2)
-          {
-            {
-              n_dl_t = search_hasht_t(hasht_t, n_dl->p_g->name_t1);
-              n_dl_t->p_t->n_wins++;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (pscore1 == pscore2)
-      {
-        {
-          if (score1 > score2)
-          {
-            {
-              n_dl_t = search_hasht_t(hasht_t, n_dl->p_g->name_t1);
-              n_dl_t->p_t->n_wins++;
-            }
-          }
-          else
-          {
-            
-          }
-
-          if (score1 < score2)
-          {
-            {
-              n_dl_t = search_hasht_t(hasht_t, n_dl->p_g->name_t2);
-              n_dl_t->p_t->n_wins++;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
+        n_dl_t = search_hasht_t(hasht_t, n_dl->p_g->name_t2);
+        n_dl_t->p_t->n_wins++;
       }
       else
       {
@@ -331,6 +248,59 @@ void comand_s(int nl, dlist_games **hasht_g, dlist_teams **hasht_t)
       }
 
     }
+    else
+    {
+      
+    }
+
+    if ((pscore1 < pscore2) && (score1 >= score2))
+    {
+      n_dl_t = search_hasht_t(hasht_t, n_dl->p_g->name_t2);
+      n_dl_t->p_t->n_wins--;
+      if (score1 > score2)
+      {
+        n_dl_t = search_hasht_t(hasht_t, n_dl->p_g->name_t1);
+        n_dl_t->p_t->n_wins++;
+      }
+      else
+      {
+        
+      }
+
+    }
+    else
+    {
+      
+    }
+
+    if (pscore1 == pscore2)
+    {
+      if (score1 > score2)
+      {
+        n_dl_t = search_hasht_t(hasht_t, n_dl->p_g->name_t1);
+        n_dl_t->p_t->n_wins++;
+      }
+      else
+      {
+        
+      }
+
+      if (score1 < score2)
+      {
+        n_dl_t = search_hasht_t(hasht_t, n_dl->p_g->name_t2);
+        n_dl_t->p_t->n_wins++;
+      }
+      else
+      {
+        
+      }
+
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -366,39 +336,35 @@ void comand_g(int nl, dlist_teams **hasht_t)
 
   if (ha_equipa)
   {
+    printf("%d Melhores %d\n", nl, max_wins);
+    for (i = 0; i < 1500; i++)
     {
-      printf("%d Melhores %d\n", nl, max_wins);
-      for (i = 0; i < 1500; i++)
+      n_dl = hasht_t[i]->head;
+      while (n_dl != 0)
       {
-        n_dl = hasht_t[i]->head;
-        while (n_dl != 0)
+        if (n_dl->p_t->n_wins == max_wins)
         {
-          if (n_dl->p_t->n_wins == max_wins)
-          {
-            {
-              len = strlen(n_dl->p_t->t_name) + 1;
-              list_t[j] = malloc((sizeof(char)) * len);
-              strcpy(list_t[j++], n_dl->p_t->t_name);
-            }
-          }
-          else
-          {
-            
-          }
-
-          n_dl = n_dl->next;
+          len = strlen(n_dl->p_t->t_name) + 1;
+          list_t[j] = malloc((sizeof(char)) * len);
+          strcpy(list_t[j++], n_dl->p_t->t_name);
+        }
+        else
+        {
+          
         }
 
-      }
-
-      sort_alpha(list_t, 0, j - 1);
-      for (i = 0; i < j; i++)
-      {
-        printf("%d * %s\n", nl, list_t[i]);
-        free(list_t[i]);
+        n_dl = n_dl->next;
       }
 
     }
+
+    sort_alpha(list_t, 0, j - 1);
+    for (i = 0; i < j; i++)
+    {
+      printf("%d * %s\n", nl, list_t[i]);
+      free(list_t[i]);
+    }
+
   }
   else
   {

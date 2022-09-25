@@ -59,17 +59,13 @@ void updateGameScore(Game *game, int score1, int score2)
 {
   if (game->score1 > game->score2)
   {
-    {
-      addTeamWins(game->team1, -1);
-    }
+    addTeamWins(game->team1, -1);
   }
   else
   {
     if (game->score1 < game->score2)
     {
-      {
-        addTeamWins(game->team2, -1);
-      }
+      addTeamWins(game->team2, -1);
     }
     else
     {
@@ -82,17 +78,13 @@ void updateGameScore(Game *game, int score1, int score2)
   game->score2 = score2;
   if (game->score1 > game->score2)
   {
-    {
-      addTeamWins(game->team1, 1);
-    }
+    addTeamWins(game->team1, 1);
   }
   else
   {
     if (game->score1 < game->score2)
     {
-      {
-        addTeamWins(game->team2, 1);
-      }
+      addTeamWins(game->team2, 1);
     }
     else
     {

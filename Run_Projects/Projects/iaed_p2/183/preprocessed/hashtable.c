@@ -30,10 +30,8 @@ char *dupstring(const char *src)
   char *dest = (char *) malloc((strlen(src) + 1) * (sizeof(char)));
   if (dest != 0)
   {
-    {
-      strcpy(dest, src);
-      return dest;
-    }
+    strcpy(dest, src);
+    return dest;
   }
   else
   {
@@ -59,9 +57,7 @@ node *cria_elemento(char *chave, void *valor, void *(*copiar)(void *valor))
   new_node->valor = copiar(valor);
   if ((new_node->chave != 0) && (new_node->valor != 0))
   {
-    {
-      return new_node;
-    }
+    return new_node;
   }
   else
   {
@@ -83,7 +79,7 @@ bool cria_chaves(chaves *c, int tamanho)
   c->lista_chaves = (char **) malloc(tamanho * (sizeof(char *)));
   if (c->lista_chaves == 0)
   {
-    return 0;
+    return false;
   }
   else
   {
@@ -92,26 +88,24 @@ bool cria_chaves(chaves *c, int tamanho)
 
   c->tamanho = tamanho;
   c->ultima_chave = -1;
-  return 1;
+  return true;
 }
 
 bool insere_chave(chaves *c, char *chave)
 {
   if (c->ultima_chave == (c->tamanho - 1))
   {
+    c->lista_chaves = (char **) realloc(c->lista_chaves, (c->tamanho * 2) * (sizeof(char *)));
+    if (c->lista_chaves == 0)
     {
-      c->lista_chaves = (char **) realloc(c->lista_chaves, (c->tamanho * 2) * (sizeof(char *)));
-      if (c->lista_chaves == 0)
-      {
-        return 0;
-      }
-      else
-      {
-        
-      }
-
-      c->tamanho = c->tamanho * 2;
+      return false;
     }
+    else
+    {
+      
+    }
+
+    c->tamanho = c->tamanho * 2;
   }
   else
   {
@@ -120,7 +114,7 @@ bool insere_chave(chaves *c, char *chave)
 
   c->ultima_chave++;
   c->lista_chaves[c->ultima_chave] = chave;
-  return 1;
+  return true;
 }
 
 bool remove_chave(chaves *c, char *chave)
@@ -132,10 +126,8 @@ bool remove_chave(chaves *c, char *chave)
     temp = c->lista_chaves[i];
     if ((temp != 0) && (strcmp(temp, chave) == 0))
     {
-      {
-        c->lista_chaves[i] = 0;
-        return 1;
-      }
+      c->lista_chaves[i] = 0;
+      return true;
     }
     else
     {
@@ -144,7 +136,7 @@ bool remove_chave(chaves *c, char *chave)
 
   }
 
-  return 0;
+  return false;
 }
 
 int hash(tabela *t, char *chave)
@@ -200,20 +192,18 @@ bool insere_tabela(tabela *t, char *chave, void *valor, void *(*copiar)(void *va
   {
     if (strcmp(temp->chave, chave) == 0)
     {
+      valor_anterior = temp->valor;
+      temp->valor = copiar(valor);
+      if (valor_anterior != 0)
       {
-        valor_anterior = temp->valor;
-        temp->valor = copiar(valor);
-        if (valor_anterior != 0)
-        {
-          free(valor_anterior);
-        }
-        else
-        {
-          
-        }
-
-        return (temp->valor != 0) ? (1) : (0);
+        free(valor_anterior);
       }
+      else
+      {
+        
+      }
+
+      return (temp->valor != 0) ? (true) : (false);
     }
     else
     {
@@ -225,18 +215,16 @@ bool insere_tabela(tabela *t, char *chave, void *valor, void *(*copiar)(void *va
   new_node = cria_elemento(chave, valor, copiar);
   if (new_node != 0)
   {
-    {
-      new_node->next = lista;
-      t->tabela[pos] = new_node;
-      return insere_chave(&t->chaves, new_node->chave);
-    }
+    new_node->next = lista;
+    t->tabela[pos] = new_node;
+    return insere_chave(&t->chaves, new_node->chave);
   }
   else
   {
     
   }
 
-  return 0;
+  return false;
 }
 
 void *procura_tabela(tabela *t, char *chave)
@@ -247,9 +235,7 @@ void *procura_tabela(tabela *t, char *chave)
   {
     if (strcmp(temp->chave, chave) == 0)
     {
-      {
-        return temp->valor;
-      }
+      return temp->valor;
     }
     else
     {
@@ -270,24 +256,18 @@ bool remove_tabela(tabela *t, char *chave, void (*destroi)(void *valor))
   {
     if (strcmp(temp->chave, chave) == 0)
     {
+      if (prev == 0)
       {
-        if (prev == 0)
-        {
-          {
-            t->tabela[pos] = temp->next;
-          }
-        }
-        else
-        {
-          {
-            prev->next = temp->next;
-          }
-        }
-
-        remove_chave(&t->chaves, chave);
-        destroi_elemento(temp, destroi);
-        return 1;
+        t->tabela[pos] = temp->next;
       }
+      else
+      {
+        prev->next = temp->next;
+      }
+
+      remove_chave(&t->chaves, chave);
+      destroi_elemento(temp, destroi);
+      return true;
     }
     else
     {
@@ -298,7 +278,7 @@ bool remove_tabela(tabela *t, char *chave, void (*destroi)(void *valor))
     temp = temp->next;
   }
 
-  return 0;
+  return false;
 }
 
 void iterar_tabela(tabela *t, bool (*funcao)(char *chave, void *valor, void *contexto), void *contexto)
@@ -334,21 +314,12 @@ void iterar_ordenado(tabela *t, bool (*funcao)(char *chave, void *valor, void *c
     chave = t->chaves.lista_chaves[i];
     if (chave != 0)
     {
+      valor = procura_tabela(t, chave);
+      if (valor != 0)
       {
-        valor = procura_tabela(t, chave);
-        if (valor != 0)
+        if (!funcao(chave, valor, contexto))
         {
-          {
-            if (!funcao(chave, valor, contexto))
-            {
-              return;
-            }
-            else
-            {
-              
-            }
-
-          }
+          return;
         }
         else
         {
@@ -356,6 +327,11 @@ void iterar_ordenado(tabela *t, bool (*funcao)(char *chave, void *valor, void *c
         }
 
       }
+      else
+      {
+        
+      }
+
     }
     else
     {

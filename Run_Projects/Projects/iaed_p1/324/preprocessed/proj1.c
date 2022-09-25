@@ -153,10 +153,8 @@ void ad_stock()
   quantidade = new_sym_var(sizeof(int) * 8);
   if ((idp < idp_ad) || (primeiro_produto == 0))
   {
-    {
-      printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idp_ad);
-      return;
-    }
+    printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", idp_ad);
+    return;
   }
   else
   {
@@ -222,29 +220,25 @@ void adiciona_produto()
         }
         else
         {
+          for (i = 0; i < todas_encomendas[ide_ad].n_produtos; i++)
           {
-            for (i = 0; i < todas_encomendas[ide_ad].n_produtos; i++)
+            if (todas_encomendas[ide_ad].produtos[i].idp == idp_ad)
             {
-              if (todas_encomendas[ide_ad].produtos[i].idp == idp_ad)
-              {
-                {
-                  todas_encomendas[ide_ad].produtos[i].quant_stock += quantidade;
-                  re_stock(idp_ad, quantidade);
-                  return;
-                }
-              }
-              else
-              {
-                
-              }
-
+              todas_encomendas[ide_ad].produtos[i].quant_stock += quantidade;
+              re_stock(idp_ad, quantidade);
+              return;
+            }
+            else
+            {
+              
             }
 
-            todas_encomendas[ide_ad].produtos[todas_encomendas[ide_ad].n_produtos] = todos_produtos[idp_ad];
-            todas_encomendas[ide_ad].produtos[todas_encomendas[ide_ad].n_produtos].quant_stock = quantidade;
-            todas_encomendas[ide_ad].n_produtos++;
-            re_stock(idp_ad, quantidade);
           }
+
+          todas_encomendas[ide_ad].produtos[todas_encomendas[ide_ad].n_produtos] = todos_produtos[idp_ad];
+          todas_encomendas[ide_ad].produtos[todas_encomendas[ide_ad].n_produtos].quant_stock = quantidade;
+          todas_encomendas[ide_ad].n_produtos++;
+          re_stock(idp_ad, quantidade);
         }
 
       }
@@ -319,17 +313,13 @@ void re_produto_encomenda()
   idp_re = new_sym_var(sizeof(int) * 8);
   if ((ide < ide_re) || (primeira_encomenda == 0))
   {
-    {
-      printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idp_re, ide_re);
-    }
+    printf("Impossivel remover produto %d a encomenda %d. Encomenda inexistente.\n", idp_re, ide_re);
   }
   else
   {
     if ((idp < idp_re) || (primeiro_produto == 0))
     {
-      {
-        printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp_re, ide_re);
-      }
+      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", idp_re, ide_re);
     }
     else
     {
@@ -342,10 +332,8 @@ void re_produto_encomenda()
   {
     if (todas_encomendas[ide_re].produtos[i].idp == idp_re)
     {
-      {
-        i_pro_encomenda = i;
-        pro_removido = 1;
-      }
+      i_pro_encomenda = i;
+      pro_removido = 1;
     }
     else
     {
@@ -378,10 +366,8 @@ void custo_encomenda()
   ide_input = new_sym_var(sizeof(int) * 8);
   if ((ide < ide_input) || (primeira_encomenda == 0))
   {
-    {
-      printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ide_input);
-      return;
-    }
+    printf("Impossivel calcular custo da encomenda %d. Encomenda inexistente.\n", ide_input);
+    return;
   }
   else
   {
@@ -438,10 +424,8 @@ void descricao_quantidade()
   idp_input = new_sym_var(sizeof(int) * 8);
   if ((ide < ide_input) || (primeira_encomenda == 0))
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide_input);
-      return;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide_input);
+    return;
   }
   else
   {
@@ -450,10 +434,8 @@ void descricao_quantidade()
 
   if ((idp < idp_input) || (primeiro_produto == 0))
   {
-    {
-      printf("Impossivel listar produto %d. Produto inexistente.\n", idp_input);
-      return;
-    }
+    printf("Impossivel listar produto %d. Produto inexistente.\n", idp_input);
+    return;
   }
   else
   {
@@ -464,10 +446,8 @@ void descricao_quantidade()
   {
     if (todas_encomendas[ide_input].produtos[i].idp == idp_input)
     {
-      {
-        printf("%s %d.\n", todas_encomendas[ide_input].produtos[i].descricao, todas_encomendas[ide_input].produtos[i].quant_stock);
-        return;
-      }
+      printf("%s %d.\n", todas_encomendas[ide_input].produtos[i].descricao, todas_encomendas[ide_input].produtos[i].quant_stock);
+      return;
     }
     else
     {
@@ -501,38 +481,34 @@ void ide_comais_produto()
     for (j = 0; j < todas_encomendas[i].n_produtos; j++)
     if (todas_encomendas[i].produtos[j].idp == idp_input)
   {
+    if (todas_encomendas[i].produtos[j].quant_stock == quantidade)
     {
-      if (todas_encomendas[i].produtos[j].quant_stock == quantidade)
+      if (i < ide_comais_produto)
       {
-        if (i < ide_comais_produto)
-        {
-          ide_comais_produto = i;
-        }
-        else
-        {
-          
-        }
-
+        ide_comais_produto = i;
       }
       else
       {
         
       }
 
-      if (todas_encomendas[i].produtos[j].quant_stock > quantidade)
-      {
-        {
-          ide_comais_produto = i;
-          quantidade = todas_encomendas[i].produtos[j].quant_stock;
-        }
-      }
-      else
-      {
-        
-      }
-
-      flag = 1;
     }
+    else
+    {
+      
+    }
+
+    if (todas_encomendas[i].produtos[j].quant_stock > quantidade)
+    {
+      ide_comais_produto = i;
+      quantidade = todas_encomendas[i].produtos[j].quant_stock;
+    }
+    else
+    {
+      
+    }
+
+    flag = 1;
   }
   else
   {
@@ -560,10 +536,8 @@ void ordena_alfabetica()
   ide_input = new_sym_var(sizeof(int) * 8);
   if ((ide < ide_input) || (primeira_encomenda == 0))
   {
-    {
-      printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide_input);
-      return;
-    }
+    printf("Impossivel listar encomenda %d. Encomenda inexistente.\n", ide_input);
+    return;
   }
   else
   {
@@ -593,17 +567,15 @@ int compara_produtos(Produto a, Produto b, int metodo)
 
   if (metodo == 1)
   {
+    if (a.preco != b.preco)
     {
-      if (a.preco != b.preco)
-      {
-        return a.preco < b.preco;
-      }
-      else
-      {
-        return a.idp < b.idp;
-      }
-
+      return a.preco < b.preco;
     }
+    else
+    {
+      return a.idp < b.idp;
+    }
+
   }
   else
   {
@@ -636,11 +608,9 @@ int partition(Produto a[], int l, int r, int metodo)
 
     if (i < j)
     {
-      {
-        Produto t = a[i];
-        a[i] = a[j];
-        a[j] = t;
-      }
+      Produto t = a[i];
+      a[i] = a[j];
+      a[j] = t;
     }
     else
     {

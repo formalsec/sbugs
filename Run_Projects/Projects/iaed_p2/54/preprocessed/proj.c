@@ -28,15 +28,11 @@ int min(int a, int b)
 {
   if (a < b)
   {
-    {
-      return a;
-    }
+    return a;
   }
   else
   {
-    {
-      return b;
-    }
+    return b;
   }
 
 }
@@ -45,15 +41,11 @@ int max(int a, int b)
 {
   if (a < b)
   {
-    {
-      return b;
-    }
+    return b;
   }
   else
   {
-    {
-      return a;
-    }
+    return a;
   }
 
 }
@@ -77,15 +69,13 @@ struct string inp()
   bool now;
   ans.s = (char *) malloc(sizeof(char));
   ans.si = 0;
-  now = 0;
+  now = false;
   while (1 > 0)
   {
     c = new_sym_var(sizeof(char) * 8);
     if (now && ((c == '\n') || (c == ':')))
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {
@@ -94,9 +84,7 @@ struct string inp()
 
     if ((c == '\n') || (c == ':'))
     {
-      {
-        continue;
-      }
+      continue;
     }
     else
     {
@@ -105,16 +93,14 @@ struct string inp()
 
     if ((!now) && (c == ' '))
     {
-      {
-        continue;
-      }
+      continue;
     }
     else
     {
       
     }
 
-    now = 1;
+    now = true;
     ans.si++;
     ans.s = realloc(ans.s, ans.si * (sizeof(char)));
     ans.s[ans.si - 1] = c;
@@ -137,9 +123,7 @@ bool eq(struct string s, struct string t)
   int i2 = 0;
   if (s.si != t.si)
   {
-    {
-      return 0;
-    }
+    return false;
   }
   else
   {
@@ -150,9 +134,7 @@ bool eq(struct string s, struct string t)
   {
     if (s.s[i2] != t.s[i2])
     {
-      {
-        return 0;
-      }
+      return false;
     }
     else
     {
@@ -161,7 +143,7 @@ bool eq(struct string s, struct string t)
 
   }
 
-  return 1;
+  return true;
 }
 
 struct pair
@@ -174,9 +156,7 @@ ll cmp(struct pair p1, struct pair p2)
   int i3 = 0;
   if (p1.a > p2.a)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
@@ -185,9 +165,7 @@ ll cmp(struct pair p1, struct pair p2)
 
   if (p1.a < p2.a)
   {
-    {
-      return 1;
-    }
+    return 1;
   }
   else
   {
@@ -196,9 +174,7 @@ ll cmp(struct pair p1, struct pair p2)
 
   if (p1.a == 1000000L)
   {
-    {
-      return -1;
-    }
+    return -1;
   }
   else
   {
@@ -209,17 +185,13 @@ ll cmp(struct pair p1, struct pair p2)
   {
     if (p1.s.s[i3] < p2.s.s[i3])
     {
-      {
-        return 1;
-      }
+      return 1;
     }
     else
     {
       if (p1.s.s[i3] > p2.s.s[i3])
       {
-        {
-          return 0;
-        }
+        return 0;
       }
       else
       {
@@ -232,17 +204,13 @@ ll cmp(struct pair p1, struct pair p2)
 
   if (p1.s.si > p2.s.si)
   {
-    {
-      return 0;
-    }
+    return 0;
   }
   else
   {
     if (p1.s.si < p2.s.si)
     {
-      {
-        return 1;
-      }
+      return 1;
     }
     else
     {
@@ -341,31 +309,23 @@ struct node3 *find3(struct AVL3 *s, struct pair val)
   {
     if (cmp(cur->val, val) == (-1))
     {
-      {
-        return cur;
-      }
+      return cur;
     }
     else
     {
       if ((cmp(cur->val, val) == 0) && (cur->lson != 0))
       {
-        {
-          cur = cur->lson;
-        }
+        cur = cur->lson;
       }
       else
       {
         if ((cmp(cur->val, val) == 1) && (cur->rson != 0))
         {
-          {
-            cur = cur->rson;
-          }
+          cur = cur->rson;
         }
         else
         {
-          {
-            return s->en;
-          }
+          return s->en;
         }
 
       }
@@ -384,9 +344,7 @@ struct node3 *lower_bound3(struct AVL3 *s, struct pair val)
   {
     if (cmp(cur->val, val) == (-1))
     {
-      {
-        return cur;
-      }
+      return cur;
     }
     else
     {
@@ -395,9 +353,7 @@ struct node3 *lower_bound3(struct AVL3 *s, struct pair val)
 
     if ((cmp(cur->val, val) == 0) && (cmp(cur->val, ans->val) == 1))
     {
-      {
-        ans = cur;
-      }
+      ans = cur;
     }
     else
     {
@@ -406,23 +362,17 @@ struct node3 *lower_bound3(struct AVL3 *s, struct pair val)
 
     if ((cmp(cur->val, val) == 0) && (cur->lson != 0))
     {
-      {
-        cur = cur->lson;
-      }
+      cur = cur->lson;
     }
     else
     {
       if ((cmp(cur->val, val) == 1) && (cur->rson != 0))
       {
-        {
-          cur = cur->rson;
-        }
+        cur = cur->rson;
       }
       else
       {
-        {
-          break;
-        }
+        break;
       }
 
     }
@@ -440,9 +390,7 @@ struct node3 *upper_bound3(struct AVL3 *s, struct pair val)
   {
     if ((cmp(cur->val, val) == 0) && (cmp(cur->val, ans->val) == 1))
     {
-      {
-        ans = cur;
-      }
+      ans = cur;
     }
     else
     {
@@ -451,23 +399,17 @@ struct node3 *upper_bound3(struct AVL3 *s, struct pair val)
 
     if ((cmp(cur->val, val) == 0) && (cur->lson != 0))
     {
-      {
-        cur = cur->lson;
-      }
+      cur = cur->lson;
     }
     else
     {
       if ((cmp(cur->val, val) != 0) && (cur->rson != 0))
       {
-        {
-          cur = cur->rson;
-        }
+        cur = cur->rson;
       }
       else
       {
-        {
-          return ans;
-        }
+        return ans;
       }
 
     }
@@ -487,16 +429,14 @@ void Balance3(struct AVL3 *s, struct node3 *X)
   struct node3 *C;
   struct node3 *D;
   struct node3 *E;
-  balanced = 1;
+  balanced = true;
   cur = X;
   while (1 > 0)
   {
     h1 = 0, h2 = 0;
     if (cur->lson != 0)
     {
-      {
-        h1 = cur->lson->h + 1;
-      }
+      h1 = cur->lson->h + 1;
     }
     else
     {
@@ -505,9 +445,7 @@ void Balance3(struct AVL3 *s, struct node3 *X)
 
     if (cur->rson != 0)
     {
-      {
-        h2 = cur->rson->h + 1;
-      }
+      h2 = cur->rson->h + 1;
     }
     else
     {
@@ -516,10 +454,8 @@ void Balance3(struct AVL3 *s, struct node3 *X)
 
     if (abs(h1 - h2) > 1)
     {
-      {
-        balanced = 0;
-        break;
-      }
+      balanced = false;
+      break;
     }
     else
     {
@@ -528,9 +464,7 @@ void Balance3(struct AVL3 *s, struct node3 *X)
 
     if (cur == s->root)
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {
@@ -542,9 +476,7 @@ void Balance3(struct AVL3 *s, struct node3 *X)
 
   if (balanced)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -555,9 +487,7 @@ void Balance3(struct AVL3 *s, struct node3 *X)
   h2 = 0;
   if (cur->lson != 0)
   {
-    {
-      h1 = cur->lson->h + 1;
-    }
+    h1 = cur->lson->h + 1;
   }
   else
   {
@@ -566,9 +496,7 @@ void Balance3(struct AVL3 *s, struct node3 *X)
 
   if (cur->rson != 0)
   {
-    {
-      h2 = cur->rson->h + 1;
-    }
+    h2 = cur->rson->h + 1;
   }
   else
   {
@@ -577,435 +505,363 @@ void Balance3(struct AVL3 *s, struct node3 *X)
 
   if (h2 > h1)
   {
+    ll hl = 0;
+    ll hr = 0;
+    if (cur->rson->lson != 0)
     {
-      ll hl = 0;
-      ll hr = 0;
-      if (cur->rson->lson != 0)
+      hl = cur->rson->lson->h + 1;
+    }
+    else
+    {
+      
+    }
+
+    if (cur->rson->rson != 0)
+    {
+      hr = cur->rson->rson->h + 1;
+    }
+    else
+    {
+      
+    }
+
+    if (hr > hl)
+    {
+      cur->h -= 2;
+      A = cur->rson;
+      if (cur->par == 0)
       {
-        {
-          hl = cur->rson->lson->h + 1;
-        }
+        s->root = A;
       }
       else
       {
         
       }
 
-      if (cur->rson->rson != 0)
+      A->par = cur->par;
+      cur->par = A;
+      cur->rson = A->lson;
+      if (A->lson != 0)
       {
-        {
-          hr = cur->rson->rson->h + 1;
-        }
+        A->lson->par = cur;
       }
       else
       {
         
       }
 
-      if (hr > hl)
+      A->lson = cur;
+      if (A->par != 0)
       {
+        if (A->par->rson == cur)
         {
-          cur->h -= 2;
-          A = cur->rson;
-          if (cur->par == 0)
-          {
-            {
-              s->root = A;
-            }
-          }
-          else
-          {
-            
-          }
-
-          A->par = cur->par;
-          cur->par = A;
-          cur->rson = A->lson;
-          if (A->lson != 0)
-          {
-            {
-              A->lson->par = cur;
-            }
-          }
-          else
-          {
-            
-          }
-
-          A->lson = cur;
-          if (A->par != 0)
-          {
-            {
-              if (A->par->rson == cur)
-              {
-                {
-                  A->par->rson = A;
-                }
-              }
-              else
-              {
-                
-              }
-
-              if (A->par->lson == cur)
-              {
-                {
-                  A->par->lson = A;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-          }
-          else
-          {
-            
-          }
-
-          cur = A;
-          while (cur != s->root)
-          {
-            cur = cur->par;
-            cur->h--;
-          }
-
+          A->par->rson = A;
         }
+        else
+        {
+          
+        }
+
+        if (A->par->lson == cur)
+        {
+          A->par->lson = A;
+        }
+        else
+        {
+          
+        }
+
       }
       else
       {
-        {
-          A = cur;
-          B = A->rson;
-          C = B->lson;
-          D = C->lson;
-          E = C->rson;
-          if (s->root == A)
-          {
-            {
-              s->root = C;
-            }
-          }
-          else
-          {
-            
-          }
+        
+      }
 
-          C->par = A->par;
-          if (C->par != 0)
-          {
-            {
-              if (C->par->rson == A)
-              {
-                {
-                  C->par->rson = C;
-                }
-              }
-              else
-              {
-                
-              }
-
-              if (C->par->lson == A)
-              {
-                {
-                  C->par->lson = C;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-          }
-          else
-          {
-            
-          }
-
-          A->par = C;
-          C->lson = A;
-          A->rson = D;
-          if (D != 0)
-          {
-            {
-              D->par = A;
-            }
-          }
-          else
-          {
-            
-          }
-
-          B->lson = E;
-          if (E != 0)
-          {
-            {
-              E->par = B;
-            }
-          }
-          else
-          {
-            
-          }
-
-          B->par = C;
-          C->rson = B;
-          B->h = 0;
-          if (B->rson != 0)
-          {
-            {
-              B->h = B->rson->h + 1;
-            }
-          }
-          else
-          {
-            
-          }
-
-          A->h = 0;
-          if (A->lson != 0)
-          {
-            {
-              A->h = A->lson->h + 1;
-            }
-          }
-          else
-          {
-            
-          }
-
-          C->h++;
-          cur = C;
-          while (cur != s->root)
-          {
-            cur = cur->par;
-            cur->h--;
-          }
-
-        }
+      cur = A;
+      while (cur != s->root)
+      {
+        cur = cur->par;
+        cur->h--;
       }
 
     }
+    else
+    {
+      A = cur;
+      B = A->rson;
+      C = B->lson;
+      D = C->lson;
+      E = C->rson;
+      if (s->root == A)
+      {
+        s->root = C;
+      }
+      else
+      {
+        
+      }
+
+      C->par = A->par;
+      if (C->par != 0)
+      {
+        if (C->par->rson == A)
+        {
+          C->par->rson = C;
+        }
+        else
+        {
+          
+        }
+
+        if (C->par->lson == A)
+        {
+          C->par->lson = C;
+        }
+        else
+        {
+          
+        }
+
+      }
+      else
+      {
+        
+      }
+
+      A->par = C;
+      C->lson = A;
+      A->rson = D;
+      if (D != 0)
+      {
+        D->par = A;
+      }
+      else
+      {
+        
+      }
+
+      B->lson = E;
+      if (E != 0)
+      {
+        E->par = B;
+      }
+      else
+      {
+        
+      }
+
+      B->par = C;
+      C->rson = B;
+      B->h = 0;
+      if (B->rson != 0)
+      {
+        B->h = B->rson->h + 1;
+      }
+      else
+      {
+        
+      }
+
+      A->h = 0;
+      if (A->lson != 0)
+      {
+        A->h = A->lson->h + 1;
+      }
+      else
+      {
+        
+      }
+
+      C->h++;
+      cur = C;
+      while (cur != s->root)
+      {
+        cur = cur->par;
+        cur->h--;
+      }
+
+    }
+
   }
   else
   {
+    ll hl = 0;
+    ll hr = 0;
+    if (cur->lson->lson != 0)
     {
-      ll hl = 0;
-      ll hr = 0;
-      if (cur->lson->lson != 0)
+      hl = cur->lson->lson->h + 1;
+    }
+    else
+    {
+      
+    }
+
+    if (cur->lson->rson != 0)
+    {
+      hr = cur->lson->rson->h + 1;
+    }
+    else
+    {
+      
+    }
+
+    if (hl > hr)
+    {
+      cur->h -= 2;
+      A = cur->lson;
+      if (cur->par == 0)
       {
-        {
-          hl = cur->lson->lson->h + 1;
-        }
+        s->root = A;
       }
       else
       {
         
       }
 
-      if (cur->lson->rson != 0)
+      A->par = cur->par;
+      cur->par = A;
+      cur->lson = A->rson;
+      if (A->rson != 0)
       {
-        {
-          hr = cur->lson->rson->h + 1;
-        }
+        A->rson->par = cur;
       }
       else
       {
         
       }
 
-      if (hl > hr)
+      A->rson = cur;
+      if (A->par != 0)
       {
+        if (A->par->rson == cur)
         {
-          cur->h -= 2;
-          A = cur->lson;
-          if (cur->par == 0)
-          {
-            {
-              s->root = A;
-            }
-          }
-          else
-          {
-            
-          }
-
-          A->par = cur->par;
-          cur->par = A;
-          cur->lson = A->rson;
-          if (A->rson != 0)
-          {
-            {
-              A->rson->par = cur;
-            }
-          }
-          else
-          {
-            
-          }
-
-          A->rson = cur;
-          if (A->par != 0)
-          {
-            {
-              if (A->par->rson == cur)
-              {
-                {
-                  A->par->rson = A;
-                }
-              }
-              else
-              {
-                
-              }
-
-              if (A->par->lson == cur)
-              {
-                {
-                  A->par->lson = A;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-          }
-          else
-          {
-            
-          }
-
-          cur = A;
-          while (cur != s->root)
-          {
-            cur = cur->par;
-            cur->h--;
-          }
-
+          A->par->rson = A;
         }
+        else
+        {
+          
+        }
+
+        if (A->par->lson == cur)
+        {
+          A->par->lson = A;
+        }
+        else
+        {
+          
+        }
+
       }
       else
       {
-        {
-          A = cur;
-          B = A->lson;
-          C = B->rson;
-          D = C->rson;
-          E = C->lson;
-          if (s->root == A)
-          {
-            {
-              s->root = C;
-            }
-          }
-          else
-          {
-            
-          }
+        
+      }
 
-          C->par = A->par;
-          A->par = C;
-          A->lson = D;
-          B->rson = E;
-          B->par = C;
-          C->rson = A;
-          C->lson = B;
-          if (D != 0)
-          {
-            {
-              D->par = A;
-            }
-          }
-          else
-          {
-            
-          }
-
-          if (E != 0)
-          {
-            {
-              E->par = B;
-            }
-          }
-          else
-          {
-            
-          }
-
-          B->h = 0;
-          if (B->lson != 0)
-          {
-            {
-              B->h = B->lson->h + 1;
-            }
-          }
-          else
-          {
-            
-          }
-
-          A->h = 0;
-          if (A->rson != 0)
-          {
-            {
-              A->h = A->rson->h + 1;
-            }
-          }
-          else
-          {
-            
-          }
-
-          C->h++;
-          if (C->par != 0)
-          {
-            {
-              if (C->par->rson == cur)
-              {
-                {
-                  C->par->rson = C;
-                }
-              }
-              else
-              {
-                
-              }
-
-              if (C->par->lson == cur)
-              {
-                {
-                  C->par->lson = C;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-          }
-          else
-          {
-            
-          }
-
-          cur = C;
-          while (cur != s->root)
-          {
-            cur = cur->par;
-            cur->h--;
-          }
-
-        }
+      cur = A;
+      while (cur != s->root)
+      {
+        cur = cur->par;
+        cur->h--;
       }
 
     }
+    else
+    {
+      A = cur;
+      B = A->lson;
+      C = B->rson;
+      D = C->rson;
+      E = C->lson;
+      if (s->root == A)
+      {
+        s->root = C;
+      }
+      else
+      {
+        
+      }
+
+      C->par = A->par;
+      A->par = C;
+      A->lson = D;
+      B->rson = E;
+      B->par = C;
+      C->rson = A;
+      C->lson = B;
+      if (D != 0)
+      {
+        D->par = A;
+      }
+      else
+      {
+        
+      }
+
+      if (E != 0)
+      {
+        E->par = B;
+      }
+      else
+      {
+        
+      }
+
+      B->h = 0;
+      if (B->lson != 0)
+      {
+        B->h = B->lson->h + 1;
+      }
+      else
+      {
+        
+      }
+
+      A->h = 0;
+      if (A->rson != 0)
+      {
+        A->h = A->rson->h + 1;
+      }
+      else
+      {
+        
+      }
+
+      C->h++;
+      if (C->par != 0)
+      {
+        if (C->par->rson == cur)
+        {
+          C->par->rson = C;
+        }
+        else
+        {
+          
+        }
+
+        if (C->par->lson == cur)
+        {
+          C->par->lson = C;
+        }
+        else
+        {
+          
+        }
+
+      }
+      else
+      {
+        
+      }
+
+      cur = C;
+      while (cur != s->root)
+      {
+        cur = cur->par;
+        cur->h--;
+      }
+
+    }
+
   }
 
   return;
@@ -1030,15 +886,11 @@ void insert3(struct AVL3 *s, struct pair val)
     cur->h++;
     if (cmp(cur->val, X->val) != 1)
     {
-      {
-        cur = cur->lson;
-      }
+      cur = cur->lson;
     }
     else
     {
-      {
-        cur = cur->rson;
-      }
+      cur = cur->rson;
     }
 
   }
@@ -1046,97 +898,71 @@ void insert3(struct AVL3 *s, struct pair val)
   cur->h++;
   if ((cur->lson == 0) && (cur->rson == 0))
   {
+    if (cmp(cur->val, X->val) != 1)
     {
-      if (cmp(cur->val, X->val) != 1)
-      {
-        {
-          cur->lson = X;
-          X->par = cur;
-        }
-      }
-      else
-      {
-        {
-          cur->rson = X;
-          X->par = cur;
-        }
-      }
-
+      cur->lson = X;
+      X->par = cur;
     }
+    else
+    {
+      cur->rson = X;
+      X->par = cur;
+    }
+
   }
   else
   {
     if (cur->lson == 0)
     {
+      if (cmp(cur->val, X->val) != 1)
       {
-        if (cmp(cur->val, X->val) != 1)
+        cur->lson = X;
+        X->par = cur;
+      }
+      else
+      {
+        cur = cur->rson;
+        cur->h++;
+        if (cmp(X->val, cur->val) != 1)
         {
-          {
-            cur->lson = X;
-            X->par = cur;
-          }
+          cur->rson = X;
+          X->par = cur;
         }
         else
         {
-          {
-            cur = cur->rson;
-            cur->h++;
-            if (cmp(X->val, cur->val) != 1)
-            {
-              {
-                cur->rson = X;
-                X->par = cur;
-              }
-            }
-            else
-            {
-              {
-                cur->lson = X;
-                X->par = cur;
-              }
-            }
-
-          }
+          cur->lson = X;
+          X->par = cur;
         }
 
       }
+
     }
     else
     {
       if (cur->rson == 0)
       {
+        if (cmp(cur->val, X->val) != 0)
         {
-          if (cmp(cur->val, X->val) != 0)
+          cur->rson = X;
+          X->par = cur;
+        }
+        else
+        {
+          cur = cur->lson;
+          cur->h++;
+          if (cmp(X->val, cur->val) != 1)
           {
-            {
-              cur->rson = X;
-              X->par = cur;
-            }
+            cur->rson = X;
+            X->par = cur;
           }
           else
           {
-            {
-              cur = cur->lson;
-              cur->h++;
-              if (cmp(X->val, cur->val) != 1)
-              {
-                {
-                  cur->rson = X;
-                  X->par = cur;
-                }
-              }
-              else
-              {
-                {
-                  cur->lson = X;
-                  X->par = cur;
-                }
-              }
-
-            }
+            cur->lson = X;
+            X->par = cur;
           }
 
         }
+
       }
       else
       {
@@ -1149,9 +975,7 @@ void insert3(struct AVL3 *s, struct pair val)
 
   if (cmp(X->val, s->beg->val) == 1)
   {
-    {
-      s->beg = X;
-    }
+    s->beg = X;
   }
   else
   {
@@ -1164,9 +988,7 @@ void insert3(struct AVL3 *s, struct pair val)
   X->nxt->prv = X;
   if (X->prv != 0)
   {
-    {
-      X->prv->nxt = X;
-    }
+    X->prv->nxt = X;
   }
   else
   {
@@ -1182,9 +1004,7 @@ void erase3(struct AVL3 *s, struct node3 *X)
   struct pair aux;
   if (X->val.a == 1000000L)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -1193,103 +1013,87 @@ void erase3(struct AVL3 *s, struct node3 *X)
 
   if ((X->lson == 0) && (X->rson == 0))
   {
+    cur = X;
+    p = cur->par;
+    cur->h = -1;
+    cur = p;
+    while (1 > 0)
     {
-      cur = X;
-      p = cur->par;
-      cur->h = -1;
-      cur = p;
-      while (1 > 0)
+      ll h1 = 0;
+      ll h2 = 0;
+      if (cur->lson != 0)
       {
-        ll h1 = 0;
-        ll h2 = 0;
-        if (cur->lson != 0)
-        {
-          {
-            h1 = cur->lson->h + 1;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if (cur->rson != 0)
-        {
-          {
-            h2 = cur->rson->h + 1;
-          }
-        }
-        else
-        {
-          
-        }
-
-        cur->h = max(h1, h2);
-        if (cur == s->root)
-        {
-          {
-            break;
-          }
-        }
-        else
-        {
-          
-        }
-
-        cur = cur->par;
-      }
-
-      cur = X;
-      if (cur->par->rson == cur)
-      {
-        {
-          cur->par->rson = 0;
-        }
+        h1 = cur->lson->h + 1;
       }
       else
       {
         
       }
 
-      if (cur->par->lson == cur)
+      if (cur->rson != 0)
       {
-        {
-          cur->par->lson = 0;
-        }
+        h2 = cur->rson->h + 1;
       }
       else
       {
         
       }
 
-      X->nxt->prv = X->prv;
-      if (X->prv != 0)
+      cur->h = max(h1, h2);
+      if (cur == s->root)
       {
-        {
-          X->prv->nxt = X->nxt;
-        }
+        break;
       }
       else
       {
         
       }
 
-      if (X == s->beg)
-      {
-        {
-          s->beg = s->beg->nxt;
-        }
-      }
-      else
-      {
-        
-      }
-
-      free(cur);
-      s->N--;
-      Balance3(s, p);
-      return;
+      cur = cur->par;
     }
+
+    cur = X;
+    if (cur->par->rson == cur)
+    {
+      cur->par->rson = 0;
+    }
+    else
+    {
+      
+    }
+
+    if (cur->par->lson == cur)
+    {
+      cur->par->lson = 0;
+    }
+    else
+    {
+      
+    }
+
+    X->nxt->prv = X->prv;
+    if (X->prv != 0)
+    {
+      X->prv->nxt = X->nxt;
+    }
+    else
+    {
+      
+    }
+
+    if (X == s->beg)
+    {
+      s->beg = s->beg->nxt;
+    }
+    else
+    {
+      
+    }
+
+    free(cur);
+    s->N--;
+    Balance3(s, p);
+    return;
   }
   else
   {
@@ -1298,117 +1102,99 @@ void erase3(struct AVL3 *s, struct node3 *X)
 
   if (X->rson == 0)
   {
+    cur = X;
+    p = cur->lson;
+    cur->h = -1;
+    cur = p;
+    while (1 > 0)
     {
-      cur = X;
-      p = cur->lson;
-      cur->h = -1;
-      cur = p;
-      while (1 > 0)
+      ll h1 = 0;
+      ll h2 = 0;
+      if (cur->lson != 0)
       {
-        ll h1 = 0;
-        ll h2 = 0;
-        if (cur->lson != 0)
-        {
-          {
-            h1 = cur->lson->h + 1;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if (cur->rson != 0)
-        {
-          {
-            h2 = cur->rson->h + 1;
-          }
-        }
-        else
-        {
-          
-        }
-
-        cur->h = max(h1, h2);
-        if (cur == s->root)
-        {
-          {
-            break;
-          }
-        }
-        else
-        {
-          
-        }
-
-        cur = cur->par;
-      }
-
-      cur = X;
-      if (X == s->root)
-      {
-        {
-          p->par = 0;
-          s->root = p;
-          return;
-        }
+        h1 = cur->lson->h + 1;
       }
       else
       {
         
       }
 
-      if (cur->par->rson == cur)
+      if (cur->rson != 0)
       {
-        {
-          cur->par->rson = p;
-        }
+        h2 = cur->rson->h + 1;
       }
       else
       {
         
       }
 
-      if (cur->par->lson == cur)
+      cur->h = max(h1, h2);
+      if (cur == s->root)
       {
-        {
-          cur->par->lson = p;
-        }
+        break;
       }
       else
       {
         
       }
 
-      p->par = cur->par;
-      X->nxt->prv = X->prv;
-      if (X->prv != 0)
-      {
-        {
-          X->prv->nxt = X->nxt;
-        }
-      }
-      else
-      {
-        
-      }
+      cur = cur->par;
+    }
 
-      if (X == s->beg)
-      {
-        {
-          s->beg = s->beg->nxt;
-        }
-      }
-      else
-      {
-        
-      }
-
-      free(cur);
-      s->N--;
-      Balance3(s, p);
+    cur = X;
+    if (X == s->root)
+    {
+      p->par = 0;
+      s->root = p;
       return;
     }
+    else
+    {
+      
+    }
+
+    if (cur->par->rson == cur)
+    {
+      cur->par->rson = p;
+    }
+    else
+    {
+      
+    }
+
+    if (cur->par->lson == cur)
+    {
+      cur->par->lson = p;
+    }
+    else
+    {
+      
+    }
+
+    p->par = cur->par;
+    X->nxt->prv = X->prv;
+    if (X->prv != 0)
+    {
+      X->prv->nxt = X->nxt;
+    }
+    else
+    {
+      
+    }
+
+    if (X == s->beg)
+    {
+      s->beg = s->beg->nxt;
+    }
+    else
+    {
+      
+    }
+
+    free(cur);
+    s->N--;
+    Balance3(s, p);
+    return;
   }
   else
   {
@@ -1417,117 +1203,99 @@ void erase3(struct AVL3 *s, struct node3 *X)
 
   if (X->lson == 0)
   {
+    cur = X;
+    p = cur->rson;
+    cur->h = -1;
+    cur = p;
+    while (1 > 0)
     {
-      cur = X;
-      p = cur->rson;
-      cur->h = -1;
-      cur = p;
-      while (1 > 0)
+      ll h1 = 0;
+      ll h2 = 0;
+      if (cur->lson != 0)
       {
-        ll h1 = 0;
-        ll h2 = 0;
-        if (cur->lson != 0)
-        {
-          {
-            h1 = cur->lson->h + 1;
-          }
-        }
-        else
-        {
-          
-        }
-
-        if (cur->rson != 0)
-        {
-          {
-            h2 = cur->rson->h + 1;
-          }
-        }
-        else
-        {
-          
-        }
-
-        cur->h = max(h1, h2);
-        if (cur == s->root)
-        {
-          {
-            break;
-          }
-        }
-        else
-        {
-          
-        }
-
-        cur = cur->par;
-      }
-
-      cur = X;
-      if (X == s->root)
-      {
-        {
-          p->par = 0;
-          s->root = p;
-          return;
-        }
+        h1 = cur->lson->h + 1;
       }
       else
       {
         
       }
 
-      if (cur->par->rson == cur)
+      if (cur->rson != 0)
       {
-        {
-          cur->par->rson = p;
-        }
+        h2 = cur->rson->h + 1;
       }
       else
       {
         
       }
 
-      if (cur->par->lson == cur)
+      cur->h = max(h1, h2);
+      if (cur == s->root)
       {
-        {
-          cur->par->lson = p;
-        }
+        break;
       }
       else
       {
         
       }
 
-      p->par = cur->par;
-      X->nxt->prv = X->prv;
-      if (X->prv != 0)
-      {
-        {
-          X->prv->nxt = X->nxt;
-        }
-      }
-      else
-      {
-        
-      }
+      cur = cur->par;
+    }
 
-      if (X == s->beg)
-      {
-        {
-          s->beg = s->beg->nxt;
-        }
-      }
-      else
-      {
-        
-      }
-
-      free(cur);
-      s->N--;
-      Balance3(s, p);
+    cur = X;
+    if (X == s->root)
+    {
+      p->par = 0;
+      s->root = p;
       return;
     }
+    else
+    {
+      
+    }
+
+    if (cur->par->rson == cur)
+    {
+      cur->par->rson = p;
+    }
+    else
+    {
+      
+    }
+
+    if (cur->par->lson == cur)
+    {
+      cur->par->lson = p;
+    }
+    else
+    {
+      
+    }
+
+    p->par = cur->par;
+    X->nxt->prv = X->prv;
+    if (X->prv != 0)
+    {
+      X->prv->nxt = X->nxt;
+    }
+    else
+    {
+      
+    }
+
+    if (X == s->beg)
+    {
+      s->beg = s->beg->nxt;
+    }
+    else
+    {
+      
+    }
+
+    free(cur);
+    s->N--;
+    Balance3(s, p);
+    return;
   }
   else
   {
@@ -1693,7 +1461,7 @@ void insert6(struct unordered_map6 *H, struct string k, struct string val, struc
   struct node6 *X;
   ll ind;
   X = (struct node6 *) malloc(sizeof(struct node6));
-  X->visited = 1;
+  X->visited = true;
   X->k = k;
   X->val = val;
   X->t1 = t1;
@@ -1705,10 +1473,8 @@ void insert6(struct unordered_map6 *H, struct string k, struct string val, struc
   {
     if (eq(H->a.a[ind].k, k))
     {
-      {
-        H->a.a[ind] = *X;
-        return;
-      }
+      H->a.a[ind] = *X;
+      return;
     }
     else
     {
@@ -1726,10 +1492,8 @@ void insert6(struct unordered_map6 *H, struct string k, struct string val, struc
   H->en->prv = &H->a.a[ind];
   if (H->N == 1)
   {
-    {
-      H->be = &H->a.a[ind];
-      return;
-    }
+    H->be = &H->a.a[ind];
+    return;
   }
   else
   {
@@ -1745,9 +1509,7 @@ struct node6 *find6(struct unordered_map6 *H, struct string k)
   {
     if (eq(H->a.a[ind].k, k))
     {
-      {
-        return &H->a.a[ind];
-      }
+      return &H->a.a[ind];
     }
     else
     {
@@ -1767,9 +1529,7 @@ void erase6(struct unordered_map6 *H, struct node6 *X)
   X->nxt->prv = X->prv;
   if (X->prv != 0)
   {
-    {
-      X->prv->nxt = X->nxt;
-    }
+    X->prv->nxt = X->nxt;
   }
   else
   {
@@ -1778,9 +1538,7 @@ void erase6(struct unordered_map6 *H, struct node6 *X)
 
   if (H->be == X)
   {
-    {
-      H->be = X->nxt;
-    }
+    H->be = X->nxt;
   }
   else
   {
@@ -1933,7 +1691,7 @@ void insert8(struct unordered_map8 *H, struct string k, struct string val)
 {
   ll ind;
   struct node8 *X = (struct node8 *) malloc(sizeof(struct node8));
-  X->visited = 1;
+  X->visited = true;
   X->k = k;
   X->val = val;
   X->pts = 0L;
@@ -1942,10 +1700,8 @@ void insert8(struct unordered_map8 *H, struct string k, struct string val)
   {
     if (eq(H->a.a[ind].k, k))
     {
-      {
-        H->a.a[ind] = *X;
-        return;
-      }
+      H->a.a[ind] = *X;
+      return;
     }
     else
     {
@@ -1963,10 +1719,8 @@ void insert8(struct unordered_map8 *H, struct string k, struct string val)
   H->en->prv = &H->a.a[ind];
   if (H->N == 1)
   {
-    {
-      H->be = &H->a.a[ind];
-      return;
-    }
+    H->be = &H->a.a[ind];
+    return;
   }
   else
   {
@@ -1982,9 +1736,7 @@ struct node8 *find8(struct unordered_map8 *H, struct string k)
   {
     if (eq(H->a.a[ind].k, k))
     {
-      {
-        return &H->a.a[ind];
-      }
+      return &H->a.a[ind];
     }
     else
     {
@@ -2004,9 +1756,7 @@ void erase8(struct unordered_map8 *H, struct node8 *X)
   X->nxt->prv = X->prv;
   if (X->prv != 0)
   {
-    {
-      X->prv->nxt = X->nxt;
-    }
+    X->prv->nxt = X->nxt;
   }
   else
   {
@@ -2015,9 +1765,7 @@ void erase8(struct unordered_map8 *H, struct node8 *X)
 
   if (H->be == X)
   {
-    {
-      H->be = X->nxt;
-    }
+    H->be = X->nxt;
   }
   else
   {
@@ -2041,432 +1789,370 @@ int main()
     c = new_sym_var(sizeof(char) * 8);
     if (c == 'a')
     {
+      struct string name;
+      struct string t1;
+      struct string t2;
+      struct node6 *X;
+      struct node8 *Y;
+      int s1;
+      int s2;
+      char insig;
+      name = inp();
+      t1 = inp();
+      t2 = inp();
+      s1 = new_sym_var(sizeof(int) * 8);
+      insig = new_sym_var(sizeof(char) * 8);
+      s2 = new_sym_var(sizeof(int) * 8);
+      insig = new_sym_var(sizeof(char) * 8);
+      X = find6(&mg, name);
+      if (X != end6(&mg))
       {
-        struct string name;
-        struct string t1;
-        struct string t2;
-        struct node6 *X;
-        struct node8 *Y;
-        int s1;
-        int s2;
-        char insig;
-        name = inp();
-        t1 = inp();
-        t2 = inp();
-        s1 = new_sym_var(sizeof(int) * 8);
-        insig = new_sym_var(sizeof(char) * 8);
-        s2 = new_sym_var(sizeof(int) * 8);
-        insig = new_sym_var(sizeof(char) * 8);
-        X = find6(&mg, name);
-        if (X != end6(&mg))
-        {
-          {
-            printf("%d Jogo existente.\n", line);
-            continue;
-          }
-        }
-        else
-        {
-          
-        }
-
-        Y = find8(&mt, t1);
-        if (Y == end8(&mt))
-        {
-          {
-            printf("%d Equipa inexistente.\n", line);
-            continue;
-          }
-        }
-        else
-        {
-          
-        }
-
-        Y = find8(&mt, t2);
-        if (Y == end8(&mt))
-        {
-          {
-            printf("%d Equipa inexistente.\n", line);
-            continue;
-          }
-        }
-        else
-        {
-          
-        }
-
-        insert6(&mg, name, name, t1, t2, s1, s2);
-        Y = find8(&mt, t1);
-        p.a = Y->pts;
-        p.s = t1;
-        Z = find3(&s, p);
-        erase3(&s, Z);
-        Y = find8(&mt, t2);
-        p.a = Y->pts;
-        p.s = t2;
-        Z = find3(&s, p);
-        erase3(&s, Z);
-        if (s1 > s2)
-        {
-          {
-            Y = find8(&mt, t1);
-            Y->pts++;
-          }
-        }
-        else
-        {
-          if (s2 > s1)
-          {
-            {
-              Y = find8(&mt, t2);
-              Y->pts++;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-        Y = find8(&mt, t1);
-        p.a = Y->pts;
-        p.s = t1;
-        insert3(&s, p);
-        Y = find8(&mt, t2);
-        p.a = Y->pts;
-        p.s = t2;
-        insert3(&s, p);
+        printf("%d Jogo existente.\n", line);
+        continue;
       }
+      else
+      {
+        
+      }
+
+      Y = find8(&mt, t1);
+      if (Y == end8(&mt))
+      {
+        printf("%d Equipa inexistente.\n", line);
+        continue;
+      }
+      else
+      {
+        
+      }
+
+      Y = find8(&mt, t2);
+      if (Y == end8(&mt))
+      {
+        printf("%d Equipa inexistente.\n", line);
+        continue;
+      }
+      else
+      {
+        
+      }
+
+      insert6(&mg, name, name, t1, t2, s1, s2);
+      Y = find8(&mt, t1);
+      p.a = Y->pts;
+      p.s = t1;
+      Z = find3(&s, p);
+      erase3(&s, Z);
+      Y = find8(&mt, t2);
+      p.a = Y->pts;
+      p.s = t2;
+      Z = find3(&s, p);
+      erase3(&s, Z);
+      if (s1 > s2)
+      {
+        Y = find8(&mt, t1);
+        Y->pts++;
+      }
+      else
+      {
+        if (s2 > s1)
+        {
+          Y = find8(&mt, t2);
+          Y->pts++;
+        }
+        else
+        {
+          
+        }
+
+      }
+
+      Y = find8(&mt, t1);
+      p.a = Y->pts;
+      p.s = t1;
+      insert3(&s, p);
+      Y = find8(&mt, t2);
+      p.a = Y->pts;
+      p.s = t2;
+      insert3(&s, p);
     }
     else
     {
       if (c == 'A')
       {
+        struct string name = inp();
+        struct node8 *X;
+        X = find8(&mt, name);
+        if (X != end8(&mt))
         {
-          struct string name = inp();
-          struct node8 *X;
-          X = find8(&mt, name);
-          if (X != end8(&mt))
-          {
-            {
-              printf("%d Equipa existente.\n", line);
-              continue;
-            }
-          }
-          else
-          {
-            {
-              insert8(&mt, name, name);
-            }
-          }
-
-          p.a = 0;
-          p.s = name;
-          insert3(&s, p);
+          printf("%d Equipa existente.\n", line);
+          continue;
         }
+        else
+        {
+          insert8(&mt, name, name);
+        }
+
+        p.a = 0;
+        p.s = name;
+        insert3(&s, p);
       }
       else
       {
         if (c == 'l')
         {
+          char insig;
+          struct node6 *cur = begin6(&mg);
+          for (i = 0; i < mg.N; i++)
           {
-            char insig;
-            struct node6 *cur = begin6(&mg);
-            for (i = 0; i < mg.N; i++)
-            {
-              printf("%d ", line);
-              print(cur->val);
-              printf(" ");
-              print(cur->t1);
-              printf(" ");
-              print(cur->t2);
-              printf(" ");
-              printf("%d %d\n", cur->s1, cur->s2);
-              cur = cur->nxt;
-            }
-
-            insig = new_sym_var(sizeof(char) * 8);
+            printf("%d ", line);
+            print(cur->val);
+            printf(" ");
+            print(cur->t1);
+            printf(" ");
+            print(cur->t2);
+            printf(" ");
+            printf("%d %d\n", cur->s1, cur->s2);
+            cur = cur->nxt;
           }
+
+          insig = new_sym_var(sizeof(char) * 8);
         }
         else
         {
           if (c == 'p')
           {
+            struct string name;
+            struct node6 *X;
+            name = inp();
+            X = find6(&mg, name);
+            if (X == end6(&mg))
             {
-              struct string name;
-              struct node6 *X;
-              name = inp();
-              X = find6(&mg, name);
-              if (X == end6(&mg))
-              {
-                {
-                  printf("%d Jogo inexistente.\n", line);
-                  continue;
-                }
-              }
-              else
-              {
-                
-              }
-
-              printf("%d ", line);
-              print(name);
-              printf(" ");
-              print(X->t1);
-              printf(" ");
-              print(X->t2);
-              printf(" ");
-              printf("%d %d\n", X->s1, X->s2);
+              printf("%d Jogo inexistente.\n", line);
+              continue;
             }
+            else
+            {
+              
+            }
+
+            printf("%d ", line);
+            print(name);
+            printf(" ");
+            print(X->t1);
+            printf(" ");
+            print(X->t2);
+            printf(" ");
+            printf("%d %d\n", X->s1, X->s2);
           }
           else
           {
             if (c == 'P')
             {
+              struct string name = inp();
+              struct node8 *X = find8(&mt, name);
+              if (X == end8(&mt))
               {
-                struct string name = inp();
-                struct node8 *X = find8(&mt, name);
-                if (X == end8(&mt))
-                {
-                  {
-                    printf("%d Equipa inexistente.\n", line);
-                  }
-                }
-                else
-                {
-                  {
-                    printf("%d ", line);
-                    print(name);
-                    printf(" %d\n", X->pts);
-                  }
-                }
-
+                printf("%d Equipa inexistente.\n", line);
               }
+              else
+              {
+                printf("%d ", line);
+                print(name);
+                printf(" %d\n", X->pts);
+              }
+
             }
             else
             {
               if (c == 'r')
               {
+                struct node8 *Y;
+                struct string name = inp();
+                struct node6 *X = find6(&mg, name);
+                if (X == end6(&mg))
                 {
-                  struct node8 *Y;
-                  struct string name = inp();
-                  struct node6 *X = find6(&mg, name);
-                  if (X == end6(&mg))
+                  printf("%d Jogo inexistente.\n", line);
+                  continue;
+                }
+                else
+                {
+                  
+                }
+
+                if (X->s1 > X->s2)
+                {
+                  Y = find8(&mt, X->t1);
+                  p.a = Y->pts;
+                  p.s = X->t1;
+                  Z = find3(&s, p);
+                  erase3(&s, Z);
+                  Y->pts--;
+                  p.a--;
+                  insert3(&s, p);
+                }
+                else
+                {
+                  if (X->s2 > X->s1)
                   {
-                    {
-                      printf("%d Jogo inexistente.\n", line);
-                      continue;
-                    }
+                    Y = find8(&mt, X->t2);
+                    p.a = Y->pts;
+                    p.s = X->t2;
+                    Z = find3(&s, p);
+                    erase3(&s, Z);
+                    Y->pts--;
+                    p.a--;
+                    insert3(&s, p);
                   }
                   else
                   {
                     
                   }
 
-                  if (X->s1 > X->s2)
-                  {
-                    {
-                      Y = find8(&mt, X->t1);
-                      p.a = Y->pts;
-                      p.s = X->t1;
-                      Z = find3(&s, p);
-                      erase3(&s, Z);
-                      Y->pts--;
-                      p.a--;
-                      insert3(&s, p);
-                    }
-                  }
-                  else
-                  {
-                    if (X->s2 > X->s1)
-                    {
-                      {
-                        Y = find8(&mt, X->t2);
-                        p.a = Y->pts;
-                        p.s = X->t2;
-                        Z = find3(&s, p);
-                        erase3(&s, Z);
-                        Y->pts--;
-                        p.a--;
-                        insert3(&s, p);
-                      }
-                    }
-                    else
-                    {
-                      
-                    }
-
-                  }
-
-                  erase6(&mg, X);
                 }
+
+                erase6(&mg, X);
               }
               else
               {
                 if (c == 's')
                 {
+                  struct string name = inp();
+                  int s1;
+                  int s2;
+                  char insig;
+                  struct node6 *X;
+                  struct node8 *Y;
+                  s1 = new_sym_var(sizeof(int) * 8);
+                  insig = new_sym_var(sizeof(char) * 8);
+                  s2 = new_sym_var(sizeof(int) * 8);
+                  insig = new_sym_var(sizeof(char) * 8);
+                  X = find6(&mg, name);
+                  if (X == end6(&mg))
                   {
-                    struct string name = inp();
-                    int s1;
-                    int s2;
-                    char insig;
-                    struct node6 *X;
-                    struct node8 *Y;
-                    s1 = new_sym_var(sizeof(int) * 8);
-                    insig = new_sym_var(sizeof(char) * 8);
-                    s2 = new_sym_var(sizeof(int) * 8);
-                    insig = new_sym_var(sizeof(char) * 8);
-                    X = find6(&mg, name);
-                    if (X == end6(&mg))
+                    printf("%d Jogo inexistente.\n", line);
+                    continue;
+                  }
+                  else
+                  {
+                    
+                  }
+
+                  Y = find8(&mt, X->t1);
+                  p.a = Y->pts;
+                  p.s = X->t1;
+                  Z = find3(&s, p);
+                  erase3(&s, Z);
+                  Y = find8(&mt, X->t2);
+                  p.a = Y->pts;
+                  p.s = X->t2;
+                  Z = find3(&s, p);
+                  erase3(&s, Z);
+                  if (X->s1 > X->s2)
+                  {
+                    Y = find8(&mt, X->t1);
+                    Y->pts--;
+                  }
+                  else
+                  {
+                    if (X->s2 > X->s1)
                     {
-                      {
-                        printf("%d Jogo inexistente.\n", line);
-                        continue;
-                      }
+                      Y = find8(&mt, X->t2);
+                      Y->pts--;
                     }
                     else
                     {
                       
                     }
 
-                    Y = find8(&mt, X->t1);
-                    p.a = Y->pts;
-                    p.s = X->t1;
-                    Z = find3(&s, p);
-                    erase3(&s, Z);
-                    Y = find8(&mt, X->t2);
-                    p.a = Y->pts;
-                    p.s = X->t2;
-                    Z = find3(&s, p);
-                    erase3(&s, Z);
-                    if (X->s1 > X->s2)
-                    {
-                      {
-                        Y = find8(&mt, X->t1);
-                        Y->pts--;
-                      }
-                    }
-                    else
-                    {
-                      if (X->s2 > X->s1)
-                      {
-                        {
-                          Y = find8(&mt, X->t2);
-                          Y->pts--;
-                        }
-                      }
-                      else
-                      {
-                        
-                      }
-
-                    }
-
-                    X->s1 = s1;
-                    X->s2 = s2;
-                    if (s1 > s2)
-                    {
-                      {
-                        Y = find8(&mt, X->t1);
-                        Y->pts++;
-                      }
-                    }
-                    else
-                    {
-                      if (s2 > s1)
-                      {
-                        {
-                          Y = find8(&mt, X->t2);
-                          Y->pts++;
-                        }
-                      }
-                      else
-                      {
-                        
-                      }
-
-                    }
-
-                    Y = find8(&mt, X->t1);
-                    p.a = Y->pts;
-                    p.s = X->t1;
-                    insert3(&s, p);
-                    Y = find8(&mt, X->t2);
-                    p.a = Y->pts;
-                    p.s = X->t2;
-                    insert3(&s, p);
                   }
+
+                  X->s1 = s1;
+                  X->s2 = s2;
+                  if (s1 > s2)
+                  {
+                    Y = find8(&mt, X->t1);
+                    Y->pts++;
+                  }
+                  else
+                  {
+                    if (s2 > s1)
+                    {
+                      Y = find8(&mt, X->t2);
+                      Y->pts++;
+                    }
+                    else
+                    {
+                      
+                    }
+
+                  }
+
+                  Y = find8(&mt, X->t1);
+                  p.a = Y->pts;
+                  p.s = X->t1;
+                  insert3(&s, p);
+                  Y = find8(&mt, X->t2);
+                  p.a = Y->pts;
+                  p.s = X->t2;
+                  insert3(&s, p);
                 }
                 else
                 {
                   if (c == 'g')
                   {
+                    char insig;
+                    int maxvalue;
+                    insig = new_sym_var(sizeof(char) * 8);
+                    if (s.N == 0)
                     {
-                      char insig;
-                      int maxvalue;
-                      insig = new_sym_var(sizeof(char) * 8);
-                      if (s.N == 0)
+                      continue;
+                    }
+                    else
+                    {
+                      
+                    }
+
+                    Z = end3(&s);
+                    Z = Z->prv;
+                    maxvalue = Z->val.a;
+                    while (Z->val.a == maxvalue)
+                    {
+                      if (Z == begin3(&s))
                       {
-                        {
-                          continue;
-                        }
+                        break;
                       }
                       else
                       {
                         
                       }
 
-                      Z = end3(&s);
-                      Z = Z->prv;
-                      maxvalue = Z->val.a;
-                      while (Z->val.a == maxvalue)
+                      if (Z->prv->val.a == maxvalue)
                       {
-                        if (Z == begin3(&s))
-                        {
-                          {
-                            break;
-                          }
-                        }
-                        else
-                        {
-                          
-                        }
-
-                        if (Z->prv->val.a == maxvalue)
-                        {
-                          {
-                            Z = Z->prv;
-                          }
-                        }
-                        else
-                        {
-                          {
-                            break;
-                          }
-                        }
-
+                        Z = Z->prv;
                       }
-
-                      printf("%d Melhores %d\n", line, maxvalue);
-                      while (Z != end3(&s))
+                      else
                       {
-                        printf("%d * ", line);
-                        print(Z->val.s);
-                        printf("\n");
-                        Z = Z->nxt;
+                        break;
                       }
 
                     }
+
+                    printf("%d Melhores %d\n", line, maxvalue);
+                    while (Z != end3(&s))
+                    {
+                      printf("%d * ", line);
+                      print(Z->val.s);
+                      printf("\n");
+                      Z = Z->nxt;
+                    }
+
                   }
                   else
                   {
                     if (c == 'x')
                     {
-                      {
-                        break;
-                      }
+                      break;
                     }
                     else
                     {

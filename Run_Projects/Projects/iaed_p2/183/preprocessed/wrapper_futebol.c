@@ -40,19 +40,17 @@ void *copiar_equipa(void *equipa_original)
   equipa *copia = (equipa *) malloc(sizeof(struct equipa));
   if (copia != 0)
   {
+    copia->nome = dupstring(temp->nome);
+    copia->jogos_ganhos = temp->jogos_ganhos;
+    if (copia->nome != 0)
     {
-      copia->nome = dupstring(temp->nome);
-      copia->jogos_ganhos = temp->jogos_ganhos;
-      if (copia->nome != 0)
-      {
-        return (void *) copia;
-      }
-      else
-      {
-        
-      }
-
+      return (void *) copia;
     }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -68,22 +66,20 @@ void *copiar_jogo(void *jogo_original)
   jogo *copia = (jogo *) malloc(sizeof(struct jogo));
   if (copia != 0)
   {
+    copia->nome = dupstring(temp->nome);
+    copia->nome_equipa1 = dupstring(temp->nome_equipa1);
+    copia->nome_equipa2 = dupstring(temp->nome_equipa2);
+    copia->score_eq1 = temp->score_eq1;
+    copia->score_eq2 = temp->score_eq2;
+    if (((copia->nome != 0) && (copia->nome_equipa1 != 0)) && (copia->nome_equipa2 != 0))
     {
-      copia->nome = dupstring(temp->nome);
-      copia->nome_equipa1 = dupstring(temp->nome_equipa1);
-      copia->nome_equipa2 = dupstring(temp->nome_equipa2);
-      copia->score_eq1 = temp->score_eq1;
-      copia->score_eq2 = temp->score_eq2;
-      if (((copia->nome != 0) && (copia->nome_equipa1 != 0)) && (copia->nome_equipa2 != 0))
-      {
-        return (void *) copia;
-      }
-      else
-      {
-        
-      }
-
+      return (void *) copia;
     }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -137,29 +133,23 @@ bool insere_jogo(tabela *t_jogos, tabela *t_equipas, char *chave, jogo *jogo)
   equipa2 = procura_equipa(t_equipas, jogo->nome_equipa2);
   if ((equipa1 != 0) && (equipa2 != 0))
   {
+    if (jogo->score_eq1 > jogo->score_eq2)
     {
-      if (jogo->score_eq1 > jogo->score_eq2)
+      equipa1->jogos_ganhos++;
+    }
+    else
+    {
+      if (jogo->score_eq2 > jogo->score_eq1)
       {
-        {
-          equipa1->jogos_ganhos++;
-        }
+        equipa2->jogos_ganhos++;
       }
       else
       {
-        if (jogo->score_eq2 > jogo->score_eq1)
-        {
-          {
-            equipa2->jogos_ganhos++;
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
     }
+
   }
   else
   {
@@ -176,20 +166,18 @@ bool insere_lista(lista_equipas *l, equipa *equipa)
   novo_elemento = (node_equipa *) malloc(sizeof(struct node_equipa));
   if (novo_elemento != 0)
   {
-    {
-      temp = l->head;
-      novo_elemento->equipa = equipa;
-      novo_elemento->next = temp;
-      l->head = novo_elemento;
-      return 1;
-    }
+    temp = l->head;
+    novo_elemento->equipa = equipa;
+    novo_elemento->next = temp;
+    l->head = novo_elemento;
+    return true;
   }
   else
   {
     
   }
 
-  return 0;
+  return false;
 }
 
 bool remove_equipa(tabela *t, char *chave)
@@ -209,17 +197,13 @@ bool remove_jogo(tabela *t_jogos, tabela *t_equipas, char *chave)
   vencedor_jogo = vencedor(jogo->score_eq1, jogo->score_eq2);
   if (vencedor_jogo == 1)
   {
-    {
-      equipa1->jogos_ganhos--;
-    }
+    equipa1->jogos_ganhos--;
   }
   else
   {
     if (vencedor_jogo == 2)
     {
-      {
-        equipa2->jogos_ganhos--;
-      }
+      equipa2->jogos_ganhos--;
     }
     else
     {
@@ -250,23 +234,17 @@ int vencedor(int score1, int score2)
 {
   if (score1 > score2)
   {
-    {
-      return 1;
-    }
+    return 1;
   }
   else
   {
     if (score2 > score1)
     {
-      {
-        return 2;
-      }
+      return 2;
     }
     else
     {
-      {
-        return 0;
-      }
+      return 0;
     }
 
   }
@@ -285,74 +263,72 @@ bool muda_pontuacao(tabela *t_equipas, jogo *jogo, int novo_score1, int novo_sco
   equipa2 = procura_equipa(t_equipas, jogo->nome_equipa2);
   if ((equipa1 != 0) && (equipa2 != 0))
   {
+    switch (anterior_vencedor)
     {
-      switch (anterior_vencedor)
+      case 0:
+        switch (novo_vencedor)
       {
         case 0:
-          switch (novo_vencedor)
-        {
-          case 0:
-            return 1;
-
-          case 1:
-            equipa1->jogos_ganhos++;
-            return 1;
-
-          case 2:
-            equipa2->jogos_ganhos++;
-            return 1;
-
-        }
-
-          break;
+          return true;
 
         case 1:
-          switch (novo_vencedor)
-        {
-          case 0:
-            equipa1->jogos_ganhos--;
-            return 1;
-
-          case 1:
-            return 1;
-
-          case 2:
-            equipa1->jogos_ganhos--;
-            equipa2->jogos_ganhos++;
-            return 1;
-
-        }
-
-          break;
+          equipa1->jogos_ganhos++;
+          return true;
 
         case 2:
-          switch (novo_vencedor)
-        {
-          case 0:
-            equipa2->jogos_ganhos--;
-            return 1;
-
-          case 1:
-            equipa2->jogos_ganhos--;
-            equipa1->jogos_ganhos++;
-            return 1;
-
-          case 2:
-            return 1;
-
-        }
-
+          equipa2->jogos_ganhos++;
+          return true;
 
       }
 
+        break;
+
+      case 1:
+        switch (novo_vencedor)
+      {
+        case 0:
+          equipa1->jogos_ganhos--;
+          return true;
+
+        case 1:
+          return true;
+
+        case 2:
+          equipa1->jogos_ganhos--;
+          equipa2->jogos_ganhos++;
+          return true;
+
+      }
+
+        break;
+
+      case 2:
+        switch (novo_vencedor)
+      {
+        case 0:
+          equipa2->jogos_ganhos--;
+          return true;
+
+        case 1:
+          equipa2->jogos_ganhos--;
+          equipa1->jogos_ganhos++;
+          return true;
+
+        case 2:
+          return true;
+
+      }
+
+
     }
+
   }
   else
   {
     
   }
 
-  return 0;
+  return false;
 }
 
 int compara_equipas(const void *e1_void, const void *e2_void)
@@ -361,9 +337,7 @@ int compara_equipas(const void *e1_void, const void *e2_void)
   equipa *e2 = *((equipa **) e2_void);
   if ((((e1 != 0) && (e2 != 0)) && (e1->nome != 0)) && (e2->nome != 0))
   {
-    {
-      return -strcmp(e1->nome, e2->nome);
-    }
+    return -strcmp(e1->nome, e2->nome);
   }
   else
   {
@@ -392,9 +366,7 @@ void ordenar_lista_equipas(lista_equipas *l, lista_equipas *resultados)
 
   if (equipas_ordenadas != 0)
   {
-    {
-      qsort(equipas_ordenadas, num_equipas, sizeof(struct equipa *), compara_equipas);
-    }
+    qsort(equipas_ordenadas, num_equipas, sizeof(struct equipa *), compara_equipas);
   }
   else
   {

@@ -86,38 +86,20 @@ void A(int idp, int new_idp, int ide, int new_ide, int qtd)
         }
         else
         {
+          int i;
+          struct Prodt prod = produtos[new_idp];
+          int prod_idp = encomendas[new_ide].idp;
+          new_peso = qtd * produtos[new_idp].peso;
+          encomendas[new_ide].n_unidades += new_peso;
+          produtos[new_idp].qtd -= qtd;
+          for (i = 0; i < prod_idp; i++)
           {
-            int i;
-            struct Prodt prod = produtos[new_idp];
-            int prod_idp = encomendas[new_ide].idp;
-            new_peso = qtd * produtos[new_idp].peso;
-            encomendas[new_ide].n_unidades += new_peso;
-            produtos[new_idp].qtd -= qtd;
-            for (i = 0; i < prod_idp; i++)
+            struct Prodt new_prod = encomendas[new_ide].produto[i];
+            if (new_prod.id == prod.id)
             {
-              struct Prodt new_prod = encomendas[new_ide].produto[i];
-              if (new_prod.id == prod.id)
-              {
-                {
-                  encomendas[new_ide].produto[i].qtd += qtd;
-                  prodNotFound = 0;
-                  break;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-            if (prodNotFound)
-            {
-              {
-                encomendas[new_ide].produto[prod_idp] = produtos[new_idp];
-                encomendas[new_ide].produto[prod_idp].qtd = qtd;
-                encomendas[new_ide].idp++;
-              }
+              encomendas[new_ide].produto[i].qtd += qtd;
+              prodNotFound = 0;
+              break;
             }
             else
             {
@@ -125,6 +107,18 @@ void A(int idp, int new_idp, int ide, int new_ide, int qtd)
             }
 
           }
+
+          if (prodNotFound)
+          {
+            encomendas[new_ide].produto[prod_idp] = produtos[new_idp];
+            encomendas[new_ide].produto[prod_idp].qtd = qtd;
+            encomendas[new_ide].idp++;
+          }
+          else
+          {
+            
+          }
+
         }
 
       }
@@ -139,10 +133,8 @@ void r(int idp, int new_idp, int qtd)
 {
   if (new_idp >= idp)
   {
-    {
-      printf("Impossivel remover stock do produto %d. Produto inexistente.\n", new_idp);
-      return;
-    }
+    printf("Impossivel remover stock do produto %d. Produto inexistente.\n", new_idp);
+    return;
   }
   else
   {
@@ -151,10 +143,8 @@ void r(int idp, int new_idp, int qtd)
 
   if (produtos[new_idp].qtd < qtd)
   {
-    {
-      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, new_idp);
-      return;
-    }
+    printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, new_idp);
+    return;
   }
   else
   {
@@ -178,40 +168,21 @@ void R(int ide, int idp, int new_ide, int new_idp)
     }
     else
     {
+      int i;
+      int rem_unidades;
+      int prod_idp = encomendas[new_ide].idp;
+      int prodNotFound = 1;
+      struct Prodt prod = produtos[new_idp];
+      for (i = 0; i < prod_idp; i++)
       {
-        int i;
-        int rem_unidades;
-        int prod_idp = encomendas[new_ide].idp;
-        int prodNotFound = 1;
-        struct Prodt prod = produtos[new_idp];
-        for (i = 0; i < prod_idp; i++)
+        struct Prodt new_prod = encomendas[new_ide].produto[i];
+        if (new_prod.id == prod.id)
         {
-          struct Prodt new_prod = encomendas[new_ide].produto[i];
-          if (new_prod.id == prod.id)
-          {
-            {
-              rem_unidades = encomendas[new_ide].produto[i].qtd * encomendas[new_ide].produto[i].peso;
-              encomendas[new_ide].n_unidades -= rem_unidades;
-              produtos[new_idp].qtd += encomendas[new_ide].produto[i].qtd;
-              prodNotFound = 0;
-              break;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-        if (!prodNotFound)
-        {
-          {
-            for (; i < prod_idp; i++)
-              encomendas[new_ide].produto[i] = encomendas[new_ide].produto[i + 1];
-
-            encomendas[new_ide].idp--;
-          }
+          rem_unidades = encomendas[new_ide].produto[i].qtd * encomendas[new_ide].produto[i].peso;
+          encomendas[new_ide].n_unidades -= rem_unidades;
+          produtos[new_idp].qtd += encomendas[new_ide].produto[i].qtd;
+          prodNotFound = 0;
+          break;
         }
         else
         {
@@ -219,6 +190,19 @@ void R(int ide, int idp, int new_ide, int new_idp)
         }
 
       }
+
+      if (!prodNotFound)
+      {
+        for (; i < prod_idp; i++)
+          encomendas[new_ide].produto[i] = encomendas[new_ide].produto[i + 1];
+
+        encomendas[new_ide].idp--;
+      }
+      else
+      {
+        
+      }
+
     }
 
   }
@@ -236,12 +220,10 @@ void C(int ide, int new_ide)
   }
   else
   {
-    {
-      for (i = 0; i < enc.idp; i++)
-        preco += enc.produto[i].preco * enc.produto[i].qtd;
+    for (i = 0; i < enc.idp; i++)
+      preco += enc.produto[i].preco * enc.produto[i].qtd;
 
-      printf("Custo da encomenda %i %i.\n", new_ide, preco);
-    }
+    printf("Custo da encomenda %i %i.\n", new_ide, preco);
   }
 
 }
@@ -256,26 +238,24 @@ void p(int idp, int ide, int preco, int new_idp)
   }
   else
   {
+    produtos[new_idp].preco = preco;
+    for (i = 0; i < ide; i++)
     {
-      produtos[new_idp].preco = preco;
-      for (i = 0; i < ide; i++)
+      for (j = 0; j < encomendas[i].idp; j++)
       {
-        for (j = 0; j < encomendas[i].idp; j++)
+        if (encomendas[i].produto[j].id == produtos[new_idp].id)
         {
-          if (encomendas[i].produto[j].id == produtos[new_idp].id)
-          {
-            encomendas[i].produto[j].preco = preco;
-          }
-          else
-          {
-            
-          }
-
+          encomendas[i].produto[j].preco = preco;
+        }
+        else
+        {
+          
         }
 
       }
 
     }
+
   }
 
 }
@@ -297,26 +277,22 @@ void E(int new_idp, int new_ide, int idp, int ide)
     }
     else
     {
+      prod_idp = encomendas[new_ide].idp;
+      for (i = 0; i < prod_idp; i++)
       {
-        prod_idp = encomendas[new_ide].idp;
-        for (i = 0; i < prod_idp; i++)
+        if (encomendas[new_ide].produto[i].id == produtos[new_idp].id)
         {
-          if (encomendas[new_ide].produto[i].id == produtos[new_idp].id)
-          {
-            {
-              qtd = encomendas[new_ide].produto[i].qtd;
-              break;
-            }
-          }
-          else
-          {
-            
-          }
-
+          qtd = encomendas[new_ide].produto[i].qtd;
+          break;
+        }
+        else
+        {
+          
         }
 
-        printf("%s %d.\n", produtos[new_idp].descr, qtd);
       }
+
+      printf("%s %d.\n", produtos[new_idp].descr, qtd);
     }
 
   }
@@ -335,48 +311,42 @@ void m(int new_idp, int idp, int ide)
   }
   else
   {
+    for (i = 0; i < ide; i++)
     {
-      for (i = 0; i < ide; i++)
+      for (j = 0; j < encomendas[i].idp; j++)
       {
-        for (j = 0; j < encomendas[i].idp; j++)
+        if (encomendas[i].produto[j].id == produtos[new_idp].id)
         {
-          if (encomendas[i].produto[j].id == produtos[new_idp].id)
+          if (encomendas[i].produto[j].qtd > max)
           {
-            {
-              if (encomendas[i].produto[j].qtd > max)
-              {
-                {
-                  max = encomendas[i].produto[j].qtd;
-                  enc = i;
-                }
-              }
-              else
-              {
-                
-              }
-
-              break;
-            }
+            max = encomendas[i].produto[j].qtd;
+            enc = i;
           }
           else
           {
             
           }
 
+          break;
+        }
+        else
+        {
+          
         }
 
       }
 
-      if (max)
-      {
-        printf("Maximo produto %d %d %d.\n", new_idp, enc, max);
-      }
-      else
-      {
-        
-      }
-
     }
+
+    if (max)
+    {
+      printf("Maximo produto %d %d %d.\n", new_idp, enc, max);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -403,17 +373,15 @@ void k2(struct Prodt prod[], int l_Lim, int m, int r_Lim)
     {
       if (aux[j].preco == aux[i].preco)
       {
+        if (aux[j].id > aux[i].id)
         {
-          if (aux[j].id > aux[i].id)
-          {
-            prod[k] = aux[i++];
-          }
-          else
-          {
-            prod[k] = aux[j--];
-          }
-
+          prod[k] = aux[i++];
         }
+        else
+        {
+          prod[k] = aux[j--];
+        }
+
       }
       else
       {
@@ -483,17 +451,13 @@ void k3(struct Prodt output[], int pos, int idp)
   {
     if (((int) strlen(output[i].descr)) > pos)
     {
-      {
-        new_output[cnt[(int) output[i].descr[pos]] - 1] = output[i];
-        cnt[(int) output[i].descr[pos]]--;
-      }
+      new_output[cnt[(int) output[i].descr[pos]] - 1] = output[i];
+      cnt[(int) output[i].descr[pos]]--;
     }
     else
     {
-      {
-        new_output[cnt[0] - 1] = output[i];
-        cnt[0]--;
-      }
+      new_output[cnt[0] - 1] = output[i];
+      cnt[0]--;
     }
 
   }
@@ -518,29 +482,27 @@ void L(int new_ide, int ide)
   }
   else
   {
+    for (i = 0; i < idp; i++)
     {
-      for (i = 0; i < idp; i++)
+      output[i] = enc.produto[i];
+      if (((int) strlen(output[i].descr)) > max)
       {
-        output[i] = enc.produto[i];
-        if (((int) strlen(output[i].descr)) > max)
-        {
-          max = strlen(output[i].descr);
-        }
-        else
-        {
-          
-        }
-
+        max = strlen(output[i].descr);
+      }
+      else
+      {
+        
       }
 
-      for (i = max - 1; i >= 0; i--)
-        k3(output, i, idp);
-
-      printf("Encomenda %d\n", new_ide);
-      for (i = 0; i < idp; i++)
-        printf("* %s %d %d\n", output[i].descr, output[i].preco, output[i].qtd);
-
     }
+
+    for (i = max - 1; i >= 0; i--)
+      k3(output, i, idp);
+
+    printf("Encomenda %d\n", new_ide);
+    for (i = 0; i < idp; i++)
+      printf("* %s %d %d\n", output[i].descr, output[i].preco, output[i].qtd);
+
   }
 
 }

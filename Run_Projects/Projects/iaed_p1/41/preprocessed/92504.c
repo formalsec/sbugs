@@ -178,16 +178,12 @@ void q()
   id = atoi(input[1]);
   if (id >= n_prod)
   {
-    {
-      printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", id);
-    }
+    printf("Impossivel adicionar produto %d ao stock. Produto inexistente.\n", id);
   }
   else
   {
-    {
-      i = lookfor(id);
-      product[i].stock += atoi(input[2]);
-    }
+    i = lookfor(id);
+    product[i].stock += atoi(input[2]);
   }
 
 }
@@ -201,28 +197,20 @@ void r()
   qnt = atoi(input[2]);
   if (id >= n_prod)
   {
-    {
-      printf("Impossivel remover stock do produto %d. Produto inexistente.\n", id);
-    }
+    printf("Impossivel remover stock do produto %d. Produto inexistente.\n", id);
   }
   else
   {
+    i = lookfor(id);
+    if (product[i].stock >= qnt)
     {
-      i = lookfor(id);
-      if (product[i].stock >= qnt)
-      {
-        {
-          product[i].stock -= qnt;
-        }
-      }
-      else
-      {
-        {
-          printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qnt, id);
-        }
-      }
-
+      product[i].stock -= qnt;
     }
+    else
+    {
+      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qnt, id);
+    }
+
   }
 
 }
@@ -238,10 +226,8 @@ void p()
   }
   else
   {
-    {
-      i = lookfor(id);
-      product[i].price = atoi(input[2]);
-    }
+    i = lookfor(id);
+    product[i].price = atoi(input[2]);
   }
 
   prod_sort = 0;
@@ -269,85 +255,65 @@ void A()
   qnt = atoi(input[3]);
   if (o_id >= n_order)
   {
-    {
-      printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", id, o_id);
-    }
+    printf("Impossivel adicionar produto %d a encomenda %d. Encomenda inexistente.\n", id, o_id);
   }
   else
   {
+    if (id >= n_prod)
     {
-      if (id >= n_prod)
+      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", id, o_id);
+    }
+    else
+    {
+      j = lookfor(id);
+      if (qnt > product[j].stock)
       {
-        {
-          printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", id, o_id);
-        }
+        printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", id, o_id);
       }
       else
       {
+        if (((qnt * product[j].weight) + order[o_id].weight) > 200)
         {
-          j = lookfor(id);
-          if (qnt > product[j].stock)
+          printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", id, o_id);
+        }
+        else
+        {
+          for (i = 0; i < order[o_id].n_products; i++)
           {
+            if (order[o_id].products[i] == id)
             {
-              printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", id, o_id);
+              order[o_id].weight += qnt * product[j].weight;
+              order[o_id].prod_qnt[i] += qnt;
+              flag = 0;
+              break;
             }
+            else
+            {
+              
+            }
+
+          }
+
+          if (flag)
+          {
+            order[o_id].products[order[o_id].n_products] = id;
+            order[o_id].weight += qnt * product[j].weight;
+            order[o_id].prod_qnt[order[o_id].n_products] = qnt;
+            order[o_id].n_products++;
           }
           else
           {
-            {
-              if (((qnt * product[j].weight) + order[o_id].weight) > 200)
-              {
-                {
-                  printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", id, o_id);
-                }
-              }
-              else
-              {
-                {
-                  for (i = 0; i < order[o_id].n_products; i++)
-                  {
-                    if (order[o_id].products[i] == id)
-                    {
-                      {
-                        order[o_id].weight += qnt * product[j].weight;
-                        order[o_id].prod_qnt[i] += qnt;
-                        flag = 0;
-                        break;
-                      }
-                    }
-                    else
-                    {
-                      
-                    }
-
-                  }
-
-                  if (flag)
-                  {
-                    {
-                      order[o_id].products[order[o_id].n_products] = id;
-                      order[o_id].weight += qnt * product[j].weight;
-                      order[o_id].prod_qnt[order[o_id].n_products] = qnt;
-                      order[o_id].n_products++;
-                    }
-                  }
-                  else
-                  {
-                    
-                  }
-
-                  product[j].stock -= qnt;
-                  order[o_id].order_sort = 0;
-                }
-              }
-
-            }
+            
           }
 
+          product[j].stock -= qnt;
+          order[o_id].order_sort = 0;
         }
+
       }
 
     }
+
   }
 
 }
@@ -366,39 +332,35 @@ void R()
   }
   else
   {
+    if (id >= n_prod)
     {
-      if (id >= n_prod)
+      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", id, o_id);
+    }
+    else
+    {
+      
+    }
+
+    for (i = 0; i < order[o_id].n_products; i++)
+    {
+      if (id == order[o_id].products[i])
       {
-        printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", id, o_id);
+        pos_prod = lookfor(id);
+        product[pos_prod].stock += order[o_id].prod_qnt[i];
+        order[o_id].weight -= product[pos_prod].weight * order[o_id].prod_qnt[i];
+        order[o_id].products[i] = order[o_id].products[order[o_id].n_products - 1];
+        order[o_id].prod_qnt[i] = order[o_id].prod_qnt[order[o_id].n_products - 1];
+        order[o_id].n_products--;
+        order[o_id].order_sort = 0;
+        break;
       }
       else
       {
         
       }
 
-      for (i = 0; i < order[o_id].n_products; i++)
-      {
-        if (id == order[o_id].products[i])
-        {
-          {
-            pos_prod = lookfor(id);
-            product[pos_prod].stock += order[o_id].prod_qnt[i];
-            order[o_id].weight -= product[pos_prod].weight * order[o_id].prod_qnt[i];
-            order[o_id].products[i] = order[o_id].products[order[o_id].n_products - 1];
-            order[o_id].prod_qnt[i] = order[o_id].prod_qnt[order[o_id].n_products - 1];
-            order[o_id].n_products--;
-            order[o_id].order_sort = 0;
-            break;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
     }
+
   }
 
 }
@@ -416,15 +378,13 @@ void C()
   }
   else
   {
+    for (i = 0; i < order[o_id].n_products; i++)
     {
-      for (i = 0; i < order[o_id].n_products; i++)
-      {
-        id = lookfor(order[o_id].products[i]);
-        price += product[id].price * order[o_id].prod_qnt[i];
-      }
-
-      printf("Custo da encomenda %d %d.\n", o_id, price);
+      id = lookfor(order[o_id].products[i]);
+      price += product[id].price * order[o_id].prod_qnt[i];
     }
+
+    printf("Custo da encomenda %d %d.\n", o_id, price);
   }
 
 }
@@ -445,35 +405,29 @@ void E()
   }
   else
   {
+    if (id >= n_prod)
     {
-      if (id >= n_prod)
-      {
-        printf("Impossivel listar produto %d. Produto inexistente.\n", id);
-      }
-      else
-      {
-        {
-          for (i = 0; i < order[o_id].n_products; i++)
-          {
-            if (id == order[o_id].products[i])
-            {
-              {
-                qnt = order[o_id].prod_qnt[i];
-                break;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-          printf("%s %d.\n", product[real_id].descr, qnt);
-        }
-      }
-
+      printf("Impossivel listar produto %d. Produto inexistente.\n", id);
     }
+    else
+    {
+      for (i = 0; i < order[o_id].n_products; i++)
+      {
+        if (id == order[o_id].products[i])
+        {
+          qnt = order[o_id].prod_qnt[i];
+          break;
+        }
+        else
+        {
+          
+        }
+
+      }
+
+      printf("%s %d.\n", product[real_id].descr, qnt);
+    }
+
   }
 
 }
@@ -492,28 +446,17 @@ void m()
   }
   else
   {
+    for (i = 0; i < n_order; i++)
     {
-      for (i = 0; i < n_order; i++)
+      for (j = 0; j < order[i].n_products; j++)
       {
-        for (j = 0; j < order[i].n_products; j++)
+        if (id == order[i].products[j])
         {
-          if (id == order[i].products[j])
+          if (order[i].prod_qnt[j] > qnt)
           {
-            {
-              if (order[i].prod_qnt[j] > qnt)
-              {
-                {
-                  qnt = order[i].prod_qnt[j];
-                  o_id = i;
-                  break;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
+            qnt = order[i].prod_qnt[j];
+            o_id = i;
+            break;
           }
           else
           {
@@ -521,19 +464,24 @@ void m()
           }
 
         }
+        else
+        {
+          
+        }
 
-      }
-
-      if (qnt > 0)
-      {
-        printf("Maximo produto %d %d %d.\n", id, o_id, qnt);
-      }
-      else
-      {
-        
       }
 
     }
+
+    if (qnt > 0)
+    {
+      printf("Maximo produto %d %d %d.\n", id, o_id, qnt);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -543,10 +491,8 @@ void l()
   int i;
   if (!prod_sort)
   {
-    {
-      merges_prod(0, n_prod - 1);
-      prod_sort = 1;
-    }
+    merges_prod(0, n_prod - 1);
+    prod_sort = 1;
   }
   else
   {
@@ -573,27 +519,23 @@ void L()
   }
   else
   {
+    if (!order[o_id].order_sort)
     {
-      if (!order[o_id].order_sort)
-      {
-        {
-          quick_sort(o_id, 0, order[o_id].n_products - 1);
-          order[o_id].order_sort = 1;
-        }
-      }
-      else
-      {
-        
-      }
-
-      printf("Encomenda %d\n", o_id);
-      for (i = 0; i < order[o_id].n_products; i++)
-      {
-        p1 = lookfor(order[o_id].products[i]);
-        printf("* %s %d %d\n", product[p1].descr, product[p1].price, order[o_id].prod_qnt[i]);
-      }
-
+      quick_sort(o_id, 0, order[o_id].n_products - 1);
+      order[o_id].order_sort = 1;
     }
+    else
+    {
+      
+    }
+
+    printf("Encomenda %d\n", o_id);
+    for (i = 0; i < order[o_id].n_products; i++)
+    {
+      p1 = lookfor(order[o_id].products[i]);
+      printf("* %s %d %d\n", product[p1].descr, product[p1].price, order[o_id].prod_qnt[i]);
+    }
+
   }
 
 }
@@ -658,35 +600,25 @@ void mg_prod(int left, int m, int right)
   {
     if (aux[j].price < aux[i].price)
     {
-      {
-        product[k] = aux[j--];
-      }
+      product[k] = aux[j--];
     }
     else
     {
       if (aux[j].price == aux[i].price)
       {
+        if (aux[j].id < aux[i].id)
         {
-          if (aux[j].id < aux[i].id)
-          {
-            {
-              product[k] = aux[j--];
-            }
-          }
-          else
-          {
-            {
-              product[k] = aux[i++];
-            }
-          }
-
+          product[k] = aux[j--];
         }
-      }
-      else
-      {
+        else
         {
           product[k] = aux[i++];
         }
+
+      }
+      else
+      {
+        product[k] = aux[i++];
       }
 
     }
@@ -701,11 +633,9 @@ void quick_sort(int o_id, int left, int right)
   int m;
   if (left < right)
   {
-    {
-      m = partition(o_id, left, right);
-      quick_sort(o_id, left, m - 1);
-      quick_sort(o_id, m + 1, right);
-    }
+    m = partition(o_id, left, right);
+    quick_sort(o_id, left, m - 1);
+    quick_sort(o_id, m + 1, right);
   }
   else
   {
@@ -726,20 +656,18 @@ int partition(int o_id, int left, int right)
     if (strcmp(product[id].descr, product[id_r].descr) < 0)
     {
       {
-        {
-          int t = order[o_id].products[i];
-          order[o_id].products[i] = order[o_id].products[j];
-          order[o_id].products[j] = t;
-        }
-        ;
-        {
-          int t = order[o_id].prod_qnt[i];
-          order[o_id].prod_qnt[i] = order[o_id].prod_qnt[j];
-          order[o_id].prod_qnt[j] = t;
-        }
-        ;
-        i++;
+        int t = order[o_id].products[i];
+        order[o_id].products[i] = order[o_id].products[j];
+        order[o_id].products[j] = t;
       }
+      ;
+      {
+        int t = order[o_id].prod_qnt[i];
+        order[o_id].prod_qnt[i] = order[o_id].prod_qnt[j];
+        order[o_id].prod_qnt[j] = t;
+      }
+      ;
+      i++;
     }
     else
     {

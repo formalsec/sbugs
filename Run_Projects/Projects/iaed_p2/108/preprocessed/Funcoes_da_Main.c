@@ -57,57 +57,49 @@ void a(int contador, int *max_jogos, int *max_equipas, int *n_jogos, p_jogo **p_
   score2 = new_sym_var(sizeof(int) * 8);
   if (JogoProcura(max_jogos, temp, p_tab_j) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", contador);
-    }
+    printf("%d Jogo existente.\n", contador);
   }
   else
   {
+    p_equipa pont_e1;
+    p_equipa pont_e2;
+    pont_e1 = EquipaProcura(max_equipas, equipa1, p_tab_e);
+    pont_e2 = EquipaProcura(max_equipas, equipa2, p_tab_e);
+    if ((pont_e1 == 0) || (pont_e2 == 0))
     {
-      p_equipa pont_e1;
-      p_equipa pont_e2;
-      pont_e1 = EquipaProcura(max_equipas, equipa1, p_tab_e);
-      pont_e2 = EquipaProcura(max_equipas, equipa2, p_tab_e);
-      if ((pont_e1 == 0) || (pont_e2 == 0))
+      printf("%d Equipa inexistente.\n", contador);
+    }
+    else
+    {
+      p_jogo jogo;
+      jogo = malloc(sizeof(struct jogo));
+      nome = __strdup(temp);
+      jogo->nome_j = nome;
+      jogo->score1 = score1;
+      jogo->score2 = score2;
+      if (score1 > score2)
       {
-        {
-          printf("%d Equipa inexistente.\n", contador);
-        }
+        pont_e1->jogos_ganhos += 1;
       }
       else
       {
+        if (score1 < score2)
         {
-          p_jogo jogo;
-          jogo = malloc(sizeof(struct jogo));
-          nome = __strdup(temp);
-          jogo->nome_j = nome;
-          jogo->score1 = score1;
-          jogo->score2 = score2;
-          if (score1 > score2)
-          {
-            pont_e1->jogos_ganhos += 1;
-          }
-          else
-          {
-            if (score1 < score2)
-            {
-              pont_e2->jogos_ganhos += 1;
-            }
-            else
-            {
-              
-            }
-
-          }
-
-          jogo->equipa1 = pont_e1;
-          jogo->equipa2 = pont_e2;
-          JogoInsereLista(jogo, head, tail);
-          JogoInsereHash(max_jogos, n_jogos, jogo, p_tab_j);
+          pont_e2->jogos_ganhos += 1;
         }
+        else
+        {
+          
+        }
+
       }
 
+      jogo->equipa1 = pont_e1;
+      jogo->equipa2 = pont_e2;
+      JogoInsereLista(jogo, head, tail);
+      JogoInsereHash(max_jogos, n_jogos, jogo, p_tab_j);
     }
+
   }
 
 }
@@ -125,19 +117,15 @@ void p(int contador, int *max_jogos, p_jogo **p_tab_j)
   jogo = JogoProcura(max_jogos, nome, p_tab_j);
   if (jogo == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", contador);
-    }
+    printf("%d Jogo inexistente.\n", contador);
   }
   else
   {
-    {
-      char *nome_e1;
-      char *nome_e2;
-      nome_e1 = jogo->equipa1->nome;
-      nome_e2 = jogo->equipa2->nome;
-      printf("%d %s %s %s %d %d\n", contador, jogo->nome_j, nome_e1, nome_e2, jogo->score1, jogo->score2);
-    }
+    char *nome_e1;
+    char *nome_e2;
+    nome_e1 = jogo->equipa1->nome;
+    nome_e2 = jogo->equipa2->nome;
+    printf("%d %s %s %s %d %d\n", contador, jogo->nome_j, nome_e1, nome_e2, jogo->score1, jogo->score2);
   }
 
 }
@@ -159,52 +147,48 @@ void s(int contador, int *max_jogos, p_jogo **p_tab_j)
   jogo = JogoProcura(max_jogos, nome, p_tab_j);
   if (jogo == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", contador);
-    }
+    printf("%d Jogo inexistente.\n", contador);
   }
   else
   {
+    if (novo_score1 > novo_score2)
     {
-      if (novo_score1 > novo_score2)
-      {
-        jogo->equipa1->jogos_ganhos += 1;
-      }
-      else
-      {
-        
-      }
-
-      if (novo_score2 > novo_score1)
-      {
-        jogo->equipa2->jogos_ganhos += 1;
-      }
-      else
-      {
-        
-      }
-
-      if (jogo->score1 > jogo->score2)
-      {
-        jogo->equipa1->jogos_ganhos -= 1;
-      }
-      else
-      {
-        
-      }
-
-      if (jogo->score2 > jogo->score1)
-      {
-        jogo->equipa2->jogos_ganhos -= 1;
-      }
-      else
-      {
-        
-      }
-
-      jogo->score1 = novo_score1;
-      jogo->score2 = novo_score2;
+      jogo->equipa1->jogos_ganhos += 1;
     }
+    else
+    {
+      
+    }
+
+    if (novo_score2 > novo_score1)
+    {
+      jogo->equipa2->jogos_ganhos += 1;
+    }
+    else
+    {
+      
+    }
+
+    if (jogo->score1 > jogo->score2)
+    {
+      jogo->equipa1->jogos_ganhos -= 1;
+    }
+    else
+    {
+      
+    }
+
+    if (jogo->score2 > jogo->score1)
+    {
+      jogo->equipa2->jogos_ganhos -= 1;
+    }
+    else
+    {
+      
+    }
+
+    jogo->score1 = novo_score1;
+    jogo->score2 = novo_score2;
   }
 
 }
@@ -226,27 +210,25 @@ void r(int contador, int *max_jogos, int *n_jogos, p_jogo **p_tab_j, link *head,
   }
   else
   {
+    if (jogo->score1 > jogo->score2)
     {
-      if (jogo->score1 > jogo->score2)
+      jogo->equipa1->jogos_ganhos -= 1;
+    }
+    else
+    {
+      if (jogo->score1 < jogo->score2)
       {
-        jogo->equipa1->jogos_ganhos -= 1;
+        jogo->equipa2->jogos_ganhos -= 1;
       }
       else
       {
-        if (jogo->score1 < jogo->score2)
-        {
-          jogo->equipa2->jogos_ganhos -= 1;
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      JogoApagaHash(jogo, max_jogos, n_jogos, p_tab_j);
-      JogoApagaLista(jogo, head, tail);
     }
+
+    JogoApagaHash(jogo, max_jogos, n_jogos, p_tab_j);
+    JogoApagaLista(jogo, head, tail);
   }
 
 }
@@ -265,55 +247,51 @@ void g(int contador, int n_equipas, int max_equipas, p_equipa *tab_e)
 {
   if (n_equipas > 0)
   {
+    int maior;
+    int i;
+    int j;
+    int n_vencedores;
+    const char **lista_vencedores;
+    lista_vencedores = malloc(n_equipas * (sizeof(char *)));
+    maior = 0;
+    j = 0;
+    n_vencedores = 0;
+    for (i = 0; i < max_equipas; i++)
     {
-      int maior;
-      int i;
-      int j;
-      int n_vencedores;
-      const char **lista_vencedores;
-      lista_vencedores = malloc(n_equipas * (sizeof(char *)));
-      maior = 0;
-      j = 0;
-      n_vencedores = 0;
-      for (i = 0; i < max_equipas; i++)
+      if ((tab_e[i] != 0) && (tab_e[i]->jogos_ganhos > maior))
       {
-        if ((tab_e[i] != 0) && (tab_e[i]->jogos_ganhos > maior))
-        {
-          maior = tab_e[i]->jogos_ganhos;
-        }
-        else
-        {
-          
-        }
-
+        maior = tab_e[i]->jogos_ganhos;
+      }
+      else
+      {
+        
       }
 
-      for (i = 0; i < max_equipas; i++)
-      {
-        if ((tab_e[i] != 0) && (tab_e[i]->jogos_ganhos == maior))
-        {
-          {
-            lista_vencedores[j] = tab_e[i]->nome;
-            j += 1;
-            n_vencedores += 1;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      qsort(lista_vencedores, n_vencedores, sizeof(char *), compara);
-      printf("%d Melhores %d\n", contador, maior);
-      for (i = 0; i < n_vencedores; i++)
-      {
-        printf("%d * %s\n", contador, lista_vencedores[i]);
-      }
-
-      free(lista_vencedores);
     }
+
+    for (i = 0; i < max_equipas; i++)
+    {
+      if ((tab_e[i] != 0) && (tab_e[i]->jogos_ganhos == maior))
+      {
+        lista_vencedores[j] = tab_e[i]->nome;
+        j += 1;
+        n_vencedores += 1;
+      }
+      else
+      {
+        
+      }
+
+    }
+
+    qsort(lista_vencedores, n_vencedores, sizeof(char *), compara);
+    printf("%d Melhores %d\n", contador, maior);
+    for (i = 0; i < n_vencedores; i++)
+    {
+      printf("%d * %s\n", contador, lista_vencedores[i]);
+    }
+
+    free(lista_vencedores);
   }
   else
   {
@@ -334,20 +312,16 @@ void A(int contador, int *max_equipas, int *n_equipas, p_equipa **p_tab_e)
   temp[10 - 1] = '\0';
   if (EquipaProcura(max_equipas, temp, p_tab_e) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", contador);
-    }
+    printf("%d Equipa existente.\n", contador);
   }
   else
   {
-    {
-      p_equipa equipa;
-      nome = __strdup(temp);
-      equipa = malloc(sizeof(struct equipa));
-      equipa->jogos_ganhos = 0;
-      equipa->nome = nome;
-      EquipaInsere(max_equipas, n_equipas, equipa, p_tab_e);
-    }
+    p_equipa equipa;
+    nome = __strdup(temp);
+    equipa = malloc(sizeof(struct equipa));
+    equipa->jogos_ganhos = 0;
+    equipa->nome = nome;
+    EquipaInsere(max_equipas, n_equipas, equipa, p_tab_e);
   }
 
 }
@@ -365,15 +339,11 @@ void P(int contador, int *max_equipas, p_equipa **p_tab_e)
   equipa = EquipaProcura(max_equipas, nome, p_tab_e);
   if (equipa == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", contador);
-    }
+    printf("%d Equipa inexistente.\n", contador);
   }
   else
   {
-    {
-      printf("%d %s %d\n", contador, equipa->nome, equipa->jogos_ganhos);
-    }
+    printf("%d %s %d\n", contador, equipa->nome, equipa->jogos_ganhos);
   }
 
 }
@@ -387,10 +357,8 @@ void liberta(int max_equipas, p_equipa *tab_e, p_jogo *tab_j, link head)
   {
     if (tab_e[i] != 0)
     {
-      {
-        free(tab_e[i]->nome);
-        free(tab_e[i]);
-      }
+      free(tab_e[i]->nome);
+      free(tab_e[i]);
     }
     else
     {

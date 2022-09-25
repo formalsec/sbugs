@@ -126,36 +126,28 @@ Junta *a(Junta *tudo, team equipa, int count)
   cabeca = search_hash(tudo->hashtable, head->nome);
   if (cabeca == 0)
   {
+    crazy1 = searchTeams(head->equipa1, equipa);
+    crazy2 = searchTeams(head->equipa2, equipa);
+    if ((crazy1 != 0) && (crazy2 != 0))
     {
-      crazy1 = searchTeams(head->equipa1, equipa);
-      crazy2 = searchTeams(head->equipa2, equipa);
-      if ((crazy1 != 0) && (crazy2 != 0))
-      {
-        {
-          tudo->lista = InsereEnd(tudo->lista, head);
-          equipa = analisaVitorias(head->equipa1, head->equipa2, head->score1, head->score2, equipa);
-          tudo->hashtable = insert_hash(tudo->hashtable, head, M);
-          free(head->nome);
-          free(head->equipa1);
-          free(head->equipa2);
-          free(head);
-          return tudo;
-        }
-      }
-      else
-      {
-        {
-          printf("%d Equipa inexistente.\n", count);
-        }
-      }
-
+      tudo->lista = InsereEnd(tudo->lista, head);
+      equipa = analisaVitorias(head->equipa1, head->equipa2, head->score1, head->score2, equipa);
+      tudo->hashtable = insert_hash(tudo->hashtable, head, M);
+      free(head->nome);
+      free(head->equipa1);
+      free(head->equipa2);
+      free(head);
+      return tudo;
     }
+    else
+    {
+      printf("%d Equipa inexistente.\n", count);
+    }
+
   }
   else
   {
-    {
-      printf("%d Jogo existente.\n", count);
-    }
+    printf("%d Jogo existente.\n", count);
   }
 
   free(head->nome);
@@ -181,17 +173,13 @@ team A(team headequipa, int count)
   cabeca = searchTeams(s, headequipa);
   if (cabeca == 0)
   {
-    {
-      cabeca = insertBegin(headequipa, s);
-      free(s);
-      return cabeca;
-    }
+    cabeca = insertBegin(headequipa, s);
+    free(s);
+    return cabeca;
   }
   else
   {
-    {
-      printf("%d Equipa existente.\n", count);
-    }
+    printf("%d Equipa existente.\n", count);
   }
 
   free(s);
@@ -216,17 +204,13 @@ void p(campeonato *tabela, int count)
   cabeca = search_hash(tabela, s);
   if (cabeca != 0)
   {
-    {
-      printf("%d %s %s %s %d %d\n", count, cabeca->j->nome, cabeca->j->equipa1, cabeca->j->equipa2, cabeca->j->score1, cabeca->j->score2);
-      free(s);
-    }
+    printf("%d %s %s %s %d %d\n", count, cabeca->j->nome, cabeca->j->equipa1, cabeca->j->equipa2, cabeca->j->score1, cabeca->j->score2);
+    free(s);
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", count);
-      free(s);
-    }
+    printf("%d Jogo inexistente.\n", count);
+    free(s);
   }
 
 }
@@ -247,17 +231,13 @@ void P(team headequipa, int count)
   vitorias = searchTeams(S, headequipa);
   if (vitorias != 0)
   {
-    {
-      free(S);
-      printf("%d %s %d\n", count, vitorias->nome, vitorias->vitorias);
-    }
+    free(S);
+    printf("%d %s %d\n", count, vitorias->nome, vitorias->vitorias);
   }
   else
   {
-    {
-      free(S);
-      printf("%d Equipa inexistente.\n", count);
-    }
+    free(S);
+    printf("%d Equipa inexistente.\n", count);
   }
 
 }
@@ -286,19 +266,15 @@ Junta *r(Junta *tudo, team equipa, int M, int Count)
   cabeca = search_hash(tudo->hashtable, text);
   if (cabeca != 0)
   {
-    {
-      Remove_Vitoria(cabeca->j->equipa1, cabeca->j->equipa2, cabeca->j->score1, cabeca->j->score2, equipa);
-      tudo->hashtable = removeEl(tudo->hashtable, text, M);
-      tudo->lista = RLista(tudo->lista, text);
-      free(text);
-      return tudo;
-    }
+    Remove_Vitoria(cabeca->j->equipa1, cabeca->j->equipa2, cabeca->j->score1, cabeca->j->score2, equipa);
+    tudo->hashtable = removeEl(tudo->hashtable, text, M);
+    tudo->lista = RLista(tudo->lista, text);
+    free(text);
+    return tudo;
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", Count);
-    }
+    printf("%d Jogo inexistente.\n", Count);
   }
 
   free(text);
@@ -326,102 +302,48 @@ Junta *s(Junta *tudo, team equipa, int Count)
   cabeca = search_hash(tudo->hashtable, string);
   if (cabeca != 0)
   {
+    if (s1 == s2)
     {
-      if (s1 == s2)
+      if (cabeca->j->score1 > cabeca->j->score2)
       {
-        {
-          if (cabeca->j->score1 > cabeca->j->score2)
-          {
-            {
-              Retira_Vitoria(cabeca->j->equipa1, equipa);
-              cabeca->j->score1 = s1;
-              cabeca->j->score2 = s2;
-            }
-          }
-          else
-          {
-            if (cabeca->j->score2 > cabeca->j->score1)
-            {
-              {
-                Retira_Vitoria(cabeca->j->equipa2, equipa);
-                cabeca->j->score1 = s1;
-                cabeca->j->score2 = s2;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-        }
+        Retira_Vitoria(cabeca->j->equipa1, equipa);
+        cabeca->j->score1 = s1;
+        cabeca->j->score2 = s2;
       }
       else
       {
-        if (s1 > s2)
+        if (cabeca->j->score2 > cabeca->j->score1)
         {
-          {
-            if (cabeca->j->score1 == cabeca->j->score2)
-            {
-              {
-                Adiciona_Vitoria(cabeca->j->equipa1, equipa);
-                cabeca->j->score1 = s1;
-                cabeca->j->score2 = s2;
-              }
-            }
-            else
-            {
-              if (cabeca->j->score1 < cabeca->j->score2)
-              {
-                {
-                  Retira_Vitoria(cabeca->j->equipa2, equipa);
-                  Adiciona_Vitoria(cabeca->j->equipa1, equipa);
-                  cabeca->j->score1 = s1;
-                  cabeca->j->score2 = s2;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-          }
+          Retira_Vitoria(cabeca->j->equipa2, equipa);
+          cabeca->j->score1 = s1;
+          cabeca->j->score2 = s2;
         }
         else
         {
-          if (s1 < s2)
+          
+        }
+
+      }
+
+    }
+    else
+    {
+      if (s1 > s2)
+      {
+        if (cabeca->j->score1 == cabeca->j->score2)
+        {
+          Adiciona_Vitoria(cabeca->j->equipa1, equipa);
+          cabeca->j->score1 = s1;
+          cabeca->j->score2 = s2;
+        }
+        else
+        {
+          if (cabeca->j->score1 < cabeca->j->score2)
           {
-            {
-              if (cabeca->j->score1 == cabeca->j->score2)
-              {
-                {
-                  Adiciona_Vitoria(cabeca->j->equipa2, equipa);
-                  cabeca->j->score1 = s1;
-                  cabeca->j->score2 = s2;
-                }
-              }
-              else
-              {
-                if (cabeca->j->score1 > cabeca->j->score2)
-                {
-                  {
-                    Retira_Vitoria(cabeca->j->equipa1, equipa);
-                    Adiciona_Vitoria(cabeca->j->equipa2, equipa);
-                    cabeca->j->score1 = s1;
-                    cabeca->j->score2 = s2;
-                  }
-                }
-                else
-                {
-                  
-                }
-
-              }
-
-            }
+            Retira_Vitoria(cabeca->j->equipa2, equipa);
+            Adiciona_Vitoria(cabeca->j->equipa1, equipa);
+            cabeca->j->score1 = s1;
+            cabeca->j->score2 = s2;
           }
           else
           {
@@ -431,19 +353,51 @@ Junta *s(Junta *tudo, team equipa, int Count)
         }
 
       }
+      else
+      {
+        if (s1 < s2)
+        {
+          if (cabeca->j->score1 == cabeca->j->score2)
+          {
+            Adiciona_Vitoria(cabeca->j->equipa2, equipa);
+            cabeca->j->score1 = s1;
+            cabeca->j->score2 = s2;
+          }
+          else
+          {
+            if (cabeca->j->score1 > cabeca->j->score2)
+            {
+              Retira_Vitoria(cabeca->j->equipa1, equipa);
+              Adiciona_Vitoria(cabeca->j->equipa2, equipa);
+              cabeca->j->score1 = s1;
+              cabeca->j->score2 = s2;
+            }
+            else
+            {
+              
+            }
 
-      cabeca->j->score1 = s1;
-      cabeca->j->score2 = s2;
-      cabana = Search_Copas(tudo->lista, cabeca->j->nome);
-      cabana->Pscore = s1;
-      cabana->Sscore = s2;
+          }
+
+        }
+        else
+        {
+          
+        }
+
+      }
+
     }
+
+    cabeca->j->score1 = s1;
+    cabeca->j->score2 = s2;
+    cabana = Search_Copas(tudo->lista, cabeca->j->nome);
+    cabana->Pscore = s1;
+    cabana->Sscore = s2;
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", Count);
-    }
+    printf("%d Jogo inexistente.\n", Count);
   }
 
   free(string);
@@ -457,52 +411,46 @@ void g(team cabeca, int Count)
   team t;
   if (cabeca != 0)
   {
+    int j = cabeca->vitorias;
+    int e = 0;
+    int i = 0;
+    for (t = cabeca; t != 0; t = t->next)
     {
-      int j = cabeca->vitorias;
-      int e = 0;
-      int i = 0;
-      for (t = cabeca; t != 0; t = t->next)
+      if (j < t->vitorias)
       {
-        if (j < t->vitorias)
-        {
-          {
-            j = t->vitorias;
-          }
-        }
-        else
-        {
-          
-        }
-
+        j = t->vitorias;
       }
-
-      for (t = cabeca; t != 0; t = t->next)
+      else
       {
-        if (j == t->vitorias)
-        {
-          {
-            size = strlen(t->nome) + 1;
-            nomes[e] = malloc(size);
-            strncpy(nomes[e], t->nome, size);
-            e++;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      printf("%d Melhores %d\n", Count, j);
-      qsort(nomes, e, sizeof(team), cmpfunc);
-      for (i = 0; i < e; i++)
-      {
-        printf("%d * %s\n", Count, nomes[i]);
-        free(nomes[i]);
+        
       }
 
     }
+
+    for (t = cabeca; t != 0; t = t->next)
+    {
+      if (j == t->vitorias)
+      {
+        size = strlen(t->nome) + 1;
+        nomes[e] = malloc(size);
+        strncpy(nomes[e], t->nome, size);
+        e++;
+      }
+      else
+      {
+        
+      }
+
+    }
+
+    printf("%d Melhores %d\n", Count, j);
+    qsort(nomes, e, sizeof(team), cmpfunc);
+    for (i = 0; i < e; i++)
+    {
+      printf("%d * %s\n", Count, nomes[i]);
+      free(nomes[i]);
+    }
+
   }
   else
   {
@@ -528,14 +476,12 @@ void x(Junta *tudo, team equipa)
   {
     if (tudo->hashtable[i] != 0)
     {
+      while (tudo->hashtable[i] != 0)
       {
-        while (tudo->hashtable[i] != 0)
-        {
-          tudo->hashtable[i] = libertahashtable(tudo->hashtable[i]);
-        }
-
-        free(tudo->hashtable[i]);
+        tudo->hashtable[i] = libertahashtable(tudo->hashtable[i]);
       }
+
+      free(tudo->hashtable[i]);
     }
     else
     {

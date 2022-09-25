@@ -149,9 +149,7 @@ equipas lookupequipa(equipas *hashtable_equipas, char *nome_equipa)
   {
     if (strcmp(x->nome_equipa, nome_equipa) == 0)
     {
-      {
-        return x;
-      }
+      return x;
     }
     else
     {

@@ -41,9 +41,7 @@ int CheckTeam(hashtable *tb, char *buffer, int key)
   {
     if (strcmp(n->pointer->nome, buffer) == 0)
     {
-      {
-        return 0;
-      }
+      return 0;
     }
     else
     {
@@ -70,21 +68,17 @@ Equipa *AddTeam(int NL, Equipa *headE, hashtable *hash)
   key = Hashcode(buffer);
   if (CheckTeam(hash, buffer, key))
   {
-    {
-      new = malloc(sizeof(Equipa));
-      new->nome = malloc((sizeof(char)) * (strlen(buffer) + 1));
-      strcpy(new->nome, buffer);
-      new->cont_ganhos = 0;
-      new->next = headE;
-      headE = new;
-      hash->heads[key] = AddNode(new, hash->heads[key]);
-    }
+    new = malloc(sizeof(Equipa));
+    new->nome = malloc((sizeof(char)) * (strlen(buffer) + 1));
+    strcpy(new->nome, buffer);
+    new->cont_ganhos = 0;
+    new->next = headE;
+    headE = new;
+    hash->heads[key] = AddNode(new, hash->heads[key]);
   }
   else
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-    }
+    printf("%d Equipa existente.\n", NL);
   }
 
   return headE;
@@ -105,30 +99,24 @@ void SearchTeam(int NL, hashtable *hash)
   key = Hashcode(buffer);
   if (!CheckTeam(hash, buffer, key))
   {
+    for (n = hash->heads[key]; n != 0; n = n->next)
     {
-      for (n = hash->heads[key]; n != 0; n = n->next)
+      if (strcmp(n->pointer->nome, buffer) == 0)
       {
-        if (strcmp(n->pointer->nome, buffer) == 0)
-        {
-          {
-            printf("%d %s %d\n", NL, n->pointer->nome, n->pointer->cont_ganhos);
-            break;
-          }
-        }
-        else
-        {
-          
-        }
-
+        printf("%d %s %d\n", NL, n->pointer->nome, n->pointer->cont_ganhos);
+        break;
+      }
+      else
+      {
+        
       }
 
     }
+
   }
   else
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-    }
+    printf("%d Equipa inexistente.\n", NL);
   }
 
 }
@@ -144,11 +132,9 @@ void AlphabeticalSort(char **vetor, int contador)
     {
       if (strcmp(vetor[j - 1], vetor[j]) > 0)
       {
-        {
-          aux = vetor[j - 1];
-          vetor[j - 1] = vetor[j];
-          vetor[j] = aux;
-        }
+        aux = vetor[j - 1];
+        vetor[j - 1] = vetor[j];
+        vetor[j] = aux;
       }
       else
       {
@@ -171,63 +157,55 @@ void FindTeamsWithMaxVictories(int NL, Equipa *headE)
   int i = 0;
   if (headE)
   {
+    while (atual != 0)
     {
-      while (atual != 0)
+      if (atual->cont_ganhos > max)
       {
-        if (atual->cont_ganhos > max)
-        {
-          {
-            contador = 1;
-            max = atual->cont_ganhos;
-          }
-        }
-        else
-        {
-          if (atual->cont_ganhos == max)
-          {
-            {
-              contador += 1;
-            }
-          }
-          else
-          {
-            
-          }
-
-        }
-
-        atual = atual->next;
+        contador = 1;
+        max = atual->cont_ganhos;
       }
-
-      vetor = malloc((sizeof(char *)) * contador);
-      while (atual2 != 0)
+      else
       {
-        if (atual2->cont_ganhos == max)
+        if (atual->cont_ganhos == max)
         {
-          {
-            vetor[i] = malloc((sizeof(char)) * (strlen(atual2->nome) + 1));
-            strcpy(vetor[i], atual2->nome);
-            i += 1;
-          }
+          contador += 1;
         }
         else
         {
           
         }
 
-        atual2 = atual2->next;
       }
 
-      AlphabeticalSort(vetor, contador);
-      printf("%d Melhores %d\n", NL, max);
-      for (i = 0; i < contador; i++)
-      {
-        printf("%d * %s\n", NL, vetor[i]);
-        free(vetor[i]);
-      }
-
-      free(vetor);
+      atual = atual->next;
     }
+
+    vetor = malloc((sizeof(char *)) * contador);
+    while (atual2 != 0)
+    {
+      if (atual2->cont_ganhos == max)
+      {
+        vetor[i] = malloc((sizeof(char)) * (strlen(atual2->nome) + 1));
+        strcpy(vetor[i], atual2->nome);
+        i += 1;
+      }
+      else
+      {
+        
+      }
+
+      atual2 = atual2->next;
+    }
+
+    AlphabeticalSort(vetor, contador);
+    printf("%d Melhores %d\n", NL, max);
+    for (i = 0; i < contador; i++)
+    {
+      printf("%d * %s\n", NL, vetor[i]);
+      free(vetor[i]);
+    }
+
+    free(vetor);
   }
   else
   {

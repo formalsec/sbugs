@@ -44,20 +44,16 @@ Jogo *procura_jogo_aux(char *nome, node_jogo *l_head)
   }
   else
   {
+    if (strcmp(l_head->jogo->nome, nome) == 0)
     {
-      if (strcmp(l_head->jogo->nome, nome) == 0)
-      {
-        return l_head->jogo;
-      }
-      else
-      {
-        {
-          copiaL = l_head->next;
-          return procura_jogo_aux(nome, copiaL);
-        }
-      }
-
+      return l_head->jogo;
     }
+    else
+    {
+      copiaL = l_head->next;
+      return procura_jogo_aux(nome, copiaL);
+    }
+
   }
 
 }
@@ -77,20 +73,16 @@ Equipa *procura_equipa_aux(char *nome, node_equipa *l_head)
   }
   else
   {
+    if (strcmp(l_head->equipa->nome, nome) == 0)
     {
-      if (strcmp(l_head->equipa->nome, nome) == 0)
-      {
-        return l_head->equipa;
-      }
-      else
-      {
-        {
-          copiaL = l_head->next;
-          return procura_equipa_aux(nome, copiaL);
-        }
-      }
-
+      return l_head->equipa;
     }
+    else
+    {
+      copiaL = l_head->next;
+      return procura_equipa_aux(nome, copiaL);
+    }
+
   }
 
 }
@@ -155,10 +147,8 @@ void func_a(list_jogo *ht_jogos[10007], list_equipa *ht_equipas[10007], list_jog
   score[1] = new_sym_var(sizeof(int) * 8);
   if (procura_jogo(nome, ht_jogos) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", nl);
-      return;
-    }
+    printf("%d Jogo existente.\n", nl);
+    return;
   }
   else
   {
@@ -169,10 +159,8 @@ void func_a(list_jogo *ht_jogos[10007], list_equipa *ht_equipas[10007], list_jog
   endEquipa2 = procura_equipa(eq2, ht_equipas);
   if ((endEquipa1 == 0) || (endEquipa2 == 0))
   {
-    {
-      printf("%d Equipa inexistente.\n", nl);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", nl);
+    return;
   }
   else
   {
@@ -216,10 +204,8 @@ void func_A(list_equipa *ht_equipas[10007], int nl)
   e = procura_equipa(nome, ht_equipas);
   if (e != 0)
   {
-    {
-      printf("%d Equipa existente.\n", nl);
-      return;
-    }
+    printf("%d Equipa existente.\n", nl);
+    return;
   }
   else
   {
@@ -244,10 +230,8 @@ void func_P(list_equipa *ht_equipas[10007], int nl)
   e = procura_equipa(nome, ht_equipas);
   if (e == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", nl);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", nl);
+    return;
   }
   else
   {
@@ -287,10 +271,8 @@ void func_s(list_jogo *ht_jogos[10007], list_equipa *ht_equipas[10007], int nl)
   jogo = procura_jogo(nome, ht_jogos);
   if (jogo == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", nl);
+    return;
   }
   else
   {
@@ -301,60 +283,52 @@ void func_s(list_jogo *ht_jogos[10007], list_equipa *ht_equipas[10007], int nl)
   equipa2 = procura_equipa(jogo->equipa2, ht_equipas);
   if (jogo->score[0] > jogo->score[1])
   {
+    if (score0 <= score1)
     {
-      if (score0 <= score1)
-      {
-        equipa1->vitorias--;
-      }
-      else
-      {
-        
-      }
-
+      equipa1->vitorias--;
     }
+    else
+    {
+      
+    }
+
   }
   else
   {
+    if (score0 > score1)
     {
-      if (score0 > score1)
-      {
-        equipa1->vitorias++;
-      }
-      else
-      {
-        
-      }
-
+      equipa1->vitorias++;
     }
+    else
+    {
+      
+    }
+
   }
 
   if (jogo->score[1] > jogo->score[0])
   {
+    if (score1 <= score0)
     {
-      if (score1 <= score0)
-      {
-        equipa2->vitorias--;
-      }
-      else
-      {
-        
-      }
-
+      equipa2->vitorias--;
     }
+    else
+    {
+      
+    }
+
   }
   else
   {
+    if (score1 > score0)
     {
-      if (score1 > score0)
-      {
-        equipa2->vitorias++;
-      }
-      else
-      {
-        
-      }
-
+      equipa2->vitorias++;
     }
+    else
+    {
+      
+    }
+
   }
 
   jogo->score[0] = score0;
@@ -377,10 +351,8 @@ void func_r(list_jogo *ht_jogos[10007], list_equipa *ht_equipas[10007], list_jog
   j = procura_jogo(nome, ht_jogos);
   if (j == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", nl);
+    return;
   }
   else
   {
@@ -389,10 +361,8 @@ void func_r(list_jogo *ht_jogos[10007], list_equipa *ht_equipas[10007], list_jog
 
   if (j->score[0] > j->score[1])
   {
-    {
-      e = procura_equipa(j->equipa1, ht_equipas);
-      e->vitorias--;
-    }
+    e = procura_equipa(j->equipa1, ht_equipas);
+    e->vitorias--;
   }
   else
   {
@@ -401,10 +371,8 @@ void func_r(list_jogo *ht_jogos[10007], list_equipa *ht_equipas[10007], list_jog
 
   if (j->score[0] < j->score[1])
   {
-    {
-      e = procura_equipa(j->equipa2, ht_equipas);
-      e->vitorias--;
-    }
+    e = procura_equipa(j->equipa2, ht_equipas);
+    e->vitorias--;
   }
   else
   {
@@ -419,10 +387,8 @@ void func_r(list_jogo *ht_jogos[10007], list_equipa *ht_equipas[10007], list_jog
 
   if (ordem_jogos->head == ordem_jogos->last)
   {
-    {
-      ordem_jogos->head = 0;
-      ordem_jogos->last = 0;
-    }
+    ordem_jogos->head = 0;
+    ordem_jogos->last = 0;
   }
   else
   {
@@ -492,9 +458,7 @@ void func_g(list_equipa *ht_equipas[10007], int nl)
     {
       if (membro_lista->equipa->vitorias == max)
       {
-        {
-          cont_max++;
-        }
+        cont_max++;
       }
       else
       {
@@ -503,10 +467,8 @@ void func_g(list_equipa *ht_equipas[10007], int nl)
 
       if (membro_lista->equipa->vitorias > max)
       {
-        {
-          max = membro_lista->equipa->vitorias;
-          cont_max = 1;
-        }
+        max = membro_lista->equipa->vitorias;
+        cont_max = 1;
       }
       else
       {
@@ -537,10 +499,8 @@ void func_g(list_equipa *ht_equipas[10007], int nl)
     {
       if (membro_lista->equipa->vitorias == max)
       {
-        {
-          v[poslivre] = membro_lista->equipa;
-          ++poslivre;
-        }
+        v[poslivre] = membro_lista->equipa;
+        ++poslivre;
       }
       else
       {
@@ -647,15 +607,13 @@ int main()
   ordem_jogos_last = ordem_jogos->last;
   if (ordem_jogos_last != 0)
   {
+    while (ordem_jogos_last != ordem_jogos->head)
     {
-      while (ordem_jogos_last != ordem_jogos->head)
-      {
-        ordem_jogos_last = ordem_jogos_last->previous;
-        free(ordem_jogos_last->next);
-      }
-
-      free(ordem_jogos_last);
+      ordem_jogos_last = ordem_jogos_last->previous;
+      free(ordem_jogos_last->next);
     }
+
+    free(ordem_jogos_last);
   }
   else
   {

@@ -68,17 +68,13 @@ void add_jogo(Jogos *jogos, node_jogos *jogo)
   jogo->previous = jogos->last;
   if (jogos->last)
   {
-    {
-      jogos->last->next = jogo;
-      jogos->last = jogo;
-    }
+    jogos->last->next = jogo;
+    jogos->last = jogo;
   }
   else
   {
-    {
-      jogos->head = jogo;
-      jogos->last = jogo;
-    }
+    jogos->head = jogo;
+    jogos->last = jogo;
   }
 
 }

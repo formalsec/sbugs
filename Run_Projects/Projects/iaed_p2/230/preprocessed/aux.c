@@ -30,19 +30,15 @@ void updateGamesWon(Game *gameData)
   List *teamWon;
   if (gameData->score1 > gameData->score2)
   {
-    {
-      teamWon = searchNode(htTeams, team1, 't');
-      ((Team *) teamWon->data)->gamesWon += 1;
-    }
+    teamWon = searchNode(htTeams, team1, 't');
+    ((Team *) teamWon->data)->gamesWon += 1;
   }
   else
   {
     if (gameData->score1 < gameData->score2)
     {
-      {
-        teamWon = searchNode(htTeams, team2, 't');
-        ((Team *) teamWon->data)->gamesWon += 1;
-      }
+      teamWon = searchNode(htTeams, team2, 't');
+      ((Team *) teamWon->data)->gamesWon += 1;
     }
     else
     {
@@ -57,10 +53,8 @@ void insertListGames(Game *gameData)
 {
   if ((!(numGames % 20)) && ((sizeListGames - numGames) < 20))
   {
-    {
-      listGames = realloc(listGames, (sizeListGames + 20) * (sizeof(char *)));
-      sizeListGames += 20;
-    }
+    listGames = realloc(listGames, (sizeListGames + 20) * (sizeof(char *)));
+    sizeListGames += 20;
   }
   else
   {
@@ -84,10 +78,8 @@ void removeGamesWon(Game *gameNode)
   List *teamWon;
   if (gameNode->score1 > gameNode->score2)
   {
-    {
-      teamWon = searchNode(htTeams, gameNode->team1, 't');
-      ((Team *) teamWon->data)->gamesWon -= 1;
-    }
+    teamWon = searchNode(htTeams, gameNode->team1, 't');
+    ((Team *) teamWon->data)->gamesWon -= 1;
   }
   else
   {
@@ -96,10 +88,8 @@ void removeGamesWon(Game *gameNode)
 
   if (gameNode->score1 < gameNode->score2)
   {
-    {
-      teamWon = searchNode(htTeams, gameNode->team2, 't');
-      ((Team *) teamWon->data)->gamesWon -= 1;
-    }
+    teamWon = searchNode(htTeams, gameNode->team2, 't');
+    ((Team *) teamWon->data)->gamesWon -= 1;
   }
   else
   {
@@ -115,13 +105,11 @@ void removeListGames(Game *gameNode)
   {
     if (strcmp(gameNode->name, listGames[i]) == 0)
     {
-      {
-        for (; i < (numGames - 1); i++)
-          listGames[i] = listGames[i + 1];
+      for (; i < (numGames - 1); i++)
+        listGames[i] = listGames[i + 1];
 
-        numGames -= 1;
-        return;
-      }
+      numGames -= 1;
+      return;
     }
     else
     {
@@ -138,19 +126,15 @@ void changeGamesWon(Game *gameNode, int score1, int score2)
   removeGamesWon(gameNode);
   if (score1 > score2)
   {
-    {
-      teamWon = searchNode(htTeams, gameNode->team1, 't');
-      ((Team *) teamWon->data)->gamesWon += 1;
-    }
+    teamWon = searchNode(htTeams, gameNode->team1, 't');
+    ((Team *) teamWon->data)->gamesWon += 1;
   }
   else
   {
     if (score2 > score1)
     {
-      {
-        teamWon = searchNode(htTeams, gameNode->team2, 't');
-        ((Team *) teamWon->data)->gamesWon += 1;
-      }
+      teamWon = searchNode(htTeams, gameNode->team2, 't');
+      ((Team *) teamWon->data)->gamesWon += 1;
     }
     else
     {
@@ -175,20 +159,16 @@ int findBestTeams(int *maxGamesWon)
       teamInfo = (Team *) node->data;
       if (teamInfo->gamesWon == (*maxGamesWon))
       {
-        {
-          listTeams[lastInd] = teamInfo->name;
-          lastInd += 1;
-        }
+        listTeams[lastInd] = teamInfo->name;
+        lastInd += 1;
       }
       else
       {
         if (teamInfo->gamesWon > (*maxGamesWon))
         {
-          {
-            *maxGamesWon = teamInfo->gamesWon;
-            listTeams[0] = teamInfo->name;
-            lastInd = 1;
-          }
+          *maxGamesWon = teamInfo->gamesWon;
+          listTeams[0] = teamInfo->name;
+          lastInd = 1;
         }
         else
         {
@@ -213,25 +193,21 @@ void sortListTeams(int ind)
   {
     if (strcmp(listTeams[i], listTeams[i + 1]) > 0)
     {
+      troca(i);
+      while ((i > 0) && (strcmp(listTeams[i - 1], listTeams[i]) > 0))
       {
-        troca(i);
-        while ((i > 0) && (strcmp(listTeams[i - 1], listTeams[i]) > 0))
+        if (strcmp(listTeams[i - 1], listTeams[i]) > 0)
         {
-          if (strcmp(listTeams[i - 1], listTeams[i]) > 0)
-          {
-            {
-              troca(i - 1);
-            }
-          }
-          else
-          {
-            
-          }
-
-          i--;
+          troca(i - 1);
+        }
+        else
+        {
+          
         }
 
+        i--;
       }
+
     }
     else
     {

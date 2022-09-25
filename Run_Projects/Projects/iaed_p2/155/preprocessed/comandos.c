@@ -39,17 +39,15 @@ void free_jogos(jogo *hash[2000])
   {
     if (hash[i] != 0)
     {
+      for (aux_1 = hash[i]; aux_1 != 0; aux_1 = aux_2)
       {
-        for (aux_1 = hash[i]; aux_1 != 0; aux_1 = aux_2)
-        {
-          aux_2 = aux_1->next;
-          free(aux_1->equipa_1);
-          free(aux_1->equipa_2);
-          free(aux_1->nome_jogo);
-          free(aux_1);
-        }
-
+        aux_2 = aux_1->next;
+        free(aux_1->equipa_1);
+        free(aux_1->equipa_2);
+        free(aux_1->nome_jogo);
+        free(aux_1);
       }
+
     }
     else
     {
@@ -69,15 +67,13 @@ void free_equipas(equipa *hash[2000])
   {
     if (hash[i] != 0)
     {
+      for (aux_1 = hash[i]; aux_1 != 0; aux_1 = aux_2)
       {
-        for (aux_1 = hash[i]; aux_1 != 0; aux_1 = aux_2)
-        {
-          aux_2 = aux_1->next;
-          free(aux_1->nome_equipa);
-          free(aux_1);
-        }
-
+        aux_2 = aux_1->next;
+        free(aux_1->nome_equipa);
+        free(aux_1);
       }
+
     }
     else
     {
@@ -144,14 +140,12 @@ jogo *Comando_a(int contador, equipa *hash_1[2000], jogo *hash_2[2000])
   aux_2 = hash_table_equipa_lookup(novo_jogo->equipa_2, hash_1);
   if ((jogo_aux != 0) && (strcmp(jogo_aux->nome_jogo, novo_jogo->nome_jogo) == 0))
   {
-    {
-      printf("%d Jogo existente.\n", contador);
-      free(novo_jogo->equipa_1);
-      free(novo_jogo->equipa_2);
-      free(novo_jogo->nome_jogo);
-      free(novo_jogo);
-      return 0;
-    }
+    printf("%d Jogo existente.\n", contador);
+    free(novo_jogo->equipa_1);
+    free(novo_jogo->equipa_2);
+    free(novo_jogo->nome_jogo);
+    free(novo_jogo);
+    return 0;
   }
   else
   {
@@ -160,42 +154,34 @@ jogo *Comando_a(int contador, equipa *hash_1[2000], jogo *hash_2[2000])
 
   if ((aux_1 == 0) || (aux_2 == 0))
   {
-    {
-      printf("%d Equipa inexistente.\n", contador);
-      free(novo_jogo->equipa_1);
-      free(novo_jogo->equipa_2);
-      free(novo_jogo->nome_jogo);
-      free(novo_jogo);
-      return 0;
-    }
+    printf("%d Equipa inexistente.\n", contador);
+    free(novo_jogo->equipa_1);
+    free(novo_jogo->equipa_2);
+    free(novo_jogo->nome_jogo);
+    free(novo_jogo);
+    return 0;
   }
   else
   {
+    if (novo_jogo->score_1 > novo_jogo->score_2)
     {
-      if (novo_jogo->score_1 > novo_jogo->score_2)
-      {
-        {
-          aux_1->vitorias++;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (novo_jogo->score_1 < novo_jogo->score_2)
-      {
-        {
-          aux_2->vitorias++;
-        }
-      }
-      else
-      {
-        
-      }
-
-      return novo_jogo;
+      aux_1->vitorias++;
     }
+    else
+    {
+      
+    }
+
+    if (novo_jogo->score_1 < novo_jogo->score_2)
+    {
+      aux_2->vitorias++;
+    }
+    else
+    {
+      
+    }
+
+    return novo_jogo;
   }
 
 }
@@ -217,18 +203,14 @@ equipa *Comando_A(int contador, equipa *hash[2000])
   equipa_aux = hash_table_equipa_lookup(nova_equipa->nome_equipa, hash);
   if ((equipa_aux != 0) && (strcmp(equipa_aux->nome_equipa, nova_equipa->nome_equipa) == 0))
   {
-    {
-      printf("%d Equipa existente.\n", contador);
-      free(nova_equipa->nome_equipa);
-      free(nova_equipa);
-      return 0;
-    }
+    printf("%d Equipa existente.\n", contador);
+    free(nova_equipa->nome_equipa);
+    free(nova_equipa);
+    return 0;
   }
   else
   {
-    {
-      return nova_equipa;
-    }
+    return nova_equipa;
   }
 
 }
@@ -241,14 +223,12 @@ int Comando_l(int contador, node *head)
   aux_2 = contador;
   if (head != 0)
   {
+    for (aux_1 = head; aux_1 != 0; aux_1 = aux_1->next)
     {
-      for (aux_1 = head; aux_1 != 0; aux_1 = aux_1->next)
-      {
-        aux_3 = aux_1->jogo;
-        printf("%d %s %s %s %d %d\n", aux_2, aux_3->nome_jogo, aux_3->equipa_1, aux_3->equipa_2, aux_3->score_1, aux_3->score_2);
-      }
-
+      aux_3 = aux_1->jogo;
+      printf("%d %s %s %s %d %d\n", aux_2, aux_3->nome_jogo, aux_3->equipa_1, aux_3->equipa_2, aux_3->score_1, aux_3->score_2);
     }
+
   }
   else
   {
@@ -271,15 +251,11 @@ void Comando_p(int contador, jogo *hash[2000])
   aux = hash_table_jogo_lookup(nome, hash);
   if (aux == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", contador);
-    }
+    printf("%d Jogo inexistente.\n", contador);
   }
   else
   {
-    {
-      printf("%d %s %s %s %d %d\n", contador, aux->nome_jogo, aux->equipa_1, aux->equipa_2, aux->score_1, aux->score_2);
-    }
+    printf("%d %s %s %s %d %d\n", contador, aux->nome_jogo, aux->equipa_1, aux->equipa_2, aux->score_1, aux->score_2);
   }
 
 }
@@ -297,15 +273,11 @@ void Comando_P(int contador, equipa *hash[2000])
   aux = hash_table_equipa_lookup(nome, hash);
   if (aux == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", contador);
-    }
+    printf("%d Equipa inexistente.\n", contador);
   }
   else
   {
-    {
-      printf("%d %s %d\n", contador, aux->nome_equipa, aux->vitorias);
-    }
+    printf("%d %s %d\n", contador, aux->nome_equipa, aux->vitorias);
   }
 
 }
@@ -324,40 +296,32 @@ jogo *Comando_r(int contador, jogo *hash_1[2000], equipa *hash_2[2000])
   aux_1 = hash_table_jogo_lookup(nome, hash_1);
   if (aux_1 == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", contador);
-      return 0;
-    }
+    printf("%d Jogo inexistente.\n", contador);
+    return 0;
   }
   else
   {
+    if (aux_1->score_1 > aux_1->score_2)
     {
-      if (aux_1->score_1 > aux_1->score_2)
-      {
-        {
-          equipa_aux = hash_table_equipa_lookup(aux_1->equipa_1, hash_2);
-          equipa_aux->vitorias--;
-        }
-      }
-      else
-      {
-        
-      }
-
-      if (aux_1->score_1 < aux_1->score_2)
-      {
-        {
-          equipa_aux = hash_table_equipa_lookup(aux_1->equipa_2, hash_2);
-          equipa_aux->vitorias--;
-        }
-      }
-      else
-      {
-        
-      }
-
-      return aux_1;
+      equipa_aux = hash_table_equipa_lookup(aux_1->equipa_1, hash_2);
+      equipa_aux->vitorias--;
     }
+    else
+    {
+      
+    }
+
+    if (aux_1->score_1 < aux_1->score_2)
+    {
+      equipa_aux = hash_table_equipa_lookup(aux_1->equipa_2, hash_2);
+      equipa_aux->vitorias--;
+    }
+    else
+    {
+      
+    }
+
+    return aux_1;
   }
 
 }
@@ -384,110 +348,88 @@ node *Comando_s(int contador, jogo *hash_1[2000], equipa *hash_2[2000], node *he
   aux_1 = hash_table_jogo_lookup(nome, hash_1);
   if (aux_1 == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", contador);
-    }
+    printf("%d Jogo inexistente.\n", contador);
   }
   else
   {
+    score_orig_1 = aux_1->score_1;
+    score_orig_2 = aux_1->score_2;
+    aux_1->score_1 = score_1;
+    aux_1->score_2 = score_2;
+    aux_2 = lista_lookup(nome, head);
+    aux_2->jogo->score_1 = score_1;
+    aux_2->jogo->score_2 = score_2;
+    equipa_1 = hash_table_equipa_lookup(aux_1->equipa_1, hash_2);
+    equipa_2 = hash_table_equipa_lookup(aux_1->equipa_2, hash_2);
+    if (score_orig_1 > score_orig_2)
     {
-      score_orig_1 = aux_1->score_1;
-      score_orig_2 = aux_1->score_2;
-      aux_1->score_1 = score_1;
-      aux_1->score_2 = score_2;
-      aux_2 = lista_lookup(nome, head);
-      aux_2->jogo->score_1 = score_1;
-      aux_2->jogo->score_2 = score_2;
-      equipa_1 = hash_table_equipa_lookup(aux_1->equipa_1, hash_2);
-      equipa_2 = hash_table_equipa_lookup(aux_1->equipa_2, hash_2);
-      if (score_orig_1 > score_orig_2)
+      if (score_1 == score_2)
       {
-        {
-          if (score_1 == score_2)
-          {
-            {
-              equipa_1->vitorias--;
-            }
-          }
-          else
-          {
-            if (score_1 < score_2)
-            {
-              {
-                equipa_1->vitorias--;
-                equipa_2->vitorias++;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-        }
+        equipa_1->vitorias--;
       }
       else
       {
-        if (score_orig_1 < score_orig_2)
+        if (score_1 < score_2)
         {
-          {
-            if (score_1 == score_2)
-            {
-              {
-                equipa_2->vitorias--;
-              }
-            }
-            else
-            {
-              
-            }
-
-            if (score_1 > score_2)
-            {
-              {
-                equipa_2->vitorias--;
-                equipa_1->vitorias++;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
+          equipa_1->vitorias--;
+          equipa_2->vitorias++;
         }
         else
         {
-          {
-            if (score_1 < score_2)
-            {
-              {
-                equipa_2->vitorias++;
-              }
-            }
-            else
-            {
-              
-            }
-
-            if (score_1 > score_2)
-            {
-              {
-                equipa_1->vitorias++;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
+          
         }
 
       }
 
     }
+    else
+    {
+      if (score_orig_1 < score_orig_2)
+      {
+        if (score_1 == score_2)
+        {
+          equipa_2->vitorias--;
+        }
+        else
+        {
+          
+        }
+
+        if (score_1 > score_2)
+        {
+          equipa_2->vitorias--;
+          equipa_1->vitorias++;
+        }
+        else
+        {
+          
+        }
+
+      }
+      else
+      {
+        if (score_1 < score_2)
+        {
+          equipa_2->vitorias++;
+        }
+        else
+        {
+          
+        }
+
+        if (score_1 > score_2)
+        {
+          equipa_1->vitorias++;
+        }
+        else
+        {
+          
+        }
+
+      }
+
+    }
+
   }
 
   return head;
@@ -527,10 +469,8 @@ int Comando_g(int contador, equipa *hash[2000])
     {
       if (aux_2->vitorias >= max_vitorias)
       {
-        {
-          max_vitorias = aux_2->vitorias;
-          existe = 1;
-        }
+        max_vitorias = aux_2->vitorias;
+        existe = 1;
       }
       else
       {
@@ -543,36 +483,32 @@ int Comando_g(int contador, equipa *hash[2000])
 
   if (existe == 1)
   {
+    for (k = 0; k < 2000; k++)
     {
-      for (k = 0; k < 2000; k++)
+      aux_3 = hash[k];
+      for (aux_4 = aux_3; aux_4 != 0; aux_4 = aux_4->next)
       {
-        aux_3 = hash[k];
-        for (aux_4 = aux_3; aux_4 != 0; aux_4 = aux_4->next)
+        if (aux_4->vitorias == max_vitorias)
         {
-          if (aux_4->vitorias == max_vitorias)
-          {
-            {
-              vetor_strings[index_matriz] = aux_4->nome_equipa;
-              index_matriz++;
-            }
-          }
-          else
-          {
-            
-          }
-
+          vetor_strings[index_matriz] = aux_4->nome_equipa;
+          index_matriz++;
+        }
+        else
+        {
+          
         }
 
       }
 
-      qsort(vetor_strings, index_matriz, sizeof(char *), Compara_strings);
-      printf("%d Melhores %d\n", cont, max_vitorias);
-      for (j = 0; j < index_matriz; j++)
-      {
-        printf("%d * %s\n", cont, vetor_strings[j]);
-      }
-
     }
+
+    qsort(vetor_strings, index_matriz, sizeof(char *), Compara_strings);
+    printf("%d Melhores %d\n", cont, max_vitorias);
+    for (j = 0; j < index_matriz; j++)
+    {
+      printf("%d * %s\n", cont, vetor_strings[j]);
+    }
+
   }
   else
   {

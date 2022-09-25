@@ -20,9 +20,7 @@ int compare(const void *a, const void *b)
   x = teamB->wins - teamA->wins;
   if (x == 0)
   {
-    {
-      x = strcmp(teamA->team, teamB->team);
-    }
+    x = strcmp(teamA->team, teamB->team);
   }
   else
   {
@@ -61,23 +59,12 @@ link a(link matches, tSTACK teams, int lineCounter)
   newMatch->score.score_team2 = new_sym_var(sizeof(int) * 8);
   if (STsearch(newMatch->name) == 0)
   {
+    if (tSTACKteamsearch(teams, newMatch->team1) != 0)
     {
-      if (tSTACKteamsearch(teams, newMatch->team1) != 0)
+      if (tSTACKteamsearch(teams, newMatch->team2) != 0)
       {
-        {
-          if (tSTACKteamsearch(teams, newMatch->team2) != 0)
-          {
-            {
-              matches = insertEnd(matches, _strdup(newMatch->name));
-              STinsert(matchdup(newMatch));
-            }
-          }
-          else
-          {
-            printf("%d Equipa inexistente.\n", lineCounter);
-          }
-
-        }
+        matches = insertEnd(matches, _strdup(newMatch->name));
+        STinsert(matchdup(newMatch));
       }
       else
       {
@@ -85,12 +72,15 @@ link a(link matches, tSTACK teams, int lineCounter)
       }
 
     }
+    else
+    {
+      printf("%d Equipa inexistente.\n", lineCounter);
+    }
+
   }
   else
   {
-    {
-      printf("%d Jogo existente.\n", lineCounter);
-    }
+    printf("%d Jogo existente.\n", lineCounter);
   }
 
   free(newMatch->name);
@@ -164,10 +154,8 @@ link r(link matches, int lineCounter)
   name[10 - 1] = '\0';
   if (STsearch(name) != 0)
   {
-    {
-      STdelete(name);
-      matches = delete(matches, name);
-    }
+    STdelete(name);
+    matches = delete(matches, name);
   }
   else
   {
@@ -196,10 +184,8 @@ void s(int lineCounter)
   match = STsearch(name);
   if (match != 0)
   {
-    {
-      match->score.score_team1 = newscore1;
-      match->score.score_team2 = newscore2;
-    }
+    match->score.score_team1 = newscore1;
+    match->score.score_team2 = newscore2;
   }
   else
   {
@@ -221,16 +207,12 @@ void A(tSTACK teams, int lineCounter)
   newteam[10 - 1] = '\0';
   if (tSTACKteamsearch(teams, newteam) == 0)
   {
-    {
-      tSTACKpush(teams, newteam);
-    }
+    tSTACKpush(teams, newteam);
   }
   else
   {
-    {
-      printf("%d Equipa existente.\n", lineCounter);
-      free(newteam);
-    }
+    printf("%d Equipa existente.\n", lineCounter);
+    free(newteam);
   }
 
 }
@@ -248,63 +230,55 @@ void P(link matches, tSTACK teams, int lineCounter)
   team[10 - 1] = '\0';
   if (tSTACKteamsearch(teams, team) != 0)
   {
+    link t;
+    MATCH match;
+    for (t = matches; t != 0; t = t->next)
     {
-      link t;
-      MATCH match;
-      for (t = matches; t != 0; t = t->next)
+      match = STsearch(t->name);
+      if (match != 0)
       {
-        match = STsearch(t->name);
-        if (match != 0)
+        if (strcmp(match->team1, team) == 0)
         {
+          if (match->score.score_team1 > match->score.score_team2)
           {
-            if (strcmp(match->team1, team) == 0)
-            {
-              {
-                if (match->score.score_team1 > match->score.score_team2)
-                {
-                  wins++;
-                }
-                else
-                {
-                  
-                }
-
-              }
-            }
-            else
-            {
-              if (strcmp(match->team2, team) == 0)
-              {
-                {
-                  if (match->score.score_team2 > match->score.score_team1)
-                  {
-                    wins++;
-                  }
-                  else
-                  {
-                    
-                  }
-
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
+            wins++;
           }
+          else
+          {
+            
+          }
+
         }
         else
         {
-          
+          if (strcmp(match->team2, team) == 0)
+          {
+            if (match->score.score_team2 > match->score.score_team1)
+            {
+              wins++;
+            }
+            else
+            {
+              
+            }
+
+          }
+          else
+          {
+            
+          }
+
         }
 
       }
+      else
+      {
+        
+      }
 
-      printf("%d %s %d\n", lineCounter, team, wins);
     }
+
+    printf("%d %s %d\n", lineCounter, team, wins);
   }
   else
   {
@@ -326,100 +300,90 @@ void g(link matches, tSTACK teams, int lineCounter)
   twArray = (teamwins *) malloc(((sizeof(teamwins)) * 1024) * len);
   if (!tSTACKempty(teams))
   {
+    tlink t;
+    link v;
+    MATCH match;
+    for (t = teams->head; t != 0; t = t->next)
     {
-      tlink t;
-      link v;
-      MATCH match;
-      for (t = teams->head; t != 0; t = t->next)
+      wins = 0;
+      for (v = matches; v != 0; v = v->next)
       {
-        wins = 0;
-        for (v = matches; v != 0; v = v->next)
+        match = STsearch(v->name);
+        if (match != 0)
         {
-          match = STsearch(v->name);
-          if (match != 0)
+          if (strcmp(match->team1, t->team) == 0)
           {
+            if (match->score.score_team1 > match->score.score_team2)
             {
-              if (strcmp(match->team1, t->team) == 0)
-              {
-                {
-                  if (match->score.score_team1 > match->score.score_team2)
-                  {
-                    wins++;
-                  }
-                  else
-                  {
-                    
-                  }
-
-                }
-              }
-              else
-              {
-                if (strcmp(match->team2, t->team) == 0)
-                {
-                  {
-                    if (match->score.score_team2 > match->score.score_team1)
-                    {
-                      wins++;
-                    }
-                    else
-                    {
-                      
-                    }
-
-                  }
-                }
-                else
-                {
-                  
-                }
-
-              }
-
+              wins++;
             }
+            else
+            {
+              
+            }
+
           }
           else
           {
-            
+            if (strcmp(match->team2, t->team) == 0)
+            {
+              if (match->score.score_team2 > match->score.score_team1)
+              {
+                wins++;
+              }
+              else
+              {
+                
+              }
+
+            }
+            else
+            {
+              
+            }
+
           }
 
-        }
-
-        if (wins > mostwins)
-        {
-          {
-            mostwins = wins;
-          }
         }
         else
         {
           
         }
 
-        twArray[i].team = _strdup(t->team);
-        twArray[i].wins = wins;
-        i++;
       }
 
-      qsort(twArray, len, sizeof(teamwins), compare);
-      printf("%d Melhores %d\n", lineCounter, mostwins);
-      i = 0;
-      while (twArray[i].wins == mostwins)
+      if (wins > mostwins)
       {
-        if (twArray[i].team == 0)
-        {
-          break;
-        }
-        else
-        {
-          
-        }
-
-        printf("%d * %s\n", lineCounter, twArray[i].team);
-        i++;
+        mostwins = wins;
+      }
+      else
+      {
+        
       }
 
+      twArray[i].team = _strdup(t->team);
+      twArray[i].wins = wins;
+      i++;
     }
+
+    qsort(twArray, len, sizeof(teamwins), compare);
+    printf("%d Melhores %d\n", lineCounter, mostwins);
+    i = 0;
+    while (twArray[i].wins == mostwins)
+    {
+      if (twArray[i].team == 0)
+      {
+        break;
+      }
+      else
+      {
+        
+      }
+
+      printf("%d * %s\n", lineCounter, twArray[i].team);
+      i++;
+    }
+
   }
   else
   {

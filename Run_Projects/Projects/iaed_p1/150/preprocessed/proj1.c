@@ -181,23 +181,19 @@ void A()
         }
         else
         {
+          if (!matriz[ide][idp])
           {
-            if (!matriz[ide][idp])
-            {
-              {
-                adicionaOrdenado(encomendas[ide].ordenado, encomendas[ide].numero_produtos, idp, 'd');
-                encomendas[ide].numero_produtos++;
-              }
-            }
-            else
-            {
-              
-            }
-
-            matriz[ide][idp] += quant;
-            encomendas[ide].peso += stock[idp].peso * quant;
-            stock[idp].quantEmEncomendas += quant;
+            adicionaOrdenado(encomendas[ide].ordenado, encomendas[ide].numero_produtos, idp, 'd');
+            encomendas[ide].numero_produtos++;
           }
+          else
+          {
+            
+          }
+
+          matriz[ide][idp] += quant;
+          encomendas[ide].peso += stock[idp].peso * quant;
+          stock[idp].quantEmEncomendas += quant;
         }
 
       }
@@ -252,27 +248,16 @@ void R()
     }
     else
     {
+      if (encomendas[ide].numero_produtos)
       {
-        if (encomendas[ide].numero_produtos)
+        quant = matriz[ide][idp];
+        if (quant)
         {
-          {
-            quant = matriz[ide][idp];
-            if (quant)
-            {
-              {
-                matriz[ide][idp] = 0;
-                encomendas[ide].peso -= stock[idp].peso * quant;
-                stock[idp].quantEmEncomendas -= quant;
-                removeOrdenado(encomendas[ide].ordenado, encomendas[ide].numero_produtos, idp);
-                encomendas[ide].numero_produtos--;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
+          matriz[ide][idp] = 0;
+          encomendas[ide].peso -= stock[idp].peso * quant;
+          stock[idp].quantEmEncomendas -= quant;
+          removeOrdenado(encomendas[ide].ordenado, encomendas[ide].numero_produtos, idp);
+          encomendas[ide].numero_produtos--;
         }
         else
         {
@@ -280,6 +265,11 @@ void R()
         }
 
       }
+      else
+      {
+        
+      }
+
     }
 
   }
@@ -301,25 +291,21 @@ void C()
   }
   else
   {
+    for (i = 0, j = 0; (i < 10000) && (j < max); i++)
     {
-      for (i = 0, j = 0; (i < 10000) && (j < max); i++)
+      if (matriz[ide][i])
       {
-        if (matriz[ide][i])
-        {
-          {
-            j++;
-            custo += matriz[ide][i] * stock[i].preco;
-          }
-        }
-        else
-        {
-          
-        }
-
+        j++;
+        custo += matriz[ide][i] * stock[i].preco;
+      }
+      else
+      {
+        
       }
 
-      printf("Custo da encomenda %d %d.\n", ide, custo);
     }
+
+    printf("Custo da encomenda %d %d.\n", ide, custo);
   }
 
 }
@@ -336,13 +322,11 @@ void p()
   }
   else
   {
-    {
-      removeOrdenado(stock_ordenado, num_produtos, idp);
-      num_produtos--;
-      stock[idp].preco = preco;
-      adicionaOrdenado(stock_ordenado, num_produtos, idp, 'p');
-      num_produtos++;
-    }
+    removeOrdenado(stock_ordenado, num_produtos, idp);
+    num_produtos--;
+    stock[idp].preco = preco;
+    adicionaOrdenado(stock_ordenado, num_produtos, idp, 'p');
+    num_produtos++;
   }
 
 }
@@ -386,28 +370,14 @@ void m()
   }
   else
   {
+    maxValor = INT_MIN;
+    for (i = 0; i < 500; i++)
     {
-      maxValor = INT_MIN;
-      for (i = 0; i < 500; i++)
+      valor = matriz[i][idp];
+      if (valor > maxValor)
       {
-        valor = matriz[i][idp];
-        if (valor > maxValor)
-        {
-          {
-            maxValor = valor;
-            max = i;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      if (maxValor)
-      {
-        printf("Maximo produto %d %d %d.\n", idp, max, maxValor);
+        maxValor = valor;
+        max = i;
       }
       else
       {
@@ -415,6 +385,16 @@ void m()
       }
 
     }
+
+    if (maxValor)
+    {
+      printf("Maximo produto %d %d %d.\n", idp, max, maxValor);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -447,16 +427,14 @@ void L()
   }
   else
   {
+    n = encomendas[ide].numero_produtos;
+    printf("Encomenda %d\n", ide);
+    for (i = 0; i < n; i++)
     {
-      n = encomendas[ide].numero_produtos;
-      printf("Encomenda %d\n", ide);
-      for (i = 0; i < n; i++)
-      {
-        p = stock[encomendas[ide].ordenado[i]];
-        printf("* %s %d %d\n", p.desc, p.preco, matriz[ide][p.id]);
-      }
-
+      p = stock[encomendas[ide].ordenado[i]];
+      printf("* %s %d %d\n", p.desc, p.preco, matriz[ide][p.id]);
     }
+
   }
 
 }
@@ -465,18 +443,16 @@ int cmpProdutos(Produto p1, Produto p2, char key)
 {
   if (key == 'p')
   {
+    if (p1.preco == p2.preco)
     {
-      if (p1.preco == p2.preco)
-      {
-        return 0;
-      }
-      else
-      {
-        
-      }
-
-      return (p1.preco > p2.preco) ? (1) : (-1);
+      return 0;
     }
+    else
+    {
+      
+    }
+
+    return (p1.preco > p2.preco) ? (1) : (-1);
   }
   else
   {

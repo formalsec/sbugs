@@ -22,17 +22,13 @@ void insert_game_stack(char *name, stacks **stack, stacks **head_stack)
   stacks *new = create_game_stack(name);
   if ((*stack) == 0)
   {
-    {
-      *stack = new;
-      *head_stack = new;
-    }
+    *stack = new;
+    *head_stack = new;
   }
   else
   {
-    {
-      (*head_stack)->next = new;
-      *head_stack = new;
-    }
+    (*head_stack)->next = new;
+    *head_stack = new;
   }
 
 }
@@ -43,45 +39,37 @@ void remove_game_stack(stacks **stack, games *game, stacks **head)
   stacks *follow = i->next;
   if (strcmp(i->name, game->name) == 0)
   {
-    {
-      *stack = i->next;
-      free(i->name);
-      free(i);
-    }
+    *stack = i->next;
+    free(i->name);
+    free(i);
   }
   else
   {
+    for (; follow != 0; i = i->next, follow = follow->next)
     {
-      for (; follow != 0; i = i->next, follow = follow->next)
+      if (strcmp(follow->name, game->name) == 0)
       {
-        if (strcmp(follow->name, game->name) == 0)
-        {
-          {
-            i->next = follow->next;
-            break;
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      if (strcmp(follow->name, (*head)->name) == 0)
-      {
-        {
-          *head = i;
-        }
+        i->next = follow->next;
+        break;
       }
       else
       {
         
       }
 
-      free(follow->name);
-      free(follow);
     }
+
+    if (strcmp(follow->name, (*head)->name) == 0)
+    {
+      *head = i;
+    }
+    else
+    {
+      
+    }
+
+    free(follow->name);
+    free(follow);
   }
 
 }
@@ -92,14 +80,12 @@ void print_stack(games **lst_games, stacks **stack, int nl)
   games *read;
   if ((*stack) != 0)
   {
+    for (; i != 0; i = i->next)
     {
-      for (; i != 0; i = i->next)
-      {
-        read = get_game(lst_games, i->name);
-        printf("%d %s %s %s %d %d\n", nl, read->name, read->team1, read->team2, read->score1, read->score2);
-      }
-
+      read = get_game(lst_games, i->name);
+      printf("%d %s %s %s %d %d\n", nl, read->name, read->team1, read->team2, read->score1, read->score2);
     }
+
   }
   else
   {

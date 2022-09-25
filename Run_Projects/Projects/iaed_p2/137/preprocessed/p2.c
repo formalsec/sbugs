@@ -121,10 +121,8 @@ void adicionaJogo(TabJogos *tabjogos, TabEquipas *tabeq, int *nl)
   (*nl)++;
   if (procuraTabJogos(tabjogos, nome))
   {
-    {
-      printf("%d Jogo existente.\n", *nl);
-      return;
-    }
+    printf("%d Jogo existente.\n", *nl);
+    return;
   }
   else
   {
@@ -133,10 +131,8 @@ void adicionaJogo(TabJogos *tabjogos, TabEquipas *tabeq, int *nl)
 
   if ((!procuraTabEq(tabeq, eq1)) || (!procuraTabEq(tabeq, eq2)))
   {
-    {
-      printf("%d Equipa inexistente.\n", *nl);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", *nl);
+    return;
   }
   else
   {
@@ -284,10 +280,8 @@ void alteraScore(TabJogos *tabjogos, TabEquipas *tabeq, int *nl)
   j = procuraTabJogos(tabjogos, nome);
   if (!j)
   {
-    {
-      printf("%d Jogo inexistente.\n", *nl);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", *nl);
+    return;
   }
   else
   {
@@ -311,35 +305,31 @@ void alteraScore(TabJogos *tabjogos, TabEquipas *tabeq, int *nl)
   eq2 = procuraTabEq(tabeq, j->equipa2);
   if (res_antes == 1)
   {
+    eq1->vitorias--;
+    if (res_depois == (-1))
     {
-      eq1->vitorias--;
-      if (res_depois == (-1))
+      eq2->vitorias++;
+    }
+    else
+    {
+      
+    }
+
+  }
+  else
+  {
+    if (res_antes == (-1))
+    {
+      eq2->vitorias--;
+      if (res_depois == 1)
       {
-        eq2->vitorias++;
+        eq1->vitorias++;
       }
       else
       {
         
       }
 
-    }
-  }
-  else
-  {
-    if (res_antes == (-1))
-    {
-      {
-        eq2->vitorias--;
-        if (res_depois == 1)
-        {
-          eq1->vitorias++;
-        }
-        else
-        {
-          
-        }
-
-      }
     }
     else
     {
@@ -381,10 +371,8 @@ void apagaJogo(TabJogos *tabjogos, TabEquipas *tabeq, int *nl)
   j = procuraTabJogos(tabjogos, nome);
   if (!j)
   {
-    {
-      printf("%d Jogo inexistente.\n", *nl);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", *nl);
+    return;
   }
   else
   {
@@ -393,10 +381,8 @@ void apagaJogo(TabJogos *tabjogos, TabEquipas *tabeq, int *nl)
 
   if ((j->score1 == j->score2) ? (0) : (((j->score1 > j->score2) ? (1) : (-1)) == 1))
   {
-    {
-      eq = procuraTabEq(tabeq, j->equipa1);
-      eq->vitorias--;
-    }
+    eq = procuraTabEq(tabeq, j->equipa1);
+    eq->vitorias--;
   }
   else
   {
@@ -405,10 +391,8 @@ void apagaJogo(TabJogos *tabjogos, TabEquipas *tabeq, int *nl)
 
   if ((j->score1 == j->score2) ? (0) : (((j->score1 > j->score2) ? (1) : (-1)) == (-1)))
   {
-    {
-      eq = procuraTabEq(tabeq, j->equipa2);
-      eq->vitorias--;
-    }
+    eq = procuraTabEq(tabeq, j->equipa2);
+    eq->vitorias--;
   }
   else
   {

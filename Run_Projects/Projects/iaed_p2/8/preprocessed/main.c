@@ -69,10 +69,8 @@ void command_a()
   score2 = new_sym_var(sizeof(int) * 8);
   if (comp_find_game(c, nameG) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-      return;
-    }
+    printf("%d Jogo existente.\n", NL);
+    return;
   }
   else
   {
@@ -83,10 +81,8 @@ void command_a()
   t2 = teams_get_team(teams, nameT2);
   if ((t1 == 0) || (t2 == 0))
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -113,10 +109,8 @@ void command_A()
   name[10 - 1] = '\0';
   if (teams_get_team(teams, name) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-      return;
-    }
+    printf("%d Equipa existente.\n", NL);
+    return;
   }
   else
   {
@@ -149,10 +143,8 @@ void command_p()
   g = comp_find_game(c, name);
   if (g == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -177,10 +169,8 @@ void command_P()
   t = teams_get_team(teams, name);
   if (t == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -205,10 +195,8 @@ void command_r()
   g = comp_find_game(c, name);
   if (g == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {
@@ -237,10 +225,8 @@ void command_s()
   g = comp_find_game(c, name);
   if (g == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return;
   }
   else
   {

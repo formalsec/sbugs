@@ -164,9 +164,7 @@ void comando_q()
   quan = new_sym_var(sizeof(int) * 8);
   if (verfiqua_prod(iden1))
   {
-    {
-      sistema[iden1].quan += quan;
-    }
+    sistema[iden1].quan += quan;
   }
   else
   {
@@ -196,110 +194,92 @@ void comando_A()
   quan = new_sym_var(sizeof(int) * 8);
   if (verfiqua_enc(id1))
   {
+    if (verfiqua_prod(iden1))
     {
-      if (verfiqua_prod(iden1))
+      if ((sistema[iden1].quan - quan) >= 0)
       {
+        if ((soma_pesos(encomendas[id1]) + (sistema[iden1].peso * quan)) <= 200)
         {
-          if ((sistema[iden1].quan - quan) >= 0)
+          for (j = 0; j < (encomendas[id1].N + 1); j++)
           {
+            if ((encomendas[id1].conjunto[j].iden == iden1) && iden1)
             {
-              if ((soma_pesos(encomendas[id1]) + (sistema[iden1].peso * quan)) <= 200)
-              {
-                {
-                  for (j = 0; j < (encomendas[id1].N + 1); j++)
-                  {
-                    if ((encomendas[id1].conjunto[j].iden == iden1) && iden1)
-                    {
-                      {
-                        c = encomendas[id1].conjunto[j].iden;
-                        encomendas[id1].conjunto[j].quan += quan;
-                        sistema[iden1].quan -= quan;
-                      }
-                    }
-                    else
-                    {
-                      
-                    }
-
-                  }
-
-                  if ((c != iden1) && iden1)
-                  {
-                    {
-                      encomendas[id1].conjunto[encomendas[id1].N].iden = iden1;
-                      encomendas[id1].conjunto[encomendas[id1].N].quan = quan;
-                      sistema[iden1].quan -= quan;
-                      encomendas[id1].N++;
-                    }
-                  }
-                  else
-                  {
-                    
-                  }
-
-                  if (iden1 == 0)
-                  {
-                    {
-                      for (i = 0; i < encomendas[id1].N; i++)
-                      {
-                        if ((encomendas[id1].conjunto[i].iden == iden1) && encomendas[id1].N)
-                        {
-                          {
-                            k = encomendas[id1].conjunto[j].iden;
-                            encomendas[id1].conjunto[i].quan += quan;
-                            sistema[iden1].quan -= quan;
-                          }
-                        }
-                        else
-                        {
-                          
-                        }
-
-                      }
-
-                      if (k != iden1)
-                      {
-                        {
-                          encomendas[id1].conjunto[encomendas[id1].N].iden = iden1;
-                          encomendas[id1].conjunto[encomendas[id1].N].quan = quan;
-                          sistema[iden1].quan -= quan;
-                          encomendas[id1].N++;
-                        }
-                      }
-                      else
-                      {
-                        
-                      }
-
-                    }
-                  }
-                  else
-                  {
-                    
-                  }
-
-                }
-              }
-              else
-              {
-                printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", iden1, id1);
-              }
-
+              c = encomendas[id1].conjunto[j].iden;
+              encomendas[id1].conjunto[j].quan += quan;
+              sistema[iden1].quan -= quan;
             }
+            else
+            {
+              
+            }
+
+          }
+
+          if ((c != iden1) && iden1)
+          {
+            encomendas[id1].conjunto[encomendas[id1].N].iden = iden1;
+            encomendas[id1].conjunto[encomendas[id1].N].quan = quan;
+            sistema[iden1].quan -= quan;
+            encomendas[id1].N++;
           }
           else
           {
-            printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", iden1, id1);
+            
+          }
+
+          if (iden1 == 0)
+          {
+            for (i = 0; i < encomendas[id1].N; i++)
+            {
+              if ((encomendas[id1].conjunto[i].iden == iden1) && encomendas[id1].N)
+              {
+                k = encomendas[id1].conjunto[j].iden;
+                encomendas[id1].conjunto[i].quan += quan;
+                sistema[iden1].quan -= quan;
+              }
+              else
+              {
+                
+              }
+
+            }
+
+            if (k != iden1)
+            {
+              encomendas[id1].conjunto[encomendas[id1].N].iden = iden1;
+              encomendas[id1].conjunto[encomendas[id1].N].quan = quan;
+              sistema[iden1].quan -= quan;
+              encomendas[id1].N++;
+            }
+            else
+            {
+              
+            }
+
+          }
+          else
+          {
+            
           }
 
         }
+        else
+        {
+          printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", iden1, id1);
+        }
+
       }
       else
       {
-        printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", iden1, id1);
+        printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", iden1, id1);
       }
 
     }
+    else
+    {
+      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", iden1, id1);
+    }
+
   }
   else
   {
@@ -316,17 +296,15 @@ void comando_r()
   quan = new_sym_var(sizeof(int) * 8);
   if (verfiqua_prod(iden1))
   {
+    if ((sistema[iden1].quan - quan) >= 0)
     {
-      if ((sistema[iden1].quan - quan) >= 0)
-      {
-        sistema[iden1].quan -= quan;
-      }
-      else
-      {
-        printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", quan, iden1);
-      }
-
+      sistema[iden1].quan -= quan;
     }
+    else
+    {
+      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", quan, iden1);
+    }
+
   }
   else
   {
@@ -345,33 +323,29 @@ void comando_R()
   iden1 = new_sym_var(sizeof(int) * 8);
   if (verfiqua_enc(id1))
   {
+    if (verfiqua_prod(iden1))
     {
-      if (verfiqua_prod(iden1))
+      for (j = 0; j < encomendas[id1].N; j++)
       {
+        if (encomendas[id1].conjunto[j].iden == iden1)
         {
-          for (j = 0; j < encomendas[id1].N; j++)
-          {
-            if (encomendas[id1].conjunto[j].iden == iden1)
-            {
-              c = j;
-            }
-            else
-            {
-              
-            }
-
-          }
-
-          sistema[iden1].quan += encomendas[id1].conjunto[c].quan;
-          encomendas[id1].conjunto[c].quan = 0;
+          c = j;
         }
-      }
-      else
-      {
-        printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", iden1, id1);
+        else
+        {
+          
+        }
+
       }
 
+      sistema[iden1].quan += encomendas[id1].conjunto[c].quan;
+      encomendas[id1].conjunto[c].quan = 0;
     }
+    else
+    {
+      printf("Impossivel remover produto %d a encomenda %d. Produto inexistente.\n", iden1, id1);
+    }
+
   }
   else
   {
@@ -388,12 +362,10 @@ void comando_c()
   id1 = new_sym_var(sizeof(int) * 8);
   if (verfiqua_enc(id1))
   {
-    {
-      for (j = 0; j < encomendas[id1].N; j++)
-        soma += sistema[encomendas[id1].conjunto[j].iden].preco * encomendas[id1].conjunto[j].quan;
+    for (j = 0; j < encomendas[id1].N; j++)
+      soma += sistema[encomendas[id1].conjunto[j].iden].preco * encomendas[id1].conjunto[j].quan;
 
-      printf("Custo da encomenda %d %d.\n", id1, soma);
-    }
+    printf("Custo da encomenda %d %d.\n", id1, soma);
   }
   else
   {
@@ -428,29 +400,23 @@ void comando_E()
   iden1 = new_sym_var(sizeof(int) * 8);
   if (verfiqua_enc(id1))
   {
+    if (verfiqua_prod(iden1))
     {
-      if (verfiqua_prod(iden1))
+      if (verfiqua_pro_enc(id1, iden1))
       {
-        {
-          if (verfiqua_pro_enc(id1, iden1))
-          {
-            {
-              printf("%s %d.\n", sistema[iden1].desc, encomendas[id1].conjunto[obtanha_indreco(id1, iden1)].quan);
-            }
-          }
-          else
-          {
-            printf("%s %d.\n", sistema[iden1].desc, i);
-          }
-
-        }
+        printf("%s %d.\n", sistema[iden1].desc, encomendas[id1].conjunto[obtanha_indreco(id1, iden1)].quan);
       }
       else
       {
-        printf("Impossivel listar produto %d. Produto inexistente.\n", iden1);
+        printf("%s %d.\n", sistema[iden1].desc, i);
       }
 
     }
+    else
+    {
+      printf("Impossivel listar produto %d. Produto inexistente.\n", iden1);
+    }
+
   }
   else
   {
@@ -468,54 +434,36 @@ void comando_m()
   iden1 = new_sym_var(sizeof(int) * 8);
   if (verfiqua_prod(iden1))
   {
+    for (i = 0; i < id; i++)
     {
-      for (i = 0; i < id; i++)
+      if (verfiqua_pro_enc(i, iden1) && encomendas[i].conjunto[obtanha_indreco(i, iden1)].quan)
       {
-        if (verfiqua_pro_enc(i, iden1) && encomendas[i].conjunto[obtanha_indreco(i, iden1)].quan)
+        if (encomendas[i].conjunto[obtanha_indreco(i, iden1)].quan > max)
         {
-          {
-            if (encomendas[i].conjunto[obtanha_indreco(i, iden1)].quan > max)
-            {
-              {
-                max = encomendas[i].conjunto[obtanha_indreco(i, iden1)].quan;
-                e = encomendas[i].id;
-              }
-            }
-            else
-            {
-              if ((encomendas[i].conjunto[obtanha_indreco(i, iden1)].quan == max) && encomendas[i].conjunto[obtanha_indreco(i, iden1)].quan)
-              {
-                {
-                  if (encomendas[i].id < e)
-                  {
-                    e = encomendas[i].id;
-                  }
-                  else
-                  {
-                    
-                  }
-
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-          }
+          max = encomendas[i].conjunto[obtanha_indreco(i, iden1)].quan;
+          e = encomendas[i].id;
         }
         else
         {
-          
+          if ((encomendas[i].conjunto[obtanha_indreco(i, iden1)].quan == max) && encomendas[i].conjunto[obtanha_indreco(i, iden1)].quan)
+          {
+            if (encomendas[i].id < e)
+            {
+              e = encomendas[i].id;
+            }
+            else
+            {
+              
+            }
+
+          }
+          else
+          {
+            
+          }
+
         }
 
-      }
-
-      if (max)
-      {
-        printf("Maximo produto %d %d %d.\n", iden1, e, max);
       }
       else
       {
@@ -523,6 +471,16 @@ void comando_m()
       }
 
     }
+
+    if (max)
+    {
+      printf("Maximo produto %d %d %d.\n", iden1, e, max);
+    }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -613,35 +571,15 @@ void comando_L()
   id1 = new_sym_var(sizeof(int) * 8);
   if (verfiqua_enc(id1))
   {
+    for (i = 0; i < encomendas[id1].N; i++)
     {
-      for (i = 0; i < encomendas[id1].N; i++)
+      int min = i;
+      prod_enc aux;
+      for (j = i + 1; j < encomendas[id1].N; j++)
       {
-        int min = i;
-        prod_enc aux;
-        for (j = i + 1; j < encomendas[id1].N; j++)
+        if (strcmp(sistema[encomendas[id1].conjunto[j].iden].desc, sistema[encomendas[id1].conjunto[min].iden].desc) < 0)
         {
-          if (strcmp(sistema[encomendas[id1].conjunto[j].iden].desc, sistema[encomendas[id1].conjunto[min].iden].desc) < 0)
-          {
-            min = j;
-          }
-          else
-          {
-            
-          }
-
-        }
-
-        aux = encomendas[id1].conjunto[i];
-        encomendas[id1].conjunto[i] = encomendas[id1].conjunto[min];
-        encomendas[id1].conjunto[min] = aux;
-      }
-
-      printf("Encomenda %d\n", id1);
-      for (e = 0; e < encomendas[id1].N; e++)
-      {
-        if (encomendas[id1].conjunto[e].quan)
-        {
-          printf("* %s %d %d\n", sistema[encomendas[id1].conjunto[e].iden].desc, sistema[encomendas[id1].conjunto[e].iden].preco, encomendas[id1].conjunto[e].quan);
+          min = j;
         }
         else
         {
@@ -650,7 +588,25 @@ void comando_L()
 
       }
 
+      aux = encomendas[id1].conjunto[i];
+      encomendas[id1].conjunto[i] = encomendas[id1].conjunto[min];
+      encomendas[id1].conjunto[min] = aux;
     }
+
+    printf("Encomenda %d\n", id1);
+    for (e = 0; e < encomendas[id1].N; e++)
+    {
+      if (encomendas[id1].conjunto[e].quan)
+      {
+        printf("* %s %d %d\n", sistema[encomendas[id1].conjunto[e].iden].desc, sistema[encomendas[id1].conjunto[e].iden].preco, encomendas[id1].conjunto[e].quan);
+      }
+      else
+      {
+        
+      }
+
+    }
+
   }
   else
   {

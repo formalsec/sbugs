@@ -20,9 +20,7 @@ int main()
     comando = new_sym_var(sizeof(char) * 8);
     if (comando == 'a')
     {
-      {
-        a(TabEquipas, TabJogos, extremos_lista_jogos, NL);
-      }
+      a(TabEquipas, TabJogos, extremos_lista_jogos, NL);
     }
     else
     {
@@ -31,9 +29,7 @@ int main()
 
     if (comando == 'A')
     {
-      {
-        cabeca_equipas = A(TabEquipas, cabeca_equipas, NL);
-      }
+      cabeca_equipas = A(TabEquipas, cabeca_equipas, NL);
     }
     else
     {
@@ -42,9 +38,7 @@ int main()
 
     if (comando == 'l')
     {
-      {
-        l(NL, extremos_lista_jogos);
-      }
+      l(NL, extremos_lista_jogos);
     }
     else
     {
@@ -53,9 +47,7 @@ int main()
 
     if (comando == 'p')
     {
-      {
-        p(TabJogos, NL);
-      }
+      p(TabJogos, NL);
     }
     else
     {
@@ -64,9 +56,7 @@ int main()
 
     if (comando == 'P')
     {
-      {
-        P(TabEquipas, NL);
-      }
+      P(TabEquipas, NL);
     }
     else
     {
@@ -75,9 +65,7 @@ int main()
 
     if (comando == 'r')
     {
-      {
-        r(NL, TabJogos, TabEquipas, extremos_lista_jogos);
-      }
+      r(NL, TabJogos, TabEquipas, extremos_lista_jogos);
     }
     else
     {
@@ -86,9 +74,7 @@ int main()
 
     if (comando == 's')
     {
-      {
-        s(TabEquipas, TabJogos, NL);
-      }
+      s(TabEquipas, TabJogos, NL);
     }
     else
     {
@@ -97,9 +83,7 @@ int main()
 
     if (comando == 'g')
     {
-      {
-        g(NL, cabeca_equipas);
-      }
+      g(NL, cabeca_equipas);
     }
     else
     {

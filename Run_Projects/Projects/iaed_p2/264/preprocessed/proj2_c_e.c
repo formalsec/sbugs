@@ -84,19 +84,17 @@ void delete_h_e(link_e e)
   {
     if (strcmp(t->eq->nome, e->nome) == 0)
     {
+      if (t == head_h_e[i])
       {
-        if (t == head_h_e[i])
-        {
-          head_h_e[i] = t->next;
-        }
-        else
-        {
-          prev->next = t->next;
-        }
-
-        free(t);
-        break;
+        head_h_e[i] = t->next;
       }
+      else
+      {
+        prev->next = t->next;
+      }
+
+      free(t);
+      break;
     }
     else
     {

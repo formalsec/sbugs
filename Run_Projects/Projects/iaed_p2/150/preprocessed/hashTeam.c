@@ -72,18 +72,14 @@ void TEAMdelete(Team *team, TEAMlink *Teams)
     tmp = *link;
     if (strcmp(tmp->team->name, team->name) == 0)
     {
-      {
-        *link = tmp->next;
-        destroyTeam(tmp->team);
-        free(tmp);
-        break;
-      }
+      *link = tmp->next;
+      destroyTeam(tmp->team);
+      free(tmp);
+      break;
     }
     else
     {
-      {
-        link = &(*link)->next;
-      }
+      link = &(*link)->next;
     }
 
   }

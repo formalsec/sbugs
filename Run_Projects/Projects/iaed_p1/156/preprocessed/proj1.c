@@ -203,39 +203,33 @@ void __A__(int ide, int idp, int qtd)
         }
         else
         {
+          int i;
+          encomendas[ide].peso += prods[idp].peso * qtd;
+          prods[idp].qtd -= qtd;
+          prods[idp].qtd_uso += qtd;
+          if (prods[idp].qtd_encomendada[ide] == 0)
           {
-            int i;
-            encomendas[ide].peso += prods[idp].peso * qtd;
-            prods[idp].qtd -= qtd;
-            prods[idp].qtd_uso += qtd;
-            if (prods[idp].qtd_encomendada[ide] == 0)
+            for (i = 0; i < 200; i++)
             {
+              if (encomendas[ide].prods[i].peso == 0)
               {
-                for (i = 0; i < 200; i++)
-                {
-                  if (encomendas[ide].prods[i].peso == 0)
-                  {
-                    {
-                      encomendas[ide].prods[i] = prods[idp];
-                      break;
-                    }
-                  }
-                  else
-                  {
-                    
-                  }
-
-                }
-
+                encomendas[ide].prods[i] = prods[idp];
+                break;
               }
-            }
-            else
-            {
-              
+              else
+              {
+                
+              }
+
             }
 
-            prods[idp].qtd_encomendada[ide] += qtd;
           }
+          else
+          {
+            
+          }
+
+          prods[idp].qtd_encomendada[ide] += qtd;
         }
 
       }
@@ -287,29 +281,25 @@ void __R__(int ide, int idp)
       }
       else
       {
+        int i;
+        encomendas[ide].peso -= prods[idp].qtd_encomendada[ide] * prods[idp].peso;
+        prods[idp].qtd += prods[idp].qtd_encomendada[ide];
+        prods[idp].qtd_uso -= prods[idp].qtd_encomendada[ide];
+        prods[idp].qtd_encomendada[ide] = 0;
+        for (i = 0; i < 200; i++)
         {
-          int i;
-          encomendas[ide].peso -= prods[idp].qtd_encomendada[ide] * prods[idp].peso;
-          prods[idp].qtd += prods[idp].qtd_encomendada[ide];
-          prods[idp].qtd_uso -= prods[idp].qtd_encomendada[ide];
-          prods[idp].qtd_encomendada[ide] = 0;
-          for (i = 0; i < 200; i++)
+          if (encomendas[ide].prods[i].idp == idp)
           {
-            if (encomendas[ide].prods[i].idp == idp)
-            {
-              {
-                encomendas[ide].prods[i].peso = 0;
-                break;
-              }
-            }
-            else
-            {
-              
-            }
-
+            encomendas[ide].prods[i].peso = 0;
+            break;
+          }
+          else
+          {
+            
           }
 
         }
+
       }
 
     }
@@ -332,37 +322,31 @@ void __C__(int ide)
     }
     else
     {
+      int i;
+      int custo = 0;
+      for (i = 0; i < 200; i++)
       {
-        int i;
-        int custo = 0;
-        for (i = 0; i < 200; i++)
+        if (encomendas[ide].prods[i].preco != 0)
         {
-          if (encomendas[ide].prods[i].preco != 0)
+          if (encomendas[ide].prods[i].peso != 0)
           {
-            {
-              if (encomendas[ide].prods[i].peso != 0)
-              {
-                {
-                  int idp = encomendas[ide].prods[i].idp;
-                  custo += prods[idp].preco * prods[idp].qtd_encomendada[ide];
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
+            int idp = encomendas[ide].prods[i].idp;
+            custo += prods[idp].preco * prods[idp].qtd_encomendada[ide];
           }
           else
           {
-            break;
+            
           }
 
         }
+        else
+        {
+          break;
+        }
 
-        printf("Custo da encomenda %d %d.\n", ide, custo);
       }
+
+      printf("Custo da encomenda %d %d.\n", ide, custo);
     }
 
   }
@@ -417,28 +401,24 @@ void __m__(int idp)
     }
     else
     {
+      int i;
+      int ide;
+      int qtd = 0;
+      for (i = 0; i < 500; i++)
       {
-        int i;
-        int ide;
-        int qtd = 0;
-        for (i = 0; i < 500; i++)
+        if (prods[idp].qtd_encomendada[i] > qtd)
         {
-          if (prods[idp].qtd_encomendada[i] > qtd)
-          {
-            {
-              ide = i;
-              qtd = prods[idp].qtd_encomendada[i];
-            }
-          }
-          else
-          {
-            
-          }
-
+          ide = i;
+          qtd = prods[idp].qtd_encomendada[i];
+        }
+        else
+        {
+          
         }
 
-        printf("Maximo produto %d %d %d.\n", idp, ide, qtd);
       }
+
+      printf("Maximo produto %d %d %d.\n", idp, ide, qtd);
     }
 
   }
@@ -454,21 +434,19 @@ void __l__()
   }
   else
   {
+    int i;
+    for (i = 0; i <= maior_idp; i++)
     {
-      int i;
-      for (i = 0; i <= maior_idp; i++)
-      {
-        strcpy(cp_prods[i].desc, prods[i].desc);
-        cp_prods[i].preco = prods[i].preco;
-        cp_prods[i].idp = prods[i].idp;
-        cp_prods[i].qtd = prods[i].qtd;
-      }
-
-      MergeSort_l(cp_prods, 0, maior_idp);
-      for (i = 0; i <= maior_idp; i++)
-        printf("* %s %d %d\n", cp_prods[i].desc, cp_prods[i].preco, cp_prods[i].qtd);
-
+      strcpy(cp_prods[i].desc, prods[i].desc);
+      cp_prods[i].preco = prods[i].preco;
+      cp_prods[i].idp = prods[i].idp;
+      cp_prods[i].qtd = prods[i].qtd;
     }
+
+    MergeSort_l(cp_prods, 0, maior_idp);
+    for (i = 0; i <= maior_idp; i++)
+      printf("* %s %d %d\n", cp_prods[i].desc, cp_prods[i].preco, cp_prods[i].qtd);
+
   }
 
 }
@@ -530,47 +508,41 @@ void __L__(int ide)
     }
     else
     {
+      int i = 0;
+      int j;
+      int idp;
+      while (i < 200)
       {
-        int i = 0;
-        int j;
-        int idp;
-        while (i < 200)
+        if (encomendas[ide].prods[i].preco != 0)
         {
-          if (encomendas[ide].prods[i].preco != 0)
-          {
-            {
-              strcpy(encomenda[i].desc, encomendas[ide].prods[i].desc);
-              encomenda[i].peso = encomendas[ide].prods[i].peso;
-              encomenda[i].idp = encomendas[ide].prods[i].idp;
-              i++;
-            }
-          }
-          else
-          {
-            break;
-          }
-
+          strcpy(encomenda[i].desc, encomendas[ide].prods[i].desc);
+          encomenda[i].peso = encomendas[ide].prods[i].peso;
+          encomenda[i].idp = encomendas[ide].prods[i].idp;
+          i++;
         }
-
-        MergeSort_L(encomenda, 0, i - 1);
-        printf("Encomenda %d\n", ide);
-        for (j = 0; j < i; j++)
+        else
         {
-          if (encomenda[j].peso != 0)
-          {
-            {
-              idp = encomenda[j].idp;
-              printf("* %s %d %d\n", prods[idp].desc, prods[idp].preco, prods[idp].qtd_encomendada[ide]);
-            }
-          }
-          else
-          {
-            
-          }
-
+          break;
         }
 
       }
+
+      MergeSort_L(encomenda, 0, i - 1);
+      printf("Encomenda %d\n", ide);
+      for (j = 0; j < i; j++)
+      {
+        if (encomenda[j].peso != 0)
+        {
+          idp = encomenda[j].idp;
+          printf("* %s %d %d\n", prods[idp].desc, prods[idp].preco, prods[idp].qtd_encomendada[ide]);
+        }
+        else
+        {
+          
+        }
+
+      }
+
     }
 
   }

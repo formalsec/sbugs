@@ -48,9 +48,7 @@ int main()
       case 'a':
         if (i < 10000)
       {
-        {
-          new_prod();
-        }
+        new_prod();
       }
       else
       {
@@ -67,9 +65,7 @@ int main()
       case 'N':
         if (j < 500)
       {
-        {
-          new_order();
-        }
+        new_order();
       }
       else
       {
@@ -143,9 +139,7 @@ int add_stock()
   quantity = new_sym_var(sizeof(int) * 8);
   if (idp <= (i - 1))
   {
-    {
-      stock[idp] = stock[idp] + quantity;
-    }
+    stock[idp] = stock[idp] + quantity;
   }
   else
   {
@@ -170,39 +164,31 @@ int add_prod()
   quantity = new_sym_var(sizeof(int) * 8);
   if (ide <= (j - 1))
   {
+    if (idp <= (i - 1))
     {
-      if (idp <= (i - 1))
+      if (quantity < stock[idp])
       {
+        if ((quantity * weight[idp]) < 200)
         {
-          if (quantity < stock[idp])
-          {
-            {
-              if ((quantity * weight[idp]) < 200)
-              {
-                {
-                  prod_in_order[i][j] = prod_in_order[idp][ide];
-                }
-              }
-              else
-              {
-                printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
-              }
-
-            }
-          }
-          else
-          {
-            printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
-          }
-
+          prod_in_order[i][j] = prod_in_order[idp][ide];
         }
+        else
+        {
+          printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
+        }
+
       }
       else
       {
-        printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
+        printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
       }
 
     }
+    else
+    {
+      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
+    }
+
   }
   else
   {
@@ -219,19 +205,15 @@ int rem_stock()
   quantity = new_sym_var(sizeof(int) * 8);
   if (idp <= (i - 1))
   {
+    if ((stock[idp] - quantity) < 0)
     {
-      if ((stock[idp] - quantity) < 0)
-      {
-        {
-          printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", quantity, idp);
-        }
-      }
-      else
-      {
-        stock[idp] = stock[idp] - quantity;
-      }
-
+      printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", quantity, idp);
     }
+    else
+    {
+      stock[idp] = stock[idp] - quantity;
+    }
+
   }
   else
   {
@@ -248,19 +230,15 @@ int rem_prod()
   idp = new_sym_var(sizeof(int) * 8);
   if (ide <= (j - 1))
   {
+    if (idp <= (i - 1))
     {
-      if (idp <= (i - 1))
-      {
-        {
-          price[idp] = (weight[idp] = (stock[idp] = 0));
-        }
-      }
-      else
-      {
-        printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
-      }
-
+      price[idp] = (weight[idp] = (stock[idp] = 0));
     }
+    else
+    {
+      printf("Impossivel adicionar produto %d a encomenda %d. Produto inexistente.\n", idp, ide);
+    }
+
   }
   else
   {

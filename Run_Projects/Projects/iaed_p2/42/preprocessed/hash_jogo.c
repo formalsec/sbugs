@@ -40,33 +40,29 @@ linkJ DeleteJogo(linkJ j, linkJ head)
 {
   if (j == head)
   {
+    head = j->next;
+    if (head != 0)
     {
-      head = j->next;
-      if (head != 0)
-      {
-        head->prev = 0;
-      }
-      else
-      {
-        
-      }
-
+      head->prev = 0;
     }
+    else
+    {
+      
+    }
+
   }
   else
   {
+    j->prev->next = j->next;
+    if (j->next != 0)
     {
-      j->prev->next = j->next;
-      if (j->next != 0)
-      {
-        j->next->prev = j->prev;
-      }
-      else
-      {
-        
-      }
-
+      j->next->prev = j->prev;
     }
+    else
+    {
+      
+    }
+
   }
 
   freeJogo(j->jogo);

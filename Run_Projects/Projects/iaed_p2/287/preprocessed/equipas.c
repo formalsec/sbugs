@@ -104,18 +104,16 @@ void apaga_tab_equi(link_equi *equipas)
   {
     if (equipas[i] != 0)
     {
+      temp1 = equipas[i];
+      while (temp1 != 0)
       {
-        temp1 = equipas[i];
-        while (temp1 != 0)
-        {
-          equi_temp = temp1->equipa;
-          temp2 = temp1;
-          temp1 = temp1->next;
-          apaga_Equipa(equi_temp);
-          free(temp2);
-        }
-
+        equi_temp = temp1->equipa;
+        temp2 = temp1;
+        temp1 = temp1->next;
+        apaga_Equipa(equi_temp);
+        free(temp2);
       }
+
     }
     else
     {

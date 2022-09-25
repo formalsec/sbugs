@@ -29,22 +29,18 @@ link_jg insertJgBeginList(link_jg head, link_jogo ptr_link_jogo)
 {
   if (head == 0)
   {
-    {
-      link_jg first_node = (link_jg) malloc(sizeof(struct node_jg));
-      first_node->ptr_link_jogo = ptr_link_jogo;
-      first_node->next = 0;
-      return first_node;
-    }
+    link_jg first_node = (link_jg) malloc(sizeof(struct node_jg));
+    first_node->ptr_link_jogo = ptr_link_jogo;
+    first_node->next = 0;
+    return first_node;
   }
   else
   {
-    {
-      link_jg new_node = (link_jg) malloc(sizeof(struct node_jg));
-      new_node->ptr_link_jogo = ptr_link_jogo;
-      new_node->next = head;
-      head = new_node;
-      return new_node;
-    }
+    link_jg new_node = (link_jg) malloc(sizeof(struct node_jg));
+    new_node->ptr_link_jogo = ptr_link_jogo;
+    new_node->next = head;
+    head = new_node;
+    return new_node;
   }
 
 }
@@ -63,23 +59,17 @@ link_jg removeJgList(link_jg head, link_jogo ptr_link_jogo)
   {
     if (strcmp(t->ptr_link_jogo->jogo->nome, ptr_link_jogo->jogo->nome) == 0)
     {
+      if (t == head)
       {
-        if (t == head)
-        {
-          {
-            head = t->next;
-          }
-        }
-        else
-        {
-          {
-            prev->next = t->next;
-          }
-        }
-
-        free(t);
-        break;
+        head = t->next;
       }
+      else
+      {
+        prev->next = t->next;
+      }
+
+      free(t);
+      break;
     }
     else
     {

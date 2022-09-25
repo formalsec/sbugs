@@ -28,15 +28,11 @@ jogo *adiciona_jogo(Jogos *j, char *n, Equipas_hash e1, Equipas_hash e2, int s1,
   new->previous = j->last;
   if (j->last != 0)
   {
-    {
-      j->last->next = new;
-    }
+    j->last->next = new;
   }
   else
   {
-    {
-      j->head = new;
-    }
+    j->head = new;
   }
 
   j->last = new;
@@ -47,28 +43,20 @@ void delete_jogoP(Jogos *l, jogo *n)
 {
   if (n->previous == 0)
   {
-    {
-      l->head = n->next;
-    }
+    l->head = n->next;
   }
   else
   {
-    {
-      n->previous->next = n->next;
-    }
+    n->previous->next = n->next;
   }
 
   if (n->next == 0)
   {
-    {
-      l->last = n->previous;
-    }
+    l->last = n->previous;
   }
   else
   {
-    {
-      n->next->previous = n->previous;
-    }
+    n->next->previous = n->previous;
   }
 
   free(n->nome);

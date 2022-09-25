@@ -33,9 +33,7 @@ linkEquipa *procuraElemento(ItemSecondHT *head, char *key)
   {
     if (strcmp(head->equipa->nome, key) == 0)
     {
-      {
-        return head;
-      }
+      return head;
     }
     else
     {
@@ -102,13 +100,11 @@ void HTencontraEquipasVencedoras(ItemSecondHT **headsEquipa, int capacidadeE, in
     {
       if (headsEquipa[i]->equipa->vitorias > max)
       {
-        {
-          elementos = 0;
-          temporario = arrayV;
-          free(temporario);
-          arrayV = 0;
-          max = headsEquipa[i]->equipa->vitorias;
-        }
+        elementos = 0;
+        temporario = arrayV;
+        free(temporario);
+        arrayV = 0;
+        max = headsEquipa[i]->equipa->vitorias;
       }
       else
       {
@@ -117,11 +113,9 @@ void HTencontraEquipasVencedoras(ItemSecondHT **headsEquipa, int capacidadeE, in
 
       if (headsEquipa[i]->equipa->vitorias == max)
       {
-        {
-          elementos++;
-          arrayV = (equipa **) realloc(arrayV, (sizeof(equipa *)) * elementos);
-          arrayV[elementos - 1] = headsEquipa[i]->equipa;
-        }
+        elementos++;
+        arrayV = (equipa **) realloc(arrayV, (sizeof(equipa *)) * elementos);
+        arrayV[elementos - 1] = headsEquipa[i]->equipa;
       }
       else
       {
@@ -136,10 +130,8 @@ void HTencontraEquipasVencedoras(ItemSecondHT **headsEquipa, int capacidadeE, in
 
   if (elementos > 0)
   {
-    {
-      printf("%d Melhores %d\n", linha, max);
-      imprimirEquipas(arrayV, elementos, linha);
-    }
+    printf("%d Melhores %d\n", linha, max);
+    imprimirEquipas(arrayV, elementos, linha);
   }
   else
   {

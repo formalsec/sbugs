@@ -73,46 +73,36 @@ int main()
         score2i = new_sym_var(sizeof(int) * 8);
         if (ChecksGame(M_G, M_T, name, team1, team2, teams, games, NL) == 1)
       {
+        head = AddGameLL(head, name, team1, team2, score1i, score2i);
+        if ((game_test_p = AddGameHT(games, name, team1, team2, score1i, score2i, El_G, M_G)) == 0)
         {
-          head = AddGameLL(head, name, team1, team2, score1i, score2i);
-          if ((game_test_p = AddGameHT(games, name, team1, team2, score1i, score2i, El_G, M_G)) == 0)
-          {
-            {
-              games = Expand(games, El_G, M_G);
-              M_G = M_G + M_G;
-              games = AddGameHT(games, name, team1, team2, score1i, score2i, El_G, M_G);
-            }
-          }
-          else
-          {
-            {
-              games = game_test_p;
-            }
-          }
-
-          if (score1i > score2i)
-          {
-            {
-              Search_T(teams, team1, M_T)->wins++;
-            }
-          }
-          else
-          {
-            if (score1i < score2i)
-            {
-              {
-                Search_T(teams, team2, M_T)->wins++;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-          El_G++;
+          games = Expand(games, El_G, M_G);
+          M_G = M_G + M_G;
+          games = AddGameHT(games, name, team1, team2, score1i, score2i, El_G, M_G);
         }
+        else
+        {
+          games = game_test_p;
+        }
+
+        if (score1i > score2i)
+        {
+          Search_T(teams, team1, M_T)->wins++;
+        }
+        else
+        {
+          if (score1i < score2i)
+          {
+            Search_T(teams, team2, M_T)->wins++;
+          }
+          else
+          {
+            
+          }
+
+        }
+
+        El_G++;
       }
       else
       {
@@ -131,22 +121,18 @@ int main()
         string1[10 - 1] = '\0';
         if (ChecksTeam(teams, string1, NL, M_T) == 1)
       {
+        if ((team_test_p = AddTeamHT(teams, string1, El_T, M_T)) == 0)
         {
-          if ((team_test_p = AddTeamHT(teams, string1, El_T, M_T)) == 0)
-          {
-            {
-              teams = Expand_T(teams, El_T, M_T);
-              M_T = M_T + M_T;
-              teams = AddTeamHT(teams, string1, El_T, M_T);
-            }
-          }
-          else
-          {
-            
-          }
-
-          El_T++;
+          teams = Expand_T(teams, El_T, M_T);
+          M_T = M_T + M_T;
+          teams = AddTeamHT(teams, string1, El_T, M_T);
         }
+        else
+        {
+          
+        }
+
+        El_T++;
       }
       else
       {
@@ -180,32 +166,26 @@ int main()
         string2[10 - 1] = '\0';
         if (ChecksNameGame(games, string2, NL, M_G) == 1)
       {
+        if (Search(games, string2, M_G)->score1 > Search(games, string2, M_G)->score2)
         {
-          if (Search(games, string2, M_G)->score1 > Search(games, string2, M_G)->score2)
+          --Search_T(teams, Search(games, string2, M_G)->team1, M_G)->wins;
+        }
+        else
+        {
+          if (Search(games, string2, M_G)->score1 < Search(games, string2, M_G)->score2)
           {
-            {
-              --Search_T(teams, Search(games, string2, M_G)->team1, M_G)->wins;
-            }
+            --Search_T(teams, Search(games, string2, M_G)->team2, M_G)->wins;
           }
           else
           {
-            if (Search(games, string2, M_G)->score1 < Search(games, string2, M_G)->score2)
-            {
-              {
-                --Search_T(teams, Search(games, string2, M_G)->team2, M_G)->wins;
-              }
-            }
-            else
-            {
-              
-            }
-
+            
           }
 
-          head = ListDelete(head, string2);
-          games = HTRemoveElement(games, string2, El_G, M_G);
-          El_G--;
         }
+
+        head = ListDelete(head, string2);
+        games = HTRemoveElement(games, string2, El_G, M_G);
+        El_G--;
       }
       else
       {
@@ -226,15 +206,13 @@ int main()
         score2i = new_sym_var(sizeof(int) * 8);
         if (ObtainsArguments(games, string1, M_G, NL) == 1)
       {
-        {
-          game_test = Search(games, string1, M_G);
-          Search_T(teams, game_test->team1, M_G)->wins = ChangesScore(teams, score1i, score2i, M_T, game_test->team1, game_test);
-          Search_T(teams, game_test->team2, M_G)->wins = ChangesScore(teams, score1i, score2i, M_T, game_test->team2, game_test);
-          Search(games, game_test->name, M_G)->score1 = score1i;
-          Search(games, game_test->name, M_G)->score2 = score2i;
-          SearchLL(head, game_test->name)->score1 = score1i;
-          SearchLL(head, game_test->name)->score2 = score2i;
-        }
+        game_test = Search(games, string1, M_G);
+        Search_T(teams, game_test->team1, M_G)->wins = ChangesScore(teams, score1i, score2i, M_T, game_test->team1, game_test);
+        Search_T(teams, game_test->team2, M_G)->wins = ChangesScore(teams, score1i, score2i, M_T, game_test->team2, game_test);
+        Search(games, game_test->name, M_G)->score1 = score1i;
+        Search(games, game_test->name, M_G)->score2 = score2i;
+        SearchLL(head, game_test->name)->score1 = score1i;
+        SearchLL(head, game_test->name)->score2 = score2i;
       }
       else
       {
@@ -294,9 +272,7 @@ void ListsGames(node *head, int NL)
 {
   if (head == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -320,15 +296,11 @@ void SearchesGame(p_game *games, int M, int NL)
   game = Search(games, name, M);
   if (game != 0)
   {
-    {
-      printf("%d %s %s %s %d %d\n", NL, game->name, game->team1, game->team2, game->score1, game->score2);
-    }
+    printf("%d %s %s %s %d %d\n", NL, game->name, game->team1, game->team2, game->score1, game->score2);
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-    }
+    printf("%d Jogo inexistente.\n", NL);
   }
 
 }
@@ -346,15 +318,11 @@ void SearchesTeam(p_team *t, int M, int NL)
   team = Search_T(t, name, M);
   if (team != 0)
   {
-    {
-      printf("%d %s %d\n", NL, team->name, team->wins);
-    }
+    printf("%d %s %d\n", NL, team->name, team->wins);
   }
   else
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-    }
+    printf("%d Equipa inexistente.\n", NL);
   }
 
 }
@@ -364,10 +332,8 @@ int ChecksNameGame(p_game *p, char *name, int NL, int M)
   p_game game_aux;
   if ((game_aux = Search(p, name, M)) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return 0;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return 0;
   }
   else
   {
@@ -382,215 +348,155 @@ int ChangesScore(p_team *teams, int score1, int score2, int M_T, char *name, p_g
   int final_value;
   if (game_test->score1 > game_test->score2)
   {
+    if (score1 < score2)
     {
-      if (score1 < score2)
+      if (strcmp(name, game_test->team1) == 0)
       {
-        {
-          if (strcmp(name, game_test->team1) == 0)
-          {
-            {
-              final_value = Search_T(teams, game_test->team1, M_T)->wins - 1;
-              return final_value;
-            }
-          }
-          else
-          {
-            {
-              final_value = Search_T(teams, game_test->team2, M_T)->wins + 1;
-              return final_value;
-            }
-          }
-
-        }
+        final_value = Search_T(teams, game_test->team1, M_T)->wins - 1;
+        return final_value;
       }
       else
       {
-        if (score1 == score2)
-        {
-          {
-            if (strcmp(name, game_test->team1) == 0)
-            {
-              {
-                final_value = Search_T(teams, game_test->team1, M_T)->wins - 1;
-                return final_value;
-              }
-            }
-            else
-            {
-              {
-                final_value = Search_T(teams, game_test->team2, M_T)->wins;
-                return final_value;
-              }
-            }
+        final_value = Search_T(teams, game_test->team2, M_T)->wins + 1;
+        return final_value;
+      }
 
-          }
+    }
+    else
+    {
+      if (score1 == score2)
+      {
+        if (strcmp(name, game_test->team1) == 0)
+        {
+          final_value = Search_T(teams, game_test->team1, M_T)->wins - 1;
+          return final_value;
         }
         else
         {
-          {
-            if (strcmp(name, game_test->team1) == 0)
-            {
-              {
-                final_value = Search_T(teams, game_test->team1, M_T)->wins;
-                return final_value;
-              }
-            }
-            else
-            {
-              {
-                final_value = Search_T(teams, game_test->team2, M_T)->wins;
-                return final_value;
-              }
-            }
+          final_value = Search_T(teams, game_test->team2, M_T)->wins;
+          return final_value;
+        }
 
-          }
+      }
+      else
+      {
+        if (strcmp(name, game_test->team1) == 0)
+        {
+          final_value = Search_T(teams, game_test->team1, M_T)->wins;
+          return final_value;
+        }
+        else
+        {
+          final_value = Search_T(teams, game_test->team2, M_T)->wins;
+          return final_value;
         }
 
       }
 
     }
+
   }
   else
   {
     if (game_test->score1 < game_test->score2)
     {
+      if (score1 > score2)
       {
-        if (score1 > score2)
+        if (strcmp(name, game_test->team1) == 0)
         {
-          {
-            if (strcmp(name, game_test->team1) == 0)
-            {
-              {
-                final_value = Search_T(teams, game_test->team1, M_T)->wins + 1;
-                return final_value;
-              }
-            }
-            else
-            {
-              {
-                final_value = Search_T(teams, game_test->team2, M_T)->wins - 1;
-                return final_value;
-              }
-            }
-
-          }
+          final_value = Search_T(teams, game_test->team1, M_T)->wins + 1;
+          return final_value;
         }
         else
         {
-          if (score1 == score2)
-          {
-            {
-              if (strcmp(name, game_test->team1) == 0)
-              {
-                {
-                  final_value = Search_T(teams, game_test->team1, M_T)->wins;
-                  return final_value;
-                }
-              }
-              else
-              {
-                {
-                  final_value = Search_T(teams, game_test->team2, M_T)->wins - 1;
-                  return final_value;
-                }
-              }
+          final_value = Search_T(teams, game_test->team2, M_T)->wins - 1;
+          return final_value;
+        }
 
-            }
+      }
+      else
+      {
+        if (score1 == score2)
+        {
+          if (strcmp(name, game_test->team1) == 0)
+          {
+            final_value = Search_T(teams, game_test->team1, M_T)->wins;
+            return final_value;
           }
           else
           {
-            {
-              if (strcmp(name, game_test->team1) == 0)
-              {
-                {
-                  final_value = Search_T(teams, game_test->team1, M_T)->wins;
-                  return final_value;
-                }
-              }
-              else
-              {
-                {
-                  final_value = Search_T(teams, game_test->team2, M_T)->wins;
-                  return final_value;
-                }
-              }
+            final_value = Search_T(teams, game_test->team2, M_T)->wins - 1;
+            return final_value;
+          }
 
-            }
+        }
+        else
+        {
+          if (strcmp(name, game_test->team1) == 0)
+          {
+            final_value = Search_T(teams, game_test->team1, M_T)->wins;
+            return final_value;
+          }
+          else
+          {
+            final_value = Search_T(teams, game_test->team2, M_T)->wins;
+            return final_value;
           }
 
         }
 
       }
+
     }
     else
     {
+      if (score1 > score2)
       {
-        if (score1 > score2)
+        if (strcmp(name, game_test->team1) == 0)
         {
-          {
-            if (strcmp(name, game_test->team1) == 0)
-            {
-              {
-                final_value = Search_T(teams, game_test->team1, M_T)->wins + 1;
-                return final_value;
-              }
-            }
-            else
-            {
-              {
-                final_value = Search_T(teams, game_test->team2, M_T)->wins;
-                return final_value;
-              }
-            }
-
-          }
+          final_value = Search_T(teams, game_test->team1, M_T)->wins + 1;
+          return final_value;
         }
         else
         {
-          if (score1 < score2)
-          {
-            {
-              if (strcmp(name, game_test->team1) == 0)
-              {
-                {
-                  final_value = Search_T(teams, game_test->team1, M_T)->wins;
-                  return final_value;
-                }
-              }
-              else
-              {
-                {
-                  final_value = Search_T(teams, game_test->team2, M_T)->wins + 1;
-                  return final_value;
-                }
-              }
+          final_value = Search_T(teams, game_test->team2, M_T)->wins;
+          return final_value;
+        }
 
-            }
+      }
+      else
+      {
+        if (score1 < score2)
+        {
+          if (strcmp(name, game_test->team1) == 0)
+          {
+            final_value = Search_T(teams, game_test->team1, M_T)->wins;
+            return final_value;
           }
           else
           {
-            {
-              if (strcmp(name, game_test->team1) == 0)
-              {
-                {
-                  final_value = Search_T(teams, game_test->team1, M_T)->wins;
-                  return final_value;
-                }
-              }
-              else
-              {
-                {
-                  final_value = Search_T(teams, game_test->team2, M_T)->wins;
-                  return final_value;
-                }
-              }
+            final_value = Search_T(teams, game_test->team2, M_T)->wins + 1;
+            return final_value;
+          }
 
-            }
+        }
+        else
+        {
+          if (strcmp(name, game_test->team1) == 0)
+          {
+            final_value = Search_T(teams, game_test->team1, M_T)->wins;
+            return final_value;
+          }
+          else
+          {
+            final_value = Search_T(teams, game_test->team2, M_T)->wins;
+            return final_value;
           }
 
         }
 
       }
+
     }
 
   }
@@ -608,9 +514,7 @@ void ListsWinningTeams(p_team *t, int M, int NL)
   {
     if ((t[i] != 0) && (t[i]->wins > max))
     {
-      {
-        max = t[i]->wins;
-      }
+      max = t[i]->wins;
     }
     else
     {
@@ -621,9 +525,7 @@ void ListsWinningTeams(p_team *t, int M, int NL)
 
   if (max == (-1))
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -634,10 +536,8 @@ void ListsWinningTeams(p_team *t, int M, int NL)
   {
     if ((t[i] != 0) && (t[i]->wins == max))
     {
-      {
-        vector[j] = d_strdup(t[i]->name);
-        j++;
-      }
+      vector[j] = d_strdup(t[i]->name);
+      j++;
     }
     else
     {
@@ -661,28 +561,22 @@ int ChecksGame(int M1, int M2, char *name, char *team1, char *team2, p_team *t, 
 {
   if (Search(p, name, M1) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-      return 0;
-    }
+    printf("%d Jogo existente.\n", NL);
+    return 0;
   }
   else
   {
     if (Search_T(t, team1, M2) == 0)
     {
-      {
-        printf("%d Equipa inexistente.\n", NL);
-        return 0;
-      }
+      printf("%d Equipa inexistente.\n", NL);
+      return 0;
     }
     else
     {
       if (Search_T(t, team2, M2) == 0)
       {
-        {
-          printf("%d Equipa inexistente.\n", NL);
-          return 0;
-        }
+        printf("%d Equipa inexistente.\n", NL);
+        return 0;
       }
       else
       {
@@ -700,10 +594,8 @@ int ChecksTeam(p_team *t, char *team, int NL, int M)
 {
   if (Search_T(t, team, M) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-      return 0;
-    }
+    printf("%d Equipa existente.\n", NL);
+    return 0;
   }
   else
   {
@@ -717,16 +609,12 @@ int ObtainsArguments(p_game *p, char *name, int M, int NL)
 {
   if (Search(p, name, M) != 0)
   {
-    {
-      return 1;
-    }
+    return 1;
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      return 0;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    return 0;
   }
 
 }

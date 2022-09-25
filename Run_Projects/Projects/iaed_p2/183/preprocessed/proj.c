@@ -98,24 +98,18 @@ void a(tabela *jogos, tabela *equipas, int numero_linha)
   score_eq2 = new_sym_var(sizeof(int) * 8);
   if (procura_jogo(jogos, nome) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", numero_linha);
-    }
+    printf("%d Jogo existente.\n", numero_linha);
   }
   else
   {
     if ((procura_equipa(equipas, nome_eq1) == 0) || (procura_equipa(equipas, nome_eq2) == 0))
     {
-      {
-        printf("%d Equipa inexistente.\n", numero_linha);
-      }
+      printf("%d Equipa inexistente.\n", numero_linha);
     }
     else
     {
-      {
-        novo_jogo = cria_jogo(nome, nome_eq1, nome_eq2, score_eq1, score_eq2);
-        insere_jogo(jogos, equipas, novo_jogo.nome, &novo_jogo);
-      }
+      novo_jogo = cria_jogo(nome, nome_eq1, nome_eq2, score_eq1, score_eq2);
+      insere_jogo(jogos, equipas, novo_jogo.nome, &novo_jogo);
     }
 
   }
@@ -134,16 +128,12 @@ void A(tabela *equipas, int numero_linha)
   nome[10 - 1] = '\0';
   if (procura_equipa(equipas, nome) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", numero_linha);
-    }
+    printf("%d Equipa existente.\n", numero_linha);
   }
   else
   {
-    {
-      nova_equipa = cria_equipa(nome, 0);
-      insere_equipa(equipas, nova_equipa.nome, &nova_equipa);
-    }
+    nova_equipa = cria_equipa(nome, 0);
+    insere_equipa(equipas, nova_equipa.nome, &nova_equipa);
   }
 
 }
@@ -154,16 +144,14 @@ bool imprime_jogo(char *nome, void *jogo_void, void *num_ptr)
   int numero_linha = *((int *) num_ptr);
   if (j != 0)
   {
-    {
-      printf("%d %s %s %s %d %d\n", numero_linha, nome, j->nome_equipa1, j->nome_equipa2, j->score_eq1, j->score_eq2);
-    }
+    printf("%d %s %s %s %d %d\n", numero_linha, nome, j->nome_equipa1, j->nome_equipa2, j->score_eq1, j->score_eq2);
   }
   else
   {
     
   }
 
-  return 1;
+  return true;
 }
 
 void l(tabela *jogos, int numero_linha)
@@ -184,15 +172,11 @@ void p(tabela *jogos, int numero_linha)
   nome[10 - 1] = '\0';
   if ((jogo = procura_jogo(jogos, nome)) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", numero_linha);
-    }
+    printf("%d Jogo inexistente.\n", numero_linha);
   }
   else
   {
-    {
-      printf("%d %s %s %s %d %d\n", numero_linha, jogo->nome, jogo->nome_equipa1, jogo->nome_equipa2, jogo->score_eq1, jogo->score_eq2);
-    }
+    printf("%d %s %s %s %d %d\n", numero_linha, jogo->nome, jogo->nome_equipa1, jogo->nome_equipa2, jogo->score_eq1, jogo->score_eq2);
   }
 
 }
@@ -209,15 +193,11 @@ void P(tabela *equipas, int numero_linha)
   nome[10 - 1] = '\0';
   if ((equipa = procura_equipa(equipas, nome)) == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", numero_linha);
-    }
+    printf("%d Equipa inexistente.\n", numero_linha);
   }
   else
   {
-    {
-      printf("%d %s %d\n", numero_linha, nome, equipa->jogos_ganhos);
-    }
+    printf("%d %s %d\n", numero_linha, nome, equipa->jogos_ganhos);
   }
 
 }
@@ -234,15 +214,11 @@ void r(tabela *jogos, tabela *equipas, int numero_linha)
   nome[10 - 1] = '\0';
   if ((jogo = procura_jogo(jogos, nome)) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", numero_linha);
-    }
+    printf("%d Jogo inexistente.\n", numero_linha);
   }
   else
   {
-    {
-      remove_jogo(jogos, equipas, nome);
-    }
+    remove_jogo(jogos, equipas, nome);
   }
 
 }
@@ -263,15 +239,11 @@ void s(tabela *jogos, tabela *equipas, int numero_linha)
   score2 = new_sym_var(sizeof(int) * 8);
   if ((jogo = procura_jogo(jogos, nome)) == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", numero_linha);
-    }
+    printf("%d Jogo inexistente.\n", numero_linha);
   }
   else
   {
-    {
-      muda_pontuacao(equipas, jogo, score1, score2);
-    }
+    muda_pontuacao(equipas, jogo, score1, score2);
   }
 
 }
@@ -286,47 +258,37 @@ bool melhores_equipas(char *chave, void *equipa_void, void *melhores_void)
   (void) chave;
   if ((melhores != 0) && (inicio != 0))
   {
+    if ((e != 0) && (inicio->equipa != 0))
     {
-      if ((e != 0) && (inicio->equipa != 0))
+      score_max = inicio->equipa->jogos_ganhos;
+      if (e->jogos_ganhos > score_max)
       {
-        {
-          score_max = inicio->equipa->jogos_ganhos;
-          if (e->jogos_ganhos > score_max)
-          {
-            {
-              destroi_lista(melhores);
-              status = insere_lista(melhores, e);
-            }
-          }
-          else
-          {
-            if (e->jogos_ganhos == score_max)
-            {
-              {
-                status = insere_lista(melhores, e);
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-        }
+        destroi_lista(melhores);
+        status = insere_lista(melhores, e);
       }
       else
       {
-        
+        if (e->jogos_ganhos == score_max)
+        {
+          status = insere_lista(melhores, e);
+        }
+        else
+        {
+          
+        }
+
       }
 
     }
+    else
+    {
+      
+    }
+
   }
   else
   {
-    {
-      status = insere_lista(melhores, e);
-    }
+    status = insere_lista(melhores, e);
   }
 
   return status;
@@ -342,14 +304,12 @@ void g(tabela *equipas, int numero_linha)
   temp = obtem_inicio_lista(&melhores_ordenadas);
   if ((temp != 0) && (temp->equipa != 0))
   {
+    printf("%d Melhores %d\n", numero_linha, temp->equipa->jogos_ganhos);
+    for (; temp != 0; temp = temp->next)
     {
-      printf("%d Melhores %d\n", numero_linha, temp->equipa->jogos_ganhos);
-      for (; temp != 0; temp = temp->next)
-      {
-        printf("%d * %s\n", numero_linha, temp->equipa->nome);
-      }
-
+      printf("%d * %s\n", numero_linha, temp->equipa->nome);
     }
+
   }
   else
   {

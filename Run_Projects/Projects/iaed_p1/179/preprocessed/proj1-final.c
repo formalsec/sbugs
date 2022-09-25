@@ -79,33 +79,29 @@ void adiciona_produto_encomenda(encomenda pedidos[], produto catalogo[], int e, 
       }
       else
       {
+        for (i = 0, peso_total = 0; i < p; i++)
         {
-          for (i = 0, peso_total = 0; i < p; i++)
+          if (i == idp)
           {
-            if (i == idp)
-            {
-              peso_total += (pedidos[ide].id_prod[idp] + qtd) * catalogo[idp].peso;
-            }
-            else
-            {
-              peso_total += pedidos[ide].id_prod[i] * catalogo[i].peso;
-            }
-
-          }
-
-          if (peso_total > 200)
-          {
-            printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
+            peso_total += (pedidos[ide].id_prod[idp] + qtd) * catalogo[idp].peso;
           }
           else
           {
-            {
-              pedidos[ide].id_prod[idp] += qtd;
-              catalogo[idp].quantidade -= qtd;
-            }
+            peso_total += pedidos[ide].id_prod[i] * catalogo[i].peso;
           }
 
         }
+
+        if (peso_total > 200)
+        {
+          printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
+        }
+        else
+        {
+          pedidos[ide].id_prod[idp] += qtd;
+          catalogo[idp].quantidade -= qtd;
+        }
+
       }
 
     }
@@ -153,10 +149,8 @@ void remove_produto(encomenda pedidos[], produto catalogo[], int e, int p)
     }
     else
     {
-      {
-        catalogo[idp].quantidade += pedidos[ide].id_prod[idp];
-        pedidos[ide].id_prod[idp] = 0;
-      }
+      catalogo[idp].quantidade += pedidos[ide].id_prod[idp];
+      pedidos[ide].id_prod[idp] = 0;
     }
 
   }
@@ -172,14 +166,12 @@ void calcula_custo(encomenda pedidos[], produto catalogo[], int e, int p)
   }
   else
   {
-    {
-      int i;
-      int custo;
-      for (i = 0, custo = 0; i < p; i++)
-        custo += pedidos[ide].id_prod[i] * catalogo[i].preco;
+    int i;
+    int custo;
+    for (i = 0, custo = 0; i < p; i++)
+      custo += pedidos[ide].id_prod[i] * catalogo[i].preco;
 
-      printf("Custo da encomenda %d %d.\n", ide, custo);
-    }
+    printf("Custo da encomenda %d %d.\n", ide, custo);
   }
 
 }
@@ -235,31 +227,27 @@ void lista_maximo_produto(encomenda pedidos[], int e, int p)
   }
   else
   {
+    for (ide = 0, max_enco = 0, qtd_max = 0; ide < e; ide++)
+      if (qtd_max < pedidos[ide].id_prod[idp])
     {
-      for (ide = 0, max_enco = 0, qtd_max = 0; ide < e; ide++)
-        if (qtd_max < pedidos[ide].id_prod[idp])
-      {
-        {
-          qtd_max = pedidos[ide].id_prod[idp];
-          max_enco = ide;
-        }
-      }
-      else
-      {
-        
-      }
-
-
-      if (qtd_max != 0)
-      {
-        printf("Maximo produto %d %d %d.\n", idp, max_enco, qtd_max);
-      }
-      else
-      {
-        
-      }
-
+      qtd_max = pedidos[ide].id_prod[idp];
+      max_enco = ide;
     }
+    else
+    {
+      
+    }
+
+
+    if (qtd_max != 0)
+    {
+      printf("Maximo produto %d %d %d.\n", idp, max_enco, qtd_max);
+    }
+    else
+    {
+      
+    }
+
   }
 
 }
@@ -286,17 +274,15 @@ void merge_produtos(produto lista[], int left, int m, int right)
     {
       if (aux[j].preco == aux[i].preco)
       {
+        if (aux[i].idp < aux[j].idp)
         {
-          if (aux[i].idp < aux[j].idp)
-          {
-            lista[k] = aux[i++];
-          }
-          else
-          {
-            lista[k] = aux[j--];
-          }
-
+          lista[k] = aux[i++];
         }
+        else
+        {
+          lista[k] = aux[j--];
+        }
+
       }
       else
       {
@@ -395,28 +381,24 @@ void lista_ordenada_encomenda(encomenda pedidos[], produto catalogo[], int e, in
   }
   else
   {
+    for (i = 0, j = 0; i < p; i++)
+      if (pedidos[ide].id_prod[i] != 0)
     {
-      for (i = 0, j = 0; i < p; i++)
-        if (pedidos[ide].id_prod[i] != 0)
-      {
-        {
-          lista[j] = catalogo[i];
-          lista[j++].quantidade = pedidos[ide].id_prod[i];
-        }
-      }
-      else
-      {
-        
-      }
-
-
-      n_total_produtos = j;
-      merge_sort_encomenda(lista, 0, j - 1);
-      printf("Encomenda %d\n", ide);
-      for (i = 0; i < n_total_produtos; i++)
-        printf("* %s %d %d\n", lista[i].descricao, lista[i].preco, lista[i].quantidade);
-
+      lista[j] = catalogo[i];
+      lista[j++].quantidade = pedidos[ide].id_prod[i];
     }
+    else
+    {
+      
+    }
+
+
+    n_total_produtos = j;
+    merge_sort_encomenda(lista, 0, j - 1);
+    printf("Encomenda %d\n", ide);
+    for (i = 0; i < n_total_produtos; i++)
+      printf("* %s %d %d\n", lista[i].descricao, lista[i].preco, lista[i].quantidade);
+
   }
 
 }

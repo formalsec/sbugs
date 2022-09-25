@@ -104,6 +104,16 @@ int team_exists(team_list **teamHash, char *name)
   team *head = teamHash[ind]->head;
   if (head)
   {
+    if (strcmp(head->team_name, name) == 0)
+    {
+      return 1;
+    }
+    else
+    {
+      
+    }
+
+    for (; head->next != 0; head = head->next)
     {
       if (strcmp(head->team_name, name) == 0)
       {
@@ -114,20 +124,8 @@ int team_exists(team_list **teamHash, char *name)
         
       }
 
-      for (; head->next != 0; head = head->next)
-      {
-        if (strcmp(head->team_name, name) == 0)
-        {
-          return 1;
-        }
-        else
-        {
-          
-        }
-
-      }
-
     }
+
   }
   else
   {
@@ -145,17 +143,13 @@ void insertTeamList(team_list *team_list, char *team_name)
   new_team->next = 0;
   if (team_list->last != 0)
   {
-    {
-      team_list->last->next = new_team;
-      team_list->last = new_team;
-    }
+    team_list->last->next = new_team;
+    team_list->last = new_team;
   }
   else
   {
-    {
-      team_list->head = new_team;
-      team_list->last = new_team;
-    }
+    team_list->head = new_team;
+    team_list->last = new_team;
   }
 
 }
@@ -170,17 +164,13 @@ void insertTeam(team_list **teamHash, char *name)
   new_team->next = 0;
   if (teamHash[ind]->last != 0)
   {
-    {
-      teamHash[ind]->last->next = new_team;
-      teamHash[ind]->last = new_team;
-    }
+    teamHash[ind]->last->next = new_team;
+    teamHash[ind]->last = new_team;
   }
   else
   {
-    {
-      teamHash[ind]->head = new_team;
-      teamHash[ind]->last = new_team;
-    }
+    teamHash[ind]->head = new_team;
+    teamHash[ind]->last = new_team;
   }
 
 }
@@ -196,19 +186,15 @@ void add_team(team_list **teamHash, team_list *lista_equipas, int NL)
   team_name[10 - 1] = '\0';
   if (team_exists(teamHash, team_name))
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-      free(team_name);
-      return;
-    }
+    printf("%d Equipa existente.\n", NL);
+    free(team_name);
+    return;
   }
   else
   {
-    {
-      insertTeam(teamHash, team_name);
-      insertTeamList(lista_equipas, team_name);
-      free(team_name);
-    }
+    insertTeam(teamHash, team_name);
+    insertTeamList(lista_equipas, team_name);
+    free(team_name);
   }
 
 }
@@ -219,31 +205,25 @@ void add_win(team_list **teamHash, char *team_name)
   team *head = teamHash[ind]->head;
   if (strcmp(head->team_name, team_name) == 0)
   {
-    {
-      teamHash[ind]->head->wins += 1;
-      return;
-    }
+    teamHash[ind]->head->wins += 1;
+    return;
   }
   else
   {
+    for (; head->next != 0; head = head->next)
     {
-      for (; head->next != 0; head = head->next)
+      if (strcmp(head->team_name, team_name) == 0)
       {
-        if (strcmp(head->team_name, team_name) == 0)
-        {
-          {
-            teamHash[ind]->head->wins += 1;
-            return;
-          }
-        }
-        else
-        {
-          
-        }
-
+        teamHash[ind]->head->wins += 1;
+        return;
+      }
+      else
+      {
+        
       }
 
     }
+
   }
 
 }
@@ -254,31 +234,25 @@ void remove_win(team_list **teamHash, char *team_name)
   team *head = teamHash[ind]->head;
   if (strcmp(head->team_name, team_name) == 0)
   {
-    {
-      teamHash[ind]->head->wins -= 1;
-      return;
-    }
+    teamHash[ind]->head->wins -= 1;
+    return;
   }
   else
   {
+    for (; head->next != 0; head = head->next)
     {
-      for (; head->next != 0; head = head->next)
+      if (strcmp(head->team_name, team_name) == 0)
       {
-        if (strcmp(head->team_name, team_name) == 0)
-        {
-          {
-            teamHash[ind]->head->wins -= 1;
-            return;
-          }
-        }
-        else
-        {
-          
-        }
-
+        teamHash[ind]->head->wins -= 1;
+        return;
+      }
+      else
+      {
+        
       }
 
     }
+
   }
 
 }
@@ -288,41 +262,37 @@ int match_exists(match_list **matchHash, char *name)
   int ind = hash(name, 1000);
   if (matchHash[ind]->head)
   {
+    match *head = matchHash[ind]->head;
+    if (head)
     {
-      match *head = matchHash[ind]->head;
-      if (head)
+      if (strcmp(head->match_name, name) == 0)
       {
-        {
-          if (strcmp(head->match_name, name) == 0)
-          {
-            return 1;
-          }
-          else
-          {
-            
-          }
-
-          for (; head->next != 0; head = head->next)
-          {
-            if (strcmp(head->match_name, name) == 0)
-            {
-              return 1;
-            }
-            else
-            {
-              
-            }
-
-          }
-
-        }
+        return 1;
       }
       else
       {
         
       }
 
+      for (; head->next != 0; head = head->next)
+      {
+        if (strcmp(head->match_name, name) == 0)
+        {
+          return 1;
+        }
+        else
+        {
+          
+        }
+
+      }
+
     }
+    else
+    {
+      
+    }
+
   }
   else
   {
@@ -339,17 +309,13 @@ void insertMatchList(matches *match_list, char *match_name)
   strcpy(new_match->match_name, match_name);
   if (match_list->last != 0)
   {
-    {
-      match_list->last->next = new_match;
-      match_list->last = new_match;
-    }
+    match_list->last->next = new_match;
+    match_list->last = new_match;
   }
   else
   {
-    {
-      match_list->head = new_match;
-      match_list->last = new_match;
-    }
+    match_list->head = new_match;
+    match_list->last = new_match;
   }
 
   new_match->previous = match_list->last;
@@ -372,17 +338,13 @@ void insertMatch(match_list **matchHash, team_list **teamHash, char *match_name,
   new_match->next = 0;
   if (matchHash[ind]->last != 0)
   {
-    {
-      matchHash[ind]->last->next = new_match;
-      matchHash[ind]->last = new_match;
-    }
+    matchHash[ind]->last->next = new_match;
+    matchHash[ind]->last = new_match;
   }
   else
   {
-    {
-      matchHash[ind]->head = new_match;
-      matchHash[ind]->last = new_match;
-    }
+    matchHash[ind]->head = new_match;
+    matchHash[ind]->last = new_match;
   }
 
   if (team1_score > team2_score)
@@ -433,32 +395,26 @@ void add_match(match_list **matchHash, team_list **teamHash, matches *lista_jogo
   team2_score = new_sym_var(sizeof(int) * 8);
   if (match_exists(matchHash, match_name))
   {
-    {
-      printf("%d Jogo existente.\n", NL);
-      free(match_name);
-      free(team1_name);
-      free(team2_name);
-      return;
-    }
+    printf("%d Jogo existente.\n", NL);
+    free(match_name);
+    free(team1_name);
+    free(team2_name);
+    return;
   }
   else
   {
     if ((!team_exists(teamHash, team1_name)) || (!team_exists(teamHash, team2_name)))
     {
-      {
-        printf("%d Equipa inexistente.\n", NL);
-        free(match_name);
-        free(team1_name);
-        free(team2_name);
-        return;
-      }
+      printf("%d Equipa inexistente.\n", NL);
+      free(match_name);
+      free(team1_name);
+      free(team2_name);
+      return;
     }
     else
     {
-      {
-        insertMatch(matchHash, teamHash, match_name, team1_name, team2_name, team1_score, team2_score);
-        insertMatchList(lista_jogos, match_name);
-      }
+      insertMatch(matchHash, teamHash, match_name, team1_name, team2_name, team1_score, team2_score);
+      insertMatchList(lista_jogos, match_name);
     }
 
   }
@@ -483,47 +439,39 @@ void team_lookup(team_list **teamHash, int NL)
   head = teamHash[ind]->head;
   if (!team_exists(teamHash, team_name))
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      free(team_name);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    free(team_name);
+    return;
   }
   else
   {
+    if (strcmp(head->team_name, team_name) == 0)
+    {
+      printf("%d %s %d\n", NL, team_name, head->wins);
+      free(team_name);
+      return;
+    }
+    else
+    {
+      
+    }
+
+    while (head->next)
     {
       if (strcmp(head->team_name, team_name) == 0)
       {
-        {
-          printf("%d %s %d\n", NL, team_name, head->wins);
-          free(team_name);
-          return;
-        }
+        printf("%d %s %d\n", NL, team_name, head->wins);
+        free(team_name);
+        return;
       }
       else
       {
         
       }
 
-      while (head->next)
-      {
-        if (strcmp(head->team_name, team_name) == 0)
-        {
-          {
-            printf("%d %s %d\n", NL, team_name, head->wins);
-            free(team_name);
-            return;
-          }
-        }
-        else
-        {
-          
-        }
-
-        head = head->next;
-      }
-
+      head = head->next;
     }
+
   }
 
 }
@@ -534,21 +482,19 @@ void match_lookup_aux(match_list **matchHash, int NL, char *match_name)
   match *head = matchHash[ind]->head;
   if (head->next != 0)
   {
+    for (; head->next != 0; head = head->next)
     {
-      for (; head->next != 0; head = head->next)
+      if (strcmp(head->match_name, match_name) == 0)
       {
-        if (strcmp(head->match_name, match_name) == 0)
-        {
-          break;
-        }
-        else
-        {
-          
-        }
-
+        break;
+      }
+      else
+      {
+        
       }
 
     }
+
   }
   else
   {
@@ -569,19 +515,15 @@ void match_lookup(match_list **matchHash, int NL)
   match_name[10 - 1] = '\0';
   if (!match_exists(matchHash, match_name))
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      free(match_name);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    free(match_name);
+    return;
   }
   else
   {
-    {
-      match_lookup_aux(matchHash, NL, match_name);
-      free(match_name);
-      return;
-    }
+    match_lookup_aux(matchHash, NL, match_name);
+    free(match_name);
+    return;
   }
 
 }
@@ -591,21 +533,19 @@ void remove_match_list(matches *lista_jogos, char *match_name)
   m_name *head = lista_jogos->head;
   if (head->next != 0)
   {
+    for (; head->next != 0; head = head->next)
     {
-      for (; head->next != 0; head = head->next)
+      if (strcmp(head->match_name, match_name) == 0)
       {
-        if (strcmp(head->match_name, match_name) == 0)
-        {
-          break;
-        }
-        else
-        {
-          
-        }
-
+        break;
+      }
+      else
+      {
+        
       }
 
     }
+
   }
   else
   {
@@ -639,23 +579,19 @@ void remove_match(team_list **teamHash, match_list **matchHash, char *match_name
   match *head = matchHash[ind]->head;
   if (head->next != 0)
   {
+    for (; head->next != 0; head = head->next)
     {
-      for (; head->next != 0; head = head->next)
+      if (strcmp(head->match_name, match_name) == 0)
       {
-        if (strcmp(head->match_name, match_name) == 0)
-        {
-          {
-            break;
-          }
-        }
-        else
-        {
-          
-        }
-
+        break;
+      }
+      else
+      {
+        
       }
 
     }
+
   }
   else
   {
@@ -664,17 +600,13 @@ void remove_match(team_list **teamHash, match_list **matchHash, char *match_name
 
   if (head->team1_score > head->team2_score)
   {
-    {
-      remove_win(teamHash, head->team1_name);
-    }
+    remove_win(teamHash, head->team1_name);
   }
   else
   {
     if (head->team1_score < head->team2_score)
     {
-      {
-        remove_win(teamHash, head->team2_name);
-      }
+      remove_win(teamHash, head->team2_name);
     }
     else
     {
@@ -715,11 +647,9 @@ void delete_match(team_list **teamHash, match_list **matchHash, matches *lista_j
   match_name[10 - 1] = '\0';
   if (!match_exists(matchHash, match_name))
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      free(match_name);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    free(match_name);
+    return;
   }
   else
   {
@@ -739,23 +669,19 @@ void altera_score(team_list **teamHash, match_list **matchHash, char *match_name
   int old_2;
   if (head->next != 0)
   {
+    for (; head->next != 0; head = head->next)
     {
-      for (; head->next != 0; head = head->next)
+      if (strcmp(head->match_name, match_name) == 0)
       {
-        if (strcmp(head->match_name, match_name) == 0)
-        {
-          {
-            break;
-          }
-        }
-        else
-        {
-          
-        }
-
+        break;
+      }
+      else
+      {
+        
       }
 
     }
+
   }
   else
   {
@@ -772,10 +698,8 @@ void altera_score(team_list **teamHash, match_list **matchHash, char *match_name
   {
     if ((old_1 > old_2) && (new_1 < new_2))
     {
-      {
-        remove_win(teamHash, head->team1_name);
-        add_win(teamHash, head->team2_name);
-      }
+      remove_win(teamHash, head->team1_name);
+      add_win(teamHash, head->team2_name);
     }
     else
     {
@@ -799,10 +723,8 @@ void altera_score(team_list **teamHash, match_list **matchHash, char *match_name
           {
             if ((old_1 < old_2) && (new_1 > new_2))
             {
-              {
-                remove_win(teamHash, head->team2_name);
-                add_win(teamHash, head->team1_name);
-              }
+              remove_win(teamHash, head->team2_name);
+              add_win(teamHash, head->team1_name);
             }
             else
             {
@@ -838,19 +760,15 @@ void change_score(team_list **teamHash, match_list **matchHash, int NL)
   team2_new_score = new_sym_var(sizeof(int) * 8);
   if (!match_exists(matchHash, match_name))
   {
-    {
-      printf("%d Jogo inexistente.\n", NL);
-      free(match_name);
-      return;
-    }
+    printf("%d Jogo inexistente.\n", NL);
+    free(match_name);
+    return;
   }
   else
   {
-    {
-      altera_score(teamHash, matchHash, match_name, team1_new_score, team2_new_score);
-      free(match_name);
-      return;
-    }
+    altera_score(teamHash, matchHash, match_name, team1_new_score, team2_new_score);
+    free(match_name);
+    return;
   }
 
 }
@@ -860,20 +778,16 @@ void print_games(matches *lista_jogos, match_list **matchHash, int NL)
   m_name *head;
   if (lista_jogos->head == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
+    head = lista_jogos->head;
+    for (; head != 0; head = head->next)
     {
-      head = lista_jogos->head;
-      for (; head != 0; head = head->next)
-      {
-        match_lookup_aux(matchHash, NL, head->match_name);
-      }
-
+      match_lookup_aux(matchHash, NL, head->match_name);
     }
+
   }
 
 }
@@ -888,24 +802,20 @@ int lookup_team_wins(team_list **teamHash, char *team_name)
   }
   else
   {
+    while (head->next)
     {
-      while (head->next)
+      if (strcmp(head->team_name, team_name) == 0)
       {
-        if (strcmp(head->team_name, team_name) == 0)
-        {
-          {
-            return head->wins;
-          }
-        }
-        else
-        {
-          
-        }
-
-        head = head->next;
+        return head->wins;
+      }
+      else
+      {
+        
       }
 
+      head = head->next;
     }
+
   }
 
   return 0;
@@ -954,32 +864,30 @@ void print_teams(team_list *lista_equipas, team_list **teamHash, int NL)
   {
     if (teamHash[i]->head != 0)
     {
+      head = teamHash[i]->head;
+      while (head)
       {
-        head = teamHash[i]->head;
-        while (head)
+        head->wins = lookup_team_wins(teamHash, head->team_name);
+        if (head->wins > max_wins)
         {
-          head->wins = lookup_team_wins(teamHash, head->team_name);
-          if (head->wins > max_wins)
-          {
-            max_wins = head->wins;
-          }
-          else
-          {
-            
-          }
+          max_wins = head->wins;
+        }
+        else
+        {
+          
+        }
 
-          if (head->next != 0)
-          {
-            head = head->next;
-          }
-          else
-          {
-            break;
-          }
-
+        if (head->next != 0)
+        {
+          head = head->next;
+        }
+        else
+        {
+          break;
         }
 
       }
+
     }
     else
     {
@@ -992,34 +900,30 @@ void print_teams(team_list *lista_equipas, team_list **teamHash, int NL)
   {
     if (teamHash[i]->head != 0)
     {
+      head = teamHash[i]->head;
+      while (head)
       {
-        head = teamHash[i]->head;
-        while (head)
+        if (head->wins == max_wins)
         {
-          if (head->wins == max_wins)
-          {
-            {
-              insertTeamList(lista_eq, head->team_name);
-              list_len += 1;
-            }
-          }
-          else
-          {
-            
-          }
+          insertTeamList(lista_eq, head->team_name);
+          list_len += 1;
+        }
+        else
+        {
+          
+        }
 
-          if (head->next != 0)
-          {
-            head = head->next;
-          }
-          else
-          {
-            break;
-          }
-
+        if (head->next != 0)
+        {
+          head = head->next;
+        }
+        else
+        {
+          break;
         }
 
       }
+
     }
     else
     {
@@ -1030,11 +934,9 @@ void print_teams(team_list *lista_equipas, team_list **teamHash, int NL)
 
   if (lista_eq->head == 0)
   {
-    {
-      free(temp);
-      destroy_team_list(lista_eq);
-      return;
-    }
+    free(temp);
+    destroy_team_list(lista_eq);
+    return;
   }
   else
   {
@@ -1043,12 +945,10 @@ void print_teams(team_list *lista_equipas, team_list **teamHash, int NL)
 
   if (lista_eq->head->next == 0)
   {
-    {
-      printf("%d Melhores %d\n%d * %s\n", NL, max_wins, NL, lista_eq->head->team_name);
-      free(temp);
-      destroy_team_list(lista_eq);
-      return;
-    }
+    printf("%d Melhores %d\n%d * %s\n", NL, max_wins, NL, lista_eq->head->team_name);
+    free(temp);
+    destroy_team_list(lista_eq);
+    return;
   }
   else
   {
@@ -1057,45 +957,39 @@ void print_teams(team_list *lista_equipas, team_list **teamHash, int NL)
 
   if (lista_eq->head)
   {
+    while (!sorted(lista_eq))
     {
-      while (!sorted(lista_eq))
+      t_head = lista_eq->head;
+      while (t_head)
       {
-        t_head = lista_eq->head;
-        while (t_head)
+        if (t_head->next != 0)
         {
-          if (t_head->next != 0)
+          if (strcmp(t_head->team_name, t_head->next->team_name) > 0)
           {
-            {
-              if (strcmp(t_head->team_name, t_head->next->team_name) > 0)
-              {
-                {
-                  strcpy(temp, t_head->team_name);
-                  free(t_head->team_name);
-                  t_head->team_name = malloc((strlen(t_head->next->team_name) + 1) * (sizeof(char)));
-                  strcpy(t_head->team_name, t_head->next->team_name);
-                  free(t_head->next->team_name);
-                  t_head->next->team_name = malloc((strlen(temp) + 1) * (sizeof(char)));
-                  strcpy(t_head->next->team_name, temp);
-                }
-              }
-              else
-              {
-                
-              }
-
-              t_head = t_head->next;
-            }
+            strcpy(temp, t_head->team_name);
+            free(t_head->team_name);
+            t_head->team_name = malloc((strlen(t_head->next->team_name) + 1) * (sizeof(char)));
+            strcpy(t_head->team_name, t_head->next->team_name);
+            free(t_head->next->team_name);
+            t_head->next->team_name = malloc((strlen(temp) + 1) * (sizeof(char)));
+            strcpy(t_head->next->team_name, temp);
           }
           else
           {
-            break;
+            
           }
 
+          t_head = t_head->next;
+        }
+        else
+        {
+          break;
         }
 
       }
 
     }
+
   }
   else
   {

@@ -11,11 +11,9 @@ void freeItem(Item item)
 {
   if (item->type == 1)
   {
-    {
-      Match match = item->content;
-      free(match->team1);
-      free(match->team2);
-    }
+    Match match = item->content;
+    free(match->team1);
+    free(match->team2);
   }
   else
   {
@@ -60,19 +58,15 @@ void printItem(Item item)
 {
   if (item->type == 0)
   {
-    {
-      Team team = item->content;
-      printf("%s %d\n", item->name, team->record);
-    }
+    Team team = item->content;
+    printf("%s %d\n", item->name, team->record);
   }
   else
   {
     if (item->type == 1)
     {
-      {
-        Match match = item->content;
-        printf("%s %s %s %d %d\n", item->name, match->team1, match->team2, match->score1, match->score2);
-      }
+      Match match = item->content;
+      printf("%s %s %s %d %d\n", item->name, match->team1, match->team2, match->score1, match->score2);
     }
     else
     {

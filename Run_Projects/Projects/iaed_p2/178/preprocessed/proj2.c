@@ -82,9 +82,7 @@ link_team search_team(link_team head, char *name)
   {
     if (strcmp(aux->t->team_name, name) == 0)
     {
-      {
-        return aux;
-      }
+      return aux;
     }
     else
     {
@@ -109,15 +107,11 @@ void add_team(int line, int dim)
   index = hash(name, dim);
   if (search_team(heads_team[index], name) == 0)
   {
-    {
-      heads_team[index] = insert_beggin_list_team(heads_team[index], name);
-    }
+    heads_team[index] = insert_beggin_list_team(heads_team[index], name);
   }
   else
   {
-    {
-      printf("%d Equipa existente.\n", line);
-    }
+    printf("%d Equipa existente.\n", line);
   }
 
 }
@@ -135,15 +129,11 @@ void look_for_team(int line, int dim)
   index = hash(name, dim);
   if (search_team(heads_team[index], name) != 0)
   {
-    {
-      printf("%d %s %d\n", line, heads_team[index]->t->team_name, heads_team[index]->t->wins);
-    }
+    printf("%d %s %d\n", line, heads_team[index]->t->team_name, heads_team[index]->t->wins);
   }
   else
   {
-    {
-      printf("%d Equipa inexistente.\n", line);
-    }
+    printf("%d Equipa inexistente.\n", line);
   }
 
 }
@@ -169,9 +159,7 @@ link_game search_game(link_game head, char *name)
   {
     if (strcmp(aux->g->game_name, name) == 0)
     {
-      {
-        return aux;
-      }
+      return aux;
     }
     else
     {
@@ -191,24 +179,18 @@ link_game delete_game(link_game head, char *name)
   {
     if (strcmp(aux->g->game_name, name) == 0)
     {
+      if (aux == head)
       {
-        if (aux == head)
-        {
-          {
-            head = aux->next_game;
-          }
-        }
-        else
-        {
-          {
-            prev->next_game = aux->next_game;
-          }
-        }
-
-        free(aux->next_game);
-        free(aux);
-        break;
+        head = aux->next_game;
       }
+      else
+      {
+        prev->next_game = aux->next_game;
+      }
+
+      free(aux->next_game);
+      free(aux);
+      break;
     }
     else
     {
@@ -256,53 +238,39 @@ void add_game(int line, int vector_position, int dim, int *games_index)
   index_team2 = hash(team2_name, dim);
   if (search_game(heads_game[index_game], game_name) == 0)
   {
+    if ((search_team(heads_team[index_team1], team1_name) != 0) && (search_team(heads_team[index_team2], team2_name) != 0))
     {
-      if ((search_team(heads_team[index_team1], team1_name) != 0) && (search_team(heads_team[index_team2], team2_name) != 0))
+      if (score1 > score2)
       {
-        {
-          if (score1 > score2)
-          {
-            {
-              heads_game[index_game] = insert_beggin_list_game(heads_game[index_game], game_name, team1_name, team2_name, score1, score2, team1_name);
-              heads_team[index_team1]->t->wins++;
-            }
-          }
-          else
-          {
-            if (score1 == score2)
-            {
-              {
-                strcpy(tie, "tie");
-                heads_game[index_game] = insert_beggin_list_game(heads_game[index_game], game_name, team1_name, team2_name, score1, score2, tie);
-              }
-            }
-            else
-            {
-              {
-                heads_game[index_game] = insert_beggin_list_game(heads_game[index_game], game_name, team1_name, team2_name, score1, score2, team2_name);
-                heads_team[index_team2]->t->wins++;
-              }
-            }
-
-          }
-
-          games_index[vector_position] = index_game;
-        }
+        heads_game[index_game] = insert_beggin_list_game(heads_game[index_game], game_name, team1_name, team2_name, score1, score2, team1_name);
+        heads_team[index_team1]->t->wins++;
       }
       else
       {
+        if (score1 == score2)
         {
-          printf("%d Equipa inexistente.\n", line);
+          strcpy(tie, "tie");
+          heads_game[index_game] = insert_beggin_list_game(heads_game[index_game], game_name, team1_name, team2_name, score1, score2, tie);
         }
+        else
+        {
+          heads_game[index_game] = insert_beggin_list_game(heads_game[index_game], game_name, team1_name, team2_name, score1, score2, team2_name);
+          heads_team[index_team2]->t->wins++;
+        }
+
       }
 
+      games_index[vector_position] = index_game;
     }
+    else
+    {
+      printf("%d Equipa inexistente.\n", line);
+    }
+
   }
   else
   {
-    {
-      printf("%d Jogo existente.\n", line);
-    }
+    printf("%d Jogo existente.\n", line);
   }
 
 }
@@ -320,15 +288,11 @@ void look_for_game(int line, int dim)
   index = hash(name, dim);
   if (search_game(heads_game[index], name) != 0)
   {
-    {
-      printf("%d %s %s %s %d %d\n", line, name, heads_game[index]->g->team1_name, heads_game[index]->g->team2_name, heads_game[index]->g->score1, heads_game[index]->g->score2);
-    }
+    printf("%d %s %s %s %d %d\n", line, name, heads_game[index]->g->team1_name, heads_game[index]->g->team2_name, heads_game[index]->g->score1, heads_game[index]->g->score2);
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", line);
-    }
+    printf("%d Jogo inexistente.\n", line);
   }
 
 }
@@ -340,10 +304,8 @@ void change_vector_content(int index, int vector_counter, int *games_index)
   {
     if (games_index[i] == index)
     {
-      {
-        games_index[i] = -1;
-        break;
-      }
+      games_index[i] = -1;
+      break;
     }
     else
     {
@@ -369,39 +331,31 @@ void remove_game(int line, int vector_counter, int dim, int *games_index)
   index = hash(game_name, dim);
   if (search_game(heads_game[index], game_name) != 0)
   {
+    if (strcmp(heads_game[index]->g->winner, heads_game[index]->g->team1_name) == 0)
     {
-      if (strcmp(heads_game[index]->g->winner, heads_game[index]->g->team1_name) == 0)
+      index_team1 = hash(heads_game[index]->g->team1_name, dim);
+      heads_team[index_team1]->t->wins--;
+    }
+    else
+    {
+      if (strcmp(heads_game[index]->g->winner, heads_game[index]->g->team2_name) == 0)
       {
-        {
-          index_team1 = hash(heads_game[index]->g->team1_name, dim);
-          heads_team[index_team1]->t->wins--;
-        }
+        index_team2 = hash(heads_game[index]->g->team2_name, dim);
+        heads_team[index_team2]->t->wins--;
       }
       else
       {
-        if (strcmp(heads_game[index]->g->winner, heads_game[index]->g->team2_name) == 0)
-        {
-          {
-            index_team2 = hash(heads_game[index]->g->team2_name, dim);
-            heads_team[index_team2]->t->wins--;
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      delete_game(heads_game[index], game_name);
-      change_vector_content(index, vector_counter, games_index);
     }
+
+    delete_game(heads_game[index], game_name);
+    change_vector_content(index, vector_counter, games_index);
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", line);
-    }
+    printf("%d Jogo inexistente.\n", line);
   }
 
 }
@@ -426,115 +380,93 @@ void change_score(int line, int dim)
   index = hash(game_name, dim);
   if (search_game(heads_game[index], game_name) != 0)
   {
+    heads_game[index]->g->score1 = goals1;
+    heads_game[index]->g->score2 = goals2;
+    if (goals1 > goals2)
     {
-      heads_game[index]->g->score1 = goals1;
-      heads_game[index]->g->score2 = goals2;
-      if (goals1 > goals2)
+      if ((strcmp(heads_game[index]->g->winner, heads_game[index]->g->team1_name) != 0) && (strcmp(heads_game[index]->g->winner, "tie") != 0))
       {
-        {
-          if ((strcmp(heads_game[index]->g->winner, heads_game[index]->g->team1_name) != 0) && (strcmp(heads_game[index]->g->winner, "tie") != 0))
-          {
-            {
-              strcpy(heads_game[index]->g->winner, heads_game[index]->g->team1_name);
-              index_winner = hash(heads_game[index]->g->team1_name, dim);
-              index_loser = hash(heads_game[index]->g->team2_name, dim);
-              heads_team[index_winner]->t->wins++;
-              heads_team[index_loser]->t->wins--;
-            }
-          }
-          else
-          {
-            if (strcmp(heads_game[index]->g->winner, "tie") == 0)
-            {
-              {
-                strcpy(heads_game[index]->g->winner, heads_game[index]->g->team1_name);
-                index_winner = hash(heads_game[index]->g->team1_name, dim);
-                heads_team[index_winner]->t->wins++;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-        }
+        strcpy(heads_game[index]->g->winner, heads_game[index]->g->team1_name);
+        index_winner = hash(heads_game[index]->g->team1_name, dim);
+        index_loser = hash(heads_game[index]->g->team2_name, dim);
+        heads_team[index_winner]->t->wins++;
+        heads_team[index_loser]->t->wins--;
       }
       else
       {
-        if (goals2 > goals1)
+        if (strcmp(heads_game[index]->g->winner, "tie") == 0)
         {
-          {
-            if ((strcmp(heads_game[index]->g->winner, heads_game[index]->g->team2_name) != 0) && (strcmp(heads_game[index]->g->winner, "tie") != 0))
-            {
-              {
-                strcpy(heads_game[index]->g->winner, heads_game[index]->g->team2_name);
-                index_winner = hash(heads_game[index]->g->team2_name, dim);
-                index_loser = hash(heads_game[index]->g->team1_name, dim);
-                heads_team[index_winner]->t->wins++;
-                heads_team[index_loser]->t->wins--;
-              }
-            }
-            else
-            {
-              if (strcmp(heads_game[index]->g->winner, "tie") == 0)
-              {
-                {
-                  strcpy(heads_game[index]->g->winner, heads_game[index]->g->team2_name);
-                  index_winner = hash(heads_game[index]->g->team2_name, dim);
-                  heads_team[index_winner]->t->wins++;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-          }
+          strcpy(heads_game[index]->g->winner, heads_game[index]->g->team1_name);
+          index_winner = hash(heads_game[index]->g->team1_name, dim);
+          heads_team[index_winner]->t->wins++;
         }
         else
         {
-          {
-            if ((strcmp(heads_game[index]->g->winner, heads_game[index]->g->team1_name) != 0) && (strcmp(heads_game[index]->g->winner, "tie") != 0))
-            {
-              {
-                strcpy(heads_game[index]->g->winner, "tie");
-                index_old_winner = hash(heads_game[index]->g->team2_name, dim);
-                heads_team[index_old_winner]->t->wins--;
-              }
-            }
-            else
-            {
-              if ((strcmp(heads_game[index]->g->winner, heads_game[index]->g->team2_name) != 0) && (strcmp(heads_game[index]->g->winner, "tie") != 0))
-              {
-                {
-                  strcpy(heads_game[index]->g->winner, "tie");
-                  index_old_winner = hash(heads_game[index]->g->team1_name, dim);
-                  heads_team[index_old_winner]->t->wins--;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-          }
+          
         }
 
       }
 
     }
+    else
+    {
+      if (goals2 > goals1)
+      {
+        if ((strcmp(heads_game[index]->g->winner, heads_game[index]->g->team2_name) != 0) && (strcmp(heads_game[index]->g->winner, "tie") != 0))
+        {
+          strcpy(heads_game[index]->g->winner, heads_game[index]->g->team2_name);
+          index_winner = hash(heads_game[index]->g->team2_name, dim);
+          index_loser = hash(heads_game[index]->g->team1_name, dim);
+          heads_team[index_winner]->t->wins++;
+          heads_team[index_loser]->t->wins--;
+        }
+        else
+        {
+          if (strcmp(heads_game[index]->g->winner, "tie") == 0)
+          {
+            strcpy(heads_game[index]->g->winner, heads_game[index]->g->team2_name);
+            index_winner = hash(heads_game[index]->g->team2_name, dim);
+            heads_team[index_winner]->t->wins++;
+          }
+          else
+          {
+            
+          }
+
+        }
+
+      }
+      else
+      {
+        if ((strcmp(heads_game[index]->g->winner, heads_game[index]->g->team1_name) != 0) && (strcmp(heads_game[index]->g->winner, "tie") != 0))
+        {
+          strcpy(heads_game[index]->g->winner, "tie");
+          index_old_winner = hash(heads_game[index]->g->team2_name, dim);
+          heads_team[index_old_winner]->t->wins--;
+        }
+        else
+        {
+          if ((strcmp(heads_game[index]->g->winner, heads_game[index]->g->team2_name) != 0) && (strcmp(heads_game[index]->g->winner, "tie") != 0))
+          {
+            strcpy(heads_game[index]->g->winner, "tie");
+            index_old_winner = hash(heads_game[index]->g->team1_name, dim);
+            heads_team[index_old_winner]->t->wins--;
+          }
+          else
+          {
+            
+          }
+
+        }
+
+      }
+
+    }
+
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", line);
-    }
+    printf("%d Jogo inexistente.\n", line);
   }
 
 }
@@ -546,9 +478,7 @@ void print_games(int line, int max_index, int *games_index)
   {
     if ((games_index[i] != (-1)) && (heads_game[games_index[i]] != 0))
     {
-      {
-        printf("%d %s %s %s %d %d\n", line, heads_game[games_index[i]]->g->game_name, heads_game[games_index[i]]->g->team1_name, heads_game[games_index[i]]->g->team2_name, heads_game[games_index[i]]->g->score1, heads_game[games_index[i]]->g->score2);
-      }
+      printf("%d %s %s %s %d %d\n", line, heads_game[games_index[i]]->g->game_name, heads_game[games_index[i]]->g->team1_name, heads_game[games_index[i]]->g->team2_name, heads_game[games_index[i]]->g->score1, heads_game[games_index[i]]->g->score2);
     }
     else
     {
@@ -563,9 +493,7 @@ void print_teams(int line, int max_teams)
 {
   if (max_teams > 0)
   {
-    {
-      printf("%d Melhores", line);
-    }
+    printf("%d Melhores", line);
   }
   else
   {

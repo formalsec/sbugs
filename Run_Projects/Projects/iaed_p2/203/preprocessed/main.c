@@ -8,15 +8,11 @@ Teams *add_new_team(Teams *teams, char *buffer)
 {
   if (team_exists(&teams, buffer))
   {
-    {
-      printf("%d Equipa existente.\n", nl);
-    }
+    printf("%d Equipa existente.\n", nl);
   }
   else
   {
-    {
-      teams = add_team_to_list(&teams, buffer);
-    }
+    teams = add_team_to_list(&teams, buffer);
   }
 
   return teams;
@@ -39,44 +35,34 @@ Matches *add_new_match(Matches *matches, char *buffer)
   score2 = atoi(strtok(0, ":"));
   if (match_exists(&matches, m_name))
   {
-    {
-      printf("%d Jogo existente.\n", nl);
-    }
+    printf("%d Jogo existente.\n", nl);
   }
   else
   {
     if ((!team_exists(&teams, team1)) || (!team_exists(&teams, team2)))
     {
-      {
-        printf("%d Equipa inexistente.\n", nl);
-      }
+      printf("%d Equipa inexistente.\n", nl);
     }
     else
     {
+      matches = add_match_to_list(&matches, m_name, team1, team2, score1, score2);
+      if (score1 > score2)
       {
-        matches = add_match_to_list(&matches, m_name, team1, team2, score1, score2);
-        if (score1 > score2)
+        teams = increment_matches_won(&teams, team1);
+      }
+      else
+      {
+        if (score2 > score1)
         {
-          {
-            teams = increment_matches_won(&teams, team1);
-          }
+          teams = increment_matches_won(&teams, team2);
         }
         else
         {
-          if (score2 > score1)
-          {
-            {
-              teams = increment_matches_won(&teams, team2);
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
+
     }
 
   }
@@ -102,16 +88,12 @@ void find_match(char *buffer)
 {
   if (match_exists(&matches, buffer))
   {
-    {
-      printf("%d", nl);
-      print_match_found(&matches, buffer);
-    }
+    printf("%d", nl);
+    print_match_found(&matches, buffer);
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-    }
+    printf("%d Jogo inexistente.\n", nl);
   }
 
 }
@@ -120,16 +102,12 @@ void matches_won_team(char *buffer)
 {
   if (team_exists(&teams, buffer))
   {
-    {
-      printf("%d ", nl);
-      print_matches_won(&teams, buffer);
-    }
+    printf("%d ", nl);
+    print_matches_won(&teams, buffer);
   }
   else
   {
-    {
-      printf("%d Equipa inexistente.\n", nl);
-    }
+    printf("%d Equipa inexistente.\n", nl);
   }
 
 }
@@ -144,91 +122,70 @@ void change_match_score(char *buffer)
   new_s2 = atoi(strtok(0, ":"));
   if (match_exists(&matches, buffer))
   {
+    Matches **head = &matches;
+    Matches *current;
+    for (current = *head; current != 0; current = current->next)
     {
-      Matches **head = &matches;
-      Matches *current;
-      for (current = *head; current != 0; current = current->next)
+      if (strcmp(current->match_name, m_name) == 0)
       {
-        if (strcmp(current->match_name, m_name) == 0)
+        current->score1 = new_s1;
+        current->score2 = new_s2;
+        if ((new_s2 > new_s1) && (current->winner == 1))
         {
-          {
-            current->score1 = new_s1;
-            current->score2 = new_s2;
-            if ((new_s2 > new_s1) && (current->winner == 1))
-            {
-              {
-                teams = increment_matches_won(&teams, current->team2);
-                teams = decrement_matches_won(&teams, current->team1);
-                current->winner = 2;
-              }
-            }
-            else
-            {
-              
-            }
+          teams = increment_matches_won(&teams, current->team2);
+          teams = decrement_matches_won(&teams, current->team1);
+          current->winner = 2;
+        }
+        else
+        {
+          
+        }
 
-            if ((new_s2 > new_s1) && (current->winner == 0))
-            {
-              {
-                teams = increment_matches_won(&teams, current->team2);
-                current->winner = 2;
-              }
-            }
-            else
-            {
-              
-            }
+        if ((new_s2 > new_s1) && (current->winner == 0))
+        {
+          teams = increment_matches_won(&teams, current->team2);
+          current->winner = 2;
+        }
+        else
+        {
+          
+        }
 
-            if ((new_s2 < new_s1) && (current->winner == 2))
-            {
-              {
-                teams = increment_matches_won(&teams, current->team1);
-                teams = decrement_matches_won(&teams, current->team2);
-                current->winner = 1;
-              }
-            }
-            else
-            {
-              
-            }
+        if ((new_s2 < new_s1) && (current->winner == 2))
+        {
+          teams = increment_matches_won(&teams, current->team1);
+          teams = decrement_matches_won(&teams, current->team2);
+          current->winner = 1;
+        }
+        else
+        {
+          
+        }
 
-            if ((new_s2 < new_s1) && (current->winner == 0))
-            {
-              {
-                teams = increment_matches_won(&teams, current->team1);
-                current->winner = 1;
-              }
-            }
-            else
-            {
-              
-            }
+        if ((new_s2 < new_s1) && (current->winner == 0))
+        {
+          teams = increment_matches_won(&teams, current->team1);
+          current->winner = 1;
+        }
+        else
+        {
+          
+        }
 
-            if ((new_s2 == new_s1) && (current->winner == 1))
-            {
-              {
-                teams = decrement_matches_won(&teams, current->team1);
-                current->winner = 0;
-              }
-            }
-            else
-            {
-              
-            }
+        if ((new_s2 == new_s1) && (current->winner == 1))
+        {
+          teams = decrement_matches_won(&teams, current->team1);
+          current->winner = 0;
+        }
+        else
+        {
+          
+        }
 
-            if ((new_s2 == new_s1) && (current->winner == 2))
-            {
-              {
-                teams = decrement_matches_won(&teams, current->team2);
-                current->winner = 0;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
+        if ((new_s2 == new_s1) && (current->winner == 2))
+        {
+          teams = decrement_matches_won(&teams, current->team2);
+          current->winner = 0;
         }
         else
         {
@@ -236,14 +193,17 @@ void change_match_score(char *buffer)
         }
 
       }
+      else
+      {
+        
+      }
 
     }
+
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-    }
+    printf("%d Jogo inexistente.\n", nl);
   }
 
   free(m_name);
@@ -253,37 +213,24 @@ void remove_match(char *buffer)
 {
   if (match_exists(&matches, buffer))
   {
+    Matches **head = &matches;
+    Matches *current;
+    for (current = *head; current != 0; current = current->next)
     {
-      Matches **head = &matches;
-      Matches *current;
-      for (current = *head; current != 0; current = current->next)
+      if (strcmp(current->match_name, buffer) == 0)
       {
-        if (strcmp(current->match_name, buffer) == 0)
+        if (current->winner == 1)
         {
-          {
-            if (current->winner == 1)
-            {
-              {
-                teams = decrement_matches_won(&teams, current->team1);
-              }
-            }
-            else
-            {
-              
-            }
+          teams = decrement_matches_won(&teams, current->team1);
+        }
+        else
+        {
+          
+        }
 
-            if (current->winner == 2)
-            {
-              {
-                teams = decrement_matches_won(&teams, current->team2);
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
+        if (current->winner == 2)
+        {
+          teams = decrement_matches_won(&teams, current->team2);
         }
         else
         {
@@ -291,15 +238,18 @@ void remove_match(char *buffer)
         }
 
       }
+      else
+      {
+        
+      }
 
-      matches = delete_match_from_list(&matches, buffer);
     }
+
+    matches = delete_match_from_list(&matches, buffer);
   }
   else
   {
-    {
-      printf("%d Jogo inexistente.\n", nl);
-    }
+    printf("%d Jogo inexistente.\n", nl);
   }
 
 }
@@ -308,46 +258,40 @@ void matches_won_highest()
 {
   if (teams)
   {
+    struct Teams *teams_highest = 0;
+    Teams **head;
+    Teams *temp;
+    int highest_won = max_won(&teams);
+    int list_size;
+    int i;
+    teams_highest = add_team_highest(&teams_highest, &teams, highest_won);
+    list_size = get_list_size(teams_highest);
+    for (i = 0; i < list_size; i++)
     {
-      struct Teams *teams_highest = 0;
-      Teams **head;
-      Teams *temp;
-      int highest_won = max_won(&teams);
-      int list_size;
-      int i;
-      teams_highest = add_team_highest(&teams_highest, &teams, highest_won);
-      list_size = get_list_size(teams_highest);
-      for (i = 0; i < list_size; i++)
-      {
-        sort_teams_alpha(&teams_highest);
-      }
-
-      head = &teams_highest;
-      for (temp = *head; temp != 0; temp = temp->next)
-      {
-        if (team_exists_match(&matches, temp->team_name))
-        {
-          {
-            teams_highest = delete_team_from_list(&teams_highest, temp->team_name);
-          }
-        }
-        else
-        {
-          
-        }
-
-      }
-
-      printf("%d Melhores %d\n", nl, highest_won);
-      print_team_list(nl, teams_highest);
-      free_teams(teams_highest);
+      sort_teams_alpha(&teams_highest);
     }
+
+    head = &teams_highest;
+    for (temp = *head; temp != 0; temp = temp->next)
+    {
+      if (team_exists_match(&matches, temp->team_name))
+      {
+        teams_highest = delete_team_from_list(&teams_highest, temp->team_name);
+      }
+      else
+      {
+        
+      }
+
+    }
+
+    printf("%d Melhores %d\n", nl, highest_won);
+    print_team_list(nl, teams_highest);
+    free_teams(teams_highest);
   }
   else
   {
-    {
-      return;
-    }
+    return;
   }
 
 }

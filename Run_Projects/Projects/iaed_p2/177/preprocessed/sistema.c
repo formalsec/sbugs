@@ -30,10 +30,8 @@ sistema destroi_sistema(sistema st)
   {
     if (st->v[i] != 0)
     {
-      {
-        free(st->v[i]->equipa);
-        free(st->v[i]);
-      }
+      free(st->v[i]->equipa);
+      free(st->v[i]);
     }
     else
     {
@@ -73,9 +71,7 @@ sistema re_hash(sistema st, char *nome, int ganhos)
   {
     if (st->v[i] != 0)
     {
-      {
-        st1 = insere_eq(st1, st->v[i]->equipa, st->v[i]->ganhos);
-      }
+      st1 = insere_eq(st1, st->v[i]->equipa, st->v[i]->ganhos);
     }
     else
     {
@@ -94,10 +90,8 @@ sistema insere_equipa(sistema st, char *name, int ganhos)
   st->elementos += 1;
   if ((2 * st->elementos) >= st->tamanho)
   {
-    {
-      st = re_hash(st, name, ganhos);
-      return st;
-    }
+    st = re_hash(st, name, ganhos);
+    return st;
   }
   else
   {
@@ -116,15 +110,11 @@ int pertence_equipa(sistema st1, char *name)
   {
     if (strcmp(st1->v[i]->equipa, name) == 0)
     {
-      {
-        return 1;
-      }
+      return 1;
     }
     else
     {
-      {
-        i = (i + 1) % st1->tamanho;
-      }
+      i = (i + 1) % st1->tamanho;
     }
 
   }
@@ -137,21 +127,17 @@ char *vencedor(char *equipa1, char *equipa2, int score1, int score2)
   char *vencedor;
   if (score1 > score2)
   {
-    {
-      vencedor = (char *) malloc((sizeof(char)) * (strlen(equipa1) + 1));
-      strcpy(vencedor, equipa1);
-      return vencedor;
-    }
+    vencedor = (char *) malloc((sizeof(char)) * (strlen(equipa1) + 1));
+    strcpy(vencedor, equipa1);
+    return vencedor;
   }
   else
   {
     if (score1 < score2)
     {
-      {
-        vencedor = (char *) malloc((sizeof(char)) * (strlen(equipa2) + 1));
-        strcpy(vencedor, equipa2);
-        return vencedor;
-      }
+      vencedor = (char *) malloc((sizeof(char)) * (strlen(equipa2) + 1));
+      strcpy(vencedor, equipa2);
+      return vencedor;
     }
     else
     {
@@ -171,17 +157,13 @@ sistema decrementa_jogos_ganhos(sistema st, char *vencedor)
   {
     if (strcmp(st->v[e2]->equipa, vencedor) == 0)
     {
-      {
-        st->v[e2]->ganhos -= 1;
-        free(vencedor);
-        return st;
-      }
+      st->v[e2]->ganhos -= 1;
+      free(vencedor);
+      return st;
     }
     else
     {
-      {
-        e2 = (e2 + 1) % st->tamanho;
-      }
+      e2 = (e2 + 1) % st->tamanho;
     }
 
   }
@@ -196,17 +178,13 @@ sistema incrementa_jogos_ganhos(sistema st, char *vencedor)
   {
     if (strcmp(st->v[e2]->equipa, vencedor) == 0)
     {
-      {
-        st->v[e2]->ganhos += 1;
-        free(vencedor);
-        return st;
-      }
+      st->v[e2]->ganhos += 1;
+      free(vencedor);
+      return st;
     }
     else
     {
-      {
-        e2 = (e2 + 1) % st->tamanho;
-      }
+      e2 = (e2 + 1) % st->tamanho;
     }
 
   }
@@ -222,38 +200,30 @@ sistema atualiza_vitoria(sistema st, jogo st1, char *nome, int score1, int score
   e2 = hash(nome, st1->tamanho);
   if (score1 == score2)
   {
+    while (st1->v[e2] != 0)
     {
-      while (st1->v[e2] != 0)
+      if ((strcmp(st1->v[e2]->nome, nome) == 0) && (st1->v[e2]->eliminado == 0))
       {
-        if ((strcmp(st1->v[e2]->nome, nome) == 0) && (st1->v[e2]->eliminado == 0))
+        if (st1->v[e2]->score1 == st1->v[e2]->score2)
         {
-          {
-            if (st1->v[e2]->score1 == st1->v[e2]->score2)
-            {
-              {
-                return st;
-              }
-            }
-            else
-            {
-              
-            }
-
-            vencedor1 = vencedor(st1->v[e2]->equipa1, st1->v[e2]->equipa2, st1->v[e2]->score1, st1->v[e2]->score2);
-            st = decrementa_jogos_ganhos(st, vencedor1);
-            return st;
-          }
+          return st;
         }
         else
         {
-          {
-            e2 = (e2 + 1) % st1->tamanho;
-          }
+          
         }
 
+        vencedor1 = vencedor(st1->v[e2]->equipa1, st1->v[e2]->equipa2, st1->v[e2]->score1, st1->v[e2]->score2);
+        st = decrementa_jogos_ganhos(st, vencedor1);
+        return st;
+      }
+      else
+      {
+        e2 = (e2 + 1) % st1->tamanho;
       }
 
     }
+
   }
   else
   {
@@ -265,41 +235,33 @@ sistema atualiza_vitoria(sistema st, jogo st1, char *nome, int score1, int score
   {
     if ((strcmp(st1->v[e2]->nome, nome) == 0) && (st1->v[e2]->eliminado == 0))
     {
+      if (st1->v[e2]->score1 == st1->v[e2]->score2)
       {
-        if (st1->v[e2]->score1 == st1->v[e2]->score2)
-        {
-          {
-            vencedor2 = vencedor(st1->v[e2]->equipa1, st1->v[e2]->equipa2, score1, score2);
-            st = incrementa_jogos_ganhos(st, vencedor2);
-            return st;
-          }
-        }
-        else
-        {
-          
-        }
-
-        vencedor1 = vencedor(st1->v[e2]->equipa1, st1->v[e2]->equipa2, st1->v[e2]->score1, st1->v[e2]->score2);
         vencedor2 = vencedor(st1->v[e2]->equipa1, st1->v[e2]->equipa2, score1, score2);
-        break;
+        st = incrementa_jogos_ganhos(st, vencedor2);
+        return st;
       }
+      else
+      {
+        
+      }
+
+      vencedor1 = vencedor(st1->v[e2]->equipa1, st1->v[e2]->equipa2, st1->v[e2]->score1, st1->v[e2]->score2);
+      vencedor2 = vencedor(st1->v[e2]->equipa1, st1->v[e2]->equipa2, score1, score2);
+      break;
     }
     else
     {
-      {
-        e2 = (e2 + 1) % st1->tamanho;
-      }
+      e2 = (e2 + 1) % st1->tamanho;
     }
 
   }
 
   if (strcmp(vencedor1, vencedor2) == 0)
   {
-    {
-      free(vencedor1);
-      free(vencedor2);
-      return st;
-    }
+    free(vencedor1);
+    free(vencedor2);
+    return st;
   }
   else
   {
@@ -320,27 +282,21 @@ sistema elimina_vitoria(sistema st, jogo st1, char *nome)
   {
     if ((strcmp(st1->v[e2]->nome, nome) == 0) && (st1->v[e2]->eliminado == 0))
     {
+      if (st1->v[e2]->score1 == st1->v[e2]->score2)
       {
-        if (st1->v[e2]->score1 == st1->v[e2]->score2)
-        {
-          {
-            return st;
-          }
-        }
-        else
-        {
-          
-        }
-
-        vencedor1 = vencedor(st1->v[e2]->equipa1, st1->v[e2]->equipa2, st1->v[e2]->score1, st1->v[e2]->score2);
-        break;
+        return st;
       }
+      else
+      {
+        
+      }
+
+      vencedor1 = vencedor(st1->v[e2]->equipa1, st1->v[e2]->equipa2, st1->v[e2]->score1, st1->v[e2]->score2);
+      break;
     }
     else
     {
-      {
-        e2 = (e2 + 1) % st1->tamanho;
-      }
+      e2 = (e2 + 1) % st1->tamanho;
     }
 
   }
@@ -354,9 +310,7 @@ sistema insere_vitoria(sistema st, char *equipa1, char *equipa2, int score1, int
   char *vencedor1;
   if (score1 == score2)
   {
-    {
-      return st;
-    }
+    return st;
   }
   else
   {
@@ -377,16 +331,12 @@ int jogos_ganhos(sistema st1, char *name)
   {
     if (strcmp(st1->v[i]->equipa, name) == 0)
     {
-      {
-        ganhos = st1->v[i]->ganhos;
-        return ganhos;
-      }
+      ganhos = st1->v[i]->ganhos;
+      return ganhos;
     }
     else
     {
-      {
-        i = (i + 1) % st1->tamanho;
-      }
+      i = (i + 1) % st1->tamanho;
     }
 
   }
@@ -415,31 +365,25 @@ void tabela(sistema st, int nl)
   {
     if (st->v[e] != 0)
     {
+      i = st->v[e]->ganhos;
+      if (i > maior)
       {
-        i = st->v[e]->ganhos;
-        if (i > maior)
+        maior = i;
+        n = 1;
+      }
+      else
+      {
+        if (i == maior)
         {
-          {
-            maior = i;
-            n = 1;
-          }
+          n += 1;
         }
         else
         {
-          if (i == maior)
-          {
-            {
-              n += 1;
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
       }
+
     }
     else
     {
@@ -450,9 +394,7 @@ void tabela(sistema st, int nl)
 
   if (n == 0)
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {
@@ -464,22 +406,18 @@ void tabela(sistema st, int nl)
   {
     if (st->v[e] != 0)
     {
+      i = st->v[e]->ganhos;
+      if (i == maior)
       {
-        i = st->v[e]->ganhos;
-        if (i == maior)
-        {
-          {
-            vencedoras[cont] = (char *) malloc((sizeof(char)) * (strlen(st->v[e]->equipa) + 1));
-            strcpy(vencedoras[cont], st->v[e]->equipa);
-            cont += 1;
-          }
-        }
-        else
-        {
-          
-        }
-
+        vencedoras[cont] = (char *) malloc((sizeof(char)) * (strlen(st->v[e]->equipa) + 1));
+        strcpy(vencedoras[cont], st->v[e]->equipa);
+        cont += 1;
       }
+      else
+      {
+        
+      }
+
     }
     else
     {

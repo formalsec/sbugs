@@ -180,19 +180,15 @@ link addGame(link linkedList, link *table, link1 *tablet)
   index2 = hash(name2);
   if (lookup(table[index], name) != 0)
   {
-    {
-      printf("%d %s\n", counter, "Jogo existente.");
-      return linkedList;
-    }
+    printf("%d %s\n", counter, "Jogo existente.");
+    return linkedList;
   }
   else
   {
     if ((lookupT(tablet[index1], name1) == 0) || (lookupT(tablet[index2], name2) == 0))
     {
-      {
-        printf("%d %s\n", counter, "Equipa inexistente.");
-        return linkedList;
-      }
+      printf("%d %s\n", counter, "Equipa inexistente.");
+      return linkedList;
     }
     else
     {
@@ -238,25 +234,23 @@ Game createGame(char *name, char *name1, char *name2, char *scoret1, char *score
   game->score2 = scoret2;
   if ((n1 != 0) && (n2 != 0))
   {
+    if (atoi(scoret1) > atoi(scoret2))
     {
-      if (atoi(scoret1) > atoi(scoret2))
+      n1->t->counterw += 1;
+    }
+    else
+    {
+      if (atoi(scoret1) < atoi(scoret2))
       {
-        n1->t->counterw += 1;
+        n2->t->counterw += 1;
       }
       else
       {
-        if (atoi(scoret1) < atoi(scoret2))
-        {
-          n2->t->counterw += 1;
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
     }
+
   }
   else
   {
@@ -282,10 +276,8 @@ link1 addTeam(link1 teamsList, link1 *tablet)
   index = hash(name);
   if (lookup(tablet[index], name) != 0)
   {
-    {
-      printf("%d %s\n", counter, "Equipa existente.");
-      return teamsList;
-    }
+    printf("%d %s\n", counter, "Equipa existente.");
+    return teamsList;
   }
   else
   {
@@ -313,17 +305,13 @@ void listGames(link n)
 {
   if (n == 0)
   {
-    {
-      counter += 1;
-      return;
-    }
+    counter += 1;
+    return;
   }
   else
   {
-    {
-      listGames(n->next);
-      printGame(n->g);
-    }
+    listGames(n->next);
+    printGame(n->g);
   }
 
 }
@@ -332,35 +320,29 @@ void listBestTeams(link1 n)
 {
   if (n == 0)
   {
-    {
-      counter += 1;
-      return;
-    }
+    counter += 1;
+    return;
   }
   else
   {
+    int c;
+    link1 t;
+    counter += 1;
+    c = countWonGames(n);
+    printf("%d Melhores %d\n", counter, c);
+    for (t = n; t != 0; t = t->next)
     {
-      int c;
-      link1 t;
-      counter += 1;
-      c = countWonGames(n);
-      printf("%d Melhores %d\n", counter, c);
-      for (t = n; t != 0; t = t->next)
+      if (t->t->counterw == c)
       {
-        if (t->t->counterw == c)
-        {
-          {
-            printTeam2(t->t);
-          }
-        }
-        else
-        {
-          
-        }
-
+        printTeam2(t->t);
+      }
+      else
+      {
+        
       }
 
     }
+
   }
 
 }
@@ -403,10 +385,8 @@ void searchGame(link *table)
   n = lookup(table[index], name);
   if (n == 0)
   {
-    {
-      printf("%d %s\n", counter, "Jogo inexistente.");
-      return;
-    }
+    printf("%d %s\n", counter, "Jogo inexistente.");
+    return;
   }
   else
   {
@@ -432,10 +412,8 @@ void searchTeam(link1 *tablet)
   n = lookupT(tablet[index], name);
   if (n == 0)
   {
-    {
-      printf("%d %s\n", counter, "Equipa inexistente.");
-      return;
-    }
+    printf("%d %s\n", counter, "Equipa inexistente.");
+    return;
   }
   else
   {
@@ -476,10 +454,8 @@ link deleteGame(link linkedList, link *table)
   n = lookup(table[index], name);
   if (n == 0)
   {
-    {
-      printf("%d %s\n", counter, "Jogo inexistente.");
-      return linkedList;
-    }
+    printf("%d %s\n", counter, "Jogo inexistente.");
+    return linkedList;
   }
   else
   {
@@ -488,9 +464,7 @@ link deleteGame(link linkedList, link *table)
 
   if (atoi(n->g->score1) > atoi(n->g->score2))
   {
-    {
-      n->g->team1->counterw -= 1;
-    }
+    n->g->team1->counterw -= 1;
   }
   else
   {
@@ -499,9 +473,7 @@ link deleteGame(link linkedList, link *table)
 
   if (atoi(n->g->score1) < atoi(n->g->score2))
   {
-    {
-      n->g->team2->counterw -= 1;
-    }
+    n->g->team2->counterw -= 1;
   }
   else
   {
@@ -520,27 +492,25 @@ link delete(link head, const char *name, int freesGame)
   for (t = head, prev = 0; t != 0; prev = t, t = t->next)
     if (strcmp(t->g->name, name) == 0)
   {
+    if (t == head)
     {
-      if (t == head)
-      {
-        head = head->next;
-      }
-      else
-      {
-        prev->next = t->next;
-      }
-
-      if (freesGame)
-      {
-        freeNode(t, 1);
-      }
-      else
-      {
-        free(t);
-      }
-
-      return head;
+      head = head->next;
     }
+    else
+    {
+      prev->next = t->next;
+    }
+
+    if (freesGame)
+    {
+      freeNode(t, 1);
+    }
+    else
+    {
+      free(t);
+    }
+
+    return head;
   }
   else
   {
@@ -583,10 +553,8 @@ void editGameScore(link *table)
   n = lookup(table[index], name);
   if (n == 0)
   {
-    {
-      printf("%d %s\n", counter, "Jogo inexistente.");
-      return;
-    }
+    printf("%d %s\n", counter, "Jogo inexistente.");
+    return;
   }
   else
   {
@@ -595,9 +563,7 @@ void editGameScore(link *table)
 
   if (atoi(n->g->score1) > atoi(n->g->score2))
   {
-    {
-      n->g->team1->counterw--;
-    }
+    n->g->team1->counterw--;
   }
   else
   {
@@ -606,9 +572,7 @@ void editGameScore(link *table)
 
   if (atoi(n->g->score2) > atoi(n->g->score1))
   {
-    {
-      n->g->team2->counterw--;
-    }
+    n->g->team2->counterw--;
   }
   else
   {
@@ -627,17 +591,13 @@ void editGameScore(link *table)
   strcpy(n->g->score2, scoret2);
   if (atoi(n->g->score1) > atoi(n->g->score2))
   {
-    {
-      n->g->team1->counterw++;
-    }
+    n->g->team1->counterw++;
   }
   else
   {
     if (atoi(n->g->score2) > atoi(n->g->score1))
     {
-      {
-        n->g->team2->counterw++;
-      }
+      n->g->team2->counterw++;
     }
     else
     {
@@ -676,88 +636,72 @@ link1 insertTeam(link1 head, Team t)
   newNode1->t = t;
   if (head == 0)
   {
-    {
-      newNode1->next = 0;
-      return newNode1;
-    }
+    newNode1->next = 0;
+    return newNode1;
   }
   else
   {
+    if (head->next == 0)
     {
-      if (head->next == 0)
+      if (strcmp(head->t->name, t->name) < 0)
       {
-        {
-          if (strcmp(head->t->name, t->name) < 0)
-          {
-            {
-              head->next = newNode1;
-              newNode1->next = 0;
-              return head;
-            }
-          }
-          else
-          {
-            {
-              head->next = 0;
-              newNode1->next = head;
-              head = newNode1;
-              return head;
-            }
-          }
-
-        }
+        head->next = newNode1;
+        newNode1->next = 0;
+        return head;
       }
       else
       {
-        
+        head->next = 0;
+        newNode1->next = head;
+        head = newNode1;
+        return head;
       }
 
-      for (n = head; n->next != 0; n = n->next)
-      {
-        if (strcmp(n->t->name, t->name) > 0)
-        {
-          {
-            temp = n;
-            n = newNode1;
-            newNode1->next = temp;
-            if (n->next == head)
-            {
-              {
-                head = newNode1;
-              }
-            }
-            else
-            {
-              
-            }
+    }
+    else
+    {
+      
+    }
 
-            return head;
-          }
+    for (n = head; n->next != 0; n = n->next)
+    {
+      if (strcmp(n->t->name, t->name) > 0)
+      {
+        temp = n;
+        n = newNode1;
+        newNode1->next = temp;
+        if (n->next == head)
+        {
+          head = newNode1;
         }
         else
         {
-          if ((strcmp(n->t->name, t->name) < 0) && (strcmp(n->next->t->name, t->name) > 0))
-          {
-            {
-              temp = n->next;
-              n->next = newNode1;
-              newNode1->next = temp;
-              return head;
-            }
-          }
-          else
-          {
-            
-          }
+          
+        }
 
+        return head;
+      }
+      else
+      {
+        if ((strcmp(n->t->name, t->name) < 0) && (strcmp(n->next->t->name, t->name) > 0))
+        {
+          temp = n->next;
+          n->next = newNode1;
+          newNode1->next = temp;
+          return head;
+        }
+        else
+        {
+          
         }
 
       }
 
-      n->next = newNode1;
-      newNode1->next = 0;
-      return head;
     }
+
+    n->next = newNode1;
+    newNode1->next = 0;
+    return head;
   }
 
 }
@@ -856,12 +800,10 @@ void freeNode(link t, int g)
 {
   if (g)
   {
-    {
-      free(t->g->score2);
-      free(t->g->score1);
-      free(t->g->name);
-      free(t->g);
-    }
+    free(t->g->score2);
+    free(t->g->score1);
+    free(t->g->name);
+    free(t->g);
   }
   else
   {
@@ -875,10 +817,8 @@ void freeNodeT(link1 t, int t1)
 {
   if (t1)
   {
-    {
-      free(t->t->name);
-      free(t->t);
-    }
+    free(t->t->name);
+    free(t->t);
   }
   else
   {

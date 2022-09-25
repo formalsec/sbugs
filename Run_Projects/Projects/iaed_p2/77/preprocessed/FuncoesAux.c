@@ -10,35 +10,27 @@ void compensa_jogos(p_jogo jogo_apag, p_jogo *fim_j, p_jogo *cab_j)
 {
   if ((*fim_j) == (*cab_j))
   {
-    {
-      *fim_j = 0;
-      *cab_j = 0;
-    }
+    *fim_j = 0;
+    *cab_j = 0;
   }
   else
   {
     if ((*fim_j) == jogo_apag)
     {
-      {
-        jogo_apag->ant->prox = 0;
-        *fim_j = jogo_apag->ant;
-      }
+      jogo_apag->ant->prox = 0;
+      *fim_j = jogo_apag->ant;
     }
     else
     {
       if ((*cab_j) == jogo_apag)
       {
-        {
-          jogo_apag->prox->ant = 0;
-          *cab_j = jogo_apag->prox;
-        }
+        jogo_apag->prox->ant = 0;
+        *cab_j = jogo_apag->prox;
       }
       else
       {
-        {
-          jogo_apag->prox->ant = jogo_apag->ant;
-          jogo_apag->ant->prox = jogo_apag->prox;
-        }
+        jogo_apag->prox->ant = jogo_apag->ant;
+        jogo_apag->ant->prox = jogo_apag->prox;
       }
 
     }
@@ -75,17 +67,13 @@ void ve_vitoria(p_jogo jogo, p_equipa *tab_e)
 {
   if (jogo->pontos1 > jogo->pontos2)
   {
-    {
-      aumenta_vitorias(jogo->equipa1, tab_e);
-    }
+    aumenta_vitorias(jogo->equipa1, tab_e);
   }
   else
   {
     if (jogo->pontos2 > jogo->pontos1)
     {
-      {
-        aumenta_vitorias(jogo->equipa2, tab_e);
-      }
+      aumenta_vitorias(jogo->equipa2, tab_e);
     }
     else
     {
@@ -100,17 +88,13 @@ void ve_derrota(p_jogo jogo, p_equipa *tab_e)
 {
   if (jogo->pontos1 > jogo->pontos2)
   {
-    {
-      remove_vitoria(jogo->equipa1, tab_e);
-    }
+    remove_vitoria(jogo->equipa1, tab_e);
   }
   else
   {
     if (jogo->pontos2 > jogo->pontos1)
     {
-      {
-        remove_vitoria(jogo->equipa2, tab_e);
-      }
+      remove_vitoria(jogo->equipa2, tab_e);
     }
     else
     {

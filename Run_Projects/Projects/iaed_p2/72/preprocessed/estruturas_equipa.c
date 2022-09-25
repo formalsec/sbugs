@@ -100,19 +100,15 @@ void print_vencedores(Equipas equipas, unsigned int NL)
   {
     if (no->equipa->vitorias > max)
     {
-      {
-        max = no->equipa->vitorias;
-        size = 0;
-        vencedores[size++] = no->equipa->nome;
-      }
+      max = no->equipa->vitorias;
+      size = 0;
+      vencedores[size++] = no->equipa->nome;
     }
     else
     {
       if (no->equipa->vitorias == max)
       {
-        {
-          vencedores[size++] = no->equipa->nome;
-        }
+        vencedores[size++] = no->equipa->nome;
       }
       else
       {
@@ -123,19 +119,17 @@ void print_vencedores(Equipas equipas, unsigned int NL)
 
     if (size >= size_max)
     {
+      size_max++;
+      tmp = realloc(vencedores, size_max * (sizeof(char *)));
+      if (tmp == 0)
       {
-        size_max++;
-        tmp = realloc(vencedores, size_max * (sizeof(char *)));
-        if (tmp == 0)
-        {
-          return;
-        }
-        else
-        {
-          vencedores = tmp;
-        }
-
+        return;
       }
+      else
+      {
+        vencedores = tmp;
+      }
+
     }
     else
     {

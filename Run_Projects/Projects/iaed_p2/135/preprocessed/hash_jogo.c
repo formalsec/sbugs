@@ -69,23 +69,17 @@ link_jogo removeJogoLista(link_jogo head, char *v)
   {
     if (!strcmp(t->el->j->nome, v))
     {
+      if (t == head)
       {
-        if (t == head)
-        {
-          {
-            head = t->next;
-          }
-        }
-        else
-        {
-          {
-            prev->next = t->next;
-          }
-        }
-
-        FREEnode_jogo(t);
-        break;
+        head = t->next;
       }
+      else
+      {
+        prev->next = t->next;
+      }
+
+      FREEnode_jogo(t);
+      break;
     }
     else
     {

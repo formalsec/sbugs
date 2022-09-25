@@ -47,10 +47,8 @@ void ht_set_equipas(ht_equipas *hashtable, const char *nome, int NL)
   link_equipa *equipa = st_search(hashtable, nome);
   if (equipa != 0)
   {
-    {
-      printf("%d Equipa existente.\n", NL);
-      return;
-    }
+    printf("%d Equipa existente.\n", NL);
+    return;
   }
   else
   {
@@ -86,10 +84,8 @@ void ht_search_equipas(ht_equipas *hashtable, const char *nome, int NL)
   link_equipa *equipa = st_search(hashtable, nome);
   if (equipa == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", NL);
-      return;
-    }
+    printf("%d Equipa inexistente.\n", NL);
+    return;
   }
   else
   {

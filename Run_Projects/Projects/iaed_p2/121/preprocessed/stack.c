@@ -20,19 +20,15 @@ StackNode *push(StackNode **head, StackNode **tail, StackNode *new)
 {
   if ((*head) == 0)
   {
-    {
-      *head = new;
-      *tail = new;
-      return new;
-    }
+    *head = new;
+    *tail = new;
+    return new;
   }
   else
   {
-    {
-      (*tail)->next = new;
-      *tail = new;
-      return *head;
-    }
+    (*tail)->next = new;
+    *tail = new;
+    return *head;
   }
 
 }
@@ -41,17 +37,13 @@ StackNode *insertBegin(StackNode **head, StackNode *new)
 {
   if ((*head) == 0)
   {
-    {
-      return new;
-    }
+    return new;
   }
   else
   {
-    {
-      new->next = *head;
-      *head = new;
-      return *head;
-    }
+    new->next = *head;
+    *head = new;
+    return *head;
   }
 
 }
@@ -91,22 +83,18 @@ StackNode *deleteMatchStack(StackNode **head, StackNode **tail, char *matchName)
   StackNode *prev;
   if (strcmp(temp->matchName, matchName) == 0)
   {
+    if (temp->next == 0)
     {
-      if (temp->next == 0)
-      {
-        {
-          tail = 0;
-        }
-      }
-      else
-      {
-        
-      }
-
-      *head = temp->next;
-      FreeNodeStack(temp);
-      return *head;
+      tail = 0;
     }
+    else
+    {
+      
+    }
+
+    *head = temp->next;
+    FreeNodeStack(temp);
+    return *head;
   }
   else
   {
@@ -121,9 +109,7 @@ StackNode *deleteMatchStack(StackNode **head, StackNode **tail, char *matchName)
 
   if (temp == (*tail))
   {
-    {
-      *tail = prev;
-    }
+    *tail = prev;
   }
   else
   {
@@ -158,9 +144,7 @@ int teamInStack(StackNode **head, char *teamName)
   {
     if (strcmp(teamName, temp->matchName) == 0)
     {
-      {
-        return 0;
-      }
+      return 0;
     }
     else
     {
@@ -200,17 +184,13 @@ StackNode *MergeAux(StackNode *a, StackNode *b)
 
   if (strcmp(a->matchName, b->matchName) < 0)
   {
-    {
-      temp = a;
-      temp->next = MergeAux(a->next, b);
-    }
+    temp = a;
+    temp->next = MergeAux(a->next, b);
   }
   else
   {
-    {
-      temp = b;
-      temp->next = MergeAux(a, b->next);
-    }
+    temp = b;
+    temp->next = MergeAux(a, b->next);
   }
 
   return temp;
@@ -227,10 +207,8 @@ void Partition(StackNode *source, StackNode **front, StackNode **back)
     fast = fast->next;
     if (fast != 0)
     {
-      {
-        slow = slow->next;
-        fast = fast->next;
-      }
+      slow = slow->next;
+      fast = fast->next;
     }
     else
     {
@@ -251,9 +229,7 @@ void MergeSort(StackNode **head)
   StackNode *b;
   if ((temp == 0) || (temp->next == 0))
   {
-    {
-      return;
-    }
+    return;
   }
   else
   {

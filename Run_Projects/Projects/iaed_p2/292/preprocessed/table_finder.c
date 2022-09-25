@@ -32,20 +32,16 @@ struct Jogos *encontraJogo(struct Jogos **jogos, char nome[], bool print, int M,
   {
     if (!strcmp(nome, next->ID))
     {
+      if (print)
       {
-        if (print)
-        {
-          {
-            printf("%d %s %s %s %d %d\n", NL, next->ID, next->team_1, next->team_2, next->score1, next->score2);
-          }
-        }
-        else
-        {
-          
-        }
-
-        return next;
+        printf("%d %s %s %s %d %d\n", NL, next->ID, next->team_1, next->team_2, next->score1, next->score2);
       }
+      else
+      {
+        
+      }
+
+      return next;
     }
     else
     {
@@ -76,20 +72,16 @@ struct Equipas *encontraEquipa(struct Equipas **Team, char nome[], bool print, i
   {
     if (!strcmp(nome, nt->ID))
     {
+      if (print)
       {
-        if (print)
-        {
-          {
-            printf("%d %s %d\n", NL, nt->ID, nt->wins);
-          }
-        }
-        else
-        {
-          
-        }
-
-        return nt;
+        printf("%d %s %d\n", NL, nt->ID, nt->wins);
       }
+      else
+      {
+        
+      }
+
+      return nt;
     }
     else
     {
@@ -149,28 +141,24 @@ void lista(struct Equipas **elemento, int Nequipas, int NL, int max, int N)
   {
     if (elemento[i] != 0)
     {
+      struct Equipas *temp = elemento[i];
+      while (temp != 0)
       {
-        struct Equipas *temp = elemento[i];
-        while (temp != 0)
+        if ((*temp).wins == max)
         {
-          if ((*temp).wins == max)
-          {
-            {
-              tabela[p] = malloc((strlen((*temp).ID) + 1) * (sizeof(char)));
-              strcpy(tabela[p], (*temp).ID);
-              ++count;
-              ++p;
-              temp = temp->next;
-            }
-          }
-          else
-          {
-            temp = temp->next;
-          }
-
+          tabela[p] = malloc((strlen((*temp).ID) + 1) * (sizeof(char)));
+          strcpy(tabela[p], (*temp).ID);
+          ++count;
+          ++p;
+          temp = temp->next;
+        }
+        else
+        {
+          temp = temp->next;
         }
 
       }
+
     }
     else
     {
@@ -200,23 +188,21 @@ int FindMax(struct Equipas **games_list, int N)
   {
     if (games_list[i] != 0)
     {
+      struct Equipas *temp = games_list[i];
+      while (temp != 0)
       {
-        struct Equipas *temp = games_list[i];
-        while (temp != 0)
+        if (temp->wins > max)
         {
-          if (temp->wins > max)
-          {
-            max = temp->wins;
-          }
-          else
-          {
-            
-          }
-
-          temp = temp->next;
+          max = temp->wins;
+        }
+        else
+        {
+          
         }
 
+        temp = temp->next;
       }
+
     }
     else
     {

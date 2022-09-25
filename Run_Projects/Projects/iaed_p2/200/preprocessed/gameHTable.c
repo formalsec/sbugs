@@ -44,9 +44,7 @@ glink **simplexpand(glink **STgame, int number)
   {
     if (nv[i]->g->name != 0)
     {
-      {
-        gorderInsert(&nv[i], newSTgame, conta++);
-      }
+      gorderInsert(&nv[i], newSTgame, conta++);
     }
     else
     {
@@ -147,9 +145,7 @@ pGame *create_game(char *buffer0, char *buffer1, char *buffer2, int res1, int re
   jogo->team2 = search_team(HTteams, buffer2)->t;
   if (res1 > res2)
   {
-    {
-      change_win_team(HTteams, buffer1, 2);
-    }
+    change_win_team(HTteams, buffer1, 2);
   }
   else
   {
@@ -207,9 +203,7 @@ void glinkRemove(char *buffer0, glink **HTgame)
   {
     if (strcmp(buffer0, HTgame[i]->g->name) == 0)
     {
-      {
-        break;
-      }
+      break;
     }
     else
     {
@@ -273,37 +267,31 @@ glink *gchangeScore(char *buffer0, int res1, int res2, glink **HTgame, tlink **H
   link = search_game(HTgame, buffer0);
   if (link != 0)
   {
-    {
-      link->g->score1 = res1;
-      link->g->score2 = res2;
-      while (HTgame[i] != 0)
-        i = (i + k) % 9677;
+    link->g->score1 = res1;
+    link->g->score2 = res2;
+    while (HTgame[i] != 0)
+      i = (i + k) % 9677;
 
-      HTgame[i] = link;
-      if (res1 > res2)
+    HTgame[i] = link;
+    if (res1 > res2)
+    {
+      change_win_team(HTteams, link->g->team1->name, 2);
+      change_win_team(HTteams, link->g->team2->name, 3);
+    }
+    else
+    {
+      if (res2 > res1)
       {
-        {
-          change_win_team(HTteams, link->g->team1->name, 2);
-          change_win_team(HTteams, link->g->team2->name, 3);
-        }
+        change_win_team(HTteams, link->g->team2->name, 2);
+        change_win_team(HTteams, link->g->team1->name, 3);
       }
       else
       {
-        if (res2 > res1)
-        {
-          {
-            change_win_team(HTteams, link->g->team2->name, 2);
-            change_win_team(HTteams, link->g->team1->name, 3);
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
     }
+
   }
   else
   {
@@ -320,7 +308,7 @@ bool isEmpty(glink **HTgame)
   {
     if (HTgame[i] != 0)
     {
-      return 1;
+      return true;
     }
     else
     {
@@ -329,7 +317,7 @@ bool isEmpty(glink **HTgame)
 
   }
 
-  return 0;
+  return false;
 }
 
 void gameFree(pGame *g)
@@ -349,9 +337,7 @@ void free_gTable(glink *gtable)
     g = &gtable->g[i];
     if (g != 0)
     {
-      {
-        gameFree(g);
-      }
+      gameFree(g);
     }
     else
     {

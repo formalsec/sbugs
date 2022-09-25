@@ -68,10 +68,8 @@ Game_link InsertGameBeginList(Game_link head, Game_ptr game_ptr)
   Game_link last;
   if (head == 0)
   {
-    {
-      new_link->next = (new_link->prev = new_link);
-      return new_link;
-    }
+    new_link->next = (new_link->prev = new_link);
+    return new_link;
   }
   else
   {
@@ -97,10 +95,8 @@ Game_link RemoveGameList(Game_link head, char *name)
 
   if ((link_to_remove->next == head) && (prev == 0))
   {
-    {
-      FreeGameNode(link_to_remove);
-      return 0;
-    }
+    FreeGameNode(link_to_remove);
+    return 0;
   }
   else
   {
@@ -109,32 +105,26 @@ Game_link RemoveGameList(Game_link head, char *name)
 
   if (link_to_remove == head)
   {
-    {
-      prev = head->prev;
-      head = head->next;
-      prev->next = head;
-      head->prev = prev;
-      FreeGameNode(link_to_remove);
-    }
+    prev = head->prev;
+    head = head->next;
+    prev->next = head;
+    head->prev = prev;
+    FreeGameNode(link_to_remove);
   }
   else
   {
     if (link_to_remove->next == head)
     {
-      {
-        prev->next = head;
-        head->prev = prev;
-        FreeGameNode(link_to_remove);
-      }
+      prev->next = head;
+      head->prev = prev;
+      FreeGameNode(link_to_remove);
     }
     else
     {
-      {
-        Game_link aux = link_to_remove->next;
-        prev->next = aux;
-        aux->prev = prev;
-        FreeGameNode(link_to_remove);
-      }
+      Game_link aux = link_to_remove->next;
+      prev->next = aux;
+      aux->prev = prev;
+      FreeGameNode(link_to_remove);
     }
 
   }
@@ -171,10 +161,8 @@ GameHash_ptr GameHashInsert(GameHash_ptr game_hash, Game_ptr game)
   game_hash->N++;
   if (game_hash->N >= (game_hash->M / 2))
   {
-    {
-      GameHash_ptr new_hash = GameHashExpand(game_hash);
-      return new_hash;
-    }
+    GameHash_ptr new_hash = GameHashExpand(game_hash);
+    return new_hash;
   }
   else
   {
@@ -273,15 +261,13 @@ void DeleteGameList(Game_link head)
   Game_link next;
   if (head != 0)
   {
+    do
     {
-      do
-      {
-        next = current->next;
-        free(current);
-        current = next;
-      }
-      while (current != head);
+      next = current->next;
+      free(current);
+      current = next;
     }
+    while (current != head);
   }
   else
   {

@@ -15,47 +15,37 @@ void AddNewGame(char *name, char *team1, char *team2, int score1, int score2, TE
   (*countInput)++;
   if (GAMEsearch(name, Games) != 0)
   {
-    {
-      printf("%d Jogo existente.\n", *countInput);
-    }
+    printf("%d Jogo existente.\n", *countInput);
   }
   else
   {
     if ((t1 == 0) || (t2 == 0))
     {
-      {
-        printf("%d Equipa inexistente.\n", *countInput);
-      }
+      printf("%d Equipa inexistente.\n", *countInput);
     }
     else
     {
+      (*countGames)++;
+      new = newGame(name, team1, team2, score1, score2, index);
+      GAMEinsert(new, Games);
+      if (score1 > score2)
       {
-        (*countGames)++;
-        new = newGame(name, team1, team2, score1, score2, index);
-        GAMEinsert(new, Games);
-        if (score1 > score2)
+        t1->wins++;
+      }
+      else
+      {
+        if (score1 < score2)
         {
-          {
-            t1->wins++;
-          }
+          t2->wins++;
         }
         else
         {
-          if (score1 < score2)
-          {
-            {
-              t2->wins++;
-            }
-          }
-          else
-          {
-            
-          }
-
+          
         }
 
-        (*index)++;
       }
+
+      (*index)++;
     }
 
   }
@@ -68,16 +58,12 @@ void AddNewTeam(char *name, TEAMlink *Teams, int *countInput)
   (*countInput)++;
   if (TEAMsearch(name, Teams) != 0)
   {
-    {
-      printf("%d Equipa existente.\n", *countInput);
-    }
+    printf("%d Equipa existente.\n", *countInput);
   }
   else
   {
-    {
-      new = newTeam(name);
-      TEAMinsert(new, Teams);
-    }
+    new = newTeam(name);
+    TEAMinsert(new, Teams);
   }
 
 }
@@ -88,16 +74,12 @@ void SearchGame(char *name, GAMElink *Games, int *countInput)
   (*countInput)++;
   if (game == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", *countInput);
-    }
+    printf("%d Jogo inexistente.\n", *countInput);
   }
   else
   {
-    {
-      printf("%d ", *countInput);
-      printGame(game);
-    }
+    printf("%d ", *countInput);
+    printGame(game);
   }
 
 }
@@ -110,39 +92,31 @@ void DeleteGame(char *name, TEAMlink *Teams, GAMElink *Games, int *countInput, i
   (*countInput)++;
   if (game == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", *countInput);
-    }
+    printf("%d Jogo inexistente.\n", *countInput);
   }
   else
   {
+    t1 = TEAMsearch(game->team1, Teams);
+    t2 = TEAMsearch(game->team2, Teams);
+    if (game->score1 > game->score2)
     {
-      t1 = TEAMsearch(game->team1, Teams);
-      t2 = TEAMsearch(game->team2, Teams);
-      if (game->score1 > game->score2)
+      t1->wins--;
+    }
+    else
+    {
+      if (game->score1 < game->score2)
       {
-        {
-          t1->wins--;
-        }
+        t2->wins--;
       }
       else
       {
-        if (game->score1 < game->score2)
-        {
-          {
-            t2->wins--;
-          }
-        }
-        else
-        {
-          
-        }
-
+        
       }
 
-      GAMEdelete(name, Games);
-      (*countGames)--;
     }
+
+    GAMEdelete(name, Games);
+    (*countGames)--;
   }
 
 }
@@ -157,102 +131,51 @@ void ChangeScore(char *name, int NewScore1, int NewScore2, TEAMlink *Teams, GAME
   (*countInput)++;
   if (game == 0)
   {
-    {
-      printf("%d Jogo inexistente.\n", *countInput);
-    }
+    printf("%d Jogo inexistente.\n", *countInput);
   }
   else
   {
+    OldScore1 = game->score1;
+    OldScore2 = game->score2;
+    game->score1 = NewScore1;
+    game->score2 = NewScore2;
+    team1 = TEAMsearch(game->team1, Teams);
+    team2 = TEAMsearch(game->team2, Teams);
+    if (OldScore1 > OldScore2)
     {
-      OldScore1 = game->score1;
-      OldScore2 = game->score2;
-      game->score1 = NewScore1;
-      game->score2 = NewScore2;
-      team1 = TEAMsearch(game->team1, Teams);
-      team2 = TEAMsearch(game->team2, Teams);
-      if (OldScore1 > OldScore2)
+      if (NewScore1 < NewScore2)
       {
-        {
-          if (NewScore1 < NewScore2)
-          {
-            {
-              team1->wins--;
-              team2->wins++;
-            }
-          }
-          else
-          {
-            if (NewScore1 == NewScore2)
-            {
-              {
-                team1->wins--;
-              }
-            }
-            else
-            {
-              
-            }
-
-          }
-
-        }
+        team1->wins--;
+        team2->wins++;
       }
       else
       {
-        if (OldScore1 < OldScore2)
+        if (NewScore1 == NewScore2)
         {
-          {
-            if (NewScore1 > NewScore2)
-            {
-              {
-                team1->wins++;
-                team2->wins--;
-              }
-            }
-            else
-            {
-              if (NewScore1 == NewScore2)
-              {
-                {
-                  team2->wins--;
-                }
-              }
-              else
-              {
-                
-              }
-
-            }
-
-          }
+          team1->wins--;
         }
         else
         {
-          if (OldScore1 == OldScore2)
+          
+        }
+
+      }
+
+    }
+    else
+    {
+      if (OldScore1 < OldScore2)
+      {
+        if (NewScore1 > NewScore2)
+        {
+          team1->wins++;
+          team2->wins--;
+        }
+        else
+        {
+          if (NewScore1 == NewScore2)
           {
-            {
-              if (NewScore1 > NewScore2)
-              {
-                {
-                  team1->wins++;
-                }
-              }
-              else
-              {
-                if (NewScore1 < NewScore2)
-                {
-                  {
-                    team2->wins++;
-                  }
-                }
-                else
-                {
-                  
-                }
-
-              }
-
-            }
+            team2->wins--;
           }
           else
           {
@@ -262,8 +185,37 @@ void ChangeScore(char *name, int NewScore1, int NewScore2, TEAMlink *Teams, GAME
         }
 
       }
+      else
+      {
+        if (OldScore1 == OldScore2)
+        {
+          if (NewScore1 > NewScore2)
+          {
+            team1->wins++;
+          }
+          else
+          {
+            if (NewScore1 < NewScore2)
+            {
+              team2->wins++;
+            }
+            else
+            {
+              
+            }
+
+          }
+
+        }
+        else
+        {
+          
+        }
+
+      }
 
     }
+
   }
 
 }
@@ -274,17 +226,13 @@ void SearchTeam(char *name, TEAMlink *Teams, int *countInput)
   (*countInput)++;
   if (team == 0)
   {
-    {
-      printf("%d Equipa inexistente.\n", *countInput);
-    }
+    printf("%d Equipa inexistente.\n", *countInput);
   }
   else
   {
-    {
-      printf("%d ", *countInput);
-      printTeam(team);
-      printf(" %d\n", team->wins);
-    }
+    printf("%d ", *countInput);
+    printTeam(team);
+    printf(" %d\n", team->wins);
   }
 
 }
@@ -362,18 +310,14 @@ void ListsBestTeams(TEAMlink *Teams, int *countInput)
     {
       if (head->team->wins == BestScore)
       {
-        {
-          countTeams++;
-        }
+        countTeams++;
       }
       else
       {
         if (head->team->wins > BestScore)
         {
-          {
-            countTeams = 0;
-            BestScore = head->team->wins;
-          }
+          countTeams = 0;
+          BestScore = head->team->wins;
         }
         else
         {
@@ -404,10 +348,8 @@ void ListsBestTeams(TEAMlink *Teams, int *countInput)
     {
       if (head->team->wins == BestScore)
       {
-        {
-          TeamsList[j] = head->team;
-          j++;
-        }
+        TeamsList[j] = head->team;
+        j++;
       }
       else
       {
