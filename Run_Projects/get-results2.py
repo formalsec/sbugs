@@ -192,9 +192,9 @@ class LineProcessor:
 		match = self.remove_ambigous(pre, original, lineno, matches, macros)
 
 		
-		if len(matches) > 1:
-			print(f'Line {lineno} Matches: {matches}')
-			print('Final Match', match)
+		# if len(matches) > 1:
+		# 	print(f'Line {lineno} Matches: {matches}')
+		# 	print('Final Match', match)
 
 		return match
 
@@ -282,7 +282,8 @@ class KleeParseLog:
 				continue
 			if stack:
 				trimmed = line.strip()
-				if trimmed.startswith('#') and 'in' in line:
+				#print(trimmed)
+				if trimmed.startswith('#') and 'in' in line and 'at' in line:
 					call = self.split_line(line, ' at ')
 					if '/' not in call:
 						file = call.split(':')[0]
@@ -292,7 +293,7 @@ class KleeParseLog:
 					continue
 			else:
 				continue
-		return None
+		return None, None
 
 
 	def filter_errors(self, error:Error):
@@ -311,13 +312,18 @@ class KleeParseLog:
 		f1.close()
 		f2.close()
 
+	
 		if '/' not in file:
 			assert(file == stack_file)
 			assert(line == stack_line)
 		else:
 			file = stack_file
 			line = stack_line
-			assert('/' not in file)
+
+			if file is None or line is None:
+				return Error(file, line, error)
+			else:
+				assert('/' not in file)
 
 		return Error(file, line, error)
 
@@ -329,11 +335,12 @@ class KleeParseLog:
 			if log.endswith('.err'):
 				log_path = f'{self.logpath}/{log}'
 				error = self.parse_log(log_path)
-				errors.append(error)
+
+				if error.file is not None:
+					errors.append(error)
 
 		errors = list(filter(self.filter_errors, errors))
 		return errors
-
 
 
 class ParseResults:
@@ -354,7 +361,7 @@ class ParseResults:
 			self.results = os.listdir(self.results_path)
 		else:
 			self.results = specific
-		self.results.sort(key=lambda p : int(p.split('_')[-1]))
+		#self.results.sort(key=lambda p : int(p.split('_')[-1]))
 
 		self.total_errors = 0
 		self.error_types = {}
