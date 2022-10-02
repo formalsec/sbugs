@@ -55,27 +55,71 @@ class LineProcessor:
 		if macros:
 			for key in macros.keys():
 				if key in line:
-					line = line.replace(key, macros[key])
+
+					m = macros[key]
+					if isinstance(m,str):
+						line = line.replace(key, macros[key])
+					
+					else:
+						value, var = m
+						key_ = key[:-1]
+						macros_in_lines = re.findall(fr'{key_}\(.*\)', line)
+						for ml in macros_in_lines:
+							
+							vl = ml.split('(')[1]
+							vl = vl[:-1]
+
+							value_aux = value.replace(var, vl)
+							line = line.replace(ml, value_aux)
+
 
 		line = line.strip()
-		line = re.sub(r'[(){}; ]', '', line)
+		line = re.sub(r'[(){}; ]', '', line)	
 		line = re.sub(r'else', '', line)  
 		line = re.sub(r'(\/\*.*?\*+\/|\/\/.*)', '', line) #Remove comments
 		return line
 	
 
-	def get_macros(self, file):
+	def get_macros(self, proj):
 		macros = {}
-		f = open(file, 'r')
-		for line in f:
-			line = line.strip()
-			line = re.sub(r'(\/\*.*?\*+\/|\/\/.*)', '', line) #Remove comments
 
-			#Get simple variable macros
-			if re.match(r'^\# *define', line) and '(' not in line:
-				split = line.split()
-				macros[split[-2]] = split[-1]
-		f.close()
+		files = os.listdir(proj)
+		filtered_files = []
+		for file in files:
+			if file.endswith('.c') or file.endswith('.h'):
+				filtered_files.append(file)
+
+		for file in filtered_files:
+
+			f = open(f'{proj}/{file}', 'r')
+			for line in f:
+				line = line.strip()
+				line = re.sub(r'(\/\*.*?\*+\/|\/\/.*)', '', line) #Remove comments
+
+				#Get macros
+				if re.match(r'^\# *define', line):
+					
+					split = line.split()
+					if len(split) >= 3:
+						
+						name = split[1]
+						
+						value = split[2]
+						value = re.sub(r'[()]', '', value)
+
+						if '(' and ')' in name:
+							name = re.sub(r'[)]', '', name)
+							
+							name_split = name.split('(')
+							name = name_split[0] + '('
+							var = name_split[1]
+							value = (value, var)
+
+						macros[name] = value
+				
+				macros['NULL'] = '0'
+
+			f.close()
 		return macros
 
 
@@ -84,10 +128,12 @@ class LineProcessor:
 		trimmed = []
 		f = open(file, 'r')
 		i = 1
+		orig_line = line
 		line = self.trim(line)
 		
 		for l in f:	
-			l = self.trim(l, macros)
+
+			l = self.trim(l, macros=macros)
 			trimmed.append(l)
 
 			if not l:
@@ -99,7 +145,7 @@ class LineProcessor:
 			i += 1
 
 		if len(matches) == 0:
-			i = 0
+			i = 1
 			for l in trimmed:
 				if not l:
 					i += 1
@@ -108,8 +154,28 @@ class LineProcessor:
 				if l in line and i-1 not in matches:
 					matches.append(i)
 				i += 1		
+		
+		if len(matches) == 0:
+			line = orig_line.strip()
+			split = line.split()
+			line = ''.join(split[1:])
+			line = self.trim(line)
 
+
+			i = 1
+			for l in trimmed:
+				if not l:
+					i += 1
+					continue
+
+				if line in l or l in line:
+					print(l)
+					matches.append(i)
+					i += 1		
+		
 		return matches
+
+
 
 	def num_ifs(self, lineno:int, file:str):
 
@@ -126,6 +192,7 @@ class LineProcessor:
 			section.append(new_l) 
 					
 		section_string = ''.join(section)
+		section_string = re.sub(r'(\/\*(\*(?!\/)|[^*])*\*\/)', '', section_string)
 		if_matches = re.findall(r'if *\(', section_string)
 
 		return len(if_matches)
@@ -134,6 +201,9 @@ class LineProcessor:
 	def remove_ambigous(self, file:str, original:str, target:int, matches:list) -> int:
 		print('Target: ',target)
 		print('Matches: ', matches)
+
+		if len(matches) == 0:
+			return -1
 
 		target_ifs = self.num_ifs(target, file) 
 		
@@ -156,8 +226,11 @@ class LineProcessor:
 			return l
 		
 		elif len(exact) == 0:
-			print('Mismatch in ifs number')
-			return -1
+			if len(matches) == 1:
+				return matches[0]
+			else:
+				print('Mismatch in ifs number')
+				return -1
 
 		else:
 			print('Multiple exact \'if\' counts')
@@ -186,7 +259,7 @@ class LineProcessor:
 		original = f'{self.project}/{file}'
 		pre = f'{self.preprocessed}/{file}'
 
-		macros = self.get_macros(original)
+		macros = self.get_macros(self.project)
 
 		matches = self.find_line(line, original, macros)
 		match = self.remove_ambigous(pre, original, lineno, matches)
@@ -346,7 +419,7 @@ class ParseResults:
 			self.results = os.listdir(self.results_path)
 		else:
 			self.results = specific
-		self.results.sort(key=lambda p : int(p.split('_')[-1]))
+		#self.results.sort(key=lambda p : int(p.split('_')[-1]))
 
 		self.total_errors = 0
 		self.error_types = {}
