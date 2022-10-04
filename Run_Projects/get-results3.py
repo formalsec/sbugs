@@ -244,9 +244,12 @@ class LineProcessor:
 					best_match = m
 
 				elif self.diff(target, l) == self.diff(target, bl):
-					best_match = min(l, bl)						
+					best_match = min(l, bl)
+
+				bm = best_match[0]						
 			
-			return best_match[0]
+			print('Best Match: ', bm)
+			return bm
 
 
 
@@ -347,7 +350,8 @@ class KleeParseLog:
 				continue
 			if stack:
 				trimmed = line.strip()
-				if trimmed.startswith('#') and 'in' in line:
+				#print(trimmed)
+				if trimmed.startswith('#') and 'in' in line and 'at' in line:
 					call = self.split_line(line, ' at ')
 					if '/' not in call:
 						file = call.split(':')[0]
@@ -357,7 +361,7 @@ class KleeParseLog:
 					continue
 			else:
 				continue
-		return None
+		return None, None
 
 
 	def filter_errors(self, error:Error):
@@ -376,13 +380,18 @@ class KleeParseLog:
 		f1.close()
 		f2.close()
 
+	
 		if '/' not in file:
 			assert(file == stack_file)
 			assert(line == stack_line)
 		else:
 			file = stack_file
 			line = stack_line
-			assert('/' not in file)
+
+			if file is None or line is None:
+				return Error(file, line, error)
+			else:
+				assert('/' not in file)
 
 		return Error(file, line, error)
 
@@ -394,7 +403,9 @@ class KleeParseLog:
 			if log.endswith('.err'):
 				log_path = f'{self.logpath}/{log}'
 				error = self.parse_log(log_path)
-				errors.append(error)
+
+				if error.file is not None:
+					errors.append(error)
 
 		errors = list(filter(self.filter_errors, errors))
 		return errors
