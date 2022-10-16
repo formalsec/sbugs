@@ -53,7 +53,7 @@ class LineProcessor:
 	
 	def trim(self, line:str, macros:dict = None):
 		if macros:
-			for key in macros.keys():
+			for key in macros.keys():							
 				if key in line:
 
 					m = macros[key]
@@ -126,15 +126,19 @@ class LineProcessor:
 	def find_line(self, line:str, file:str, macros:dict):
 		matches = []
 		trimmed = []
+		new_sym = 'new_sym_var'
+
 		f = open(file, 'r')
 		i = 1
 		orig_line = line
 		line = self.trim(line)
+		#print('Line:',line)
 		
 		for l in f:	
 
 			l = self.trim(l, macros=macros)
 			trimmed.append(l)
+			#print('l:',l)
 
 			if not l:
 				i += 1
@@ -169,10 +173,30 @@ class LineProcessor:
 					continue
 
 				if line in l or l in line:
-					print(l)
+					#print(l)
 					matches.append(i)
-					i += 1		
-		
+				i += 1		
+
+		if len(matches) == 0 and new_sym in orig_line:
+			#print('new_sym', orig_line)
+			line = orig_line.strip()
+			split = line.split('=')
+
+			var = split[0].strip()
+
+			if '[' in var:
+				var = var.split('[')[0]
+
+			i = 1
+			for l in trimmed:
+				if not l:
+					i += 1
+					continue
+				
+				if var in l and 'scanf' in l:
+					matches.append(i)
+				i += 1
+
 		return matches
 
 
