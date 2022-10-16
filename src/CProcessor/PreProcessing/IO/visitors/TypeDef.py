@@ -23,8 +23,13 @@ class TypeDefVisitor(NodeVisitor):
 		self.struct = True
 		return node
 
+	def visit_IdentifierType(self, node):
+		names = node.names
+		name = ' '.join(names)
+		return name
+
 	def visit_Typedef(self, node):
-		struct = self.visit(node.type)
+		name = self.visit(node.type)
 		if self.struct:
-			return struct
-		return None
+			return (True, name)
+		return (False, name)

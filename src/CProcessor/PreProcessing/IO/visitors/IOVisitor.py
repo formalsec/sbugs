@@ -198,17 +198,21 @@ class IO_Visitor(NodeVisitor):
 	def visit_Typedef(self, node):
 
 		vis = TypeDefVisitor()
-		struct = vis.visit(node)
+		struct, typ = vis.visit(node)
 
 		if struct:
-			name = struct.name
+			name = typ.name
 			if name is None:
 				name = node.name
 
 			self.lastAlias = node.name
 			self.stack.addAlias(node.name, name)
-			
-			self.visit(struct)
+		
+			self.visit(typ)
+		
+		else:
+			self.stack.addAlias(node.name, typ)
+
 		return node
 
 

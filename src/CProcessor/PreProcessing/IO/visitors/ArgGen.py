@@ -84,7 +84,9 @@ class ArgGenVisitor(NodeVisitor):
 			size = self.calc_size(size)
 			dim = len(arraysize)
 
-			if self.dim != dim:
+			diff = abs(self.dim - dim)
+
+			if diff >= 2 or diff == 1 and vartype == 'char':
 				code += genArray(name, self.node, vartype, size)
 				return code
 	
