@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 
+import subprocess as sp
+import binascii
 import argparse
 import json
 import os
 import re
-import sys
 
 
 def cmd_args():
@@ -311,24 +312,35 @@ class LineProcessor:
 
 
 class Error():
-	def __init__(self, file, line, desc) -> None:
+	def __init__(self, file, line, desc, witness=None) -> None:
 		self.file = file
 		self.line = line
 		self.desc = desc
 
+		if witness:
+			self.witness = witness
+		else:
+			self.witness = {}
+
 	def __repr__(self) -> str:
-		return f'{self.file} : {self.line} : {self.desc}'
+		return f'{self.file} : {self.line} : {self.desc} : {self.witness}'
+
+	def set_witness(self, stdin, scanf):
+		self.witness['stdin'] = stdin
+		self.witness['scanf'] = scanf
+
 
 	def json(self):
 		error_obj = {
 			'file':self.file,
 			'line':self.line,
-			'error':self.desc
+			'error':self.desc,
+			'witness':self.witness
 		}
 		return error_obj		
 
 	def to_list(self):
-		return [self.file, self.line, self.desc]
+		return [self.file, self.line, self.desc, self.witness]
 
 
 
@@ -388,8 +400,9 @@ class KleeParseLog:
 		return None, None
 
 
-	def filter_errors(self, error:Error):
-		_, _, error_desc = error.to_list()
+	def filter_errors(self, error):
+		error = error[0]
+		_, _, error_desc, _ = error.to_list()
 		for ignore in self.ignore_errors:
 			if ignore in error_desc or ignore == error_desc:
 				return False
@@ -420,6 +433,49 @@ class KleeParseLog:
 		return Error(file, line, error)
 
 
+	def get_witness(self, log):
+
+		scanf = []
+
+		cmd = f'ktest-tool {log}'
+		p = sp.Popen(cmd, shell=True,
+								stdout=sp.PIPE, 
+								stderr=sp.PIPE)
+
+		out, _ = p.communicate()
+		out = out.decode('utf-8')
+
+		lines = out.splitlines()
+		
+		name = ''
+		for l in lines:
+			
+			name_match = re.search(r'(object *\d+: *name *: *)(\'\S+\')', l)
+			if name_match:
+				name = name_match.group(2)
+				name = name.replace('\'', '')
+
+			stdin_match = re.search(r'(object *0: *hex *: *)(0x\S+)', l)
+			if stdin_match and name == 'stdin':
+				stdin = stdin_match.group(2)
+
+
+			if 'sym_' in name:
+				int_match = re.search(r'(object *\d+: *int *: *)(-?\d+)', l)
+				if int_match:
+					v = int_match.group(2)
+					v += '\n'
+					scanf.append(v)
+
+	
+		if stdin.startswith('0x'):
+			stdin = stdin[2:]
+		stdin = binascii.unhexlify(stdin)
+
+		return stdin, scanf
+
+
+
 	def parse(self):
 		errors = []
 		logs = os.listdir(self.logpath)
@@ -429,7 +485,14 @@ class KleeParseLog:
 				error = self.parse_log(log_path)
 
 				if error.file is not None:
-					errors.append(error)
+
+					ktest = log.split('.')[0] + '.ktest'
+					ktest = f'{self.logpath}/{ktest}'	
+					stdin, scanf = self.get_witness(ktest)
+				
+					err = (error, stdin, scanf)
+
+					errors.append(err)
 
 		errors = list(filter(self.filter_errors, errors))
 		return errors
@@ -463,7 +526,7 @@ class ParseResults:
 
 
 	def update_global(self, error:Error):
-		_, _, error_desc = error.to_list()
+		_, _, error_desc, _ = error.to_list()
 		self.total_errors += 1
 		
 		if error_desc in self.error_types.keys():
@@ -476,7 +539,19 @@ class ParseResults:
 		file = open(path, 'w+')
 		json_object = json.dumps(results, indent = 2)  
 		file.write(json_object)
+		file.close()
 		return
+
+	def write_witness(self, path, witness):
+		if isinstance(witness, list):
+			file = open(path, 'w+')
+			file.writelines(witness)
+		else:
+			file = open(path, 'wb+')
+			file.write(witness)
+		file.close()
+		return
+
 
 	def create_global_obj(self):
 		global_obj = {
@@ -495,7 +570,7 @@ class ParseResults:
 		return proj_obj
 
 	def convert_line(self, error:Error, proj:str):
-		file, line, error_desc = error.to_list()
+		file, line, error_desc, witness = error.to_list()
 		
 		if 'Project_' in proj:
 			proj = proj.split('_')[1]
@@ -507,11 +582,11 @@ class ParseResults:
 		if lineno < 0:
 			self.convert_err += 1
 
-		return Error(file, lineno, error_desc)
+		return Error(file, lineno, error_desc, witness)
 
 
 	def verify_line(self, error:Error, proj:str):
-		file, lineno, _ = error.to_list()
+		file, lineno, _, _ = error.to_list()
 		
 		if 'Project_' in proj:
 			proj = proj.split('_')[1]
@@ -535,29 +610,58 @@ class ParseResults:
 		if not errors:
 			self.no_errors.append(proj)
 
-		for err in errors:
+		witnesses = []
+		for error in errors:
+			
+			err, stdin, scanf = error
 			
 			if self.lerrors:
 				self.verify_line(err, proj)
 
 			if self.lconvert:
 				err = self.convert_line(err, proj)
-			
+				
+			line = err.line
+			desc = err.desc
+
+			if ':' in desc:
+				desc = desc.split(':')[1]
+
+			desc = desc.strip()
+			desc = desc.replace(' ', '_')
+			desc = f'{desc}_line_{line}'
+			fstdin = f'{desc}.stdin'
+			fscanf = f'{desc}.scanf'
+			witnesses.append((desc, stdin, scanf))
+				
+			err.set_witness(fstdin, fscanf)
+
 			self.update_global(err)
 			proj_json_obj['errors'].append(err.json())
 	
-		return proj_json_obj
+		return proj_json_obj, witnesses
 
 
 	def save_results(self):
 		os.makedirs(self.out, exist_ok=True)
 
 		for proj in self.results:
+			
+			os.makedirs(f'{self.out}/{proj}', exist_ok=True)
 			print(f'==> Parsing {proj}')
 			
-			proj_json_obj = self.parse_proj(proj)
+			proj_json_obj, witnesses = self.parse_proj(proj)
 			
-			log = f'{self.out}/{proj}.json'
+			log = f'{self.out}/{proj}/{proj}.json'
+
+			for witness in witnesses:
+				desc, stdin, scanf = witness
+				path_stdin = f'{self.out}/{proj}/{desc}.stdin'
+				path_scanf = f'{self.out}/{proj}/{desc}.scanf'
+				
+				self.write_witness(path_stdin, stdin)
+				self.write_witness(path_scanf, scanf)
+
 			self.log_json(log, proj_json_obj)
 
 		global_obj = self.create_global_obj()
