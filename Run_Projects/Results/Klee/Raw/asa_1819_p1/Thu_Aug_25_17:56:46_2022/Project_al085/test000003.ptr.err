@@ -1,0 +1,20 @@
+Error: memory error: out of bound pointer
+File: RouterGrid.c
+Line: 138
+assembly.ll line: 10023
+State: 238
+Stack: 
+	#000010023 in add_edge(symbolic, symbolic, 93902930184496) at RouterGrid.c:138
+	#100010635 in __klee_posix_wrapped_main() at RouterGrid.c:295
+	#200007352 in __user_main(3, 93902896880512, 93902896880544) at runtime/POSIX/klee_init_env.c:245
+	#300000596 in __uClibc_main(93902929307752, 3, 93902896880512, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#400000761 in main(3, 93902896880512)
+Info: 
+	address: (Add w64 93902929310800
+          (Mul w64 8
+                   (SExt w64 (Add w32 4294967295
+                                      (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_2)))))))
+	example: 93902929310800
+	range: [93885749441616, 93920109179976]
+	next: object at 22505662659264 of size 1536
+		MO356[1536] (no allocation info)

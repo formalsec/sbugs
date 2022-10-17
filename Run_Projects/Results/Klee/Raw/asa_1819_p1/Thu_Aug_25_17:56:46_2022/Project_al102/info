@@ -1,0 +1,23 @@
+klee -output-dir=Results/Klee/Projects/asa_1819_p1/Thu_Aug_25_17:56:46_2022/Project_al102 --posix-runtime --libc=uclibc --only-output-states-covering-new -max-time=900 --watchdog Projects/asa_1819_p1/al102/preprocessed/al102.bc -sym-stdin 10
+PID: 22377
+Using monotonic steady clock with 1/1000000000s resolution
+Started: 2022-08-25 19:04:13
+BEGIN searcher description
+<InterleavedSearcher> containing 2 searchers:
+RandomPathSearcher
+WeightedRandomSearcher::CoveringNew
+</InterleavedSearcher>
+END searcher description
+Finished: 2022-08-25 19:19:31
+Elapsed: 00:15:18
+KLEE: done: explored paths = 9462
+KLEE: done: avg. constructs per query = 2534
+KLEE: done: total queries = 9523
+KLEE: done: valid queries = 2725
+KLEE: done: invalid queries = 6798
+KLEE: done: query cex = 9523
+
+KLEE: done: total instructions = 56769
+KLEE: done: completed paths = 0
+KLEE: done: partially completed paths = 9462
+KLEE: done: generated tests = 8

@@ -1,0 +1,15 @@
+Error: memory error: out of bound pointer
+File: auxiliar.c
+Line: 137
+assembly.ll line: 10131
+State: 8
+Stack: 
+	#000010131 in DFS(93905611965264) at auxiliar.c:137
+	#100010598 in __klee_posix_wrapped_main() at auxiliar.c:239
+	#200007362 in __user_main(3, 93905578457632, 93905578457664) at runtime/POSIX/klee_init_env.c:245
+	#300000606 in __uClibc_main(93905611186552, 3, 93905578457632, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#400000771 in main(3, 93905578457632)
+Info: 
+	address: 93905611187048
+	next: object at 22558850013888 of size 1536
+		MO352[1536] (no allocation info)
