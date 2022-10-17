@@ -1,0 +1,20 @@
+Error: memory error: out of bound pointer
+File: resproj02.c
+Line: 199
+assembly.ll line: 10137
+State: 87
+Stack: 
+	#000010137 in AdicionaNovoJogo(1, 94133047959808, 94133047962624) at resproj02.c:199
+	#100011929 in __klee_posix_wrapped_main() at resproj02.c:744
+	#200007359 in __user_main(3, 94133037751520, 94133037751552) at runtime/POSIX/klee_init_env.c:245
+	#300000603 in __uClibc_main(94133070954072, 3, 94133037751520, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#400000768 in main(3, 94133037751520)
+Info: 
+	address: (Add w64 94133047959808
+          (Mul w64 8
+                   (SExt w64 (SRem w32 (SExt w32 (Extract w8 0 (Extract w32 0 (SExt w64 (Read w8 0 sym_char)))))
+                                       167))))
+	example: 94133047959552
+	range: [94133047958784, 94133047959800]
+	next: object at 22976309988032 of size 1536
+		MO359[1536] (no allocation info)

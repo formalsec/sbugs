@@ -1,0 +1,19 @@
+Error: memory error: out of bound pointer
+File: quick.c
+Line: 276
+assembly.ll line: 10765
+State: 112
+Stack: 
+	#000010765 in remove_stock(0) at quick.c:276
+	#100011650 in __klee_posix_wrapped_main() at quick.c:576
+	#200007373 in __user_main(3, 93826687662624, 93826687662656) at runtime/POSIX/klee_init_env.c:245
+	#300000617 in __uClibc_main(93826720633544, 3, 93826687662624, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#400000782 in main(3, 93826687662624)
+Info: 
+	address: (Add w64 93826720890892
+          (Mul w64 80
+                   (SExt w64 (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int))))))
+	example: 93654922199052
+	range: [93654922199052, 93826720890812]
+	next: object at 22651047103168 of size 1536
+		MO359[1536] (no allocation info)

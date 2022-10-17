@@ -1,0 +1,20 @@
+Error: memory error: out of bound pointer
+File: libc/string/strcmp.c
+Line: 34
+assembly.ll line: 12702
+State: 114
+Stack: 
+	#000012702 in strcmp(symbolic, 94805617164544) at libc/string/strcmp.c:34
+	#100010377 in comando_m() at proj1.c:241
+	#200010471 in __klee_posix_wrapped_main() at proj1.c:306
+	#300007370 in __user_main(3, 94805584591744, 94805584591776) at runtime/POSIX/klee_init_env.c:245
+	#400000614 in __uClibc_main(94805616933120, 3, 94805584591744, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#500000779 in main(3, 94805584591744)
+Info: 
+	address: (Add w64 94805617238020
+          (Mul w64 80
+                   (SExt w64 (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int))))))
+	example: 94805618040580
+	range: [94633818546180, 94977415929780]
+	next: object at 23123323394752 of size 1536
+		MO356[1536] (no allocation info)

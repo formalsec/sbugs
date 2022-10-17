@@ -1,0 +1,20 @@
+Error: memory error: out of bound pointer
+File: pjt.c
+Line: 255
+assembly.ll line: 10383
+State: 8
+Stack: 
+	#000010383 in __klee_posix_wrapped_main() at pjt.c:255
+	#100007352 in __user_main(3, 94415544867360, 94415544867392) at runtime/POSIX/klee_init_env.c:245
+	#200000596 in __uClibc_main(94415577572104, 3, 94415544867360, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#300000761 in main(3, 94415544867360)
+Info: 
+	address: (Add w64 (ReadLSB w64 N0:(Extract w32 0 (Add w64 974488
+                                                  N1:(Mul w64 56
+                                                              (SExt w64 (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_2))))))) const_arr2)
+          (Mul w64 4
+                   (SExt w64 (ReadLSB w32 N2:(Extract w32 0 (Add w64 974504 N1)) const_arr2))))
+	example: 8389723630153695012
+	range: [8389723630153695012, 8389723630153695012]
+	next: object at 23191447767744 of size 1536
+		MO350[1536] (no allocation info)

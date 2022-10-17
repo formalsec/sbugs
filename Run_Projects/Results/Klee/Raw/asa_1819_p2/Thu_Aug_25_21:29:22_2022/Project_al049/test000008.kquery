@@ -1,0 +1,72 @@
+array model_version[4] : w32 -> w8 = symbolic
+array stdin-stat[144] : w32 -> w8 = symbolic
+array sym_int[4] : w32 -> w8 = symbolic
+array sym_int_1[4] : w32 -> w8 = symbolic
+array sym_int_10[4] : w32 -> w8 = symbolic
+array sym_int_12[4] : w32 -> w8 = symbolic
+array sym_int_13[4] : w32 -> w8 = symbolic
+array sym_int_15[4] : w32 -> w8 = symbolic
+array sym_int_16[4] : w32 -> w8 = symbolic
+array sym_int_3[4] : w32 -> w8 = symbolic
+array sym_int_4[4] : w32 -> w8 = symbolic
+array sym_int_6[4] : w32 -> w8 = symbolic
+array sym_int_7[4] : w32 -> w8 = symbolic
+array sym_int_9[4] : w32 -> w8 = symbolic
+(query [(Eq false
+             (Eq 0
+                 (And w64 (ReadLSB w64 8 stdin-stat)
+                          2147483647)))
+         (Eq 0
+             (And w64 (ReadLSB w64 56 stdin-stat)
+                      18446744073709486080))
+         (Eq 1
+             (ReadLSB w32 0 model_version))
+         (Eq false
+             (Eq 16
+                 N0:(Mul w64 8
+                             (SExt w64 (Add w32 2
+                                                (Add w32 N1:(Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int)))
+                                                         (Mul w32 2
+                                                                  N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_1))))))))))
+         (Ult 2147483648 N0)
+         (Eq false
+             (Slt 2 N3:(Add w32 2 N1)))
+         (Eq false
+             (Slt N3
+                  (Add w32 2 (Add w32 N1 N2))))
+         (Eq false
+             (Eq N4:(Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_3)))
+                 N5:(Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_4)))))
+         (Eq false
+             (Slt N6:(Add w32 1 N1) N5))
+         (Or (Or (Eq N5 N4) (Slt N5 0))
+             (Slt N4 0))
+         (Eq false
+             (Eq N7:(Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_6)))
+                 N8:(Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_7)))))
+         (Slt N6 N8)
+         (Or (Or (Eq N9:(Add w32 N8 N2) N7)
+                 (Slt N9 0))
+             (Slt N7 0))
+         (Eq false
+             (Eq N10:(Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_9)))
+                 N11:(Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_10)))))
+         (Slt N6 N11)
+         (Or (Or (Eq N12:(Add w32 N11 N2) N10)
+                 (Slt N12 0))
+             (Slt N10 0))
+         (Eq false
+             (Eq N13:(Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_12)))
+                 N14:(Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_13)))))
+         (Slt N6 N14)
+         (Or (Or (Eq N15:(Add w32 N14 N2) N13)
+                 (Slt N15 0))
+             (Slt N13 0))
+         (Eq false
+             (Eq N16:(Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_15)))
+                 N17:(Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_16)))))
+         (Slt N6 N17)
+         (Or (Or (Eq N18:(Add w32 N17 N2) N16)
+                 (Slt N18 0))
+             (Slt N16 0))]
+        false)

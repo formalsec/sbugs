@@ -1,0 +1,16 @@
+Error: memory error: out of bound pointer
+File: libc/string/strcpy.c
+Line: 27
+assembly.ll line: 16873
+State: 27
+Stack: 
+	#000016873 in strcpy(93908651478016, 0) at libc/string/strcpy.c:27
+	#100010190 in adicionaJogo(93908650926080) at proj2.c:206
+	#200011726 in __klee_posix_wrapped_main() at proj2.c:747
+	#300007368 in __user_main(3, 93908617076992, 93908617077024) at runtime/POSIX/klee_init_env.c:245
+	#400000612 in __uClibc_main(93908650394360, 3, 93908617076992, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#500000777 in main(3, 93908617076992)
+Info: 
+	address: 0
+	next: object at 23443084303040 of size 1536
+		MO366[1536] (no allocation info)

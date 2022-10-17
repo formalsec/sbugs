@@ -1,0 +1,21 @@
+Error: memory error: out of bound pointer
+File: listaJogos.c
+Line: 71
+assembly.ll line: 10437
+State: 46
+Stack: 
+	#000010437 in apagarJogoLista(symbolic, 94909270973440, 1) at listaJogos.c:71
+	#100010417 in apagarJogoTabela(94909280998576, 94909270973440, 1) at tabelaJogos.c:66
+	#200011115 in __klee_posix_wrapped_main() at main.c:107
+	#300007363 in __user_main(3, 94909247340800, 94909247340832) at runtime/POSIX/klee_init_env.c:245
+	#400000607 in __uClibc_main(94909280401000, 3, 94909247340800, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#500000772 in main(3, 94909247340800)
+Info: 
+	address: (Add w64 94909275185152
+          (Mul w64 8
+                   (SExt w64 (SRem w32 (SExt w32 (Extract w8 0 (Extract w32 0 (SExt w64 (Read w8 0 sym_char)))))
+                                       10000))))
+	example: 94909275184128
+	range: [94909275184128, 94909275185144]
+	next: object at 22777614125760 of size 1536
+		MO370[1536] (no allocation info)

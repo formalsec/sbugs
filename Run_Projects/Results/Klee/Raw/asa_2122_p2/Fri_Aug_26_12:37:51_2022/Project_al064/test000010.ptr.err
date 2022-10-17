@@ -1,0 +1,39 @@
+Error: memory error: out of bound pointer
+File: file.c
+Line: 29
+assembly.ll line: 9779
+State: 1305
+Stack: 
+	#000009779 in read_graph(symbolic, symbolic) at file.c:29
+	#100010357 in __klee_posix_wrapped_main() at file.c:192
+	#200007354 in __user_main(3, 94259959691808, 94259959691840) at runtime/POSIX/klee_init_env.c:245
+	#300000598 in __uClibc_main(94259991681120, 3, 94259959691808, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#400000763 in main(3, 94259959691808)
+Info: 
+	address: (Add w64 8
+          (ReadLSB w64 0 U0:[(Add w32 3
+                                      N0:(Extract w32 0 (Add w64 952
+                                                                 (Add w64 N1:(Mul w64 16
+                                                                                      (SExt w64 (Add w32 4294967295
+                                                                                                         (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_5))))))
+                                                                          (Mul w64 4
+                                                                                   (SExt w64 (ReadLSB w32 N2:(Extract w32 0 (Add w64 1024 N1)) U1:[3=(Extract w8 24 N3:(Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_3)))),
+                                                                                                                                                   2=(Extract w8 16 N3),
+                                                                                                                                                   1=(Extract w8 8 N3),
+                                                                                                                                                   0=(Extract w8 0 N3)] @ const_arr199)))))))=(Extract w8 24 N4:(Add w32 4294967295
+                                                                                                                                                                                                                         (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_4))))),
+                             (Add w32 2 N0)=(Extract w8 16 N4),
+                             (Add w32 1 N0)=(Extract w8 8 N4),
+                             N0=(Extract w8 0 N4),
+                             7=(Extract w8 56 N5:(Add w64 94259986369560 N1)),
+                             6=(Extract w8 48 N5),
+                             5=(Extract w8 40 N5),
+                             4=(Extract w8 32 N5),
+                             3=(Extract w8 24 N5),
+                             2=(Extract w8 16 N5),
+                             1=(Extract w8 8 N5),
+                             0=(Extract w8 0 N5)] @ const_arr197))
+	example: 94261647245319
+	range: [2634090528, 18446744072048674848]
+	next: object at 23269158607552 of size 1536
+		MO350[1536] (no allocation info)

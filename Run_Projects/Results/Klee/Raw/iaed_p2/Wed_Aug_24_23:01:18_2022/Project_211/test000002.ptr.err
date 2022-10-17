@@ -1,0 +1,22 @@
+Error: memory error: out of bound pointer
+File: teams.c
+Line: 43
+assembly.ll line: 10683
+State: 390
+Stack: 
+	#000010683 in search_team(93909770469376, 93909770783744) at teams.c:43
+	#100011017 in cmd_P(93909762150720, 93909770469376) at main.c:44
+	#200012207 in call_cmds(symbolic, 93909762150720, 93909770469376, 93909749997568, 93909769959456, 93909769959744) at main.c:285
+	#300012314 in __klee_posix_wrapped_main() at main.c:332
+	#400007363 in __user_main(3, 93909736841120, 93909736841152) at runtime/POSIX/klee_init_env.c:245
+	#500000607 in __uClibc_main(93909762147208, 3, 93909736841120, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#600000772 in main(3, 93909736841120)
+Info: 
+	address: (Add w64 93909770469376
+          (Mul w64 8
+                   (SExt w64 (SRem w32 (SExt w32 (Extract w8 0 (Extract w32 0 (SExt w64 (Read w8 0 sym_char_1)))))
+                                       1000))))
+	example: 93909770468352
+	range: [93909770468352, 93909770469368]
+	next: object at 22485056826048 of size 1536
+		MO373[1536] (no allocation info)

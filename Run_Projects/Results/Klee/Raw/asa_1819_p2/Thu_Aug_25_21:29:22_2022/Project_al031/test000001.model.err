@@ -1,0 +1,20 @@
+Error: concretized symbolic size
+File: grupo31.c
+Line: 106
+assembly.ll line: 9914
+State: 3
+Stack: 
+	#000009914 in graphInit(symbolic, symbolic, symbolic, symbolic) at grupo31.c:106
+	#100010154 in readLineArguments() at grupo31.c:188
+	#200012049 in __klee_posix_wrapped_main() at grupo31.c:599
+	#300007355 in __user_main(3, 93887336037248, 93887336037280) at runtime/POSIX/klee_init_env.c:245
+	#400000599 in __uClibc_main(93887365358024, 3, 93887336037248, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#500000764 in main(3, 93887336037248)
+Info: 
+  size expr: (Mul w64 4
+                       (SExt w64 (Add w32 2
+                                          (Add w32 (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int)))
+                                                   (Mul w32 2
+                                                            (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_1))))))))
+  concretization : 8
+  unbound example: 12

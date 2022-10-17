@@ -1,0 +1,17 @@
+Error: memory error: out of bound pointer
+File: edmonds.c
+Line: 148
+assembly.ll line: 10518
+State: 530
+Stack: 
+	#000010518 in enQueue(0) at edmonds.c:148
+	#100010594 in Bfs() at edmonds.c:165
+	#200010827 in edmondsKarp() at edmonds.c:208
+	#300010993 in __klee_posix_wrapped_main() at edmonds.c:261
+	#400007356 in __user_main(3, 94368227424800, 94368227424832) at runtime/POSIX/klee_init_env.c:245
+	#500000600 in __uClibc_main(94368260081304, 3, 94368227424800, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#600000765 in main(3, 94368227424800)
+Info: 
+	address: 0
+	next: object at 23102753647296 of size 1536
+		MO349[1536] (no allocation info)

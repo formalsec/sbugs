@@ -1,0 +1,19 @@
+Error: concretized symbolic size
+File: asa_2p_2019.c
+Line: 66
+assembly.ll line: 9745
+State: 3
+Stack: 
+	#000009745 in newGrafo(symbolic) at asa_2p_2019.c:66
+	#100010551 in __klee_posix_wrapped_main(1, 94050443356912) at asa_2p_2019.c:311
+	#200007361 in __user_main(3, 94050410027552, 94050410027584) at runtime/POSIX/klee_init_env.c:245
+	#300000605 in __uClibc_main(94050442806512, 3, 94050410027552, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#400000770 in main(3, 94050410027552)
+Info: 
+  size expr: (Mul w64 8
+                       (SExt w64 (Add w32 2
+                                          (Add w32 (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int)))
+                                                   (Mul w32 2
+                                                            (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_1))))))))
+  concretization : 16
+  unbound example: 24

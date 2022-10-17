@@ -1,0 +1,19 @@
+Error: memory error: out of bound pointer
+File: funcional.c
+Line: 211
+assembly.ll line: 10185
+State: 273
+Stack: 
+	#000010185 in adiciona_stock() at funcional.c:211
+	#100010029 in __klee_posix_wrapped_main() at funcional.c:125
+	#200007386 in __user_main(3, 93908004305440, 93908004305472) at runtime/POSIX/klee_init_env.c:245
+	#300000630 in __uClibc_main(93908037009896, 3, 93908004305440, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#400000795 in main(3, 93908004305440)
+Info: 
+	address: (Add w64 93908037140556
+          (Mul w64 80
+                   (SExt w64 (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int))))))
+	example: 93736238448716
+	range: [93736238448716, 93908037140476]
+	next: object at 22803718146752 of size 1536
+		MO358[1536] (no allocation info)

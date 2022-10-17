@@ -1,0 +1,21 @@
+Error: memory error: out of bound pointer
+File: Andreia96836.c
+Line: 398
+assembly.ll line: 10471
+State: 62
+Stack: 
+	#000010471 in comando_R(93882377510912) at Andreia96836.c:398
+	#100009818 in __klee_posix_wrapped_main() at Andreia96836.c:73
+	#200007387 in __user_main(3, 93882342332960, 93882342332992) at runtime/POSIX/klee_init_env.c:245
+	#300000631 in __uClibc_main(93882375445336, 3, 93882342332960, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#400000796 in main(3, 93882342332960)
+Info: 
+	address: (Add w64 93882377510924
+          (Add w64 (Mul w64 40012
+                            (SExt w64 (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int)))))
+                   (Mul w64 4
+                            (SExt w64 (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_1)))))))
+	example: 93882377470912
+	range: [93882377470912, 93882377470912]
+	next: object at 22642942978752 of size 1536
+		MO359[1536] (no allocation info)

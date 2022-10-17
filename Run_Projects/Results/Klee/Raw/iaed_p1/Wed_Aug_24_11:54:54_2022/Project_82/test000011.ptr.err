@@ -1,0 +1,24 @@
+Error: memory error: out of bound pointer
+File: libc/stdio/getchar.c
+Line: 22
+assembly.ll line: 9573
+State: 29
+Stack: 
+	#000009573 in getchar_unlocked() at libc/stdio/getchar.c:22
+	#100011200 in __klee_posix_wrapped_main() at projeto.c:10
+	#200007379 in __user_main(3, 94468316257152, 94468316257184) at runtime/POSIX/klee_init_env.c:245
+	#300000623 in __uClibc_main(94468349275584, 3, 94468316257152, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#400000788 in main(3, 94468316257152)
+Info: 
+	address: (ReadLSB w64 24 U0:[N0:(Add w32 3
+                                 N1:(Extract w32 0 (Add w64 17641164
+                                                            (Mul w64 80
+                                                                     (SExt w64 (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int))))))))=(Extract w8 24 N2:(Add w32 (ReadLSB w32 N1 const_arr12)
+                                                                                                                                                                  (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_1))))),
+                     N3:(Add w32 2 N1)=(Extract w8 16 N2),
+                     N4:(Add w32 1 N1)=(Extract w8 8 N2),
+                     N1=(Extract w8 0 N2)] @ const_arr12)
+	example: 0
+	range: [0, 0]
+	next: object at 22983329929920 of size 1536
+		MO366[1536] (no allocation info)

@@ -1,0 +1,12 @@
+Error: memory error: object read only
+File: libc/string/memcpy.c
+Line: 29
+assembly.ll line: 9635
+State: 305
+Stack: 
+	#000009635 in memcpy(symbolic, symbolic, 8) at libc/string/memcpy.c:29
+	#100010129 in parse_input(94073596018368) at main.c:145
+	#200012311 in __klee_posix_wrapped_main() at main.c:666
+	#300007358 in __user_main(3, 94073562085920, 94073562085952) at runtime/POSIX/klee_init_env.c:245
+	#400000602 in __uClibc_main(94073595462800, 3, 94073562085920, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#500000767 in main(3, 94073562085920)

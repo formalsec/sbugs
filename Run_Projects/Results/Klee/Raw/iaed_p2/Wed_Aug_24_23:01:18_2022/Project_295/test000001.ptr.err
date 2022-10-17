@@ -1,0 +1,22 @@
+Error: memory error: out of bound pointer
+File: Estruturas.c
+Line: 96
+assembly.ll line: 12082
+State: 23
+Stack: 
+	#000012082 in procura_jogo(94343492851712, 94343504371712) at Estruturas.c:96
+	#100010540 in comando_r(1, 94343504371712, 94343504207872) at Comandos.c:167
+	#200009995 in direciona(symbolic, 1, 94343504207872, 94343503442864, 94343504371712, 94343503367904) at Comandos.c:318
+	#300009802 in __klee_posix_wrapped_main() at Main.c:41
+	#400007365 in __user_main(3, 94343468940864, 94343468940896) at runtime/POSIX/klee_init_env.c:245
+	#500000609 in __uClibc_main(94343502820232, 3, 94343468940864, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#600000774 in main(3, 94343468940864)
+Info: 
+	address: (Add w64 94343504371712
+          (Mul w64 8
+                   (SExt w64 (SRem w32 (SExt w32 (Extract w8 0 (Extract w32 0 (SExt w64 (Read w8 0 sym_char)))))
+                                       10000))))
+	example: 94343504370688
+	range: [94343504370688, 94343504371704]
+	next: object at 23020145724096 of size 1536
+		MO374[1536] (no allocation info)

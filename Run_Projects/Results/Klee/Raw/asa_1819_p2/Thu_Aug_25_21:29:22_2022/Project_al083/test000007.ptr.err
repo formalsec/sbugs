@@ -1,0 +1,16 @@
+Error: memory error: out of bound pointer
+File: asap2.c
+Line: 313
+assembly.ll line: 10932
+State: 9
+Stack: 
+	#000010932 in BFS(93902100086720, 93902099511368) at asap2.c:313
+	#100010002 in Edmonds_Karp(93902100086720) at asap2.c:211
+	#200009738 in __klee_posix_wrapped_main() at asap2.c:51
+	#300007358 in __user_main(3, 93902066588192, 93902066588224) at runtime/POSIX/klee_init_env.c:245
+	#400000602 in __uClibc_main(93902099508032, 3, 93902066588192, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#500000767 in main(3, 93902066588192)
+Info: 
+	address: 12370169555311111087
+	next: object at 23227306154688 of size 1536
+		MO358[1536] (no allocation info)

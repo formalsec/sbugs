@@ -1,0 +1,15 @@
+Error: memory error: out of bound pointer
+File: main.c
+Line: 60
+assembly.ll line: 9815
+State: 2
+Stack: 
+	#000009815 in addAluno(symbolic, 0, 94631388022032) at main.c:60
+	#100010359 in __klee_posix_wrapped_main() at main.c:268
+	#200007351 in __user_main(3, 94631354473696, 94631354473728) at runtime/POSIX/klee_init_env.c:245
+	#300000595 in __uClibc_main(94631386954704, 3, 94631354473696, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#400000760 in main(3, 94631354473696)
+Info: 
+	address: 16
+	next: object at 23089241025216 of size 1536
+		MO355[1536] (no allocation info)

@@ -1,0 +1,21 @@
+Error: memory error: out of bound pointer
+File: equipas.c
+Line: 36
+assembly.ll line: 10067
+State: 26
+Stack: 
+	#000010067 in procura_equipa(94551738695680, 94551729242112) at equipas.c:36
+	#100011490 in add_equipa(94551738695680, 1) at equipas.c:17
+	#200011375 in __klee_posix_wrapped_main() at projeto.c:30
+	#300007359 in __user_main(3, 94551704150624, 94551704150656) at runtime/POSIX/klee_init_env.c:245
+	#400000603 in __uClibc_main(94551729454664, 3, 94551704150624, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#500000768 in main(3, 94551704150624)
+Info: 
+	address: (Add w64 94551738695680
+          (Mul w64 8
+                   (SExt w64 (SRem w32 (SExt w32 (Extract w8 0 (Extract w32 0 (SExt w64 (Read w8 0 sym_char)))))
+                                       593))))
+	example: 94551738694656
+	range: [94551738694656, 94551738695672]
+	next: object at 23379389074112 of size 1536
+		MO367[1536] (no allocation info)

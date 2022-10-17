@@ -1,0 +1,16 @@
+Error: memory error: out of bound pointer
+File: teams.c
+Line: 100
+assembly.ll line: 11568
+State: 2
+Stack: 
+	#000011568 in most_wins(93883719868416) at teams.c:100
+	#100011513 in the_best_teams(93883719868416, 93883723828608, 1) at proj2.c:274
+	#200011997 in __klee_posix_wrapped_main() at proj2.c:341
+	#300007359 in __user_main(3, 93883709719488, 93883709719520) at runtime/POSIX/klee_init_env.c:245
+	#400000603 in __uClibc_main(93883743062072, 3, 93883709719488, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#500000768 in main(3, 93883709719488)
+Info: 
+	address: 12370169555311111083
+	next: object at 22585880967872 of size 1536
+		MO383[1536] (no allocation info)

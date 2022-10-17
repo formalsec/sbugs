@@ -1,0 +1,16 @@
+Error: concretized symbolic size
+File: projeto.c
+Line: 70
+assembly.ll line: 9815
+State: 3
+Stack: 
+	#000009815 in init_students(symbolic) at projeto.c:70
+	#100010438 in __klee_posix_wrapped_main() at projeto.c:246
+	#200007354 in __user_main(3, 94192600185376, 94192600185408) at runtime/POSIX/klee_init_env.c:245
+	#300000598 in __uClibc_main(94192632684096, 3, 94192600185376, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#400000763 in main(3, 94192600185376)
+Info: 
+  size expr: (Mul w64 24
+                       (SExt w64 (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int)))))
+  concretization : 0
+  unbound example: 24

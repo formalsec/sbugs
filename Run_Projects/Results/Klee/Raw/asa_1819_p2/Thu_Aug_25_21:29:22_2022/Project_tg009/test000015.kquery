@@ -1,0 +1,399 @@
+array model_version[4] : w32 -> w8 = symbolic
+array stdin-stat[144] : w32 -> w8 = symbolic
+array sym_int[4] : w32 -> w8 = symbolic
+array sym_int_1[4] : w32 -> w8 = symbolic
+(query [(Eq false
+             (Eq 0
+                 (And w64 (ReadLSB w64 8 stdin-stat)
+                          2147483647)))
+         (Eq 0
+             (And w64 (ReadLSB w64 56 stdin-stat)
+                      18446744073709486080))
+         (Eq 1
+             (ReadLSB w32 0 model_version))
+         (Eq 16
+             (Mul w64 8
+                      (SExt w64 (Add w32 2
+                                         (Add w32 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int)))
+                                                  (Mul w32 2
+                                                           N1:(Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_1)))))))))
+         (Eq false
+             (Eq 0
+                 N2:(Mul w64 4 (SExt w64 N1))))
+         (Ult 2147483648 N2)
+         (Eq false
+             (Slt 2 N3:(Add w32 2 N0)))
+         (Slt N3
+              (Add w32 2 (Add w32 N1 N0)))
+         (Eq false
+             (Ult (Add w64 33682688
+                           N4:(Mul w64 8 (SExt w64 N3)))
+                  345))
+         (Eq false
+             (Ult (Add w64 33046336 N4) 224))
+         (Eq false
+             (Ult (Add w64 33043696 N4) 233))
+         (Eq false
+             (Ult (Add w64 32391072 N4) 81))
+         (Eq false
+             (Ult (Add w64 31249856 N4) 126))
+         (Eq false
+             (Ult (Add w64 22144928 N4) 777))
+         (Eq false
+             (Ult (Add w64 22007776 N4) 109))
+         (Eq false
+             (Ult (Add w64 17884672 N4) 255))
+         (Eq false
+             (Ult (Add w64 17882368 N4) 257))
+         (Eq false
+             (Ult (Add w64 17722080 N4) 393))
+         (Eq false
+             (Ult (Add w64 16322016 N4) 1509))
+         (Eq false
+             (Ult (Add w64 11658464 N4) 761))
+         (Eq false
+             (Ult (Add w64 11559744 N4) 201))
+         (Eq false
+             (Ult (Add w64 11194080 N4) 761))
+         (Eq false
+             (Ult (Add w64 11192544 N4) 761))
+         (Eq false
+             (Ult (Add w64 10031584 N4) 957))
+         (Eq false
+             (Ult (Add w64 9343648 N4) 160))
+         (Eq false
+             (Ult (Add w64 9068064 N4) 137))
+         (Eq false
+             (Ult (Add w64 9024512 N4) 81))
+         (Eq false
+             (Ult (Add w64 8729056 N4) 255897))
+         (Eq false
+             (Ult (Add w64 4677920 N4) 71))
+         (Eq false
+             (Ult (Add w64 4653584 N4) 4))
+         (Eq false
+             (Ult (Add w64 4653552 N4) 5))
+         (Eq false
+             (Ult (Add w64 4653520 N4) 8))
+         (Eq false
+             (Ult (Add w64 4653488 N4) 7))
+         (Eq false
+             (Ult (Add w64 4653456 N4) 3))
+         (Eq false
+             (Ult (Add w64 4653440 N4) 5))
+         (Eq false
+             (Ult (Add w64 4653424 N4) 3))
+         (Eq false
+             (Ult (Add w64 4653408 N4) 2))
+         (Eq false
+             (Ult (Add w64 4653392 N4) 4))
+         (Eq false
+             (Ult (Add w64 4653376 N4) 3))
+         (Eq false
+             (Ult (Add w64 4653360 N4) 5))
+         (Eq false
+             (Ult (Add w64 4653344 N4) 4))
+         (Eq false
+             (Ult (Add w64 4653328 N4) 5))
+         (Eq false
+             (Ult (Add w64 4653312 N4) 4))
+         (Eq false
+             (Ult (Add w64 4653296 N4) 6))
+         (Eq false
+             (Ult (Add w64 4653280 N4) 5))
+         (Eq false
+             (Ult (Add w64 4653264 N4) 3))
+         (Eq false
+             (Ult (Add w64 4653248 N4) 2))
+         (Eq false
+             (Ult (Add w64 4653232 N4) 5))
+         (Eq false
+             (Ult (Add w64 4653216 N4) 4))
+         (Eq false
+             (Ult (Add w64 4653200 N4) 4))
+         (Eq false
+             (Ult (Add w64 4653184 N4) 3))
+         (Eq false
+             (Ult (Add w64 4653168 N4) 2))
+         (Eq false
+             (Ult (Add w64 4653152 N4) 9))
+         (Eq false
+             (Ult (Add w64 4653136 N4) 6))
+         (Eq false
+             (Ult (Add w64 4653120 N4) 5))
+         (Eq false
+             (Ult (Add w64 4653104 N4) 7))
+         (Eq false
+             (Ult (Add w64 4653088 N4) 2))
+         (Eq false
+             (Ult (Add w64 4653072 N4) 2))
+         (Eq false
+             (Ult (Add w64 4653056 N4) 6))
+         (Eq false
+             (Ult (Add w64 4653040 N4) 7))
+         (Eq false
+             (Ult (Add w64 4653024 N4) 7))
+         (Eq false
+             (Ult (Add w64 4653008 N4) 3))
+         (Eq false
+             (Ult (Add w64 4652992 N4) 2))
+         (Eq false
+             (Ult (Add w64 4652976 N4) 3))
+         (Eq false
+             (Ult (Add w64 4652960 N4) 4))
+         (Eq false
+             (Ult (Add w64 4652944 N4) 4))
+         (Eq false
+             (Ult (Add w64 4652928 N4) 8))
+         (Eq false
+             (Ult (Add w64 4652912 N4) 5))
+         (Eq false
+             (Ult (Add w64 4652896 N4) 7))
+         (Eq false
+             (Ult (Add w64 4652880 N4) 8))
+         (Eq false
+             (Ult (Add w64 4652864 N4) 6))
+         (Eq false
+             (Ult (Add w64 4652848 N4) 7))
+         (Eq false
+             (Ult (Add w64 4652832 N4) 2))
+         (Eq false
+             (Ult (Add w64 4652816 N4) 7))
+         (Eq false
+             (Ult (Add w64 4652800 N4) 5))
+         (Eq false
+             (Ult (Add w64 4652784 N4) 2))
+         (Eq false
+             (Ult (Add w64 4652768 N4) 9))
+         (Eq false
+             (Ult (Add w64 4652752 N4) 9))
+         (Eq false
+             (Ult (Add w64 4652736 N4) 5))
+         (Eq false
+             (Ult (Add w64 4652720 N4) 8))
+         (Eq false
+             (Ult (Add w64 4652704 N4) 9))
+         (Eq false
+             (Ult (Add w64 4652688 N4) 7))
+         (Eq false
+             (Ult (Add w64 556960 N4) 42))
+         (Eq false
+             (Ult (Add w64 545120 N4) 50))
+         (Eq false
+             (Ult (Add w64 545056 N4) 49))
+         (Eq false
+             (Ult (Add w64 544928 N4) 50))
+         (Eq false
+             (Ult (Add w64 544864 N4) 50))
+         (Eq false
+             (Ult (Add w64 544736 N4) 47))
+         (Eq false
+             (Ult (Add w64 544672 N4) 46))
+         (Eq false
+             (Ult (Add w64 544608 N4) 53))
+         (Eq false
+             (Ult (Add w64 544544 N4) 56))
+         (Eq false
+             (Ult (Add w64 544480 N4) 46))
+         (Eq false
+             (Ult (Add w64 542752 N4) 52))
+         (Eq false
+             (Ult (Add w64 542176 N4) 54))
+         (Eq false
+             (Ult (Add w64 542048 N4) 43))
+         (Eq false
+             (Ult (Add w64 541984 N4) 47))
+         (Eq false
+             (Ult (Add w64 541792 N4) 48))
+         (Eq false
+             (Ult (Add w64 541728 N4) 53))
+         (Eq false
+             (Ult (Add w64 541664 N4) 44))
+         (Eq false
+             (Ult (Add w64 541600 N4) 48))
+         (Eq false
+             (Ult (Add w64 491344 N4) 36))
+         (Eq false
+             (Ult (Add w64 490960 N4) 41))
+         (Eq false
+             (Ult (Add w64 489520 N4) 27))
+         (Eq false
+             (Ult (Add w64 489136 N4) 35))
+         (Eq false
+             (Ult (Add w64 489088 N4) 40))
+         (Eq false
+             (Ult (Add w64 488560 N4) 39))
+         (Eq false
+             (Ult (Add w64 487904 N4) 10))
+         (Eq false
+             (Ult (Add w64 487840 N4) 13))
+         (Eq false
+             (Ult (Add w64 487744 N4) 24))
+         (Eq false
+             (Ult (Add w64 487680 N4) 13))
+         (Eq false
+             (Ult (Add w64 487648 N4) 15))
+         (Eq false
+             (Ult (Add w64 487584 N4) 24))
+         (Eq false
+             (Ult (Add w64 487520 N4) 25))
+         (Eq false
+             (Ult (Add w64 487200 N4) 13))
+         (Eq false
+             (Ult (Add w64 478272 N4) 68))
+         (Eq false
+             (Ult (Add w64 477632 N4) 58))
+         (Eq false
+             (Ult (Add w64 445136 N4) 1))
+         (Eq false
+             (Ult (Add w64 445120 N4) 1))
+         (Eq false
+             (Ult (Add w64 445088 N4) 1))
+         (Eq false
+             (Ult (Add w64 444944 N4) 1))
+         (Eq false
+             (Ult (Add w64 444912 N4) 1))
+         (Eq false
+             (Ult (Add w64 444896 N4) 1))
+         (Eq false
+             (Ult (Add w64 444880 N4) 1))
+         (Eq false
+             (Ult (Add w64 444832 N4) 1))
+         (Eq false
+             (Ult (Add w64 444736 N4) 1))
+         (Eq false
+             (Ult (Add w64 444720 N4) 1))
+         (Eq false
+             (Ult (Add w64 444624 N4) 1))
+         (Eq false
+             (Ult (Add w64 444608 N4) 1))
+         (Eq false
+             (Ult (Add w64 444000 N4) 1))
+         (Eq false
+             (Ult (Add w64 443968 N4) 1))
+         (Eq false
+             (Ult (Add w64 443952 N4) 1))
+         (Eq false
+             (Ult (Add w64 443936 N4) 1))
+         (Eq false
+             (Ult (Add w64 443920 N4) 1))
+         (Eq false
+             (Ult (Add w64 443904 N4) 1))
+         (Eq false
+             (Ult (Add w64 443888 N4) 1))
+         (Eq false
+             (Ult (Add w64 443568 N4) 1))
+         (Eq false
+             (Ult (Add w64 441776 N4) 1))
+         (Eq false
+             (Ult (Add w64 441696 N4) 1))
+         (Eq false
+             (Ult (Add w64 441536 N4) 1))
+         (Eq false
+             (Ult (Add w64 441056 N4) 1))
+         (Eq false
+             (Ult (Add w64 440992 N4) 1))
+         (Eq false
+             (Ult (Add w64 440848 N4) 1))
+         (Eq false
+             (Ult (Add w64 400480 N4) 13))
+         (Eq false
+             (Ult (Add w64 399968 N4) 17))
+         (Eq false
+             (Ult (Add w64 399904 N4) 11))
+         (Eq false
+             (Ult (Add w64 399648 N4) 25))
+         (Eq false
+             (Ult (Add w64 399552 N4) 23))
+         (Eq false
+             (Ult (Add w64 399456 N4) 11))
+         (Eq false
+             (Ult (Add w64 399360 N4) 15))
+         (Eq false
+             (Ult (Add w64 399040 N4) 25))
+         (Eq false
+             (Ult (Add w64 398976 N4) 10))
+         (Eq false
+             (Ult (Add w64 398912 N4) 11))
+         (Eq false
+             (Ult (Add w64 398528 N4) 21))
+         (Eq false
+             (Ult (Add w64 398080 N4) 11))
+         (Eq false
+             (Ult (Add w64 398016 N4) 10))
+         (Eq false
+             (Ult (Add w64 389456 N4) 33))
+         (Eq false
+             (Ult (Add w64 388256 N4) 39))
+         (Eq false
+             (Ult (Add w64 388064 N4) 40))
+         (Eq false
+             (Ult (Add w64 387872 N4) 37))
+         (Eq false
+             (Ult (Add w64 387248 N4) 41))
+         (Eq false
+             (Ult (Add w64 387056 N4) 27))
+         (Eq false
+             (Ult (Add w64 386576 N4) 34))
+         (Eq false
+             (Ult (Add w64 385952 N4) 31))
+         (Eq false
+             (Ult (Add w64 385472 N4) 26))
+         (Eq false
+             (Ult (Add w64 384560 N4) 26))
+         (Eq false
+             (Ult (Add w64 383936 N4) 34))
+         (Eq false
+             (Ult (Add w64 383744 N4) 35))
+         (Eq false
+             (Ult (Add w64 383552 N4) 36))
+         (Eq false
+             (Ult (Add w64 383360 N4) 36))
+         (Eq false
+             (Ult (Add w64 383168 N4) 38))
+         (Eq false
+             (Ult (Add w64 382976 N4) 39))
+         (Eq false
+             (Ult (Add w64 382784 N4) 36))
+         (Eq false
+             (Ult (Add w64 382592 N4) 37))
+         (Eq false
+             (Ult (Add w64 380608 N4) 58))
+         (Eq false
+             (Ult (Add w64 378768 N4) 70))
+         (Eq false
+             (Ult (Add w64 378288 N4) 65))
+         (Eq false
+             (Ult (Add w64 378048 N4) 58))
+         (Eq false
+             (Ult (Add w64 367648 N4) 62))
+         (Eq false
+             (Ult (Add w64 364832 N4) 41))
+         (Eq false
+             (Ult (Add w64 364640 N4) 38))
+         (Eq false
+             (Ult (Add w64 363296 N4) 32))
+         (Eq false
+             (Ult (Add w64 360656 N4) 30))
+         (Eq false
+             (Ult (Add w64 356768 N4) 24))
+         (Eq false
+             (Ult (Add w64 356160 N4) 25))
+         (Eq false
+             (Ult (Add w64 355456 N4) 10))
+         (Eq false
+             (Ult (Add w64 355072 N4) 24))
+         (Eq false
+             (Ult (Add w64 354624 N4) 11))
+         (Eq false
+             (Ult (Add w64 354560 N4) 17))
+         (Eq false
+             (Ult (Add w64 354464 N4) 11))
+         (Eq false
+             (Ult (Add w64 354400 N4) 10))
+         (Eq false
+             (Ult (Add w64 354272 N4) 10))
+         (Eq false
+             (Ult (Add w64 354208 N4) 14))
+         (Ult (Add w64 354144 N4) 11)]
+        false)

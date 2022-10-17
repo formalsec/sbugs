@@ -1,0 +1,21 @@
+Error: memory error: out of bound pointer
+File: jogos.c
+Line: 30
+assembly.ll line: 10649
+State: 13
+Stack: 
+	#000010649 in JHsearch(93851780217600, 93851803018240) at jogos.c:30
+	#100011066 in f_p(1, 93851780217600) at projeto_2_main.c:212
+	#200012042 in __klee_posix_wrapped_main() at projeto_2_main.c:479
+	#300007361 in __user_main(3, 93851779300928, 93851779300960) at runtime/POSIX/klee_init_env.c:245
+	#400000605 in __uClibc_main(93851812634400, 3, 93851779300928, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#500000770 in main(3, 93851779300928)
+Info: 
+	address: (Add w64 93851780217600
+          (Mul w64 8
+                   (SExt w64 (SRem w32 (SExt w32 (Extract w8 0 (Extract w32 0 (SExt w64 (Read w8 0 sym_char)))))
+                                       137))))
+	example: 93851780217344
+	range: [93851780216576, 93851780217592]
+	next: object at 22820814510784 of size 1536
+		MO376[1536] (no allocation info)

@@ -1,0 +1,14 @@
+Error: memory error: out of bound pointer
+File: teste_todo.c
+Line: 151
+assembly.ll line: 12335
+State: 146
+Stack: 
+	#000012335 in __klee_posix_wrapped_main() at teste_todo.c:151
+	#100007360 in __user_main(3, 93844118823520, 93844118823552) at runtime/POSIX/klee_init_env.c:245
+	#200000604 in __uClibc_main(93844152394904, 3, 93844118823520, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#300000769 in main(3, 93844118823520)
+Info: 
+	address: 93844154044600
+	next: object at 22808784984768 of size 1536
+		MO379[1536] (no allocation info)

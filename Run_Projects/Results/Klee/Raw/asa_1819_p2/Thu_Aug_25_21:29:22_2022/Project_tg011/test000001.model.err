@@ -1,0 +1,18 @@
+Error: concretized symbolic size
+File: proj2.c
+Line: 82
+assembly.ll line: 9845
+State: 3
+Stack: 
+	#000009845 in createNetwork(symbolic, symbolic) at proj2.c:82
+	#100010117 in __klee_posix_wrapped_main() at proj2.c:167
+	#200007363 in __user_main(3, 94159252634496, 94159252634528) at runtime/POSIX/klee_init_env.c:245
+	#300000607 in __uClibc_main(94159284967848, 3, 94159252634496, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#400000772 in main(3, 94159252634496)
+Info: 
+  size expr: (Mul w64 8
+                       (SExt w64 (Add w32 2
+                                          (Add w32 (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int)))
+                                                   (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_1)))))))
+  concretization : 16
+  unbound example: 24

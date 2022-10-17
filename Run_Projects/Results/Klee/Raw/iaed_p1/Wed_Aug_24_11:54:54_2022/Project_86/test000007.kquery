@@ -1,0 +1,73 @@
+array model_version[4] : w32 -> w8 = symbolic
+array stdin[10] : w32 -> w8 = symbolic
+array stdin-stat[144] : w32 -> w8 = symbolic
+array sym_int[4] : w32 -> w8 = symbolic
+array sym_int_1[4] : w32 -> w8 = symbolic
+(query [(Eq false
+             (Eq 0
+                 (And w64 (ReadLSB w64 8 stdin-stat)
+                          2147483647)))
+         (Eq 0
+             (And w64 (ReadLSB w64 56 stdin-stat)
+                      18446744073709486080))
+         (Eq 1
+             (ReadLSB w32 0 model_version))
+         (Eq 82
+             (Extract w8 0 (ZExt w32 (Read w8 0 stdin))))
+         (Eq false
+             (Sle 0
+                  N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int)))))
+         (Eq false
+             (Sle 0
+                  N1:(Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_1)))))
+         (Ult (Add w64 72056155563328
+                       (Add w64 (Mul w64 40000 (SExt w64 N0))
+                                (Mul w64 4 N2:(SExt w64 N1))))
+              1533)
+         (Eq false
+             (Ult (Add w64 32737672 N3:(Mul w64 76 N2))
+                  781))
+         (Eq false
+             (Ult (Add w64 60200 N3) 69))
+         (Eq false
+             (Ult (Add w64 60040 N3) 67))
+         (Eq false
+             (Ult (Add w64 59560 N3) 67))
+         (Eq false
+             (Ult (Add w64 59400 N3) 65))
+         (Eq false
+             (Ult (Add w64 59240 N3) 64))
+         (Eq false
+             (Ult (Add w64 55048 N3) 29))
+         (Eq false
+             (Ult (Add w64 54952 N3) 27))
+         (Eq false
+             (Ult (Add w64 54440 N3) 29))
+         (Eq false
+             (Ult (Add w64 53128 N3) 28))
+         (Eq false
+             (Ult (Add w64 52520 N3) 29))
+         (Eq false
+             (Ult (Add w64 51912 N3) 15))
+         (Eq false
+             (Ult (Add w64 51528 N3) 17))
+         (Eq false
+             (Ult (Add w64 50632 N3) 28))
+         (Eq false
+             (Ult (Add w64 49704 N3) 15))
+         (Eq false
+             (Ult (Add w64 49640 N3) 29))
+         (Eq false
+             (Ult (Add w64 48504 N3) 37))
+         (Eq false
+             (Ult (Add w64 47304 N3) 43))
+         (Eq false
+             (Ult (Add w64 46920 N3) 41))
+         (Eq false
+             (Ult (Add w64 46296 N3) 45))
+         (Eq false
+             (Ult (Add w64 45624 N3) 38))
+         (Eq false
+             (Ult (Add w64 45000 N3) 35))
+         (Ult (Add w64 42792 N3) 39)]
+        false)

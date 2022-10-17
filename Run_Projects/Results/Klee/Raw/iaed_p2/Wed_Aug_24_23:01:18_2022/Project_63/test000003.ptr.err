@@ -1,0 +1,24 @@
+Error: memory error: out of bound pointer
+File: hash_tables.c
+Line: 79
+assembly.ll line: 10077
+State: 1082
+Stack: 
+	#000010077 in in_table_teams(93851645386752, 93851645529760) at hash_tables.c:79
+	#100011242 in add_team(93851636289728, 93851645386752, 1) at main_functions.c:118
+	#200010952 in __klee_posix_wrapped_main() at projeto2.c:43
+	#300007360 in __user_main(3, 93851610677152, 93851610677184) at runtime/POSIX/klee_init_env.c:245
+	#400000604 in __uClibc_main(93851636286200, 3, 93851610677152, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#500000769 in main(3, 93851610677152)
+Info: 
+	address: (Add w64 93851645386752
+          (Mul w64 8
+                   (SExt w64 (SRem w32 (Add w32 (Mul w32 347
+                                                         (SRem w32 (SExt w32 (Extract w8 0 (Extract w32 0 (SExt w64 (Read w8 0 sym_char)))))
+                                                                   1993))
+                                                (SExt w32 (Extract w8 0 (Extract w32 0 (SExt w64 (Read w8 0 sym_char_1))))))
+                                       1993))))
+	example: 93851645374224
+	range: [93851645371160, 93851645386680]
+	next: object at 22771334908608 of size 1536
+		MO397[1536] (no allocation info)

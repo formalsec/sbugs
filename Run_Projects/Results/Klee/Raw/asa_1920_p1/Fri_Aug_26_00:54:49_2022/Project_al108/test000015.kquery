@@ -1,0 +1,66 @@
+array const_arr1[8] : w32 -> w8 = [176 80 33 122 215 85 0 0]
+array const_arr2[16] : w32 -> w8 = [0 0 0 0 171 171 171 171 0 0 0 0 0 0 0 0]
+array const_arr3[16] : w32 -> w8 = [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+array model_version[4] : w32 -> w8 = symbolic
+array stdin-stat[144] : w32 -> w8 = symbolic
+array sym_int[4] : w32 -> w8 = symbolic
+array sym_int_1[4] : w32 -> w8 = symbolic
+array sym_int_3[4] : w32 -> w8 = symbolic
+array sym_int_4[4] : w32 -> w8 = symbolic
+array sym_int_5[4] : w32 -> w8 = symbolic
+array sym_int_6[4] : w32 -> w8 = symbolic
+(query [(Eq false
+             (Eq 0
+                 (And w64 (ReadLSB w64 8 stdin-stat)
+                          2147483647)))
+         (Eq 0
+             (And w64 (ReadLSB w64 56 stdin-stat)
+                      18446744073709486080))
+         (Eq 1
+             (ReadLSB w32 0 model_version))
+         (Eq false
+             (Slt N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int)))
+                  1))
+         (Eq 8
+             (Mul w64 8 (SExt w64 N0)))
+         (Slt 0
+              N1:(Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_1))))
+         (Eq false
+             (Slt N2:(Add w32 4294967295
+                              (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_3))))
+                  0))
+         (Eq false (Sle N0 N2))
+         (Eq false
+             (Slt N3:(Add w32 4294967295
+                              (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_4))))
+                  0))
+         (Eq false (Eq N3 N2))
+         (Slt 1 N1)
+         (Eq false
+             (Slt N4:(Add w32 4294967295
+                              (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_5))))
+                  0))
+         (Eq false (Sle N0 N4))
+         (Eq false
+             (Slt N5:(Add w32 4294967295
+                              (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_6))))
+                  0))
+         (Eq false (Eq N5 N4))
+         (Eq (ReadLSB w32 N6:(Extract w32 0 (Add w64 18446649689754216112
+                                                     (ReadLSB w64 N7:(Extract w32 0 (Add w64 18446649689754218328
+                                                                                             (ReadLSB w64 N8:(Extract w32 0 (Mul w64 8 (SExt w64 N4))) const_arr1))) U0:[(Add w32 7
+                                                                                                                                                                                  N9:(Extract w32 0 (Add w64 18446649689754218328
+                                                                                                                                                                                                             (ReadLSB w64 N10:(Extract w32 0 (Mul w64 8 (SExt w64 N2))) const_arr1))))=0,
+                                                                                                                                                                         (Add w32 6 N9)=0,
+                                                                                                                                                                         (Add w32 5 N9)=85,
+                                                                                                                                                                         (Add w32 4 N9)=215,
+                                                                                                                                                                         (Add w32 3 N9)=122,
+                                                                                                                                                                         (Add w32 2 N9)=33,
+                                                                                                                                                                         (Add w32 1 N9)=89,
+                                                                                                                                                                         N9=80] @ const_arr2))) U1:[15=0, 14=0, 13=0, 12=0, 11=0, 10=0, 9=0, 8=0, 7=171, 6=171, 5=171, 4=171, 3=(Extract w8 24 N3),
+                                                                                                                                                                                                    2=(Extract w8 16 N3),
+                                                                                                                                                                                                    1=(Extract w8 8 N3),
+                                                                                                                                                                                                    0=(Extract w8 0 N3)] @ const_arr3)
+             N5)
+         (Slt 2 N1)]
+        false)

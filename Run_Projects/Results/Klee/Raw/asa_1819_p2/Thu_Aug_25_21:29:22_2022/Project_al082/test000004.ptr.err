@@ -1,0 +1,20 @@
+Error: memory error: out of bound pointer
+File: proj2.c
+Line: 239
+assembly.ll line: 10249
+State: 1
+Stack: 
+	#000010249 in add_to_graph(0, 2, symbolic, 101) at proj2.c:239
+	#100010371 in read_input() at proj2.c:276
+	#200012263 in __klee_posix_wrapped_main() at proj2.c:782
+	#300007369 in __user_main(3, 93871125888224, 93871125888256) at runtime/POSIX/klee_init_env.c:245
+	#400000613 in __uClibc_main(93871159353912, 3, 93871125888224, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#500000778 in main(3, 93871125888224)
+Info: 
+	address: (Add w64 93871128248000
+          (Mul w64 32
+                   (SExt w64 (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_1))))))
+	example: 93836768509664
+	range: [93836768509664, 93836768509664]
+	next: object at 23280445983424 of size 1536
+		MO370[1536] (no allocation info)

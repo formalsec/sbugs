@@ -1,0 +1,73 @@
+array model_version[4] : w32 -> w8 = symbolic
+array stdin-stat[144] : w32 -> w8 = symbolic
+array sym_int[4] : w32 -> w8 = symbolic
+array sym_int_1[4] : w32 -> w8 = symbolic
+array sym_int_10[4] : w32 -> w8 = symbolic
+array sym_int_11[4] : w32 -> w8 = symbolic
+array sym_int_12[4] : w32 -> w8 = symbolic
+array sym_int_13[4] : w32 -> w8 = symbolic
+array sym_int_2[4] : w32 -> w8 = symbolic
+array sym_int_3[4] : w32 -> w8 = symbolic
+array sym_int_4[4] : w32 -> w8 = symbolic
+array sym_int_5[4] : w32 -> w8 = symbolic
+array sym_int_6[4] : w32 -> w8 = symbolic
+array sym_int_7[4] : w32 -> w8 = symbolic
+array sym_int_8[4] : w32 -> w8 = symbolic
+array sym_int_9[4] : w32 -> w8 = symbolic
+(query [(Eq false
+             (Eq 0
+                 (And w64 (ReadLSB w64 8 stdin-stat)
+                          2147483647)))
+         (Eq 0
+             (And w64 (ReadLSB w64 56 stdin-stat)
+                      18446744073709486080))
+         (Eq 1
+             (ReadLSB w32 0 model_version))
+         (Slt 0
+              N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_1))))
+         (Slt 0
+              N1:(Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int))))
+         (Eq 8
+             (Mul w64 8 (SExt w64 N1)))
+         (Slt 0
+              N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_2))))
+         (Slt 0
+              N3:(Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_3))))
+         (Eq N2 N3)
+         (Slt 1 N0)
+         (Slt 0
+              N4:(Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_4))))
+         (Slt 0
+              N5:(Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_5))))
+         (Eq false (Eq N4 N5))
+         (Sle N4 N1)
+         (Slt 2 N0)
+         (Slt 0
+              N6:(Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_6))))
+         (Slt 0
+              N7:(Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_7))))
+         (Eq false (Eq N6 N7))
+         (Sle N6 N1)
+         (Slt 3 N0)
+         (Slt 0
+              N8:(Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_8))))
+         (Slt 0
+              N9:(Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_9))))
+         (Eq false (Eq N8 N9))
+         (Sle N8 N1)
+         (Slt 4 N0)
+         (Slt 0
+              N10:(Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_10))))
+         (Slt 0
+              N11:(Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_11))))
+         (Eq false (Eq N10 N11))
+         (Sle N10 N1)
+         (Slt 5 N0)
+         (Slt 0
+              N12:(Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_12))))
+         (Slt 0
+              N13:(Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_13))))
+         (Eq false (Eq N12 N13))
+         (Sle N12 N1)
+         (Slt 6 N0)]
+        false)

@@ -1,0 +1,17 @@
+Error: concretized symbolic size
+File: grades.c
+Line: 38
+assembly.ll line: 9789
+State: 923
+Stack: 
+	#000009789 in create_array_structs(94747704188952, 94747704190464) at grades.c:38
+	#100009742 in __klee_posix_wrapped_main() at grades.c:24
+	#200007356 in __user_main(3, 94747670788992, 94747670789024) at runtime/POSIX/klee_init_env.c:245
+	#300000600 in __uClibc_main(94747703330576, 3, 94747670788992, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#400000765 in main(3, 94747670788992)
+Info: 
+  size expr: (Mul w64 16
+                       (SExt w64 (Extract w32 0 (ZExt w64 (Extract w8 0 (Add w32 4294967248
+                                                                                 (SExt w32 (Extract w8 0 (ZExt w32 (Read w8 0 stdin))))))))))
+  concretization : 0
+  unbound example: 16

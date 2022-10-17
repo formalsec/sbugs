@@ -1,0 +1,35 @@
+Error: memory error: invalid pointer: realloc
+File: input.c
+Line: 57
+assembly.ll line: 9805
+State: 242
+Stack: 
+	#000009805 in insert(symbolic, symbolic) at input.c:57
+	#100010119 in processInput() at input.c:136
+	#200010611 in __klee_posix_wrapped_main() at input.c:239
+	#300007352 in __user_main(3, 93884393225440, 93884393225472) at runtime/POSIX/klee_init_env.c:245
+	#400000596 in __uClibc_main(93884425846928, 3, 93884393225440, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#500000761 in main(3, 93884393225440)
+Info: 
+	address: (ReadLSB w64 N0:(Extract w32 0 (Mul w64 8
+                                         (SExt w64 (Add w32 4294967295
+                                                            (Add w32 (Add w32 (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_4)))
+                                                                              (Mul w32 (Add w32 4294967295
+                                                                                                (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_5))))
+                                                                                       N1:(Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int)))))
+                                                                     (SDiv w32 N2:(Mul w32 2
+                                                                                           (Mul w32 N1
+                                                                                                    (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_1)))))
+                                                                               2)))))) U0:[(Add w32 7
+                                                                                                    N3:(Extract w32 0 (Mul w64 8 (SExt w64 N2))))=0,
+                                                                                           (Add w32 6 N3)=0,
+                                                                                           (Add w32 5 N3)=85,
+                                                                                           (Add w32 4 N3)=99,
+                                                                                           (Add w32 3 N3)=43,
+                                                                                           (Add w32 2 N3)=218,
+                                                                                           (Add w32 1 N3)=95,
+                                                                                           N3=224] @ const_arr224)
+	example: 12370169555311111083
+	range: [12370169555311111083, 12370169555311111083]
+	next: object at 22501522569920 of size 1536
+		MO356[1536] (no allocation info)

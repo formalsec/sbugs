@@ -1,0 +1,21 @@
+Error: memory error: out of bound pointer
+File: HT_equipas.c
+Line: 46
+assembly.ll line: 9943
+State: 54
+Stack: 
+	#000009943 in HTeq_procura(93855002738688, 93855014828832, 1013) at HT_equipas.c:46
+	#100011008 in comando_A(1, 93855002738688) at proj2.c:109
+	#200010886 in __klee_posix_wrapped_main() at proj2.c:37
+	#300007360 in __user_main(3, 93854989606464, 93854989606496) at runtime/POSIX/klee_init_env.c:245
+	#400000604 in __uClibc_main(93855014822736, 3, 93854989606464, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#500000769 in main(3, 93854989606464)
+Info: 
+	address: (Add w64 93855002738688
+          (Mul w64 8
+                   (SExt w64 (SRem w32 (SExt w32 (Extract w8 0 (Extract w32 0 (SExt w64 (Read w8 0 sym_char)))))
+                                       1013))))
+	example: 93855002737664
+	range: [93855002737664, 93855002738680]
+	next: object at 23263536011968 of size 1536
+		MO384[1536] (no allocation info)

@@ -1,0 +1,14 @@
+Error: memory error: out of bound pointer
+File: ProjetoFinalASA.c.c
+Line: 173
+assembly.ll line: 10202
+State: 24202
+Stack: 
+	#000010202 in __klee_posix_wrapped_main() at ProjetoFinalASA.c.c:173
+	#100007354 in __user_main(3, 94461620460416, 94461620460448) at runtime/POSIX/klee_init_env.c:245
+	#200000598 in __uClibc_main(94461653035168, 3, 94461620460416, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#300000763 in main(3, 94461620460416)
+Info: 
+	address: 94462120081496
+	next: object at 22559779973824 of size 1536
+		MO354[1536] (no allocation info)

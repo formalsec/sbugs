@@ -1,0 +1,23 @@
+Error: memory error: out of bound pointer
+File: proj2_ASA.c
+Line: 81
+assembly.ll line: 9950
+State: 648
+Stack: 
+	#000009950 in bfs(0, symbolic, 94903314240896) at proj2_ASA.c:81
+	#100010147 in max_flow(0, symbolic, 94903314240896) at proj2_ASA.c:155
+	#200010759 in __klee_posix_wrapped_main() at proj2_ASA.c:281
+	#300007359 in __user_main(3, 94903280630304, 94903280630336) at runtime/POSIX/klee_init_env.c:245
+	#400000603 in __uClibc_main(94903313219896, 3, 94903280630304, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#500000768 in main(3, 94903280630304)
+Info: 
+	address: (Add w64 94903314240900
+          (Mul w64 32
+                   (SExt w64 (Add w32 (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_5)))
+                                      (Mul w32 (Add w32 4294967295
+                                                        (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_4))))
+                                               (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_1))))))))
+	example: 94903314240964
+	range: [94903314240964, 94903314560868]
+	next: object at 23060331481792 of size 1536
+		MO352[1536] (no allocation info)

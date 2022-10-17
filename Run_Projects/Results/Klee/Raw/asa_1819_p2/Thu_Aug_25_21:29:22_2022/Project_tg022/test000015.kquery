@@ -1,0 +1,97 @@
+array const_arr1[64] : w32 -> w8 = [0 0 0 0 0 0 0 0 0 0 0 0 171 171 171 171 0 0 0 0 0 0 0 0 224 126 208 185 16 86 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+array model_version[4] : w32 -> w8 = symbolic
+array stdin-stat[144] : w32 -> w8 = symbolic
+array sym_int[4] : w32 -> w8 = symbolic
+array sym_int_1[4] : w32 -> w8 = symbolic
+array sym_int_2[4] : w32 -> w8 = symbolic
+array sym_int_4[4] : w32 -> w8 = symbolic
+array sym_int_5[4] : w32 -> w8 = symbolic
+(query [(Eq false
+             (Eq 0
+                 (And w64 (ReadLSB w64 8 stdin-stat)
+                          2147483647)))
+         (Eq 0
+             (And w64 (ReadLSB w64 56 stdin-stat)
+                      18446744073709486080))
+         (Eq 1
+             (ReadLSB w32 0 model_version))
+         (Eq 64
+             (Mul w64 32
+                      (SExt w64 N0:(Add w32 2
+                                            N1:(Add w32 N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int)))
+                                                        (Mul w32 2
+                                                                 N3:(Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_1)))))))))
+         (Eq false
+             (Slt 2 N4:(Add w32 2 N2)))
+         (Slt N4
+              (Add w32 2 (Sub w32 N1 N3)))
+         (Ult N5:(Add w64 8
+                          N6:(Mul w64 32 (SExt w64 N4)))
+              61)
+         (Slt 0
+              N7:(Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_2))))
+         (Ult (Add w64 8
+                       (Mul w64 32
+                                (SExt w64 N8:(Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_5))))))
+              61)
+         (Ult N9:(Add w64 24
+                          (Mul w64 32
+                                   (SExt w64 (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_4))))))
+              57)
+         (Ult N10:(Add w64 24
+                           (Mul w64 32
+                                    (SExt w64 (Add w32 N8 N3))))
+              57)
+         (Ult (Add w64 18446649443846647504
+                       (ReadLSB w64 N11:(Extract w32 0 N9) U0:[(Add w32 7 N12:(Extract w32 0 N10))=0,
+                                                               (Add w32 6 N12)=0,
+                                                               (Add w32 5 N12)=86,
+                                                               (Add w32 4 N12)=16,
+                                                               (Add w32 3 N12)=186,
+                                                               (Add w32 2 N12)=212,
+                                                               (Add w32 1 N12)=67,
+                                                               N12=128,
+                                                               N13:(Add w32 7 N11)=0,
+                                                               N14:(Add w32 6 N11)=0,
+                                                               N15:(Add w32 5 N11)=86,
+                                                               N16:(Add w32 4 N11)=16,
+                                                               N17:(Add w32 3 N11)=187,
+                                                               N18:(Add w32 2 N11)=93,
+                                                               N19:(Add w32 1 N11)=17,
+                                                               N11=64,
+                                                               (Add w32 7
+                                                                        N20:(Extract w32 0 (Add w64 24
+                                                                                                    N21:(Mul w64 32
+                                                                                                                 (SExt w64 (Add w32 2 (Add w32 N2 N3)))))))=0,
+                                                               (Add w32 6 N20)=0,
+                                                               (Add w32 5 N20)=86,
+                                                               (Add w32 4 N20)=16,
+                                                               (Add w32 3 N20)=185,
+                                                               (Add w32 2 N20)=85,
+                                                               (Add w32 1 N20)=138,
+                                                               N20=64,
+                                                               (Add w32 3
+                                                                        N22:(Extract w32 0 (Add w64 8 N21)))=0,
+                                                               (Add w32 2 N22)=0,
+                                                               (Add w32 1 N22)=0,
+                                                               N22=0,
+                                                               (Add w32 7
+                                                                        N23:(Extract w32 0 (Add w64 24 N6)))=0,
+                                                               (Add w32 6 N23)=0,
+                                                               (Add w32 5 N23)=86,
+                                                               (Add w32 4 N23)=16,
+                                                               (Add w32 3 N23)=185,
+                                                               (Add w32 2 N23)=242,
+                                                               (Add w32 1 N23)=236,
+                                                               N23=96,
+                                                               (Add w32 3 N24:(Extract w32 0 N5))=0,
+                                                               (Add w32 2 N24)=0,
+                                                               (Add w32 1 N24)=0,
+                                                               N24=0,
+                                                               63=0, 62=0, 61=0, 60=0, 59=0, 58=0, 57=0, 56=0, 55=0, 54=0, 53=0, 52=0, 51=0, 50=0, 49=0, 48=0, 47=171, 46=171, 45=171, 44=171, 43=0, 42=0, 41=0, 40=0, 39=0, 38=0, 37=0, 36=0, 35=(Extract w8 24 N0),
+                                                               34=(Extract w8 16 N0),
+                                                               33=(Extract w8 8 N0),
+                                                               32=(Extract w8 0 N0)] @ const_arr1))
+              25)
+         (Slt 1 N7)]
+        false)

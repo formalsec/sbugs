@@ -1,0 +1,50 @@
+array model_version[4] : w32 -> w8 = symbolic
+array stdin-stat[144] : w32 -> w8 = symbolic
+array sym_int[4] : w32 -> w8 = symbolic
+array sym_int_1[4] : w32 -> w8 = symbolic
+array sym_int_2[4] : w32 -> w8 = symbolic
+array sym_int_4[4] : w32 -> w8 = symbolic
+array sym_int_5[4] : w32 -> w8 = symbolic
+array sym_int_6[4] : w32 -> w8 = symbolic
+array sym_int_7[4] : w32 -> w8 = symbolic
+(query [(Eq false
+             (Eq 0
+                 (And w64 (ReadLSB w64 8 stdin-stat)
+                          2147483647)))
+         (Eq 0
+             (And w64 (ReadLSB w64 56 stdin-stat)
+                      18446744073709486080))
+         (Eq 1
+             (ReadLSB w32 0 model_version))
+         (Eq 32
+             (Mul w64 16
+                      (SExt w64 (Add w32 2
+                                         (Mul w32 (Mul w32 2
+                                                           N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int))))
+                                                  N1:(Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_1))))))))
+         (Slt 0
+              N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_2))))
+         (Ult (Add w64 28984
+                       (Mul w64 16
+                                (SExt w64 (Add w32 4294967295
+                                                   N3:(Add w32 (Mul w32 (Add w32 4294967295
+                                                                                 (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_5))))
+                                                                        N0)
+                                                               (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_4))))))))
+              13)
+         (Ult (Add w64 28984
+                       (Mul w64 16
+                                (SExt w64 (Add w32 4294967295
+                                                   (Add w32 N3 (Mul w32 N1 N0))))))
+              13)
+         (Slt 1 N2)
+         (Ult (Add w64 28984
+                       (Mul w64 16
+                                (SExt w64 (Add w32 4294967295
+                                                   (Add w32 (Mul w32 (Add w32 4294967295
+                                                                              (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_7))))
+                                                                     N0)
+                                                            (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_6))))))))
+              13)
+         (Slt 2 N2)]
+        false)

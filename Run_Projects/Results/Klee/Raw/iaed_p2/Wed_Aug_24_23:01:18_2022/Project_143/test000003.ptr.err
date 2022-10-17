@@ -1,0 +1,21 @@
+Error: memory error: out of bound pointer
+File: hash.c
+Line: 50
+assembly.ll line: 11616
+State: 74
+Stack: 
+	#000011616 in Equipa_search(11, 94882941839360, 94882919316704) at hash.c:50
+	#100011038 in procura_equipa(1, 94882952214608, 94882919316704) at projetofinal2.c:139
+	#200009891 in __klee_posix_wrapped_main() at projetofinal2.c:70
+	#300007359 in __user_main(3, 94882918064032, 94882918064064) at runtime/POSIX/klee_init_env.c:245
+	#400000603 in __uClibc_main(94882951654056, 3, 94882918064032, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#500000768 in main(3, 94882918064032)
+Info: 
+	address: (Add w64 94882919316704
+          (Mul w64 8
+                   (ZExt w64 (SRem w32 (SExt w32 (Extract w8 0 (Extract w32 0 (SExt w64 (Read w8 0 sym_char)))))
+                                       11))))
+	example: 94917279055000
+	range: [94917279054992, 94917279055064]
+	next: object at 22467967040192 of size 1536
+		MO367[1536] (no allocation info)

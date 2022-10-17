@@ -1,0 +1,15 @@
+Error: memory error: out of bound pointer
+File: asa_p2.c
+Line: 192
+assembly.ll line: 10238
+State: 2
+Stack: 
+	#000010238 in graph_alloc(symbolic) at asa_p2.c:192
+	#100011267 in __klee_posix_wrapped_main(1, 94124104291104) at asa_p2.c:502
+	#200007357 in __user_main(3, 94124070632320, 94124070632352) at runtime/POSIX/klee_init_env.c:245
+	#300000601 in __uClibc_main(94124103703544, 3, 94124070632320, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#400000766 in main(3, 94124070632320)
+Info: 
+	address: 0
+	next: object at 22560918997696 of size 1536
+		MO365[1536] (no allocation info)

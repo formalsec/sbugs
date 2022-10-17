@@ -1,0 +1,17 @@
+Error: concretized symbolic size
+File: Mooshak_180_versaoFinal.c
+Line: 193
+assembly.ll line: 10031
+State: 6
+Stack: 
+	#000010031 in AdjListInit(symbolic) at Mooshak_180_versaoFinal.c:193
+	#100011574 in processInput() at Mooshak_180_versaoFinal.c:674
+	#200011804 in __klee_posix_wrapped_main() at Mooshak_180_versaoFinal.c:734
+	#300007367 in __user_main(3, 94247679900192, 94247679900224) at runtime/POSIX/klee_init_env.c:245
+	#400000611 in __uClibc_main(94247705109248, 3, 94247679900192, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#500000776 in main(3, 94247679900192)
+Info: 
+  size expr: (Mul w64 8
+                       (SExt w64 (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int)))))
+  concretization : 16
+  unbound example: 24

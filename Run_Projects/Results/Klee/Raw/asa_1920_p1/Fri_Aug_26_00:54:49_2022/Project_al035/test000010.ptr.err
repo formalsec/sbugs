@@ -1,0 +1,29 @@
+Error: memory error: out of bound pointer
+File: ASA_Proj1_G035_final.c
+Line: 62
+assembly.ll line: 9845
+State: 599
+Stack: 
+	#000009845 in freeGrafo(94022866904928) at ASA_Proj1_G035_final.c:62
+	#100010423 in __klee_posix_wrapped_main() at ASA_Proj1_G035_final.c:218
+	#200007355 in __user_main(3, 94022833469984, 94022833470016) at runtime/POSIX/klee_init_env.c:245
+	#300000599 in __uClibc_main(94022866068544, 3, 94022833469984, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#400000764 in main(3, 94022833469984)
+Info: 
+	address: (Add w64 8
+          (ReadLSB w64 8 U0:[(Add w32 7
+                                      N0:(Extract w32 0 (Add w64 18446744073708720096
+                                                                 (Mul w64 16
+                                                                          (SExt w64 (Add w32 4294967295
+                                                                                             (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_1)))))))))=0,
+                             (Add w32 6 N0)=0,
+                             (Add w32 5 N0)=85,
+                             (Add w32 4 N0)=131,
+                             (Add w32 3 N0)=103,
+                             (Add w32 2 N0)=149,
+                             (Add w32 1 N0)=35,
+                             N0=32] @ const_arr204))
+	example: 94022866073408
+	range: [94022866073408, 94022866073408]
+	next: object at 22846018407104 of size 1536
+		MO359[1536] (no allocation info)

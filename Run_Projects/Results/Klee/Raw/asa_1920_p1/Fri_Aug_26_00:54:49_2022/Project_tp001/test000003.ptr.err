@@ -1,0 +1,14 @@
+Error: memory error: out of bound pointer
+File: Finalissimo.c
+Line: 136
+assembly.ll line: 10155
+State: 2
+Stack: 
+	#000010155 in __klee_posix_wrapped_main() at Finalissimo.c:136
+	#100007350 in __user_main(3, 94681456605728, 94681456605760) at runtime/POSIX/klee_init_env.c:245
+	#200000594 in __uClibc_main(94681489005608, 3, 94681456605728, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#300000759 in main(3, 94681456605728)
+Info: 
+	address: 0
+	next: object at 23206039022272 of size 1536
+		MO351[1536] (no allocation info)

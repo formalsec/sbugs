@@ -1,0 +1,21 @@
+Error: memory error: out of bound pointer
+File: estrutura.c
+Line: 72
+assembly.ll line: 9981
+State: 31
+Stack: 
+	#000009981 in procura_j(94597059919872, 94597058925568) at estrutura.c:72
+	#100010953 in cmd_a(94597059919872, 94597061976064, 1, 94597067789264) at funcoesprincipais.c:37
+	#200011896 in __klee_posix_wrapped_main() at main.c:27
+	#300007361 in __user_main(3, 94597033943648, 94597033943680) at runtime/POSIX/klee_init_env.c:245
+	#400000605 in __uClibc_main(94597067176568, 3, 94597033943648, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#500000770 in main(3, 94597033943648)
+Info: 
+	address: (Add w64 94597059919872
+          (Mul w64 8
+                   (SExt w64 (SRem w32 (SExt w32 (Extract w8 0 (Extract w32 0 (SExt w64 (Read w8 0 sym_char)))))
+                                       8059))))
+	example: 94597059918848
+	range: [94597059918848, 94597059919864]
+	next: object at 23326216010432 of size 1536
+		MO371[1536] (no allocation info)

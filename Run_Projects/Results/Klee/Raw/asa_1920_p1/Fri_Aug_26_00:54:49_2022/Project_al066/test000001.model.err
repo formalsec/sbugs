@@ -1,0 +1,17 @@
+Error: concretized symbolic size
+File: projDFS.c
+Line: 38
+assembly.ll line: 9748
+State: 3
+Stack: 
+	#000009748 in CreateGraph(symbolic) at projDFS.c:38
+	#100010110 in __klee_posix_wrapped_main(1, 94549179048032) at projDFS.c:137
+	#200007352 in __user_main(3, 94549146016288, 94549146016320) at runtime/POSIX/klee_init_env.c:245
+	#300000596 in __uClibc_main(94549157910696, 3, 94549146016288, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#400000761 in main(3, 94549146016288)
+Info: 
+  size expr: (Mul w64 8
+                       (SExt w64 (Add w32 1
+                                          (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int))))))
+  concretization : 8
+  unbound example: 16

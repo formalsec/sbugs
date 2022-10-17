@@ -1,0 +1,27 @@
+array model_version[4] : w32 -> w8 = symbolic
+array stdin[10] : w32 -> w8 = symbolic
+array stdin-stat[144] : w32 -> w8 = symbolic
+array sym_int[4] : w32 -> w8 = symbolic
+(query [(Eq false
+             (Eq 0
+                 (And w64 (ReadLSB w64 8 stdin-stat)
+                          2147483647)))
+         (Eq 0
+             (And w64 (ReadLSB w64 56 stdin-stat)
+                      18446744073709486080))
+         (Eq 1
+             (ReadLSB w32 0 model_version))
+         (Eq 112
+             (Extract w8 0 (ZExt w32 (Read w8 0 stdin))))
+         (Slt N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int)))
+              0)
+         (Eq false
+             (Ult (Add w64 32318304
+                           N1:(Mul w64 76 (SExt w64 N0)))
+                  349))
+         (Eq false
+             (Ult (Add w64 31692992 N1) 237))
+         (Eq false
+             (Ult (Add w64 31679312 N1) 228))
+         (Ult (Add w64 30122272 N1) 85)]
+        false)

@@ -1,0 +1,15 @@
+Error: memory error: out of bound pointer
+File: pf2.c
+Line: 189
+assembly.ll line: 10246
+State: 41
+Stack: 
+	#000010246 in get_name() at pf2.c:189
+	#100010641 in __klee_posix_wrapped_main() at pf2.c:342
+	#200007361 in __user_main(3, 94855112638368, 94855112638400) at runtime/POSIX/klee_init_env.c:245
+	#300000605 in __uClibc_main(94855145459936, 3, 94855112638368, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#400000770 in main(3, 94855112638368)
+Info: 
+	address: 94855114196995
+	next: object at 22414599813824 of size 1536
+		MO362[1536] (no allocation info)

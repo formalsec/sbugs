@@ -1,0 +1,23 @@
+Error: memory error: out of bound pointer
+File: versao2.c
+Line: 450
+assembly.ll line: 10951
+State: 279
+Stack: 
+	#000010951 in __klee_posix_wrapped_main(1, 94067382963232) at versao2.c:450
+	#100007355 in __user_main(3, 94067349690912, 94067349690944) at runtime/POSIX/klee_init_env.c:245
+	#200000599 in __uClibc_main(94067382382472, 3, 94067349690912, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#300000764 in main(3, 94067349690912)
+Info: 
+	address: (ReadLSB w64 N0:(Extract w32 0 (Add w64 18446650006326968128
+                                         (Add w64 (ReadLSB w64 N1:(Extract w32 0 (Add w64 1456
+                                                                                          (Mul w64 8
+                                                                                                   (SExt w64 (Add w32 4294967295
+                                                                                                                      (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_4)))))))) const_arr1)
+                                                  (Mul w64 8
+                                                           (SExt w64 (Add w32 4294967295
+                                                                              (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_5))))))))) const_arr35)
+	example: 3203289912822883951
+	range: [2318355925748444005, 7310305777114570591]
+	next: object at 22796031195840 of size 1536
+		MO351[1536] (no allocation info)

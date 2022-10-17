@@ -1,0 +1,17 @@
+Error: memory error: out of bound pointer
+File: caracol2.c
+Line: 56
+assembly.ll line: 9783
+State: 1
+Stack: 
+	#000009783 in scanfAndVerify(94338211085400) at caracol2.c:56
+	#100010289 in Preflow() at caracol2.c:195
+	#200011739 in PushRelabel() at caracol2.c:534
+	#300011761 in __klee_posix_wrapped_main() at caracol2.c:545
+	#400007362 in __user_main(3, 94338178097056, 94338178097088) at runtime/POSIX/klee_init_env.c:245
+	#500000606 in __uClibc_main(94338211083336, 3, 94338178097056, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#600000771 in main(3, 94338178097056)
+Info: 
+	address: 94338211085404
+	next: object at 23380343610048 of size 1536
+		MO358[1536] (no allocation info)

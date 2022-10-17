@@ -1,0 +1,32 @@
+Error: memory error: out of bound pointer
+File: fork.c
+Line: 211
+assembly.ll line: 10485
+State: 10
+Stack: 
+	#000010485 in addNodeEdge(94515688826496, symbolic, symbolic) at fork.c:211
+	#100009837 in readInput() at fork.c:78
+	#200009736 in __klee_posix_wrapped_main() at fork.c:45
+	#300007359 in __user_main(3, 94515655662112, 94515655662144) at runtime/POSIX/klee_init_env.c:245
+	#400000603 in __uClibc_main(94515688349832, 3, 94515655662112, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#500000768 in main(3, 94515655662112)
+Info: 
+	address: (ReadLSB w64 N0:(Extract w32 0 (Add w64 5584
+                                         N1:(Mul w64 24
+                                                     (SExt w64 (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_2))))))) U0:[N2:(Add w32 3
+                                                                                                                                        N3:(Extract w32 0 (Add w64 5580 N1)))=(Extract w8 24 N4:(Add w32 1
+                                                                                                                                                                                                         (ReadLSB w32 N3 U1:[31=171, 30=171, 29=171, 28=171, 27=171, 26=171, 25=171, 24=171, 23=171, 22=171, 21=171, 20=171, 19=N5:(Extract w8 24 N6:(Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int)))),
+                                                                                                                                                                                                                             18=N7:(Extract w8 16 N6),
+                                                                                                                                                                                                                             17=N8:(Extract w8 8 N6),
+                                                                                                                                                                                                                             16=N9:(Extract w8 0 N6),
+                                                                                                                                                                                                                             15=0, 14=0, 13=85, 12=246, 11=38, 10=14, 9=252, 8=64, 7=171, 6=171, 5=171, 4=171, 3=N5,
+                                                                                                                                                                                                                             2=N7,
+                                                                                                                                                                                                                             1=N8,
+                                                                                                                                                                                                                             0=N9] @ const_arr2))),
+                                                                                                                            N10:(Add w32 2 N3)=(Extract w8 16 N4),
+                                                                                                                            N11:(Add w32 1 N3)=(Extract w8 8 N4),
+                                                                                                                            N3=(Extract w8 0 N4)] @ U1)
+	example: 12370169552430956544
+	range: [12370169552430956544, 12370169552430956544]
+	next: object at 23448072452800 of size 1536
+		MO357[1536] (no allocation info)

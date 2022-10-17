@@ -1,0 +1,26 @@
+Error: memory error: invalid pointer: realloc
+File: Projeto2.c
+Line: 464
+assembly.ll line: 11607
+State: 17
+Stack: 
+	#000011607 in vectorPushback(symbolic, symbolic, symbolic) at Projeto2.c:464
+	#100010452 in addConnectionToGraph(94660579741760, symbolic, symbolic, symbolic) at Projeto2.c:401
+	#200009839 in __klee_posix_wrapped_main() at Projeto2.c:125
+	#300007356 in __user_main(3, 94660546107936, 94660546107968) at runtime/POSIX/klee_init_env.c:245
+	#400000600 in __uClibc_main(94660579145808, 3, 94660546107936, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#500000765 in main(3, 94660546107936)
+Info: 
+	address: (ReadLSB w64 N0:(Extract w32 0 (Add w64 35216
+                                         N1:(Mul w64 24
+                                                     (SExt w64 (Add w32 2
+                                                                        (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int)))))))) U0:[N2:(Add w32 3
+                                                                                                                                                N3:(Extract w32 0 (Add w64 35236 N1)))=(Extract w8 24 N4:(Mul w32 2
+                                                                                                                                                                                                                  (ReadLSB w32 N3 const_arr2))),
+                                                                                                                                    N5:(Add w32 2 N3)=(Extract w8 16 N4),
+                                                                                                                                    N6:(Add w32 1 N3)=(Extract w8 8 N4),
+                                                                                                                                    N3=(Extract w8 0 N4)] @ const_arr2)
+	example: 12370169555311111083
+	range: [12370169555311111083, 12370169555311111083]
+	next: object at 22409480452800 of size 1536
+		MO365[1536] (no allocation info)

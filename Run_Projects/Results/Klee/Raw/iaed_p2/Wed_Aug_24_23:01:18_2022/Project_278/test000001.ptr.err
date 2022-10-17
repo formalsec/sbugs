@@ -1,0 +1,21 @@
+Error: memory error: out of bound pointer
+File: manipula_funcoes.c
+Line: 24
+assembly.ll line: 9798
+State: 22
+Stack: 
+	#000009798 in pesquisa_jogo(94129834131456, 94129855280128) at manipula_funcoes.c:24
+	#100011030 in apaga_jogo(94129834131456, 94129840513024, 94129854781584, 1) at funcoes.c:185
+	#200010440 in __klee_posix_wrapped_main() at main.c:49
+	#300007361 in __user_main(3, 94129821033056, 94129821033088) at runtime/POSIX/klee_init_env.c:245
+	#400000605 in __uClibc_main(94129846247080, 3, 94129821033056, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#500000770 in main(3, 94129821033056)
+Info: 
+	address: (Add w64 94129834131456
+          (Mul w64 8
+                   (SExt w64 (SRem w32 (SExt w32 (Extract w8 0 (Extract w32 0 (SExt w64 (Read w8 0 sym_char)))))
+                                       1000))))
+	example: 94129834130432
+	range: [94129834130432, 94129834131448]
+	next: object at 22600482900672 of size 1536
+		MO368[1536] (no allocation info)

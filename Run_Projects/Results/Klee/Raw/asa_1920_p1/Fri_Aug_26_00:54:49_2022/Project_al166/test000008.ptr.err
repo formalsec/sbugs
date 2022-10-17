@@ -1,0 +1,36 @@
+Error: memory error: out of bound pointer
+File: Projeto3Copia.c
+Line: 159
+assembly.ll line: 10341
+State: 36
+Stack: 
+	#000010341 in addToLista(symbolic, symbolic) at Projeto3Copia.c:159
+	#100009955 in __klee_posix_wrapped_main(1, 94756434010960) at Projeto3Copia.c:77
+	#200007357 in __user_main(3, 94756400577056, 94756400577088) at runtime/POSIX/klee_init_env.c:245
+	#300000601 in __uClibc_main(94756432926856, 3, 94756400577056, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#400000766 in main(3, 94756400577056)
+Info: 
+	address: (ReadLSB w64 0 U0:[(Add w32 3
+                             N0:(Extract w32 0 (Add w64 18446744073709550052
+                                                        N1:(Mul w64 32
+                                                                    (SExt w64 (Add w32 4294967247
+                                                                                       (Add w32 (Mul w32 10
+                                                                                                         (Add w32 4294967248
+                                                                                                                  (ZExt w32 (Read w8 2 stdin))))
+                                                                                                (ZExt w32 (Read w8 3 stdin)))))))))=(Extract w8 24 N2:(Mul w32 2
+                                                                                                                                                               (Add w32 1
+                                                                                                                                                                        (ReadLSB w32 N3:(Extract w32 0 (Add w64 18446744073709550048 N1)) U1:[7=(Extract w8 56 N4:(Add w64 94756433112448 N1)),
+                                                                                                                                                                                                                                              6=(Extract w8 48 N4),
+                                                                                                                                                                                                                                              5=(Extract w8 40 N4),
+                                                                                                                                                                                                                                              4=(Extract w8 32 N4),
+                                                                                                                                                                                                                                              3=(Extract w8 24 N4),
+                                                                                                                                                                                                                                              2=(Extract w8 16 N4),
+                                                                                                                                                                                                                                              1=(Extract w8 8 N4),
+                                                                                                                                                                                                                                              0=(Extract w8 0 N4)] @ const_arr3)))),
+                    (Add w32 2 N0)=(Extract w8 16 N2),
+                    (Add w32 1 N0)=(Extract w8 8 N2),
+                    N0=(Extract w8 0 N2)] @ U1)
+	example: 7427112269517501344
+	range: [7427112269517501344, 7427112269517501344]
+	next: object at 22935904262848 of size 1536
+		MO349[1536] (no allocation info)

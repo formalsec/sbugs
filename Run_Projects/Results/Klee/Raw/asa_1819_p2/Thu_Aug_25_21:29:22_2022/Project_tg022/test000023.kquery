@@ -1,0 +1,201 @@
+array const_arr1[64] : w32 -> w8 = [0 0 0 0 0 0 0 0 0 0 0 0 171 171 171 171 0 0 0 0 0 0 0 0 224 126 208 185 16 86 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+array const_arr189[32] : w32 -> w8 = [171 171 171 171 171 171 171 171 171 171 171 171 171 171 171 171 171 171 171 171 171 171 171 171 171 171 171 171 171 171 171 171]
+array const_arr203[32] : w32 -> w8 = [171 171 171 171 171 171 171 171 171 171 171 171 171 171 171 171 171 171 171 171 171 171 171 171 171 171 171 171 171 171 171 171]
+array model_version[4] : w32 -> w8 = symbolic
+array stdin-stat[144] : w32 -> w8 = symbolic
+array sym_int[4] : w32 -> w8 = symbolic
+array sym_int_1[4] : w32 -> w8 = symbolic
+array sym_int_2[4] : w32 -> w8 = symbolic
+array sym_int_3[4] : w32 -> w8 = symbolic
+(query [(Eq false
+             (Eq 0
+                 (And w64 (ReadLSB w64 8 stdin-stat)
+                          2147483647)))
+         (Eq 0
+             (And w64 (ReadLSB w64 56 stdin-stat)
+                      18446744073709486080))
+         (Eq 1
+             (ReadLSB w32 0 model_version))
+         (Eq 64
+             (Mul w64 32
+                      (SExt w64 N0:(Add w32 2
+                                            N1:(Add w32 N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int)))
+                                                        (Mul w32 2
+                                                                 N3:(Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_1)))))))))
+         (Eq false
+             (Slt 2 N4:(Add w32 2 N2)))
+         (Slt N4
+              (Add w32 2 (Sub w32 N1 N3)))
+         (Ult N5:(Add w64 8
+                          N6:(Mul w64 32 (SExt w64 N4)))
+              61)
+         (Eq false
+             (Slt 0
+                  (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_2)))))
+         (Eq false
+             (Slt 0
+                  (ReadLSB w32 N7:(Extract w32 0 (Add w64 18446649443870380964
+                                                          N8:(Concat w64 N9:(Read w8 (Add w32 7
+                                                                                              N10:(Extract w32 0 (Add w64 24
+                                                                                                                          N11:(Mul w64 32
+                                                                                                                                       (SExt w64 (ReadLSB w32 N12:(Extract w32 0 (Add w64 18446649443880695232
+                                                                                                                                                                                          N13:(ReadLSB w64 56 U0:[(Add w32 7
+                                                                                                                                                                                                                           N14:(Extract w32 0 (Add w64 24
+                                                                                                                                                                                                                                                       N15:(Mul w64 32
+                                                                                                                                                                                                                                                                    (SExt w64 N16:(Add w32 2 (Add w32 N2 N3)))))))=0,
+                                                                                                                                                                                                                  N17:(Add w32 6 N14)=0,
+                                                                                                                                                                                                                  N18:(Add w32 5 N14)=86,
+                                                                                                                                                                                                                  N19:(Add w32 4 N14)=16,
+                                                                                                                                                                                                                  N20:(Add w32 3 N14)=185,
+                                                                                                                                                                                                                  N21:(Add w32 2 N14)=85,
+                                                                                                                                                                                                                  N22:(Add w32 1 N14)=138,
+                                                                                                                                                                                                                  N14=64,
+                                                                                                                                                                                                                  (Add w32 3
+                                                                                                                                                                                                                           N23:(Extract w32 0 (Add w64 8 N15)))=0,
+                                                                                                                                                                                                                  (Add w32 2 N23)=0,
+                                                                                                                                                                                                                  (Add w32 1 N23)=0,
+                                                                                                                                                                                                                  N23=0] @
+                                                                                                                                                                                                              U1:[(Add w32 7
+                                                                                                                                                                                                                           N24:(Extract w32 0 (Add w64 24 N6)))=0,
+                                                                                                                                                                                                                  N25:(Add w32 6 N24)=0,
+                                                                                                                                                                                                                  N26:(Add w32 5 N24)=86,
+                                                                                                                                                                                                                  N27:(Add w32 4 N24)=16,
+                                                                                                                                                                                                                  N28:(Add w32 3 N24)=185,
+                                                                                                                                                                                                                  N29:(Add w32 2 N24)=242,
+                                                                                                                                                                                                                  N30:(Add w32 1 N24)=236,
+                                                                                                                                                                                                                  N24=96,
+                                                                                                                                                                                                                  (Add w32 3 N31:(Extract w32 0 N5))=0,
+                                                                                                                                                                                                                  (Add w32 2 N31)=0,
+                                                                                                                                                                                                                  (Add w32 1 N31)=0,
+                                                                                                                                                                                                                  N31=0,
+                                                                                                                                                                                                                  63=0, 62=0, 61=0, 60=0, 59=0, 58=0, 57=0, 56=0, 55=0, 54=0, 53=0, 52=0, 51=0, 50=0, 49=0, 48=0, 47=171, 46=171, 45=171, 44=171, 43=0, 42=0, 41=0, 40=0, 39=0, 38=0, 37=0, 36=0, 35=N32:(Extract w8 24 N0),
+                                                                                                                                                                                                                  34=N33:(Extract w8 16 N0),
+                                                                                                                                                                                                                  33=N34:(Extract w8 8 N0),
+                                                                                                                                                                                                                  32=N35:(Extract w8 0 N0)] @ const_arr1))) U2:[(Add w32 3
+                                                                                                                                                                                                                                                                         N36:(Extract w32 0 (Add w64 18446649443880695240 N13)))=N37:(Read w8 (Add w32 3
+                                                                                                                                                                                                                                                                                                                                                       N38:(Extract w32 0 (Add w64 18446649443880695236 N13)))
+                                                                                                                                                                                                                                                                                                                                              U3:[(Add w32 7
+                                                                                                                                                                                                                                                                                                                                                           N39:(Extract w32 0 (Add w64 18446649443880695248
+                                                                                                                                                                                                                                                                                                                                                                                       N40:(Concat w64 0
+                                                                                                                                                                                                                                                                                                                                                                                                       (ReadLSB w56 N14 U0)))))=0,
+                                                                                                                                                                                                                                                                                                                                                  (Add w32 6 N39)=N41:(Read w8 N25 U1),
+                                                                                                                                                                                                                                                                                                                                                  (Add w32 5 N39)=N42:(Read w8 N26 U1),
+                                                                                                                                                                                                                                                                                                                                                  (Add w32 4 N39)=N43:(Read w8 N27 U1),
+                                                                                                                                                                                                                                                                                                                                                  (Add w32 3 N39)=N44:(Read w8 N28 U1),
+                                                                                                                                                                                                                                                                                                                                                  (Add w32 2 N39)=N45:(Read w8 N29 U1),
+                                                                                                                                                                                                                                                                                                                                                  (Add w32 1 N39)=N46:(Read w8 N30 U1),
+                                                                                                                                                                                                                                                                                                                                                  N39=N47:(Read w8 N24 U1),
+                                                                                                                                                                                                                                                                                                                                                  (Add w32 7
+                                                                                                                                                                                                                                                                                                                                                           N48:(Extract w32 0 (Add w64 18446649443880695256 N40)))=0,
+                                                                                                                                                                                                                                                                                                                                                  (Add w32 6 N48)=0,
+                                                                                                                                                                                                                                                                                                                                                  (Add w32 5 N48)=0,
+                                                                                                                                                                                                                                                                                                                                                  (Add w32 4 N48)=0,
+                                                                                                                                                                                                                                                                                                                                                  (Add w32 3 N48)=0,
+                                                                                                                                                                                                                                                                                                                                                  (Add w32 2 N48)=0,
+                                                                                                                                                                                                                                                                                                                                                  (Add w32 1 N48)=0,
+                                                                                                                                                                                                                                                                                                                                                  N48=0,
+                                                                                                                                                                                                                                                                                                                                                  (Add w32 3
+                                                                                                                                                                                                                                                                                                                                                           N49:(Extract w32 0 (Add w64 18446649443880695240 N40)))=0,
+                                                                                                                                                                                                                                                                                                                                                  (Add w32 2 N49)=0,
+                                                                                                                                                                                                                                                                                                                                                  (Add w32 1 N49)=0,
+                                                                                                                                                                                                                                                                                                                                                  N49=0,
+                                                                                                                                                                                                                                                                                                                                                  (Add w32 3
+                                                                                                                                                                                                                                                                                                                                                           N50:(Extract w32 0 (Add w64 18446649443880695236 N40)))=(Extract w8 24 N51:(Sub w32 0
+                                                                                                                                                                                                                                                                                                                                                                                                                                               N52:(Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_3))))),
+                                                                                                                                                                                                                                                                                                                                                  (Add w32 2 N50)=(Extract w8 16 N51),
+                                                                                                                                                                                                                                                                                                                                                  (Add w32 1 N50)=(Extract w8 8 N51),
+                                                                                                                                                                                                                                                                                                                                                  N50=(Extract w8 0 N51),
+                                                                                                                                                                                                                                                                                                                                                  (Add w32 3
+                                                                                                                                                                                                                                                                                                                                                           N53:(Extract w32 0 (Add w64 18446649443880695232 N40)))=(Extract w8 24 N4),
+                                                                                                                                                                                                                                                                                                                                                  (Add w32 2 N53)=(Extract w8 16 N4),
+                                                                                                                                                                                                                                                                                                                                                  (Add w32 1 N53)=(Extract w8 8 N4),
+                                                                                                                                                                                                                                                                                                                                                  N53=(Extract w8 0 N4)] @ const_arr189),
+                                                                                                                                                                                                                                                                N54:(Add w32 2 N36)=(Read w8 (Add w32 2 N38)
+                                                                                                                                                                                                                                                                                             U3),
+                                                                                                                                                                                                                                                                N55:(Add w32 1 N36)=(Read w8 (Add w32 1 N38)
+                                                                                                                                                                                                                                                                                             U3),
+                                                                                                                                                                                                                                                                N36=(Read w8 N38 U3)] @ U3))))))
+                                                                                     U4:[N56:(Add w32 3
+                                                                                                      N57:(Extract w32 0 (Add w64 4 N11)))=N37,
+                                                                                         N58:(Add w32 2 N57)=N59:(Read w8 N54 U2),
+                                                                                         N60:(Add w32 1 N57)=N61:(Read w8 N55 U2),
+                                                                                         N57=N62:(Read w8 N36 U2),
+                                                                                         35=N32,
+                                                                                         34=N33,
+                                                                                         33=N34,
+                                                                                         32=N35] @ U0)
+                                                                         (ReadLSB w56 N63:(Extract w32 0 (Add w64 16 N11)) U5:[N64:(Add w32 7 N63)=N9,
+                                                                                                                               N65:(Add w32 6 N63)=(Read w8 (Add w32 6 N10)
+                                                                                                                                                            U4),
+                                                                                                                               N66:(Add w32 5 N63)=(Read w8 (Add w32 5 N10)
+                                                                                                                                                            U4),
+                                                                                                                               N67:(Add w32 4 N63)=(Read w8 (Add w32 4 N10)
+                                                                                                                                                            U4),
+                                                                                                                               N68:(Add w32 3 N63)=(Read w8 (Add w32 3 N10)
+                                                                                                                                                            U4),
+                                                                                                                               N69:(Add w32 2 N63)=(Read w8 (Add w32 2 N10)
+                                                                                                                                                            U4),
+                                                                                                                               N70:(Add w32 1 N63)=(Read w8 (Add w32 1 N10)
+                                                                                                                                                            U4),
+                                                                                                                               N63=(Read w8 N10 U4)] @ U4)))) U6:[(Add w32 3
+                                                                                                                                                                           N71:(Extract w32 0 (Add w64 18446649443870380968
+                                                                                                                                                                                                       (ReadLSB w64 N72:(Extract w32 0 (Add w64 18446649443880695248 N13)) U2))))=(Extract w8 24 N73:(Sub w32 0
+                                                                                                                                                                                                                                                                                                              (Concat w32 N37
+                                                                                                                                                                                                                                                                                                                          (ReadLSB w24 N36 U2)))),
+                                                                                                                                                                  (Add w32 2 N71)=(Extract w8 16 N73),
+                                                                                                                                                                  (Add w32 1 N71)=(Extract w8 8 N73),
+                                                                                                                                                                  N71=(Extract w8 0 N73),
+                                                                                                                                                                  (Add w32 7
+                                                                                                                                                                           N74:(Extract w32 0 (Add w64 18446649443870380976
+                                                                                                                                                                                                       N75:(Concat w64 0
+                                                                                                                                                                                                                       (ReadLSB w56 N24 U1)))))=0,
+                                                                                                                                                                  (Add w32 6 N74)=N76:(Read w8 N17 U0),
+                                                                                                                                                                  (Add w32 5 N74)=N77:(Read w8 N18 U0),
+                                                                                                                                                                  (Add w32 4 N74)=N78:(Read w8 N19 U0),
+                                                                                                                                                                  (Add w32 3 N74)=N79:(Read w8 N20 U0),
+                                                                                                                                                                  (Add w32 2 N74)=N80:(Read w8 N21 U0),
+                                                                                                                                                                  (Add w32 1 N74)=N81:(Read w8 N22 U0),
+                                                                                                                                                                  N74=N82:(Read w8 N14 U0),
+                                                                                                                                                                  (Add w32 7
+                                                                                                                                                                           N83:(Extract w32 0 (Add w64 18446649443870380984 N75)))=0,
+                                                                                                                                                                  (Add w32 6 N83)=0,
+                                                                                                                                                                  (Add w32 5 N83)=0,
+                                                                                                                                                                  (Add w32 4 N83)=0,
+                                                                                                                                                                  (Add w32 3 N83)=0,
+                                                                                                                                                                  (Add w32 2 N83)=0,
+                                                                                                                                                                  (Add w32 1 N83)=0,
+                                                                                                                                                                  N83=0,
+                                                                                                                                                                  (Add w32 3
+                                                                                                                                                                           N84:(Extract w32 0 (Add w64 18446649443870380968 N75)))=0,
+                                                                                                                                                                  (Add w32 2 N84)=0,
+                                                                                                                                                                  (Add w32 1 N84)=0,
+                                                                                                                                                                  N84=0,
+                                                                                                                                                                  (Add w32 3
+                                                                                                                                                                           N85:(Extract w32 0 (Add w64 18446649443870380964 N75)))=(Extract w8 24 N52),
+                                                                                                                                                                  (Add w32 2 N85)=(Extract w8 16 N52),
+                                                                                                                                                                  (Add w32 1 N85)=(Extract w8 8 N52),
+                                                                                                                                                                  N85=(Extract w8 0 N52),
+                                                                                                                                                                  (Add w32 3
+                                                                                                                                                                           N86:(Extract w32 0 (Add w64 18446649443870380960 N75)))=(Extract w8 24 N16),
+                                                                                                                                                                  (Add w32 2 N86)=(Extract w8 16 N16),
+                                                                                                                                                                  (Add w32 1 N86)=(Extract w8 8 N16),
+                                                                                                                                                                  N86=(Extract w8 0 N16)] @ const_arr203)))
+         (Eq false
+             (Eq 0
+                 (ReadLSB w32 N57 U7:[N64=(Read w8 (Add w32 7
+                                                            N87:(Extract w32 0 (Add w64 18446649443870380984 N8)))
+                                                   U6),
+                                      N65=(Read w8 (Add w32 6 N87)
+                                                   U6),
+                                      N66=(Read w8 (Add w32 5 N87)
+                                                   U6),
+                                      N67=(Read w8 (Add w32 4 N87)
+                                                   U6),
+                                      N68=(Read w8 (Add w32 3 N87)
+                                                   U6),
+                                      N69=(Read w8 (Add w32 2 N87)
+                                                   U6),
+                                      N70=(Read w8 (Add w32 1 N87)
+                                                   U6),
+                                      N63=(Read w8 N87 U6)] @ U5)))]
+        false)

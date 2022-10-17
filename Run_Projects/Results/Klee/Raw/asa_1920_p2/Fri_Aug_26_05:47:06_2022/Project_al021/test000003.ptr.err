@@ -1,0 +1,22 @@
+Error: memory error: out of bound pointer
+File: main.c
+Line: 232
+assembly.ll line: 10269
+State: 13
+Stack: 
+	#000010269 in graph_get_node_edges(93919663761392, symbolic) at main.c:232
+	#100010664 in BFS(93919663761392, symbolic, symbolic, 0) at main.c:370
+	#200010773 in max_flow(93919663761392, symbolic, symbolic) at main.c:407
+	#300011058 in __klee_posix_wrapped_main() at main.c:488
+	#400007351 in __user_main(3, 93919630220160, 93919630220192) at runtime/POSIX/klee_init_env.c:245
+	#500000595 in __uClibc_main(93919655454312, 3, 93919630220160, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#600000760 in main(3, 93919630220160)
+Info: 
+	address: (Mul w64 8
+          (SExt w64 (Mul w32 2
+                             (Mul w32 (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_1)))
+                                      (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int)))))))
+	example: 18446744058791771632
+	range: [18446744058791771632, 18446744058791771632]
+	next: object at 23327012006592 of size 1536
+		MO370[1536] (no allocation info)

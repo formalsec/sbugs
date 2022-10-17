@@ -1,0 +1,15 @@
+Error: memory error: out of bound pointer
+File: tentapushrelabel2.c
+Line: 709
+assembly.ll line: 11462
+State: 106
+Stack: 
+	#000011462 in processSupermercadosCidadaos() at tentapushrelabel2.c:709
+	#100011892 in __klee_posix_wrapped_main() at tentapushrelabel2.c:878
+	#200007384 in __user_main(3, 93921493531520, 93921493531552) at runtime/POSIX/klee_init_env.c:245
+	#300000628 in __uClibc_main(93921526916232, 3, 93921493531520, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#400000793 in main(3, 93921493531520)
+Info: 
+	address: 93921534331124
+	next: object at 23034485582528 of size 1536
+		MO390[1536] (no allocation info)

@@ -1,0 +1,133 @@
+array const_arr1[72] : w32 -> w8 = [0 0 0 0 0 0 0 0 0 0 0 0 171 171 171 171 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 171 171 171 171 0 0 0 0 0 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 171 171 171 171 0 0 0 0 0 0 0 0]
+array const_arr155[4] : w32 -> w8 = [171 171 171 171]
+array model_version[4] : w32 -> w8 = symbolic
+array stdin-stat[144] : w32 -> w8 = symbolic
+array sym_int[4] : w32 -> w8 = symbolic
+array sym_int_1[4] : w32 -> w8 = symbolic
+array sym_int_2[4] : w32 -> w8 = symbolic
+array sym_int_3[4] : w32 -> w8 = symbolic
+(query [(Eq false
+             (Eq 0
+                 (And w64 (ReadLSB w64 8 stdin-stat)
+                          2147483647)))
+         (Eq 0
+             (And w64 (ReadLSB w64 56 stdin-stat)
+                      18446744073709486080))
+         (Eq 1
+             (ReadLSB w32 0 model_version))
+         (Eq false
+             (And (Eq 0
+                      N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int))))
+                  N1:(Eq 0
+                         N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_1))))))
+         (Eq false
+             (And (Eq 1 N0) N1))
+         (Eq false (Slt N0 2))
+         (Eq false (Slt N2 0))
+         (Eq 72
+             (Mul w64 24
+                      (SExt w64 (Add w32 1 N0))))
+         (Slt 0 N2)
+         (Ult N3:(Add w64 4
+                          N4:(Mul w64 24
+                                      (SExt w64 (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_2))))))
+              69)
+         (Eq false (Slt 1 N2))
+         (Slt 0
+              (ReadLSB w32 28 U0:[(Add w32 3 N5:(Extract w32 0 N3))=0,
+                                  (Add w32 2 N5)=0,
+                                  (Add w32 1 N5)=0,
+                                  N5=1] @
+                              U1:[(Add w32 7
+                                           N6:(Extract w32 0 (Add w64 16 N4)))=0,
+                                  N7:(Add w32 6 N6)=0,
+                                  N8:(Add w32 5 N6)=85,
+                                  N9:(Add w32 4 N6)=119,
+                                  N10:(Add w32 3 N6)=60,
+                                  N11:(Add w32 2 N6)=133,
+                                  N12:(Add w32 1 N6)=223,
+                                  N6=56] @ const_arr1))
+         (Eq false
+             (Ult (Add w64 4
+                           N13:(Mul w64 8
+                                        (SExt w64 (ReadLSB w32 N14:(Extract w32 0 (Add w64 18446650103104676040
+                                                                                           (ReadLSB w64 40 U0))) U2:[(Add w32 3
+                                                                                                                              N15:(Extract w32 0 (Add w64 18446650103104676040
+                                                                                                                                                          (Concat w64 0
+                                                                                                                                                                      (ReadLSB w56 N6 U1)))))=(Extract w8 24 N16:(Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_3)))),
+                                                                                                                     (Add w32 2 N15)=(Extract w8 16 N16),
+                                                                                                                     (Add w32 1 N15)=(Extract w8 8 N16),
+                                                                                                                     N15=(Extract w8 0 N16)] @ const_arr155))))
+                  21))
+         (Eq false
+             (Ult (Add w64 36698516 N13) 13))
+         (Eq false
+             (Ult (Add w64 36698532 N13) 7))
+         (Eq false
+             (Ult (Add w64 37444324 N13) 3317))
+         (Eq false
+             (Ult (Add w64 37456164 N13) 21))
+         (Eq false
+             (Ult (Add w64 37456324 N13) 18))
+         (Eq false
+             (Ult (Add w64 37456388 N13) 17))
+         (Eq false
+             (Ult (Add w64 37456548 N13) 17))
+         (Eq false
+             (Ult (Add w64 37456932 N13) 15))
+         (Eq false
+             (Ult (Add w64 37456996 N13) 15))
+         (Eq false
+             (Ult (Add w64 37457092 N13) 17))
+         (Eq false
+             (Ult (Add w64 37457220 N13) 14))
+         (Eq false
+             (Ult (Add w64 37457732 N13) 29))
+         (Eq false
+             (Ult (Add w64 37457796 N13) 15))
+         (Eq false
+             (Ult (Add w64 37457860 N13) 18))
+         (Eq false
+             (Ult (Add w64 37457924 N13) 14))
+         (Eq false
+             (Ult (Add w64 37458052 N13) 14))
+         (Eq false
+             (Ult (Add w64 37458116 N13) 15))
+         (Eq false
+             (Ult (Add w64 37458212 N13) 21))
+         (Eq false
+             (Ult (Add w64 37458276 N13) 15))
+         (Eq false
+             (Ult (Add w64 37458724 N13) 28))
+         (Eq false
+             (Ult (Add w64 37458948 N13) 14))
+         (Eq false
+             (Ult (Add w64 37459876 N13) 29))
+         (Eq false
+             (Ult (Add w64 37460484 N13) 28))
+         (Eq false
+             (Ult (Add w64 37465412 N13) 66))
+         (Eq false
+             (Ult (Add w64 37475972 N13) 62))
+         (Eq false
+             (Ult (Add w64 37476212 N13) 69))
+         (Eq false
+             (Ult (Add w64 37476692 N13) 74))
+         (Eq false
+             (Ult (Add w64 37477220 N13) 34))
+         (Eq false
+             (Ult (Add w64 37479860 N13) 36))
+         (Eq false
+             (Ult (Add w64 37481204 N13) 42))
+         (Eq false
+             (Ult (Add w64 37481396 N13) 45))
+         (Eq false
+             (Ult (Add w64 37482740 N13) 41))
+         (Eq false
+             (Ult (Add w64 37482932 N13) 40))
+         (Eq false
+             (Ult (Add w64 37483124 N13) 43))
+         (Eq false
+             (Ult (Add w64 37483316 N13) 42))
+         (Ult (Add w64 37483508 N13) 40)]
+        false)

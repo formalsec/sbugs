@@ -1,0 +1,15 @@
+Error: memory error: out of bound pointer
+File: main.c
+Line: 711
+assembly.ll line: 10396
+State: 35
+Stack: 
+	#000010396 in vertex_existence(symbolic, symbolic) at main.c:711
+	#100009844 in __klee_posix_wrapped_main() at main.c:138
+	#200007363 in __user_main(3, 94806327122464, 94806327122496) at runtime/POSIX/klee_init_env.c:245
+	#300000607 in __uClibc_main(94806360035744, 3, 94806327122464, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#400000772 in main(3, 94806327122464)
+Info: 
+	address: 16
+	next: object at 22995236092608 of size 1536
+		MO374[1536] (no allocation info)

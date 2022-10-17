@@ -1,0 +1,22 @@
+Error: memory error: out of bound pointer
+File: libc/string/memcpy.c
+Line: 29
+assembly.ll line: 9654
+State: 3715
+Stack: 
+	#000009654 in memcpy(94379075265280, symbolic, 1612) at libc/string/memcpy.c:29
+	#100010936 in listarProdutosEmEncomendaPorABC(94379050790736, 94379051589632, 94379053195264) at proj1.c:710
+	#200009859 in __klee_posix_wrapped_main() at proj1.c:102
+	#300007381 in __user_main(3, 94379016707296, 94379016707328) at runtime/POSIX/klee_init_env.c:245
+	#400000625 in __uClibc_main(94379050141216, 3, 94379016707296, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#500000790 in main(3, 94379016707296)
+Info: 
+	address: (Add w64 94379053195264
+          (Mul w64 1612
+                   (SExt w64 (Extract w32 0 (Sub w64 0
+                                                     (ZExt w64 (Extract w8 0 (Add w32 4294967248
+                                                                                      (SExt w32 (Extract w8 0 (ZExt w32 (Read w8 3 stdin))))))))))))
+	example: 94379053193652
+	range: [94379053180756, 94379053193652]
+	next: object at 23132566198976 of size 1536
+		MO373[1536] (no allocation info)

@@ -1,0 +1,113 @@
+array const_arr1[64] : w32 -> w8 = [0 0 0 0 0 0 0 0 171 171 171 171 171 171 171 171 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 171 171 171 171 171 171 171 171 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+array const_arr104[40] : w32 -> w8 = [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+array model_version[4] : w32 -> w8 = symbolic
+array stdin-stat[144] : w32 -> w8 = symbolic
+array sym_long[8] : w32 -> w8 = symbolic
+array sym_long_1[8] : w32 -> w8 = symbolic
+array sym_long_2[8] : w32 -> w8 = symbolic
+array sym_long_3[8] : w32 -> w8 = symbolic
+(query [(Eq false
+             (Eq 0
+                 (And w64 (ReadLSB w64 8 stdin-stat)
+                          2147483647)))
+         (Eq 0
+             (And w64 (ReadLSB w64 56 stdin-stat)
+                      18446744073709486080))
+         (Eq 1
+             (ReadLSB w32 0 model_version))
+         (Eq 64
+             (Mul w64 32
+                      (Add w64 2
+                               (Add w64 N0:(SExt w64 (ReadLSB w32 0 sym_long))
+                                        (Mul w64 2
+                                                 N1:(SExt w64 (ReadLSB w32 0 sym_long_1)))))))
+         (Eq false
+             (Sle 2 (Add w64 1 N0)))
+         (Sle N2:(Add w64 2 N0)
+              (Add w64 1 N3:(Add w64 N0 N1)))
+         (Ult N4:(Add w64 24 N5:(Mul w64 32 N2))
+              57)
+         (Eq false
+             (Slt 0
+                  (SExt w64 (ReadLSB w32 0 sym_long_2))))
+         (Eq false
+             (Slt (ReadLSB w64 16 U0:[N6:(Add w32 7
+                                                  N7:(Extract w32 0 (Add w64 24
+                                                                             N8:(Mul w64 32
+                                                                                         (Add w64 2 (Sub w64 N3 N1))))))=0,
+                                      N9:(Add w32 6 N7)=0,
+                                      N10:(Add w32 5 N7)=85,
+                                      N11:(Add w32 4 N7)=169,
+                                      N12:(Add w32 3 N7)=39,
+                                      N13:(Add w32 2 N7)=45,
+                                      N14:(Add w32 1 N7)=79,
+                                      N7=0] @
+                                  U1:[N15:(Add w32 7
+                                                   N16:(Extract w32 0 (Add w64 24
+                                                                               (Mul w64 32 N17:(Add w64 2 N3)))))=0,
+                                      N18:(Add w32 6 N16)=0,
+                                      N19:(Add w32 5 N16)=85,
+                                      N20:(Add w32 4 N16)=169,
+                                      N21:(Add w32 3 N16)=39,
+                                      N22:(Add w32 2 N16)=26,
+                                      N23:(Add w32 1 N16)=142,
+                                      N16=64,
+                                      N15=0,
+                                      N18=0,
+                                      N19=0,
+                                      N20=0,
+                                      N21=0,
+                                      N22=0,
+                                      N23=0,
+                                      N16=0,
+                                      (Add w32 7
+                                               N24:(Extract w32 0 (Add w64 8 N5)))=(Extract w8 56 N25:(SExt w64 (ReadLSB w32 0 sym_long_3))),
+                                      (Add w32 6 N24)=(Extract w8 48 N25),
+                                      (Add w32 5 N24)=(Extract w8 40 N25),
+                                      (Add w32 4 N24)=(Extract w8 32 N25),
+                                      (Add w32 3 N24)=(Extract w8 24 N25),
+                                      (Add w32 2 N24)=(Extract w8 16 N25),
+                                      (Add w32 1 N24)=(Extract w8 8 N25),
+                                      N24=(Extract w8 0 N25),
+                                      (Add w32 7 N26:(Extract w32 0 N4))=0,
+                                      (Add w32 6 N26)=0,
+                                      (Add w32 5 N26)=0,
+                                      (Add w32 4 N26)=0,
+                                      (Add w32 3 N26)=0,
+                                      (Add w32 2 N26)=0,
+                                      (Add w32 1 N26)=0,
+                                      N26=0] @ const_arr1)
+                  (ReadLSB w64 N27:(Extract w32 0 (Add w64 18446649888714436872
+                                                           (ReadLSB w64 24 U0))) U2:[39=(Read w8 N6 U1),
+                                                                                     38=(Read w8 N9 U1),
+                                                                                     37=(Read w8 N10 U1),
+                                                                                     36=(Read w8 N11 U1),
+                                                                                     35=(Read w8 N12 U1),
+                                                                                     34=(Read w8 N13 U1),
+                                                                                     33=(Read w8 N14 U1),
+                                                                                     32=(Read w8 N7 U1),
+                                                                                     31=0, 30=0, 29=0, 28=0, 27=0, 26=0, 25=0, 24=1, 23=0, 22=0, 21=0, 20=0, 19=0, 18=0, 17=0, 16=0, 15=(Read w8 (Add w32 7
+                                                                                                                                                                                                          N28:(Extract w32 0 (Add w64 8 N8)))
+                                                                                                                                                                                                 U1),
+                                                                                     14=(Read w8 (Add w32 6 N28)
+                                                                                                 U1),
+                                                                                     13=(Read w8 (Add w32 5 N28)
+                                                                                                 U1),
+                                                                                     12=(Read w8 (Add w32 4 N28)
+                                                                                                 U1),
+                                                                                     11=(Read w8 (Add w32 3 N28)
+                                                                                                 U1),
+                                                                                     10=(Read w8 (Add w32 2 N28)
+                                                                                                 U1),
+                                                                                     9=(Read w8 (Add w32 1 N28)
+                                                                                                U1),
+                                                                                     8=(Read w8 N28 U1),
+                                                                                     7=(Extract w8 56 N17),
+                                                                                     6=(Extract w8 48 N17),
+                                                                                     5=(Extract w8 40 N17),
+                                                                                     4=(Extract w8 32 N17),
+                                                                                     3=(Extract w8 24 N17),
+                                                                                     2=(Extract w8 16 N17),
+                                                                                     1=(Extract w8 8 N17),
+                                                                                     0=(Extract w8 0 N17)] @ const_arr104)))]
+        false)

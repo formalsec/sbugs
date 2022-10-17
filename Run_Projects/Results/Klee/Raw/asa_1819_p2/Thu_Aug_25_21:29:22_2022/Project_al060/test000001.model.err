@@ -1,0 +1,18 @@
+Error: concretized symbolic size
+File: proj2.c
+Line: 535
+assembly.ll line: 11399
+State: 3
+Stack: 
+	#000011399 in __klee_posix_wrapped_main() at proj2.c:535
+	#100007359 in __user_main(3, 94009196214816, 94009196214848) at runtime/POSIX/klee_init_env.c:245
+	#200000603 in __uClibc_main(94009229607776, 3, 94009196214816, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#300000768 in main(3, 94009196214816)
+Info: 
+  size expr: (Mul w64 16
+                       (SExt w64 (Add w32 2
+                                          (Add w32 (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int)))
+                                                   (Mul w32 2
+                                                            (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_1))))))))
+  concretization : 32
+  unbound example: 48

@@ -1,0 +1,26 @@
+Error: memory error: out of bound pointer
+File: libc/stdio/fgets.c
+Line: 36
+assembly.ll line: 14951
+State: 84
+Stack: 
+	#000014951 in fgets_unlocked(93989351160064, 128, symbolic) at libc/stdio/fgets.c:36
+	#100009833 in processInput() at project.c:176
+	#200009737 in __klee_posix_wrapped_main() at project.c:38
+	#300007362 in __user_main(3, 93989326690848, 93989326690880) at runtime/POSIX/klee_init_env.c:245
+	#400000606 in __uClibc_main(93989359330016, 3, 93989326690848, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#500000771 in main(3, 93989326690848)
+Info: 
+	address: (Add w64 24
+          (ReadLSB w64 0 U0:[(Extract w32 0 (Add w64 2072
+                                                     (SExt w64 (Add w32 1
+                                                                        (Mul w32 2
+                                                                                 (Add w32 4294967295
+                                                                                          (Add w32 (Mul w32 (Add w32 4294967295
+                                                                                                                     (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_5))))
+                                                                                                            (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int))))
+                                                                                                   (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_4))))))))))=1] @ const_arr4))
+	example: 72151583380247800
+	range: [1630365586680, 72151583380247800]
+	next: object at 22917629164224 of size 1536
+		MO354[1536] (no allocation info)

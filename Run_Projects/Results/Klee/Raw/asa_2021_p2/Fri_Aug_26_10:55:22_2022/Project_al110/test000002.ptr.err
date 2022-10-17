@@ -1,0 +1,15 @@
+Error: memory error: out of bound pointer
+File: p21.c
+Line: 33
+assembly.ll line: 9768
+State: 2
+Stack: 
+	#000009768 in createGraph(symbolic) at p21.c:33
+	#100010769 in __klee_posix_wrapped_main() at p21.c:224
+	#200007350 in __user_main(3, 94889446038048, 94889446038080) at runtime/POSIX/klee_init_env.c:245
+	#300000594 in __uClibc_main(94889478808384, 3, 94889446038048, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#400000759 in main(3, 94889446038048)
+Info: 
+	address: 0
+	next: object at 23179134585536 of size 1536
+		MO352[1536] (no allocation info)

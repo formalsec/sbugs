@@ -1,0 +1,20 @@
+Error: memory error: out of bound pointer
+File: jogos.c
+Line: 174
+assembly.ll line: 10429
+State: 23
+Stack: 
+	#000010429 in pertence_jogo(94787973382144, 94787993984000) at jogos.c:174
+	#100011042 in __klee_posix_wrapped_main() at main.c:85
+	#200007360 in __user_main(3, 94787972865600, 94787972865632) at runtime/POSIX/klee_init_env.c:245
+	#300000604 in __uClibc_main(94788006680744, 3, 94787972865600, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#400000769 in main(3, 94787972865600)
+Info: 
+	address: (Add w64 94787973178880
+          (Mul w64 8
+                   (SExt w64 (SRem w32 (SExt w32 (Extract w8 0 (Extract w32 0 (SExt w64 (Read w8 0 sym_char)))))
+                                       31))))
+	example: 94787973178640
+	range: [94787973178640, 94787973178872]
+	next: object at 22401436916416 of size 1536
+		MO371[1536] (no allocation info)
