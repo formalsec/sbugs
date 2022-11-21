@@ -106,8 +106,20 @@ def gen_table(n_rows: int, n_cols : int, gt_0 : str, gt_1 : str):
             lbl = get_label(categories, bug_type)
             table[row_map[lbl]][col_map[proj][1]] += cnt
 
-    header1 = ["Scope"] + ["\\multicol{2}{c}{\\bf PA" + str(i) + "}" for i in range(1, 11)] + [""] * 10
-    header2 = [""] + ["GT0", "GT1"] * 10
+
+    # Sums
+    for i in range(n_rows):
+        table[i][21] = sum([table[i][j] for j in range(1, 21, 2)])
+        table[i][22] = sum([table[i][j] for j in range(2, 21, 2)])
+
+    table[n_rows - 1][0] = "Total"
+    for j in range(1, n_cols):
+        for i in range(n_rows - 1):
+            table[n_rows - 1][j] += table[i][j]
+
+    # Add headers to table
+    header1 = ["Scope"] + ["\\multicol{2}{c}{\\bf PA" + str(i) + "}" for i in range(1, 11)] + [""] * 12
+    header2 = [""] + ["GT0", "GT1"] * 11
     table.insert(0, header1)
     table.insert(1, header2)
 
@@ -117,7 +129,7 @@ def main(argv=None) -> int:
     if argv is None:
         argv=sys.argv[1:]
 
-    n_rows, n_cols = 9, 21
+    n_rows, n_cols = 10, 23
     gt_0 = os.path.join("..", "dataset-gt0.json")
     gt_1 = os.path.join("..", "dataset-gt1-extended.json")
 
