@@ -1,0 +1,23 @@
+Error: memory error: out of bound pointer
+File: hash.c
+Line: 36
+assembly.ll line: 11955
+State: 90
+Stack: 
+	#000011955 in searchListJogo(symbolic, 94291270639616) at hash.c:36
+	#100011807 in STsearchJogo(94291270639616) at hash.c:57
+	#200011159 in comando_p(94291270639616) at main.c:253
+	#300010462 in le_comandos(94291269846528, 94291270263168) at main.c:105
+	#400010080 in __klee_posix_wrapped_main() at main.c:17
+	#500007364 in __user_main(3, 94291235937856, 94291235937888) at runtime/POSIX/klee_init_env.c:245
+	#600000608 in __uClibc_main(94291269288704, 3, 94291235937856, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#700000773 in main(3, 94291235937856)
+Info: 
+	address: (Add w64 94291270606848
+          (Mul w64 8
+                   (SExt w64 (SRem w32 (SExt w32 (Extract w8 0 (Extract w32 0 (SExt w64 (Read w8 0 sym_char_1)))))
+                                       2003))))
+	example: 94291270605824
+	range: [94291270605824, 94291270606840]
+	next: object at 23211208698560 of size 1536
+		MO381[1536] (no allocation info)

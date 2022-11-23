@@ -1,0 +1,20 @@
+Error: memory error: out of bound pointer
+File: main.c
+Line: 174
+assembly.ll line: 11820
+State: 19
+Stack: 
+	#000011820 in procuraJogo(94036461311808) at main.c:174
+	#100012877 in __klee_posix_wrapped_main() at main.c:464
+	#200007367 in __user_main(3, 94036426972384, 94036426972416) at runtime/POSIX/klee_init_env.c:245
+	#300000611 in __uClibc_main(94036460687496, 3, 94036426972384, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#400000776 in main(3, 94036426972384)
+Info: 
+	address: (Add w64 94036454580224
+          (Mul w64 8
+                   (SExt w64 (SRem w32 (SExt w32 (Extract w8 0 (Extract w32 0 (SExt w64 (Read w8 0 sym_char)))))
+                                       1000))))
+	example: 94036454579200
+	range: [94036454579200, 94036454580216]
+	next: object at 23034342140608 of size 1536
+		MO400[1536] (no allocation info)

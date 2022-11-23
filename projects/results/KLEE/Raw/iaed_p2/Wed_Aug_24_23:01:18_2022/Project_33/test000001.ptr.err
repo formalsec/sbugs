@@ -1,0 +1,23 @@
+Error: memory error: out of bound pointer
+File: hashtable.c
+Line: 61
+assembly.ll line: 11298
+State: 66
+Stack: 
+	#000011298 in ht_procura(94460150220800, 94460151724360) at hashtable.c:61
+	#100011053 in ht_verifica(94460150220800, 94460151724360, 0, 1) at hashtable.c:35
+	#200010691 in procura_jogo(94460151724360, 1) at processos.c:198
+	#300010284 in processa(94460151722344, 94460151724360, 94460159948960) at processos.c:41
+	#400010175 in __klee_posix_wrapped_main() at main.c:18
+	#500007363 in __user_main(3, 94460126453312, 94460126453344) at runtime/POSIX/klee_init_env.c:245
+	#600000607 in __uClibc_main(94460151719072, 3, 94460126453312, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#700000772 in main(3, 94460126453312)
+Info: 
+	address: (Add w64 94460139626496
+          (Mul w64 8
+                   (SExt w64 (SRem w32 (SExt w32 (Extract w8 0 (Extract w32 0 (SExt w64 (Read w8 0 sym_char)))))
+                                       997))))
+	example: 94460139625472
+	range: [94460139625472, 94460139626488]
+	next: object at 22761867274944 of size 1536
+		MO400[1536] (no allocation info)

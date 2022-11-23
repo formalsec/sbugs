@@ -1,0 +1,21 @@
+Error: memory error: out of bound pointer
+File: tabela_equipa.c
+Line: 42
+assembly.ll line: 9960
+State: 17
+Stack: 
+	#000009960 in procuraTabEq(94076404817024, 94076405591040) at tabela_equipa.c:42
+	#100011530 in adicionaEquipa(94076404817024, 94076404547240) at p2.c:81
+	#200011243 in __klee_posix_wrapped_main() at p2.c:30
+	#300007363 in __user_main(3, 94076371010848, 94076371010880) at runtime/POSIX/klee_init_env.c:245
+	#400000607 in __uClibc_main(94076404541928, 3, 94076371010848, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#500000772 in main(3, 94076371010848)
+Info: 
+	address: (Add w64 94076377600000
+          (Mul w64 8
+                   (SExt w64 (SRem w32 (SExt w32 (Extract w8 0 (Extract w32 0 (SExt w64 (Read w8 0 sym_char)))))
+                                       499))))
+	example: 94076377598976
+	range: [94076377598976, 94076377599992]
+	next: object at 23132808338112 of size 1536
+		MO387[1536] (no allocation info)

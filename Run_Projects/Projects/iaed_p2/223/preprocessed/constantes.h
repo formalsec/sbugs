@@ -1,2 +1,0 @@
-#define MAXTEXT 1024
-#define TAMANHOHT 1000

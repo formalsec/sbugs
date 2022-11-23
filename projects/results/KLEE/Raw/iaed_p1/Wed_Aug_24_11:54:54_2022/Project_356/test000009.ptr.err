@@ -1,0 +1,19 @@
+Error: memory error: out of bound pointer
+File: proj1.c
+Line: 181
+assembly.ll line: 10132
+State: 290
+Stack: 
+	#000010132 in adicionaProdutoEncomenda() at proj1.c:181
+	#100009789 in __klee_posix_wrapped_main() at proj1.c:70
+	#200007373 in __user_main(3, 94144240818720, 94144240818752) at runtime/POSIX/klee_init_env.c:245
+	#300000617 in __uClibc_main(94144273615768, 3, 94144240818720, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#400000782 in main(3, 94144240818720)
+Info: 
+	address: (Add w64 94144273915020
+          (Mul w64 72
+                   (SExt w64 (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_1))))))
+	example: 94143678902844
+	range: [94143678902844, 94143678909108]
+	next: object at 22747188472512 of size 1536
+		MO361[1536] (no allocation info)

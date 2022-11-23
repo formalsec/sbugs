@@ -1,0 +1,19 @@
+Error: memory error: out of bound pointer
+File: projetoFlow.c
+Line: 117
+assembly.ll line: 9994
+State: 4
+Stack: 
+	#000009994 in initGraph() at projetoFlow.c:117
+	#100010597 in __klee_posix_wrapped_main() at projetoFlow.c:352
+	#200007368 in __user_main(3, 94330716609056, 94330716609088) at runtime/POSIX/klee_init_env.c:245
+	#300000612 in __uClibc_main(94330749166288, 3, 94330716609056, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#400000777 in main(3, 94330716609056)
+Info: 
+	address: (Mul w64 8
+          (SExt w64 (Mul w32 (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int)))
+                             (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_1))))))
+	example: 18446744058677166080
+	range: [18446744057603424256, 18446744073709551600]
+	next: object at 23224751311552 of size 1536
+		MO355[1536] (no allocation info)

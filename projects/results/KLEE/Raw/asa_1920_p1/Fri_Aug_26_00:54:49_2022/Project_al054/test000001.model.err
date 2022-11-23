@@ -1,0 +1,16 @@
+Error: concretized symbolic size
+File: projeto_final.c
+Line: 33
+assembly.ll line: 9747
+State: 3
+Stack: 
+	#000009747 in createGraph(symbolic, symbolic) at projeto_final.c:33
+	#100010310 in __klee_posix_wrapped_main() at projeto_final.c:158
+	#200007352 in __user_main(3, 94535186856832, 94535186856864) at runtime/POSIX/klee_init_env.c:245
+	#300000596 in __uClibc_main(94535219263376, 3, 94535186856832, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#400000761 in main(3, 94535186856832)
+Info: 
+  size expr: (Mul w64 24
+                       (SExt w64 (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int)))))
+  concretization : 0
+  unbound example: 24

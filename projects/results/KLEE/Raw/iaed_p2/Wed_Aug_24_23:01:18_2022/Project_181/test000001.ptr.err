@@ -1,0 +1,23 @@
+Error: memory error: out of bound pointer
+File: lista_jogos.c
+Line: 24
+assembly.ll line: 9821
+State: 13
+Stack: 
+	#000009821 in procura_jogo(symbolic, 93872031623168) at lista_jogos.c:24
+	#100012049 in procuraJogo_HashJogo(93872030783200, 93872031623168) at hash_jogos.c:47
+	#200011512 in p_procura_jogo(1, 93872030783200) at projecto.c:178
+	#300011157 in obter_comando(93872030783872, 93872022524456, 93872030783200) at projecto.c:61
+	#400011040 in __klee_posix_wrapped_main() at projecto.c:33
+	#500007365 in __user_main(3, 93871997264480, 93871997264512) at runtime/POSIX/klee_init_env.c:245
+	#600000609 in __uClibc_main(93872022520680, 3, 93871997264480, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#700000774 in main(3, 93871997264480)
+Info: 
+	address: (Add w64 93872031850496
+          (Mul w64 8
+                   (SExt w64 (SRem w32 (SExt w32 (Extract w8 0 (Extract w32 0 (SExt w64 (Read w8 0 sym_char)))))
+                                       911))))
+	example: 93872031849472
+	range: [93872031849472, 93872031850488]
+	next: object at 22961605548736 of size 1536
+		MO392[1536] (no allocation info)

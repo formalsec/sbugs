@@ -1,0 +1,20 @@
+Error: memory error: out of bound pointer
+File: Loja_Quarentena_Online.c
+Line: 193
+assembly.ll line: 10264
+State: 1354
+Stack: 
+	#000010264 in adiciona_stock() at Loja_Quarentena_Online.c:193
+	#100009795 in __klee_posix_wrapped_main() at Loja_Quarentena_Online.c:54
+	#200007386 in __user_main(3, 94606423620128, 94606423620160) at runtime/POSIX/klee_init_env.c:245
+	#300000630 in __uClibc_main(94606456805896, 3, 94606423620128, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#400000795 in main(3, 94606423620128)
+Info: 
+	address: (Add w64 94606457864192
+          (Mul w64 4
+                   (SExt w64 (Add w32 4294967248
+                                      (SExt w32 (Extract w8 0 (ZExt w32 (Read w8 1 stdin))))))))
+	example: 94606457864000
+	range: [94606457863488, 94606457864188]
+	next: object at 22711612074688 of size 1536
+		MO360[1536] (no allocation info)

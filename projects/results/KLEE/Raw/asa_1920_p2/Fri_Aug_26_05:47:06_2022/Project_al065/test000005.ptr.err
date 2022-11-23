@@ -1,0 +1,28 @@
+Error: memory error: out of bound pointer
+File: projeto2.c
+Line: 99
+assembly.ll line: 9913
+State: 15
+Stack: 
+	#000009913 in ad_vizinho_aux(symbolic, symbolic, 1) at projeto2.c:99
+	#100009968 in ad_vizinho(symbolic, symbolic) at projeto2.c:113
+	#200010435 in criar_super(symbolic, symbolic) at projeto2.c:260
+	#300010563 in __klee_posix_wrapped_main() at projeto2.c:301
+	#400007358 in __user_main(3, 94664696511008, 94664696511040) at runtime/POSIX/klee_init_env.c:245
+	#500000602 in __uClibc_main(94664729231656, 3, 94664696511008, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#600000767 in main(3, 94664696511008)
+Info: 
+	address: (Add w64 16
+          (ReadLSB w64 N0:(Extract w32 0 (Add w64 775528
+                                                  (Mul w64 16
+                                                           (SExt w64 (Add w32 4294967295
+                                                                              (Add w32 (Add w32 (Mul w32 N1:(Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int)))
+                                                                                                         (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_1))))
+                                                                                                (Mul w32 (Add w32 4294967295
+                                                                                                                  (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_5))))
+                                                                                                         N1))
+                                                                                       (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_4))))))))) const_arr3))
+	example: 3343762647516738352
+	range: [3343762647516738352, 8392847585645983101]
+	next: object at 23307659729600 of size 1536
+		MO354[1536] (no allocation info)

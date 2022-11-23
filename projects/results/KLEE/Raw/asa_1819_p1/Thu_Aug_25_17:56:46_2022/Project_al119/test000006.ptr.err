@@ -1,0 +1,20 @@
+Error: memory error: out of bound pointer
+File: al119final.c
+Line: 125
+assembly.ll line: 10070
+State: 515
+Stack: 
+	#000010070 in adiciona_ligacao(94396372834752, symbolic, symbolic) at al119final.c:125
+	#100010839 in __klee_posix_wrapped_main() at al119final.c:323
+	#200007358 in __user_main(3, 94396339452448, 94396339452480) at runtime/POSIX/klee_init_env.c:245
+	#300000602 in __uClibc_main(94396372208000, 3, 94396339452448, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#400000767 in main(3, 94396339452448)
+Info: 
+	address: (Add w64 94396372211112
+          (Mul w64 8
+                   (SExt w64 (Add w32 4294967295
+                                      (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_2)))))))
+	example: 94396372211104
+	range: [94379192341928, 94413552080280]
+	next: object at 22441505671872 of size 1536
+		MO356[1536] (no allocation info)

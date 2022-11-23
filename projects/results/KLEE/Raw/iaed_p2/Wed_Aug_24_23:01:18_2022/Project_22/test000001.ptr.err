@@ -1,0 +1,14 @@
+Error: memory error: out of bound pointer
+File: projeto2.c
+Line: 369
+assembly.ll line: 11916
+State: 1
+Stack: 
+	#000011916 in __klee_posix_wrapped_main() at projeto2.c:369
+	#100007358 in __user_main(3, 93899652636576, 93899652636608) at runtime/POSIX/klee_init_env.c:245
+	#200000602 in __uClibc_main(93899680711216, 3, 93899652636576, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#300000767 in main(3, 93899652636576)
+Info: 
+	address: 93899680714342
+	next: object at 22724631026368 of size 1536
+		MO369[1536] (no allocation info)

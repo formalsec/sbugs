@@ -1,0 +1,19 @@
+Error: concretized symbolic size
+File: p2_ek.c
+Line: 147
+assembly.ll line: 10076
+State: 3
+Stack: 
+	#000010076 in read_flow_graph() at p2_ek.c:147
+	#100010835 in __klee_posix_wrapped_main() at p2_ek.c:327
+	#200007358 in __user_main(3, 94586163485216, 94586163485248) at runtime/POSIX/klee_init_env.c:245
+	#300000602 in __uClibc_main(94586196141168, 3, 94586163485216, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#400000767 in main(3, 94586163485216)
+Info: 
+  size expr: (Mul w64 8
+                       (SExt w64 (Add w32 2
+                                          (Mul w32 2
+                                                   (Mul w32 (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int)))
+                                                            (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_1))))))))
+  concretization : 16
+  unbound example: 8388624
