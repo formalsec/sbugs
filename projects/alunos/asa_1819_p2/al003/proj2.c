@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 /* Grupo 3 - João Fonseca 89476 e Tomás Lopes 89552 */
 
 #include <stdio.h>

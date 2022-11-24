@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 #include "main.h"
 
 /* Read first part of the command from user and send it to the parsing function */

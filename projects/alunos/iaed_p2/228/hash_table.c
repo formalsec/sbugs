@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 #define MAXLEN 20       /* Maximum dimension defined in case the given string is too long */
 
 #ifndef NAME

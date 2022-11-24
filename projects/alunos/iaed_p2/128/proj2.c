@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 #include "funcoes.h"
 
 void le_comandos(link_jogo *heads_jogo,link*heads,limites_lista *jogo,int n_linha);

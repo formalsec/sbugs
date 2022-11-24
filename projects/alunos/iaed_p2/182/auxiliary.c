@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 #include "auxiliary.h"
 
 /* Copies a string to a new batch of memory with the corresponding size. Returns a pointer. */

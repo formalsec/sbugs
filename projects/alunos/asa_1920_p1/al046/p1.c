@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 /* PROJETO 1 - ASA
  * 2º semestre 2019/2020
  * Álvaro Louro 86373 */

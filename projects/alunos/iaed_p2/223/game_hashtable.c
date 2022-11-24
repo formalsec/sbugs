@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 #include "game_hashtable.h"
 
 static glink *gheads;	/* array com ponteiros para as listas ligadas que constitutem a hashtable */

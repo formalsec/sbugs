@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 #include "commands.h"
 
 /* Funcao resposavel pela logica de criar e adiconar um novo jogo ao sistema. */

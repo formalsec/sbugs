@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 #include "common_code.h"
 
 /*Returns a can_fail_malloc'd string with the same chars as the argument given*/

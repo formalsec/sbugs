@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 #include "tabela_jogos.h"
 
 /* cria uma tabela de jogos vazia e devolve o seu ponteiro ----------------------------------- */

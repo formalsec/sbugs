@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 #include "Game.h"
 
 /* Creates and returns a new Game, initializing all it's values to 0 and NULL.*/

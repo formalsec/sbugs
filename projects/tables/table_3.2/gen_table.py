@@ -8,6 +8,8 @@ import statistics
 
 from texttable import Texttable
 
+PROJECT_ROOT = os.path.join("..", "..")
+
 def read_json(filename : str) -> dict:
     with open(filename, "r") as fd:
         return json.load(fd)
@@ -35,7 +37,7 @@ def gen_table(n_rows: int, n_cols : int, gt_0 : str, gt_1 : str):
     dgt_0 = read_json(gt_0)
     dgt_1 = read_json(gt_1)
 
-    categories = read_yaml(os.path.join("..", "cwe.yml"))
+    categories = read_yaml(os.path.join(PROJECT_ROOT, "cwe-mapping.yml"))
 
     col_map = {
         "iaed_p1"     : (1, 2),
@@ -129,8 +131,8 @@ def main(argv=None) -> int:
         argv=sys.argv[1:]
 
     n_rows, n_cols = 10, 23
-    gt_0 = os.path.join("..", "dataset-gt0.json")
-    gt_1 = os.path.join("..", "dataset-gt1-extended.json")
+    gt_0 = os.path.join(PROJECT_ROOT, "results", "dataset-gt0.json")
+    gt_1 = os.path.join(PROJECT_ROOT, "results", "dataset-gt1-extended.json")
 
     table = gen_table(n_rows, n_cols, gt_0, gt_1)
     table_str = to_latex(table, n_cols)

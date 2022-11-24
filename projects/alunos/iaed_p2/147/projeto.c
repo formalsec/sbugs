@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 #include "projeto.h"
 
 /* Funcao que lista pela ordem de insercao todos os jogos presentes na base de dados. */

@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 #include "team.h"
 
 /* Cria uma nova equipa com o nome e numero de vitorias fornecidos. O nome

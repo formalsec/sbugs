@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 #include "tabela_equipas.h"
 
 /* cria uma tabela de equipas vazia e devolve o seu ponteiro ----------------------------------- */

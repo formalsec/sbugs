@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 #include "hash_equipas.h"
 
 void inicializa_HashEquipas(HashEquipas *hash_table, int tamanho)

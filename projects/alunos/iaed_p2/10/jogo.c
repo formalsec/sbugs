@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 #include "jogo.h"
 
 pJogo criarJogo(char * nome, char * eq1, char * eq2, int pont1, int pont2, listaEq listaEquipas, int numINP){

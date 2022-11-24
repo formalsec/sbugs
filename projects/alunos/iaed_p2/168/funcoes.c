@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 #include "funcoes.h"
 
 /* 'a': Funcao que adiciona um jogo a base de dados de jogos.*/

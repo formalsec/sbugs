@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 /* Grupo 126 Alameda
 Beatriz Domingos 93026
 ASA - Projecto 1 */

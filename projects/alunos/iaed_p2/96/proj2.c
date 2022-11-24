@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 #include "main_f.h"
 
 /* funcao main inicializa as hash tables e as listas ligadas e efetua os comandos do programa*/

@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 #include "includes.h"
 
 /* Adiciona uma equipa a tab dada caso este nao esteja ja na tabela, e atualiza a variavel nl */

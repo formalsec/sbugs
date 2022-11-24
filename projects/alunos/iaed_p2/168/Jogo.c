@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 #include "Jogo.h"
 
 /*Funcao que liberta da memoria uma estrutura 'Jogo' e os seus

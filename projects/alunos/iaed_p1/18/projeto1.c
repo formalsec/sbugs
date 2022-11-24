@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 #include <stdio.h>
 
 /* tamanho maximo de uma string lida pelo programa atraves do comando 'a' */

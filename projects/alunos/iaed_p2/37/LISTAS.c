@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 #include "LISTAS.h"
 
 /* Recebe pointer para equipa e next e devolve pointer para o novo node. */

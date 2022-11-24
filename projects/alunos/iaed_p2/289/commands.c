@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 #include "commands.h"
 
 /* Comando a recebe um novo nome para um jogo, os nomes de duas equipas e os

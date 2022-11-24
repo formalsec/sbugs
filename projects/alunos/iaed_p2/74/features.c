@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 #include "_features.h"
 
 list *f_addgame(char *game_name,char *t1,char *t2,int s1,int s2,int nl,list *jogos){

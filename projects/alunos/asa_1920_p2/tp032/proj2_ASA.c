@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 /* Projeto 2 ASA 
    ist193734     Beatriz Venceslau
    ist193694     Carolina Ramos

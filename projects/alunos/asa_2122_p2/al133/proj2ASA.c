@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 /*
  * File: proj2ASA.c
  * Authors: João Vítor 99246, Rafael Maciel 100671

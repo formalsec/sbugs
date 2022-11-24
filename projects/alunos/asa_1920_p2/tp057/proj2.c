@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 /*
 	Projecto 2 - 16 MAIO 2020
 		A.S.A. - IST LEIC-TP 2019/2020

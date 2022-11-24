@@ -9,4 +9,5 @@ extern int   __VERIFIER_nondet_int(void);
 void *new_sym_var(unsigned int length) {
   return __VERIFIER_nondet_int();
 }
+
 #endif

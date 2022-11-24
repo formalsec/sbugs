@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 #include "jogos.h"
 
 /* dado um nome, duas equipas e dois inteiros correspondentes ao score, cria um jogo */

@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 #include "comandos.h"
 
 /* Adiciona um novo jogo ao programa. Recebe 3 strings correspondentes aos

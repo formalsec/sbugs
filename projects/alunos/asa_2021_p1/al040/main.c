@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 /*  ASA Project 1 - Dominos
     Pedro Lynce Silva ist195656
     Due date - 19 de Abril 2021 */

@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 #include "hashGame.h"
 
 /* Unlike the teams' hash table, when a node is freed the game isn't, becuase

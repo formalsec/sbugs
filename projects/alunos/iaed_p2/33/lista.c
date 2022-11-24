@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 #include "lista.h"
 
 /*Inicia a lista, alocando memoria e colocando o head e tail a NULL*/

@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 #include "projeto.h"
 
 /* Le o nome da equipa a adicionar, verifica se ja existe alguma equipa com esse

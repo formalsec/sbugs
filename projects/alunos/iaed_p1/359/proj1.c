@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 #include <stdio.h>
 #include <string.h>
 #define MAXIDP 10000       /*nr maximo de produtos*/

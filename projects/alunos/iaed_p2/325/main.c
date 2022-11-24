@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 #include "Estrutura_jogos.h"
 #include "Hash_equipas.h"
 #include "Hash_jogos.h"

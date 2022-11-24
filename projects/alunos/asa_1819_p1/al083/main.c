@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 /*************************************************************
 1º Projeto Analise e Sintese de Algoritmos 
 2º Semestre 2018/2019

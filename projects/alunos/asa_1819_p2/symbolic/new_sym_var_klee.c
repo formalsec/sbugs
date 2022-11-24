@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 #include <stdlib.h>
 
 void klee_make_symbolic(void *addr, size_t nbytes, const char *name);

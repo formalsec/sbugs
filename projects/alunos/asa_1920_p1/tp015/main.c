@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 /*Grupo 15 Diogo Silva ist193706   Martim Pimentel ist 193738*/
 #include <stdio.h>
 #include <stdlib.h>

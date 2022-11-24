@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 /*@author 57395	Tiago Ferreira tg054 ASA 19/20*/
 
 #include <stdio.h>

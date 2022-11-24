@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 /*-------------------------------------//-------------------------------------*/
 /*--------------------------------ASA projeto 1-------------------------------*/
 /*---------------------------Carolina Brás ist 94227--------------------------*/

@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 /*
  	Projecto 1 - ASA - TP057
 	LEIC-T - 73942 - Miguel Mestre 

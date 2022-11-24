@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 /*Analise e Sintese de Algoritmos, DEI/IST/ULisboa 2019-2020 */
 /*Trabalho realizado por:
  * Pedro Magalhaes e Silva, nº92540

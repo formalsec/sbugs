@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 #include "hash.h"
 /*Funcao simples de hash dada nos slides das aulas teoricas
 recebe como argumentos um ponteiro para char(string) e um inteiro que

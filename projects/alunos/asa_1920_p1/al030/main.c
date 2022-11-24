@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 /* 1o projecto de ASA 2019/2020
     Tomas Sequeira n.92565
     Miguel Pereira n.92530

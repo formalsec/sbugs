@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 #include <stdio.h>            /* Biblioteca de Inputs e Outputs  */
 #include <string.h>           /* Biblioteca de manipulacao de Strings  */
 #include <stdlib.h>           /* Biblioteca de utilidade (atoi())  */                  

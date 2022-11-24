@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 /*
 Projeto 1 ASA
 Alunos: Matheus Franco (92523), Guilherme Ribeiros Dias (93908)

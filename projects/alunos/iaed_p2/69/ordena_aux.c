@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 #include "ordena_aux.h"
 
 /*sabendo quantas equipas existem com o maximo de vitorias entao vamos

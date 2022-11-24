@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 #include "jogos.h"
 
 /* funcao que adiciona um jogo ao fim da lista dulamente ligada dos jogos*/

@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 #include "interacao.h"
 
 /*Recebe as tabelas de jogos e equipas e a fila de jogos e inicializa-as

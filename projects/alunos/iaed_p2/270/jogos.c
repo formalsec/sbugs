@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 #include "jogos.h"
 
 /* Recebe um ponteiro para um jogo e Liberta a memoria alocada por ele

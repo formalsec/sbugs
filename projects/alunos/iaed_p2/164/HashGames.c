@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 #include "HashGames.h"
 
 /* Hash function used both in the hash table of Teams and the hash table of Nodes.*/

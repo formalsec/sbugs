@@ -16,10 +16,12 @@ testsuites = {
     "verifuzz" : 0,
 }
 
+PROJECT_ROOT = os.path.join("..", "..")
+
 def get_row(tool : str) -> list:
     vulns_detected = 1
     testsuite_size = testsuites[tool]
-    with open(os.path.join("..", tool + ".json"), "r") as fd:
+    with open(os.path.join(PROJECT_ROOT, "results", tool + ".json"), "r") as fd:
         data = json.load(fd)
     vuln_lst = []
     for i in data.values():

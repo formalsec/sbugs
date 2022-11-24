@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 #include "Estruturas.h"
 
 /* Funcao que da free aos conteudos de jogo e ao proprio jogo */

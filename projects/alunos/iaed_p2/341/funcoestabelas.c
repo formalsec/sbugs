@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 #include "funcoestabelas.h"
 
 /*Funcao que inicia uma Hash Table de jogos alocando a sua memoria e com a capacidade definida por 

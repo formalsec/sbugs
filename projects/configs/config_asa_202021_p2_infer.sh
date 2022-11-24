@@ -5,4 +5,4 @@ export CC=clang
 # Student projects
 export PROJS_DIR=alunos/asa_2021_p2
 # Ouputs
-export OUTS_DIR=output/infer
+export OUTS_DIR=outputs/infer

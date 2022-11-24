@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 /* GRUPO 22 - LEIC-T */
 /* Monica Alves 90759 */
 /* Joao Galamba 90735 */

@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 /* Analise e Sintese de Algoritmos, IST 2S 19-20    */
 /* Entrega de Projeto 1, DCG ist186399              */
 

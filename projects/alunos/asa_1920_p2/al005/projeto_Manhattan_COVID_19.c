@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 /*Aluna: Rita Teresa Oliveira (92546)*/
 #include <stdio.h>
 #include <stdlib.h>

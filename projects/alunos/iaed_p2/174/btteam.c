@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 #include "btteam.h"
 
 /* Cria um novo node de uma arvore binaria de equipas. Devolve o ponteiro que

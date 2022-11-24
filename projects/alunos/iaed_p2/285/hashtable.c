@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 #include "hashtable.h" /* atraves deste include, acesso os ficheiros Jogo.h, equipas.h e hashtable.h */
 #include <string.h>
 #include <stdlib.h>

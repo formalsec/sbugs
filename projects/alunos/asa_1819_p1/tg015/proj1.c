@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 /* ==========================================================================================================
  * IST LEIC-T Analise e Sintese de Algoritmos 18/19
  * Project 1 - proj1.c

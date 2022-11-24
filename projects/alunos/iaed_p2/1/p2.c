@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 #define DIMENSAO_DO_COMANDO 3079 /* Maximo sera comando + espaco (2) + jogo(1023) + 2 equipas (1023*2) + par de numeros inteiros (4) + : (4) */
 #define DIMENSAO_DO_NOME_DE_EQUIPA 1023 
 #define DIMENSAO_DO_NOME_DE_JOGO 1023 

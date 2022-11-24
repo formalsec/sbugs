@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 #include "matches.h"
 
 Matches * add_match_to_list(Matches ** head, char *m_name, char *m_team1, char *m_team2, int m_score1, int m_score2) { 

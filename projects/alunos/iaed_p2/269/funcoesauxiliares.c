@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 #include "estrutura.h"
 
 /* Funcao auxiliar que cria uma hashtable para os jogos onde no futuro lhe vao ser adicionados

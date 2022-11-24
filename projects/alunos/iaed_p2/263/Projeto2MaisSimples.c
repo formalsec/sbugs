@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 #include "estruturas_info.h"  
 
 game* NEWGAME(char* name_game, char* team1, char* team2, int score1, int score2, int order){

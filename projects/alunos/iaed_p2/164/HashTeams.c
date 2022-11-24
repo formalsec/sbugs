@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 #include "HashTeams.h"
 
 /* Receives a size "m" and creates a new hash table of Teams, with that size,

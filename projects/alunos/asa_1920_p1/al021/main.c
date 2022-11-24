@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 /*
  * Main file for student grade simulator
  * Alexandre Pires nº92414 ; Joao Fonseca nº92497

@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 /*  2º Projeto - ASA 2019/20
     António Lopes- 89415
     Pedro Galhardo - 89517    */

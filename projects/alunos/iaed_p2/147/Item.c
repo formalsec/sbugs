@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 #include "Item.h"
 
 /* Funcao auxiliar que inicializa a lista que guarda todos os jogos do sistema. */

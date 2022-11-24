@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 #include "AVL.h"
 
 /*Inicializa a AVL, alocando memoria e colocando a head a NULL*/

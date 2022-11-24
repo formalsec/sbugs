@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 #include "estrutura.h"
 
 /*Funcao principal de adicionar uma equipa a hashtable das equipas e e importante porque sem

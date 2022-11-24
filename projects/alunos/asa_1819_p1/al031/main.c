@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 /*Trabalho realizado por:*/
 /*Telmo Lopes, 89540*/
 /*Jose Gomes, 89490*/

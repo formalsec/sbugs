@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 /* Projeto 1 - ASA 2018-19
    Antonio Lopes - 89415
    Joao Goncalves - 93918  */

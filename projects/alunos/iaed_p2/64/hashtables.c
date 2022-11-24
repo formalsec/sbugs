@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 #include "projeto.h"
 
 /* Funcao hash que utiliza strings como criterio de comparacao. Recalcula a sua

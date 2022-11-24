@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 #include "Team_b2.h"
 
 /* Allocs memory for a team and its name. Returns a pointer to the Team Created */

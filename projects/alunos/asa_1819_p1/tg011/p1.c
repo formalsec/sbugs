@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 /*PROJETO 1 DE ASA*/
 /*84721 - GONCALO J G CRUZ*/
 #include <stdio.h>

@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 #include "jogo.h"
 
 Jogo novoJogo(char* nome, char* eq1, char* eq2, int sc1, int sc2, int id){

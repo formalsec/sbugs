@@ -1,4 +1,4 @@
-#include "/home/fmarques/sbugs/Run_Projects/Projects/lib/allocators.h"
+#include "/home/fmarques/sbugs/projects/alunos/lib/allocators.h"
 #include "p2.h"             /* Header file que contem as estruturas utilizadas no projeto e os comandos */
 #include "auxiliares.h"     /* Header file que contem os defines relativos as funcoes auxiliares */
 #include <stdio.h>
