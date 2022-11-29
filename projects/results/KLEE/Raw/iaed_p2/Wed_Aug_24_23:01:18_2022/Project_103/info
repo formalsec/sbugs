@@ -1,0 +1,23 @@
+klee -output-dir=Results/Klee/Projects/iaed_p2/Wed_Aug_24_23:01:18_2022/Project_103 --posix-runtime --libc=uclibc --only-output-states-covering-new -max-time=900 --watchdog Projects/iaed_p2/103/preprocessed/103.bc -sym-stdin 10
+PID: 17782
+Using monotonic steady clock with 1/1000000000s resolution
+Started: 2022-08-25 03:37:34
+BEGIN searcher description
+<InterleavedSearcher> containing 2 searchers:
+RandomPathSearcher
+WeightedRandomSearcher::CoveringNew
+</InterleavedSearcher>
+END searcher description
+Finished: 2022-08-25 03:52:35
+Elapsed: 00:15:01
+KLEE: done: explored paths = 183
+KLEE: done: avg. constructs per query = 759
+KLEE: done: total queries = 640
+KLEE: done: valid queries = 168
+KLEE: done: invalid queries = 472
+KLEE: done: query cex = 640
+
+KLEE: done: total instructions = 70404
+KLEE: done: completed paths = 0
+KLEE: done: partially completed paths = 183
+KLEE: done: generated tests = 14

@@ -1,0 +1,26 @@
+Error: memory error: out of bound pointer
+File: jogo.c
+Line: 95
+assembly.ll line: 9970
+State: 891
+Stack: 
+	#000009970 in adicionajogo(94922227367936, 94922258767872, 1) at jogo.c:95
+	#100011059 in __klee_posix_wrapped_main() at proj2.c:56
+	#200007360 in __user_main(3, 94922224566176, 94922224566208) at runtime/POSIX/klee_init_env.c:245
+	#300000604 in __uClibc_main(94922257601176, 3, 94922224566176, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#400000769 in main(3, 94922224566176)
+Info: 
+	address: (Add w64 94922258767872
+          (Mul w64 8
+                   (SExt w64 (SRem w32 (Sub w32 0
+                                                (Mul w32 (Mul w32 (Mul w32 (Mul w32 (Mul w32 712364078
+                                                                                             (SExt w32 (Extract w8 0 (Extract w32 0 (SExt w64 (Read w8 0 sym_char_10))))))
+                                                                                    (SExt w32 (Extract w8 0 (Extract w32 0 (SExt w64 (Read w8 0 sym_char_11))))))
+                                                                           (SExt w32 (Extract w8 0 (Extract w32 0 (SExt w64 (Read w8 0 sym_char_12))))))
+                                                                  (SExt w32 (Extract w8 0 (Extract w32 0 (SExt w64 (Read w8 0 sym_char_13))))))
+                                                         (SExt w32 (Extract w8 0 (Extract w32 0 (SExt w64 (Read w8 0 sym_char_14)))))))
+                                       1000))))
+	example: 94922258762688
+	range: [94922258762688, 94922258762688]
+	next: object at 23354682825408 of size 1536
+		MO356[1536] (no allocation info)

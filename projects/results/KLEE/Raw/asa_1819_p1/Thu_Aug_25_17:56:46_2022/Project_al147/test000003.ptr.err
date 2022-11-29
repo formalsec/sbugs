@@ -1,0 +1,15 @@
+Error: memory error: out of bound pointer
+File: grupo147v4.c
+Line: 343
+assembly.ll line: 10494
+State: 4
+Stack: 
+	#000010494 in OrdenaLista(94611879026544, 0, 18446744073709551615) at grupo147v4.c:343
+	#100009871 in __klee_posix_wrapped_main() at grupo147v4.c:114
+	#200007351 in __user_main(3, 94611846232960, 94611846232992) at runtime/POSIX/klee_init_env.c:245
+	#300000595 in __uClibc_main(94611879021256, 3, 94611846232960, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#400000760 in main(3, 94611846232960)
+Info: 
+	address: 94611879026544
+	next: object at 23136479693504 of size 1536
+		MO354[1536] (no allocation info)

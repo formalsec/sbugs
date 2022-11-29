@@ -1,0 +1,28 @@
+Error: memory error: out of bound pointer
+File: proj1_exp.c
+Line: 124
+assembly.ll line: 10054
+State: 9
+Stack: 
+	#000010054 in adicionaAresta(symbolic, symbolic, symbolic) at proj1_exp.c:124
+	#100009785 in __klee_posix_wrapped_main() at proj1_exp.c:77
+	#200007350 in __user_main(3, 94796826098208, 94796826098240) at runtime/POSIX/klee_init_env.c:245
+	#300000594 in __uClibc_main(94796858505488, 3, 94796826098208, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#400000759 in main(3, 94796826098208)
+Info: 
+	address: (Add w64 24
+          (ReadLSB w64 0 U0:[(Add w32 7
+                                      N0:(Extract w32 0 (Add w64 128
+                                                                 (Mul w64 8
+                                                                          (SExt w64 (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_2))))))))=0,
+                             (Add w32 6 N0)=0,
+                             (Add w32 5 N0)=86,
+                             (Add w32 4 N0)=55,
+                             (Add w32 3 N0)=157,
+                             (Add w32 2 N0)=39,
+                             (Add w32 1 N0)=66,
+                             N0=144] @ const_arr2))
+	example: 94796859785896
+	range: [94796859785896, 94796859785896]
+	next: object at 22881843034816 of size 1536
+		MO352[1536] (no allocation info)

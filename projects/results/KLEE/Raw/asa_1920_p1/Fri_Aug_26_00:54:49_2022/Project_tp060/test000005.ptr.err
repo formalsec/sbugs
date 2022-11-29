@@ -1,0 +1,38 @@
+Error: memory error: out of bound pointer
+File: project1.c
+Line: 48
+assembly.ll line: 9806
+State: 27931
+Stack: 
+	#000009806 in print(94123216769696) at project1.c:48
+	#100009901 in __klee_posix_wrapped_main() at project1.c:88
+	#200007357 in __user_main(3, 94123180489600, 94123180489632) at runtime/POSIX/klee_init_env.c:245
+	#300000601 in __uClibc_main(94123212915600, 3, 94123180489600, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#400000766 in main(3, 94123180489600)
+Info: 
+	address: (Add w64 94123216647864
+          (Mul w64 4
+                   (SExt w64 (ReadLSB w32 N0:(Extract w32 0 (Add w64 18446649950358169632
+                                                                     (ReadLSB w64 0 U0:[N1:(Add w32 7
+                                                                                                    N2:(Extract w32 0 (Mul w64 8
+                                                                                                                               (SExt w64 (Extract w32 0 (Add w64 18446744073709551615
+                                                                                                                                                                 (ZExt w64 (Extract w8 0 (Add w32 4294967248
+                                                                                                                                                                                                  (SExt w32 (Extract w8 0 (ZExt w32 (Read w8 8 stdin)))))))))))))=0,
+                                                                                        N3:(Add w32 6 N2)=0,
+                                                                                        N4:(Add w32 5 N2)=85,
+                                                                                        N5:(Add w32 4 N2)=154,
+                                                                                        N6:(Add w32 3 N2)=204,
+                                                                                        N7:(Add w32 2 N2)=236,
+                                                                                        N8:(Add w32 1 N2)=151,
+                                                                                        N2=224] @ const_arr3))) U1:[15=(Read w8 N1 const_arr3),
+                                                                                                                    14=(Read w8 N3 const_arr3),
+                                                                                                                    13=(Read w8 N4 const_arr3),
+                                                                                                                    12=(Read w8 N5 const_arr3),
+                                                                                                                    11=(Read w8 N6 const_arr3),
+                                                                                                                    10=(Read w8 N7 const_arr3),
+                                                                                                                    9=(Read w8 N8 const_arr3),
+                                                                                                                    8=(Read w8 N2 const_arr3)] @ const_arr4))))
+	example: 94123216647860
+	range: [94123216647860, 94123216647860]
+	next: object at 22901931444928 of size 1536
+		MO354[1536] (no allocation info)

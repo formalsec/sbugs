@@ -1,0 +1,21 @@
+Error: memory error: out of bound pointer
+File: games.c
+Line: 418
+assembly.ll line: 11007
+State: 344
+Stack: 
+	#000011007 in hash_lookfor_game(94299489501888, 94299478378496) at games.c:418
+	#100011175 in lookfor_game(94299489501888, 1) at games.c:194
+	#200011857 in __klee_posix_wrapped_main() at project_main.c:46
+	#300007364 in __user_main(3, 94299454504160, 94299454504192) at runtime/POSIX/klee_init_env.c:245
+	#400000608 in __uClibc_main(94299488252736, 3, 94299454504160, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#500000773 in main(3, 94299454504160)
+Info: 
+	address: (Add w64 94299488999616
+          (Mul w64 16
+                   (SExt w64 (SRem w32 (SExt w32 (Extract w8 0 (Extract w32 0 (SExt w64 (Read w8 0 sym_char)))))
+                                       17))))
+	example: 94299488999520
+	range: [94299488999520, 94299488999520]
+	next: object at 22400837118656 of size 1536
+		MO388[1536] (no allocation info)

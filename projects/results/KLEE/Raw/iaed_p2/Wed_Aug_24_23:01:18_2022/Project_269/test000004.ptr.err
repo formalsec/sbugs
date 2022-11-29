@@ -1,0 +1,20 @@
+Error: memory error: out of bound pointer
+File: funcoesprincipais.c
+Line: 111
+assembly.ll line: 10627
+State: 101
+Stack: 
+	#000010627 in apagajogo(94281947525344, 94281942031632, 94281966309376, 1) at funcoesprincipais.c:111
+	#100011265 in __klee_posix_wrapped_main() at main.c:89
+	#200007355 in __user_main(3, 94281941401856, 94281941401888) at runtime/POSIX/klee_init_env.c:245
+	#300000599 in __uClibc_main(94281974477672, 3, 94281941401856, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#400000764 in main(3, 94281941401856)
+Info: 
+	address: (Add w64 94281947525344
+          (Mul w64 8
+                   (SExt w64 (SRem w32 (SExt w32 (Extract w8 0 (Extract w32 0 (SExt w64 (Read w8 0 sym_char)))))
+                                       10))))
+	example: 94281947525280
+	range: [94281947525272, 94281947525336]
+	next: object at 22908600752832 of size 1536
+		MO361[1536] (no allocation info)

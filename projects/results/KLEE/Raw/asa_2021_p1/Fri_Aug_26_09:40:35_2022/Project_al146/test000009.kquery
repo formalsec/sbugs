@@ -1,0 +1,40 @@
+array const_arr4[24] : w32 -> w8 = [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+array model_version[4] : w32 -> w8 = symbolic
+array stdin-stat[144] : w32 -> w8 = symbolic
+array sym_int[4] : w32 -> w8 = symbolic
+array sym_int_1[4] : w32 -> w8 = symbolic
+array sym_int_3[4] : w32 -> w8 = symbolic
+(query [(Eq false
+             (Eq 0
+                 (And w64 (ReadLSB w64 8 stdin-stat)
+                          2147483647)))
+         (Eq 0
+             (And w64 (ReadLSB w64 56 stdin-stat)
+                      18446744073709486080))
+         (Eq 1
+             (ReadLSB w32 0 model_version))
+         (Eq 4
+             (Mul w64 4
+                      (ZExt w64 N0:(Add w32 1
+                                            N1:(Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int)))))))
+         (Slt 0
+              (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_1))))
+         (Eq false
+             (Ult N2:(Mul w64 16
+                              (SExt w64 (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_3)))))
+                  13))
+         (Eq false
+             (Ult (Add w64 118816 N2) 21))
+         (Eq false
+             (Ult (Add w64 284192 N2) 21))
+         (Ult N3:(Add w64 326176 N2) 21)
+         (Eq 0
+             (ReadLSB w32 N4:(Extract w32 0 N3) U0:[23=0, 22=0, 21=85, 20=210, 19=144, 18=0, 17=110, 16=24, 15=(Extract w8 24 N0),
+                                                    14=(Extract w8 16 N0),
+                                                    13=(Extract w8 8 N0),
+                                                    12=(Extract w8 0 N0),
+                                                    11=0, 10=0, 9=0, 8=0, 7=(Extract w8 24 N1),
+                                                    6=(Extract w8 16 N1),
+                                                    5=(Extract w8 8 N1),
+                                                    4=(Extract w8 0 N1)] @ const_arr4))]
+        false)

@@ -1,0 +1,73 @@
+Error: memory error: out of bound pointer
+File: NetManager.c
+Line: 456
+assembly.ll line: 10881
+State: 48
+Stack: 
+	#000010881 in relax(symbolic, symbolic) at NetManager.c:456
+	#100010827 in preflow(94289571049448) at NetManager.c:438
+	#200010474 in pushRelable() at NetManager.c:498
+	#300009920 in __klee_posix_wrapped_main() at NetManager.c:131
+	#400007373 in __user_main(3, 94289536891776, 94289536891808) at runtime/POSIX/klee_init_env.c:245
+	#500000617 in __uClibc_main(94289569805304, 3, 94289536891776, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#600000782 in main(3, 94289536891776)
+Info: 
+	address: (Add w64 20
+          (ReadLSB w64 N0:(Extract w32 0 (Add w64 18446649784138359368
+                                                  N1:(ReadLSB w64 N2:(Extract w32 0 (Add w64 18446649784139170704
+                                                                                             (ReadLSB w64 24 U0:[(Add w32 7
+                                                                                                                          N3:(Extract w32 0 (Add w64 8
+                                                                                                                                                     N4:(Mul w64 24
+                                                                                                                                                                 (SExt w64 (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_4))))))))=0,
+                                                                                                                 (Add w32 6 N3)=0,
+                                                                                                                 (Add w32 5 N3)=85,
+                                                                                                                 (Add w32 4 N3)=193,
+                                                                                                                 (Add w32 3 N3)=128,
+                                                                                                                 (Add w32 2 N3)=89,
+                                                                                                                 (Add w32 1 N3)=60,
+                                                                                                                 N3=112,
+                                                                                                                 (Add w32 7 N5:(Extract w32 0 N4))=0,
+                                                                                                                 (Add w32 6 N5)=0,
+                                                                                                                 (Add w32 5 N5)=85,
+                                                                                                                 (Add w32 4 N5)=193,
+                                                                                                                 (Add w32 3 N5)=128,
+                                                                                                                 (Add w32 2 N5)=89,
+                                                                                                                 (Add w32 1 N5)=60,
+                                                                                                                 N5=112,
+                                                                                                                 71=0, 70=0, 69=0, 68=0, 67=0, 66=0, 65=0, 64=0, 63=0, 62=0, 61=0, 60=0, 59=0, 58=0, 57=0, 56=0, 55=0, 54=0, 53=0, 52=0, 51=0, 50=0, 49=0, 48=0, 47=0, 46=0, 45=0, 44=0, 43=(Extract w8 24 N6:(Add w32 2
+                                                                                                                                                                                                                                                                                                                       (Add w32 (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int)))
+                                                                                                                                                                                                                                                                                                                                (Mul w32 2
+                                                                                                                                                                                                                                                                                                                                         (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_1))))))),
+                                                                                                                 42=(Extract w8 16 N6),
+                                                                                                                 41=(Extract w8 8 N6),
+                                                                                                                 40=(Extract w8 0 N6)] @ const_arr3))) const_arr10))) U1:[N7:(Add w32 3
+                                                                                                                                                                                      N8:(Extract w32 0 (Add w64 18446649784138359388 N1)))=(Extract w8 24 N9:(Add w32 (ReadLSB w32 N8 U2:[31=0, 30=0, 29=0, 28=0, 27=(Extract w8 24 N10:(Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_5)))),
+                                                                                                                                                                                                                                                                                           26=(Extract w8 16 N10),
+                                                                                                                                                                                                                                                                                           25=(Extract w8 8 N10),
+                                                                                                                                                                                                                                                                                           24=(Extract w8 0 N10),
+                                                                                                                                                                                                                                                                                           23=0, 22=0, 21=0, 20=0, 19=0, 18=0, 17=0, 16=0, 15=(Extract w8 56 N11:(Add w64 94289571049424
+                                                                                                                                                                                                                                                                                                                                                                          (Mul w64 24
+                                                                                                                                                                                                                                                                                                                                                                                   (SExt w64 (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_3))))))),
+                                                                                                                                                                                                                                                                                           14=(Extract w8 48 N11),
+                                                                                                                                                                                                                                                                                           13=(Extract w8 40 N11),
+                                                                                                                                                                                                                                                                                           12=(Extract w8 32 N11),
+                                                                                                                                                                                                                                                                                           11=(Extract w8 24 N11),
+                                                                                                                                                                                                                                                                                           10=(Extract w8 16 N11),
+                                                                                                                                                                                                                                                                                           9=(Extract w8 8 N11),
+                                                                                                                                                                                                                                                                                           8=(Extract w8 0 N11),
+                                                                                                                                                                                                                                                                                           7=(Extract w8 56 N12:(Add w64 94289571049424 N4)),
+                                                                                                                                                                                                                                                                                           6=(Extract w8 48 N12),
+                                                                                                                                                                                                                                                                                           5=(Extract w8 40 N12),
+                                                                                                                                                                                                                                                                                           4=(Extract w8 32 N12),
+                                                                                                                                                                                                                                                                                           3=(Extract w8 24 N12),
+                                                                                                                                                                                                                                                                                           2=(Extract w8 16 N12),
+                                                                                                                                                                                                                                                                                           1=(Extract w8 8 N12),
+                                                                                                                                                                                                                                                                                           0=(Extract w8 0 N12)] @ const_arr5)
+                                                                                                                                                                                                                                                                       (ReadLSB w32 N13:(Extract w32 0 (Add w64 18446649784138359384 N1)) U2))),
+                                                                                                                                                                          N14:(Add w32 2 N8)=(Extract w8 16 N9),
+                                                                                                                                                                          N15:(Add w32 1 N8)=(Extract w8 8 N9),
+                                                                                                                                                                          N8=(Extract w8 0 N9)] @ U2))
+	example: 94289973702628
+	range: [94289571049516, 94341110656948]
+	next: object at 22757802265280 of size 1536
+		MO368[1536] (no allocation info)

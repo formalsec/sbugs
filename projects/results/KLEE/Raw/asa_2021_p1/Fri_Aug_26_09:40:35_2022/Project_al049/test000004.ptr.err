@@ -1,0 +1,20 @@
+Error: memory error: out of bound pointer
+File: p1tiago.c
+Line: 81
+assembly.ll line: 9907
+State: 4
+Stack: 
+	#000009907 in readInput() at p1tiago.c:81
+	#100010414 in __klee_posix_wrapped_main() at p1tiago.c:228
+	#200007354 in __user_main(3, 94405869541920, 94405869541952) at runtime/POSIX/klee_init_env.c:245
+	#300000598 in __uClibc_main(94405901375984, 3, 94405869541920, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#400000763 in main(3, 94405869541920)
+Info: 
+	address: (Add w64 4
+          (Mul w64 32
+                   (SExt w64 (Add w32 4294967295
+                                      (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_3)))))))
+	example: 18446744073709551588
+	range: [4, 18446744073709551588]
+	next: object at 23025021528768 of size 1536
+		MO349[1536] (no allocation info)

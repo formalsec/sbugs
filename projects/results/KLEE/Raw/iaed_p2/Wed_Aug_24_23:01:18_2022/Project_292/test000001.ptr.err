@@ -1,0 +1,23 @@
+Error: memory error: out of bound pointer
+File: table_finder.c
+Line: 70
+assembly.ll line: 9939
+State: 18
+Stack: 
+	#000009939 in encontraEquipa(93958865477632, 93958864319488, false, 20287, 1, 93958864697952) at table_finder.c:70
+	#100011316 in InseretEquipa(93958865477632, 93958864319488, 20287, 1, 93958864697952) at table_changers.c:147
+	#200010556 in __klee_posix_wrapped_main() at projeto.c:69
+	#300007364 in __user_main(3, 93958830784064, 93958830784096) at runtime/POSIX/klee_init_env.c:245
+	#400000608 in __uClibc_main(93958864119072, 3, 93958830784064, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#500000773 in main(3, 93958830784064)
+Info: 
+	address: (Add w64 93958865477632
+          (Mul w64 8
+                   (SExt w64 (Extract w32 0 (SExt w64 (SRem w32 (Xor w32 3
+                                                                         (Mul w32 3
+                                                                                  (SExt w32 (Extract w8 0 (Extract w32 0 (SExt w64 (Read w8 0 sym_char_11)))))))
+                                                                20287))))))
+	example: 93958865477616
+	range: [93958865474560, 93958865477616]
+	next: object at 22924367145664 of size 1536
+		MO356[1536] (no allocation info)

@@ -1,0 +1,15 @@
+Error: concretized symbolic size
+File: ProjetoASA.c
+Line: 166
+assembly.ll line: 10160
+State: 5
+Stack: 
+	#000010160 in __klee_posix_wrapped_main() at ProjetoASA.c:166
+	#100007352 in __user_main(3, 94596838685216, 94596838685248) at runtime/POSIX/klee_init_env.c:245
+	#200000596 in __uClibc_main(94596871141800, 3, 94596838685216, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#300000761 in main(3, 94596838685216)
+Info: 
+  size expr: (Mul w64 4
+                       (SExt w64 (ReadLSB w32 0 sym_long)))
+  concretization : 1073741828
+  unbound example: 1073741832

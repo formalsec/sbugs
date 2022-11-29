@@ -1,0 +1,71 @@
+array model_version[4] : w32 -> w8 = symbolic
+array stdin[10] : w32 -> w8 = symbolic
+array stdin-stat[144] : w32 -> w8 = symbolic
+array sym_char[1] : w32 -> w8 = symbolic
+array sym_char_10[1] : w32 -> w8 = symbolic
+array sym_char_20[1] : w32 -> w8 = symbolic
+array sym_char_40[1] : w32 -> w8 = symbolic
+array sym_char_41[1] : w32 -> w8 = symbolic
+array sym_char_42[1] : w32 -> w8 = symbolic
+array sym_char_43[1] : w32 -> w8 = symbolic
+array sym_char_44[1] : w32 -> w8 = symbolic
+array sym_char_45[1] : w32 -> w8 = symbolic
+array sym_char_46[1] : w32 -> w8 = symbolic
+array sym_char_47[1] : w32 -> w8 = symbolic
+array sym_char_48[1] : w32 -> w8 = symbolic
+array sym_char_50[1] : w32 -> w8 = symbolic
+(query [(Eq false
+             (Eq 0
+                 (And w64 (ReadLSB w64 8 stdin-stat)
+                          2147483647)))
+         (Eq 0
+             (And w64 (ReadLSB w64 56 stdin-stat)
+                      18446744073709486080))
+         (Eq 1
+             (ReadLSB w32 0 model_version))
+         (Eq 65
+             (Extract w8 0 (ZExt w32 (Read w8 0 stdin))))
+         (Eq 0
+             (Extract w8 0 (Extract w32 0 (SExt w64 (Read w8 0 sym_char)))))
+         (Eq 97
+             (Extract w8 0 (ZExt w32 (Read w8 1 stdin))))
+         (Eq false
+             (Eq 32
+                 (Extract w8 0 (Extract w32 0 (SExt w64 (Read w8 0 sym_char_10))))))
+         (Eq false
+             (Eq 0
+                 (Extract w8 0 (Extract w32 0 (SExt w64 (Read w8 0 sym_char_20))))))
+         (Eq 97
+             (Extract w8 0 (ZExt w32 (Read w8 2 stdin))))
+         (Eq 32
+             (Extract w8 0 (Extract w32 0 (SExt w64 (Read w8 0 sym_char_40)))))
+         (Eq false
+             (Eq 0
+                 (Extract w8 0 (Extract w32 0 (SExt w64 (Read w8 0 sym_char_41))))))
+         (Eq false
+             (Eq 0
+                 (Extract w8 0 (Extract w32 0 (SExt w64 (Read w8 0 sym_char_42))))))
+         (Eq false
+             (Eq 0
+                 (Extract w8 0 (Extract w32 0 (SExt w64 (Read w8 0 sym_char_43))))))
+         (Eq false
+             (Eq 0
+                 (Extract w8 0 (Extract w32 0 (SExt w64 (Read w8 0 sym_char_44))))))
+         (Eq false
+             (Eq 0
+                 (Extract w8 0 (Extract w32 0 (SExt w64 (Read w8 0 sym_char_45))))))
+         (Eq false
+             (Eq 0
+                 (Extract w8 0 (Extract w32 0 (SExt w64 (Read w8 0 sym_char_46))))))
+         (Eq false
+             (Eq 0
+                 (Extract w8 0 (Extract w32 0 (SExt w64 (Read w8 0 sym_char_47))))))
+         (Eq false
+             (Eq 0
+                 (Extract w8 0 (Extract w32 0 (SExt w64 (Read w8 0 sym_char_48))))))
+         (Eq false
+             (Eq 0
+                 (Extract w8 0 (Extract w32 0 (SExt w64 (Read w8 0 sym_char_50))))))
+         (Eq 120
+             (Extract w8 0 (ZExt w32 (Read w8 3 stdin))))]
+        false)

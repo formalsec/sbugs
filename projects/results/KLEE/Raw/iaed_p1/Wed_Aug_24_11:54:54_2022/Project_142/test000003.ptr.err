@@ -1,0 +1,19 @@
+Error: memory error: out of bound pointer
+File: final.c
+Line: 216
+assembly.ll line: 10356
+State: 18
+Stack: 
+	#000010356 in funcaoc(symbolic) at final.c:216
+	#100011564 in __klee_posix_wrapped_main() at final.c:582
+	#200007378 in __user_main(3, 94475070249856, 94475070249888) at runtime/POSIX/klee_init_env.c:245
+	#300000622 in __uClibc_main(94475103327112, 3, 94475070249856, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#400000787 in main(3, 94475070249856)
+Info: 
+	address: (Add w64 94475105443456
+          (Mul w64 16004
+                   (SExt w64 (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int))))))
+	example: 60106777140864
+	range: [60106777140864, 94475105427452]
+	next: object at 22897376172736 of size 1536
+		MO361[1536] (no allocation info)

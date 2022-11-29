@@ -1,0 +1,23 @@
+Error: memory error: out of bound pointer
+File: comandos.c
+Line: 251
+assembly.ll line: 11900
+State: 81
+Stack: 
+	#000011900 in procura_equipa(93874361008128, 93874326675456) at comandos.c:251
+	#100011873 in equipa_procura(93874326675456, 93874361008128) at comandos.c:292
+	#200010558 in func_A(1, 93874361008128, 93874360975792) at comandos.c:467
+	#300009975 in que_func(1, 93874360460528, 93874361008128, 93874369421312, 93874360977088, 93874360975792) at comandos.c:766
+	#400009820 in __klee_posix_wrapped_main() at main.c:41
+	#500007365 in __user_main(3, 93874326551776, 93874326551808) at runtime/POSIX/klee_init_env.c:245
+	#600000609 in __uClibc_main(93874352032264, 3, 93874326551776, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#700000774 in main(3, 93874326551776)
+Info: 
+	address: (Add w64 93874361008128
+          (Mul w64 8
+                   (SExt w64 (SRem w32 (SExt w32 (Extract w8 0 (Extract w32 0 (SExt w64 (Read w8 0 sym_char)))))
+                                       1013))))
+	example: 93874361007104
+	range: [93874361007104, 93874361008120]
+	next: object at 23288136010432 of size 1536
+		MO378[1536] (no allocation info)

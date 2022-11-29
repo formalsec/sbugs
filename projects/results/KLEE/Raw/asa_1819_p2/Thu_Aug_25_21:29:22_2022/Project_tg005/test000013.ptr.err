@@ -1,0 +1,20 @@
+Error: memory error: out of bound pointer
+File: NetManager.c
+Line: 286
+assembly.ll line: 10449
+State: 20
+Stack: 
+	#000010449 in addEdge(94289571192256) at NetManager.c:286
+	#100009913 in __klee_posix_wrapped_main() at NetManager.c:128
+	#200007373 in __user_main(3, 94289536891776, 94289536891808) at runtime/POSIX/klee_init_env.c:245
+	#300000617 in __uClibc_main(94289569805304, 3, 94289536891776, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#400000782 in main(3, 94289536891776)
+Info: 
+	address: (Add w64 8
+          (ReadLSB w64 N0:(Extract w32 0 (Add w64 18446744073708865432
+                                                  (Mul w64 24
+                                                           (SExt w64 (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_4))))))) const_arr6))
+	example: 3417785037644522878
+	range: [3417785037644522878, 8243328280622491703]
+	next: object at 22757802265280 of size 1536
+		MO368[1536] (no allocation info)

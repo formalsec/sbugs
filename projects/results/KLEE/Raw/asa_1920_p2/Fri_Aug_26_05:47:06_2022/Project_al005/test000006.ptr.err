@@ -1,0 +1,37 @@
+Error: memory error: out of bound pointer
+File: projeto_Manhattan_COVID_19.c
+Line: 38
+assembly.ll line: 9817
+State: 119
+Stack: 
+	#000009817 in insertEdge(94583787217056, symbolic, 0) at projeto_Manhattan_COVID_19.c:38
+	#100010053 in buildRoads(94583787217056, symbolic, symbolic) at projeto_Manhattan_COVID_19.c:109
+	#200010923 in __klee_posix_wrapped_main() at projeto_Manhattan_COVID_19.c:331
+	#300007351 in __user_main(3, 94583753128480, 94583753128512) at runtime/POSIX/klee_init_env.c:245
+	#400000595 in __uClibc_main(94583785843192, 3, 94583753128480, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#500000760 in main(3, 94583753128480)
+Info: 
+	address: (Add w64 16
+          (ReadLSB w64 N0:(Extract w32 0 (Add w64 18446649489922334576
+                                                  (ReadLSB w64 N1:(Extract w32 0 (Add w64 18446744073705800128
+                                                                                          (Mul w64 8
+                                                                                                   (SExt w64 (Add w32 (Sub w32 (Mul w32 2
+                                                                                                                                        N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int))))
+                                                                                                                               N2)
+                                                                                                                      N3:(Mul w32 N2
+                                                                                                                                  (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_1))))))))) const_arr14))) U0:[23=0, 22=0, 21=86, 20=6, 19=1, 18=1, 17=136, 16=32, 15=171, 14=171, 13=171, 12=171, 11=(Extract w8 24 N4:(Add w32 1 N5:(Mul w32 2 N3))),
+                                                                                                                                                                                                                10=(Extract w8 16 N4),
+                                                                                                                                                                                                                9=(Extract w8 8 N4),
+                                                                                                                                                                                                                8=(Extract w8 0 N4),
+                                                                                                                                                                                                                7=(Extract w8 24 N5),
+                                                                                                                                                                                                                6=(Extract w8 16 N5),
+                                                                                                                                                                                                                5=(Extract w8 8 N5),
+                                                                                                                                                                                                                4=(Extract w8 0 N5),
+                                                                                                                                                                                                                3=(Extract w8 24 N6:(Add w32 2 N5)),
+                                                                                                                                                                                                                2=(Extract w8 16 N6),
+                                                                                                                                                                                                                1=(Extract w8 8 N6),
+                                                                                                                                                                                                                0=(Extract w8 0 N6)] @ const_arr11))
+	example: 94583786670128
+	range: [94583786670128, 94583786670128]
+	next: object at 23233443056320 of size 1536
+		MO359[1536] (no allocation info)

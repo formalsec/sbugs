@@ -1,0 +1,21 @@
+Error: memory error: out of bound pointer
+File: SistemaJogos.c
+Line: 104
+assembly.ll line: 9810
+State: 114
+Stack: 
+	#000009810 in encontra_equipa(94012831551488, 94012831940608) at SistemaJogos.c:104
+	#100010651 in A_NovaEquipa(94012830503808, 94012831940608, 94012831060896) at SistemaJogos.c:384
+	#200012159 in __klee_posix_wrapped_main() at SistemaJogos.c:893
+	#300007363 in __user_main(3, 94012797239552, 94012797239584) at runtime/POSIX/klee_init_env.c:245
+	#400000607 in __uClibc_main(94012830499864, 3, 94012797239552, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#500000772 in main(3, 94012797239552)
+Info: 
+	address: (Add w64 94012831940608
+          (Mul w64 8
+                   (SExt w64 (SRem w32 (SExt w32 (Extract w8 0 (Extract w32 0 (SExt w64 (Read w8 0 sym_char_1)))))
+                                       1709))))
+	example: 94012831939584
+	range: [94012831939584, 94012831940600]
+	next: object at 23408521616064 of size 1536
+		MO382[1536] (no allocation info)

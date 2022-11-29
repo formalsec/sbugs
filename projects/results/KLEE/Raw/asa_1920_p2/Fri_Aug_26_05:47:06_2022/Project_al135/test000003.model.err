@@ -1,0 +1,15 @@
+Error: concretized symbolic size
+File: versao2.c
+Line: 425
+assembly.ll line: 10856
+State: 10
+Stack: 
+	#000010856 in __klee_posix_wrapped_main(1, 94067382963232) at versao2.c:425
+	#100007355 in __user_main(3, 94067349690912, 94067349690944) at runtime/POSIX/klee_init_env.c:245
+	#200000599 in __uClibc_main(94067382382472, 3, 94067349690912, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#300000764 in main(3, 94067349690912)
+Info: 
+  size expr: (Mul w64 8
+                       (SExt w64 (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_1)))))
+  concretization : 0
+  unbound example: 8

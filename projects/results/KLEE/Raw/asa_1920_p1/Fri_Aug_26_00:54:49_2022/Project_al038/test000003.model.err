@@ -1,0 +1,19 @@
+Error: concretized symbolic size
+File: asa.c
+Line: 63
+assembly.ll line: 9839
+State: 197
+Stack: 
+	#000009839 in createGraph(symbolic) at asa.c:63
+	#100009755 in processInput() at asa.c:40
+	#200010440 in __klee_posix_wrapped_main() at asa.c:241
+	#300007357 in __user_main(3, 93856428555136, 93856428555168) at runtime/POSIX/klee_init_env.c:245
+	#400000601 in __uClibc_main(93856461246088, 3, 93856428555136, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#500000766 in main(3, 93856428555136)
+Info: 
+  size expr: (Mul w64 8
+                       (SExt w64 (Add w32 1
+                                          (Extract w32 0 (ZExt w64 (Extract w8 0 (Add w32 4294967248
+                                                                                          (SExt w32 (Extract w8 0 (ZExt w32 (Read w8 0 stdin)))))))))))
+  concretization : 8
+  unbound example: 16

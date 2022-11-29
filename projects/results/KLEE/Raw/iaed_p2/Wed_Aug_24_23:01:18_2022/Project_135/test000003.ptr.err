@@ -1,0 +1,52 @@
+Error: memory error: out of bound pointer
+File: hash_equipa.c
+Line: 70
+assembly.ll line: 10243
+State: 542
+Stack: 
+	#000010243 in procuraHash_equipa(94100589459200, 94100590242816) at hash_equipa.c:70
+	#100011007 in adiciona_nova_equipa(94100589459200, 1) at proj2.c:145
+	#200010661 in __klee_posix_wrapped_main() at proj2.c:38
+	#300007364 in __user_main(3, 94100556030912, 94100556030944) at runtime/POSIX/klee_init_env.c:245
+	#400000608 in __uClibc_main(94100581262264, 3, 94100556030912, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#500000773 in main(3, 94100556030912)
+Info: 
+	address: (Add w64 94100590583808
+          (Mul w64 8
+                   (SExt w64 (SRem w32 (Add w32 87
+                                                (Add w32 (SRem w32 (Add w32 1017
+                                                                            (Add w32 (SRem w32 (Add w32 855
+                                                                                                        (Add w32 (SRem w32 (Add w32 345
+                                                                                                                                    (Add w32 (SRem w32 (Add w32 1047
+                                                                                                                                                                (Add w32 (SRem w32 (Add w32 441
+                                                                                                                                                                                            (Add w32 (SRem w32 (Add w32 567
+                                                                                                                                                                                                                        (Add w32 (SRem w32 (Add w32 729
+                                                                                                                                                                                                                                                    (Add w32 (SRem w32 (Add w32 183
+                                                                                                                                                                                                                                                                                (Add w32 (SRem w32 (Add w32 537
+                                                                                                                                                                                                                                                                                                            (Add w32 (SRem w32 (Add w32 31415
+                                                                                                                                                                                                                                                                                                                                        (SExt w32 (Extract w8 0 (Extract w32 0 (SExt w64 (Read w8 0 sym_char))))))
+                                                                                                                                                                                                                                                                                                                               1057)
+                                                                                                                                                                                                                                                                                                                     (SExt w32 (Extract w8 0 (Extract w32 0 (SExt w64 (Read w8 0 sym_char_1)))))))
+                                                                                                                                                                                                                                                                                                   1057)
+                                                                                                                                                                                                                                                                                         (SExt w32 (Extract w8 0 (Extract w32 0 (SExt w64 (Read w8 0 sym_char_2)))))))
+                                                                                                                                                                                                                                                                       1057)
+                                                                                                                                                                                                                                                             (SExt w32 (Extract w8 0 (Extract w32 0 (SExt w64 (Read w8 0 sym_char_3)))))))
+                                                                                                                                                                                                                                           1057)
+                                                                                                                                                                                                                                 (SExt w32 (Extract w8 0 (Extract w32 0 (SExt w64 (Read w8 0 sym_char_4)))))))
+                                                                                                                                                                                                               1057)
+                                                                                                                                                                                                     (SExt w32 (Extract w8 0 (Extract w32 0 (SExt w64 (Read w8 0 sym_char_5)))))))
+                                                                                                                                                                                   1057)
+                                                                                                                                                                         (SExt w32 (Extract w8 0 (Extract w32 0 (SExt w64 (Read w8 0 sym_char_6)))))))
+                                                                                                                                                       1057)
+                                                                                                                                             (SExt w32 (Extract w8 0 (Extract w32 0 (SExt w64 (Read w8 0 sym_char_7)))))))
+                                                                                                                           1057)
+                                                                                                                 (SExt w32 (Extract w8 0 (Extract w32 0 (SExt w64 (Read w8 0 sym_char_8)))))))
+                                                                                               1057)
+                                                                                     (SExt w32 (Extract w8 0 (Extract w32 0 (SExt w64 (Read w8 0 sym_char_9)))))))
+                                                                   1057)
+                                                         (SExt w32 (Extract w8 0 (Extract w32 0 (SExt w64 (Read w8 0 sym_char_10)))))))
+                                       1057))))
+	example: 94100590583776
+	range: [94100590583480, 94100590583800]
+	next: object at 23382923803328 of size 1536
+		MO381[1536] (no allocation info)

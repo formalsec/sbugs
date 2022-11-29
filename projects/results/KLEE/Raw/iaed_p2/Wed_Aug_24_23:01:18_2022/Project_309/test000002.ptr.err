@@ -1,0 +1,21 @@
+Error: memory error: out of bound pointer
+File: Jogos.c
+Line: 70
+assembly.ll line: 10786
+State: 58
+Stack: 
+	#000010786 in CheckGame(94674444418424, 94674434589696, symbolic) at Jogos.c:70
+	#100011260 in AddGame(1, 94674444589584, 94674444414520, 94674444418424) at Jogos.c:238
+	#200012170 in __klee_posix_wrapped_main() at proj2.c:24
+	#300007363 in __user_main(3, 94674410848160, 94674410848192) at runtime/POSIX/klee_init_env.c:245
+	#400000607 in __uClibc_main(94674444411504, 3, 94674410848160, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#500000772 in main(3, 94674410848160)
+Info: 
+	address: (Add w64 94674445746176
+          (Mul w64 8
+                   (SExt w64 (SRem w32 (SExt w32 (Extract w8 0 (Extract w32 0 (SExt w64 (Read w8 0 sym_char)))))
+                                       1997))))
+	example: 94674445745152
+	range: [94674445745152, 94674445746168]
+	next: object at 22643805911744 of size 1536
+		MO368[1536] (no allocation info)

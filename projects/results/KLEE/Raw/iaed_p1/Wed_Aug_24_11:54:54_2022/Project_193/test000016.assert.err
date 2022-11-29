@@ -1,0 +1,14 @@
+Error: ASSERTION FAIL: f->off >= 0
+File: runtime/POSIX/fd.c
+Line: 393
+assembly.ll line: 2423
+State: 437
+Stack: 
+	#000002423 in read(0, 94665903697008, 1) at runtime/POSIX/fd.c:393
+	#100015338 in __stdio_READ(94665884489216, 94665903697008, 1) at libc/stdio/_READ.c:47
+	#200013776 in __fgetc_unlocked(94665884489216) at libc/stdio/fgetc.c:68
+	#300009579 in getchar_unlocked() at libc/stdio/getchar.c:22
+	#400011506 in __klee_posix_wrapped_main() at proj1.c:516
+	#500007379 in __user_main(3, 94665868745248, 94665868745280) at runtime/POSIX/klee_init_env.c:245
+	#600000623 in __uClibc_main(94665901912680, 3, 94665868745248, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#700000788 in main(3, 94665868745248)

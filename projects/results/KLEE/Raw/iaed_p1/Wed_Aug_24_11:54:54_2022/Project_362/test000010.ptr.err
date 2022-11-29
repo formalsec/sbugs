@@ -1,0 +1,20 @@
+Error: memory error: out of bound pointer
+File: ProjetoJoseMateusIAED1920.c
+Line: 423
+assembly.ll line: 10913
+State: 242
+Stack: 
+	#000010913 in comando_p() at ProjetoJoseMateusIAED1920.c:423
+	#100009848 in parse_instructions() at ProjetoJoseMateusIAED1920.c:112
+	#200009768 in __klee_posix_wrapped_main() at ProjetoJoseMateusIAED1920.c:59
+	#300007387 in __user_main(3, 93920010722176, 93920010722208) at runtime/POSIX/klee_init_env.c:245
+	#400000631 in __uClibc_main(93920043601704, 3, 93920010722176, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#500000796 in main(3, 93920010722176)
+Info: 
+	address: (Add w64 93920043868224
+          (Mul w64 80
+                   (SExt w64 (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int))))))
+	example: 93748245176384
+	range: [93748245176384, 93920043868144]
+	next: object at 23066345409216 of size 1536
+		MO360[1536] (no allocation info)

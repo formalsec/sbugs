@@ -1,0 +1,17 @@
+Error: concretized symbolic size
+File: projV3.c
+Line: 288
+assembly.ll line: 10258
+State: 5
+Stack: 
+	#000010258 in graphInit(symbolic) at projV3.c:288
+	#100010580 in readInput() at projV3.c:419
+	#200011162 in __klee_posix_wrapped_main(1, 94572185389232) at projV3.c:617
+	#300007360 in __user_main(3, 94572151913344, 94572151913376) at runtime/POSIX/klee_init_env.c:245
+	#400000604 in __uClibc_main(94572184824528, 3, 94572151913344, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#500000769 in main(3, 94572151913344)
+Info: 
+  size expr: (Mul w64 8
+                       (SExt w64 (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int)))))
+  concretization : 16
+  unbound example: 24

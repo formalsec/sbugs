@@ -1,0 +1,19 @@
+Error: memory error: out of bound pointer
+File: libc/stdlib/stdlib.c
+Line: 526
+assembly.ll line: 22990
+State: 6
+Stack: 
+	#000022990 in _stdlib_strto_l_l(0, 0, 10, 1, 94213289951232) at libc/stdlib/stdlib.c:526
+	#100022241 in _stdlib_strto_l(0, 0, 10, 1) at libc/stdlib/stdlib.c:494
+	#200018331 in strtol(0, 0, 10) at libc/stdlib/stdlib.c:332
+	#300016232 in atoi(0) at libc/stdlib/stdlib.c:276
+	#400009831 in q() at proj1.c:53
+	#500011335 in __klee_posix_wrapped_main() at proj1.c:491
+	#600007407 in __user_main(3, 94213256682720, 94213256682752) at runtime/POSIX/klee_init_env.c:245
+	#700000651 in __uClibc_main(94213281774784, 3, 94213256682720, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#800000816 in main(3, 94213256682720)
+Info: 
+	address: 0
+	next: object at 22949251586752 of size 1536
+		MO370[1536] (no allocation info)

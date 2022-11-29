@@ -1,0 +1,24 @@
+Error: memory error: out of bound pointer
+File: proj2.c
+Line: 158
+assembly.ll line: 10168
+State: 43
+Stack: 
+	#000010168 in processPositions(symbolic, symbolic, symbolic, 94828534658576) at proj2.c:158
+	#100011614 in __klee_posix_wrapped_main() at proj2.c:540
+	#200007355 in __user_main(3, 94828501392256, 94828501392288) at runtime/POSIX/klee_init_env.c:245
+	#300000599 in __uClibc_main(94828528752384, 3, 94828501392256, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#400000764 in main(3, 94828501392256)
+Info: 
+	address: (ReadLSB w64 N0:(Extract w32 0 (Add w64 379888
+                                         (Mul w64 8
+                                                  (SExt w64 (Add w32 (Mul w32 (Mul w32 2
+                                                                                       (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_1))))
+                                                                              (Add w32 4294967295
+                                                                                       (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_4)))))
+                                                                     (Mul w32 2
+                                                                              (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_5))))))))) const_arr37)
+	example: 14341930754312241152
+	range: [2306159670173196288, 14341930754312241152]
+	next: object at 22762903247552 of size 1536
+		MO364[1536] (no allocation info)

@@ -1,0 +1,16 @@
+Error: concretized symbolic size
+File: projetoprimeiro.c
+Line: 48
+assembly.ll line: 9855
+State: 5
+Stack: 
+	#000009855 in inicializeTable() at projetoprimeiro.c:48
+	#100010380 in __klee_posix_wrapped_main() at projetoprimeiro.c:193
+	#200007357 in __user_main(3, 94144978172448, 94144978172480) at runtime/POSIX/klee_init_env.c:245
+	#300000601 in __uClibc_main(94145010630360, 3, 94144978172448, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#400000766 in main(3, 94144978172448)
+Info: 
+  size expr: (Mul w64 4
+                       (SExt w64 (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int)))))
+  concretization : 268435460
+  unbound example: 268435468

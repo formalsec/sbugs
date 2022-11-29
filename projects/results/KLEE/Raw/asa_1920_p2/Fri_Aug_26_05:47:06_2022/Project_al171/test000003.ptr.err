@@ -1,0 +1,17 @@
+Error: memory error: out of bound pointer
+File: project.c
+Line: 72
+assembly.ll line: 9888
+State: 4
+Stack: 
+	#000009888 in addEdge(94198315746240, 0, symbolic, 1) at project.c:72
+	#100009971 in addEdges(94198315746240, 0) at project.c:91
+	#200010179 in newGridGraph(symbolic, symbolic) at project.c:154
+	#300011019 in __klee_posix_wrapped_main() at project.c:390
+	#400007363 in __user_main(3, 94198281714560, 94198281714592) at runtime/POSIX/klee_init_env.c:245
+	#500000607 in __uClibc_main(94198314790400, 3, 94198281714560, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#600000772 in main(3, 94198281714560)
+Info: 
+	address: 0
+	next: object at 23336373734080 of size 1536
+		MO362[1536] (no allocation info)

@@ -1,0 +1,16 @@
+Error: concretized symbolic size
+File: main.c
+Line: 173
+assembly.ll line: 10154
+State: 3
+Stack: 
+	#000010154 in init_graph(symbolic) at main.c:173
+	#100011169 in __klee_posix_wrapped_main() at main.c:475
+	#200007354 in __user_main(3, 93849894042144, 93849894042176) at runtime/POSIX/klee_init_env.c:245
+	#300000598 in __uClibc_main(93849927126936, 3, 93849894042144, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#400000763 in main(3, 93849894042144)
+Info: 
+  size expr: (Mul w64 17
+                       (SExt w64 (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int)))))
+  concretization : 0
+  unbound example: 17

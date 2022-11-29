@@ -1,0 +1,16 @@
+Error: concretized symbolic size
+File: p2.c
+Line: 139
+assembly.ll line: 9968
+State: 3
+Stack: 
+	#000009968 in newGraph(symbolic) at p2.c:139
+	#100010752 in __klee_posix_wrapped_main() at p2.c:380
+	#200007356 in __user_main(3, 94315170617888, 94315170617920) at runtime/POSIX/klee_init_env.c:245
+	#300000600 in __uClibc_main(94315203323640, 3, 94315170617888, 0, 0, 0, 0) at libc/misc/internals/__uClibc_main.c:401
+	#400000765 in main(3, 94315170617888)
+Info: 
+  size expr: (Mul w64 32
+                       (SExt w64 (Extract w32 0 (SExt w64 (ReadLSB w32 0 sym_int_2)))))
+  concretization : 0
+  unbound example: 32
