@@ -57,7 +57,7 @@ def main(argv : list[str]=None) -> int:
     if "intersec" == op:
         result = inflate_json(list(a_set & b_set))
     elif "diff" == op:
-        result = inflate_json(list(a_set.differance(b_set)))
+        result = inflate_json(list(a_set - b_set))
     elif "union" == op:
         result = inflate_json(list(a_set.union(b_set)))
     else:
