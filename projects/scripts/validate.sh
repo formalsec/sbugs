@@ -3,7 +3,7 @@
 JOBS=10
 CONF=testcov
 SCRIPT=scripts/val_testsuite.sh
-TOOLS=verifuzz
+TOOLS=klee
 
 # Allow passwordless commits
 eval $(ssh-agent)
