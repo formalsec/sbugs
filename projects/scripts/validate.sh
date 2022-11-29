@@ -5,6 +5,10 @@ CONF=testcov
 SCRIPT=scripts/val_testsuite.sh
 TOOLS=verifuzz
 
+# Allow passwordless commits
+eval $(ssh-agent)
+ssh-add ~/.ssh/github
+
 for t in $TOOLS; do
   for c in $(ls configs/*$CONF.sh); do
     sed -i "s/TOOL=[a-zA-Z]*/TOOL=$t/g" $c
@@ -23,3 +27,12 @@ for t in $TOOLS; do
     && git push
   cd ../..
 done
+
+# generate coverage reports
+for c in $(ls -d outputs/*testcov); do
+  output_file="$(basename $c).json"
+  ./scripts/utils/coverage.py $c > results/$output_file
+done
+
+# generate tables
+./tables/table_5.2/gen.py

@@ -1,8 +1,9 @@
 #!/bin/bash
 
+export BIN_ROOT=/home/fmarques/cpachecker/CPAchecker-2.1-unix
 export PROJ_ROOT=/home/fmarques/sbugs/projects/alunos
 
-export OUTDIR_ROOT=${PROJ_ROOT}/../output/CPAchecker
+export OUTDIR_ROOT=${PROJ_ROOT}/../outputs/CPAchecker
 
 export EDITIONS="asa_1819_p1 
           asa_1819_p2 
@@ -34,7 +35,7 @@ benchmark_proj() {
   test -e $output_dir/report.txt && continue
   ulimit -m 4000000
   (time \
-    ./scripts/cpa.sh -preprocess -timelimit 300 -outputpath $output_dir -config "./config/testcomp22.properties" -spec "./config/properties/coverage-branches.prp" $sources  > $output_dir/report.txt 2>&1
+    $BIN_ROOT/scripts/cpa.sh -preprocess -timelimit 300 -outputpath $output_dir -config "./config/testcomp22.properties" -spec "./config/properties/coverage-branches.prp" $sources  > $output_dir/report.txt 2>&1
   ) &> $output_dir/time.txt
 }
 

@@ -47,10 +47,10 @@ benchmark_proj() {
     ulimit -f 1048576
     (time \
       $KLEE_ROOT/bin/klee \
+        --output=$output_dir \
         --property-file=/home/fmarques/sbugs/projects/properties/coverage-branches.prp \
         --max-memory=4000000000 \
         --max-cputime-hard=900 \
-        -32 \
         $benchmark > $output_dir/stdout.txt 2>&1
     ) &> $output_dir/time.txt
   done
@@ -61,6 +61,6 @@ main() {
   parallel -j 8 benchmark_proj ::: $EDITIONS
 }
 
-export -f benchmark_proj
+export -f benchmark_proj preprocess
 
 main $@

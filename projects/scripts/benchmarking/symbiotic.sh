@@ -1,8 +1,9 @@
 #!/bin/bash
 
+export BIN_ROOT=/home/fmarques/symbiotic
 export PROJ_ROOT=/home/fmarques/sbugs/projects/alunos
 
-export OUTDIR_ROOT=${PROJ_ROOT}/../output/symbiotic
+export OUTDIR_ROOT=${PROJ_ROOT}/../outputs/symbiotic
 
 export EDITIONS="asa_1819_p1 
           asa_1819_p2 
@@ -35,7 +36,7 @@ benchmark_proj() {
     test -e $output_dir/report.txt && continue
     ulimit -m 4000000 -f 1024
     (time \
-      scripts/symbiotic --timeout=$TIMEOUT \
+      $BIN_ROOT/scripts/symbiotic --timeout=$TIMEOUT \
                         --no-integrity-check \
                         --test-comp \
                         --test-suite $output_dir \

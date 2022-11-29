@@ -1,8 +1,9 @@
 #!/bin/bash
 
+export BIN_ROOT=/home/fmarques/FuSeBMC
 export PROJ_ROOT=/home/fmarques/sbugs/projects/alunos
 
-export OUTDIR_ROOT=${PROJ_ROOT}/../output/FuSeBMC
+export OUTDIR_ROOT=${PROJ_ROOT}/../outputs/FuSeBMC
 
 export EDITIONS="asa_1819_p1 
           asa_1819_p2 
@@ -34,7 +35,7 @@ benchmark_proj() {
     echo "Running $e/$p..."
     test -e $OUTPUT_DIR/report.txt && continue
     ulimit -m 4000000
-    (time timeout 890 ./fusebmc.py -a 64 -p properties/coverage-branches.prp -o "$OUTPUT_DIR" -s incr "$SOURCES" > $OUTPUT_DIR/report.txt 2>&1) &> $OUTPUT_DIR/time.txt
+    (time timeout 890 $BIN_ROOT/fusebmc.py -a 64 -p properties/coverage-branches.prp -o "$OUTPUT_DIR" -s incr "$SOURCES" > $OUTPUT_DIR/report.txt 2>&1) &> $OUTPUT_DIR/time.txt
   done
 }
 

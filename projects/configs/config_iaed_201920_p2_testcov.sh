@@ -3,7 +3,7 @@
 # C compiler
 export CC=gcc
 # Tool
-export TOOL=libkluzzer
+export TOOL=verifuzz
 # Input directory
 export TESTS_DIR=outputs/$TOOL/iaed_p2
 # Student projects

@@ -1,8 +1,9 @@
 #!/bin/bash
 
+export BIN_ROOT=/home/fmarques/libkluzzer
 export PROJ_ROOT=/home/fmarques/sbugs/projects/alunos
 
-export OUTDIR_ROOT=${PROJ_ROOT}/../output/libkluzzer
+export OUTDIR_ROOT=${PROJ_ROOT}/../outputs/libkluzzer
 
 export EDITIONS="asa_1819_p1 
           asa_1819_p2 
@@ -37,7 +38,7 @@ benchmark_proj() {
     ulimit -m 4000000
     (time \
       timeout 900 \
-      ./bin/LibKluzzer --64 \
+      $BIN_ROOT/bin/LibKluzzer --64 \
         "$project"/preprocessed/harness.c \
         $output_dir \
         > /dev/null 2>&1
