@@ -8,7 +8,7 @@ import statistics
 from texttable import Texttable
 
 def get_coverage(tool : str) -> list:
-    cov_file = os.path.join("results", f"{tool}-cov.json")
+    cov_file = os.path.join("results", f"{tool}-testcov.json")
     with open(cov_file, "r") as fd:
         coverage = json.load(fd)
     cov_list = []
@@ -51,7 +51,7 @@ def main(argv=None) -> int:
         argv=sys.argv[1:]
 
     table5_total = generate(6, 6)
-    output_file = os.path.join("tables", "tables_5.2", "tbl5.2_coverage.tex")
+    output_file = os.path.join("tables", "table_5.2", "tbl5.2_coverage.tex")
     with open(output_file, "w") as fd:
         fd.write(to_latex(table5_total, 6))
     return 0
