@@ -16,7 +16,6 @@ export EDITIONS="asa_1819_p1
           iaed_p1 
           iaed_p2"
 
-export MEMOU
 export TIMEOUT=900
 
 preprocess() {
@@ -29,36 +28,39 @@ preprocess() {
 
 benchmark_proj() {
   e=$1
+  edition=$2
+  p=$3
 
-  edition=${PROJ_ROOT}/$e
-  for p in $(ls "$edition")
-  do
-    project=$edition/$p
-    (test $p = "Makefile" || test $p = "symbolic") && continue
+  project=$edition/$p
+  (test $p = "Makefile" || test $p = "symbolic") && continue
 
-    output_dir=$OUTDIR_ROOT/$e/$p
-    test -e $output_dir || mkdir -p $output_dir
+  output_dir=$OUTDIR_ROOT/$e/$p
+  test -e $output_dir || mkdir -p $output_dir
 
-    benchmark="$project/preprocessed/$p.c"
-    preprocess $project $benchmark || continue
+  benchmark="$project/preprocessed/$p.c"
+  preprocess $project $benchmark || continue
 
-    echo "Running $e/$p..."
-    test -e $output_dir/stdout.txt && continue
-    ulimit -f 1048576
+  echo "Running $e/$p..."
+  test -e $output_dir/stdout.txt && continue
+  ulimit -f 1048576
     (time \
+      timeout 900 \
       $KLEE_ROOT/bin/klee \
-        --output=$output_dir \
-        --property-file=/home/fmarques/sbugs/projects/properties/coverage-branches.prp \
-        --max-memory=4000000000 \
-        --max-cputime-hard=900 \
-        $benchmark > $output_dir/stdout.txt 2>&1
-    ) &> $output_dir/time.txt
-  done
+      --output=$output_dir \
+      --property-file=/home/fmarques/sbugs/projects/properties/coverage-branches.prp \
+      --max-memory=4000000000 \
+      --max-cputime-hard=890 \
+      $benchmark > $output_dir/stdout.txt 2>&1
+  ) &> $output_dir/time.txt
 }
 
 main() {
   test -e $OUTDIR_ROOT || mkdir -p $OUTDIR_ROOT
-  parallel -j 8 benchmark_proj ::: $EDITIONS
+  for e in $EDITIONS; do 
+    edition=${PROJ_ROOT}/$e
+    export projects=$(ls "$edition")
+    parallel -j 8 benchmark_proj $e $edition ::: $projects
+  done
 }
 
 export -f benchmark_proj preprocess

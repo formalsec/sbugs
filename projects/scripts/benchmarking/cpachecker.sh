@@ -35,7 +35,7 @@ benchmark_proj() {
   test -e $output_dir/report.txt && continue
   ulimit -m 4000000
   (time \
-    $BIN_ROOT/scripts/cpa.sh -preprocess -timelimit 300 -outputpath $output_dir -config "./config/testcomp22.properties" -spec "./config/properties/coverage-branches.prp" $sources  > $output_dir/report.txt 2>&1
+    $BIN_ROOT/scripts/cpa.sh -preprocess -timelimit 900 -outputpath $output_dir -config "./config/testcomp22.properties" -spec "./config/properties/coverage-branches.prp" $sources  > $output_dir/report.txt 2>&1
   ) &> $output_dir/time.txt
 }
 
