@@ -1,0 +1,84 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/344/proj2.c:183..183
+   183              printf("NL %s %s %s %lu %lu\n", st1[i]->name2, st1[i]->hteam, st1[i]->ateam, st1[i]->hscore, st1[i]->ascore);
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/344/proj2.c:183..183
+   183              printf("NL %s %s %s %lu %lu\n", st1[i]->name2, st1[i]->hteam, st1[i]->ateam, st1[i]->hscore, st1[i]->ascore);
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/344/proj2.c:183..183
+   183              printf("NL %s %s %s %lu %lu\n", st1[i]->name2, st1[i]->hteam, st1[i]->ateam, st1[i]->hscore, st1[i]->ascore);
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/344/proj2.c:183..183
+   183              printf("NL %s %s %s %lu %lu\n", st1[i]->name2, st1[i]->hteam, st1[i]->ateam, st1[i]->hscore, st1[i]->ascore);
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/344/proj2.c:183..183
+   183              printf("NL %s %s %s %lu %lu\n", st1[i]->name2, st1[i]->hteam, st1[i]->ateam, st1[i]->hscore, st1[i]->ascore);
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/344/proj2.c:179..179
+   179          if(st1[i] == NULL){
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/344/proj2.c:139..139
+   139          return st[i];
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/344/proj2.c:138..138
+   138      if (strcmp(st[i]->name, name2)==0){
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/344/proj2.c:137..137
+   137  while (st[i] != NULL)
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/344/proj2.c:131..131
+   131     new_str[i2] = '\0';     
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/344/proj2.c:127..127
+   127              new_str[i2] = c;
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/344/proj2.c:122..122
+   122              new_str[i2] = c;
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/344/proj2.c:72..72
+    72  st1[i]->ateam = ateam;
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/344/proj2.c:71..71
+    71  st1[i]->hteam = hteam;
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/344/proj2.c:70..70
+    70  st1[i]->name2 = name2;
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/344/proj2.c:69..69
+    69  st1[i]->ascore=ascore;
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/344/proj2.c:68..68
+    68  st1[i]->hscore=hscore;
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/344/proj2.c:67..67
+    67  st1[i] = can_fail_malloc(sizeof(struct game));
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/344/proj2.c:66..66
+    66  while (st[i]!=NULL) i = (i+1) % M;
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/344/proj2.c:61..61
+    61  st1[i] = NULL; /* inicializo tudo a NULL */
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/344/proj2.c:53..53
+    53  st[i]->name = name;
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/344/proj2.c:52..52
+    52  st[i]->nwinner=twinner;
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/344/proj2.c:51..51
+    51  st[i] = can_fail_malloc(sizeof(struct team));
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/344/proj2.c:50..50
+    50  while (st[i]!=NULL) i = (i+1) % M;
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/344/proj2.c:45..45
+    45  st[i] = NULL; /* inicializo tudo a NULL */
+=== printf or scanf missing width limit on %s ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/344/proj2.c:172..172
+   172      sscanf(new_str, "%s%s%s%lu%lu", gamename, hname, aname, &hscore1, &ascore1);
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/344/proj2.c:153..153
+   153      sscanf(new_str, "%s", team2);
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/344/proj2.c:108..108
+   108      sscanf(new_str, "%s", team2);

@@ -1,0 +1,105 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/243/proj2.c:474..474
+   474  		                strcpy(item[j].nomeTeam,"\0");
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/243/proj2.c:471..471
+   471  		                	printf("%d * %s\n", conta, item[j].nomeTeam);
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/243/proj2.c:470..470
+   470  		            	if (strcmp(item[j].nomeTeam,"\0")!=0)
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/243/proj2.c:463..463
+   463          					strcpy(item[i].nomeTeam, aux2->nomeE); /*adiciona ao vetor o nome das equipas que tem o numero de vitorias = ao max vitorias*/
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/243/proj2.c:307..307
+   307      equipas item[800];
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/243/proj2.c:303..303
+   303      char Nome[MAXNOME], Equipa1[MAXTEAM], Equipa2[MAXTEAM], Score1[MAXSCORE], Score2[MAXSCORE], Equipa[MAXTEAM];
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/243/proj2.c:303..303
+   303      char Nome[MAXNOME], Equipa1[MAXTEAM], Equipa2[MAXTEAM], Score1[MAXSCORE], Score2[MAXSCORE], Equipa[MAXTEAM];
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/243/proj2.c:303..303
+   303      char Nome[MAXNOME], Equipa1[MAXTEAM], Equipa2[MAXTEAM], Score1[MAXSCORE], Score2[MAXSCORE], Equipa[MAXTEAM];
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/243/proj2.c:303..303
+   303      char Nome[MAXNOME], Equipa1[MAXTEAM], Equipa2[MAXTEAM], Score1[MAXSCORE], Score2[MAXSCORE], Equipa[MAXTEAM];
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/243/proj2.c:303..303
+   303      char Nome[MAXNOME], Equipa1[MAXTEAM], Equipa2[MAXTEAM], Score1[MAXSCORE], Score2[MAXSCORE], Equipa[MAXTEAM];
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/243/proj2.c:303..303
+   303      char Nome[MAXNOME], Equipa1[MAXTEAM], Equipa2[MAXTEAM], Score1[MAXSCORE], Score2[MAXSCORE], Equipa[MAXTEAM];
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/243/proj2.c:286..286
+   286      	l2->HashTable_Equipas[h]=l2->last2;
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/243/proj2.c:276..276
+   276      equipas *e = l2->HashTable_Equipas[h];
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/243/proj2.c:274..274
+   274      int h = hash(Equipa); /*gera o indice da hashtable de acordo com a equipa*/
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/243/proj2.c:264..264
+   264      	l->HashTable_Jogo[h] = j->next_HashTable_Jogo;
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/243/proj2.c:252..252
+   252      jogo *j = l->HashTable_Jogo[h], *prevJogo = NULL; /*ponteiro que indica o node anterior a j. */
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/243/proj2.c:250..250
+   250      int h = hash(Nome); /*gera o indice da hashtable de acordo com o nome*/
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/243/proj2.c:242..242
+   242      	l->HashTable_Jogo[h] = l->last;
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/243/proj2.c:233..233
+   233      jogo *j = l->HashTable_Jogo[h]; /*obtem o primeiro endereco da linked list guardado na hashtable para o indice gerado*/
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/243/proj2.c:232..232
+   232      int h = hash(Nome); /*gera o indice da hashtable de acordo com o nome*/
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/243/proj2.c:49..49
+    49      equipas *e = l2->HashTable_Equipas[h];
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/243/proj2.c:48..48
+    48      int h = hash(Equipa);
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/243/proj2.c:32..32
+    32      jogo *j = l->HashTable_Jogo[h];
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/243/proj2.c:30..30
+    30      int h = hash(Nome); /*gera o indice da hashtable de acordo com o nome do jogo*/
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/243/proj2.c:21..21
+    21  	    l2 -> HashTable_Equipas[i] = NULL;
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/243/proj2.c:20..20
+    20  	    l -> HashTable_Jogo[i] =  NULL;
+=== Dangerous function calls lacking bounds checking ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/243/proj2.c:463..463
+   463          					strcpy(item[i].nomeTeam, aux2->nomeE); /*adiciona ao vetor o nome das equipas que tem o numero de vitorias = ao max vitorias*/
+=== printf or scanf missing width limit on %s ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/243/proj2.c:382..382
+   382  		        scanf(" %[^:]:%[^:]:%s", Nome, Score1, Score2);
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/243/proj2.c:317..317
+   317  		        scanf(" %[^:\n]:%[^:\n]:%[^:\n]:%[^:]:%s", Nome, Equipa1,  Equipa2, Score1, Score2);
+=== Source of memcpy is untrusted parameter ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/243/proj2.c:192..192
+   192  	aux2->nomeE = (char *) memcpy(can_fail_malloc(sizeof(char)*(strlen(Equipa)+1)), Equipa, sizeof(char)*(strlen(Equipa)+1));     
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/243/proj2.c:138..138
+   138  	aux->score2 = (char *) memcpy(can_fail_malloc(sizeof(char)*(strlen(Score2)+1)), Score2, sizeof(char)*(strlen(Score2)+1));
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/243/proj2.c:137..137
+   137  	aux->score1 = (char *) memcpy(can_fail_malloc(sizeof(char)*(strlen(Score1)+1)), Score1, sizeof(char)*(strlen(Score1)+1));
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/243/proj2.c:136..136
+   136  	aux->team2 = (char *) memcpy(can_fail_malloc(sizeof(char)*(strlen(Equipa2)+1)), Equipa2, sizeof(char)*(strlen(Equipa2)+1));
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/243/proj2.c:135..135
+   135  	aux->team1 = (char *) memcpy(can_fail_malloc(sizeof(char)*(strlen(Equipa1)+1)), Equipa1, sizeof(char)*(strlen(Equipa1)+1));
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/243/proj2.c:134..134
+   134  	aux->nome = (char *) memcpy(can_fail_malloc(sizeof(char)*(strlen(Nome)+1)), Nome, sizeof(char)*(strlen(Nome)+1));              

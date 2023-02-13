@@ -1,0 +1,88 @@
+cat: _CWE_119_3_.txt: No such file or directory
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp013/Proj1_ASA.c:158..158
+   158  		printf("%d\n",graph[i]->value);
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp013/Proj1_ASA.c:145..145
+   145  				if(graph[e] -> value == i && graph[e] -> done == 1)
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp013/Proj1_ASA.c:145..145
+   145  				if(graph[e] -> value == i && graph[e] -> done == 1)
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp013/Proj1_ASA.c:141..141
+   141  		if(graph_val[i] == 1)
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp013/Proj1_ASA.c:136..136
+   136  	max_val = graph[big_node] -> value;
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp013/Proj1_ASA.c:134..134
+   134  	big_node = parseArgs(N, M);
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp013/Proj1_ASA.c:120..120
+   120  		free(graph[i]);
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp013/Proj1_ASA.c:119..119
+   119  		free(graph[i] -> conections);
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp013/Proj1_ASA.c:107..107
+   107  				graph[v] -> value = graph[u] -> value;
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp013/Proj1_ASA.c:107..107
+   107  				graph[v] -> value = graph[u] -> value;
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp013/Proj1_ASA.c:106..106
+   106  			if(graph[u] -> value > graph[v] -> value)
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp013/Proj1_ASA.c:106..106
+   106  			if(graph[u] -> value > graph[v] -> value)
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp013/Proj1_ASA.c:105..105
+   105  		if(graph[v] -> done == 1){
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp013/Proj1_ASA.c:103..103
+   103  		v = graph[u] -> conections[i];
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp013/Proj1_ASA.c:103..103
+   103  		v = graph[u] -> conections[i];
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp013/Proj1_ASA.c:100..100
+   100  	graph[u] -> done = 0;
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp013/Proj1_ASA.c:99..99
+    99  	max_connections = graph[u] -> num_conections;
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp013/Proj1_ASA.c:82..82
+    82  		graph[*father_node - 1] -> num_conections ++;
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp013/Proj1_ASA.c:81..81
+    81  		graph[*father_node - 1] -> conections[conects] = *son_node - 1;
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp013/Proj1_ASA.c:81..81
+    81  		graph[*father_node - 1] -> conections[conects] = *son_node - 1;
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp013/Proj1_ASA.c:79..79
+    79  			graph[*father_node - 1] -> size += 50;
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp013/Proj1_ASA.c:78..78
+    78  			graph[*father_node - 1] -> conections = can_fail_realloc(graph[*father_node - 1] -> conections,sizeof(int)*(conects + 50));
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp013/Proj1_ASA.c:78..78
+    78  			graph[*father_node - 1] -> conections = can_fail_realloc(graph[*father_node - 1] -> conections,sizeof(int)*(conects + 50));
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp013/Proj1_ASA.c:76..76
+    76  		if(conects == graph[*father_node - 1] -> size - 1)
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp013/Proj1_ASA.c:74..74
+    74  		conects = graph[*father_node - 1] -> num_conections;
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp013/Proj1_ASA.c:69..69
+    69  		graph[i] = createNode(val,N);
+
+27: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp013/Proj1_ASA.c:59..59
+    59  		graph_val[*val] = 1;
+
+28: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp013/Proj1_ASA.c:48..48
+    48  	father_node = can_fail_malloc(sizeof(int));
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp013/Proj1_ASA.c:99..99
+    99  	max_connections = graph[u] -> num_conections;

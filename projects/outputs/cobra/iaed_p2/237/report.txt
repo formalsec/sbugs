@@ -1,0 +1,96 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/237/hash.c:314..314
+   314        destroyGameEntry(hashtable->entries[i]);
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/237/hash.c:310..310
+   310      if (hashtable->entries[i] == NULL) {
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/237/hash.c:300..300
+   300        destroyTeamEntry(hashtable->entries[i]);
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/237/hash.c:296..296
+   296      if (hashtable->entries[i] == NULL) {
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/237/hash.c:239..239
+   239    entrie = game_ht->entries[key];
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/237/hash.c:238..238
+   238    key = hash(buffer);
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/237/hash.c:232..232
+   232    char buffer[MAX_CHAR];
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/237/hash.c:205..205
+   205      return game_ht->entries[key]->game;
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/237/hash.c:203..203
+   203      game_ht->entries[key] = ht_pair_game(key, gameName, t1, t2, score1, score2, maxWins);
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/237/hash.c:195..195
+   195    entrie = game_ht->entries[key];
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/237/hash.c:194..194
+   194    key = hash(gameName);
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/237/hash.c:182..182
+   182    char t2_name[MAX_CHAR];
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/237/hash.c:181..181
+   181    char t1_name[MAX_CHAR];
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/237/hash.c:180..180
+   180    char gameName[MAX_CHAR];
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/237/hash.c:165..165
+   165    entrie = game_ht->entries[key];
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/237/hash.c:164..164
+   164    key = hash(name);
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/237/hash.c:158..158
+   158    char name[MAX_CHAR];
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/237/hash.c:123..123
+   123    char name[MAX_CHAR];
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/237/hash.c:107..107
+   107    entrie = hashtable->entries[key];
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/237/hash.c:105..105
+   105    key = hash(name);
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/237/hash.c:79..79
+    79      return hashtable->entries[key]->t;
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/237/hash.c:78..78
+    78      hashtable->entries[key] = ht_pair_team(key, teamname);
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/237/hash.c:74..74
+    74    entrie = hashtable->entries[key];
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/237/hash.c:73..73
+    73    key = hash(teamname);
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/237/hash.c:68..68
+    68    char teamname[MAX_CHAR];
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/237/hash.c:23..23
+    23        hashtable->entries[i] = NULL;
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/237/hash.c:10..10
+    10        value = value * 37 + key[i];
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/237/game.c:47..47
+    47            game_ht->entries[key] = entrie->next;
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/237/game.c:43..43
+    43            game_ht->entries[key] = NULL;
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/237/game.c:15..15
+    15    entrie = game_ht->entries[key];
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/237/game.c:14..14
+    14    key = hash(buffer);
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/237/game.c:6..6
+     6    char buffer[MAX_CHAR];

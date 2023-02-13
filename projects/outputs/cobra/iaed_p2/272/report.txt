@@ -1,0 +1,183 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/proj2.c:93..93
+    93          free(jogos.ordem[n]);
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/proj2.c:92..92
+    92          free(jogos.ordem[n]->nome);
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/proj2.c:89..89
+    89          if (jogos.ordem[n]== NULL){
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/proj2.c:85..85
+    85          free(equipas.ordem[n]);
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/proj2.c:84..84
+    84          free(equipas.ordem[n]->nome);
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/proj2.c:23..23
+    23          jogos.gavetas[n] = NULL;
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/proj2.c:18..18
+    18          equipas.gavetas[n] = NULL;
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/proj2.c:12..12
+    12      struct Jogos jogos;
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/proj2.c:11..11
+    11      struct Equipas equipas;
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/jogo.c:255..255
+   255      jogo = jogos->gavetas[hash % JOGO_GAVETAS];
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/jogo.c:255..255
+   255      jogo = jogos->gavetas[hash % JOGO_GAVETAS];
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/jogo.c:253..253
+   253      hash = hash_str(nome);
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/jogo.c:247..247
+   247      char nome[MAX_JOGO_NOME];
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/jogo.c:226..226
+   226                  jogos->gavetas[hash % JOGO_GAVETAS] = jogo->next_jogo;
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/jogo.c:226..226
+   226                  jogos->gavetas[hash % JOGO_GAVETAS] = jogo->next_jogo;
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/jogo.c:216..216
+   216                          jogos->ordem[i-1] = jogos->ordem[i];
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/jogo.c:216..216
+   216                          jogos->ordem[i-1] = jogos->ordem[i];
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/jogo.c:212..212
+   212                  if ( jogo == jogos->ordem[n] ) {
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/jogo.c:193..193
+   193      jogo = jogos->gavetas[hash % JOGO_GAVETAS];
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/jogo.c:193..193
+   193      jogo = jogos->gavetas[hash % JOGO_GAVETAS];
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/jogo.c:191..191
+   191      hash = hash_str(nome);
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/jogo.c:184..184
+   184      char nome[MAX_JOGO_NOME];
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/jogo.c:176..176
+   176              jogos->ordem[n]->golos2
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/jogo.c:175..175
+   175              jogos->ordem[n]->golos1,
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/jogo.c:174..174
+   174              jogos->ordem[n]->equipa2->nome,
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/jogo.c:173..173
+   173              jogos->ordem[n]->equipa1->nome,
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/jogo.c:172..172
+   172              jogos->ordem[n]->nome,
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/jogo.c:137..137
+   137      jogo = jogos->gavetas[hash % JOGO_GAVETAS];
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/jogo.c:137..137
+   137      jogo = jogos->gavetas[hash % JOGO_GAVETAS];
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/jogo.c:135..135
+   135      hash = hash_str(nome);
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/jogo.c:131..131
+   131      char nome[MAX_JOGO_NOME];
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/jogo.c:124..124
+   124          jogos->gavetas[hash_nome % JOGO_GAVETAS] = novo_jogo;
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/jogo.c:124..124
+   124          jogos->gavetas[hash_nome % JOGO_GAVETAS] = novo_jogo;
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/jogo.c:113..113
+   113      jogos->ordem[ jogos->njogos ] = novo_jogo;
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/jogo.c:113..113
+   113      jogos->ordem[ jogos->njogos ] = novo_jogo;
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/jogo.c:68..68
+    68      equipa2 = equipas->gavetas[hash_equipa2 % EQUIPA_GAVETAS];
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/jogo.c:68..68
+    68      equipa2 = equipas->gavetas[hash_equipa2 % EQUIPA_GAVETAS];
+
+38: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/jogo.c:66..66
+    66      hash_equipa2 = hash_str(equipa2_nome);
+
+39: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/jogo.c:54..54
+    54      equipa1 = equipas->gavetas[hash_equipa1 % EQUIPA_GAVETAS];
+
+40: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/jogo.c:54..54
+    54      equipa1 = equipas->gavetas[hash_equipa1 % EQUIPA_GAVETAS];
+
+41: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/jogo.c:52..52
+    52      hash_equipa1 = hash_str(equipa1_nome);
+
+42: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/jogo.c:34..34
+    34      jogo = jogos->gavetas[hash_nome % JOGO_GAVETAS];
+
+43: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/jogo.c:34..34
+    34      jogo = jogos->gavetas[hash_nome % JOGO_GAVETAS];
+
+44: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/jogo.c:31..31
+    31      hash_nome = hash_str(nome);
+
+45: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/jogo.c:14..14
+    14      char equipa2_nome[MAX_EQUIPA_NOME];
+
+46: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/jogo.c:13..13
+    13      char equipa1_nome[MAX_EQUIPA_NOME];
+
+47: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/jogo.c:12..12
+    12      char nome[MAX_JOGO_NOME];
+
+48: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/equipa.c:147..147
+   147          printf("%d * %s\n", comandos_total, equipas->ordem[n]->nome);
+
+49: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/equipa.c:143..143
+   143          if ( equipas->ordem[n]->wins < wins ) {
+
+50: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/equipa.c:85..85
+    85      equipa = equipas->gavetas[hash % EQUIPA_GAVETAS];
+
+51: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/equipa.c:85..85
+    85      equipa = equipas->gavetas[hash % EQUIPA_GAVETAS];
+
+52: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/equipa.c:84..84
+    84      hash = hash_str(nome);
+
+53: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/equipa.c:78..78
+    78      char nome[MAX_EQUIPA_NOME];
+
+54: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/equipa.c:71..71
+    71          equipas->gavetas[hash % EQUIPA_GAVETAS] = nova_equipa;
+
+55: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/equipa.c:71..71
+    71          equipas->gavetas[hash % EQUIPA_GAVETAS] = nova_equipa;
+
+56: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/equipa.c:60..60
+    60      equipas->ordem[ equipas->nequipas ] = nova_equipa;
+
+57: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/equipa.c:60..60
+    60      equipas->ordem[ equipas->nequipas ] = nova_equipa;
+
+58: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/equipa.c:21..21
+    21      equipa = equipas->gavetas[hash % EQUIPA_GAVETAS];
+
+59: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/equipa.c:21..21
+    21      equipa = equipas->gavetas[hash % EQUIPA_GAVETAS];
+
+60: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/equipa.c:19..19
+    19      hash = hash_str(nome);
+
+61: /home/fmarques/sbugs/projects/alunos/iaed_p2/272/equipa.c:12..12
+    12      char nome[MAX_EQUIPA_NOME];

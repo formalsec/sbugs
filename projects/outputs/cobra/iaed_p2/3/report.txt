@@ -1,0 +1,69 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/3/proj2.c:410..410
+   410          char equipa2[STRING_SIZE];
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/3/proj2.c:409..409
+   409          char equipa1[STRING_SIZE];
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/3/proj2.c:408..408
+   408          char nome[STRING_SIZE];
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/3/proj2.c:329..329
+   329      jogos[i] = dummy;
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/3/proj2.c:328..328
+   328      freeGame(jogos[i]);
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/3/proj2.c:318..318
+   318          if (strcmp(jogos[i]->name, key) == 0)
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/3/proj2.c:316..316
+   316      while (jogos[i] != NULL)
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/3/proj2.c:299..299
+   299              return jogos[i];
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/3/proj2.c:297..297
+   297          if (strcmp(jogos[i]->name, key) == 0)
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/3/proj2.c:295..295
+   295      while (jogos[i] != NULL)
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/3/proj2.c:287..287
+   287      jogos[i] = jogo;
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/3/proj2.c:278..278
+   278          if (strcmp(jogos[i]->name, RESERVED_NAME) == 0) /* verificacao para index disponivel gracas a eliminacao do Jogo presente anteriormente nesta posicao da tabela */
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/3/proj2.c:276..276
+   276      while (jogos[i] != NULL)
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/3/proj2.c:267..267
+   267          jogos[i] = NULL;
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/3/proj2.c:216..216
+   216              return equipas[i];
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/3/proj2.c:214..214
+   214          if (strcmp(equipas[i]->name, key) == 0)
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/3/proj2.c:212..212
+   212      while (equipas[i] != NULL)
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/3/proj2.c:205..205
+   205      equipas[i] = equipa;
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/3/proj2.c:201..201
+   201      while (equipas[i] != NULL)
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/3/proj2.c:194..194
+   194          equipas[i] = NULL;
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/3/proj2.c:66..66
+    66      size_t size = strlen(s) + 1;
+=== Possibly missing sizeof() in memory allocation ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/3/proj2.c:67..67
+    67      char *p = can_fail_malloc(size);
+=== Source of memcpy is untrusted parameter ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/3/proj2.c:70..70
+    70          memcpy(p, s, size);

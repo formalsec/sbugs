@@ -1,0 +1,141 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/79/main.c:9..9
+     9      pLst_Ord lista_ordenada = {0};
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/79/hash.c:480..480
+   480          free(listas[i]);
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/79/hash.c:479..479
+   479          free_jogos(listas[i]->head_jogos, fHash);
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/79/hash.c:478..478
+   478          free_equipas(listas[i]->head_equipas);
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/79/hash.c:454..454
+   454      link_jogo aux;
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/79/hash.c:453..453
+   453      link_jogo link;
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/79/hash.c:435..435
+   435      link_equipa aux;
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/79/hash.c:434..434
+   434      link_equipa link;
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/79/hash.c:425..425
+   425          printf("%d * %s\n", NL, equipas_vencedoras[i]->nome);
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/79/hash.c:415..415
+   415          equipas_vencedoras[i] = lista_ordenada->lista_equipas[i];
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/79/hash.c:415..415
+   415          equipas_vencedoras[i] = lista_ordenada->lista_equipas[i];
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/79/hash.c:414..414
+   414      for (i = 0; i < lista_ordenada->cont_equipas && lista_ordenada->lista_equipas[i]->vitorias == max_vitorias; i++){
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/79/hash.c:335..335
+   335      link_equipa equipa_vencedora, equipa_derrotada;
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/79/hash.c:334..334
+   334      link_jogo link;
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/79/hash.c:323..323
+   323      elimina_hash(listas[index], nome);
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/79/hash.c:321..321
+   321      index = hashU(nome, m);
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/79/hash.c:302..302
+   302      link_equipa equipa_vencedora;
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/79/hash.c:301..301
+   301      link_jogo link;
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/79/hash.c:286..286
+   286      link_jogo link;
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/79/hash.c:269..269
+   269      link_jogo link;
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/79/hash.c:251..251
+   251      link_equipa link;
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/79/hash.c:242..242
+   242      insere_jogo_hash(listas[index], novo_jogo_hash);
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/79/hash.c:208..208
+   208      index = hashU(nome, m);
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/79/hash.c:206..206
+   206      link_jogo novo_jogo_lista_ordenada = (link_jogo) can_fail_malloc(sizeof(struct node_jogo));
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/79/hash.c:205..205
+   205      link_jogo novo_jogo_hash = (link_jogo) can_fail_malloc(sizeof(struct node_jogo));
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/79/hash.c:204..204
+   204      link_equipa equipa_vencedora;
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/79/hash.c:191..191
+   191      lista_ordenada->lista_equipas[lista_ordenada->cont_equipas] = nova_equipa->equipa;
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/79/hash.c:191..191
+   191      lista_ordenada->lista_equipas[lista_ordenada->cont_equipas] = nova_equipa->equipa;
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/79/hash.c:189..189
+   189      insere_equipa(listas[index], nova_equipa);
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/79/hash.c:177..177
+   177      index = hashU(nome, m);
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/79/hash.c:175..175
+   175      link_equipa nova_equipa = (link_equipa) can_fail_malloc(sizeof(struct node_equipa));
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/79/hash.c:150..150
+   150      link_jogo link, prev;
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/79/hash.c:127..127
+   127      link_jogo link, prev;
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/79/hash.c:117..117
+   117      for (link = listas[index]->head_jogos; link != NULL; link = link->next){
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/79/hash.c:114..114
+   114      if (listas[index]->head_jogos == NULL){
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p2/79/hash.c:113..113
+   113      link_jogo link;
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p2/79/hash.c:112..112
+   112      int index = hashU(nome, m);
+
+38: /home/fmarques/sbugs/projects/alunos/iaed_p2/79/hash.c:102..102
+   102      for (link = listas[index]->head_equipas; link != NULL; link = link->next){
+
+39: /home/fmarques/sbugs/projects/alunos/iaed_p2/79/hash.c:99..99
+    99      if (listas[index]->head_equipas == NULL){
+
+40: /home/fmarques/sbugs/projects/alunos/iaed_p2/79/hash.c:98..98
+    98      link_equipa link;
+
+41: /home/fmarques/sbugs/projects/alunos/iaed_p2/79/hash.c:97..97
+    97      int index = hashU(nome, m);
+
+42: /home/fmarques/sbugs/projects/alunos/iaed_p2/79/hash.c:38..38
+    38          listas[i]->tail_jogos = NULL;
+
+43: /home/fmarques/sbugs/projects/alunos/iaed_p2/79/hash.c:37..37
+    37          listas[i]->tail_equipas = NULL;
+
+44: /home/fmarques/sbugs/projects/alunos/iaed_p2/79/hash.c:36..36
+    36          listas[i]->head_jogos = NULL;
+
+45: /home/fmarques/sbugs/projects/alunos/iaed_p2/79/hash.c:35..35
+    35          listas[i]->head_equipas = NULL;
+
+46: /home/fmarques/sbugs/projects/alunos/iaed_p2/79/hash.c:34..34
+    34          listas[i] = (pListas) can_fail_malloc(sizeof(struct Listas));
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/79/hash.c:191..191
+   191      lista_ordenada->lista_equipas[lista_ordenada->cont_equipas] = nova_equipa->equipa;

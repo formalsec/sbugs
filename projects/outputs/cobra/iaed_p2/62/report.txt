@@ -1,0 +1,123 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/62/teams.c:201..201
+   201          head = team_ht.header[i];
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/62/teams.c:197..197
+   197      TeamLink head, next;
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/62/teams.c:184..184
+   184              printf("%ld * %s\n", NL, best_teams[i]->team);
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/62/teams.c:171..171
+   171                      best_teams[j++] = t;
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/62/teams.c:167..167
+   167              for (t = team_ht.header[i]; t != NULL; t = t->next)
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/62/teams.c:147..147
+   147              for (t = team_ht.header[i]; t != NULL; t = t->next)
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/62/teams.c:123..123
+   123      TeamLink t;
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/62/teams.c:99..99
+    99          team_ht_ptr->header[team_hash] = t;
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/62/teams.c:98..98
+    98          t->next = team_ht_ptr->header[team_hash];
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/62/teams.c:90..90
+    90          TeamLink t = (TeamLink)can_fail_malloc(sizeof(struct TeamNode));
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/62/teams.c:88..88
+    88          int team_hash = name_hash(team_ht_ptr->size, team);
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/62/teams.c:61..61
+    61      TeamLink res = team_ht_search(team_ht, team);
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/62/teams.c:47..47
+    47      for (t = team_ht.header[team_hash]; t != NULL; t = t->next)
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/62/teams.c:45..45
+    45      int team_hash = name_hash(team_ht.size, team);
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/62/teams.c:44..44
+    44      TeamLink t;
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/62/teams.c:22..22
+    22          team_ht.header[i] = NULL;
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/62/teams.c:13..13
+    13      TeamHT team_ht;
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/62/main.c:13..13
+    13      GameHT game_ht = game_ht_init(&team_ht, 727);
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/62/main.c:12..12
+    12      TeamHT team_ht = team_ht_init(727);
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/62/games.c:378..378
+   378          head = game_ht.ht_header[i];
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/62/games.c:374..374
+   374      GameLink head, ht_next;
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/62/games.c:353..353
+   353      GameLink t;
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/62/games.c:311..311
+   311          TeamLink winner_before, winner_after;
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/62/games.c:297..297
+   297      GameLink game = game_ht_search(game_ht, game_name);
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/62/games.c:243..243
+   243              game_ht_ptr->ht_header[hash] = game->ht_next;
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/62/games.c:241..241
+   241          if (game_ht_ptr->ht_header[hash] == game)
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/62/games.c:225..225
+   225          TeamLink winner = game_winner(*game_ht_ptr->team_ht_ptr, game);
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/62/games.c:223..223
+   223          int hash = name_hash(game_ht_ptr->size, game_name);
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/62/games.c:209..209
+   209      GameLink game = game_ht_search(*game_ht_ptr, game_name);
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/62/games.c:162..162
+   162          game_ht_ptr->ht_header[hash] = game;
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/62/games.c:153..153
+   153          game->ht_next = game_ht_ptr->ht_header[hash];
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/62/games.c:149..149
+   149          hash = name_hash(game_ht_ptr->size, game_name);
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/62/games.c:145..145
+   145          TeamLink winner;
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/62/games.c:143..143
+   143          GameLink game;
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/62/games.c:85..85
+    85      GameLink res = game_ht_search(game_ht, game_name);
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p2/62/games.c:71..71
+    71      for (g = game_ht.ht_header[game_hash]; g != NULL; g = g->ht_next)
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p2/62/games.c:69..69
+    69      int game_hash = name_hash(game_ht.size, game_name);
+
+38: /home/fmarques/sbugs/projects/alunos/iaed_p2/62/games.c:68..68
+    68      GameLink g;
+
+39: /home/fmarques/sbugs/projects/alunos/iaed_p2/62/games.c:58..58
+    58          game_ht.ht_header[i] = NULL;
+
+40: /home/fmarques/sbugs/projects/alunos/iaed_p2/62/games.c:46..46
+    46      GameHT game_ht;
+
+41: /home/fmarques/sbugs/projects/alunos/iaed_p2/62/games.c:11..11
+    11      GameLink game = (GameLink)can_fail_malloc(sizeof(struct GameNode));

@@ -1,0 +1,96 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/230/proj2.c:136..136
+   136          printf("%d * %s\n", commandLine, listTeams[i]);
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/230/proj2.c:42..42
+    42          node = searchNode(htGames, listGames[i], idGame);
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/230/hash.c:139..139
+   139          linkedList = ht->list[i];
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/230/hash.c:120..120
+   120                  htGames->list[ind] = temp->next;
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/230/hash.c:108..108
+   108      list = htGames->list[ind];
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/230/hash.c:103..103
+   103      int ind = hash(gameNode->name, HT_SIZE);
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/230/hash.c:78..78
+    78      node = ht->list[ind];
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/230/hash.c:77..77
+    77      ind = hash(nameP, HT_SIZE);
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/230/hash.c:66..66
+    66          ht->list[ind] = linkNode;
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/230/hash.c:65..65
+    65          linkNode->next = ht->list[ind];
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/230/hash.c:62..62
+    62          ht->list[ind] = linkNode;
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/230/hash.c:60..60
+    60      if(ht->list[ind] == NULL){ /*se for o primeiro elemento a ser inserido*/
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/230/hash.c:56..56
+    56              ind = hash(((Team*)linkNode->data)->name, HT_SIZE);
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/230/hash.c:22..22
+    22          ht->list[i] = NULL;
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/230/aux.c:168..168
+   168      listTeams[i+1] = temp;
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/230/aux.c:167..167
+   167      listTeams[i] = listTeams[i+1];
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/230/aux.c:167..167
+   167      listTeams[i] = listTeams[i+1];
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/230/aux.c:166..166
+   166      temp = listTeams[i];
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/230/aux.c:153..153
+   153                  if(strcmp(listTeams[i-1], listTeams[i]) > 0){
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/230/aux.c:153..153
+   153                  if(strcmp(listTeams[i-1], listTeams[i]) > 0){
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/230/aux.c:152..152
+   152              while(i > 0 && strcmp(listTeams[i-1], listTeams[i]) > 0){
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/230/aux.c:152..152
+   152              while(i > 0 && strcmp(listTeams[i-1], listTeams[i]) > 0){
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/230/aux.c:149..149
+   149          if(strcmp(listTeams[i], listTeams[i+1]) > 0){ /*se a ordem estiver trocada*/
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/230/aux.c:149..149
+   149          if(strcmp(listTeams[i], listTeams[i+1]) > 0){ /*se a ordem estiver trocada*/
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/230/aux.c:127..127
+   127                  listTeams[lastInd] = teamInfo->name;
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/230/aux.c:122..122
+   122          node = htTeams->list[i];
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/230/aux.c:88..88
+    88                  listGames[i] = listGames[i+1];
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/230/aux.c:88..88
+    88                  listGames[i] = listGames[i+1];
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/230/aux.c:86..86
+    86          if(strcmp(gameNode->name, listGames[i]) == 0){
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/230/aux.c:52..52
+    52      listGames[numGames] = gameData->name;
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/230/aux.c:166..166
+   166      temp = listTeams[i];
+=== Potentially uninitialized variable ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/230/hash.c:60..60
+    60      if(ht->list[ind] == NULL){ /*se for o primeiro elemento a ser inserido*/

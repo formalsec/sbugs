@@ -1,0 +1,480 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:237..237
+   237          tmp->vizinhos[i].dest->parent = tmp;
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:236..236
+   236          tmp->vizinhos[i].dest->visited = 1;
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:235..235
+   235          queue[queueEndPtr++] = tmp->vizinhos[i].dest;
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:235..235
+   235          queue[queueEndPtr++] = tmp->vizinhos[i].dest;
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:234..234
+   234        if(tmp->vizinhos[i].dest->visited == 0 && tmp->vizinhos[i].flow > 0){
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:234..234
+   234        if(tmp->vizinhos[i].dest->visited == 0 && tmp->vizinhos[i].flow > 0){
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:231..231
+   231      tmp = queue[queuePtr++];
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:230..230
+   230    while(queue[queuePtr]){
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:228..228
+   228    queue[queueEndPtr++] = node;
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:212..212
+   212          graphOut[i].visited = 0;
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:211..211
+   211        if(graphOut[i].visited != 2)
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:210..210
+   210          graphIn[i].visited = 0;
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:209..209
+   209        if(graphIn[i].visited != 2)
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:158..158
+   158            graphOut[tmpVizinho].vizinhos[graphOut[tmpVizinho].nVizinhos++].flow = 1;
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:158..158
+   158            graphOut[tmpVizinho].vizinhos[graphOut[tmpVizinho].nVizinhos++].flow = 1;
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:158..158
+   158            graphOut[tmpVizinho].vizinhos[graphOut[tmpVizinho].nVizinhos++].flow = 1;
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:158..158
+   158            graphOut[tmpVizinho].vizinhos[graphOut[tmpVizinho].nVizinhos++].flow = 1;
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:157..157
+   157            graphOut[tmpVizinho].vizinhos[graphOut[tmpVizinho].nVizinhos].dest = &graphIn[tmpNo];
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:157..157
+   157            graphOut[tmpVizinho].vizinhos[graphOut[tmpVizinho].nVizinhos].dest = &graphIn[tmpNo];
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:157..157
+   157            graphOut[tmpVizinho].vizinhos[graphOut[tmpVizinho].nVizinhos].dest = &graphIn[tmpNo];
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:157..157
+   157            graphOut[tmpVizinho].vizinhos[graphOut[tmpVizinho].nVizinhos].dest = &graphIn[tmpNo];
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:155..155
+   155            graphIn[tmpVizinho].vizinhos[graphIn[tmpVizinho].nVizinhos++].flow = 1;
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:155..155
+   155            graphIn[tmpVizinho].vizinhos[graphIn[tmpVizinho].nVizinhos++].flow = 1;
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:155..155
+   155            graphIn[tmpVizinho].vizinhos[graphIn[tmpVizinho].nVizinhos++].flow = 1;
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:155..155
+   155            graphIn[tmpVizinho].vizinhos[graphIn[tmpVizinho].nVizinhos++].flow = 1;
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:154..154
+   154            graphIn[tmpVizinho].vizinhos[graphIn[tmpVizinho].nVizinhos].dest = &graphOut[tmpVizinho];
+
+27: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:154..154
+   154            graphIn[tmpVizinho].vizinhos[graphIn[tmpVizinho].nVizinhos].dest = &graphOut[tmpVizinho];
+
+28: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:154..154
+   154            graphIn[tmpVizinho].vizinhos[graphIn[tmpVizinho].nVizinhos].dest = &graphOut[tmpVizinho];
+
+29: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:154..154
+   154            graphIn[tmpVizinho].vizinhos[graphIn[tmpVizinho].nVizinhos].dest = &graphOut[tmpVizinho];
+
+30: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:154..154
+   154            graphIn[tmpVizinho].vizinhos[graphIn[tmpVizinho].nVizinhos].dest = &graphOut[tmpVizinho];
+
+31: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:152..152
+   152            graphOut[tmpNo].vizinhos[graphOut[tmpNo].nVizinhos++].flow = 1;
+
+32: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:152..152
+   152            graphOut[tmpNo].vizinhos[graphOut[tmpNo].nVizinhos++].flow = 1;
+
+33: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:152..152
+   152            graphOut[tmpNo].vizinhos[graphOut[tmpNo].nVizinhos++].flow = 1;
+
+34: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:152..152
+   152            graphOut[tmpNo].vizinhos[graphOut[tmpNo].nVizinhos++].flow = 1;
+
+35: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:151..151
+   151            graphOut[tmpNo].vizinhos[graphOut[tmpNo].nVizinhos].dest = &graphIn[tmpVizinho];
+
+36: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:151..151
+   151            graphOut[tmpNo].vizinhos[graphOut[tmpNo].nVizinhos].dest = &graphIn[tmpVizinho];
+
+37: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:151..151
+   151            graphOut[tmpNo].vizinhos[graphOut[tmpNo].nVizinhos].dest = &graphIn[tmpVizinho];
+
+38: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:151..151
+   151            graphOut[tmpNo].vizinhos[graphOut[tmpNo].nVizinhos].dest = &graphIn[tmpVizinho];
+
+39: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:149..149
+   149            graphIn[tmpNo].vizinhos[graphIn[tmpNo].nVizinhos++].flow = 1;
+
+40: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:149..149
+   149            graphIn[tmpNo].vizinhos[graphIn[tmpNo].nVizinhos++].flow = 1;
+
+41: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:149..149
+   149            graphIn[tmpNo].vizinhos[graphIn[tmpNo].nVizinhos++].flow = 1;
+
+42: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:149..149
+   149            graphIn[tmpNo].vizinhos[graphIn[tmpNo].nVizinhos++].flow = 1;
+
+43: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:148..148
+   148            graphIn[tmpNo].vizinhos[graphIn[tmpNo].nVizinhos].dest = &graphOut[tmpNo];
+
+44: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:148..148
+   148            graphIn[tmpNo].vizinhos[graphIn[tmpNo].nVizinhos].dest = &graphOut[tmpNo];
+
+45: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:148..148
+   148            graphIn[tmpNo].vizinhos[graphIn[tmpNo].nVizinhos].dest = &graphOut[tmpNo];
+
+46: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:148..148
+   148            graphIn[tmpNo].vizinhos[graphIn[tmpNo].nVizinhos].dest = &graphOut[tmpNo];
+
+47: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:138..138
+   138  				tmpVizinho = getNodeIndex(i + offsets[k][0], j + offsets[k][1]);
+
+48: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:138..138
+   138  				tmpVizinho = getNodeIndex(i + offsets[k][0], j + offsets[k][1]);
+
+49: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:135..135
+   135  				if(i + offsets[k][0] <= 0 || j + offsets[k][1] <= 0 || i + offsets[k][0] > numAvenidas || j + offsets[k][1] > numRuas)
+
+50: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:135..135
+   135  				if(i + offsets[k][0] <= 0 || j + offsets[k][1] <= 0 || i + offsets[k][0] > numAvenidas || j + offsets[k][1] > numRuas)
+
+51: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:135..135
+   135  				if(i + offsets[k][0] <= 0 || j + offsets[k][1] <= 0 || i + offsets[k][0] > numAvenidas || j + offsets[k][1] > numRuas)
+
+52: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:135..135
+   135  				if(i + offsets[k][0] <= 0 || j + offsets[k][1] <= 0 || i + offsets[k][0] > numAvenidas || j + offsets[k][1] > numRuas)
+
+53: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:133..133
+   133  				tmpNo = getNodeIndex(i, j);
+
+54: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:113..113
+   113          graphOut[index].vizinhos = (vizinho_t *) can_fail_realloc(graphOut[index].vizinhos, sizeof(vizinho_t)*(graphOut[index].nVizinhos + 32));
+
+55: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:113..113
+   113          graphOut[index].vizinhos = (vizinho_t *) can_fail_realloc(graphOut[index].vizinhos, sizeof(vizinho_t)*(graphOut[index].nVizinhos + 32));
+
+56: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:113..113
+   113          graphOut[index].vizinhos = (vizinho_t *) can_fail_realloc(graphOut[index].vizinhos, sizeof(vizinho_t)*(graphOut[index].nVizinhos + 32));
+
+57: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:112..112
+   112      if(graphOut[index].nVizinhos % 32 == 0){
+
+58: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:108..108
+   108          graphIn[index].vizinhos = (vizinho_t *) can_fail_realloc(graphIn[index].vizinhos, sizeof(vizinho_t)*(graphIn[index].nVizinhos + 32));
+
+59: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:108..108
+   108          graphIn[index].vizinhos = (vizinho_t *) can_fail_realloc(graphIn[index].vizinhos, sizeof(vizinho_t)*(graphIn[index].nVizinhos + 32));
+
+60: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:108..108
+   108          graphIn[index].vizinhos = (vizinho_t *) can_fail_realloc(graphIn[index].vizinhos, sizeof(vizinho_t)*(graphIn[index].nVizinhos + 32));
+
+61: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:107..107
+   107      if(graphIn[index].nVizinhos % 32 == 0){
+
+62: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:95..95
+    95          graph[index].vizinhos = (vizinho_t *) can_fail_calloc(32, sizeof(vizinho_t));
+
+63: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:94..94
+    94      if(graph[index].vizinhos == NULL)
+
+64: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:85..85
+    85      graphOut[tmpNo].vizinhos[graphOut[tmpNo].nVizinhos++].flow = 1;
+
+65: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:85..85
+    85      graphOut[tmpNo].vizinhos[graphOut[tmpNo].nVizinhos++].flow = 1;
+
+66: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:85..85
+    85      graphOut[tmpNo].vizinhos[graphOut[tmpNo].nVizinhos++].flow = 1;
+
+67: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:85..85
+    85      graphOut[tmpNo].vizinhos[graphOut[tmpNo].nVizinhos++].flow = 1;
+
+68: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:84..84
+    84      graphOut[tmpNo].vizinhos[graphOut[tmpNo].nVizinhos].dest = &uSourceIn;
+
+69: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:84..84
+    84      graphOut[tmpNo].vizinhos[graphOut[tmpNo].nVizinhos].dest = &uSourceIn;
+
+70: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:84..84
+    84      graphOut[tmpNo].vizinhos[graphOut[tmpNo].nVizinhos].dest = &uSourceIn;
+
+71: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:84..84
+    84      graphOut[tmpNo].vizinhos[graphOut[tmpNo].nVizinhos].dest = &uSourceIn;
+
+72: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:82..82
+    82      graphIn[tmpNo].vizinhos[graphIn[tmpNo].nVizinhos++].flow = 1;
+
+73: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:82..82
+    82      graphIn[tmpNo].vizinhos[graphIn[tmpNo].nVizinhos++].flow = 1;
+
+74: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:82..82
+    82      graphIn[tmpNo].vizinhos[graphIn[tmpNo].nVizinhos++].flow = 1;
+
+75: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:82..82
+    82      graphIn[tmpNo].vizinhos[graphIn[tmpNo].nVizinhos++].flow = 1;
+
+76: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:81..81
+    81      graphIn[tmpNo].vizinhos[graphIn[tmpNo].nVizinhos].dest = &graphOut[tmpNo];
+
+77: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:81..81
+    81      graphIn[tmpNo].vizinhos[graphIn[tmpNo].nVizinhos].dest = &graphOut[tmpNo];
+
+78: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:81..81
+    81      graphIn[tmpNo].vizinhos[graphIn[tmpNo].nVizinhos].dest = &graphOut[tmpNo];
+
+79: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:81..81
+    81      graphIn[tmpNo].vizinhos[graphIn[tmpNo].nVizinhos].dest = &graphOut[tmpNo];
+
+80: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:81..81
+    81      graphIn[tmpNo].vizinhos[graphIn[tmpNo].nVizinhos].dest = &graphOut[tmpNo];
+
+81: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:79..79
+    79      uSourceOut.vizinhos[uSourceOut.nVizinhos++].flow = 1;
+
+82: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:79..79
+    79      uSourceOut.vizinhos[uSourceOut.nVizinhos++].flow = 1;
+
+83: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:78..78
+    78      uSourceOut.vizinhos[uSourceOut.nVizinhos].dest = &graphIn[tmpNo];
+
+84: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:78..78
+    78      uSourceOut.vizinhos[uSourceOut.nVizinhos].dest = &graphIn[tmpNo];
+
+85: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:78..78
+    78      uSourceOut.vizinhos[uSourceOut.nVizinhos].dest = &graphIn[tmpNo];
+
+86: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:76..76
+    76      uSourceIn.vizinhos[uSourceIn.nVizinhos++].flow++;
+
+87: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:76..76
+    76      uSourceIn.vizinhos[uSourceIn.nVizinhos++].flow++;
+
+88: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:75..75
+    75      uSourceIn.vizinhos[uSourceIn.nVizinhos].dest = &uSourceOut;
+
+89: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:75..75
+    75      uSourceIn.vizinhos[uSourceIn.nVizinhos].dest = &uSourceOut;
+
+90: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:71..71
+    71      tmpNo = getNodeIndex(x, y);
+
+91: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:65..65
+    65      uSinkOut.vizinhos[uSinkOut.nVizinhos++].flow = 1;
+
+92: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:65..65
+    65      uSinkOut.vizinhos[uSinkOut.nVizinhos++].flow = 1;
+
+93: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:64..64
+    64      uSinkOut.vizinhos[uSinkOut.nVizinhos].dest = &graphIn[tmpNo];
+
+94: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:64..64
+    64      uSinkOut.vizinhos[uSinkOut.nVizinhos].dest = &graphIn[tmpNo];
+
+95: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:62..62
+    62      uSinkIn.vizinhos[uSinkIn.nVizinhos++].flow++;
+
+96: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:62..62
+    62      uSinkIn.vizinhos[uSinkIn.nVizinhos++].flow++;
+
+97: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:61..61
+    61      uSinkIn.vizinhos[uSinkIn.nVizinhos].dest = &uSinkOut;
+
+98: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:61..61
+    61      uSinkIn.vizinhos[uSinkIn.nVizinhos].dest = &uSinkOut;
+
+99: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:59..59
+    59      graphOut[tmpNo].vizinhos[graphOut[tmpNo].nVizinhos++].flow = 1;
+
+100: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:59..59
+    59      graphOut[tmpNo].vizinhos[graphOut[tmpNo].nVizinhos++].flow = 1;
+
+101: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:59..59
+    59      graphOut[tmpNo].vizinhos[graphOut[tmpNo].nVizinhos++].flow = 1;
+
+102: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:59..59
+    59      graphOut[tmpNo].vizinhos[graphOut[tmpNo].nVizinhos++].flow = 1;
+
+103: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:58..58
+    58      graphOut[tmpNo].vizinhos[graphOut[tmpNo].nVizinhos].dest = &uSinkIn;
+
+104: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:58..58
+    58      graphOut[tmpNo].vizinhos[graphOut[tmpNo].nVizinhos].dest = &uSinkIn;
+
+105: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:58..58
+    58      graphOut[tmpNo].vizinhos[graphOut[tmpNo].nVizinhos].dest = &uSinkIn;
+
+106: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:58..58
+    58      graphOut[tmpNo].vizinhos[graphOut[tmpNo].nVizinhos].dest = &uSinkIn;
+
+107: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:56..56
+    56      graphIn[tmpNo].vizinhos[graphIn[tmpNo].nVizinhos++].flow = 1;
+
+108: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:56..56
+    56      graphIn[tmpNo].vizinhos[graphIn[tmpNo].nVizinhos++].flow = 1;
+
+109: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:56..56
+    56      graphIn[tmpNo].vizinhos[graphIn[tmpNo].nVizinhos++].flow = 1;
+
+110: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:56..56
+    56      graphIn[tmpNo].vizinhos[graphIn[tmpNo].nVizinhos++].flow = 1;
+
+111: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:55..55
+    55      graphIn[tmpNo].vizinhos[graphIn[tmpNo].nVizinhos].dest = &graphOut[tmpNo];
+
+112: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:55..55
+    55      graphIn[tmpNo].vizinhos[graphIn[tmpNo].nVizinhos].dest = &graphOut[tmpNo];
+
+113: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:55..55
+    55      graphIn[tmpNo].vizinhos[graphIn[tmpNo].nVizinhos].dest = &graphOut[tmpNo];
+
+114: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp012/proj2.c:55..55
+    55      graphIn[tmpNo].vizinhos[graphIn[tmpNo].nVizinhos].dest = &graphOut[tmpNo];
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:127..127
+   127              if(visited[t]) return 1;
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:116..116
+   116      visited[s] = 1;
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:103..103
+   103      for(i = 0; i < graph.numArcs[u]; i++)
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:52..52
+    52          graph.adjList[src][pos] = graph.adjList[src][pos+1];  
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:51..51
+    51      for (; pos < graph.numArcs[src]-1; pos++)
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:46..46
+    46      graph.adjList[src] = can_fail_realloc(graph.adjList[src], ((++graph.numArcs[src]))*sizeof(int));
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al171/project.c:284..284
+   284  			v = parent[v];
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al171/project.c:282..282
+   282  			u = parent[v];
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al171/project.c:277..277
+   277  			v = parent[v];
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al171/project.c:275..275
+   275  			u = parent[v];
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al171/project.c:258..258
+   258  		AdjNode* backwards_node = graph->adjList[v]->next;
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al171/project.c:249..249
+   249  	AdjNode* forward_node = graph->adjList[u]->next;
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al171/project.c:241..241
+   241  	AdjNode* node = graph->adjList[u]->next;
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al171/project.c:230..230
+   230  		i = parent[i];
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al171/project.c:226..226
+   226  	int i = parent[dest];
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al171/project.c:222..222
+   222  	return(color[superdest] == Black);
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al171/project.c:219..219
+   219  		color[u] = Black;
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al171/project.c:214..214
+   214  				parent[v] = u;
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al171/project.c:213..213
+   213  				color[v] = Gray;
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al171/project.c:212..212
+   212  			if(color[v] == White && v_node->r_capacity > 0) {
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al171/project.c:209..209
+   209  		v_node = graph->adjList[u]->next;
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al171/project.c:208..208
+   208  		u = dequeue();
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al171/project.c:204..204
+   204  	parent[supersource] = -1;
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al171/project.c:203..203
+   203  	color[supersource] = Gray;
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al171/project.c:199..199
+   199  		color[i] = White;
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al171/project.c:197..197
+   197  	int color[numVertices];
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al171/project.c:185..185
+   185  	int v = queue[head];
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al171/project.c:179..179
+   179  	queue[tail] = v;
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al171/project.c:153..153
+   153      AdjNode* temp = graph->adjList[v];
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al171/project.c:137..137
+   137  		AdjNode* current = graph->adjList[i];
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al171/project.c:136..136
+   136  		free(graph->adjList[i]->node);
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al171/project.c:121..121
+   121  		graph->adjList[i] = NULL;
+
+27: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al171/project.c:69..69
+    69  	Node* node = graph->adjList[index2]->node;
+
+28: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al171/project.c:67..67
+    67  	AdjNode* tmp = graph->adjList[index1];
+
+29: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al171/project.c:55..55
+    55  	graph->adjList[index] = adj_node;
+
+30: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al171/project.c:42..42
+    42  	graph->adjList[index]->node->crossing = classification;
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al171/project.c:258..258
+   258  		AdjNode* backwards_node = graph->adjList[v]->next;
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al171/project.c:249..249
+   249  	AdjNode* forward_node = graph->adjList[u]->next;
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al171/project.c:241..241
+   241  	AdjNode* node = graph->adjList[u]->next;
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al171/project.c:226..226
+   226  	int i = parent[dest];
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al171/project.c:222..222
+   222  	return(color[superdest] == Black);
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al171/project.c:203..203
+   203  	color[supersource] = Gray;
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al171/project.c:69..69
+    69  	Node* node = graph->adjList[index2]->node;
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al171/project.c:67..67
+    67  	AdjNode* tmp = graph->adjList[index1];
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al171/project.c:55..55
+    55  	graph->adjList[index] = adj_node;
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al171/project.c:42..42
+    42  	graph->adjList[index]->node->crossing = classification;

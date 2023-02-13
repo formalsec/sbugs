@@ -1,0 +1,189 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al046/p1.c:114..114
+   114          printf("%d\n", grades[i]);
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al046/p1.c:109..109
+   109          propagate(grades[highest_index], highest_index, grades, friends[0], friends[1], visited);
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al046/p1.c:102..102
+   102                      highest = grades[i];
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al046/p1.c:101..101
+   101                  if(!visited[i] && grades[i] >= highest) {
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al046/p1.c:101..101
+   101                  if(!visited[i] && grades[i] >= highest) {
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al046/p1.c:88..88
+    88                  highest = grades[i];
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al046/p1.c:87..87
+    87              if(!visited[i] && grades[i] >= highest) {
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al046/p1.c:87..87
+    87              if(!visited[i] && grades[i] >= highest) {
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al046/p1.c:60..60
+    60          visited[i] = 0; /*initialize array*/
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al046/p1.c:54..54
+    54      int visited[n];
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al046/p1.c:47..47
+    47      int grades[n];
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al046/p1.c:27..27
+    27                  propagate(current_grade, destinations[k], grades, sources, destinations, visited);
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al046/p1.c:26..26
+    26                  grades[destinations[k]] = current_grade;
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al046/p1.c:26..26
+    26                  grades[destinations[k]] = current_grade;
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al046/p1.c:25..25
+    25              if(!visited[destinations[k]] && grades[destinations[k]] < current_grade) {
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al046/p1.c:25..25
+    25              if(!visited[destinations[k]] && grades[destinations[k]] < current_grade) {
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al046/p1.c:25..25
+    25              if(!visited[destinations[k]] && grades[destinations[k]] < current_grade) {
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al046/p1.c:25..25
+    25              if(!visited[destinations[k]] && grades[destinations[k]] < current_grade) {
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al046/p1.c:24..24
+    24          if(sources[k] == current_index) {
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al046/p1.c:18..18
+    18      visited[current_index] = 1;
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al046/p1.c:25..25
+    25              if(!visited[destinations[k]] && grades[destinations[k]] < current_grade) {
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al046/p1.c:18..18
+    18      visited[current_index] = 1;
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al046/p1.c:114..114
+   114          printf("%d\n", grades[i]);
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al046/p1.c:109..109
+   109          propagate(grades[highest_index], highest_index, grades, friends[0], friends[1], visited);
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al046/p1.c:102..102
+   102                      highest = grades[i];
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al046/p1.c:101..101
+   101                  if(!visited[i] && grades[i] >= highest) {
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al046/p1.c:101..101
+   101                  if(!visited[i] && grades[i] >= highest) {
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al046/p1.c:88..88
+    88                  highest = grades[i];
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al046/p1.c:87..87
+    87              if(!visited[i] && grades[i] >= highest) {
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al046/p1.c:87..87
+    87              if(!visited[i] && grades[i] >= highest) {
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al046/p1.c:60..60
+    60          visited[i] = 0; /*initialize array*/
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al046/p1.c:54..54
+    54      int visited[n];
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al046/p1.c:47..47
+    47      int grades[n];
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al046/p1.c:27..27
+    27                  propagate(current_grade, destinations[k], grades, sources, destinations, visited);
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al046/p1.c:26..26
+    26                  grades[destinations[k]] = current_grade;
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al046/p1.c:26..26
+    26                  grades[destinations[k]] = current_grade;
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al046/p1.c:25..25
+    25              if(!visited[destinations[k]] && grades[destinations[k]] < current_grade) {
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al046/p1.c:25..25
+    25              if(!visited[destinations[k]] && grades[destinations[k]] < current_grade) {
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al046/p1.c:25..25
+    25              if(!visited[destinations[k]] && grades[destinations[k]] < current_grade) {
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al046/p1.c:25..25
+    25              if(!visited[destinations[k]] && grades[destinations[k]] < current_grade) {
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al046/p1.c:24..24
+    24          if(sources[k] == current_index) {
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al046/p1.c:18..18
+    18      visited[current_index] = 1;
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al046/p1.c:25..25
+    25              if(!visited[destinations[k]] && grades[destinations[k]] < current_grade) {
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al046/p1.c:18..18
+    18      visited[current_index] = 1;
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al023/proj1_exp.c:130..130
+   130          no_ = g->listas_adjacencia[i];
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al023/proj1_exp.c:123..123
+   123          printf("%d\n", g->valores[v]);
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al023/proj1_exp.c:115..115
+   115          g->valores[n_pai] = max(g->valores[n_pai], g->valores[v_filho->valor]);
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al023/proj1_exp.c:115..115
+   115          g->valores[n_pai] = max(g->valores[n_pai], g->valores[v_filho->valor]);
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al023/proj1_exp.c:115..115
+   115          g->valores[n_pai] = max(g->valores[n_pai], g->valores[v_filho->valor]);
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al023/proj1_exp.c:115..115
+   115          g->valores[n_pai] = max(g->valores[n_pai], g->valores[v_filho->valor]);
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al023/proj1_exp.c:113..113
+   113          if(!g->visitado[v_filho->valor])
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al023/proj1_exp.c:113..113
+   113          if(!g->visitado[v_filho->valor])
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al023/proj1_exp.c:111..111
+   111      no* v_filho = g->listas_adjacencia[n_pai];
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al023/proj1_exp.c:110..110
+   110      g->visitado[n_pai] = VERDADEIRO;
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al023/proj1_exp.c:105..105
+   105          if (!g->visitado[v])
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al023/proj1_exp.c:99..99
+    99      g->listas_adjacencia[origem] = novo_no;
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al023/proj1_exp.c:98..98
+    98      novo_no->proximo_no = g->listas_adjacencia[origem];
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al023/proj1_exp.c:93..93
+    93      g->valores[indice] = valor;
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al023/proj1_exp.c:87..87
+    87          g->listas_adjacencia[i] = NULL;
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al023/proj1_exp.c:86..86
+    86          g->visitado[i] = FALSO;
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al023/proj1_exp.c:110..110
+   110      g->visitado[n_pai] = VERDADEIRO;
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al023/proj1_exp.c:98..98
+    98      novo_no->proximo_no = g->listas_adjacencia[origem];
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al023/proj1_exp.c:93..93
+    93      g->valores[indice] = valor;

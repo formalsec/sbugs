@@ -1,0 +1,153 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/182/structures.c:320..320
+   320          for (aux = game_table[i]; aux != NULL; aux = next)
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/182/structures.c:228..228
+   228          game_table[key] = game_table[key]->next;
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/182/structures.c:228..228
+   228          game_table[key] = game_table[key]->next;
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/182/structures.c:216..216
+   216      table_aux = game_table[key];
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/182/structures.c:214..214
+   214      key = stringhash(name);
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/182/structures.c:195..195
+   195      for (runthrough = game_table[key]; runthrough != NULL; runthrough = runthrough->next)
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/182/structures.c:193..193
+   193      int key = stringhash(name);
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/182/structures.c:182..182
+   182          game_table[key] = aux; 
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/182/structures.c:180..180
+   180          aux->next = game_table[key];
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/182/structures.c:170..170
+   170          game_table[key]->g = new_game;
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/182/structures.c:169..169
+   169          game_table[key]->next = NULL;
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/182/structures.c:168..168
+   168          game_table[key] = can_fail_malloc(sizeof(glink));
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/182/structures.c:166..166
+   166      if (game_table[key] == NULL) /* Case with no existing external chain */
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/182/structures.c:130..130
+   130      aux = game_table[key];
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/182/structures.c:129..129
+   129      key = stringhash(name);
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/182/structures.c:107..107
+   107          for (aux = team_table[i]; aux != NULL; aux = next)
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/182/structures.c:60..60
+    60      for (runthrough = team_table[key]; runthrough != NULL; runthrough = runthrough->next)
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/182/structures.c:58..58
+    58      int key = stringhash(name);
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/182/structures.c:45..45
+    45          team_table[key] = aux; 
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/182/structures.c:43..43
+    43          aux->next = team_table[key];
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/182/structures.c:24..24
+    24          team_table[key]->t = new_team;
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/182/structures.c:23..23
+    23          team_table[key]->next = NULL;
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/182/structures.c:22..22
+    22          team_table[key] = can_fail_malloc(sizeof(tlink));
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/182/structures.c:20..20
+    20      if (team_table[key] == NULL) /* Case with no existing external chain */
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/182/structures.c:15..15
+    15      aux = team_table[key];
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/182/structures.c:14..14
+    14      key = stringhash(name);
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/182/proj2.c:24..24
+    24          team_table[i] = NULL;
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/182/proj2.c:23..23
+    23          game_table[i] = NULL;
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/182/commands.c:205..205
+   205              printf("%u * %s\n", NL, list[i].name);
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/182/commands.c:188..188
+   188                  list[total-1] = *node->t;
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/182/commands.c:175..175
+   175          for (node = team_table[i]; node != NULL; node = node->next)
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/182/commands.c:111..111
+   111      char name[STRMAX];
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/182/commands.c:110..110
+   110      char new_winner[STRMAX], old_winner[STRMAX];
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/182/commands.c:110..110
+   110      char new_winner[STRMAX], old_winner[STRMAX];
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/182/commands.c:94..94
+    94      char name[STRMAX];
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p2/182/commands.c:76..76
+    76      char name[STRMAX];
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p2/182/commands.c:59..59
+    59      char name[STRMAX];
+
+38: /home/fmarques/sbugs/projects/alunos/iaed_p2/182/commands.c:21..21
+    21      char name[STRMAX], team1[STRMAX], team2[STRMAX];
+
+39: /home/fmarques/sbugs/projects/alunos/iaed_p2/182/commands.c:21..21
+    21      char name[STRMAX], team1[STRMAX], team2[STRMAX];
+
+40: /home/fmarques/sbugs/projects/alunos/iaed_p2/182/commands.c:21..21
+    21      char name[STRMAX], team1[STRMAX], team2[STRMAX];
+
+41: /home/fmarques/sbugs/projects/alunos/iaed_p2/182/commands.c:8..8
+     8      char name[STRMAX];
+
+42: /home/fmarques/sbugs/projects/alunos/iaed_p2/182/auxiliary.c:22..22
+    22          key = (key * MULTPRIME + name[i]) % HASHSIZE;
+
+43: /home/fmarques/sbugs/projects/alunos/iaed_p2/182/auxiliary.c:21..21
+    21      for (i = 0; name[i] != '\0'; i++)
+
+44: /home/fmarques/sbugs/projects/alunos/iaed_p2/182/auxiliary.c:7..7
+     7      size_t size = strlen(str) + 1;
+=== Dangerous function calls lacking bounds checking ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/182/commands.c:137..137
+   137          strcpy(old_winner, match->team2);
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/182/commands.c:135..135
+   135          strcpy(old_winner, match->team1);
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/182/commands.c:129..129
+   129          strcpy(new_winner, match->team2);
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/182/commands.c:127..127
+   127          strcpy(new_winner, match->team1);
+=== Possibly missing sizeof() in memory allocation ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/182/auxiliary.c:8..8
+     8      char *cpy = can_fail_malloc(size);
+=== Source of memcpy is untrusted parameter ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/182/auxiliary.c:11..11
+    11          memcpy(cpy, str, size);
+=== Potential heap memory use after free ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/182/structures.c:247..247
+   247                  free(table_aux);

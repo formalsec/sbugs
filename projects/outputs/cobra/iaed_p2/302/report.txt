@@ -1,0 +1,120 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/302/hashtable.c:105..105
+   105        destroy_list_eq(table->tb[i]); /*liberta a linkedlist no indice i*/
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/302/hashtable.c:103..103
+   103     size_t i;
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/302/hashtable.c:95..95
+    95        destroy_list_jg(table->tb[i]); /*liberta a linkedlist no indice i*/
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/302/hashtable.c:93..93
+    93     size_t i;
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/302/hashtable.c:86..86
+    86           table->tb[i] = NULL;
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/302/hashtable.c:85..85
+    85           table->tb[i] = delete_node_list(table->tb[i], nome);
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/302/hashtable.c:85..85
+    85           table->tb[i] = delete_node_list(table->tb[i], nome);
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/302/hashtable.c:83..83
+    83        tmp = encontra_listnode_jg(table->tb[i], nome);
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/302/hashtable.c:77..77
+    77              table->tb[i] = delete_node_list(table->tb[i], nome);
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/302/hashtable.c:77..77
+    77              table->tb[i] = delete_node_list(table->tb[i], nome);
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/302/hashtable.c:74..74
+    74        tmp = table->tb[i];
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/302/hashtable.c:73..73
+    73     if(table->tb[i] != NULL){ /*se esse nome ja foi inserido*/
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/302/hashtable.c:70..70
+    70     size_t i = hash(nome, table->capacidade);
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/302/hashtable.c:62..62
+    62        tmp = encontra_listnode_eq(table->tb[i], nome);
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/302/hashtable.c:61..61
+    61     if(table->tb[i] != NULL){
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/302/hashtable.c:59..59
+    59     size_t i = hash(nome, table->capacidade);
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/302/hashtable.c:50..50
+    50        tmp = encontra_listnode_jg(table->tb[i], nome);
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/302/hashtable.c:49..49
+    49     if(table->tb[i] != NULL){
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/302/hashtable.c:47..47
+    47     size_t i = hash(nome, table->capacidade);
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/302/hashtable.c:41..41
+    41     table->tb[i] = insere_equipa_lista(table->tb[i], equipa);
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/302/hashtable.c:41..41
+    41     table->tb[i] = insere_equipa_lista(table->tb[i], equipa);
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/302/hashtable.c:39..39
+    39     size_t i = hash(equipa->nome, table->capacidade);
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/302/hashtable.c:34..34
+    34     table->tb[i] = insere_jogo_lista(table->tb[i], jogo);
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/302/hashtable.c:34..34
+    34     table->tb[i] = insere_jogo_lista(table->tb[i], jogo);
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/302/hashtable.c:32..32
+    32     size_t i = hash(jogo->nome, table->capacidade);
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/302/hashtable.c:8..8
+     8        valor = valor * 29 + s[i];
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/302/funcoes.c:199..199
+   199           printf("%d * %s\n", cont, vetor[j]);
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/302/funcoes.c:188..188
+   188              vetor[k] = tmp->nome; /*acrescenta ao vetor*/
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/302/funcoes.c:184..184
+   184              vetor[k] = tmp->nome; /*acrescenta ao vetor*/
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/302/funcoes.c:179..179
+   179        tmp = syst_eq->tb[i];
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/302/funcoes.c:174..174
+   174     char *vetor[INICAP]; /*vetor a ordenar*/
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/302/funcoes.c:172..172
+   172     size_t i;
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/302/funcoes.c:158..158
+   158     char buf_t1[STR_SIZE];
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/302/funcoes.c:141..141
+   141     char buf_t1[STR_SIZE];
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/302/funcoes.c:93..93
+    93     char buf_jg[STR_SIZE];
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p2/302/funcoes.c:65..65
+    65     char buf_jg[STR_SIZE];
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p2/302/funcoes.c:49..49
+    49     char buf_jg[STR_SIZE];
+
+38: /home/fmarques/sbugs/projects/alunos/iaed_p2/302/funcoes.c:11..11
+    11     char buf_jg[STR_SIZE], buf_t1[STR_SIZE], buf_t2[STR_SIZE];
+
+39: /home/fmarques/sbugs/projects/alunos/iaed_p2/302/funcoes.c:11..11
+    11     char buf_jg[STR_SIZE], buf_t1[STR_SIZE], buf_t2[STR_SIZE];
+
+40: /home/fmarques/sbugs/projects/alunos/iaed_p2/302/funcoes.c:11..11
+    11     char buf_jg[STR_SIZE], buf_t1[STR_SIZE], buf_t2[STR_SIZE];

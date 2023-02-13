@@ -1,0 +1,96 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/34/proj2_comandos.c:145..145
+   145          lje->tab_jogo[posicao]->ultimo_jogo = jogo->anterior_tabela;
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/34/proj2_comandos.c:143..143
+   143      else if(lje->tab_jogo[posicao]->ultimo_jogo == jogo){
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/34/proj2_comandos.c:140..140
+   140              lje->tab_jogo[posicao]->primeiro_jogo = jogo->prox_tabela;
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/34/proj2_comandos.c:136..136
+   136              lje->tab_jogo[posicao]->ultimo_jogo= NULL;
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/34/proj2_comandos.c:135..135
+   135              lje->tab_jogo[posicao]->primeiro_jogo= NULL;
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/34/proj2_comandos.c:134..134
+   134          if(lje->tab_jogo[posicao]->ultimo_jogo == jogo){
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/34/proj2_comandos.c:133..133
+   133      if(lje->tab_jogo[posicao]->primeiro_jogo == jogo){
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/34/proj2_comandos.c:109..109
+   109      int posicao = hash(atr1);
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/34/proj2_comandos.c:70..70
+    70      lje->tab_equipa[posicao]->ultima_equipa = nova_equipa;
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/34/proj2_comandos.c:68..68
+    68          lje->tab_equipa[posicao]->ultima_equipa->prox_tabela = nova_equipa;
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/34/proj2_comandos.c:65..65
+    65          lje->tab_equipa[posicao]->primeira_equipa= nova_equipa;
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/34/proj2_comandos.c:64..64
+    64      if(lje->tab_equipa[posicao]->primeira_equipa == NULL){
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/34/proj2_comandos.c:51..51
+    51      int posicao = hash(atr1);
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/34/proj2_comandos.c:39..39
+    39      lje->tab_jogo[posicao]->ultimo_jogo= novo_jogo;
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/34/proj2_comandos.c:37..37
+    37          lje->tab_jogo[posicao]->ultimo_jogo->prox_tabela= novo_jogo;
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/34/proj2_comandos.c:36..36
+    36          novo_jogo->anterior_tabela= lje->tab_jogo[posicao]->ultimo_jogo;
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/34/proj2_comandos.c:33..33
+    33          lje->tab_jogo[posicao]->primeiro_jogo= novo_jogo;
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/34/proj2_comandos.c:32..32
+    32      if(lje->tab_jogo[posicao]->primeiro_jogo == NULL){
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/34/proj2_comandos.c:12..12
+    12      int posicao = hash(atr1);
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/34/proj2.c:10..10
+    10      char entrada[MAX_ENTRADA], *comando;
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/34/proj2_aux.c:227..227
+   227          free(lje->tab_jogo[i]);
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/34/proj2_aux.c:226..226
+   226          free(lje->tab_equipa[i]);
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/34/proj2_aux.c:99..99
+    99      jogo = lje->tab_jogo[posicao]->primeiro_jogo;
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/34/proj2_aux.c:98..98
+    98      int posicao= hash(atr1);
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/34/proj2_aux.c:67..67
+    67      equipa= lje->tab_equipa[posicao]->primeira_equipa;
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/34/proj2_aux.c:66..66
+    66      int posicao= hash(atr1);
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/34/proj2_aux.c:24..24
+    24          lje->tab_jogo[i]->ultimo_jogo = NULL;
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/34/proj2_aux.c:23..23
+    23          lje->tab_jogo[i]->primeiro_jogo = NULL;
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/34/proj2_aux.c:22..22
+    22          lje->tab_jogo[i]= can_fail_malloc(sizeof(Tabela_jogos));
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/34/proj2_aux.c:19..19
+    19          lje->tab_equipa[i]->ultima_equipa = NULL;
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/34/proj2_aux.c:18..18
+    18          lje->tab_equipa[i]->primeira_equipa = NULL;
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/34/proj2_aux.c:17..17
+    17          lje->tab_equipa[i]= can_fail_malloc(sizeof(Tabela_equipas));

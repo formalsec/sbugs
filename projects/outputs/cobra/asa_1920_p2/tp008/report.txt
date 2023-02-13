@@ -1,0 +1,126 @@
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp013/test7.c:278..278
+   278  	num_con = adjGraph[u] -> num_connections;
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp013/test7.c:44..44
+    44  	adjGraph[i] -> connections = can_fail_malloc(7*sizeof(int));
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp013/test7.c:40..40
+    40  	adjGraph[source] -> connections[adjGraph[source] -> num_connections ++] = sink;
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp013/test7.c:278..278
+   278  	num_con = adjGraph[u] -> num_connections;
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp013/test7.c:44..44
+    44  	adjGraph[i] -> connections = can_fail_malloc(7*sizeof(int));
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp013/test7.c:40..40
+    40  	adjGraph[source] -> connections[adjGraph[source] -> num_connections ++] = sink;
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:246..246
+   246              citizens[id] = create_citizen(avenue, street, city);
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:245..245
+   245          if (!citizens[id]) 
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:244..244
+   244          id = getid(avenue, street, 1);
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:240..240
+   240              supermarkets[id] = create_supermarket(avenue, street, city);
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:239..239
+   239          if (!supermarkets[id])
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:233..233
+   233          citizens[i] = NULL;
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:232..232
+   232          supermarkets[i] = NULL;
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:210..210
+   210                  pathinv -> flow = - path[i] -> flow;
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:209..209
+   209              if ((pathinv = find_inverse(path[i], city)))
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:208..208
+   208              path[i] -> flow++;
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:207..207
+   207          for (i = 0; path[i]; i++) {
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:203..203
+   203          q[i] = DEFAULT;
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:189..189
+   189                  city[v].pi = u;
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:188..188
+   188                  city[v].visited = 1;
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:187..187
+   187              if(city[v].visited == 0 && edge->capacity > edge->flow) {
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:182..182
+   182                  path[path_ptr + 1] = NULL;
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:181..181
+   181                  path[path_ptr] = find_edge(SOURCE, v, city);
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:179..179
+   179                      u = city[u].pi;
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:177..177
+   177                      path[path_ptr++] = find_edge(u, v, city);
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:173..173
+   173          for(edge = city[u].roads; edge; edge = edge -> next){
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:166..166
+   166          city[i].pi = DEFAULT;
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:165..165
+   165          city[i].visited = 0;
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:162..162
+   162      city[SOURCE].pi = DEFAULT;
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:161..161
+   161      city[SOURCE].visited = 1;
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:145..145
+   145          for(edge = city[i].roads; edge;){
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:114..114
+   114          city[i].roads = NULL;
+
+27: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:113..113
+   113          city[i].id = i;
+
+28: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:95..95
+    95      for(edge = city[origin].roads; edge; edge = edge -> next)
+
+29: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:93..93
+    93          return supermarkets[destination];
+
+30: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:90..90
+    90          return citizens[destination];
+
+31: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:73..73
+    73      city[origin].roads = new_road;
+
+32: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:72..72
+    72      new_road->next = city[origin].roads ;
+
+33: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:54..54
+    54      return q[de_ptr++];
+
+34: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:50..50
+    50      q[en_ptr++] = value;
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:90..90
+    90          return citizens[destination];
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:72..72
+    72      new_road->next = city[origin].roads ;

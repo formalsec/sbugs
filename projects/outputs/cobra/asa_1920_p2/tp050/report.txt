@@ -1,0 +1,519 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:223..223
+   223  											cidadeCidadao[v][h] = 0;
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:221..221
+   221  												cidadeCidadao[v][h] = 0;
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:213..213
+   213  															cidadeProibida[v2][h2] = -1;
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:211..211
+   211  																cidadeCidadao[v][h] = 0;
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:210..210
+   210  																cidadeProibida[v2+1][h2] = -1;
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:209..209
+   209  																cidadeProibida[v2][h2] = -1;
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:207..207
+   207  															if(cidadeSuper[v2+1][h2] == 1){
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:206..206
+   206  														if(v2 >= 0 && v2+1 < m && h2 >= 0 && h2 < n && cidadeProibida[v2+1][h2] == 0){
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:199..199
+   199  														cidadeProibida[v2][h2] = -1;
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:197..197
+   197  															cidadeCidadao[v][h] = 0;
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:196..196
+   196  															cidadeProibida[v2][h2+1] = -1;
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:195..195
+   195  															cidadeProibida[v2][h2] = -1;
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:193..193
+   193  														if(cidadeSuper[v2][h2+1] == 1){
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:192..192
+   192  													if(v2 >= 0 && v2 < m && h2 >= 0 && h2+1 < n && cidadeProibida[v2][h2+1] == 0){
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:186..186
+   186  													cidadeProibida[v2][h2] = -1;
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:184..184
+   184  														cidadeCidadao[v][h] = 0;
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:183..183
+   183  														cidadeProibida[v2-1][h2] = -1;
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:182..182
+   182  														cidadeProibida[v2][h2] = -1;
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:180..180
+   180  													if(cidadeSuper[v2-1][h2] == 1){
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:179..179
+   179  												if(v2-1 >= 0 && v2 < m && h2 >= 0 && h2 < n && cidadeProibida[v2-1][h2] == 0){
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:173..173
+   173  												cidadeProibida[v2][h2] = -1;
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:171..171
+   171  													cidadeCidadao[v][h] = 0;
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:170..170
+   170  													cidadeProibida[v2][h2-1] = -1;
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:169..169
+   169  													cidadeProibida[v2][h2] = -1;
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:167..167
+   167  												if(cidadeSuper[v2][h2-1] == 1){ /* Ver se há Super na direção em que vou */
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:165..165
+   165  											if(v2 >= 0 && v2 < m && h2-1 >= 0 && h2 < n && cidadeProibida[v2][h2-1] == 0){
+
+27: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:161..161
+   161  										while(v2 >= 0 && v2 < m && h2 >= 0 && h2 < n && cidadeProibida[v2][h2] == 0){
+
+28: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:159..159
+   159  										cidadeProibida[v][h] = 0;
+
+29: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:157..157
+   157  									while(h2 < n && cidadeCidadao[v][h] == 1){
+
+30: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:156..156
+   156  								while(v2 < m && cidadeCidadao[v][h] == 1){
+
+31: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:145..145
+   145  								cidadeProibida[v][h] = -1;
+
+32: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:144..144
+   144  								cidadeProibida[v+1][h] = -1;
+
+33: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:143..143
+   143  							if(v >= 0 && v+1 < m && h >= 0 && h < m && cidadeProibida[v+1][h] == 0 && cidadeSuper[v+1][h] == 1){
+
+34: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:143..143
+   143  							if(v >= 0 && v+1 < m && h >= 0 && h < m && cidadeProibida[v+1][h] == 0 && cidadeSuper[v+1][h] == 1){
+
+35: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:138..138
+   138  							cidadeProibida[v][h] = -1;
+
+36: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:137..137
+   137  							cidadeProibida[v][h+1] = -1;
+
+37: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:136..136
+   136  						if(v >= 0 && v < m && h >= 0 && h+1 < m && cidadeProibida[v][h+1] == 0 && cidadeSuper[v][h+1] == 1){ 
+
+38: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:136..136
+   136  						if(v >= 0 && v < m && h >= 0 && h+1 < m && cidadeProibida[v][h+1] == 0 && cidadeSuper[v][h+1] == 1){ 
+
+39: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:131..131
+   131  						cidadeProibida[v][h] = -1;
+
+40: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:130..130
+   130  						cidadeProibida[v-1][h] = -1;
+
+41: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:129..129
+   129  					if(v-1 >= 0 && v < m && h >= 0 && h < m && cidadeProibida[v-1][h] == 0 && cidadeSuper[v-1][h] == 1){
+
+42: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:129..129
+   129  					if(v-1 >= 0 && v < m && h >= 0 && h < m && cidadeProibida[v-1][h] == 0 && cidadeSuper[v-1][h] == 1){
+
+43: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:124..124
+   124  					cidadeProibida[v][h] = -1;
+
+44: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:123..123
+   123  					cidadeProibida[v][h-1] = -1;
+
+45: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:122..122
+   122  				if(v >= 0 && v < m && h-1 >= 0 && h < m && cidadeProibida[v][h-1] == 0 && cidadeSuper[v][h-1] == 1){
+
+46: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:122..122
+   122  				if(v >= 0 && v < m && h-1 >= 0 && h < m && cidadeProibida[v][h-1] == 0 && cidadeSuper[v][h-1] == 1){
+
+47: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:117..117
+   117  			while(cidadeCidadao[v][h] == 1){
+
+48: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:101..101
+   101  				cidadeProibida[v][h] = -1;
+
+49: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:100..100
+   100  			if(cidadeCidadao[v][h] == 1){
+
+50: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:84..84
+    84  				cidadeProibida[v][h] = -1;
+
+51: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:83..83
+    83  			if(cidadeSuper[v][h] == 1 && cidadeCidadao[v][h] == 1){
+
+52: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:83..83
+    83  			if(cidadeSuper[v][h] == 1 && cidadeCidadao[v][h] == 1){
+
+53: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:70..70
+    70  		cidadeCidadao[v-1][n-h] = 1;
+
+54: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:64..64
+    64  		cidadeSuper[v-1][n-h] = 1;
+
+55: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:47..47
+    47  			cidadeProibida[v][h] = 0;
+
+56: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:46..46
+    46  			cidadeCidadao[v][h] = 0;
+
+57: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:45..45
+    45  			cidadeSuper[v][h] = 0;
+
+58: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:39..39
+    39  	int cidadeProibida[m][n]; /* Criamos a cidade para guardar Estradas Cortadas*/
+
+59: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:38..38
+    38  	int cidadeCidadao[m][n]; /* Criamos a cidade para guardar Cidadaos */
+
+60: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp057/proj2.c:37..37
+    37  	int cidadeSuper[m][n]; /* Criamos a cidade para guardar Supers */
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp056/p2.c:178..178
+   178  	parent[source] = -2;
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp056/p2.c:106..106
+   106  	node->next = graph->array[src].head;
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:255..255
+   255  		casasList[i] = list[auxAvenida][auxRua];
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:255..255
+   255  		casasList[i] = list[auxAvenida][auxRua];
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:254..254
+   254  		list[auxAvenida][auxRua]->type = CASA;
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:251..251
+   251  		scanf("%d %d", &auxAvenida, &auxRua);
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:246..246
+   246  		supermercadosList[i] = list[auxAvenida][auxRua];
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:246..246
+   246  		supermercadosList[i] = list[auxAvenida][auxRua];
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:245..245
+   245  		list[auxAvenida][auxRua]->type = SUPERMERCADO;
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:234..234
+   234  				list[i][j]->anterior = NULL;
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:233..233
+   233  				list[i][j]->isChecked = 0;
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:232..232
+   232  				list[i][j]->type = CAMINHO;
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:231..231
+   231  				list[i][j]->direcoes[3] = list[i-1][j];
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:231..231
+   231  				list[i][j]->direcoes[3] = list[i-1][j];
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:230..230
+   230  				list[i][j]->direcoes[2] = list[i][j+1];
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:230..230
+   230  				list[i][j]->direcoes[2] = list[i][j+1];
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:229..229
+   229  				list[i][j]->direcoes[1] = list[i+1][j];
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:229..229
+   229  				list[i][j]->direcoes[1] = list[i+1][j];
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:228..228
+   228  				list[i][j]->direcoes[0] = list[i][j-1];
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:228..228
+   228  				list[i][j]->direcoes[0] = list[i][j-1];
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:223..223
+   223  		list[i][auxRua]->anterior = NULL;
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:222..222
+   222  		list[i][auxRua]->isChecked = 0;
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:221..221
+   221  		list[i][auxRua]->type = CAMINHO;
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:220..220
+   220  		list[i][auxRua]->direcoes[3] = list[i-1][auxRua];
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:220..220
+   220  		list[i][auxRua]->direcoes[3] = list[i-1][auxRua];
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:219..219
+   219  		list[i][auxRua]->direcoes[2] = NULL;
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:218..218
+   218  		list[i][auxRua]->direcoes[1] = list[i+1][auxRua];
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:218..218
+   218  		list[i][auxRua]->direcoes[1] = list[i+1][auxRua];
+
+27: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:217..217
+   217  		list[i][auxRua]->direcoes[0] = list[i][auxRua-1];
+
+28: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:217..217
+   217  		list[i][auxRua]->direcoes[0] = list[i][auxRua-1];
+
+29: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:215..215
+   215  		list[i][0]->anterior = NULL;
+
+30: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:214..214
+   214  		list[i][0]->isChecked = 0;
+
+31: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:213..213
+   213  		list[i][0]->type = CAMINHO;
+
+32: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:212..212
+   212  		list[i][0]->direcoes[3] = list[i-1][0];
+
+33: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:212..212
+   212  		list[i][0]->direcoes[3] = list[i-1][0];
+
+34: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:211..211
+   211  		list[i][0]->direcoes[2] = list[i][1];
+
+35: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:211..211
+   211  		list[i][0]->direcoes[2] = list[i][1];
+
+36: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:210..210
+   210  		list[i][0]->direcoes[1] = list[i+1][0];
+
+37: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:210..210
+   210  		list[i][0]->direcoes[1] = list[i+1][0];
+
+38: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:209..209
+   209  		list[i][0]->direcoes[0] = NULL;
+
+39: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:206..206
+   206  		list[auxAvenida][j]->anterior = NULL;
+
+40: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:205..205
+   205  		list[auxAvenida][j]->isChecked = 0;
+
+41: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:204..204
+   204  		list[auxAvenida][j]->type = CAMINHO;
+
+42: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:203..203
+   203  		list[auxAvenida][j]->direcoes[3] = list[auxAvenida-1][j];
+
+43: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:203..203
+   203  		list[auxAvenida][j]->direcoes[3] = list[auxAvenida-1][j];
+
+44: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:202..202
+   202  		list[auxAvenida][j]->direcoes[2] = list[auxAvenida][j+1];
+
+45: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:202..202
+   202  		list[auxAvenida][j]->direcoes[2] = list[auxAvenida][j+1];
+
+46: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:201..201
+   201  		list[auxAvenida][j]->direcoes[1] = NULL;
+
+47: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:200..200
+   200  		list[auxAvenida][j]->direcoes[0] = list[auxAvenida][j-1];
+
+48: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:200..200
+   200  		list[auxAvenida][j]->direcoes[0] = list[auxAvenida][j-1];
+
+49: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:188..188
+   188  	list[auxAvenida][auxRua]->anterior = NULL;
+
+50: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:187..187
+   187  	list[auxAvenida][auxRua]->isChecked = 0;
+
+51: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:186..186
+   186  	list[auxAvenida][auxRua]->type = CAMINHO;
+
+52: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:185..185
+   185  	list[auxAvenida][auxRua]->direcoes[3] = list[auxAvenida-1][auxRua];
+
+53: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:185..185
+   185  	list[auxAvenida][auxRua]->direcoes[3] = list[auxAvenida-1][auxRua];
+
+54: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:184..184
+   184  	list[auxAvenida][auxRua]->direcoes[2] = NULL;
+
+55: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:183..183
+   183  	list[auxAvenida][auxRua]->direcoes[1] = NULL;
+
+56: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:182..182
+   182  	list[auxAvenida][auxRua]->direcoes[0] = list[auxAvenida][auxRua-1];
+
+57: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:182..182
+   182  	list[auxAvenida][auxRua]->direcoes[0] = list[auxAvenida][auxRua-1];
+
+58: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:180..180
+   180  	list[auxAvenida][0]->anterior = NULL;
+
+59: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:179..179
+   179  	list[auxAvenida][0]->isChecked = 0;
+
+60: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:178..178
+   178  	list[auxAvenida][0]->type = CAMINHO;
+
+61: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:177..177
+   177  	list[auxAvenida][0]->direcoes[3] = list[auxAvenida-1][0];
+
+62: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:177..177
+   177  	list[auxAvenida][0]->direcoes[3] = list[auxAvenida-1][0];
+
+63: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:176..176
+   176  	list[auxAvenida][0]->direcoes[2] = list[auxAvenida][1];
+
+64: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:176..176
+   176  	list[auxAvenida][0]->direcoes[2] = list[auxAvenida][1];
+
+65: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:175..175
+   175  	list[auxAvenida][0]->direcoes[1] = NULL;
+
+66: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:174..174
+   174  	list[auxAvenida][0]->direcoes[0] = NULL;
+
+67: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:151..151
+   151  				list[i][j]->direcoes = can_fail_malloc(4* sizeof(node*));
+
+68: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:150..150
+   150  				list[i][j] = can_fail_malloc(sizeof(node));
+
+69: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:144..144
+   144  		list[i] = can_fail_malloc(ruas * sizeof(node*));
+
+70: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:128..128
+   128  					auxResultado += bfs(supermercadosList[i],CASA);
+
+71: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:127..127
+   127  				if(!supermercadosList[i]->isChecked){
+
+72: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:123..123
+   123  					overridebfs(casasList[i],SUPERMERCADO);
+
+73: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:121..121
+   121  				if(!casasList[i]->isChecked){
+
+74: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:115..115
+   115  			resultado += bfs(casasList[i], SUPERMERCADO);
+
+75: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:108..108
+   108  					auxResultado += bfs(casasList[i],SUPERMERCADO);
+
+76: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:107..107
+   107  				if(!casasList[i]->isChecked){
+
+77: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:104..104
+   104  					overridebfs(supermercadosList[i],CASA);
+
+78: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:103..103
+   103  				if(!supermercadosList[i]->isChecked)
+
+79: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:97..97
+    97  			resultado += bfs(supermercadosList[i], CASA);
+
+80: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:85..85
+    85                  	queue[numeroElementos++] = aux->direcoes[i];
+
+81: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:85..85
+    85                  	queue[numeroElementos++] = aux->direcoes[i];
+
+82: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:84..84
+    84                 		aux->direcoes[i]->anterior = aux;  
+
+83: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:83..83
+    83                  	aux->direcoes[i]->isChecked = 2;
+
+84: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:79..79
+    79                 		    		queue[i]->isChecked = 0;
+
+85: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:78..78
+    78                 		    	if(queue[i]->isChecked == 2)
+
+86: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:76..76
+    76                 			atualizaCheck(aux->direcoes[i]);
+
+87: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:75..75
+    75                 			queue[numeroElementos++] = aux->direcoes[i];
+
+88: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:75..75
+    75                 			queue[numeroElementos++] = aux->direcoes[i];
+
+89: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:74..74
+    74                 			aux->direcoes[i]->anterior = aux;  
+
+90: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:73..73
+    73                 			aux->direcoes[i]->isChecked = 2;
+
+91: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:72..72
+    72                 			clearPath(aux->direcoes[i]->anterior);
+
+92: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:71..71
+    71                  	if (aux->direcoes[i]->type == type){
+
+93: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:70..70
+    70              	if (aux->direcoes[i]->type == type || (aux->direcoes[i]->type!= arg->type && !aux->direcoes[i]->isChecked)) {
+
+94: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:70..70
+    70              	if (aux->direcoes[i]->type == type || (aux->direcoes[i]->type!= arg->type && !aux->direcoes[i]->isChecked)) {
+
+95: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:70..70
+    70              	if (aux->direcoes[i]->type == type || (aux->direcoes[i]->type!= arg->type && !aux->direcoes[i]->isChecked)) {
+
+96: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:69..69
+    69          	if(aux->direcoes[i]){ 
+
+97: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:67..67
+    67         	aux = queue[posicao++];
+
+98: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:64..64
+    64  	queue[numeroElementos++] = arg;
+
+99: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:51..51
+    51                      		queue[i]->isChecked = 0;
+
+100: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:50..50
+    50                      	if(queue[i]->isChecked == 2)
+
+101: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:48..48
+    48                  	atualizaCheck(aux->direcoes[i]);
+
+102: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:47..47
+    47                  if (aux->direcoes[i]->type == type){
+
+103: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:46..46
+    46                  queue[numeroElementos++] = aux->direcoes[i]; 
+
+104: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:46..46
+    46                  queue[numeroElementos++] = aux->direcoes[i]; 
+
+105: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:45..45
+    45                  aux->direcoes[i]->anterior = aux;  
+
+106: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:44..44
+    44                  aux->direcoes[i]->isChecked = 2;
+
+107: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:43..43
+    43              if (aux->direcoes[i] && aux->direcoes[i]->type!= arg->type && !aux->direcoes[i]->isChecked) { 
+
+108: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:43..43
+    43              if (aux->direcoes[i] && aux->direcoes[i]->type!= arg->type && !aux->direcoes[i]->isChecked) { 
+
+109: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:43..43
+    43              if (aux->direcoes[i] && aux->direcoes[i]->type!= arg->type && !aux->direcoes[i]->isChecked) { 
+
+110: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:41..41
+    41         	aux = queue[posicao++];
+
+111: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:38..38
+    38  	queue[numeroElementos++] = arg;

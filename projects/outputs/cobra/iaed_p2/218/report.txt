@@ -1,0 +1,156 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/218/proj2.c:652..652
+   652  	char arg[LEN*3+24];
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/218/proj2.c:642..642
+   642  			printf("%d * %s\n", NL, bigWinners[i]->value->name);
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/218/proj2.c:634..634
+   634  					bigWinners[j+1] = storm;
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/218/proj2.c:633..633
+   633  					bigWinners[j] = bigWinners[j+1];
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/218/proj2.c:633..633
+   633  					bigWinners[j] = bigWinners[j+1];
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/218/proj2.c:632..632
+   632  					storm = bigWinners[j];
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/218/proj2.c:630..630
+   630  				if (strcmp(bigWinners[j]->value->name, bigWinners[j+1]->value->name)>0)
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/218/proj2.c:630..630
+   630  				if (strcmp(bigWinners[j]->value->name, bigWinners[j+1]->value->name)>0)
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/218/proj2.c:620..620
+   620  					bigWinners[winnerCounter] = tHead;
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/218/proj2.c:616..616
+   616  			for (tHead = Teams[i]; tHead!=NULL; tHead=tHead->next)
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/218/proj2.c:595..595
+   595  			for (tHead = Teams[i]; tHead!=NULL; tHead=tHead->next)
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/218/proj2.c:592..592
+   592  		if(Teams[i]!=NULL) 
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/218/proj2.c:523..523
+   523  		for (gCopy=Games[index]; gCopy!=NULL && found==0; gCopy=gCopy->hashNext)
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/218/proj2.c:510..510
+   510  		Games[index]=Games[index]->hashNext;
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/218/proj2.c:510..510
+   510  		Games[index]=Games[index]->hashNext;
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/218/proj2.c:508..508
+   508  		freeThisOne = Games[index];
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/218/proj2.c:505..505
+   505  	} else if (strcmp(Games[index]->value->name, command)==0)
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/218/proj2.c:501..501
+   501  	if(Games[index]==NULL)
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/218/proj2.c:499..499
+   499  	int index = hash(command);
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/218/proj2.c:414..414
+   414  	for (gCopy=Games[index]; gCopy!=NULL && found==0; gCopy=gCopy->hashNext)
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/218/proj2.c:411..411
+   411  	index = hash(theGame);
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/218/proj2.c:395..395
+   395  	char theGame[LEN];
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/218/proj2.c:380..380
+   380  		for (toDestroyT=Teams[i]; toDestroyT!=NULL; toDestroyT=nexttT)
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/218/proj2.c:338..338
+   338  	for (tHeadCopy = Teams[index]; tHeadCopy!=NULL; tHeadCopy = tHeadCopy->next)
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/218/proj2.c:336..336
+   336  	int index = hash(command);
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/218/proj2.c:313..313
+   313  	for (gHeadCopy = Games[index]; gHeadCopy!=NULL && gFound==0; gHeadCopy = gHeadCopy->hashNext)
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/218/proj2.c:311..311
+   311  	int index = hash(command);
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/218/proj2.c:288..288
+   288  			Teams[index] = newptr;
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/218/proj2.c:287..287
+   287  			newptr->next = Teams[index];
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/218/proj2.c:270..270
+   270  		for (tHead = Teams[index]; tHead != NULL; tHead = tHead->next)
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/218/proj2.c:266..266
+   266  		Teams[index] = newptr;
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/218/proj2.c:264..264
+   264  	if(Teams[index]==NULL)
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/218/proj2.c:253..253
+   253  	int index = hash(command);
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/218/proj2.c:240..240
+   240  		Games[index] = newptr;
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/218/proj2.c:239..239
+   239  		newptr->hashNext = Games[index];
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p2/218/proj2.c:197..197
+   197  		Games[index] = newptr;
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p2/218/proj2.c:195..195
+   195  	} else if(Games[index] == NULL) 
+
+38: /home/fmarques/sbugs/projects/alunos/iaed_p2/218/proj2.c:168..168
+   168  	for(head = Games[index]; head != NULL; head = head->hashNext)
+
+39: /home/fmarques/sbugs/projects/alunos/iaed_p2/218/proj2.c:159..159
+   159  		for(tHead = Teams[tIndex2]; tHead != NULL; tHead = tHead->next)
+
+40: /home/fmarques/sbugs/projects/alunos/iaed_p2/218/proj2.c:151..151
+   151  		for(tHead = Teams[tIndex1]; tHead != NULL; tHead = tHead->next)
+
+41: /home/fmarques/sbugs/projects/alunos/iaed_p2/218/proj2.c:144..144
+   144  	if(Teams[tIndex1] == NULL || Teams[tIndex2] == NULL)
+
+42: /home/fmarques/sbugs/projects/alunos/iaed_p2/218/proj2.c:144..144
+   144  	if(Teams[tIndex1] == NULL || Teams[tIndex2] == NULL)
+
+43: /home/fmarques/sbugs/projects/alunos/iaed_p2/218/proj2.c:142..142
+   142  	tIndex2 = hash(newptr->value->team2);
+
+44: /home/fmarques/sbugs/projects/alunos/iaed_p2/218/proj2.c:141..141
+   141  	tIndex1 = hash(newptr->value->team1);
+
+45: /home/fmarques/sbugs/projects/alunos/iaed_p2/218/proj2.c:140..140
+   140  	index = hash(newptr->value->name);
+
+46: /home/fmarques/sbugs/projects/alunos/iaed_p2/218/proj2.c:92..92
+    92  	for (tHeadCopy=Teams[index]; tHeadCopy!=NULL; tHeadCopy=tHeadCopy->next)
+
+47: /home/fmarques/sbugs/projects/alunos/iaed_p2/218/proj2.c:91..91
+    91  	int index = hash(teamName);
+
+48: /home/fmarques/sbugs/projects/alunos/iaed_p2/218/proj2.c:78..78
+    78  	for (tHeadCopy=Teams[index]; tHeadCopy!=NULL; tHeadCopy=tHeadCopy->next)
+
+49: /home/fmarques/sbugs/projects/alunos/iaed_p2/218/proj2.c:77..77
+    77  	int index = hash(teamName);
+
+50: /home/fmarques/sbugs/projects/alunos/iaed_p2/218/proj2.c:69..69
+    69  		Teams[i] = NULL;
+
+51: /home/fmarques/sbugs/projects/alunos/iaed_p2/218/proj2.c:68..68
+    68  		Games[i] = NULL;
+=== Dangerous function calls lacking bounds checking ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/218/proj2.c:403..403
+   403  	strcpy(theGame, token);

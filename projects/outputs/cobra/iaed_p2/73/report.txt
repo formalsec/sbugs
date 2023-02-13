@@ -1,0 +1,99 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/73/proj2.c:42..42
+    42      char nome_equipa[MAX_LEN_STR];
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/73/proj2.c:41..41
+    41      equipa2_temp[MAX_LEN_STR]; 
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/73/proj2.c:40..40
+    40      char nome_jogo_temp[MAX_LEN_STR], equipa1_temp[MAX_LEN_STR],
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/73/proj2.c:40..40
+    40      char nome_jogo_temp[MAX_LEN_STR], equipa1_temp[MAX_LEN_STR],
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/73/jogos.c:299..299
+   299          jogo_atual = tabela_jogos->vetor_hashes[hash].next;
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/73/jogos.c:202..202
+   202          jogo_anterior = tabela_jogos->vetor_hashes[hash].next;
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/73/jogos.c:196..196
+   196          tabela_jogos->vetor_hashes[hash].next = jogo_next;
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/73/jogos.c:194..194
+   194          jogo_alvo = tabela_jogos->vetor_hashes[hash].next;
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/73/jogos.c:191..191
+   191      if(strcmp(nome_jogo, tabela_jogos->vetor_hashes[hash].next->pointer_jogo->nome_jogo) == 0)
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/73/jogos.c:188..188
+   188      hash = hash_function_jogos(nome_jogo, tabela_jogos->tamanho_maximo);
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/73/jogos.c:164..164
+   164          link_atual = tabela_jogos->vetor_hashes[hash].next; 
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/73/jogos.c:159..159
+   159      if(tabela_jogos->vetor_hashes[hash].next == NULL)
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/73/jogos.c:156..156
+   156      hash = hash_function_jogos(nome_jogo, tabela_jogos->tamanho_maximo);
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/73/jogos.c:98..98
+    98          tabela_jogos->vetor_hashes[hash].next = no_novo_jogo;
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/73/jogos.c:97..97
+    97          no_novo_jogo->jogo_next_hashtable = tabela_jogos->vetor_hashes[hash].next;
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/73/jogos.c:91..91
+    91          tabela_jogos->vetor_hashes[hash].next = no_novo_jogo;
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/73/jogos.c:87..87
+    87      if(tabela_jogos->vetor_hashes[hash].next == NULL)
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/73/jogos.c:84..84
+    84      hash = hash_function_jogos(nome_jogo, tabela_jogos->tamanho_maximo);
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/73/jogos.c:35..35
+    35          tabela_jogos->vetor_hashes[hash].next = NULL;
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/73/equipas.c:198..198
+   198          head = equipas->vetor_hashes[hash].next; /* Cabeca da lista de cada hash */
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/73/equipas.c:181..181
+   181          printf("%d * %s\n", linha_input, array_equipas_vitoriosas[indice]->nome_equipa);
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/73/equipas.c:166..166
+   166                      array_equipas_vitoriosas[indice] = equipa_atual;
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/73/equipas.c:160..160
+   160              equipa_atual = equipas->vetor_hashes[hash].next;
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/73/equipas.c:137..137
+   137          equipa_atual = equipas->vetor_hashes[hash].next;
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/73/equipas.c:107..107
+   107          link_atual = equipas->vetor_hashes[hash].next;
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/73/equipas.c:101..101
+   101      if (equipas->vetor_hashes[hash].next == NULL)
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/73/equipas.c:97..97
+    97      hash = hash_function_equipas(nome_equipa, equipas->tamanho_maximo);
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/73/equipas.c:84..84
+    84          equipas->vetor_hashes[hash].next = nova_equipa;
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/73/equipas.c:83..83
+    83          equipa_seguinte = equipas->vetor_hashes[hash].next;
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/73/equipas.c:77..77
+    77          equipas->vetor_hashes[hash].next = nova_equipa;
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/73/equipas.c:76..76
+    76      if (equipas->vetor_hashes[hash].next == NULL)
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/73/equipas.c:73..73
+    73      hash = hash_function_equipas(nome_equipa, equipas->tamanho_maximo);
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/73/equipas.c:48..48
+    48          tabela_equipas->vetor_hashes[i].next = NULL; 

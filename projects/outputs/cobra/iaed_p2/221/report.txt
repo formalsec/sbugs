@@ -1,0 +1,195 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:507..507
+   507  	char args[MAX_COMANDO - 2];
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:505..505
+   505  	char cmd[MAX_COMANDO];
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:486..486
+   486  		tmp = games[i].jogoH;
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:478..478
+   478  		temp = teams[i].dados;
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:466..466
+   466  		free(sort[i]);
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:463..463
+   463  		printf("%d * %s\n",NL ,sort[i]);
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:455..455
+   455  				strcpy(sort[j], tmp);
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:454..454
+   454  				strcpy(sort[i], sort[j]);
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:454..454
+   454  				strcpy(sort[i], sort[j]);
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:453..453
+   453  				strcpy(tmp, sort[i]);
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:452..452
+   452  			if(strcmp(sort[i],sort[j])>0){
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:452..452
+   452  			if(strcmp(sort[i],sort[j])>0){
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:443..443
+   443  				strcpy(sort[counter], temp->name);
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:442..442
+   442  				sort[counter]= can_fail_malloc(MAXNOME* sizeof(char));
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:439..439
+   439  		temp = teams[i].dados;
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:423..423
+   423  		temp = teams[i].dados;
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:387..387
+   387  		games[key].jogoH = temp->next;
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:372..372
+   372  	prev = games[key].jogoH;
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:371..371
+   371  	temp = games[key].jogoH;
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:370..370
+   370  	key = hashKey(nome[0]);
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:363..363
+   363  	char nome[MAXNOME];
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:314..314
+   314  	char nome[MAXNOME], *token, delim[2];
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:285..285
+   285  	temp = teams[key].dados;
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:284..284
+   284  	key = hashKey(args[0]);
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:264..264
+   264  	temp = games[key].jogoH;
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:263..263
+   263  	key = hashKey(args[0]);
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:203..203
+   203  		temp = games[key].jogoH;
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:202..202
+   202  		games[key].jogoH = can_fail_malloc(sizeof(jogo));
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:190..190
+   190  	temp = games[key].jogoH;
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:188..188
+   188  	key = hashKey(nome[0]);
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:170..170
+   170  	char equipa1[MAXNOME], equipa2[MAXNOME], nome[MAXNOME], delim[2], *token;
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:170..170
+   170  	char equipa1[MAXNOME], equipa2[MAXNOME], nome[MAXNOME], delim[2], *token;
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:170..170
+   170  	char equipa1[MAXNOME], equipa2[MAXNOME], nome[MAXNOME], delim[2], *token;
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:108..108
+   108  		temp = teams[key].dados;
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:107..107
+   107  		teams[key].dados = can_fail_malloc(sizeof(Equipa));
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:104..104
+   104  	temp = teams[key].dados;
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:103..103
+   103  	key = hashKey(nome[0]);
+
+38: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:98..98
+    98  	char nome[MAXNOME];
+
+39: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:85..85
+    85  	temp = games[key].jogoH;
+
+40: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:84..84
+    84  	key = hashKey(args[0]);
+
+41: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:67..67
+    67  	temp = teams[key].dados;
+
+42: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:66..66
+    66  	key = hashKey(args[0]);
+
+43: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:51..51
+    51  		games[i].jogoH = NULL;
+
+44: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:50..50
+    50  		teams[i].dados = NULL;
+
+45: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:31..31
+    31  	char nome[MAXNOME];
+
+46: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:18..18
+    18  	char name[MAXNOME];
+=== Dangerous function calls lacking bounds checking ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:455..455
+   455  				strcpy(sort[j], tmp);
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:454..454
+   454  				strcpy(sort[i], sort[j]);
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:453..453
+   453  				strcpy(tmp, sort[i]);
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:443..443
+   443  				strcpy(sort[counter], temp->name);
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:320..320
+   320  	strcpy(nome, token);
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:242..242
+   242  	strcpy(prev->next->nome, nome);
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:204..204
+   204  		strcpy(temp->nome, nome);
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:182..182
+   182  	strcpy(equipa2, token);
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:180..180
+   180  	strcpy(equipa1, token);
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:178..178
+   178  	strcpy(nome, token);
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:159..159
+   159  	strcpy(prev->next->nome, nome);
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:146..146
+   146  		strcpy(temp->nome, nome);
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:127..127
+   127  	strcpy(prev->next->name,nome);
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:109..109
+   109  		strcpy(temp->name,nome);
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:101..101
+   101  	strcpy(nome, args);
+=== printf or scanf missing width limit on %s ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:368..368
+   368  	sscanf(args, "%s", nome);
+=== Possibly missing sizeof() in memory allocation ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:449..449
+   449  	tmp = can_fail_malloc(MAXNOME);
+=== Potential out of bound array indexing error ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:443..443
+   443  				strcpy(sort[counter], temp->name);
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/221/proj2.c:442..442
+   442  				sort[counter]= can_fail_malloc(MAXNOME* sizeof(char));

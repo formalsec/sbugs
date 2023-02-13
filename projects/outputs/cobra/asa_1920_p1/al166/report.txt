@@ -1,0 +1,211 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp001/Finalissimo.c:136..136
+   136  		printf("%d\n", vertices[cont].valor);
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp001/Finalissimo.c:129..129
+   129  		vertices[indice].deg++;
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp001/Finalissimo.c:128..128
+   128  		vertices[indice].adj[vertices[indice].deg] = vert-1;
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp001/Finalissimo.c:128..128
+   128  		vertices[indice].adj[vertices[indice].deg] = vert-1;
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp001/Finalissimo.c:128..128
+   128  		vertices[indice].adj[vertices[indice].deg] = vert-1;
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp001/Finalissimo.c:128..128
+   128  		vertices[indice].adj[vertices[indice].deg] = vert-1;
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp001/Finalissimo.c:126..126
+   126  			vertices[indice].adj=can_fail_realloc(vertices[indice].adj, sizeof(int)*vertices[indice].size);
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp001/Finalissimo.c:126..126
+   126  			vertices[indice].adj=can_fail_realloc(vertices[indice].adj, sizeof(int)*vertices[indice].size);
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp001/Finalissimo.c:126..126
+   126  			vertices[indice].adj=can_fail_realloc(vertices[indice].adj, sizeof(int)*vertices[indice].size);
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp001/Finalissimo.c:125..125
+   125  			vertices[indice].size = vertices[indice].size*2;
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp001/Finalissimo.c:125..125
+   125  			vertices[indice].size = vertices[indice].size*2;
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp001/Finalissimo.c:124..124
+   124  		if(vertices[indice].deg>vertices[indice].size){
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp001/Finalissimo.c:124..124
+   124  		if(vertices[indice].deg>vertices[indice].size){
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp001/Finalissimo.c:122..122
+   122  		scanf("%d %d",&vert, &indice);
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp001/Finalissimo.c:117..117
+   117  		vect[cont+1] = cont;
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp001/Finalissimo.c:116..116
+   116  		vertices[cont].deg = 0;
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp001/Finalissimo.c:115..115
+   115  		vertices[cont].size=2;
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp001/Finalissimo.c:114..114
+   114  		vertices[cont].visitado = 0;
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp001/Finalissimo.c:113..113
+   113  		vertices[cont].adj=can_fail_malloc(sizeof(int)*2);
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp001/Finalissimo.c:112..112
+   112  		vertices[cont].valor = val;
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp001/Finalissimo.c:105..105
+   105  	int vect[num_vertices+1];
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp001/Finalissimo.c:88..88
+    88  			dfs_vist(vect[i]);
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp001/Finalissimo.c:87..87
+    87  		if (vertices[vect[i]].visitado == 0){
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp001/Finalissimo.c:87..87
+    87  		if (vertices[vect[i]].visitado == 0){
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp001/Finalissimo.c:79..79
+    79  			dfs_vist(vertices[indice].adj[i]);
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp001/Finalissimo.c:79..79
+    79  			dfs_vist(vertices[indice].adj[i]);
+
+27: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp001/Finalissimo.c:78..78
+    78  			vertices[vertices[indice].adj[i]].valor = vertices[indice].valor;
+
+28: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp001/Finalissimo.c:78..78
+    78  			vertices[vertices[indice].adj[i]].valor = vertices[indice].valor;
+
+29: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp001/Finalissimo.c:78..78
+    78  			vertices[vertices[indice].adj[i]].valor = vertices[indice].valor;
+
+30: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp001/Finalissimo.c:78..78
+    78  			vertices[vertices[indice].adj[i]].valor = vertices[indice].valor;
+
+31: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp001/Finalissimo.c:78..78
+    78  			vertices[vertices[indice].adj[i]].valor = vertices[indice].valor;
+
+32: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp001/Finalissimo.c:77..77
+    77  		if (vertices[vertices[indice].adj[i]].visitado == 0){
+
+33: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp001/Finalissimo.c:77..77
+    77  		if (vertices[vertices[indice].adj[i]].visitado == 0){
+
+34: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp001/Finalissimo.c:77..77
+    77  		if (vertices[vertices[indice].adj[i]].visitado == 0){
+
+35: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp001/Finalissimo.c:77..77
+    77  		if (vertices[vertices[indice].adj[i]].visitado == 0){
+
+36: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp001/Finalissimo.c:76..76
+    76  	for (i = 0; i < vertices[indice].deg; i++){
+
+37: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp001/Finalissimo.c:75..75
+    75  	vertices[indice].visitado = 1;
+
+38: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp001/Finalissimo.c:67..67
+    67  			heap[j]=temp;
+
+39: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp001/Finalissimo.c:66..66
+    66  			heap[i]=heap[j];
+
+40: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp001/Finalissimo.c:66..66
+    66  			heap[i]=heap[j];
+
+41: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp001/Finalissimo.c:65..65
+    65  			temp=heap[i];
+
+42: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp001/Finalissimo.c:61..61
+    61  		if(vertices[heap[i]].valor < vertices[heap[j]].valor)
+
+43: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp001/Finalissimo.c:61..61
+    61  		if(vertices[heap[i]].valor < vertices[heap[j]].valor)
+
+44: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp001/Finalissimo.c:61..61
+    61  		if(vertices[heap[i]].valor < vertices[heap[j]].valor)
+
+45: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp001/Finalissimo.c:61..61
+    61  		if(vertices[heap[i]].valor < vertices[heap[j]].valor)
+
+46: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp001/Finalissimo.c:59..59
+    59  		if(j+1<=n && vertices[heap[j+1]].valor < vertices[heap[j]].valor)
+
+47: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp001/Finalissimo.c:59..59
+    59  		if(j+1<=n && vertices[heap[j+1]].valor < vertices[heap[j]].valor)
+
+48: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp001/Finalissimo.c:59..59
+    59  		if(j+1<=n && vertices[heap[j+1]].valor < vertices[heap[j]].valor)
+
+49: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp001/Finalissimo.c:59..59
+    59  		if(j+1<=n && vertices[heap[j+1]].valor < vertices[heap[j]].valor)
+
+50: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp001/Finalissimo.c:38..38
+    38  	heap[n+1]=-1;
+
+51: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp001/Finalissimo.c:33..33
+    33  		heap[last]=temp;
+
+52: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp001/Finalissimo.c:32..32
+    32  		heap[1]=heap[last];
+cat: '*_.txt': No such file or directory
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:156..156
+   156  	return tabela->numbers[tabela->size];
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:156..156
+   156  	return tabela->numbers[tabela->size];
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:149..149
+   149  	tabela->numbers[((tabela)->size)++] = num;
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:149..149
+   149  	tabela->numbers[((tabela)->size)++] = num;
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:120..120
+   120  		printf("%d\n", tabela_alunos[i].notaFinal);
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:110..110
+   110  					alunosEmAlunosDadores[pReceptor->index] = 1;
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:110..110
+   110  					alunosEmAlunosDadores[pReceptor->index] = 1;
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:107..107
+   107  				if (!alunosEmAlunosDadores[pReceptor->index])
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:107..107
+   107  				if (!alunosEmAlunosDadores[pReceptor->index])
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:97..97
+    97  		alunosEmAlunosDadores[iAluno] = 0;
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:96..96
+    96  		int iAluno= removeFromLista(&alunosDadores);
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:91..91
+    91  			alunosEmAlunosDadores[i] = 1;
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:88..88
+    88  		if (tabela_alunos[i].amigosReceptores.size > 0)
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:87..87
+    87  		tabela_alunos[i].notaFinal = tabela_alunos[i].notaInicial;
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:87..87
+    87  		tabela_alunos[i].notaFinal = tabela_alunos[i].notaInicial;
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:62..62
+    62  		tabela_alunos[i].notaFinal = -1;
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:60..60
+    60  		tabela_alunos[i].notaInicial = num;
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:59..59
+    59  		tabela_alunos[i].index = i;

@@ -1,0 +1,100 @@
+cat: '*_.txt': No such file or directory
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al008/proj.c:363..363
+   363      freeList(graph->array[i]);
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al008/proj.c:318..318
+   318        addEdge(graph, j, graph->parent[j]);
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al008/proj.c:317..317
+   317        deleteEdge(graph, graph->parent[j], j);
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al008/proj.c:316..316
+   316      for(j=t; graph->parent[j]!=-1;j=graph->parent[j]){
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al008/proj.c:316..316
+   316      for(j=t; graph->parent[j]!=-1;j=graph->parent[j]){
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al008/proj.c:299..299
+   299    if(graph->visited[sink]==TRUE){
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al008/proj.c:291..291
+   291            graph->parent[adjVertex]=currentVertex;
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al008/proj.c:290..290
+   290            graph->visited[adjVertex] = 1;
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al008/proj.c:288..288
+   288        if (graph->visited[adjVertex] == 0){
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al008/proj.c:283..283
+   283      struct Node* temp = graph->array[currentVertex];
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al008/proj.c:281..281
+   281      int currentVertex = dequeue(q);
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al008/proj.c:277..277
+   277    graph->visited[startVertex] = 1;
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al008/proj.c:260..260
+   260    int value = q->items[q->front];
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al008/proj.c:260..260
+   260    int value = q->items[q->front];
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al008/proj.c:252..252
+   252    q->items[q->size-1] = value;
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al008/proj.c:252..252
+   252    q->items[q->size-1] = value;
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al008/proj.c:193..193
+   193      if(graph->array[i]->key!=SUPMARK){
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al008/proj.c:189..189
+   189      if(graph->array[i]->key == SUPMARK && i%2!=0){
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al008/proj.c:178..178
+   178      graph->array[index+1]->key=CITZEN;
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al008/proj.c:177..177
+   177      graph->array[index]->key=CITZEN;
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al008/proj.c:159..159
+   159      graph->array[index-1]->key=SUPMARK;
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al008/proj.c:158..158
+   158      graph->array[index]->key=SUPMARK;
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al008/proj.c:120..120
+   120        graph->array[src] = current->next;
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al008/proj.c:113..113
+   113    struct Node* current = graph->array[src];
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al008/proj.c:103..103
+   103        struct Node* temp = graph->array[src];
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al008/proj.c:100..100
+   100        graph->array[src] = node;
+
+27: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al008/proj.c:99..99
+    99    if (graph->array[src] == NULL) {
+
+28: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al008/proj.c:86..86
+    86        graph->parent[i] = -1;
+
+29: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al008/proj.c:85..85
+    85        graph->array[i] = (struct Node*)can_fail_calloc(1, sizeof(struct Node));
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al008/proj.c:299..299
+   299    if(graph->visited[sink]==TRUE){
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al008/proj.c:277..277
+   277    graph->visited[startVertex] = 1;
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al008/proj.c:113..113
+   113    struct Node* current = graph->array[src];
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al008/proj.c:99..99
+    99    if (graph->array[src] == NULL) {

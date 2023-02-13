@@ -1,0 +1,108 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/5/proj2.c:149..149
+   149    char nome_jogo[CAR_MAX];
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/5/proj2.c:121..121
+   121    char nome_jogo[CAR_MAX];
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/5/proj2.c:110..110
+   110    char nome_equipa[CAR_MAX];
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/5/proj2.c:102..102
+   102    char nome_jogo[CAR_MAX];
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/5/proj2.c:88..88
+    88    char nome_equipa[CAR_MAX];
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/5/proj2.c:78..78
+    78    char equipa_2[CAR_MAX];
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/5/proj2.c:77..77
+    77    char equipa_1[CAR_MAX];
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/5/proj2.c:76..76
+    76    char nome_jogo[CAR_MAX];
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/5/proj2.c:16..16
+    16    Dados dados = {0};
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/5/proj2.c:15..15
+    15    Hash_jogo hash_jg;
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/5/proj2.c:14..14
+    14    Hash_equipa hash_eq;
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/5/Jogos.c:267..267
+   267          current = hash_jg->table_jg[i];
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/5/Jogos.c:235..235
+   235                  hash_jg->table_jg[hash_value] = curr_node->next;
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/5/Jogos.c:223..223
+   223      curr_node = hash_jg->table_jg[hash_value];
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/5/Jogos.c:219..219
+   219      if(hash_jg->table_jg[hash_value] == NULL)
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/5/Jogos.c:218..218
+   218      hash_value = calc_hash(jogo_ptr->nome, hash_jg->size);
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/5/Jogos.c:195..195
+   195          hash_jg->table_jg[hash_value] = node_tmp;
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/5/Jogos.c:194..194
+   194          node_tmp->next = hash_jg->table_jg[hash_value];
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/5/Jogos.c:191..191
+   191          hash_value = calc_hash(nome_jogo, hash_jg->size);
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/5/Jogos.c:146..146
+   146      curr_node = hash->table_jg[hash_value];
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/5/Jogos.c:142..142
+   142      if(hash->table_jg[hash_value] == NULL)
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/5/Jogos.c:141..141
+   141      hash_value = calc_hash(nome, hash->size);
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/5/Jogos.c:133..133
+   133          hash_ptr->table_jg[i] = NULL;
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/5/Equipas.c:176..176
+   176              printf("%d * %s\n", NL, string[k]);
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/5/Equipas.c:160..160
+   160                      string[count]=current->eq->nome;
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/5/Equipas.c:155..155
+   155                      string[count]=current->eq->nome;
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/5/Equipas.c:148..148
+   148              current = hash_eq->table_eq[i];
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/5/Equipas.c:146..146
+   146          if(hash_eq->table_eq[i] != NULL)
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/5/Equipas.c:132..132
+   132          hash->table_eq[hash_value] = node_tmp;
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/5/Equipas.c:131..131
+   131          node_tmp->next = hash->table_eq[hash_value];
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/5/Equipas.c:128..128
+   128          hash_value = calc_hash(nome, hash->size);
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/5/Equipas.c:103..103
+   103          current = hash_eq->table_eq[i];
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/5/Equipas.c:74..74
+    74      curr_node = hash->table_eq[hash_value];
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/5/Equipas.c:70..70
+    70      if(hash->table_eq[hash_value] == NULL)
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/5/Equipas.c:69..69
+    69      hash_value = calc_hash(nome, hash->size);
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p2/5/Equipas.c:61..61
+    61          hash_ptr->table_eq[i] = NULL;

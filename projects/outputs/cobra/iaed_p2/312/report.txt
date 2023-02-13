@@ -1,0 +1,162 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:541..541
+   541          aux1=lista_ligada_equipas->heads[i];
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:517..517
+   517          aux1=lista_ligada_jogos->heads[i];
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:415..415
+   415      char a[MAX_PAL];
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:400..400
+   400      char a[MAX_PAL];
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:379..379
+   379      char a[MAX_PAL];
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:364..364
+   364      char a[MAX_PAL];
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:352..352
+   352                      lista[contador] = a->p->nome; /* guardar o nome do jogo apos ele ser listado*/
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:344..344
+   344                  if (strcmp(lista[i],a->p->nome)==0)
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:333..333
+   333      char *lista[MAX_EQ];           /*lista onde se vao guardar os nomes que ja foram listados*/
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:316..316
+   316      char a[MAX_PAL];
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:284..284
+   284      char equipa2[MAX_PAL];
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:283..283
+   283      char equipa1[MAX_PAL];
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:282..282
+   282      char nome[MAX_PAL];
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:264..264
+   264              a[0][k]=aux[i++];
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:262..262
+   262              a[0][k]=aux[j--];
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:260..260
+   260          if (compara_s(aux[i]->nome,aux[j]->nome))             /* condicao que vai comparar os nomes de aux[i] e aux[j],executa a
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:260..260
+   260          if (compara_s(aux[i]->nome,aux[j]->nome))             /* condicao que vai comparar os nomes de aux[i] e aux[j],executa a
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:258..258
+   258          aux[r+m-j]=a[0][j+1];
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:258..258
+   258          aux[r+m-j]=a[0][j+1];
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:258..258
+   258          aux[r+m-j]=a[0][j+1];
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:256..256
+   256          aux[i-1]=a[0][i-1];
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:230..230
+   230      lista_ligada_equipas->heads[i]=coloca_inicio_equipa(lista_ligada_equipas, p);
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:229..229
+   229      int i=hash(p->nome);
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:214..214
+   214          lista_ligada_equipas->heads[i] = NULL;
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:199..199
+   199      if (lista->heads[i]==NULL)
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:198..198
+   198      no_equipa *a=lista->heads[i];
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:197..197
+   197      int i=hash(nome);
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:191..191
+   191      return lista->heads[i];
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:190..190
+   190      lista->heads[i]->next = c;
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:189..189
+   189      lista->heads[i]->p=p;
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:188..188
+   188      lista->heads[i]=can_fail_malloc(sizeof(no_equipa));
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:187..187
+   187      no_equipa *c = lista->heads[i];
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:186..186
+   186      int i=hash(p->nome);
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:169..169
+   169      lista_ligada_jogos->heads[i]=remove_jogo(lista_ligada_jogos, nome);
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:168..168
+   168      int i=hash(nome);
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:163..163
+   163      lista_ligada_jogos->heads[i]=coloca_inicio_jogo(lista_ligada_jogos, p);
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:162..162
+   162      int i=hash(p->nome);
+
+38: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:149..149
+   149          lista_ligada_jogos->heads[i] = NULL;
+
+39: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:112..112
+   112      no_jogo *q=lista->heads[i],*c=lista->heads[i];
+
+40: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:112..112
+   112      no_jogo *q=lista->heads[i],*c=lista->heads[i];
+
+41: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:111..111
+   111      int i=hash(nome);
+
+42: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:97..97
+    97      if (lista->heads[i]==NULL)
+
+43: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:96..96
+    96      no_jogo *a=lista->heads[i];
+
+44: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:95..95
+    95      int i=hash(nome);
+
+45: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:89..89
+    89      return lista->heads[i];
+
+46: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:88..88
+    88          c->previous=lista->heads[i];
+
+47: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:86..86
+    86      lista->heads[i]->previous = NULL;
+
+48: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:85..85
+    85      lista->heads[i]->next = c;
+
+49: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:84..84
+    84      lista->heads[i]->p=p;
+
+50: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:83..83
+    83      lista->heads[i]=can_fail_malloc(sizeof(no_jogo));
+
+51: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:82..82
+    82      no_jogo *c=lista->heads[i];
+
+52: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:81..81
+    81      int i=hash(p->nome);
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:258..258
+   258          aux[r+m-j]=a[0][j+1];
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/312/comandos.c:258..258
+   258          aux[r+m-j]=a[0][j+1];

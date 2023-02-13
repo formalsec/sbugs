@@ -1,0 +1,183 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/TeamHashTable.c:66..66
+    66  			t->table[i] = temp;
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/TeamHashTable.c:65..65
+    65  			free(t->table[i]);
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/TeamHashTable.c:64..64
+    64  			free_node_team(t->table[i]);
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/TeamHashTable.c:63..63
+    63  			temp = t->table[i]->next;			
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/TeamHashTable.c:62..62
+    62  		while(t->table[i]){
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/TeamHashTable.c:48..48
+    48  	t->table[index] = node;
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/TeamHashTable.c:46..46
+    46  	node->next = t->table[index];
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/TeamHashTable.c:19..19
+    19  		pHT->table[i] = NULL;
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/Team.c:121..121
+   121  	while(t->table[index]){
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/Team.c:119..119
+   119  	pHN = t->table[index];
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/Team.c:118..118
+   118  	index = hash_key(teamName, t->capacity);
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/Team.c:107..107
+   107  		printf("%d * %s\n", debugLine, teamsMostWins[i]->name);
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/Team.c:92..92
+    92  				teamsMostWins[i] = lNT->team;
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/Team.c:52..52
+    52  	pHN = t->table[index];
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/Team.c:51..51
+    51  	index = hash_key(teamName, t->capacity);
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/Team.c:45..45
+    45  	char teamName[MAXCHAR];
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/Team.c:37..37
+    37  	addToTeamLinkedList(llT, t->table[index]->team);
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/Team.c:23..23
+    23  	pHN = t->table[index];
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/Team.c:22..22
+    22  	index = hash_key(teamName, t->capacity);
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/Team.c:15..15
+    15  	char teamName[MAXCHAR];
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/QuickSortTeams.c:48..48
+    48  	teamsMostWins[j] = temp;
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/QuickSortTeams.c:47..47
+    47  	teamsMostWins[i] = teamsMostWins[j];
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/QuickSortTeams.c:47..47
+    47  	teamsMostWins[i] = teamsMostWins[j];
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/QuickSortTeams.c:46..46
+    46  	temp = teamsMostWins[i];
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/QuickSortTeams.c:27..27
+    27  		while(strcmp(teamsMostWins[--j]->name, teamsMostWins[h]->name) > 0){
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/QuickSortTeams.c:27..27
+    27  		while(strcmp(teamsMostWins[--j]->name, teamsMostWins[h]->name) > 0){
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/QuickSortTeams.c:26..26
+    26  		while(strcmp(teamsMostWins[++i]->name, teamsMostWins[h]->name) < 0);
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/QuickSortTeams.c:26..26
+    26  		while(strcmp(teamsMostWins[++i]->name, teamsMostWins[h]->name) < 0);
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/MatchHashTable.c:72..72
+    72  			t->table[i] = temp;
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/MatchHashTable.c:71..71
+    71  			free(t->table[i]);
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/MatchHashTable.c:70..70
+    70  			free_node_match(t->table[i]);		
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/MatchHashTable.c:69..69
+    69  			temp = t->table[i]->next;	
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/MatchHashTable.c:68..68
+    68  		while(t->table[i]){
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/MatchHashTable.c:52..52
+    52  	t->table[index] = node;
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/MatchHashTable.c:49..49
+    49  	node->next = t->table[index];
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/MatchHashTable.c:47..47
+    47  		t->table[index]->prev = node;
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/MatchHashTable.c:46..46
+    46  	if(t->table[index] != NULL)
+
+38: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/MatchHashTable.c:21..21
+    21  		pHT->table[i] = NULL;
+
+39: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/Match.c:248..248
+   248  	pHN = hTM->table[index];
+
+40: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/Match.c:247..247
+   247  	index = hash_key(matchName, hTM->capacity);
+
+41: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/Match.c:240..240
+   240  	char matchName[MAXCHAR];
+
+42: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/Match.c:197..197
+   197  	pHN = hash_Match->table[index];
+
+43: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/Match.c:196..196
+   196  	index = hash_key(matchName, hash_Match->capacity);
+
+44: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/Match.c:187..187
+   187  	char matchName[MAXCHAR];
+
+45: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/Match.c:157..157
+   157  		hTM->table[index] = hNM->next;
+
+46: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/Match.c:153..153
+   153  		hTM->table[index] = NULL;	
+
+47: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/Match.c:75..75
+    75  	pHN = t->table[index];
+
+48: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/Match.c:74..74
+    74  	index = hash_key(matchName, t->capacity);
+
+49: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/Match.c:66..66
+    66  	char matchName[MAXCHAR];
+
+50: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/Match.c:47..47
+    47  	addToMatchLinkedList(ll_Matches, hash_Match->table[index]);
+
+51: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/Match.c:27..27
+    27  	pHN = hash_Match->table[index];
+
+52: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/Match.c:26..26
+    26  	index = hash_key(matchName, hash_Match->capacity);
+
+53: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/Match.c:17..17
+    17  	char matchName[MAXCHAR], team1[MAXCHAR], team2[MAXCHAR];
+
+54: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/Match.c:17..17
+    17  	char matchName[MAXCHAR], team1[MAXCHAR], team2[MAXCHAR];
+
+55: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/Match.c:17..17
+    17  	char matchName[MAXCHAR], team1[MAXCHAR], team2[MAXCHAR];
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/TeamHashTable.c:46..46
+    46  	node->next = t->table[index];
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/QuickSortTeams.c:47..47
+    47  	teamsMostWins[i] = teamsMostWins[j];
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/QuickSortTeams.c:46..46
+    46  	temp = teamsMostWins[i];
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/QuickSortTeams.c:26..26
+    26  		while(strcmp(teamsMostWins[++i]->name, teamsMostWins[h]->name) < 0);
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/MatchHashTable.c:46..46
+    46  	if(t->table[index] != NULL)
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/348/Match.c:153..153
+   153  		hTM->table[index] = NULL;	

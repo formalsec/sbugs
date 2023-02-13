@@ -1,0 +1,475 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:246..246
+   246              citizens[id] = create_citizen(avenue, street, city);
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:245..245
+   245          if (!citizens[id]) 
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:244..244
+   244          id = getid(avenue, street, 1);
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:240..240
+   240              supermarkets[id] = create_supermarket(avenue, street, city);
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:239..239
+   239          if (!supermarkets[id])
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:233..233
+   233          citizens[i] = NULL;
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:232..232
+   232          supermarkets[i] = NULL;
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:210..210
+   210                  pathinv -> flow = - path[i] -> flow;
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:209..209
+   209              if ((pathinv = find_inverse(path[i], city)))
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:208..208
+   208              path[i] -> flow++;
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:207..207
+   207          for (i = 0; path[i]; i++) {
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:203..203
+   203          q[i] = DEFAULT;
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:189..189
+   189                  city[v].pi = u;
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:188..188
+   188                  city[v].visited = 1;
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:187..187
+   187              if(city[v].visited == 0 && edge->capacity > edge->flow) {
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:182..182
+   182                  path[path_ptr + 1] = NULL;
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:181..181
+   181                  path[path_ptr] = find_edge(SOURCE, v, city);
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:179..179
+   179                      u = city[u].pi;
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:177..177
+   177                      path[path_ptr++] = find_edge(u, v, city);
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:173..173
+   173          for(edge = city[u].roads; edge; edge = edge -> next){
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:166..166
+   166          city[i].pi = DEFAULT;
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:165..165
+   165          city[i].visited = 0;
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:162..162
+   162      city[SOURCE].pi = DEFAULT;
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:161..161
+   161      city[SOURCE].visited = 1;
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:145..145
+   145          for(edge = city[i].roads; edge;){
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:114..114
+   114          city[i].roads = NULL;
+
+27: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:113..113
+   113          city[i].id = i;
+
+28: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:95..95
+    95      for(edge = city[origin].roads; edge; edge = edge -> next)
+
+29: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:93..93
+    93          return supermarkets[destination];
+
+30: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:90..90
+    90          return citizens[destination];
+
+31: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:73..73
+    73      city[origin].roads = new_road;
+
+32: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:72..72
+    72      new_road->next = city[origin].roads ;
+
+33: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:54..54
+    54      return q[de_ptr++];
+
+34: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:50..50
+    50      q[en_ptr++] = value;
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:90..90
+    90          return citizens[destination];
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp008/proj2_10.c:72..72
+    72      new_road->next = city[origin].roads ;
+cat: _CWE_805_.txt: No such file or directory
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:280..280
+   280          free(dup[j]);
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:279..279
+   279          free(map[j]);
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:271..271
+   271              dup[i][b] = 0;
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:270..270
+   270              map[i][b] = 0;
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:268..268
+   268          dup[i] = can_fail_malloc(sizeof(int)*N);
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:267..267
+   267          map[i] = can_fail_malloc(sizeof(int)*N);
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:241..241
+   241          cidadao[i].state = 'L';
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:240..240
+   240          cidadao[i].y = y;
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:239..239
+   239          cidadao[i].x = x;
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:238..238
+   238          map[--x][--y] = 3,
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:233..233
+   233          market[i].state = 'L';
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:232..232
+   232          market[i].y = y;
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:231..231
+   231          market[i].x = x;
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:230..230
+   230          map[--x][--y] = 2,
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:202..202
+   202                      market[i].state= 'B';
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:199..199
+   199                  num2 = percurso( cidadao[aux[j].cid].x,cidadao[aux[j].cid].y,market[i].x,market[i].y,M,N,dup,map,cidadao,aux[j].cid);
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:199..199
+   199                  num2 = percurso( cidadao[aux[j].cid].x,cidadao[aux[j].cid].y,market[i].x,market[i].y,M,N,dup,map,cidadao,aux[j].cid);
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:199..199
+   199                  num2 = percurso( cidadao[aux[j].cid].x,cidadao[aux[j].cid].y,market[i].x,market[i].y,M,N,dup,map,cidadao,aux[j].cid);
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:199..199
+   199                  num2 = percurso( cidadao[aux[j].cid].x,cidadao[aux[j].cid].y,market[i].x,market[i].y,M,N,dup,map,cidadao,aux[j].cid);
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:199..199
+   199                  num2 = percurso( cidadao[aux[j].cid].x,cidadao[aux[j].cid].y,market[i].x,market[i].y,M,N,dup,map,cidadao,aux[j].cid);
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:199..199
+   199                  num2 = percurso( cidadao[aux[j].cid].x,cidadao[aux[j].cid].y,market[i].x,market[i].y,M,N,dup,map,cidadao,aux[j].cid);
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:199..199
+   199                  num2 = percurso( cidadao[aux[j].cid].x,cidadao[aux[j].cid].y,market[i].x,market[i].y,M,N,dup,map,cidadao,aux[j].cid);
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:199..199
+   199                  num2 = percurso( cidadao[aux[j].cid].x,cidadao[aux[j].cid].y,market[i].x,market[i].y,M,N,dup,map,cidadao,aux[j].cid);
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:199..199
+   199                  num2 = percurso( cidadao[aux[j].cid].x,cidadao[aux[j].cid].y,market[i].x,market[i].y,M,N,dup,map,cidadao,aux[j].cid);
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:198..198
+   198              if(cidadao[aux[j].cid].state!='B'){
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:198..198
+   198              if(cidadao[aux[j].cid].state!='B'){
+
+27: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:198..198
+   198              if(cidadao[aux[j].cid].state!='B'){
+
+28: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:195..195
+   195              if(market[i].state=='B')
+
+29: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:193..193
+   193          tabela(market[i], cidadao,C);
+
+30: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:191..191
+   191      aux = can_fail_malloc(sizeof(list)*C);
+
+31: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:182..182
+   182          aux[i].cid = i;
+
+32: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:181..181
+   181          aux[i].distancia = distancia(market,cidadao[i]);
+
+33: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:181..181
+   181          aux[i].distancia = distancia(market,cidadao[i]);
+
+34: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:162..162
+   162                  tabela[j].cid = m; 
+
+35: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:161..161
+   161                  tabela[j].distancia = t;
+
+36: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:160..160
+   160                  tabela[i].cid = tabela[j].cid; 
+
+37: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:160..160
+   160                  tabela[i].cid = tabela[j].cid; 
+
+38: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:159..159
+   159                  tabela[i].distancia = tabela[j].distancia; 
+
+39: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:159..159
+   159                  tabela[i].distancia = tabela[j].distancia; 
+
+40: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:158..158
+   158                  m = tabela[i].cid; 
+
+41: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:157..157
+   157                  t = tabela[i].distancia;
+
+42: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:155..155
+   155              if (tabela[j].distancia < tabela[i].distancia) { 
+
+43: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:155..155
+   155              if (tabela[j].distancia < tabela[i].distancia) { 
+
+44: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:141..141
+   141        dup[xi][yi] = 0;
+
+45: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:127..127
+   127        dup[xi][yi] = 1;
+
+46: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:125..125
+   125     else if(xi >= 0 && yi >= 0 && xi < M && yi < N && dup[xi][yi] == 0 && map[xi][yi] == 0){
+
+47: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:125..125
+   125     else if(xi >= 0 && yi >= 0 && xi < M && yi < N && dup[xi][yi] == 0 && map[xi][yi] == 0){
+
+48: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:104..104
+   104              cidadao[i].state = 'B';
+
+49: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:103..103
+   103              cidadao[i].y = yi;
+
+50: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:102..102
+   102              cidadao[i].x = xi;
+
+51: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:101..101
+   101              map[xi][yi] = 3;
+
+52: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:100..100
+   100              map[cidadao[i].x][cidadao[i].y] =0;
+
+53: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:100..100
+   100              map[cidadao[i].x][cidadao[i].y] =0;
+
+54: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:100..100
+   100              map[cidadao[i].x][cidadao[i].y] =0;
+
+55: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:100..100
+   100              map[cidadao[i].x][cidadao[i].y] =0;
+
+56: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:96..96
+    96              cidadao[i].state = 'B';
+
+57: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:95..95
+    95              cidadao[i].y = yi;
+
+58: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:94..94
+    94              cidadao[i].x = xi;
+
+59: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:93..93
+    93              map[xi][yi] = 3;
+
+60: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:92..92
+    92              map[cidadao[i].x][cidadao[i].y] =0;
+
+61: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:92..92
+    92              map[cidadao[i].x][cidadao[i].y] =0;
+
+62: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:92..92
+    92              map[cidadao[i].x][cidadao[i].y] =0;
+
+63: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:92..92
+    92              map[cidadao[i].x][cidadao[i].y] =0;
+
+64: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:88..88
+    88              cidadao[i].state = 'B';
+
+65: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:87..87
+    87              cidadao[i].y = yi;
+
+66: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:86..86
+    86              cidadao[i].x = xi;
+
+67: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:85..85
+    85              map[xi][yi] = 3;
+
+68: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:84..84
+    84              map[cidadao[i].x][cidadao[i].y] =0;
+
+69: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:84..84
+    84              map[cidadao[i].x][cidadao[i].y] =0;
+
+70: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:84..84
+    84              map[cidadao[i].x][cidadao[i].y] =0;
+
+71: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:84..84
+    84              map[cidadao[i].x][cidadao[i].y] =0;
+
+72: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:80..80
+    80              cidadao[i].state = 'B';
+
+73: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:79..79
+    79              cidadao[i].y = yi;
+
+74: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:78..78
+    78              cidadao[i].x = xi;
+
+75: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:77..77
+    77              map[xi][yi] = 3;
+
+76: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:76..76
+    76              map[cidadao[i].x][cidadao[i].y] =0;
+
+77: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:76..76
+    76              map[cidadao[i].x][cidadao[i].y] =0;
+
+78: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:76..76
+    76              map[cidadao[i].x][cidadao[i].y] =0;
+
+79: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:76..76
+    76              map[cidadao[i].x][cidadao[i].y] =0;
+
+80: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:74..74
+    74      if(xi == cidadao[i].x && yi == cidadao[i].y){
+
+81: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:74..74
+    74      if(xi == cidadao[i].x && yi == cidadao[i].y){
+
+82: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:70..70
+    70          cidadao[i].state = 'B';
+
+83: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:69..69
+    69          cidadao[i].y = yi;
+
+84: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:68..68
+    68          cidadao[i].x = xi;
+
+85: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:67..67
+    67          map[xi][yi] = 3;
+
+86: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:66..66
+    66          map[cidadao[i].x][cidadao[i].y] =0;
+
+87: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:66..66
+    66          map[cidadao[i].x][cidadao[i].y] =0;
+
+88: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:66..66
+    66          map[cidadao[i].x][cidadao[i].y] =0;
+
+89: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:66..66
+    66          map[cidadao[i].x][cidadao[i].y] =0;
+
+90: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:65..65
+    65      else if((xf+1==xi) && (yi == yf) && map[xi][yi]==0) {
+
+91: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:62..62
+    62          cidadao[i].state = 'B';
+
+92: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:61..61
+    61          cidadao[i].y = yi;
+
+93: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:60..60
+    60          cidadao[i].x = xi;
+
+94: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:59..59
+    59          map[xi][yi] = 3;
+
+95: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:58..58
+    58          map[cidadao[i].x][cidadao[i].y] =0;
+
+96: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:58..58
+    58          map[cidadao[i].x][cidadao[i].y] =0;
+
+97: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:58..58
+    58          map[cidadao[i].x][cidadao[i].y] =0;
+
+98: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:58..58
+    58          map[cidadao[i].x][cidadao[i].y] =0;
+
+99: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:57..57
+    57      else if((xf -1 ==xi) && (yf ==yi) && map[xi][yi]==0) {
+
+100: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:54..54
+    54          cidadao[i].state = 'B';
+
+101: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:53..53
+    53          cidadao[i].y = yi;
+
+102: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:52..52
+    52          cidadao[i].x = xi;
+
+103: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:51..51
+    51          map[xi][yi] = 3;
+
+104: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:50..50
+    50          map[cidadao[i].x][cidadao[i].y] =0;
+
+105: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:50..50
+    50          map[cidadao[i].x][cidadao[i].y] =0;
+
+106: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:50..50
+    50          map[cidadao[i].x][cidadao[i].y] =0;
+
+107: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:50..50
+    50          map[cidadao[i].x][cidadao[i].y] =0;
+
+108: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:49..49
+    49      else if((xf==xi) && (yi == yf +1) && map[xi][yi]==0) {
+
+109: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:46..46
+    46          cidadao[i].state = 'B';
+
+110: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:45..45
+    45          cidadao[i].y = yi;
+
+111: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:44..44
+    44          cidadao[i].x = xi;
+
+112: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:43..43
+    43          map[xi][yi] = 3;
+
+113: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:42..42
+    42          map[cidadao[i].x][cidadao[i].y] =0;
+
+114: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:42..42
+    42          map[cidadao[i].x][cidadao[i].y] =0;
+
+115: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:42..42
+    42          map[cidadao[i].x][cidadao[i].y] =0;
+
+116: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:42..42
+    42          map[cidadao[i].x][cidadao[i].y] =0;
+
+117: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:41..41
+    41      if((xf==xi) && (yf - 1 ==yi) && map[xi][yi]==0) {
+
+118: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:33..33
+    33              dup[i][j] = map[i][j];
+
+119: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:33..33
+    33              dup[i][j] = map[i][j];
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:42..42
+    42          map[cidadao[i].x][cidadao[i].y] =0;
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:41..41
+    41      if((xf==xi) && (yf - 1 ==yi) && map[xi][yi]==0) {
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al156/projeto2.c:41..41
+    41      if((xf==xi) && (yf - 1 ==yi) && map[xi][yi]==0) {

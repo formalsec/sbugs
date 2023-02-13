@@ -1,0 +1,282 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:251..251
+   251          vectorFree(&g->adj[i]);
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:241..241
+   241          vectorFree(&v->vector[i]);
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:232..232
+   232              vectorInit(&v->vector[i], INITIAL_SIZE);
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:219..219
+   219          vectorInit(&v->vector[i], initSize);
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:206..206
+   206      v->vector[v->elems++] = element;
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:206..206
+   206      v->vector[v->elems++] = element;
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:192..192
+   192          vectorInit(&g->adj[i], INITIAL_SIZE);
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:184..184
+   184      vectorPushback(&g->adj[u], v);
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:183..183
+   183      vectorPushback(&g->adj[v], u);
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:177..177
+   177                  low[u] = low[u] < discovery[v] ? low[u] : discovery[v];
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:177..177
+   177                  low[u] = low[u] < discovery[v] ? low[u] : discovery[v];
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:177..177
+   177                  low[u] = low[u] < discovery[v] ? low[u] : discovery[v];
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:177..177
+   177                  low[u] = low[u] < discovery[v] ? low[u] : discovery[v];
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:177..177
+   177                  low[u] = low[u] < discovery[v] ? low[u] : discovery[v];
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:176..176
+   176              } else if (v != parent[u])
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:172..172
+   172                      crucialPoints[u] = true;
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:171..171
+   171                  if (!goal && (((children > 1 && parent[u] == NIL) || (low[v] >= discovery[u] && parent[u] != NIL)) && !crucialPoints[u])) {
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:171..171
+   171                  if (!goal && (((children > 1 && parent[u] == NIL) || (low[v] >= discovery[u] && parent[u] != NIL)) && !crucialPoints[u])) {
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:171..171
+   171                  if (!goal && (((children > 1 && parent[u] == NIL) || (low[v] >= discovery[u] && parent[u] != NIL)) && !crucialPoints[u])) {
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:171..171
+   171                  if (!goal && (((children > 1 && parent[u] == NIL) || (low[v] >= discovery[u] && parent[u] != NIL)) && !crucialPoints[u])) {
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:171..171
+   171                  if (!goal && (((children > 1 && parent[u] == NIL) || (low[v] >= discovery[u] && parent[u] != NIL)) && !crucialPoints[u])) {
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:169..169
+   169                  low[u] = low[u]<low[v] ? low[u] : low[v];
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:169..169
+   169                  low[u] = low[u]<low[v] ? low[u] : low[v];
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:169..169
+   169                  low[u] = low[u]<low[v] ? low[u] : low[v];
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:169..169
+   169                  low[u] = low[u]<low[v] ? low[u] : low[v];
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:169..169
+   169                  low[u] = low[u]<low[v] ? low[u] : low[v];
+
+27: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:166..166
+   166                  parent[v] = u;
+
+28: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:163..163
+   163              if (!visited[v]) {
+
+29: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:161..161
+   161          if ((goal && !crucialPoints[v]) || (!goal)) {
+
+30: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:159..159
+   159          int v = g->adj[u].vector[i];
+
+31: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:159..159
+   159          int v = g->adj[u].vector[i];
+
+32: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:158..158
+   158      for (i=0; i<g->adj[u].elems; i++) {
+
+33: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:152..152
+   152      vectorPushback(&subNetworks->vector[subNetworksCount], u);
+
+34: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:150..150
+   150      discovery[u] = low[u] = ++(*time);
+
+35: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:150..150
+   150      discovery[u] = low[u] = ++(*time);
+
+36: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:149..149
+   149      visited[u] = true;
+
+37: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:134..134
+   134                  subNetworks->biggestSubNetwork = subNetworks->vector[subNetworksCount].elems;  
+
+38: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:133..133
+   133              if (goal && subNetworks->vector[subNetworksCount].elems > subNetworks->biggestSubNetwork)
+
+39: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:128..128
+   128          if (!visited[i] && !crucialPoints[i]) {
+
+40: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:128..128
+   128          if (!visited[i] && !crucialPoints[i]) {
+
+41: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:124..124
+   124              crucialPoints[i] = false;
+
+42: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:122..122
+   122          parent[i] = NIL;
+
+43: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:121..121
+   121          visited[i] = false;
+
+44: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:81..81
+    81          printf("%d ", subNetworkIds.vector[i] + 1);
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:184..184
+   184      vectorPushback(&g->adj[u], v);
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:183..183
+   183      vectorPushback(&g->adj[v], u);
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:149..149
+   149      visited[u] = true;
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:251..251
+   251          vectorFree(&g->adj[i]);
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:241..241
+   241          vectorFree(&v->vector[i]);
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:232..232
+   232              vectorInit(&v->vector[i], INITIAL_SIZE);
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:219..219
+   219          vectorInit(&v->vector[i], initSize);
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:206..206
+   206      v->vector[v->elems++] = element;
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:206..206
+   206      v->vector[v->elems++] = element;
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:192..192
+   192          vectorInit(&g->adj[i], INITIAL_SIZE);
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:184..184
+   184      vectorPushback(&g->adj[u], v);
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:183..183
+   183      vectorPushback(&g->adj[v], u);
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:177..177
+   177                  low[u] = low[u] < discovery[v] ? low[u] : discovery[v];
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:177..177
+   177                  low[u] = low[u] < discovery[v] ? low[u] : discovery[v];
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:177..177
+   177                  low[u] = low[u] < discovery[v] ? low[u] : discovery[v];
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:177..177
+   177                  low[u] = low[u] < discovery[v] ? low[u] : discovery[v];
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:177..177
+   177                  low[u] = low[u] < discovery[v] ? low[u] : discovery[v];
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:176..176
+   176              } else if (v != parent[u])
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:172..172
+   172                      crucialPoints[u] = true;
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:171..171
+   171                  if (!goal && (((children > 1 && parent[u] == NIL) || (low[v] >= discovery[u] && parent[u] != NIL)) && !crucialPoints[u])) {
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:171..171
+   171                  if (!goal && (((children > 1 && parent[u] == NIL) || (low[v] >= discovery[u] && parent[u] != NIL)) && !crucialPoints[u])) {
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:171..171
+   171                  if (!goal && (((children > 1 && parent[u] == NIL) || (low[v] >= discovery[u] && parent[u] != NIL)) && !crucialPoints[u])) {
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:171..171
+   171                  if (!goal && (((children > 1 && parent[u] == NIL) || (low[v] >= discovery[u] && parent[u] != NIL)) && !crucialPoints[u])) {
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:171..171
+   171                  if (!goal && (((children > 1 && parent[u] == NIL) || (low[v] >= discovery[u] && parent[u] != NIL)) && !crucialPoints[u])) {
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:169..169
+   169                  low[u] = low[u]<low[v] ? low[u] : low[v];
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:169..169
+   169                  low[u] = low[u]<low[v] ? low[u] : low[v];
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:169..169
+   169                  low[u] = low[u]<low[v] ? low[u] : low[v];
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:169..169
+   169                  low[u] = low[u]<low[v] ? low[u] : low[v];
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:169..169
+   169                  low[u] = low[u]<low[v] ? low[u] : low[v];
+
+27: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:166..166
+   166                  parent[v] = u;
+
+28: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:163..163
+   163              if (!visited[v]) {
+
+29: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:161..161
+   161          if ((goal && !crucialPoints[v]) || (!goal)) {
+
+30: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:159..159
+   159          int v = g->adj[u].vector[i];
+
+31: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:159..159
+   159          int v = g->adj[u].vector[i];
+
+32: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:158..158
+   158      for (i=0; i<g->adj[u].elems; i++) {
+
+33: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:152..152
+   152      vectorPushback(&subNetworks->vector[subNetworksCount], u);
+
+34: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:150..150
+   150      discovery[u] = low[u] = ++(*time);
+
+35: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:150..150
+   150      discovery[u] = low[u] = ++(*time);
+
+36: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:149..149
+   149      visited[u] = true;
+
+37: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:134..134
+   134                  subNetworks->biggestSubNetwork = subNetworks->vector[subNetworksCount].elems;  
+
+38: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:133..133
+   133              if (goal && subNetworks->vector[subNetworksCount].elems > subNetworks->biggestSubNetwork)
+
+39: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:128..128
+   128          if (!visited[i] && !crucialPoints[i]) {
+
+40: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:128..128
+   128          if (!visited[i] && !crucialPoints[i]) {
+
+41: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:124..124
+   124              crucialPoints[i] = false;
+
+42: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:122..122
+   122          parent[i] = NIL;
+
+43: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:121..121
+   121          visited[i] = false;
+
+44: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:81..81
+    81          printf("%d ", subNetworkIds.vector[i] + 1);
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:184..184
+   184      vectorPushback(&g->adj[u], v);
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:183..183
+   183      vectorPushback(&g->adj[v], u);
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al077/projectSemSort.c:149..149
+   149      visited[u] = true;

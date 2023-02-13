@@ -1,0 +1,44 @@
+cat: _CWE_416_.txt: No such file or directory
+cat: _CWE_457_.txt: No such file or directory
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al030/main.c:164..164
+   164          freeLinks(students[i].links);
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al030/main.c:147..147
+   147          students[i].visited = 0;
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al030/main.c:146..146
+   146          students[i].links = NULL;
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al030/main.c:145..145
+   145          scanf("%d", &(students[i].grade));
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al030/main.c:144..144
+   144          students[i].num = i;
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al030/main.c:126..126
+   126          for (aux = students[num].links; aux != NULL; aux = aux->next) {
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al030/main.c:114..114
+   114          max = maxN(students[num].grade, max);
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al030/main.c:102..102
+   102  int visited(int num) {return students[num].visited;}
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al030/main.c:99..99
+    99      students[num].visited = 0;
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al030/main.c:95..95
+    95      students[num].visited = 1;
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al030/main.c:126..126
+   126          for (aux = students[num].links; aux != NULL; aux = aux->next) {
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al030/main.c:102..102
+   102  int visited(int num) {return students[num].visited;}
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al030/main.c:99..99
+    99      students[num].visited = 0;
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al030/main.c:95..95
+    95      students[num].visited = 1;

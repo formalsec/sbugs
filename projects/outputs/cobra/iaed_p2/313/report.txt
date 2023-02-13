@@ -1,0 +1,273 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/main.c:126..126
+   126  				if(find_team(Hash_table[i], r1)){
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/main.c:125..125
+   125  				i = hash_key_e(r1,Hash_table);
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/main.c:116..116
+   116  					A(r1, Hash_table[i]);
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/main.c:115..115
+   115  				if(find_team(Hash_table[i], r1) == 0){
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/main.c:109..109
+   109  				s__2(r1,l1,l2,Hash_table_j[i]);
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/main.c:101..101
+   101  				r__2(Hash_table_j[i], r1);
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/main.c:92..92
+    92  				p(Hash_table_j[i], r1, Contador);
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/main.c:70..70
+    70  						a__2(r1,r2,r3,l1,l2,Hash_table_j[k]);
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/main.c:68..68
+    68  					if(find_team(Hash_table[i],r2) && find_team(Hash_table[j],r3)){
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/main.c:68..68
+    68  					if(find_team(Hash_table[i],r2) && find_team(Hash_table[j],r3)){
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/main.c:67..67
+    67  				if(find_game(Hash_table_j[k], r1)){
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/main.c:66..66
+    66  				k = hash_key_p(r1, Hash_table_j);
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/main.c:65..65
+    65  				j = hash_key_e(r3, Hash_table);
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/main.c:53..53
+    53  		Hash_table_j[i] = NULL;
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/main.c:49..49
+    49  		Hash_table[i] = NULL;
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/main.c:42..42
+    42  	lista_jogos *Hash_table_j[HASHSIZE];
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/main.c:40..40
+    40  	lista_equipas *Hash_table[HASHSIZE];
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/main.c:37..37
+    37  	r3[WORDSIZE];
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/main.c:36..36
+    36  	char r1[WORDSIZE], r2[WORDSIZE], 
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/main.c:36..36
+    36  	char r1[WORDSIZE], r2[WORDSIZE], 
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:716..716
+   716  		free(nomes_equipas[i]);	
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:715..715
+   715  		printf("%d * %s\n", Contador,nomes_equipas[i]);
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:696..696
+   696  					strcpy(nomes_equipas[i], search->name);
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:695..695
+   695  					nomes_equipas[i] = can_fail_malloc(sizeof(char)*strlen(search->name)+1);
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:693..693
+   693  			for(search = Hash_table[k]->head; search != NULL; search = search->next){
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:692..692
+   692  		if(Hash_table[k]){
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:683..683
+   683  			for(search = Hash_table[k]->head; search != NULL; search = search->next){
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:682..682
+   682  		if(Hash_table[k]){
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:675..675
+   675  	char *nomes_equipas[G_AUX];
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:638..638
+   638  			free(aux[i]);
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:637..637
+   637  		if(aux[i]){
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:630..630
+   630  			strcpy(a[k], aux[i]);
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:630..630
+   630  			strcpy(a[k], aux[i]);
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:629..629
+   629  			a[k] = can_fail_malloc(sizeof(char)*(strlen(aux[i])+1));
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:629..629
+   629  			a[k] = can_fail_malloc(sizeof(char)*(strlen(aux[i])+1));
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:628..628
+   628  			if(a[k]){free(a[k]);}/* free para se poder atualizar */
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:628..628
+   628  			if(a[k]){free(a[k]);}/* free para se poder atualizar */
+
+38: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:624..624
+   624  			strcpy(a[k], aux[j]);
+
+39: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:624..624
+   624  			strcpy(a[k], aux[j]);
+
+40: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:623..623
+   623  			a[k] = can_fail_malloc(sizeof(char)*(strlen(aux[j])+1));
+
+41: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:623..623
+   623  			a[k] = can_fail_malloc(sizeof(char)*(strlen(aux[j])+1));
+
+42: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:622..622
+   622  			if(a[k]){free(a[k]);} /* free para atualizar*/
+
+43: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:622..622
+   622  			if(a[k]){free(a[k]);} /* free para atualizar*/
+
+44: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:620..620
+   620  		if(Alphabetic(aux[j],aux[i]) == 0){ 
+
+45: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:620..620
+   620  		if(Alphabetic(aux[j],aux[i]) == 0){ 
+
+46: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:615..615
+   615  		strcpy(aux[r+m-j],a[j+1]);
+
+47: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:615..615
+   615  		strcpy(aux[r+m-j],a[j+1]);
+
+48: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:615..615
+   615  		strcpy(aux[r+m-j],a[j+1]);
+
+49: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:615..615
+   615  		strcpy(aux[r+m-j],a[j+1]);
+
+50: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:614..614
+   614  		aux[r+m-j] = can_fail_malloc(sizeof(char)*(strlen(a[j+1])+1));
+
+51: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:614..614
+   614  		aux[r+m-j] = can_fail_malloc(sizeof(char)*(strlen(a[j+1])+1));
+
+52: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:614..614
+   614  		aux[r+m-j] = can_fail_malloc(sizeof(char)*(strlen(a[j+1])+1));
+
+53: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:614..614
+   614  		aux[r+m-j] = can_fail_malloc(sizeof(char)*(strlen(a[j+1])+1));
+
+54: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:610..610
+   610  		strcpy(aux[i-1],a[i-1]);
+
+55: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:610..610
+   610  		strcpy(aux[i-1],a[i-1]);
+
+56: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:609..609
+   609  		aux[i-1] = can_fail_malloc(sizeof(char)*(strlen(a[i-1])+1));
+
+57: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:609..609
+   609  		aux[i-1] = can_fail_malloc(sizeof(char)*(strlen(a[i-1])+1));
+
+58: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:604..604
+   604  		aux[i] = NULL;
+
+59: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:601..601
+   601  	char *aux[G_AUX]; /* Cria aux*/
+
+60: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:578..578
+   578  	char New_A[WORDSIZE], New_B[WORDSIZE];
+
+61: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:578..578
+   578  	char New_A[WORDSIZE], New_B[WORDSIZE];
+
+62: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:485..485
+   485  				atualiza_v(Hash_table[i], search->equipa2);
+
+63: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:484..484
+   484  				i = hash_key_e(search->equipa2, Hash_table);
+
+64: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:481..481
+   481  				atualiza_v(Hash_table[i], search->equipa1);
+
+65: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:474..474
+   474  				retira_v(Hash_table[i], search->equipa2);
+
+66: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:470..470
+   470  				retira_v(Hash_table[i], search->equipa1);
+
+67: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:424..424
+   424  				retira_v(Hash_table[i], search->equipa2);
+
+68: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:423..423
+   423  				i = hash_key_e(search->equipa2, Hash_table);
+
+69: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:420..420
+   420  				retira_v(Hash_table[i], search->equipa1);
+
+70: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:325..325
+   325  		atualiza_v(Hash_table[j], equipa2);
+
+71: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:321..321
+   321  		atualiza_v(Hash_table[i], equipa1);
+
+72: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:271..271
+   271  			free_lista_jogos(Hash_table[k]);
+
+73: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:270..270
+   270  		if(Hash_table[k]){
+
+74: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:256..256
+   256  			free_lista_equipas(Hash_table[k]);
+
+75: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:255..255
+   255  		if(Hash_table[k]){
+
+76: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:61..61
+    61  		Hash_table[key]->last = NULL;
+
+77: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:60..60
+    60  		Hash_table[key]->head = NULL;
+
+78: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:59..59
+    59  		Hash_table[key] = can_fail_malloc(sizeof(lista_jogos));
+
+79: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:58..58
+    58  	if(!Hash_table[key]){
+
+80: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:38..38
+    38  		Hash_table[key]->last = NULL;
+
+81: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:37..37
+    37  		Hash_table[key]->head = NULL;
+
+82: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:35..35
+    35  		Hash_table[key] = can_fail_malloc(sizeof(lista_equipas));
+
+83: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:33..33
+    33  	if(!Hash_table[key]){
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:614..614
+   614  		aux[r+m-j] = can_fail_malloc(sizeof(char)*(strlen(a[j+1])+1));
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:614..614
+   614  		aux[r+m-j] = can_fail_malloc(sizeof(char)*(strlen(a[j+1])+1));
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:325..325
+   325  		atualiza_v(Hash_table[j], equipa2);
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:321..321
+   321  		atualiza_v(Hash_table[i], equipa1);
+=== Dangerous function calls lacking bounds checking ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:580..580
+   580  	strcpy(New_B, B);
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/func.c:579..579
+   579  	strcpy(New_A, A);	
+=== printf or scanf missing width limit on %s ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/main.c:98..98
+    98  				scanf(" %s\n",r1);
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/313/main.c:90..90
+    90  				scanf(" %s\n",r1);

@@ -1,0 +1,421 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al154/ProjetoFinalASA.c.c:158..158
+   158      printf("%d\n",grades_table[o][1]);
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al154/ProjetoFinalASA.c.c:142..142
+   142                    student_numbers_to_check[empty_spot] = relations_table[l][1];
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al154/ProjetoFinalASA.c.c:142..142
+   142                    student_numbers_to_check[empty_spot] = relations_table[l][1];
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al154/ProjetoFinalASA.c.c:136..136
+   136                    if (student_numbers_to_check[n] == relations_table[l][1])
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al154/ProjetoFinalASA.c.c:136..136
+   136                    if (student_numbers_to_check[n] == relations_table[l][1])
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al154/ProjetoFinalASA.c.c:135..135
+   135                  while (student_numbers_to_check[n] != 0 && n < number_of_students) {
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al154/ProjetoFinalASA.c.c:130..130
+   130                  grades_table[relations_table[l][1]][0] = 1;
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al154/ProjetoFinalASA.c.c:130..130
+   130                  grades_table[relations_table[l][1]][0] = 1;
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al154/ProjetoFinalASA.c.c:129..129
+   129                  grades_table[relations_table[l][1]][1] = highest_grade;
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al154/ProjetoFinalASA.c.c:129..129
+   129                  grades_table[relations_table[l][1]][1] = highest_grade;
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al154/ProjetoFinalASA.c.c:125..125
+   125                if (grades_table[relations_table[l][1]][0] == 1) {
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al154/ProjetoFinalASA.c.c:125..125
+   125                if (grades_table[relations_table[l][1]][0] == 1) {
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al154/ProjetoFinalASA.c.c:124..124
+   124                relations_table[l][0] = 1;
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al154/ProjetoFinalASA.c.c:122..122
+   122              if (relations_table[l][2] == student_numbers_to_check[m]) {
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al154/ProjetoFinalASA.c.c:122..122
+   122              if (relations_table[l][2] == student_numbers_to_check[m]) {
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al154/ProjetoFinalASA.c.c:121..121
+   121            while (m < number_of_students && student_numbers_to_check[m] != 0) {
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al154/ProjetoFinalASA.c.c:119..119
+   119          if (relations_table[l][0] == 0) {
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al154/ProjetoFinalASA.c.c:109..109
+   109        grades_table[student_numbers_to_check[k]][0] = 1;
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al154/ProjetoFinalASA.c.c:109..109
+   109        grades_table[student_numbers_to_check[k]][0] = 1;
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al154/ProjetoFinalASA.c.c:108..108
+   108      while (k < number_of_students && student_numbers_to_check[k] != 0) {
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al154/ProjetoFinalASA.c.c:101..101
+   101            student_numbers_to_check[empty_spot] = i;
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al154/ProjetoFinalASA.c.c:100..100
+   100          else if (grades_table[i][1] == highest_grade) { /*Equal grade -> Add the student number to the array*/
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al154/ProjetoFinalASA.c.c:96..96
+    96              student_numbers_to_check[j] = 0;
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al154/ProjetoFinalASA.c.c:91..91
+    91            highest_grade = grades_table[i][1];
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al154/ProjetoFinalASA.c.c:90..90
+    90          if (grades_table[i][1] > highest_grade) { /*Higher grade -> new array*/
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al154/ProjetoFinalASA.c.c:89..89
+    89        if (grades_table[i][0] == 0) {
+
+27: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al154/ProjetoFinalASA.c.c:72..72
+    72      student_numbers_to_check[i] = 0;
+
+28: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al154/ProjetoFinalASA.c.c:69..69
+    69    int student_numbers_to_check[number_of_students];
+
+29: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al154/ProjetoFinalASA.c.c:64..64
+    64      relations_table[i][2] = atoi(strtok(NULL, " "));
+
+30: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al154/ProjetoFinalASA.c.c:63..63
+    63      relations_table[i][1] = atoi(token2);
+
+31: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al154/ProjetoFinalASA.c.c:62..62
+    62      char *token2 = strtok (relation[i]," ");
+
+32: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al154/ProjetoFinalASA.c.c:61..61
+    61      fgets(relation[i],100,stdin);
+
+33: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al154/ProjetoFinalASA.c.c:55..55
+    55      relations_table[i][0] = 0;
+
+34: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al154/ProjetoFinalASA.c.c:52..52
+    52    int relations_table[number_of_relations][3];
+
+35: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al154/ProjetoFinalASA.c.c:51..51
+    51    char relation[number_of_relations][10];
+
+36: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al154/ProjetoFinalASA.c.c:46..46
+    46      grades_table[i][1] = atoi(grades[i]);
+
+37: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al154/ProjetoFinalASA.c.c:46..46
+    46      grades_table[i][1] = atoi(grades[i]);
+
+38: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al154/ProjetoFinalASA.c.c:45..45
+    45      fgets(grades[i],10,stdin);
+
+39: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al154/ProjetoFinalASA.c.c:39..39
+    39      grades_table[i][0] = 0;
+
+40: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al154/ProjetoFinalASA.c.c:31..31
+    31    int grades_table[number_of_students+1][2];
+
+41: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al154/ProjetoFinalASA.c.c:30..30
+    30    char grades[number_of_students+1][10];
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al152/proj1.c:52..52
+    52      students[student].color = Gray; 
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al152/proj1.c:46..46
+    46      connection-> next = students[student].friend; 
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al152/proj1.c:39..39
+    39      value->next = studentGrade[grade].similarGrade;
+cat: _CWE_120_1_.txt: No such file or directory
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:387..387
+   387          printf("%d\n", lstEstimativas[i]);
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:383..383
+   383          lstEstimativas[i] = maxComponents[vertixComponents[i] - 1];
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:383..383
+   383          lstEstimativas[i] = maxComponents[vertixComponents[i] - 1];
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:383..383
+   383          lstEstimativas[i] = maxComponents[vertixComponents[i] - 1];
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:369..369
+   369          lstAdjacenciasCmp[i] = NULL;
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:368..368
+   368          ComponentsVertix[i] = NULL;
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:367..367
+   367          maxComponents[i] = 0;
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:339..339
+   339          lstEstimativas[i] = est;
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:331..331
+   331          lstAdjacencias[i] = NULL;
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:316..316
+   316          input[i++] = a;
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:308..308
+   308      char stringInput[MAX_INPUT], *pt;
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:298..298
+   298                  components[vertixComponents[(auxNode2->numAluno) - 1] - 1] = 0;
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:298..298
+   298                  components[vertixComponents[(auxNode2->numAluno) - 1] - 1] = 0;
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:298..298
+   298                  components[vertixComponents[(auxNode2->numAluno) - 1] - 1] = 0;
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:297..297
+   297              for (auxNode2 = lstAdjacencias[(auxNode->numAluno) - 1]; auxNode2 != NULL; auxNode2 = auxNode2->nextNode){
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:297..297
+   297              for (auxNode2 = lstAdjacencias[(auxNode->numAluno) - 1]; auxNode2 != NULL; auxNode2 = auxNode2->nextNode){
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:296..296
+   296          for (auxNode = ComponentsVertix[k]; auxNode != NULL; auxNode = auxNode->nextNode){
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:288..288
+   288                      node = newNode(vertixComponents[(auxNode2->numAluno) - 1]);
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:288..288
+   288                      node = newNode(vertixComponents[(auxNode2->numAluno) - 1]);
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:287..287
+   287                      components[vertixComponents[(auxNode2->numAluno) - 1] - 1] = 1;
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:287..287
+   287                      components[vertixComponents[(auxNode2->numAluno) - 1] - 1] = 1;
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:287..287
+   287                      components[vertixComponents[(auxNode2->numAluno) - 1] - 1] = 1;
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:286..286
+   286                  if((components[vertixComponents[(auxNode2->numAluno) - 1] - 1] != 1) && ((vertixComponents[(auxNode2->numAluno) - 1] - 1) != k)){
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:286..286
+   286                  if((components[vertixComponents[(auxNode2->numAluno) - 1] - 1] != 1) && ((vertixComponents[(auxNode2->numAluno) - 1] - 1) != k)){
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:286..286
+   286                  if((components[vertixComponents[(auxNode2->numAluno) - 1] - 1] != 1) && ((vertixComponents[(auxNode2->numAluno) - 1] - 1) != k)){
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:286..286
+   286                  if((components[vertixComponents[(auxNode2->numAluno) - 1] - 1] != 1) && ((vertixComponents[(auxNode2->numAluno) - 1] - 1) != k)){
+
+27: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:286..286
+   286                  if((components[vertixComponents[(auxNode2->numAluno) - 1] - 1] != 1) && ((vertixComponents[(auxNode2->numAluno) - 1] - 1) != k)){
+
+28: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:285..285
+   285              for (auxNode2 = lstAdjacencias[(auxNode->numAluno) - 1]; auxNode2 != NULL; auxNode2 = auxNode2->nextNode){
+
+29: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:285..285
+   285              for (auxNode2 = lstAdjacencias[(auxNode->numAluno) - 1]; auxNode2 != NULL; auxNode2 = auxNode2->nextNode){
+
+30: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:284..284
+   284          for (auxNode = ComponentsVertix[k]; auxNode != NULL; auxNode = auxNode->nextNode){
+
+31: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:280..280
+   280          components[i] = 0;
+
+32: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:262..262
+   262          if (d[i] == UNEXPLORED){
+
+33: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:259..259
+   259          d[i] = UNEXPLORED;
+
+34: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:244..244
+   244          Sccs[indexScc++] = SEPARATOR;
+
+35: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:242..242
+   242              Sccs[indexScc++] = v;
+
+36: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:239..239
+   239          Sccs[indexScc++] = v;
+
+37: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:237..237
+   237      if (d[aluno - 1] == low[aluno - 1]){
+
+38: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:237..237
+   237      if (d[aluno - 1] == low[aluno - 1]){
+
+39: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:233..233
+   233              low[aluno - 1] = min(low[aluno - 1], low[(auxNode->numAluno) - 1]);
+
+40: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:233..233
+   233              low[aluno - 1] = min(low[aluno - 1], low[(auxNode->numAluno) - 1]);
+
+41: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:233..233
+   233              low[aluno - 1] = min(low[aluno - 1], low[(auxNode->numAluno) - 1]);
+
+42: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:233..233
+   233              low[aluno - 1] = min(low[aluno - 1], low[(auxNode->numAluno) - 1]);
+
+43: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:230..230
+   230              if(d[(auxNode->numAluno) - 1] == UNEXPLORED){
+
+44: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:230..230
+   230              if(d[(auxNode->numAluno) - 1] == UNEXPLORED){
+
+45: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:229..229
+   229          if ((d[(auxNode->numAluno) - 1] == UNEXPLORED) || (isInStack(auxNode->numAluno, top, stack))){
+
+46: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:229..229
+   229          if ((d[(auxNode->numAluno) - 1] == UNEXPLORED) || (isInStack(auxNode->numAluno, top, stack))){
+
+47: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:228..228
+   228      for (auxNode = lstAdjacencias[aluno - 1]; auxNode != NULL; auxNode = auxNode->nextNode){
+
+48: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:224..224
+   224      d[aluno - 1] = low[aluno - 1] = visited;
+
+49: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:224..224
+   224      d[aluno - 1] = low[aluno - 1] = visited;
+
+50: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:216..216
+   216          vertixComponents[Sccs[i] - 1] = component;
+
+51: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:216..216
+   216          vertixComponents[Sccs[i] - 1] = component;
+
+52: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:212..212
+   212          if (Sccs[i] == 0){
+
+53: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:201..201
+   201          node = newNode(Sccs[i]);
+
+54: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:197..197
+   197          if (Sccs[i] == 0){
+
+55: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:187..187
+   187              maxComponents[component] = lstEstimativas[Sccs[i] - 1];
+
+56: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:187..187
+   187              maxComponents[component] = lstEstimativas[Sccs[i] - 1];
+
+57: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:187..187
+   187              maxComponents[component] = lstEstimativas[Sccs[i] - 1];
+
+58: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:186..186
+   186          else if (lstEstimativas[Sccs[i] - 1] > maxComponents[component]){
+
+59: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:186..186
+   186          else if (lstEstimativas[Sccs[i] - 1] > maxComponents[component]){
+
+60: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:186..186
+   186          else if (lstEstimativas[Sccs[i] - 1] > maxComponents[component]){
+
+61: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:183..183
+   183          if (Sccs[i] == 0){
+
+62: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:170..170
+   170          if (color[i] == WHITE){
+
+63: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:166..166
+   166          pai[i] = NULL_PARENT;
+
+64: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:165..165
+   165          color[i] = WHITE;
+
+65: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:155..155
+   155      color[aluno] = BLACK;
+
+66: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:153..153
+   153          lstEstimativas[pai[aluno]] = maxAux;
+
+67: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:153..153
+   153          lstEstimativas[pai[aluno]] = maxAux;
+
+68: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:152..152
+   152      if ((maxAux > max) && (pai[aluno] != NULL_PARENT)){
+
+69: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:148..148
+   148              maxAux = lstEstimativas[aluno];
+
+70: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:146..146
+   146          else if (color[(auxNode->numAluno) - 1] == BLACK){
+
+71: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:146..146
+   146          else if (color[(auxNode->numAluno) - 1] == BLACK){
+
+72: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:144..144
+   144              maxAux = lstEstimativas[aluno];
+
+73: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:142..142
+   142              pai[(auxNode->numAluno) - 1] = aluno;
+
+74: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:142..142
+   142              pai[(auxNode->numAluno) - 1] = aluno;
+
+75: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:141..141
+   141          if (color[(auxNode->numAluno) - 1] == WHITE){
+
+76: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:141..141
+   141          if (color[(auxNode->numAluno) - 1] == WHITE){
+
+77: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:140..140
+   140      for (auxNode = lstAdjacencias[aluno]; auxNode != NULL; auxNode = auxNode->nextNode){
+
+78: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:138..138
+   138      color[aluno] = GREY;
+
+79: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:136..136
+   136      maxAux = lstEstimativas[aluno];
+
+80: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:128..128
+   128          lstEstimativas[visitante] = lstEstimativas[aluno];
+
+81: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:128..128
+   128          lstEstimativas[visitante] = lstEstimativas[aluno];
+
+82: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:127..127
+   127      if (lstEstimativas[visitante] < lstEstimativas[aluno]){
+
+83: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:127..127
+   127      if (lstEstimativas[visitante] < lstEstimativas[aluno]){
+
+84: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:121..121
+   121          freeList(lstAdjacencias[i]);
+
+85: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:97..97
+    97          for (auxNode = lstAdjacencias[numAluno]; auxNode->nextNode != NULL; auxNode = auxNode->nextNode);
+
+86: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:93..93
+    93          lstAdjacencias[numAluno] = node;
+
+87: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:92..92
+    92      if (lstAdjacencias[numAluno] == NULL){
+
+88: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:71..71
+    71              if (stack[i] == data){
+
+89: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:61..61
+    61          stack[(*top)] = data;
+
+90: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:50..50
+    50          data = stack[(*top)];
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:224..224
+   224      d[aluno - 1] = low[aluno - 1] = visited;
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:136..136
+   136      maxAux = lstEstimativas[aluno];
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:127..127
+   127      if (lstEstimativas[visitante] < lstEstimativas[aluno]){
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:127..127
+   127      if (lstEstimativas[visitante] < lstEstimativas[aluno]){
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:92..92
+    92      if (lstAdjacencias[numAluno] == NULL){
+=== printf or scanf missing width limit on %s ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al142/ASA_92570.c:311..311
+   311      scanf("%s", stringInput);

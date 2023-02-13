@@ -1,0 +1,945 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al037/final.c:195..195
+   195      if (res[i] == 1) {
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al037/final.c:169..169
+   169      if (breakers[i] == 1) nBreakers++;
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al037/final.c:163..163
+   163        ids[id] = 1;
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al037/final.c:162..162
+   162        tarjan_visit(i, graph, dtime, low, parent, &time, breakers, &id);
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al037/final.c:161..161
+   161        parent[i] = i;
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al037/final.c:159..159
+   159      if (dtime[i] == 0) {
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al037/final.c:140..140
+   140        if (low[current]>dtime[i->id]) low[current] = dtime[i->id];
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al037/final.c:140..140
+   140        if (low[current]>dtime[i->id]) low[current] = dtime[i->id];
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al037/final.c:140..140
+   140        if (low[current]>dtime[i->id]) low[current] = dtime[i->id];
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al037/final.c:140..140
+   140        if (low[current]>dtime[i->id]) low[current] = dtime[i->id];
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al037/final.c:140..140
+   140        if (low[current]>dtime[i->id]) low[current] = dtime[i->id];
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al037/final.c:140..140
+   140        if (low[current]>dtime[i->id]) low[current] = dtime[i->id];
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al037/final.c:139..139
+   139      } else if (i->id != parent[current]) {
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al037/final.c:137..137
+   137          breakers[current] = 1;
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al037/final.c:136..136
+   136        if ((parent[current] == current && children > 1) || (parent[current] != current && low[i->id] >= dtime[current])) {
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al037/final.c:136..136
+   136        if ((parent[current] == current && children > 1) || (parent[current] != current && low[i->id] >= dtime[current])) {
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al037/final.c:136..136
+   136        if ((parent[current] == current && children > 1) || (parent[current] != current && low[i->id] >= dtime[current])) {
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al037/final.c:136..136
+   136        if ((parent[current] == current && children > 1) || (parent[current] != current && low[i->id] >= dtime[current])) {
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al037/final.c:136..136
+   136        if ((parent[current] == current && children > 1) || (parent[current] != current && low[i->id] >= dtime[current])) {
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al037/final.c:135..135
+   135        if (low[current]>low[i->id]) low[current] = low[i->id];
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al037/final.c:135..135
+   135        if (low[current]>low[i->id]) low[current] = low[i->id];
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al037/final.c:135..135
+   135        if (low[current]>low[i->id]) low[current] = low[i->id];
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al037/final.c:135..135
+   135        if (low[current]>low[i->id]) low[current] = low[i->id];
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al037/final.c:135..135
+   135        if (low[current]>low[i->id]) low[current] = low[i->id];
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al037/final.c:135..135
+   135        if (low[current]>low[i->id]) low[current] = low[i->id];
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al037/final.c:133..133
+   133        parent[i->id] = current;
+
+27: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al037/final.c:133..133
+   133        parent[i->id] = current;
+
+28: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al037/final.c:131..131
+   131      if (dtime[i->id] == 0) {
+
+29: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al037/final.c:131..131
+   131      if (dtime[i->id] == 0) {
+
+30: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al037/final.c:130..130
+   130    for (i = graph->lists[current].head; i != NULL; i = i->next)
+
+31: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al037/final.c:128..128
+   128    dtime[current] = low[current] = ++(*time);
+
+32: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al037/final.c:128..128
+   128    dtime[current] = low[current] = ++(*time);
+
+33: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al037/final.c:115..115
+   115      if (breakers[i] != 1 && color[i] == 0) {
+
+34: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al037/final.c:115..115
+   115      if (breakers[i] != 1 && color[i] == 0) {
+
+35: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al037/final.c:101..101
+   101    color[current] = 2;
+
+36: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al037/final.c:99..99
+    99      if (breakers[i->id] != 1 && color[i->id] == 0)
+
+37: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al037/final.c:99..99
+    99      if (breakers[i->id] != 1 && color[i->id] == 0)
+
+38: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al037/final.c:99..99
+    99      if (breakers[i->id] != 1 && color[i->id] == 0)
+
+39: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al037/final.c:99..99
+    99      if (breakers[i->id] != 1 && color[i->id] == 0)
+
+40: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al037/final.c:98..98
+    98    for (i = graph->lists[current].head; i != NULL; i = i->next)
+
+41: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al037/final.c:97..97
+    97    color[current] = 1;
+
+42: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al037/final.c:68..68
+    68      for (j = graph->lists[i].head; j != NULL; j = k) {
+
+43: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al037/final.c:53..53
+    53          struct Node* j = graph->lists[i].head;
+
+44: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al037/final.c:47..47
+    47      graph->lists[dest].head = newNode;
+
+45: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al037/final.c:46..46
+    46      newNode->next = graph->lists[dest].head;
+
+46: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al037/final.c:43..43
+    43      graph->lists[src].head = newNode;
+
+47: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al037/final.c:42..42
+    42      newNode->next = graph->lists[src].head;
+
+48: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al037/final.c:35..35
+    35      newGraph->lists[i].head = NULL;
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al036/P1.c:71..71
+    71  	Visitado[v] = 1;
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al036/P1.c:48..48
+    48  	Visitado[v] = 1;
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al036/P1.c:202..202
+   202  		for (entry = la[i],topl = NULL;entry != NULL;topl = entry,entry = entry->next){
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al036/P1.c:193..193
+   193  		if (la[i] != NULL && Visitado[i] == 0){
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al036/P1.c:193..193
+   193  		if (la[i] != NULL && Visitado[i] == 0){
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al036/P1.c:190..190
+   190  		Visitado[i] = 0;
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al036/P1.c:181..181
+   181  					la[i] = NULL;
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al036/P1.c:178..178
+   178  					for (entry = la[i],topl = NULL;entry != NULL;topl = entry,entry = entry->next){
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al036/P1.c:176..176
+   176  				if (p[j] == i && low[j] >= d[i] ){
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al036/P1.c:176..176
+   176  				if (p[j] == i && low[j] >= d[i] ){
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al036/P1.c:176..176
+   176  				if (p[j] == i && low[j] >= d[i] ){
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al036/P1.c:171..171
+   171  				la[i] = NULL;
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al036/P1.c:168..168
+   168  				for (entry = la[i],topl = NULL;entry != NULL;topl = entry,entry = entry->next){
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al036/P1.c:162..162
+   162  				if (p[j] == i){
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al036/P1.c:159..159
+   159  		if (p[i] == -1){
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al036/P1.c:134..134
+   134  		if(Visitado[i] == 0){
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al036/P1.c:127..127
+   127  		low[i] = -1;
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al036/P1.c:126..126
+   126  		p[i] = -1;
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al036/P1.c:125..125
+   125  		d[i] = -1;
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al036/P1.c:124..124
+   124  		Visitado[i] = 0;
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al036/P1.c:113..113
+   113  		la[e2] = llinsert(entry,la[e2]);
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al036/P1.c:113..113
+   113  		la[e2] = llinsert(entry,la[e2]);
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al036/P1.c:109..109
+   109  		la[e1] = llinsert(entry,la[e1]);
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al036/P1.c:109..109
+   109  		la[e1] = llinsert(entry,la[e1]);
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al036/P1.c:101..101
+   101  		scanf("%d",&e2);
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al036/P1.c:100..100
+   100  		scanf("%d",&e1);
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al036/P1.c:93..93
+    93  		la[i] = NULL;
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al036/P1.c:75..75
+    75  		if (adj(la[v],i) && Visitado[i] == 0){
+
+27: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al036/P1.c:75..75
+    75  		if (adj(la[v],i) && Visitado[i] == 0){
+
+28: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al036/P1.c:71..71
+    71  	Visitado[v] = 1;
+
+29: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al036/P1.c:63..63
+    63  			low[v] = low[i];
+
+30: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al036/P1.c:63..63
+    63  			low[v] = low[i];
+
+31: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al036/P1.c:62..62
+    62  				(low[v] == -1 || low[i] < low[v])){
+
+32: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al036/P1.c:62..62
+    62  				(low[v] == -1 || low[i] < low[v])){
+
+33: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al036/P1.c:62..62
+    62  				(low[v] == -1 || low[i] < low[v])){
+
+34: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al036/P1.c:61..61
+    61  		if(i != p[v] && adj(la[v],i) &&
+
+35: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al036/P1.c:61..61
+    61  		if(i != p[v] && adj(la[v],i) &&
+
+36: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al036/P1.c:54..54
+    54  			p[i] = v;
+
+37: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al036/P1.c:53..53
+    53  		if (adj(la[v],i) && Visitado[i] == 0){
+
+38: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al036/P1.c:53..53
+    53  		if (adj(la[v],i) && Visitado[i] == 0){
+
+39: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al036/P1.c:50..50
+    50  	low[v] = pass->time;
+
+40: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al036/P1.c:49..49
+    49  	d[v] = ++pass->time;
+
+41: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al036/P1.c:48..48
+    48  	Visitado[v] = 1;
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al037/final.c:128..128
+   128    dtime[current] = low[current] = ++(*time);
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al037/final.c:97..97
+    97    color[current] = 1;
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al037/final.c:46..46
+    46      newNode->next = graph->lists[dest].head;
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al037/final.c:42..42
+    42      newNode->next = graph->lists[src].head;
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:222..222
+   222                          visited[j] = visited_aux[j];
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:222..222
+   222                          visited[j] = visited_aux[j];
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:221..221
+   221                      if(visited_aux[j])
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:211..211
+   211                      visited_aux[j] = 0;
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:208..208
+   208              if(!visited[i]) {
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:199..199
+   199                  graph[j][c_vertex[i]-1] = 0;
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:199..199
+   199                  graph[j][c_vertex[i]-1] = 0;
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:198..198
+   198                  graph[c_vertex[i]-1][j] = 0;
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:198..198
+   198                  graph[c_vertex[i]-1][j] = 0;
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:197..197
+   197              if(graph[c_vertex[i]-1][j]) {
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:197..197
+   197              if(graph[c_vertex[i]-1][j]) {
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:190..190
+   190          visited[i] = 0;
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:184..184
+   184              visited_aux[j] = 0;
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:176..176
+   176          printf("%d ", scc_id[i]); /* ATENCAO espaco no fim tambem */
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:167..167
+   167                      visited[j] = visited_aux[j];
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:167..167
+   167                      visited[j] = visited_aux[j];
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:166..166
+   166                  if(visited_aux[j])
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:163..163
+   163              scc_id[id_index++] = maxID;
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:158..158
+   158                  visited_aux[j] = 0;
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:154..154
+   154          if(!visited[i]) {
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:148..148
+   148          graph[v-1][u-1] = 1;
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:147..147
+   147          graph[u-1][v-1] = 1;
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:144..144
+   144          if(scanf("%d %d", &u, &v) != 2)
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:144..144
+   144          if(scanf("%d %d", &u, &v) != 2)
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:138..138
+   138          scc_id[i] = 0;
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:137..137
+   137          visited[i] = 0;
+
+27: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:135..135
+   135              graph[i][j] = 0;
+
+28: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:125..125
+   125      int c_vertex[n]; /* array of routers that would break scc */
+
+29: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:124..124
+   124      int scc_id[n]; /* array of ids to be printed */
+
+30: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:123..123
+   123      int visited_aux[n];
+
+31: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:122..122
+   122      int visited[n]; /* visited vertices in dfs */
+
+32: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:121..121
+   121      int graph[n][n]; /* matrix rip space (and time) */
+
+33: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:100..100
+   100                      c_vertex[c_index++] = v+1;
+
+34: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:99..99
+    99                  if(!visited[w]) {
+
+35: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:93..93
+    93          if(arr[v][w]) {
+
+36: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:87..87
+    87      visited[v] = 1;
+
+37: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:81..81
+    81              if(!visited[w])
+
+38: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:80..80
+    80          if(arr[v][w])
+
+39: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:70..70
+    70      visited[v] = 1;
+
+40: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:62..62
+    62          if(arr[i] == value)
+
+41: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:43..43
+    43      arr[i+1] = temp;
+
+42: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:42..42
+    42      arr[high] = arr[i+1];
+
+43: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:42..42
+    42      arr[high] = arr[i+1];
+
+44: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:41..41
+    41      temp = arr[high];
+
+45: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:37..37
+    37              arr[i] = temp;
+
+46: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:36..36
+    36              arr[j] = arr[i];
+
+47: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:36..36
+    36              arr[j] = arr[i];
+
+48: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:35..35
+    35              temp = arr[j];
+
+49: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:33..33
+    33          if(arr[j] <= pivot) {
+
+50: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:27..27
+    27      int pivot = arr[high];
+
+51: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:21..21
+    21              max = arr[i];
+
+52: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:20..20
+    20          if(max < arr[i])
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:87..87
+    87      visited[v] = 1;
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:70..70
+    70      visited[v] = 1;
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:27..27
+    27      int pivot = arr[high];
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:222..222
+   222                          visited[j] = visited_aux[j];
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:222..222
+   222                          visited[j] = visited_aux[j];
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:221..221
+   221                      if(visited_aux[j])
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:211..211
+   211                      visited_aux[j] = 0;
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:208..208
+   208              if(!visited[i]) {
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:199..199
+   199                  graph[j][c_vertex[i]-1] = 0;
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:199..199
+   199                  graph[j][c_vertex[i]-1] = 0;
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:198..198
+   198                  graph[c_vertex[i]-1][j] = 0;
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:198..198
+   198                  graph[c_vertex[i]-1][j] = 0;
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:197..197
+   197              if(graph[c_vertex[i]-1][j]) {
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:197..197
+   197              if(graph[c_vertex[i]-1][j]) {
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:190..190
+   190          visited[i] = 0;
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:184..184
+   184              visited_aux[j] = 0;
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:176..176
+   176          printf("%d ", scc_id[i]); /* ATENCAO espaco no fim tambem */
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:167..167
+   167                      visited[j] = visited_aux[j];
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:167..167
+   167                      visited[j] = visited_aux[j];
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:166..166
+   166                  if(visited_aux[j])
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:163..163
+   163              scc_id[id_index++] = maxID;
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:158..158
+   158                  visited_aux[j] = 0;
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:154..154
+   154          if(!visited[i]) {
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:148..148
+   148          graph[v-1][u-1] = 1;
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:147..147
+   147          graph[u-1][v-1] = 1;
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:144..144
+   144          if(scanf("%d %d", &u, &v) != 2)
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:144..144
+   144          if(scanf("%d %d", &u, &v) != 2)
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:138..138
+   138          scc_id[i] = 0;
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:137..137
+   137          visited[i] = 0;
+
+27: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:135..135
+   135              graph[i][j] = 0;
+
+28: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:125..125
+   125      int c_vertex[n]; /* array of routers that would break scc */
+
+29: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:124..124
+   124      int scc_id[n]; /* array of ids to be printed */
+
+30: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:123..123
+   123      int visited_aux[n];
+
+31: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:122..122
+   122      int visited[n]; /* visited vertices in dfs */
+
+32: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:121..121
+   121      int graph[n][n]; /* matrix rip space (and time) */
+
+33: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:100..100
+   100                      c_vertex[c_index++] = v+1;
+
+34: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:99..99
+    99                  if(!visited[w]) {
+
+35: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:93..93
+    93          if(arr[v][w]) {
+
+36: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:87..87
+    87      visited[v] = 1;
+
+37: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:81..81
+    81              if(!visited[w])
+
+38: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:80..80
+    80          if(arr[v][w])
+
+39: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:70..70
+    70      visited[v] = 1;
+
+40: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:62..62
+    62          if(arr[i] == value)
+
+41: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:43..43
+    43      arr[i+1] = temp;
+
+42: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:42..42
+    42      arr[high] = arr[i+1];
+
+43: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:42..42
+    42      arr[high] = arr[i+1];
+
+44: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:41..41
+    41      temp = arr[high];
+
+45: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:37..37
+    37              arr[i] = temp;
+
+46: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:36..36
+    36              arr[j] = arr[i];
+
+47: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:36..36
+    36              arr[j] = arr[i];
+
+48: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:35..35
+    35              temp = arr[j];
+
+49: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:33..33
+    33          if(arr[j] <= pivot) {
+
+50: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:27..27
+    27      int pivot = arr[high];
+
+51: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:21..21
+    21              max = arr[i];
+
+52: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:20..20
+    20          if(max < arr[i])
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:87..87
+    87      visited[v] = 1;
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:70..70
+    70      visited[v] = 1;
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:27..27
+    27      int pivot = arr[high];
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:222..222
+   222                          visited[j] = visited_aux[j];
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:222..222
+   222                          visited[j] = visited_aux[j];
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:221..221
+   221                      if(visited_aux[j])
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:211..211
+   211                      visited_aux[j] = 0;
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:208..208
+   208              if(!visited[i]) {
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:199..199
+   199                  graph[j][c_vertex[i]-1] = 0;
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:199..199
+   199                  graph[j][c_vertex[i]-1] = 0;
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:198..198
+   198                  graph[c_vertex[i]-1][j] = 0;
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:198..198
+   198                  graph[c_vertex[i]-1][j] = 0;
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:197..197
+   197              if(graph[c_vertex[i]-1][j]) {
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:197..197
+   197              if(graph[c_vertex[i]-1][j]) {
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:190..190
+   190          visited[i] = 0;
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:184..184
+   184              visited_aux[j] = 0;
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:176..176
+   176          printf("%d ", scc_id[i]); /* ATENCAO espaco no fim tambem */
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:167..167
+   167                      visited[j] = visited_aux[j];
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:167..167
+   167                      visited[j] = visited_aux[j];
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:166..166
+   166                  if(visited_aux[j])
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:163..163
+   163              scc_id[id_index++] = maxID;
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:158..158
+   158                  visited_aux[j] = 0;
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:154..154
+   154          if(!visited[i]) {
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:148..148
+   148          graph[v-1][u-1] = 1;
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:147..147
+   147          graph[u-1][v-1] = 1;
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:144..144
+   144          if(scanf("%d %d", &u, &v) != 2)
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:144..144
+   144          if(scanf("%d %d", &u, &v) != 2)
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:138..138
+   138          scc_id[i] = 0;
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:137..137
+   137          visited[i] = 0;
+
+27: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:135..135
+   135              graph[i][j] = 0;
+
+28: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:125..125
+   125      int c_vertex[n]; /* array of routers that would break scc */
+
+29: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:124..124
+   124      int scc_id[n]; /* array of ids to be printed */
+
+30: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:123..123
+   123      int visited_aux[n];
+
+31: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:122..122
+   122      int visited[n]; /* visited vertices in dfs */
+
+32: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:121..121
+   121      int graph[n][n]; /* matrix rip space (and time) */
+
+33: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:100..100
+   100                      c_vertex[c_index++] = v+1;
+
+34: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:99..99
+    99                  if(!visited[w]) {
+
+35: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:93..93
+    93          if(arr[v][w]) {
+
+36: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:87..87
+    87      visited[v] = 1;
+
+37: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:81..81
+    81              if(!visited[w])
+
+38: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:80..80
+    80          if(arr[v][w])
+
+39: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:70..70
+    70      visited[v] = 1;
+
+40: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:62..62
+    62          if(arr[i] == value)
+
+41: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:43..43
+    43      arr[i+1] = temp;
+
+42: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:42..42
+    42      arr[high] = arr[i+1];
+
+43: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:42..42
+    42      arr[high] = arr[i+1];
+
+44: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:41..41
+    41      temp = arr[high];
+
+45: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:37..37
+    37              arr[i] = temp;
+
+46: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:36..36
+    36              arr[j] = arr[i];
+
+47: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:36..36
+    36              arr[j] = arr[i];
+
+48: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:35..35
+    35              temp = arr[j];
+
+49: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:33..33
+    33          if(arr[j] <= pivot) {
+
+50: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:27..27
+    27      int pivot = arr[high];
+
+51: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:21..21
+    21              max = arr[i];
+
+52: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:20..20
+    20          if(max < arr[i])
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:87..87
+    87      visited[v] = 1;
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:70..70
+    70      visited[v] = 1;
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:27..27
+    27      int pivot = arr[high];
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:222..222
+   222                          visited[j] = visited_aux[j];
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:222..222
+   222                          visited[j] = visited_aux[j];
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:221..221
+   221                      if(visited_aux[j])
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:211..211
+   211                      visited_aux[j] = 0;
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:208..208
+   208              if(!visited[i]) {
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:199..199
+   199                  graph[j][c_vertex[i]-1] = 0;
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:199..199
+   199                  graph[j][c_vertex[i]-1] = 0;
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:198..198
+   198                  graph[c_vertex[i]-1][j] = 0;
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:198..198
+   198                  graph[c_vertex[i]-1][j] = 0;
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:197..197
+   197              if(graph[c_vertex[i]-1][j]) {
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:197..197
+   197              if(graph[c_vertex[i]-1][j]) {
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:190..190
+   190          visited[i] = 0;
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:184..184
+   184              visited_aux[j] = 0;
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:176..176
+   176          printf("%d ", scc_id[i]); /* ATENCAO espaco no fim tambem */
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:167..167
+   167                      visited[j] = visited_aux[j];
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:167..167
+   167                      visited[j] = visited_aux[j];
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:166..166
+   166                  if(visited_aux[j])
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:163..163
+   163              scc_id[id_index++] = maxID;
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:158..158
+   158                  visited_aux[j] = 0;
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:154..154
+   154          if(!visited[i]) {
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:148..148
+   148          graph[v-1][u-1] = 1;
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:147..147
+   147          graph[u-1][v-1] = 1;
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:144..144
+   144          if(scanf("%d %d", &u, &v) != 2)
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:144..144
+   144          if(scanf("%d %d", &u, &v) != 2)
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:138..138
+   138          scc_id[i] = 0;
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:137..137
+   137          visited[i] = 0;
+
+27: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:135..135
+   135              graph[i][j] = 0;
+
+28: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:125..125
+   125      int c_vertex[n]; /* array of routers that would break scc */
+
+29: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:124..124
+   124      int scc_id[n]; /* array of ids to be printed */
+
+30: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:123..123
+   123      int visited_aux[n];
+
+31: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:122..122
+   122      int visited[n]; /* visited vertices in dfs */
+
+32: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:121..121
+   121      int graph[n][n]; /* matrix rip space (and time) */
+
+33: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:100..100
+   100                      c_vertex[c_index++] = v+1;
+
+34: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:99..99
+    99                  if(!visited[w]) {
+
+35: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:93..93
+    93          if(arr[v][w]) {
+
+36: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:87..87
+    87      visited[v] = 1;
+
+37: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:81..81
+    81              if(!visited[w])
+
+38: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:80..80
+    80          if(arr[v][w])
+
+39: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:70..70
+    70      visited[v] = 1;
+
+40: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:62..62
+    62          if(arr[i] == value)
+
+41: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:43..43
+    43      arr[i+1] = temp;
+
+42: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:42..42
+    42      arr[high] = arr[i+1];
+
+43: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:42..42
+    42      arr[high] = arr[i+1];
+
+44: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:41..41
+    41      temp = arr[high];
+
+45: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:37..37
+    37              arr[i] = temp;
+
+46: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:36..36
+    36              arr[j] = arr[i];
+
+47: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:36..36
+    36              arr[j] = arr[i];
+
+48: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:35..35
+    35              temp = arr[j];
+
+49: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:33..33
+    33          if(arr[j] <= pivot) {
+
+50: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:27..27
+    27      int pivot = arr[high];
+
+51: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:21..21
+    21              max = arr[i];
+
+52: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:20..20
+    20          if(max < arr[i])
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:87..87
+    87      visited[v] = 1;
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:70..70
+    70      visited[v] = 1;
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al001/p1.c:27..27
+    27      int pivot = arr[high];

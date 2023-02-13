@@ -1,0 +1,138 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/269/main.c:12..12
+    12  	char nome[MAX], nome_equipa[MAX], equipa1[MAX], equipa2[MAX], command;
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/269/main.c:12..12
+    12  	char nome[MAX], nome_equipa[MAX], equipa1[MAX], equipa2[MAX], command;
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/269/main.c:12..12
+    12  	char nome[MAX], nome_equipa[MAX], equipa1[MAX], equipa2[MAX], command;
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/269/main.c:12..12
+    12  	char nome[MAX], nome_equipa[MAX], equipa1[MAX], equipa2[MAX], command;
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/269/funcoesprincipais.c:193..193
+   193  	equipas z;
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/269/funcoesprincipais.c:192..192
+   192  	equipas y;
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/269/funcoesprincipais.c:191..191
+   191  	jogos x;
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/269/funcoesprincipais.c:173..173
+   173  	equipas x = lookupequipa(hashtable_equipas, nome_equipa); 
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/269/funcoesprincipais.c:165..165
+   165  	return hashtable_jogos[id];
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/269/funcoesprincipais.c:157..157
+   157  				return hashtable_jogos[id];
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/269/funcoesprincipais.c:146..146
+   146  					hashtable_jogos[id] = x->next;
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/269/funcoesprincipais.c:144..144
+   144  				if (x == hashtable_jogos[id]) 
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/269/funcoesprincipais.c:138..138
+   138  		for (x = hashtable_jogos[id], anterior = NULL; x != NULL; anterior = x, x = x->next)
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/269/funcoesprincipais.c:124..124
+   124  	equipas z;
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/269/funcoesprincipais.c:123..123
+   123  	equipas y;
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/269/funcoesprincipais.c:122..122
+   122  	jogos anterior;
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/269/funcoesprincipais.c:121..121
+   121  	jogos x = hashtable_jogos[id];
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/269/funcoesprincipais.c:121..121
+   121  	jogos x = hashtable_jogos[id];
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/269/funcoesprincipais.c:120..120
+   120  	int id = hash(nome);
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/269/funcoesprincipais.c:99..99
+    99  	jogos x = lookupjogo(hashtable_jogos, nome); /* cria ponteiro auxiliar que aponta para
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/269/funcoesprincipais.c:81..81
+    81  			for (x = hashtable_jogos[i]; x != NULL ; x = x->next) /*Percorre a linked list*/
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/269/funcoesprincipais.c:76..76
+    76  	jogos x;
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/269/funcoesprincipais.c:39..39
+    39   			hashtable_jogos[id] = insertBeginjogos(hashtable_jogos[id], nome, equipa1, equipa2,
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/269/funcoesprincipais.c:39..39
+    39   			hashtable_jogos[id] = insertBeginjogos(hashtable_jogos[id], nome, equipa1, equipa2,
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/269/funcoesprincipais.c:33..33
+    33  	equipas y = lookupequipa(hashtable_equipas, equipa2);
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/269/funcoesprincipais.c:32..32
+    32  	equipas x = lookupequipa(hashtable_equipas, equipa1); 
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/269/funcoesprincipais.c:31..31
+    31  	int id = hash(nome); /*Calcula o id da tabela onde o jogo deve ficar*/
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/269/funcoesprincipais.c:13..13
+    13  		hashtable_equipas[id] = insertBeginequipas(hashtable_equipas[id], nome_equipa);
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/269/funcoesprincipais.c:13..13
+    13  		hashtable_equipas[id] = insertBeginequipas(hashtable_equipas[id], nome_equipa);
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/269/funcoesprincipais.c:12..12
+    12  		id = hash(nome_equipa);
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/269/funcoesauxiliares.c:170..170
+   170  	equipas x = hashtable_equipas[id];
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/269/funcoesauxiliares.c:170..170
+   170  	equipas x = hashtable_equipas[id];
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/269/funcoesauxiliares.c:169..169
+   169  	int id = hash(nome_equipa);
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/269/funcoesauxiliares.c:153..153
+   153  	jogos x = hashtable_jogos[id]; /*Cria se uma variavel auxiliar que aponta para a estrutura
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/269/funcoesauxiliares.c:153..153
+   153  	jogos x = hashtable_jogos[id]; /*Cria se uma variavel auxiliar que aponta para a estrutura
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p2/269/funcoesauxiliares.c:152..152
+   152  	int id = hash(nome); /* obtem se o indice da hashtable onde o jogo esta inserido*/
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p2/269/funcoesauxiliares.c:141..141
+   141  	equipas x = NEWEQUIPA(nome_equipa); 
+
+38: /home/fmarques/sbugs/projects/alunos/iaed_p2/269/funcoesauxiliares.c:128..128
+   128  	jogos x = NEWJOGO(nome, equipa1, equipa2, score1, score2, num_jogos); 
+
+39: /home/fmarques/sbugs/projects/alunos/iaed_p2/269/funcoesauxiliares.c:113..113
+   113  		for (x = hashtable_equipas[i]; x != NULL; x = next)
+
+40: /home/fmarques/sbugs/projects/alunos/iaed_p2/269/funcoesauxiliares.c:110..110
+   110  	equipas x, next;
+
+41: /home/fmarques/sbugs/projects/alunos/iaed_p2/269/funcoesauxiliares.c:93..93
+    93  		for (x = hashtable_jogos[i]; x != NULL; x = next) 
+
+42: /home/fmarques/sbugs/projects/alunos/iaed_p2/269/funcoesauxiliares.c:90..90
+    90  	jogos x, next;
+
+43: /home/fmarques/sbugs/projects/alunos/iaed_p2/269/funcoesauxiliares.c:75..75
+    75  	equipas x = can_fail_malloc(sizeof(struct equipa));
+
+44: /home/fmarques/sbugs/projects/alunos/iaed_p2/269/funcoesauxiliares.c:51..51
+    51  	jogos x = can_fail_malloc(sizeof(struct jogo)); 
+
+45: /home/fmarques/sbugs/projects/alunos/iaed_p2/269/funcoesauxiliares.c:31..31
+    31  		hashtable_equipas[p] = NULL; /* Inicializa cada indice a NULL */
+
+46: /home/fmarques/sbugs/projects/alunos/iaed_p2/269/funcoesauxiliares.c:15..15
+    15  		hashtable_jogos[p] = NULL; /* Inicializa cada indice a NULL */

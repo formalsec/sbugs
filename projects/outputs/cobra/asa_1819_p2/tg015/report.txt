@@ -1,0 +1,264 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:636..636
+   636  		freeL(G->adj[i]);
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:580..580
+   580  				output->minCutE[output->idx++] = l->opEdge;
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:580..580
+   580  				output->minCutE[output->idx++] = l->opEdge;
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:576..576
+   576  				output->minCutS[l->edge->v] = 1;
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:576..576
+   576  				output->minCutS[l->edge->v] = 1;
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:576..576
+   576  				output->minCutS[l->edge->v] = 1;
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:571..571
+   571  			if (state->h[l->edge->v] > h)
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:571..571
+   571  			if (state->h[l->edge->v] > h)
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:571..571
+   571  			if (state->h[l->edge->v] > h)
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:569..569
+   569  		for (l = G->adj[u]; l; l = l->next)
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:566..566
+   566  		if (state->h[u] < h)
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:560..560
+   560  		if (state->gap[h] == 0)
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:539..539
+   539  		state->active[u] = 0;
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:537..537
+   537  	if (state->e[u] == 0)
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:528..528
+   528  				state->active[edge->v] = 1;
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:528..528
+   528  				state->active[edge->v] = 1;
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:526..526
+   526  			if (!state->active[edge->v])
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:526..526
+   526  			if (!state->active[edge->v])
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:523..523
+   523  		else if (edge->cap - edge->flow > 0 && state->h[u] == state->h[edge->v] + 1)
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:523..523
+   523  		else if (edge->cap - edge->flow > 0 && state->h[u] == state->h[edge->v] + 1)
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:523..523
+   523  		else if (edge->cap - edge->flow > 0 && state->h[u] == state->h[edge->v] + 1)
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:520..520
+   520  				t = G->adj[u];
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:515..515
+   515  				gapRelabel(G, FIFO, state, state->h[u]);
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:513..513
+   513  			if (state->h[u] < G->V && state->gap[state->h[u]] == 1)
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:513..513
+   513  			if (state->h[u] < G->V && state->gap[state->h[u]] == 1)
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:513..513
+   513  			if (state->h[u] < G->V && state->gap[state->h[u]] == 1)
+
+27: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:513..513
+   513  			if (state->h[u] < G->V && state->gap[state->h[u]] == 1)
+
+28: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:504..504
+   504  	while (state->e[u] > 0)
+
+29: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:501..501
+   501  	Link t = G->adj[u];
+
+30: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:487..487
+   487  	state->e[v] += f;
+
+31: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:486..486
+   486  	state->e[u] -= f;
+
+32: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:483..483
+   483  	int f = MIN(state->e[u], edge->cap - edge->flow);
+
+33: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:466..466
+   466  	state->gap[state->h[u]] += 1;
+
+34: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:466..466
+   466  	state->gap[state->h[u]] += 1;
+
+35: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:466..466
+   466  	state->gap[state->h[u]] += 1;
+
+36: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:465..465
+   465  	state->h[u] = 1 + min;
+
+37: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:464..464
+   464  	state->gap[state->h[u]] -= 1;
+
+38: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:464..464
+   464  	state->gap[state->h[u]] -= 1;
+
+39: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:464..464
+   464  	state->gap[state->h[u]] -= 1;
+
+40: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:460..460
+   460  			min = MIN(min, state->h[t->edge->v]);
+
+41: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:460..460
+   460  			min = MIN(min, state->h[t->edge->v]);
+
+42: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:460..460
+   460  			min = MIN(min, state->h[t->edge->v]);
+
+43: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:456..456
+   456  	for (t = G->adj[u]; t; t = t->next)
+
+44: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:439..439
+   439  			state->gap[state->h[u]] += 1;
+
+45: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:439..439
+   439  			state->gap[state->h[u]] += 1;
+
+46: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:439..439
+   439  			state->gap[state->h[u]] += 1;
+
+47: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:438..438
+   438  			state->h[u] = MAX(G->V, state->h[u]);
+
+48: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:438..438
+   438  			state->h[u] = MAX(G->V, state->h[u]);
+
+49: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:437..437
+   437  			state->gap[state->h[u]] -= 1;
+
+50: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:437..437
+   437  			state->gap[state->h[u]] -= 1;
+
+51: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:437..437
+   437  			state->gap[state->h[u]] -= 1;
+
+52: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:435..435
+   435  		if (state->h[u] >= h)
+
+53: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:416..416
+   416  		state->active[v] = 1;
+
+54: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:415..415
+   415  		state->e[s] -= edge->flow;
+
+55: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:414..414
+   414  		state->e[v] = edge->flow;
+
+56: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:407..407
+   407  	for (l = G->adj[s]; l; l = l->next)
+
+57: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:405..405
+   405  	state->active[t] = 1;
+
+58: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:404..404
+   404  	state->active[s] = 1;
+
+59: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:403..403
+   403  	state->gap[G->V] = 1;
+
+60: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:403..403
+   403  	state->gap[G->V] = 1;
+
+61: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:402..402
+   402  	state->h[s] = G->V;
+
+62: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:399..399
+   399  		state->active[u] = 0;
+
+63: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:398..398
+   398  		state->e[u] = 0;
+
+64: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:397..397
+   397  		state->h[u] = 0;
+
+65: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:375..375
+   375  	linkOppositesL(G->adj[u], G->adj[v]);
+
+66: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:375..375
+   375  	linkOppositesL(G->adj[u], G->adj[v]);
+
+67: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:373..373
+   373  	G->adj[v] = insertL(G->adj[v], e2);
+
+68: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:373..373
+   373  	G->adj[v] = insertL(G->adj[v], e2);
+
+69: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:372..372
+   372  	G->adj[u] = insertL(G->adj[u], e1);
+
+70: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:372..372
+   372  	G->adj[u] = insertL(G->adj[u], e1);
+
+71: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:333..333
+   333  		new->adj[i] = NULL;
+
+72: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:291..291
+   291  		printf("%d %d\n", out->minCutE[i]->u, out->minCutE[i]->v);
+
+73: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:291..291
+   291  		printf("%d %d\n", out->minCutE[i]->u, out->minCutE[i]->v);
+
+74: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:289..289
+   289  			out->minCutE[i]->u -= G->S;
+
+75: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:287..287
+   287  		if (out->minCutE[i]->u >= (G->V - G->S))
+
+76: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:284..284
+   284  		if (out->minCutE[i] == NULL)
+
+77: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:262..262
+   262  		if (out->minCutS[i] != 1)
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:580..580
+   580  				output->minCutE[output->idx++] = l->opEdge;
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:501..501
+   501  	Link t = G->adj[u];
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:487..487
+   487  	state->e[v] += f;
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:483..483
+   483  	int f = MIN(state->e[u], edge->cap - edge->flow);
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:456..456
+   456  	for (t = G->adj[u]; t; t = t->next)
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:437..437
+   437  			state->gap[state->h[u]] -= 1;
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:405..405
+   405  	state->active[t] = 1;
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:403..403
+   403  	state->gap[G->V] = 1;
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:402..402
+   402  	state->h[s] = G->V;
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:373..373
+   373  	G->adj[v] = insertL(G->adj[v], e2);
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg015/proj2.c:372..372
+   372  	G->adj[u] = insertL(G->adj[u], e1);

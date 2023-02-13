@@ -1,0 +1,116 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al077/projeto1.c:74..74
+    74  		printf("%d\n", vertices[i].nota);
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al077/projeto1.c:67..67
+    67  		vertices[O-1].gradegranters = (int*) can_fail_realloc (vertices[O-1].gradegranters, sizeof(int)*(vertices[O-1].deg+1));
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al077/projeto1.c:67..67
+    67  		vertices[O-1].gradegranters = (int*) can_fail_realloc (vertices[O-1].gradegranters, sizeof(int)*(vertices[O-1].deg+1));
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al077/projeto1.c:67..67
+    67  		vertices[O-1].gradegranters = (int*) can_fail_realloc (vertices[O-1].gradegranters, sizeof(int)*(vertices[O-1].deg+1));
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al077/projeto1.c:66..66
+    66  		vertices[O-1].deg++;
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al077/projeto1.c:65..65
+    65  		vertices[O-1].gradegranters[vertices[O-1].deg] = D-1;
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al077/projeto1.c:65..65
+    65  		vertices[O-1].gradegranters[vertices[O-1].deg] = D-1;
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al077/projeto1.c:65..65
+    65  		vertices[O-1].gradegranters[vertices[O-1].deg] = D-1;
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al077/projeto1.c:65..65
+    65  		vertices[O-1].gradegranters[vertices[O-1].deg] = D-1;
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al077/projeto1.c:60..60
+    60  		if(scanf("%d %d", &O, &D));
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al077/projeto1.c:57..57
+    57  		vertices[i].gradegranters =(int*) can_fail_malloc (sizeof(int)*(vertices[i].deg+1));
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al077/projeto1.c:57..57
+    57  		vertices[i].gradegranters =(int*) can_fail_malloc (sizeof(int)*(vertices[i].deg+1));
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al077/projeto1.c:56..56
+    56  		vertices[i].deg = 0;
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al077/projeto1.c:52..52
+    52  		if(scanf("%d", &vertices[i].nota));
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al077/projeto1.c:51..51
+    51  		vertices[i].index = i;
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al077/projeto1.c:25..25
+    25  			if (checker != vertices[i].nota){
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al077/projeto1.c:24..24
+    24  			vertices[i].nota = max(vertices[i].nota, vertices[granter].nota);
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al077/projeto1.c:24..24
+    24  			vertices[i].nota = max(vertices[i].nota, vertices[granter].nota);
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al077/projeto1.c:24..24
+    24  			vertices[i].nota = max(vertices[i].nota, vertices[granter].nota);
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al077/projeto1.c:23..23
+    23  			checker = vertices[i].nota;
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al077/projeto1.c:22..22
+    22  			granter = vertices[i].gradegranters[j];
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al077/projeto1.c:22..22
+    22  			granter = vertices[i].gradegranters[j];
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al077/projeto1.c:21..21
+    21  		for (j = 0; j < vertices[i].deg; j++){
+cat: _CWE_197_.txt: No such file or directory
+cat: _CWE_805_.txt: No such file or directory
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al048/asa1.c:101..101
+   101      int scores[numStudents];
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al048/asa1.c:86..86
+    86              graph->visited[l] = 0;
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al048/asa1.c:67..67
+    67          if(graph->visited[nextFriend] == 0) {
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al048/asa1.c:62..62
+    62      graph->visited[index] = 1;
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al048/asa1.c:59..59
+    59          max = scores[index];
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al048/asa1.c:58..58
+    58      if(max < scores[index]){
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al048/asa1.c:55..55
+    55      Node* array = graph->array[index].head;
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al048/asa1.c:50..50
+    50  	graph->array[student].head = newStudent;
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al048/asa1.c:49..49
+    49  	newStudent->next = graph->array[student].head;
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al048/asa1.c:42..42
+    42          graph->visited[i] = 0;
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al048/asa1.c:40..40
+    40  		graph->array[i].head = NULL;
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al048/asa1.c:27..27
+    27  	newStudent->value = scores[dest];
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al048/asa1.c:55..55
+    55      Node* array = graph->array[index].head;
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al048/asa1.c:49..49
+    49  	newStudent->next = graph->array[student].head;
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al048/asa1.c:27..27
+    27  	newStudent->value = scores[dest];

@@ -1,0 +1,76 @@
+cat: _CWE_457_.txt: No such file or directory
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp023/main.c:160..160
+   160      printf("%d\n", graph->grades[i]);
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp023/main.c:145..145
+   145      graph->grades[i] = grade;
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp023/main.c:110..110
+   110      if(graph->visited[i] == 0){
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp023/main.c:100..100
+   100                graph->grades[id] = graph->grades[connectedId];
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp023/main.c:100..100
+   100                graph->grades[id] = graph->grades[connectedId];
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp023/main.c:99..99
+    99              if(graph->grades[id] < graph->grades[connectedId]) {
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp023/main.c:99..99
+    99              if(graph->grades[id] < graph->grades[connectedId]) {
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp023/main.c:94..94
+    94    struct student* relationships = graph->relationships[id];
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp023/main.c:86..86
+    86                graph->grades[id] = graph->grades[connectedId];
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp023/main.c:86..86
+    86                graph->grades[id] = graph->grades[connectedId];
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp023/main.c:85..85
+    85              if(graph->grades[id] < graph->grades[connectedId]) {
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp023/main.c:85..85
+    85              if(graph->grades[id] < graph->grades[connectedId]) {
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp023/main.c:82..82
+    82              if(graph->visited[connectedId] == 0) {
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp023/main.c:75..75
+    75          graph->visited[id] = 1;
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp023/main.c:72..72
+    72    struct student* relationships = graph->relationships[id];
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp023/main.c:68..68
+    68    graph->relationships[src] = newStudent;
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp023/main.c:67..67
+    67    newStudent->next = graph->relationships[src];
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp023/main.c:66..66
+    66    struct student* newStudent = createStudent(dest, graph->grades[dest]);
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp023/main.c:50..50
+    50      freeRelationships(graph->relationships[i]);
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp023/main.c:31..31
+    31          graph->visited[i] = 0;
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp023/main.c:30..30
+    30          graph->relationships[i] = NULL;
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp023/main.c:94..94
+    94    struct student* relationships = graph->relationships[id];
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp023/main.c:72..72
+    72    struct student* relationships = graph->relationships[id];
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp023/main.c:67..67
+    67    newStudent->next = graph->relationships[src];
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp023/main.c:66..66
+    66    struct student* newStudent = createStudent(dest, graph->grades[dest]);

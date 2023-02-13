@@ -1,0 +1,67 @@
+cat: _CWE_119_2_.txt: No such file or directory
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al065/projeto2.c:205..205
+   205              cruzamentos[i].vizinhos = iter->next;
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al065/projeto2.c:204..204
+   204              iter = cruzamentos[i].vizinhos;
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al065/projeto2.c:203..203
+   203          while(cruzamentos[i].vizinhos){
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al065/projeto2.c:160..160
+   160          cruzamentos[i].vizinhos = NULL;
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al065/projeto2.c:146..146
+   146              for(iter = cruzamentos[atual].vizinhos; iter->to != anterior; iter = iter->next);
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al065/projeto2.c:144..144
+   144              for(iter = cruzamentos[anterior].vizinhos; iter->to != atual; iter = iter->next);
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al065/projeto2.c:143..143
+   143              anterior = cruzamentos[atual].pi;
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al065/projeto2.c:123..123
+   123                      cruzamentos[to].pi = atual;
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al065/projeto2.c:121..121
+   121              if(cruzamentos[to].pi == -1){
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al065/projeto2.c:119..119
+   119          for(iter = cruzamentos[atual].vizinhos; iter != NULL; iter = iter->next){
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al065/projeto2.c:118..118
+   118      while((atual = pop()) != -1){
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al065/projeto2.c:115..115
+   115      cruzamentos[num_ruas*num_avenidas*2].pi = -2;
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al065/projeto2.c:115..115
+   115      cruzamentos[num_ruas*num_avenidas*2].pi = -2;
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al065/projeto2.c:112..112
+   112          cruzamentos[i].pi = -1; 
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al065/projeto2.c:93..93
+    93          for(iter = cruzamentos[from].vizinhos; iter->next != NULL; iter = iter->next);
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al065/projeto2.c:88..88
+    88          cruzamentos[from].vizinhos->next = NULL;
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al065/projeto2.c:87..87
+    87          cruzamentos[from].vizinhos->to = to;
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al065/projeto2.c:86..86
+    86          cruzamentos[from].vizinhos->fluxo = 0;
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al065/projeto2.c:85..85
+    85          cruzamentos[from].vizinhos->capacidade = capacidade;
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al065/projeto2.c:84..84
+    84          cruzamentos[from].vizinhos = (Arco *)can_fail_malloc(sizeof(Arco));
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al065/projeto2.c:83..83
+    83      if(cruzamentos[from].vizinhos == NULL){
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al065/projeto2.c:83..83
+    83      if(cruzamentos[from].vizinhos == NULL){

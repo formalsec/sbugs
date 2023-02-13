@@ -1,0 +1,379 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:540..540
+   540         return (height[u] > height[SOURCE] || height[dist_out] > height[SOURCE]);
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:540..540
+   540         return (height[u] > height[SOURCE] || height[dist_out] > height[SOURCE]);
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:540..540
+   540         return (height[u] > height[SOURCE] || height[dist_out] > height[SOURCE]);
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:540..540
+   540         return (height[u] > height[SOURCE] || height[dist_out] > height[SOURCE]);
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:538..538
+   538         int dist_out = get_distributor_out(u);
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:519..519
+   519          if(height[vertex] > old_height)
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:516..516
+   516          old_height = height[vertex];
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:501..501
+   501          excess[v] = capacity_number;
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:499..499
+   499          capacity_number = getList(capacity[SOURCE], i);
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:498..498
+   498          v = getList(adj_list[SOURCE], i);
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:498..498
+   498          v = getList(adj_list[SOURCE], i);
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:496..496
+   496      for(i = 0; i < adj_list[SOURCE]->size; i++)
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:493..493
+   493      height[SOURCE] = number_vertices;
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:491..491
+   491          height[i] = 0;
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:490..490
+   490          excess[i] = 0;
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:455..455
+   455          v = getList(adj_list[u], index);
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:453..453
+   453      while(excess[u] > 0)
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:444..444
+   444      int enough_height = (height[u] == (height[v] + 1));
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:444..444
+   444      int enough_height = (height[u] == (height[v] + 1));
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:436..436
+   436      height[u] = new_height + 1;
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:432..432
+   432          new_height = min(new_height, height[v]);
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:426..426
+   426          v = getList(adj_list[u], i);
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:426..426
+   426          v = getList(adj_list[u], i);
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:424..424
+   424      for(i = 0; i < adj_list[u]->size; i++)
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:422..422
+   422      int new_height = height[u];
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:415..415
+   415          excess[TARGET] = 0;
+
+27: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:414..414
+   414          maxflow += excess[TARGET];
+
+28: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:409..409
+   409          excess[SOURCE] = 0;
+
+29: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:404..404
+   404      excess[v] += added_flow;
+
+30: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:403..403
+   403      excess[u] -= added_flow;
+
+31: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:395..395
+   395      int added_flow = min(excess[u], capcity_flow_gap);
+
+32: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:372..372
+   372      char clean_input[MAXBUFFER];
+
+33: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:334..334
+   334      char input_line[MAXBUFFER];
+
+34: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:295..295
+   295      char input_line[MAXBUFFER];
+
+35: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:245..245
+   245      changeList(flow[u], index, flow_number);
+
+36: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:240..240
+   240      int index = findIndex(adj_list[u], v);
+
+37: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:235..235
+   235      return getList(flow[u], index);
+
+38: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:234..234
+   234      int index = findIndex(adj_list[u], v);
+
+39: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:229..229
+   229      return getList(capacity[u], index);
+
+40: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:228..228
+   228      int index = findIndex(adj_list[u], v);
+
+41: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:223..223
+   223      addList(flow[v], capacity_number);
+
+42: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:222..222
+   222      addList(flow[u], 0);
+
+43: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:220..220
+   220      addList(capacity[v], capacity_number);
+
+44: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:219..219
+   219      addList(capacity[u], capacity_number);
+
+45: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:217..217
+   217      addList(adj_list[v], u);
+
+46: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:216..216
+   216      addList(adj_list[u], v);
+
+47: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:208..208
+   208          list[i] = initList();
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:540..540
+   540         return (height[u] > height[SOURCE] || height[dist_out] > height[SOURCE]);
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:453..453
+   453      while(excess[u] > 0)
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:444..444
+   444      int enough_height = (height[u] == (height[v] + 1));
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:444..444
+   444      int enough_height = (height[u] == (height[v] + 1));
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:422..422
+   422      int new_height = height[u];
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:404..404
+   404      excess[v] += added_flow;
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:395..395
+   395      int added_flow = min(excess[u], capcity_flow_gap);
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:240..240
+   240      int index = findIndex(adj_list[u], v);
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:234..234
+   234      int index = findIndex(adj_list[u], v);
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:228..228
+   228      int index = findIndex(adj_list[u], v);
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:217..217
+   217      addList(adj_list[v], u);
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:216..216
+   216      addList(adj_list[u], v);
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:540..540
+   540         return (height[u] > height[SOURCE] || height[dist_out] > height[SOURCE]);
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:540..540
+   540         return (height[u] > height[SOURCE] || height[dist_out] > height[SOURCE]);
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:540..540
+   540         return (height[u] > height[SOURCE] || height[dist_out] > height[SOURCE]);
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:540..540
+   540         return (height[u] > height[SOURCE] || height[dist_out] > height[SOURCE]);
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:538..538
+   538         int dist_out = get_distributor_out(u);
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:519..519
+   519          if(height[vertex] > old_height)
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:516..516
+   516          old_height = height[vertex];
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:501..501
+   501          excess[v] = capacity_number;
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:499..499
+   499          capacity_number = getList(capacity[SOURCE], i);
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:498..498
+   498          v = getList(adj_list[SOURCE], i);
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:498..498
+   498          v = getList(adj_list[SOURCE], i);
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:496..496
+   496      for(i = 0; i < adj_list[SOURCE]->size; i++)
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:493..493
+   493      height[SOURCE] = number_vertices;
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:491..491
+   491          height[i] = 0;
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:490..490
+   490          excess[i] = 0;
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:455..455
+   455          v = getList(adj_list[u], index);
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:453..453
+   453      while(excess[u] > 0)
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:444..444
+   444      int enough_height = (height[u] == (height[v] + 1));
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:444..444
+   444      int enough_height = (height[u] == (height[v] + 1));
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:436..436
+   436      height[u] = new_height + 1;
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:432..432
+   432          new_height = min(new_height, height[v]);
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:426..426
+   426          v = getList(adj_list[u], i);
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:426..426
+   426          v = getList(adj_list[u], i);
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:424..424
+   424      for(i = 0; i < adj_list[u]->size; i++)
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:422..422
+   422      int new_height = height[u];
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:415..415
+   415          excess[TARGET] = 0;
+
+27: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:414..414
+   414          maxflow += excess[TARGET];
+
+28: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:409..409
+   409          excess[SOURCE] = 0;
+
+29: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:404..404
+   404      excess[v] += added_flow;
+
+30: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:403..403
+   403      excess[u] -= added_flow;
+
+31: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:395..395
+   395      int added_flow = min(excess[u], capcity_flow_gap);
+
+32: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:372..372
+   372      char clean_input[MAXBUFFER];
+
+33: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:334..334
+   334      char input_line[MAXBUFFER];
+
+34: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:295..295
+   295      char input_line[MAXBUFFER];
+
+35: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:245..245
+   245      changeList(flow[u], index, flow_number);
+
+36: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:240..240
+   240      int index = findIndex(adj_list[u], v);
+
+37: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:235..235
+   235      return getList(flow[u], index);
+
+38: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:234..234
+   234      int index = findIndex(adj_list[u], v);
+
+39: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:229..229
+   229      return getList(capacity[u], index);
+
+40: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:228..228
+   228      int index = findIndex(adj_list[u], v);
+
+41: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:223..223
+   223      addList(flow[v], capacity_number);
+
+42: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:222..222
+   222      addList(flow[u], 0);
+
+43: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:220..220
+   220      addList(capacity[v], capacity_number);
+
+44: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:219..219
+   219      addList(capacity[u], capacity_number);
+
+45: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:217..217
+   217      addList(adj_list[v], u);
+
+46: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:216..216
+   216      addList(adj_list[u], v);
+
+47: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:208..208
+   208          list[i] = initList();
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:540..540
+   540         return (height[u] > height[SOURCE] || height[dist_out] > height[SOURCE]);
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:453..453
+   453      while(excess[u] > 0)
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:444..444
+   444      int enough_height = (height[u] == (height[v] + 1));
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:444..444
+   444      int enough_height = (height[u] == (height[v] + 1));
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:422..422
+   422      int new_height = height[u];
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:404..404
+   404      excess[v] += added_flow;
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:395..395
+   395      int added_flow = min(excess[u], capcity_flow_gap);
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:240..240
+   240      int index = findIndex(adj_list[u], v);
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:234..234
+   234      int index = findIndex(adj_list[u], v);
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:228..228
+   228      int index = findIndex(adj_list[u], v);
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:217..217
+   217      addList(adj_list[v], u);
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg044/main.c:216..216
+   216      addList(adj_list[u], v);
+cat: _CWE_197_.txt: No such file or directory
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg011/proj2.c:162..162
+   162        scanf("%d", &(network->vertexList[i]->capacity));
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg011/proj2.c:159..159
+   159        scanf("%d ", &(network->vertexList[i]->capacity));
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg011/proj2.c:153..153
+   153        scanf("%d", &(network->vertexList[i]->capacity));
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg011/proj2.c:150..150
+   150        scanf("%d ", &(network->vertexList[i]->capacity));
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg011/proj2.c:121..121
+   121    struct Vertex* auxVertex = network->vertexList[src];
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg011/proj2.c:90..90
+    90      struct Vertex* auxVertex = network->vertexList[i];
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg011/proj2.c:79..79
+    79      network->vertexList[i] = newVertex;
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg011/proj2.c:121..121
+   121    struct Vertex* auxVertex = network->vertexList[src];

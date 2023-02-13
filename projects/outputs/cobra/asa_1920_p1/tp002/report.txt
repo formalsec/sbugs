@@ -1,0 +1,204 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:228..228
+   228              printf("%d\n", array_notas[i]);
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:226..226
+   226              printf("%d\n", adjlist[i]->head->data);
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:225..225
+   225          if (adjlist[i]->head != NULL) {
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:219..219
+   219          addNode(index_p, array_notas[index_p], index_s, array_notas[index_s]);
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:219..219
+   219          addNode(index_p, array_notas[index_p], index_s, array_notas[index_s]);
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:218..218
+   218          int index_p = array_amizades[h].indiceum, index_s = array_amizades[h].indicedois;
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:218..218
+   218          int index_p = array_amizades[h].indiceum, index_s = array_amizades[h].indicedois;
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:214..214
+   214          adjlist[i]->head = NULL;
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:213..213
+   213          adjlist[i] = (List *) can_fail_malloc(sizeof(List));
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:206..206
+   206              array_amizades[contador_aux].indicedois = atoi(auxdois) - 1;
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:205..205
+   205              array_amizades[contador_aux].indiceum = atoi(aux) - 1;
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:198..198
+   198              array_notas[contador] = atoi(aux);
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:174..174
+   174          if (disc[i] == -1)
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:171..171
+   171          stkItem[i] = false;
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:170..170
+   170          disc[i] = low[i] = -1;
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:170..170
+   170          disc[i] = low[i] = -1;
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:167..167
+   167      bool stkItem[length];
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:166..166
+   166      int disc[length], low[length], i;
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:166..166
+   166      int disc[length], low[length], i;
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:160..160
+   160          stkItem[poppedItem] = false;
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:159..159
+   159          poppedItem = peek(stk);
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:156..156
+   156              stkItem[poppedItem] = false;
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:153..153
+   153      if(low[u] == disc[u]) {
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:153..153
+   153      if(low[u] == disc[u]) {
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:144..144
+   144                              adjlist[u]->head->data = max(adjlist[u]->head->data, array_notas[v]);
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:144..144
+   144                              adjlist[u]->head->data = max(adjlist[u]->head->data, array_notas[v]);
+
+27: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:144..144
+   144                              adjlist[u]->head->data = max(adjlist[u]->head->data, array_notas[v]);
+
+28: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:142..142
+   142                              adjlist[u]->head->data = max(adjlist[u]->head->data, adjlist[v]->head->data);
+
+29: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:142..142
+   142                              adjlist[u]->head->data = max(adjlist[u]->head->data, adjlist[v]->head->data);
+
+30: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:142..142
+   142                              adjlist[u]->head->data = max(adjlist[u]->head->data, adjlist[v]->head->data);
+
+31: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:141..141
+   141                          if(adjlist[v]->head != NULL) {
+
+32: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:140..140
+   140                          low[u] = min(low[u], low[v]);
+
+33: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:140..140
+   140                          low[u] = min(low[u], low[v]);
+
+34: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:140..140
+   140                          low[u] = min(low[u], low[v]);
+
+35: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:139..139
+   139                      } else if (stkItem[v]) {
+
+36: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:137..137
+   137                              adjlist[u]->head->data = max(adjlist[u]->head->data, array_notas[v]);
+
+37: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:137..137
+   137                              adjlist[u]->head->data = max(adjlist[u]->head->data, array_notas[v]);
+
+38: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:137..137
+   137                              adjlist[u]->head->data = max(adjlist[u]->head->data, array_notas[v]);
+
+39: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:135..135
+   135                              adjlist[u]->head->data = max(adjlist[u]->head->data, adjlist[v]->head->data);
+
+40: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:135..135
+   135                              adjlist[u]->head->data = max(adjlist[u]->head->data, adjlist[v]->head->data);
+
+41: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:135..135
+   135                              adjlist[u]->head->data = max(adjlist[u]->head->data, adjlist[v]->head->data);
+
+42: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:134..134
+   134                          if(adjlist[v]->head != NULL) {
+
+43: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:133..133
+   133                          low[u] = min(low[u], low[v]);
+
+44: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:133..133
+   133                          low[u] = min(low[u], low[v]);
+
+45: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:133..133
+   133                          low[u] = min(low[u], low[v]);
+
+46: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:131..131
+   131                      if (disc[v] == -1) {
+
+47: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:128..128
+   128              temp = adjlist[u]->head->next;
+
+48: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:126..126
+   126      if(adjlist[u]->head != NULL) {
+
+49: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:125..125
+   125      stkItem[u] = true;
+
+50: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:123..123
+   123      disc[u] = low[u] = ++time;
+
+51: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:123..123
+   123      disc[u] = low[u] = ++time;
+
+52: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:116..116
+   116      return pt->items[pt->top--];
+
+53: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:116..116
+   116      return pt->items[pt->top--];
+
+54: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:103..103
+   103          return pt->items[pt->top];
+
+55: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:103..103
+   103          return pt->items[pt->top];
+
+56: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:97..97
+    97      pt->items[++pt->top] = x;
+
+57: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:97..97
+    97      pt->items[++pt->top] = x;
+
+58: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:47..47
+    47      tmp = adjlist[s]->head;
+
+59: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:40..40
+    40          adjlist[s]->head = src;
+
+60: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:35..35
+    35      if(adjlist[s]->head == NULL){
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:166..166
+   166      int disc[length], low[length], i;
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:123..123
+   123      disc[u] = low[u] = ++time;
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:35..35
+    35      if(adjlist[s]->head == NULL){
+=== Dangerous function calls lacking bounds checking ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:204..204
+   204              strcpy(auxdois, token);
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:202..202
+   202              strcpy(aux, token);
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:197..197
+   197              strcpy(aux, token);
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:190..190
+   190              strcpy(aux,token);
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp002/bestversion.c:187..187
+   187              strcpy(aux, token);

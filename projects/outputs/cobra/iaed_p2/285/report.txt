@@ -1,0 +1,195 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/proj2.c:17..17
+    17      Lista_Equipas lista_equipas = NULL;
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/proj2.c:16..16
+    16      Lista lista = NULL;
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/proj2.c:15..15
+    15      Equipa equipa = NULL;
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/proj2.c:13..13
+    13      Jogo jogo = NULL;
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/proj2.c:9..9
+     9      char comando, nome[MAXIMO_CARACTERES], equipa_casa[MAXIMO_CARACTERES], equipa_fora[MAXIMO_CARACTERES];                
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/proj2.c:9..9
+     9      char comando, nome[MAXIMO_CARACTERES], equipa_casa[MAXIMO_CARACTERES], equipa_fora[MAXIMO_CARACTERES];                
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/proj2.c:9..9
+     9      char comando, nome[MAXIMO_CARACTERES], equipa_casa[MAXIMO_CARACTERES], equipa_fora[MAXIMO_CARACTERES];                
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/Jogo.c:73..73
+    73      Lista variavel;
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/Jogo.c:44..44
+    44      Lista variavel, variavel2;
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/Jogo.c:36..36
+    36      Lista variavel = (Lista) can_fail_malloc(sizeof(struct lista));
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/Jogo.c:29..29
+    29          return Hashtable[indice];
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/Jogo.c:12..12
+    12      Jogo novo = (Jogo) can_fail_malloc(sizeof(struct jogo));
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/hashtable.c:133..133
+   133          Hashtable[Indice] -> Vitorias --;
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/hashtable.c:132..132
+   132          Indice = procura_indice_equipas(Hashtable, equipa2, tamanho_Hashtable);
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/hashtable.c:128..128
+   128          Hashtable[Indice] -> Vitorias --;
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/hashtable.c:117..117
+   117          Hashtable[Indice] -> Vitorias ++;
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/hashtable.c:116..116
+   116          Indice = procura_indice_equipas(Hashtable, equipa2, tamanho_Hashtable);
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/hashtable.c:112..112
+   112          Hashtable[Indice] -> Vitorias ++;
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/hashtable.c:103..103
+   103      Hashtable[Indice] = equipa;
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/hashtable.c:100..100
+   100      while (Hashtable[Indice] != NULL){
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/hashtable.c:92..92
+    92        Hashtable[i] = NULL;
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/hashtable.c:81..81
+    81              Hashtable[indice] -> Score_Equipa_Fora = novo_score_equipa_fora;
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/hashtable.c:80..80
+    80              Hashtable[indice] -> Score_Equipa_Casa = novo_score_equipa_casa;
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/hashtable.c:79..79
+    79      indice = procura_indice(Hashtable, nome, tamanho_Hashtable);
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/hashtable.c:68..68
+    68          HashTable[indice2] = NULL;
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/hashtable.c:67..67
+    67          jogo = HashTable[indice2];
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/hashtable.c:66..66
+    66      for (indice2 = (indice + 1) % tamanho_Hashtable; HashTable[indice2] != NULL; indice2 = (indice2 + 1) % tamanho_Hashtable){
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/hashtable.c:65..65
+    65      HashTable[indice] = NULL;
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/hashtable.c:64..64
+    64      free(HashTable[indice]);
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/hashtable.c:63..63
+    63      free(HashTable[indice] -> Equipa_Fora);
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/hashtable.c:62..62
+    62      free(HashTable[indice] -> Equipa_Casa);
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/hashtable.c:61..61
+    61      free(HashTable[indice] -> Nome); 
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/hashtable.c:59..59
+    59      Jogo jogo;
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/hashtable.c:50..50
+    50      Hashtable[indice] = jogo;
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/hashtable.c:47..47
+    47      while (Hashtable[indice] != NULL){
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/hashtable.c:38..38
+    38        HashTable[indice] = NULL;
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/hashtable.c:21..21
+    21          if (strcmp(Hashtable[indice] -> Nome, nome) == 0){
+
+38: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/hashtable.c:20..20
+    20      while (Hashtable[indice] != NULL){
+
+39: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/equipa.c:157..157
+   157      Lista_Equipas variavel;
+
+40: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/equipa.c:150..150
+   150                  arr[k] = arr2[i++];
+
+41: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/equipa.c:150..150
+   150                  arr[k] = arr2[i++];
+
+42: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/equipa.c:147..147
+   147                  arr[k] = arr2[j--];
+
+43: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/equipa.c:147..147
+   147                  arr[k] = arr2[j--];
+
+44: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/equipa.c:146..146
+   146              if (strcmp(arr2[j] , arr2[i]) < 0){
+
+45: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/equipa.c:146..146
+   146              if (strcmp(arr2[j] , arr2[i]) < 0){
+
+46: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/equipa.c:143..143
+   143          arr2[r + m - j] = arr[j + 1];
+
+47: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/equipa.c:143..143
+   143          arr2[r + m - j] = arr[j + 1];
+
+48: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/equipa.c:143..143
+   143          arr2[r + m - j] = arr[j + 1];
+
+49: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/equipa.c:143..143
+   143          arr2[r + m - j] = arr[j + 1];
+
+50: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/equipa.c:140..140
+   140          arr2[i - 1] =arr[i - 1];
+
+51: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/equipa.c:140..140
+   140          arr2[i - 1] =arr[i - 1];
+
+52: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/equipa.c:121..121
+   121          arr[indice] = melhores -> equipa -> Nome;
+
+53: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/equipa.c:103..103
+   103          printf("%d * %s\n", NL, arr[indice]);
+
+54: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/equipa.c:81..81
+    81      Lista_Equipas variavel, melhores = NULL;
+
+55: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/equipa.c:73..73
+    73      Lista_Equipas variavel = (Lista_Equipas) can_fail_malloc(sizeof(struct lista_equipas));
+
+56: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/equipa.c:52..52
+    52          printf("%d %s %d\n", NL, Hashtable[indice] -> Nome, Hashtable[indice] -> Vitorias);
+
+57: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/equipa.c:52..52
+    52          printf("%d %s %d\n", NL, Hashtable[indice] -> Nome, Hashtable[indice] -> Vitorias);
+
+58: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/equipa.c:48..48
+    48      char nome[MAXIMO_CARACTERES];
+
+59: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/equipa.c:38..38
+    38      Equipa nova = (Equipa) can_fail_malloc(sizeof(struct equipa));
+
+60: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/equipa.c:27..27
+    27          if (strcmp(Hashtable[Indice] -> Nome, nome) == 0){            
+
+61: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/equipa.c:26..26
+    26      while (Hashtable[Indice] != NULL){
+
+62: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/equipa.c:13..13
+    13          if (strcmp(Hashtable[indice] -> Nome, nome) == 0){
+
+63: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/equipa.c:12..12
+    12      while (Hashtable[indice] != NULL){
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/equipa.c:143..143
+   143          arr2[r + m - j] = arr[j + 1];
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/285/equipa.c:143..143
+   143          arr2[r + m - j] = arr[j + 1];

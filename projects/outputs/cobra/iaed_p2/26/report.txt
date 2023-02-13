@@ -1,0 +1,606 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:466..466
+   466        free(hash_table[i].team2);
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:465..465
+   465        free(hash_table[i].team1);
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:464..464
+   464        free(hash_table[i].name);
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:463..463
+   463      if (hash_table[i].name != NULL) {
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:452..452
+   452      printf("%d %s %s %s %d %d\n",counter, games_list[i].name,games_list[i].team1,games_list[i].team2,games_list[i].score1,games_list[i].score2);
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:452..452
+   452      printf("%d %s %s %s %d %d\n",counter, games_list[i].name,games_list[i].team1,games_list[i].team2,games_list[i].score1,games_list[i].score2);
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:452..452
+   452      printf("%d %s %s %s %d %d\n",counter, games_list[i].name,games_list[i].team1,games_list[i].team2,games_list[i].score1,games_list[i].score2);
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:452..452
+   452      printf("%d %s %s %s %d %d\n",counter, games_list[i].name,games_list[i].team1,games_list[i].team2,games_list[i].score1,games_list[i].score2);
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:452..452
+   452      printf("%d %s %s %s %d %d\n",counter, games_list[i].name,games_list[i].team1,games_list[i].team2,games_list[i].score1,games_list[i].score2);
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:446..446
+   446          games_list[j].number = aux_number;
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:445..445
+   445          games_list[j].score2  = aux_score2;
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:444..444
+   444          games_list[j].score1 = aux_score1;
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:443..443
+   443          strcpy(games_list[j].team2,aux_team2);
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:442..442
+   442          games_list[j].team2 = can_fail_malloc (sizeof(char)*length);
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:440..440
+   440          strcpy(games_list[j].team1,aux_team1);
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:439..439
+   439          games_list[j].team1 = can_fail_malloc (sizeof(char)*length);
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:437..437
+   437          strcpy(games_list[j].name,aux_name);
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:436..436
+   436          games_list[j].name = can_fail_malloc (sizeof(char)*length);
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:431..431
+   431          games_list[i].number = games_list[j].number;
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:431..431
+   431          games_list[i].number = games_list[j].number;
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:430..430
+   430          games_list[i].score2 = games_list[j].score2;
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:430..430
+   430          games_list[i].score2 = games_list[j].score2;
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:429..429
+   429          games_list[i].score1 = games_list[j].score1;
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:429..429
+   429          games_list[i].score1 = games_list[j].score1;
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:428..428
+   428          strcpy(games_list[i].team2,games_list[j].team2);
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:428..428
+   428          strcpy(games_list[i].team2,games_list[j].team2);
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:427..427
+   427          games_list[i].team2 = can_fail_malloc (sizeof(char)*length);
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:426..426
+   426          length = strlen(games_list[j].team2)+1;
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:425..425
+   425          strcpy(games_list[i].team1,games_list[j].team1);
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:425..425
+   425          strcpy(games_list[i].team1,games_list[j].team1);
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:424..424
+   424          games_list[i].team1 = can_fail_malloc (sizeof(char)*length);
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:423..423
+   423          length = strlen(games_list[j].team1)+1;
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:422..422
+   422          strcpy(games_list[i].name,games_list[j].name);
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:422..422
+   422          strcpy(games_list[i].name,games_list[j].name);
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:421..421
+   421          games_list[i].name = can_fail_malloc (sizeof(char)*length);
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:420..420
+   420          length = strlen(games_list[j].name)+1;
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:417..417
+   417          aux_number = games_list[i].number;
+
+38: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:416..416
+   416          aux_score2 = games_list[i].score2;
+
+39: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:415..415
+   415          aux_score1 = games_list[i].score1;
+
+40: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:414..414
+   414          strcpy(aux_team2,games_list[i].team2);
+
+41: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:412..412
+   412          length = strlen(games_list[i].team2)+1;
+
+42: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:411..411
+   411          strcpy(aux_team1,games_list[i].team1);
+
+43: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:409..409
+   409          length = strlen(games_list[i].team1)+1;
+
+44: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:408..408
+   408          strcpy(aux_name,games_list[i].name);
+
+45: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:406..406
+   406          length = strlen(games_list[i].name)+1;
+
+46: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:404..404
+   404        if (games_list[i].number > games_list[j].number) {
+
+47: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:404..404
+   404        if (games_list[i].number > games_list[j].number) {
+
+48: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:397..397
+   397        games_list[j].number = hash_table[i].number;
+
+49: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:397..397
+   397        games_list[j].number = hash_table[i].number;
+
+50: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:396..396
+   396        games_list[j].score2 = hash_table[i].score2;
+
+51: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:396..396
+   396        games_list[j].score2 = hash_table[i].score2;
+
+52: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:395..395
+   395        games_list[j].score1 = hash_table[i].score1;
+
+53: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:395..395
+   395        games_list[j].score1 = hash_table[i].score1;
+
+54: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:394..394
+   394        strcpy(games_list[j].team2,hash_table[i].team2);
+
+55: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:394..394
+   394        strcpy(games_list[j].team2,hash_table[i].team2);
+
+56: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:393..393
+   393        games_list[j].team2 = can_fail_malloc (sizeof(char)*length);
+
+57: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:392..392
+   392        length = strlen(hash_table[i].team2)+1;
+
+58: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:391..391
+   391        strcpy(games_list[j].team1,hash_table[i].team1);
+
+59: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:391..391
+   391        strcpy(games_list[j].team1,hash_table[i].team1);
+
+60: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:390..390
+   390        games_list[j].team1 = can_fail_malloc (sizeof(char)*length);
+
+61: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:389..389
+   389        length = strlen(hash_table[i].team1)+1;
+
+62: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:388..388
+   388        strcpy(games_list[j].name,hash_table[i].name);
+
+63: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:388..388
+   388        strcpy(games_list[j].name,hash_table[i].name);
+
+64: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:387..387
+   387        games_list[j].name = can_fail_malloc (sizeof(char)*length);
+
+65: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:386..386
+   386        length = strlen(hash_table[i].name)+1;
+
+66: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:385..385
+   385      if (hash_table[i].name != NULL) {
+
+67: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:373..373
+   373      hash_table[found].score2 = team2_score;
+
+68: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:372..372
+   372      hash_table[found].score1 = team1_score;
+
+69: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:369..369
+   369          team_increase_games_won(hash_table[found].team2,teams_hash_table,teams_size,max_games_won,teams_with_max_games_won,second_max_games_won,teams_with_second_max_games_won);
+
+70: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:366..366
+   366          team_increase_games_won(hash_table[found].team1,teams_hash_table,teams_size,max_games_won,teams_with_max_games_won,second_max_games_won,teams_with_second_max_games_won);
+
+71: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:364..364
+   364      else if (hash_table[found].score2 == hash_table[found].score1) {
+
+72: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:364..364
+   364      else if (hash_table[found].score2 == hash_table[found].score1) {
+
+73: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:361..361
+   361          team_decrease_games_won(hash_table[found].team2,teams_hash_table,teams_size,max_games_won,teams_with_max_games_won,second_max_games_won,teams_with_second_max_games_won,teams_number);
+
+74: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:358..358
+   358          team_increase_games_won(hash_table[found].team1,teams_hash_table,teams_size,max_games_won,teams_with_max_games_won,second_max_games_won,teams_with_second_max_games_won);
+
+75: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:357..357
+   357          team_decrease_games_won(hash_table[found].team2,teams_hash_table,teams_size,max_games_won,teams_with_max_games_won,second_max_games_won,teams_with_second_max_games_won,teams_number);
+
+76: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:355..355
+   355      else if (hash_table[found].score2 > hash_table[found].score1) {
+
+77: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:355..355
+   355      else if (hash_table[found].score2 > hash_table[found].score1) {
+
+78: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:352..352
+   352          team_decrease_games_won(hash_table[found].team1,teams_hash_table,teams_size,max_games_won,teams_with_max_games_won,second_max_games_won,teams_with_second_max_games_won,teams_number);
+
+79: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:349..349
+   349          team_increase_games_won(hash_table[found].team2,teams_hash_table,teams_size,max_games_won,teams_with_max_games_won,second_max_games_won,teams_with_second_max_games_won);
+
+80: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:348..348
+   348          team_decrease_games_won(hash_table[found].team1,teams_hash_table,teams_size,max_games_won,teams_with_max_games_won,second_max_games_won,teams_with_second_max_games_won,teams_number);
+
+81: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:346..346
+   346      if (hash_table[found].score1 > hash_table[found].score2) {
+
+82: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:346..346
+   346      if (hash_table[found].score1 > hash_table[found].score2) {
+
+83: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:334..334
+   334      hash_table[found].number = 0;
+
+84: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:333..333
+   333      hash_table[found].score2 = 0;
+
+85: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:332..332
+   332      hash_table[found].score1 = 0;
+
+86: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:331..331
+   331      hash_table[found].team2 = NULL;
+
+87: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:330..330
+   330      hash_table[found].team1 = NULL;
+
+88: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:329..329
+   329      hash_table[found].name = NULL;
+
+89: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:328..328
+   328      free(hash_table[found].team2);
+
+90: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:327..327
+   327      free(hash_table[found].team1);
+
+91: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:326..326
+   326      free(hash_table[found].name);
+
+92: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:324..324
+   324        team_decrease_games_won(hash_table[found].team2,teams_hash_table,teams_size,max_games_won,teams_with_max_games_won,second_max_games_won,teams_with_second_max_games_won,teams_number);
+
+93: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:323..323
+   323      else if (hash_table[found].score2 > hash_table[found].score1) {
+
+94: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:323..323
+   323      else if (hash_table[found].score2 > hash_table[found].score1) {
+
+95: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:321..321
+   321        team_decrease_games_won(hash_table[found].team1,teams_hash_table,teams_size,max_games_won,teams_with_max_games_won,second_max_games_won,teams_with_second_max_games_won,teams_number);
+
+96: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:320..320
+   320      if (hash_table[found].score1 > hash_table[found].score2) {
+
+97: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:320..320
+   320      if (hash_table[found].score1 > hash_table[found].score2) {
+
+98: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:306..306
+   306        printf("%d %s %s %s %d %d\n",counter, hash_table[found].name,hash_table[found].team1,hash_table[found].team2,hash_table[found].score1,hash_table[found].score2);
+
+99: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:306..306
+   306        printf("%d %s %s %s %d %d\n",counter, hash_table[found].name,hash_table[found].team1,hash_table[found].team2,hash_table[found].score1,hash_table[found].score2);
+
+100: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:306..306
+   306        printf("%d %s %s %s %d %d\n",counter, hash_table[found].name,hash_table[found].team1,hash_table[found].team2,hash_table[found].score1,hash_table[found].score2);
+
+101: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:306..306
+   306        printf("%d %s %s %s %d %d\n",counter, hash_table[found].name,hash_table[found].team1,hash_table[found].team2,hash_table[found].score1,hash_table[found].score2);
+
+102: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:306..306
+   306        printf("%d %s %s %s %d %d\n",counter, hash_table[found].name,hash_table[found].team1,hash_table[found].team2,hash_table[found].score1,hash_table[found].score2);
+
+103: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:295..295
+   295        if (hash_table[i].name != NULL && strcmp(hash_table[i].name,name) == 0) { /*I found the game*/
+
+104: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:295..295
+   295        if (hash_table[i].name != NULL && strcmp(hash_table[i].name,name) == 0) { /*I found the game*/
+
+105: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:293..293
+   293    else if ((hash_table[key].name != NULL && strcmp(hash_table[key].name,name) != 0) || hash_table[key].name == NULL ) { /*The game is not in the slot given by hash - it can still be in the hash_table*/
+
+106: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:293..293
+   293    else if ((hash_table[key].name != NULL && strcmp(hash_table[key].name,name) != 0) || hash_table[key].name == NULL ) { /*The game is not in the slot given by hash - it can still be in the hash_table*/
+
+107: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:293..293
+   293    else if ((hash_table[key].name != NULL && strcmp(hash_table[key].name,name) != 0) || hash_table[key].name == NULL ) { /*The game is not in the slot given by hash - it can still be in the hash_table*/
+
+108: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:290..290
+   290    if (hash_table[key].name != NULL && strcmp(hash_table[key].name,name) == 0) { /*I found the game*/
+
+109: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:290..290
+   290    if (hash_table[key].name != NULL && strcmp(hash_table[key].name,name) == 0) { /*I found the game*/
+
+110: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:274..274
+   274      hash_table[key].number = (*number);
+
+111: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:273..273
+   273      hash_table[key].score2 = score2;
+
+112: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:272..272
+   272      hash_table[key].score1 = score1;
+
+113: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:270..270
+   270      strcpy(hash_table[key].team2,team2);
+
+114: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:269..269
+   269      hash_table[key].team2 = can_fail_malloc(sizeof(char)*length);
+
+115: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:266..266
+   266      strcpy(hash_table[key].team1,team1);
+
+116: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:265..265
+   265      hash_table[key].team1 = can_fail_malloc(sizeof(char)*length);
+
+117: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:262..262
+   262      strcpy(hash_table[key].name,name);
+
+118: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:261..261
+   261      hash_table[key].name = can_fail_malloc(sizeof(char)*length);
+
+119: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:249..249
+   249          else if (hash_table[i].name == NULL && z == 0) {
+
+120: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:245..245
+   245          if (hash_table[i].name != NULL && strcmp(hash_table[i].name,name) == 0) { /*The game already exists*/
+
+121: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:245..245
+   245          if (hash_table[i].name != NULL && strcmp(hash_table[i].name,name) == 0) { /*The game already exists*/
+
+122: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:243..243
+   243      if (hash_table[key].name != NULL) { /*The slot is not empty*/
+
+123: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:238..238
+   238    if (hash_table[key].name != NULL && strcmp(hash_table[key].name,name) == 0) { /*The game already exists*/
+
+124: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:238..238
+   238    if (hash_table[key].name != NULL && strcmp(hash_table[key].name,name) == 0) { /*The game already exists*/
+
+125: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:227..227
+   227      hash_table[i].number = 0;
+
+126: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:226..226
+   226      hash_table[i].score2 = 0;
+
+127: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:225..225
+   225      hash_table[i].score1 = 0;
+
+128: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:224..224
+   224      hash_table[i].team2 = NULL;
+
+129: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:223..223
+   223      hash_table[i].team1 = NULL;
+
+130: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:222..222
+   222      hash_table[i].name = NULL;
+
+131: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:206..206
+   206        free(hash_table[i].name);
+
+132: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:205..205
+   205      if (hash_table[i].name != NULL) {
+
+133: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:193..193
+   193      printf("%d * %s\n",counter, teams_list[i].name);
+
+134: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:186..186
+   186          teams_list[j].games_won = aux_games_won;
+
+135: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:185..185
+   185          strcpy(teams_list[j].name,aux_name);
+
+136: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:183..183
+   183          teams_list[i].games_won = teams_list[j].games_won;
+
+137: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:183..183
+   183          teams_list[i].games_won = teams_list[j].games_won;
+
+138: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:182..182
+   182          strcpy(teams_list[i].name,teams_list[j].name);
+
+139: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:182..182
+   182          strcpy(teams_list[i].name,teams_list[j].name);
+
+140: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:180..180
+   180          aux_games_won = teams_list[i].games_won;
+
+141: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:179..179
+   179          strcpy(aux_name,teams_list[i].name);
+
+142: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:177..177
+   177        if (strcmp(teams_list[i].name,teams_list[j].name) > 0) {
+
+143: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:177..177
+   177        if (strcmp(teams_list[i].name,teams_list[j].name) > 0) {
+
+144: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:170..170
+   170        teams_list[j].games_won = hash_table[i].games_won;
+
+145: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:170..170
+   170        teams_list[j].games_won = hash_table[i].games_won;
+
+146: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:169..169
+   169        strcpy(teams_list[j].name,hash_table[i].name);
+
+147: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:169..169
+   169        strcpy(teams_list[j].name,hash_table[i].name);
+
+148: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:168..168
+   168        teams_list[j].name = can_fail_malloc (sizeof(char)*MAX_WORD_SIZE);
+
+149: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:167..167
+   167      if (hash_table[i].name != NULL && hash_table[i].games_won == max_games_won) { /*Only copies the teams that have the highest number of games won*/
+
+150: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:167..167
+   167      if (hash_table[i].name != NULL && hash_table[i].games_won == max_games_won) { /*Only copies the teams that have the highest number of games won*/
+
+151: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:157..157
+   157    hash_table[key].games_won--;
+
+152: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:150..150
+   150            else if (hash_table[i].games_won == (*second_max_games_won)) {
+
+153: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:148..148
+   148              (*second_max_games_won) = hash_table[i].games_won;
+
+154: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:146..146
+   146            if (hash_table[i].games_won > (*second_max_games_won) && hash_table[i].games_won < (*max_games_won)) {
+
+155: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:146..146
+   146            if (hash_table[i].games_won > (*second_max_games_won) && hash_table[i].games_won < (*max_games_won)) {
+
+156: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:144..144
+   144          if (hash_table[i].name != NULL) { /*Found a team*/
+
+157: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:139..139
+   139    else if (hash_table[key].games_won == (*second_max_games_won)) {
+
+158: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:132..132
+   132            else if (hash_table[i].games_won == (*second_max_games_won)) {
+
+159: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:130..130
+   130              (*second_max_games_won) = hash_table[i].games_won;
+
+160: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:128..128
+   128            if (hash_table[i].games_won > (*second_max_games_won) && hash_table[i].games_won < (*max_games_won)) {
+
+161: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:128..128
+   128            if (hash_table[i].games_won > (*second_max_games_won) && hash_table[i].games_won < (*max_games_won)) {
+
+162: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:126..126
+   126          if (hash_table[i].name != NULL) { /*Found a team*/
+
+163: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:118..118
+   118    if (hash_table[key].games_won == (*max_games_won)) {
+
+164: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:116..116
+   116    int key = teams_search(name,hash_table,size);
+
+165: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:109..109
+   109      (*second_max_games_won) = hash_table[key].games_won;
+
+166: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:108..108
+   108    else if (hash_table[key].games_won > *second_max_games_won) { /*We have a new second_max_games_won*/
+
+167: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:105..105
+   105      (*max_games_won) = hash_table[key].games_won;
+
+168: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:102..102
+   102    else if (hash_table[key].games_won > *max_games_won) { /*We have a new max_games_won*/
+
+169: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:99..99
+    99    else if (hash_table[key].games_won == *second_max_games_won) {
+
+170: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:96..96
+    96    if (hash_table[key].games_won == *max_games_won) {
+
+171: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:95..95
+    95    hash_table[key].games_won++;
+
+172: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:94..94
+    94    int key = teams_search(name,hash_table,size);
+
+173: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:85..85
+    85      printf("%d %s %d\n",counter, hash_table[found].name, hash_table[found].games_won);
+
+174: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:85..85
+    85      printf("%d %s %d\n",counter, hash_table[found].name, hash_table[found].games_won);
+
+175: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:74..74
+    74        if (hash_table[i].name != NULL && strcmp(hash_table[i].name,name) == 0) { /*I found the team - out of the slot indicated by the hash*/
+
+176: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:74..74
+    74        if (hash_table[i].name != NULL && strcmp(hash_table[i].name,name) == 0) { /*I found the team - out of the slot indicated by the hash*/
+
+177: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:72..72
+    72    else if (hash_table[key].name != NULL && strcmp(hash_table[key].name,name) != 0) {
+
+178: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:72..72
+    72    else if (hash_table[key].name != NULL && strcmp(hash_table[key].name,name) != 0) {
+
+179: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:69..69
+    69    if (hash_table[key].name != NULL && strcmp(hash_table[key].name,name) == 0) { /*I found the team*/
+
+180: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:69..69
+    69    if (hash_table[key].name != NULL && strcmp(hash_table[key].name,name) == 0) { /*I found the team*/
+
+181: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:53..53
+    53            strcpy(hash_table[i].name,name);
+
+182: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:52..52
+    52            hash_table[i].name = can_fail_malloc(sizeof(char)*name_size);
+
+183: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:51..51
+    51          else if (hash_table[i].name == NULL) {
+
+184: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:47..47
+    47          if (hash_table[i].name != NULL && strcmp(hash_table[i].name,name) == 0) { /*The team already exists*/
+
+185: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:47..47
+    47          if (hash_table[i].name != NULL && strcmp(hash_table[i].name,name) == 0) { /*The team already exists*/
+
+186: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:42..42
+    42      if (strcmp(hash_table[key].name,name) == 0) { /*The team already exists*/
+
+187: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:35..35
+    35      strcpy(hash_table[key].name,name);
+
+188: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:34..34
+    34      hash_table[key].name = can_fail_malloc(sizeof(char)*name_size);
+
+189: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:33..33
+    33    if (hash_table[key].name == NULL) { /*The slot is empty*/
+
+190: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:24..24
+    24      hash_table[i].games_won = 0;
+
+191: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:23..23
+    23      hash_table[i].name = NULL;
+
+192: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:13..13
+    13        value = value * 37 + name[i];
+
+193: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/main.c:24..24
+    24    char input[MAX_INPUT];
+
+194: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/main.c:12..12
+    12      name[len-1] = '\0';
+
+195: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/main.c:11..11
+    11    if (name[len-1] == '\n') {
+
+196: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/main.c:10..10
+    10    int len = strlen(name)+1;
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:306..306
+   306        printf("%d %s %s %s %d %d\n",counter, hash_table[found].name,hash_table[found].team1,hash_table[found].team2,hash_table[found].score1,hash_table[found].score2);
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:85..85
+    85      printf("%d %s %d\n",counter, hash_table[found].name, hash_table[found].games_won);
+=== Dangerous function calls lacking bounds checking ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:185..185
+   185          strcpy(teams_list[j].name,aux_name);
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:182..182
+   182          strcpy(teams_list[i].name,teams_list[j].name);
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:179..179
+   179          strcpy(aux_name,teams_list[i].name);
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/26/Structures.c:169..169
+   169        strcpy(teams_list[j].name,hash_table[i].name);

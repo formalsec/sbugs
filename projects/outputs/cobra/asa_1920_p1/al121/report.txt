@@ -1,0 +1,112 @@
+cat: _CWE_457_.txt: No such file or directory
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al121/project.c:171..171
+   171          printf("%d\n", studentsGrades[i].currentGrade);
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al121/project.c:166..166
+   166          changeStudentsGradeAndFriends(queue[i]->currentGrade, queue[i]->id);
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al121/project.c:166..166
+   166          changeStudentsGradeAndFriends(queue[i]->currentGrade, queue[i]->id);
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al121/project.c:157..157
+   157              list.nodes[id] = &friendShipNodes[i];
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al121/project.c:155..155
+   155              friendShipNodes[i].next = list.nodes[id];
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al121/project.c:155..155
+   155              friendShipNodes[i].next = list.nodes[id];
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al121/project.c:152..152
+   152              list.nodes[id] = &friendShipNodes[i];
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al121/project.c:150..150
+   150              friendShipNodes[i].next = NULL;
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al121/project.c:149..149
+   149          if(list.nodes[id] == NULL) {
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al121/project.c:147..147
+   147          friendShipNodes[i].student = &studentsGrades[friendId];    
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al121/project.c:136..136
+   136          queue[i] = &studentsGrades[i];
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al121/project.c:135..135
+   135          list.nodes[i] = NULL;
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al121/project.c:133..133
+   133          studentsGrades[i].changed = 0;
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al121/project.c:132..132
+   132          studentsGrades[i].currentGrade = grade;
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al121/project.c:131..131
+   131          studentsGrades[i].id = i;
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al121/project.c:93..93
+    93      studentsGrades[id].changed = 1;
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al121/project.c:92..92
+    92      studentsGrades[id].currentGrade = newGrade;
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al121/project.c:90..90
+    90      if(studentsGrades[id].changed) return;
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al121/project.c:87..87
+    87      Node *auxNode = list.nodes[id]; /*Friend's node*/
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al121/project.c:75..75
+    75              max = array[i]->currentGrade;
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al121/project.c:74..74
+    74          if (array[i]->currentGrade > max) {
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al121/project.c:64..64
+    64          array[i] = &studentsGrades[sortAux[i]];
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al121/project.c:64..64
+    64          array[i] = &studentsGrades[sortAux[i]];
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al121/project.c:59..59
+    59          sortAux[--count[9 - (array[i]->currentGrade/exp)%10]] = array[i]->id; 
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al121/project.c:59..59
+    59          sortAux[--count[9 - (array[i]->currentGrade/exp)%10]] = array[i]->id; 
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al121/project.c:59..59
+    59          sortAux[--count[9 - (array[i]->currentGrade/exp)%10]] = array[i]->id; 
+
+27: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al121/project.c:59..59
+    59          sortAux[--count[9 - (array[i]->currentGrade/exp)%10]] = array[i]->id; 
+
+28: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al121/project.c:59..59
+    59          sortAux[--count[9 - (array[i]->currentGrade/exp)%10]] = array[i]->id; 
+
+29: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al121/project.c:59..59
+    59          sortAux[--count[9 - (array[i]->currentGrade/exp)%10]] = array[i]->id; 
+
+30: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al121/project.c:54..54
+    54          count[i] += count[i - 1];
+
+31: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al121/project.c:54..54
+    54          count[i] += count[i - 1];
+
+32: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al121/project.c:49..49
+    49          count[9 - (array[i]->currentGrade/exp)%10]++; 
+
+33: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al121/project.c:49..49
+    49          count[9 - (array[i]->currentGrade/exp)%10]++; 
+
+34: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al121/project.c:49..49
+    49          count[9 - (array[i]->currentGrade/exp)%10]++; 
+
+35: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al121/project.c:49..49
+    49          count[9 - (array[i]->currentGrade/exp)%10]++; 
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al121/project.c:87..87
+    87      Node *auxNode = list.nodes[id]; /*Friend's node*/
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al121/project.c:49..49
+    49          count[9 - (array[i]->currentGrade/exp)%10]++; 

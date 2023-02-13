@@ -1,0 +1,111 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/231/main.c:212..212
+   212                  t=searchTeam(teamHashTable[M],team);
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/231/main.c:211..211
+   211              if(teamHashTable[M]!=NULL){
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/231/main.c:209..209
+   209              M=hashTeam(team);
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/231/main.c:200..200
+   200                  teamHashTable[M]=addTeam(NULL,team);
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/231/main.c:189..189
+   189                      teamHashTable[M]=addTeam(teamHashTable[M],team);
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/231/main.c:189..189
+   189                      teamHashTable[M]=addTeam(teamHashTable[M],team);
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/231/main.c:187..187
+   187                  t=searchTeam(teamHashTable[M],team);
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/231/main.c:185..185
+   185              if(teamHashTable[M]!=NULL){
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/231/main.c:165..165
+   165                  g=searchGame(gameHashTable[M],gameName);
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/231/main.c:158..158
+   158              if(gameHashTable[M]==NULL){
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/231/main.c:139..139
+   139                      gameHashTable[M]=deleteGame(gameHashTable[M],g);
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/231/main.c:139..139
+   139                      gameHashTable[M]=deleteGame(gameHashTable[M],g);
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/231/main.c:136..136
+   136                  g=searchGame(gameHashTable[M],gameName);
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/231/main.c:129..129
+   129              if(gameHashTable[M]==NULL){
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/231/main.c:107..107
+   107                  g=searchGame(gameHashTable[M],gameName);
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/231/main.c:100..100
+   100              if(gameHashTable[M]==NULL){
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/231/main.c:84..84
+    84                                      gameHashTable[M]=addGame(gameHashTable[M],gameName,t,t2,score1,score2,nGames);
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/231/main.c:84..84
+    84                                      gameHashTable[M]=addGame(gameHashTable[M],gameName,t,t2,score1,score2,nGames);
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/231/main.c:76..76
+    76                                  g=searchGame(gameHashTable[M],gameName);
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/231/main.c:71..71
+    71                                  gameHashTable[M]=addGame(NULL,gameName,t,t2,score1,score2,nGames);
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/231/main.c:70..70
+    70                              if(gameHashTable[M]==NULL){
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/231/main.c:62..62
+    62                          t2=searchTeam(teamHashTable[MT2],team2);
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/231/main.c:56..56
+    56                      if(teamHashTable[MT2]==NULL){
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/231/main.c:48..48
+    48                  t=searchTeam(teamHashTable[MT1],team);
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/231/main.c:42..42
+    42              if(teamHashTable[MT1]==NULL){
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/231/main.c:40..40
+    40              MT2=hashTeam(team2);
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/231/main.c:39..39
+    39              MT1=hashTeam(team);
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/231/main.c:22..22
+    22          gameHashTable[i]=NULL;
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/231/main.c:19..19
+    19          teamHashTable[i]=NULL;
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/231/main.c:15..15
+    15      GameNode* gameHashTable[MG];
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/231/main.c:14..14
+    14      TeamNode* teamHashTable[MT];
+=== printf or scanf missing width limit on %s ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/231/main.c:182..182
+   182              scanf("%s",team);
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/231/main.c:29..29
+    29      scanf("%s%*[ ]",command);
+=== Potential heap memory use after free ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/231/main.c:217..217
+   217                  free(team);
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/231/main.c:171..171
+   171                      free(gameName);
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/231/main.c:144..144
+   144                      free(gameName);
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/231/main.c:115..115
+   115                      free(gameName);

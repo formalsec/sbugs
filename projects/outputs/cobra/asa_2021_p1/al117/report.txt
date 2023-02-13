@@ -1,0 +1,86 @@
+cat: _CWE_170_.txt: No such file or directory
+cat: '*_.txt': No such file or directory
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al117/edesta.c:131..131
+   131          deleteEdges(graph->edges[i]);
+
+2: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al117/edesta.c:120..120
+   120              largestLength = max(largestLength, graph->lenght[edge->vertice]);
+
+3: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al117/edesta.c:120..120
+   120              largestLength = max(largestLength, graph->lenght[edge->vertice]);
+
+4: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al117/edesta.c:119..119
+   119              graph->lenght[edge->vertice] = max(graph->lenght[edge->vertice], 1 + graph->lenght[s]);
+
+5: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al117/edesta.c:119..119
+   119              graph->lenght[edge->vertice] = max(graph->lenght[edge->vertice], 1 + graph->lenght[s]);
+
+6: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al117/edesta.c:119..119
+   119              graph->lenght[edge->vertice] = max(graph->lenght[edge->vertice], 1 + graph->lenght[s]);
+
+7: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al117/edesta.c:119..119
+   119              graph->lenght[edge->vertice] = max(graph->lenght[edge->vertice], 1 + graph->lenght[s]);
+
+8: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al117/edesta.c:119..119
+   119              graph->lenght[edge->vertice] = max(graph->lenght[edge->vertice], 1 + graph->lenght[s]);
+
+9: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al117/edesta.c:117..117
+   117              if(graph->history[edge->vertice]==NOT_VISITED && graph->inEdges[edge->vertice]==0)
+
+10: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al117/edesta.c:117..117
+   117              if(graph->history[edge->vertice]==NOT_VISITED && graph->inEdges[edge->vertice]==0)
+
+11: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al117/edesta.c:117..117
+   117              if(graph->history[edge->vertice]==NOT_VISITED && graph->inEdges[edge->vertice]==0)
+
+12: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al117/edesta.c:117..117
+   117              if(graph->history[edge->vertice]==NOT_VISITED && graph->inEdges[edge->vertice]==0)
+
+13: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al117/edesta.c:116..116
+   116              graph->inEdges[edge->vertice]--;
+
+14: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al117/edesta.c:116..116
+   116              graph->inEdges[edge->vertice]--;
+
+15: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al117/edesta.c:113..113
+   113          Edge edge = graph->edges[s];
+
+16: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al117/edesta.c:111..111
+   111          graph->history[s]=VISITED;
+
+17: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al117/edesta.c:95..95
+    95          if (!graph->inEdges[i] && graph->history[i]==NOT_VISITED){
+
+18: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al117/edesta.c:95..95
+    95          if (!graph->inEdges[i] && graph->history[i]==NOT_VISITED){
+
+19: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al117/edesta.c:82..82
+    82      graph->inEdges[v2]++;
+
+20: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al117/edesta.c:81..81
+    81      graph->edges[v1]=newEdge;
+
+21: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al117/edesta.c:80..80
+    80      newEdge->next=graph->edges[v1];
+
+22: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al117/edesta.c:73..73
+    73          graph->lenght[i]=1;
+
+23: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al117/edesta.c:72..72
+    72          graph->inEdges[i]=0;
+
+24: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al117/edesta.c:71..71
+    71          graph->edges[i]=NULL;
+
+25: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al117/edesta.c:70..70
+    70          graph->history[i]=NOT_VISITED;
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al117/edesta.c:111..111
+   111          graph->history[s]=VISITED;
+
+2: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al117/edesta.c:82..82
+    82      graph->inEdges[v2]++;
+
+3: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al117/edesta.c:80..80
+    80      newEdge->next=graph->edges[v1];

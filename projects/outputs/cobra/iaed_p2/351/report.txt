@@ -1,0 +1,99 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/351/proj2.c:454..454
+   454      ulong key = ht_key_from_str(name);
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/351/proj2.c:430..430
+   430      ulong key = ht_key_from_str(name);
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/351/proj2.c:304..304
+   304      char name[MAX_NAME_SIZE];
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/351/proj2.c:253..253
+   253      ulong key;
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/351/proj2.c:252..252
+   252      char name[MAX_NAME_SIZE];
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/351/proj2.c:231..231
+   231      char name[MAX_NAME_SIZE];
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/351/proj2.c:206..206
+   206      char name[MAX_NAME_SIZE],*tm1,*tm2;
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/351/proj2.c:164..164
+   164      ulong key = ht_key_from_str(name); /* obtain key for the given name */
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/351/proj2.c:147..147
+   147      char name[MAX_NAME_SIZE];
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/351/proj2.c:119..119
+   119      ulong key = ht_key_from_str(name); /* obtain key for the given name */
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/351/proj2.c:86..86
+    86      char name[MAX_NAME_SIZE],tm1[MAX_NAME_SIZE],tm2[MAX_NAME_SIZE];
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/351/proj2.c:86..86
+    86      char name[MAX_NAME_SIZE],tm1[MAX_NAME_SIZE],tm2[MAX_NAME_SIZE];
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/351/proj2.c:86..86
+    86      char name[MAX_NAME_SIZE],tm1[MAX_NAME_SIZE],tm2[MAX_NAME_SIZE];
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/351/proj2.c:57..57
+    57      char io_buffer[IBUFFER_SIZE];
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/351/hash_table.c:134..134
+   134      ulong prime = FNV_32BIT_PRIME;
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/351/hash_table.c:133..133
+   133      ulong hash = FNV_32BIT_BASIS;
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/351/hash_table.c:122..122
+   122      ulong key = fnv_1a(str);
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/351/hash_table.c:115..115
+   115      return ht->bucket[key];
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/351/hash_table.c:105..105
+   105              ht_delete_node_and_info(ht,ht->bucket[i],i,func);
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/351/hash_table.c:102..102
+   102          while(ht->bucket[i] != NULL)
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/351/hash_table.c:89..89
+    89              ht_delete_node(ht,ht->bucket[i],i);
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/351/hash_table.c:86..86
+    86          while(ht->bucket[i] != NULL)
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/351/hash_table.c:70..70
+    70                  ht->bucket[key] = curr->next;
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/351/hash_table.c:58..58
+    58      for(curr = ht->bucket[key];curr != NULL;prev = curr, curr=curr->next)
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/351/hash_table.c:46..46
+    46                  ht->bucket[key] = curr->next;
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/351/hash_table.c:34..34
+    34      for(curr = ht->bucket[key];curr != NULL;prev = curr, curr=curr->next)
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/351/hash_table.c:25..25
+    25      ht->bucket[key] = node;
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/351/hash_table.c:24..24
+    24      next_node = ht->bucket[key];
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/351/hash_table.c:115..115
+   115      return ht->bucket[key];
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/351/hash_table.c:58..58
+    58      for(curr = ht->bucket[key];curr != NULL;prev = curr, curr=curr->next)
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/351/hash_table.c:34..34
+    34      for(curr = ht->bucket[key];curr != NULL;prev = curr, curr=curr->next)
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/351/hash_table.c:24..24
+    24      next_node = ht->bucket[key];
+=== Potentially uninitialized variable ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/351/proj2.c:385..385
+   385      tmwp_sort_print(l_max_winners,n_winners,max_wins,cmd_ctr);

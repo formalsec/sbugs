@@ -1,0 +1,135 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/63/teams.c:110..110
+   110      char name[MAX_CHAR];
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/63/teams.c:107..107
+   107      node_teams node_t;
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/63/teams.c:106..106
+   106      team t;
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/63/teams.c:39..39
+    39      node_teams node_new_team;
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/63/teams.c:11..11
+    11      char name[MAX_CHAR];
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/63/teams.c:9..9
+     9      team new_team;
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/63/projeto2.c:21..21
+    21      node_teams *teams_table[M];
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/63/projeto2.c:19..19
+    19      node_games *games_table[M];
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/63/main_functions.c:317..317
+   317          printf("%d * %s\n", l_count, get_team_name(winners[i]));
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/63/main_functions.c:305..305
+   305              winners[i] = tmp;
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/63/main_functions.c:123..123
+   123      node_teams node_new_team;
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/63/main_functions.c:122..122
+   122      team new_team;
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/63/main_functions.c:32..32
+    32      node_games node_new_game;
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/63/main_functions.c:31..31
+    31      game new_game;
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/63/main_functions.c:19..19
+    19          teams_table[i] = NULL;
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/63/main_functions.c:18..18
+    18          games_table[i] = NULL;
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/63/hash_tables.c:153..153
+   153      tmp = table[index];
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/63/hash_tables.c:151..151
+   151      index = hash_game(node);
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/63/hash_tables.c:119..119
+   119      tmp = table[index];
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/63/hash_tables.c:117..117
+   117      index = hash_team(node);
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/63/hash_tables.c:101..101
+   101      table[index] = node;
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/63/hash_tables.c:99..99
+    99      node->prev_in_hash_table = table[index];
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/63/hash_tables.c:97..97
+    97      table[index]->next_in_hash_table = node;
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/63/hash_tables.c:91..91
+    91          table[index] = node;
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/63/hash_tables.c:88..88
+    88      if (table[index] == NULL){
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/63/hash_tables.c:82..82
+    82      index = hash_game(node);
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/63/hash_tables.c:69..69
+    69      table[index] = node;
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/63/hash_tables.c:67..67
+    67      node->prev_in_hash_table = table[index];
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/63/hash_tables.c:65..65
+    65      table[index]->next_in_hash_table = node;
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/63/hash_tables.c:60..60
+    60          table[index] = node;
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/63/hash_tables.c:57..57
+    57      if (table[index] == NULL){
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/63/hash_tables.c:51..51
+    51      index = hash_team(node);
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/63/hash_tables.c:19..19
+    19          hash = (a * hash + array[i]) % M;
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/63/games.c:362..362
+   362          games_table[index] = game_prev_t;
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/63/games.c:356..356
+   356          games_table[index] = NULL;
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p2/63/games.c:326..326
+   326      index = hash_game(game_found);
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p2/63/games.c:167..167
+   167      char name[MAX_CHAR];
+
+38: /home/fmarques/sbugs/projects/alunos/iaed_p2/63/games.c:164..164
+   164      node_games node_g;
+
+39: /home/fmarques/sbugs/projects/alunos/iaed_p2/63/games.c:163..163
+   163      game g;
+
+40: /home/fmarques/sbugs/projects/alunos/iaed_p2/63/games.c:74..74
+    74      node_games node_new_game;
+
+41: /home/fmarques/sbugs/projects/alunos/iaed_p2/63/games.c:25..25
+    25      char name[MAX_CHAR] = {0}, name_t1[MAX_CHAR] = {0}, name_t2[MAX_CHAR] = {0};
+
+42: /home/fmarques/sbugs/projects/alunos/iaed_p2/63/games.c:25..25
+    25      char name[MAX_CHAR] = {0}, name_t1[MAX_CHAR] = {0}, name_t2[MAX_CHAR] = {0};
+
+43: /home/fmarques/sbugs/projects/alunos/iaed_p2/63/games.c:25..25
+    25      char name[MAX_CHAR] = {0}, name_t1[MAX_CHAR] = {0}, name_t2[MAX_CHAR] = {0};
+
+44: /home/fmarques/sbugs/projects/alunos/iaed_p2/63/games.c:21..21
+    21      node_teams node_aux_t1, node_aux_t2;
+
+45: /home/fmarques/sbugs/projects/alunos/iaed_p2/63/games.c:19..19
+    19      game new_game;

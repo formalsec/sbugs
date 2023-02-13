@@ -1,0 +1,312 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/tabela_jogos.c:125..125
+   125              free_jogo(tb_j->tb[i]);     /* liberta jogo */
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/tabela_jogos.c:124..124
+   124          if(tb_j->tb[i]) 
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/tabela_jogos.c:120..120
+   120      size_t i;
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/tabela_jogos.c:113..113
+   113      tb_j->tb[hash] = NULL;
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/tabela_jogos.c:110..110
+   110      free_jogo(tb_j->tb[hash]);      /* liberto jogo */
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/tabela_jogos.c:101..101
+   101          tb_j->tb[i] = NULL;             /* espaco fica vazio */
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/tabela_jogos.c:100..100
+   100          tmp = tb_j->tb[i];
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/tabela_jogos.c:99..99
+    99      for (i = (hash+1) % tam; tb_j->tb[i]; i = (i+1) % tam){  
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/tabela_jogos.c:95..95
+    95      size_t i, tam = tb_j->capacidade;
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/tabela_jogos.c:87..87
+    87      tb_j->tb[h] = j;                
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/tabela_jogos.c:85..85
+    85      while (tb_j->tb[h])             /* procura um espaco livre (NULL) */
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/tabela_jogos.c:84..84
+    84      size_t h = hash_j(j->nome, tb_j->capacidade);
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/tabela_jogos.c:74..74
+    74              tb_j = insere_j(old->tb[i], tb_j);
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/tabela_jogos.c:73..73
+    73          if (old->tb[i]){
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/tabela_jogos.c:67..67
+    67      size_t i;
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/tabela_jogos.c:50..50
+    50          if (equal_j(tb_j->tb[h]->nome, nome))  /* se encontrar o jogo */
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/tabela_jogos.c:49..49
+    49      while (tb_j->tb[h]){    /* ate encontrar um espaco vazio, i.e, intervalo entre clusters */
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/tabela_jogos.c:48..48
+    48      size_t h = hash_j(nome, tb_j->capacidade);
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/tabela_jogos.c:8..8
+     8      size_t h = 0, a = 31415, b = 27183;
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/tabela_equipas.c:135..135
+   135              free_equipa(tb_e->tb[i]);   /* liberta equipa */
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/tabela_equipas.c:134..134
+   134          if(tb_e->tb[i])
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/tabela_equipas.c:131..131
+   131      size_t i;
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/tabela_equipas.c:121..121
+   121                  melhores[j++] = make_str(tb_e->tb[i]->flag); 
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/tabela_equipas.c:121..121
+   121                  melhores[j++] = make_str(tb_e->tb[i]->flag); 
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/tabela_equipas.c:120..120
+   120              if (tb_e->tb[i]->vitorias == max)   /* se for adiciona o nome */
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/tabela_equipas.c:119..119
+   119          if (tb_e->tb[i]){
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/tabela_equipas.c:116..116
+   116      size_t i, j = 0;
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/tabela_equipas.c:101..101
+   101              if (tb_e->tb[i]->vitorias == max)
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/tabela_equipas.c:100..100
+   100          if (tb_e->tb[i])    
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/tabela_equipas.c:98..98
+    98      size_t i, n = 0;
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/tabela_equipas.c:84..84
+    84                  max = tb_e->tb[i]->vitorias;    /* atualiza max */
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/tabela_equipas.c:83..83
+    83              if (tb_e->tb[i]->vitorias > max)    /* verifica o numero de vitorias */
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/tabela_equipas.c:82..82
+    82          if (tb_e->tb[i])                    /* se for uma equipa */
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/tabela_equipas.c:80..80
+    80      size_t i, max = 0;
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/tabela_equipas.c:72..72
+    72      tb_e->tb[h] = make_equipa(vit, flag);   /* cria nova equipa */
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/tabela_equipas.c:70..70
+    70      while (tb_e->tb[h])             /* procura um espaco livre (NULL) */
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/tabela_equipas.c:69..69
+    69      size_t h = hash_e(flag, tb_e->capacidade);
+
+38: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/tabela_equipas.c:60..60
+    60              free_equipa(old->tb[i]);            /* liberta equipa antiga */
+
+39: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/tabela_equipas.c:59..59
+    59              tb_e = insere_e(old->tb[i]->vitorias, old->tb[i]->flag, tb_e);
+
+40: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/tabela_equipas.c:59..59
+    59              tb_e = insere_e(old->tb[i]->vitorias, old->tb[i]->flag, tb_e);
+
+41: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/tabela_equipas.c:58..58
+    58          if (old->tb[i]){
+
+42: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/tabela_equipas.c:52..52
+    52      size_t i;
+
+43: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/tabela_equipas.c:37..37
+    37          if (equal_e(tb_e->tb[h]->flag, nome))  /* se encontrar a equipa */
+
+44: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/tabela_equipas.c:36..36
+    36      while (tb_e->tb[h]){    /* ate encontrar um espaco vazio, ie, intervalo entre clusters */
+
+45: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/tabela_equipas.c:35..35
+    35      size_t h = hash_e(nome, tb_e->capacidade);
+
+46: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/tabela_equipas.c:8..8
+     8      size_t h = 0, a = 31415, b = 27183;
+
+47: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:191..191
+   191          free(melhores[i]);  /* liberta espaco do nome da equipa */
+
+48: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:190..190
+   190          printf("%lu * %s\n", count, melhores[i]);
+
+49: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:183..183
+   183      size_t i, max, n;
+
+50: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:174..174
+   174              s->tb_e->tb[he2]->vitorias--;
+
+51: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:173..173
+   173          if (s->tb_j->tb[h]->score1 < s->tb_j->tb[h]->score2)
+
+52: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:173..173
+   173          if (s->tb_j->tb[h]->score1 < s->tb_j->tb[h]->score2)
+
+53: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:172..172
+   172              s->tb_e->tb[he1]->vitorias--;
+
+54: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:171..171
+   171          if (s->tb_j->tb[h]->score1 > s->tb_j->tb[h]->score2)
+
+55: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:171..171
+   171          if (s->tb_j->tb[h]->score1 > s->tb_j->tb[h]->score2)
+
+56: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:169..169
+   169          he2 = procura_e(s->tb_j->tb[h]->equipa2, s->tb_e);
+
+57: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:169..169
+   169          he2 = procura_e(s->tb_j->tb[h]->equipa2, s->tb_e);
+
+58: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:168..168
+   168          he1 = procura_e(s->tb_j->tb[h]->equipa1, s->tb_e);
+
+59: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:168..168
+   168          he1 = procura_e(s->tb_j->tb[h]->equipa1, s->tb_e);
+
+60: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:160..160
+   160      char buf1[MAX_NAMEJ_SZ];
+
+61: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:140..140
+   140              s->tb_e->tb[he1]->vitorias++;
+
+62: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:139..139
+   139  		        s->tb_e->tb[he2]->vitorias--;    
+
+63: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:138..138
+   138              if (s->tb_j->tb[h]->score1 < s->tb_j->tb[h]->score2)
+
+64: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:138..138
+   138              if (s->tb_j->tb[h]->score1 < s->tb_j->tb[h]->score2)
+
+65: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:137..137
+   137          if (s1 > s2 && s->tb_j->tb[h]->score1 <= s->tb_j->tb[h]->score2){
+
+66: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:137..137
+   137          if (s1 > s2 && s->tb_j->tb[h]->score1 <= s->tb_j->tb[h]->score2){
+
+67: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:135..135
+   135  		        s->tb_e->tb[he2]->vitorias--;
+
+68: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:133..133
+   133  		        s->tb_e->tb[he1]->vitorias--;
+
+69: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:132..132
+   132              if (s->tb_j->tb[h]->score1 > s->tb_j->tb[h]->score2)
+
+70: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:132..132
+   132              if (s->tb_j->tb[h]->score1 > s->tb_j->tb[h]->score2)
+
+71: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:131..131
+   131          if (s1 == s2 && s->tb_j->tb[h]->score1 != s->tb_j->tb[h]->score2){
+
+72: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:131..131
+   131          if (s1 == s2 && s->tb_j->tb[h]->score1 != s->tb_j->tb[h]->score2){
+
+73: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:129..129
+   129              s->tb_e->tb[he2]->vitorias++;
+
+74: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:128..128
+   128  		        s->tb_e->tb[he1]->vitorias--;    
+
+75: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:127..127
+   127              if (s->tb_j->tb[h]->score1 > s->tb_j->tb[h]->score2)
+
+76: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:127..127
+   127              if (s->tb_j->tb[h]->score1 > s->tb_j->tb[h]->score2)
+
+77: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:126..126
+   126          if (s1 < s2 && s->tb_j->tb[h]->score1 >= s->tb_j->tb[h]->score2){
+
+78: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:126..126
+   126          if (s1 < s2 && s->tb_j->tb[h]->score1 >= s->tb_j->tb[h]->score2){
+
+79: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:123..123
+   123          he2 = procura_e(s->tb_j->tb[h]->equipa2, s->tb_e);  /* envolvidas */
+
+80: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:123..123
+   123          he2 = procura_e(s->tb_j->tb[h]->equipa2, s->tb_e);  /* envolvidas */
+
+81: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:122..122
+   122          he1 = procura_e(s->tb_j->tb[h]->equipa1, s->tb_e);  /* procura equipas */
+
+82: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:122..122
+   122          he1 = procura_e(s->tb_j->tb[h]->equipa1, s->tb_e);  /* procura equipas */
+
+83: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:117..117
+   117      size_t s1, s2;
+
+84: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:116..116
+   116      char buf1[MAX_NAMEJ_SZ];
+
+85: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:110..110
+   110      s->tb_j->tb[h]->score2 = s2;
+
+86: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:109..109
+   109      s->tb_j->tb[h]->score1 = s1;
+
+87: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:106..106
+   106      node* n = procura_l(s->tb_j->tb[h]->nome, s->l);
+
+88: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:99..99
+    99          printf("%lu %s %lu\n", count, buf1, s->tb_e->tb[h]->vitorias);
+
+89: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:94..94
+    94      char buf1[MAX_FLAG_SZ];
+
+90: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:86..86
+    86          s->tb_j->tb[h]->score1, s->tb_j->tb[h]->score2);
+
+91: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:86..86
+    86          s->tb_j->tb[h]->score1, s->tb_j->tb[h]->score2);
+
+92: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:85..85
+    85          s->tb_j->tb[h]->equipa1, s->tb_j->tb[h]->equipa2,
+
+93: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:85..85
+    85          s->tb_j->tb[h]->equipa1, s->tb_j->tb[h]->equipa2,
+
+94: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:79..79
+    79      char buf1[MAX_NAMEJ_SZ];
+
+95: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:67..67
+    67      char buf1[MAX_FLAG_SZ];
+
+96: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:57..57
+    57              if (s1 < s2) s->tb_e->tb[h2]->vitorias++;
+
+97: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:56..56
+    56              if (s1 > s2) s->tb_e->tb[h1]->vitorias++;
+
+98: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:38..38
+    38      size_t s1, s2;
+
+99: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:37..37
+    37      char buf1[MAX_NAMEJ_SZ], buf2[MAX_FLAG_SZ], buf3[MAX_FLAG_SZ];
+
+100: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:37..37
+    37      char buf1[MAX_NAMEJ_SZ], buf2[MAX_FLAG_SZ], buf3[MAX_FLAG_SZ];
+
+101: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:37..37
+    37      char buf1[MAX_NAMEJ_SZ], buf2[MAX_FLAG_SZ], buf3[MAX_FLAG_SZ];
+
+102: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/proj2.c:10..10
+    10      size_t count = 0;               /* inicializa contador de linhas de comando (as NL) */
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/tabela_jogos.c:110..110
+   110      free_jogo(tb_j->tb[hash]);      /* liberto jogo */
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/297/sistema.c:106..106
+   106      node* n = procura_l(s->tb_j->tb[h]->nome, s->l);

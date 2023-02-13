@@ -1,0 +1,337 @@
+cat: '*_.txt': No such file or directory
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:236..236
+   236  		if (n->routers[i].state != BLACK){
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:232..232
+   232  			n->routers[i].state = WHITE;
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:230..230
+   230  			n->routers[i].state = BLACK;
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:229..229
+   229  		if(n->routers[i].weak == BLACK)
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:217..217
+   217          if(n->routers[i].weak == BLACK){
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:211..211
+   211          if(n->routers[i].state == WHITE){
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:207..207
+   207          n->routers[i].state = WHITE;
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:194..194
+   194              n->routers[v].l_time = min(n->routers[v].l_time, n->routers[adj].d_time);
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:194..194
+   194              n->routers[v].l_time = min(n->routers[v].l_time, n->routers[adj].d_time);
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:194..194
+   194              n->routers[v].l_time = min(n->routers[v].l_time, n->routers[adj].d_time);
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:193..193
+   193          else if(adj != n->routers[v].parent){
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:189..189
+   189  		  	n->routers[v].weak = BLACK;
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:188..188
+   188  		  if(n->routers[v].parent != GREY && n->routers[v].d_time <= n->routers[adj].l_time){ 
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:188..188
+   188  		  if(n->routers[v].parent != GREY && n->routers[v].d_time <= n->routers[adj].l_time){ 
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:188..188
+   188  		  if(n->routers[v].parent != GREY && n->routers[v].d_time <= n->routers[adj].l_time){ 
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:185..185
+   185  			n->routers[v].weak = BLACK;
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:184..184
+   184  		  if(n->routers[v].parent == GREY && children > 1){
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:182..182
+   182  		  n->routers[v].l_time = min(n->routers[v].l_time,n->routers[adj].l_time);
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:182..182
+   182  		  n->routers[v].l_time = min(n->routers[v].l_time,n->routers[adj].l_time);
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:182..182
+   182  		  n->routers[v].l_time = min(n->routers[v].l_time,n->routers[adj].l_time);
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:179..179
+   179            n->routers[adj].parent = v;
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:177..177
+   177      	if(n->routers[adj].state == WHITE){
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:175..175
+   175  		int adj = n->routers[v].ligacoes[i] - 1;
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:175..175
+   175  		int adj = n->routers[v].ligacoes[i] - 1;
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:173..173
+   173      while(i < n->routers[v].l_size){
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:171..171
+   171      n->routers[v].d_time = n->routers[v].l_time = *t;
+
+27: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:171..171
+   171      n->routers[v].d_time = n->routers[v].l_time = *t;
+
+28: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:169..169
+   169  	n->routers[v].state = BLACK;
+
+29: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:158..158
+   158  			printf("%d",scc_id[i]);
+
+30: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:156..156
+   156  			printf("%d ", scc_id[i]);
+
+31: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:145..145
+   145  			scc_id[scc - 1] = max;
+
+32: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:141..141
+   141  		if (n->routers[i].state != BLACK){
+
+33: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:138..138
+   138  		n->routers[i].state = WHITE;
+
+34: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:127..127
+   127  			dfs(n->routers[v].ligacoes[i] - 1, n, max, size);
+
+35: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:127..127
+   127  			dfs(n->routers[v].ligacoes[i] - 1, n, max, size);
+
+36: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:126..126
+   126  		if(n->routers[n->routers[v].ligacoes[i] - 1].state != BLACK){
+
+37: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:126..126
+   126  		if(n->routers[n->routers[v].ligacoes[i] - 1].state != BLACK){
+
+38: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:126..126
+   126  		if(n->routers[n->routers[v].ligacoes[i] - 1].state != BLACK){
+
+39: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:126..126
+   126  		if(n->routers[n->routers[v].ligacoes[i] - 1].state != BLACK){
+
+40: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:126..126
+   126  		if(n->routers[n->routers[v].ligacoes[i] - 1].state != BLACK){
+
+41: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:125..125
+   125  	for(i = 0; i < n->routers[v].l_size; i++){
+
+42: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:119..119
+   119  	n->routers[v].state = BLACK;
+
+43: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:109..109
+   109  		n->routers[i] = *tmp_r;
+
+44: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:85..85
+    85  		free(n->routers[i].ligacoes);
+
+45: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:75..75
+    75  		n->routers[id2 - 1].l_size++;
+
+46: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:74..74
+    74  		n->routers[id2 - 1].ligacoes[s2] = id1;
+
+47: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:74..74
+    74  		n->routers[id2 - 1].ligacoes[s2] = id1;
+
+48: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:73..73
+    73  		s2 = n->routers[id2 - 1].l_size;
+
+49: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:72..72
+    72  		n->routers[id1 - 1].l_size++;
+
+50: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:71..71
+    71  		n->routers[id1 - 1].ligacoes[s1] = id2;
+
+51: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:71..71
+    71  		n->routers[id1 - 1].ligacoes[s1] = id2;
+
+52: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:70..70
+    70  		s1 = n->routers[id1 - 1].l_size;
+
+53: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:68..68
+    68  		if (scanf("%d %d", &id1, &id2) != 2)
+
+54: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:68..68
+    68  		if (scanf("%d %d", &id1, &id2) != 2)
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:169..169
+   169  	n->routers[v].state = BLACK;
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:119..119
+   119  	n->routers[v].state = BLACK;
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:236..236
+   236  		if (n->routers[i].state != BLACK){
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:232..232
+   232  			n->routers[i].state = WHITE;
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:230..230
+   230  			n->routers[i].state = BLACK;
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:229..229
+   229  		if(n->routers[i].weak == BLACK)
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:217..217
+   217          if(n->routers[i].weak == BLACK){
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:211..211
+   211          if(n->routers[i].state == WHITE){
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:207..207
+   207          n->routers[i].state = WHITE;
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:194..194
+   194              n->routers[v].l_time = min(n->routers[v].l_time, n->routers[adj].d_time);
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:194..194
+   194              n->routers[v].l_time = min(n->routers[v].l_time, n->routers[adj].d_time);
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:194..194
+   194              n->routers[v].l_time = min(n->routers[v].l_time, n->routers[adj].d_time);
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:193..193
+   193          else if(adj != n->routers[v].parent){
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:189..189
+   189  		  	n->routers[v].weak = BLACK;
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:188..188
+   188  		  if(n->routers[v].parent != GREY && n->routers[v].d_time <= n->routers[adj].l_time){ 
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:188..188
+   188  		  if(n->routers[v].parent != GREY && n->routers[v].d_time <= n->routers[adj].l_time){ 
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:188..188
+   188  		  if(n->routers[v].parent != GREY && n->routers[v].d_time <= n->routers[adj].l_time){ 
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:185..185
+   185  			n->routers[v].weak = BLACK;
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:184..184
+   184  		  if(n->routers[v].parent == GREY && children > 1){
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:182..182
+   182  		  n->routers[v].l_time = min(n->routers[v].l_time,n->routers[adj].l_time);
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:182..182
+   182  		  n->routers[v].l_time = min(n->routers[v].l_time,n->routers[adj].l_time);
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:182..182
+   182  		  n->routers[v].l_time = min(n->routers[v].l_time,n->routers[adj].l_time);
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:179..179
+   179            n->routers[adj].parent = v;
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:177..177
+   177      	if(n->routers[adj].state == WHITE){
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:175..175
+   175  		int adj = n->routers[v].ligacoes[i] - 1;
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:175..175
+   175  		int adj = n->routers[v].ligacoes[i] - 1;
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:173..173
+   173      while(i < n->routers[v].l_size){
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:171..171
+   171      n->routers[v].d_time = n->routers[v].l_time = *t;
+
+27: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:171..171
+   171      n->routers[v].d_time = n->routers[v].l_time = *t;
+
+28: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:169..169
+   169  	n->routers[v].state = BLACK;
+
+29: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:158..158
+   158  			printf("%d",scc_id[i]);
+
+30: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:156..156
+   156  			printf("%d ", scc_id[i]);
+
+31: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:145..145
+   145  			scc_id[scc - 1] = max;
+
+32: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:141..141
+   141  		if (n->routers[i].state != BLACK){
+
+33: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:138..138
+   138  		n->routers[i].state = WHITE;
+
+34: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:127..127
+   127  			dfs(n->routers[v].ligacoes[i] - 1, n, max, size);
+
+35: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:127..127
+   127  			dfs(n->routers[v].ligacoes[i] - 1, n, max, size);
+
+36: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:126..126
+   126  		if(n->routers[n->routers[v].ligacoes[i] - 1].state != BLACK){
+
+37: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:126..126
+   126  		if(n->routers[n->routers[v].ligacoes[i] - 1].state != BLACK){
+
+38: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:126..126
+   126  		if(n->routers[n->routers[v].ligacoes[i] - 1].state != BLACK){
+
+39: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:126..126
+   126  		if(n->routers[n->routers[v].ligacoes[i] - 1].state != BLACK){
+
+40: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:126..126
+   126  		if(n->routers[n->routers[v].ligacoes[i] - 1].state != BLACK){
+
+41: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:125..125
+   125  	for(i = 0; i < n->routers[v].l_size; i++){
+
+42: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:119..119
+   119  	n->routers[v].state = BLACK;
+
+43: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:109..109
+   109  		n->routers[i] = *tmp_r;
+
+44: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:85..85
+    85  		free(n->routers[i].ligacoes);
+
+45: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:75..75
+    75  		n->routers[id2 - 1].l_size++;
+
+46: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:74..74
+    74  		n->routers[id2 - 1].ligacoes[s2] = id1;
+
+47: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:74..74
+    74  		n->routers[id2 - 1].ligacoes[s2] = id1;
+
+48: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:73..73
+    73  		s2 = n->routers[id2 - 1].l_size;
+
+49: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:72..72
+    72  		n->routers[id1 - 1].l_size++;
+
+50: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:71..71
+    71  		n->routers[id1 - 1].ligacoes[s1] = id2;
+
+51: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:71..71
+    71  		n->routers[id1 - 1].ligacoes[s1] = id2;
+
+52: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:70..70
+    70  		s1 = n->routers[id1 - 1].l_size;
+
+53: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:68..68
+    68  		if (scanf("%d %d", &id1, &id2) != 2)
+
+54: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:68..68
+    68  		if (scanf("%d %d", &id1, &id2) != 2)
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:169..169
+   169  	n->routers[v].state = BLACK;
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al060/project.c:119..119
+   119  	n->routers[v].state = BLACK;

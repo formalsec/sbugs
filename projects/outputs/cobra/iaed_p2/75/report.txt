@@ -1,0 +1,135 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/75/Team_Hash.c:83..83
+    83          p_aux = head[i];
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/75/Team_Hash.c:81..81
+    81      link_team p_aux, p_aux_2;
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/75/Team_Hash.c:68..68
+    68      link_team aux_pointer = h[i];
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/75/Team_Hash.c:68..68
+    68      link_team aux_pointer = h[i];
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/75/Team_Hash.c:66..66
+    66      int i = hash_team(name, size);
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/75/Team_Hash.c:50..50
+    50                  h[i] = p_aux -> next;                                        /* Point head of list h[i] to next node */
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/75/Team_Hash.c:49..49
+    49              if (p_aux == h[i]){                                              /* Case 1 - node is first of list h[i]*/
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/75/Team_Hash.c:47..47
+    47      for(p_aux = h[i]; p_aux != NULL; p_previous_aux = p_aux, p_aux = p_aux -> next){      /* Search for team */
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/75/Team_Hash.c:46..46
+    46      link_team p_aux, p_previous_aux = NULL;
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/75/Team_Hash.c:44..44
+    44      int i = hash_team(name_delete, size);
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/75/Team_Hash.c:38..38
+    38      h[i] = ptr_node;
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/75/Team_Hash.c:37..37
+    37      ptr_node -> next = h[i];
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/75/Team_Hash.c:32..32
+    32      link_team ptr_node = (link_team)can_fail_malloc(sizeof(struct node_team));  /* Creation of node to insert in HT*/
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/75/Team_Hash.c:30..30
+    30      int i = hash_team(t->name, size);
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/75/Team_Hash.c:22..22
+    22          head[i] = NULL;            /* intialize every position at NULL */
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/75/Proj2.c:251..251
+   251              printf("%d * %s\n", nl, vector[i]->name);
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/75/Proj2.c:239..239
+   239                      vector[count] = p_aux->pteam;              /* Add team to vector if it has max victories */
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/75/Proj2.c:236..236
+   236              p_aux = head[i];
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/75/Proj2.c:216..216
+   216          p_aux = head[i];
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/75/Proj2.c:212..212
+   212      link_team p_aux;
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/75/Proj2.c:145..145
+   145      lnk_dblist new_head;
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/75/Proj2.c:47..47
+    47      lnk_dblist pauxlist_games = initGHash_auxList();
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/75/Proj2.c:42..42
+    42      char command, game_name[MAX_NAME], team1_name[MAX_NAME], team2_name[MAX_NAME];
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/75/Proj2.c:42..42
+    42      char command, game_name[MAX_NAME], team1_name[MAX_NAME], team2_name[MAX_NAME];
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/75/Proj2.c:42..42
+    42      char command, game_name[MAX_NAME], team1_name[MAX_NAME], team2_name[MAX_NAME];
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/75/Game_Hash.c:166..166
+   166      lnk_dblist p_node = head, p_previous;
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/75/Game_Hash.c:132..132
+   132      lnk_dblist ptr_aux, ptr_aux2;
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/75/Game_Hash.c:107..107
+   107      lnk_dblist ptr_endlist;
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/75/Game_Hash.c:106..106
+   106      lnk_dblist ptr_aux = (lnk_dblist)can_fail_malloc(sizeof(struct db_listnode));     /* Allocate space for new node */
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/75/Game_Hash.c:99..99
+    99      lnk_dblist head=NULL;
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/75/Game_Hash.c:84..84
+    84          p_aux = head[i];
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/75/Game_Hash.c:81..81
+    81      link_game p_aux, p_aux_delete;
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/75/Game_Hash.c:70..70
+    70      for(p_aux = h[i]; p_aux != NULL; p_aux = p_aux -> next){
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/75/Game_Hash.c:68..68
+    68      link_game p_aux;
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/75/Game_Hash.c:67..67
+    67      int i = hash_game(name, size);                          /* Get index of Hash Table in which to search team */
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p2/75/Game_Hash.c:52..52
+    52                  h[i] = paux -> next;              /* If first element on list */
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p2/75/Game_Hash.c:51..51
+    51              if(paux == h[i]){
+
+38: /home/fmarques/sbugs/projects/alunos/iaed_p2/75/Game_Hash.c:49..49
+    49      for(paux = h[i]; paux != NULL ; previous = paux, paux = paux ->next){ 
+
+39: /home/fmarques/sbugs/projects/alunos/iaed_p2/75/Game_Hash.c:46..46
+    46      link_game paux, previous = NULL;
+
+40: /home/fmarques/sbugs/projects/alunos/iaed_p2/75/Game_Hash.c:45..45
+    45      int i = hash_game(g_name, size);
+
+41: /home/fmarques/sbugs/projects/alunos/iaed_p2/75/Game_Hash.c:39..39
+    39      h[i] = ptaux;             
+
+42: /home/fmarques/sbugs/projects/alunos/iaed_p2/75/Game_Hash.c:38..38
+    38      ptaux -> next = h[i];  
+
+43: /home/fmarques/sbugs/projects/alunos/iaed_p2/75/Game_Hash.c:34..34
+    34      link_game ptaux = (link_game)can_fail_malloc(sizeof(struct node_game)); /* Allocate size for node_game */
+
+44: /home/fmarques/sbugs/projects/alunos/iaed_p2/75/Game_Hash.c:32..32
+    32      int i = hash_game(g -> pname, size);
+
+45: /home/fmarques/sbugs/projects/alunos/iaed_p2/75/Game_Hash.c:23..23
+    23          p_hashgames[i] = NULL;   /* Initialize every position of vector at NULL */

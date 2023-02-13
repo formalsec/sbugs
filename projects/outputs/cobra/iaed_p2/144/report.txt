@@ -1,0 +1,174 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/proj2.c:394..394
+   394              free(tabela[i]);
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/proj2.c:393..393
+   393              printf("%d * %s\n",*ptr, tabela[i]);
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/proj2.c:367..367
+   367                      tabela[j] = str_dup(atual->equipa->nome);
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/proj2.c:362..362
+   362              for (atual = equipas[i]; atual != NULL; atual = prox)
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/proj2.c:339..339
+   339              for (atual = equipas[i]; atual != NULL; atual = prox)
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/proj2.c:334..334
+   334          lEquipa atual, prox;
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/proj2.c:244..244
+   244      Jogo jogo;
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/proj2.c:242..242
+   242      char nome_jogo[MAX_NOME];
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/proj2.c:207..207
+   207      Jogo jogo;
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/proj2.c:206..206
+   206      char nome[MAX_NOME];
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/proj2.c:183..183
+   183      Equipa equipa;
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/proj2.c:182..182
+   182      char nome_equipa[MAX_NOME];
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/proj2.c:157..157
+   157      Jogo jogo;
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/proj2.c:156..156
+   156      char nome[MAX_NOME];
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/proj2.c:140..140
+   140      ligacao atual;
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/proj2.c:117..117
+   117      Equipa equipa;
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/proj2.c:116..116
+   116      char nome[MAX_NOME];
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/proj2.c:71..71
+    71      Equipa eq1, eq2;
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/proj2.c:70..70
+    70      Jogo jogo;
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/proj2.c:68..68
+    68      char nome_jogo[MAX_NOME], equipa1[MAX_NOME], equipa2[MAX_NOME];
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/proj2.c:68..68
+    68      char nome_jogo[MAX_NOME], equipa1[MAX_NOME], equipa2[MAX_NOME];
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/proj2.c:68..68
+    68      char nome_jogo[MAX_NOME], equipa1[MAX_NOME], equipa2[MAX_NOME];
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/proj2.c:15..15
+    15      LDupla lst_jgs = inicializa_lista();
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/hash_jg.c:318..318
+   318  	ligacao atual, aux;
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/hash_jg.c:285..285
+   285    ligacao atual = procura_jg_lst(lista, nome);
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/hash_jg.c:269..269
+   269    ligacao atual;
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/hash_jg.c:242..242
+   242    ligacao aux = lista->inicio;
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/hash_jg.c:215..215
+   215    ligacao aux = lista->resto;
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/hash_jg.c:199..199
+   199  	ligacao novo = cria_nodulo(NULL, lista->resto, jogo);
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/hash_jg.c:171..171
+   171  	ligacao novo = can_fail_malloc(sizeof(struct noduloJ));
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/hash_jg.c:159..159
+   159  	LDupla lista = can_fail_malloc(sizeof(struct nodulo_L));
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/hash_jg.c:150..150
+   150      destroi_lista_jg(jogos[i]);
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/hash_jg.c:140..140
+   140    return procura_jg_lista(jogos[i], nome);
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/hash_jg.c:138..138
+   138    int i = hash(nome, TAMANHO);
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/hash_jg.c:132..132
+   132    jogos[i] = apaga_jg_lista(jogos[i], nome);
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/hash_jg.c:132..132
+   132    jogos[i] = apaga_jg_lista(jogos[i], nome);
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/hash_jg.c:131..131
+   131    int i = hash(nome, TAMANHO);
+
+38: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/hash_jg.c:125..125
+   125    jogos[i] = insere_jg_lista(jogos[i], jogo);
+
+39: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/hash_jg.c:125..125
+   125    jogos[i] = insere_jg_lista(jogos[i], jogo);
+
+40: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/hash_jg.c:124..124
+   124    int i = hash(jogo->nome, TAMANHO);
+
+41: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/hash_jg.c:115..115
+   115      jogos[i] = NULL; 
+
+42: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/hash_jg.c:92..92
+    92    lJogo atual, aux;
+
+43: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/hash_jg.c:66..66
+    66    lJogo t, ant; 
+
+44: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/hash_jg.c:56..56
+    56    lJogo novo = (lJogo) can_fail_malloc(sizeof(struct nodulos));
+
+45: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/hash_jg.c:7..7
+     7    Jogo novo = (Jogo) can_fail_malloc(sizeof(struct jogo));
+
+46: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/hash_eq.c:131..131
+   131          if (equipas[i] != NULL)
+
+47: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/hash_eq.c:112..112
+   112  	return procura_eq_lista(equipas[i], nome);
+
+48: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/hash_eq.c:111..111
+   111  	int i = hash(nome, TAMANHO);
+
+49: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/hash_eq.c:102..102
+   102          destroi_lista_eq(equipas[i]);
+
+50: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/hash_eq.c:92..92
+    92      equipas[i] = insere_eq_lista(equipas[i], equipa);
+
+51: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/hash_eq.c:92..92
+    92      equipas[i] = insere_eq_lista(equipas[i], equipa);
+
+52: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/hash_eq.c:91..91
+    91      int i = hash(equipa->nome, TAMANHO);
+
+53: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/hash_eq.c:82..82
+    82          equipas[i]=NULL; 
+
+54: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/hash_eq.c:60..60
+    60      lEquipa atual, aux;
+
+55: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/hash_eq.c:34..34
+    34      lEquipa novo = (lEquipa) can_fail_malloc(sizeof(struct nodulo));
+
+56: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/hash_eq.c:10..10
+    10      Equipa nova = (Equipa) can_fail_malloc(sizeof(struct equipa));
+
+57: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/func_hash.c:21..21
+    21    while (palavra[comp])
+=== Possibly missing sizeof() in memory allocation ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/144/func_hash.c:26..26
+    26    pal = can_fail_malloc(comp + 1);

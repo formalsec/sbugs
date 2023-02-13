@@ -1,0 +1,78 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/350/SistemaJogos.c:799..799
+   799  			tabela_j[i] = hash_j->next;
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/350/SistemaJogos.c:782..782
+   782  		hash_j = encontra_jogo_hash(nome, tabela_j[i]);
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/350/SistemaJogos.c:781..781
+   781  		i = hash(nome, HASH_PRIMO);
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/350/SistemaJogos.c:752..752
+   752  		printf("%d * %s\n", *NL, a_ordenar[i]);
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/350/SistemaJogos.c:733..733
+   733  			a_ordenar[nr_melhores_equipas] = nome_eq;
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/350/SistemaJogos.c:691..691
+   691  	trocar(lst[i], lst[r]);
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/350/SistemaJogos.c:691..691
+   691  	trocar(lst[i], lst[r]);
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/350/SistemaJogos.c:686..686
+   686  			trocar(lst[i], lst[j]);
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/350/SistemaJogos.c:686..686
+   686  			trocar(lst[i], lst[j]);
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/350/SistemaJogos.c:682..682
+   682  		while (less(nome_eq, lst[--j]))
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/350/SistemaJogos.c:680..680
+   680  		while(less(lst[++i], nome_eq));
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/350/SistemaJogos.c:676..676
+   676  	char *nome_eq = lst[r];
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/350/SistemaJogos.c:417..417
+   417  	tabela_jg[i] = hash_jg;
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/350/SistemaJogos.c:416..416
+   416  	hash_jg->next = tabela_jg[i];
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/350/SistemaJogos.c:412..412
+   412  	int i = hash(node->jogo->nome, HASH_PRIMO);
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/350/SistemaJogos.c:382..382
+   382  		tabela[i] = NULL;
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/350/SistemaJogos.c:341..341
+   341  	tabela[i] = hash_e;
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/350/SistemaJogos.c:338..338
+   338  	hash_e->next = tabela[i];
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/350/SistemaJogos.c:335..335
+   335  	int i = hash(node->equipa->nome, HASH_PRIMO);
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/350/SistemaJogos.c:305..305
+   305  		tabela[i] = NULL;
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/350/SistemaJogos.c:213..213
+   213  	node_j = encontra_jogo_node(nome, tabela[i]);
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/350/SistemaJogos.c:210..210
+   210  	int i = hash(nome, HASH_PRIMO);
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/350/SistemaJogos.c:185..185
+   185  	return encontra_equipa_hash(nome, tabela[i]);
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/350/SistemaJogos.c:183..183
+   183  	int i = hash(nome, HASH_PRIMO);
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/350/SistemaJogos.c:676..676
+   676  	char *nome_eq = lst[r];
+=== Potentially uninitialized variable ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/350/SistemaJogos.c:782..782
+   782  		hash_j = encontra_jogo_hash(nome, tabela_j[i]);

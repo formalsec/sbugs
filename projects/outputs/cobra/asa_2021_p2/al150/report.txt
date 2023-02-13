@@ -1,0 +1,88 @@
+cat: _CWE_805_.txt: No such file or directory
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al150/p2.c:172..172
+   172              res_graph[v][u] += path_flux;
+
+2: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al150/p2.c:171..171
+   171              res_graph[u][v] -= path_flux;
+
+3: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al150/p2.c:170..170
+   170              u = p_list[v];
+
+4: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al150/p2.c:169..169
+   169          for (v = t; v != s; v = p_list[v]) {
+
+5: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al150/p2.c:167..167
+   167              path_flux = min(path_flux, res_graph[u][v]);
+
+6: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al150/p2.c:166..166
+   166              u = p_list[v];
+
+7: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al150/p2.c:165..165
+   165          for (v = t; v != s; v = p_list[v]) {
+
+8: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al150/p2.c:157..157
+   157              res_graph[v][u] = graph[u][v];
+
+9: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al150/p2.c:157..157
+   157              res_graph[v][u] = graph[u][v];
+
+10: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al150/p2.c:156..156
+   156              res_graph[u][v] = graph[u][v];
+
+11: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al150/p2.c:156..156
+   156              res_graph[u][v] = graph[u][v];
+
+12: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al150/p2.c:141..141
+   141                  visited_list[v] = 1;
+
+13: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al150/p2.c:140..140
+   140                  p_list[v] = u;
+
+14: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al150/p2.c:136..136
+   136                      p_list[v] = u;
+
+15: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al150/p2.c:134..134
+   134              if ((visited_list[v]==0) && (res_graph[u][v] > 0)) {
+
+16: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al150/p2.c:134..134
+   134              if ((visited_list[v]==0) && (res_graph[u][v] > 0)) {
+
+17: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al150/p2.c:130..130
+   130          int u = removeQueue(queue);
+
+18: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al150/p2.c:127..127
+   127      p_list[s] = -1;
+
+19: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al150/p2.c:126..126
+   126      visited_list[s] = 1;
+
+20: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al150/p2.c:67..67
+    67      graph[v1][v2] = capacity;
+
+21: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al150/p2.c:66..66
+    66      graph[v2][v1] = capacity;
+
+22: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al150/p2.c:59..59
+    59          graph[i] = (int *)can_fail_calloc(num_v,sizeof(int));      
+
+23: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al150/p2.c:44..44
+    44      int item = queue->array[queue->front];
+
+24: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al150/p2.c:44..44
+    44      int item = queue->array[queue->front];
+
+25: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al150/p2.c:35..35
+    35      queue->array[queue->back] = item;
+
+26: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al150/p2.c:35..35
+    35      queue->array[queue->back] = item;
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al150/p2.c:126..126
+   126      visited_list[s] = 1;
+
+2: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al150/p2.c:66..66
+    66      graph[v2][v1] = capacity;
+
+3: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al150/p2.c:66..66
+    66      graph[v2][v1] = capacity;

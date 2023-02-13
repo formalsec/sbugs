@@ -1,0 +1,997 @@
+cat: _CWE_416_.txt: No such file or directory
+cat: _CWE_468_.txt: No such file or directory
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:978..978
+   978          adresses[j][1] = reverse_adresses[j][1];
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:978..978
+   978          adresses[j][1] = reverse_adresses[j][1];
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:977..977
+   977          adresses[j][0] = reverse_adresses[j][0];
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:977..977
+   977          adresses[j][0] = reverse_adresses[j][0];
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:973..973
+   973          reverse_adresses[y][1] = adresses[j][1];
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:973..973
+   973          reverse_adresses[y][1] = adresses[j][1];
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:972..972
+   972          reverse_adresses[y][0] = adresses[j][0];
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:972..972
+   972          reverse_adresses[y][0] = adresses[j][0];
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:963..963
+   963          crossovers_list[adresses[i][0]][adresses[i][1]].used = 3;
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:963..963
+   963          crossovers_list[adresses[i][0]][adresses[i][1]].used = 3;
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:963..963
+   963          crossovers_list[adresses[i][0]][adresses[i][1]].used = 3;
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:959..959
+   959            crossovers_list[i][j].used = -3;
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:946..946
+   946            visited[j][1] = 0;
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:945..945
+   945            visited[j][0] = 0; /*clean the visited array*/
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:944..944
+   944            crossovers_list[visited[j][0]][visited[j][1]].used = -3;
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:944..944
+   944            crossovers_list[visited[j][0]][visited[j][1]].used = -3;
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:944..944
+   944            crossovers_list[visited[j][0]][visited[j][1]].used = -3;
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:937..937
+   937            visited[j][1] = 0;
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:936..936
+   936            visited[j][0] = 0; /*clean the visited array*/
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:934..934
+   934              aux_street = crossovers_list[visited[j][0]][visited[j][1]].caller_street;
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:934..934
+   934              aux_street = crossovers_list[visited[j][0]][visited[j][1]].caller_street;
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:934..934
+   934              aux_street = crossovers_list[visited[j][0]][visited[j][1]].caller_street;
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:933..933
+   933              aux_avenue = crossovers_list[visited[j][0]][visited[j][1]].caller_avenue;
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:933..933
+   933              aux_avenue = crossovers_list[visited[j][0]][visited[j][1]].caller_avenue;
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:933..933
+   933              aux_avenue = crossovers_list[visited[j][0]][visited[j][1]].caller_avenue;
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:932..932
+   932              crossovers_list[aux_avenue][aux_street].used = 3;
+
+27: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:931..931
+   931            if (visited[j][0] == aux_avenue && visited[j][1] == aux_street) { /*This means that this was the caller cell*/
+
+28: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:931..931
+   931            if (visited[j][0] == aux_avenue && visited[j][1] == aux_street) { /*This means that this was the caller cell*/
+
+29: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:928..928
+   928            queue[j][1] = 0;
+
+30: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:927..927
+   927            queue[j][0] = 0;
+
+31: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:926..926
+   926            crossovers_list[queue[j][0]][queue[j][1]].used = -3;
+
+32: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:926..926
+   926            crossovers_list[queue[j][0]][queue[j][1]].used = -3;
+
+33: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:926..926
+   926            crossovers_list[queue[j][0]][queue[j][1]].used = -3;
+
+34: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:912..912
+   912                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+35: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:912..912
+   912                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+36: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:910..910
+   910                      can_move(3,avenue,street,&queue[empty_spot_in_queue][0],&queue[empty_spot_in_queue][1],&crossovers_list[avenue][street+1].used,&empty_spot_in_queue,aux_empty_spot_in_queue,&crossovers_list[avenue][street+1].caller_avenue,&crossovers_list[avenue][street+1].caller_street);
+
+37: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:906..906
+   906                    if (crossovers_list[avenue][street+1].used == -3) { /*I can go left but not right or down or up*/
+
+38: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:902..902
+   902                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+39: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:902..902
+   902                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+40: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:894..894
+   894                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+41: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:894..894
+   894                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+42: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:886..886
+   886                    if (crossovers_list[avenue][street+1].used == -3) { /*I can go right or left but not down or up*/
+
+43: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:885..885
+   885                  if (crossovers_list[avenue][street-1].used == -3) { /*I can go right but not down or up*/
+
+44: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:880..880
+   880                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+45: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:880..880
+   880                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+46: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:872..872
+   872                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+47: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:872..872
+   872                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+48: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:864..864
+   864                    if (crossovers_list[avenue][street+1].used == -3) { /*I can go down or left but not up or right*/
+
+49: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:860..860
+   860                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+50: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:860..860
+   860                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+51: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:850..850
+   850                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+52: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:850..850
+   850                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+53: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:840..840
+   840                    if (crossovers_list[avenue][street+1].used == -3) { /*I can go down,right or left but not up*/
+
+54: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:839..839
+   839                  if (crossovers_list[avenue][street-1].used == -3) { /*I can go down, and right but not up*/
+
+55: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:838..838
+   838                if (crossovers_list[avenue+1][street].used == -3) { /*I can go down but not up*/
+
+56: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:832..832
+   832                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+57: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:832..832
+   832                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+58: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:824..824
+   824                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+59: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:824..824
+   824                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+60: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:816..816
+   816                    if (crossovers_list[avenue][street+1].used == -3) { /*I can go up or left but not right or down*/
+
+61: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:811..811
+   811                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+62: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:811..811
+   811                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+63: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:801..801
+   801                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+64: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:801..801
+   801                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+65: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:791..791
+   791                    if (crossovers_list[avenue][street+1].used == -3) { /*I can go up,right or left but not down*/
+
+66: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:790..790
+   790                  if (crossovers_list[avenue][street-1].used == -3) { /*I can go up and right but not down*/
+
+67: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:785..785
+   785                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+68: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:785..785
+   785                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+69: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:775..775
+   775                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+70: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:775..775
+   775                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+71: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:765..765
+   765                    if (crossovers_list[avenue][street+1].used == -3) { /*I can go up,down or left but not right*/
+
+72: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:760..760
+   760                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+73: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:760..760
+   760                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+74: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:748..748
+   748                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+75: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:748..748
+   748                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+76: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:736..736
+   736                    if (crossovers_list[avenue][street+1].used == -3) { /*I can go up,down,right or left*/
+
+77: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:735..735
+   735                  if (crossovers_list[avenue][street-1].used == -3) { /*I can go up, down, and right*/
+
+78: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:734..734
+   734                if (crossovers_list[avenue+1][street].used == -3) { /*I can go up and down*/
+
+79: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:733..733
+   733              if (crossovers_list[avenue-1][street].used == -3) { /*I can go up*/
+
+80: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:729..729
+   729                read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+81: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:729..729
+   729                read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+82: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:721..721
+   721            if (crossovers_list[avenue-1][street].used == 3 && crossovers_list[avenue+1][street].used == 3 && crossovers_list[avenue][street-1].used == 3 && crossovers_list[avenue][street+1].used == 3) { /*If I can not go up, down, right or left, I will go back*/
+
+83: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:721..721
+   721            if (crossovers_list[avenue-1][street].used == 3 && crossovers_list[avenue+1][street].used == 3 && crossovers_list[avenue][street-1].used == 3 && crossovers_list[avenue][street+1].used == 3) { /*If I can not go up, down, right or left, I will go back*/
+
+84: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:721..721
+   721            if (crossovers_list[avenue-1][street].used == 3 && crossovers_list[avenue+1][street].used == 3 && crossovers_list[avenue][street-1].used == 3 && crossovers_list[avenue][street+1].used == 3) { /*If I can not go up, down, right or left, I will go back*/
+
+85: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:721..721
+   721            if (crossovers_list[avenue-1][street].used == 3 && crossovers_list[avenue+1][street].used == 3 && crossovers_list[avenue][street-1].used == 3 && crossovers_list[avenue][street+1].used == 3) { /*If I can not go up, down, right or left, I will go back*/
+
+86: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:714..714
+   714                    read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+87: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:714..714
+   714                    read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+88: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:708..708
+   708                  if (crossovers_list[avenue][street-1].used == -3) { /*I can go right but not down or up*/
+
+89: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:704..704
+   704                    read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+90: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:704..704
+   704                    read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+91: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:696..696
+   696                    read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+92: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:696..696
+   696                    read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+93: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:688..688
+   688                  if (crossovers_list[avenue][street-1].used == -3) { /*I can go down and right but not up*/
+
+94: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:687..687
+   687                if (crossovers_list[avenue+1][street].used == -3) { /*I can go down but not up*/
+
+95: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:682..682
+   682                    read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+96: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:682..682
+   682                    read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+97: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:674..674
+   674                    read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+98: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:674..674
+   674                    read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+99: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:666..666
+   666                  if (crossovers_list[avenue][street-1].used == -3) { /*I can go up and right but not down*/
+
+100: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:662..662
+   662                    read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+101: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:662..662
+   662                    read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+102: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:652..652
+   652                    read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+103: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:652..652
+   652                    read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+104: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:642..642
+   642                  if (crossovers_list[avenue][street-1].used == -3) { /*I can go up, down, and right*/
+
+105: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:641..641
+   641                if (crossovers_list[avenue+1][street].used == -3) { /*I can go up and down*/
+
+106: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:640..640
+   640              if (crossovers_list[avenue-1][street].used == -3) { /*I can go up*/
+
+107: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:636..636
+   636                read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+108: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:636..636
+   636                read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+109: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:628..628
+   628            if (crossovers_list[avenue-1][street].used == 3 && crossovers_list[avenue+1][street].used == 3 && crossovers_list[avenue][street-1].used == 3) { /*If I can not go up, down or right, I will go back*/
+
+110: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:628..628
+   628            if (crossovers_list[avenue-1][street].used == 3 && crossovers_list[avenue+1][street].used == 3 && crossovers_list[avenue][street-1].used == 3) { /*If I can not go up, down or right, I will go back*/
+
+111: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:628..628
+   628            if (crossovers_list[avenue-1][street].used == 3 && crossovers_list[avenue+1][street].used == 3 && crossovers_list[avenue][street-1].used == 3) { /*If I can not go up, down or right, I will go back*/
+
+112: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:621..621
+   621                    read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+113: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:621..621
+   621                    read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+114: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:615..615
+   615                  if (crossovers_list[avenue][street+1].used == -3) { /*I can go left but not down or up*/
+
+115: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:611..611
+   611                    read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+116: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:611..611
+   611                    read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+117: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:603..603
+   603                    read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+118: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:603..603
+   603                    read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+119: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:595..595
+   595                  if (crossovers_list[avenue][street+1].used == -3) { /*I can go down and left but not up*/
+
+120: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:594..594
+   594                if (crossovers_list[avenue+1][street].used == -3) { /*I can go down but not up*/
+
+121: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:589..589
+   589                    read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+122: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:589..589
+   589                    read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+123: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:581..581
+   581                    read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+124: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:581..581
+   581                    read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+125: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:573..573
+   573                  if (crossovers_list[avenue][street+1].used == -3) { /*I can go up and left but not down*/
+
+126: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:569..569
+   569                    read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+127: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:569..569
+   569                    read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+128: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:559..559
+   559                    read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+129: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:559..559
+   559                    read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+130: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:549..549
+   549                  if (crossovers_list[avenue][street+1].used == -3) { /*I can go up, down and left*/
+
+131: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:548..548
+   548                if (crossovers_list[avenue+1][street].used == -3) { /*I can go up and down*/
+
+132: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:547..547
+   547              if (crossovers_list[avenue-1][street].used == -3) { /*I can go up*/
+
+133: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:543..543
+   543                read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+134: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:543..543
+   543                read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+135: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:535..535
+   535            if (crossovers_list[avenue-1][street].used == 3 && crossovers_list[avenue+1][street].used == 3 && crossovers_list[avenue][street+1].used == 3) { /*If I can not go up, down or left, I will go back*/
+
+136: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:535..535
+   535            if (crossovers_list[avenue-1][street].used == 3 && crossovers_list[avenue+1][street].used == 3 && crossovers_list[avenue][street+1].used == 3) { /*If I can not go up, down or left, I will go back*/
+
+137: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:535..535
+   535            if (crossovers_list[avenue-1][street].used == 3 && crossovers_list[avenue+1][street].used == 3 && crossovers_list[avenue][street+1].used == 3) { /*If I can not go up, down or left, I will go back*/
+
+138: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:527..527
+   527                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+139: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:527..527
+   527                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+140: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:521..521
+   521                    if (crossovers_list[avenue][street+1].used == -3) { /*I can only go left*/
+
+141: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:517..517
+   517                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+142: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:517..517
+   517                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+143: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:509..509
+   509                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+144: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:509..509
+   509                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+145: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:501..501
+   501                    if (crossovers_list[avenue][street+1].used == -3) { /*I can go left or up but not right*/
+
+146: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:500..500
+   500                  if (crossovers_list[avenue-1][street].used == -3) { /*I can go up but not right*/
+
+147: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:495..495
+   495                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+148: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:495..495
+   495                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+149: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:487..487
+   487                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+150: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:487..487
+   487                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+151: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:479..479
+   479                    if (crossovers_list[avenue][street+1].used == -3) { /*I can go right and left but not up*/
+
+152: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:475..475
+   475                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+153: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:475..475
+   475                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+154: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:465..465
+   465                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+155: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:465..465
+   465                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+156: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:455..455
+   455                    if (crossovers_list[avenue][street+1].used == -3) { /*I can go right, up and left*/
+
+157: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:454..454
+   454                  if (crossovers_list[avenue-1][street].used == -3) { /*I can go right and up*/
+
+158: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:453..453
+   453                if (crossovers_list[avenue][street-1].used == -3) { /*I can go right*/
+
+159: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:449..449
+   449                  read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+160: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:449..449
+   449                  read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+161: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:441..441
+   441              if (crossovers_list[avenue][street-1].used == 3 && crossovers_list[avenue-1][street].used == 3 && crossovers_list[avenue][street+1].used == 3) { /*If I can not go right, up or left, I will go back*/
+
+162: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:441..441
+   441              if (crossovers_list[avenue][street-1].used == 3 && crossovers_list[avenue-1][street].used == 3 && crossovers_list[avenue][street+1].used == 3) { /*If I can not go right, up or left, I will go back*/
+
+163: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:441..441
+   441              if (crossovers_list[avenue][street-1].used == 3 && crossovers_list[avenue-1][street].used == 3 && crossovers_list[avenue][street+1].used == 3) { /*If I can not go right, up or left, I will go back*/
+
+164: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:435..435
+   435                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+165: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:435..435
+   435                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+166: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:429..429
+   429                    if (crossovers_list[avenue-1][street].used == -3) { /*I can only go up*/
+
+167: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:425..425
+   425                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+168: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:425..425
+   425                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+169: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:417..417
+   417                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+170: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:417..417
+   417                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+171: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:409..409
+   409                    if (crossovers_list[avenue-1][street].used == -3) { /*I can go right and up*/
+
+172: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:408..408
+   408                  if (crossovers_list[avenue][street-1].used == -3) { /*I can go right*/
+
+173: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:404..404
+   404                    read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+174: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:404..404
+   404                    read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+175: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:396..396
+   396                if (crossovers_list[avenue][street-1].used == 3 && crossovers_list[avenue-1][street].used == 3) { /*If I can not go right or up I will go back*/
+
+176: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:396..396
+   396                if (crossovers_list[avenue][street-1].used == 3 && crossovers_list[avenue-1][street].used == 3) { /*If I can not go right or up I will go back*/
+
+177: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:390..390
+   390                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+178: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:390..390
+   390                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+179: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:384..384
+   384                    if (crossovers_list[avenue-1][street].used == -3) { /*I can only go up*/
+
+180: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:380..380
+   380                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+181: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:380..380
+   380                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+182: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:371..371
+   371                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+183: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:371..371
+   371                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+184: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:363..363
+   363                    if (crossovers_list[avenue-1][street].used == -3) { /*I can go left and up*/
+
+185: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:362..362
+   362                  if (crossovers_list[avenue][street+1].used == -3) { /*I can go left*/
+
+186: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:358..358
+   358                    read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+187: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:358..358
+   358                    read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+188: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:350..350
+   350                if (crossovers_list[avenue][street+1].used == 3 && crossovers_list[avenue-1][street].used == 3) { /*If I can not go left or up I will go back*/
+
+189: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:350..350
+   350                if (crossovers_list[avenue][street+1].used == 3 && crossovers_list[avenue-1][street].used == 3) { /*If I can not go left or up I will go back*/
+
+190: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:341..341
+   341                        read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+191: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:341..341
+   341                        read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+192: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:335..335
+   335                      if (crossovers_list[avenue][street+1].used == -3) { /*I can only go left*/
+
+193: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:331..331
+   331                        read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+194: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:331..331
+   331                        read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+195: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:323..323
+   323                        read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+196: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:323..323
+   323                        read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+197: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:315..315
+   315                      if (crossovers_list[avenue][street+1].used == -3) { /*I can go left or down but not right*/
+
+198: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:314..314
+   314                    if (crossovers_list[avenue+1][street].used == -3) { /*I can go down but not right*/
+
+199: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:309..309
+   309                        read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+200: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:309..309
+   309                        read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+201: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:301..301
+   301                        read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+202: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:301..301
+   301                        read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+203: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:293..293
+   293                      if (crossovers_list[avenue][street+1].used == -3) { /*I can go right and left but not down*/
+
+204: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:289..289
+   289                        read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+205: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:289..289
+   289                        read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+206: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:279..279
+   279                        read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+207: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:279..279
+   279                        read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+208: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:269..269
+   269                      if (crossovers_list[avenue][street+1].used == -3) { /*I can go right, down and left*/
+
+209: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:268..268
+   268                    if (crossovers_list[avenue+1][street].used == -3) { /*I can go right and down*/
+
+210: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:267..267
+   267                  if (crossovers_list[avenue][street-1].used == -3) { /*I can go right*/
+
+211: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:263..263
+   263                    read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+212: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:263..263
+   263                    read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+213: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:255..255
+   255                if (crossovers_list[avenue][street-1].used == 3 && crossovers_list[avenue+1][street].used == 3 && crossovers_list[avenue][street+1].used == 3) { /*If I can not go right, down or left, I will go back*/
+
+214: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:255..255
+   255                if (crossovers_list[avenue][street-1].used == 3 && crossovers_list[avenue+1][street].used == 3 && crossovers_list[avenue][street+1].used == 3) { /*If I can not go right, down or left, I will go back*/
+
+215: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:255..255
+   255                if (crossovers_list[avenue][street-1].used == 3 && crossovers_list[avenue+1][street].used == 3 && crossovers_list[avenue][street+1].used == 3) { /*If I can not go right, down or left, I will go back*/
+
+216: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:249..249
+   249                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+217: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:249..249
+   249                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+218: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:243..243
+   243                    if (crossovers_list[avenue+1][street].used == -3) { /*I can only go down*/
+
+219: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:239..239
+   239                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+220: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:239..239
+   239                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+221: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:231..231
+   231                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+222: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:231..231
+   231                      read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+223: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:223..223
+   223                    if (crossovers_list[avenue-1][street].used == -3) { /*I can go right and down*/
+
+224: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:222..222
+   222                  if (crossovers_list[avenue][street-1].used == -3) { /*I can go right*/
+
+225: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:218..218
+   218                    read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+226: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:218..218
+   218                    read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+227: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:210..210
+   210                if (crossovers_list[avenue][street-1].used == 3 && crossovers_list[avenue+1][street].used == 3) { /*If I can not go right or down I will go back*/
+
+228: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:210..210
+   210                if (crossovers_list[avenue][street-1].used == 3 && crossovers_list[avenue+1][street].used == 3) { /*If I can not go right or down I will go back*/
+
+229: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:204..204
+   204                    read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+230: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:204..204
+   204                    read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+231: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:198..198
+   198                  if (crossovers_list[avenue+1][street].used == -3) { /*I can only go down*/
+
+232: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:194..194
+   194                    read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+233: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:194..194
+   194                    read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+234: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:186..186
+   186                    read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+235: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:186..186
+   186                    read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+236: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:178..178
+   178                  if (crossovers_list[avenue+1][street].used == -3) { /*I can go left and down*/
+
+237: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:177..177
+   177                if (crossovers_list[avenue][street+1].used == -3) { /*I can go left*/
+
+238: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:173..173
+   173                  read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+239: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:173..173
+   173                  read_next_node(&value_to_read_in_queue,aux_value_to_read_in_queue,&avenue,&street,queue[aux_value_to_read_in_queue][0],queue[aux_value_to_read_in_queue][1]);
+
+240: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:165..165
+   165              if (crossovers_list[avenue][street+1].used == 3 && crossovers_list[avenue+1][street].used == 3) { /*If I can not go left or down I will go back*/
+
+241: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:165..165
+   165              if (crossovers_list[avenue][street+1].used == 3 && crossovers_list[avenue+1][street].used == 3) { /*If I can not go left or down I will go back*/
+
+242: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:155..155
+   155          if (strcmp(crossovers_list[avenue][street].description,"supermarket") == 0) {   /*I´m at the supermarket - the end target*/
+
+243: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:153..153
+   153        visited[empty_spot_in_visited][0] = -1;
+
+244: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:152..152
+   152        crossovers_list[avenue][street].caller_street = -1;
+
+245: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:151..151
+   151        crossovers_list[avenue][street].caller_avenue = -1; /*I do this so I can, at the end of the program, recognize the first vertice of the path*/
+
+246: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:147..147
+   147        street = adresses[i][1];
+
+247: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:146..146
+   146        avenue = adresses[i][0];
+
+248: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:134..134
+   134    int queue[crossovers_number+1][2];
+
+249: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:128..128
+   128    int visited[crossovers_number+1][2];
+
+250: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:122..122
+   122      crossovers_list[avenue][street].used = 3;
+
+251: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:120..120
+   120        adresses[i][1] = street;
+
+252: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:119..119
+   119        adresses[i][0] = avenue;
+
+253: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:118..118
+   118        strcpy(crossovers_list[avenue][street].description,"citizen");
+
+254: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:114..114
+   114      else if (strcmp(crossovers_list[avenue][street].description,"both") == 0) {
+
+255: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:111..111
+   111      else if (strcmp(crossovers_list[avenue][street].description,"citizen") == 0) {
+
+256: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:106..106
+   106        strcpy(crossovers_list[avenue][street].description,"both");
+
+257: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:105..105
+   105      if (strcmp(crossovers_list[avenue][street].description,"supermarket") == 0) {
+
+258: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:102..102
+   102      token = strtok (adress[i]," ");
+
+259: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:101..101
+   101      fgets(adress[i],100,stdin);
+
+260: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:98..98
+    98      crossovers_list[avenue][street].used = -3;
+
+261: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:97..97
+    97      strcpy(crossovers_list[avenue][street].description,"supermarket");
+
+262: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:94..94
+    94      if (strcmp(crossovers_list[avenue][street].description,"supermarket") == 0) {
+
+263: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:91..91
+    91      token = strtok (location[i]," ");
+
+264: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:90..90
+    90      fgets(location[i],100,stdin);
+
+265: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:88..88
+    88    char adress[citizens][10];
+
+266: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:87..87
+    87    char location[supermarkets][10];
+
+267: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:86..86
+    86    int reverse_adresses[citizens][2];
+
+268: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:85..85
+    85    int adresses[citizens][2];
+
+269: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:76..76
+    76        crossovers_list[i][j].caller_street = -1;
+
+270: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:75..75
+    75        crossovers_list[i][j].caller_avenue = -1;
+
+271: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:74..74
+    74        crossovers_list[i][j].used = -3; /*-3 for not used, 3 for used*/
+
+272: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:73..73
+    73        strcpy(crossovers_list[i][j].description,"");
+
+273: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al154/proj2ASA.c:69..69
+    69    crossover crossovers_list[avenues+1][streets+1];
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:212..212
+   212          if (map[index].corners[direction] == NIL)
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:193..193
+   193      map[index].h = map[lowestNeighbour].h + 1;
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:193..193
+   193      map[index].h = map[lowestNeighbour].h + 1;
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:186..186
+   186          return ((map[candidate].flow[direction] == 0) && (map[place].visited != UNREACHABLE));
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:186..186
+   186          return ((map[candidate].flow[direction] == 0) && (map[place].visited != UNREACHABLE));
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:186..186
+   186          return ((map[candidate].flow[direction] == 0) && (map[place].visited != UNREACHABLE));
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:180..180
+   180      return map[index].h > map[neighbourI].h;
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:180..180
+   180      return map[index].h > map[neighbourI].h;
+cat: _CWE_170_.txt: No such file or directory
+cat: _CWE_468_.txt: No such file or directory
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al119/proj2.c:399..399
+   399          free(MatrixOfverticesSup[i]);
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al119/proj2.c:398..398
+   398          free(MatrixOfverticesCit[i]);
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al119/proj2.c:392..392
+   392          Manhattan[n].listOfAdjEdges.tail = NULL;
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al119/proj2.c:391..391
+   391          Manhattan[n].listOfAdjEdges.head = NULL;
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al119/proj2.c:386..386
+   386          for(aux = Manhattan[n].listOfAdjEdges.head; aux != NULL;){
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al119/proj2.c:368..368
+   368              for(auxNode = Manhattan[aux].listOfAdjEdges.head; auxNode->e.indexToV!= beforeAux; auxNode = auxNode->next );
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al119/proj2.c:365..365
+   365              for(auxNode = Manhattan[beforeAux].listOfAdjEdges.head; auxNode->e.indexToV!= aux; auxNode = auxNode->next);
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al119/proj2.c:364..364
+   364              beforeAux = prev[aux];
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al119/proj2.c:334..334
+   334                          flow = path[aux->e.indexToV];
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al119/proj2.c:334..334
+   334                          flow = path[aux->e.indexToV];
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al119/proj2.c:334..334
+   334                          flow = path[aux->e.indexToV];
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al119/proj2.c:332..332
+   332                      path[aux->e.indexToV] = min(path[indexPoped],aux->e.capacity - aux->e.flow);
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al119/proj2.c:332..332
+   332                      path[aux->e.indexToV] = min(path[indexPoped],aux->e.capacity - aux->e.flow);
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al119/proj2.c:332..332
+   332                      path[aux->e.indexToV] = min(path[indexPoped],aux->e.capacity - aux->e.flow);
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al119/proj2.c:332..332
+   332                      path[aux->e.indexToV] = min(path[indexPoped],aux->e.capacity - aux->e.flow);
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al119/proj2.c:331..331
+   331                      prev[aux->e.indexToV] = indexPoped;
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al119/proj2.c:331..331
+   331                      prev[aux->e.indexToV] = indexPoped;
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al119/proj2.c:331..331
+   331                      prev[aux->e.indexToV] = indexPoped;
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al119/proj2.c:329..329
+   329              if(prev[aux->e.indexToV] == -1){
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al119/proj2.c:329..329
+   329              if(prev[aux->e.indexToV] == -1){
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al119/proj2.c:329..329
+   329              if(prev[aux->e.indexToV] == -1){
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al119/proj2.c:328..328
+   328          for(aux = Manhattan[indexPoped].listOfAdjEdges.head; aux!=NULL; aux = aux->next ){
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al119/proj2.c:327..327
+   327          indexPoped = QUEUEget();
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al119/proj2.c:324..324
+   324      path[SourceIndex] = 333;
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al119/proj2.c:323..323
+   323      prev[SourceIndex] = 11;
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al119/proj2.c:304..304
+   304            path[n]=0;
+
+27: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al119/proj2.c:301..301
+   301            prev[n]=-1;
+
+28: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al119/proj2.c:290..290
+   290            path[n]=0;
+
+29: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al119/proj2.c:286..286
+   286            prev[n]=-1;
+
+30: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al119/proj2.c:277..277
+   277              MatrixOfverticesSup[i][j]=0;
+
+31: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al119/proj2.c:276..276
+   276              MatrixOfverticesCit[i][j]=0;
+
+32: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al119/proj2.c:274..274
+   274          MatrixOfverticesSup[i] = (int *)can_fail_malloc(nStreets * sizeof(int)); 
+
+33: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al119/proj2.c:273..273
+   273          MatrixOfverticesCit[i] = (int *)can_fail_malloc(nStreets * sizeof(int));  
+
+34: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al119/proj2.c:261..261
+   261          Manhattan[i].listOfAdjEdges.tail=NULL;
+
+35: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al119/proj2.c:260..260
+   260          Manhattan[i].listOfAdjEdges.head=NULL;
+
+36: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al119/proj2.c:247..247
+   247              if(MatrixOfverticesSup[i][j]== 2){
+
+37: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al119/proj2.c:242..242
+   242              if(MatrixOfverticesCit[i][j]== 1){
+
+38: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al119/proj2.c:155..155
+   155      Manhattan[n].listOfAdjEdges.tail = Manhattan[n].listOfAdjEdges.tail->next;
+
+39: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al119/proj2.c:155..155
+   155      Manhattan[n].listOfAdjEdges.tail = Manhattan[n].listOfAdjEdges.tail->next;
+
+40: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al119/proj2.c:154..154
+   154      Manhattan[n].listOfAdjEdges.tail->next = createNode(edge);
+
+41: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al119/proj2.c:151..151
+   151          Manhattan[n].listOfAdjEdges.tail = Manhattan[n].listOfAdjEdges.head;
+
+42: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al119/proj2.c:151..151
+   151          Manhattan[n].listOfAdjEdges.tail = Manhattan[n].listOfAdjEdges.head;
+
+43: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al119/proj2.c:150..150
+   150          Manhattan[n].listOfAdjEdges.head = createNode(edge);
+
+44: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al119/proj2.c:149..149
+   149      if(Manhattan[n].listOfAdjEdges.head == NULL){
+
+45: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al119/proj2.c:123..123
+   123          MatrixOfverticesSup[input1-1][input2-1] = id;
+
+46: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al119/proj2.c:122..122
+   122          scanf("%d %d", &input1, &input2);
+
+47: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al119/proj2.c:113..113
+   113          MatrixOfverticesCit[input1-1][input2-1] = id;
+
+48: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al119/proj2.c:112..112
+   112          scanf("%d %d", &input1, &input2);
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al119/proj2.c:323..323
+   323      prev[SourceIndex] = 11;
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al119/proj2.c:149..149
+   149      if(Manhattan[n].listOfAdjEdges.head == NULL){

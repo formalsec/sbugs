@@ -1,0 +1,976 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:502..502
+   502  			ENCOMENDAS[i].info_encomenda[p][0] = -1;		
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:502..502
+   502  			ENCOMENDAS[i].info_encomenda[p][0] = -1;		
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:494..494
+   494  		ENCOMENDAS[i].identificacao_encomenda = -1;
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:493..493
+   493  		ENCOMENDAS[i].peso_encomenda = 0;
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:487..487
+   487  		STOCK_LOJA[i].identificacao_produto = -1;
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:474..474
+   474  					ENCOMENDAS[encomenda].info_encomenda[tabelaF[i]][1]);
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:474..474
+   474  					ENCOMENDAS[encomenda].info_encomenda[tabelaF[i]][1]);
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:473..473
+   473  					STOCK_LOJA[ENCOMENDAS[encomenda].info_encomenda[tabelaF[i]][0]].preco,
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:473..473
+   473  					STOCK_LOJA[ENCOMENDAS[encomenda].info_encomenda[tabelaF[i]][0]].preco,
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:473..473
+   473  					STOCK_LOJA[ENCOMENDAS[encomenda].info_encomenda[tabelaF[i]][0]].preco,
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:473..473
+   473  					STOCK_LOJA[ENCOMENDAS[encomenda].info_encomenda[tabelaF[i]][0]].preco,
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:472..472
+   472  				printf("* %s %d %d\n", STOCK_LOJA[ENCOMENDAS[encomenda].info_encomenda[tabelaF[i]][0]].NOME_PRODUTO, 
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:472..472
+   472  				printf("* %s %d %d\n", STOCK_LOJA[ENCOMENDAS[encomenda].info_encomenda[tabelaF[i]][0]].NOME_PRODUTO, 
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:472..472
+   472  				printf("* %s %d %d\n", STOCK_LOJA[ENCOMENDAS[encomenda].info_encomenda[tabelaF[i]][0]].NOME_PRODUTO, 
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:472..472
+   472  				printf("* %s %d %d\n", STOCK_LOJA[ENCOMENDAS[encomenda].info_encomenda[tabelaF[i]][0]].NOME_PRODUTO, 
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:471..471
+   471  			if (ENCOMENDAS[encomenda].info_encomenda[tabelaF[i]][1] > 0) /* aqui so entram os produtos cuja quantidade seja superior a zero para poder ser feito o seu print*/
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:471..471
+   471  			if (ENCOMENDAS[encomenda].info_encomenda[tabelaF[i]][1] > 0) /* aqui so entram os produtos cuja quantidade seja superior a zero para poder ser feito o seu print*/
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:461..461
+   461  				tabelaF[cima] = i; /* passa esses indices para uma tabela que vai ser usada no merge_sort*/
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:459..459
+   459  			if (ENCOMENDAS[atoi(LINHA)].info_encomenda[i][0] != -1) 
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:459..459
+   459  			if (ENCOMENDAS[atoi(LINHA)].info_encomenda[i][0] != -1) 
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:459..459
+   459  			if (ENCOMENDAS[atoi(LINHA)].info_encomenda[i][0] != -1) 
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:455..455
+   455  	if (ENCOMENDAS[atoi(LINHA)].identificacao_encomenda != -1)
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:455..455
+   455  	if (ENCOMENDAS[atoi(LINHA)].identificacao_encomenda != -1)
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:451..451
+   451  	char LINHA[MAX_CARACTERISTICAS];
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:450..450
+   450  	int i,conta = 0, baixo = 0, cima = 0, tabelaF[MAX_PRODUTOS], encomenda;
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:443..443
+   443  		printf("* %s %d %d\n", STOCK_LOJA[tabelaF[i]].NOME_PRODUTO, STOCK_LOJA[tabelaF[i]].preco, STOCK_LOJA[tabelaF[i]].qtd);
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:443..443
+   443  		printf("* %s %d %d\n", STOCK_LOJA[tabelaF[i]].NOME_PRODUTO, STOCK_LOJA[tabelaF[i]].preco, STOCK_LOJA[tabelaF[i]].qtd);
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:443..443
+   443  		printf("* %s %d %d\n", STOCK_LOJA[tabelaF[i]].NOME_PRODUTO, STOCK_LOJA[tabelaF[i]].preco, STOCK_LOJA[tabelaF[i]].qtd);
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:443..443
+   443  		printf("* %s %d %d\n", STOCK_LOJA[tabelaF[i]].NOME_PRODUTO, STOCK_LOJA[tabelaF[i]].preco, STOCK_LOJA[tabelaF[i]].qtd);
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:443..443
+   443  		printf("* %s %d %d\n", STOCK_LOJA[tabelaF[i]].NOME_PRODUTO, STOCK_LOJA[tabelaF[i]].preco, STOCK_LOJA[tabelaF[i]].qtd);
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:443..443
+   443  		printf("* %s %d %d\n", STOCK_LOJA[tabelaF[i]].NOME_PRODUTO, STOCK_LOJA[tabelaF[i]].preco, STOCK_LOJA[tabelaF[i]].qtd);
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:438..438
+   438  		tabelaF[i] = STOCK_LOJA[i].identificacao_produto; /*passar os indices para uma tabela que ira ser usada no merge_sort*/
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:438..438
+   438  		tabelaF[i] = STOCK_LOJA[i].identificacao_produto; /*passar os indices para uma tabela que ira ser usada no merge_sort*/
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:429..429
+   429  		if (STOCK_LOJA[i].identificacao_produto != -1)
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:426..426
+   426  	int i, tabelaF[MAX_PRODUTOS],conta = 0, cima, baixo = 0;
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:406..406
+   406  						contagem = ENCOMENDAS[i].info_encomenda[p][1]; /*se a nova quantidade na encomenda for maior que na encomenda anterior */
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:406..406
+   406  						contagem = ENCOMENDAS[i].info_encomenda[p][1]; /*se a nova quantidade na encomenda for maior que na encomenda anterior */
+
+38: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:405..405
+   405  					if (ENCOMENDAS[i].info_encomenda[p][1] > contagem){     
+
+39: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:405..405
+   405  					if (ENCOMENDAS[i].info_encomenda[p][1] > contagem){     
+
+40: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:403..403
+   403  				if (ENCOMENDAS[i].info_encomenda[p][0] != -1 && ENCOMENDAS[i].info_encomenda[p][0] == atoi(ARMAZEM_DADOS[0]))
+
+41: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:403..403
+   403  				if (ENCOMENDAS[i].info_encomenda[p][0] != -1 && ENCOMENDAS[i].info_encomenda[p][0] == atoi(ARMAZEM_DADOS[0]))
+
+42: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:403..403
+   403  				if (ENCOMENDAS[i].info_encomenda[p][0] != -1 && ENCOMENDAS[i].info_encomenda[p][0] == atoi(ARMAZEM_DADOS[0]))
+
+43: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:403..403
+   403  				if (ENCOMENDAS[i].info_encomenda[p][0] != -1 && ENCOMENDAS[i].info_encomenda[p][0] == atoi(ARMAZEM_DADOS[0]))
+
+44: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:397..397
+   397  	if (STOCK_LOJA[atoi(ARMAZEM_DADOS[0])].identificacao_produto != -1)
+
+45: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:397..397
+   397  	if (STOCK_LOJA[atoi(ARMAZEM_DADOS[0])].identificacao_produto != -1)
+
+46: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:393..393
+   393  	char LINHA[MAX], ARMAZEM_DADOS[MAX_CARACTERISTICAS][MAX];
+
+47: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:393..393
+   393  	char LINHA[MAX], ARMAZEM_DADOS[MAX_CARACTERISTICAS][MAX];
+
+48: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:376..376
+   376  				printf("%s %d.\n", STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].NOME_PRODUTO, 0);
+
+49: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:376..376
+   376  				printf("%s %d.\n", STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].NOME_PRODUTO, 0);
+
+50: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:374..374
+   374  				printf("%s %d.\n", STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].NOME_PRODUTO,ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][1]);
+
+51: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:374..374
+   374  				printf("%s %d.\n", STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].NOME_PRODUTO,ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][1]);
+
+52: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:374..374
+   374  				printf("%s %d.\n", STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].NOME_PRODUTO,ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][1]);
+
+53: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:374..374
+   374  				printf("%s %d.\n", STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].NOME_PRODUTO,ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][1]);
+
+54: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:374..374
+   374  				printf("%s %d.\n", STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].NOME_PRODUTO,ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][1]);
+
+55: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:367..367
+   367  				if(ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][0] == atoi(ARMAZEM_DADOS[1]))/*encontrar, dentro da encomenda dada, o indice do porduto que se quer listar*/
+
+56: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:367..367
+   367  				if(ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][0] == atoi(ARMAZEM_DADOS[1]))/*encontrar, dentro da encomenda dada, o indice do porduto que se quer listar*/
+
+57: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:367..367
+   367  				if(ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][0] == atoi(ARMAZEM_DADOS[1]))/*encontrar, dentro da encomenda dada, o indice do porduto que se quer listar*/
+
+58: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:363..363
+   363  		if (STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].identificacao_produto != -1)  
+
+59: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:363..363
+   363  		if (STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].identificacao_produto != -1)  
+
+60: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:361..361
+   361  	if (ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].identificacao_encomenda != -1) 
+
+61: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:361..361
+   361  	if (ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].identificacao_encomenda != -1) 
+
+62: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:357..357
+   357  	char LINHA[MAX], ARMAZEM_DADOS[MAX_CARACTERISTICAS][MAX];
+
+63: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:357..357
+   357  	char LINHA[MAX], ARMAZEM_DADOS[MAX_CARACTERISTICAS][MAX];
+
+64: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:345..345
+   345  		STOCK_LOJA[atoi(ARMAZEM_DADOS[0])].preco = atoi(ARMAZEM_DADOS[1]); /* o preco e alterado aqui substituindo o valor antigo pelo novo*/
+
+65: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:345..345
+   345  		STOCK_LOJA[atoi(ARMAZEM_DADOS[0])].preco = atoi(ARMAZEM_DADOS[1]); /* o preco e alterado aqui substituindo o valor antigo pelo novo*/
+
+66: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:343..343
+   343  	if (STOCK_LOJA[atoi(ARMAZEM_DADOS[0])].identificacao_produto != -1) 
+
+67: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:343..343
+   343  	if (STOCK_LOJA[atoi(ARMAZEM_DADOS[0])].identificacao_produto != -1) 
+
+68: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:339..339
+   339  	char LINHA[MAX], ARMAZEM_DADOS[MAX_CARACTERISTICAS][MAX];
+
+69: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:339..339
+   339  	char LINHA[MAX], ARMAZEM_DADOS[MAX_CARACTERISTICAS][MAX];
+
+70: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:325..325
+   325  				preco += STOCK_LOJA[ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][0]].preco * ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][1]; /*conta que calcula o custo*/
+
+71: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:325..325
+   325  				preco += STOCK_LOJA[ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][0]].preco * ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][1]; /*conta que calcula o custo*/
+
+72: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:325..325
+   325  				preco += STOCK_LOJA[ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][0]].preco * ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][1]; /*conta que calcula o custo*/
+
+73: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:325..325
+   325  				preco += STOCK_LOJA[ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][0]].preco * ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][1]; /*conta que calcula o custo*/
+
+74: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:325..325
+   325  				preco += STOCK_LOJA[ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][0]].preco * ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][1]; /*conta que calcula o custo*/
+
+75: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:325..325
+   325  				preco += STOCK_LOJA[ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][0]].preco * ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][1]; /*conta que calcula o custo*/
+
+76: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:325..325
+   325  				preco += STOCK_LOJA[ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][0]].preco * ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][1]; /*conta que calcula o custo*/
+
+77: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:325..325
+   325  				preco += STOCK_LOJA[ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][0]].preco * ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][1]; /*conta que calcula o custo*/
+
+78: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:323..323
+   323  			if (ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][0] != -1)
+
+79: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:323..323
+   323  			if (ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][0] != -1)
+
+80: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:323..323
+   323  			if (ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][0] != -1)
+
+81: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:319..319
+   319  	if (ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].identificacao_encomenda == atoi(ARMAZEM_DADOS[0]))
+
+82: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:319..319
+   319  	if (ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].identificacao_encomenda == atoi(ARMAZEM_DADOS[0]))
+
+83: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:315..315
+   315  	char LINHA[MAX], ARMAZEM_DADOS[MAX_CARACTERISTICAS][MAX];
+
+84: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:315..315
+   315  	char LINHA[MAX], ARMAZEM_DADOS[MAX_CARACTERISTICAS][MAX];
+
+85: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:295..295
+   295  					ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][1] = 0; /* o peso desse produto na encomenda e posto a 0 pois o produto foi retirado*/
+
+86: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:295..295
+   295  					ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][1] = 0; /* o peso desse produto na encomenda e posto a 0 pois o produto foi retirado*/
+
+87: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:295..295
+   295  					ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][1] = 0; /* o peso desse produto na encomenda e posto a 0 pois o produto foi retirado*/
+
+88: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:294..294
+   294  					STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].qtd += ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][1]; /*repor no stock a qtd retirada a encomenda */
+
+89: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:294..294
+   294  					STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].qtd += ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][1]; /*repor no stock a qtd retirada a encomenda */
+
+90: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:294..294
+   294  					STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].qtd += ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][1]; /*repor no stock a qtd retirada a encomenda */
+
+91: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:294..294
+   294  					STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].qtd += ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][1]; /*repor no stock a qtd retirada a encomenda */
+
+92: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:294..294
+   294  					STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].qtd += ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][1]; /*repor no stock a qtd retirada a encomenda */
+
+93: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:293..293
+   293  					ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].peso_encomenda -= STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].peso * ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][1]; /* retirar o peso ao peso total da encomenda*/
+
+94: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:293..293
+   293  					ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].peso_encomenda -= STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].peso * ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][1]; /* retirar o peso ao peso total da encomenda*/
+
+95: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:293..293
+   293  					ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].peso_encomenda -= STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].peso * ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][1]; /* retirar o peso ao peso total da encomenda*/
+
+96: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:293..293
+   293  					ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].peso_encomenda -= STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].peso * ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][1]; /* retirar o peso ao peso total da encomenda*/
+
+97: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:293..293
+   293  					ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].peso_encomenda -= STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].peso * ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][1]; /* retirar o peso ao peso total da encomenda*/
+
+98: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:293..293
+   293  					ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].peso_encomenda -= STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].peso * ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][1]; /* retirar o peso ao peso total da encomenda*/
+
+99: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:293..293
+   293  					ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].peso_encomenda -= STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].peso * ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][1]; /* retirar o peso ao peso total da encomenda*/
+
+100: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:291..291
+   291  				if (ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][0] == atoi(ARMAZEM_DADOS[1])) /* encontrar o indice do prduto que se quer remover*/
+
+101: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:291..291
+   291  				if (ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][0] == atoi(ARMAZEM_DADOS[1])) /* encontrar o indice do prduto que se quer remover*/
+
+102: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:291..291
+   291  				if (ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][0] == atoi(ARMAZEM_DADOS[1])) /* encontrar o indice do prduto que se quer remover*/
+
+103: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:287..287
+   287  		if (STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].identificacao_produto != -1)
+
+104: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:287..287
+   287  		if (STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].identificacao_produto != -1)
+
+105: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:285..285
+   285  	if (ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].identificacao_encomenda != -1)
+
+106: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:285..285
+   285  	if (ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].identificacao_encomenda != -1)
+
+107: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:281..281
+   281  	char LINHA[MAX], ARMAZEM_DADOS[MAX_CARACTERISTICAS][MAX];
+
+108: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:281..281
+   281  	char LINHA[MAX], ARMAZEM_DADOS[MAX_CARACTERISTICAS][MAX];
+
+109: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:264..264
+   264  			STOCK_LOJA[atoi(ARMAZEM_DADOS[0])].qtd -= atoi(ARMAZEM_DADOS[1]);   
+
+110: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:264..264
+   264  			STOCK_LOJA[atoi(ARMAZEM_DADOS[0])].qtd -= atoi(ARMAZEM_DADOS[1]);   
+
+111: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:262..262
+   262  		if(STOCK_LOJA[atoi(ARMAZEM_DADOS[0])].qtd - atoi(ARMAZEM_DADOS[1])  >= 0)   /* verificar se ao retiramos menos ou tanta quantidade que a existente*/
+
+112: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:262..262
+   262  		if(STOCK_LOJA[atoi(ARMAZEM_DADOS[0])].qtd - atoi(ARMAZEM_DADOS[1])  >= 0)   /* verificar se ao retiramos menos ou tanta quantidade que a existente*/
+
+113: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:260..260
+   260  	if (STOCK_LOJA[atoi(ARMAZEM_DADOS[0])].identificacao_produto != -1)   /* verificacao da existencia do produto */
+
+114: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:260..260
+   260  	if (STOCK_LOJA[atoi(ARMAZEM_DADOS[0])].identificacao_produto != -1)   /* verificacao da existencia do produto */
+
+115: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:256..256
+   256  	char LINHA[MAX], ARMAZEM_DADOS[MAX_CARACTERISTICAS][MAX];
+
+116: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:256..256
+   256  	char LINHA[MAX], ARMAZEM_DADOS[MAX_CARACTERISTICAS][MAX];
+
+117: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:231..231
+   231  								ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][1] = atoi(ARMAZEM_DADOS[2]); /* guardar a qtd do produto */
+
+118: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:231..231
+   231  								ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][1] = atoi(ARMAZEM_DADOS[2]); /* guardar a qtd do produto */
+
+119: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:231..231
+   231  								ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][1] = atoi(ARMAZEM_DADOS[2]); /* guardar a qtd do produto */
+
+120: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:230..230
+   230  								ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][0] = atoi(ARMAZEM_DADOS[1]); /* guardar a idt do produto */
+
+121: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:230..230
+   230  								ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][0] = atoi(ARMAZEM_DADOS[1]); /* guardar a idt do produto */
+
+122: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:230..230
+   230  								ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][0] = atoi(ARMAZEM_DADOS[1]); /* guardar a idt do produto */
+
+123: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:228..228
+   228  							if (ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][0] == -1) 
+
+124: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:228..228
+   228  							if (ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][0] == -1) 
+
+125: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:228..228
+   228  							if (ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][0] == -1) 
+
+126: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:219..219
+   219  							ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][1] += atoi(ARMAZEM_DADOS[2]);
+
+127: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:219..219
+   219  							ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][1] += atoi(ARMAZEM_DADOS[2]);
+
+128: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:219..219
+   219  							ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][1] += atoi(ARMAZEM_DADOS[2]);
+
+129: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:217..217
+   217  						if (ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][0] == atoi(ARMAZEM_DADOS[1]))  /* o produto ja se encontra na encomenda */
+
+130: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:217..217
+   217  						if (ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][0] == atoi(ARMAZEM_DADOS[1]))  /* o produto ja se encontra na encomenda */
+
+131: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:217..217
+   217  						if (ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].info_encomenda[i][0] == atoi(ARMAZEM_DADOS[1]))  /* o produto ja se encontra na encomenda */
+
+132: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:214..214
+   214  					STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].qtd -= atoi(ARMAZEM_DADOS[2]);
+
+133: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:214..214
+   214  					STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].qtd -= atoi(ARMAZEM_DADOS[2]);
+
+134: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:209..209
+   209  					ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].peso_encomenda -= atoi(ARMAZEM_DADOS[2]) * STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].peso;   /* retirar agora o que foi adicionado pois e invalido o peso atual*/
+
+135: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:209..209
+   209  					ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].peso_encomenda -= atoi(ARMAZEM_DADOS[2]) * STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].peso;   /* retirar agora o que foi adicionado pois e invalido o peso atual*/
+
+136: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:209..209
+   209  					ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].peso_encomenda -= atoi(ARMAZEM_DADOS[2]) * STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].peso;   /* retirar agora o que foi adicionado pois e invalido o peso atual*/
+
+137: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:209..209
+   209  					ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].peso_encomenda -= atoi(ARMAZEM_DADOS[2]) * STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].peso;   /* retirar agora o que foi adicionado pois e invalido o peso atual*/
+
+138: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:207..207
+   207  				if(ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].peso_encomenda > MAX_PESO)
+
+139: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:207..207
+   207  				if(ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].peso_encomenda > MAX_PESO)
+
+140: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:206..206
+   206  				ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].peso_encomenda += atoi(ARMAZEM_DADOS[2]) * STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].peso;   /*calculo do peso total*/
+
+141: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:206..206
+   206  				ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].peso_encomenda += atoi(ARMAZEM_DADOS[2]) * STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].peso;   /*calculo do peso total*/
+
+142: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:206..206
+   206  				ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].peso_encomenda += atoi(ARMAZEM_DADOS[2]) * STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].peso;   /*calculo do peso total*/
+
+143: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:206..206
+   206  				ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].peso_encomenda += atoi(ARMAZEM_DADOS[2]) * STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].peso;   /*calculo do peso total*/
+
+144: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:204..204
+   204  			if(STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].qtd >= atoi(ARMAZEM_DADOS[2]))  /* verifica se existe existe stock suficiente para adicionar o produto a encomenda */
+
+145: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:204..204
+   204  			if(STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].qtd >= atoi(ARMAZEM_DADOS[2]))  /* verifica se existe existe stock suficiente para adicionar o produto a encomenda */
+
+146: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:202..202
+   202  		if (STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].identificacao_produto != -1) 
+
+147: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:202..202
+   202  		if (STOCK_LOJA[atoi(ARMAZEM_DADOS[1])].identificacao_produto != -1) 
+
+148: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:200..200
+   200  	if (ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].identificacao_encomenda != -1)/*verificacao da existencia da encomenda*/
+
+149: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:200..200
+   200  	if (ENCOMENDAS[atoi(ARMAZEM_DADOS[0])].identificacao_encomenda != -1)/*verificacao da existencia da encomenda*/
+
+150: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:195..195
+   195  	char LINHA[MAX], ARMAZEM_DADOS[MAX_CARACTERISTICAS][MAX];
+
+151: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:195..195
+   195  	char LINHA[MAX], ARMAZEM_DADOS[MAX_CARACTERISTICAS][MAX];
+
+152: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:187..187
+   187  	ENCOMENDAS[p].identificacao_encomenda = p;
+
+153: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:184..184
+   184  		if(ENCOMENDAS[i].identificacao_encomenda != -1) /* procura um indice 'vazio' para o atribuir a identificaao da encomenda*/
+
+154: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:170..170
+   170  		STOCK_LOJA[atoi(ARMAZEM_DADOS[0])].qtd += atoi(ARMAZEM_DADOS[1]); /*stock e aqui adicionado*/
+
+155: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:170..170
+   170  		STOCK_LOJA[atoi(ARMAZEM_DADOS[0])].qtd += atoi(ARMAZEM_DADOS[1]); /*stock e aqui adicionado*/
+
+156: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:168..168
+   168  	if (STOCK_LOJA[atoi(ARMAZEM_DADOS[0])].identificacao_produto != -1) /*verificacao da existencia do produto*/
+
+157: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:168..168
+   168  	if (STOCK_LOJA[atoi(ARMAZEM_DADOS[0])].identificacao_produto != -1) /*verificacao da existencia do produto*/
+
+158: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:164..164
+   164  	char LINHA[MAX], ARMAZEM_DADOS[MAX_CARACTERISTICAS][MAX];
+
+159: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:164..164
+   164  	char LINHA[MAX], ARMAZEM_DADOS[MAX_CARACTERISTICAS][MAX];
+
+160: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:157..157
+   157  	STOCK_LOJA[p].qtd = atoi(ARMAZEM_DADOS[3]);
+
+161: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:156..156
+   156  	STOCK_LOJA[p].peso = atoi(ARMAZEM_DADOS[2]);
+
+162: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:155..155
+   155  	STOCK_LOJA[p].preco = atoi(ARMAZEM_DADOS[1]);          /* guarda os dados nos respetivos sitios */
+
+163: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:154..154
+   154  	strcpy(STOCK_LOJA[p].NOME_PRODUTO, ARMAZEM_DADOS[0]);
+
+164: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:153..153
+   153  	STOCK_LOJA[p].identificacao_produto = p;
+
+165: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:147..147
+   147  		if(STOCK_LOJA[i].identificacao_produto != -1) /* procura um indice 'vazio' para o atribuir a identificaao do produto*/
+
+166: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:141..141
+   141  	char LINHA[MAX], ARMAZEM_DADOS[MAX_CARACTERISTICAS][MAX];
+
+167: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:141..141
+   141  	char LINHA[MAX], ARMAZEM_DADOS[MAX_CARACTERISTICAS][MAX];
+
+168: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:114..114
+   114  			tabelaF[k] = tabela_aux[i++];
+
+169: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:114..114
+   114  			tabelaF[k] = tabela_aux[i++];
+
+170: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:111..111
+   111  			tabelaF[k] = tabela_aux[j--];
+
+171: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:111..111
+   111  			tabelaF[k] = tabela_aux[j--];
+
+172: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:109..109
+   109  			STOCK_LOJA[tabela_aux[j]].identificacao_produto < STOCK_LOJA[tabela_aux[i]].identificacao_produto) /*comparacao feita no caso dos precos serem iguais mas*/
+
+173: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:109..109
+   109  			STOCK_LOJA[tabela_aux[j]].identificacao_produto < STOCK_LOJA[tabela_aux[i]].identificacao_produto) /*comparacao feita no caso dos precos serem iguais mas*/
+
+174: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:109..109
+   109  			STOCK_LOJA[tabela_aux[j]].identificacao_produto < STOCK_LOJA[tabela_aux[i]].identificacao_produto) /*comparacao feita no caso dos precos serem iguais mas*/
+
+175: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:109..109
+   109  			STOCK_LOJA[tabela_aux[j]].identificacao_produto < STOCK_LOJA[tabela_aux[i]].identificacao_produto) /*comparacao feita no caso dos precos serem iguais mas*/
+
+176: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:108..108
+   108  		else if (STOCK_LOJA[tabela_aux[j]].preco == STOCK_LOJA[tabela_aux[i]].preco && 
+
+177: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:108..108
+   108  		else if (STOCK_LOJA[tabela_aux[j]].preco == STOCK_LOJA[tabela_aux[i]].preco && 
+
+178: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:108..108
+   108  		else if (STOCK_LOJA[tabela_aux[j]].preco == STOCK_LOJA[tabela_aux[i]].preco && 
+
+179: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:108..108
+   108  		else if (STOCK_LOJA[tabela_aux[j]].preco == STOCK_LOJA[tabela_aux[i]].preco && 
+
+180: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:107..107
+   107  			tabelaF[k] = tabela_aux[j--];
+
+181: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:107..107
+   107  			tabelaF[k] = tabela_aux[j--];
+
+182: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:106..106
+   106  		if((STOCK_LOJA[tabela_aux[j]].preco < STOCK_LOJA[tabela_aux[i]].preco))  /*aqui comeca a ser feita a comparacao dos precos e a respetiva ordena?ao na tabela final*/
+
+183: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:106..106
+   106  		if((STOCK_LOJA[tabela_aux[j]].preco < STOCK_LOJA[tabela_aux[i]].preco))  /*aqui comeca a ser feita a comparacao dos precos e a respetiva ordena?ao na tabela final*/
+
+184: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:106..106
+   106  		if((STOCK_LOJA[tabela_aux[j]].preco < STOCK_LOJA[tabela_aux[i]].preco))  /*aqui comeca a ser feita a comparacao dos precos e a respetiva ordena?ao na tabela final*/
+
+185: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:106..106
+   106  		if((STOCK_LOJA[tabela_aux[j]].preco < STOCK_LOJA[tabela_aux[i]].preco))  /*aqui comeca a ser feita a comparacao dos precos e a respetiva ordena?ao na tabela final*/
+
+186: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:103..103
+   103  		tabela_aux[cima + mid - j] = tabelaF[j +1];
+
+187: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:103..103
+   103  		tabela_aux[cima + mid - j] = tabelaF[j +1];
+
+188: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:103..103
+   103  		tabela_aux[cima + mid - j] = tabelaF[j +1];
+
+189: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:103..103
+   103  		tabela_aux[cima + mid - j] = tabelaF[j +1];
+
+190: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:101..101
+   101  		tabela_aux[i -1] = tabelaF[i-1];
+
+191: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:101..101
+   101  		tabela_aux[i -1] = tabelaF[i-1];
+
+192: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:99..99
+    99  	int k, i, j, tabela_aux[MAX_PRODUTOS];
+
+193: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:92..92
+    92  			tabelaF[k] = tabela_aux[i++];
+
+194: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:92..92
+    92  			tabelaF[k] = tabela_aux[i++];
+
+195: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:90..90
+    90  			tabelaF[k] = tabela_aux[j--];                                                         /* e introduz o respetivo indice por ordem na tabela final*/
+
+196: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:90..90
+    90  			tabelaF[k] = tabela_aux[j--];                                                         /* e introduz o respetivo indice por ordem na tabela final*/
+
+197: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:89..89
+    89  			STOCK_LOJA[ENCOMENDAS[encomenda].info_encomenda[tabela_aux[i]][0]].NOME_PRODUTO) < 0) /*compara as strings para as ordenar por ordem alfabetica*/
+
+198: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:89..89
+    89  			STOCK_LOJA[ENCOMENDAS[encomenda].info_encomenda[tabela_aux[i]][0]].NOME_PRODUTO) < 0) /*compara as strings para as ordenar por ordem alfabetica*/
+
+199: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:89..89
+    89  			STOCK_LOJA[ENCOMENDAS[encomenda].info_encomenda[tabela_aux[i]][0]].NOME_PRODUTO) < 0) /*compara as strings para as ordenar por ordem alfabetica*/
+
+200: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:89..89
+    89  			STOCK_LOJA[ENCOMENDAS[encomenda].info_encomenda[tabela_aux[i]][0]].NOME_PRODUTO) < 0) /*compara as strings para as ordenar por ordem alfabetica*/
+
+201: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:88..88
+    88  		if(strcmp(STOCK_LOJA[ENCOMENDAS[encomenda].info_encomenda[tabela_aux[j]][0]].NOME_PRODUTO,
+
+202: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:88..88
+    88  		if(strcmp(STOCK_LOJA[ENCOMENDAS[encomenda].info_encomenda[tabela_aux[j]][0]].NOME_PRODUTO,
+
+203: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:88..88
+    88  		if(strcmp(STOCK_LOJA[ENCOMENDAS[encomenda].info_encomenda[tabela_aux[j]][0]].NOME_PRODUTO,
+
+204: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:88..88
+    88  		if(strcmp(STOCK_LOJA[ENCOMENDAS[encomenda].info_encomenda[tabela_aux[j]][0]].NOME_PRODUTO,
+
+205: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:85..85
+    85  		tabela_aux[cima + mid - j] = tabelaF[j +1];
+
+206: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:85..85
+    85  		tabela_aux[cima + mid - j] = tabelaF[j +1];
+
+207: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:85..85
+    85  		tabela_aux[cima + mid - j] = tabelaF[j +1];
+
+208: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:85..85
+    85  		tabela_aux[cima + mid - j] = tabelaF[j +1];
+
+209: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:83..83
+    83  		tabela_aux[i -1] = tabelaF[i-1];
+
+210: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:83..83
+    83  		tabela_aux[i -1] = tabelaF[i-1];
+
+211: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:81..81
+    81  	int k, i, j, tabela_aux[MAX_PRODUTOS];
+
+212: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:70..70
+    70  			ARMAZEM_DADOS[a][b] = LINHA[p]; /*caso nao encontre os ':' continua a guardar os caracteres no mesmo indice a*/
+
+213: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:70..70
+    70  			ARMAZEM_DADOS[a][b] = LINHA[p]; /*caso nao encontre os ':' continua a guardar os caracteres no mesmo indice a*/
+
+214: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:64..64
+    64  			ARMAZEM_DADOS[a][b] = '\0';  /*ao encontrar os ':' muda de indice para ser guardada a proxima informacao toda*/
+
+215: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:62..62
+    62  		if(LINHA[p] == ':')
+
+216: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:60..60
+    60  	while(LINHA[p] != '\0')
+
+217: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:58..58
+    58  		strncpy(ARMAZEM_DADOS[i], "", MAX); /*a cada indice do vetor armazem dados introduz 63 "" que e o maximo de caracteres que sao permitidos por caracteristica do produto*/
+
+218: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:49..49
+    49  	LINHA[i] = '\0';
+
+219: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:46..46
+    46  		LINHA[i] = c; /*enquanto nao encontrar '\n' mete o caracter na tabela LINHA*/
+
+220: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:31..31
+    31  	int info_encomenda[MAX_PESO][MAX_INFO_ENCOMENDA];  /* dentro fo max_info_encomenda estara guardado o indice e a quantidade do produto nessa encomenda*/
+
+221: /home/fmarques/sbugs/projects/alunos/iaed_p1/278/proj1.c:20..20
+    20  	char NOME_PRODUTO[MAX];
+cat: _CWE_457_.txt: No such file or directory
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:633..633
+   633              a[k] = ListaAuxProd[i++];
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:633..633
+   633              a[k] = ListaAuxProd[i++];
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:628..628
+   628              a[k] = ListaAuxProd[j--];
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:628..628
+   628              a[k] = ListaAuxProd[j--];
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:626..626
+   626          if (comparador(ListaAuxProd[j], ListaAuxProd[i], codigo) || i > m)
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:626..626
+   626          if (comparador(ListaAuxProd[j], ListaAuxProd[i], codigo) || i > m)
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:621..621
+   621          ListaAuxProd[right+m-j] = a[j+1];
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:621..621
+   621          ListaAuxProd[right+m-j] = a[j+1];
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:621..621
+   621          ListaAuxProd[right+m-j] = a[j+1];
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:621..621
+   621          ListaAuxProd[right+m-j] = a[j+1];
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:617..617
+   617          ListaAuxProd[i-1] = a[i-1];
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:617..617
+   617          ListaAuxProd[i-1] = a[i-1];
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:580..580
+   580              if(ListaDeEncomendas[idenc].encomendado[i].idpNaEnc != -1)
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:580..580
+   580              if(ListaDeEncomendas[idenc].encomendado[i].idpNaEnc != -1)
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:578..578
+   578          if(ListaDeEncomendas[idenc].encomendado[i].id == idp)
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:578..578
+   578          if(ListaDeEncomendas[idenc].encomendado[i].id == idp)
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:576..576
+   576      for(i =0; i< ListaDeEncomendas[idenc].numeroDeProdutos && existe == -1 ; i++)
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:558..558
+   558              preco = ListaDeProdutos[aux.id].preco;
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:558..558
+   558              preco = ListaDeProdutos[aux.id].preco;
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:557..557
+   557              aux = ListaOrdProd[i];
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:549..549
+   549              ListaOrdProd[i] =ListaDeEncomendas[ide].encomendado[i];
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:549..549
+   549              ListaOrdProd[i] =ListaDeEncomendas[ide].encomendado[i];
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:549..549
+   549              ListaOrdProd[i] =ListaDeEncomendas[ide].encomendado[i];
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:545..545
+   545          numDeProdutos = ListaDeEncomendas[ide].numeroDeProdutos;
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:528..528
+   528          temp = ListaOrdProd[i];
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:521..521
+   521          ListaOrdProd[i] = ListaDeProdutos[i]; /* copia os produtos para umvetor auxiliar de maneira a que a ordem deles nao seja alterada*/
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:521..521
+   521          ListaOrdProd[i] = ListaDeProdutos[i]; /* copia os produtos para umvetor auxiliar de maneira a que a ordem deles nao seja alterada*/
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:493..493
+   493                     maior = ListaDeEncomendas[i].encomendado[idpEnc].qtdPedidaNaEnc;
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:493..493
+   493                     maior = ListaDeEncomendas[i].encomendado[idpEnc].qtdPedidaNaEnc;
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:491..491
+   491                 if(ListaDeEncomendas[i].encomendado[idpEnc].qtdPedidaNaEnc > maior)
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:491..491
+   491                 if(ListaDeEncomendas[i].encomendado[idpEnc].qtdPedidaNaEnc > maior)
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:458..458
+   458                  printf("%s %d.\n",ListaDeProdutos[idp].descricao, qtd);
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:454..454
+   454                  printf("%s %d.\n",ListaDeEncomendas[ide].encomendado[existe].descricao,  ListaDeEncomendas[ide].encomendado[existe].qtdPedidaNaEnc);
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:454..454
+   454                  printf("%s %d.\n",ListaDeEncomendas[ide].encomendado[existe].descricao,  ListaDeEncomendas[ide].encomendado[existe].qtdPedidaNaEnc);
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:454..454
+   454                  printf("%s %d.\n",ListaDeEncomendas[ide].encomendado[existe].descricao,  ListaDeEncomendas[ide].encomendado[existe].qtdPedidaNaEnc);
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:454..454
+   454                  printf("%s %d.\n",ListaDeEncomendas[ide].encomendado[existe].descricao,  ListaDeEncomendas[ide].encomendado[existe].qtdPedidaNaEnc);
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:427..427
+   427          if(idp == ListaDeEncomendas[ide].encomendado[i].id)
+
+38: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:427..427
+   427          if(idp == ListaDeEncomendas[ide].encomendado[i].id)
+
+39: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:425..425
+   425      for( i = 0; i< ListaDeEncomendas[ide].numeroDeProdutos && existe == FALSE; i++)
+
+40: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:408..408
+   408                 ListaDeEncomendas[i].encomendado[idpEnc].preco = preco;
+
+41: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:408..408
+   408                 ListaDeEncomendas[i].encomendado[idpEnc].preco = preco;
+
+42: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:402..402
+   402          ListaDeProdutos[idp].preco = preco;
+
+43: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:383..383
+   383          ListaDeEncomendas[ide].custo = 0;
+
+44: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:382..382
+   382          printf("Custo da encomenda %d %d.\n",ide, ListaDeEncomendas[ide].custo);
+
+45: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:379..379
+   379              ListaDeEncomendas[ide].custo += (ListaDeEncomendas[ide].encomendado[i].preco * ListaDeEncomendas[ide].encomendado[i].qtdPedidaNaEnc);
+
+46: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:379..379
+   379              ListaDeEncomendas[ide].custo += (ListaDeEncomendas[ide].encomendado[i].preco * ListaDeEncomendas[ide].encomendado[i].qtdPedidaNaEnc);
+
+47: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:379..379
+   379              ListaDeEncomendas[ide].custo += (ListaDeEncomendas[ide].encomendado[i].preco * ListaDeEncomendas[ide].encomendado[i].qtdPedidaNaEnc);
+
+48: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:379..379
+   379              ListaDeEncomendas[ide].custo += (ListaDeEncomendas[ide].encomendado[i].preco * ListaDeEncomendas[ide].encomendado[i].qtdPedidaNaEnc);
+
+49: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:379..379
+   379              ListaDeEncomendas[ide].custo += (ListaDeEncomendas[ide].encomendado[i].preco * ListaDeEncomendas[ide].encomendado[i].qtdPedidaNaEnc);
+
+50: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:377..377
+   377          for(i =0; i < ListaDeEncomendas[ide].numeroDeProdutos; i++)
+
+51: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:347..347
+   347              ListaDeEncomendas[ide].numeroDeProdutos--;
+
+52: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:345..345
+   345                  ListaDeEncomendas[ide].encomendado[i] = ListaDeEncomendas[ide].encomendado[i+1];
+
+53: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:345..345
+   345                  ListaDeEncomendas[ide].encomendado[i] = ListaDeEncomendas[ide].encomendado[i+1];
+
+54: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:345..345
+   345                  ListaDeEncomendas[ide].encomendado[i] = ListaDeEncomendas[ide].encomendado[i+1];
+
+55: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:345..345
+   345                  ListaDeEncomendas[ide].encomendado[i] = ListaDeEncomendas[ide].encomendado[i+1];
+
+56: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:342..342
+   342              limite = ListaDeEncomendas[ide].numeroDeProdutos-1;
+
+57: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:340..340
+   340              ListaDeEncomendas[ide].encomendado[idpEnc].idpNaEnc = -1;
+
+58: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:340..340
+   340              ListaDeEncomendas[ide].encomendado[idpEnc].idpNaEnc = -1;
+
+59: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:339..339
+   339              ListaDeEncomendas[ide].encomendado[idpEnc].qtdPedidaNaEnc = 0;
+
+60: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:339..339
+   339              ListaDeEncomendas[ide].encomendado[idpEnc].qtdPedidaNaEnc = 0;
+
+61: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:336..336
+   336              ListaDeEncomendas[ide].encPeso -= (qtd*peso);
+
+62: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:335..335
+   335              ListaDeProdutos[idp].qtdEmStock += qtd;
+
+63: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:333..333
+   333              qtd = ListaDeEncomendas[ide].encomendado[idpEnc].qtdPedidaNaEnc;
+
+64: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:333..333
+   333              qtd = ListaDeEncomendas[ide].encomendado[idpEnc].qtdPedidaNaEnc;
+
+65: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:332..332
+   332              peso = ListaDeEncomendas[ide].encomendado[idpEnc].peso;
+
+66: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:332..332
+   332              peso = ListaDeEncomendas[ide].encomendado[idpEnc].peso;
+
+67: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:302..302
+   302              ListaDeProdutos[idp].qtdEmStock -= qtd;
+
+68: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:296..296
+   296          if(ListaDeProdutos[idp].qtdEmStock < qtd )
+
+69: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:263..263
+   263                          ListaDeEncomendas[idEnc].encomendado[idpEnc].numerodeVezesEnc++;  
+
+70: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:263..263
+   263                          ListaDeEncomendas[idEnc].encomendado[idpEnc].numerodeVezesEnc++;  
+
+71: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:262..262
+   262                          ListaDeProdutos[idp].qtdEmStock -= qtdPedida;
+
+72: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:261..261
+   261                          ListaDeEncomendas[idEnc].encPeso += (qtdPedida* p.peso);
+
+73: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:260..260
+   260                          ListaDeEncomendas[idEnc].encomendado[idpEnc].qtdPedidaNaEnc += qtdPedida;
+
+74: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:260..260
+   260                          ListaDeEncomendas[idEnc].encomendado[idpEnc].qtdPedidaNaEnc += qtdPedida;
+
+75: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:255..255
+   255                          ListaDeEncomendas[idEnc].encomendado[e.numeroDeProdutos].numerodeVezesEnc++;  
+
+76: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:255..255
+   255                          ListaDeEncomendas[idEnc].encomendado[e.numeroDeProdutos].numerodeVezesEnc++;  
+
+77: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:255..255
+   255                          ListaDeEncomendas[idEnc].encomendado[e.numeroDeProdutos].numerodeVezesEnc++;  
+
+78: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:254..254
+   254                          ListaDeEncomendas[idEnc].numeroDeProdutos++;
+
+79: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:253..253
+   253                          ListaDeProdutos[idp].qtdEmStock -= qtdPedida;
+
+80: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:252..252
+   252                          ListaDeEncomendas[idEnc].encPeso += (p.peso*qtdPedida);
+
+81: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:251..251
+   251                          ListaDeEncomendas[idEnc].encomendado[e.numeroDeProdutos] = p;
+
+82: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:251..251
+   251                          ListaDeEncomendas[idEnc].encomendado[e.numeroDeProdutos] = p;
+
+83: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:251..251
+   251                          ListaDeEncomendas[idEnc].encomendado[e.numeroDeProdutos] = p;
+
+84: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:249..249
+   249                          p.peso = ListaDeProdutos[idp].peso;
+
+85: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:247..247
+   247                          p.id = ListaDeProdutos[idp].id;
+
+86: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:246..246
+   246                          strcpy(p.descricao, ListaDeProdutos[idp].descricao);
+
+87: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:245..245
+   245                          p.preco = ListaDeProdutos[idp].preco;
+
+88: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:236..236
+   236                 if((ListaDeEncomendas[idEnc].encPeso +(p.peso*qtdPedida )) > MAXPESO)
+
+89: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:229..229
+   229              if(ListaDeProdutos[idp].qtdEmStock < qtdPedida )
+
+90: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:227..227
+   227              e = ListaDeEncomendas[idEnc];
+
+91: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:226..226
+   226              p = ListaDeProdutos[idp];
+
+92: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:205..205
+   205      ListaDeEncomendas[contadorEnc++] = novaEncomenda;
+
+93: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:185..185
+   185          ListaDeProdutos[idp].qtdEmStock += qtd;
+
+94: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:167..167
+   167      ListaDeProdutos[contador++] = p;
+
+95: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:151..151
+   151      char descricao[MAXSIZE];
+
+96: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:44..44
+    44      int idsProdEnc[MAXPRODUTO];
+
+97: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:38..38
+    38      Produto encomendado[MAXPESO];
+
+98: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:25..25
+    25      char descricao[MAXSIZE];
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:621..621
+   621          ListaAuxProd[right+m-j] = a[j+1];
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:621..621
+   621          ListaAuxProd[right+m-j] = a[j+1];
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:576..576
+   576      for(i =0; i< ListaDeEncomendas[idenc].numeroDeProdutos && existe == -1 ; i++)
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:425..425
+   425      for( i = 0; i< ListaDeEncomendas[ide].numeroDeProdutos && existe == FALSE; i++)
+=== Dangerous function calls lacking bounds checking ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:246..246
+   246                          strcpy(p.descricao, ListaDeProdutos[idp].descricao);
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p1/27/Proj1.c:157..157
+   157      strcpy(p.descricao,descricao);

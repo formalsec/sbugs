@@ -1,0 +1,172 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al070/main2.c:454..454
+   454              pos = caminho[pos];
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al070/main2.c:453..453
+   453              node_increment_fluxo(mapa->representacao,pos,caminho[pos],-1);
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al070/main2.c:452..452
+   452              node_increment_fluxo(mapa->representacao,caminho[pos],pos,1);
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al070/main2.c:422..422
+   422      if (visitados[to] == BLACK)
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al070/main2.c:417..417
+   417                      caminho[dn->id] = actual_node;
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al070/main2.c:417..417
+   417                      caminho[dn->id] = actual_node;
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al070/main2.c:416..416
+   416                      visitados[dn->id] = GRAY;
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al070/main2.c:416..416
+   416                      visitados[dn->id] = GRAY;
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al070/main2.c:413..413
+   413              if (visitados[dn->id] == WHITE && dn->limite - dn->fluxo > 0)
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al070/main2.c:413..413
+   413              if (visitados[dn->id] == WHITE && dn->limite - dn->fluxo > 0)
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al070/main2.c:408..408
+   408          visitados[actual_node] = BLACK;
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al070/main2.c:407..407
+   407          actual_node = dequeue_fila(fila);
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al070/main2.c:403..403
+   403      visitados[from] = GRAY;
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al070/main2.c:402..402
+   402      caminho[from] = -1;
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al070/main2.c:422..422
+   422      if (visitados[to] == BLACK)
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al070/main2.c:402..402
+   402      caminho[from] = -1;
+cat: _CWE_131_.txt: No such file or directory
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al037/p2.c:111..111
+   111  			matriz[d1-1][d2-1] = 2;
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al037/p2.c:110..110
+   110  		else if (matriz[d1-1][d2-1] == 0){
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al037/p2.c:108..108
+   108  			mask[d1-1][d2-1] = 1;
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al037/p2.c:106..106
+   106  			matriz[d1-1][d2-1] = 3;
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al037/p2.c:105..105
+   105  		if (matriz[d1-1][d2-1] == 1){
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al037/p2.c:104..104
+   104  		scanf("%d %d",&d1,&d2);
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al037/p2.c:99..99
+    99  		local[i][1] = localtemp[i][1];
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al037/p2.c:99..99
+    99  		local[i][1] = localtemp[i][1];
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al037/p2.c:98..98
+    98  		local[i][0] = localtemp[i][0];
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al037/p2.c:98..98
+    98  		local[i][0] = localtemp[i][0];
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al037/p2.c:96..96
+    96  	int local[supn][2];
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al037/p2.c:91..91
+    91  			localtemp[count][1] = d2-1;
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al037/p2.c:90..90
+    90  			localtemp[count][0] = d1-1;
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al037/p2.c:89..89
+    89  			matriz[d1-1][d2-1] = 1;
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al037/p2.c:88..88
+    88  		if (matriz[d1-1][d2-1] == 0){
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al037/p2.c:83..83
+    83  	int localtemp[supn][2];
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al037/p2.c:74..74
+    74  			mask[i][j] = 0;
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al037/p2.c:71..71
+    71  	int mask[aven][ruan];
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al037/p2.c:68..68
+    68  			matriz[i][j] = 0;
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al037/p2.c:64..64
+    64  	int matriz[aven][ruan];
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al037/p2.c:55..55
+    55  		mask[ave][rua] = 0;
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al037/p2.c:50..50
+    50  			a = solve(local[localcount+1][0],local[localcount+1][1],
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al037/p2.c:50..50
+    50  			a = solve(local[localcount+1][0],local[localcount+1][1],
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al037/p2.c:49..49
+    49  			mask[ave][rua] = 0;
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al037/p2.c:47..47
+    47  		if (localcount < supn-1 && ave == local[localcount][0] && rua == local[localcount][1] &&
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al037/p2.c:47..47
+    47  		if (localcount < supn-1 && ave == local[localcount][0] && rua == local[localcount][1] &&
+
+27: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al037/p2.c:28..28
+    28  		mask[ave][rua] = 0;
+
+28: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al037/p2.c:26..26
+    26  		a = solve(local[localcount+1][0],local[localcount+1][1],aven,ruan,
+
+29: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al037/p2.c:26..26
+    26  		a = solve(local[localcount+1][0],local[localcount+1][1],aven,ruan,
+
+30: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al037/p2.c:23..23
+    23  			mask[ave][rua] = 0;
+
+31: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al037/p2.c:21..21
+    21  	if (matriz[ave][rua] == 2){
+
+32: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al037/p2.c:20..20
+    20  	mask[ave][rua] = 1;
+
+33: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al037/p2.c:16..16
+    16  		return solve(local[localcount+1][0],local[localcount+1][1],aven,ruan,
+
+34: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al037/p2.c:16..16
+    16  		return solve(local[localcount+1][0],local[localcount+1][1],aven,ruan,
+
+35: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al037/p2.c:13..13
+    13  		if (localcount == supn-1 || (ave != local[localcount][0] && rua != local[localcount][1])){
+
+36: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al037/p2.c:13..13
+    13  		if (localcount == supn-1 || (ave != local[localcount][0] && rua != local[localcount][1])){
+
+37: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al037/p2.c:12..12
+    12  	if (mask[ave][rua] == 1){
+
+38: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al037/p2.c:9..9
+     9  		(matriz[ave][rua] == 1 && ave != local[localcount][0] && rua != local[localcount][1])){
+
+39: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al037/p2.c:9..9
+     9  		(matriz[ave][rua] == 1 && ave != local[localcount][0] && rua != local[localcount][1])){
+
+40: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al037/p2.c:9..9
+     9  		(matriz[ave][rua] == 1 && ave != local[localcount][0] && rua != local[localcount][1])){
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al037/p2.c:9..9
+     9  		(matriz[ave][rua] == 1 && ave != local[localcount][0] && rua != local[localcount][1])){

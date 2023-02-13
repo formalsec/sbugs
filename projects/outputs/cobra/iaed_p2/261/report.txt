@@ -1,0 +1,105 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/261/main.c:13..13
+    13  	char buffer[MAX];
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/261/JOGO.c:400..400
+   400      		free(tab_equipas[i]);
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/261/JOGO.c:395..395
+   395              printf("%d * %s\n", n, tab_equipas[tab_final[i]]);
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/261/JOGO.c:395..395
+   395              printf("%d * %s\n", n, tab_equipas[tab_final[i]]);
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/261/JOGO.c:388..388
+   388              tab_final[counter] = i;
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/261/JOGO.c:381..381
+   381      char* tab_equipas[EQUIPAHASHMAX];
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/261/JOGO.c:380..380
+   380      int tab_final[EQUIPAHASHMAX];
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/261/JOGO.c:77..77
+    77              tab_final[k] = tab_aux[i++];
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/261/JOGO.c:77..77
+    77              tab_final[k] = tab_aux[i++];
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/261/JOGO.c:75..75
+    75              tab_final[k] = tab_aux[j--];
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/261/JOGO.c:75..75
+    75              tab_final[k] = tab_aux[j--];
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/261/JOGO.c:74..74
+    74          if (strcmp(tab_equipa[tab_aux[j]], tab_equipa[tab_aux[i]]) < 0 || i > mid)
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/261/JOGO.c:74..74
+    74          if (strcmp(tab_equipa[tab_aux[j]], tab_equipa[tab_aux[i]]) < 0 || i > mid)
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/261/JOGO.c:74..74
+    74          if (strcmp(tab_equipa[tab_aux[j]], tab_equipa[tab_aux[i]]) < 0 || i > mid)
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/261/JOGO.c:74..74
+    74          if (strcmp(tab_equipa[tab_aux[j]], tab_equipa[tab_aux[i]]) < 0 || i > mid)
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/261/JOGO.c:72..72
+    72          tab_aux[end + mid - j] = tab_final[j+1];
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/261/JOGO.c:72..72
+    72          tab_aux[end + mid - j] = tab_final[j+1];
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/261/JOGO.c:72..72
+    72          tab_aux[end + mid - j] = tab_final[j+1];
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/261/JOGO.c:72..72
+    72          tab_aux[end + mid - j] = tab_final[j+1];
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/261/JOGO.c:70..70
+    70          tab_aux[i-1] = tab_final[i-1];
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/261/JOGO.c:70..70
+    70          tab_aux[i-1] = tab_final[i-1];
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/261/JOGO.c:68..68
+    68      int i, j, k, tab_aux[EQUIPAHASHMAX];
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/261/HASHTABLE.c:223..223
+   223      		free(tab_equipa[n]);
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/261/HASHTABLE.c:216..216
+   216              strcpy(tab_final[i], tab_equipa[n]);
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/261/HASHTABLE.c:216..216
+   216              strcpy(tab_final[i], tab_equipa[n]);
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/261/HASHTABLE.c:215..215
+   215          		tab_final[i] = can_fail_malloc(sizeof(char) * (strlen(tab_equipa[n]) + 1));
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/261/HASHTABLE.c:215..215
+   215          		tab_final[i] = can_fail_malloc(sizeof(char) * (strlen(tab_equipa[n]) + 1));
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/261/HASHTABLE.c:213..213
+   213          	if (jogosGanhos(equipaTable, tab_equipa[n]) == max)
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/261/HASHTABLE.c:202..202
+   202                strcpy(tab_equipa[e], current->equipa);
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/261/HASHTABLE.c:201..201
+   201                tab_equipa[e] = can_fail_malloc(sizeof(char) * (strlen(current->equipa) + 1));
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/261/HASHTABLE.c:184..184
+   184      char* tab_equipa[EQUIPAHASHMAX];
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/261/JOGO.c:72..72
+    72          tab_aux[end + mid - j] = tab_final[j+1];
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/261/JOGO.c:72..72
+    72          tab_aux[end + mid - j] = tab_final[j+1];
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/261/JOGO.c:68..68
+    68      int i, j, k, tab_aux[EQUIPAHASHMAX];
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/261/HASHTABLE.c:184..184
+   184      char* tab_equipa[EQUIPAHASHMAX];

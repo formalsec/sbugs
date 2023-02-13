@@ -1,0 +1,135 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/236/teams.c:64..64
+    64  		current = hash_table[i];
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/236/teams.c:53..53
+    53  	for (i = 0; i < TABLE_SIZE; ++i) hash_table[i] = NULL;
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/236/teams.c:40..40
+    40  	team *tmp = hash_table[index];
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/236/teams.c:39..39
+    39  	int index = hash(name);
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/236/teams.c:31..31
+    31  	hash_table[index] = new_team;
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/236/teams.c:30..30
+    30  	new_team->next = hash_table[index];
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/236/teams.c:29..29
+    29  	int index = hash(new_team->name);
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/236/print_best_teams.c:66..66
+    66  			printf("%d * %s\n", NL, names[i]);
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/236/print_best_teams.c:55..55
+    55  					names[iter] = tmp_team->name;
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/236/print_best_teams.c:52..52
+    52  			tmp_team = team_hash_table[i];
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/236/print_best_teams.c:38..38
+    38  		tmp_team = team_hash_table[i];
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/236/print_best_teams.c:28..28
+    28  		tmp_team = team_hash_table[i];
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/236/index.c:45..45
+    45  	team *team_hash_table[TABLE_SIZE], *team1, *team2;
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/236/index.c:41..41
+    41  	game *game_hash_table[TABLE_SIZE], *game_current;
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/236/index.c:37..37
+    37  	char input[MAX_INPUT];
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/236/hash.c:19..19
+    19  		hash = (hash*name[i])%TABLE_SIZE;
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/236/hash.c:18..18
+    18  		hash += name[i];
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/236/games.c:108..108
+   108  		current = hash_table[i];
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/236/games.c:97..97
+    97  	for (i = 0; i < TABLE_SIZE; ++i) hash_table[i] = NULL;
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/236/games.c:81..81
+    81  	if(prev==NULL) hash_table[index] = tmp->next;
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/236/games.c:74..74
+    74  	game *tmp = hash_table[index];
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/236/games.c:73..73
+    73  	int index = hash(name);
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/236/games.c:46..46
+    46  	game *tmp = hash_table[index];
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/236/games.c:45..45
+    45  	int index = hash(name);
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/236/games.c:37..37
+    37  	hash_table[index] = new_game;
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/236/games.c:36..36
+    36  	new_game->next = hash_table[index];
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/236/games.c:35..35
+    35  	int index = hash(new_game->name);
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/236/alphabetic_sort.c:38..38
+    38          arr[k] = R[j]; 
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/236/alphabetic_sort.c:38..38
+    38          arr[k] = R[j]; 
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/236/alphabetic_sort.c:33..33
+    33          arr[k] = L[i]; 
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/236/alphabetic_sort.c:33..33
+    33          arr[k] = L[i]; 
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/236/alphabetic_sort.c:26..26
+    26              arr[k] = R[j]; 
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/236/alphabetic_sort.c:26..26
+    26              arr[k] = R[j]; 
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/236/alphabetic_sort.c:22..22
+    22              arr[k] = L[i]; 
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/236/alphabetic_sort.c:22..22
+    22              arr[k] = L[i]; 
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p2/236/alphabetic_sort.c:21..21
+    21          if (strcmp(L[i], R[j]) < 0) { 
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p2/236/alphabetic_sort.c:21..21
+    21          if (strcmp(L[i], R[j]) < 0) { 
+
+38: /home/fmarques/sbugs/projects/alunos/iaed_p2/236/alphabetic_sort.c:15..15
+    15      for (j = 0; j < n2; j++) R[j] = arr[m + 1+ j]; 
+
+39: /home/fmarques/sbugs/projects/alunos/iaed_p2/236/alphabetic_sort.c:15..15
+    15      for (j = 0; j < n2; j++) R[j] = arr[m + 1+ j]; 
+
+40: /home/fmarques/sbugs/projects/alunos/iaed_p2/236/alphabetic_sort.c:15..15
+    15      for (j = 0; j < n2; j++) R[j] = arr[m + 1+ j]; 
+
+41: /home/fmarques/sbugs/projects/alunos/iaed_p2/236/alphabetic_sort.c:14..14
+    14      for (i = 0; i < n1; i++) L[i] = arr[l + i];
+
+42: /home/fmarques/sbugs/projects/alunos/iaed_p2/236/alphabetic_sort.c:14..14
+    14      for (i = 0; i < n1; i++) L[i] = arr[l + i];
+
+43: /home/fmarques/sbugs/projects/alunos/iaed_p2/236/alphabetic_sort.c:14..14
+    14      for (i = 0; i < n1; i++) L[i] = arr[l + i];
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/236/alphabetic_sort.c:15..15
+    15      for (j = 0; j < n2; j++) R[j] = arr[m + 1+ j]; 
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/236/alphabetic_sort.c:14..14
+    14      for (i = 0; i < n1; i++) L[i] = arr[l + i];

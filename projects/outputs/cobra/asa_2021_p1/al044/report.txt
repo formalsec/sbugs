@@ -1,0 +1,44 @@
+cat: '*_.txt': No such file or directory
+cat: _CWE_457_.txt: No such file or directory
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al044/GANDA_PROJ.c:171..171
+   171              aux = BFS(G, G->adj[i]->v);
+
+2: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al044/GANDA_PROJ.c:169..169
+   169          if(G->adj[i]->v->inc_edges == 0){
+
+3: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al044/GANDA_PROJ.c:151..151
+   151                  j->v->d=G->adj[value-1]->v->d+1;
+
+4: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al044/GANDA_PROJ.c:150..150
+   150              if(j->v->d < G->adj[value-1]->v->d+1){
+
+5: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al044/GANDA_PROJ.c:144..144
+   144          for (j=G->adj[value-1]->next ; j!=NULL ; j=j->next){
+
+6: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al044/GANDA_PROJ.c:126..126
+   126          free(G->adj[i]);
+
+7: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al044/GANDA_PROJ.c:125..125
+   125          free(G->adj[i]->v);
+
+8: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al044/GANDA_PROJ.c:117..117
+   117          for (j=G->adj[i]->next; j != NULL; ){
+
+9: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al044/GANDA_PROJ.c:110..110
+   110      G->adj[w-1]->v->inc_edges1++;
+
+10: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al044/GANDA_PROJ.c:109..109
+   109      G->adj[w-1]->v->inc_edges++;
+
+11: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al044/GANDA_PROJ.c:108..108
+   108      AddEdge(G->adj[w-1]->v, G->adj[v-1]);
+
+12: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al044/GANDA_PROJ.c:108..108
+   108      AddEdge(G->adj[w-1]->v, G->adj[v-1]);
+
+13: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al044/GANDA_PROJ.c:88..88
+    88          link x = G->adj[i];
+
+14: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al044/GANDA_PROJ.c:87..87
+    87          G->adj[i]= can_fail_malloc(sizeof(struct node));

@@ -1,0 +1,72 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/97/tab_jogos.c:47..47
+    47          apaga_lista_jogos(tab_jogos[i]);
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/97/tab_jogos.c:38..38
+    38      remove_jogo_lista(tab_jogos[h], el);
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/97/tab_jogos.c:36..36
+    36      int h = hash(nome_jogo(aux), TAB_JOGO);
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/97/tab_jogos.c:28..28
+    28      adiciona_jogo_lista(tab_jogos[h], el);
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/97/tab_jogos.c:26..26
+    26      int h = hash(nome_jogo(el), TAB_JOGO);
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/97/tab_jogos.c:21..21
+    21      return encontra_jogo_lista(tab_jogos[h], nome);
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/97/tab_jogos.c:19..19
+    19      int h = hash(nome, TAB_JOGO);
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/97/tab_jogos.c:11..11
+    11          jogos[i] = cria_lista_jogos();
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/97/tab_equipas.c:48..48
+    48          aux = tab_eqs[i];
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/97/tab_equipas.c:37..37
+    37          apaga_lista_equipas(tab_eqs[i]);
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/97/tab_equipas.c:28..28
+    28      tab_eqs[h] = adiciona_equipa_lista(tab_eqs[h], e);
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/97/tab_equipas.c:28..28
+    28      tab_eqs[h] = adiciona_equipa_lista(tab_eqs[h], e);
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/97/tab_equipas.c:26..26
+    26      int h = hash(nome_equipa(e), TAB_EQUIPA);
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/97/tab_equipas.c:21..21
+    21      return encontra_equipa_lista(tab_eqs[h], nome);
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/97/tab_equipas.c:19..19
+    19      int h = hash(nome, TAB_EQUIPA);
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/97/tab_equipas.c:11..11
+    11          equipas[i] = inicializa_lista_equipa();
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/97/proj2.c:209..209
+   209          free(nomes[i]); /* Vamos libertando a memoria alocada */
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/97/proj2.c:208..208
+   208          printf("%d * %s\n", NL, nomes[i]);
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/97/proj2.c:197..197
+   197          strcpy(nomes[i], nome_equipa(acede_equipa(aux)));
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/97/proj2.c:196..196
+   196          nomes[i] = can_fail_malloc(MAX_STR * sizeof(char));
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/97/main.c:8..8
+     8      char a1[MAX_STR + 1], a2[MAX_STR + 1], a3[MAX_STR + 1];
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/97/main.c:8..8
+     8      char a1[MAX_STR + 1], a2[MAX_STR + 1], a3[MAX_STR + 1];
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/97/main.c:8..8
+     8      char a1[MAX_STR + 1], a2[MAX_STR + 1], a3[MAX_STR + 1];
+=== Dangerous function calls lacking bounds checking ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/97/proj2.c:197..197
+   197          strcpy(nomes[i], nome_equipa(acede_equipa(aux)));

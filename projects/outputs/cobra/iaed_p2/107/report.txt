@@ -1,0 +1,111 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/107/main.c:52..52
+    52      no_equipa *tabela_equipas[MAX_TABELA]; /*guarda as informacoes das equipas introduzidas*/
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/107/main.c:51..51
+    51      no_jogo_tabela *tabela_jogos[MAX_TABELA]; /*guarda as informacoes dos jogos introduzidos*/
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/107/main.c:29..29
+    29          for(i=tabela_equipas[j];i;i = aux_equipa){
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/107/main.c:26..26
+    26          if(!tabela_equipas[j]) /*se for NULL nao tem equipas*/
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/107/main.c:11..11
+    11          tabela_equipas[i] = NULL;
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/107/main.c:10..10
+    10          tabela_jogos[i] = NULL;
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/107/jogo.c:104..104
+   104          tabela_jogos[pos] = i->proximo;
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/107/jogo.c:103..103
+   103          int pos = hash(nome);
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/107/jogo.c:70..70
+    70      for(i = tabela_jogos[pos];i ;i=i->proximo){
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/107/jogo.c:69..69
+    69      int pos = hash(nome);
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/107/jogo.c:51..51
+    51           tabela_jogos[pos] = novo;
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/107/jogo.c:50..50
+    50           tabela_jogos[pos]->anterior = novo;
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/107/jogo.c:49..49
+    49           novo->proximo = tabela_jogos[pos];
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/107/jogo.c:46..46
+    46      if(!tabela_jogos[pos]) tabela_jogos[pos] = novo;
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/107/jogo.c:46..46
+    46      if(!tabela_jogos[pos]) tabela_jogos[pos] = novo;
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/107/jogo.c:31..31
+    31      int pos = hash(nome);
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/107/interacao.c:90..90
+    90      char nome[MAX_NOME];
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/107/interacao.c:74..74
+    74      char nome[MAX_NOME];
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/107/interacao.c:59..59
+    59      char nome[MAX_NOME];
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/107/interacao.c:45..45
+    45      char nome[MAX_NOME];
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/107/interacao.c:30..30
+    30      char nome[MAX_NOME];
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/107/interacao.c:8..8
+     8      char equipa2[MAX_NOME];
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/107/interacao.c:7..7
+     7      char nome[MAX_NOME],equipa1[MAX_NOME];
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/107/interacao.c:7..7
+     7      char nome[MAX_NOME],equipa1[MAX_NOME];
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/107/equipa.c:134..134
+   134          printf("%d * %s\n",linha,mais_vitorias[i]);
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/107/equipa.c:124..124
+   124                  mais_vitorias[controlo] = aux->equipa_do_no.nome;
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/107/equipa.c:122..122
+   122          for(aux = tabela_equipas[i];aux && controlo<tamanho;aux=aux->proximo){
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/107/equipa.c:121..121
+   121          if(!tabela_equipas[i]) continue;
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/107/equipa.c:89..89
+    89              for(aux = tabela_equipas[i];aux;aux = aux->proximo,controlo++)
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/107/equipa.c:87..87
+    87              if(!tabela_equipas[i])
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/107/equipa.c:46..46
+    46      for(i = tabela_equipas[pos];i;i=i->proximo){
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/107/equipa.c:44..44
+    44      int pos = hash(nome);
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/107/equipa.c:34..34
+    34          tabela_equipas[pos] = novo;
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/107/equipa.c:33..33
+    33          novo->proximo = tabela_equipas[pos];
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/107/equipa.c:29..29
+    29          tabela_equipas[pos] = novo;
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p2/107/equipa.c:28..28
+    28      if(!tabela_equipas[pos]){
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p2/107/equipa.c:27..27
+    27      int pos = hash(nome);

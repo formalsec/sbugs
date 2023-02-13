@@ -1,0 +1,150 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/110/teams.c:12..12
+    12          ptrTeam team = can_fail_malloc(sizeof(struct team)); 
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/110/main.c:227..227
+   227              free(strings[i]);
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/110/main.c:226..226
+   226              printf("%d * %s\n",NL, strings[i]);
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/110/main.c:219..219
+   219          maxes maxes = getHashMax(hash);
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/110/main.c:200..200
+   200      char name[MAXNAME];
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/110/main.c:176..176
+   176      char name[MAXNAME];
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/110/main.c:174..174
+   174      gamelink node;
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/110/main.c:161..161
+   161      gamelink game2print;
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/110/main.c:160..160
+   160      char name[MAXNAME];
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/110/main.c:149..149
+   149      char name[MAXNAME];
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/110/main.c:141..141
+   141      char name[MAXNAME];
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/110/main.c:127..127
+   127              Game game = gameInit(name, getItem(team1), getItem(team2), s1, s2);
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/110/main.c:121..121
+   121          link team2 = hashSearch(*hash, t2);
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/110/main.c:120..120
+   120          link team1 = hashSearch(*hash, t1); 
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/110/main.c:114..114
+   114      char name[MAXNAME], t1[MAXNAME], t2[MAXNAME];
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/110/main.c:114..114
+   114      char name[MAXNAME], t1[MAXNAME], t2[MAXNAME];
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/110/main.c:114..114
+   114      char name[MAXNAME], t1[MAXNAME], t2[MAXNAME];
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/110/main.c:65..65
+    65      heads hash = hashInit();
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/110/main.c:64..64
+    64      gamelist head = game_listInit();
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/110/hashteams.c:160..160
+   160  	link current;
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/110/hashteams.c:151..151
+   151  				strings[j] = aux; 								/*Assign a string to the pointer of pointers and increase its index*/
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/110/hashteams.c:150..150
+   150  			if ((aux = getListStrings(head[i], max)) != NULL){
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/110/hashteams.c:149..149
+   149  		if (head[i] != NULL){
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/110/hashteams.c:131..131
+   131  	link current;
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/110/hashteams.c:124..124
+   124  			maxes = getListMax(head[i], maxes);
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/110/hashteams.c:123..123
+   123  		if (head[i]){
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/110/hashteams.c:121..121
+   121  	maxes maxes = {0,0};
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/110/hashteams.c:115..115
+   115          destroyList(heads[i]);
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/110/hashteams.c:109..109
+   109  	return searchList(heads[hash(name)], name);		/* Search the index of the hashtable for the item*/
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/110/hashteams.c:109..109
+   109  	return searchList(heads[hash(name)], name);		/* Search the index of the hashtable for the item*/
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/110/hashteams.c:103..103
+   103  		hashT[i] = insertListEnd(hashT[i], team);	/* Otherwise, insert it in the hash table*/
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/110/hashteams.c:103..103
+   103  		hashT[i] = insertListEnd(hashT[i], team);	/* Otherwise, insert it in the hash table*/
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/110/hashteams.c:102..102
+   102  		int i = hash(team->name);
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/110/hashteams.c:87..87
+    87  		if (!listEmpty(hash[i])){					/* When 1 element is found */
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/110/hashteams.c:80..80
+    80          hash[i] = NULL;
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p2/110/hashteams.c:78..78
+    78      heads hash = can_fail_malloc(M * sizeof(heads));			/* Allocate memory for the hash table and initialize every head as null */
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p2/110/hashteams.c:61..61
+    61      link current, aux;
+
+38: /home/fmarques/sbugs/projects/alunos/iaed_p2/110/hashteams.c:51..51
+    51      link aux;
+
+39: /home/fmarques/sbugs/projects/alunos/iaed_p2/110/hashteams.c:41..41
+    41  	link node;
+
+40: /home/fmarques/sbugs/projects/alunos/iaed_p2/110/hashteams.c:16..16
+    16  	link node = can_fail_malloc(sizeof(struct node));
+
+41: /home/fmarques/sbugs/projects/alunos/iaed_p2/110/hashteams.c:11..11
+    11  	link head = NULL;
+
+42: /home/fmarques/sbugs/projects/alunos/iaed_p2/110/gameslinked.c:143..143
+   143      gamelink current, aux;
+
+43: /home/fmarques/sbugs/projects/alunos/iaed_p2/110/gameslinked.c:110..110
+   110  	gamelink node = game_searchList(list, key);
+
+44: /home/fmarques/sbugs/projects/alunos/iaed_p2/110/gameslinked.c:103..103
+   103  	gamelink current;
+
+45: /home/fmarques/sbugs/projects/alunos/iaed_p2/110/gameslinked.c:69..69
+    69  			gamelink node;
+
+46: /home/fmarques/sbugs/projects/alunos/iaed_p2/110/gameslinked.c:31..31
+    31  		gamelink node = game_listAddNode(game, NULL, NULL);
+
+47: /home/fmarques/sbugs/projects/alunos/iaed_p2/110/gameslinked.c:30..30
+    30  		gamelist aux = list;
+
+48: /home/fmarques/sbugs/projects/alunos/iaed_p2/110/gameslinked.c:18..18
+    18  	gamelink node = can_fail_malloc(sizeof(struct gamenode));
+
+49: /home/fmarques/sbugs/projects/alunos/iaed_p2/110/gameslinked.c:11..11
+    11  	gamelist list = can_fail_malloc(sizeof(struct _gamelist));
+
+50: /home/fmarques/sbugs/projects/alunos/iaed_p2/110/games.c:12..12
+    12          Game game = can_fail_malloc(sizeof(struct games));

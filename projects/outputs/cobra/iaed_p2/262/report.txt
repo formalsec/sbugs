@@ -1,0 +1,156 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/262/main.c:13..13
+    13      jogo HTjogo[TABLE_SIZE]; /*hash table para os jogos*/
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/262/main.c:12..12
+    12      equipa HTequipa[TABLE_SIZE]; /*hash table para as equipas*/
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/262/main.c:11..11
+    11      char cmd,NOME[MAXNOME],EQUIPA1[MAXNOME],EQUIPA2[MAXNOME];
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/262/main.c:11..11
+    11      char cmd,NOME[MAXNOME],EQUIPA1[MAXNOME],EQUIPA2[MAXNOME];
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/262/main.c:11..11
+    11      char cmd,NOME[MAXNOME],EQUIPA1[MAXNOME],EQUIPA2[MAXNOME];
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/262/func_prin.c:121..121
+   121          for(aux = HTequipa[i]; aux != NULL; aux = aux->nextE){
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/262/func_prin.c:116..116
+   116          for(aux = HTequipa[i]; aux != NULL; aux = aux->nextE){
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/262/func_prin.c:114..114
+   114      equipa aux, lista = NULL;
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/262/func_prin.c:87..87
+    87      equipa eq1,eq2;
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/262/func_prin.c:86..86
+    86      jogo aux = SearchJogo(nome, HTjogo); /*procura o jogo que vai ser alterado*/
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/262/func_prin.c:79..79
+    79          }HTjogo[i] = RemoveJogo(HTjogo[i], nome);/*uso da funcao RemoveJogo para remover o jogo e devolve a hash table ja modificada*/
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/262/func_prin.c:79..79
+    79          }HTjogo[i] = RemoveJogo(HTjogo[i], nome);/*uso da funcao RemoveJogo para remover o jogo e devolve a hash table ja modificada*/
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/262/func_prin.c:71..71
+    71      equipa temp;
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/262/func_prin.c:70..70
+    70      jogo aux = SearchJogo(nome, HTjogo); /*procura o jogo que e para remover*/
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/262/func_prin.c:69..69
+    69      int i = Hash(nome, TABLE_SIZE); /*descobre o indice da hash table em que o jogo esta guardado*/
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/262/func_prin.c:56..56
+    56              for(aux = HTjogo[j]; aux != NULL; aux = aux->nextJ){
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/262/func_prin.c:53..53
+    53      jogo aux;
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/262/func_prin.c:45..45
+    45      equipa aux = SearchEquipa(nome, HTequipa);/*uso da funcao SearchEquipa para procurar a respetiva equipa*/
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/262/func_prin.c:36..36
+    36      jogo aux = SearchJogo(nome, HTjogo); /*uso da funcao SearchJogo para procurar o respetivo jogo*/
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/262/func_prin.c:25..25
+    25                  equipa aux = SearchEquipa(eq2,HTequipa); /*procura a equipa2 e incrementa o numero de vitorias*/
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/262/func_prin.c:22..22
+    22                  equipa aux = SearchEquipa(eq1,HTequipa); /* procura a equipa1 e incrementa o numero de vitorias*/
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/262/func_jogo.c:73..73
+    73              HTjogo[i] = aux;
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/262/func_jogo.c:72..72
+    72              FreeJogo(HTjogo[i]);
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/262/func_jogo.c:71..71
+    71              aux = HTjogo[i]->nextJ;  
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/262/func_jogo.c:70..70
+    70          while(HTjogo[i]){
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/262/func_jogo.c:68..68
+    68      jogo aux;
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/262/func_jogo.c:54..54
+    54      jogo t,prev;
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/262/func_jogo.c:47..47
+    47      for(aux = HTjogo[i]; aux != NULL; aux = aux->nextJ){
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/262/func_jogo.c:46..46
+    46      jogo aux;
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/262/func_jogo.c:45..45
+    45      int i = Hash(nome, TABLE_SIZE);
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/262/func_jogo.c:40..40
+    40      HTjogo[x] = InsertBeginingJogo(HTjogo[x], nome, eq1, eq2, sc1, sc2, id);
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/262/func_jogo.c:40..40
+    40      HTjogo[x] = InsertBeginingJogo(HTjogo[x], nome, eq1, eq2, sc1, sc2, id);
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/262/func_jogo.c:39..39
+    39      int x = Hash(nome ,TABLE_SIZE);
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/262/func_jogo.c:32..32
+    32      jogo aux = newjogo(nome, eq1, eq2, sc1, sc2, id);
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/262/func_jogo.c:16..16
+    16      jogo aux = can_fail_malloc(sizeof(struct str_jogo));
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p2/262/func_jogo.c:11..11
+    11          HTjogo[i] = NULL;
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p2/262/func_equipas.c:93..93
+    93      equipa aux;
+
+38: /home/fmarques/sbugs/projects/alunos/iaed_p2/262/func_equipas.c:80..80
+    80             HTequipa[i] = aux;
+
+39: /home/fmarques/sbugs/projects/alunos/iaed_p2/262/func_equipas.c:79..79
+    79             FreeEquipa(HTequipa[i]); /*liberta a memoria usada em cada parametro da equipa*/
+
+40: /home/fmarques/sbugs/projects/alunos/iaed_p2/262/func_equipas.c:78..78
+    78             aux = HTequipa[i]->nextE;
+
+41: /home/fmarques/sbugs/projects/alunos/iaed_p2/262/func_equipas.c:77..77
+    77         while(HTequipa[i]){
+
+42: /home/fmarques/sbugs/projects/alunos/iaed_p2/262/func_equipas.c:75..75
+    75      equipa aux;
+
+43: /home/fmarques/sbugs/projects/alunos/iaed_p2/262/func_equipas.c:57..57
+    57      equipa aux, x = newequipa(nome, vitorias);
+
+44: /home/fmarques/sbugs/projects/alunos/iaed_p2/262/func_equipas.c:50..50
+    50      for(aux = HTequipa[i]; aux != NULL; aux = aux->nextE){
+
+45: /home/fmarques/sbugs/projects/alunos/iaed_p2/262/func_equipas.c:49..49
+    49      equipa aux;
+
+46: /home/fmarques/sbugs/projects/alunos/iaed_p2/262/func_equipas.c:48..48
+    48      int i = Hash(nome, TABLE_SIZE);
+
+47: /home/fmarques/sbugs/projects/alunos/iaed_p2/262/func_equipas.c:43..43
+    43      HTequipa[x] = InsertBegining(HTequipa[x], nome);
+
+48: /home/fmarques/sbugs/projects/alunos/iaed_p2/262/func_equipas.c:43..43
+    43      HTequipa[x] = InsertBegining(HTequipa[x], nome);
+
+49: /home/fmarques/sbugs/projects/alunos/iaed_p2/262/func_equipas.c:42..42
+    42      int x = Hash(nome,TABLE_SIZE);
+
+50: /home/fmarques/sbugs/projects/alunos/iaed_p2/262/func_equipas.c:35..35
+    35      equipa aux = newequipa(nome,0);
+
+51: /home/fmarques/sbugs/projects/alunos/iaed_p2/262/func_equipas.c:25..25
+    25      equipa aux = can_fail_malloc(sizeof(struct str_equipa));
+
+52: /home/fmarques/sbugs/projects/alunos/iaed_p2/262/func_equipas.c:11..11
+    11          HTequipa[i] = NULL;

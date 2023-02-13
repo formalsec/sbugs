@@ -1,0 +1,187 @@
+cat: '*_.txt': No such file or directory
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:107..107
+   107              graph[i]->lastOfAdj = NULL;
+
+2: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:106..106
+   106              graph[i]->listOfAdj = NULL;
+
+3: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:105..105
+   105              graph[i]->degree = 0;
+
+4: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:104..104
+   104              graph[i] = (Domino*)can_fail_malloc(sizeof(Domino));
+
+5: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:87..87
+    87      graph[relb-1]->degree++;
+
+6: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:86..86
+    86      graph[rela-1]->lastOfAdj = newAdj;
+
+7: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:81..81
+    81      else graph[rela-1]->lastOfAdj->next = newAdj;
+
+8: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:80..80
+    80      if( graph[rela-1]->listOfAdj == NULL ) graph[rela-1]->listOfAdj = newAdj;
+
+9: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:80..80
+    80      if( graph[rela-1]->listOfAdj == NULL ) graph[rela-1]->listOfAdj = newAdj;
+
+10: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:68..68
+    68                  graph[adj->connection]->degree = graph[currDomi]->degree + 1;
+
+11: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:68..68
+    68                  graph[adj->connection]->degree = graph[currDomi]->degree + 1;
+
+12: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:68..68
+    68                  graph[adj->connection]->degree = graph[currDomi]->degree + 1;
+
+13: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:67..67
+    67              if( graph[currDomi]->degree+1 > graph[adj->connection]->degree ) {
+
+14: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:67..67
+    67              if( graph[currDomi]->degree+1 > graph[adj->connection]->degree ) {
+
+15: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:67..67
+    67              if( graph[currDomi]->degree+1 > graph[adj->connection]->degree ) {
+
+16: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:64..64
+    64          if( adj != NULL && graph[currDomi]->degree+1 > sequence ) sequence = graph[currDomi]->degree+1;
+
+17: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:64..64
+    64          if( adj != NULL && graph[currDomi]->degree+1 > sequence ) sequence = graph[currDomi]->degree+1;
+
+18: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:62..62
+    62          adj = graph[currDomi]->listOfAdj;
+
+19: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:61..61
+    61          currDomi = topoOrder[i];
+
+20: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:51..51
+    51                  stack[pointer] = adj->connection;
+
+21: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:50..50
+    50              if( graph[adj->connection]->degree == 0 ) {
+
+22: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:50..50
+    50              if( graph[adj->connection]->degree == 0 ) {
+
+23: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:48..48
+    48              graph[adj->connection]->degree--;
+
+24: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:48..48
+    48              graph[adj->connection]->degree--;
+
+25: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:46..46
+    46          for( adj = graph[currDomi]->listOfAdj; adj != NULL; adj = adj->next ) {
+
+26: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:43..43
+    43          topoOrder[topoPointer] = currDomi;
+
+27: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:42..42
+    42          currDomi = stack[pointer];
+
+28: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:36..36
+    36              stack[pointer] = i;
+
+29: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:33..33
+    33          if( graph[i]->degree == 0 ) {
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:87..87
+    87      graph[relb-1]->degree++;
+
+2: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:80..80
+    80      if( graph[rela-1]->listOfAdj == NULL ) graph[rela-1]->listOfAdj = newAdj;
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:107..107
+   107              graph[i]->lastOfAdj = NULL;
+
+2: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:106..106
+   106              graph[i]->listOfAdj = NULL;
+
+3: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:105..105
+   105              graph[i]->degree = 0;
+
+4: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:104..104
+   104              graph[i] = (Domino*)can_fail_malloc(sizeof(Domino));
+
+5: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:87..87
+    87      graph[relb-1]->degree++;
+
+6: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:86..86
+    86      graph[rela-1]->lastOfAdj = newAdj;
+
+7: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:81..81
+    81      else graph[rela-1]->lastOfAdj->next = newAdj;
+
+8: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:80..80
+    80      if( graph[rela-1]->listOfAdj == NULL ) graph[rela-1]->listOfAdj = newAdj;
+
+9: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:80..80
+    80      if( graph[rela-1]->listOfAdj == NULL ) graph[rela-1]->listOfAdj = newAdj;
+
+10: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:68..68
+    68                  graph[adj->connection]->degree = graph[currDomi]->degree + 1;
+
+11: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:68..68
+    68                  graph[adj->connection]->degree = graph[currDomi]->degree + 1;
+
+12: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:68..68
+    68                  graph[adj->connection]->degree = graph[currDomi]->degree + 1;
+
+13: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:67..67
+    67              if( graph[currDomi]->degree+1 > graph[adj->connection]->degree ) {
+
+14: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:67..67
+    67              if( graph[currDomi]->degree+1 > graph[adj->connection]->degree ) {
+
+15: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:67..67
+    67              if( graph[currDomi]->degree+1 > graph[adj->connection]->degree ) {
+
+16: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:64..64
+    64          if( adj != NULL && graph[currDomi]->degree+1 > sequence ) sequence = graph[currDomi]->degree+1;
+
+17: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:64..64
+    64          if( adj != NULL && graph[currDomi]->degree+1 > sequence ) sequence = graph[currDomi]->degree+1;
+
+18: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:62..62
+    62          adj = graph[currDomi]->listOfAdj;
+
+19: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:61..61
+    61          currDomi = topoOrder[i];
+
+20: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:51..51
+    51                  stack[pointer] = adj->connection;
+
+21: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:50..50
+    50              if( graph[adj->connection]->degree == 0 ) {
+
+22: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:50..50
+    50              if( graph[adj->connection]->degree == 0 ) {
+
+23: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:48..48
+    48              graph[adj->connection]->degree--;
+
+24: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:48..48
+    48              graph[adj->connection]->degree--;
+
+25: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:46..46
+    46          for( adj = graph[currDomi]->listOfAdj; adj != NULL; adj = adj->next ) {
+
+26: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:43..43
+    43          topoOrder[topoPointer] = currDomi;
+
+27: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:42..42
+    42          currDomi = stack[pointer];
+
+28: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:36..36
+    36              stack[pointer] = i;
+
+29: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:33..33
+    33          if( graph[i]->degree == 0 ) {
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:87..87
+    87      graph[relb-1]->degree++;
+
+2: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp067/main.c:80..80
+    80      if( graph[rela-1]->listOfAdj == NULL ) graph[rela-1]->listOfAdj = newAdj;

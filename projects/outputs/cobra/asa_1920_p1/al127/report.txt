@@ -1,0 +1,248 @@
+cat: _CWE_197_.txt: No such file or directory
+cat: _CWE_805_.txt: No such file or directory
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:267..267
+   267          fprintf(stdout,"%d\n",SCC[students[i]->SCC]->FinalMark);
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:267..267
+   267          fprintf(stdout,"%d\n",SCC[students[i]->SCC]->FinalMark);
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:267..267
+   267          fprintf(stdout,"%d\n",SCC[students[i]->SCC]->FinalMark);
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:257..257
+   257          free(SCC[i]);
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:255..255
+   255              free(SCC[i]->next);
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:254..254
+   254                  free(SCC[i]->next);
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:253..253
+   253              for (;aux;SCC[i]->next=aux,aux=aux->next)
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:252..252
+   252              aux=SCC[i]->next->next;
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:251..251
+   251          if (SCC[i]->next) {
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:248..248
+   248              free(SCC[i]->friend);
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:247..247
+   247                  free(SCC[i]->friend);
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:246..246
+   246              for (;aux;SCC[i]->friend=aux,aux=aux->next)
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:245..245
+   245              aux=SCC[i]->friend->next;
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:244..244
+   244          if (SCC[i]->friend) {
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:242..242
+   242          free(students[i]);
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:240..240
+   240              free(students[i]->friend);            
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:239..239
+   239                  free(students[i]->friend);
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:238..238
+   238              for(;aux;students[i]->friend=aux,aux=aux->next)
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:237..237
+   237              aux = students[i]->friend->next;
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:236..236
+   236          if (students[i]->friend){ 
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:228..228
+   228              SCC[i]->FinalMark=fastVisit(SCC[i]);
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:228..228
+   228              SCC[i]->FinalMark=fastVisit(SCC[i]);
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:227..227
+   227          if (SCC[i]->color==WHITE)
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:222..222
+   222                      SCC[i]->next=aux;   
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:221..221
+   221                      aux->next=SCC[i]->next;
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:220..220
+   220                      aux->idNumber = students[temp->idNumber]->SCC;
+
+27: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:220..220
+   220                      aux->idNumber = students[temp->idNumber]->SCC;
+
+28: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:218..218
+   218                  if (students[temp->idNumber]->SCC != i){
+
+29: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:218..218
+   218                  if (students[temp->idNumber]->SCC != i){
+
+30: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:216..216
+   216              temp=students[f->idNumber]->friend;
+
+31: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:216..216
+   216              temp=students[f->idNumber]->friend;
+
+32: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:214..214
+   214              SCC[i]->internalMark = max(SCC[i]->internalMark,students[f->idNumber]->mark);/*save internalMark*/
+
+33: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:214..214
+   214              SCC[i]->internalMark = max(SCC[i]->internalMark,students[f->idNumber]->mark);/*save internalMark*/
+
+34: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:214..214
+   214              SCC[i]->internalMark = max(SCC[i]->internalMark,students[f->idNumber]->mark);/*save internalMark*/
+
+35: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:214..214
+   214              SCC[i]->internalMark = max(SCC[i]->internalMark,students[f->idNumber]->mark);/*save internalMark*/
+
+36: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:212..212
+   212          f=SCC[i]->friend;
+
+37: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:211..211
+   211          SCC[i]->next=NULL;
+
+38: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:210..210
+   210          SCC[i]->color=WHITE;
+
+39: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:209..209
+   209          SCC[i]->FinalMark=-1;
+
+40: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:208..208
+   208          SCC[i]->internalMark=-1;
+
+41: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:206..206
+   206              visit(students[i],i);
+
+42: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:205..205
+   205          if (students[i]->discoveryTime == -1)/*equals infinite*/
+
+43: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:193..193
+   193              component->FinalMark = max(component->FinalMark,fastVisit(SCC[f->idNumber]));
+
+44: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:193..193
+   193              component->FinalMark = max(component->FinalMark,fastVisit(SCC[f->idNumber]));
+
+45: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:171..171
+   171              students[v]->SCC=numSCC;
+
+46: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:170..170
+   170              SCC[numSCC]->friend=f;
+
+47: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:169..169
+   169              f->next=SCC[numSCC]->friend;
+
+48: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:166..166
+   166              v = pop();
+
+49: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:163..163
+   163      if (students[idNumber]->discoveryTime == students[idNumber]->low){
+
+50: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:163..163
+   163      if (students[idNumber]->discoveryTime == students[idNumber]->low){
+
+51: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:160..160
+   160              students[idNumber]->low = min(students[idNumber]->low,students[f->idNumber]->discoveryTime);
+
+52: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:160..160
+   160              students[idNumber]->low = min(students[idNumber]->low,students[f->idNumber]->discoveryTime);
+
+53: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:160..160
+   160              students[idNumber]->low = min(students[idNumber]->low,students[f->idNumber]->discoveryTime);
+
+54: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:160..160
+   160              students[idNumber]->low = min(students[idNumber]->low,students[f->idNumber]->discoveryTime);
+
+55: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:157..157
+   157              students[idNumber]->low = min(students[idNumber]->low,students[f->idNumber]->low);
+
+56: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:157..157
+   157              students[idNumber]->low = min(students[idNumber]->low,students[f->idNumber]->low);
+
+57: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:157..157
+   157              students[idNumber]->low = min(students[idNumber]->low,students[f->idNumber]->low);
+
+58: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:157..157
+   157              students[idNumber]->low = min(students[idNumber]->low,students[f->idNumber]->low);
+
+59: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:156..156
+   156              visit(students[f->idNumber],f->idNumber);
+
+60: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:156..156
+   156              visit(students[f->idNumber],f->idNumber);
+
+61: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:155..155
+   155          if (students[f->idNumber]->discoveryTime == -1){
+
+62: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:155..155
+   155          if (students[f->idNumber]->discoveryTime == -1){
+
+63: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:135..135
+   135          if (idNumber == stack->idNumber[i])
+
+64: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:128..128
+   128      value=stack->idNumber[stack->top];
+
+65: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:128..128
+   128      value=stack->idNumber[stack->top];
+
+66: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:123..123
+   123      stack->idNumber[++stack->top]=idNumber;
+
+67: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:123..123
+   123      stack->idNumber[++stack->top]=idNumber;
+
+68: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:107..107
+   107                      students[idNumber]->friend=friend;
+
+69: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:106..106
+   106                      friend->next=students[idNumber]->friend;
+
+70: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:87..87
+    87          SCC[i]->friend = NULL;
+
+71: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:86..86
+    86          if (!SCC[i]) err_dump("Fail to allocate memory!\n");
+
+72: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:85..85
+    85          SCC[i] = can_fail_malloc(sizeof(struct SCC));
+
+73: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:82..82
+    82              if (students[i]->mark < 0) err_dump("Failed to process student mark\n");
+
+74: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:81..81
+    81          	students[i]->mark = atoi(buffer);
+
+75: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:78..78
+    78          students[i]->low=-1;
+
+76: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:77..77
+    77          students[i]->discoveryTime=-1;
+
+77: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:76..76
+    76          students[i]->friend=NULL;
+
+78: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:74..74
+    74          if (!students[i]) err_dump("Fail to allocate memory!\n");
+
+79: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:73..73
+    73          students[i]=can_fail_malloc(sizeof(struct student));
+
+80: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:51..51
+    51      char buffer[MAX_LINE_SIZE], *token;
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:155..155
+   155          if (students[f->idNumber]->discoveryTime == -1){
+=== Untrusted format string ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al127/main.c:46..46
+    46      fprintf(stderr,msg);

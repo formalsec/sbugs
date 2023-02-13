@@ -1,0 +1,96 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/275/main.c:14..14
+    14  	linkJogo jogos = NULL;
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/275/main.c:13..13
+    13      linkEquipa equipas = NULL;
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/275/main.c:10..10
+    10  	char input, nome_equipa1[SIZE_CHAR], nome_equipa2[SIZE_CHAR], nome_jogo[SIZE_CHAR];
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/275/main.c:10..10
+    10  	char input, nome_equipa1[SIZE_CHAR], nome_equipa2[SIZE_CHAR], nome_jogo[SIZE_CHAR];
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/275/main.c:10..10
+    10  	char input, nome_equipa1[SIZE_CHAR], nome_equipa2[SIZE_CHAR], nome_jogo[SIZE_CHAR];
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/275/LowFunction.c:213..213
+   213  	return searchListJogo(table_jogos->headsJogo[i], v);
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/275/LowFunction.c:212..212
+   212  	int i = hash(v);
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/275/LowFunction.c:207..207
+   207  	return searchListEquipa(table_equipas->headsEquipa[i], v);
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/275/LowFunction.c:206..206
+   206  	int i = hash(v);
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/275/LowFunction.c:201..201
+   201  	table_jogos->headsJogo[i] = removeFromListJogo(table_jogos->headsJogo[i], jogo->nome);
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/275/LowFunction.c:201..201
+   201  	table_jogos->headsJogo[i] = removeFromListJogo(table_jogos->headsJogo[i], jogo->nome);
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/275/LowFunction.c:200..200
+   200  	int i = hash(jogo->nome);
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/275/LowFunction.c:195..195
+   195  	table_equipas->headsEquipa[i] = removeFromListEquipa(table_equipas->headsEquipa[i], equipa->nome);
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/275/LowFunction.c:195..195
+   195  	table_equipas->headsEquipa[i] = removeFromListEquipa(table_equipas->headsEquipa[i], equipa->nome);
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/275/LowFunction.c:194..194
+   194  	int i = hash(equipa->nome);
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/275/LowFunction.c:189..189
+   189  	table_jogos->headsJogo[i] = insertBeginListJogo(table_jogos->headsJogo[i], jogo_nome, equipa1_nome, equipa2_nome, resultado1, resultado2);
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/275/LowFunction.c:189..189
+   189  	table_jogos->headsJogo[i] = insertBeginListJogo(table_jogos->headsJogo[i], jogo_nome, equipa1_nome, equipa2_nome, resultado1, resultado2);
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/275/LowFunction.c:188..188
+   188  	int i = hash(jogo_nome);
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/275/LowFunction.c:183..183
+   183  	table_equipas->headsEquipa[i] = insertBeginListEquipa(table_equipas->headsEquipa[i], nome);
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/275/LowFunction.c:183..183
+   183  	table_equipas->headsEquipa[i] = insertBeginListEquipa(table_equipas->headsEquipa[i], nome);
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/275/LowFunction.c:182..182
+   182  	int i = hash(nome);
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/275/LowFunction.c:175..175
+   175  		table_jogos->headsJogo[i] = NULL;
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/275/LowFunction.c:164..164
+   164  		table_equipas->headsEquipa[i] = NULL;
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/275/LowFunction.c:110..110
+   110  	linkJogo jogo;
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/275/LowFunction.c:90..90
+    90  	linkJogo jogo, prev;
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/275/LowFunction.c:70..70
+    70  	linkEquipa equipa, prev;
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/275/LowFunction.c:59..59
+    59  	linkJogo jogo;
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/275/LowFunction.c:48..48
+    48  	linkEquipa equipa;
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/275/LowFunction.c:41..41
+    41  	linkJogo jogo = NEWjogo(jogo_nome, equipa1_nome, equipa2_nome, resultado1, resultado2);
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/275/LowFunction.c:34..34
+    34  	linkEquipa equipa = NEWequipa(name);
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/275/LowFunction.c:19..19
+    19  	linkJogo jogo = can_fail_malloc(sizeof(struct nodejogo));
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/275/LowFunction.c:9..9
+     9  	linkEquipa equipa = can_fail_malloc(sizeof(struct node));

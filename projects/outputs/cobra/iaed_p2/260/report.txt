@@ -1,0 +1,78 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/260/proj2_final.c:447..447
+   447  	char nome[str_max_jogos_equipas];
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/260/proj2_final.c:427..427
+   427  	char nome[str_max_jogos_equipas];
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/260/proj2_final.c:408..408
+   408  	char nome[str_max_jogos_equipas];
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/260/proj2_final.c:387..387
+   387  	char equipa[str_max_jogos_equipas];
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/260/proj2_final.c:345..345
+   345  	char nome[str_max_jogos_equipas];
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/260/proj2_final.c:288..288
+   288  	char equipa_1[str_max_jogos_equipas], equipa_2[str_max_jogos_equipas];
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/260/proj2_final.c:288..288
+   288  	char equipa_1[str_max_jogos_equipas], equipa_2[str_max_jogos_equipas];
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/260/proj2_final.c:287..287
+   287  	char nome[str_max_jogos_equipas];
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/260/proj2_final.c:263..263
+   263  			hash_jogos->vetor[chave_jogo] = temp;
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/260/proj2_final.c:249..249
+   249  	jogo_hash *verifica_jogo = hash_jogos->vetor[chave_jogo];
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/260/proj2_final.c:248..248
+   248  	int chave_jogo = codigo_hash(nome);
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/260/proj2_final.c:227..227
+   227  		hash_e = hash_equipas->vetor[h];
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/260/proj2_final.c:198..198
+   198  		hash_j = hash_jogos->vetor[h];
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/260/proj2_final.c:168..168
+   168  	for(temp = hash_equipas->vetor[chave_equipa] ; temp != NULL; temp = temp->next){
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/260/proj2_final.c:162..162
+   162  	int chave_equipa = codigo_hash(nome);
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/260/proj2_final.c:116..116
+   116  	for(temp = hash_jogos->vetor[chave_jogo]; temp != NULL; temp = temp->next){
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/260/proj2_final.c:110..110
+   110  	int chave_jogo = codigo_hash(nome);
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/260/proj2_final.c:105..105
+   105  	hash_equipas->vetor[index] = tm;
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/260/proj2_final.c:104..104
+   104  	tm->next = hash_equipas->vetor[index];
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/260/proj2_final.c:95..95
+    95  	hash_jogos->vetor[index] = gm;
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/260/proj2_final.c:94..94
+    94  	gm->next = hash_jogos->vetor[index];
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/260/proj2_final.c:44..44
+    44  		hash_e->vetor[h] = NULL;
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/260/proj2_final.c:30..30
+    30  		hash_j->vetor[h] = NULL;
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/260/proj2_final.c:104..104
+   104  	tm->next = hash_equipas->vetor[index];
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/260/proj2_final.c:94..94
+    94  	gm->next = hash_jogos->vetor[index];
+=== Potential heap memory use after free ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/260/proj2_final.c:277..277
+   277  		free(temp);

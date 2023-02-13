@@ -1,0 +1,186 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/TEAM.c:252..252
+   252    TeamsList node = can_fail_malloc(sizeof(struct team_name));
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/TEAM.c:212..212
+   212      free_list(t_heads[i]);
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/TEAM.c:188..188
+   188    link aux;
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/TEAM.c:154..154
+   154    link aux, prev;
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/TEAM.c:147..147
+   147      t_heads[i] = NULL;
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/TEAM.c:122..122
+   122    link l = can_fail_malloc(sizeof(struct node));
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/TEAM.c:121..121
+   121    size_t size;
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/TEAM.c:110..110
+   110    link l = searchHashTeam(name, t_heads[i]);
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/TEAM.c:110..110
+   110    link l = searchHashTeam(name, t_heads[i]);
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/TEAM.c:109..109
+   109    int i = hash_team(name);
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/TEAM.c:104..104
+   104    link l = searchHashTeam(name, t_heads[i]);
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/TEAM.c:104..104
+   104    link l = searchHashTeam(name, t_heads[i]);
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/TEAM.c:103..103
+   103    int i = hash_team(name);
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/TEAM.c:89..89
+    89      l = searchHashTeam(teams_list->team->name, t_heads[i]);
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/TEAM.c:88..88
+    88      i = hash_team(teams_list->team->name);
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/TEAM.c:71..71
+    71        for(index = t_heads[i]; index != NULL; index = index->next){
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/TEAM.c:65..65
+    65    TeamsList gl;
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/TEAM.c:64..64
+    64    link l, index;
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/TEAM.c:45..45
+    45    l = searchHashTeam(name, t_heads[i]);
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/TEAM.c:44..44
+    44    i = hash_team(name);
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/TEAM.c:38..38
+    38    link l;
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/TEAM.c:23..23
+    23      t_heads[i] = insertHashTeam(name, t_heads[i]);
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/TEAM.c:23..23
+    23      t_heads[i] = insertHashTeam(name, t_heads[i]);
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/TEAM.c:20..20
+    20    l = searchHashTeam(name, t_heads[i]);
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/TEAM.c:19..19
+    19    i = hash_team(name);
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/TEAM.c:13..13
+    13    link l;
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/GAME.c:332..332
+   332    GamesList t, prev;
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/GAME.c:318..318
+   318    GamesList game = can_fail_malloc(sizeof(struct names));
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/GAME.c:317..317
+   317    size_t size;
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/GAME.c:274..274
+   274    gamelink l = (gamelink)can_fail_malloc(sizeof(struct GameNode));
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/GAME.c:273..273
+   273    size_t size;
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/GAME.c:263..263
+   263      free_gamelist(g_heads[i]);
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/GAME.c:220..220
+   220    gamelink t, prev;
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/GAME.c:207..207
+   207    gamelink aux;
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/GAME.c:191..191
+   191    gamelink aux, prev;
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/GAME.c:184..184
+   184      g_heads[i] = NULL;
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/GAME.c:131..131
+   131    l = searchHashGame(name, g_heads[i]);
+
+38: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/GAME.c:130..130
+   130    i = hash_game(name);
+
+39: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/GAME.c:126..126
+   126    gamelink l;
+
+40: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/GAME.c:114..114
+   114      link = searchHashGame(a->name, g_heads[i]);
+
+41: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/GAME.c:113..113
+   113      i = hash_game(a->name);
+
+42: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/GAME.c:109..109
+   109    gamelink link;
+
+43: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/GAME.c:108..108
+   108    GamesList a;
+
+44: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/GAME.c:93..93
+    93      g_heads[i] = deleteHashGame(name, g_heads[i]);
+
+45: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/GAME.c:93..93
+    93      g_heads[i] = deleteHashGame(name, g_heads[i]);
+
+46: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/GAME.c:89..89
+    89    l = searchHashGame(name, g_heads[i]);
+
+47: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/GAME.c:88..88
+    88    i = hash_game(name);
+
+48: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/GAME.c:82..82
+    82    gamelink l;
+
+49: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/GAME.c:69..69
+    69    l = searchHashGame(name, g_heads[i]);
+
+50: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/GAME.c:68..68
+    68    i = hash_game(name);
+
+51: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/GAME.c:62..62
+    62    gamelink l;
+
+52: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/GAME.c:38..38
+    38        g_heads[i] = insertHashGame(name,name1,name2, score1, score2, g_heads[i]);
+
+53: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/GAME.c:38..38
+    38        g_heads[i] = insertHashGame(name,name1,name2, score1, score2, g_heads[i]);
+
+54: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/GAME.c:32..32
+    32      t2 = searchHashTeam(name2, t_heads[i2]);
+
+55: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/GAME.c:31..31
+    31      t1 = searchHashTeam(name1, t_heads[i1]);
+
+56: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/GAME.c:29..29
+    29      i2 = hash_team(name2);
+
+57: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/GAME.c:28..28
+    28      i1 = hash_team(name1);
+
+58: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/GAME.c:26..26
+    26    t = searchHashGame(name, g_heads[i]);
+
+59: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/GAME.c:25..25
+    25    i = hash_game(name);
+
+60: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/GAME.c:21..21
+    21    link t1,t2;
+
+61: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/GAME.c:20..20
+    20    gamelink t;
+=== printf or scanf missing width limit on %s ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/32/GAME.c:65..65
+    65    scanf(" %s", name);

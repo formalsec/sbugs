@@ -1,0 +1,718 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:303..303
+   303  		curr->connections[curr->currentConnections].status = 0;
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:303..303
+   303  		curr->connections[curr->currentConnections].status = 0;
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:302..302
+   302  		curr->connections[curr->currentConnections].reverse = NULL;
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:302..302
+   302  		curr->connections[curr->currentConnections].reverse = NULL;
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:301..301
+   301  		curr->connections[curr->currentConnections].out = &destination;
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:301..301
+   301  		curr->connections[curr->currentConnections].out = &destination;
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:300..300
+   300  		curr->connections[curr->currentConnections].in = curr;
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:300..300
+   300  		curr->connections[curr->currentConnections].in = curr;
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:296..296
+   296  		curr = &city[stores[i].x][stores[i].y].out;
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:296..296
+   296  		curr = &city[stores[i].x][stores[i].y].out;
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:281..281
+   281  		source.connections[source.currentConnections].status = 0;
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:281..281
+   281  		source.connections[source.currentConnections].status = 0;
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:280..280
+   280  		source.connections[source.currentConnections].reverse = NULL;
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:280..280
+   280  		source.connections[source.currentConnections].reverse = NULL;
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:279..279
+   279  		source.connections[source.currentConnections].out = &city[citizens[source.currentConnections].x][citizens[source.currentConnections].y].in;
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:279..279
+   279  		source.connections[source.currentConnections].out = &city[citizens[source.currentConnections].x][citizens[source.currentConnections].y].in;
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:279..279
+   279  		source.connections[source.currentConnections].out = &city[citizens[source.currentConnections].x][citizens[source.currentConnections].y].in;
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:279..279
+   279  		source.connections[source.currentConnections].out = &city[citizens[source.currentConnections].x][citizens[source.currentConnections].y].in;
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:279..279
+   279  		source.connections[source.currentConnections].out = &city[citizens[source.currentConnections].x][citizens[source.currentConnections].y].in;
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:279..279
+   279  		source.connections[source.currentConnections].out = &city[citizens[source.currentConnections].x][citizens[source.currentConnections].y].in;
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:278..278
+   278  		source.connections[source.currentConnections].in = &source;
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:278..278
+   278  		source.connections[source.currentConnections].in = &source;
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:264..264
+   264  		citizens[i].y = y - 1;
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:263..263
+   263  		citizens[i].x = x - 1;
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:256..256
+   256  		stores[i].y = y - 1;
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:255..255
+   255  		stores[i].x = x - 1;
+
+27: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:236..236
+   236  			city[i][j].in.connections = can_fail_malloc(sizeof(connection) * city[i][j].in.connectionNumber);
+
+28: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:236..236
+   236  			city[i][j].in.connections = can_fail_malloc(sizeof(connection) * city[i][j].in.connectionNumber);
+
+29: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:235..235
+   235  			city[i][j].out.connections = can_fail_malloc(sizeof(connection) * (city[i][j].out.connectionNumber + 1));
+
+30: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:235..235
+   235  			city[i][j].out.connections = can_fail_malloc(sizeof(connection) * (city[i][j].out.connectionNumber + 1));
+
+31: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:233..233
+   233  				city[i][j].in.connectionNumber++;
+
+32: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:232..232
+   232  				city[i][j].out.connectionNumber++;
+
+33: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:229..229
+   229  				city[i][j].in.connectionNumber++;
+
+34: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:228..228
+   228  				city[i][j].out.connectionNumber++;
+
+35: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:225..225
+   225  				city[i][j].in.connectionNumber++;
+
+36: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:224..224
+   224  				city[i][j].out.connectionNumber++;
+
+37: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:221..221
+   221  				city[i][j].in.connectionNumber++;
+
+38: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:220..220
+   220  				city[i][j].out.connectionNumber++;
+
+39: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:218..218
+   218  			city[i][j].out.hasConnectedToEnd = 0;
+
+40: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:217..217
+   217  			city[i][j].in.hasConnectedToEnd = 0;
+
+41: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:216..216
+   216  			city[i][j].out.visited = -1;
+
+42: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:215..215
+   215  			city[i][j].in.visited = -1;
+
+43: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:214..214
+   214  			city[i][j].out.connectionNumber = 1;
+
+44: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:213..213
+   213  			city[i][j].in.connectionNumber = 1;
+
+45: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:212..212
+   212  			city[i][j].out.currentConnections = 0;
+
+46: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:211..211
+   211  			city[i][j].in.currentConnections = 0;
+
+47: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:210..210
+   210  			city[i][j].out.place = &city[i][j];
+
+48: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:209..209
+   209  			city[i][j].in.place = &city[i][j];
+
+49: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:208..208
+   208  			city[i][j].out.parent = NULL;
+
+50: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:207..207
+   207  			city[i][j].in.parent = NULL;
+
+51: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:206..206
+   206  			city[i][j].y = j;
+
+52: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:205..205
+   205  			city[i][j].x = i;
+
+53: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:201..201
+   201  		city[i] = can_fail_malloc(sizeof(crossroad) * sizeY);
+
+54: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:170..170
+   170  	return &in->connections[in->currentConnections - 1];
+
+55: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:170..170
+   170  	return &in->connections[in->currentConnections - 1];
+
+56: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:168..168
+   168  	in->connections[in->currentConnections].status = value;
+
+57: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:168..168
+   168  	in->connections[in->currentConnections].status = value;
+
+58: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:167..167
+   167  	in->connections[in->currentConnections].out = out;
+
+59: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:167..167
+   167  	in->connections[in->currentConnections].out = out;
+
+60: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:166..166
+   166  	in->connections[in->currentConnections].in = in;
+
+61: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:166..166
+   166  	in->connections[in->currentConnections].in = in;
+
+62: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:160..160
+   160  	out->connections[out->currentConnections].reverse = &in->connections[in->currentConnections];
+
+63: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:160..160
+   160  	out->connections[out->currentConnections].reverse = &in->connections[in->currentConnections];
+
+64: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:160..160
+   160  	out->connections[out->currentConnections].reverse = &in->connections[in->currentConnections];
+
+65: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:160..160
+   160  	out->connections[out->currentConnections].reverse = &in->connections[in->currentConnections];
+
+66: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:159..159
+   159  	out->connections[out->currentConnections].status = 1;
+
+67: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:159..159
+   159  	out->connections[out->currentConnections].status = 1;
+
+68: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:158..158
+   158  	out->connections[out->currentConnections].out = in;
+
+69: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:158..158
+   158  	out->connections[out->currentConnections].out = in;
+
+70: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:157..157
+   157  	out->connections[out->currentConnections].in = out;
+
+71: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:157..157
+   157  	out->connections[out->currentConnections].in = out;
+
+72: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:156..156
+   156  	in->connections[in->currentConnections].reverse = &out->connections[out->currentConnections];
+
+73: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:156..156
+   156  	in->connections[in->currentConnections].reverse = &out->connections[out->currentConnections];
+
+74: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:156..156
+   156  	in->connections[in->currentConnections].reverse = &out->connections[out->currentConnections];
+
+75: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:156..156
+   156  	in->connections[in->currentConnections].reverse = &out->connections[out->currentConnections];
+
+76: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:155..155
+   155  	in->connections[in->currentConnections].status = 0;
+
+77: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:155..155
+   155  	in->connections[in->currentConnections].status = 0;
+
+78: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:154..154
+   154  	in->connections[in->currentConnections].out = out;
+
+79: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:154..154
+   154  	in->connections[in->currentConnections].out = out;
+
+80: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:153..153
+   153  	in->connections[in->currentConnections].in = in;
+
+81: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:153..153
+   153  	in->connections[in->currentConnections].in = in;
+
+82: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:119..119
+   119  					fifoAdd(curr->connections[i].out);
+
+83: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:115..115
+   115  					if (curr->connections[i].out == &destination) {
+
+84: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:114..114
+   114  					curr->connections[i].out->visited = maxFlow;
+
+85: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:113..113
+   113  					curr->connections[i].out->parent = &curr->connections[i];
+
+86: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:113..113
+   113  					curr->connections[i].out->parent = &curr->connections[i];
+
+87: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:112..112
+   112  				if (curr->connections[i].out->visited < maxFlow && curr->connections[i].status < 1) {
+
+88: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:112..112
+   112  				if (curr->connections[i].out->visited < maxFlow && curr->connections[i].status < 1) {
+cat: _CWE_170_.txt: No such file or directory
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:303..303
+   303  		curr->connections[curr->currentConnections].status = 0;
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:303..303
+   303  		curr->connections[curr->currentConnections].status = 0;
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:302..302
+   302  		curr->connections[curr->currentConnections].reverse = NULL;
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:302..302
+   302  		curr->connections[curr->currentConnections].reverse = NULL;
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:301..301
+   301  		curr->connections[curr->currentConnections].out = &destination;
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:301..301
+   301  		curr->connections[curr->currentConnections].out = &destination;
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:300..300
+   300  		curr->connections[curr->currentConnections].in = curr;
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:300..300
+   300  		curr->connections[curr->currentConnections].in = curr;
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:296..296
+   296  		curr = &city[stores[i].x][stores[i].y].out;
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:296..296
+   296  		curr = &city[stores[i].x][stores[i].y].out;
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:281..281
+   281  		source.connections[source.currentConnections].status = 0;
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:281..281
+   281  		source.connections[source.currentConnections].status = 0;
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:280..280
+   280  		source.connections[source.currentConnections].reverse = NULL;
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:280..280
+   280  		source.connections[source.currentConnections].reverse = NULL;
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:279..279
+   279  		source.connections[source.currentConnections].out = &city[citizens[source.currentConnections].x][citizens[source.currentConnections].y].in;
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:279..279
+   279  		source.connections[source.currentConnections].out = &city[citizens[source.currentConnections].x][citizens[source.currentConnections].y].in;
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:279..279
+   279  		source.connections[source.currentConnections].out = &city[citizens[source.currentConnections].x][citizens[source.currentConnections].y].in;
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:279..279
+   279  		source.connections[source.currentConnections].out = &city[citizens[source.currentConnections].x][citizens[source.currentConnections].y].in;
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:279..279
+   279  		source.connections[source.currentConnections].out = &city[citizens[source.currentConnections].x][citizens[source.currentConnections].y].in;
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:279..279
+   279  		source.connections[source.currentConnections].out = &city[citizens[source.currentConnections].x][citizens[source.currentConnections].y].in;
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:278..278
+   278  		source.connections[source.currentConnections].in = &source;
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:278..278
+   278  		source.connections[source.currentConnections].in = &source;
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:264..264
+   264  		citizens[i].y = y - 1;
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:263..263
+   263  		citizens[i].x = x - 1;
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:256..256
+   256  		stores[i].y = y - 1;
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:255..255
+   255  		stores[i].x = x - 1;
+
+27: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:236..236
+   236  			city[i][j].in.connections = can_fail_malloc(sizeof(connection) * city[i][j].in.connectionNumber);
+
+28: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:236..236
+   236  			city[i][j].in.connections = can_fail_malloc(sizeof(connection) * city[i][j].in.connectionNumber);
+
+29: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:235..235
+   235  			city[i][j].out.connections = can_fail_malloc(sizeof(connection) * (city[i][j].out.connectionNumber + 1));
+
+30: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:235..235
+   235  			city[i][j].out.connections = can_fail_malloc(sizeof(connection) * (city[i][j].out.connectionNumber + 1));
+
+31: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:233..233
+   233  				city[i][j].in.connectionNumber++;
+
+32: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:232..232
+   232  				city[i][j].out.connectionNumber++;
+
+33: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:229..229
+   229  				city[i][j].in.connectionNumber++;
+
+34: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:228..228
+   228  				city[i][j].out.connectionNumber++;
+
+35: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:225..225
+   225  				city[i][j].in.connectionNumber++;
+
+36: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:224..224
+   224  				city[i][j].out.connectionNumber++;
+
+37: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:221..221
+   221  				city[i][j].in.connectionNumber++;
+
+38: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:220..220
+   220  				city[i][j].out.connectionNumber++;
+
+39: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:218..218
+   218  			city[i][j].out.hasConnectedToEnd = 0;
+
+40: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:217..217
+   217  			city[i][j].in.hasConnectedToEnd = 0;
+
+41: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:216..216
+   216  			city[i][j].out.visited = -1;
+
+42: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:215..215
+   215  			city[i][j].in.visited = -1;
+
+43: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:214..214
+   214  			city[i][j].out.connectionNumber = 1;
+
+44: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:213..213
+   213  			city[i][j].in.connectionNumber = 1;
+
+45: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:212..212
+   212  			city[i][j].out.currentConnections = 0;
+
+46: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:211..211
+   211  			city[i][j].in.currentConnections = 0;
+
+47: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:210..210
+   210  			city[i][j].out.place = &city[i][j];
+
+48: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:209..209
+   209  			city[i][j].in.place = &city[i][j];
+
+49: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:208..208
+   208  			city[i][j].out.parent = NULL;
+
+50: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:207..207
+   207  			city[i][j].in.parent = NULL;
+
+51: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:206..206
+   206  			city[i][j].y = j;
+
+52: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:205..205
+   205  			city[i][j].x = i;
+
+53: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:201..201
+   201  		city[i] = can_fail_malloc(sizeof(crossroad) * sizeY);
+
+54: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:170..170
+   170  	return &in->connections[in->currentConnections - 1];
+
+55: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:170..170
+   170  	return &in->connections[in->currentConnections - 1];
+
+56: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:168..168
+   168  	in->connections[in->currentConnections].status = value;
+
+57: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:168..168
+   168  	in->connections[in->currentConnections].status = value;
+
+58: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:167..167
+   167  	in->connections[in->currentConnections].out = out;
+
+59: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:167..167
+   167  	in->connections[in->currentConnections].out = out;
+
+60: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:166..166
+   166  	in->connections[in->currentConnections].in = in;
+
+61: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:166..166
+   166  	in->connections[in->currentConnections].in = in;
+
+62: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:160..160
+   160  	out->connections[out->currentConnections].reverse = &in->connections[in->currentConnections];
+
+63: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:160..160
+   160  	out->connections[out->currentConnections].reverse = &in->connections[in->currentConnections];
+
+64: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:160..160
+   160  	out->connections[out->currentConnections].reverse = &in->connections[in->currentConnections];
+
+65: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:160..160
+   160  	out->connections[out->currentConnections].reverse = &in->connections[in->currentConnections];
+
+66: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:159..159
+   159  	out->connections[out->currentConnections].status = 1;
+
+67: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:159..159
+   159  	out->connections[out->currentConnections].status = 1;
+
+68: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:158..158
+   158  	out->connections[out->currentConnections].out = in;
+
+69: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:158..158
+   158  	out->connections[out->currentConnections].out = in;
+
+70: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:157..157
+   157  	out->connections[out->currentConnections].in = out;
+
+71: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:157..157
+   157  	out->connections[out->currentConnections].in = out;
+
+72: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:156..156
+   156  	in->connections[in->currentConnections].reverse = &out->connections[out->currentConnections];
+
+73: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:156..156
+   156  	in->connections[in->currentConnections].reverse = &out->connections[out->currentConnections];
+
+74: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:156..156
+   156  	in->connections[in->currentConnections].reverse = &out->connections[out->currentConnections];
+
+75: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:156..156
+   156  	in->connections[in->currentConnections].reverse = &out->connections[out->currentConnections];
+
+76: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:155..155
+   155  	in->connections[in->currentConnections].status = 0;
+
+77: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:155..155
+   155  	in->connections[in->currentConnections].status = 0;
+
+78: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:154..154
+   154  	in->connections[in->currentConnections].out = out;
+
+79: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:154..154
+   154  	in->connections[in->currentConnections].out = out;
+
+80: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:153..153
+   153  	in->connections[in->currentConnections].in = in;
+
+81: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:153..153
+   153  	in->connections[in->currentConnections].in = in;
+
+82: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:119..119
+   119  					fifoAdd(curr->connections[i].out);
+
+83: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:115..115
+   115  					if (curr->connections[i].out == &destination) {
+
+84: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:114..114
+   114  					curr->connections[i].out->visited = maxFlow;
+
+85: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:113..113
+   113  					curr->connections[i].out->parent = &curr->connections[i];
+
+86: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:113..113
+   113  					curr->connections[i].out->parent = &curr->connections[i];
+
+87: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:112..112
+   112  				if (curr->connections[i].out->visited < maxFlow && curr->connections[i].status < 1) {
+
+88: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp051/projeto.c:112..112
+   112  				if (curr->connections[i].out->visited < maxFlow && curr->connections[i].status < 1) {
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:145..145
+   145              u = parent[v];
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:144..144
+   144          for (v = t; v != s; v = parent[v]) {
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:136..136
+   136      int parent[graph.numVertices];
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:136..136
+   136      int parent[graph.numVertices];
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:127..127
+   127              if(visited[t]) return 1;
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:125..125
+   125                  visited[graph.adjList[u][i]] = 1;
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:125..125
+   125                  visited[graph.adjList[u][i]] = 1;
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:125..125
+   125                  visited[graph.adjList[u][i]] = 1;
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:125..125
+   125                  visited[graph.adjList[u][i]] = 1;
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:124..124
+   124                  parent[graph.adjList[u][i]] = u;
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:124..124
+   124                  parent[graph.adjList[u][i]] = u;
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:124..124
+   124                  parent[graph.adjList[u][i]] = u;
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:124..124
+   124                  parent[graph.adjList[u][i]] = u;
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:123..123
+   123                  qPush(graph.adjList[u][i]);
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:122..122
+   122              if (!visited[graph.adjList[u][i]]) {
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:122..122
+   122              if (!visited[graph.adjList[u][i]]) {
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:122..122
+   122              if (!visited[graph.adjList[u][i]]) {
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:122..122
+   122              if (!visited[graph.adjList[u][i]]) {
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:121..121
+   121          for(i = 0; i < graph.numArcs[u]; i++) {
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:120..120
+   120          u = qPop();
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:117..117
+   117      parent[s] = NIL;
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:116..116
+   116      visited[s] = 1;
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:109..109
+   109      int u, i, visited[graph.numVertices];
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:109..109
+   109      int u, i, visited[graph.numVertices];
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:104..104
+   104          if(graph.adjList[u][i] == v) return i;
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:103..103
+   103      for(i = 0; i < graph.numArcs[u]; i++)
+
+27: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:90..90
+    90      graph.numArcs[graph.numVertices] = 0;
+
+28: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:90..90
+    90      graph.numArcs[graph.numVertices] = 0;
+
+29: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:89..89
+    89      graph.adjList[graph.numVertices] = (int *)can_fail_malloc(sizeof(int));
+
+30: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:89..89
+    89      graph.adjList[graph.numVertices] = (int *)can_fail_malloc(sizeof(int));
+
+31: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:83..83
+    83      graph.numArcs[graph.numVertices] = 0;
+
+32: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:83..83
+    83      graph.numArcs[graph.numVertices] = 0;
+
+33: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:82..82
+    82      graph.adjList[graph.numVertices] = (int *)can_fail_malloc(sizeof(int));
+
+34: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:82..82
+    82      graph.adjList[graph.numVertices] = (int *)can_fail_malloc(sizeof(int));
+
+35: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:68..68
+    68          graph.numArcs[i + graph.numVertices] = 0;
+
+36: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:68..68
+    68          graph.numArcs[i + graph.numVertices] = 0;
+
+37: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:68..68
+    68          graph.numArcs[i + graph.numVertices] = 0;
+
+38: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:67..67
+    67          graph.adjList[i + graph.numVertices] = (int *)can_fail_malloc(sizeof(int));
+
+39: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:67..67
+    67          graph.adjList[i + graph.numVertices] = (int *)can_fail_malloc(sizeof(int));
+
+40: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:67..67
+    67          graph.adjList[i + graph.numVertices] = (int *)can_fail_malloc(sizeof(int));
+
+41: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:66..66
+    66          graph.numArcs[i] = 0;
+
+42: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:65..65
+    65          graph.adjList[i] = (int *)can_fail_malloc(sizeof(int));
+
+43: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:53..53
+    53      graph.adjList[src] = can_fail_realloc(graph.adjList[src], ((--graph.numArcs[src]))*sizeof(int));
+
+44: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:53..53
+    53      graph.adjList[src] = can_fail_realloc(graph.adjList[src], ((--graph.numArcs[src]))*sizeof(int));
+
+45: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:53..53
+    53      graph.adjList[src] = can_fail_realloc(graph.adjList[src], ((--graph.numArcs[src]))*sizeof(int));
+
+46: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:52..52
+    52          graph.adjList[src][pos] = graph.adjList[src][pos+1];  
+
+47: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:52..52
+    52          graph.adjList[src][pos] = graph.adjList[src][pos+1];  
+
+48: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:51..51
+    51      for (; pos < graph.numArcs[src]-1; pos++)
+
+49: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:47..47
+    47      graph.adjList[src][graph.numArcs[src]-1] = dest;
+
+50: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:47..47
+    47      graph.adjList[src][graph.numArcs[src]-1] = dest;
+
+51: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:46..46
+    46      graph.adjList[src] = can_fail_realloc(graph.adjList[src], ((++graph.numArcs[src]))*sizeof(int));
+
+52: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:46..46
+    46      graph.adjList[src] = can_fail_realloc(graph.adjList[src], ((++graph.numArcs[src]))*sizeof(int));
+
+53: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:46..46
+    46      graph.adjList[src] = can_fail_realloc(graph.adjList[src], ((++graph.numArcs[src]))*sizeof(int));
+
+54: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:40..40
+    40  		n = queue.list[queue.head++];
+
+55: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:40..40
+    40  		n = queue.list[queue.head++];
+
+56: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:34..34
+    34  	queue.list[queue.tail++] = n;
+
+57: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:34..34
+    34  	queue.list[queue.tail++] = n;
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:127..127
+   127              if(visited[t]) return 1;
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:116..116
+   116      visited[s] = 1;
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:103..103
+   103      for(i = 0; i < graph.numArcs[u]; i++)
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:52..52
+    52          graph.adjList[src][pos] = graph.adjList[src][pos+1];  
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:51..51
+    51      for (; pos < graph.numArcs[src]-1; pos++)
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp009/input.c:46..46
+    46      graph.adjList[src] = can_fail_realloc(graph.adjList[src], ((++graph.numArcs[src]))*sizeof(int));

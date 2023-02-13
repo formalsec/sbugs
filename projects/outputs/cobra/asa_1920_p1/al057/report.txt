@@ -1,0 +1,55 @@
+cat: _CWE_457_.txt: No such file or directory
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al057/main.c:125..125
+   125          free(adjmatrix[i]);
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al057/main.c:116..116
+   116          currentgrade = adjmatrix[i][i];
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al057/main.c:106..106
+   106          visited[i] = 0;
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al057/main.c:91..91
+    91                  currentgrade = adjmatrix[v][i];
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al057/main.c:90..90
+    90              if(currentgrade < adjmatrix[v][i])
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al057/main.c:88..88
+    88          if(adjmatrix[v][i] != -1 && !visited[i] && i != v){
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al057/main.c:88..88
+    88          if(adjmatrix[v][i] != -1 && !visited[i] && i != v){
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al057/main.c:84..84
+    84      visited[v] = 1;
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al057/main.c:76..76
+    76          adjmatrix[friend_1 - 1][friend_2 - 1] = adjmatrix[friend_2 - 1][friend_2 - 1]; 
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al057/main.c:76..76
+    76          adjmatrix[friend_1 - 1][friend_2 - 1] = adjmatrix[friend_2 - 1][friend_2 - 1]; 
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al057/main.c:71..71
+    71          numTokens = scanf("%d %d", &friend_1, &friend_2);
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al057/main.c:71..71
+    71          numTokens = scanf("%d %d", &friend_1, &friend_2);
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al057/main.c:66..66
+    66          adjmatrix[i][i] = grade;
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al057/main.c:39..39
+    39          visited[i] = 0;
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al057/main.c:29..29
+    29              adjmatrix[i][j] = -1;
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al057/main.c:23..23
+    23          if(adjmatrix[i] == NULL)
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al057/main.c:21..21
+    21          adjmatrix[i] = (int *) can_fail_malloc(students * sizeof(int));
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al057/main.c:84..84
+    84      visited[v] = 1;

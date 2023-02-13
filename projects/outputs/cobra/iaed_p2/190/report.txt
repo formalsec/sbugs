@@ -1,0 +1,237 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/main.c:23..23
+    23          str[i2] = '\0';
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/main.c:21..21
+    21              str[i2] = c;
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/main.c:9..9
+     9      char str[DIMGRANDE];
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/hashtableEquipa.c:109..109
+   109          insertEquipa(*tamHashEquipa,array[i]);
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/hashtableEquipa.c:97..97
+    97          headEquipa = headsEquipa[i];
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/hashtableEquipa.c:79..79
+    79              array[j] = head->item;
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/hashtableEquipa.c:77..77
+    77          head = headsEquipa[i];
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/hashtableEquipa.c:75..75
+    75      for (i = 0; i < contadorEquipas; i++) array[i] = NULL;
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/hashtableEquipa.c:63..63
+    63          free(headsEquipa[i]);
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/hashtableEquipa.c:62..62
+    62          free(headsEquipa[i]->item);
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/hashtableEquipa.c:61..61
+    61          free(headsEquipa[i]->item->nomeEquipa);
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/hashtableEquipa.c:51..51
+    51      head = headsEquipa[i];
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/hashtableEquipa.c:40..40
+    40      head = headsEquipa[i];
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/hashtableEquipa.c:39..39
+    39      int i = hashEquipa(text, tamHashEquipa);
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/hashtableEquipa.c:33..33
+    33      headsEquipa[i] = newNodeE;
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/hashtableEquipa.c:31..31
+    31      newNodeE->next = headsEquipa[i];
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/hashtableEquipa.c:28..28
+    28      int i = hashEquipa(keyEquipa(item), tamHashEquipa);
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/hashtableEquipa.c:24..24
+    24      for (i = 0; i < m; i++) headsEquipa[i] = NULL;
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/hashtableEquipa.c:11..11
+    11          key = key + str[i];
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/hashtable.c:174..174
+   174          insert(*tamHash,array[i]);
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/hashtable.c:160..160
+   160          head = heads[i];
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/hashtable.c:141..141
+   141                  array[j] = head->item;
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/hashtable.c:139..139
+   139              head = heads[i];
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/hashtable.c:137..137
+   137          for (i = 0; i < contadorJogos; i++) array[i] = NULL;
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/hashtable.c:120..120
+   120          free(heads[i]);
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/hashtable.c:119..119
+   119          free(heads[i]->item);
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/hashtable.c:118..118
+   118          free(heads[i]->item->equipa2);
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/hashtable.c:117..117
+   117          free(heads[i]->item->equipa1);
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/hashtable.c:116..116
+   116          free(heads[i]->item->nome);
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/hashtable.c:103..103
+   103      head = heads[i];
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/hashtable.c:91..91
+    91      head = heads[i];
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/hashtable.c:90..90
+    90      int i = hash(text, tamHash);
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/hashtable.c:64..64
+    64          heads[i] = aux;
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/hashtable.c:63..63
+    63          free(heads[i]);
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/hashtable.c:62..62
+    62          free(heads[i]->item);
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/hashtable.c:61..61
+    61          free(heads[i]->item->equipa2);
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/hashtable.c:60..60
+    60          free(heads[i]->item->equipa1);
+
+38: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/hashtable.c:59..59
+    59          free(heads[i]->item->nome);
+
+39: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/hashtable.c:58..58
+    58          aux = heads[i]->next;
+
+40: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/hashtable.c:44..44
+    44      head = heads[i];
+
+41: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/hashtable.c:43..43
+    43      int i = hash(text, tamHash);
+
+42: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/hashtable.c:42..42
+    42      ItemEquipa ptr;
+
+43: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/hashtable.c:35..35
+    35      heads[i] = newNode;
+
+44: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/hashtable.c:34..34
+    34      newNode->next = heads[i];
+
+45: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/hashtable.c:30..30
+    30      int i = hash(key(item), tamHash);
+
+46: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/hashtable.c:26..26
+    26      for (i = 0; i < m; i++) heads[i] = NULL;
+
+47: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/hashtable.c:12..12
+    12          key = key + str[i];
+
+48: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/funcoes.c:226..226
+   226      ItemEquipa ptr;
+
+49: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/funcoes.c:223..223
+   223      Item jogo;
+
+50: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/funcoes.c:222..222
+   222      char nome[DIM];
+
+51: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/funcoes.c:209..209
+   209      char nome[DIM];
+
+52: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/funcoes.c:199..199
+   199                  printf("%d * %s\n", e, best[k]->nomeEquipa);
+
+53: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/funcoes.c:188..188
+   188                      best[j] = array[i];
+
+54: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/funcoes.c:188..188
+   188                      best[j] = array[i];
+
+55: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/funcoes.c:186..186
+   186                      pontosMax = array[i]->pontosVencedores;
+
+56: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/funcoes.c:185..185
+   185                      best[k] = NULL;
+
+57: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/funcoes.c:183..183
+   183              } else if (array[i]->pontosVencedores > pontosMax) {
+
+58: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/funcoes.c:181..181
+   181                  best[j] = array[i];
+
+59: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/funcoes.c:181..181
+   181                  best[j] = array[i];
+
+60: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/funcoes.c:180..180
+   180              if (array[i]->pontosVencedores == pontosMax) {
+
+61: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/funcoes.c:156..156
+   156      ItemEquipa y = *(const ItemEquipa *) q;
+
+62: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/funcoes.c:155..155
+   155      ItemEquipa x = *(const ItemEquipa *) p;
+
+63: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/funcoes.c:145..145
+   145              printA = array[j];
+
+64: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/funcoes.c:137..137
+   137      Item printA;
+
+65: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/funcoes.c:122..122
+   122      Item y = *(const Item*)q;
+
+66: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/funcoes.c:121..121
+   121      Item x = *(const Item*)p;
+
+67: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/funcoes.c:96..96
+    96      ItemEquipa ptr;
+
+68: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/funcoes.c:95..95
+    95      char nome[DIM];
+
+69: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/funcoes.c:80..80
+    80      Item ptr;
+
+70: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/funcoes.c:79..79
+    79      char nome[DIM];
+
+71: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/funcoes.c:62..62
+    62      ItemEquipa equipa;
+
+72: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/funcoes.c:61..61
+    61      char nome[DIM];
+
+73: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/funcoes.c:19..19
+    19      ItemEquipa ptr;
+
+74: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/funcoes.c:18..18
+    18      Item jogo;
+
+75: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/funcoes.c:15..15
+    15      char equipa2[DIM];
+
+76: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/funcoes.c:14..14
+    14      char equipa1[DIM];
+
+77: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/funcoes.c:13..13
+    13      char nome[DIM];
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/hashtableEquipa.c:51..51
+    51      head = headsEquipa[i];
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/190/hashtable.c:103..103
+   103      head = heads[i];

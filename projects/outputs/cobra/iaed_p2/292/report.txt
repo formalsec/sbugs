@@ -1,0 +1,120 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/292/table_finder.c:128..128
+   128  			struct Equipas *temp = games_list[i];
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/292/table_finder.c:127..127
+   127  		if(games_list[i] != NULL){
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/292/table_finder.c:115..115
+   115      for(i=0; i<count; i++) free(tabela[i]);
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/292/table_finder.c:113..113
+   113  		printf("%d * %s\n",NL, tabela[i]);}
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/292/table_finder.c:100..100
+   100  					strcpy(tabela[p],(*temp).ID);
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/292/table_finder.c:98..98
+    98  					tabela[p]=can_fail_malloc((strlen((*temp).ID)+1)*\
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/292/table_finder.c:93..93
+    93  			struct Equipas *temp = elemento[i];
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/292/table_finder.c:92..92
+    92  		if(elemento[i] != NULL){
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/292/table_finder.c:49..49
+    49  	nt = Team[x];
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/292/table_finder.c:48..48
+    48  	int x = hash(nome, N);
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/292/table_finder.c:29..29
+    29  	next = jogos[x];
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/292/table_finder.c:28..28
+    28  	int x = hash(nome, M);
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/292/table_finder.c:16..16
+    16  		sum+=3^(i+3)*(int)palavra[i];
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/292/table_finder.c:15..15
+    15  	while(palavra[i]!='\0'){
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/292/table_changers.c:249..249
+   249  			struct Equipas *prev, *temp = equipas[i];
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/292/table_changers.c:248..248
+   248  		if(equipas[i] != NULL){
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/292/table_changers.c:210..210
+   210  			jogos[x]=NULL;}
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/292/table_changers.c:207..207
+   207  			jogos[x]=elemento->next_tabela;
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/292/table_changers.c:205..205
+   205  	if(jogos[x]!=NULL && !strcmp(elemento->ID, nome)){
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/292/table_changers.c:204..204
+   204  	elemento = jogos[x];
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/292/table_changers.c:177..177
+   177  	bool encontrou = false;
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/292/table_changers.c:176..176
+   176      int score1, score2, x = hash(nome,M);
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/292/table_changers.c:119..119
+   119  	next = jogos[x];
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/292/table_changers.c:118..118
+   118  	x = hash(id, M);
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/292/table_changers.c:113..113
+   113  	char id[MAX_size]; 
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/292/table_changers.c:101..101
+   101          struct Equipas *prev = equipas[id];
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/292/table_changers.c:99..99
+    99  	if(equipas[id]==NULL){equipas[id]=novaEquipa;novaEquipa->next=NULL;}
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/292/table_changers.c:99..99
+    99  	if(equipas[id]==NULL){equipas[id]=novaEquipa;novaEquipa->next=NULL;}
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/292/table_changers.c:96..96
+    96  	id = hash(ID, N);
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/292/table_changers.c:57..57
+    57      {   struct Jogos *aux = jogos[id];
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/292/table_changers.c:55..55
+    55  	if(jogos[id]==NULL){jogos[id]=novoJogo; novoJogo->next_tabela = NULL;}
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/292/table_changers.c:55..55
+    55  	if(jogos[id]==NULL){jogos[id]=novoJogo; novoJogo->next_tabela = NULL;}
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/292/table_changers.c:53..53
+    53  	id = hash(ID, M);
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/292/table_changers.c:19..19
+    19  	char ID[MAX_size], t1[MAX_size], t2[MAX_size];
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/292/table_changers.c:19..19
+    19  	char ID[MAX_size], t1[MAX_size], t2[MAX_size];
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p2/292/table_changers.c:19..19
+    19  	char ID[MAX_size], t1[MAX_size], t2[MAX_size];
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p2/292/projeto.c:47..47
+    47  	for(x=0; x<N; x++) lista_equipas[x]=NULL;
+
+38: /home/fmarques/sbugs/projects/alunos/iaed_p2/292/projeto.c:46..46
+    46  	for(x=0; x<M; x++) games_list[x]=NULL;
+
+39: /home/fmarques/sbugs/projects/alunos/iaed_p2/292/projeto.c:19..19
+    19  	char buffer[MAX_buffer], comando, rest[MAX_rest];
+
+40: /home/fmarques/sbugs/projects/alunos/iaed_p2/292/projeto.c:19..19
+    19  	char buffer[MAX_buffer], comando, rest[MAX_rest];

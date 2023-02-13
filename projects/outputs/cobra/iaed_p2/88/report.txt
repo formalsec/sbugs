@@ -1,0 +1,108 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/88/tab_equipas.c:148..148
+   148              printf("%d * %s\n", num_linha, vetor_equipas[i]->nome);
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/88/tab_equipas.c:126..126
+   126                          vetor_equipas[tamanho_vetor ++] = (equipa)(no_aux->item);
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/88/tab_equipas.c:121..121
+   121                  no_aux = tab_equipas->tab[i];
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/88/tab_equipas.c:119..119
+   119              if (tab_equipas->tab[i] != NULL) {
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/88/tab_equipas.c:70..70
+    70              no_aux = tab_equipas->tab[i];
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/88/tab_equipas.c:67..67
+    67          if (tab_equipas->tab[i] != NULL) {
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/88/tab_disp.c:58..58
+    58              liberta_lista(t->tab[i], liberta_item);
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/88/tab_disp.c:57..57
+    57          if(t->tab[i] != NULL) {
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/88/tab_disp.c:44..44
+    44      item = procura(t->tab[i], chave, igual);
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/88/tab_disp.c:34..34
+    34      t->tab[i] = retira(t->tab[i], chave, igual, liberta);
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/88/tab_disp.c:34..34
+    34      t->tab[i] = retira(t->tab[i], chave, igual, liberta);
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/88/tab_disp.c:25..25
+    25      t->tab[i] = insere(t->tab[i], item);
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/88/tab_disp.c:25..25
+    25      t->tab[i] = insere(t->tab[i], item);
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/88/tab_disp.c:14..14
+    14          nova_tabela->tab[i] = NULL;
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/88/tab_disp.c:8..8
+     8      tab_disp nova_tabela = (tab_disp) can_fail_malloc(sizeof(struct stru_tab));
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/88/main.c:302..302
+   302      equipa equipa_aux;
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/88/main.c:301..301
+   301      char buffer[STRMAX];
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/88/main.c:247..247
+   247      jogo jogo_aux;
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/88/main.c:245..245
+   245      char buf[STRMAX];
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/88/main.c:202..202
+   202      jogo j_aux;
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/88/main.c:201..201
+   201      char buf[STRMAX];
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/88/main.c:182..182
+   182      jogo j_aux;
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/88/main.c:181..181
+   181      char buf[STRMAX];
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/88/main.c:167..167
+   167      jogo j_aux = jogo_1;
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/88/main.c:148..148
+   148      equipa equipa_aux;
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/88/main.c:147..147
+   147      char buf[STRMAX];
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/88/main.c:106..106
+   106      equipa e2 = NULLequipa;
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/88/main.c:105..105
+   105      equipa e1 = NULLequipa;
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/88/main.c:103..103
+   103      char buf_e2[STRMAX];
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/88/main.c:102..102
+   102      char buf_e1[STRMAX];
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/88/main.c:101..101
+   101      char buf_nome[STRMAX];
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/88/main.c:39..39
+    39      tab_disp tab_equipas, tab_jogos;
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/88/main.c:37..37
+    37      jogo jogo_ult = NULLjogo;
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/88/main.c:36..36
+    36      jogo jogo_1 = NULLjogo;        
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/88/jogo.c:7..7
+     7      jogo jogo_aux = (jogo) can_fail_malloc(sizeof(struct stru_jogo));
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p2/88/equipa.c:7..7
+     7      equipa equipa_aux = (equipa) can_fail_malloc(sizeof(struct stru_equipa));

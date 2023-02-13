@@ -1,0 +1,91 @@
+cat: '*_.txt': No such file or directory
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al086/main.c:162..162
+   162      int informacoes[INFO];
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al086/main.c:153..153
+   153          free(alunos[i].ultimoAmigo);
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al086/main.c:150..150
+   150              alunos[i].amigo = alunos[i].amigo->next;
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al086/main.c:150..150
+   150              alunos[i].amigo = alunos[i].amigo->next;
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al086/main.c:149..149
+   149              auxiliar = alunos[i].amigo;
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al086/main.c:148..148
+   148          for(j=0; j<alunos[i].totalConexoes; j++){
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al086/main.c:138..138
+   138          printf("%d\n", alunos[i].nota);
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al086/main.c:114..114
+   114          return alunos[idDoAluno].nota;
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al086/main.c:109..109
+   109                  alunos[idDoAluno].nota = temp;
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al086/main.c:102..102
+   102          for(i=0; i<alunos[idDoAluno].totalConexoes; i++)
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al086/main.c:101..101
+   101          auxilar=alunos[idDoAluno].amigo;
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al086/main.c:100..100
+   100          temp = alunos[idDoAluno].nota;
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al086/main.c:99..99
+    99          alunos[idDoAluno].visitado = numDaInteracao;
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al086/main.c:98..98
+    98      if(alunos[idDoAluno].visitado != numDaInteracao){
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al086/main.c:66..66
+    66      alunos[estudante].totalConexoes++;
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al086/main.c:64..64
+    64      alunos[estudante].ultimoAmigo = alunos[estudante].ultimoAmigo->next;
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al086/main.c:64..64
+    64      alunos[estudante].ultimoAmigo = alunos[estudante].ultimoAmigo->next;
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al086/main.c:63..63
+    63      alunos[estudante].ultimoAmigo->next->next = NULL;
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al086/main.c:62..62
+    62      alunos[estudante].ultimoAmigo->next->id = -1;
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al086/main.c:61..61
+    61      alunos[estudante].ultimoAmigo->next = (conexoes *)can_fail_malloc(sizeof(conexoes));
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al086/main.c:59..59
+    59      alunos[estudante].ultimoAmigo->id = amigo;
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al086/main.c:44..44
+    44              alunos[i].visitado = -1;
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al086/main.c:43..43
+    43              alunos[i].totalConexoes = 0;
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al086/main.c:42..42
+    42              alunos[i].ultimoAmigo = alunos[i].amigo;
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al086/main.c:42..42
+    42              alunos[i].ultimoAmigo = alunos[i].amigo;
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al086/main.c:41..41
+    41              alunos[i].amigo->next = NULL;
+
+27: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al086/main.c:40..40
+    40              alunos[i].amigo->id = -1;
+
+28: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al086/main.c:39..39
+    39              alunos[i].amigo = (conexoes*)can_fail_malloc(sizeof(conexoes));  
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al086/main.c:98..98
+    98      if(alunos[idDoAluno].visitado != numDaInteracao){
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al086/main.c:59..59
+    59      alunos[estudante].ultimoAmigo->id = amigo;

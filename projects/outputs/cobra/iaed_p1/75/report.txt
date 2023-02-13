@@ -1,0 +1,285 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:817..817
+   817          list_of_prods[prod_idp].quantity -= prod_qtd;    
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:815..815
+   815          list_of_prods[prod_idp].quantity = 0;
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:814..814
+   814      if((list_of_prods[prod_idp].quantity - prod_qtd) < 0){
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:806..806
+   806      list_of_prods[idp].quantity += qtt;
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:791..791
+   791              qtt = list_of_orders[ide][i].qtt;
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:789..789
+   789      while(((index = list_of_orders[ide][i].idp)!= -1) && i < MAXPERORDER){
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:776..776
+   776          printf("* %s %d %d\n", sorted_prods[i].description, price, sorted_prods[i].quantity);
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:776..776
+   776          printf("* %s %d %d\n", sorted_prods[i].description, price, sorted_prods[i].quantity);
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:775..775
+   775          price = list_of_prods[id].price;
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:774..774
+   774          id = sorted_prods[i].idp;
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:741..741
+   741      ((strcmp(new_array[l].description, pivot.description)==0) && (new_array[l].idp > pivot.idp)))
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:741..741
+   741      ((strcmp(new_array[l].description, pivot.description)==0) && (new_array[l].idp > pivot.idp)))
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:740..740
+   740      if(strcmp(new_array[l].description, pivot.description) > 0 ||
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:730..730
+   730          ((strcmp(new_array[r].description, pivot.description)==0) && (new_array[r].idp > pivot.idp))){
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:730..730
+   730          ((strcmp(new_array[r].description, pivot.description)==0) && (new_array[r].idp > pivot.idp))){
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:729..729
+   729          while(strcmp(new_array[r].description, pivot.description) > 0 ||
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:726..726
+   726          ((strcmp(new_array[l].description, pivot.description)==0) && (new_array[l].idp < pivot.idp))){
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:726..726
+   726          ((strcmp(new_array[l].description, pivot.description)==0) && (new_array[l].idp < pivot.idp))){
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:725..725
+   725          while(strcmp(new_array[l].description, pivot.description) < 0 ||
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:718..718
+   718      sort_order pivot = new_array[end];
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:672..672
+   672              new_array[index].quantity = quant;
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:671..671
+   671              strcpy(new_array[index].description, list_of_prods[value].description);
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:671..671
+   671              strcpy(new_array[index].description, list_of_prods[value].description);
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:670..670
+   670              new_array[index].idp = list_of_prods[value].id;
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:670..670
+   670              new_array[index].idp = list_of_prods[value].id;
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:668..668
+   668          if((quant = list_of_orders[ide][i].qtt) > 0){
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:666..666
+   666      while((value = list_of_orders[ide][i].idp) != -1 && i < MAXPERORDER){
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:656..656
+   656      sort_order new_array[MAXORDERS];
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:642..642
+   642                                list_of_prods[idp].quantity);
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:641..641
+   641                                list_of_prods[idp].price,
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:640..640
+   640          printf("* %s %d %d\n", list_of_prods[idp].description, 
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:639..639
+   639          idp = sorted_prods[i].idp;
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:612..612
+   612      ((new_array[l].price == pivot.price) && (new_array[l].idp > pivot.idp)))
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:612..612
+   612      ((new_array[l].price == pivot.price) && (new_array[l].idp > pivot.idp)))
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:611..611
+   611      if(new_array[l].price > pivot.price ||
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:600..600
+   600          ((new_array[r].price == pivot.price) && (new_array[r].idp > pivot.idp))){
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:600..600
+   600          ((new_array[r].price == pivot.price) && (new_array[r].idp > pivot.idp))){
+
+38: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:599..599
+   599          while(new_array[r].price > pivot.price ||
+
+39: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:596..596
+   596          ((new_array[l].price == pivot.price) && (new_array[l].idp < pivot.idp))){
+
+40: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:596..596
+   596          ((new_array[l].price == pivot.price) && (new_array[l].idp < pivot.idp))){
+
+41: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:595..595
+   595          while(new_array[l].price < pivot.price || 
+
+42: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:592..592
+   592      sort_prod pivot = new_array[end];
+
+43: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:551..551
+   551          new_array[i].price = list_of_prods[i].price;
+
+44: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:551..551
+   551          new_array[i].price = list_of_prods[i].price;
+
+45: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:550..550
+   550          new_array[i].idp = i;
+
+46: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:545..545
+   545      sort_prod new_array[MAXPRODUCTS];
+
+47: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:517..517
+   517                      max_qtt = list_of_orders[i][index].qtt;
+
+48: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:516..516
+   516                  if((list_of_orders[i][index].idp == idp) && (list_of_orders[i][index].qtt > max_qtt)){
+
+49: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:516..516
+   516                  if((list_of_orders[i][index].idp == idp) && (list_of_orders[i][index].qtt > max_qtt)){
+
+50: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:492..492
+   492          printf("%s %d.\n", list_of_prods[prod_idp].description, quantity); 
+
+51: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:472..472
+   472          list_of_prods[idp].price = new_price;
+
+52: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:450..450
+   450              total_cost += list_of_prods[index].price * list_of_orders[ide][i].qtt;
+
+53: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:450..450
+   450              total_cost += list_of_prods[index].price * list_of_orders[ide][i].qtt;
+
+54: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:448..448
+   448          while((index = list_of_orders[ide][i].idp) != -1 && i < MAXPERORDER){
+
+55: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:427..427
+   427      list_of_orders[ide][i-1].qtt = -1;
+
+56: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:426..426
+   426      list_of_orders[ide][i-1].idp = -1;
+
+57: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:420..420
+   420              list_of_orders[ide][i-1].qtt = list_of_orders[ide][i].qtt; 
+
+58: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:420..420
+   420              list_of_orders[ide][i-1].qtt = list_of_orders[ide][i].qtt; 
+
+59: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:419..419
+   419              list_of_orders[ide][i-1].idp = list_of_orders[ide][i].idp;
+
+60: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:419..419
+   419              list_of_orders[ide][i-1].idp = list_of_orders[ide][i].idp;
+
+61: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:414..414
+   414      while(((value = list_of_orders[ide][i].idp)!=-1) && i < MAXPERORDER){
+
+62: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:389..389
+   389          while(((value = list_of_orders[ide][i].idp) != -1) && i < MAXPERORDER){
+
+63: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:341..341
+   341      }else if(prod_qtd > list_of_prods[prod_idp].quantity){
+
+64: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:302..302
+   302          list_of_orders[ide][i].qtt = new_qtt;
+
+65: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:301..301
+   301          list_of_orders[ide][i].idp = prod_idp;
+
+66: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:294..294
+   294              list_of_orders[ide][i].qtt += new_qtt;
+
+67: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:292..292
+   292      while((ind = list_of_orders[ide][i].idp)!= -1){
+
+68: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:275..275
+   275      total_weight += list_of_prods[prod_idp].weight * new_qtt;
+
+69: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:270..270
+   270          prod_quantity = list_of_orders[ide][i].qtt;
+
+70: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:269..269
+   269          prod_weight = list_of_prods[list_of_orders[ide][i].idp].weight;
+
+71: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:269..269
+   269          prod_weight = list_of_prods[list_of_orders[ide][i].idp].weight;
+
+72: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:269..269
+   269          prod_weight = list_of_prods[list_of_orders[ide][i].idp].weight;
+
+73: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:269..269
+   269          prod_weight = list_of_prods[list_of_orders[ide][i].idp].weight;
+
+74: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:267..267
+   267      while((index = list_of_orders[ide][i].idp) != -1 && i < MAXPERORDER){
+
+75: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:263..263
+   263      }else if(new_qtt > list_of_prods[prod_idp].quantity){
+
+76: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:202..202
+   202          list_of_orders[total_orders][i].qtt = -1;
+
+77: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:201..201
+   201          list_of_orders[total_orders][i].idp = -1;
+
+78: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:167..167
+   167      list_of_prods[total_prods].id = total_prods;
+
+79: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:164..164
+   164      scanf(" %[^:]:%d:%d:%d", list_of_prods[total_prods].description, &list_of_prods[total_prods].price, 
+
+80: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:41..41
+    41      char description[MAXCARACTERES];
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:814..814
+   814      if((list_of_prods[prod_idp].quantity - prod_qtd) < 0){
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:806..806
+   806      list_of_prods[idp].quantity += qtt;
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:789..789
+   789      while(((index = list_of_orders[ide][i].idp)!= -1) && i < MAXPERORDER){
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:718..718
+   718      sort_order pivot = new_array[end];
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:592..592
+   592      sort_prod pivot = new_array[end];
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:414..414
+   414      while(((value = list_of_orders[ide][i].idp)!=-1) && i < MAXPERORDER){
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:389..389
+   389          while(((value = list_of_orders[ide][i].idp) != -1) && i < MAXPERORDER){
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:341..341
+   341      }else if(prod_qtd > list_of_prods[prod_idp].quantity){
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:292..292
+   292      while((ind = list_of_orders[ide][i].idp)!= -1){
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:267..267
+   267      while((index = list_of_orders[ide][i].idp) != -1 && i < MAXPERORDER){
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:263..263
+   263      }else if(new_qtt > list_of_prods[prod_idp].quantity){
+=== Dangerous function calls lacking bounds checking ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:760..760
+   760      strcpy(right -> description, temp.description);
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:757..757
+   757      strcpy(left -> description, right -> description);
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:754..754
+   754      strcpy(temp.description, left -> description);
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p1/75/proj1.c:671..671
+   671              strcpy(new_array[index].description, list_of_prods[value].description);

@@ -1,0 +1,123 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/239/x.c:24..24
+    24      searcher_game = hashG[i];
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/239/x.c:14..14
+    14      searcher_team = hashT[i];
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/239/s.c:22..22
+    22    searcher_game = hashG[index];
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/239/s.c:21..21
+    21    index = hash_function(name);
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/239/s.c:18..18
+    18    char name[MAX_STRING];
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/239/r.c:22..22
+    22    searcher_game = hashG[index];
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/239/r.c:21..21
+    21    index = hash_function(name);
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/239/r.c:18..18
+    18    char name[MAX_STRING];
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/239/P.c:23..23
+    23    searcher_team = hashT[index];
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/239/P.c:22..22
+    22    index = hash_function(name);
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/239/P.c:19..19
+    19    char name[MAX_STRING];
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/239/p.c:24..24
+    24    searcher_game = hashG[index];
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/239/p.c:23..23
+    23    index = hash_function(name);
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/239/p.c:20..20
+    20    char name[MAX_STRING];
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/239/main.c:9..9
+     9    GAME* hashG[hash_size];
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/239/main.c:8..8
+     8    TEAM* hashT[hash_size];
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/239/hash_initializer.c:10..10
+    10      hashG[i] = (GAME*)can_fail_calloc(1,sizeof(GAME));
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/239/hash_initializer.c:9..9
+     9      hashT[i] = (TEAM*)can_fail_calloc(1,sizeof(TEAM));
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/239/hash_function.c:12..12
+    12    	manipulation[i] = manipulation[i]+48;
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/239/hash_function.c:12..12
+    12    	manipulation[i] = manipulation[i]+48;
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/239/hash_function.c:11..11
+    11    	manipulation[i] = manipulation[i]%10;
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/239/hash_function.c:11..11
+    11    	manipulation[i] = manipulation[i]%10;
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/239/hash_function.c:10..10
+    10    	manipulation[i] = string[i]%10;
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/239/hash_function.c:10..10
+    10    	manipulation[i] = string[i]%10;
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/239/hash_function.c:8..8
+     8    for(i = 0; string[i] != '\0'; i++)
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/239/hash_function.c:6..6
+     6    char manipulation[MAX_STRING];
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/239/A.c:24..24
+    24    searcher_team = hashT[index];
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/239/A.c:23..23
+    23    index = hash_function(name);
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/239/A.c:19..19
+    19    char name[MAX_STRING];
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/239/a.c:72..72
+    72        searcher_team = hashT[index];
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/239/a.c:71..71
+    71        index = hash_function(team2);
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/239/a.c:63..63
+    63        searcher_team = hashT[index];
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/239/a.c:55..55
+    55    searcher_game = hashG[index];
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/239/a.c:43..43
+    43    searcher_team = hashT[index];
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/239/a.c:30..30
+    30    searcher_team = hashT[index];
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p2/239/a.c:22..22
+    22    char name[MAX_STRING];
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p2/239/a.c:18..18
+    18    char team2[MAX_STRING];
+
+38: /home/fmarques/sbugs/projects/alunos/iaed_p2/239/a.c:17..17
+    17    char team1[MAX_STRING];
+=== Dangerous function calls lacking bounds checking ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/239/A.c:38..38
+    38        strcpy(new_team->name,name);
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/239/A.c:31..31
+    31        strcpy(new_team->name,name);
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/239/a.c:61..61
+    61        strcpy(new_game->name,name);

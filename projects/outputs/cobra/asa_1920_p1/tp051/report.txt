@@ -1,0 +1,270 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:85..85
+    85          printf("%d\n", nodeList[i]->currentGrade);
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:80..80
+    80              funcao(nodeList[i]);
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:79..79
+    79          if(nodeList[i]->done == 0){
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:75..75
+    75          nodeList[temp1-1]->numberCon++;
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:74..74
+    74          nodeList[temp1-1]->connections[nodeList[temp1-1]->numberCon] = nodeList[temp2-1]; 
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:74..74
+    74          nodeList[temp1-1]->connections[nodeList[temp1-1]->numberCon] = nodeList[temp2-1]; 
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:74..74
+    74          nodeList[temp1-1]->connections[nodeList[temp1-1]->numberCon] = nodeList[temp2-1]; 
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:74..74
+    74          nodeList[temp1-1]->connections[nodeList[temp1-1]->numberCon] = nodeList[temp2-1]; 
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:74..74
+    74          nodeList[temp1-1]->connections[nodeList[temp1-1]->numberCon] = nodeList[temp2-1]; 
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:73..73
+    73          nodeList[temp1-1]->connections = can_fail_realloc(nodeList[temp1-1]->connections, ((nodeList[temp1-1]->numberCon)+1)*sizeof(Node*));
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:73..73
+    73          nodeList[temp1-1]->connections = can_fail_realloc(nodeList[temp1-1]->connections, ((nodeList[temp1-1]->numberCon)+1)*sizeof(Node*));
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:73..73
+    73          nodeList[temp1-1]->connections = can_fail_realloc(nodeList[temp1-1]->connections, ((nodeList[temp1-1]->numberCon)+1)*sizeof(Node*));
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:72..72
+    72          scanf("%d %d", &temp1, &temp2);
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:72..72
+    72          scanf("%d %d", &temp1, &temp2);
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:67..67
+    67          nodeList[fors] = createNode(ppl, atoi(str1));
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:63..63
+    63      nodeList = can_fail_malloc(ppl*sizeof(Node*));
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:39..39
+    39              temp = aaa->connections[i]->currentGrade;
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:37..37
+    37              temp = funcao(aaa->connections[i]);
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:36..36
+    36          if(aaa->connections[i]->done == 0){
+=== printf or scanf missing width limit on %s ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:66..66
+    66          scanf("%s", str1);
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:51..51
+    51      scanf("%s", str1);
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:247..247
+   247          printf("%d\n", SCCs[friends[i]->CFL]->grade);
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:247..247
+   247          printf("%d\n", SCCs[friends[i]->CFL]->grade);
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:247..247
+   247          printf("%d\n", SCCs[friends[i]->CFL]->grade);
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:241..241
+   241  		InsFimLista(friends[src-1], dest);
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:240..240
+   240  		if(scanf("%d %d", &src, &dest)==2){};
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:236..236
+   236  	friends = novaListaDeAmigos(students);
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:225..225
+   225          if (SCCs[i]->color == 1){
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:219..219
+   219      SCCs[u]->f = time;
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:218..218
+   218      SCCs[u]->color = -1;
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:214..214
+   214              SCCs[aux->n]->pi = u;
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:214..214
+   214              SCCs[aux->n]->pi = u;
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:213..213
+   213          if (SCCs[aux->n]->color == 1){
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:213..213
+   213          if (SCCs[aux->n]->color == 1){
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:211..211
+   211              SCCs[u]->grade = SCCs[aux->n]->grade;
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:211..211
+   211              SCCs[u]->grade = SCCs[aux->n]->grade;
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:211..211
+   211              SCCs[u]->grade = SCCs[aux->n]->grade;
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:210..210
+   210          if (SCCs[u]->grade < SCCs[aux->n]->grade){
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:210..210
+   210          if (SCCs[u]->grade < SCCs[aux->n]->grade){
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:210..210
+   210          if (SCCs[u]->grade < SCCs[aux->n]->grade){
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:209..209
+   209      for(aux=SCCs[u]->first;aux!=NULL;aux=aux->next){
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:207..207
+   207      SCCs[u]->d=time;
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:206..206
+   206      SCCs[u]->color = 0;
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:197..197
+   197                  	insertSCC(SCCs[amigos[i]->CFL], amigos[aux->n]->CFL);
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:197..197
+   197                  	insertSCC(SCCs[amigos[i]->CFL], amigos[aux->n]->CFL);
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:197..197
+   197                  	insertSCC(SCCs[amigos[i]->CFL], amigos[aux->n]->CFL);
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:197..197
+   197                  	insertSCC(SCCs[amigos[i]->CFL], amigos[aux->n]->CFL);
+
+27: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:197..197
+   197                  	insertSCC(SCCs[amigos[i]->CFL], amigos[aux->n]->CFL);
+
+28: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:196..196
+   196                  if(amigos[i]->CFL != amigos[aux->n]->CFL){
+
+29: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:196..196
+   196                  if(amigos[i]->CFL != amigos[aux->n]->CFL){
+
+30: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:196..196
+   196                  if(amigos[i]->CFL != amigos[aux->n]->CFL){
+
+31: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:195..195
+   195          for(aux=amigos[i]->first; aux!=NULL; aux=aux->next){
+
+32: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:188..188
+   188          if(amigos[i]->d==-1){
+
+33: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:174..174
+   174  		SCCs[sccAtual] = newSCC(sccAtual,max);
+
+34: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:154..154
+   154                  v->low= amigos[(aux->n)]->low;
+
+35: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:154..154
+   154                  v->low= amigos[(aux->n)]->low;
+
+36: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:153..153
+   153              if(amigos[(aux->n)]->d < v->low)
+
+37: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:153..153
+   153              if(amigos[(aux->n)]->d < v->low)
+
+38: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:152..152
+   152          else if(vStack[(aux->n)]==1){
+
+39: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:152..152
+   152          else if(vStack[(aux->n)]==1){
+
+40: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:150..150
+   150                      v->low= amigos[(aux->n)]->low;
+
+41: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:150..150
+   150                      v->low= amigos[(aux->n)]->low;
+
+42: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:149..149
+   149                  if(amigos[(aux->n)]->low < v->low)
+
+43: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:149..149
+   149                  if(amigos[(aux->n)]->low < v->low)
+
+44: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:148..148
+   148                  Tarjan_Visit(amigos, amigos[(aux->n)]->id, vStack);
+
+45: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:148..148
+   148                  Tarjan_Visit(amigos, amigos[(aux->n)]->id, vStack);
+
+46: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:147..147
+   147          if((amigos[(aux->n)]->d)==-1){
+
+47: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:147..147
+   147          if((amigos[(aux->n)]->d)==-1){
+
+48: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:134..134
+   134      Vertice v = amigos[casa];
+
+49: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:127..127
+   127      vStack[(taken->id)]=0;
+
+50: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:127..127
+   127      vStack[(taken->id)]=0;
+
+51: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:117..117
+   117      vStack[(v->id)]=1;
+
+52: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:117..117
+   117      vStack[(v->id)]=1;
+
+53: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:109..109
+   109          vet[i]=0;
+
+54: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp062/proj1.c:72..72
+    72          amigos[i]=newVertex(i, grade);
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp051/projeto.c:103..103
+   103  		printf("%d\n", students[i]->predictedScore);	
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp051/projeto.c:93..93
+    93  			setNewScore(students[i], students[i]->originalScore);
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp051/projeto.c:93..93
+    93  			setNewScore(students[i], students[i]->originalScore);
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp051/projeto.c:92..92
+    92  		if (students[i]->predictedScore == -1) {
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp051/projeto.c:70..70
+    70  		addFriend(students[studentId-1], students[friendId-1]);
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp051/projeto.c:70..70
+    70  		addFriend(students[studentId-1], students[friendId-1]);
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp051/projeto.c:69..69
+    69  		sscanf(line, "%d %d", &friendId, &studentId);
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp051/projeto.c:69..69
+    69  		sscanf(line, "%d %d", &friendId, &studentId);
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp051/projeto.c:31..31
+    31  	return students[id];
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp051/projeto.c:30..30
+    30  	students[id]->predictedScore = -1;
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp051/projeto.c:29..29
+    29  	students[id]->originalScore = score;
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp051/projeto.c:28..28
+    28  	students[id]->lastFriend = NULL;
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp051/projeto.c:27..27
+    27  	students[id]->friends = NULL;
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp051/projeto.c:26..26
+    26  	students[id] = can_fail_malloc(sizeof(student));
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp051/projeto.c:26..26
+    26  	students[id] = can_fail_malloc(sizeof(student));

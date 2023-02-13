@@ -1,0 +1,166 @@
+cat: '*_.txt': No such file or directory
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:199..199
+   199                  custo+=graph->edges[i][j].max;
+
+2: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:198..198
+   198              if (graph->color[i]!=graph->color[j] && (graph->edges[i][j].max == graph->edges[i][j].capacidade))
+
+3: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:198..198
+   198              if (graph->color[i]!=graph->color[j] && (graph->edges[i][j].max == graph->edges[i][j].capacidade))
+
+4: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:198..198
+   198              if (graph->color[i]!=graph->color[j] && (graph->edges[i][j].max == graph->edges[i][j].capacidade))
+
+5: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:198..198
+   198              if (graph->color[i]!=graph->color[j] && (graph->edges[i][j].max == graph->edges[i][j].capacidade))
+
+6: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:190..190
+   190                  history[i] = VISITED;
+
+7: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:189..189
+   189                  graph->color[i] = color1;
+
+8: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:186..186
+   186              if ((i!=sink) && history[i] == NOT_VISITED && (graph->edges[s][i].max - graph->edges[s][i].capacidade) > 0) {
+
+9: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:186..186
+   186              if ((i!=sink) && history[i] == NOT_VISITED && (graph->edges[s][i].max - graph->edges[s][i].capacidade) > 0) {
+
+10: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:186..186
+   186              if ((i!=sink) && history[i] == NOT_VISITED && (graph->edges[s][i].max - graph->edges[s][i].capacidade) > 0) {
+
+11: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:180..180
+   180      graph->color[source] = color1;
+
+12: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:179..179
+   179      history[source] = VISITED;
+
+13: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:173..173
+   173          history[i]=NOT_VISITED;
+
+14: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:172..172
+   172          graph->color[i]=color2;
+
+15: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:170..170
+   170      int i, j, custo=0, history[graph->numVertices];
+
+16: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:170..170
+   170      int i, j, custo=0, history[graph->numVertices];
+
+17: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:160..160
+   160                  history[i] = VISITED;
+
+18: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:159..159
+   159                  graph->previous[i] = s;
+
+19: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:155..155
+   155                      graph->previous[i] = s;
+
+20: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:152..152
+   152              if (history[i] == NOT_VISITED && (graph->edges[s][i].max - graph->edges[s][i].capacidade) > 0) {
+
+21: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:152..152
+   152              if (history[i] == NOT_VISITED && (graph->edges[s][i].max - graph->edges[s][i].capacidade) > 0) {
+
+22: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:152..152
+   152              if (history[i] == NOT_VISITED && (graph->edges[s][i].max - graph->edges[s][i].capacidade) > 0) {
+
+23: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:146..146
+   146      graph->previous[source] = -1;
+
+24: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:145..145
+   145      history[source] = VISITED;
+
+25: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:140..140
+   140          history[i]=NOT_VISITED;
+
+26: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:138..138
+   138      int i, history[graph->numVertices];
+
+27: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:138..138
+   138      int i, history[graph->numVertices];
+
+28: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:131..131
+   131              graph->edges[v][u].capacidade += minFlow;
+
+29: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:130..130
+   130              graph->edges[u][v].capacidade += minFlow;
+
+30: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:129..129
+   129              u = graph->previous[v];
+
+31: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:128..128
+   128          for (v = sink; v != source; v = graph->previous[v]) {
+
+32: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:124..124
+   124              minFlow = min(minFlow, graph->edges[u][v].max - graph->edges[u][v].capacidade);
+
+33: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:124..124
+   124              minFlow = min(minFlow, graph->edges[u][v].max - graph->edges[u][v].capacidade);
+
+34: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:123..123
+   123              u = graph->previous[v];
+
+35: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:122..122
+   122          for (v = sink; v != source; v = graph->previous[v]) {
+
+36: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:112..112
+   112      graph->edges[ver2][ver1].max=custo;
+
+37: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:111..111
+   111      graph->edges[ver1][ver2].max=custo;
+
+38: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:107..107
+   107      graph->edges[graph->numVertices-1][processo].max=custoY;
+
+39: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:107..107
+   107      graph->edges[graph->numVertices-1][processo].max=custoY;
+
+40: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:106..106
+   106      graph->edges[processo][graph->numVertices-1].max=custoY;
+
+41: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:104..104
+   104      graph->edges[processo][0].max=custoX;
+
+42: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:99..99
+    99          graph->edges[index][i].capacidade=0;
+
+43: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:98..98
+    98          graph->edges[index][i].max=0;
+
+44: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:89..89
+    89          graph->edges[i] = can_fail_malloc(sizeof(struct edge)*(num+2));
+
+45: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:85..85
+    85      graph->color[num+1] = BLUE;
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:179..179
+   179      history[source] = VISITED;
+
+2: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:170..170
+   170      int i, j, custo=0, history[graph->numVertices];
+
+3: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:145..145
+   145      history[source] = VISITED;
+
+4: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:138..138
+   138      int i, history[graph->numVertices];
+
+5: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:111..111
+   111      graph->edges[ver1][ver2].max=custo;
+
+6: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:111..111
+   111      graph->edges[ver1][ver2].max=custo;
+
+7: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:106..106
+   106      graph->edges[processo][graph->numVertices-1].max=custoY;
+
+8: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:104..104
+   104      graph->edges[processo][0].max=custoX;
+
+9: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:98..98
+    98          graph->edges[index][i].max=0;
+
+10: /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al117/p2.c:85..85
+    85      graph->color[num+1] = BLUE;

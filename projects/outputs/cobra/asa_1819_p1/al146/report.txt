@@ -1,0 +1,313 @@
+cat: _CWE_416_.txt: No such file or directory
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:213..213
+   213  		data->vertexs[i].head = NULL;
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:212..212
+   212  		data->vertexs[i].is_max_vertex = false;
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:211..211
+   211  		data->vertexs[i].is_articulation = false;
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:210..210
+   210  		data->vertexs[i].parent = 0;
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:209..209
+   209  		data->vertexs[i].vertex = i + 1;
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:182..182
+   182  	data->vertexs[vertex_1 - 1].head->next = pointer_backup;
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:181..181
+   181  	data->vertexs[vertex_1 - 1].head = current;
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:180..180
+   180  	Connection pointer_backup = data->vertexs[vertex_1 - 1].head;
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:157..157
+   157  		for (pointer = data->vertexs[i].head; pointer != NULL; ) {
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:139..139
+   139  	        if (data->vertexs[u].visited == false && data->vertexs[u].is_articulation == false) {
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:139..139
+   139  	        if (data->vertexs[u].visited == false && data->vertexs[u].is_articulation == false) {
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:133..133
+   133                  data->vertexs[max_vertex - 1].is_max_vertex = true;
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:132..132
+   132  				dfsVisit(data, u, &max_vertex, mode);
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:131..131
+   131  				max_vertex = data->vertexs[u].vertex;
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:129..129
+   129  			if (data->vertexs[u].visited == false) {
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:125..125
+   125  		data->vertexs[u].visited = false;
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:115..115
+   115  			if (data->vertexs[pointer->vertex - 1].visited == false && data->vertexs[pointer->vertex - 1].is_articulation == false) {
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:115..115
+   115  			if (data->vertexs[pointer->vertex - 1].visited == false && data->vertexs[pointer->vertex - 1].is_articulation == false) {
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:115..115
+   115  			if (data->vertexs[pointer->vertex - 1].visited == false && data->vertexs[pointer->vertex - 1].is_articulation == false) {
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:115..115
+   115  			if (data->vertexs[pointer->vertex - 1].visited == false && data->vertexs[pointer->vertex - 1].is_articulation == false) {
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:114..114
+   114  		for (pointer = data->vertexs[u].head; pointer != NULL; pointer = pointer->next)
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:109..109
+   109  				data->vertexs[u].low = min(data->vertexs[u].low, data->vertexs[pointer->vertex - 1].d);
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:109..109
+   109  				data->vertexs[u].low = min(data->vertexs[u].low, data->vertexs[pointer->vertex - 1].d);
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:109..109
+   109  				data->vertexs[u].low = min(data->vertexs[u].low, data->vertexs[pointer->vertex - 1].d);
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:109..109
+   109  				data->vertexs[u].low = min(data->vertexs[u].low, data->vertexs[pointer->vertex - 1].d);
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:108..108
+   108  			else if (pointer->vertex != data->vertexs[u].parent)
+
+27: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:106..106
+   106  					data->vertexs[u].is_articulation = true;
+
+28: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:105..105
+   105  				if ((data->vertexs[u].parent == 0 && children > 1) || (data->vertexs[u].parent != 0 && data->vertexs[pointer->vertex - 1].low >= data->vertexs[u].d))
+
+29: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:105..105
+   105  				if ((data->vertexs[u].parent == 0 && children > 1) || (data->vertexs[u].parent != 0 && data->vertexs[pointer->vertex - 1].low >= data->vertexs[u].d))
+
+30: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:105..105
+   105  				if ((data->vertexs[u].parent == 0 && children > 1) || (data->vertexs[u].parent != 0 && data->vertexs[pointer->vertex - 1].low >= data->vertexs[u].d))
+
+31: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:105..105
+   105  				if ((data->vertexs[u].parent == 0 && children > 1) || (data->vertexs[u].parent != 0 && data->vertexs[pointer->vertex - 1].low >= data->vertexs[u].d))
+
+32: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:105..105
+   105  				if ((data->vertexs[u].parent == 0 && children > 1) || (data->vertexs[u].parent != 0 && data->vertexs[pointer->vertex - 1].low >= data->vertexs[u].d))
+
+33: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:104..104
+   104  				data->vertexs[u].low = min(data->vertexs[u].low, data->vertexs[pointer->vertex - 1].low);
+
+34: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:104..104
+   104  				data->vertexs[u].low = min(data->vertexs[u].low, data->vertexs[pointer->vertex - 1].low);
+
+35: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:104..104
+   104  				data->vertexs[u].low = min(data->vertexs[u].low, data->vertexs[pointer->vertex - 1].low);
+
+36: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:104..104
+   104  				data->vertexs[u].low = min(data->vertexs[u].low, data->vertexs[pointer->vertex - 1].low);
+
+37: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:102..102
+   102  				data->vertexs[pointer->vertex - 1].parent = u + 1;
+
+38: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:102..102
+   102  				data->vertexs[pointer->vertex - 1].parent = u + 1;
+
+39: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:99..99
+    99  			if (data->vertexs[pointer->vertex - 1].visited == false) {
+
+40: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:99..99
+    99  			if (data->vertexs[pointer->vertex - 1].visited == false) {
+
+41: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:98..98
+    98  		for (pointer = data->vertexs[u].head; pointer != NULL; pointer = pointer->next) {
+
+42: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:96..96
+    96  		data->vertexs[u].d = data->vertexs[u].low = ++time;
+
+43: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:96..96
+    96  		data->vertexs[u].d = data->vertexs[u].low = ++time;
+
+44: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:92..92
+    92  	data->vertexs[u].visited = true;
+
+45: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:70..70
+    70          if (data->vertexs[i].is_articulation == true)
+
+46: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:65..65
+    65  			printf("%d", data->vertexs[i].vertex); /* Imprime o identificador de cada sub-rede em ordem crescente */
+
+47: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:64..64
+    64  		if (data->vertexs[i].is_max_vertex == true) {
+
+48: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:42..42
+    42  	bool is_max_vertex;
+
+49: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:41..41
+    41  	bool visited;
+
+50: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:40..40
+    40  	bool is_articulation;
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:180..180
+   180  	Connection pointer_backup = data->vertexs[vertex_1 - 1].head;
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:92..92
+    92  	data->vertexs[u].visited = true;
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:213..213
+   213  		data->vertexs[i].head = NULL;
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:212..212
+   212  		data->vertexs[i].is_max_vertex = false;
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:211..211
+   211  		data->vertexs[i].is_articulation = false;
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:210..210
+   210  		data->vertexs[i].parent = 0;
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:209..209
+   209  		data->vertexs[i].vertex = i + 1;
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:182..182
+   182  	data->vertexs[vertex_1 - 1].head->next = pointer_backup;
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:181..181
+   181  	data->vertexs[vertex_1 - 1].head = current;
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:180..180
+   180  	Connection pointer_backup = data->vertexs[vertex_1 - 1].head;
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:157..157
+   157  		for (pointer = data->vertexs[i].head; pointer != NULL; ) {
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:139..139
+   139  	        if (data->vertexs[u].visited == false && data->vertexs[u].is_articulation == false) {
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:139..139
+   139  	        if (data->vertexs[u].visited == false && data->vertexs[u].is_articulation == false) {
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:133..133
+   133                  data->vertexs[max_vertex - 1].is_max_vertex = true;
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:132..132
+   132  				dfsVisit(data, u, &max_vertex, mode);
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:131..131
+   131  				max_vertex = data->vertexs[u].vertex;
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:129..129
+   129  			if (data->vertexs[u].visited == false) {
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:125..125
+   125  		data->vertexs[u].visited = false;
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:115..115
+   115  			if (data->vertexs[pointer->vertex - 1].visited == false && data->vertexs[pointer->vertex - 1].is_articulation == false) {
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:115..115
+   115  			if (data->vertexs[pointer->vertex - 1].visited == false && data->vertexs[pointer->vertex - 1].is_articulation == false) {
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:115..115
+   115  			if (data->vertexs[pointer->vertex - 1].visited == false && data->vertexs[pointer->vertex - 1].is_articulation == false) {
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:115..115
+   115  			if (data->vertexs[pointer->vertex - 1].visited == false && data->vertexs[pointer->vertex - 1].is_articulation == false) {
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:114..114
+   114  		for (pointer = data->vertexs[u].head; pointer != NULL; pointer = pointer->next)
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:109..109
+   109  				data->vertexs[u].low = min(data->vertexs[u].low, data->vertexs[pointer->vertex - 1].d);
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:109..109
+   109  				data->vertexs[u].low = min(data->vertexs[u].low, data->vertexs[pointer->vertex - 1].d);
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:109..109
+   109  				data->vertexs[u].low = min(data->vertexs[u].low, data->vertexs[pointer->vertex - 1].d);
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:109..109
+   109  				data->vertexs[u].low = min(data->vertexs[u].low, data->vertexs[pointer->vertex - 1].d);
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:108..108
+   108  			else if (pointer->vertex != data->vertexs[u].parent)
+
+27: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:106..106
+   106  					data->vertexs[u].is_articulation = true;
+
+28: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:105..105
+   105  				if ((data->vertexs[u].parent == 0 && children > 1) || (data->vertexs[u].parent != 0 && data->vertexs[pointer->vertex - 1].low >= data->vertexs[u].d))
+
+29: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:105..105
+   105  				if ((data->vertexs[u].parent == 0 && children > 1) || (data->vertexs[u].parent != 0 && data->vertexs[pointer->vertex - 1].low >= data->vertexs[u].d))
+
+30: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:105..105
+   105  				if ((data->vertexs[u].parent == 0 && children > 1) || (data->vertexs[u].parent != 0 && data->vertexs[pointer->vertex - 1].low >= data->vertexs[u].d))
+
+31: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:105..105
+   105  				if ((data->vertexs[u].parent == 0 && children > 1) || (data->vertexs[u].parent != 0 && data->vertexs[pointer->vertex - 1].low >= data->vertexs[u].d))
+
+32: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:105..105
+   105  				if ((data->vertexs[u].parent == 0 && children > 1) || (data->vertexs[u].parent != 0 && data->vertexs[pointer->vertex - 1].low >= data->vertexs[u].d))
+
+33: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:104..104
+   104  				data->vertexs[u].low = min(data->vertexs[u].low, data->vertexs[pointer->vertex - 1].low);
+
+34: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:104..104
+   104  				data->vertexs[u].low = min(data->vertexs[u].low, data->vertexs[pointer->vertex - 1].low);
+
+35: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:104..104
+   104  				data->vertexs[u].low = min(data->vertexs[u].low, data->vertexs[pointer->vertex - 1].low);
+
+36: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:104..104
+   104  				data->vertexs[u].low = min(data->vertexs[u].low, data->vertexs[pointer->vertex - 1].low);
+
+37: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:102..102
+   102  				data->vertexs[pointer->vertex - 1].parent = u + 1;
+
+38: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:102..102
+   102  				data->vertexs[pointer->vertex - 1].parent = u + 1;
+
+39: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:99..99
+    99  			if (data->vertexs[pointer->vertex - 1].visited == false) {
+
+40: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:99..99
+    99  			if (data->vertexs[pointer->vertex - 1].visited == false) {
+
+41: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:98..98
+    98  		for (pointer = data->vertexs[u].head; pointer != NULL; pointer = pointer->next) {
+
+42: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:96..96
+    96  		data->vertexs[u].d = data->vertexs[u].low = ++time;
+
+43: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:96..96
+    96  		data->vertexs[u].d = data->vertexs[u].low = ++time;
+
+44: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:92..92
+    92  	data->vertexs[u].visited = true;
+
+45: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:70..70
+    70          if (data->vertexs[i].is_articulation == true)
+
+46: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:65..65
+    65  			printf("%d", data->vertexs[i].vertex); /* Imprime o identificador de cada sub-rede em ordem crescente */
+
+47: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:64..64
+    64  		if (data->vertexs[i].is_max_vertex == true) {
+
+48: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:42..42
+    42  	bool is_max_vertex;
+
+49: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:41..41
+    41  	bool visited;
+
+50: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:40..40
+    40  	bool is_articulation;
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:180..180
+   180  	Connection pointer_backup = data->vertexs[vertex_1 - 1].head;
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al146/p1.c:92..92
+    92  	data->vertexs[u].visited = true;

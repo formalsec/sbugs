@@ -1,0 +1,258 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/strdup.c:10..10
+    10      while (src[len])
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/main.c:416..416
+   416          free(vector[i]);
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/main.c:415..415
+   415          printf("%d * %s\n", NL, vector[i]); /* prints the elements of the array */
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/main.c:404..404
+   404              vector[j] = d_strdup(t[i]->name); /* creates an array of strings that have the highest number of wins */
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/main.c:404..404
+   404              vector[j] = d_strdup(t[i]->name); /* creates an array of strings that have the highest number of wins */
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/main.c:402..402
+   402          if (t[i] != NULL && t[i]->wins == max)
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/main.c:402..402
+   402          if (t[i] != NULL && t[i]->wins == max)
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/main.c:391..391
+   391              max = t[i]->wins; /* if it finds a new max saves the value */
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/main.c:389..389
+   389          if (t[i] != NULL && t[i]->wins > max)
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/main.c:389..389
+   389          if (t[i] != NULL && t[i]->wins > max)
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/main.c:385..385
+   385      char *vector[STRSZ];
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/main.c:235..235
+   235      p_game game_aux;
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/main.c:220..220
+   220      p_team team;
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/main.c:219..219
+   219      char name[STRSZ];
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/main.c:204..204
+   204      p_game game;
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/main.c:203..203
+   203      char name[STRSZ];
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/main.c:46..46
+    46      p_game game_test, *game_test_p, *games = Init(M_G); /* initial hashtable for games */
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/main.c:38..38
+    38      char command, string1[STRSZ], string2[STRSZ], name[STRSZ], team1[STRSZ], team2[STRSZ];
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/main.c:38..38
+    38      char command, string1[STRSZ], string2[STRSZ], name[STRSZ], team1[STRSZ], team2[STRSZ];
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/main.c:38..38
+    38      char command, string1[STRSZ], string2[STRSZ], name[STRSZ], team1[STRSZ], team2[STRSZ];
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/main.c:38..38
+    38      char command, string1[STRSZ], string2[STRSZ], name[STRSZ], team1[STRSZ], team2[STRSZ];
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/main.c:38..38
+    38      char command, string1[STRSZ], string2[STRSZ], name[STRSZ], team1[STRSZ], team2[STRSZ];
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:230..230
+   230              free(p[i]);
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:229..229
+   229              free(p[i]->name);
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:227..227
+   227          if (p[i]!= NULL)
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:215..215
+   215              p = HTInsertElement_T(p, v[i]->name, v[i]->wins, N, M);
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:215..215
+   215              p = HTInsertElement_T(p, v[i]->name, v[i]->wins, N, M);
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:213..213
+   213          if (v[i] != NULL)
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:199..199
+   199          p[j] = NULL;
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:198..198
+   198          v = p[j];
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:196..196
+   196      for (j = i+1; p[j] != NULL; j++)
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:195..195
+   195      p[i] = NULL;
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:194..194
+   194      free(p[i]);
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:193..193
+   193      free(p[i]->name);
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:188..188
+   188      if (p[i] == NULL)
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:179..179
+   179          if (strcmp(p[i]->name, name) == 0)
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:177..177
+   177      while (p[i] != NULL)
+
+38: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:176..176
+   176      p_team v;
+
+39: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:163..163
+   163              return p[i];
+
+40: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:161..161
+   161          if (strcmp(p[i]->name, name) == 0)
+
+41: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:159..159
+   159      while (p[i] != NULL)
+
+42: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:158..158
+   158      int i = Hash(name, M);
+
+43: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:150..150
+   150      p[i]->wins = wins;
+
+44: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:149..149
+   149      p[i]->name = d_strdup(name);
+
+45: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:148..148
+   148      p[i] = (p_team) can_fail_malloc(sizeof(struct team));
+
+46: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:146..146
+   146      while (p[i] != NULL)
+
+47: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:145..145
+   145      int i = Hash(name, M);
+
+48: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:139..139
+   139      { p[i] = NULL; }
+
+49: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:124..124
+   124              free(p[i]);
+
+50: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:123..123
+   123              free(p[i]->team2);
+
+51: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:122..122
+   122              free(p[i]->team1);
+
+52: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:121..121
+   121              free(p[i]->name);
+
+53: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:119..119
+   119          if (p[i]!= NULL)
+
+54: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:107..107
+   107              p = HTInsertElement(p, v[i]->name, v[i]->team1, v[i]->team2, v[i]->score1, v[i]->score2, N, M);
+
+55: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:107..107
+   107              p = HTInsertElement(p, v[i]->name, v[i]->team1, v[i]->team2, v[i]->score1, v[i]->score2, N, M);
+
+56: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:107..107
+   107              p = HTInsertElement(p, v[i]->name, v[i]->team1, v[i]->team2, v[i]->score1, v[i]->score2, N, M);
+
+57: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:107..107
+   107              p = HTInsertElement(p, v[i]->name, v[i]->team1, v[i]->team2, v[i]->score1, v[i]->score2, N, M);
+
+58: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:107..107
+   107              p = HTInsertElement(p, v[i]->name, v[i]->team1, v[i]->team2, v[i]->score1, v[i]->score2, N, M);
+
+59: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:105..105
+   105          if (v[i] != NULL)
+
+60: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:87..87
+    87          p[j] = NULL;
+
+61: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:86..86
+    86          v = p[j];
+
+62: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:84..84
+    84      for (j = i + 1; p[j] != NULL; j++)
+
+63: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:83..83
+    83      p[i] = NULL;
+
+64: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:82..82
+    82      free(p[i]);
+
+65: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:81..81
+    81      free(p[i]->team2);
+
+66: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:80..80
+    80      free(p[i]->team1);
+
+67: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:79..79
+    79      free(p[i]->name);
+
+68: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:74..74
+    74      if (p[i] == NULL)
+
+69: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:65..65
+    65          if (strcmp(p[i]->name, name) == 0)
+
+70: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:63..63
+    63      while (p[i] != NULL)
+
+71: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:62..62
+    62      p_game v;
+
+72: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:49..49
+    49              return p[i];
+
+73: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:47..47
+    47          if (strcmp(p[i]->name, name) == 0)
+
+74: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:45..45
+    45      while (p[i] != NULL)
+
+75: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:44..44
+    44      int i = Hash(name, M);
+
+76: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:38..38
+    38      p[i]->score2 = score2;
+
+77: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:37..37
+    37      p[i]->score1 = score1;
+
+78: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:36..36
+    36      p[i]->team2 = d_strdup(team2);
+
+79: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:35..35
+    35      p[i]->team1 = d_strdup(team1);
+
+80: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:34..34
+    34      p[i]->name = d_strdup(name);
+
+81: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:33..33
+    33      p[i] = (p_game) can_fail_malloc(sizeof(struct game));
+
+82: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:31..31
+    31      while (p[i] != NULL)
+
+83: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:28..28
+    28      int i = Hash(name, M);
+
+84: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/hashtable.c:22..22
+    22      { p[i] = NULL; }
+=== printf or scanf missing width limit on %s ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/main.c:205..205
+   205      scanf("%s", name);
+=== Possibly missing sizeof() in memory allocation ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/167/strdup.c:12..12
+    12      str = can_fail_malloc(len + 1);

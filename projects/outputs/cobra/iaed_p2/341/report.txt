@@ -1,0 +1,111 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/341/jogos.c:274..274
+   274      for(auxprocura = HTJ->listasjog[hashbuffer];strcmp(auxprocura->dadosjogo->nomejogo,buffer);
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/341/jogos.c:265..265
+   265      hashbuffer = Hash(buffer,HTJ->capacidade);
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/341/jogos.c:259..259
+   259      char buffer[MAXNOMEJOGO+1];
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/341/jogos.c:228..228
+   228      for(auxprocura = HTJ->listasjog[hashbuffer];auxprocura; auxprocura = auxprocura->proxjogoh){
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/341/jogos.c:226..226
+   226      hashbuffer = Hash(buffer,HTJ->capacidade);
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/341/jogos.c:220..220
+   220      char buffer[MAXNOMEJOGO+1];
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/341/jogos.c:195..195
+   195      for(auxprocura = HTJ->listasjog[hashbuffer],auxcabeca = HTJ->listasjog[hashbuffer];
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/341/jogos.c:195..195
+   195      for(auxprocura = HTJ->listasjog[hashbuffer],auxcabeca = HTJ->listasjog[hashbuffer];
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/341/jogos.c:186..186
+   186      hashbuffer = Hash(buffer,HTJ->capacidade);
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/341/jogos.c:180..180
+   180      char buffer[MAXNOMEJOGO+1];
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/341/jogos.c:159..159
+   159          HTJ->listasjog[hashbuffer] = auxcabeca->proxjogoh; 
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/341/jogos.c:54..54
+    54      char bufferequipa1[MAXNOMEEQUIPA+1],bufferequipa2[MAXNOMEEQUIPA+1],buffernome[MAXNOMEJOGO+1];
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/341/jogos.c:54..54
+    54      char bufferequipa1[MAXNOMEEQUIPA+1],bufferequipa2[MAXNOMEEQUIPA+1],buffernome[MAXNOMEJOGO+1];
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/341/jogos.c:54..54
+    54      char bufferequipa1[MAXNOMEEQUIPA+1],bufferequipa2[MAXNOMEEQUIPA+1],buffernome[MAXNOMEJOGO+1];
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/341/jogos.c:9..9
+     9      HashNoJogos * aux = HTJ->listasjog[hash];
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/341/funcoestabelas.c:72..72
+    72              HTJ->listasjog[countj] = HTJ->listasjog[countj]->proxjogoh;
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/341/funcoestabelas.c:72..72
+    72              HTJ->listasjog[countj] = HTJ->listasjog[countj]->proxjogoh;
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/341/funcoestabelas.c:71..71
+    71              auxjog = HTJ->listasjog[countj];
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/341/funcoestabelas.c:70..70
+    70          while(HTJ->listasjog[countj]){
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/341/funcoestabelas.c:61..61
+    61              HTE ->listasequi[counte] = HTE->listasequi[counte]->proxequipah;
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/341/funcoestabelas.c:61..61
+    61              HTE ->listasequi[counte] = HTE->listasequi[counte]->proxequipah;
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/341/funcoestabelas.c:60..60
+    60              auxequi = HTE->listasequi[counte];
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/341/funcoestabelas.c:59..59
+    59          while(HTE->listasequi[counte]){
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/341/funcoestabelas.c:48..48
+    48      HTJ->listasjog[hash] = aux;
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/341/funcoestabelas.c:47..47
+    47      aux->proxjogoh = HTJ->listasjog[hash];
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/341/funcoestabelas.c:36..36
+    36      HTE->listasequi[hash] = aux;
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/341/funcoestabelas.c:35..35
+    35      aux->proxequipah = HTE->listasequi[hash];
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/341/equipas.c:141..141
+   141          printf("%d * %s\n",*contacomandos,maiores[count]);
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/341/equipas.c:133..133
+   133              maiores[count] = aux->equipa;
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/341/equipas.c:63..63
+    63      char buffer[MAXNOMEEQUIPA+1];
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/341/equipas.c:27..27
+    27      char bufferequipa[MAXNOMEEQUIPA+1];
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/341/equipas.c:10..10
+    10      HashNoEquipas * aux = HTE->listasequi[hash];
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/341/jogos.c:159..159
+   159          HTJ->listasjog[hashbuffer] = auxcabeca->proxjogoh; 
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/341/jogos.c:9..9
+     9      HashNoJogos * aux = HTJ->listasjog[hash];
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/341/funcoestabelas.c:47..47
+    47      aux->proxjogoh = HTJ->listasjog[hash];
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/341/funcoestabelas.c:35..35
+    35      aux->proxequipah = HTE->listasequi[hash];
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/341/equipas.c:10..10
+    10      HashNoEquipas * aux = HTE->listasequi[hash];

@@ -1,0 +1,114 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/154/structs.c:111..111
+   111        t = hash_teams[i];
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/154/structs.c:110..110
+   110      if (hash_teams[i] != NULL){
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/154/structs.c:101..101
+   101    hash_teams[id] = novo;
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/154/structs.c:100..100
+   100    novo->next = hash_teams[id];
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/154/structs.c:99..99
+    99    id = hash_function(novo->name);
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/154/structs.c:88..88
+    88      hash_teams[i] = NULL;
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/154/structs.c:63..63
+    63        t = hash_table[i];
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/154/structs.c:62..62
+    62      if (hash_table[i] != NULL){
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/154/structs.c:53..53
+    53    hash_table[id] = novo;
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/154/structs.c:52..52
+    52    novo->next = hash_table[id];
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/154/structs.c:51..51
+    51    id = hash_function(novo->nome);
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/154/structs.c:40..40
+    40      hash_table[i] = NULL;
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/154/structs.c:22..22
+    22      valor = (valor * nome[i]) % TABLE_SIZE;
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/154/structs.c:21..21
+    21      valor = valor + nome[i];
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/154/proj2.c:18..18
+    18    team_n *hash_teams[TABLE_SIZE];
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/154/proj2.c:16..16
+    16    game_n *hash_table[TABLE_SIZE];
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/154/comandos.c:543..543
+   543      printf("%d * %s\n", nl, lista[i]);
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/154/comandos.c:530..530
+   530        lista[indice] = aux->name;
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/154/comandos.c:443..443
+   443    t = hash_table[id];
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/154/comandos.c:442..442
+   442    id = hash_function(nome);
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/154/comandos.c:436..436
+   436    bool valor = false;
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/154/comandos.c:361..361
+   361          hash_table[id] = t->next;
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/154/comandos.c:327..327
+   327    t = hash_table[id];
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/154/comandos.c:326..326
+   326    id = hash_function(nome);
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/154/comandos.c:322..322
+   322    bool valor;
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/154/comandos.c:261..261
+   261    t = hash_teams[id];
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/154/comandos.c:260..260
+   260    id = hash_function(name);
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/154/comandos.c:218..218
+   218    t = hash_table[id];
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/154/comandos.c:217..217
+   217    id = hash_function(nome);
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/154/comandos.c:164..164
+   164    auxiliar = hash_teams[id];
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/154/comandos.c:163..163
+   163    id = hash_function(t->name);
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/154/comandos.c:84..84
+    84    auxiliar = hash_table[id];
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/154/comandos.c:83..83
+    83    id = hash_function(t->nome);
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/154/comandos.c:56..56
+    56    bool valor;
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/154/comandos.c:38..38
+    38    team_n *t = hash_teams[id];
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p2/154/comandos.c:37..37
+    37    int id = hash_function(equipa);
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p2/154/comandos.c:21..21
+    21    team_n *auxiliar = hash_teams[indice];
+
+38: /home/fmarques/sbugs/projects/alunos/iaed_p2/154/comandos.c:20..20
+    20    int indice = hash_function(name);

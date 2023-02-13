@@ -1,0 +1,25 @@
+cat: _CWE_805_.txt: No such file or directory
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al067/main.c:560..560
+   560  		listDestroy(oldMarks[i]);
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al067/main.c:544..544
+   544  		oldMarks[i] = listCreate();
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al067/main.c:540..540
+   540  	List oldMarks[NMARKS];
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al067/main.c:499..499
+   499  		while ((student = listPopFront(oldMarks[markIndex])) != NULL)
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al067/main.c:433..433
+   433  		listPushBack(pStudents[second - 1].friendships, &pStudents[first - 1]);
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al067/main.c:431..431
+   431  		scanf("%d %d", &first, &second);
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al067/main.c:425..425
+   425  		listPushFront(oldMarks[mark], &pStudents[i]);
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al067/main.c:423..423
+   423  		scanf("%d", &mark);

@@ -1,0 +1,141 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/137/tabela_jogo.c:71..71
+    71  	for(i = 0; i < DIM_TAB_JOGOS; i++)	destroiLstJogos(tab->lst[i]);
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/137/tabela_jogo.c:61..61
+    61  	for(i = 0; i < DIM_TAB_JOGOS; i++)	free(arr[i]);
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/137/tabela_jogo.c:59..59
+    59  			res[k++] = arr[i][j];
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/137/tabela_jogo.c:59..59
+    59  			res[k++] = arr[i][j];
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/137/tabela_jogo.c:58..58
+    58  		for(j = 0; j < tab->lst[i]->n_jogos; j++)
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/137/tabela_jogo.c:55..55
+    55  	for(i = 0; i < DIM_TAB_JOGOS; i++)	arr[i] = copiaLstJogos(tab->lst[i]);
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/137/tabela_jogo.c:55..55
+    55  	for(i = 0; i < DIM_TAB_JOGOS; i++)	arr[i] = copiaLstJogos(tab->lst[i]);
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/137/tabela_jogo.c:45..45
+    45  	j = procuraLstJogos(tab->lst[h], nome);
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/137/tabela_jogo.c:44..44
+    44  	h = hashTabJogos(nome);
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/137/tabela_jogo.c:36..36
+    36  	removeJogo(tab->lst[h], nome);
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/137/tabela_jogo.c:34..34
+    34  	h = hashTabJogos(nome);
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/137/tabela_jogo.c:27..27
+    27  	pushJogo(j, tab->lst[h]);
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/137/tabela_jogo.c:26..26
+    26  	h = hashTabJogos(j.nome);
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/137/tabela_jogo.c:18..18
+    18  	for(i = 0; i < DIM_TAB_JOGOS; i++)	tab->lst[i] = novaListaJogos();
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/137/tabela_equipa.c:64..64
+    64  	for(i = 0; i < DIM_TAB_EQ; i++)	destroiLstEq(tab->lst[i]);
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/137/tabela_equipa.c:54..54
+    54  	for(i = 0; i < DIM_TAB_EQ; i++)	free(arr[i]);
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/137/tabela_equipa.c:51..51
+    51  			res[k++] = arr[i][j];
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/137/tabela_equipa.c:51..51
+    51  			res[k++] = arr[i][j];
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/137/tabela_equipa.c:50..50
+    50  		for(j = 0; j < tab->lst[i]->n_eqs; j++)
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/137/tabela_equipa.c:47..47
+    47  	for(i = 0; i < DIM_TAB_EQ; i++)	arr[i] = copiaLstEq(tab->lst[i]);
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/137/tabela_equipa.c:47..47
+    47  	for(i = 0; i < DIM_TAB_EQ; i++)	arr[i] = copiaLstEq(tab->lst[i]);
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/137/tabela_equipa.c:37..37
+    37  	e = procuraEq(tab->lst[h], nome);
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/137/tabela_equipa.c:36..36
+    36  	h = hashTabEq(nome);
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/137/tabela_equipa.c:27..27
+    27  	pushEq(eq, tab->lst[h]);
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/137/tabela_equipa.c:26..26
+    26  	h = hashTabEq(eq.nome);
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/137/tabela_equipa.c:18..18
+    18  	for(i = 0; i < DIM_TAB_EQ; i++)	tab->lst[i] = novaListaEqs();
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/137/p2.c:209..209
+   209  	char nome[MAX_STRING];
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/137/p2.c:171..171
+   171  	char nome[MAX_STRING];
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/137/p2.c:165..165
+   165  		printf("%d %s %s %s %d %d\n", *nl, arr[i].nome, arr[i].equipa1, arr[i].equipa2, arr[i].score1, arr[i].score2);
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/137/p2.c:165..165
+   165  		printf("%d %s %s %s %d %d\n", *nl, arr[i].nome, arr[i].equipa1, arr[i].equipa2, arr[i].score1, arr[i].score2);
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/137/p2.c:165..165
+   165  		printf("%d %s %s %s %d %d\n", *nl, arr[i].nome, arr[i].equipa1, arr[i].equipa2, arr[i].score1, arr[i].score2);
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/137/p2.c:165..165
+   165  		printf("%d %s %s %s %d %d\n", *nl, arr[i].nome, arr[i].equipa1, arr[i].equipa2, arr[i].score1, arr[i].score2);
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/137/p2.c:165..165
+   165  		printf("%d %s %s %s %d %d\n", *nl, arr[i].nome, arr[i].equipa1, arr[i].equipa2, arr[i].score1, arr[i].score2);
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/137/p2.c:149..149
+   149  		else	printf("%d * %s\n", *nl, arr[i].nome);
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/137/p2.c:148..148
+   148  		if(arr[i].vitorias != arr[0].vitorias)	break;	/*So revisamos ate as vitorias nao serem as maximas */
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p2/137/p2.c:126..126
+   126  	char nome[MAX_STRING];
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p2/137/p2.c:114..114
+   114  	char nome[MAX_STRING];
+
+38: /home/fmarques/sbugs/projects/alunos/iaed_p2/137/p2.c:87..87
+    87  	char nome[MAX_STRING], eq1[MAX_STRING], eq2[MAX_STRING];
+
+39: /home/fmarques/sbugs/projects/alunos/iaed_p2/137/p2.c:87..87
+    87  	char nome[MAX_STRING], eq1[MAX_STRING], eq2[MAX_STRING];
+
+40: /home/fmarques/sbugs/projects/alunos/iaed_p2/137/p2.c:87..87
+    87  	char nome[MAX_STRING], eq1[MAX_STRING], eq2[MAX_STRING];
+
+41: /home/fmarques/sbugs/projects/alunos/iaed_p2/137/p2.c:76..76
+    76  	char nome[MAX_STRING];
+
+42: /home/fmarques/sbugs/projects/alunos/iaed_p2/137/lista_jogos.c:76..76
+    76  		arr[i++] = t->jogo;
+
+43: /home/fmarques/sbugs/projects/alunos/iaed_p2/137/lista_equipas.c:55..55
+    55  		arr[i++] = t->equipa;
+
+44: /home/fmarques/sbugs/projects/alunos/iaed_p2/137/jogo.c:5..5
+     5  	Jogo j;
+
+45: /home/fmarques/sbugs/projects/alunos/iaed_p2/137/equipa.c:5..5
+     5  	Equipa e;
+=== printf or scanf missing width limit on %s ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/137/p2.c:129..129
+   129  	scanf(" %s", nome);
+=== Potential heap memory use after free ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/137/lista_jogos.c:50..50
+    50  			free(t);

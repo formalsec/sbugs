@@ -1,0 +1,225 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/Team.c:6..6
+     6      Team t = (Team) can_fail_malloc(sizeof(struct team));
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/Node.c:6..6
+     6      Node node = (Node) can_fail_malloc(sizeof(struct node));
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/MainFunctions.c:203..203
+   203          free(team_names[i]);
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/MainFunctions.c:202..202
+   202          printf("%d * %s\n", NL, team_names[i]);
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/MainFunctions.c:189..189
+   189              else if (Wins(hash_team[i]) == best)
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/MainFunctions.c:185..185
+   185                  best = Wins(hash_team[i]);
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/MainFunctions.c:184..184
+   184              if (Wins(hash_team[i]) > best){
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/MainFunctions.c:180..180
+   180          if (hash_team[i] != NULL){
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/MainFunctions.c:149..149
+   149      node = hash_game[i];
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/MainFunctions.c:144..144
+   144      if ((i = GameSearch(name, m, hash_game)) == DOES_NOT_EXIST){
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/MainFunctions.c:138..138
+   138      Team old_winner, new_winner;
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/MainFunctions.c:136..136
+   136      Node node;
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/MainFunctions.c:135..135
+   135      char name[MAX_STR];
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/MainFunctions.c:116..116
+   116      Node node;
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/MainFunctions.c:115..115
+   115      char name[MAX_STR];
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/MainFunctions.c:98..98
+    98      Team t;  
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/MainFunctions.c:97..97
+    97      char name[MAX_STR];
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/MainFunctions.c:88..88
+    88          WriteGame(NodeGame(hash_game[i]), NL);
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/MainFunctions.c:87..87
+    87      if ((i = GameSearch(name, m , hash_game)) != DOES_NOT_EXIST)
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/MainFunctions.c:80..80
+    80      char name[MAX_STR];
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/MainFunctions.c:69..69
+    69      Node head = Head(l);
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/MainFunctions.c:46..46
+    46      Team t;
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/MainFunctions.c:45..45
+    45      char name[MAX_STR];
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/MainFunctions.c:11..11
+    11      Team t1, t2, winner;
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/MainFunctions.c:10..10
+    10      Game g;
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/MainFunctions.c:8..8
+     8      char name[MAX_STR], team_1[MAX_STR], team_2[MAX_STR];
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/MainFunctions.c:8..8
+     8      char name[MAX_STR], team_1[MAX_STR], team_2[MAX_STR];
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/MainFunctions.c:8..8
+     8      char name[MAX_STR], team_1[MAX_STR], team_2[MAX_STR];
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/main.c:13..13
+    13      List l = InitList();
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/List.c:91..91
+    91      Node head = Head(l);
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/List.c:90..90
+    90      Node aux;
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/List.c:55..55
+    55      Team winner;
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/List.c:36..36
+    36      Node new = InitNode();
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/List.c:6..6
+     6      List l;
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/HashTeams.c:66..66
+    66              HashTeamsInsert(new_hash_team, hash_team[i], m);
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/HashTeams.c:65..65
+    65          if (hash_team[i] != NULL){
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/HashTeams.c:47..47
+    47              DestroyTeam(hash_team[i]);
+
+38: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/HashTeams.c:46..46
+    46          if (hash_team[i] != NULL){
+
+39: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/HashTeams.c:33..33
+    33              return hash_table[i];
+
+40: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/HashTeams.c:32..32
+    32          if (eq(TeamName(hash_table[i]), name))
+
+41: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/HashTeams.c:31..31
+    31      while (hash_table[i] != NULL)
+
+42: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/HashTeams.c:22..22
+    22      hash_table[i] = t;
+
+43: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/HashTeams.c:20..20
+    20      while (hash_table[i] != NULL)
+
+44: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/HashTeams.c:11..11
+    11          hash_table[i] = NULL;   
+
+45: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/HashGames.c:86..86
+    86              HashGamesInsert(new_hash_game, hash_game[i], m);
+
+46: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/HashGames.c:85..85
+    85          if (hash_game[i] != NULL){
+
+47: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/HashGames.c:63..63
+    63          hash_table[j] = NULL;
+
+48: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/HashGames.c:62..62
+    62          aux = hash_table[j];
+
+49: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/HashGames.c:61..61
+    61      for ( j = (i+1) % *m; hash_table[j] != NULL; j = (j+1) % *m){
+
+50: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/HashGames.c:60..60
+    60      hash_table[i] = NULL;
+
+51: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/HashGames.c:58..58
+    58      node = hash_table[i];
+
+52: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/HashGames.c:53..53
+    53      Node aux, node;
+
+53: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/HashGames.c:41..41
+    41          if (eq(GameName(NodeGame(hash_table[i])), name))
+
+54: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/HashGames.c:39..39
+    39      while (hash_table[i] != NULL){
+
+55: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/HashGames.c:30..30
+    30      hash_table[i] = node;
+
+56: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/HashGames.c:28..28
+    28      while (hash_table[i] != NULL)
+
+57: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/HashGames.c:19..19
+    19          hash_table[i] = NULL;   
+
+58: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/Game.c:6..6
+     6      Game g = (Game) can_fail_malloc(sizeof(struct game));
+
+59: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/AuxiliaryFunctions.c:56..56
+    56              strcpy(team_names[n], TeamName(hash_team[i]));
+
+60: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/AuxiliaryFunctions.c:56..56
+    56              strcpy(team_names[n], TeamName(hash_team[i]));
+
+61: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/AuxiliaryFunctions.c:55..55
+    55              team_names[n] = (char*) can_fail_malloc(MAX_STR);
+
+62: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/AuxiliaryFunctions.c:54..54
+    54          if (hash_team[i] != NULL && Wins(hash_team[i]) == best){
+
+63: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/AuxiliaryFunctions.c:54..54
+    54          if (hash_team[i] != NULL && Wins(hash_team[i]) == best){
+
+64: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/AuxiliaryFunctions.c:17..17
+    17          while (strcmp(v,vetor[--j]) < 0)
+
+65: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/AuxiliaryFunctions.c:16..16
+    16          while (strcmp(vetor[++i],v) < 0);
+
+66: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/AuxiliaryFunctions.c:14..14
+    14      char * v = vetor[r];
+
+67: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/AuxiliaryFunctions.c:8..8
+     8      vetor[j] = aux;
+
+68: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/AuxiliaryFunctions.c:7..7
+     7      vetor[i] = vetor[j];
+
+69: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/AuxiliaryFunctions.c:7..7
+     7      vetor[i] = vetor[j];
+
+70: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/AuxiliaryFunctions.c:6..6
+     6      char * aux = vetor[i];
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/AuxiliaryFunctions.c:14..14
+    14      char * v = vetor[r];
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/AuxiliaryFunctions.c:7..7
+     7      vetor[i] = vetor[j];
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/AuxiliaryFunctions.c:6..6
+     6      char * aux = vetor[i];
+=== Dangerous function calls lacking bounds checking ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/AuxiliaryFunctions.c:56..56
+    56              strcpy(team_names[n], TeamName(hash_team[i]));
+=== Possibly missing sizeof() in memory allocation ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/164/AuxiliaryFunctions.c:55..55
+    55              team_names[n] = (char*) can_fail_malloc(MAX_STR);

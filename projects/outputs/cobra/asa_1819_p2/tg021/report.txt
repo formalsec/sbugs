@@ -1,0 +1,186 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:854..854
+   854  		free(producers[i].adj);
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:849..849
+   849  		free(stations_out[i].adj);
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:844..844
+   844  		free(stations_in[i].adj);
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:792..792
+   792  			u->current = u->adj[counter++].target_id;
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:786..786
+   786  				if (vertex->adj[j].target_id == u->id)
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:782..782
+   782  			u->current = u->adj[counter++].target_id;
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:774..774
+   774  				current_flow = u->adj[i].capacity - u->adj[i].flow;
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:774..774
+   774  				current_flow = u->adj[i].capacity - u->adj[i].flow;
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:773..773
+   773  			if (u->adj[i].target_id == vertex->id) {
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:771..771
+   771  		int size = amount_edges[u->id], i = 0;
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:771..771
+   771  		int size = amount_edges[u->id], i = 0;
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:735..735
+   735  		v->adj[v_edge_id].flow += residual_flow;
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:733..733
+   733  		u->adj[u_edge_id].flow += residual_flow;
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:729..729
+   729  	int current_flow = u->adj[u_edge_id].capacity - u->adj[u_edge_id].flow;
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:729..729
+   729  	int current_flow = u->adj[u_edge_id].capacity - u->adj[u_edge_id].flow;
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:671..671
+   671  		producers[source_id] = source;
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:669..669
+   669  		stations_out[source_id-num_suppliers-2] = source;
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:669..669
+   669  		stations_out[source_id-num_suppliers-2] = source;
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:666..666
+   666  	amount_edges[source_id]++;
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:665..665
+   665  	source.adj[num_edges].capacity += capacity;
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:664..664
+   664  	source.adj[num_edges].target_id = target_id;
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:654..654
+   654  	num_edges = amount_edges[source_id];
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:652..652
+   652  		source = producers[source_id];
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:650..650
+   650  		source = stations_out[source_id-num_suppliers-2];
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:650..650
+   650  		source = stations_out[source_id-num_suppliers-2];
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:645..645
+   645  		stations_in[source_id-num_suppliers-2] = source;
+
+27: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:645..645
+   645  		stations_in[source_id-num_suppliers-2] = source;
+
+28: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:640..640
+   640  		source = stations_in[source_id-num_suppliers-2];
+
+29: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:640..640
+   640  		source = stations_in[source_id-num_suppliers-2];
+
+30: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:558..558
+   558  	void* dataPtr = queuePtr->elements[newPop];
+
+31: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:535..535
+   535  	queuePtr->elements[push] = dataPtr;
+
+32: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:523..523
+   523  				newElements[dst] = elements[src];
+
+33: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:523..523
+   523  				newElements[dst] = elements[src];
+
+34: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:520..520
+   520  				newElements[dst] = elements[src];
+
+35: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:520..520
+   520  				newElements[dst] = elements[src];
+
+36: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:515..515
+   515  				newElements[dst] = elements[src];
+
+37: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:515..515
+   515  				newElements[dst] = elements[src];
+
+38: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:57..57
+    57  		arr[i] = output[i]; 
+
+39: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:57..57
+    57  		arr[i] = output[i]; 
+
+40: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:53..53
+    53  		count[ (arr[i]/exp)%10 ]--; 
+
+41: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:53..53
+    53  		count[ (arr[i]/exp)%10 ]--; 
+
+42: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:53..53
+    53  		count[ (arr[i]/exp)%10 ]--; 
+
+43: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:52..52
+    52  		output[count[ (arr[i]/exp)%10 ] - 1] = arr[i]; 
+
+44: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:52..52
+    52  		output[count[ (arr[i]/exp)%10 ] - 1] = arr[i]; 
+
+45: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:52..52
+    52  		output[count[ (arr[i]/exp)%10 ] - 1] = arr[i]; 
+
+46: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:52..52
+    52  		output[count[ (arr[i]/exp)%10 ] - 1] = arr[i]; 
+
+47: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:52..52
+    52  		output[count[ (arr[i]/exp)%10 ] - 1] = arr[i]; 
+
+48: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:48..48
+    48  		count[i] += count[i - 1]; 
+
+49: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:48..48
+    48  		count[i] += count[i - 1]; 
+
+50: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:45..45
+    45  		count[ (arr[i]/exp)%10 ]++; 
+
+51: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:45..45
+    45  		count[ (arr[i]/exp)%10 ]++; 
+
+52: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:45..45
+    45  		count[ (arr[i]/exp)%10 ]++; 
+
+53: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:41..41
+    41  	int output[n];
+
+54: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:33..33
+    33  			mx = arr[i]; 
+
+55: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:32..32
+    32  		if (arr[i] > mx) 
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:735..735
+   735  		v->adj[v_edge_id].flow += residual_flow;
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:729..729
+   729  	int current_flow = u->adj[u_edge_id].capacity - u->adj[u_edge_id].flow;
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:45..45
+    45  		count[ (arr[i]/exp)%10 ]++; 
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:45..45
+    45  		count[ (arr[i]/exp)%10 ]++; 
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:41..41
+    41  	int output[n];
+=== Possibly missing sizeof() in memory allocation ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:102..102
+   102  	node->data = can_fail_malloc(data_size);
+=== Source of memcpy is untrusted parameter ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg021/main.c:103..103
+   103  	memcpy(node->data, data, data_size);

@@ -1,0 +1,81 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al055/proj1.c:243..243
+   243          if (G->visited[i] == 0)
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al055/proj1.c:213..213
+   213          printf("%d\n", G->grades[i]);
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al055/proj1.c:202..202
+   202  	G->closed[v] = 1;
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al055/proj1.c:201..201
+   201  	G->grades[v] = max;
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al055/proj1.c:192..192
+   192  				visitedAux[i] = 0;
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al055/proj1.c:185..185
+   185  			max = maximum(max, G->grades[connectedVertex]);
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al055/proj1.c:184..184
+   184  		else if (G->closed[connectedVertex] == 1) { 
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al055/proj1.c:180..180
+   180  		if (G->visited[connectedVertex] == 0) {   
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al055/proj1.c:176..176
+   176      max = G->grades[v];
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al055/proj1.c:175..175
+   175      G->visited[v] = 1;
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al055/proj1.c:171..171
+   171      struct node* adjList = G->adj[v];
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al055/proj1.c:156..156
+   156  		else if (visited[connectedVertex] == 0) {
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al055/proj1.c:153..153
+   153          	max = maximum(max, G->grades[connectedVertex]);
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al055/proj1.c:152..152
+   152          if (G->closed[connectedVertex] == 1) {
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al055/proj1.c:147..147
+   147      max = G->grades[v];
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al055/proj1.c:146..146
+   146     	visited[v] = 1;
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al055/proj1.c:142..142
+   142  	struct node* adjList = G->adj[v];
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al055/proj1.c:121..121
+   121          G->grades[i] = v;
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al055/proj1.c:108..108
+   108  		G->grades[v] = 0;
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al055/proj1.c:107..107
+   107  		G->closed[v] = 0;
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al055/proj1.c:106..106
+   106          G->visited[v] = 0;
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al055/proj1.c:105..105
+   105          G->adj[v] = NULL;
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al055/proj1.c:76..76
+    76      G->adj[v] = insertBegin(w, G->adj[v]);
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al055/proj1.c:76..76
+    76      G->adj[v] = insertBegin(w, G->adj[v]);
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al055/proj1.c:49..49
+    49          struct node* temp = G->adj[i];
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al055/proj1.c:171..171
+   171      struct node* adjList = G->adj[v];
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al055/proj1.c:142..142
+   142  	struct node* adjList = G->adj[v];

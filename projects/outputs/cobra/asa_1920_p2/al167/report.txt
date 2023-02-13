@@ -1,0 +1,78 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al167/proj2_4.c:219..219
+   219  		free(cruzamentos[i]);
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al167/proj2_4.c:217..217
+   217  			free(cruzamentos[i][j]);
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al167/proj2_4.c:210..210
+   210  			lfrees = cruzamentos[i][j]->adj;
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al167/proj2_4.c:187..187
+   187  					addArco(cruzamentos[i][j+1], arcN);
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al167/proj2_4.c:186..186
+   186  					arcN = newArco(cruzamentos[i][j]);
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al167/proj2_4.c:182..182
+   182  					addArco(cruzamentos[i][j], arcS);
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al167/proj2_4.c:181..181
+   181  					arcS = newArco(cruzamentos[i][j+1]);
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al167/proj2_4.c:174..174
+   174  					addArco(cruzamentos[i+1][j], arcO);
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al167/proj2_4.c:173..173
+   173  					arcO = newArco(cruzamentos[i][j]);
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al167/proj2_4.c:169..169
+   169  					addArco(cruzamentos[i][j], arcE);
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al167/proj2_4.c:168..168
+   168  					arcE = newArco(cruzamentos[i+1][j]);
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al167/proj2_4.c:154..154
+   154  		arcO = newArco(cruzamentos[aven-1][rua-1]);
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al167/proj2_4.c:153..153
+   153  		cruzamentos[aven-1][rua-1]->cidadao = 1;
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al167/proj2_4.c:152..152
+   152  		scanf("%d %d", &aven, &rua);
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al167/proj2_4.c:146..146
+   146  		addArco(cruzamentos[aven-1][rua-1], arcO);
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al167/proj2_4.c:145..145
+   145  		arcE = newArco(cruzamentos[aven-1][rua-1]);
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al167/proj2_4.c:143..143
+   143  		cruzamentos[aven-1][rua-1]->superm = 1;
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al167/proj2_4.c:128..128
+   128  			cruzamentos[i][j]->temCaminho = 0;
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al167/proj2_4.c:127..127
+   127  			cruzamentos[i][j]->ocupado = 0;
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al167/proj2_4.c:126..126
+   126  			cruzamentos[i][j]->rua = j;
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al167/proj2_4.c:125..125
+   125  			cruzamentos[i][j]->av = i;
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al167/proj2_4.c:124..124
+   124  			cruzamentos[i][j]->superm = 0;
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al167/proj2_4.c:123..123
+   123  			cruzamentos[i][j]->cidadao = 0;
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al167/proj2_4.c:122..122
+   122  			cruzamentos[i][j] = (cruz)can_fail_malloc(sizeof(struct Cruzamento));
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al167/proj2_4.c:120..120
+   120  		cruzamentos[i] = (cruz*)can_fail_malloc(sizeof(cruz)*n);
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al167/proj2_4.c:57..57
+    57  				cruzamentos[i][j]->visited = 0;

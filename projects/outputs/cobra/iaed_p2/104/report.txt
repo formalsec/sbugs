@@ -1,0 +1,195 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/main.c:16..16
+    16      hashJogos hash_jogos = criar_hash_jogos();
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/main.c:15..15
+    15      hashEquipas hash_equipas = criar_hash_equipas();
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/main.c:14..14
+    14      lstJogos lista_jogos = criar_lst_jogos();
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/main.c:13..13
+    13      lstEquipas lista_equipas = criar_lst_equipas();
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/listas.c:229..229
+   229      linkJogo aux;
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/listas.c:214..214
+   214      linkJogo aux;
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/listas.c:173..173
+   173      linkJogo aux;
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/listas.c:150..150
+   150      linkJogo novo_jogo;
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/listas.c:142..142
+   142      lstJogos lista = (lstJogos) can_fail_malloc(sizeof(struct lst_jogos));
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/listas.c:123..123
+   123      linkEquipa aux;
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/listas.c:108..108
+   108      linkEquipa aux;
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/listas.c:95..95
+    95      linkEquipa aux1, aux2;
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/listas.c:86..86
+    86      linkEquipa aux;
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/listas.c:44..44
+    44      linkEquipa aux;
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/listas.c:22..22
+    22      linkEquipa nova_equipa;
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/listas.c:13..13
+    13      lstEquipas lista = (lstEquipas) can_fail_malloc(sizeof(struct lst_equipas));
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/jogo.c:11..11
+    11      ptrJogo jogo = (ptrJogo) can_fail_malloc(sizeof(struct jogo));
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/hashtables.c:105..105
+   105          apagar_lst_jogos(hash_jogos[i]);
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/hashtables.c:96..96
+    96      remover_jogo_lst(hash_jogos[i], jogo);
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/hashtables.c:95..95
+    95      int i = hash(jogo->jogo->nome);
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/hashtables.c:90..90
+    90      return procurar_jogo_lst(hash_jogos[i], nome);
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/hashtables.c:89..89
+    89      int i = hash(nome);
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/hashtables.c:84..84
+    84      adicionar_jogo_lst(hash_jogos[i], jogo);
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/hashtables.c:83..83
+    83      int i = hash(jogo->nome);
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/hashtables.c:76..76
+    76          hash_jogos[i] = criar_lst_jogos();
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/hashtables.c:69..69
+    69      hashJogos hash_jogos;
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/hashtables.c:58..58
+    58          apagar_lst_equipas(hash_equipas[i]);
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/hashtables.c:49..49
+    49      return procurar_equipa_lst(hash_equipas[i], nome);
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/hashtables.c:48..48
+    48      int i = hash(nome);
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/hashtables.c:43..43
+    43      adicionar_equipa_lst(hash_equipas[i], equipa);
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/hashtables.c:42..42
+    42      int i = hash(equipa->nome);
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/hashtables.c:35..35
+    35          hash_equipas[i] = criar_lst_equipas();
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/hashtables.c:28..28
+    28      hashEquipas hash_equipas;
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/equipa.c:9..9
+     9      ptrEquipa equipa = (ptrEquipa) can_fail_malloc(sizeof(struct equipa));
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/comandos.c:247..247
+   247              printf("%d * %s\n", nl, nomes_mais_vit[i]);
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/comandos.c:236..236
+   236              nomes_mais_vit[i] = aux->equipa->nome;
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/comandos.c:207..207
+   207      linkEquipa aux;
+
+38: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/comandos.c:206..206
+   206      lstEquipas lista_mais_vit = criar_lst_equipas();
+
+39: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/comandos.c:158..158
+   158      char nome[MAX];
+
+40: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/comandos.c:157..157
+   157      ptrEquipa e1, e2;
+
+41: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/comandos.c:156..156
+   156      ptrJogo jogo;
+
+42: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/comandos.c:155..155
+   155      linkJogo aux;
+
+43: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/comandos.c:126..126
+   126      ptrEquipa e1, e2;
+
+44: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/comandos.c:125..125
+   125      ptrJogo jogo;
+
+45: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/comandos.c:124..124
+   124      linkJogo aux1, aux2;
+
+46: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/comandos.c:123..123
+   123      char nome[MAX];
+
+47: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/comandos.c:106..106
+   106      ptrEquipa equipa;
+
+48: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/comandos.c:105..105
+   105      linkEquipa aux;
+
+49: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/comandos.c:104..104
+   104      char nome[MAX];
+
+50: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/comandos.c:85..85
+    85      ptrEquipa e1, e2;
+
+51: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/comandos.c:84..84
+    84      ptrJogo jogo;
+
+52: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/comandos.c:83..83
+    83      linkJogo aux;
+
+53: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/comandos.c:82..82
+    82      char nome[MAX];
+
+54: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/comandos.c:69..69
+    69      ptrEquipa e1, e2;
+
+55: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/comandos.c:68..68
+    68      ptrJogo jogo;
+
+56: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/comandos.c:67..67
+    67      linkJogo aux;
+
+57: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/comandos.c:49..49
+    49      linkEquipa aux;
+
+58: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/comandos.c:48..48
+    48      ptrEquipa equipa;
+
+59: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/comandos.c:47..47
+    47      char nome[MAX];
+
+60: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/comandos.c:20..20
+    20      linkEquipa e1, e2;
+
+61: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/comandos.c:19..19
+    19      linkJogo aux;
+
+62: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/comandos.c:18..18
+    18      ptrJogo jogo;
+
+63: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/comandos.c:16..16
+    16      char nome[MAX], equipa1[MAX], equipa2[MAX];
+
+64: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/comandos.c:16..16
+    16      char nome[MAX], equipa1[MAX], equipa2[MAX];
+
+65: /home/fmarques/sbugs/projects/alunos/iaed_p2/104/comandos.c:16..16
+    16      char nome[MAX], equipa1[MAX], equipa2[MAX];

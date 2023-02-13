@@ -1,0 +1,199 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:139..139
+   139  	dominoes[father].color = BLACK;
+
+2: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:135..135
+   135  				dominoes[father].chain = k;                   /*if yes, save new chain*/
+
+3: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:134..134
+   134  			if (k > dominoes[father].chain) {             /* bigger then it's chain?*/
+
+4: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:133..133
+   133  			k = dominoes[connections[i].y].chain + 1;      /*is it's child (chain+1)*/
+
+5: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:133..133
+   133  			k = dominoes[connections[i].y].chain + 1;      /*is it's child (chain+1)*/
+
+6: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:133..133
+   133  			k = dominoes[connections[i].y].chain + 1;      /*is it's child (chain+1)*/
+
+7: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:132..132
+   132  		&& dominoes[connections[i].y].color == BLACK) {  /*has already been tested*/
+
+8: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:132..132
+   132  		&& dominoes[connections[i].y].color == BLACK) {  /*has already been tested*/
+
+9: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:132..132
+   132  		&& dominoes[connections[i].y].color == BLACK) {  /*has already been tested*/
+
+10: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:131..131
+   131  		if ((father == connections[i].x)              /*if a dominoe is parent and*/
+
+11: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:129..129
+   129  			dfs(connections[i].y, n_conn);         /*call dfs recursively to test it*/
+
+12: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:128..128
+   128  		&& dominoes[connections[i].y].color != BLACK) {   /*hasn't yet been tested*/
+
+13: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:128..128
+   128  		&& dominoes[connections[i].y].color != BLACK) {   /*hasn't yet been tested*/
+
+14: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:128..128
+   128  		&& dominoes[connections[i].y].color != BLACK) {   /*hasn't yet been tested*/
+
+15: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:127..127
+   127  		if ((father == connections[i].x)              /*if a dominoe is parent and*/
+
+16: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:117..117
+   117  	dominoes[dom_2].root = 0;      /*dominoe 2 is not root (doesn't have childs)*/
+
+17: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:116..116
+   116  	connections[i].y = dom_2;
+
+18: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:115..115
+   115  	connections[i].x = dom_1;
+
+19: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:91..91
+    91  		dominoes[i].chain = 1;  /*number of dominoes that fall because of this one*/
+
+20: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:90..90
+    90  		dominoes[i].color = WHITE;          /*dominoe hasn't been tested for chain*/
+
+21: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:89..89
+    89  		dominoes[i].root = 1;              /*dominoes initialized as root dominoes*/
+
+22: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:55..55
+    55  				max_chain = dominoes[i].chain;
+
+23: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:54..54
+    54  			if (max_chain < dominoes[i].chain) {    /*is the root chain the biggest?*/
+
+24: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:51..51
+    51  		if (dominoes[i].root == 1) {                        	/*is dominoe parent?*/
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:117..117
+   117  	dominoes[dom_2].root = 0;      /*dominoe 2 is not root (doesn't have childs)*/
+
+2: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:115..115
+   115  	connections[i].x = dom_1;
+cat: _CWE_120_3_.txt: No such file or directory
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:139..139
+   139  	dominoes[father].color = BLACK;
+
+2: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:135..135
+   135  				dominoes[father].chain = k;                   /*if yes, save new chain*/
+
+3: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:134..134
+   134  			if (k > dominoes[father].chain) {             /* bigger then it's chain?*/
+
+4: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:133..133
+   133  			k = dominoes[connections[i].y].chain + 1;      /*is it's child (chain+1)*/
+
+5: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:133..133
+   133  			k = dominoes[connections[i].y].chain + 1;      /*is it's child (chain+1)*/
+
+6: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:133..133
+   133  			k = dominoes[connections[i].y].chain + 1;      /*is it's child (chain+1)*/
+
+7: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:132..132
+   132  		&& dominoes[connections[i].y].color == BLACK) {  /*has already been tested*/
+
+8: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:132..132
+   132  		&& dominoes[connections[i].y].color == BLACK) {  /*has already been tested*/
+
+9: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:132..132
+   132  		&& dominoes[connections[i].y].color == BLACK) {  /*has already been tested*/
+
+10: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:131..131
+   131  		if ((father == connections[i].x)              /*if a dominoe is parent and*/
+
+11: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:129..129
+   129  			dfs(connections[i].y, n_conn);         /*call dfs recursively to test it*/
+
+12: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:128..128
+   128  		&& dominoes[connections[i].y].color != BLACK) {   /*hasn't yet been tested*/
+
+13: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:128..128
+   128  		&& dominoes[connections[i].y].color != BLACK) {   /*hasn't yet been tested*/
+
+14: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:128..128
+   128  		&& dominoes[connections[i].y].color != BLACK) {   /*hasn't yet been tested*/
+
+15: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:127..127
+   127  		if ((father == connections[i].x)              /*if a dominoe is parent and*/
+
+16: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:117..117
+   117  	dominoes[dom_2].root = 0;      /*dominoe 2 is not root (doesn't have childs)*/
+
+17: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:116..116
+   116  	connections[i].y = dom_2;
+
+18: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:115..115
+   115  	connections[i].x = dom_1;
+
+19: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:91..91
+    91  		dominoes[i].chain = 1;  /*number of dominoes that fall because of this one*/
+
+20: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:90..90
+    90  		dominoes[i].color = WHITE;          /*dominoe hasn't been tested for chain*/
+
+21: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:89..89
+    89  		dominoes[i].root = 1;              /*dominoes initialized as root dominoes*/
+
+22: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:55..55
+    55  				max_chain = dominoes[i].chain;
+
+23: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:54..54
+    54  			if (max_chain < dominoes[i].chain) {    /*is the root chain the biggest?*/
+
+24: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:51..51
+    51  		if (dominoes[i].root == 1) {                        	/*is dominoe parent?*/
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al111/projeto1.c:123..123
+   123          if(discovery[i] > maxTime) maxTime = discovery[i];
+
+2: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al111/projeto1.c:123..123
+   123          if(discovery[i] > maxTime) maxTime = discovery[i];
+
+3: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al111/projeto1.c:122..122
+   122          if(discovery[i] == 0) minTouchesReq++;
+
+4: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al111/projeto1.c:113..113
+   113                      if(discovery[pCrawl->dest] < time+1) discovery[pCrawl->dest] = time + 1;
+
+5: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al111/projeto1.c:113..113
+   113                      if(discovery[pCrawl->dest] < time+1) discovery[pCrawl->dest] = time + 1;
+
+6: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al111/projeto1.c:113..113
+   113                      if(discovery[pCrawl->dest] < time+1) discovery[pCrawl->dest] = time + 1;
+
+7: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al111/projeto1.c:113..113
+   113                      if(discovery[pCrawl->dest] < time+1) discovery[pCrawl->dest] = time + 1;
+
+8: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al111/projeto1.c:111..111
+   111                  pCrawl = graph->array[i].head;
+
+9: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al111/projeto1.c:110..110
+   110              if(discovery[i] == time){
+
+10: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al111/projeto1.c:101..101
+   101              discovery[inD] = 1;
+
+11: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al111/projeto1.c:99..99
+    99          if(scanf("%d %d", &outD, &inD)){
+
+12: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al111/projeto1.c:94..94
+    94              discovery[i] = 0;
+
+13: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al111/projeto1.c:75..75
+    75      graph->array[src].head = newNode;
+
+14: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al111/projeto1.c:74..74
+    74      newNode->next = graph->array[src].head;
+
+15: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al111/projeto1.c:60..60
+    60          graph->array[i].head = NULL;
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al111/projeto1.c:74..74
+    74      newNode->next = graph->array[src].head;

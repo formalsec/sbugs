@@ -1,0 +1,156 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/317/projeto_2_main.c:279..279
+   279  		printf("%d * %s\n", NL, equipas_ord[i] ->nome);
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/317/projeto_2_main.c:269..269
+   269  			equipas_ord[i++] = node -> equipa;
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/317/projeto_2_main.c:244..244
+   244  	EHnode node;
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/317/projeto_2_main.c:227..227
+   227  	char nome[MAX_S_LEN];
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/317/projeto_2_main.c:203..203
+   203  	char nome[MAX_S_LEN];
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/317/projeto_2_main.c:176..176
+   176  	char nome[MAX_S_LEN];
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/317/projeto_2_main.c:153..153
+   153  	char nome[MAX_S_LEN];
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/317/projeto_2_main.c:134..134
+   134  	char nome[MAX_S_LEN];
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/317/projeto_2_main.c:126..126
+   126  	JHnode node;
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/317/projeto_2_main.c:82..82
+    82  	char nome[MAX_S_LEN], equipa1_nome[MAX_S_LEN], equipa2_nome[MAX_S_LEN];
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/317/projeto_2_main.c:82..82
+    82  	char nome[MAX_S_LEN], equipa1_nome[MAX_S_LEN], equipa2_nome[MAX_S_LEN];
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/317/projeto_2_main.c:82..82
+    82  	char nome[MAX_S_LEN], equipa1_nome[MAX_S_LEN], equipa2_nome[MAX_S_LEN];
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/317/projeto_2_main.c:58..58
+    58  		while (strcmp(equipa -> nome,equipas[--j] -> nome) < 0)
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/317/projeto_2_main.c:57..57
+    57  		while (strcmp(equipas[++i] -> nome, equipa -> nome) < 0);
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/317/projeto_2_main.c:55..55
+    55  	Equipa *equipa = equipas[r];
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/317/projeto_2_main.c:50..50
+    50  	equipas[j] = equipa;
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/317/projeto_2_main.c:49..49
+    49  	equipas[i] = equipas[j];
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/317/projeto_2_main.c:49..49
+    49  	equipas[i] = equipas[j];
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/317/projeto_2_main.c:48..48
+    48  	Equipa *equipa = equipas[i];
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/317/projeto_2_main.c:22..22
+    22  		for(JHnode_aux = Jhash[i]; JHnode_aux != NULL; ){
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/317/projeto_2_main.c:16..16
+    16  		for(EHnode_aux = Ehash[i]; EHnode_aux != NULL; ){
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/317/projeto_2_main.c:12..12
+    12  	JHnode JHnode_aux, JHtmp;
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/317/projeto_2_main.c:11..11
+    11  	EHnode EHnode_aux, EHtmp;
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/317/jogos.c:115..115
+   115  	JHnode JHnode_aux, JHtmp;
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/317/jogos.c:85..85
+    85  	JHnode node, node_ant;
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/317/jogos.c:71..71
+    71  	JHnode node = can_fail_malloc(sizeof(struct node_jogo));
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/317/jogos.c:53..53
+    53  		for(node_ant = Jhash[i], node = node -> next; strcmp(node -> jogo -> nome, nome) != 0; node = node -> next)
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/317/jogos.c:50..50
+    50  	    Jhash[i] = node -> next;
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/317/jogos.c:47..47
+    47  	node = Jhash[i];
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/317/jogos.c:46..46
+    46  	JHnode node, node_ant;
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/317/jogos.c:45..45
+    45  	int i = JH_hash(nome, HASH_M);
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/317/jogos.c:40..40
+    40  	Jhash[i] = node;
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/317/jogos.c:39..39
+    39  	node -> next = Jhash[i];
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/317/jogos.c:36..36
+    36  	JHnode node;
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/317/jogos.c:35..35
+    35  	int i = JH_hash(jogo -> nome, HASH_M);
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p2/317/jogos.c:27..27
+    27  	for(node = Jhash[i]; node != NULL; node = node -> next)
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p2/317/jogos.c:24..24
+    24  	JHnode node;
+
+38: /home/fmarques/sbugs/projects/alunos/iaed_p2/317/jogos.c:23..23
+    23  	int i = JH_hash(nome, HASH_M);
+
+39: /home/fmarques/sbugs/projects/alunos/iaed_p2/317/jogos.c:18..18
+    18  		Jhash[i] = NULL;
+
+40: /home/fmarques/sbugs/projects/alunos/iaed_p2/317/equipas.c:68..68
+    68  	EHnode EHnode_aux, EHtmp;
+
+41: /home/fmarques/sbugs/projects/alunos/iaed_p2/317/equipas.c:53..53
+    53  	EHnode node;
+
+42: /home/fmarques/sbugs/projects/alunos/iaed_p2/317/equipas.c:39..39
+    39  	Ehash[i] = node;
+
+43: /home/fmarques/sbugs/projects/alunos/iaed_p2/317/equipas.c:38..38
+    38  	node -> next = Ehash[i];
+
+44: /home/fmarques/sbugs/projects/alunos/iaed_p2/317/equipas.c:35..35
+    35  	EHnode node;
+
+45: /home/fmarques/sbugs/projects/alunos/iaed_p2/317/equipas.c:34..34
+    34  	int i = EH_hash(equipa -> nome, HASH_M);
+
+46: /home/fmarques/sbugs/projects/alunos/iaed_p2/317/equipas.c:26..26
+    26  	for(node = Ehash[i]; node != NULL; node = node -> next) 
+
+47: /home/fmarques/sbugs/projects/alunos/iaed_p2/317/equipas.c:24..24
+    24  	EHnode node;
+
+48: /home/fmarques/sbugs/projects/alunos/iaed_p2/317/equipas.c:23..23
+    23  	int i = EH_hash(nome, HASH_M);
+
+49: /home/fmarques/sbugs/projects/alunos/iaed_p2/317/equipas.c:18..18
+    18  		Ehash[i] = NULL;
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/317/projeto_2_main.c:55..55
+    55  	Equipa *equipa = equipas[r];
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/317/projeto_2_main.c:49..49
+    49  	equipas[i] = equipas[j];
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/317/projeto_2_main.c:48..48
+    48  	Equipa *equipa = equipas[i];

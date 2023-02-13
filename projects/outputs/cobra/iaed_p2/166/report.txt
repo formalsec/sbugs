@@ -1,0 +1,90 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/166/v1.c:413..413
+   413              free_list_jogo(ht_jogos[i]);
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/166/v1.c:412..412
+   412          if (ht_jogos[i] != NULL)
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/166/v1.c:411..411
+   411              free_list_equipa(ht_equipas[i]);
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/166/v1.c:410..410
+   410          if (ht_equipas[i] != NULL)
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/166/v1.c:361..361
+   361      list_equipa * ht_equipas[TAMANHO_HASH];
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/166/v1.c:358..358
+   358      list_jogo * ht_jogos[TAMANHO_HASH];
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/166/v1.c:344..344
+   344          printf("%d * %s\n", nl, v[i]->nome);
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/166/v1.c:332..332
+   332                  v[poslivre] = membro_lista->equipa;
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/166/v1.c:326..326
+   326          lista = ht_equipas[i];
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/166/v1.c:298..298
+   298          lista = ht_equipas[i];
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/166/v1.c:249..249
+   249      remove_jogo(ht_jogos[hashVal], j);
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/166/v1.c:248..248
+   248      hashVal = hash(nome);
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/166/v1.c:226..226
+   226      char nome[MAXNOME];
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/166/v1.c:180..180
+   180      char nome[MAXNOME];
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/166/v1.c:152..152
+   152      char nome[MAXEQUIPA];
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/166/v1.c:147..147
+   147      add_last_equipa(ht_equipas[hashVal], e);
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/166/v1.c:145..145
+   145      hashVal = hash(nome);
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/166/v1.c:135..135
+   135      char nome[MAXEQUIPA];
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/166/v1.c:129..129
+   129      add_last_jogo(ht_jogos[hashVal], novoJogo);
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/166/v1.c:121..121
+   121      hashVal = hash(nome);
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/166/v1.c:101..101
+   101      char nome[MAXNOME], eq1[MAXEQUIPA], eq2[MAXEQUIPA];
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/166/v1.c:101..101
+   101      char nome[MAXNOME], eq1[MAXEQUIPA], eq2[MAXEQUIPA];
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/166/v1.c:101..101
+   101      char nome[MAXNOME], eq1[MAXEQUIPA], eq2[MAXEQUIPA];
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/166/v1.c:85..85
+    85      char nome[MAXNOME];
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/166/v1.c:80..80
+    80      return procura_equipa_aux(nome, ht_equipas[hashVal]->head);
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/166/v1.c:79..79
+    79      int hashVal = hash(nome);
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/166/v1.c:55..55
+    55      return procura_jogo_aux(nome, ht_jogos[hashVal]->head);
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/166/v1.c:54..54
+    54      int hashVal = hash(nome);
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/166/v1.c:19..19
+    19          ht_equipas[i] = mk_list_equipa();
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/166/v1.c:12..12
+    12          ht_jogos[i] = mk_list_jogo();

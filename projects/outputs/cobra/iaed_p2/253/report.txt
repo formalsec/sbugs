@@ -1,0 +1,141 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/253/tabela_equipas.c:244..244
+   244  		free(vencedores[i]);
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/253/tabela_equipas.c:243..243
+   243  		printf("%d * %s\n", contador, vencedores[i]);
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/253/tabela_equipas.c:236..236
+   236  	            vencedores[j] = guarda_nome;
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/253/tabela_equipas.c:235..235
+   235  	            vencedores[n]= vencedores[j];
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/253/tabela_equipas.c:235..235
+   235  	            vencedores[n]= vencedores[j];
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/253/tabela_equipas.c:234..234
+   234  	            guarda_nome = vencedores[n];	
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/253/tabela_equipas.c:232..232
+   232          	if(strcmp(vencedores[n], vencedores[j])>0)	
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/253/tabela_equipas.c:232..232
+   232          	if(strcmp(vencedores[n], vencedores[j])>0)	
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/253/tabela_equipas.c:224..224
+   224  			strcpy(vencedores[i++], e_atual->nome);
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/253/tabela_equipas.c:223..223
+   223  			vencedores[i] = can_fail_malloc(sizeof(char)*strlen(e_atual->nome)+1);
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/253/tabela_equipas.c:186..186
+   186  		for (equipa=tabela->topos[i]; equipa != NULL; equipa=equipa->proximo)
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/253/tabela_equipas.c:185..185
+   185  		const size_t i = hash(nome, tabela->capacidade);
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/253/tabela_equipas.c:176..176
+   176  	char nome[MAX_NOME];
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/253/tabela_equipas.c:160..160
+   160  	char nome[MAX_NOME];
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/253/tabela_equipas.c:139..139
+   139  	for (no=tabela->topos[i]; no != NULL; no=no->proximo)
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/253/tabela_equipas.c:137..137
+   137  	const size_t i = hash(nome, tabela->capacidade);
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/253/tabela_equipas.c:125..125
+   125  	for (no=tabela->topos[i]; no != NULL; no=no->proximo)
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/253/tabela_equipas.c:123..123
+   123  	const size_t i = hash(nome, tabela->capacidade);
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/253/tabela_equipas.c:112..112
+   112  	for (no=tabela->topos[i]; no != NULL; no=no->proximo)   /* Percorre as equipas do no */
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/253/tabela_equipas.c:110..110
+   110  	const size_t i = hash(nome, tabela->capacidade);	    /* i = no correspondente */
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/253/tabela_equipas.c:92..92
+    92  	tabela->topos[i] = cria_Equipa_hash(tabela->topos[i], novo); 
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/253/tabela_equipas.c:92..92
+    92  	tabela->topos[i] = cria_Equipa_hash(tabela->topos[i], novo); 
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/253/tabela_equipas.c:84..84
+    84  	const size_t i = hash(nome, tabela->capacidade);
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/253/tabela_equipas.c:73..73
+    73  			t->topos[i]=a;
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/253/tabela_equipas.c:72..72
+    72  			free(t->topos[i]);
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/253/tabela_equipas.c:71..71
+    71  			a = t->topos[i]->proximo;
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/253/tabela_equipas.c:68..68
+    68  		while(t->topos[i])
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/253/tabela_equipas.c:64..64
+    64  	size_t i;
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/253/calendario_jogos.c:252..252
+   252  		for (jogo=calendario->topos[i]; jogo != NULL; jogo=jogo->proximo)
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/253/calendario_jogos.c:251..251
+   251  		const size_t i = hash(nome, calendario->capacidade);
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/253/calendario_jogos.c:241..241
+   241  	char nome[MAX_NOME];
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/253/calendario_jogos.c:214..214
+   214  		calendario->topos[i]=jogo->proximo;    /* Primeiro elemento e agora o proximo */
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/253/calendario_jogos.c:197..197
+   197  	jogo=calendario->topos[i];
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/253/calendario_jogos.c:196..196
+   196  	i = hash(nome, calendario->capacidade);
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/253/calendario_jogos.c:190..190
+   190  	char nome[MAX_NOME];
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p2/253/calendario_jogos.c:175..175
+   175  		for (no=calendario->topos[i]; no != NULL; no=no->proximo) 
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p2/253/calendario_jogos.c:173..173
+   173  		const size_t i = hash(nome, calendario->capacidade); 
+
+38: /home/fmarques/sbugs/projects/alunos/iaed_p2/253/calendario_jogos.c:164..164
+   164  	char nome[MAX_NOME];
+
+39: /home/fmarques/sbugs/projects/alunos/iaed_p2/253/calendario_jogos.c:118..118
+   118  	char nome[MAX_NOME], casa[MAX_NOME], fora[MAX_NOME];
+
+40: /home/fmarques/sbugs/projects/alunos/iaed_p2/253/calendario_jogos.c:118..118
+   118  	char nome[MAX_NOME], casa[MAX_NOME], fora[MAX_NOME];
+
+41: /home/fmarques/sbugs/projects/alunos/iaed_p2/253/calendario_jogos.c:118..118
+   118  	char nome[MAX_NOME], casa[MAX_NOME], fora[MAX_NOME];
+
+42: /home/fmarques/sbugs/projects/alunos/iaed_p2/253/calendario_jogos.c:84..84
+    84  	calendario->topos[i]= cria_Jogo_hash(calendario->topos[i], novo); /* Atualiza o no */
+
+43: /home/fmarques/sbugs/projects/alunos/iaed_p2/253/calendario_jogos.c:84..84
+    84  	calendario->topos[i]= cria_Jogo_hash(calendario->topos[i], novo); /* Atualiza o no */
+
+44: /home/fmarques/sbugs/projects/alunos/iaed_p2/253/calendario_jogos.c:65..65
+    65  	const size_t i = hash(nome, calendario->capacidade);
+
+45: /home/fmarques/sbugs/projects/alunos/iaed_p2/253/calendario_jogos.c:42..42
+    42  	for (no=calendario->topos[i]; no != NULL; no=no->proximo) /* Percorre os jogos do no */
+
+46: /home/fmarques/sbugs/projects/alunos/iaed_p2/253/calendario_jogos.c:40..40
+    40  	const size_t i = hash(nome, calendario->capacidade);	  /* i = no correspondente */
+=== Potentially uninitialized variable ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/253/tabela_equipas.c:232..232
+   232          	if(strcmp(vencedores[n], vencedores[j])>0)	

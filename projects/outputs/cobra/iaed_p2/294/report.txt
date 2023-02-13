@@ -1,0 +1,126 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/294/HashTable.c:139..139
+   139  			HTE -> gaveta_EQUIPA[i] = CE;
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/294/HashTable.c:138..138
+   138  			free(HTE -> gaveta_EQUIPA[i]);
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/294/HashTable.c:137..137
+   137  			CE = HTE -> gaveta_EQUIPA[i] -> proximo;
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/294/HashTable.c:136..136
+   136  		while(HTE -> gaveta_EQUIPA[i]){
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/294/HashTable.c:134..134
+   134  	size_t i;
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/294/HashTable.c:121..121
+   121  			HTJ -> gaveta_JOGO[i] = CJ;
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/294/HashTable.c:120..120
+   120  			free(HTJ -> gaveta_JOGO[i]);
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/294/HashTable.c:119..119
+   119  			CJ = HTJ -> gaveta_JOGO[i] -> proximo;
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/294/HashTable.c:118..118
+   118  		while(HTJ -> gaveta_JOGO[i]){
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/294/HashTable.c:116..116
+   116  	size_t i;
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/294/HashTable.c:81..81
+    81  	cabeca_EQUIPA* aux = HTE -> gaveta_EQUIPA[index];
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/294/HashTable.c:80..80
+    80  	int index = hash(nome);
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/294/HashTable.c:67..67
+    67  	cabeca_JOGO* aux = HTJ -> gaveta_JOGO[index];
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/294/HashTable.c:66..66
+    66  	int index = hash(nome);
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/294/HashTable.c:58..58
+    58  	HTE -> gaveta_EQUIPA[Chave] = CE_aux;
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/294/HashTable.c:57..57
+    57  	CE_aux -> proximo = HTE -> gaveta_EQUIPA[Chave];
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/294/HashTable.c:47..47
+    47  	HTJ -> gaveta_JOGO[Chave] = CJ_aux;
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/294/HashTable.c:46..46
+    46  		HTJ -> gaveta_JOGO[Chave] -> anterior = CJ_aux;
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/294/HashTable.c:45..45
+    45  	if (HTJ -> gaveta_JOGO[Chave])
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/294/HashTable.c:43..43
+    43  	CJ_aux -> proximo = HTJ -> gaveta_JOGO[Chave];
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/294/Funcoes.c:350..350
+   350  	aux_no = ptr_HTJ -> gaveta_JOGO[index];
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/294/Funcoes.c:349..349
+   349  	index = hash(nome_jogo);
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/294/Funcoes.c:342..342
+   342  	char nome_jogo[STR_LEN];
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/294/Funcoes.c:326..326
+   326          ptr_HTJ -> gaveta_JOGO[index] = atual -> proximo;   
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/294/Funcoes.c:322..322
+   322  	cabeca_JOGO *atual = ptr_HTJ -> gaveta_JOGO[index], *prox = ptr_HTJ -> gaveta_JOGO[index];
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/294/Funcoes.c:322..322
+   322  	cabeca_JOGO *atual = ptr_HTJ -> gaveta_JOGO[index], *prox = ptr_HTJ -> gaveta_JOGO[index];
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/294/Funcoes.c:288..288
+   288  		free(Lista_Equipas_Maiores[Contador_prints]);
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/294/Funcoes.c:287..287
+   287  		printf("%d * %s\n", *Contador_Instrucoes, Lista_Equipas_Maiores[Contador_prints]);
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/294/Funcoes.c:278..278
+   278  			strcpy(Lista_Equipas_Maiores[Contador_aux], aux_e -> nome);
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/294/Funcoes.c:277..277
+   277  			Lista_Equipas_Maiores[Contador_aux] = can_fail_malloc(sizeof(char) * (strlen(aux_e -> nome) + 1));
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/294/Funcoes.c:180..180
+   180  	char nome_jogo[STR_LEN];
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/294/Funcoes.c:117..117
+   117  	char nome_jogo[STR_LEN];
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/294/Funcoes.c:97..97
+    97  	char nome_equipa[STR_LEN];
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/294/Funcoes.c:39..39
+    39  	char nome_jogo[STR_LEN], equipa01[STR_LEN], equipa02[STR_LEN];
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/294/Funcoes.c:39..39
+    39  	char nome_jogo[STR_LEN], equipa01[STR_LEN], equipa02[STR_LEN];
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p2/294/Funcoes.c:39..39
+    39  	char nome_jogo[STR_LEN], equipa01[STR_LEN], equipa02[STR_LEN];
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p2/294/Funcoes.c:9..9
+     9  	char equipa[STR_LEN];
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/294/HashTable.c:57..57
+    57  	CE_aux -> proximo = HTE -> gaveta_EQUIPA[Chave];
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/294/HashTable.c:43..43
+    43  	CJ_aux -> proximo = HTJ -> gaveta_JOGO[Chave];
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/294/Funcoes.c:322..322
+   322  	cabeca_JOGO *atual = ptr_HTJ -> gaveta_JOGO[index], *prox = ptr_HTJ -> gaveta_JOGO[index];
+=== Potential out of bound array indexing error ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/294/Funcoes.c:278..278
+   278  			strcpy(Lista_Equipas_Maiores[Contador_aux], aux_e -> nome);
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/294/Funcoes.c:277..277
+   277  			Lista_Equipas_Maiores[Contador_aux] = can_fail_malloc(sizeof(char) * (strlen(aux_e -> nome) + 1));

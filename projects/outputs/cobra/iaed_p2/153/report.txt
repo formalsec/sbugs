@@ -1,0 +1,114 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/153/main.c:11..11
+    11      linkequipa aux_equipa,aux_equipa2,headequipa = NULL;
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/153/main.c:9..9
+     9      linkjogo aux_jogo,aux_jogo2,headjogo = NULL;
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/153/funcoes-aux.c:173..173
+   173          free(equipas[i]);
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/153/funcoes-aux.c:172..172
+   172          printf("%d * %s\n",contlinha,equipas[i]);
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/153/funcoes-aux.c:160..160
+   160                  strcpy(equipas[i],buffer);
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/153/funcoes-aux.c:159..159
+   159                  equipas[i]=(char*)can_fail_malloc(sizeof(char)*(strlen(buffer)+1));
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/153/funcoes-aux.c:143..143
+   143              strcpy(equipas[i],buffer);
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/153/funcoes-aux.c:142..142
+   142              equipas[i]=(char*)can_fail_malloc(sizeof(char)*(strlen(buffer)+1));
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/153/funcoes-aux.c:136..136
+   136      char buffer[maxchar];   /*Usado para armazenar o nome de uma equipa*/
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/153/funcoes-aux.c:130..130
+   130      linkequipa equipa;
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/153/funcoes-aux.c:129..129
+   129      linkjogo jogo;
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/153/funcoes-aux.c:100..100
+   100      linkjogo aux;
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/153/funcoes-aux.c:80..80
+    80      linkequipa prev,t;
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/153/funcoes-aux.c:58..58
+    58      linkjogo prev,t;
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/153/funcoes-aux.c:44..44
+    44      linkequipa e;
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/153/funcoes-aux.c:31..31
+    31      linkjogo x;
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/153/funcoes-aux.c:21..21
+    21      linkequipa e = (linkequipa) can_fail_malloc(sizeof(struct equipa));
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/153/funcoes-aux.c:6..6
+     6      linkjogo x = (linkjogo) can_fail_malloc(sizeof(struct jogo));
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/153/comandos.c:188..188
+   188      linkequipa equipa;
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/153/comandos.c:187..187
+   187      linkjogo jogo;
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/153/comandos.c:172..172
+   172      linkjogo aux;
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/153/comandos.c:151..151
+   151      char nome_jogo[maxchar];    /*Usado para armazenar o nome do jogo*/
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/153/comandos.c:150..150
+   150      linkjogo aux;
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/153/comandos.c:130..130
+   130      char nome[maxchar];    /*Usado para armazenar o nome da equipa*/
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/153/comandos.c:129..129
+   129      linkequipa aux;
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/153/comandos.c:108..108
+   108      char nome_jogo[maxchar];    /*Usado para guardar o nome do jogo*/
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/153/comandos.c:107..107
+   107      linkjogo aux;
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/153/comandos.c:85..85
+    85      char nome_jogo[maxchar];   /*Usado para guardar o nome do jogo*/
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/153/comandos.c:84..84
+    84      linkjogo aux;
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/153/comandos.c:60..60
+    60      char nome_equipa[maxchar];   /*Usado para armazenar o nome da equipa*/
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/153/comandos.c:59..59
+    59      linkequipa aux;
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/153/comandos.c:11..11
+    11      linkequipa b,c;
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/153/comandos.c:10..10
+    10      linkjogo a;
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/153/comandos.c:8..8
+     8      char nome[maxchar],equipa1[maxchar],equipa2[maxchar];
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/153/comandos.c:8..8
+     8      char nome[maxchar],equipa1[maxchar],equipa2[maxchar];
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p2/153/comandos.c:8..8
+     8      char nome[maxchar],equipa1[maxchar],equipa2[maxchar];
+=== Dangerous function calls lacking bounds checking ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/153/funcoes-aux.c:158..158
+   158                  strcpy(buffer,equipa->nome);
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/153/funcoes-aux.c:141..141
+   141              strcpy(buffer,equipa->nome);

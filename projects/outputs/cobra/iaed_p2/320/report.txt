@@ -1,0 +1,138 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/320/teams.c:111..111
+   111  	for(i = 0; i < N_HASH_TABLE; i++) free_dlist_teams(hasht_t[i]);
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/320/teams.c:100..100
+   100  	node_dlist_teams * n_dl = hasht_t[h]->head;
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/320/teams.c:99..99
+    99  	int h = hashf(t_name);
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/320/teams.c:94..94
+    94  	addlast_dlist_teams(hasht_t[h], p_t);
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/320/teams.c:93..93
+    93  	int h = hashf(p_t->t_name);
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/320/teams.c:87..87
+    87  	for(i = 0; i < N_HASH_TABLE; i++) hasht_t[i] = mk_dlist_teams();
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/320/teams.c:19..19
+    19  	for(i = 0; i <= len; i++) str_alloc[i] = string[i];
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/320/teams.c:19..19
+    19  	for(i = 0; i <= len; i++) str_alloc[i] = string[i];
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/320/mysort.c:34..34
+    34  			list_t[k] = list_t_aux[i];
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/320/mysort.c:34..34
+    34  			list_t[k] = list_t_aux[i];
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/320/mysort.c:28..28
+    28  			list_t[k] = list_t_aux[j];
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/320/mysort.c:28..28
+    28  			list_t[k] = list_t_aux[j];
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/320/mysort.c:21..21
+    21  			list_t[k] = list_t_aux[j];
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/320/mysort.c:21..21
+    21  			list_t[k] = list_t_aux[j];
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/320/mysort.c:17..17
+    17  			list_t[k] = list_t_aux[i];
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/320/mysort.c:17..17
+    17  			list_t[k] = list_t_aux[i];
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/320/mysort.c:16..16
+    16  		if(list_t_aux[i][a] < list_t_aux[j][a]){
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/320/mysort.c:16..16
+    16  		if(list_t_aux[i][a] < list_t_aux[j][a]){
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/320/mysort.c:15..15
+    15  		for(a = 0; list_t_aux[i][a] == list_t_aux[j][a]; a++);
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/320/mysort.c:15..15
+    15  		for(a = 0; list_t_aux[i][a] == list_t_aux[j][a]; a++);
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/320/mysort.c:10..10
+    10  	for(i = m + 1; i <= r; i++) list_t_aux[i] = list_t[i];
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/320/mysort.c:10..10
+    10  	for(i = m + 1; i <= r; i++) list_t_aux[i] = list_t[i];
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/320/mysort.c:9..9
+     9  	for(i = l; i <= m; i++)	list_t_aux[i] = list_t[i];
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/320/mysort.c:9..9
+     9  	for(i = l; i <= m; i++)	list_t_aux[i] = list_t[i];
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/320/games.c:110..110
+   110  	for(i = 0; i < N_HASH_TABLE; i++) free_dlist_games(hasht_g[i]);
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/320/games.c:99..99
+    99  	node_dlist_games * n_dl = hasht_g[h]->head;
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/320/games.c:98..98
+    98  	int h = hashf(g_name);
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/320/games.c:92..92
+    92  	node_dlist_games * n_dl = addlast_dlist_games(hasht_g[h], p_g);
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/320/games.c:91..91
+    91  	int h = hashf(p_g->g_name);
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/320/games.c:79..79
+    79  	for(i = 0; i < N_HASH_TABLE; i++) hasht_g[i] = mk_dlist_games();
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/320/comands.c:175..175
+   175  			free(list_t[i]);						/* free nome da equipa */
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/320/comands.c:174..174
+   174  			printf("%d * %s\n", nl, list_t[i]);		/* printa a lista de nomes agora ordenada */
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/320/comands.c:167..167
+   167  					strcpy(list_t[j++], n_dl->p_t->t_name);
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/320/comands.c:166..166
+   166  					list_t[j] = can_fail_malloc(sizeof(char) * len);
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/320/comands.c:162..162
+   162  			n_dl = hasht_t[i]->head;		/* volta a percorrer a hashtable e se as vitorias */
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p2/320/comands.c:152..152
+   152  		n_dl = hasht_t[i]->head;			/* percorre a hashtable das equipas para obter o max_wins */
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p2/320/comands.c:107..107
+   107  	char g_name[MAX_CHAR];
+
+38: /home/fmarques/sbugs/projects/alunos/iaed_p2/320/comands.c:99..99
+    99  		rm_node_dlist_games(hasht_g[h], n_dl);	/* remove o node do jogo da hashtable dos jogos */
+
+39: /home/fmarques/sbugs/projects/alunos/iaed_p2/320/comands.c:98..98
+    98  		h = hashf(g_name);
+
+40: /home/fmarques/sbugs/projects/alunos/iaed_p2/320/comands.c:81..81
+    81  	char g_name[MAX_CHAR];
+
+41: /home/fmarques/sbugs/projects/alunos/iaed_p2/320/comands.c:71..71
+    71  	char t_name[MAX_CHAR];
+
+42: /home/fmarques/sbugs/projects/alunos/iaed_p2/320/comands.c:62..62
+    62  	char g_name[MAX_CHAR];
+
+43: /home/fmarques/sbugs/projects/alunos/iaed_p2/320/comands.c:40..40
+    40  	char t_name[MAX_CHAR];
+
+44: /home/fmarques/sbugs/projects/alunos/iaed_p2/320/comands.c:15..15
+    15  	char g_name[MAX_CHAR], name_t1[MAX_CHAR], name_t2[MAX_CHAR];
+
+45: /home/fmarques/sbugs/projects/alunos/iaed_p2/320/comands.c:15..15
+    15  	char g_name[MAX_CHAR], name_t1[MAX_CHAR], name_t2[MAX_CHAR];
+
+46: /home/fmarques/sbugs/projects/alunos/iaed_p2/320/comands.c:15..15
+    15  	char g_name[MAX_CHAR], name_t1[MAX_CHAR], name_t2[MAX_CHAR];

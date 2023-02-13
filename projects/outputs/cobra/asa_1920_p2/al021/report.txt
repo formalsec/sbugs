@@ -1,0 +1,164 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al038/graph.c:219..219
+   219          Vertex* vertexAux = graph->adjLists[i];
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al038/graph.c:203..203
+   203              addEdge(graph, u, parents[u]);
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al038/graph.c:197..197
+   197                  if(aux->id == parents[u]) {
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al038/graph.c:195..195
+   195              Vertex* aux = graph->adjLists[u];
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al038/graph.c:186..186
+   186              Vertex* temp = graph->adjLists[parents[u]];
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al038/graph.c:186..186
+   186              Vertex* temp = graph->adjLists[parents[u]];
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al038/graph.c:184..184
+   184          for (u = graph->numVertices*2 + 1; parents[u] >= 0; u = parents[u]) {
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al038/graph.c:184..184
+   184          for (u = graph->numVertices*2 + 1; parents[u] >= 0; u = parents[u]) {
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al038/graph.c:177..177
+   177      return visited[graph->numVertices*2 + 1];
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al038/graph.c:177..177
+   177      return visited[graph->numVertices*2 + 1];
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al038/graph.c:173..173
+   173                  visited[v->id] =true;   
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al038/graph.c:173..173
+   173                  visited[v->id] =true;   
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al038/graph.c:172..172
+   172                  parents[v->id] = u;
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al038/graph.c:172..172
+   172                  parents[v->id] = u;
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al038/graph.c:170..170
+   170              if(visited[v->id] == false && 1 - v->flow > 0) {
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al038/graph.c:170..170
+   170              if(visited[v->id] == false && 1 - v->flow > 0) {
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al038/graph.c:167..167
+   167          Vertex* v = graph->adjLists[u];
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al038/graph.c:143..143
+   143              added[u] = true;
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al038/graph.c:142..142
+   142          if(added[u] == false && u != 0 && u != graph->numVertices*2 + 1) {
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al038/graph.c:132..132
+   132          parents[i] = -1;
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al038/graph.c:131..131
+   131          visited[i] = false;
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al038/graph.c:122..122
+   122      q[tail] = x;
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al038/graph.c:116..116
+   116      int x = q[head];
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al038/graph.c:110..110
+   110          added[i] = false;
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al038/graph.c:109..109
+   109          graph->adjLists[i] = NULL;
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al038/graph.c:93..93
+    93      graph->adjLists[src] = aux;    
+
+27: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al038/graph.c:92..92
+    92      aux->next = graph->adjLists[src];
+
+28: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al038/graph.c:76..76
+    76          addEdge(graph, 0, (homes[i])*2-1); 
+
+29: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al038/graph.c:75..75
+    75          homes[i] = avenue + (street - 1)*numAvenues; 
+
+30: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al038/graph.c:68..68
+    68          addEdge(graph, super[i]*2, graph->numVertices*2 + 1);
+
+31: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al038/graph.c:67..67
+    67          super[i] = avenue + (street - 1)*numAvenues;
+
+32: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al038/graph.c:11..11
+    11      bool visited;
+cat: _CWE_457_.txt: No such file or directory
+cat: '*_.txt': No such file or directory
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al021/main.c:378..378
+   378              edge  = graph_get_edge(g,pred[parent],parent);
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al021/main.c:377..377
+   377          for(parent = sink; pred[parent] != NONE; parent = pred[parent]){
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al021/main.c:377..377
+   377          for(parent = sink; pred[parent] != NONE; parent = pred[parent]){
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al021/main.c:366..366
+   366      int pred[graph_get_order(g)];       /*Stores predecessors*/
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al021/main.c:366..366
+   366      int pred[graph_get_order(g)];       /*Stores predecessors*/
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al021/main.c:348..348
+   348                  pred[ll_list->i] = v;
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al021/main.c:348..348
+   348                  pred[ll_list->i] = v;
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al021/main.c:346..346
+   346              if(pred[ll_list->i] == NONE && ll_list->i != source && get_edge_cap(ll_list) > 0){
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al021/main.c:346..346
+   346              if(pred[ll_list->i] == NONE && ll_list->i != source && get_edge_cap(ll_list) > 0){
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al021/main.c:336..336
+   336          pred[i] = NONE;
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al021/main.c:281..281
+   281          ll_node_ptr *vertex_head = &(g->llacency_list[u]);
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al021/main.c:268..268
+   268      ll_node_ptr *vertex_head = &(g->llacency_list[u]);
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al021/main.c:257..257
+   257      ll_node_ptr *vertex_head = &(g->llacency_list[u]);
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al021/main.c:248..248
+   248      return g->llacency_list[vertex_index];
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al021/main.c:180..180
+   180              list[i] = ll_delete_node(list[i]);
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al021/main.c:180..180
+   180              list[i] = ll_delete_node(list[i]);
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al021/main.c:179..179
+   179          while(list[i] != NULL)
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al021/main.c:154..154
+   154          ll_list[i] = NULL;
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al021/main.c:281..281
+   281          ll_node_ptr *vertex_head = &(g->llacency_list[u]);
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al021/main.c:268..268
+   268      ll_node_ptr *vertex_head = &(g->llacency_list[u]);
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al021/main.c:257..257
+   257      ll_node_ptr *vertex_head = &(g->llacency_list[u]);
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al021/main.c:248..248
+   248      return g->llacency_list[vertex_index];

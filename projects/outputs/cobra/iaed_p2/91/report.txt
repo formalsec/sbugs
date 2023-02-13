@@ -1,0 +1,162 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/projecto.c:203..203
+   203          printf("%d * %s\n", nl, equipas[i]);
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/projecto.c:194..194
+   194              equipas[j] = tabEquipas->equipas[i]->nome;
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/projecto.c:194..194
+   194              equipas[j] = tabEquipas->equipas[i]->nome;
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/projecto.c:193..193
+   193              && tabEquipas->equipas[i]->score == jogosGanhos) {
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/projecto.c:192..192
+   192          if (tabEquipas->equipas[i] != NULL 
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/projecto.c:182..182
+   182              } else if (tabEquipas->equipas[i]->score == jogosGanhos) {
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/projecto.c:180..180
+   180                  jogosGanhos = tabEquipas->equipas[i]->score;
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/projecto.c:179..179
+   179              if (tabEquipas->equipas[i]->score > jogosGanhos) {
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/projecto.c:178..178
+   178          if (tabEquipas->equipas[i] != NULL) {
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/projecto.c:135..135
+   135      char nome[STR_MAX];
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/projecto.c:110..110
+   110      char nome[STR_MAX];
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/projecto.c:94..94
+    94      char nome[STR_MAX];
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/projecto.c:77..77
+    77      char nome[STR_MAX];
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/projecto.c:45..45
+    45      char input[STR_MAX];
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/jogos.c:111..111
+   111              free_jogo(tabela->jogos[i]);
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/jogos.c:110..110
+   110          if (tabela->jogos[i] != NULL) {
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/jogos.c:100..100
+   100          tabela->jogos[j] = NULL;
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/jogos.c:99..99
+    99          tabela->jogos[i] = tabela->jogos[j];
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/jogos.c:99..99
+    99          tabela->jogos[i] = tabela->jogos[j];
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/jogos.c:98..98
+    98      for (j = (i+1) % tabela->capacidade; tabela->jogos[j] != NULL; j = (j + 1) % tabela->capacidade) {
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/jogos.c:97..97
+    97      tabela->jogos[i] = NULL;
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/jogos.c:96..96
+    96      free_jogo(tabela->jogos[i]);
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/jogos.c:91..91
+    91      while (no->v != tabela->jogos[i]) {
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/jogos.c:88..88
+    88      if (tabela->jogos[i] == NULL) return;
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/jogos.c:82..82
+    82          if (strcmp(tabela->jogos[i]->nome, nome) == 0) {
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/jogos.c:81..81
+    81      while (tabela->jogos[i] != NULL) {
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/jogos.c:68..68
+    68              return tabela->jogos[i];
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/jogos.c:67..67
+    67          if (strcmp(tabela->jogos[i]->nome, nome) == 0) {
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/jogos.c:66..66
+    66      while (tabela->jogos[i] != NULL) {
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/jogos.c:52..52
+    52              inserir_jogo(tab, tabela->jogos[i]);
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/jogos.c:51..51
+    51          if (tabela->jogos[i] != NULL) {
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/jogos.c:26..26
+    26      tabela->jogos[i] = jogo;
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/jogos.c:24..24
+    24      while (tabela->jogos[i] != NULL)
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/jogos.c:15..15
+    15          tabela->jogos[i] = NULL;
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/jogo.c:11..11
+    11      char input2[STR_MAX];
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/jogo.c:10..10
+    10      char input1[STR_MAX];
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/jogo.c:9..9
+     9      char input[STR_MAX];
+
+38: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/equipas.c:96..96
+    96      if (strcmp(equipas[i], equipas[right]) > 0) {
+
+39: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/equipas.c:96..96
+    96      if (strcmp(equipas[i], equipas[right]) > 0) {
+
+40: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/equipas.c:87..87
+    87          while (strcmp(v, equipas[--j]) < 0) {
+
+41: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/equipas.c:86..86
+    86          while (strcmp(equipas[++i], v) < 0);
+
+42: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/equipas.c:83..83
+    83      char *v = equipas[right];
+
+43: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/equipas.c:66..66
+    66              free(tabela->equipas[i]);
+
+44: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/equipas.c:65..65
+    65              free(tabela->equipas[i]->nome);
+
+45: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/equipas.c:64..64
+    64          if (tabela->equipas[i] != NULL) {
+
+46: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/equipas.c:52..52
+    52              return tabela->equipas[i];
+
+47: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/equipas.c:51..51
+    51          if (strcmp(tabela->equipas[i]->nome, nome) == 0) {
+
+48: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/equipas.c:50..50
+    50      while (tabela->equipas[i] != NULL) {
+
+49: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/equipas.c:36..36
+    36              inserir_equipa(tab, tabela->equipas[i]);
+
+50: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/equipas.c:35..35
+    35          if (tabela->equipas[i] != NULL) {
+
+51: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/equipas.c:23..23
+    23      tabela->equipas[i] = equipa;
+
+52: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/equipas.c:21..21
+    21      while (tabela->equipas[i] != NULL)
+
+53: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/equipas.c:13..13
+    13          tabela->equipas[i] = NULL;
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/91/equipas.c:83..83
+    83      char *v = equipas[right];

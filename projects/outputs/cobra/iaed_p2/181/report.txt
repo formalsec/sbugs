@@ -1,0 +1,90 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/181/projecto.c:365..365
+   365              printf("%d * %s\n",NL, nomes_equipas[i]);
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/181/projecto.c:305..305
+   305      char nome[TAMANHO_MAX];
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/181/projecto.c:280..280
+   280      char nome[TAMANHO_MAX];
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/181/projecto.c:245..245
+   245      char nome[TAMANHO_MAX];
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/181/projecto.c:214..214
+   214      char nome[TAMANHO_MAX];
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/181/projecto.c:188..188
+   188      char nome[TAMANHO_MAX];
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/181/projecto.c:131..131
+   131      char nome[TAMANHO_MAX], equipa1_nome[TAMANHO_MAX], equipa2_nome[TAMANHO_MAX];
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/181/projecto.c:131..131
+   131      char nome[TAMANHO_MAX], equipa1_nome[TAMANHO_MAX], equipa2_nome[TAMANHO_MAX];
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/181/projecto.c:131..131
+   131      char nome[TAMANHO_MAX], equipa1_nome[TAMANHO_MAX], equipa2_nome[TAMANHO_MAX];
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/181/projecto.c:46..46
+    46      HashJogos jogos;
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/181/projecto.c:45..45
+    45      ListaJogos jogos_ordenados;
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/181/projecto.c:43..43
+    43      HashEquipas equipas; 
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/181/lista_equipas.c:132..132
+   132              nomes_equipas[posicao] = node_equipa->equipa->nome;
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/181/hash_jogos.c:67..67
+    67          free_ListaJogo(&(hash_table->jogos[i]));
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/181/hash_jogos.c:56..56
+    56      jogo = procura_jogo(&(hash_table->jogos[chave]), nome);
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/181/hash_jogos.c:55..55
+    55      chave = hash_function(nome, hash_table->tamanho);
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/181/hash_jogos.c:46..46
+    46      remove_jogo(&(hash_table->jogos[chave]), nome);
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/181/hash_jogos.c:45..45
+    45      chave = hash_function(nome, hash_table->tamanho);
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/181/hash_jogos.c:37..37
+    37      adiciona_jogo(&(hash_table->jogos[chave]), nome, equipa1, equipa2, score1, score2);
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/181/hash_jogos.c:36..36
+    36      chave = hash_function(nome, hash_table->tamanho);
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/181/hash_jogos.c:26..26
+    26          inicializa_ListaJogos(&(hash_table->jogos[i]));
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/181/hash_equipas.c:73..73
+    73          free_ListaEquipas(&(hash_table->equipas[i]));
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/181/hash_equipas.c:63..63
+    63          mais_vitorias(&(hash_table->equipas[i]), max_vitorias, quantidade);        
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/181/hash_equipas.c:47..47
+    47          posicao = procura_equipaVitorias(&(hash_table->equipas[i]), nomes_equipas, vitorias, posicao, quantidade);
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/181/hash_equipas.c:34..34
+    34      equipa = procura_equipa(&(hash_table->equipas[chave]), nome_equipa);
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/181/hash_equipas.c:33..33
+    33      chave = hash_function(nome_equipa, hash_table->tamanho);
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/181/hash_equipas.c:24..24
+    24      adiciona_equipa(&(hash_table->equipas[chave]), nome_equipa);
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/181/hash_equipas.c:23..23
+    23      chave = hash_function(nome_equipa, hash_table->tamanho);
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/181/hash_equipas.c:14..14
+    14          inicializa_ListaEquipas(&(hash_table->equipas[i]));
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/181/lista_equipas.c:132..132
+   132              nomes_equipas[posicao] = node_equipa->equipa->nome;

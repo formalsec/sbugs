@@ -1,0 +1,129 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/65/main.c:480..480
+   480          if(strcmp(team_name, teams[i]->name)==0)
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/65/main.c:464..464
+   464              teams[*acc] = teams_list->team;
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/65/main.c:456..456
+   456              teams[*acc]  = teams_list->team;
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/65/main.c:439..439
+   439          copy_addr_t(&acc, teams, teams_ht[index_teams->s], &most_wins);
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/65/main.c:439..439
+   439          copy_addr_t(&acc, teams, teams_ht[index_teams->s], &most_wins);
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/65/main.c:426..426
+   426          printf("%d * %s\n", NL, teams[j]->name);
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/65/main.c:411..411
+   411          teams[i]= NULL;
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/65/main.c:374..374
+   374      char team_name[MAXSIZE];
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/65/main.c:347..347
+   347      char team_name[MAXSIZE];
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/65/main.c:306..306
+   306      char game_name[MAXSIZE];
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/65/main.c:268..268
+   268      char game_name[MAXSIZE];
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/65/main.c:245..245
+   245      char game_name[MAXSIZE];
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/65/main.c:228..228
+   228          games_played[games_list->game->id] = games_list->game;
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/65/main.c:228..228
+   228          games_played[games_list->game->id] = games_list->game;
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/65/main.c:228..228
+   228          games_played[games_list->game->id] = games_list->game;
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/65/main.c:216..216
+   216          copy_addr_g(games_played, games_ht[index_games->s]);
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/65/main.c:216..216
+   216          copy_addr_g(games_played, games_ht[index_games->s]);
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/65/main.c:204..204
+   204          print_game(NL, games_played[i]);
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/65/main.c:195..195
+   195          games_played[j] = NULL;
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/65/main.c:137..137
+   137      char game_name[MAXSIZE], team1_name[MAXSIZE], team2_name[MAXSIZE];
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/65/main.c:137..137
+   137      char game_name[MAXSIZE], team1_name[MAXSIZE], team2_name[MAXSIZE];
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/65/main.c:137..137
+   137      char game_name[MAXSIZE], team1_name[MAXSIZE], team2_name[MAXSIZE];
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/65/main.c:54..54
+    54          teams_ht[i] = NULL;
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/65/main.c:53..53
+    53          games_ht[i] = NULL;
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/65/main.c:45..45
+    45      nodeTeam * teams_ht[HTSIZE];
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/65/main.c:44..44
+    44      nodeGame * games_ht[HTSIZE];
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/65/hashtables.c:126..126
+   126          teams_ht[i] = _destroy_team_(teams_ht[i]);
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/65/hashtables.c:126..126
+   126          teams_ht[i] = _destroy_team_(teams_ht[i]);
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/65/hashtables.c:100..100
+   100      array_teams[index] = _push_team_(array_teams[index], team_name);
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/65/hashtables.c:100..100
+   100      array_teams[index] = _push_team_(array_teams[index], team_name);
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/65/hashtables.c:99..99
+    99      int index = hash(team_name, M);
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/65/hashtables.c:93..93
+    93      return _is_team_(array_teams[index], team_name);
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/65/hashtables.c:92..92
+    92      int index = hash(team_name, M);
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/65/hashtables.c:77..77
+    77          games_ht[i] = _destroy_game_(games_ht[i]);
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/65/hashtables.c:77..77
+    77          games_ht[i] = _destroy_game_(games_ht[i]);
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p2/65/hashtables.c:53..53
+    53      array_games[index] = _del_game_(array_games[index], name);
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p2/65/hashtables.c:53..53
+    53      array_games[index] = _del_game_(array_games[index], name);
+
+38: /home/fmarques/sbugs/projects/alunos/iaed_p2/65/hashtables.c:52..52
+    52      int index = hash(name, M);
+
+39: /home/fmarques/sbugs/projects/alunos/iaed_p2/65/hashtables.c:43..43
+    43      array_games[index] = _push_game_(array_games[index], game_name, id, 
+
+40: /home/fmarques/sbugs/projects/alunos/iaed_p2/65/hashtables.c:43..43
+    43      array_games[index] = _push_game_(array_games[index], game_name, id, 
+
+41: /home/fmarques/sbugs/projects/alunos/iaed_p2/65/hashtables.c:42..42
+    42      int index = hash(game_name, M);
+
+42: /home/fmarques/sbugs/projects/alunos/iaed_p2/65/hashtables.c:34..34
+    34      return _is_game_(array_games[index], game_name);
+
+43: /home/fmarques/sbugs/projects/alunos/iaed_p2/65/hashtables.c:33..33
+    33      int index = hash(game_name, M);

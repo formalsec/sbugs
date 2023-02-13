@@ -1,0 +1,150 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/286/p.c:206..206
+   206        printf("%d * %s\n", num, nome[i]);
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/286/p.c:176..176
+   176     char nome[MAX_NOME];
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/286/p.c:163..163
+   163     char nome[MAX_NOME];
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/286/p.c:153..153
+   153     char nome[MAX_NOME];
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/286/p.c:143..143
+   143     char nome[MAX_NOME];
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/286/p.c:104..104
+   104     char nome[MAX_NOME];
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/286/p.c:41..41
+    41     char nome[MAX_NOME], equipa1[MAX_NOME], equipa2[MAX_NOME];
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/286/p.c:41..41
+    41     char nome[MAX_NOME], equipa1[MAX_NOME], equipa2[MAX_NOME];
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/286/p.c:41..41
+    41     char nome[MAX_NOME], equipa1[MAX_NOME], equipa2[MAX_NOME];
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/286/comandos_estruturas.c:531..531
+   531        dar_free_jogos(htjogos[i]);
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/286/comandos_estruturas.c:530..530
+   530        dar_free_equipas(ht[i]);
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/286/comandos_estruturas.c:503..503
+   503     soma_vitoria(ht[indice], equipa_vitoria);
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/286/comandos_estruturas.c:502..502
+   502     int indice = hash(equipa_vitoria);
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/286/comandos_estruturas.c:478..478
+   478     tirar_vitoria_lista(ht[indice], nome);
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/286/comandos_estruturas.c:477..477
+   477     int indice=hash(nome);
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/286/comandos_estruturas.c:451..451
+   451     int i=procura_equipa(ht[indice], nome);
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/286/comandos_estruturas.c:450..450
+   450     int indice = hash(nome);
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/286/comandos_estruturas.c:428..428
+   428     int i=procura_jogo(htjogos[indice], nome);
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/286/comandos_estruturas.c:427..427
+   427     int indice = hash(nome);
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/286/comandos_estruturas.c:383..383
+   383        valor = valor + nome[i];
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/286/comandos_estruturas.c:362..362
+   362        nome[k]=aux[i++];
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/286/comandos_estruturas.c:362..362
+   362        nome[k]=aux[i++];
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/286/comandos_estruturas.c:360..360
+   360        nome[k] = aux[j--];
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/286/comandos_estruturas.c:360..360
+   360        nome[k] = aux[j--];
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/286/comandos_estruturas.c:359..359
+   359      if (strcmp(aux[j], aux[i])<0)
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/286/comandos_estruturas.c:359..359
+   359      if (strcmp(aux[j], aux[i])<0)
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/286/comandos_estruturas.c:356..356
+   356      aux[right+m-j] = nome[j+1];
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/286/comandos_estruturas.c:356..356
+   356      aux[right+m-j] = nome[j+1];
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/286/comandos_estruturas.c:356..356
+   356      aux[right+m-j] = nome[j+1];
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/286/comandos_estruturas.c:356..356
+   356      aux[right+m-j] = nome[j+1];
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/286/comandos_estruturas.c:354..354
+   354      aux[i-1] = nome[i-1];
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/286/comandos_estruturas.c:354..354
+   354      aux[i-1] = nome[i-1];
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/286/comandos_estruturas.c:329..329
+   329           nome[cont] = i->nome_equipa;
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/286/comandos_estruturas.c:237..237
+   237     altera_score_lista(ht, htjogos[indice], nome, score1, score2, num, head, head_e);
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/286/comandos_estruturas.c:236..236
+   236     int indice = hash(nome);
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p2/286/comandos_estruturas.c:131..131
+   131     htjogos[indice]=elimina_jogo_r(ht, htjogos[indice], nome, num);
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p2/286/comandos_estruturas.c:131..131
+   131     htjogos[indice]=elimina_jogo_r(ht, htjogos[indice], nome, num);
+
+38: /home/fmarques/sbugs/projects/alunos/iaed_p2/286/comandos_estruturas.c:130..130
+   130     int indice = hash(nome);
+
+39: /home/fmarques/sbugs/projects/alunos/iaed_p2/286/comandos_estruturas.c:105..105
+   105     lista_equipa_P(ht[indice], nome, num);
+
+40: /home/fmarques/sbugs/projects/alunos/iaed_p2/286/comandos_estruturas.c:104..104
+   104     int indice = hash(nome);
+
+41: /home/fmarques/sbugs/projects/alunos/iaed_p2/286/comandos_estruturas.c:80..80
+    80     procura_jogo_p(htjogos[indice], nome, num);
+
+42: /home/fmarques/sbugs/projects/alunos/iaed_p2/286/comandos_estruturas.c:79..79
+    79     int indice = hash(nome);
+
+43: /home/fmarques/sbugs/projects/alunos/iaed_p2/286/comandos_estruturas.c:65..65
+    65     ht[indice] = insere_inicio(ht[indice], eq);
+
+44: /home/fmarques/sbugs/projects/alunos/iaed_p2/286/comandos_estruturas.c:65..65
+    65     ht[indice] = insere_inicio(ht[indice], eq);
+
+45: /home/fmarques/sbugs/projects/alunos/iaed_p2/286/comandos_estruturas.c:64..64
+    64     int indice = hash(eq->nome_equipa);
+
+46: /home/fmarques/sbugs/projects/alunos/iaed_p2/286/comandos_estruturas.c:40..40
+    40     htjogos[indice] = insere_inicio_jogo(htjogos[indice], jogo);
+
+47: /home/fmarques/sbugs/projects/alunos/iaed_p2/286/comandos_estruturas.c:40..40
+    40     htjogos[indice] = insere_inicio_jogo(htjogos[indice], jogo);
+
+48: /home/fmarques/sbugs/projects/alunos/iaed_p2/286/comandos_estruturas.c:39..39
+    39     int indice = hash(jogo->nome);
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/286/comandos_estruturas.c:356..356
+   356      aux[right+m-j] = nome[j+1];
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/286/comandos_estruturas.c:356..356
+   356      aux[right+m-j] = nome[j+1];

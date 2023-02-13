@@ -1,0 +1,186 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/team.c:73..73
+    73          aux2 = teams[i];
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/team.c:72..72
+    72          aux = teams[i];
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/team.c:70..70
+    70      link aux, aux2;
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/team.c:56..56
+    56      aux = hashtable[hashU(buffer)];
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/team.c:56..56
+    56      aux = hashtable[hashU(buffer)];
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/team.c:55..55
+    55      link aux;       
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/team.c:38..38
+    38      aux = teams[hashU(buffer)];
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/team.c:38..38
+    38      aux = teams[hashU(buffer)];
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/team.c:37..37
+    37      link aux;
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/team.c:24..24
+    24              aux = teams[i];
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/team.c:21..21
+    21          if(teams[i]==NULL)
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/team.c:19..19
+    19      link aux;
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/team.c:11..11
+    11      teams[hashU(buffer)] = aux;     /*acrescenta o termo antes do primeiro termo*/
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/team.c:11..11
+    11      teams[hashU(buffer)] = aux;     /*acrescenta o termo antes do primeiro termo*/
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/team.c:10..10
+    10      aux->next = teams[hashU(buffer)];   
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/team.c:10..10
+    10      aux->next = teams[hashU(buffer)];   
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/team.c:6..6
+     6      link aux;
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/proj2.c:142..142
+   142                          games[hashU(buffer)] = game_link_aux->next;
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/proj2.c:142..142
+   142                          games[hashU(buffer)] = game_link_aux->next;
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/proj2.c:138..138
+   138                      games[hashU(buffer)] = game_link_aux;   /*se for elimina assim*/
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/proj2.c:138..138
+   138                      games[hashU(buffer)] = game_link_aux;   /*se for elimina assim*/
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/proj2.c:137..137
+   137                      free_game_node(games[hashU(buffer)]);
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/proj2.c:137..137
+   137                      free_game_node(games[hashU(buffer)]);
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/proj2.c:134..134
+   134                  game_link_aux = games[hashU(buffer)]; 
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/proj2.c:134..134
+   134                  game_link_aux = games[hashU(buffer)]; 
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/proj2.c:24..24
+    24          games[i] = NULL;        /*nao foi posto fora do main devido a um erro*/
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/proj2.c:23..23
+    23          teams[i] = NULL;        /* inicialisa as variaveis auxiliares*/
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/proj2.c:14..14
+    14      game_list games_sorted;     /* lista de equipas, jogos e ponteiros para jogos ordenados*/
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/proj2.c:11..11
+    11      game_link game_link_aux, game_link_aux2;    /*variaveis auxiliares*/
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/proj2.c:10..10
+    10      game_list game_list_aux, primeiro_jogo;
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/game.c:111..111
+   111      game_list aux;
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/game.c:92..92
+    92          aux2 = games[i];
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/game.c:91..91
+    91          aux = games[i];
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/game.c:89..89
+    89      game_link aux, aux2;
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/game.c:77..77
+    77      game_link aux = games[hashU(atual->name)];  /* obtem o jogo anterior a outro jogo pois a lista e simplesmente ligada */
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/game.c:77..77
+    77      game_link aux = games[hashU(atual->name)];  /* obtem o jogo anterior a outro jogo pois a lista e simplesmente ligada */
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/game.c:77..77
+    77      game_link aux = games[hashU(atual->name)];  /* obtem o jogo anterior a outro jogo pois a lista e simplesmente ligada */
+
+38: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/game.c:77..77
+    77      game_link aux = games[hashU(atual->name)];  /* obtem o jogo anterior a outro jogo pois a lista e simplesmente ligada */
+
+39: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/game.c:70..70
+    70      aux = games[hashU(buffer)];         /*esta funcao assume que o jogo existe por isso tem de ser usada com a existing game*/
+
+40: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/game.c:70..70
+    70      aux = games[hashU(buffer)];         /*esta funcao assume que o jogo existe por isso tem de ser usada com a existing game*/
+
+41: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/game.c:69..69
+    69      game_link aux;
+
+42: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/game.c:56..56
+    56      aux = hashtable[hashU(buffer)];
+
+43: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/game.c:56..56
+    56      aux = hashtable[hashU(buffer)];
+
+44: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/game.c:55..55
+    55      game_link aux;
+
+45: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/game.c:42..42
+    42              aux = games[i];
+
+46: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/game.c:39..39
+    39          if(games[i]==NULL)
+
+47: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/game.c:37..37
+    37      game_link aux;
+
+48: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/game.c:24..24
+    24      games[hashU(buffer)] = aux; /*adiciona o jogo antes do primeiro termo dos jogos*/
+
+49: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/game.c:24..24
+    24      games[hashU(buffer)] = aux; /*adiciona o jogo antes do primeiro termo dos jogos*/
+
+50: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/game.c:23..23
+    23      aux->next = games[hashU(buffer)];
+
+51: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/game.c:23..23
+    23      aux->next = games[hashU(buffer)];
+
+52: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/game.c:8..8
+     8      game_list auxiliar;
+
+53: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/game.c:7..7
+     7      game_link aux;          /*adiciona um jogo a lista de jogos e a lista de ponteiros de jogos ordenados*/
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/team.c:56..56
+    56      aux = hashtable[hashU(buffer)];
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/team.c:38..38
+    38      aux = teams[hashU(buffer)];
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/team.c:10..10
+    10      aux->next = teams[hashU(buffer)];   
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/game.c:77..77
+    77      game_link aux = games[hashU(atual->name)];  /* obtem o jogo anterior a outro jogo pois a lista e simplesmente ligada */
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/game.c:70..70
+    70      aux = games[hashU(buffer)];         /*esta funcao assume que o jogo existe por isso tem de ser usada com a existing game*/
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/game.c:56..56
+    56      aux = hashtable[hashU(buffer)];
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/game.c:23..23
+    23      aux->next = games[hashU(buffer)];
+=== printf or scanf missing width limit on %s ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/proj2.c:112..112
+   112                  scanf(" %s", s2);   /*obtem o nome do jogo e os scores novos*/
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/291/proj2.c:70..70
+    70                  scanf("%s", s2);  /*obtem as informacoes necessarias*/

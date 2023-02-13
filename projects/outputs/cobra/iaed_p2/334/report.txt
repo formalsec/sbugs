@@ -1,0 +1,69 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/334/teams.c:8..8
+     8    size_t len = strlen (s) + 1;
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/334/commands.c:267..267
+   267          printf("%d * %s\n", nl, listNames[i]);
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/334/commands.c:254..254
+   254              listNames[i] = cur->name;
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/334/commands.c:202..202
+   202          names[j] = swap;
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/334/commands.c:201..201
+   201          names[i] = names[j];
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/334/commands.c:201..201
+   201          names[i] = names[j];
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/334/commands.c:200..200
+   200          swap = names[i];
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/334/commands.c:198..198
+   198          while(strcmp(names[j], pi) > 0) j--;
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/334/commands.c:197..197
+   197          while(strcmp(names[i], pi) < 0) i++;
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/334/commands.c:190..190
+   190      char *pi = names[(hi + lo) / 2];
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/334/commands.c:190..190
+   190      char *pi = names[(hi + lo) / 2];
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/334/commands.c:142..142
+   142      name[strlen(name) - 1] = '\0';
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/334/commands.c:142..142
+   142      name[strlen(name) - 1] = '\0';
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/334/commands.c:121..121
+   121      name[strlen(name) - 1] = '\0';
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/334/commands.c:121..121
+   121      name[strlen(name) - 1] = '\0';
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/334/commands.c:97..97
+    97      name[strlen(name) - 1] = '\0';
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/334/commands.c:97..97
+    97      name[strlen(name) - 1] = '\0';
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/334/commands.c:61..61
+    61      name[strlen(name) - 1] = '\0';
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/334/commands.c:61..61
+    61      name[strlen(name) - 1] = '\0';
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/334/commands.c:190..190
+   190      char *pi = names[(hi + lo) / 2];
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/334/commands.c:190..190
+   190      char *pi = names[(hi + lo) / 2];
+=== Possibly missing sizeof() in memory allocation ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/334/teams.c:9..9
+     9    void *new = can_fail_malloc (len);
+=== Source of memcpy is untrusted parameter ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/334/teams.c:12..12
+    12    return (char *) memcpy (new, s, len);

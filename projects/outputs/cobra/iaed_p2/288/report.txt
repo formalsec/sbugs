@@ -1,0 +1,177 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/jogos.c:234..234
+   234  			h_jogos->tb[hash_j]= checker->next;
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/jogos.c:232..232
+   232  		if (checker== h_jogos->tb[hash_j])				/* verifica se o hashnode era o primeiro e, se sim substitui pelo seguinte*/
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/jogos.c:209..209
+   209  		for (checker= h_jogos->tb[hash_j]; checker!=NULL; checker=checker->next)
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/jogos.c:204..204
+   204  	hash_j = hash(jogo, h_jogos->capacity);
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/jogos.c:199..199
+   199  	char jogo[MAX_NOME];
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/jogos.c:178..178
+   178  		for (checker= h_jogos->tb[hash_j]; checker!=NULL; checker=checker->next)
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/jogos.c:173..173
+   173  	hash_j = hash(jogo, h_jogos->capacity);
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/jogos.c:168..168
+   168  	char jogo[MAX_NOME];
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/jogos.c:160..160
+   160  		for (checker= h_jogos->tb[hash_j]; checker!=NULL; checker=checker->next)
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/jogos.c:155..155
+   155  	hash_j = hash(jogo, h_jogos->capacity);
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/jogos.c:150..150
+   150  	char jogo[MAX_NOME];
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/jogos.c:133..133
+   133  		h_jogos->tb[hash_j]=make_hashnode_j(h_jogos->tb[hash_j], jogos->last);
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/jogos.c:133..133
+   133  		h_jogos->tb[hash_j]=make_hashnode_j(h_jogos->tb[hash_j], jogos->last);
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/jogos.c:123..123
+   123  	hash_j = hash(jogo, h_jogos->capacity);
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/jogos.c:119..119
+   119  	char equipa1[MAX_NOME], equipa2[MAX_NOME], jogo[MAX_NOME];
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/jogos.c:119..119
+   119  	char equipa1[MAX_NOME], equipa2[MAX_NOME], jogo[MAX_NOME];
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/jogos.c:119..119
+   119  	char equipa1[MAX_NOME], equipa2[MAX_NOME], jogo[MAX_NOME];
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/jogos.c:109..109
+   109      		h_jogos->tb[i]= tmp2;
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/jogos.c:108..108
+   108      		free(h_jogos->tb[i]);
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/jogos.c:107..107
+   107      		tmp2= h_jogos->tb[i]->next;
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/jogos.c:105..105
+   105      	while(h_jogos->tb[i])
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/jogos.c:102..102
+   102      size_t i;
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/jogos.c:29..29
+    29  	for (checker= h_equipas->tb[hash]; checker!=NULL; checker=checker->next)
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/jogos.c:21..21
+    21  	for (checker= h_equipas->tb[hash]; checker!=NULL; checker=checker->next)
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/jogos.c:12..12
+    12  	for (checker= h_jogos->tb[hash]; checker!=NULL; checker=checker->next)
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/equipas.c:178..178
+   178  	    	free(equipas[y]);
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/equipas.c:177..177
+   177  	    	printf("%d * %s\n", NL, equipas[y]);
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/equipas.c:162..162
+   162  	    	for (checker= h_equipas->tb[i]; checker!=NULL; checker=checker->next)
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/equipas.c:146..146
+   146      	for (checker= h_equipas->tb[i]; checker!=NULL; checker=checker->next)
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/equipas.c:140..140
+   140  	size_t i;
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/equipas.c:133..133
+   133  		for (checker= h_equipas->tb[hash_e]; checker!=NULL; checker=checker->next)
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/equipas.c:129..129
+   129  	hash_e = hash(equipa, h_equipas->capacity);
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/equipas.c:124..124
+   124  	char equipa[MAX_NOME];
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/equipas.c:115..115
+   115  		h_equipas->tb[hash_e]=make_hashnode_e(h_equipas->tb[hash_e], n_equipas);
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/equipas.c:115..115
+   115  		h_equipas->tb[hash_e]=make_hashnode_e(h_equipas->tb[hash_e], n_equipas);
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/equipas.c:111..111
+   111  	hash_e = hash(equipa, h_equipas->capacity);
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/equipas.c:107..107
+   107  	char equipa[MAX_NOME];
+
+38: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/equipas.c:97..97
+    97      		h_equipas->tb[i]= tmp2;
+
+39: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/equipas.c:96..96
+    96      		free(h_equipas->tb[i]);
+
+40: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/equipas.c:95..95
+    95      		tmp2= h_equipas->tb[i]->next;
+
+41: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/equipas.c:93..93
+    93      	while(h_equipas->tb[i])
+
+42: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/equipas.c:82..82
+    82      size_t i;
+
+43: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/equipas.c:43..43
+    43  	for (checker= h_equipas->tb[hash]; checker!=NULL; checker=checker->next)
+
+44: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/equipas.c:25..25
+    25             		strcpy(nomes[j],temp);
+
+45: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/equipas.c:24..24
+    24              	nomes[j]=can_fail_realloc(nomes[j], (strlen(temp)+1)); 	  	/* realocacao da var nomes[j] com o tamanho de temp+1 para permitir a copia seguinte*/
+
+46: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/equipas.c:24..24
+    24              	nomes[j]=can_fail_realloc(nomes[j], (strlen(temp)+1)); 	  	/* realocacao da var nomes[j] com o tamanho de temp+1 para permitir a copia seguinte*/
+
+47: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/equipas.c:23..23
+    23              	strcpy(nomes[i],nomes[j]);
+
+48: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/equipas.c:23..23
+    23              	strcpy(nomes[i],nomes[j]);
+
+49: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/equipas.c:22..22
+    22              	nomes[i]=can_fail_realloc(nomes[i], (strlen(nomes[j])+1)); 	/* realocacao da var nomes[i] com o tamanho de nomes[j]+1 para permitir a copia seguinte*/
+
+50: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/equipas.c:22..22
+    22              	nomes[i]=can_fail_realloc(nomes[i], (strlen(nomes[j])+1)); 	/* realocacao da var nomes[i] com o tamanho de nomes[j]+1 para permitir a copia seguinte*/
+
+51: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/equipas.c:22..22
+    22              	nomes[i]=can_fail_realloc(nomes[i], (strlen(nomes[j])+1)); 	/* realocacao da var nomes[i] com o tamanho de nomes[j]+1 para permitir a copia seguinte*/
+
+52: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/equipas.c:21..21
+    21              	strcpy(temp,nomes[i]);
+
+53: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/equipas.c:20..20
+    20              	temp=can_fail_malloc(sizeof(char)*(strlen(nomes[i])+1)); 	/* alocacao da var temp com o tamanho de nomes[i]+1 para permitir a copia seguinte*/
+
+54: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/equipas.c:18..18
+    18          	if(strcmp(nomes[i],nomes[j])>0)
+
+55: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/equipas.c:18..18
+    18          	if(strcmp(nomes[i],nomes[j])>0)
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/jogos.c:29..29
+    29  	for (checker= h_equipas->tb[hash]; checker!=NULL; checker=checker->next)
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/jogos.c:21..21
+    21  	for (checker= h_equipas->tb[hash]; checker!=NULL; checker=checker->next)
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/jogos.c:12..12
+    12  	for (checker= h_jogos->tb[hash]; checker!=NULL; checker=checker->next)
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/288/equipas.c:43..43
+    43  	for (checker= h_equipas->tb[hash]; checker!=NULL; checker=checker->next)

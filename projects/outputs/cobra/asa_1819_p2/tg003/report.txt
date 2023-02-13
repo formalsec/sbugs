@@ -1,0 +1,220 @@
+cat: _CWE_457_.txt: No such file or directory
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:379..379
+   379      for (i = numLinks - iPair; i < numLinks; i++) printf("%d %d\n", pairs[i].u, pairs[i].v);
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:379..379
+   379      for (i = numLinks - iPair; i < numLinks; i++) printf("%d %d\n", pairs[i].u, pairs[i].v);
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:373..373
+   373          if (storaUp[i] == 1) printf(" %d", i);
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:366..366
+   366          if (storaUp[i] == 1) {
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:356..356
+   356                      pairs[iPair].v = i;
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:355..355
+   355                      pairs[iPair].u = (int) node_i->id > 1 + numManuf + numStora ? node_i->id - numStora : node_i->id;
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:350..350
+   350                      storaUp[node_i->id] != 1 &&
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:350..350
+   350                      storaUp[node_i->id] != 1 &&
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:349..349
+   349                      storaUp[i] != 1 &&
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:348..348
+   348                  if (DFS_tree[node_i->id] &&
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:348..348
+   348                  if (DFS_tree[node_i->id] &&
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:345..345
+   345              node_i = linkList[i];
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:344..344
+   344          if (!DFS_tree[i]) {
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:339..339
+   339          if (DFS_tree[i + numStora] == 0 && DFS_tree[i] != 0) storaUp[i] = 1;
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:339..339
+   339          if (DFS_tree[i + numStora] == 0 && DFS_tree[i] != 0) storaUp[i] = 1;
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:339..339
+   339          if (DFS_tree[i + numStora] == 0 && DFS_tree[i] != 0) storaUp[i] = 1;
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:339..339
+   339          if (DFS_tree[i + numStora] == 0 && DFS_tree[i] != 0) storaUp[i] = 1;
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:328..328
+   328      DFS_color[u] = BLACK;
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:321..321
+   321                  DFS_pi[v] = u;
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:320..320
+   320              if (PR_c[v][u] - PR_f[v][u] != 0 ) {
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:320..320
+   320              if (PR_c[v][u] - PR_f[v][u] != 0 ) {
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:318..318
+   318          if (DFS_color[v] == WHITE) {
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:314..314
+   314      DFS_d[u] = DFS_time++;
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:313..313
+   313      DFS_color[u] = GRAY;
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:312..312
+   312      DFS_tree[u] = DFS_iTree;
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:310..310
+   310      node_t node_i = linkList[u];
+
+27: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:303..303
+   303          if (DFS_pi[i] == -1 && i != 1) DFS_iTree++;
+
+28: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:301..301
+   301          if (DFS_color[i] == WHITE) DFSvisit(i);
+
+29: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:295..295
+   295          DFS_pi[i] = -1;
+
+30: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:294..294
+   294          DFS_color[i] = DFS_d[i] = 0;
+
+31: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:294..294
+   294          DFS_color[i] = DFS_d[i] = 0;
+
+32: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:268..268
+   268          if (PR_e[i] > 0) return i;
+
+33: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:253..253
+   253          if (PR_h[u] > PR_h[v] && PR_c[u][v] - PR_f[u][v] > 0)  {
+
+34: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:253..253
+   253          if (PR_h[u] > PR_h[v] && PR_c[u][v] - PR_f[u][v] > 0)  {
+
+35: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:253..253
+   253          if (PR_h[u] > PR_h[v] && PR_c[u][v] - PR_f[u][v] > 0)  {
+
+36: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:253..253
+   253          if (PR_h[u] > PR_h[v] && PR_c[u][v] - PR_f[u][v] > 0)  {
+
+37: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:249..249
+   249      while (PR_e[u] > 0) {
+
+38: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:247..247
+   247      node_t node_i = linkList[u];
+
+39: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:241..241
+   241      PR_h[u] = minH + 1;
+
+40: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:235..235
+   235              minH = PR_h[v];
+
+41: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:234..234
+   234          if (PR_h[v] < minH && PR_h[u] <= PR_h[v]) {
+
+42: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:234..234
+   234          if (PR_h[v] < minH && PR_h[u] <= PR_h[v]) {
+
+43: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:234..234
+   234          if (PR_h[v] < minH && PR_h[u] <= PR_h[v]) {
+
+44: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:229..229
+   229      node_t node_i = linkList[u];
+
+45: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:223..223
+   223      PR_e[v] += d;
+
+46: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:222..222
+   222      PR_e[u] -= d;
+
+47: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:220..220
+   220      PR_f[v][u] = PR_f[u][v] * (-1);
+
+48: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:220..220
+   220      PR_f[v][u] = PR_f[u][v] * (-1);
+
+49: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:219..219
+   219      PR_f[u][v] += d;
+
+50: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:217..217
+   217      int d = PR_e[u] < c ? PR_e[u] : c;
+
+51: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:217..217
+   217      int d = PR_e[u] < c ? PR_e[u] : c;
+
+52: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:216..216
+   216      int c = PR_c[u][v] - PR_f[u][v];
+
+53: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:216..216
+   216      int c = PR_c[u][v] - PR_f[u][v];
+
+54: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:208..208
+   208          PR_e[u] = c;
+
+55: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:207..207
+   207          PR_f[u][0] = c * (-1);
+
+56: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:204..204
+   204          PR_c[u][0] = c;
+
+57: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:182..182
+   182          node_i = linkList[i];
+
+58: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:172..172
+   172      linkList[u] = new;
+
+59: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:171..171
+   171      new->next = linkList[u];
+
+60: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:155..155
+   155          PR_c[v][u] = 0;
+
+61: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:154..154
+   154          PR_c[u][v] = c;
+
+62: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:147..147
+   147          v = atoi(token);
+
+63: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:134..134
+   134          PR_c[i][i + numStora] = atoi(token);
+
+64: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:111..111
+   111          linkList[i] = NULL;
+
+65: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:107..107
+   107      for (i = 1; i < numNodes; i++) PR_c[i] = PR_c[0] + i * numNodes;
+
+66: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:103..103
+   103      for (i = 1; i < numNodes; i++) PR_f[i] = PR_f[0] + i * numNodes;
+
+67: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:74..74
+    74      char buffer[BUFF_SIZE], *token;
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:310..310
+   310      node_t node_i = linkList[u];
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:247..247
+   247      node_t node_i = linkList[u];
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:229..229
+   229      node_t node_i = linkList[u];
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:216..216
+   216      int c = PR_c[u][v] - PR_f[u][v];
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:216..216
+   216      int c = PR_c[u][v] - PR_f[u][v];
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg003/p2_g003.c:171..171
+   171      new->next = linkList[u];

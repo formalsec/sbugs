@@ -1,0 +1,207 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/team_lists.c:44..44
+    44  	tlink t, prev;
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/team_lists.c:32..32
+    32  	tlink t;
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/team_lists.c:21..21
+    21  	tlink x;
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/team_lists.c:14..14
+    14  	tlink x = TNEW(equipa);
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/team_lists.c:6..6
+     6  	tlink x = can_fail_malloc(sizeof(struct tnode));
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/team_hashtable.c:50..50
+    50  			for (t = theads[i]; t != NULL; t = TremoveItem(t, t->equipa, 1));
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/team_hashtable.c:49..49
+    49  		if (theads[i] != NULL) {
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/team_hashtable.c:47..47
+    47  	tlink t;
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/team_hashtable.c:38..38
+    38  	if (Tlookup(theads[i], v) == NULL) {
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/team_hashtable.c:37..37
+    37  	int i = hash(v, N);
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/team_hashtable.c:32..32
+    32  	return (Tlookup(theads[i], v))->equipa;
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/team_hashtable.c:31..31
+    31  	int i = hash(v, N);
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/team_hashtable.c:26..26
+    26  	theads[i] = TremoveItem(theads[i], equipa, 0); /* terceiro argumento e zero porque apenas se pretende apaagar um no da lista ligada e nao o conteudo da equipa */
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/team_hashtable.c:26..26
+    26  	theads[i] = TremoveItem(theads[i], equipa, 0); /* terceiro argumento e zero porque apenas se pretende apaagar um no da lista ligada e nao o conteudo da equipa */
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/team_hashtable.c:25..25
+    25  	int i = hash(equipa->nome, N);
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/team_hashtable.c:20..20
+    20  	theads[i] = TinsertBegin(theads[i], equipa);
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/team_hashtable.c:20..20
+    20  	theads[i] = TinsertBegin(theads[i], equipa);
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/team_hashtable.c:19..19
+    19  	int i = hash(equipa->nome, N);
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/team_hashtable.c:13..13
+    13  		theads[i] = NULL;
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/sort.c:14..14
+    14  	tlink i, j;
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/sort.c:6..6
+     6  	Equipa aux;
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/proj2.c:240..240
+   240  	Equipa e;
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/proj2.c:239..239
+   239  	tlink t, list;
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/proj2.c:177..177
+   177  	Equipa e1, e2;
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/proj2.c:176..176
+   176  	Jogo jogo;
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/proj2.c:141..141
+   141  	Equipa e1, e2;
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/proj2.c:140..140
+   140  	Jogo jogo;
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/proj2.c:121..121
+   121  	Equipa equipa;
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/proj2.c:103..103
+   103  	Jogo jogo;
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/proj2.c:93..93
+    93  	glink t;
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/proj2.c:76..76
+    76  	Equipa equipa;
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/proj2.c:37..37
+    37  	Equipa eq1, eq2;
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/proj2.c:36..36
+    36  	Jogo jogo;
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/proj2.c:23..23
+    23  	glink tmp;
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/jogos.c:6..6
+     6  	Jogo j;
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/iteam_hashtable.c:58..58
+    58  			t = itheads[i];
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/iteam_hashtable.c:57..57
+    57  		if (itheads[i] != NULL) {
+
+38: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/iteam_hashtable.c:55..55
+    55  	tlink t, tmp;
+
+39: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/iteam_hashtable.c:46..46
+    46  		if (itheads[i] != NULL) {
+
+40: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/iteam_hashtable.c:37..37
+    37  			t = itheads[i];
+
+41: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/iteam_hashtable.c:36..36
+    36  		if (itheads[i] != NULL) {
+
+42: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/iteam_hashtable.c:34..34
+    34  	tlink t;
+
+43: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/iteam_hashtable.c:29..29
+    29  	itheads[i] = TremoveItem(itheads[i], equipa, 0);
+
+44: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/iteam_hashtable.c:29..29
+    29  	itheads[i] = TremoveItem(itheads[i], equipa, 0);
+
+45: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/iteam_hashtable.c:28..28
+    28  	int i = hashint(equipa->vitorias, L);
+
+46: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/iteam_hashtable.c:24..24
+    24  	itheads[i] = TinsertEnd(itheads[i], equipa);
+
+47: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/iteam_hashtable.c:24..24
+    24  	itheads[i] = TinsertEnd(itheads[i], equipa);
+
+48: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/iteam_hashtable.c:23..23
+    23  	int i = hashint(equipa->vitorias, L);
+
+49: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/iteam_hashtable.c:18..18
+    18  		itheads[i] = NULL;
+
+50: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/game_lists.c:44..44
+    44  	glink t, prev;
+
+51: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/game_lists.c:32..32
+    32  	glink t;
+
+52: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/game_lists.c:21..21
+    21  	glink x;
+
+53: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/game_lists.c:14..14
+    14  	glink x = GNEW(jogo);
+
+54: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/game_lists.c:6..6
+     6  	glink x = can_fail_malloc(sizeof(struct gnode));
+
+55: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/game_hashtable.c:59..59
+    59  	if (Glookup(gheads[i], v) == NULL) {
+
+56: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/game_hashtable.c:58..58
+    58  	int i = hash(v, M);
+
+57: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/game_hashtable.c:50..50
+    50  			for (t = gheads[i]; t != NULL; t = GremoveItem(t, t->jogo, 1));
+
+58: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/game_hashtable.c:49..49
+    49  		if (gheads[i] != NULL) {
+
+59: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/game_hashtable.c:47..47
+    47  	glink t;
+
+60: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/game_hashtable.c:41..41
+    41  	return (Glookup(gheads[i], v))->jogo;
+
+61: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/game_hashtable.c:40..40
+    40  	int i = hash(v, M);
+
+62: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/game_hashtable.c:35..35
+    35  	gheads[i] = GremoveItem(gheads[i], jogo, 0);		/* terceiro argumento e zero, logo apenas apaga o no da lista ligada, nao o conteudo do jogo */
+
+63: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/game_hashtable.c:35..35
+    35  	gheads[i] = GremoveItem(gheads[i], jogo, 0);		/* terceiro argumento e zero, logo apenas apaga o no da lista ligada, nao o conteudo do jogo */
+
+64: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/game_hashtable.c:34..34
+    34  	int i = hash(jogo->nome, M);
+
+65: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/game_hashtable.c:29..29
+    29  	gheads[i] = GinsertBegin(gheads[i], jogo);
+
+66: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/game_hashtable.c:29..29
+    29  	gheads[i] = GinsertBegin(gheads[i], jogo);
+
+67: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/game_hashtable.c:28..28
+    28  	int i = hash(jogo->nome, M);
+
+68: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/game_hashtable.c:22..22
+    22  		gheads[i] = NULL;
+
+69: /home/fmarques/sbugs/projects/alunos/iaed_p2/223/equipas.c:6..6
+     6  	Equipa e;

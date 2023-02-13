@@ -1,0 +1,165 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:432..432
+   432              hashtable_jogo->indice[index]->socre2 = score2;
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:431..431
+   431              hashtable_jogo->indice[index]->score1 = score1;
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:428..428
+   428                  hashtable_equipa->indice[index_equipa2] += 1;
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:425..425
+   425                  hashtable_equipa->indice[index_equipa1] += 1;
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:421..421
+   421                  hashtable_equipa->indice[index_equipa2] -= 1;
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:420..420
+   420              else if (hashtable_jogo->indice[index]->socre2 > hashtable_jogo->indice[index]->score1)
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:420..420
+   420              else if (hashtable_jogo->indice[index]->socre2 > hashtable_jogo->indice[index]->score1)
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:417..417
+   417                  hashtable_equipa->indice[index_equipa1] -= 1;
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:416..416
+   416              if (hashtable_jogo->indice[index]->score1 > hashtable_jogo->indice[index]->socre2)
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:416..416
+   416              if (hashtable_jogo->indice[index]->score1 > hashtable_jogo->indice[index]->socre2)
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:407..407
+   407      unsigned int index_equipa2 = hash(hashtable_jogo->indice[index]->equipa2);
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:407..407
+   407      unsigned int index_equipa2 = hash(hashtable_jogo->indice[index]->equipa2);
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:406..406
+   406      unsigned int index_equipa1 = hash(hashtable_jogo->indice[index]->equipa1);
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:406..406
+   406      unsigned int index_equipa1 = hash(hashtable_jogo->indice[index]->equipa1);
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:397..397
+   397      Jogo *entrada = hashtable_jogo->indice[index];
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:396..396
+   396      unsigned int index = hash(nome);
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:386..386
+   386      char buffer[STRLEN];
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:373..373
+   373              hashtable_jogo->indice[index] = NULL;
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:369..369
+   369                  hashtable_equipa->indice[index_equipa2]->vitorias -= 1;
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:366..366
+   366                  hashtable_equipa->indice[index_equipa1]->vitorias -= 1;
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:355..355
+   355      unsigned int index_equipa2 = hash(entrada->equipa2);
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:354..354
+   354      unsigned int index_equipa1 = hash(entrada->equipa1);
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:345..345
+   345      Jogo *entrada = hashtable_jogo->indice[index];
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:344..344
+   344      unsigned int index = hash(nome);
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:337..337
+   337      char buffer[STRLEN];
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:311..311
+   311      Jogo *entrada = hashtable_jogo->indice[index];
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:310..310
+   310      unsigned int index = hash(nome);
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:303..303
+   303      char buffer[STRLEN];
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:296..296
+   296          hashtable_equipa->indice[index_equipa2]->vitorias += 1;
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:293..293
+   293          hashtable_equipa->indice[index_equipa1]->vitorias += 1;
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:264..264
+   264              hashtable_equipa->indice[index_equipa2]->vitorias += 1;
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:260..260
+   260              hashtable_equipa->indice[index_equipa1]->vitorias += 1;
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:256..256
+   256          hashtable_jogo->indice[index] = jogo;
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:233..233
+   233      int index_equipa2 = hash(equipa2);
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:232..232
+   232      int index_equipa1 = hash(equipa1);
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:231..231
+   231      Jogo *entrada = hashtable_jogo->indice[index];
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:230..230
+   230      int index = hash(nome);
+
+38: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:218..218
+   218      char buffer_nome[STRLEN], buffer_equipa1[STRLEN], buffer_equipa2[STRLEN];
+
+39: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:218..218
+   218      char buffer_nome[STRLEN], buffer_equipa1[STRLEN], buffer_equipa2[STRLEN];
+
+40: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:218..218
+   218      char buffer_nome[STRLEN], buffer_equipa1[STRLEN], buffer_equipa2[STRLEN];
+
+41: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:208..208
+   208          hashtable_equipa->indice[index] = hashtable_equipa->indice[index]->next;
+
+42: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:208..208
+   208          hashtable_equipa->indice[index] = hashtable_equipa->indice[index]->next;
+
+43: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:205..205
+   205              if (strcmp(hashtable_equipa->indice[index]->nome, nome) == 0){
+
+44: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:204..204
+   204      while (hashtable_equipa->indice[index] != NULL) {
+
+45: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:202..202
+   202      unsigned int index = hash(nome);
+
+46: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:196..196
+   196          hashtable_jogo->indice[i] = NULL;
+
+47: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:134..134
+   134      Equipa *entrada = hashtable_equipa->indice[index];
+
+48: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:133..133
+   133      unsigned int index = hash(nome);
+
+49: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:127..127
+   127      char buffer[STRLEN], *nome;
+
+50: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:94..94
+    94          hashtable_equipa->indice[index] = equipa;
+
+51: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:79..79
+    79      Equipa *entrada = hashtable_equipa->indice[index];
+
+52: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:78..78
+    78      unsigned int index = hash(nome);
+
+53: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:72..72
+    72      char buffer[STRLEN], *nome;
+
+54: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:64..64
+    64          hashtable_equipa->indice[i] = NULL;
+
+55: /home/fmarques/sbugs/projects/alunos/iaed_p2/308/Projeto2.c:44..44
+    44          valor = valor * 55 + nome[i];

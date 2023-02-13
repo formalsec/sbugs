@@ -1,0 +1,163 @@
+cat: '*_.txt': No such file or directory
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:232..232
+   232  		free(&g->vertexList[i]);
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:226..226
+   226  		auxEdge = g->vertexList[i].edgesHead;
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:203..203
+   203  					auxEdge = g->vertexList[currentVertex].edgesHead;
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:199..199
+   199  			auxEdge = g->vertexList[previousVertex].edgesHead;
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:198..198
+   198  			previousVertex = parentList[currentVertex];
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:189..189
+   189  	int patchCapacity[g->size];
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:189..189
+   189  	int patchCapacity[g->size];
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:188..188
+   188  	int parentList[g->size];
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:188..188
+   188  	int parentList[g->size];
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:177..177
+   177  					return patchCapacity[v];
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:156..156
+   156  				patchCapacity[v] = min(patchCapacity[u], (auxEdge->capacity - auxEdge->flow));
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:156..156
+   156  				patchCapacity[v] = min(patchCapacity[u], (auxEdge->capacity - auxEdge->flow));
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:155..155
+   155  				parentList[v]=u;
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:154..154
+   154  			if( parentList[v]==-1 && (auxEdge->capacity - auxEdge->flow) >0 ){
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:151..151
+   151  		auxEdge = g->vertexList[u].edgesHead;
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:139..139
+   139  	patchCapacity[g->sourceIndex]=999;
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:139..139
+   139  	patchCapacity[g->sourceIndex]=999;
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:138..138
+   138  	parentList[g->sourceIndex] = g->sourceIndex;
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:138..138
+   138  	parentList[g->sourceIndex] = g->sourceIndex;
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:111..111
+   111  		if(g->vertexList[i].type == NONE || g->vertexList[i].type == HOME){
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:111..111
+   111  		if(g->vertexList[i].type == NONE || g->vertexList[i].type == HOME){
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:108..108
+   108  		if(g->vertexList[i].type == MARKET || g->vertexList[i].type == BOTH){
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:108..108
+   108  		if(g->vertexList[i].type == MARKET || g->vertexList[i].type == BOTH){
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:105..105
+   105  		if(g->vertexList[i].type == HOME || g->vertexList[i].type == BOTH){
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:105..105
+   105  		if(g->vertexList[i].type == HOME || g->vertexList[i].type == BOTH){
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:98..98
+    98  			g->vertexList[offset + g->vertexNumber].type=HOME;
+
+27: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:98..98
+    98  			g->vertexList[offset + g->vertexNumber].type=HOME;
+
+28: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:98..98
+    98  			g->vertexList[offset + g->vertexNumber].type=HOME;
+
+29: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:97..97
+    97  			g->vertexList[offset].type=HOME;
+
+30: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:94..94
+    94  			g->vertexList[offset + g->vertexNumber].type=BOTH;
+
+31: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:94..94
+    94  			g->vertexList[offset + g->vertexNumber].type=BOTH;
+
+32: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:94..94
+    94  			g->vertexList[offset + g->vertexNumber].type=BOTH;
+
+33: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:93..93
+    93  			g->vertexList[offset].type=BOTH;
+
+34: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:92..92
+    92  		if(g->vertexList[offset].type == MARKET || g->vertexList[offset].type == BOTH ){
+
+35: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:92..92
+    92  		if(g->vertexList[offset].type == MARKET || g->vertexList[offset].type == BOTH ){
+
+36: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:90..90
+    90  		if(g->vertexList[offset].type != BOTH && g->vertexList[offset].type != HOME )
+
+37: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:90..90
+    90  		if(g->vertexList[offset].type != BOTH && g->vertexList[offset].type != HOME )
+
+38: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:84..84
+    84  		g->vertexList[offset + g->vertexNumber].type=MARKET;
+
+39: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:84..84
+    84  		g->vertexList[offset + g->vertexNumber].type=MARKET;
+
+40: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:84..84
+    84  		g->vertexList[offset + g->vertexNumber].type=MARKET;
+
+41: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:83..83
+    83  		g->vertexList[offset].type=MARKET;
+
+42: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:81..81
+    81  		if(g->vertexList[offset].type == NONE)
+
+43: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:74..74
+    74  		g->vertexList[i].type = NONE;
+
+44: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:73..73
+    73  		g->vertexList[i].edgesHead = NULL;
+
+45: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:52..52
+    52  	g->vertexList[from].edgesHead->flow = flow;
+
+46: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:51..51
+    51  	g->vertexList[from].edgesHead->capacity = capacity;
+
+47: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:50..50
+    50  	g->vertexList[from].edgesHead->indexVertexList = to;
+
+48: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:49..49
+    49  	g->vertexList[from].edgesHead->next = aux;
+
+49: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:48..48
+    48  	g->vertexList[from].edgesHead = (struct edge *)can_fail_malloc(sizeof(struct edge));
+
+50: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:47..47
+    47  	aux=g->vertexList[from].edgesHead;
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:188..188
+   188  	int parentList[g->size];
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:138..138
+   138  	parentList[g->sourceIndex] = g->sourceIndex;
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:84..84
+    84  		g->vertexList[offset + g->vertexNumber].type=MARKET;
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al015/al015.c:47..47
+    47  	aux=g->vertexList[from].edgesHead;

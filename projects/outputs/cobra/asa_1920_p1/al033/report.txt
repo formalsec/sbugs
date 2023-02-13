@@ -1,0 +1,63 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al033/projeto.c:280..280
+   280  	for(v=auxStack->items[j]; v!=NULL; v=auxStack->items[++j]){
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al033/projeto.c:280..280
+   280  	for(v=auxStack->items[j]; v!=NULL; v=auxStack->items[++j]){
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al033/projeto.c:277..277
+   277  			tarjanVisit(graph, graph->vertex[i]);
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al033/projeto.c:276..276
+   276  		if (graph->vertex[i]->d == INFINITE) {
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al033/projeto.c:274..274
+   274  		graph->vertex[i]->d = INFINITE;
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al033/projeto.c:192..192
+   192  	Friendship_t* aux = g->vertex[uID]->head;
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al033/projeto.c:189..189
+   189  		g->vertex[uID]->head=newEdge;
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al033/projeto.c:188..188
+   188  	if(g->vertex[uID]->head==NULL){
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al033/projeto.c:186..186
+   186  	newEdge->dest = g->vertex[vID];
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al033/projeto.c:177..177
+   177  		graph->vertex[i] = NULL;
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al033/projeto.c:151..151
+   151  		else if (stack->items[i]->id == id)
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al033/projeto.c:149..149
+   149  		if (stack->top < 0 || stack->items[i] == NULL)
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al033/projeto.c:142..142
+   142  		return stackPtr->items[stackPtr->top--];
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al033/projeto.c:142..142
+   142  		return stackPtr->items[stackPtr->top--];
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al033/projeto.c:136..136
+   136  	stackPtr->items[++stackPtr->top] = vertex;
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al033/projeto.c:136..136
+   136  	stackPtr->items[++stackPtr->top] = vertex;
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al033/projeto.c:129..129
+   129  		stackPtr->items[i] = NULL;
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al033/projeto.c:117..117
+   117  		printf("%d\n", graph->vertex[i]->grade);
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al033/projeto.c:102..102
+   102  		graph->vertex[i] = createNewStudent(grade, i);
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al033/projeto.c:188..188
+   188  	if(g->vertex[uID]->head==NULL){
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al033/projeto.c:186..186
+   186  	newEdge->dest = g->vertex[vID];

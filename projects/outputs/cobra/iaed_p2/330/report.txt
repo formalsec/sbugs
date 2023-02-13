@@ -1,0 +1,198 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/hashtable.c:174..174
+   174  	tmp = h_j->cabecas[index];
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/hashtable.c:173..173
+   173  	index = hash(nome, h_j->capacidade);
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/hashtable.c:145..145
+   145  			t->cabecas[i] = t->cabecas[i]->proximo;
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/hashtable.c:145..145
+   145  			t->cabecas[i] = t->cabecas[i]->proximo;
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/hashtable.c:144..144
+   144  			aux = t->cabecas[i];
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/hashtable.c:143..143
+   143  		while(t->cabecas[i]){
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/hashtable.c:141..141
+   141  	size_t i;
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/hashtable.c:134..134
+   134  	h_j->cabecas[index] = aux;/*Adiciona a Hashtable dos jogos*/
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/hashtable.c:130..130
+   130  		h_j->cabecas[index]->anterior = aux;
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/hashtable.c:129..129
+   129  	if(h_j->cabecas[index]){
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/hashtable.c:128..128
+   128  	aux->proximo = h_j->cabecas[index];
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/hashtable.c:109..109
+   109  	size_t index = hash(buffer, h_j->capacidade);
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/hashtable.c:80..80
+    80  	tmp = h_eq->cabecas[index];
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/hashtable.c:79..79
+    79  	index = hash(nome, h_eq->capacidade);
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/hashtable.c:54..54
+    54  			t->cabecas[i] = t->cabecas[i]->proximo;
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/hashtable.c:54..54
+    54  			t->cabecas[i] = t->cabecas[i]->proximo;
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/hashtable.c:53..53
+    53  			aux = t->cabecas[i];
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/hashtable.c:52..52
+    52  		while(t->cabecas[i]){
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/hashtable.c:50..50
+    50  	size_t i;
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/hashtable.c:42..42
+    42  	h_eq->cabecas[index] = aux;/*Poe a equipa na hashtable na posicao fornecida*/
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/hashtable.c:39..39
+    39  	aux->proximo = h_eq->cabecas[index];
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/hashtable.c:34..34
+    34  	size_t index = hash(buffer, h_eq->capacidade); /*Obtem o index que ira corresponder a uma posicao da hashtable*/
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/hashtable.c:7..7
+     7  	size_t h = 0, a = 127;
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/funcoes.c:558..558
+   558  	    	free(equipas_maior[i]);
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/funcoes.c:555..555
+   555  	        printf("%d * %s\n",*NL, equipas_maior[i]); /*Imprime o resultado*/
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/funcoes.c:546..546
+   546  				strcpy(equipas_maior[i], tmp3->nome);
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/funcoes.c:545..545
+   545  				equipas_maior[i] = can_fail_malloc(sizeof(char)*(strlen(tmp3->nome)+1));
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/funcoes.c:458..458
+   458  		tmpJ = TabJogos->cabecas[index];
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/funcoes.c:457..457
+   457  		index = hash(nome_aux, TabJogos->capacidade);
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/funcoes.c:451..451
+   451  	char nome_aux[MAX_NAME];
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/funcoes.c:411..411
+   411  	tmpJ = TabJogos->cabecas[index];
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/funcoes.c:410..410
+   410  	index = hash(nome_aux, TabJogos->capacidade);
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/funcoes.c:405..405
+   405  	char nome_aux[MAX_NAME];
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/funcoes.c:382..382
+   382  		tmp = TabEquipas->cabecas[index];
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/funcoes.c:381..381
+   381  		index = hash(buffer, TabEquipas->capacidade);
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/funcoes.c:375..375
+   375  	char buffer[MAX_NAME];
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/funcoes.c:349..349
+   349  		tmp = TabJogos->cabecas[index];
+
+38: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/funcoes.c:348..348
+   348  		index = hash(nome_aux, TabJogos->capacidade);
+
+39: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/funcoes.c:342..342
+   342  	char nome_aux[MAX_NAME];
+
+40: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/funcoes.c:304..304
+   304  	char buffer[MAX_NAME];
+
+41: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/funcoes.c:284..284
+   284  				tmp = TabEquipas->cabecas[index];
+
+42: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/funcoes.c:283..283
+   283  				index = hash(equipa2_aux, TabEquipas->capacidade);
+
+43: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/funcoes.c:273..273
+   273  				tmp = TabEquipas->cabecas[index];
+
+44: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/funcoes.c:252..252
+   252  	char nome_aux[MAX_NAME], equipa1_aux[MAX_NAME], equipa2_aux[MAX_NAME];
+
+45: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/funcoes.c:252..252
+   252  	char nome_aux[MAX_NAME], equipa1_aux[MAX_NAME], equipa2_aux[MAX_NAME];
+
+46: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/funcoes.c:252..252
+   252  	char nome_aux[MAX_NAME], equipa1_aux[MAX_NAME], equipa2_aux[MAX_NAME];
+
+47: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/funcoes.c:198..198
+   198          TabJogos->cabecas[index] = atual->proximo;  
+
+48: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/funcoes.c:196..196
+   196  	NodeJ *atual = TabJogos->cabecas[index], *aux = TabJogos->cabecas[index];
+
+49: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/funcoes.c:196..196
+   196  	NodeJ *atual = TabJogos->cabecas[index], *aux = TabJogos->cabecas[index];
+
+50: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/funcoes.c:136..136
+   136  	tmpE = TabEquipas->cabecas[index_eq2];
+
+51: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/funcoes.c:135..135
+   135  	index_eq2 = hash(tmpJ->aponta_jogo->equipa2, TabEquipas->capacidade);
+
+52: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/funcoes.c:114..114
+   114  	tmpE = TabEquipas->cabecas[index_eq1];
+
+53: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/funcoes.c:113..113
+   113  	index_eq1 = hash(tmpJ->aponta_jogo->equipa1, TabEquipas->capacidade);
+
+54: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/funcoes.c:96..96
+    96  	tmpE = TabEquipas->cabecas[index_eq2];
+
+55: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/funcoes.c:95..95
+    95  	index_eq2 = hash(tmpJ->aponta_jogo->equipa2, TabEquipas->capacidade);
+
+56: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/funcoes.c:78..78
+    78  	tmpE = TabEquipas->cabecas[index_eq1];
+
+57: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/funcoes.c:77..77
+    77  	index_eq1 = hash(tmpJ->aponta_jogo->equipa1, TabEquipas->capacidade);
+
+58: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/funcoes.c:60..60
+    60  	tmpE = TabEquipas->cabecas[index_eq2];
+
+59: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/funcoes.c:59..59
+    59  	index_eq2 = hash(tmpJ->aponta_jogo->equipa2, TabEquipas->capacidade);
+
+60: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/funcoes.c:49..49
+    49  	tmpE = TabEquipas->cabecas[index_eq1];
+
+61: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/funcoes.c:48..48
+    48  	index_eq1 = hash(tmpJ->aponta_jogo->equipa1, TabEquipas->capacidade);
+
+62: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/funcoes.c:28..28
+    28  	tmpE = TabEquipas->cabecas[index_eq2];
+
+63: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/funcoes.c:27..27
+    27  	index_eq2 = hash(tmpJ->aponta_jogo->equipa2, TabEquipas->capacidade);
+
+64: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/funcoes.c:19..19
+    19  	tmpE = TabEquipas->cabecas[index_eq1];
+
+65: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/funcoes.c:18..18
+    18  	index_eq1 = hash(tmpJ->aponta_jogo->equipa1, TabEquipas->capacidade);
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/330/funcoes.c:196..196
+   196  	NodeJ *atual = TabJogos->cabecas[index], *aux = TabJogos->cabecas[index];

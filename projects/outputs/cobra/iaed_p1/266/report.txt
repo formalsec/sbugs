@@ -1,0 +1,323 @@
+cat: _CWE_197_.txt: No such file or directory
+cat: _CWE_457_.txt: No such file or directory
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:352..352
+   352  				else alphabetic_sort(orders[ide].products, orders[ide].iter, ide); /*displaying sorted list of products*/
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:352..352
+   352  				else alphabetic_sort(orders[ide].products, orders[ide].iter, ide); /*displaying sorted list of products*/
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:340..340
+   340  					for(i = 0; i < orders[ide].iter; ++i) price = orders[ide].products[i].qtd * *orders[ide].products[i].price + price;
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:340..340
+   340  					for(i = 0; i < orders[ide].iter; ++i) price = orders[ide].products[i].qtd * *orders[ide].products[i].price + price;
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:340..340
+   340  					for(i = 0; i < orders[ide].iter; ++i) price = orders[ide].products[i].qtd * *orders[ide].products[i].price + price;
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:340..340
+   340  					for(i = 0; i < orders[ide].iter; ++i) price = orders[ide].products[i].qtd * *orders[ide].products[i].price + price;
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:340..340
+   340  					for(i = 0; i < orders[ide].iter; ++i) price = orders[ide].products[i].qtd * *orders[ide].products[i].price + price;
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:325..325
+   325  						orders[ide].products[product_index].qtd = 0;
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:325..325
+   325  						orders[ide].products[product_index].qtd = 0;
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:324..324
+   324  						system[idp].qtd = system[idp].qtd + orders[ide].products[product_index].qtd;
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:324..324
+   324  						system[idp].qtd = system[idp].qtd + orders[ide].products[product_index].qtd;
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:324..324
+   324  						system[idp].qtd = system[idp].qtd + orders[ide].products[product_index].qtd;
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:324..324
+   324  						system[idp].qtd = system[idp].qtd + orders[ide].products[product_index].qtd;
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:321..321
+   321  					product_index = in_order(orders[ide].products, idp, orders[ide].iter); /*get index*/
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:321..321
+   321  					product_index = in_order(orders[ide].products, idp, orders[ide].iter); /*get index*/
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:308..308
+   308  					else printf("%s %d.\n", orders[ide].products[product_index].desc, orders[ide].products[product_index].qtd); /*displaying the product in the order if found*/
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:308..308
+   308  					else printf("%s %d.\n", orders[ide].products[product_index].desc, orders[ide].products[product_index].qtd); /*displaying the product in the order if found*/
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:308..308
+   308  					else printf("%s %d.\n", orders[ide].products[product_index].desc, orders[ide].products[product_index].qtd); /*displaying the product in the order if found*/
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:308..308
+   308  					else printf("%s %d.\n", orders[ide].products[product_index].desc, orders[ide].products[product_index].qtd); /*displaying the product in the order if found*/
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:307..307
+   307  					if(product_index==-1) printf("%s 0.\n", system[idp].desc); /*output if the product was never added to the order*/
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:306..306
+   306  					product_index = in_order(orders[ide].products, idp, orders[ide].iter); /*get index*/
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:306..306
+   306  					product_index = in_order(orders[ide].products, idp, orders[ide].iter); /*get index*/
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:293..293
+   293  					system[idp].qtd = system[idp].qtd - qtd;
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:293..293
+   293  					system[idp].qtd = system[idp].qtd - qtd;
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:291..291
+   291  						orders[ide].iter++;
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:290..290
+   290  						orders[ide].products[orders[ide].iter] =  p;
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:290..290
+   290  						orders[ide].products[orders[ide].iter] =  p;
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:290..290
+   290  						orders[ide].products[orders[ide].iter] =  p;
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:290..290
+   290  						orders[ide].products[orders[ide].iter] =  p;
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:288..288
+   288  						p.weight = system[idp].weight;
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:287..287
+   287  						p.price = system[idp].price;
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:286..286
+   286  						strcpy(p.desc, system[idp].desc);
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:282..282
+   282  					if (product_index!=-1) orders[ide].products[product_index].qtd = orders[ide].products[product_index].qtd + qtd;
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:282..282
+   282  					if (product_index!=-1) orders[ide].products[product_index].qtd = orders[ide].products[product_index].qtd + qtd;
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:282..282
+   282  					if (product_index!=-1) orders[ide].products[product_index].qtd = orders[ide].products[product_index].qtd + qtd;
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:282..282
+   282  					if (product_index!=-1) orders[ide].products[product_index].qtd = orders[ide].products[product_index].qtd + qtd;
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:280..280
+   280  					product_index = in_order(orders[ide].products, idp, orders[ide].iter); /*get index*/
+
+38: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:280..280
+   280  					product_index = in_order(orders[ide].products, idp, orders[ide].iter); /*get index*/
+
+39: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:278..278
+   278  				else if(weight+(system[idp].weight*qtd)>200) printf("Impossivel adicionar produto %d a encomenda %d. Peso da encomenda excede o maximo de 200.\n", idp, ide);
+
+40: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:277..277
+   277  				else if(system[idp].qtd-qtd<0) printf("Impossivel adicionar produto %d a encomenda %d. Quantidade em stock insuficiente.\n", idp, ide);
+
+41: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:275..275
+   275  				for(i = 0; i < orders[ide].iter; ++i){weight = orders[ide].products[i].weight * orders[ide].products[i].qtd + weight;}
+
+42: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:275..275
+   275  				for(i = 0; i < orders[ide].iter; ++i){weight = orders[ide].products[i].weight * orders[ide].products[i].qtd + weight;}
+
+43: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:275..275
+   275  				for(i = 0; i < orders[ide].iter; ++i){weight = orders[ide].products[i].weight * orders[ide].products[i].qtd + weight;}
+
+44: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:275..275
+   275  				for(i = 0; i < orders[ide].iter; ++i){weight = orders[ide].products[i].weight * orders[ide].products[i].qtd + weight;}
+
+45: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:275..275
+   275  				for(i = 0; i < orders[ide].iter; ++i){weight = orders[ide].products[i].weight * orders[ide].products[i].qtd + weight;}
+
+46: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:259..259
+   259  				orders[order_counter] = o;
+
+47: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:248..248
+   248  						if(orders[ide].products[product_index].qtd!=0) printf("Maximo produto %d %d %d.\n", idp, ide, qtd); /*output*/
+
+48: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:248..248
+   248  						if(orders[ide].products[product_index].qtd!=0) printf("Maximo produto %d %d %d.\n", idp, ide, qtd); /*output*/
+
+49: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:247..247
+   247  						product_index = in_order(orders[ide].products, idp, orders[ide].iter);
+
+50: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:247..247
+   247  						product_index = in_order(orders[ide].products, idp, orders[ide].iter);
+
+51: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:240..240
+   240  								qtd = o.products[prid].qtd;
+
+52: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:239..239
+   239  							if(o.products[prid].id == idp && o.products[prid].qtd > qtd){
+
+53: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:239..239
+   239  							if(o.products[prid].id == idp && o.products[prid].qtd > qtd){
+
+54: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:237..237
+   237  						o = orders[orid];
+
+55: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:216..216
+   216  				else *system[idp].price = price; /*changing the price*/
+
+56: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:206..206
+   206  				else system[idp].qtd = system[idp].qtd - qtd; /*removing the given qtd*/
+
+57: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:206..206
+   206  				else system[idp].qtd = system[idp].qtd - qtd; /*removing the given qtd*/
+
+58: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:205..205
+   205  				else if(system[idp].qtd-qtd<0) printf("Impossivel remover %d unidades do produto %d do stock. Quantidade insuficiente.\n", qtd, idp);
+
+59: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:195..195
+   195  				else system[idp].qtd = system[idp].qtd + qtd; /*adding the given qtd*/
+
+60: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:195..195
+   195  				else system[idp].qtd = system[idp].qtd + qtd; /*adding the given qtd*/
+
+61: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:184..184
+   184  				system[product_counter] = p;
+
+62: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:180..180
+   180  				for (i = 0; i < MAX_INPUT; ++i) if(input[i] == ':') input[i] = ' ';
+
+63: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:180..180
+   180  				for (i = 0; i < MAX_INPUT; ++i) if(input[i] == ':') input[i] = ' ';
+
+64: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:157..157
+   157  	char input[MAX_INPUT]; /*input*/
+
+65: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:149..149
+   149  		if(copy[i].qtd!=0) printf("* %s %d %d\n", copy[i].desc, *copy[i].price, copy[i].qtd);
+
+66: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:149..149
+   149  		if(copy[i].qtd!=0) printf("* %s %d %d\n", copy[i].desc, *copy[i].price, copy[i].qtd);
+
+67: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:149..149
+   149  		if(copy[i].qtd!=0) printf("* %s %d %d\n", copy[i].desc, *copy[i].price, copy[i].qtd);
+
+68: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:149..149
+   149  		if(copy[i].qtd!=0) printf("* %s %d %d\n", copy[i].desc, *copy[i].price, copy[i].qtd);
+
+69: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:141..141
+   141  			if (strcmp(copy[i].desc, copy[j].desc) > 0){
+
+70: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:141..141
+   141  			if (strcmp(copy[i].desc, copy[j].desc) > 0){
+
+71: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:136..136
+   136  		copy[i] = products[i];
+
+72: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:136..136
+   136  		copy[i] = products[i];
+
+73: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:118..118
+   118  		printf("* %s %d %d\n", copy[i].desc, *copy[i].price, copy[i].qtd);
+
+74: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:118..118
+   118  		printf("* %s %d %d\n", copy[i].desc, *copy[i].price, copy[i].qtd);
+
+75: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:118..118
+   118  		printf("* %s %d %d\n", copy[i].desc, *copy[i].price, copy[i].qtd);
+
+76: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:111..111
+   111  		copy[i] = system[i];
+
+77: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:111..111
+   111  		copy[i] = system[i];
+
+78: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:86..86
+    86          arr[k] = R[j]; 
+
+79: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:86..86
+    86          arr[k] = R[j]; 
+
+80: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:81..81
+    81          arr[k] = L[i]; 
+
+81: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:81..81
+    81          arr[k] = L[i]; 
+
+82: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:74..74
+    74              arr[k] = R[j]; 
+
+83: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:74..74
+    74              arr[k] = R[j]; 
+
+84: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:70..70
+    70              arr[k] = L[i]; 
+
+85: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:70..70
+    70              arr[k] = L[i]; 
+
+86: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:69..69
+    69  		else if(*L[i].price == *R[j].price && L[i].id < R[j].id){ /*if price is equal*/
+
+87: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:69..69
+    69  		else if(*L[i].price == *R[j].price && L[i].id < R[j].id){ /*if price is equal*/
+
+88: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:69..69
+    69  		else if(*L[i].price == *R[j].price && L[i].id < R[j].id){ /*if price is equal*/
+
+89: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:69..69
+    69  		else if(*L[i].price == *R[j].price && L[i].id < R[j].id){ /*if price is equal*/
+
+90: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:66..66
+    66              arr[k] = L[i]; 
+
+91: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:66..66
+    66              arr[k] = L[i]; 
+
+92: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:65..65
+    65          if (*L[i].price < *R[j].price) { 
+
+93: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:65..65
+    65          if (*L[i].price < *R[j].price) { 
+
+94: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:59..59
+    59      for (j = 0; j < n2; j++) R[j] = arr[m + 1+ j]; 
+
+95: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:59..59
+    59      for (j = 0; j < n2; j++) R[j] = arr[m + 1+ j]; 
+
+96: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:59..59
+    59      for (j = 0; j < n2; j++) R[j] = arr[m + 1+ j]; 
+
+97: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:58..58
+    58      for (i = 0; i < n1; i++) L[i] = arr[l + i];
+
+98: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:58..58
+    58      for (i = 0; i < n1; i++) L[i] = arr[l + i];
+
+99: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:58..58
+    58      for (i = 0; i < n1; i++) L[i] = arr[l + i];
+
+100: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:42..42
+    42  			if (idp==0 && products[i].weight==0){
+
+101: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:41..41
+    41  		if(products[i].id==idp){
+
+102: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:32..32
+    32  	product products[MAX_WEIGHT];
+
+103: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:21..21
+    21  	char desc[LEN];
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:59..59
+    59      for (j = 0; j < n2; j++) R[j] = arr[m + 1+ j]; 
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:58..58
+    58      for (i = 0; i < n1; i++) L[i] = arr[l + i];
+=== Dangerous function calls lacking bounds checking ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:286..286
+   286  						strcpy(p.desc, system[idp].desc);
+=== printf or scanf missing width limit on %s ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:181..181
+   181  				sscanf(input, "  %s %d %d %d", p.desc, p.price, &p.weight, &p.qtd);

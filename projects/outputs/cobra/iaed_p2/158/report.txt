@@ -1,0 +1,438 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:849..849
+   849                  printf("%d * %s\n", numero_linha, lista_equipas[contador].equipa);
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:847..847
+   847              if (lista_equipas[contador].vitorias == numero_vitorias)
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:830..830
+   830              numero_vitorias = lista_equipas[contador].vitorias;
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:828..828
+   828          if (lista_equipas[contador].vitorias > numero_vitorias)
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:807..807
+   807          lista_jogos[index_jogo].vencedor = vencedor;
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:803..803
+   803                  lista_equipas[index_equipa2].vitorias++;
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:802..802
+   802                  lista_equipas[index_equipa1].vitorias--;
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:800..800
+   800              if (lista_jogos[index_jogo].vencedor == 1)
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:794..794
+   794                  lista_equipas[index_equipa2].vitorias--;
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:793..793
+   793                  lista_equipas[index_equipa1].vitorias++;
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:791..791
+   791              if (lista_jogos[index_jogo].vencedor == 2)
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:785..785
+   785                  lista_equipas[index_equipa2].vitorias++;
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:780..780
+   780                  lista_equipas[index_equipa1].vitorias++;
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:776..776
+   776          if (lista_jogos[index_jogo].vencedor == 0)
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:772..772
+   772                  lista_equipas[index_equipa2].vitorias--;
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:770..770
+   770              if (lista_jogos[index_jogo].vencedor == 2)
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:767..767
+   767                  lista_equipas[index_equipa1].vitorias--;
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:765..765
+   765              if (lista_jogos[index_jogo].vencedor == 1)
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:754..754
+   754              if (strcmp(lista_equipas[contador].equipa, lista_jogos[index_jogo].equipa2) == 0)
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:754..754
+   754              if (strcmp(lista_equipas[contador].equipa, lista_jogos[index_jogo].equipa2) == 0)
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:743..743
+   743              if (strcmp(lista_equipas[contador].equipa, lista_jogos[index_jogo].equipa1) == 0)
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:743..743
+   743              if (strcmp(lista_equipas[contador].equipa, lista_jogos[index_jogo].equipa1) == 0)
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:735..735
+   735      if (lista_jogos[index_jogo].vencedor != vencedor)
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:728..728
+   728      if (lista_jogos[index_jogo].score2 == lista_jogos[index_jogo].score1)
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:728..728
+   728      if (lista_jogos[index_jogo].score2 == lista_jogos[index_jogo].score1)
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:723..723
+   723      if (lista_jogos[index_jogo].score2 > lista_jogos[index_jogo].score1)
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:723..723
+   723      if (lista_jogos[index_jogo].score2 > lista_jogos[index_jogo].score1)
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:718..718
+   718      if (lista_jogos[index_jogo].score1 > lista_jogos[index_jogo].score2)
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:718..718
+   718      if (lista_jogos[index_jogo].score1 > lista_jogos[index_jogo].score2)
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:694..694
+   694          if (strcmp(lista_jogos[contador2].jogo, str1) == 0)
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:683..683
+   683          str3[contador] = texto[i];
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:683..683
+   683          str3[contador] = texto[i];
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:681..681
+   681      while (texto[i] != 0)
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:673..673
+   673          str2[contador] = texto[i];
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:673..673
+   673          str2[contador] = texto[i];
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:671..671
+   671      while (texto[i] != ':')
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:663..663
+   663          str1[contador] = texto[i];
+
+38: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:663..663
+   663          str1[contador] = texto[i];
+
+39: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:661..661
+   661      while (texto[i] != ':')
+
+40: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:628..628
+   628      lista_jogos[contador4].existe = 0;
+
+41: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:627..627
+   627      lista_jogos[contador4].vencedor = 0;
+
+42: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:626..626
+   626      lista_jogos[contador4].score2 = 0;
+
+43: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:625..625
+   625      lista_jogos[contador4].score1 = 0;
+
+44: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:624..624
+   624      memset(lista_jogos[contador4].equipa2, 0, sizeof(lista_jogos[contador4].equipa2));
+
+45: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:624..624
+   624      memset(lista_jogos[contador4].equipa2, 0, sizeof(lista_jogos[contador4].equipa2));
+
+46: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:623..623
+   623      memset(lista_jogos[contador4].equipa1, 0, sizeof(lista_jogos[contador4].equipa1));
+
+47: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:623..623
+   623      memset(lista_jogos[contador4].equipa1, 0, sizeof(lista_jogos[contador4].equipa1));
+
+48: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:622..622
+   622      memset(lista_jogos[contador4].jogo, 0, sizeof(lista_jogos[contador4].jogo));
+
+49: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:622..622
+   622      memset(lista_jogos[contador4].jogo, 0, sizeof(lista_jogos[contador4].jogo));
+
+50: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:617..617
+   617          lista_jogos[contador4].existe = 0;
+
+51: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:616..616
+   616          lista_jogos[contador3].vencedor = 0;
+
+52: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:615..615
+   615          lista_jogos[contador3].score2 = 0;
+
+53: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:614..614
+   614          lista_jogos[contador3].score1 = 0;
+
+54: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:613..613
+   613          memset(lista_jogos[contador3].equipa2, 0, sizeof(lista_jogos[contador3].equipa2));
+
+55: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:613..613
+   613          memset(lista_jogos[contador3].equipa2, 0, sizeof(lista_jogos[contador3].equipa2));
+
+56: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:612..612
+   612          memset(lista_jogos[contador3].equipa1, 0, sizeof(lista_jogos[contador3].equipa1));
+
+57: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:612..612
+   612          memset(lista_jogos[contador3].equipa1, 0, sizeof(lista_jogos[contador3].equipa1));
+
+58: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:611..611
+   611          memset(lista_jogos[contador3].jogo, 0, sizeof(lista_jogos[contador3].jogo));
+
+59: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:611..611
+   611          memset(lista_jogos[contador3].jogo, 0, sizeof(lista_jogos[contador3].jogo));
+
+60: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:598..598
+   598          lista_jogos[contador3].vencedor = lista_jogos[contador4].vencedor;
+
+61: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:598..598
+   598          lista_jogos[contador3].vencedor = lista_jogos[contador4].vencedor;
+
+62: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:597..597
+   597          lista_jogos[contador3].score2 = lista_jogos[contador4].score2;
+
+63: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:597..597
+   597          lista_jogos[contador3].score2 = lista_jogos[contador4].score2;
+
+64: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:596..596
+   596          lista_jogos[contador3].score1 = lista_jogos[contador4].score1;
+
+65: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:596..596
+   596          lista_jogos[contador3].score1 = lista_jogos[contador4].score1;
+
+66: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:594..594
+   594          strcpy(lista_jogos[contador3].equipa2, lista_jogos[contador4].equipa2);
+
+67: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:594..594
+   594          strcpy(lista_jogos[contador3].equipa2, lista_jogos[contador4].equipa2);
+
+68: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:593..593
+   593          strcpy(lista_jogos[contador3].equipa1, lista_jogos[contador4].equipa1);
+
+69: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:593..593
+   593          strcpy(lista_jogos[contador3].equipa1, lista_jogos[contador4].equipa1);
+
+70: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:592..592
+   592          strcpy(lista_jogos[contador3].jogo, lista_jogos[contador4].jogo);
+
+71: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:592..592
+   592          strcpy(lista_jogos[contador3].jogo, lista_jogos[contador4].jogo);
+
+72: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:590..590
+   590          memset(lista_jogos[contador3].equipa2, 0, sizeof(lista_jogos[contador3].equipa2));
+
+73: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:590..590
+   590          memset(lista_jogos[contador3].equipa2, 0, sizeof(lista_jogos[contador3].equipa2));
+
+74: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:589..589
+   589          memset(lista_jogos[contador3].equipa1, 0, sizeof(lista_jogos[contador3].equipa1));
+
+75: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:589..589
+   589          memset(lista_jogos[contador3].equipa1, 0, sizeof(lista_jogos[contador3].equipa1));
+
+76: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:588..588
+   588          memset(lista_jogos[contador3].jogo, 0, sizeof(lista_jogos[contador3].jogo));
+
+77: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:588..588
+   588          memset(lista_jogos[contador3].jogo, 0, sizeof(lista_jogos[contador3].jogo));
+
+78: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:577..577
+   577                  lista_equipas[contador5].vitorias--;
+
+79: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:575..575
+   575              if (strcmp(lista_equipas[contador5].equipa, lista_jogos[contador3].equipa2) == 0)
+
+80: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:575..575
+   575              if (strcmp(lista_equipas[contador5].equipa, lista_jogos[contador3].equipa2) == 0)
+
+81: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:571..571
+   571      if (lista_jogos[contador3].vencedor == 2)
+
+82: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:565..565
+   565                  lista_equipas[contador5].vitorias--;
+
+83: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:563..563
+   563              if (strcmp(lista_equipas[contador5].equipa, lista_jogos[contador3].equipa1) == 0)
+
+84: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:563..563
+   563              if (strcmp(lista_equipas[contador5].equipa, lista_jogos[contador3].equipa1) == 0)
+
+85: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:559..559
+   559      if (lista_jogos[contador3].vencedor == 1)
+
+86: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:532..532
+   532          if (strcmp(lista_jogos[contador].jogo, str) == 0)
+
+87: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:526..526
+   526          str[i-2] = texto[i];
+
+88: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:526..526
+   526          str[i-2] = texto[i];
+
+89: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:524..524
+   524      while (texto[i] != 0)
+
+90: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:492..492
+   492      printf("%d %s %d\n", numero_linha, lista_equipas[index_equipa].equipa, lista_equipas[index_equipa].vitorias);
+
+91: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:492..492
+   492      printf("%d %s %d\n", numero_linha, lista_equipas[index_equipa].equipa, lista_equipas[index_equipa].vitorias);
+
+92: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:476..476
+   476          if (strcmp(lista_equipas[contador].equipa, str) == 0)
+
+93: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:470..470
+   470          str[i-2] = texto[i];
+
+94: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:470..470
+   470          str[i-2] = texto[i];
+
+95: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:468..468
+   468      while (texto[i] != 0)
+
+96: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:446..446
+   446      printf("%d %s %s %s %d %d\n", numero_linha, lista_jogos[index_jogo].jogo, lista_jogos[index_jogo].equipa1, lista_jogos[index_jogo].equipa2, lista_jogos[index_jogo].score1, lista_jogos[index_jogo].score2);
+
+97: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:446..446
+   446      printf("%d %s %s %s %d %d\n", numero_linha, lista_jogos[index_jogo].jogo, lista_jogos[index_jogo].equipa1, lista_jogos[index_jogo].equipa2, lista_jogos[index_jogo].score1, lista_jogos[index_jogo].score2);
+
+98: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:446..446
+   446      printf("%d %s %s %s %d %d\n", numero_linha, lista_jogos[index_jogo].jogo, lista_jogos[index_jogo].equipa1, lista_jogos[index_jogo].equipa2, lista_jogos[index_jogo].score1, lista_jogos[index_jogo].score2);
+
+99: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:446..446
+   446      printf("%d %s %s %s %d %d\n", numero_linha, lista_jogos[index_jogo].jogo, lista_jogos[index_jogo].equipa1, lista_jogos[index_jogo].equipa2, lista_jogos[index_jogo].score1, lista_jogos[index_jogo].score2);
+
+100: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:446..446
+   446      printf("%d %s %s %s %d %d\n", numero_linha, lista_jogos[index_jogo].jogo, lista_jogos[index_jogo].equipa1, lista_jogos[index_jogo].equipa2, lista_jogos[index_jogo].score1, lista_jogos[index_jogo].score2);
+
+101: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:426..426
+   426          if (strcmp(lista_jogos[contador].jogo, str) == 0)
+
+102: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:420..420
+   420          str[i-2] = texto[i];
+
+103: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:420..420
+   420          str[i-2] = texto[i];
+
+104: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:418..418
+   418      while (texto[i] != 0)
+
+105: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:394..394
+   394              printf("%d %s %s %s %d %d\n", numero_linha, lista_jogos[contador].jogo, lista_jogos[contador].equipa1, lista_jogos[contador].equipa2, lista_jogos[contador].score1, lista_jogos[contador].score2);
+
+106: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:394..394
+   394              printf("%d %s %s %s %d %d\n", numero_linha, lista_jogos[contador].jogo, lista_jogos[contador].equipa1, lista_jogos[contador].equipa2, lista_jogos[contador].score1, lista_jogos[contador].score2);
+
+107: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:394..394
+   394              printf("%d %s %s %s %d %d\n", numero_linha, lista_jogos[contador].jogo, lista_jogos[contador].equipa1, lista_jogos[contador].equipa2, lista_jogos[contador].score1, lista_jogos[contador].score2);
+
+108: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:394..394
+   394              printf("%d %s %s %s %d %d\n", numero_linha, lista_jogos[contador].jogo, lista_jogos[contador].equipa1, lista_jogos[contador].equipa2, lista_jogos[contador].score1, lista_jogos[contador].score2);
+
+109: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:394..394
+   394              printf("%d %s %s %s %d %d\n", numero_linha, lista_jogos[contador].jogo, lista_jogos[contador].equipa1, lista_jogos[contador].equipa2, lista_jogos[contador].score1, lista_jogos[contador].score2);
+
+110: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:392..392
+   392          if (lista_jogos[contador].existe == 1)
+
+111: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:362..362
+   362          lista_jogos[contador_jogos].vencedor = 2;
+
+112: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:361..361
+   361          lista_equipas[index_equipa2].vitorias++;
+
+113: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:359..359
+   359      if (lista_jogos[contador_jogos].score2 > lista_jogos[contador_jogos].score1)
+
+114: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:359..359
+   359      if (lista_jogos[contador_jogos].score2 > lista_jogos[contador_jogos].score1)
+
+115: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:356..356
+   356          lista_jogos[contador_jogos].vencedor = 1;
+
+116: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:355..355
+   355          lista_equipas[index_equipa1].vitorias++;
+
+117: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:353..353
+   353      if (lista_jogos[contador_jogos].score1 > lista_jogos[contador_jogos].score2)
+
+118: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:353..353
+   353      if (lista_jogos[contador_jogos].score1 > lista_jogos[contador_jogos].score2)
+
+119: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:349..349
+   349      lista_jogos[contador_jogos].existe = 1;
+
+120: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:346..346
+   346      strcpy(lista_jogos[contador_jogos].equipa2, str3);
+
+121: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:345..345
+   345      strcpy(lista_jogos[contador_jogos].equipa1, str2);
+
+122: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:344..344
+   344      strcpy(lista_jogos[contador_jogos].jogo, str1);
+
+123: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:336..336
+   336          str5[contador] = texto[i];
+
+124: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:336..336
+   336          str5[contador] = texto[i];
+
+125: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:334..334
+   334      while (texto[i] != 0)
+
+126: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:326..326
+   326          str4[contador] = texto[i];
+
+127: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:326..326
+   326          str4[contador] = texto[i];
+
+128: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:324..324
+   324      while (texto[i] != ':')
+
+129: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:303..303
+   303          if (strcmp(lista_equipas[contador2].equipa, str3) == 0)
+
+130: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:289..289
+   289          str3[contador] = texto[i];
+
+131: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:289..289
+   289          str3[contador] = texto[i];
+
+132: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:287..287
+   287      while (texto[i] != ':')
+
+133: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:263..263
+   263          if (strcmp(lista_equipas[contador2].equipa, str2) == 0)
+
+134: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:248..248
+   248          str2[contador] = texto[i];
+
+135: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:248..248
+   248          str2[contador] = texto[i];
+
+136: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:246..246
+   246      while (texto[i] != ':')
+
+137: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:229..229
+   229          if (strcmp(lista_jogos[contador2].jogo, str1) == 0)
+
+138: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:215..215
+   215          str1[contador] = texto[i];
+
+139: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:215..215
+   215          str1[contador] = texto[i];
+
+140: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:213..213
+   213      while (texto[i] != ':')
+
+141: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:173..173
+   173          strcpy(lista_equipas[contador_equipas].equipa, str);
+
+142: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:161..161
+   161          if (strcmp(lista_equipas[contador].equipa, str) == 0)
+
+143: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:152..152
+   152          str[i-2] = texto[i];
+
+144: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:152..152
+   152          str[i-2] = texto[i];
+
+145: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:150..150
+   150      while (texto[i] != 0)
+=== Dangerous function calls lacking bounds checking ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:173..173
+   173          strcpy(lista_equipas[contador_equipas].equipa, str);

@@ -1,0 +1,180 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/main.c:322..322
+   322  	ends[TAIL] = NULL;
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/main.c:321..321
+   321  	ends[HEAD] = NULL;
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/main.c:290..290
+   290  		printf("%d * %s\n", *NL, t_names[i]);
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/main.c:281..281
+   281  				t_names[len_t_names - 1] = T[i]->n;
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/main.c:281..281
+   281  				t_names[len_t_names - 1] = T[i]->n;
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/main.c:279..279
+   279  			else if(T[i]->w == max){
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/main.c:276..276
+   276  				t_names[0] = T[i]->n;
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/main.c:274..274
+   274  				max = T[i]->w;
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/main.c:273..273
+   273  			if(T[i]->w > max){
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/main.c:271..271
+   271  		if(T[i] != NULL){
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/main.c:135..135
+   135  	node *head = ends[HEAD];
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/data_structures.c:284..284
+   284  		G[j] = NULL;
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/data_structures.c:283..283
+   283  		g = G[j];
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/data_structures.c:282..282
+   282  	for(j=(i+1) % sz; G[j] != NULL; j = (j+1) % sz){
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/data_structures.c:279..279
+   279  	G[i] = NULL;
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/data_structures.c:278..278
+   278  	free(G[i]); 
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/data_structures.c:277..277
+   277  	free(G[i]->t2); 
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/data_structures.c:276..276
+   276  	free(G[i]->t1); 
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/data_structures.c:275..275
+   275  	free(G[i]->n); 
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/data_structures.c:272..272
+   272  	if (G[i] == NULL) return;
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/data_structures.c:268..268
+   268  		if (strcmp(G[i]->n, name) == 0) 
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/data_structures.c:267..267
+   267  	while(G[i] != NULL){
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/data_structures.c:251..251
+   251  			return T[i];
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/data_structures.c:250..250
+   250  		if(strcmp(T[i]->n, name) == 0){
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/data_structures.c:249..249
+   249  	while(T[i] != NULL){
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/data_structures.c:236..236
+   236  			return G[i];
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/data_structures.c:235..235
+   235  		if(strcmp(G[i]->n, name) == 0){
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/data_structures.c:234..234
+   234  	while(G[i] != NULL){
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/data_structures.c:219..219
+   219  	T[i] = t;
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/data_structures.c:216..216
+   216  	while(T[i] != NULL){
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/data_structures.c:208..208
+   208  	G[i] = g;
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/data_structures.c:206..206
+   206  	while(G[i] != NULL)
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/data_structures.c:194..194
+   194  			HT_T_insert(temp_T[i], T, T_sz, T_n);
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/data_structures.c:193..193
+   193  		if(temp_T[i] != NULL)
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/data_structures.c:174..174
+   174  			HT_G_insert(temp_G[i], G, G_sz);
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/data_structures.c:173..173
+   173  		if(temp_G[i] != NULL){
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/data_structures.c:157..157
+   157  			free(T[i]);
+
+38: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/data_structures.c:156..156
+   156  			free(T[i]->n);
+
+39: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/data_structures.c:155..155
+   155  		if(T[i] != NULL){
+
+40: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/data_structures.c:143..143
+   143  			free(G[i]);
+
+41: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/data_structures.c:142..142
+   142  			free(G[i]->t2);
+
+42: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/data_structures.c:141..141
+   141  			free(G[i]->t1);
+
+43: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/data_structures.c:140..140
+   140  			free(G[i]->n);
+
+44: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/data_structures.c:139..139
+   139  		if(G[i] != NULL){
+
+45: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/data_structures.c:128..128
+   128  		T[i] = NULL;
+
+46: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/data_structures.c:114..114
+   114  		G[i] = NULL;
+
+47: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/data_structures.c:74..74
+    74  	node *head = ends[HEAD];
+
+48: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/data_structures.c:68..68
+    68  	ends[TAIL] = tail;
+
+49: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/data_structures.c:67..67
+    67  	ends[HEAD] = head;
+
+50: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/data_structures.c:43..43
+    43  	node *tail = ends[TAIL];
+
+51: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/data_structures.c:42..42
+    42  	node *head = ends[HEAD];
+
+52: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/data_structures.c:35..35
+    35  	ends[TAIL] = tail;
+
+53: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/data_structures.c:34..34
+    34  	ends[HEAD] = head;
+
+54: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/data_structures.c:26..26
+    26  		ends[TAIL] = tail;
+
+55: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/data_structures.c:25..25
+    25  		ends[HEAD] = head;
+
+56: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/data_structures.c:20..20
+    20  	node *tail = ends[TAIL];
+
+57: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/data_structures.c:19..19
+    19  	node *head = ends[HEAD];
+
+58: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/aux_functions.c:11..11
+    11  	char temp[MAX_CHARS];	/* string where input will be temporarily placed */
+=== Potential heap memory use after free ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/main.c:334..334
+   334  					free(ng);
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/305/data_structures.c:84..84
+    84  		free(t);

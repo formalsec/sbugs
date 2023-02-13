@@ -1,0 +1,171 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/main.c:14..14
+    14    linkE headsE[M];
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/main.c:13..13
+    13    linkJ headsJ[M];
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/JOGOS.c:187..187
+   187  		for(t = headsJ[i]; t != NULL;)
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/JOGOS.c:183..183
+   183  	linkJ t, aux;
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/JOGOS.c:158..158
+   158   				headsJ[i] = t->next;
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/JOGOS.c:157..157
+   157   			if(t == headsJ[i])
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/JOGOS.c:153..153
+   153   	for(t = headsJ[i], prev = NULL; t != NULL; prev = t, t = t->next) 
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/JOGOS.c:152..152
+   152  	linkL n = l -> primeiro;
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/JOGOS.c:151..151
+   151  	linkJ t, prev;
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/JOGOS.c:139..139
+   139  	linkL n;
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/JOGOS.c:121..121
+   121  	linkL n = can_fail_malloc(sizeof(struct nodeL));
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/JOGOS.c:96..96
+    96  	linkJ t; 
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/JOGOS.c:90..90
+    90  	return procura_lista_nome(headsJ[i], nome);
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/JOGOS.c:89..89
+    89  	int i = funcao_hashJ(nome);
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/JOGOS.c:79..79
+    79  	linkJ x = (linkJ)can_fail_malloc(sizeof(struct nodeJ));
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/JOGOS.c:73..73
+    73  	headsJ[i] = inserir_inicioJ(headsJ[i], item);
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/JOGOS.c:73..73
+    73  	headsJ[i] = inserir_inicioJ(headsJ[i], item);
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/JOGOS.c:72..72
+    72  	int i = funcao_hashJ(item->nome);
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/JOGOS.c:65..65
+    65  		headsJ[i] = NULL;
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/JOGOS.c:14..14
+    14  	ItemJ novo = (ItemJ)can_fail_malloc(sizeof(struct Jogo));
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/EQUIPAS.c:153..153
+   153  		for (t = headsE[i]; t != NULL;)
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/EQUIPAS.c:149..149
+   149  	linkE t, aux;
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/EQUIPAS.c:140..140
+   140  			free(equipas[x]);
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/EQUIPAS.c:139..139
+   139  			printf("%d * %s\n",nl, equipas[x]);
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/EQUIPAS.c:128..128
+   128  				strcpy(equipas[j], t->item->equipa);
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/EQUIPAS.c:127..127
+   127  				equipas[j] = (char*)can_fail_malloc(sizeof(char)*(strlen(t->item->equipa)+1));
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/EQUIPAS.c:123..123
+   123  		for (t = headsE[i]; t!= NULL; t = t->next)
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/EQUIPAS.c:119..119
+   119  	linkE t;
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/EQUIPAS.c:102..102
+   102  		for (t = headsE[i]; t!= NULL; t = t->next)
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/EQUIPAS.c:99..99
+    99  	linkE t;
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/EQUIPAS.c:83..83
+    83  	linkE t; 
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/EQUIPAS.c:77..77
+    77  	return procura_lista_equipa(headsE[i], nome);
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/EQUIPAS.c:76..76
+    76  	int i = funcao_hashE(nome);
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/EQUIPAS.c:67..67
+    67  	linkE x = (linkE)can_fail_malloc(sizeof(struct nodeE));
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/EQUIPAS.c:61..61
+    61  	headsE[i] = inserir_inicioE(headsE[i], item);
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/EQUIPAS.c:61..61
+    61  	headsE[i] = inserir_inicioE(headsE[i], item);
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/EQUIPAS.c:60..60
+    60  	int i = funcao_hashE(item->equipa);
+
+38: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/EQUIPAS.c:53..53
+    53  		headsE[i] = NULL;
+
+39: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/EQUIPAS.c:16..16
+    16  	ItemE novo = (ItemE)can_fail_malloc(sizeof(struct Equipas));
+
+40: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/COMANDOS.c:198..198
+   198  	ItemE eqp;
+
+41: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/COMANDOS.c:197..197
+   197  	char equipa[TAMANHO];
+
+42: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/COMANDOS.c:179..179
+   179  	ItemE nequipa, aux;
+
+43: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/COMANDOS.c:178..178
+   178  	char equipa[TAMANHO];
+
+44: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/COMANDOS.c:112..112
+   112  	ItemE eqp1, eqp2;
+
+45: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/COMANDOS.c:111..111
+   111  	ItemJ jogo;
+
+46: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/COMANDOS.c:109..109
+   109  	char nome[TAMANHO];
+
+47: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/COMANDOS.c:79..79
+    79  	ItemE eqp1, eqp2;
+
+48: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/COMANDOS.c:78..78
+    78  	ItemJ jogo;
+
+49: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/COMANDOS.c:77..77
+    77  	char nome[TAMANHO];
+
+50: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/COMANDOS.c:61..61
+    61  	ItemJ jogo;
+
+51: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/COMANDOS.c:60..60
+    60  	char nome[TAMANHO];
+
+52: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/COMANDOS.c:21..21
+    21    ItemJ njogo, n;
+
+53: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/COMANDOS.c:20..20
+    20    ItemE eqp1, eqp2;
+
+54: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/COMANDOS.c:18..18
+    18    char equipa2[TAMANHO];
+
+55: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/COMANDOS.c:17..17
+    17    char equipa1[TAMANHO];
+
+56: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/COMANDOS.c:16..16
+    16    char nome[TAMANHO];
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/148/JOGOS.c:153..153
+   153   	for(t = headsJ[i], prev = NULL; t != NULL; prev = t, t = t->next) 

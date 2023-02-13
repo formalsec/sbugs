@@ -1,0 +1,138 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/211/teams.c:64..64
+    64              hash_teams->nodes[i] = aux;
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/211/teams.c:63..63
+    63              free(hash_teams->nodes[i]);
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/211/teams.c:62..62
+    62              aux = hash_teams->nodes[i]->next;
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/211/teams.c:61..61
+    61          while (hash_teams->nodes[i]){
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/211/teams.c:35..35
+    35      ptr_team *aux = hash_teams->nodes[hash_n];
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/211/teams.c:34..34
+    34      int hash_n = hash(d, HASH_CAP_T);
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/211/teams.c:28..28
+    28      hash_teams->nodes[hash_n] = ptr_n;
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/211/teams.c:26..26
+    26      ptr_team * aux = hash_teams->nodes[hash_n];
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/211/teams.c:25..25
+    25      int hash_n = hash(n->desc, HASH_CAP_T);
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/211/matches.c:89..89
+    89              hash_matches->nodes[i] = aux;
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/211/matches.c:88..88
+    88              free(hash_matches->nodes[i]);
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/211/matches.c:87..87
+    87              aux = hash_matches->nodes[i]->next;
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/211/matches.c:86..86
+    86          while (hash_matches->nodes[i]){
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/211/matches.c:60..60
+    60          hash_matches->nodes[hash_n] = ptr_n->next;  /* logo, o primeiro elemento passa a ser o next de ptr_n*/
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/211/matches.c:55..55
+    55      int hash_n = hash(ptr_n->node->desc, HASH_CAP_M);
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/211/matches.c:43..43
+    43      ptr_match *aux = hash_matches->nodes[hash_n];
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/211/matches.c:42..42
+    42      int hash_n = hash(d, HASH_CAP_M);
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/211/matches.c:33..33
+    33      hash_matches->nodes[hash_n] = ptr_n;
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/211/matches.c:31..31
+    31      ptr_match * aux = hash_matches->nodes[hash_n];
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/211/matches.c:30..30
+    30      int hash_n = hash(n->desc, HASH_CAP_M);
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/211/main.c:150..150
+   150              printf("%d * %s\n",*NL, list_vic[i]->desc);
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/211/main.c:141..141
+   141                  list_vic[i++] = n;
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/211/main.c:106..106
+   106      char name[MAX_CHARS_M];
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/211/main.c:86..86
+    86      char d[MAX_CHARS_M];
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/211/main.c:63..63
+    63      char d[MAX_CHARS_M];
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/211/main.c:37..37
+    37      char name[MAX_CHARS_M], team1[MAX_CHARS_T], team2[MAX_CHARS_T];
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/211/main.c:37..37
+    37      char name[MAX_CHARS_M], team1[MAX_CHARS_T], team2[MAX_CHARS_T];
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/211/main.c:37..37
+    37      char name[MAX_CHARS_M], team1[MAX_CHARS_T], team2[MAX_CHARS_T];
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/211/main.c:23..23
+    23      char d[MAX_CHARS_M];
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/211/main.c:11..11
+    11      char d[MAX_CHARS_T];
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/211/aux.c:78..78
+    78              a[k] = aux[i++];
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/211/aux.c:78..78
+    78              a[k] = aux[i++];
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/211/aux.c:76..76
+    76              a[k] = aux[j--];
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/211/aux.c:76..76
+    76              a[k] = aux[j--];
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/211/aux.c:75..75
+    75          if (less(aux[j]->desc, aux[i]->desc))
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p2/211/aux.c:75..75
+    75          if (less(aux[j]->desc, aux[i]->desc))
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p2/211/aux.c:73..73
+    73          aux[r + m - j] = a[j + 1];
+
+38: /home/fmarques/sbugs/projects/alunos/iaed_p2/211/aux.c:73..73
+    73          aux[r + m - j] = a[j + 1];
+
+39: /home/fmarques/sbugs/projects/alunos/iaed_p2/211/aux.c:73..73
+    73          aux[r + m - j] = a[j + 1];
+
+40: /home/fmarques/sbugs/projects/alunos/iaed_p2/211/aux.c:73..73
+    73          aux[r + m - j] = a[j + 1];
+
+41: /home/fmarques/sbugs/projects/alunos/iaed_p2/211/aux.c:71..71
+    71          aux[i - 1] = a[i - 1];
+
+42: /home/fmarques/sbugs/projects/alunos/iaed_p2/211/aux.c:71..71
+    71          aux[i - 1] = a[i - 1];
+
+43: /home/fmarques/sbugs/projects/alunos/iaed_p2/211/aux.c:46..46
+    46          hash_matches->nodes[i] = NULL;
+
+44: /home/fmarques/sbugs/projects/alunos/iaed_p2/211/aux.c:45..45
+    45          hash_teams->nodes[i] = NULL;
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/211/aux.c:73..73
+    73          aux[r + m - j] = a[j + 1];
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/211/aux.c:73..73
+    73          aux[r + m - j] = a[j + 1];

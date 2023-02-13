@@ -1,0 +1,375 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al098/main.c:164..164
+   164  		if (!g->array[i].discovery) {
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al098/main.c:152..152
+   152  		if (!g->array[i].discovery) {
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al098/main.c:135..135
+   135  			g->array[i].head = g->array[i].head->next;
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al098/main.c:135..135
+   135  			g->array[i].head = g->array[i].head->next;
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al098/main.c:134..134
+   134  			aux = g->array[i].head;
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al098/main.c:133..133
+   133  		while (g->array[i].head) {
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al098/main.c:102..102
+   102  		g->array[i].id = i;
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al098/main.c:101..101
+   101  		g->array[i].head = NULL;
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al098/main.c:90..90
+    90  	new->vertex = &g->array[b-1];
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al098/main.c:87..87
+    87  	Vertex v = &g->array[a-1];
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al098/main.c:82..82
+    82  			g->array[i].id = -1;
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al098/main.c:81..81
+    81  		if (g->array[i].critical)
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al098/main.c:80..80
+    80  		g->array[i].discovery = 0;
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al098/main.c:69..69
+    69  		g->array[v].critical = 1;
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al098/main.c:68..68
+    68  	if (update && ((!g->array[v].parent && i > 1) || (g->array[v].parent && critical))) {
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al098/main.c:68..68
+    68  	if (update && ((!g->array[v].parent && i > 1) || (g->array[v].parent && critical))) {
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al098/main.c:63..63
+    63  			g->array[v].low = min(g->array[v].low, g->array[w].discovery);
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al098/main.c:63..63
+    63  			g->array[v].low = min(g->array[v].low, g->array[w].discovery);
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al098/main.c:63..63
+    63  			g->array[v].low = min(g->array[v].low, g->array[w].discovery);
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al098/main.c:62..62
+    62  		else if (g->array[v].parent != (w + 1))
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al098/main.c:58..58
+    58  			g->array[v].low = min(g->array[v].low, g->array[w].low);
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al098/main.c:58..58
+    58  			g->array[v].low = min(g->array[v].low, g->array[w].low);
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al098/main.c:58..58
+    58  			g->array[v].low = min(g->array[v].low, g->array[w].low);
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al098/main.c:56..56
+    56  			if (g->array[w].low >= g->array[v].discovery)
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al098/main.c:56..56
+    56  			if (g->array[w].low >= g->array[v].discovery)
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al098/main.c:53..53
+    53  			g->array[w].parent = v + 1; i++;
+
+27: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al098/main.c:52..52
+    52  		if (!g->array[w].discovery) {
+
+28: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al098/main.c:46..46
+    46  	for (adj = g->array[v].head; adj != NULL; adj = adj->next) {
+
+29: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al098/main.c:44..44
+    44  	if (g->array[v].id == -1) return --depth;
+
+30: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al098/main.c:42..42
+    42  	g->array[v].discovery = g->array[v].low = depth;
+
+31: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al098/main.c:42..42
+    42  	g->array[v].discovery = g->array[v].low = depth;
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al101/proj1.c:190..190
+   190  	Vertice v = g->adjacencias[router];
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al101/proj1.c:147..147
+   147  	g->adjacencias[w]->a = InsertBegin(g->adjacencias[w]->a, v);
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al101/proj1.c:146..146
+   146  	g->adjacencias[v]->a = InsertBegin(g->adjacencias[v]->a, w); 
+cat: _CWE_468_.txt: No such file or directory
+cat: _CWE_805_.txt: No such file or directory
+cat: _CWE_457_.txt: No such file or directory
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:246..246
+   246  				&graph[*tarjan.info[parent->index].scc],
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:246..246
+   246  				&graph[*tarjan.info[parent->index].scc],
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:242..242
+   242  		parent = graph[i].prev;
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:224..224
+   224  			tarjan.info[pop_id].out = 1;
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:223..223
+   223  			tarjan.info[pop_id].scc = min;
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:222..222
+   222  			pop_id = tarjan.Q[tarjan.Q_count];
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:222..222
+   222  			pop_id = tarjan.Q[tarjan.Q_count];
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:212..212
+   212  		tarjan.info[pop_id].out = 1;
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:211..211
+   211  		tarjan.info[pop_id].scc = min;
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:210..210
+   210  		int pop_id = tarjan.Q[tarjan.Q_count];
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:210..210
+   210  		int pop_id = tarjan.Q[tarjan.Q_count];
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:206..206
+   206  	if (tarjan.info[index].d == tarjan.info[index].low) {
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:206..206
+   206  	if (tarjan.info[index].d == tarjan.info[index].low) {
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:196..196
+   196  			add_prev_arch(&graph[*tarjan.info[adj->index].scc], index);
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:196..196
+   196  			add_prev_arch(&graph[*tarjan.info[adj->index].scc], index);
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:195..195
+   195  		if (tarjan.info[adj->index].out == 1) {
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:195..195
+   195  		if (tarjan.info[adj->index].out == 1) {
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:190..190
+   190  				tarjan.info[index].low = tarjan.info[adj->index].low;
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:190..190
+   190  				tarjan.info[index].low = tarjan.info[adj->index].low;
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:190..190
+   190  				tarjan.info[index].low = tarjan.info[adj->index].low;
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:189..189
+   189  			if (tarjan.info[index].low > tarjan.info[adj->index].low) {
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:189..189
+   189  			if (tarjan.info[index].low > tarjan.info[adj->index].low) {
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:189..189
+   189  			if (tarjan.info[index].low > tarjan.info[adj->index].low) {
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:185..185
+   185  			if (tarjan.info[adj->index].d == -1) {
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:185..185
+   185  			if (tarjan.info[adj->index].d == -1) {
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:184..184
+   184  		if (tarjan.info[adj->index].out == 0 || tarjan.info[adj->index].d == -1) {
+
+27: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:184..184
+   184  		if (tarjan.info[adj->index].out == 0 || tarjan.info[adj->index].d == -1) {
+
+28: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:184..184
+   184  		if (tarjan.info[adj->index].out == 0 || tarjan.info[adj->index].d == -1) {
+
+29: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:184..184
+   184  		if (tarjan.info[adj->index].out == 0 || tarjan.info[adj->index].d == -1) {
+
+30: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:181..181
+   181  	graph[index].next = NULL;
+
+31: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:180..180
+   180  	Vertex * adj = graph[index].next;
+
+32: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:176..176
+   176  	tarjan.Q[tarjan.Q_count] = index;
+
+33: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:176..176
+   176  	tarjan.Q[tarjan.Q_count] = index;
+
+34: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:174..174
+   174  	tarjan.info[index].d = tarjan.info[index].low = tarjan.next_d;
+
+35: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:174..174
+   174  	tarjan.info[index].d = tarjan.info[index].low = tarjan.next_d;
+
+36: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:92..92
+    92  		Vertex * adj = graph[i].next;
+
+37: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:77..77
+    77  		if (tarjan.info[i].out == 1) continue;
+
+38: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:60..60
+    60  		tarjan.info[i].out = 0;
+
+39: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:59..59
+    59  		tarjan.info[i].scc = &i;
+
+40: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:58..58
+    58  		tarjan.info[i].low = -1;
+
+41: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:57..57
+    57  		tarjan.info[i].d = -1;
+
+42: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:56..56
+    56  		graph[i].prev = NULL;
+
+43: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:55..55
+    55  		graph[i].next = NULL;
+
+44: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:54..54
+    54  		graph[i].index = i;
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:174..174
+   174  	tarjan.info[index].d = tarjan.info[index].low = tarjan.next_d;
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:246..246
+   246  				&graph[*tarjan.info[parent->index].scc],
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:246..246
+   246  				&graph[*tarjan.info[parent->index].scc],
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:242..242
+   242  		parent = graph[i].prev;
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:224..224
+   224  			tarjan.info[pop_id].out = 1;
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:223..223
+   223  			tarjan.info[pop_id].scc = min;
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:222..222
+   222  			pop_id = tarjan.Q[tarjan.Q_count];
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:222..222
+   222  			pop_id = tarjan.Q[tarjan.Q_count];
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:212..212
+   212  		tarjan.info[pop_id].out = 1;
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:211..211
+   211  		tarjan.info[pop_id].scc = min;
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:210..210
+   210  		int pop_id = tarjan.Q[tarjan.Q_count];
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:210..210
+   210  		int pop_id = tarjan.Q[tarjan.Q_count];
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:206..206
+   206  	if (tarjan.info[index].d == tarjan.info[index].low) {
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:206..206
+   206  	if (tarjan.info[index].d == tarjan.info[index].low) {
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:196..196
+   196  			add_prev_arch(&graph[*tarjan.info[adj->index].scc], index);
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:196..196
+   196  			add_prev_arch(&graph[*tarjan.info[adj->index].scc], index);
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:195..195
+   195  		if (tarjan.info[adj->index].out == 1) {
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:195..195
+   195  		if (tarjan.info[adj->index].out == 1) {
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:190..190
+   190  				tarjan.info[index].low = tarjan.info[adj->index].low;
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:190..190
+   190  				tarjan.info[index].low = tarjan.info[adj->index].low;
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:190..190
+   190  				tarjan.info[index].low = tarjan.info[adj->index].low;
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:189..189
+   189  			if (tarjan.info[index].low > tarjan.info[adj->index].low) {
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:189..189
+   189  			if (tarjan.info[index].low > tarjan.info[adj->index].low) {
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:189..189
+   189  			if (tarjan.info[index].low > tarjan.info[adj->index].low) {
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:185..185
+   185  			if (tarjan.info[adj->index].d == -1) {
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:185..185
+   185  			if (tarjan.info[adj->index].d == -1) {
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:184..184
+   184  		if (tarjan.info[adj->index].out == 0 || tarjan.info[adj->index].d == -1) {
+
+27: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:184..184
+   184  		if (tarjan.info[adj->index].out == 0 || tarjan.info[adj->index].d == -1) {
+
+28: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:184..184
+   184  		if (tarjan.info[adj->index].out == 0 || tarjan.info[adj->index].d == -1) {
+
+29: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:184..184
+   184  		if (tarjan.info[adj->index].out == 0 || tarjan.info[adj->index].d == -1) {
+
+30: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:181..181
+   181  	graph[index].next = NULL;
+
+31: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:180..180
+   180  	Vertex * adj = graph[index].next;
+
+32: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:176..176
+   176  	tarjan.Q[tarjan.Q_count] = index;
+
+33: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:176..176
+   176  	tarjan.Q[tarjan.Q_count] = index;
+
+34: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:174..174
+   174  	tarjan.info[index].d = tarjan.info[index].low = tarjan.next_d;
+
+35: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:174..174
+   174  	tarjan.info[index].d = tarjan.info[index].low = tarjan.next_d;
+
+36: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:92..92
+    92  		Vertex * adj = graph[i].next;
+
+37: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:77..77
+    77  		if (tarjan.info[i].out == 1) continue;
+
+38: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:60..60
+    60  		tarjan.info[i].out = 0;
+
+39: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:59..59
+    59  		tarjan.info[i].scc = &i;
+
+40: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:58..58
+    58  		tarjan.info[i].low = -1;
+
+41: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:57..57
+    57  		tarjan.info[i].d = -1;
+
+42: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:56..56
+    56  		graph[i].prev = NULL;
+
+43: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:55..55
+    55  		graph[i].next = NULL;
+
+44: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:54..54
+    54  		graph[i].index = i;
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al080/main.c:174..174
+   174  	tarjan.info[index].d = tarjan.info[index].low = tarjan.next_d;

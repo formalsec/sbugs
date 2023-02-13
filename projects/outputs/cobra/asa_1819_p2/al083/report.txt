@@ -1,0 +1,91 @@
+cat: '*_.txt': No such file or directory
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al083/asap2.c:291..291
+   291  		struct node* temp = flow_graph->lista_adj[i];
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al083/asap2.c:281..281
+   281  		struct node* temp = flow_graph->lista_adj[i];
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al083/asap2.c:265..265
+   265  		struct node* temp = flow_graph->lista_adj[i];
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al083/asap2.c:251..251
+   251  				visited[i] = 1;
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al083/asap2.c:249..249
+   249  			if(temp_cap > 0 && visited[i]==0){
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al083/asap2.c:248..248
+   248  			temp_cap = findCapacity(flow_graph->lista_adj[i], son_id);
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al083/asap2.c:239..239
+   239  	for(i = 0; i<flow_graph->size; i++)	visited[i] = 0;
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al083/asap2.c:219..219
+   219  				visited[temp->id] = 1;
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al083/asap2.c:219..219
+   219  				visited[temp->id] = 1;
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al083/asap2.c:217..217
+   217  			if(temp->flow_capacity > 0 && visited[temp->id]==0){
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al083/asap2.c:217..217
+   217  			if(temp->flow_capacity > 0 && visited[temp->id]==0){
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al083/asap2.c:215..215
+   215  		struct node* temp = flow_graph->lista_adj[parent_id];
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al083/asap2.c:214..214
+   214  		parent_id = pop(&q);
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al083/asap2.c:208..208
+   208  	for(i = 0; i<flow_graph->size; i++)	visited[i] = 0;
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al083/asap2.c:186..186
+   186  	struct node* temp = flow_graph->lista_adj[parent_node_id];
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al083/asap2.c:166..166
+   166  		for(i = 0; i<flow_graph->size; i++)	parent[i] = -1;
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al083/asap2.c:164..164
+   164  			aux = parent[aux];
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al083/asap2.c:163..163
+   163  			changeCapacity(flow_graph, aux, parent[aux], path_flow);
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al083/asap2.c:162..162
+   162  			changeCapacity(flow_graph, parent[aux],aux,-path_flow);
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al083/asap2.c:155..155
+   155  			aux = parent[aux];
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al083/asap2.c:154..154
+   154  			path_flow = min(path_flow,findCapacity(flow_graph->lista_adj[parent[aux]],aux));
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al083/asap2.c:154..154
+   154  			path_flow = min(path_flow,findCapacity(flow_graph->lista_adj[parent[aux]],aux));
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al083/asap2.c:149..149
+   149  	while(BFS(flow_graph,&parent)==1){
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al083/asap2.c:147..147
+   147  	for(i = 0; i<flow_graph->size; i++)	parent[i] = -1;
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al083/asap2.c:135..135
+   135  		struct node* temp = graph_ptr->lista_adj[i];
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al083/asap2.c:120..120
+   120  	flow_graph->lista_adj[NodeA] = newNodeB;
+
+27: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al083/asap2.c:119..119
+   119  	newNodeB->next = flow_graph->lista_adj[NodeA];
+
+28: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al083/asap2.c:105..105
+   105  		struct node* temp = flow_graph->lista_adj[i];
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al083/asap2.c:186..186
+   186  	struct node* temp = flow_graph->lista_adj[parent_node_id];
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al083/asap2.c:119..119
+   119  	newNodeB->next = flow_graph->lista_adj[NodeA];

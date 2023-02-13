@@ -1,0 +1,297 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/linkedlist.c:113..113
+   113      linkEquipa temp, first;
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/linkedlist.c:69..69
+    69      linkEquipa last = *head;
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/linkedlist.c:68..68
+    68      linkEquipa  newNode  = (linkEquipa)can_fail_malloc(sizeof(struct nodeEquipa));
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/linkedlist.c:53..53
+    53      linkJogo temp, first;
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/linkedlist.c:8..8
+     8      linkJogo last = *head;
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/linkedlist.c:7..7
+     7      linkJogo  newNode  = (linkJogo)can_fail_malloc(sizeof(struct nodeJogo));
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/hash.c:210..210
+   210      HT->adj[i]=NULL;
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/hash.c:203..203
+   203          first = HT->adj[i];
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/hash.c:199..199
+   199      linkPEquipa temp, first;
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/hash.c:176..176
+   176                  HT->adj[key] = temp->next;
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/hash.c:172..172
+   172      for (p=HT->adj[key]; p!=NULL; p=p->next) {
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/hash.c:170..170
+   170      struct nodePEquipa *temp = HT->adj[key], *prev;
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/hash.c:169..169
+   169      int key = hashU_EQUIPAS(v, HT);
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/hash.c:167..167
+   167      linkPEquipa p;
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/hash.c:160..160
+   160      for (p=HT->adj[key]; p!=NULL; p=p->next)
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/hash.c:159..159
+   159      int key = hashU_EQUIPAS(v, HT);
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/hash.c:157..157
+   157      linkPEquipa p;
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/hash.c:144..144
+   144          HT->adj[key] = a;
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/hash.c:143..143
+   143      if (HT->adj[key] == NULL) {
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/hash.c:137..137
+   137      linkPEquipa last = HT->adj[key];
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/hash.c:137..137
+   137      linkPEquipa last = HT->adj[key];
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/hash.c:136..136
+   136      int key = hashU_EQUIPAS(e->e.nome, HT);
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/hash.c:134..134
+   134      linkPEquipa  a = (linkPEquipa)can_fail_malloc(sizeof(struct nodePEquipa));
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/hash.c:128..128
+   128          HT->adj[i] = NULL;
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/hash.c:123..123
+   123      Hashtable_EQUIPAS HT = can_fail_malloc(sizeof(struct hashtable_jogos));
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/hash.c:105..105
+   105      HT->adj[i]=NULL;
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/hash.c:98..98
+    98          first = HT->adj[i];
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/hash.c:94..94
+    94      linkPJogo temp, first;
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/hash.c:71..71
+    71                  HT->adj[key] = temp->next;
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/hash.c:67..67
+    67      for (p=HT->adj[key]; p!=NULL; p=p->next) {
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/hash.c:65..65
+    65      struct nodePJogo *temp = HT->adj[key], *prev;
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/hash.c:64..64
+    64      int key = hashU_JOGOS(v, HT);
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/hash.c:62..62
+    62      linkPJogo p;
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/hash.c:55..55
+    55      for (j=HT->adj[key]; j!=NULL; j=j->next)
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/hash.c:54..54
+    54      int key = hashU_JOGOS(v, HT);
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/hash.c:52..52
+    52      linkPJogo j;
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/hash.c:39..39
+    39          HT->adj[key] = a;
+
+38: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/hash.c:38..38
+    38      if (HT->adj[key] == NULL) {
+
+39: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/hash.c:32..32
+    32      linkPJogo last = HT->adj[key];
+
+40: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/hash.c:32..32
+    32      linkPJogo last = HT->adj[key];
+
+41: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/hash.c:31..31
+    31      int key = hashU_JOGOS(j->j.nome, HT);
+
+42: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/hash.c:29..29
+    29      linkPJogo  a = (linkPJogo)can_fail_malloc(sizeof(struct nodePJogo));
+
+43: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/hash.c:23..23
+    23          HT->adj[i] = NULL;
+
+44: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/hash.c:18..18
+    18      Hashtable_JOGOS HT = can_fail_malloc(sizeof(struct hashtable_jogos));
+
+45: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/commands.c:384..384
+   384              printf("%ld * %s\n", NL, array[i].nome);
+
+46: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/commands.c:373..373
+   373                  array[j].vitorias = p->e.vitorias;
+
+47: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/commands.c:372..372
+   372                  strcpy(array[j].nome, p->e.nome);
+
+48: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/commands.c:361..361
+   361      linkEquipa p;
+
+49: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/commands.c:359..359
+   359      equipa array[1000];
+
+50: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/commands.c:333..333
+   333                          for (pe=HTe->adj[key]; pe!=NULL; pe=pe->next)
+
+51: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/commands.c:332..332
+   332                          key = hashU_EQUIPAS(pj->j->j.equipa2, HTe);
+
+52: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/commands.c:328..328
+   328                          for (pe=HTe->adj[key]; pe!=NULL; pe=pe->next)
+
+53: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/commands.c:319..319
+   319                          for (pe=HTe->adj[key]; pe!=NULL; pe=pe->next)
+
+54: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/commands.c:302..302
+   302                          for (pe=HTe->adj[key]; pe!=NULL; pe=pe->next)
+
+55: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/commands.c:297..297
+   297                          for (pe=HTe->adj[key]; pe!=NULL; pe=pe->next)
+
+56: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/commands.c:288..288
+   288                          for (pe=HTe->adj[key]; pe!=NULL; pe=pe->next)
+
+57: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/commands.c:273..273
+   273                          for (pe=HTe->adj[key]; pe!=NULL; pe=pe->next)
+
+58: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/commands.c:265..265
+   265                          for (pe=HTe->adj[key]; pe!=NULL; pe=pe->next)
+
+59: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/commands.c:255..255
+   255          for (pj=HTj->adj[key]; pj!=NULL; pj=pj->next) {
+
+60: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/commands.c:243..243
+   243      linkPEquipa pe;
+
+61: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/commands.c:242..242
+   242      linkPJogo pj;
+
+62: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/commands.c:239..239
+   239      char nome[STRINGSIZE];
+
+63: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/commands.c:215..215
+   215                      for (pe=HTe->adj[key]; pe!=NULL; pe=pe->next)
+
+64: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/commands.c:212..212
+   212                      key = hashU_EQUIPAS(pj->j->j.equipa2, HTe);
+
+65: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/commands.c:203..203
+   203                      for (pe=HTe->adj[key]; pe!=NULL; pe=pe->next)
+
+66: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/commands.c:193..193
+   193          for (pj=HTj->adj[key]; pj!=NULL; pj=pj->next) {
+
+67: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/commands.c:181..181
+   181      linkPEquipa pe;
+
+68: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/commands.c:180..180
+   180      linkPJogo pj;
+
+69: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/commands.c:178..178
+   178      char nome[STRINGSIZE];
+
+70: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/commands.c:161..161
+   161          for (p=HTe->adj[key]; p!=NULL; p=p->next)
+
+71: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/commands.c:159..159
+   159          key=hashU_EQUIPAS(nome, HTe);
+
+72: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/commands.c:149..149
+   149      linkPEquipa p;
+
+73: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/commands.c:147..147
+   147      char nome[STRINGSIZE];
+
+74: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/commands.c:130..130
+   130          for (p=HTj->adj[key]; p!=NULL; p=p->next)
+
+75: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/commands.c:128..128
+   128          key=hashU_JOGOS(nome, HTj);
+
+76: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/commands.c:118..118
+   118      linkPJogo p;
+
+77: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/commands.c:116..116
+   116      char nome[STRINGSIZE];
+
+78: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/commands.c:101..101
+   101      linkJogo p;
+
+79: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/commands.c:75..75
+    75      equipa e;
+
+80: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/commands.c:74..74
+    74      char nome[STRINGSIZE];
+
+81: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/commands.c:59..59
+    59                      for (p=HTe->adj[key]; p!=NULL; p=p->next)
+
+82: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/commands.c:57..57
+    57                      key = hashU_EQUIPAS(equipa2, HTe);
+
+83: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/commands.c:49..49
+    49                      for (p=HTe->adj[key]; p!=NULL; p=p->next)
+
+84: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/commands.c:11..11
+    11      linkPEquipa p;
+
+85: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/commands.c:10..10
+    10      jogo j;
+
+86: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/commands.c:7..7
+     7      char nome[STRINGSIZE], equipa1[STRINGSIZE], equipa2[STRINGSIZE];
+
+87: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/commands.c:7..7
+     7      char nome[STRINGSIZE], equipa1[STRINGSIZE], equipa2[STRINGSIZE];
+
+88: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/commands.c:7..7
+     7      char nome[STRINGSIZE], equipa1[STRINGSIZE], equipa2[STRINGSIZE];
+
+89: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/app.c:8..8
+     8      Hashtable_EQUIPAS HTe;
+
+90: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/app.c:6..6
+     6      Hashtable_JOGOS HTj;
+=== Dangerous function calls lacking bounds checking ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/linkedlist.c:72..72
+    72      strcpy(newNode->e.nome, e.nome);
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/linkedlist.c:13..13
+    13      strcpy(newNode->j.equipa2, j.equipa2);
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/linkedlist.c:12..12
+    12      strcpy(newNode->j.equipa1, j.equipa1);
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/linkedlist.c:11..11
+    11      strcpy(newNode->j.nome, j.nome);
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/commands.c:372..372
+   372                  strcpy(array[j].nome, p->e.nome);
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/commands.c:83..83
+    83          strcpy(e.nome, nome);
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/commands.c:37..37
+    37                  strcpy(j.equipa2, equipa2);
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/commands.c:36..36
+    36                  strcpy(j.equipa1, equipa1);
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/35/commands.c:35..35
+    35                  strcpy(j.nome, nome);

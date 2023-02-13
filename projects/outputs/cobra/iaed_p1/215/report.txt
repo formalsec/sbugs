@@ -1,0 +1,78 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p1/215/Proj1.c:204..204
+   204  					total = Encomendas[cont][idp];
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p1/215/Proj1.c:202..202
+   202  				if (total < Encomendas[cont][idp])
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p1/215/Proj1.c:187..187
+   187  				printf("%s %d\n", produtos[idp].descricao, Encomendas[ide][idp]);
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p1/215/Proj1.c:187..187
+   187  				printf("%s %d\n", produtos[idp].descricao, Encomendas[ide][idp]);
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p1/215/Proj1.c:154..154
+   154  					custo = custo + (produtos[prod].preco * Encomendas[ide][prod]);
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p1/215/Proj1.c:154..154
+   154  					custo = custo + (produtos[prod].preco * Encomendas[ide][prod]);
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p1/215/Proj1.c:137..137
+   137  				Encomendas[ide][idp] = 0;
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p1/215/Proj1.c:136..136
+   136  				produtos[idp].quantidade_stock = produtos[idp].quantidade_stock + Encomendas[ide][idp];
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p1/215/Proj1.c:136..136
+   136  				produtos[idp].quantidade_stock = produtos[idp].quantidade_stock + Encomendas[ide][idp];
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p1/215/Proj1.c:136..136
+   136  				produtos[idp].quantidade_stock = produtos[idp].quantidade_stock + Encomendas[ide][idp];
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p1/215/Proj1.c:117..117
+   117  				produtos[produto].quantidade_stock = produtos[produto].quantidade_stock - quantidade;
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p1/215/Proj1.c:117..117
+   117  				produtos[produto].quantidade_stock = produtos[produto].quantidade_stock - quantidade;
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p1/215/Proj1.c:110..110
+   110  			qtd_final = produtos[produto].quantidade_stock - quantidade;
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p1/215/Proj1.c:95..95
+    95  					Encomendas[ide][idp]=Encomendas[ide][idp] + ide;
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p1/215/Proj1.c:95..95
+    95  					Encomendas[ide][idp]=Encomendas[ide][idp] + ide;
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p1/215/Proj1.c:94..94
+    94  					produtos[idp].quantidade_stock = produtos[idp].quantidade_stock - qtd;
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p1/215/Proj1.c:94..94
+    94  					produtos[idp].quantidade_stock = produtos[idp].quantidade_stock - qtd;
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p1/215/Proj1.c:87..87
+    87  				peso = peso + (produtos[idp].peso * qtd);
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p1/215/Proj1.c:85..85
+    85  					peso = peso + (produtos[prod].peso * Encomendas[ide][prod]);
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p1/215/Proj1.c:85..85
+    85  					peso = peso + (produtos[prod].peso * Encomendas[ide][prod]);
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p1/215/Proj1.c:76..76
+    76  			if (produtos[idp].quantidade_stock < qtd)
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p1/215/Proj1.c:52..52
+    52  				produtos[produto].quantidade_stock = produtos[produto].quantidade_stock + quantidade;
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p1/215/Proj1.c:52..52
+    52  				produtos[produto].quantidade_stock = produtos[produto].quantidade_stock + quantidade;
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p1/215/Proj1.c:36..36
+    36  			scanf("%s:%d:%d:%d",produtos[Produto].descricao, &produtos[Produto].preco, &produtos[Produto].peso, &produtos[Produto].quantidade_stock); /*Eu sei que isto esta incorrecto mas nao sabia como fazer e para demonstrar o raciocinio fiz desta forma*/
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p1/215/Proj1.c:13..13
+    13  	char descricao[MAX_Descricao];
+=== printf or scanf missing width limit on %s ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p1/215/Proj1.c:36..36
+    36  			scanf("%s:%d:%d:%d",produtos[Produto].descricao, &produtos[Produto].preco, &produtos[Produto].peso, &produtos[Produto].quantidade_stock); /*Eu sei que isto esta incorrecto mas nao sabia como fazer e para demonstrar o raciocinio fiz desta forma*/

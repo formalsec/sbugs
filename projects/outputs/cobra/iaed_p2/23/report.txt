@@ -1,0 +1,105 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/23/teste.c:298..298
+   298      char name[MAXNAME];
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/23/teste.c:273..273
+   273      char name[MAXNAME];
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/23/teste.c:258..258
+   258      char name[MAXNAME];
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/23/teste.c:244..244
+   244      char name[MAXNAME];
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/23/teste.c:218..218
+   218      char name[MAXNAME];
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/23/teste.c:181..181
+   181      char name[MAXNAME], team1[MAXNAME], team2[MAXNAME];
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/23/teste.c:181..181
+   181      char name[MAXNAME], team1[MAXNAME], team2[MAXNAME];
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/23/teste.c:181..181
+   181      char name[MAXNAME], team1[MAXNAME], team2[MAXNAME];
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/23/teste.c:158..158
+   158          hash_table_game[index] = tmp->next;
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/23/teste.c:152..152
+   152      game *tmp = hash_table_game[index];
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/23/teste.c:150..150
+   150      int index = hash(name, HASHSIZE);
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/23/teste.c:126..126
+   126      game*tmp = hash_table_game[index];
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/23/teste.c:125..125
+   125      int index = hash(name, HASHSIZE);
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/23/teste.c:117..117
+   117      team*tmp = hash_table_team[index];
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/23/teste.c:116..116
+   116      int index = hash(name, HASHSIZE);
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/23/teste.c:101..101
+   101      hash_table_team[index] = t;
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/23/teste.c:100..100
+   100      t->next = hash_table_team[index];
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/23/teste.c:95..95
+    95      int index = hash(name, HASHSIZE);
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/23/teste.c:77..77
+    77      hash_table_game[index] = t;
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/23/teste.c:76..76
+    76      t->next = hash_table_game[index];
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/23/teste.c:68..68
+    68      int index = hash(name, HASHSIZE);
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/23/teste.c:50..50
+    50          hash_table_game[i] = NULL;
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/23/teste.c:43..43
+    43          hash_table_team[i] = NULL;
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/23/teste.c:25..25
+    25      char team2[MAXNAME];
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/23/teste.c:24..24
+    24      char team1[MAXNAME];
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/23/teste.c:23..23
+    23      char name[MAXNAME];
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/23/teste.c:17..17
+    17      char name[MAXNAME];
+=== Dangerous function calls lacking bounds checking ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/23/teste.c:102..102
+   102      strcpy(t_list->name, name);
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/23/teste.c:98..98
+    98      strcpy(t->name, name);
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/23/teste.c:80..80
+    80      strcpy(t_list->team2, team2);
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/23/teste.c:79..79
+    79      strcpy(t_list->team1, team1);
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/23/teste.c:78..78
+    78      strcpy(t_list->name, name);
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/23/teste.c:73..73
+    73      strcpy(t->team2, team2);
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/23/teste.c:72..72
+    72      strcpy(t->team1, team1);
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/23/teste.c:71..71
+    71      strcpy(t->name, name);

@@ -1,0 +1,108 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/270/tabdispercao.c:144..144
+   144    int j, i = hash(v, M(tab_dispercao)); pJogo aux;
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/270/tabdispercao.c:101..101
+   101        insere_jg(t[i], tab_dispercao);
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/270/tabdispercao.c:100..100
+   100      if (nome(t[i]) != NULLitem())
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/270/tabdispercao.c:86..86
+    86        insere_eq(t[i], tab_dispercao);
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/270/tabdispercao.c:85..85
+    85      if (nome(t[i]) != NULLitem())
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/270/tabdispercao.c:41..41
+    41    pTabJogos tab_dispercao = can_fail_malloc(sizeof(struct tab_jogos));
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/270/tabdispercao.c:26..26
+    26    pTabEquipas tab_dispercao = can_fail_malloc(sizeof(struct tab_equipas));
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/270/main.c:8..8
+     8  	pLista ls_jg = cria_lista();
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/270/main.c:7..7
+     7  	pTabEquipas ht_eq = inicia_te(MAX_EQ); pTabJogos ht_jg = inicia_tj(MAX_JG);
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/270/main.c:7..7
+     7  	pTabEquipas ht_eq = inicia_te(MAX_EQ); pTabJogos ht_jg = inicia_tj(MAX_JG);
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/270/listadligada.c:11..11
+    11  	pLista l = can_fail_malloc(sizeof(struct lista));
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/270/jogos.c:22..22
+    22    pJogo jg_aux = can_fail_malloc(sizeof(struct jogo));
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/270/equipas.c:20..20
+    20    pEquipa eq_aux = can_fail_malloc(sizeof(struct equipa));
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/270/comandos.c:148..148
+   148      p[tamanho] = s[tamanho];
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/270/comandos.c:148..148
+   148      p[tamanho] = s[tamanho];
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/270/comandos.c:145..145
+   145    size_t tamanho = strlen(s) + 1; /* tamanho da string + '\0' */
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/270/comandos.c:136..136
+   136        printf("%d * %s\n", nl, nomes[i]);
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/270/comandos.c:132..132
+   132          nomes[j] = nome(equipas(ht_eq)[i]); j++;
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/270/comandos.c:102..102
+   102    pJogo jg_aux; int golos1, golos2; char aux[MAX_CHAR];
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/270/comandos.c:102..102
+   102    pJogo jg_aux; int golos1, golos2; char aux[MAX_CHAR];
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/270/comandos.c:83..83
+    83    pJogo jg_aux; char aux[MAX_CHAR];
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/270/comandos.c:83..83
+    83    pJogo jg_aux; char aux[MAX_CHAR];
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/270/comandos.c:69..69
+    69    pEquipa eq_aux; char aux[MAX_CHAR];
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/270/comandos.c:69..69
+    69    pEquipa eq_aux; char aux[MAX_CHAR];
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/270/comandos.c:54..54
+    54    pJogo jg_aux; char aux[MAX_CHAR];
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/270/comandos.c:54..54
+    54    pJogo jg_aux; char aux[MAX_CHAR];
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/270/comandos.c:44..44
+    44    pJogo n;
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/270/comandos.c:34..34
+    34      pEquipa eq_aux;
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/270/comandos.c:31..31
+    31    char aux[MAX_CHAR];
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/270/comandos.c:10..10
+    10    char aux[MAX_CHAR], aux1[MAX_CHAR], aux2[MAX_CHAR];
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/270/comandos.c:10..10
+    10    char aux[MAX_CHAR], aux1[MAX_CHAR], aux2[MAX_CHAR];
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/270/comandos.c:10..10
+    10    char aux[MAX_CHAR], aux1[MAX_CHAR], aux2[MAX_CHAR];
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/270/comandos.c:9..9
+     9    pJogo jg_aux; pEquipa eq_aux1; pEquipa eq_aux2; int golos1, golos2;
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/270/comandos.c:9..9
+     9    pJogo jg_aux; pEquipa eq_aux1; pEquipa eq_aux2; int golos1, golos2;
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/270/comandos.c:9..9
+     9    pJogo jg_aux; pEquipa eq_aux1; pEquipa eq_aux2; int golos1, golos2;
+=== Potential out of bound array indexing error ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/270/comandos.c:148..148
+   148      p[tamanho] = s[tamanho];

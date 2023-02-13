@@ -1,0 +1,326 @@
+cat: '*_.txt': No such file or directory
+cat: '*_.txt': No such file or directory
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:439..439
+   439          struct node* temp = graph->adjLists[v];
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:433..433
+   433      graph->adjLists[dest] = newNode;
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:432..432
+   432      newNode->next = graph->adjLists[dest];
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:428..428
+   428      graph->adjLists[src] = newNode;
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:427..427
+   427      newNode->next = graph->adjLists[src];
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:419..419
+   419          graph->parent[i] = UNDEFINED;
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:418..418
+   418          graph->visited[i] = 0;
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:417..417
+   417          graph->adjLists[i] = NULL;
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:330..330
+   330              if (graph->visited[connectedVertex] == 0) {
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:325..325
+   325          graph->visited[vertex] = 1;
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:319..319
+   319          if (!graph->visited[vertex] && !flag) {
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:316..316
+   316          struct node* adjList = graph->adjLists[vertex];
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:310..310
+   310                  graph->low[vertex] = MIN(graph->low[vertex],graph->disc[connectedVertex]);
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:310..310
+   310                  graph->low[vertex] = MIN(graph->low[vertex],graph->disc[connectedVertex]);
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:310..310
+   310                  graph->low[vertex] = MIN(graph->low[vertex],graph->disc[connectedVertex]);
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:309..309
+   309              else if (connectedVertex != graph->parent[vertex])
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:302..302
+   302                      graph->ap[vertex] = 1;
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:301..301
+   301                  if (graph->parent[vertex] != UNDEFINED && graph->low[connectedVertex] >= graph->disc[vertex]){   
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:301..301
+   301                  if (graph->parent[vertex] != UNDEFINED && graph->low[connectedVertex] >= graph->disc[vertex]){   
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:301..301
+   301                  if (graph->parent[vertex] != UNDEFINED && graph->low[connectedVertex] >= graph->disc[vertex]){   
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:298..298
+   298                      graph->ap[vertex] = 1;
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:297..297
+   297                  if (graph->parent[vertex] == UNDEFINED && children > 1){
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:295..295
+   295                  graph->low[vertex]  = MIN(graph->low[vertex], graph->low[connectedVertex]);
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:295..295
+   295                  graph->low[vertex]  = MIN(graph->low[vertex], graph->low[connectedVertex]);
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:295..295
+   295                  graph->low[vertex]  = MIN(graph->low[vertex], graph->low[connectedVertex]);
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:288..288
+   288                  graph->parent[connectedVertex] = vertex;
+
+27: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:285..285
+   285              if (graph->visited[connectedVertex] == 0) {
+
+28: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:280..280
+   280          graph->disc[vertex] = graph->low[vertex] = ++time;
+
+29: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:280..280
+   280          graph->disc[vertex] = graph->low[vertex] = ++time;
+
+30: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:279..279
+   279          graph->visited[vertex] = 1;
+
+31: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:271..271
+   271          if (!graph->visited[vertex] && !flag) {
+
+32: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:265..265
+   265          struct node* adjList = graph->adjLists[vertex];
+
+33: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:251..251
+   251          graph->adjLists[vertex] = tmp->next;
+
+34: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:235..235
+   235                      graph->adjLists[tmp->vertex] = tmp2->next;
+
+35: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:235..235
+   235                      graph->adjLists[tmp->vertex] = tmp2->next;
+
+36: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:230..230
+   230          tmp2 =  graph->adjLists[tmp->vertex];
+
+37: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:230..230
+   230          tmp2 =  graph->adjLists[tmp->vertex];
+
+38: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:229..229
+   229          tmp = graph->adjLists[vertex];
+
+39: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:228..228
+   228      while (graph->adjLists[vertex] != NULL) {
+
+40: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:190..190
+   190      printf("%d\n", networks[i]);
+
+41: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:188..188
+   188          printf("%d ", networks[i]);
+
+42: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:181..181
+   181          networks[c++] = max+1;
+
+43: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:122..122
+   122              graph->adjLists[i] = tmp->next;
+
+44: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:121..121
+   121              tmp = graph->adjLists[i];
+
+45: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:120..120
+   120          while (graph->adjLists[i] != NULL) {
+
+46: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:106..106
+   106          if (!graph->visited[i])
+
+47: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:92..92
+    92          graph->visited[i] = 0;
+
+48: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:73..73
+    73          if (graph->ap[i] == 1){ 
+
+49: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:65..65
+    65          if (!graph->visited[i])
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:432..432
+   432      newNode->next = graph->adjLists[dest];
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:427..427
+   427      newNode->next = graph->adjLists[src];
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:316..316
+   316          struct node* adjList = graph->adjLists[vertex];
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:265..265
+   265          struct node* adjList = graph->adjLists[vertex];
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:228..228
+   228      while (graph->adjLists[vertex] != NULL) {
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:439..439
+   439          struct node* temp = graph->adjLists[v];
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:433..433
+   433      graph->adjLists[dest] = newNode;
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:432..432
+   432      newNode->next = graph->adjLists[dest];
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:428..428
+   428      graph->adjLists[src] = newNode;
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:427..427
+   427      newNode->next = graph->adjLists[src];
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:419..419
+   419          graph->parent[i] = UNDEFINED;
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:418..418
+   418          graph->visited[i] = 0;
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:417..417
+   417          graph->adjLists[i] = NULL;
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:330..330
+   330              if (graph->visited[connectedVertex] == 0) {
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:325..325
+   325          graph->visited[vertex] = 1;
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:319..319
+   319          if (!graph->visited[vertex] && !flag) {
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:316..316
+   316          struct node* adjList = graph->adjLists[vertex];
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:310..310
+   310                  graph->low[vertex] = MIN(graph->low[vertex],graph->disc[connectedVertex]);
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:310..310
+   310                  graph->low[vertex] = MIN(graph->low[vertex],graph->disc[connectedVertex]);
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:310..310
+   310                  graph->low[vertex] = MIN(graph->low[vertex],graph->disc[connectedVertex]);
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:309..309
+   309              else if (connectedVertex != graph->parent[vertex])
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:302..302
+   302                      graph->ap[vertex] = 1;
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:301..301
+   301                  if (graph->parent[vertex] != UNDEFINED && graph->low[connectedVertex] >= graph->disc[vertex]){   
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:301..301
+   301                  if (graph->parent[vertex] != UNDEFINED && graph->low[connectedVertex] >= graph->disc[vertex]){   
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:301..301
+   301                  if (graph->parent[vertex] != UNDEFINED && graph->low[connectedVertex] >= graph->disc[vertex]){   
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:298..298
+   298                      graph->ap[vertex] = 1;
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:297..297
+   297                  if (graph->parent[vertex] == UNDEFINED && children > 1){
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:295..295
+   295                  graph->low[vertex]  = MIN(graph->low[vertex], graph->low[connectedVertex]);
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:295..295
+   295                  graph->low[vertex]  = MIN(graph->low[vertex], graph->low[connectedVertex]);
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:295..295
+   295                  graph->low[vertex]  = MIN(graph->low[vertex], graph->low[connectedVertex]);
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:288..288
+   288                  graph->parent[connectedVertex] = vertex;
+
+27: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:285..285
+   285              if (graph->visited[connectedVertex] == 0) {
+
+28: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:280..280
+   280          graph->disc[vertex] = graph->low[vertex] = ++time;
+
+29: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:280..280
+   280          graph->disc[vertex] = graph->low[vertex] = ++time;
+
+30: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:279..279
+   279          graph->visited[vertex] = 1;
+
+31: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:271..271
+   271          if (!graph->visited[vertex] && !flag) {
+
+32: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:265..265
+   265          struct node* adjList = graph->adjLists[vertex];
+
+33: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:251..251
+   251          graph->adjLists[vertex] = tmp->next;
+
+34: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:235..235
+   235                      graph->adjLists[tmp->vertex] = tmp2->next;
+
+35: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:235..235
+   235                      graph->adjLists[tmp->vertex] = tmp2->next;
+
+36: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:230..230
+   230          tmp2 =  graph->adjLists[tmp->vertex];
+
+37: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:230..230
+   230          tmp2 =  graph->adjLists[tmp->vertex];
+
+38: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:229..229
+   229          tmp = graph->adjLists[vertex];
+
+39: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:228..228
+   228      while (graph->adjLists[vertex] != NULL) {
+
+40: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:190..190
+   190      printf("%d\n", networks[i]);
+
+41: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:188..188
+   188          printf("%d ", networks[i]);
+
+42: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:181..181
+   181          networks[c++] = max+1;
+
+43: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:122..122
+   122              graph->adjLists[i] = tmp->next;
+
+44: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:121..121
+   121              tmp = graph->adjLists[i];
+
+45: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:120..120
+   120          while (graph->adjLists[i] != NULL) {
+
+46: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:106..106
+   106          if (!graph->visited[i])
+
+47: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:92..92
+    92          graph->visited[i] = 0;
+
+48: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:73..73
+    73          if (graph->ap[i] == 1){ 
+
+49: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:65..65
+    65          if (!graph->visited[i])
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:432..432
+   432      newNode->next = graph->adjLists[dest];
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:427..427
+   427      newNode->next = graph->adjLists[src];
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:316..316
+   316          struct node* adjList = graph->adjLists[vertex];
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:265..265
+   265          struct node* adjList = graph->adjLists[vertex];
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg019/proj1ASAf.c:228..228
+   228      while (graph->adjLists[vertex] != NULL) {

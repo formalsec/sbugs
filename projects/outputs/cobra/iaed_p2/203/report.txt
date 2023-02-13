@@ -1,0 +1,48 @@
+=== Dangerous function calls lacking bounds checking ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/203/teams.c:161..161
+   161                  strcpy(current->next->team_name, tmp);
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/203/teams.c:160..160
+   160                  strcpy(current->team_name, current->next->team_name);
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/203/teams.c:159..159
+   159                  strcpy(tmp, current->team_name);
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/203/main.c:98..98
+    98  	strcpy(m_name, strtok(buffer, ":"));
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/203/main.c:29..29
+    29  	strcpy(team2, strtok(NULL, ":"));
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/203/main.c:28..28
+    28  	strcpy(team1, strtok(NULL, ":"));
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/203/main.c:27..27
+    27  	strcpy(m_name, strtok(buffer, ":"));
+=== Possibly missing sizeof() in memory allocation ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/203/teams.c:151..151
+   151      char *tmp = can_fail_malloc(MAX_BUFF);
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/203/main.c:95..95
+    95  	char *m_name = can_fail_malloc(MAX_BUFF);
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/203/main.c:25..25
+    25  	team2 = can_fail_malloc(MAX_BUFF);
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/203/main.c:24..24
+    24  	team1 = can_fail_malloc(MAX_BUFF);
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/203/main.c:23..23
+    23  	m_name = can_fail_malloc(MAX_BUFF);
+=== Source of memcpy is untrusted parameter ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/203/teams.c:20..20
+    20      memcpy(new_team->team_name, name, strlen(name)+1);
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/203/matches.c:13..13
+    13      memcpy(new_match->team2, m_team2, strlen(m_team2)+1);
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/203/matches.c:12..12
+    12      memcpy(new_match->team1, m_team1, strlen(m_team1)+1);
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/203/matches.c:11..11
+    11      memcpy(new_match->match_name, m_name, strlen(m_name)+1);

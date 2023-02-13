@@ -1,0 +1,305 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al135/asa_1p_2019_no_comments.c:278..278
+   278  		free(RedeCaracol->routers[i]);
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al135/asa_1p_2019_no_comments.c:275..275
+   275  			RedeCaracol->routers[i]->adj = aux_lig->next;
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al135/asa_1p_2019_no_comments.c:274..274
+   274  			aux_lig = RedeCaracol->routers[i]->adj;
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al135/asa_1p_2019_no_comments.c:273..273
+   273  		while(RedeCaracol->routers[i]->adj != NULL){
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al135/asa_1p_2019_no_comments.c:266..266
+   266  	printf("%d\n", sub_redes_rep[i]);
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al135/asa_1p_2019_no_comments.c:264..264
+   264  		printf("%d ",sub_redes_rep[i]);
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al135/asa_1p_2019_no_comments.c:257..257
+   257  			sub_redes_rep[sub_r_index] = RedeCaracol->routers[i]->id;
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al135/asa_1p_2019_no_comments.c:257..257
+   257  			sub_redes_rep[sub_r_index] = RedeCaracol->routers[i]->id;
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al135/asa_1p_2019_no_comments.c:256..256
+   256  		if(sub_redes_rep[sub_r_index] < RedeCaracol->routers[i]->id)
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al135/asa_1p_2019_no_comments.c:256..256
+   256  		if(sub_redes_rep[sub_r_index] < RedeCaracol->routers[i]->id)
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al135/asa_1p_2019_no_comments.c:255..255
+   255  		sub_r_index = RedeCaracol->routers[i]->sub_rede;
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al135/asa_1p_2019_no_comments.c:251..251
+   251  		sub_redes_rep[i] = -1;
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al135/asa_1p_2019_no_comments.c:237..237
+   237  		RedeCaracol->routers[i] = newRouter(i+1);
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al135/asa_1p_2019_no_comments.c:187..187
+   187  	router r = redeC->routers[r_index], stack_r;
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al135/asa_1p_2019_no_comments.c:179..179
+   179  			redeC->routers[i]->sub_rede = redeC->sub_redes;
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al135/asa_1p_2019_no_comments.c:178..178
+   178  		if(redeC->routers[i]->d == INT_MAX){
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al135/asa_1p_2019_no_comments.c:169..169
+   169          arr[k] = R[j];
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al135/asa_1p_2019_no_comments.c:169..169
+   169          arr[k] = R[j];
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al135/asa_1p_2019_no_comments.c:164..164
+   164          arr[k] = L[i];
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al135/asa_1p_2019_no_comments.c:164..164
+   164          arr[k] = L[i];
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al135/asa_1p_2019_no_comments.c:158..158
+   158              arr[k] = R[j];
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al135/asa_1p_2019_no_comments.c:158..158
+   158              arr[k] = R[j];
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al135/asa_1p_2019_no_comments.c:154..154
+   154              arr[k] = L[i];
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al135/asa_1p_2019_no_comments.c:154..154
+   154              arr[k] = L[i];
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al135/asa_1p_2019_no_comments.c:153..153
+   153          if (L[i] <= R[j]){
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al135/asa_1p_2019_no_comments.c:153..153
+   153          if (L[i] <= R[j]){
+
+27: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al135/asa_1p_2019_no_comments.c:146..146
+   146          R[j] = arr[m + 1+ j];
+
+28: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al135/asa_1p_2019_no_comments.c:146..146
+   146          R[j] = arr[m + 1+ j];
+
+29: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al135/asa_1p_2019_no_comments.c:146..146
+   146          R[j] = arr[m + 1+ j];
+
+30: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al135/asa_1p_2019_no_comments.c:144..144
+   144          L[i] = arr[l + i];
+
+31: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al135/asa_1p_2019_no_comments.c:144..144
+   144          L[i] = arr[l + i];
+
+32: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al135/asa_1p_2019_no_comments.c:144..144
+   144          L[i] = arr[l + i];
+
+33: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al135/asa_1p_2019_no_comments.c:141..141
+   141      int L[n1], R[n2];
+
+34: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al135/asa_1p_2019_no_comments.c:141..141
+   141      int L[n1], R[n2];
+
+35: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al135/asa_1p_2019_no_comments.c:65..65
+    65  	redeC->routers[r2]->adj = lig_r2;
+
+36: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al135/asa_1p_2019_no_comments.c:64..64
+    64  	lig_r2->next = redeC->routers[r2]->adj;
+
+37: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al135/asa_1p_2019_no_comments.c:63..63
+    63  	lig_r2->router_adj = redeC->routers[r1];
+
+38: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al135/asa_1p_2019_no_comments.c:61..61
+    61  	redeC->routers[r1]->adj = lig_r1;
+
+39: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al135/asa_1p_2019_no_comments.c:60..60
+    60  	lig_r1->next = redeC->routers[r1]->adj;
+
+40: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al135/asa_1p_2019_no_comments.c:59..59
+    59  	lig_r1->router_adj = redeC->routers[r2];
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al135/asa_1p_2019_no_comments.c:187..187
+   187  	router r = redeC->routers[r_index], stack_r;
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al135/asa_1p_2019_no_comments.c:146..146
+   146          R[j] = arr[m + 1+ j];
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al135/asa_1p_2019_no_comments.c:144..144
+   144          L[i] = arr[l + i];
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al135/asa_1p_2019_no_comments.c:60..60
+    60  	lig_r1->next = redeC->routers[r1]->adj;
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al135/asa_1p_2019_no_comments.c:59..59
+    59  	lig_r1->router_adj = redeC->routers[r2];
+cat: _CWE_416_.txt: No such file or directory
+cat: _CWE_805_.txt: No such file or directory
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:225..225
+   225  		printf("%d ", SubNetIds[j]);
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:216..216
+   216  	SubNetIds[idIndex]=V;
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:212..212
+   212  			SubNetIds[idIndex]=i;
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:210..210
+   210  		if (info[i].d == -1){
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:206..206
+   206  		info[i].tag = -1;
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:205..205
+   205  		info[i].d = -1;
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:196..196
+   196  	if (info[u].d == info[u].low) { /* raiz do SCC */
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:196..196
+   196  	if (info[u].d == info[u].low) { /* raiz do SCC */
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:192..192
+   192  			info[u].low = minimum(info[u].low, info[v].low);
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:192..192
+   192  			info[u].low = minimum(info[u].low, info[v].low);
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:192..192
+   192  			info[u].low = minimum(info[u].low, info[v].low);
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:190..190
+   190  			if (info[v].d == -1)
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:189..189
+   189  		if (info[v].d == -1 || info[v].tag == -1) {
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:189..189
+   189  		if (info[v].d == -1 || info[v].tag == -1) {
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:187..187
+   187  	for (x = graph->adj[u]; x != NULL; x = x->next) {
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:183..183
+   183  	info[u].d = info[u].low = visited;
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:183..183
+   183  	info[u].d = info[u].low = visited;
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:175..175
+   175  	IDs[nr_SCC] = min;
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:172..172
+   172  	info[x->value].tag = nr_SCC;
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:172..172
+   172  	info[x->value].tag = nr_SCC;
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:167..167
+   167  		info[x->value].tag = nr_SCC;
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:167..167
+   167  		info[x->value].tag = nr_SCC;
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:154..154
+   154  	graph->adj[u] = insertBegin(v, graph->adj[u]);
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:154..154
+   154  	graph->adj[u] = insertBegin(v, graph->adj[u]);
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:130..130
+   130  		graph->adj[i] = NULL;
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:102..102
+   102  		edges1[i] = edge1;
+
+27: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:101..101
+   101  		edges[i] = edge;
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:183..183
+   183  	info[u].d = info[u].low = visited;
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:225..225
+   225  		printf("%d ", SubNetIds[j]);
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:216..216
+   216  	SubNetIds[idIndex]=V;
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:212..212
+   212  			SubNetIds[idIndex]=i;
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:210..210
+   210  		if (info[i].d == -1){
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:206..206
+   206  		info[i].tag = -1;
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:205..205
+   205  		info[i].d = -1;
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:196..196
+   196  	if (info[u].d == info[u].low) { /* raiz do SCC */
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:196..196
+   196  	if (info[u].d == info[u].low) { /* raiz do SCC */
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:192..192
+   192  			info[u].low = minimum(info[u].low, info[v].low);
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:192..192
+   192  			info[u].low = minimum(info[u].low, info[v].low);
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:192..192
+   192  			info[u].low = minimum(info[u].low, info[v].low);
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:190..190
+   190  			if (info[v].d == -1)
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:189..189
+   189  		if (info[v].d == -1 || info[v].tag == -1) {
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:189..189
+   189  		if (info[v].d == -1 || info[v].tag == -1) {
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:187..187
+   187  	for (x = graph->adj[u]; x != NULL; x = x->next) {
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:183..183
+   183  	info[u].d = info[u].low = visited;
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:183..183
+   183  	info[u].d = info[u].low = visited;
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:175..175
+   175  	IDs[nr_SCC] = min;
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:172..172
+   172  	info[x->value].tag = nr_SCC;
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:172..172
+   172  	info[x->value].tag = nr_SCC;
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:167..167
+   167  		info[x->value].tag = nr_SCC;
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:167..167
+   167  		info[x->value].tag = nr_SCC;
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:154..154
+   154  	graph->adj[u] = insertBegin(v, graph->adj[u]);
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:154..154
+   154  	graph->adj[u] = insertBegin(v, graph->adj[u]);
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:130..130
+   130  		graph->adj[i] = NULL;
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:102..102
+   102  		edges1[i] = edge1;
+
+27: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:101..101
+   101  		edges[i] = edge;
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al112/Proj1.c:183..183
+   183  	info[u].d = info[u].low = visited;

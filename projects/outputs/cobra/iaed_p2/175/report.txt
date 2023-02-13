@@ -1,0 +1,210 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/jogos.c:390..390
+   390      ptr_jogo elem = head[0];
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/jogos.c:342..342
+   342      elem = h_jogo[h_indice];
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/jogos.c:341..341
+   341      h_indice = hash(nome_j, j);
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/jogos.c:336..336
+   336      ptr_jogo elem;
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/jogos.c:310..310
+   310              h_jogo[h_indice] -> last = NULL;
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/jogos.c:309..309
+   309              h_jogo[h_indice] = elem -> next;
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/jogos.c:305..305
+   305                  h_jogo[h_indice] = NULL;
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/jogos.c:301..301
+   301          if (elem == h_jogo[h_indice]) {
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/jogos.c:288..288
+   288      elem = h_jogo[h_indice];
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/jogos.c:287..287
+   287      h_indice = hash(nome_j, j);
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/jogos.c:282..282
+   282      ptr_jogo elem,anterior,proximo;
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/jogos.c:265..265
+   265      elem = h_jogo[h_indice];
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/jogos.c:264..264
+   264      h_indice = hash(nome_j, j);
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/jogos.c:261..261
+   261      ptr_jogo elem;
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/jogos.c:244..244
+   244          ptr_ord_jogo(h_jogo[h_indice_j],ptr_j);
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/jogos.c:231..231
+   231              h_jogo[h_indice_j] = ptr_j;
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/jogos.c:230..230
+   230              ptr_j -> next = h_jogo[h_indice_j];
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/jogos.c:229..229
+   229              h_jogo[h_indice_j] -> last = ptr_j;
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/jogos.c:228..228
+   228      else if (strcmp(h_jogo[h_indice_j]->nome, ptr_j->nome)>0) {
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/jogos.c:214..214
+   214              h_jogo[h_indice_j] = ptr_j;
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/jogos.c:213..213
+   213              ptr_j -> next = h_jogo[h_indice_j];
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/jogos.c:212..212
+   212              h_jogo[h_indice_j] -> last = ptr_j;
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/jogos.c:211..211
+   211          else if (strcmp(h_jogo[h_indice_j]->nome,ptr_j ->nome)>0){
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/jogos.c:198..198
+   198              h_jogo[h_indice_j] -> next = ptr_j;
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/jogos.c:197..197
+   197              ptr_j -> last = h_jogo[h_indice_j];
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/jogos.c:196..196
+   196          if (strcmp(h_jogo[h_indice_j]->nome,ptr_j ->nome)<0 ){
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/jogos.c:194..194
+   194  else if (h_jogo[h_indice_j] != NULL && h_jogo[h_indice_j] -> next == NULL) {
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/jogos.c:194..194
+   194  else if (h_jogo[h_indice_j] != NULL && h_jogo[h_indice_j] -> next == NULL) {
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/jogos.c:180..180
+   180          h_jogo[h_indice_j] = ptr_j;
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/jogos.c:179..179
+   179      if (h_jogo[h_indice_j] == NULL) {
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/jogos.c:165..165
+   165      p_equipa2 = devolve_ptr_e (h_equipa[h_indice_e],n_equipa2);
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/jogos.c:164..164
+   164      h_indice_e = hash(n_equipa2,e);
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/jogos.c:155..155
+   155      p_equipa1 = devolve_ptr_e (h_equipa[h_indice_e],n_equipa1);
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/jogos.c:149..149
+   149      if(h_jogo[h_indice_j] != NULL && aux != NULL) {
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/jogos.c:146..146
+   146      aux = percorre_fila (h_jogo[h_indice_j],ptr_j->nome);
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/jogos.c:145..145
+   145      h_indice_j = hash(ptr_j ->nome,j);
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/jogos.c:139..139
+   139      ptr_jogo ptr_j,aux;
+
+38: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/jogos.c:138..138
+   138      ptr_equipa p_equipa1, p_equipa2;
+
+39: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/jogos.c:37..37
+    37      ptr_jogo elem;
+
+40: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/jogos.c:24..24
+    24          elem = h_jogo[i];
+
+41: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/jogos.c:22..22
+    22      ptr_jogo elem,aux;
+
+42: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/jogos.c:11..11
+    11      for (i = 0; i < j; i++) h_jogo[i] = NULL;
+
+43: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/equipas.c:327..327
+   327      ptr_equipa elem = head[0];
+
+44: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/equipas.c:310..310
+   310      elem = h_equipa[h_indice];
+
+45: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/equipas.c:309..309
+   309      h_indice = hash(nome_e, e);
+
+46: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/equipas.c:306..306
+   306      ptr_equipa elem;
+
+47: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/equipas.c:292..292
+   292          valor = ptr_ord_equipa(h_equipa[h_indice],ptr_e);
+
+48: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/equipas.c:287..287
+   287              h_equipa[h_indice] = ptr_e;
+
+49: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/equipas.c:286..286
+   286              ptr_e -> next = h_equipa[h_indice];
+
+50: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/equipas.c:285..285
+   285      else if (strcmp(h_equipa[h_indice]->nome,ptr_e->nome)>0) {
+
+51: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/equipas.c:274..274
+   274              h_equipa[h_indice] = ptr_e;
+
+52: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/equipas.c:273..273
+   273              ptr_e -> next = h_equipa[h_indice];
+
+53: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/equipas.c:272..272
+   272          else if (strcmp(h_equipa[h_indice]->nome,ptr_e ->nome)>0){
+
+54: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/equipas.c:268..268
+   268              h_equipa[h_indice] -> next = ptr_e;
+
+55: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/equipas.c:267..267
+   267          if (strcmp(h_equipa[h_indice]->nome,ptr_e ->nome)<0 ){
+
+56: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/equipas.c:266..266
+   266      else if (h_equipa[h_indice] != NULL && h_equipa[h_indice] -> next == NULL) {
+
+57: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/equipas.c:266..266
+   266      else if (h_equipa[h_indice] != NULL && h_equipa[h_indice] -> next == NULL) {
+
+58: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/equipas.c:261..261
+   261          h_equipa[h_indice] = ptr_e;
+
+59: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/equipas.c:260..260
+   260      if (h_equipa[h_indice] == NULL) {
+
+60: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/equipas.c:258..258
+   258      h_indice = hash(ptr_e -> nome,e);
+
+61: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/equipas.c:247..247
+   247      ptr_equipa ptr_e;
+
+62: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/equipas.c:192..192
+   192      ptr_equipa proximo;
+
+63: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/equipas.c:134..134
+   134      ptr_equipa anterior,proximo;
+
+64: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/equipas.c:108..108
+   108      ptr_equipa elem;
+
+65: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/equipas.c:82..82
+    82      ptr_equipa elem;
+
+66: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/equipas.c:66..66
+    66      ptr_equipa elem;
+
+67: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/equipas.c:37..37
+    37      ptr_equipa elem;
+
+68: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/equipas.c:24..24
+    24          elem = h_equipa[i];
+
+69: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/equipas.c:22..22
+    22      ptr_equipa elem,aux;
+
+70: /home/fmarques/sbugs/projects/alunos/iaed_p2/175/equipas.c:11..11
+    11      for (i = 0; i < e; i++) h_equipa[i] = NULL;

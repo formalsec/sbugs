@@ -1,0 +1,94 @@
+cat: _CWE_416_.txt: No such file or directory
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al117/Projeto1.c:106..106
+   106          printf("%d\n", graph[i].nota);
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al117/Projeto1.c:98..98
+    98              visitNode(graph[node].amigos[i], graph[node].nota);
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al117/Projeto1.c:98..98
+    98              visitNode(graph[node].amigos[i], graph[node].nota);
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al117/Projeto1.c:98..98
+    98              visitNode(graph[node].amigos[i], graph[node].nota);
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al117/Projeto1.c:96..96
+    96          if(graph[graph[node].amigos[i]].nota < graph[node].nota ){
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al117/Projeto1.c:96..96
+    96          if(graph[graph[node].amigos[i]].nota < graph[node].nota ){
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al117/Projeto1.c:96..96
+    96          if(graph[graph[node].amigos[i]].nota < graph[node].nota ){
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al117/Projeto1.c:96..96
+    96          if(graph[graph[node].amigos[i]].nota < graph[node].nota ){
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al117/Projeto1.c:96..96
+    96          if(graph[graph[node].amigos[i]].nota < graph[node].nota ){
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al117/Projeto1.c:95..95
+    95      for(i = 0; i<graph[node].nAmigos; i++){
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al117/Projeto1.c:94..94
+    94      graph[node].cor = BLACK;
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al117/Projeto1.c:92..92
+    92          graph[node].nota = nota;
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al117/Projeto1.c:91..91
+    91      if(nota > graph[node].nota){
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al117/Projeto1.c:82..82
+    82          if(graph[i].cor == WHITE){
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al117/Projeto1.c:76..76
+    76      graph[aluno].nAmigos++;
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al117/Projeto1.c:75..75
+    75      graph[aluno].amigos[graph[aluno].nAmigos] = amigo;
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al117/Projeto1.c:75..75
+    75      graph[aluno].amigos[graph[aluno].nAmigos] = amigo;
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al117/Projeto1.c:75..75
+    75      graph[aluno].amigos[graph[aluno].nAmigos] = amigo;
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al117/Projeto1.c:75..75
+    75      graph[aluno].amigos[graph[aluno].nAmigos] = amigo;
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al117/Projeto1.c:73..73
+    73          graph[aluno].amigos = can_fail_realloc(graph[aluno].amigos, (graph[aluno].nAmigos+1)*sizeof(int));
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al117/Projeto1.c:73..73
+    73          graph[aluno].amigos = can_fail_realloc(graph[aluno].amigos, (graph[aluno].nAmigos+1)*sizeof(int));
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al117/Projeto1.c:73..73
+    73          graph[aluno].amigos = can_fail_realloc(graph[aluno].amigos, (graph[aluno].nAmigos+1)*sizeof(int));
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al117/Projeto1.c:70..70
+    70  		graph[aluno].amigos = can_fail_malloc(sizeof(int));
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al117/Projeto1.c:69..69
+    69      if(graph[aluno].nAmigos==0){
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al117/Projeto1.c:62..62
+    62      graph[aluno].amigos = NULL;
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al117/Projeto1.c:61..61
+    61      graph[aluno].nAmigos = 0;
+
+27: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al117/Projeto1.c:60..60
+    60      graph[aluno].cor = WHITE;
+
+28: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al117/Projeto1.c:59..59
+    59      graph[aluno].nota = nota;
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al117/Projeto1.c:91..91
+    91      if(nota > graph[node].nota){
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al117/Projeto1.c:69..69
+    69      if(graph[aluno].nAmigos==0){
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al117/Projeto1.c:59..59
+    59      graph[aluno].nota = nota;

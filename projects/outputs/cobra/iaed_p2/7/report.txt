@@ -1,0 +1,222 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/Team.c:9..9
+     9  	Team new_team = can_fail_malloc(sizeof(struct team));
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/project2.c:113..113
+   113  	DBMS dbms = dbms_init(/*HASHMAX 983*/ 983);
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/project2.c:89..89
+    89  	char team_name[MAXSTRINGSIZE];
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/project2.c:76..76
+    76  	char team_name[MAXSTRINGSIZE];
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/project2.c:61..61
+    61  	char match_name[MAXSTRINGSIZE];
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/project2.c:48..48
+    48  	char match_name[MAXSTRINGSIZE];
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/project2.c:36..36
+    36  	char match_name[MAXSTRINGSIZE];
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/project2.c:15..15
+    15  		 team2[MAXSTRINGSIZE];
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/project2.c:14..14
+    14  		 team1[MAXSTRINGSIZE],
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/project2.c:13..13
+    13  	char match_name[MAXSTRINGSIZE],
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/Match.c:11..11
+    11  	Match new_match = can_fail_malloc(sizeof(struct match));
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:513..513
+   513  		destroy_match_list(heads[i]);
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:493..493
+   493  	m_link current, aux;
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:487..487
+   487  		destroy_team_list(heads[i]);
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:474..474
+   474  	t_link current, aux;
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:470..470
+   470  	heads[i] = remove_t_node(heads[i], k);
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:470..470
+   470  	heads[i] = remove_t_node(heads[i], k);
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:469..469
+   469  	uint i = hash(k, M);
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:456..456
+   456  	t_link curr, prev;
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:442..442
+   442  		curr_team = team_list[j];
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:431..431
+   431  				team_list[j] = current->team;
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:429..429
+   429  		for (current = db->teams_table[i]; current ; current = current->next) {
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:415..415
+   415  		for (current = db->teams_table[i]; current; current = current->next) {
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:406..406
+   406  	Team curr_team;
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:405..405
+   405  	t_link current;
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:403..403
+   403  	DB db = dbms->db;
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:396..396
+   396      const Team team2 = (*(const Team *) t2);
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:395..395
+   395      const Team team1 = (*(const Team *) t1); 
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:378..378
+   378  	Match curr_match;
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:377..377
+   377  	m_link head = db->matches_list->head;
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:376..376
+   376  	DB db = dbms->db;
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:355..355
+   355  	Match match = search_match(db->matches_table, match_name, dbms->M);
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:354..354
+   354  	DB db = dbms->db;
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:350..350
+   350  	heads[i] = remove_m_node(heads[i], list, k);
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:350..350
+   350  	heads[i] = remove_m_node(heads[i], list, k);
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:349..349
+   349  	uint i = hash(k, M);
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:321..321
+   321  	m_link curr, prev;
+
+38: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:305..305
+   305  	m_link oldTail;
+
+39: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:290..290
+   290  	m_link oldHead ;
+
+40: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:261..261
+   261  	Team old_winning_team = NULL, 
+
+41: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:260..260
+   260  	Match match = search_match(db->matches_table, match_name, dbms->M);
+
+42: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:259..259
+   259  	DB db = dbms->db;
+
+43: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:247..247
+   247  	Team winning_team = NULL;
+
+44: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:236..236
+   236  	Match match = search_match(db->matches_table, match_name, dbms->M);
+
+45: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:235..235
+   235  	DB db = dbms->db;
+
+46: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:224..224
+   224  	Team team = search_team(db->teams_table, team_name, dbms->M);
+
+47: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:223..223
+   223  	DB db = dbms->db;
+
+48: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:208..208
+   208  	Team team;
+
+49: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:207..207
+   207  	DB db = dbms->db;
+
+50: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:203..203
+   203  	T_HT_head[i] = push_team_node(T_HT_head[i], team);
+
+51: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:203..203
+   203  	T_HT_head[i] = push_team_node(T_HT_head[i], team);
+
+52: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:202..202
+   202  	uint i = hash(team->name, max);
+
+53: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:182..182
+   182  	Team team2 = search_team(db->teams_table, team2_name, dbms->M);
+
+54: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:181..181
+   181  	Team team1 = search_team(db->teams_table, team1_name, dbms->M);
+
+55: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:179..179
+   179  	Match match;
+
+56: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:178..178
+   178  	DB db = dbms->db;
+
+57: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:166..166
+   166  	MT_head[i] = aux;
+
+58: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:164..164
+   164  	m_link aux = push_match_node(MT_head[i],list->tail, match);
+
+59: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:164..164
+   164  	m_link aux = push_match_node(MT_head[i],list->tail, match);
+
+60: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:163..163
+   163  	uint i = hash(match->name, max);
+
+61: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:154..154
+   154  	return search_team_list(T_HT_head[i], key);
+
+62: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:153..153
+   153  	uint i = hash(key, max);
+
+63: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:144..144
+   144  	t_link current;
+
+64: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:137..137
+   137  	t_link aux = new_team_node(t, head);
+
+65: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:128..128
+   128  	t_link new_t_link = can_fail_malloc(sizeof(struct t_node));
+
+66: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:120..120
+   120  	return search_match_list(MT_head[i], key);
+
+67: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:119..119
+   119  	uint i = hash(key, max);
+
+68: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:110..110
+   110  	m_link current;
+
+69: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:102..102
+   102  	m_link aux = new_match_node(m, ht_head, l_tail);
+
+70: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:87..87
+    87  	m_link new_m_link = can_fail_malloc(sizeof(struct m_node));
+
+71: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:65..65
+    65  	DBMS dbms = can_fail_malloc(sizeof(struct dbms));
+
+72: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:58..58
+    58  		heads[i] = NULL;
+
+73: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:39..39
+    39  		heads[i] = NULL;
+
+74: /home/fmarques/sbugs/projects/alunos/iaed_p2/7/dbms.c:9..9
+     9  	DB db = can_fail_malloc(sizeof(struct db));

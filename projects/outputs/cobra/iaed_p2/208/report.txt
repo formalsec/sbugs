@@ -1,0 +1,87 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/208/proj2_v2.c:873..873
+   873          if((tolower(a[i]) > tolower(b[i]))){
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/208/proj2_v2.c:873..873
+   873          if((tolower(a[i]) > tolower(b[i]))){
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/208/proj2_v2.c:870..870
+   870          if((tolower(a[i]) == tolower(b[i]))){
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/208/proj2_v2.c:870..870
+   870          if((tolower(a[i]) == tolower(b[i]))){
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/208/proj2_v2.c:860..860
+   860      size_t len = 0;
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/208/proj2_v2.c:803..803
+   803      size_t len = 0, len_next = 0;
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/208/proj2_v2.c:783..783
+   783      buffer[length] = '\0';
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/208/proj2_v2.c:776..776
+   776          buffer[length] = c;
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/208/proj2_v2.c:766..766
+   766      size_t capacity = 4096, length = 0;
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/208/proj2_v2.c:705..705
+   705      size_t len = 0;
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/208/proj2_v2.c:566..566
+   566      size_t len = 0;
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/208/proj2_v2.c:446..446
+   446      size_t length = 0;
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/208/proj2_v2.c:193..193
+   193          link_list_destroy(heads[i]);
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/208/proj2_v2.c:186..186
+   186      return link_list_searchTeam(heads[i], team_name);
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/208/proj2_v2.c:185..185
+   185      int i = hash(game_name, M);
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/208/proj2_v2.c:181..181
+   181      return link_list_search(heads[i], nome);
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/208/proj2_v2.c:180..180
+   180      int i = hash(nome, M);
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/208/proj2_v2.c:176..176
+   176      return link_list_delete(heads[i], nome);
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/208/proj2_v2.c:175..175
+   175      int i = hash(nome, M);
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/208/proj2_v2.c:171..171
+   171      heads[i] = link_list_push(heads[i], j);
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/208/proj2_v2.c:171..171
+   171      heads[i] = link_list_push(heads[i], j);
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/208/proj2_v2.c:170..170
+   170      int i = hash(j->_nome_, M);
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/208/proj2_v2.c:156..156
+   156          heads[i] = NULL;
+=== Dangerous function calls lacking bounds checking ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/208/proj2_v2.c:841..841
+   841      strcpy(b->teamName, team_name);
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/208/proj2_v2.c:840..840
+   840      strcpy(a->teamName, b->teamName);
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/208/proj2_v2.c:839..839
+   839      strcpy(team_name, a->teamName);
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/208/proj2_v2.c:426..426
+   426      strcpy(current->next->gameName, game_name);
+=== Possibly missing sizeof() in memory allocation ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/208/proj2_v2.c:449..449
+   449      Jogo *novoJogo = can_fail_mallocJogo();
+=== Potentially uninitialized variable ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/208/proj2_v2.c:665..665
+   665      if(*jogo->_scoreA_ > *jogo->_scoreB_){

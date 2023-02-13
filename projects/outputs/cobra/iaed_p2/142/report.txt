@@ -1,0 +1,186 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/j.c:276..276
+   276      char nome[MAXIJOGO];
+
+2: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/j.c:265..265
+   265              hashtable->array[i] = a->next;
+
+3: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/j.c:264..264
+   264          if(a == hashtable->array[i])
+
+4: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/j.c:254..254
+   254          for(a = hashtable->array[i]; a!=NULL; a=a->next)
+
+5: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/j.c:235..235
+   235      i = hash(nome, hashtable->size);
+
+6: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/j.c:230..230
+   230      char nome[MAXIJOGO];
+
+7: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/j.c:220..220
+   220          for(jogo = hashtable->array[i]; jogo!=NULL; jogo=jogo->next)
+
+8: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/j.c:212..212
+   212      i = hash(nome, hashtable->size);
+
+9: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/j.c:207..207
+   207      char nome[MAXIJOGO];
+
+10: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/j.c:152..152
+   152      char key[MAXIJOGO], eq1[MAXIJOGO], eq2[MAXIJOGO];
+
+11: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/j.c:152..152
+   152      char key[MAXIJOGO], eq1[MAXIJOGO], eq2[MAXIJOGO];
+
+12: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/j.c:152..152
+   152      char key[MAXIJOGO], eq1[MAXIJOGO], eq2[MAXIJOGO];
+
+13: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/j.c:128..128
+   128      List *tmp = hashtable->array[i];
+
+14: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/j.c:127..127
+   127      unsigned int i = hash(nome, hashtable->size);
+
+15: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/j.c:117..117
+   117      List *tmp = hashtable->array[i];
+
+16: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/j.c:116..116
+   116      unsigned int i = hash(key, hashtable->size);
+
+17: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/j.c:110..110
+   110      hashtable->array[i] = jogo;
+
+18: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/j.c:109..109
+   109      jogo->next = hashtable->array[i];
+
+19: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/j.c:108..108
+   108          hashtable->array[i]->previous = jogo;
+
+20: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/j.c:107..107
+   107      if(hashtable->array[i]!=NULL)
+
+21: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/j.c:106..106
+   106      i = hash(jogo->key, hashtable->size);
+
+22: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/j.c:90..90
+    90          tmp = hashtable->array[i];
+
+23: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/j.c:89..89
+    89          i = hash(key, hashtable->size);
+
+24: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/eq.c:226..226
+   226          free(tab[x]);
+
+25: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/eq.c:224..224
+   224          printf("%d * %s\n", NL, tab[x]);
+
+26: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/eq.c:217..217
+   217                  strcpy(tab[y],tmp);
+
+27: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/eq.c:216..216
+   216                  tab[y] = can_fail_realloc(tab[y], (strlen(tmp)+1));
+
+28: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/eq.c:216..216
+   216                  tab[y] = can_fail_realloc(tab[y], (strlen(tmp)+1));
+
+29: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/eq.c:215..215
+   215                  strcpy(tab[x],tab[y]);
+
+30: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/eq.c:215..215
+   215                  strcpy(tab[x],tab[y]);
+
+31: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/eq.c:214..214
+   214                  tab[x] = can_fail_realloc(tab[x], (strlen(tab[y])+1));
+
+32: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/eq.c:214..214
+   214                  tab[x] = can_fail_realloc(tab[x], (strlen(tab[y])+1));
+
+33: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/eq.c:214..214
+   214                  tab[x] = can_fail_realloc(tab[x], (strlen(tab[y])+1));
+
+34: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/eq.c:213..213
+   213                  strcpy(tmp,tab[x]);
+
+35: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/eq.c:212..212
+   212                  tmp = can_fail_malloc(sizeof(char)*(strlen(tab[x])+1));
+
+36: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/eq.c:210..210
+   210              if(strcmp(tab[x],tab[y])>0)
+
+37: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/eq.c:210..210
+   210              if(strcmp(tab[x],tab[y])>0)
+
+38: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/eq.c:199..199
+   199                  strcpy(tab[k],m->nome);
+
+39: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/eq.c:198..198
+   198                  tab[k] = can_fail_malloc(sizeof(char)*(strlen(m->nome)+1));
+
+40: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/eq.c:194..194
+   194          for(m = hashtable->array[i]; m != NULL; m=m->next)
+
+41: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/eq.c:173..173
+   173          for(m = hashtable->array[i]; m != NULL; m=m->next)
+
+42: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/eq.c:166..166
+   166      size_t i;
+
+43: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/eq.c:149..149
+   149      char nome[MAXIJOGO];
+
+44: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/eq.c:131..131
+   131      char nome[MAXIJOGO];
+
+45: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/eq.c:121..121
+   121              ht->array[i]=a;
+
+46: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/eq.c:120..120
+   120              free(ht->array[i]);
+
+47: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/eq.c:119..119
+   119              a= ht->array[i]->next;
+
+48: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/eq.c:117..117
+   117          while (ht->array[i])
+
+49: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/eq.c:114..114
+   114      size_t i;
+
+50: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/eq.c:95..95
+    95      for(m = hashtable->array[i]; m != NULL; m=m->next)
+
+51: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/eq.c:93..93
+    93      int i = hash(nome, hashtable->size);
+
+52: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/eq.c:86..86
+    86      hashtable->array[i] = eq;
+
+53: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/eq.c:85..85
+    85      eq->next = hashtable->array[i];
+
+54: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/eq.c:82..82
+    82      i = hash(eq->nome, hashtable->size);
+
+55: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/eq.c:70..70
+    70      equipa *tmp = hashtable->array[i];
+
+56: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/eq.c:69..69
+    69      unsigned int i = hash(key, hashtable->size);
+
+57: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/eq.c:53..53
+    53      equipa *tmp = hashtable->array[i];
+
+58: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/eq.c:52..52
+    52      unsigned int i = hash(nome, hashtable->size);
+
+59: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/eq.c:36..36
+    36      equipa *tmp = hashtable->array[i];
+
+60: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/eq.c:35..35
+    35      unsigned int i = hash(nome, hashtable->size);
+
+61: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/eq.c:17..17
+    17                  hash = (hash + key[i]) % size;
+
+62: /home/fmarques/sbugs/projects/alunos/iaed_p2/142/eq.c:16..16
+    16          while (key && key[i]) {

@@ -1,0 +1,138 @@
+=== Array-index variable with unchecked min/max value ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp033/Proj1ASA.c:320..320
+   320          printf("%d\n", graph->heads[j]->currentGrade);
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp033/Proj1ASA.c:314..314
+   314  				graph->heads[k]->currentGrade = maxGrade;
+
+3: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp033/Proj1ASA.c:313..313
+   313      		if(graph->heads[k]->scc_id == i) {
+
+4: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp033/Proj1ASA.c:308..308
+   308      				maxGrade = graph->heads[j]->currentGrade;
+
+5: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp033/Proj1ASA.c:307..307
+   307      			if(graph->heads[j]->currentGrade > maxGrade) {
+
+6: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp033/Proj1ASA.c:306..306
+   306      		if(graph->heads[j]->scc_id == i) {
+
+7: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp033/Proj1ASA.c:280..280
+   280      int unused __attribute__((unused));
+
+8: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp033/Proj1ASA.c:271..271
+   271          graph->heads[n]->min=minTemp;
+
+9: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp033/Proj1ASA.c:269..269
+   269          while (popValue != graph->heads[n]->routerNumber);
+
+10: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp033/Proj1ASA.c:267..267
+   267              graph->heads[popValue- 1]->root=graph->heads[n]->routerNumber;
+
+11: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp033/Proj1ASA.c:267..267
+   267              graph->heads[popValue- 1]->root=graph->heads[n]->routerNumber;
+
+12: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp033/Proj1ASA.c:266..266
+   266              graph->heads[popValue- 1]->scc_id=idAtual;
+
+13: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp033/Proj1ASA.c:257..257
+   257              graph->heads[stack_aux->top-1]->instack=0;
+
+14: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp033/Proj1ASA.c:257..257
+   257              graph->heads[stack_aux->top-1]->instack=0;
+
+15: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp033/Proj1ASA.c:254..254
+   254          int minTemp=graph->heads[n]->routerNumber;
+
+16: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp033/Proj1ASA.c:252..252
+   252      if(graph->heads[n]->discoveryTime==graph->heads[n]->low){
+
+17: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp033/Proj1ASA.c:252..252
+   252      if(graph->heads[n]->discoveryTime==graph->heads[n]->low){
+
+18: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp033/Proj1ASA.c:242..242
+   242              graph->heads[n]->low=min(graph->heads[n]->low,graph->heads[number- 1]->low);
+
+19: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp033/Proj1ASA.c:242..242
+   242              graph->heads[n]->low=min(graph->heads[n]->low,graph->heads[number- 1]->low);
+
+20: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp033/Proj1ASA.c:242..242
+   242              graph->heads[n]->low=min(graph->heads[n]->low,graph->heads[number- 1]->low);
+
+21: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp033/Proj1ASA.c:238..238
+   238              if(graph->heads[number-1]->discoveryTime==-1 ){
+
+22: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp033/Proj1ASA.c:237..237
+   237          if(graph->heads[number-1]->discoveryTime==-1||graph->heads[number-1]->instack==1){
+
+23: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp033/Proj1ASA.c:237..237
+   237          if(graph->heads[number-1]->discoveryTime==-1||graph->heads[number-1]->instack==1){
+
+24: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp033/Proj1ASA.c:230..230
+   230      struct edge* ptr=graph->heads[n]->adjVertex;
+
+25: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp033/Proj1ASA.c:228..228
+   228      graph->heads[n]->currentGrade=grades.array[n];
+
+26: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp033/Proj1ASA.c:228..228
+   228      graph->heads[n]->currentGrade=grades.array[n];
+
+27: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp033/Proj1ASA.c:227..227
+   227      graph->heads[n]->instack=1;
+
+28: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp033/Proj1ASA.c:226..226
+   226      push(graph->heads[n]->routerNumber);
+
+29: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp033/Proj1ASA.c:224..224
+   224      graph->heads[n]->low=time;
+
+30: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp033/Proj1ASA.c:223..223
+   223      graph->heads[n]->discoveryTime=time;
+
+31: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp033/Proj1ASA.c:211..211
+   211          if(graph->heads[i]->discoveryTime==-1){
+
+32: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp033/Proj1ASA.c:203..203
+   203      graph->heads[source-1]->adjVertex=newNode;
+
+33: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp033/Proj1ASA.c:202..202
+   202      newNode->nextEdge=graph->heads[source-1]->adjVertex;
+
+34: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp033/Proj1ASA.c:166..166
+   166          graph->heads[i]=newRouter(i+1);
+
+35: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp033/Proj1ASA.c:154..154
+   154          stack_aux->top=stack_aux->elements[stack_aux->number-2];
+
+36: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp033/Proj1ASA.c:154..154
+   154          stack_aux->top=stack_aux->elements[stack_aux->number-2];
+
+37: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp033/Proj1ASA.c:152..152
+   152      valueRouterNumber = graph->heads[stack_aux->top - 1]->routerNumber;
+
+38: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp033/Proj1ASA.c:152..152
+   152      valueRouterNumber = graph->heads[stack_aux->top - 1]->routerNumber;
+
+39: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp033/Proj1ASA.c:140..140
+   140      stack_aux->elements[stack_aux->number]=router;
+
+40: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp033/Proj1ASA.c:140..140
+   140      stack_aux->elements[stack_aux->number]=router;
+
+41: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp033/Proj1ASA.c:114..114
+   114    a->array[a->used++] = element;
+
+42: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp033/Proj1ASA.c:114..114
+   114    a->array[a->used++] = element;
+
+43: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp033/Proj1ASA.c:23..23
+    23    size_t size;
+
+44: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp033/Proj1ASA.c:22..22
+    22    size_t used;
+=== Unchecked parameter value used in array index ===
+1: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp033/Proj1ASA.c:223..223
+   223      graph->heads[n]->discoveryTime=time;
+
+2: /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp033/Proj1ASA.c:202..202
+   202      newNode->nextEdge=graph->heads[source-1]->adjVertex;
