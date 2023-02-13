@@ -1,0 +1,13 @@
+Checking /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al099/main.c ...
+/home/fmarques/sbugs/projects/alunos/asa_1920_p2/al099/main.c:116:12: warning: Non-local variable 'citList[j]' will use pointer to local variable 't'. [danglingLifetime]
+    citList[j] = &t;
+           ^
+/home/fmarques/sbugs/projects/alunos/asa_1920_p2/al099/main.c:116:18: note: Address of variable taken here.
+    citList[j] = &t;
+                 ^
+/home/fmarques/sbugs/projects/alunos/asa_1920_p2/al099/main.c:114:10: note: Variable created here.
+    cruz t = *citList[i];
+         ^
+/home/fmarques/sbugs/projects/alunos/asa_1920_p2/al099/main.c:116:12: note: Non-local variable 'citList[j]' will use pointer to local variable 't'.
+    citList[j] = &t;
+           ^

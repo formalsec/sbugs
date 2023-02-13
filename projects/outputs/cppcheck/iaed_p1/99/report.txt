@@ -1,0 +1,31 @@
+Checking /home/fmarques/sbugs/projects/alunos/iaed_p1/99/proj1.c ...
+/home/fmarques/sbugs/projects/alunos/iaed_p1/99/proj1.c:723:48: warning: Array 'orders[ido].products[200][2]' accessed at index orders[ido].products[499][0], which is out of bounds. [arrayIndexOutOfBounds]
+                        if(orders[ido].products[i][0] != NONEXIST){
+                                               ^
+/home/fmarques/sbugs/projects/alunos/iaed_p1/99/proj1.c:732:48: warning: Array 'orders[ido].products[200][2]' accessed at index orders[ido].products[500][0], which is out of bounds. [arrayIndexOutOfBounds]
+                        if(orders[ido].products[i][0] == NONEXIST)
+                                               ^
+/home/fmarques/sbugs/projects/alunos/iaed_p1/99/proj1.c:722:21: note: After for loop, i has value 500
+                    for(i = 0;nbprdcts != 0 && orders[ido].products[i][0] != idp && i < MORD;i++){
+                    ^
+/home/fmarques/sbugs/projects/alunos/iaed_p1/99/proj1.c:732:48: note: Array index out of bounds
+                        if(orders[ido].products[i][0] == NONEXIST)
+                                               ^
+/home/fmarques/sbugs/projects/alunos/iaed_p1/99/proj1.c:735:45: warning: Array 'orders[ido].products[200][2]' accessed at index orders[ido].products[500][0], which is out of bounds. [arrayIndexOutOfBounds]
+                        orders[ido].products[i][0] = idp;
+                                            ^
+/home/fmarques/sbugs/projects/alunos/iaed_p1/99/proj1.c:722:21: note: After for loop, i has value 500
+                    for(i = 0;nbprdcts != 0 && orders[ido].products[i][0] != idp && i < MORD;i++){
+                    ^
+/home/fmarques/sbugs/projects/alunos/iaed_p1/99/proj1.c:735:45: note: Array index out of bounds
+                        orders[ido].products[i][0] = idp;
+                                            ^
+/home/fmarques/sbugs/projects/alunos/iaed_p1/99/proj1.c:737:45: warning: Array 'orders[ido].products[200][2]' accessed at index orders[ido].products[500][1], which is out of bounds. [arrayIndexOutOfBounds]
+                        orders[ido].products[i][1] += qtd;
+                                            ^
+/home/fmarques/sbugs/projects/alunos/iaed_p1/99/proj1.c:722:21: note: After for loop, i has value 500
+                    for(i = 0;nbprdcts != 0 && orders[ido].products[i][0] != idp && i < MORD;i++){
+                    ^
+/home/fmarques/sbugs/projects/alunos/iaed_p1/99/proj1.c:737:45: note: Array index out of bounds
+                        orders[ido].products[i][1] += qtd;
+                                            ^

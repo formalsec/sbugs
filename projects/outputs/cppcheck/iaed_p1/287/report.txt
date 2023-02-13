@@ -1,0 +1,28 @@
+Checking /home/fmarques/sbugs/projects/alunos/iaed_p1/287/proj1.c ...
+/home/fmarques/sbugs/projects/alunos/iaed_p1/287/proj1.c:130:25: warning: Array 'vec_prod[e].descricao[63]' accessed at index 63, which is out of bounds. [arrayIndexOutOfBounds]
+   vec_prod[e].descricao[i] = '\0';
+                        ^
+/home/fmarques/sbugs/projects/alunos/iaed_p1/287/proj1.c:127:4: note: After for loop, i has value 63
+   for (i = 0; i < max_descricao; i++){   /* o identificador do produto ? sempre igual ao indice do vetor onde os produtos sao guardados*/
+   ^
+/home/fmarques/sbugs/projects/alunos/iaed_p1/287/proj1.c:130:25: note: Array index out of bounds
+   vec_prod[e].descricao[i] = '\0';
+                        ^
+/home/fmarques/sbugs/projects/alunos/iaed_p1/287/proj1.c:134:39: warning: Array 'vec_prod[10000]' accessed at index 10000, which is out of bounds. [arrayIndexOutOfBounds]
+ printf("Novo produto %d.\n", vec_prod[e].identificador);  /*faco o print pedido*/
+                                      ^
+/home/fmarques/sbugs/projects/alunos/iaed_p1/287/proj1.c:121:2: note: After for loop, e has value 10000
+ for (e = 0; e < max_produtos; e++){    /*adiciono todos os dados ?s componentes da estrutura produto*/
+ ^
+/home/fmarques/sbugs/projects/alunos/iaed_p1/287/proj1.c:134:39: note: Array index out of bounds
+ printf("Novo produto %d.\n", vec_prod[e].identificador);  /*faco o print pedido*/
+                                      ^
+/home/fmarques/sbugs/projects/alunos/iaed_p1/287/proj1.c:231:47: warning: Array 'vec_encomendas[500]' accessed at index 500, which is out of bounds. [arrayIndexOutOfBounds]
+ printf("Nova encomenda %d.\n", vec_encomendas[i].identificador);
+                                              ^
+/home/fmarques/sbugs/projects/alunos/iaed_p1/287/proj1.c:224:2: note: After for loop, i has value 500
+ for (i = 0; i < max_encomendas; i++){
+ ^
+/home/fmarques/sbugs/projects/alunos/iaed_p1/287/proj1.c:231:47: note: Array index out of bounds
+ printf("Nova encomenda %d.\n", vec_encomendas[i].identificador);
+                                              ^
