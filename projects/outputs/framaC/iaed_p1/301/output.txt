@@ -1,0 +1,100 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/iaed_p1/301/projeto1.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  product ∈ {0}
+  order ∈ {0}
+[eva] using specification for function getchar
+[eva] using specification for function scanf_va_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/301/projeto1.c:398: 
+  accessing uninitialized left-value. assert \initialized(&pidentifier);
+[eva] using specification for function scanf_va_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/301/projeto1.c:402: 
+  accessing uninitialized left-value. assert \initialized(&pidentifier);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/301/projeto1.c:405: 
+  accessing uninitialized left-value. assert \initialized(&oridentifier);
+[eva] using specification for function scanf_va_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/301/projeto1.c:409: 
+  accessing uninitialized left-value. assert \initialized(&oridentifier);
+[eva] using specification for function scanf_va_4
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/301/projeto1.c:413: 
+  accessing uninitialized left-value. assert \initialized(&pidentifier);
+[eva] using specification for function scanf_va_5
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/301/projeto1.c:417: 
+  accessing uninitialized left-value. assert \initialized(&pidentifier);
+[eva] using specification for function scanf_va_6
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/301/projeto1.c:421: 
+  accessing uninitialized left-value. assert \initialized(&oridentifier);
+[eva] using specification for function scanf_va_7
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/301/projeto1.c:425: 
+  accessing uninitialized left-value. assert \initialized(&pidentifier);
+[eva] using specification for function scanf_va_8
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/301/projeto1.c:429: 
+  accessing uninitialized left-value. assert \initialized(&pidentifier);
+[eva] using specification for function scanf_va_9
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/301/projeto1.c:433: 
+  accessing uninitialized left-value. assert \initialized(&pidentifier);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/301/projeto1.c:436: 
+  accessing uninitialized left-value. assert \initialized(&pidentifier);
+[eva] using specification for function exit
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/301/projeto1.c:394: 
+  starting to merge loop iterations
+[eva] done for function main
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/301/projeto1.c:398: 
+  assertion 'Eva,initialization' got final status invalid.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/301/projeto1.c:402: 
+  assertion 'Eva,initialization' got final status invalid.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/301/projeto1.c:405: 
+  assertion 'Eva,initialization' got final status invalid.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/301/projeto1.c:409: 
+  assertion 'Eva,initialization' got final status invalid.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/301/projeto1.c:413: 
+  assertion 'Eva,initialization' got final status invalid.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/301/projeto1.c:417: 
+  assertion 'Eva,initialization' got final status invalid.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/301/projeto1.c:421: 
+  assertion 'Eva,initialization' got final status invalid.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/301/projeto1.c:425: 
+  assertion 'Eva,initialization' got final status invalid.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/301/projeto1.c:429: 
+  assertion 'Eva,initialization' got final status invalid.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/301/projeto1.c:433: 
+  assertion 'Eva,initialization' got final status invalid.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/301/projeto1.c:436: 
+  assertion 'Eva,initialization' got final status invalid.
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function main:
+  run ∈ {1}
+  pidentifier ∈ UNINITIALIZED
+  oridentifier ∈ UNINITIALIZED
+  c ∈ {120}
+  received[0..99] ∈ UNINITIALIZED
+  __retres ∈ {0}
+  S___fc_stdin[0..1] ∈ [--..--]
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  1 function analyzed (out of 21): 4% coverage.
+  In this function, 32 statements reached (out of 48): 66% coverage.
+  ----------------------------------------------------------------------------
+  No errors or warnings raised during the analysis.
+  ----------------------------------------------------------------------------
+  11 alarms generated by the analysis:
+      11 accesses to uninitialized left-values
+  11 of them are sure alarms (invalid status).
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     0 unknown     0 invalid      0 total
+    Preconditions     9 valid     0 unknown     0 invalid      9 total
+  100% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[report] Classification
+[report] Output /home/fmarques/sbugs/projects/outputs/framaC/iaed_p1/301/errors.json

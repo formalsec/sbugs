@@ -1,0 +1,1204 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  
+[eva] using specification for function scanf_va_1
+[eva] using specification for function scanf_va_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:227: 
+  assertion 'alloca_bounds' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:227: 
+  allocating variable __malloc_main_l227
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:228: 
+  assertion 'alloca_bounds' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:228: 
+  allocating variable __malloc_main_l228
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:230: 
+  signed overflow. assert -2147483648 ≤ avenue * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:230: 
+  signed overflow. assert avenue * street ≤ 2147483647;
+[eva] using specification for function time
+[eva] using specification for function srand
+[eva] using specification for function rand
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:231: 
+  signed overflow. assert -2147483648 ≤ avenue * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:231: 
+  signed overflow. assert avenue * street ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_0
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:237: 
+  out of bounds write. assert \valid((graph + (int)(i * street)) + j);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:236: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:235: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:237: 
+  signed overflow. assert i * street ≤ 2147483647;
+[eva] using specification for function scanf_va_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:243: 
+  signed overflow. assert -2147483648 ≤ av - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:243: 
+  signed overflow. assert -2147483648 ≤ st - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:243: 
+  signed overflow. assert -2147483648 ≤ (int)(av - 1) * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:243: 
+  signed overflow. assert (int)(av - 1) * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:243: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)((int)(av - 1) * street)) + (int)(st - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:243: 
+  out of bounds read.
+  assert \valid_read((graph + (int)((int)(av - 1) * street)) + (int)(st - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:248: 
+  signed overflow. assert -2147483648 ≤ (int)(av - 1) * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:248: 
+  signed overflow. assert (int)(av - 1) * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:248: 
+  out of bounds write.
+  assert \valid((graph + (int)((int)(av - 1) * street)) + (int)(st - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:249: 
+  out of bounds write. assert \valid(&(stores + i)->x);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:250: 
+  out of bounds write. assert \valid(&(stores + i)->y);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:241: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:244: 
+  out of bounds write. assert \valid(&(stores + i)->x);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:245: 
+  out of bounds write. assert \valid(&(stores + i)->y);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:244: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:245: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:249: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:250: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:251: 
+  signed overflow. assert s_count + 1 ≤ 2147483647;
+[eva] using specification for function scanf_va_4
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:257: 
+  signed overflow. assert -2147483648 ≤ av - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:257: 
+  signed overflow. assert -2147483648 ≤ st - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:257: 
+  signed overflow. assert -2147483648 ≤ (int)(av - 1) * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:257: 
+  signed overflow. assert (int)(av - 1) * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:257: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)((int)(av - 1) * street)) + (int)(st - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:257: 
+  out of bounds read.
+  assert \valid_read((graph + (int)((int)(av - 1) * street)) + (int)(st - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:257: 
+  signed overflow. assert -2147483648 ≤ (int)(av - 1) * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:257: 
+  signed overflow. assert (int)(av - 1) * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:257: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)((int)(av - 1) * street)) + (int)(st - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:257: 
+  out of bounds read.
+  assert \valid_read((graph + (int)((int)(av - 1) * street)) + (int)(st - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:262: 
+  signed overflow. assert -2147483648 ≤ (int)(av - 1) * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:262: 
+  signed overflow. assert (int)(av - 1) * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:262: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)((int)(av - 1) * street)) + (int)(st - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:262: 
+  out of bounds read.
+  assert \valid_read((graph + (int)((int)(av - 1) * street)) + (int)(st - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:263: 
+  signed overflow. assert -2147483648 ≤ (int)(av - 1) * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:263: 
+  signed overflow. assert (int)(av - 1) * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:263: 
+  out of bounds write.
+  assert \valid((graph + (int)((int)(av - 1) * street)) + (int)(st - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:266: 
+  signed overflow. assert -2147483648 ≤ (int)(av - 1) * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:266: 
+  signed overflow. assert (int)(av - 1) * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:266: 
+  out of bounds write.
+  assert \valid((graph + (int)((int)(av - 1) * street)) + (int)(st - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:268: 
+  out of bounds write. assert \valid(&(citizens + i)->x);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:269: 
+  out of bounds write. assert \valid(&(citizens + i)->y);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:255: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:258: 
+  out of bounds write. assert \valid(&(citizens + i)->x);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:259: 
+  out of bounds write. assert \valid(&(citizens + i)->y);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:258: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:259: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:268: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:269: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:270: 
+  signed overflow. assert c_count + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:274: 
+  signed overflow. assert c_count * s_count ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:279: 
+  accessing uninitialized left-value. assert \initialized(&(citizens + i)->x);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:279: 
+  out of bounds read. assert \valid_read(&(citizens + i)->x);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:279: 
+  accessing uninitialized left-value. assert \initialized(&(citizens + i)->y);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:279: 
+  out of bounds read. assert \valid_read(&(citizens + i)->y);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:280: 
+  accessing uninitialized left-value. assert \initialized(&(stores + j)->x);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:280: 
+  out of bounds read. assert \valid_read(&(stores + j)->x);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:280: 
+  accessing uninitialized left-value. assert \initialized(&(stores + j)->y);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:280: 
+  out of bounds read. assert \valid_read(&(stores + j)->y);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:281: 
+  out of bounds read. assert \valid_read(&(stores + j)->x);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:281: 
+  out of bounds read. assert \valid_read(&(stores + j)->y);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:281: 
+  signed overflow. assert -2147483648 ≤ (stores + j)->x * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:281: 
+  signed overflow. assert (stores + j)->x * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:281: 
+  accessing uninitialized left-value.
+  assert
+  \initialized((graph + (int)((stores + j)->x * street)) + (stores + j)->y);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:281: 
+  out of bounds read.
+  assert
+  \valid_read((graph + (int)((stores + j)->x * street)) + (stores + j)->y);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:281: 
+  out of bounds read. assert \valid_read(&(citizens + i)->x);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:281: 
+  out of bounds read. assert \valid_read(&(citizens + i)->y);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:281: 
+  signed overflow. assert -2147483648 ≤ (citizens + i)->x * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:281: 
+  signed overflow. assert (citizens + i)->x * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:281: 
+  accessing uninitialized left-value.
+  assert
+  \initialized((graph + (int)((citizens + i)->x * street)) + (citizens + i)->y);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:281: 
+  out of bounds read.
+  assert
+  \valid_read((graph + (int)((citizens + i)->x * street)) + (citizens + i)->y);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:282: 
+  out of bounds read. assert \valid_read(&(stores + j)->x);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:282: 
+  out of bounds read. assert \valid_read(&(citizens + i)->x);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:282: 
+  out of bounds read. assert \valid_read(&(stores + j)->y);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:282: 
+  out of bounds read. assert \valid_read(&(citizens + i)->y);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:283: 
+  out of bounds write. assert \valid(sol + tmp_2);
+                       (tmp_2 from c++)
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:286: 
+  out of bounds write. assert \valid(sol + tmp_3);
+                       (tmp_3 from c++)
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:290: 
+  signed overflow. assert -2147483648 ≤ avenue * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:290: 
+  signed overflow. assert avenue * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:290: 
+  function memcpy: precondition 'valid_dest' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:290: 
+  function memcpy: precondition 'valid_src' got status unknown.
+[eva] FRAMAC_SHARE/libc/string.h:101: 
+  cannot evaluate ACSL term, unsupported ACSL construct: logic function memcmp
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:291: 
+  out of bounds read. assert \valid_read(&(stores + j)->y);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:291: 
+  out of bounds read. assert \valid_read(&(stores + j)->x);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:291: 
+  out of bounds read. assert \valid_read(&(citizens + i)->y);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:291: 
+  out of bounds read. assert \valid_read(&(citizens + i)->x);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:51: 
+  signed overflow. assert -2147483648 ≤ cx * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:51: 
+  signed overflow. assert cx * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:51: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)(cx * street)) + cy);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:51: 
+  out of bounds read. assert \valid_read((graph + (int)(cx * street)) + cy);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:55: 
+  signed overflow. assert -2147483648 ≤ cx * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:55: 
+  signed overflow. assert cx * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:55: 
+  out of bounds write. assert \valid((graph + (int)(cx * street)) + cy);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:57: 
+  signed overflow. assert -2147483648 ≤ cx - sx;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:57: 
+  signed overflow. assert cx - sx ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:57: 
+  signed overflow. assert -2147483648 ≤ cx - sx;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:57: 
+  signed overflow. assert cx - sx ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:57: 
+  signed overflow. assert -2147483648 ≤ cy - sy;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:57: 
+  signed overflow. assert cy - sy ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:57: 
+  signed overflow. assert -2147483648 ≤ cx - sx;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:57: 
+  signed overflow. assert cx - sx ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:57: 
+  signed overflow. assert -2147483648 ≤ sy - cy;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:57: 
+  signed overflow. assert sy - cy ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:58: 
+  signed overflow. assert -2147483648 ≤ (int)(cx - 1) * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:58: 
+  signed overflow. assert (int)(cx - 1) * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:58: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)((int)(cx - 1) * street)) + cy);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:58: 
+  out of bounds read.
+  assert \valid_read((graph + (int)((int)(cx - 1) * street)) + cy);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:58: 
+  signed overflow. assert -2147483648 ≤ (int)(cx - 1) * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:58: 
+  signed overflow. assert (int)(cx - 1) * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:58: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)((int)(cx - 1) * street)) + cy);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:58: 
+  out of bounds read.
+  assert \valid_read((graph + (int)((int)(cx - 1) * street)) + cy);
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:59: 
+  detected recursive call of function makePath.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:59: User Error: 
+  Recursive call to makePath without assigns clause.
+  Generating probably incomplete assigns to interpret the call. Try to increase
+  the -eva-unroll-recursive-calls parameter or write a correct specification
+  for function makePath.
+[kernel:annot:missing-spec] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:47: 
+  Neither code nor specification for function makePath, generating default assigns from the prototype
+[eva] using specification for function makePath
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:63: 
+  signed overflow. assert -2147483648 ≤ cy - sy;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:63: 
+  signed overflow. assert cy - sy ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:64: 
+  signed overflow. assert -2147483648 ≤ cx * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:64: 
+  signed overflow. assert cx * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:64: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)(cx * street)) + (int)(cy - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:64: 
+  out of bounds read.
+  assert \valid_read((graph + (int)(cx * street)) + (int)(cy - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:64: 
+  signed overflow. assert -2147483648 ≤ cx * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:64: 
+  signed overflow. assert cx * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:64: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)(cx * street)) + (int)(cy - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:64: 
+  out of bounds read.
+  assert \valid_read((graph + (int)(cx * street)) + (int)(cy - 1));
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:65: 
+  detected recursive call of function makePath.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:65: 
+  Using specification of function makePath for recursive calls.
+  Analysis of function makePath is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:69: 
+  signed overflow. assert -2147483648 ≤ street - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:69: 
+  signed overflow. assert -2147483648 ≤ cx * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:69: 
+  signed overflow. assert cx * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:69: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)(cx * street)) + (int)(cy + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:69: 
+  out of bounds read.
+  assert \valid_read((graph + (int)(cx * street)) + (int)(cy + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:69: 
+  signed overflow. assert -2147483648 ≤ cx * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:69: 
+  signed overflow. assert cx * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:69: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)(cx * street)) + (int)(cy + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:69: 
+  out of bounds read.
+  assert \valid_read((graph + (int)(cx * street)) + (int)(cy + 1));
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:70: 
+  detected recursive call of function makePath.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:70: 
+  Using specification of function makePath for recursive calls.
+  Analysis of function makePath is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:76: 
+  signed overflow. assert -2147483648 ≤ street - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:76: 
+  signed overflow. assert -2147483648 ≤ cx * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:76: 
+  signed overflow. assert cx * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:76: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)(cx * street)) + (int)(cy + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:76: 
+  out of bounds read.
+  assert \valid_read((graph + (int)(cx * street)) + (int)(cy + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:76: 
+  signed overflow. assert -2147483648 ≤ cx * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:76: 
+  signed overflow. assert cx * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:76: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)(cx * street)) + (int)(cy + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:76: 
+  out of bounds read.
+  assert \valid_read((graph + (int)(cx * street)) + (int)(cy + 1));
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:77: 
+  detected recursive call of function makePath.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:77: 
+  Using specification of function makePath for recursive calls.
+  Analysis of function makePath is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:81: 
+  signed overflow. assert -2147483648 ≤ cx * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:81: 
+  signed overflow. assert cx * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:81: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)(cx * street)) + (int)(cy - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:81: 
+  out of bounds read.
+  assert \valid_read((graph + (int)(cx * street)) + (int)(cy - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:81: 
+  signed overflow. assert -2147483648 ≤ cx * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:81: 
+  signed overflow. assert cx * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:81: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)(cx * street)) + (int)(cy - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:81: 
+  out of bounds read.
+  assert \valid_read((graph + (int)(cx * street)) + (int)(cy - 1));
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:82: 
+  detected recursive call of function makePath.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:82: 
+  Using specification of function makePath for recursive calls.
+  Analysis of function makePath is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:87: 
+  signed overflow. assert -2147483648 ≤ avenue - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:87: 
+  signed overflow. assert -2147483648 ≤ (int)(cx + 1) * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:87: 
+  signed overflow. assert (int)(cx + 1) * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:87: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)((int)(cx + 1) * street)) + cy);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:87: 
+  out of bounds read.
+  assert \valid_read((graph + (int)((int)(cx + 1) * street)) + cy);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:87: 
+  signed overflow. assert -2147483648 ≤ (int)(cx + 1) * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:87: 
+  signed overflow. assert (int)(cx + 1) * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:87: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)((int)(cx + 1) * street)) + cy);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:87: 
+  out of bounds read.
+  assert \valid_read((graph + (int)((int)(cx + 1) * street)) + cy);
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:88: 
+  detected recursive call of function makePath.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:88: 
+  Using specification of function makePath for recursive calls.
+  Analysis of function makePath is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:94: 
+  signed overflow. assert -2147483648 ≤ cx - sx;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:94: 
+  signed overflow. assert cx - sx ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:94: 
+  signed overflow. assert -2147483648 ≤ cx - sx;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:94: 
+  signed overflow. assert cx - sx ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:94: 
+  signed overflow. assert -2147483648 ≤ cy - sy;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:94: 
+  signed overflow. assert cy - sy ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:94: 
+  signed overflow. assert -2147483648 ≤ cx - sx;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:94: 
+  signed overflow. assert cx - sx ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:94: 
+  signed overflow. assert -2147483648 ≤ sy - cy;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:94: 
+  signed overflow. assert sy - cy ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:95: 
+  signed overflow. assert -2147483648 ≤ avenue - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:95: 
+  signed overflow. assert -2147483648 ≤ (int)(cx + 1) * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:95: 
+  signed overflow. assert (int)(cx + 1) * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:95: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)((int)(cx + 1) * street)) + cy);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:95: 
+  out of bounds read.
+  assert \valid_read((graph + (int)((int)(cx + 1) * street)) + cy);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:95: 
+  signed overflow. assert -2147483648 ≤ (int)(cx + 1) * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:95: 
+  signed overflow. assert (int)(cx + 1) * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:95: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)((int)(cx + 1) * street)) + cy);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:95: 
+  out of bounds read.
+  assert \valid_read((graph + (int)((int)(cx + 1) * street)) + cy);
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:96: 
+  detected recursive call of function makePath.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:96: 
+  Using specification of function makePath for recursive calls.
+  Analysis of function makePath is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:100: 
+  signed overflow. assert -2147483648 ≤ cy - sy;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:100: 
+  signed overflow. assert cy - sy ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:101: 
+  signed overflow. assert -2147483648 ≤ cx * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:101: 
+  signed overflow. assert cx * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:101: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)(cx * street)) + (int)(cy - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:101: 
+  out of bounds read.
+  assert \valid_read((graph + (int)(cx * street)) + (int)(cy - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:101: 
+  signed overflow. assert -2147483648 ≤ cx * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:101: 
+  signed overflow. assert cx * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:101: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)(cx * street)) + (int)(cy - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:101: 
+  out of bounds read.
+  assert \valid_read((graph + (int)(cx * street)) + (int)(cy - 1));
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:102: 
+  detected recursive call of function makePath.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:102: 
+  Using specification of function makePath for recursive calls.
+  Analysis of function makePath is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:106: 
+  signed overflow. assert -2147483648 ≤ street - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:106: 
+  signed overflow. assert -2147483648 ≤ cx * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:106: 
+  signed overflow. assert cx * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:106: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)(cx * street)) + (int)(cy + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:106: 
+  out of bounds read.
+  assert \valid_read((graph + (int)(cx * street)) + (int)(cy + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:106: 
+  signed overflow. assert -2147483648 ≤ cx * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:106: 
+  signed overflow. assert cx * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:106: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)(cx * street)) + (int)(cy + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:106: 
+  out of bounds read.
+  assert \valid_read((graph + (int)(cx * street)) + (int)(cy + 1));
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:107: 
+  detected recursive call of function makePath.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:107: 
+  Using specification of function makePath for recursive calls.
+  Analysis of function makePath is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:113: 
+  signed overflow. assert -2147483648 ≤ street - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:113: 
+  signed overflow. assert -2147483648 ≤ cx * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:113: 
+  signed overflow. assert cx * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:113: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)(cx * street)) + (int)(cy + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:113: 
+  out of bounds read.
+  assert \valid_read((graph + (int)(cx * street)) + (int)(cy + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:113: 
+  signed overflow. assert -2147483648 ≤ cx * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:113: 
+  signed overflow. assert cx * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:113: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)(cx * street)) + (int)(cy + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:113: 
+  out of bounds read.
+  assert \valid_read((graph + (int)(cx * street)) + (int)(cy + 1));
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:114: 
+  detected recursive call of function makePath.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:114: 
+  Using specification of function makePath for recursive calls.
+  Analysis of function makePath is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:118: 
+  signed overflow. assert -2147483648 ≤ cx * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:118: 
+  signed overflow. assert cx * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:118: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)(cx * street)) + (int)(cy - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:118: 
+  out of bounds read.
+  assert \valid_read((graph + (int)(cx * street)) + (int)(cy - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:118: 
+  signed overflow. assert -2147483648 ≤ cx * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:118: 
+  signed overflow. assert cx * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:118: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)(cx * street)) + (int)(cy - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:118: 
+  out of bounds read.
+  assert \valid_read((graph + (int)(cx * street)) + (int)(cy - 1));
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:119: 
+  detected recursive call of function makePath.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:119: 
+  Using specification of function makePath for recursive calls.
+  Analysis of function makePath is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:124: 
+  signed overflow. assert -2147483648 ≤ (int)(cx - 1) * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:124: 
+  signed overflow. assert (int)(cx - 1) * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:124: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)((int)(cx - 1) * street)) + cy);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:124: 
+  out of bounds read.
+  assert \valid_read((graph + (int)((int)(cx - 1) * street)) + cy);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:124: 
+  signed overflow. assert -2147483648 ≤ (int)(cx - 1) * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:124: 
+  signed overflow. assert (int)(cx - 1) * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:124: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)((int)(cx - 1) * street)) + cy);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:124: 
+  out of bounds read.
+  assert \valid_read((graph + (int)((int)(cx - 1) * street)) + cy);
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:125: 
+  detected recursive call of function makePath.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:125: 
+  Using specification of function makePath for recursive calls.
+  Analysis of function makePath is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:131: 
+  signed overflow. assert -2147483648 ≤ cy - sy;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:131: 
+  signed overflow. assert cy - sy ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:131: 
+  signed overflow. assert -2147483648 ≤ cy - sy;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:131: 
+  signed overflow. assert cy - sy ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:131: 
+  signed overflow. assert -2147483648 ≤ cx - sx;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:131: 
+  signed overflow. assert cx - sx ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:131: 
+  signed overflow. assert -2147483648 ≤ cy - sy;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:131: 
+  signed overflow. assert cy - sy ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:131: 
+  signed overflow. assert -2147483648 ≤ sx - cx;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:131: 
+  signed overflow. assert sx - cx ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:132: 
+  signed overflow. assert -2147483648 ≤ cx * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:132: 
+  signed overflow. assert cx * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:132: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)(cx * street)) + (int)(cy - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:132: 
+  out of bounds read.
+  assert \valid_read((graph + (int)(cx * street)) + (int)(cy - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:132: 
+  signed overflow. assert -2147483648 ≤ cx * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:132: 
+  signed overflow. assert cx * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:132: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)(cx * street)) + (int)(cy - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:132: 
+  out of bounds read.
+  assert \valid_read((graph + (int)(cx * street)) + (int)(cy - 1));
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:133: 
+  detected recursive call of function makePath.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:133: 
+  Using specification of function makePath for recursive calls.
+  Analysis of function makePath is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:137: 
+  signed overflow. assert -2147483648 ≤ cx - sx;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:137: 
+  signed overflow. assert cx - sx ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:138: 
+  signed overflow. assert -2147483648 ≤ (int)(cx - 1) * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:138: 
+  signed overflow. assert (int)(cx - 1) * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:138: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)((int)(cx - 1) * street)) + cy);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:138: 
+  out of bounds read.
+  assert \valid_read((graph + (int)((int)(cx - 1) * street)) + cy);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:138: 
+  signed overflow. assert -2147483648 ≤ (int)(cx - 1) * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:138: 
+  signed overflow. assert (int)(cx - 1) * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:138: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)((int)(cx - 1) * street)) + cy);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:138: 
+  out of bounds read.
+  assert \valid_read((graph + (int)((int)(cx - 1) * street)) + cy);
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:139: 
+  detected recursive call of function makePath.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:139: 
+  Using specification of function makePath for recursive calls.
+  Analysis of function makePath is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:143: 
+  signed overflow. assert -2147483648 ≤ avenue - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:143: 
+  signed overflow. assert -2147483648 ≤ (int)(cx + 1) * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:143: 
+  signed overflow. assert (int)(cx + 1) * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:143: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)((int)(cx + 1) * street)) + cy);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:143: 
+  out of bounds read.
+  assert \valid_read((graph + (int)((int)(cx + 1) * street)) + cy);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:143: 
+  signed overflow. assert -2147483648 ≤ (int)(cx + 1) * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:143: 
+  signed overflow. assert (int)(cx + 1) * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:143: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)((int)(cx + 1) * street)) + cy);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:143: 
+  out of bounds read.
+  assert \valid_read((graph + (int)((int)(cx + 1) * street)) + cy);
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:144: 
+  detected recursive call of function makePath.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:144: 
+  Using specification of function makePath for recursive calls.
+  Analysis of function makePath is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:150: 
+  signed overflow. assert -2147483648 ≤ avenue - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:150: 
+  signed overflow. assert -2147483648 ≤ (int)(cx + 1) * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:150: 
+  signed overflow. assert (int)(cx + 1) * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:150: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)((int)(cx + 1) * street)) + cy);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:150: 
+  out of bounds read.
+  assert \valid_read((graph + (int)((int)(cx + 1) * street)) + cy);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:150: 
+  signed overflow. assert -2147483648 ≤ (int)(cx + 1) * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:150: 
+  signed overflow. assert (int)(cx + 1) * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:150: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)((int)(cx + 1) * street)) + cy);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:150: 
+  out of bounds read.
+  assert \valid_read((graph + (int)((int)(cx + 1) * street)) + cy);
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:151: 
+  detected recursive call of function makePath.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:151: 
+  Using specification of function makePath for recursive calls.
+  Analysis of function makePath is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:155: 
+  signed overflow. assert -2147483648 ≤ (int)(cx - 1) * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:155: 
+  signed overflow. assert (int)(cx - 1) * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:155: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)((int)(cx - 1) * street)) + cy);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:155: 
+  out of bounds read.
+  assert \valid_read((graph + (int)((int)(cx - 1) * street)) + cy);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:155: 
+  signed overflow. assert -2147483648 ≤ (int)(cx - 1) * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:155: 
+  signed overflow. assert (int)(cx - 1) * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:155: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)((int)(cx - 1) * street)) + cy);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:155: 
+  out of bounds read.
+  assert \valid_read((graph + (int)((int)(cx - 1) * street)) + cy);
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:156: 
+  detected recursive call of function makePath.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:156: 
+  Using specification of function makePath for recursive calls.
+  Analysis of function makePath is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:161: 
+  signed overflow. assert -2147483648 ≤ street - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:161: 
+  signed overflow. assert -2147483648 ≤ cx * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:161: 
+  signed overflow. assert cx * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:161: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)(cx * street)) + (int)(cy + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:161: 
+  out of bounds read.
+  assert \valid_read((graph + (int)(cx * street)) + (int)(cy + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:161: 
+  signed overflow. assert -2147483648 ≤ cx * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:161: 
+  signed overflow. assert cx * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:161: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)(cx * street)) + (int)(cy + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:161: 
+  out of bounds read.
+  assert \valid_read((graph + (int)(cx * street)) + (int)(cy + 1));
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:162: 
+  detected recursive call of function makePath.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:162: 
+  Using specification of function makePath for recursive calls.
+  Analysis of function makePath is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:168: 
+  signed overflow. assert -2147483648 ≤ cy - sy;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:168: 
+  signed overflow. assert cy - sy ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:168: 
+  signed overflow. assert -2147483648 ≤ cy - sy;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:168: 
+  signed overflow. assert cy - sy ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:168: 
+  signed overflow. assert -2147483648 ≤ cx - sx;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:168: 
+  signed overflow. assert cx - sx ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:168: 
+  signed overflow. assert -2147483648 ≤ cy - sy;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:168: 
+  signed overflow. assert cy - sy ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:168: 
+  signed overflow. assert -2147483648 ≤ sx - cx;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:168: 
+  signed overflow. assert sx - cx ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:169: 
+  signed overflow. assert -2147483648 ≤ street - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:169: 
+  signed overflow. assert -2147483648 ≤ cx * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:169: 
+  signed overflow. assert cx * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:169: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)(cx * street)) + (int)(cy + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:169: 
+  out of bounds read.
+  assert \valid_read((graph + (int)(cx * street)) + (int)(cy + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:169: 
+  signed overflow. assert -2147483648 ≤ cx * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:169: 
+  signed overflow. assert cx * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:169: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)(cx * street)) + (int)(cy + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:169: 
+  out of bounds read.
+  assert \valid_read((graph + (int)(cx * street)) + (int)(cy + 1));
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:170: 
+  detected recursive call of function makePath.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:170: 
+  Using specification of function makePath for recursive calls.
+  Analysis of function makePath is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:174: 
+  signed overflow. assert -2147483648 ≤ cx - sx;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:174: 
+  signed overflow. assert cx - sx ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:175: 
+  signed overflow. assert -2147483648 ≤ (int)(cx - 1) * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:175: 
+  signed overflow. assert (int)(cx - 1) * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:175: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)((int)(cx - 1) * street)) + cy);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:175: 
+  out of bounds read.
+  assert \valid_read((graph + (int)((int)(cx - 1) * street)) + cy);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:175: 
+  signed overflow. assert -2147483648 ≤ (int)(cx - 1) * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:175: 
+  signed overflow. assert (int)(cx - 1) * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:175: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)((int)(cx - 1) * street)) + cy);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:175: 
+  out of bounds read.
+  assert \valid_read((graph + (int)((int)(cx - 1) * street)) + cy);
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:176: 
+  detected recursive call of function makePath.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:176: 
+  Using specification of function makePath for recursive calls.
+  Analysis of function makePath is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:180: 
+  signed overflow. assert -2147483648 ≤ avenue - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:180: 
+  signed overflow. assert -2147483648 ≤ (int)(cx + 1) * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:180: 
+  signed overflow. assert (int)(cx + 1) * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:180: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)((int)(cx + 1) * street)) + cy);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:180: 
+  out of bounds read.
+  assert \valid_read((graph + (int)((int)(cx + 1) * street)) + cy);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:180: 
+  signed overflow. assert -2147483648 ≤ (int)(cx + 1) * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:180: 
+  signed overflow. assert (int)(cx + 1) * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:180: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)((int)(cx + 1) * street)) + cy);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:180: 
+  out of bounds read.
+  assert \valid_read((graph + (int)((int)(cx + 1) * street)) + cy);
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:181: 
+  detected recursive call of function makePath.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:181: 
+  Using specification of function makePath for recursive calls.
+  Analysis of function makePath is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:187: 
+  signed overflow. assert -2147483648 ≤ avenue - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:187: 
+  signed overflow. assert -2147483648 ≤ (int)(cx + 1) * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:187: 
+  signed overflow. assert (int)(cx + 1) * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:187: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)((int)(cx + 1) * street)) + cy);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:187: 
+  out of bounds read.
+  assert \valid_read((graph + (int)((int)(cx + 1) * street)) + cy);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:187: 
+  signed overflow. assert -2147483648 ≤ (int)(cx + 1) * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:187: 
+  signed overflow. assert (int)(cx + 1) * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:187: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)((int)(cx + 1) * street)) + cy);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:187: 
+  out of bounds read.
+  assert \valid_read((graph + (int)((int)(cx + 1) * street)) + cy);
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:188: 
+  detected recursive call of function makePath.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:188: 
+  Using specification of function makePath for recursive calls.
+  Analysis of function makePath is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:192: 
+  signed overflow. assert -2147483648 ≤ (int)(cx - 1) * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:192: 
+  signed overflow. assert (int)(cx - 1) * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:192: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)((int)(cx - 1) * street)) + cy);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:192: 
+  out of bounds read.
+  assert \valid_read((graph + (int)((int)(cx - 1) * street)) + cy);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:192: 
+  signed overflow. assert -2147483648 ≤ (int)(cx - 1) * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:192: 
+  signed overflow. assert (int)(cx - 1) * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:192: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)((int)(cx - 1) * street)) + cy);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:192: 
+  out of bounds read.
+  assert \valid_read((graph + (int)((int)(cx - 1) * street)) + cy);
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:193: 
+  detected recursive call of function makePath.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:193: 
+  Using specification of function makePath for recursive calls.
+  Analysis of function makePath is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:198: 
+  signed overflow. assert -2147483648 ≤ cx * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:198: 
+  signed overflow. assert cx * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:198: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)(cx * street)) + (int)(cy - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:198: 
+  out of bounds read.
+  assert \valid_read((graph + (int)(cx * street)) + (int)(cy - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:198: 
+  signed overflow. assert -2147483648 ≤ cx * street;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:198: 
+  signed overflow. assert cx * street ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:198: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)(cx * street)) + (int)(cy - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:198: 
+  out of bounds read.
+  assert \valid_read((graph + (int)(cx * street)) + (int)(cy - 1));
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:199: 
+  detected recursive call of function makePath.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:199: 
+  Using specification of function makePath for recursive calls.
+  Analysis of function makePath is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:292: 
+  out of bounds write. assert \valid(sol + tmp_4);
+                       (tmp_4 from c++)
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:295: 
+  out of bounds write. assert \valid(sol + tmp_5);
+                       (tmp_5 from c++)
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:278: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:281: 
+  accessing uninitialized left-value. assert \initialized(&(stores + j)->x);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:281: 
+  accessing uninitialized left-value. assert \initialized(&(stores + j)->y);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:282: 
+  accessing uninitialized left-value. assert \initialized(&(stores + j)->x);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:282: 
+  accessing uninitialized left-value. assert \initialized(&(stores + j)->y);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:291: 
+  accessing uninitialized left-value. assert \initialized(&(stores + j)->y);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:291: 
+  accessing uninitialized left-value. assert \initialized(&(stores + j)->x);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:59: 
+  Using specification of function makePath for recursive calls.
+  Analysis of function makePath is thus incomplete and its soundness
+  relies on the written specification.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:291: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:283: 
+  signed overflow. assert c + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:286: 
+  signed overflow. assert c + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:292: 
+  signed overflow. assert c + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:295: 
+  signed overflow. assert c + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:277: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:281: 
+  accessing uninitialized left-value. assert \initialized(&(citizens + i)->x);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:281: 
+  accessing uninitialized left-value. assert \initialized(&(citizens + i)->y);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:282: 
+  accessing uninitialized left-value. assert \initialized(&(citizens + i)->x);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:282: 
+  accessing uninitialized left-value. assert \initialized(&(citizens + i)->y);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:291: 
+  accessing uninitialized left-value. assert \initialized(&(citizens + i)->y);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:291: 
+  accessing uninitialized left-value. assert \initialized(&(citizens + i)->x);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:30: 
+  assertion 'alloca_bounds' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:30: 
+  allocating variable __malloc_maxBPM_l30
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:32: 
+  function memset: precondition 'valid_s' got status unknown.
+[eva] FRAMAC_SHARE/libc/string.h:134: 
+  cannot evaluate ACSL term, unsupported ACSL construct: logic function memset
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:37: 
+  assertion 'alloca_bounds' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:37: 
+  allocating variable __malloc_maxBPM_l37
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:38: 
+  function memset: precondition 'valid_s' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:16: 
+  accessing uninitialized left-value.
+  assert \initialized((sol + (int)(index_0 * store)) + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:16: 
+  out of bounds read. assert \valid_read((sol + (int)(index_0 * store)) + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:16: 
+  accessing uninitialized left-value. assert \initialized(seen + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:16: 
+  out of bounds read. assert \valid_read(seen + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:17: 
+  out of bounds write. assert \valid(seen + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:18: 
+  accessing uninitialized left-value. assert \initialized(matchR + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:18: 
+  out of bounds read. assert \valid_read(matchR + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:15: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:19: 
+  out of bounds write. assert \valid(matchR + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:36: 
+  starting to merge loop iterations
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:18: 
+  detected recursive call of function bpm.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:18: 
+  out of bounds read. assert \valid_read(matchR + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:18: User Error: 
+  Recursive call to bpm without assigns clause.
+  Generating probably incomplete assigns to interpret the call. Try to increase
+  the -eva-unroll-recursive-calls parameter or write a correct specification
+  for function bpm.
+[kernel:annot:missing-spec] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:12: 
+  Neither code nor specification for function bpm, generating default assigns from the prototype
+[eva] using specification for function bpm
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:18: 
+  accessing uninitialized left-value. assert \initialized(matchR + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:18: 
+  Using specification of function bpm for recursive calls.
+  Analysis of function bpm is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:16: 
+  signed overflow. assert index_0 * store ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:41: 
+  signed overflow. assert res + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp023/main.c:302: 
+  freeing automatic bases: {__malloc_maxBPM_l30, __malloc_maxBPM_l37}
+[eva] using specification for function printf_va_1
+[eva] done for function main
+[scope:rm_asserts] removing 199 assertion(s)
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function can_fail_malloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈
+          {{ NULL ; (void *)&__malloc_can_fail_malloc_l11 ;
+             (void *)&__malloc_can_fail_malloc_l11_0 ;
+             (void *)&__malloc_can_fail_malloc_l11_1 }}
+[eva:final-states] Values at end of function bpm:
+  i ∈ [0..2147483647]
+  __retres ∈ {0; 1}
+  __malloc_can_fail_malloc_l11_1[0..3] ∈ [--..--] or UNINITIALIZED
+                                [bits 32 to 68719476703]# ∈
+                                {0; 1} or UNINITIALIZED repeated %32 
+  __malloc_maxBPM_l30[0..2147483646] ∈ [--..--] or UNINITIALIZED
+  __malloc_maxBPM_l37[0] ∈ [--..--] or UNINITIALIZED
+                     [1..2147483646] ∈ {0; 1} or UNINITIALIZED
+[eva:final-states] Values at end of function maxBPM:
+  i ∈ [0..2147483647]
+  matchR ∈ ESCAPINGADDR
+  __lengthof_matchR ∈ [0..2147483647]
+  res ∈ [0..2147483647]
+  __malloc_can_fail_malloc_l11_1[0..3] ∈ [--..--] or UNINITIALIZED
+                                [bits 32 to 68719476703]# ∈
+                                {0; 1} or UNINITIALIZED repeated %32 
+[eva:final-states] Values at end of function main:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  avenue ∈ [--..--]
+  street ∈ [--..--]
+  store ∈ [--..--]
+  citizen ∈ [--..--]
+  av ∈ [-2147483647..2147483647] or UNINITIALIZED
+  st ∈ [-2147483646..2147483647] or UNINITIALIZED
+  i ∈ [0..2147483647]
+  j ∈ [0..2147483647] or UNINITIALIZED
+  c_count ∈ [0..2147483647]
+  s_count ∈ [0..2147483647]
+  citizens ∈ ESCAPINGADDR
+  __lengthof_citizens ∈ [--..--]
+  stores ∈ ESCAPINGADDR
+  __lengthof_stores ∈ [--..--]
+  graph ∈ {{ NULL ; (int *)&__malloc_can_fail_malloc_l11 }} or ESCAPINGADDR
+  graphAux ∈
+          {{ NULL ; (int *)&__malloc_can_fail_malloc_l11_0 }} or ESCAPINGADDR
+  sol ∈ {{ NULL ; (int *)&__malloc_can_fail_malloc_l11_1 }} or ESCAPINGADDR
+  c ∈ [0..2147483647]
+  __retres ∈ {0}
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11[bits 0 to 137438953407]# ∈
+                              {0; 1; 2; 3} or UNINITIALIZED repeated %32 
+                              [17179869176..18446744073709551611] ∈
+                              UNINITIALIZED
+  __malloc_can_fail_malloc_l11_0[0..17179869175] ∈
+                                [--..--] or UNINITIALIZED
+                                [17179869176..18446744073709551611] ∈
+                                {0; 1; 2; 3} or UNINITIALIZED
+  __malloc_can_fail_malloc_l11_1[0..3] ∈ [--..--] or UNINITIALIZED
+                                [bits 32 to 68719476703]# ∈
+                                {0; 1} or UNINITIALIZED repeated %32 
+[eva:final-states] Values at end of function makePath:
+  __retres ∈ {0; 1}
+  __malloc_can_fail_malloc_l11_0[0..17179869175] ∈
+                                [--..--] or UNINITIALIZED
+                                [17179869176..18446744073709551611] ∈
+                                {0; 1; 2; 3} or UNINITIALIZED
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  5 functions analyzed (out of 7): 71% coverage.
+  In these functions, 388 statements reached (out of 388): 100% coverage.
+  ----------------------------------------------------------------------------
+  Some errors and warnings have been raised during the analysis:
+    by the Eva analyzer:      2 errors    0 warnings
+    by the Frama-C kernel:    0 errors    0 warnings
+  ----------------------------------------------------------------------------
+  367 alarms generated by the analysis:
+     198 integer overflows
+      94 invalid memory accesses
+      75 accesses to uninitialized left-values
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     4 unknown     0 invalid      4 total
+    Preconditions    18 valid     4 unknown     0 invalid     22 total
+  69% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[eva] User Error: Deferred error message was emitted during execution. See above messages for more information.
+[kernel] Plug-in eva aborted: invalid user input.

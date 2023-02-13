@@ -1,0 +1,540 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  produtos[0..9999] ∈ {0}
+  encomendas[0..499] ∈ {0}
+  idP ∈ {0}
+  idE ∈ {0}
+[eva] using specification for function scanf_va_11
+[eva] using specification for function scanf_va_1
+[eva] using specification for function strcpy
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:37: 
+  function strcpy: precondition 'valid_string_src' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:37: 
+  function strcpy: precondition 'room_string' got status unknown.
+[eva] FRAMAC_SHARE/libc/string.h:373: 
+  cannot evaluate ACSL term, unsupported ACSL construct: logic function strcmp
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:42: 
+  starting to merge loop iterations
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:49: 
+  more than 200(500) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:50: 
+  too many locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:51: 
+  accessing out of bounds index. assert 0 ≤ encomendas[i].counter;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:51: 
+  accessing out of bounds index. assert encomendas[i].counter < 10000;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:52: 
+  signed overflow. assert encomendas[i].counter + 1 ≤ 2147483647;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:52: 
+  more than 200(500) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:50: 
+  accessing out of bounds index. assert 0 ≤ encomendas[i].counter;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:50: 
+  accessing out of bounds index. assert encomendas[i].counter < 10000;
+[eva] using specification for function printf_va_1
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:49: 
+  more than 200(500) elements to enumerate. Approximating.
+[eva] using specification for function scanf_va_2
+[eva] using specification for function printf_va_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:72: 
+  accessing out of bounds index. assert 0 ≤ idp;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:72: 
+  all target addresses were invalid. This path is assumed to be dead.
+[eva] using specification for function printf_va_3
+[eva] using specification for function scanf_va_3
+[eva] using specification for function printf_va_4
+[eva] using specification for function printf_va_5
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:101: 
+  accessing out of bounds index. assert 0 ≤ idp;
+[eva] using specification for function scanf_va_4
+[eva] using specification for function printf_va_8
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:132: 
+  accessing out of bounds index. assert 0 ≤ idp;
+[eva] using specification for function scanf_va_5
+[eva] using specification for function printf_va_10
+[eva] using specification for function printf_va_11
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:154: 
+  accessing out of bounds index. assert 0 ≤ ide;
+[eva] using specification for function scanf_va_6
+[eva] using specification for function printf_va_12
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:174: 
+  accessing out of bounds index. assert 0 ≤ ide;
+[eva] using specification for function scanf_va_7
+[eva] using specification for function printf_va_14
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:191: 
+  accessing out of bounds index. assert 0 ≤ idp;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:191: 
+  all target addresses were invalid. This path is assumed to be dead.
+[eva] using specification for function scanf_va_8
+[eva] using specification for function printf_va_15
+[eva] using specification for function printf_va_16
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:216: 
+  accessing out of bounds index. assert 0 ≤ ide;
+[eva] using specification for function scanf_va_9
+[eva] using specification for function printf_va_18
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:235: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:234: 
+  starting to merge loop iterations
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:236: 
+  more than 200(500) elements to enumerate. Approximating.
+[eva] using specification for function time
+[eva] using specification for function srand
+[eva] using specification for function rand
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11
+[eva] using specification for function printf_va_20
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_0
+[eva] using specification for function scanf_va_10
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:285: 
+  accessing out of bounds index. assert 0 ≤ ide;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:285: 
+  accessing out of bounds index. assert ide < 500;
+[eva] using specification for function printf_va_22
+[eva] using specification for function exit
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:320: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:44: 
+  accessing out of bounds index. assert 0 ≤ encomendas[i].counter;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:44: 
+  accessing out of bounds index. assert encomendas[i].counter < 10000;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:45: 
+  more than 200(10000) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:55: 
+  accessing out of bounds index. assert 0 ≤ encomendas[i].counter;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:55: 
+  accessing out of bounds index. assert encomendas[i].counter < 10000;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:56: 
+  more than 200(10000) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:56: 
+  accessing out of bounds index. assert 0 ≤ encomendas[i].counter;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:56: 
+  accessing out of bounds index. assert encomendas[i].counter < 10000;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:57: 
+  signed overflow. assert encomendas[i].counter + 1 ≤ 2147483647;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:57: 
+  more than 200(500) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:45: 
+  more than 200(10000) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:72: 
+  signed overflow. assert -2147483648 ≤ produtos[idp].stock + qtd;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:72: 
+  signed overflow. assert produtos[idp].stock + qtd ≤ 2147483647;
+[eva] using specification for function printf_va_6
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:106: 
+  signed overflow. assert -2147483648 ≤ produtos[idp].peso * qtd;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:106: 
+  signed overflow. assert produtos[idp].peso * qtd ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:108: 
+  accessing out of bounds index. assert 0 ≤ ide;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:108: 
+  signed overflow. assert -2147483648 ≤ encomendas[ide].peso + pesoProduto;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:108: 
+  signed overflow. assert encomendas[ide].peso + pesoProduto ≤ 2147483647;
+[eva] using specification for function printf_va_7
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:113: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:114: 
+  accessing out of bounds index. assert i < 10000;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:115: 
+  signed overflow.
+  assert -2147483648 ≤ encomendas[ide].produtosEncomenda[i].stock + qtd;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:115: 
+  signed overflow.
+  assert encomendas[ide].produtosEncomenda[i].stock + qtd ≤ 2147483647;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:115: 
+  more than 200(10000) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:116: 
+  signed overflow. assert -2147483648 ≤ encomendas[ide].peso + pesoProduto;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:116: 
+  signed overflow. assert encomendas[ide].peso + pesoProduto ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:117: 
+  signed overflow. assert -2147483648 ≤ produtos[idp].stock - qtd;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:117: 
+  signed overflow. assert produtos[idp].stock - qtd ≤ 2147483647;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:114: 
+  more than 200(10000) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:132: 
+  signed overflow. assert -2147483648 ≤ produtos[idp].stock - qtd;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:132: 
+  signed overflow. assert produtos[idp].stock - qtd ≤ 2147483647;
+[eva] using specification for function printf_va_9
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:136: 
+  signed overflow. assert -2147483648 ≤ produtos[idp].stock - qtd;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:136: 
+  signed overflow. assert produtos[idp].stock - qtd ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:154: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:155: 
+  accessing out of bounds index. assert i < 10000;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:156: 
+  accessing out of bounds index. assert 0 ≤ idp;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:156: 
+  signed overflow.
+  assert
+  -2147483648 ≤
+  produtos[idp].stock + encomendas[ide].produtosEncomenda[i].stock;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:156: 
+  signed overflow.
+  assert
+  produtos[idp].stock + encomendas[ide].produtosEncomenda[i].stock ≤
+  2147483647;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:157: 
+  more than 200(10000) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:175: 
+  signed overflow.
+  assert
+  -2147483648 ≤
+  encomendas[ide].produtosEncomenda[i].preco *
+  encomendas[ide].produtosEncomenda[i].stock;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:175: 
+  signed overflow.
+  assert
+  encomendas[ide].produtosEncomenda[i].preco *
+  encomendas[ide].produtosEncomenda[i].stock ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:174: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:175: 
+  signed overflow.
+  assert
+  -2147483648 ≤
+  total +
+  (int)(encomendas[ide].produtosEncomenda[i].preco *
+        encomendas[ide].produtosEncomenda[i].stock);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:175: 
+  signed overflow.
+  assert
+  total +
+  (int)(encomendas[ide].produtosEncomenda[i].preco *
+        encomendas[ide].produtosEncomenda[i].stock)
+  ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:175: 
+  accessing out of bounds index. assert i < 10000;
+[eva] using specification for function printf_va_13
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:175: 
+  more than 200(10001) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:175: 
+  more than 200(10000) elements to enumerate. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:194: 
+  starting to merge loop iterations
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:196: 
+  more than 200(10000) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:195: 
+  accessing out of bounds index. assert j < 10000;
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:193: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:216: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:217: 
+  accessing out of bounds index. assert i < 10000;
+[eva] using specification for function printf_va_17
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:218: 
+  function printf_va_17: precondition valid_read_string(param0) got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:236: 
+  accessing out of bounds index. assert j < 10000;
+[eva] using specification for function printf_va_19
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:260: 
+  out of bounds write. assert \valid(nProdutos + a_0);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:259: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:264: 
+  accessing uninitialized left-value.
+  assert \initialized(&(nProdutos + i)->preco);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:264: 
+  accessing uninitialized left-value.
+  assert \initialized(&(nProdutos + j)->preco);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:264: 
+  out of bounds read. assert \valid_read(&(nProdutos + i)->preco);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:264: 
+  out of bounds read. assert \valid_read(&(nProdutos + j)->preco);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:263: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:262: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:273: 
+  accessing uninitialized left-value.
+  assert \initialized(&(nProdutos + i)->stock);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:273: 
+  accessing uninitialized left-value.
+  assert \initialized(&(nProdutos + i)->preco);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:273: 
+  out of bounds read. assert \valid_read(&(nProdutos + i)->stock);
+[eva] using specification for function printf_va_21
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:273: 
+  function printf_va_21: precondition valid_read_string(param0) got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:272: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:286: 
+  out of bounds write. assert \valid(nProdEncomenda + a_0);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:285: 
+  starting to merge loop iterations
+[eva] using specification for function strcmp
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:295: 
+  function strcmp: precondition 'valid_string_s1' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:295: 
+  function strcmp: precondition 'valid_string_s2' got status unknown.
+[eva] FRAMAC_SHARE/libc/string.h:156: 
+  cannot evaluate ACSL term, unsupported ACSL construct: logic function strcmp
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:296: 
+  out of bounds read. assert \valid_read(nProdEncomenda + i);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:294: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:297: 
+  out of bounds read. assert \valid_read(nProdEncomenda + j);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:293: 
+  starting to merge loop iterations
+[eva] using specification for function printf_va_23
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:306: 
+  accessing uninitialized left-value.
+  assert \initialized(&(nProdEncomenda + i)->stock);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:306: 
+  accessing uninitialized left-value.
+  assert \initialized(&(nProdEncomenda + i)->preco);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:306: 
+  out of bounds read. assert \valid_read(&(nProdEncomenda + i)->stock);
+[eva] using specification for function printf_va_24
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:306: 
+  function printf_va_24: precondition valid_read_string(param0) got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:305: 
+  starting to merge loop iterations
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:306: 
+  more than 200(10000) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:45: 
+  accessing out of bounds index. assert 0 ≤ encomendas[i].counter;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:45: 
+  accessing out of bounds index. assert encomendas[i].counter < 10000;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:46: 
+  signed overflow. assert encomendas[i].counter + 1 ≤ 2147483647;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:36: 
+  more than 200(10000) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:38: 
+  more than 200(10000) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:39: 
+  more than 200(10000) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:40: 
+  more than 200(10000) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:46: 
+  more than 200(499) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:60: 
+  more than 200(10000) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:39: 
+  more than 200(10000) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:44: 
+  more than 200(499) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:72: 
+  more than 200(9999) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:72: 
+  more than 200(9999) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:79: 
+  more than 200(500) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:80: 
+  more than 200(500) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:82: 
+  more than 200(500) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:84: 
+  more than 200(500) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:80: 
+  more than 200(500) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:116: 
+  more than 200(499) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:117: 
+  more than 200(9999) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:106: 
+  more than 200(9999) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:108: 
+  more than 200(499) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:136: 
+  more than 200(9999) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:156: 
+  more than 200(9999) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:191: 
+  more than 200(9999) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:191: 
+  more than 200(9999) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:36: 
+  accessing out of bounds index. assert idP < 10000;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:46: 
+  more than 200(500) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:72: 
+  more than 200(10000) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:79: 
+  accessing out of bounds index. assert idE < 500;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:116: 
+  more than 200(500) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:117: 
+  more than 200(10000) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:136: 
+  more than 200(10000) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:156: 
+  more than 200(10000) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/176/proj1.c:191: 
+  more than 200(10000) locations to update in array. Approximating.
+[eva] done for function main
+[scope:rm_asserts] removing 2 assertion(s)
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function N:
+  encomendas[0].id ∈ [0..9999]
+            [0].counter ∈ [-2147483647..2147483647]
+            {[0]{.peso; .produtosEncomenda[0..9999]}; [1..499]} ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function q:
+  produtos[0].id ∈ [0..2147483647]
+          {[0]{.descricao[0..62]; .preco; .peso; .stock; .[bits 536 to 543]}; [1..9999]} ∈
+          [--..--]
+  idp ∈ [0..2147483647]
+  qtd ∈ [--..--]
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function A:
+  produtos[0].id ∈ [0..2147483647]
+          {[0]{.descricao[0..62]; .preco; .peso; .stock; .[bits 536 to 543]}; [1..9999]} ∈
+          [--..--]
+  encomendas[0].id ∈ [0..9999]
+            [0].counter ∈ [-2147483647..2147483647]
+            {[0]{.peso; .produtosEncomenda[0..9999]}; [1..499]} ∈ [--..--]
+  ide ∈ [--..--]
+  idp ∈ [--..--]
+  qtd ∈ [--..--]
+  i ∈ [0..10000] or UNINITIALIZED
+  pesoProduto ∈ [--..--] or UNINITIALIZED
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function r:
+  produtos[0].id ∈ [0..2147483647]
+          {[0]{.descricao[0..62]; .preco; .peso; .stock; .[bits 536 to 543]}; [1..9999]} ∈
+          [--..--]
+  idp ∈ [0..2147483647]
+  qtd ∈ [--..--]
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function R:
+  produtos[0].id ∈ [0..2147483647]
+          {[0]{.descricao[0..62]; .preco; .peso; .stock; .[bits 536 to 543]}; [1..9999]} ∈
+          [--..--]
+  encomendas[0].id ∈ [0..9999]
+            [0].counter ∈ [-2147483647..2147483647]
+            {[0]{.peso; .produtosEncomenda[0..9999]}; [1..499]} ∈ [--..--]
+  i ∈ [0..10000] or UNINITIALIZED
+  ide ∈ [--..--]
+  idp ∈ [--..--]
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function C:
+  ide ∈ [0..2147483647]
+  i ∈ [0..10000] or UNINITIALIZED
+  total ∈ [--..--]
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function p:
+  produtos[0].id ∈ [0..2147483647]
+          {[0]{.descricao[0..62]; .preco; .peso; .stock; .[bits 536 to 543]}; [1..9999]} ∈
+          [--..--]
+  encomendas[0].id ∈ [0..9999]
+            [0].counter ∈ [-2147483647..2147483647]
+            {[0]{.peso; .produtosEncomenda[0..9999]}; [1..499]} ∈ [--..--]
+  idp ∈ [0..2147483647]
+  preco ∈ [--..--]
+  i ∈ [0..500] or UNINITIALIZED
+  j ∈ [0..10000] or UNINITIALIZED
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function E:
+  ide ∈ [--..--]
+  idp ∈ [--..--]
+  i ∈ [0..10000] or UNINITIALIZED
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function m:
+  idp ∈ [--..--]
+  maiorQuantidade ∈ [--..--]
+  idEncomenda ∈ [0..2147483647]
+  i ∈ {500} or UNINITIALIZED
+  j ∈ [0..10000] or UNINITIALIZED
+  f ∈ {0; 1}
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function a:
+  produtos[0].id ∈ [0..2147483647]
+          {[0]{.descricao[0..62]; .preco; .peso; .stock; .[bits 536 to 543]}; [1..9999]} ∈
+          [--..--]
+  encomendas[0].id ∈ [0..9999]
+            [0].counter ∈ [-2147483647..2147483647]
+            {[0]{.peso; .produtosEncomenda[0..9999]}; [1..499]} ∈ [--..--]
+  i ∈ {500}
+  descricao[0] ∈ [--..--]
+           [1..62] ∈ UNINITIALIZED
+  preco ∈ [--..--]
+  peso ∈ [--..--]
+  qtd ∈ [--..--]
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function can_fail_malloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈
+          {{ NULL ; (void *)&__malloc_w_can_fail_malloc_l11 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_0 }}
+[eva:final-states] Values at end of function L:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  i ∈ [0..2147483647] or UNINITIALIZED
+  j ∈ [0..2147483647] or UNINITIALIZED
+  a_0 ∈ [0..10000]
+  ide ∈ [0..499]
+  nProdEncomenda ∈
+                {{ NULL ;
+                   (struct Produtos *)&__malloc_w_can_fail_malloc_l11_0 }}
+  tmp_0 ∈ [--..--] or UNINITIALIZED
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+  __malloc_w_can_fail_malloc_l11_0[0..799999] ∈ [--..--] or UNINITIALIZED
+[eva:final-states] Values at end of function l:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  i ∈ [0..2147483647]
+  j ∈ [1..2147483647] or UNINITIALIZED
+  a_0 ∈ [0..10000]
+  nProdutos ∈
+           {{ NULL ; (struct Produtos *)&__malloc_w_can_fail_malloc_l11 }}
+  tmp_0 ∈ [--..--] or UNINITIALIZED
+  S___fc_stdout[0..1] ∈ [--..--]
+  __malloc_w_can_fail_malloc_l11[0..799999] ∈ [--..--] or UNINITIALIZED
+[eva:final-states] Values at end of function x:
+  NON TERMINATING FUNCTION
+[eva:final-states] Values at end of function main:
+  NON TERMINATING FUNCTION
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  15 functions analyzed (out of 17): 88% coverage.
+  In these functions, 302 statements reached (out of 304): 99% coverage.
+  ----------------------------------------------------------------------------
+  No errors or warnings raised during the analysis.
+  ----------------------------------------------------------------------------
+  70 alarms generated by the analysis:
+      31 accesses out of bounds index
+      25 integer overflows
+       8 invalid memory accesses
+       6 accesses to uninitialized left-values
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     0 unknown     0 invalid      0 total
+    Preconditions    58 valid     7 unknown     0 invalid     65 total
+  89% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[report] Classification
+[report] Output /home/fmarques/sbugs/projects/outputs/framaC/iaed_p1/176/errors.json
+[report] Reviews     :   75
+[report] Unclassified:   75

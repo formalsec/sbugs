@@ -1,0 +1,378 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  
+[eva] using specification for function fscanf_va_1
+[eva] using specification for function fscanf_va_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:33: 
+  signed overflow. assert -2147483648 ≤ 2 * number_friends;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:33: 
+  signed overflow. assert 2 * number_friends ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:34: 
+  signed overflow. assert -2147483648 ≤ number_students + size;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:34: 
+  signed overflow. assert number_students + size ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:35: 
+  assertion 'alloca_bounds' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:35: 
+  allocating variable __malloc_readfromfile_l35
+[eva] using specification for function time
+[eva] using specification for function srand
+[eva] using specification for function rand
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:37: 
+  out of bounds write. assert \valid(class + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:36: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:40: 
+  accessing uninitialized left-value. assert \initialized(class + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:40: 
+  out of bounds read. assert \valid_read(class + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:40: 
+  out of bounds write. assert \valid(&(*(class + i))->number);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:41: 
+  out of bounds read. assert \valid_read(class + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:41: 
+  out of bounds write. assert \valid(&(*(class + i))->grade);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:42: 
+  out of bounds read. assert \valid_read(class + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:42: 
+  out of bounds write. assert \valid(&(*(class + i))->best_grade);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:43: 
+  out of bounds read. assert \valid_read(class + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:43: 
+  out of bounds write. assert \valid(&(*(class + i))->numberoffriends);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:44: 
+  out of bounds read. assert \valid_read(class + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:44: 
+  out of bounds write. assert \valid(&(*(class + i))->visited);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:46: 
+  out of bounds read. assert \valid_read(class + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:46: 
+  out of bounds write. assert \valid(&(*(class + i))->list[j]);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:45: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:39: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:41: 
+  accessing uninitialized left-value. assert \initialized(class + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:42: 
+  accessing uninitialized left-value. assert \initialized(class + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:43: 
+  accessing uninitialized left-value. assert \initialized(class + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:44: 
+  accessing uninitialized left-value. assert \initialized(class + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:46: 
+  accessing uninitialized left-value. assert \initialized(class + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:50: 
+  accessing uninitialized left-value. assert \initialized(class + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:50: 
+  out of bounds read. assert \valid_read(class + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:50: 
+  out of bounds write. assert \valid(&(*(class + i))->number);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:51: 
+  out of bounds read. assert \valid_read(class + i);
+[eva] using specification for function fscanf_va_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:51: 
+  function fscanf_va_3: precondition \valid(param0) got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:52: 
+  out of bounds read. assert \valid_read(class + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:52: 
+  out of bounds write. assert \valid(&(*(class + i))->best_grade);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:52: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(class + i))->grade);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:52: 
+  out of bounds read. assert \valid_read(&(*(class + i))->grade);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:49: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:51: 
+  accessing uninitialized left-value. assert \initialized(class + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:52: 
+  accessing uninitialized left-value. assert \initialized(class + i);
+[eva] using specification for function fscanf_va_4
+[eva] using specification for function fscanf_va_5
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:57: 
+  signed overflow. assert -2147483648 ≤ studentnumber - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:57: 
+  accessing uninitialized left-value.
+  assert \initialized(class + (int)(studentnumber - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:57: 
+  out of bounds read. assert \valid_read(class + (int)(studentnumber - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:57: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(class + (int)(studentnumber - 1)))->numberoffriends);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:57: 
+  out of bounds read.
+  assert \valid_read(&(*(class + (int)(studentnumber - 1)))->numberoffriends);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:58: 
+  accessing uninitialized left-value.
+  assert \initialized(class + (int)(studentnumber - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:58: 
+  out of bounds read. assert \valid_read(class + (int)(studentnumber - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:58: 
+  out of bounds write.
+  assert
+  \valid(&(*(class + (int)(studentnumber - 1)))->list[numberfriendslist]);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:59: 
+  accessing uninitialized left-value.
+  assert \initialized(class + (int)(studentnumber - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:59: 
+  out of bounds read. assert \valid_read(class + (int)(studentnumber - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:59: 
+  out of bounds write.
+  assert \valid(&(*(class + (int)(studentnumber - 1)))->numberoffriends);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:59: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(class + (int)(studentnumber - 1)))->numberoffriends);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:54: 
+  signed overflow. assert i + 2 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:54: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:59: 
+  signed overflow.
+  assert
+  (*(class + (int)(studentnumber - 1)))->numberoffriends + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:62: 
+  accessing uninitialized left-value. assert \initialized(class + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:62: 
+  out of bounds read. assert \valid_read(class + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:62: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(class + i))->numberoffriends);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:62: 
+  out of bounds read. assert \valid_read(&(*(class + i))->numberoffriends);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:63: 
+  out of bounds read. assert \valid_read(class + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:63: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(class + i))->list[j]);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:63: 
+  out of bounds read. assert \valid_read(&(*(class + i))->list[j]);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:16: 
+  signed overflow. assert -2147483648 ≤ num_comp - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:16: 
+  out of bounds read. assert \valid_read(class + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:16: 
+  accessing uninitialized left-value.
+  assert \initialized(class + (int)(num_comp - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:16: 
+  out of bounds read. assert \valid_read(class + (int)(num_comp - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:16: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(class + i))->number);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:16: 
+  out of bounds read. assert \valid_read(&(*(class + i))->number);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:16: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(class + (int)(num_comp - 1)))->visited);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:16: 
+  out of bounds read.
+  assert \valid_read(&(*(class + (int)(num_comp - 1)))->visited);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:17: 
+  accessing uninitialized left-value.
+  assert \initialized(class + (int)(num_comp - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:17: 
+  out of bounds read. assert \valid_read(class + (int)(num_comp - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:17: 
+  out of bounds write.
+  assert \valid(&(*(class + (int)(num_comp - 1)))->visited);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:17: 
+  out of bounds read. assert \valid_read(class + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:17: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(class + i))->number);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:17: 
+  out of bounds read. assert \valid_read(&(*(class + i))->number);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:18: 
+  out of bounds read. assert \valid_read(class + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:18: 
+  accessing uninitialized left-value.
+  assert \initialized(class + (int)(num_comp - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:18: 
+  out of bounds read. assert \valid_read(class + (int)(num_comp - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:18: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(class + i))->best_grade);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:18: 
+  out of bounds read. assert \valid_read(&(*(class + i))->best_grade);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:18: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(class + (int)(num_comp - 1)))->best_grade);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:18: 
+  out of bounds read.
+  assert \valid_read(&(*(class + (int)(num_comp - 1)))->best_grade);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:19: 
+  out of bounds read. assert \valid_read(class + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:19: 
+  out of bounds write. assert \valid(&(*(class + i))->best_grade);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:19: 
+  accessing uninitialized left-value.
+  assert \initialized(class + (int)(num_comp - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:19: 
+  out of bounds read. assert \valid_read(class + (int)(num_comp - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:19: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(class + (int)(num_comp - 1)))->best_grade);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:19: 
+  out of bounds read.
+  assert \valid_read(&(*(class + (int)(num_comp - 1)))->best_grade);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:21: 
+  accessing uninitialized left-value.
+  assert \initialized(class + (int)(num_comp - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:21: 
+  out of bounds read. assert \valid_read(class + (int)(num_comp - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:21: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(class + (int)(num_comp - 1)))->numberoffriends);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:21: 
+  out of bounds read.
+  assert \valid_read(&(*(class + (int)(num_comp - 1)))->numberoffriends);
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:22: 
+  detected recursive call of function Propagacao.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:22: 
+  accessing uninitialized left-value.
+  assert \initialized(class + (int)(num_comp - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:22: 
+  out of bounds read. assert \valid_read(class + (int)(num_comp - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:22: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(class + (int)(num_comp - 1)))->list[j]);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:22: 
+  out of bounds read.
+  assert \valid_read(&(*(class + (int)(num_comp - 1)))->list[j]);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:22: User Error: 
+  Recursive call to Propagacao without assigns clause.
+  Generating probably incomplete assigns to interpret the call. Try to increase
+  the -eva-unroll-recursive-calls parameter or write a correct specification
+  for function Propagacao.
+[kernel:annot:missing-spec] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:14: 
+  Neither code nor specification for function Propagacao, generating default assigns from the prototype
+[eva] using specification for function Propagacao
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:21: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:22: 
+  Using specification of function Propagacao for recursive calls.
+  Analysis of function Propagacao is thus incomplete and its soundness
+  relies on the written specification.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:62: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:61: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:63: 
+  accessing uninitialized left-value. assert \initialized(class + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:16: 
+  accessing uninitialized left-value. assert \initialized(class + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:17: 
+  accessing uninitialized left-value. assert \initialized(class + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:18: 
+  accessing uninitialized left-value. assert \initialized(class + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:19: 
+  accessing uninitialized left-value. assert \initialized(class + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:69: 
+  accessing uninitialized left-value. assert \initialized(class + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:69: 
+  out of bounds read. assert \valid_read(class + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:69: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(class + i))->best_grade);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:69: 
+  out of bounds read. assert \valid_read(&(*(class + i))->best_grade);
+[eva] using specification for function fprintf_va_1
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:68: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al120/test.c:76: 
+  freeing automatic bases: {__malloc_readfromfile_l35}
+[eva] done for function main
+[scope:rm_asserts] removing 41 assertion(s)
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function can_fail_malloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈ {{ NULL ; (void *)&__malloc_w_can_fail_malloc_l11 }}
+[eva:final-states] Values at end of function Propagacao:
+  j ∈ [0..2147483647] or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11[bits 0 to 63]# ∈
+                                [0..2147483647] or UNINITIALIZED repeated %32 
+                                [8..15] ∈ [--..--] or UNINITIALIZED
+                                [bits 128 to 159] ∈
+                                [0..2147483647] or UNINITIALIZED
+                                [20..8589934611] ∈
+                                [--..--] or UNINITIALIZED
+                                [8589934612..18446744073709551611] ∈
+                                UNINITIALIZED
+[eva:final-states] Values at end of function readfromfile:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  number_students ∈ [--..--]
+  number_friends ∈ [--..--]
+  i ∈ [0..2147483647]
+  infosize ∈ [--..--]
+  j ∈ [0..2147483647] or UNINITIALIZED
+  friendp ∈ [1..2147483647] or UNINITIALIZED
+  friendnumber ∈ [--..--] or UNINITIALIZED
+  c ∈ [--..--]
+  size ∈ [-2147483648..2147483646],0%2
+  studentnumber ∈ [1..2147483647] or UNINITIALIZED
+  numberfriendslist ∈ [0..2147483647]
+  class ∈ ESCAPINGADDR
+  __lengthof_class ∈ [--..--]
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+  __malloc_w_can_fail_malloc_l11[bits 0 to 63]# ∈
+                                [0..2147483647] or UNINITIALIZED repeated %32 
+                                [8..15] ∈ [--..--] or UNINITIALIZED
+                                [bits 128 to 159] ∈
+                                [0..2147483647] or UNINITIALIZED
+                                [20..8589934611] ∈
+                                [--..--] or UNINITIALIZED
+                                [8589934612..18446744073709551611] ∈
+                                UNINITIALIZED
+[eva:final-states] Values at end of function main:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  __retres ∈ {0}
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+  __malloc_w_can_fail_malloc_l11[bits 0 to 63]# ∈
+                                [0..2147483647] or UNINITIALIZED repeated %32 
+                                [8..15] ∈ [--..--] or UNINITIALIZED
+                                [bits 128 to 159] ∈
+                                [0..2147483647] or UNINITIALIZED
+                                [20..8589934611] ∈
+                                [--..--] or UNINITIALIZED
+                                [8589934612..18446744073709551611] ∈
+                                UNINITIALIZED
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  4 functions analyzed (out of 6): 66% coverage.
+  In these functions, 103 statements reached (out of 103): 100% coverage.
+  ----------------------------------------------------------------------------
+  Some errors and warnings have been raised during the analysis:
+    by the Eva analyzer:      1 error    0 warnings
+    by the Frama-C kernel:    0 errors    0 warnings
+  ----------------------------------------------------------------------------
+  98 alarms generated by the analysis:
+      51 invalid memory accesses
+      39 accesses to uninitialized left-values
+       8 integer overflows
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     1 unknown     0 invalid      1 total
+    Preconditions    12 valid     1 unknown     0 invalid     13 total
+  85% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[eva] User Error: Deferred error message was emitted during execution. See above messages for more information.
+[kernel] Plug-in eva aborted: invalid user input.

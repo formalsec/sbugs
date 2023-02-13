@@ -1,0 +1,402 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:typing:no-proto] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:34: 
+  Calling function problem1 that is declared without prototype.
+  Its formals will be inferred from actual arguments
+[kernel:typing:no-proto] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:36: 
+  Calling function problem2 that is declared without prototype.
+  Its formals will be inferred from actual arguments
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  
+[eva] using specification for function getchar
+[eva] using specification for function fgets
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:47: 
+  function fgets: precondition 'valid_stream' got status unknown.
+[eva] using specification for function time
+[eva] using specification for function srand
+[eva] using specification for function rand
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11
+[eva] using specification for function strtok
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:55: 
+  function strtok, behavior new_str: precondition 'valid_string_s_or_delim_not_found' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:58: 
+  pointer comparison. assert \pointer_comparable((void *)n, (void *)0);
+[eva] using specification for function sscanf_va_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:59: 
+  function sscanf_va_1: precondition valid_read_string(s) got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:58: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:61: 
+  out of bounds write. assert \valid(sequence + i);
+[eva:locals-escaping] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:141: 
+  locals {line} escaping the scope of getSequence through __fc_strtok_ptr
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:143: 
+  accessing uninitialized left-value. assert \initialized(&size);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_0
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:182: 
+  out of bounds write. assert \valid(count + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:183: 
+  out of bounds write. assert \valid(subSize + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:181: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:189: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:191: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:192: 
+  accessing uninitialized left-value. assert \initialized(seq + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:192: 
+  accessing uninitialized left-value. assert \initialized(seq + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:192: 
+  out of bounds read. assert \valid_read(seq + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:192: 
+  out of bounds read. assert \valid_read(seq + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:193: 
+  accessing uninitialized left-value. assert \initialized(subSize + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:193: 
+  accessing uninitialized left-value. assert \initialized(subSize + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:193: 
+  out of bounds read. assert \valid_read(subSize + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:193: 
+  out of bounds read. assert \valid_read(subSize + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:194: 
+  out of bounds write. assert \valid(subSize + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:194: 
+  out of bounds read. assert \valid_read(subSize + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:195: 
+  out of bounds write. assert \valid(count + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:195: 
+  accessing uninitialized left-value. assert \initialized(count + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:195: 
+  out of bounds read. assert \valid_read(count + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:198: 
+  accessing uninitialized left-value. assert \initialized(subSize + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:198: 
+  out of bounds read. assert \valid_read(subSize + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:198: 
+  out of bounds read. assert \valid_read(subSize + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:199: 
+  out of bounds write. assert \valid(count + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:199: 
+  accessing uninitialized left-value. assert \initialized(count + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:199: 
+  accessing uninitialized left-value. assert \initialized(count + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:199: 
+  out of bounds read. assert \valid_read(count + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:193: 
+  signed overflow. assert *(subSize + j) + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:194: 
+  accessing uninitialized left-value. assert \initialized(subSize + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:194: 
+  signed overflow. assert *(subSize + j) + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:198: 
+  accessing uninitialized left-value. assert \initialized(subSize + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:198: 
+  signed overflow. assert *(subSize + j) + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:208: 
+  accessing uninitialized left-value. assert \initialized(subSize + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:208: 
+  out of bounds read. assert \valid_read(subSize + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:209: 
+  out of bounds read. assert \valid_read(subSize + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:207: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:209: 
+  accessing uninitialized left-value. assert \initialized(subSize + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:215: 
+  accessing uninitialized left-value. assert \initialized(subSize + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:215: 
+  out of bounds read. assert \valid_read(subSize + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:216: 
+  accessing uninitialized left-value. assert \initialized(count + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:216: 
+  out of bounds read. assert \valid_read(count + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:214: 
+  starting to merge loop iterations
+[eva] using specification for function printf_va_1
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:58: 
+  function strtok, behavior resume_str: precondition 'not_first_call' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:58: 
+  Assigning imprecise value to n.
+  The imprecision originates from Library function
+[eva:locals-escaping] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:155: 
+  locals {line} escaping the scope of getSequence through __fc_strtok_ptr
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:156: 
+  accessing uninitialized left-value. assert \initialized(&size1);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:85: 
+  out of bounds write. assert \valid(aux + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:85: 
+  accessing uninitialized left-value. assert \initialized(seq + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:85: 
+  out of bounds read. assert \valid_read(seq + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:84: 
+  starting to merge loop iterations
+[eva] using specification for function qsort
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_4
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:100: 
+  function strtok, behavior new_str: precondition 'valid_string_s_or_delim_not_found' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:103: 
+  pointer comparison. assert \pointer_comparable((void *)n, (void *)0);
+[eva] using specification for function sscanf_va_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:104: 
+  function sscanf_va_2: precondition valid_read_string(s) got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:125: 
+  accessing uninitialized left-value. assert \initialized(seq + mid);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:125: 
+  out of bounds read. assert \valid_read(seq + mid);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:127: 
+  accessing uninitialized left-value. assert \initialized(seq + mid);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:127: 
+  out of bounds read. assert \valid_read(seq + mid);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:123: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:124: 
+  signed overflow. assert left + (int)((int)(right - left) / 2) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:103: 
+  function strtok, behavior resume_str: precondition 'not_first_call' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:103: 
+  Assigning imprecise value to n.
+  The imprecision originates from Library function
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:103: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:107: 
+  out of bounds write. assert \valid(sequence + i);
+[eva:locals-escaping] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:156: 
+  locals {line} escaping the scope of getSecondSequence through __fc_strtok_ptr
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:158: 
+  accessing uninitialized left-value. assert \initialized(&size2);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_5
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:236: 
+  out of bounds write. assert \valid(sizes + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:235: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:246: 
+  accessing uninitialized left-value. assert \initialized(v1 + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:246: 
+  accessing uninitialized left-value. assert \initialized(v2 + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:246: 
+  out of bounds read. assert \valid_read(v1 + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:246: 
+  out of bounds read. assert \valid_read(v2 + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:247: 
+  accessing uninitialized left-value. assert \initialized(sizes + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:247: 
+  out of bounds read. assert \valid_read(sizes + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:248: 
+  out of bounds write. assert \valid(sizes + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:252: 
+  accessing uninitialized left-value. assert \initialized(sizes + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:252: 
+  out of bounds read. assert \valid_read(sizes + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:253: 
+  out of bounds read. assert \valid_read(sizes + j);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:245: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:251: 
+  accessing uninitialized left-value. assert \initialized(v2 + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:253: 
+  accessing uninitialized left-value. assert \initialized(sizes + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:247: 
+  signed overflow. assert currentSize + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:242: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:251: 
+  accessing uninitialized left-value. assert \initialized(v1 + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:261: 
+  accessing uninitialized left-value. assert \initialized(sizes + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:261: 
+  out of bounds read. assert \valid_read(sizes + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:262: 
+  out of bounds read. assert \valid_read(sizes + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:260: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al133/proj1ASA.c:262: 
+  accessing uninitialized left-value. assert \initialized(sizes + i);
+[eva] using specification for function printf_va_2
+[eva] done for function main
+[scope:rm_asserts] removing 18 assertion(s)
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function binarySearch:
+  left ∈ [0..2147483647]
+  right ∈ [-1..2147483646]
+  mid ∈ [0..2147483646] or UNINITIALIZED
+  __retres ∈ {0; 1}
+[eva:final-states] Values at end of function can_fail_malloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈
+          {{ NULL ; (void *)&__malloc_can_fail_malloc_l11 ;
+             (void *)&__malloc_can_fail_malloc_l11_0 ;
+             (void *)&__malloc_can_fail_malloc_l11_1 ;
+             (void *)&__malloc_can_fail_malloc_l11_2 ;
+             (void *)&__malloc_can_fail_malloc_l11_3 ;
+             (void *)&__malloc_can_fail_malloc_l11_4 ;
+             (void *)&__malloc_can_fail_malloc_l11_5 }}
+[eva:final-states] Values at end of function getSecondSequence:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  __fc_strtok_ptr ∈
+                 {{ garbled mix of &{line}
+                  (origin: Library function) }} or ESCAPINGADDR
+  aux ∈ {{ NULL ; (int *)&__malloc_can_fail_malloc_l11_3 }} or ESCAPINGADDR
+  i ∈ [0..2147483647]
+  line[0..899999] ∈ [--..--] or UNINITIALIZED
+  sequence ∈ {{ NULL ; (int *)&__malloc_can_fail_malloc_l11_4 }}
+  n ∈ {{ garbled mix of &{line} (origin: Library function) }}
+  number ∈ [--..--] or UNINITIALIZED
+  size2 ∈ [0..2147483647] or UNINITIALIZED
+  __retres ∈ {{ NULL ; (int *)&__malloc_can_fail_malloc_l11_4 }}
+  __malloc_can_fail_malloc_l11_3[0..8589934587] ∈ [--..--] or UNINITIALIZED
+  __malloc_can_fail_malloc_l11_4[0..799999] ∈ [--..--] or UNINITIALIZED
+[eva:final-states] Values at end of function getSequence:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  __fc_strtok_ptr ∈
+                 {{ garbled mix of &{line}
+                  (origin: Library function) }} or ESCAPINGADDR
+  line[0..899999] ∈ [--..--] or UNINITIALIZED
+  sequence ∈
+          {{ NULL ; (int *)&__malloc_can_fail_malloc_l11 ;
+             (int *)&__malloc_can_fail_malloc_l11_2 }}
+  n ∈ {{ garbled mix of &{line} (origin: Library function) }}
+  i ∈ [0..2147483647]
+  number ∈ [--..--] or UNINITIALIZED
+  size ∈ [0..2147483647] or UNINITIALIZED
+  size1 ∈ [0..2147483647] or UNINITIALIZED
+  __retres ∈
+          {{ NULL ; (int *)&__malloc_can_fail_malloc_l11 ;
+             (int *)&__malloc_can_fail_malloc_l11_2 }}
+  __malloc_can_fail_malloc_l11[0..799999] ∈ [--..--] or UNINITIALIZED
+  __malloc_can_fail_malloc_l11_2[0..799999] ∈ [--..--] or UNINITIALIZED
+[eva:final-states] Values at end of function maxCommonSize:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  i ∈ [0..2147483647]
+  j ∈ [0..2147483647] or UNINITIALIZED
+  maxCommonSize_0 ∈ [0..2147483647]
+  sizes ∈
+       {{ NULL ; (int *)&__malloc_can_fail_malloc_l11_5 }} or ESCAPINGADDR
+  currentSize ∈ [0..2147483647] or UNINITIALIZED
+  __malloc_can_fail_malloc_l11_5[bits 0 to 6399999]# ∈
+                                [0..2147483647] or UNINITIALIZED repeated %32 
+                                [800000..8589934587] ∈ {0} or UNINITIALIZED
+[eva:final-states] 
+  Values at end of function numberOfLongestIncreasingSubsequences:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  maxDepth ∈ [1..2147483647]
+  numberOfSubSequences ∈ [--..--]
+  subSize ∈
+         {{ NULL ; (int *)&__malloc_can_fail_malloc_l11_0 }} or ESCAPINGADDR
+  count ∈
+       {{ NULL ; (unsigned long long *)&__malloc_can_fail_malloc_l11_1 }} or ESCAPINGADDR
+  i ∈ [0..2147483647]
+  j ∈ {-1} or UNINITIALIZED
+  __malloc_can_fail_malloc_l11_0[bits 0 to 6399999]# ∈
+                                [1..2147483647] or UNINITIALIZED repeated %32 
+                                [bits 6400000 to 68719476703]# ∈
+                                {1} or UNINITIALIZED repeated %32 
+  __malloc_can_fail_malloc_l11_1[0..1599999] ∈ [--..--] or UNINITIALIZED
+                                [bits 12800000 to 137438953407]# ∈
+                                {1} or UNINITIALIZED repeated %64 
+[eva:final-states] Values at end of function problem1:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  __fc_strtok_ptr ∈ {0} or ESCAPINGADDR
+  size ∈ [0..2147483647]
+  maxDepth ∈ [1..2147483647]
+  sequence ∈
+          {{ NULL ; (int *)&__malloc_can_fail_malloc_l11 }} or ESCAPINGADDR
+  count ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11[0..799999] ∈ [--..--] or UNINITIALIZED
+  __malloc_can_fail_malloc_l11_0[bits 0 to 6399999]# ∈
+                                [1..2147483647] or UNINITIALIZED repeated %32 
+                                [bits 6400000 to 68719476703]# ∈
+                                {1} or UNINITIALIZED repeated %32 
+  __malloc_can_fail_malloc_l11_1[0..1599999] ∈ [--..--] or UNINITIALIZED
+                                [bits 12800000 to 137438953407]# ∈
+                                {1} or UNINITIALIZED repeated %64 
+[eva:final-states] Values at end of function problem2:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  __fc_strtok_ptr ∈ [--..--] or ESCAPINGADDR
+  size1 ∈ [0..2147483647]
+  size2 ∈ [0..2147483647]
+  sequence1 ∈
+           {{ NULL ; (int *)&__malloc_can_fail_malloc_l11_2 }} or ESCAPINGADDR
+  sequence2 ∈
+           {{ NULL ; (int *)&__malloc_can_fail_malloc_l11_4 }} or ESCAPINGADDR
+  maxSize ∈ [0..2147483647]
+  S___fc_stdout[0..1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11_2[0..799999] ∈ [--..--] or UNINITIALIZED
+  __malloc_can_fail_malloc_l11_3[0..8589934587] ∈ [--..--] or UNINITIALIZED
+  __malloc_can_fail_malloc_l11_4[0..799999] ∈ [--..--] or UNINITIALIZED
+  __malloc_can_fail_malloc_l11_5[bits 0 to 6399999]# ∈
+                                [0..2147483647] or UNINITIALIZED repeated %32 
+                                [800000..8589934587] ∈ {0} or UNINITIALIZED
+[eva:final-states] Values at end of function main:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  __fc_strtok_ptr ∈ [--..--] or ESCAPINGADDR
+  problemNumber ∈ [--..--]
+  __retres ∈ {0; 1}
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11[0..799999] ∈ [--..--] or UNINITIALIZED
+  __malloc_can_fail_malloc_l11_0[bits 0 to 6399999]# ∈
+                                [1..2147483647] or UNINITIALIZED repeated %32 
+                                [bits 6400000 to 68719476703]# ∈
+                                {1} or UNINITIALIZED repeated %32 
+  __malloc_can_fail_malloc_l11_1[0..1599999] ∈ [--..--] or UNINITIALIZED
+                                [bits 12800000 to 137438953407]# ∈
+                                {1} or UNINITIALIZED repeated %64 
+  __malloc_can_fail_malloc_l11_2[0..799999] ∈ [--..--] or UNINITIALIZED
+  __malloc_can_fail_malloc_l11_3[0..8589934587] ∈ [--..--] or UNINITIALIZED
+  __malloc_can_fail_malloc_l11_4[0..799999] ∈ [--..--] or UNINITIALIZED
+  __malloc_can_fail_malloc_l11_5[bits 0 to 6399999]# ∈
+                                [0..2147483647] or UNINITIALIZED repeated %32 
+                                [800000..8589934587] ∈ {0} or UNINITIALIZED
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  9 functions analyzed (out of 12): 75% coverage.
+  In these functions, 189 statements reached (out of 189): 100% coverage.
+  ----------------------------------------------------------------------------
+  No errors or warnings raised during the analysis.
+  ----------------------------------------------------------------------------
+  69 alarms generated by the analysis:
+      33 invalid memory accesses
+      29 accesses to uninitialized left-values
+       5 integer overflows
+       2 others
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     0 unknown     0 invalid      0 total
+    Preconditions    26 valid     7 unknown     0 invalid     33 total
+  78% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[report] Classification
+[report] Output /home/fmarques/sbugs/projects/outputs/framaC/asa_2122_p1/al133/errors.json
+[report] Reviews     :   56
+[report] Unclassified:   56

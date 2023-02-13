@@ -1,0 +1,369 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  alunos ∈ {0}
+[eva] using specification for function scanf_va_1
+[eva] using specification for function time
+[eva] using specification for function srand
+[eva] using specification for function rand
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11
+[eva] using specification for function scanf_va_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:59: 
+  out of bounds write. assert \valid(&(alunos + i)->visitado);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:55: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:60: 
+  out of bounds write. assert \valid(&(alunos + i)->nota_prevista);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:61: 
+  out of bounds write. assert \valid(&(alunos + i)->sou_amigo);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:59: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:60: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:61: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:59: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:60: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:61: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[eva] using specification for function scanf_va_3
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_0
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:76: 
+  out of bounds write. assert \valid(&amigo->i_amigo);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:76: 
+  signed overflow. assert -2147483648 ≤ u - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:78: 
+  signed overflow. assert -2147483648 ≤ v - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:78: 
+  accessing uninitialized left-value.
+  assert \initialized(&(alunos + (int)(v - 1))->sou_amigo);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:78: 
+  out of bounds read. assert \valid_read(&(alunos + (int)(v - 1))->sou_amigo);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:82: 
+  accessing uninitialized left-value.
+  assert \initialized(&(alunos + (int)(v - 1))->sou_amigo);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:82: 
+  out of bounds read. assert \valid_read(&(alunos + (int)(v - 1))->sou_amigo);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:84: 
+  out of bounds write. assert \valid(&(alunos + (int)(v - 1))->sou_amigo);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:84: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:70: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:95: 
+  accessing uninitialized left-value.
+  assert \initialized(&(alunos + i)->visitado);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:95: 
+  out of bounds read. assert \valid_read(&(alunos + i)->visitado);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:103: 
+  accessing uninitialized left-value.
+  assert \initialized(&(alunos + vertice)->nota_prevista);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:106: 
+  accessing uninitialized left-value.
+  assert \initialized(&(alunos + vertice)->sou_amigo);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:108: 
+  accessing uninitialized left-value. assert \initialized(&amigo_aux->i_amigo);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:108: 
+  out of bounds read. assert \valid_read(&amigo_aux->i_amigo);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:110: 
+  accessing uninitialized left-value.
+  assert \initialized(&(alunos + vertice_amigo)->nota_prevista);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:110: 
+  out of bounds read.
+  assert \valid_read(&(alunos + vertice_amigo)->nota_prevista);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:111: 
+  out of bounds write. assert \valid(&(alunos + vertice_amigo)->visitado);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:111: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:112: 
+  out of bounds write. assert \valid(&(alunos + vertice_amigo)->nota_prevista);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:112: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:113: 
+  detected recursive call of function propagar_notas.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:113: User Error: 
+  Recursive call to propagar_notas without assigns clause.
+  Generating probably incomplete assigns to interpret the call. Try to increase
+  the -eva-unroll-recursive-calls parameter or write a correct specification
+  for function propagar_notas.
+[kernel:annot:missing-spec] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:102: 
+  Neither code nor specification for function propagar_notas, generating default assigns from the prototype
+[eva] using specification for function propagar_notas
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:106: 
+  accessing uninitialized left-value. assert \initialized(&amigo_aux->next);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:106: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:93: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:103: 
+  Assigning imprecise value to nota.
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:111}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:106: 
+  Assigning imprecise value to amigo_aux.
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:111}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:106: 
+  pointer comparison. assert \pointer_comparable((void *)amigo_aux, (void *)0);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:108: 
+  Assigning imprecise value to vertice_amigo.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:108}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:112: 
+  Assigning imprecise value to (alunos + vertice_amigo)->nota_prevista
+  (pointing to __malloc_can_fail_malloc_l11 with offsets [0..412316860032],0%192).
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:111}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:113: 
+  Using specification of function propagar_notas for recursive calls.
+  Analysis of function propagar_notas is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:106: 
+  out of bounds read. assert \valid_read(&amigo_aux->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:96: 
+  out of bounds write. assert \valid(&(alunos + i)->visitado);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:103: 
+  out of bounds read. assert \valid_read(&(alunos + vertice)->nota_prevista);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:106: 
+  out of bounds read. assert \valid_read(&(alunos + vertice)->sou_amigo);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:96: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:124: 
+  accessing uninitialized left-value.
+  assert \initialized(&(alunos + i)->nota_prevista);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:124: 
+  out of bounds read. assert \valid_read(&(alunos + i)->nota_prevista);
+[eva] using specification for function printf_va_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:126: 
+  accessing uninitialized left-value.
+  assert \initialized(&(alunos + i)->sou_amigo);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:126: 
+  Assigning imprecise value to amigo.
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:111}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:128: 
+  pointer comparison. assert \pointer_comparable((void *)amigo, (void *)0);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:129: 
+  Assigning imprecise value to amigo_aux.
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:111}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:130: 
+  function free: precondition 'freeable' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:131: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&amigo);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:131: 
+  accessing uninitialized left-value. assert \initialized(&amigo->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:131: 
+  out of bounds read. assert \valid_read(&amigo->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:131: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&amigo->next);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:131: 
+  Assigning imprecise value to amigo.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:131}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:128: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:129: 
+  Assigning imprecise value to amigo_aux.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:131}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:123: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:124: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(alunos + i)->nota_prevista);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:126: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(alunos + i)->sou_amigo);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:126: 
+  out of bounds read. assert \valid_read(&(alunos + i)->sou_amigo);
+[eva] done for function main
+[scope:rm_asserts] removing 2 assertion(s)
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function print_resultados:
+  alunos ∈
+        {{ NULL ; (struct aluno *)&__malloc_can_fail_malloc_l11 }} or ESCAPINGADDR
+  i ∈ [2..2147483647]
+  amigo ∈ {0} or UNINITIALIZED
+  amigo_aux ∈
+           {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0}
+            (origin: Misaligned
+            {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:131}) }} or UNINITIALIZED or ESCAPINGADDR
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0}
+                (origin: Library function
+                {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:124}) }} or ESCAPINGADDR
+               [1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11[0..15] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0}
+                               (origin: Merge
+                               {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:111}) }} or UNINITIALIZED or ESCAPINGADDR
+                              [16..19] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0}
+                               (origin: Misaligned
+                               {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:95}) }} or UNINITIALIZED or ESCAPINGADDR
+                              [20..51539607519] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0}
+                               (origin: Merge
+                               {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:111}) }} or UNINITIALIZED or ESCAPINGADDR
+                              [bits 412316860160 to 412316860191] ∈
+                              {0; 1} or UNINITIALIZED
+                              [51539607524..51539607527] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_0[bits 0 to 31] ∈
+                                  [-2147483648..2147483646] or UNINITIALIZED
+                                  [4..7] ∈ UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL + [--..--] ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_0 }} or UNINITIALIZED or ESCAPINGADDR
+[eva:final-states] Values at end of function can_fail_malloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈
+          {{ NULL ; (void *)&__malloc_can_fail_malloc_l11 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_0 }}
+[eva:final-states] Values at end of function preencher_aluno:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  alunos ∈ {{ NULL ; (struct aluno *)&__malloc_can_fail_malloc_l11 }}
+  i ∈ [2..2147483647]
+  S___fc_stdin[0..1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11[0..51539607507] ∈ [--..--] or UNINITIALIZED
+                              [51539607508..51539607523] ∈
+                              {0} or UNINITIALIZED
+                              [51539607524..51539607527] ∈ UNINITIALIZED
+[eva:final-states] Values at end of function preencher_amigos:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  i ∈ [1..2147483647]
+  S___fc_stdin[0..1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11[0..7] ∈ [--..--] or UNINITIALIZED
+                              [bits 64 to 412316860063]# ∈
+                              {{ NULL + [--..--] ;
+                                 (? *)&__malloc_w_can_fail_malloc_l11_0 }} or UNINITIALIZED repeated %64, bits 0 to 412316859999 
+                              [bits 412316860064 to 412316860159]# ∈
+                              {{ NULL ;
+                                 (? *)&__malloc_w_can_fail_malloc_l11_0 }} or UNINITIALIZED repeated %64, bits 32 to 127 
+                              [51539607520..51539607523] ∈
+                              {0} or UNINITIALIZED
+                              [51539607524..51539607527] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_0[bits 0 to 31] ∈
+                                  [-2147483648..2147483646] or UNINITIALIZED
+                                  [4..7] ∈ UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL + [--..--] ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_0 }} or UNINITIALIZED
+[eva:final-states] Values at end of function propagar_notas:
+  nota ∈
+      {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0}
+       (origin: Merge
+       {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:111}) }}
+  amigo_aux ∈ {0}
+  __malloc_can_fail_malloc_l11[0..15] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0}
+                               (origin: Merge
+                               {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:111}) }} or UNINITIALIZED
+                              [16..19] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0}
+                               (origin: Misaligned
+                               {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:95}) }} or UNINITIALIZED
+                              [20..51539607519] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0}
+                               (origin: Merge
+                               {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:111}) }} or UNINITIALIZED
+                              [bits 412316860160 to 412316860191] ∈
+                              {0; 1} or UNINITIALIZED
+                              [51539607524..51539607527] ∈ UNINITIALIZED
+[eva:final-states] Values at end of function ver_alunos:
+  i ∈ [2..2147483647]
+  __malloc_can_fail_malloc_l11[0..15] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0}
+                               (origin: Merge
+                               {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:111}) }} or UNINITIALIZED
+                              [16..19] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0}
+                               (origin: Misaligned
+                               {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:95}) }} or UNINITIALIZED
+                              [20..51539607519] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0}
+                               (origin: Merge
+                               {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:111}) }} or UNINITIALIZED
+                              [bits 412316860160 to 412316860191] ∈
+                              {0; 1} or UNINITIALIZED
+                              [51539607524..51539607527] ∈ UNINITIALIZED
+[eva:final-states] Values at end of function main:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  alunos ∈
+        {{ NULL ; (struct aluno *)&__malloc_can_fail_malloc_l11 }} or ESCAPINGADDR
+  N ∈ [--..--]
+  M ∈ [--..--]
+  __retres ∈ {0; 1}
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0}
+                (origin: Library function
+                {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:124}) }} or ESCAPINGADDR
+               [1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11[0..15] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0}
+                               (origin: Merge
+                               {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:111}) }} or UNINITIALIZED or ESCAPINGADDR
+                              [16..19] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0}
+                               (origin: Misaligned
+                               {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:95}) }} or UNINITIALIZED or ESCAPINGADDR
+                              [20..51539607519] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0}
+                               (origin: Merge
+                               {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al105/proj1.c:111}) }} or UNINITIALIZED or ESCAPINGADDR
+                              [bits 412316860160 to 412316860191] ∈
+                              {0; 1} or UNINITIALIZED
+                              [51539607524..51539607527] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_0[bits 0 to 31] ∈
+                                  [-2147483648..2147483646] or UNINITIALIZED
+                                  [4..7] ∈ UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL + [--..--] ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_0 }} or UNINITIALIZED or ESCAPINGADDR
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  7 functions analyzed (out of 9): 77% coverage.
+  In these functions, 92 statements reached (out of 92): 100% coverage.
+  ----------------------------------------------------------------------------
+  Some errors and warnings have been raised during the analysis:
+    by the Eva analyzer:      1 error    0 warnings
+    by the Frama-C kernel:    0 errors    0 warnings
+  ----------------------------------------------------------------------------
+  38 alarms generated by the analysis:
+      19 invalid memory accesses
+      11 accesses to uninitialized left-values
+       4 escaping addresses
+       2 integer overflows
+       2 others
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     0 unknown     0 invalid      0 total
+    Preconditions    11 valid     1 unknown     0 invalid     12 total
+  91% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[eva] User Error: Deferred error message was emitted during execution. See above messages for more information.
+[kernel] Plug-in eva aborted: invalid user input.

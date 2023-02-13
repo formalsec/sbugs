@@ -1,0 +1,207 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg009/ProjASAFINAL.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  vertMax ∈ {0}
+  contNumSub ∈ {0}
+  apUtil_time ∈ {0}
+[eva] using specification for function scanf_va_1
+[eva] using specification for function exit
+[eva] using specification for function scanf_va_2
+[eva] using specification for function time
+[eva] using specification for function srand
+[eva] using specification for function rand
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_0
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg009/ProjASAFINAL.c:53: 
+  out of bounds write. assert \valid(&Grafo->array);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_1
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg009/ProjASAFINAL.c:63: 
+  out of bounds write. assert \valid(&(Grafo->array + i)->head);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg009/ProjASAFINAL.c:64: 
+  out of bounds write. assert \valid(Grafo->visited + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg009/ProjASAFINAL.c:62: 
+  starting to merge loop iterations
+[eva] using specification for function scanf_va_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg009/ProjASAFINAL.c:267: 
+  signed overflow. assert -2147483648 ≤ v1 - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg009/ProjASAFINAL.c:268: 
+  signed overflow. assert -2147483648 ≤ v2 - 1;
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg009/ProjASAFINAL.c:42: 
+  out of bounds write. assert \valid(&new->vertice);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg009/ProjASAFINAL.c:73: 
+  accessing uninitialized left-value.
+  assert \initialized(&(Grafo->array + src)->head);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg009/ProjASAFINAL.c:73: 
+  out of bounds read. assert \valid_read(&(Grafo->array + src)->head);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg009/ProjASAFINAL.c:74: 
+  out of bounds write. assert \valid(&(Grafo->array + src)->head);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_4
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg009/ProjASAFINAL.c:77: 
+  accessing uninitialized left-value.
+  assert \initialized(&(Grafo->array + vertice)->head);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg009/ProjASAFINAL.c:77: 
+  out of bounds read. assert \valid_read(&(Grafo->array + vertice)->head);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg009/ProjASAFINAL.c:78: 
+  out of bounds write. assert \valid(&(Grafo->array + vertice)->head);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg009/ProjASAFINAL.c:282: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg009/ProjASAFINAL.c:288: 
+  accessing uninitialized left-value.
+  assert \initialized(newGrafo->visited + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg009/ProjASAFINAL.c:288: 
+  out of bounds read. assert \valid_read(newGrafo->visited + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg009/ProjASAFINAL.c:290: 
+  accessing uninitialized left-value.
+  assert \initialized(&newGrafo->vertMaxArray);
+[eva] done for function main
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg009/ProjASAFINAL.c:290: 
+  assertion 'Eva,initialization' got final status invalid.
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function getnVertices:
+  v ∈ [2..2147483647]
+  S___fc_stdin[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function getnLigacoes:
+  l ∈ [1..2147483647]
+  S___fc_stdin[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function can_fail_malloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈
+          {{ NULL ; (void *)&__malloc_can_fail_malloc_l11 ;
+             (void *)&__malloc_can_fail_malloc_l11_0 ;
+             (void *)&__malloc_can_fail_malloc_l11_1 ;
+             (void *)&__malloc_can_fail_malloc_l11_2 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_3 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_4 }}
+[eva:final-states] Values at end of function criaGrafo:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  Grafo ∈ {{ (struct Grafo *)&__malloc_can_fail_malloc_l11 }}
+  i ∈ [2..2147483647]
+  __malloc_can_fail_malloc_l11[bits 0 to 31] ∈ [2..2147483647]
+                              [bits 32 to 63] ∈ [1..2147483647]
+                              [8..11] ∈ {0}
+                              [12..23] ∈ UNINITIALIZED
+                              [bits 192 to 255] ∈
+                              {{ NULL ;
+                                 (? *)&__malloc_can_fail_malloc_l11_1 }}
+                              [bits 256 to 319] ∈
+                              {{ NULL ;
+                                 (? *)&__malloc_can_fail_malloc_l11_2 }}
+                              [40..43] ∈ {0}
+                              [44..47] ∈ UNINITIALIZED
+                              [bits 384 to 447] ∈
+                              {{ NULL ;
+                                 (? *)&__malloc_can_fail_malloc_l11_0 }}
+  __malloc_can_fail_malloc_l11_0[0..17179869175] ∈ {0} or UNINITIALIZED
+  __malloc_can_fail_malloc_l11_1[0..8589934587] ∈ {0} or UNINITIALIZED
+[eva:final-states] Values at end of function newAdjListVertice:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  new ∈
+     {{ (struct AdjListVertice *)&__malloc_w_can_fail_malloc_l11_3 ;
+        (struct AdjListVertice *)&__malloc_w_can_fail_malloc_l11_4 }}
+  __malloc_w_can_fail_malloc_l11_3[bits 0 to 31] ∈
+                                  [-2147483648..2147483646] or UNINITIALIZED
+                                  [4..7] ∈ UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_3 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_4[bits 0 to 31] ∈
+                                  [0..2147483646] or UNINITIALIZED
+                                  [4..7] ∈ UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_3 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED
+[eva:final-states] Values at end of function addArco:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  newNode ∈
+         {{ (struct AdjListVertice *)&__malloc_w_can_fail_malloc_l11_4 }}
+  __malloc_can_fail_malloc_l11_0[bits 0 to 137438953407]# ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_3 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED repeated %64 
+  __malloc_w_can_fail_malloc_l11_3[bits 0 to 31] ∈
+                                  [-2147483648..2147483646] or UNINITIALIZED
+                                  [4..7] ∈ UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_3 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_4[bits 0 to 31] ∈
+                                  [0..2147483646] or UNINITIALIZED
+                                  [4..7] ∈ UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_3 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED
+[eva:final-states] Values at end of function vertLigados:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  v1 ∈ [0..2147483646]
+  v2 ∈ [0..2147483646]
+  S___fc_stdin[0..1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11_0[bits 0 to 137438953407]# ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_3 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED repeated %64 
+  __malloc_w_can_fail_malloc_l11_3[bits 0 to 31] ∈
+                                  [-2147483648..2147483646] or UNINITIALIZED
+                                  [4..7] ∈ UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_3 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_4[bits 0 to 31] ∈
+                                  [0..2147483646] or UNINITIALIZED
+                                  [4..7] ∈ UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_3 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED
+[eva:final-states] Values at end of function main:
+  NON TERMINATING FUNCTION
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  8 functions analyzed (out of 18): 44% coverage.
+  In these functions, 70 statements reached (out of 109): 64% coverage.
+  ----------------------------------------------------------------------------
+  No errors or warnings raised during the analysis.
+  ----------------------------------------------------------------------------
+  15 alarms generated by the analysis:
+       9 invalid memory accesses
+       4 accesses to uninitialized left-values
+       2 integer overflows
+  1 of them is a sure alarm (invalid status).
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     0 unknown     0 invalid      0 total
+    Preconditions     8 valid     0 unknown     0 invalid      8 total
+  100% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[report] Classification
+[report] Output /home/fmarques/sbugs/projects/outputs/framaC/asa_1819_p1/tg009/errors.json
+[report] Reviews     :   14
+[report] Unclassified:   14

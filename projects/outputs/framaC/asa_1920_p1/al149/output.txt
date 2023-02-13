@@ -1,0 +1,229 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  alunos ∈ {0}
+  amizades ∈ {0}
+  i ∈ {0}
+  j ∈ {0}
+  linha ∈ {0}
+  coluna ∈ {0}
+[eva] using specification for function scanf_va_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:43: 
+  signed overflow. assert alunos + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:44: 
+  assertion 'alloca_bounds' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:44: 
+  allocating variable __malloc_main_l44
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:45: 
+  assertion 'alloca_bounds' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:45: 
+  allocating variable __malloc_main_l45
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:46: 
+  assertion 'alloca_bounds' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:46: 
+  allocating variable __malloc_main_l46
+[eva] using specification for function time
+[eva] using specification for function srand
+[eva] using specification for function rand
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_0
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:50: 
+  out of bounds write. assert \valid(graph + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:49: 
+  starting to merge loop iterations
+[eva] using specification for function exit
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:58: 
+  out of bounds write. assert \valid(notas + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:59: 
+  out of bounds write. assert \valid(visitados + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:60: 
+  out of bounds write. assert \valid(dfsvec + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:57: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:65: 
+  accessing uninitialized left-value. assert \initialized(graph + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:65: 
+  out of bounds read. assert \valid_read(graph + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:65: 
+  out of bounds write. assert \valid(*(graph + i) + j);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:64: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:63: 
+  starting to merge loop iterations
+[eva] using specification for function scanf_va_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:69: 
+  function scanf_va_2: precondition \valid(param0) got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:68: 
+  starting to merge loop iterations
+[eva] using specification for function scanf_va_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:73: 
+  accessing uninitialized left-value. assert \initialized(graph + linha);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:73: 
+  out of bounds read. assert \valid_read(graph + linha);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:73: 
+  out of bounds write. assert \valid(*(graph + linha) + coluna);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:71: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:31: 
+  out of bounds write. assert \valid(vec + i_0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:31: 
+  accessing uninitialized left-value. assert \initialized(grades + i_0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:31: 
+  out of bounds read. assert \valid_read(grades + i_0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:32: 
+  out of bounds write. assert \valid(visit + i_0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:34: 
+  accessing uninitialized left-value. assert \initialized(matrix + i_0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:34: 
+  out of bounds read. assert \valid_read(matrix + i_0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:34: 
+  accessing uninitialized left-value.
+  assert \initialized(*(matrix + i_0) + j_0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:34: 
+  out of bounds read. assert \valid_read(*(matrix + i_0) + j_0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:34: 
+  accessing uninitialized left-value. assert \initialized(visit + j_0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:34: 
+  out of bounds read. assert \valid_read(visit + j_0);
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:35: 
+  detected recursive call of function dfs.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:35: User Error: 
+  Recursive call to dfs without assigns clause.
+  Generating probably incomplete assigns to interpret the call. Try to increase
+  the -eva-unroll-recursive-calls parameter or write a correct specification
+  for function dfs.
+[kernel:annot:missing-spec] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:29: 
+  Neither code nor specification for function dfs, generating default assigns from the prototype
+[eva] using specification for function dfs
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:33: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:35: 
+  Using specification of function dfs for recursive calls.
+  Analysis of function dfs is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:18: 
+  out of bounds read. assert \valid_read(array + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:21: 
+  accessing uninitialized left-value. assert \initialized(array + index_0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:21: 
+  out of bounds read. assert \valid_read(array + index_0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:22: 
+  out of bounds read. assert \valid_read(array + index_0);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:20: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:22: 
+  accessing uninitialized left-value. assert \initialized(array + index_0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:76: 
+  out of bounds write. assert \valid(notas + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:78: 
+  out of bounds write. assert \valid(visitados + j);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:77: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:80: 
+  out of bounds write. assert \valid(dfsvec + j);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:79: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:74: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:18: 
+  accessing uninitialized left-value. assert \initialized(array + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:86: 
+  accessing uninitialized left-value. assert \initialized(notas + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:86: 
+  out of bounds read. assert \valid_read(notas + i);
+[eva] using specification for function printf_va_1
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:85: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:88: 
+  accessing uninitialized left-value. assert \initialized(graph + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:88: 
+  out of bounds read. assert \valid_read(graph + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:87: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al149/asaProject1.c:88: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(graph + i);
+[eva] done for function main
+[scope:rm_asserts] removing 4 assertion(s)
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function findmax:
+  max ∈ [--..--]
+  index_0 ∈ [1..2147483647]
+[eva:final-states] Values at end of function can_fail_malloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈
+          {{ NULL ; (void *)&__malloc_can_fail_malloc_l11 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_0 }}
+[eva:final-states] Values at end of function dfs:
+  j_0 ∈ [1..2147483647]
+  __malloc_main_l44[0..2147483646] ∈ [--..--] or UNINITIALIZED
+                   [2147483647..4611686018427387902] ∈ UNINITIALIZED
+  __malloc_main_l45[0] ∈ [--..--] or UNINITIALIZED
+                   [1..2147483646] ∈ {0; 1} or UNINITIALIZED
+                   [2147483647..4611686018427387902] ∈ UNINITIALIZED
+  __malloc_main_l46[0..2147483646] ∈ [--..--] or UNINITIALIZED
+                   [2147483647..4611686018427387902] ∈ UNINITIALIZED
+[eva:final-states] Values at end of function main:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  alunos ∈ [2..2147483646]
+  amizades ∈ [1..2147483647]
+  i ∈ [0..2147483647]
+  j ∈ [0..2147483647]
+  linha ∈ [0..2147483647]
+  coluna ∈ [0..2147483646]
+  tamanho ∈ [-2147483647..2147483647]
+  notas ∈ ESCAPINGADDR
+  __lengthof_notas ∈ [--..--]
+  visitados ∈ ESCAPINGADDR
+  __lengthof_visitados ∈ [--..--]
+  dfsvec ∈ ESCAPINGADDR
+  __lengthof_dfsvec ∈ [--..--]
+  graph ∈
+       {{ NULL ; (int **)&__malloc_can_fail_malloc_l11 }} or ESCAPINGADDR
+  __retres ∈ {0}
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11[bits 0 to 137438953407]# ∈
+                              {{ NULL ;
+                                 (? *)&__malloc_w_can_fail_malloc_l11_0 }} or UNINITIALIZED or ESCAPINGADDR repeated %64 
+                              [17179869176..18446744073709551607] ∈
+                              UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_0[bits 0 to 68719476703]# ∈
+                                  {0; 1} or UNINITIALIZED repeated %32 
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  4 functions analyzed (out of 6): 66% coverage.
+  In these functions, 134 statements reached (out of 134): 100% coverage.
+  ----------------------------------------------------------------------------
+  Some errors and warnings have been raised during the analysis:
+    by the Eva analyzer:      1 error    0 warnings
+    by the Frama-C kernel:    0 errors    0 warnings
+  ----------------------------------------------------------------------------
+  35 alarms generated by the analysis:
+      22 invalid memory accesses
+      11 accesses to uninitialized left-values
+       1 integer overflow
+       1 escaping address
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     3 unknown     0 invalid      3 total
+    Preconditions    11 valid     1 unknown     0 invalid     12 total
+  73% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[eva] User Error: Deferred error message was emitted during execution. See above messages for more information.
+[kernel] Plug-in eva aborted: invalid user input.

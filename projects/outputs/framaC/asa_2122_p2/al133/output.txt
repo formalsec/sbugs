@@ -1,0 +1,419 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  
+[eva] using specification for function fgets
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:68: 
+  function fgets: precondition 'valid_stream' got status unknown.
+[eva] using specification for function sscanf_va_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:69: 
+  function sscanf_va_1: precondition valid_read_string(s) got status unknown.
+[eva] using specification for function sscanf_va_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:75: 
+  function sscanf_va_2: precondition valid_read_string(s) got status unknown.
+[eva] using specification for function time
+[eva] using specification for function srand
+[eva] using specification for function rand
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_0
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:108: 
+  out of bounds write. assert \valid(&n->id);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:112: 
+  out of bounds write. assert \valid(nodeList + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:106: 
+  starting to merge loop iterations
+[eva] using specification for function sscanf_va_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:86: 
+  function sscanf_va_3: precondition valid_read_string(s) got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:88: 
+  signed overflow. assert -2147483648 ≤ child - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:88: 
+  accessing uninitialized left-value.
+  assert \initialized(nodeList + (int)(child - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:88: 
+  out of bounds read. assert \valid_read(nodeList + (int)(child - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:89: 
+  accessing uninitialized left-value. assert \initialized(&childNode->parent1);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:84: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:91: 
+  accessing uninitialized left-value. assert \initialized(&childNode->parent2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:45: 
+  accessing uninitialized left-value. assert \initialized(&nNodes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:136: 
+  accessing uninitialized left-value. assert \initialized(nodeList + n);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:136: 
+  out of bounds read. assert \valid_read(nodeList + n);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:139: 
+  accessing uninitialized left-value. assert \initialized(&currentNode->color);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:146: 
+  accessing uninitialized left-value.
+  assert \initialized(&currentNode->parent1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:148: 
+  accessing uninitialized left-value.
+  assert \initialized(&currentNode->parent1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:148: 
+  signed overflow. assert -2147483648 ≤ currentNode->parent1 - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:148: 
+  accessing uninitialized left-value.
+  assert \initialized(nodeList + (int)(currentNode->parent1 - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:148: 
+  out of bounds read.
+  assert \valid_read(nodeList + (int)(currentNode->parent1 - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:148: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(nodeList + (int)(currentNode->parent1 - 1)))->color);
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:149: 
+  detected recursive call of function validNode.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:149: 
+  accessing uninitialized left-value.
+  assert \initialized(&currentNode->parent1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:149: 
+  signed overflow. assert -2147483648 ≤ currentNode->parent1 - 1;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:149: User Error: 
+  Recursive call to validNode without assigns clause.
+  Generating probably incomplete assigns to interpret the call. Try to increase
+  the -eva-unroll-recursive-calls parameter or write a correct specification
+  for function validNode.
+[kernel:annot:missing-spec] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:135: 
+  Neither code nor specification for function validNode, generating default assigns from the prototype
+[eva] using specification for function validNode
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:149: 
+  trap representation of a _Bool lvalue.
+  assert tmp ≡ 0 ∨ tmp ≡ 1;
+  (tmp from validNode(nodeList, currentNode->parent1 - 1))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:151: 
+  accessing uninitialized left-value.
+  assert \initialized(&currentNode->parent1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:151: 
+  signed overflow. assert -2147483648 ≤ currentNode->parent1 - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:151: 
+  accessing uninitialized left-value.
+  assert \initialized(nodeList + (int)(currentNode->parent1 - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:151: 
+  out of bounds read.
+  assert \valid_read(nodeList + (int)(currentNode->parent1 - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:151: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(nodeList + (int)(currentNode->parent1 - 1)))->color);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:153: 
+  accessing uninitialized left-value.
+  assert \initialized(&currentNode->parent2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:154: 
+  accessing uninitialized left-value.
+  assert \initialized(&currentNode->parent2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:154: 
+  signed overflow. assert -2147483648 ≤ currentNode->parent2 - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:154: 
+  accessing uninitialized left-value.
+  assert \initialized(nodeList + (int)(currentNode->parent2 - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:154: 
+  out of bounds read.
+  assert \valid_read(nodeList + (int)(currentNode->parent2 - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:154: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(nodeList + (int)(currentNode->parent2 - 1)))->color);
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:155: 
+  detected recursive call of function validNode.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:155: 
+  accessing uninitialized left-value.
+  assert \initialized(&currentNode->parent2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:155: 
+  signed overflow. assert -2147483648 ≤ currentNode->parent2 - 1;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:155: 
+  Using specification of function validNode for recursive calls.
+  Analysis of function validNode is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:155: 
+  trap representation of a _Bool lvalue.
+  assert tmp_1 ≡ 0 ∨ tmp_1 ≡ 1;
+  (tmp_1 from validNode(nodeList, currentNode->parent2 - 1))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:156: 
+  accessing uninitialized left-value.
+  assert \initialized(&currentNode->parent2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:156: 
+  signed overflow. assert -2147483648 ≤ currentNode->parent2 - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:156: 
+  accessing uninitialized left-value.
+  assert \initialized(nodeList + (int)(currentNode->parent2 - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:156: 
+  out of bounds read.
+  assert \valid_read(nodeList + (int)(currentNode->parent2 - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:156: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(nodeList + (int)(currentNode->parent2 - 1)))->color);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:122: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:149: 
+  Using specification of function validNode for recursive calls.
+  Analysis of function validNode is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:171: 
+  signed overflow. assert -2147483648 ≤ id1 - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:171: 
+  accessing uninitialized left-value.
+  assert \initialized(nodeList + (int)(id1 - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:171: 
+  out of bounds read. assert \valid_read(nodeList + (int)(id1 - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:182: 
+  accessing uninitialized left-value.
+  assert \initialized(nodeList + (int)(id - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:182: 
+  out of bounds read. assert \valid_read(nodeList + (int)(id - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:184: 
+  accessing uninitialized left-value.
+  assert \initialized(&currentNode->parent1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:185: 
+  accessing uninitialized left-value.
+  assert \initialized(&currentNode->parent1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:185: 
+  signed overflow. assert -2147483648 ≤ currentNode->parent1 - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:185: 
+  accessing uninitialized left-value.
+  assert \initialized(nodeList + (int)(currentNode->parent1 - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:185: 
+  out of bounds read.
+  assert \valid_read(nodeList + (int)(currentNode->parent1 - 1));
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:186: 
+  detected recursive call of function paintToRoot.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:186: 
+  accessing uninitialized left-value.
+  assert \initialized(&currentNode->parent1);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:186: User Error: 
+  Recursive call to paintToRoot without assigns clause.
+  Generating probably incomplete assigns to interpret the call. Try to increase
+  the -eva-unroll-recursive-calls parameter or write a correct specification
+  for function paintToRoot.
+[kernel:annot:missing-spec] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:181: 
+  Neither code nor specification for function paintToRoot, generating default assigns from the prototype
+[eva] using specification for function paintToRoot
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:187: 
+  accessing uninitialized left-value.
+  assert \initialized(&currentNode->parent2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:188: 
+  accessing uninitialized left-value.
+  assert \initialized(&currentNode->parent2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:188: 
+  signed overflow. assert -2147483648 ≤ currentNode->parent2 - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:188: 
+  accessing uninitialized left-value.
+  assert \initialized(nodeList + (int)(currentNode->parent2 - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:188: 
+  out of bounds read.
+  assert \valid_read(nodeList + (int)(currentNode->parent2 - 1));
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:189: 
+  detected recursive call of function paintToRoot.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:189: 
+  accessing uninitialized left-value.
+  assert \initialized(&currentNode->parent2);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:189: 
+  Using specification of function paintToRoot for recursive calls.
+  Analysis of function paintToRoot is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:198: 
+  signed overflow. assert -2147483648 ≤ id - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:198: 
+  accessing uninitialized left-value.
+  assert \initialized(nodeList + (int)(id - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:198: 
+  out of bounds read. assert \valid_read(nodeList + (int)(id - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:202: 
+  accessing uninitialized left-value. assert \initialized(&currentNode->color);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:186: 
+  Using specification of function paintToRoot for recursive calls.
+  Analysis of function paintToRoot is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:208: 
+  accessing uninitialized left-value. assert \initialized(&currentNode->color);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:209: 
+  accessing uninitialized left-value.
+  assert \initialized(&currentNode->parent1);
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:210: 
+  detected recursive call of function findWhite.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:210: 
+  accessing uninitialized left-value.
+  assert \initialized(&currentNode->parent1);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:210: User Error: 
+  Recursive call to findWhite without assigns clause.
+  Generating probably incomplete assigns to interpret the call. Try to increase
+  the -eva-unroll-recursive-calls parameter or write a correct specification
+  for function findWhite.
+[kernel:annot:missing-spec] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:197: 
+  Neither code nor specification for function findWhite, generating default assigns from the prototype
+[eva] using specification for function findWhite
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:211: 
+  accessing uninitialized left-value.
+  assert \initialized(&currentNode->parent2);
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:212: 
+  detected recursive call of function findWhite.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:212: 
+  accessing uninitialized left-value.
+  assert \initialized(&currentNode->parent2);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:212: 
+  Using specification of function findWhite for recursive calls.
+  Analysis of function findWhite is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:212: 
+  signed overflow.
+  assert -2147483648 ≤ res + tmp_0;
+  (tmp_0 from findWhite(nodeList, currentNode->parent2))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:212: 
+  signed overflow.
+  assert res + tmp_0 ≤ 2147483647;
+  (tmp_0 from findWhite(nodeList, currentNode->parent2))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:224: 
+  accessing uninitialized left-value. assert \initialized(nodeList + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:224: 
+  out of bounds read. assert \valid_read(nodeList + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:225: 
+  accessing uninitialized left-value. assert \initialized(&currentNode->color);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:226: 
+  accessing uninitialized left-value. assert \initialized(&currentNode->id);
+[eva] using specification for function printf_va_3
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:223: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al133/proj2ASA.c:224: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(nodeList + i);
+[eva] using specification for function printf_va_4
+[eva] using specification for function printf_va_2
+[eva] using specification for function printf_va_1
+[eva] done for function main
+[scope:rm_asserts] removing 23 assertion(s)
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function printCommonAncestors:
+  nodeList ∈ ESCAPINGADDR
+  nodeList ∈ ESCAPINGADDR
+  i ∈ [0..2147483647]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function can_fail_malloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈
+          {{ NULL ; (void *)&__malloc_can_fail_malloc_l11 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_0 }}
+[eva:final-states] Values at end of function initNodeList:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  nodeList ∈ {{ NULL ; (node **)&__malloc_can_fail_malloc_l11 }}
+  i ∈ [0..2147483647]
+  __malloc_can_fail_malloc_l11[bits 0 to 137438953407]# ∈
+                              {{ (? *)&__malloc_w_can_fail_malloc_l11_0 }} or UNINITIALIZED repeated %64 
+                              [17179869176..18446744073709551607] ∈
+                              UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_0[bits 0 to 31] ∈
+                                  [1..2147483647] or UNINITIALIZED
+                                  [4..15] ∈ {0} or UNINITIALIZED
+[eva:final-states] Values at end of function readInput:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  id1 ∈ [--..--]
+  id2 ∈ [--..--]
+  nNodes ∈ [--..--] or UNINITIALIZED
+  line[0..99] ∈ [--..--] or UNINITIALIZED
+  nEdges ∈ [--..--] or UNINITIALIZED
+  nodeList ∈ {{ NULL ; (node **)&__malloc_can_fail_malloc_l11 }}
+  parent ∈ [--..--] or UNINITIALIZED
+  child ∈ [--..--] or UNINITIALIZED
+  __retres ∈ {{ NULL ; (node **)&__malloc_can_fail_malloc_l11 }}
+  __malloc_can_fail_malloc_l11[bits 0 to 137438953407]# ∈
+                              {{ (? *)&__malloc_w_can_fail_malloc_l11_0 }} or UNINITIALIZED repeated %64 
+                              [17179869176..18446744073709551607] ∈
+                              UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_0[bits 0 to 31] ∈
+                                  [1..2147483647] or UNINITIALIZED
+                                  [4..7] ∈ {0} or UNINITIALIZED
+                                  [8..15] ∈ [--..--] or UNINITIALIZED
+[eva:final-states] Values at end of function validTree:
+  i ∈ [0..2147483647]
+  __retres ∈ {0; 1}
+  __malloc_w_can_fail_malloc_l11_0[bits 0 to 31] ∈
+                                  [1..2147483647] or UNINITIALIZED
+                                  [bits 32 to 63] ∈
+                                  {0; 1; 2} or UNINITIALIZED
+                                  [8..15] ∈ [--..--] or UNINITIALIZED
+[eva:final-states] Values at end of function main:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  id1 ∈ [--..--]
+  id2 ∈ [--..--]
+  nNodes ∈ [--..--] or UNINITIALIZED
+  nodeList ∈
+          {{ NULL ; (node **)&__malloc_can_fail_malloc_l11 }} or ESCAPINGADDR
+  __retres ∈ {0}
+  S___fc_stdout[0..1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11[bits 0 to 137438953407]# ∈
+                              {{ (? *)&__malloc_w_can_fail_malloc_l11_0 }} or UNINITIALIZED repeated %64 
+                              [17179869176..18446744073709551607] ∈
+                              UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_0[bits 0 to 31] ∈
+                                  [1..2147483647] or UNINITIALIZED
+                                  [bits 32 to 63] ∈
+                                  {0; 1; 2} or UNINITIALIZED
+                                  [8..15] ∈ [--..--] or UNINITIALIZED
+[eva:final-states] Values at end of function paintToRoot:
+  currentNode ∈ {{ (node *)&__malloc_w_can_fail_malloc_l11_0 }}
+  __malloc_w_can_fail_malloc_l11_0[bits 0 to 31] ∈
+                                  [1..2147483647] or UNINITIALIZED
+                                  [bits 32 to 63] ∈
+                                  {0; 1; 2} or UNINITIALIZED
+                                  [8..15] ∈ [--..--] or UNINITIALIZED
+[eva:final-states] Values at end of function validNode:
+  currentNode ∈ {{ (node *)&__malloc_w_can_fail_malloc_l11_0 }}
+  res ∈ {0; 1}
+  __retres ∈ {0; 1}
+  __malloc_w_can_fail_malloc_l11_0[bits 0 to 31] ∈
+                                  [1..2147483647] or UNINITIALIZED
+                                  [bits 32 to 63] ∈
+                                  {0; 1; 2} or UNINITIALIZED
+                                  [8..15] ∈ [--..--] or UNINITIALIZED
+[eva:final-states] Values at end of function lowestCommonAncestors:
+  __malloc_w_can_fail_malloc_l11_0[bits 0 to 31] ∈
+                                  [1..2147483647] or UNINITIALIZED
+                                  [bits 32 to 63] ∈
+                                  {0; 1; 2} or UNINITIALIZED
+                                  [8..15] ∈ [--..--] or UNINITIALIZED
+[eva:final-states] Values at end of function findWhite:
+  currentNode ∈ {{ (node *)&__malloc_w_can_fail_malloc_l11_0 }}
+  res ∈ [--..--]
+  __malloc_w_can_fail_malloc_l11_0[bits 0 to 31] ∈
+                                  [1..2147483647] or UNINITIALIZED
+                                  [bits 32 to 63] ∈
+                                  {0; 1; 2} or UNINITIALIZED
+                                  [8..15] ∈ [--..--] or UNINITIALIZED
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  10 functions analyzed (out of 12): 83% coverage.
+  In these functions, 169 statements reached (out of 170): 99% coverage.
+  ----------------------------------------------------------------------------
+  Some errors and warnings have been raised during the analysis:
+    by the Eva analyzer:      3 errors    0 warnings
+    by the Frama-C kernel:    0 errors    0 warnings
+  ----------------------------------------------------------------------------
+  72 alarms generated by the analysis:
+      42 accesses to uninitialized left-values
+      14 invalid memory accesses
+      13 integer overflows
+       1 escaping address
+       2 others
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     0 unknown     0 invalid      0 total
+    Preconditions    21 valid     4 unknown     0 invalid     25 total
+  84% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[eva] User Error: Deferred error message was emitted during execution. See above messages for more information.
+[kernel] Plug-in eva aborted: invalid user input.

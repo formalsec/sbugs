@@ -1,0 +1,409 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:typing:no-proto] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:71: 
+  Calling function findBest that is declared without prototype.
+  Its formals will be inferred from actual arguments
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  student ∈ {0}
+  bestStudent ∈ {-1}
+  bestGrade ∈ {-1}
+  numStudents ∈ {0}
+  numRelationships ∈ {0}
+[eva] using specification for function scanf_va_1
+[eva] using specification for function time
+[eva] using specification for function srand
+[eva] using specification for function rand
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11
+[eva] using specification for function scanf_va_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:40: 
+  function scanf_va_2: precondition \valid(param0) got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:41: 
+  out of bounds write. assert \valid(&(student + i)->finale);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_0
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:42: 
+  out of bounds write. assert \valid(&(student + i)->relationshipsHead);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:43: 
+  out of bounds read. assert \valid_read(&(student + i)->relationshipsHead);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:43: 
+  out of bounds write.
+  assert \valid(&((student + i)->relationshipsHead)->value);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:44: 
+  out of bounds read. assert \valid_read(&(student + i)->relationshipsHead);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:45: 
+  out of bounds write. assert \valid(&(student + i)->relationshipsCurrent);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:45: 
+  out of bounds read. assert \valid_read(&(student + i)->relationshipsHead);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:39: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:43: 
+  accessing uninitialized left-value.
+  assert \initialized(&(student + i)->relationshipsHead);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:44: 
+  accessing uninitialized left-value.
+  assert \initialized(&(student + i)->relationshipsHead);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:44: 
+  out of bounds write.
+  assert \valid(&((student + i)->relationshipsHead)->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:45: 
+  accessing uninitialized left-value.
+  assert \initialized(&(student + i)->relationshipsHead);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:40: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:40: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:41: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:42: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:45: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva] using specification for function scanf_va_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:53: 
+  signed overflow. assert -2147483648 ≤ giver - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:53: 
+  accessing uninitialized left-value.
+  assert \initialized(&(student + (int)(giver - 1))->relationshipsCurrent);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:53: 
+  out of bounds read.
+  assert \valid_read(&(student + (int)(giver - 1))->relationshipsCurrent);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:53: 
+  accessing uninitialized left-value.
+  assert
+  \initialized(&((student + (int)(giver - 1))->relationshipsCurrent)->value);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:53: 
+  out of bounds read.
+  assert
+  \valid_read(&((student + (int)(giver - 1))->relationshipsCurrent)->value);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:54: 
+  accessing uninitialized left-value.
+  assert \initialized(&(student + (int)(giver - 1))->relationshipsCurrent);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:54: 
+  out of bounds read.
+  assert \valid_read(&(student + (int)(giver - 1))->relationshipsCurrent);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:54: 
+  out of bounds write.
+  assert \valid(&((student + (int)(giver - 1))->relationshipsCurrent)->value);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:54: 
+  signed overflow. assert -2147483648 ≤ receiver - 1;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:49: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:58: 
+  accessing uninitialized left-value.
+  assert \initialized(&(student + (int)(giver - 1))->relationshipsCurrent);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:58: 
+  out of bounds read.
+  assert \valid_read(&(student + (int)(giver - 1))->relationshipsCurrent);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:58: 
+  out of bounds write.
+  assert \valid(&((student + (int)(giver - 1))->relationshipsCurrent)->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:59: 
+  out of bounds write.
+  assert \valid(&(student + (int)(giver - 1))->relationshipsCurrent);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:59: 
+  accessing uninitialized left-value.
+  assert \initialized(&(student + (int)(giver - 1))->relationshipsCurrent);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:59: 
+  accessing uninitialized left-value.
+  assert
+  \initialized(&((student + (int)(giver - 1))->relationshipsCurrent)->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:59: 
+  out of bounds read.
+  assert
+  \valid_read(&((student + (int)(giver - 1))->relationshipsCurrent)->next);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:59: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:60: 
+  accessing uninitialized left-value.
+  assert \initialized(&(student + (int)(giver - 1))->relationshipsCurrent);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:60: 
+  out of bounds read.
+  assert \valid_read(&(student + (int)(giver - 1))->relationshipsCurrent);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:60: 
+  out of bounds write.
+  assert \valid(&((student + (int)(giver - 1))->relationshipsCurrent)->value);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:60: 
+  signed overflow. assert -2147483648 ≤ receiver - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:61: 
+  accessing uninitialized left-value.
+  assert \initialized(&(student + (int)(giver - 1))->relationshipsCurrent);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:61: 
+  out of bounds read.
+  assert \valid_read(&(student + (int)(giver - 1))->relationshipsCurrent);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:61: 
+  out of bounds write.
+  assert \valid(&((student + (int)(giver - 1))->relationshipsCurrent)->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:67: 
+  out of bounds write. assert \valid(&(student + i)->relationshipsCurrent);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:67: 
+  accessing uninitialized left-value.
+  assert \initialized(&(student + i)->relationshipsHead);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:67: 
+  out of bounds read. assert \valid_read(&(student + i)->relationshipsHead);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:66: 
+  starting to merge loop iterations
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:67: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:116: 
+  accessing uninitialized left-value.
+  assert \initialized(&(student + i)->finale);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:116: 
+  out of bounds read. assert \valid_read(&(student + i)->finale);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:116: 
+  trap representation of a _Bool lvalue.
+  assert (student + i)->finale ≡ 0 ∨ (student + i)->finale ≡ 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:117: 
+  accessing uninitialized left-value.
+  assert \initialized(&(student + i)->grade);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:117: 
+  out of bounds read. assert \valid_read(&(student + i)->grade);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:119: 
+  out of bounds read. assert \valid_read(&(student + i)->grade);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:119: 
+  Assigning imprecise value to bestGrade.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:117}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:115: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:119: 
+  accessing uninitialized left-value.
+  assert \initialized(&(student + i)->grade);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:119: 
+  Assigning imprecise value to bestGrade.
+  The imprecision originates from Misaligned
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:116: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:88: 
+  out of bounds write. assert \valid(&(student + a)->finale);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:88: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:91: 
+  accessing uninitialized left-value.
+  assert \initialized(&(student + a)->relationshipsHead);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:91: 
+  out of bounds read. assert \valid_read(&(student + a)->relationshipsHead);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:91: 
+  accessing uninitialized left-value.
+  assert \initialized(&((student + a)->relationshipsHead)->value);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:91: 
+  out of bounds read.
+  assert \valid_read(&((student + a)->relationshipsHead)->value);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:95: 
+  accessing uninitialized left-value.
+  assert \initialized(&(student + a)->relationshipsCurrent);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:95: 
+  out of bounds read. assert \valid_read(&(student + a)->relationshipsCurrent);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:95: 
+  pointer comparison.
+  assert
+  \pointer_comparable((void *)(student + a)->relationshipsCurrent, (void *)0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:98: 
+  accessing uninitialized left-value.
+  assert \initialized(&(student + a)->relationshipsCurrent);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:98: 
+  out of bounds read. assert \valid_read(&(student + a)->relationshipsCurrent);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:98: 
+  accessing uninitialized left-value.
+  assert \initialized(&((student + a)->relationshipsCurrent)->value);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:98: 
+  out of bounds read.
+  assert \valid_read(&((student + a)->relationshipsCurrent)->value);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:98: 
+  accessing uninitialized left-value.
+  assert
+  \initialized(&(student + ((student + a)->relationshipsCurrent)->value)->finale);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:98: 
+  out of bounds read.
+  assert
+  \valid_read(&(student + ((student + a)->relationshipsCurrent)->value)->finale);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:98: 
+  trap representation of a _Bool lvalue.
+  assert
+  (student + ((student + a)->relationshipsCurrent)->value)->finale ≡ 0 ∨
+  (student + ((student + a)->relationshipsCurrent)->value)->finale ≡ 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:99: 
+  accessing uninitialized left-value.
+  assert \initialized(&(student + a)->relationshipsCurrent);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:99: 
+  out of bounds read. assert \valid_read(&(student + a)->relationshipsCurrent);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:99: 
+  accessing uninitialized left-value.
+  assert \initialized(&((student + a)->relationshipsCurrent)->value);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:99: 
+  out of bounds read.
+  assert \valid_read(&((student + a)->relationshipsCurrent)->value);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:99: 
+  out of bounds write.
+  assert
+  \valid(&(student + ((student + a)->relationshipsCurrent)->value)->grade);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:99: 
+  Assigning imprecise value to (student + ((student + a)->relationshipsCurrent)->value)->grade
+  (pointing to __malloc_can_fail_malloc_l11 with offsets [0..147573952589676412832];
+   __malloc_w_can_fail_malloc_l11_1 with offsets [0..96]).
+  The imprecision originates from Misaligned
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:102: 
+  detected recursive call of function dfs.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:102: 
+  accessing uninitialized left-value.
+  assert \initialized(&(student + a)->relationshipsCurrent);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:102: 
+  out of bounds read. assert \valid_read(&(student + a)->relationshipsCurrent);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:102: 
+  accessing uninitialized left-value.
+  assert \initialized(&((student + a)->relationshipsCurrent)->value);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:102: 
+  out of bounds read.
+  assert \valid_read(&((student + a)->relationshipsCurrent)->value);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:102: User Error: 
+  Recursive call to dfs without assigns clause.
+  Generating probably incomplete assigns to interpret the call. Try to increase
+  the -eva-unroll-recursive-calls parameter or write a correct specification
+  for function dfs.
+[kernel:annot:missing-spec] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:86: 
+  Neither code nor specification for function dfs, generating default assigns from the prototype
+[eva] using specification for function dfs
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:102: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:105: 
+  out of bounds write. assert \valid(&(student + a)->relationshipsCurrent);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:105: 
+  accessing uninitialized left-value.
+  assert \initialized(&(student + a)->relationshipsCurrent);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:105: 
+  accessing uninitialized left-value.
+  assert \initialized(&((student + a)->relationshipsCurrent)->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:105: 
+  out of bounds read.
+  assert \valid_read(&((student + a)->relationshipsCurrent)->next);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:105: 
+  Assigning imprecise value to (student + a)->relationshipsCurrent
+  (pointing to __malloc_can_fail_malloc_l11 with offsets [64..412316860096],64%192).
+  The imprecision originates from Misaligned
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:105: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:95: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:99: 
+  Assigning imprecise value to (student + ((student + a)->relationshipsCurrent)->value)->grade
+  (pointing to __malloc_can_fail_malloc_l11 with offsets [0..147573952589676412832];
+   __malloc_w_can_fail_malloc_l11_0 with offsets [0..96];
+  __malloc_w_can_fail_malloc_l11_1 with offsets [0..96]).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:102: 
+  Using specification of function dfs for recursive calls.
+  Analysis of function dfs is thus incomplete and its soundness
+  relies on the written specification.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:91: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:71: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:79: 
+  accessing uninitialized left-value.
+  assert \initialized(&(student + i)->grade);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:79: 
+  out of bounds read. assert \valid_read(&(student + i)->grade);
+[eva] using specification for function printf_va_1
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:78: 
+  starting to merge loop iterations
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al044/p1ASAg044.c:53: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[eva] done for function main
+[scope:rm_asserts] removing 21 assertion(s)
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function findBest:
+  bestStudent ∈ [-1..2147483646]
+  bestGrade ∈
+           {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                               __malloc_w_can_fail_malloc_l11_1}
+            (origin: Misaligned) }}
+  i ∈ [0..2147483647]
+[eva:final-states] Values at end of function can_fail_malloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈
+          {{ NULL ; (void *)&__malloc_can_fail_malloc_l11 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_0 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_1 }}
+[eva:final-states] Values at end of function dfs:
+  __malloc_can_fail_malloc_l11[0..18446744073709551607] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                                                  __malloc_w_can_fail_malloc_l11_1}
+                               (origin: Misaligned) }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_0[0..15] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                                                      __malloc_w_can_fail_malloc_l11_1}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_1[0..15] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                                                      __malloc_w_can_fail_malloc_l11_1}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+[eva:final-states] Values at end of function main:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  student ∈ {{ NULL ; (Student *)&__malloc_can_fail_malloc_l11 }}
+  bestStudent ∈ [-1..2147483646]
+  bestGrade ∈
+           {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                               __malloc_w_can_fail_malloc_l11_1}
+            (origin: Misaligned) }}
+  numStudents ∈ [--..--]
+  numRelationships ∈ [--..--]
+  giver ∈ [1..2147483647] or UNINITIALIZED
+  receiver ∈ [-2147483647..2147483647] or UNINITIALIZED
+  i ∈ [0..2147483647]
+  __retres ∈ {0}
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                                   __malloc_w_can_fail_malloc_l11_1}
+                (origin: Misaligned) }}
+               [1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11[0..18446744073709551607] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                                                  __malloc_w_can_fail_malloc_l11_1}
+                               (origin: Misaligned) }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_0[0..15] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                                                      __malloc_w_can_fail_malloc_l11_1}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_1[0..15] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                                                      __malloc_w_can_fail_malloc_l11_1}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  4 functions analyzed (out of 6): 66% coverage.
+  In these functions, 86 statements reached (out of 86): 100% coverage.
+  ----------------------------------------------------------------------------
+  Some errors and warnings have been raised during the analysis:
+    by the Eva analyzer:      1 error    0 warnings
+    by the Frama-C kernel:    0 errors    0 warnings
+  ----------------------------------------------------------------------------
+  74 alarms generated by the analysis:
+      40 invalid memory accesses
+      28 accesses to uninitialized left-values
+       3 integer overflows
+       3 others
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     0 unknown     0 invalid      0 total
+    Preconditions     9 valid     1 unknown     0 invalid     10 total
+  90% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[eva] User Error: Deferred error message was emitted during execution. See above messages for more information.
+[kernel] Plug-in eva aborted: invalid user input.

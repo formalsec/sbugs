@@ -1,0 +1,189 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al134/Projeto2_2.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  capacity ∈ {0}
+  G ∈ {0}
+[eva] using specification for function scanf_va_1
+[eva] using specification for function exit
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al134/Projeto2_2.c:35: 
+  signed overflow. assert nProcesses + 2 ≤ 2147483647;
+[eva] using specification for function time
+[eva] using specification for function srand
+[eva] using specification for function rand
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_0
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_1
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_2
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_3
+[eva] using specification for function scanf_va_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al134/Projeto2_2.c:43: 
+  out of bounds write. assert \valid(&edgeXP->v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al134/Projeto2_2.c:46: 
+  accessing uninitialized left-value.
+  assert \initialized(G.adj + (int)(G.V - 2));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al134/Projeto2_2.c:46: 
+  out of bounds read. assert \valid_read(G.adj + (int)(G.V - 2));
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_4
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_5
+[eva] using specification for function scanf_va_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al134/Projeto2_2.c:73: 
+  out of bounds write. assert \valid(&edge1_2->cr);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al134/Projeto2_2.c:74: 
+  signed overflow. assert -2147483648 ≤ node2 - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al134/Projeto2_2.c:76: 
+  signed overflow. assert -2147483648 ≤ node1 - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al134/Projeto2_2.c:76: 
+  accessing uninitialized left-value.
+  assert \initialized(G.adj + (int)(node1 - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al134/Projeto2_2.c:76: 
+  out of bounds read. assert \valid_read(G.adj + (int)(node1 - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al134/Projeto2_2.c:128: 
+  assertion 'alloca_bounds' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al134/Projeto2_2.c:128: 
+  allocating variable __malloc_EdmondsKarp_l128
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al134/Projeto2_2.c:129: 
+  assertion 'alloca_bounds' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al134/Projeto2_2.c:129: 
+  allocating variable __malloc_EdmondsKarp_l129
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al134/Projeto2_2.c:89: 
+  assertion 'alloca_bounds' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al134/Projeto2_2.c:89: 
+  allocating variable __malloc_findPath_l89
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al134/Projeto2_2.c:90: 
+  assertion 'alloca_bounds' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al134/Projeto2_2.c:90: 
+  allocating variable __malloc_findPath_l90
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al134/Projeto2_2.c:94: 
+  out of bounds write. assert \valid(visited + v);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al134/Projeto2_2.c:93: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al134/Projeto2_2.c:97: 
+  out of bounds write. assert \valid(visited + s);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al134/Projeto2_2.c:98: 
+  division by zero. assert G.V ≢ 0;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al134/Projeto2_2.c:98: 
+  out of bounds write. assert \valid(queue + (int)(last % G.V));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al134/Projeto2_2.c:102: 
+  division by zero. assert G.V ≢ 0;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al134/Projeto2_2.c:102: 
+  out of bounds read.
+  assert \valid_read(queue + (int)(tmp % G.V));
+  (tmp from first++)
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al134/Projeto2_2.c:106: 
+  accessing uninitialized left-value. assert \initialized(G.adj + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al134/Projeto2_2.c:106: 
+  out of bounds read. assert \valid_read(G.adj + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al134/Projeto2_2.c:116: 
+  accessing uninitialized left-value. assert \initialized(visited + t);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al134/Projeto2_2.c:116: 
+  out of bounds read. assert \valid_read(visited + t);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al134/Projeto2_2.c:118: 
+  accessing uninitialized left-value. assert \initialized(parc + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al134/Projeto2_2.c:118: 
+  out of bounds read. assert \valid_read(parc + v);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al134/Projeto2_2.c:132: 
+  freeing automatic bases: {__malloc_findPath_l89, __malloc_findPath_l90}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al134/Projeto2_2.c:135: 
+  accessing uninitialized left-value. assert \initialized(parc + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al134/Projeto2_2.c:135: 
+  out of bounds read. assert \valid_read(parc + v);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al134/Projeto2_2.c:132: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al134/Projeto2_2.c:134: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al134/Projeto2_2.c:140: 
+  signed overflow. assert capacity + path_flow ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al134/Projeto2_2.c:148: 
+  freeing automatic bases: {__malloc_EdmondsKarp_l128,
+                            __malloc_EdmondsKarp_l129}
+[eva] using specification for function printf_va_1
+[eva] done for function main
+[scope:rm_asserts] removing 2 assertion(s)
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function findPath:
+  __retres ∈ {0; 2147483647}
+[eva:final-states] Values at end of function EdmondsKarp:
+  capacity ∈ {0; 2147483647}
+  pa ∈ ESCAPINGADDR
+  __lengthof_pa ∈ [--..--]
+  v ∈ [1..2147483644] or UNINITIALIZED
+  parc ∈ ESCAPINGADDR
+  __lengthof_parc ∈ [--..--]
+  edge ∈ UNINITIALIZED
+  path_flow ∈ {0}
+[eva:final-states] Values at end of function can_fail_malloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈
+          {{ NULL ; (void *)&__malloc_can_fail_malloc_l11 ;
+             (void *)&__malloc_can_fail_malloc_l11_0 ;
+             (void *)&__malloc_can_fail_malloc_l11_1 ;
+             (void *)&__malloc_can_fail_malloc_l11_2 ;
+             (void *)&__malloc_can_fail_malloc_l11_3 ;
+             (void *)&__malloc_can_fail_malloc_l11_4 ;
+             (void *)&__malloc_can_fail_malloc_l11_5 }}
+[eva:final-states] Values at end of function readInput:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  G.V ∈ [-2147483646..2147483647]
+   .[bits 32 to 63] ∈ {0}
+   .adj ∈ {{ NULL ; (link **)&__malloc_can_fail_malloc_l11 }}
+  i ∈ {0}
+  nProcesses ∈ [-2147483648..0]
+  nCosts ∈ [-2147483648..0]
+  costY ∈ UNINITIALIZED
+  costX ∈ UNINITIALIZED
+  node1 ∈ UNINITIALIZED
+  node2 ∈ UNINITIALIZED
+  cost12 ∈ UNINITIALIZED
+  S___fc_stdin[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function main:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  capacity ∈ {0; 2147483647}
+  G.V ∈ [2..2147483646]
+   .[bits 32 to 63] ∈ {0}
+   .adj ∈ {{ NULL ; (link **)&__malloc_can_fail_malloc_l11 }}
+  __retres ∈ {0}
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  5 functions analyzed (out of 7): 71% coverage.
+  In these functions, 127 statements reached (out of 172): 73% coverage.
+  ----------------------------------------------------------------------------
+  No errors or warnings raised during the analysis.
+  ----------------------------------------------------------------------------
+  24 alarms generated by the analysis:
+      12 invalid memory accesses
+       6 accesses to uninitialized left-values
+       4 integer overflows
+       2 divisions by zero
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     4 unknown     0 invalid      4 total
+    Preconditions    12 valid     0 unknown     0 invalid     12 total
+  75% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[report] Classification
+[report] Output /home/fmarques/sbugs/projects/outputs/framaC/asa_2021_p2/al134/errors.json
+[report] Reviews     :   26
+[report] Unclassified:   26

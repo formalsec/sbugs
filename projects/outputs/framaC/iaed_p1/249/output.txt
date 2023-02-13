@@ -1,0 +1,1422 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  sistemaprod[0..9999] ∈ {0}
+  prodvazio.idp ∈ {-1}
+           .desc[0] ∈ {32}
+           {.desc[1..63]; .preco; .peso; .stock} ∈ {0}
+  sistemaenc[0..499] ∈ {0}
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:42: 
+  starting to merge loop iterations
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:43: 
+  too many locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:52: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:61: 
+  starting to merge loop iterations
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:62: 
+  too many locations to update in array. Approximating.
+[eva] using specification for function getchar
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:171: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:174: 
+  accessing out of bounds index. assert i < 10000;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:174: 
+  more than 200(10000) locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:176: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:181: 
+  function strlen: precondition 'valid_string_s' got status unknown.
+[eva] FRAMAC_SHARE/libc/string.h:101: 
+  cannot evaluate ACSL term, unsupported ACSL construct: logic function memcmp
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:181: 
+  more than 200(10000) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:181: 
+  more than 200(10000) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:182: 
+  more than 200(10000) elements to enumerate. Approximating.
+[eva] using specification for function scanf_va_1
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:182: 
+  more than 200(10000) locations to update in array. Approximating.
+[eva] using specification for function printf_va_1
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:171: 
+  more than 200(10000) elements to enumerate. Approximating.
+[eva] using specification for function scanf_va_2
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:69: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:70: 
+  accessing uninitialized left-value. assert \initialized(&sistemaprod[i].idp);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:191: 
+  accessing out of bounds index. assert 0 ≤ idp;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:191: 
+  accessing out of bounds index. assert idp < 10000;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:191: 
+  accessing uninitialized left-value.
+  assert \initialized(&sistemaprod[idp].stock);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:191: 
+  signed overflow. assert -2147483648 ≤ sistemaprod[idp].stock + qtd;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:191: 
+  signed overflow. assert sistemaprod[idp].stock + qtd ≤ 2147483647;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:191: 
+  more than 200(10000) locations to update in array. Approximating.
+[eva] using specification for function printf_va_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:201: 
+  accessing uninitialized left-value. assert \initialized(&sistemaenc[i].ide);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:201: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:204: 
+  accessing out of bounds index. assert i < 500;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:204: 
+  more than 200(500) locations to update in array. Approximating.
+[eva] using specification for function printf_va_3
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:201: 
+  more than 200(500) elements to enumerate. Approximating.
+[eva] using specification for function scanf_va_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:81: 
+  accessing uninitialized left-value. assert \initialized(&sistemaenc[i].ide);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:80: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:217: 
+  accessing out of bounds index. assert 0 ≤ idp;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:217: 
+  accessing out of bounds index. assert idp < 10000;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:217: 
+  accessing uninitialized left-value.
+  assert \initialized(&sistemaprod[idp].stock);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:91: 
+  accessing out of bounds index. assert 0 ≤ ide;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:91: 
+  accessing out of bounds index. assert ide < 500;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:91: 
+  accessing uninitialized left-value.
+  assert \initialized(&sistemaenc[ide].vetor[i].idp);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:92: 
+  accessing uninitialized left-value.
+  assert \initialized(&sistemaenc[ide].vetor[i].peso);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:92: 
+  accessing uninitialized left-value.
+  assert \initialized(&sistemaenc[ide].vetor[i].stock);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:92: 
+  signed overflow.
+  assert
+  -2147483648 ≤
+  sistemaenc[ide].vetor[i].peso * sistemaenc[ide].vetor[i].stock;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:92: 
+  signed overflow.
+  assert
+  sistemaenc[ide].vetor[i].peso * sistemaenc[ide].vetor[i].stock ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:91: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:92: 
+  signed overflow.
+  assert
+  -2147483648 ≤
+  peso + (int)(sistemaenc[ide].vetor[i].peso * sistemaenc[ide].vetor[i].stock);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:92: 
+  signed overflow.
+  assert
+  peso + (int)(sistemaenc[ide].vetor[i].peso * sistemaenc[ide].vetor[i].stock)
+  ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:218: 
+  accessing uninitialized left-value.
+  assert \initialized(&sistemaprod[idp].peso);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:218: 
+  signed overflow. assert -2147483648 ≤ sistemaprod[idp].peso * qtd;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:218: 
+  signed overflow. assert sistemaprod[idp].peso * qtd ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:218: 
+  signed overflow.
+  assert -2147483648 ≤ tmp_0 + (int)(sistemaprod[idp].peso * qtd);
+  (tmp_0 from pesoEnc(ide))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:218: 
+  signed overflow.
+  assert tmp_0 + (int)(sistemaprod[idp].peso * qtd) ≤ 2147483647;
+  (tmp_0 from pesoEnc(ide))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:219: 
+  accessing out of bounds index. assert 0 ≤ ide;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:219: 
+  accessing out of bounds index. assert ide < 500;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:219: 
+  accessing uninitialized left-value.
+  assert \initialized(&sistemaenc[ide].vetor[i].idp);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:220: 
+  accessing uninitialized left-value.
+  assert \initialized(&sistemaenc[ide].vetor[i].idp);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:221: 
+  accessing uninitialized left-value.
+  assert \initialized(&sistemaenc[ide].vetor[i].stock);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:221: 
+  signed overflow. assert -2147483648 ≤ sistemaenc[ide].vetor[i].stock + qtd;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:221: 
+  signed overflow. assert sistemaenc[ide].vetor[i].stock + qtd ≤ 2147483647;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:221: 
+  more than 200(500) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:222: 
+  accessing uninitialized left-value.
+  assert \initialized(&sistemaprod[idp].stock);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:222: 
+  signed overflow. assert -2147483648 ≤ sistemaprod[idp].stock - qtd;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:222: 
+  signed overflow. assert sistemaprod[idp].stock - qtd ≤ 2147483647;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:222: 
+  more than 200(10000) locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:219: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:228: 
+  accessing out of bounds index. assert 0 ≤ ide;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:228: 
+  accessing out of bounds index. assert ide < 500;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:229: 
+  function strlen: precondition 'valid_string_s' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:229: 
+  function memcpy: precondition 'valid_dest' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:229: 
+  function memcpy: precondition 'valid_src' got status unknown.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:229: 
+  more than 200(4994500) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:229: 
+  more than 200(4994500) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:230: 
+  accessing uninitialized left-value.
+  assert \initialized(&sistemaprod[idp].preco);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:231: 
+  accessing uninitialized left-value.
+  assert \initialized(&sistemaprod[idp].peso);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:233: 
+  accessing uninitialized left-value.
+  assert \initialized(&sistemaprod[idp].stock);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:233: 
+  signed overflow. assert -2147483648 ≤ sistemaprod[idp].stock - qtd;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:233: 
+  signed overflow. assert sistemaprod[idp].stock - qtd ≤ 2147483647;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:233: 
+  more than 200(10000) locations to update in array. Approximating.
+[eva] using specification for function printf_va_4
+[eva] using specification for function printf_va_5
+[eva] using specification for function printf_va_6
+[eva] using specification for function printf_va_7
+[eva] using specification for function scanf_va_4
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:259: 
+  accessing out of bounds index. assert 0 ≤ idp;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:259: 
+  accessing out of bounds index. assert idp < 10000;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:259: 
+  accessing uninitialized left-value.
+  assert \initialized(&sistemaprod[idp].stock);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:260: 
+  accessing uninitialized left-value.
+  assert \initialized(&sistemaprod[idp].stock);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:260: 
+  signed overflow. assert -2147483648 ≤ sistemaprod[idp].stock - qtd;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:260: 
+  signed overflow. assert sistemaprod[idp].stock - qtd ≤ 2147483647;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:260: 
+  more than 200(10000) locations to update in array. Approximating.
+[eva] using specification for function printf_va_8
+[eva] using specification for function printf_va_9
+[eva] using specification for function scanf_va_5
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:279: 
+  accessing out of bounds index. assert 0 ≤ ide;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:279: 
+  accessing out of bounds index. assert ide < 500;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:279: 
+  accessing uninitialized left-value.
+  assert \initialized(&sistemaenc[ide].vetor[i].idp);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:280: 
+  accessing uninitialized left-value.
+  assert \initialized(&sistemaenc[ide].vetor[i].idp);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:281: 
+  accessing out of bounds index. assert 0 ≤ idp;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:281: 
+  accessing out of bounds index. assert idp < 10000;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:281: 
+  accessing uninitialized left-value.
+  assert \initialized(&sistemaprod[idp].stock);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:281: 
+  accessing uninitialized left-value.
+  assert \initialized(&sistemaenc[ide].vetor[i].stock);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:281: 
+  signed overflow.
+  assert
+  -2147483648 ≤ sistemaprod[idp].stock + sistemaenc[ide].vetor[i].stock;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:281: 
+  signed overflow.
+  assert
+  sistemaprod[idp].stock + sistemaenc[ide].vetor[i].stock ≤ 2147483647;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:281: 
+  more than 200(10000) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:282: 
+  more than 200(500) locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:279: 
+  starting to merge loop iterations
+[eva] using specification for function printf_va_10
+[eva] using specification for function printf_va_11
+[eva] using specification for function scanf_va_6
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:303: 
+  accessing out of bounds index. assert 0 ≤ ide;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:303: 
+  accessing out of bounds index. assert ide < 500;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:303: 
+  accessing uninitialized left-value.
+  assert \initialized(&sistemaenc[ide].vetor[i].idp);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:304: 
+  accessing uninitialized left-value.
+  assert \initialized(&sistemaenc[ide].vetor[i].preco);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:304: 
+  accessing uninitialized left-value.
+  assert \initialized(&sistemaenc[ide].vetor[i].stock);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:304: 
+  signed overflow.
+  assert
+  -2147483648 ≤
+  sistemaenc[ide].vetor[i].preco * sistemaenc[ide].vetor[i].stock;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:304: 
+  signed overflow.
+  assert
+  sistemaenc[ide].vetor[i].preco * sistemaenc[ide].vetor[i].stock ≤
+  2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:303: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:304: 
+  signed overflow.
+  assert
+  -2147483648 ≤
+  custo +
+  (int)(sistemaenc[ide].vetor[i].preco * sistemaenc[ide].vetor[i].stock);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:304: 
+  signed overflow.
+  assert
+  custo +
+  (int)(sistemaenc[ide].vetor[i].preco * sistemaenc[ide].vetor[i].stock) ≤
+  2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:303: 
+  accessing out of bounds index. assert i < 500;
+[eva] using specification for function printf_va_12
+[eva] using specification for function printf_va_13
+[eva] using specification for function scanf_va_7
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:320: 
+  accessing out of bounds index. assert 0 ≤ idp;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:320: 
+  accessing out of bounds index. assert idp < 10000;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:320: 
+  more than 200(10000) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:321: 
+  accessing uninitialized left-value. assert \initialized(&sistemaenc[i].ide);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:324: 
+  accessing uninitialized left-value.
+  assert \initialized(&sistemaenc[i].vetor[j].idp);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:324: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:325: 
+  accessing uninitialized left-value.
+  assert \initialized(&sistemaenc[i].vetor[j].idp);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:321: 
+  starting to merge loop iterations
+[eva] using specification for function printf_va_14
+[eva] using specification for function scanf_va_8
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:346: 
+  accessing out of bounds index. assert 0 ≤ ide;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:346: 
+  accessing out of bounds index. assert ide < 500;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:346: 
+  accessing uninitialized left-value.
+  assert \initialized(&sistemaenc[ide].vetor[i].idp);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:347: 
+  accessing uninitialized left-value.
+  assert \initialized(&sistemaenc[ide].vetor[i].idp);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:346: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:348: 
+  accessing uninitialized left-value.
+  assert \initialized(&sistemaenc[ide].vetor[i].stock);
+[eva] using specification for function printf_va_15
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:353: 
+  function printf_va_15: precondition valid_read_string(param0) got status unknown.
+[eva] using specification for function printf_va_16
+[eva] using specification for function printf_va_17
+[eva] using specification for function scanf_va_9
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:370: 
+  accessing uninitialized left-value. assert \initialized(&sistemaenc[i].ide);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:373: 
+  accessing uninitialized left-value.
+  assert \initialized(&sistemaenc[i].vetor[j].idp);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:375: 
+  accessing uninitialized left-value.
+  assert \initialized(&sistemaenc[i].vetor[j].stock);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:373: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:374: 
+  accessing uninitialized left-value.
+  assert \initialized(&sistemaenc[i].vetor[j].idp);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:376: 
+  accessing uninitialized left-value.
+  assert \initialized(&sistemaenc[i].vetor[j].stock);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:370: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:386: 
+  accessing uninitialized left-value. assert \initialized(&ide);
+[eva] using specification for function printf_va_18
+[eva] using specification for function printf_va_19
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:401: 
+  function strlen: precondition 'valid_string_s' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:402: 
+  accessing uninitialized left-value.
+  assert \initialized(&sistemaprod[i].preco);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:403: 
+  accessing uninitialized left-value.
+  assert \initialized(&sistemaprod[i].peso);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:404: 
+  accessing uninitialized left-value.
+  assert \initialized(&sistemaprod[i].stock);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:399: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:399: 
+  accessing uninitialized left-value. assert \initialized(&sistemaprod[i].idp);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:400: 
+  accessing uninitialized left-value. assert \initialized(&sistemaprod[i].idp);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:401: 
+  function memcpy: precondition 'valid_dest' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:401: 
+  function memcpy: precondition 'valid_src' got status unknown.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:400: 
+  more than 200(10000) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:401: 
+  more than 200(10000) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:402: 
+  more than 200(10000) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:403: 
+  more than 200(10000) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:404: 
+  more than 200(10000) locations to update in array. Approximating.
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:123: 
+  detected recursive call of function mergesort.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:123: User Error: 
+  Recursive call to mergesort without assigns clause.
+  Generating probably incomplete assigns to interpret the call. Try to increase
+  the -eva-unroll-recursive-calls parameter or write a correct specification
+  for function mergesort.
+[kernel:annot:missing-spec] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:118: 
+  Neither code nor specification for function mergesort, generating default assigns from the prototype
+[eva] using specification for function mergesort
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:124: 
+  detected recursive call of function mergesort.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:124: 
+  Using specification of function mergesort for recursive calls.
+  Analysis of function mergesort is thus incomplete and its soundness
+  relies on the written specification.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:102: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:106: 
+  accessing out of bounds index. assert 0 ≤ (int)((int)(r_0 + m_0) - j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:106: 
+  accessing out of bounds index. assert (int)((int)(r_0 + m_0) - j) < 10000;
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:105: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:109: 
+  accessing uninitialized left-value. assert \initialized(&aux[j].preco);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:109: 
+  accessing uninitialized left-value. assert \initialized(&aux[i].preco);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:108: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:109: 
+  accessing out of bounds index. assert 0 ≤ j;
+[eva] using specification for function printf_va_20
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:410: 
+  accessing uninitialized left-value. assert \initialized(&sistemaaux[i].idp);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:411: 
+  accessing uninitialized left-value.
+  assert \initialized(&sistemaaux[i].stock);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:411: 
+  accessing uninitialized left-value.
+  assert \initialized(&sistemaaux[i].preco);
+[eva] using specification for function printf_va_21
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:411: 
+  function printf_va_21: precondition valid_read_string(param0) got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:410: 
+  starting to merge loop iterations
+[eva] using specification for function scanf_va_10
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:421: 
+  accessing out of bounds index. assert 0 ≤ ide;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:421: 
+  accessing out of bounds index. assert ide < 500;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:421: 
+  accessing uninitialized left-value.
+  assert \initialized(&sistemaenc[ide].vetor[i].idp);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:421: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:132: 
+  out of bounds read. assert \valid_read(a_0 + r_0);
+[eva] using specification for function strcmp
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:134: 
+  function strcmp: precondition 'valid_string_s1' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:134: 
+  function strcmp: precondition 'valid_string_s2' got status unknown.
+[eva] FRAMAC_SHARE/libc/string.h:156: 
+  cannot evaluate ACSL term, unsupported ACSL construct: logic function strcmp
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:134: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:134: 
+  signed overflow. assert i + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:135: 
+  function strcmp: precondition 'valid_string_s1' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:135: 
+  function strcmp: precondition 'valid_string_s2' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:142: 
+  partially overlapping lvalue assignment.
+  assert a_0 + i ≡ a_0 + j ∨ \separated(a_0 + i, a_0 + j);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:133: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:135: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:135: 
+  signed overflow. assert -2147483648 ≤ j - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:146: 
+  out of bounds read. assert \valid_read(a_0 + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:147: 
+  out of bounds write. assert \valid(a_0 + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:147: 
+  partially overlapping lvalue assignment.
+  assert a_0 + i ≡ a_0 + r_0 ∨ \separated(a_0 + i, a_0 + r_0);
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:158: 
+  detected recursive call of function quicksort.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:158: User Error: 
+  Recursive call to quicksort without assigns clause.
+  Generating probably incomplete assigns to interpret the call. Try to increase
+  the -eva-unroll-recursive-calls parameter or write a correct specification
+  for function quicksort.
+[kernel:annot:missing-spec] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:152: 
+  Neither code nor specification for function quicksort, generating default assigns from the prototype
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:152: 
+  more than 200(500) elements to enumerate. Approximating.
+[eva] using specification for function quicksort
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:152: 
+  more than 200(500) locations to update in array. Approximating.
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:159: 
+  detected recursive call of function quicksort.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:159: 
+  Using specification of function quicksort for recursive calls.
+  Analysis of function quicksort is thus incomplete and its soundness
+  relies on the written specification.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:159: 
+  more than 200(500) locations to update in array. Approximating.
+[eva] using specification for function printf_va_22
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:427: 
+  accessing out of bounds index. assert 0 ≤ ide;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:427: 
+  accessing out of bounds index. assert ide < 500;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:427: 
+  accessing uninitialized left-value.
+  assert \initialized(&sistemaenc[ide].vetor[i].idp);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:428: 
+  accessing uninitialized left-value.
+  assert \initialized(&sistemaenc[ide].vetor[i].stock);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:429: 
+  accessing uninitialized left-value.
+  assert \initialized(&sistemaenc[ide].vetor[i].stock);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:429: 
+  accessing uninitialized left-value.
+  assert \initialized(&sistemaenc[ide].vetor[i].preco);
+[eva] using specification for function printf_va_23
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:429: 
+  function printf_va_23: precondition valid_read_string(param0) got status unknown.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:429: 
+  more than 200(500) elements to enumerate. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:427: 
+  starting to merge loop iterations
+[eva] using specification for function printf_va_24
+[eva] using specification for function exit
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:447: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/249/proj1.c:171: 
+  accessing uninitialized left-value. assert \initialized(&sistemaprod[i].idp);
+[eva] done for function main
+[scope:rm_asserts] removing 9 assertion(s)
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function encvazia:
+  enc.ide ∈ {-1}
+     .vetor[0].idp ∈ {-1} or UNINITIALIZED
+     .vetor[0].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[0]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[1].idp ∈ {-1} or UNINITIALIZED
+     .vetor[1].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[1]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[2].idp ∈ {-1} or UNINITIALIZED
+     .vetor[2].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[2]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[3].idp ∈ {-1} or UNINITIALIZED
+     .vetor[3].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[3]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[4].idp ∈ {-1} or UNINITIALIZED
+     .vetor[4].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[4]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[5].idp ∈ {-1} or UNINITIALIZED
+     .vetor[5].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[5]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[6].idp ∈ {-1} or UNINITIALIZED
+     .vetor[6].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[6]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[7].idp ∈ {-1} or UNINITIALIZED
+     .vetor[7].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[7]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[8].idp ∈ {-1} or UNINITIALIZED
+     .vetor[8].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[8]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[9].idp ∈ {-1} or UNINITIALIZED
+     .vetor[9].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[9]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[10].idp ∈ {-1} or UNINITIALIZED
+     .vetor[10].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[10]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[11].idp ∈ {-1} or UNINITIALIZED
+     .vetor[11].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[11]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[12].idp ∈ {-1} or UNINITIALIZED
+     .vetor[12].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[12]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[13].idp ∈ {-1} or UNINITIALIZED
+     .vetor[13].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[13]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[14].idp ∈ {-1} or UNINITIALIZED
+     .vetor[14].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[14]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[15].idp ∈ {-1} or UNINITIALIZED
+     .vetor[15].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[15]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[16].idp ∈ {-1} or UNINITIALIZED
+     .vetor[16].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[16]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[17].idp ∈ {-1} or UNINITIALIZED
+     .vetor[17].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[17]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[18].idp ∈ {-1} or UNINITIALIZED
+     .vetor[18].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[18]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[19].idp ∈ {-1} or UNINITIALIZED
+     .vetor[19].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[19]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[20].idp ∈ {-1} or UNINITIALIZED
+     .vetor[20].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[20]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[21].idp ∈ {-1} or UNINITIALIZED
+     .vetor[21].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[21]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[22].idp ∈ {-1} or UNINITIALIZED
+     .vetor[22].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[22]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[23].idp ∈ {-1} or UNINITIALIZED
+     .vetor[23].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[23]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[24].idp ∈ {-1} or UNINITIALIZED
+     .vetor[24].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[24]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[25].idp ∈ {-1} or UNINITIALIZED
+     .vetor[25].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[25]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[26].idp ∈ {-1} or UNINITIALIZED
+     .vetor[26].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[26]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[27].idp ∈ {-1} or UNINITIALIZED
+     .vetor[27].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[27]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[28].idp ∈ {-1} or UNINITIALIZED
+     .vetor[28].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[28]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[29].idp ∈ {-1} or UNINITIALIZED
+     .vetor[29].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[29]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[30].idp ∈ {-1} or UNINITIALIZED
+     .vetor[30].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[30]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[31].idp ∈ {-1} or UNINITIALIZED
+     .vetor[31].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[31]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[32].idp ∈ {-1} or UNINITIALIZED
+     .vetor[32].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[32]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[33].idp ∈ {-1} or UNINITIALIZED
+     .vetor[33].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[33]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[34].idp ∈ {-1} or UNINITIALIZED
+     .vetor[34].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[34]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[35].idp ∈ {-1} or UNINITIALIZED
+     .vetor[35].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[35]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[36].idp ∈ {-1} or UNINITIALIZED
+     .vetor[36].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[36]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[37].idp ∈ {-1} or UNINITIALIZED
+     .vetor[37].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[37]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[38].idp ∈ {-1} or UNINITIALIZED
+     .vetor[38].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[38]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[39].idp ∈ {-1} or UNINITIALIZED
+     .vetor[39].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[39]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[40].idp ∈ {-1} or UNINITIALIZED
+     .vetor[40].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[40]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[41].idp ∈ {-1} or UNINITIALIZED
+     .vetor[41].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[41]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[42].idp ∈ {-1} or UNINITIALIZED
+     .vetor[42].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[42]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[43].idp ∈ {-1} or UNINITIALIZED
+     .vetor[43].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[43]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[44].idp ∈ {-1} or UNINITIALIZED
+     .vetor[44].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[44]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[45].idp ∈ {-1} or UNINITIALIZED
+     .vetor[45].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[45]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[46].idp ∈ {-1} or UNINITIALIZED
+     .vetor[46].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[46]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[47].idp ∈ {-1} or UNINITIALIZED
+     .vetor[47].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[47]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[48].idp ∈ {-1} or UNINITIALIZED
+     .vetor[48].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[48]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[49].idp ∈ {-1} or UNINITIALIZED
+     .vetor[49].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[49]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[50].idp ∈ {-1} or UNINITIALIZED
+     .vetor[50].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[50]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[51].idp ∈ {-1} or UNINITIALIZED
+     .vetor[51].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[51]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[52].idp ∈ {-1} or UNINITIALIZED
+     .vetor[52].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[52]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[53].idp ∈ {-1} or UNINITIALIZED
+     .vetor[53].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[53]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[54].idp ∈ {-1} or UNINITIALIZED
+     .vetor[54].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[54]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[55].idp ∈ {-1} or UNINITIALIZED
+     .vetor[55].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[55]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[56].idp ∈ {-1} or UNINITIALIZED
+     .vetor[56].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[56]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[57].idp ∈ {-1} or UNINITIALIZED
+     .vetor[57].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[57]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[58].idp ∈ {-1} or UNINITIALIZED
+     .vetor[58].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[58]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[59].idp ∈ {-1} or UNINITIALIZED
+     .vetor[59].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[59]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[60].idp ∈ {-1} or UNINITIALIZED
+     .vetor[60].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[60]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[61].idp ∈ {-1} or UNINITIALIZED
+     .vetor[61].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[61]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[62].idp ∈ {-1} or UNINITIALIZED
+     .vetor[62].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[62]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[63].idp ∈ {-1} or UNINITIALIZED
+     .vetor[63].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[63]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[64].idp ∈ {-1} or UNINITIALIZED
+     .vetor[64].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[64]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[65].idp ∈ {-1} or UNINITIALIZED
+     .vetor[65].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[65]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[66].idp ∈ {-1} or UNINITIALIZED
+     .vetor[66].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[66]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[67].idp ∈ {-1} or UNINITIALIZED
+     .vetor[67].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[67]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[68].idp ∈ {-1} or UNINITIALIZED
+     .vetor[68].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[68]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[69].idp ∈ {-1} or UNINITIALIZED
+     .vetor[69].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[69]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[70].idp ∈ {-1} or UNINITIALIZED
+     .vetor[70].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[70]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[71].idp ∈ {-1} or UNINITIALIZED
+     .vetor[71].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[71]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[72].idp ∈ {-1} or UNINITIALIZED
+     .vetor[72].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[72]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[73].idp ∈ {-1} or UNINITIALIZED
+     .vetor[73].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[73]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[74].idp ∈ {-1} or UNINITIALIZED
+     .vetor[74].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[74]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[75].idp ∈ {-1} or UNINITIALIZED
+     .vetor[75].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[75]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[76].idp ∈ {-1} or UNINITIALIZED
+     .vetor[76].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[76]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[77].idp ∈ {-1} or UNINITIALIZED
+     .vetor[77].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[77]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[78].idp ∈ {-1} or UNINITIALIZED
+     .vetor[78].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[78]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[79].idp ∈ {-1} or UNINITIALIZED
+     .vetor[79].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[79]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[80].idp ∈ {-1} or UNINITIALIZED
+     .vetor[80].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[80]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[81].idp ∈ {-1} or UNINITIALIZED
+     .vetor[81].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[81]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[82].idp ∈ {-1} or UNINITIALIZED
+     .vetor[82].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[82]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[83].idp ∈ {-1} or UNINITIALIZED
+     .vetor[83].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[83]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[84].idp ∈ {-1} or UNINITIALIZED
+     .vetor[84].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[84]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[85].idp ∈ {-1} or UNINITIALIZED
+     .vetor[85].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[85]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[86].idp ∈ {-1} or UNINITIALIZED
+     .vetor[86].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[86]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[87].idp ∈ {-1} or UNINITIALIZED
+     .vetor[87].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[87]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[88].idp ∈ {-1} or UNINITIALIZED
+     .vetor[88].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[88]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[89].idp ∈ {-1} or UNINITIALIZED
+     .vetor[89].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[89]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[90].idp ∈ {-1} or UNINITIALIZED
+     .vetor[90].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[90]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[91].idp ∈ {-1} or UNINITIALIZED
+     .vetor[91].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[91]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[92].idp ∈ {-1} or UNINITIALIZED
+     .vetor[92].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[92]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[93].idp ∈ {-1} or UNINITIALIZED
+     .vetor[93].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[93]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[94].idp ∈ {-1} or UNINITIALIZED
+     .vetor[94].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[94]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[95].idp ∈ {-1} or UNINITIALIZED
+     .vetor[95].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[95]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[96].idp ∈ {-1} or UNINITIALIZED
+     .vetor[96].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[96]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[97].idp ∈ {-1} or UNINITIALIZED
+     .vetor[97].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[97]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[98].idp ∈ {-1} or UNINITIALIZED
+     .vetor[98].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[98]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[99].idp ∈ {-1} or UNINITIALIZED
+     .vetor[99].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[99]{.desc[1..63]; .preco; .peso; .stock} ∈ {0} or UNINITIALIZED
+     .vetor[100].idp ∈ {-1} or UNINITIALIZED
+     .vetor[100].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[100]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[101].idp ∈ {-1} or UNINITIALIZED
+     .vetor[101].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[101]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[102].idp ∈ {-1} or UNINITIALIZED
+     .vetor[102].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[102]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[103].idp ∈ {-1} or UNINITIALIZED
+     .vetor[103].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[103]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[104].idp ∈ {-1} or UNINITIALIZED
+     .vetor[104].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[104]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[105].idp ∈ {-1} or UNINITIALIZED
+     .vetor[105].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[105]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[106].idp ∈ {-1} or UNINITIALIZED
+     .vetor[106].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[106]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[107].idp ∈ {-1} or UNINITIALIZED
+     .vetor[107].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[107]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[108].idp ∈ {-1} or UNINITIALIZED
+     .vetor[108].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[108]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[109].idp ∈ {-1} or UNINITIALIZED
+     .vetor[109].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[109]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[110].idp ∈ {-1} or UNINITIALIZED
+     .vetor[110].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[110]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[111].idp ∈ {-1} or UNINITIALIZED
+     .vetor[111].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[111]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[112].idp ∈ {-1} or UNINITIALIZED
+     .vetor[112].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[112]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[113].idp ∈ {-1} or UNINITIALIZED
+     .vetor[113].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[113]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[114].idp ∈ {-1} or UNINITIALIZED
+     .vetor[114].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[114]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[115].idp ∈ {-1} or UNINITIALIZED
+     .vetor[115].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[115]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[116].idp ∈ {-1} or UNINITIALIZED
+     .vetor[116].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[116]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[117].idp ∈ {-1} or UNINITIALIZED
+     .vetor[117].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[117]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[118].idp ∈ {-1} or UNINITIALIZED
+     .vetor[118].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[118]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[119].idp ∈ {-1} or UNINITIALIZED
+     .vetor[119].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[119]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[120].idp ∈ {-1} or UNINITIALIZED
+     .vetor[120].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[120]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[121].idp ∈ {-1} or UNINITIALIZED
+     .vetor[121].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[121]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[122].idp ∈ {-1} or UNINITIALIZED
+     .vetor[122].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[122]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[123].idp ∈ {-1} or UNINITIALIZED
+     .vetor[123].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[123]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[124].idp ∈ {-1} or UNINITIALIZED
+     .vetor[124].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[124]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[125].idp ∈ {-1} or UNINITIALIZED
+     .vetor[125].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[125]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[126].idp ∈ {-1} or UNINITIALIZED
+     .vetor[126].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[126]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[127].idp ∈ {-1} or UNINITIALIZED
+     .vetor[127].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[127]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[128].idp ∈ {-1} or UNINITIALIZED
+     .vetor[128].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[128]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[129].idp ∈ {-1} or UNINITIALIZED
+     .vetor[129].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[129]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[130].idp ∈ {-1} or UNINITIALIZED
+     .vetor[130].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[130]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[131].idp ∈ {-1} or UNINITIALIZED
+     .vetor[131].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[131]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[132].idp ∈ {-1} or UNINITIALIZED
+     .vetor[132].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[132]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[133].idp ∈ {-1} or UNINITIALIZED
+     .vetor[133].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[133]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[134].idp ∈ {-1} or UNINITIALIZED
+     .vetor[134].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[134]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[135].idp ∈ {-1} or UNINITIALIZED
+     .vetor[135].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[135]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[136].idp ∈ {-1} or UNINITIALIZED
+     .vetor[136].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[136]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[137].idp ∈ {-1} or UNINITIALIZED
+     .vetor[137].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[137]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[138].idp ∈ {-1} or UNINITIALIZED
+     .vetor[138].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[138]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[139].idp ∈ {-1} or UNINITIALIZED
+     .vetor[139].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[139]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[140].idp ∈ {-1} or UNINITIALIZED
+     .vetor[140].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[140]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[141].idp ∈ {-1} or UNINITIALIZED
+     .vetor[141].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[141]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[142].idp ∈ {-1} or UNINITIALIZED
+     .vetor[142].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[142]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[143].idp ∈ {-1} or UNINITIALIZED
+     .vetor[143].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[143]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[144].idp ∈ {-1} or UNINITIALIZED
+     .vetor[144].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[144]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[145].idp ∈ {-1} or UNINITIALIZED
+     .vetor[145].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[145]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[146].idp ∈ {-1} or UNINITIALIZED
+     .vetor[146].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[146]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[147].idp ∈ {-1} or UNINITIALIZED
+     .vetor[147].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[147]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[148].idp ∈ {-1} or UNINITIALIZED
+     .vetor[148].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[148]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[149].idp ∈ {-1} or UNINITIALIZED
+     .vetor[149].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[149]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[150].idp ∈ {-1} or UNINITIALIZED
+     .vetor[150].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[150]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[151].idp ∈ {-1} or UNINITIALIZED
+     .vetor[151].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[151]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[152].idp ∈ {-1} or UNINITIALIZED
+     .vetor[152].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[152]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[153].idp ∈ {-1} or UNINITIALIZED
+     .vetor[153].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[153]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[154].idp ∈ {-1} or UNINITIALIZED
+     .vetor[154].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[154]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[155].idp ∈ {-1} or UNINITIALIZED
+     .vetor[155].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[155]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[156].idp ∈ {-1} or UNINITIALIZED
+     .vetor[156].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[156]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[157].idp ∈ {-1} or UNINITIALIZED
+     .vetor[157].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[157]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[158].idp ∈ {-1} or UNINITIALIZED
+     .vetor[158].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[158]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[159].idp ∈ {-1} or UNINITIALIZED
+     .vetor[159].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[159]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[160].idp ∈ {-1} or UNINITIALIZED
+     .vetor[160].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[160]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[161].idp ∈ {-1} or UNINITIALIZED
+     .vetor[161].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[161]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[162].idp ∈ {-1} or UNINITIALIZED
+     .vetor[162].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[162]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[163].idp ∈ {-1} or UNINITIALIZED
+     .vetor[163].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[163]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[164].idp ∈ {-1} or UNINITIALIZED
+     .vetor[164].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[164]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[165].idp ∈ {-1} or UNINITIALIZED
+     .vetor[165].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[165]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[166].idp ∈ {-1} or UNINITIALIZED
+     .vetor[166].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[166]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[167].idp ∈ {-1} or UNINITIALIZED
+     .vetor[167].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[167]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[168].idp ∈ {-1} or UNINITIALIZED
+     .vetor[168].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[168]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[169].idp ∈ {-1} or UNINITIALIZED
+     .vetor[169].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[169]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[170].idp ∈ {-1} or UNINITIALIZED
+     .vetor[170].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[170]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[171].idp ∈ {-1} or UNINITIALIZED
+     .vetor[171].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[171]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[172].idp ∈ {-1} or UNINITIALIZED
+     .vetor[172].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[172]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[173].idp ∈ {-1} or UNINITIALIZED
+     .vetor[173].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[173]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[174].idp ∈ {-1} or UNINITIALIZED
+     .vetor[174].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[174]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[175].idp ∈ {-1} or UNINITIALIZED
+     .vetor[175].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[175]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[176].idp ∈ {-1} or UNINITIALIZED
+     .vetor[176].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[176]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[177].idp ∈ {-1} or UNINITIALIZED
+     .vetor[177].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[177]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[178].idp ∈ {-1} or UNINITIALIZED
+     .vetor[178].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[178]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[179].idp ∈ {-1} or UNINITIALIZED
+     .vetor[179].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[179]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[180].idp ∈ {-1} or UNINITIALIZED
+     .vetor[180].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[180]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[181].idp ∈ {-1} or UNINITIALIZED
+     .vetor[181].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[181]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[182].idp ∈ {-1} or UNINITIALIZED
+     .vetor[182].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[182]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[183].idp ∈ {-1} or UNINITIALIZED
+     .vetor[183].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[183]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[184].idp ∈ {-1} or UNINITIALIZED
+     .vetor[184].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[184]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[185].idp ∈ {-1} or UNINITIALIZED
+     .vetor[185].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[185]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[186].idp ∈ {-1} or UNINITIALIZED
+     .vetor[186].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[186]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[187].idp ∈ {-1} or UNINITIALIZED
+     .vetor[187].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[187]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[188].idp ∈ {-1} or UNINITIALIZED
+     .vetor[188].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[188]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[189].idp ∈ {-1} or UNINITIALIZED
+     .vetor[189].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[189]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[190].idp ∈ {-1} or UNINITIALIZED
+     .vetor[190].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[190]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[191].idp ∈ {-1} or UNINITIALIZED
+     .vetor[191].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[191]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[192].idp ∈ {-1} or UNINITIALIZED
+     .vetor[192].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[192]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[193].idp ∈ {-1} or UNINITIALIZED
+     .vetor[193].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[193]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[194].idp ∈ {-1} or UNINITIALIZED
+     .vetor[194].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[194]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[195].idp ∈ {-1} or UNINITIALIZED
+     .vetor[195].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[195]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[196].idp ∈ {-1} or UNINITIALIZED
+     .vetor[196].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[196]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[197].idp ∈ {-1} or UNINITIALIZED
+     .vetor[197].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[197]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[198].idp ∈ {-1} or UNINITIALIZED
+     .vetor[198].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[198]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[199].idp ∈ {-1} or UNINITIALIZED
+     .vetor[199].desc[0] ∈ {32} or UNINITIALIZED
+     .vetor[199]{.desc[1..63]; .preco; .peso; .stock} ∈
+     {0} or UNINITIALIZED
+     .vetor[200..499] ∈ UNINITIALIZED
+  i ∈ {200}
+[eva:final-states] Values at end of function existeEnc:
+  i ∈ [0..500]
+  __retres ∈ {0; 1}
+[eva:final-states] Values at end of function existeProd:
+  i ∈ [0..10000]
+  __retres ∈ {0; 1}
+[eva:final-states] Values at end of function initenc:
+  sistemaenc[0..499] ∈ [--..--] or UNINITIALIZED
+  i ∈ {500}
+[eva:final-states] Values at end of function initprod:
+  sistemaprod[0].idp ∈ [--..--]
+             {[0]{.desc[0..63]; .preco; .peso; .stock}; [1..9998]; [9999]{.idp; .desc[0..63]}} ∈
+             [--..--] or UNINITIALIZED
+             [9999]{.preco; .peso; .stock} ∈ [--..--]
+  i ∈ {10000}
+  sistemaaux[0..9999] ∈ [--..--] or UNINITIALIZED
+[eva:final-states] Values at end of function merge:
+  aux[0..9999] ∈ [--..--] or UNINITIALIZED
+  i ∈ [0..9999]
+  j ∈ [-1..9999]
+  k ∈ [2..2147483647]
+  sistemaaux[0..9999] ∈ [--..--] or UNINITIALIZED
+[eva:final-states] Values at end of function pesoEnc:
+  i ∈ [0..200]
+  peso ∈ [--..--]
+[eva:final-states] Values at end of function N:
+  sistemaenc[0..499] ∈ [--..--] or UNINITIALIZED
+  i ∈ [0..499]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function q:
+  sistemaprod[0].idp ∈ [--..--]
+             {[0]{.desc[0..63]; .preco; .peso; .stock}; [1..9998]; [9999]{.idp; .desc[0..63]}} ∈
+             [--..--] or UNINITIALIZED
+             [9999]{.preco; .peso; .stock} ∈ [--..--]
+  idp ∈ [--..--]
+  qtd ∈ [--..--]
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function r:
+  sistemaprod[0].idp ∈ [--..--]
+             {[0]{.desc[0..63]; .preco; .peso; .stock}; [1..9998]; [9999]{.idp; .desc[0..63]}} ∈
+             [--..--] or UNINITIALIZED
+             [9999]{.preco; .peso; .stock} ∈ [--..--]
+  idp ∈ [--..--]
+  qtd ∈ [--..--]
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function R:
+  sistemaprod[0].idp ∈ [--..--]
+             {[0]{.desc[0..63]; .preco; .peso; .stock}; [1..9998]; [9999]{.idp; .desc[0..63]}} ∈
+             [--..--] or UNINITIALIZED
+             [9999]{.preco; .peso; .stock} ∈ [--..--]
+  sistemaenc[0..499] ∈ [--..--] or UNINITIALIZED
+  ide ∈ [--..--]
+  idp ∈ [--..--]
+  i ∈ [0..200]
+  encontrou ∈ {0; 1}
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function C:
+  ide ∈ [--..--]
+  i ∈ [0..499]
+  custo ∈ [--..--]
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function p:
+  sistemaprod[0].idp ∈ [--..--]
+             {[0]{.desc[0..63]; .preco; .peso; .stock}; [1..9998]; [9999]{.idp; .desc[0..63]}} ∈
+             [--..--] or UNINITIALIZED
+             [9999]{.preco; .peso; .stock} ∈ [--..--]
+  sistemaenc[0..499] ∈ [--..--] or UNINITIALIZED
+  idp ∈ [--..--]
+  preco ∈ [--..--]
+  i ∈ [0..500]
+  j ∈ [0..200] or UNINITIALIZED
+  encontrou ∈ {0; 1} or UNINITIALIZED
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function E:
+  ide ∈ [--..--]
+  idp ∈ [--..--]
+  i ∈ [0..200]
+  qtd ∈ [--..--]
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function m:
+  idp ∈ [--..--]
+  qtd ∈ [--..--]
+  ide ∈ [0..2147483647] or UNINITIALIZED
+  i ∈ [0..500]
+  j ∈ [0..200] or UNINITIALIZED
+  encontrou ∈ {0; 1} or UNINITIALIZED
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function partition:
+  sistemaenc[0..499] ∈ [--..--] or UNINITIALIZED
+  i ∈ [-1..250023]
+  j ∈ [-2147483648..199]
+  v ∈ [--..--] or UNINITIALIZED
+  t ∈ [--..--] or UNINITIALIZED
+[eva:final-states] Values at end of function A:
+  sistemaprod[0].idp ∈ [--..--]
+             {[0]{.desc[0..63]; .preco; .peso; .stock}; [1..9998]; [9999]{.idp; .desc[0..63]}} ∈
+             [--..--] or UNINITIALIZED
+             [9999]{.preco; .peso; .stock} ∈ [--..--]
+  sistemaenc[0..499] ∈ [--..--] or UNINITIALIZED
+  idp ∈ [--..--]
+  ide ∈ [--..--]
+  qtd ∈ [--..--]
+  i ∈ [0..200]
+  encontrou ∈ {0; 1}
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function a:
+  sistemaprod[0].idp ∈ [--..--]
+             {[0]{.desc[0..63]; .preco; .peso; .stock}; [1..9998]; [9999]{.idp; .desc[0..63]}} ∈
+             [--..--] or UNINITIALIZED
+             [9999]{.preco; .peso; .stock} ∈ [--..--]
+  c ∈ [--..--]
+  i ∈ [0..9999]
+  j ∈ [0..63]
+  desc[0..62] ∈ [--..--] or UNINITIALIZED
+      [63] ∈ {0} or UNINITIALIZED
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function L:
+  sistemaenc[0..499] ∈ [--..--] or UNINITIALIZED
+  ide ∈ [--..--]
+  i ∈ [0..200]
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function l:
+  i ∈ [0..10000]
+  sistemaaux[0..9999] ∈ [--..--] or UNINITIALIZED
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function main:
+  sistemaprod[0].idp ∈ [--..--]
+             {[0]{.desc[0..63]; .preco; .peso; .stock}; [1..9998]; [9999]{.idp; .desc[0..63]}} ∈
+             [--..--] or UNINITIALIZED
+             [9999]{.preco; .peso; .stock} ∈ [--..--]
+  sistemaenc[0..499] ∈ [--..--] or UNINITIALIZED
+  c ∈ {-1}
+  __retres ∈ {0}
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function mergesort:
+  m_0 ∈ [0..4999]
+  sistemaaux[0..9999] ∈ [--..--] or UNINITIALIZED
+[eva:final-states] Values at end of function quicksort:
+  sistemaenc[0..499] ∈ [--..--] or UNINITIALIZED
+  i ∈ [-1..250023] or UNINITIALIZED
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  23 functions analyzed (out of 26): 88% coverage.
+  In these functions, 445 statements reached (out of 446): 99% coverage.
+  ----------------------------------------------------------------------------
+  Some errors and warnings have been raised during the analysis:
+    by the Eva analyzer:      2 errors    0 warnings
+    by the Frama-C kernel:    0 errors    0 warnings
+  ----------------------------------------------------------------------------
+  116 alarms generated by the analysis:
+      53 accesses to uninitialized left-values
+      32 accesses out of bounds index
+      26 integer overflows
+       3 invalid memory accesses
+       2 others
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     0 unknown     0 invalid      0 total
+    Preconditions    58 valid    14 unknown     0 invalid     72 total
+  80% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[eva] User Error: Deferred error message was emitted during execution. See above messages for more information.
+[kernel] Plug-in eva aborted: invalid user input.

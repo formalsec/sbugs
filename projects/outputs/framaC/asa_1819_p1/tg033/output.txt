@@ -1,0 +1,1001 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  WHITE ∈ {0}
+  GREY ∈ {1}
+  BLACK ∈ {2}
+  RED ∈ {3}
+[eva] using specification for function time
+[eva] using specification for function srand
+[eva] using specification for function rand
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11
+[eva] using specification for function scanf_va_1
+[eva] using specification for function scanf_va_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:54: 
+  assertion 'alloca_bounds' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:54: 
+  signed overflow. assert n_verts + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:54: 
+  allocating variable __malloc_main_l54
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_0
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:65: 
+  out of bounds write. assert \valid(vert_list + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:55: 
+  starting to merge loop iterations
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:65: 
+  too many locations to update in array. Approximating.
+[eva] using specification for function scanf_va_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:77: 
+  accessing uninitialized left-value.
+  assert \initialized(&(vert_list + pos1)->connected);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:77: 
+  accessing uninitialized left-value.
+  assert \initialized(&(vert_list + pos1)->connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:77: 
+  out of bounds read. assert \valid_read(&(vert_list + pos1)->connected);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:77: 
+  out of bounds read. assert \valid_read(&(vert_list + pos1)->connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:77: 
+  out of bounds write.
+  assert
+  \valid((vert_list + pos1)->connected + (vert_list + pos1)->connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:78: 
+  out of bounds write. assert \valid(&(vert_list + pos1)->connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:78: 
+  accessing uninitialized left-value.
+  assert \initialized(&(vert_list + pos1)->connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:78: 
+  signed overflow. assert -2147483648 ≤ (vert_list + pos1)->connections + 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:78: 
+  signed overflow. assert (vert_list + pos1)->connections + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:78: 
+  Assigning imprecise value to (vert_list + pos1)->connections
+  (pointing to __malloc_main_l54 with offsets [128..687194767168],128%320).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:65}
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:78: 
+  more than 200(2147483648) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:79: 
+  accessing uninitialized left-value.
+  assert \initialized(&(vert_list + pos1)->connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:79: 
+  accessing uninitialized left-value.
+  assert \initialized(&(vert_list + pos1)->connected);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:79: 
+  out of bounds read. assert \valid_read(&(vert_list + pos1)->connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:79: 
+  out of bounds read. assert \valid_read(&(vert_list + pos1)->connected);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:79: 
+  signed overflow. assert -2147483648 ≤ (vert_list + pos1)->connections + 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:79: 
+  signed overflow. assert (vert_list + pos1)->connections + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:25: 
+  function realloc: precondition 'freeable' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:25: 
+  allocating variable __realloc_can_fail_realloc_l25
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:79: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:79: 
+  out of bounds write. assert \valid(&(vert_list + pos1)->connected);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:79: 
+  more than 200(2147483648) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:80: 
+  accessing uninitialized left-value.
+  assert \initialized(&(vert_list + pos2)->connected);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:80: 
+  accessing uninitialized left-value.
+  assert \initialized(&(vert_list + pos2)->connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:80: 
+  out of bounds read. assert \valid_read(&(vert_list + pos2)->connected);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:80: 
+  out of bounds read. assert \valid_read(&(vert_list + pos2)->connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:80: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(vert_list + pos2)->connected);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:80: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(vert_list + pos2)->connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:80: 
+  out of bounds write.
+  assert
+  \valid((vert_list + pos2)->connected + (vert_list + pos2)->connections);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:80: 
+  too many locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:81: 
+  out of bounds write. assert \valid(&(vert_list + pos2)->connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:81: 
+  accessing uninitialized left-value.
+  assert \initialized(&(vert_list + pos2)->connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:81: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(vert_list + pos2)->connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:81: 
+  signed overflow. assert -2147483648 ≤ (vert_list + pos2)->connections + 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:81: 
+  signed overflow. assert (vert_list + pos2)->connections + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:81: 
+  Assigning imprecise value to (vert_list + pos2)->connections
+  (pointing to __malloc_main_l54 with offsets [128..687194767168],128%320).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:65}
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:81: 
+  more than 200(2147483648) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:82: 
+  accessing uninitialized left-value.
+  assert \initialized(&(vert_list + pos2)->connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:82: 
+  accessing uninitialized left-value.
+  assert \initialized(&(vert_list + pos2)->connected);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:82: 
+  out of bounds read. assert \valid_read(&(vert_list + pos2)->connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:82: 
+  out of bounds read. assert \valid_read(&(vert_list + pos2)->connected);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:82: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(vert_list + pos2)->connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:82: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(vert_list + pos2)->connected);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:82: 
+  signed overflow. assert -2147483648 ≤ (vert_list + pos2)->connections + 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:82: 
+  signed overflow. assert (vert_list + pos2)->connections + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:25: 
+  allocating variable __realloc_can_fail_realloc_l25_0
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:82: 
+  out of bounds write. assert \valid(&(vert_list + pos2)->connected);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:82: 
+  more than 200(2147483648) locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:69: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:77: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(vert_list + pos1)->connected);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:77: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(vert_list + pos1)->connections);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:77: 
+  too many locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:78: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(vert_list + pos1)->connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:79: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(vert_list + pos1)->connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:79: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(vert_list + pos1)->connected);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:90: 
+  out of bounds write. assert \valid(index + sub_bot);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:97: 
+  out of bounds read. assert \valid_read(vert_list + position);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:97: 
+  Reading left-value *(vert_list + position).
+  The location is {{ __malloc_main_l54 -> {320} }}.
+  It contains a garbled mix of
+  {__malloc_w_can_fail_malloc_l11_0; __realloc_w_can_fail_realloc_l25;
+   __realloc_w_can_fail_realloc_l25_0}
+  because of Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:65}.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:182: 
+  accessing uninitialized left-value.
+  assert \initialized(&current.connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:182: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&current.connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:183: 
+  accessing uninitialized left-value. assert \initialized(&current.connected);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:183: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&current.connected);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:183: 
+  accessing uninitialized left-value.
+  assert \initialized(&(current.connected + i)->type);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:183: 
+  out of bounds read. assert \valid_read(&(current.connected + i)->type);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:183: 
+  accessing uninitialized left-value.
+  assert \initialized(&(current.connected + i)->position);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:183: 
+  out of bounds read. assert \valid_read(&(current.connected + i)->position);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:183: 
+  accessing uninitialized left-value.
+  assert \initialized(&(vert_list + (current.connected + i)->position)->color);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:183: 
+  out of bounds read.
+  assert \valid_read(&(vert_list + (current.connected + i)->position)->color);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:183: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(vert_list + (current.connected + i)->position)->color);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:182: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:182: 
+  signed overflow. assert i + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:184: 
+  accessing uninitialized left-value.
+  assert \initialized(&(current.connected + i)->position);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:184: 
+  out of bounds read. assert \valid_read(&(current.connected + i)->position);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:183: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:99: 
+  accessing uninitialized left-value.
+  assert \initialized(&(vert_list + position)->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:99: 
+  out of bounds read. assert \valid_read(&(vert_list + position)->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:99: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(vert_list + position)->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:101: 
+  out of bounds write. assert \valid(&(vert_list + position)->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:102: 
+  out of bounds write. assert \valid(&(vert_list + position)->low);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:194: 
+  out of bounds write. assert \valid(&(vert_list + position)->routes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:194: 
+  accessing uninitialized left-value.
+  assert \initialized(&(vert_list + position)->routes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:194: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(vert_list + position)->routes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:194: 
+  signed overflow. assert -2147483648 ≤ (vert_list + position)->routes + 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:194: 
+  signed overflow. assert (vert_list + position)->routes + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:194: 
+  Assigning imprecise value to (vert_list + position)->routes
+  (pointing to __malloc_main_l54 with offsets {416}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:65}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:195: 
+  out of bounds write. assert \valid(&(vert_list + position)->color);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:196: 
+  out of bounds write. assert \valid(&(vert_list + next)->color);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:196: 
+  more than 200(2147483648) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:198: 
+  accessing uninitialized left-value.
+  assert \initialized(&(vert_list + position)->connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:198: 
+  out of bounds read. assert \valid_read(&(vert_list + position)->connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:198: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(vert_list + position)->connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:199: 
+  accessing uninitialized left-value.
+  assert \initialized(&(vert_list + position)->connected);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:199: 
+  out of bounds read. assert \valid_read(&(vert_list + position)->connected);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:199: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(vert_list + position)->connected);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:199: 
+  accessing uninitialized left-value.
+  assert \initialized(&((vert_list + position)->connected + i)->position);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:199: 
+  out of bounds read.
+  assert \valid_read(&((vert_list + position)->connected + i)->position);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:200: 
+  out of bounds read. assert \valid_read(&(vert_list + position)->connected);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:200: 
+  out of bounds write.
+  assert \valid(&((vert_list + position)->connected + i)->type);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:201: 
+  out of bounds write. assert \valid(&(vert_list + position)->child);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:198: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:198: 
+  signed overflow. assert i + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:204: 
+  accessing uninitialized left-value.
+  assert \initialized(&(vert_list + next)->connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:204: 
+  out of bounds read. assert \valid_read(&(vert_list + next)->connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:204: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(vert_list + next)->connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:205: 
+  accessing uninitialized left-value.
+  assert \initialized(&(vert_list + next)->connected);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:205: 
+  out of bounds read. assert \valid_read(&(vert_list + next)->connected);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:205: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(vert_list + next)->connected);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:205: 
+  accessing uninitialized left-value.
+  assert \initialized(&((vert_list + next)->connected + i)->position);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:205: 
+  out of bounds read.
+  assert \valid_read(&((vert_list + next)->connected + i)->position);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:206: 
+  accessing uninitialized left-value.
+  assert \initialized(&(vert_list + next)->connected);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:206: 
+  out of bounds read. assert \valid_read(&(vert_list + next)->connected);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:206: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(vert_list + next)->connected);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:206: 
+  out of bounds write.
+  assert \valid(&((vert_list + next)->connected + i)->type);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:207: 
+  out of bounds write. assert \valid(&(vert_list + next)->parent);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:207: 
+  more than 200(2147483648) locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:204: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:204: 
+  signed overflow. assert i + 1 ≤ 2147483647;
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:207: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:107: 
+  accessing uninitialized left-value.
+  assert \initialized(&(vert_list + position)->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:107: 
+  out of bounds read. assert \valid_read(&(vert_list + position)->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:107: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(vert_list + position)->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:109: 
+  out of bounds write. assert \valid(&(vert_list + position)->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:110: 
+  out of bounds write. assert \valid(&(vert_list + position)->low);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:113: 
+  out of bounds read. assert \valid_read(vert_list + position);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:113: 
+  Reading left-value *(vert_list + position).
+  The location is {{ __malloc_main_l54 -> {320} }}.
+  It contains a garbled mix of
+  {__malloc_w_can_fail_malloc_l11_0; __realloc_w_can_fail_realloc_l25;
+   __realloc_w_can_fail_realloc_l25_0}
+  because of Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:65}.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:213: 
+  accessing uninitialized left-value. assert \initialized(&current.parent);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:213: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&current.parent);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:213: 
+  accessing uninitialized left-value.
+  assert \initialized(&(vert_list + current.parent)->color);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:213: 
+  out of bounds read. assert \valid_read(&(vert_list + current.parent)->color);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:213: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(vert_list + current.parent)->color);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:114: 
+  out of bounds write. assert \valid(&(vert_list + position)->color);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:118: 
+  out of bounds read. assert \valid_read(vert_list + position);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:118: 
+  Reading left-value *(vert_list + position).
+  The location is {{ __malloc_main_l54 -> {320} }}.
+  It contains a garbled mix of
+  {__malloc_w_can_fail_malloc_l11_0; __realloc_w_can_fail_realloc_l25;
+   __realloc_w_can_fail_realloc_l25_0}
+  because of Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:65}.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:222: 
+  accessing uninitialized left-value. assert \initialized(&current.low);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:222: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&current.low);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:222: 
+  Assigning imprecise value to low.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:65}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:224: 
+  accessing uninitialized left-value.
+  assert \initialized(&current.connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:224: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&current.connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:225: 
+  accessing uninitialized left-value. assert \initialized(&current.connected);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:225: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&current.connected);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:225: 
+  accessing uninitialized left-value.
+  assert \initialized(&(current.connected + i)->type);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:225: 
+  out of bounds read. assert \valid_read(&(current.connected + i)->type);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:226: 
+  accessing uninitialized left-value.
+  assert \initialized(&(current.connected + i)->position);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:226: 
+  out of bounds read. assert \valid_read(&(current.connected + i)->position);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:226: 
+  accessing uninitialized left-value.
+  assert \initialized(&(vert_list + (current.connected + i)->position)->low);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:226: 
+  out of bounds read.
+  assert \valid_read(&(vert_list + (current.connected + i)->position)->low);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:226: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(vert_list + (current.connected + i)->position)->low);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:227: 
+  accessing uninitialized left-value.
+  assert \initialized(&(current.connected + i)->position);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:227: 
+  out of bounds read. assert \valid_read(&(current.connected + i)->position);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:227: 
+  accessing uninitialized left-value.
+  assert \initialized(&(vert_list + (current.connected + i)->position)->low);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:227: 
+  out of bounds read.
+  assert \valid_read(&(vert_list + (current.connected + i)->position)->low);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:227: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(vert_list + (current.connected + i)->position)->low);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:227: 
+  Assigning imprecise value to low.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:65}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:230: 
+  accessing uninitialized left-value.
+  assert \initialized(&(current.connected + i)->position);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:230: 
+  out of bounds read. assert \valid_read(&(current.connected + i)->position);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:230: 
+  accessing uninitialized left-value.
+  assert \initialized(&(vert_list + (current.connected + i)->position)->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:230: 
+  out of bounds read.
+  assert \valid_read(&(vert_list + (current.connected + i)->position)->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:230: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(vert_list + (current.connected + i)->position)->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:230: 
+  accessing uninitialized left-value.
+  assert \initialized(&(current.connected + i)->position);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:230: 
+  out of bounds read. assert \valid_read(&(current.connected + i)->position);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:230: 
+  accessing uninitialized left-value.
+  assert
+  \initialized(&(vert_list + (current.connected + i)->position)->connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:230: 
+  out of bounds read.
+  assert
+  \valid_read(&(vert_list + (current.connected + i)->position)->connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:230: 
+  accessing left-value that contains escaping addresses.
+  assert
+  ¬\dangling(&(vert_list + (current.connected + i)->position)->connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:231: 
+  accessing uninitialized left-value.
+  assert \initialized(&(current.connected + i)->position);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:231: 
+  out of bounds read. assert \valid_read(&(current.connected + i)->position);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:231: 
+  accessing uninitialized left-value.
+  assert \initialized(&(vert_list + (current.connected + i)->position)->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:231: 
+  out of bounds read.
+  assert \valid_read(&(vert_list + (current.connected + i)->position)->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:231: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(vert_list + (current.connected + i)->position)->d);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:231: 
+  Assigning imprecise value to low.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:65}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:224: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:224: 
+  signed overflow. assert i + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:236: 
+  Assigning imprecise value to \result<search_low>.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:65}
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:226: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:230: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:118: 
+  out of bounds write. assert \valid(&(vert_list + position)->low);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:118: 
+  Assigning imprecise value to (vert_list + position)->low
+  (pointing to __malloc_main_l54 with offsets {384}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:65}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:121: 
+  out of bounds read. assert \valid_read(vert_list + position);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:121: 
+  Reading left-value *(vert_list + position).
+  The location is {{ __malloc_main_l54 -> {320} }}.
+  It contains a garbled mix of
+  {__malloc_w_can_fail_malloc_l11_0; __realloc_w_can_fail_realloc_l25;
+   __realloc_w_can_fail_realloc_l25_0}
+  because of Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:65}.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:240: 
+  accessing uninitialized left-value. assert \initialized(&current.connected);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:240: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&current.connected);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:240: 
+  accessing uninitialized left-value.
+  assert \initialized(&(current.connected + 0)->type);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:240: 
+  out of bounds read. assert \valid_read(&(current.connected + 0)->type);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:240: 
+  accessing uninitialized left-value.
+  assert \initialized(&current.connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:240: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&current.connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:240: 
+  accessing uninitialized left-value.
+  assert \initialized(&(current.connected + 0)->position);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:240: 
+  out of bounds read. assert \valid_read(&(current.connected + 0)->position);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:240: 
+  accessing uninitialized left-value.
+  assert
+  \initialized(&(vert_list + (current.connected + 0)->position)->connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:240: 
+  out of bounds read.
+  assert
+  \valid_read(&(vert_list + (current.connected + 0)->position)->connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:240: 
+  accessing left-value that contains escaping addresses.
+  assert
+  ¬\dangling(&(vert_list + (current.connected + 0)->position)->connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:241: 
+  accessing uninitialized left-value.
+  assert \initialized(&(current.connected + 0)->position);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:241: 
+  out of bounds read. assert \valid_read(&(current.connected + 0)->position);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:241: 
+  accessing uninitialized left-value.
+  assert \initialized(&(vert_list + (current.connected + 0)->position)->low);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:241: 
+  out of bounds read.
+  assert \valid_read(&(vert_list + (current.connected + 0)->position)->low);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:241: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(vert_list + (current.connected + 0)->position)->low);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:241: 
+  Assigning imprecise value to __retres.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:65}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:244: 
+  accessing uninitialized left-value. assert \initialized(&current.low);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:244: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&current.low);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:244: 
+  Assigning imprecise value to __retres.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:65}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:244: 
+  Assigning imprecise value to \result<see_if_pair>.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:65}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:121: 
+  out of bounds write. assert \valid(&(vert_list + position)->low);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:121: 
+  Assigning imprecise value to (vert_list + position)->low
+  (pointing to __malloc_main_l54 with offsets {384}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:65}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:251: 
+  out of bounds read. assert \valid_read(&(vert_list + i)->color);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:250: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:251: 
+  accessing uninitialized left-value.
+  assert \initialized(&(vert_list + i)->color);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:251: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(vert_list + i)->color);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:251: 
+  more than 200(2147483646) elements to enumerate. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:25: 
+  allocating variable __realloc_can_fail_realloc_l25_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:125: 
+  out of bounds write. assert \valid(index + sub_bot);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:262: 
+  accessing uninitialized left-value.
+  assert \initialized(&(vert_list + position)->routes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:262: 
+  out of bounds read. assert \valid_read(&(vert_list + position)->routes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:262: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(vert_list + position)->routes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:262: 
+  accessing uninitialized left-value.
+  assert \initialized(&(vert_list + position)->parent);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:262: 
+  out of bounds read. assert \valid_read(&(vert_list + position)->parent);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:262: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(vert_list + position)->parent);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:262: 
+  out of bounds read. assert \valid_read(&(vert_list + position)->color);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:263: 
+  out of bounds write. assert \valid(&(vert_list + position)->color);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:265: 
+  accessing uninitialized left-value.
+  assert \initialized(&(vert_list + position)->connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:265: 
+  out of bounds read. assert \valid_read(&(vert_list + position)->connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:265: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(vert_list + position)->connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:265: 
+  out of bounds read. assert \valid_read(&(vert_list + position)->routes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:265: 
+  accessing uninitialized left-value.
+  assert \initialized(&(vert_list + position)->parent);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:265: 
+  out of bounds read. assert \valid_read(&(vert_list + position)->parent);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:265: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(vert_list + position)->parent);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:265: 
+  out of bounds read. assert \valid_read(&(vert_list + position)->color);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:266: 
+  out of bounds read. assert \valid_read(&(vert_list + position)->connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:267: 
+  accessing uninitialized left-value.
+  assert \initialized(&(vert_list + position)->connected);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:267: 
+  out of bounds read. assert \valid_read(&(vert_list + position)->connected);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:267: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(vert_list + position)->connected);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:267: 
+  accessing uninitialized left-value.
+  assert \initialized(&((vert_list + position)->connected + i)->type);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:267: 
+  out of bounds read.
+  assert \valid_read(&((vert_list + position)->connected + i)->type);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:267: 
+  out of bounds read. assert \valid_read(&(vert_list + position)->connected);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:267: 
+  out of bounds read. assert \valid_read(&(vert_list + position)->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:267: 
+  accessing uninitialized left-value.
+  assert \initialized(&((vert_list + position)->connected + i)->position);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:267: 
+  out of bounds read.
+  assert \valid_read(&((vert_list + position)->connected + i)->position);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:267: 
+  accessing uninitialized left-value.
+  assert
+  \initialized(&(vert_list + ((vert_list + position)->connected + i)->position)->low);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:267: 
+  out of bounds read.
+  assert
+  \valid_read(&(vert_list + ((vert_list + position)->connected + i)->position)->low);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:267: 
+  accessing left-value that contains escaping addresses.
+  assert
+  ¬\dangling(&(vert_list + ((vert_list + position)->connected + i)->position)->low);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:266: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:266: 
+  signed overflow. assert i + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:268: 
+  out of bounds write. assert \valid(&(vert_list + position)->color);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:91: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:92: 
+  out of bounds read. assert \valid_read(index + sub_bot);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:93: 
+  out of bounds write. assert \valid(index + sub_bot);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:97: 
+  Reading left-value *(vert_list + position).
+  The location is {{ __malloc_main_l54 -> [0..687194767040],0%320 }}.
+  It contains a garbled mix of
+  {__malloc_w_can_fail_malloc_l11_0; __realloc_w_can_fail_realloc_l25;
+   __realloc_w_can_fail_realloc_l25_0}
+  because of Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:65}.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:101: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:102: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:194: 
+  Assigning imprecise value to (vert_list + position)->routes
+  (pointing to __malloc_main_l54 with offsets [96..687194767136],96%320).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:65}
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:194: 
+  more than 200(2147483648) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:195: 
+  more than 200(2147483648) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:200: 
+  accessing uninitialized left-value.
+  assert \initialized(&(vert_list + position)->connected);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:200: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(vert_list + position)->connected);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:201: 
+  more than 200(2147483648) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:194: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:201: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:109: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:110: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:113: 
+  Reading left-value *(vert_list + position).
+  The location is {{ __malloc_main_l54 -> [0..687194767040],0%320 }}.
+  It contains a garbled mix of
+  {__malloc_w_can_fail_malloc_l11_0; __realloc_w_can_fail_realloc_l25;
+   __realloc_w_can_fail_realloc_l25_0}
+  because of Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:65}.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:114: 
+  more than 200(2147483648) locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:118: 
+  Reading left-value *(vert_list + position).
+  The location is {{ __malloc_main_l54 -> [0..687194767040],0%320 }}.
+  It contains a garbled mix of
+  {__malloc_w_can_fail_malloc_l11_0; __realloc_w_can_fail_realloc_l25;
+   __realloc_w_can_fail_realloc_l25_0}
+  because of Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:65}.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:118: 
+  Assigning imprecise value to (vert_list + position)->low
+  (pointing to __malloc_main_l54 with offsets [64..687194767104],64%320).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:65}
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:118: 
+  more than 200(2147483648) locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:121: 
+  Reading left-value *(vert_list + position).
+  The location is {{ __malloc_main_l54 -> [0..687194767040],0%320 }}.
+  It contains a garbled mix of
+  {__malloc_w_can_fail_malloc_l11_0; __realloc_w_can_fail_realloc_l25;
+   __realloc_w_can_fail_realloc_l25_0}
+  because of Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:65}.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:121: 
+  Assigning imprecise value to (vert_list + position)->low
+  (pointing to __malloc_main_l54 with offsets [64..687194767104],64%320).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:65}
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:121: 
+  more than 200(2147483648) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:262: 
+  accessing uninitialized left-value.
+  assert \initialized(&(vert_list + position)->color);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:262: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(vert_list + position)->color);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:263: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:265: 
+  accessing uninitialized left-value.
+  assert \initialized(&(vert_list + position)->routes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:265: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(vert_list + position)->routes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:265: 
+  accessing uninitialized left-value.
+  assert \initialized(&(vert_list + position)->color);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:265: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(vert_list + position)->color);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:266: 
+  accessing uninitialized left-value.
+  assert \initialized(&(vert_list + position)->connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:266: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(vert_list + position)->connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:267: 
+  accessing uninitialized left-value.
+  assert \initialized(&(vert_list + position)->connected);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:267: 
+  accessing uninitialized left-value.
+  assert \initialized(&(vert_list + position)->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:267: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(vert_list + position)->connected);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:267: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(vert_list + position)->d);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:268: 
+  more than 200(2147483648) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:262: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:92: 
+  accessing uninitialized left-value. assert \initialized(index + sub_bot);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:263: 
+  more than 200(2147483648) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:100: 
+  signed overflow. assert step + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:108: 
+  signed overflow. assert step + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:129: 
+  signed overflow.
+  assert red_counter + tmp_1 ≤ 2147483647;
+  (tmp_1 from is_connector(position, vert_list))
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 100 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 200 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 300 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 400 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 500 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 600 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 700 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 800 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 900 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 1000 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 1100 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 1200 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 1300 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 1400 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 1500 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 1600 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 1700 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 1800 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 1900 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 2000 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 2100 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 2200 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 2300 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 2400 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 2500 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 2600 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 2700 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 2800 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 2900 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 3000 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 3100 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 3200 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 3300 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 3400 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 3500 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 3600 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 3700 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 3800 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 3900 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 4000 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 4100 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 4200 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 4300 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 4400 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 4500 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 4600 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 4700 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 4800 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 4900 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 5000 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 5100 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 5200 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 5300 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 5400 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 5500 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 5600 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 5700 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 5800 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 5900 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 6000 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 6100 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 6200 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 6300 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 6400 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 6500 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 6600 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 6700 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 6800 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 6900 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 7000 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 7100 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 7200 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 7300 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 7400 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 7500 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 7600 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 7700 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 7800 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 7900 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 8000 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 8100 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 8200 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 8300 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg033/proj.c:105: 
+  Trace partitioning superposing up to 8400 states

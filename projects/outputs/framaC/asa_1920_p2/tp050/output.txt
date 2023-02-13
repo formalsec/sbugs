@@ -1,0 +1,1824 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  list ∈ {0}
+  supermercadosList ∈ {0}
+  casasList ∈ {0}
+  supermercados ∈ {0}
+  casas ∈ {0}
+  queue ∈ {0}
+[eva] using specification for function scanf_va_1
+[eva] using specification for function time
+[eva] using specification for function srand
+[eva] using specification for function rand
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_0
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:144: 
+  out of bounds write. assert \valid(list + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:143: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:147: 
+  signed overflow. assert -2147483648 ≤ ruas * avenidas;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:147: 
+  signed overflow. assert ruas * avenidas ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_1
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:150: 
+  accessing uninitialized left-value. assert \initialized(list + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:150: 
+  out of bounds read. assert \valid_read(list + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:150: 
+  out of bounds write. assert \valid(*(list + i) + j);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:151: 
+  out of bounds read. assert \valid_read(list + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:151: 
+  accessing uninitialized left-value. assert \initialized(*(list + i) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:151: 
+  out of bounds read. assert \valid_read(*(list + i) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:151: 
+  out of bounds write. assert \valid(&(*(*(list + i) + j))->direcoes);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:149: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:148: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:151: 
+  accessing uninitialized left-value. assert \initialized(list + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:154: 
+  signed overflow. assert -2147483648 ≤ avenidas - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:155: 
+  signed overflow. assert -2147483648 ≤ ruas - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:158: 
+  accessing uninitialized left-value. assert \initialized(list + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:158: 
+  out of bounds read. assert \valid_read(list + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:158: 
+  accessing uninitialized left-value. assert \initialized(*(list + 0) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:158: 
+  out of bounds read. assert \valid_read(*(list + 0) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:158: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(*(list + 0) + 0))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:158: 
+  out of bounds read. assert \valid_read(&(*(*(list + 0) + 0))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:158: 
+  out of bounds write. assert \valid((*(*(list + 0) + 0))->direcoes + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:159: 
+  out of bounds read. assert \valid_read(list + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:159: 
+  accessing uninitialized left-value. assert \initialized(*(list + 0) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:159: 
+  out of bounds read. assert \valid_read(*(list + 0) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:159: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(*(list + 0) + 0))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:159: 
+  out of bounds read. assert \valid_read(&(*(*(list + 0) + 0))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:159: 
+  out of bounds write. assert \valid((*(*(list + 0) + 0))->direcoes + 1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:159: 
+  accessing uninitialized left-value. assert \initialized(list + 1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:159: 
+  out of bounds read. assert \valid_read(list + 1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:159: 
+  accessing uninitialized left-value. assert \initialized(*(list + 1) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:159: 
+  out of bounds read. assert \valid_read(*(list + 1) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:160: 
+  out of bounds read. assert \valid_read(list + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:160: 
+  accessing uninitialized left-value. assert \initialized(*(list + 0) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:160: 
+  out of bounds read. assert \valid_read(*(list + 0) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:160: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(*(list + 0) + 0))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:160: 
+  out of bounds read. assert \valid_read(&(*(*(list + 0) + 0))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:160: 
+  out of bounds write. assert \valid((*(*(list + 0) + 0))->direcoes + 2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:160: 
+  accessing uninitialized left-value. assert \initialized(*(list + 0) + 1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:160: 
+  out of bounds read. assert \valid_read(*(list + 0) + 1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:161: 
+  out of bounds read. assert \valid_read(list + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:161: 
+  accessing uninitialized left-value. assert \initialized(*(list + 0) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:161: 
+  out of bounds read. assert \valid_read(*(list + 0) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:161: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(*(list + 0) + 0))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:161: 
+  out of bounds read. assert \valid_read(&(*(*(list + 0) + 0))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:161: 
+  out of bounds write. assert \valid((*(*(list + 0) + 0))->direcoes + 3);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:162: 
+  out of bounds read. assert \valid_read(list + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:162: 
+  accessing uninitialized left-value. assert \initialized(*(list + 0) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:162: 
+  out of bounds read. assert \valid_read(*(list + 0) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:162: 
+  out of bounds write. assert \valid(&(*(*(list + 0) + 0))->type);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:163: 
+  out of bounds read. assert \valid_read(list + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:163: 
+  accessing uninitialized left-value. assert \initialized(*(list + 0) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:163: 
+  out of bounds read. assert \valid_read(*(list + 0) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:163: 
+  out of bounds write. assert \valid(&(*(*(list + 0) + 0))->isChecked);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:164: 
+  out of bounds read. assert \valid_read(list + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:164: 
+  accessing uninitialized left-value. assert \initialized(*(list + 0) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:164: 
+  out of bounds read. assert \valid_read(*(list + 0) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:164: 
+  out of bounds write. assert \valid(&(*(*(list + 0) + 0))->anterior);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:166: 
+  out of bounds read. assert \valid_read(list + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:166: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + 0) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:166: 
+  out of bounds read. assert \valid_read(*(list + 0) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:166: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(*(list + 0) + auxRua))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:166: 
+  out of bounds read. assert \valid_read(&(*(*(list + 0) + auxRua))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:166: 
+  out of bounds write. assert \valid((*(*(list + 0) + auxRua))->direcoes + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:166: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + 0) + (int)(auxRua - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:166: 
+  out of bounds read. assert \valid_read(*(list + 0) + (int)(auxRua - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:167: 
+  out of bounds read. assert \valid_read(list + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:167: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + 0) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:167: 
+  out of bounds read. assert \valid_read(*(list + 0) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:167: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(*(list + 0) + auxRua))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:167: 
+  out of bounds read. assert \valid_read(&(*(*(list + 0) + auxRua))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:167: 
+  out of bounds write. assert \valid((*(*(list + 0) + auxRua))->direcoes + 1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:167: 
+  out of bounds read. assert \valid_read(list + 1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:167: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + 1) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:167: 
+  out of bounds read. assert \valid_read(*(list + 1) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:168: 
+  out of bounds read. assert \valid_read(list + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:168: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + 0) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:168: 
+  out of bounds read. assert \valid_read(*(list + 0) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:168: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(*(list + 0) + auxRua))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:168: 
+  out of bounds read. assert \valid_read(&(*(*(list + 0) + auxRua))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:168: 
+  out of bounds write. assert \valid((*(*(list + 0) + auxRua))->direcoes + 2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:169: 
+  out of bounds read. assert \valid_read(list + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:169: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + 0) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:169: 
+  out of bounds read. assert \valid_read(*(list + 0) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:169: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(*(list + 0) + auxRua))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:169: 
+  out of bounds read. assert \valid_read(&(*(*(list + 0) + auxRua))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:169: 
+  out of bounds write. assert \valid((*(*(list + 0) + auxRua))->direcoes + 3);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:170: 
+  out of bounds read. assert \valid_read(list + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:170: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + 0) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:170: 
+  out of bounds read. assert \valid_read(*(list + 0) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:170: 
+  out of bounds write. assert \valid(&(*(*(list + 0) + auxRua))->type);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:171: 
+  out of bounds read. assert \valid_read(list + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:171: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + 0) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:171: 
+  out of bounds read. assert \valid_read(*(list + 0) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:171: 
+  out of bounds write. assert \valid(&(*(*(list + 0) + auxRua))->isChecked);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:172: 
+  out of bounds read. assert \valid_read(list + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:172: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + 0) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:172: 
+  out of bounds read. assert \valid_read(*(list + 0) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:172: 
+  out of bounds write. assert \valid(&(*(*(list + 0) + auxRua))->anterior);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:174: 
+  accessing uninitialized left-value. assert \initialized(list + auxAvenida);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:174: 
+  out of bounds read. assert \valid_read(list + auxAvenida);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:174: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + auxAvenida) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:174: 
+  out of bounds read. assert \valid_read(*(list + auxAvenida) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:174: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(*(list + auxAvenida) + 0))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:174: 
+  out of bounds read.
+  assert \valid_read(&(*(*(list + auxAvenida) + 0))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:174: 
+  out of bounds write.
+  assert \valid((*(*(list + auxAvenida) + 0))->direcoes + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:175: 
+  accessing uninitialized left-value. assert \initialized(list + auxAvenida);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:175: 
+  out of bounds read. assert \valid_read(list + auxAvenida);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:175: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + auxAvenida) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:175: 
+  out of bounds read. assert \valid_read(*(list + auxAvenida) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:175: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(*(list + auxAvenida) + 0))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:175: 
+  out of bounds read.
+  assert \valid_read(&(*(*(list + auxAvenida) + 0))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:175: 
+  out of bounds write.
+  assert \valid((*(*(list + auxAvenida) + 0))->direcoes + 1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:176: 
+  accessing uninitialized left-value. assert \initialized(list + auxAvenida);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:176: 
+  out of bounds read. assert \valid_read(list + auxAvenida);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:176: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + auxAvenida) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:176: 
+  out of bounds read. assert \valid_read(*(list + auxAvenida) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:176: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(*(list + auxAvenida) + 0))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:176: 
+  out of bounds read.
+  assert \valid_read(&(*(*(list + auxAvenida) + 0))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:176: 
+  out of bounds write.
+  assert \valid((*(*(list + auxAvenida) + 0))->direcoes + 2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:176: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + auxAvenida) + 1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:176: 
+  out of bounds read. assert \valid_read(*(list + auxAvenida) + 1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:177: 
+  accessing uninitialized left-value. assert \initialized(list + auxAvenida);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:177: 
+  out of bounds read. assert \valid_read(list + auxAvenida);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:177: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + auxAvenida) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:177: 
+  out of bounds read. assert \valid_read(*(list + auxAvenida) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:177: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(*(list + auxAvenida) + 0))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:177: 
+  out of bounds read.
+  assert \valid_read(&(*(*(list + auxAvenida) + 0))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:177: 
+  out of bounds write.
+  assert \valid((*(*(list + auxAvenida) + 0))->direcoes + 3);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:177: 
+  accessing uninitialized left-value.
+  assert \initialized(list + (int)(auxAvenida - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:177: 
+  out of bounds read. assert \valid_read(list + (int)(auxAvenida - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:177: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + (int)(auxAvenida - 1)) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:177: 
+  out of bounds read. assert \valid_read(*(list + (int)(auxAvenida - 1)) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:178: 
+  accessing uninitialized left-value. assert \initialized(list + auxAvenida);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:178: 
+  out of bounds read. assert \valid_read(list + auxAvenida);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:178: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + auxAvenida) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:178: 
+  out of bounds read. assert \valid_read(*(list + auxAvenida) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:178: 
+  out of bounds write. assert \valid(&(*(*(list + auxAvenida) + 0))->type);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:179: 
+  accessing uninitialized left-value. assert \initialized(list + auxAvenida);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:179: 
+  out of bounds read. assert \valid_read(list + auxAvenida);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:179: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + auxAvenida) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:179: 
+  out of bounds read. assert \valid_read(*(list + auxAvenida) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:179: 
+  out of bounds write.
+  assert \valid(&(*(*(list + auxAvenida) + 0))->isChecked);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:180: 
+  accessing uninitialized left-value. assert \initialized(list + auxAvenida);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:180: 
+  out of bounds read. assert \valid_read(list + auxAvenida);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:180: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + auxAvenida) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:180: 
+  out of bounds read. assert \valid_read(*(list + auxAvenida) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:180: 
+  out of bounds write. assert \valid(&(*(*(list + auxAvenida) + 0))->anterior);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:182: 
+  accessing uninitialized left-value. assert \initialized(list + auxAvenida);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:182: 
+  out of bounds read. assert \valid_read(list + auxAvenida);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:182: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + auxAvenida) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:182: 
+  out of bounds read. assert \valid_read(*(list + auxAvenida) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:182: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(*(list + auxAvenida) + auxRua))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:182: 
+  out of bounds read.
+  assert \valid_read(&(*(*(list + auxAvenida) + auxRua))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:182: 
+  out of bounds write.
+  assert \valid((*(*(list + auxAvenida) + auxRua))->direcoes + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:182: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + auxAvenida) + (int)(auxRua - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:182: 
+  out of bounds read.
+  assert \valid_read(*(list + auxAvenida) + (int)(auxRua - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:183: 
+  accessing uninitialized left-value. assert \initialized(list + auxAvenida);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:183: 
+  out of bounds read. assert \valid_read(list + auxAvenida);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:183: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + auxAvenida) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:183: 
+  out of bounds read. assert \valid_read(*(list + auxAvenida) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:183: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(*(list + auxAvenida) + auxRua))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:183: 
+  out of bounds read.
+  assert \valid_read(&(*(*(list + auxAvenida) + auxRua))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:183: 
+  out of bounds write.
+  assert \valid((*(*(list + auxAvenida) + auxRua))->direcoes + 1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:184: 
+  accessing uninitialized left-value. assert \initialized(list + auxAvenida);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:184: 
+  out of bounds read. assert \valid_read(list + auxAvenida);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:184: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + auxAvenida) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:184: 
+  out of bounds read. assert \valid_read(*(list + auxAvenida) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:184: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(*(list + auxAvenida) + auxRua))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:184: 
+  out of bounds read.
+  assert \valid_read(&(*(*(list + auxAvenida) + auxRua))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:184: 
+  out of bounds write.
+  assert \valid((*(*(list + auxAvenida) + auxRua))->direcoes + 2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:185: 
+  accessing uninitialized left-value. assert \initialized(list + auxAvenida);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:185: 
+  out of bounds read. assert \valid_read(list + auxAvenida);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:185: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + auxAvenida) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:185: 
+  out of bounds read. assert \valid_read(*(list + auxAvenida) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:185: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(*(list + auxAvenida) + auxRua))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:185: 
+  out of bounds read.
+  assert \valid_read(&(*(*(list + auxAvenida) + auxRua))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:185: 
+  out of bounds write.
+  assert \valid((*(*(list + auxAvenida) + auxRua))->direcoes + 3);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:185: 
+  accessing uninitialized left-value.
+  assert \initialized(list + (int)(auxAvenida - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:185: 
+  out of bounds read. assert \valid_read(list + (int)(auxAvenida - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:185: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + (int)(auxAvenida - 1)) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:185: 
+  out of bounds read.
+  assert \valid_read(*(list + (int)(auxAvenida - 1)) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:186: 
+  accessing uninitialized left-value. assert \initialized(list + auxAvenida);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:186: 
+  out of bounds read. assert \valid_read(list + auxAvenida);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:186: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + auxAvenida) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:186: 
+  out of bounds read. assert \valid_read(*(list + auxAvenida) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:186: 
+  out of bounds write.
+  assert \valid(&(*(*(list + auxAvenida) + auxRua))->type);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:187: 
+  accessing uninitialized left-value. assert \initialized(list + auxAvenida);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:187: 
+  out of bounds read. assert \valid_read(list + auxAvenida);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:187: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + auxAvenida) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:187: 
+  out of bounds read. assert \valid_read(*(list + auxAvenida) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:187: 
+  out of bounds write.
+  assert \valid(&(*(*(list + auxAvenida) + auxRua))->isChecked);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:188: 
+  accessing uninitialized left-value. assert \initialized(list + auxAvenida);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:188: 
+  out of bounds read. assert \valid_read(list + auxAvenida);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:188: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + auxAvenida) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:188: 
+  out of bounds read. assert \valid_read(*(list + auxAvenida) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:188: 
+  out of bounds write.
+  assert \valid(&(*(*(list + auxAvenida) + auxRua))->anterior);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:192: 
+  out of bounds read. assert \valid_read(list + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:192: 
+  accessing uninitialized left-value. assert \initialized(*(list + 0) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:192: 
+  out of bounds read. assert \valid_read(*(list + 0) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:192: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(*(list + 0) + j))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:192: 
+  out of bounds read. assert \valid_read(&(*(*(list + 0) + j))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:192: 
+  out of bounds write. assert \valid((*(*(list + 0) + j))->direcoes + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:192: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + 0) + (int)(j - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:192: 
+  out of bounds read. assert \valid_read(*(list + 0) + (int)(j - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:193: 
+  out of bounds read. assert \valid_read(list + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:193: 
+  accessing uninitialized left-value. assert \initialized(*(list + 0) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:193: 
+  out of bounds read. assert \valid_read(*(list + 0) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:193: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(*(list + 0) + j))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:193: 
+  out of bounds read. assert \valid_read(&(*(*(list + 0) + j))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:193: 
+  out of bounds write. assert \valid((*(*(list + 0) + j))->direcoes + 1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:193: 
+  out of bounds read. assert \valid_read(list + 1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:193: 
+  accessing uninitialized left-value. assert \initialized(*(list + 1) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:193: 
+  out of bounds read. assert \valid_read(*(list + 1) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:194: 
+  out of bounds read. assert \valid_read(list + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:194: 
+  accessing uninitialized left-value. assert \initialized(*(list + 0) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:194: 
+  out of bounds read. assert \valid_read(*(list + 0) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:194: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(*(list + 0) + j))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:194: 
+  out of bounds read. assert \valid_read(&(*(*(list + 0) + j))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:194: 
+  out of bounds write. assert \valid((*(*(list + 0) + j))->direcoes + 2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:194: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + 0) + (int)(j + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:194: 
+  out of bounds read. assert \valid_read(*(list + 0) + (int)(j + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:195: 
+  out of bounds read. assert \valid_read(list + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:195: 
+  accessing uninitialized left-value. assert \initialized(*(list + 0) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:195: 
+  out of bounds read. assert \valid_read(*(list + 0) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:195: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(*(list + 0) + j))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:195: 
+  out of bounds read. assert \valid_read(&(*(*(list + 0) + j))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:195: 
+  out of bounds write. assert \valid((*(*(list + 0) + j))->direcoes + 3);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:196: 
+  out of bounds read. assert \valid_read(list + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:196: 
+  accessing uninitialized left-value. assert \initialized(*(list + 0) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:196: 
+  out of bounds read. assert \valid_read(*(list + 0) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:196: 
+  out of bounds write. assert \valid(&(*(*(list + 0) + j))->type);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:197: 
+  out of bounds read. assert \valid_read(list + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:197: 
+  accessing uninitialized left-value. assert \initialized(*(list + 0) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:197: 
+  out of bounds read. assert \valid_read(*(list + 0) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:197: 
+  out of bounds write. assert \valid(&(*(*(list + 0) + j))->isChecked);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:198: 
+  out of bounds read. assert \valid_read(list + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:198: 
+  accessing uninitialized left-value. assert \initialized(*(list + 0) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:198: 
+  out of bounds read. assert \valid_read(*(list + 0) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:198: 
+  out of bounds write. assert \valid(&(*(*(list + 0) + j))->anterior);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:200: 
+  accessing uninitialized left-value. assert \initialized(list + auxAvenida);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:200: 
+  out of bounds read. assert \valid_read(list + auxAvenida);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:200: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + auxAvenida) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:200: 
+  out of bounds read. assert \valid_read(*(list + auxAvenida) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:200: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(*(list + auxAvenida) + j))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:200: 
+  out of bounds read.
+  assert \valid_read(&(*(*(list + auxAvenida) + j))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:200: 
+  out of bounds write.
+  assert \valid((*(*(list + auxAvenida) + j))->direcoes + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:200: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + auxAvenida) + (int)(j - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:200: 
+  out of bounds read. assert \valid_read(*(list + auxAvenida) + (int)(j - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:201: 
+  accessing uninitialized left-value. assert \initialized(list + auxAvenida);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:201: 
+  out of bounds read. assert \valid_read(list + auxAvenida);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:201: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + auxAvenida) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:201: 
+  out of bounds read. assert \valid_read(*(list + auxAvenida) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:201: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(*(list + auxAvenida) + j))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:201: 
+  out of bounds read.
+  assert \valid_read(&(*(*(list + auxAvenida) + j))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:201: 
+  out of bounds write.
+  assert \valid((*(*(list + auxAvenida) + j))->direcoes + 1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:202: 
+  accessing uninitialized left-value. assert \initialized(list + auxAvenida);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:202: 
+  out of bounds read. assert \valid_read(list + auxAvenida);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:202: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + auxAvenida) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:202: 
+  out of bounds read. assert \valid_read(*(list + auxAvenida) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:202: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(*(list + auxAvenida) + j))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:202: 
+  out of bounds read.
+  assert \valid_read(&(*(*(list + auxAvenida) + j))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:202: 
+  out of bounds write.
+  assert \valid((*(*(list + auxAvenida) + j))->direcoes + 2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:202: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + auxAvenida) + (int)(j + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:202: 
+  out of bounds read. assert \valid_read(*(list + auxAvenida) + (int)(j + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:203: 
+  accessing uninitialized left-value. assert \initialized(list + auxAvenida);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:203: 
+  out of bounds read. assert \valid_read(list + auxAvenida);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:203: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + auxAvenida) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:203: 
+  out of bounds read. assert \valid_read(*(list + auxAvenida) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:203: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(*(list + auxAvenida) + j))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:203: 
+  out of bounds read.
+  assert \valid_read(&(*(*(list + auxAvenida) + j))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:203: 
+  out of bounds write.
+  assert \valid((*(*(list + auxAvenida) + j))->direcoes + 3);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:203: 
+  accessing uninitialized left-value.
+  assert \initialized(list + (int)(auxAvenida - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:203: 
+  out of bounds read. assert \valid_read(list + (int)(auxAvenida - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:203: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + (int)(auxAvenida - 1)) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:203: 
+  out of bounds read. assert \valid_read(*(list + (int)(auxAvenida - 1)) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:204: 
+  accessing uninitialized left-value. assert \initialized(list + auxAvenida);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:204: 
+  out of bounds read. assert \valid_read(list + auxAvenida);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:204: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + auxAvenida) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:204: 
+  out of bounds read. assert \valid_read(*(list + auxAvenida) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:204: 
+  out of bounds write. assert \valid(&(*(*(list + auxAvenida) + j))->type);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:205: 
+  accessing uninitialized left-value. assert \initialized(list + auxAvenida);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:205: 
+  out of bounds read. assert \valid_read(list + auxAvenida);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:205: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + auxAvenida) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:205: 
+  out of bounds read. assert \valid_read(*(list + auxAvenida) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:205: 
+  out of bounds write.
+  assert \valid(&(*(*(list + auxAvenida) + j))->isChecked);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:206: 
+  accessing uninitialized left-value. assert \initialized(list + auxAvenida);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:206: 
+  out of bounds read. assert \valid_read(list + auxAvenida);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:206: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + auxAvenida) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:206: 
+  out of bounds read. assert \valid_read(*(list + auxAvenida) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:206: 
+  out of bounds write. assert \valid(&(*(*(list + auxAvenida) + j))->anterior);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:191: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:209: 
+  out of bounds read. assert \valid_read(list + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:209: 
+  accessing uninitialized left-value. assert \initialized(*(list + i) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:209: 
+  out of bounds read. assert \valid_read(*(list + i) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:209: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(*(list + i) + 0))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:209: 
+  out of bounds read. assert \valid_read(&(*(*(list + i) + 0))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:209: 
+  out of bounds write. assert \valid((*(*(list + i) + 0))->direcoes + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:210: 
+  out of bounds read. assert \valid_read(list + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:210: 
+  accessing uninitialized left-value. assert \initialized(*(list + i) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:210: 
+  out of bounds read. assert \valid_read(*(list + i) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:210: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(*(list + i) + 0))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:210: 
+  out of bounds read. assert \valid_read(&(*(*(list + i) + 0))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:210: 
+  out of bounds write. assert \valid((*(*(list + i) + 0))->direcoes + 1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:210: 
+  accessing uninitialized left-value. assert \initialized(list + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:210: 
+  out of bounds read. assert \valid_read(list + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:210: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + (int)(i + 1)) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:210: 
+  out of bounds read. assert \valid_read(*(list + (int)(i + 1)) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:211: 
+  out of bounds read. assert \valid_read(list + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:211: 
+  accessing uninitialized left-value. assert \initialized(*(list + i) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:211: 
+  out of bounds read. assert \valid_read(*(list + i) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:211: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(*(list + i) + 0))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:211: 
+  out of bounds read. assert \valid_read(&(*(*(list + i) + 0))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:211: 
+  out of bounds write. assert \valid((*(*(list + i) + 0))->direcoes + 2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:211: 
+  accessing uninitialized left-value. assert \initialized(*(list + i) + 1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:211: 
+  out of bounds read. assert \valid_read(*(list + i) + 1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:212: 
+  out of bounds read. assert \valid_read(list + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:212: 
+  accessing uninitialized left-value. assert \initialized(*(list + i) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:212: 
+  out of bounds read. assert \valid_read(*(list + i) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:212: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(*(list + i) + 0))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:212: 
+  out of bounds read. assert \valid_read(&(*(*(list + i) + 0))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:212: 
+  out of bounds write. assert \valid((*(*(list + i) + 0))->direcoes + 3);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:212: 
+  out of bounds read. assert \valid_read(list + (int)(i - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:212: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + (int)(i - 1)) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:212: 
+  out of bounds read. assert \valid_read(*(list + (int)(i - 1)) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:213: 
+  out of bounds read. assert \valid_read(list + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:213: 
+  accessing uninitialized left-value. assert \initialized(*(list + i) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:213: 
+  out of bounds read. assert \valid_read(*(list + i) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:213: 
+  out of bounds write. assert \valid(&(*(*(list + i) + 0))->type);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:214: 
+  out of bounds read. assert \valid_read(list + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:214: 
+  accessing uninitialized left-value. assert \initialized(*(list + i) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:214: 
+  out of bounds read. assert \valid_read(*(list + i) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:214: 
+  out of bounds write. assert \valid(&(*(*(list + i) + 0))->isChecked);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:215: 
+  out of bounds read. assert \valid_read(list + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:215: 
+  accessing uninitialized left-value. assert \initialized(*(list + i) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:215: 
+  out of bounds read. assert \valid_read(*(list + i) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:215: 
+  out of bounds write. assert \valid(&(*(*(list + i) + 0))->anterior);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:217: 
+  out of bounds read. assert \valid_read(list + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:217: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + i) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:217: 
+  out of bounds read. assert \valid_read(*(list + i) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:217: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(*(list + i) + auxRua))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:217: 
+  out of bounds read. assert \valid_read(&(*(*(list + i) + auxRua))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:217: 
+  out of bounds write. assert \valid((*(*(list + i) + auxRua))->direcoes + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:217: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + i) + (int)(auxRua - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:217: 
+  out of bounds read. assert \valid_read(*(list + i) + (int)(auxRua - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:218: 
+  out of bounds read. assert \valid_read(list + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:218: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + i) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:218: 
+  out of bounds read. assert \valid_read(*(list + i) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:218: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(*(list + i) + auxRua))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:218: 
+  out of bounds read. assert \valid_read(&(*(*(list + i) + auxRua))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:218: 
+  out of bounds write. assert \valid((*(*(list + i) + auxRua))->direcoes + 1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:218: 
+  out of bounds read. assert \valid_read(list + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:218: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + (int)(i + 1)) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:218: 
+  out of bounds read. assert \valid_read(*(list + (int)(i + 1)) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:219: 
+  out of bounds read. assert \valid_read(list + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:219: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + i) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:219: 
+  out of bounds read. assert \valid_read(*(list + i) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:219: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(*(list + i) + auxRua))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:219: 
+  out of bounds read. assert \valid_read(&(*(*(list + i) + auxRua))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:219: 
+  out of bounds write. assert \valid((*(*(list + i) + auxRua))->direcoes + 2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:220: 
+  out of bounds read. assert \valid_read(list + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:220: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + i) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:220: 
+  out of bounds read. assert \valid_read(*(list + i) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:220: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(*(list + i) + auxRua))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:220: 
+  out of bounds read. assert \valid_read(&(*(*(list + i) + auxRua))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:220: 
+  out of bounds write. assert \valid((*(*(list + i) + auxRua))->direcoes + 3);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:220: 
+  out of bounds read. assert \valid_read(list + (int)(i - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:220: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + (int)(i - 1)) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:220: 
+  out of bounds read. assert \valid_read(*(list + (int)(i - 1)) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:221: 
+  out of bounds read. assert \valid_read(list + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:221: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + i) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:221: 
+  out of bounds read. assert \valid_read(*(list + i) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:221: 
+  out of bounds write. assert \valid(&(*(*(list + i) + auxRua))->type);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:222: 
+  out of bounds read. assert \valid_read(list + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:222: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + i) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:222: 
+  out of bounds read. assert \valid_read(*(list + i) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:222: 
+  out of bounds write. assert \valid(&(*(*(list + i) + auxRua))->isChecked);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:223: 
+  out of bounds read. assert \valid_read(list + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:223: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + i) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:223: 
+  out of bounds read. assert \valid_read(*(list + i) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:223: 
+  out of bounds write. assert \valid(&(*(*(list + i) + auxRua))->anterior);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:208: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:209: 
+  accessing uninitialized left-value. assert \initialized(list + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:210: 
+  accessing uninitialized left-value. assert \initialized(list + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:211: 
+  accessing uninitialized left-value. assert \initialized(list + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:212: 
+  accessing uninitialized left-value. assert \initialized(list + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:213: 
+  accessing uninitialized left-value. assert \initialized(list + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:214: 
+  accessing uninitialized left-value. assert \initialized(list + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:215: 
+  accessing uninitialized left-value. assert \initialized(list + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:217: 
+  accessing uninitialized left-value. assert \initialized(list + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:218: 
+  accessing uninitialized left-value. assert \initialized(list + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:218: 
+  accessing uninitialized left-value. assert \initialized(list + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:219: 
+  accessing uninitialized left-value. assert \initialized(list + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:220: 
+  accessing uninitialized left-value. assert \initialized(list + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:221: 
+  accessing uninitialized left-value. assert \initialized(list + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:222: 
+  accessing uninitialized left-value. assert \initialized(list + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:223: 
+  accessing uninitialized left-value. assert \initialized(list + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:212: 
+  accessing uninitialized left-value. assert \initialized(list + (int)(i - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:220: 
+  accessing uninitialized left-value. assert \initialized(list + (int)(i - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:228: 
+  out of bounds read. assert \valid_read(list + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:228: 
+  accessing uninitialized left-value. assert \initialized(*(list + i) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:228: 
+  out of bounds read. assert \valid_read(*(list + i) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:228: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(*(list + i) + j))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:228: 
+  out of bounds read. assert \valid_read(&(*(*(list + i) + j))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:228: 
+  out of bounds write. assert \valid((*(*(list + i) + j))->direcoes + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:228: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + i) + (int)(j - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:228: 
+  out of bounds read. assert \valid_read(*(list + i) + (int)(j - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:229: 
+  out of bounds read. assert \valid_read(list + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:229: 
+  accessing uninitialized left-value. assert \initialized(*(list + i) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:229: 
+  out of bounds read. assert \valid_read(*(list + i) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:229: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(*(list + i) + j))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:229: 
+  out of bounds read. assert \valid_read(&(*(*(list + i) + j))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:229: 
+  out of bounds write. assert \valid((*(*(list + i) + j))->direcoes + 1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:229: 
+  accessing uninitialized left-value. assert \initialized(list + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:229: 
+  out of bounds read. assert \valid_read(list + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:229: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + (int)(i + 1)) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:229: 
+  out of bounds read. assert \valid_read(*(list + (int)(i + 1)) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:230: 
+  out of bounds read. assert \valid_read(list + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:230: 
+  accessing uninitialized left-value. assert \initialized(*(list + i) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:230: 
+  out of bounds read. assert \valid_read(*(list + i) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:230: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(*(list + i) + j))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:230: 
+  out of bounds read. assert \valid_read(&(*(*(list + i) + j))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:230: 
+  out of bounds write. assert \valid((*(*(list + i) + j))->direcoes + 2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:230: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + i) + (int)(j + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:230: 
+  out of bounds read. assert \valid_read(*(list + i) + (int)(j + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:231: 
+  out of bounds read. assert \valid_read(list + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:231: 
+  accessing uninitialized left-value. assert \initialized(*(list + i) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:231: 
+  out of bounds read. assert \valid_read(*(list + i) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:231: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(*(list + i) + j))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:231: 
+  out of bounds read. assert \valid_read(&(*(*(list + i) + j))->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:231: 
+  out of bounds write. assert \valid((*(*(list + i) + j))->direcoes + 3);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:231: 
+  out of bounds read. assert \valid_read(list + (int)(i - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:231: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + (int)(i - 1)) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:231: 
+  out of bounds read. assert \valid_read(*(list + (int)(i - 1)) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:232: 
+  out of bounds read. assert \valid_read(list + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:232: 
+  accessing uninitialized left-value. assert \initialized(*(list + i) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:232: 
+  out of bounds read. assert \valid_read(*(list + i) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:232: 
+  out of bounds write. assert \valid(&(*(*(list + i) + j))->type);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:233: 
+  out of bounds read. assert \valid_read(list + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:233: 
+  accessing uninitialized left-value. assert \initialized(*(list + i) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:233: 
+  out of bounds read. assert \valid_read(*(list + i) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:233: 
+  out of bounds write. assert \valid(&(*(*(list + i) + j))->isChecked);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:234: 
+  out of bounds read. assert \valid_read(list + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:234: 
+  accessing uninitialized left-value. assert \initialized(*(list + i) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:234: 
+  out of bounds read. assert \valid_read(*(list + i) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:234: 
+  out of bounds write. assert \valid(&(*(*(list + i) + j))->anterior);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:227: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:226: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:228: 
+  accessing uninitialized left-value. assert \initialized(list + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:229: 
+  accessing uninitialized left-value. assert \initialized(list + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:230: 
+  accessing uninitialized left-value. assert \initialized(list + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:231: 
+  accessing uninitialized left-value. assert \initialized(list + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:232: 
+  accessing uninitialized left-value. assert \initialized(list + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:233: 
+  accessing uninitialized left-value. assert \initialized(list + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:234: 
+  accessing uninitialized left-value. assert \initialized(list + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:231: 
+  accessing uninitialized left-value. assert \initialized(list + (int)(i - 1));
+[eva] using specification for function scanf_va_2
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_4
+[eva] using specification for function scanf_va_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:243: 
+  signed overflow. assert -2147483648 ≤ auxRua - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:244: 
+  signed overflow. assert -2147483648 ≤ auxAvenida - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:245: 
+  accessing uninitialized left-value. assert \initialized(list + auxAvenida);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:245: 
+  out of bounds read. assert \valid_read(list + auxAvenida);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:245: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + auxAvenida) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:245: 
+  out of bounds read. assert \valid_read(*(list + auxAvenida) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:245: 
+  out of bounds write.
+  assert \valid(&(*(*(list + auxAvenida) + auxRua))->type);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:246: 
+  out of bounds write. assert \valid(supermercadosList + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:246: 
+  accessing uninitialized left-value. assert \initialized(list + auxAvenida);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:246: 
+  out of bounds read. assert \valid_read(list + auxAvenida);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:246: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + auxAvenida) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:246: 
+  out of bounds read. assert \valid_read(*(list + auxAvenida) + auxRua);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:241: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_5
+[eva] using specification for function scanf_va_4
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:252: 
+  signed overflow. assert -2147483648 ≤ auxRua - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:253: 
+  signed overflow. assert -2147483648 ≤ auxAvenida - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:254: 
+  accessing uninitialized left-value. assert \initialized(list + auxAvenida);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:254: 
+  out of bounds read. assert \valid_read(list + auxAvenida);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:254: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + auxAvenida) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:254: 
+  out of bounds read. assert \valid_read(*(list + auxAvenida) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:254: 
+  out of bounds write.
+  assert \valid(&(*(*(list + auxAvenida) + auxRua))->type);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:255: 
+  out of bounds write. assert \valid(casasList + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:255: 
+  accessing uninitialized left-value. assert \initialized(list + auxAvenida);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:255: 
+  out of bounds read. assert \valid_read(list + auxAvenida);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:255: 
+  accessing uninitialized left-value.
+  assert \initialized(*(list + auxAvenida) + auxRua);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:255: 
+  out of bounds read. assert \valid_read(*(list + auxAvenida) + auxRua);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:250: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:97: 
+  accessing uninitialized left-value.
+  assert \initialized(supermercadosList + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:97: 
+  out of bounds read. assert \valid_read(supermercadosList + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:38: 
+  out of bounds write. assert \valid(queue + tmp);
+                       (tmp from numeroElementos++)
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:39: 
+  out of bounds write. assert \valid(&arg->isChecked);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:41: 
+  out of bounds read. assert \valid_read(queue + tmp_0);
+                      (tmp_0 from posicao++)
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:43: 
+  accessing uninitialized left-value. assert \initialized(&aux->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:43: 
+  out of bounds read. assert \valid_read(&aux->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:43: 
+  accessing uninitialized left-value. assert \initialized(aux->direcoes + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:43: 
+  out of bounds read. assert \valid_read(aux->direcoes + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:43: 
+  accessing uninitialized left-value. assert \initialized(&aux->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:43: 
+  accessing uninitialized left-value. assert \initialized(&arg->type);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:43: 
+  accessing uninitialized left-value. assert \initialized(aux->direcoes + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:43: 
+  out of bounds read. assert \valid_read(aux->direcoes + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:43: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(aux->direcoes + i))->type);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:43: 
+  out of bounds read. assert \valid_read(&(*(aux->direcoes + i))->type);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:43: 
+  accessing uninitialized left-value. assert \initialized(&aux->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:43: 
+  accessing uninitialized left-value. assert \initialized(aux->direcoes + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:43: 
+  out of bounds read. assert \valid_read(aux->direcoes + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:43: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(aux->direcoes + i))->isChecked);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:43: 
+  out of bounds read. assert \valid_read(&(*(aux->direcoes + i))->isChecked);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:44: 
+  accessing uninitialized left-value. assert \initialized(&aux->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:44: 
+  accessing uninitialized left-value. assert \initialized(aux->direcoes + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:44: 
+  out of bounds read. assert \valid_read(aux->direcoes + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:44: 
+  out of bounds write. assert \valid(&(*(aux->direcoes + i))->isChecked);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:45: 
+  accessing uninitialized left-value. assert \initialized(&aux->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:45: 
+  accessing uninitialized left-value. assert \initialized(aux->direcoes + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:45: 
+  out of bounds read. assert \valid_read(aux->direcoes + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:45: 
+  out of bounds write. assert \valid(&(*(aux->direcoes + i))->anterior);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:46: 
+  out of bounds write.
+  assert \valid(queue + tmp_1);
+  (tmp_1 from numeroElementos++)
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:46: 
+  accessing uninitialized left-value. assert \initialized(&aux->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:46: 
+  accessing uninitialized left-value. assert \initialized(aux->direcoes + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:46: 
+  out of bounds read. assert \valid_read(aux->direcoes + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:47: 
+  accessing uninitialized left-value. assert \initialized(&aux->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:47: 
+  accessing uninitialized left-value. assert \initialized(aux->direcoes + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:47: 
+  out of bounds read. assert \valid_read(aux->direcoes + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:47: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(aux->direcoes + i))->type);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:47: 
+  out of bounds read. assert \valid_read(&(*(aux->direcoes + i))->type);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:42: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:46: 
+  signed overflow. assert numeroElementos + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:40: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:41: 
+  accessing uninitialized left-value.
+  assert \initialized(queue + tmp_0);
+  (tmp_0 from posicao++)
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:48: 
+  accessing uninitialized left-value. assert \initialized(&aux->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:48: 
+  accessing uninitialized left-value. assert \initialized(aux->direcoes + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:48: 
+  out of bounds read. assert \valid_read(aux->direcoes + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:24: 
+  out of bounds write. assert \valid(&arg->isChecked);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:25: 
+  accessing uninitialized left-value. assert \initialized(&arg->anterior);
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:26: 
+  detected recursive call of function atualizaCheck.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:26: 
+  accessing uninitialized left-value. assert \initialized(&arg->anterior);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:26: User Error: 
+  Recursive call to atualizaCheck without assigns clause.
+  Generating probably incomplete assigns to interpret the call. Try to increase
+  the -eva-unroll-recursive-calls parameter or write a correct specification
+  for function atualizaCheck.
+[kernel:annot:missing-spec] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:23: 
+  Neither code nor specification for function atualizaCheck, generating default assigns from the prototype
+[eva] using specification for function atualizaCheck
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:50: 
+  out of bounds read. assert \valid_read(queue + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:50: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(queue + i))->isChecked);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:50: 
+  out of bounds read. assert \valid_read(&(*(queue + i))->isChecked);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:51: 
+  out of bounds read. assert \valid_read(queue + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:49: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:50: 
+  accessing uninitialized left-value. assert \initialized(queue + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:51: 
+  accessing uninitialized left-value. assert \initialized(queue + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:51: 
+  out of bounds write. assert \valid(&(*(queue + i))->isChecked);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:96: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:43: 
+  pointer comparison.
+  assert \pointer_comparable((void *)0, (void *)*(aux->direcoes + i));
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:46: 
+  Assigning imprecise value to *(queue + tmp_1)
+  (pointing to __malloc_can_fail_malloc_l11_1 with offsets {64}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:46: 
+  Assigning imprecise value to *(queue + tmp_1)
+  (pointing to __malloc_can_fail_malloc_l11_1 with offsets {64; 128}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:46: 
+  Assigning imprecise value to *(queue + tmp_1)
+  (pointing to __malloc_can_fail_malloc_l11_1 with offsets {64; 128; 192}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:46: 
+  Assigning imprecise value to *(queue + tmp_1)
+  (pointing to __malloc_can_fail_malloc_l11_1 with offsets {64; 128; 192; 256}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:46: 
+  Assigning imprecise value to *(queue + tmp_1)
+  (pointing to __malloc_can_fail_malloc_l11_1 with offsets {64; 128; 192; 256;
+                                                            320}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:46: 
+  Assigning imprecise value to *(queue + tmp_1)
+  (pointing to __malloc_can_fail_malloc_l11_1 with offsets [64..137438953408],0%64).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:41: 
+  Assigning imprecise value to aux.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:25: 
+  out of bounds read. assert \valid_read(&arg->anterior);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:25: 
+  pointer comparison.
+  assert \pointer_comparable((void *)0, (void *)arg->anterior);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:26: 
+  Using specification of function atualizaCheck for recursive calls.
+  Analysis of function atualizaCheck is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:97: 
+  signed overflow.
+  assert resultado + tmp ≤ 2147483647;
+  (tmp from bfs(*(supermercadosList + i), 1))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:103: 
+  accessing uninitialized left-value.
+  assert \initialized(supermercadosList + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:103: 
+  out of bounds read. assert \valid_read(supermercadosList + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:103: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(supermercadosList + i))->isChecked);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:103: 
+  out of bounds read.
+  assert \valid_read(&(*(supermercadosList + i))->isChecked);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:104: 
+  out of bounds read. assert \valid_read(supermercadosList + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:64: 
+  out of bounds write. assert \valid(queue + tmp);
+                       (tmp from numeroElementos++)
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:67: 
+  out of bounds read. assert \valid_read(queue + tmp_0);
+                      (tmp_0 from posicao++)
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:69: 
+  accessing uninitialized left-value. assert \initialized(&aux->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:69: 
+  accessing uninitialized left-value. assert \initialized(aux->direcoes + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:69: 
+  out of bounds read. assert \valid_read(aux->direcoes + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:69: 
+  pointer comparison.
+  assert \pointer_comparable((void *)0, (void *)*(aux->direcoes + i));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:70: 
+  accessing uninitialized left-value. assert \initialized(&aux->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:70: 
+  accessing uninitialized left-value. assert \initialized(aux->direcoes + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:70: 
+  out of bounds read. assert \valid_read(aux->direcoes + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:70: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(aux->direcoes + i))->type);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:70: 
+  out of bounds read. assert \valid_read(&(*(aux->direcoes + i))->type);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:70: 
+  accessing uninitialized left-value. assert \initialized(&aux->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:70: 
+  accessing uninitialized left-value. assert \initialized(&arg->type);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:70: 
+  accessing uninitialized left-value. assert \initialized(aux->direcoes + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:70: 
+  out of bounds read. assert \valid_read(aux->direcoes + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:70: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(aux->direcoes + i))->type);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:70: 
+  out of bounds read. assert \valid_read(&(*(aux->direcoes + i))->type);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:70: 
+  accessing uninitialized left-value. assert \initialized(&aux->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:70: 
+  accessing uninitialized left-value. assert \initialized(aux->direcoes + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:70: 
+  out of bounds read. assert \valid_read(aux->direcoes + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:70: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(aux->direcoes + i))->isChecked);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:70: 
+  out of bounds read. assert \valid_read(&(*(aux->direcoes + i))->isChecked);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:71: 
+  accessing uninitialized left-value. assert \initialized(&aux->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:71: 
+  accessing uninitialized left-value. assert \initialized(aux->direcoes + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:71: 
+  out of bounds read. assert \valid_read(aux->direcoes + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:71: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(aux->direcoes + i))->type);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:71: 
+  out of bounds read. assert \valid_read(&(*(aux->direcoes + i))->type);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:72: 
+  accessing uninitialized left-value. assert \initialized(&aux->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:72: 
+  accessing uninitialized left-value. assert \initialized(aux->direcoes + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:72: 
+  out of bounds read. assert \valid_read(aux->direcoes + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:72: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(aux->direcoes + i))->anterior);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:72: 
+  out of bounds read. assert \valid_read(&(*(aux->direcoes + i))->anterior);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:30: 
+  out of bounds write. assert \valid(&arg->isChecked);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:31: 
+  accessing uninitialized left-value. assert \initialized(&arg->anterior);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:31: 
+  out of bounds read. assert \valid_read(&arg->anterior);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:31: 
+  pointer comparison.
+  assert \pointer_comparable((void *)0, (void *)arg->anterior);
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:32: 
+  detected recursive call of function clearPath.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:32: 
+  accessing uninitialized left-value. assert \initialized(&arg->anterior);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:32: User Error: 
+  Recursive call to clearPath without assigns clause.
+  Generating probably incomplete assigns to interpret the call. Try to increase
+  the -eva-unroll-recursive-calls parameter or write a correct specification
+  for function clearPath.
+[kernel:annot:missing-spec] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:29: 
+  Neither code nor specification for function clearPath, generating default assigns from the prototype
+[eva] using specification for function clearPath
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:73: 
+  accessing uninitialized left-value. assert \initialized(&aux->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:73: 
+  accessing uninitialized left-value. assert \initialized(aux->direcoes + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:73: 
+  out of bounds read. assert \valid_read(aux->direcoes + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:73: 
+  out of bounds write. assert \valid(&(*(aux->direcoes + i))->isChecked);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:74: 
+  accessing uninitialized left-value. assert \initialized(&aux->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:74: 
+  accessing uninitialized left-value. assert \initialized(aux->direcoes + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:74: 
+  out of bounds read. assert \valid_read(aux->direcoes + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:74: 
+  out of bounds write. assert \valid(&(*(aux->direcoes + i))->anterior);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:75: 
+  out of bounds write.
+  assert \valid(queue + tmp_1);
+  (tmp_1 from numeroElementos++)
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:75: 
+  accessing uninitialized left-value. assert \initialized(&aux->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:75: 
+  accessing uninitialized left-value. assert \initialized(aux->direcoes + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:75: 
+  out of bounds read. assert \valid_read(aux->direcoes + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:75: 
+  Assigning imprecise value to *(queue + tmp_1)
+  (pointing to __malloc_can_fail_malloc_l11_1 with offsets {64}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:76: 
+  accessing uninitialized left-value. assert \initialized(&aux->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:76: 
+  accessing uninitialized left-value. assert \initialized(aux->direcoes + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:76: 
+  out of bounds read. assert \valid_read(aux->direcoes + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:78: 
+  out of bounds read. assert \valid_read(queue + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:78: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(queue + i))->isChecked);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:79: 
+  out of bounds read. assert \valid_read(queue + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:77: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:78: 
+  out of bounds read. assert \valid_read(&(*(queue + i))->isChecked);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:79: 
+  out of bounds write. assert \valid(&(*(queue + i))->isChecked);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:83: 
+  accessing uninitialized left-value. assert \initialized(&aux->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:83: 
+  accessing uninitialized left-value. assert \initialized(aux->direcoes + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:83: 
+  out of bounds read. assert \valid_read(aux->direcoes + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:83: 
+  out of bounds write. assert \valid(&(*(aux->direcoes + i))->isChecked);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:84: 
+  accessing uninitialized left-value. assert \initialized(&aux->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:84: 
+  accessing uninitialized left-value. assert \initialized(aux->direcoes + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:84: 
+  out of bounds read. assert \valid_read(aux->direcoes + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:84: 
+  out of bounds write. assert \valid(&(*(aux->direcoes + i))->anterior);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:85: 
+  out of bounds write.
+  assert \valid(queue + tmp_2);
+  (tmp_2 from numeroElementos++)
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:85: 
+  accessing uninitialized left-value. assert \initialized(&aux->direcoes);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:85: 
+  accessing uninitialized left-value. assert \initialized(aux->direcoes + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:85: 
+  out of bounds read. assert \valid_read(aux->direcoes + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:85: 
+  Assigning imprecise value to *(queue + tmp_2)
+  (pointing to __malloc_can_fail_malloc_l11_1 with offsets {64}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:68: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:75: 
+  Assigning imprecise value to *(queue + tmp_1)
+  (pointing to __malloc_can_fail_malloc_l11_1 with offsets {64; 128}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:78: 
+  accessing uninitialized left-value. assert \initialized(queue + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:79: 
+  accessing uninitialized left-value. assert \initialized(queue + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:85: 
+  Assigning imprecise value to *(queue + tmp_2)
+  (pointing to __malloc_can_fail_malloc_l11_1 with offsets {64; 128}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:75: 
+  Assigning imprecise value to *(queue + tmp_1)
+  (pointing to __malloc_can_fail_malloc_l11_1 with offsets {64; 128; 192}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:85: 
+  Assigning imprecise value to *(queue + tmp_2)
+  (pointing to __malloc_can_fail_malloc_l11_1 with offsets {64; 128; 192}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:75: 
+  Assigning imprecise value to *(queue + tmp_1)
+  (pointing to __malloc_can_fail_malloc_l11_1 with offsets {64; 128; 192; 256}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:85: 
+  Assigning imprecise value to *(queue + tmp_2)
+  (pointing to __malloc_can_fail_malloc_l11_1 with offsets {64; 128; 192; 256}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:68: 
+  signed overflow. assert i + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:75: 
+  Assigning imprecise value to *(queue + tmp_1)
+  (pointing to __malloc_can_fail_malloc_l11_1 with offsets {64; 128; 192; 256;
+                                                            320}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:85: 
+  Assigning imprecise value to *(queue + tmp_2)
+  (pointing to __malloc_can_fail_malloc_l11_1 with offsets {64; 128; 192; 256;
+                                                            320}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:75: 
+  signed overflow. assert numeroElementos + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:75: 
+  Assigning imprecise value to *(queue + tmp_1)
+  (pointing to __malloc_can_fail_malloc_l11_1 with offsets [64..137438953408],0%64).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:85: 
+  signed overflow. assert numeroElementos + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:85: 
+  Assigning imprecise value to *(queue + tmp_2)
+  (pointing to __malloc_can_fail_malloc_l11_1 with offsets [64..137438953408],0%64).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:66: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:67: 
+  accessing uninitialized left-value.
+  assert \initialized(queue + tmp_0);
+  (tmp_0 from posicao++)
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:67: 
+  Assigning imprecise value to aux.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:69: 
+  out of bounds read. assert \valid_read(&aux->direcoes);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:102: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:104: 
+  accessing uninitialized left-value.
+  assert \initialized(supermercadosList + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:65: 
+  out of bounds write. assert \valid(&arg->isChecked);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:107: 
+  accessing uninitialized left-value. assert \initialized(casasList + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:107: 
+  out of bounds read. assert \valid_read(casasList + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:107: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(casasList + i))->isChecked);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:107: 
+  out of bounds read. assert \valid_read(&(*(casasList + i))->isChecked);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:108: 
+  out of bounds read. assert \valid_read(casasList + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:108: 
+  signed overflow.
+  assert auxResultado + tmp_0 ≤ 2147483647;
+  (tmp_0 from bfs(*(casasList + i), 2))
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:106: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:108: 
+  accessing uninitialized left-value. assert \initialized(casasList + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:115: 
+  accessing uninitialized left-value. assert \initialized(casasList + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:115: 
+  out of bounds read. assert \valid_read(casasList + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:114: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:115: 
+  signed overflow.
+  assert resultado + tmp_1 ≤ 2147483647;
+  (tmp_1 from bfs(*(casasList + i), 2))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:121: 
+  accessing uninitialized left-value. assert \initialized(casasList + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:121: 
+  out of bounds read. assert \valid_read(casasList + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:121: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(casasList + i))->isChecked);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:121: 
+  out of bounds read. assert \valid_read(&(*(casasList + i))->isChecked);
+[eva] using specification for function printf_va_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:123: 
+  out of bounds read. assert \valid_read(casasList + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:120: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:123: 
+  accessing uninitialized left-value. assert \initialized(casasList + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:127: 
+  accessing uninitialized left-value.
+  assert \initialized(supermercadosList + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:127: 
+  out of bounds read. assert \valid_read(supermercadosList + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:127: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(supermercadosList + i))->isChecked);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:127: 
+  out of bounds read.
+  assert \valid_read(&(*(supermercadosList + i))->isChecked);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:128: 
+  out of bounds read. assert \valid_read(supermercadosList + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:128: 
+  signed overflow.
+  assert auxResultado + tmp_2 ≤ 2147483647;
+  (tmp_2 from bfs(*(supermercadosList + i), 1))
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:126: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/tp050/main.c:128: 
+  accessing uninitialized left-value.
+  assert \initialized(supermercadosList + i);
+[eva] using specification for function printf_va_2
+[eva] done for function main
+[scope:rm_asserts] removing 334 assertion(s)
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function can_fail_malloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈
+          {{ NULL ; (void *)&__malloc_can_fail_malloc_l11 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_0 ;
+             (void *)&__malloc_can_fail_malloc_l11_1 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_2 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_3 ;
+             (void *)&__malloc_can_fail_malloc_l11_4 ;
+             (void *)&__malloc_can_fail_malloc_l11_5 }}
+[eva:final-states] Values at end of function atualizaCheck:
+  __malloc_w_can_fail_malloc_l11_2[0..23] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2;
+                                                      __malloc_w_can_fail_malloc_l11_3}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_3[0..31] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2;
+                                                      __malloc_w_can_fail_malloc_l11_3}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+[eva:final-states] Values at end of function bfs:
+  i ∈ [2..2147483647] or UNINITIALIZED
+  numeroElementos ∈ [1..2147483647]
+  posicao ∈ [1..2147483647]
+  aux ∈
+     {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2;
+                         __malloc_w_can_fail_malloc_l11_3}
+      (origin: Misaligned) }} or UNINITIALIZED
+  __retres ∈ {0; 1}
+  __malloc_can_fail_malloc_l11_1[bits 0 to 63] ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_2 }}
+                                [8..17179869183] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2;
+                                                    __malloc_w_can_fail_malloc_l11_3}
+                                 (origin: Misaligned) }} or UNINITIALIZED
+                                [17179869184..18446744073709551607] ∈
+                                UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_2[0..23] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2;
+                                                      __malloc_w_can_fail_malloc_l11_3}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_3[0..31] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2;
+                                                      __malloc_w_can_fail_malloc_l11_3}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+[eva:final-states] Values at end of function clearPath:
+  __malloc_w_can_fail_malloc_l11_2[0..23] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2;
+                                                      __malloc_w_can_fail_malloc_l11_3}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_3[0..31] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2;
+                                                      __malloc_w_can_fail_malloc_l11_3}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+[eva:final-states] Values at end of function overridebfs:
+  i ∈ [4..2147483647] or UNINITIALIZED
+  numeroElementos ∈ [1..2147483647]
+  posicao ∈ [1..2147483647]
+  aux ∈
+     {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2;
+                         __malloc_w_can_fail_malloc_l11_3}
+      (origin: Misaligned) }} or UNINITIALIZED
+  __malloc_can_fail_malloc_l11_1[bits 0 to 63] ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_2 }}
+                                [8..17179869183] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2;
+                                                    __malloc_w_can_fail_malloc_l11_3}
+                                 (origin: Misaligned) }} or UNINITIALIZED
+                                [17179869184..18446744073709551607] ∈
+                                UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_2[0..23] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2;
+                                                      __malloc_w_can_fail_malloc_l11_3}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_3[0..31] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2;
+                                                      __malloc_w_can_fail_malloc_l11_3}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+[eva:final-states] Values at end of function resolve:
+  i ∈ [0..2147483647]
+  resultado ∈ [0..2147483647]
+  auxResultado ∈ [0..2147483647]
+  S___fc_stdout[0..1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11_1[bits 0 to 63] ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED
+                                [8..17179869183] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2;
+                                                    __malloc_w_can_fail_malloc_l11_3}
+                                 (origin: Misaligned) }} or UNINITIALIZED
+                                [17179869184..18446744073709551607] ∈
+                                UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_2[0..23] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2;
+                                                      __malloc_w_can_fail_malloc_l11_3}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_3[0..31] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2;
+                                                      __malloc_w_can_fail_malloc_l11_3}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+[eva:final-states] Values at end of function main:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  list ∈ {{ (node ***)&__malloc_can_fail_malloc_l11 }}
+  supermercadosList ∈ {{ NULL ; (node **)&__malloc_can_fail_malloc_l11_4 }}
+  casasList ∈ {{ NULL ; (node **)&__malloc_can_fail_malloc_l11_5 }}
+  supermercados ∈ [--..--]
+  casas ∈ [--..--]
+  queue ∈ {{ NULL ; (node **)&__malloc_can_fail_malloc_l11_1 }}
+  avenidas ∈ [-2147483647..2147483647]
+  ruas ∈ [-2147483647..2147483647]
+  i ∈ [0..2147483647]
+  j ∈ [1..2147483647]
+  auxAvenida ∈ [0..2147483646]
+  auxRua ∈ [0..2147483646]
+  __retres ∈ {0}
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11[bits 0 to 127]# ∈
+                              {{ (? *)&__malloc_w_can_fail_malloc_l11_0 }} repeated %64 
+                              [bits 128 to 137438953407]# ∈
+                              {{ NULL ;
+                                 (? *)&__malloc_w_can_fail_malloc_l11_0 }} or UNINITIALIZED repeated %64 
+                              [17179869176..18446744073709551607] ∈
+                              UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_0[bits 0 to 137438953407]# ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED repeated %64 
+                                  [17179869176..18446744073709551607] ∈
+                                  UNINITIALIZED
+  __malloc_can_fail_malloc_l11_1[bits 0 to 63] ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED
+                                [8..17179869183] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2;
+                                                    __malloc_w_can_fail_malloc_l11_3}
+                                 (origin: Misaligned) }} or UNINITIALIZED
+                                [17179869184..18446744073709551607] ∈
+                                UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_2[0..23] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2;
+                                                      __malloc_w_can_fail_malloc_l11_3}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_3[0..31] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2;
+                                                      __malloc_w_can_fail_malloc_l11_3}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+  __malloc_can_fail_malloc_l11_4[bits 0 to 137438953407]# ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED repeated %64 
+                                [17179869176..18446744073709551607] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11_5[bits 0 to 137438953407]# ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED repeated %64 
+                                [17179869176..18446744073709551607] ∈
+                                UNINITIALIZED
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  7 functions analyzed (out of 9): 77% coverage.
+  In these functions, 327 statements reached (out of 327): 100% coverage.
+  ----------------------------------------------------------------------------
+  Some errors and warnings have been raised during the analysis:
+    by the Eva analyzer:      2 errors    0 warnings
+    by the Frama-C kernel:    0 errors    0 warnings
+  ----------------------------------------------------------------------------
+  636 alarms generated by the analysis:
+     351 invalid memory accesses
+     265 accesses to uninitialized left-values
+      16 integer overflows
+       4 others
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     0 unknown     0 invalid      0 total
+    Preconditions    15 valid     0 unknown     0 invalid     15 total
+  100% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[eva] User Error: Deferred error message was emitted during execution. See above messages for more information.
+[kernel] Plug-in eva aborted: invalid user input.

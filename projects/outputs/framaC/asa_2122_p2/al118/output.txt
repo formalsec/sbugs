@@ -1,0 +1,689 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:typing:no-proto] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:54: 
+  Calling function prepara that is declared without prototype.
+  Its formals will be inferred from actual arguments
+[kernel:typing:no-proto] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:61: 
+  Calling function dfs that is declared without prototype.
+  Its formals will be inferred from actual arguments
+[kernel:typing:no-proto] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:70: 
+  Calling function prepara_again that is declared without prototype.
+  Its formals will be inferred from actual arguments
+[kernel:typing:no-proto] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:79: 
+  Calling function limpar_ancestrais that is declared without prototype.
+  Its formals will be inferred from actual arguments
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  grafo ∈ {0}
+  transposed ∈ {0}
+  ancestrais ∈ {0}
+  finais ∈ {0}
+  numero_ancestrais ∈ {0}
+  contador3 ∈ {0}
+  nodes ∈ {0}
+  edges ∈ {0}
+  invalid ∈ {0}
+[eva] using specification for function scanf_va_1
+[eva] using specification for function scanf_va_2
+[eva] using specification for function time
+[eva] using specification for function srand
+[eva] using specification for function rand
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_0
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_1
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:148: 
+  out of bounds write. assert \valid(&(grafo + i)->cor);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:149: 
+  out of bounds write. assert \valid(&(grafo + i)->nfilhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:150: 
+  out of bounds write. assert \valid(&(grafo + i)->filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:151: 
+  out of bounds write. assert \valid(&(transposed + i)->cor);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:152: 
+  out of bounds write. assert \valid(&(transposed + i)->nfilhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:153: 
+  out of bounds write. assert \valid(&(transposed + i)->filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:154: 
+  out of bounds write. assert \valid(&(transposed + i)->count);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:147: 
+  starting to merge loop iterations
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:148: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:149: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:150: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:151: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:152: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:153: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:154: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:147: 
+  signed overflow. assert i + 1 ≤ 2147483647;
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:148: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:149: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:150: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:151: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:152: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:153: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:154: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[eva] using specification for function scanf_va_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:95: 
+  accessing uninitialized left-value.
+  assert \initialized(&(grafo + u)->nfilhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:95: 
+  out of bounds read. assert \valid_read(&(grafo + u)->nfilhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:96: 
+  out of bounds write. assert \valid(&(grafo + u)->nfilhos);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:96: 
+  more than 200(2147483648) locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:97: 
+  out of bounds write. assert \valid(&(grafo + u)->filhos);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:97: 
+  more than 200(2147483648) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:98: 
+  accessing uninitialized left-value.
+  assert \initialized(&(grafo + u)->filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:98: 
+  out of bounds read. assert \valid_read(&(grafo + u)->filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:98: 
+  out of bounds write. assert \valid((grafo + u)->filhos + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:101: 
+  accessing uninitialized left-value.
+  assert \initialized(&(transposed + v)->nfilhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:101: 
+  out of bounds read. assert \valid_read(&(transposed + v)->nfilhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:102: 
+  out of bounds write. assert \valid(&(transposed + v)->nfilhos);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:102: 
+  more than 200(2147483648) locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_4
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:103: 
+  out of bounds write. assert \valid(&(transposed + v)->filhos);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:103: 
+  more than 200(2147483648) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:104: 
+  accessing uninitialized left-value.
+  assert \initialized(&(transposed + v)->filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:104: 
+  out of bounds read. assert \valid_read(&(transposed + v)->filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:104: 
+  out of bounds write. assert \valid((transposed + v)->filhos + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:107: 
+  accessing uninitialized left-value.
+  assert \initialized(&(grafo + u)->nfilhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:107: 
+  out of bounds read. assert \valid_read(&(grafo + u)->nfilhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:110: 
+  out of bounds write. assert \valid(&(grafo + u)->nfilhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:110: 
+  accessing uninitialized left-value.
+  assert \initialized(&(grafo + u)->nfilhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:110: 
+  signed overflow. assert -2147483648 ≤ (grafo + u)->nfilhos + 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:110: 
+  signed overflow. assert (grafo + u)->nfilhos + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:110: 
+  Assigning imprecise value to (grafo + u)->nfilhos
+  (pointing to __malloc_can_fail_malloc_l11 with offsets [32..274877906848],32%128).
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:97}
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:110: 
+  more than 200(2147483648) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:112: 
+  accessing uninitialized left-value.
+  assert \initialized(&(grafo + u)->nfilhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:112: 
+  out of bounds read. assert \valid_read(&(grafo + u)->nfilhos);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_5
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:112: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:114: 
+  accessing uninitialized left-value.
+  assert \initialized(&(grafo + u)->nfilhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:114: 
+  out of bounds read. assert \valid_read(&(grafo + u)->nfilhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:114: 
+  signed overflow. assert -2147483648 ≤ (grafo + u)->nfilhos - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:114: 
+  signed overflow. assert (grafo + u)->nfilhos - 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:115: 
+  out of bounds write. assert \valid(carry1 + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:115: 
+  accessing uninitialized left-value.
+  assert \initialized(&(grafo + u)->filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:115: 
+  out of bounds read. assert \valid_read(&(grafo + u)->filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:115: 
+  out of bounds read. assert \valid_read((grafo + u)->filhos + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:114: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:114: 
+  signed overflow. assert i + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:118: 
+  accessing uninitialized left-value.
+  assert \initialized(&(grafo + u)->nfilhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:118: 
+  out of bounds read. assert \valid_read(&(grafo + u)->nfilhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:118: 
+  signed overflow. assert -2147483648 ≤ (grafo + u)->nfilhos - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:118: 
+  signed overflow. assert (grafo + u)->nfilhos - 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:118: 
+  out of bounds write. assert \valid(carry1 + (int)((grafo + u)->nfilhos - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:120: 
+  out of bounds write. assert \valid(&(grafo + u)->filhos);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:120: 
+  more than 200(2147483648) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:125: 
+  accessing uninitialized left-value.
+  assert \initialized(&(transposed + v)->nfilhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:125: 
+  out of bounds read. assert \valid_read(&(transposed + v)->nfilhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:128: 
+  out of bounds write. assert \valid(&(transposed + v)->nfilhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:128: 
+  accessing uninitialized left-value.
+  assert \initialized(&(transposed + v)->nfilhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:128: 
+  signed overflow. assert -2147483648 ≤ (transposed + v)->nfilhos + 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:128: 
+  signed overflow. assert (transposed + v)->nfilhos + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:128: 
+  Assigning imprecise value to (transposed + v)->nfilhos
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets [32..412316860256],32%192).
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:103}
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:128: 
+  more than 200(2147483648) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:130: 
+  accessing uninitialized left-value.
+  assert \initialized(&(transposed + v)->nfilhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:130: 
+  out of bounds read. assert \valid_read(&(transposed + v)->nfilhos);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_6
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:130: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:132: 
+  accessing uninitialized left-value.
+  assert \initialized(&(transposed + v)->nfilhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:132: 
+  out of bounds read. assert \valid_read(&(transposed + v)->nfilhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:132: 
+  signed overflow. assert -2147483648 ≤ (transposed + v)->nfilhos - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:132: 
+  signed overflow. assert (transposed + v)->nfilhos - 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:133: 
+  out of bounds write. assert \valid(carry2 + i_0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:133: 
+  accessing uninitialized left-value.
+  assert \initialized(&(transposed + v)->filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:133: 
+  out of bounds read. assert \valid_read(&(transposed + v)->filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:133: 
+  out of bounds read. assert \valid_read((transposed + v)->filhos + i_0);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:132: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:132: 
+  signed overflow. assert i_0 + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:136: 
+  accessing uninitialized left-value.
+  assert \initialized(&(transposed + v)->nfilhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:136: 
+  out of bounds read. assert \valid_read(&(transposed + v)->nfilhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:136: 
+  signed overflow. assert -2147483648 ≤ (transposed + v)->nfilhos - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:136: 
+  signed overflow. assert (transposed + v)->nfilhos - 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:136: 
+  out of bounds write.
+  assert \valid(carry2 + (int)((transposed + v)->nfilhos - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:137: 
+  out of bounds write. assert \valid(&(transposed + v)->filhos);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:137: 
+  more than 200(2147483648) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:95: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:97: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:101: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:103: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:107: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:125: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:56: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:115: 
+  accessing uninitialized left-value.
+  assert \initialized((grafo + u)->filhos + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:133: 
+  accessing uninitialized left-value.
+  assert \initialized((transposed + v)->filhos + i_0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:163: 
+  accessing uninitialized left-value. assert \initialized(&(grafo + i)->cor);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:163: 
+  out of bounds read. assert \valid_read(&(grafo + i)->cor);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:172: 
+  out of bounds write. assert \valid(&(grafo + node)->cor);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:175: 
+  accessing uninitialized left-value.
+  assert \initialized(&(grafo + node)->nfilhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:175: 
+  out of bounds read. assert \valid_read(&(grafo + node)->nfilhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:176: 
+  accessing uninitialized left-value.
+  assert \initialized(&(grafo + node)->filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:176: 
+  out of bounds read. assert \valid_read(&(grafo + node)->filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:176: 
+  accessing uninitialized left-value.
+  assert \initialized((grafo + node)->filhos + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:176: 
+  out of bounds read. assert \valid_read((grafo + node)->filhos + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:176: 
+  accessing uninitialized left-value.
+  assert \initialized(&(grafo + *((grafo + node)->filhos + i))->cor);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:176: 
+  out of bounds read.
+  assert \valid_read(&(grafo + *((grafo + node)->filhos + i))->cor);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:180: 
+  out of bounds read. assert \valid_read(&(grafo + node)->filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:180: 
+  accessing uninitialized left-value.
+  assert \initialized((grafo + node)->filhos + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:180: 
+  out of bounds read. assert \valid_read((grafo + node)->filhos + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:180: 
+  accessing uninitialized left-value.
+  assert \initialized(&(grafo + *((grafo + node)->filhos + i))->cor);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:180: 
+  out of bounds read.
+  assert \valid_read(&(grafo + *((grafo + node)->filhos + i))->cor);
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:181: 
+  detected recursive call of function visit.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:181: 
+  out of bounds read. assert \valid_read(&(grafo + node)->filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:181: 
+  accessing uninitialized left-value.
+  assert \initialized((grafo + node)->filhos + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:181: 
+  out of bounds read. assert \valid_read((grafo + node)->filhos + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:181: User Error: 
+  Recursive call to visit without assigns clause.
+  Generating probably incomplete assigns to interpret the call. Try to increase
+  the -eva-unroll-recursive-calls parameter or write a correct specification
+  for function visit.
+[kernel:annot:missing-spec] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:170: 
+  Neither code nor specification for function visit, generating default assigns from the prototype
+[eva] using specification for function visit
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:175: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:181: 
+  Using specification of function visit for recursive calls.
+  Analysis of function visit is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:175: 
+  signed overflow. assert i + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:185: 
+  out of bounds write. assert \valid(&(grafo + node)->cor);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:176: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:162: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:180: 
+  accessing uninitialized left-value.
+  assert \initialized(&(grafo + node)->filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:181: 
+  accessing uninitialized left-value.
+  assert \initialized(&(grafo + node)->filhos);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:172: 
+  more than 200(2147483646) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:181: 
+  more than 200(2147483646) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:185: 
+  more than 200(2147483646) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:172: 
+  more than 200(2147483646) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:175: 
+  more than 200(2147483646) elements to enumerate. Approximating.
+[eva] using specification for function printf_va_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:194: 
+  out of bounds write. assert \valid(&(transposed + node)->cor);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:194: 
+  more than 200(2147483648) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:195: 
+  out of bounds write. assert \valid(&(transposed + node)->count);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:195: 
+  accessing uninitialized left-value.
+  assert \initialized(&(transposed + node)->count);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:195: 
+  signed overflow. assert -2147483648 ≤ (transposed + node)->count + 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:195: 
+  signed overflow. assert (transposed + node)->count + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:195: 
+  Assigning imprecise value to (transposed + node)->count
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets [128..412316860352],128%192).
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:103}
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:195: 
+  more than 200(2147483648) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:197: 
+  accessing uninitialized left-value.
+  assert \initialized(&(transposed + node)->count);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:197: 
+  out of bounds read. assert \valid_read(&(transposed + node)->count);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_7
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:201: 
+  out of bounds write. assert \valid(carry3 + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:201: 
+  accessing uninitialized left-value. assert \initialized(ancestrais + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:201: 
+  out of bounds read. assert \valid_read(ancestrais + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:207: 
+  accessing uninitialized left-value.
+  assert \initialized(&(transposed + node)->nfilhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:207: 
+  out of bounds read. assert \valid_read(&(transposed + node)->nfilhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:208: 
+  accessing uninitialized left-value.
+  assert \initialized(&(transposed + node)->filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:208: 
+  out of bounds read. assert \valid_read(&(transposed + node)->filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:208: 
+  accessing uninitialized left-value.
+  assert \initialized((transposed + node)->filhos + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:208: 
+  out of bounds read. assert \valid_read((transposed + node)->filhos + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:208: 
+  accessing uninitialized left-value.
+  assert \initialized(&(transposed + *((transposed + node)->filhos + i))->cor);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:208: 
+  out of bounds read.
+  assert \valid_read(&(transposed + *((transposed + node)->filhos + i))->cor);
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:209: 
+  detected recursive call of function novo_visit.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:209: 
+  accessing uninitialized left-value.
+  assert \initialized(&(transposed + node)->filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:209: 
+  out of bounds read. assert \valid_read(&(transposed + node)->filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:209: 
+  accessing uninitialized left-value.
+  assert \initialized((transposed + node)->filhos + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:209: 
+  out of bounds read. assert \valid_read((transposed + node)->filhos + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:209: User Error: 
+  Recursive call to novo_visit without assigns clause.
+  Generating probably incomplete assigns to interpret the call. Try to increase
+  the -eva-unroll-recursive-calls parameter or write a correct specification
+  for function novo_visit.
+[kernel:annot:missing-spec] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:190: 
+  Neither code nor specification for function novo_visit, generating default assigns from the prototype
+[eva] using specification for function novo_visit
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:207: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:209: 
+  Using specification of function novo_visit for recursive calls.
+  Analysis of function novo_visit is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:207: 
+  signed overflow. assert i + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:213: 
+  out of bounds write. assert \valid(&(transposed + node)->cor);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:213: 
+  more than 200(2147483648) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:194: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:195: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:223: 
+  out of bounds write. assert \valid(&(transposed + i)->cor);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:222: 
+  starting to merge loop iterations
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:223: 
+  more than 200(2147483646) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:223: 
+  more than 200(2147483646) elements to enumerate. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_8
+[eva] using specification for function printf_va_2
+[eva] done for function main
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:96: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:102: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:110: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:128: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:140: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:114: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:114: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:118: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:118: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[scope:rm_asserts] removing 34 assertion(s)
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function prepara:
+  i ∈ [1..2147483647]
+  __malloc_can_fail_malloc_l11[0..15] ∈ UNINITIALIZED
+                              [16..34359738367] ∈ {0} or UNINITIALIZED
+                              [34359738368..18446744073709551607] ∈
+                              UNINITIALIZED
+  __malloc_can_fail_malloc_l11_0[0..23] ∈ UNINITIALIZED
+                                [24..51539607547] ∈ {0} or UNINITIALIZED
+                                [51539607548..18446744073709551607] ∈
+                                UNINITIALIZED
+[eva:final-states] Values at end of function prepara_again:
+  i ∈ [1..2147483647]
+  __malloc_can_fail_malloc_l11_0[bits 0 to 31] ∈ {1; 2} or UNINITIALIZED
+                                [4..51539607547] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_4;
+                                                    __malloc_w_can_fail_malloc_l11_6}
+                                 (origin: Merge
+                                 {/home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:103}) }} or UNINITIALIZED
+                                [51539607548..18446744073709551607] ∈
+                                UNINITIALIZED
+[eva:final-states] Values at end of function can_fail_malloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈
+          {{ NULL ; (void *)&__malloc_can_fail_malloc_l11 ;
+             (void *)&__malloc_can_fail_malloc_l11_0 ;
+             (void *)&__malloc_can_fail_malloc_l11_1 ;
+             (void *)&__malloc_can_fail_malloc_l11_2 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_3 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_4 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_5 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_6 ;
+             (void *)&__malloc_can_fail_malloc_l11_7 ;
+             (void *)&__malloc_can_fail_malloc_l11_8 }}
+[eva:final-states] Values at end of function addEdge:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  __retres ∈ {0}
+  __malloc_can_fail_malloc_l11[0..3] ∈ UNINITIALIZED
+                              [4..34359738359] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_3;
+                                                  __malloc_w_can_fail_malloc_l11_5}
+                               (origin: Merge
+                               {/home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:97}) }} or UNINITIALIZED
+                              [bits 274877906880 to 274877906943] ∈
+                              {{ NULL ;
+                                 (? *)&__malloc_w_can_fail_malloc_l11_3 ;
+                                 (? *)&__malloc_w_can_fail_malloc_l11_5 }} or UNINITIALIZED
+                              [34359738368..18446744073709551607] ∈
+                              UNINITIALIZED
+  __malloc_can_fail_malloc_l11_0[0..3] ∈ UNINITIALIZED
+                                [4..51539607535] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_4;
+                                                    __malloc_w_can_fail_malloc_l11_6}
+                                 (origin: Merge
+                                 {/home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:103}) }} or UNINITIALIZED
+                                [bits 412316860288 to 412316860351] ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_4 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_6 }} or UNINITIALIZED
+                                [51539607544..51539607547] ∈
+                                {0} or UNINITIALIZED
+                                [51539607548..18446744073709551607] ∈
+                                UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_3[0..3] ∈ [--..--] or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_4[bits 0 to 31] ∈
+                                  [0..2147483647] or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_5[0..18446744073709551615] ∈
+                                  [--..--] or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_6[0..18446744073709551615] ∈
+                                  [--..--] or UNINITIALIZED
+[eva:final-states] Values at end of function novo_visit:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  numero_ancestrais ∈ {0}
+  i ∈ [0..2147483647]
+  j ∈ UNINITIALIZED
+  __retres ∈ {0}
+  __malloc_can_fail_malloc_l11_0[bits 0 to 31] ∈ {1; 2} or UNINITIALIZED
+                                [4..51539607547] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_4;
+                                                    __malloc_w_can_fail_malloc_l11_6}
+                                 (origin: Merge
+                                 {/home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:103}) }} or UNINITIALIZED
+                                [51539607548..18446744073709551607] ∈
+                                UNINITIALIZED
+[eva:final-states] Values at end of function visit:
+  invalid ∈ {0; 1}
+  i ∈ [0..2147483647]
+  __retres ∈ {0}
+  __malloc_can_fail_malloc_l11[0..3] ∈ UNINITIALIZED
+                              [4..34359738359] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_3;
+                                                  __malloc_w_can_fail_malloc_l11_5}
+                               (origin: Merge
+                               {/home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:97}) }} or UNINITIALIZED
+                              [bits 274877906880 to 274877906943] ∈
+                              {{ NULL ;
+                                 (? *)&__malloc_w_can_fail_malloc_l11_3 ;
+                                 (? *)&__malloc_w_can_fail_malloc_l11_5 }} or UNINITIALIZED
+                              [34359738368..18446744073709551607] ∈
+                              UNINITIALIZED
+[eva:final-states] Values at end of function dfs:
+  invalid ∈ {0; 1}
+  i ∈ [1..2147483647]
+  __retres ∈ {0}
+  __malloc_can_fail_malloc_l11[0..3] ∈ UNINITIALIZED
+                              [4..34359738359] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_3;
+                                                  __malloc_w_can_fail_malloc_l11_5}
+                               (origin: Merge
+                               {/home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:97}) }} or UNINITIALIZED
+                              [bits 274877906880 to 274877906943] ∈
+                              {{ NULL ;
+                                 (? *)&__malloc_w_can_fail_malloc_l11_3 ;
+                                 (? *)&__malloc_w_can_fail_malloc_l11_5 }} or UNINITIALIZED
+                              [34359738368..18446744073709551607] ∈
+                              UNINITIALIZED
+[eva:final-states] Values at end of function main:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  grafo ∈ {{ NULL ; (NodeOutro *)&__malloc_can_fail_malloc_l11 }}
+  transposed ∈ {{ NULL ; (Node *)&__malloc_can_fail_malloc_l11_0 }}
+  ancestrais ∈ {{ NULL ; (int *)&__malloc_can_fail_malloc_l11_1 }}
+  finais ∈ {{ NULL ; (int *)&__malloc_can_fail_malloc_l11_2 }}
+  numero_ancestrais ∈ {0}
+  nodes ∈ [-2147483648..2147483646]
+  edges ∈ [--..--]
+  invalid ∈ {0; 1}
+  i ∈ [0..2147483647]
+  vertice1 ∈ [--..--]
+  vertice2 ∈ [--..--]
+  primeiro ∈ [0..2147483647] or UNINITIALIZED
+  segundo ∈ [0..2147483647] or UNINITIALIZED
+  __retres ∈ {0}
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11[0..3] ∈ UNINITIALIZED
+                              [4..34359738359] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_3;
+                                                  __malloc_w_can_fail_malloc_l11_5}
+                               (origin: Merge
+                               {/home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:97}) }} or UNINITIALIZED
+                              [bits 274877906880 to 274877906943] ∈
+                              {{ NULL ;
+                                 (? *)&__malloc_w_can_fail_malloc_l11_3 ;
+                                 (? *)&__malloc_w_can_fail_malloc_l11_5 }} or UNINITIALIZED
+                              [34359738368..18446744073709551607] ∈
+                              UNINITIALIZED
+  __malloc_can_fail_malloc_l11_0[bits 0 to 31] ∈ {1; 2} or UNINITIALIZED
+                                [4..51539607547] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_4;
+                                                    __malloc_w_can_fail_malloc_l11_6}
+                                 (origin: Merge
+                                 {/home/fmarques/sbugs/projects/alunos/asa_2122_p2/al118/backup.c:103}) }} or UNINITIALIZED
+                                [51539607548..18446744073709551607] ∈
+                                UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_3[0..3] ∈ [--..--] or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_4[bits 0 to 31] ∈
+                                  [0..2147483647] or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_5[0..18446744073709551615] ∈
+                                  [--..--] or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_6[0..18446744073709551615] ∈
+                                  [--..--] or UNINITIALIZED
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  8 functions analyzed (out of 13): 61% coverage.
+  In these functions, 142 statements reached (out of 157): 90% coverage.
+  ----------------------------------------------------------------------------
+  Some errors and warnings have been raised during the analysis:
+    by the Eva analyzer:      2 errors    0 warnings
+    by the Frama-C kernel:    0 errors    0 warnings
+  ----------------------------------------------------------------------------
+  118 alarms generated by the analysis:
+      62 invalid memory accesses
+      37 accesses to uninitialized left-values
+      19 integer overflows
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     0 unknown     0 invalid      0 total
+    Preconditions    12 valid     0 unknown     0 invalid     12 total
+  100% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[eva] User Error: Deferred error message was emitted during execution. See above messages for more information.
+[kernel] Plug-in eva aborted: invalid user input.

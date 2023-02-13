@@ -1,0 +1,163 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al099/main.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  description ∈ {0}
+  studentNum ∈ {0}
+  relationNum ∈ {0}
+  sum ∈ {0}
+  counter ∈ {0}
+  relList[0..1] ∈ {0}
+  studList ∈ {0}
+[eva] using specification for function scanf_va_1
+[eva] using specification for function exit
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al099/main.c:61: 
+  signed overflow. assert -2147483648 ≤ studentNum + relationNum;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al099/main.c:61: 
+  signed overflow. assert studentNum + relationNum ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al099/main.c:62: 
+  signed overflow. assert studentNum + 1 ≤ 2147483647;
+[eva] using specification for function time
+[eva] using specification for function srand
+[eva] using specification for function rand
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al099/main.c:27: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_0
+[eva] using specification for function scanf_va_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al099/main.c:70: 
+  out of bounds write. assert \valid(&(studList + (int)(i - 1))->id);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al099/main.c:71: 
+  out of bounds write. assert \valid(&(studList + (int)(i - 1))->grade);
+[eva] using specification for function scanf_va_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al099/main.c:78: 
+  signed overflow. assert i - suf ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al099/main.c:78: 
+  out of bounds write. assert \valid(relList[0] + (int)(i - suf));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al099/main.c:78: 
+  signed overflow. assert -2147483648 ≤ stud - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al099/main.c:79: 
+  out of bounds write. assert \valid(relList[1] + (int)(i - suf));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al099/main.c:79: 
+  signed overflow. assert -2147483648 ≤ fr - 1;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al099/main.c:64: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al099/main.c:79: 
+  signed overflow. assert i - suf ≤ 2147483647;
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al099/main.c:70: 
+  more than 200(2147483646) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al099/main.c:71: 
+  more than 200(2147483646) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al099/main.c:81: 
+  signed overflow. assert i + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al099/main.c:39: 
+  accessing uninitialized left-value. assert \initialized(relList[0] + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al099/main.c:39: 
+  accessing uninitialized left-value. assert \initialized(relList[1] + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al099/main.c:39: 
+  out of bounds read. assert \valid_read(relList[0] + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al099/main.c:39: 
+  out of bounds read. assert \valid_read(relList[1] + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al099/main.c:39: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(relList[0] + i))->grade);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al099/main.c:39: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(relList[1] + i))->grade);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al099/main.c:39: 
+  out of bounds read. assert \valid_read(&(*(relList[0] + i))->grade);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al099/main.c:39: 
+  out of bounds read. assert \valid_read(&(*(relList[1] + i))->grade);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al099/main.c:40: 
+  accessing uninitialized left-value. assert \initialized(relList[0] + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al099/main.c:40: 
+  out of bounds read. assert \valid_read(relList[0] + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al099/main.c:40: 
+  out of bounds write. assert \valid(&(*(relList[0] + i))->grade);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al099/main.c:40: 
+  accessing uninitialized left-value. assert \initialized(relList[1] + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al099/main.c:40: 
+  out of bounds read. assert \valid_read(relList[1] + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al099/main.c:40: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(relList[1] + i))->grade);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al099/main.c:40: 
+  out of bounds read. assert \valid_read(&(*(relList[1] + i))->grade);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al099/main.c:40: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al099/main.c:38: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al099/main.c:36: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al099/main.c:47: 
+  accessing uninitialized left-value.
+  assert \initialized(&(studList + i)->grade);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al099/main.c:47: 
+  out of bounds read. assert \valid_read(&(studList + i)->grade);
+[eva] using specification for function printf_va_1
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al099/main.c:46: 
+  starting to merge loop iterations
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al099/main.c:47: 
+  more than 200(2147483646) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al099/main.c:39: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al099/main.c:70: 
+  more than 200(2147483646) elements to enumerate. Approximating.
+[eva] done for function main
+[scope:rm_asserts] removing 7 assertion(s)
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function run:
+  i ∈ [0..2147483647]
+  nostop ∈ {0}
+  S___fc_stdout[0..1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11_0[0..17179869171] ∈
+                                [--..--] or UNINITIALIZED
+                                [17179869172..18446744073709551607] ∈
+                                UNINITIALIZED
+[eva:final-states] Values at end of function can_fail_malloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈
+          {{ NULL ; (void *)&__malloc_w_can_fail_malloc_l11 ;
+             (void *)&__malloc_can_fail_malloc_l11_0 }}
+[eva:final-states] Values at end of function processFirstLine:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  relList[0..1] ∈ {{ NULL ; (student **)&__malloc_w_can_fail_malloc_l11 }}
+  studList ∈ {{ NULL ; (student *)&__malloc_can_fail_malloc_l11_0 }}
+  i ∈ {2}
+[eva:final-states] Values at end of function main:
+  NON TERMINATING FUNCTION
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  4 functions analyzed (out of 6): 66% coverage.
+  In these functions, 68 statements reached (out of 69): 98% coverage.
+  ----------------------------------------------------------------------------
+  No errors or warnings raised during the analysis.
+  ----------------------------------------------------------------------------
+  29 alarms generated by the analysis:
+      13 invalid memory accesses
+       8 integer overflows
+       8 accesses to uninitialized left-values
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     0 unknown     0 invalid      0 total
+    Preconditions    10 valid     0 unknown     0 invalid     10 total
+  100% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[report] Classification
+[report] Output /home/fmarques/sbugs/projects/outputs/framaC/asa_1920_p1/al099/errors.json
+[report] Reviews     :   22
+[report] Unclassified:   22

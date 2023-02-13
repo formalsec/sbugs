@@ -1,0 +1,1169 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  idp ∈ {0}
+  ide ∈ {0}
+  inventario_produtos[0..9999] ∈ {0}
+  lista_encomendas[0..499] ∈ {0}
+[eva] using specification for function getchar
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:61: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:62: 
+  out of bounds write. assert \valid(s + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:65: 
+  out of bounds write. assert \valid(s + i);
+[eva] using specification for function strncpy
+[eva] FRAMAC_SHARE/libc/string.h:389: 
+  cannot evaluate ACSL term, unsupported ACSL construct: logic function strcmp
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:46: 
+  starting to merge loop iterations
+[eva] using specification for function strtok
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:49: 
+  function strtok, behavior new_str: precondition 'valid_string_s_or_delim_not_found' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:50: 
+  pointer comparison. assert \pointer_comparable((void *)word, (void *)0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:51: 
+  function strncpy: precondition 'valid_nstring_src' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:50: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:51: 
+  function strncpy: precondition 'room_nstring' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:50: 
+  signed overflow. assert i + 1 ≤ 2147483647;
+[eva] using specification for function strcpy
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:80: 
+  function strcpy: precondition 'valid_string_src' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:80: 
+  function strcpy: precondition 'room_string' got status unknown.
+[eva] FRAMAC_SHARE/libc/string.h:373: 
+  cannot evaluate ACSL term, unsupported ACSL construct: logic function strcmp
+[eva] using specification for function atoi
+[eva] using specification for function printf_va_1
+[eva:locals-escaping] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:470: 
+  locals {s} escaping the scope of adiciona_produto through __fc_strtok_ptr
+[eva] using specification for function printf_va_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:103: 
+  accessing out of bounds index.
+  assert 0 ≤ tmp_1;
+  (tmp_1 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:103: 
+  accessing out of bounds index.
+  assert tmp_1 < 10000;
+  (tmp_1 from atoi((char const *)(dados[0])))
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:103: 
+  more than 200(10000) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:103: 
+  more than 200(10000) elements to enumerate. Approximating.
+[eva:locals-escaping] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:473: 
+  locals {s} escaping the scope of adiciona_stock through __fc_strtok_ptr
+[eva] using specification for function printf_va_3
+[eva:locals-escaping] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:476: 
+  locals {s} escaping the scope of cria_nova_encomenda through __fc_strtok_ptr
+[eva] using specification for function printf_va_4
+[eva] using specification for function printf_va_5
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:146: 
+  accessing out of bounds index.
+  assert 0 ≤ tmp_10;
+  (tmp_10 from atoi((char const *)(dados[1])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:146: 
+  accessing out of bounds index.
+  assert tmp_10 < 10000;
+  (tmp_10 from atoi((char const *)(dados[1])))
+[eva] using specification for function printf_va_6
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:151: 
+  accessing out of bounds index.
+  assert 0 ≤ tmp_7;
+  (tmp_7 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:151: 
+  accessing out of bounds index.
+  assert tmp_7 < 500;
+  (tmp_7 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:151: 
+  accessing out of bounds index.
+  assert 0 ≤ tmp_9;
+  (tmp_9 from atoi((char const *)(dados[1])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:151: 
+  accessing out of bounds index.
+  assert tmp_9 < 10000;
+  (tmp_9 from atoi((char const *)(dados[1])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:156: 
+  accessing out of bounds index.
+  assert 0 ≤ tmp_23;
+  (tmp_23 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:156: 
+  accessing out of bounds index.
+  assert tmp_23 < 500;
+  (tmp_23 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:167: 
+  accessing out of bounds index.
+  assert 0 ≤ tmp_26;
+  (tmp_26 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:167: 
+  accessing out of bounds index.
+  assert tmp_26 < 500;
+  (tmp_26 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:167: 
+  function strcpy: precondition 'valid_string_src' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:167: 
+  function strcpy: precondition 'room_string' got status unknown.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:167: 
+  more than 200(500) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:168: 
+  accessing out of bounds index.
+  assert 0 ≤ tmp_27;
+  (tmp_27 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:168: 
+  accessing out of bounds index.
+  assert tmp_27 < 500;
+  (tmp_27 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:168: 
+  accessing out of bounds index.
+  assert 0 ≤ tmp_28;
+  (tmp_28 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:168: 
+  accessing out of bounds index.
+  assert tmp_28 < 500;
+  (tmp_28 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:168: 
+  accessing out of bounds index.
+  assert 0 ≤ lista_encomendas[tmp_28].quantidade;
+  (tmp_28 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:168: 
+  accessing out of bounds index.
+  assert lista_encomendas[tmp_28].quantidade < 200;
+  (tmp_28 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:169: 
+  accessing out of bounds index.
+  assert 0 ≤ tmp_29;
+  (tmp_29 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:169: 
+  accessing out of bounds index.
+  assert tmp_29 < 500;
+  (tmp_29 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:169: 
+  accessing out of bounds index.
+  assert 0 ≤ tmp_30;
+  (tmp_30 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:169: 
+  accessing out of bounds index.
+  assert tmp_30 < 500;
+  (tmp_30 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:169: 
+  accessing out of bounds index.
+  assert 0 ≤ lista_encomendas[tmp_30].quantidade;
+  (tmp_30 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:169: 
+  accessing out of bounds index.
+  assert lista_encomendas[tmp_30].quantidade < 200;
+  (tmp_30 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:170: 
+  accessing out of bounds index.
+  assert 0 ≤ tmp_31;
+  (tmp_31 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:170: 
+  accessing out of bounds index.
+  assert tmp_31 < 500;
+  (tmp_31 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:170: 
+  accessing out of bounds index.
+  assert 0 ≤ tmp_33;
+  (tmp_33 from atoi((char const *)(dados[1])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:170: 
+  accessing out of bounds index.
+  assert tmp_33 < 10000;
+  (tmp_33 from atoi((char const *)(dados[1])))
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:170: 
+  more than 200(500) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:171: 
+  accessing out of bounds index.
+  assert 0 ≤ tmp_34;
+  (tmp_34 from atoi((char const *)(dados[1])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:171: 
+  accessing out of bounds index.
+  assert tmp_34 < 10000;
+  (tmp_34 from atoi((char const *)(dados[1])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:171: 
+  signed overflow.
+  assert inventario_produtos[tmp_34].stock_produto - tmp_35 ≤ 2147483647;
+  (tmp_34 from atoi((char const *)(dados[1])), tmp_35 from
+  atoi((char const *)(dados[2])))
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:171: 
+  more than 200(10000) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:172: 
+  accessing out of bounds index.
+  assert 0 ≤ tmp_36;
+  (tmp_36 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:172: 
+  accessing out of bounds index.
+  assert tmp_36 < 500;
+  (tmp_36 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:172: 
+  signed overflow.
+  assert lista_encomendas[tmp_36].quantidade + 1 ≤ 2147483647;
+  (tmp_36 from atoi((char const *)(dados[0])))
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:172: 
+  more than 200(500) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:151: 
+  more than 200(10000) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:151: 
+  more than 200(500) elements to enumerate. Approximating.
+[eva:locals-escaping] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:479: 
+  locals {s} escaping the scope of adiciona_produto_encomenda through __fc_strtok_ptr
+[eva] using specification for function printf_va_8
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:191: 
+  accessing out of bounds index.
+  assert 0 ≤ tmp_2;
+  (tmp_2 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:191: 
+  accessing out of bounds index.
+  assert tmp_2 < 10000;
+  (tmp_2 from atoi((char const *)(dados[0])))
+[eva] using specification for function printf_va_9
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:196: 
+  accessing out of bounds index.
+  assert 0 ≤ tmp_5;
+  (tmp_5 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:196: 
+  accessing out of bounds index.
+  assert tmp_5 < 10000;
+  (tmp_5 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:196: 
+  signed overflow.
+  assert inventario_produtos[tmp_5].stock_produto - tmp_6 ≤ 2147483647;
+  (tmp_5 from atoi((char const *)(dados[0])), tmp_6 from
+  atoi((char const *)(dados[1])))
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:196: 
+  more than 200(10000) locations to update in array. Approximating.
+[eva:locals-escaping] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:482: 
+  locals {s} escaping the scope of remove_stock through __fc_strtok_ptr
+[eva] using specification for function printf_va_10
+[eva] using specification for function printf_va_11
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:221: 
+  accessing out of bounds index.
+  assert 0 ≤ tmp_14;
+  (tmp_14 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:221: 
+  accessing out of bounds index.
+  assert tmp_14 < 500;
+  (tmp_14 from atoi((char const *)(dados[0])))
+[eva:locals-escaping] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:485: 
+  locals {s} escaping the scope of remove_produto_encomenda through __fc_strtok_ptr
+[eva] using specification for function printf_va_12
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:252: 
+  accessing out of bounds index.
+  assert 0 ≤ tmp_3;
+  (tmp_3 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:252: 
+  accessing out of bounds index.
+  assert tmp_3 < 500;
+  (tmp_3 from atoi((char const *)(dados[0])))
+[eva] using specification for function printf_va_13
+[eva:locals-escaping] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:488: 
+  locals {s} escaping the scope of calcula_custo through __fc_strtok_ptr
+[eva] using specification for function printf_va_14
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:273: 
+  accessing out of bounds index.
+  assert 0 ≤ tmp_1;
+  (tmp_1 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:273: 
+  accessing out of bounds index.
+  assert tmp_1 < 10000;
+  (tmp_1 from atoi((char const *)(dados[0])))
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:273: 
+  more than 200(10000) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:273: 
+  more than 200(10000) elements to enumerate. Approximating.
+[eva:locals-escaping] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:491: 
+  locals {s} escaping the scope of altera_preco_produto through __fc_strtok_ptr
+[eva] using specification for function printf_va_15
+[eva] using specification for function printf_va_16
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:296: 
+  accessing out of bounds index.
+  assert 0 ≤ tmp_6;
+  (tmp_6 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:296: 
+  accessing out of bounds index.
+  assert tmp_6 < 500;
+  (tmp_6 from atoi((char const *)(dados[0])))
+[eva] using specification for function printf_va_17
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:301: 
+  function printf_va_17: precondition valid_read_string(param0) got status unknown.
+[eva:locals-escaping] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:494: 
+  locals {s} escaping the scope of descricao_quantidade through __fc_strtok_ptr
+[eva] using specification for function printf_va_18
+[eva:locals-escaping] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:497: 
+  locals {s} escaping the scope of lista_identificador through __fc_strtok_ptr
+[eva] using specification for function printf_va_20
+[eva] using specification for function printf_va_22
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:443: 
+  accessing out of bounds index.
+  assert 0 ≤ tmp_5;
+  (tmp_5 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:443: 
+  accessing out of bounds index.
+  assert tmp_5 < 500;
+  (tmp_5 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:449: 
+  accessing out of bounds index.
+  assert 0 ≤ tmp_6;
+  (tmp_6 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:449: 
+  accessing out of bounds index.
+  assert tmp_6 < 500;
+  (tmp_6 from atoi((char const *)(dados[0])))
+[eva] using specification for function printf_va_23
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:451: 
+  accessing out of bounds index.
+  assert 0 ≤ tmp_8;
+  (tmp_8 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:451: 
+  accessing out of bounds index.
+  assert tmp_8 < 500;
+  (tmp_8 from atoi((char const *)(dados[0])))
+[eva:locals-escaping] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:503: 
+  locals {s} escaping the scope of auxiliar_2 through __fc_strtok_ptr
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:464: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:52: 
+  function strtok, behavior resume_str: precondition 'not_first_call' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:52: 
+  Assigning imprecise value to word.
+  The imprecision originates from Library function
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:103: 
+  signed overflow.
+  assert -2147483648 ≤ inventario_produtos[tmp_1].stock_produto + tmp_2;
+  (tmp_1 from atoi((char const *)(dados[0])), tmp_2 from
+  atoi((char const *)(dados[1])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:103: 
+  signed overflow.
+  assert inventario_produtos[tmp_1].stock_produto + tmp_2 ≤ 2147483647;
+  (tmp_1 from atoi((char const *)(dados[0])), tmp_2 from
+  atoi((char const *)(dados[1])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:151: 
+  signed overflow.
+  assert -2147483648 ≤ tmp_8 * inventario_produtos[tmp_9].peso_produto;
+  (tmp_8 from atoi((char const *)(dados[2])), tmp_9 from
+  atoi((char const *)(dados[1])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:151: 
+  signed overflow.
+  assert tmp_8 * inventario_produtos[tmp_9].peso_produto ≤ 2147483647;
+  (tmp_8 from atoi((char const *)(dados[2])), tmp_9 from
+  atoi((char const *)(dados[1])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:151: 
+  signed overflow.
+  assert
+  -2147483648 ≤
+  lista_encomendas[tmp_7].peso_encomenda +
+  (int)(tmp_8 * inventario_produtos[tmp_9].peso_produto);
+  (tmp_7 from atoi((char const *)(dados[0])), tmp_8 from
+  atoi((char const *)(dados[2])), tmp_9 from atoi((char const *)(dados[1])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:151: 
+  signed overflow.
+  assert
+  lista_encomendas[tmp_7].peso_encomenda +
+  (int)(tmp_8 * inventario_produtos[tmp_9].peso_produto) ≤ 2147483647;
+  (tmp_7 from atoi((char const *)(dados[0])), tmp_8 from
+  atoi((char const *)(dados[2])), tmp_9 from atoi((char const *)(dados[1])))
+[eva] using specification for function printf_va_7
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:158: 
+  accessing out of bounds index.
+  assert 0 ≤ tmp_21;
+  (tmp_21 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:158: 
+  accessing out of bounds index.
+  assert tmp_21 < 500;
+  (tmp_21 from atoi((char const *)(dados[0])))
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:156: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:158: 
+  accessing out of bounds index. assert i < 200;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:159: 
+  accessing out of bounds index.
+  assert 0 ≤ tmp_14;
+  (tmp_14 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:159: 
+  accessing out of bounds index.
+  assert tmp_14 < 500;
+  (tmp_14 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:159: 
+  signed overflow.
+  assert -2147483648 ≤ lista_encomendas[tmp_14].e[i].stock_produto + tmp_15;
+  (tmp_14 from atoi((char const *)(dados[0])), tmp_15 from
+  atoi((char const *)(dados[2])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:159: 
+  signed overflow.
+  assert lista_encomendas[tmp_14].e[i].stock_produto + tmp_15 ≤ 2147483647;
+  (tmp_14 from atoi((char const *)(dados[0])), tmp_15 from
+  atoi((char const *)(dados[2])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:160: 
+  accessing out of bounds index.
+  assert 0 ≤ tmp_16;
+  (tmp_16 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:160: 
+  accessing out of bounds index.
+  assert tmp_16 < 500;
+  (tmp_16 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:160: 
+  accessing out of bounds index.
+  assert 0 ≤ tmp_18;
+  (tmp_18 from atoi((char const *)(dados[1])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:160: 
+  accessing out of bounds index.
+  assert tmp_18 < 10000;
+  (tmp_18 from atoi((char const *)(dados[1])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:160: 
+  signed overflow.
+  assert -2147483648 ≤ tmp_17 * inventario_produtos[tmp_18].peso_produto;
+  (tmp_17 from atoi((char const *)(dados[2])), tmp_18 from
+  atoi((char const *)(dados[1])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:160: 
+  signed overflow.
+  assert tmp_17 * inventario_produtos[tmp_18].peso_produto ≤ 2147483647;
+  (tmp_17 from atoi((char const *)(dados[2])), tmp_18 from
+  atoi((char const *)(dados[1])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:160: 
+  signed overflow.
+  assert
+  -2147483648 ≤
+  lista_encomendas[tmp_16].peso_encomenda +
+  (int)(tmp_17 * inventario_produtos[tmp_18].peso_produto);
+  (tmp_16 from atoi((char const *)(dados[0])), tmp_17 from
+  atoi((char const *)(dados[2])), tmp_18 from atoi((char const *)(dados[1])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:160: 
+  signed overflow.
+  assert
+  lista_encomendas[tmp_16].peso_encomenda +
+  (int)(tmp_17 * inventario_produtos[tmp_18].peso_produto) ≤ 2147483647;
+  (tmp_16 from atoi((char const *)(dados[0])), tmp_17 from
+  atoi((char const *)(dados[2])), tmp_18 from atoi((char const *)(dados[1])))
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:160: 
+  more than 200(500) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:161: 
+  accessing out of bounds index.
+  assert 0 ≤ tmp_19;
+  (tmp_19 from atoi((char const *)(dados[1])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:161: 
+  accessing out of bounds index.
+  assert tmp_19 < 10000;
+  (tmp_19 from atoi((char const *)(dados[1])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:161: 
+  signed overflow.
+  assert -2147483648 ≤ inventario_produtos[tmp_19].stock_produto - tmp_20;
+  (tmp_19 from atoi((char const *)(dados[1])), tmp_20 from
+  atoi((char const *)(dados[2])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:161: 
+  signed overflow.
+  assert inventario_produtos[tmp_19].stock_produto - tmp_20 ≤ 2147483647;
+  (tmp_19 from atoi((char const *)(dados[1])), tmp_20 from
+  atoi((char const *)(dados[2])))
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:161: 
+  more than 200(10000) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:170: 
+  signed overflow.
+  assert -2147483648 ≤ tmp_32 * inventario_produtos[tmp_33].peso_produto;
+  (tmp_32 from atoi((char const *)(dados[2])), tmp_33 from
+  atoi((char const *)(dados[1])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:170: 
+  signed overflow.
+  assert tmp_32 * inventario_produtos[tmp_33].peso_produto ≤ 2147483647;
+  (tmp_32 from atoi((char const *)(dados[2])), tmp_33 from
+  atoi((char const *)(dados[1])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:170: 
+  signed overflow.
+  assert
+  -2147483648 ≤
+  lista_encomendas[tmp_31].peso_encomenda +
+  (int)(tmp_32 * inventario_produtos[tmp_33].peso_produto);
+  (tmp_31 from atoi((char const *)(dados[0])), tmp_32 from
+  atoi((char const *)(dados[2])), tmp_33 from atoi((char const *)(dados[1])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:170: 
+  signed overflow.
+  assert
+  lista_encomendas[tmp_31].peso_encomenda +
+  (int)(tmp_32 * inventario_produtos[tmp_33].peso_produto) ≤ 2147483647;
+  (tmp_31 from atoi((char const *)(dados[0])), tmp_32 from
+  atoi((char const *)(dados[2])), tmp_33 from atoi((char const *)(dados[1])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:171: 
+  signed overflow.
+  assert -2147483648 ≤ inventario_produtos[tmp_34].stock_produto - tmp_35;
+  (tmp_34 from atoi((char const *)(dados[1])), tmp_35 from
+  atoi((char const *)(dados[2])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:196: 
+  signed overflow.
+  assert -2147483648 ≤ inventario_produtos[tmp_5].stock_produto - tmp_6;
+  (tmp_5 from atoi((char const *)(dados[0])), tmp_6 from
+  atoi((char const *)(dados[1])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:222: 
+  accessing out of bounds index.
+  assert 0 ≤ tmp_12;
+  (tmp_12 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:222: 
+  accessing out of bounds index.
+  assert tmp_12 < 500;
+  (tmp_12 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:223: 
+  accessing out of bounds index.
+  assert 0 ≤ tmp_3;
+  (tmp_3 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:223: 
+  accessing out of bounds index.
+  assert tmp_3 < 500;
+  (tmp_3 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:223: 
+  accessing out of bounds index.
+  assert 0 ≤ tmp_4;
+  (tmp_4 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:223: 
+  accessing out of bounds index.
+  assert tmp_4 < 500;
+  (tmp_4 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:223: 
+  accessing out of bounds index.
+  assert 0 ≤ tmp_5;
+  (tmp_5 from atoi((char const *)(dados[1])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:223: 
+  accessing out of bounds index.
+  assert tmp_5 < 10000;
+  (tmp_5 from atoi((char const *)(dados[1])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:223: 
+  signed overflow.
+  assert
+  -2147483648 ≤
+  lista_encomendas[tmp_4].e[i].stock_produto *
+  inventario_produtos[tmp_5].peso_produto;
+  (tmp_4 from atoi((char const *)(dados[0])), tmp_5 from
+  atoi((char const *)(dados[1])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:223: 
+  signed overflow.
+  assert
+  lista_encomendas[tmp_4].e[i].stock_produto *
+  inventario_produtos[tmp_5].peso_produto ≤ 2147483647;
+  (tmp_4 from atoi((char const *)(dados[0])), tmp_5 from
+  atoi((char const *)(dados[1])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:223: 
+  signed overflow.
+  assert
+  -2147483648 ≤
+  lista_encomendas[tmp_3].peso_encomenda -
+  (int)(lista_encomendas[tmp_4].e[i].stock_produto *
+        inventario_produtos[tmp_5].peso_produto);
+  (tmp_3 from atoi((char const *)(dados[0])), tmp_4 from
+  atoi((char const *)(dados[0])), tmp_5 from atoi((char const *)(dados[1])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:223: 
+  signed overflow.
+  assert
+  lista_encomendas[tmp_3].peso_encomenda -
+  (int)(lista_encomendas[tmp_4].e[i].stock_produto *
+        inventario_produtos[tmp_5].peso_produto)
+  ≤ 2147483647;
+  (tmp_3 from atoi((char const *)(dados[0])), tmp_4 from
+  atoi((char const *)(dados[0])), tmp_5 from atoi((char const *)(dados[1])))
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:223: 
+  more than 200(500) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:224: 
+  accessing out of bounds index.
+  assert 0 ≤ tmp_6;
+  (tmp_6 from atoi((char const *)(dados[1])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:224: 
+  accessing out of bounds index.
+  assert tmp_6 < 10000;
+  (tmp_6 from atoi((char const *)(dados[1])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:224: 
+  accessing out of bounds index.
+  assert 0 ≤ tmp_7;
+  (tmp_7 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:224: 
+  accessing out of bounds index.
+  assert tmp_7 < 500;
+  (tmp_7 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:224: 
+  signed overflow.
+  assert
+  -2147483648 ≤
+  inventario_produtos[tmp_6].stock_produto +
+  lista_encomendas[tmp_7].e[i].stock_produto;
+  (tmp_6 from atoi((char const *)(dados[1])), tmp_7 from
+  atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:224: 
+  signed overflow.
+  assert
+  inventario_produtos[tmp_6].stock_produto +
+  lista_encomendas[tmp_7].e[i].stock_produto ≤ 2147483647;
+  (tmp_6 from atoi((char const *)(dados[1])), tmp_7 from
+  atoi((char const *)(dados[0])))
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:224: 
+  more than 200(10000) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:226: 
+  accessing out of bounds index.
+  assert 0 ≤ tmp_8;
+  (tmp_8 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:226: 
+  accessing out of bounds index.
+  assert tmp_8 < 500;
+  (tmp_8 from atoi((char const *)(dados[0])))
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:226: 
+  more than 200(500) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:227: 
+  accessing out of bounds index.
+  assert 0 ≤ tmp_9;
+  (tmp_9 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:227: 
+  accessing out of bounds index.
+  assert tmp_9 < 500;
+  (tmp_9 from atoi((char const *)(dados[0])))
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:227: 
+  more than 200(500) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:229: 
+  accessing out of bounds index.
+  assert 0 ≤ tmp_10;
+  (tmp_10 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:229: 
+  accessing out of bounds index.
+  assert tmp_10 < 500;
+  (tmp_10 from atoi((char const *)(dados[0])))
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:229: 
+  more than 200(500) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:230: 
+  accessing out of bounds index.
+  assert 0 ≤ tmp_11;
+  (tmp_11 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:230: 
+  accessing out of bounds index.
+  assert tmp_11 < 500;
+  (tmp_11 from atoi((char const *)(dados[0])))
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:230: 
+  more than 200(500) locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:221: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:222: 
+  accessing out of bounds index. assert i < 200;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:253: 
+  accessing out of bounds index.
+  assert 0 ≤ tmp_1;
+  (tmp_1 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:253: 
+  accessing out of bounds index.
+  assert tmp_1 < 500;
+  (tmp_1 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:253: 
+  accessing out of bounds index.
+  assert 0 ≤ tmp_2;
+  (tmp_2 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:253: 
+  accessing out of bounds index.
+  assert tmp_2 < 500;
+  (tmp_2 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:253: 
+  accessing out of bounds index.
+  assert 0 ≤ lista_encomendas[tmp_2].e[i].id_produto;
+  (tmp_2 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:253: 
+  accessing out of bounds index.
+  assert lista_encomendas[tmp_2].e[i].id_produto < 10000;
+  (tmp_2 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:253: 
+  signed overflow.
+  assert
+  -2147483648 ≤
+  lista_encomendas[tmp_1].e[i].stock_produto *
+  inventario_produtos[lista_encomendas[tmp_2].e[i].id_produto].preco_produto;
+  (tmp_1 from atoi((char const *)(dados[0])), tmp_2 from
+  atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:253: 
+  signed overflow.
+  assert
+  lista_encomendas[tmp_1].e[i].stock_produto *
+  inventario_produtos[lista_encomendas[tmp_2].e[i].id_produto].preco_produto
+  ≤ 2147483647;
+  (tmp_1 from atoi((char const *)(dados[0])), tmp_2 from
+  atoi((char const *)(dados[0])))
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:252: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:253: 
+  signed overflow.
+  assert
+  -2147483648 ≤
+  c +
+  (int)(lista_encomendas[tmp_1].e[i].stock_produto *
+        inventario_produtos[lista_encomendas[tmp_2].e[i].id_produto].preco_produto);
+  (tmp_1 from atoi((char const *)(dados[0])), tmp_2 from
+  atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:253: 
+  signed overflow.
+  assert
+  c +
+  (int)(lista_encomendas[tmp_1].e[i].stock_produto *
+        inventario_produtos[lista_encomendas[tmp_2].e[i].id_produto].preco_produto)
+  ≤ 2147483647;
+  (tmp_1 from atoi((char const *)(dados[0])), tmp_2 from
+  atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:253: 
+  accessing out of bounds index. assert i < 200;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:297: 
+  accessing out of bounds index.
+  assert 0 ≤ tmp_4;
+  (tmp_4 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:297: 
+  accessing out of bounds index.
+  assert tmp_4 < 500;
+  (tmp_4 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:298: 
+  accessing out of bounds index.
+  assert 0 ≤ tmp_3;
+  (tmp_3 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:298: 
+  accessing out of bounds index.
+  assert tmp_3 < 500;
+  (tmp_3 from atoi((char const *)(dados[0])))
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:296: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:298: 
+  signed overflow.
+  assert -2147483648 ≤ qtd + lista_encomendas[tmp_3].e[i].stock_produto;
+  (tmp_3 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:298: 
+  signed overflow.
+  assert qtd + lista_encomendas[tmp_3].e[i].stock_produto ≤ 2147483647;
+  (tmp_3 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:297: 
+  accessing out of bounds index. assert i < 200;
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:322: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:323: 
+  accessing out of bounds index. assert e < 200;
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:321: 
+  starting to merge loop iterations
+[eva] using specification for function printf_va_19
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:382: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:388: 
+  accessing uninitialized left-value.
+  assert \initialized(&final[i].stock_produto);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:388: 
+  accessing uninitialized left-value.
+  assert \initialized(&final[i].preco_produto);
+[eva] using specification for function printf_va_21
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:388: 
+  function printf_va_21: precondition valid_read_string(param0) got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:387: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:444: 
+  accessing out of bounds index.
+  assert 0 ≤ tmp_1;
+  (tmp_1 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:444: 
+  accessing out of bounds index.
+  assert tmp_1 < 500;
+  (tmp_1 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:445: 
+  accessing out of bounds index.
+  assert 0 ≤ tmp_2;
+  (tmp_2 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:445: 
+  accessing out of bounds index.
+  assert tmp_2 < 500;
+  (tmp_2 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:446: 
+  accessing out of bounds index.
+  assert 0 ≤ tmp_3;
+  (tmp_3 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:446: 
+  accessing out of bounds index.
+  assert tmp_3 < 500;
+  (tmp_3 from atoi((char const *)(dados[0])))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:447: 
+  function strcpy: precondition 'valid_string_src' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:447: 
+  function strcpy: precondition 'room_string' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:443: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:444: 
+  accessing out of bounds index. assert i < 200;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:449: 
+  signed overflow.
+  assert -2147483648 ≤ lista_encomendas[tmp_6].quantidade - 1;
+  (tmp_6 from atoi((char const *)(dados[0])))
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:421: 
+  detected recursive call of function m_s_2.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:421: User Error: 
+  Recursive call to m_s_2 without assigns clause.
+  Generating probably incomplete assigns to interpret the call. Try to increase
+  the -eva-unroll-recursive-calls parameter or write a correct specification
+  for function m_s_2.
+[kernel:annot:missing-spec] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:416: 
+  Neither code nor specification for function m_s_2, generating default assigns from the prototype
+[eva] using specification for function m_s_2
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:422: 
+  detected recursive call of function m_s_2.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:422: 
+  Using specification of function m_s_2 for recursive calls.
+  Analysis of function m_s_2 is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:398: 
+  out of bounds write. assert \valid(aux + (int)(i - 1));
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:397: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:401: 
+  signed overflow. assert right + m ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:401: 
+  signed overflow. assert (int)(right + m) - j ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:401: 
+  out of bounds write. assert \valid(aux + (int)((int)(right + m) - j));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:401: 
+  out of bounds read. assert \valid_read(a + (int)(j + 1));
+[eva] using specification for function strcmp
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:404: 
+  function strcmp: precondition 'valid_string_s1' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:404: 
+  function strcmp: precondition 'valid_string_s2' got status unknown.
+[eva] FRAMAC_SHARE/libc/string.h:156: 
+  cannot evaluate ACSL term, unsupported ACSL construct: logic function strcmp
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:406: 
+  out of bounds read. assert \valid_read(aux + tmp);
+                      (tmp from j--)
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:409: 
+  out of bounds read. assert \valid_read(aux + tmp_0);
+                      (tmp_0 from i++)
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:403: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:406: 
+  out of bounds write. assert \valid(a + k);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:409: 
+  out of bounds write. assert \valid(a + k);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:406: 
+  signed overflow. assert -2147483648 ≤ j - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:452: 
+  accessing uninitialized left-value.
+  assert \initialized(&final[i].stock_produto);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:453: 
+  accessing uninitialized left-value.
+  assert \initialized(&final[i].id_produto);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:453: 
+  accessing out of bounds index. assert 0 ≤ final[i].id_produto;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:453: 
+  accessing out of bounds index. assert final[i].id_produto < 10000;
+[eva] using specification for function printf_va_24
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:453: 
+  function printf_va_24: precondition valid_read_string(param0) got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:451: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:453: 
+  accessing uninitialized left-value.
+  assert \initialized(&final[i].stock_produto);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:452: 
+  accessing out of bounds index. assert i < 200;
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:367: 
+  detected recursive call of function m_s_1.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:367: User Error: 
+  Recursive call to m_s_1 without assigns clause.
+  Generating probably incomplete assigns to interpret the call. Try to increase
+  the -eva-unroll-recursive-calls parameter or write a correct specification
+  for function m_s_1.
+[kernel:annot:missing-spec] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:362: 
+  Neither code nor specification for function m_s_1, generating default assigns from the prototype
+[eva] using specification for function m_s_1
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:368: 
+  detected recursive call of function m_s_1.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:368: 
+  Using specification of function m_s_1 for recursive calls.
+  Analysis of function m_s_1 is thus incomplete and its soundness
+  relies on the written specification.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:343: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:346: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:350: 
+  accessing uninitialized left-value.
+  assert \initialized(&(aux + j)->preco_produto);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:350: 
+  accessing uninitialized left-value.
+  assert \initialized(&(aux + i)->preco_produto);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:349: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:350: 
+  out of bounds read. assert \valid_read(&(aux + j)->preco_produto);
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:79: 
+  more than 200(10000) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:81: 
+  more than 200(10000) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:82: 
+  more than 200(10000) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:83: 
+  more than 200(10000) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:84: 
+  more than 200(10000) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:116: 
+  more than 200(500) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:116: 
+  more than 200(500) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:322: 
+  more than 200(499) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:325: 
+  more than 200(499) elements to enumerate. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:367: 
+  Using specification of function m_s_1 for recursive calls.
+  Analysis of function m_s_1 is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:347: 
+  out of bounds write. assert \valid(aux + (int)((int)(right + m) - j));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:350: 
+  out of bounds read. assert \valid_read(&(aux + i)->preco_produto);
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:388: 
+  more than 200(9999) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:79: 
+  accessing out of bounds index. assert idp < 10000;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/310/Projeto.sara.c:116: 
+  accessing out of bounds index. assert ide < 500;
+[eva] done for function main
+[scope:rm_asserts] removing 1 assertion(s)
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function intercala_1:
+  i ∈ [0..2147483647]
+  j ∈ [-1..2147483647]
+  k ∈ [2..2147483647]
+  aux[0..9999] ∈ [--..--] or UNINITIALIZED
+  final[0..9999] ∈ [--..--] or UNINITIALIZED
+[eva:final-states] Values at end of function read_line:
+  c ∈ {-1; 0; 10}
+  i ∈ [0..999]
+  s[0..999] ∈ [--..--] or UNINITIALIZED
+  s[0..999] ∈ [--..--] or UNINITIALIZED
+  s[0..999] ∈ [--..--] or UNINITIALIZED
+  s[0..999] ∈ [--..--] or UNINITIALIZED
+  s[0..999] ∈ [--..--] or UNINITIALIZED
+  s[0..999] ∈ [--..--] or UNINITIALIZED
+  s[0..999] ∈ [--..--] or UNINITIALIZED
+  s[0..999] ∈ [--..--] or UNINITIALIZED
+  s[0..999] ∈ [--..--] or UNINITIALIZED
+  s[0..999] ∈ [--..--] or UNINITIALIZED
+  s[0..999] ∈ [--..--] or UNINITIALIZED
+  S___fc_stdin[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function intercala_2:
+  i ∈ [-1073741823..2147483647]
+  j ∈ [-2147483648..1073741823]
+  k ∈ [2..2147483647]
+  aux[0..199] ∈ [--..--] or UNINITIALIZED
+  final[0..199] ∈ [--..--] or UNINITIALIZED
+[eva:final-states] Values at end of function split_string:
+  __fc_strtok_ptr ∈
+                 {{ garbled mix of &{s; s; s; s; s; s; s; s; s; s; s}
+                  (origin: Library function) }} or ESCAPINGADDR
+  i ∈ [0..2147483647]
+  word ∈ {0}
+  s[0..999] ∈ [--..--] or UNINITIALIZED
+  dados[0..4][0..63] ∈ [--..--] or UNINITIALIZED
+  s[0..999] ∈ [--..--] or UNINITIALIZED
+  dados[0..4][0..63] ∈ [--..--] or UNINITIALIZED
+  s[0..999] ∈ [--..--] or UNINITIALIZED
+  dados[0..4][0..63] ∈ [--..--] or UNINITIALIZED
+  s[0..999] ∈ [--..--] or UNINITIALIZED
+  dados[0..4][0..63] ∈ [--..--] or UNINITIALIZED
+  s[0..999] ∈ [--..--] or UNINITIALIZED
+  dados[0..4][0..63] ∈ [--..--] or UNINITIALIZED
+  s[0..999] ∈ [--..--] or UNINITIALIZED
+  dados[0..4][0..63] ∈ [--..--] or UNINITIALIZED
+  s[0..999] ∈ [--..--] or UNINITIALIZED
+  dados[0..4][0..63] ∈ [--..--] or UNINITIALIZED
+  s[0..999] ∈ [--..--] or UNINITIALIZED
+  dados[0..4][0..63] ∈ [--..--] or UNINITIALIZED
+  s[0..999] ∈ [--..--] or UNINITIALIZED
+  dados[0..4][0..63] ∈ [--..--] or UNINITIALIZED
+  s[0..999] ∈ [--..--] or UNINITIALIZED
+  dados[0..4][0..63] ∈ [--..--] or UNINITIALIZED
+  s[0..999] ∈ [--..--] or UNINITIALIZED
+  dados[0..4][0..63] ∈ [--..--] or UNINITIALIZED
+[eva:final-states] Values at end of function adiciona_produto:
+  __fc_strtok_ptr ∈
+                 {{ garbled mix of &{s}
+                  (origin: Library function) }} or ESCAPINGADDR
+  idp ∈ [1..10000]
+  inventario_produtos[0].id_produto ∈ [0..2147483647]
+                     {[0]{.desc_produto[0..63]; .preco_produto; .peso_produto; .stock_produto}; [1..9999]} ∈
+                     [--..--]
+  s[0..999] ∈ [--..--] or UNINITIALIZED
+  dados[0..4][0..63] ∈ [--..--] or UNINITIALIZED
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function adiciona_produto_encomenda:
+  __fc_strtok_ptr ∈
+                 {{ garbled mix of &{s}
+                  (origin: Library function) }} or ESCAPINGADDR
+  inventario_produtos[0].id_produto ∈ [0..2147483647]
+                     {[0]{.desc_produto[0..63]; .preco_produto; .peso_produto; .stock_produto}; [1..9999]} ∈
+                     [--..--]
+  lista_encomendas[0..499] ∈ [--..--]
+  a ∈ {0; 1}
+  i ∈ [0..200] or UNINITIALIZED
+  s[0..999] ∈ [--..--] or UNINITIALIZED
+  dados[0..4][0..63] ∈ [--..--] or UNINITIALIZED
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function adiciona_stock:
+  __fc_strtok_ptr ∈
+                 {{ garbled mix of &{s}
+                  (origin: Library function) }} or ESCAPINGADDR
+  inventario_produtos[0].id_produto ∈ [0..2147483647]
+                     {[0]{.desc_produto[0..63]; .preco_produto; .peso_produto; .stock_produto}; [1..9999]} ∈
+                     [--..--]
+  s[0..999] ∈ [--..--] or UNINITIALIZED
+  dados[0..4][0..63] ∈ [--..--] or UNINITIALIZED
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function altera_preco_produto:
+  __fc_strtok_ptr ∈
+                 {{ garbled mix of &{s}
+                  (origin: Library function) }} or ESCAPINGADDR
+  inventario_produtos[0].id_produto ∈ [0..2147483647]
+                     {[0]{.desc_produto[0..63]; .preco_produto; .peso_produto; .stock_produto}; [1..9999]} ∈
+                     [--..--]
+  s[0..999] ∈ [--..--] or UNINITIALIZED
+  dados[0..4][0..63] ∈ [--..--] or UNINITIALIZED
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function calcula_custo:
+  __fc_strtok_ptr ∈
+                 {{ garbled mix of &{s}
+                  (origin: Library function) }} or ESCAPINGADDR
+  i ∈ [0..200] or UNINITIALIZED
+  c ∈ [--..--]
+  s[0..999] ∈ [--..--] or UNINITIALIZED
+  dados[0..4][0..63] ∈ [--..--] or UNINITIALIZED
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function cria_nova_encomenda:
+  __fc_strtok_ptr ∈
+                 {{ garbled mix of &{s}
+                  (origin: Library function) }} or ESCAPINGADDR
+  ide ∈ [1..500]
+  lista_encomendas[0..499] ∈ [--..--]
+  s[0..999] ∈ [--..--] or UNINITIALIZED
+  dados[0..4][0..63] ∈ [--..--] or UNINITIALIZED
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function descricao_quantidade:
+  __fc_strtok_ptr ∈
+                 {{ garbled mix of &{s}
+                  (origin: Library function) }} or ESCAPINGADDR
+  qtd ∈ [--..--]
+  i ∈ [0..200] or UNINITIALIZED
+  s[0..999] ∈ [--..--] or UNINITIALIZED
+  dados[0..4][0..63] ∈ [--..--] or UNINITIALIZED
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function lista_identificador:
+  __fc_strtok_ptr ∈
+                 {{ garbled mix of &{s}
+                  (origin: Library function) }} or ESCAPINGADDR
+  i ∈ [0..500]
+  e ∈ [0..200] or UNINITIALIZED
+  x ∈ [--..--]
+  final ∈ [--..--]
+  s[0..999] ∈ [--..--] or UNINITIALIZED
+  dados[0..4][0..63] ∈ [--..--] or UNINITIALIZED
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function remove_produto_encomenda:
+  __fc_strtok_ptr ∈
+                 {{ garbled mix of &{s}
+                  (origin: Library function) }} or ESCAPINGADDR
+  inventario_produtos[0].id_produto ∈ [0..2147483647]
+                     {[0]{.desc_produto[0..63]; .preco_produto; .peso_produto; .stock_produto}; [1..9999]} ∈
+                     [--..--]
+  lista_encomendas[0..499] ∈ [--..--]
+  i ∈ [0..200] or UNINITIALIZED
+  s[0..999] ∈ [--..--] or UNINITIALIZED
+  dados[0..4][0..63] ∈ [--..--] or UNINITIALIZED
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function remove_stock:
+  __fc_strtok_ptr ∈
+                 {{ garbled mix of &{s}
+                  (origin: Library function) }} or ESCAPINGADDR
+  inventario_produtos[0].id_produto ∈ [0..2147483647]
+                     {[0]{.desc_produto[0..63]; .preco_produto; .peso_produto; .stock_produto}; [1..9999]} ∈
+                     [--..--]
+  s[0..999] ∈ [--..--] or UNINITIALIZED
+  dados[0..4][0..63] ∈ [--..--] or UNINITIALIZED
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function auxiliar:
+  i ∈ [0..10000]
+  aux[0..9999] ∈ [--..--] or UNINITIALIZED
+  final[0..9999] ∈ [--..--] or UNINITIALIZED
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function auxiliar_2:
+  __fc_strtok_ptr ∈
+                 {{ garbled mix of &{s}
+                  (origin: Library function) }} or ESCAPINGADDR
+  aux[0..199] ∈ [--..--] or UNINITIALIZED
+  final[0..199] ∈ [--..--] or UNINITIALIZED
+  i ∈ [0..200] or UNINITIALIZED
+  s[0..999] ∈ [--..--] or UNINITIALIZED
+  dados[0..4][0..63] ∈ [--..--] or UNINITIALIZED
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function menu:
+  __fc_strtok_ptr ∈ [--..--] or ESCAPINGADDR
+  idp ∈ [0..10000]
+  ide ∈ [0..500]
+  inventario_produtos[0].id_produto ∈ [0..2147483647]
+                     {[0]{.desc_produto[0..63]; .preco_produto; .peso_produto; .stock_produto}; [1..9999]} ∈
+                     [--..--]
+  lista_encomendas[0..499] ∈ [--..--]
+  run ∈ {0}
+  operation ∈ [--..--] or UNINITIALIZED
+  __retres ∈ {0}
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function main:
+  __fc_strtok_ptr ∈ [--..--] or ESCAPINGADDR
+  idp ∈ [0..10000]
+  ide ∈ [0..500]
+  inventario_produtos[0].id_produto ∈ [0..2147483647]
+                     {[0]{.desc_produto[0..63]; .preco_produto; .peso_produto; .stock_produto}; [1..9999]} ∈
+                     [--..--]
+  lista_encomendas[0..499] ∈ [--..--]
+  __retres ∈ {0}
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function m_s_1:
+  m ∈ [0..4999]
+  aux[0..9999] ∈ [--..--] or UNINITIALIZED
+  final[0..9999] ∈ [--..--] or UNINITIALIZED
+[eva:final-states] Values at end of function m_s_2:
+  m ∈ [-1073741824..1073741823]
+  aux[0..199] ∈ [--..--] or UNINITIALIZED
+  final[0..199] ∈ [--..--] or UNINITIALIZED
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  20 functions analyzed (out of 23): 86% coverage.
+  In these functions, 566 statements reached (out of 566): 100% coverage.
+  ----------------------------------------------------------------------------
+  Some errors and warnings have been raised during the analysis:
+    by the Eva analyzer:      2 errors    0 warnings
+    by the Frama-C kernel:    0 errors    0 warnings
+  ----------------------------------------------------------------------------
+  167 alarms generated by the analysis:
+     107 accesses out of bounds index
+      40 integer overflows
+      12 invalid memory accesses
+       7 accesses to uninitialized left-values
+       1 other
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     0 unknown     0 invalid      0 total
+    Preconditions   141 valid    15 unknown     0 invalid    156 total
+  90% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[eva] User Error: Deferred error message was emitted during execution. See above messages for more information.
+[kernel] Plug-in eva aborted: invalid user input.

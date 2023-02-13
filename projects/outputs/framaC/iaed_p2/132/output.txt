@@ -1,0 +1,264 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/iaed_p2/132/hashtable.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/iaed_p2/132/main.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:7: 
+  dropping duplicate def'n of func can_fail_malloc at /home/fmarques/sbugs/projects/alunos/lib/allocators.h:7 in favor of that at /home/fmarques/sbugs/projects/alunos/lib/allocators.h:7
+[kernel] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:14: 
+  dropping duplicate def'n of func can_fail_calloc at /home/fmarques/sbugs/projects/alunos/lib/allocators.h:14 in favor of that at /home/fmarques/sbugs/projects/alunos/lib/allocators.h:14
+[kernel] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:21: 
+  dropping duplicate def'n of func can_fail_realloc at /home/fmarques/sbugs/projects/alunos/lib/allocators.h:21 in favor of that at /home/fmarques/sbugs/projects/alunos/lib/allocators.h:21
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  
+[eva] using specification for function time
+[eva] using specification for function srand
+[eva] using specification for function rand
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/132/hashtable.c:44: 
+  out of bounds write. assert \valid(teams_tab + i);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/132/hashtable.c:43: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_0
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/132/hashtable.c:257: 
+  out of bounds write. assert \valid(games_tab + i);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/132/hashtable.c:256: 
+  starting to merge loop iterations
+[eva] using specification for function getchar
+[eva] using specification for function scanf_va_3
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/132/hashtable.c:25: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/132/hashtable.c:25: 
+  accessing uninitialized left-value. assert \initialized(s);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/132/hashtable.c:299: 
+  accessing uninitialized left-value. assert \initialized(games_tab + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/132/hashtable.c:299: 
+  out of bounds read. assert \valid_read(games_tab + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/132/hashtable.c:76: 
+  accessing uninitialized left-value. assert \initialized(teams_tab + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/132/hashtable.c:76: 
+  out of bounds read. assert \valid_read(teams_tab + i);
+[eva] using specification for function printf_va_5
+[eva] using specification for function scanf_va_5
+[eva] using specification for function printf_va_7
+[eva] using specification for function scanf_va_4
+[eva] using specification for function printf_va_6
+[eva] using specification for function scanf_va_6
+[eva] using specification for function printf_va_9
+[eva] using specification for function scanf_va_1
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_1
+[eva] using specification for function strdup
+[eva:libc:unsupported-spec] /home/fmarques/sbugs/projects/alunos/iaed_p2/132/hashtable.c:86: 
+  The specification of function 'strdup' is currently not supported by Eva.
+  Consider adding 'FRAMAC_SHARE/libc/string.c' to the analyzed source files.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/132/hashtable.c:86: 
+  ignoring unsupported allocates clause
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/132/hashtable.c:86: 
+  out of bounds write. assert \valid(&t->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/132/hashtable.c:25: 
+  out of bounds read. assert \valid_read(s);
+[eva] using specification for function scanf_va_2
+[eva] using specification for function printf_va_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/132/hashtable.c:153: 
+  accessing uninitialized left-value. assert \initialized(teams_tab + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/132/hashtable.c:153: 
+  out of bounds read. assert \valid_read(teams_tab + i);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/132/hashtable.c:152: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/132/hashtable.c:180: 
+  accessing uninitialized left-value. assert \initialized(teams_tab + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/132/hashtable.c:180: 
+  out of bounds read. assert \valid_read(teams_tab + i);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/132/hashtable.c:179: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/132/main.c:44: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/132/hashtable.c:55: 
+  accessing uninitialized left-value. assert \initialized(teams_tab + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/132/hashtable.c:55: 
+  out of bounds read. assert \valid_read(teams_tab + i);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/132/hashtable.c:54: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/132/hashtable.c:268: 
+  accessing uninitialized left-value. assert \initialized(games_tab + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/132/hashtable.c:268: 
+  out of bounds read. assert \valid_read(games_tab + i);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/132/hashtable.c:267: 
+  starting to merge loop iterations
+[eva] done for function main
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function destroy_games_list:
+  __retres ∈ {0}
+[eva:final-states] Values at end of function destroy_gnode:
+  
+[eva:final-states] Values at end of function destroy_teams_list:
+  
+[eva:final-states] Values at end of function destroy_tnode:
+  
+[eva:final-states] Values at end of function destroy_games:
+  games_tab ∈
+           {{ NULL ; (gnode **)&__malloc_can_fail_malloc_l11_0 }} or ESCAPINGADDR
+  i ∈ {911}
+  games_tab ∈
+           {{ NULL ; (gnode **)&__malloc_can_fail_malloc_l11_0 }} or ESCAPINGADDR
+[eva:final-states] Values at end of function destroy_teams:
+  teams_tab ∈
+           {{ NULL ; (tnode **)&__malloc_can_fail_malloc_l11 }} or ESCAPINGADDR
+  i ∈ {911}
+  teams_tab ∈
+           {{ NULL ; (tnode **)&__malloc_can_fail_malloc_l11 }} or ESCAPINGADDR
+[eva:final-states] Values at end of function hash:
+  s ∈
+   {{ &name[0] ; &name[0] ; &name[0] ; &team1[0] ; &name[0] ; &name[0] ;
+      &name[0] }}
+  h ∈ [-910..910]
+  a ∈ {127}
+[eva:final-states] Values at end of function list_games:
+  
+[eva:final-states] Values at end of function lookup_game:
+  tmp ∈ {0}
+  __retres ∈ {0}
+[eva:final-states] Values at end of function lookup_higher:
+  tmp ∈ {0}
+[eva:final-states] Values at end of function lookup_team:
+  tmp ∈ {0}
+  __retres ∈ {0}
+[eva:final-states] Values at end of function lookup_top_team:
+  tmp ∈ {0}
+[eva:final-states] Values at end of function table_insert_team:
+  NON TERMINATING FUNCTION
+[eva:final-states] Values at end of function table_search_game:
+  i ∈ [0..910]
+[eva:final-states] Values at end of function change_score:
+  g ∈ {0}
+  name[0] ∈ {0}
+      [1..1023] ∈ UNINITIALIZED
+  score1 ∈ [--..--]
+  score2 ∈ [--..--]
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function remove_game:
+  g ∈ {0}
+  name[0] ∈ {0}
+      [1..1023] ∈ UNINITIALIZED
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function search_game:
+  name[0] ∈ {0}
+      [1..1023] ∈ UNINITIALIZED
+  g ∈ {0}
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function table_search_higher:
+  i ∈ {911}
+  higher ∈ {-1}
+[eva:final-states] Values at end of function table_search_team:
+  i ∈ [0..910]
+[eva:final-states] Values at end of function add_game:
+  name[0] ∈ {0}
+      [1..1023] ∈ UNINITIALIZED
+  team1[0] ∈ {0}
+       [1..1023] ∈ UNINITIALIZED
+  team2[0] ∈ [--..--]
+       [1..1023] ∈ UNINITIALIZED
+  score1 ∈ [--..--]
+  score2 ∈ [--..--]
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function search_team:
+  name[0] ∈ {0}
+      [1..1023] ∈ UNINITIALIZED
+  t ∈ {0}
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function table_search_top_teams:
+  top_teams_0 ∈ {0}
+  i ∈ {911}
+[eva:final-states] Values at end of function can_fail_malloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈
+          {{ NULL ; (void *)&__malloc_can_fail_malloc_l11 ;
+             (void *)&__malloc_can_fail_malloc_l11_0 ;
+             (void *)&__malloc_can_fail_malloc_l11_1 }}
+[eva:final-states] Values at end of function init_games:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  games_tab ∈ {{ NULL ; (gnode **)&__malloc_can_fail_malloc_l11_0 }}
+  i ∈ {911}
+  __malloc_can_fail_malloc_l11_0[0..7287] ∈ {0} or UNINITIALIZED
+                                [7288..14575] ∈ UNINITIALIZED
+[eva:final-states] Values at end of function init_teams:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  teams_tab ∈ {{ NULL ; (tnode **)&__malloc_can_fail_malloc_l11 }}
+  i ∈ {911}
+  __malloc_can_fail_malloc_l11[0..7287] ∈ {0} or UNINITIALIZED
+                              [7288..14575] ∈ UNINITIALIZED
+[eva:final-states] Values at end of function new_team:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  t ∈ {{ (team *)&__malloc_can_fail_malloc_l11_1 }}
+  __malloc_can_fail_malloc_l11_1[0..7] ∈ [--..--]
+                                [8..11] ∈ {0}
+                                [12..15] ∈ UNINITIALIZED
+[eva:final-states] Values at end of function add_team:
+  NON TERMINATING FUNCTION
+[eva:final-states] Values at end of function top_teams:
+  higher ∈ {-1}
+  top_teams_0 ∈ {0}
+[eva:final-states] Values at end of function main:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  cmd ∈ {-1; 120}
+  line ∈ [--..--]
+  teams_tab ∈
+           {{ NULL ; (tnode **)&__malloc_can_fail_malloc_l11 }} or ESCAPINGADDR
+  games_tab ∈
+           {{ NULL ; (gnode **)&__malloc_can_fail_malloc_l11_0 }} or ESCAPINGADDR
+  games_list ∈ {0}
+  __retres ∈ {0}
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11[0..7287] ∈ {0} or UNINITIALIZED
+                              [7288..14575] ∈ UNINITIALIZED
+  __malloc_can_fail_malloc_l11_0[0..7287] ∈ {0} or UNINITIALIZED
+                                [7288..14575] ∈ UNINITIALIZED
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  29 functions analyzed (out of 44): 65% coverage.
+  In these functions, 206 statements reached (out of 269): 76% coverage.
+  ----------------------------------------------------------------------------
+  No errors or warnings raised during the analysis.
+  ----------------------------------------------------------------------------
+  17 alarms generated by the analysis:
+      10 invalid memory accesses
+       7 accesses to uninitialized left-values
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     0 unknown     0 invalid      0 total
+    Preconditions    27 valid     0 unknown     0 invalid     27 total
+  100% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[report] Classification
+[report] Output /home/fmarques/sbugs/projects/outputs/framaC/iaed_p2/132/errors.json
+[report] Reviews     :   17
+[report] Unclassified:   17

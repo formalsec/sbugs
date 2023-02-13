@@ -1,0 +1,918 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  buffer[0..99] ∈ {0}
+  products[0..9999] ∈ {0}
+  orders[0..499] ∈ {0}
+  product_count ∈ {0}
+  order_count ∈ {0}
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:450: 
+  starting to merge loop iterations
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:451: 
+  more than 200(500) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:451: 
+  more than 200(501) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:451: 
+  more than 200(10000) locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:453: 
+  starting to merge loop iterations
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:454: 
+  more than 200(500) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:451: 
+  more than 200(10000) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:454: 
+  more than 200(500) elements to enumerate. Approximating.
+[eva] using specification for function fgets
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:434: 
+  function fgets: precondition 'valid_stream' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:349: 
+  function strchr: precondition 'valid_string_s' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:350: 
+  out of bounds write. assert \valid(remaining_args + 0);
+[eva] using specification for function strcpy
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:352: 
+  function strcpy: precondition 'valid_string_src' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:352: 
+  function strcpy: precondition 'room_string' got status unknown.
+[eva] FRAMAC_SHARE/libc/string.h:373: 
+  cannot evaluate ACSL term, unsupported ACSL construct: logic function strcmp
+[eva] using specification for function sscanf_va_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:353: 
+  function sscanf_va_1: precondition valid_read_string(s) got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:119: 
+  function strcpy: precondition 'valid_string_src' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:119: 
+  function strcpy: precondition 'room_string' got status unknown.
+[eva] using specification for function printf_va_1
+[eva] using specification for function sscanf_va_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:359: 
+  function sscanf_va_2: precondition valid_read_string(s) got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:130: 
+  accessing out of bounds index. assert 0 ≤ idp;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:130: 
+  accessing out of bounds index. assert idp < 10000;
+[eva] using specification for function printf_va_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:135: 
+  signed overflow. assert -2147483648 ≤ products[idp].qtd + qtd;
+[eva] using specification for function printf_va_3
+[eva] using specification for function sscanf_va_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:370: 
+  function sscanf_va_3: precondition valid_read_string(s) got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:151: 
+  accessing out of bounds index. assert 0 ≤ ide;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:151: 
+  accessing out of bounds index. assert ide < 500;
+[eva] using specification for function printf_va_4
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:156: 
+  accessing out of bounds index. assert 0 ≤ idp;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:156: 
+  accessing out of bounds index. assert idp < 10000;
+[eva] using specification for function printf_va_5
+[eva] using specification for function printf_va_6
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:166: 
+  signed overflow. assert products[idp].peso * qtd ≤ 2147483647;
+[eva] using specification for function printf_va_7
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:171: 
+  signed overflow. assert products[idp].qtd - qtd ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:180: 
+  accessing out of bounds index. assert 0 ≤ orders[ide].product_count;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:182: 
+  signed overflow. assert products[idp].peso * qtd ≤ 2147483647;
+[eva] using specification for function sscanf_va_4
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:375: 
+  function sscanf_va_4: precondition valid_read_string(s) got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:189: 
+  accessing out of bounds index. assert 0 ≤ idp;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:189: 
+  accessing out of bounds index. assert idp < 10000;
+[eva] using specification for function printf_va_8
+[eva] using specification for function printf_va_9
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:199: 
+  signed overflow. assert products[idp].qtd - qtd ≤ 2147483647;
+[eva] using specification for function sscanf_va_5
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:381: 
+  function sscanf_va_5: precondition valid_read_string(s) got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:208: 
+  accessing out of bounds index. assert 0 ≤ ide;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:208: 
+  accessing out of bounds index. assert ide < 500;
+[eva] using specification for function printf_va_10
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:213: 
+  accessing out of bounds index. assert 0 ≤ idp;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:213: 
+  accessing out of bounds index. assert idp < 10000;
+[eva] using specification for function printf_va_11
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:208: 
+  more than 200(500) elements to enumerate. Approximating.
+[eva] using specification for function sscanf_va_6
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:387: 
+  function sscanf_va_6: precondition valid_read_string(s) got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:235: 
+  accessing out of bounds index. assert 0 ≤ ide;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:235: 
+  accessing out of bounds index. assert ide < 500;
+[eva] using specification for function printf_va_12
+[eva] using specification for function printf_va_13
+[eva] using specification for function sscanf_va_7
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:393: 
+  function sscanf_va_7: precondition valid_read_string(s) got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:248: 
+  accessing out of bounds index. assert 0 ≤ idp;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:248: 
+  accessing out of bounds index. assert idp < 10000;
+[eva] using specification for function printf_va_14
+[eva] using specification for function sscanf_va_8
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:399: 
+  function sscanf_va_8: precondition valid_read_string(s) got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:260: 
+  accessing out of bounds index. assert 0 ≤ ide;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:260: 
+  accessing out of bounds index. assert ide < 500;
+[eva] using specification for function printf_va_15
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:265: 
+  accessing out of bounds index. assert 0 ≤ idp;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:265: 
+  accessing out of bounds index. assert idp < 10000;
+[eva] using specification for function printf_va_16
+[eva] using specification for function printf_va_17
+[eva] using specification for function sscanf_va_9
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:405: 
+  function sscanf_va_9: precondition valid_read_string(s) got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:283: 
+  accessing out of bounds index. assert 0 ≤ idp;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:283: 
+  accessing out of bounds index. assert idp < 10000;
+[eva] using specification for function printf_va_19
+[eva] using specification for function printf_va_21
+[eva] using specification for function sscanf_va_10
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:416: 
+  function sscanf_va_10: precondition valid_read_string(s) got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:319: 
+  accessing out of bounds index. assert 0 ≤ ide;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:319: 
+  accessing out of bounds index. assert ide < 500;
+[eva] using specification for function printf_va_23
+[eva] using specification for function printf_va_24
+[eva] using specification for function exit
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:464: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:135: 
+  signed overflow. assert products[idp].qtd + qtd ≤ 2147483647;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:135: 
+  more than 200(10000) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:135: 
+  more than 200(10000) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:166: 
+  signed overflow. assert -2147483648 ≤ products[idp].peso * qtd;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:166: 
+  signed overflow.
+  assert -2147483648 ≤ orders[ide].weight + (int)(products[idp].peso * qtd);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:166: 
+  signed overflow.
+  assert orders[ide].weight + (int)(products[idp].peso * qtd) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:171: 
+  signed overflow. assert -2147483648 ≤ products[idp].qtd - qtd;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:171: 
+  more than 200(10000) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:109: 
+  out of bounds read. assert \valid_read(&(orders[ide].products[i])->id);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:108: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:175: 
+  signed overflow. assert -2147483648 ≤ orders[ide].qtds[index_0] + qtd;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:176: 
+  signed overflow. assert -2147483648 ≤ products[idp].peso * qtd;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:176: 
+  signed overflow. assert products[idp].peso * qtd ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:176: 
+  signed overflow.
+  assert -2147483648 ≤ orders[ide].weight + (int)(products[idp].peso * qtd);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:176: 
+  signed overflow.
+  assert orders[ide].weight + (int)(products[idp].peso * qtd) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:182: 
+  signed overflow. assert -2147483648 ≤ products[idp].peso * qtd;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:182: 
+  signed overflow.
+  assert -2147483648 ≤ orders[ide].weight + (int)(products[idp].peso * qtd);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:182: 
+  signed overflow.
+  assert orders[ide].weight + (int)(products[idp].peso * qtd) ≤ 2147483647;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:166: 
+  more than 200(10000) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:199: 
+  signed overflow. assert -2147483648 ≤ products[idp].qtd - qtd;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:199: 
+  more than 200(10000) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:222: 
+  signed overflow.
+  assert -2147483648 ≤ products[idp].qtd + orders[ide].qtds[index_0];
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:222: 
+  more than 200(10000) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:224: 
+  out of bounds read.
+  assert \valid_read(&(orders[ide].products[index_0])->peso);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:224: 
+  signed overflow.
+  assert
+  -2147483648 ≤
+  (orders[ide].products[index_0])->peso * orders[ide].qtds[index_0];
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:224: 
+  signed overflow.
+  assert
+  (orders[ide].products[index_0])->peso * orders[ide].qtds[index_0] ≤
+  2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:224: 
+  signed overflow.
+  assert
+  orders[ide].weight -
+  (int)((orders[ide].products[index_0])->peso * orders[ide].qtds[index_0]) ≤
+  2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:225: 
+  accessing out of bounds index. assert 0 ≤ orders[ide].product_count;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:241: 
+  out of bounds read. assert \valid_read(&(orders[ide].products[i])->preco);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:241: 
+  signed overflow.
+  assert
+  -2147483648 ≤ (orders[ide].products[i])->preco * orders[ide].qtds[i];
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:241: 
+  signed overflow.
+  assert (orders[ide].products[i])->preco * orders[ide].qtds[i] ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:240: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:241: 
+  signed overflow.
+  assert
+  -2147483648 ≤
+  total + (int)((orders[ide].products[i])->preco * orders[ide].qtds[i]);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:241: 
+  signed overflow.
+  assert
+  total + (int)((orders[ide].products[i])->preco * orders[ide].qtds[i]) ≤
+  2147483647;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:252: 
+  more than 200(10000) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:252: 
+  more than 200(10000) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:272: 
+  function printf_va_17: precondition valid_read_string(param0) got status unknown.
+[eva] using specification for function printf_va_18
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:274: 
+  function printf_va_18: precondition valid_read_string(param0) got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:288: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:297: 
+  accessing uninitialized left-value. assert \initialized(&max_ide);
+[eva] using specification for function printf_va_20
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:305: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:311: 
+  accessing uninitialized left-value. assert \initialized(&sorted_products[i]);
+[eva] using specification for function printf_va_22
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:311: 
+  function printf_va_22: precondition valid_read_string(param0) got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:310: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:328: 
+  out of bounds read. assert \valid_read(&(orders[ide].products[i])->preco);
+[eva] using specification for function printf_va_25
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:328: 
+  function printf_va_25: precondition valid_read_string(param0) got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:327: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:175: 
+  signed overflow. assert orders[ide].qtds[index_0] + qtd ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:181: 
+  accessing out of bounds index. assert 0 ≤ orders[ide].product_count;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:222: 
+  signed overflow.
+  assert products[idp].qtd + orders[ide].qtds[index_0] ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:224: 
+  signed overflow.
+  assert
+  -2147483648 ≤
+  orders[ide].weight -
+  (int)((orders[ide].products[index_0])->peso * orders[ide].qtds[index_0]);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:225: 
+  Assigning imprecise value to orders[ide].products[index_0].
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:180}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:81: 
+  accessing uninitialized left-value. assert \initialized(products_0 + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:81: 
+  accessing uninitialized left-value. assert \initialized(products_0 + min);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:80: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:82: 
+  accessing uninitialized left-value. assert \initialized(products_0 + min);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:82: 
+  accessing uninitialized left-value. assert \initialized(products_0 + min);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:63: 
+  accessing uninitialized left-value. assert \initialized(p1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:64: 
+  accessing uninitialized left-value. assert \initialized(p2);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:78: 
+  starting to merge loop iterations
+[eva] using specification for function strcmp
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:94: 
+  function strcmp: precondition 'valid_string_s1' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:94: 
+  function strcmp: precondition 'valid_string_s2' got status unknown.
+[eva] FRAMAC_SHARE/libc/string.h:156: 
+  cannot evaluate ACSL term, unsupported ACSL construct: logic function strcmp
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:93: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:63: 
+  Assigning imprecise value to temp.
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:180}
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:65: 
+  Assigning imprecise value to *p2
+  (pointing to orders with offsets {128; 19456}).
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:180}
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:91: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:63: 
+  Assigning imprecise value to temp.
+  The imprecision originates from Merge
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:64: 
+  Assigning imprecise value to *p1
+  (pointing to orders with offsets {128; 192; 19456; 19520}).
+  The imprecision originates from Merge
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:65: 
+  Assigning imprecise value to *p2
+  (pointing to orders with offsets {128; 19456}).
+  The imprecision originates from Merge
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:118: 
+  more than 200(10000) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:120: 
+  more than 200(10000) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:121: 
+  more than 200(10000) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:122: 
+  more than 200(10000) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:141: 
+  more than 200(500) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:142: 
+  more than 200(500) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:142: 
+  more than 200(500) elements to enumerate. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:175: 
+  Assigning imprecise value to orders[ide].qtds[index_0].
+  The imprecision originates from Merge
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:176: 
+  Assigning imprecise value to orders[ide].weight.
+  The imprecision originates from Merge
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:181: 
+  accessing out of bounds index. assert orders[ide].product_count < 200;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:181: 
+  out of bounds write.
+  assert \valid(&orders[ide].qtds[orders[ide].product_count]);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:182: 
+  Assigning imprecise value to orders[ide].weight.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:182}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:183: 
+  signed overflow. assert -2147483648 ≤ orders[ide].product_count + 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:183: 
+  signed overflow. assert orders[ide].product_count + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:183: 
+  Assigning imprecise value to orders[ide].product_count.
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:180}
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:222: 
+  Assigning imprecise value to products[idp].qtd.
+  The imprecision originates from Merge
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:223: 
+  signed overflow. assert -2147483648 ≤ orders[ide].product_count - 1;
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:224: 
+  Assigning imprecise value to orders[ide].weight.
+  The imprecision originates from Merge
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:225: 
+  Assigning imprecise value to orders[ide].products[index_0].
+  The imprecision originates from Merge
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:226: 
+  accessing out of bounds index. assert 0 ≤ orders[ide].product_count;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:226: 
+  accessing out of bounds index. assert orders[ide].product_count < 200;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:226: 
+  out of bounds read.
+  assert \valid_read(&orders[ide].qtds[orders[ide].product_count]);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:226: 
+  Assigning imprecise value to orders[ide].qtds[index_0].
+  The imprecision originates from Merge
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:241: 
+  Assigning imprecise value to total.
+  The imprecision originates from Merge
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:292: 
+  Assigning imprecise value to max_qtd.
+  The imprecision originates from Merge
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:108: 
+  more than 200(499) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:82: 
+  accessing uninitialized left-value. assert \initialized(products_0 + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:82: 
+  accessing uninitialized left-value. assert \initialized(products_0 + j);
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:81: 
+  more than 200(9999) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:82: 
+  more than 200(9999) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:311: 
+  more than 200(9999) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:91: 
+  signed overflow. assert -2147483648 ≤ product_count_0 - 1;
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:64: 
+  Assigning imprecise value to *p1
+  (pointing to orders with offsets [128..3839744],0%64).
+  The imprecision originates from Merge
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:65: 
+  Assigning imprecise value to *p2
+  (pointing to orders with offsets [128..3827072],128%19328).
+  The imprecision originates from Merge
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:70: 
+  Assigning imprecise value to temp.
+  The imprecision originates from Merge
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:71: 
+  Assigning imprecise value to *q1
+  (pointing to orders with offsets [12928..3846208],0%32).
+  The imprecision originates from Merge
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:72: 
+  Assigning imprecise value to *q2
+  (pointing to orders with offsets [12928..3839872],12928%19328).
+  The imprecision originates from Merge
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:65: 
+  Assigning imprecise value to *p2
+  (pointing to orders with offsets [128..3827136],0%64).
+  The imprecision originates from Merge
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:72: 
+  Assigning imprecise value to *q2
+  (pointing to orders with offsets [12928..3839904],0%32).
+  The imprecision originates from Merge
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:65: 
+  Assigning imprecise value to *p2
+  (pointing to orders with offsets [128..3827200],0%64).
+  The imprecision originates from Merge
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:72: 
+  Assigning imprecise value to *q2
+  (pointing to orders with offsets [12928..3839936],0%32).
+  The imprecision originates from Merge
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:65: 
+  Assigning imprecise value to *p2
+  (pointing to orders with offsets [128..3839680],0%64).
+  The imprecision originates from Merge
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:72: 
+  Assigning imprecise value to *q2
+  (pointing to orders with offsets [12928..3846176],0%32).
+  The imprecision originates from Merge
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:328: 
+  accessing out of bounds index. assert i < 200;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:118: 
+  accessing out of bounds index. assert product_count < 10000;
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:135: 
+  Assigning imprecise value to products[idp].qtd.
+  The imprecision originates from Merge
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:141: 
+  accessing out of bounds index. assert order_count < 500;
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:171: 
+  Assigning imprecise value to products[idp].qtd.
+  The imprecision originates from Merge
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:109: 
+  accessing out of bounds index. assert i < 200;
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:175: 
+  Assigning imprecise value to orders[ide].qtds[index_0].
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:182}
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:176: 
+  Assigning imprecise value to orders[ide].weight.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:182}
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:176: 
+  more than 200(500) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:180: 
+  accessing out of bounds index. assert orders[ide].product_count < 200;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:180: 
+  out of bounds write.
+  assert \valid(&orders[ide].products[orders[ide].product_count]);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:182: 
+  Assigning imprecise value to orders[ide].weight.
+  The imprecision originates from Misaligned
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:182: 
+  more than 200(500) locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:183: 
+  Assigning imprecise value to orders[ide].product_count.
+  The imprecision originates from Misaligned
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:183: 
+  more than 200(500) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:166: 
+  more than 200(500) elements to enumerate. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:199: 
+  Assigning imprecise value to products[idp].qtd.
+  The imprecision originates from Merge
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:222: 
+  Assigning imprecise value to products[idp].qtd.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:182}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:223: 
+  signed overflow. assert orders[ide].product_count - 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:223: 
+  Assigning imprecise value to orders[ide].product_count.
+  The imprecision originates from Merge
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:223: 
+  more than 200(500) locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:224: 
+  Assigning imprecise value to orders[ide].weight.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:182}
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:224: 
+  more than 200(500) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:225: 
+  accessing out of bounds index. assert orders[ide].product_count < 200;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:225: 
+  out of bounds read.
+  assert \valid_read(&orders[ide].products[orders[ide].product_count]);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:225: 
+  Assigning imprecise value to orders[ide].products[index_0].
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:182}
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:226: 
+  Assigning imprecise value to orders[ide].qtds[index_0].
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:182}
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:241: 
+  Assigning imprecise value to total.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:182}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:241: 
+  accessing out of bounds index. assert i < 200;
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:292: 
+  Assigning imprecise value to max_qtd.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:182}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:91: 
+  signed overflow. assert product_count_0 - 1 ≤ 2147483647;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:94: 
+  more than 200(500) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:94: 
+  out of bounds read. assert \valid_read(products_0 + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:93: 
+  signed overflow. assert j + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:94: 
+  out of bounds read. assert \valid_read(products_0 + min);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:63: 
+  out of bounds read. assert \valid_read(p1);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:63: 
+  Assigning imprecise value to temp.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:64: 
+  Assigning imprecise value to *p1
+  (pointing to orders with offsets [128..9663936],0%64).
+  The imprecision originates from Merge
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:65: 
+  Assigning imprecise value to *p2
+  (pointing to orders with offsets [128..9644800],128%19328).
+  The imprecision originates from Misaligned
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:65: 
+  more than 200(500) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:70: 
+  out of bounds read. assert \valid_read(q1);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:70: 
+  Assigning imprecise value to temp.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:71: 
+  Assigning imprecise value to *q1
+  (pointing to orders with offsets [12928..9663968],0%32).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:72: 
+  Assigning imprecise value to *q2
+  (pointing to orders with offsets [12928..9657600],12928%19328).
+  The imprecision originates from Misaligned
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:72: 
+  more than 200(500) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:71: 
+  more than 200(500) elements to enumerate. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:64: 
+  Assigning imprecise value to *p1
+  (pointing to orders with offsets [128..9663936],0%64).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:65: 
+  Assigning imprecise value to *p2
+  (pointing to orders with offsets [128..9644864],0%64).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:72: 
+  Assigning imprecise value to *q2
+  (pointing to orders with offsets [12928..9657632],0%32).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:65: 
+  Assigning imprecise value to *p2
+  (pointing to orders with offsets [128..9644928],0%64).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:72: 
+  Assigning imprecise value to *q2
+  (pointing to orders with offsets [12928..9657664],0%32).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:93: 
+  signed overflow. assert i + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:64: 
+  out of bounds read. assert \valid_read(p2);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:65: 
+  Assigning imprecise value to *p2
+  (pointing to orders with offsets [128..9663936],0%64).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:71: 
+  out of bounds read. assert \valid_read(q2);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:72: 
+  Assigning imprecise value to *q2
+  (pointing to orders with offsets [12928..9663968],0%32).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:135: 
+  Assigning imprecise value to products[idp].qtd.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:171: 
+  Assigning imprecise value to products[idp].qtd.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:175: 
+  Assigning imprecise value to orders[ide].qtds[index_0].
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:176: 
+  Assigning imprecise value to orders[ide].weight.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:199: 
+  Assigning imprecise value to products[idp].qtd.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:222: 
+  Assigning imprecise value to products[idp].qtd.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:223: 
+  Assigning imprecise value to orders[ide].product_count.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:224: 
+  Assigning imprecise value to orders[ide].weight.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:225: 
+  Assigning imprecise value to orders[ide].products[index_0].
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:226: 
+  Assigning imprecise value to orders[ide].qtds[index_0].
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:241: 
+  Assigning imprecise value to total.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:292: 
+  Assigning imprecise value to max_qtd.
+  The imprecision originates from Misaligned
+[eva] done for function main
+[scope:rm_asserts] removing 4 assertion(s)
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function end_prog:
+  NON TERMINATING FUNCTION
+[eva:final-states] Values at end of function find_product:
+  i ∈ [0..200]
+  __retres ∈ [-1..199]
+[eva:final-states] Values at end of function calc_order:
+  i ∈ [0..200] or UNINITIALIZED
+  total ∈ {{ garbled mix of &{products} (origin: Misaligned) }}
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{products} (origin: Misaligned) }}
+               [1] ∈ [--..--]
+[eva:final-states] Values at end of function change_price:
+  products[0]{.id; .desc[0..63]; .preco; .peso} ∈
+          {{ garbled mix of &{products}
+           (origin: Misaligned
+           {/home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:180}) }}
+          {[0].qtd; [1..9999]} ∈
+          {{ garbled mix of &{products} (origin: Misaligned) }}
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{products} (origin: Misaligned) }}
+               [1] ∈ [--..--]
+[eva:final-states] Values at end of function add_stock:
+  products[0]{.id; .desc[0..63]; .preco; .peso} ∈
+          {{ garbled mix of &{products}
+           (origin: Misaligned
+           {/home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:180}) }}
+          {[0].qtd; [1..9999]} ∈
+          {{ garbled mix of &{products} (origin: Misaligned) }}
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{products} (origin: Misaligned) }}
+               [1] ∈ [--..--]
+[eva:final-states] Values at end of function add_order:
+  orders[0].id ∈
+        {{ garbled mix of &{products}
+         (origin: Misaligned
+         {/home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:180}) }}
+        {[0]{.product_count; .weight; .products[0..199]; .qtds[0..199]; .[bits 96 to 127]}; [1..499]} ∈
+        {{ garbled mix of &{products} (origin: Misaligned) }}
+  order_count ∈ [1..500]
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{products} (origin: Misaligned) }}
+               [1] ∈ [--..--]
+[eva:final-states] Values at end of function add_product_order:
+  products[0]{.id; .desc[0..63]; .preco; .peso} ∈
+          {{ garbled mix of &{products}
+           (origin: Misaligned
+           {/home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:180}) }}
+          {[0].qtd; [1..9999]} ∈
+          {{ garbled mix of &{products} (origin: Misaligned) }}
+  orders[0].id ∈
+        {{ garbled mix of &{products}
+         (origin: Misaligned
+         {/home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:180}) }}
+        {[0]{.product_count; .weight; .products[0..199]; .qtds[0..199]; .[bits 96 to 127]}; [1..499]} ∈
+        {{ garbled mix of &{products} (origin: Misaligned) }}
+  index_0 ∈ [-1..199] or UNINITIALIZED
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{products} (origin: Misaligned) }}
+               [1] ∈ [--..--]
+[eva:final-states] Values at end of function read_command:
+  buffer[0..99] ∈ [--..--]
+  args ∈ {{ NULL ; &buffer[2] }}
+  __retres ∈ [--..--]
+[eva:final-states] Values at end of function return_desc_qnt:
+  index_0 ∈ [-1..199] or UNINITIALIZED
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{products} (origin: Misaligned) }}
+               [1] ∈ [--..--]
+[eva:final-states] Values at end of function return_order:
+  i ∈ [0..500] or UNINITIALIZED
+  index_0 ∈ [-1..199] or UNINITIALIZED
+  max_ide ∈ [0..499] or UNINITIALIZED
+  max_qtd ∈ {{ garbled mix of &{products} (origin: Misaligned) }}
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{products} (origin: Misaligned) }}
+               [1] ∈ [--..--]
+[eva:final-states] Values at end of function setup:
+  products{[0..9998]{.id; .desc[bits 0 to 511]#; .preco; .peso; .qtd}; [9999].id} ∈
+          {-1; 0} repeated %32 
+          [9999]{.desc[0..63]; .preco; .peso; .qtd} ∈ {0}
+  orders{[0..498]{.id; .product_count; .weight; .products[0..199]#; .qtds[0..199]; .[bits 96 to 127]#}; [499].id} ∈
+        {-1; 0} repeated %32 
+        [499]{.product_count; .weight; .products[0..199]; .qtds[0..199]; .[bits 96 to 127]} ∈
+        {0}
+  product_count ∈ {0}
+  order_count ∈ {0}
+  i ∈ {500}
+[eva:final-states] Values at end of function add_product:
+  products[0]{.id; .desc[0..63]; .preco; .peso} ∈
+          {{ garbled mix of &{products}
+           (origin: Misaligned
+           {/home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:180}) }}
+          {[0].qtd; [1..9999]} ∈
+          {{ garbled mix of &{products} (origin: Misaligned) }}
+  product_count ∈ [1..10000]
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{products} (origin: Misaligned) }}
+               [1] ∈ [--..--]
+[eva:final-states] Values at end of function sub_product_order:
+  products[0]{.id; .desc[0..63]; .preco; .peso} ∈
+          {{ garbled mix of &{products}
+           (origin: Misaligned
+           {/home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:180}) }}
+          {[0].qtd; [1..9999]} ∈
+          {{ garbled mix of &{products} (origin: Misaligned) }}
+  orders[0].id ∈
+        {{ garbled mix of &{products}
+         (origin: Misaligned
+         {/home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:180}) }}
+        {[0]{.product_count; .weight; .products[0..199]; .qtds[0..199]; .[bits 96 to 127]}; [1..499]} ∈
+        {{ garbled mix of &{products} (origin: Misaligned) }}
+  index_0 ∈ [-1..199] or UNINITIALIZED
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{products} (origin: Misaligned) }}
+               [1] ∈ [--..--]
+[eva:final-states] Values at end of function sub_stock_product:
+  products[0]{.id; .desc[0..63]; .preco; .peso} ∈
+          {{ garbled mix of &{products}
+           (origin: Misaligned
+           {/home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:180}) }}
+          {[0].qtd; [1..9999]} ∈
+          {{ garbled mix of &{products} (origin: Misaligned) }}
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{products} (origin: Misaligned) }}
+               [1] ∈ [--..--]
+[eva:final-states] Values at end of function swap:
+  orders[0].id ∈
+        {{ garbled mix of &{products}
+         (origin: Misaligned
+         {/home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:180}) }}
+        {[0]{.product_count; .weight; .products[0..199]; .qtds[0..199]; .[bits 96 to 127]}; [1..499]} ∈
+        {{ garbled mix of &{products} (origin: Misaligned) }}
+  temp ∈ {{ garbled mix of &{products} (origin: Misaligned) }}
+  sorted_products[0..9999] ∈
+                 {{ &products + [0..799920],0%80 }} or UNINITIALIZED
+[eva:final-states] Values at end of function sort_preco:
+  i ∈ [0..2147483647]
+  j ∈ [2..2147483647] or UNINITIALIZED
+  min ∈ [0..9999] or UNINITIALIZED
+  sorted_products[0..9999] ∈
+                 {{ &products + [0..799920],0%80 }} or UNINITIALIZED
+[eva:final-states] Values at end of function list_product_sist:
+  i ∈ [0..10000]
+  sorted_products[0..9999] ∈
+                 {{ &products + [0..799920],0%80 }} or UNINITIALIZED
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{products} (origin: Misaligned) }}
+               [1] ∈ [--..--]
+[eva:final-states] Values at end of function swapQtd:
+  orders[0].id ∈
+        {{ garbled mix of &{products}
+         (origin: Misaligned
+         {/home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:180}) }}
+        {[0]{.product_count; .weight; .products[0..199]; .qtds[0..199]; .[bits 96 to 127]}; [1..499]} ∈
+        {{ garbled mix of &{products} (origin: Misaligned) }}
+  temp ∈ {{ garbled mix of &{products} (origin: Misaligned) }}
+[eva:final-states] Values at end of function sort_desc:
+  orders[0].id ∈
+        {{ garbled mix of &{products}
+         (origin: Misaligned
+         {/home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:180}) }}
+        {[0]{.product_count; .weight; .products[0..199]; .qtds[0..199]; .[bits 96 to 127]}; [1..499]} ∈
+        {{ garbled mix of &{products} (origin: Misaligned) }}
+  i ∈ [0..2147483647]
+  j ∈ [1..2147483647] or UNINITIALIZED
+  min ∈ [0..150997] or UNINITIALIZED
+  cmp ∈ [--..--] or UNINITIALIZED
+[eva:final-states] Values at end of function list_product_order:
+  orders[0].id ∈
+        {{ garbled mix of &{products}
+         (origin: Misaligned
+         {/home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:180}) }}
+        {[0]{.product_count; .weight; .products[0..199]; .qtds[0..199]; .[bits 96 to 127]}; [1..499]} ∈
+        {{ garbled mix of &{products} (origin: Misaligned) }}
+  i ∈ [0..200] or UNINITIALIZED
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{products} (origin: Misaligned) }}
+               [1] ∈ [--..--]
+[eva:final-states] Values at end of function run_command:
+  buffer[0..99] ∈ [--..--]
+  products[0]{.id; .desc[0..63]; .preco; .peso} ∈
+          {{ garbled mix of &{products}
+           (origin: Misaligned
+           {/home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:180}) }}
+          {[0].qtd; [1..9999]} ∈
+          {{ garbled mix of &{products} (origin: Misaligned) }}
+  orders[0].id ∈
+        {{ garbled mix of &{products}
+         (origin: Misaligned
+         {/home/fmarques/sbugs/projects/alunos/iaed_p1/69/projeto_1_fim.c:180}) }}
+        {[0]{.product_count; .weight; .products[0..199]; .qtds[0..199]; .[bits 96 to 127]}; [1..499]} ∈
+        {{ garbled mix of &{products} (origin: Misaligned) }}
+  product_count ∈ [0..10000]
+  order_count ∈ [0..500]
+  desc[0..63] ∈ [--..--] or UNINITIALIZED
+  remaining_args ∈ {{ &buffer + [3..100] }} or UNINITIALIZED
+  preco ∈ [--..--] or UNINITIALIZED
+  peso ∈ [--..--] or UNINITIALIZED
+  qtd ∈ [--..--] or UNINITIALIZED
+  idp ∈ [--..--] or UNINITIALIZED
+  ide ∈ [0..499] or UNINITIALIZED
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{products} (origin: Misaligned) }}
+               [1] ∈ [--..--]
+[eva:final-states] Values at end of function main:
+  NON TERMINATING FUNCTION
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  22 functions analyzed (out of 25): 88% coverage.
+  In these functions, 286 statements reached (out of 289): 98% coverage.
+  ----------------------------------------------------------------------------
+  No errors or warnings raised during the analysis.
+  ----------------------------------------------------------------------------
+  100 alarms generated by the analysis:
+      38 integer overflows
+      37 accesses out of bounds index
+      15 invalid memory accesses
+      10 accesses to uninitialized left-values
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     0 unknown     0 invalid      0 total
+    Preconditions    57 valid    22 unknown     0 invalid     79 total
+  72% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[report] Classification
+[report] Output /home/fmarques/sbugs/projects/outputs/framaC/iaed_p1/69/errors.json
+[report] Reviews     :  116
+[report] Unclassified:  116

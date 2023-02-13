@@ -1,0 +1,117 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:typing:no-proto] /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:95: 
+  Calling function lista_de_jogos that is declared without prototype.
+  Its formals will be inferred from actual arguments
+[kernel:typing:no-proto] /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:115: 
+  Calling function encontra_mais_vitorias that is declared without prototype.
+  Its formals will be inferred from actual arguments
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  Controlador ∈ {0}
+  contador_equipas ∈ {0}
+  contador_jogos ∈ {0}
+  numero_linha ∈ {0}
+  lista_equipas[0..3999] ∈ {0}
+  lista_jogos[0..3999] ∈ {0}
+[eva] using specification for function scanf_va_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:150: 
+  accessing uninitialized left-value. assert \initialized(texto + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:213: 
+  accessing uninitialized left-value. assert \initialized(texto + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:418: 
+  accessing uninitialized left-value. assert \initialized(texto + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:468: 
+  accessing uninitialized left-value. assert \initialized(texto + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:524: 
+  accessing uninitialized left-value. assert \initialized(texto + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:661: 
+  accessing uninitialized left-value. assert \initialized(texto + i);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:75: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:144: 
+  signed overflow. assert numero_linha + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:207: 
+  signed overflow. assert numero_linha + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:383: 
+  signed overflow. assert numero_linha + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:414: 
+  signed overflow. assert numero_linha + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:464: 
+  signed overflow. assert numero_linha + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:518: 
+  signed overflow. assert numero_linha + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:657: 
+  signed overflow. assert numero_linha + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:820: 
+  signed overflow. assert numero_linha + 1 ≤ 2147483647;
+[eva] done for function main
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:150: 
+  assertion 'Eva,initialization' got final status invalid.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:213: 
+  assertion 'Eva,initialization' got final status invalid.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:418: 
+  assertion 'Eva,initialization' got final status invalid.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:468: 
+  assertion 'Eva,initialization' got final status invalid.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:524: 
+  assertion 'Eva,initialization' got final status invalid.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/158/proj2.c:661: 
+  assertion 'Eva,initialization' got final status invalid.
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function adiciona_equipa:
+  NON TERMINATING FUNCTION
+[eva:final-states] Values at end of function adiciona_jogo:
+  NON TERMINATING FUNCTION
+[eva:final-states] Values at end of function altera_pontuacao:
+  NON TERMINATING FUNCTION
+[eva:final-states] Values at end of function apaga_jogo:
+  NON TERMINATING FUNCTION
+[eva:final-states] Values at end of function encontra_mais_vitorias:
+  numero_linha ∈ [1..2147483647]
+  contador ∈ {0}
+  numero_vitorias ∈ {0}
+[eva:final-states] Values at end of function lista_de_jogos:
+  numero_linha ∈ [1..2147483647]
+  contador ∈ {0}
+[eva:final-states] Values at end of function procura_equipa:
+  NON TERMINATING FUNCTION
+[eva:final-states] Values at end of function procura_jogo:
+  NON TERMINATING FUNCTION
+[eva:final-states] Values at end of function main:
+  Controlador ∈ {1}
+  contador_equipas ∈ {0}
+  contador_jogos ∈ {0}
+  numero_linha ∈ [0..2147483647]
+  __retres ∈ {0}
+  S___fc_stdin[0..1] ∈ [--..--]
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  9 functions analyzed (out of 12): 75% coverage.
+  In these functions, 76 statements reached (out of 433): 17% coverage.
+  ----------------------------------------------------------------------------
+  No errors or warnings raised during the analysis.
+  ----------------------------------------------------------------------------
+  14 alarms generated by the analysis:
+       8 integer overflows
+       6 accesses to uninitialized left-values
+  6 of them are sure alarms (invalid status).
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     0 unknown     0 invalid      0 total
+    Preconditions     2 valid     0 unknown     0 invalid      2 total
+  100% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[report] Classification
+[report] Output /home/fmarques/sbugs/projects/outputs/framaC/iaed_p2/158/errors.json
+[report] Reviews     :    8
+[report] Unclassified:    8

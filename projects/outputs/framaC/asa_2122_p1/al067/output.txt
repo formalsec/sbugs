@@ -1,0 +1,218 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  seq1[0..99999] ∈ {0}
+  seq2[0..99999] ∈ {0}
+[eva] using specification for function getchar
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:101: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:103: 
+  signed overflow. assert -2147483648 ≤ n * 10;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:103: 
+  signed overflow. assert n * 10 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:103: 
+  signed overflow.
+  assert -2147483648 ≤ (int)(n * 10) + (int)((int)c - (int)'0');
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:103: 
+  signed overflow.
+  assert (int)(n * 10) + (int)((int)c - (int)'0') ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:119: 
+  out of bounds write. assert \valid(seq + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:41: 
+  allocating variable __malloc_problemOne_l41
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:42: 
+  allocating variable __malloc_problemOne_l42
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:43: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:44: 
+  out of bounds write. assert \valid(numLis + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:45: 
+  out of bounds write. assert \valid(LIS + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:49: 
+  accessing uninitialized left-value. assert \initialized(LIS + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:49: 
+  accessing uninitialized left-value. assert \initialized(LIS + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:49: 
+  out of bounds read. assert \valid_read(LIS + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:49: 
+  out of bounds read. assert \valid_read(LIS + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:50: 
+  out of bounds write. assert \valid(LIS + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:50: 
+  accessing uninitialized left-value. assert \initialized(LIS + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:50: 
+  out of bounds read. assert \valid_read(LIS + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:51: 
+  out of bounds write. assert \valid(numLis + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:51: 
+  accessing uninitialized left-value. assert \initialized(numLis + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:51: 
+  out of bounds read. assert \valid_read(numLis + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:53: 
+  accessing uninitialized left-value. assert \initialized(LIS + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:53: 
+  accessing uninitialized left-value. assert \initialized(LIS + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:53: 
+  out of bounds read. assert \valid_read(LIS + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:53: 
+  out of bounds read. assert \valid_read(LIS + j);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:48: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:54: 
+  out of bounds write. assert \valid(numLis + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:54: 
+  accessing uninitialized left-value. assert \initialized(numLis + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:54: 
+  accessing uninitialized left-value. assert \initialized(numLis + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:54: 
+  out of bounds read. assert \valid_read(numLis + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:49: 
+  signed overflow. assert 1 + *(LIS + j) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:50: 
+  signed overflow. assert 1 + *(LIS + j) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:53: 
+  signed overflow. assert 1 + *(LIS + j) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:54: 
+  signed overflow. assert *(numLis + i) + *(numLis + j) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:57: 
+  accessing uninitialized left-value. assert \initialized(LIS + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:57: 
+  out of bounds read. assert \valid_read(LIS + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:58: 
+  accessing uninitialized left-value. assert \initialized(LIS + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:58: 
+  out of bounds read. assert \valid_read(LIS + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:59: 
+  accessing uninitialized left-value. assert \initialized(numLis + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:59: 
+  out of bounds read. assert \valid_read(numLis + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:61: 
+  accessing uninitialized left-value. assert \initialized(LIS + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:61: 
+  out of bounds read. assert \valid_read(LIS + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:62: 
+  accessing uninitialized left-value. assert \initialized(numLis + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:62: 
+  out of bounds read. assert \valid_read(numLis + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:47: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:62: 
+  signed overflow. assert n + *(numLis + i) ≤ 2147483647;
+[eva] using specification for function printf_va_1
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:28: 
+  freeing automatic bases: {__malloc_problemOne_l41, __malloc_problemOne_l42}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:129: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:122: 
+  out of bounds write. assert \valid(seq + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:70: 
+  allocating variable __malloc_problemTwo_l70
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:71: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:72: 
+  out of bounds write. assert \valid(LCIS + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:78: 
+  accessing uninitialized left-value. assert \initialized(LCIS + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:87: 
+  accessing uninitialized left-value. assert \initialized(LCIS + j);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:76: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:78: 
+  out of bounds read. assert \valid_read(LCIS + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:79: 
+  out of bounds write. assert \valid(LCIS + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:80: 
+  accessing uninitialized left-value. assert \initialized(LCIS + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:80: 
+  out of bounds read. assert \valid_read(LCIS + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:81: 
+  accessing uninitialized left-value. assert \initialized(LCIS + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:81: 
+  out of bounds read. assert \valid_read(LCIS + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:87: 
+  out of bounds read. assert \valid_read(LCIS + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:88: 
+  accessing uninitialized left-value. assert \initialized(LCIS + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:88: 
+  out of bounds read. assert \valid_read(LCIS + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:77: 
+  out of bounds read. assert \valid_read(seq2_0 + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:78: 
+  signed overflow. assert n + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:74: 
+  starting to merge loop iterations
+[eva] using specification for function printf_va_2
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p1/al067/project.c:34: 
+  freeing automatic bases: {__malloc_problemTwo_l70}
+[eva] done for function main
+[scope:rm_asserts] removing 13 assertion(s)
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function isInSeq:
+  i ∈ [0..2147483647]
+  __retres ∈ {0; 1}
+[eva:final-states] Values at end of function getSeq:
+  seq1[0..99999] ∈ [--..--]
+  seq2[0..99999] ∈ [--..--]
+  i ∈ [0..100000]
+  n ∈ [--..--]
+  c ∈ [--..--]
+  __retres ∈ [1..100001]
+  S___fc_stdin[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function problemOne:
+  i ∈ {-1}
+  j ∈ [1..100000] or UNINITIALIZED
+  n ∈ [0..2147483647]
+  max ∈ [1..2147483647]
+  numLis ∈ ESCAPINGADDR
+  __lengthof_numLis ∈ [1..100000]
+  LIS ∈ ESCAPINGADDR
+  __lengthof_LIS ∈ [1..100000]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function problemTwo:
+  i ∈ [1..2147483647]
+  j ∈ [1..2147483647] or UNINITIALIZED
+  n ∈ [0..2147483647] or UNINITIALIZED
+  max ∈ [0..2147483647]
+  LCIS ∈ ESCAPINGADDR
+  __lengthof_LCIS ∈ [1..100001]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function main:
+  seq1[0..99999] ∈ [--..--]
+  seq2[0..99999] ∈ [--..--]
+  c ∈ [--..--]
+  len1 ∈ [1..100000] or UNINITIALIZED
+  len2 ∈ [1..100001] or UNINITIALIZED
+  __retres ∈ {0}
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  5 functions analyzed (out of 8): 62% coverage.
+  In these functions, 147 statements reached (out of 147): 100% coverage.
+  ----------------------------------------------------------------------------
+  No errors or warnings raised during the analysis.
+  ----------------------------------------------------------------------------
+  55 alarms generated by the analysis:
+      27 invalid memory accesses
+      18 accesses to uninitialized left-values
+      10 integer overflows
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        3 valid     0 unknown     0 invalid      3 total
+    Preconditions     2 valid     0 unknown     0 invalid      2 total
+  100% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[report] Classification
+[report] Output /home/fmarques/sbugs/projects/outputs/framaC/asa_2122_p1/al067/errors.json
+[report] Reviews     :   43
+[report] Unclassified:   43

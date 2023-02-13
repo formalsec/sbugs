@@ -1,0 +1,476 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  NODES ∈ {0}
+[eva] using specification for function scanf_va_1
+[eva] using specification for function scanf_va_2
+[eva] using specification for function scanf_va_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:184: 
+  signed overflow. assert -2147483648 ≤ 2 * postos;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:184: 
+  signed overflow. assert 2 * postos ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:184: 
+  signed overflow. assert -2147483648 ≤ fornecedores + (int)(2 * postos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:184: 
+  signed overflow. assert fornecedores + (int)(2 * postos) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:184: 
+  signed overflow.
+  assert (int)(fornecedores + (int)(2 * postos)) + 2 ≤ 2147483647;
+[eva] using specification for function time
+[eva] using specification for function srand
+[eva] using specification for function rand
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:18: 
+  calloc out of bounds: assert(nmemb * size <= SIZE_MAX)
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:18: 
+  allocating variable __calloc_can_fail_calloc_l18
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:18: 
+  allocating variable __calloc_can_fail_calloc_l18_0
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:18: 
+  allocating variable __calloc_can_fail_calloc_l18_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:189: 
+  out of bounds write. assert \valid(flow + i);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:18: 
+  allocating variable __calloc_can_fail_calloc_l18_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:190: 
+  out of bounds write. assert \valid(capacities + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:188: 
+  starting to merge loop iterations
+[eva] using specification for function scanf_va_4
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:196: 
+  out of bounds read. assert \valid_read(capacities + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:196: 
+  out of bounds write. assert \valid(*(capacities + 0) + (int)(i + 2));
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:193: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:196: 
+  signed overflow. assert i + 2 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:199: 
+  signed overflow. assert i + 2 ≤ 2147483647;
+[eva] using specification for function scanf_va_5
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:204: 
+  signed overflow. assert i + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:204: 
+  out of bounds read. assert \valid_read(capacities + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:204: 
+  out of bounds write. assert \valid(*(capacities + i) + (int)(i + 1));
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:201: 
+  starting to merge loop iterations
+[eva] using specification for function scanf_va_6
+[eva] using specification for function scanf_va_7
+[eva] using specification for function scanf_va_8
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:213: 
+  signed overflow. assert fornecedores + 2 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:214: 
+  signed overflow. assert -2147483648 ≤ n1 - (int)(fornecedores + 2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:214: 
+  signed overflow. assert n1 - (int)(fornecedores + 2) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:215: 
+  signed overflow. assert -2147483648 ≤ n1 + aux;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:215: 
+  signed overflow. assert n1 + aux ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:215: 
+  signed overflow. assert (int)(n1 + aux) + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:218: 
+  signed overflow. assert -2147483648 ≤ n2 - (int)(fornecedores + 2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:218: 
+  signed overflow. assert n2 - (int)(fornecedores + 2) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:219: 
+  signed overflow. assert -2147483648 ≤ n2 + aux1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:219: 
+  signed overflow. assert n2 + aux1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:222: 
+  out of bounds read. assert \valid_read(capacities + n1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:222: 
+  out of bounds write. assert \valid(*(capacities + n1) + n2);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:208: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:18: 
+  allocating variable __calloc_can_fail_calloc_l18_3
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:18: 
+  allocating variable __calloc_can_fail_calloc_l18_4
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:18: 
+  allocating variable __calloc_can_fail_calloc_l18_5
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:18: 
+  allocating variable __calloc_can_fail_calloc_l18_6
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:66: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:68: 
+  out of bounds write. assert \valid(list + p);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:69: 
+  signed overflow. assert p + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:73: 
+  out of bounds write. assert \valid(height + source);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:74: 
+  out of bounds write. assert \valid(excess + source);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:14: 
+  out of bounds read. assert \valid_read(excess + u);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:14: 
+  out of bounds read. assert \valid_read(C + u);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:14: 
+  out of bounds read. assert \valid_read(F + u);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:14: 
+  out of bounds read. assert \valid_read(*(C + u) + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:14: 
+  out of bounds read. assert \valid_read(*(F + u) + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:14: 
+  out of bounds read. assert \valid_read(excess + u);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:14: 
+  out of bounds read. assert \valid_read(C + u);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:14: 
+  out of bounds read. assert \valid_read(F + u);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:15: 
+  out of bounds read. assert \valid_read(F + u);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:16: 
+  out of bounds read. assert \valid_read(F + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:16: 
+  signed overflow. assert -2147483648 ≤ *(*(F + v) + u) - send;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:16: 
+  signed overflow. assert *(*(F + v) + u) - send ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:17: 
+  out of bounds write. assert \valid(excess + u);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:17: 
+  signed overflow. assert *(excess + u) - send ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:18: 
+  out of bounds write. assert \valid(excess + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:18: 
+  signed overflow. assert -2147483648 ≤ *(excess + v) + send;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:18: 
+  signed overflow. assert *(excess + v) + send ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:75: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:14: 
+  signed overflow. assert -2147483648 ≤ *(*(C + u) + v) - *(*(F + u) + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:14: 
+  signed overflow. assert *(*(C + u) + v) - *(*(F + u) + v) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:14: 
+  out of bounds read. assert \valid_read(*(C + u) + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:14: 
+  out of bounds read. assert \valid_read(*(F + u) + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:14: 
+  signed overflow. assert -2147483648 ≤ *(*(C + u) + v) - *(*(F + u) + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:14: 
+  signed overflow. assert *(*(C + u) + v) - *(*(F + u) + v) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:15: 
+  out of bounds write. assert \valid(*(F + u) + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:15: 
+  signed overflow. assert -2147483648 ≤ *(*(F + u) + v) + send;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:15: 
+  signed overflow. assert *(*(F + u) + v) + send ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:16: 
+  out of bounds write. assert \valid(*(F + v) + u);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:17: 
+  signed overflow. assert -2147483648 ≤ *(excess + u) - send;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:80: 
+  out of bounds read. assert \valid_read(list + p);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:81: 
+  out of bounds read. assert \valid_read(height + u);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:33: 
+  out of bounds read. assert \valid_read(excess + u);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:34: 
+  out of bounds read. assert \valid_read(seen + u);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:35: 
+  out of bounds read. assert \valid_read(seen + u);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:36: 
+  out of bounds read. assert \valid_read(C + u);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:36: 
+  out of bounds read. assert \valid_read(F + u);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:36: 
+  out of bounds read. assert \valid_read(*(C + u) + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:36: 
+  out of bounds read. assert \valid_read(*(F + u) + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:36: 
+  signed overflow. assert -2147483648 ≤ *(*(C + u) + v) - *(*(F + u) + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:36: 
+  signed overflow. assert *(*(C + u) + v) - *(*(F + u) + v) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:36: 
+  out of bounds read. assert \valid_read(height + u);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:36: 
+  out of bounds read. assert \valid_read(height + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:40: 
+  out of bounds write. assert \valid(seen + u);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:40: 
+  out of bounds write. assert \valid(seen + u);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:33: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:40: 
+  signed overflow. assert *(seen + u) + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:40: 
+  signed overflow. assert *(seen + u) + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:25: 
+  out of bounds read. assert \valid_read(C + u);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:25: 
+  out of bounds read. assert \valid_read(F + u);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:25: 
+  out of bounds read. assert \valid_read(*(C + u) + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:25: 
+  out of bounds read. assert \valid_read(*(F + u) + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:25: 
+  signed overflow. assert -2147483648 ≤ *(*(C + u) + v) - *(*(F + u) + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:25: 
+  signed overflow. assert *(*(C + u) + v) - *(*(F + u) + v) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:26: 
+  out of bounds read. assert \valid_read(height + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:26: 
+  out of bounds read. assert \valid_read(height + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:27: 
+  out of bounds write. assert \valid(height + u);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:24: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:27: 
+  signed overflow. assert min_height + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:43: 
+  out of bounds write. assert \valid(seen + u);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:83: 
+  out of bounds read. assert \valid_read(height + u);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:49: 
+  out of bounds read. assert \valid_read(A + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:54: 
+  out of bounds write. assert \valid(A + 0);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:79: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:52: 
+  out of bounds write. assert \valid(A + n);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:52: 
+  out of bounds read. assert \valid_read(A + (int)(n - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:92: 
+  out of bounds read. assert \valid_read(F + source);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:92: 
+  out of bounds read. assert \valid_read(*(F + source) + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:91: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:92: 
+  signed overflow. assert -2147483648 ≤ maxflow + *(*(F + source) + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:92: 
+  signed overflow. assert maxflow + *(*(F + source) + i) ≤ 2147483647;
+[eva] using specification for function printf_va_7
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:128: 
+  out of bounds read. assert \valid_read(flow + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:128: 
+  out of bounds read. assert \valid_read(*(flow + i) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:129: 
+  out of bounds read. assert \valid_read(flow + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:127: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:129: 
+  out of bounds write. assert \valid(*(flow + i) + j);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:126: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:133: 
+  assertion 'alloca_bounds' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:133: 
+  allocating variable __malloc_minCut_l133
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:134: 
+  function memset: precondition 'valid_s' got status unknown.
+[eva] FRAMAC_SHARE/libc/string.h:134: 
+  cannot evaluate ACSL term, unsupported ACSL construct: logic function memset
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:114: 
+  out of bounds write. assert \valid(visited + t);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:116: 
+  out of bounds read. assert \valid_read(flow + t);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:116: 
+  out of bounds read. assert \valid_read(capacities + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:116: 
+  out of bounds read. assert \valid_read(*(flow + t) + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:116: 
+  out of bounds read. assert \valid_read(*(capacities + i) + t);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:116: 
+  signed overflow. assert -*(*(flow + t) + i) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:116: 
+  accessing uninitialized left-value. assert \initialized(visited + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:116: 
+  out of bounds read. assert \valid_read(visited + i);
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:118: 
+  detected recursive call of function dfs.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:118: User Error: 
+  Recursive call to dfs without assigns clause.
+  Generating probably incomplete assigns to interpret the call. Try to increase
+  the -eva-unroll-recursive-calls parameter or write a correct specification
+  for function dfs.
+[kernel:annot:missing-spec] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:112: 
+  Neither code nor specification for function dfs, generating default assigns from the prototype
+[eva] using specification for function dfs
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:115: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:116: 
+  trap representation of a _Bool lvalue.
+  assert *(visited + i) ≡ 0 ∨ *(visited + i) ≡ 1;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:118: 
+  Using specification of function dfs for recursive calls.
+  Analysis of function dfs is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:143: 
+  accessing uninitialized left-value. assert \initialized(visited + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:143: 
+  out of bounds read. assert \valid_read(visited + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:143: 
+  trap representation of a _Bool lvalue.
+  assert *(visited + i) ≡ 0 ∨ *(visited + i) ≡ 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:143: 
+  out of bounds read. assert \valid_read(visited + j);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:142: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:143: 
+  accessing uninitialized left-value. assert \initialized(visited + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:143: 
+  out of bounds read. assert \valid_read(capacities + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:143: 
+  out of bounds read. assert \valid_read(*(capacities + j) + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:149: 
+  signed overflow. assert fornecedores + 2 ≤ 2147483647;
+[eva] using specification for function printf_va_3
+[eva] using specification for function printf_va_4
+[eva] using specification for function printf_va_6
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:154: 
+  signed overflow. assert j + (int)(fornecedores + 2) ≤ 2147483647;
+[eva] using specification for function printf_va_5
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:141: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:143: 
+  trap representation of a _Bool lvalue.
+  assert *(visited + j) ≡ 0 ∨ *(visited + j) ≡ 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:165: 
+  signed overflow. assert i1 + aux1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg002/Proj2.c:229: 
+  freeing automatic bases: {__malloc_minCut_l133}
+[eva] using specification for function printf_va_8
+[eva] done for function main
+[scope:rm_asserts] removing 12 assertion(s)
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function moveToFront:
+  temp ∈ [0..2147483646]
+  n ∈ {0}
+  __calloc_can_fail_calloc_l18_6[bits 0 to 68719476735]# ∈
+                                [0..2147483646] repeated %32 
+                                [8589934592..18446744073709551615] ∈ {0}
+[eva:final-states] Values at end of function push:
+  send ∈ [--..--]
+  __calloc_w_can_fail_calloc_l18_1[0..8589934587] ∈ [--..--]
+  __calloc_can_fail_calloc_l18_3[0..8589934587] ∈ [--..--]
+                                [8589934588..18446744073709551615] ∈ {0}
+[eva:final-states] Values at end of function relabel:
+  v ∈ [3..2147483647]
+  min_height ∈ [-2147483646..2147483646]
+  __calloc_can_fail_calloc_l18_4[bits 0 to 31] ∈ [-2147483646..2147483647]
+                                [bits 32 to 68719476703]# ∈
+                                [-2147483645..2147483647] repeated %32 
+                                [8589934588..18446744073709551615] ∈ {0}
+[eva:final-states] Values at end of function discharge:
+  __calloc_w_can_fail_calloc_l18_1[0..8589934587] ∈ [--..--]
+  __calloc_can_fail_calloc_l18_3[0..8589934587] ∈ [--..--]
+                                [8589934588..18446744073709551615] ∈ {0}
+  __calloc_can_fail_calloc_l18_4[bits 0 to 31] ∈ [-2147483646..2147483647]
+                                [bits 32 to 68719476703]# ∈
+                                [-2147483645..2147483647] repeated %32 
+                                [8589934588..18446744073709551615] ∈ {0}
+  __calloc_can_fail_calloc_l18_5[bits 0 to 68719476703]# ∈
+                                [0..2147483647] repeated %32 
+                                [8589934588..18446744073709551615] ∈ {0}
+[eva:final-states] Values at end of function can_fail_calloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈
+          {{ NULL ; (void *)&__calloc_can_fail_calloc_l18 ;
+             (void *)&__calloc_can_fail_calloc_l18_0 ;
+             (void *)&__calloc_w_can_fail_calloc_l18_1 ;
+             (void *)&__calloc_w_can_fail_calloc_l18_2 ;
+             (void *)&__calloc_can_fail_calloc_l18_3 ;
+             (void *)&__calloc_can_fail_calloc_l18_4 ;
+             (void *)&__calloc_can_fail_calloc_l18_5 ;
+             (void *)&__calloc_can_fail_calloc_l18_6 }}
+[eva:final-states] Values at end of function pushRelabel:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  excess ∈ ESCAPINGADDR
+  height ∈ ESCAPINGADDR
+  list ∈
+      {{ NULL ; (int *)&__calloc_can_fail_calloc_l18_6 }} or ESCAPINGADDR
+  seen ∈
+      {{ NULL ; (int *)&__calloc_can_fail_calloc_l18_5 }} or ESCAPINGADDR
+  i ∈ [0..2147483647]
+  p ∈ [0..2147483647]
+  maxflow ∈ [--..--]
+  __calloc_w_can_fail_calloc_l18_1[0..8589934587] ∈ [--..--]
+  __calloc_can_fail_calloc_l18_5[bits 0 to 68719476703]# ∈
+                                [0..2147483647] repeated %32 
+                                [8589934588..18446744073709551615] ∈ {0}
+  __calloc_can_fail_calloc_l18_6[bits 0 to 68719476735]# ∈
+                                [0..2147483646] repeated %32 
+                                [8589934592..18446744073709551615] ∈ {0}
+[eva:final-states] Values at end of function dfs:
+  i ∈ [0..2147483647]
+  __malloc_minCut_l133[0] ∈ [--..--] or UNINITIALIZED
+                      [1] ∈ {1}
+                      [2..18446744073709551614] ∈ {0} or UNINITIALIZED
+[eva:final-states] Values at end of function minCut:
+  i ∈ [0..2147483647]
+  j ∈ [1..2147483647] or UNINITIALIZED
+  j1 ∈ [-1073741823..2147483646] or UNINITIALIZED
+  i1 ∈ [--..--] or UNINITIALIZED
+  visited ∈ ESCAPINGADDR
+  __lengthof_visited ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+  __calloc_w_can_fail_calloc_l18_1[0..8589934587] ∈ [--..--]
+[eva:final-states] Values at end of function main:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  NODES ∈ [-2147483646..2147483647]
+  flow ∈ {{ NULL ; (int **)&__calloc_can_fail_calloc_l18 }}
+  capacities ∈ {{ NULL ; (int **)&__calloc_can_fail_calloc_l18_0 }}
+  i ∈ [2..2147483647]
+  j ∈ [0..2147483647]
+  fornecedores ∈ [--..--]
+  postos ∈ [--..--]
+  ligacoes ∈ [--..--]
+  maxf ∈ [--..--]
+  __retres ∈ {0}
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+  __calloc_can_fail_calloc_l18[bits 0 to 137438953407]# ∈
+                              {{ NULL ;
+                                 (? *)&__calloc_w_can_fail_calloc_l18_1 }} repeated %64 
+                              [17179869176..18446744073709551615] ∈ {0}
+  __calloc_can_fail_calloc_l18_0[bits 0 to 137438953407]# ∈
+                                {{ NULL ;
+                                   (? *)&__calloc_w_can_fail_calloc_l18_2 }} repeated %64 
+                                [17179869176..18446744073709551615] ∈ {0}
+  __calloc_w_can_fail_calloc_l18_1[0..8589934587] ∈ [--..--]
+  __calloc_w_can_fail_calloc_l18_2[0..8589934587] ∈ [--..--]
+  __calloc_can_fail_calloc_l18_5[bits 0 to 68719476703]# ∈
+                                [0..2147483647] repeated %32 
+                                [8589934588..18446744073709551615] ∈ {0}
+  __calloc_can_fail_calloc_l18_6[bits 0 to 68719476735]# ∈
+                                [0..2147483646] repeated %32 
+                                [8589934592..18446744073709551615] ∈ {0}
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  9 functions analyzed (out of 12): 75% coverage.
+  In these functions, 222 statements reached (out of 222): 100% coverage.
+  ----------------------------------------------------------------------------
+  Some errors and warnings have been raised during the analysis:
+    by the Eva analyzer:      1 error    0 warnings
+    by the Frama-C kernel:    0 errors    0 warnings
+  ----------------------------------------------------------------------------
+  119 alarms generated by the analysis:
+      69 invalid memory accesses
+      44 integer overflows
+       3 accesses to uninitialized left-values
+       3 others
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     1 unknown     0 invalid      1 total
+    Preconditions    27 valid     1 unknown     0 invalid     28 total
+  93% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[eva] User Error: Deferred error message was emitted during execution. See above messages for more information.
+[kernel] Plug-in eva aborted: invalid user input.

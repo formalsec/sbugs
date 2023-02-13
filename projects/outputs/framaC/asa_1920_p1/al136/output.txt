@@ -1,0 +1,1672 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  SCCUtil_time ∈ {0}
+[eva] using specification for function time
+[eva] using specification for function srand
+[eva] using specification for function rand
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:222: 
+  out of bounds write. assert \valid(&sccs->scc);
+[eva] using specification for function scanf_va_1
+[eva] using specification for function getchar
+[eva] using specification for function scanf_va_2
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_0
+[eva] using specification for function scanf_va_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:233: 
+  out of bounds write. assert \valid(&(alunos + i)->_nota);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:234: 
+  out of bounds write. assert \valid(&(alunos + i)->lista);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:235: 
+  out of bounds read. assert \valid_read(&(alunos + i)->lista);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:235: 
+  out of bounds write. assert \valid(&((alunos + i)->lista)->amigo);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:236: 
+  out of bounds read. assert \valid_read(&(alunos + i)->lista);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:231: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:235: 
+  accessing uninitialized left-value.
+  assert \initialized(&(alunos + i)->lista);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:236: 
+  accessing uninitialized left-value.
+  assert \initialized(&(alunos + i)->lista);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:236: 
+  out of bounds write. assert \valid(&((alunos + i)->lista)->next);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:233: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:234: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva] using specification for function scanf_va_4
+[eva] using specification for function scanf_va_5
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:38: 
+  signed overflow. assert -2147483648 ≤ a - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:38: 
+  accessing uninitialized left-value.
+  assert \initialized(&(alunos + (int)(a - 1))->lista);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:38: 
+  out of bounds read. assert \valid_read(&(alunos + (int)(a - 1))->lista);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:40: 
+  accessing uninitialized left-value. assert \initialized(&plista->amigo);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:40: 
+  out of bounds read. assert \valid_read(&plista->amigo);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:38: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:38: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:241: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:45: 
+  out of bounds write. assert \valid(&new->amigo);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:47: 
+  out of bounds write. assert \valid(&(alunos + (int)(a - 1))->lista);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:47: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_3
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_4
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:175: 
+  out of bounds write. assert \valid(&stack->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:179: 
+  out of bounds write. assert \valid(&(alunos + i)->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:180: 
+  out of bounds write. assert \valid(&(alunos + i)->low);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:181: 
+  out of bounds write. assert \valid(stackMember + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:178: 
+  starting to merge loop iterations
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:179: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:180: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:185: 
+  accessing uninitialized left-value. assert \initialized(&(alunos + i)->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:185: 
+  out of bounds read. assert \valid_read(&(alunos + i)->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:129: 
+  accessing uninitialized left-value.
+  assert \initialized(&(alunos + i)->lista);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:129: 
+  out of bounds read. assert \valid_read(&(alunos + i)->lista);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:130: 
+  out of bounds write. assert \valid(&(alunos + i)->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:131: 
+  out of bounds write. assert \valid(&(alunos + i)->low);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_5
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:100: 
+  out of bounds write. assert \valid(&top_0->i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:133: 
+  out of bounds write. assert \valid(stackMember + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:135: 
+  accessing uninitialized left-value. assert \initialized(&plista->amigo);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:135: 
+  out of bounds read. assert \valid_read(&plista->amigo);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:136: 
+  accessing uninitialized left-value. assert \initialized(&plista->amigo);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:136: 
+  signed overflow. assert -2147483648 ≤ plista->amigo - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:136: 
+  accessing uninitialized left-value.
+  assert \initialized(&(alunos + (int)(plista->amigo - 1))->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:136: 
+  out of bounds read.
+  assert \valid_read(&(alunos + (int)(plista->amigo - 1))->d);
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:137: 
+  detected recursive call of function SCCUtil.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:137: 
+  accessing uninitialized left-value. assert \initialized(&plista->amigo);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:137: 
+  signed overflow. assert -2147483648 ≤ plista->amigo - 1;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:137: User Error: 
+  Recursive call to SCCUtil without assigns clause.
+  Generating probably incomplete assigns to interpret the call. Try to increase
+  the -eva-unroll-recursive-calls parameter or write a correct specification
+  for function SCCUtil.
+[kernel:annot:missing-spec] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:125: 
+  Neither code nor specification for function SCCUtil, generating default assigns from the prototype
+[eva] using specification for function SCCUtil
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:137: 
+  Assigning imprecise value to stack.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:125}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:138: 
+  accessing uninitialized left-value. assert \initialized(&plista->amigo);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:138: 
+  out of bounds read. assert \valid_read(&(alunos + i)->low);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:138: 
+  signed overflow. assert -2147483648 ≤ plista->amigo - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:138: 
+  accessing uninitialized left-value.
+  assert \initialized(&(alunos + (int)(plista->amigo - 1))->low);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:138: 
+  out of bounds read.
+  assert \valid_read(&(alunos + (int)(plista->amigo - 1))->low);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:138: 
+  out of bounds write. assert \valid(&(alunos + i)->low);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:138: 
+  Assigning imprecise value to (alunos + i)->low
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets {96}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:125}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:138: 
+  out of bounds write. assert \valid(&(alunos + i)->low);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:138: 
+  accessing uninitialized left-value. assert \initialized(&plista->amigo);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:138: 
+  signed overflow. assert -2147483648 ≤ plista->amigo - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:138: 
+  accessing uninitialized left-value.
+  assert \initialized(&(alunos + (int)(plista->amigo - 1))->low);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:138: 
+  out of bounds read.
+  assert \valid_read(&(alunos + (int)(plista->amigo - 1))->low);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:138: 
+  Assigning imprecise value to (alunos + i)->low
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets {96}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:140: 
+  accessing uninitialized left-value. assert \initialized(&plista->amigo);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:140: 
+  signed overflow. assert -2147483648 ≤ plista->amigo - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:140: 
+  accessing uninitialized left-value.
+  assert \initialized(stackMember + (int)(plista->amigo - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:140: 
+  out of bounds read.
+  assert \valid_read(stackMember + (int)(plista->amigo - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:141: 
+  accessing uninitialized left-value. assert \initialized(&plista->amigo);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:141: 
+  out of bounds read. assert \valid_read(&(alunos + i)->low);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:141: 
+  signed overflow. assert -2147483648 ≤ plista->amigo - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:141: 
+  accessing uninitialized left-value.
+  assert \initialized(&(alunos + (int)(plista->amigo - 1))->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:141: 
+  out of bounds read.
+  assert \valid_read(&(alunos + (int)(plista->amigo - 1))->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:141: 
+  out of bounds write. assert \valid(&(alunos + i)->low);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:141: 
+  out of bounds write. assert \valid(&(alunos + i)->low);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:141: 
+  accessing uninitialized left-value. assert \initialized(&plista->amigo);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:141: 
+  signed overflow. assert -2147483648 ≤ plista->amigo - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:141: 
+  accessing uninitialized left-value.
+  assert \initialized(&(alunos + (int)(plista->amigo - 1))->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:141: 
+  out of bounds read.
+  assert \valid_read(&(alunos + (int)(plista->amigo - 1))->d);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:141: 
+  Assigning imprecise value to (alunos + i)->low
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets {96}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:141}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:143: 
+  accessing uninitialized left-value. assert \initialized(&plista->next);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:135: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:137: 
+  Using specification of function SCCUtil for recursive calls.
+  Analysis of function SCCUtil is thus incomplete and its soundness
+  relies on the written specification.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:137: 
+  Assigning imprecise value to stack.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:138: 
+  signed overflow. assert plista->amigo - 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:138: 
+  signed overflow. assert plista->amigo - 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:141: 
+  Assigning imprecise value to (alunos + i)->low
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets {96}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:143: 
+  Assigning imprecise value to plista.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:135: 
+  pointer comparison. assert \pointer_comparable((void *)plista, (void *)0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:136: 
+  signed overflow. assert plista->amigo - 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:137: 
+  signed overflow. assert plista->amigo - 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:140: 
+  signed overflow. assert plista->amigo - 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:141: 
+  signed overflow. assert plista->amigo - 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:141: 
+  signed overflow. assert plista->amigo - 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:143: 
+  out of bounds read. assert \valid_read(&plista->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:147: 
+  out of bounds read. assert \valid_read(&(alunos + i)->low);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:147: 
+  out of bounds read. assert \valid_read(&(alunos + i)->d);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_6
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:149: 
+  out of bounds write. assert \valid(&newSCC->low);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:149: 
+  out of bounds read. assert \valid_read(&(alunos + i)->low);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:149: 
+  Assigning imprecise value to newSCC->low
+  (pointing to __malloc_can_fail_malloc_l11_6 with offsets {0}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:111: 
+  pointer comparison. assert \pointer_comparable((void *)sccs->scc, (void *)0);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_7
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:117: 
+  out of bounds write. assert \valid(&new->scc);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:87: 
+  accessing uninitialized left-value. assert \initialized(&stack->i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:87: 
+  out of bounds read. assert \valid_read(&stack->i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:87: 
+  Assigning imprecise value to __retres.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:87: 
+  Assigning imprecise value to \result<top>.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:152: 
+  Assigning imprecise value to tmp_0.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:153: 
+  Assigning imprecise value to w.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:154: 
+  out of bounds write. assert \valid(&(alunos + w)->scc);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:155: 
+  out of bounds write. assert \valid(stackMember + w);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:92: 
+  accessing uninitialized left-value. assert \initialized(&stack->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:92: 
+  out of bounds read. assert \valid_read(&stack->next);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:92: 
+  Assigning imprecise value to top_0.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:94: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&top_0);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:94: 
+  Assigning imprecise value to \result<pop>.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:156: 
+  Assigning imprecise value to stack.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:152: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:87: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&stack->i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:92: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&stack->next);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:158: 
+  Assigning imprecise value to w.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:159: 
+  out of bounds write. assert \valid(&(alunos + w)->scc);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:160: 
+  out of bounds write. assert \valid(stackMember + w);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:161: 
+  Assigning imprecise value to stack.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:163: 
+  Assigning imprecise value to \result<SCCUtil>.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:186: 
+  Assigning imprecise value to stack.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:184: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:185: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(alunos + i)->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:129: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(alunos + i)->lista);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:129: 
+  Assigning imprecise value to plista.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:101: 
+  Assigning imprecise value to top_0->next
+  (pointing to __malloc_w_can_fail_malloc_l11_5 with offsets {64}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:135: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&plista->amigo);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:136: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&plista->amigo);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:136: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(alunos + (int)(plista->amigo - 1))->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:137: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&plista->amigo);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:138: 
+  accessing uninitialized left-value. assert \initialized(&(alunos + i)->low);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:138: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&plista->amigo);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:138: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(alunos + i)->low);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:138: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(alunos + (int)(plista->amigo - 1))->low);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:138: 
+  accessing uninitialized left-value. assert \initialized(&(alunos + i)->low);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:138: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(alunos + i)->low);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:138: 
+  Assigning imprecise value to (alunos + i)->low
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets {96; 352}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:138: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&plista->amigo);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:138: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(alunos + (int)(plista->amigo - 1))->low);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:140: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&plista->amigo);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:140: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(stackMember + (int)(plista->amigo - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:141: 
+  accessing uninitialized left-value. assert \initialized(&(alunos + i)->low);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:141: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&plista->amigo);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:141: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(alunos + i)->low);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:141: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(alunos + (int)(plista->amigo - 1))->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:141: 
+  accessing uninitialized left-value. assert \initialized(&(alunos + i)->low);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:141: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(alunos + i)->low);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:141: 
+  Assigning imprecise value to (alunos + i)->low
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets {96; 352}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:141: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&plista->amigo);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:141: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(alunos + (int)(plista->amigo - 1))->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:143: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&plista->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:147: 
+  accessing uninitialized left-value. assert \initialized(&(alunos + i)->low);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:147: 
+  accessing uninitialized left-value. assert \initialized(&(alunos + i)->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:147: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(alunos + i)->low);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:147: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(alunos + i)->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:149: 
+  accessing uninitialized left-value. assert \initialized(&(alunos + i)->low);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:149: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(alunos + i)->low);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:149: 
+  Assigning imprecise value to newSCC->low
+  (pointing to __malloc_w_can_fail_malloc_l11_6 with offsets {0}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:111: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&sccs->scc);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:138: 
+  Assigning imprecise value to (alunos + i)->low
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets {96; 352; 608}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:141: 
+  Assigning imprecise value to (alunos + i)->low
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets {96; 352; 608}).
+  The imprecision originates from Misaligned
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:130: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:131: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:138: 
+  Assigning imprecise value to (alunos + i)->low
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets [96..549755813472],96%256).
+  The imprecision originates from Misaligned
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:138: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:141: 
+  Assigning imprecise value to (alunos + i)->low
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets [96..549755813472],96%256).
+  The imprecision originates from Misaligned
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:141: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:130: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:131: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:130: 
+  signed overflow. assert SCCUtil_time + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:190: 
+  function free: precondition 'freeable' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:77: 
+  out of bounds write. assert \valid(&(alunos + i)->color);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:76: 
+  starting to merge loop iterations
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:77: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:80: 
+  accessing uninitialized left-value.
+  assert \initialized(&(alunos + i)->color);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:80: 
+  out of bounds read. assert \valid_read(&(alunos + i)->color);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:80: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(alunos + i)->color);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:56: 
+  accessing uninitialized left-value.
+  assert \initialized(&(alunos + i)->lista);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:56: 
+  out of bounds read. assert \valid_read(&(alunos + i)->lista);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:56: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(alunos + i)->lista);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:56: 
+  Assigning imprecise value to plista.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:57: 
+  out of bounds write. assert \valid(&(alunos + i)->color);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:58: 
+  pointer comparison. assert \pointer_comparable((void *)plista, (void *)0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:58: 
+  accessing uninitialized left-value. assert \initialized(&plista->amigo);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:58: 
+  out of bounds read. assert \valid_read(&plista->amigo);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:58: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&plista->amigo);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:59: 
+  accessing uninitialized left-value. assert \initialized(&plista->amigo);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:59: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&plista->amigo);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:59: 
+  signed overflow. assert -2147483648 ≤ plista->amigo - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:59: 
+  signed overflow. assert plista->amigo - 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:59: 
+  accessing uninitialized left-value.
+  assert \initialized(&(alunos + (int)(plista->amigo - 1))->color);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:59: 
+  out of bounds read.
+  assert \valid_read(&(alunos + (int)(plista->amigo - 1))->color);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:59: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(alunos + (int)(plista->amigo - 1))->color);
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:60: 
+  detected recursive call of function dfs_visit.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:60: 
+  accessing uninitialized left-value. assert \initialized(&plista->amigo);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:60: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&plista->amigo);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:60: 
+  signed overflow. assert -2147483648 ≤ plista->amigo - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:60: 
+  signed overflow. assert plista->amigo - 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:60: User Error: 
+  Recursive call to dfs_visit without assigns clause.
+  Generating probably incomplete assigns to interpret the call. Try to increase
+  the -eva-unroll-recursive-calls parameter or write a correct specification
+  for function dfs_visit.
+[kernel:annot:missing-spec] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:55: 
+  Neither code nor specification for function dfs_visit, generating default assigns from the prototype
+[eva] using specification for function dfs_visit
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:62: 
+  accessing uninitialized left-value. assert \initialized(&plista->amigo);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:62: 
+  accessing uninitialized left-value.
+  assert \initialized(&(alunos + i)->_nota);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:62: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&plista->amigo);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:62: 
+  out of bounds read. assert \valid_read(&(alunos + i)->_nota);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:62: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(alunos + i)->_nota);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:62: 
+  signed overflow. assert -2147483648 ≤ plista->amigo - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:62: 
+  signed overflow. assert plista->amigo - 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:62: 
+  accessing uninitialized left-value.
+  assert \initialized(&(alunos + (int)(plista->amigo - 1))->_nota);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:62: 
+  out of bounds read.
+  assert \valid_read(&(alunos + (int)(plista->amigo - 1))->_nota);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:62: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(alunos + (int)(plista->amigo - 1))->_nota);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:63: 
+  out of bounds write. assert \valid(&(alunos + i)->_nota);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:63: 
+  accessing uninitialized left-value. assert \initialized(&plista->amigo);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:63: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&plista->amigo);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:63: 
+  signed overflow. assert -2147483648 ≤ plista->amigo - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:63: 
+  signed overflow. assert plista->amigo - 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:63: 
+  accessing uninitialized left-value.
+  assert \initialized(&(alunos + (int)(plista->amigo - 1))->_nota);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:63: 
+  out of bounds read.
+  assert \valid_read(&(alunos + (int)(plista->amigo - 1))->_nota);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:63: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(alunos + (int)(plista->amigo - 1))->_nota);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:63: 
+  Assigning imprecise value to (alunos + i)->_nota
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets {32}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:65: 
+  accessing uninitialized left-value. assert \initialized(&plista->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:65: 
+  out of bounds read. assert \valid_read(&plista->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:65: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&plista->next);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:65: 
+  Assigning imprecise value to plista.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:58: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:60: 
+  Using specification of function dfs_visit for recursive calls.
+  Analysis of function dfs_visit is thus incomplete and its soundness
+  relies on the written specification.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:79: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:63: 
+  Assigning imprecise value to (alunos + i)->_nota
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets {32; 288}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:63: 
+  Assigning imprecise value to (alunos + i)->_nota
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets {32; 288; 544}).
+  The imprecision originates from Misaligned
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:57: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:63: 
+  Assigning imprecise value to (alunos + i)->_nota
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets [32..549755813408],32%256).
+  The imprecision originates from Misaligned
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:63: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:57: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:62: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:252: 
+  accessing uninitialized left-value. assert \initialized(&(alunos + i)->scc);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:252: 
+  accessing uninitialized left-value.
+  assert \initialized(&(alunos + i)->_nota);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:252: 
+  out of bounds read. assert \valid_read(&(alunos + i)->scc);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:252: 
+  out of bounds read. assert \valid_read(&(alunos + i)->_nota);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:252: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(alunos + i)->scc);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:252: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(alunos + i)->_nota);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:252: 
+  accessing uninitialized left-value.
+  assert \initialized(&((alunos + i)->scc)->nota);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:252: 
+  out of bounds read. assert \valid_read(&((alunos + i)->scc)->nota);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:252: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&((alunos + i)->scc)->nota);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:253: 
+  out of bounds read. assert \valid_read(&(alunos + i)->scc);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:253: 
+  out of bounds read. assert \valid_read(&(alunos + i)->_nota);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:253: 
+  Assigning imprecise value to ((alunos + i)->scc)->nota
+  (pointing to __malloc_w_can_fail_malloc_l11_1 with offsets [0..96],0%8;
+  __malloc_w_can_fail_malloc_l11_2 with offsets [0..96],0%8;
+  __malloc_can_fail_malloc_l11_4 with offsets [0..96],0%8;
+  __malloc_w_can_fail_malloc_l11_5 with offsets [0..96],0%8;
+  __malloc_w_can_fail_malloc_l11_6 with offsets {0; 8; 16; 24; 32};
+  __malloc_w_can_fail_malloc_l11_7 with offsets [0..96],0%8).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:251: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:253: 
+  accessing uninitialized left-value. assert \initialized(&(alunos + i)->scc);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:253: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(alunos + i)->scc);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:253: 
+  out of bounds write. assert \valid(&((alunos + i)->scc)->nota);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:253: 
+  accessing uninitialized left-value.
+  assert \initialized(&(alunos + i)->_nota);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:253: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(alunos + i)->_nota);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:253: 
+  Assigning imprecise value to ((alunos + i)->scc)->nota
+  (pointing to __malloc_w_can_fail_malloc_l11_1 with offsets [0..96];
+  __malloc_w_can_fail_malloc_l11_2 with offsets [0..96];
+  __malloc_can_fail_malloc_l11_4 with offsets [0..96];
+  __malloc_w_can_fail_malloc_l11_5 with offsets [0..96];
+  __malloc_w_can_fail_malloc_l11_6 with offsets [0..32];
+  __malloc_w_can_fail_malloc_l11_7 with offsets [0..96]).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:259: 
+  accessing uninitialized left-value.
+  assert \initialized(&(alunos + i)->_nota);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:259: 
+  accessing uninitialized left-value. assert \initialized(&(alunos + i)->scc);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:259: 
+  out of bounds read. assert \valid_read(&(alunos + i)->_nota);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:259: 
+  out of bounds read. assert \valid_read(&(alunos + i)->scc);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:259: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(alunos + i)->_nota);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:259: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(alunos + i)->scc);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:259: 
+  accessing uninitialized left-value.
+  assert \initialized(&((alunos + i)->scc)->nota);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:259: 
+  out of bounds read. assert \valid_read(&((alunos + i)->scc)->nota);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:259: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&((alunos + i)->scc)->nota);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:260: 
+  out of bounds write. assert \valid(&(alunos + i)->_nota);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:260: 
+  out of bounds read. assert \valid_read(&(alunos + i)->scc);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:260: 
+  accessing uninitialized left-value.
+  assert \initialized(&((alunos + i)->scc)->nota);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:260: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&((alunos + i)->scc)->nota);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:260: 
+  Assigning imprecise value to (alunos + i)->_nota
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets {32}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:258: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:260: 
+  accessing uninitialized left-value. assert \initialized(&(alunos + i)->scc);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:260: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(alunos + i)->scc);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:260: 
+  out of bounds read. assert \valid_read(&((alunos + i)->scc)->nota);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:260: 
+  Assigning imprecise value to (alunos + i)->_nota
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets {32; 288}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:260: 
+  Assigning imprecise value to (alunos + i)->_nota
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets {32; 288; 544}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:260: 
+  Assigning imprecise value to (alunos + i)->_nota
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets [32..549755813408],32%256).
+  The imprecision originates from Misaligned
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:260: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:266: 
+  accessing uninitialized left-value.
+  assert \initialized(&(alunos + i)->_nota);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:266: 
+  out of bounds read. assert \valid_read(&(alunos + i)->_nota);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:266: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(alunos + i)->_nota);
+[eva] using specification for function printf_va_1
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:265: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:202: 
+  accessing uninitialized left-value.
+  assert \initialized(&(alunos + i)->lista);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:202: 
+  out of bounds read. assert \valid_read(&(alunos + i)->lista);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:202: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(alunos + i)->lista);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:202: 
+  Assigning imprecise value to plista.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:203: 
+  pointer comparison. assert \pointer_comparable((void *)plista, (void *)0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:204: 
+  out of bounds write. assert \valid(&(alunos + i)->lista);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:204: 
+  accessing uninitialized left-value. assert \initialized(&plista->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:204: 
+  out of bounds read. assert \valid_read(&plista->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:204: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&plista->next);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:204: 
+  Assigning imprecise value to (alunos + i)->lista
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets {128}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:205: 
+  function free: precondition 'freeable' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:206: 
+  out of bounds read. assert \valid_read(&(alunos + i)->lista);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:206: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(alunos + i)->lista);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:206: 
+  Assigning imprecise value to plista.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:203: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:201: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:204: 
+  Assigning imprecise value to (alunos + i)->lista
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets {128; 384}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:206: 
+  accessing uninitialized left-value.
+  assert \initialized(&(alunos + i)->lista);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:204: 
+  Assigning imprecise value to (alunos + i)->lista
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets {128; 384; 640}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:204: 
+  Assigning imprecise value to (alunos + i)->lista
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets [128..549755813504],128%256).
+  The imprecision originates from Misaligned
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:204: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:210: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&sccs->next);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:210: 
+  Assigning imprecise value to aux.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:211: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&sccs->scc);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:211: 
+  function free: precondition 'freeable' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:213: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&aux);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:213: 
+  Assigning imprecise value to sccs.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:209: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:209: 
+  pointer comparison. assert \pointer_comparable((void *)sccs, (void *)0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:210: 
+  accessing uninitialized left-value. assert \initialized(&sccs->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:210: 
+  out of bounds read. assert \valid_read(&sccs->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:211: 
+  accessing uninitialized left-value. assert \initialized(&sccs->scc);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:211: 
+  out of bounds read. assert \valid_read(&sccs->scc);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:212: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&sccs);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al136/project.c:252: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[eva] done for function main
+[scope:rm_asserts] removing 74 assertion(s)
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function delete:
+  alunos ∈
+        {{ NULL ; (Aluno *)&__malloc_can_fail_malloc_l11_0 }} or ESCAPINGADDR
+  sccs ∈ {0}
+  i ∈ [0..2147483647]
+  aux ∈
+     {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                         __malloc_w_can_fail_malloc_l11_2;
+                         __malloc_can_fail_malloc_l11_4;
+                         __malloc_w_can_fail_malloc_l11_5;
+                         __malloc_w_can_fail_malloc_l11_6;
+                         __malloc_w_can_fail_malloc_l11_7}
+      (origin: Misaligned) }}
+  alunos ∈
+        {{ NULL ; (Aluno *)&__malloc_can_fail_malloc_l11_0 }} or ESCAPINGADDR
+  sccs ∈ {{ (Node *)&__malloc_can_fail_malloc_l11 }} or ESCAPINGADDR
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                   __malloc_w_can_fail_malloc_l11_2;
+                                   __malloc_can_fail_malloc_l11_4;
+                                   __malloc_w_can_fail_malloc_l11_5;
+                                   __malloc_w_can_fail_malloc_l11_6;
+                                   __malloc_w_can_fail_malloc_l11_7}
+                (origin: Misaligned) }} or ESCAPINGADDR
+               [1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11[0..15] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                  __malloc_w_can_fail_malloc_l11_2;
+                                                  __malloc_can_fail_malloc_l11_4;
+                                                  __malloc_w_can_fail_malloc_l11_5;
+                                                  __malloc_w_can_fail_malloc_l11_6;
+                                                  __malloc_w_can_fail_malloc_l11_7}
+                               (origin: Misaligned) }} or ESCAPINGADDR
+  __malloc_can_fail_malloc_l11_0[0..68719476695] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2;
+                                                    __malloc_can_fail_malloc_l11_4;
+                                                    __malloc_w_can_fail_malloc_l11_5;
+                                                    __malloc_w_can_fail_malloc_l11_6;
+                                                    __malloc_w_can_fail_malloc_l11_7}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+                                [68719476696..18446744073709551583] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_6}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_1[0..15] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                      __malloc_w_can_fail_malloc_l11_2;
+                                                      __malloc_can_fail_malloc_l11_4;
+                                                      __malloc_w_can_fail_malloc_l11_5;
+                                                      __malloc_w_can_fail_malloc_l11_6;
+                                                      __malloc_w_can_fail_malloc_l11_7}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_2[0..15] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                      __malloc_w_can_fail_malloc_l11_2;
+                                                      __malloc_can_fail_malloc_l11_4;
+                                                      __malloc_w_can_fail_malloc_l11_5;
+                                                      __malloc_w_can_fail_malloc_l11_6;
+                                                      __malloc_w_can_fail_malloc_l11_7}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_can_fail_malloc_l11_3[0..3] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2;
+                                                    __malloc_can_fail_malloc_l11_4;
+                                                    __malloc_w_can_fail_malloc_l11_5;
+                                                    __malloc_w_can_fail_malloc_l11_6;
+                                                    __malloc_w_can_fail_malloc_l11_7}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+                                [bits 32 to 68719476703]# ∈
+                                {0; 1} or UNINITIALIZED repeated %32 
+                                [8589934588..8589934591] ∈
+                                {0} or UNINITIALIZED
+                                [8589934592..18446744073709551611] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11_4[0..3] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2;
+                                                    __malloc_can_fail_malloc_l11_4;
+                                                    __malloc_w_can_fail_malloc_l11_5;
+                                                    __malloc_w_can_fail_malloc_l11_6;
+                                                    __malloc_w_can_fail_malloc_l11_7}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+                                [4..7] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2;
+                                                    __malloc_can_fail_malloc_l11_4;
+                                                    __malloc_w_can_fail_malloc_l11_5;
+                                                    __malloc_w_can_fail_malloc_l11_6;
+                                                    __malloc_w_can_fail_malloc_l11_7}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+                                [8..15] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2;
+                                                    __malloc_can_fail_malloc_l11_4;
+                                                    __malloc_w_can_fail_malloc_l11_5;
+                                                    __malloc_w_can_fail_malloc_l11_6;
+                                                    __malloc_w_can_fail_malloc_l11_7}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_5[0..15] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                      __malloc_w_can_fail_malloc_l11_2;
+                                                      __malloc_can_fail_malloc_l11_4;
+                                                      __malloc_w_can_fail_malloc_l11_5;
+                                                      __malloc_w_can_fail_malloc_l11_6;
+                                                      __malloc_w_can_fail_malloc_l11_7}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_6[0..7] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                      __malloc_w_can_fail_malloc_l11_2;
+                                                      __malloc_can_fail_malloc_l11_4;
+                                                      __malloc_w_can_fail_malloc_l11_5;
+                                                      __malloc_w_can_fail_malloc_l11_6;
+                                                      __malloc_w_can_fail_malloc_l11_7}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_7[0..15] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                      __malloc_w_can_fail_malloc_l11_2;
+                                                      __malloc_can_fail_malloc_l11_4;
+                                                      __malloc_w_can_fail_malloc_l11_5;
+                                                      __malloc_w_can_fail_malloc_l11_6;
+                                                      __malloc_w_can_fail_malloc_l11_7}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+[eva:final-states] Values at end of function pop:
+  stack ∈
+       {{ (Stack *)&__malloc_w_can_fail_malloc_l11_1 ;
+          (Stack *)&__malloc_w_can_fail_malloc_l11_2 ;
+          (Stack *)&__malloc_can_fail_malloc_l11_4 ;
+          (Stack *)&__malloc_w_can_fail_malloc_l11_5 ;
+          (Stack *)&__malloc_w_can_fail_malloc_l11_7 }} or ESCAPINGADDR
+  top_0 ∈
+       {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                           __malloc_w_can_fail_malloc_l11_2;
+                           __malloc_can_fail_malloc_l11_4;
+                           __malloc_w_can_fail_malloc_l11_5;
+                           __malloc_w_can_fail_malloc_l11_6;
+                           __malloc_w_can_fail_malloc_l11_7}
+        (origin: Misaligned) }} or ESCAPINGADDR
+  stack ∈
+       {{ &__malloc_w_can_fail_malloc_l11_1 + [0..12] ;
+          &__malloc_w_can_fail_malloc_l11_2 + [0..12] ;
+          &__malloc_can_fail_malloc_l11_4 + [0..12] ;
+          &__malloc_w_can_fail_malloc_l11_5 + [0..12] ;
+          (Stack *)&__malloc_w_can_fail_malloc_l11_6{[0], [1], [2], [3], [4]} ;
+          &__malloc_w_can_fail_malloc_l11_7 + [0..12] }} or ESCAPINGADDR
+  plista ∈
+        {{ NULL ; &__malloc_w_can_fail_malloc_l11_1 + [0..12] ;
+           &__malloc_w_can_fail_malloc_l11_2 + [0..12] ;
+           &__malloc_can_fail_malloc_l11_4 + [0..12] ;
+           &__malloc_w_can_fail_malloc_l11_5 + [0..12] ;
+           (Amigo *)&__malloc_w_can_fail_malloc_l11_6{[0], [1], [2], [3], [4]} ;
+           &__malloc_w_can_fail_malloc_l11_7 + [0..12] }} or ESCAPINGADDR
+  stack ∈
+       {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                           __malloc_w_can_fail_malloc_l11_2;
+                           __malloc_can_fail_malloc_l11_4;
+                           __malloc_w_can_fail_malloc_l11_5;
+                           __malloc_w_can_fail_malloc_l11_6;
+                           __malloc_w_can_fail_malloc_l11_7}
+        (origin: Misaligned) }} or ESCAPINGADDR
+  __malloc_can_fail_malloc_l11[0..15] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                  __malloc_w_can_fail_malloc_l11_2;
+                                                  __malloc_can_fail_malloc_l11_4;
+                                                  __malloc_w_can_fail_malloc_l11_5;
+                                                  __malloc_w_can_fail_malloc_l11_6;
+                                                  __malloc_w_can_fail_malloc_l11_7}
+                               (origin: Misaligned) }} or ESCAPINGADDR
+  __malloc_can_fail_malloc_l11_0[0..68719476687] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2;
+                                                    __malloc_can_fail_malloc_l11_4;
+                                                    __malloc_w_can_fail_malloc_l11_5;
+                                                    __malloc_w_can_fail_malloc_l11_6;
+                                                    __malloc_w_can_fail_malloc_l11_7}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+                                [68719476688..68719476695] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2;
+                                                    __malloc_w_can_fail_malloc_l11_6}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+                                [68719476696..18446744073709551583] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_6}
+                                 (origin: Misaligned) }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_1[0..15] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                      __malloc_w_can_fail_malloc_l11_2;
+                                                      __malloc_can_fail_malloc_l11_4;
+                                                      __malloc_w_can_fail_malloc_l11_5;
+                                                      __malloc_w_can_fail_malloc_l11_6;
+                                                      __malloc_w_can_fail_malloc_l11_7}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_2[0..15] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                      __malloc_w_can_fail_malloc_l11_2;
+                                                      __malloc_can_fail_malloc_l11_4;
+                                                      __malloc_w_can_fail_malloc_l11_5;
+                                                      __malloc_w_can_fail_malloc_l11_6;
+                                                      __malloc_w_can_fail_malloc_l11_7}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_can_fail_malloc_l11_3[0..3] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2;
+                                                    __malloc_can_fail_malloc_l11_4;
+                                                    __malloc_w_can_fail_malloc_l11_5;
+                                                    __malloc_w_can_fail_malloc_l11_6;
+                                                    __malloc_w_can_fail_malloc_l11_7}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+                                [bits 32 to 68719476703]# ∈
+                                {0; 1} or UNINITIALIZED repeated %32 
+                                [8589934588..8589934591] ∈
+                                {0} or UNINITIALIZED
+                                [8589934592..18446744073709551611] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11_4[0..3] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2;
+                                                    __malloc_can_fail_malloc_l11_4;
+                                                    __malloc_w_can_fail_malloc_l11_5;
+                                                    __malloc_w_can_fail_malloc_l11_6;
+                                                    __malloc_w_can_fail_malloc_l11_7}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+                                [4..7] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2;
+                                                    __malloc_can_fail_malloc_l11_4;
+                                                    __malloc_w_can_fail_malloc_l11_5;
+                                                    __malloc_w_can_fail_malloc_l11_6;
+                                                    __malloc_w_can_fail_malloc_l11_7}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+                                [8..15] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2;
+                                                    __malloc_can_fail_malloc_l11_4;
+                                                    __malloc_w_can_fail_malloc_l11_5;
+                                                    __malloc_w_can_fail_malloc_l11_6;
+                                                    __malloc_w_can_fail_malloc_l11_7}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_5[0..15] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                      __malloc_w_can_fail_malloc_l11_2;
+                                                      __malloc_can_fail_malloc_l11_4;
+                                                      __malloc_w_can_fail_malloc_l11_5;
+                                                      __malloc_w_can_fail_malloc_l11_6;
+                                                      __malloc_w_can_fail_malloc_l11_7}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_6[0..3] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                      __malloc_w_can_fail_malloc_l11_2;
+                                                      __malloc_can_fail_malloc_l11_4;
+                                                      __malloc_w_can_fail_malloc_l11_5;
+                                                      __malloc_w_can_fail_malloc_l11_6;
+                                                      __malloc_w_can_fail_malloc_l11_7}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 32 to 63]# ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_6 }} or UNINITIALIZED%64, bits 32 to 63 
+  __malloc_w_can_fail_malloc_l11_7[0..15] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                      __malloc_w_can_fail_malloc_l11_2;
+                                                      __malloc_can_fail_malloc_l11_4;
+                                                      __malloc_w_can_fail_malloc_l11_5;
+                                                      __malloc_w_can_fail_malloc_l11_6;
+                                                      __malloc_w_can_fail_malloc_l11_7}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+[eva:final-states] Values at end of function can_fail_malloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈
+          {{ NULL ; (void *)&__malloc_can_fail_malloc_l11 ;
+             (void *)&__malloc_can_fail_malloc_l11_0 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_1 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_2 ;
+             (void *)&__malloc_can_fail_malloc_l11_3 ;
+             (void *)&__malloc_can_fail_malloc_l11_4 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_5 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_6 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_7 }}
+[eva:final-states] Values at end of function addSCC:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  new ∈ {{ NULL ; (Node *)&__malloc_w_can_fail_malloc_l11_7 }}
+  __malloc_can_fail_malloc_l11[0..7] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                  __malloc_w_can_fail_malloc_l11_2;
+                                                  __malloc_can_fail_malloc_l11_4;
+                                                  __malloc_w_can_fail_malloc_l11_5;
+                                                  __malloc_w_can_fail_malloc_l11_6;
+                                                  __malloc_w_can_fail_malloc_l11_7}
+                               (origin: Misaligned) }}
+                              [8..15] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                  __malloc_w_can_fail_malloc_l11_2;
+                                                  __malloc_can_fail_malloc_l11_4;
+                                                  __malloc_w_can_fail_malloc_l11_5;
+                                                  __malloc_w_can_fail_malloc_l11_6;
+                                                  __malloc_w_can_fail_malloc_l11_7}
+                               (origin: Misaligned) }} or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_7[0..15] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                      __malloc_w_can_fail_malloc_l11_2;
+                                                      __malloc_can_fail_malloc_l11_4;
+                                                      __malloc_w_can_fail_malloc_l11_5;
+                                                      __malloc_w_can_fail_malloc_l11_6;
+                                                      __malloc_w_can_fail_malloc_l11_7}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+[eva:final-states] Values at end of function amigo:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  plista ∈
+        {{ (Amigo *)&__malloc_w_can_fail_malloc_l11_1 ;
+           (Amigo *)&__malloc_w_can_fail_malloc_l11_2 }}
+  new ∈ {{ NULL ; (Amigo *)&__malloc_w_can_fail_malloc_l11_2 }}
+  __malloc_can_fail_malloc_l11_0[0..3] ∈ UNINITIALIZED
+                                [4..15] ∈ [--..--] or UNINITIALIZED
+                                [bits 128 to 287]# ∈
+                                {{ NULL + [--..--] ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_1 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED repeated %64, bits 0 to 159 
+                                [bits 288 to 543]# ∈
+                                {{ NULL + [--..--] ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_1 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED repeated %64, bits 32 to 287 
+                                [bits 544 to 549755813439]# ∈
+                                {{ NULL + [--..--] ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_1 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED repeated %64, bits 32 to 549755812927 
+                                [bits 549755813440 to 549755813567]# ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_1 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED repeated %64 
+                                [68719476696..18446744073709551583] ∈
+                                UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_1[0..3] ∈ [--..--] or UNINITIALIZED
+                                  [4..7] ∈ UNINITIALIZED
+                                  [8..15] ∈ {0} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_2[0..3] ∈ [--..--] or UNINITIALIZED
+                                  [4..7] ∈ UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_1 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED
+[eva:final-states] Values at end of function push:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  top_0 ∈ {{ (Stack *)&__malloc_w_can_fail_malloc_l11_5 }}
+  __malloc_w_can_fail_malloc_l11_5[0..15] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                      __malloc_w_can_fail_malloc_l11_2;
+                                                      __malloc_can_fail_malloc_l11_4;
+                                                      __malloc_w_can_fail_malloc_l11_5;
+                                                      __malloc_w_can_fail_malloc_l11_6;
+                                                      __malloc_w_can_fail_malloc_l11_7}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+[eva:final-states] Values at end of function top:
+  __retres ∈
+          {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                              __malloc_w_can_fail_malloc_l11_2;
+                              __malloc_can_fail_malloc_l11_4;
+                              __malloc_w_can_fail_malloc_l11_5;
+                              __malloc_w_can_fail_malloc_l11_6;
+                              __malloc_w_can_fail_malloc_l11_7}
+           (origin: Misaligned) }}
+[eva:final-states] Values at end of function SCCUtil:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  stack ∈
+       {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                           __malloc_w_can_fail_malloc_l11_2;
+                           __malloc_can_fail_malloc_l11_4;
+                           __malloc_w_can_fail_malloc_l11_5;
+                           __malloc_w_can_fail_malloc_l11_6;
+                           __malloc_w_can_fail_malloc_l11_7}
+        (origin: Misaligned) }}
+  w ∈ [0..2147483647]
+  plista ∈
+        {{ NULL ; &__malloc_w_can_fail_malloc_l11_1 + [0..12] ;
+           &__malloc_w_can_fail_malloc_l11_2 + [0..12] ;
+           &__malloc_can_fail_malloc_l11_4 + [0..12] ;
+           &__malloc_w_can_fail_malloc_l11_5 + [0..12] ;
+           (Amigo *)&__malloc_w_can_fail_malloc_l11_6{[0], [1], [2], [3], [4]} ;
+           &__malloc_w_can_fail_malloc_l11_7 + [0..12] }} or ESCAPINGADDR
+  stack ∈
+       {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                           __malloc_w_can_fail_malloc_l11_2;
+                           __malloc_can_fail_malloc_l11_4;
+                           __malloc_w_can_fail_malloc_l11_5;
+                           __malloc_w_can_fail_malloc_l11_6;
+                           __malloc_w_can_fail_malloc_l11_7}
+        (origin: Misaligned) }} or ESCAPINGADDR
+  SCCUtil_time ∈ [1..2147483647]
+  __malloc_can_fail_malloc_l11[0..15] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                  __malloc_w_can_fail_malloc_l11_2;
+                                                  __malloc_can_fail_malloc_l11_4;
+                                                  __malloc_w_can_fail_malloc_l11_5;
+                                                  __malloc_w_can_fail_malloc_l11_6;
+                                                  __malloc_w_can_fail_malloc_l11_7}
+                               (origin: Misaligned) }} or ESCAPINGADDR
+  __malloc_can_fail_malloc_l11_0[0..68719476687] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2;
+                                                    __malloc_can_fail_malloc_l11_4;
+                                                    __malloc_w_can_fail_malloc_l11_5;
+                                                    __malloc_w_can_fail_malloc_l11_6;
+                                                    __malloc_w_can_fail_malloc_l11_7}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+                                [68719476688..68719476695] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2;
+                                                    __malloc_w_can_fail_malloc_l11_6}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+                                [68719476696..18446744073709551583] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_6}
+                                 (origin: Misaligned) }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_1[0..15] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                      __malloc_w_can_fail_malloc_l11_2;
+                                                      __malloc_can_fail_malloc_l11_4;
+                                                      __malloc_w_can_fail_malloc_l11_5;
+                                                      __malloc_w_can_fail_malloc_l11_6;
+                                                      __malloc_w_can_fail_malloc_l11_7}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_2[0..15] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                      __malloc_w_can_fail_malloc_l11_2;
+                                                      __malloc_can_fail_malloc_l11_4;
+                                                      __malloc_w_can_fail_malloc_l11_5;
+                                                      __malloc_w_can_fail_malloc_l11_6;
+                                                      __malloc_w_can_fail_malloc_l11_7}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_can_fail_malloc_l11_3[0..3] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2;
+                                                    __malloc_can_fail_malloc_l11_4;
+                                                    __malloc_w_can_fail_malloc_l11_5;
+                                                    __malloc_w_can_fail_malloc_l11_6;
+                                                    __malloc_w_can_fail_malloc_l11_7}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+                                [bits 32 to 68719476703]# ∈
+                                {0; 1} or UNINITIALIZED repeated %32 
+                                [8589934588..8589934591] ∈
+                                {0} or UNINITIALIZED
+                                [8589934592..18446744073709551611] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11_4[0..3] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2;
+                                                    __malloc_can_fail_malloc_l11_4;
+                                                    __malloc_w_can_fail_malloc_l11_5;
+                                                    __malloc_w_can_fail_malloc_l11_6;
+                                                    __malloc_w_can_fail_malloc_l11_7}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+                                [4..7] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2;
+                                                    __malloc_can_fail_malloc_l11_4;
+                                                    __malloc_w_can_fail_malloc_l11_5;
+                                                    __malloc_w_can_fail_malloc_l11_6;
+                                                    __malloc_w_can_fail_malloc_l11_7}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+                                [8..15] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2;
+                                                    __malloc_can_fail_malloc_l11_4;
+                                                    __malloc_w_can_fail_malloc_l11_5;
+                                                    __malloc_w_can_fail_malloc_l11_6;
+                                                    __malloc_w_can_fail_malloc_l11_7}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_5[0..15] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                      __malloc_w_can_fail_malloc_l11_2;
+                                                      __malloc_can_fail_malloc_l11_4;
+                                                      __malloc_w_can_fail_malloc_l11_5;
+                                                      __malloc_w_can_fail_malloc_l11_6;
+                                                      __malloc_w_can_fail_malloc_l11_7}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_6[0..3] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                      __malloc_w_can_fail_malloc_l11_2;
+                                                      __malloc_can_fail_malloc_l11_4;
+                                                      __malloc_w_can_fail_malloc_l11_5;
+                                                      __malloc_w_can_fail_malloc_l11_6;
+                                                      __malloc_w_can_fail_malloc_l11_7}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 32 to 63]# ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_6 }} or UNINITIALIZED%64, bits 32 to 63 
+  __malloc_w_can_fail_malloc_l11_7[0..15] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                      __malloc_w_can_fail_malloc_l11_2;
+                                                      __malloc_can_fail_malloc_l11_4;
+                                                      __malloc_w_can_fail_malloc_l11_5;
+                                                      __malloc_w_can_fail_malloc_l11_6;
+                                                      __malloc_w_can_fail_malloc_l11_7}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+[eva:final-states] Values at end of function SCC:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  i ∈ [0..2147483647]
+  stackMember ∈
+             {{ NULL ; (int *)&__malloc_can_fail_malloc_l11_3 }} or ESCAPINGADDR
+  stack ∈
+       {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                           __malloc_w_can_fail_malloc_l11_2;
+                           __malloc_can_fail_malloc_l11_4;
+                           __malloc_w_can_fail_malloc_l11_5;
+                           __malloc_w_can_fail_malloc_l11_6;
+                           __malloc_w_can_fail_malloc_l11_7}
+        (origin: Misaligned) }} or ESCAPINGADDR
+  SCCUtil_time ∈ [0..2147483647]
+  __malloc_can_fail_malloc_l11[0..15] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                  __malloc_w_can_fail_malloc_l11_2;
+                                                  __malloc_can_fail_malloc_l11_4;
+                                                  __malloc_w_can_fail_malloc_l11_5;
+                                                  __malloc_w_can_fail_malloc_l11_6;
+                                                  __malloc_w_can_fail_malloc_l11_7}
+                               (origin: Misaligned) }} or ESCAPINGADDR
+  __malloc_can_fail_malloc_l11_0[0..68719476687] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2;
+                                                    __malloc_can_fail_malloc_l11_4;
+                                                    __malloc_w_can_fail_malloc_l11_5;
+                                                    __malloc_w_can_fail_malloc_l11_6;
+                                                    __malloc_w_can_fail_malloc_l11_7}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+                                [68719476688..68719476695] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2;
+                                                    __malloc_w_can_fail_malloc_l11_6}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+                                [68719476696..18446744073709551583] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_6}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_1[0..15] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                      __malloc_w_can_fail_malloc_l11_2;
+                                                      __malloc_can_fail_malloc_l11_4;
+                                                      __malloc_w_can_fail_malloc_l11_5;
+                                                      __malloc_w_can_fail_malloc_l11_6;
+                                                      __malloc_w_can_fail_malloc_l11_7}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_2[0..15] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                      __malloc_w_can_fail_malloc_l11_2;
+                                                      __malloc_can_fail_malloc_l11_4;
+                                                      __malloc_w_can_fail_malloc_l11_5;
+                                                      __malloc_w_can_fail_malloc_l11_6;
+                                                      __malloc_w_can_fail_malloc_l11_7}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_can_fail_malloc_l11_3[0..3] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2;
+                                                    __malloc_can_fail_malloc_l11_4;
+                                                    __malloc_w_can_fail_malloc_l11_5;
+                                                    __malloc_w_can_fail_malloc_l11_6;
+                                                    __malloc_w_can_fail_malloc_l11_7}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+                                [bits 32 to 68719476703]# ∈
+                                {0; 1} or UNINITIALIZED repeated %32 
+                                [8589934588..8589934591] ∈
+                                {0} or UNINITIALIZED
+                                [8589934592..18446744073709551611] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11_4[0..3] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2;
+                                                    __malloc_can_fail_malloc_l11_4;
+                                                    __malloc_w_can_fail_malloc_l11_5;
+                                                    __malloc_w_can_fail_malloc_l11_6;
+                                                    __malloc_w_can_fail_malloc_l11_7}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+                                [4..7] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2;
+                                                    __malloc_can_fail_malloc_l11_4;
+                                                    __malloc_w_can_fail_malloc_l11_5;
+                                                    __malloc_w_can_fail_malloc_l11_6;
+                                                    __malloc_w_can_fail_malloc_l11_7}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+                                [8..15] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2;
+                                                    __malloc_can_fail_malloc_l11_4;
+                                                    __malloc_w_can_fail_malloc_l11_5;
+                                                    __malloc_w_can_fail_malloc_l11_6;
+                                                    __malloc_w_can_fail_malloc_l11_7}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_5[0..15] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                      __malloc_w_can_fail_malloc_l11_2;
+                                                      __malloc_can_fail_malloc_l11_4;
+                                                      __malloc_w_can_fail_malloc_l11_5;
+                                                      __malloc_w_can_fail_malloc_l11_6;
+                                                      __malloc_w_can_fail_malloc_l11_7}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_6[0..3] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                      __malloc_w_can_fail_malloc_l11_2;
+                                                      __malloc_can_fail_malloc_l11_4;
+                                                      __malloc_w_can_fail_malloc_l11_5;
+                                                      __malloc_w_can_fail_malloc_l11_6;
+                                                      __malloc_w_can_fail_malloc_l11_7}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 32 to 63]# ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_6 }} or UNINITIALIZED or ESCAPINGADDR%64, bits 32 to 63 
+  __malloc_w_can_fail_malloc_l11_7[0..15] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                      __malloc_w_can_fail_malloc_l11_2;
+                                                      __malloc_can_fail_malloc_l11_4;
+                                                      __malloc_w_can_fail_malloc_l11_5;
+                                                      __malloc_w_can_fail_malloc_l11_6;
+                                                      __malloc_w_can_fail_malloc_l11_7}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+[eva:final-states] Values at end of function dfs_visit:
+  plista ∈
+        {{ NULL ; &__malloc_w_can_fail_malloc_l11_1 + [0..12] ;
+           &__malloc_w_can_fail_malloc_l11_2 + [0..12] ;
+           &__malloc_can_fail_malloc_l11_4 + [0..12] ;
+           &__malloc_w_can_fail_malloc_l11_5 + [0..12] ;
+           (Amigo *)&__malloc_w_can_fail_malloc_l11_6{[0], [1], [2], [3], [4]} ;
+           &__malloc_w_can_fail_malloc_l11_7 + [0..12] }}
+  __malloc_can_fail_malloc_l11_0[0..68719476687] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2;
+                                                    __malloc_can_fail_malloc_l11_4;
+                                                    __malloc_w_can_fail_malloc_l11_5;
+                                                    __malloc_w_can_fail_malloc_l11_6;
+                                                    __malloc_w_can_fail_malloc_l11_7}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+                                [68719476688..68719476695] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2;
+                                                    __malloc_w_can_fail_malloc_l11_6}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+                                [68719476696..18446744073709551583] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_6}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+[eva:final-states] Values at end of function dfs:
+  i ∈ [0..2147483647]
+  __malloc_can_fail_malloc_l11_0[0..68719476687] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2;
+                                                    __malloc_can_fail_malloc_l11_4;
+                                                    __malloc_w_can_fail_malloc_l11_5;
+                                                    __malloc_w_can_fail_malloc_l11_6;
+                                                    __malloc_w_can_fail_malloc_l11_7}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+                                [68719476688..68719476695] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2;
+                                                    __malloc_w_can_fail_malloc_l11_6}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+                                [68719476696..18446744073709551583] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_6}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+[eva:final-states] Values at end of function main:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  N ∈ [--..--]
+  M ∈ [--..--]
+  nota ∈ [--..--] or UNINITIALIZED
+  i ∈ [0..2147483647]
+  a ∈ [1..2147483647] or UNINITIALIZED
+  b ∈ [--..--] or UNINITIALIZED
+  alunos ∈
+        {{ NULL ; (Aluno *)&__malloc_can_fail_malloc_l11_0 }} or ESCAPINGADDR
+  sccs ∈ {{ (Node *)&__malloc_can_fail_malloc_l11 }} or ESCAPINGADDR
+  SCCUtil_time ∈ [0..2147483647]
+  __retres ∈ {0}
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                   __malloc_w_can_fail_malloc_l11_2;
+                                   __malloc_can_fail_malloc_l11_4;
+                                   __malloc_w_can_fail_malloc_l11_5;
+                                   __malloc_w_can_fail_malloc_l11_6;
+                                   __malloc_w_can_fail_malloc_l11_7}
+                (origin: Misaligned) }} or ESCAPINGADDR
+               [1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11[0..15] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                  __malloc_w_can_fail_malloc_l11_2;
+                                                  __malloc_can_fail_malloc_l11_4;
+                                                  __malloc_w_can_fail_malloc_l11_5;
+                                                  __malloc_w_can_fail_malloc_l11_6;
+                                                  __malloc_w_can_fail_malloc_l11_7}
+                               (origin: Misaligned) }} or ESCAPINGADDR
+  __malloc_can_fail_malloc_l11_0[0..68719476695] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2;
+                                                    __malloc_can_fail_malloc_l11_4;
+                                                    __malloc_w_can_fail_malloc_l11_5;
+                                                    __malloc_w_can_fail_malloc_l11_6;
+                                                    __malloc_w_can_fail_malloc_l11_7}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+                                [68719476696..18446744073709551583] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_6}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_1[0..15] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                      __malloc_w_can_fail_malloc_l11_2;
+                                                      __malloc_can_fail_malloc_l11_4;
+                                                      __malloc_w_can_fail_malloc_l11_5;
+                                                      __malloc_w_can_fail_malloc_l11_6;
+                                                      __malloc_w_can_fail_malloc_l11_7}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_2[0..15] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                      __malloc_w_can_fail_malloc_l11_2;
+                                                      __malloc_can_fail_malloc_l11_4;
+                                                      __malloc_w_can_fail_malloc_l11_5;
+                                                      __malloc_w_can_fail_malloc_l11_6;
+                                                      __malloc_w_can_fail_malloc_l11_7}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_can_fail_malloc_l11_3[0..3] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2;
+                                                    __malloc_can_fail_malloc_l11_4;
+                                                    __malloc_w_can_fail_malloc_l11_5;
+                                                    __malloc_w_can_fail_malloc_l11_6;
+                                                    __malloc_w_can_fail_malloc_l11_7}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+                                [bits 32 to 68719476703]# ∈
+                                {0; 1} or UNINITIALIZED repeated %32 
+                                [8589934588..8589934591] ∈
+                                {0} or UNINITIALIZED
+                                [8589934592..18446744073709551611] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11_4[0..3] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2;
+                                                    __malloc_can_fail_malloc_l11_4;
+                                                    __malloc_w_can_fail_malloc_l11_5;
+                                                    __malloc_w_can_fail_malloc_l11_6;
+                                                    __malloc_w_can_fail_malloc_l11_7}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+                                [4..7] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2;
+                                                    __malloc_can_fail_malloc_l11_4;
+                                                    __malloc_w_can_fail_malloc_l11_5;
+                                                    __malloc_w_can_fail_malloc_l11_6;
+                                                    __malloc_w_can_fail_malloc_l11_7}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+                                [8..15] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2;
+                                                    __malloc_can_fail_malloc_l11_4;
+                                                    __malloc_w_can_fail_malloc_l11_5;
+                                                    __malloc_w_can_fail_malloc_l11_6;
+                                                    __malloc_w_can_fail_malloc_l11_7}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_5[0..15] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                      __malloc_w_can_fail_malloc_l11_2;
+                                                      __malloc_can_fail_malloc_l11_4;
+                                                      __malloc_w_can_fail_malloc_l11_5;
+                                                      __malloc_w_can_fail_malloc_l11_6;
+                                                      __malloc_w_can_fail_malloc_l11_7}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_6[0..7] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                      __malloc_w_can_fail_malloc_l11_2;
+                                                      __malloc_can_fail_malloc_l11_4;
+                                                      __malloc_w_can_fail_malloc_l11_5;
+                                                      __malloc_w_can_fail_malloc_l11_6;
+                                                      __malloc_w_can_fail_malloc_l11_7}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_7[0..15] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                      __malloc_w_can_fail_malloc_l11_2;
+                                                      __malloc_can_fail_malloc_l11_4;
+                                                      __malloc_w_can_fail_malloc_l11_5;
+                                                      __malloc_w_can_fail_malloc_l11_6;
+                                                      __malloc_w_can_fail_malloc_l11_7}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  12 functions analyzed (out of 14): 85% coverage.
+  In these functions, 220 statements reached (out of 220): 100% coverage.
+  ----------------------------------------------------------------------------
+  Some errors and warnings have been raised during the analysis:
+    by the Eva analyzer:      2 errors    0 warnings
+    by the Frama-C kernel:    0 errors    0 warnings
+  ----------------------------------------------------------------------------
+  221 alarms generated by the analysis:
+      76 invalid memory accesses
+      58 accesses to uninitialized left-values
+      58 escaping addresses
+      24 integer overflows
+       5 others
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     0 unknown     0 invalid      0 total
+    Preconditions    16 valid     3 unknown     0 invalid     19 total
+  84% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[eva] User Error: Deferred error message was emitted during execution. See above messages for more information.
+[kernel] Plug-in eva aborted: invalid user input.

@@ -1,0 +1,346 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  graph ∈ {0}
+  exist_ancestors ∈ {0}
+[eva] using specification for function scanf_va_2
+[eva] using specification for function time
+[eva] using specification for function srand
+[eva] using specification for function rand
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:18: 
+  calloc out of bounds: assert(nmemb * size <= SIZE_MAX)
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:18: 
+  allocating variable __calloc_can_fail_calloc_l18
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:33: 
+  signed overflow. assert -2147483648 ≤ m - 1;
+[eva] using specification for function scanf_va_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:35: 
+  signed overflow. assert -2147483648 ≤ y - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:36: 
+  out of bounds read. assert \valid_read(&node_ptr->num_ancestors);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:36: 
+  out of bounds write. assert \valid(&node_ptr->num_ancestors);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:36: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:36: 
+  signed overflow. assert -2147483648 ≤ x - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:36: 
+  out of bounds write.
+  assert \valid(&node_ptr->ancestors[tmp_0]);
+  (tmp_0 from node_ptr->num_ancestors++)
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:36: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:37: 
+  out of bounds read. assert \valid_read(&node_ptr->num_ancestors);
+[eva] using specification for function printf_va_1
+[eva] using specification for function exit
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:33: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:36: 
+  accessing out of bounds index.
+  assert 0 ≤ tmp_0;
+  (tmp_0 from node_ptr->num_ancestors++)
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:36: 
+  accessing out of bounds index.
+  assert tmp_0 < 2;
+  (tmp_0 from node_ptr->num_ancestors++)
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:36: 
+  signed overflow. assert node_ptr->num_ancestors + 1 ≤ 2147483647;
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:36: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:62: 
+  out of bounds read. assert \valid_read(&(graph + v)->color);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:47: 
+  out of bounds write. assert \valid(&(graph + v)->color);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:48: 
+  out of bounds read. assert \valid_read(&(graph + v)->num_ancestors);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:49: 
+  out of bounds read. assert \valid_read(&(graph + v)->ancestors[i]);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:49: 
+  out of bounds read.
+  assert \valid_read(&(graph + (graph + v)->ancestors[i])->color);
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:50: 
+  detected recursive call of function find_cycles_visit.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:50: 
+  out of bounds read. assert \valid_read(&(graph + v)->ancestors[i]);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:50: User Error: 
+  Recursive call to find_cycles_visit without assigns clause.
+  Generating probably incomplete assigns to interpret the call. Try to increase
+  the -eva-unroll-recursive-calls parameter or write a correct specification
+  for function find_cycles_visit.
+[kernel:annot:missing-spec] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:44: 
+  Neither code nor specification for function find_cycles_visit, generating default assigns from the prototype
+[eva] using specification for function find_cycles_visit
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:51: 
+  out of bounds read. assert \valid_read(&(graph + v)->ancestors[i]);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:51: 
+  out of bounds read.
+  assert \valid_read(&(graph + (graph + v)->ancestors[i])->color);
+[eva] using specification for function printf_va_2
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:48: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:50: 
+  Using specification of function find_cycles_visit for recursive calls.
+  Analysis of function find_cycles_visit is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:49: 
+  accessing out of bounds index. assert i < 2;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:56: 
+  out of bounds write. assert \valid(&(graph + v)->color);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:49: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:61: 
+  starting to merge loop iterations
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:49: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:47: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:50: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:56: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:117: 
+  signed overflow. assert -2147483648 ≤ v1 - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:69: 
+  out of bounds read. assert \valid_read(&(graph + v)->color);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:70: 
+  out of bounds write. assert \valid(&(graph + v)->color);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:70: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:72: 
+  out of bounds read. assert \valid_read(&(graph + v)->num_ancestors);
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:73: 
+  detected recursive call of function find_ancestors_v1.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:73: 
+  out of bounds read. assert \valid_read(&(graph + v)->ancestors[i]);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:73: User Error: 
+  Recursive call to find_ancestors_v1 without assigns clause.
+  Generating probably incomplete assigns to interpret the call. Try to increase
+  the -eva-unroll-recursive-calls parameter or write a correct specification
+  for function find_ancestors_v1.
+[kernel:annot:missing-spec] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:67: 
+  Neither code nor specification for function find_ancestors_v1, generating default assigns from the prototype
+[eva] using specification for function find_ancestors_v1
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:72: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:73: 
+  Using specification of function find_ancestors_v1 for recursive calls.
+  Analysis of function find_ancestors_v1 is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:73: 
+  accessing out of bounds index. assert i < 2;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:118: 
+  signed overflow. assert -2147483648 ≤ v2 - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:88: 
+  out of bounds read. assert \valid_read(&(graph + v)->color);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:89: 
+  out of bounds read. assert \valid_read(&(graph + v)->color);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:90: 
+  out of bounds write. assert \valid(&(graph + v)->color);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:90: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:92: 
+  out of bounds read. assert \valid_read(&(graph + v)->num_ancestors);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:93: 
+  out of bounds read. assert \valid_read(&(graph + v)->ancestors[i]);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:78: 
+  out of bounds read. assert \valid_read(&(graph + v)->color);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:79: 
+  out of bounds write. assert \valid(&(graph + v)->color);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:79: 
+  more than 200(2147483648) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:81: 
+  out of bounds read. assert \valid_read(&(graph + v)->num_ancestors);
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:82: 
+  detected recursive call of function fill_ancestors_red.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:82: 
+  out of bounds read. assert \valid_read(&(graph + v)->ancestors[i]);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:82: User Error: 
+  Recursive call to fill_ancestors_red without assigns clause.
+  Generating probably incomplete assigns to interpret the call. Try to increase
+  the -eva-unroll-recursive-calls parameter or write a correct specification
+  for function fill_ancestors_red.
+[kernel:annot:missing-spec] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:76: 
+  Neither code nor specification for function fill_ancestors_red, generating default assigns from the prototype
+[eva] using specification for function fill_ancestors_red
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:81: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:82: 
+  Using specification of function fill_ancestors_red for recursive calls.
+  Analysis of function fill_ancestors_red is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:82: 
+  accessing out of bounds index. assert i < 2;
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:81: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:92: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:93: 
+  accessing out of bounds index. assert i < 2;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:95: 
+  out of bounds read. assert \valid_read(&(graph + v)->num_ancestors);
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:96: 
+  detected recursive call of function find_ancestors_v2.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:96: 
+  out of bounds read. assert \valid_read(&(graph + v)->ancestors[i]);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:96: User Error: 
+  Recursive call to find_ancestors_v2 without assigns clause.
+  Generating probably incomplete assigns to interpret the call. Try to increase
+  the -eva-unroll-recursive-calls parameter or write a correct specification
+  for function find_ancestors_v2.
+[kernel:annot:missing-spec] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:86: 
+  Neither code nor specification for function find_ancestors_v2, generating default assigns from the prototype
+[eva] using specification for function find_ancestors_v2
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:95: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:96: 
+  Using specification of function find_ancestors_v2 for recursive calls.
+  Analysis of function find_ancestors_v2 is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:96: 
+  accessing out of bounds index. assert i < 2;
+[eva] using specification for function printf_va_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:106: 
+  out of bounds read. assert \valid_read(&(graph + i)->color);
+[eva] using specification for function printf_va_4
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al064/file.c:105: 
+  starting to merge loop iterations
+[eva] using specification for function printf_va_5
+[eva] done for function main
+[scope:rm_asserts] removing 6 assertion(s)
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function print_lca:
+  i ∈ [0..2147483647] or UNINITIALIZED
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function can_fail_calloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈ {{ NULL ; (void *)&__calloc_can_fail_calloc_l18 }}
+[eva:final-states] Values at end of function read_graph:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  m ∈ [-2147483648..-1]
+  x ∈ [-2147483648..2147483646] or UNINITIALIZED
+  y ∈ [-2147483647..2147483647] or UNINITIALIZED
+  node_ptr ∈
+          {{ &__calloc_can_fail_calloc_l18 + [0..34359738336],0%16 }} or UNINITIALIZED
+  graph ∈ {{ NULL ; (NODE *)&__calloc_can_fail_calloc_l18 }}
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+  __calloc_can_fail_calloc_l18[bits 0 to 63]# ∈
+                              [-2147483648..2147483646] repeated %32 
+                              [8..34359738343] ∈ [--..--]
+                              [bits 274877906752 to 274877906783] ∈
+                              [-2147483647..2147483647]
+                              [34359738348..18446744073709551615] ∈ {0}
+[eva:final-states] Values at end of function fill_ancestors_red:
+  i ∈ [0..2147483647] or UNINITIALIZED
+  __calloc_can_fail_calloc_l18[bits 0 to 63]# ∈
+                              [-2147483648..2147483646] repeated %32 
+                              [8..34359738343] ∈ [--..--]
+                              [bits 274877906752 to 274877906783] ∈
+                              [-2147483647..2147483647]
+                              [bits 274877906784 to 274877906815] ∈
+                              {-1; 0; 1; 2; 3}
+                              [bits 274877906816 to 274877906943]# ∈
+                              {-1; 0} repeated %32 
+                              [34359738368..18446744073709551615] ∈ {0}
+[eva:final-states] Values at end of function find_ancestors_v1:
+  i ∈ [0..2147483647] or UNINITIALIZED
+  __calloc_can_fail_calloc_l18[bits 0 to 63]# ∈
+                              [-2147483648..2147483646] repeated %32 
+                              [8..34359738343] ∈ [--..--]
+                              [bits 274877906752 to 274877906783] ∈
+                              [-2147483647..2147483647]
+                              [bits 274877906784 to 274877906815] ∈
+                              {0; 1; 2}
+                              [34359738352..18446744073709551615] ∈ {0}
+[eva:final-states] Values at end of function find_cycles_visit:
+  i ∈ {0; 1; 2}
+  S___fc_stdout[0..1] ∈ [--..--]
+  __calloc_can_fail_calloc_l18[bits 0 to 63]# ∈
+                              [-2147483648..2147483646] repeated %32 
+                              [8..34359738343] ∈ [--..--]
+                              [bits 274877906752 to 274877906783] ∈
+                              [-2147483647..2147483647]
+                              [bits 274877906784 to 274877906815] ∈
+                              {0; 1; 2}
+                              [34359738352..18446744073709551615] ∈ {0}
+[eva:final-states] Values at end of function find_cycles:
+  v ∈ [0..2147483647]
+  S___fc_stdout[0..1] ∈ [--..--]
+  __calloc_can_fail_calloc_l18[bits 0 to 63]# ∈
+                              [-2147483648..2147483646] repeated %32 
+                              [8..34359738343] ∈ [--..--]
+                              [bits 274877906752 to 274877906783] ∈
+                              [-2147483647..2147483647]
+                              [bits 274877906784 to 274877906815] ∈
+                              {0; 1; 2}
+                              [34359738352..18446744073709551615] ∈ {0}
+[eva:final-states] Values at end of function find_ancestors_v2:
+  i ∈ [0..2147483647] or UNINITIALIZED
+  exist_ancestors ∈ {0; 1}
+  __calloc_can_fail_calloc_l18[bits 0 to 63]# ∈
+                              [-2147483648..2147483646] repeated %32 
+                              [8..34359738343] ∈ [--..--]
+                              [bits 274877906752 to 274877906783] ∈
+                              [-2147483647..2147483647]
+                              [bits 274877906784 to 274877906815] ∈
+                              {-1; 0; 1; 2; 3}
+                              [bits 274877906816 to 274877906943]# ∈
+                              {-1; 0} repeated %32 
+                              [34359738368..18446744073709551615] ∈ {0}
+[eva:final-states] Values at end of function main:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  v1 ∈ [0..2147483646]
+  v2 ∈ [0..2147483646]
+  n ∈ [--..--]
+  m ∈ [--..--]
+  graph ∈ {{ (NODE *)&__calloc_can_fail_calloc_l18 }}
+  exist_ancestors ∈ {0; 1}
+  __retres ∈ {0}
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+  __calloc_can_fail_calloc_l18[bits 0 to 63]# ∈
+                              [-2147483648..2147483646] repeated %32 
+                              [8..34359738343] ∈ [--..--]
+                              [bits 274877906752 to 274877906783] ∈
+                              [-2147483647..2147483647]
+                              [bits 274877906784 to 274877906815] ∈
+                              {-1; 0; 1; 2; 3}
+                              [bits 274877906816 to 274877906943]# ∈
+                              {-1; 0} repeated %32 
+                              [34359738368..18446744073709551615] ∈ {0}
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  9 functions analyzed (out of 11): 81% coverage.
+  In these functions, 114 statements reached (out of 114): 100% coverage.
+  ----------------------------------------------------------------------------
+  Some errors and warnings have been raised during the analysis:
+    by the Eva analyzer:      4 errors    0 warnings
+    by the Frama-C kernel:    0 errors    0 warnings
+  ----------------------------------------------------------------------------
+  42 alarms generated by the analysis:
+      29 invalid memory accesses
+       7 accesses out of bounds index
+       6 integer overflows
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     0 unknown     0 invalid      0 total
+    Preconditions    14 valid     0 unknown     0 invalid     14 total
+  100% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[eva] User Error: Deferred error message was emitted during execution. See above messages for more information.
+[kernel] Plug-in eva aborted: invalid user input.

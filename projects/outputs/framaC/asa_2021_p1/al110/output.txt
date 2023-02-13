@@ -1,0 +1,608 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  
+[eva] using specification for function fgets
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:19: 
+  function fgets: precondition 'valid_stream' got status unknown.
+[eva] using specification for function strtok
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:20: 
+  function strtok, behavior new_str: precondition 'valid_string_s_or_delim_not_found' got status unknown.
+[eva] using specification for function atoi
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:20: 
+  function atoi: precondition 'valid_nptr' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:21: 
+  function atoi: precondition 'valid_nptr' got status unknown.
+[eva] using specification for function time
+[eva] using specification for function srand
+[eva] using specification for function rand
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:24: 
+  out of bounds write. assert \valid(&(graph + i)->vertex);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:25: 
+  out of bounds write. assert \valid(&(graph + i)->visited);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:26: 
+  out of bounds write. assert \valid(&(graph + i)->count);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_0
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:27: 
+  out of bounds write. assert \valid(&(graph + i)->adj);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:28: 
+  out of bounds write. assert \valid(&(graph + i)->max_path_size);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:23: 
+  starting to merge loop iterations
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:24: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:25: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:26: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:27: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:28: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:24: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:25: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:26: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:27: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:28: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[eva:locals-escaping] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:103: 
+  locals {buff} escaping the scope of initGraph through __fc_strtok_ptr
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:38: 
+  function strtok, behavior new_str: precondition 'valid_string_s_or_delim_not_found' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:38: 
+  function atoi: precondition 'valid_nptr' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:39: 
+  function strtok, behavior resume_str: precondition 'not_first_call' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:39: 
+  Assigning imprecise value to tmp_1.
+  The imprecision originates from Library function
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:39: 
+  function atoi: precondition 'valid_nptr' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:40: 
+  signed overflow. assert -2147483648 ≤ u - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:40: 
+  accessing uninitialized left-value.
+  assert \initialized(&(graph + (int)(u - 1))->adj);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:40: 
+  accessing uninitialized left-value.
+  assert \initialized(&(graph + (int)(u - 1))->count);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:40: 
+  out of bounds read. assert \valid_read(&(graph + (int)(u - 1))->adj);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:40: 
+  out of bounds read. assert \valid_read(&(graph + (int)(u - 1))->count);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:40: 
+  out of bounds write.
+  assert \valid((graph + (int)(u - 1))->adj + (graph + (int)(u - 1))->count);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:41: 
+  out of bounds write. assert \valid(&(graph + (int)(u - 1))->count);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:41: 
+  accessing uninitialized left-value.
+  assert \initialized(&(graph + (int)(u - 1))->count);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:41: 
+  signed overflow. assert -2147483648 ≤ (graph + (int)(u - 1))->count + 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:41: 
+  signed overflow. assert (graph + (int)(u - 1))->count + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:41: 
+  Assigning imprecise value to (graph + (u - 1))->count
+  (pointing to __malloc_can_fail_malloc_l11 with offsets [64..549755813440],64%256).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:41}
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:41: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:42: 
+  accessing uninitialized left-value.
+  assert \initialized(&(graph + (int)(u - 1))->count);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:42: 
+  accessing uninitialized left-value.
+  assert \initialized(&(graph + (int)(u - 1))->adj);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:42: 
+  out of bounds read. assert \valid_read(&(graph + (int)(u - 1))->count);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:42: 
+  out of bounds read. assert \valid_read(&(graph + (int)(u - 1))->adj);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:42: 
+  signed overflow. assert -2147483648 ≤ (graph + (int)(u - 1))->count + 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:42: 
+  signed overflow. assert (graph + (int)(u - 1))->count + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:25: 
+  function realloc: precondition 'freeable' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:25: 
+  allocating variable __realloc_can_fail_realloc_l25
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:42: 
+  out of bounds write. assert \valid(&(graph + (int)(u - 1))->adj);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:42: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:36: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:40: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(graph + (int)(u - 1))->adj);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:40: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(graph + (int)(u - 1))->count);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:41: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(graph + (int)(u - 1))->count);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:42: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(graph + (int)(u - 1))->count);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:42: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(graph + (int)(u - 1))->adj);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:40: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[eva:locals-escaping] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:104: 
+  locals {buff} escaping the scope of readDependencies through __fc_strtok_ptr
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:88: 
+  accessing uninitialized left-value.
+  assert \initialized(&(graph + i)->vertex);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:88: 
+  out of bounds read. assert \valid_read(&(graph + i)->vertex);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:48: 
+  out of bounds write. assert \valid(&(graph + (int)(u - 1))->visited);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:48: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:50: 
+  accessing uninitialized left-value.
+  assert \initialized(&(graph + (int)(u - 1))->count);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:50: 
+  out of bounds read. assert \valid_read(&(graph + (int)(u - 1))->count);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:50: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(graph + (int)(u - 1))->count);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:51: 
+  accessing uninitialized left-value.
+  assert \initialized(&(graph + (int)(vertex - 1))->max_path_size);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:51: 
+  out of bounds read.
+  assert \valid_read(&(graph + (int)(vertex - 1))->max_path_size);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:51: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(graph + (int)(vertex - 1))->max_path_size);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:52: 
+  out of bounds write.
+  assert \valid(&(graph + (int)(vertex - 1))->max_path_size);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:52: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:54: 
+  accessing uninitialized left-value.
+  assert \initialized(&(graph + (int)(u - 1))->count);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:54: 
+  out of bounds read. assert \valid_read(&(graph + (int)(u - 1))->count);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:54: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(graph + (int)(u - 1))->count);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:55: 
+  accessing uninitialized left-value.
+  assert \initialized(&(graph + (int)(u - 1))->adj);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:55: 
+  out of bounds read. assert \valid_read(&(graph + (int)(u - 1))->adj);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:55: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(graph + (int)(u - 1))->adj);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:55: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + (int)(u - 1))->adj + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:55: 
+  out of bounds read. assert \valid_read((graph + (int)(u - 1))->adj + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:56: 
+  signed overflow. assert -2147483648 ≤ v - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:56: 
+  accessing uninitialized left-value.
+  assert \initialized(&(graph + (int)(v - 1))->visited);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:56: 
+  out of bounds read. assert \valid_read(&(graph + (int)(v - 1))->visited);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:56: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(graph + (int)(v - 1))->visited);
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:57: 
+  detected recursive call of function DFS.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:57: User Error: 
+  Recursive call to DFS without assigns clause.
+  Generating probably incomplete assigns to interpret the call. Try to increase
+  the -eva-unroll-recursive-calls parameter or write a correct specification
+  for function DFS.
+[kernel:annot:missing-spec] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:46: 
+  Neither code nor specification for function DFS, generating default assigns from the prototype
+[eva] using specification for function DFS
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:54: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:57: 
+  Using specification of function DFS for recursive calls.
+  Analysis of function DFS is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:54: 
+  signed overflow. assert i + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:60: 
+  out of bounds write. assert \valid(&(graph + (int)(u - 1))->visited);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:60: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:56: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:87: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:88: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(graph + i)->vertex);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:48: 
+  signed overflow. assert -2147483648 ≤ u - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:48: 
+  signed overflow. assert u - 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:50: 
+  signed overflow. assert -2147483648 ≤ u - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:51: 
+  signed overflow. assert -2147483648 ≤ vertex - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:51: 
+  signed overflow. assert vertex - 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:65: 
+  assertion 'alloca_bounds' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:65: 
+  allocating variable __malloc_result_l65
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:67: 
+  out of bounds write. assert \valid(vertices + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:66: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:70: 
+  accessing uninitialized left-value. assert \initialized(&(graph + i)->count);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:70: 
+  out of bounds read. assert \valid_read(&(graph + i)->count);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:70: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(graph + i)->count);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:71: 
+  accessing uninitialized left-value. assert \initialized(&(graph + i)->adj);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:71: 
+  out of bounds read. assert \valid_read(&(graph + i)->adj);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:71: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(graph + i)->adj);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:71: 
+  accessing uninitialized left-value.
+  assert \initialized((graph + i)->adj + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:71: 
+  out of bounds read. assert \valid_read((graph + i)->adj + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:71: 
+  signed overflow. assert -2147483648 ≤ *((graph + i)->adj + j) - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:71: 
+  out of bounds write.
+  assert \valid(vertices + (int)(*((graph + i)->adj + j) - 1));
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:70: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:70: 
+  signed overflow. assert j + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:69: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:75: 
+  accessing uninitialized left-value. assert \initialized(vertices + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:75: 
+  out of bounds read. assert \valid_read(vertices + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:78: 
+  accessing uninitialized left-value.
+  assert \initialized(&(graph + i)->max_path_size);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:78: 
+  out of bounds read. assert \valid_read(&(graph + i)->max_path_size);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:78: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(graph + i)->max_path_size);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:79: 
+  out of bounds read. assert \valid_read(&(graph + i)->max_path_size);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:79: 
+  Assigning imprecise value to biggest_path.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:74: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:79: 
+  accessing uninitialized left-value.
+  assert \initialized(&(graph + i)->max_path_size);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:79: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(graph + i)->max_path_size);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:76: 
+  signed overflow. assert n + 1 ≤ 2147483647;
+[eva] using specification for function printf_va_1
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:90: 
+  freeing automatic bases: {__malloc_result_l65}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:96: 
+  accessing uninitialized left-value. assert \initialized(&(graph + i)->adj);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:96: 
+  out of bounds read. assert \valid_read(&(graph + i)->adj);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:96: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(graph + i)->adj);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:96: 
+  function free: precondition 'freeable' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:95: 
+  starting to merge loop iterations
+[eva] done for function main
+[scope:rm_asserts] removing 10 assertion(s)
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function freeMem:
+  graph ∈
+       {{ NULL ; (VERTEX *)&__malloc_can_fail_malloc_l11 }} or ESCAPINGADDR
+  i ∈ [0..2147483647]
+  graph ∈
+       {{ NULL ; (VERTEX *)&__malloc_can_fail_malloc_l11 }} or ESCAPINGADDR
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                                   __realloc_w_can_fail_realloc_l25}
+                (origin: Misaligned) }} or ESCAPINGADDR
+               [1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11[0..31] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                                                  __realloc_w_can_fail_realloc_l25}
+                               (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+                              [32..68719476683] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                                                  __realloc_w_can_fail_realloc_l25}
+                               (origin: Misaligned
+                               {/home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:41}) }} or UNINITIALIZED or ESCAPINGADDR
+                              [68719476684..68719476695] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                                                  __realloc_w_can_fail_realloc_l25}
+                               (origin: Merge
+                               {/home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:52}) }} or UNINITIALIZED or ESCAPINGADDR
+                              [68719476696..18446744073709551583] ∈
+                              [--..--] or UNINITIALIZED
+[eva:final-states] Values at end of function result:
+  i ∈ [0..2147483647]
+  j ∈ [0..2147483647]
+  n ∈ [0..2147483647]
+  biggest_path ∈
+              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                                  __realloc_w_can_fail_realloc_l25}
+               (origin: Misaligned) }}
+  vertices ∈ ESCAPINGADDR
+  __lengthof_vertices ∈ [--..--]
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                                   __realloc_w_can_fail_realloc_l25}
+                (origin: Misaligned) }}
+               [1] ∈ [--..--]
+[eva:final-states] Values at end of function can_fail_malloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈
+          {{ NULL ; (void *)&__malloc_can_fail_malloc_l11 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_0 }}
+[eva:final-states] Values at end of function can_fail_realloc:
+  __fc_random_counter ∈ [--..--]
+  ptr ∈
+     {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                         __realloc_w_can_fail_realloc_l25}
+      (origin: Misaligned
+      {/home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:41}) }} or ESCAPINGADDR
+  size ∈
+      {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                          __realloc_w_can_fail_realloc_l25}
+       (origin: Misaligned
+       {/home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:41}) }} or ESCAPINGADDR
+  fail ∈ [0. .. 1.]
+  __retres ∈ {{ NULL ; (void *)&__realloc_w_can_fail_realloc_l25 }}
+  __malloc_can_fail_malloc_l11[bits 0 to 31] ∈
+                              [1..2147483647] or UNINITIALIZED
+                              [bits 32 to 63] ∈
+                              [0..2147483647] or UNINITIALIZED
+                              [8..68719476683] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                                                  __realloc_w_can_fail_realloc_l25}
+                               (origin: Misaligned
+                               {/home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:41}) }} or UNINITIALIZED or ESCAPINGADDR
+                              [bits 549755813472 to 549755813567]# ∈
+                              {{ NULL ;
+                                 (? *)&__malloc_w_can_fail_malloc_l11_0 ;
+                                 (? *)&__realloc_w_can_fail_realloc_l25 }} or UNINITIALIZED or ESCAPINGADDR repeated %64, bits 32 to 127 
+                              [68719476696..68719476699] ∈
+                              {0} or UNINITIALIZED
+                              [68719476700..18446744073709551583] ∈
+                              UNINITIALIZED
+[eva:final-states] Values at end of function initGraph:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  __fc_strtok_ptr ∈ {{ NULL ; &buff + [0..--] }}
+  i ∈ [0..2147483647]
+  buff[0..29] ∈ [--..--] or UNINITIALIZED
+  graph ∈ {{ NULL ; (VERTEX *)&__malloc_can_fail_malloc_l11 }}
+  dominos ∈ [--..--]
+  dependencies ∈ [--..--]
+  __retres ∈ {{ NULL ; (VERTEX *)&__malloc_can_fail_malloc_l11 }}
+  __malloc_can_fail_malloc_l11[bits 0 to 31] ∈
+                              [1..2147483647] or UNINITIALIZED
+                              [bits 32 to 127]# ∈
+                              [0..2147483647] or UNINITIALIZED repeated %32 
+                              [16..23] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0}
+                               (origin: Merge
+                               {/home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:24}) }} or UNINITIALIZED
+                              [24..47] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0}
+                               (origin: Merge
+                               {/home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:27}) }} or UNINITIALIZED
+                              [48..55] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0}
+                               (origin: Merge
+                               {/home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:24}) }} or UNINITIALIZED
+                              [56..79] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0}
+                               (origin: Merge
+                               {/home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:27}) }} or UNINITIALIZED
+                              [80..87] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0}
+                               (origin: Merge
+                               {/home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:24}) }} or UNINITIALIZED
+                              [88..68719476675] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0}
+                               (origin: Merge
+                               {/home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:27}) }} or UNINITIALIZED
+                              [bits 549755813408 to 549755813471]# ∈
+                              {{ NULL ;
+                                 (? *)&__malloc_w_can_fail_malloc_l11_0 }} or UNINITIALIZED repeated %64, bits 32 to 95 
+                              [bits 549755813472 to 549755813567]# ∈
+                              {{ NULL ;
+                                 (? *)&__malloc_w_can_fail_malloc_l11_0 }} or UNINITIALIZED repeated %64, bits 32 to 127 
+                              [68719476696..68719476699] ∈
+                              {0} or UNINITIALIZED
+                              [68719476700..18446744073709551583] ∈
+                              UNINITIALIZED
+[eva:final-states] Values at end of function readDependencies:
+  __fc_random_counter ∈ [--..--]
+  __fc_strtok_ptr ∈
+                 {{ garbled mix of &{buff}
+                  (origin: Library function) }} or ESCAPINGADDR
+  i ∈ [0..2147483647]
+  u ∈ [0..2147483647]
+  v ∈ [--..--]
+  buff[0..29] ∈ [--..--] or UNINITIALIZED
+  __malloc_can_fail_malloc_l11[bits 0 to 31] ∈
+                              [1..2147483647] or UNINITIALIZED
+                              [bits 32 to 63] ∈
+                              [0..2147483647] or UNINITIALIZED
+                              [8..68719476683] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                                                  __realloc_w_can_fail_realloc_l25}
+                               (origin: Misaligned
+                               {/home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:41}) }} or UNINITIALIZED or ESCAPINGADDR
+                              [bits 549755813472 to 549755813567]# ∈
+                              {{ NULL ;
+                                 (? *)&__malloc_w_can_fail_malloc_l11_0 ;
+                                 (? *)&__realloc_w_can_fail_realloc_l25 }} or UNINITIALIZED or ESCAPINGADDR repeated %64, bits 32 to 127 
+                              [68719476696..68719476699] ∈
+                              {0} or UNINITIALIZED
+                              [68719476700..18446744073709551583] ∈
+                              UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_0[0..3] ∈ [--..--] or UNINITIALIZED
+  __realloc_w_can_fail_realloc_l25[0..18446744073709551615] ∈
+                                  [--..--] or UNINITIALIZED
+[eva:final-states] Values at end of function DFS:
+  path_size ∈ {1}
+  i ∈ [0..2147483647]
+  v ∈ [0..2147483647]
+  __malloc_can_fail_malloc_l11[0..7] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                                                  __realloc_w_can_fail_realloc_l25}
+                               (origin: Misaligned) }} or UNINITIALIZED
+                              [8..31] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                                                  __realloc_w_can_fail_realloc_l25}
+                               (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+                              [32..68719476683] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                                                  __realloc_w_can_fail_realloc_l25}
+                               (origin: Misaligned
+                               {/home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:41}) }} or UNINITIALIZED or ESCAPINGADDR
+                              [68719476684..68719476695] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                                                  __realloc_w_can_fail_realloc_l25}
+                               (origin: Merge
+                               {/home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:52}) }} or UNINITIALIZED or ESCAPINGADDR
+                              [68719476696..18446744073709551583] ∈
+                              [--..--] or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_0[0..3] ∈ [--..--] or UNINITIALIZED
+  __realloc_w_can_fail_realloc_l25[0..18446744073709551615] ∈
+                                  [--..--] or UNINITIALIZED
+[eva:final-states] Values at end of function run:
+  i ∈ [0..2147483647]
+  path_size ∈ {0}
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                                   __realloc_w_can_fail_realloc_l25}
+                (origin: Misaligned) }}
+               [1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11[0..7] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                                                  __realloc_w_can_fail_realloc_l25}
+                               (origin: Misaligned) }} or UNINITIALIZED
+                              [8..31] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                                                  __realloc_w_can_fail_realloc_l25}
+                               (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+                              [32..68719476683] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                                                  __realloc_w_can_fail_realloc_l25}
+                               (origin: Misaligned
+                               {/home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:41}) }} or UNINITIALIZED or ESCAPINGADDR
+                              [68719476684..68719476695] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                                                  __realloc_w_can_fail_realloc_l25}
+                               (origin: Merge
+                               {/home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:52}) }} or UNINITIALIZED or ESCAPINGADDR
+                              [68719476696..18446744073709551583] ∈
+                              [--..--] or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_0[0..3] ∈ [--..--] or UNINITIALIZED
+  __realloc_w_can_fail_realloc_l25[0..18446744073709551615] ∈
+                                  [--..--] or UNINITIALIZED
+[eva:final-states] Values at end of function main:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  __fc_strtok_ptr ∈ [--..--] or ESCAPINGADDR
+  dominos ∈ [--..--]
+  dependencies ∈ [--..--]
+  graph ∈
+       {{ NULL ; (VERTEX *)&__malloc_can_fail_malloc_l11 }} or ESCAPINGADDR
+  __retres ∈ {0}
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                                   __realloc_w_can_fail_realloc_l25}
+                (origin: Misaligned) }} or ESCAPINGADDR
+               [1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11[0..31] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                                                  __realloc_w_can_fail_realloc_l25}
+                               (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+                              [32..68719476683] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                                                  __realloc_w_can_fail_realloc_l25}
+                               (origin: Misaligned
+                               {/home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:41}) }} or UNINITIALIZED or ESCAPINGADDR
+                              [68719476684..68719476695] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                                                  __realloc_w_can_fail_realloc_l25}
+                               (origin: Merge
+                               {/home/fmarques/sbugs/projects/alunos/asa_2021_p1/al110/domino.c:52}) }} or UNINITIALIZED or ESCAPINGADDR
+                              [68719476696..18446744073709551583] ∈
+                              [--..--] or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_0[0..3] ∈ [--..--] or UNINITIALIZED
+  __realloc_w_can_fail_realloc_l25[0..18446744073709551615] ∈
+                                  [--..--] or UNINITIALIZED
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  9 functions analyzed (out of 10): 90% coverage.
+  In these functions, 155 statements reached (out of 155): 100% coverage.
+  ----------------------------------------------------------------------------
+  Some errors and warnings have been raised during the analysis:
+    by the Eva analyzer:      1 error    0 warnings
+    by the Frama-C kernel:    0 errors    0 warnings
+  ----------------------------------------------------------------------------
+  81 alarms generated by the analysis:
+      31 invalid memory accesses
+      19 accesses to uninitialized left-values
+      16 escaping addresses
+      15 integer overflows
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     1 unknown     0 invalid      1 total
+    Preconditions    16 valid    10 unknown     0 invalid     26 total
+  59% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[eva] User Error: Deferred error message was emitted during execution. See above messages for more information.
+[kernel] Plug-in eva aborted: invalid user input.

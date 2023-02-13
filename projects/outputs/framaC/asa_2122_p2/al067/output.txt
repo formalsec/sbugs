@@ -1,0 +1,573 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  familyTree ∈ {0}
+  sol ∈ {0}
+  queue1 ∈ {0}
+  queue2 ∈ {0}
+[eva] using specification for function scanf_va_1
+[eva] using specification for function time
+[eva] using specification for function srand
+[eva] using specification for function rand
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_0
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_1
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_2
+[eva] using specification for function putchar
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:53: 
+  out of bounds write. assert \valid(familyTree + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:54: 
+  out of bounds write. assert \valid(sol + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:55: 
+  out of bounds write. assert \valid(queue1 + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:56: 
+  out of bounds write. assert \valid(queue2 + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:47: 
+  starting to merge loop iterations
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:53: 
+  too many locations to update in array. Approximating.
+[eva] using specification for function scanf_va_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:67: 
+  accessing uninitialized left-value.
+  assert \initialized(&(familyTree + (int)(child - 1))->parent1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:67: 
+  out of bounds read.
+  assert \valid_read(&(familyTree + (int)(child - 1))->parent1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:68: 
+  out of bounds write.
+  assert \valid(&(familyTree + (int)(child - 1))->parent1);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:68: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:60: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:70: 
+  accessing uninitialized left-value.
+  assert \initialized(&(familyTree + (int)(child - 1))->parent2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:70: 
+  out of bounds read.
+  assert \valid_read(&(familyTree + (int)(child - 1))->parent2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:70: 
+  accessing uninitialized left-value.
+  assert \initialized(&(familyTree + (int)(child - 1))->parent1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:70: 
+  out of bounds read.
+  assert \valid_read(&(familyTree + (int)(child - 1))->parent1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:71: 
+  out of bounds write.
+  assert \valid(&(familyTree + (int)(child - 1))->parent2);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:71: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:189: 
+  accessing uninitialized left-value.
+  assert \initialized(&(familyTree + i)->hasBeenVisited);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:189: 
+  out of bounds read. assert \valid_read(&(familyTree + i)->hasBeenVisited);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:200: 
+  out of bounds write.
+  assert \valid(&(familyTree + (int)(el - 1))->hasBeenVisited);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:201: 
+  accessing uninitialized left-value.
+  assert \initialized(&(familyTree + (int)(el - 1))->parent1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:201: 
+  out of bounds read.
+  assert \valid_read(&(familyTree + (int)(el - 1))->parent1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:202: 
+  accessing uninitialized left-value.
+  assert \initialized(&(familyTree + (int)(el - 1))->parent2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:202: 
+  out of bounds read.
+  assert \valid_read(&(familyTree + (int)(el - 1))->parent2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:204: 
+  signed overflow. assert -2147483648 ≤ p1 - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:204: 
+  accessing uninitialized left-value.
+  assert \initialized(&(familyTree + (int)(p1 - 1))->hasBeenVisited);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:204: 
+  out of bounds read.
+  assert \valid_read(&(familyTree + (int)(p1 - 1))->hasBeenVisited);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:207: 
+  accessing uninitialized left-value.
+  assert \initialized(&(familyTree + (int)(p1 - 1))->hasBeenVisited);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:207: 
+  out of bounds read.
+  assert \valid_read(&(familyTree + (int)(p1 - 1))->hasBeenVisited);
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:208: 
+  detected recursive call of function cicleDetected.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:208: User Error: 
+  Recursive call to cicleDetected without assigns clause.
+  Generating probably incomplete assigns to interpret the call. Try to increase
+  the -eva-unroll-recursive-calls parameter or write a correct specification
+  for function cicleDetected.
+[kernel:annot:missing-spec] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:198: 
+  Neither code nor specification for function cicleDetected, generating default assigns from the prototype
+[eva] using specification for function cicleDetected
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:214: 
+  signed overflow. assert -2147483648 ≤ p2 - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:214: 
+  accessing uninitialized left-value.
+  assert \initialized(&(familyTree + (int)(p2 - 1))->hasBeenVisited);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:214: 
+  out of bounds read.
+  assert \valid_read(&(familyTree + (int)(p2 - 1))->hasBeenVisited);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:217: 
+  accessing uninitialized left-value.
+  assert \initialized(&(familyTree + (int)(p2 - 1))->hasBeenVisited);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:217: 
+  out of bounds read.
+  assert \valid_read(&(familyTree + (int)(p2 - 1))->hasBeenVisited);
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:218: 
+  detected recursive call of function cicleDetected.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:218: 
+  Using specification of function cicleDetected for recursive calls.
+  Analysis of function cicleDetected is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:223: 
+  out of bounds write.
+  assert \valid(&(familyTree + (int)(el - 1))->hasBeenVisited);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:204: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:204: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:207: 
+  more than 200(2147483646) elements to enumerate. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:188: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:208: 
+  Using specification of function cicleDetected for recursive calls.
+  Analysis of function cicleDetected is thus incomplete and its soundness
+  relies on the written specification.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:200: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:223: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:201: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:202: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[eva] using specification for function printf_va_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:90: 
+  accessing uninitialized left-value.
+  assert \initialized(&(familyTree + (int)(v1 - 1))->parent1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:90: 
+  out of bounds read.
+  assert \valid_read(&(familyTree + (int)(v1 - 1))->parent1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:90: 
+  accessing uninitialized left-value.
+  assert \initialized(&(familyTree + (int)(v1 - 1))->parent2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:90: 
+  out of bounds read.
+  assert \valid_read(&(familyTree + (int)(v1 - 1))->parent2);
+[eva] using specification for function printf_va_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:95: 
+  accessing uninitialized left-value.
+  assert \initialized(&(familyTree + (int)(v2 - 1))->parent1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:95: 
+  out of bounds read.
+  assert \valid_read(&(familyTree + (int)(v2 - 1))->parent1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:95: 
+  accessing uninitialized left-value.
+  assert \initialized(&(familyTree + (int)(v2 - 1))->parent2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:95: 
+  out of bounds read.
+  assert \valid_read(&(familyTree + (int)(v2 - 1))->parent2);
+[eva] using specification for function printf_va_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:101: 
+  out of bounds write. assert \valid(&(familyTree + i)->hasBeenVisited);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:100: 
+  starting to merge loop iterations
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:101: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:104: 
+  accessing uninitialized left-value.
+  assert \initialized(&(familyTree + (int)(v1 - 1))->parent1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:104: 
+  out of bounds read.
+  assert \valid_read(&(familyTree + (int)(v1 - 1))->parent1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:104: 
+  accessing uninitialized left-value.
+  assert \initialized(&(familyTree + (int)(v1 - 1))->parent2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:104: 
+  out of bounds read.
+  assert \valid_read(&(familyTree + (int)(v1 - 1))->parent2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:105: 
+  accessing uninitialized left-value.
+  assert \initialized(&(familyTree + (int)(v2 - 1))->parent1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:105: 
+  out of bounds read.
+  assert \valid_read(&(familyTree + (int)(v2 - 1))->parent1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:105: 
+  accessing uninitialized left-value.
+  assert \initialized(&(familyTree + (int)(v2 - 1))->parent2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:105: 
+  out of bounds read.
+  assert \valid_read(&(familyTree + (int)(v2 - 1))->parent2);
+[eva] using specification for function printf_va_4
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:229: 
+  out of bounds read. assert \valid_read(familyTree + (int)(el - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:178: 
+  accessing uninitialized left-value. assert \initialized(a + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:178: 
+  out of bounds read. assert \valid_read(a + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:179: 
+  out of bounds write. assert \valid(a + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:232: 
+  out of bounds read. assert \valid_read(queue1 + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:233: 
+  out of bounds read. assert \valid_read(queue1 + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:233: 
+  out of bounds read.
+  assert \valid_read(familyTree + (int)(*(queue1 + 0) - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:234: 
+  accessing uninitialized left-value. assert \initialized(&current.parent1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:235: 
+  accessing uninitialized left-value. assert \initialized(&current.parent2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:236: 
+  signed overflow. assert -2147483648 ≤ p1 - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:236: 
+  accessing uninitialized left-value.
+  assert \initialized(&(familyTree + (int)(p1 - 1))->hasBeenVisited);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:236: 
+  out of bounds read.
+  assert \valid_read(&(familyTree + (int)(p1 - 1))->hasBeenVisited);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:177: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:238: 
+  out of bounds write.
+  assert \valid(&(familyTree + (int)(p1 - 1))->hasBeenVisited);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:238: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:240: 
+  signed overflow. assert -2147483648 ≤ p2 - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:240: 
+  accessing uninitialized left-value.
+  assert \initialized(&(familyTree + (int)(p2 - 1))->hasBeenVisited);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:240: 
+  out of bounds read.
+  assert \valid_read(&(familyTree + (int)(p2 - 1))->hasBeenVisited);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:242: 
+  out of bounds write.
+  assert \valid(&(familyTree + (int)(p2 - 1))->hasBeenVisited);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:242: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:168: 
+  accessing uninitialized left-value. assert \initialized(a + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:168: 
+  out of bounds read. assert \valid_read(a + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:169: 
+  out of bounds write. assert \valid(a + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:167: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:232: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:110: 
+  accessing uninitialized left-value.
+  assert \initialized(&(familyTree + (int)(v1 - 1))->hasBeenVisited);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:110: 
+  out of bounds read.
+  assert \valid_read(&(familyTree + (int)(v1 - 1))->hasBeenVisited);
+[eva] using specification for function printf_va_5
+[eva] using specification for function printf_va_6
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:119: 
+  accessing uninitialized left-value.
+  assert \initialized(&(familyTree + (int)(v2 - 1))->parent1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:119: 
+  out of bounds read.
+  assert \valid_read(&(familyTree + (int)(v2 - 1))->parent1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:119: 
+  accessing uninitialized left-value.
+  assert \initialized(&(familyTree + (int)(v2 - 1))->parent2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:119: 
+  out of bounds read.
+  assert \valid_read(&(familyTree + (int)(v2 - 1))->parent2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:121: 
+  accessing uninitialized left-value.
+  assert \initialized(&(familyTree + (int)(v2 - 1))->hasBeenVisited);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:121: 
+  out of bounds read.
+  assert \valid_read(&(familyTree + (int)(v2 - 1))->hasBeenVisited);
+[eva] using specification for function printf_va_7
+[eva] using specification for function printf_va_8
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:134: 
+  accessing uninitialized left-value.
+  assert \initialized(&(familyTree + (int)(v2 - 1))->hasBeenVisited);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:134: 
+  out of bounds read.
+  assert \valid_read(&(familyTree + (int)(v2 - 1))->hasBeenVisited);
+[eva] using specification for function printf_va_9
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:252: 
+  out of bounds read. assert \valid_read(queue1 + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:253: 
+  out of bounds read. assert \valid_read(queue1 + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:253: 
+  out of bounds read.
+  assert \valid_read(familyTree + (int)(*(queue1 + 0) - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:254: 
+  accessing uninitialized left-value. assert \initialized(&current.parent1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:255: 
+  accessing uninitialized left-value. assert \initialized(&current.parent2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:256: 
+  accessing uninitialized left-value. assert \initialized(&current.id);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:259: 
+  accessing uninitialized left-value.
+  assert \initialized(&current.hasBeenVisited);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:260: 
+  signed overflow. assert -2147483648 ≤ current.id - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:260: 
+  out of bounds write. assert \valid(s + (int)(current.id - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:286: 
+  out of bounds read. assert \valid_read(queue2 + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:287: 
+  out of bounds read. assert \valid_read(queue2 + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:287: 
+  out of bounds read.
+  assert \valid_read(familyTree + (int)(*(queue2 + 0) - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:288: 
+  accessing uninitialized left-value. assert \initialized(&current.parent1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:289: 
+  accessing uninitialized left-value. assert \initialized(&current.parent2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:292: 
+  signed overflow. assert -2147483648 ≤ p1 - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:292: 
+  out of bounds write.
+  assert \valid(&(familyTree + (int)(p1 - 1))->hasBeenVisited);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:292: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:296: 
+  signed overflow. assert -2147483648 ≤ p2 - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:296: 
+  out of bounds write.
+  assert \valid(&(familyTree + (int)(p2 - 1))->hasBeenVisited);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:296: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:286: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:287: 
+  signed overflow. assert -2147483648 ≤ *(queue2 + 0) - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:264: 
+  signed overflow. assert -2147483648 ≤ p1 - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:264: 
+  accessing uninitialized left-value.
+  assert \initialized(&(familyTree + (int)(p1 - 1))->hasBeenVisited);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:264: 
+  out of bounds read.
+  assert \valid_read(&(familyTree + (int)(p1 - 1))->hasBeenVisited);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:264: 
+  accessing uninitialized left-value.
+  assert \initialized(&(familyTree + (int)(p1 - 1))->hasBeenVisited);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:264: 
+  out of bounds read.
+  assert \valid_read(&(familyTree + (int)(p1 - 1))->hasBeenVisited);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:266: 
+  accessing uninitialized left-value.
+  assert \initialized(&(familyTree + (int)(p1 - 1))->hasBeenVisited);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:266: 
+  out of bounds read.
+  assert \valid_read(&(familyTree + (int)(p1 - 1))->hasBeenVisited);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:267: 
+  out of bounds write.
+  assert \valid(&(familyTree + (int)(p1 - 1))->hasBeenVisited);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:267: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:270: 
+  signed overflow. assert -2147483648 ≤ p2 - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:270: 
+  accessing uninitialized left-value.
+  assert \initialized(&(familyTree + (int)(p2 - 1))->hasBeenVisited);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:270: 
+  out of bounds read.
+  assert \valid_read(&(familyTree + (int)(p2 - 1))->hasBeenVisited);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:270: 
+  accessing uninitialized left-value.
+  assert \initialized(&(familyTree + (int)(p2 - 1))->hasBeenVisited);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:270: 
+  out of bounds read.
+  assert \valid_read(&(familyTree + (int)(p2 - 1))->hasBeenVisited);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:272: 
+  accessing uninitialized left-value.
+  assert \initialized(&(familyTree + (int)(p2 - 1))->hasBeenVisited);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:272: 
+  out of bounds read.
+  assert \valid_read(&(familyTree + (int)(p2 - 1))->hasBeenVisited);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:273: 
+  out of bounds write.
+  assert \valid(&(familyTree + (int)(p2 - 1))->hasBeenVisited);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:273: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:252: 
+  starting to merge loop iterations
+[eva] using specification for function printf_va_10
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:149: 
+  accessing uninitialized left-value. assert \initialized(sol + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:149: 
+  out of bounds read. assert \valid_read(sol + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:149: 
+  accessing uninitialized left-value.
+  assert \initialized(&(familyTree + i)->hasBeenVisited);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:149: 
+  out of bounds read. assert \valid_read(&(familyTree + i)->hasBeenVisited);
+[eva] using specification for function printf_va_11
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2122_p2/al067/test.c:148: 
+  starting to merge loop iterations
+[eva] using specification for function printf_va_12
+[eva] done for function main
+[scope:rm_asserts] removing 24 assertion(s)
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function addToQueue:
+  i ∈ [0..2147483647]
+  __retres ∈ {0; 1}
+  __malloc_can_fail_malloc_l11_1[bits 0 to 31] ∈ [1..2147483647]
+                                [bits 32 to 68719476703]# ∈
+                                [0..2147483647] or UNINITIALIZED repeated %32 
+                                [8589934588..18446744073709551611] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11_2[bits 0 to 31] ∈
+                                [0..2147483647] or UNINITIALIZED
+                                [4..8589934587] ∈ [--..--] or UNINITIALIZED
+                                [8589934588..18446744073709551611] ∈
+                                UNINITIALIZED
+[eva:final-states] Values at end of function removeFromQueue:
+  i ∈ {-1}
+  elem ∈ [--..--] or UNINITIALIZED
+  n ∈ [--..--]
+  __malloc_can_fail_malloc_l11_1[bits 0 to 31] ∈ [0..2147483647]
+                                [bits 32 to 68719476703]# ∈
+                                [0..2147483647] or UNINITIALIZED repeated %32 
+                                [8589934588..18446744073709551611] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11_2[0..8589934587] ∈ [--..--] or UNINITIALIZED
+                                [8589934588..18446744073709551611] ∈
+                                UNINITIALIZED
+[eva:final-states] Values at end of function bfsDelete:
+  p1 ∈ [0..2147483647] or UNINITIALIZED
+  p2 ∈ [0..2147483647] or UNINITIALIZED
+  current ∈ [--..--] or UNINITIALIZED
+  __malloc_can_fail_malloc_l11[0..34359738351] ∈ [--..--] or UNINITIALIZED
+                              [34359738352..18446744073709551599] ∈
+                              UNINITIALIZED
+  __malloc_can_fail_malloc_l11_2[0..3] ∈ {0}
+                                [4..8589934587] ∈ [--..--] or UNINITIALIZED
+                                [8589934588..18446744073709551611] ∈
+                                UNINITIALIZED
+[eva:final-states] Values at end of function firstBFS:
+  p1 ∈ [0..2147483647] or UNINITIALIZED
+  p2 ∈ [0..2147483647] or UNINITIALIZED
+  current ∈ [--..--] or UNINITIALIZED
+  __malloc_can_fail_malloc_l11[0..34359738351] ∈ [--..--] or UNINITIALIZED
+                              [34359738352..18446744073709551599] ∈
+                              UNINITIALIZED
+  __malloc_can_fail_malloc_l11_1[0..3] ∈ {0}
+                                [bits 32 to 68719476703]# ∈
+                                [0..2147483647] or UNINITIALIZED repeated %32 
+                                [8589934588..18446744073709551611] ∈
+                                UNINITIALIZED
+[eva:final-states] Values at end of function secondBFS:
+  p1 ∈ [--..--] or UNINITIALIZED
+  p2 ∈ [--..--] or UNINITIALIZED
+  current ∈ [--..--] or UNINITIALIZED
+  __retres ∈ {0; 1}
+  __malloc_can_fail_malloc_l11[0..34359738351] ∈ [--..--] or UNINITIALIZED
+                              [34359738352..18446744073709551599] ∈
+                              UNINITIALIZED
+  __malloc_can_fail_malloc_l11_0[bits 0 to 68719476703]# ∈
+                                {0; 1} or UNINITIALIZED repeated %32 
+                                [8589934588..18446744073709551611] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11_1[bits 0 to 31] ∈ [0..2147483647]
+                                [bits 32 to 68719476703]# ∈
+                                [0..2147483647] or UNINITIALIZED repeated %32 
+                                [8589934588..18446744073709551611] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11_2[0..3] ∈ {0} or UNINITIALIZED
+                                [4..8589934587] ∈ [--..--] or UNINITIALIZED
+                                [8589934588..18446744073709551611] ∈
+                                UNINITIALIZED
+[eva:final-states] Values at end of function can_fail_malloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈
+          {{ NULL ; (void *)&__malloc_can_fail_malloc_l11 ;
+             (void *)&__malloc_can_fail_malloc_l11_0 ;
+             (void *)&__malloc_can_fail_malloc_l11_1 ;
+             (void *)&__malloc_can_fail_malloc_l11_2 }}
+[eva:final-states] Values at end of function isValidTree:
+  i ∈ [0..2147483647]
+  __retres ∈ {0; 1}
+  __malloc_can_fail_malloc_l11[0..34359738351] ∈ [--..--] or UNINITIALIZED
+                              [34359738352..18446744073709551599] ∈
+                              UNINITIALIZED
+[eva:final-states] Values at end of function main:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  familyTree ∈ {{ NULL ; (Child *)&__malloc_can_fail_malloc_l11 }}
+  sol ∈ {{ NULL ; (int *)&__malloc_can_fail_malloc_l11_0 }}
+  queue1 ∈ {{ NULL ; (int *)&__malloc_can_fail_malloc_l11_1 }}
+  queue2 ∈ {{ NULL ; (int *)&__malloc_can_fail_malloc_l11_2 }}
+  v1 ∈ [--..--]
+  v2 ∈ [--..--]
+  n ∈ [--..--]
+  m ∈ [--..--]
+  i ∈ [0..2147483647] or UNINITIALIZED
+  child ∈ [--..--] or UNINITIALIZED
+  parent ∈ [--..--] or UNINITIALIZED
+  check ∈ {0; 1} or UNINITIALIZED
+  __retres ∈ {0}
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11[0..34359738351] ∈ [--..--] or UNINITIALIZED
+                              [34359738352..18446744073709551599] ∈
+                              UNINITIALIZED
+  __malloc_can_fail_malloc_l11_0[bits 0 to 68719476703]# ∈
+                                {0; 1} or UNINITIALIZED repeated %32 
+                                [8589934588..18446744073709551611] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11_1[bits 0 to 68719476703]# ∈
+                                [0..2147483647] or UNINITIALIZED repeated %32 
+                                [8589934588..18446744073709551611] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11_2[0..3] ∈ {0} or UNINITIALIZED
+                                [4..8589934587] ∈ [--..--] or UNINITIALIZED
+                                [8589934588..18446744073709551611] ∈
+                                UNINITIALIZED
+[eva:final-states] Values at end of function cicleDetected:
+  p1 ∈ [0..2147483647]
+  p2 ∈ [--..--]
+  __retres ∈ {0; 1}
+  __malloc_can_fail_malloc_l11[0..34359738351] ∈ [--..--] or UNINITIALIZED
+                              [34359738352..18446744073709551599] ∈
+                              UNINITIALIZED
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  9 functions analyzed (out of 11): 81% coverage.
+  In these functions, 305 statements reached (out of 305): 100% coverage.
+  ----------------------------------------------------------------------------
+  Some errors and warnings have been raised during the analysis:
+    by the Eva analyzer:      1 error    0 warnings
+    by the Frama-C kernel:    0 errors    0 warnings
+  ----------------------------------------------------------------------------
+  116 alarms generated by the analysis:
+      63 invalid memory accesses
+      43 accesses to uninitialized left-values
+      10 integer overflows
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     0 unknown     0 invalid      0 total
+    Preconditions    21 valid     0 unknown     0 invalid     21 total
+  100% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[eva] User Error: Deferred error message was emitted during execution. See above messages for more information.
+[kernel] Plug-in eva aborted: invalid user input.

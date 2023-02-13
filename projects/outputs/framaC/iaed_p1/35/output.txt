@@ -1,0 +1,1737 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  lstproducts[0..9999] ∈ {0}
+  lstorders[0..499] ∈ {0}
+  aux[0..9999] ∈ {0}
+[eva] using specification for function scanf_va_1
+[eva] using specification for function scanf_va_2
+[eva] using specification for function time
+[eva] using specification for function srand
+[eva] using specification for function rand
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:18: 
+  allocating variable __calloc_can_fail_calloc_l18
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:13: 
+  out of bounds write. assert \valid(&product->id);
+[eva] using specification for function strtok
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:14: 
+  function strtok, behavior new_str: precondition 'valid_string_s_or_delim_not_found' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:15: 
+  pointer comparison. assert \pointer_comparable((void *)token, (void *)0);
+[eva] using specification for function strcpy
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:18: 
+  function strcpy: precondition 'valid_string_src' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:18: 
+  function strcpy: precondition 'room_string' got status unknown.
+[eva] FRAMAC_SHARE/libc/string.h:373: 
+  cannot evaluate ACSL term, unsupported ACSL construct: logic function strcmp
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:15: 
+  starting to merge loop iterations
+[eva] using specification for function atoi
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:22: 
+  function atoi: precondition 'valid_nptr' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:26: 
+  function atoi: precondition 'valid_nptr' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:30: 
+  function atoi: precondition 'valid_nptr' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:34: 
+  signed overflow. assert i + 1 ≤ 2147483647;
+[eva] using specification for function printf_va_24
+[eva:locals-escaping] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:378: 
+  locals {input} escaping the scope of a block of main through __fc_strtok_ptr
+[eva] using specification for function scanf_va_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:45: 
+  function strtok, behavior new_str: precondition 'valid_string_s_or_delim_not_found' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:46: 
+  function atoi: precondition 'valid_nptr' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:47: 
+  accessing out of bounds index. assert 0 ≤ i;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:47: 
+  accessing out of bounds index. assert i < 10000;
+[eva] using specification for function printf_va_1
+[eva:locals-escaping] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:383: 
+  locals {input} escaping the scope of a block of main through __fc_strtok_ptr
+[eva] using specification for function scanf_va_4
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:62: 
+  function strtok, behavior new_str: precondition 'valid_string_s_or_delim_not_found' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:63: 
+  function atoi: precondition 'valid_nptr' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:64: 
+  accessing out of bounds index. assert 0 ≤ i;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:64: 
+  accessing out of bounds index. assert i < 10000;
+[eva] using specification for function printf_va_2
+[eva:locals-escaping] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:388: 
+  locals {input} escaping the scope of a block of main through __fc_strtok_ptr
+[eva] using specification for function scanf_va_5
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:142: 
+  function strtok, behavior new_str: precondition 'valid_string_s_or_delim_not_found' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:143: 
+  function atoi: precondition 'valid_nptr' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:145: 
+  function atoi: precondition 'valid_nptr' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:146: 
+  accessing out of bounds index. assert 0 ≤ ide;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:146: 
+  accessing out of bounds index. assert ide < 500;
+[eva] using specification for function printf_va_8
+[eva:locals-escaping] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:393: 
+  locals {input} escaping the scope of a block of main through __fc_strtok_ptr
+[eva] using specification for function scanf_va_6
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:180: 
+  accessing out of bounds index. assert 0 ≤ ide;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:180: 
+  accessing out of bounds index. assert ide < 500;
+[eva] using specification for function printf_va_10
+[eva] using specification for function scanf_va_7
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:197: 
+  function strtok, behavior new_str: precondition 'valid_string_s_or_delim_not_found' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:198: 
+  function atoi: precondition 'valid_nptr' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:200: 
+  function atoi: precondition 'valid_nptr' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:201: 
+  accessing out of bounds index. assert 0 ≤ idp;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:201: 
+  accessing out of bounds index. assert idp < 10000;
+[eva] using specification for function printf_va_12
+[eva:locals-escaping] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:403: 
+  locals {input} escaping the scope of a block of main through __fc_strtok_ptr
+[eva] using specification for function scanf_va_8
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:214: 
+  function strtok, behavior new_str: precondition 'valid_string_s_or_delim_not_found' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:215: 
+  function atoi: precondition 'valid_nptr' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:217: 
+  function atoi: precondition 'valid_nptr' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:218: 
+  accessing out of bounds index. assert 0 ≤ ide;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:218: 
+  accessing out of bounds index. assert ide < 500;
+[eva] using specification for function printf_va_13
+[eva:locals-escaping] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:408: 
+  locals {input} escaping the scope of a block of main through __fc_strtok_ptr
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:18: 
+  allocating variable __calloc_can_fail_calloc_l18_0
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:83: 
+  out of bounds write. assert \valid(&order->orderid);
+[eva] using specification for function printf_va_25
+[eva] using specification for function scanf_va_9
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:242: 
+  accessing out of bounds index. assert 0 ≤ idp;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:242: 
+  accessing out of bounds index. assert idp < 10000;
+[eva] using specification for function printf_va_17
+[eva] using specification for function scanf_va_10
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:94: 
+  function strtok, behavior new_str: precondition 'valid_string_s_or_delim_not_found' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:95: 
+  function atoi: precondition 'valid_nptr' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:97: 
+  function atoi: precondition 'valid_nptr' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:99: 
+  function atoi: precondition 'valid_nptr' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:100: 
+  accessing out of bounds index. assert 0 ≤ ide;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:100: 
+  accessing out of bounds index. assert ide < 500;
+[eva] using specification for function printf_va_4
+[eva:locals-escaping] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:424: 
+  locals {input} escaping the scope of a block of main through __fc_strtok_ptr
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:18: 
+  allocating variable __calloc_can_fail_calloc_l18_1
+[eva] using specification for function printf_va_19
+[eva] using specification for function scanf_va_11
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:18: 
+  allocating variable __calloc_can_fail_calloc_l18_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:346: 
+  accessing out of bounds index. assert 0 ≤ ide;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:346: 
+  accessing out of bounds index. assert ide < 500;
+[eva] using specification for function printf_va_21
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:368: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:35: 
+  function strtok, behavior resume_str: precondition 'not_first_call' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:35: 
+  Assigning imprecise value to token.
+  The imprecision originates from Library function
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:51: 
+  function strtok, behavior resume_str: precondition 'not_first_call' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:51: 
+  Assigning imprecise value to token.
+  The imprecision originates from Library function
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:52: 
+  function atoi: precondition 'valid_nptr' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:53: 
+  out of bounds write. assert \valid(&(lstproducts[i])->stock);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:53: 
+  signed overflow. assert -2147483648 ≤ (lstproducts[i])->stock + qtd;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:53: 
+  signed overflow. assert (lstproducts[i])->stock + qtd ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:68: 
+  function strtok, behavior resume_str: precondition 'not_first_call' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:68: 
+  Assigning imprecise value to token.
+  The imprecision originates from Library function
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:69: 
+  function atoi: precondition 'valid_nptr' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:70: 
+  out of bounds read. assert \valid_read(&(lstproducts[i])->stock);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:71: 
+  signed overflow. assert -2147483648 ≤ (lstproducts[i])->stock - qtd;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:71: 
+  signed overflow. assert (lstproducts[i])->stock - qtd ≤ 2147483647;
+[eva] using specification for function printf_va_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:144: 
+  function strtok, behavior resume_str: precondition 'not_first_call' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:144: 
+  Assigning imprecise value to token.
+  The imprecision originates from Library function
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:149: 
+  accessing out of bounds index. assert 0 ≤ idp;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:149: 
+  accessing out of bounds index. assert idp < 10000;
+[eva] using specification for function printf_va_9
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:153: 
+  out of bounds read. assert \valid_read(&(lstorders[ide])->sizelstproducts);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:184: 
+  out of bounds read. assert \valid_read(&(lstorders[ide])->sizelstproducts);
+[eva] using specification for function printf_va_11
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:199: 
+  function strtok, behavior resume_str: precondition 'not_first_call' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:199: 
+  Assigning imprecise value to token.
+  The imprecision originates from Library function
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:205: 
+  out of bounds write. assert \valid(&(lstproducts[idp])->price);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:216: 
+  function strtok, behavior resume_str: precondition 'not_first_call' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:216: 
+  Assigning imprecise value to token.
+  The imprecision originates from Library function
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:221: 
+  accessing out of bounds index. assert 0 ≤ idp;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:221: 
+  accessing out of bounds index. assert idp < 10000;
+[eva] using specification for function printf_va_14
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:225: 
+  out of bounds read. assert \valid_read(&(lstorders[ide])->sizelstproducts);
+[eva] using specification for function printf_va_16
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:232: 
+  function printf_va_16: precondition valid_read_string(param0) got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:245: 
+  out of bounds read. assert \valid_read(&(lstproducts[idp])->times_in_order);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:247: 
+  out of bounds read. assert \valid_read(&(lstorders[ide])->sizelstproducts);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:246: 
+  starting to merge loop iterations
+[eva] using specification for function printf_va_18
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:96: 
+  function strtok, behavior resume_str: precondition 'not_first_call' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:96: 
+  Assigning imprecise value to token.
+  The imprecision originates from Library function
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:98: 
+  function strtok, behavior resume_str: precondition 'not_first_call' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:98: 
+  Assigning imprecise value to token.
+  The imprecision originates from Library function
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:103: 
+  accessing out of bounds index. assert 0 ≤ idp;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:103: 
+  accessing out of bounds index. assert idp < 10000;
+[eva] using specification for function printf_va_5
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:106: 
+  out of bounds read. assert \valid_read(&(lstproducts[idp])->stock);
+[eva] using specification for function printf_va_6
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:110: 
+  out of bounds read. assert \valid_read(&(lstorders[ide])->orderweight);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:110: 
+  signed overflow. assert -2147483648 ≤ (lstproducts[idp])->weight * qtd;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:110: 
+  signed overflow. assert (lstproducts[idp])->weight * qtd ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:121: 
+  signed overflow. assert -2147483648 ≤ (lstproducts[idp])->weight * qtd;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:121: 
+  signed overflow. assert (lstproducts[idp])->weight * qtd ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:122: 
+  signed overflow. assert -2147483648 ≤ (lstproducts[idp])->stock - qtd;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:122: 
+  signed overflow. assert (lstproducts[idp])->stock - qtd ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:123: 
+  signed overflow.
+  assert (lstproducts[idp])->times_in_order + 1 ≤ 2147483647;
+[eva] using specification for function printf_va_7
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:330: 
+  out of bounds write. assert \valid(lstproducts_aux + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:330: 
+  out of bounds read. assert \valid_read(lstproducts[i]);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:329: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:335: 
+  out of bounds read. assert \valid_read(&(lstproducts_aux + i)->stock);
+[eva] using specification for function printf_va_20
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:334: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:350: 
+  out of bounds write. assert \valid(&order_aux->sizelstproducts);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:350: 
+  out of bounds read. assert \valid_read(&(lstorders[ide])->sizelstproducts);
+[eva] using specification for function printf_va_22
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:71: 
+  out of bounds write. assert \valid(&(lstproducts[i])->stock);
+[eva] using specification for function strcmp
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:154: 
+  function strcmp: precondition 'valid_string_s1' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:154: 
+  function strcmp: precondition 'valid_string_s2' got status unknown.
+[eva] FRAMAC_SHARE/libc/string.h:156: 
+  cannot evaluate ACSL term, unsupported ACSL construct: logic function strcmp
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:156: 
+  out of bounds write. assert \valid(&(lstproducts[idp])->stock);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:156: 
+  out of bounds read.
+  assert \valid_read(&(lstorders[ide])->orderlstproducts[flag].stock);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:156: 
+  signed overflow.
+  assert
+  -2147483648 ≤
+  (lstproducts[idp])->stock + (lstorders[ide])->orderlstproducts[flag].stock;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:156: 
+  signed overflow.
+  assert
+  (lstproducts[idp])->stock + (lstorders[ide])->orderlstproducts[flag].stock
+  ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:157: 
+  out of bounds write. assert \valid(&(lstorders[ide])->orderweight);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:157: 
+  signed overflow.
+  assert
+  -2147483648 ≤
+  (lstorders[ide])->orderlstproducts[flag].weight *
+  (lstorders[ide])->orderlstproducts[flag].stock;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:157: 
+  signed overflow.
+  assert
+  (lstorders[ide])->orderlstproducts[flag].weight *
+  (lstorders[ide])->orderlstproducts[flag].stock ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:157: 
+  signed overflow.
+  assert
+  -2147483648 ≤
+  (lstorders[ide])->orderweight -
+  (int)((lstorders[ide])->orderlstproducts[flag].weight *
+        (lstorders[ide])->orderlstproducts[flag].stock);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:157: 
+  signed overflow.
+  assert
+  (lstorders[ide])->orderweight -
+  (int)((lstorders[ide])->orderlstproducts[flag].weight *
+        (lstorders[ide])->orderlstproducts[flag].stock)
+  ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:158: 
+  out of bounds read. assert \valid_read(&(lstorders[ide])->sizelstproducts);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:159: 
+  out of bounds write.
+  assert \valid(&(lstorders[ide])->orderlstproducts[flag].id);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:160: 
+  function strcpy: precondition 'room_string' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:161: 
+  out of bounds write.
+  assert \valid(&(lstorders[ide])->orderlstproducts[flag].price);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:162: 
+  out of bounds write.
+  assert \valid(&(lstorders[ide])->orderlstproducts[flag].weight);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:163: 
+  out of bounds write.
+  assert \valid(&(lstorders[ide])->orderlstproducts[flag].stock);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:165: 
+  out of bounds read. assert \valid_read(&(lstorders[ide])->sizelstproducts);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:168: 
+  out of bounds write. assert \valid(&(lstorders[ide])->sizelstproducts);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:169: 
+  out of bounds write. assert \valid(&(lstproducts[idp])->times_in_order);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:169: 
+  signed overflow.
+  assert -2147483648 ≤ (lstproducts[idp])->times_in_order - 1;
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:153: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:165: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:158: 
+  signed overflow.
+  assert -2147483648 ≤ (lstorders[ide])->sizelstproducts - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:165: 
+  signed overflow.
+  assert -2147483648 ≤ (lstorders[ide])->sizelstproducts - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:168: 
+  signed overflow.
+  assert -2147483648 ≤ (lstorders[ide])->sizelstproducts - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:185: 
+  out of bounds read.
+  assert \valid_read(&(lstorders[ide])->orderlstproducts[i].id);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:185: 
+  out of bounds read.
+  assert \valid_read(&(lstorders[ide])->orderlstproducts[i].stock);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:185: 
+  out of bounds read.
+  assert
+  \valid_read(&(lstproducts[(lstorders[ide])->orderlstproducts[i].id])->price);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:185: 
+  signed overflow.
+  assert
+  -2147483648 ≤
+  (lstproducts[(lstorders[ide])->orderlstproducts[i].id])->price *
+  (lstorders[ide])->orderlstproducts[i].stock;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:185: 
+  signed overflow.
+  assert
+  (lstproducts[(lstorders[ide])->orderlstproducts[i].id])->price *
+  (lstorders[ide])->orderlstproducts[i].stock ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:184: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:185: 
+  signed overflow.
+  assert
+  -2147483648 ≤
+  total +
+  (int)((lstproducts[(lstorders[ide])->orderlstproducts[i].id])->price *
+        (lstorders[ide])->orderlstproducts[i].stock);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:185: 
+  signed overflow.
+  assert
+  total +
+  (int)((lstproducts[(lstorders[ide])->orderlstproducts[i].id])->price *
+        (lstorders[ide])->orderlstproducts[i].stock)
+  ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:226: 
+  function strcmp: precondition 'valid_string_s1' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:226: 
+  function strcmp: precondition 'valid_string_s2' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:228: 
+  out of bounds read.
+  assert \valid_read(&(lstorders[ide])->orderlstproducts[i].stock);
+[eva] using specification for function printf_va_15
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:225: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:227: 
+  signed overflow. assert flag + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:248: 
+  function strcmp: precondition 'valid_string_s2' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:247: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:248: 
+  function strcmp: precondition 'valid_string_s1' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:248: 
+  out of bounds read.
+  assert \valid_read(&(lstorders[ide])->orderlstproducts[i].stock);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:250: 
+  out of bounds read.
+  assert \valid_read(&(lstorders[final_ide])->orderlstproducts[i].stock);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:110: 
+  out of bounds read. assert \valid_read(&(lstproducts[idp])->weight);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:110: 
+  signed overflow.
+  assert
+  -2147483648 ≤
+  (lstorders[ide])->orderweight + (int)((lstproducts[idp])->weight * qtd);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:110: 
+  signed overflow.
+  assert
+  (lstorders[ide])->orderweight + (int)((lstproducts[idp])->weight * qtd) ≤
+  2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:111: 
+  out of bounds read. assert \valid_read(&(lstorders[ide])->sizelstproducts);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:112: 
+  function strcmp: precondition 'valid_string_s1' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:112: 
+  function strcmp: precondition 'valid_string_s2' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:111: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:113: 
+  signed overflow. assert flag + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:118: 
+  out of bounds read. assert \valid_read(&(lstorders[ide])->sizelstproducts);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:118: 
+  out of bounds write.
+  assert
+  \valid(&(lstorders[ide])->orderlstproducts[(lstorders[ide])->sizelstproducts]);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:118: 
+  out of bounds read. assert \valid_read(lstproducts[idp]);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:119: 
+  out of bounds read. assert \valid_read(&(lstorders[ide])->sizelstproducts);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:119: 
+  out of bounds write.
+  assert
+  \valid(&(lstorders[ide])->orderlstproducts[(lstorders[ide])->sizelstproducts].stock);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:120: 
+  out of bounds write. assert \valid(&(lstorders[ide])->sizelstproducts);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:121: 
+  out of bounds write. assert \valid(&(lstorders[ide])->orderweight);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:121: 
+  out of bounds read. assert \valid_read(&(lstproducts[idp])->weight);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:121: 
+  signed overflow.
+  assert
+  -2147483648 ≤
+  (lstorders[ide])->orderweight + (int)((lstproducts[idp])->weight * qtd);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:121: 
+  signed overflow.
+  assert
+  (lstorders[ide])->orderweight + (int)((lstproducts[idp])->weight * qtd) ≤
+  2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:122: 
+  out of bounds write. assert \valid(&(lstproducts[idp])->stock);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:123: 
+  out of bounds write. assert \valid(&(lstproducts[idp])->times_in_order);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:126: 
+  out of bounds write.
+  assert \valid(&(lstorders[ide])->orderlstproducts[c].stock);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:126: 
+  signed overflow.
+  assert -2147483648 ≤ (lstorders[ide])->orderlstproducts[c].stock + qtd;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:126: 
+  signed overflow.
+  assert (lstorders[ide])->orderlstproducts[c].stock + qtd ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:127: 
+  out of bounds write. assert \valid(&(lstproducts[idp])->stock);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:127: 
+  signed overflow. assert -2147483648 ≤ (lstproducts[idp])->stock - qtd;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:127: 
+  signed overflow. assert (lstproducts[idp])->stock - qtd ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:128: 
+  out of bounds write. assert \valid(&(lstorders[ide])->orderweight);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:128: 
+  out of bounds read. assert \valid_read(&(lstproducts[idp])->weight);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:128: 
+  signed overflow. assert -2147483648 ≤ (lstproducts[idp])->weight * qtd;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:128: 
+  signed overflow. assert (lstproducts[idp])->weight * qtd ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:128: 
+  signed overflow.
+  assert
+  -2147483648 ≤
+  (lstorders[ide])->orderweight + (int)((lstproducts[idp])->weight * qtd);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:128: 
+  signed overflow.
+  assert
+  (lstorders[ide])->orderweight + (int)((lstproducts[idp])->weight * qtd) ≤
+  2147483647;
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:290: 
+  detected recursive call of function mergesort.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:290: User Error: 
+  Recursive call to mergesort without assigns clause.
+  Generating probably incomplete assigns to interpret the call. Try to increase
+  the -eva-unroll-recursive-calls parameter or write a correct specification
+  for function mergesort.
+[kernel:annot:missing-spec] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:286: 
+  Neither code nor specification for function mergesort, generating default assigns from the prototype
+[eva] using specification for function mergesort
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:291: 
+  detected recursive call of function mergesort.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:291: 
+  Using specification of function mergesort for recursive calls.
+  Analysis of function mergesort is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:263: 
+  out of bounds read. assert \valid_read(a + (int)(i - 1));
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:262: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:265: 
+  out of bounds read. assert \valid_read(a + (int)(j + 1));
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:264: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:268: 
+  out of bounds write. assert \valid(a + k);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:272: 
+  out of bounds write. assert \valid(a + k);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:275: 
+  out of bounds write. assert \valid(a + k);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:279: 
+  out of bounds write. assert \valid(a + k);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:266: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:267: 
+  accessing out of bounds index. assert 0 ≤ j;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:351: 
+  out of bounds read. assert \valid_read(&(lstorders[ide])->sizelstproducts);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:352: 
+  out of bounds read.
+  assert \valid_read(&(lstorders[ide])->orderlstproducts[i]);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:351: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:357: 
+  out of bounds read.
+  assert \valid_read(&(lstproducts[order_aux->orderlstproducts[i].id])->price);
+[eva] using specification for function printf_va_23
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:356: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:37: 
+  accessing out of bounds index. assert productid < 10000;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:166: 
+  out of bounds write. assert \valid(&(lstorders[ide])->orderlstproducts[c]);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:166: 
+  accessing out of bounds index. assert (int)(c + 1) < 100;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:156: 
+  accessing out of bounds index. assert flag < 100;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:185: 
+  accessing out of bounds index. assert i < 100;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:228: 
+  accessing out of bounds index. assert i < 100;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:86: 
+  accessing out of bounds index. assert orderid < 500;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:248: 
+  accessing out of bounds index. assert i < 100;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:118: 
+  accessing out of bounds index.
+  assert 0 ≤ (lstorders[ide])->sizelstproducts;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:118: 
+  accessing out of bounds index.
+  assert (lstorders[ide])->sizelstproducts < 100;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:119: 
+  accessing out of bounds index.
+  assert 0 ≤ (lstorders[ide])->sizelstproducts;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:119: 
+  accessing out of bounds index.
+  assert (lstorders[ide])->sizelstproducts < 100;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:120: 
+  signed overflow. assert (lstorders[ide])->sizelstproducts + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:126: 
+  accessing out of bounds index. assert c < 100;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:330: 
+  too many locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:290: 
+  Using specification of function mergesort for recursive calls.
+  Analysis of function mergesort is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:265: 
+  accessing out of bounds index. assert 0 ≤ (int)((int)(right + m) - j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:265: 
+  accessing out of bounds index. assert (int)((int)(right + m) - j) < 10000;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:267: 
+  more than 200(10000) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:270: 
+  more than 200(5000) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:270: 
+  more than 200(10000) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:335: 
+  function printf_va_20: precondition valid_read_string(param0) got status unknown.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:335: 
+  more than 200(10000) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:352: 
+  accessing out of bounds index. assert i < 100;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:354: 
+  signed overflow. assert -2147483648 ≤ order_aux->sizelstproducts - 1;
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:319: 
+  detected recursive call of function mergesort_alphabet.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:319: User Error: 
+  Recursive call to mergesort_alphabet without assigns clause.
+  Generating probably incomplete assigns to interpret the call. Try to increase
+  the -eva-unroll-recursive-calls parameter or write a correct specification
+  for function mergesort_alphabet.
+[kernel:annot:missing-spec] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:315: 
+  Neither code nor specification for function mergesort_alphabet, generating default assigns from the prototype
+[eva] using specification for function mergesort_alphabet
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:320: 
+  detected recursive call of function mergesort_alphabet.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:320: 
+  Using specification of function mergesort_alphabet for recursive calls.
+  Analysis of function mergesort_alphabet is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:300: 
+  accessing out of bounds index. assert (int)(i - 1) < 10000;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:300: 
+  out of bounds read. assert \valid_read(a + (int)(i - 1));
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:299: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:302: 
+  signed overflow. assert right + m ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:302: 
+  accessing out of bounds index. assert 0 ≤ (int)((int)(right + m) - j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:302: 
+  accessing out of bounds index. assert (int)((int)(right + m) - j) < 10000;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:302: 
+  signed overflow. assert (int)(right + m) - j ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:302: 
+  out of bounds read. assert \valid_read(a + (int)(j + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:304: 
+  function strcmp: precondition 'valid_string_s1' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:304: 
+  function strcmp: precondition 'valid_string_s2' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:305: 
+  accessing out of bounds index. assert tmp < 10000;
+                                 (tmp from j--)
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:308: 
+  accessing out of bounds index. assert 0 ≤ tmp_0;
+                                 (tmp_0 from i++)
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:303: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:305: 
+  accessing out of bounds index. assert 0 ≤ tmp;
+                                 (tmp from j--)
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:305: 
+  out of bounds write. assert \valid(a + k);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:308: 
+  out of bounds write. assert \valid(a + k);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:305: 
+  signed overflow. assert -2147483648 ≤ j - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:308: 
+  accessing out of bounds index. assert tmp_0 < 10000;
+                                 (tmp_0 from i++)
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:357: 
+  accessing out of bounds index.
+  assert 0 ≤ order_aux->orderlstproducts[i].id;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:357: 
+  accessing out of bounds index.
+  assert order_aux->orderlstproducts[i].id < 10000;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:357: 
+  function printf_va_23: precondition valid_read_string(param0) got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:357: 
+  accessing out of bounds index. assert i < 100;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:185: 
+  accessing out of bounds index.
+  assert (lstorders[ide])->orderlstproducts[i].id < 10000;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:228: 
+  function printf_va_15: precondition valid_read_string(param0) got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:247: 
+  accessing out of bounds index. assert ide < 500;
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:319: 
+  Using specification of function mergesort_alphabet for recursive calls.
+  Analysis of function mergesort_alphabet is thus incomplete and its soundness
+  relies on the written specification.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:436: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:437: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&lstproducts[c]);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:437: 
+  accessing out of bounds index. assert c < 10000;
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:439: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:440: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&lstorders[k]);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/35/IAED.c:440: 
+  accessing out of bounds index. assert k < 500;
+[eva] done for function main
+[scope:rm_asserts] removing 19 assertion(s)
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function merge:
+  aux[0..9999] ∈ [--..--]
+  i ∈ [0..9999]
+  j ∈ [-1..9999]
+  k ∈ [2..2147483647]
+  __calloc_w_can_fail_calloc_l18_1[0..839999] ∈ [--..--]
+[eva:final-states] Values at end of function calc_order_cost:
+  ide ∈ [0..499]
+  total ∈ [--..--]
+  i ∈ [0..100]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function merge_alphabet:
+  aux[0..9999] ∈ [--..--]
+  i ∈ [-1073741823..2147483647]
+  j ∈ [-2147483648..1073741823]
+  k ∈ [2..2147483647]
+  __calloc_w_can_fail_calloc_l18_2[0..7] ∈ {0}
+                                  [8..8411] ∈ [--..--]
+[eva:final-states] Values at end of function show_order_of_max_times_product:
+  idp ∈ [0..9999]
+  ide ∈ [0..500]
+  i ∈ [0..2147483647]
+  final_ide ∈ [0..499]
+  qtd ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function add_product_to_order:
+  __fc_strtok_ptr ∈
+                 {{ garbled mix of &{input}
+                  (origin: Library function) }} or ESCAPINGADDR
+  ide ∈ [0..499]
+  qtd ∈ [--..--]
+  idp ∈ [--..--]
+  i ∈ [0..2147483647]
+  flag ∈ [0..2147483647]
+  c ∈ [0..2147483646]
+  token ∈ {{ &input + [0..99] }}
+  input[0..99] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+  __calloc_w_can_fail_calloc_l18[bits 0 to 31] ∈ [0..2147483647]
+                                [4..83] ∈ [--..--]
+  __calloc_w_can_fail_calloc_l18_0[bits 0 to 31] ∈ [0..2147483647]
+                                  [4..11] ∈ [--..--]
+                                  [bits 96 to 127] ∈ [0..2147483647]
+                                  [16..95] ∈ [--..--]
+                                  [bits 768 to 799] ∈ [0..2147483647]
+                                  [100..179] ∈ [--..--]
+                                  [bits 1440 to 1471] ∈ [0..2147483647]
+                                  [184..263] ∈ [--..--]
+                                  [bits 2112 to 2143] ∈ [0..2147483647]
+                                  [268..347] ∈ [--..--]
+                                  [bits 2784 to 2815] ∈ [0..2147483647]
+                                  [352..431] ∈ [--..--]
+                                  [bits 3456 to 3487] ∈ [0..2147483647]
+                                  [436..515] ∈ [--..--]
+                                  [bits 4128 to 4159] ∈ [0..2147483647]
+                                  [520..599] ∈ [--..--]
+                                  [bits 4800 to 4831] ∈ [0..2147483647]
+                                  [604..683] ∈ [--..--]
+                                  [bits 5472 to 5503] ∈ [0..2147483647]
+                                  [688..767] ∈ [--..--]
+                                  [bits 6144 to 6175] ∈ [0..2147483647]
+                                  [772..851] ∈ [--..--]
+                                  [bits 6816 to 6847] ∈ [0..2147483647]
+                                  [856..935] ∈ [--..--]
+                                  [bits 7488 to 7519] ∈ [0..2147483647]
+                                  [940..1019] ∈ [--..--]
+                                  [bits 8160 to 8191] ∈ [0..2147483647]
+                                  [1024..1103] ∈ [--..--]
+                                  [bits 8832 to 8863] ∈ [0..2147483647]
+                                  [1108..1187] ∈ [--..--]
+                                  [bits 9504 to 9535] ∈ [0..2147483647]
+                                  [1192..1271] ∈ [--..--]
+                                  [bits 10176 to 10207] ∈ [0..2147483647]
+                                  [1276..1355] ∈ [--..--]
+                                  [bits 10848 to 10879] ∈ [0..2147483647]
+                                  [1360..1439] ∈ [--..--]
+                                  [bits 11520 to 11551] ∈ [0..2147483647]
+                                  [1444..1523] ∈ [--..--]
+                                  [bits 12192 to 12223] ∈ [0..2147483647]
+                                  [1528..1607] ∈ [--..--]
+                                  [bits 12864 to 12895] ∈ [0..2147483647]
+                                  [1612..1691] ∈ [--..--]
+                                  [bits 13536 to 13567] ∈ [0..2147483647]
+                                  [1696..1775] ∈ [--..--]
+                                  [bits 14208 to 14239] ∈ [0..2147483647]
+                                  [1780..1859] ∈ [--..--]
+                                  [bits 14880 to 14911] ∈ [0..2147483647]
+                                  [1864..1943] ∈ [--..--]
+                                  [bits 15552 to 15583] ∈ [0..2147483647]
+                                  [1948..2027] ∈ [--..--]
+                                  [bits 16224 to 16255] ∈ [0..2147483647]
+                                  [2032..2111] ∈ [--..--]
+                                  [bits 16896 to 16927] ∈ [0..2147483647]
+                                  [2116..2195] ∈ [--..--]
+                                  [bits 17568 to 17599] ∈ [0..2147483647]
+                                  [2200..2279] ∈ [--..--]
+                                  [bits 18240 to 18271] ∈ [0..2147483647]
+                                  [2284..2363] ∈ [--..--]
+                                  [bits 18912 to 18943] ∈ [0..2147483647]
+                                  [2368..2447] ∈ [--..--]
+                                  [bits 19584 to 19615] ∈ [0..2147483647]
+                                  [2452..2531] ∈ [--..--]
+                                  [bits 20256 to 20287] ∈ [0..2147483647]
+                                  [2536..2615] ∈ [--..--]
+                                  [bits 20928 to 20959] ∈ [0..2147483647]
+                                  [2620..2699] ∈ [--..--]
+                                  [bits 21600 to 21631] ∈ [0..2147483647]
+                                  [2704..2783] ∈ [--..--]
+                                  [bits 22272 to 22303] ∈ [0..2147483647]
+                                  [2788..2867] ∈ [--..--]
+                                  [bits 22944 to 22975] ∈ [0..2147483647]
+                                  [2872..2951] ∈ [--..--]
+                                  [bits 23616 to 23647] ∈ [0..2147483647]
+                                  [2956..3035] ∈ [--..--]
+                                  [bits 24288 to 24319] ∈ [0..2147483647]
+                                  [3040..3119] ∈ [--..--]
+                                  [bits 24960 to 24991] ∈ [0..2147483647]
+                                  [3124..3203] ∈ [--..--]
+                                  [bits 25632 to 25663] ∈ [0..2147483647]
+                                  [3208..3287] ∈ [--..--]
+                                  [bits 26304 to 26335] ∈ [0..2147483647]
+                                  [3292..3371] ∈ [--..--]
+                                  [bits 26976 to 27007] ∈ [0..2147483647]
+                                  [3376..3455] ∈ [--..--]
+                                  [bits 27648 to 27679] ∈ [0..2147483647]
+                                  [3460..3539] ∈ [--..--]
+                                  [bits 28320 to 28351] ∈ [0..2147483647]
+                                  [3544..3623] ∈ [--..--]
+                                  [bits 28992 to 29023] ∈ [0..2147483647]
+                                  [3628..3707] ∈ [--..--]
+                                  [bits 29664 to 29695] ∈ [0..2147483647]
+                                  [3712..3791] ∈ [--..--]
+                                  [bits 30336 to 30367] ∈ [0..2147483647]
+                                  [3796..3875] ∈ [--..--]
+                                  [bits 31008 to 31039] ∈ [0..2147483647]
+                                  [3880..3959] ∈ [--..--]
+                                  [bits 31680 to 31711] ∈ [0..2147483647]
+                                  [3964..4043] ∈ [--..--]
+                                  [bits 32352 to 32383] ∈ [0..2147483647]
+                                  [4048..4127] ∈ [--..--]
+                                  [bits 33024 to 33055] ∈ [0..2147483647]
+                                  [4132..4211] ∈ [--..--]
+                                  [bits 33696 to 33727] ∈ [0..2147483647]
+                                  [4216..4295] ∈ [--..--]
+                                  [bits 34368 to 34399] ∈ [0..2147483647]
+                                  [4300..4379] ∈ [--..--]
+                                  [bits 35040 to 35071] ∈ [0..2147483647]
+                                  [4384..4463] ∈ [--..--]
+                                  [bits 35712 to 35743] ∈ [0..2147483647]
+                                  [4468..4547] ∈ [--..--]
+                                  [bits 36384 to 36415] ∈ [0..2147483647]
+                                  [4552..4631] ∈ [--..--]
+                                  [bits 37056 to 37087] ∈ [0..2147483647]
+                                  [4636..4715] ∈ [--..--]
+                                  [bits 37728 to 37759] ∈ [0..2147483647]
+                                  [4720..4799] ∈ [--..--]
+                                  [bits 38400 to 38431] ∈ [0..2147483647]
+                                  [4804..4883] ∈ [--..--]
+                                  [bits 39072 to 39103] ∈ [0..2147483647]
+                                  [4888..4967] ∈ [--..--]
+                                  [bits 39744 to 39775] ∈ [0..2147483647]
+                                  [4972..5051] ∈ [--..--]
+                                  [bits 40416 to 40447] ∈ [0..2147483647]
+                                  [5056..5135] ∈ [--..--]
+                                  [bits 41088 to 41119] ∈ [0..2147483647]
+                                  [5140..5219] ∈ [--..--]
+                                  [bits 41760 to 41791] ∈ [0..2147483647]
+                                  [5224..5303] ∈ [--..--]
+                                  [bits 42432 to 42463] ∈ [0..2147483647]
+                                  [5308..5387] ∈ [--..--]
+                                  [bits 43104 to 43135] ∈ [0..2147483647]
+                                  [5392..5471] ∈ [--..--]
+                                  [bits 43776 to 43807] ∈ [0..2147483647]
+                                  [5476..5555] ∈ [--..--]
+                                  [bits 44448 to 44479] ∈ [0..2147483647]
+                                  [5560..5639] ∈ [--..--]
+                                  [bits 45120 to 45151] ∈ [0..2147483647]
+                                  [5644..5723] ∈ [--..--]
+                                  [bits 45792 to 45823] ∈ [0..2147483647]
+                                  [5728..5807] ∈ [--..--]
+                                  [bits 46464 to 46495] ∈ [0..2147483647]
+                                  [5812..5891] ∈ [--..--]
+                                  [bits 47136 to 47167] ∈ [0..2147483647]
+                                  [5896..5975] ∈ [--..--]
+                                  [bits 47808 to 47839] ∈ [0..2147483647]
+                                  [5980..6059] ∈ [--..--]
+                                  [bits 48480 to 48511] ∈ [0..2147483647]
+                                  [6064..6143] ∈ [--..--]
+                                  [bits 49152 to 49183] ∈ [0..2147483647]
+                                  [6148..6227] ∈ [--..--]
+                                  [bits 49824 to 49855] ∈ [0..2147483647]
+                                  [6232..6311] ∈ [--..--]
+                                  [bits 50496 to 50527] ∈ [0..2147483647]
+                                  [6316..6395] ∈ [--..--]
+                                  [bits 51168 to 51199] ∈ [0..2147483647]
+                                  [6400..6479] ∈ [--..--]
+                                  [bits 51840 to 51871] ∈ [0..2147483647]
+                                  [6484..6563] ∈ [--..--]
+                                  [bits 52512 to 52543] ∈ [0..2147483647]
+                                  [6568..6647] ∈ [--..--]
+                                  [bits 53184 to 53215] ∈ [0..2147483647]
+                                  [6652..6731] ∈ [--..--]
+                                  [bits 53856 to 53887] ∈ [0..2147483647]
+                                  [6736..6815] ∈ [--..--]
+                                  [bits 54528 to 54559] ∈ [0..2147483647]
+                                  [6820..6899] ∈ [--..--]
+                                  [bits 55200 to 55231] ∈ [0..2147483647]
+                                  [6904..6983] ∈ [--..--]
+                                  [bits 55872 to 55903] ∈ [0..2147483647]
+                                  [6988..7067] ∈ [--..--]
+                                  [bits 56544 to 56575] ∈ [0..2147483647]
+                                  [7072..7151] ∈ [--..--]
+                                  [bits 57216 to 57247] ∈ [0..2147483647]
+                                  [7156..7235] ∈ [--..--]
+                                  [bits 57888 to 57919] ∈ [0..2147483647]
+                                  [7240..7319] ∈ [--..--]
+                                  [bits 58560 to 58591] ∈ [0..2147483647]
+                                  [7324..7403] ∈ [--..--]
+                                  [bits 59232 to 59263] ∈ [0..2147483647]
+                                  [7408..7487] ∈ [--..--]
+                                  [bits 59904 to 59935] ∈ [0..2147483647]
+                                  [7492..7571] ∈ [--..--]
+                                  [bits 60576 to 60607] ∈ [0..2147483647]
+                                  [7576..7655] ∈ [--..--]
+                                  [bits 61248 to 61279] ∈ [0..2147483647]
+                                  [7660..7739] ∈ [--..--]
+                                  [bits 61920 to 61951] ∈ [0..2147483647]
+                                  [7744..7823] ∈ [--..--]
+                                  [bits 62592 to 62623] ∈ [0..2147483647]
+                                  [7828..7907] ∈ [--..--]
+                                  [bits 63264 to 63295] ∈ [0..2147483647]
+                                  [7912..7991] ∈ [--..--]
+                                  [bits 63936 to 63967] ∈ [0..2147483647]
+                                  [7996..8075] ∈ [--..--]
+                                  [bits 64608 to 64639] ∈ [0..2147483647]
+                                  [8080..8159] ∈ [--..--]
+                                  [bits 65280 to 65311] ∈ [0..2147483647]
+                                  [8164..8243] ∈ [--..--]
+                                  [bits 65952 to 65983] ∈ [0..2147483647]
+                                  [8248..8327] ∈ [--..--]
+                                  [bits 66624 to 66655] ∈ [0..2147483647]
+                                  [8332..8411] ∈ [--..--]
+[eva:final-states] Values at end of function add_stock:
+  __fc_strtok_ptr ∈
+                 {{ garbled mix of &{input}
+                  (origin: Library function) }} or ESCAPINGADDR
+  i ∈ [0..9999]
+  qtd ∈ [--..--]
+  token ∈ {{ &input + [0..99] }}
+  input[0..99] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+  __calloc_w_can_fail_calloc_l18[bits 0 to 31] ∈ [0..2147483647]
+                                [4..83] ∈ [--..--]
+[eva:final-states] Values at end of function change_product_price:
+  __fc_strtok_ptr ∈
+                 {{ garbled mix of &{input}
+                  (origin: Library function) }} or ESCAPINGADDR
+  idp ∈ [0..9999]
+  new_price ∈ [--..--]
+  token ∈ {{ &input + [0..99] }}
+  input[0..99] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+  __calloc_w_can_fail_calloc_l18[bits 0 to 31] ∈ [0..2147483647]
+                                [4..83] ∈ [--..--]
+[eva:final-states] Values at end of function list_product_in_order:
+  __fc_strtok_ptr ∈
+                 {{ garbled mix of &{input}
+                  (origin: Library function) }} or ESCAPINGADDR
+  idp ∈ [--..--]
+  ide ∈ [0..499]
+  i ∈ [0..2147483647]
+  flag ∈ [0..2147483647]
+  token ∈ {{ &input + [0..99] }}
+  input[0..99] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function remove_product_from_order:
+  __fc_strtok_ptr ∈
+                 {{ garbled mix of &{input}
+                  (origin: Library function) }} or ESCAPINGADDR
+  ide ∈ [0..499]
+  idp ∈ [--..--]
+  i ∈ [0..2147483647]
+  flag ∈ [0..99]
+  c ∈ [0..99]
+  token ∈ {{ &input + [0..99] }}
+  input[0..99] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+  __calloc_w_can_fail_calloc_l18[bits 0 to 31] ∈ [0..2147483647]
+                                [4..83] ∈ [--..--]
+  __calloc_w_can_fail_calloc_l18_0[bits 0 to 31] ∈ [0..2147483647]
+                                  [4..11] ∈ [--..--]
+                                  [bits 96 to 127] ∈ [0..2147483647]
+                                  [16..95] ∈ [--..--]
+                                  [bits 768 to 799] ∈ [0..2147483647]
+                                  [100..179] ∈ [--..--]
+                                  [bits 1440 to 1471] ∈ [0..2147483647]
+                                  [184..263] ∈ [--..--]
+                                  [bits 2112 to 2143] ∈ [0..2147483647]
+                                  [268..347] ∈ [--..--]
+                                  [bits 2784 to 2815] ∈ [0..2147483647]
+                                  [352..431] ∈ [--..--]
+                                  [bits 3456 to 3487] ∈ [0..2147483647]
+                                  [436..515] ∈ [--..--]
+                                  [bits 4128 to 4159] ∈ [0..2147483647]
+                                  [520..599] ∈ [--..--]
+                                  [bits 4800 to 4831] ∈ [0..2147483647]
+                                  [604..683] ∈ [--..--]
+                                  [bits 5472 to 5503] ∈ [0..2147483647]
+                                  [688..767] ∈ [--..--]
+                                  [bits 6144 to 6175] ∈ [0..2147483647]
+                                  [772..851] ∈ [--..--]
+                                  [bits 6816 to 6847] ∈ [0..2147483647]
+                                  [856..935] ∈ [--..--]
+                                  [bits 7488 to 7519] ∈ [0..2147483647]
+                                  [940..1019] ∈ [--..--]
+                                  [bits 8160 to 8191] ∈ [0..2147483647]
+                                  [1024..1103] ∈ [--..--]
+                                  [bits 8832 to 8863] ∈ [0..2147483647]
+                                  [1108..1187] ∈ [--..--]
+                                  [bits 9504 to 9535] ∈ [0..2147483647]
+                                  [1192..1271] ∈ [--..--]
+                                  [bits 10176 to 10207] ∈ [0..2147483647]
+                                  [1276..1355] ∈ [--..--]
+                                  [bits 10848 to 10879] ∈ [0..2147483647]
+                                  [1360..1439] ∈ [--..--]
+                                  [bits 11520 to 11551] ∈ [0..2147483647]
+                                  [1444..1523] ∈ [--..--]
+                                  [bits 12192 to 12223] ∈ [0..2147483647]
+                                  [1528..1607] ∈ [--..--]
+                                  [bits 12864 to 12895] ∈ [0..2147483647]
+                                  [1612..1691] ∈ [--..--]
+                                  [bits 13536 to 13567] ∈ [0..2147483647]
+                                  [1696..1775] ∈ [--..--]
+                                  [bits 14208 to 14239] ∈ [0..2147483647]
+                                  [1780..1859] ∈ [--..--]
+                                  [bits 14880 to 14911] ∈ [0..2147483647]
+                                  [1864..1943] ∈ [--..--]
+                                  [bits 15552 to 15583] ∈ [0..2147483647]
+                                  [1948..2027] ∈ [--..--]
+                                  [bits 16224 to 16255] ∈ [0..2147483647]
+                                  [2032..2111] ∈ [--..--]
+                                  [bits 16896 to 16927] ∈ [0..2147483647]
+                                  [2116..2195] ∈ [--..--]
+                                  [bits 17568 to 17599] ∈ [0..2147483647]
+                                  [2200..2279] ∈ [--..--]
+                                  [bits 18240 to 18271] ∈ [0..2147483647]
+                                  [2284..2363] ∈ [--..--]
+                                  [bits 18912 to 18943] ∈ [0..2147483647]
+                                  [2368..2447] ∈ [--..--]
+                                  [bits 19584 to 19615] ∈ [0..2147483647]
+                                  [2452..2531] ∈ [--..--]
+                                  [bits 20256 to 20287] ∈ [0..2147483647]
+                                  [2536..2615] ∈ [--..--]
+                                  [bits 20928 to 20959] ∈ [0..2147483647]
+                                  [2620..2699] ∈ [--..--]
+                                  [bits 21600 to 21631] ∈ [0..2147483647]
+                                  [2704..2783] ∈ [--..--]
+                                  [bits 22272 to 22303] ∈ [0..2147483647]
+                                  [2788..2867] ∈ [--..--]
+                                  [bits 22944 to 22975] ∈ [0..2147483647]
+                                  [2872..2951] ∈ [--..--]
+                                  [bits 23616 to 23647] ∈ [0..2147483647]
+                                  [2956..3035] ∈ [--..--]
+                                  [bits 24288 to 24319] ∈ [0..2147483647]
+                                  [3040..3119] ∈ [--..--]
+                                  [bits 24960 to 24991] ∈ [0..2147483647]
+                                  [3124..3203] ∈ [--..--]
+                                  [bits 25632 to 25663] ∈ [0..2147483647]
+                                  [3208..3287] ∈ [--..--]
+                                  [bits 26304 to 26335] ∈ [0..2147483647]
+                                  [3292..3371] ∈ [--..--]
+                                  [bits 26976 to 27007] ∈ [0..2147483647]
+                                  [3376..3455] ∈ [--..--]
+                                  [bits 27648 to 27679] ∈ [0..2147483647]
+                                  [3460..3539] ∈ [--..--]
+                                  [bits 28320 to 28351] ∈ [0..2147483647]
+                                  [3544..3623] ∈ [--..--]
+                                  [bits 28992 to 29023] ∈ [0..2147483647]
+                                  [3628..3707] ∈ [--..--]
+                                  [bits 29664 to 29695] ∈ [0..2147483647]
+                                  [3712..3791] ∈ [--..--]
+                                  [bits 30336 to 30367] ∈ [0..2147483647]
+                                  [3796..3875] ∈ [--..--]
+                                  [bits 31008 to 31039] ∈ [0..2147483647]
+                                  [3880..3959] ∈ [--..--]
+                                  [bits 31680 to 31711] ∈ [0..2147483647]
+                                  [3964..4043] ∈ [--..--]
+                                  [bits 32352 to 32383] ∈ [0..2147483647]
+                                  [4048..4127] ∈ [--..--]
+                                  [bits 33024 to 33055] ∈ [0..2147483647]
+                                  [4132..4211] ∈ [--..--]
+                                  [bits 33696 to 33727] ∈ [0..2147483647]
+                                  [4216..4295] ∈ [--..--]
+                                  [bits 34368 to 34399] ∈ [0..2147483647]
+                                  [4300..4379] ∈ [--..--]
+                                  [bits 35040 to 35071] ∈ [0..2147483647]
+                                  [4384..4463] ∈ [--..--]
+                                  [bits 35712 to 35743] ∈ [0..2147483647]
+                                  [4468..4547] ∈ [--..--]
+                                  [bits 36384 to 36415] ∈ [0..2147483647]
+                                  [4552..4631] ∈ [--..--]
+                                  [bits 37056 to 37087] ∈ [0..2147483647]
+                                  [4636..4715] ∈ [--..--]
+                                  [bits 37728 to 37759] ∈ [0..2147483647]
+                                  [4720..4799] ∈ [--..--]
+                                  [bits 38400 to 38431] ∈ [0..2147483647]
+                                  [4804..4883] ∈ [--..--]
+                                  [bits 39072 to 39103] ∈ [0..2147483647]
+                                  [4888..4967] ∈ [--..--]
+                                  [bits 39744 to 39775] ∈ [0..2147483647]
+                                  [4972..5051] ∈ [--..--]
+                                  [bits 40416 to 40447] ∈ [0..2147483647]
+                                  [5056..5135] ∈ [--..--]
+                                  [bits 41088 to 41119] ∈ [0..2147483647]
+                                  [5140..5219] ∈ [--..--]
+                                  [bits 41760 to 41791] ∈ [0..2147483647]
+                                  [5224..5303] ∈ [--..--]
+                                  [bits 42432 to 42463] ∈ [0..2147483647]
+                                  [5308..5387] ∈ [--..--]
+                                  [bits 43104 to 43135] ∈ [0..2147483647]
+                                  [5392..5471] ∈ [--..--]
+                                  [bits 43776 to 43807] ∈ [0..2147483647]
+                                  [5476..5555] ∈ [--..--]
+                                  [bits 44448 to 44479] ∈ [0..2147483647]
+                                  [5560..5639] ∈ [--..--]
+                                  [bits 45120 to 45151] ∈ [0..2147483647]
+                                  [5644..5723] ∈ [--..--]
+                                  [bits 45792 to 45823] ∈ [0..2147483647]
+                                  [5728..5807] ∈ [--..--]
+                                  [bits 46464 to 46495] ∈ [0..2147483647]
+                                  [5812..5891] ∈ [--..--]
+                                  [bits 47136 to 47167] ∈ [0..2147483647]
+                                  [5896..5975] ∈ [--..--]
+                                  [bits 47808 to 47839] ∈ [0..2147483647]
+                                  [5980..6059] ∈ [--..--]
+                                  [bits 48480 to 48511] ∈ [0..2147483647]
+                                  [6064..6143] ∈ [--..--]
+                                  [bits 49152 to 49183] ∈ [0..2147483647]
+                                  [6148..6227] ∈ [--..--]
+                                  [bits 49824 to 49855] ∈ [0..2147483647]
+                                  [6232..6311] ∈ [--..--]
+                                  [bits 50496 to 50527] ∈ [0..2147483647]
+                                  [6316..6395] ∈ [--..--]
+                                  [bits 51168 to 51199] ∈ [0..2147483647]
+                                  [6400..6479] ∈ [--..--]
+                                  [bits 51840 to 51871] ∈ [0..2147483647]
+                                  [6484..6563] ∈ [--..--]
+                                  [bits 52512 to 52543] ∈ [0..2147483647]
+                                  [6568..6647] ∈ [--..--]
+                                  [bits 53184 to 53215] ∈ [0..2147483647]
+                                  [6652..6731] ∈ [--..--]
+                                  [bits 53856 to 53887] ∈ [0..2147483647]
+                                  [6736..6815] ∈ [--..--]
+                                  [bits 54528 to 54559] ∈ [0..2147483647]
+                                  [6820..6899] ∈ [--..--]
+                                  [bits 55200 to 55231] ∈ [0..2147483647]
+                                  [6904..6983] ∈ [--..--]
+                                  [bits 55872 to 55903] ∈ [0..2147483647]
+                                  [6988..7067] ∈ [--..--]
+                                  [bits 56544 to 56575] ∈ [0..2147483647]
+                                  [7072..7151] ∈ [--..--]
+                                  [bits 57216 to 57247] ∈ [0..2147483647]
+                                  [7156..7235] ∈ [--..--]
+                                  [bits 57888 to 57919] ∈ [0..2147483647]
+                                  [7240..7319] ∈ [--..--]
+                                  [bits 58560 to 58591] ∈ [0..2147483647]
+                                  [7324..7403] ∈ [--..--]
+                                  [bits 59232 to 59263] ∈ [0..2147483647]
+                                  [7408..7487] ∈ [--..--]
+                                  [bits 59904 to 59935] ∈ [0..2147483647]
+                                  [7492..7571] ∈ [--..--]
+                                  [bits 60576 to 60607] ∈ [0..2147483647]
+                                  [7576..7655] ∈ [--..--]
+                                  [bits 61248 to 61279] ∈ [0..2147483647]
+                                  [7660..7739] ∈ [--..--]
+                                  [bits 61920 to 61951] ∈ [0..2147483647]
+                                  [7744..7823] ∈ [--..--]
+                                  [bits 62592 to 62623] ∈ [0..2147483647]
+                                  [7828..7907] ∈ [--..--]
+                                  [bits 63264 to 63295] ∈ [0..2147483647]
+                                  [7912..7991] ∈ [--..--]
+                                  [bits 63936 to 63967] ∈ [0..2147483647]
+                                  [7996..8075] ∈ [--..--]
+                                  [bits 64608 to 64639] ∈ [0..2147483647]
+                                  [8080..8159] ∈ [--..--]
+                                  [bits 65280 to 65311] ∈ [0..2147483647]
+                                  [8164..8243] ∈ [--..--]
+                                  [bits 65952 to 65983] ∈ [0..2147483647]
+                                  [8248..8327] ∈ [--..--]
+                                  [bits 66624 to 66655] ∈ [0..2147483647]
+                                  [8332..8411] ∈ [--..--]
+[eva:final-states] Values at end of function remove_stock:
+  __fc_strtok_ptr ∈
+                 {{ garbled mix of &{input}
+                  (origin: Library function) }} or ESCAPINGADDR
+  i ∈ [0..9999]
+  qtd ∈ [--..--]
+  token ∈ {{ &input + [0..99] }}
+  input[0..99] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+  __calloc_w_can_fail_calloc_l18[bits 0 to 31] ∈ [0..2147483647]
+                                [4..83] ∈ [--..--]
+[eva:final-states] Values at end of function can_fail_calloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈
+          {{ NULL ; (void *)&__calloc_w_can_fail_calloc_l18 ;
+             (void *)&__calloc_w_can_fail_calloc_l18_0 ;
+             (void *)&__calloc_w_can_fail_calloc_l18_1 ;
+             (void *)&__calloc_w_can_fail_calloc_l18_2 }}
+[eva:final-states] Values at end of function a_parsing:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  lstproducts[0..9999] ∈
+             {{ NULL ; (PRODUCT *)&__calloc_w_can_fail_calloc_l18 }}
+  __fc_strtok_ptr ∈
+                 {{ garbled mix of &{input}
+                  (origin: Library function) }} or ESCAPINGADDR
+  i ∈ [1..2147483647]
+  token ∈ {0}
+  product ∈ {{ (PRODUCT *)&__calloc_w_can_fail_calloc_l18 }}
+  input[0..99] ∈ [--..--]
+  __calloc_w_can_fail_calloc_l18[bits 0 to 31] ∈ [0..2147483647]
+                                [4..83] ∈ [--..--]
+[eva:final-states] Values at end of function create_order:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  lstorders[0..499] ∈
+           {{ NULL ; (ORDER *)&__calloc_w_can_fail_calloc_l18_0 }}
+  order ∈ {{ (ORDER *)&__calloc_w_can_fail_calloc_l18_0 }}
+  __calloc_w_can_fail_calloc_l18_0[bits 0 to 31] ∈ [0..2147483647]
+                                  [4..11] ∈ [--..--]
+                                  [bits 96 to 127] ∈ [0..2147483647]
+                                  [16..95] ∈ [--..--]
+                                  [bits 768 to 799] ∈ [0..2147483647]
+                                  [100..179] ∈ [--..--]
+                                  [bits 1440 to 1471] ∈ [0..2147483647]
+                                  [184..263] ∈ [--..--]
+                                  [bits 2112 to 2143] ∈ [0..2147483647]
+                                  [268..347] ∈ [--..--]
+                                  [bits 2784 to 2815] ∈ [0..2147483647]
+                                  [352..431] ∈ [--..--]
+                                  [bits 3456 to 3487] ∈ [0..2147483647]
+                                  [436..515] ∈ [--..--]
+                                  [bits 4128 to 4159] ∈ [0..2147483647]
+                                  [520..599] ∈ [--..--]
+                                  [bits 4800 to 4831] ∈ [0..2147483647]
+                                  [604..683] ∈ [--..--]
+                                  [bits 5472 to 5503] ∈ [0..2147483647]
+                                  [688..767] ∈ [--..--]
+                                  [bits 6144 to 6175] ∈ [0..2147483647]
+                                  [772..851] ∈ [--..--]
+                                  [bits 6816 to 6847] ∈ [0..2147483647]
+                                  [856..935] ∈ [--..--]
+                                  [bits 7488 to 7519] ∈ [0..2147483647]
+                                  [940..1019] ∈ [--..--]
+                                  [bits 8160 to 8191] ∈ [0..2147483647]
+                                  [1024..1103] ∈ [--..--]
+                                  [bits 8832 to 8863] ∈ [0..2147483647]
+                                  [1108..1187] ∈ [--..--]
+                                  [bits 9504 to 9535] ∈ [0..2147483647]
+                                  [1192..1271] ∈ [--..--]
+                                  [bits 10176 to 10207] ∈ [0..2147483647]
+                                  [1276..1355] ∈ [--..--]
+                                  [bits 10848 to 10879] ∈ [0..2147483647]
+                                  [1360..1439] ∈ [--..--]
+                                  [bits 11520 to 11551] ∈ [0..2147483647]
+                                  [1444..1523] ∈ [--..--]
+                                  [bits 12192 to 12223] ∈ [0..2147483647]
+                                  [1528..1607] ∈ [--..--]
+                                  [bits 12864 to 12895] ∈ [0..2147483647]
+                                  [1612..1691] ∈ [--..--]
+                                  [bits 13536 to 13567] ∈ [0..2147483647]
+                                  [1696..1775] ∈ [--..--]
+                                  [bits 14208 to 14239] ∈ [0..2147483647]
+                                  [1780..1859] ∈ [--..--]
+                                  [bits 14880 to 14911] ∈ [0..2147483647]
+                                  [1864..1943] ∈ [--..--]
+                                  [bits 15552 to 15583] ∈ [0..2147483647]
+                                  [1948..2027] ∈ [--..--]
+                                  [bits 16224 to 16255] ∈ [0..2147483647]
+                                  [2032..2111] ∈ [--..--]
+                                  [bits 16896 to 16927] ∈ [0..2147483647]
+                                  [2116..2195] ∈ [--..--]
+                                  [bits 17568 to 17599] ∈ [0..2147483647]
+                                  [2200..2279] ∈ [--..--]
+                                  [bits 18240 to 18271] ∈ [0..2147483647]
+                                  [2284..2363] ∈ [--..--]
+                                  [bits 18912 to 18943] ∈ [0..2147483647]
+                                  [2368..2447] ∈ [--..--]
+                                  [bits 19584 to 19615] ∈ [0..2147483647]
+                                  [2452..2531] ∈ [--..--]
+                                  [bits 20256 to 20287] ∈ [0..2147483647]
+                                  [2536..2615] ∈ [--..--]
+                                  [bits 20928 to 20959] ∈ [0..2147483647]
+                                  [2620..2699] ∈ [--..--]
+                                  [bits 21600 to 21631] ∈ [0..2147483647]
+                                  [2704..2783] ∈ [--..--]
+                                  [bits 22272 to 22303] ∈ [0..2147483647]
+                                  [2788..2867] ∈ [--..--]
+                                  [bits 22944 to 22975] ∈ [0..2147483647]
+                                  [2872..2951] ∈ [--..--]
+                                  [bits 23616 to 23647] ∈ [0..2147483647]
+                                  [2956..3035] ∈ [--..--]
+                                  [bits 24288 to 24319] ∈ [0..2147483647]
+                                  [3040..3119] ∈ [--..--]
+                                  [bits 24960 to 24991] ∈ [0..2147483647]
+                                  [3124..3203] ∈ [--..--]
+                                  [bits 25632 to 25663] ∈ [0..2147483647]
+                                  [3208..3287] ∈ [--..--]
+                                  [bits 26304 to 26335] ∈ [0..2147483647]
+                                  [3292..3371] ∈ [--..--]
+                                  [bits 26976 to 27007] ∈ [0..2147483647]
+                                  [3376..3455] ∈ [--..--]
+                                  [bits 27648 to 27679] ∈ [0..2147483647]
+                                  [3460..3539] ∈ [--..--]
+                                  [bits 28320 to 28351] ∈ [0..2147483647]
+                                  [3544..3623] ∈ [--..--]
+                                  [bits 28992 to 29023] ∈ [0..2147483647]
+                                  [3628..3707] ∈ [--..--]
+                                  [bits 29664 to 29695] ∈ [0..2147483647]
+                                  [3712..3791] ∈ [--..--]
+                                  [bits 30336 to 30367] ∈ [0..2147483647]
+                                  [3796..3875] ∈ [--..--]
+                                  [bits 31008 to 31039] ∈ [0..2147483647]
+                                  [3880..3959] ∈ [--..--]
+                                  [bits 31680 to 31711] ∈ [0..2147483647]
+                                  [3964..4043] ∈ [--..--]
+                                  [bits 32352 to 32383] ∈ [0..2147483647]
+                                  [4048..4127] ∈ [--..--]
+                                  [bits 33024 to 33055] ∈ [0..2147483647]
+                                  [4132..4211] ∈ [--..--]
+                                  [bits 33696 to 33727] ∈ [0..2147483647]
+                                  [4216..4295] ∈ [--..--]
+                                  [bits 34368 to 34399] ∈ [0..2147483647]
+                                  [4300..4379] ∈ [--..--]
+                                  [bits 35040 to 35071] ∈ [0..2147483647]
+                                  [4384..4463] ∈ [--..--]
+                                  [bits 35712 to 35743] ∈ [0..2147483647]
+                                  [4468..4547] ∈ [--..--]
+                                  [bits 36384 to 36415] ∈ [0..2147483647]
+                                  [4552..4631] ∈ [--..--]
+                                  [bits 37056 to 37087] ∈ [0..2147483647]
+                                  [4636..4715] ∈ [--..--]
+                                  [bits 37728 to 37759] ∈ [0..2147483647]
+                                  [4720..4799] ∈ [--..--]
+                                  [bits 38400 to 38431] ∈ [0..2147483647]
+                                  [4804..4883] ∈ [--..--]
+                                  [bits 39072 to 39103] ∈ [0..2147483647]
+                                  [4888..4967] ∈ [--..--]
+                                  [bits 39744 to 39775] ∈ [0..2147483647]
+                                  [4972..5051] ∈ [--..--]
+                                  [bits 40416 to 40447] ∈ [0..2147483647]
+                                  [5056..5135] ∈ [--..--]
+                                  [bits 41088 to 41119] ∈ [0..2147483647]
+                                  [5140..5219] ∈ [--..--]
+                                  [bits 41760 to 41791] ∈ [0..2147483647]
+                                  [5224..5303] ∈ [--..--]
+                                  [bits 42432 to 42463] ∈ [0..2147483647]
+                                  [5308..5387] ∈ [--..--]
+                                  [bits 43104 to 43135] ∈ [0..2147483647]
+                                  [5392..5471] ∈ [--..--]
+                                  [bits 43776 to 43807] ∈ [0..2147483647]
+                                  [5476..5555] ∈ [--..--]
+                                  [bits 44448 to 44479] ∈ [0..2147483647]
+                                  [5560..5639] ∈ [--..--]
+                                  [bits 45120 to 45151] ∈ [0..2147483647]
+                                  [5644..5723] ∈ [--..--]
+                                  [bits 45792 to 45823] ∈ [0..2147483647]
+                                  [5728..5807] ∈ [--..--]
+                                  [bits 46464 to 46495] ∈ [0..2147483647]
+                                  [5812..5891] ∈ [--..--]
+                                  [bits 47136 to 47167] ∈ [0..2147483647]
+                                  [5896..5975] ∈ [--..--]
+                                  [bits 47808 to 47839] ∈ [0..2147483647]
+                                  [5980..6059] ∈ [--..--]
+                                  [bits 48480 to 48511] ∈ [0..2147483647]
+                                  [6064..6143] ∈ [--..--]
+                                  [bits 49152 to 49183] ∈ [0..2147483647]
+                                  [6148..6227] ∈ [--..--]
+                                  [bits 49824 to 49855] ∈ [0..2147483647]
+                                  [6232..6311] ∈ [--..--]
+                                  [bits 50496 to 50527] ∈ [0..2147483647]
+                                  [6316..6395] ∈ [--..--]
+                                  [bits 51168 to 51199] ∈ [0..2147483647]
+                                  [6400..6479] ∈ [--..--]
+                                  [bits 51840 to 51871] ∈ [0..2147483647]
+                                  [6484..6563] ∈ [--..--]
+                                  [bits 52512 to 52543] ∈ [0..2147483647]
+                                  [6568..6647] ∈ [--..--]
+                                  [bits 53184 to 53215] ∈ [0..2147483647]
+                                  [6652..6731] ∈ [--..--]
+                                  [bits 53856 to 53887] ∈ [0..2147483647]
+                                  [6736..6815] ∈ [--..--]
+                                  [bits 54528 to 54559] ∈ [0..2147483647]
+                                  [6820..6899] ∈ [--..--]
+                                  [bits 55200 to 55231] ∈ [0..2147483647]
+                                  [6904..6983] ∈ [--..--]
+                                  [bits 55872 to 55903] ∈ [0..2147483647]
+                                  [6988..7067] ∈ [--..--]
+                                  [bits 56544 to 56575] ∈ [0..2147483647]
+                                  [7072..7151] ∈ [--..--]
+                                  [bits 57216 to 57247] ∈ [0..2147483647]
+                                  [7156..7235] ∈ [--..--]
+                                  [bits 57888 to 57919] ∈ [0..2147483647]
+                                  [7240..7319] ∈ [--..--]
+                                  [bits 58560 to 58591] ∈ [0..2147483647]
+                                  [7324..7403] ∈ [--..--]
+                                  [bits 59232 to 59263] ∈ [0..2147483647]
+                                  [7408..7487] ∈ [--..--]
+                                  [bits 59904 to 59935] ∈ [0..2147483647]
+                                  [7492..7571] ∈ [--..--]
+                                  [bits 60576 to 60607] ∈ [0..2147483647]
+                                  [7576..7655] ∈ [--..--]
+                                  [bits 61248 to 61279] ∈ [0..2147483647]
+                                  [7660..7739] ∈ [--..--]
+                                  [bits 61920 to 61951] ∈ [0..2147483647]
+                                  [7744..7823] ∈ [--..--]
+                                  [bits 62592 to 62623] ∈ [0..2147483647]
+                                  [7828..7907] ∈ [--..--]
+                                  [bits 63264 to 63295] ∈ [0..2147483647]
+                                  [7912..7991] ∈ [--..--]
+                                  [bits 63936 to 63967] ∈ [0..2147483647]
+                                  [7996..8075] ∈ [--..--]
+                                  [bits 64608 to 64639] ∈ [0..2147483647]
+                                  [8080..8159] ∈ [--..--]
+                                  [bits 65280 to 65311] ∈ [0..2147483647]
+                                  [8164..8243] ∈ [--..--]
+                                  [bits 65952 to 65983] ∈ [0..2147483647]
+                                  [8248..8327] ∈ [--..--]
+                                  [bits 66624 to 66655] ∈ [0..2147483647]
+                                  [8332..8411] ∈ [--..--]
+[eva:final-states] Values at end of function print_lst_products:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  aux[0..9999] ∈ [--..--]
+  i ∈ [0..10000]
+  lstproducts_aux ∈
+                 {{ NULL ; (PRODUCT *)&__calloc_w_can_fail_calloc_l18_1 }} or ESCAPINGADDR
+  S___fc_stdout[0..1] ∈ [--..--]
+  __calloc_w_can_fail_calloc_l18_1[0..839999] ∈ [--..--]
+[eva:final-states] Values at end of function print_lst_products_in_order:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  aux[0..9999] ∈ [--..--]
+  i ∈ [0..100]
+  ide ∈ [0..499]
+  order_aux ∈
+           {{ NULL ; (ORDER *)&__calloc_w_can_fail_calloc_l18_2 }} or ESCAPINGADDR
+  S___fc_stdout[0..1] ∈ [--..--]
+  __calloc_w_can_fail_calloc_l18_2[0..7] ∈ {0}
+                                  [8..8411] ∈ [--..--]
+[eva:final-states] Values at end of function main:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  lstproducts[0..9999] ∈
+             {{ NULL ; (PRODUCT *)&__calloc_w_can_fail_calloc_l18 }} or ESCAPINGADDR
+  lstorders[0..499] ∈
+           {{ NULL ; (ORDER *)&__calloc_w_can_fail_calloc_l18_0 }} or ESCAPINGADDR
+  aux[0..9999] ∈ [--..--]
+  __fc_strtok_ptr ∈ [--..--] or ESCAPINGADDR
+  i ∈ [0..10000]
+  j ∈ [0..500]
+  c ∈ [0..10000]
+  k ∈ [0..500]
+  __retres ∈ {0}
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+  __calloc_w_can_fail_calloc_l18[bits 0 to 31] ∈ [0..2147483647]
+                                [4..83] ∈ [--..--]
+  __calloc_w_can_fail_calloc_l18_0[bits 0 to 31] ∈ [0..2147483647]
+                                  [4..11] ∈ [--..--]
+                                  [bits 96 to 127] ∈ [0..2147483647]
+                                  [16..95] ∈ [--..--]
+                                  [bits 768 to 799] ∈ [0..2147483647]
+                                  [100..179] ∈ [--..--]
+                                  [bits 1440 to 1471] ∈ [0..2147483647]
+                                  [184..263] ∈ [--..--]
+                                  [bits 2112 to 2143] ∈ [0..2147483647]
+                                  [268..347] ∈ [--..--]
+                                  [bits 2784 to 2815] ∈ [0..2147483647]
+                                  [352..431] ∈ [--..--]
+                                  [bits 3456 to 3487] ∈ [0..2147483647]
+                                  [436..515] ∈ [--..--]
+                                  [bits 4128 to 4159] ∈ [0..2147483647]
+                                  [520..599] ∈ [--..--]
+                                  [bits 4800 to 4831] ∈ [0..2147483647]
+                                  [604..683] ∈ [--..--]
+                                  [bits 5472 to 5503] ∈ [0..2147483647]
+                                  [688..767] ∈ [--..--]
+                                  [bits 6144 to 6175] ∈ [0..2147483647]
+                                  [772..851] ∈ [--..--]
+                                  [bits 6816 to 6847] ∈ [0..2147483647]
+                                  [856..935] ∈ [--..--]
+                                  [bits 7488 to 7519] ∈ [0..2147483647]
+                                  [940..1019] ∈ [--..--]
+                                  [bits 8160 to 8191] ∈ [0..2147483647]
+                                  [1024..1103] ∈ [--..--]
+                                  [bits 8832 to 8863] ∈ [0..2147483647]
+                                  [1108..1187] ∈ [--..--]
+                                  [bits 9504 to 9535] ∈ [0..2147483647]
+                                  [1192..1271] ∈ [--..--]
+                                  [bits 10176 to 10207] ∈ [0..2147483647]
+                                  [1276..1355] ∈ [--..--]
+                                  [bits 10848 to 10879] ∈ [0..2147483647]
+                                  [1360..1439] ∈ [--..--]
+                                  [bits 11520 to 11551] ∈ [0..2147483647]
+                                  [1444..1523] ∈ [--..--]
+                                  [bits 12192 to 12223] ∈ [0..2147483647]
+                                  [1528..1607] ∈ [--..--]
+                                  [bits 12864 to 12895] ∈ [0..2147483647]
+                                  [1612..1691] ∈ [--..--]
+                                  [bits 13536 to 13567] ∈ [0..2147483647]
+                                  [1696..1775] ∈ [--..--]
+                                  [bits 14208 to 14239] ∈ [0..2147483647]
+                                  [1780..1859] ∈ [--..--]
+                                  [bits 14880 to 14911] ∈ [0..2147483647]
+                                  [1864..1943] ∈ [--..--]
+                                  [bits 15552 to 15583] ∈ [0..2147483647]
+                                  [1948..2027] ∈ [--..--]
+                                  [bits 16224 to 16255] ∈ [0..2147483647]
+                                  [2032..2111] ∈ [--..--]
+                                  [bits 16896 to 16927] ∈ [0..2147483647]
+                                  [2116..2195] ∈ [--..--]
+                                  [bits 17568 to 17599] ∈ [0..2147483647]
+                                  [2200..2279] ∈ [--..--]
+                                  [bits 18240 to 18271] ∈ [0..2147483647]
+                                  [2284..2363] ∈ [--..--]
+                                  [bits 18912 to 18943] ∈ [0..2147483647]
+                                  [2368..2447] ∈ [--..--]
+                                  [bits 19584 to 19615] ∈ [0..2147483647]
+                                  [2452..2531] ∈ [--..--]
+                                  [bits 20256 to 20287] ∈ [0..2147483647]
+                                  [2536..2615] ∈ [--..--]
+                                  [bits 20928 to 20959] ∈ [0..2147483647]
+                                  [2620..2699] ∈ [--..--]
+                                  [bits 21600 to 21631] ∈ [0..2147483647]
+                                  [2704..2783] ∈ [--..--]
+                                  [bits 22272 to 22303] ∈ [0..2147483647]
+                                  [2788..2867] ∈ [--..--]
+                                  [bits 22944 to 22975] ∈ [0..2147483647]
+                                  [2872..2951] ∈ [--..--]
+                                  [bits 23616 to 23647] ∈ [0..2147483647]
+                                  [2956..3035] ∈ [--..--]
+                                  [bits 24288 to 24319] ∈ [0..2147483647]
+                                  [3040..3119] ∈ [--..--]
+                                  [bits 24960 to 24991] ∈ [0..2147483647]
+                                  [3124..3203] ∈ [--..--]
+                                  [bits 25632 to 25663] ∈ [0..2147483647]
+                                  [3208..3287] ∈ [--..--]
+                                  [bits 26304 to 26335] ∈ [0..2147483647]
+                                  [3292..3371] ∈ [--..--]
+                                  [bits 26976 to 27007] ∈ [0..2147483647]
+                                  [3376..3455] ∈ [--..--]
+                                  [bits 27648 to 27679] ∈ [0..2147483647]
+                                  [3460..3539] ∈ [--..--]
+                                  [bits 28320 to 28351] ∈ [0..2147483647]
+                                  [3544..3623] ∈ [--..--]
+                                  [bits 28992 to 29023] ∈ [0..2147483647]
+                                  [3628..3707] ∈ [--..--]
+                                  [bits 29664 to 29695] ∈ [0..2147483647]
+                                  [3712..3791] ∈ [--..--]
+                                  [bits 30336 to 30367] ∈ [0..2147483647]
+                                  [3796..3875] ∈ [--..--]
+                                  [bits 31008 to 31039] ∈ [0..2147483647]
+                                  [3880..3959] ∈ [--..--]
+                                  [bits 31680 to 31711] ∈ [0..2147483647]
+                                  [3964..4043] ∈ [--..--]
+                                  [bits 32352 to 32383] ∈ [0..2147483647]
+                                  [4048..4127] ∈ [--..--]
+                                  [bits 33024 to 33055] ∈ [0..2147483647]
+                                  [4132..4211] ∈ [--..--]
+                                  [bits 33696 to 33727] ∈ [0..2147483647]
+                                  [4216..4295] ∈ [--..--]
+                                  [bits 34368 to 34399] ∈ [0..2147483647]
+                                  [4300..4379] ∈ [--..--]
+                                  [bits 35040 to 35071] ∈ [0..2147483647]
+                                  [4384..4463] ∈ [--..--]
+                                  [bits 35712 to 35743] ∈ [0..2147483647]
+                                  [4468..4547] ∈ [--..--]
+                                  [bits 36384 to 36415] ∈ [0..2147483647]
+                                  [4552..4631] ∈ [--..--]
+                                  [bits 37056 to 37087] ∈ [0..2147483647]
+                                  [4636..4715] ∈ [--..--]
+                                  [bits 37728 to 37759] ∈ [0..2147483647]
+                                  [4720..4799] ∈ [--..--]
+                                  [bits 38400 to 38431] ∈ [0..2147483647]
+                                  [4804..4883] ∈ [--..--]
+                                  [bits 39072 to 39103] ∈ [0..2147483647]
+                                  [4888..4967] ∈ [--..--]
+                                  [bits 39744 to 39775] ∈ [0..2147483647]
+                                  [4972..5051] ∈ [--..--]
+                                  [bits 40416 to 40447] ∈ [0..2147483647]
+                                  [5056..5135] ∈ [--..--]
+                                  [bits 41088 to 41119] ∈ [0..2147483647]
+                                  [5140..5219] ∈ [--..--]
+                                  [bits 41760 to 41791] ∈ [0..2147483647]
+                                  [5224..5303] ∈ [--..--]
+                                  [bits 42432 to 42463] ∈ [0..2147483647]
+                                  [5308..5387] ∈ [--..--]
+                                  [bits 43104 to 43135] ∈ [0..2147483647]
+                                  [5392..5471] ∈ [--..--]
+                                  [bits 43776 to 43807] ∈ [0..2147483647]
+                                  [5476..5555] ∈ [--..--]
+                                  [bits 44448 to 44479] ∈ [0..2147483647]
+                                  [5560..5639] ∈ [--..--]
+                                  [bits 45120 to 45151] ∈ [0..2147483647]
+                                  [5644..5723] ∈ [--..--]
+                                  [bits 45792 to 45823] ∈ [0..2147483647]
+                                  [5728..5807] ∈ [--..--]
+                                  [bits 46464 to 46495] ∈ [0..2147483647]
+                                  [5812..5891] ∈ [--..--]
+                                  [bits 47136 to 47167] ∈ [0..2147483647]
+                                  [5896..5975] ∈ [--..--]
+                                  [bits 47808 to 47839] ∈ [0..2147483647]
+                                  [5980..6059] ∈ [--..--]
+                                  [bits 48480 to 48511] ∈ [0..2147483647]
+                                  [6064..6143] ∈ [--..--]
+                                  [bits 49152 to 49183] ∈ [0..2147483647]
+                                  [6148..6227] ∈ [--..--]
+                                  [bits 49824 to 49855] ∈ [0..2147483647]
+                                  [6232..6311] ∈ [--..--]
+                                  [bits 50496 to 50527] ∈ [0..2147483647]
+                                  [6316..6395] ∈ [--..--]
+                                  [bits 51168 to 51199] ∈ [0..2147483647]
+                                  [6400..6479] ∈ [--..--]
+                                  [bits 51840 to 51871] ∈ [0..2147483647]
+                                  [6484..6563] ∈ [--..--]
+                                  [bits 52512 to 52543] ∈ [0..2147483647]
+                                  [6568..6647] ∈ [--..--]
+                                  [bits 53184 to 53215] ∈ [0..2147483647]
+                                  [6652..6731] ∈ [--..--]
+                                  [bits 53856 to 53887] ∈ [0..2147483647]
+                                  [6736..6815] ∈ [--..--]
+                                  [bits 54528 to 54559] ∈ [0..2147483647]
+                                  [6820..6899] ∈ [--..--]
+                                  [bits 55200 to 55231] ∈ [0..2147483647]
+                                  [6904..6983] ∈ [--..--]
+                                  [bits 55872 to 55903] ∈ [0..2147483647]
+                                  [6988..7067] ∈ [--..--]
+                                  [bits 56544 to 56575] ∈ [0..2147483647]
+                                  [7072..7151] ∈ [--..--]
+                                  [bits 57216 to 57247] ∈ [0..2147483647]
+                                  [7156..7235] ∈ [--..--]
+                                  [bits 57888 to 57919] ∈ [0..2147483647]
+                                  [7240..7319] ∈ [--..--]
+                                  [bits 58560 to 58591] ∈ [0..2147483647]
+                                  [7324..7403] ∈ [--..--]
+                                  [bits 59232 to 59263] ∈ [0..2147483647]
+                                  [7408..7487] ∈ [--..--]
+                                  [bits 59904 to 59935] ∈ [0..2147483647]
+                                  [7492..7571] ∈ [--..--]
+                                  [bits 60576 to 60607] ∈ [0..2147483647]
+                                  [7576..7655] ∈ [--..--]
+                                  [bits 61248 to 61279] ∈ [0..2147483647]
+                                  [7660..7739] ∈ [--..--]
+                                  [bits 61920 to 61951] ∈ [0..2147483647]
+                                  [7744..7823] ∈ [--..--]
+                                  [bits 62592 to 62623] ∈ [0..2147483647]
+                                  [7828..7907] ∈ [--..--]
+                                  [bits 63264 to 63295] ∈ [0..2147483647]
+                                  [7912..7991] ∈ [--..--]
+                                  [bits 63936 to 63967] ∈ [0..2147483647]
+                                  [7996..8075] ∈ [--..--]
+                                  [bits 64608 to 64639] ∈ [0..2147483647]
+                                  [8080..8159] ∈ [--..--]
+                                  [bits 65280 to 65311] ∈ [0..2147483647]
+                                  [8164..8243] ∈ [--..--]
+                                  [bits 65952 to 65983] ∈ [0..2147483647]
+                                  [8248..8327] ∈ [--..--]
+                                  [bits 66624 to 66655] ∈ [0..2147483647]
+                                  [8332..8411] ∈ [--..--]
+  __calloc_w_can_fail_calloc_l18_1[0..839999] ∈ [--..--]
+  __calloc_w_can_fail_calloc_l18_2[0..7] ∈ {0}
+                                  [8..8411] ∈ [--..--]
+[eva:final-states] Values at end of function mergesort:
+  aux[0..9999] ∈ [--..--]
+  m ∈ [0..4999]
+  __calloc_w_can_fail_calloc_l18_1[0..839999] ∈ [--..--]
+[eva:final-states] Values at end of function mergesort_alphabet:
+  aux[0..9999] ∈ [--..--]
+  m ∈ [-1073741824..1073741823]
+  __calloc_w_can_fail_calloc_l18_2[0..7] ∈ {0}
+                                  [8..8411] ∈ [--..--]
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  18 functions analyzed (out of 20): 90% coverage.
+  In these functions, 450 statements reached (out of 450): 100% coverage.
+  ----------------------------------------------------------------------------
+  Some errors and warnings have been raised during the analysis:
+    by the Eva analyzer:      2 errors    0 warnings
+    by the Frama-C kernel:    0 errors    0 warnings
+  ----------------------------------------------------------------------------
+  167 alarms generated by the analysis:
+      65 invalid memory accesses
+      54 accesses out of bounds index
+      45 integer overflows
+       2 escaping addresses
+       1 other
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     0 unknown     0 invalid      0 total
+    Preconditions    78 valid    48 unknown     0 invalid    126 total
+  61% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[eva] User Error: Deferred error message was emitted during execution. See above messages for more information.
+[kernel] Plug-in eva aborted: invalid user input.

@@ -1,0 +1,198 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/iaed_p1/140/project_JF.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  warehouse[0..9999] ∈ {0}
+  next_p_id ∈ {0}
+  print_warehouse[0..9999] ∈ {0}
+  order_list[0..499] ∈ {0}
+  next_o_id ∈ {0}
+[eva] using specification for function getchar
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/140/project_JF.c:756: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/140/project_JF.c:760: 
+  accessing out of bounds index. assert i < (int)(63 + 1);
+[eva] using specification for function scanf_va_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/140/project_JF.c:318: 
+  accessing uninitialized left-value. assert \initialized(description + i);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/140/project_JF.c:318: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/140/project_JF.c:319: 
+  accessing uninitialized left-value. assert \initialized(description + i);
+[eva] using specification for function printf_va_1
+[eva] using specification for function scanf_va_2
+[eva] using specification for function printf_va_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/140/project_JF.c:350: 
+  accessing out of bounds index. assert 0 ≤ product_id;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/140/project_JF.c:350: 
+  all target addresses were invalid. This path is assumed to be dead.
+[eva] using specification for function printf_va_3
+[eva] using specification for function scanf_va_3
+[eva] using specification for function printf_va_4
+[eva] using specification for function printf_va_5
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/140/project_JF.c:399: 
+  accessing out of bounds index. assert 0 ≤ product_id;
+[eva] using specification for function scanf_va_4
+[eva] using specification for function printf_va_8
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/140/project_JF.c:459: 
+  accessing out of bounds index. assert 0 ≤ product_id;
+[eva] using specification for function scanf_va_5
+[eva] using specification for function printf_va_10
+[eva] using specification for function printf_va_11
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/140/project_JF.c:497: 
+  accessing out of bounds index. assert 0 ≤ order_id;
+[eva] using specification for function scanf_va_6
+[eva] using specification for function printf_va_12
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/140/project_JF.c:540: 
+  accessing out of bounds index. assert 0 ≤ order_id;
+[eva] using specification for function scanf_va_7
+[eva] using specification for function printf_va_14
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/140/project_JF.c:574: 
+  accessing out of bounds index. assert 0 ≤ product_id;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/140/project_JF.c:574: 
+  all target addresses were invalid. This path is assumed to be dead.
+[eva] using specification for function scanf_va_8
+[eva] using specification for function printf_va_15
+[eva] using specification for function printf_va_16
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/140/project_JF.c:601: 
+  accessing out of bounds index. assert 0 ≤ product_id;
+[eva] using specification for function scanf_va_9
+[eva] using specification for function printf_va_19
+[eva] using specification for function printf_va_21
+[eva] using specification for function scanf_va_10
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/140/project_JF.c:713: 
+  accessing out of bounds index. assert 0 ≤ order_id;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/140/project_JF.c:713: 
+  accessing out of bounds index. assert order_id < 500;
+[eva] using specification for function printf_va_23
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/140/project_JF.c:713: 
+  more than 200(500) elements to enumerate. Approximating.
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/iaed_p1/140/project_JF.c:860: 
+  detected recursive call of function parser.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/140/project_JF.c:860: User Error: 
+  Recursive call to parser without assigns clause.
+  Generating probably incomplete assigns to interpret the call. Try to increase
+  the -eva-unroll-recursive-calls parameter or write a correct specification
+  for function parser.
+[kernel:annot:missing-spec] /home/fmarques/sbugs/projects/alunos/iaed_p1/140/project_JF.c:746: 
+  Neither code nor specification for function parser, generating default assigns from the prototype
+[eva] using specification for function parser
+[eva] done for function main
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/140/project_JF.c:350: 
+  assertion 'Eva,index_bound' got final status invalid.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/140/project_JF.c:399: 
+  assertion 'Eva,index_bound' got final status invalid.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/140/project_JF.c:459: 
+  assertion 'Eva,index_bound' got final status invalid.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/140/project_JF.c:497: 
+  assertion 'Eva,index_bound' got final status invalid.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/140/project_JF.c:540: 
+  assertion 'Eva,index_bound' got final status invalid.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/140/project_JF.c:574: 
+  assertion 'Eva,index_bound' got final status invalid.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/140/project_JF.c:601: 
+  assertion 'Eva,index_bound' got final status invalid.
+[scope:rm_asserts] removing 1 assertion(s)
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function a:
+  warehouse[0].description[0..62] ∈ [--..--]
+           [0].description[63] ∈ {0}
+           [0]{.price; .weight; .stock} ∈ [--..--]
+           [1..9999] ∈ {0}
+  next_p_id ∈ {1}
+  i ∈ [0..63]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function R:
+  i ∈ UNINITIALIZED
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function C:
+  total ∈ {0}
+  i ∈ UNINITIALIZED
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function p:
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function E:
+  c ∈ UNINITIALIZED
+  i ∈ UNINITIALIZED
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function m:
+  max ∈ {0}
+  last_o_id ∈ {0}
+  i ∈ {0} or UNINITIALIZED
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function L:
+  N_products ∈ {-1}
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function N:
+  order_list[0..499] ∈ {0}
+  next_o_id ∈ {1}
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function A:
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function q:
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function quicksort_warehouse:
+  
+[eva:final-states] Values at end of function l:
+  i ∈ {0}
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function r:
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function parser:
+  warehouse[0].description[0..62] ∈ [--..--]
+           [0].description[63] ∈ {0}
+           [0]{.price; .weight; .stock} ∈ [--..--]
+           [1..9999] ∈ {0}
+  next_p_id ∈ {0; 1}
+  order_list[0..499] ∈ {0}
+  next_o_id ∈ {0; 1}
+  opt ∈ [--..--]
+  i ∈ [0..63] or UNINITIALIZED
+  c ∈ [--..--] or UNINITIALIZED
+  in1 ∈ [--..--] or UNINITIALIZED
+  in2 ∈ [--..--] or UNINITIALIZED
+  in3 ∈ [--..--] or UNINITIALIZED
+  description[0..63] ∈ [--..--] or UNINITIALIZED
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function main:
+  warehouse[0].description[0..62] ∈ [--..--]
+           [0].description[63] ∈ {0}
+           [0]{.price; .weight; .stock} ∈ [--..--]
+           [1..9999] ∈ {0}
+  next_p_id ∈ {0; 1}
+  order_list[0..499] ∈ {0}
+  next_o_id ∈ {0; 1}
+  __retres ∈ {0}
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  15 functions analyzed (out of 23): 65% coverage.
+  In these functions, 154 statements reached (out of 251): 61% coverage.
+  ----------------------------------------------------------------------------
+  Some errors and warnings have been raised during the analysis:
+    by the Eva analyzer:      1 error    0 warnings
+    by the Frama-C kernel:    0 errors    0 warnings
+  ----------------------------------------------------------------------------
+  12 alarms generated by the analysis:
+      10 accesses out of bounds index
+       2 accesses to uninitialized left-values
+  7 of them are sure alarms (invalid status).
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     0 unknown     0 invalid      0 total
+    Preconditions    44 valid     0 unknown     0 invalid     44 total
+  100% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[eva] User Error: Deferred error message was emitted during execution. See above messages for more information.
+[kernel] Plug-in eva aborted: invalid user input.

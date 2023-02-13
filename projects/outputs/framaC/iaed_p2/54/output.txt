@@ -1,0 +1,505 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/iaed_p2/54/proj.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:CERT:MSC:37] /home/fmarques/sbugs/projects/alunos/iaed_p2/54/proj.c:175: 
+  Body of function find3 falls-through. Adding a return statement
+[kernel:CERT:MSC:37] /home/fmarques/sbugs/projects/alunos/iaed_p2/54/proj.c:201: 
+  Body of function upper_bound3 falls-through. Adding a return statement
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  i ∈ {0}
+  i1 ∈ {0}
+  i2 ∈ {0}
+  insig ∈ {0}
+  line ∈ {0}
+  unid ∈ {0}
+[eva] using specification for function time
+[eva] using specification for function srand
+[eva] using specification for function rand
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_0
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/54/proj.c:551: 
+  out of bounds read.
+  assert \valid_read((struct node6 *)tmp_0);
+  (tmp_0 from can_fail_malloc(sizeof(struct node6)))
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:25: 
+  allocating variable __realloc_can_fail_realloc_l25
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/54/proj.c:527: 
+  out of bounds write. assert \valid(v->a + (ll)(v->size - 1));
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/54/proj.c:552: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/54/proj.c:525: 
+  signed overflow. assert v->size + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_2
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/54/proj.c:555: 
+  out of bounds write. assert \valid(&(H.be)->prv);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/54/proj.c:556: 
+  out of bounds write. assert \valid(&(H.en)->prv);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_4
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_5
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_6
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/54/proj.c:723: 
+  out of bounds read.
+  assert \valid_read((struct node8 *)tmp_0);
+  (tmp_0 from can_fail_malloc(sizeof(struct node8)))
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:25: 
+  allocating variable __realloc_can_fail_realloc_l25_0
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/54/proj.c:699: 
+  out of bounds write. assert \valid(v->a + (ll)(v->size - 1));
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/54/proj.c:724: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/54/proj.c:697: 
+  signed overflow. assert v->size + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_7
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_8
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/54/proj.c:727: 
+  out of bounds write. assert \valid(&(H.be)->prv);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/54/proj.c:728: 
+  out of bounds write. assert \valid(&(H.en)->prv);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_9
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/54/proj.c:137: 
+  out of bounds write. assert \valid(str.s + 0);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_10
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/54/proj.c:139: 
+  out of bounds write. assert \valid(&(s.en)->lson);
+[eva] using specification for function scanf_va_3
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_11
+[eva] using specification for function scanf_va_1
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:25: 
+  allocating variable __realloc_can_fail_realloc_l25_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/54/proj.c:61: 
+  out of bounds write. assert \valid(ans.s + (ll)(ans.si - 1));
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/54/proj.c:52: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/54/proj.c:59: 
+  signed overflow. assert ans.si + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_12
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:25: 
+  allocating variable __realloc_can_fail_realloc_l25_2
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_13
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:25: 
+  allocating variable __realloc_can_fail_realloc_l25_3
+[eva] using specification for function scanf_va_4
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/54/proj.c:577: 
+  accessing uninitialized left-value. assert \initialized(k.s + i7);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/54/proj.c:577: 
+  out of bounds read. assert \valid_read(k.s + i7);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/54/proj.c:575: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/54/proj.c:605: 
+  accessing uninitialized left-value.
+  assert \initialized(&(H->a.a + ind)->visited);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/54/proj.c:605: 
+  out of bounds read. assert \valid_read(&(H->a.a + ind)->visited);
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p2/54/proj.c:605: 
+  more than 200(9973) elements to enumerate. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_14
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:25: 
+  allocating variable __realloc_can_fail_realloc_l25_4
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/54/proj.c:749: 
+  accessing uninitialized left-value. assert \initialized(k.s + i11);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/54/proj.c:749: 
+  out of bounds read. assert \valid_read(k.s + i11);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/54/proj.c:747: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/54/proj.c:777: 
+  accessing uninitialized left-value.
+  assert \initialized(&(H->a.a + ind)->visited);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/54/proj.c:777: 
+  out of bounds read. assert \valid_read(&(H->a.a + ind)->visited);
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p2/54/proj.c:777: 
+  more than 200(9973) elements to enumerate. Approximating.
+[eva] using specification for function scanf_va_5
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_15
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:25: 
+  allocating variable __realloc_can_fail_realloc_l25_5
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_16
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:25: 
+  allocating variable __realloc_can_fail_realloc_l25_6
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_17
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:25: 
+  allocating variable __realloc_can_fail_realloc_l25_7
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_18
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:25: 
+  allocating variable __realloc_can_fail_realloc_l25_8
+[eva] using specification for function scanf_va_6
+[eva] using specification for function scanf_va_7
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/54/proj.c:802: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/54/proj.c:862: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/54/proj.c:804: 
+  signed overflow. assert line + 1 ≤ 2147483647;
+[eva] done for function main
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function begin6:
+  __retres ∈ {{ (struct node6 *)&__malloc_can_fail_malloc_l11_2 }}
+[eva:final-states] Values at end of function hash6:
+  i7 ∈ [0..2147483647]
+  ans ∈ [-9972..9972]
+  val ∈ [0..9972]
+[eva:final-states] Values at end of function find6:
+  NON TERMINATING FUNCTION
+[eva:final-states] Values at end of function hash8:
+  i11 ∈ [0..2147483647]
+  ans ∈ [-9972..9972]
+  val ∈ [0..9972]
+[eva:final-states] Values at end of function find8:
+  NON TERMINATING FUNCTION
+[eva:final-states] Values at end of function can_fail_malloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈
+          {{ NULL ; (void *)&__malloc_can_fail_malloc_l11 ;
+             (void *)&__malloc_can_fail_malloc_l11_0 ;
+             (void *)&__malloc_can_fail_malloc_l11_1 ;
+             (void *)&__malloc_can_fail_malloc_l11_2 ;
+             (void *)&__malloc_can_fail_malloc_l11_3 ;
+             (void *)&__malloc_can_fail_malloc_l11_4 ;
+             (void *)&__malloc_can_fail_malloc_l11_5 ;
+             (void *)&__malloc_can_fail_malloc_l11_6 ;
+             (void *)&__malloc_can_fail_malloc_l11_7 ;
+             (void *)&__malloc_can_fail_malloc_l11_8 ;
+             (void *)&__malloc_can_fail_malloc_l11_9 ;
+             (void *)&__malloc_can_fail_malloc_l11_10 ;
+             (void *)&__malloc_can_fail_malloc_l11_11 ;
+             (void *)&__malloc_can_fail_malloc_l11_12 ;
+             (void *)&__malloc_can_fail_malloc_l11_13 ;
+             (void *)&__malloc_can_fail_malloc_l11_14 ;
+             (void *)&__malloc_can_fail_malloc_l11_15 ;
+             (void *)&__malloc_can_fail_malloc_l11_16 ;
+             (void *)&__malloc_can_fail_malloc_l11_17 ;
+             (void *)&__malloc_can_fail_malloc_l11_18 }}
+[eva:final-states] Values at end of function can_fail_realloc:
+  __fc_random_counter ∈ [--..--]
+  ptr ∈
+     {{ NULL ; (void *)&__malloc_can_fail_malloc_l11_0 ;
+        (void *)&__realloc_w_can_fail_realloc_l25 ;
+        (void *)&__malloc_can_fail_malloc_l11_5 ;
+        (void *)&__realloc_w_can_fail_realloc_l25_0 ;
+        (void *)&__malloc_can_fail_malloc_l11_11 ;
+        (void *)&__realloc_w_can_fail_realloc_l25_1 ;
+        (void *)&__malloc_can_fail_malloc_l11_12 ;
+        (void *)&__realloc_w_can_fail_realloc_l25_2 ;
+        (void *)&__malloc_can_fail_malloc_l11_13 ;
+        (void *)&__realloc_w_can_fail_realloc_l25_3 ;
+        (void *)&__malloc_can_fail_malloc_l11_14 ;
+        (void *)&__realloc_w_can_fail_realloc_l25_4 ;
+        (void *)&__malloc_can_fail_malloc_l11_15 ;
+        (void *)&__realloc_w_can_fail_realloc_l25_5 ;
+        (void *)&__malloc_can_fail_malloc_l11_16 ;
+        (void *)&__realloc_w_can_fail_realloc_l25_6 ;
+        (void *)&__malloc_can_fail_malloc_l11_17 ;
+        (void *)&__realloc_w_can_fail_realloc_l25_7 ;
+        (void *)&__malloc_can_fail_malloc_l11_18 ;
+        (void *)&__realloc_w_can_fail_realloc_l25_8 }} or ESCAPINGADDR
+  fail ∈ [0. .. 1.]
+  ans.s ∈
+     {{ NULL ; &__malloc_can_fail_malloc_l11_11 ;
+        &__realloc_w_can_fail_realloc_l25_1[0] ;
+        &__malloc_can_fail_malloc_l11_12 ;
+        &__realloc_w_can_fail_realloc_l25_2[0] ;
+        &__malloc_can_fail_malloc_l11_13 ;
+        &__realloc_w_can_fail_realloc_l25_3[0] ;
+        &__malloc_can_fail_malloc_l11_14 ;
+        &__realloc_w_can_fail_realloc_l25_4[0] ;
+        &__malloc_can_fail_malloc_l11_15 ;
+        &__realloc_w_can_fail_realloc_l25_5[0] ;
+        &__malloc_can_fail_malloc_l11_16 ;
+        &__realloc_w_can_fail_realloc_l25_6[0] ;
+        &__malloc_can_fail_malloc_l11_17 ;
+        &__realloc_w_can_fail_realloc_l25_7[0] ;
+        &__malloc_can_fail_malloc_l11_18 ;
+        &__realloc_w_can_fail_realloc_l25_8[0] }} or ESCAPINGADDR
+     .si ∈ [1..2147483647]
+     .[bits 96 to 127] ∈ UNINITIALIZED
+  H.M ∈ {9973}
+   .N ∈ UNINITIALIZED
+   .a.a ∈
+   {{ NULL ; (struct node6 *)&__malloc_can_fail_malloc_l11_0 ;
+      (struct node6 *)&__realloc_w_can_fail_realloc_l25 }} or ESCAPINGADDR
+   .a.size ∈ [1..2147483647]
+   {.a.[bits 96 to 127]; .be; .en} ∈ UNINITIALIZED
+  H.M ∈ {9973}
+   .N ∈ UNINITIALIZED
+   .a.a ∈
+   {{ NULL ; (struct node8 *)&__malloc_can_fail_malloc_l11_5 ;
+      (struct node8 *)&__realloc_w_can_fail_realloc_l25_0 }} or ESCAPINGADDR
+   .a.size ∈ [1..2147483647]
+   {.a.[bits 96 to 127]; .be; .en} ∈ UNINITIALIZED
+  __retres ∈
+          {{ NULL ; (void *)&__realloc_w_can_fail_realloc_l25 ;
+             (void *)&__realloc_w_can_fail_realloc_l25_0 ;
+             (void *)&__realloc_w_can_fail_realloc_l25_1 ;
+             (void *)&__realloc_w_can_fail_realloc_l25_2 ;
+             (void *)&__realloc_w_can_fail_realloc_l25_3 ;
+             (void *)&__realloc_w_can_fail_realloc_l25_4 ;
+             (void *)&__realloc_w_can_fail_realloc_l25_5 ;
+             (void *)&__realloc_w_can_fail_realloc_l25_6 ;
+             (void *)&__realloc_w_can_fail_realloc_l25_7 ;
+             (void *)&__realloc_w_can_fail_realloc_l25_8 }}
+[eva:final-states] Values at end of function init3:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  s.N ∈ {0}
+   .[bits 32 to 63] ∈ UNINITIALIZED
+   {.root; .beg; .en} ∈
+   {{ (struct node3 *)&__malloc_can_fail_malloc_l11_10 }}
+  p.a ∈ {1000000}
+   .[bits 32 to 63] ∈ UNINITIALIZED
+   .s.s ∈ {{ &__malloc_can_fail_malloc_l11_9 }}
+   .s.si ∈ {1}
+   .s.[bits 96 to 127] ∈ UNINITIALIZED
+  str.s ∈ {{ &__malloc_can_fail_malloc_l11_9 }}
+     .si ∈ {1}
+     .[bits 96 to 127] ∈ UNINITIALIZED
+  __malloc_can_fail_malloc_l11_9 ∈ {97}
+  __malloc_can_fail_malloc_l11_10[bits 0 to 31] ∈ {1000000}
+                                 [4..7] ∈ UNINITIALIZED
+                                 [bits 64 to 127] ∈
+                                 {{ (? *)&__malloc_can_fail_malloc_l11_9 }}
+                                 [bits 128 to 159] ∈ {1}
+                                 [20..23] ∈ UNINITIALIZED
+                                 [24..27] ∈ {0}
+                                 [28..31] ∈ UNINITIALIZED
+                                 [32..71] ∈ {0}
+[eva:final-states] Values at end of function init7:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  i5 ∈ {0}
+  v.a ∈ {{ NULL ; (struct node6 *)&__malloc_can_fail_malloc_l11_0 }}
+   .size ∈ {0}
+   .[bits 96 to 127] ∈ UNINITIALIZED
+[eva:final-states] Values at end of function init9:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  i9 ∈ {0}
+  v.a ∈ {{ NULL ; (struct node8 *)&__malloc_can_fail_malloc_l11_5 }}
+   .size ∈ {0}
+   .[bits 96 to 127] ∈ UNINITIALIZED
+[eva:final-states] Values at end of function inp:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  ans.s ∈
+     {{ NULL ; &__malloc_can_fail_malloc_l11_11 ;
+        &__realloc_w_can_fail_realloc_l25_1[0] ;
+        &__malloc_can_fail_malloc_l11_12 ;
+        &__realloc_w_can_fail_realloc_l25_2[0] ;
+        &__malloc_can_fail_malloc_l11_13 ;
+        &__realloc_w_can_fail_realloc_l25_3[0] ;
+        &__malloc_can_fail_malloc_l11_14 ;
+        &__realloc_w_can_fail_realloc_l25_4[0] ;
+        &__malloc_can_fail_malloc_l11_15 ;
+        &__realloc_w_can_fail_realloc_l25_5[0] ;
+        &__malloc_can_fail_malloc_l11_16 ;
+        &__realloc_w_can_fail_realloc_l25_6[0] ;
+        &__malloc_can_fail_malloc_l11_17 ;
+        &__realloc_w_can_fail_realloc_l25_7[0] ;
+        &__malloc_can_fail_malloc_l11_18 ;
+        &__realloc_w_can_fail_realloc_l25_8[0] }}
+     .si ∈ [0..2147483647]
+     .[bits 96 to 127] ∈ UNINITIALIZED
+  c ∈ {10; 58}
+  now ∈ {1}
+  S___fc_stdin[0..1] ∈ [--..--]
+  __realloc_w_can_fail_realloc_l25_1[0..2147483646] ∈
+                                    [--..--] or UNINITIALIZED
+  __realloc_w_can_fail_realloc_l25_2[0..2147483646] ∈
+                                    [--..--] or UNINITIALIZED
+  __realloc_w_can_fail_realloc_l25_3[0..2147483646] ∈
+                                    [--..--] or UNINITIALIZED
+  __realloc_w_can_fail_realloc_l25_4[0..2147483646] ∈
+                                    [--..--] or UNINITIALIZED
+  __realloc_w_can_fail_realloc_l25_5[0..2147483646] ∈
+                                    [--..--] or UNINITIALIZED
+  __realloc_w_can_fail_realloc_l25_6[0..2147483646] ∈
+                                    [--..--] or UNINITIALIZED
+  __realloc_w_can_fail_realloc_l25_7[0..2147483646] ∈
+                                    [--..--] or UNINITIALIZED
+  __realloc_w_can_fail_realloc_l25_8[0..2147483646] ∈
+                                    [--..--] or UNINITIALIZED
+[eva:final-states] Values at end of function push_back7:
+  __fc_random_counter ∈ [--..--]
+  H.M ∈ {9973}
+   .N ∈ UNINITIALIZED
+   .a.a ∈ {{ (struct node6 *)&__realloc_w_can_fail_realloc_l25 }}
+   .a.size ∈ [1..2147483647]
+   {.a.[bits 96 to 127]; .be; .en} ∈ UNINITIALIZED
+  __realloc_w_can_fail_realloc_l25[0..206158430111] ∈ UNINITIALIZED
+[eva:final-states] Values at end of function init6:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  unid.s ∈ {{ "impossible" }}
+      .si ∈ {10}
+      .[bits 96 to 127] ∈ {0}
+  i6 ∈ [9973..2147483647]
+  H.M ∈ {9973}
+   .N ∈ {0}
+   .a.a ∈
+   {{ NULL ; (struct node6 *)&__malloc_can_fail_malloc_l11_0 ;
+      (struct node6 *)&__realloc_w_can_fail_realloc_l25 }}
+   .a.size ∈ [0..2147483647]
+   .a.[bits 96 to 127] ∈ UNINITIALIZED
+   .be ∈ {{ (struct node6 *)&__malloc_can_fail_malloc_l11_2 }}
+   .en ∈ {{ (struct node6 *)&__malloc_can_fail_malloc_l11_3 }}
+  X ∈ UNINITIALIZED
+  __realloc_w_can_fail_realloc_l25[0..206158430111] ∈ UNINITIALIZED
+  __malloc_can_fail_malloc_l11_2[0..79] ∈ UNINITIALIZED
+                                [bits 640 to 703] ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_can_fail_malloc_l11_3 }}
+                                [88..95] ∈ {0}
+  __malloc_can_fail_malloc_l11_3[0..79] ∈ UNINITIALIZED
+                                [80..87] ∈ {0}
+                                [bits 704 to 767] ∈
+                                {{ (? *)&__malloc_can_fail_malloc_l11_2 }}
+[eva:final-states] Values at end of function push_back9:
+  __fc_random_counter ∈ [--..--]
+  H.M ∈ {9973}
+   .N ∈ UNINITIALIZED
+   .a.a ∈ {{ (struct node8 *)&__realloc_w_can_fail_realloc_l25_0 }}
+   .a.size ∈ [1..2147483647]
+   {.a.[bits 96 to 127]; .be; .en} ∈ UNINITIALIZED
+  __realloc_w_can_fail_realloc_l25_0[0..137438953407] ∈ UNINITIALIZED
+[eva:final-states] Values at end of function init8:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  unid.s ∈ {{ "impossible" }}
+      .si ∈ {10}
+      .[bits 96 to 127] ∈ {0}
+  i10 ∈ [9973..2147483647]
+  H.M ∈ {9973}
+   .N ∈ {0}
+   .a.a ∈
+   {{ NULL ; (struct node8 *)&__malloc_can_fail_malloc_l11_5 ;
+      (struct node8 *)&__realloc_w_can_fail_realloc_l25_0 }}
+   .a.size ∈ [0..2147483647]
+   .a.[bits 96 to 127] ∈ UNINITIALIZED
+   .be ∈ {{ (struct node8 *)&__malloc_can_fail_malloc_l11_7 }}
+   .en ∈ {{ (struct node8 *)&__malloc_can_fail_malloc_l11_8 }}
+  X ∈ UNINITIALIZED
+  __realloc_w_can_fail_realloc_l25_0[0..137438953407] ∈ UNINITIALIZED
+  __malloc_can_fail_malloc_l11_7[0..47] ∈ UNINITIALIZED
+                                [bits 384 to 447] ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_can_fail_malloc_l11_8 }}
+                                [56..63] ∈ {0}
+  __malloc_can_fail_malloc_l11_8[0..47] ∈ UNINITIALIZED
+                                [48..55] ∈ {0}
+                                [bits 448 to 511] ∈
+                                {{ (? *)&__malloc_can_fail_malloc_l11_7 }}
+[eva:final-states] Values at end of function main:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  i ∈ {0}
+  line ∈ [1..2147483647]
+  unid.s ∈ {{ "impossible" }}
+      .si ∈ {10}
+      .[bits 96 to 127] ∈ {0}
+  mg.M ∈ {9973}
+    .N ∈ {0}
+    .a.a ∈
+    {{ NULL ; (struct node6 *)&__malloc_can_fail_malloc_l11_0 ;
+       (struct node6 *)&__realloc_w_can_fail_realloc_l25 }}
+    .a.size ∈ [0..2147483647]
+    .a.[bits 96 to 127] ∈ UNINITIALIZED
+    .be ∈ {{ (struct node6 *)&__malloc_can_fail_malloc_l11_2 }}
+    .en ∈ {{ (struct node6 *)&__malloc_can_fail_malloc_l11_3 }}
+  mt.M ∈ {9973}
+    .N ∈ {0}
+    .a.a ∈
+    {{ NULL ; (struct node8 *)&__malloc_can_fail_malloc_l11_5 ;
+       (struct node8 *)&__realloc_w_can_fail_realloc_l25_0 }}
+    .a.size ∈ [0..2147483647]
+    .a.[bits 96 to 127] ∈ UNINITIALIZED
+    .be ∈ {{ (struct node8 *)&__malloc_can_fail_malloc_l11_7 }}
+    .en ∈ {{ (struct node8 *)&__malloc_can_fail_malloc_l11_8 }}
+  s.N ∈ {0}
+   .[bits 32 to 63] ∈ UNINITIALIZED
+   {.root; .beg; .en} ∈
+   {{ (struct node3 *)&__malloc_can_fail_malloc_l11_10 }}
+  c ∈ {120}
+  __retres ∈ {0}
+  S___fc_stdin[0..1] ∈ [--..--]
+  __realloc_w_can_fail_realloc_l25[0..206158430111] ∈ UNINITIALIZED
+  __malloc_can_fail_malloc_l11_2[0..79] ∈ UNINITIALIZED
+                                [bits 640 to 703] ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_can_fail_malloc_l11_3 }}
+                                [88..95] ∈ {0}
+  __malloc_can_fail_malloc_l11_3[0..79] ∈ UNINITIALIZED
+                                [80..87] ∈ {0}
+                                [bits 704 to 767] ∈
+                                {{ (? *)&__malloc_can_fail_malloc_l11_2 }}
+  __realloc_w_can_fail_realloc_l25_0[0..137438953407] ∈ UNINITIALIZED
+  __malloc_can_fail_malloc_l11_7[0..47] ∈ UNINITIALIZED
+                                [bits 384 to 447] ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_can_fail_malloc_l11_8 }}
+                                [56..63] ∈ {0}
+  __malloc_can_fail_malloc_l11_8[0..47] ∈ UNINITIALIZED
+                                [48..55] ∈ {0}
+                                [bits 448 to 511] ∈
+                                {{ (? *)&__malloc_can_fail_malloc_l11_7 }}
+  __malloc_can_fail_malloc_l11_9 ∈ {97}
+  __malloc_can_fail_malloc_l11_10[bits 0 to 31] ∈ {1000000}
+                                 [4..7] ∈ UNINITIALIZED
+                                 [bits 64 to 127] ∈
+                                 {{ (? *)&__malloc_can_fail_malloc_l11_9 }}
+                                 [bits 128 to 159] ∈ {1}
+                                 [20..23] ∈ UNINITIALIZED
+                                 [24..27] ∈ {0}
+                                 [28..31] ∈ UNINITIALIZED
+                                 [32..71] ∈ {0}
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  16 functions analyzed (out of 54): 29% coverage.
+  In these functions, 216 statements reached (out of 424): 50% coverage.
+  ----------------------------------------------------------------------------
+  No errors or warnings raised during the analysis.
+  ----------------------------------------------------------------------------
+  23 alarms generated by the analysis:
+      15 invalid memory accesses
+       4 integer overflows
+       4 accesses to uninitialized left-values
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     0 unknown     0 invalid      0 total
+    Preconditions    21 valid     0 unknown     0 invalid     21 total
+  100% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[report] Classification
+[report] Output /home/fmarques/sbugs/projects/outputs/framaC/iaed_p2/54/errors.json
+[report] Reviews     :   23
+[report] Unclassified:   23

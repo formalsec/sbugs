@@ -1,0 +1,1405 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  
+[eva] using specification for function scanf_va_1
+[eva] using specification for function time
+[eva] using specification for function srand
+[eva] using specification for function rand
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:184: 
+  out of bounds write. assert \valid(&newGraph->nProviders);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:186: 
+  signed overflow. assert -2147483648 ≤ 2 * e;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:186: 
+  signed overflow. assert 2 * e ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:186: 
+  signed overflow. assert -2147483648 ≤ f + (int)(2 * e);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:186: 
+  signed overflow. assert f + (int)(2 * e) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:186: 
+  signed overflow. assert (int)(f + (int)(2 * e)) + 2 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:187: 
+  signed overflow. assert -2147483648 ≤ t + f;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:187: 
+  signed overflow. assert t + f ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:187: 
+  signed overflow. assert -2147483648 ≤ (int)(t + f) + e;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:187: 
+  signed overflow. assert (int)(t + f) + e ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:213: 
+  signed overflow. assert f + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:214: 
+  signed overflow. assert -2147483648 ≤ f + e;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:214: 
+  signed overflow. assert f + e ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_0
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:114: 
+  out of bounds write. assert \valid(&newAdjList->n);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:118: 
+  out of bounds write. assert \valid(&(newAdjList->lists + i)->head);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:117: 
+  starting to merge loop iterations
+[eva] using specification for function scanf_va_2
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_2
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:81: 
+  out of bounds write. assert \valid(&newEdge->dest);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:102: 
+  out of bounds write. assert \valid(&newNode->edge);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:133: 
+  accessing uninitialized left-value.
+  assert \initialized(&(adjList->lists + origin)->head);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:133: 
+  out of bounds read. assert \valid_read(&(adjList->lists + origin)->head);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:134: 
+  out of bounds write. assert \valid(&(adjList->lists + origin)->head);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_4
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_5
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:219: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:136: 
+  accessing uninitialized left-value. assert \initialized(&newNode->edge);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:219: 
+  signed overflow. assert i + 1 ≤ 2147483647;
+[eva] using specification for function scanf_va_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:230: 
+  signed overflow. assert -2147483648 ≤ i + e;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:230: 
+  signed overflow. assert i + e ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_6
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_7
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:231: 
+  signed overflow. assert i + e ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_8
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_9
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:227: 
+  signed overflow. assert i + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:227: 
+  starting to merge loop iterations
+[eva] using specification for function scanf_va_4
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:239: 
+  signed overflow. assert -2147483648 ≤ o + e;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:239: 
+  signed overflow. assert o + e ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_10
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_11
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:240: 
+  signed overflow. assert -2147483648 ≤ o + e;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:240: 
+  signed overflow. assert o + e ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_12
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_13
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_14
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_15
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_16
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_17
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:236: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_18
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:333: 
+  assertion 'alloca_bounds' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:333: 
+  allocating variable __malloc_fordFulkerson_l333
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:18: 
+  calloc out of bounds: assert(nmemb * size <= SIZE_MAX)
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:18: 
+  allocating variable __calloc_can_fail_calloc_l18
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:335: 
+  out of bounds write. assert \valid(&data->adjList);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:296: 
+  accessing uninitialized left-value.
+  assert \initialized(&(adjList->lists + vertex)->head);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:296: 
+  out of bounds read. assert \valid_read(&(adjList->lists + vertex)->head);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:302: 
+  out of bounds write. assert \valid(visited + vertex);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:305: 
+  accessing uninitialized left-value. assert \initialized(&nodep->edge);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:306: 
+  accessing uninitialized left-value. assert \initialized(&edgep->res);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:308: 
+  accessing uninitialized left-value. assert \initialized(&edgep->dest);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:308: 
+  accessing uninitialized left-value.
+  assert \initialized(visited + edgep->dest);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:308: 
+  out of bounds read. assert \valid_read(visited + edgep->dest);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:321: 
+  accessing uninitialized left-value. assert \initialized(&nodep->next);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:304: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:274: 
+  out of bounds write. assert \valid(visited + source);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:276: 
+  accessing uninitialized left-value.
+  assert \initialized(&(list->lists + source)->head);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:276: 
+  out of bounds read. assert \valid_read(&(list->lists + source)->head);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:278: 
+  accessing uninitialized left-value. assert \initialized(&nodep->edge);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:278: 
+  accessing uninitialized left-value. assert \initialized(&(nodep->edge)->res);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:278: 
+  accessing uninitialized left-value.
+  assert \initialized(&((nodep->edge)->res)->ccap);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:278: 
+  accessing uninitialized left-value. assert \initialized(&nodep->edge);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:278: 
+  accessing uninitialized left-value.
+  assert \initialized(&(nodep->edge)->dest);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:278: 
+  out of bounds read. assert \valid_read(visited + (nodep->edge)->dest);
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:279: 
+  detected recursive call of function minCutDFS.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:279: 
+  accessing uninitialized left-value. assert \initialized(&nodep->edge);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:279: 
+  accessing uninitialized left-value.
+  assert \initialized(&(nodep->edge)->dest);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:279: User Error: 
+  Recursive call to minCutDFS without assigns clause.
+  Generating probably incomplete assigns to interpret the call. Try to increase
+  the -eva-unroll-recursive-calls parameter or write a correct specification
+  for function minCutDFS.
+[kernel:annot:missing-spec] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:269: 
+  Neither code nor specification for function minCutDFS, generating default assigns from the prototype
+[eva] using specification for function minCutDFS
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:281: 
+  accessing uninitialized left-value. assert \initialized(&nodep->next);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:277: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:279: 
+  Using specification of function minCutDFS for recursive calls.
+  Analysis of function minCutDFS is thus incomplete and its soundness
+  relies on the written specification.
+[eva] using specification for function printf_va_3
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:402: 
+  freeing automatic bases: {__malloc_fordFulkerson_l333}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:407: 
+  signed overflow. assert -2147483648 ≤ graph->nProviders + graph->nStations;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:407: 
+  signed overflow. assert graph->nProviders + graph->nStations ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:407: 
+  signed overflow.
+  assert (int)(graph->nProviders + graph->nStations) + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:18: 
+  allocating variable __calloc_can_fail_calloc_l18_0
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:18: 
+  allocating variable __calloc_can_fail_calloc_l18_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:412: 
+  accessing uninitialized left-value.
+  assert \initialized(&(adjList->lists + i)->head);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:412: 
+  out of bounds read. assert \valid_read(&(adjList->lists + i)->head);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:412: 
+  Assigning imprecise value to nodep.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:412}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:413: 
+  pointer comparison. assert \pointer_comparable((void *)0, (void *)nodep);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:414: 
+  accessing uninitialized left-value. assert \initialized(&nodep->edge);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:414: 
+  out of bounds read. assert \valid_read(&nodep->edge);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:414: 
+  Assigning imprecise value to edge.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:414}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:415: 
+  accessing uninitialized left-value. assert \initialized(&edge->dest);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:415: 
+  out of bounds read. assert \valid_read(&edge->dest);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:415: 
+  out of bounds read. assert \valid_read(minCut + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:415: 
+  accessing uninitialized left-value. assert \initialized(minCut + edge->dest);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:415: 
+  out of bounds read. assert \valid_read(minCut + edge->dest);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:415: 
+  accessing uninitialized left-value. assert \initialized(&edge->cap);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:415: 
+  out of bounds read. assert \valid_read(&edge->cap);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:416: 
+  accessing uninitialized left-value. assert \initialized(&edge->dest);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:417: 
+  out of bounds write. assert \valid(stationBN + tmp_1);
+                       (tmp_1 from si++)
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:417: 
+  accessing uninitialized left-value. assert \initialized(&edge->dest);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:417: 
+  signed overflow. assert -2147483648 ≤ edge->dest - graph->nStations;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:417: 
+  signed overflow. assert edge->dest - graph->nStations ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:417: 
+  Assigning imprecise value to *(stationBN + tmp_1)
+  (pointing to __calloc_can_fail_calloc_l18_0 with offsets {0}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:417}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:420: 
+  out of bounds write. assert \valid(&(edgeBN + se)->o);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:421: 
+  out of bounds write. assert \valid(&(edgeBN + tmp_2)->d);
+                       (tmp_2 from se++)
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:421: 
+  accessing uninitialized left-value. assert \initialized(&edge->dest);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:421: 
+  Assigning imprecise value to (edgeBN + tmp_2)->d
+  (pointing to __calloc_can_fail_calloc_l18_1 with offsets {32}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:421}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:424: 
+  accessing uninitialized left-value. assert \initialized(&nodep->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:424: 
+  out of bounds read. assert \valid_read(&nodep->next);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:413: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:417: 
+  Assigning imprecise value to *(stationBN + tmp_1)
+  (pointing to __calloc_can_fail_calloc_l18_0 with offsets {0; 32}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:417}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:421: 
+  Assigning imprecise value to (edgeBN + tmp_2)->d
+  (pointing to __calloc_can_fail_calloc_l18_1 with offsets {32; 96}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:421}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:417: 
+  Assigning imprecise value to *(stationBN + tmp_1)
+  (pointing to __calloc_can_fail_calloc_l18_0 with offsets {0; 32; 64}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:417}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:421: 
+  Assigning imprecise value to (edgeBN + tmp_2)->d
+  (pointing to __calloc_can_fail_calloc_l18_1 with offsets {32; 96; 160}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:421}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:417: 
+  signed overflow. assert si + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:417: 
+  Assigning imprecise value to *(stationBN + tmp_1)
+  (pointing to __calloc_can_fail_calloc_l18_0 with offsets [0..68719476704],0%32).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:417}
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:420: 
+  more than 200(2147483648) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:421: 
+  signed overflow. assert se + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:421: 
+  Assigning imprecise value to (edgeBN + tmp_2)->d
+  (pointing to __calloc_can_fail_calloc_l18_1 with offsets [32..137438953440],32%64).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:421}
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:421: 
+  more than 200(2147483648) locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:411: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:411: 
+  signed overflow. assert i + 1 ≤ 2147483647;
+[eva] using specification for function qsort
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:374: 
+  out of bounds read. assert \valid_read(edges + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:374: 
+  Assigning imprecise value to key.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:421}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:376: 
+  out of bounds read. assert \valid_read(&(edges + j)->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:377: 
+  out of bounds write. assert \valid(edges + (int)(j + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:377: 
+  out of bounds read. assert \valid_read(edges + j);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:377: 
+  Assigning imprecise value to *(edges + (j + 1))
+  (pointing to __calloc_can_fail_calloc_l18_1 with offsets {64}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:421}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:376: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:380: 
+  out of bounds write. assert \valid(edges + (int)(j + 1));
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:380: 
+  Assigning imprecise value to *(edges + (j + 1))
+  (pointing to __calloc_can_fail_calloc_l18_1 with offsets {0; 64}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:421}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:373: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:377: 
+  Assigning imprecise value to *(edges + (j + 1))
+  (pointing to __calloc_can_fail_calloc_l18_1 with offsets {64; 128}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:421}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:380: 
+  Assigning imprecise value to *(edges + (j + 1))
+  (pointing to __calloc_can_fail_calloc_l18_1 with offsets {0; 64; 128}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:421}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:377: 
+  Assigning imprecise value to *(edges + (j + 1))
+  (pointing to __calloc_can_fail_calloc_l18_1 with offsets {64; 128; 192}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:421}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:380: 
+  Assigning imprecise value to *(edges + (j + 1))
+  (pointing to __calloc_can_fail_calloc_l18_1 with offsets {0; 64; 128; 192}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:421}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:377: 
+  Assigning imprecise value to *(edges + (j + 1))
+  (pointing to __calloc_can_fail_calloc_l18_1 with offsets [64..137438953344],0%64).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:421}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:380: 
+  Assigning imprecise value to *(edges + (j + 1))
+  (pointing to __calloc_can_fail_calloc_l18_1 with offsets [0..137438953344],0%64).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:421}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:383: 
+  out of bounds read. assert \valid_read(edges + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:383: 
+  Assigning imprecise value to key.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:421}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:385: 
+  out of bounds read. assert \valid_read(&(edges + j)->o);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:386: 
+  out of bounds write. assert \valid(edges + (int)(j + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:386: 
+  out of bounds read. assert \valid_read(edges + j);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:386: 
+  Assigning imprecise value to *(edges + (j + 1))
+  (pointing to __calloc_can_fail_calloc_l18_1 with offsets {64}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:421}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:385: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:389: 
+  out of bounds write. assert \valid(edges + (int)(j + 1));
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:389: 
+  Assigning imprecise value to *(edges + (j + 1))
+  (pointing to __calloc_can_fail_calloc_l18_1 with offsets {0; 64}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:421}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:382: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:386: 
+  Assigning imprecise value to *(edges + (j + 1))
+  (pointing to __calloc_can_fail_calloc_l18_1 with offsets {64; 128}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:421}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:389: 
+  Assigning imprecise value to *(edges + (j + 1))
+  (pointing to __calloc_can_fail_calloc_l18_1 with offsets {0; 64; 128}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:421}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:386: 
+  Assigning imprecise value to *(edges + (j + 1))
+  (pointing to __calloc_can_fail_calloc_l18_1 with offsets {64; 128; 192}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:421}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:389: 
+  Assigning imprecise value to *(edges + (j + 1))
+  (pointing to __calloc_can_fail_calloc_l18_1 with offsets {0; 64; 128; 192}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:421}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:386: 
+  Assigning imprecise value to *(edges + (j + 1))
+  (pointing to __calloc_can_fail_calloc_l18_1 with offsets [64..137438953344],0%64).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:421}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:389: 
+  Assigning imprecise value to *(edges + (j + 1))
+  (pointing to __calloc_can_fail_calloc_l18_1 with offsets [0..137438953344],0%64).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:421}
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:376: 
+  more than 200(2147483646) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:385: 
+  more than 200(2147483646) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:435: 
+  out of bounds read. assert \valid_read(stationBN + i);
+[eva] using specification for function printf_va_5
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:431: 
+  starting to merge loop iterations
+[eva] using specification for function printf_va_4
+[eva] using specification for function printf_va_6
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:439: 
+  out of bounds read. assert \valid_read(&(edgeBN + i)->o);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:440: 
+  out of bounds read. assert \valid_read(&(edgeBN + i)->o);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:440: 
+  signed overflow. assert -2147483648 ≤ (edgeBN + i)->o - graph->nStations;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:440: 
+  signed overflow. assert (edgeBN + i)->o - graph->nStations ≤ 2147483647;
+[eva] using specification for function printf_va_7
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:443: 
+  out of bounds read. assert \valid_read(&(edgeBN + i)->o);
+[eva] using specification for function printf_va_8
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:445: 
+  out of bounds read. assert \valid_read(&(edgeBN + i)->d);
+[eva] using specification for function printf_va_9
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:438: 
+  starting to merge loop iterations
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:440: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:445: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:420: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:421: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[eva] done for function main
+[scope:rm_asserts] removing 11 assertion(s)
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function dfsFF:
+  adjList ∈ {{ (adjList *)&__malloc_can_fail_malloc_l11_0 }}
+  vertex ∈ {0}
+  flow ∈ {2147483647}
+  visited ∈ {{ &__malloc_fordFulkerson_l333[0] }}
+  time_0 ∈ {1}
+  dfsFlow ∈ {0}
+  nodep ∈ {0}
+  __retres ∈ {0}
+  __malloc_fordFulkerson_l333[0] ∈ {1}
+                             [1..4611686018427387902] ∈ UNINITIALIZED
+[eva:final-states] Values at end of function pairInsertSort:
+  i ∈ [1..2147483647]
+  j ∈ [-1..2147483645] or UNINITIALIZED
+  key ∈
+     {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_3;
+                         __malloc_w_can_fail_malloc_l11_5;
+                         __malloc_w_can_fail_malloc_l11_7;
+                         __malloc_w_can_fail_malloc_l11_9;
+                         __malloc_w_can_fail_malloc_l11_11;
+                         __malloc_w_can_fail_malloc_l11_13;
+                         __malloc_w_can_fail_malloc_l11_15;
+                         __malloc_w_can_fail_malloc_l11_17}
+      (origin: Misaligned
+      {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:421}) }} or UNINITIALIZED
+  __calloc_can_fail_calloc_l18_1[0..17179869183] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_3;
+                                                    __malloc_w_can_fail_malloc_l11_5;
+                                                    __malloc_w_can_fail_malloc_l11_7;
+                                                    __malloc_w_can_fail_malloc_l11_9;
+                                                    __malloc_w_can_fail_malloc_l11_11;
+                                                    __malloc_w_can_fail_malloc_l11_13;
+                                                    __malloc_w_can_fail_malloc_l11_15;
+                                                    __malloc_w_can_fail_malloc_l11_17}
+                                 (origin: Misaligned
+                                 {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:421}) }}
+                                [17179869184..18446744073709551615] ∈ {0}
+[eva:final-states] Values at end of function can_fail_calloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈
+          {{ NULL ; (void *)&__calloc_can_fail_calloc_l18 ;
+             (void *)&__calloc_can_fail_calloc_l18_0 ;
+             (void *)&__calloc_can_fail_calloc_l18_1 }}
+[eva:final-states] Values at end of function can_fail_malloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈
+          {{ NULL ; (void *)&__malloc_can_fail_malloc_l11 ;
+             (void *)&__malloc_can_fail_malloc_l11_0 ;
+             (void *)&__malloc_can_fail_malloc_l11_1 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_2 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_3 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_4 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_5 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_6 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_7 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_8 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_9 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_10 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_11 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_12 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_13 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_14 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_15 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_16 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_17 ;
+             (void *)&__malloc_can_fail_malloc_l11_18 }}
+[eva:final-states] Values at end of function createAdjList:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  i ∈ [0..2147483647]
+  newAdjList ∈ {{ (adjList *)&__malloc_can_fail_malloc_l11_0 }}
+  __malloc_can_fail_malloc_l11_0[bits 0 to 31] ∈ [-2147483646..2147483647]
+                                [4..7] ∈ UNINITIALIZED
+                                [bits 64 to 127] ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_can_fail_malloc_l11_1 }}
+  __malloc_can_fail_malloc_l11_1[0..17179869175] ∈ {0} or UNINITIALIZED
+                                [17179869176..18446744073709551607] ∈
+                                UNINITIALIZED
+[eva:final-states] Values at end of function createEdge:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  newEdge ∈
+         {{ (edge *)&__malloc_w_can_fail_malloc_l11_3 ;
+            (edge *)&__malloc_w_can_fail_malloc_l11_5 ;
+            (edge *)&__malloc_w_can_fail_malloc_l11_7 ;
+            (edge *)&__malloc_w_can_fail_malloc_l11_9 ;
+            (edge *)&__malloc_w_can_fail_malloc_l11_11 ;
+            (edge *)&__malloc_w_can_fail_malloc_l11_13 ;
+            (edge *)&__malloc_w_can_fail_malloc_l11_15 ;
+            (edge *)&__malloc_w_can_fail_malloc_l11_17 }}
+  __malloc_w_can_fail_malloc_l11_3[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_5 }} or UNINITIALIZED
+                                  [bits 64 to 95] ∈
+                                  [2..2147483647] or UNINITIALIZED
+                                  [12..19] ∈ [--..--] or UNINITIALIZED
+                                  [20..23] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_5[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_3 }} or UNINITIALIZED
+                                  [8..19] ∈ {0} or UNINITIALIZED
+                                  [20..23] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_7[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_9 }} or UNINITIALIZED
+                                  [8..19] ∈ [--..--] or UNINITIALIZED
+                                  [20..23] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_9[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_7 }} or UNINITIALIZED
+                                  [bits 64 to 95] ∈
+                                  [0..2147483647] or UNINITIALIZED
+                                  [12..19] ∈ {0} or UNINITIALIZED
+                                  [20..23] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_11[bits 0 to 63] ∈
+                                   {{ (? *)&__malloc_w_can_fail_malloc_l11_13 }} or UNINITIALIZED
+                                   [8..19] ∈ [--..--] or UNINITIALIZED
+                                   [20..23] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_13[bits 0 to 63] ∈
+                                   {{ (? *)&__malloc_w_can_fail_malloc_l11_11 }} or UNINITIALIZED
+                                   [8..11] ∈ [--..--] or UNINITIALIZED
+                                   [12..19] ∈ {0} or UNINITIALIZED
+                                   [20..23] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_15[bits 0 to 63] ∈
+                                   {{ (? *)&__malloc_w_can_fail_malloc_l11_17 }} or UNINITIALIZED
+                                   [8..19] ∈ [--..--] or UNINITIALIZED
+                                   [20..23] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_17[bits 0 to 63] ∈
+                                   {{ (? *)&__malloc_w_can_fail_malloc_l11_15 }} or UNINITIALIZED
+                                   [bits 64 to 95] ∈
+                                   [0..2147483646] or UNINITIALIZED
+                                   [12..19] ∈ {0} or UNINITIALIZED
+                                   [20..23] ∈ UNINITIALIZED
+[eva:final-states] Values at end of function createGraph:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  newGraph ∈ {{ (graph *)&__malloc_can_fail_malloc_l11 }}
+  __malloc_can_fail_malloc_l11[0..7] ∈ [--..--]
+                              [bits 64 to 95] ∈ [-2147483646..2147483647]
+                              [12..15] ∈ [--..--]
+                              [16..23] ∈ UNINITIALIZED
+[eva:final-states] Values at end of function createNode:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  newNode ∈
+         {{ (node *)&__malloc_w_can_fail_malloc_l11_2 ;
+            (node *)&__malloc_w_can_fail_malloc_l11_4 ;
+            (node *)&__malloc_w_can_fail_malloc_l11_6 ;
+            (node *)&__malloc_w_can_fail_malloc_l11_8 ;
+            (node *)&__malloc_w_can_fail_malloc_l11_10 ;
+            (node *)&__malloc_w_can_fail_malloc_l11_12 ;
+            (node *)&__malloc_w_can_fail_malloc_l11_14 ;
+            (node *)&__malloc_w_can_fail_malloc_l11_16 }}
+  newEdge ∈
+         {{ (edge *)&__malloc_w_can_fail_malloc_l11_3 ;
+            (edge *)&__malloc_w_can_fail_malloc_l11_5 ;
+            (edge *)&__malloc_w_can_fail_malloc_l11_7 ;
+            (edge *)&__malloc_w_can_fail_malloc_l11_9 ;
+            (edge *)&__malloc_w_can_fail_malloc_l11_11 ;
+            (edge *)&__malloc_w_can_fail_malloc_l11_13 ;
+            (edge *)&__malloc_w_can_fail_malloc_l11_15 ;
+            (edge *)&__malloc_w_can_fail_malloc_l11_17 }}
+  __malloc_w_can_fail_malloc_l11_2[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_3 }} or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_3[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_5 }} or UNINITIALIZED
+                                  [bits 64 to 95] ∈
+                                  [2..2147483647] or UNINITIALIZED
+                                  [12..19] ∈ [--..--] or UNINITIALIZED
+                                  [20..23] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_4[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_5 }} or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_5[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_3 }} or UNINITIALIZED
+                                  [8..19] ∈ {0} or UNINITIALIZED
+                                  [20..23] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_6[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_7 }} or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_2 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_6 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_8 }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_7[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_9 }} or UNINITIALIZED
+                                  [8..19] ∈ [--..--] or UNINITIALIZED
+                                  [20..23] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_8[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_9 }} or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_2 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_6 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_8 }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_9[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_7 }} or UNINITIALIZED
+                                  [bits 64 to 95] ∈
+                                  [0..2147483647] or UNINITIALIZED
+                                  [12..19] ∈ {0} or UNINITIALIZED
+                                  [20..23] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_10[bits 0 to 63] ∈
+                                   {{ (? *)&__malloc_w_can_fail_malloc_l11_11 }} or UNINITIALIZED
+                                   [bits 64 to 127] ∈
+                                   {{ NULL ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_2 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_4 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_6 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_8 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_10 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_12 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_14 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_16 }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_11[bits 0 to 63] ∈
+                                   {{ (? *)&__malloc_w_can_fail_malloc_l11_13 }} or UNINITIALIZED
+                                   [8..19] ∈ [--..--] or UNINITIALIZED
+                                   [20..23] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_12[bits 0 to 63] ∈
+                                   {{ (? *)&__malloc_w_can_fail_malloc_l11_13 }} or UNINITIALIZED
+                                   [bits 64 to 127] ∈
+                                   {{ NULL ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_2 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_4 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_6 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_8 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_10 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_12 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_14 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_16 }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_13[bits 0 to 63] ∈
+                                   {{ (? *)&__malloc_w_can_fail_malloc_l11_11 }} or UNINITIALIZED
+                                   [8..11] ∈ [--..--] or UNINITIALIZED
+                                   [12..19] ∈ {0} or UNINITIALIZED
+                                   [20..23] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_14[bits 0 to 63] ∈
+                                   {{ (? *)&__malloc_w_can_fail_malloc_l11_15 }} or UNINITIALIZED
+                                   [bits 64 to 127] ∈
+                                   {{ NULL ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_2 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_4 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_6 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_8 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_10 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_12 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_14 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_16 }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_15[bits 0 to 63] ∈
+                                   {{ (? *)&__malloc_w_can_fail_malloc_l11_17 }} or UNINITIALIZED
+                                   [8..19] ∈ [--..--] or UNINITIALIZED
+                                   [20..23] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_16[bits 0 to 63] ∈
+                                   {{ (? *)&__malloc_w_can_fail_malloc_l11_17 }} or UNINITIALIZED
+                                   [bits 64 to 127] ∈
+                                   {{ NULL ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_2 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_4 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_6 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_8 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_10 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_12 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_14 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_16 }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_17[bits 0 to 63] ∈
+                                   {{ (? *)&__malloc_w_can_fail_malloc_l11_15 }} or UNINITIALIZED
+                                   [bits 64 to 95] ∈
+                                   [0..2147483646] or UNINITIALIZED
+                                   [12..19] ∈ {0} or UNINITIALIZED
+                                   [20..23] ∈ UNINITIALIZED
+[eva:final-states] Values at end of function addEdge:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  newNode ∈
+         {{ (node *)&__malloc_w_can_fail_malloc_l11_2 ;
+            (node *)&__malloc_w_can_fail_malloc_l11_4 ;
+            (node *)&__malloc_w_can_fail_malloc_l11_6 ;
+            (node *)&__malloc_w_can_fail_malloc_l11_8 ;
+            (node *)&__malloc_w_can_fail_malloc_l11_10 ;
+            (node *)&__malloc_w_can_fail_malloc_l11_12 ;
+            (node *)&__malloc_w_can_fail_malloc_l11_14 ;
+            (node *)&__malloc_w_can_fail_malloc_l11_16 }}
+  __retres ∈
+          {{ (edge *)&__malloc_w_can_fail_malloc_l11_3 ;
+             (edge *)&__malloc_w_can_fail_malloc_l11_5 ;
+             (edge *)&__malloc_w_can_fail_malloc_l11_7 ;
+             (edge *)&__malloc_w_can_fail_malloc_l11_9 ;
+             (edge *)&__malloc_w_can_fail_malloc_l11_11 ;
+             (edge *)&__malloc_w_can_fail_malloc_l11_13 ;
+             (edge *)&__malloc_w_can_fail_malloc_l11_15 ;
+             (edge *)&__malloc_w_can_fail_malloc_l11_17 }}
+  __malloc_can_fail_malloc_l11_1[bits 0 to 63] ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_2 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_6 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_8 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_10 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_12 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_14 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_16 }} or UNINITIALIZED
+                                [bits 64 to 127] ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_6 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_8 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_10 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_12 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_14 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_16 }} or UNINITIALIZED
+                                [bits 128 to 137438953407]# ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_4 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_6 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_8 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_10 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_12 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_14 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_16 }} or UNINITIALIZED repeated %64 
+                                [bits 137438953408 to 137438953471] ∈
+                                {{ (? *)&__malloc_w_can_fail_malloc_l11_4 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_6 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_8 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_10 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_12 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_16 }} or UNINITIALIZED
+                                [17179869184..18446744073709551607] ∈
+                                UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_2[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_3 }} or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_3[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_5 }} or UNINITIALIZED
+                                  [bits 64 to 95] ∈
+                                  [2..2147483647] or UNINITIALIZED
+                                  [12..19] ∈ [--..--] or UNINITIALIZED
+                                  [20..23] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_4[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_5 }} or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_5[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_3 }} or UNINITIALIZED
+                                  [8..19] ∈ {0} or UNINITIALIZED
+                                  [20..23] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_6[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_7 }} or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_2 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_6 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_8 }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_7[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_9 }} or UNINITIALIZED
+                                  [8..19] ∈ [--..--] or UNINITIALIZED
+                                  [20..23] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_8[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_9 }} or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_2 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_6 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_8 }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_9[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_7 }} or UNINITIALIZED
+                                  [bits 64 to 95] ∈
+                                  [0..2147483647] or UNINITIALIZED
+                                  [12..19] ∈ {0} or UNINITIALIZED
+                                  [20..23] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_10[bits 0 to 63] ∈
+                                   {{ (? *)&__malloc_w_can_fail_malloc_l11_11 }} or UNINITIALIZED
+                                   [bits 64 to 127] ∈
+                                   {{ NULL ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_2 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_4 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_6 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_8 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_10 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_12 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_14 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_16 }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_11[bits 0 to 63] ∈
+                                   {{ (? *)&__malloc_w_can_fail_malloc_l11_13 }} or UNINITIALIZED
+                                   [8..19] ∈ [--..--] or UNINITIALIZED
+                                   [20..23] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_12[bits 0 to 63] ∈
+                                   {{ (? *)&__malloc_w_can_fail_malloc_l11_13 }} or UNINITIALIZED
+                                   [bits 64 to 127] ∈
+                                   {{ NULL ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_2 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_4 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_6 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_8 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_10 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_12 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_14 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_16 }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_13[bits 0 to 63] ∈
+                                   {{ (? *)&__malloc_w_can_fail_malloc_l11_11 }} or UNINITIALIZED
+                                   [8..11] ∈ [--..--] or UNINITIALIZED
+                                   [12..19] ∈ {0} or UNINITIALIZED
+                                   [20..23] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_14[bits 0 to 63] ∈
+                                   {{ (? *)&__malloc_w_can_fail_malloc_l11_15 }} or UNINITIALIZED
+                                   [bits 64 to 127] ∈
+                                   {{ NULL ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_2 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_4 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_6 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_8 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_10 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_12 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_14 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_16 }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_15[bits 0 to 63] ∈
+                                   {{ (? *)&__malloc_w_can_fail_malloc_l11_17 }} or UNINITIALIZED
+                                   [8..19] ∈ [--..--] or UNINITIALIZED
+                                   [20..23] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_16[bits 0 to 63] ∈
+                                   {{ (? *)&__malloc_w_can_fail_malloc_l11_17 }} or UNINITIALIZED
+                                   [bits 64 to 127] ∈
+                                   {{ NULL ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_2 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_4 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_6 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_8 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_10 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_12 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_14 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_16 }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_17[bits 0 to 63] ∈
+                                   {{ (? *)&__malloc_w_can_fail_malloc_l11_15 }} or UNINITIALIZED
+                                   [bits 64 to 95] ∈
+                                   [0..2147483646] or UNINITIALIZED
+                                   [12..19] ∈ {0} or UNINITIALIZED
+                                   [20..23] ∈ UNINITIALIZED
+[eva:final-states] Values at end of function parseInput:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  f ∈ [-2147483646..2147483647]
+  e ∈ [--..--]
+  t ∈ [--..--]
+  i ∈ [0..2147483647]
+  k ∈ [--..--] or UNINITIALIZED
+  o ∈ [-2147483646..2147483647] or UNINITIALIZED
+  d ∈ [0..2147483647] or UNINITIALIZED
+  el ∈ [-2147483648..2147483646]
+  graph ∈ {{ (graph *)&__malloc_can_fail_malloc_l11 }}
+  adjList ∈ {{ (adjList *)&__malloc_can_fail_malloc_l11_0 }}
+  e1 ∈
+    {{ (edge *)&__malloc_w_can_fail_malloc_l11_3 ;
+       (edge *)&__malloc_w_can_fail_malloc_l11_7 ;
+       (edge *)&__malloc_w_can_fail_malloc_l11_11 ;
+       (edge *)&__malloc_w_can_fail_malloc_l11_15 }} or UNINITIALIZED
+  e2 ∈
+    {{ (edge *)&__malloc_w_can_fail_malloc_l11_5 ;
+       (edge *)&__malloc_w_can_fail_malloc_l11_9 ;
+       (edge *)&__malloc_w_can_fail_malloc_l11_13 ;
+       (edge *)&__malloc_w_can_fail_malloc_l11_17 }} or UNINITIALIZED
+  S___fc_stdin[0..1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11[0..7] ∈ [--..--]
+                              [bits 64 to 95] ∈ [-2147483646..2147483647]
+                              [12..15] ∈ [--..--]
+                              [bits 128 to 191] ∈
+                              {{ (? *)&__malloc_can_fail_malloc_l11_0 }}
+  __malloc_can_fail_malloc_l11_0[bits 0 to 31] ∈ [-2147483646..2147483647]
+                                [4..7] ∈ UNINITIALIZED
+                                [bits 64 to 127] ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_can_fail_malloc_l11_1 }}
+  __malloc_can_fail_malloc_l11_1[bits 0 to 63] ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_2 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_6 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_8 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_10 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_12 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_14 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_16 }} or UNINITIALIZED
+                                [bits 64 to 127] ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_6 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_8 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_10 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_12 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_14 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_16 }} or UNINITIALIZED
+                                [bits 128 to 137438953407]# ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_4 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_6 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_8 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_10 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_12 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_14 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_16 }} or UNINITIALIZED repeated %64 
+                                [bits 137438953408 to 137438953471] ∈
+                                {{ (? *)&__malloc_w_can_fail_malloc_l11_4 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_6 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_8 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_10 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_12 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_16 }} or UNINITIALIZED
+                                [17179869184..18446744073709551607] ∈
+                                UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_2[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_3 }} or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_3[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_5 }} or UNINITIALIZED
+                                  [bits 64 to 95] ∈
+                                  [2..2147483647] or UNINITIALIZED
+                                  [12..19] ∈ [--..--] or UNINITIALIZED
+                                  [20..23] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_4[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_5 }} or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_5[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_3 }} or UNINITIALIZED
+                                  [8..19] ∈ {0} or UNINITIALIZED
+                                  [20..23] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_6[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_7 }} or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_2 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_6 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_8 }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_7[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_9 }} or UNINITIALIZED
+                                  [8..19] ∈ [--..--] or UNINITIALIZED
+                                  [20..23] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_8[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_9 }} or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_2 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_6 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_8 }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_9[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_7 }} or UNINITIALIZED
+                                  [bits 64 to 95] ∈
+                                  [0..2147483647] or UNINITIALIZED
+                                  [12..19] ∈ {0} or UNINITIALIZED
+                                  [20..23] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_10[bits 0 to 63] ∈
+                                   {{ (? *)&__malloc_w_can_fail_malloc_l11_11 }} or UNINITIALIZED
+                                   [bits 64 to 127] ∈
+                                   {{ NULL ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_2 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_4 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_6 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_8 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_10 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_12 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_14 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_16 }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_11[bits 0 to 63] ∈
+                                   {{ (? *)&__malloc_w_can_fail_malloc_l11_13 }} or UNINITIALIZED
+                                   [8..19] ∈ [--..--] or UNINITIALIZED
+                                   [20..23] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_12[bits 0 to 63] ∈
+                                   {{ (? *)&__malloc_w_can_fail_malloc_l11_13 }} or UNINITIALIZED
+                                   [bits 64 to 127] ∈
+                                   {{ NULL ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_2 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_4 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_6 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_8 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_10 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_12 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_14 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_16 }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_13[bits 0 to 63] ∈
+                                   {{ (? *)&__malloc_w_can_fail_malloc_l11_11 }} or UNINITIALIZED
+                                   [8..11] ∈ [--..--] or UNINITIALIZED
+                                   [12..19] ∈ {0} or UNINITIALIZED
+                                   [20..23] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_14[bits 0 to 63] ∈
+                                   {{ (? *)&__malloc_w_can_fail_malloc_l11_15 }} or UNINITIALIZED
+                                   [bits 64 to 127] ∈
+                                   {{ NULL ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_2 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_4 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_6 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_8 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_10 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_12 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_14 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_16 }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_15[bits 0 to 63] ∈
+                                   {{ (? *)&__malloc_w_can_fail_malloc_l11_17 }} or UNINITIALIZED
+                                   [8..19] ∈ [--..--] or UNINITIALIZED
+                                   [20..23] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_16[bits 0 to 63] ∈
+                                   {{ (? *)&__malloc_w_can_fail_malloc_l11_17 }} or UNINITIALIZED
+                                   [bits 64 to 127] ∈
+                                   {{ NULL ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_2 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_4 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_6 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_8 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_10 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_12 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_14 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_16 }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_17[bits 0 to 63] ∈
+                                   {{ (? *)&__malloc_w_can_fail_malloc_l11_15 }} or UNINITIALIZED
+                                   [bits 64 to 95] ∈
+                                   [0..2147483646] or UNINITIALIZED
+                                   [12..19] ∈ {0} or UNINITIALIZED
+                                   [20..23] ∈ UNINITIALIZED
+[eva:final-states] Values at end of function minCutDFS:
+  nodep ∈ {0}
+  __malloc_can_fail_malloc_l11_0[0..3] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_1}
+                                 (origin: Misaligned) }}
+                                [4..7] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_1}
+                                 (origin: Misaligned) }} or UNINITIALIZED
+                                [8..15] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_1}
+                                 (origin: Misaligned) }}
+  __calloc_can_fail_calloc_l18[0..3] ∈
+                              {{ garbled mix of &{__malloc_can_fail_malloc_l11_1}
+                               (origin: Misaligned) }}
+                              [bits 32 to 63] ∈ {1}
+                              [8..18446744073709551615] ∈ {0}
+[eva:final-states] Values at end of function fordFulkerson:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  data ∈ {{ (dfsData *)&__malloc_can_fail_malloc_l11_18 }}
+  flow ∈ {0}
+  maxFlow ∈ {0}
+  time_0 ∈ {2}
+  visited ∈ ESCAPINGADDR
+  __lengthof_visited ∈ [--..--]
+  minCut ∈ {{ (int *)&__calloc_can_fail_calloc_l18 }}
+  S___fc_stdout[0..1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11_0[0..3] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_1}
+                                 (origin: Misaligned) }}
+                                [4..7] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_1}
+                                 (origin: Misaligned) }} or UNINITIALIZED
+                                [8..15] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_1}
+                                 (origin: Misaligned) }}
+  __malloc_can_fail_malloc_l11_18[bits 0 to 63] ∈
+                                 {{ (? *)&__malloc_can_fail_malloc_l11_0 }}
+                                 [8..11] ∈ {0}
+                                 [bits 96 to 127] ∈ {2147483647}
+                                 [16..23] ∈ ESCAPINGADDR
+                                 [bits 192 to 223] ∈ {1}
+                                 [28..31] ∈ UNINITIALIZED
+  __calloc_can_fail_calloc_l18[0..3] ∈
+                              {{ garbled mix of &{__malloc_can_fail_malloc_l11_1}
+                               (origin: Misaligned) }}
+                              [bits 32 to 63] ∈ {1}
+                              [8..18446744073709551615] ∈ {0}
+[eva:final-states] Values at end of function main:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  i ∈ [0..2147483647]
+  stationStart ∈ [-2147483647..2147483647]
+  si ∈ [0..2147483647]
+  se ∈ [0..2147483647]
+  stationBN ∈ {{ NULL ; (int *)&__calloc_can_fail_calloc_l18_0 }}
+  edgeBN ∈ {{ NULL ; (pair *)&__calloc_can_fail_calloc_l18_1 }}
+  adjList ∈ {{ (adjList *)&__malloc_can_fail_malloc_l11_0 }}
+  graph ∈ {{ (graph *)&__malloc_can_fail_malloc_l11 }}
+  minCut ∈ {{ (int *)&__calloc_can_fail_calloc_l18 }}
+  __retres ∈ {0}
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_3;
+                                   __malloc_w_can_fail_malloc_l11_5;
+                                   __malloc_w_can_fail_malloc_l11_7;
+                                   __malloc_w_can_fail_malloc_l11_9;
+                                   __malloc_w_can_fail_malloc_l11_11;
+                                   __malloc_w_can_fail_malloc_l11_13;
+                                   __malloc_w_can_fail_malloc_l11_15;
+                                   __malloc_w_can_fail_malloc_l11_17}
+                (origin: Misaligned) }}
+               [1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11[0..7] ∈ [--..--]
+                              [bits 64 to 95] ∈ [-2147483646..2147483647]
+                              [12..15] ∈ [--..--]
+                              [bits 128 to 191] ∈
+                              {{ (? *)&__malloc_can_fail_malloc_l11_0 }}
+  __malloc_can_fail_malloc_l11_0[0..3] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_1}
+                                 (origin: Misaligned) }}
+                                [4..7] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_1}
+                                 (origin: Misaligned) }} or UNINITIALIZED
+                                [8..15] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_1}
+                                 (origin: Misaligned) }}
+  __malloc_can_fail_malloc_l11_1[bits 0 to 63] ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_2 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_6 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_8 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_10 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_12 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_14 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_16 }}
+                                [bits 64 to 127] ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_6 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_8 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_10 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_12 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_14 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_16 }}
+                                [bits 128 to 137438953407]# ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_4 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_6 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_8 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_10 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_12 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_14 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_16 }} or UNINITIALIZED repeated %64 
+                                [bits 137438953408 to 137438953471] ∈
+                                {{ (? *)&__malloc_w_can_fail_malloc_l11_4 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_6 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_8 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_10 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_12 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_16 }} or UNINITIALIZED
+                                [17179869184..18446744073709551607] ∈
+                                UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_2[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_3 }} or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_3[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_5 }} or UNINITIALIZED
+                                  [bits 64 to 95] ∈
+                                  [2..2147483647] or UNINITIALIZED
+                                  [12..19] ∈ [--..--] or UNINITIALIZED
+                                  [20..23] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_4[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_5 }} or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_5[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_3 }} or UNINITIALIZED
+                                  [8..19] ∈ {0} or UNINITIALIZED
+                                  [20..23] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_6[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_7 }} or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_2 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_6 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_8 }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_7[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_9 }} or UNINITIALIZED
+                                  [8..19] ∈ [--..--] or UNINITIALIZED
+                                  [20..23] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_8[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_9 }} or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_2 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_6 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_8 }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_9[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_7 }} or UNINITIALIZED
+                                  [bits 64 to 95] ∈
+                                  [0..2147483647] or UNINITIALIZED
+                                  [12..19] ∈ {0} or UNINITIALIZED
+                                  [20..23] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_10[bits 0 to 63] ∈
+                                   {{ (? *)&__malloc_w_can_fail_malloc_l11_11 }} or UNINITIALIZED
+                                   [bits 64 to 127] ∈
+                                   {{ NULL ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_2 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_4 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_6 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_8 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_10 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_12 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_14 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_16 }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_11[bits 0 to 63] ∈
+                                   {{ (? *)&__malloc_w_can_fail_malloc_l11_13 }} or UNINITIALIZED
+                                   [8..19] ∈ [--..--] or UNINITIALIZED
+                                   [20..23] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_12[bits 0 to 63] ∈
+                                   {{ (? *)&__malloc_w_can_fail_malloc_l11_13 }} or UNINITIALIZED
+                                   [bits 64 to 127] ∈
+                                   {{ NULL ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_2 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_4 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_6 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_8 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_10 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_12 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_14 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_16 }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_13[bits 0 to 63] ∈
+                                   {{ (? *)&__malloc_w_can_fail_malloc_l11_11 }} or UNINITIALIZED
+                                   [8..11] ∈ [--..--] or UNINITIALIZED
+                                   [12..19] ∈ {0} or UNINITIALIZED
+                                   [20..23] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_14[bits 0 to 63] ∈
+                                   {{ (? *)&__malloc_w_can_fail_malloc_l11_15 }} or UNINITIALIZED
+                                   [bits 64 to 127] ∈
+                                   {{ NULL ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_2 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_4 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_6 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_8 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_10 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_12 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_14 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_16 }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_15[bits 0 to 63] ∈
+                                   {{ (? *)&__malloc_w_can_fail_malloc_l11_17 }} or UNINITIALIZED
+                                   [8..19] ∈ [--..--] or UNINITIALIZED
+                                   [20..23] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_16[bits 0 to 63] ∈
+                                   {{ (? *)&__malloc_w_can_fail_malloc_l11_17 }} or UNINITIALIZED
+                                   [bits 64 to 127] ∈
+                                   {{ NULL ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_2 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_4 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_6 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_8 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_10 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_12 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_14 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_16 }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_17[bits 0 to 63] ∈
+                                   {{ (? *)&__malloc_w_can_fail_malloc_l11_15 }} or UNINITIALIZED
+                                   [bits 64 to 95] ∈
+                                   [0..2147483646] or UNINITIALIZED
+                                   [12..19] ∈ {0} or UNINITIALIZED
+                                   [20..23] ∈ UNINITIALIZED
+  __malloc_can_fail_malloc_l11_18[bits 0 to 63] ∈
+                                 {{ (? *)&__malloc_can_fail_malloc_l11_0 }}
+                                 [8..11] ∈ {0}
+                                 [bits 96 to 127] ∈ {2147483647}
+                                 [16..23] ∈ ESCAPINGADDR
+                                 [bits 192 to 223] ∈ {1}
+                                 [28..31] ∈ UNINITIALIZED
+  __calloc_can_fail_calloc_l18[0..3] ∈
+                              {{ garbled mix of &{__malloc_can_fail_malloc_l11_1}
+                               (origin: Misaligned) }}
+                              [bits 32 to 63] ∈ {1}
+                              [8..18446744073709551615] ∈ {0}
+  __calloc_can_fail_calloc_l18_0[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_3;
+                                                    __malloc_w_can_fail_malloc_l11_5;
+                                                    __malloc_w_can_fail_malloc_l11_7;
+                                                    __malloc_w_can_fail_malloc_l11_9;
+                                                    __malloc_w_can_fail_malloc_l11_11;
+                                                    __malloc_w_can_fail_malloc_l11_13;
+                                                    __malloc_w_can_fail_malloc_l11_15;
+                                                    __malloc_w_can_fail_malloc_l11_17}
+                                 (origin: Misaligned
+                                 {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:417}) }}
+  __calloc_can_fail_calloc_l18_1[0..17179869183] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_3;
+                                                    __malloc_w_can_fail_malloc_l11_5;
+                                                    __malloc_w_can_fail_malloc_l11_7;
+                                                    __malloc_w_can_fail_malloc_l11_9;
+                                                    __malloc_w_can_fail_malloc_l11_11;
+                                                    __malloc_w_can_fail_malloc_l11_13;
+                                                    __malloc_w_can_fail_malloc_l11_15;
+                                                    __malloc_w_can_fail_malloc_l11_17}
+                                 (origin: Misaligned
+                                 {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg051/main.c:421}) }}
+                                [17179869184..18446744073709551615] ∈ {0}
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  13 functions analyzed (out of 16): 81% coverage.
+  In these functions, 249 statements reached (out of 265): 93% coverage.
+  ----------------------------------------------------------------------------
+  Some errors and warnings have been raised during the analysis:
+    by the Eva analyzer:      1 error    0 warnings
+    by the Frama-C kernel:    0 errors    0 warnings
+  ----------------------------------------------------------------------------
+  97 alarms generated by the analysis:
+      39 invalid memory accesses
+      31 integer overflows
+      26 accesses to uninitialized left-values
+       1 other
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     1 unknown     0 invalid      1 total
+    Preconditions    22 valid     0 unknown     0 invalid     22 total
+  95% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[eva] User Error: Deferred error message was emitted during execution. See above messages for more information.
+[kernel] Plug-in eva aborted: invalid user input.

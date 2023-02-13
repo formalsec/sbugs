@@ -1,0 +1,211 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/iaed_p2/138/altera_hash_ou_fila.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/iaed_p2/138/funcoes_aux.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/iaed_p2/138/main.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:typing:no-proto] /home/fmarques/sbugs/projects/alunos/iaed_p2/138/main.c:358: 
+  Calling function faz_fila that is declared without prototype.
+  Its formals will be inferred from actual arguments
+[kernel] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:7: 
+  dropping duplicate def'n of func can_fail_malloc at /home/fmarques/sbugs/projects/alunos/lib/allocators.h:7 in favor of that at /home/fmarques/sbugs/projects/alunos/lib/allocators.h:7
+[kernel] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:14: 
+  dropping duplicate def'n of func can_fail_calloc at /home/fmarques/sbugs/projects/alunos/lib/allocators.h:14 in favor of that at /home/fmarques/sbugs/projects/alunos/lib/allocators.h:14
+[kernel] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:21: 
+  dropping duplicate def'n of func can_fail_realloc at /home/fmarques/sbugs/projects/alunos/lib/allocators.h:21 in favor of that at /home/fmarques/sbugs/projects/alunos/lib/allocators.h:21
+[kernel] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:7: 
+  dropping duplicate def'n of func can_fail_malloc at /home/fmarques/sbugs/projects/alunos/lib/allocators.h:7 in favor of that at /home/fmarques/sbugs/projects/alunos/lib/allocators.h:7
+[kernel] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:14: 
+  dropping duplicate def'n of func can_fail_calloc at /home/fmarques/sbugs/projects/alunos/lib/allocators.h:14 in favor of that at /home/fmarques/sbugs/projects/alunos/lib/allocators.h:14
+[kernel] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:21: 
+  dropping duplicate def'n of func can_fail_realloc at /home/fmarques/sbugs/projects/alunos/lib/allocators.h:21 in favor of that at /home/fmarques/sbugs/projects/alunos/lib/allocators.h:21
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  
+[eva] using specification for function time
+[eva] using specification for function srand
+[eva] using specification for function rand
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_0
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/138/altera_hash_ou_fila.c:14: 
+  out of bounds write. assert \valid(&fila_jogos->cabeca);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/138/main.c:363: 
+  out of bounds write. assert \valid(contador_input);
+[eva] using specification for function getchar
+[eva] using specification for function scanf_va_1
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/138/funcoes_aux.c:14: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/138/funcoes_aux.c:15: 
+  signed overflow. assert -2147483648 ≤ a + (int)*(nome + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/138/funcoes_aux.c:15: 
+  signed overflow. assert a + (int)*(nome + i) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/138/funcoes_aux.c:17: 
+  out of bounds read. assert \valid_read(nome + (int)(len - 1));
+[eva] using specification for function printf_va_3
+[eva] using specification for function scanf_va_5
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/138/funcoes_aux.c:13: 
+  function strlen: precondition 'valid_string_s' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/138/funcoes_aux.c:17: 
+  function strlen: precondition 'valid_string_s' got status unknown.
+[eva] using specification for function scanf_va_2
+[eva] using specification for function scanf_va_6
+[eva] using specification for function scanf_va_3
+[eva] using specification for function scanf_va_4
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/138/main.c:319: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/138/main.c:321: 
+  signed overflow. assert cont + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/138/main.c:330: 
+  starting to merge loop iterations
+[eva] using specification for function printf_va_13
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_1
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/138/funcoes_aux.c:109: 
+  starting to merge loop iterations
+[eva] using specification for function qsort
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/138/main.c:365: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/138/main.c:19: 
+  signed overflow. assert *contador_input + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/138/main.c:255: 
+  signed overflow. assert *contador_input + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/138/main.c:68: 
+  signed overflow. assert *contador_input + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/138/main.c:82: 
+  signed overflow. assert *contador_input + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/138/main.c:292: 
+  signed overflow. assert *contador_input + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/138/main.c:105: 
+  signed overflow. assert *contador_input + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/138/main.c:184: 
+  signed overflow. assert *contador_input + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/138/main.c:316: 
+  signed overflow. assert *contador_input + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/138/funcoes_aux.c:64: 
+  starting to merge loop iterations
+[eva] done for function main
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function free_total:
+  contador_input ∈ ESCAPINGADDR
+  fila_jogos ∈ ESCAPINGADDR
+  i ∈ {3013}
+  contador_input ∈ ESCAPINGADDR
+  fila_jogos ∈ ESCAPINGADDR
+[eva:final-states] Values at end of function lista_jogos:
+  __malloc_can_fail_malloc_l11[bits 0 to 31] ∈ [1..2147483647]
+[eva:final-states] Values at end of function calcula_chave:
+  a ∈ [--..--]
+  len ∈ {1}
+  i ∈ {0; 1}
+  chave ∈ [0..3012]
+[eva:final-states] Values at end of function altera_score:
+  NON TERMINATING FUNCTION
+[eva:final-states] Values at end of function apaga_jogo:
+  NON TERMINATING FUNCTION
+[eva:final-states] Values at end of function nova_equipa:
+  NON TERMINATING FUNCTION
+[eva:final-states] Values at end of function procura_equipa:
+  NON TERMINATING FUNCTION
+[eva:final-states] Values at end of function procura_jogo:
+  NON TERMINATING FUNCTION
+[eva:final-states] Values at end of function can_fail_malloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈
+          {{ NULL ; (void *)&__malloc_can_fail_malloc_l11 ;
+             (void *)&__malloc_can_fail_malloc_l11_0 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_1 }}
+[eva:final-states] Values at end of function faz_fila:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fila_jogos ∈ {{ (fila *)&__malloc_can_fail_malloc_l11_0 }}
+  __malloc_can_fail_malloc_l11_0[0..15] ∈ {0}
+[eva:final-states] Values at end of function lista_com_equipas_melhores_e_sort:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  lista ∈
+       {{ NULL ; (char **)&__malloc_w_can_fail_malloc_l11_1 }} or ESCAPINGADDR
+  i ∈ {0}
+  cont ∈ {0}
+  __malloc_w_can_fail_malloc_l11_1[0..3999] ∈ [--..--] or UNINITIALIZED
+[eva:final-states] Values at end of function melhores_equipas:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  i ∈ {3013}
+  max ∈ {-1} or UNINITIALIZED
+  cont ∈ [0..2147483647]
+  S___fc_stdout[0..1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11[bits 0 to 31] ∈ [1..2147483647]
+  __malloc_w_can_fail_malloc_l11_1[0..3999] ∈ [--..--] or UNINITIALIZED
+[eva:final-states] Values at end of function verifica_se_equipa_existe:
+  __retres ∈ {0}
+[eva:final-states] Values at end of function verifica_se_jogo_existe:
+  __retres ∈ {0}
+[eva:final-states] Values at end of function novo_jogo:
+  chave ∈ [0..3012]
+  chave_equipa1 ∈ [0..3012]
+  score1 ∈ [--..--]
+  score2 ∈ [--..--]
+  nome[0] ∈ [--..--]
+      [1..1023] ∈ {0}
+  equipa1[0] ∈ [--..--]
+         [1..1023] ∈ {0}
+  equipa2[0] ∈ [--..--]
+         [1..1023] ∈ {0}
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11[bits 0 to 31] ∈ [1..2147483647]
+[eva:final-states] Values at end of function main:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  c ∈ {120}
+  contador_input ∈ ESCAPINGADDR
+  fila_jogos ∈ ESCAPINGADDR
+  cabeca_equipa[0..3012] ∈ {0}
+  cabeca[0..3012] ∈ {0}
+  __retres ∈ {0}
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+  __malloc_w_can_fail_malloc_l11_1[0..3999] ∈ [--..--] or UNINITIALIZED
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  16 functions analyzed (out of 25): 64% coverage.
+  In these functions, 157 statements reached (out of 424): 37% coverage.
+  ----------------------------------------------------------------------------
+  No errors or warnings raised during the analysis.
+  ----------------------------------------------------------------------------
+  14 alarms generated by the analysis:
+      11 integer overflows
+       3 invalid memory accesses
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     0 unknown     0 invalid      0 total
+    Preconditions    25 valid     2 unknown     0 invalid     27 total
+  92% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[report] Classification
+[report] Output /home/fmarques/sbugs/projects/outputs/framaC/iaed_p2/138/errors.json
+[report] Reviews     :   15
+[report] Unclassified:   15

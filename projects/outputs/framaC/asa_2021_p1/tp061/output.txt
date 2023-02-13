@@ -1,0 +1,513 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  dominoes ∈ {0}
+  connections ∈ {0}
+  n_dom ∈ {0}
+  n_conn ∈ {0}
+  fp ∈ {0}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:45: 
+  out of bounds read. assert \valid_read(argv + 1);
+[eva] using specification for function fopen
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:45: 
+  function fopen: precondition 'valid_filename' got status unknown.
+[eva] using specification for function fscanf_va_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:69: 
+  signed overflow. assert n_dom + 1 ≤ 2147483647;
+[eva] using specification for function time
+[eva] using specification for function srand
+[eva] using specification for function rand
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:25: 
+  allocating variable __realloc_can_fail_realloc_l25
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:89: 
+  out of bounds write. assert \valid(&(dominoes + i)->root);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:90: 
+  out of bounds write. assert \valid(&(dominoes + i)->color);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:91: 
+  out of bounds write. assert \valid(&(dominoes + i)->chain);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:88: 
+  starting to merge loop iterations
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:89: 
+  more than 200(2147483646) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:90: 
+  more than 200(2147483646) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:91: 
+  more than 200(2147483646) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:89: 
+  more than 200(2147483646) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:90: 
+  more than 200(2147483646) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:91: 
+  more than 200(2147483646) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:72: 
+  signed overflow. assert n_conn + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:25: 
+  allocating variable __realloc_can_fail_realloc_l25_0
+[eva] using specification for function fscanf_va_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:115: 
+  out of bounds write. assert \valid(&(connections + i)->x);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:116: 
+  out of bounds write. assert \valid(&(connections + i)->y);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:117: 
+  out of bounds write. assert \valid(&(dominoes + dom_2)->root);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:117: 
+  more than 200(2147483648) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:117: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:98: 
+  starting to merge loop iterations
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:115: 
+  more than 200(2147483646) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:116: 
+  more than 200(2147483646) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:115: 
+  more than 200(2147483646) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:116: 
+  more than 200(2147483646) elements to enumerate. Approximating.
+[eva] using specification for function scanf_va_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:77: 
+  signed overflow. assert n_dom + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:80: 
+  signed overflow. assert n_conn + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:25: 
+  allocating variable __realloc_can_fail_realloc_l25_1
+[eva] using specification for function scanf_va_2
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:107: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:51: 
+  accessing uninitialized left-value.
+  assert \initialized(&(dominoes + i)->root);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:51: 
+  out of bounds read. assert \valid_read(&(dominoes + i)->root);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:127: 
+  accessing uninitialized left-value.
+  assert \initialized(&(connections + i)->x);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:127: 
+  out of bounds read. assert \valid_read(&(connections + i)->x);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:128: 
+  accessing uninitialized left-value.
+  assert \initialized(&(connections + i)->y);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:128: 
+  out of bounds read. assert \valid_read(&(connections + i)->y);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:128: 
+  accessing uninitialized left-value.
+  assert \initialized(&(dominoes + (connections + i)->y)->color);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:128: 
+  out of bounds read.
+  assert \valid_read(&(dominoes + (connections + i)->y)->color);
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:129: 
+  detected recursive call of function dfs.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:129: 
+  accessing uninitialized left-value.
+  assert \initialized(&(connections + i)->y);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:129: 
+  out of bounds read. assert \valid_read(&(connections + i)->y);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:129: User Error: 
+  Recursive call to dfs without assigns clause.
+  Generating probably incomplete assigns to interpret the call. Try to increase
+  the -eva-unroll-recursive-calls parameter or write a correct specification
+  for function dfs.
+[kernel:annot:missing-spec] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:124: 
+  Neither code nor specification for function dfs, generating default assigns from the prototype
+[eva] using specification for function dfs
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:131: 
+  accessing uninitialized left-value.
+  assert \initialized(&(connections + i)->x);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:131: 
+  out of bounds read. assert \valid_read(&(connections + i)->x);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:132: 
+  accessing uninitialized left-value.
+  assert \initialized(&(connections + i)->y);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:132: 
+  out of bounds read. assert \valid_read(&(connections + i)->y);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:132: 
+  accessing uninitialized left-value.
+  assert \initialized(&(dominoes + (connections + i)->y)->color);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:132: 
+  out of bounds read.
+  assert \valid_read(&(dominoes + (connections + i)->y)->color);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:133: 
+  accessing uninitialized left-value.
+  assert \initialized(&(connections + i)->y);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:133: 
+  out of bounds read. assert \valid_read(&(connections + i)->y);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:133: 
+  accessing uninitialized left-value.
+  assert \initialized(&(dominoes + (connections + i)->y)->chain);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:133: 
+  out of bounds read.
+  assert \valid_read(&(dominoes + (connections + i)->y)->chain);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:134: 
+  accessing uninitialized left-value.
+  assert \initialized(&(dominoes + father)->chain);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:134: 
+  out of bounds read. assert \valid_read(&(dominoes + father)->chain);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:135: 
+  out of bounds write. assert \valid(&(dominoes + father)->chain);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:126: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:129: 
+  Using specification of function dfs for recursive calls.
+  Analysis of function dfs is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:133: 
+  signed overflow.
+  assert (dominoes + (connections + i)->y)->chain + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:139: 
+  out of bounds write. assert \valid(&(dominoes + father)->color);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:128: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:133: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:54: 
+  accessing uninitialized left-value.
+  assert \initialized(&(dominoes + i)->chain);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:54: 
+  out of bounds read. assert \valid_read(&(dominoes + i)->chain);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:55: 
+  accessing uninitialized left-value.
+  assert \initialized(&(dominoes + i)->chain);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:55: 
+  out of bounds read. assert \valid_read(&(dominoes + i)->chain);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:50: 
+  starting to merge loop iterations
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:135: 
+  more than 200(2147483646) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:139: 
+  more than 200(2147483646) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:50: 
+  signed overflow. assert i + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:52: 
+  signed overflow. assert interventions + 1 ≤ 2147483647;
+[eva] using specification for function printf_va_1
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp061/p1.c:51: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[eva] done for function main
+[scope:rm_asserts] removing 8 assertion(s)
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function initialize_dominoe:
+  i ∈ [1..2147483647]
+  __realloc_can_fail_realloc_l25[0..11] ∈ UNINITIALIZED
+                                [bits 96 to 159]# ∈
+                                {1} or UNINITIALIZED repeated %32 
+                                [bits 160 to 206158430079]# ∈
+                                {0; 1} or UNINITIALIZED repeated %32 
+                                [25769803760..25769803763] ∈
+                                {0} or UNINITIALIZED
+                                [25769803764..18446744073709551611] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11[0..11] ∈ UNINITIALIZED
+                              [bits 96 to 159]# ∈
+                              {1} or UNINITIALIZED repeated %32 
+                              [bits 160 to 206158430079]# ∈
+                              {0; 1} or UNINITIALIZED repeated %32 
+                              [25769803760..25769803763] ∈
+                              {0} or UNINITIALIZED
+                              [25769803764..18446744073709551611] ∈
+                              UNINITIALIZED
+[eva:final-states] Values at end of function set_connection:
+  __realloc_can_fail_realloc_l25[0..11] ∈ {0} or UNINITIALIZED
+                                [bits 96 to 206158430079]# ∈
+                                {0; 1} or UNINITIALIZED repeated %32 
+                                [25769803760..25769803767] ∈
+                                {0} or UNINITIALIZED
+                                [25769803768..18446744073709551611] ∈
+                                UNINITIALIZED
+  __realloc_can_fail_realloc_l25_0[0..7] ∈ UNINITIALIZED
+                                  [8..17179869175] ∈
+                                  [--..--] or UNINITIALIZED
+                                  [17179869176..18446744073709551607] ∈
+                                  UNINITIALIZED
+  __malloc_can_fail_malloc_l11[0..11] ∈ {0} or UNINITIALIZED
+                              [bits 96 to 206158430079]# ∈
+                              {0; 1} or UNINITIALIZED repeated %32 
+                              [25769803760..25769803767] ∈
+                              {0} or UNINITIALIZED
+                              [25769803768..18446744073709551611] ∈
+                              UNINITIALIZED
+  __realloc_can_fail_realloc_l25_1[0..7] ∈ UNINITIALIZED
+                                  [8..17179869175] ∈
+                                  [--..--] or UNINITIALIZED
+                                  [17179869176..18446744073709551607] ∈
+                                  UNINITIALIZED
+[eva:final-states] Values at end of function initialize_connections_console:
+  i ∈ [1..2147483647]
+  dom_1 ∈ [--..--] or UNINITIALIZED
+  dom_2 ∈ [--..--] or UNINITIALIZED
+  S___fc_stdin[0..1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11[0..11] ∈ {0} or UNINITIALIZED
+                              [bits 96 to 206158430079]# ∈
+                              {0; 1} or UNINITIALIZED repeated %32 
+                              [25769803760..25769803767] ∈
+                              {0} or UNINITIALIZED
+                              [25769803768..18446744073709551611] ∈
+                              UNINITIALIZED
+  __realloc_can_fail_realloc_l25_1[0..7] ∈ UNINITIALIZED
+                                  [8..17179869175] ∈
+                                  [--..--] or UNINITIALIZED
+                                  [17179869176..18446744073709551607] ∈
+                                  UNINITIALIZED
+[eva:final-states] Values at end of function initialize_connections_file:
+  __fc_fopen[0].__fc_FILE_id ∈ {0}
+            [0].__fc_FILE_data ∈ [--..--]
+            [1].__fc_FILE_id ∈ {0}
+            [1].__fc_FILE_data ∈ [--..--]
+            [2].__fc_FILE_id ∈ {0}
+            [2].__fc_FILE_data ∈ [--..--]
+            [3].__fc_FILE_id ∈ {0}
+            [3].__fc_FILE_data ∈ [--..--]
+            [4].__fc_FILE_id ∈ {0}
+            [4].__fc_FILE_data ∈ [--..--]
+            [5].__fc_FILE_id ∈ {0}
+            [5].__fc_FILE_data ∈ [--..--]
+            [6].__fc_FILE_id ∈ {0}
+            [6].__fc_FILE_data ∈ [--..--]
+            [7].__fc_FILE_id ∈ {0}
+            [7].__fc_FILE_data ∈ [--..--]
+            [8].__fc_FILE_id ∈ {0}
+            [8].__fc_FILE_data ∈ [--..--]
+            [9].__fc_FILE_id ∈ {0}
+            [9].__fc_FILE_data ∈ [--..--]
+            [10].__fc_FILE_id ∈ {0}
+            [10].__fc_FILE_data ∈ [--..--]
+            [11].__fc_FILE_id ∈ {0}
+            [11].__fc_FILE_data ∈ [--..--]
+            [12].__fc_FILE_id ∈ {0}
+            [12].__fc_FILE_data ∈ [--..--]
+            [13].__fc_FILE_id ∈ {0}
+            [13].__fc_FILE_data ∈ [--..--]
+            [14].__fc_FILE_id ∈ {0}
+            [14].__fc_FILE_data ∈ [--..--]
+            [15].__fc_FILE_id ∈ {0}
+            [15].__fc_FILE_data ∈ [--..--]
+  i ∈ [1..2147483647]
+  dom_1 ∈ [--..--] or UNINITIALIZED
+  dom_2 ∈ [--..--] or UNINITIALIZED
+  __realloc_can_fail_realloc_l25[0..11] ∈ {0} or UNINITIALIZED
+                                [bits 96 to 206158430079]# ∈
+                                {0; 1} or UNINITIALIZED repeated %32 
+                                [25769803760..25769803767] ∈
+                                {0} or UNINITIALIZED
+                                [25769803768..18446744073709551611] ∈
+                                UNINITIALIZED
+  __realloc_can_fail_realloc_l25_0[0..7] ∈ UNINITIALIZED
+                                  [8..17179869175] ∈
+                                  [--..--] or UNINITIALIZED
+                                  [17179869176..18446744073709551607] ∈
+                                  UNINITIALIZED
+[eva:final-states] Values at end of function can_fail_malloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈ {{ NULL ; (void *)&__malloc_can_fail_malloc_l11 }}
+[eva:final-states] Values at end of function can_fail_realloc:
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈
+          {{ NULL ; (void *)&__realloc_can_fail_realloc_l25 ;
+             (void *)&__realloc_can_fail_realloc_l25_0 ;
+             (void *)&__realloc_can_fail_realloc_l25_1 }}
+[eva:final-states] Values at end of function reads_input:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  __fc_fopen[0].__fc_FILE_id ∈ {0}
+            [0].__fc_FILE_data ∈ [--..--]
+            [1].__fc_FILE_id ∈ {0}
+            [1].__fc_FILE_data ∈ [--..--]
+            [2].__fc_FILE_id ∈ {0}
+            [2].__fc_FILE_data ∈ [--..--]
+            [3].__fc_FILE_id ∈ {0}
+            [3].__fc_FILE_data ∈ [--..--]
+            [4].__fc_FILE_id ∈ {0}
+            [4].__fc_FILE_data ∈ [--..--]
+            [5].__fc_FILE_id ∈ {0}
+            [5].__fc_FILE_data ∈ [--..--]
+            [6].__fc_FILE_id ∈ {0}
+            [6].__fc_FILE_data ∈ [--..--]
+            [7].__fc_FILE_id ∈ {0}
+            [7].__fc_FILE_data ∈ [--..--]
+            [8].__fc_FILE_id ∈ {0}
+            [8].__fc_FILE_data ∈ [--..--]
+            [9].__fc_FILE_id ∈ {0}
+            [9].__fc_FILE_data ∈ [--..--]
+            [10].__fc_FILE_id ∈ {0}
+            [10].__fc_FILE_data ∈ [--..--]
+            [11].__fc_FILE_id ∈ {0}
+            [11].__fc_FILE_data ∈ [--..--]
+            [12].__fc_FILE_id ∈ {0}
+            [12].__fc_FILE_data ∈ [--..--]
+            [13].__fc_FILE_id ∈ {0}
+            [13].__fc_FILE_data ∈ [--..--]
+            [14].__fc_FILE_id ∈ {0}
+            [14].__fc_FILE_data ∈ [--..--]
+            [15].__fc_FILE_id ∈ {0}
+            [15].__fc_FILE_data ∈ [--..--]
+  dominoes ∈
+          {{ NULL ; (Dominoe *)&__realloc_can_fail_realloc_l25 ;
+             (Dominoe *)&__malloc_can_fail_malloc_l11 }}
+  connections ∈
+             {{ NULL ; (Connection *)&__realloc_can_fail_realloc_l25_0 ;
+                (Connection *)&__realloc_can_fail_realloc_l25_1 }}
+  n_dom ∈ [--..--]
+  n_conn ∈ [-2147483648..2147483646]
+  S___fc_stdin[0..1] ∈ [--..--]
+  __realloc_can_fail_realloc_l25[0..11] ∈ {0} or UNINITIALIZED
+                                [bits 96 to 206158430079]# ∈
+                                {0; 1} or UNINITIALIZED repeated %32 
+                                [25769803760..25769803767] ∈
+                                {0} or UNINITIALIZED
+                                [25769803768..18446744073709551611] ∈
+                                UNINITIALIZED
+  __realloc_can_fail_realloc_l25_0[0..7] ∈ UNINITIALIZED
+                                  [8..17179869175] ∈
+                                  [--..--] or UNINITIALIZED
+                                  [17179869176..18446744073709551607] ∈
+                                  UNINITIALIZED
+  __malloc_can_fail_malloc_l11[0..11] ∈ {0} or UNINITIALIZED
+                              [bits 96 to 206158430079]# ∈
+                              {0; 1} or UNINITIALIZED repeated %32 
+                              [25769803760..25769803767] ∈
+                              {0} or UNINITIALIZED
+                              [25769803768..18446744073709551611] ∈
+                              UNINITIALIZED
+  __realloc_can_fail_realloc_l25_1[0..7] ∈ UNINITIALIZED
+                                  [8..17179869175] ∈
+                                  [--..--] or UNINITIALIZED
+                                  [17179869176..18446744073709551607] ∈
+                                  UNINITIALIZED
+[eva:final-states] Values at end of function dfs:
+  i ∈ [1..2147483647]
+  k ∈ [1..2147483647] or UNINITIALIZED
+  __realloc_can_fail_realloc_l25[0..11] ∈ {0} or UNINITIALIZED
+                                [bits 96 to 127] ∈ {0; 1} or UNINITIALIZED
+                                [bits 128 to 206158430079]# ∈
+                                [0..2147483647] or UNINITIALIZED repeated %32 
+                                [bits 206158430080 to 206158430111] ∈
+                                {0; 1} or UNINITIALIZED
+                                [25769803764..25769803767] ∈
+                                {0} or UNINITIALIZED
+                                [25769803768..18446744073709551611] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11[0..11] ∈ {0} or UNINITIALIZED
+                              [bits 96 to 127] ∈ {0; 1} or UNINITIALIZED
+                              [bits 128 to 206158430079]# ∈
+                              [0..2147483647] or UNINITIALIZED repeated %32 
+                              [bits 206158430080 to 206158430111] ∈
+                              {0; 1} or UNINITIALIZED
+                              [25769803764..25769803767] ∈
+                              {0} or UNINITIALIZED
+                              [25769803768..18446744073709551611] ∈
+                              UNINITIALIZED
+[eva:final-states] Values at end of function main:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  __fc_fopen[0].__fc_FILE_id ∈ {0}
+            [0].__fc_FILE_data ∈ [--..--]
+            [1].__fc_FILE_id ∈ {0}
+            [1].__fc_FILE_data ∈ [--..--]
+            [2].__fc_FILE_id ∈ {0}
+            [2].__fc_FILE_data ∈ [--..--]
+            [3].__fc_FILE_id ∈ {0}
+            [3].__fc_FILE_data ∈ [--..--]
+            [4].__fc_FILE_id ∈ {0}
+            [4].__fc_FILE_data ∈ [--..--]
+            [5].__fc_FILE_id ∈ {0}
+            [5].__fc_FILE_data ∈ [--..--]
+            [6].__fc_FILE_id ∈ {0}
+            [6].__fc_FILE_data ∈ [--..--]
+            [7].__fc_FILE_id ∈ {0}
+            [7].__fc_FILE_data ∈ [--..--]
+            [8].__fc_FILE_id ∈ {0}
+            [8].__fc_FILE_data ∈ [--..--]
+            [9].__fc_FILE_id ∈ {0}
+            [9].__fc_FILE_data ∈ [--..--]
+            [10].__fc_FILE_id ∈ {0}
+            [10].__fc_FILE_data ∈ [--..--]
+            [11].__fc_FILE_id ∈ {0}
+            [11].__fc_FILE_data ∈ [--..--]
+            [12].__fc_FILE_id ∈ {0}
+            [12].__fc_FILE_data ∈ [--..--]
+            [13].__fc_FILE_id ∈ {0}
+            [13].__fc_FILE_data ∈ [--..--]
+            [14].__fc_FILE_id ∈ {0}
+            [14].__fc_FILE_data ∈ [--..--]
+            [15].__fc_FILE_id ∈ {0}
+            [15].__fc_FILE_data ∈ [--..--]
+  dominoes ∈
+          {{ NULL ; (Dominoe *)&__realloc_can_fail_realloc_l25 ;
+             (Dominoe *)&__malloc_can_fail_malloc_l11 }}
+  connections ∈
+             {{ NULL ; (Connection *)&__realloc_can_fail_realloc_l25_0 ;
+                (Connection *)&__realloc_can_fail_realloc_l25_1 }}
+  n_dom ∈ [-2147483648..2147483646]
+  n_conn ∈ [-2147483648..2147483646]
+  fp ∈ {{ NULL ; &__fc_fopen + [0..120],0%8 }}
+  i ∈ [1..2147483647]
+  max_chain ∈ [0..2147483647]
+  interventions ∈ [0..2147483647]
+  __retres ∈ {0}
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+  __realloc_can_fail_realloc_l25[0..11] ∈ {0} or UNINITIALIZED
+                                [bits 96 to 127] ∈ {0; 1} or UNINITIALIZED
+                                [bits 128 to 206158430079]# ∈
+                                [0..2147483647] or UNINITIALIZED repeated %32 
+                                [bits 206158430080 to 206158430111] ∈
+                                {0; 1} or UNINITIALIZED
+                                [25769803764..25769803767] ∈
+                                {0} or UNINITIALIZED
+                                [25769803768..18446744073709551611] ∈
+                                UNINITIALIZED
+  __realloc_can_fail_realloc_l25_0[0..7] ∈ UNINITIALIZED
+                                  [8..17179869175] ∈
+                                  [--..--] or UNINITIALIZED
+                                  [17179869176..18446744073709551607] ∈
+                                  UNINITIALIZED
+  __malloc_can_fail_malloc_l11[0..11] ∈ {0} or UNINITIALIZED
+                              [bits 96 to 127] ∈ {0; 1} or UNINITIALIZED
+                              [bits 128 to 206158430079]# ∈
+                              [0..2147483647] or UNINITIALIZED repeated %32 
+                              [bits 206158430080 to 206158430111] ∈
+                              {0; 1} or UNINITIALIZED
+                              [25769803764..25769803767] ∈
+                              {0} or UNINITIALIZED
+                              [25769803768..18446744073709551611] ∈
+                              UNINITIALIZED
+  __realloc_can_fail_realloc_l25_1[0..7] ∈ UNINITIALIZED
+                                  [8..17179869175] ∈
+                                  [--..--] or UNINITIALIZED
+                                  [17179869176..18446744073709551607] ∈
+                                  UNINITIALIZED
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  9 functions analyzed (out of 10): 90% coverage.
+  In these functions, 105 statements reached (out of 105): 100% coverage.
+  ----------------------------------------------------------------------------
+  Some errors and warnings have been raised during the analysis:
+    by the Eva analyzer:      1 error    0 warnings
+    by the Frama-C kernel:    0 errors    0 warnings
+  ----------------------------------------------------------------------------
+  42 alarms generated by the analysis:
+      22 invalid memory accesses
+      13 accesses to uninitialized left-values
+       7 integer overflows
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     0 unknown     0 invalid      0 total
+    Preconditions    17 valid     1 unknown     0 invalid     18 total
+  94% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[eva] User Error: Deferred error message was emitted during execution. See above messages for more information.
+[kernel] Plug-in eva aborted: invalid user input.

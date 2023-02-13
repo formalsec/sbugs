@@ -1,0 +1,477 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  numeroNodes ∈ {0}
+  numeroDependencias ∈ {0}
+  first ∈ {0}
+  last ∈ {0}
+  k ∈ {0}
+  l ∈ {0}
+  V ∈ {0}
+  E ∈ {0}
+  ordemTopologica ∈ {0}
+  queue ∈ {0}
+[eva] using specification for function scanf_va_1
+[eva] using specification for function time
+[eva] using specification for function srand
+[eva] using specification for function rand
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_0
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:30: 
+  out of bounds write. assert \valid(matriz + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:32: 
+  out of bounds read. assert \valid_read(matriz + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:32: 
+  out of bounds write. assert \valid(*(matriz + i) + j);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:31: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:29: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:32: 
+  accessing uninitialized left-value. assert \initialized(matriz + i);
+[eva] using specification for function scanf_va_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:39: 
+  signed overflow. assert -2147483648 ≤ origem - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:39: 
+  signed overflow. assert -2147483648 ≤ destino - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:39: 
+  accessing uninitialized left-value.
+  assert \initialized(matriz + (int)(origem - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:39: 
+  out of bounds read. assert \valid_read(matriz + (int)(origem - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:39: 
+  out of bounds write.
+  assert \valid(*(matriz + (int)(origem - 1)) + (int)(destino - 1));
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:37: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:53: 
+  out of bounds write. assert \valid(&(g.vertices + i)->indegree);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:54: 
+  out of bounds write. assert \valid(&(g.vertices + i)->outdegree);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:52: 
+  starting to merge loop iterations
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:53: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:54: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:57: 
+  out of bounds write. assert \valid(&(g.vertices + i)->id);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:59: 
+  accessing uninitialized left-value.
+  assert \initialized(matrizAdjacencias + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:59: 
+  out of bounds read. assert \valid_read(matrizAdjacencias + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:59: 
+  accessing uninitialized left-value.
+  assert \initialized(*(matrizAdjacencias + i) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:59: 
+  out of bounds read. assert \valid_read(*(matrizAdjacencias + i) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:60: 
+  out of bounds write. assert \valid(&(g.vertices + i)->outdegree);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:60: 
+  accessing uninitialized left-value.
+  assert \initialized(&(g.vertices + i)->outdegree);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:61: 
+  out of bounds write. assert \valid(&(g.vertices + j)->indegree);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:61: 
+  accessing uninitialized left-value.
+  assert \initialized(&(g.vertices + j)->indegree);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:58: 
+  starting to merge loop iterations
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:61: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:60: 
+  signed overflow. assert (g.vertices + i)->outdegree + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:61: 
+  signed overflow. assert (g.vertices + j)->indegree + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:56: 
+  starting to merge loop iterations
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:57: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:60: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:53: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:54: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:57: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_2
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:73: 
+  accessing uninitialized left-value.
+  assert \initialized(&(g.vertices + i)->indegree);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:73: 
+  out of bounds read. assert \valid_read(&(g.vertices + i)->indegree);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:74: 
+  out of bounds write. assert \valid(queue + last);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:74: 
+  out of bounds read. assert \valid_read(g.vertices + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:72: 
+  starting to merge loop iterations
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:74: 
+  too many locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:75: 
+  signed overflow. assert last + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:80: 
+  out of bounds write. assert \valid(ordemTopologica + first);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:80: 
+  out of bounds read. assert \valid_read(queue + first);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:82: 
+  accessing uninitialized left-value.
+  assert \initialized(&(ordemTopologica + first)->id);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:82: 
+  out of bounds read. assert \valid_read(&(ordemTopologica + first)->id);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:82: 
+  signed overflow. assert -2147483648 ≤ (ordemTopologica + first)->id - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:82: 
+  accessing uninitialized left-value.
+  assert
+  \initialized(g.matrizAdjacencias + (int)((ordemTopologica + first)->id - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:82: 
+  out of bounds read.
+  assert
+  \valid_read(g.matrizAdjacencias + (int)((ordemTopologica + first)->id - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:82: 
+  accessing uninitialized left-value.
+  assert
+  \initialized(*(g.matrizAdjacencias + (int)((ordemTopologica + first)->id - 1))
+               + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:82: 
+  out of bounds read.
+  assert
+  \valid_read(*(g.matrizAdjacencias + (int)((ordemTopologica + first)->id - 1))
+              + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:83: 
+  out of bounds write. assert \valid(&(g.vertices + i)->indegree);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:83: 
+  accessing uninitialized left-value.
+  assert \initialized(&(g.vertices + i)->indegree);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:84: 
+  out of bounds read. assert \valid_read(&(g.vertices + i)->indegree);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:85: 
+  out of bounds write. assert \valid(queue + last);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:85: 
+  out of bounds read. assert \valid_read(g.vertices + i);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:85: 
+  too many locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:86: 
+  signed overflow. assert last + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:81: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:84: 
+  accessing uninitialized left-value.
+  assert \initialized(&(g.vertices + i)->indegree);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:83: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:83: 
+  signed overflow. assert -2147483648 ≤ (g.vertices + i)->indegree - 1;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:79: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:97: 
+  out of bounds write. assert \valid(&(ordemTopologica + i)->d);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:96: 
+  starting to merge loop iterations
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:97: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:101: 
+  accessing uninitialized left-value.
+  assert \initialized(&(ordemTopologica + i)->id);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:101: 
+  out of bounds read. assert \valid_read(&(ordemTopologica + i)->id);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:101: 
+  accessing uninitialized left-value.
+  assert \initialized(g.matrizAdjacencias + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:101: 
+  out of bounds read. assert \valid_read(g.matrizAdjacencias + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:101: 
+  signed overflow. assert -2147483648 ≤ (ordemTopologica + i)->id - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:101: 
+  accessing uninitialized left-value.
+  assert
+  \initialized(*(g.matrizAdjacencias + j) +
+               (int)((ordemTopologica + i)->id - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:101: 
+  out of bounds read.
+  assert
+  \valid_read(*(g.matrizAdjacencias + j) + (int)((ordemTopologica + i)->id - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:101: 
+  out of bounds read. assert \valid_read(&(ordemTopologica + i)->id);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:101: 
+  accessing uninitialized left-value.
+  assert \initialized(&(g.vertices + j)->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:101: 
+  out of bounds read. assert \valid_read(&(g.vertices + j)->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:101: 
+  accessing uninitialized left-value.
+  assert \initialized(&(g.vertices + (int)((ordemTopologica + i)->id - 1))->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:101: 
+  out of bounds read.
+  assert \valid_read(&(g.vertices + (int)((ordemTopologica + i)->id - 1))->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:102: 
+  out of bounds read. assert \valid_read(&(ordemTopologica + i)->id);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:102: 
+  out of bounds write.
+  assert \valid(&(g.vertices + (int)((ordemTopologica + i)->id - 1))->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:102: 
+  out of bounds read. assert \valid_read(&(g.vertices + j)->d);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:102: 
+  more than 200(2147483646) locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:100: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:102: 
+  accessing uninitialized left-value.
+  assert \initialized(&(g.vertices + j)->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:105: 
+  accessing uninitialized left-value.
+  assert \initialized(&(ordemTopologica + i)->id);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:105: 
+  out of bounds read. assert \valid_read(&(ordemTopologica + i)->id);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:105: 
+  signed overflow. assert -2147483648 ≤ (ordemTopologica + i)->id - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:105: 
+  out of bounds write.
+  assert \valid(&(g.vertices + (int)((ordemTopologica + i)->id - 1))->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:105: 
+  accessing uninitialized left-value.
+  assert \initialized(&(g.vertices + (int)((ordemTopologica + i)->id - 1))->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:105: 
+  signed overflow.
+  assert
+  (g.vertices + (int)((ordemTopologica + i)->id - 1))->d + 1 ≤ 2147483647;
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:105: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:99: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:101: 
+  accessing uninitialized left-value.
+  assert \initialized(&(ordemTopologica + i)->id);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:101: 
+  signed overflow. assert -2147483648 ≤ (ordemTopologica + i)->id - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:102: 
+  accessing uninitialized left-value.
+  assert \initialized(&(ordemTopologica + i)->id);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:102: 
+  signed overflow. assert -2147483648 ≤ (ordemTopologica + i)->id - 1;
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:102: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:97: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:101: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:132: 
+  accessing uninitialized left-value.
+  assert \initialized(&(g.vertices + i)->outdegree);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:132: 
+  out of bounds read. assert \valid_read(&(g.vertices + i)->outdegree);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:132: 
+  accessing uninitialized left-value.
+  assert \initialized(&(g.vertices + i)->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:132: 
+  out of bounds read. assert \valid_read(&(g.vertices + i)->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:133: 
+  out of bounds read. assert \valid_read(&(g.vertices + i)->d);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:131: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:133: 
+  accessing uninitialized left-value.
+  assert \initialized(&(g.vertices + i)->d);
+[eva] using specification for function printf_va_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:113: 
+  accessing uninitialized left-value. assert \initialized(matriz + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:113: 
+  out of bounds read. assert \valid_read(matriz + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:112: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/tp023/Proj1_v5.c:113: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(matriz + i);
+[eva] done for function main
+[scope:rm_asserts] removing 10 assertion(s)
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function caminhoMaisLongo:
+  i ∈ [0..2147483647]
+  j ∈ [1..2147483647] or UNINITIALIZED
+  __malloc_can_fail_malloc_l11_1[bits 0 to 31] ∈
+                                [1..2147483647] or UNINITIALIZED
+                                [4..42949672935] ∈
+                                [--..--] or UNINITIALIZED
+                                [42949672936..18446744073709551611] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11_3[0..42949672939] ∈
+                                [--..--] or UNINITIALIZED
+                                [42949672940..18446744073709551611] ∈
+                                UNINITIALIZED
+[eva:final-states] Values at end of function liberta:
+  matriz ∈
+        {{ NULL ; (int **)&__malloc_can_fail_malloc_l11 }} or ESCAPINGADDR
+  g{.numeroNodes; .numeroDependencias} ∈ [--..--]
+   .matrizAdjacencias ∈
+   {{ NULL ; (int **)&__malloc_can_fail_malloc_l11 }} or ESCAPINGADDR
+   .vertices ∈
+   {{ NULL ; (node *)&__malloc_can_fail_malloc_l11_1 }} or ESCAPINGADDR
+  i ∈ [0..2147483647]
+  matriz ∈
+        {{ NULL ; (int **)&__malloc_can_fail_malloc_l11 }} or ESCAPINGADDR
+  g{.numeroNodes; .numeroDependencias} ∈ [--..--]
+   .matrizAdjacencias ∈
+   {{ NULL ; (int **)&__malloc_can_fail_malloc_l11 }} or ESCAPINGADDR
+   .vertices ∈
+   {{ NULL ; (node *)&__malloc_can_fail_malloc_l11_1 }} or ESCAPINGADDR
+  __malloc_can_fail_malloc_l11[bits 0 to 137438953407]# ∈
+                              {{ NULL ;
+                                 (? *)&__malloc_w_can_fail_malloc_l11_0 }} or UNINITIALIZED or ESCAPINGADDR repeated %64 
+                              [17179869176..18446744073709551607] ∈
+                              UNINITIALIZED
+[eva:final-states] Values at end of function can_fail_malloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈
+          {{ NULL ; (void *)&__malloc_can_fail_malloc_l11 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_0 ;
+             (void *)&__malloc_can_fail_malloc_l11_1 ;
+             (void *)&__malloc_can_fail_malloc_l11_2 ;
+             (void *)&__malloc_can_fail_malloc_l11_3 }}
+[eva:final-states] Values at end of function constroiGrafo:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  g{.numeroNodes; .numeroDependencias} ∈ [--..--]
+   .matrizAdjacencias ∈ {{ NULL ; (int **)&__malloc_can_fail_malloc_l11 }}
+   .vertices ∈ {{ NULL ; (node *)&__malloc_can_fail_malloc_l11_1 }}
+  i ∈ [0..2147483647]
+  j ∈ [1..2147483647] or UNINITIALIZED
+  __malloc_can_fail_malloc_l11_1[bits 0 to 31] ∈
+                                [1..2147483647] or UNINITIALIZED
+                                [bits 32 to 343597383455]# ∈
+                                [0..2147483647] or UNINITIALIZED repeated %32 
+                                [42949672932..18446744073709551611] ∈
+                                UNINITIALIZED
+[eva:final-states] Values at end of function constroiMatriz:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  numeroNodes ∈ [--..--]
+  V ∈ [--..--]
+  E ∈ [--..--]
+  i ∈ [0..2147483647]
+  j ∈ [1..2147483647] or UNINITIALIZED
+  origem ∈ [--..--] or UNINITIALIZED
+  destino ∈ [--..--] or UNINITIALIZED
+  matriz ∈ {{ NULL ; (int **)&__malloc_can_fail_malloc_l11 }}
+  S___fc_stdin[0..1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11[bits 0 to 137438953407]# ∈
+                              {{ NULL ;
+                                 (? *)&__malloc_w_can_fail_malloc_l11_0 }} or UNINITIALIZED repeated %64 
+                              [17179869176..18446744073709551607] ∈
+                              UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_0[bits 0 to 68719476703]# ∈
+                                  {0; 1} or UNINITIALIZED repeated %32 
+[eva:final-states] Values at end of function topologicalOrder:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  first ∈ [0..2147483647]
+  last ∈ [0..2147483647]
+  k ∈ [0..2147483647]
+  ordemTopologica ∈ {{ NULL ; (node *)&__malloc_can_fail_malloc_l11_3 }}
+  queue ∈ {{ NULL ; (node *)&__malloc_can_fail_malloc_l11_2 }}
+  i ∈ [0..2147483647]
+  __malloc_can_fail_malloc_l11_1[bits 0 to 31] ∈
+                                [1..2147483647] or UNINITIALIZED
+                                [4..42949672927] ∈
+                                [--..--] or UNINITIALIZED
+                                [bits 343597383424 to 343597383455] ∈
+                                [0..2147483647] or UNINITIALIZED
+                                [42949672932..18446744073709551611] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11_2[0..42949672959] ∈
+                                [--..--] or UNINITIALIZED
+                                [42949672960..18446744073709551611] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11_3[0..42949672939] ∈
+                                [--..--] or UNINITIALIZED
+                                [42949672940..18446744073709551611] ∈
+                                UNINITIALIZED
+[eva:final-states] Values at end of function main:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  numeroNodes ∈ [--..--]
+  first ∈ [0..2147483647]
+  last ∈ [0..2147483647]
+  k ∈ [0..2147483647]
+  l ∈ [--..--]
+  V ∈ [--..--]
+  E ∈ [--..--]
+  ordemTopologica ∈
+                 {{ NULL ; (node *)&__malloc_can_fail_malloc_l11_3 }} or ESCAPINGADDR
+  queue ∈
+       {{ NULL ; (node *)&__malloc_can_fail_malloc_l11_2 }} or ESCAPINGADDR
+  matriz ∈
+        {{ NULL ; (int **)&__malloc_can_fail_malloc_l11 }} or ESCAPINGADDR
+  g{.numeroNodes; .numeroDependencias} ∈ [--..--]
+   .matrizAdjacencias ∈
+   {{ NULL ; (int **)&__malloc_can_fail_malloc_l11 }} or ESCAPINGADDR
+   .vertices ∈
+   {{ NULL ; (node *)&__malloc_can_fail_malloc_l11_1 }} or ESCAPINGADDR
+  i ∈ [0..2147483647]
+  __retres ∈ {0}
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11[bits 0 to 137438953407]# ∈
+                              {{ NULL ;
+                                 (? *)&__malloc_w_can_fail_malloc_l11_0 }} or UNINITIALIZED or ESCAPINGADDR repeated %64 
+                              [17179869176..18446744073709551607] ∈
+                              UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_0[bits 0 to 68719476703]# ∈
+                                  {0; 1} or UNINITIALIZED repeated %32 
+  __malloc_can_fail_malloc_l11_1[bits 0 to 31] ∈
+                                [1..2147483647] or UNINITIALIZED
+                                [4..42949672935] ∈
+                                [--..--] or UNINITIALIZED
+                                [42949672936..18446744073709551611] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11_2[0..42949672959] ∈
+                                [--..--] or UNINITIALIZED
+                                [42949672960..18446744073709551611] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11_3[0..42949672939] ∈
+                                [--..--] or UNINITIALIZED
+                                [42949672940..18446744073709551611] ∈
+                                UNINITIALIZED
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  7 functions analyzed (out of 9): 77% coverage.
+  In these functions, 152 statements reached (out of 152): 100% coverage.
+  ----------------------------------------------------------------------------
+  No errors or warnings raised during the analysis.
+  ----------------------------------------------------------------------------
+  80 alarms generated by the analysis:
+      40 invalid memory accesses
+      26 accesses to uninitialized left-values
+      13 integer overflows
+       1 escaping address
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     0 unknown     0 invalid      0 total
+    Preconditions    13 valid     0 unknown     0 invalid     13 total
+  100% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[report] Classification
+[report] Output /home/fmarques/sbugs/projects/outputs/framaC/asa_2021_p1/tp023/errors.json
+[report] Reviews     :   70
+[report] Unclassified:   70

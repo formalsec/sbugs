@@ -1,0 +1,420 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  idp_gb ∈ {0}
+  ide_gb ∈ {0}
+  igb ∈ {0}
+  memoriaPRD[0..9999] ∈ {0}
+  memoriaENC[0..499] ∈ {0}
+[eva] using specification for function getchar
+[eva] using specification for function scanf_va_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:173: 
+  accessing uninitialized left-value. assert \initialized(info + igb);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:173: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:174: 
+  accessing uninitialized left-value. assert \initialized(info + igb);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:174: 
+  accessing out of bounds index. assert igb < 64;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:176: 
+  accessing out of bounds index. assert igb < 64;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:483: 
+  accessing uninitialized left-value. assert \initialized(info + igb);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:486: 
+  accessing uninitialized left-value. assert \initialized(info + igb);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:486: 
+  accessing uninitialized left-value. assert \initialized(info + igb);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:488: 
+  accessing uninitialized left-value. assert \initialized(info + igb);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:486: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:486: 
+  out of bounds read. assert \valid_read(info + igb);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:488: 
+  signed overflow. assert -2147483648 ≤ res * 10;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:488: 
+  signed overflow. assert res * 10 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:488: 
+  signed overflow.
+  assert -2147483648 ≤ res + (int)((int)*(info + igb) - (int)'0');
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:488: 
+  signed overflow.
+  assert res + (int)((int)*(info + igb) - (int)'0') ≤ 2147483647;
+[eva] using specification for function printf_va_1
+[eva] using specification for function scanf_va_2
+[eva] using specification for function printf_va_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:198: 
+  accessing out of bounds index. assert 0 ≤ idp;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:198: 
+  all target addresses were invalid. This path is assumed to be dead.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:500: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:501: 
+  out of bounds write. assert \valid(interior + idp);
+[eva] using specification for function scanf_va_3
+[eva] using specification for function printf_va_4
+[eva] using specification for function printf_va_5
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:233: 
+  accessing out of bounds index. assert 0 ≤ idp;
+[eva] using specification for function scanf_va_4
+[eva] using specification for function printf_va_8
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:265: 
+  accessing out of bounds index. assert 0 ≤ idp;
+[eva] using specification for function scanf_va_5
+[eva] using specification for function printf_va_10
+[eva] using specification for function printf_va_11
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:291: 
+  accessing out of bounds index. assert 0 ≤ idp;
+[eva] using specification for function scanf_va_6
+[eva] using specification for function printf_va_12
+[eva] using specification for function printf_va_13
+[eva] using specification for function scanf_va_7
+[eva] using specification for function printf_va_14
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:333: 
+  accessing out of bounds index. assert 0 ≤ idp;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:333: 
+  all target addresses were invalid. This path is assumed to be dead.
+[eva] using specification for function scanf_va_8
+[eva] using specification for function printf_va_15
+[eva] using specification for function printf_va_16
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:355: 
+  accessing out of bounds index. assert 0 ≤ idp;
+[eva] using specification for function scanf_va_9
+[eva] using specification for function printf_va_19
+[eva] using specification for function time
+[eva] using specification for function srand
+[eva] using specification for function rand
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_0
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:18: 
+  allocating variable __calloc_can_fail_calloc_l18
+[eva] using specification for function printf_va_21
+[eva] using specification for function scanf_va_10
+[eva] using specification for function printf_va_23
+[eva] using specification for function printf_va_24
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:78: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:198: 
+  signed overflow. assert -2147483648 ≤ memoriaPRD[idp].stock + qtd;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:198: 
+  signed overflow. assert memoriaPRD[idp].stock + qtd ≤ 2147483647;
+[eva] using specification for function printf_va_6
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:237: 
+  accessing out of bounds index. assert 0 ≤ ide;
+[eva] using specification for function printf_va_9
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:270: 
+  signed overflow. assert -2147483648 ≤ memoriaPRD[idp].stock - qtd;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:270: 
+  signed overflow. assert memoriaPRD[idp].stock - qtd ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:291: 
+  accessing out of bounds index. assert 0 ≤ ide;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:315: 
+  accessing out of bounds index. assert 0 ≤ ide;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:355: 
+  accessing out of bounds index. assert 0 ≤ ide;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:403: 
+  out of bounds write. assert \valid(copia_produtos + idp);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:401: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:512: 
+  signed overflow. assert max + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:517: 
+  accessing uninitialized left-value. assert \initialized(&(prds + i)->preco);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:517: 
+  out of bounds read. assert \valid_read(&(prds + i)->preco);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:517: 
+  out of bounds write. assert \valid(conta + (prds + i)->preco);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:515: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:517: 
+  signed overflow. assert *(conta + (prds + i)->preco) + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:523: 
+  out of bounds write. assert \valid(conta + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:523: 
+  signed overflow.
+  assert *(conta + i) + *(conta + (int)(i - 1)) ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:521: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:523: 
+  out of bounds read. assert \valid_read(conta + (int)(i - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:529: 
+  accessing uninitialized left-value. assert \initialized(&(prds + i)->preco);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:529: 
+  out of bounds read. assert \valid_read(&(prds + i)->preco);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:529: 
+  out of bounds read. assert \valid_read(conta + (prds + i)->preco);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:529: 
+  out of bounds write.
+  assert \valid(ordenado + (int)(*(conta + (prds + i)->preco) - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:529: 
+  out of bounds read. assert \valid_read(prds + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:530: 
+  accessing uninitialized left-value. assert \initialized(&(prds + i)->preco);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:530: 
+  out of bounds read. assert \valid_read(&(prds + i)->preco);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:530: 
+  out of bounds write. assert \valid(conta + (prds + i)->preco);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:527: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:529: 
+  signed overflow. assert -2147483648 ≤ *(conta + (prds + i)->preco) - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:530: 
+  signed overflow. assert -2147483648 ≤ *(conta + (prds + i)->preco) - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:536: 
+  out of bounds write. assert \valid(prds + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:536: 
+  out of bounds read. assert \valid_read(ordenado + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:418: 
+  out of bounds read. assert \valid_read(copia_produtos + idp);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:419: 
+  accessing uninitialized left-value. assert \initialized(&produto.preco);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:419: 
+  accessing uninitialized left-value. assert \initialized(&produto.stock);
+[eva] using specification for function printf_va_22
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:419: 
+  function printf_va_22: precondition valid_read_string(param0) got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:416: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:447: 
+  accessing out of bounds index. assert 0 ≤ ide;
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:18: 
+  calloc out of bounds: assert(nmemb * size <= SIZE_MAX)
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:523: 
+  signed overflow.
+  assert -2147483648 ≤ *(conta + i) + *(conta + (int)(i - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:184: 
+  signed overflow. assert idp_gb + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:184: 
+  accessing out of bounds index. assert tmp < 10000;
+                                 (tmp from idp_gb++)
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:184: 
+  too many locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:198: 
+  accessing out of bounds index. assert idp < 10000;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:198: 
+  more than 200(10000) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:198: 
+  more than 200(10000) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:233: 
+  accessing out of bounds index. assert idp < 10000;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:237: 
+  more than 200(10000) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:265: 
+  accessing out of bounds index. assert idp < 10000;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:270: 
+  more than 200(10000) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:291: 
+  accessing out of bounds index. assert idp < 10000;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:333: 
+  accessing out of bounds index. assert idp < 10000;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:333: 
+  more than 200(10000) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:333: 
+  more than 200(10000) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:355: 
+  accessing out of bounds index. assert idp < 10000;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:403: 
+  too many locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:403: 
+  accessing out of bounds index. assert idp < 10000;
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:534: 
+  starting to merge loop iterations
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:517: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:198: 
+  accessing uninitialized left-value.
+  assert \initialized(&memoriaPRD[idp].stock);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:233: 
+  accessing uninitialized left-value.
+  assert \initialized(&memoriaPRD[idp].stock);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:265: 
+  accessing uninitialized left-value.
+  assert \initialized(&memoriaPRD[idp].stock);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:270: 
+  accessing uninitialized left-value.
+  assert \initialized(&memoriaPRD[idp].stock);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:406: 
+  accessing uninitialized left-value.
+  assert \initialized(&memoriaPRD[idp].preco);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:407: 
+  accessing uninitialized left-value.
+  assert \initialized(&memoriaPRD[idp].preco);
+[eva] done for function main
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:237: 
+  assertion 'Eva,index_bound' got final status invalid.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:291: 
+  assertion 'Eva,index_bound' got final status invalid.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:315: 
+  assertion 'Eva,index_bound' got final status invalid.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:355: 
+  assertion 'Eva,index_bound' got final status invalid.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/196/proj1.c:447: 
+  assertion 'Eva,index_bound' got final status invalid.
+[scope:rm_asserts] removing 8 assertion(s)
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function ini_interior:
+  NON TERMINATING FUNCTION
+[eva:final-states] Values at end of function inteiro:
+  igb ∈ [0..99]
+  res ∈ [--..--]
+[eva:final-states] Values at end of function nova_enc:
+  NON TERMINATING FUNCTION
+[eva:final-states] Values at end of function ordena_descs:
+  med ∈ {0}
+[eva:final-states] Values at end of function novo_prd:
+  idp_gb ∈ [1..2147483647]
+  igb ∈ [0..99]
+  memoriaPRD[0..9999] ∈ [--..--] or UNINITIALIZED
+  novo.id ∈ [0..2147483647]
+      {.preco; .peso; .stock} ∈ [--..--]
+      .desc[0..63] ∈ [--..--] or UNINITIALIZED
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function custo_enc:
+  igb ∈ [0..99]
+  total ∈ {0}
+  idp ∈ {0} or UNINITIALIZED
+  ide ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function muda_preco:
+  igb ∈ [0..99]
+  memoriaPRD[0..9999] ∈ [--..--] or UNINITIALIZED
+  idp ∈ [0..2147483647]
+  pnovo ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function prd_em_enc:
+  igb ∈ [0..99]
+  ide ∈ [--..--]
+  idp ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function max_prd:
+  igb ∈ [0..99]
+  ide ∈ {0}
+  max_ide ∈ {-1}
+  max_stock ∈ {0}
+  idp ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function adiciona_stock:
+  igb ∈ [0..99]
+  memoriaPRD[0..9999] ∈ [--..--] or UNINITIALIZED
+  idp ∈ [0..2147483647]
+  qtd ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function l_prds_enc:
+  igb ∈ [0..99]
+  ide ∈ [--..--]
+  idp ∈ {0} or UNINITIALIZED
+  idp_max ∈ {-1} or UNINITIALIZED
+  total_prd ∈ {0}
+  j ∈ {0}
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function adiciona_prd:
+  igb ∈ [0..99]
+  ide ∈ [--..--]
+  idp ∈ [--..--]
+  qtd ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function retira_prd:
+  igb ∈ [0..99]
+  ide ∈ [--..--]
+  idp ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function retira_stock:
+  igb ∈ [0..99]
+  memoriaPRD[0..9999] ∈ [--..--] or UNINITIALIZED
+  idp ∈ [0..2147483647]
+  qtd ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function can_fail_calloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈ {{ NULL ; (void *)&__calloc_w_can_fail_calloc_l18 }}
+[eva:final-states] Values at end of function can_fail_malloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈
+          {{ NULL ; (void *)&__malloc_w_can_fail_malloc_l11 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_0 }}
+[eva:final-states] Values at end of function ordena_precos:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  i ∈ {-1}
+  ordenado ∈
+          {{ NULL ; (prd *)&__malloc_w_can_fail_malloc_l11_0 }} or ESCAPINGADDR
+  conta ∈
+       {{ NULL ; (int *)&__calloc_w_can_fail_calloc_l18 }} or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11[0..171798691759] ∈
+                                [--..--] or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_0[0..171798691759] ∈
+                                  [--..--] or UNINITIALIZED
+  __calloc_w_can_fail_calloc_l18[0..8589934591] ∈ [--..--]
+                                [8589934592..18446744073709551615] ∈ {0}
+[eva:final-states] Values at end of function l_prd_preco:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  produto ∈ [--..--] or UNINITIALIZED
+  idp ∈ [0..2147483647]
+  preco_max ∈ [-2147483648..2147483646]
+  total ∈ [0..2147483647]
+  copia_produtos ∈
+                {{ NULL ; (prd *)&__malloc_w_can_fail_malloc_l11 }} or ESCAPINGADDR
+  S___fc_stdout[0..1] ∈ [--..--]
+  __malloc_w_can_fail_malloc_l11[0..171798691759] ∈
+                                [--..--] or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_0[0..171798691759] ∈
+                                  [--..--] or UNINITIALIZED
+  __calloc_w_can_fail_calloc_l18[0..8589934591] ∈ [--..--]
+                                [8589934592..18446744073709551615] ∈ {0}
+[eva:final-states] Values at end of function main:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  idp_gb ∈ [0..2147483647]
+  igb ∈ {0}
+  memoriaPRD[0..9999] ∈ [--..--] or UNINITIALIZED
+  com ∈ {120}
+  info[0..99] ∈ [--..--] or UNINITIALIZED
+  __retres ∈ {0}
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+  __malloc_w_can_fail_malloc_l11[0..171798691759] ∈
+                                [--..--] or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_0[0..171798691759] ∈
+                                  [--..--] or UNINITIALIZED
+  __calloc_w_can_fail_calloc_l18[0..8589934591] ∈ [--..--]
+                                [8589934592..18446744073709551615] ∈ {0}
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  19 functions analyzed (out of 21): 90% coverage.
+  In these functions, 267 statements reached (out of 312): 85% coverage.
+  ----------------------------------------------------------------------------
+  No errors or warnings raised during the analysis.
+  ----------------------------------------------------------------------------
+  69 alarms generated by the analysis:
+      21 accesses out of bounds index
+      17 accesses to uninitialized left-values
+      16 invalid memory accesses
+      15 integer overflows
+  5 of them are sure alarms (invalid status).
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     0 unknown     0 invalid      0 total
+    Preconditions    34 valid     1 unknown     0 invalid     35 total
+  97% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[report] Classification
+[report] Output /home/fmarques/sbugs/projects/outputs/framaC/iaed_p1/196/errors.json
+[report] Reviews     :   57
+[report] Unclassified:   57

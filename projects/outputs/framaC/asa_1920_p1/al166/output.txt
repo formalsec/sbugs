@@ -1,0 +1,888 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  bufferStdIn[0..8191] ∈ {0}
+  bufferStdOut[0..8191] ∈ {0}
+  tabela_alunos ∈ {0}
+  numAlunos ∈ {0}
+  alunosEmAlunosDadores ∈ {0}
+  alunosDadores ∈ {0}
+[eva] using specification for function setvbuf
+[eva] using specification for function scanf_va_1
+[eva] using specification for function time
+[eva] using specification for function srand
+[eva] using specification for function rand
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11
+[eva] using specification for function getchar
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:54: 
+  Assigning imprecise value to c.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:54}
+[eva] using specification for function isdigit
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:54: 
+  function isdigit: precondition 'c_uchar_or_eof' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:54: 
+  Assigning imprecise value to tmp_0.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:54}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:54: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:56: 
+  signed overflow. assert -2147483648 ≤ c - (int)'0';
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:56: 
+  signed overflow. assert c - (int)'0' ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:56: 
+  Assigning imprecise value to num.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:54}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:57: 
+  Assigning imprecise value to c.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:54}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:57: 
+  function isdigit: precondition 'c_uchar_or_eof' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:57: 
+  Assigning imprecise value to tmp_1.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:54}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:58: 
+  signed overflow. assert -2147483648 ≤ num * 10;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:58: 
+  signed overflow. assert num * 10 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:58: 
+  signed overflow. assert -2147483648 ≤ (int)(num * 10) + c;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:58: 
+  signed overflow. assert (int)(num * 10) + c ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:58: 
+  signed overflow.
+  assert -2147483648 ≤ (int)((int)(num * 10) + c) - (int)'0';
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:58: 
+  signed overflow. assert (int)((int)(num * 10) + c) - (int)'0' ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:58: 
+  Assigning imprecise value to num.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:54}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:59: 
+  out of bounds write. assert \valid(&(tabela_alunos + i)->index);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:60: 
+  out of bounds write. assert \valid(&(tabela_alunos + i)->notaInicial);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:60: 
+  Assigning imprecise value to (tabela_alunos + i)->notaInicial
+  (pointing to __malloc_can_fail_malloc_l11 with offsets {32}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:54}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:62: 
+  out of bounds write. assert \valid(&(tabela_alunos + i)->notaFinal);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:133: 
+  out of bounds write. assert \valid(&tabela->realsize);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:134: 
+  out of bounds write. assert \valid(&tabela->size);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:135: 
+  out of bounds read. assert \valid_read(&tabela->realsize);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_0
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:135: 
+  out of bounds write. assert \valid(&tabela->numbers);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:53: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:57: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:60: 
+  Assigning imprecise value to (tabela_alunos + i)->notaInicial
+  (pointing to __malloc_can_fail_malloc_l11 with offsets {32; 288}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:54}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:135: 
+  accessing uninitialized left-value. assert \initialized(&tabela->realsize);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:60: 
+  Assigning imprecise value to (tabela_alunos + i)->notaInicial
+  (pointing to __malloc_can_fail_malloc_l11 with offsets {32; 288; 544}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:54}
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:59: 
+  more than 200(2147483648) locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:60: 
+  Assigning imprecise value to (tabela_alunos + i)->notaInicial
+  (pointing to __malloc_can_fail_malloc_l11 with offsets [32..549755813664],32%256).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:54}
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:60: 
+  more than 200(2147483648) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:62: 
+  more than 200(2147483648) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:133: 
+  more than 200(2147483648) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:134: 
+  more than 200(2147483648) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:135: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:135: 
+  more than 200(2147483648) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:134: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:53: 
+  signed overflow. assert i + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:68: 
+  Assigning imprecise value to c.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:54}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:68: 
+  function isdigit: precondition 'c_uchar_or_eof' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:68: 
+  Assigning imprecise value to tmp_2.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:54}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:70: 
+  signed overflow. assert -2147483648 ≤ c - (int)'0';
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:70: 
+  signed overflow. assert c - (int)'0' ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:70: 
+  Assigning imprecise value to Aluno1.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:54}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:71: 
+  Assigning imprecise value to c.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:54}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:71: 
+  function isdigit: precondition 'c_uchar_or_eof' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:71: 
+  Assigning imprecise value to tmp_3.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:54}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:72: 
+  signed overflow. assert -2147483648 ≤ Aluno1 * 10;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:72: 
+  signed overflow. assert Aluno1 * 10 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:72: 
+  signed overflow. assert -2147483648 ≤ (int)(Aluno1 * 10) + c;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:72: 
+  signed overflow. assert (int)(Aluno1 * 10) + c ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:72: 
+  signed overflow.
+  assert -2147483648 ≤ (int)((int)(Aluno1 * 10) + c) - (int)'0';
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:72: 
+  signed overflow.
+  assert (int)((int)(Aluno1 * 10) + c) - (int)'0' ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:72: 
+  Assigning imprecise value to Aluno1.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:54}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:74: 
+  Assigning imprecise value to c.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:54}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:74: 
+  function isdigit: precondition 'c_uchar_or_eof' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:74: 
+  Assigning imprecise value to tmp_4.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:54}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:77: 
+  signed overflow. assert -2147483648 ≤ c - (int)'0';
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:77: 
+  signed overflow. assert c - (int)'0' ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:77: 
+  Assigning imprecise value to Aluno2.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:54}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:78: 
+  Assigning imprecise value to c.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:54}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:78: 
+  function isdigit: precondition 'c_uchar_or_eof' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:78: 
+  Assigning imprecise value to tmp_5.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:54}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:79: 
+  signed overflow. assert -2147483648 ≤ Aluno2 * 10;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:79: 
+  signed overflow. assert Aluno2 * 10 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:79: 
+  signed overflow. assert -2147483648 ≤ (int)(Aluno2 * 10) + c;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:79: 
+  signed overflow. assert (int)(Aluno2 * 10) + c ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:79: 
+  signed overflow.
+  assert -2147483648 ≤ (int)((int)(Aluno2 * 10) + c) - (int)'0';
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:79: 
+  signed overflow.
+  assert (int)((int)(Aluno2 * 10) + c) - (int)'0' ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:79: 
+  Assigning imprecise value to Aluno2.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:54}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:81: 
+  signed overflow. assert -2147483648 ≤ Aluno1 - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:81: 
+  signed overflow. assert Aluno1 - 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:81: 
+  signed overflow. assert -2147483648 ≤ Aluno2 - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:81: 
+  signed overflow. assert Aluno2 - 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:144: 
+  accessing uninitialized left-value. assert \initialized(&tabela->size);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:144: 
+  accessing uninitialized left-value. assert \initialized(&tabela->realsize);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:144: 
+  out of bounds read. assert \valid_read(&tabela->size);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:144: 
+  out of bounds read. assert \valid_read(&tabela->realsize);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:146: 
+  out of bounds write. assert \valid(&tabela->realsize);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:146: 
+  accessing uninitialized left-value. assert \initialized(&tabela->size);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:146: 
+  out of bounds read. assert \valid_read(&tabela->size);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:146: 
+  signed overflow. assert -2147483648 ≤ tabela->size + 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:146: 
+  signed overflow. assert tabela->size + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:146: 
+  signed overflow. assert -2147483648 ≤ (int)(tabela->size + 1) * 2;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:146: 
+  signed overflow. assert (int)(tabela->size + 1) * 2 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:146: 
+  Assigning imprecise value to tabela->realsize
+  (pointing to bufferStdIn with offsets [32..65504],0%8;
+  __malloc_can_fail_malloc_l11 with offsets [32..147573952589676412888],0%8).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:54}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:147: 
+  accessing uninitialized left-value. assert \initialized(&tabela->realsize);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:147: 
+  accessing uninitialized left-value. assert \initialized(&tabela->numbers);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:147: 
+  out of bounds read. assert \valid_read(&tabela->realsize);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:147: 
+  out of bounds read. assert \valid_read(&tabela->numbers);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:25: 
+  function realloc: precondition 'freeable' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:25: 
+  allocating variable __realloc_can_fail_realloc_l25
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:147: 
+  out of bounds write. assert \valid(&tabela->numbers);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:149: 
+  accessing uninitialized left-value. assert \initialized(&tabela->size);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:149: 
+  out of bounds read. assert \valid_read(&tabela->size);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:149: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&tabela->size);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:149: 
+  Assigning imprecise value to tmp_0.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:149: 
+  out of bounds write. assert \valid(&tabela->size);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:149: 
+  accessing uninitialized left-value. assert \initialized(&tabela->size);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:149: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&tabela->size);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:149: 
+  signed overflow. assert -2147483648 ≤ tabela->size + 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:149: 
+  signed overflow. assert tabela->size + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:149: 
+  Assigning imprecise value to tabela->size
+  (pointing to bufferStdIn with offsets [64..65472],0%8;
+  __malloc_can_fail_malloc_l11 with offsets [0..147573952589676412856],0%8).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:149: 
+  accessing uninitialized left-value. assert \initialized(&tabela->numbers);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:149: 
+  out of bounds read. assert \valid_read(&tabela->numbers);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:149: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&tabela->numbers);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:149: 
+  out of bounds write.
+  assert \valid(tabela->numbers + tmp_0);
+  (tmp_0 from tabela->size++)
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:149: 
+  Assigning imprecise value to *(tabela->numbers + tmp_0)
+  (pointing to bufferStdIn with offsets [0..65504],0%8;
+  __malloc_w_can_fail_malloc_l11_0 with offsets [0..147573952589676412896];
+  __realloc_can_fail_realloc_l25 with offsets [0..147573952589676412896]).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:54}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:66: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:68: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:71: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:74: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:78: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:144: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&tabela->size);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:144: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&tabela->realsize);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:146: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&tabela->size);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:146: 
+  Assigning imprecise value to tabela->realsize
+  (pointing to bufferStdIn with offsets [32..65504],0%8;
+  __malloc_can_fail_malloc_l11 with offsets [32..147573952589676412888],0%8).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:147: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&tabela->realsize);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:147: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&tabela->numbers);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:149: 
+  Assigning imprecise value to tabela->size
+  (pointing to bufferStdIn with offsets [0..65472],0%8;
+  __malloc_can_fail_malloc_l11 with offsets [0..147573952589676412856],0%8).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:149: 
+  Assigning imprecise value to *(tabela->numbers + tmp_0)
+  (pointing to bufferStdIn with offsets [0..65504],0%8;
+  __malloc_w_can_fail_malloc_l11_0 with offsets [0..147573952589676412896];
+  __realloc_w_can_fail_realloc_l25 with offsets [0..147573952589676412896]).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:54}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:66: 
+  signed overflow. assert i + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:18: 
+  calloc out of bounds: assert(nmemb * size <= SIZE_MAX)
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:18: 
+  allocating variable __calloc_can_fail_calloc_l18
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:87: 
+  out of bounds write. assert \valid(&(tabela_alunos + i)->notaFinal);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:87: 
+  accessing uninitialized left-value.
+  assert \initialized(&(tabela_alunos + i)->notaInicial);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:87: 
+  out of bounds read. assert \valid_read(&(tabela_alunos + i)->notaInicial);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:87: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(tabela_alunos + i)->notaInicial);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:87: 
+  Assigning imprecise value to (tabela_alunos + i)->notaFinal
+  (pointing to __malloc_can_fail_malloc_l11 with offsets {64}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:88: 
+  accessing uninitialized left-value.
+  assert \initialized(&(tabela_alunos + i)->amigosReceptores.size);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:88: 
+  out of bounds read.
+  assert \valid_read(&(tabela_alunos + i)->amigosReceptores.size);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:88: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(tabela_alunos + i)->amigosReceptores.size);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:91: 
+  out of bounds write. assert \valid(alunosEmAlunosDadores + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:86: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:87: 
+  Assigning imprecise value to (tabela_alunos + i)->notaFinal
+  (pointing to __malloc_can_fail_malloc_l11 with offsets {64; 320}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:87: 
+  Assigning imprecise value to (tabela_alunos + i)->notaFinal
+  (pointing to __malloc_can_fail_malloc_l11 with offsets {64; 320; 576}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:87: 
+  Assigning imprecise value to (tabela_alunos + i)->notaFinal
+  (pointing to __malloc_can_fail_malloc_l11 with offsets [64..549755813696],64%256).
+  The imprecision originates from Misaligned
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:87: 
+  more than 200(2147483648) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:86: 
+  signed overflow. assert i + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:25: 
+  allocating variable __realloc_can_fail_realloc_l25_0
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:156: 
+  accessing uninitialized left-value.
+  assert \initialized(tabela->numbers + tabela->size);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:156: 
+  out of bounds read. assert \valid_read(tabela->numbers + tabela->size);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:97: 
+  out of bounds write. assert \valid(alunosEmAlunosDadores + iAluno);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:99: 
+  accessing uninitialized left-value.
+  assert \initialized(&pDador->amigosReceptores.numbers);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:99: 
+  accessing uninitialized left-value.
+  assert \initialized(&pDador->amigosReceptores.size);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:99: 
+  out of bounds read. assert \valid_read(&pDador->amigosReceptores.numbers);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:99: 
+  out of bounds read. assert \valid_read(&pDador->amigosReceptores.size);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:99: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&pDador->amigosReceptores.numbers);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:99: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&pDador->amigosReceptores.size);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:99: 
+  Assigning imprecise value to pTailIndex.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:100: 
+  accessing uninitialized left-value.
+  assert \initialized(&pDador->amigosReceptores.numbers);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:100: 
+  out of bounds read. assert \valid_read(&pDador->amigosReceptores.numbers);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:100: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&pDador->amigosReceptores.numbers);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:100: 
+  Assigning imprecise value to pCurAmigoIndex.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:101: 
+  pointer comparison.
+  assert \pointer_comparable((void *)pCurAmigoIndex, (void *)pTailIndex);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:103: 
+  Assigning imprecise value to tmp_8.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:103: 
+  Assigning imprecise value to pCurAmigoIndex.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:103: 
+  accessing uninitialized left-value.
+  assert \initialized(tmp_8);
+  (tmp_8 from pCurAmigoIndex++)
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:103: 
+  out of bounds read. assert \valid_read(tmp_8);
+                      (tmp_8 from pCurAmigoIndex++)
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:103: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(tmp_8);
+  (tmp_8 from pCurAmigoIndex++)
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:103: 
+  Assigning imprecise value to pReceptor.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:104: 
+  accessing uninitialized left-value.
+  assert \initialized(&pReceptor->notaFinal);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:104: 
+  accessing uninitialized left-value. assert \initialized(&pDador->notaFinal);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:104: 
+  out of bounds read. assert \valid_read(&pReceptor->notaFinal);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:104: 
+  out of bounds read. assert \valid_read(&pDador->notaFinal);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:104: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&pReceptor->notaFinal);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:104: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&pDador->notaFinal);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:106: 
+  out of bounds write. assert \valid(&pReceptor->notaFinal);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:106: 
+  accessing uninitialized left-value. assert \initialized(&pDador->notaFinal);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:106: 
+  out of bounds read. assert \valid_read(&pDador->notaFinal);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:106: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&pDador->notaFinal);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:106: 
+  Assigning imprecise value to pReceptor->notaFinal
+  (pointing to bufferStdIn with offsets [0..65504],0%8;
+  __malloc_can_fail_malloc_l11 with offsets [0..147573952589676412896],0%8;
+  __malloc_w_can_fail_malloc_l11_0 with offsets [0..147573952589676412896],0%8;
+  __realloc_w_can_fail_realloc_l25 with offsets [0..147573952589676412896],0%8).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:107: 
+  accessing uninitialized left-value. assert \initialized(&pReceptor->index);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:107: 
+  out of bounds read. assert \valid_read(&pReceptor->index);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:107: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&pReceptor->index);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:107: 
+  accessing uninitialized left-value.
+  assert \initialized(alunosEmAlunosDadores + pReceptor->index);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:107: 
+  out of bounds read.
+  assert \valid_read(alunosEmAlunosDadores + pReceptor->index);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:107: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(alunosEmAlunosDadores + pReceptor->index);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:109: 
+  accessing uninitialized left-value. assert \initialized(&pReceptor->index);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:109: 
+  out of bounds read. assert \valid_read(&pReceptor->index);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:109: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&pReceptor->index);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:25: 
+  allocating variable __realloc_can_fail_realloc_l25_1
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:149: 
+  Assigning imprecise value to *(tabela->numbers + tmp_0)
+  (pointing to __malloc_can_fail_malloc_l11_1 with offsets {0; 32; 64; 96; 128;
+                                                            160; 192; 224};
+   __realloc_w_can_fail_realloc_l25_0 with offsets [0..68719476640],0%32;
+  __realloc_can_fail_realloc_l25_1 with offsets [0..68719476640],0%32).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:110: 
+  accessing uninitialized left-value. assert \initialized(&pReceptor->index);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:110: 
+  out of bounds read. assert \valid_read(&pReceptor->index);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:110: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&pReceptor->index);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:110: 
+  out of bounds write. assert \valid(alunosEmAlunosDadores + pReceptor->index);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:101: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:149: 
+  Assigning imprecise value to *(tabela->numbers + tmp_0)
+  (pointing to __malloc_can_fail_malloc_l11_1 with offsets {0; 32; 64; 96; 128;
+                                                            160; 192; 224};
+   __realloc_w_can_fail_realloc_l25_0 with offsets [0..68719476640],0%32;
+  __realloc_w_can_fail_realloc_l25_1 with offsets [0..68719476640],0%32).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:94: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:156: 
+  Assigning imprecise value to __retres.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:156: 
+  Assigning imprecise value to \result<removeFromLista>.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:96: 
+  Assigning imprecise value to iAluno.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:98: 
+  Assigning imprecise value to pDador.
+  The imprecision originates from Arithmetic
+  {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:98}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:120: 
+  accessing uninitialized left-value.
+  assert \initialized(&(tabela_alunos + i)->notaFinal);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:120: 
+  out of bounds read. assert \valid_read(&(tabela_alunos + i)->notaFinal);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:120: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(tabela_alunos + i)->notaFinal);
+[eva] using specification for function printf_va_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:139: 
+  accessing uninitialized left-value. assert \initialized(&tabela->numbers);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:139: 
+  out of bounds read. assert \valid_read(&tabela->numbers);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:139: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&tabela->numbers);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:139: 
+  function free: precondition 'freeable' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:119: 
+  starting to merge loop iterations
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:120: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:119: 
+  signed overflow. assert i + 1 ≤ 2147483647;
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:59: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:60: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[eva] done for function main
+[scope:rm_asserts] removing 19 assertion(s)
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function freeLista:
+  bufferStdIn[0..8191] ∈
+             {{ garbled mix of &{bufferStdIn;
+                                 __malloc_w_can_fail_malloc_l11_0;
+                                 __realloc_w_can_fail_realloc_l25}
+              (origin: Misaligned) }} or ESCAPINGADDR
+  alunosDadores.numbers ∈
+               {{ NULL ; (int *)&__malloc_can_fail_malloc_l11_1 ;
+                  (int *)&__realloc_w_can_fail_realloc_l25_0 ;
+                  (int *)&__realloc_w_can_fail_realloc_l25_1 }} or ESCAPINGADDR
+               .size ∈ {0}
+               .realsize ∈ [8..2147483646],0%2
+  S___fc_stdout[0].__fc_FILE_id ∈
+               {{ garbled mix of &{bufferStdOut}
+                (origin: Library function
+                {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:47}) }}
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{bufferStdIn; bufferStdOut;
+                                   __malloc_w_can_fail_malloc_l11_0;
+                                   __realloc_w_can_fail_realloc_l25}
+                (origin: Misaligned) }} or ESCAPINGADDR
+               [1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11[0..18446744073709551615] ∈
+                              {{ garbled mix of &{bufferStdIn;
+                                                  __malloc_w_can_fail_malloc_l11_0;
+                                                  __realloc_w_can_fail_realloc_l25}
+                               (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_0[0..18446744073709551615] ∈
+                                  {{ garbled mix of &{bufferStdIn;
+                                                      __malloc_w_can_fail_malloc_l11_0;
+                                                      __realloc_w_can_fail_realloc_l25}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __realloc_w_can_fail_realloc_l25[0..18446744073709551615] ∈
+                                  {{ garbled mix of &{bufferStdIn;
+                                                      __malloc_w_can_fail_malloc_l11_0;
+                                                      __realloc_w_can_fail_realloc_l25}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_can_fail_malloc_l11_1[0..31] ∈
+                                {{ garbled mix of &{bufferStdIn;
+                                                    __malloc_w_can_fail_malloc_l11_0;
+                                                    __realloc_w_can_fail_realloc_l25}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __realloc_w_can_fail_realloc_l25_0[0..8589934583] ∈
+                                    {{ garbled mix of &{bufferStdIn;
+                                                        __malloc_w_can_fail_malloc_l11_0;
+                                                        __realloc_w_can_fail_realloc_l25}
+                                     (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __realloc_w_can_fail_realloc_l25_1[0..8589934583] ∈
+                                    {{ garbled mix of &{bufferStdIn;
+                                                        __malloc_w_can_fail_malloc_l11_0;
+                                                        __realloc_w_can_fail_realloc_l25}
+                                     (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+[eva:final-states] Values at end of function removeFromLista:
+  alunosDadores.numbers ∈
+               {{ (int *)&__malloc_can_fail_malloc_l11_1 ;
+                  (int *)&__realloc_w_can_fail_realloc_l25_0 ;
+                  (int *)&__realloc_w_can_fail_realloc_l25_1 }}
+               .size ∈ [0..2147483645]
+               .realsize ∈ [8..2147483646],0%2
+  __retres ∈
+          {{ garbled mix of &{bufferStdIn; __malloc_w_can_fail_malloc_l11_0;
+                              __realloc_w_can_fail_realloc_l25}
+           (origin: Misaligned) }}
+[eva:final-states] Values at end of function can_fail_calloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈ {{ NULL ; (void *)&__calloc_can_fail_calloc_l18 }}
+[eva:final-states] Values at end of function can_fail_malloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈
+          {{ NULL ; (void *)&__malloc_can_fail_malloc_l11 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_0 ;
+             (void *)&__malloc_can_fail_malloc_l11_1 }}
+[eva:final-states] Values at end of function can_fail_realloc:
+  __fc_random_counter ∈ [--..--]
+  ptr ∈
+     {{ garbled mix of &{bufferStdIn; __malloc_w_can_fail_malloc_l11_0;
+                         __realloc_w_can_fail_realloc_l25;
+                         __malloc_can_fail_malloc_l11_1;
+                         __realloc_w_can_fail_realloc_l25_0;
+                         __realloc_w_can_fail_realloc_l25_1}
+      (origin: Misaligned) }} or ESCAPINGADDR
+  size ∈
+      {{ garbled mix of &{bufferStdIn; __malloc_w_can_fail_malloc_l11_0;
+                          __realloc_w_can_fail_realloc_l25}
+       (origin: Misaligned) }} or ESCAPINGADDR
+  fail ∈ [0. .. 1.]
+  bufferStdIn[0..8191] ∈
+             {{ garbled mix of &{bufferStdIn;
+                                 __malloc_w_can_fail_malloc_l11_0;
+                                 __realloc_w_can_fail_realloc_l25}
+              (origin: Misaligned) }} or ESCAPINGADDR
+  alunosDadores.numbers ∈
+               {{ NULL ; (int *)&__malloc_can_fail_malloc_l11_1 ;
+                  (int *)&__realloc_w_can_fail_realloc_l25_0 ;
+                  (int *)&__realloc_w_can_fail_realloc_l25_1 }} or ESCAPINGADDR
+               .size ∈ [0..2147483646]
+               .realsize ∈ [0..2147483646],0%2
+  __retres ∈
+          {{ NULL ; (void *)&__realloc_w_can_fail_realloc_l25 ;
+             (void *)&__realloc_w_can_fail_realloc_l25_0 ;
+             (void *)&__realloc_w_can_fail_realloc_l25_1 }}
+  __malloc_can_fail_malloc_l11[0..18446744073709551614] ∈
+                              {{ garbled mix of &{bufferStdIn;
+                                                  __malloc_w_can_fail_malloc_l11_0;
+                                                  __realloc_w_can_fail_realloc_l25}
+                               (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+                              [18446744073709551615] ∈
+                              {{ garbled mix of &{bufferStdIn;
+                                                  __malloc_w_can_fail_malloc_l11_0;
+                                                  __realloc_w_can_fail_realloc_l25}
+                               (origin: Misaligned) }} or UNINITIALIZED
+[eva:final-states] Values at end of function addToLista:
+  __fc_random_counter ∈ [--..--]
+  bufferStdIn[0..8191] ∈
+             {{ garbled mix of &{bufferStdIn;
+                                 __malloc_w_can_fail_malloc_l11_0;
+                                 __realloc_w_can_fail_realloc_l25}
+              (origin: Misaligned) }} or ESCAPINGADDR
+  alunosDadores.numbers ∈
+               {{ NULL ; (int *)&__malloc_can_fail_malloc_l11_1 ;
+                  (int *)&__realloc_w_can_fail_realloc_l25_0 ;
+                  (int *)&__realloc_w_can_fail_realloc_l25_1 }}
+               .size ∈ [0..2147483647]
+               .realsize ∈ [0..2147483646],0%2
+  __malloc_can_fail_malloc_l11[0..18446744073709551614] ∈
+                              {{ garbled mix of &{bufferStdIn;
+                                                  __malloc_w_can_fail_malloc_l11_0;
+                                                  __realloc_w_can_fail_realloc_l25}
+                               (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+                              [18446744073709551615] ∈
+                              {{ garbled mix of &{bufferStdIn;
+                                                  __malloc_w_can_fail_malloc_l11_0;
+                                                  __realloc_w_can_fail_realloc_l25}
+                               (origin: Misaligned) }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_0[0..18446744073709551615] ∈
+                                  {{ garbled mix of &{bufferStdIn;
+                                                      __malloc_w_can_fail_malloc_l11_0;
+                                                      __realloc_w_can_fail_realloc_l25}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+  __realloc_w_can_fail_realloc_l25[0..18446744073709551615] ∈
+                                  {{ garbled mix of &{bufferStdIn;
+                                                      __malloc_w_can_fail_malloc_l11_0;
+                                                      __realloc_w_can_fail_realloc_l25}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+  __malloc_can_fail_malloc_l11_1[0..31] ∈
+                                {{ garbled mix of &{bufferStdIn;
+                                                    __malloc_w_can_fail_malloc_l11_0;
+                                                    __realloc_w_can_fail_realloc_l25}
+                                 (origin: Misaligned) }} or UNINITIALIZED
+  __realloc_w_can_fail_realloc_l25_0[0..8589934583] ∈
+                                    {{ garbled mix of &{bufferStdIn;
+                                                        __malloc_w_can_fail_malloc_l11_0;
+                                                        __realloc_w_can_fail_realloc_l25}
+                                     (origin: Misaligned) }} or UNINITIALIZED
+  __realloc_w_can_fail_realloc_l25_1[0..8589934583] ∈
+                                    {{ garbled mix of &{bufferStdIn;
+                                                        __malloc_w_can_fail_malloc_l11_0;
+                                                        __realloc_w_can_fail_realloc_l25}
+                                     (origin: Misaligned) }} or UNINITIALIZED
+[eva:final-states] Values at end of function initLista:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  alunosDadores.numbers ∈
+               {{ NULL ; (int *)&__malloc_can_fail_malloc_l11_1 }}
+               .size ∈ {0}
+               .realsize ∈ {0; 8}
+  __malloc_can_fail_malloc_l11[0..18446744073709551614] ∈
+                              {{ garbled mix of &{bufferStdIn;
+                                                  __malloc_w_can_fail_malloc_l11_0;
+                                                  __realloc_w_can_fail_realloc_l25}
+                               (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+                              [18446744073709551615] ∈ UNINITIALIZED
+[eva:final-states] Values at end of function main:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  bufferStdIn[0..8191] ∈
+             {{ garbled mix of &{bufferStdIn;
+                                 __malloc_w_can_fail_malloc_l11_0;
+                                 __realloc_w_can_fail_realloc_l25}
+              (origin: Misaligned) }} or ESCAPINGADDR
+  tabela_alunos ∈
+               {{ NULL ; (Aluno *)&__malloc_can_fail_malloc_l11 }} or ESCAPINGADDR
+  numAlunos ∈
+           {{ garbled mix of &{bufferStdIn} (origin: Library function) }}
+  alunosEmAlunosDadores ∈
+                       {{ NULL ; &__calloc_can_fail_calloc_l18[0] }} or ESCAPINGADDR
+  alunosDadores.numbers ∈
+               {{ NULL ; (int *)&__malloc_can_fail_malloc_l11_1 ;
+                  (int *)&__realloc_w_can_fail_realloc_l25_0 ;
+                  (int *)&__realloc_w_can_fail_realloc_l25_1 }} or ESCAPINGADDR
+               .size ∈ {0}
+               .realsize ∈ [8..2147483646],0%2
+  c ∈
+   {{ garbled mix of &{bufferStdIn}
+    (origin: Misaligned
+    {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:54}) }} or UNINITIALIZED
+  num ∈
+     {{ garbled mix of &{bufferStdIn}
+      (origin: Misaligned
+      {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:54}) }} or UNINITIALIZED
+  i ∈ [0..2147483647]
+  numAmizades ∈
+             {{ garbled mix of &{bufferStdIn} (origin: Library function) }}
+  Aluno1 ∈
+        {{ garbled mix of &{bufferStdIn}
+         (origin: Misaligned
+         {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:54}) }} or UNINITIALIZED
+  Aluno2 ∈
+        {{ garbled mix of &{bufferStdIn}
+         (origin: Misaligned
+         {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:54}) }} or UNINITIALIZED
+  __retres ∈ {0}
+  S___fc_stdin[0] ∈
+              {{ garbled mix of &{bufferStdIn}
+               (origin: Misaligned
+               {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:54}) }}
+              [1] ∈ [--..--]
+  S___fc_stdout[0].__fc_FILE_id ∈
+               {{ garbled mix of &{bufferStdOut}
+                (origin: Library function
+                {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al166/Projeto3Copia.c:47}) }}
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{bufferStdIn; bufferStdOut;
+                                   __malloc_w_can_fail_malloc_l11_0;
+                                   __realloc_w_can_fail_realloc_l25}
+                (origin: Misaligned) }} or ESCAPINGADDR
+               [1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11[0..18446744073709551615] ∈
+                              {{ garbled mix of &{bufferStdIn;
+                                                  __malloc_w_can_fail_malloc_l11_0;
+                                                  __realloc_w_can_fail_realloc_l25}
+                               (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_0[0..18446744073709551615] ∈
+                                  {{ garbled mix of &{bufferStdIn;
+                                                      __malloc_w_can_fail_malloc_l11_0;
+                                                      __realloc_w_can_fail_realloc_l25}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __realloc_w_can_fail_realloc_l25[0..18446744073709551615] ∈
+                                  {{ garbled mix of &{bufferStdIn;
+                                                      __malloc_w_can_fail_malloc_l11_0;
+                                                      __realloc_w_can_fail_realloc_l25}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18[0..18446744073709551615] ∈ [--..--]
+  __malloc_can_fail_malloc_l11_1[0..31] ∈
+                                {{ garbled mix of &{bufferStdIn;
+                                                    __malloc_w_can_fail_malloc_l11_0;
+                                                    __realloc_w_can_fail_realloc_l25}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __realloc_w_can_fail_realloc_l25_0[0..8589934583] ∈
+                                    {{ garbled mix of &{bufferStdIn;
+                                                        __malloc_w_can_fail_malloc_l11_0;
+                                                        __realloc_w_can_fail_realloc_l25}
+                                     (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __realloc_w_can_fail_realloc_l25_1[0..8589934583] ∈
+                                    {{ garbled mix of &{bufferStdIn;
+                                                        __malloc_w_can_fail_malloc_l11_0;
+                                                        __realloc_w_can_fail_realloc_l25}
+                                     (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  8 functions analyzed (out of 8): 100% coverage.
+  In these functions, 154 statements reached (out of 154): 100% coverage.
+  ----------------------------------------------------------------------------
+  No errors or warnings raised during the analysis.
+  ----------------------------------------------------------------------------
+  126 alarms generated by the analysis:
+      39 invalid memory accesses
+      38 integer overflows
+      25 accesses to uninitialized left-values
+      23 escaping addresses
+       1 other
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     0 unknown     0 invalid      0 total
+    Preconditions     9 valid     8 unknown     0 invalid     17 total
+  52% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[report] Classification
+[report] Output /home/fmarques/sbugs/projects/outputs/framaC/asa_1920_p1/al166/errors.json
+[report] Reviews     :  110
+[report] Unclassified:  110

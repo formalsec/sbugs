@@ -1,0 +1,1162 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  result ∈ {0}
+[eva] using specification for function scanf_va_1
+[eva] using specification for function scanf_va_2
+[eva] using specification for function time
+[eva] using specification for function srand
+[eva] using specification for function rand
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11
+[eva] using specification for function scanf_va_4
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:142: 
+  signed overflow. assert -2147483648 ≤ av - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:142: 
+  signed overflow. assert -2147483648 ≤ (int)(av - 1) * num_st;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:142: 
+  signed overflow. assert (int)(av - 1) * num_st ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:142: 
+  signed overflow. assert -2147483648 ≤ (int)((int)(av - 1) * num_st) + st;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:142: 
+  signed overflow. assert (int)((int)(av - 1) * num_st) + st ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:142: 
+  signed overflow.
+  assert -2147483648 ≤ (int)((int)((int)(av - 1) * num_st) + st) - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:142: 
+  signed overflow.
+  assert
+  -2147483648 ≤ 2 * (int)((int)((int)((int)(av - 1) * num_st) + st) - 1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:142: 
+  signed overflow.
+  assert
+  2 * (int)((int)((int)((int)(av - 1) * num_st) + st) - 1) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:326: 
+  out of bounds write. assert \valid(list + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:324: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_0
+[eva] using specification for function scanf_va_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:316: 
+  out of bounds write. assert \valid(list + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:314: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:196: 
+  signed overflow. assert -2147483648 ≤ 2 * num_av;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:196: 
+  signed overflow. assert 2 * num_av ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:196: 
+  signed overflow. assert -2147483648 ≤ (int)(2 * num_av) * num_st;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:196: 
+  signed overflow. assert (int)(2 * num_av) * num_st ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_1
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:200: 
+  out of bounds write. assert \valid(m + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:199: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:205: 
+  division by zero. assert num_st ≢ 0;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:207: 
+  division by zero. assert num_st ≢ 0;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:207: 
+  signed overflow. assert (int)((int)(i / 2) + 1) - st ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:207: 
+  signed overflow.
+  assert
+  (int)((int)((int)((int)(i / 2) + 1) - st) / num_st) + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:147: 
+  division by zero. assert num_st ≢ 0;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:149: 
+  division by zero. assert num_st ≢ 0;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:149: 
+  signed overflow. assert (int)((int)(node / 2) + 1) - st ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:149: 
+  signed overflow.
+  assert
+  (int)((int)((int)((int)(node / 2) + 1) - st) / num_st) + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:152: 
+  signed overflow. assert -2147483648 ≤ 2 * num_st;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:152: 
+  signed overflow. assert 2 * num_st ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:152: 
+  signed overflow. assert node - (int)(2 * num_st) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:153: 
+  signed overflow. assert -2147483648 ≤ 2 * num_st;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:153: 
+  signed overflow. assert 2 * num_st ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:209: 
+  accessing uninitialized left-value. assert \initialized(m + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:209: 
+  out of bounds read. assert \valid_read(m + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:209: 
+  out of bounds write.
+  assert \valid(*(m + i) + tmp_0);
+  (tmp_0 from relativeInd(i, i + 1, num_st, num_av))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:159: 
+  signed overflow. assert -2147483648 ≤ 2 * num_st;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:159: 
+  signed overflow. assert 2 * num_st ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:159: 
+  signed overflow. assert node - (int)(2 * num_st) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:160: 
+  signed overflow. assert -2147483648 ≤ 2 * num_st;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:160: 
+  signed overflow. assert 2 * num_st ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:210: 
+  accessing uninitialized left-value. assert \initialized(m + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:210: 
+  out of bounds read. assert \valid_read(m + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:210: 
+  out of bounds write.
+  assert \valid(*(m + (int)(i + 1)) + tmp_1);
+  (tmp_1 from relativeInd(i + 1, i, num_st, num_av))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:215: 
+  out of bounds read. assert \valid_read(m + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:215: 
+  out of bounds write.
+  assert \valid(*(m + (int)(i + 1)) + tmp_2);
+  (tmp_2 from relativeInd(i + 1, i + 2, num_st, num_av))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:153: 
+  signed overflow. assert node + (int)(2 * num_st) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:216: 
+  accessing uninitialized left-value. assert \initialized(m + (int)(i + 2));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:216: 
+  out of bounds read. assert \valid_read(m + (int)(i + 2));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:216: 
+  out of bounds write.
+  assert \valid(*(m + (int)(i + 2)) + tmp_3);
+  (tmp_3 from relativeInd(i + 2, i + 1, num_st, num_av))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:218: 
+  signed overflow. assert -2147483648 ≤ 2 * num_st;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:218: 
+  signed overflow. assert 2 * num_st ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:218: 
+  out of bounds read. assert \valid_read(m + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:218: 
+  out of bounds write.
+  assert \valid(*(m + (int)(i + 1)) + tmp_4);
+  (tmp_4 from relativeInd(i + 1, i + 2 * num_st, num_st, num_av))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:219: 
+  signed overflow. assert -2147483648 ≤ 2 * num_st;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:219: 
+  signed overflow. assert 2 * num_st ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:149: 
+  signed overflow. assert -2147483648 ≤ (int)((int)(node / 2) + 1) - st;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:149: 
+  signed overflow.
+  assert (int)((int)((int)(node / 2) + 1) - st) / num_st ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:152: 
+  signed overflow. assert -2147483648 ≤ node - (int)(2 * num_st);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:153: 
+  signed overflow. assert -2147483648 ≤ node + (int)(2 * num_st);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:155: 
+  signed overflow. assert -2147483648 ≤ node - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:156: 
+  signed overflow. assert node + 3 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:219: 
+  signed overflow. assert -2147483648 ≤ 2 * num_st;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:219: 
+  signed overflow. assert 2 * num_st ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:219: 
+  accessing uninitialized left-value.
+  assert \initialized(m + (int)(i + (int)(2 * num_st)));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:219: 
+  out of bounds read. assert \valid_read(m + (int)(i + (int)(2 * num_st)));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:219: 
+  out of bounds write.
+  assert \valid(*(m + (int)(i + (int)(2 * num_st))) + tmp_5);
+  (tmp_5 from relativeInd(i + 2 * num_st, i + 1, num_st, num_av))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:222: 
+  out of bounds read. assert \valid_read(m + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:222: 
+  out of bounds write.
+  assert \valid(*(m + (int)(i + 1)) + tmp_6);
+  (tmp_6 from relativeInd(i + 1, i - 2, num_st, num_av))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:223: 
+  out of bounds read. assert \valid_read(m + (int)(i - 2));
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:223: 
+  all target addresses were invalid. This path is assumed to be dead.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:230: 
+  out of bounds read. assert \valid_read(m + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:230: 
+  out of bounds write.
+  assert \valid(*(m + (int)(i + 1)) + tmp_10);
+  (tmp_10 from relativeInd(i + 1, i - 2, num_st, num_av))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:231: 
+  out of bounds read. assert \valid_read(m + (int)(i - 2));
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:231: 
+  all target addresses were invalid. This path is assumed to be dead.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:243: 
+  out of bounds read. assert \valid_read(m + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:243: 
+  out of bounds write.
+  assert \valid(*(m + (int)(i + 1)) + tmp_16);
+  (tmp_16 from relativeInd(i + 1, i + 2, num_st, num_av))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:244: 
+  accessing uninitialized left-value. assert \initialized(m + (int)(i + 2));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:244: 
+  out of bounds read. assert \valid_read(m + (int)(i + 2));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:244: 
+  out of bounds write.
+  assert \valid(*(m + (int)(i + 2)) + tmp_17);
+  (tmp_17 from relativeInd(i + 2, i + 1, num_st, num_av))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:246: 
+  signed overflow. assert -2147483648 ≤ 2 * num_st;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:246: 
+  signed overflow. assert 2 * num_st ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:246: 
+  signed overflow. assert i - (int)(2 * num_st) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:246: 
+  out of bounds read. assert \valid_read(m + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:246: 
+  out of bounds write.
+  assert \valid(*(m + (int)(i + 1)) + tmp_18);
+  (tmp_18 from relativeInd(i + 1, i - 2 * num_st, num_st, num_av))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:247: 
+  signed overflow. assert -2147483648 ≤ 2 * num_st;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:247: 
+  signed overflow. assert 2 * num_st ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:247: 
+  signed overflow. assert i - (int)(2 * num_st) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:247: 
+  signed overflow. assert -2147483648 ≤ 2 * num_st;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:247: 
+  signed overflow. assert 2 * num_st ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:247: 
+  signed overflow. assert i - (int)(2 * num_st) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:247: 
+  accessing uninitialized left-value.
+  assert \initialized(m + (int)(i - (int)(2 * num_st)));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:247: 
+  out of bounds read. assert \valid_read(m + (int)(i - (int)(2 * num_st)));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:247: 
+  out of bounds write.
+  assert \valid(*(m + (int)(i - (int)(2 * num_st))) + tmp_19);
+  (tmp_19 from relativeInd(i - 2 * num_st, i + 1, num_st, num_av))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:250: 
+  out of bounds read. assert \valid_read(m + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:250: 
+  out of bounds write.
+  assert \valid(*(m + (int)(i + 1)) + tmp_20);
+  (tmp_20 from relativeInd(i + 1, i - 2, num_st, num_av))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:251: 
+  out of bounds read. assert \valid_read(m + (int)(i - 2));
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:251: 
+  all target addresses were invalid. This path is assumed to be dead.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:258: 
+  out of bounds read. assert \valid_read(m + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:258: 
+  out of bounds write.
+  assert \valid(*(m + (int)(i + 1)) + tmp_24);
+  (tmp_24 from relativeInd(i + 1, i - 2, num_st, num_av))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:259: 
+  out of bounds read. assert \valid_read(m + (int)(i - 2));
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:259: 
+  all target addresses were invalid. This path is assumed to be dead.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:272: 
+  signed overflow. assert -2147483648 ≤ 2 * num_st;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:272: 
+  signed overflow. assert 2 * num_st ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:272: 
+  signed overflow. assert i - (int)(2 * num_st) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:272: 
+  out of bounds read. assert \valid_read(m + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:272: 
+  out of bounds write.
+  assert \valid(*(m + (int)(i + 1)) + tmp_30);
+  (tmp_30 from relativeInd(i + 1, i - 2 * num_st, num_st, num_av))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:273: 
+  signed overflow. assert -2147483648 ≤ 2 * num_st;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:273: 
+  signed overflow. assert 2 * num_st ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:273: 
+  signed overflow. assert i - (int)(2 * num_st) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:273: 
+  signed overflow. assert -2147483648 ≤ 2 * num_st;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:273: 
+  signed overflow. assert 2 * num_st ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:273: 
+  signed overflow. assert i - (int)(2 * num_st) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:273: 
+  accessing uninitialized left-value.
+  assert \initialized(m + (int)(i - (int)(2 * num_st)));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:273: 
+  out of bounds read. assert \valid_read(m + (int)(i - (int)(2 * num_st)));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:273: 
+  out of bounds write.
+  assert \valid(*(m + (int)(i - (int)(2 * num_st))) + tmp_31);
+  (tmp_31 from relativeInd(i - 2 * num_st, i + 1, num_st, num_av))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:275: 
+  out of bounds read. assert \valid_read(m + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:275: 
+  out of bounds write.
+  assert \valid(*(m + (int)(i + 1)) + tmp_32);
+  (tmp_32 from relativeInd(i + 1, i + 2, num_st, num_av))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:276: 
+  accessing uninitialized left-value. assert \initialized(m + (int)(i + 2));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:276: 
+  out of bounds read. assert \valid_read(m + (int)(i + 2));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:276: 
+  out of bounds write.
+  assert \valid(*(m + (int)(i + 2)) + tmp_33);
+  (tmp_33 from relativeInd(i + 2, i + 1, num_st, num_av))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:278: 
+  signed overflow. assert -2147483648 ≤ 2 * num_st;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:278: 
+  signed overflow. assert 2 * num_st ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:278: 
+  out of bounds read. assert \valid_read(m + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:278: 
+  out of bounds write.
+  assert \valid(*(m + (int)(i + 1)) + tmp_34);
+  (tmp_34 from relativeInd(i + 1, i + 2 * num_st, num_st, num_av))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:279: 
+  signed overflow. assert -2147483648 ≤ 2 * num_st;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:279: 
+  signed overflow. assert 2 * num_st ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:279: 
+  signed overflow. assert -2147483648 ≤ 2 * num_st;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:279: 
+  signed overflow. assert 2 * num_st ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:279: 
+  accessing uninitialized left-value.
+  assert \initialized(m + (int)(i + (int)(2 * num_st)));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:279: 
+  out of bounds read. assert \valid_read(m + (int)(i + (int)(2 * num_st)));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:279: 
+  out of bounds write.
+  assert \valid(*(m + (int)(i + (int)(2 * num_st))) + tmp_35);
+  (tmp_35 from relativeInd(i + 2 * num_st, i + 1, num_st, num_av))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:284: 
+  signed overflow. assert -2147483648 ≤ 2 * num_st;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:284: 
+  signed overflow. assert 2 * num_st ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:284: 
+  signed overflow. assert i - (int)(2 * num_st) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:284: 
+  out of bounds read. assert \valid_read(m + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:284: 
+  out of bounds write.
+  assert \valid(*(m + (int)(i + 1)) + tmp_36);
+  (tmp_36 from relativeInd(i + 1, i - 2 * num_st, num_st, num_av))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:285: 
+  signed overflow. assert -2147483648 ≤ 2 * num_st;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:285: 
+  signed overflow. assert 2 * num_st ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:285: 
+  signed overflow. assert i - (int)(2 * num_st) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:285: 
+  signed overflow. assert -2147483648 ≤ 2 * num_st;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:285: 
+  signed overflow. assert 2 * num_st ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:285: 
+  signed overflow. assert i - (int)(2 * num_st) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:285: 
+  accessing uninitialized left-value.
+  assert \initialized(m + (int)(i - (int)(2 * num_st)));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:285: 
+  out of bounds read. assert \valid_read(m + (int)(i - (int)(2 * num_st)));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:285: 
+  out of bounds write.
+  assert \valid(*(m + (int)(i - (int)(2 * num_st))) + tmp_37);
+  (tmp_37 from relativeInd(i - 2 * num_st, i + 1, num_st, num_av))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:287: 
+  out of bounds read. assert \valid_read(m + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:287: 
+  out of bounds write.
+  assert \valid(*(m + (int)(i + 1)) + tmp_38);
+  (tmp_38 from relativeInd(i + 1, i - 2, num_st, num_av))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:288: 
+  out of bounds read. assert \valid_read(m + (int)(i - 2));
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:288: 
+  all target addresses were invalid. This path is assumed to be dead.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:295: 
+  signed overflow. assert -2147483648 ≤ 2 * num_st;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:295: 
+  signed overflow. assert 2 * num_st ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:295: 
+  signed overflow. assert i - (int)(2 * num_st) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:295: 
+  out of bounds read. assert \valid_read(m + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:295: 
+  out of bounds write.
+  assert \valid(*(m + (int)(i + 1)) + tmp_42);
+  (tmp_42 from relativeInd(i + 1, i - 2 * num_st, num_st, num_av))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:296: 
+  signed overflow. assert -2147483648 ≤ 2 * num_st;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:296: 
+  signed overflow. assert 2 * num_st ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:296: 
+  signed overflow. assert i - (int)(2 * num_st) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:296: 
+  signed overflow. assert -2147483648 ≤ 2 * num_st;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:296: 
+  signed overflow. assert 2 * num_st ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:296: 
+  signed overflow. assert i - (int)(2 * num_st) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:296: 
+  accessing uninitialized left-value.
+  assert \initialized(m + (int)(i - (int)(2 * num_st)));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:296: 
+  out of bounds read. assert \valid_read(m + (int)(i - (int)(2 * num_st)));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:296: 
+  out of bounds write.
+  assert \valid(*(m + (int)(i - (int)(2 * num_st))) + tmp_43);
+  (tmp_43 from relativeInd(i - 2 * num_st, i + 1, num_st, num_av))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:298: 
+  out of bounds read. assert \valid_read(m + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:298: 
+  out of bounds write.
+  assert \valid(*(m + (int)(i + 1)) + tmp_44);
+  (tmp_44 from relativeInd(i + 1, i - 2, num_st, num_av))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:299: 
+  out of bounds read. assert \valid_read(m + (int)(i - 2));
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:299: 
+  all target addresses were invalid. This path is assumed to be dead.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:203: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:160: 
+  signed overflow. assert node + (int)(2 * num_st) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:215: 
+  accessing uninitialized left-value. assert \initialized(m + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:218: 
+  signed overflow. assert i + (int)(2 * num_st) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:218: 
+  accessing uninitialized left-value. assert \initialized(m + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:219: 
+  signed overflow. assert i + (int)(2 * num_st) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:219: 
+  signed overflow. assert i + (int)(2 * num_st) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:222: 
+  accessing uninitialized left-value. assert \initialized(m + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:223: 
+  accessing uninitialized left-value. assert \initialized(m + (int)(i - 2));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:223: 
+  out of bounds write.
+  assert \valid(*(m + (int)(i - 2)) + tmp_7);
+  (tmp_7 from relativeInd(i - 2, i + 1, num_st, num_av))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:225: 
+  signed overflow. assert -2147483648 ≤ 2 * num_st;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:225: 
+  signed overflow. assert 2 * num_st ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:225: 
+  signed overflow. assert i + (int)(2 * num_st) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:225: 
+  accessing uninitialized left-value. assert \initialized(m + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:225: 
+  out of bounds read. assert \valid_read(m + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:225: 
+  out of bounds write.
+  assert \valid(*(m + (int)(i + 1)) + tmp_8);
+  (tmp_8 from relativeInd(i + 2 * num_st, i + 1, num_st, num_av))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:226: 
+  signed overflow. assert -2147483648 ≤ 2 * num_st;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:226: 
+  signed overflow. assert 2 * num_st ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:226: 
+  signed overflow. assert i + (int)(2 * num_st) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:226: 
+  signed overflow. assert -2147483648 ≤ 2 * num_st;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:226: 
+  signed overflow. assert 2 * num_st ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:226: 
+  signed overflow. assert i + (int)(2 * num_st) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:226: 
+  accessing uninitialized left-value.
+  assert \initialized(m + (int)(i + (int)(2 * num_st)));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:226: 
+  out of bounds read. assert \valid_read(m + (int)(i + (int)(2 * num_st)));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:226: 
+  out of bounds write.
+  assert \valid(*(m + (int)(i + (int)(2 * num_st))) + tmp_9);
+  (tmp_9 from relativeInd(i + 2 * num_st, i + 1, num_st, num_av))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:230: 
+  accessing uninitialized left-value. assert \initialized(m + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:231: 
+  accessing uninitialized left-value. assert \initialized(m + (int)(i - 2));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:231: 
+  out of bounds write.
+  assert \valid(*(m + (int)(i - 2)) + tmp_11);
+  (tmp_11 from relativeInd(i - 2, i + 1, num_st, num_av))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:233: 
+  accessing uninitialized left-value. assert \initialized(m + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:233: 
+  out of bounds read. assert \valid_read(m + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:233: 
+  out of bounds write.
+  assert \valid(*(m + (int)(i + 1)) + tmp_12);
+  (tmp_12 from relativeInd(i + 1, i + 2, num_st, num_av))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:234: 
+  accessing uninitialized left-value. assert \initialized(m + (int)(i + 2));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:234: 
+  out of bounds read. assert \valid_read(m + (int)(i + 2));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:234: 
+  out of bounds write.
+  assert \valid(*(m + (int)(i + 2)) + tmp_13);
+  (tmp_13 from relativeInd(i + 2, i + 1, num_st, num_av))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:236: 
+  signed overflow. assert -2147483648 ≤ 2 * num_st;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:236: 
+  signed overflow. assert 2 * num_st ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:236: 
+  signed overflow. assert i + (int)(2 * num_st) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:236: 
+  out of bounds read. assert \valid_read(m + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:236: 
+  out of bounds write.
+  assert \valid(*(m + (int)(i + 1)) + tmp_14);
+  (tmp_14 from relativeInd(i + 1, i + 2 * num_st, num_st, num_av))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:237: 
+  signed overflow. assert -2147483648 ≤ 2 * num_st;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:237: 
+  signed overflow. assert 2 * num_st ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:237: 
+  signed overflow. assert i + (int)(2 * num_st) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:237: 
+  signed overflow. assert -2147483648 ≤ 2 * num_st;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:237: 
+  signed overflow. assert 2 * num_st ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:237: 
+  signed overflow. assert i + (int)(2 * num_st) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:237: 
+  accessing uninitialized left-value.
+  assert \initialized(m + (int)(i + (int)(2 * num_st)));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:237: 
+  out of bounds read. assert \valid_read(m + (int)(i + (int)(2 * num_st)));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:237: 
+  out of bounds write.
+  assert \valid(*(m + (int)(i + (int)(2 * num_st))) + tmp_15);
+  (tmp_15 from relativeInd(i + 2 * num_st, i + 1, num_st, num_av))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:243: 
+  accessing uninitialized left-value. assert \initialized(m + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:246: 
+  accessing uninitialized left-value. assert \initialized(m + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:250: 
+  accessing uninitialized left-value. assert \initialized(m + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:251: 
+  accessing uninitialized left-value. assert \initialized(m + (int)(i - 2));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:251: 
+  out of bounds write.
+  assert \valid(*(m + (int)(i - 2)) + tmp_21);
+  (tmp_21 from relativeInd(i - 2, i + 1, num_st, num_av))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:253: 
+  signed overflow. assert -2147483648 ≤ 2 * num_st;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:253: 
+  signed overflow. assert 2 * num_st ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:253: 
+  signed overflow. assert i - (int)(2 * num_st) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:253: 
+  accessing uninitialized left-value. assert \initialized(m + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:253: 
+  out of bounds read. assert \valid_read(m + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:253: 
+  out of bounds write.
+  assert \valid(*(m + (int)(i + 1)) + tmp_22);
+  (tmp_22 from relativeInd(i + 1, i - 2 * num_st, num_st, num_av))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:254: 
+  signed overflow. assert -2147483648 ≤ 2 * num_st;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:254: 
+  signed overflow. assert 2 * num_st ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:254: 
+  signed overflow. assert i - (int)(2 * num_st) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:254: 
+  signed overflow. assert -2147483648 ≤ 2 * num_st;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:254: 
+  signed overflow. assert 2 * num_st ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:254: 
+  signed overflow. assert i - (int)(2 * num_st) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:254: 
+  accessing uninitialized left-value.
+  assert \initialized(m + (int)(i - (int)(2 * num_st)));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:254: 
+  out of bounds read. assert \valid_read(m + (int)(i - (int)(2 * num_st)));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:254: 
+  out of bounds write.
+  assert \valid(*(m + (int)(i - (int)(2 * num_st))) + tmp_23);
+  (tmp_23 from relativeInd(i - 2 * num_st, i + 1, num_st, num_av))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:258: 
+  accessing uninitialized left-value. assert \initialized(m + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:259: 
+  accessing uninitialized left-value. assert \initialized(m + (int)(i - 2));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:259: 
+  out of bounds write.
+  assert \valid(*(m + (int)(i - 2)) + tmp_25);
+  (tmp_25 from relativeInd(i - 2, i + 1, num_st, num_av))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:262: 
+  accessing uninitialized left-value. assert \initialized(m + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:262: 
+  out of bounds read. assert \valid_read(m + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:262: 
+  out of bounds write.
+  assert \valid(*(m + (int)(i + 1)) + tmp_26);
+  (tmp_26 from relativeInd(i + 1, i + 2, num_st, num_av))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:263: 
+  accessing uninitialized left-value. assert \initialized(m + (int)(i + 2));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:263: 
+  out of bounds read. assert \valid_read(m + (int)(i + 2));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:263: 
+  out of bounds write.
+  assert \valid(*(m + (int)(i + 2)) + tmp_27);
+  (tmp_27 from relativeInd(i + 2, i + 1, num_st, num_av))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:265: 
+  signed overflow. assert -2147483648 ≤ 2 * num_st;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:265: 
+  signed overflow. assert 2 * num_st ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:265: 
+  signed overflow. assert i - (int)(2 * num_st) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:265: 
+  out of bounds read. assert \valid_read(m + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:265: 
+  out of bounds write.
+  assert \valid(*(m + (int)(i + 1)) + tmp_28);
+  (tmp_28 from relativeInd(i + 1, i - 2 * num_st, num_st, num_av))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:266: 
+  signed overflow. assert -2147483648 ≤ 2 * num_st;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:266: 
+  signed overflow. assert 2 * num_st ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:266: 
+  signed overflow. assert i - (int)(2 * num_st) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:266: 
+  signed overflow. assert -2147483648 ≤ 2 * num_st;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:266: 
+  signed overflow. assert 2 * num_st ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:266: 
+  signed overflow. assert i - (int)(2 * num_st) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:266: 
+  accessing uninitialized left-value.
+  assert \initialized(m + (int)(i - (int)(2 * num_st)));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:266: 
+  out of bounds read. assert \valid_read(m + (int)(i - (int)(2 * num_st)));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:266: 
+  out of bounds write.
+  assert \valid(*(m + (int)(i - (int)(2 * num_st))) + tmp_29);
+  (tmp_29 from relativeInd(i - 2 * num_st, i + 1, num_st, num_av))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:272: 
+  accessing uninitialized left-value. assert \initialized(m + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:275: 
+  accessing uninitialized left-value. assert \initialized(m + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:278: 
+  signed overflow. assert i + (int)(2 * num_st) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:278: 
+  accessing uninitialized left-value. assert \initialized(m + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:279: 
+  signed overflow. assert i + (int)(2 * num_st) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:279: 
+  signed overflow. assert i + (int)(2 * num_st) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:284: 
+  accessing uninitialized left-value. assert \initialized(m + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:287: 
+  accessing uninitialized left-value. assert \initialized(m + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:288: 
+  accessing uninitialized left-value. assert \initialized(m + (int)(i - 2));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:288: 
+  out of bounds write.
+  assert \valid(*(m + (int)(i - 2)) + tmp_39);
+  (tmp_39 from relativeInd(i - 2, i + 1, num_st, num_av))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:290: 
+  signed overflow. assert -2147483648 ≤ 2 * num_st;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:290: 
+  signed overflow. assert 2 * num_st ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:290: 
+  signed overflow. assert i + (int)(2 * num_st) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:290: 
+  accessing uninitialized left-value. assert \initialized(m + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:290: 
+  out of bounds read. assert \valid_read(m + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:290: 
+  out of bounds write.
+  assert \valid(*(m + (int)(i + 1)) + tmp_40);
+  (tmp_40 from relativeInd(i + 1, i + 2 * num_st, num_st, num_av))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:291: 
+  signed overflow. assert -2147483648 ≤ 2 * num_st;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:291: 
+  signed overflow. assert 2 * num_st ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:291: 
+  signed overflow. assert i + (int)(2 * num_st) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:291: 
+  signed overflow. assert -2147483648 ≤ 2 * num_st;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:291: 
+  signed overflow. assert 2 * num_st ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:291: 
+  signed overflow. assert i + (int)(2 * num_st) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:291: 
+  accessing uninitialized left-value.
+  assert \initialized(m + (int)(i + (int)(2 * num_st)));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:291: 
+  out of bounds read. assert \valid_read(m + (int)(i + (int)(2 * num_st)));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:291: 
+  out of bounds write.
+  assert \valid(*(m + (int)(i + (int)(2 * num_st))) + tmp_41);
+  (tmp_41 from relativeInd(i + 2 * num_st, i + 1, num_st, num_av))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:295: 
+  accessing uninitialized left-value. assert \initialized(m + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:298: 
+  accessing uninitialized left-value. assert \initialized(m + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:299: 
+  accessing uninitialized left-value. assert \initialized(m + (int)(i - 2));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:299: 
+  out of bounds write.
+  assert \valid(*(m + (int)(i - 2)) + tmp_45);
+  (tmp_45 from relativeInd(i - 2, i + 1, num_st, num_av))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:301: 
+  accessing uninitialized left-value. assert \initialized(m + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:301: 
+  out of bounds read. assert \valid_read(m + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:301: 
+  out of bounds write.
+  assert \valid(*(m + (int)(i + 1)) + tmp_46);
+  (tmp_46 from relativeInd(i + 1, i + 2, num_st, num_av))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:302: 
+  accessing uninitialized left-value. assert \initialized(m + (int)(i + 2));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:302: 
+  out of bounds read. assert \valid_read(m + (int)(i + 2));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:302: 
+  out of bounds write.
+  assert \valid(*(m + (int)(i + 2)) + tmp_47);
+  (tmp_47 from relativeInd(i + 2, i + 1, num_st, num_av))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:304: 
+  signed overflow. assert -2147483648 ≤ 2 * num_st;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:304: 
+  signed overflow. assert 2 * num_st ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:304: 
+  signed overflow. assert i + (int)(2 * num_st) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:304: 
+  out of bounds read. assert \valid_read(m + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:304: 
+  out of bounds write.
+  assert \valid(*(m + (int)(i + 1)) + tmp_48);
+  (tmp_48 from relativeInd(i + 1, i + 2 * num_st, num_st, num_av))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:305: 
+  signed overflow. assert -2147483648 ≤ 2 * num_st;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:305: 
+  signed overflow. assert 2 * num_st ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:305: 
+  signed overflow. assert i + (int)(2 * num_st) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:305: 
+  signed overflow. assert -2147483648 ≤ 2 * num_st;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:305: 
+  signed overflow. assert 2 * num_st ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:305: 
+  signed overflow. assert i + (int)(2 * num_st) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:305: 
+  accessing uninitialized left-value.
+  assert \initialized(m + (int)(i + (int)(2 * num_st)));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:305: 
+  out of bounds read. assert \valid_read(m + (int)(i + (int)(2 * num_st)));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:305: 
+  out of bounds write.
+  assert \valid(*(m + (int)(i + (int)(2 * num_st))) + tmp_49);
+  (tmp_49 from relativeInd(i + 2 * num_st, i + 1, num_st, num_av))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:236: 
+  accessing uninitialized left-value. assert \initialized(m + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:265: 
+  accessing uninitialized left-value. assert \initialized(m + (int)(i + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:304: 
+  accessing uninitialized left-value. assert \initialized(m + (int)(i + 1));
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:209: 
+  more than 200(1073741823) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:210: 
+  more than 200(1073741823) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:216: 
+  more than 200(1073741823) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:219: 
+  more than 200(1073741824) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:223: 
+  more than 200(1073741822) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:225: 
+  more than 200(1073741822) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:234: 
+  more than 200(1073741822) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:41: 
+  signed overflow. assert -2147483648 ≤ num_av * num_st;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:41: 
+  signed overflow. assert num_av * num_st ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:41: 
+  signed overflow. assert -2147483648 ≤ (int)(num_av * num_st) * 2;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:41: 
+  signed overflow. assert (int)(num_av * num_st) * 2 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_3
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_4
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_5
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:91: 
+  out of bounds write. assert \valid(&q->node);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:58: 
+  out of bounds write. assert \valid(parent + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:58: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:62: 
+  accessing uninitialized left-value. assert \initialized(cits + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:62: 
+  out of bounds read. assert \valid_read(cits + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:62: 
+  out of bounds write. assert \valid(parent + *(cits + i));
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:62: 
+  more than 200(1073741824) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:63: 
+  out of bounds read. assert \valid_read(cits + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:63: 
+  accessing uninitialized left-value. assert \initialized(graph + *(cits + i));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:63: 
+  out of bounds read. assert \valid_read(graph + *(cits + i));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:63: 
+  accessing uninitialized left-value.
+  assert \initialized(*(graph + *(cits + i)) + 4);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:63: 
+  out of bounds read. assert \valid_read(*(graph + *(cits + i)) + 4);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:64: 
+  out of bounds read. assert \valid_read(cits + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:118: 
+  out of bounds write. assert \valid(q->node + q->out);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:61: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:63: 
+  accessing uninitialized left-value. assert \initialized(cits + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:64: 
+  accessing uninitialized left-value. assert \initialized(cits + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:117: 
+  signed overflow. assert q->out + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:128: 
+  accessing uninitialized left-value. assert \initialized(q->node + q->in);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:128: 
+  out of bounds read. assert \valid_read(q->node + q->in);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:172: 
+  division by zero. assert num_st ≢ 0;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:174: 
+  division by zero. assert num_st ≢ 0;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:174: 
+  signed overflow. assert -2147483648 ≤ (int)((int)(node / 2) + 1) - st;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:174: 
+  signed overflow. assert (int)((int)(node / 2) + 1) - st ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:174: 
+  signed overflow.
+  assert (int)((int)((int)(node / 2) + 1) - st) / num_st ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:174: 
+  signed overflow.
+  assert
+  (int)((int)((int)((int)(node / 2) + 1) - st) / num_st) + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:179: 
+  signed overflow. assert -2147483648 ≤ 2 * num_st;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:179: 
+  signed overflow. assert 2 * num_st ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:179: 
+  signed overflow. assert -2147483648 ≤ node - (int)(2 * num_st);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:179: 
+  signed overflow. assert node - (int)(2 * num_st) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:186: 
+  signed overflow. assert -2147483648 ≤ 2 * num_st;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:186: 
+  signed overflow. assert 2 * num_st ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:186: 
+  signed overflow. assert -2147483648 ≤ node - (int)(2 * num_st);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:186: 
+  signed overflow. assert node - (int)(2 * num_st) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:73: 
+  accessing uninitialized left-value. assert \initialized(parent + next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:73: 
+  out of bounds read. assert \valid_read(parent + next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:73: 
+  accessing uninitialized left-value. assert \initialized(graph + currentNode);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:73: 
+  out of bounds read. assert \valid_read(graph + currentNode);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:73: 
+  accessing uninitialized left-value.
+  assert \initialized(*(graph + currentNode) + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:73: 
+  out of bounds read. assert \valid_read(*(graph + currentNode) + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:74: 
+  out of bounds write. assert \valid(parent + next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:76: 
+  accessing uninitialized left-value. assert \initialized(sups + t);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:76: 
+  out of bounds read. assert \valid_read(sups + t);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:75: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:70: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:187: 
+  signed overflow. assert node + 3 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:180: 
+  signed overflow. assert -2147483648 ≤ 2 * num_st;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:180: 
+  signed overflow. assert 2 * num_st ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:180: 
+  signed overflow. assert -2147483648 ≤ node + (int)(2 * num_st);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:180: 
+  signed overflow. assert node + (int)(2 * num_st) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:188: 
+  signed overflow. assert -2147483648 ≤ 2 * num_st;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:188: 
+  signed overflow. assert 2 * num_st ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:188: 
+  signed overflow. assert -2147483648 ≤ node + (int)(2 * num_st);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:188: 
+  signed overflow. assert node + (int)(2 * num_st) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:181: 
+  signed overflow. assert -2147483648 ≤ node - 3;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:189: 
+  signed overflow. assert -2147483648 ≤ node - 1;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:67: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:129: 
+  signed overflow. assert q->in + 1 ≤ 2147483647;
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:62: 
+  more than 200(1073741824) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:97: 
+  accessing uninitialized left-value.
+  assert \initialized(parent + currentNode);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:97: 
+  out of bounds read. assert \valid_read(parent + currentNode);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:160: 
+  signed overflow. assert -2147483648 ≤ node + (int)(2 * num_st);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:100: 
+  accessing uninitialized left-value.
+  assert \initialized(matrix + previousNode);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:100: 
+  out of bounds read. assert \valid_read(matrix + previousNode);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:100: 
+  out of bounds write.
+  assert \valid(*(matrix + previousNode) + tmp_1);
+  (tmp_1 from relativeInd(previousNode, currentNode, num_st, num_av))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:101: 
+  accessing uninitialized left-value.
+  assert \initialized(matrix + currentNode);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:101: 
+  out of bounds read. assert \valid_read(matrix + currentNode);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:101: 
+  out of bounds write.
+  assert \valid(*(matrix + currentNode) + tmp_2);
+  (tmp_2 from relativeInd(currentNode, previousNode, num_st, num_av))
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:96: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:94: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:106: 
+  signed overflow. assert result + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:45: 
+  signed overflow. assert -2147483648 ≤ 2 * num_av;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:45: 
+  signed overflow. assert 2 * num_av ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:45: 
+  signed overflow. assert -2147483648 ≤ (int)(2 * num_av) * num_st;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:45: 
+  signed overflow. assert (int)(2 * num_av) * num_st ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:334: 
+  accessing uninitialized left-value. assert \initialized(g + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:334: 
+  out of bounds read. assert \valid_read(g + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:333: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al160/asa2.c:334: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(g + i);
+[eva] using specification for function printf_va_1
+[eva] done for function main
+[scope:rm_asserts] removing 133 assertion(s)
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function dequeue:
+  ret ∈ [-2147483648..2147483646] or UNINITIALIZED
+  __retres ∈ [-2147483648..2147483646]
+  __malloc_can_fail_malloc_l11_4[bits 0 to 63] ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_can_fail_malloc_l11_5 }}
+                                [bits 64 to 127]# ∈
+                                [-1..2147483647] repeated %32 
+[eva:final-states] Values at end of function empty:
+  
+[eva:final-states] Values at end of function enqueue:
+  __malloc_can_fail_malloc_l11_4[bits 0 to 63] ∈
+                                {{ (? *)&__malloc_can_fail_malloc_l11_5 }}
+                                [bits 64 to 127]# ∈
+                                [0..2147483647] repeated %32 
+  __malloc_can_fail_malloc_l11_5[bits 0 to 68719476735]# ∈
+                                [-2147483648..2147483646] or UNINITIALIZED repeated %32 
+                                [8589934592..18446744073709551607] ∈
+                                UNINITIALIZED
+[eva:final-states] Values at end of function freeGraph:
+  graph ∈
+       {{ NULL ; (int **)&__malloc_can_fail_malloc_l11_1 }} or ESCAPINGADDR
+  g ∈ {{ NULL ; (int **)&__malloc_can_fail_malloc_l11_1 }} or ESCAPINGADDR
+  i ∈ [0..2147483647]
+  __malloc_can_fail_malloc_l11_1[bits 0 to 137438953343]# ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED or ESCAPINGADDR repeated %64 
+                                [17179869168..18446744073709551599] ∈
+                                UNINITIALIZED
+[eva:final-states] Values at end of function graphInd:
+  av ∈ [-2147483647..2147483647]
+  st ∈ [--..--]
+  __retres ∈ [--..--]
+[eva:final-states] Values at end of function bfs:
+  i ∈ [0..2147483647]
+  t ∈ [0..2147483647] or UNINITIALIZED
+  currentNode ∈ [-2147483648..2147483646] or UNINITIALIZED
+  next ∈ [-1..2147483646]
+  __retres ∈ [-3..2147483645],1%2
+  __malloc_can_fail_malloc_l11_3[bits 0 to 68719476703]# ∈
+                                [-2..2147483646] or UNINITIALIZED repeated %32 
+                                [8589934588..18446744073709551607] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11_4[bits 0 to 63] ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_can_fail_malloc_l11_5 }}
+                                [bits 64 to 127]# ∈
+                                [-1..2147483647] repeated %32 
+  __malloc_can_fail_malloc_l11_5[bits 0 to 68719476735]# ∈
+                                [-2147483648..2147483646] or UNINITIALIZED repeated %32 
+                                [8589934592..18446744073709551607] ∈
+                                UNINITIALIZED
+[eva:final-states] Values at end of function ind:
+  __retres ∈ [-2147483648..2147483646],0%2
+[eva:final-states] Values at end of function relativeInd:
+  av ∈ [-2147483647..2147483647]
+  st ∈ [--..--]
+  __retres ∈ {-1; 0; 1; 2; 3; 4}
+[eva:final-states] Values at end of function can_fail_malloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈
+          {{ NULL ; (void *)&__malloc_can_fail_malloc_l11 ;
+             (void *)&__malloc_can_fail_malloc_l11_0 ;
+             (void *)&__malloc_can_fail_malloc_l11_1 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_2 ;
+             (void *)&__malloc_can_fail_malloc_l11_3 ;
+             (void *)&__malloc_can_fail_malloc_l11_4 ;
+             (void *)&__malloc_can_fail_malloc_l11_5 }}
+[eva:final-states] Values at end of function edmondsKarp:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  result ∈ [0..2147483647]
+  currentNode ∈ {-3}
+  previousNode ∈ [-2..2147483646]
+  parent ∈
+        {{ NULL ; (int *)&__malloc_can_fail_malloc_l11_3 }} or ESCAPINGADDR
+  q ∈ ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_2[bits 0 to 159]# ∈
+                                  {0; 1} or UNINITIALIZED repeated %32 
+  __malloc_can_fail_malloc_l11_3[bits 0 to 68719476703]# ∈
+                                [-2..2147483646] or UNINITIALIZED repeated %32 
+                                [8589934588..18446744073709551607] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11_5[bits 0 to 68719476735]# ∈
+                                [-2147483648..2147483646] or UNINITIALIZED repeated %32 
+                                [8589934592..18446744073709551607] ∈
+                                UNINITIALIZED
+[eva:final-states] Values at end of function initializeCitLocations:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  i ∈ [0..2147483647]
+  av ∈ [-2147483647..2147483647] or UNINITIALIZED
+  st ∈ [--..--] or UNINITIALIZED
+  list ∈ {{ NULL ; (int *)&__malloc_can_fail_malloc_l11_0 }}
+  S___fc_stdin[0..1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11_0[bits 0 to 68719476703]# ∈
+                                [-2147483648..2147483646],0%2 or UNINITIALIZED repeated %32 
+                                [8589934588..18446744073709551611] ∈
+                                UNINITIALIZED
+[eva:final-states] Values at end of function initializeGraph:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  i ∈ [0..2147483646],0%2
+  av ∈ [-2147483646..2147483647] or UNINITIALIZED
+  st ∈ [--..--] or UNINITIALIZED
+  n ∈ [-2147483648..2147483646],0%2
+  m ∈ {{ NULL ; (int **)&__malloc_can_fail_malloc_l11_1 }}
+  __malloc_can_fail_malloc_l11_1[bits 0 to 137438953343]# ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED repeated %64 
+                                [17179869168..18446744073709551599] ∈
+                                UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_2[bits 0 to 159]# ∈
+                                  {0; 1} or UNINITIALIZED repeated %32 
+[eva:final-states] Values at end of function initializeSupLocations:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  i ∈ [0..2147483647]
+  av ∈ [-2147483647..2147483647] or UNINITIALIZED
+  st ∈ [--..--] or UNINITIALIZED
+  list ∈ {{ NULL ; (int *)&__malloc_can_fail_malloc_l11 }}
+  S___fc_stdin[0..1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11[bits 0 to 68719476703]# ∈
+                              [-2147483647..2147483647],1%2 or UNINITIALIZED repeated %32 
+                              [8589934588..18446744073709551611] ∈
+                              UNINITIALIZED
+[eva:final-states] Values at end of function main:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  result ∈ [0..2147483647]
+  num_av ∈ [--..--]
+  num_st ∈ [--..--]
+  num_sup ∈ [--..--]
+  num_cit ∈ [--..--]
+  graph ∈
+       {{ NULL ; (int **)&__malloc_can_fail_malloc_l11_1 }} or ESCAPINGADDR
+  cits ∈
+      {{ NULL ; (int *)&__malloc_can_fail_malloc_l11_0 }} or ESCAPINGADDR
+  sups ∈ {{ NULL ; (int *)&__malloc_can_fail_malloc_l11 }} or ESCAPINGADDR
+  __retres ∈ {0}
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11[bits 0 to 68719476703]# ∈
+                              [-2147483647..2147483647],1%2 or UNINITIALIZED repeated %32 
+                              [8589934588..18446744073709551611] ∈
+                              UNINITIALIZED
+  __malloc_can_fail_malloc_l11_0[bits 0 to 68719476703]# ∈
+                                [-2147483648..2147483646],0%2 or UNINITIALIZED repeated %32 
+                                [8589934588..18446744073709551611] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11_1[bits 0 to 137438953343]# ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED or ESCAPINGADDR repeated %64 
+                                [17179869168..18446744073709551599] ∈
+                                UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_2[bits 0 to 159]# ∈
+                                  {0; 1} or UNINITIALIZED repeated %32 
+  __malloc_can_fail_malloc_l11_3[bits 0 to 68719476703]# ∈
+                                [-2..2147483646] or UNINITIALIZED repeated %32 
+                                [8589934588..18446744073709551607] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11_5[bits 0 to 68719476735]# ∈
+                                [-2147483648..2147483646] or UNINITIALIZED repeated %32 
+                                [8589934592..18446744073709551607] ∈
+                                UNINITIALIZED
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  14 functions analyzed (out of 16): 87% coverage.
+  In these functions, 454 statements reached (out of 454): 100% coverage.
+  ----------------------------------------------------------------------------
+  No errors or warnings raised during the analysis.
+  ----------------------------------------------------------------------------
+  372 alarms generated by the analysis:
+     177 integer overflows
+     124 invalid memory accesses
+      64 accesses to uninitialized left-values
+       6 divisions by zero
+       1 escaping address
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     0 unknown     0 invalid      0 total
+    Preconditions    21 valid     0 unknown     0 invalid     21 total
+  100% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[report] Classification
+[report] Output /home/fmarques/sbugs/projects/outputs/framaC/asa_1920_p2/al160/errors.json
+[report] Reviews     :  239
+[report] Unclassified:  239

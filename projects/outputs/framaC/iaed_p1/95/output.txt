@@ -1,0 +1,1524 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:typing:no-proto] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:71: 
+  Calling function init_inventario_prod that is declared without prototype.
+  Its formals will be inferred from actual arguments
+[kernel:typing:no-proto] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:73: 
+  Calling function init_inventario_enc that is declared without prototype.
+  Its formals will be inferred from actual arguments
+[kernel:typing:no-proto] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:97: 
+  Calling function init_enc that is declared without prototype.
+  Its formals will be inferred from actual arguments
+[kernel:typing:no-proto] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:141: 
+  Calling function ordena_prods that is declared without prototype.
+  Its formals will be inferred from actual arguments
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  inventario_prod[0..9999] ∈ {0}
+  inventario_prod_ord[0..9999] ∈ {0}
+  inventario_enc[0..499] ∈ {0}
+  conta_prod ∈ {0}
+  conta_enc ∈ {0}
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:165: 
+  starting to merge loop iterations
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:167: 
+  more than 200(10000) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:167: 
+  more than 200(10000) elements to enumerate. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:175: 
+  starting to merge loop iterations
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:177: 
+  more than 200(500) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:177: 
+  more than 200(500) elements to enumerate. Approximating.
+[eva] using specification for function getchar
+[eva] using specification for function scanf_va_1
+[eva] using specification for function printf_va_1
+[eva] using specification for function scanf_va_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:202: 
+  accessing out of bounds index. assert 0 ≤ idp;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:202: 
+  accessing out of bounds index. assert idp < 10000;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:204: 
+  signed overflow. assert -2147483648 ≤ inventario_prod[idp].qtd + qtd;
+[eva] using specification for function printf_va_3
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:192: 
+  starting to merge loop iterations
+[eva] using specification for function printf_va_2
+[eva] using specification for function scanf_va_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:215: 
+  accessing out of bounds index. assert 0 ≤ ide;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:215: 
+  accessing out of bounds index. assert ide < 500;
+[eva] using specification for function printf_va_4
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:219: 
+  accessing out of bounds index. assert 0 ≤ idp;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:219: 
+  accessing out of bounds index. assert idp < 10000;
+[eva] using specification for function printf_va_5
+[eva] using specification for function printf_va_6
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:227: 
+  signed overflow. assert inventario_prod[idp].peso * qtd ≤ 2147483647;
+[eva] using specification for function printf_va_7
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:248: 
+  accessing out of bounds index. assert 0 ≤ index_enc_prod;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:248: 
+  too many locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:248: 
+  more than 200(500) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:249: 
+  signed overflow.
+  assert inventario_enc[ide].conta_prod_enc + 1 ≤ 2147483647;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:249: 
+  more than 200(500) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:251: 
+  signed overflow. assert inventario_prod[idp].qtd - qtd ≤ 2147483647;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:251: 
+  more than 200(10000) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:252: 
+  more than 200(500) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:223: 
+  more than 200(10000) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:227: 
+  more than 200(10000) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:236: 
+  more than 200(500) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:248: 
+  more than 200(500) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:252: 
+  more than 200(500) elements to enumerate. Approximating.
+[eva] using specification for function scanf_va_4
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:272: 
+  accessing out of bounds index. assert 0 ≤ idp;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:272: 
+  accessing out of bounds index. assert idp < 10000;
+[eva] using specification for function printf_va_8
+[eva] using specification for function printf_va_9
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:282: 
+  signed overflow. assert inventario_prod[idp].qtd - qtd ≤ 2147483647;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:282: 
+  more than 200(10000) locations to update in array. Approximating.
+[eva] using specification for function scanf_va_5
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:289: 
+  accessing out of bounds index. assert 0 ≤ ide;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:289: 
+  accessing out of bounds index. assert ide < 500;
+[eva] using specification for function printf_va_10
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:293: 
+  accessing out of bounds index. assert 0 ≤ idp;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:293: 
+  accessing out of bounds index. assert idp < 10000;
+[eva] using specification for function printf_va_11
+[eva] using specification for function scanf_va_6
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:321: 
+  accessing out of bounds index. assert 0 ≤ ide;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:321: 
+  accessing out of bounds index. assert ide < 500;
+[eva] using specification for function printf_va_12
+[eva] using specification for function printf_va_13
+[eva] using specification for function scanf_va_7
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:342: 
+  accessing out of bounds index. assert 0 ≤ idp;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:342: 
+  accessing out of bounds index. assert idp < 10000;
+[eva] using specification for function printf_va_14
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:349: 
+  more than 200(10000) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:349: 
+  more than 200(10000) elements to enumerate. Approximating.
+[eva] using specification for function scanf_va_8
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:368: 
+  accessing out of bounds index. assert 0 ≤ ide;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:368: 
+  accessing out of bounds index. assert ide < 500;
+[eva] using specification for function printf_va_15
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:372: 
+  accessing out of bounds index. assert 0 ≤ idp;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:372: 
+  accessing out of bounds index. assert idp < 10000;
+[eva] using specification for function printf_va_16
+[eva] using specification for function printf_va_18
+[eva] using specification for function scanf_va_9
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:400: 
+  accessing out of bounds index. assert 0 ≤ idp;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:400: 
+  accessing out of bounds index. assert idp < 10000;
+[eva] using specification for function printf_va_19
+[eva] using specification for function printf_va_21
+[eva] using specification for function scanf_va_10
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:458: 
+  accessing out of bounds index. assert 0 ≤ ide;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:458: 
+  accessing out of bounds index. assert ide < 500;
+[eva] using specification for function printf_va_23
+[eva] using specification for function printf_va_24
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:76: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:204: 
+  signed overflow. assert inventario_prod[idp].qtd + qtd ≤ 2147483647;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:204: 
+  more than 200(10000) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:264: 
+  accessing out of bounds index. assert 0 ≤ enc.ide;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:264: 
+  accessing out of bounds index. assert enc.ide < 500;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:264: 
+  accessing uninitialized left-value.
+  assert \initialized(&inventario_enc[enc.ide].prod[i].peso);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:264: 
+  accessing uninitialized left-value.
+  assert \initialized(&inventario_enc[enc.ide].prod[i].qtd);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:264: 
+  signed overflow.
+  assert
+  -2147483648 ≤
+  inventario_enc[enc.ide].prod[i].peso * inventario_enc[enc.ide].prod[i].qtd;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:264: 
+  signed overflow.
+  assert
+  inventario_enc[enc.ide].prod[i].peso * inventario_enc[enc.ide].prod[i].qtd
+  ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:262: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:264: 
+  signed overflow.
+  assert
+  -2147483648 ≤
+  peso_t +
+  (int)(inventario_enc[enc.ide].prod[i].peso *
+        inventario_enc[enc.ide].prod[i].qtd);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:264: 
+  signed overflow.
+  assert
+  peso_t +
+  (int)(inventario_enc[enc.ide].prod[i].peso *
+        inventario_enc[enc.ide].prod[i].qtd)
+  ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:264: 
+  accessing out of bounds index. assert i < 200;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:264: 
+  more than 200(1000500) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:264: 
+  more than 200(1000490) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:227: 
+  signed overflow. assert -2147483648 ≤ inventario_prod[idp].peso * qtd;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:227: 
+  signed overflow.
+  assert -2147483648 ≤ tmp + (int)(inventario_prod[idp].peso * qtd);
+  (tmp from peso_enc(inventario_enc[ide]))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:227: 
+  signed overflow.
+  assert tmp + (int)(inventario_prod[idp].peso * qtd) ≤ 2147483647;
+  (tmp from peso_enc(inventario_enc[ide]))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:238: 
+  accessing uninitialized left-value.
+  assert \initialized(&inventario_enc[ide].prod[i].idp);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:236: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:238: 
+  accessing out of bounds index. assert i < 200;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:240: 
+  accessing uninitialized left-value.
+  assert \initialized(&inventario_enc[ide].prod[i].qtd);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:240: 
+  signed overflow.
+  assert -2147483648 ≤ inventario_enc[ide].prod[i].qtd + qtd;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:240: 
+  signed overflow. assert inventario_enc[ide].prod[i].qtd + qtd ≤ 2147483647;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:240: 
+  more than 200(1000490) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:241: 
+  signed overflow. assert -2147483648 ≤ inventario_prod[idp].qtd - qtd;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:241: 
+  signed overflow. assert inventario_prod[idp].qtd - qtd ≤ 2147483647;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:241: 
+  more than 200(10000) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:248: 
+  accessing out of bounds index. assert index_enc_prod < 200;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:249: 
+  accessing uninitialized left-value.
+  assert \initialized(&inventario_enc[ide].conta_prod_enc);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:251: 
+  signed overflow. assert -2147483648 ≤ inventario_prod[idp].qtd - qtd;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:252: 
+  more than 200(1000490) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:238: 
+  more than 200(1000499) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:238: 
+  more than 200(1000490) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:282: 
+  signed overflow. assert -2147483648 ≤ inventario_prod[idp].qtd - qtd;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:302: 
+  accessing uninitialized left-value.
+  assert \initialized(&inventario_enc[ide].prod[i].idp);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:300: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:302: 
+  accessing out of bounds index. assert i < 200;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:304: 
+  accessing uninitialized left-value.
+  assert \initialized(&inventario_enc[ide].prod[i].qtd);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:304: 
+  signed overflow.
+  assert
+  -2147483648 ≤ inventario_prod[idp].qtd + inventario_enc[ide].prod[i].qtd;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:304: 
+  signed overflow.
+  assert
+  inventario_prod[idp].qtd + inventario_enc[ide].prod[i].qtd ≤ 2147483647;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:304: 
+  more than 200(10000) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:308: 
+  accessing out of bounds index. assert (int)(j + 1) < 200;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:308: 
+  partially overlapping lvalue assignment.
+  assert
+  &inventario_enc[ide].prod[j] ≡ &inventario_enc[ide].prod[(int)(j + 1)] ∨
+  \separated(
+    &inventario_enc[ide].prod[j], &inventario_enc[ide].prod[(int)(j + 1)]
+    );
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:306: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:306: 
+  accessing uninitialized left-value.
+  assert \initialized(&inventario_enc[ide].conta_prod_enc);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:311: 
+  accessing uninitialized left-value.
+  assert \initialized(&inventario_enc[ide].conta_prod_enc);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:311: 
+  signed overflow.
+  assert -2147483648 ≤ inventario_enc[ide].conta_prod_enc - 1;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:311: 
+  more than 200(500) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:302: 
+  more than 200(1000499) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:332: 
+  accessing uninitialized left-value.
+  assert \initialized(&inventario_enc[ide].prod[i].preco);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:332: 
+  accessing uninitialized left-value.
+  assert \initialized(&inventario_enc[ide].prod[i].qtd);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:332: 
+  signed overflow.
+  assert
+  -2147483648 ≤
+  inventario_enc[ide].prod[i].preco * inventario_enc[ide].prod[i].qtd;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:332: 
+  signed overflow.
+  assert
+  inventario_enc[ide].prod[i].preco * inventario_enc[ide].prod[i].qtd ≤
+  2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:330: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:332: 
+  signed overflow.
+  assert
+  -2147483648 ≤
+  custo +
+  (int)(inventario_enc[ide].prod[i].preco * inventario_enc[ide].prod[i].qtd);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:332: 
+  signed overflow.
+  assert
+  custo +
+  (int)(inventario_enc[ide].prod[i].preco * inventario_enc[ide].prod[i].qtd)
+  ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:332: 
+  accessing out of bounds index. assert i < 200;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:332: 
+  more than 200(1000491) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:332: 
+  more than 200(1000490) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:355: 
+  accessing uninitialized left-value.
+  assert \initialized(&inventario_enc[i].prod[j].idp);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:353: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:355: 
+  accessing out of bounds index. assert j < 200;
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:351: 
+  starting to merge loop iterations
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:355: 
+  more than 200(201) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:381: 
+  accessing uninitialized left-value.
+  assert \initialized(&inventario_enc[ide].prod[i].idp);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:379: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:381: 
+  accessing out of bounds index. assert i < 200;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:383: 
+  accessing uninitialized left-value.
+  assert \initialized(&inventario_enc[ide].prod[i].qtd);
+[eva] using specification for function printf_va_17
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:383: 
+  function printf_va_17: precondition valid_read_string(param0) got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:387: 
+  function printf_va_18: precondition valid_read_string(param0) got status unknown.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:381: 
+  more than 200(1000499) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:410: 
+  accessing uninitialized left-value.
+  assert \initialized(&inventario_enc[i].prod[j].idp);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:410: 
+  accessing uninitialized left-value.
+  assert \initialized(&inventario_enc[i].prod[j].qtd);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:416: 
+  accessing uninitialized left-value.
+  assert \initialized(&inventario_enc[i].prod[j].qtd);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:416: 
+  accessing uninitialized left-value. assert \initialized(&ide);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:408: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:412: 
+  accessing uninitialized left-value.
+  assert \initialized(&inventario_enc[i].prod[j].qtd);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:416: 
+  accessing uninitialized left-value.
+  assert \initialized(&inventario_enc[i].prod[j].idp);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:410: 
+  accessing out of bounds index. assert j < 200;
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:406: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:425: 
+  accessing uninitialized left-value. assert \initialized(&ide);
+[eva] using specification for function printf_va_20
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:439: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:451: 
+  accessing uninitialized left-value. assert \initialized(&prod.preco);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:451: 
+  accessing uninitialized left-value. assert \initialized(&prod.qtd);
+[eva] using specification for function printf_va_22
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:451: 
+  function printf_va_22: precondition valid_read_string(param0) got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:448: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:470: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:472: 
+  accessing out of bounds index. assert j < 200;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:475: 
+  signed overflow.
+  assert -2147483648 ≤ inventario_enc[ide].conta_prod_enc - 1;
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:495: 
+  detected recursive call of function mergeSort.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:495: User Error: 
+  Recursive call to mergeSort without assigns clause.
+  Generating probably incomplete assigns to interpret the call. Try to increase
+  the -eva-unroll-recursive-calls parameter or write a correct specification
+  for function mergeSort.
+[kernel:annot:missing-spec] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:489: 
+  Neither code nor specification for function mergeSort, generating default assigns from the prototype
+[eva] using specification for function mergeSort
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:496: 
+  detected recursive call of function mergeSort.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:496: 
+  Using specification of function mergeSort for recursive calls.
+  Analysis of function mergeSort is thus incomplete and its soundness
+  relies on the written specification.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:514: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:516: 
+  out of bounds read. assert \valid_read(arr + (int)(l + i));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:521: 
+  out of bounds read. assert \valid_read(arr + (int)((int)(m + 1) + j));
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:519: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:530: 
+  accessing uninitialized left-value. assert \initialized(&L[i].preco);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:530: 
+  accessing uninitialized left-value. assert \initialized(&R[j].preco);
+[eva] using specification for function strcmp
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:535: 
+  function strcmp: precondition 'valid_string_s1' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:535: 
+  function strcmp: precondition 'valid_string_s2' got status unknown.
+[eva] FRAMAC_SHARE/libc/string.h:156: 
+  cannot evaluate ACSL term, unsupported ACSL construct: logic function strcmp
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:528: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:537: 
+  out of bounds write. assert \valid(arr + k);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:542: 
+  out of bounds write. assert \valid(arr + k);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:549: 
+  out of bounds write. assert \valid(arr + k);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:555: 
+  out of bounds write. assert \valid(arr + k);
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:530: 
+  more than 200(9999) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:481: 
+  accessing uninitialized left-value. assert \initialized(&prod.preco);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:481: 
+  accessing uninitialized left-value. assert \initialized(&prod.qtd);
+[eva] using specification for function printf_va_25
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:481: 
+  function printf_va_25: precondition valid_read_string(param0) got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:478: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:480: 
+  accessing out of bounds index. assert i < 200;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:215: 
+  accessing uninitialized left-value.
+  assert \initialized(&inventario_enc[ide].ide);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:262: 
+  accessing uninitialized left-value. assert \initialized(&enc.conta_prod_enc);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:264: 
+  accessing uninitialized left-value. assert \initialized(&enc.ide);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:236: 
+  accessing uninitialized left-value.
+  assert \initialized(&inventario_enc[ide].conta_prod_enc);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:246: 
+  accessing uninitialized left-value.
+  assert \initialized(&inventario_enc[ide].conta_prod_enc);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:289: 
+  accessing uninitialized left-value.
+  assert \initialized(&inventario_enc[ide].ide);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:300: 
+  accessing uninitialized left-value.
+  assert \initialized(&inventario_enc[ide].conta_prod_enc);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:321: 
+  accessing uninitialized left-value.
+  assert \initialized(&inventario_enc[ide].ide);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:330: 
+  accessing uninitialized left-value.
+  assert \initialized(&inventario_enc[ide].conta_prod_enc);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:353: 
+  accessing uninitialized left-value.
+  assert \initialized(&inventario_enc[i].conta_prod_enc);
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:357: 
+  more than 200(3992) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:355: 
+  more than 200(4002) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:355: 
+  more than 200(3992) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:357: 
+  more than 200(3992) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:368: 
+  accessing uninitialized left-value.
+  assert \initialized(&inventario_enc[ide].ide);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:379: 
+  accessing uninitialized left-value.
+  assert \initialized(&inventario_enc[ide].conta_prod_enc);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:408: 
+  accessing uninitialized left-value.
+  assert \initialized(&inventario_enc[i].conta_prod_enc);
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:410: 
+  more than 200(3992) elements to enumerate. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:495: 
+  Using specification of function mergeSort for recursive calls.
+  Analysis of function mergeSort is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:532: 
+  out of bounds write. assert \valid(arr + k);
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:532: 
+  too many locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:542: 
+  too many locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:458: 
+  accessing uninitialized left-value.
+  assert \initialized(&inventario_enc[ide].ide);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:470: 
+  accessing uninitialized left-value.
+  assert \initialized(&inventario_enc[ide].conta_prod_enc);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:475: 
+  accessing uninitialized left-value.
+  assert \initialized(&inventario_enc[ide].conta_prod_enc);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:478: 
+  accessing uninitialized left-value.
+  assert \initialized(&inventario_enc[ide].conta_prod_enc);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:83: 
+  signed overflow. assert conta_prod + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:86: 
+  accessing out of bounds index. assert prod.idp < 10000;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:86: 
+  too many locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:99: 
+  accessing out of bounds index. assert enc.ide < 500;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:99: 
+  too many locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:101: 
+  signed overflow. assert conta_enc + 1 ≤ 2147483647;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:357: 
+  more than 200(5993) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:357: 
+  more than 200(1000490) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:353: 
+  accessing out of bounds index. assert i < 500;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:355: 
+  more than 200(1000499) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:408: 
+  accessing out of bounds index. assert i < 500;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:441: 
+  too many locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:441: 
+  accessing out of bounds index. assert i < 10000;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:530: 
+  more than 200(5000) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:202: 
+  accessing uninitialized left-value.
+  assert \initialized(&inventario_prod[idp].idp);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:204: 
+  accessing uninitialized left-value.
+  assert \initialized(&inventario_prod[idp].qtd);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:219: 
+  accessing uninitialized left-value.
+  assert \initialized(&inventario_prod[idp].idp);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:223: 
+  accessing uninitialized left-value.
+  assert \initialized(&inventario_prod[idp].qtd);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:227: 
+  accessing uninitialized left-value.
+  assert \initialized(&inventario_prod[idp].peso);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:241: 
+  accessing uninitialized left-value.
+  assert \initialized(&inventario_prod[idp].qtd);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:251: 
+  accessing uninitialized left-value.
+  assert \initialized(&inventario_prod[idp].qtd);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:272: 
+  accessing uninitialized left-value.
+  assert \initialized(&inventario_prod[idp].idp);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:276: 
+  accessing uninitialized left-value.
+  assert \initialized(&inventario_prod[idp].qtd);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:282: 
+  accessing uninitialized left-value.
+  assert \initialized(&inventario_prod[idp].qtd);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:293: 
+  accessing uninitialized left-value.
+  assert \initialized(&inventario_prod[idp].idp);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:304: 
+  accessing uninitialized left-value.
+  assert \initialized(&inventario_prod[idp].qtd);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:342: 
+  accessing uninitialized left-value.
+  assert \initialized(&inventario_prod[idp].idp);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:372: 
+  accessing uninitialized left-value.
+  assert \initialized(&inventario_prod[idp].idp);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/95/proj1.c:400: 
+  accessing uninitialized left-value.
+  assert \initialized(&inventario_prod[idp].idp);
+[eva] using specification for function fprintf_va_1
+[eva] done for function main
+[scope:rm_asserts] removing 9 assertion(s)
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function init_enc:
+  enc.ide ∈ [0..2147483647]
+     .conta_prod_enc ∈ {0}
+     .prod[0].idp ∈ {-1} or UNINITIALIZED
+     .prod[0]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[1].idp ∈ {-1} or UNINITIALIZED
+     .prod[1]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[2].idp ∈ {-1} or UNINITIALIZED
+     .prod[2]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[3].idp ∈ {-1} or UNINITIALIZED
+     .prod[3]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[4].idp ∈ {-1} or UNINITIALIZED
+     .prod[4]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[5].idp ∈ {-1} or UNINITIALIZED
+     .prod[5]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[6].idp ∈ {-1} or UNINITIALIZED
+     .prod[6]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[7].idp ∈ {-1} or UNINITIALIZED
+     .prod[7]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[8].idp ∈ {-1} or UNINITIALIZED
+     .prod[8]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[9].idp ∈ {-1} or UNINITIALIZED
+     .prod[9]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[10].idp ∈ {-1} or UNINITIALIZED
+     .prod[10]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[11].idp ∈ {-1} or UNINITIALIZED
+     .prod[11]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[12].idp ∈ {-1} or UNINITIALIZED
+     .prod[12]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[13].idp ∈ {-1} or UNINITIALIZED
+     .prod[13]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[14].idp ∈ {-1} or UNINITIALIZED
+     .prod[14]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[15].idp ∈ {-1} or UNINITIALIZED
+     .prod[15]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[16].idp ∈ {-1} or UNINITIALIZED
+     .prod[16]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[17].idp ∈ {-1} or UNINITIALIZED
+     .prod[17]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[18].idp ∈ {-1} or UNINITIALIZED
+     .prod[18]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[19].idp ∈ {-1} or UNINITIALIZED
+     .prod[19]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[20].idp ∈ {-1} or UNINITIALIZED
+     .prod[20]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[21].idp ∈ {-1} or UNINITIALIZED
+     .prod[21]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[22].idp ∈ {-1} or UNINITIALIZED
+     .prod[22]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[23].idp ∈ {-1} or UNINITIALIZED
+     .prod[23]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[24].idp ∈ {-1} or UNINITIALIZED
+     .prod[24]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[25].idp ∈ {-1} or UNINITIALIZED
+     .prod[25]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[26].idp ∈ {-1} or UNINITIALIZED
+     .prod[26]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[27].idp ∈ {-1} or UNINITIALIZED
+     .prod[27]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[28].idp ∈ {-1} or UNINITIALIZED
+     .prod[28]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[29].idp ∈ {-1} or UNINITIALIZED
+     .prod[29]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[30].idp ∈ {-1} or UNINITIALIZED
+     .prod[30]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[31].idp ∈ {-1} or UNINITIALIZED
+     .prod[31]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[32].idp ∈ {-1} or UNINITIALIZED
+     .prod[32]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[33].idp ∈ {-1} or UNINITIALIZED
+     .prod[33]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[34].idp ∈ {-1} or UNINITIALIZED
+     .prod[34]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[35].idp ∈ {-1} or UNINITIALIZED
+     .prod[35]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[36].idp ∈ {-1} or UNINITIALIZED
+     .prod[36]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[37].idp ∈ {-1} or UNINITIALIZED
+     .prod[37]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[38].idp ∈ {-1} or UNINITIALIZED
+     .prod[38]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[39].idp ∈ {-1} or UNINITIALIZED
+     .prod[39]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[40].idp ∈ {-1} or UNINITIALIZED
+     .prod[40]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[41].idp ∈ {-1} or UNINITIALIZED
+     .prod[41]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[42].idp ∈ {-1} or UNINITIALIZED
+     .prod[42]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[43].idp ∈ {-1} or UNINITIALIZED
+     .prod[43]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[44].idp ∈ {-1} or UNINITIALIZED
+     .prod[44]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[45].idp ∈ {-1} or UNINITIALIZED
+     .prod[45]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[46].idp ∈ {-1} or UNINITIALIZED
+     .prod[46]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[47].idp ∈ {-1} or UNINITIALIZED
+     .prod[47]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[48].idp ∈ {-1} or UNINITIALIZED
+     .prod[48]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[49].idp ∈ {-1} or UNINITIALIZED
+     .prod[49]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[50].idp ∈ {-1} or UNINITIALIZED
+     .prod[50]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[51].idp ∈ {-1} or UNINITIALIZED
+     .prod[51]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[52].idp ∈ {-1} or UNINITIALIZED
+     .prod[52]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[53].idp ∈ {-1} or UNINITIALIZED
+     .prod[53]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[54].idp ∈ {-1} or UNINITIALIZED
+     .prod[54]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[55].idp ∈ {-1} or UNINITIALIZED
+     .prod[55]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[56].idp ∈ {-1} or UNINITIALIZED
+     .prod[56]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[57].idp ∈ {-1} or UNINITIALIZED
+     .prod[57]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[58].idp ∈ {-1} or UNINITIALIZED
+     .prod[58]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[59].idp ∈ {-1} or UNINITIALIZED
+     .prod[59]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[60].idp ∈ {-1} or UNINITIALIZED
+     .prod[60]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[61].idp ∈ {-1} or UNINITIALIZED
+     .prod[61]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[62].idp ∈ {-1} or UNINITIALIZED
+     .prod[62]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[63].idp ∈ {-1} or UNINITIALIZED
+     .prod[63]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[64].idp ∈ {-1} or UNINITIALIZED
+     .prod[64]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[65].idp ∈ {-1} or UNINITIALIZED
+     .prod[65]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[66].idp ∈ {-1} or UNINITIALIZED
+     .prod[66]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[67].idp ∈ {-1} or UNINITIALIZED
+     .prod[67]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[68].idp ∈ {-1} or UNINITIALIZED
+     .prod[68]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[69].idp ∈ {-1} or UNINITIALIZED
+     .prod[69]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[70].idp ∈ {-1} or UNINITIALIZED
+     .prod[70]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[71].idp ∈ {-1} or UNINITIALIZED
+     .prod[71]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[72].idp ∈ {-1} or UNINITIALIZED
+     .prod[72]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[73].idp ∈ {-1} or UNINITIALIZED
+     .prod[73]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[74].idp ∈ {-1} or UNINITIALIZED
+     .prod[74]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[75].idp ∈ {-1} or UNINITIALIZED
+     .prod[75]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[76].idp ∈ {-1} or UNINITIALIZED
+     .prod[76]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[77].idp ∈ {-1} or UNINITIALIZED
+     .prod[77]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[78].idp ∈ {-1} or UNINITIALIZED
+     .prod[78]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[79].idp ∈ {-1} or UNINITIALIZED
+     .prod[79]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[80].idp ∈ {-1} or UNINITIALIZED
+     .prod[80]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[81].idp ∈ {-1} or UNINITIALIZED
+     .prod[81]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[82].idp ∈ {-1} or UNINITIALIZED
+     .prod[82]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[83].idp ∈ {-1} or UNINITIALIZED
+     .prod[83]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[84].idp ∈ {-1} or UNINITIALIZED
+     .prod[84]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[85].idp ∈ {-1} or UNINITIALIZED
+     .prod[85]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[86].idp ∈ {-1} or UNINITIALIZED
+     .prod[86]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[87].idp ∈ {-1} or UNINITIALIZED
+     .prod[87]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[88].idp ∈ {-1} or UNINITIALIZED
+     .prod[88]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[89].idp ∈ {-1} or UNINITIALIZED
+     .prod[89]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[90].idp ∈ {-1} or UNINITIALIZED
+     .prod[90]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[91].idp ∈ {-1} or UNINITIALIZED
+     .prod[91]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[92].idp ∈ {-1} or UNINITIALIZED
+     .prod[92]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[93].idp ∈ {-1} or UNINITIALIZED
+     .prod[93]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[94].idp ∈ {-1} or UNINITIALIZED
+     .prod[94]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[95].idp ∈ {-1} or UNINITIALIZED
+     .prod[95]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[96].idp ∈ {-1} or UNINITIALIZED
+     .prod[96]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[97].idp ∈ {-1} or UNINITIALIZED
+     .prod[97]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[98].idp ∈ {-1} or UNINITIALIZED
+     .prod[98]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[99].idp ∈ {-1} or UNINITIALIZED
+     .prod[99]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[100].idp ∈ {-1} or UNINITIALIZED
+     .prod[100]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[101].idp ∈ {-1} or UNINITIALIZED
+     .prod[101]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[102].idp ∈ {-1} or UNINITIALIZED
+     .prod[102]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[103].idp ∈ {-1} or UNINITIALIZED
+     .prod[103]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[104].idp ∈ {-1} or UNINITIALIZED
+     .prod[104]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[105].idp ∈ {-1} or UNINITIALIZED
+     .prod[105]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[106].idp ∈ {-1} or UNINITIALIZED
+     .prod[106]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[107].idp ∈ {-1} or UNINITIALIZED
+     .prod[107]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[108].idp ∈ {-1} or UNINITIALIZED
+     .prod[108]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[109].idp ∈ {-1} or UNINITIALIZED
+     .prod[109]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[110].idp ∈ {-1} or UNINITIALIZED
+     .prod[110]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[111].idp ∈ {-1} or UNINITIALIZED
+     .prod[111]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[112].idp ∈ {-1} or UNINITIALIZED
+     .prod[112]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[113].idp ∈ {-1} or UNINITIALIZED
+     .prod[113]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[114].idp ∈ {-1} or UNINITIALIZED
+     .prod[114]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[115].idp ∈ {-1} or UNINITIALIZED
+     .prod[115]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[116].idp ∈ {-1} or UNINITIALIZED
+     .prod[116]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[117].idp ∈ {-1} or UNINITIALIZED
+     .prod[117]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[118].idp ∈ {-1} or UNINITIALIZED
+     .prod[118]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[119].idp ∈ {-1} or UNINITIALIZED
+     .prod[119]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[120].idp ∈ {-1} or UNINITIALIZED
+     .prod[120]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[121].idp ∈ {-1} or UNINITIALIZED
+     .prod[121]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[122].idp ∈ {-1} or UNINITIALIZED
+     .prod[122]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[123].idp ∈ {-1} or UNINITIALIZED
+     .prod[123]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[124].idp ∈ {-1} or UNINITIALIZED
+     .prod[124]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[125].idp ∈ {-1} or UNINITIALIZED
+     .prod[125]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[126].idp ∈ {-1} or UNINITIALIZED
+     .prod[126]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[127].idp ∈ {-1} or UNINITIALIZED
+     .prod[127]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[128].idp ∈ {-1} or UNINITIALIZED
+     .prod[128]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[129].idp ∈ {-1} or UNINITIALIZED
+     .prod[129]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[130].idp ∈ {-1} or UNINITIALIZED
+     .prod[130]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[131].idp ∈ {-1} or UNINITIALIZED
+     .prod[131]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[132].idp ∈ {-1} or UNINITIALIZED
+     .prod[132]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[133].idp ∈ {-1} or UNINITIALIZED
+     .prod[133]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[134].idp ∈ {-1} or UNINITIALIZED
+     .prod[134]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[135].idp ∈ {-1} or UNINITIALIZED
+     .prod[135]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[136].idp ∈ {-1} or UNINITIALIZED
+     .prod[136]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[137].idp ∈ {-1} or UNINITIALIZED
+     .prod[137]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[138].idp ∈ {-1} or UNINITIALIZED
+     .prod[138]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[139].idp ∈ {-1} or UNINITIALIZED
+     .prod[139]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[140].idp ∈ {-1} or UNINITIALIZED
+     .prod[140]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[141].idp ∈ {-1} or UNINITIALIZED
+     .prod[141]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[142].idp ∈ {-1} or UNINITIALIZED
+     .prod[142]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[143].idp ∈ {-1} or UNINITIALIZED
+     .prod[143]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[144].idp ∈ {-1} or UNINITIALIZED
+     .prod[144]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[145].idp ∈ {-1} or UNINITIALIZED
+     .prod[145]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[146].idp ∈ {-1} or UNINITIALIZED
+     .prod[146]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[147].idp ∈ {-1} or UNINITIALIZED
+     .prod[147]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[148].idp ∈ {-1} or UNINITIALIZED
+     .prod[148]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[149].idp ∈ {-1} or UNINITIALIZED
+     .prod[149]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[150].idp ∈ {-1} or UNINITIALIZED
+     .prod[150]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[151].idp ∈ {-1} or UNINITIALIZED
+     .prod[151]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[152].idp ∈ {-1} or UNINITIALIZED
+     .prod[152]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[153].idp ∈ {-1} or UNINITIALIZED
+     .prod[153]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[154].idp ∈ {-1} or UNINITIALIZED
+     .prod[154]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[155].idp ∈ {-1} or UNINITIALIZED
+     .prod[155]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[156].idp ∈ {-1} or UNINITIALIZED
+     .prod[156]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[157].idp ∈ {-1} or UNINITIALIZED
+     .prod[157]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[158].idp ∈ {-1} or UNINITIALIZED
+     .prod[158]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[159].idp ∈ {-1} or UNINITIALIZED
+     .prod[159]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[160].idp ∈ {-1} or UNINITIALIZED
+     .prod[160]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[161].idp ∈ {-1} or UNINITIALIZED
+     .prod[161]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[162].idp ∈ {-1} or UNINITIALIZED
+     .prod[162]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[163].idp ∈ {-1} or UNINITIALIZED
+     .prod[163]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[164].idp ∈ {-1} or UNINITIALIZED
+     .prod[164]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[165].idp ∈ {-1} or UNINITIALIZED
+     .prod[165]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[166].idp ∈ {-1} or UNINITIALIZED
+     .prod[166]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[167].idp ∈ {-1} or UNINITIALIZED
+     .prod[167]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[168].idp ∈ {-1} or UNINITIALIZED
+     .prod[168]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[169].idp ∈ {-1} or UNINITIALIZED
+     .prod[169]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[170].idp ∈ {-1} or UNINITIALIZED
+     .prod[170]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[171].idp ∈ {-1} or UNINITIALIZED
+     .prod[171]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[172].idp ∈ {-1} or UNINITIALIZED
+     .prod[172]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[173].idp ∈ {-1} or UNINITIALIZED
+     .prod[173]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[174].idp ∈ {-1} or UNINITIALIZED
+     .prod[174]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[175].idp ∈ {-1} or UNINITIALIZED
+     .prod[175]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[176].idp ∈ {-1} or UNINITIALIZED
+     .prod[176]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[177].idp ∈ {-1} or UNINITIALIZED
+     .prod[177]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[178].idp ∈ {-1} or UNINITIALIZED
+     .prod[178]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[179].idp ∈ {-1} or UNINITIALIZED
+     .prod[179]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[180].idp ∈ {-1} or UNINITIALIZED
+     .prod[180]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[181].idp ∈ {-1} or UNINITIALIZED
+     .prod[181]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[182].idp ∈ {-1} or UNINITIALIZED
+     .prod[182]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[183].idp ∈ {-1} or UNINITIALIZED
+     .prod[183]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[184].idp ∈ {-1} or UNINITIALIZED
+     .prod[184]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[185].idp ∈ {-1} or UNINITIALIZED
+     .prod[185]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[186].idp ∈ {-1} or UNINITIALIZED
+     .prod[186]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[187].idp ∈ {-1} or UNINITIALIZED
+     .prod[187]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[188].idp ∈ {-1} or UNINITIALIZED
+     .prod[188]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[189].idp ∈ {-1} or UNINITIALIZED
+     .prod[189]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[190].idp ∈ {-1} or UNINITIALIZED
+     .prod[190]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[191].idp ∈ {-1} or UNINITIALIZED
+     .prod[191]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[192].idp ∈ {-1} or UNINITIALIZED
+     .prod[192]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[193].idp ∈ {-1} or UNINITIALIZED
+     .prod[193]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[194].idp ∈ {-1} or UNINITIALIZED
+     .prod[194]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[195].idp ∈ {-1} or UNINITIALIZED
+     .prod[195]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[196].idp ∈ {-1} or UNINITIALIZED
+     .prod[196]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[197].idp ∈ {-1} or UNINITIALIZED
+     .prod[197]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[198].idp ∈ {-1} or UNINITIALIZED
+     .prod[198]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[199].idp ∈ {-1} or UNINITIALIZED
+     .prod[199]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+  i ∈ {200}
+[eva:final-states] Values at end of function init_inventario_enc:
+  inventario_enc{[0..498]{.ide; .conta_prod_enc; .prod[0..199]{.idp; .descricao[bits 0 to 511]#; .preco; .peso; .qtd}}; [499].ide} ∈
+                {-1; 0} repeated %32 
+                [499]{.conta_prod_enc; .prod[0..199]} ∈ {0}
+  i ∈ {500}
+[eva:final-states] Values at end of function init_inventario_prod:
+  inventario_prod{[0..9998]{.idp; .descricao[bits 0 to 511]#; .preco; .peso; .qtd}; [9999].idp} ∈
+                 {-1; 0} repeated %32 
+                 [9999]{.descricao[0..63]; .preco; .peso; .qtd} ∈ {0}
+  i ∈ {10000}
+[eva:final-states] Values at end of function peso_enc:
+  i ∈ [0..200]
+  peso_t ∈ [--..--]
+[eva:final-states] Values at end of function custo_enc:
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function altera_preco:
+  inventario_prod[0..9999] ∈ [--..--] or UNINITIALIZED
+  inventario_enc[0..499] ∈ [--..--] or UNINITIALIZED
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function lista_descricao_qtd:
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function maior_quantidade:
+  maior ∈ [--..--]
+  ide ∈ [0..2147483647] or UNINITIALIZED
+  i ∈ [0..500] or UNINITIALIZED
+  j ∈ [0..200] or UNINITIALIZED
+  afirmativo ∈ {0; 1}
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function adiciona_stock:
+  inventario_prod[0..9999] ∈ [--..--] or UNINITIALIZED
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function adiciona_prod_enc:
+  inventario_prod[0..9999] ∈ [--..--] or UNINITIALIZED
+  inventario_enc[0..499] ∈ [--..--] or UNINITIALIZED
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function remove_prod_enc:
+  inventario_prod[0..9999] ∈ [--..--] or UNINITIALIZED
+  inventario_enc[0..499] ∈ [--..--] or UNINITIALIZED
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function remove_stock_prod:
+  inventario_prod[0..9999] ∈ [--..--] or UNINITIALIZED
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function merge:
+  produtos[0..9999] ∈ [--..--] or UNINITIALIZED
+  prods_enc[0..199] ∈ [--..--] or UNINITIALIZED
+  i ∈ [1..9999]
+  j ∈ [0..9999]
+  k ∈ [0..2147483647]
+  n1 ∈ [1..9999]
+  n2 ∈ [-1073741822..9999]
+  L[0..9999] ∈ [--..--] or UNINITIALIZED
+  R[0..9999] ∈ [--..--] or UNINITIALIZED
+[eva:final-states] Values at end of function ordena_prods:
+  produtos[0..9999] ∈ [--..--] or UNINITIALIZED
+  prod ∈ [--..--] or UNINITIALIZED
+  i ∈ [0..10000]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function ordena_prods_enc:
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function main:
+  inventario_prod[0..9999] ∈ [--..--] or UNINITIALIZED
+  inventario_enc[0..499] ∈ [--..--] or UNINITIALIZED
+  conta_prod ∈ [0..2147483647]
+  conta_enc ∈ [0..2147483647]
+  comando ∈ [--..--]
+  idp ∈ [--..--] or UNINITIALIZED
+  qtd ∈ [--..--] or UNINITIALIZED
+  ide ∈ [0..499] or UNINITIALIZED
+  preco ∈ [--..--] or UNINITIALIZED
+  prod.idp ∈ [0..9999] or UNINITIALIZED
+      .descricao[0] ∈ [--..--] or UNINITIALIZED
+      .descricao[1..63] ∈ UNINITIALIZED
+      {.preco; .peso; .qtd} ∈ [--..--] or UNINITIALIZED
+  enc.ide ∈ [0..499] or UNINITIALIZED
+     .conta_prod_enc ∈ {0} or UNINITIALIZED
+     .prod[0].idp ∈ {-1} or UNINITIALIZED
+     .prod[0]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[1].idp ∈ {-1} or UNINITIALIZED
+     .prod[1]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[2].idp ∈ {-1} or UNINITIALIZED
+     .prod[2]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[3].idp ∈ {-1} or UNINITIALIZED
+     .prod[3]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[4].idp ∈ {-1} or UNINITIALIZED
+     .prod[4]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[5].idp ∈ {-1} or UNINITIALIZED
+     .prod[5]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[6].idp ∈ {-1} or UNINITIALIZED
+     .prod[6]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[7].idp ∈ {-1} or UNINITIALIZED
+     .prod[7]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[8].idp ∈ {-1} or UNINITIALIZED
+     .prod[8]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[9].idp ∈ {-1} or UNINITIALIZED
+     .prod[9]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[10].idp ∈ {-1} or UNINITIALIZED
+     .prod[10]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[11].idp ∈ {-1} or UNINITIALIZED
+     .prod[11]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[12].idp ∈ {-1} or UNINITIALIZED
+     .prod[12]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[13].idp ∈ {-1} or UNINITIALIZED
+     .prod[13]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[14].idp ∈ {-1} or UNINITIALIZED
+     .prod[14]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[15].idp ∈ {-1} or UNINITIALIZED
+     .prod[15]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[16].idp ∈ {-1} or UNINITIALIZED
+     .prod[16]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[17].idp ∈ {-1} or UNINITIALIZED
+     .prod[17]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[18].idp ∈ {-1} or UNINITIALIZED
+     .prod[18]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[19].idp ∈ {-1} or UNINITIALIZED
+     .prod[19]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[20].idp ∈ {-1} or UNINITIALIZED
+     .prod[20]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[21].idp ∈ {-1} or UNINITIALIZED
+     .prod[21]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[22].idp ∈ {-1} or UNINITIALIZED
+     .prod[22]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[23].idp ∈ {-1} or UNINITIALIZED
+     .prod[23]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[24].idp ∈ {-1} or UNINITIALIZED
+     .prod[24]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[25].idp ∈ {-1} or UNINITIALIZED
+     .prod[25]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[26].idp ∈ {-1} or UNINITIALIZED
+     .prod[26]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[27].idp ∈ {-1} or UNINITIALIZED
+     .prod[27]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[28].idp ∈ {-1} or UNINITIALIZED
+     .prod[28]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[29].idp ∈ {-1} or UNINITIALIZED
+     .prod[29]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[30].idp ∈ {-1} or UNINITIALIZED
+     .prod[30]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[31].idp ∈ {-1} or UNINITIALIZED
+     .prod[31]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[32].idp ∈ {-1} or UNINITIALIZED
+     .prod[32]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[33].idp ∈ {-1} or UNINITIALIZED
+     .prod[33]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[34].idp ∈ {-1} or UNINITIALIZED
+     .prod[34]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[35].idp ∈ {-1} or UNINITIALIZED
+     .prod[35]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[36].idp ∈ {-1} or UNINITIALIZED
+     .prod[36]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[37].idp ∈ {-1} or UNINITIALIZED
+     .prod[37]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[38].idp ∈ {-1} or UNINITIALIZED
+     .prod[38]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[39].idp ∈ {-1} or UNINITIALIZED
+     .prod[39]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[40].idp ∈ {-1} or UNINITIALIZED
+     .prod[40]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[41].idp ∈ {-1} or UNINITIALIZED
+     .prod[41]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[42].idp ∈ {-1} or UNINITIALIZED
+     .prod[42]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[43].idp ∈ {-1} or UNINITIALIZED
+     .prod[43]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[44].idp ∈ {-1} or UNINITIALIZED
+     .prod[44]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[45].idp ∈ {-1} or UNINITIALIZED
+     .prod[45]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[46].idp ∈ {-1} or UNINITIALIZED
+     .prod[46]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[47].idp ∈ {-1} or UNINITIALIZED
+     .prod[47]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[48].idp ∈ {-1} or UNINITIALIZED
+     .prod[48]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[49].idp ∈ {-1} or UNINITIALIZED
+     .prod[49]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[50].idp ∈ {-1} or UNINITIALIZED
+     .prod[50]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[51].idp ∈ {-1} or UNINITIALIZED
+     .prod[51]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[52].idp ∈ {-1} or UNINITIALIZED
+     .prod[52]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[53].idp ∈ {-1} or UNINITIALIZED
+     .prod[53]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[54].idp ∈ {-1} or UNINITIALIZED
+     .prod[54]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[55].idp ∈ {-1} or UNINITIALIZED
+     .prod[55]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[56].idp ∈ {-1} or UNINITIALIZED
+     .prod[56]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[57].idp ∈ {-1} or UNINITIALIZED
+     .prod[57]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[58].idp ∈ {-1} or UNINITIALIZED
+     .prod[58]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[59].idp ∈ {-1} or UNINITIALIZED
+     .prod[59]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[60].idp ∈ {-1} or UNINITIALIZED
+     .prod[60]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[61].idp ∈ {-1} or UNINITIALIZED
+     .prod[61]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[62].idp ∈ {-1} or UNINITIALIZED
+     .prod[62]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[63].idp ∈ {-1} or UNINITIALIZED
+     .prod[63]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[64].idp ∈ {-1} or UNINITIALIZED
+     .prod[64]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[65].idp ∈ {-1} or UNINITIALIZED
+     .prod[65]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[66].idp ∈ {-1} or UNINITIALIZED
+     .prod[66]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[67].idp ∈ {-1} or UNINITIALIZED
+     .prod[67]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[68].idp ∈ {-1} or UNINITIALIZED
+     .prod[68]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[69].idp ∈ {-1} or UNINITIALIZED
+     .prod[69]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[70].idp ∈ {-1} or UNINITIALIZED
+     .prod[70]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[71].idp ∈ {-1} or UNINITIALIZED
+     .prod[71]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[72].idp ∈ {-1} or UNINITIALIZED
+     .prod[72]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[73].idp ∈ {-1} or UNINITIALIZED
+     .prod[73]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[74].idp ∈ {-1} or UNINITIALIZED
+     .prod[74]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[75].idp ∈ {-1} or UNINITIALIZED
+     .prod[75]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[76].idp ∈ {-1} or UNINITIALIZED
+     .prod[76]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[77].idp ∈ {-1} or UNINITIALIZED
+     .prod[77]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[78].idp ∈ {-1} or UNINITIALIZED
+     .prod[78]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[79].idp ∈ {-1} or UNINITIALIZED
+     .prod[79]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[80].idp ∈ {-1} or UNINITIALIZED
+     .prod[80]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[81].idp ∈ {-1} or UNINITIALIZED
+     .prod[81]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[82].idp ∈ {-1} or UNINITIALIZED
+     .prod[82]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[83].idp ∈ {-1} or UNINITIALIZED
+     .prod[83]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[84].idp ∈ {-1} or UNINITIALIZED
+     .prod[84]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[85].idp ∈ {-1} or UNINITIALIZED
+     .prod[85]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[86].idp ∈ {-1} or UNINITIALIZED
+     .prod[86]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[87].idp ∈ {-1} or UNINITIALIZED
+     .prod[87]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[88].idp ∈ {-1} or UNINITIALIZED
+     .prod[88]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[89].idp ∈ {-1} or UNINITIALIZED
+     .prod[89]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[90].idp ∈ {-1} or UNINITIALIZED
+     .prod[90]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[91].idp ∈ {-1} or UNINITIALIZED
+     .prod[91]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[92].idp ∈ {-1} or UNINITIALIZED
+     .prod[92]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[93].idp ∈ {-1} or UNINITIALIZED
+     .prod[93]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[94].idp ∈ {-1} or UNINITIALIZED
+     .prod[94]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[95].idp ∈ {-1} or UNINITIALIZED
+     .prod[95]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[96].idp ∈ {-1} or UNINITIALIZED
+     .prod[96]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[97].idp ∈ {-1} or UNINITIALIZED
+     .prod[97]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[98].idp ∈ {-1} or UNINITIALIZED
+     .prod[98]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[99].idp ∈ {-1} or UNINITIALIZED
+     .prod[99]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[100].idp ∈ {-1} or UNINITIALIZED
+     .prod[100]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[101].idp ∈ {-1} or UNINITIALIZED
+     .prod[101]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[102].idp ∈ {-1} or UNINITIALIZED
+     .prod[102]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[103].idp ∈ {-1} or UNINITIALIZED
+     .prod[103]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[104].idp ∈ {-1} or UNINITIALIZED
+     .prod[104]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[105].idp ∈ {-1} or UNINITIALIZED
+     .prod[105]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[106].idp ∈ {-1} or UNINITIALIZED
+     .prod[106]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[107].idp ∈ {-1} or UNINITIALIZED
+     .prod[107]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[108].idp ∈ {-1} or UNINITIALIZED
+     .prod[108]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[109].idp ∈ {-1} or UNINITIALIZED
+     .prod[109]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[110].idp ∈ {-1} or UNINITIALIZED
+     .prod[110]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[111].idp ∈ {-1} or UNINITIALIZED
+     .prod[111]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[112].idp ∈ {-1} or UNINITIALIZED
+     .prod[112]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[113].idp ∈ {-1} or UNINITIALIZED
+     .prod[113]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[114].idp ∈ {-1} or UNINITIALIZED
+     .prod[114]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[115].idp ∈ {-1} or UNINITIALIZED
+     .prod[115]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[116].idp ∈ {-1} or UNINITIALIZED
+     .prod[116]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[117].idp ∈ {-1} or UNINITIALIZED
+     .prod[117]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[118].idp ∈ {-1} or UNINITIALIZED
+     .prod[118]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[119].idp ∈ {-1} or UNINITIALIZED
+     .prod[119]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[120].idp ∈ {-1} or UNINITIALIZED
+     .prod[120]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[121].idp ∈ {-1} or UNINITIALIZED
+     .prod[121]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[122].idp ∈ {-1} or UNINITIALIZED
+     .prod[122]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[123].idp ∈ {-1} or UNINITIALIZED
+     .prod[123]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[124].idp ∈ {-1} or UNINITIALIZED
+     .prod[124]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[125].idp ∈ {-1} or UNINITIALIZED
+     .prod[125]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[126].idp ∈ {-1} or UNINITIALIZED
+     .prod[126]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[127].idp ∈ {-1} or UNINITIALIZED
+     .prod[127]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[128].idp ∈ {-1} or UNINITIALIZED
+     .prod[128]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[129].idp ∈ {-1} or UNINITIALIZED
+     .prod[129]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[130].idp ∈ {-1} or UNINITIALIZED
+     .prod[130]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[131].idp ∈ {-1} or UNINITIALIZED
+     .prod[131]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[132].idp ∈ {-1} or UNINITIALIZED
+     .prod[132]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[133].idp ∈ {-1} or UNINITIALIZED
+     .prod[133]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[134].idp ∈ {-1} or UNINITIALIZED
+     .prod[134]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[135].idp ∈ {-1} or UNINITIALIZED
+     .prod[135]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[136].idp ∈ {-1} or UNINITIALIZED
+     .prod[136]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[137].idp ∈ {-1} or UNINITIALIZED
+     .prod[137]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[138].idp ∈ {-1} or UNINITIALIZED
+     .prod[138]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[139].idp ∈ {-1} or UNINITIALIZED
+     .prod[139]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[140].idp ∈ {-1} or UNINITIALIZED
+     .prod[140]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[141].idp ∈ {-1} or UNINITIALIZED
+     .prod[141]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[142].idp ∈ {-1} or UNINITIALIZED
+     .prod[142]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[143].idp ∈ {-1} or UNINITIALIZED
+     .prod[143]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[144].idp ∈ {-1} or UNINITIALIZED
+     .prod[144]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[145].idp ∈ {-1} or UNINITIALIZED
+     .prod[145]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[146].idp ∈ {-1} or UNINITIALIZED
+     .prod[146]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[147].idp ∈ {-1} or UNINITIALIZED
+     .prod[147]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[148].idp ∈ {-1} or UNINITIALIZED
+     .prod[148]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[149].idp ∈ {-1} or UNINITIALIZED
+     .prod[149]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[150].idp ∈ {-1} or UNINITIALIZED
+     .prod[150]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[151].idp ∈ {-1} or UNINITIALIZED
+     .prod[151]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[152].idp ∈ {-1} or UNINITIALIZED
+     .prod[152]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[153].idp ∈ {-1} or UNINITIALIZED
+     .prod[153]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[154].idp ∈ {-1} or UNINITIALIZED
+     .prod[154]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[155].idp ∈ {-1} or UNINITIALIZED
+     .prod[155]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[156].idp ∈ {-1} or UNINITIALIZED
+     .prod[156]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[157].idp ∈ {-1} or UNINITIALIZED
+     .prod[157]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[158].idp ∈ {-1} or UNINITIALIZED
+     .prod[158]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[159].idp ∈ {-1} or UNINITIALIZED
+     .prod[159]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[160].idp ∈ {-1} or UNINITIALIZED
+     .prod[160]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[161].idp ∈ {-1} or UNINITIALIZED
+     .prod[161]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[162].idp ∈ {-1} or UNINITIALIZED
+     .prod[162]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[163].idp ∈ {-1} or UNINITIALIZED
+     .prod[163]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[164].idp ∈ {-1} or UNINITIALIZED
+     .prod[164]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[165].idp ∈ {-1} or UNINITIALIZED
+     .prod[165]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[166].idp ∈ {-1} or UNINITIALIZED
+     .prod[166]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[167].idp ∈ {-1} or UNINITIALIZED
+     .prod[167]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[168].idp ∈ {-1} or UNINITIALIZED
+     .prod[168]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[169].idp ∈ {-1} or UNINITIALIZED
+     .prod[169]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[170].idp ∈ {-1} or UNINITIALIZED
+     .prod[170]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[171].idp ∈ {-1} or UNINITIALIZED
+     .prod[171]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[172].idp ∈ {-1} or UNINITIALIZED
+     .prod[172]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[173].idp ∈ {-1} or UNINITIALIZED
+     .prod[173]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[174].idp ∈ {-1} or UNINITIALIZED
+     .prod[174]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[175].idp ∈ {-1} or UNINITIALIZED
+     .prod[175]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[176].idp ∈ {-1} or UNINITIALIZED
+     .prod[176]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[177].idp ∈ {-1} or UNINITIALIZED
+     .prod[177]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[178].idp ∈ {-1} or UNINITIALIZED
+     .prod[178]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[179].idp ∈ {-1} or UNINITIALIZED
+     .prod[179]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[180].idp ∈ {-1} or UNINITIALIZED
+     .prod[180]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[181].idp ∈ {-1} or UNINITIALIZED
+     .prod[181]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[182].idp ∈ {-1} or UNINITIALIZED
+     .prod[182]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[183].idp ∈ {-1} or UNINITIALIZED
+     .prod[183]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[184].idp ∈ {-1} or UNINITIALIZED
+     .prod[184]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[185].idp ∈ {-1} or UNINITIALIZED
+     .prod[185]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[186].idp ∈ {-1} or UNINITIALIZED
+     .prod[186]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[187].idp ∈ {-1} or UNINITIALIZED
+     .prod[187]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[188].idp ∈ {-1} or UNINITIALIZED
+     .prod[188]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[189].idp ∈ {-1} or UNINITIALIZED
+     .prod[189]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[190].idp ∈ {-1} or UNINITIALIZED
+     .prod[190]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[191].idp ∈ {-1} or UNINITIALIZED
+     .prod[191]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[192].idp ∈ {-1} or UNINITIALIZED
+     .prod[192]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[193].idp ∈ {-1} or UNINITIALIZED
+     .prod[193]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[194].idp ∈ {-1} or UNINITIALIZED
+     .prod[194]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[195].idp ∈ {-1} or UNINITIALIZED
+     .prod[195]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[196].idp ∈ {-1} or UNINITIALIZED
+     .prod[196]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[197].idp ∈ {-1} or UNINITIALIZED
+     .prod[197]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[198].idp ∈ {-1} or UNINITIALIZED
+     .prod[198]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+     .prod[199].idp ∈ {-1} or UNINITIALIZED
+     .prod[199]{.descricao[0..63]; .preco; .peso; .qtd} ∈ UNINITIALIZED
+  __retres ∈ {0; 1}
+  S___fc_stderr[0..1] ∈ [--..--]
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function mergeSort:
+  produtos[0..9999] ∈ [--..--] or UNINITIALIZED
+  prods_enc[0..199] ∈ [--..--] or UNINITIALIZED
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  17 functions analyzed (out of 20): 85% coverage.
+  In these functions, 332 statements reached (out of 333): 99% coverage.
+  ----------------------------------------------------------------------------
+  Some errors and warnings have been raised during the analysis:
+    by the Eva analyzer:      1 error    0 warnings
+    by the Frama-C kernel:    0 errors    0 warnings
+  ----------------------------------------------------------------------------
+  139 alarms generated by the analysis:
+      59 accesses to uninitialized left-values
+      43 accesses out of bounds index
+      29 integer overflows
+       7 invalid memory accesses
+       1 other
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     0 unknown     0 invalid      0 total
+    Preconditions    56 valid     6 unknown     0 invalid     62 total
+  90% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[eva] User Error: Deferred error message was emitted during execution. See above messages for more information.
+[kernel] Plug-in eva aborted: invalid user input.

@@ -1,0 +1,334 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  
+[eva] using specification for function scanf_va_1
+[eva] using specification for function strtok
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:57: 
+  function strtok, behavior new_str: precondition 'valid_string_s_or_delim_not_found' got status unknown.
+[eva] using specification for function atoi
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:58: 
+  function atoi: precondition 'valid_nptr' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:60: 
+  function atoi: precondition 'valid_nptr' got status unknown.
+[eva] using specification for function time
+[eva] using specification for function srand
+[eva] using specification for function rand
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11
+[eva] using specification for function scanf_va_2
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_0
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:25: 
+  out of bounds write. assert \valid(&newNode->numberCon);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:67: 
+  out of bounds write. assert \valid(nodeList + fors);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:65: 
+  starting to merge loop iterations
+[eva] using specification for function scanf_va_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:73: 
+  signed overflow. assert -2147483648 ≤ temp1 - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:73: 
+  accessing uninitialized left-value.
+  assert \initialized(nodeList + (int)(temp1 - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:73: 
+  out of bounds read. assert \valid_read(nodeList + (int)(temp1 - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:73: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(nodeList + (int)(temp1 - 1)))->numberCon);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:73: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(nodeList + (int)(temp1 - 1)))->connections);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:25: 
+  allocating variable __realloc_can_fail_realloc_l25
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:73: 
+  accessing uninitialized left-value.
+  assert \initialized(nodeList + (int)(temp1 - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:73: 
+  out of bounds read. assert \valid_read(nodeList + (int)(temp1 - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:74: 
+  accessing uninitialized left-value.
+  assert \initialized(nodeList + (int)(temp1 - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:74: 
+  out of bounds read. assert \valid_read(nodeList + (int)(temp1 - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:74: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(nodeList + (int)(temp1 - 1)))->connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:74: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(nodeList + (int)(temp1 - 1)))->numberCon);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:74: 
+  out of bounds write.
+  assert
+  \valid((*(nodeList + (int)(temp1 - 1)))->connections +
+         (*(nodeList + (int)(temp1 - 1)))->numberCon);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:74: 
+  signed overflow. assert -2147483648 ≤ temp2 - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:74: 
+  accessing uninitialized left-value.
+  assert \initialized(nodeList + (int)(temp2 - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:74: 
+  out of bounds read. assert \valid_read(nodeList + (int)(temp2 - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:75: 
+  accessing uninitialized left-value.
+  assert \initialized(nodeList + (int)(temp1 - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:75: 
+  out of bounds read. assert \valid_read(nodeList + (int)(temp1 - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:75: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(nodeList + (int)(temp1 - 1)))->numberCon);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:71: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:74: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(*(nodeList + (int)(temp1 - 1)))->connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:73: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(*(nodeList + (int)(temp1 - 1)))->connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:73: 
+  signed overflow.
+  assert (*(nodeList + (int)(temp1 - 1)))->numberCon + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:75: 
+  signed overflow.
+  assert (*(nodeList + (int)(temp1 - 1)))->numberCon + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:79: 
+  accessing uninitialized left-value. assert \initialized(nodeList + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:79: 
+  out of bounds read. assert \valid_read(nodeList + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:79: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(nodeList + i))->done);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:80: 
+  out of bounds read. assert \valid_read(nodeList + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:35: 
+  accessing uninitialized left-value. assert \initialized(&aaa->numberCon);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:36: 
+  accessing uninitialized left-value. assert \initialized(&aaa->connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:36: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&aaa->connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:36: 
+  accessing uninitialized left-value.
+  assert \initialized(aaa->connections + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:36: 
+  out of bounds read. assert \valid_read(aaa->connections + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:36: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(aaa->connections + i))->done);
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:37: 
+  detected recursive call of function funcao.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:37: 
+  accessing uninitialized left-value. assert \initialized(&aaa->connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:37: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&aaa->connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:37: 
+  accessing uninitialized left-value.
+  assert \initialized(aaa->connections + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:37: 
+  out of bounds read. assert \valid_read(aaa->connections + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:37: User Error: 
+  Recursive call to funcao without assigns clause.
+  Generating probably incomplete assigns to interpret the call. Try to increase
+  the -eva-unroll-recursive-calls parameter or write a correct specification
+  for function funcao.
+[kernel:annot:missing-spec] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:32: 
+  Neither code nor specification for function funcao, generating default assigns from the prototype
+[eva] using specification for function funcao
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:37: 
+  Assigning imprecise value to temp.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:32}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:39: 
+  accessing uninitialized left-value. assert \initialized(&aaa->connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:39: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&aaa->connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:39: 
+  accessing uninitialized left-value.
+  assert \initialized(aaa->connections + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:39: 
+  out of bounds read. assert \valid_read(aaa->connections + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:39: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(aaa->connections + i))->currentGrade);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:41: 
+  accessing uninitialized left-value. assert \initialized(&aaa->currentGrade);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:42: 
+  Assigning imprecise value to aaa->currentGrade
+  (pointing to __malloc_w_can_fail_malloc_l11_0 with offsets {0}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:32}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:35: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:36: 
+  out of bounds read. assert \valid_read(&(*(aaa->connections + i))->done);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:36: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(*(aaa->connections + i))->done);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:37: 
+  Using specification of function funcao for recursive calls.
+  Analysis of function funcao is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:39: 
+  out of bounds read.
+  assert \valid_read(&(*(aaa->connections + i))->currentGrade);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:39: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(*(aaa->connections + i))->currentGrade);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:39: 
+  Assigning imprecise value to temp.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:32}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:35: 
+  signed overflow. assert i + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:45: 
+  accessing uninitialized left-value. assert \initialized(&aaa->currentGrade);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:45: 
+  Assigning imprecise value to __retres.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:32}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:45: 
+  Assigning imprecise value to \result<funcao>.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:32}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:78: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:80: 
+  accessing uninitialized left-value. assert \initialized(nodeList + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:85: 
+  accessing uninitialized left-value. assert \initialized(nodeList + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:85: 
+  out of bounds read. assert \valid_read(nodeList + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:85: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(nodeList + i))->currentGrade);
+[eva] using specification for function printf_va_1
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:84: 
+  starting to merge loop iterations
+[eva] done for function main
+[scope:rm_asserts] removing 17 assertion(s)
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function can_fail_malloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈
+          {{ NULL ; (void *)&__malloc_can_fail_malloc_l11 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_0 }}
+[eva:final-states] Values at end of function can_fail_realloc:
+  __fc_random_counter ∈ [--..--]
+  ptr ∈
+     {{ NULL ; (void *)&__realloc_w_can_fail_realloc_l25 }} or ESCAPINGADDR
+  fail ∈ [0. .. 1.]
+  __retres ∈ {{ NULL ; (void *)&__realloc_w_can_fail_realloc_l25 }}
+  __malloc_w_can_fail_malloc_l11_0[0..3] ∈ [--..--] or UNINITIALIZED
+                                  [4..7] ∈ UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__realloc_w_can_fail_realloc_l25 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 128 to 159] ∈
+                                  [0..2147483647] or UNINITIALIZED
+                                  [20..23] ∈ {0} or UNINITIALIZED
+[eva:final-states] Values at end of function createNode:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  newNode ∈ {{ (struct node *)&__malloc_w_can_fail_malloc_l11_0 }}
+  __malloc_w_can_fail_malloc_l11_0[0..3] ∈ [--..--] or UNINITIALIZED
+                                  [4..7] ∈ UNINITIALIZED
+                                  [8..23] ∈ {0} or UNINITIALIZED
+[eva:final-states] Values at end of function funcao:
+  temp ∈
+      {{ garbled mix of &{__realloc_w_can_fail_realloc_l25}
+       (origin: Misaligned
+       {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:32}) }} or UNINITIALIZED
+  i ∈ [0..2147483647]
+  __retres ∈
+          {{ garbled mix of &{__realloc_w_can_fail_realloc_l25}
+           (origin: Misaligned
+           {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:32}) }}
+  __malloc_w_can_fail_malloc_l11_0[0..7] ∈
+                                  {{ garbled mix of &{__realloc_w_can_fail_realloc_l25}
+                                   (origin: Misaligned
+                                   {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:32}) }} or UNINITIALIZED
+                                  [8..15] ∈
+                                  {{ garbled mix of &{__realloc_w_can_fail_realloc_l25}
+                                   (origin: Misaligned
+                                   {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:32}) }} or UNINITIALIZED or ESCAPINGADDR
+                                  [16..23] ∈
+                                  {{ garbled mix of &{__realloc_w_can_fail_realloc_l25}
+                                   (origin: Misaligned
+                                   {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:32}) }} or UNINITIALIZED
+[eva:final-states] Values at end of function main:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  __fc_strtok_ptr ∈ {{ &str1 + [0..--] }}
+  str1[0..11] ∈ [--..--] or UNINITIALIZED
+  ppl ∈ [--..--]
+  con ∈ [--..--]
+  temp1 ∈ [1..2147483647] or UNINITIALIZED
+  temp2 ∈ [1..2147483647] or UNINITIALIZED
+  i ∈ [0..2147483647]
+  s[0] ∈ {44}
+   [1] ∈ {0}
+  token ∈ {{ &str1 + [0..11] }}
+  fors ∈ [0..2147483647]
+  nodeList ∈ {{ NULL ; (struct node **)&__malloc_can_fail_malloc_l11 }}
+  __retres ∈ {0}
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__realloc_w_can_fail_realloc_l25}
+                (origin: Misaligned
+                {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:32}) }}
+               [1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11[bits 0 to 137438953407]# ∈
+                              {{ (? *)&__malloc_w_can_fail_malloc_l11_0 }} or UNINITIALIZED repeated %64 
+                              [17179869176..18446744073709551607] ∈
+                              UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_0[0..7] ∈
+                                  {{ garbled mix of &{__realloc_w_can_fail_realloc_l25}
+                                   (origin: Misaligned
+                                   {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:32}) }} or UNINITIALIZED
+                                  [8..15] ∈
+                                  {{ garbled mix of &{__realloc_w_can_fail_realloc_l25}
+                                   (origin: Misaligned
+                                   {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:32}) }} or UNINITIALIZED or ESCAPINGADDR
+                                  [16..23] ∈
+                                  {{ garbled mix of &{__realloc_w_can_fail_realloc_l25}
+                                   (origin: Misaligned
+                                   {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/tp068/ASAtp068.c:32}) }} or UNINITIALIZED
+  __realloc_w_can_fail_realloc_l25[bits 0 to 137438953407]# ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_0 }} or UNINITIALIZED repeated %64 
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  5 functions analyzed (out of 6): 83% coverage.
+  In these functions, 87 statements reached (out of 87): 100% coverage.
+  ----------------------------------------------------------------------------
+  Some errors and warnings have been raised during the analysis:
+    by the Eva analyzer:      1 error    0 warnings
+    by the Frama-C kernel:    0 errors    0 warnings
+  ----------------------------------------------------------------------------
+  54 alarms generated by the analysis:
+      26 accesses to uninitialized left-values
+      16 invalid memory accesses
+       7 escaping addresses
+       5 integer overflows
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     0 unknown     0 invalid      0 total
+    Preconditions    15 valid     3 unknown     0 invalid     18 total
+  83% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[eva] User Error: Deferred error message was emitted during execution. See above messages for more information.
+[kernel] Plug-in eva aborted: invalid user input.

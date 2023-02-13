@@ -1,0 +1,721 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  stack ∈ {0}
+[eva] using specification for function fgets
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:38: 
+  function fgets: precondition 'valid_stream' got status unknown.
+[eva] using specification for function strtok
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:39: 
+  function strtok, behavior new_str: precondition 'valid_string_s_or_delim_not_found' got status unknown.
+[eva] using specification for function atoi
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:39: 
+  function atoi: precondition 'valid_nptr' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:40: 
+  function atoi: precondition 'valid_nptr' got status unknown.
+[eva] using specification for function time
+[eva] using specification for function srand
+[eva] using specification for function rand
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:59: 
+  out of bounds write. assert \valid(&graph->numVertices);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:60: 
+  signed overflow. assert numVertices + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_0
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:64: 
+  out of bounds write. assert \valid(graph->adjLists + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:63: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:46: 
+  out of bounds write. assert \valid(graph->grades + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:44: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:50: 
+  function strtok, behavior new_str: precondition 'valid_string_s_or_delim_not_found' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:50: 
+  function atoi: precondition 'valid_nptr' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:51: 
+  function atoi: precondition 'valid_nptr' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:87: 
+  out of bounds write. assert \valid(&newVertex->student);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:93: 
+  accessing uninitialized left-value.
+  assert \initialized(graph->adjLists + src);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:93: 
+  out of bounds read. assert \valid_read(graph->adjLists + src);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:94: 
+  out of bounds write. assert \valid(graph->adjLists + src);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:48: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:48: 
+  signed overflow. assert i + 1 ≤ 2147483647;
+[eva:locals-escaping] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:187: 
+  locals {line} escaping the scope of processInput through __fc_strtok_ptr
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:160: 
+  signed overflow. assert graph->numVertices + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_3
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_4
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_5
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:168: 
+  out of bounds write. assert \valid(disc + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:169: 
+  out of bounds write. assert \valid(low + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:170: 
+  out of bounds write. assert \valid(stackMember + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:167: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:175: 
+  accessing uninitialized left-value. assert \initialized(disc + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:175: 
+  out of bounds read. assert \valid_read(disc + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:102: 
+  accessing uninitialized left-value. assert \initialized(graph->adjLists + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:102: 
+  out of bounds read. assert \valid_read(graph->adjLists + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:105: 
+  out of bounds write. assert \valid(low + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:105: 
+  out of bounds write. assert \valid(disc + v);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_6
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:111: 
+  out of bounds write. assert \valid(stackMember + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:115: 
+  accessing uninitialized left-value. assert \initialized(&vertex->student);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:117: 
+  accessing uninitialized left-value. assert \initialized(disc + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:117: 
+  out of bounds read. assert \valid_read(disc + v);
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:118: 
+  detected recursive call of function searchAux.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:118: User Error: 
+  Recursive call to searchAux without assigns clause.
+  Generating probably incomplete assigns to interpret the call. Try to increase
+  the -eva-unroll-recursive-calls parameter or write a correct specification
+  for function searchAux.
+[kernel:annot:missing-spec] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:97: 
+  Neither code nor specification for function searchAux, generating default assigns from the prototype
+[eva] using specification for function searchAux
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:120: 
+  accessing uninitialized left-value. assert \initialized(low + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:120: 
+  out of bounds read. assert \valid_read(low + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:120: 
+  out of bounds read. assert \valid_read(low + vtemp);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:121: 
+  out of bounds write. assert \valid(low + vtemp);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:121: 
+  accessing uninitialized left-value. assert \initialized(low + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:121: 
+  out of bounds read. assert \valid_read(low + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:125: 
+  accessing uninitialized left-value. assert \initialized(stackMember + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:125: 
+  out of bounds read. assert \valid_read(stackMember + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:126: 
+  out of bounds read. assert \valid_read(disc + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:126: 
+  out of bounds read. assert \valid_read(low + vtemp);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:131: 
+  accessing uninitialized left-value. assert \initialized(graph->grades + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:131: 
+  accessing uninitialized left-value.
+  assert \initialized(graph->grades + vtemp);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:131: 
+  out of bounds read. assert \valid_read(graph->grades + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:131: 
+  out of bounds read. assert \valid_read(graph->grades + vtemp);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:132: 
+  out of bounds write. assert \valid(graph->grades + vtemp);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:132: 
+  accessing uninitialized left-value. assert \initialized(graph->grades + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:132: 
+  out of bounds read. assert \valid_read(graph->grades + v);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:132: 
+  Assigning imprecise value to *(graph->grades + vtemp)
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets [0..147573952589676412824],0%8;
+   __malloc_can_fail_malloc_l11_1 with offsets [8..147573952589676412856],0%8).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:132}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:113: 
+  accessing uninitialized left-value. assert \initialized(&vertex->next);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:113: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:118: 
+  Using specification of function searchAux for recursive calls.
+  Analysis of function searchAux is thus incomplete and its soundness
+  relies on the written specification.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:121: 
+  Assigning imprecise value to *(low + vtemp)
+  (pointing to __malloc_can_fail_malloc_l11_4 with offsets {32}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:125: 
+  trap representation of a _Bool lvalue.
+  assert *(stackMember + v) ≡ 0 ∨ *(stackMember + v) ≡ 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:126: 
+  accessing uninitialized left-value. assert \initialized(disc + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:127: 
+  out of bounds write. assert \valid(low + vtemp);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:127: 
+  accessing uninitialized left-value. assert \initialized(disc + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:127: 
+  out of bounds read. assert \valid_read(disc + v);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:127: 
+  Assigning imprecise value to *(low + vtemp)
+  (pointing to __malloc_can_fail_malloc_l11_4 with offsets {32}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:97}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:127: 
+  Assigning imprecise value to *(low + vtemp)
+  (pointing to __malloc_can_fail_malloc_l11_4 with offsets {32}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:136: 
+  accessing uninitialized left-value.
+  assert \initialized(graph->grades + vtemp);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:136: 
+  out of bounds read. assert \valid_read(graph->grades + vtemp);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:136: 
+  Assigning imprecise value to max.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:132}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:138: 
+  out of bounds read. assert \valid_read(low + vtemp);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:138: 
+  out of bounds read. assert \valid_read(disc + vtemp);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:152: 
+  out of bounds write. assert \valid(graph->grades + w);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:152: 
+  Assigning imprecise value to *(graph->grades + w)
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets [0..147573952589676412824],0%8;
+   __malloc_can_fail_malloc_l11_1 with offsets [8..147573952589676412856],0%8).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:132}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:153: 
+  out of bounds write. assert \valid(stackMember + w);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:174: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:102: 
+  Assigning imprecise value to vertex.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:113: 
+  pointer comparison. assert \pointer_comparable((void *)vertex, (void *)0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:115: 
+  out of bounds read. assert \valid_read(&vertex->student);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:115: 
+  Assigning imprecise value to v.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:115}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:120: 
+  accessing uninitialized left-value. assert \initialized(low + vtemp);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:121: 
+  Assigning imprecise value to *(low + vtemp)
+  (pointing to __malloc_can_fail_malloc_l11_4 with offsets {32; 64}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:126: 
+  accessing uninitialized left-value. assert \initialized(low + vtemp);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:127: 
+  Assigning imprecise value to *(low + vtemp)
+  (pointing to __malloc_can_fail_malloc_l11_4 with offsets {32; 64}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:132: 
+  Assigning imprecise value to *(graph->grades + vtemp)
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets [0..147573952589676412832],0%8;
+   __malloc_can_fail_malloc_l11_1 with offsets [0..147573952589676412864],0%8).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:113: 
+  out of bounds read. assert \valid_read(&vertex->next);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:136: 
+  Assigning imprecise value to max.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:138: 
+  accessing uninitialized left-value. assert \initialized(low + vtemp);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:138: 
+  accessing uninitialized left-value. assert \initialized(disc + vtemp);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:139: 
+  accessing uninitialized left-value. assert \initialized(&aux->student);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:140: 
+  accessing uninitialized left-value. assert \initialized(&aux->student);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:140: 
+  accessing uninitialized left-value.
+  assert \initialized(graph->grades + aux->student);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:140: 
+  out of bounds read. assert \valid_read(graph->grades + aux->student);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:141: 
+  accessing uninitialized left-value. assert \initialized(&aux->student);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:141: 
+  accessing uninitialized left-value.
+  assert \initialized(graph->grades + aux->student);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:141: 
+  out of bounds read. assert \valid_read(graph->grades + aux->student);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:141: 
+  Assigning imprecise value to max.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:143: 
+  accessing uninitialized left-value. assert \initialized(&aux->next);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:139: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:139: 
+  out of bounds read. assert \valid_read(&aux->student);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:145: 
+  accessing uninitialized left-value. assert \initialized(&stack->student);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:146: 
+  accessing uninitialized left-value. assert \initialized(&stack->student);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:147: 
+  out of bounds write. assert \valid(graph->grades + w);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:147: 
+  Assigning imprecise value to *(graph->grades + w)
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets [0..147573952589676412832],0%8;
+   __malloc_can_fail_malloc_l11_1 with offsets [0..147573952589676412864],0%8).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:148: 
+  out of bounds write. assert \valid(stackMember + w);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:149: 
+  accessing uninitialized left-value. assert \initialized(&stack->next);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:145: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:145: 
+  out of bounds read. assert \valid_read(&stack->student);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:151: 
+  accessing uninitialized left-value. assert \initialized(&stack->student);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:152: 
+  Assigning imprecise value to *(graph->grades + w)
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets [0..147573952589676412832],0%8;
+   __malloc_can_fail_malloc_l11_1 with offsets [0..147573952589676412864],0%8).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:154: 
+  accessing uninitialized left-value. assert \initialized(&stack->next);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:121: 
+  Assigning imprecise value to *(low + vtemp)
+  (pointing to __malloc_can_fail_malloc_l11_4 with offsets {32; 64; 96}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:127: 
+  Assigning imprecise value to *(low + vtemp)
+  (pointing to __malloc_can_fail_malloc_l11_4 with offsets {32; 64; 96}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:121: 
+  Assigning imprecise value to *(low + vtemp)
+  (pointing to __malloc_can_fail_malloc_l11_4 with offsets [32..68719476672],0%32).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:127: 
+  Assigning imprecise value to *(low + vtemp)
+  (pointing to __malloc_can_fail_malloc_l11_4 with offsets [32..68719476672],0%32).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:192: 
+  accessing uninitialized left-value. assert \initialized(graph->grades + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:192: 
+  out of bounds read. assert \valid_read(graph->grades + i);
+[eva] using specification for function printf_va_1
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:191: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:191: 
+  signed overflow. assert i + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:73: 
+  accessing uninitialized left-value. assert \initialized(graph->adjLists + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:73: 
+  out of bounds read. assert \valid_read(graph->adjLists + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:73: 
+  Assigning imprecise value to vertexAux.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:74: 
+  pointer comparison. assert \pointer_comparable((void *)vertexAux, (void *)0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:75: 
+  accessing uninitialized left-value. assert \initialized(&vertexAux->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:75: 
+  out of bounds read. assert \valid_read(&vertexAux->next);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:75: 
+  Assigning imprecise value to vextexNext.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:75}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:76: 
+  function free: precondition 'freeable' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:77: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&vextexNext);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:77: 
+  Assigning imprecise value to vertexAux.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:75}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:74: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:75: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&vertexAux->next);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:72: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:73: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(graph->adjLists + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:72: 
+  signed overflow. assert i + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:80: 
+  function free: precondition 'freeable' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:81: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&graph->adjLists);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al038/asa.c:81: 
+  function free: precondition 'freeable' got status unknown.
+[eva] done for function main
+[scope:rm_asserts] removing 14 assertion(s)
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function destroyGraph:
+  graph ∈ ESCAPINGADDR
+  i ∈ [1..2147483647]
+  graph ∈ ESCAPINGADDR
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2}
+                (origin: Misaligned) }} or ESCAPINGADDR
+               [1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11_0[0..18446744073709551607] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_can_fail_malloc_l11_1[0..18446744073709551611] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_2[0..3] ∈ [--..--] or UNINITIALIZED
+                                  [4..7] ∈ UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_can_fail_malloc_l11_3[0..3] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                    __malloc_can_fail_malloc_l11_1}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+                                [bits 32 to 68719476703]# ∈
+                                {-1; 1} or UNINITIALIZED repeated %32 
+                                [8589934588..18446744073709551611] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11_4[0..8589934587] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                    __malloc_can_fail_malloc_l11_1}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+                                [8589934588..18446744073709551611] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11_5[0] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                    __malloc_can_fail_malloc_l11_1}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+                                [1..2147483646] ∈ {0; 1} or UNINITIALIZED
+                                [2147483647..18446744073709551611] ∈
+                                UNINITIALIZED
+[eva:final-states] Values at end of function can_fail_malloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈
+          {{ NULL ; (void *)&__malloc_can_fail_malloc_l11 ;
+             (void *)&__malloc_can_fail_malloc_l11_0 ;
+             (void *)&__malloc_can_fail_malloc_l11_1 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_2 ;
+             (void *)&__malloc_can_fail_malloc_l11_3 ;
+             (void *)&__malloc_can_fail_malloc_l11_4 ;
+             (void *)&__malloc_can_fail_malloc_l11_5 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_6 }}
+[eva:final-states] Values at end of function createGraph:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  i ∈ [1..2147483647]
+  graph ∈ {{ (Graph *)&__malloc_can_fail_malloc_l11 }}
+  __malloc_can_fail_malloc_l11[0..3] ∈ [--..--]
+                              [4..7] ∈ UNINITIALIZED
+                              [bits 64 to 127] ∈
+                              {{ NULL ;
+                                 (? *)&__malloc_can_fail_malloc_l11_0 }}
+                              [bits 128 to 191] ∈
+                              {{ NULL ;
+                                 (? *)&__malloc_can_fail_malloc_l11_1 }}
+  __malloc_can_fail_malloc_l11_0[0..7] ∈ UNINITIALIZED
+                                [8..17179869175] ∈ {0} or UNINITIALIZED
+                                [17179869176..18446744073709551607] ∈
+                                UNINITIALIZED
+[eva:final-states] Values at end of function createVertex:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  newVertex ∈
+           {{ (Vertex *)&__malloc_w_can_fail_malloc_l11_2 ;
+              (Vertex *)&__malloc_w_can_fail_malloc_l11_6 }}
+  __malloc_w_can_fail_malloc_l11_2[0..3] ∈ [--..--] or UNINITIALIZED
+                                  [4..7] ∈ UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_6[bits 0 to 31] ∈
+                                  [1..2147483646] or UNINITIALIZED
+                                  [4..7] ∈ UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_6 }} or UNINITIALIZED
+[eva:final-states] Values at end of function addEdge:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  destVertex ∈ {{ (Vertex *)&__malloc_w_can_fail_malloc_l11_2 }}
+  __malloc_can_fail_malloc_l11_0[bits 0 to 63] ∈
+                                {{ (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED
+                                [bits 64 to 137438953407]# ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED repeated %64 
+                                [bits 137438953408 to 137438953471] ∈
+                                {{ (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED
+                                [17179869184..18446744073709551607] ∈
+                                UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_2[0..3] ∈ [--..--] or UNINITIALIZED
+                                  [4..7] ∈ UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED
+[eva:final-states] Values at end of function processInput:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  __fc_strtok_ptr ∈ {{ &line + [0..--] }}
+  line[0..19] ∈ [--..--] or UNINITIALIZED
+  src ∈ [0..2147483647] or UNINITIALIZED
+  dest ∈ [--..--] or UNINITIALIZED
+  i ∈ [1..2147483647]
+  numVertices ∈ [-2147483648..2147483646]
+  numRelations ∈ [-2147483648..2147483646]
+  graph ∈ {{ (Graph *)&__malloc_can_fail_malloc_l11 }}
+  __malloc_can_fail_malloc_l11[0..3] ∈ [--..--]
+                              [4..7] ∈ UNINITIALIZED
+                              [bits 64 to 127] ∈
+                              {{ NULL ;
+                                 (? *)&__malloc_can_fail_malloc_l11_0 }}
+                              [bits 128 to 191] ∈
+                              {{ NULL ;
+                                 (? *)&__malloc_can_fail_malloc_l11_1 }}
+  __malloc_can_fail_malloc_l11_0[bits 0 to 63] ∈
+                                {{ (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED
+                                [bits 64 to 137438953407]# ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED repeated %64 
+                                [bits 137438953408 to 137438953471] ∈
+                                {{ (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED
+                                [17179869184..18446744073709551607] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11_1[0..3] ∈ UNINITIALIZED
+                                [4..8589934587] ∈ [--..--] or UNINITIALIZED
+                                [8589934588..18446744073709551611] ∈
+                                UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_2[0..3] ∈ [--..--] or UNINITIALIZED
+                                  [4..7] ∈ UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED
+[eva:final-states] Values at end of function searchAux:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  stack ∈ {{ NULL ; (Vertex *)&__malloc_w_can_fail_malloc_l11_6 }}
+  v ∈ [0..2147483647]
+  time_0 ∈ {1}
+  vtemp ∈ [1..2147483646]
+  vertex ∈ {0}
+  vertexAux ∈ {{ (Vertex *)&__malloc_w_can_fail_malloc_l11_6 }}
+  w ∈ [0..2147483646]
+  max ∈
+     {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2}
+      (origin: Misaligned) }}
+  aux ∈ {{ (Vertex *)&__malloc_w_can_fail_malloc_l11_6 }}
+  __malloc_can_fail_malloc_l11[0..3] ∈
+                              {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                  __malloc_can_fail_malloc_l11_1}
+                               (origin: Misaligned) }}
+                              [4..7] ∈
+                              {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                  __malloc_can_fail_malloc_l11_1}
+                               (origin: Misaligned) }} or UNINITIALIZED
+                              [8..15] ∈
+                              {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                  __malloc_can_fail_malloc_l11_1}
+                               (origin: Misaligned) }}
+                              [bits 128 to 191] ∈
+                              {{ &__malloc_can_fail_malloc_l11_0 +
+                                 [-8589934584..18446744073709551600] ;
+                                 &__malloc_can_fail_malloc_l11_1 +
+                                 [-8589934584..18446744073709551604] }}
+  __malloc_can_fail_malloc_l11_0[0..18446744073709551607] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2}
+                                 (origin: Misaligned) }} or UNINITIALIZED
+  __malloc_can_fail_malloc_l11_1[0..18446744073709551611] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2}
+                                 (origin: Misaligned) }} or UNINITIALIZED
+  __malloc_can_fail_malloc_l11_3[0..3] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                    __malloc_can_fail_malloc_l11_1}
+                                 (origin: Misaligned) }} or UNINITIALIZED
+                                [bits 32 to 68719476703]# ∈
+                                {-1; 1} or UNINITIALIZED repeated %32 
+                                [8589934588..18446744073709551611] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11_4[0..8589934587] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                    __malloc_can_fail_malloc_l11_1}
+                                 (origin: Misaligned) }} or UNINITIALIZED
+                                [8589934588..18446744073709551611] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11_5[0] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                    __malloc_can_fail_malloc_l11_1}
+                                 (origin: Misaligned) }} or UNINITIALIZED
+                                [1..2147483646] ∈ {0; 1} or UNINITIALIZED
+                                [2147483647..18446744073709551611] ∈
+                                UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_6[bits 0 to 31] ∈
+                                  [1..2147483646] or UNINITIALIZED
+                                  [4..7] ∈ UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_6 }} or UNINITIALIZED
+[eva:final-states] Values at end of function search:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  stack ∈ {{ NULL ; (Vertex *)&__malloc_w_can_fail_malloc_l11_6 }}
+  disc ∈
+      {{ NULL ; (int *)&__malloc_can_fail_malloc_l11_3 }} or ESCAPINGADDR
+  low ∈ {{ NULL ; (int *)&__malloc_can_fail_malloc_l11_4 }} or ESCAPINGADDR
+  stackMember ∈
+             {{ NULL ; (_Bool *)&__malloc_can_fail_malloc_l11_5 }} or ESCAPINGADDR
+  i ∈ [1..2147483647]
+  time_0 ∈ {0}
+  __malloc_can_fail_malloc_l11[0..3] ∈
+                              {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                  __malloc_can_fail_malloc_l11_1}
+                               (origin: Misaligned) }}
+                              [4..7] ∈
+                              {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                  __malloc_can_fail_malloc_l11_1}
+                               (origin: Misaligned) }} or UNINITIALIZED
+                              [8..15] ∈
+                              {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                  __malloc_can_fail_malloc_l11_1}
+                               (origin: Misaligned) }}
+                              [bits 128 to 191] ∈
+                              {{ NULL ;
+                                 &__malloc_can_fail_malloc_l11_0 +
+                                 [-8589934584..18446744073709551600] ;
+                                 &__malloc_can_fail_malloc_l11_1 +
+                                 [-8589934584..18446744073709551604] }}
+  __malloc_can_fail_malloc_l11_0[0..18446744073709551607] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2}
+                                 (origin: Misaligned) }} or UNINITIALIZED
+  __malloc_can_fail_malloc_l11_1[0..18446744073709551611] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2}
+                                 (origin: Misaligned) }} or UNINITIALIZED
+  __malloc_can_fail_malloc_l11_3[0..3] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                    __malloc_can_fail_malloc_l11_1}
+                                 (origin: Misaligned) }} or UNINITIALIZED
+                                [bits 32 to 68719476703]# ∈
+                                {-1; 1} or UNINITIALIZED repeated %32 
+                                [8589934588..18446744073709551611] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11_4[0..8589934587] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                    __malloc_can_fail_malloc_l11_1}
+                                 (origin: Misaligned) }} or UNINITIALIZED
+                                [8589934588..18446744073709551611] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11_5[0] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                    __malloc_can_fail_malloc_l11_1}
+                                 (origin: Misaligned) }} or UNINITIALIZED
+                                [1..2147483646] ∈ {0; 1} or UNINITIALIZED
+                                [2147483647..18446744073709551611] ∈
+                                UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_6[bits 0 to 31] ∈
+                                  [1..2147483646] or UNINITIALIZED
+                                  [4..7] ∈ UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_6 }} or UNINITIALIZED
+[eva:final-states] Values at end of function main:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  __fc_strtok_ptr ∈ ESCAPINGADDR
+  stack ∈ {{ NULL ; (Vertex *)&__malloc_w_can_fail_malloc_l11_6 }}
+  i ∈ [1..2147483647]
+  graph ∈ ESCAPINGADDR
+  __retres ∈ {0}
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2}
+                (origin: Misaligned) }} or ESCAPINGADDR
+               [1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11_0[0..18446744073709551607] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_can_fail_malloc_l11_1[0..18446744073709551611] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_2[0..3] ∈ [--..--] or UNINITIALIZED
+                                  [4..7] ∈ UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_can_fail_malloc_l11_3[0..3] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                    __malloc_can_fail_malloc_l11_1}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+                                [bits 32 to 68719476703]# ∈
+                                {-1; 1} or UNINITIALIZED repeated %32 
+                                [8589934588..18446744073709551611] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11_4[0..8589934587] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                    __malloc_can_fail_malloc_l11_1}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+                                [8589934588..18446744073709551611] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11_5[0] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                    __malloc_can_fail_malloc_l11_1}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+                                [1..2147483646] ∈ {0; 1} or UNINITIALIZED
+                                [2147483647..18446744073709551611] ∈
+                                UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_6[bits 0 to 31] ∈
+                                  [1..2147483646] or UNINITIALIZED
+                                  [4..7] ∈ UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_6 }} or UNINITIALIZED
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  9 functions analyzed (out of 11): 81% coverage.
+  In these functions, 165 statements reached (out of 165): 100% coverage.
+  ----------------------------------------------------------------------------
+  Some errors and warnings have been raised during the analysis:
+    by the Eva analyzer:      1 error    0 warnings
+    by the Frama-C kernel:    0 errors    0 warnings
+  ----------------------------------------------------------------------------
+  89 alarms generated by the analysis:
+      44 invalid memory accesses
+      33 accesses to uninitialized left-values
+       5 integer overflows
+       4 escaping addresses
+       3 others
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     0 unknown     0 invalid      0 total
+    Preconditions    22 valid    10 unknown     0 invalid     32 total
+  68% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[eva] User Error: Deferred error message was emitted during execution. See above messages for more information.
+[kernel] Plug-in eva aborted: invalid user input.

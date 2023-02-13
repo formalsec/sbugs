@@ -1,0 +1,1901 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  
+[eva] using specification for function time
+[eva] using specification for function srand
+[eva] using specification for function rand
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11
+[eva] using specification for function scanf_va_1
+[eva] using specification for function exit
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:80: 
+  out of bounds write. assert \valid(&G->nV);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:80: 
+  signed overflow. assert -2147483648 ≤ nStations * 2;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:80: 
+  signed overflow. assert nStations * 2 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:80: 
+  signed overflow. assert -2147483648 ≤ nSuppliers + (int)(nStations * 2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:80: 
+  signed overflow. assert nSuppliers + (int)(nStations * 2) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:80: 
+  signed overflow.
+  assert (int)(nSuppliers + (int)(nStations * 2)) + 2 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:81: 
+  signed overflow. assert -2147483648 ≤ nEdges + nSuppliers;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:81: 
+  signed overflow. assert nEdges + nSuppliers ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:81: 
+  signed overflow.
+  assert -2147483648 ≤ (int)(nEdges + nSuppliers) + nStations;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:81: 
+  signed overflow.
+  assert (int)(nEdges + nSuppliers) + nStations ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_0
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:86: 
+  out of bounds write. assert \valid(G->V + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:87: 
+  out of bounds write. assert \valid(G->V + 1);
+[eva] using specification for function scanf_va_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:90: 
+  out of bounds write. assert \valid(G->V + (int)(i_edge + 2));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:91: 
+  out of bounds write. assert \valid(G->E + i_edge);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:88: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:90: 
+  signed overflow. assert i_edge + 2 ≤ 2147483647;
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:91: 
+  too many locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:56: 
+  signed overflow. assert G->nSup + 2 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:97: 
+  out of bounds write. assert \valid(G->V + f);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:97: 
+  out of bounds write. assert \valid(G->V + s);
+[eva] using specification for function scanf_va_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:99: 
+  signed overflow. assert i_edge + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:99: 
+  out of bounds write. assert \valid(G->E + tmp_5);
+                       (tmp_5 from i_edge++)
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:99: 
+  too many locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:94: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:56: 
+  signed overflow. assert (int)(G->nSup + 2) + i ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:58: 
+  signed overflow. assert -2147483648 ≤ (int)(G->nV - 1) - i;
+[eva] using specification for function scanf_va_4
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:108: 
+  out of bounds write. assert \valid(&(G->V + eo)->e);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:108: 
+  more than 200(2147483648) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:109: 
+  signed overflow. assert s_f - flow ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:113: 
+  signed overflow. assert i_edge + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:61: 
+  signed overflow. assert -2147483648 ≤ (int)(G->nV - 1) - station;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:61: 
+  signed overflow. assert (int)(G->nV - 1) - station ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:61: 
+  signed overflow.
+  assert -2147483648 ≤ (int)((int)(G->nV - 1) - station) + tmp;
+  (tmp from i_sStation(G, 0))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:61: 
+  signed overflow.
+  assert (int)((int)(G->nV - 1) - station) + tmp ≤ 2147483647;
+  (tmp from i_sStation(G, 0))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:114: 
+  out of bounds write. assert \valid(G->E + tmp_7);
+                       (tmp_7 from i_edge++)
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:114: 
+  too many locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:116: 
+  signed overflow. assert i_edge + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:116: 
+  out of bounds write. assert \valid(G->E + tmp_9);
+                       (tmp_9 from i_edge++)
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:116: 
+  too many locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:102: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:109: 
+  signed overflow. assert -2147483648 ≤ s_f - flow;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:119: 
+  out of bounds write. assert \valid(&(G->V + 1)->e);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:108: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:178: 
+  accessing uninitialized left-value. assert \initialized(&(G->E + i)->o);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:178: 
+  out of bounds read. assert \valid_read(&(G->E + i)->o);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:178: 
+  pointer comparison.
+  assert \pointer_comparable((void *)(G->E + i)->o, (void *)(G->V + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:179: 
+  accessing uninitialized left-value. assert \initialized(&(G->E + i)->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:179: 
+  out of bounds read. assert \valid_read(&(G->E + i)->d);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:35: 
+  out of bounds write. assert \valid(&n->data);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:35: 
+  Assigning imprecise value to n->data
+  (pointing to __malloc_can_fail_malloc_l11_3 with offsets {0}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:177: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:35: 
+  Assigning imprecise value to n->data
+  (pointing to __malloc_w_can_fail_malloc_l11_3 with offsets {0}).
+  The imprecision originates from Misaligned
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:179: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:187: 
+  accessing uninitialized left-value. assert \initialized(&q_head->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:187: 
+  accessing uninitialized left-value.
+  assert \initialized(&((vertex *)q_head->data)->e);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:187: 
+  out of bounds read. assert \valid_read(&((vertex *)q_head->data)->e);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:188: 
+  accessing uninitialized left-value. assert \initialized(&q_head->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:129: 
+  out of bounds write. assert \valid(v_edges + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:130: 
+  accessing uninitialized left-value. assert \initialized(&(G->E + i)->o);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:130: 
+  out of bounds read. assert \valid_read(&(G->E + i)->o);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:130: 
+  pointer comparison.
+  assert \pointer_comparable((void *)(G->E + i)->o, (void *)v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:130: 
+  accessing uninitialized left-value. assert \initialized(&(G->E + i)->f);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:130: 
+  accessing uninitialized left-value. assert \initialized(&(G->E + i)->c);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:130: 
+  out of bounds read. assert \valid_read(&(G->E + i)->f);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:130: 
+  out of bounds read. assert \valid_read(&(G->E + i)->c);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:131: 
+  accessing uninitialized left-value. assert \initialized(&(G->E + i)->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:131: 
+  out of bounds read. assert \valid_read(&(G->E + i)->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:131: 
+  pointer comparison.
+  assert \pointer_comparable((void *)(G->E + i)->d, (void *)v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:131: 
+  accessing uninitialized left-value. assert \initialized(&(G->E + i)->f);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:131: 
+  out of bounds read. assert \valid_read(&(G->E + i)->f);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:132: 
+  out of bounds write. assert \valid(v_edges + tmp);
+                       (tmp from n_edges++)
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:128: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:132: 
+  signed overflow. assert n_edges + 1 ≤ 2147483647;
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:130: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:130: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:190: 
+  accessing uninitialized left-value. assert \initialized(&q_head->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:141: 
+  accessing uninitialized left-value. assert \initialized(es + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:141: 
+  out of bounds read. assert \valid_read(es + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:141: 
+  pointer comparison. assert \pointer_comparable((void *)*(es + i), (void *)0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:142: 
+  out of bounds read. assert \valid_read(es + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:122: 
+  accessing uninitialized left-value. assert \initialized(&e->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:122: 
+  out of bounds read. assert \valid_read(&e->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:122: 
+  pointer comparison. assert \pointer_comparable((void *)e->d, (void *)v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:143: 
+  out of bounds read. assert \valid_read(es + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:143: 
+  accessing uninitialized left-value. assert \initialized(&(*(es + i))->o);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:143: 
+  out of bounds read. assert \valid_read(&(*(es + i))->o);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:143: 
+  accessing uninitialized left-value.
+  assert \initialized(&((*(es + i))->o)->h);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:143: 
+  out of bounds read. assert \valid_read(&((*(es + i))->o)->h);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:145: 
+  out of bounds read. assert \valid_read(es + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:145: 
+  accessing uninitialized left-value. assert \initialized(&(*(es + i))->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:145: 
+  out of bounds read. assert \valid_read(&(*(es + i))->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:145: 
+  accessing uninitialized left-value.
+  assert \initialized(&((*(es + i))->d)->h);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:145: 
+  out of bounds read. assert \valid_read(&((*(es + i))->d)->h);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:141: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:142: 
+  accessing uninitialized left-value. assert \initialized(es + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:143: 
+  accessing uninitialized left-value. assert \initialized(es + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:143: 
+  accessing uninitialized left-value. assert \initialized(es + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:143: 
+  out of bounds read. assert \valid_read(es + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:143: 
+  accessing uninitialized left-value. assert \initialized(&(*(es + i))->o);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:143: 
+  out of bounds read. assert \valid_read(&(*(es + i))->o);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:143: 
+  accessing uninitialized left-value.
+  assert \initialized(&((*(es + i))->o)->h);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:143: 
+  out of bounds read. assert \valid_read(&((*(es + i))->o)->h);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:143: 
+  accessing uninitialized left-value. assert \initialized(es + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:143: 
+  out of bounds read. assert \valid_read(es + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:143: 
+  accessing uninitialized left-value. assert \initialized(&(*(es + i))->o);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:143: 
+  out of bounds read. assert \valid_read(&(*(es + i))->o);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:143: 
+  accessing uninitialized left-value.
+  assert \initialized(&((*(es + i))->o)->h);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:143: 
+  out of bounds read. assert \valid_read(&((*(es + i))->o)->h);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:145: 
+  accessing uninitialized left-value. assert \initialized(es + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:145: 
+  accessing uninitialized left-value. assert \initialized(es + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:145: 
+  out of bounds read. assert \valid_read(es + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:145: 
+  accessing uninitialized left-value. assert \initialized(&(*(es + i))->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:145: 
+  out of bounds read. assert \valid_read(&(*(es + i))->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:145: 
+  accessing uninitialized left-value.
+  assert \initialized(&((*(es + i))->d)->h);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:145: 
+  out of bounds read. assert \valid_read(&((*(es + i))->d)->h);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:145: 
+  accessing uninitialized left-value. assert \initialized(es + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:145: 
+  out of bounds read. assert \valid_read(es + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:145: 
+  accessing uninitialized left-value. assert \initialized(&(*(es + i))->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:145: 
+  out of bounds read. assert \valid_read(&(*(es + i))->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:145: 
+  accessing uninitialized left-value.
+  assert \initialized(&((*(es + i))->d)->h);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:145: 
+  out of bounds read. assert \valid_read(&((*(es + i))->d)->h);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:141: 
+  signed overflow. assert i + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:190: 
+  accessing uninitialized left-value. assert \initialized(&q_head->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:190: 
+  out of bounds write. assert \valid(&((vertex *)q_head->data)->h);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:190: 
+  signed overflow.
+  assert tmp_0 + 1 ≤ 2147483647;
+  (tmp_0 from edges_min_h((vertex *)q_head->data, v_edges))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:193: 
+  accessing uninitialized left-value.
+  assert \initialized(v_edges + edge_index);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:193: 
+  out of bounds read. assert \valid_read(v_edges + edge_index);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:193: 
+  pointer comparison.
+  assert \pointer_comparable((void *)*(v_edges + edge_index), (void *)0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:194: 
+  accessing uninitialized left-value. assert \initialized(&q_head->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:194: 
+  out of bounds read. assert \valid_read(v_edges + edge_index);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:195: 
+  accessing uninitialized left-value. assert \initialized(&q_head->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:195: 
+  out of bounds read. assert \valid_read(v_edges + edge_index);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:195: 
+  accessing uninitialized left-value.
+  assert \initialized(&((vertex *)q_head->data)->h);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:195: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(v_edges + edge_index))->o);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:195: 
+  out of bounds read. assert \valid_read(&((vertex *)q_head->data)->h);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:195: 
+  out of bounds read. assert \valid_read(&(*(v_edges + edge_index))->o);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:195: 
+  accessing uninitialized left-value.
+  assert \initialized(&((*(v_edges + edge_index))->o)->h);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:195: 
+  out of bounds read. assert \valid_read(&((*(v_edges + edge_index))->o)->h);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:197: 
+  accessing uninitialized left-value. assert \initialized(&q_head->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:197: 
+  out of bounds read. assert \valid_read(v_edges + edge_index);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:153: 
+  accessing uninitialized left-value. assert \initialized(&e->f);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:153: 
+  accessing uninitialized left-value. assert \initialized(&v->e);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:153: 
+  out of bounds read. assert \valid_read(&e->f);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:153: 
+  out of bounds read. assert \valid_read(&v->e);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:153: 
+  accessing uninitialized left-value. assert \initialized(&e->f);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:153: 
+  out of bounds read. assert \valid_read(&e->f);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:153: 
+  Assigning imprecise value to tmp.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:153: 
+  accessing uninitialized left-value. assert \initialized(&v->e);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:153: 
+  out of bounds read. assert \valid_read(&v->e);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:153: 
+  Assigning imprecise value to fSent.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:154: 
+  out of bounds write. assert \valid(&v->e);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:154: 
+  accessing uninitialized left-value. assert \initialized(&v->e);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:154: 
+  signed overflow. assert -2147483648 ≤ v->e - fSent;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:154: 
+  signed overflow. assert v->e - fSent ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:154: 
+  Assigning imprecise value to v->e
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets [0..147573952589676412832],0%8).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:155: 
+  accessing uninitialized left-value. assert \initialized(&e->o);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:155: 
+  out of bounds read. assert \valid_read(&e->o);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:155: 
+  out of bounds write. assert \valid(&(e->o)->e);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:155: 
+  accessing uninitialized left-value. assert \initialized(&(e->o)->e);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:155: 
+  signed overflow. assert -2147483648 ≤ (e->o)->e + fSent;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:155: 
+  signed overflow. assert (e->o)->e + fSent ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:155: 
+  Assigning imprecise value to (e->o)->e
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets [0..147573952589676412832]).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:156: 
+  out of bounds write. assert \valid(&e->f);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:156: 
+  accessing uninitialized left-value. assert \initialized(&e->f);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:156: 
+  signed overflow. assert -2147483648 ≤ e->f - fSent;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:156: 
+  signed overflow. assert e->f - fSent ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:156: 
+  Assigning imprecise value to e->f
+  (pointing to __malloc_can_fail_malloc_l11_1 with offsets [128..412316860160],128%192).
+  The imprecision originates from Misaligned
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:156: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:158: 
+  accessing uninitialized left-value. assert \initialized(&e->c);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:158: 
+  accessing uninitialized left-value. assert \initialized(&e->f);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:158: 
+  accessing uninitialized left-value. assert \initialized(&v->e);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:158: 
+  out of bounds read. assert \valid_read(&e->c);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:158: 
+  out of bounds read. assert \valid_read(&e->f);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:158: 
+  out of bounds read. assert \valid_read(&v->e);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:158: 
+  signed overflow. assert -2147483648 ≤ e->c - e->f;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:158: 
+  signed overflow. assert e->c - e->f ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:158: 
+  accessing uninitialized left-value. assert \initialized(&e->c);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:158: 
+  accessing uninitialized left-value. assert \initialized(&e->f);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:158: 
+  out of bounds read. assert \valid_read(&e->c);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:158: 
+  out of bounds read. assert \valid_read(&e->f);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:158: 
+  signed overflow. assert -2147483648 ≤ e->c - e->f;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:158: 
+  signed overflow. assert e->c - e->f ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:158: 
+  Assigning imprecise value to tmp_0.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:158: 
+  accessing uninitialized left-value. assert \initialized(&v->e);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:158: 
+  out of bounds read. assert \valid_read(&v->e);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:158: 
+  Assigning imprecise value to fSent_0.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:159: 
+  out of bounds write. assert \valid(&v->e);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:159: 
+  accessing uninitialized left-value. assert \initialized(&v->e);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:159: 
+  signed overflow. assert -2147483648 ≤ v->e - fSent_0;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:159: 
+  signed overflow. assert v->e - fSent_0 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:159: 
+  Assigning imprecise value to v->e
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets [0..147573952589676412832],0%8).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:160: 
+  accessing uninitialized left-value. assert \initialized(&e->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:160: 
+  out of bounds read. assert \valid_read(&e->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:160: 
+  out of bounds write. assert \valid(&(e->d)->e);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:160: 
+  accessing uninitialized left-value. assert \initialized(&(e->d)->e);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:160: 
+  signed overflow. assert -2147483648 ≤ (e->d)->e + fSent_0;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:160: 
+  signed overflow. assert (e->d)->e + fSent_0 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:160: 
+  Assigning imprecise value to (e->d)->e
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets [0..147573952589676412832]).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:161: 
+  out of bounds write. assert \valid(&e->f);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:161: 
+  accessing uninitialized left-value. assert \initialized(&e->f);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:161: 
+  signed overflow. assert -2147483648 ≤ e->f + fSent_0;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:161: 
+  signed overflow. assert e->f + fSent_0 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:161: 
+  Assigning imprecise value to e->f
+  (pointing to __malloc_can_fail_malloc_l11_1 with offsets [128..412316860160],128%192).
+  The imprecision originates from Misaligned
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:161: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:198: 
+  out of bounds read. assert \valid_read(v_edges + edge_index);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:198: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(v_edges + edge_index))->o);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:198: 
+  out of bounds read. assert \valid_read(&(*(v_edges + edge_index))->o);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:198: 
+  pointer comparison.
+  assert
+  \pointer_comparable((void *)(*(v_edges + edge_index))->o, (void *)(G->V + 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:200: 
+  out of bounds read. assert \valid_read(v_edges + edge_index);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:200: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(v_edges + edge_index))->o);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:200: 
+  out of bounds read. assert \valid_read(&(*(v_edges + edge_index))->o);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_4
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:35: 
+  Assigning imprecise value to n->data
+  (pointing to __malloc_can_fail_malloc_l11_4 with offsets {0}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:200: 
+  out of bounds write. assert \valid(&q_tail->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:201: 
+  accessing uninitialized left-value. assert \initialized(&q_tail->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:205: 
+  accessing uninitialized left-value. assert \initialized(&q_head->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:205: 
+  out of bounds read. assert \valid_read(v_edges + edge_index);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:205: 
+  accessing uninitialized left-value.
+  assert \initialized(&((vertex *)q_head->data)->h);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:205: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(v_edges + edge_index))->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:205: 
+  out of bounds read. assert \valid_read(&((vertex *)q_head->data)->h);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:205: 
+  out of bounds read. assert \valid_read(&(*(v_edges + edge_index))->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:205: 
+  accessing uninitialized left-value.
+  assert \initialized(&((*(v_edges + edge_index))->d)->h);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:205: 
+  out of bounds read. assert \valid_read(&((*(v_edges + edge_index))->d)->h);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:207: 
+  accessing uninitialized left-value. assert \initialized(&q_head->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:207: 
+  out of bounds read. assert \valid_read(v_edges + edge_index);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:208: 
+  out of bounds read. assert \valid_read(v_edges + edge_index);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:208: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(v_edges + edge_index))->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:208: 
+  out of bounds read. assert \valid_read(&(*(v_edges + edge_index))->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:208: 
+  pointer comparison.
+  assert
+  \pointer_comparable((void *)(*(v_edges + edge_index))->d, (void *)(G->V + 0));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:210: 
+  out of bounds read. assert \valid_read(v_edges + edge_index);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:210: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(v_edges + edge_index))->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:210: 
+  out of bounds read. assert \valid_read(&(*(v_edges + edge_index))->d);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_5
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:35: 
+  Assigning imprecise value to n->data
+  (pointing to __malloc_can_fail_malloc_l11_5 with offsets {0}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:210: 
+  out of bounds write. assert \valid(&q_tail->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:211: 
+  accessing uninitialized left-value. assert \initialized(&q_tail->next);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:193: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:194: 
+  accessing uninitialized left-value.
+  assert \initialized(v_edges + edge_index);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:195: 
+  accessing uninitialized left-value.
+  assert \initialized(v_edges + edge_index);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:197: 
+  accessing uninitialized left-value.
+  assert \initialized(v_edges + edge_index);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:198: 
+  accessing uninitialized left-value.
+  assert \initialized(v_edges + edge_index);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:200: 
+  accessing uninitialized left-value.
+  assert \initialized(v_edges + edge_index);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:35: 
+  Assigning imprecise value to n->data
+  (pointing to __malloc_w_can_fail_malloc_l11_4 with offsets {0}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:205: 
+  accessing uninitialized left-value.
+  assert \initialized(v_edges + edge_index);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:207: 
+  accessing uninitialized left-value.
+  assert \initialized(v_edges + edge_index);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:208: 
+  accessing uninitialized left-value.
+  assert \initialized(v_edges + edge_index);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:210: 
+  accessing uninitialized left-value.
+  assert \initialized(v_edges + edge_index);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:35: 
+  Assigning imprecise value to n->data
+  (pointing to __malloc_w_can_fail_malloc_l11_5 with offsets {0}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:215: 
+  signed overflow. assert edge_index + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:187: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:143: 
+  Assigning imprecise value to min_h.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:145: 
+  Assigning imprecise value to min_h.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:148: 
+  Assigning imprecise value to \result<edges_min_h>.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:190: 
+  Assigning imprecise value to tmp_0.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:190: 
+  signed overflow.
+  assert -2147483648 ≤ tmp_0 + 1;
+  (tmp_0 from edges_min_h((vertex *)q_head->data, v_edges))
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:190: 
+  Assigning imprecise value to ((vertex *)q_head->data)->h
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets [0..147573952589676412832]).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:219: 
+  accessing uninitialized left-value. assert \initialized(&q_head->next);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:186: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:186: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&q_head);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:200: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&q_tail);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:201: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&q_tail->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:210: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&q_tail);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:211: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&q_tail->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:219: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&q_head->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:240: 
+  signed overflow. assert -2147483648 ≤ 2 * G->nV;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:240: 
+  signed overflow. assert 2 * G->nV ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_6
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:247: 
+  out of bounds read. assert \valid_read(&(G->V + 0)->e);
+[eva] using specification for function printf_va_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:250: 
+  out of bounds write. assert \valid(h_list + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:250: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:254: 
+  signed overflow. assert -2147483648 ≤ max_h * 2;
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:25: 
+  allocating variable __realloc_can_fail_realloc_l25
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:257: 
+  out of bounds read. assert \valid_read(&(G->V + i)->h);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:257: 
+  accessing uninitialized left-value.
+  assert \initialized(h_list + (G->V + i)->h);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:257: 
+  out of bounds read. assert \valid_read(h_list + (G->V + i)->h);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_7
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:36: 
+  Assigning imprecise value to n->next
+  (pointing to __malloc_can_fail_malloc_l11_7 with offsets {64}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:257: 
+  out of bounds read. assert \valid_read(&(G->V + i)->h);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:257: 
+  out of bounds write. assert \valid(h_list + (G->V + i)->h);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:252: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:36: 
+  Assigning imprecise value to n->next
+  (pointing to __malloc_w_can_fail_malloc_l11_7 with offsets {64}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:257: 
+  accessing uninitialized left-value. assert \initialized(&(G->V + i)->h);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:257: 
+  accessing uninitialized left-value. assert \initialized(&(G->V + i)->h);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:254: 
+  signed overflow. assert max_h * 2 ≤ 2147483647;
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:257: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:260: 
+  accessing uninitialized left-value. assert \initialized(h_list + i_gap);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:260: 
+  out of bounds read. assert \valid_read(h_list + i_gap);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:260: 
+  pointer comparison.
+  assert \pointer_comparable((void *)*(h_list + i_gap), (void *)0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:261: 
+  accessing uninitialized left-value. assert \initialized(h_list + i_gap);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:261: 
+  out of bounds read. assert \valid_read(h_list + i_gap);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:261: 
+  Assigning imprecise value to i_node.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:257}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:261: 
+  pointer comparison. assert \pointer_comparable((void *)i_node, (void *)0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:262: 
+  accessing uninitialized left-value. assert \initialized(&i_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:262: 
+  out of bounds read. assert \valid_read(&i_node->data);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_8
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:35: 
+  Assigning imprecise value to n->data
+  (pointing to __malloc_can_fail_malloc_l11_8 with offsets {0}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:261: 
+  accessing uninitialized left-value. assert \initialized(&i_node->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:261: 
+  out of bounds read. assert \valid_read(&i_node->next);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:261: 
+  Assigning imprecise value to i_node.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:261: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:35: 
+  Assigning imprecise value to n->data
+  (pointing to __malloc_w_can_fail_malloc_l11_8 with offsets {0}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:260: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:260: 
+  signed overflow. assert i_gap + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:265: 
+  signed overflow. assert i_gap + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:265: 
+  accessing uninitialized left-value. assert \initialized(h_list + i_gap);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:265: 
+  out of bounds read. assert \valid_read(h_list + i_gap);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:265: 
+  pointer comparison.
+  assert \pointer_comparable((void *)*(h_list + i_gap), (void *)0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:270: 
+  accessing uninitialized left-value. assert \initialized(h_list + i_gap);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:270: 
+  out of bounds read. assert \valid_read(h_list + i_gap);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:270: 
+  pointer comparison.
+  assert \pointer_comparable((void *)*(h_list + i_gap), (void *)0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:271: 
+  accessing uninitialized left-value. assert \initialized(h_list + i_gap);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:271: 
+  out of bounds read. assert \valid_read(h_list + i_gap);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:271: 
+  Assigning imprecise value to i_node.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:257}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:271: 
+  pointer comparison. assert \pointer_comparable((void *)i_node, (void *)0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:272: 
+  accessing uninitialized left-value. assert \initialized(&i_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:272: 
+  out of bounds read. assert \valid_read(&i_node->data);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_9
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:35: 
+  Assigning imprecise value to n->data
+  (pointing to __malloc_can_fail_malloc_l11_9 with offsets {0}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:271: 
+  accessing uninitialized left-value. assert \initialized(&i_node->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:271: 
+  out of bounds read. assert \valid_read(&i_node->next);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:271: 
+  Assigning imprecise value to i_node.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:271: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:35: 
+  Assigning imprecise value to n->data
+  (pointing to __malloc_w_can_fail_malloc_l11_9 with offsets {0}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:270: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:270: 
+  signed overflow. assert i_gap + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:275: 
+  accessing uninitialized left-value. assert \initialized(h_list + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:275: 
+  out of bounds read. assert \valid_read(h_list + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:226: 
+  pointer comparison. assert \pointer_comparable((void *)head, (void *)0);
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:227: 
+  detected recursive call of function free_nodes.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:227: 
+  accessing uninitialized left-value. assert \initialized(&head->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:227: 
+  out of bounds read. assert \valid_read(&head->next);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:227: User Error: 
+  Recursive call to free_nodes without assigns clause.
+  Generating probably incomplete assigns to interpret the call. Try to increase
+  the -eva-unroll-recursive-calls parameter or write a correct specification
+  for function free_nodes.
+[kernel:annot:missing-spec] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:225: 
+  Neither code nor specification for function free_nodes, generating default assigns from the prototype
+[eva] using specification for function free_nodes
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:228: 
+  function free: precondition 'freeable' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:275: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:275: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(h_list + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:227: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&head->next);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:227: 
+  Using specification of function free_nodes for recursive calls.
+  Analysis of function free_nodes is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:280: 
+  accessing uninitialized left-value. assert \initialized(&(G->E + i)->c);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:280: 
+  accessing uninitialized left-value. assert \initialized(&(G->E + i)->f);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:280: 
+  out of bounds read. assert \valid_read(&(G->E + i)->c);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:280: 
+  out of bounds read. assert \valid_read(&(G->E + i)->f);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:282: 
+  accessing uninitialized left-value. assert \initialized(&i_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:282: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&i_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:282: 
+  accessing uninitialized left-value. assert \initialized(&(G->E + i)->o);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:282: 
+  out of bounds read. assert \valid_read(&(G->E + i)->o);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:282: 
+  pointer comparison.
+  assert \pointer_comparable((void *)(G->E + i)->o, (void *)i_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:281: 
+  accessing uninitialized left-value. assert \initialized(&i_node->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:289: 
+  accessing uninitialized left-value. assert \initialized(&i_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:289: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&i_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:289: 
+  accessing uninitialized left-value. assert \initialized(&(G->E + i)->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:289: 
+  out of bounds read. assert \valid_read(&(G->E + i)->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:289: 
+  pointer comparison.
+  assert \pointer_comparable((void *)(G->E + i)->d, i_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:288: 
+  accessing uninitialized left-value. assert \initialized(&i_node->next);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_10
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_11
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:291: 
+  out of bounds write. assert \valid(iV_edge);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:292: 
+  accessing uninitialized left-value. assert \initialized(&(G->E + i)->o);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:292: 
+  out of bounds read. assert \valid_read(&(G->E + i)->o);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:70: 
+  pointer subtraction. assert \base_addr(vi) ≡ \base_addr(v0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:70: 
+  signed overflow. assert -9223372036854775808 ≤ vi - v0;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:70: 
+  signed overflow. assert vi - v0 ≤ 9223372036854775807;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:70: 
+  Assigning imprecise value to __retres.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:70: 
+  Assigning imprecise value to \result<vIndex>.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:292: 
+  out of bounds write. assert \valid(*iV_edge + 0);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:292: 
+  Assigning imprecise value to *(*iV_edge + 0)
+  (pointing to __malloc_can_fail_malloc_l11_11 with offsets {0}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:293: 
+  out of bounds read. assert \valid_read(&(G->E + i)->d);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:293: 
+  Assigning imprecise value to *(*iV_edge + 1)
+  (pointing to __malloc_can_fail_malloc_l11_11 with offsets {32}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_12
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:300: 
+  accessing uninitialized left-value. assert \initialized(&i_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:300: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&i_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:300: 
+  accessing uninitialized left-value. assert \initialized(&(G->E + i)->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:300: 
+  out of bounds read. assert \valid_read(&(G->E + i)->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:300: 
+  pointer comparison.
+  assert \pointer_comparable((void *)(G->E + i)->d, i_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:299: 
+  accessing uninitialized left-value. assert \initialized(&i_node->next);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_13
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_14
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:302: 
+  out of bounds write. assert \valid(iV_edge);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:303: 
+  accessing uninitialized left-value. assert \initialized(&(G->E + i)->o);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:303: 
+  out of bounds read. assert \valid_read(&(G->E + i)->o);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:303: 
+  out of bounds write. assert \valid(*iV_edge + 0);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:303: 
+  Assigning imprecise value to *(*iV_edge + 0)
+  (pointing to __malloc_can_fail_malloc_l11_14 with offsets {0}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:304: 
+  out of bounds read. assert \valid_read(&(G->E + i)->d);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:304: 
+  Assigning imprecise value to *(*iV_edge + 1)
+  (pointing to __malloc_can_fail_malloc_l11_14 with offsets {32}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_15
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:278: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:281: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:288: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:292: 
+  accessing uninitialized left-value. assert \initialized(iV_edge);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:292: 
+  Assigning imprecise value to *(*iV_edge + 0)
+  (pointing to __malloc_w_can_fail_malloc_l11_11 with offsets {0}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:293: 
+  accessing uninitialized left-value. assert \initialized(&(G->E + i)->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:293: 
+  accessing uninitialized left-value. assert \initialized(iV_edge);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:293: 
+  out of bounds write. assert \valid(*iV_edge + 1);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:293: 
+  Assigning imprecise value to *(*iV_edge + 1)
+  (pointing to __malloc_w_can_fail_malloc_l11_11 with offsets {32}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:299: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:303: 
+  accessing uninitialized left-value. assert \initialized(iV_edge);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:303: 
+  Assigning imprecise value to *(*iV_edge + 0)
+  (pointing to __malloc_w_can_fail_malloc_l11_14 with offsets {0}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:304: 
+  accessing uninitialized left-value. assert \initialized(&(G->E + i)->d);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:304: 
+  accessing uninitialized left-value. assert \initialized(iV_edge);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:304: 
+  out of bounds write. assert \valid(*iV_edge + 1);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:304: 
+  Assigning imprecise value to *(*iV_edge + 1)
+  (pointing to __malloc_w_can_fail_malloc_l11_14 with offsets {32}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:319: 
+  accessing uninitialized left-value. assert \initialized(&i_node->next);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:319: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:325: 
+  accessing uninitialized left-value. assert \initialized(&s_node->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:325: 
+  out of bounds read. assert \valid_read(&s_node->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:328: 
+  accessing uninitialized left-value. assert \initialized(&i_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:328: 
+  accessing uninitialized left-value.
+  assert \initialized((int **)i_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:328: 
+  accessing uninitialized left-value.
+  assert \initialized(*((int **)i_node->data) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:328: 
+  out of bounds read. assert \valid_read(*((int **)i_node->data) + 0);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:328: 
+  Assigning imprecise value to i_o.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:329: 
+  accessing uninitialized left-value. assert \initialized(&i_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:329: 
+  accessing uninitialized left-value.
+  assert \initialized((int **)i_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:329: 
+  accessing uninitialized left-value.
+  assert \initialized(*((int **)i_node->data) + 1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:329: 
+  out of bounds read. assert \valid_read(*((int **)i_node->data) + 1);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:329: 
+  Assigning imprecise value to i_d.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:330: 
+  accessing uninitialized left-value. assert \initialized(&min_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:330: 
+  accessing uninitialized left-value.
+  assert \initialized((int **)min_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:330: 
+  accessing uninitialized left-value.
+  assert \initialized(*((int **)min_node->data) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:330: 
+  out of bounds read. assert \valid_read(*((int **)min_node->data) + 0);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:330: 
+  Assigning imprecise value to m_o.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:331: 
+  accessing uninitialized left-value. assert \initialized(&min_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:331: 
+  accessing uninitialized left-value.
+  assert \initialized((int **)min_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:331: 
+  accessing uninitialized left-value.
+  assert \initialized(*((int **)min_node->data) + 1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:331: 
+  out of bounds read. assert \valid_read(*((int **)min_node->data) + 1);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:331: 
+  Assigning imprecise value to m_d.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:61: 
+  Assigning imprecise value to __retres.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:61: 
+  Assigning imprecise value to \result<pairStation>.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:67: 
+  Assigning imprecise value to tmp.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:332: 
+  Assigning imprecise value to i_o.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:332: 
+  Assigning imprecise value to i_o.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:333: 
+  Assigning imprecise value to i_d.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:333: 
+  Assigning imprecise value to i_d.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:334: 
+  Assigning imprecise value to m_o.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:334: 
+  Assigning imprecise value to m_o.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:335: 
+  Assigning imprecise value to m_d.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:335: 
+  Assigning imprecise value to m_d.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:336: 
+  accessing uninitialized left-value. assert \initialized(&i_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:336: 
+  accessing uninitialized left-value.
+  assert \initialized((int **)i_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:336: 
+  accessing uninitialized left-value.
+  assert \initialized(*((int **)i_node->data) + 1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:336: 
+  out of bounds read. assert \valid_read(*((int **)i_node->data) + 1);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:233: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:233: 
+  signed overflow. assert p * 10 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:234: 
+  signed overflow. assert -2147483648 ≤ x * p;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:234: 
+  signed overflow. assert x * p ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:234: 
+  signed overflow. assert -2147483648 ≤ (int)(x * p) + y;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:234: 
+  signed overflow. assert (int)(x * p) + y ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:234: 
+  Assigning imprecise value to __retres.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:234: 
+  Assigning imprecise value to \result<conc_ints>.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:336: 
+  Assigning imprecise value to tmp_13.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:337: 
+  accessing uninitialized left-value. assert \initialized(&min_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:337: 
+  accessing uninitialized left-value.
+  assert \initialized((int **)min_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:337: 
+  accessing uninitialized left-value.
+  assert \initialized(*((int **)min_node->data) + 1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:337: 
+  out of bounds read. assert \valid_read(*((int **)min_node->data) + 1);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:337: 
+  Assigning imprecise value to tmp_14.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:327: 
+  accessing uninitialized left-value. assert \initialized(&i_node->next);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:327: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:342: 
+  accessing uninitialized left-value. assert \initialized(&min_node->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:342: 
+  out of bounds write. assert \valid(&(min_node->prev)->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:342: 
+  accessing uninitialized left-value. assert \initialized(&min_node->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:343: 
+  accessing uninitialized left-value. assert \initialized(&min_node->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:344: 
+  accessing uninitialized left-value. assert \initialized(&min_node->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:344: 
+  out of bounds write. assert \valid(&(min_node->next)->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:344: 
+  accessing uninitialized left-value. assert \initialized(&min_node->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:348: 
+  accessing uninitialized left-value. assert \initialized(&s_node->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:351: 
+  accessing uninitialized left-value. assert \initialized(&s_node->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:351: 
+  out of bounds write. assert \valid(&(s_node->prev)->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:356: 
+  accessing uninitialized left-value. assert \initialized(&s_node->next);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:325: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:364: 
+  accessing uninitialized left-value. assert \initialized(&i_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:364: 
+  accessing uninitialized left-value.
+  assert \initialized((int **)i_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:364: 
+  accessing uninitialized left-value.
+  assert \initialized(*((int **)i_node->data) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:364: 
+  out of bounds read. assert \valid_read(*((int **)i_node->data) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:365: 
+  accessing uninitialized left-value. assert \initialized(&i_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:365: 
+  accessing uninitialized left-value.
+  assert \initialized((int **)i_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:365: 
+  accessing uninitialized left-value.
+  assert \initialized(*((int **)i_node->data) + 1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:365: 
+  out of bounds read. assert \valid_read(*((int **)i_node->data) + 1);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:365: 
+  Assigning imprecise value to tmp_16.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:365: 
+  accessing uninitialized left-value. assert \initialized(&i_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:365: 
+  accessing uninitialized left-value.
+  assert \initialized((int **)i_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:365: 
+  accessing uninitialized left-value.
+  assert \initialized(*((int **)i_node->data) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:365: 
+  out of bounds read. assert \valid_read(*((int **)i_node->data) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:371: 
+  accessing uninitialized left-value. assert \initialized(&i_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:371: 
+  accessing uninitialized left-value.
+  assert \initialized((int **)i_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:371: 
+  accessing uninitialized left-value.
+  assert \initialized(*((int **)i_node->data) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:371: 
+  out of bounds read. assert \valid_read(*((int **)i_node->data) + 0);
+[eva] using specification for function printf_va_5
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:363: 
+  accessing uninitialized left-value. assert \initialized(&i_node->prev);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:363: 
+  starting to merge loop iterations
+[eva] using specification for function printf_va_4
+[eva] using specification for function printf_va_6
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:383: 
+  accessing uninitialized left-value. assert \initialized(&i_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:383: 
+  accessing uninitialized left-value.
+  assert \initialized((int **)i_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:383: 
+  accessing uninitialized left-value.
+  assert \initialized(*((int **)i_node->data) + 1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:383: 
+  out of bounds read. assert \valid_read(*((int **)i_node->data) + 1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:384: 
+  accessing uninitialized left-value. assert \initialized(&i_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:384: 
+  accessing uninitialized left-value.
+  assert \initialized((int **)i_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:384: 
+  accessing uninitialized left-value.
+  assert \initialized(*((int **)i_node->data) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:384: 
+  out of bounds read. assert \valid_read(*((int **)i_node->data) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:385: 
+  accessing uninitialized left-value. assert \initialized(&i_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:385: 
+  accessing uninitialized left-value.
+  assert \initialized((int **)i_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:385: 
+  accessing uninitialized left-value.
+  assert \initialized(*((int **)i_node->data) + 1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:385: 
+  out of bounds read. assert \valid_read(*((int **)i_node->data) + 1);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:385: 
+  Assigning imprecise value to tmp_21.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:385: 
+  accessing uninitialized left-value. assert \initialized(&i_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:385: 
+  accessing uninitialized left-value.
+  assert \initialized((int **)i_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:385: 
+  accessing uninitialized left-value.
+  assert \initialized(*((int **)i_node->data) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:385: 
+  out of bounds read. assert \valid_read(*((int **)i_node->data) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:388: 
+  accessing uninitialized left-value. assert \initialized(&i_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:388: 
+  accessing uninitialized left-value.
+  assert \initialized((int **)i_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:388: 
+  accessing uninitialized left-value.
+  assert \initialized(*((int **)i_node->data) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:388: 
+  out of bounds read. assert \valid_read(*((int **)i_node->data) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:389: 
+  accessing uninitialized left-value. assert \initialized(&i_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:389: 
+  accessing uninitialized left-value.
+  assert \initialized((int **)i_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:389: 
+  accessing uninitialized left-value.
+  assert \initialized(*((int **)i_node->data) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:389: 
+  out of bounds read. assert \valid_read(*((int **)i_node->data) + 0);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:389: 
+  Assigning imprecise value to tmp_19.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:388: 
+  accessing uninitialized left-value. assert \initialized(&i_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:388: 
+  accessing uninitialized left-value.
+  assert \initialized((int **)i_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:388: 
+  accessing uninitialized left-value.
+  assert \initialized(*((int **)i_node->data) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:388: 
+  out of bounds read. assert \valid_read(*((int **)i_node->data) + 0);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:388: 
+  Assigning imprecise value to tmp_19.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:387: 
+  accessing uninitialized left-value. assert \initialized(&i_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:387: 
+  accessing uninitialized left-value.
+  assert \initialized((int **)i_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:387: 
+  accessing uninitialized left-value.
+  assert \initialized(*((int **)i_node->data) + 1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:387: 
+  out of bounds read. assert \valid_read(*((int **)i_node->data) + 1);
+[eva] using specification for function printf_va_7
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:382: 
+  accessing uninitialized left-value. assert \initialized(&i_node->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:399: 
+  accessing uninitialized left-value. assert \initialized(&i_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:399: 
+  accessing uninitialized left-value.
+  assert \initialized((int **)i_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:400: 
+  accessing uninitialized left-value. assert \initialized(&i_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:398: 
+  accessing uninitialized left-value. assert \initialized(&i_node->next);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:398: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:399: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&i_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:399: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling((int **)i_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:400: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&i_node->data);
+[eva] done for function main
+[scope:rm_asserts] removing 132 assertion(s)
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function conc_ints:
+  p ∈ [10..2147483620],10%90
+  __retres ∈
+          {{ garbled mix of &{__malloc_can_fail_malloc_l11_0}
+           (origin: Misaligned) }}
+[eva:final-states] Values at end of function find_edges_av:
+  n_edges ∈ [0..2147483647]
+  i ∈ [0..2147483647]
+  __malloc_can_fail_malloc_l11_2[bits 0 to 137438953407]# ∈
+                                {{ NULL ;
+                                   &__malloc_can_fail_malloc_l11_1 +
+                                   [0..51539607504],0%24 }} or UNINITIALIZED repeated %64 
+                                [bits 137438953408 to 137438953471] ∈
+                                {{ &__malloc_can_fail_malloc_l11_1 +
+                                   [0..51539607504],0%24 }} or UNINITIALIZED
+                                [17179869184..18446744073709551607] ∈
+                                UNINITIALIZED
+[eva:final-states] Values at end of function free_graph:
+  G ∈ ESCAPINGADDR
+  G ∈ ESCAPINGADDR
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈ [--..--] or ESCAPINGADDR
+               [1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11_1[0..51539607551] ∈
+                                [--..--] or UNINITIALIZED or ESCAPINGADDR
+                                [51539607552..18446744073709551607] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11_2[bits 0 to 137438953407]# ∈
+                                {{ NULL ;
+                                   &__malloc_can_fail_malloc_l11_1 +
+                                   [0..51539607504],0%24 }} or UNINITIALIZED or ESCAPINGADDR repeated %64 
+                                [bits 137438953408 to 137438953471] ∈
+                                {{ &__malloc_can_fail_malloc_l11_1 +
+                                   [0..51539607504],0%24 }} or UNINITIALIZED or ESCAPINGADDR
+                                [17179869184..18446744073709551607] ∈
+                                UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_3[0..7] ∈
+                                  [--..--] or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_3 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_5 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [16..23] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_4[0..7] ∈
+                                  [--..--] or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_5 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [16..23] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_5[0..7] ∈
+                                  [--..--] or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_5 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [16..23] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_7[0..23] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_7}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_8[0..23] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_7;
+                                                      __malloc_w_can_fail_malloc_l11_8}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_9[0..23] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_7;
+                                                      __malloc_w_can_fail_malloc_l11_9}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_11[0..7] ∈
+                                   [--..--] or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_14[0..7] ∈
+                                   [--..--] or UNINITIALIZED or ESCAPINGADDR
+[eva:final-states] Values at end of function i_fStation:
+  __retres ∈ [-2147483648..2147483646]
+[eva:final-states] Values at end of function i_sStation:
+  __retres ∈ [-2147483646..2147483647]
+[eva:final-states] Values at end of function isBackEdge:
+  __retres ∈ {0; 1}
+[eva:final-states] Values at end of function edges_min_h:
+  min_h ∈
+       {{ garbled mix of &{__malloc_can_fail_malloc_l11_0}
+        (origin: Misaligned) }}
+  i ∈ [0..2147483646]
+[eva:final-states] Values at end of function isStation:
+  __retres ∈ {0; 1}
+[eva:final-states] Values at end of function new_edge:
+  e{.o; .d} ∈
+   {{ &__malloc_can_fail_malloc_l11_0 + [-17179869184..17179869176],0%8 }}
+   {.f; .c} ∈ [--..--]
+[eva:final-states] Values at end of function new_vertex:
+  v.e ∈ {0}
+   .h ∈ [-2147483646..2147483647]
+[eva:final-states] Values at end of function pairStation:
+  __retres ∈
+          {{ garbled mix of &{__malloc_can_fail_malloc_l11_0}
+           (origin: Misaligned) }}
+[eva:final-states] Values at end of function isfStation:
+  
+[eva:final-states] Values at end of function push:
+  __malloc_can_fail_malloc_l11_0[0..15] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0}
+                                 (origin: Misaligned) }}
+                                [16..18446744073709551607] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0}
+                                 (origin: Misaligned) }} or UNINITIALIZED
+  __malloc_can_fail_malloc_l11_1[0..51539607551] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0}
+                                 (origin: Misaligned) }} or UNINITIALIZED
+                                [51539607552..18446744073709551607] ∈
+                                UNINITIALIZED
+[eva:final-states] Values at end of function can_fail_malloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈
+          {{ NULL ; (void *)&__malloc_can_fail_malloc_l11 ;
+             (void *)&__malloc_can_fail_malloc_l11_0 ;
+             (void *)&__malloc_can_fail_malloc_l11_1 ;
+             (void *)&__malloc_can_fail_malloc_l11_2 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_3 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_4 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_5 ;
+             (void *)&__malloc_can_fail_malloc_l11_6 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_7 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_8 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_9 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_10 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_11 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_12 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_13 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_14 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_15 }}
+[eva:final-states] Values at end of function can_fail_realloc:
+  __fc_random_counter ∈ [--..--]
+  ptr ∈
+     {{ NULL ; (void *)&__malloc_can_fail_malloc_l11_6 ;
+        (void *)&__realloc_w_can_fail_realloc_l25 }} or ESCAPINGADDR
+  fail ∈ [0. .. 1.]
+  h_list ∈
+        {{ NULL ; (node **)&__malloc_can_fail_malloc_l11_6 ;
+           (node **)&__realloc_w_can_fail_realloc_l25 }} or ESCAPINGADDR
+  __retres ∈ {{ NULL ; (void *)&__realloc_w_can_fail_realloc_l25 }}
+[eva:final-states] Values at end of function new_node:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  n ∈
+   {{ (node *)&__malloc_w_can_fail_malloc_l11_3 ;
+      (node *)&__malloc_w_can_fail_malloc_l11_4 ;
+      (node *)&__malloc_w_can_fail_malloc_l11_5 ;
+      (node *)&__malloc_w_can_fail_malloc_l11_7 ;
+      (node *)&__malloc_w_can_fail_malloc_l11_8 ;
+      (node *)&__malloc_w_can_fail_malloc_l11_9 ;
+      (node *)&__malloc_w_can_fail_malloc_l11_12 ;
+      (node *)&__malloc_w_can_fail_malloc_l11_15 }}
+  __malloc_w_can_fail_malloc_l11_3[0..7] ∈
+                                  {{ garbled mix of &{__malloc_can_fail_malloc_l11_0}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_3 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_5 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [16..23] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_4[0..7] ∈
+                                  {{ garbled mix of &{__malloc_can_fail_malloc_l11_0}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_5 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [16..23] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_5[0..7] ∈
+                                  {{ garbled mix of &{__malloc_can_fail_malloc_l11_0}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_5 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [16..23] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_7[0..23] ∈
+                                  {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                      __malloc_w_can_fail_malloc_l11_7}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_8[0..7] ∈
+                                  {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                      __malloc_w_can_fail_malloc_l11_7}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_8 }} or UNINITIALIZED
+                                  [16..23] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_9[0..7] ∈
+                                  {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                      __malloc_w_can_fail_malloc_l11_7}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_9 }} or UNINITIALIZED
+                                  [16..23] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_12[bits 0 to 63] ∈
+                                   {{ (? *)&__malloc_w_can_fail_malloc_l11_10 }} or UNINITIALIZED
+                                   [bits 64 to 127] ∈
+                                   {{ NULL ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_12 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_15 }} or UNINITIALIZED
+                                   [16..23] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_15[bits 0 to 63] ∈
+                                   {{ (? *)&__malloc_w_can_fail_malloc_l11_13 }} or UNINITIALIZED
+                                   [bits 64 to 127] ∈
+                                   {{ NULL ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_12 ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_15 }} or UNINITIALIZED
+                                   [16..23] ∈ UNINITIALIZED
+[eva:final-states] Values at end of function parse_input:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  s ∈ [0..2147483647] or UNINITIALIZED
+  f ∈ [0..2147483646] or UNINITIALIZED
+  i_edge ∈ [0..2147483647]
+  v_c ∈ [--..--] or UNINITIALIZED
+  eo ∈ [--..--] or UNINITIALIZED
+  ed ∈ [--..--] or UNINITIALIZED
+  ec ∈ [--..--] or UNINITIALIZED
+  flow ∈ [--..--] or UNINITIALIZED
+  s_f ∈ [--..--]
+  nSuppliers ∈ [--..--]
+  nStations ∈ [--..--]
+  nEdges ∈ [--..--]
+  i ∈ [0..2147483647]
+  S___fc_stdin[0..1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11[bits 0 to 31] ∈ [-2147483646..2147483647]
+                              [4..7] ∈ [--..--]
+                              [bits 64 to 127] ∈
+                              {{ (? *)&__malloc_can_fail_malloc_l11_0 }}
+                              [bits 128 to 191] ∈
+                              {{ NULL ;
+                                 (? *)&__malloc_can_fail_malloc_l11_1 }}
+                              [24..27] ∈ [--..--]
+                              [28..31] ∈ UNINITIALIZED
+  __malloc_can_fail_malloc_l11_0[0..15] ∈ [--..--]
+                                [16..17179869179] ∈
+                                [--..--] or UNINITIALIZED
+                                [17179869180..17179869183] ∈
+                                {0} or UNINITIALIZED
+                                [17179869184..18446744073709551607] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11_1[0..51539607551] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0}
+                                 (origin: Misaligned) }} or UNINITIALIZED
+                                [51539607552..18446744073709551607] ∈
+                                UNINITIALIZED
+[eva:final-states] Values at end of function push_relabel:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  i ∈ [0..2147483647]
+  edge_index ∈ [0..2147483646] or UNINITIALIZED
+  first ∈ {0; 1}
+  v_edges ∈
+         {{ NULL ; (edge **)&__malloc_can_fail_malloc_l11_2 }} or ESCAPINGADDR
+  temp ∈
+      {{ (node *)&__malloc_w_can_fail_malloc_l11_3 ;
+         (node *)&__malloc_w_can_fail_malloc_l11_4 ;
+         (node *)&__malloc_w_can_fail_malloc_l11_5 }} or UNINITIALIZED or ESCAPINGADDR
+  q_tail ∈
+        {{ NULL ; (node *)&__malloc_w_can_fail_malloc_l11_3 ;
+           (node *)&__malloc_w_can_fail_malloc_l11_4 ;
+           (node *)&__malloc_w_can_fail_malloc_l11_5 }} or ESCAPINGADDR
+  q_head ∈ {0}
+  __malloc_can_fail_malloc_l11_0[0..15] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0}
+                                 (origin: Misaligned) }}
+                                [16..18446744073709551607] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0}
+                                 (origin: Misaligned) }} or UNINITIALIZED
+  __malloc_can_fail_malloc_l11_1[0..51539607551] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0}
+                                 (origin: Misaligned) }} or UNINITIALIZED
+                                [51539607552..18446744073709551607] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11_2[bits 0 to 137438953407]# ∈
+                                {{ NULL ;
+                                   &__malloc_can_fail_malloc_l11_1 +
+                                   [0..51539607504],0%24 }} or UNINITIALIZED repeated %64 
+                                [bits 137438953408 to 137438953471] ∈
+                                {{ &__malloc_can_fail_malloc_l11_1 +
+                                   [0..51539607504],0%24 }} or UNINITIALIZED
+                                [17179869184..18446744073709551607] ∈
+                                UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_3[0..7] ∈
+                                  {{ garbled mix of &{__malloc_can_fail_malloc_l11_0}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_3 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_5 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [16..23] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_4[0..7] ∈
+                                  {{ garbled mix of &{__malloc_can_fail_malloc_l11_0}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_5 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [16..23] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_5[0..7] ∈
+                                  {{ garbled mix of &{__malloc_can_fail_malloc_l11_0}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_5 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [16..23] ∈ UNINITIALIZED
+[eva:final-states] Values at end of function vIndex:
+  __retres ∈
+          {{ garbled mix of &{__malloc_can_fail_malloc_l11_0}
+           (origin: Misaligned) }}
+[eva:final-states] Values at end of function free_nodes:
+  head ∈
+      {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_7;
+                          __malloc_w_can_fail_malloc_l11_8;
+                          __malloc_w_can_fail_malloc_l11_9;
+                          __malloc_w_can_fail_malloc_l11_12;
+                          __malloc_w_can_fail_malloc_l11_15}
+       (origin: Misaligned
+       {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:257}) }} or ESCAPINGADDR
+  i_node ∈
+        {{ NULL ; (node *)&__malloc_w_can_fail_malloc_l11_8 ;
+           (node *)&__malloc_w_can_fail_malloc_l11_9 }} or UNINITIALIZED or ESCAPINGADDR
+  p_node ∈
+        {{ NULL ; (node *)&__malloc_w_can_fail_malloc_l11_12 ;
+           (node *)&__malloc_w_can_fail_malloc_l11_15 }} or UNINITIALIZED or ESCAPINGADDR
+  min_node ∈
+          {{ (node *)&__malloc_w_can_fail_malloc_l11_12 ;
+             (node *)&__malloc_w_can_fail_malloc_l11_15 }} or UNINITIALIZED or ESCAPINGADDR
+  s_node ∈
+        {{ (node *)&__malloc_w_can_fail_malloc_l11_12 ;
+           (node *)&__malloc_w_can_fail_malloc_l11_15 }} or UNINITIALIZED or ESCAPINGADDR
+  t_side ∈
+        {{ NULL ; (node *)&__malloc_w_can_fail_malloc_l11_8 }} or ESCAPINGADDR
+  s_side ∈
+        {{ NULL ; (node *)&__malloc_w_can_fail_malloc_l11_9 }} or ESCAPINGADDR
+  cut ∈
+     {{ NULL ; (node *)&__malloc_w_can_fail_malloc_l11_12 ;
+        (node *)&__malloc_w_can_fail_malloc_l11_15 }} or ESCAPINGADDR
+  __malloc_can_fail_malloc_l11_0[0..15] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                    __malloc_w_can_fail_malloc_l11_7}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+                                [16..18446744073709551607] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                    __malloc_w_can_fail_malloc_l11_7}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_can_fail_malloc_l11_6[0..18446744073709551599] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_7}
+                                 (origin: Misaligned
+                                 {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:257}) }} or UNINITIALIZED or ESCAPINGADDR
+  __realloc_w_can_fail_realloc_l25[0..18446744073709551583] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_7}
+                                   (origin: Misaligned
+                                   {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:257}) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_7[0..23] ∈
+                                  {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                      __malloc_w_can_fail_malloc_l11_7}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_8[0..23] ∈
+                                  {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                      __malloc_w_can_fail_malloc_l11_7;
+                                                      __malloc_w_can_fail_malloc_l11_8}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_9[0..23] ∈
+                                  {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                      __malloc_w_can_fail_malloc_l11_7;
+                                                      __malloc_w_can_fail_malloc_l11_9}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_12[0..23] ∈
+                                   {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_10;
+                                                       __malloc_w_can_fail_malloc_l11_12;
+                                                       __malloc_w_can_fail_malloc_l11_13;
+                                                       __malloc_w_can_fail_malloc_l11_15}
+                                    (origin: Misaligned
+                                    {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:227}) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_15[0..23] ∈
+                                   {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_10;
+                                                       __malloc_w_can_fail_malloc_l11_12;
+                                                       __malloc_w_can_fail_malloc_l11_13;
+                                                       __malloc_w_can_fail_malloc_l11_15}
+                                    (origin: Misaligned
+                                    {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:227}) }} or UNINITIALIZED or ESCAPINGADDR
+[eva:final-states] Values at end of function parse_output:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  i ∈ [0..2147483647]
+  iV_edge ∈
+         {{ (int **)&__malloc_w_can_fail_malloc_l11_10 ;
+            (int **)&__malloc_w_can_fail_malloc_l11_13 }} or UNINITIALIZED or ESCAPINGADDR
+  max_h ∈ [-2147483648..2147483646],0%2
+  first ∈ {0; 1}
+  i_gap ∈ [1..2147483647]
+  flag_so ∈ {0; 1}
+  i_node ∈ {0}
+  p_node ∈
+        {{ NULL ; (node *)&__malloc_w_can_fail_malloc_l11_12 ;
+           (node *)&__malloc_w_can_fail_malloc_l11_15 }} or ESCAPINGADDR
+  min_node ∈
+          {{ (node *)&__malloc_w_can_fail_malloc_l11_12 ;
+             (node *)&__malloc_w_can_fail_malloc_l11_15 }} or UNINITIALIZED or ESCAPINGADDR
+  s_node ∈
+        {{ (node *)&__malloc_w_can_fail_malloc_l11_12 ;
+           (node *)&__malloc_w_can_fail_malloc_l11_15 }} or ESCAPINGADDR
+  t_side ∈
+        {{ NULL ; (node *)&__malloc_w_can_fail_malloc_l11_8 }} or ESCAPINGADDR
+  s_side ∈
+        {{ NULL ; (node *)&__malloc_w_can_fail_malloc_l11_9 }} or ESCAPINGADDR
+  cut ∈
+     {{ NULL ; (node *)&__malloc_w_can_fail_malloc_l11_12 ;
+        (node *)&__malloc_w_can_fail_malloc_l11_15 }} or ESCAPINGADDR
+  h_list ∈
+        {{ (node **)&__malloc_can_fail_malloc_l11_6 ;
+           (node **)&__realloc_w_can_fail_realloc_l25 }} or ESCAPINGADDR
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__malloc_can_fail_malloc_l11_0}
+                (origin: Misaligned) }}
+               [1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11_0[0..15] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                    __malloc_w_can_fail_malloc_l11_7}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+                                [16..18446744073709551607] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                    __malloc_w_can_fail_malloc_l11_7}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_can_fail_malloc_l11_6[0..18446744073709551599] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_7}
+                                 (origin: Misaligned
+                                 {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:257}) }} or UNINITIALIZED or ESCAPINGADDR
+  __realloc_w_can_fail_realloc_l25[0..18446744073709551583] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_7}
+                                   (origin: Misaligned
+                                   {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:257}) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_7[0..23] ∈
+                                  {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                      __malloc_w_can_fail_malloc_l11_7}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_8[0..23] ∈
+                                  {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                      __malloc_w_can_fail_malloc_l11_7;
+                                                      __malloc_w_can_fail_malloc_l11_8}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_9[0..23] ∈
+                                  {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                      __malloc_w_can_fail_malloc_l11_7;
+                                                      __malloc_w_can_fail_malloc_l11_9}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_10[bits 0 to 63] ∈
+                                   {{ NULL ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_11 }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_11[0..7] ∈
+                                   {{ garbled mix of &{__malloc_can_fail_malloc_l11_0}
+                                    (origin: Misaligned) }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_12[0..23] ∈
+                                   {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_10;
+                                                       __malloc_w_can_fail_malloc_l11_12;
+                                                       __malloc_w_can_fail_malloc_l11_13;
+                                                       __malloc_w_can_fail_malloc_l11_15}
+                                    (origin: Misaligned
+                                    {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:227}) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_13[bits 0 to 63] ∈
+                                   {{ NULL ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_14 }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_14[0..7] ∈
+                                   {{ garbled mix of &{__malloc_can_fail_malloc_l11_0}
+                                    (origin: Misaligned) }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_15[0..23] ∈
+                                   {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_10;
+                                                       __malloc_w_can_fail_malloc_l11_12;
+                                                       __malloc_w_can_fail_malloc_l11_13;
+                                                       __malloc_w_can_fail_malloc_l11_15}
+                                    (origin: Misaligned
+                                    {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:227}) }} or UNINITIALIZED or ESCAPINGADDR
+[eva:final-states] Values at end of function main:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  G ∈ ESCAPINGADDR
+  __retres ∈ {0}
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈ [--..--] or ESCAPINGADDR
+               [1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11_1[0..51539607551] ∈
+                                [--..--] or UNINITIALIZED or ESCAPINGADDR
+                                [51539607552..18446744073709551607] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11_2[bits 0 to 137438953407]# ∈
+                                {{ NULL ;
+                                   &__malloc_can_fail_malloc_l11_1 +
+                                   [0..51539607504],0%24 }} or UNINITIALIZED or ESCAPINGADDR repeated %64 
+                                [bits 137438953408 to 137438953471] ∈
+                                {{ &__malloc_can_fail_malloc_l11_1 +
+                                   [0..51539607504],0%24 }} or UNINITIALIZED or ESCAPINGADDR
+                                [17179869184..18446744073709551607] ∈
+                                UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_3[0..7] ∈
+                                  [--..--] or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_3 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_5 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [16..23] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_4[0..7] ∈
+                                  [--..--] or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_5 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [16..23] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_5[0..7] ∈
+                                  [--..--] or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_5 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [16..23] ∈ UNINITIALIZED
+  __malloc_can_fail_malloc_l11_6[0..18446744073709551599] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_7}
+                                 (origin: Misaligned
+                                 {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:257}) }} or UNINITIALIZED or ESCAPINGADDR
+  __realloc_w_can_fail_realloc_l25[0..18446744073709551583] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_7}
+                                   (origin: Misaligned
+                                   {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:257}) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_7[0..23] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_7}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_8[0..23] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_7;
+                                                      __malloc_w_can_fail_malloc_l11_8}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_9[0..23] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_7;
+                                                      __malloc_w_can_fail_malloc_l11_9}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_10[bits 0 to 63] ∈
+                                   {{ NULL ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_11 }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_11[0..7] ∈
+                                   [--..--] or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_12[0..23] ∈
+                                   {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_10;
+                                                       __malloc_w_can_fail_malloc_l11_12;
+                                                       __malloc_w_can_fail_malloc_l11_13;
+                                                       __malloc_w_can_fail_malloc_l11_15}
+                                    (origin: Misaligned
+                                    {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:227}) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_13[bits 0 to 63] ∈
+                                   {{ NULL ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_14 }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_14[0..7] ∈
+                                   [--..--] or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_15[0..23] ∈
+                                   {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_10;
+                                                       __malloc_w_can_fail_malloc_l11_12;
+                                                       __malloc_w_can_fail_malloc_l11_13;
+                                                       __malloc_w_can_fail_malloc_l11_15}
+                                    (origin: Misaligned
+                                    {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg007/main.c:227}) }} or UNINITIALIZED or ESCAPINGADDR
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  22 functions analyzed (out of 26): 84% coverage.
+  In these functions, 482 statements reached (out of 482): 100% coverage.
+  ----------------------------------------------------------------------------
+  Some errors and warnings have been raised during the analysis:
+    by the Eva analyzer:      1 error    0 warnings
+    by the Frama-C kernel:    0 errors    0 warnings
+  ----------------------------------------------------------------------------
+  411 alarms generated by the analysis:
+     183 accesses to uninitialized left-values
+     139 invalid memory accesses
+      57 integer overflows
+      14 escaping addresses
+      18 others
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     0 unknown     0 invalid      0 total
+    Preconditions    28 valid     1 unknown     0 invalid     29 total
+  96% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[eva] User Error: Deferred error message was emitted during execution. See above messages for more information.
+[kernel] Plug-in eva aborted: invalid user input.

@@ -1,0 +1,1653 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/iaed_p2/323/untitled.c (with preprocessing)
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  head_game ∈ {0}
+  head_team ∈ {0}
+  head_ord_games ∈ {0}
+  head_ord_teams ∈ {0}
+[eva] using specification for function time
+[eva] using specification for function srand
+[eva] using specification for function rand
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_0
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:201: 
+  out of bounds write. assert \valid(head_game + key);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:202: 
+  out of bounds write. assert \valid(head_team + key);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:200: 
+  starting to merge loop iterations
+[eva] using specification for function fgets
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:562: 
+  function fgets: precondition 'valid_stream' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:563: 
+  accessing uninitialized left-value. assert \initialized((char *)input);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_1
+[eva] using specification for function sscanf_va_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:318: 
+  function sscanf_va_1: precondition valid_read_string(s) got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:184: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:184: 
+  accessing uninitialized left-value. assert \initialized(p);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:225: 
+  accessing uninitialized left-value. assert \initialized(head_game + key);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:225: 
+  out of bounds read. assert \valid_read(head_game + key);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:256: 
+  accessing uninitialized left-value. assert \initialized(head_team + key);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:256: 
+  out of bounds read. assert \valid_read(head_team + key);
+[eva] using specification for function printf_va_2
+[eva] using specification for function sscanf_va_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:350: 
+  function sscanf_va_2: precondition valid_read_string(s) got status unknown.
+[eva] using specification for function printf_va_4
+[eva] using specification for function sscanf_va_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:380: 
+  function sscanf_va_3: precondition valid_read_string(s) got status unknown.
+[eva] using specification for function printf_va_7
+[eva] using specification for function sscanf_va_4
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:437: 
+  function sscanf_va_4: precondition valid_read_string(s) got status unknown.
+[eva] using specification for function printf_va_8
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_2
+[eva] using specification for function sscanf_va_5
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:475: 
+  function sscanf_va_5: precondition valid_read_string(s) got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:480: 
+  out of bounds write. assert \valid(&team->name);
+[eva] using specification for function strcpy
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:481: 
+  function strcpy: precondition 'room_string' got status unknown.
+[eva] FRAMAC_SHARE/libc/string.h:373: 
+  cannot evaluate ACSL term, unsupported ACSL construct: logic function strcmp
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_4
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:244: 
+  out of bounds write. assert \valid(&next_team->t);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:245: 
+  accessing uninitialized left-value. assert \initialized(head_team + key);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:247: 
+  accessing uninitialized left-value. assert \initialized(head_team + key);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_5
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:289: 
+  out of bounds write. assert \valid(&ptr->t);
+[eva] using specification for function sscanf_va_6
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:493: 
+  function sscanf_va_6: precondition valid_read_string(s) got status unknown.
+[eva] using specification for function printf_va_10
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:560: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:257: 
+  accessing uninitialized left-value. assert \initialized(head_team + key);
+[eva] using specification for function strcmp
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:260: 
+  function strcmp: precondition 'valid_string_s1' got status unknown.
+[eva] FRAMAC_SHARE/libc/string.h:156: 
+  cannot evaluate ACSL term, unsupported ACSL construct: logic function strcmp
+[eva] using specification for function printf_va_3
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_6
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:328: 
+  out of bounds write. assert \valid(&game->name);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_7
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_8
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:331: 
+  accessing uninitialized left-value. assert \initialized(&game->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:331: 
+  function strcpy: precondition 'room_string' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:332: 
+  accessing uninitialized left-value. assert \initialized(&game->team1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:332: 
+  function strcpy: precondition 'room_string' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:333: 
+  accessing uninitialized left-value. assert \initialized(&game->team2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:333: 
+  function strcpy: precondition 'room_string' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:337: 
+  out of bounds read.
+  assert \valid_read(&tmp_3->t);
+  (tmp_3 from ht_find_team(team_1, key_team_1))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:339: 
+  out of bounds read.
+  assert \valid_read(&tmp_4->t);
+  (tmp_4 from ht_find_team(team_2, key_team_2))
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_9
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:213: 
+  out of bounds write. assert \valid(&next_game->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:214: 
+  accessing uninitialized left-value. assert \initialized(head_game + key);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:216: 
+  accessing uninitialized left-value. assert \initialized(head_game + key);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_10
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:273: 
+  out of bounds write. assert \valid(&ptr->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:260: 
+  accessing uninitialized left-value. assert \initialized(&(ptr->t)->name);
+[eva] using specification for function printf_va_9
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:481: 
+  accessing uninitialized left-value. assert \initialized(&team->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:247: 
+  accessing uninitialized left-value. assert \initialized(head_team + key);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:247: 
+  out of bounds write. assert \valid(&(*(head_team + key))->prev);
+[eva] using specification for function printf_va_11
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:498: 
+  function printf_va_11: precondition valid_read_string(param1) got status unknown.
+[eva] using specification for function printf_va_12
+[eva] using specification for function printf_va_13
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:512: 
+  function printf_va_13: precondition valid_read_string(param1) got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:511: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:226: 
+  accessing uninitialized left-value. assert \initialized(head_game + key);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:229: 
+  accessing uninitialized left-value. assert \initialized(&(ptr->g)->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:229: 
+  function strcmp: precondition 'valid_string_s1' got status unknown.
+[eva] using specification for function printf_va_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:260: 
+  accessing uninitialized left-value. assert \initialized(&ptr->t);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:262: 
+  accessing uninitialized left-value. assert \initialized(&ptr->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:337: 
+  accessing uninitialized left-value.
+  assert \initialized(&tmp_3->t);
+  (tmp_3 from ht_find_team(team_1, key_team_1))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:337: 
+  accessing uninitialized left-value.
+  assert \initialized(&(tmp_3->t)->vict);
+  (tmp_3 from ht_find_team(team_1, key_team_1))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:339: 
+  accessing uninitialized left-value.
+  assert \initialized(&tmp_4->t);
+  (tmp_4 from ht_find_team(team_2, key_team_2))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:339: 
+  accessing uninitialized left-value.
+  assert \initialized(&(tmp_4->t)->vict);
+  (tmp_4 from ht_find_team(team_2, key_team_2))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:216: 
+  accessing uninitialized left-value. assert \initialized(head_game + key);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:216: 
+  out of bounds write. assert \valid(&(*(head_game + key))->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:366: 
+  accessing uninitialized left-value. assert \initialized(&(ptr->g)->score2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:366: 
+  accessing uninitialized left-value. assert \initialized(&(ptr->g)->score1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:366: 
+  accessing uninitialized left-value. assert \initialized(&(ptr->g)->team2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:366: 
+  accessing uninitialized left-value. assert \initialized(&(ptr->g)->team1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:366: 
+  accessing uninitialized left-value. assert \initialized(&(ptr->g)->name);
+[eva] using specification for function printf_va_6
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:366: 
+  function printf_va_6: precondition valid_read_string(param1) got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:366: 
+  function printf_va_6: precondition valid_read_string(param2) got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:366: 
+  function printf_va_6: precondition valid_read_string(param3) got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:365: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:355: 
+  accessing uninitialized left-value. assert \initialized(&(node->g)->score2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:355: 
+  accessing uninitialized left-value. assert \initialized(&(node->g)->score1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:355: 
+  accessing uninitialized left-value. assert \initialized(&(node->g)->team2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:355: 
+  accessing uninitialized left-value. assert \initialized(&(node->g)->team1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:355: 
+  accessing uninitialized left-value. assert \initialized(&(node->g)->name);
+[eva] using specification for function printf_va_5
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:355: 
+  function printf_va_5: precondition valid_read_string(param1) got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:355: 
+  function printf_va_5: precondition valid_read_string(param2) got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:355: 
+  function printf_va_5: precondition valid_read_string(param3) got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:386: 
+  out of bounds read. assert \valid_read(&node->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:386: 
+  accessing uninitialized left-value. assert \initialized(&(node->g)->team1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:184: 
+  out of bounds read. assert \valid_read(p);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:185: 
+  accessing uninitialized left-value. assert \initialized(p);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:387: 
+  accessing uninitialized left-value. assert \initialized(&(node->g)->team2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:388: 
+  accessing uninitialized left-value. assert \initialized(head_team + key_t1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:388: 
+  out of bounds read. assert \valid_read(head_team + key_t1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:389: 
+  accessing uninitialized left-value. assert \initialized(head_team + key_t2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:389: 
+  out of bounds read. assert \valid_read(head_team + key_t2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:391: 
+  accessing uninitialized left-value. assert \initialized(&(node->g)->score1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:391: 
+  accessing uninitialized left-value. assert \initialized(&(node->g)->score2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:391: 
+  accessing uninitialized left-value. assert \initialized(&node_t1->t);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:391: 
+  out of bounds read. assert \valid_read(&node_t1->t);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:391: 
+  accessing uninitialized left-value. assert \initialized(&(node_t1->t)->vict);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:392: 
+  accessing uninitialized left-value. assert \initialized(&(node->g)->score1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:392: 
+  accessing uninitialized left-value. assert \initialized(&(node->g)->score2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:392: 
+  accessing uninitialized left-value. assert \initialized(&node_t2->t);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:392: 
+  out of bounds read. assert \valid_read(&node_t2->t);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:392: 
+  accessing uninitialized left-value. assert \initialized(&(node_t2->t)->vict);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:394: 
+  out of bounds read. assert \valid_read(&node_ord->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:394: 
+  accessing uninitialized left-value.
+  assert \initialized(&(node_ord->g)->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:394: 
+  function strcmp: precondition 'valid_string_s1' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:410: 
+  accessing uninitialized left-value. assert \initialized(head_game + key);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:414: 
+  accessing uninitialized left-value. assert \initialized(head_game + key);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:415: 
+  out of bounds write. assert \valid(&(node->prev)->next);
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:415: 
+  all target addresses were invalid. This path is assumed to be dead.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:417: 
+  accessing uninitialized left-value. assert \initialized(&(node->g)->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:418: 
+  accessing uninitialized left-value. assert \initialized(&(node->g)->team1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:419: 
+  accessing uninitialized left-value. assert \initialized(&(node->g)->team2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:443: 
+  accessing uninitialized left-value. assert \initialized(head_game + key);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:444: 
+  out of bounds read. assert \valid_read(&node->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:444: 
+  accessing uninitialized left-value. assert \initialized(&(node->g)->team1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:445: 
+  accessing uninitialized left-value. assert \initialized(&(node->g)->team2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:446: 
+  accessing uninitialized left-value. assert \initialized(head_team + key_t1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:446: 
+  out of bounds read. assert \valid_read(head_team + key_t1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:447: 
+  accessing uninitialized left-value. assert \initialized(head_team + key_t2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:447: 
+  out of bounds read. assert \valid_read(head_team + key_t2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:448: 
+  accessing uninitialized left-value. assert \initialized(&node_t1->t);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:448: 
+  out of bounds read. assert \valid_read(&node_t1->t);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:448: 
+  accessing uninitialized left-value. assert \initialized(&(node->g)->team1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:448: 
+  accessing uninitialized left-value. assert \initialized(&(node_t1->t)->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:448: 
+  function strcmp: precondition 'valid_string_s1' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:448: 
+  function strcmp: precondition 'valid_string_s2' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:448: 
+  accessing uninitialized left-value. assert \initialized(&node_t1->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:449: 
+  accessing uninitialized left-value. assert \initialized(&node_t2->t);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:449: 
+  out of bounds read. assert \valid_read(&node_t2->t);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:449: 
+  accessing uninitialized left-value. assert \initialized(&(node->g)->team2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:449: 
+  accessing uninitialized left-value. assert \initialized(&(node_t2->t)->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:449: 
+  function strcmp: precondition 'valid_string_s1' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:449: 
+  function strcmp: precondition 'valid_string_s2' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:449: 
+  accessing uninitialized left-value. assert \initialized(&node_t2->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:451: 
+  accessing uninitialized left-value. assert \initialized(&(node->g)->score1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:451: 
+  accessing uninitialized left-value. assert \initialized(&(node->g)->score2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:452: 
+  accessing uninitialized left-value. assert \initialized(&node_t1->t);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:452: 
+  accessing uninitialized left-value. assert \initialized(&(node_t1->t)->vict);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:453: 
+  accessing uninitialized left-value. assert \initialized(&node_t2->t);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:453: 
+  accessing uninitialized left-value. assert \initialized(&(node_t2->t)->vict);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:455: 
+  accessing uninitialized left-value. assert \initialized(&(node->g)->score1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:455: 
+  accessing uninitialized left-value. assert \initialized(&(node->g)->score2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:456: 
+  accessing uninitialized left-value. assert \initialized(&node_t1->t);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:456: 
+  accessing uninitialized left-value. assert \initialized(&(node_t1->t)->vict);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:457: 
+  accessing uninitialized left-value. assert \initialized(&node_t2->t);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:457: 
+  accessing uninitialized left-value. assert \initialized(&(node_t2->t)->vict);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:459: 
+  accessing uninitialized left-value. assert \initialized(&(node->g)->score1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:459: 
+  accessing uninitialized left-value. assert \initialized(&(node->g)->score2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:459: 
+  accessing uninitialized left-value. assert \initialized(&node_t1->t);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:459: 
+  accessing uninitialized left-value. assert \initialized(&(node_t1->t)->vict);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:460: 
+  accessing uninitialized left-value. assert \initialized(&(node->g)->score1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:460: 
+  accessing uninitialized left-value. assert \initialized(&(node->g)->score2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:460: 
+  accessing uninitialized left-value. assert \initialized(&node_t2->t);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:460: 
+  accessing uninitialized left-value. assert \initialized(&(node_t2->t)->vict);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:461: 
+  accessing uninitialized left-value. assert \initialized(&(node->g)->score1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:461: 
+  accessing uninitialized left-value. assert \initialized(&(node->g)->score2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:461: 
+  accessing uninitialized left-value. assert \initialized(&node_t1->t);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:461: 
+  accessing uninitialized left-value. assert \initialized(&(node_t1->t)->vict);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:462: 
+  accessing uninitialized left-value. assert \initialized(&(node->g)->score1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:462: 
+  accessing uninitialized left-value. assert \initialized(&(node->g)->score2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:462: 
+  accessing uninitialized left-value. assert \initialized(&node_t2->t);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:462: 
+  accessing uninitialized left-value. assert \initialized(&(node_t2->t)->vict);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:464: 
+  accessing uninitialized left-value. assert \initialized(&(node->g)->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:464: 
+  function strcmp: precondition 'valid_string_s1' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:464: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:464: 
+  out of bounds read. assert \valid_read(&node->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:498: 
+  accessing uninitialized left-value. assert \initialized(&node->t);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:498: 
+  accessing uninitialized left-value. assert \initialized(&(node->t)->vict);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:498: 
+  accessing uninitialized left-value. assert \initialized(&(node->t)->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:156: 
+  accessing uninitialized left-value. assert \initialized(&head->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:106: 
+  accessing uninitialized left-value. assert \initialized(&source->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:110: 
+  accessing uninitialized left-value. assert \initialized(&fast->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:112: 
+  accessing uninitialized left-value. assert \initialized(&slow->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:113: 
+  accessing uninitialized left-value. assert \initialized(&fast->next);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:109: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:112: 
+  out of bounds read. assert \valid_read(&slow->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:120: 
+  accessing uninitialized left-value. assert \initialized(&slow->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:120: 
+  out of bounds read. assert \valid_read(&slow->next);
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:164: 
+  detected recursive call of function MergeSort.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:164: User Error: 
+  Recursive call to MergeSort without assigns clause.
+  Generating probably incomplete assigns to interpret the call. Try to increase
+  the -eva-unroll-recursive-calls parameter or write a correct specification
+  for function MergeSort.
+[kernel:annot:missing-spec] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:149: 
+  Neither code nor specification for function MergeSort, generating default assigns from the prototype
+[eva] using specification for function MergeSort
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:165: 
+  detected recursive call of function MergeSort.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:165: 
+  Using specification of function MergeSort for recursive calls.
+  Analysis of function MergeSort is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:137: 
+  accessing uninitialized left-value. assert \initialized(&b->t);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:137: 
+  accessing uninitialized left-value. assert \initialized(&a->t);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:137: 
+  accessing uninitialized left-value. assert \initialized(&(b->t)->vict);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:137: 
+  accessing uninitialized left-value. assert \initialized(&(a->t)->vict);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:137: 
+  accessing uninitialized left-value. assert \initialized(&b->t);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:137: 
+  accessing uninitialized left-value. assert \initialized(&a->t);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:137: 
+  accessing uninitialized left-value. assert \initialized(&(b->t)->vict);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:137: 
+  accessing uninitialized left-value. assert \initialized(&(a->t)->vict);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:137: 
+  accessing uninitialized left-value. assert \initialized(&b->t);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:137: 
+  accessing uninitialized left-value. assert \initialized(&a->t);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:137: 
+  accessing uninitialized left-value. assert \initialized(&(b->t)->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:137: 
+  accessing uninitialized left-value. assert \initialized(&(a->t)->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:137: 
+  function strcmp: precondition 'valid_string_s1' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:137: 
+  function strcmp: precondition 'valid_string_s2' got status unknown.
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:139: 
+  detected recursive call of function SortedMerge.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:139: 
+  accessing uninitialized left-value. assert \initialized(&a->next);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:139: User Error: 
+  Recursive call to SortedMerge without assigns clause.
+  Generating probably incomplete assigns to interpret the call. Try to increase
+  the -eva-unroll-recursive-calls parameter or write a correct specification
+  for function SortedMerge.
+[kernel:annot:missing-spec] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:126: 
+  Neither code nor specification for function SortedMerge, generating default assigns from the prototype
+[eva] using specification for function SortedMerge
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:139: 
+  Assigning imprecise value to result->next
+  (pointing to __malloc_w_can_fail_malloc_l11_5 with offsets {128}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:126}
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:143: 
+  detected recursive call of function SortedMerge.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:143: 
+  accessing uninitialized left-value. assert \initialized(&b->next);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:143: 
+  Using specification of function SortedMerge for recursive calls.
+  Analysis of function SortedMerge is thus incomplete and its soundness
+  relies on the written specification.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:143: 
+  Assigning imprecise value to result->next
+  (pointing to __malloc_w_can_fail_malloc_l11_5 with offsets {128}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:143}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:509: 
+  accessing uninitialized left-value. assert \initialized(&ptr->t);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:509: 
+  accessing uninitialized left-value. assert \initialized(&(ptr->t)->vict);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:509: 
+  out of bounds read. assert \valid_read(&(ptr->t)->vict);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:510: 
+  accessing uninitialized left-value. assert \initialized(&ptr->t);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:510: 
+  accessing uninitialized left-value. assert \initialized(&(ptr->t)->vict);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:510: 
+  out of bounds read. assert \valid_read(&(ptr->t)->vict);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:510: 
+  Assigning imprecise value to score_max.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:511: 
+  accessing uninitialized left-value. assert \initialized(&ptr->t);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:511: 
+  accessing uninitialized left-value. assert \initialized(&(ptr->t)->vict);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:511: 
+  out of bounds read. assert \valid_read(&(ptr->t)->vict);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:512: 
+  accessing uninitialized left-value. assert \initialized(&ptr->t);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:512: 
+  accessing uninitialized left-value. assert \initialized(&(ptr->t)->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:512: 
+  out of bounds read. assert \valid_read(&(ptr->t)->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:513: 
+  accessing uninitialized left-value. assert \initialized(&ptr->next);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:513: 
+  Assigning imprecise value to ptr.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:511: 
+  pointer comparison. assert \pointer_comparable((void *)ptr, (void *)0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:511: 
+  out of bounds read. assert \valid_read(&ptr->t);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:513: 
+  out of bounds read. assert \valid_read(&ptr->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:225: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(head_game + key);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:226: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(head_game + key);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:229: 
+  accessing uninitialized left-value. assert \initialized(&ptr->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:229: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&ptr->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:229: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(ptr->g)->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:231: 
+  accessing uninitialized left-value. assert \initialized(&ptr->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:331: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&game->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:332: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&game->team1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:333: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&game->team2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:337: 
+  signed overflow.
+  assert (tmp_3->t)->vict + 1 ≤ 2147483647;
+  (tmp_3 from ht_find_team(team_1, key_team_1))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:339: 
+  signed overflow.
+  assert (tmp_4->t)->vict + 1 ≤ 2147483647;
+  (tmp_4 from ht_find_team(team_2, key_team_2))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:214: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(head_game + key);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:216: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(head_game + key);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:216: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(head_game + key);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:568: 
+  signed overflow. assert nl + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:364: 
+  accessing uninitialized left-value. assert \initialized(&ptr->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:364: 
+  accessing uninitialized left-value. assert \initialized(&ptr->next);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:364: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:364: 
+  out of bounds read. assert \valid_read(&ptr->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:366: 
+  accessing uninitialized left-value. assert \initialized(&ptr->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:366: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&ptr->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:366: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(ptr->g)->team2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:366: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(ptr->g)->team1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:366: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(ptr->g)->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:367: 
+  accessing uninitialized left-value. assert \initialized(&ptr->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:573: 
+  signed overflow. assert nl + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:355: 
+  accessing uninitialized left-value. assert \initialized(&node->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:355: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:355: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(node->g)->team2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:355: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(node->g)->team1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:355: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(node->g)->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:578: 
+  signed overflow. assert nl + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:386: 
+  accessing uninitialized left-value. assert \initialized(&node->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:386: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:386: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(node->g)->team1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:387: 
+  accessing uninitialized left-value. assert \initialized(&node->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:387: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:387: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(node->g)->team2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:391: 
+  accessing uninitialized left-value. assert \initialized(&node->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:391: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:392: 
+  accessing uninitialized left-value. assert \initialized(&node->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:392: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:394: 
+  accessing uninitialized left-value. assert \initialized(&node_ord->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:394: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node_ord->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:394: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(node_ord->g)->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:394: 
+  accessing uninitialized left-value. assert \initialized(&node_ord->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:395: 
+  accessing uninitialized left-value. assert \initialized(&node_ord->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:395: 
+  accessing uninitialized left-value. assert \initialized(&node_ord->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:396: 
+  accessing uninitialized left-value. assert \initialized(&node_ord->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:396: 
+  out of bounds write. assert \valid(&(node_ord->prev)->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:396: 
+  accessing uninitialized left-value. assert \initialized(&node_ord->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:397: 
+  accessing uninitialized left-value. assert \initialized(&node_ord->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:397: 
+  out of bounds write. assert \valid(&(node_ord->next)->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:397: 
+  accessing uninitialized left-value. assert \initialized(&node_ord->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:399: 
+  accessing uninitialized left-value. assert \initialized(&node_ord->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:399: 
+  accessing uninitialized left-value. assert \initialized(&node_ord->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:400: 
+  accessing uninitialized left-value. assert \initialized(&node_ord->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:401: 
+  out of bounds write. assert \valid(&head_ord_games->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:403: 
+  accessing uninitialized left-value. assert \initialized(&node_ord->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:403: 
+  accessing uninitialized left-value. assert \initialized(&node_ord->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:404: 
+  accessing uninitialized left-value. assert \initialized(&node_ord->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:404: 
+  out of bounds write. assert \valid(&(node_ord->prev)->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:404: 
+  accessing uninitialized left-value. assert \initialized(&node_ord->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:404: 
+  out of bounds write. assert \valid(&(node_ord->prev)->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:406: 
+  accessing uninitialized left-value. assert \initialized(&node->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:406: 
+  accessing uninitialized left-value. assert \initialized(&node->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:407: 
+  accessing uninitialized left-value. assert \initialized(&node->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:407: 
+  out of bounds write. assert \valid(&(node->prev)->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:407: 
+  accessing uninitialized left-value. assert \initialized(&node->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:408: 
+  accessing uninitialized left-value. assert \initialized(&node->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:408: 
+  out of bounds write. assert \valid(&(node->next)->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:408: 
+  accessing uninitialized left-value. assert \initialized(&node->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:410: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(head_game + key);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:410: 
+  accessing uninitialized left-value. assert \initialized(&node->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:411: 
+  accessing uninitialized left-value. assert \initialized(&node->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:414: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(head_game + key);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:414: 
+  accessing uninitialized left-value. assert \initialized(&node->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:415: 
+  accessing uninitialized left-value. assert \initialized(&node->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:415: 
+  out of bounds write. assert \valid(&(node->prev)->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:415: 
+  accessing uninitialized left-value. assert \initialized(&node->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:417: 
+  accessing uninitialized left-value. assert \initialized(&node->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:417: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:417: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(node->g)->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:418: 
+  accessing uninitialized left-value. assert \initialized(&node->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:418: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:418: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(node->g)->team1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:419: 
+  accessing uninitialized left-value. assert \initialized(&node->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:419: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:419: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(node->g)->team2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:420: 
+  accessing uninitialized left-value. assert \initialized(&node->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:420: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:583: 
+  signed overflow. assert nl + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:443: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(head_game + key);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:444: 
+  accessing uninitialized left-value. assert \initialized(&node->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:444: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:444: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(node->g)->team1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:445: 
+  accessing uninitialized left-value. assert \initialized(&node->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:445: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:445: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(node->g)->team2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:448: 
+  accessing uninitialized left-value. assert \initialized(&node->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:448: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:448: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(node->g)->team1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:449: 
+  accessing uninitialized left-value. assert \initialized(&node->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:449: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:449: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(node->g)->team2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:451: 
+  accessing uninitialized left-value. assert \initialized(&node->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:451: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:453: 
+  signed overflow. assert (node_t2->t)->vict + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:455: 
+  accessing uninitialized left-value. assert \initialized(&node->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:455: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:456: 
+  signed overflow. assert (node_t1->t)->vict + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:459: 
+  accessing uninitialized left-value. assert \initialized(&node->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:459: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:460: 
+  accessing uninitialized left-value. assert \initialized(&node->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:460: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:461: 
+  accessing uninitialized left-value. assert \initialized(&node->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:461: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:461: 
+  signed overflow. assert (node_t1->t)->vict + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:462: 
+  accessing uninitialized left-value. assert \initialized(&node->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:462: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:462: 
+  signed overflow. assert (node_t2->t)->vict + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:464: 
+  accessing uninitialized left-value. assert \initialized(&node->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:464: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:464: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(node->g)->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:464: 
+  accessing uninitialized left-value. assert \initialized(&node->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:465: 
+  accessing uninitialized left-value. assert \initialized(&node->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:465: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:466: 
+  accessing uninitialized left-value. assert \initialized(&node->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:466: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:588: 
+  signed overflow. assert nl + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:593: 
+  signed overflow. assert nl + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:598: 
+  signed overflow. assert nl + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:156: 
+  pointer comparison.
+  assert \pointer_comparable((void *)head->next, (void *)0);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:106: 
+  Assigning imprecise value to fast.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:109: 
+  pointer comparison. assert \pointer_comparable((void *)fast, (void *)0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:110: 
+  out of bounds read. assert \valid_read(&fast->next);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:110: 
+  Assigning imprecise value to fast.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:111: 
+  pointer comparison. assert \pointer_comparable((void *)fast, (void *)0);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:112: 
+  Assigning imprecise value to slow.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:113: 
+  out of bounds read. assert \valid_read(&fast->next);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:113: 
+  Assigning imprecise value to fast.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:120: 
+  Assigning imprecise value to *backRef (pointing to b).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:164: 
+  Using specification of function MergeSort for recursive calls.
+  Analysis of function MergeSort is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:133: 
+  pointer comparison. assert \pointer_comparable((void *)b, (void *)0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:137: 
+  out of bounds read. assert \valid_read(&b->t);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:137: 
+  out of bounds read. assert \valid_read(&(b->t)->vict);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:137: 
+  out of bounds read. assert \valid_read(&(a->t)->vict);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:137: 
+  out of bounds read. assert \valid_read(&(b->t)->vict);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:137: 
+  out of bounds read. assert \valid_read(&(a->t)->vict);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:137: 
+  out of bounds read. assert \valid_read(&(b->t)->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:137: 
+  out of bounds read. assert \valid_read(&(a->t)->name);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:139: 
+  Using specification of function SortedMerge for recursive calls.
+  Analysis of function SortedMerge is thus incomplete and its soundness
+  relies on the written specification.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:139: 
+  Assigning imprecise value to result->next
+  (pointing to __malloc_w_can_fail_malloc_l11_5 with offsets {128}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:143: 
+  out of bounds read. assert \valid_read(&b->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:143: 
+  out of bounds write. assert \valid(&result->next);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:143: 
+  Assigning imprecise value to result->next
+  (pointing to __malloc_w_can_fail_malloc_l11_5 with offsets {128}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:603: 
+  signed overflow. assert nl + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:231: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&ptr->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:276: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&head_ord_games);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:362: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&head_ord_games);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:364: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&ptr->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:364: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&ptr->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:367: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&ptr->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:385: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&head_ord_games);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:394: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node_ord->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:395: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node_ord->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:395: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node_ord->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:396: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node_ord->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:396: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node_ord->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:397: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node_ord->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:397: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node_ord->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:399: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node_ord->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:399: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node_ord->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:400: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node_ord->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:403: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node_ord->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:403: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node_ord->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:404: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node_ord->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:404: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node_ord->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:406: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:406: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:407: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:407: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:408: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:408: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:410: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:411: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:414: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:415: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:415: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:464: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:391: 
+  signed overflow. assert -2147483648 ≤ (node_t1->t)->vict - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:392: 
+  signed overflow. assert -2147483648 ≤ (node_t2->t)->vict - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:452: 
+  signed overflow. assert -2147483648 ≤ (node_t1->t)->vict - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:457: 
+  signed overflow. assert -2147483648 ≤ (node_t2->t)->vict - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:459: 
+  signed overflow. assert -2147483648 ≤ (node_t1->t)->vict - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:460: 
+  signed overflow. assert -2147483648 ≤ (node_t2->t)->vict - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:524: 
+  accessing uninitialized left-value. assert \initialized(head_game + key);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:524: 
+  out of bounds read. assert \valid_read(head_game + key);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:524: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(head_game + key);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:526: 
+  accessing uninitialized left-value. assert \initialized(&ptr_g->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:526: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&ptr_g->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:526: 
+  accessing uninitialized left-value. assert \initialized(&(ptr_g->g)->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:526: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(ptr_g->g)->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:527: 
+  accessing uninitialized left-value. assert \initialized(&ptr_g->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:527: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&ptr_g->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:527: 
+  accessing uninitialized left-value. assert \initialized(&(ptr_g->g)->team1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:527: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(ptr_g->g)->team1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:528: 
+  accessing uninitialized left-value. assert \initialized(&ptr_g->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:528: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&ptr_g->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:528: 
+  accessing uninitialized left-value. assert \initialized(&(ptr_g->g)->team2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:528: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(ptr_g->g)->team2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:529: 
+  accessing uninitialized left-value. assert \initialized(&ptr_g->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:529: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&ptr_g->g);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:530: 
+  accessing uninitialized left-value. assert \initialized(&ptr_g->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:530: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&ptr_g->next);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:523: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:525: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:532: 
+  accessing uninitialized left-value. assert \initialized(head_game + key);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:532: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(head_game + key);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:536: 
+  accessing uninitialized left-value. assert \initialized(head_team + key);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:536: 
+  out of bounds read. assert \valid_read(head_team + key);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:538: 
+  accessing uninitialized left-value. assert \initialized(&ptr_t->t);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:538: 
+  accessing uninitialized left-value. assert \initialized(&(ptr_t->t)->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:539: 
+  accessing uninitialized left-value. assert \initialized(&ptr_t->t);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:540: 
+  accessing uninitialized left-value. assert \initialized(&ptr_t->next);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:537: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:538: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&ptr_t->t);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:538: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(ptr_t->t)->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:539: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&ptr_t->t);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:535: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:536: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(head_team + key);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:540: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&ptr_t->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:542: 
+  accessing uninitialized left-value. assert \initialized(head_team + key);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/323/proj2.c:542: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(head_team + key);
+[eva] done for function main
+[scope:rm_asserts] removing 130 assertion(s)
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function Partition:
+  fast ∈ {0}
+  slow ∈
+      {{ &__malloc_w_can_fail_malloc_l11_2 + [-16..-8] ;
+         &__malloc_w_can_fail_malloc_l11_5 + [-16..0] }}
+  a ∈ {{ (link_ord_teams *)&__malloc_w_can_fail_malloc_l11_5 }}
+  b ∈
+   {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2;
+                       __malloc_w_can_fail_malloc_l11_3;
+                       __malloc_w_can_fail_malloc_l11_5}
+    (origin: Misaligned) }}
+  __malloc_w_can_fail_malloc_l11_2[bits 0 to 63] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_3 }} or UNINITIALIZED
+                                  [8..11] ∈ [--..--] or UNINITIALIZED
+                                  [12..15] ∈ {0} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_5[0..23] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2;
+                                                      __malloc_w_can_fail_malloc_l11_3;
+                                                      __malloc_w_can_fail_malloc_l11_5}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+[eva:final-states] Values at end of function delete_all:
+  key ∈ {1571}
+  ptr_g ∈ {0} or UNINITIALIZED
+  ptr_t ∈ {0} or UNINITIALIZED
+  head_game ∈
+           {{ NULL ; (link_game **)&__malloc_can_fail_malloc_l11 }} or ESCAPINGADDR
+  head_team ∈
+           {{ NULL ; (link_team **)&__malloc_can_fail_malloc_l11_0 }} or ESCAPINGADDR
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2;
+                                   __malloc_w_can_fail_malloc_l11_3;
+                                   __malloc_w_can_fail_malloc_l11_5}
+                (origin: Misaligned) }} or ESCAPINGADDR
+               [1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11[bits 0 to 100543]# ∈
+                              {{ NULL ;
+                                 (? *)&__malloc_w_can_fail_malloc_l11_9 }} or UNINITIALIZED or ESCAPINGADDR repeated %64 
+                              [12568..37703] ∈ UNINITIALIZED
+  __malloc_can_fail_malloc_l11_0[bits 0 to 100543]# ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED or ESCAPINGADDR repeated %64 
+                                [12568..37703] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_1[bits 0 to 63] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_6 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_7 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 128 to 191] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_8 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [24..31] ∈ [--..--] or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_2[bits 0 to 63] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_3 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [8..11] ∈ [--..--] or UNINITIALIZED
+                                  [12..15] ∈ {0} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_4[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 64 to 191]# ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED or ESCAPINGADDR repeated %64 
+  __malloc_w_can_fail_malloc_l11_5[0..23] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2;
+                                                      __malloc_w_can_fail_malloc_l11_3;
+                                                      __malloc_w_can_fail_malloc_l11_5}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_9[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_1 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 64 to 191]# ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_9 }} or UNINITIALIZED or ESCAPINGADDR repeated %64 
+  __malloc_w_can_fail_malloc_l11_10[bits 0 to 63] ∈
+                                   {{ (? *)&__malloc_w_can_fail_malloc_l11_1 }} or UNINITIALIZED or ESCAPINGADDR
+                                   [bits 64 to 191]# ∈
+                                   {{ NULL ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_10 }} or UNINITIALIZED or ESCAPINGADDR repeated %64 
+[eva:final-states] Values at end of function hash:
+  p ∈
+   {{ &game_name[0] ; &team_1[0] ; &team_2[0] ; &game_name[0] ;
+      &game_name[0] ; &game_name[0] ; &team_name[0] ; &team_name[0] ;
+      &__malloc_w_can_fail_malloc_l11_7 ;
+      &__malloc_w_can_fail_malloc_l11_8 }}
+  key ∈ [-1570..1570]
+  a ∈ [5..31415],5%10
+  b ∈ {27183}
+[eva:final-states] Values at end of function list_games:
+  ptr ∈ {0}
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2;
+                                   __malloc_w_can_fail_malloc_l11_3;
+                                   __malloc_w_can_fail_malloc_l11_5}
+                (origin: Misaligned) }}
+               [1] ∈ [--..--]
+[eva:final-states] Values at end of function ht_find_game:
+  ptr ∈ {{ NULL ; (link_game *)&__malloc_w_can_fail_malloc_l11_9 }}
+  __retres ∈ {{ NULL ; (link_game *)&__malloc_w_can_fail_malloc_l11_9 }}
+[eva:final-states] Values at end of function change_score:
+  game_name[0] ∈ {0}
+           [1..1023] ∈ UNINITIALIZED
+  key ∈ [0..1570]
+  score_1 ∈ [--..--]
+  score_2 ∈ [--..--]
+  key_t1 ∈ [0..1570] or UNINITIALIZED
+  key_t2 ∈ [0..1570] or UNINITIALIZED
+  node ∈ {{ NULL ; (link_game *)&__malloc_w_can_fail_malloc_l11_9 }}
+  node_t1 ∈ {{ NULL ; (link_team *)&__malloc_w_can_fail_malloc_l11_4 }}
+  node_t2 ∈ {{ NULL ; (link_team *)&__malloc_w_can_fail_malloc_l11_4 }}
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2;
+                                   __malloc_w_can_fail_malloc_l11_3;
+                                   __malloc_w_can_fail_malloc_l11_5}
+                (origin: Misaligned) }}
+               [1] ∈ [--..--]
+  __malloc_w_can_fail_malloc_l11_1[bits 0 to 63] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_6 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_7 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 128 to 191] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_8 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [24..31] ∈ [--..--] or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_2[bits 0 to 63] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_3 }} or UNINITIALIZED
+                                  [8..11] ∈ [--..--] or UNINITIALIZED
+                                  [12..15] ∈ {0} or UNINITIALIZED
+[eva:final-states] Values at end of function find_game:
+  game_name[0] ∈ {0}
+           [1..1023] ∈ UNINITIALIZED
+  key ∈ [0..1570]
+  node ∈ {{ NULL ; (link_game *)&__malloc_w_can_fail_malloc_l11_9 }}
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2;
+                                   __malloc_w_can_fail_malloc_l11_3;
+                                   __malloc_w_can_fail_malloc_l11_5}
+                (origin: Misaligned) }}
+               [1] ∈ [--..--]
+[eva:final-states] Values at end of function ht_find_team:
+  ptr ∈ {{ NULL ; (link_team *)&__malloc_w_can_fail_malloc_l11_4 }}
+  __retres ∈ {{ NULL ; (link_team *)&__malloc_w_can_fail_malloc_l11_4 }}
+[eva:final-states] Values at end of function find_team:
+  team_name[0] ∈ {0}
+           [1..1023] ∈ UNINITIALIZED
+  key ∈ [0..1570]
+  node ∈ {{ NULL ; (link_team *)&__malloc_w_can_fail_malloc_l11_4 }}
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2;
+                                   __malloc_w_can_fail_malloc_l11_3;
+                                   __malloc_w_can_fail_malloc_l11_5}
+                (origin: Misaligned) }}
+               [1] ∈ [--..--]
+[eva:final-states] Values at end of function remove_game:
+  game_name[0] ∈ {0}
+           [1..1023] ∈ UNINITIALIZED
+  key ∈ [0..1570]
+  key_t1 ∈ [0..1570] or UNINITIALIZED
+  key_t2 ∈ [0..1570] or UNINITIALIZED
+  node ∈ {0}
+  node_ord ∈ {0}
+  node_t1 ∈ {{ NULL ; (link_team *)&__malloc_w_can_fail_malloc_l11_4 }}
+  node_t2 ∈ {{ NULL ; (link_team *)&__malloc_w_can_fail_malloc_l11_4 }}
+  head_ord_games ∈
+                {{ NULL ;
+                   (link_ord_games *)&__malloc_w_can_fail_malloc_l11_10 }} or ESCAPINGADDR
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2;
+                                   __malloc_w_can_fail_malloc_l11_3;
+                                   __malloc_w_can_fail_malloc_l11_5}
+                (origin: Misaligned) }}
+               [1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11[bits 0 to 100543]# ∈
+                              {{ NULL ;
+                                 (? *)&__malloc_w_can_fail_malloc_l11_9 }} or UNINITIALIZED or ESCAPINGADDR repeated %64 
+                              [12568..37703] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_1[bits 0 to 63] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_6 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_7 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 128 to 191] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_8 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [24..31] ∈ [--..--] or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_2[bits 0 to 63] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_3 }} or UNINITIALIZED
+                                  [8..11] ∈ [--..--] or UNINITIALIZED
+                                  [12..15] ∈ {0} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_9[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_1 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 64 to 191]# ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_9 }} or UNINITIALIZED or ESCAPINGADDR repeated %64 
+  __malloc_w_can_fail_malloc_l11_10[bits 0 to 63] ∈
+                                   {{ (? *)&__malloc_w_can_fail_malloc_l11_1 }} or UNINITIALIZED or ESCAPINGADDR
+                                   [bits 64 to 191]# ∈
+                                   {{ NULL ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_10 }} or UNINITIALIZED or ESCAPINGADDR repeated %64 
+[eva:final-states] Values at end of function can_fail_malloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈
+          {{ NULL ; (void *)&__malloc_can_fail_malloc_l11 ;
+             (void *)&__malloc_can_fail_malloc_l11_0 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_1 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_2 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_3 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_4 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_5 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_6 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_7 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_8 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_9 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_10 }}
+[eva:final-states] Values at end of function Init_ht:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  key ∈ {1571}
+  head_game ∈ {{ NULL ; (link_game **)&__malloc_can_fail_malloc_l11 }}
+  head_team ∈ {{ NULL ; (link_team **)&__malloc_can_fail_malloc_l11_0 }}
+  head_ord_games ∈ {0}
+  head_ord_teams ∈ {0}
+  __malloc_can_fail_malloc_l11[0..12567] ∈ {0} or UNINITIALIZED
+                              [12568..37703] ∈ UNINITIALIZED
+  __malloc_can_fail_malloc_l11_0[0..12567] ∈ {0} or UNINITIALIZED
+                                [12568..37703] ∈ UNINITIALIZED
+[eva:final-states] Values at end of function ht_insert_game:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  next_game ∈ {{ (link_game *)&__malloc_w_can_fail_malloc_l11_9 }}
+  __malloc_can_fail_malloc_l11[bits 0 to 100543]# ∈
+                              {{ NULL ;
+                                 (? *)&__malloc_w_can_fail_malloc_l11_9 }} or UNINITIALIZED or ESCAPINGADDR repeated %64 
+                              [12568..37703] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_9[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_1 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 64 to 191]# ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_9 }} or UNINITIALIZED or ESCAPINGADDR repeated %64 
+[eva:final-states] Values at end of function ht_insert_team:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  next_team ∈ {{ (link_team *)&__malloc_w_can_fail_malloc_l11_4 }}
+  __malloc_can_fail_malloc_l11_0[bits 0 to 100543]# ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED repeated %64 
+                                [12568..37703] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_4[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED
+                                  [bits 64 to 191]# ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED repeated %64 
+[eva:final-states] Values at end of function insert_ord_games:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  ptr ∈ {{ (link_ord_games *)&__malloc_w_can_fail_malloc_l11_10 }}
+  head_ord_games ∈
+                {{ (link_ord_games *)&__malloc_w_can_fail_malloc_l11_10 }}
+  __malloc_w_can_fail_malloc_l11_10[bits 0 to 63] ∈
+                                   {{ (? *)&__malloc_w_can_fail_malloc_l11_1 }} or UNINITIALIZED or ESCAPINGADDR
+                                   [bits 64 to 191]# ∈
+                                   {{ NULL ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_10 }} or UNINITIALIZED or ESCAPINGADDR repeated %64 
+[eva:final-states] Values at end of function add_game:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  game_name[0] ∈ {0}
+           [1..1023] ∈ UNINITIALIZED
+  team_1[0] ∈ {0}
+        [1..1023] ∈ UNINITIALIZED
+  team_2[0] ∈ {0}
+        [1..1023] ∈ UNINITIALIZED
+  score_1 ∈ [--..--]
+  score_2 ∈ [--..--]
+  key_game ∈ [0..1570]
+  key_team_1 ∈ [-1570..1570]
+  key_team_2 ∈ [-1570..1570]
+  game ∈ {{ NULL ; (p_game *)&__malloc_w_can_fail_malloc_l11_1 }}
+  head_ord_games ∈
+                {{ NULL ;
+                   (link_ord_games *)&__malloc_w_can_fail_malloc_l11_10 }} or ESCAPINGADDR
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2;
+                                   __malloc_w_can_fail_malloc_l11_3;
+                                   __malloc_w_can_fail_malloc_l11_5}
+                (origin: Misaligned) }}
+               [1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11[bits 0 to 100543]# ∈
+                              {{ NULL ;
+                                 (? *)&__malloc_w_can_fail_malloc_l11_9 }} or UNINITIALIZED or ESCAPINGADDR repeated %64 
+                              [12568..37703] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_1[bits 0 to 63] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_6 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_7 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 128 to 191] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_8 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [24..31] ∈ [--..--] or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_2[bits 0 to 63] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_3 }} or UNINITIALIZED
+                                  [8..11] ∈ [--..--] or UNINITIALIZED
+                                  [12..15] ∈ {0} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_6 ∈ [--..--] or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_7 ∈ [--..--] or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_8 ∈ [--..--] or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_9[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_1 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 64 to 191]# ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_9 }} or UNINITIALIZED or ESCAPINGADDR repeated %64 
+  __malloc_w_can_fail_malloc_l11_10[bits 0 to 63] ∈
+                                   {{ (? *)&__malloc_w_can_fail_malloc_l11_1 }} or UNINITIALIZED or ESCAPINGADDR
+                                   [bits 64 to 191]# ∈
+                                   {{ NULL ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_10 }} or UNINITIALIZED or ESCAPINGADDR repeated %64 
+[eva:final-states] Values at end of function insert_ord_teams:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  ptr ∈ {{ (link_ord_teams *)&__malloc_w_can_fail_malloc_l11_5 }}
+  head_ord_teams ∈
+                {{ (link_ord_teams *)&__malloc_w_can_fail_malloc_l11_5 }}
+  __malloc_w_can_fail_malloc_l11_5[0..23] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2;
+                                                      __malloc_w_can_fail_malloc_l11_3;
+                                                      __malloc_w_can_fail_malloc_l11_5}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+[eva:final-states] Values at end of function add_team:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  team_name[0] ∈ {0}
+           [1..1023] ∈ UNINITIALIZED
+  key ∈ [0..1570]
+  team ∈ {{ NULL ; (p_team *)&__malloc_w_can_fail_malloc_l11_2 }}
+  head_ord_teams ∈
+                {{ NULL ;
+                   (link_ord_teams *)&__malloc_w_can_fail_malloc_l11_5 }}
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2;
+                                   __malloc_w_can_fail_malloc_l11_3;
+                                   __malloc_w_can_fail_malloc_l11_5}
+                (origin: Misaligned) }}
+               [1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11_0[bits 0 to 100543]# ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED repeated %64 
+                                [12568..37703] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_2[bits 0 to 63] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_3 }} or UNINITIALIZED
+                                  [8..11] ∈ [--..--] or UNINITIALIZED
+                                  [12..15] ∈ {0} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_3 ∈ [--..--] or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_4[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED
+                                  [bits 64 to 191]# ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED repeated %64 
+  __malloc_w_can_fail_malloc_l11_5[0..23] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2;
+                                                      __malloc_w_can_fail_malloc_l11_3;
+                                                      __malloc_w_can_fail_malloc_l11_5}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+[eva:final-states] Values at end of function list_teams:
+  ptr ∈ {{ NULL ; &__malloc_w_can_fail_malloc_l11_5 + [0..16] }}
+  score_max ∈
+           {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2;
+                               __malloc_w_can_fail_malloc_l11_3;
+                               __malloc_w_can_fail_malloc_l11_5}
+            (origin: Misaligned) }} or UNINITIALIZED
+  head_ord_teams ∈
+                {{ NULL ;
+                   (link_ord_teams *)&__malloc_w_can_fail_malloc_l11_5 }}
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2;
+                                   __malloc_w_can_fail_malloc_l11_3;
+                                   __malloc_w_can_fail_malloc_l11_5}
+                (origin: Misaligned) }}
+               [1] ∈ [--..--]
+  __malloc_w_can_fail_malloc_l11_2[bits 0 to 63] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_3 }} or UNINITIALIZED
+                                  [8..11] ∈ [--..--] or UNINITIALIZED
+                                  [12..15] ∈ {0} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_5[0..23] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2;
+                                                      __malloc_w_can_fail_malloc_l11_3;
+                                                      __malloc_w_can_fail_malloc_l11_5}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+[eva:final-states] Values at end of function main:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  input[0] ∈ {120}
+       [1..3499] ∈ [--..--] or UNINITIALIZED
+  nl ∈ [1..2147483647]
+  head_game ∈
+           {{ NULL ; (link_game **)&__malloc_can_fail_malloc_l11 }} or ESCAPINGADDR
+  head_team ∈
+           {{ NULL ; (link_team **)&__malloc_can_fail_malloc_l11_0 }} or ESCAPINGADDR
+  head_ord_games ∈
+                {{ NULL ;
+                   (link_ord_games *)&__malloc_w_can_fail_malloc_l11_10 }} or ESCAPINGADDR
+  head_ord_teams ∈
+                {{ NULL ;
+                   (link_ord_teams *)&__malloc_w_can_fail_malloc_l11_5 }}
+  __retres ∈ {0}
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2;
+                                   __malloc_w_can_fail_malloc_l11_3;
+                                   __malloc_w_can_fail_malloc_l11_5}
+                (origin: Misaligned) }} or ESCAPINGADDR
+               [1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11[bits 0 to 100543]# ∈
+                              {{ NULL ;
+                                 (? *)&__malloc_w_can_fail_malloc_l11_9 }} or UNINITIALIZED or ESCAPINGADDR repeated %64 
+                              [12568..37703] ∈ UNINITIALIZED
+  __malloc_can_fail_malloc_l11_0[bits 0 to 100543]# ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED or ESCAPINGADDR repeated %64 
+                                [12568..37703] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_1[bits 0 to 63] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_6 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_7 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 128 to 191] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_8 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [24..31] ∈ [--..--] or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_2[bits 0 to 63] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_3 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [8..11] ∈ [--..--] or UNINITIALIZED
+                                  [12..15] ∈ {0} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_3 ∈ [--..--] or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_4[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 64 to 191]# ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED or ESCAPINGADDR repeated %64 
+  __malloc_w_can_fail_malloc_l11_5[0..23] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2;
+                                                      __malloc_w_can_fail_malloc_l11_3;
+                                                      __malloc_w_can_fail_malloc_l11_5}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_6 ∈ [--..--] or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_7 ∈ [--..--] or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_8 ∈ [--..--] or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_9[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_1 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 64 to 191]# ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_9 }} or UNINITIALIZED or ESCAPINGADDR repeated %64 
+  __malloc_w_can_fail_malloc_l11_10[bits 0 to 63] ∈
+                                   {{ (? *)&__malloc_w_can_fail_malloc_l11_1 }} or UNINITIALIZED or ESCAPINGADDR
+                                   [bits 64 to 191]# ∈
+                                   {{ NULL ;
+                                      (? *)&__malloc_w_can_fail_malloc_l11_10 }} or UNINITIALIZED or ESCAPINGADDR repeated %64 
+[eva:final-states] Values at end of function SortedMerge:
+  result ∈ {{ NULL ; (link_ord_teams *)&__malloc_w_can_fail_malloc_l11_5 }}
+  __retres ∈ {{ (link_ord_teams *)&__malloc_w_can_fail_malloc_l11_5 }}
+  __malloc_w_can_fail_malloc_l11_5[0..23] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2;
+                                                      __malloc_w_can_fail_malloc_l11_3;
+                                                      __malloc_w_can_fail_malloc_l11_5}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+[eva:final-states] Values at end of function MergeSort:
+  head ∈ {{ (link_ord_teams *)&__malloc_w_can_fail_malloc_l11_5 }}
+  a ∈
+   {{ (link_ord_teams *)&__malloc_w_can_fail_malloc_l11_5 }} or UNINITIALIZED
+  b ∈
+   {{ NULL ; &__malloc_w_can_fail_malloc_l11_5 + [0..16] }} or UNINITIALIZED
+  head_ord_teams ∈
+                {{ (link_ord_teams *)&__malloc_w_can_fail_malloc_l11_5 }}
+  __malloc_w_can_fail_malloc_l11_2[bits 0 to 63] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_3 }} or UNINITIALIZED
+                                  [8..11] ∈ [--..--] or UNINITIALIZED
+                                  [12..15] ∈ {0} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_5[0..23] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2;
+                                                      __malloc_w_can_fail_malloc_l11_3;
+                                                      __malloc_w_can_fail_malloc_l11_5}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  22 functions analyzed (out of 24): 91% coverage.
+  In these functions, 439 statements reached (out of 444): 98% coverage.
+  ----------------------------------------------------------------------------
+  Some errors and warnings have been raised during the analysis:
+    by the Eva analyzer:      2 errors    0 warnings
+    by the Frama-C kernel:    0 errors    0 warnings
+  ----------------------------------------------------------------------------
+  384 alarms generated by the analysis:
+     198 accesses to uninitialized left-values
+     103 escaping addresses
+      58 invalid memory accesses
+      20 integer overflows
+       5 others
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     0 unknown     0 invalid      0 total
+    Preconditions    65 valid    29 unknown     0 invalid     94 total
+  69% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[eva] User Error: Deferred error message was emitted during execution. See above messages for more information.
+[kernel] Plug-in eva aborted: invalid user input.

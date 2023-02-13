@@ -1,0 +1,112 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al102/p2_89519.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  N_vertices ∈ {0}
+  nEstacoesAum ∈ {0}
+  nLigacoesAum ∈ {0}
+[eva] using specification for function scanf_va_6
+[eva] using specification for function getchar
+[eva] using specification for function scanf_va_7
+[eva] using specification for function scanf_va_8
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al102/p2_89519.c:256: 
+  signed overflow. assert -2147483648 ≤ f + e;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al102/p2_89519.c:256: 
+  signed overflow. assert f + e ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al102/p2_89519.c:256: 
+  signed overflow. assert (int)(f + e) + 2 ≤ 2147483647;
+[eva] using specification for function time
+[eva] using specification for function srand
+[eva] using specification for function rand
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al102/p2_89519.c:28: 
+  out of bounds write. assert \valid(&(l + vertice)->altura);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al102/p2_89519.c:29: 
+  out of bounds write. assert \valid(&(l + vertice)->fluxoExcesso);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al102/p2_89519.c:30: 
+  out of bounds write. assert \valid(&(l + vertice)->cap);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al102/p2_89519.c:31: 
+  out of bounds write. assert \valid(&(l + vertice)->transp);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al102/p2_89519.c:27: 
+  starting to merge loop iterations
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al102/p2_89519.c:28: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al102/p2_89519.c:29: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al102/p2_89519.c:30: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al102/p2_89519.c:31: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al102/p2_89519.c:33: 
+  out of bounds write. assert \valid(&(l + 0)->altura);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al102/p2_89519.c:28: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al102/p2_89519.c:29: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al102/p2_89519.c:30: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al102/p2_89519.c:31: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al102/p2_89519.c:51: 
+  signed overflow. assert f + 2 ≤ 2147483647;
+[eva] using specification for function scanf_va_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al102/p2_89519.c:53: 
+  out of bounds write. assert \valid(&(l + i)->cap);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al102/p2_89519.c:54: 
+  accessing uninitialized left-value. assert \initialized(&(l + 0)->transp);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al102/p2_89519.c:54: 
+  out of bounds read. assert \valid_read(&(l + 0)->transp);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_0
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al102/p2_89519.c:39: 
+  out of bounds write. assert \valid(&t->o);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al102/p2_89519.c:54: 
+  out of bounds write. assert \valid(&(l + 0)->transp);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al102/p2_89519.c:55: 
+  signed overflow. assert -c ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al102/p2_89519.c:55: 
+  accessing uninitialized left-value. assert \initialized(&(l + i)->transp);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al102/p2_89519.c:55: 
+  out of bounds read. assert \valid_read(&(l + i)->transp);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al102/p2_89519.c:55: 
+  out of bounds write. assert \valid(&(l + i)->transp);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al102/p2_89519.c:56: 
+  out of bounds write. assert \valid(&(l + i)->fluxoExcesso);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al102/p2_89519.c:57: 
+  out of bounds write. assert \valid(&(l + 0)->fluxoExcesso);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al102/p2_89519.c:57: 
+  accessing uninitialized left-value.
+  assert \initialized(&(l + 0)->fluxoExcesso);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al102/p2_89519.c:51: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al102/p2_89519.c:57: 
+  signed overflow. assert -2147483648 ≤ (l + 0)->fluxoExcesso - c;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al102/p2_89519.c:57: 
+  signed overflow. assert (l + 0)->fluxoExcesso - c ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al102/p2_89519.c:58: 
+  signed overflow. assert -2147483648 ≤ soma + c;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al102/p2_89519.c:58: 
+  signed overflow. assert soma + c ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al102/p2_89519.c:43: 
+  Assigning imprecise value to t->prox
+  (pointing to __malloc_w_can_fail_malloc_l11_1 with offsets {128}).
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/al102/p2_89519.c:55}
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al102/p2_89519.c:53: 
+  more than 200(2147483645) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al102/p2_89519.c:55: 
+  more than 200(2147483645) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/al102/p2_89519.c:55: 
+  more than 200(2147483645) locations to update in array. Approximating.

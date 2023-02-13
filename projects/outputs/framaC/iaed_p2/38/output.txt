@@ -1,0 +1,1304 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  nl ∈ {1.}
+  n_jogos ∈ {0}
+  n_equipas ∈ {0}
+  jogos ∈ {0}
+  equipas ∈ {0}
+[eva] using specification for function time
+[eva] using specification for function srand
+[eva] using specification for function rand
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_0
+[eva] using specification for function getchar
+[eva] using specification for function scanf_va_1
+[eva] using specification for function strtok
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:101: 
+  function strtok, behavior new_str: precondition 'valid_string_s_or_delim_not_found' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:102: 
+  pointer comparison. assert \pointer_comparable((void *)palavra, (void *)0);
+[eva] using specification for function strcpy
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:104: 
+  function strcpy: precondition 'valid_string_src' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:104: 
+  function strcpy: precondition 'room_string' got status unknown.
+[eva] FRAMAC_SHARE/libc/string.h:373: 
+  cannot evaluate ACSL term, unsupported ACSL construct: logic function strcmp
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:102: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:106: 
+  function strcpy: precondition 'valid_string_src' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:106: 
+  function strcpy: precondition 'room_string' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:108: 
+  function strcpy: precondition 'valid_string_src' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:108: 
+  function strcpy: precondition 'room_string' got status unknown.
+[eva] using specification for function atoi
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:110: 
+  function atoi: precondition 'valid_nptr' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:112: 
+  function atoi: precondition 'valid_nptr' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:114: 
+  signed overflow. assert i + 1 ≤ 2147483647;
+[eva] using specification for function printf_va_5
+[eva:locals-escaping] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:307: 
+  locals {input} escaping the scope of cria_jogo through __fc_strtok_ptr
+[eva] using specification for function printf_va_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:194: 
+  function strtok, behavior new_str: precondition 'valid_string_s_or_delim_not_found' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:195: 
+  function strcpy: precondition 'valid_string_src' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:195: 
+  function strcpy: precondition 'room_string' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:197: 
+  function atoi: precondition 'valid_nptr' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:199: 
+  function atoi: precondition 'valid_nptr' got status unknown.
+[eva:locals-escaping] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:315: 
+  locals {input} escaping the scope of altera_resultado through __fc_strtok_ptr
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:25: 
+  allocating variable __realloc_can_fail_realloc_l25
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:233: 
+  out of bounds write. assert \valid(&(equipas + n_equipas)->id);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:234: 
+  function strlen: precondition 'valid_string_s' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:235: 
+  function strcpy: precondition 'valid_string_src' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:235: 
+  function strcpy: precondition 'room_string' got status unknown.
+[eva] using specification for function printf_va_2
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_2
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:305: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:113: 
+  function strtok, behavior resume_str: precondition 'not_first_call' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:113: 
+  Assigning imprecise value to palavra.
+  The imprecision originates from Library function
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:83: 
+  accessing uninitialized left-value.
+  assert \initialized(&(equipas + i)->nome_equipa);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:83: 
+  out of bounds read. assert \valid_read(&(equipas + i)->nome_equipa);
+[eva] using specification for function strcmp
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:83: 
+  function strcmp: precondition 'valid_string_s1' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:83: 
+  function strcmp: precondition 'valid_string_s2' got status unknown.
+[eva] FRAMAC_SHARE/libc/string.h:156: 
+  cannot evaluate ACSL term, unsupported ACSL construct: logic function strcmp
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:82: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:25: 
+  allocating variable __realloc_can_fail_realloc_l25_0
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:124: 
+  function strlen: precondition 'valid_string_s' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:124: 
+  out of bounds write. assert \valid(&(jogos + n_jogos)->nome);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:125: 
+  function strcpy: precondition 'valid_string_src' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:125: 
+  function strcpy: precondition 'room_string' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:126: 
+  out of bounds read. assert \valid_read(equipas + (int)(i - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:128: 
+  accessing uninitialized left-value. assert \initialized(&score1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:129: 
+  accessing uninitialized left-value. assert \initialized(&score2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:132: 
+  accessing uninitialized left-value.
+  assert \initialized(&(equipas + (int)(i - 1))->n_jogos_ganhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:134: 
+  accessing uninitialized left-value.
+  assert \initialized(&(equipas + (int)(j - 1))->n_jogos_ganhos);
+[eva] using specification for function printf_va_4
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:196: 
+  function strtok, behavior resume_str: precondition 'not_first_call' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:196: 
+  Assigning imprecise value to palavra.
+  The imprecision originates from Library function
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:198: 
+  function strtok, behavior resume_str: precondition 'not_first_call' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:198: 
+  Assigning imprecise value to palavra.
+  The imprecision originates from Library function
+[eva] using specification for function printf_va_8
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:234: 
+  out of bounds write. assert \valid(&(equipas + n_equipas)->nome_equipa);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:235: 
+  accessing uninitialized left-value.
+  assert \initialized(&(equipas + n_equipas)->nome_equipa);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:235: 
+  out of bounds read. assert \valid_read(&(equipas + n_equipas)->nome_equipa);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:236: 
+  out of bounds write. assert \valid(&(equipas + n_equipas)->n_jogos_ganhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:252: 
+  accessing uninitialized left-value.
+  assert \initialized(&(equipas + (int)(i - 1))->n_jogos_ganhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:252: 
+  out of bounds read.
+  assert \valid_read(&(equipas + (int)(i - 1))->n_jogos_ganhos);
+[eva] using specification for function printf_va_9
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:252: 
+  function printf_va_9: precondition valid_read_string(param1) got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:263: 
+  accessing uninitialized left-value.
+  assert \initialized(&(equipas + i)->n_jogos_ganhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:263: 
+  out of bounds read. assert \valid_read(&(equipas + i)->n_jogos_ganhos);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:262: 
+  starting to merge loop iterations
+[eva] using specification for function printf_va_10
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:271: 
+  accessing uninitialized left-value.
+  assert \initialized(&(equipas + i)->n_jogos_ganhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:271: 
+  out of bounds read. assert \valid_read(&(equipas + i)->n_jogos_ganhos);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:25: 
+  allocating variable __realloc_can_fail_realloc_l25_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:274: 
+  out of bounds write. assert \valid(melhores_equipas + (int)(cont - 1));
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:268: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:272: 
+  signed overflow. assert cont + 1 ≤ 2147483647;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:274: 
+  too many locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:281: 
+  accessing uninitialized left-value.
+  assert \initialized(&(melhores_equipas + i)->nome_equipa);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:281: 
+  accessing uninitialized left-value.
+  assert \initialized(&(melhores_equipas + (int)(i + 1))->nome_equipa);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:281: 
+  out of bounds read.
+  assert \valid_read(&(melhores_equipas + (int)(i + 1))->nome_equipa);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:281: 
+  function strcmp: precondition 'valid_string_s1' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:281: 
+  function strcmp: precondition 'valid_string_s2' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:282: 
+  Assigning imprecise value to aux.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:274}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:283: 
+  out of bounds read. assert \valid_read(melhores_equipas + (int)(i + 1));
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:283: 
+  Assigning imprecise value to *(melhores_equipas + i)
+  (pointing to __realloc_w_can_fail_realloc_l25_1 with offsets {0}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:274}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:284: 
+  out of bounds write. assert \valid(melhores_equipas + (int)(i + 1));
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:284: 
+  Assigning imprecise value to *(melhores_equipas + (i + 1))
+  (pointing to __realloc_w_can_fail_realloc_l25_1 with offsets {192}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:274}
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:280: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:281: 
+  out of bounds read. assert \valid_read(&(melhores_equipas + i)->nome_equipa);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:282: 
+  out of bounds read. assert \valid_read(melhores_equipas + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:283: 
+  out of bounds write. assert \valid(melhores_equipas + i);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:283: 
+  Assigning imprecise value to *(melhores_equipas + i)
+  (pointing to __realloc_w_can_fail_realloc_l25_1 with offsets {0; 192}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:274}
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:284: 
+  Assigning imprecise value to *(melhores_equipas + (i + 1))
+  (pointing to __realloc_w_can_fail_realloc_l25_1 with offsets {192; 384}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:274}
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:283: 
+  Assigning imprecise value to *(melhores_equipas + i)
+  (pointing to __realloc_w_can_fail_realloc_l25_1 with offsets {0; 192; 384}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:274}
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:284: 
+  Assigning imprecise value to *(melhores_equipas + (i + 1))
+  (pointing to __realloc_w_can_fail_realloc_l25_1 with offsets {192; 384; 576}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:274}
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:281: 
+  more than 200(2147483646) elements to enumerate. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:283: 
+  Assigning imprecise value to *(melhores_equipas + i)
+  (pointing to __realloc_w_can_fail_realloc_l25_1 with offsets [0..412316859840],0%192).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:274}
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:284: 
+  Assigning imprecise value to *(melhores_equipas + (i + 1))
+  (pointing to __realloc_w_can_fail_realloc_l25_1 with offsets [192..412316860032],0%192).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:274}
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:278: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:293: 
+  accessing uninitialized left-value.
+  assert \initialized(&(melhores_equipas + i)->nome_equipa);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:293: 
+  out of bounds read. assert \valid_read(&(melhores_equipas + i)->nome_equipa);
+[eva] using specification for function printf_va_11
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:293: 
+  function printf_va_11: precondition valid_read_string(param1) got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:292: 
+  starting to merge loop iterations
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:293: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:68: 
+  accessing uninitialized left-value. assert \initialized(&(jogos + i)->nome);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:68: 
+  out of bounds read. assert \valid_read(&(jogos + i)->nome);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:68: 
+  function strcmp: precondition 'valid_string_s1' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:68: 
+  function strcmp: precondition 'valid_string_s2' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:67: 
+  starting to merge loop iterations
+[eva] using specification for function printf_va_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:125: 
+  accessing uninitialized left-value.
+  assert \initialized(&(jogos + n_jogos)->nome);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:125: 
+  out of bounds read. assert \valid_read(&(jogos + n_jogos)->nome);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:126: 
+  out of bounds write. assert \valid(&(jogos + n_jogos)->equipa1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:127: 
+  out of bounds write. assert \valid(&(jogos + n_jogos)->equipa2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:127: 
+  out of bounds read. assert \valid_read(equipas + (int)(j - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:128: 
+  out of bounds write. assert \valid(&(jogos + n_jogos)->golos1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:129: 
+  out of bounds write. assert \valid(&(jogos + n_jogos)->golos2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:132: 
+  out of bounds write.
+  assert \valid(&(equipas + (int)(i - 1))->n_jogos_ganhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:134: 
+  out of bounds write.
+  assert \valid(&(equipas + (int)(j - 1))->n_jogos_ganhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:148: 
+  accessing uninitialized left-value.
+  assert \initialized(&(jogos + i)->golos2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:148: 
+  accessing uninitialized left-value.
+  assert \initialized(&(jogos + i)->equipa2.nome_equipa);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:148: 
+  accessing uninitialized left-value.
+  assert \initialized(&(jogos + i)->equipa1.nome_equipa);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:148: 
+  out of bounds read. assert \valid_read(&(jogos + i)->golos2);
+[eva] using specification for function printf_va_6
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:148: 
+  function printf_va_6: precondition valid_read_string(param1) got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:148: 
+  function printf_va_6: precondition valid_read_string(param2) got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:148: 
+  function printf_va_6: precondition valid_read_string(param3) got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:147: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:161: 
+  accessing uninitialized left-value.
+  assert \initialized(&(jogos + (int)(i - 1))->golos2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:161: 
+  accessing uninitialized left-value.
+  assert \initialized(&(jogos + (int)(i - 1))->equipa2.nome_equipa);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:161: 
+  accessing uninitialized left-value.
+  assert \initialized(&(jogos + (int)(i - 1))->equipa1.nome_equipa);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:161: 
+  out of bounds read. assert \valid_read(&(jogos + (int)(i - 1))->golos2);
+[eva] using specification for function printf_va_7
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:161: 
+  function printf_va_7: precondition valid_read_string(param1) got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:161: 
+  function printf_va_7: precondition valid_read_string(param2) got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:161: 
+  function printf_va_7: precondition valid_read_string(param3) got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:174: 
+  accessing uninitialized left-value.
+  assert \initialized(&(jogos + (int)(j - 1))->golos1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:174: 
+  accessing uninitialized left-value.
+  assert \initialized(&(jogos + (int)(j - 1))->golos2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:174: 
+  out of bounds read. assert \valid_read(&(jogos + (int)(j - 1))->golos1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:174: 
+  out of bounds read. assert \valid_read(&(jogos + (int)(j - 1))->golos2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:175: 
+  accessing uninitialized left-value.
+  assert \initialized(&(jogos + (int)(j - 1))->equipa1.id);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:175: 
+  out of bounds write.
+  assert
+  \valid(&(equipas + (jogos + (int)(j - 1))->equipa1.id)->n_jogos_ganhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:175: 
+  accessing uninitialized left-value.
+  assert
+  \initialized(&(equipas + (jogos + (int)(j - 1))->equipa1.id)->n_jogos_ganhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:177: 
+  accessing uninitialized left-value.
+  assert \initialized(&(jogos + (int)(j - 1))->equipa2.id);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:177: 
+  out of bounds write.
+  assert
+  \valid(&(equipas + (jogos + (int)(j - 1))->equipa2.id)->n_jogos_ganhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:177: 
+  accessing uninitialized left-value.
+  assert
+  \initialized(&(equipas + (jogos + (int)(j - 1))->equipa2.id)->n_jogos_ganhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:203: 
+  accessing uninitialized left-value.
+  assert \initialized(&(jogos + (int)(i - 1))->golos2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:203: 
+  accessing uninitialized left-value.
+  assert \initialized(&(jogos + (int)(i - 1))->golos1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:203: 
+  out of bounds read. assert \valid_read(&(jogos + (int)(i - 1))->golos2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:203: 
+  out of bounds read. assert \valid_read(&(jogos + (int)(i - 1))->golos1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:205: 
+  accessing uninitialized left-value.
+  assert \initialized(&(jogos + (int)(i - 1))->equipa2.id);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:205: 
+  out of bounds write.
+  assert
+  \valid(&(equipas + (jogos + (int)(i - 1))->equipa2.id)->n_jogos_ganhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:205: 
+  accessing uninitialized left-value.
+  assert
+  \initialized(&(equipas + (jogos + (int)(i - 1))->equipa2.id)->n_jogos_ganhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:207: 
+  accessing uninitialized left-value.
+  assert \initialized(&(jogos + (int)(i - 1))->equipa1.id);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:207: 
+  out of bounds write.
+  assert
+  \valid(&(equipas + (jogos + (int)(i - 1))->equipa1.id)->n_jogos_ganhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:207: 
+  accessing uninitialized left-value.
+  assert
+  \initialized(&(equipas + (jogos + (int)(i - 1))->equipa1.id)->n_jogos_ganhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:209: 
+  accessing uninitialized left-value.
+  assert \initialized(&(jogos + (int)(i - 1))->golos1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:209: 
+  accessing uninitialized left-value.
+  assert \initialized(&(jogos + (int)(i - 1))->golos2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:209: 
+  out of bounds read. assert \valid_read(&(jogos + (int)(i - 1))->golos1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:209: 
+  out of bounds read. assert \valid_read(&(jogos + (int)(i - 1))->golos2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:211: 
+  accessing uninitialized left-value.
+  assert \initialized(&(jogos + (int)(i - 1))->equipa1.id);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:211: 
+  out of bounds write.
+  assert
+  \valid(&(equipas + (jogos + (int)(i - 1))->equipa1.id)->n_jogos_ganhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:211: 
+  accessing uninitialized left-value.
+  assert
+  \initialized(&(equipas + (jogos + (int)(i - 1))->equipa1.id)->n_jogos_ganhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:213: 
+  accessing uninitialized left-value.
+  assert \initialized(&(jogos + (int)(i - 1))->equipa2.id);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:213: 
+  out of bounds write.
+  assert
+  \valid(&(equipas + (jogos + (int)(i - 1))->equipa2.id)->n_jogos_ganhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:213: 
+  accessing uninitialized left-value.
+  assert
+  \initialized(&(equipas + (jogos + (int)(i - 1))->equipa2.id)->n_jogos_ganhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:216: 
+  out of bounds write. assert \valid(&(jogos + (int)(i - 1))->golos1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:252: 
+  accessing uninitialized left-value.
+  assert \initialized(&(equipas + (int)(i - 1))->nome_equipa);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:252: 
+  out of bounds read.
+  assert \valid_read(&(equipas + (int)(i - 1))->nome_equipa);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:264: 
+  accessing uninitialized left-value.
+  assert \initialized(&(equipas + i)->n_jogos_ganhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:274: 
+  out of bounds read. assert \valid_read(equipas + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:123: 
+  signed overflow. assert n_jogos + 1 ≤ 2147483647;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:124: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:125: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:126: 
+  too many locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:126: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:127: 
+  too many locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:127: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:128: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:129: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:132: 
+  signed overflow.
+  assert (equipas + (int)(i - 1))->n_jogos_ganhos + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:134: 
+  signed overflow.
+  assert (equipas + (int)(j - 1))->n_jogos_ganhos + 1 ≤ 2147483647;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:126: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:127: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:128: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:129: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:148: 
+  accessing uninitialized left-value.
+  assert \initialized(&(jogos + i)->golos1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:148: 
+  accessing uninitialized left-value. assert \initialized(&(jogos + i)->nome);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:148: 
+  out of bounds read. assert \valid_read(&(jogos + i)->golos1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:148: 
+  out of bounds read. assert \valid_read(&(jogos + i)->equipa2.nome_equipa);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:148: 
+  out of bounds read. assert \valid_read(&(jogos + i)->equipa1.nome_equipa);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:148: 
+  out of bounds read. assert \valid_read(&(jogos + i)->nome);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:161: 
+  accessing uninitialized left-value.
+  assert \initialized(&(jogos + (int)(i - 1))->golos1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:161: 
+  accessing uninitialized left-value.
+  assert \initialized(&(jogos + (int)(i - 1))->nome);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:161: 
+  out of bounds read. assert \valid_read(&(jogos + (int)(i - 1))->golos1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:161: 
+  out of bounds read.
+  assert \valid_read(&(jogos + (int)(i - 1))->equipa2.nome_equipa);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:161: 
+  out of bounds read.
+  assert \valid_read(&(jogos + (int)(i - 1))->equipa1.nome_equipa);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:161: 
+  out of bounds read. assert \valid_read(&(jogos + (int)(i - 1))->nome);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:175: 
+  out of bounds read. assert \valid_read(&(jogos + (int)(j - 1))->equipa1.id);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:176: 
+  accessing uninitialized left-value.
+  assert \initialized(&(jogos + (int)(j - 1))->golos1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:176: 
+  accessing uninitialized left-value.
+  assert \initialized(&(jogos + (int)(j - 1))->golos2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:176: 
+  out of bounds read. assert \valid_read(&(jogos + (int)(j - 1))->golos1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:176: 
+  out of bounds read. assert \valid_read(&(jogos + (int)(j - 1))->golos2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:177: 
+  out of bounds read. assert \valid_read(&(jogos + (int)(j - 1))->equipa2.id);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:180: 
+  out of bounds write. assert \valid(jogos + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:180: 
+  out of bounds read. assert \valid_read(jogos + (int)(i + 1));
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:179: 
+  starting to merge loop iterations
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:180: 
+  too many locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:180: 
+  Assigning imprecise value to *(jogos + i)
+  (pointing to __malloc_can_fail_malloc_l11 with offsets {0};
+  __realloc_w_can_fail_realloc_l25_0 with offsets [0..1099511626240],0%512).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:180}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:204: 
+  accessing uninitialized left-value.
+  assert \initialized(&(jogos + (int)(i - 1))->golos2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:204: 
+  accessing uninitialized left-value.
+  assert \initialized(&(jogos + (int)(i - 1))->golos1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:204: 
+  out of bounds read. assert \valid_read(&(jogos + (int)(i - 1))->golos2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:204: 
+  out of bounds read. assert \valid_read(&(jogos + (int)(i - 1))->golos1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:205: 
+  out of bounds read. assert \valid_read(&(jogos + (int)(i - 1))->equipa2.id);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:207: 
+  out of bounds read. assert \valid_read(&(jogos + (int)(i - 1))->equipa1.id);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:207: 
+  signed overflow.
+  assert
+  (equipas + (jogos + (int)(i - 1))->equipa1.id)->n_jogos_ganhos + 1 ≤
+  2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:210: 
+  accessing uninitialized left-value.
+  assert \initialized(&(jogos + (int)(i - 1))->golos1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:210: 
+  accessing uninitialized left-value.
+  assert \initialized(&(jogos + (int)(i - 1))->golos2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:210: 
+  out of bounds read. assert \valid_read(&(jogos + (int)(i - 1))->golos1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:210: 
+  out of bounds read. assert \valid_read(&(jogos + (int)(i - 1))->golos2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:211: 
+  out of bounds read. assert \valid_read(&(jogos + (int)(i - 1))->equipa1.id);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:213: 
+  out of bounds read. assert \valid_read(&(jogos + (int)(i - 1))->equipa2.id);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:213: 
+  signed overflow.
+  assert
+  (equipas + (jogos + (int)(i - 1))->equipa2.id)->n_jogos_ganhos + 1 ≤
+  2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:217: 
+  out of bounds write. assert \valid(&(jogos + (int)(i - 1))->golos2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:231: 
+  signed overflow. assert n_equipas + 1 ≤ 2147483647;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:233: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:234: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:236: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:233: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:236: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:264: 
+  out of bounds read. assert \valid_read(&(equipas + i)->n_jogos_ganhos);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:126: 
+  Assigning imprecise value to (jogos + n_jogos)->equipa1
+  (pointing to __realloc_w_can_fail_realloc_l25_0 with offsets [64..1099511626816],64%512).
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:234}
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:126: 
+  approximating value to write.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:127: 
+  Assigning imprecise value to (jogos + n_jogos)->equipa2
+  (pointing to __realloc_w_can_fail_realloc_l25_0 with offsets [256..1099511627008],256%512).
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:234}
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:127: 
+  approximating value to write.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:132: 
+  signed overflow.
+  assert -2147483648 ≤ (equipas + (int)(i - 1))->n_jogos_ganhos + 1;
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:132: 
+  Assigning imprecise value to (equipas + (i - 1))->n_jogos_ganhos
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets {128};
+  __realloc_w_can_fail_realloc_l25 with offsets [128..412316860160],128%192).
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:234}
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:132: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:134: 
+  signed overflow.
+  assert -2147483648 ≤ (equipas + (int)(j - 1))->n_jogos_ganhos + 1;
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:134: 
+  Assigning imprecise value to (equipas + (j - 1))->n_jogos_ganhos
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets {128};
+  __realloc_w_can_fail_realloc_l25 with offsets [128..412316860160],128%192).
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:234}
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:134: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:148: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:175: 
+  signed overflow.
+  assert
+  -2147483648 ≤
+  (equipas + (jogos + (int)(j - 1))->equipa1.id)->n_jogos_ganhos - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:175: 
+  signed overflow.
+  assert
+  (equipas + (jogos + (int)(j - 1))->equipa1.id)->n_jogos_ganhos - 1 ≤
+  2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:175: 
+  Assigning imprecise value to (equipas + (jogos + (j - 1))->equipa1.id)->n_jogos_ganhos
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets [0..160];
+  __realloc_w_can_fail_realloc_l25 with offsets [0..412316860192];
+  __malloc_w_can_fail_malloc_l11_3 with offsets [0..8160]).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:175}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:177: 
+  signed overflow.
+  assert
+  -2147483648 ≤
+  (equipas + (jogos + (int)(j - 1))->equipa2.id)->n_jogos_ganhos - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:177: 
+  signed overflow.
+  assert
+  (equipas + (jogos + (int)(j - 1))->equipa2.id)->n_jogos_ganhos - 1 ≤
+  2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:177: 
+  Assigning imprecise value to (equipas + (jogos + (j - 1))->equipa2.id)->n_jogos_ganhos
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets [0..160];
+  __realloc_w_can_fail_realloc_l25 with offsets [0..412316860192];
+  __malloc_w_can_fail_malloc_l11_3 with offsets [0..8160]).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:177}
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:180: 
+  Assigning imprecise value to *(jogos + i)
+  (pointing to __malloc_can_fail_malloc_l11 with offsets {0};
+  __realloc_w_can_fail_realloc_l25_0 with offsets [0..1099511626240],0%512).
+  The imprecision originates from Misaligned
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:175: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:177: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:205: 
+  signed overflow.
+  assert
+  -2147483648 ≤
+  (equipas + (jogos + (int)(i - 1))->equipa2.id)->n_jogos_ganhos - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:205: 
+  signed overflow.
+  assert
+  (equipas + (jogos + (int)(i - 1))->equipa2.id)->n_jogos_ganhos - 1 ≤
+  2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:205: 
+  Assigning imprecise value to (equipas + (jogos + (i - 1))->equipa2.id)->n_jogos_ganhos
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets [0..160];
+  __realloc_w_can_fail_realloc_l25 with offsets [0..412316860192];
+  __malloc_w_can_fail_malloc_l11_3 with offsets [0..8160]).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:205}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:207: 
+  signed overflow.
+  assert
+  -2147483648 ≤
+  (equipas + (jogos + (int)(i - 1))->equipa1.id)->n_jogos_ganhos + 1;
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:207: 
+  Assigning imprecise value to (equipas + (jogos + (i - 1))->equipa1.id)->n_jogos_ganhos
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets [0..160];
+  __realloc_w_can_fail_realloc_l25 with offsets [0..412316860192];
+  __malloc_w_can_fail_malloc_l11_3 with offsets [0..8160]).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:205}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:211: 
+  signed overflow.
+  assert
+  -2147483648 ≤
+  (equipas + (jogos + (int)(i - 1))->equipa1.id)->n_jogos_ganhos - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:211: 
+  signed overflow.
+  assert
+  (equipas + (jogos + (int)(i - 1))->equipa1.id)->n_jogos_ganhos - 1 ≤
+  2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:211: 
+  Assigning imprecise value to (equipas + (jogos + (i - 1))->equipa1.id)->n_jogos_ganhos
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets [0..160];
+  __realloc_w_can_fail_realloc_l25 with offsets [0..412316860192];
+  __malloc_w_can_fail_malloc_l11_3 with offsets [0..8160]).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:211}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:213: 
+  signed overflow.
+  assert
+  -2147483648 ≤
+  (equipas + (jogos + (int)(i - 1))->equipa2.id)->n_jogos_ganhos + 1;
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:213: 
+  Assigning imprecise value to (equipas + (jogos + (i - 1))->equipa2.id)->n_jogos_ganhos
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets [0..160];
+  __realloc_w_can_fail_realloc_l25 with offsets [0..412316860192];
+  __malloc_w_can_fail_malloc_l11_3 with offsets [0..8160]).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:211}
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:216: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:217: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:207: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:264: 
+  Assigning imprecise value to maior.
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:234}
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:274: 
+  Assigning imprecise value to *(melhores_equipas + (cont - 1))
+  (pointing to __realloc_w_can_fail_realloc_l25_1 with offsets {0}).
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:233}
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:274: 
+  Assigning imprecise value to *(melhores_equipas + (cont - 1))
+  (pointing to __realloc_w_can_fail_realloc_l25_1 with offsets {0; 192}).
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:234}
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:274: 
+  Assigning imprecise value to *(melhores_equipas + (cont - 1))
+  (pointing to __realloc_w_can_fail_realloc_l25_1 with offsets {0; 192; 384}).
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:234}
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:274: 
+  Assigning imprecise value to *(melhores_equipas + (cont - 1))
+  (pointing to __realloc_w_can_fail_realloc_l25_1 with offsets {0; 192; 384;
+                                                                576}).
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:234}
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:274: 
+  Assigning imprecise value to *(melhores_equipas + (cont - 1))
+  (pointing to __realloc_w_can_fail_realloc_l25_1 with offsets {0; 192; 384;
+                                                                576; 768}).
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:234}
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:274: 
+  Assigning imprecise value to *(melhores_equipas + (cont - 1))
+  (pointing to __realloc_w_can_fail_realloc_l25_1 with offsets [0..412316860032],0%192).
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:234}
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:126: 
+  Assigning imprecise value to (jogos + n_jogos)->equipa1
+  (pointing to __realloc_w_can_fail_realloc_l25_0 with offsets [64..1099511626816],64%512).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:127: 
+  Assigning imprecise value to (jogos + n_jogos)->equipa2
+  (pointing to __realloc_w_can_fail_realloc_l25_0 with offsets [256..1099511627008],256%512).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:132: 
+  Assigning imprecise value to (equipas + (i - 1))->n_jogos_ganhos
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets {128};
+  __realloc_w_can_fail_realloc_l25 with offsets [128..412316860160],128%192).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:134: 
+  Assigning imprecise value to (equipas + (j - 1))->n_jogos_ganhos
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets {128};
+  __realloc_w_can_fail_realloc_l25 with offsets [128..412316860160],128%192).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:175: 
+  Assigning imprecise value to (equipas + (jogos + (j - 1))->equipa1.id)->n_jogos_ganhos
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets [0..160];
+  __realloc_w_can_fail_realloc_l25 with offsets [0..412316860192];
+  __malloc_w_can_fail_malloc_l11_3 with offsets [0..8160]).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:177: 
+  Assigning imprecise value to (equipas + (jogos + (j - 1))->equipa2.id)->n_jogos_ganhos
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets [0..160];
+  __realloc_w_can_fail_realloc_l25 with offsets [0..412316860192];
+  __malloc_w_can_fail_malloc_l11_3 with offsets [0..8160]).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:179: 
+  signed overflow. assert -2147483648 ≤ n_jogos - 1;
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:205: 
+  Assigning imprecise value to (equipas + (jogos + (i - 1))->equipa2.id)->n_jogos_ganhos
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets [0..160];
+  __realloc_w_can_fail_realloc_l25 with offsets [0..412316860192];
+  __malloc_w_can_fail_malloc_l11_3 with offsets [0..8160]).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:207: 
+  Assigning imprecise value to (equipas + (jogos + (i - 1))->equipa1.id)->n_jogos_ganhos
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets [0..160];
+  __realloc_w_can_fail_realloc_l25 with offsets [0..412316860192];
+  __malloc_w_can_fail_malloc_l11_3 with offsets [0..8160]).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:211: 
+  Assigning imprecise value to (equipas + (jogos + (i - 1))->equipa1.id)->n_jogos_ganhos
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets [0..160];
+  __realloc_w_can_fail_realloc_l25 with offsets [0..412316860192];
+  __malloc_w_can_fail_malloc_l11_3 with offsets [0..8160]).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:213: 
+  Assigning imprecise value to (equipas + (jogos + (i - 1))->equipa2.id)->n_jogos_ganhos
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets [0..160];
+  __realloc_w_can_fail_realloc_l25 with offsets [0..412316860192];
+  __malloc_w_can_fail_malloc_l11_3 with offsets [0..8160]).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:264: 
+  Assigning imprecise value to maior.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:274: 
+  Assigning imprecise value to *(melhores_equipas + (cont - 1))
+  (pointing to __realloc_w_can_fail_realloc_l25_1 with offsets {0}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:274: 
+  Assigning imprecise value to *(melhores_equipas + (cont - 1))
+  (pointing to __realloc_w_can_fail_realloc_l25_1 with offsets {0; 192}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:274: 
+  Assigning imprecise value to *(melhores_equipas + (cont - 1))
+  (pointing to __realloc_w_can_fail_realloc_l25_1 with offsets {0; 192; 384}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:274: 
+  Assigning imprecise value to *(melhores_equipas + (cont - 1))
+  (pointing to __realloc_w_can_fail_realloc_l25_1 with offsets {0; 192; 384;
+                                                                576}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:274: 
+  Assigning imprecise value to *(melhores_equipas + (cont - 1))
+  (pointing to __realloc_w_can_fail_realloc_l25_1 with offsets {0; 192; 384;
+                                                                576; 768}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:274: 
+  Assigning imprecise value to *(melhores_equipas + (cont - 1))
+  (pointing to __realloc_w_can_fail_realloc_l25_1 with offsets [0..412316860032],0%192).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:282: 
+  Assigning imprecise value to aux.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:283: 
+  Assigning imprecise value to *(melhores_equipas + i)
+  (pointing to __realloc_w_can_fail_realloc_l25_1 with offsets {0}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:284: 
+  Assigning imprecise value to *(melhores_equipas + (i + 1))
+  (pointing to __realloc_w_can_fail_realloc_l25_1 with offsets {192}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:283: 
+  Assigning imprecise value to *(melhores_equipas + i)
+  (pointing to __realloc_w_can_fail_realloc_l25_1 with offsets {0; 192}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:284: 
+  Assigning imprecise value to *(melhores_equipas + (i + 1))
+  (pointing to __realloc_w_can_fail_realloc_l25_1 with offsets {192; 384}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:283: 
+  Assigning imprecise value to *(melhores_equipas + i)
+  (pointing to __realloc_w_can_fail_realloc_l25_1 with offsets {0; 192; 384}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:284: 
+  Assigning imprecise value to *(melhores_equipas + (i + 1))
+  (pointing to __realloc_w_can_fail_realloc_l25_1 with offsets {192; 384; 576}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:283: 
+  Assigning imprecise value to *(melhores_equipas + i)
+  (pointing to __realloc_w_can_fail_realloc_l25_1 with offsets [0..412316859840],0%192).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:284: 
+  Assigning imprecise value to *(melhores_equipas + (i + 1))
+  (pointing to __realloc_w_can_fail_realloc_l25_1 with offsets [192..412316860032],0%192).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:48: 
+  accessing uninitialized left-value. assert \initialized(&(jogos + i)->nome);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:48: 
+  out of bounds read. assert \valid_read(&(jogos + i)->nome);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:48: 
+  function free: precondition 'freeable' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:47: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:48: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(jogos + i)->nome);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:52: 
+  accessing uninitialized left-value.
+  assert \initialized(&(equipas + i)->nome_equipa);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:52: 
+  out of bounds read. assert \valid_read(&(equipas + i)->nome_equipa);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:52: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(equipas + i)->nome_equipa);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:52: 
+  function free: precondition 'freeable' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/38/Projeto2.7IAED.c:51: 
+  starting to merge loop iterations
+[eva] done for function main
+[scope:rm_asserts] removing 14 assertion(s)
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function lista_jogos:
+  i ∈ [0..2147483647]
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                   __malloc_w_can_fail_malloc_l11_3}
+                (origin: Misaligned) }}
+               [1] ∈ [--..--]
+[eva:final-states] Values at end of function le_input:
+  input[0] ∈ [--..--]
+       [1..3084] ∈ UNINITIALIZED
+  name[0] ∈ [--..--]
+      [1..1023] ∈ UNINITIALIZED
+  name[0] ∈ [--..--]
+      [1..1023] ∈ UNINITIALIZED
+  input[0] ∈ [--..--]
+       [1..3084] ∈ UNINITIALIZED
+  team_name[0] ∈ [--..--]
+           [1..1023] ∈ UNINITIALIZED
+  team_name[0] ∈ [--..--]
+           [1..1023] ∈ UNINITIALIZED
+  S___fc_stdin[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function termina_sistema:
+  jogos ∈
+       {{ NULL ; (jogo *)&__malloc_can_fail_malloc_l11 ;
+          (jogo *)&__realloc_w_can_fail_realloc_l25_0 }} or ESCAPINGADDR
+  equipas ∈
+         {{ NULL ; (equipa *)&__malloc_can_fail_malloc_l11_0 ;
+            (equipa *)&__realloc_w_can_fail_realloc_l25 }} or ESCAPINGADDR
+  i ∈ [0..2147483647]
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                   __malloc_w_can_fail_malloc_l11_3}
+                (origin: Misaligned) }} or ESCAPINGADDR
+               [1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11[0..63] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                  __malloc_w_can_fail_malloc_l11_3}
+                               (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_can_fail_malloc_l11_0[0..23] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __realloc_w_can_fail_realloc_l25[0..51539607527] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __realloc_w_can_fail_realloc_l25_0[0..137438953351] ∈
+                                    {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                        __malloc_w_can_fail_malloc_l11_3}
+                                     (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+                                    [137438953352..137438953399] ∈
+                                    {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+                                     (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+                                    [137438953400..137438953407] ∈
+                                    [--..--] or UNINITIALIZED
+                                    [137438953408..18446744073709551551] ∈
+                                    UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_3[0..1023] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __realloc_w_can_fail_realloc_l25_1[0..51539607527] ∈
+                                    {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+                                     (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+[eva:final-states] Values at end of function can_fail_malloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈
+          {{ NULL ; (void *)&__malloc_can_fail_malloc_l11 ;
+             (void *)&__malloc_can_fail_malloc_l11_0 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_1 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_2 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_3 }}
+[eva:final-states] Values at end of function can_fail_realloc:
+  __fc_random_counter ∈ [--..--]
+  ptr ∈
+     {{ NULL ; (void *)&__malloc_can_fail_malloc_l11 ;
+        (void *)&__malloc_can_fail_malloc_l11_0 ;
+        (void *)&__realloc_w_can_fail_realloc_l25 ;
+        (void *)&__malloc_w_can_fail_malloc_l11_2 ;
+        (void *)&__realloc_w_can_fail_realloc_l25_0 ;
+        (void *)&__realloc_w_can_fail_realloc_l25_1 }} or ESCAPINGADDR
+  fail ∈ [0. .. 1.]
+  jogos ∈
+       {{ NULL ; (jogo *)&__malloc_can_fail_malloc_l11 ;
+          (jogo *)&__realloc_w_can_fail_realloc_l25_0 }} or ESCAPINGADDR
+  equipas ∈
+         {{ NULL ; (equipa *)&__malloc_can_fail_malloc_l11_0 ;
+            (equipa *)&__realloc_w_can_fail_realloc_l25 }} or ESCAPINGADDR
+  melhores_equipas ∈
+                  {{ NULL ; (equipa *)&__malloc_w_can_fail_malloc_l11_2 ;
+                     (equipa *)&__realloc_w_can_fail_realloc_l25_1 }} or ESCAPINGADDR
+  __retres ∈
+          {{ NULL ; (void *)&__realloc_w_can_fail_realloc_l25 ;
+             (void *)&__realloc_w_can_fail_realloc_l25_0 ;
+             (void *)&__realloc_w_can_fail_realloc_l25_1 }}
+[eva:final-states] Values at end of function inicializa_sistema:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  jogos ∈ {{ NULL ; (jogo *)&__malloc_can_fail_malloc_l11 }}
+  equipas ∈ {{ NULL ; (equipa *)&__malloc_can_fail_malloc_l11_0 }}
+[eva:final-states] Values at end of function lista_melhores_equipas:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  i ∈ [0..2147483647]
+  maior ∈
+       {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+        (origin: Misaligned) }}
+  cont ∈ [0..2147483647]
+  finish ∈ {1}
+  melhores_equipas ∈
+                  {{ NULL ; (equipa *)&__malloc_w_can_fail_malloc_l11_2 ;
+                     (equipa *)&__realloc_w_can_fail_realloc_l25_1 }} or ESCAPINGADDR
+  aux ∈
+     {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+      (origin: Misaligned) }} or UNINITIALIZED
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                   __malloc_w_can_fail_malloc_l11_3}
+                (origin: Misaligned) }}
+               [1] ∈ [--..--]
+  __realloc_w_can_fail_realloc_l25_1[0..51539607527] ∈
+                                    {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+                                     (origin: Misaligned) }} or UNINITIALIZED
+[eva:final-states] Values at end of function verifica_equipa:
+  i ∈ [0..2147483647]
+  __retres ∈ [0..2147483647]
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                   __malloc_w_can_fail_malloc_l11_3}
+                (origin: Misaligned) }}
+               [1] ∈ [--..--]
+[eva:final-states] Values at end of function cria_equipa:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  n_equipas ∈ [0..2147483647]
+  equipas ∈
+         {{ NULL ; (equipa *)&__malloc_can_fail_malloc_l11_0 ;
+            (equipa *)&__realloc_w_can_fail_realloc_l25 }}
+  team_name[0] ∈ [--..--]
+           [1..1023] ∈ UNINITIALIZED
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                   __malloc_w_can_fail_malloc_l11_3}
+                (origin: Misaligned) }}
+               [1] ∈ [--..--]
+  __realloc_w_can_fail_realloc_l25[0..51539607527] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_1 ∈ [--..--] or UNINITIALIZED
+[eva:final-states] Values at end of function lista_equipa:
+  i ∈ [0..2147483647]
+  team_name[0] ∈ [--..--]
+           [1..1023] ∈ UNINITIALIZED
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                   __malloc_w_can_fail_malloc_l11_3}
+                (origin: Misaligned) }}
+               [1] ∈ [--..--]
+[eva:final-states] Values at end of function verifica_jogo:
+  i ∈ [0..2147483647]
+  __retres ∈ [0..2147483647]
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                   __malloc_w_can_fail_malloc_l11_3}
+                (origin: Misaligned) }}
+               [1] ∈ [--..--]
+[eva:final-states] Values at end of function altera_resultado:
+  __fc_strtok_ptr ∈
+                 {{ garbled mix of &{input}
+                  (origin: Library function) }} or ESCAPINGADDR
+  i ∈ [0..2147483647]
+  score1 ∈ [--..--]
+  score2 ∈ [--..--]
+  name[0..1023] ∈ [--..--] or UNINITIALIZED
+  input[0] ∈ [--..--]
+       [1..3084] ∈ [--..--] or UNINITIALIZED
+  palavra ∈ {{ &input + [0..3084] }}
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                   __malloc_w_can_fail_malloc_l11_3}
+                (origin: Misaligned) }}
+               [1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11[0..63] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                  __malloc_w_can_fail_malloc_l11_3}
+                               (origin: Misaligned) }} or UNINITIALIZED
+  __malloc_can_fail_malloc_l11_0[0..23] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+                                 (origin: Misaligned) }} or UNINITIALIZED
+  __realloc_w_can_fail_realloc_l25[0..51539607527] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+  __realloc_w_can_fail_realloc_l25_0[0..137438953351] ∈
+                                    {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                        __malloc_w_can_fail_malloc_l11_3}
+                                     (origin: Misaligned) }} or UNINITIALIZED
+                                    [137438953352..137438953399] ∈
+                                    {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+                                     (origin: Misaligned) }} or UNINITIALIZED
+                                    [137438953400..137438953407] ∈
+                                    [--..--] or UNINITIALIZED
+                                    [137438953408..18446744073709551551] ∈
+                                    UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_3[0..1023] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+[eva:final-states] Values at end of function apaga_jogo:
+  n_jogos ∈ [--..--]
+  i ∈ [0..2147483647] or UNINITIALIZED
+  j ∈ [0..2147483647]
+  name[0] ∈ [--..--]
+      [1..1023] ∈ UNINITIALIZED
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                   __malloc_w_can_fail_malloc_l11_3}
+                (origin: Misaligned) }}
+               [1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11[0..63] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                  __malloc_w_can_fail_malloc_l11_3}
+                               (origin: Misaligned) }} or UNINITIALIZED
+  __malloc_can_fail_malloc_l11_0[0..23] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+                                 (origin: Misaligned) }} or UNINITIALIZED
+  __realloc_w_can_fail_realloc_l25[0..51539607527] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+  __realloc_w_can_fail_realloc_l25_0[0..137438953351] ∈
+                                    {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                        __malloc_w_can_fail_malloc_l11_3}
+                                     (origin: Misaligned) }} or UNINITIALIZED
+                                    [137438953352..137438953399] ∈
+                                    {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+                                     (origin: Misaligned) }} or UNINITIALIZED
+                                    [137438953400..137438953407] ∈
+                                    [--..--] or UNINITIALIZED
+                                    [137438953408..18446744073709551551] ∈
+                                    UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_3[0..1023] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+[eva:final-states] Values at end of function cria_jogo:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  __fc_strtok_ptr ∈
+                 {{ garbled mix of &{input}
+                  (origin: Library function) }} or ESCAPINGADDR
+  n_jogos ∈ [--..--]
+  jogos ∈
+       {{ NULL ; (jogo *)&__malloc_can_fail_malloc_l11 ;
+          (jogo *)&__realloc_w_can_fail_realloc_l25_0 }}
+  input[0] ∈ [--..--]
+       [1..3084] ∈ [--..--] or UNINITIALIZED
+  name[0..1023] ∈ [--..--] or UNINITIALIZED
+  nome_equipa1[0..1023] ∈ [--..--] or UNINITIALIZED
+  nome_equipa2[0..1023] ∈ [--..--] or UNINITIALIZED
+  palavra ∈ {0}
+  score1 ∈ [--..--] or UNINITIALIZED
+  score2 ∈ [--..--] or UNINITIALIZED
+  i ∈ [0..2147483647]
+  j ∈ [0..2147483647]
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                   __malloc_w_can_fail_malloc_l11_3}
+                (origin: Misaligned) }}
+               [1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11_0[0..23] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+                                 (origin: Misaligned) }} or UNINITIALIZED
+  __realloc_w_can_fail_realloc_l25[0..51539607527] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_1 ∈ [--..--] or UNINITIALIZED
+  __realloc_w_can_fail_realloc_l25_0[0..137438953351] ∈
+                                    {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                        __malloc_w_can_fail_malloc_l11_3}
+                                     (origin: Misaligned) }} or UNINITIALIZED
+                                    [137438953352..137438953399] ∈
+                                    {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+                                     (origin: Misaligned) }} or UNINITIALIZED
+                                    [137438953400..137438953407] ∈
+                                    [--..--] or UNINITIALIZED
+                                    [137438953408..18446744073709551551] ∈
+                                    UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_3[0..1023] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+[eva:final-states] Values at end of function lista_jogo:
+  i ∈ [0..2147483647]
+  name[0] ∈ [--..--]
+      [1..1023] ∈ UNINITIALIZED
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                   __malloc_w_can_fail_malloc_l11_3}
+                (origin: Misaligned) }}
+               [1] ∈ [--..--]
+[eva:final-states] Values at end of function main:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  __fc_strtok_ptr ∈ [--..--] or ESCAPINGADDR
+  nl ∈ [1. .. 10000000000.]
+  n_jogos ∈ [--..--]
+  n_equipas ∈ [0..2147483647]
+  jogos ∈
+       {{ NULL ; (jogo *)&__malloc_can_fail_malloc_l11 ;
+          (jogo *)&__realloc_w_can_fail_realloc_l25_0 }} or ESCAPINGADDR
+  equipas ∈
+         {{ NULL ; (equipa *)&__malloc_can_fail_malloc_l11_0 ;
+            (equipa *)&__realloc_w_can_fail_realloc_l25 }} or ESCAPINGADDR
+  comando ∈ {0; 120}
+  __retres ∈ {0}
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                   __malloc_w_can_fail_malloc_l11_3}
+                (origin: Misaligned) }} or ESCAPINGADDR
+               [1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11[0..63] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                  __malloc_w_can_fail_malloc_l11_3}
+                               (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_can_fail_malloc_l11_0[0..23] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __realloc_w_can_fail_realloc_l25[0..51539607527] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_1 ∈ [--..--] or UNINITIALIZED
+  __realloc_w_can_fail_realloc_l25_0[0..137438953351] ∈
+                                    {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                        __malloc_w_can_fail_malloc_l11_3}
+                                     (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+                                    [137438953352..137438953399] ∈
+                                    {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+                                     (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+                                    [137438953400..137438953407] ∈
+                                    [--..--] or UNINITIALIZED
+                                    [137438953408..18446744073709551551] ∈
+                                    UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_3[0..1023] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __realloc_w_can_fail_realloc_l25_1[0..51539607527] ∈
+                                    {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+                                     (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  16 functions analyzed (out of 17): 94% coverage.
+  In these functions, 261 statements reached (out of 261): 100% coverage.
+  ----------------------------------------------------------------------------
+  No errors or warnings raised during the analysis.
+  ----------------------------------------------------------------------------
+  146 alarms generated by the analysis:
+      70 invalid memory accesses
+      52 accesses to uninitialized left-values
+      21 integer overflows
+       2 escaping addresses
+       1 other
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     0 unknown     0 invalid      0 total
+    Preconditions    35 valid    39 unknown     0 invalid     74 total
+  47% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[report] Classification
+[report] Output /home/fmarques/sbugs/projects/outputs/framaC/iaed_p2/38/errors.json
+[report] Reviews     :  149
+[report] Unclassified:  149

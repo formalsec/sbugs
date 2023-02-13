@@ -1,0 +1,1303 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  SOURCE ∈ {0}
+  SINK ∈ {0}
+  to_string_temp[0..49] ∈ {0}
+[eva] using specification for function scanf_va_1
+[eva] using specification for function perror
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:181: 
+  signed overflow. assert n_processes + 2 ≤ 2147483647;
+[eva] using specification for function time
+[eva] using specification for function srand
+[eva] using specification for function rand
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_0
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:187: 
+  out of bounds write. assert \valid(&(graph + SOURCE)->capacities);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:188: 
+  out of bounds write. assert \valid(&(graph + SOURCE)->visited);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:191: 
+  out of bounds write. assert \valid(&(graph + SINK)->capacities);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:191: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:192: 
+  out of bounds write. assert \valid(&(graph + SINK)->visited);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:192: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva] using specification for function scanf_va_2
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:200: 
+  out of bounds write. assert \valid(&(graph + i)->capacities);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:201: 
+  out of bounds write. assert \valid(&(graph + i)->visited);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:204: 
+  out of bounds read. assert \valid_read(&(graph + i)->capacities);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:204: 
+  out of bounds write. assert \valid(&((graph + i)->capacities + j)->capacity);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:203: 
+  starting to merge loop iterations
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:204: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:89: 
+  out of bounds read. assert \valid_read(&(graph + u)->capacities);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:89: 
+  accessing uninitialized left-value.
+  assert \initialized(&((graph + u)->capacities + v)->capacity);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:89: 
+  out of bounds read.
+  assert \valid_read(&((graph + u)->capacities + v)->capacity);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:81: 
+  out of bounds read. assert \valid_read(&(graph + u)->capacities);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:82: 
+  out of bounds write. assert \valid(&new_head->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:82: 
+  accessing uninitialized left-value.
+  assert \initialized(&(graph + u)->connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:82: 
+  out of bounds read. assert \valid_read(&(graph + u)->connections);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:82: 
+  more than 200(2147483645) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:83: 
+  out of bounds write. assert \valid(&new_head->v);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:83: 
+  more than 200(2147483645) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:82: 
+  more than 200(2147483645) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:83: 
+  more than 200(2147483645) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:90: 
+  out of bounds write. assert \valid(&(graph + u)->connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:93: 
+  out of bounds read. assert \valid_read(&(graph + u)->capacities);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:93: 
+  out of bounds write. assert \valid(&((graph + u)->capacities + v)->capacity);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:93: 
+  more than 200(2147483645) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:89: 
+  more than 200(2147483645) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:93: 
+  accessing uninitialized left-value.
+  assert \initialized(&(graph + u)->capacities);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:195: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:204: 
+  accessing uninitialized left-value.
+  assert \initialized(&(graph + i)->capacities);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:89: 
+  accessing uninitialized left-value.
+  assert \initialized(&(graph + u)->capacities);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:81: 
+  accessing uninitialized left-value.
+  assert \initialized(&(graph + u)->capacities);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:200: 
+  more than 200(2147483645) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:201: 
+  more than 200(2147483645) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:81: 
+  more than 200(2147483645) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:90: 
+  more than 200(2147483645) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:93: 
+  more than 200(4294967291) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:93: 
+  more than 200(4294967291) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:93: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:93: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:204: 
+  more than 200(4294967293) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:82: 
+  more than 200(4294967291) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:83: 
+  more than 200(4294967291) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:82: 
+  more than 200(4294967291) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:83: 
+  more than 200(4294967291) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:93: 
+  more than 200(6442450937) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:93: 
+  more than 200(6442450937) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:93: 
+  more than 200(4294967293) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:93: 
+  more than 200(4294967293) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:204: 
+  more than 200(768614336404564651) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:82: 
+  more than 200(768614336404564648) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:83: 
+  more than 200(768614336404564648) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:82: 
+  more than 200(768614336404564648) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:83: 
+  more than 200(768614336404564648) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:93: 
+  more than 200(768614336404564649) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:89: 
+  more than 200(768614336404564649) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:93: 
+  more than 200(768614336404564651) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:93: 
+  more than 200(768614336404564651) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:93: 
+  more than 200(768614336404564650) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:93: 
+  more than 200(768614336404564650) elements to enumerate. Approximating.
+[eva] using specification for function scanf_va_3
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:82: 
+  more than 200(2147483648) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:82: 
+  more than 200(768614336404564650) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:83: 
+  more than 200(2147483648) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:83: 
+  more than 200(768614336404564650) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:81: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:82: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:82: 
+  more than 200(768614336404564650) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:83: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:83: 
+  more than 200(768614336404564650) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:90: 
+  more than 200(2147483648) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:93: 
+  more than 200(4294967295) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:89: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:93: 
+  more than 200(4294967295) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:82: 
+  more than 200(4294967295) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:83: 
+  more than 200(4294967295) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:82: 
+  more than 200(4294967295) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:83: 
+  more than 200(4294967295) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:93: 
+  more than 200(6442450942) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:93: 
+  more than 200(6442450942) elements to enumerate. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:215: 
+  starting to merge loop iterations
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:82: 
+  more than 200(6442450942) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:83: 
+  more than 200(6442450942) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:82: 
+  more than 200(6442450942) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:83: 
+  more than 200(6442450942) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:93: 
+  more than 200(8589934589) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:93: 
+  more than 200(8589934589) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:82: 
+  more than 200(8589934589) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:83: 
+  more than 200(8589934589) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:82: 
+  more than 200(8589934589) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:83: 
+  more than 200(8589934589) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:93: 
+  more than 200(10737418236) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:93: 
+  more than 200(10737418236) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:82: 
+  more than 200(10737418236) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:83: 
+  more than 200(10737418236) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:82: 
+  more than 200(10737418236) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:83: 
+  more than 200(10737418236) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:93: 
+  more than 200(12884901883) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:93: 
+  more than 200(12884901883) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:82: 
+  more than 200(12884901883) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:83: 
+  more than 200(12884901883) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:82: 
+  more than 200(12884901883) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:83: 
+  more than 200(12884901883) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:93: 
+  more than 200(15032385530) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:93: 
+  more than 200(15032385530) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:82: 
+  more than 200(15032385530) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:83: 
+  more than 200(15032385530) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:82: 
+  more than 200(15032385530) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:83: 
+  more than 200(15032385530) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:93: 
+  more than 200(17179869177) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:93: 
+  more than 200(17179869177) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:82: 
+  more than 200(17179869177) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:83: 
+  more than 200(17179869177) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:82: 
+  more than 200(17179869177) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:83: 
+  more than 200(17179869177) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:93: 
+  more than 200(19327352824) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:93: 
+  more than 200(19327352824) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:82: 
+  more than 200(19327352824) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:83: 
+  more than 200(19327352824) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:82: 
+  more than 200(19327352824) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:83: 
+  more than 200(19327352824) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:93: 
+  more than 200(21474836471) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:93: 
+  more than 200(21474836471) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:82: 
+  more than 200(21474836471) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:83: 
+  more than 200(21474836471) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:82: 
+  more than 200(21474836471) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:83: 
+  more than 200(21474836471) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:93: 
+  more than 200(23622320118) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:93: 
+  more than 200(23622320118) elements to enumerate. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:61: 
+  out of bounds write. assert \valid(&new_next->n);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:118: 
+  out of bounds write.
+  assert \valid(&(graph + tmp)->visited);
+  (tmp from get(queue))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:118: 
+  out of bounds read.
+  assert \valid_read(&(graph + tmp)->visited);
+  (tmp from get(queue))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:124: 
+  accessing uninitialized left-value.
+  assert \initialized(&(graph + u)->connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:124: 
+  out of bounds read. assert \valid_read(&(graph + u)->connections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:125: 
+  pointer comparison. assert \pointer_comparable((void *)0, (void *)visiting);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:126: 
+  accessing uninitialized left-value. assert \initialized(&visiting->v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:126: 
+  out of bounds read. assert \valid_read(&visiting->v);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:126: 
+  Assigning imprecise value to v.
+  The imprecision originates from Merge
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:127: 
+  accessing uninitialized left-value. assert \initialized(&visiting->capacity);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:127: 
+  out of bounds read. assert \valid_read(&visiting->capacity);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:127: 
+  Assigning imprecise value to capacity.
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:83}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:128: 
+  accessing uninitialized left-value.
+  assert \initialized(&(graph + v)->visited);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:128: 
+  out of bounds read. assert \valid_read(&(graph + v)->visited);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:129: 
+  out of bounds write. assert \valid(&(graph + v)->visited);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:129: 
+  more than 200(2147483648) locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:37: 
+  Assigning imprecise value to __retres.
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:83}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:39: 
+  Assigning imprecise value to \result<min>.
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:83}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:130: 
+  Assigning imprecise value to tmp_1.
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:83}
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_4
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:62: 
+  Assigning imprecise value to new_next->max_capacity
+  (pointing to __malloc_can_fail_malloc_l11_4 with offsets {32}).
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:83}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:133: 
+  accessing uninitialized left-value. assert \initialized(&visiting->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:133: 
+  out of bounds read. assert \valid_read(&visiting->next);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:133: 
+  Assigning imprecise value to visiting.
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:83}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:125: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:126: 
+  Assigning imprecise value to v.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:126}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:127: 
+  Assigning imprecise value to capacity.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:127}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:37: 
+  Assigning imprecise value to __retres.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:127}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:39: 
+  Assigning imprecise value to \result<min>.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:127}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:130: 
+  Assigning imprecise value to tmp_1.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:127}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:62: 
+  Assigning imprecise value to new_next->max_capacity
+  (pointing to __malloc_w_can_fail_malloc_l11_4 with offsets {32}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:127}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:133: 
+  Assigning imprecise value to visiting.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:133}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:119: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:33: 
+  accessing uninitialized left-value. assert \initialized(&queue->n);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:124: 
+  Assigning imprecise value to visiting.
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:129}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:130: 
+  accessing uninitialized left-value.
+  assert \initialized(&queue->max_capacity);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:38: 
+  Assigning imprecise value to __retres.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:127}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:39: 
+  Assigning imprecise value to tmp.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:127}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:39: 
+  Assigning imprecise value to __retres.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:127}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:66: 
+  accessing uninitialized left-value. assert \initialized(&head->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:135: 
+  accessing uninitialized left-value. assert \initialized(&queue->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:142: 
+  accessing uninitialized left-value. assert \initialized(&path->max_capacity);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:142: 
+  Assigning imprecise value to flow.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:127}
+[eva] using specification for function sprintf_va_1
+[eva] using specification for function strcpy
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:144: 
+  function strcpy: precondition 'valid_string_src' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:144: 
+  function strcpy: precondition 'room_string' got status unknown.
+[eva] FRAMAC_SHARE/libc/string.h:373: 
+  cannot evaluate ACSL term, unsupported ACSL construct: logic function strcmp
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:145: 
+  accessing uninitialized left-value. assert \initialized(&path->pi);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:146: 
+  accessing uninitialized left-value. assert \initialized(&path->pi);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:76: 
+  accessing uninitialized left-value.
+  assert \initialized(&(graph + u)->capacities);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:76: 
+  out of bounds read. assert \valid_read(&(graph + u)->capacities);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:76: 
+  out of bounds write. assert \valid(&((graph + u)->capacities + v)->capacity);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:76: 
+  accessing uninitialized left-value.
+  assert \initialized(&((graph + u)->capacities + v)->capacity);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:76: 
+  signed overflow.
+  assert -2147483648 ≤ ((graph + u)->capacities + v)->capacity - flow;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:76: 
+  signed overflow.
+  assert ((graph + u)->capacities + v)->capacity - flow ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:76: 
+  Assigning imprecise value to ((graph + u)->capacities + v)->capacity
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets [0..147573952589676412832];
+   __malloc_can_fail_malloc_l11_1 with offsets [0..147573952589676412832];
+  __malloc_w_can_fail_malloc_l11_2 with offsets [0..147573952589676412832]).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:77: 
+  accessing uninitialized left-value.
+  assert \initialized(&(graph + v)->capacities);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:77: 
+  out of bounds read. assert \valid_read(&(graph + v)->capacities);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:77: 
+  out of bounds write. assert \valid(&((graph + v)->capacities + u)->capacity);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:77: 
+  accessing uninitialized left-value.
+  assert \initialized(&((graph + v)->capacities + u)->capacity);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:77: 
+  signed overflow.
+  assert -2147483648 ≤ ((graph + v)->capacities + u)->capacity + flow;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:77: 
+  signed overflow.
+  assert ((graph + v)->capacities + u)->capacity + flow ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:77: 
+  Assigning imprecise value to ((graph + v)->capacities + u)->capacity
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets [0..147573952589676412832];
+   __malloc_can_fail_malloc_l11_1 with offsets [0..147573952589676412832];
+  __malloc_w_can_fail_malloc_l11_2 with offsets [0..147573952589676412832]).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:148: 
+  accessing uninitialized left-value. assert \initialized(&path->pi);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:150: 
+  function strcpy: precondition 'valid_string_src' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:150: 
+  function strcpy: precondition 'room_string' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:151: 
+  function strcpy: precondition 'valid_string_src' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:151: 
+  function strcpy: precondition 'room_string' got status unknown.
+[eva] using specification for function strcat
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:152: 
+  function strcat: precondition 'valid_string_dest' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:152: 
+  function strcat: precondition 'room_string' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:153: 
+  function strcat: precondition 'valid_string_src' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:153: 
+  function strcat: precondition 'valid_string_dest' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:153: 
+  function strcat: precondition 'room_string' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:145: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:156: 
+  Assigning imprecise value to \result<maximize_flow>.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:127}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:166: 
+  Assigning imprecise value to tmp_1.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:127}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:166: 
+  signed overflow.
+  assert -2147483648 ≤ max_flow + tmp_1;
+  (tmp_1 from maximize_flow(graph, path))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:166: 
+  signed overflow.
+  assert max_flow + tmp_1 ≤ 2147483647;
+  (tmp_1 from maximize_flow(graph, path))
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:166: 
+  Assigning imprecise value to max_flow.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:127}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:43: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:44: 
+  accessing uninitialized left-value. assert \initialized(&head->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:46: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&new_head);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:44: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&head->next);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:161: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:126: 
+  Assigning imprecise value to v.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:127: 
+  Assigning imprecise value to capacity.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:37: 
+  Assigning imprecise value to __retres.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:39: 
+  Assigning imprecise value to \result<min>.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:130: 
+  Assigning imprecise value to tmp_1.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:62: 
+  Assigning imprecise value to new_next->max_capacity
+  (pointing to __malloc_w_can_fail_malloc_l11_4 with offsets {32}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:66: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&head->next);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:133: 
+  Assigning imprecise value to visiting.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:135: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&queue->next);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:38: 
+  Assigning imprecise value to __retres.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:39: 
+  Assigning imprecise value to tmp.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:39: 
+  Assigning imprecise value to __retres.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:142: 
+  Assigning imprecise value to flow.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:145: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&path->pi);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:146: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&path->pi);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:148: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&path->pi);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:156: 
+  Assigning imprecise value to \result<maximize_flow>.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:166: 
+  Assigning imprecise value to tmp_1.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:166: 
+  Assigning imprecise value to max_flow.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:118: 
+  signed overflow.
+  assert (graph + tmp)->visited + 1 ≤ 2147483647;
+  (tmp from get(queue))
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:169: 
+  Assigning imprecise value to \result<edmonds_karp>.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:225: 
+  Assigning imprecise value to tmp_2.
+  The imprecision originates from Misaligned
+[eva] using specification for function printf_va_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:54: 
+  out of bounds read. assert \valid_read(&(graph + i)->capacities);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:54: 
+  function free: precondition 'freeable' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:53: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:54: 
+  accessing uninitialized left-value.
+  assert \initialized(&(graph + i)->capacities);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:54: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(graph + i)->capacities);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:54: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:201: 
+  more than 200(2147483645) elements to enumerate. Approximating.
+[eva] done for function main
+[scope:rm_asserts] removing 4 assertion(s)
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function destroy_graph:
+  graph ∈ ESCAPINGADDR
+  i ∈ [1..2147483647]
+  graph ∈ ESCAPINGADDR
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                   __malloc_can_fail_malloc_l11_1;
+                                   __malloc_w_can_fail_malloc_l11_2}
+                (origin: Misaligned) }} or ESCAPINGADDR
+               [1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11_0[0..18446744073709551607] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                    __malloc_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_can_fail_malloc_l11_1[0..18446744073709551607] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                    __malloc_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_2[0..18446744073709551607] ∈
+                                  {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                      __malloc_can_fail_malloc_l11_1;
+                                                      __malloc_w_can_fail_malloc_l11_2}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_4[bits 0 to 31] ∈
+                                  [0..2147483647] or UNINITIALIZED
+                                  [4..7] ∈
+                                  {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                      __malloc_can_fail_malloc_l11_1;
+                                                      __malloc_w_can_fail_malloc_l11_2}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 128 to 191] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_3 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED or ESCAPINGADDR
+[eva:final-states] Values at end of function destroy_queue:
+  head ∈ {0}
+  origin ∈
+        {{ (queue_element *)&__malloc_w_can_fail_malloc_l11_3 }} or ESCAPINGADDR
+  path ∈
+      {{ (queue_element *)&__malloc_w_can_fail_malloc_l11_3 ;
+         (queue_element *)&__malloc_w_can_fail_malloc_l11_4 }} or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_3[0..3] ∈ {0} or UNINITIALIZED
+                                  [bits 32 to 63] ∈ {-50} or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [16..23] ∈ {0} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_4[bits 0 to 31] ∈
+                                  [0..2147483647] or UNINITIALIZED
+                                  [4..7] ∈
+                                  {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                      __malloc_can_fail_malloc_l11_1;
+                                                      __malloc_w_can_fail_malloc_l11_2}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 128 to 191] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_3 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED or ESCAPINGADDR
+[eva:final-states] Values at end of function get:
+  __retres ∈ [0..2147483647]
+[eva:final-states] Values at end of function min:
+  __retres ∈
+          {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                              __malloc_can_fail_malloc_l11_1;
+                              __malloc_w_can_fail_malloc_l11_2}
+           (origin: Misaligned) }}
+[eva:final-states] Values at end of function push_edge:
+  new_head ∈
+          {{ &__malloc_can_fail_malloc_l11_0 + [0..18446744073709551576],0%24 ;
+             &__malloc_can_fail_malloc_l11_1 + [0..18446744073709551576],0%24 ;
+             &__malloc_w_can_fail_malloc_l11_2 +
+             [0..18446744073709551576],0%24 }}
+  __malloc_can_fail_malloc_l11_0[0..7] ∈ [--..--] or UNINITIALIZED
+                                [bits 64 to 127] ∈
+                                {{ NULL + [--..--] ;
+                                   &__malloc_can_fail_malloc_l11_0 +
+                                   [0..18446744073709551600],0%24 ;
+                                   &__malloc_can_fail_malloc_l11_1 +
+                                   [0..18446744073709551600],0%24 ;
+                                   &__malloc_w_can_fail_malloc_l11_2 +
+                                   [0..18446744073709551600],0%24 }} or UNINITIALIZED
+                                [16..39] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                    __malloc_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2}
+                                 (origin: Merge
+                                 {/home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:83}) }} or UNINITIALIZED
+                                [40..43] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                    __malloc_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2}
+                                 (origin: Merge
+                                 {/home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:82}) }} or UNINITIALIZED
+                                [44..63] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                    __malloc_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2}
+                                 (origin: Merge
+                                 {/home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:83}) }} or UNINITIALIZED
+                                [64..67] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                    __malloc_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2}
+                                 (origin: Merge
+                                 {/home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:82}) }} or UNINITIALIZED
+                                [68..87] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                    __malloc_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2}
+                                 (origin: Merge
+                                 {/home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:83}) }} or UNINITIALIZED
+                                [88..91] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                    __malloc_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2}
+                                 (origin: Merge
+                                 {/home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:82}) }} or UNINITIALIZED
+                                [92..51539607495] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                    __malloc_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2}
+                                 (origin: Merge
+                                 {/home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:83}) }} or UNINITIALIZED
+                                [51539607496..51539607499] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                    __malloc_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2}
+                                 (origin: Merge
+                                 {/home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:82}) }} or UNINITIALIZED
+                                [51539607500..18446744073709551591] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                    __malloc_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2}
+                                 (origin: Merge
+                                 {/home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:83}) }} or UNINITIALIZED
+                                [18446744073709551592..18446744073709551603] ∈
+                                [--..--] or UNINITIALIZED
+                                [18446744073709551604..18446744073709551607] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11_1[0..7] ∈ [--..--] or UNINITIALIZED
+                                [bits 64 to 127] ∈
+                                {{ NULL + [--..--] ;
+                                   &__malloc_can_fail_malloc_l11_0 +
+                                   [0..18446744073709551600],0%24 ;
+                                   &__malloc_can_fail_malloc_l11_1 +
+                                   [0..18446744073709551600],0%24 ;
+                                   &__malloc_w_can_fail_malloc_l11_2 +
+                                   [0..18446744073709551600],0%24 }} or UNINITIALIZED
+                                [16..39] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                    __malloc_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2}
+                                 (origin: Merge
+                                 {/home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:83}) }} or UNINITIALIZED
+                                [40..43] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                    __malloc_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2}
+                                 (origin: Merge
+                                 {/home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:82}) }} or UNINITIALIZED
+                                [44..18446744073709551591] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                    __malloc_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2}
+                                 (origin: Merge
+                                 {/home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:83}) }} or UNINITIALIZED
+                                [18446744073709551592..18446744073709551603] ∈
+                                [--..--] or UNINITIALIZED
+                                [18446744073709551604..18446744073709551607] ∈
+                                UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_2[0..7] ∈ [--..--] or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL + [--..--] ;
+                                     &__malloc_can_fail_malloc_l11_0 +
+                                     [0..18446744073709551600],0%24 ;
+                                     &__malloc_can_fail_malloc_l11_1 +
+                                     [0..18446744073709551600],0%24 ;
+                                     &__malloc_w_can_fail_malloc_l11_2 +
+                                     [0..18446744073709551600],0%24 }} or UNINITIALIZED
+                                  [16..18446744073709551591] ∈
+                                  {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                      __malloc_can_fail_malloc_l11_1;
+                                                      __malloc_w_can_fail_malloc_l11_2}
+                                   (origin: Merge
+                                   {/home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:83}) }} or UNINITIALIZED
+                                  [18446744073709551592..18446744073709551603] ∈
+                                  [--..--] or UNINITIALIZED
+                                  [18446744073709551604..18446744073709551607] ∈
+                                  UNINITIALIZED
+[eva:final-states] Values at end of function addEdge:
+  __malloc_can_fail_malloc_l11[0..3] ∈ {0}
+                              [4..7] ∈ {0} or UNINITIALIZED
+                              [bits 64 to 127] ∈
+                              {{ NULL ;
+                                 (? *)&__malloc_can_fail_malloc_l11_0 ;
+                                 (? *)&__malloc_can_fail_malloc_l11_1 }}
+                              [bits 128 to 223]# ∈
+                              {{ NULL ;
+                                 &__malloc_can_fail_malloc_l11_0 +
+                                 [0..18446744073709551600],0%24 ;
+                                 &__malloc_can_fail_malloc_l11_1 +
+                                 [0..18446744073709551576],0%24 ;
+                                 &__malloc_w_can_fail_malloc_l11_2 +
+                                 [0..18446744073709551576],0%24 }} or UNINITIALIZED repeated %64, bits 0 to 95 
+                              [bits 224 to 319]# ∈
+                              {{ NULL ;
+                                 &__malloc_can_fail_malloc_l11_0 +
+                                 [0..18446744073709551600],0%24 ;
+                                 &__malloc_can_fail_malloc_l11_1 +
+                                 [0..18446744073709551576],0%24 ;
+                                 &__malloc_w_can_fail_malloc_l11_2 +
+                                 [0..18446744073709551576],0%24 }} or UNINITIALIZED repeated %64, bits 32 to 127 
+                              [bits 320 to 415]# ∈
+                              {{ NULL ;
+                                 &__malloc_can_fail_malloc_l11_0 +
+                                 [0..18446744073709551600],0%24 ;
+                                 &__malloc_can_fail_malloc_l11_1 +
+                                 [0..18446744073709551600],0%24 ;
+                                 &__malloc_w_can_fail_malloc_l11_2 +
+                                 [0..18446744073709551600],0%24 }} or UNINITIALIZED repeated %64, bits 0 to 95 
+                              [bits 416 to 607]# ∈
+                              {{ NULL ;
+                                 &__malloc_can_fail_malloc_l11_0 +
+                                 [0..18446744073709551600],0%24 ;
+                                 &__malloc_can_fail_malloc_l11_1 +
+                                 [0..18446744073709551600],0%24 ;
+                                 &__malloc_w_can_fail_malloc_l11_2 +
+                                 [0..18446744073709551600],0%24 }} or UNINITIALIZED repeated %64, bits 32 to 223 
+                              [bits 608 to 412316859871]# ∈
+                              {{ NULL ;
+                                 &__malloc_can_fail_malloc_l11_0 +
+                                 [0..18446744073709551600],0%24 ;
+                                 &__malloc_can_fail_malloc_l11_1 +
+                                 [0..18446744073709551600],0%24 ;
+                                 &__malloc_w_can_fail_malloc_l11_2 +
+                                 [0..18446744073709551600],0%24 }} or UNINITIALIZED repeated %64, bits 32 to 412316859295 
+                              [bits 412316859872 to 412316860031]# ∈
+                              {{ NULL ;
+                                 &__malloc_can_fail_malloc_l11_0 +
+                                 [0..18446744073709551600],0%24 ;
+                                 &__malloc_can_fail_malloc_l11_1 +
+                                 [0..18446744073709551600],0%24 ;
+                                 &__malloc_w_can_fail_malloc_l11_2 +
+                                 [0..18446744073709551600],0%24 }} or UNINITIALIZED repeated %64, bits 32 to 191 
+                              [bits 412316860032 to 412316860063]# ∈
+                              {{ NULL ;
+                                 &__malloc_can_fail_malloc_l11_0 +
+                                 [0..18446744073709551600],0%24 ;
+                                 &__malloc_can_fail_malloc_l11_1 +
+                                 [0..18446744073709551576],0%24 ;
+                                 &__malloc_w_can_fail_malloc_l11_2 +
+                                 [0..18446744073709551576],0%24 }} or UNINITIALIZED%64, bits 0 to 31 
+                              [bits 412316860064 to 412316860159]# ∈
+                              {{ NULL ;
+                                 &__malloc_can_fail_malloc_l11_0 +
+                                 [0..18446744073709551600],0%24 ;
+                                 &__malloc_can_fail_malloc_l11_1 +
+                                 [0..18446744073709551576],0%24 ;
+                                 &__malloc_w_can_fail_malloc_l11_2 +
+                                 [0..18446744073709551576],0%24 }} or UNINITIALIZED repeated %64, bits 32 to 127 
+                              [bits 412316860160 to 412316860415]# ∈
+                              {{ &__malloc_can_fail_malloc_l11_0 +
+                                 [0..18446744073709551600],0%24 ;
+                                 &__malloc_can_fail_malloc_l11_1 +
+                                 [0..18446744073709551576],0%24 ;
+                                 &__malloc_w_can_fail_malloc_l11_2 +
+                                 [0..18446744073709551576],0%24 }} or UNINITIALIZED repeated %64 
+                              [51539607552..18446744073709551607] ∈
+                              UNINITIALIZED
+  __malloc_can_fail_malloc_l11_0[0..7] ∈ [--..--] or UNINITIALIZED
+                                [bits 64 to 127] ∈
+                                {{ NULL + [--..--] ;
+                                   &__malloc_can_fail_malloc_l11_0 +
+                                   [0..18446744073709551600],0%24 ;
+                                   &__malloc_can_fail_malloc_l11_1 +
+                                   [0..18446744073709551600],0%24 ;
+                                   &__malloc_w_can_fail_malloc_l11_2 +
+                                   [0..18446744073709551600],0%24 }} or UNINITIALIZED
+                                [16..39] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                    __malloc_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2}
+                                 (origin: Merge
+                                 {/home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:83}) }} or UNINITIALIZED
+                                [40..43] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                    __malloc_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2}
+                                 (origin: Merge
+                                 {/home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:82}) }} or UNINITIALIZED
+                                [44..63] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                    __malloc_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2}
+                                 (origin: Merge
+                                 {/home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:83}) }} or UNINITIALIZED
+                                [64..67] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                    __malloc_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2}
+                                 (origin: Merge
+                                 {/home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:82}) }} or UNINITIALIZED
+                                [68..87] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                    __malloc_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2}
+                                 (origin: Merge
+                                 {/home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:83}) }} or UNINITIALIZED
+                                [88..91] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                    __malloc_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2}
+                                 (origin: Merge
+                                 {/home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:82}) }} or UNINITIALIZED
+                                [92..51539607495] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                    __malloc_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2}
+                                 (origin: Merge
+                                 {/home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:83}) }} or UNINITIALIZED
+                                [51539607496..51539607499] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                    __malloc_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2}
+                                 (origin: Merge
+                                 {/home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:82}) }} or UNINITIALIZED
+                                [51539607500..18446744073709551591] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                    __malloc_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2}
+                                 (origin: Merge
+                                 {/home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:83}) }} or UNINITIALIZED
+                                [18446744073709551592..18446744073709551603] ∈
+                                [--..--] or UNINITIALIZED
+                                [18446744073709551604..18446744073709551607] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11_1[0..7] ∈ [--..--] or UNINITIALIZED
+                                [bits 64 to 127] ∈
+                                {{ NULL + [--..--] ;
+                                   &__malloc_can_fail_malloc_l11_0 +
+                                   [0..18446744073709551600],0%24 ;
+                                   &__malloc_can_fail_malloc_l11_1 +
+                                   [0..18446744073709551600],0%24 ;
+                                   &__malloc_w_can_fail_malloc_l11_2 +
+                                   [0..18446744073709551600],0%24 }} or UNINITIALIZED
+                                [16..39] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                    __malloc_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2}
+                                 (origin: Merge
+                                 {/home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:83}) }} or UNINITIALIZED
+                                [40..43] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                    __malloc_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2}
+                                 (origin: Merge
+                                 {/home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:82}) }} or UNINITIALIZED
+                                [44..18446744073709551591] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                    __malloc_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2}
+                                 (origin: Merge
+                                 {/home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:83}) }} or UNINITIALIZED
+                                [18446744073709551592..18446744073709551603] ∈
+                                [--..--] or UNINITIALIZED
+                                [18446744073709551604..18446744073709551607] ∈
+                                UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_2[0..7] ∈ [--..--] or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL + [--..--] ;
+                                     &__malloc_can_fail_malloc_l11_0 +
+                                     [0..18446744073709551600],0%24 ;
+                                     &__malloc_can_fail_malloc_l11_1 +
+                                     [0..18446744073709551600],0%24 ;
+                                     &__malloc_w_can_fail_malloc_l11_2 +
+                                     [0..18446744073709551600],0%24 }} or UNINITIALIZED
+                                  [16..18446744073709551591] ∈
+                                  {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                      __malloc_can_fail_malloc_l11_1;
+                                                      __malloc_w_can_fail_malloc_l11_2}
+                                   (origin: Merge
+                                   {/home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:83}) }} or UNINITIALIZED
+                                  [18446744073709551592..18446744073709551603] ∈
+                                  [--..--] or UNINITIALIZED
+                                  [18446744073709551604..18446744073709551607] ∈
+                                  UNINITIALIZED
+[eva:final-states] Values at end of function push_flow:
+  __malloc_can_fail_malloc_l11_0[0..18446744073709551607] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                    __malloc_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2}
+                                 (origin: Misaligned) }} or UNINITIALIZED
+  __malloc_can_fail_malloc_l11_1[0..18446744073709551607] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                    __malloc_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2}
+                                 (origin: Misaligned) }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_2[0..18446744073709551607] ∈
+                                  {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                      __malloc_can_fail_malloc_l11_1;
+                                                      __malloc_w_can_fail_malloc_l11_2}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+[eva:final-states] Values at end of function can_fail_malloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈
+          {{ NULL ; (void *)&__malloc_can_fail_malloc_l11 ;
+             (void *)&__malloc_can_fail_malloc_l11_0 ;
+             (void *)&__malloc_can_fail_malloc_l11_1 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_2 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_3 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_4 }}
+[eva:final-states] Values at end of function push_queue:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  new_next ∈
+          {{ (queue_element *)&__malloc_w_can_fail_malloc_l11_3 ;
+             (queue_element *)&__malloc_w_can_fail_malloc_l11_4 }}
+  __retres ∈
+          {{ (queue_element *)&__malloc_w_can_fail_malloc_l11_3 ;
+             (queue_element *)&__malloc_w_can_fail_malloc_l11_4 }}
+  __malloc_w_can_fail_malloc_l11_3[0..3] ∈ {0} or UNINITIALIZED
+                                  [bits 32 to 63] ∈ {-50} or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [16..23] ∈ {0} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_4[bits 0 to 31] ∈
+                                  [0..2147483647] or UNINITIALIZED
+                                  [4..7] ∈
+                                  {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                      __malloc_can_fail_malloc_l11_1;
+                                                      __malloc_w_can_fail_malloc_l11_2}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 128 to 191] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_3 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED or ESCAPINGADDR
+[eva:final-states] Values at end of function dfs_search:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  queue ∈
+       {{ NULL ; (queue_element *)&__malloc_w_can_fail_malloc_l11_3 ;
+          (queue_element *)&__malloc_w_can_fail_malloc_l11_4 }}
+  been_visited ∈ [1..2147483647]
+  __retres ∈
+          {{ NULL ; (queue_element *)&__malloc_w_can_fail_malloc_l11_3 ;
+             (queue_element *)&__malloc_w_can_fail_malloc_l11_4 }}
+  __malloc_can_fail_malloc_l11[bits 0 to 31] ∈ [1..2147483647]
+                              [bits 32 to 63] ∈
+                              [0..2147483647] or UNINITIALIZED
+                              [8..15] ∈
+                              {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                  __malloc_can_fail_malloc_l11_1}
+                               (origin: Merge
+                               {/home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:129}) }}
+                              [16..51539607531] ∈
+                              {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                  __malloc_can_fail_malloc_l11_1;
+                                                  __malloc_w_can_fail_malloc_l11_2}
+                               (origin: Merge
+                               {/home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:129}) }} or UNINITIALIZED
+                              [bits 412316860256 to 412316860415]# ∈
+                              {{ &__malloc_can_fail_malloc_l11_0 +
+                                 [0..18446744073709551600],0%24 ;
+                                 &__malloc_can_fail_malloc_l11_1 +
+                                 [0..18446744073709551576],0%24 ;
+                                 &__malloc_w_can_fail_malloc_l11_2 +
+                                 [0..18446744073709551576],0%24 }} or UNINITIALIZED repeated %64, bits 32 to 191 
+                              [51539607552..18446744073709551607] ∈
+                              UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_3[0..3] ∈ {0} or UNINITIALIZED
+                                  [bits 32 to 63] ∈ {-50} or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [16..23] ∈ {0} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_4[bits 0 to 31] ∈
+                                  [0..2147483647] or UNINITIALIZED
+                                  [4..7] ∈
+                                  {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                      __malloc_can_fail_malloc_l11_1;
+                                                      __malloc_w_can_fail_malloc_l11_2}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 128 to 191] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_3 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED or ESCAPINGADDR
+[eva:final-states] Values at end of function to_string:
+  to_string_temp[0..49] ∈ [--..--]
+  __retres ∈ {{ &to_string_temp[0] ; "SINK" ; "SOURCE" }}
+[eva:final-states] Values at end of function maximize_flow:
+  path ∈ {{ (queue_element *)&__malloc_w_can_fail_malloc_l11_3 }}
+  flow ∈
+      {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                          __malloc_can_fail_malloc_l11_1;
+                          __malloc_w_can_fail_malloc_l11_2}
+       (origin: Misaligned) }}
+  res[0..499] ∈ [--..--] or UNINITIALIZED
+  to_string_temp[0..49] ∈ [--..--]
+  __malloc_can_fail_malloc_l11_0[0..18446744073709551607] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                    __malloc_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2}
+                                 (origin: Misaligned) }} or UNINITIALIZED
+  __malloc_can_fail_malloc_l11_1[0..18446744073709551607] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                    __malloc_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2}
+                                 (origin: Misaligned) }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_2[0..18446744073709551607] ∈
+                                  {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                      __malloc_can_fail_malloc_l11_1;
+                                                      __malloc_w_can_fail_malloc_l11_2}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+[eva:final-states] Values at end of function edmonds_karp:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  max_flow ∈
+          {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                              __malloc_can_fail_malloc_l11_1;
+                              __malloc_w_can_fail_malloc_l11_2}
+           (origin: Misaligned) }}
+  to_string_temp[0..49] ∈ [--..--]
+  __malloc_can_fail_malloc_l11[bits 0 to 31] ∈ [1..2147483647]
+                              [bits 32 to 63] ∈
+                              [0..2147483647] or UNINITIALIZED
+                              [8..15] ∈
+                              {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                  __malloc_can_fail_malloc_l11_1}
+                               (origin: Merge
+                               {/home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:129}) }}
+                              [16..51539607531] ∈
+                              {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                  __malloc_can_fail_malloc_l11_1;
+                                                  __malloc_w_can_fail_malloc_l11_2}
+                               (origin: Merge
+                               {/home/fmarques/sbugs/projects/alunos/asa_2021_p2/al133/projeto2.c:129}) }} or UNINITIALIZED
+                              [bits 412316860256 to 412316860415]# ∈
+                              {{ &__malloc_can_fail_malloc_l11_0 +
+                                 [0..18446744073709551600],0%24 ;
+                                 &__malloc_can_fail_malloc_l11_1 +
+                                 [0..18446744073709551576],0%24 ;
+                                 &__malloc_w_can_fail_malloc_l11_2 +
+                                 [0..18446744073709551576],0%24 }} or UNINITIALIZED repeated %64, bits 32 to 191 
+                              [51539607552..18446744073709551607] ∈
+                              UNINITIALIZED
+  __malloc_can_fail_malloc_l11_0[0..18446744073709551607] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                    __malloc_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2}
+                                 (origin: Misaligned) }} or UNINITIALIZED
+  __malloc_can_fail_malloc_l11_1[0..18446744073709551607] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                    __malloc_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2}
+                                 (origin: Misaligned) }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_2[0..18446744073709551607] ∈
+                                  {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                      __malloc_can_fail_malloc_l11_1;
+                                                      __malloc_w_can_fail_malloc_l11_2}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_3[0..3] ∈ {0} or UNINITIALIZED
+                                  [bits 32 to 63] ∈ {-50} or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [16..23] ∈ {0} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_4[bits 0 to 31] ∈
+                                  [0..2147483647] or UNINITIALIZED
+                                  [4..7] ∈
+                                  {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                      __malloc_can_fail_malloc_l11_1;
+                                                      __malloc_w_can_fail_malloc_l11_2}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 128 to 191] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_3 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED or ESCAPINGADDR
+[eva:final-states] Values at end of function main:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  __fc_stdout ∈ {{ NULL + [--..--] ; &S___fc_stdout[0] }}
+  V ∈ [-2147483646..2147483647]
+  n_edges ∈ [--..--]
+  n_processes ∈ [-2147483648..2147483645]
+  graph ∈ ESCAPINGADDR
+  i ∈ [0..2147483647]
+  SINK ∈ [0..2147483646]
+  to_string_temp[0..49] ∈ [--..--]
+  __retres ∈ {0}
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                   __malloc_can_fail_malloc_l11_1;
+                                   __malloc_w_can_fail_malloc_l11_2}
+                (origin: Misaligned) }} or ESCAPINGADDR
+               [1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11_0[0..18446744073709551607] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                    __malloc_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_can_fail_malloc_l11_1[0..18446744073709551607] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                    __malloc_can_fail_malloc_l11_1;
+                                                    __malloc_w_can_fail_malloc_l11_2}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_2[0..18446744073709551607] ∈
+                                  {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                      __malloc_can_fail_malloc_l11_1;
+                                                      __malloc_w_can_fail_malloc_l11_2}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_3[0..3] ∈ {0} or UNINITIALIZED
+                                  [bits 32 to 63] ∈ {-50} or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [16..23] ∈ {0} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_4[bits 0 to 31] ∈
+                                  [0..2147483647] or UNINITIALIZED
+                                  [4..7] ∈
+                                  {{ garbled mix of &{__malloc_can_fail_malloc_l11_0;
+                                                      __malloc_can_fail_malloc_l11_1;
+                                                      __malloc_w_can_fail_malloc_l11_2}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 128 to 191] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_3 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED or ESCAPINGADDR
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  14 functions analyzed (out of 17): 82% coverage.
+  In these functions, 195 statements reached (out of 195): 100% coverage.
+  ----------------------------------------------------------------------------
+  No errors or warnings raised during the analysis.
+  ----------------------------------------------------------------------------
+  73 alarms generated by the analysis:
+      31 invalid memory accesses
+      25 accesses to uninitialized left-values
+       8 integer overflows
+       8 escaping addresses
+       1 other
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     0 unknown     0 invalid      0 total
+    Preconditions    22 valid    12 unknown     0 invalid     34 total
+  64% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[report] Classification
+[report] Output /home/fmarques/sbugs/projects/outputs/framaC/asa_2021_p2/al133/errors.json
+[report] Reviews     :   75
+[report] Unclassified:   75

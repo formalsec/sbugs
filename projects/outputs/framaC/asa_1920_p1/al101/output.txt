@@ -1,0 +1,440 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  adj ∈ {0}
+[eva] using specification for function getchar
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:51: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:52: 
+  accessing out of bounds index. assert j < 100;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:53: 
+  signed overflow. assert j + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:56: 
+  accessing out of bounds index. assert j < 100;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:60: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:61: 
+  accessing out of bounds index. assert j < 100;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:62: 
+  signed overflow. assert j + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:65: 
+  accessing out of bounds index. assert j < 100;
+[eva] using specification for function atoi
+[eva] using specification for function printf_va_1
+[eva] using specification for function time
+[eva] using specification for function srand
+[eva] using specification for function rand
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_0
+[eva] using specification for function scanf_va_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:77: 
+  function scanf_va_1: precondition \valid(param0) got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:78: 
+  out of bounds write. assert \valid(&new->graded);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_1
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:85: 
+  out of bounds write. assert \valid(&newNode->student);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:88: 
+  out of bounds write. assert \valid(adj + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:89: 
+  out of bounds read. assert \valid_read(adj + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:89: 
+  out of bounds write. assert \valid(&(*(adj + i))->head);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:90: 
+  out of bounds read. assert \valid_read(adj + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:74: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:89: 
+  accessing uninitialized left-value. assert \initialized(adj + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:90: 
+  accessing uninitialized left-value. assert \initialized(adj + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:90: 
+  out of bounds write. assert \valid(&(*(adj + i))->tail);
+[eva] using specification for function scanf_va_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:101: 
+  signed overflow. assert -2147483648 ≤ v - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:101: 
+  signed overflow. assert -2147483648 ≤ u - 1;
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:36: 
+  out of bounds write. assert \valid(&new->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:37: 
+  accessing uninitialized left-value. assert \initialized(adj + dest);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:37: 
+  out of bounds read. assert \valid_read(adj + dest);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:37: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(adj + dest))->head);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:37: 
+  out of bounds read. assert \valid_read(&(*(adj + dest))->head);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:37: 
+  accessing uninitialized left-value.
+  assert \initialized(&((*(adj + dest))->head)->student);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:39: 
+  accessing uninitialized left-value. assert \initialized(adj + src);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:39: 
+  out of bounds read. assert \valid_read(adj + src);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:41: 
+  accessing uninitialized left-value. assert \initialized(&l->tail);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:41: 
+  out of bounds read. assert \valid_read(&l->tail);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:99: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:139: 
+  accessing uninitialized left-value. assert \initialized(adj + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:139: 
+  out of bounds read. assert \valid_read(adj + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:139: 
+  accessing uninitialized left-value. assert \initialized(&(*(adj + i))->head);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:139: 
+  out of bounds read. assert \valid_read(&(*(adj + i))->head);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:139: 
+  accessing uninitialized left-value.
+  assert \initialized(&((*(adj + i))->head)->student);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:139: 
+  accessing uninitialized left-value.
+  assert \initialized(&(((*(adj + i))->head)->student)->graded);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:107: 
+  out of bounds read. assert \valid_read(adj + id);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:108: 
+  accessing uninitialized left-value. assert \initialized(&l->head);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:108: 
+  accessing uninitialized left-value. assert \initialized(&(l->head)->student);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:110: 
+  accessing uninitialized left-value. assert \initialized(&l->head);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:110: 
+  accessing uninitialized left-value. assert \initialized(&(l->head)->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:115: 
+  accessing uninitialized left-value. assert \initialized(&current->student);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:115: 
+  accessing uninitialized left-value.
+  assert \initialized(&(current->student)->grading);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:116: 
+  accessing uninitialized left-value. assert \initialized(&current->student);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:116: 
+  accessing uninitialized left-value.
+  assert \initialized(&(current->student)->id);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:116: 
+  accessing uninitialized left-value.
+  assert \initialized(adj + (current->student)->id);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:116: 
+  out of bounds read. assert \valid_read(adj + (current->student)->id);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:116: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(adj + (current->student)->id))->head);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:116: 
+  out of bounds read.
+  assert \valid_read(&(*(adj + (current->student)->id))->head);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:116: 
+  accessing uninitialized left-value.
+  assert \initialized(&((*(adj + (current->student)->id))->head)->student);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:116: 
+  accessing uninitialized left-value.
+  assert
+  \initialized(&(((*(adj + (current->student)->id))->head)->student)->graded);
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:117: 
+  detected recursive call of function grade.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:117: 
+  accessing uninitialized left-value. assert \initialized(&current->student);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:117: 
+  accessing uninitialized left-value.
+  assert \initialized(&(current->student)->id);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:117: User Error: 
+  Recursive call to grade without assigns clause.
+  Generating probably incomplete assigns to interpret the call. Try to increase
+  the -eva-unroll-recursive-calls parameter or write a correct specification
+  for function grade.
+[kernel:annot:missing-spec] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:106: 
+  Neither code nor specification for function grade, generating default assigns from the prototype
+[eva] using specification for function grade
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:118: 
+  accessing uninitialized left-value. assert \initialized(&current->student);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:118: 
+  accessing uninitialized left-value.
+  assert \initialized(&(current->student)->graded);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:125: 
+  accessing uninitialized left-value. assert \initialized(&current->student);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:125: 
+  accessing uninitialized left-value. assert \initialized(&l->head);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:125: 
+  accessing uninitialized left-value.
+  assert \initialized(&(current->student)->grade);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:125: 
+  accessing uninitialized left-value. assert \initialized(&(l->head)->student);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:125: 
+  accessing uninitialized left-value.
+  assert \initialized(&((l->head)->student)->grade);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:126: 
+  accessing uninitialized left-value. assert \initialized(&l->head);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:126: 
+  accessing uninitialized left-value. assert \initialized(&(l->head)->student);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:126: 
+  accessing uninitialized left-value. assert \initialized(&current->student);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:126: 
+  accessing uninitialized left-value.
+  assert \initialized(&(current->student)->grade);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:129: 
+  accessing uninitialized left-value. assert \initialized(&current->next);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:114: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:117: 
+  Using specification of function grade for recursive calls.
+  Analysis of function grade is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:132: 
+  accessing uninitialized left-value. assert \initialized(&l->head);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:132: 
+  accessing uninitialized left-value. assert \initialized(&(l->head)->student);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:133: 
+  accessing uninitialized left-value. assert \initialized(&l->head);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:133: 
+  accessing uninitialized left-value. assert \initialized(&(l->head)->student);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:141: 
+  out of bounds read. assert \valid_read(adj + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:141: 
+  accessing uninitialized left-value. assert \initialized(&(*(adj + i))->head);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:141: 
+  accessing uninitialized left-value.
+  assert \initialized(&((*(adj + i))->head)->student);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:138: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:107: 
+  accessing uninitialized left-value. assert \initialized(adj + id);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:108: 
+  out of bounds read. assert \valid_read(&l->head);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:141: 
+  accessing uninitialized left-value. assert \initialized(adj + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:141: 
+  out of bounds read. assert \valid_read(&(*(adj + i))->head);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:164: 
+  accessing uninitialized left-value. assert \initialized(adj + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:164: 
+  out of bounds read. assert \valid_read(adj + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:164: 
+  accessing uninitialized left-value. assert \initialized(&(*(adj + i))->head);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:164: 
+  out of bounds read. assert \valid_read(&(*(adj + i))->head);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:164: 
+  accessing uninitialized left-value.
+  assert \initialized(&((*(adj + i))->head)->student);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:164: 
+  accessing uninitialized left-value.
+  assert \initialized(&(((*(adj + i))->head)->student)->grade);
+[eva] using specification for function printf_va_2
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:163: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:168: 
+  accessing uninitialized left-value. assert \initialized(adj + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:168: 
+  out of bounds read. assert \valid_read(adj + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:169: 
+  accessing uninitialized left-value. assert \initialized(&l->head);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:169: 
+  out of bounds read. assert \valid_read(&l->head);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:171: 
+  accessing uninitialized left-value. assert \initialized(&head->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:173: 
+  accessing uninitialized left-value. assert \initialized(&head->student);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:177: 
+  accessing uninitialized left-value. assert \initialized(&current->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:178: 
+  accessing uninitialized left-value. assert \initialized(&current->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:180: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&next);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:177: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:177: 
+  out of bounds read. assert \valid_read(&current->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:177: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&current->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:178: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&current->next);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:167: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:168: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(adj + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:169: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&l->head);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:171: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&head->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p1/al101/main.c:173: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&head->student);
+[eva] done for function main
+[scope:rm_asserts] removing 25 assertion(s)
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function split:
+  mStr[0..99] ∈ [--..--] or UNINITIALIZED
+  nStr[0..99] ∈ [--..--] or UNINITIALIZED
+  c ∈ {-1; 0; 10}
+  j ∈ [0..99]
+  n ∈ [--..--]
+  m ∈ [--..--]
+  S___fc_stdin[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function can_fail_malloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈
+          {{ NULL ; (void *)&__malloc_can_fail_malloc_l11 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_0 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_1 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_2 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_3 }}
+[eva:final-states] Values at end of function insert:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  new ∈ {{ (struct node *)&__malloc_w_can_fail_malloc_l11_3 }}
+  l ∈ {{ (list *)&__malloc_w_can_fail_malloc_l11_1 }}
+  __malloc_w_can_fail_malloc_l11_1[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_2 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_3 }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_2[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_0 }} or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_3 }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_3[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_0 }} or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_3 }} or UNINITIALIZED
+[eva:final-states] Values at end of function processRelationships:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  i ∈ [0..2147483647]
+  u ∈ [1..2147483647] or UNINITIALIZED
+  v ∈ [1..2147483647] or UNINITIALIZED
+  S___fc_stdin[0..1] ∈ [--..--]
+  __malloc_w_can_fail_malloc_l11_1[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_2 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_3 }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_2[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_0 }} or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_3 }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_3[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_0 }} or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_3 }} or UNINITIALIZED
+[eva:final-states] Values at end of function processStudents:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  i ∈ [0..2147483647]
+  S___fc_stdin[0..1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11[bits 0 to 137438953407]# ∈
+                              {{ NULL ;
+                                 (? *)&__malloc_w_can_fail_malloc_l11_1 }} or UNINITIALIZED repeated %64 
+                              [17179869176..18446744073709551607] ∈
+                              UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_0[bits 0 to 31] ∈
+                                  [0..2147483646] or UNINITIALIZED
+                                  [4..7] ∈ [--..--] or UNINITIALIZED
+                                  [8..15] ∈ {0} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_1[bits 0 to 127]# ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED repeated %64 
+  __malloc_w_can_fail_malloc_l11_2[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_0 }} or UNINITIALIZED
+                                  [8..15] ∈ {0} or UNINITIALIZED
+[eva:final-states] Values at end of function grade:
+  l ∈ {{ (list *)&__malloc_w_can_fail_malloc_l11_1 }}
+  current ∈ {0}
+  finished ∈ {0; 1}
+  __malloc_w_can_fail_malloc_l11_0[bits 0 to 31] ∈
+                                  [0..2147483646] or UNINITIALIZED
+                                  [4..7] ∈ [--..--] or UNINITIALIZED
+                                  [bits 64 to 127]# ∈
+                                  {0; 1} or UNINITIALIZED repeated %32 
+[eva:final-states] Values at end of function compute:
+  i ∈ [0..2147483647]
+  __malloc_w_can_fail_malloc_l11_0[bits 0 to 31] ∈
+                                  [0..2147483646] or UNINITIALIZED
+                                  [4..7] ∈ [--..--] or UNINITIALIZED
+                                  [bits 64 to 127]# ∈
+                                  {0; 1} or UNINITIALIZED repeated %32 
+[eva:final-states] Values at end of function main:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  adj ∈ {{ NULL ; (list **)&__malloc_can_fail_malloc_l11 }} or ESCAPINGADDR
+  n ∈ [--..--]
+  m ∈ [--..--]
+  i ∈ [0..2147483647]
+  __retres ∈ {0}
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11[bits 0 to 137438953407]# ∈
+                              {{ NULL ;
+                                 (? *)&__malloc_w_can_fail_malloc_l11_1 }} or UNINITIALIZED or ESCAPINGADDR repeated %64 
+                              [17179869176..18446744073709551607] ∈
+                              UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_0[bits 0 to 31] ∈
+                                  [0..2147483646] or UNINITIALIZED
+                                  [4..7] ∈ [--..--] or UNINITIALIZED
+                                  [bits 64 to 127]# ∈
+                                  {0; 1} or UNINITIALIZED repeated %32 
+  __malloc_w_can_fail_malloc_l11_1[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 64 to 127] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_2 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_3 }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_2[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_0 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_3 }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_3[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_0 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_3 }} or UNINITIALIZED or ESCAPINGADDR
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  8 functions analyzed (out of 10): 80% coverage.
+  In these functions, 154 statements reached (out of 154): 100% coverage.
+  ----------------------------------------------------------------------------
+  Some errors and warnings have been raised during the analysis:
+    by the Eva analyzer:      1 error    0 warnings
+    by the Frama-C kernel:    0 errors    0 warnings
+  ----------------------------------------------------------------------------
+  95 alarms generated by the analysis:
+      55 accesses to uninitialized left-values
+      25 invalid memory accesses
+       7 escaping addresses
+       4 accesses out of bounds index
+       4 integer overflows
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     0 unknown     0 invalid      0 total
+    Preconditions    15 valid     1 unknown     0 invalid     16 total
+  93% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[eva] User Error: Deferred error message was emitted during execution. See above messages for more information.
+[kernel] Plug-in eva aborted: invalid user input.

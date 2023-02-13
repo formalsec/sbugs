@@ -1,0 +1,176 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/iaed_p1/234/proj1.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:typing:no-proto] /home/fmarques/sbugs/projects/alunos/iaed_p1/234/proj1.c:47: 
+  Calling function cmds that is declared without prototype.
+  Its formals will be inferred from actual arguments
+[kernel:typing:no-proto] /home/fmarques/sbugs/projects/alunos/iaed_p1/234/proj1.c:56: 
+  Calling function add_product that is declared without prototype.
+  Its formals will be inferred from actual arguments
+[kernel:typing:no-proto] /home/fmarques/sbugs/projects/alunos/iaed_p1/234/proj1.c:59: 
+  Calling function add_stock that is declared without prototype.
+  Its formals will be inferred from actual arguments
+[kernel:typing:no-proto] /home/fmarques/sbugs/projects/alunos/iaed_p1/234/proj1.c:62: 
+  Calling function new_order that is declared without prototype.
+  Its formals will be inferred from actual arguments
+[kernel:typing:no-proto] /home/fmarques/sbugs/projects/alunos/iaed_p1/234/proj1.c:65: 
+  Calling function add_to_order that is declared without prototype.
+  Its formals will be inferred from actual arguments
+[kernel:typing:no-proto] /home/fmarques/sbugs/projects/alunos/iaed_p1/234/proj1.c:68: 
+  Calling function rem_stock that is declared without prototype.
+  Its formals will be inferred from actual arguments
+[kernel:typing:no-proto] /home/fmarques/sbugs/projects/alunos/iaed_p1/234/proj1.c:71: 
+  Calling function rem_from_order that is declared without prototype.
+  Its formals will be inferred from actual arguments
+[kernel:typing:no-proto] /home/fmarques/sbugs/projects/alunos/iaed_p1/234/proj1.c:74: 
+  Calling function order_cost that is declared without prototype.
+  Its formals will be inferred from actual arguments
+[kernel:typing:no-proto] /home/fmarques/sbugs/projects/alunos/iaed_p1/234/proj1.c:77: 
+  Calling function change_price that is declared without prototype.
+  Its formals will be inferred from actual arguments
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/234/proj1.c:105: 
+  Dropping side-effect in sizeof.
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  buf[0..99] ∈ {0}
+  x[0..9999] ∈ {0}
+  y[0..499] ∈ {0}
+  n ∈ {0}
+  m[0..499] ∈ {0}
+  l ∈ {0}
+[eva] using specification for function fgets
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/234/proj1.c:53: 
+  function fgets: precondition 'valid_stream' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/234/proj1.c:99: 
+  function strlen: precondition 'valid_string_s' got status unknown.
+[eva] using specification for function time
+[eva] using specification for function srand
+[eva] using specification for function rand
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11
+[eva] using specification for function strtok
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/234/proj1.c:103: 
+  function strtok, behavior new_str: precondition 'valid_string_s_or_delim_not_found' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/234/proj1.c:104: 
+  pointer comparison. assert \pointer_comparable((void *)token, (void *)0);
+[eva] using specification for function strncat
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/234/proj1.c:105: 
+  function strncat: precondition 'valid_nstring_src' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/234/proj1.c:105: 
+  function strncat: precondition 'valid_string_dest' got status invalid.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/234/proj1.c:109: 
+  function strlen: precondition 'valid_string_s' got status invalid.
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_0
+[eva] using specification for function printf_va_3
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_1
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_2
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_3
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_4
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_5
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/234/proj1.c:53: 
+  starting to merge loop iterations
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/234/proj1.c:138: 
+  more than 200(500) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/234/proj1.c:138: 
+  more than 200(500) elements to enumerate. Approximating.
+[eva] done for function main
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function new_order:
+  y[0].ide ∈ [0..2147483647]
+   [0]{.p[0..9999]{.idp; .description[bits 0 to 495]#; .price#; .weight#; .quantity#; .[bits 528 to 575]#}; .[bits 32 to 63]#} ∈
+   [0..499] repeated %32 
+   [1].ide ∈ [0..2147483647]
+   {[1]{.p[0..9999]{.idp; .description[bits 0 to 495]#; .price#; .weight#; .quantity#; .[bits 528 to 575]#}; .[bits 32 to 63]#}; [2..498]{.ide; .p[0..9999]{.idp; .description[bits 0 to 495]#; .price#; .weight#; .quantity#; .[bits 528 to 575]#}; .[bits 32 to 63]#}; [499].ide} ∈
+   [0..499] repeated %32 
+   [499]{.p[0..9999]; .[bits 32 to 63]} ∈ {0}
+  l ∈ [1..500]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function can_fail_malloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈
+          {{ NULL ; (void *)&__malloc_can_fail_malloc_l11 ;
+             (void *)&__malloc_can_fail_malloc_l11_0 ;
+             (void *)&__malloc_can_fail_malloc_l11_1 ;
+             (void *)&__malloc_can_fail_malloc_l11_2 ;
+             (void *)&__malloc_can_fail_malloc_l11_3 ;
+             (void *)&__malloc_can_fail_malloc_l11_4 ;
+             (void *)&__malloc_can_fail_malloc_l11_5 }}
+[eva:final-states] Values at end of function process_input:
+  NON TERMINATING FUNCTION
+[eva:final-states] Values at end of function add_product:
+  NON TERMINATING FUNCTION
+[eva:final-states] Values at end of function add_stock:
+  NON TERMINATING FUNCTION
+[eva:final-states] Values at end of function add_to_order:
+  NON TERMINATING FUNCTION
+[eva:final-states] Values at end of function change_price:
+  NON TERMINATING FUNCTION
+[eva:final-states] Values at end of function order_cost:
+  NON TERMINATING FUNCTION
+[eva:final-states] Values at end of function rem_from_order:
+  NON TERMINATING FUNCTION
+[eva:final-states] Values at end of function rem_stock:
+  NON TERMINATING FUNCTION
+[eva:final-states] Values at end of function cmds:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  __fc_strtok_ptr ∈ {0}
+  buf[0..99] ∈ [--..--]
+  y[0].ide ∈ [0..2147483647]
+   [0]{.p[0..9999]{.idp; .description[bits 0 to 495]#; .price#; .weight#; .quantity#; .[bits 528 to 575]#}; .[bits 32 to 63]#} ∈
+   [0..499] repeated %32 
+   [1].ide ∈ [0..2147483647]
+   {[1]{.p[0..9999]{.idp; .description[bits 0 to 495]#; .price#; .weight#; .quantity#; .[bits 528 to 575]#}; .[bits 32 to 63]#}; [2..498]{.ide; .p[0..9999]{.idp; .description[bits 0 to 495]#; .price#; .weight#; .quantity#; .[bits 528 to 575]#}; .[bits 32 to 63]#}; [499].ide} ∈
+   [0..499] repeated %32 
+   [499]{.p[0..9999]; .[bits 32 to 63]} ∈ {0}
+  l ∈ [0..500]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function main:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  __fc_strtok_ptr ∈ {0}
+  buf[0..99] ∈ [--..--]
+  y[0].ide ∈ [0..2147483647]
+   [0]{.p[0..9999]{.idp; .description[bits 0 to 495]#; .price#; .weight#; .quantity#; .[bits 528 to 575]#}; .[bits 32 to 63]#} ∈
+   [0..499] repeated %32 
+   [1].ide ∈ [0..2147483647]
+   {[1]{.p[0..9999]{.idp; .description[bits 0 to 495]#; .price#; .weight#; .quantity#; .[bits 528 to 575]#}; .[bits 32 to 63]#}; [2..498]{.ide; .p[0..9999]{.idp; .description[bits 0 to 495]#; .price#; .weight#; .quantity#; .[bits 528 to 575]#}; .[bits 32 to 63]#}; [499].ide} ∈
+   [0..499] repeated %32 
+   [499]{.p[0..9999]; .[bits 32 to 63]} ∈ {0}
+  l ∈ [0..500]
+  __retres ∈ {0}
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  12 functions analyzed (out of 15): 80% coverage.
+  In these functions, 66 statements reached (out of 159): 41% coverage.
+  ----------------------------------------------------------------------------
+  No errors or warnings raised during the analysis.
+  ----------------------------------------------------------------------------
+  1 alarm generated by the analysis.
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     0 unknown     0 invalid      0 total
+    Preconditions     7 valid     4 unknown     2 invalid     13 total
+  53% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[report] Classification
+[report] Output /home/fmarques/sbugs/projects/outputs/framaC/iaed_p1/234/errors.json
+[report] Reviews     :    5
+[report] Unclassified:    5

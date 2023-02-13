@@ -1,0 +1,1233 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  
+[eva] using specification for function time
+[eva] using specification for function srand
+[eva] using specification for function rand
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_0
+[eva] using specification for function fgets
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:167: 
+  function fgets: precondition 'valid_stream' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:171: 
+  accessing uninitialized left-value. assert \initialized((char *)input);
+[eva] using specification for function printf_va_5
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_1
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:180: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:180: 
+  accessing uninitialized left-value. assert \initialized(&input[i]);
+[eva] using specification for function sscanf_va_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:181: 
+  function sscanf_va_1: precondition \valid(param1) got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:181: 
+  function sscanf_va_1: precondition valid_read_string(s) got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:184: 
+  out of bounds write. assert \valid(system_0 + product_counter);
+[eva] using specification for function sscanf_va_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:192: 
+  function sscanf_va_2: precondition valid_read_string(s) got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:194: 
+  signed overflow. assert product_counter - idp ≤ 2147483647;
+[eva] using specification for function printf_va_6
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:195: 
+  out of bounds write. assert \valid(&(system_0 + idp)->qtd);
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:195: 
+  all target addresses were invalid. This path is assumed to be dead.
+[eva] using specification for function sscanf_va_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:202: 
+  function sscanf_va_3: precondition valid_read_string(s) got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:204: 
+  signed overflow. assert product_counter - idp ≤ 2147483647;
+[eva] using specification for function printf_va_7
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:205: 
+  out of bounds read. assert \valid_read(&(system_0 + idp)->qtd);
+[eva] using specification for function sscanf_va_4
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:213: 
+  function sscanf_va_4: precondition valid_read_string(s) got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:215: 
+  signed overflow. assert product_counter - idp ≤ 2147483647;
+[eva] using specification for function printf_va_9
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:216: 
+  out of bounds read. assert \valid_read(&(system_0 + idp)->price);
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:216: 
+  all target addresses were invalid. This path is assumed to be dead.
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_2
+[eva] using specification for function printf_va_1
+[eva] using specification for function sscanf_va_5
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:229: 
+  function sscanf_va_5: precondition valid_read_string(s) got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:231: 
+  signed overflow. assert product_counter - idp ≤ 2147483647;
+[eva] using specification for function printf_va_10
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:259: 
+  out of bounds write. assert \valid(orders + order_counter);
+[eva] using specification for function printf_va_12
+[eva] using specification for function sscanf_va_6
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:268: 
+  function sscanf_va_6: precondition valid_read_string(s) got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:270: 
+  signed overflow. assert order_counter - ide ≤ 2147483647;
+[eva] using specification for function printf_va_13
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:275: 
+  out of bounds read. assert \valid_read(&(orders + ide)->iter);
+[eva] using specification for function sscanf_va_7
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:301: 
+  function sscanf_va_7: precondition valid_read_string(s) got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:303: 
+  signed overflow. assert order_counter - ide ≤ 2147483647;
+[eva] using specification for function printf_va_17
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:304: 
+  signed overflow. assert product_counter - idp ≤ 2147483647;
+[eva] using specification for function printf_va_18
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:306: 
+  out of bounds read. assert \valid_read(&(orders + ide)->iter);
+[eva] using specification for function sscanf_va_8
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:316: 
+  function sscanf_va_8: precondition valid_read_string(s) got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:318: 
+  signed overflow. assert order_counter - ide ≤ 2147483647;
+[eva] using specification for function printf_va_21
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:319: 
+  signed overflow. assert product_counter - idp ≤ 2147483647;
+[eva] using specification for function printf_va_22
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:321: 
+  out of bounds read. assert \valid_read(&(orders + ide)->iter);
+[eva] using specification for function sscanf_va_9
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:334: 
+  function sscanf_va_9: precondition valid_read_string(s) got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:336: 
+  signed overflow. assert order_counter - ide ≤ 2147483647;
+[eva] using specification for function printf_va_23
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:340: 
+  out of bounds read. assert \valid_read(&(orders + ide)->iter);
+[eva] using specification for function sscanf_va_10
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:349: 
+  function sscanf_va_10: precondition valid_read_string(s) got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:351: 
+  signed overflow. assert order_counter - ide ≤ 2147483647;
+[eva] using specification for function printf_va_25
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:352: 
+  out of bounds read. assert \valid_read(&(orders + ide)->iter);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:166: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:195: 
+  accessing uninitialized left-value.
+  assert \initialized(&(system_0 + idp)->qtd);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:195: 
+  signed overflow. assert -2147483648 ≤ (system_0 + idp)->qtd + qtd;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:195: 
+  signed overflow. assert (system_0 + idp)->qtd + qtd ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:205: 
+  accessing uninitialized left-value.
+  assert \initialized(&(system_0 + idp)->qtd);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:205: 
+  signed overflow. assert -2147483648 ≤ (system_0 + idp)->qtd - qtd;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:205: 
+  signed overflow. assert (system_0 + idp)->qtd - qtd ≤ 2147483647;
+[eva] using specification for function printf_va_8
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:206: 
+  signed overflow. assert -2147483648 ≤ (system_0 + idp)->qtd - qtd;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:206: 
+  signed overflow. assert (system_0 + idp)->qtd - qtd ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:216: 
+  accessing uninitialized left-value.
+  assert \initialized(&(system_0 + idp)->price);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:216: 
+  out of bounds write. assert \valid((system_0 + idp)->price);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:111: 
+  out of bounds write. assert \valid(copy + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:111: 
+  out of bounds read. assert \valid_read(system_0 + i);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:110: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:118: 
+  accessing uninitialized left-value. assert \initialized(&(copy + i)->qtd);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:118: 
+  accessing uninitialized left-value. assert \initialized(&(copy + i)->price);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:118: 
+  out of bounds read. assert \valid_read(&(copy + i)->qtd);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:118: 
+  out of bounds read. assert \valid_read(&(copy + i)->price);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:118: 
+  out of bounds read. assert \valid_read((copy + i)->price);
+[eva] using specification for function printf_va_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:118: 
+  function printf_va_2: precondition valid_read_string(param0) got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:117: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:236: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:237: 
+  out of bounds read. assert \valid_read(orders + orid);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:238: 
+  accessing uninitialized left-value. assert \initialized(&o.iter);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:275: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:275: 
+  accessing uninitialized left-value.
+  assert \initialized(&(orders + ide)->iter);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:276: 
+  signed overflow. assert product_counter - idp ≤ 2147483647;
+[eva] using specification for function printf_va_14
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:277: 
+  accessing uninitialized left-value.
+  assert \initialized(&(system_0 + idp)->qtd);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:277: 
+  out of bounds read. assert \valid_read(&(system_0 + idp)->qtd);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:277: 
+  signed overflow. assert -2147483648 ≤ (system_0 + idp)->qtd - qtd;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:277: 
+  signed overflow. assert (system_0 + idp)->qtd - qtd ≤ 2147483647;
+[eva] using specification for function printf_va_15
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:278: 
+  accessing uninitialized left-value.
+  assert \initialized(&(system_0 + idp)->weight);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:278: 
+  signed overflow. assert -2147483648 ≤ (system_0 + idp)->weight * qtd;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:278: 
+  signed overflow. assert (system_0 + idp)->weight * qtd ≤ 2147483647;
+[eva] using specification for function printf_va_16
+[eva] using specification for function strcpy
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:286: 
+  function strcpy: precondition 'valid_string_src' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:286: 
+  function strcpy: precondition 'room_string' got status unknown.
+[eva] FRAMAC_SHARE/libc/string.h:373: 
+  cannot evaluate ACSL term, unsupported ACSL construct: logic function strcmp
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:287: 
+  accessing uninitialized left-value.
+  assert \initialized(&(system_0 + idp)->price);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:290: 
+  Assigning imprecise value to (orders + ide)->products[(orders + ide)->iter]
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets {64}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:286}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:293: 
+  signed overflow. assert -2147483648 ≤ (system_0 + idp)->qtd - qtd;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:293: 
+  signed overflow. assert (system_0 + idp)->qtd - qtd ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:306: 
+  accessing uninitialized left-value.
+  assert \initialized(&(orders + ide)->iter);
+[eva] using specification for function printf_va_19
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:307: 
+  function printf_va_19: precondition valid_read_string(param0) got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:321: 
+  accessing uninitialized left-value.
+  assert \initialized(&(orders + ide)->iter);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:340: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:340: 
+  accessing uninitialized left-value.
+  assert \initialized(&(orders + ide)->iter);
+[eva] using specification for function printf_va_24
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:352: 
+  accessing uninitialized left-value.
+  assert \initialized(&(orders + ide)->iter);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_3
+[eva] using specification for function printf_va_3
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:184: 
+  Assigning imprecise value to *(system_0 + product_counter)
+  (pointing to __malloc_can_fail_malloc_l11 with offsets {0; 704; 1408}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:286}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:206: 
+  accessing uninitialized left-value.
+  assert \initialized(&(system_0 + idp)->qtd);
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:99: 
+  detected recursive call of function merge_sort.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:99: User Error: 
+  Recursive call to merge_sort without assigns clause.
+  Generating probably incomplete assigns to interpret the call. Try to increase
+  the -eva-unroll-recursive-calls parameter or write a correct specification
+  for function merge_sort.
+[kernel:annot:missing-spec] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:95: 
+  Neither code nor specification for function merge_sort, generating default assigns from the prototype
+[eva] using specification for function merge_sort
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:100: 
+  detected recursive call of function merge_sort.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:100: 
+  Using specification of function merge_sort for recursive calls.
+  Analysis of function merge_sort is thus incomplete and its soundness
+  relies on the written specification.
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_4
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_5
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:58: 
+  out of bounds write. assert \valid(L + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:58: 
+  out of bounds read. assert \valid_read(arr + (int)(l + i));
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:58: 
+  Assigning imprecise value to *(L + i)
+  (pointing to __malloc_can_fail_malloc_l11_4 with offsets {0}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:95}
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:58: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:59: 
+  out of bounds write. assert \valid(R + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:59: 
+  out of bounds read. assert \valid_read(arr + (int)((int)(m + 1) + j));
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:59: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:65: 
+  accessing uninitialized left-value. assert \initialized(&(L + i)->price);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:65: 
+  accessing uninitialized left-value. assert \initialized(&(R + j)->price);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:65: 
+  out of bounds read. assert \valid_read(&(L + i)->price);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:65: 
+  out of bounds read. assert \valid_read(&(R + j)->price);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:65: 
+  accessing uninitialized left-value. assert \initialized((L + i)->price);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:65: 
+  accessing uninitialized left-value. assert \initialized((R + j)->price);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:65: 
+  out of bounds read. assert \valid_read((L + i)->price);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:65: 
+  out of bounds read. assert \valid_read((R + j)->price);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:66: 
+  out of bounds write. assert \valid(arr + k);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:66: 
+  Assigning imprecise value to *(arr + k)
+  (pointing to __malloc_w_can_fail_malloc_l11_2 with offsets {0}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:95}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:69: 
+  accessing uninitialized left-value. assert \initialized((L + i)->price);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:69: 
+  accessing uninitialized left-value. assert \initialized((R + j)->price);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:69: 
+  accessing uninitialized left-value. assert \initialized(&(L + i)->id);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:69: 
+  accessing uninitialized left-value. assert \initialized(&(R + j)->id);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:70: 
+  out of bounds write. assert \valid(arr + k);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:70: 
+  Assigning imprecise value to *(arr + k)
+  (pointing to __malloc_w_can_fail_malloc_l11_2 with offsets {0}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:95}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:74: 
+  out of bounds write. assert \valid(arr + k);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:64: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:66: 
+  Assigning imprecise value to *(arr + k)
+  (pointing to __malloc_w_can_fail_malloc_l11_2 with offsets {0; 704}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:95}
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:70: 
+  Assigning imprecise value to *(arr + k)
+  (pointing to __malloc_w_can_fail_malloc_l11_2 with offsets {0; 704}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:95}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:81: 
+  out of bounds write. assert \valid(arr + k);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:81: 
+  out of bounds read. assert \valid_read(L + i);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:81: 
+  Assigning imprecise value to *(arr + k)
+  (pointing to __malloc_w_can_fail_malloc_l11_2 with offsets {0; 704}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:95}
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:80: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:86: 
+  out of bounds write. assert \valid(arr + k);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:86: 
+  out of bounds read. assert \valid_read(R + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:118: 
+  accessing uninitialized left-value. assert \initialized((copy + i)->price);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:237: 
+  Assigning imprecise value to o.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:286}
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:238: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:239: 
+  accessing uninitialized left-value.
+  assert \initialized(&o.products[prid].id);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:239: 
+  accessing uninitialized left-value.
+  assert \initialized(&o.products[prid].qtd);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:241: 
+  accessing uninitialized left-value. assert \initialized(&o.id);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:247: 
+  accessing uninitialized left-value. assert \initialized(&ide);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:247: 
+  accessing uninitialized left-value.
+  assert \initialized(&(orders + ide)->iter);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:247: 
+  out of bounds read. assert \valid_read(&(orders + ide)->iter);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:41: 
+  accessing uninitialized left-value. assert \initialized(&(products + i)->id);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:40: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:42: 
+  accessing uninitialized left-value.
+  assert \initialized(&(products + i)->weight);
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:41: 
+  more than 200(500) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:42: 
+  more than 200(500) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:247: 
+  more than 200(500) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:248: 
+  accessing out of bounds index. assert 0 ≤ product_index;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:248: 
+  accessing uninitialized left-value.
+  assert \initialized(&(orders + ide)->products[product_index].qtd);
+[eva] using specification for function printf_va_11
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:275: 
+  accessing uninitialized left-value.
+  assert \initialized(&(orders + ide)->products[i].weight);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:275: 
+  accessing uninitialized left-value.
+  assert \initialized(&(orders + ide)->products[i].qtd);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:275: 
+  signed overflow.
+  assert
+  -2147483648 ≤
+  (orders + ide)->products[i].weight * (orders + ide)->products[i].qtd;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:275: 
+  signed overflow.
+  assert
+  (orders + ide)->products[i].weight * (orders + ide)->products[i].qtd ≤
+  2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:275: 
+  signed overflow.
+  assert
+  -2147483648 ≤
+  (int)((orders + ide)->products[i].weight * (orders + ide)->products[i].qtd) +
+  weight;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:275: 
+  signed overflow.
+  assert
+  (int)((orders + ide)->products[i].weight * (orders + ide)->products[i].qtd) +
+  weight ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:278: 
+  signed overflow.
+  assert -2147483648 ≤ weight + (int)((system_0 + idp)->weight * qtd);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:278: 
+  signed overflow.
+  assert weight + (int)((system_0 + idp)->weight * qtd) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:280: 
+  accessing uninitialized left-value.
+  assert \initialized(&(orders + ide)->iter);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:282: 
+  accessing uninitialized left-value.
+  assert \initialized(&(orders + ide)->products[product_index].qtd);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:282: 
+  signed overflow.
+  assert -2147483648 ≤ (orders + ide)->products[product_index].qtd + qtd;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:282: 
+  signed overflow.
+  assert (orders + ide)->products[product_index].qtd + qtd ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:288: 
+  accessing uninitialized left-value.
+  assert \initialized(&(system_0 + idp)->weight);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:290: 
+  accessing uninitialized left-value.
+  assert \initialized(&(orders + ide)->iter);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:290: 
+  Assigning imprecise value to (orders + ide)->products[(orders + ide)->iter]
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets {64; 768}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:286}
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:290: 
+  Assigning imprecise value to (orders + ide)->products[(orders + ide)->iter]
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets {140928; 141632}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:286}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:291: 
+  accessing uninitialized left-value.
+  assert \initialized(&(orders + ide)->iter);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:293: 
+  accessing uninitialized left-value.
+  assert \initialized(&(system_0 + idp)->qtd);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:308: 
+  accessing uninitialized left-value.
+  assert \initialized(&(orders + ide)->products[product_index].qtd);
+[eva] using specification for function printf_va_20
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:308: 
+  function printf_va_20: precondition valid_read_string(param0) got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:324: 
+  out of bounds write. assert \valid(&(system_0 + idp)->qtd);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:324: 
+  accessing uninitialized left-value.
+  assert \initialized(&(system_0 + idp)->qtd);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:324: 
+  accessing uninitialized left-value.
+  assert \initialized(&(orders + ide)->products[product_index].qtd);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:324: 
+  signed overflow.
+  assert
+  -2147483648 ≤
+  (system_0 + idp)->qtd + (orders + ide)->products[product_index].qtd;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:324: 
+  signed overflow.
+  assert
+  (system_0 + idp)->qtd + (orders + ide)->products[product_index].qtd ≤
+  2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:340: 
+  accessing uninitialized left-value.
+  assert \initialized(&(orders + ide)->products[i].qtd);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:340: 
+  accessing uninitialized left-value.
+  assert \initialized(&(orders + ide)->products[i].price);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:340: 
+  accessing uninitialized left-value.
+  assert \initialized((orders + ide)->products[i].price);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:340: 
+  out of bounds read. assert \valid_read((orders + ide)->products[i].price);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:340: 
+  signed overflow.
+  assert
+  -2147483648 ≤
+  (orders + ide)->products[i].qtd * *((orders + ide)->products[i].price);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:340: 
+  signed overflow.
+  assert
+  (orders + ide)->products[i].qtd * *((orders + ide)->products[i].price) ≤
+  2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:340: 
+  signed overflow.
+  assert
+  -2147483648 ≤
+  (int)((orders + ide)->products[i].qtd * *((orders + ide)->products[i].price))
+  + price;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:340: 
+  signed overflow.
+  assert
+  (int)((orders + ide)->products[i].qtd * *((orders + ide)->products[i].price))
+  + price ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:136: 
+  out of bounds write. assert \valid(copy + i);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:136: 
+  Assigning imprecise value to *(copy + i)
+  (pointing to __malloc_w_can_fail_malloc_l11_3 with offsets {0}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:286}
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:135: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:149: 
+  accessing uninitialized left-value. assert \initialized(&(copy + i)->qtd);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:149: 
+  out of bounds read. assert \valid_read(&(copy + i)->qtd);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:149: 
+  accessing uninitialized left-value. assert \initialized(&(copy + i)->qtd);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:149: 
+  accessing uninitialized left-value. assert \initialized(&(copy + i)->price);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:149: 
+  out of bounds read. assert \valid_read(&(copy + i)->qtd);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:149: 
+  out of bounds read. assert \valid_read(&(copy + i)->price);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:149: 
+  accessing uninitialized left-value. assert \initialized((copy + i)->price);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:149: 
+  out of bounds read. assert \valid_read((copy + i)->price);
+[eva] using specification for function printf_va_4
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:149: 
+  function printf_va_4: precondition valid_read_string(param0) got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:148: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:184: 
+  Assigning imprecise value to *(system_0 + product_counter)
+  (pointing to __malloc_can_fail_malloc_l11 with offsets [0..7039296],0%704).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:286}
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:184: 
+  too many locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:195: 
+  more than 200(10000) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:206: 
+  more than 200(10000) locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:111: 
+  Assigning imprecise value to *(copy + i)
+  (pointing to __malloc_w_can_fail_malloc_l11_2 with offsets {0}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:286}
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:111: 
+  Assigning imprecise value to *(copy + i)
+  (pointing to __malloc_w_can_fail_malloc_l11_2 with offsets {0; 704}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:286}
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:111: 
+  Assigning imprecise value to *(copy + i)
+  (pointing to __malloc_w_can_fail_malloc_l11_2 with offsets {0; 704; 1408}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:286}
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:111: 
+  Assigning imprecise value to *(copy + i)
+  (pointing to __malloc_w_can_fail_malloc_l11_2 with offsets [0..1511828486784],0%704).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:286}
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:111: 
+  too many locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:99: 
+  Using specification of function merge_sort for recursive calls.
+  Analysis of function merge_sort is thus incomplete and its soundness
+  relies on the written specification.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:58: 
+  Assigning imprecise value to *(L + i)
+  (pointing to __malloc_w_can_fail_malloc_l11_4 with offsets {0}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:58: 
+  Assigning imprecise value to *(L + i)
+  (pointing to __malloc_w_can_fail_malloc_l11_4 with offsets {0; 704}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:58: 
+  Assigning imprecise value to *(L + i)
+  (pointing to __malloc_w_can_fail_malloc_l11_4 with offsets {0; 704; 1408}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:58: 
+  Assigning imprecise value to *(L + i)
+  (pointing to __malloc_w_can_fail_malloc_l11_4 with offsets [0..755914243392],0%704).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:59: 
+  Assigning imprecise value to *(R + j)
+  (pointing to __malloc_w_can_fail_malloc_l11_5 with offsets {0}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:59: 
+  Assigning imprecise value to *(R + j)
+  (pointing to __malloc_w_can_fail_malloc_l11_5 with offsets {0; 704}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:59: 
+  Assigning imprecise value to *(R + j)
+  (pointing to __malloc_w_can_fail_malloc_l11_5 with offsets {0; 704; 1408}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:59: 
+  signed overflow. assert (int)(m + 1) + j ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:59: 
+  Assigning imprecise value to *(R + j)
+  (pointing to __malloc_w_can_fail_malloc_l11_5 with offsets [0..1511828486080],0%704).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:66: 
+  Assigning imprecise value to *(arr + k)
+  (pointing to __malloc_w_can_fail_malloc_l11_2 with offsets {0}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:69: 
+  accessing uninitialized left-value. assert \initialized(&(L + i)->price);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:69: 
+  accessing uninitialized left-value. assert \initialized(&(R + j)->price);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:69: 
+  out of bounds read. assert \valid_read(&(R + j)->price);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:69: 
+  out of bounds read. assert \valid_read((L + i)->price);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:69: 
+  out of bounds read. assert \valid_read((R + j)->price);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:69: 
+  out of bounds read. assert \valid_read(&(R + j)->id);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:70: 
+  Assigning imprecise value to *(arr + k)
+  (pointing to __malloc_w_can_fail_malloc_l11_2 with offsets {0}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:74: 
+  out of bounds read. assert \valid_read(R + j);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:74: 
+  Assigning imprecise value to *(arr + k)
+  (pointing to __malloc_w_can_fail_malloc_l11_2 with offsets {0}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:66: 
+  out of bounds read. assert \valid_read(L + i);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:66: 
+  Assigning imprecise value to *(arr + k)
+  (pointing to __malloc_w_can_fail_malloc_l11_2 with offsets {0; 704}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:69: 
+  out of bounds read. assert \valid_read(&(L + i)->price);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:69: 
+  out of bounds read. assert \valid_read(&(L + i)->id);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:70: 
+  out of bounds read. assert \valid_read(L + i);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:70: 
+  Assigning imprecise value to *(arr + k)
+  (pointing to __malloc_w_can_fail_malloc_l11_2 with offsets {0; 704}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:74: 
+  Assigning imprecise value to *(arr + k)
+  (pointing to __malloc_w_can_fail_malloc_l11_2 with offsets {0; 704}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:66: 
+  Assigning imprecise value to *(arr + k)
+  (pointing to __malloc_w_can_fail_malloc_l11_2 with offsets {0; 704; 1408}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:70: 
+  Assigning imprecise value to *(arr + k)
+  (pointing to __malloc_w_can_fail_malloc_l11_2 with offsets {0; 704; 1408}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:74: 
+  Assigning imprecise value to *(arr + k)
+  (pointing to __malloc_w_can_fail_malloc_l11_2 with offsets {0; 704; 1408}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:66: 
+  Assigning imprecise value to *(arr + k)
+  (pointing to __malloc_w_can_fail_malloc_l11_2 with offsets {0; 704; 1408;
+                                                              2112}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:70: 
+  Assigning imprecise value to *(arr + k)
+  (pointing to __malloc_w_can_fail_malloc_l11_2 with offsets {0; 704; 1408;
+                                                              2112}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:74: 
+  Assigning imprecise value to *(arr + k)
+  (pointing to __malloc_w_can_fail_malloc_l11_2 with offsets {0; 704; 1408;
+                                                              2112}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:66: 
+  Assigning imprecise value to *(arr + k)
+  (pointing to __malloc_w_can_fail_malloc_l11_2 with offsets {0; 704; 1408;
+                                                              2112; 2816}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:70: 
+  Assigning imprecise value to *(arr + k)
+  (pointing to __malloc_w_can_fail_malloc_l11_2 with offsets {0; 704; 1408;
+                                                              2112; 2816}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:74: 
+  Assigning imprecise value to *(arr + k)
+  (pointing to __malloc_w_can_fail_malloc_l11_2 with offsets {0; 704; 1408;
+                                                              2112; 2816}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:66: 
+  Assigning imprecise value to *(arr + k)
+  (pointing to __malloc_w_can_fail_malloc_l11_2 with offsets [0..1511828486784],0%704).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:70: 
+  Assigning imprecise value to *(arr + k)
+  (pointing to __malloc_w_can_fail_malloc_l11_2 with offsets [0..1511828486784],0%704).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:74: 
+  Assigning imprecise value to *(arr + k)
+  (pointing to __malloc_w_can_fail_malloc_l11_2 with offsets [0..1511828486784],0%704).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:81: 
+  Assigning imprecise value to *(arr + k)
+  (pointing to __malloc_w_can_fail_malloc_l11_2 with offsets [0..1511828486784],0%704).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:86: 
+  Assigning imprecise value to *(arr + k)
+  (pointing to __malloc_w_can_fail_malloc_l11_2 with offsets [0..1511828486784],0%704).
+  The imprecision originates from Misaligned
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:65: 
+  more than 200(2147483646) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:65: 
+  more than 200(1073741824) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:69: 
+  more than 200(2147483646) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:69: 
+  more than 200(1073741824) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:118: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:240: 
+  accessing uninitialized left-value.
+  assert \initialized(&o.products[prid].qtd);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:239: 
+  accessing out of bounds index. assert prid < 200;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:41: 
+  out of bounds read. assert \valid_read(&(products + i)->id);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:42: 
+  out of bounds read. assert \valid_read(&(products + i)->weight);
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:41: 
+  more than 200(1100499) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:42: 
+  more than 200(1100489) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:248: 
+  accessing out of bounds index. assert product_index < 200;
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:259: 
+  Assigning imprecise value to *(orders + order_counter)
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets [0..70291136],0%140864).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:286}
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:259: 
+  too many locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:275: 
+  Assigning imprecise value to weight.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:275: 
+  accessing out of bounds index. assert i < 200;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:280: 
+  more than 200(499) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:282: 
+  accessing out of bounds index. assert product_index < 200;
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:282: 
+  Assigning imprecise value to (orders + ide)->products[product_index].qtd
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets [736..70291104],32%64).
+  The imprecision originates from Misaligned
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:282: 
+  more than 200(1098288) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:290: 
+  accessing out of bounds index. assert (orders + ide)->iter < 200;
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:290: 
+  Assigning imprecise value to (orders + ide)->products[(orders + ide)->iter]
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets [64..70290432],0%64).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:286}
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:290: 
+  too many locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:291: 
+  signed overflow. assert -2147483648 ≤ (orders + ide)->iter + 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:291: 
+  signed overflow. assert (orders + ide)->iter + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:291: 
+  Assigning imprecise value to (orders + ide)->iter
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets [32..70150304],32%140864).
+  The imprecision originates from Misaligned
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:291: 
+  more than 200(499) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:293: 
+  more than 200(10000) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:308: 
+  accessing out of bounds index. assert product_index < 200;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:308: 
+  more than 200(1100489) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:324: 
+  accessing out of bounds index. assert product_index < 200;
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:324: 
+  Assigning imprecise value to (system_0 + idp)->qtd
+  (pointing to __malloc_can_fail_malloc_l11 with offsets [672..7039968],672%704).
+  The imprecision originates from Misaligned
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:324: 
+  more than 200(10000) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:325: 
+  more than 200(1100489) locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:340: 
+  Assigning imprecise value to price.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:340: 
+  accessing out of bounds index. assert i < 200;
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:136: 
+  Assigning imprecise value to *(copy + i)
+  (pointing to __malloc_w_can_fail_malloc_l11_3 with offsets {0; 704}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:136: 
+  Assigning imprecise value to *(copy + i)
+  (pointing to __malloc_w_can_fail_malloc_l11_3 with offsets {0; 704; 1408}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:136: 
+  out of bounds read. assert \valid_read(products + i);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:136: 
+  Assigning imprecise value to *(copy + i)
+  (pointing to __malloc_w_can_fail_malloc_l11_3 with offsets [0..1511828486784],0%704).
+  The imprecision originates from Misaligned
+[eva] using specification for function strcmp
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:141: 
+  function strcmp: precondition 'valid_string_s1' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:141: 
+  function strcmp: precondition 'valid_string_s2' got status unknown.
+[eva] FRAMAC_SHARE/libc/string.h:156: 
+  cannot evaluate ACSL term, unsupported ACSL construct: logic function strcmp
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:125: 
+  out of bounds read. assert \valid_read(p1);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:125: 
+  Assigning imprecise value to aux.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:126: 
+  out of bounds write. assert \valid(p1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:126: 
+  out of bounds read. assert \valid_read(p2);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:126: 
+  Assigning imprecise value to *p1
+  (pointing to __malloc_w_can_fail_malloc_l11_3 with offsets {0}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:127: 
+  out of bounds write. assert \valid(p2);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:127: 
+  Assigning imprecise value to *p2
+  (pointing to __malloc_w_can_fail_malloc_l11_3 with offsets {704}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:140: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:127: 
+  Assigning imprecise value to *p2
+  (pointing to __malloc_w_can_fail_malloc_l11_3 with offsets {704; 1408}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:127: 
+  Assigning imprecise value to *p2
+  (pointing to __malloc_w_can_fail_malloc_l11_3 with offsets {704; 1408; 2112}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:127: 
+  Assigning imprecise value to *p2
+  (pointing to __malloc_w_can_fail_malloc_l11_3 with offsets [704..1511828486784],0%704).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:139: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:126: 
+  Assigning imprecise value to *p1
+  (pointing to __malloc_w_can_fail_malloc_l11_3 with offsets {0; 704}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:126: 
+  Assigning imprecise value to *p1
+  (pointing to __malloc_w_can_fail_malloc_l11_3 with offsets {0; 704; 1408}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:126: 
+  Assigning imprecise value to *p1
+  (pointing to __malloc_w_can_fail_malloc_l11_3 with offsets [0..1511828486080],0%704).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:195: 
+  Assigning imprecise value to (system_0 + idp)->qtd
+  (pointing to __malloc_can_fail_malloc_l11 with offsets [672..7039968],672%704).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:206: 
+  Assigning imprecise value to (system_0 + idp)->qtd
+  (pointing to __malloc_can_fail_malloc_l11 with offsets [672..7039968],672%704).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:216: 
+  Assigning imprecise value to *((system_0 + idp)->price)
+  (pointing to __malloc_w_can_fail_malloc_l11_1 with offsets {0}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:111: 
+  Assigning imprecise value to *(copy + i)
+  (pointing to __malloc_w_can_fail_malloc_l11_2 with offsets {0}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:111: 
+  Assigning imprecise value to *(copy + i)
+  (pointing to __malloc_w_can_fail_malloc_l11_2 with offsets {0; 704}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:111: 
+  Assigning imprecise value to *(copy + i)
+  (pointing to __malloc_w_can_fail_malloc_l11_2 with offsets {0; 704; 1408}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:111: 
+  Assigning imprecise value to *(copy + i)
+  (pointing to __malloc_w_can_fail_malloc_l11_2 with offsets [0..1511828486784],0%704).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:237: 
+  Assigning imprecise value to o.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:240: 
+  Assigning imprecise value to qtd.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:241: 
+  Assigning imprecise value to ide.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:248: 
+  out of bounds read.
+  assert \valid_read(&(orders + ide)->products[product_index].qtd);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:282: 
+  Assigning imprecise value to (orders + ide)->products[product_index].qtd
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets [736..70431968],32%64).
+  The imprecision originates from Misaligned
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:282: 
+  more than 200(1100489) locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:287: 
+  Assigning imprecise value to p.price.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:288: 
+  Assigning imprecise value to p.weight.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:290: 
+  accessing out of bounds index. assert 0 ≤ (orders + ide)->iter;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:290: 
+  out of bounds write.
+  assert \valid(&(orders + ide)->products[(orders + ide)->iter]);
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:290: 
+  all target addresses were invalid. This path is assumed to be dead.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:293: 
+  Assigning imprecise value to (system_0 + idp)->qtd
+  (pointing to __malloc_can_fail_malloc_l11 with offsets [672..7039968],672%704).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:136: 
+  Assigning imprecise value to *(copy + i)
+  (pointing to __malloc_w_can_fail_malloc_l11_3 with offsets {0}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:136: 
+  Assigning imprecise value to *(copy + i)
+  (pointing to __malloc_w_can_fail_malloc_l11_3 with offsets [0..1511828487488],0%704).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:139: 
+  signed overflow. assert -2147483648 ≤ size - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:139: 
+  signed overflow. assert size - 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:127: 
+  Assigning imprecise value to *p2
+  (pointing to __malloc_w_can_fail_malloc_l11_3 with offsets [704..1511828487488],0%704).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:140: 
+  signed overflow. assert j + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:140: 
+  signed overflow. assert i + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:126: 
+  Assigning imprecise value to *p1
+  (pointing to __malloc_w_can_fail_malloc_l11_3 with offsets [0..1511828486784],0%704).
+  The imprecision originates from Misaligned
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:149: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:148: 
+  signed overflow. assert i + 1 ≤ 2147483647;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:149: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:259: 
+  Assigning imprecise value to *(orders + order_counter)
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets [0..70291136],0%140864).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:270: 
+  signed overflow. assert -2147483648 ≤ order_counter - ide;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:275: 
+  out of bounds read. assert \valid_read(&(orders + ide)->products[i].weight);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:275: 
+  out of bounds read. assert \valid_read(&(orders + ide)->products[i].qtd);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:280: 
+  out of bounds read. assert \valid_read(&(orders + ide)->iter);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:282: 
+  out of bounds write.
+  assert \valid(&(orders + ide)->products[product_index].qtd);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:282: 
+  Assigning imprecise value to (orders + ide)->products[product_index].qtd
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets [0..70431968];
+  __malloc_w_can_fail_malloc_l11_1 with offsets {0}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:289: 
+  Assigning imprecise value to p.qtd.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:290: 
+  out of bounds read. assert \valid_read(&(orders + ide)->iter);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:290: 
+  Assigning imprecise value to (orders + ide)->products[(orders + ide)->iter]
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets [0..70431296]).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:291: 
+  out of bounds write. assert \valid(&(orders + ide)->iter);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:291: 
+  Assigning imprecise value to (orders + ide)->iter
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets [0..70431968];
+  __malloc_w_can_fail_malloc_l11_1 with offsets {0}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:303: 
+  signed overflow. assert -2147483648 ≤ order_counter - ide;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:308: 
+  out of bounds read.
+  assert \valid_read(&(orders + ide)->products[product_index].qtd);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:318: 
+  signed overflow. assert -2147483648 ≤ order_counter - ide;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:324: 
+  out of bounds read.
+  assert \valid_read(&(orders + ide)->products[product_index].qtd);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:325: 
+  out of bounds write.
+  assert \valid(&(orders + ide)->products[product_index].qtd);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:336: 
+  signed overflow. assert -2147483648 ≤ order_counter - ide;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:340: 
+  out of bounds read. assert \valid_read(&(orders + ide)->products[i].qtd);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:340: 
+  out of bounds read. assert \valid_read(&(orders + ide)->products[i].price);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:351: 
+  signed overflow. assert -2147483648 ≤ order_counter - ide;
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:184: 
+  Assigning imprecise value to *(system_0 + product_counter)
+  (pointing to __malloc_can_fail_malloc_l11 with offsets [0..7039296],0%704).
+  The imprecision originates from Misaligned
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:195: 
+  more than 200(10000) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:216: 
+  more than 200(10000) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/266/main.c:278: 
+  more than 200(10000) elements to enumerate. Approximating.
+[eva] done for function main
+[scope:rm_asserts] removing 22 assertion(s)
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function in_order:
+  i ∈ [0..2147483647]
+  __retres ∈ [-1..100045]
+[eva:final-states] Values at end of function swap:
+  aux ∈
+     {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+      (origin: Misaligned) }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_3[0..188978561023] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+                                  [188978561024..18446744073709551615] ∈
+                                  UNINITIALIZED
+[eva:final-states] Values at end of function can_fail_malloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈
+          {{ NULL ; (void *)&__malloc_can_fail_malloc_l11 ;
+             (void *)&__malloc_can_fail_malloc_l11_0 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_1 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_2 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_3 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_4 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_5 }}
+[eva:final-states] Values at end of function alphabetic_sort:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  i ∈ [0..2147483647]
+  j ∈ [1..2147483647] or UNINITIALIZED
+  copy ∈
+      {{ NULL ; (product *)&__malloc_w_can_fail_malloc_l11_3 }} or ESCAPINGADDR
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+                (origin: Misaligned) }}
+               [1] ∈ [--..--]
+  __malloc_w_can_fail_malloc_l11_3[0..188978561023] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+                                  [188978561024..18446744073709551615] ∈
+                                  UNINITIALIZED
+[eva:final-states] Values at end of function merge:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  i ∈ [1..2147483647]
+  j ∈ [0..2147483647]
+  k ∈ [0..2147483647]
+  n1 ∈ [1..1073741824]
+  n2 ∈ [-1073741822..2147483646]
+  L ∈
+   {{ NULL ; (product *)&__malloc_w_can_fail_malloc_l11_4 }} or ESCAPINGADDR
+  R ∈
+   {{ NULL ; (product *)&__malloc_w_can_fail_malloc_l11_5 }} or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_2[0..188978560935] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_4[0..94489280511] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_5[0..188978560847] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+                                  [188978560848..18446744073709551607] ∈
+                                  UNINITIALIZED
+[eva:final-states] Values at end of function system_sort:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  i ∈ [0..2147483647]
+  copy ∈
+      {{ NULL ; (product *)&__malloc_w_can_fail_malloc_l11_2 }} or ESCAPINGADDR
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+                (origin: Misaligned) }}
+               [1] ∈ [--..--]
+  __malloc_w_can_fail_malloc_l11_2[0..188978560935] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_4[0..94489280511] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_5[0..188978560847] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+                                  [188978560848..18446744073709551607] ∈
+                                  UNINITIALIZED
+[eva:final-states] Values at end of function main:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  input[0] ∈ {120}
+       [1..79] ∈ [--..--] or UNINITIALIZED
+  p.id ∈ [0..2147483647] or UNINITIALIZED
+   {.desc[0..62]; .price; .weight; .qtd; .[bits 536 to 575]} ∈
+   {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+    (origin: Misaligned) }} or UNINITIALIZED
+  system_0 ∈ {{ NULL ; (product *)&__malloc_can_fail_malloc_l11 }}
+  o ∈
+   {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+    (origin: Misaligned) }} or UNINITIALIZED
+  orders ∈ {{ NULL ; (order *)&__malloc_can_fail_malloc_l11_0 }}
+  product_counter ∈ [0..2147483647]
+  order_counter ∈ [0..2147483647]
+  ide ∈
+     {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+      (origin: Misaligned) }} or UNINITIALIZED
+  idp ∈ [--..--] or UNINITIALIZED
+  qtd ∈
+     {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+      (origin: Misaligned) }} or UNINITIALIZED
+  price ∈
+       {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+        (origin: Misaligned) }} or UNINITIALIZED
+  weight ∈
+        {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+         (origin: Misaligned) }} or UNINITIALIZED
+  i ∈ [0..200] or UNINITIALIZED
+  product_index ∈ [-1..199] or UNINITIALIZED
+  __retres ∈ {0}
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+                (origin: Misaligned) }}
+               [1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11[0..879999] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+                               (origin: Misaligned) }} or UNINITIALIZED
+  __malloc_can_fail_malloc_l11_0[0..8803999] ∈
+                                {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+                                 (origin: Misaligned) }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_1[0..3] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_2[0..188978560935] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_3[0..188978561023] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+                                  [188978561024..18446744073709551615] ∈
+                                  UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_4[0..94489280511] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_5[0..188978560847] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+                                  [188978560848..18446744073709551607] ∈
+                                  UNINITIALIZED
+[eva:final-states] Values at end of function merge_sort:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  __malloc_w_can_fail_malloc_l11_2[0..188978560935] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_4[0..94489280511] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_5[0..188978560847] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+                                  [188978560848..18446744073709551607] ∈
+                                  UNINITIALIZED
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  8 functions analyzed (out of 10): 80% coverage.
+  In these functions, 314 statements reached (out of 314): 100% coverage.
+  ----------------------------------------------------------------------------
+  Some errors and warnings have been raised during the analysis:
+    by the Eva analyzer:      1 error    0 warnings
+    by the Frama-C kernel:    0 errors    0 warnings
+  ----------------------------------------------------------------------------
+  186 alarms generated by the analysis:
+      70 invalid memory accesses
+      55 accesses to uninitialized left-values
+      51 integer overflows
+      10 accesses out of bounds index
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     0 unknown     0 invalid      0 total
+    Preconditions    60 valid    20 unknown     0 invalid     80 total
+  75% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[eva] User Error: Deferred error message was emitted during execution. See above messages for more information.
+[kernel] Plug-in eva aborted: invalid user input.

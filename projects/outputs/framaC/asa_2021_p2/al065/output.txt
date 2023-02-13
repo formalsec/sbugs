@@ -1,0 +1,273 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  
+[eva] using specification for function scanf_va_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:61: 
+  signed overflow. assert n + 2 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:62: 
+  signed overflow. assert -2147483648 ≤ v * v;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:62: 
+  signed overflow. assert v * v ≤ 2147483647;
+[eva] using specification for function time
+[eva] using specification for function srand
+[eva] using specification for function rand
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:18: 
+  calloc out of bounds: assert(nmemb * size <= SIZE_MAX)
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:18: 
+  allocating variable __calloc_can_fail_calloc_l18
+[eva] using specification for function scanf_va_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:66: 
+  out of bounds write. assert \valid(matrix + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:67: 
+  signed overflow. assert (int)(i * v) + (int)(n + 1) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:67: 
+  out of bounds write.
+  assert \valid(matrix + (int)((int)(i * v) + (int)(n + 1)));
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:64: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:67: 
+  signed overflow. assert -2147483648 ≤ i * v;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:67: 
+  signed overflow. assert i * v ≤ 2147483647;
+[eva] using specification for function scanf_va_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:71: 
+  signed overflow. assert -2147483648 ≤ a * v;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:71: 
+  signed overflow. assert a * v ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:71: 
+  signed overflow. assert -2147483648 ≤ (int)(a * v) + b;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:71: 
+  signed overflow. assert (int)(a * v) + b ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:71: 
+  out of bounds write. assert \valid(matrix + (int)((int)(a * v) + b));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:72: 
+  signed overflow. assert -2147483648 ≤ b * v;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:72: 
+  signed overflow. assert b * v ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:72: 
+  signed overflow. assert -2147483648 ≤ (int)(b * v) + a;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:72: 
+  signed overflow. assert (int)(b * v) + a ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:72: 
+  out of bounds write. assert \valid(matrix + (int)((int)(b * v) + a));
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:69: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:18: 
+  allocating variable __calloc_can_fail_calloc_l18_0
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:39: 
+  out of bounds write. assert \valid(parent + s);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:18: 
+  allocating variable __calloc_can_fail_calloc_l18_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:8: 
+  signed overflow. assert v + 2 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:18: 
+  allocating variable __calloc_can_fail_calloc_l18_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:10: 
+  out of bounds write. assert \valid(visited + s);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:11: 
+  out of bounds write. assert \valid(queue + tmp_1);
+                       (tmp_1 from tail++)
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:14: 
+  out of bounds read. assert \valid_read(queue + tmp_2);
+                      (tmp_2 from head++)
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:15: 
+  out of bounds write. assert \valid(visited + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:17: 
+  out of bounds read. assert \valid_read(visited + j);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:16: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:17: 
+  out of bounds read. assert \valid_read(matrix + (int)((int)(i * v) + j));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:24: 
+  out of bounds write. assert \valid(queue + tmp_3);
+                       (tmp_3 from tail++)
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:25: 
+  out of bounds write. assert \valid(parent + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:26: 
+  out of bounds write. assert \valid(visited + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:24: 
+  signed overflow. assert tail + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:13: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:17: 
+  signed overflow. assert i * v ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:17: 
+  signed overflow. assert (int)(i * v) + j ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:14: 
+  signed overflow. assert head + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:19: 
+  out of bounds write. assert \valid(parent + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:41: 
+  out of bounds read. assert \valid_read(parent + t);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:41: 
+  signed overflow. assert -2147483648 ≤ *(parent + t) * v;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:41: 
+  signed overflow. assert *(parent + t) * v ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:41: 
+  signed overflow. assert -2147483648 ≤ (int)(*(parent + t) * v) + t;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:41: 
+  signed overflow. assert (int)(*(parent + t) * v) + t ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:41: 
+  out of bounds read.
+  assert \valid_read(matrix + (int)((int)(*(parent + t) * v) + t));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:43: 
+  out of bounds read. assert \valid_read(parent + t);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:44: 
+  out of bounds read. assert \valid_read(parent + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:44: 
+  signed overflow. assert -2147483648 ≤ *(parent + i) * v;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:44: 
+  signed overflow. assert *(parent + i) * v ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:44: 
+  signed overflow. assert -2147483648 ≤ (int)(*(parent + i) * v) + i;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:44: 
+  signed overflow. assert (int)(*(parent + i) * v) + i ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:44: 
+  out of bounds read.
+  assert \valid_read(matrix + (int)((int)(*(parent + i) * v) + i));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:44: 
+  out of bounds read. assert \valid_read(parent + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:44: 
+  signed overflow. assert -2147483648 ≤ *(parent + i) * v;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:44: 
+  signed overflow. assert *(parent + i) * v ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:44: 
+  signed overflow. assert (int)(*(parent + i) * v) + i ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:44: 
+  out of bounds read.
+  assert \valid_read(matrix + (int)((int)(*(parent + i) * v) + i));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:43: 
+  out of bounds read. assert \valid_read(parent + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:48: 
+  out of bounds read. assert \valid_read(parent + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:48: 
+  signed overflow. assert -2147483648 ≤ *(parent + i) * v;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:48: 
+  signed overflow. assert *(parent + i) * v ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:48: 
+  signed overflow. assert (int)(*(parent + i) * v) + i ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:48: 
+  out of bounds write.
+  assert \valid(matrix + (int)((int)(*(parent + i) * v) + i));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:48: 
+  signed overflow.
+  assert
+  -2147483648 ≤ *(matrix + (int)((int)(*(parent + i) * v) + i)) - added_flow;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:48: 
+  signed overflow.
+  assert
+  *(matrix + (int)((int)(*(parent + i) * v) + i)) - added_flow ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:49: 
+  signed overflow. assert -2147483648 ≤ i * v;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:49: 
+  signed overflow. assert i * v ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:49: 
+  out of bounds read. assert \valid_read(parent + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:49: 
+  signed overflow. assert (int)(i * v) + *(parent + i) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:49: 
+  out of bounds write.
+  assert \valid(matrix + (int)((int)(i * v) + *(parent + i)));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:49: 
+  signed overflow.
+  assert
+  -2147483648 ≤ *(matrix + (int)((int)(i * v) + *(parent + i))) + added_flow;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:49: 
+  signed overflow.
+  assert
+  *(matrix + (int)((int)(i * v) + *(parent + i))) + added_flow ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:47: 
+  out of bounds read. assert \valid_read(parent + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:40: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:43: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:47: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:51: 
+  signed overflow. assert -2147483648 ≤ out + added_flow;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p2/al065/proj2.c:51: 
+  signed overflow. assert out + added_flow ≤ 2147483647;
+[eva] using specification for function printf_va_1
+[eva] done for function main
+[scope:rm_asserts] removing 9 assertion(s)
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function can_fail_calloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈
+          {{ NULL ; (void *)&__calloc_can_fail_calloc_l18 ;
+             (void *)&__calloc_can_fail_calloc_l18_0 ;
+             (void *)&__calloc_can_fail_calloc_l18_1 ;
+             (void *)&__calloc_can_fail_calloc_l18_2 }}
+[eva:final-states] Values at end of function bfs:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  visited ∈ ESCAPINGADDR
+  queue ∈ ESCAPINGADDR
+  head ∈ [1..2147483647]
+  tail ∈ [1..2147483647]
+  i ∈ [0..2147483644] or UNINITIALIZED
+  j ∈ [0..2147483647] or UNINITIALIZED
+  __retres ∈ {0; 1}
+  __calloc_can_fail_calloc_l18_0[bits 0 to 31] ∈ {-1}
+                                [bits 32 to 68719476639]# ∈
+                                [0..2147483644] repeated %32 
+                                [8589934580..18446744073709551615] ∈ {0}
+[eva:final-states] Values at end of function EdmonsKarp:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  i ∈ {0} or UNINITIALIZED
+  out ∈ [--..--]
+  parent ∈ ESCAPINGADDR
+  __calloc_can_fail_calloc_l18[0..8589934591] ∈ [--..--]
+                              [8589934592..18446744073709551615] ∈ {0}
+[eva:final-states] Values at end of function main:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  n ∈ [-2147483648..2147483643]
+  k ∈ [--..--]
+  i ∈ [0..2147483647]
+  a ∈ [--..--] or UNINITIALIZED
+  b ∈ [--..--] or UNINITIALIZED
+  c ∈ [--..--] or UNINITIALIZED
+  v ∈ [-2147483646..2147483647]
+  matrix ∈
+        {{ NULL ; (int *)&__calloc_can_fail_calloc_l18 }} or ESCAPINGADDR
+  __retres ∈ {0}
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+  __calloc_can_fail_calloc_l18[0..8589934591] ∈ [--..--]
+                              [8589934592..18446744073709551615] ∈ {0}
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  4 functions analyzed (out of 6): 66% coverage.
+  In these functions, 109 statements reached (out of 109): 100% coverage.
+  ----------------------------------------------------------------------------
+  No errors or warnings raised during the analysis.
+  ----------------------------------------------------------------------------
+  70 alarms generated by the analysis:
+      42 integer overflows
+      28 invalid memory accesses
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     0 unknown     0 invalid      0 total
+    Preconditions    18 valid     0 unknown     0 invalid     18 total
+  100% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[report] Classification
+[report] Output /home/fmarques/sbugs/projects/outputs/framaC/asa_2021_p2/al065/errors.json
+[report] Reviews     :   61
+[report] Unclassified:   61

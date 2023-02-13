@@ -1,0 +1,1294 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  V ∈ {0}
+  avenues ∈ {0}
+  streets ∈ {0}
+  nMarkets ∈ {0}
+  head ∈ {0}
+  order[0][0] ∈ {6}
+       [0][1] ∈ {2}
+       [0][2] ∈ {1}
+       [0][3] ∈ {4}
+       [0][4] ∈ {3}
+       [0][5] ∈ {5}
+       [1][0] ∈ {0}
+       [1][1] ∈ {2}
+       [1][2] ∈ {1}
+       [1][3] ∈ {4}
+       [1][4] ∈ {3}
+       [1][5] ∈ {6}
+  way[0][0] ∈ {1}
+     [0][1..5] ∈ {0}
+     [1][0..4] ∈ {1}
+     [1][5] ∈ {0}
+[eva] using specification for function scanf_va_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:264: 
+  signed overflow. assert -2147483648 ≤ avenues * streets;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:264: 
+  signed overflow. assert avenues * streets ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:264: 
+  signed overflow. assert (int)(avenues * streets) + 2 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:266: 
+  signed overflow. assert -2147483648 ≤ avenues * streets;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:266: 
+  signed overflow. assert avenues * streets ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:266: 
+  signed overflow. assert -2147483648 ≤ V + (int)(avenues * streets);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:266: 
+  signed overflow. assert V + (int)(avenues * streets) ≤ 2147483647;
+[eva] using specification for function time
+[eva] using specification for function srand
+[eva] using specification for function rand
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:269: 
+  out of bounds write. assert \valid(&(map + 0)->type);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:270: 
+  out of bounds write. assert \valid(&(map + 0)->h);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:272: 
+  out of bounds write. assert \valid(&(map + (int)(V - 1))->type);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:272: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:273: 
+  out of bounds write. assert \valid(&(map + (int)(V - 1))->h);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:273: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:274: 
+  out of bounds write. assert \valid(&(map + (int)(V - 1))->e);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:274: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:143: 
+  signed overflow. assert index_0 + V ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:143: 
+  signed overflow. assert V * 2 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:278: 
+  out of bounds write. assert \valid(&(map + i)->type);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:279: 
+  out of bounds write. assert \valid(&(map + twin)->type);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:279: 
+  more than 200(2147483644) locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_0
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:280: 
+  out of bounds write. assert \valid(&(map + i)->corners);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:281: 
+  out of bounds write. assert \valid(&(map + twin)->corners);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:281: 
+  more than 200(2147483644) locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:282: 
+  out of bounds write. assert \valid(&(map + i)->flow);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:283: 
+  out of bounds write. assert \valid(&(map + twin)->flow);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:283: 
+  more than 200(2147483644) locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_4
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:170: 
+  out of bounds write. assert \valid(&coord->x);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:170: 
+  division by zero. assert avenues_0 ≢ 0;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:171: 
+  division by zero. assert avenues_0 ≢ 0;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:290: 
+  out of bounds read. assert \valid_read(&(map + i)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:290: 
+  out of bounds write. assert \valid((map + i)->corners + 6);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:291: 
+  out of bounds read. assert \valid_read(&(map + i)->flow);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:291: 
+  out of bounds write. assert \valid((map + i)->flow + 6);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:293: 
+  accessing uninitialized left-value.
+  assert \initialized(&(map + twin)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:293: 
+  out of bounds read. assert \valid_read(&(map + twin)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:293: 
+  out of bounds write. assert \valid((map + twin)->corners + 6);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:294: 
+  accessing uninitialized left-value. assert \initialized(&(map + twin)->flow);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:294: 
+  out of bounds read. assert \valid_read(&(map + twin)->flow);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:294: 
+  out of bounds write. assert \valid((map + twin)->flow + 6);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:303: 
+  out of bounds read. assert \valid_read(&(map + i)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:304: 
+  accessing uninitialized left-value.
+  assert \initialized(&(map + twin)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:304: 
+  out of bounds read. assert \valid_read(&(map + twin)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:304: 
+  out of bounds write. assert \valid((map + twin)->corners + 2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:314: 
+  out of bounds read. assert \valid_read(&(map + i)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:315: 
+  accessing uninitialized left-value.
+  assert \initialized(&(map + twin)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:315: 
+  out of bounds read. assert \valid_read(&(map + twin)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:315: 
+  out of bounds write. assert \valid((map + twin)->corners + 1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:319: 
+  out of bounds read. assert \valid_read(&(map + i)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:320: 
+  out of bounds read. assert \valid_read(&(map + i)->flow);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:322: 
+  accessing uninitialized left-value.
+  assert \initialized(&(map + twin)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:322: 
+  out of bounds read. assert \valid_read(&(map + twin)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:322: 
+  out of bounds write. assert \valid((map + twin)->corners + 4);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:323: 
+  accessing uninitialized left-value. assert \initialized(&(map + twin)->flow);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:323: 
+  out of bounds read. assert \valid_read(&(map + twin)->flow);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:323: 
+  out of bounds write. assert \valid((map + twin)->flow + 4);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:325: 
+  out of bounds read. assert \valid_read(&(map + i)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:326: 
+  accessing uninitialized left-value.
+  assert \initialized(&(map + twin)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:326: 
+  out of bounds read. assert \valid_read(&(map + twin)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:326: 
+  out of bounds write. assert \valid((map + twin)->corners + 4);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:330: 
+  out of bounds read. assert \valid_read(&(map + i)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:331: 
+  out of bounds read. assert \valid_read(&(map + i)->flow);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:333: 
+  accessing uninitialized left-value.
+  assert \initialized(&(map + twin)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:333: 
+  out of bounds read. assert \valid_read(&(map + twin)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:333: 
+  out of bounds write. assert \valid((map + twin)->corners + 3);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:334: 
+  accessing uninitialized left-value. assert \initialized(&(map + twin)->flow);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:334: 
+  out of bounds read. assert \valid_read(&(map + twin)->flow);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:334: 
+  out of bounds write. assert \valid((map + twin)->flow + 3);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:336: 
+  out of bounds read. assert \valid_read(&(map + i)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:337: 
+  accessing uninitialized left-value.
+  assert \initialized(&(map + twin)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:337: 
+  out of bounds read. assert \valid_read(&(map + twin)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:337: 
+  out of bounds write. assert \valid((map + twin)->corners + 3);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:340: 
+  out of bounds read. assert \valid_read(&(map + i)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:341: 
+  out of bounds read. assert \valid_read(&(map + i)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:342: 
+  out of bounds read. assert \valid_read(&(map + i)->flow);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:343: 
+  out of bounds read. assert \valid_read(&(map + i)->flow);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:345: 
+  accessing uninitialized left-value.
+  assert \initialized(&(map + twin)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:345: 
+  out of bounds read. assert \valid_read(&(map + twin)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:345: 
+  out of bounds write. assert \valid((map + twin)->corners + 5);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:346: 
+  accessing uninitialized left-value.
+  assert \initialized(&(map + twin)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:346: 
+  out of bounds read. assert \valid_read(&(map + twin)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:346: 
+  out of bounds write. assert \valid((map + twin)->corners + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:347: 
+  accessing uninitialized left-value. assert \initialized(&(map + twin)->flow);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:347: 
+  out of bounds read. assert \valid_read(&(map + twin)->flow);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:347: 
+  out of bounds write. assert \valid((map + twin)->flow + 5);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:348: 
+  accessing uninitialized left-value. assert \initialized(&(map + twin)->flow);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:348: 
+  out of bounds read. assert \valid_read(&(map + twin)->flow);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:348: 
+  out of bounds write. assert \valid((map + twin)->flow + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:351: 
+  out of bounds write. assert \valid(&(map + i)->h);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:352: 
+  out of bounds write. assert \valid(&(map + i)->e);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:353: 
+  out of bounds write. assert \valid(&(map + twin)->h);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:353: 
+  more than 200(2147483644) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:354: 
+  out of bounds write. assert \valid(&(map + twin)->e);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:354: 
+  more than 200(2147483644) locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:276: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:290: 
+  accessing uninitialized left-value. assert \initialized(&(map + i)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:291: 
+  accessing uninitialized left-value. assert \initialized(&(map + i)->flow);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:297: 
+  accessing uninitialized left-value. assert \initialized(&(map + i)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:297: 
+  out of bounds read. assert \valid_read(&(map + i)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:297: 
+  out of bounds write. assert \valid((map + i)->corners + 2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:298: 
+  accessing uninitialized left-value. assert \initialized(&(map + i)->flow);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:298: 
+  out of bounds read. assert \valid_read(&(map + i)->flow);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:298: 
+  out of bounds write. assert \valid((map + i)->flow + 2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:300: 
+  accessing uninitialized left-value.
+  assert \initialized(&(map + twin)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:300: 
+  out of bounds read. assert \valid_read(&(map + twin)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:300: 
+  out of bounds write. assert \valid((map + twin)->corners + 2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:301: 
+  accessing uninitialized left-value. assert \initialized(&(map + twin)->flow);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:301: 
+  out of bounds read. assert \valid_read(&(map + twin)->flow);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:301: 
+  out of bounds write. assert \valid((map + twin)->flow + 2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:303: 
+  accessing uninitialized left-value. assert \initialized(&(map + i)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:303: 
+  out of bounds write. assert \valid((map + i)->corners + 2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:308: 
+  accessing uninitialized left-value. assert \initialized(&(map + i)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:308: 
+  out of bounds read. assert \valid_read(&(map + i)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:308: 
+  out of bounds write. assert \valid((map + i)->corners + 1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:309: 
+  accessing uninitialized left-value. assert \initialized(&(map + i)->flow);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:309: 
+  out of bounds read. assert \valid_read(&(map + i)->flow);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:309: 
+  out of bounds write. assert \valid((map + i)->flow + 1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:311: 
+  accessing uninitialized left-value.
+  assert \initialized(&(map + twin)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:311: 
+  out of bounds read. assert \valid_read(&(map + twin)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:311: 
+  out of bounds write. assert \valid((map + twin)->corners + 1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:312: 
+  accessing uninitialized left-value. assert \initialized(&(map + twin)->flow);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:312: 
+  out of bounds read. assert \valid_read(&(map + twin)->flow);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:312: 
+  out of bounds write. assert \valid((map + twin)->flow + 1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:314: 
+  accessing uninitialized left-value. assert \initialized(&(map + i)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:314: 
+  out of bounds write. assert \valid((map + i)->corners + 1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:319: 
+  accessing uninitialized left-value. assert \initialized(&(map + i)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:319: 
+  out of bounds write. assert \valid((map + i)->corners + 4);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:320: 
+  accessing uninitialized left-value. assert \initialized(&(map + i)->flow);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:320: 
+  out of bounds write. assert \valid((map + i)->flow + 4);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:325: 
+  accessing uninitialized left-value. assert \initialized(&(map + i)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:325: 
+  out of bounds write. assert \valid((map + i)->corners + 4);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:330: 
+  accessing uninitialized left-value. assert \initialized(&(map + i)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:330: 
+  out of bounds write. assert \valid((map + i)->corners + 3);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:331: 
+  accessing uninitialized left-value. assert \initialized(&(map + i)->flow);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:331: 
+  out of bounds write. assert \valid((map + i)->flow + 3);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:336: 
+  accessing uninitialized left-value. assert \initialized(&(map + i)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:336: 
+  out of bounds write. assert \valid((map + i)->corners + 3);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:340: 
+  accessing uninitialized left-value. assert \initialized(&(map + i)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:340: 
+  out of bounds write. assert \valid((map + i)->corners + 5);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:341: 
+  accessing uninitialized left-value. assert \initialized(&(map + i)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:341: 
+  out of bounds write. assert \valid((map + i)->corners + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:342: 
+  accessing uninitialized left-value. assert \initialized(&(map + i)->flow);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:342: 
+  out of bounds write. assert \valid((map + i)->flow + 5);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:343: 
+  accessing uninitialized left-value. assert \initialized(&(map + i)->flow);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:343: 
+  out of bounds write. assert \valid((map + i)->flow + 0);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:278: 
+  more than 200(2147483644) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:280: 
+  more than 200(2147483644) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:282: 
+  more than 200(2147483644) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:351: 
+  more than 200(2147483644) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:352: 
+  more than 200(2147483644) locations to update in array. Approximating.
+[eva] using specification for function scanf_va_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:359: 
+  out of bounds write. assert \valid(&(map + 0)->e);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:359: 
+  signed overflow. assert -nHouses ≤ 2147483647;
+[eva] using specification for function scanf_va_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:163: 
+  signed overflow. assert -2147483648 ≤ street - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:164: 
+  signed overflow. assert -2147483648 ≤ street * avenues;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:164: 
+  signed overflow. assert street * avenues ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:164: 
+  signed overflow. assert -2147483648 ≤ (int)(street * avenues) + avenue;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:164: 
+  signed overflow. assert (int)(street * avenues) + avenue ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:125: 
+  division by zero. assert (int)(V - 1) ≢ 0;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:369: 
+  out of bounds write. assert \valid(&(map + index_0)->type);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:369: 
+  more than 200(2147483648) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:372: 
+  accessing uninitialized left-value.
+  assert \initialized(&(map + twin_0)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:372: 
+  out of bounds read. assert \valid_read(&(map + twin_0)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:372: 
+  out of bounds write. assert \valid((map + twin_0)->corners + direction);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:371: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:374: 
+  accessing uninitialized left-value.
+  assert \initialized(&(map + twin_0)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:374: 
+  out of bounds read. assert \valid_read(&(map + twin_0)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:374: 
+  out of bounds write. assert \valid((map + twin_0)->corners + 0);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:362: 
+  starting to merge loop iterations
+[eva] using specification for function scanf_va_4
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:383: 
+  accessing uninitialized left-value.
+  assert \initialized(&(map + index_1)->type);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:383: 
+  out of bounds read. assert \valid_read(&(map + index_1)->type);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:383: 
+  accessing uninitialized left-value.
+  assert \initialized(&(map + index_1)->visited);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:383: 
+  out of bounds read. assert \valid_read(&(map + index_1)->visited);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:384: 
+  out of bounds write. assert \valid(&(map + index_1)->visited);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:384: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:385: 
+  out of bounds write. assert \valid(&(map + (int)(V - 1))->e);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:385: 
+  accessing uninitialized left-value.
+  assert \initialized(&(map + (int)(V - 1))->e);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:385: 
+  signed overflow. assert -2147483648 ≤ (map + (int)(V - 1))->e + 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:385: 
+  signed overflow. assert (map + (int)(V - 1))->e + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:385: 
+  Assigning imprecise value to (map + (V - 1))->e
+  (pointing to __malloc_can_fail_malloc_l11 with offsets [288..687194767008],288%320).
+  The imprecision originates from Merge
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:385: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:386: 
+  accessing uninitialized left-value.
+  assert \initialized(&(map + index_1)->type);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:386: 
+  out of bounds read. assert \valid_read(&(map + index_1)->type);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:386: 
+  accessing uninitialized left-value.
+  assert \initialized(&(map + index_1)->visited);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:386: 
+  out of bounds read. assert \valid_read(&(map + index_1)->visited);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:388: 
+  accessing uninitialized left-value. assert \initialized(&(map + index_1)->e);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:388: 
+  out of bounds read. assert \valid_read(&(map + index_1)->e);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:389: 
+  accessing uninitialized left-value.
+  assert \initialized(&(map + index_1)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:389: 
+  out of bounds read. assert \valid_read(&(map + index_1)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:389: 
+  out of bounds write. assert \valid((map + index_1)->corners + 5);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:391: 
+  accessing uninitialized left-value.
+  assert \initialized(&(map + index_1)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:391: 
+  out of bounds read. assert \valid_read(&(map + index_1)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:391: 
+  out of bounds write. assert \valid((map + index_1)->corners + direction);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:390: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:393: 
+  accessing uninitialized left-value.
+  assert \initialized(&(map + index_1)->flow);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:393: 
+  out of bounds read. assert \valid_read(&(map + index_1)->flow);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:393: 
+  out of bounds write. assert \valid((map + index_1)->flow + 5);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:394: 
+  out of bounds write. assert \valid(&(map + index_1)->visited);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:394: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:395: 
+  out of bounds write. assert \valid(&(map + index_1)->e);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:395: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_5
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:88: 
+  out of bounds write. assert \valid(&newVertex->index);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:89: 
+  division by zero. assert (int)(V - 1) ≢ 0;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:377: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:92: 
+  accessing uninitialized left-value. assert \initialized(&head->realIndex);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:98: 
+  accessing uninitialized left-value. assert \initialized(&temp->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:102: 
+  accessing uninitialized left-value. assert \initialized(&temp->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:98: 
+  accessing uninitialized left-value. assert \initialized(&temp->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:98: 
+  accessing uninitialized left-value.
+  assert \initialized(&(temp->next)->realIndex);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:98: 
+  out of bounds read. assert \valid_read(&(temp->next)->realIndex);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:99: 
+  accessing uninitialized left-value. assert \initialized(&temp->next);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:98: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:98: 
+  out of bounds read. assert \valid_read(&temp->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:110: 
+  accessing uninitialized left-value. assert \initialized(&head->index);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:74: 
+  accessing uninitialized left-value. assert \initialized(&head->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:255: 
+  accessing uninitialized left-value.
+  assert \initialized(&(map + (int)(V - 1))->e);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:255: 
+  out of bounds read. assert \valid_read(&(map + (int)(V - 1))->e);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:212: 
+  accessing uninitialized left-value.
+  assert \initialized(&(map + index_0)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:212: 
+  out of bounds read. assert \valid_read(&(map + index_0)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:212: 
+  accessing uninitialized left-value.
+  assert \initialized((map + index_0)->corners + direction);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:212: 
+  out of bounds read. assert \valid_read((map + index_0)->corners + direction);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:186: 
+  accessing uninitialized left-value.
+  assert \initialized(&(map + candidate)->flow);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:186: 
+  out of bounds read. assert \valid_read(&(map + candidate)->flow);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:186: 
+  accessing uninitialized left-value.
+  assert \initialized((map + candidate)->flow + direction);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:186: 
+  out of bounds read. assert \valid_read((map + candidate)->flow + direction);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:186: 
+  accessing uninitialized left-value.
+  assert \initialized(&(map + place)->visited);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:186: 
+  out of bounds read. assert \valid_read(&(map + place)->visited);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:186: 
+  more than 200(2147483646) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:186: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:219: 
+  accessing uninitialized left-value.
+  assert \initialized(&(map + neighbourI)->h);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:219: 
+  out of bounds read. assert \valid_read(&(map + neighbourI)->h);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:219: 
+  Assigning imprecise value to lowestNeighbour.
+  The imprecision originates from Merge
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:210: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:151: 
+  signed overflow. assert neighbour_0 + (int)(V - 1) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:188: 
+  accessing uninitialized left-value.
+  assert \initialized(&(map + candidate)->flow);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:188: 
+  out of bounds read. assert \valid_read(&(map + candidate)->flow);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:188: 
+  accessing uninitialized left-value.
+  assert \initialized((map + candidate)->flow + direction);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:188: 
+  out of bounds read. assert \valid_read((map + candidate)->flow + direction);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:186: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:218: 
+  accessing uninitialized left-value.
+  assert \initialized(&(map + neighbourI)->h);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:218: 
+  out of bounds read. assert \valid_read(&(map + neighbourI)->h);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:128: 
+  signed overflow. assert neighbour_0 - avenues ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:134: 
+  signed overflow. assert neighbour_0 + avenues ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:180: 
+  accessing uninitialized left-value. assert \initialized(&(map + index_0)->h);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:180: 
+  accessing uninitialized left-value.
+  assert \initialized(&(map + neighbourI)->h);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:180: 
+  out of bounds read. assert \valid_read(&(map + index_0)->h);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:180: 
+  out of bounds read. assert \valid_read(&(map + neighbourI)->h);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:180: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:180: 
+  more than 200(2147483646) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:193: 
+  out of bounds write. assert \valid(&(map + index_0)->h);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:193: 
+  accessing uninitialized left-value.
+  assert \initialized(&(map + lowestNeighbour)->h);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:193: 
+  out of bounds read. assert \valid_read(&(map + lowestNeighbour)->h);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:193: 
+  signed overflow. assert -2147483648 ≤ (map + lowestNeighbour)->h + 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:193: 
+  signed overflow. assert (map + lowestNeighbour)->h + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:193: 
+  Assigning imprecise value to (map + index_0)->h
+  (pointing to __malloc_can_fail_malloc_l11 with offsets [576..687194766976],256%320).
+  The imprecision originates from Merge
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:193: 
+  more than 200(2147483646) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:233: 
+  out of bounds write. assert \valid(&(map + index_0)->e);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:233: 
+  accessing uninitialized left-value. assert \initialized(&(map + index_0)->e);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:233: 
+  signed overflow. assert -2147483648 ≤ (map + index_0)->e - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:233: 
+  signed overflow. assert (map + index_0)->e - 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:233: 
+  Assigning imprecise value to (map + index_0)->e
+  (pointing to __malloc_can_fail_malloc_l11 with offsets [608..687194767008],288%320).
+  The imprecision originates from Merge
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:233: 
+  more than 200(2147483646) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:234: 
+  out of bounds write. assert \valid(&(map + neighbourI)->e);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:234: 
+  accessing uninitialized left-value.
+  assert \initialized(&(map + neighbourI)->e);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:234: 
+  signed overflow. assert -2147483648 ≤ (map + neighbourI)->e + 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:234: 
+  signed overflow. assert (map + neighbourI)->e + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:234: 
+  Assigning imprecise value to (map + neighbourI)->e
+  (pointing to __malloc_can_fail_malloc_l11 with offsets [288..687194767328],288%320).
+  The imprecision originates from Merge
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:234: 
+  more than 200(2147483648) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:236: 
+  accessing uninitialized left-value.
+  assert \initialized(&(map + index_0)->flow);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:236: 
+  out of bounds read. assert \valid_read(&(map + index_0)->flow);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:236: 
+  out of bounds write. assert \valid((map + index_0)->flow + chosenDirection);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:236: 
+  accessing uninitialized left-value.
+  assert \initialized((map + index_0)->flow + chosenDirection);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:236: 
+  signed overflow.
+  assert *((map + index_0)->flow + chosenDirection) + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:239: 
+  out of bounds write. assert \valid(&(map + index_0)->e);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:239: 
+  accessing uninitialized left-value. assert \initialized(&(map + index_0)->e);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:239: 
+  signed overflow. assert -2147483648 ≤ (map + index_0)->e - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:239: 
+  signed overflow. assert (map + index_0)->e - 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:239: 
+  Assigning imprecise value to (map + index_0)->e
+  (pointing to __malloc_can_fail_malloc_l11 with offsets [608..687194767008],288%320).
+  The imprecision originates from Merge
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:239: 
+  more than 200(2147483646) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:240: 
+  out of bounds write. assert \valid(&(map + neighbourI)->e);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:240: 
+  accessing uninitialized left-value.
+  assert \initialized(&(map + neighbourI)->e);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:240: 
+  signed overflow. assert -2147483648 ≤ (map + neighbourI)->e + 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:240: 
+  signed overflow. assert (map + neighbourI)->e + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:240: 
+  Assigning imprecise value to (map + neighbourI)->e
+  (pointing to __malloc_can_fail_malloc_l11 with offsets [288..687194767328],288%320).
+  The imprecision originates from Merge
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:240: 
+  more than 200(2147483648) locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_6
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:92: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&head);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:98: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&temp->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:98: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&temp->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:99: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&temp->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:102: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&temp->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:243: 
+  accessing uninitialized left-value.
+  assert \initialized(&(map + index_0)->flow);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:243: 
+  out of bounds read. assert \valid_read(&(map + index_0)->flow);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:243: 
+  out of bounds write. assert \valid((map + index_0)->flow + chosenDirection);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:243: 
+  accessing uninitialized left-value.
+  assert \initialized((map + index_0)->flow + chosenDirection);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:243: 
+  signed overflow.
+  assert *((map + index_0)->flow + chosenDirection) + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:244: 
+  accessing uninitialized left-value.
+  assert \initialized(&(map + neighbourI)->flow);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:244: 
+  out of bounds read. assert \valid_read(&(map + neighbourI)->flow);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:244: 
+  out of bounds write.
+  assert \valid((map + neighbourI)->flow + tmp_1);
+  (tmp_1 from oppositeDirection(chosenDirection))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:244: 
+  accessing uninitialized left-value.
+  assert \initialized((map + neighbourI)->flow + tmp_1);
+  (tmp_1 from oppositeDirection(chosenDirection))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:244: 
+  signed overflow.
+  assert -2147483648 ≤ *((map + neighbourI)->flow + tmp_1) - 1;
+  (tmp_1 from oppositeDirection(chosenDirection))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:247: 
+  accessing uninitialized left-value.
+  assert \initialized(&(map + tmp_2)->flow);
+  (tmp_2 from neighbour(index_0, 6, 0))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:247: 
+  out of bounds read.
+  assert \valid_read(&(map + tmp_2)->flow);
+  (tmp_2 from neighbour(index_0, 6, 0))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:247: 
+  out of bounds write.
+  assert \valid((map + tmp_2)->flow + chosenDirection);
+  (tmp_2 from neighbour(index_0, 6, 0))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:247: 
+  accessing uninitialized left-value.
+  assert \initialized((map + tmp_2)->flow + chosenDirection);
+  (tmp_2 from neighbour(index_0, 6, 0))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:247: 
+  signed overflow.
+  assert *((map + tmp_2)->flow + chosenDirection) + 1 ≤ 2147483647;
+  (tmp_2 from neighbour(index_0, 6, 0))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:248: 
+  accessing uninitialized left-value.
+  assert \initialized(&(map + tmp_3)->flow);
+  (tmp_3 from neighbour(neighbourI, 6, 0))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:248: 
+  out of bounds read.
+  assert \valid_read(&(map + tmp_3)->flow);
+  (tmp_3 from neighbour(neighbourI, 6, 0))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:248: 
+  out of bounds write.
+  assert \valid((map + tmp_3)->flow + tmp_4);
+  (tmp_3 from neighbour(neighbourI, 6, 0), tmp_4 from
+  oppositeDirection(chosenDirection))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:248: 
+  accessing uninitialized left-value.
+  assert \initialized((map + tmp_3)->flow + tmp_4);
+  (tmp_3 from neighbour(neighbourI, 6, 0), tmp_4 from
+  oppositeDirection(chosenDirection))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:248: 
+  signed overflow.
+  assert -2147483648 ≤ *((map + tmp_3)->flow + tmp_4) - 1;
+  (tmp_3 from neighbour(neighbourI, 6, 0), tmp_4 from
+  oppositeDirection(chosenDirection))
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:212: 
+  more than 200(2147483646) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:239: 
+  more than 200(2147483646) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:240: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:244: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:247: 
+  more than 200(2147483644) elements to enumerate. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:255: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:108: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&head);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:74: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&head->next);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:186: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:180: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:193: 
+  Assigning imprecise value to (map + index_0)->h
+  (pointing to __malloc_can_fail_malloc_l11 with offsets [576..687194767296],256%320).
+  The imprecision originates from Merge
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:193: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:233: 
+  Assigning imprecise value to (map + index_0)->e
+  (pointing to __malloc_can_fail_malloc_l11 with offsets [608..687194767328],288%320).
+  The imprecision originates from Merge
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:233: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:239: 
+  Assigning imprecise value to (map + index_0)->e
+  (pointing to __malloc_can_fail_malloc_l11 with offsets [608..687194767328],288%320).
+  The imprecision originates from Merge
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:239: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:212: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:239: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:258: 
+  accessing uninitialized left-value.
+  assert \initialized(&(map + (int)(V - 1))->e);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:258: 
+  out of bounds read. assert \valid_read(&(map + (int)(V - 1))->e);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:258: 
+  Assigning imprecise value to __retres.
+  The imprecision originates from Merge
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:258: 
+  Assigning imprecise value to \result<getMaxFlow>.
+  The imprecision originates from Merge
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:255: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:402: 
+  Assigning imprecise value to maxFlow.
+  The imprecision originates from Merge
+[eva] using specification for function printf_va_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:405: 
+  signed overflow. assert V * 2 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:406: 
+  accessing uninitialized left-value. assert \initialized(&(map + i)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:406: 
+  out of bounds read. assert \valid_read(&(map + i)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:406: 
+  function free: precondition 'freeable' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:407: 
+  accessing uninitialized left-value. assert \initialized(&(map + i)->flow);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:407: 
+  out of bounds read. assert \valid_read(&(map + i)->flow);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:407: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(map + i)->flow);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:407: 
+  function free: precondition 'freeable' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:405: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:406: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(map + i)->corners);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:80: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&head);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:272: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:273: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:278: 
+  more than 200(2147483644) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:279: 
+  more than 200(2147483644) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:280: 
+  more than 200(2147483644) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:281: 
+  more than 200(2147483644) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:282: 
+  more than 200(2147483644) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:351: 
+  more than 200(2147483644) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:352: 
+  more than 200(2147483644) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:353: 
+  more than 200(2147483644) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:354: 
+  more than 200(2147483644) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:369: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:389: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:393: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[eva] done for function main
+[scope:rm_asserts] removing 78 assertion(s)
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function canGoThere:
+  __retres ∈ {0; 1}
+[eva:final-states] Values at end of function cornerID:
+  street ∈ [-2147483648..2147483646]
+  __retres ∈ [--..--]
+[eva:final-states] Values at end of function freeVertex:
+  head ∈
+      {{ NULL ; (OverflowingVertex *)&__malloc_w_can_fail_malloc_l11_5 ;
+         (OverflowingVertex *)&__malloc_w_can_fail_malloc_l11_6 }} or ESCAPINGADDR
+  vertex ∈
+        {{ (OverflowingVertex *)&__malloc_w_can_fail_malloc_l11_5 ;
+           (OverflowingVertex *)&__malloc_w_can_fail_malloc_l11_6 }} or ESCAPINGADDR
+  destroy ∈
+         {{ (OverflowingVertex *)&__malloc_w_can_fail_malloc_l11_5 ;
+            (OverflowingVertex *)&__malloc_w_can_fail_malloc_l11_6 }} or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_5[bits 0 to 31] ∈
+                                  [0..2147483646] or UNINITIALIZED
+                                  [bits 32 to 63] ∈
+                                  [0..2147483645] or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_5 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_6 }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_6[bits 0 to 31] ∈
+                                  [0..2147483647] or UNINITIALIZED
+                                  [bits 32 to 63] ∈
+                                  [0..2147483645] or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_5 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_6 }} or UNINITIALIZED or ESCAPINGADDR
+[eva:final-states] Values at end of function freeOverflowingList:
+  head ∈ {0}
+  __malloc_w_can_fail_malloc_l11_5[bits 0 to 31] ∈
+                                  [0..2147483646] or UNINITIALIZED
+                                  [bits 32 to 63] ∈
+                                  [0..2147483645] or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_5 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_6 }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_6[bits 0 to 31] ∈
+                                  [0..2147483647] or UNINITIALIZED
+                                  [bits 32 to 63] ∈
+                                  [0..2147483645] or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_5 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_6 }} or UNINITIALIZED or ESCAPINGADDR
+[eva:final-states] Values at end of function isHigher:
+  __retres ∈ {0; 1}
+[eva:final-states] Values at end of function neighbour:
+  neighbour_0 ∈ [--..--]
+  __retres ∈ [--..--]
+[eva:final-states] Values at end of function newOverflowingList:
+  head ∈ {0}
+[eva:final-states] Values at end of function oppositeDirection:
+  direction ∈ {0; 1; 2; 3; 6}
+  __retres ∈ {1; 2; 3; 4; 6}
+[eva:final-states] Values at end of function popVertex:
+  head ∈
+      {{ NULL ; (OverflowingVertex *)&__malloc_w_can_fail_malloc_l11_5 ;
+         (OverflowingVertex *)&__malloc_w_can_fail_malloc_l11_6 }} or ESCAPINGADDR
+  index_0 ∈ [0..2147483647]
+  __retres ∈ [-1..2147483647]
+  __malloc_w_can_fail_malloc_l11_5[bits 0 to 31] ∈
+                                  [0..2147483646] or UNINITIALIZED
+                                  [bits 32 to 63] ∈
+                                  [0..2147483645] or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_5 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_6 }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_6[bits 0 to 31] ∈
+                                  [0..2147483647] or UNINITIALIZED
+                                  [bits 32 to 63] ∈
+                                  [0..2147483645] or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_5 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_6 }} or UNINITIALIZED or ESCAPINGADDR
+[eva:final-states] Values at end of function firstOverflowingVertex:
+  head ∈
+      {{ NULL ; (OverflowingVertex *)&__malloc_w_can_fail_malloc_l11_5 ;
+         (OverflowingVertex *)&__malloc_w_can_fail_malloc_l11_6 }} or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_5[bits 0 to 31] ∈
+                                  [0..2147483646] or UNINITIALIZED
+                                  [bits 32 to 63] ∈
+                                  [0..2147483645] or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_5 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_6 }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_6[bits 0 to 31] ∈
+                                  [0..2147483647] or UNINITIALIZED
+                                  [bits 32 to 63] ∈
+                                  [0..2147483645] or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_5 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_6 }} or UNINITIALIZED or ESCAPINGADDR
+[eva:final-states] Values at end of function relabel:
+  __malloc_can_fail_malloc_l11[bits 0 to 31] ∈ {0; 1; 3; 5}
+                              [bits 32 to 63] ∈ {0; 1; 3} or UNINITIALIZED
+                              [8..15] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+                               (origin: Merge
+                               {/home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:281}) }} or UNINITIALIZED
+                              [16..31] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                  __malloc_w_can_fail_malloc_l11_3}
+                               (origin: Merge
+                               {/home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:281}) }} or UNINITIALIZED
+                              [32..35] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                  __malloc_w_can_fail_malloc_l11_3}
+                               (origin: Merge
+                               {/home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:281}) }}
+                              [36..39] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                                                  __malloc_w_can_fail_malloc_l11_1;
+                                                  __malloc_w_can_fail_malloc_l11_2;
+                                                  __malloc_w_can_fail_malloc_l11_3}
+                               (origin: Merge) }}
+                              [40..85899345919] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                                                  __malloc_w_can_fail_malloc_l11_1;
+                                                  __malloc_w_can_fail_malloc_l11_2;
+                                                  __malloc_w_can_fail_malloc_l11_3}
+                               (origin: Merge) }} or UNINITIALIZED
+                              [85899345920..18446744073709551607] ∈
+                              UNINITIALIZED
+[eva:final-states] Values at end of function can_fail_malloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈
+          {{ NULL ; (void *)&__malloc_can_fail_malloc_l11 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_0 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_1 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_2 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_3 ;
+             (void *)&__malloc_can_fail_malloc_l11_4 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_5 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_6 }}
+[eva:final-states] Values at end of function addVertex:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  head ∈
+      {{ (OverflowingVertex *)&__malloc_w_can_fail_malloc_l11_5 ;
+         (OverflowingVertex *)&__malloc_w_can_fail_malloc_l11_6 }}
+  index_0 ∈ [0..2147483645]
+  temp ∈
+      {{ (OverflowingVertex *)&__malloc_w_can_fail_malloc_l11_5 ;
+         (OverflowingVertex *)&__malloc_w_can_fail_malloc_l11_6 }} or UNINITIALIZED
+  newVertex ∈
+           {{ (OverflowingVertex *)&__malloc_w_can_fail_malloc_l11_5 ;
+              (OverflowingVertex *)&__malloc_w_can_fail_malloc_l11_6 }}
+  __malloc_w_can_fail_malloc_l11_5[bits 0 to 31] ∈
+                                  [0..2147483646] or UNINITIALIZED
+                                  [bits 32 to 63] ∈
+                                  [0..2147483645] or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_5 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_6 }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_6[bits 0 to 31] ∈
+                                  [0..2147483647] or UNINITIALIZED
+                                  [bits 32 to 63] ∈
+                                  [0..2147483645] or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_5 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_6 }} or UNINITIALIZED or ESCAPINGADDR
+[eva:final-states] Values at end of function cornerCoord:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  index_0 ∈ [0..2147483643]
+  coord ∈ {{ (Coord *)&__malloc_can_fail_malloc_l11_4 }}
+  __malloc_can_fail_malloc_l11_4[bits 0 to 31] ∈ [1..2147483644]
+                                [bits 32 to 63] ∈ [-2147483642..2147483644]
+[eva:final-states] Values at end of function push:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  head ∈
+      {{ NULL ; (OverflowingVertex *)&__malloc_w_can_fail_malloc_l11_5 ;
+         (OverflowingVertex *)&__malloc_w_can_fail_malloc_l11_6 }} or ESCAPINGADDR
+  direction ∈ {0; 1; 2; 3; 4; 5; 6} or UNINITIALIZED
+  picker ∈ {0; 1}
+  i ∈ {6}
+  j ∈ {0; 1; 2; 3; 4; 5}
+  neighbourI ∈ [0..2147483647]
+  chosenDirection ∈ {0; 1; 2; 3; 4; 5; 6}
+  lowestNeighbour ∈
+                 {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                                     __malloc_w_can_fail_malloc_l11_1;
+                                     __malloc_w_can_fail_malloc_l11_2;
+                                     __malloc_w_can_fail_malloc_l11_3}
+                  (origin: Merge) }}
+  __malloc_can_fail_malloc_l11[bits 0 to 31] ∈ {0; 1; 3; 5}
+                              [bits 32 to 63] ∈ {0; 1; 3} or UNINITIALIZED
+                              [8..15] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+                               (origin: Merge
+                               {/home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:281}) }} or UNINITIALIZED
+                              [16..31] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                  __malloc_w_can_fail_malloc_l11_3}
+                               (origin: Merge
+                               {/home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:281}) }} or UNINITIALIZED
+                              [32..35] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                  __malloc_w_can_fail_malloc_l11_3}
+                               (origin: Merge
+                               {/home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:281}) }}
+                              [36..39] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                                                  __malloc_w_can_fail_malloc_l11_1;
+                                                  __malloc_w_can_fail_malloc_l11_2;
+                                                  __malloc_w_can_fail_malloc_l11_3}
+                               (origin: Merge) }}
+                              [40..85899345919] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                                                  __malloc_w_can_fail_malloc_l11_1;
+                                                  __malloc_w_can_fail_malloc_l11_2;
+                                                  __malloc_w_can_fail_malloc_l11_3}
+                               (origin: Merge) }} or UNINITIALIZED
+                              [85899345920..18446744073709551607] ∈
+                              UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_0[0..27] ∈ [--..--] or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_1[0..27] ∈ [--..--] or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_2[0..27] ∈ [--..--] or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_3[0..27] ∈ [--..--] or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_5[bits 0 to 31] ∈
+                                  [0..2147483646] or UNINITIALIZED
+                                  [bits 32 to 63] ∈
+                                  [0..2147483645] or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_5 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_6 }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_6[bits 0 to 31] ∈
+                                  [0..2147483647] or UNINITIALIZED
+                                  [bits 32 to 63] ∈
+                                  [0..2147483645] or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_5 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_6 }} or UNINITIALIZED or ESCAPINGADDR
+[eva:final-states] Values at end of function getMaxFlow:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  head ∈
+      {{ NULL ; (OverflowingVertex *)&__malloc_w_can_fail_malloc_l11_5 ;
+         (OverflowingVertex *)&__malloc_w_can_fail_malloc_l11_6 }} or ESCAPINGADDR
+  u ∈ [-1..2147483647]
+  __retres ∈
+          {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                              __malloc_w_can_fail_malloc_l11_1;
+                              __malloc_w_can_fail_malloc_l11_2;
+                              __malloc_w_can_fail_malloc_l11_3}
+           (origin: Merge) }}
+  __malloc_can_fail_malloc_l11[bits 0 to 31] ∈ {0; 1; 3; 5}
+                              [bits 32 to 63] ∈ {0; 1; 3} or UNINITIALIZED
+                              [8..15] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+                               (origin: Merge
+                               {/home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:281}) }} or UNINITIALIZED
+                              [16..31] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                  __malloc_w_can_fail_malloc_l11_3}
+                               (origin: Merge
+                               {/home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:281}) }} or UNINITIALIZED
+                              [32..35] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                  __malloc_w_can_fail_malloc_l11_3}
+                               (origin: Merge
+                               {/home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:281}) }}
+                              [36..39] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                                                  __malloc_w_can_fail_malloc_l11_1;
+                                                  __malloc_w_can_fail_malloc_l11_2;
+                                                  __malloc_w_can_fail_malloc_l11_3}
+                               (origin: Merge) }}
+                              [40..85899345919] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                                                  __malloc_w_can_fail_malloc_l11_1;
+                                                  __malloc_w_can_fail_malloc_l11_2;
+                                                  __malloc_w_can_fail_malloc_l11_3}
+                               (origin: Merge) }} or UNINITIALIZED
+                              [85899345920..18446744073709551607] ∈
+                              UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_0[0..27] ∈ [--..--] or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_1[0..27] ∈ [--..--] or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_2[0..27] ∈ [--..--] or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_3[0..27] ∈ [--..--] or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_5[bits 0 to 31] ∈
+                                  [0..2147483646] or UNINITIALIZED
+                                  [bits 32 to 63] ∈
+                                  [0..2147483645] or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_5 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_6 }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_6[bits 0 to 31] ∈
+                                  [0..2147483647] or UNINITIALIZED
+                                  [bits 32 to 63] ∈
+                                  [0..2147483645] or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_5 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_6 }} or UNINITIALIZED or ESCAPINGADDR
+[eva:final-states] Values at end of function main:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  V ∈ [1..2147483646]
+  avenues ∈ [--..--]
+  streets ∈ [--..--]
+  nMarkets ∈ [--..--]
+  head ∈ {0}
+  i ∈ [0..2147483647]
+  map ∈ {{ (Corner *)&__malloc_can_fail_malloc_l11 }}
+  nHouses ∈ [-2147483647..2147483647]
+  direction ∈ {5} or UNINITIALIZED
+  maxFlow ∈
+         {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                             __malloc_w_can_fail_malloc_l11_1;
+                             __malloc_w_can_fail_malloc_l11_2;
+                             __malloc_w_can_fail_malloc_l11_3}
+          (origin: Merge) }} or ESCAPINGADDR
+  __retres ∈ {0}
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                                   __malloc_w_can_fail_malloc_l11_1;
+                                   __malloc_w_can_fail_malloc_l11_2;
+                                   __malloc_w_can_fail_malloc_l11_3}
+                (origin: Library function
+                {/home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:403}) }} or ESCAPINGADDR
+               [1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11[bits 0 to 31] ∈ {0; 1; 3; 5}
+                              [bits 32 to 63] ∈ {0; 1; 3} or UNINITIALIZED
+                              [8..15] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+                               (origin: Merge
+                               {/home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:281}) }} or UNINITIALIZED or ESCAPINGADDR
+                              [16..31] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                  __malloc_w_can_fail_malloc_l11_3}
+                               (origin: Merge
+                               {/home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:281}) }} or UNINITIALIZED or ESCAPINGADDR
+                              [32..35] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                  __malloc_w_can_fail_malloc_l11_3}
+                               (origin: Merge
+                               {/home/fmarques/sbugs/projects/alunos/asa_1920_p2/al152/proj2.c:281}) }} or ESCAPINGADDR
+                              [36..39] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                                                  __malloc_w_can_fail_malloc_l11_1;
+                                                  __malloc_w_can_fail_malloc_l11_2;
+                                                  __malloc_w_can_fail_malloc_l11_3}
+                               (origin: Merge) }} or ESCAPINGADDR
+                              [40..85899345919] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                                                  __malloc_w_can_fail_malloc_l11_1;
+                                                  __malloc_w_can_fail_malloc_l11_2;
+                                                  __malloc_w_can_fail_malloc_l11_3}
+                               (origin: Merge) }} or UNINITIALIZED or ESCAPINGADDR
+                              [85899345920..18446744073709551607] ∈
+                              UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_0[0..27] ∈ [--..--] or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_1[0..27] ∈ [--..--] or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_2[0..27] ∈ [--..--] or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_3[0..27] ∈ [--..--] or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_5[bits 0 to 31] ∈
+                                  [0..2147483646] or UNINITIALIZED
+                                  [bits 32 to 63] ∈
+                                  [0..2147483645] or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_5 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_6 }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_w_can_fail_malloc_l11_6[bits 0 to 31] ∈
+                                  [0..2147483647] or UNINITIALIZED
+                                  [bits 32 to 63] ∈
+                                  [0..2147483645] or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_5 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_6 }} or UNINITIALIZED or ESCAPINGADDR
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  17 functions analyzed (out of 20): 85% coverage.
+  In these functions, 304 statements reached (out of 308): 98% coverage.
+  ----------------------------------------------------------------------------
+  No errors or warnings raised during the analysis.
+  ----------------------------------------------------------------------------
+  278 alarms generated by the analysis:
+     143 invalid memory accesses
+      85 accesses to uninitialized left-values
+      36 integer overflows
+      10 escaping addresses
+       4 divisions by zero
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     0 unknown     0 invalid      0 total
+    Preconditions    16 valid     2 unknown     0 invalid     18 total
+  88% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[report] Classification
+[report] Output /home/fmarques/sbugs/projects/outputs/framaC/asa_1920_p2/al152/errors.json
+[report] Reviews     :  201
+[report] Unclassified:  201

@@ -1,0 +1,2788 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  
+[eva] using specification for function scanf_va_2
+[eva] using specification for function scanf_va_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:141: 
+  signed overflow. assert -2147483648 ≤ num_e * 2;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:141: 
+  signed overflow. assert num_e * 2 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:144: 
+  signed overflow. assert num_v + 1 ≤ 2147483647;
+[eva] using specification for function time
+[eva] using specification for function srand
+[eva] using specification for function rand
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:18: 
+  calloc out of bounds: assert(nmemb * size <= SIZE_MAX)
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:18: 
+  allocating variable __calloc_can_fail_calloc_l18
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:18: 
+  allocating variable __calloc_can_fail_calloc_l18_0
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:18: 
+  allocating variable __calloc_can_fail_calloc_l18_1
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:18: 
+  allocating variable __calloc_can_fail_calloc_l18_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:154: 
+  signed overflow. assert -2147483648 ≤ num_e - 1;
+[eva] using specification for function scanf_va_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:113: 
+  out of bounds write. assert \valid(g->vertex + g->nr_edges);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:115: 
+  out of bounds read. assert \valid_read(g->first + u);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:116: 
+  out of bounds write. assert \valid(g->first + u);
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:129: 
+  detected recursive call of function graph_connect.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:129: User Error: 
+  Recursive call to graph_connect without assigns clause.
+  Generating probably incomplete assigns to interpret the call. Try to increase
+  the -eva-unroll-recursive-calls parameter or write a correct specification
+  for function graph_connect.
+[kernel:annot:missing-spec] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:110: 
+  Neither code nor specification for function graph_connect, generating default assigns from the prototype
+[eva] using specification for function graph_connect
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:154: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:112: 
+  signed overflow. assert -2147483648 ≤ g->nr_edges + 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:112: 
+  signed overflow. assert g->nr_edges + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:112: 
+  Assigning imprecise value to g->nr_edges (pointing to g with offsets {32}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:110}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:116: 
+  Assigning imprecise value to *(g->first + u)
+  (pointing to __calloc_can_fail_calloc_l18 with offsets [0..147573952589676412896],0%8;
+   __calloc_can_fail_calloc_l18_0 with offsets [0..147573952589676412896],0%8;
+  __calloc_can_fail_calloc_l18_1 with offsets [0..147573952589676412896],0%8;
+  __calloc_can_fail_calloc_l18_2 with offsets [0..147573952589676412896],0%8).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:110}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:119: 
+  out of bounds read. assert \valid_read(g->first + u);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:119: 
+  out of bounds read. assert \valid_read(g->next + adj);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:119: 
+  out of bounds read. assert \valid_read(g->vertex + adj);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:119: 
+  out of bounds read. assert \valid_read(g->next + adj);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:121: 
+  out of bounds read. assert \valid_read(g->vertex + adj);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:122: 
+  Assigning imprecise value to tmp.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:110}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:122: 
+  signed overflow. assert -2147483648 ≤ g->nr_edges - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:122: 
+  signed overflow. assert g->nr_edges - 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:122: 
+  Assigning imprecise value to g->nr_edges (pointing to g with offsets {32}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:110}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:122: 
+  out of bounds write. assert \valid(g->vertex + tmp);
+                       (tmp from g->nr_edges--)
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:125: 
+  out of bounds write. assert \valid(g->next + adj);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:125: 
+  Assigning imprecise value to *(g->next + adj)
+  (pointing to __calloc_can_fail_calloc_l18 with offsets [0..147573952589676412896],0%8;
+   __calloc_can_fail_calloc_l18_0 with offsets [0..147573952589676412896],0%8;
+  __calloc_can_fail_calloc_l18_1 with offsets [0..147573952589676412896],0%8;
+  __calloc_can_fail_calloc_l18_2 with offsets [0..147573952589676412896],0%8).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:110}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:129: 
+  Using specification of function graph_connect for recursive calls.
+  Analysis of function graph_connect is thus incomplete and its soundness
+  relies on the written specification.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:112: 
+  Assigning imprecise value to g->nr_edges (pointing to g with offsets {32}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:116: 
+  Assigning imprecise value to *(g->first + u)
+  (pointing to __calloc_can_fail_calloc_l18 with offsets [0..147573952589676412896],0%8;
+   __calloc_can_fail_calloc_l18_0 with offsets [0..147573952589676412896],0%8;
+  __calloc_can_fail_calloc_l18_1 with offsets [0..147573952589676412896],0%8;
+  __calloc_can_fail_calloc_l18_2 with offsets [0..147573952589676412896],0%8).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:119: 
+  Assigning imprecise value to adj.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:119: 
+  Assigning imprecise value to adj.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:122: 
+  Assigning imprecise value to tmp.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:122: 
+  Assigning imprecise value to g->nr_edges (pointing to g with offsets {32}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:125: 
+  Assigning imprecise value to *(g->next + adj)
+  (pointing to __calloc_can_fail_calloc_l18 with offsets [0..147573952589676412896];
+   __calloc_can_fail_calloc_l18_0 with offsets [0..147573952589676412896];
+  __calloc_can_fail_calloc_l18_1 with offsets [0..147573952589676412896];
+  __calloc_can_fail_calloc_l18_2 with offsets [0..147573952589676412896]).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:346: 
+  signed overflow. assert -2147483648 ≤ g->nr_vertices + 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:346: 
+  signed overflow. assert g->nr_vertices + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:18: 
+  allocating variable __calloc_can_fail_calloc_l18_3
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_0
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:18: 
+  allocating variable __calloc_can_fail_calloc_l18_4
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:316: 
+  signed overflow. assert -2147483648 ≤ g->nr_vertices + 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:316: 
+  signed overflow. assert g->nr_vertices + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:18: 
+  allocating variable __calloc_can_fail_calloc_l18_5
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:317: 
+  signed overflow. assert -2147483648 ≤ g->nr_vertices + 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:317: 
+  signed overflow. assert g->nr_vertices + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:18: 
+  allocating variable __calloc_can_fail_calloc_l18_6
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:318: 
+  signed overflow. assert -2147483648 ≤ g->nr_vertices + 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:318: 
+  signed overflow. assert g->nr_vertices + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_1
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:18: 
+  allocating variable __calloc_can_fail_calloc_l18_7
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:322: 
+  out of bounds read. assert \valid_read(disc + u);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:272: 
+  out of bounds write. assert \valid(low + u);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:272: 
+  out of bounds write. assert \valid(disc + u);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:57: 
+  out of bounds read. assert \valid_read(st->in_stack + u);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:58: 
+  out of bounds write. assert \valid(st->data + st->idx);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:59: 
+  out of bounds write. assert \valid(st->in_stack + u);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:275: 
+  out of bounds read. assert \valid_read(g->first + u);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:275: 
+  Assigning imprecise value to adj.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:276: 
+  out of bounds read. assert \valid_read(g->vertex + adj);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:276: 
+  Assigning imprecise value to v.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:279: 
+  out of bounds read. assert \valid_read(disc + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:280: 
+  out of bounds write. assert \valid(g->parent + v);
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:282: 
+  detected recursive call of function tarjan_aux.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:282: User Error: 
+  Recursive call to tarjan_aux without assigns clause.
+  Generating probably incomplete assigns to interpret the call. Try to increase
+  the -eva-unroll-recursive-calls parameter or write a correct specification
+  for function tarjan_aux.
+[kernel:annot:missing-spec] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:263: 
+  Neither code nor specification for function tarjan_aux, generating default assigns from the prototype
+[eva] using specification for function tarjan_aux
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:283: 
+  out of bounds read. assert \valid_read(low + u);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:283: 
+  out of bounds read. assert \valid_read(low + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:283: 
+  out of bounds write. assert \valid(low + u);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:283: 
+  out of bounds read. assert \valid_read(low + v);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:283: 
+  Assigning imprecise value to *(low + u)
+  (pointing to __calloc_can_fail_calloc_l18_6 with offsets {32}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:283: 
+  out of bounds write. assert \valid(low + u);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:285: 
+  accessing uninitialized left-value. assert \initialized(g->parent + u);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:285: 
+  out of bounds read. assert \valid_read(g->parent + u);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:288: 
+  accessing uninitialized left-value. assert \initialized(g->parent + u);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:288: 
+  out of bounds read. assert \valid_read(g->parent + u);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:288: 
+  out of bounds read. assert \valid_read(low + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:288: 
+  out of bounds read. assert \valid_read(disc + u);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:57: 
+  accessing uninitialized left-value. assert \initialized(st->in_stack + u);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:58: 
+  Assigning imprecise value to st->idx (pointing to scc with offsets {256}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:76: 
+  out of bounds read. assert \valid_read(st->in_stack + u);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:294: 
+  out of bounds read. assert \valid_read(low + u);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:294: 
+  out of bounds read. assert \valid_read(disc + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:294: 
+  out of bounds write. assert \valid(low + u);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:294: 
+  out of bounds read. assert \valid_read(disc + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:294: 
+  out of bounds write. assert \valid(low + u);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:275: 
+  accessing uninitialized left-value. assert \initialized(g->next + adj);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:275: 
+  out of bounds read. assert \valid_read(g->next + adj);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:275: 
+  Assigning imprecise value to adj.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:275: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:276: 
+  accessing uninitialized left-value. assert \initialized(g->vertex + adj);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:282: 
+  Using specification of function tarjan_aux for recursive calls.
+  Analysis of function tarjan_aux is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:76: 
+  accessing uninitialized left-value. assert \initialized(st->in_stack + u);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:76: 
+  Assigning imprecise value to tmp.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:76: 
+  Assigning imprecise value to __retres.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:76: 
+  Assigning imprecise value to \result<stack_contains>.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:293: 
+  Assigning imprecise value to tmp_0.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:294: 
+  Assigning imprecise value to *(low + u)
+  (pointing to __calloc_can_fail_calloc_l18_6 with offsets {32}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:281: 
+  signed overflow. assert children + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:299: 
+  out of bounds read. assert \valid_read(low + u);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:299: 
+  out of bounds read. assert \valid_read(disc + u);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:66: 
+  Assigning imprecise value to tmp.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:66: 
+  Assigning imprecise value to st->idx (pointing to st with offsets {0}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:66: 
+  accessing uninitialized left-value.
+  assert \initialized(st->data + tmp);
+  (tmp from st->idx--)
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:66: 
+  out of bounds read. assert \valid_read(st->data + tmp);
+                      (tmp from st->idx--)
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:66: 
+  Assigning imprecise value to u.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:67: 
+  out of bounds write. assert \valid(st->in_stack + u);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:68: 
+  Assigning imprecise value to __retres.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:68: 
+  Assigning imprecise value to \result<stack_pop>.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:301: 
+  Assigning imprecise value to v_0.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:302: 
+  Assigning imprecise value to tail.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:301: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:58: 
+  Assigning imprecise value to st->idx (pointing to scc with offsets {64}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:58: 
+  Assigning imprecise value to *(st->data + st->idx)
+  (pointing to __calloc_can_fail_calloc_l18 with offsets [0..147573952589676412896];
+   __calloc_can_fail_calloc_l18_0 with offsets [0..147573952589676412896];
+  __calloc_can_fail_calloc_l18_1 with offsets [0..147573952589676412896];
+  __calloc_can_fail_calloc_l18_2 with offsets [0..147573952589676412896];
+  __malloc_can_fail_malloc_l11 with offsets [0..147573952589676412896];
+  __calloc_can_fail_calloc_l18_3 with offsets [0..147573952589676412896];
+  __malloc_can_fail_malloc_l11_0 with offsets [0..147573952589676412896];
+  __calloc_can_fail_calloc_l18_4 with offsets [0..147573952589676412896];
+  __malloc_can_fail_malloc_l11_1 with offsets [0..147573952589676412896];
+  __calloc_can_fail_calloc_l18_7 with offsets [0..147573952589676412896]).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:321: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:272: 
+  signed overflow. assert -2147483648 ≤ *disc_time + 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:272: 
+  signed overflow. assert *disc_time + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:272: 
+  Assigning imprecise value to *disc_time (pointing to disc_time).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:272: 
+  Assigning imprecise value to tmp.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:272: 
+  Assigning imprecise value to *(low + u)
+  (pointing to __calloc_can_fail_calloc_l18_6 with offsets {32; 64}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:272: 
+  Assigning imprecise value to *(disc + u)
+  (pointing to __calloc_can_fail_calloc_l18_5 with offsets {32; 64}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:58: 
+  Assigning imprecise value to st->idx (pointing to st with offsets {0}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:275: 
+  accessing uninitialized left-value. assert \initialized(g->first + u);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:283: 
+  Assigning imprecise value to *(low + u)
+  (pointing to __calloc_can_fail_calloc_l18_6 with offsets {32; 64}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:294: 
+  Assigning imprecise value to *(low + u)
+  (pointing to __calloc_can_fail_calloc_l18_6 with offsets {32; 64}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:272: 
+  Assigning imprecise value to *(low + u)
+  (pointing to __calloc_can_fail_calloc_l18_6 with offsets {32; 64; 96}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:272: 
+  Assigning imprecise value to *(disc + u)
+  (pointing to __calloc_can_fail_calloc_l18_5 with offsets {32; 64; 96}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:283: 
+  Assigning imprecise value to *(low + u)
+  (pointing to __calloc_can_fail_calloc_l18_6 with offsets {32; 64; 96}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:294: 
+  Assigning imprecise value to *(low + u)
+  (pointing to __calloc_can_fail_calloc_l18_6 with offsets {32; 64; 96}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:272: 
+  Assigning imprecise value to *(low + u)
+  (pointing to __calloc_can_fail_calloc_l18_6 with offsets [32..68719476704],0%32).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:272: 
+  Assigning imprecise value to *(disc + u)
+  (pointing to __calloc_can_fail_calloc_l18_5 with offsets [32..68719476704],0%32).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:283: 
+  Assigning imprecise value to *(low + u)
+  (pointing to __calloc_can_fail_calloc_l18_6 with offsets [32..68719476704],0%32).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:294: 
+  Assigning imprecise value to *(low + u)
+  (pointing to __calloc_can_fail_calloc_l18_6 with offsets [32..68719476704],0%32).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:321: 
+  signed overflow. assert u + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:328: 
+  signed overflow. assert -2147483648 ≤ g->nr_vertices + 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:328: 
+  signed overflow. assert g->nr_vertices + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:328: 
+  function memset: precondition 'valid_s' got status unknown.
+[eva] FRAMAC_SHARE/libc/string.h:134: 
+  cannot evaluate ACSL term, unsupported ACSL construct: logic function memset
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:329: 
+  signed overflow. assert -2147483648 ≤ g->nr_vertices + 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:329: 
+  signed overflow. assert g->nr_vertices + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:329: 
+  function memset: precondition 'valid_s' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:80: 
+  function memset: precondition 'valid_s' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:332: 
+  out of bounds read. assert \valid_read(disc + u);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:233: 
+  Assigning imprecise value to tmp.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:235: 
+  signed overflow. assert -2147483648 ≤ *disc_time + 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:235: 
+  signed overflow. assert *disc_time + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:235: 
+  Assigning imprecise value to *disc_time (pointing to disc_time).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:235: 
+  Assigning imprecise value to tmp_0.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:235: 
+  out of bounds write. assert \valid(low + u);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:235: 
+  Assigning imprecise value to *(low + u)
+  (pointing to __calloc_can_fail_calloc_l18_6 with offsets {32}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:235: 
+  out of bounds write. assert \valid(disc + u);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:235: 
+  Assigning imprecise value to *(disc + u)
+  (pointing to __calloc_can_fail_calloc_l18_5 with offsets {32}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:238: 
+  accessing uninitialized left-value. assert \initialized(g->first + u);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:238: 
+  out of bounds read. assert \valid_read(g->first + u);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:238: 
+  Assigning imprecise value to adj.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:239: 
+  accessing uninitialized left-value. assert \initialized(g->vertex + adj);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:239: 
+  out of bounds read. assert \valid_read(g->vertex + adj);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:239: 
+  Assigning imprecise value to v.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:241: 
+  Assigning imprecise value to tmp_1.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:244: 
+  out of bounds read. assert \valid_read(disc + v);
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:245: 
+  detected recursive call of function count_scc.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:245: User Error: 
+  Recursive call to count_scc without assigns clause.
+  Generating probably incomplete assigns to interpret the call. Try to increase
+  the -eva-unroll-recursive-calls parameter or write a correct specification
+  for function count_scc.
+[kernel:annot:missing-spec] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:225: 
+  Neither code nor specification for function count_scc, generating default assigns from the prototype
+[eva] using specification for function count_scc
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:246: 
+  out of bounds read. assert \valid_read(low + u);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:246: 
+  out of bounds read. assert \valid_read(low + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:246: 
+  out of bounds write. assert \valid(low + u);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:246: 
+  out of bounds read. assert \valid_read(low + v);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:246: 
+  Assigning imprecise value to *(low + u)
+  (pointing to __calloc_can_fail_calloc_l18_6 with offsets {32}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:246: 
+  out of bounds write. assert \valid(low + u);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:249: 
+  Assigning imprecise value to tmp_2.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:250: 
+  out of bounds read. assert \valid_read(low + u);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:250: 
+  out of bounds read. assert \valid_read(disc + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:250: 
+  out of bounds write. assert \valid(low + u);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:250: 
+  out of bounds read. assert \valid_read(disc + v);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:250: 
+  Assigning imprecise value to *(low + u)
+  (pointing to __calloc_can_fail_calloc_l18_6 with offsets {32}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:250: 
+  out of bounds write. assert \valid(low + u);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:238: 
+  accessing uninitialized left-value. assert \initialized(g->next + adj);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:238: 
+  out of bounds read. assert \valid_read(g->next + adj);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:238: 
+  Assigning imprecise value to adj.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:238: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:245: 
+  Using specification of function count_scc for recursive calls.
+  Analysis of function count_scc is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:255: 
+  out of bounds read. assert \valid_read(low + u);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:255: 
+  out of bounds read. assert \valid_read(disc + u);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:75: 
+  Assigning imprecise value to __retres.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:75: 
+  Assigning imprecise value to \result<stack_size>.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:257: 
+  Assigning imprecise value to tmp_3.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:257: 
+  Assigning imprecise value to scc->biggest_scc
+  (pointing to scc with offsets {0}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:257: 
+  Assigning imprecise value to scc->biggest_scc
+  (pointing to scc with offsets {0}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:258: 
+  Assigning imprecise value to v_0.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:258: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:331: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:235: 
+  Assigning imprecise value to *(low + u)
+  (pointing to __calloc_can_fail_calloc_l18_6 with offsets {32; 64}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:235: 
+  Assigning imprecise value to *(disc + u)
+  (pointing to __calloc_can_fail_calloc_l18_5 with offsets {32; 64}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:246: 
+  Assigning imprecise value to *(low + u)
+  (pointing to __calloc_can_fail_calloc_l18_6 with offsets {32; 64}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:250: 
+  Assigning imprecise value to *(low + u)
+  (pointing to __calloc_can_fail_calloc_l18_6 with offsets {32; 64}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:235: 
+  Assigning imprecise value to *(low + u)
+  (pointing to __calloc_can_fail_calloc_l18_6 with offsets {32; 64; 96}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:235: 
+  Assigning imprecise value to *(disc + u)
+  (pointing to __calloc_can_fail_calloc_l18_5 with offsets {32; 64; 96}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:246: 
+  Assigning imprecise value to *(low + u)
+  (pointing to __calloc_can_fail_calloc_l18_6 with offsets {32; 64; 96}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:250: 
+  Assigning imprecise value to *(low + u)
+  (pointing to __calloc_can_fail_calloc_l18_6 with offsets {32; 64; 96}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:235: 
+  Assigning imprecise value to *(low + u)
+  (pointing to __calloc_can_fail_calloc_l18_6 with offsets [32..68719476704],0%32).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:235: 
+  Assigning imprecise value to *(disc + u)
+  (pointing to __calloc_can_fail_calloc_l18_5 with offsets [32..68719476704],0%32).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:246: 
+  Assigning imprecise value to *(low + u)
+  (pointing to __calloc_can_fail_calloc_l18_6 with offsets [32..68719476704],0%32).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:250: 
+  Assigning imprecise value to *(low + u)
+  (pointing to __calloc_can_fail_calloc_l18_6 with offsets [32..68719476704],0%32).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:331: 
+  signed overflow. assert u + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:87: 
+  function free: precondition 'freeable' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:88: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&st->in_stack);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:88: 
+  function free: precondition 'freeable' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:73: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&st->idx);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:73: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&st->data);
+[eva] using specification for function qsort
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:207: 
+  Assigning imprecise value to tmp.
+  The imprecision originates from Misaligned
+[eva] using specification for function printf_va_1
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:66: 
+  Assigning imprecise value to st->idx (pointing to scc with offsets {64}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:66: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(st->data + tmp);
+  (tmp from st->idx--)
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:67: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&st->in_stack);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:211: 
+  Assigning imprecise value to u.
+  The imprecision originates from Misaligned
+[eva] using specification for function printf_va_2
+[eva] using specification for function printf_va_3
+[eva] using specification for function printf_va_4
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:75: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&st->idx);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:218: 
+  Assigning imprecise value to tmp_3.
+  The imprecision originates from Misaligned
+[eva] using specification for function printf_va_5
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:221: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&scc->biggest_scc);
+[eva] using specification for function printf_va_6
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:87: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&st->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:178: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&g->first);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:178: 
+  function free: precondition 'freeable' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:179: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&g->vertex);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:179: 
+  function free: precondition 'freeable' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:180: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&g->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:180: 
+  function free: precondition 'freeable' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:181: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&g->parent);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg025/proj.c:181: 
+  function free: precondition 'freeable' got status unknown.
+[eva] done for function main
+[scope:rm_asserts] removing 24 assertion(s)
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function graph_destroy:
+  g{.nr_vertices; .nr_edges; .is_bidir} ∈
+   {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                       __calloc_can_fail_calloc_l18_0;
+                       __calloc_can_fail_calloc_l18_1;
+                       __calloc_can_fail_calloc_l18_2;
+                       __malloc_can_fail_malloc_l11;
+                       __calloc_can_fail_calloc_l18_3;
+                       __malloc_can_fail_malloc_l11_0;
+                       __calloc_can_fail_calloc_l18_4;
+                       __malloc_can_fail_malloc_l11_1;
+                       __calloc_can_fail_calloc_l18_7}
+    (origin: Misaligned) }} or ESCAPINGADDR
+   .[bits 72 to 127] ∈
+   {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                       __calloc_can_fail_calloc_l18_0;
+                       __calloc_can_fail_calloc_l18_1;
+                       __calloc_can_fail_calloc_l18_2;
+                       __malloc_can_fail_malloc_l11;
+                       __calloc_can_fail_calloc_l18_3;
+                       __malloc_can_fail_malloc_l11_0;
+                       __calloc_can_fail_calloc_l18_4;
+                       __malloc_can_fail_malloc_l11_1;
+                       __calloc_can_fail_calloc_l18_7}
+    (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+   {.first; .vertex; .next; .parent} ∈ {0}
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                   __calloc_can_fail_calloc_l18_0;
+                                   __calloc_can_fail_calloc_l18_1;
+                                   __calloc_can_fail_calloc_l18_2;
+                                   __malloc_can_fail_malloc_l11;
+                                   __calloc_can_fail_calloc_l18_3;
+                                   __malloc_can_fail_malloc_l11_0;
+                                   __calloc_can_fail_calloc_l18_4;
+                                   __malloc_can_fail_malloc_l11_1;
+                                   __calloc_can_fail_calloc_l18_7}
+                (origin: Misaligned) }} or ESCAPINGADDR
+               [1] ∈ [--..--]
+  __calloc_can_fail_calloc_l18[0..18446744073709551615] ∈
+                              {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                  __calloc_can_fail_calloc_l18_0;
+                                                  __calloc_can_fail_calloc_l18_1;
+                                                  __calloc_can_fail_calloc_l18_2}
+                               (origin: Misaligned) }} or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_0[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_1[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_2[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+  __malloc_can_fail_malloc_l11[0..18446744073709551615] ∈
+                              {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                  __calloc_can_fail_calloc_l18_0;
+                                                  __calloc_can_fail_calloc_l18_1;
+                                                  __calloc_can_fail_calloc_l18_2}
+                               (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_3[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+  __malloc_can_fail_malloc_l11_0[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_4[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_5[0..8589934591] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2;
+                                                    __malloc_can_fail_malloc_l11;
+                                                    __calloc_can_fail_calloc_l18_3;
+                                                    __malloc_can_fail_malloc_l11_0;
+                                                    __calloc_can_fail_calloc_l18_4;
+                                                    __malloc_can_fail_malloc_l11_1;
+                                                    __calloc_can_fail_calloc_l18_7}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+                                [8589934592..18446744073709551615] ∈ {0}
+  __calloc_can_fail_calloc_l18_6[0..8589934591] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2;
+                                                    __malloc_can_fail_malloc_l11;
+                                                    __calloc_can_fail_calloc_l18_3;
+                                                    __malloc_can_fail_malloc_l11_0;
+                                                    __calloc_can_fail_calloc_l18_4;
+                                                    __malloc_can_fail_malloc_l11_1;
+                                                    __calloc_can_fail_calloc_l18_7}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+                                [8589934592..18446744073709551615] ∈ {0}
+  __malloc_can_fail_malloc_l11_1[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_7[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+[eva:final-states] Values at end of function stack_contains:
+  __retres ∈
+          {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                              __calloc_can_fail_calloc_l18_0;
+                              __calloc_can_fail_calloc_l18_1;
+                              __calloc_can_fail_calloc_l18_2}
+           (origin: Misaligned) }}
+[eva:final-states] Values at end of function stack_destroy:
+  disc_time ∈
+           {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                               __calloc_can_fail_calloc_l18_0;
+                               __calloc_can_fail_calloc_l18_1;
+                               __calloc_can_fail_calloc_l18_2;
+                               __malloc_can_fail_malloc_l11;
+                               __calloc_can_fail_calloc_l18_3;
+                               __malloc_can_fail_malloc_l11_0;
+                               __calloc_can_fail_calloc_l18_4;
+                               __malloc_can_fail_malloc_l11_1;
+                               __calloc_can_fail_calloc_l18_7}
+            (origin: Misaligned) }} or ESCAPINGADDR
+  st.idx ∈
+    {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                        __calloc_can_fail_calloc_l18_0;
+                        __calloc_can_fail_calloc_l18_1;
+                        __calloc_can_fail_calloc_l18_2;
+                        __malloc_can_fail_malloc_l11;
+                        __calloc_can_fail_calloc_l18_3;
+                        __malloc_can_fail_malloc_l11_0;
+                        __calloc_can_fail_calloc_l18_4;
+                        __malloc_can_fail_malloc_l11_1;
+                        __calloc_can_fail_calloc_l18_7}
+     (origin: Misaligned) }} or ESCAPINGADDR
+    {.data; .in_stack} ∈ {0}
+  scc.biggest_scc ∈
+     {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                         __calloc_can_fail_calloc_l18_0;
+                         __calloc_can_fail_calloc_l18_1;
+                         __calloc_can_fail_calloc_l18_2;
+                         __malloc_can_fail_malloc_l11;
+                         __calloc_can_fail_calloc_l18_3;
+                         __malloc_can_fail_malloc_l11_0;
+                         __calloc_can_fail_calloc_l18_4;
+                         __malloc_can_fail_malloc_l11_1;
+                         __calloc_can_fail_calloc_l18_7}
+      (origin: Misaligned) }} or ESCAPINGADDR
+     .[bits 32 to 63] ∈
+     {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                         __calloc_can_fail_calloc_l18_0;
+                         __calloc_can_fail_calloc_l18_1;
+                         __calloc_can_fail_calloc_l18_2;
+                         __malloc_can_fail_malloc_l11;
+                         __calloc_can_fail_calloc_l18_3;
+                         __malloc_can_fail_malloc_l11_0;
+                         __calloc_can_fail_calloc_l18_4;
+                         __malloc_can_fail_malloc_l11_1;
+                         __calloc_can_fail_calloc_l18_7}
+      (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+     {.ids; .ap} ∈
+     {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                         __calloc_can_fail_calloc_l18_0;
+                         __calloc_can_fail_calloc_l18_1;
+                         __calloc_can_fail_calloc_l18_2;
+                         __malloc_can_fail_malloc_l11;
+                         __calloc_can_fail_calloc_l18_3;
+                         __malloc_can_fail_malloc_l11_0;
+                         __calloc_can_fail_calloc_l18_4;
+                         __malloc_can_fail_malloc_l11_1;
+                         __calloc_can_fail_calloc_l18_7}
+      (origin: Misaligned) }} or ESCAPINGADDR
+  g{.nr_vertices; .nr_edges; .is_bidir} ∈
+   {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                       __calloc_can_fail_calloc_l18_0;
+                       __calloc_can_fail_calloc_l18_1;
+                       __calloc_can_fail_calloc_l18_2;
+                       __malloc_can_fail_malloc_l11;
+                       __calloc_can_fail_calloc_l18_3;
+                       __malloc_can_fail_malloc_l11_0;
+                       __calloc_can_fail_calloc_l18_4;
+                       __malloc_can_fail_malloc_l11_1;
+                       __calloc_can_fail_calloc_l18_7}
+    (origin: Misaligned) }} or ESCAPINGADDR
+   .[bits 72 to 127] ∈
+   {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                       __calloc_can_fail_calloc_l18_0;
+                       __calloc_can_fail_calloc_l18_1;
+                       __calloc_can_fail_calloc_l18_2;
+                       __malloc_can_fail_malloc_l11;
+                       __calloc_can_fail_calloc_l18_3;
+                       __malloc_can_fail_malloc_l11_0;
+                       __calloc_can_fail_calloc_l18_4;
+                       __malloc_can_fail_malloc_l11_1;
+                       __calloc_can_fail_calloc_l18_7}
+    (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+   {.first; .vertex; .next; .parent} ∈
+   {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                       __calloc_can_fail_calloc_l18_0;
+                       __calloc_can_fail_calloc_l18_1;
+                       __calloc_can_fail_calloc_l18_2;
+                       __malloc_can_fail_malloc_l11;
+                       __calloc_can_fail_calloc_l18_3;
+                       __malloc_can_fail_malloc_l11_0;
+                       __calloc_can_fail_calloc_l18_4;
+                       __malloc_can_fail_malloc_l11_1;
+                       __calloc_can_fail_calloc_l18_7}
+    (origin: Misaligned) }} or ESCAPINGADDR
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                   __calloc_can_fail_calloc_l18_0;
+                                   __calloc_can_fail_calloc_l18_1;
+                                   __calloc_can_fail_calloc_l18_2;
+                                   __malloc_can_fail_malloc_l11;
+                                   __calloc_can_fail_calloc_l18_3;
+                                   __malloc_can_fail_malloc_l11_0;
+                                   __calloc_can_fail_calloc_l18_4;
+                                   __malloc_can_fail_malloc_l11_1;
+                                   __calloc_can_fail_calloc_l18_7}
+                (origin: Misaligned) }} or ESCAPINGADDR
+               [1] ∈ [--..--]
+  __calloc_can_fail_calloc_l18[0..18446744073709551615] ∈
+                              {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                  __calloc_can_fail_calloc_l18_0;
+                                                  __calloc_can_fail_calloc_l18_1;
+                                                  __calloc_can_fail_calloc_l18_2}
+                               (origin: Misaligned) }} or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_0[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_1[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_2[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+  __malloc_can_fail_malloc_l11[0..18446744073709551615] ∈
+                              {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                  __calloc_can_fail_calloc_l18_0;
+                                                  __calloc_can_fail_calloc_l18_1;
+                                                  __calloc_can_fail_calloc_l18_2}
+                               (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_3[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+  __malloc_can_fail_malloc_l11_0[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_4[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_5[0..8589934591] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2;
+                                                    __malloc_can_fail_malloc_l11;
+                                                    __calloc_can_fail_calloc_l18_3;
+                                                    __malloc_can_fail_malloc_l11_0;
+                                                    __calloc_can_fail_calloc_l18_4;
+                                                    __malloc_can_fail_malloc_l11_1;
+                                                    __calloc_can_fail_calloc_l18_7}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+                                [8589934592..18446744073709551615] ∈ {0}
+  __calloc_can_fail_calloc_l18_6[0..8589934591] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2;
+                                                    __malloc_can_fail_malloc_l11;
+                                                    __calloc_can_fail_calloc_l18_3;
+                                                    __malloc_can_fail_malloc_l11_0;
+                                                    __calloc_can_fail_calloc_l18_4;
+                                                    __malloc_can_fail_malloc_l11_1;
+                                                    __calloc_can_fail_calloc_l18_7}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+                                [8589934592..18446744073709551615] ∈ {0}
+  __malloc_can_fail_malloc_l11_1[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_7[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+[eva:final-states] Values at end of function SCC_destroy:
+  scc.biggest_scc ∈
+     {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                         __calloc_can_fail_calloc_l18_0;
+                         __calloc_can_fail_calloc_l18_1;
+                         __calloc_can_fail_calloc_l18_2;
+                         __malloc_can_fail_malloc_l11;
+                         __calloc_can_fail_calloc_l18_3;
+                         __malloc_can_fail_malloc_l11_0;
+                         __calloc_can_fail_calloc_l18_4;
+                         __malloc_can_fail_malloc_l11_1;
+                         __calloc_can_fail_calloc_l18_7}
+      (origin: Misaligned) }} or ESCAPINGADDR
+     .[bits 32 to 63] ∈
+     {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                         __calloc_can_fail_calloc_l18_0;
+                         __calloc_can_fail_calloc_l18_1;
+                         __calloc_can_fail_calloc_l18_2;
+                         __malloc_can_fail_malloc_l11;
+                         __calloc_can_fail_calloc_l18_3;
+                         __malloc_can_fail_malloc_l11_0;
+                         __calloc_can_fail_calloc_l18_4;
+                         __malloc_can_fail_malloc_l11_1;
+                         __calloc_can_fail_calloc_l18_7}
+      (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+     .ids.idx ∈
+     {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                         __calloc_can_fail_calloc_l18_0;
+                         __calloc_can_fail_calloc_l18_1;
+                         __calloc_can_fail_calloc_l18_2;
+                         __malloc_can_fail_malloc_l11;
+                         __calloc_can_fail_calloc_l18_3;
+                         __malloc_can_fail_malloc_l11_0;
+                         __calloc_can_fail_calloc_l18_4;
+                         __malloc_can_fail_malloc_l11_1;
+                         __calloc_can_fail_calloc_l18_7}
+      (origin: Misaligned) }} or ESCAPINGADDR
+     .ids{.data; .in_stack} ∈ {0}
+     .ap.idx ∈
+     {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                         __calloc_can_fail_calloc_l18_0;
+                         __calloc_can_fail_calloc_l18_1;
+                         __calloc_can_fail_calloc_l18_2;
+                         __malloc_can_fail_malloc_l11;
+                         __calloc_can_fail_calloc_l18_3;
+                         __malloc_can_fail_malloc_l11_0;
+                         __calloc_can_fail_calloc_l18_4;
+                         __malloc_can_fail_malloc_l11_1;
+                         __calloc_can_fail_calloc_l18_7}
+      (origin: Misaligned) }} or ESCAPINGADDR
+     .ap{.data; .in_stack} ∈ {0}
+  g{.nr_vertices; .nr_edges; .is_bidir} ∈
+   {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                       __calloc_can_fail_calloc_l18_0;
+                       __calloc_can_fail_calloc_l18_1;
+                       __calloc_can_fail_calloc_l18_2;
+                       __malloc_can_fail_malloc_l11;
+                       __calloc_can_fail_calloc_l18_3;
+                       __malloc_can_fail_malloc_l11_0;
+                       __calloc_can_fail_calloc_l18_4;
+                       __malloc_can_fail_malloc_l11_1;
+                       __calloc_can_fail_calloc_l18_7}
+    (origin: Misaligned) }} or ESCAPINGADDR
+   .[bits 72 to 127] ∈
+   {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                       __calloc_can_fail_calloc_l18_0;
+                       __calloc_can_fail_calloc_l18_1;
+                       __calloc_can_fail_calloc_l18_2;
+                       __malloc_can_fail_malloc_l11;
+                       __calloc_can_fail_calloc_l18_3;
+                       __malloc_can_fail_malloc_l11_0;
+                       __calloc_can_fail_calloc_l18_4;
+                       __malloc_can_fail_malloc_l11_1;
+                       __calloc_can_fail_calloc_l18_7}
+    (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+   {.first; .vertex; .next; .parent} ∈
+   {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                       __calloc_can_fail_calloc_l18_0;
+                       __calloc_can_fail_calloc_l18_1;
+                       __calloc_can_fail_calloc_l18_2;
+                       __malloc_can_fail_malloc_l11;
+                       __calloc_can_fail_calloc_l18_3;
+                       __malloc_can_fail_malloc_l11_0;
+                       __calloc_can_fail_calloc_l18_4;
+                       __malloc_can_fail_malloc_l11_1;
+                       __calloc_can_fail_calloc_l18_7}
+    (origin: Misaligned) }} or ESCAPINGADDR
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                   __calloc_can_fail_calloc_l18_0;
+                                   __calloc_can_fail_calloc_l18_1;
+                                   __calloc_can_fail_calloc_l18_2;
+                                   __malloc_can_fail_malloc_l11;
+                                   __calloc_can_fail_calloc_l18_3;
+                                   __malloc_can_fail_malloc_l11_0;
+                                   __calloc_can_fail_calloc_l18_4;
+                                   __malloc_can_fail_malloc_l11_1;
+                                   __calloc_can_fail_calloc_l18_7}
+                (origin: Misaligned) }} or ESCAPINGADDR
+               [1] ∈ [--..--]
+  __calloc_can_fail_calloc_l18[0..18446744073709551615] ∈
+                              {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                  __calloc_can_fail_calloc_l18_0;
+                                                  __calloc_can_fail_calloc_l18_1;
+                                                  __calloc_can_fail_calloc_l18_2}
+                               (origin: Misaligned) }} or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_0[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_1[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_2[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+  __malloc_can_fail_malloc_l11[0..18446744073709551615] ∈
+                              {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                  __calloc_can_fail_calloc_l18_0;
+                                                  __calloc_can_fail_calloc_l18_1;
+                                                  __calloc_can_fail_calloc_l18_2}
+                               (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_3[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+  __malloc_can_fail_malloc_l11_0[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_4[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_5[0..8589934591] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2;
+                                                    __malloc_can_fail_malloc_l11;
+                                                    __calloc_can_fail_calloc_l18_3;
+                                                    __malloc_can_fail_malloc_l11_0;
+                                                    __calloc_can_fail_calloc_l18_4;
+                                                    __malloc_can_fail_malloc_l11_1;
+                                                    __calloc_can_fail_calloc_l18_7}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+                                [8589934592..18446744073709551615] ∈ {0}
+  __calloc_can_fail_calloc_l18_6[0..8589934591] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2;
+                                                    __malloc_can_fail_malloc_l11;
+                                                    __calloc_can_fail_calloc_l18_3;
+                                                    __malloc_can_fail_malloc_l11_0;
+                                                    __calloc_can_fail_calloc_l18_4;
+                                                    __malloc_can_fail_malloc_l11_1;
+                                                    __calloc_can_fail_calloc_l18_7}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+                                [8589934592..18446744073709551615] ∈ {0}
+  __malloc_can_fail_malloc_l11_1[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_7[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+[eva:final-states] Values at end of function stack_is_empty:
+  __retres ∈ {0; 1}
+[eva:final-states] Values at end of function stack_pop:
+  u ∈
+   {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                       __calloc_can_fail_calloc_l18_0;
+                       __calloc_can_fail_calloc_l18_1;
+                       __calloc_can_fail_calloc_l18_2}
+    (origin: Misaligned) }}
+  st ∈
+    {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                        __calloc_can_fail_calloc_l18_0;
+                        __calloc_can_fail_calloc_l18_1;
+                        __calloc_can_fail_calloc_l18_2;
+                        __malloc_can_fail_malloc_l11;
+                        __calloc_can_fail_calloc_l18_3;
+                        __malloc_can_fail_malloc_l11_0;
+                        __calloc_can_fail_calloc_l18_4;
+                        __malloc_can_fail_malloc_l11_1;
+                        __calloc_can_fail_calloc_l18_7}
+     (origin: Misaligned) }}
+  scc.biggest_scc ∈
+     {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                         __calloc_can_fail_calloc_l18_0;
+                         __calloc_can_fail_calloc_l18_1;
+                         __calloc_can_fail_calloc_l18_2;
+                         __malloc_can_fail_malloc_l11;
+                         __calloc_can_fail_calloc_l18_3;
+                         __malloc_can_fail_malloc_l11_0;
+                         __calloc_can_fail_calloc_l18_4;
+                         __malloc_can_fail_malloc_l11_1;
+                         __calloc_can_fail_calloc_l18_7}
+      (origin: Misaligned) }} or ESCAPINGADDR
+     .[bits 32 to 63] ∈
+     {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                         __calloc_can_fail_calloc_l18_0;
+                         __calloc_can_fail_calloc_l18_1;
+                         __calloc_can_fail_calloc_l18_2;
+                         __malloc_can_fail_malloc_l11;
+                         __calloc_can_fail_calloc_l18_3;
+                         __malloc_can_fail_malloc_l11_0;
+                         __calloc_can_fail_calloc_l18_4;
+                         __malloc_can_fail_malloc_l11_1;
+                         __calloc_can_fail_calloc_l18_7}
+      (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+     .ids ∈
+     {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                         __calloc_can_fail_calloc_l18_0;
+                         __calloc_can_fail_calloc_l18_1;
+                         __calloc_can_fail_calloc_l18_2;
+                         __malloc_can_fail_malloc_l11;
+                         __calloc_can_fail_calloc_l18_3;
+                         __malloc_can_fail_malloc_l11_0;
+                         __calloc_can_fail_calloc_l18_4;
+                         __malloc_can_fail_malloc_l11_1;
+                         __calloc_can_fail_calloc_l18_7}
+      (origin: Misaligned) }}
+     .ap ∈
+     {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                         __calloc_can_fail_calloc_l18_0;
+                         __calloc_can_fail_calloc_l18_1;
+                         __calloc_can_fail_calloc_l18_2;
+                         __malloc_can_fail_malloc_l11;
+                         __calloc_can_fail_calloc_l18_3;
+                         __malloc_can_fail_malloc_l11_0;
+                         __calloc_can_fail_calloc_l18_4;
+                         __malloc_can_fail_malloc_l11_1;
+                         __calloc_can_fail_calloc_l18_7}
+      (origin: Misaligned) }} or ESCAPINGADDR
+  __retres ∈
+          {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                              __calloc_can_fail_calloc_l18_0;
+                              __calloc_can_fail_calloc_l18_1;
+                              __calloc_can_fail_calloc_l18_2}
+           (origin: Misaligned) }}
+  __calloc_can_fail_calloc_l18[0..18446744073709551615] ∈
+                              {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                  __calloc_can_fail_calloc_l18_0;
+                                                  __calloc_can_fail_calloc_l18_1;
+                                                  __calloc_can_fail_calloc_l18_2}
+                               (origin: Misaligned) }} or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_0[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_1[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_2[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+  __malloc_can_fail_malloc_l11[0..18446744073709551615] ∈
+                              {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                  __calloc_can_fail_calloc_l18_0;
+                                                  __calloc_can_fail_calloc_l18_1;
+                                                  __calloc_can_fail_calloc_l18_2}
+                               (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_3[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+  __malloc_can_fail_malloc_l11_0[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_4[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+  __malloc_can_fail_malloc_l11_1[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_7[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+[eva:final-states] Values at end of function stack_push:
+  st ∈
+    {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                        __calloc_can_fail_calloc_l18_0;
+                        __calloc_can_fail_calloc_l18_1;
+                        __calloc_can_fail_calloc_l18_2;
+                        __malloc_can_fail_malloc_l11;
+                        __calloc_can_fail_calloc_l18_3;
+                        __malloc_can_fail_malloc_l11_0;
+                        __calloc_can_fail_calloc_l18_4;
+                        __malloc_can_fail_malloc_l11_1;
+                        __calloc_can_fail_calloc_l18_7}
+     (origin: Misaligned) }}
+  scc.biggest_scc ∈
+     {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                         __calloc_can_fail_calloc_l18_0;
+                         __calloc_can_fail_calloc_l18_1;
+                         __calloc_can_fail_calloc_l18_2;
+                         __malloc_can_fail_malloc_l11;
+                         __calloc_can_fail_calloc_l18_3;
+                         __malloc_can_fail_malloc_l11_0;
+                         __calloc_can_fail_calloc_l18_4;
+                         __malloc_can_fail_malloc_l11_1;
+                         __calloc_can_fail_calloc_l18_7}
+      (origin: Misaligned) }}
+     .[bits 32 to 63] ∈
+     {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                         __calloc_can_fail_calloc_l18_0;
+                         __calloc_can_fail_calloc_l18_1;
+                         __calloc_can_fail_calloc_l18_2;
+                         __malloc_can_fail_malloc_l11;
+                         __calloc_can_fail_calloc_l18_3;
+                         __malloc_can_fail_malloc_l11_0;
+                         __calloc_can_fail_calloc_l18_4;
+                         __malloc_can_fail_malloc_l11_1;
+                         __calloc_can_fail_calloc_l18_7}
+      (origin: Misaligned) }} or UNINITIALIZED
+     {.ids; .ap} ∈
+     {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                         __calloc_can_fail_calloc_l18_0;
+                         __calloc_can_fail_calloc_l18_1;
+                         __calloc_can_fail_calloc_l18_2;
+                         __malloc_can_fail_malloc_l11;
+                         __calloc_can_fail_calloc_l18_3;
+                         __malloc_can_fail_malloc_l11_0;
+                         __calloc_can_fail_calloc_l18_4;
+                         __malloc_can_fail_malloc_l11_1;
+                         __calloc_can_fail_calloc_l18_7}
+      (origin: Misaligned) }}
+  __calloc_can_fail_calloc_l18[0..18446744073709551615] ∈
+                              {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                  __calloc_can_fail_calloc_l18_0;
+                                                  __calloc_can_fail_calloc_l18_1;
+                                                  __calloc_can_fail_calloc_l18_2}
+                               (origin: Misaligned) }}
+  __calloc_can_fail_calloc_l18_0[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }}
+  __calloc_can_fail_calloc_l18_1[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }}
+  __calloc_can_fail_calloc_l18_2[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }}
+  __malloc_can_fail_malloc_l11[0..18446744073709551615] ∈
+                              {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                  __calloc_can_fail_calloc_l18_0;
+                                                  __calloc_can_fail_calloc_l18_1;
+                                                  __calloc_can_fail_calloc_l18_2}
+                               (origin: Misaligned) }} or UNINITIALIZED
+  __calloc_can_fail_calloc_l18_3[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }}
+  __malloc_can_fail_malloc_l11_0[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or UNINITIALIZED
+  __calloc_can_fail_calloc_l18_4[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }}
+  __malloc_can_fail_malloc_l11_1[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or UNINITIALIZED
+  __calloc_can_fail_calloc_l18_7[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }}
+[eva:final-states] Values at end of function stack_reset:
+  st.idx ∈ {0}
+    {.data; .in_stack} ∈
+    {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                        __calloc_can_fail_calloc_l18_0;
+                        __calloc_can_fail_calloc_l18_1;
+                        __calloc_can_fail_calloc_l18_2;
+                        __malloc_can_fail_malloc_l11;
+                        __calloc_can_fail_calloc_l18_3;
+                        __malloc_can_fail_malloc_l11_0;
+                        __calloc_can_fail_calloc_l18_4;
+                        __malloc_can_fail_malloc_l11_1;
+                        __calloc_can_fail_calloc_l18_7}
+     (origin: Misaligned) }}
+  __calloc_can_fail_calloc_l18[0..18446744073709551615] ∈
+                              {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                  __calloc_can_fail_calloc_l18_0;
+                                                  __calloc_can_fail_calloc_l18_1;
+                                                  __calloc_can_fail_calloc_l18_2}
+                               (origin: Misaligned) }}
+  __calloc_can_fail_calloc_l18_0[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }}
+  __calloc_can_fail_calloc_l18_1[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }}
+  __calloc_can_fail_calloc_l18_2[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }}
+  __malloc_can_fail_malloc_l11[0..18446744073709551615] ∈
+                              {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                  __calloc_can_fail_calloc_l18_0;
+                                                  __calloc_can_fail_calloc_l18_1;
+                                                  __calloc_can_fail_calloc_l18_2}
+                               (origin: Misaligned) }} or UNINITIALIZED
+  __calloc_can_fail_calloc_l18_3[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }}
+  __malloc_can_fail_malloc_l11_0[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or UNINITIALIZED
+  __calloc_can_fail_calloc_l18_4[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }}
+  __malloc_can_fail_malloc_l11_1[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or UNINITIALIZED
+  __calloc_can_fail_calloc_l18_7[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }}
+[eva:final-states] Values at end of function stack_size:
+  __retres ∈
+          {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                              __calloc_can_fail_calloc_l18_0;
+                              __calloc_can_fail_calloc_l18_1;
+                              __calloc_can_fail_calloc_l18_2;
+                              __malloc_can_fail_malloc_l11;
+                              __calloc_can_fail_calloc_l18_3;
+                              __malloc_can_fail_malloc_l11_0;
+                              __calloc_can_fail_calloc_l18_4;
+                              __malloc_can_fail_malloc_l11_1;
+                              __calloc_can_fail_calloc_l18_7}
+           (origin: Misaligned) }}
+[eva:final-states] Values at end of function SCC_print:
+  scc.biggest_scc ∈
+     {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                         __calloc_can_fail_calloc_l18_0;
+                         __calloc_can_fail_calloc_l18_1;
+                         __calloc_can_fail_calloc_l18_2;
+                         __malloc_can_fail_malloc_l11;
+                         __calloc_can_fail_calloc_l18_3;
+                         __malloc_can_fail_malloc_l11_0;
+                         __calloc_can_fail_calloc_l18_4;
+                         __malloc_can_fail_malloc_l11_1;
+                         __calloc_can_fail_calloc_l18_7}
+      (origin: Misaligned) }}
+     .[bits 32 to 63] ∈
+     {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                         __calloc_can_fail_calloc_l18_0;
+                         __calloc_can_fail_calloc_l18_1;
+                         __calloc_can_fail_calloc_l18_2;
+                         __malloc_can_fail_malloc_l11;
+                         __calloc_can_fail_calloc_l18_3;
+                         __malloc_can_fail_malloc_l11_0;
+                         __calloc_can_fail_calloc_l18_4;
+                         __malloc_can_fail_malloc_l11_1;
+                         __calloc_can_fail_calloc_l18_7}
+      (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+     .ids{.idx; .data} ∈
+     {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                         __calloc_can_fail_calloc_l18_0;
+                         __calloc_can_fail_calloc_l18_1;
+                         __calloc_can_fail_calloc_l18_2;
+                         __malloc_can_fail_malloc_l11;
+                         __calloc_can_fail_calloc_l18_3;
+                         __malloc_can_fail_malloc_l11_0;
+                         __calloc_can_fail_calloc_l18_4;
+                         __malloc_can_fail_malloc_l11_1;
+                         __calloc_can_fail_calloc_l18_7}
+      (origin: Misaligned) }}
+     .ids.in_stack ∈
+     {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                         __calloc_can_fail_calloc_l18_0;
+                         __calloc_can_fail_calloc_l18_1;
+                         __calloc_can_fail_calloc_l18_2;
+                         __malloc_can_fail_malloc_l11;
+                         __calloc_can_fail_calloc_l18_3;
+                         __malloc_can_fail_malloc_l11_0;
+                         __calloc_can_fail_calloc_l18_4;
+                         __malloc_can_fail_malloc_l11_1;
+                         __calloc_can_fail_calloc_l18_7}
+      (origin: Misaligned) }} or ESCAPINGADDR
+     .ap.idx ∈
+     {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                         __calloc_can_fail_calloc_l18_0;
+                         __calloc_can_fail_calloc_l18_1;
+                         __calloc_can_fail_calloc_l18_2;
+                         __malloc_can_fail_malloc_l11;
+                         __calloc_can_fail_calloc_l18_3;
+                         __malloc_can_fail_malloc_l11_0;
+                         __calloc_can_fail_calloc_l18_4;
+                         __malloc_can_fail_malloc_l11_1;
+                         __calloc_can_fail_calloc_l18_7}
+      (origin: Misaligned) }}
+     .ap{.data; .in_stack} ∈
+     {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                         __calloc_can_fail_calloc_l18_0;
+                         __calloc_can_fail_calloc_l18_1;
+                         __calloc_can_fail_calloc_l18_2;
+                         __malloc_can_fail_malloc_l11;
+                         __calloc_can_fail_calloc_l18_3;
+                         __malloc_can_fail_malloc_l11_0;
+                         __calloc_can_fail_calloc_l18_4;
+                         __malloc_can_fail_malloc_l11_1;
+                         __calloc_can_fail_calloc_l18_7}
+      (origin: Misaligned) }} or ESCAPINGADDR
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                   __calloc_can_fail_calloc_l18_0;
+                                   __calloc_can_fail_calloc_l18_1;
+                                   __calloc_can_fail_calloc_l18_2;
+                                   __malloc_can_fail_malloc_l11;
+                                   __calloc_can_fail_calloc_l18_3;
+                                   __malloc_can_fail_malloc_l11_0;
+                                   __calloc_can_fail_calloc_l18_4;
+                                   __malloc_can_fail_malloc_l11_1;
+                                   __calloc_can_fail_calloc_l18_7}
+                (origin: Misaligned) }}
+               [1] ∈ [--..--]
+  __calloc_can_fail_calloc_l18[0..18446744073709551615] ∈
+                              {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                  __calloc_can_fail_calloc_l18_0;
+                                                  __calloc_can_fail_calloc_l18_1;
+                                                  __calloc_can_fail_calloc_l18_2}
+                               (origin: Misaligned) }} or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_0[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_1[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_2[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+  __malloc_can_fail_malloc_l11[0..18446744073709551615] ∈
+                              {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                  __calloc_can_fail_calloc_l18_0;
+                                                  __calloc_can_fail_calloc_l18_1;
+                                                  __calloc_can_fail_calloc_l18_2}
+                               (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_3[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+  __malloc_can_fail_malloc_l11_0[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_4[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+  __malloc_can_fail_malloc_l11_1[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_7[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+[eva:final-states] Values at end of function stack_sort:
+  __calloc_can_fail_calloc_l18[0..18446744073709551615] ∈
+                              {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                  __calloc_can_fail_calloc_l18_0;
+                                                  __calloc_can_fail_calloc_l18_1;
+                                                  __calloc_can_fail_calloc_l18_2}
+                               (origin: Misaligned) }} or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_0[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_1[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_2[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+  __malloc_can_fail_malloc_l11[0..18446744073709551615] ∈
+                              {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                  __calloc_can_fail_calloc_l18_0;
+                                                  __calloc_can_fail_calloc_l18_1;
+                                                  __calloc_can_fail_calloc_l18_2}
+                               (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_3[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+  __malloc_can_fail_malloc_l11_0[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_4[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+  __malloc_can_fail_malloc_l11_1[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_7[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+[eva:final-states] Values at end of function can_fail_calloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈
+          {{ NULL ; (void *)&__calloc_can_fail_calloc_l18 ;
+             (void *)&__calloc_can_fail_calloc_l18_0 ;
+             (void *)&__calloc_can_fail_calloc_l18_1 ;
+             (void *)&__calloc_can_fail_calloc_l18_2 ;
+             (void *)&__calloc_can_fail_calloc_l18_3 ;
+             (void *)&__calloc_can_fail_calloc_l18_4 ;
+             (void *)&__calloc_can_fail_calloc_l18_5 ;
+             (void *)&__calloc_can_fail_calloc_l18_6 ;
+             (void *)&__calloc_can_fail_calloc_l18_7 }}
+[eva:final-states] Values at end of function can_fail_malloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈
+          {{ NULL ; (void *)&__malloc_can_fail_malloc_l11 ;
+             (void *)&__malloc_can_fail_malloc_l11_0 ;
+             (void *)&__malloc_can_fail_malloc_l11_1 }}
+[eva:final-states] Values at end of function graph_new:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  num_e ∈ [-2147483648..2147483646],0%2
+  g.nr_vertices ∈ [--..--]
+   .nr_edges ∈ {0}
+   .is_bidir ∈ {1}
+   .[bits 72 to 127] ∈ UNINITIALIZED
+   .first ∈ {{ NULL ; (Edge *)&__calloc_can_fail_calloc_l18 }}
+   .vertex ∈ {{ NULL ; (Vertex *)&__calloc_can_fail_calloc_l18_0 }}
+   .next ∈ {{ NULL ; (Edge *)&__calloc_can_fail_calloc_l18_1 }}
+   .parent ∈ {{ NULL ; (Vertex *)&__calloc_can_fail_calloc_l18_2 }}
+[eva:final-states] Values at end of function stack_new:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  st.idx ∈ {0}
+    .data ∈ {{ NULL ; (Vertex *)&__malloc_can_fail_malloc_l11_1 }}
+    .in_stack ∈ {{ NULL ; (bool *)&__calloc_can_fail_calloc_l18_7 }}
+  scc.biggest_scc ∈ {0}
+     .[bits 32 to 63] ∈ UNINITIALIZED
+     .ids.idx ∈ {0}
+     .ids.data ∈ {{ NULL ; (Vertex *)&__malloc_can_fail_malloc_l11 }}
+     .ids.in_stack ∈ {{ NULL ; (bool *)&__calloc_can_fail_calloc_l18_3 }}
+     .ap.idx ∈ {0} or UNINITIALIZED
+     .ap.data ∈
+     {{ NULL ; (Vertex *)&__malloc_can_fail_malloc_l11_0 }} or UNINITIALIZED
+     .ap.in_stack ∈
+     {{ NULL ; (bool *)&__calloc_can_fail_calloc_l18_4 }} or UNINITIALIZED
+[eva:final-states] Values at end of function SCC_new:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  scc.biggest_scc ∈ {0}
+     .[bits 32 to 63] ∈ UNINITIALIZED
+     .ids.idx ∈ {0}
+     .ids.data ∈ {{ NULL ; (Vertex *)&__malloc_can_fail_malloc_l11 }}
+     .ids.in_stack ∈ {{ NULL ; (bool *)&__calloc_can_fail_calloc_l18_3 }}
+     .ap.idx ∈ {0}
+     .ap.data ∈ {{ NULL ; (Vertex *)&__malloc_can_fail_malloc_l11_0 }}
+     .ap.in_stack ∈ {{ NULL ; (bool *)&__calloc_can_fail_calloc_l18_4 }}
+[eva:final-states] Values at end of function count_scc:
+  adj ∈
+     {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                         __calloc_can_fail_calloc_l18_0;
+                         __calloc_can_fail_calloc_l18_1;
+                         __calloc_can_fail_calloc_l18_2}
+      (origin: Misaligned) }} or UNINITIALIZED
+  disc_time ∈
+           {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                               __calloc_can_fail_calloc_l18_0;
+                               __calloc_can_fail_calloc_l18_1;
+                               __calloc_can_fail_calloc_l18_2;
+                               __malloc_can_fail_malloc_l11;
+                               __calloc_can_fail_calloc_l18_3;
+                               __malloc_can_fail_malloc_l11_0;
+                               __calloc_can_fail_calloc_l18_4;
+                               __malloc_can_fail_malloc_l11_1;
+                               __calloc_can_fail_calloc_l18_7}
+            (origin: Misaligned) }}
+  st ∈
+    {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                        __calloc_can_fail_calloc_l18_0;
+                        __calloc_can_fail_calloc_l18_1;
+                        __calloc_can_fail_calloc_l18_2;
+                        __malloc_can_fail_malloc_l11;
+                        __calloc_can_fail_calloc_l18_3;
+                        __malloc_can_fail_malloc_l11_0;
+                        __calloc_can_fail_calloc_l18_4;
+                        __malloc_can_fail_malloc_l11_1;
+                        __calloc_can_fail_calloc_l18_7}
+     (origin: Misaligned) }}
+  scc.biggest_scc ∈
+     {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                         __calloc_can_fail_calloc_l18_0;
+                         __calloc_can_fail_calloc_l18_1;
+                         __calloc_can_fail_calloc_l18_2;
+                         __malloc_can_fail_malloc_l11;
+                         __calloc_can_fail_calloc_l18_3;
+                         __malloc_can_fail_malloc_l11_0;
+                         __calloc_can_fail_calloc_l18_4;
+                         __malloc_can_fail_malloc_l11_1;
+                         __calloc_can_fail_calloc_l18_7}
+      (origin: Misaligned) }}
+     .[bits 32 to 63] ∈
+     {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                         __calloc_can_fail_calloc_l18_0;
+                         __calloc_can_fail_calloc_l18_1;
+                         __calloc_can_fail_calloc_l18_2;
+                         __malloc_can_fail_malloc_l11;
+                         __calloc_can_fail_calloc_l18_3;
+                         __malloc_can_fail_malloc_l11_0;
+                         __calloc_can_fail_calloc_l18_4;
+                         __malloc_can_fail_malloc_l11_1;
+                         __calloc_can_fail_calloc_l18_7}
+      (origin: Misaligned) }} or UNINITIALIZED
+     {.ids; .ap} ∈
+     {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                         __calloc_can_fail_calloc_l18_0;
+                         __calloc_can_fail_calloc_l18_1;
+                         __calloc_can_fail_calloc_l18_2;
+                         __malloc_can_fail_malloc_l11;
+                         __calloc_can_fail_calloc_l18_3;
+                         __malloc_can_fail_malloc_l11_0;
+                         __calloc_can_fail_calloc_l18_4;
+                         __malloc_can_fail_malloc_l11_1;
+                         __calloc_can_fail_calloc_l18_7}
+      (origin: Misaligned) }}
+  g{.nr_vertices; .nr_edges; .is_bidir} ∈
+   {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                       __calloc_can_fail_calloc_l18_0;
+                       __calloc_can_fail_calloc_l18_1;
+                       __calloc_can_fail_calloc_l18_2;
+                       __malloc_can_fail_malloc_l11;
+                       __calloc_can_fail_calloc_l18_3;
+                       __malloc_can_fail_malloc_l11_0;
+                       __calloc_can_fail_calloc_l18_4;
+                       __malloc_can_fail_malloc_l11_1;
+                       __calloc_can_fail_calloc_l18_7}
+    (origin: Misaligned) }}
+   .[bits 72 to 127] ∈
+   {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                       __calloc_can_fail_calloc_l18_0;
+                       __calloc_can_fail_calloc_l18_1;
+                       __calloc_can_fail_calloc_l18_2;
+                       __malloc_can_fail_malloc_l11;
+                       __calloc_can_fail_calloc_l18_3;
+                       __malloc_can_fail_malloc_l11_0;
+                       __calloc_can_fail_calloc_l18_4;
+                       __malloc_can_fail_malloc_l11_1;
+                       __calloc_can_fail_calloc_l18_7}
+    (origin: Misaligned) }} or UNINITIALIZED
+   {.first; .vertex; .next; .parent} ∈
+   {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                       __calloc_can_fail_calloc_l18_0;
+                       __calloc_can_fail_calloc_l18_1;
+                       __calloc_can_fail_calloc_l18_2;
+                       __malloc_can_fail_malloc_l11;
+                       __calloc_can_fail_calloc_l18_3;
+                       __malloc_can_fail_malloc_l11_0;
+                       __calloc_can_fail_calloc_l18_4;
+                       __malloc_can_fail_malloc_l11_1;
+                       __calloc_can_fail_calloc_l18_7}
+    (origin: Misaligned) }}
+  __calloc_can_fail_calloc_l18[0..18446744073709551615] ∈
+                              {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                  __calloc_can_fail_calloc_l18_0;
+                                                  __calloc_can_fail_calloc_l18_1;
+                                                  __calloc_can_fail_calloc_l18_2}
+                               (origin: Misaligned) }}
+  __calloc_can_fail_calloc_l18_0[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }}
+  __calloc_can_fail_calloc_l18_1[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }}
+  __calloc_can_fail_calloc_l18_2[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }}
+  __malloc_can_fail_malloc_l11[0..18446744073709551615] ∈
+                              {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                  __calloc_can_fail_calloc_l18_0;
+                                                  __calloc_can_fail_calloc_l18_1;
+                                                  __calloc_can_fail_calloc_l18_2}
+                               (origin: Misaligned) }} or UNINITIALIZED
+  __calloc_can_fail_calloc_l18_3[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }}
+  __malloc_can_fail_malloc_l11_0[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or UNINITIALIZED
+  __calloc_can_fail_calloc_l18_4[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }}
+  __calloc_can_fail_calloc_l18_5[0..8589934591] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2;
+                                                    __malloc_can_fail_malloc_l11;
+                                                    __calloc_can_fail_calloc_l18_3;
+                                                    __malloc_can_fail_malloc_l11_0;
+                                                    __calloc_can_fail_calloc_l18_4;
+                                                    __malloc_can_fail_malloc_l11_1;
+                                                    __calloc_can_fail_calloc_l18_7}
+                                 (origin: Misaligned) }}
+                                [8589934592..18446744073709551615] ∈ {0}
+  __calloc_can_fail_calloc_l18_6[0..8589934591] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2;
+                                                    __malloc_can_fail_malloc_l11;
+                                                    __calloc_can_fail_calloc_l18_3;
+                                                    __malloc_can_fail_malloc_l11_0;
+                                                    __calloc_can_fail_calloc_l18_4;
+                                                    __malloc_can_fail_malloc_l11_1;
+                                                    __calloc_can_fail_calloc_l18_7}
+                                 (origin: Misaligned) }}
+                                [8589934592..18446744073709551615] ∈ {0}
+  __malloc_can_fail_malloc_l11_1[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or UNINITIALIZED
+  __calloc_can_fail_calloc_l18_7[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }}
+[eva:final-states] Values at end of function graph_connect:
+  g{.nr_vertices; .nr_edges; .is_bidir} ∈
+   {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                       __calloc_can_fail_calloc_l18_0;
+                       __calloc_can_fail_calloc_l18_1;
+                       __calloc_can_fail_calloc_l18_2}
+    (origin: Misaligned) }}
+   .[bits 72 to 127] ∈
+   {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                       __calloc_can_fail_calloc_l18_0;
+                       __calloc_can_fail_calloc_l18_1;
+                       __calloc_can_fail_calloc_l18_2}
+    (origin: Misaligned) }} or UNINITIALIZED
+   {.first; .vertex; .next; .parent} ∈
+   {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                       __calloc_can_fail_calloc_l18_0;
+                       __calloc_can_fail_calloc_l18_1;
+                       __calloc_can_fail_calloc_l18_2}
+    (origin: Misaligned) }}
+  __calloc_can_fail_calloc_l18[0..18446744073709551615] ∈
+                              {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                  __calloc_can_fail_calloc_l18_0;
+                                                  __calloc_can_fail_calloc_l18_1;
+                                                  __calloc_can_fail_calloc_l18_2}
+                               (origin: Misaligned) }}
+  __calloc_can_fail_calloc_l18_0[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }}
+  __calloc_can_fail_calloc_l18_1[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }}
+  __calloc_can_fail_calloc_l18_2[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }}
+[eva:final-states] Values at end of function graph_init:
+  num_e ∈ [-2147483648..2147483646]
+  g{.nr_vertices; .nr_edges; .is_bidir} ∈
+   {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                       __calloc_can_fail_calloc_l18_0;
+                       __calloc_can_fail_calloc_l18_1;
+                       __calloc_can_fail_calloc_l18_2}
+    (origin: Misaligned) }}
+   .[bits 72 to 127] ∈
+   {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                       __calloc_can_fail_calloc_l18_0;
+                       __calloc_can_fail_calloc_l18_1;
+                       __calloc_can_fail_calloc_l18_2}
+    (origin: Misaligned) }} or UNINITIALIZED
+   {.first; .vertex; .next; .parent} ∈
+   {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                       __calloc_can_fail_calloc_l18_0;
+                       __calloc_can_fail_calloc_l18_1;
+                       __calloc_can_fail_calloc_l18_2}
+    (origin: Misaligned) }}
+  S___fc_stdin[0..1] ∈ [--..--]
+  __calloc_can_fail_calloc_l18[0..18446744073709551615] ∈
+                              {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                  __calloc_can_fail_calloc_l18_0;
+                                                  __calloc_can_fail_calloc_l18_1;
+                                                  __calloc_can_fail_calloc_l18_2}
+                               (origin: Misaligned) }}
+  __calloc_can_fail_calloc_l18_0[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }}
+  __calloc_can_fail_calloc_l18_1[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }}
+  __calloc_can_fail_calloc_l18_2[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }}
+[eva:final-states] Values at end of function tarjan_aux:
+  adj ∈
+     {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                         __calloc_can_fail_calloc_l18_0;
+                         __calloc_can_fail_calloc_l18_1;
+                         __calloc_can_fail_calloc_l18_2}
+      (origin: Misaligned) }}
+  children ∈ [0..2147483647]
+  disc_time ∈
+           {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                               __calloc_can_fail_calloc_l18_0;
+                               __calloc_can_fail_calloc_l18_1;
+                               __calloc_can_fail_calloc_l18_2;
+                               __malloc_can_fail_malloc_l11;
+                               __calloc_can_fail_calloc_l18_3;
+                               __malloc_can_fail_malloc_l11_0;
+                               __calloc_can_fail_calloc_l18_4;
+                               __malloc_can_fail_malloc_l11_1;
+                               __calloc_can_fail_calloc_l18_7}
+            (origin: Misaligned) }}
+  st ∈
+    {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                        __calloc_can_fail_calloc_l18_0;
+                        __calloc_can_fail_calloc_l18_1;
+                        __calloc_can_fail_calloc_l18_2;
+                        __malloc_can_fail_malloc_l11;
+                        __calloc_can_fail_calloc_l18_3;
+                        __malloc_can_fail_malloc_l11_0;
+                        __calloc_can_fail_calloc_l18_4;
+                        __malloc_can_fail_malloc_l11_1;
+                        __calloc_can_fail_calloc_l18_7}
+     (origin: Misaligned) }}
+  scc.biggest_scc ∈
+     {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                         __calloc_can_fail_calloc_l18_0;
+                         __calloc_can_fail_calloc_l18_1;
+                         __calloc_can_fail_calloc_l18_2;
+                         __malloc_can_fail_malloc_l11;
+                         __calloc_can_fail_calloc_l18_3;
+                         __malloc_can_fail_malloc_l11_0;
+                         __calloc_can_fail_calloc_l18_4;
+                         __malloc_can_fail_malloc_l11_1;
+                         __calloc_can_fail_calloc_l18_7}
+      (origin: Misaligned) }}
+     .[bits 32 to 63] ∈
+     {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                         __calloc_can_fail_calloc_l18_0;
+                         __calloc_can_fail_calloc_l18_1;
+                         __calloc_can_fail_calloc_l18_2;
+                         __malloc_can_fail_malloc_l11;
+                         __calloc_can_fail_calloc_l18_3;
+                         __malloc_can_fail_malloc_l11_0;
+                         __calloc_can_fail_calloc_l18_4;
+                         __malloc_can_fail_malloc_l11_1;
+                         __calloc_can_fail_calloc_l18_7}
+      (origin: Misaligned) }} or UNINITIALIZED
+     {.ids; .ap} ∈
+     {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                         __calloc_can_fail_calloc_l18_0;
+                         __calloc_can_fail_calloc_l18_1;
+                         __calloc_can_fail_calloc_l18_2;
+                         __malloc_can_fail_malloc_l11;
+                         __calloc_can_fail_calloc_l18_3;
+                         __malloc_can_fail_malloc_l11_0;
+                         __calloc_can_fail_calloc_l18_4;
+                         __malloc_can_fail_malloc_l11_1;
+                         __calloc_can_fail_calloc_l18_7}
+      (origin: Misaligned) }}
+  g{.nr_vertices; .nr_edges; .is_bidir} ∈
+   {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                       __calloc_can_fail_calloc_l18_0;
+                       __calloc_can_fail_calloc_l18_1;
+                       __calloc_can_fail_calloc_l18_2;
+                       __malloc_can_fail_malloc_l11;
+                       __calloc_can_fail_calloc_l18_3;
+                       __malloc_can_fail_malloc_l11_0;
+                       __calloc_can_fail_calloc_l18_4;
+                       __malloc_can_fail_malloc_l11_1;
+                       __calloc_can_fail_calloc_l18_7}
+    (origin: Misaligned) }}
+   .[bits 72 to 127] ∈
+   {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                       __calloc_can_fail_calloc_l18_0;
+                       __calloc_can_fail_calloc_l18_1;
+                       __calloc_can_fail_calloc_l18_2;
+                       __malloc_can_fail_malloc_l11;
+                       __calloc_can_fail_calloc_l18_3;
+                       __malloc_can_fail_malloc_l11_0;
+                       __calloc_can_fail_calloc_l18_4;
+                       __malloc_can_fail_malloc_l11_1;
+                       __calloc_can_fail_calloc_l18_7}
+    (origin: Misaligned) }} or UNINITIALIZED
+   {.first; .vertex; .next; .parent} ∈
+   {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                       __calloc_can_fail_calloc_l18_0;
+                       __calloc_can_fail_calloc_l18_1;
+                       __calloc_can_fail_calloc_l18_2;
+                       __malloc_can_fail_malloc_l11;
+                       __calloc_can_fail_calloc_l18_3;
+                       __malloc_can_fail_malloc_l11_0;
+                       __calloc_can_fail_calloc_l18_4;
+                       __malloc_can_fail_malloc_l11_1;
+                       __calloc_can_fail_calloc_l18_7}
+    (origin: Misaligned) }}
+  __calloc_can_fail_calloc_l18[0..18446744073709551615] ∈
+                              {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                  __calloc_can_fail_calloc_l18_0;
+                                                  __calloc_can_fail_calloc_l18_1;
+                                                  __calloc_can_fail_calloc_l18_2}
+                               (origin: Misaligned) }}
+  __calloc_can_fail_calloc_l18_0[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }}
+  __calloc_can_fail_calloc_l18_1[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }}
+  __calloc_can_fail_calloc_l18_2[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }}
+  __malloc_can_fail_malloc_l11[0..18446744073709551615] ∈
+                              {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                  __calloc_can_fail_calloc_l18_0;
+                                                  __calloc_can_fail_calloc_l18_1;
+                                                  __calloc_can_fail_calloc_l18_2}
+                               (origin: Misaligned) }} or UNINITIALIZED
+  __calloc_can_fail_calloc_l18_3[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }}
+  __malloc_can_fail_malloc_l11_0[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or UNINITIALIZED
+  __calloc_can_fail_calloc_l18_4[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }}
+  __calloc_can_fail_calloc_l18_5[0..8589934591] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2;
+                                                    __malloc_can_fail_malloc_l11;
+                                                    __calloc_can_fail_calloc_l18_3;
+                                                    __malloc_can_fail_malloc_l11_0;
+                                                    __calloc_can_fail_calloc_l18_4;
+                                                    __malloc_can_fail_malloc_l11_1;
+                                                    __calloc_can_fail_calloc_l18_7}
+                                 (origin: Misaligned) }}
+                                [8589934592..18446744073709551615] ∈ {0}
+  __calloc_can_fail_calloc_l18_6[0..8589934591] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2;
+                                                    __malloc_can_fail_malloc_l11;
+                                                    __calloc_can_fail_calloc_l18_3;
+                                                    __malloc_can_fail_malloc_l11_0;
+                                                    __calloc_can_fail_calloc_l18_4;
+                                                    __malloc_can_fail_malloc_l11_1;
+                                                    __calloc_can_fail_calloc_l18_7}
+                                 (origin: Misaligned) }}
+                                [8589934592..18446744073709551615] ∈ {0}
+  __malloc_can_fail_malloc_l11_1[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or UNINITIALIZED
+  __calloc_can_fail_calloc_l18_7[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }}
+[eva:final-states] Values at end of function tarjan:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  u ∈ [1..2147483647]
+  disc ∈
+      {{ NULL ; (int *)&__calloc_can_fail_calloc_l18_5 }} or ESCAPINGADDR
+  low ∈ {{ NULL ; (int *)&__calloc_can_fail_calloc_l18_6 }} or ESCAPINGADDR
+  disc_time ∈
+           {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                               __calloc_can_fail_calloc_l18_0;
+                               __calloc_can_fail_calloc_l18_1;
+                               __calloc_can_fail_calloc_l18_2;
+                               __malloc_can_fail_malloc_l11;
+                               __calloc_can_fail_calloc_l18_3;
+                               __malloc_can_fail_malloc_l11_0;
+                               __calloc_can_fail_calloc_l18_4;
+                               __malloc_can_fail_malloc_l11_1;
+                               __calloc_can_fail_calloc_l18_7}
+            (origin: Misaligned) }} or ESCAPINGADDR
+  st.idx ∈
+    {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                        __calloc_can_fail_calloc_l18_0;
+                        __calloc_can_fail_calloc_l18_1;
+                        __calloc_can_fail_calloc_l18_2;
+                        __malloc_can_fail_malloc_l11;
+                        __calloc_can_fail_calloc_l18_3;
+                        __malloc_can_fail_malloc_l11_0;
+                        __calloc_can_fail_calloc_l18_4;
+                        __malloc_can_fail_malloc_l11_1;
+                        __calloc_can_fail_calloc_l18_7}
+     (origin: Misaligned) }} or ESCAPINGADDR
+    {.data; .in_stack} ∈ {0}
+  scc.biggest_scc ∈
+     {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                         __calloc_can_fail_calloc_l18_0;
+                         __calloc_can_fail_calloc_l18_1;
+                         __calloc_can_fail_calloc_l18_2;
+                         __malloc_can_fail_malloc_l11;
+                         __calloc_can_fail_calloc_l18_3;
+                         __malloc_can_fail_malloc_l11_0;
+                         __calloc_can_fail_calloc_l18_4;
+                         __malloc_can_fail_malloc_l11_1;
+                         __calloc_can_fail_calloc_l18_7}
+      (origin: Misaligned) }} or ESCAPINGADDR
+     .[bits 32 to 63] ∈
+     {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                         __calloc_can_fail_calloc_l18_0;
+                         __calloc_can_fail_calloc_l18_1;
+                         __calloc_can_fail_calloc_l18_2;
+                         __malloc_can_fail_malloc_l11;
+                         __calloc_can_fail_calloc_l18_3;
+                         __malloc_can_fail_malloc_l11_0;
+                         __calloc_can_fail_calloc_l18_4;
+                         __malloc_can_fail_malloc_l11_1;
+                         __calloc_can_fail_calloc_l18_7}
+      (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+     {.ids; .ap} ∈
+     {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                         __calloc_can_fail_calloc_l18_0;
+                         __calloc_can_fail_calloc_l18_1;
+                         __calloc_can_fail_calloc_l18_2;
+                         __malloc_can_fail_malloc_l11;
+                         __calloc_can_fail_calloc_l18_3;
+                         __malloc_can_fail_malloc_l11_0;
+                         __calloc_can_fail_calloc_l18_4;
+                         __malloc_can_fail_malloc_l11_1;
+                         __calloc_can_fail_calloc_l18_7}
+      (origin: Misaligned) }} or ESCAPINGADDR
+  g{.nr_vertices; .nr_edges; .is_bidir} ∈
+   {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                       __calloc_can_fail_calloc_l18_0;
+                       __calloc_can_fail_calloc_l18_1;
+                       __calloc_can_fail_calloc_l18_2;
+                       __malloc_can_fail_malloc_l11;
+                       __calloc_can_fail_calloc_l18_3;
+                       __malloc_can_fail_malloc_l11_0;
+                       __calloc_can_fail_calloc_l18_4;
+                       __malloc_can_fail_malloc_l11_1;
+                       __calloc_can_fail_calloc_l18_7}
+    (origin: Misaligned) }} or ESCAPINGADDR
+   .[bits 72 to 127] ∈
+   {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                       __calloc_can_fail_calloc_l18_0;
+                       __calloc_can_fail_calloc_l18_1;
+                       __calloc_can_fail_calloc_l18_2;
+                       __malloc_can_fail_malloc_l11;
+                       __calloc_can_fail_calloc_l18_3;
+                       __malloc_can_fail_malloc_l11_0;
+                       __calloc_can_fail_calloc_l18_4;
+                       __malloc_can_fail_malloc_l11_1;
+                       __calloc_can_fail_calloc_l18_7}
+    (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+   {.first; .vertex; .next; .parent} ∈
+   {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                       __calloc_can_fail_calloc_l18_0;
+                       __calloc_can_fail_calloc_l18_1;
+                       __calloc_can_fail_calloc_l18_2;
+                       __malloc_can_fail_malloc_l11;
+                       __calloc_can_fail_calloc_l18_3;
+                       __malloc_can_fail_malloc_l11_0;
+                       __calloc_can_fail_calloc_l18_4;
+                       __malloc_can_fail_malloc_l11_1;
+                       __calloc_can_fail_calloc_l18_7}
+    (origin: Misaligned) }} or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18[0..18446744073709551615] ∈
+                              {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                  __calloc_can_fail_calloc_l18_0;
+                                                  __calloc_can_fail_calloc_l18_1;
+                                                  __calloc_can_fail_calloc_l18_2}
+                               (origin: Misaligned) }} or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_0[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_1[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_2[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+  __malloc_can_fail_malloc_l11[0..18446744073709551615] ∈
+                              {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                  __calloc_can_fail_calloc_l18_0;
+                                                  __calloc_can_fail_calloc_l18_1;
+                                                  __calloc_can_fail_calloc_l18_2}
+                               (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_3[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+  __malloc_can_fail_malloc_l11_0[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_4[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_5[0..8589934591] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2;
+                                                    __malloc_can_fail_malloc_l11;
+                                                    __calloc_can_fail_calloc_l18_3;
+                                                    __malloc_can_fail_malloc_l11_0;
+                                                    __calloc_can_fail_calloc_l18_4;
+                                                    __malloc_can_fail_malloc_l11_1;
+                                                    __calloc_can_fail_calloc_l18_7}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+                                [8589934592..18446744073709551615] ∈ {0}
+  __calloc_can_fail_calloc_l18_6[0..8589934591] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2;
+                                                    __malloc_can_fail_malloc_l11;
+                                                    __calloc_can_fail_calloc_l18_3;
+                                                    __malloc_can_fail_malloc_l11_0;
+                                                    __calloc_can_fail_calloc_l18_4;
+                                                    __malloc_can_fail_malloc_l11_1;
+                                                    __calloc_can_fail_calloc_l18_7}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+                                [8589934592..18446744073709551615] ∈ {0}
+  __malloc_can_fail_malloc_l11_1[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_7[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+[eva:final-states] Values at end of function graph_find_SCCs:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  scc.biggest_scc ∈
+     {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                         __calloc_can_fail_calloc_l18_0;
+                         __calloc_can_fail_calloc_l18_1;
+                         __calloc_can_fail_calloc_l18_2;
+                         __malloc_can_fail_malloc_l11;
+                         __calloc_can_fail_calloc_l18_3;
+                         __malloc_can_fail_malloc_l11_0;
+                         __calloc_can_fail_calloc_l18_4;
+                         __malloc_can_fail_malloc_l11_1;
+                         __calloc_can_fail_calloc_l18_7}
+      (origin: Misaligned) }} or ESCAPINGADDR
+     .[bits 32 to 63] ∈
+     {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                         __calloc_can_fail_calloc_l18_0;
+                         __calloc_can_fail_calloc_l18_1;
+                         __calloc_can_fail_calloc_l18_2;
+                         __malloc_can_fail_malloc_l11;
+                         __calloc_can_fail_calloc_l18_3;
+                         __malloc_can_fail_malloc_l11_0;
+                         __calloc_can_fail_calloc_l18_4;
+                         __malloc_can_fail_malloc_l11_1;
+                         __calloc_can_fail_calloc_l18_7}
+      (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+     .ids.idx ∈
+     {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                         __calloc_can_fail_calloc_l18_0;
+                         __calloc_can_fail_calloc_l18_1;
+                         __calloc_can_fail_calloc_l18_2;
+                         __malloc_can_fail_malloc_l11;
+                         __calloc_can_fail_calloc_l18_3;
+                         __malloc_can_fail_malloc_l11_0;
+                         __calloc_can_fail_calloc_l18_4;
+                         __malloc_can_fail_malloc_l11_1;
+                         __calloc_can_fail_calloc_l18_7}
+      (origin: Misaligned) }} or ESCAPINGADDR
+     .ids{.data; .in_stack} ∈ {0}
+     .ap.idx ∈
+     {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                         __calloc_can_fail_calloc_l18_0;
+                         __calloc_can_fail_calloc_l18_1;
+                         __calloc_can_fail_calloc_l18_2;
+                         __malloc_can_fail_malloc_l11;
+                         __calloc_can_fail_calloc_l18_3;
+                         __malloc_can_fail_malloc_l11_0;
+                         __calloc_can_fail_calloc_l18_4;
+                         __malloc_can_fail_malloc_l11_1;
+                         __calloc_can_fail_calloc_l18_7}
+      (origin: Misaligned) }} or ESCAPINGADDR
+     .ap{.data; .in_stack} ∈ {0}
+  g{.nr_vertices; .nr_edges; .is_bidir} ∈
+   {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                       __calloc_can_fail_calloc_l18_0;
+                       __calloc_can_fail_calloc_l18_1;
+                       __calloc_can_fail_calloc_l18_2;
+                       __malloc_can_fail_malloc_l11;
+                       __calloc_can_fail_calloc_l18_3;
+                       __malloc_can_fail_malloc_l11_0;
+                       __calloc_can_fail_calloc_l18_4;
+                       __malloc_can_fail_malloc_l11_1;
+                       __calloc_can_fail_calloc_l18_7}
+    (origin: Misaligned) }} or ESCAPINGADDR
+   .[bits 72 to 127] ∈
+   {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                       __calloc_can_fail_calloc_l18_0;
+                       __calloc_can_fail_calloc_l18_1;
+                       __calloc_can_fail_calloc_l18_2;
+                       __malloc_can_fail_malloc_l11;
+                       __calloc_can_fail_calloc_l18_3;
+                       __malloc_can_fail_malloc_l11_0;
+                       __calloc_can_fail_calloc_l18_4;
+                       __malloc_can_fail_malloc_l11_1;
+                       __calloc_can_fail_calloc_l18_7}
+    (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+   {.first; .vertex; .next; .parent} ∈
+   {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                       __calloc_can_fail_calloc_l18_0;
+                       __calloc_can_fail_calloc_l18_1;
+                       __calloc_can_fail_calloc_l18_2;
+                       __malloc_can_fail_malloc_l11;
+                       __calloc_can_fail_calloc_l18_3;
+                       __malloc_can_fail_malloc_l11_0;
+                       __calloc_can_fail_calloc_l18_4;
+                       __malloc_can_fail_malloc_l11_1;
+                       __calloc_can_fail_calloc_l18_7}
+    (origin: Misaligned) }} or ESCAPINGADDR
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                   __calloc_can_fail_calloc_l18_0;
+                                   __calloc_can_fail_calloc_l18_1;
+                                   __calloc_can_fail_calloc_l18_2;
+                                   __malloc_can_fail_malloc_l11;
+                                   __calloc_can_fail_calloc_l18_3;
+                                   __malloc_can_fail_malloc_l11_0;
+                                   __calloc_can_fail_calloc_l18_4;
+                                   __malloc_can_fail_malloc_l11_1;
+                                   __calloc_can_fail_calloc_l18_7}
+                (origin: Misaligned) }} or ESCAPINGADDR
+               [1] ∈ [--..--]
+  __calloc_can_fail_calloc_l18[0..18446744073709551615] ∈
+                              {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                  __calloc_can_fail_calloc_l18_0;
+                                                  __calloc_can_fail_calloc_l18_1;
+                                                  __calloc_can_fail_calloc_l18_2}
+                               (origin: Misaligned) }} or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_0[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_1[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_2[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+  __malloc_can_fail_malloc_l11[0..18446744073709551615] ∈
+                              {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                  __calloc_can_fail_calloc_l18_0;
+                                                  __calloc_can_fail_calloc_l18_1;
+                                                  __calloc_can_fail_calloc_l18_2}
+                               (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_3[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+  __malloc_can_fail_malloc_l11_0[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_4[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_5[0..8589934591] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2;
+                                                    __malloc_can_fail_malloc_l11;
+                                                    __calloc_can_fail_calloc_l18_3;
+                                                    __malloc_can_fail_malloc_l11_0;
+                                                    __calloc_can_fail_calloc_l18_4;
+                                                    __malloc_can_fail_malloc_l11_1;
+                                                    __calloc_can_fail_calloc_l18_7}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+                                [8589934592..18446744073709551615] ∈ {0}
+  __calloc_can_fail_calloc_l18_6[0..8589934591] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2;
+                                                    __malloc_can_fail_malloc_l11;
+                                                    __calloc_can_fail_calloc_l18_3;
+                                                    __malloc_can_fail_malloc_l11_0;
+                                                    __calloc_can_fail_calloc_l18_4;
+                                                    __malloc_can_fail_malloc_l11_1;
+                                                    __calloc_can_fail_calloc_l18_7}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+                                [8589934592..18446744073709551615] ∈ {0}
+  __malloc_can_fail_malloc_l11_1[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_7[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+[eva:final-states] Values at end of function main:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  num_v ∈ [-2147483648..2147483646]
+  num_e ∈ [--..--]
+  g{.nr_vertices; .nr_edges; .is_bidir} ∈
+   {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                       __calloc_can_fail_calloc_l18_0;
+                       __calloc_can_fail_calloc_l18_1;
+                       __calloc_can_fail_calloc_l18_2;
+                       __malloc_can_fail_malloc_l11;
+                       __calloc_can_fail_calloc_l18_3;
+                       __malloc_can_fail_malloc_l11_0;
+                       __calloc_can_fail_calloc_l18_4;
+                       __malloc_can_fail_malloc_l11_1;
+                       __calloc_can_fail_calloc_l18_7}
+    (origin: Misaligned) }} or ESCAPINGADDR
+   .[bits 72 to 127] ∈
+   {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                       __calloc_can_fail_calloc_l18_0;
+                       __calloc_can_fail_calloc_l18_1;
+                       __calloc_can_fail_calloc_l18_2;
+                       __malloc_can_fail_malloc_l11;
+                       __calloc_can_fail_calloc_l18_3;
+                       __malloc_can_fail_malloc_l11_0;
+                       __calloc_can_fail_calloc_l18_4;
+                       __malloc_can_fail_malloc_l11_1;
+                       __calloc_can_fail_calloc_l18_7}
+    (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+   {.first; .vertex; .next; .parent} ∈ {0}
+  __retres ∈ {0}
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                   __calloc_can_fail_calloc_l18_0;
+                                   __calloc_can_fail_calloc_l18_1;
+                                   __calloc_can_fail_calloc_l18_2;
+                                   __malloc_can_fail_malloc_l11;
+                                   __calloc_can_fail_calloc_l18_3;
+                                   __malloc_can_fail_malloc_l11_0;
+                                   __calloc_can_fail_calloc_l18_4;
+                                   __malloc_can_fail_malloc_l11_1;
+                                   __calloc_can_fail_calloc_l18_7}
+                (origin: Misaligned) }} or ESCAPINGADDR
+               [1] ∈ [--..--]
+  __calloc_can_fail_calloc_l18[0..18446744073709551615] ∈
+                              {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                  __calloc_can_fail_calloc_l18_0;
+                                                  __calloc_can_fail_calloc_l18_1;
+                                                  __calloc_can_fail_calloc_l18_2}
+                               (origin: Misaligned) }} or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_0[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_1[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_2[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+  __malloc_can_fail_malloc_l11[0..18446744073709551615] ∈
+                              {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                  __calloc_can_fail_calloc_l18_0;
+                                                  __calloc_can_fail_calloc_l18_1;
+                                                  __calloc_can_fail_calloc_l18_2}
+                               (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_3[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+  __malloc_can_fail_malloc_l11_0[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_4[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_5[0..8589934591] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2;
+                                                    __malloc_can_fail_malloc_l11;
+                                                    __calloc_can_fail_calloc_l18_3;
+                                                    __malloc_can_fail_malloc_l11_0;
+                                                    __calloc_can_fail_calloc_l18_4;
+                                                    __malloc_can_fail_malloc_l11_1;
+                                                    __calloc_can_fail_calloc_l18_7}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+                                [8589934592..18446744073709551615] ∈ {0}
+  __calloc_can_fail_calloc_l18_6[0..8589934591] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2;
+                                                    __malloc_can_fail_malloc_l11;
+                                                    __calloc_can_fail_calloc_l18_3;
+                                                    __malloc_can_fail_malloc_l11_0;
+                                                    __calloc_can_fail_calloc_l18_4;
+                                                    __malloc_can_fail_malloc_l11_1;
+                                                    __calloc_can_fail_calloc_l18_7}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+                                [8589934592..18446744073709551615] ∈ {0}
+  __malloc_can_fail_malloc_l11_1[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18_7[0..18446744073709551615] ∈
+                                {{ garbled mix of &{__calloc_can_fail_calloc_l18;
+                                                    __calloc_can_fail_calloc_l18_0;
+                                                    __calloc_can_fail_calloc_l18_1;
+                                                    __calloc_can_fail_calloc_l18_2}
+                                 (origin: Misaligned) }} or ESCAPINGADDR
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  23 functions analyzed (out of 26): 88% coverage.
+  In these functions, 277 statements reached (out of 289): 95% coverage.
+  ----------------------------------------------------------------------------
+  Some errors and warnings have been raised during the analysis:
+    by the Eva analyzer:      3 errors    0 warnings
+    by the Frama-C kernel:    0 errors    0 warnings
+  ----------------------------------------------------------------------------
+  109 alarms generated by the analysis:
+      59 invalid memory accesses
+      27 integer overflows
+      12 escaping addresses
+      11 accesses to uninitialized left-values
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     0 unknown     0 invalid      0 total
+    Preconditions    18 valid     9 unknown     0 invalid     27 total
+  66% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[eva] User Error: Deferred error message was emitted during execution. See above messages for more information.
+[kernel] Plug-in eva aborted: invalid user input.

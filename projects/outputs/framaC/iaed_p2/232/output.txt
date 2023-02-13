@@ -1,0 +1,1050 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:typing:implicit-conv-void-ptr] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:70: 
+  implicit conversion from void * to void **
+[kernel:typing:implicit-conv-void-ptr] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:72: 
+  implicit conversion from void * to void **
+[kernel:typing:implicit-conv-void-ptr] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:78: 
+  implicit conversion from void * to void **
+[kernel:typing:implicit-conv-void-ptr] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:80: 
+  implicit conversion from void * to void **
+[kernel:typing:implicit-conv-void-ptr] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:88: 
+  implicit conversion from void * to void **
+[kernel:typing:implicit-conv-void-ptr] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:129: 
+  implicit conversion from void * to G_Node *
+[kernel:typing:implicit-conv-void-ptr] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:130: 
+  implicit conversion from void * to G_Node *
+[kernel:typing:implicit-conv-void-ptr] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:106: 
+  implicit conversion from void * to void **
+[kernel:typing:implicit-conv-void-ptr] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:107: 
+  implicit conversion from void * to void **
+[kernel:typing:implicit-conv-void-ptr] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:104: 
+  implicit conversion from void * to void **
+[kernel:typing:implicit-conv-void-ptr] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:158: 
+  implicit conversion from void * to void **
+[kernel:typing:implicit-conv-void-ptr] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:182: 
+  implicit conversion from void * to void **
+[kernel:typing:implicit-conv-void-ptr] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:213: 
+  implicit conversion from void * to G_Node *
+[kernel:typing:implicit-conv-void-ptr] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:200: 
+  implicit conversion from void * to void **
+[kernel:typing:implicit-conv-void-ptr] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:226: 
+  implicit conversion from void * to void **
+[variadic:libc:format] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:299: Warning: 
+  Conversion specifier c does not expect a precision.
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  
+[eva] using specification for function time
+[eva] using specification for function srand
+[eva] using specification for function rand
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:18: 
+  allocating variable __calloc_can_fail_calloc_l18
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:18: 
+  allocating variable __calloc_can_fail_calloc_l18_0
+[eva] using specification for function fgets
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:298: 
+  function fgets: precondition 'valid_stream' got status unknown.
+[kernel:annot:missing-spec] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:299: 
+  Neither code nor specification for function sscanf_fallback_1, generating default assigns from the prototype
+[eva] using specification for function sscanf_fallback_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:302: 
+  accessing uninitialized left-value. assert \initialized(&command);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:14: 
+  accessing uninitialized left-value.
+  assert \initialized(tmp);
+  (tmp from str++)
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:14: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:14: 
+  out of bounds read. assert \valid_read(tmp);
+                      (tmp from str++)
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:22: 
+  out of bounds read. assert \valid_read(hashtab + tmp);
+                      (tmp from hash(name))
+[eva] using specification for function printf_va_10
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_0
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:205: 
+  function strlen: precondition 'valid_string_s' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:205: 
+  out of bounds write. assert \valid(&team->name);
+[eva] using specification for function strcpy
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:206: 
+  function strcpy: precondition 'valid_string_src' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:206: 
+  function strcpy: precondition 'room_string' got status unknown.
+[eva] FRAMAC_SHARE/libc/string.h:373: 
+  cannot evaluate ACSL term, unsupported ACSL construct: logic function strcmp
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:209: 
+  out of bounds write. assert \valid(&team_list_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:209: 
+  out of bounds write. assert \valid(&team_hash_node->data);
+[eva] using specification for function printf_va_7
+[eva] using specification for function printf_va_6
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:324: 
+  accessing uninitialized left-value. assert \initialized(&scores[1]);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:324: 
+  accessing uninitialized left-value. assert \initialized((int *)scores);
+[eva] using specification for function printf_va_4
+[eva] using specification for function atoi
+[eva] using specification for function printf_va_1
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:297: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:241: 
+  starting to merge loop iterations
+[eva] using specification for function printf_va_11
+[eva] using specification for function printf_va_12
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:252: 
+  function printf_va_12: precondition valid_read_string(param1) got status unknown.
+[eva] using specification for function strcmp
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:25: 
+  function strcmp: precondition 'valid_string_s1' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:25: 
+  function strcmp: precondition 'valid_string_s2' got status unknown.
+[eva] FRAMAC_SHARE/libc/string.h:156: 
+  cannot evaluate ACSL term, unsupported ACSL construct: logic function strcmp
+[eva] using specification for function printf_va_9
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:227: 
+  function printf_va_9: precondition valid_read_string(param1) got status unknown.
+[eva] using specification for function printf_va_8
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:206: 
+  accessing uninitialized left-value. assert \initialized(&team->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:63: 
+  out of bounds write. assert \valid(&((G_Node *)*node_list)->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:36: 
+  accessing uninitialized left-value. assert \initialized(&new_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:36: 
+  accessing uninitialized left-value. assert \initialized(&(*team_head)->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:36: 
+  accessing uninitialized left-value.
+  assert \initialized(&(new_node->data)->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:36: 
+  accessing uninitialized left-value.
+  assert \initialized(&((*team_head)->data)->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:36: 
+  function strcmp: precondition 'valid_string_s1' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:36: 
+  function strcmp: precondition 'valid_string_s2' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:38: 
+  accessing uninitialized left-value. assert \initialized(&new_node->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:38: 
+  out of bounds write. assert \valid(&(new_node->next)->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:44: 
+  accessing uninitialized left-value. assert \initialized(&temp->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:46: 
+  accessing uninitialized left-value. assert \initialized(&temp->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:48: 
+  accessing uninitialized left-value. assert \initialized(&temp->next);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_3
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_4
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_5
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:114: 
+  function strlen: precondition 'valid_string_s' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_6
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:114: 
+  out of bounds write. assert \valid(&new_game->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:116: 
+  function strcpy: precondition 'valid_string_src' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:116: 
+  function strcpy: precondition 'room_string' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:123: 
+  out of bounds write. assert \valid(&list_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:123: 
+  out of bounds write. assert \valid(&hash_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:78: 
+  out of bounds read.
+  assert \valid_read(&((T_Node *)tmp)->data);
+  (tmp from locate_node(game->team_1, (void **)t_hashtab))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:80: 
+  out of bounds read.
+  assert \valid_read(&((T_Node *)tmp_0)->data);
+  (tmp_0 from locate_node(game->team_2, (void **)t_hashtab))
+[eva] using specification for function printf_va_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:242: 
+  accessing uninitialized left-value. assert \initialized(&head->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:242: 
+  accessing uninitialized left-value. assert \initialized(&(head->data)->wins);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:243: 
+  accessing uninitialized left-value. assert \initialized(&head->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:243: 
+  accessing uninitialized left-value. assert \initialized(&(head->data)->wins);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:244: 
+  accessing uninitialized left-value. assert \initialized(&head->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:251: 
+  accessing uninitialized left-value. assert \initialized(&head->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:251: 
+  accessing uninitialized left-value. assert \initialized(&(head->data)->wins);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:252: 
+  accessing uninitialized left-value. assert \initialized(&head->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:252: 
+  accessing uninitialized left-value. assert \initialized(&(head->data)->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:253: 
+  accessing uninitialized left-value. assert \initialized(&head->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:25: 
+  accessing uninitialized left-value. assert \initialized(&hash_head->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:25: 
+  accessing uninitialized left-value.
+  assert \initialized(&(hash_head->data)->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:27: 
+  accessing uninitialized left-value. assert \initialized(&hash_head->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:227: 
+  accessing uninitialized left-value. assert \initialized(&team_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:227: 
+  accessing uninitialized left-value.
+  assert \initialized(&(team_node->data)->wins);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:227: 
+  accessing uninitialized left-value.
+  assert \initialized(&(team_node->data)->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:44: 
+  accessing uninitialized left-value. assert \initialized(&temp->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:44: 
+  accessing uninitialized left-value. assert \initialized(&new_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:44: 
+  accessing uninitialized left-value. assert \initialized(&(temp->next)->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:44: 
+  accessing uninitialized left-value.
+  assert \initialized(&(new_node->data)->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:44: 
+  out of bounds read. assert \valid_read(&(temp->next)->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:44: 
+  accessing uninitialized left-value.
+  assert \initialized(&((temp->next)->data)->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:44: 
+  function strcmp: precondition 'valid_string_s1' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:44: 
+  function strcmp: precondition 'valid_string_s2' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:45: 
+  accessing uninitialized left-value. assert \initialized(&temp->next);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:44: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:44: 
+  out of bounds read. assert \valid_read(&temp->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:49: 
+  accessing uninitialized left-value. assert \initialized(&new_node->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:49: 
+  out of bounds write. assert \valid(&(new_node->next)->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:186: 
+  function strcmp: precondition 'valid_string_s1' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:186: 
+  function strcmp: precondition 'valid_string_s2' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:70: 
+  accessing uninitialized left-value.
+  assert \initialized(&((T_Node *)tmp)->data);
+  (tmp from locate_node(game->team_1, (void **)t_hashtab))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:70: 
+  out of bounds read.
+  assert \valid_read(&((T_Node *)tmp)->data);
+  (tmp from locate_node(game->team_1, (void **)t_hashtab))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:70: 
+  accessing uninitialized left-value.
+  assert \initialized(&(((T_Node *)tmp)->data)->wins);
+  (tmp from locate_node(game->team_1, (void **)t_hashtab))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:72: 
+  accessing uninitialized left-value.
+  assert \initialized(&((T_Node *)tmp_0)->data);
+  (tmp_0 from locate_node(game->team_2, (void **)t_hashtab))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:72: 
+  out of bounds read.
+  assert \valid_read(&((T_Node *)tmp_0)->data);
+  (tmp_0 from locate_node(game->team_2, (void **)t_hashtab))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:72: 
+  accessing uninitialized left-value.
+  assert \initialized(&(((T_Node *)tmp_0)->data)->wins);
+  (tmp_0 from locate_node(game->team_2, (void **)t_hashtab))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:167: 
+  out of bounds read. assert \valid_read(&game->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:169: 
+  out of bounds read. assert \valid_read(&game->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:170: 
+  out of bounds read. assert \valid_read(&game->next);
+[eva] using specification for function printf_va_5
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:136: 
+  function printf_va_5: precondition valid_read_string(param1) got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:136: 
+  function printf_va_5: precondition valid_read_string(param2) got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:136: 
+  function printf_va_5: precondition valid_read_string(param3) got status unknown.
+[eva] using specification for function printf_va_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:116: 
+  accessing uninitialized left-value. assert \initialized(&new_game->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:117: 
+  accessing uninitialized left-value. assert \initialized(&team_node_1->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:117: 
+  accessing uninitialized left-value.
+  assert \initialized(&(team_node_1->data)->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:118: 
+  accessing uninitialized left-value. assert \initialized(&team_node_2->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:118: 
+  accessing uninitialized left-value.
+  assert \initialized(&(team_node_2->data)->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:128: 
+  accessing uninitialized left-value. assert \initialized(&new_game->score[1]);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:128: 
+  accessing uninitialized left-value. assert \initialized(&new_game->score[0]);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:78: 
+  accessing uninitialized left-value. assert \initialized(&game->team_1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:78: 
+  accessing uninitialized left-value.
+  assert \initialized(&((T_Node *)tmp)->data);
+  (tmp from locate_node(game->team_1, (void **)t_hashtab))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:78: 
+  accessing uninitialized left-value.
+  assert \initialized(&(((T_Node *)tmp)->data)->wins);
+  (tmp from locate_node(game->team_1, (void **)t_hashtab))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:80: 
+  accessing uninitialized left-value. assert \initialized(&game->team_2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:80: 
+  accessing uninitialized left-value.
+  assert \initialized(&((T_Node *)tmp_0)->data);
+  (tmp_0 from locate_node(game->team_2, (void **)t_hashtab))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:80: 
+  accessing uninitialized left-value.
+  assert \initialized(&(((T_Node *)tmp_0)->data)->wins);
+  (tmp_0 from locate_node(game->team_2, (void **)t_hashtab))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:306: 
+  signed overflow. assert cmd_cnt + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:309: 
+  signed overflow. assert cmd_cnt + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:312: 
+  signed overflow. assert cmd_cnt + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:315: 
+  signed overflow. assert cmd_cnt + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:22: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(hashtab + tmp);
+  (tmp from hash(name))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:183: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(g_head);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:186: 
+  accessing uninitialized left-value.
+  assert \initialized(&game_list_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:186: 
+  accessing uninitialized left-value.
+  assert \initialized(&(game_list_node->data)->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:187: 
+  accessing uninitialized left-value.
+  assert \initialized(&game_list_node->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:188: 
+  accessing uninitialized left-value.
+  assert \initialized(&game_hash_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:69: 
+  accessing uninitialized left-value. assert \initialized(&game->score[0]);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:69: 
+  accessing uninitialized left-value. assert \initialized(&game->score[1]);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:70: 
+  accessing uninitialized left-value. assert \initialized(&game->team_1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:70: 
+  signed overflow.
+  assert -2147483648 ≤ (((T_Node *)tmp)->data)->wins - 1;
+  (tmp from locate_node(game->team_1, (void **)t_hashtab))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:71: 
+  accessing uninitialized left-value. assert \initialized(&game->score[0]);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:71: 
+  accessing uninitialized left-value. assert \initialized(&game->score[1]);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:72: 
+  accessing uninitialized left-value. assert \initialized(&game->team_2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:72: 
+  signed overflow.
+  assert -2147483648 ≤ (((T_Node *)tmp_0)->data)->wins - 1;
+  (tmp_0 from locate_node(game->team_2, (void **)t_hashtab))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:190: 
+  accessing uninitialized left-value.
+  assert \initialized(&game_hash_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:190: 
+  accessing uninitialized left-value.
+  assert \initialized(&(game_hash_node->data)->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:191: 
+  accessing uninitialized left-value.
+  assert \initialized(&game_hash_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:168: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(head_ref);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:169: 
+  accessing uninitialized left-value. assert \initialized(&game->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:170: 
+  accessing uninitialized left-value. assert \initialized(&game->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:171: 
+  accessing uninitialized left-value. assert \initialized(&game->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:171: 
+  out of bounds write. assert \valid(&(game->next)->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:171: 
+  accessing uninitialized left-value. assert \initialized(&game->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:172: 
+  accessing uninitialized left-value. assert \initialized(&game->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:173: 
+  accessing uninitialized left-value. assert \initialized(&game->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:173: 
+  out of bounds write. assert \valid(&(game->prev)->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:173: 
+  accessing uninitialized left-value. assert \initialized(&game->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:166: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(tail_ref);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:167: 
+  accessing uninitialized left-value. assert \initialized(&game->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:318: 
+  signed overflow. assert cmd_cnt + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:159: 
+  accessing uninitialized left-value. assert \initialized(&game_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:136: 
+  accessing uninitialized left-value. assert \initialized(&game->score[1]);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:136: 
+  accessing uninitialized left-value. assert \initialized(&game->score[0]);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:136: 
+  accessing uninitialized left-value. assert \initialized(&game->team_2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:136: 
+  accessing uninitialized left-value. assert \initialized(&game->team_1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:136: 
+  accessing uninitialized left-value. assert \initialized(&game->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:321: 
+  signed overflow. assert cmd_cnt + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:150: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(g_tail);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:151: 
+  accessing uninitialized left-value. assert \initialized(&game_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:150: 
+  accessing uninitialized left-value. assert \initialized(&game_node->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:325: 
+  signed overflow. assert cmd_cnt + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:78: 
+  signed overflow.
+  assert (((T_Node *)tmp)->data)->wins + 1 ≤ 2147483647;
+  (tmp from locate_node(game->team_1, (void **)t_hashtab))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:80: 
+  signed overflow.
+  assert (((T_Node *)tmp_0)->data)->wins + 1 ≤ 2147483647;
+  (tmp_0 from locate_node(game->team_2, (void **)t_hashtab))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:58: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(node_list);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:60: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(node_list);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:62: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(node_list);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:63: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(node_list);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:329: 
+  signed overflow. assert cmd_cnt + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:90: 
+  accessing uninitialized left-value. assert \initialized(&game_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:92: 
+  accessing uninitialized left-value. assert \initialized(&game_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:93: 
+  accessing uninitialized left-value. assert \initialized(&game_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:94: 
+  accessing uninitialized left-value. assert \initialized(&game_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:25: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&hash_head->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:25: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(hash_head->data)->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:27: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&hash_head->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:186: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&game_list_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:186: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(game_list_node->data)->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:187: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&game_list_node->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:188: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&game_hash_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:190: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&game_hash_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:190: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(game_hash_node->data)->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:191: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&game_hash_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:169: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&game->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:170: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&game->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:171: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&game->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:171: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&game->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:172: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&game->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:173: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&game->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:173: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&game->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:167: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&game->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:159: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&game_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:136: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&game->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:151: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&game_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:150: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&game_node->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:116: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&new_game->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:90: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&game_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:92: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&game_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:93: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&game_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:94: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&game_node->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:333: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&g_head);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:262: 
+  accessing uninitialized left-value. assert \initialized(&node_lst->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:262: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node_lst->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:263: 
+  accessing uninitialized left-value. assert \initialized(&node_lst->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:263: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node_lst->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:263: 
+  accessing uninitialized left-value.
+  assert \initialized(&(node_lst->data)->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:263: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(node_lst->data)->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:264: 
+  accessing uninitialized left-value. assert \initialized(&node_lst->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:264: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node_lst->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:264: 
+  accessing uninitialized left-value.
+  assert \initialized(&(node_lst->data)->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:264: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(node_lst->data)->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:264: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(hashtab + tmp_0);
+  (tmp_0 from hash((node_lst->data)->name))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:265: 
+  accessing uninitialized left-value. assert \initialized(&node_lst->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:265: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node_lst->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:265: 
+  accessing uninitialized left-value.
+  assert \initialized(&(node_lst->data)->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:265: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(node_lst->data)->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:266: 
+  accessing uninitialized left-value. assert \initialized(&node_lst->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:266: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node_lst->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:266: 
+  accessing uninitialized left-value.
+  assert \initialized(&(node_lst->data)->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:266: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(node_lst->data)->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:267: 
+  accessing uninitialized left-value. assert \initialized(&node_lst->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:267: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&node_lst->data);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:269: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&next);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/232/main.c:261: 
+  starting to merge loop iterations
+[eva] done for function main
+[scope:rm_asserts] removing 43 assertion(s)
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function hash:
+  str ∈
+     {{ NULL + [1..18446744073709551616] ; &buff + [1..--] ;
+        &__malloc_w_can_fail_malloc_l11_2 + [1..--] ;
+        &__malloc_w_can_fail_malloc_l11_6 + [1..--] }}
+  hash_0 ∈ [--..--]
+  c ∈ {0}
+  __retres ∈ [0..9972]
+[eva:final-states] Values at end of function insert_node:
+  g_head ∈
+        {{ NULL ; (G_Node *)&__malloc_w_can_fail_malloc_l11_5 }} or ESCAPINGADDR
+  g_tail ∈
+        {{ NULL ; (G_Node *)&__malloc_w_can_fail_malloc_l11_5 }} or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18[bits 0 to 638271]# ∈
+                              {{ NULL ;
+                                 (? *)&__malloc_w_can_fail_malloc_l11_4 }} or ESCAPINGADDR repeated %64 
+  __calloc_can_fail_calloc_l18_0[bits 0 to 638271]# ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11 }} repeated %64 
+  __malloc_w_can_fail_malloc_l11[bits 0 to 63] ∈
+                                {{ (? *)&__malloc_w_can_fail_malloc_l11_1 }} or UNINITIALIZED
+                                [bits 64 to 191]# ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11 }} or UNINITIALIZED repeated %64 
+  __malloc_w_can_fail_malloc_l11_4[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_3 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 64 to 191]# ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED or ESCAPINGADDR repeated %64 
+  __malloc_w_can_fail_malloc_l11_5[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_3 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 64 to 191]# ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_5 }} or UNINITIALIZED or ESCAPINGADDR repeated %64 
+[eva:final-states] Values at end of function find_most_wins:
+  head ∈ {0}
+  max_wins ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function remove_node:
+  game ∈
+      {{ (G_Node *)&__malloc_w_can_fail_malloc_l11 ;
+         (G_Node *)&__malloc_w_can_fail_malloc_l11_4 ;
+         (G_Node *)&__malloc_w_can_fail_malloc_l11_5 }} or ESCAPINGADDR
+  game_hash_node ∈
+                {{ (G_Node *)&__malloc_w_can_fail_malloc_l11_4 }} or ESCAPINGADDR
+  game_list_node ∈
+                {{ NULL ; (G_Node *)&__malloc_w_can_fail_malloc_l11_5 }} or ESCAPINGADDR
+  node_hsh ∈
+          {{ NULL ; (G_Node *)&__malloc_w_can_fail_malloc_l11 ;
+             (G_Node *)&__malloc_w_can_fail_malloc_l11_4 }} or ESCAPINGADDR
+  g_head ∈
+        {{ NULL ; (G_Node *)&__malloc_w_can_fail_malloc_l11_5 }} or ESCAPINGADDR
+  g_tail ∈
+        {{ NULL ; (G_Node *)&__malloc_w_can_fail_malloc_l11_5 }} or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18[bits 0 to 638271]# ∈
+                              {{ NULL ;
+                                 (? *)&__malloc_w_can_fail_malloc_l11_4 }} or ESCAPINGADDR repeated %64 
+  __calloc_can_fail_calloc_l18_0[bits 0 to 638271]# ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11 }} or ESCAPINGADDR repeated %64 
+  __malloc_w_can_fail_malloc_l11[bits 0 to 63] ∈
+                                {{ (? *)&__malloc_w_can_fail_malloc_l11_1 }} or UNINITIALIZED or ESCAPINGADDR
+                                [bits 64 to 191]# ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11 }} or UNINITIALIZED or ESCAPINGADDR repeated %64 
+  __malloc_w_can_fail_malloc_l11_4[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_3 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 64 to 191]# ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED or ESCAPINGADDR repeated %64 
+  __malloc_w_can_fail_malloc_l11_5[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_3 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 64 to 191]# ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_5 }} or UNINITIALIZED or ESCAPINGADDR repeated %64 
+[eva:final-states] Values at end of function show_game:
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function show_games:
+  game_node ∈ {0}
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function insert_in_list_order:
+  t_head ∈ {{ (T_Node *)&__malloc_w_can_fail_malloc_l11_0 }}
+  __malloc_w_can_fail_malloc_l11_0[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_1 }} or UNINITIALIZED
+                                  [bits 64 to 191]# ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_0 }} or UNINITIALIZED repeated %64 
+[eva:final-states] Values at end of function locate_node:
+  hash_head ∈
+           {{ NULL ; (G_Node *)&__malloc_w_can_fail_malloc_l11 ;
+              (G_Node *)&__malloc_w_can_fail_malloc_l11_4 }}
+  __retres ∈
+          {{ NULL ; (void *)&__malloc_w_can_fail_malloc_l11 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_4 }}
+[eva:final-states] Values at end of function add_wins:
+  __malloc_w_can_fail_malloc_l11_1[bits 0 to 63] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED
+                                  [8..11] ∈ [--..--] or UNINITIALIZED
+                                  [12..15] ∈ UNINITIALIZED
+[eva:final-states] Values at end of function find_game:
+  game_node ∈ {{ NULL ; (G_Node *)&__malloc_w_can_fail_malloc_l11_4 }}
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function find_team:
+  team_node ∈ {{ NULL ; (T_Node *)&__malloc_w_can_fail_malloc_l11 }}
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function free_memory_aux:
+  lst_head ∈
+          {{ NULL ; (void *)&__malloc_w_can_fail_malloc_l11_0 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_5 }} or ESCAPINGADDR
+  node_hsh ∈
+          {{ NULL ; (G_Node *)&__malloc_w_can_fail_malloc_l11 ;
+             (G_Node *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED or ESCAPINGADDR
+  next ∈
+      {{ NULL ; (G_Node *)&__malloc_w_can_fail_malloc_l11_0 ;
+         (G_Node *)&__malloc_w_can_fail_malloc_l11_5 }} or UNINITIALIZED
+  node_lst ∈ {0}
+  g_head ∈
+        {{ NULL ; (G_Node *)&__malloc_w_can_fail_malloc_l11_5 }} or ESCAPINGADDR
+  g_tail ∈
+        {{ NULL ; (T_Node *)&__malloc_w_can_fail_malloc_l11_0 }} or ESCAPINGADDR
+  g_head ∈
+        {{ NULL ; (G_Node *)&__malloc_w_can_fail_malloc_l11_5 }} or ESCAPINGADDR
+  g_tail ∈
+        {{ NULL ; (G_Node *)&__malloc_w_can_fail_malloc_l11_5 }} or ESCAPINGADDR
+  t_head ∈
+        {{ NULL ; (T_Node *)&__malloc_w_can_fail_malloc_l11_0 }} or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18[bits 0 to 638271]# ∈
+                              {{ NULL ;
+                                 (? *)&__malloc_w_can_fail_malloc_l11_4 }} or ESCAPINGADDR repeated %64 
+  __calloc_can_fail_calloc_l18_0[bits 0 to 638271]# ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11 }} or ESCAPINGADDR repeated %64 
+  __malloc_w_can_fail_malloc_l11[bits 0 to 63] ∈
+                                {{ (? *)&__malloc_w_can_fail_malloc_l11_1 }} or UNINITIALIZED or ESCAPINGADDR
+                                [bits 64 to 191]# ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11 }} or UNINITIALIZED or ESCAPINGADDR repeated %64 
+  __malloc_w_can_fail_malloc_l11_0[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_1 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 64 to 191]# ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_0 }} or UNINITIALIZED or ESCAPINGADDR repeated %64 
+  __malloc_w_can_fail_malloc_l11_1[bits 0 to 63] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [8..11] ∈ [--..--] or UNINITIALIZED
+                                  [12..15] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_3[bits 0 to 63] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_6 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 64 to 191]# ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED or ESCAPINGADDR repeated %64 
+                                  [24..31] ∈ [--..--] or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_4[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_3 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 64 to 191]# ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED or ESCAPINGADDR repeated %64 
+  __malloc_w_can_fail_malloc_l11_5[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_3 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 64 to 191]# ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_5 }} or UNINITIALIZED or ESCAPINGADDR repeated %64 
+[eva:final-states] Values at end of function free_memory:
+  g_hashtab ∈
+           {{ NULL ; (G_Node **)&__calloc_can_fail_calloc_l18 }} or ESCAPINGADDR
+  t_hashtab ∈
+           {{ NULL ; (T_Node **)&__calloc_can_fail_calloc_l18_0 }} or ESCAPINGADDR
+  g_head ∈
+        {{ NULL ; (G_Node *)&__malloc_w_can_fail_malloc_l11_5 }} or ESCAPINGADDR
+  g_tail ∈
+        {{ NULL ; (T_Node *)&__malloc_w_can_fail_malloc_l11_0 }} or ESCAPINGADDR
+  g_hashtab ∈
+           {{ NULL ; (G_Node **)&__calloc_can_fail_calloc_l18 }} or ESCAPINGADDR
+  g_head ∈
+        {{ NULL ; (G_Node *)&__malloc_w_can_fail_malloc_l11_5 }} or ESCAPINGADDR
+  g_tail ∈
+        {{ NULL ; (G_Node *)&__malloc_w_can_fail_malloc_l11_5 }} or ESCAPINGADDR
+  t_hashtab ∈
+           {{ NULL ; (T_Node **)&__calloc_can_fail_calloc_l18_0 }} or ESCAPINGADDR
+  t_head ∈
+        {{ NULL ; (T_Node *)&__malloc_w_can_fail_malloc_l11_0 }} or ESCAPINGADDR
+  __calloc_can_fail_calloc_l18[bits 0 to 638271]# ∈
+                              {{ NULL ;
+                                 (? *)&__malloc_w_can_fail_malloc_l11_4 }} or ESCAPINGADDR repeated %64 
+  __calloc_can_fail_calloc_l18_0[bits 0 to 638271]# ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11 }} or ESCAPINGADDR repeated %64 
+  __malloc_w_can_fail_malloc_l11[bits 0 to 63] ∈
+                                {{ (? *)&__malloc_w_can_fail_malloc_l11_1 }} or UNINITIALIZED or ESCAPINGADDR
+                                [bits 64 to 191]# ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11 }} or UNINITIALIZED or ESCAPINGADDR repeated %64 
+  __malloc_w_can_fail_malloc_l11_0[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_1 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 64 to 191]# ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_0 }} or UNINITIALIZED or ESCAPINGADDR repeated %64 
+  __malloc_w_can_fail_malloc_l11_1[bits 0 to 63] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [8..11] ∈ [--..--] or UNINITIALIZED
+                                  [12..15] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_3[bits 0 to 63] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_6 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 64 to 191]# ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED or ESCAPINGADDR repeated %64 
+                                  [24..31] ∈ [--..--] or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_4[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_3 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 64 to 191]# ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED or ESCAPINGADDR repeated %64 
+  __malloc_w_can_fail_malloc_l11_5[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_3 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 64 to 191]# ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_5 }} or UNINITIALIZED or ESCAPINGADDR repeated %64 
+[eva:final-states] Values at end of function remove_wins:
+  __malloc_w_can_fail_malloc_l11_1[bits 0 to 63] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED
+                                  [8..11] ∈ [--..--] or UNINITIALIZED
+                                  [12..15] ∈ UNINITIALIZED
+[eva:final-states] Values at end of function alter_score:
+  game_node ∈ {{ NULL ; (G_Node *)&__malloc_w_can_fail_malloc_l11_4 }}
+  S___fc_stdout[0..1] ∈ [--..--]
+  __malloc_w_can_fail_malloc_l11_1[bits 0 to 63] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED
+                                  [8..11] ∈ [--..--] or UNINITIALIZED
+                                  [12..15] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_3[bits 0 to 63] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_6 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 64 to 191]# ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED repeated %64 
+                                  [24..31] ∈ [--..--] or UNINITIALIZED
+[eva:final-states] Values at end of function remove_game:
+  game_hash_node ∈
+                {{ NULL ; (G_Node *)&__malloc_w_can_fail_malloc_l11_4 }} or ESCAPINGADDR
+  g_head ∈
+        {{ NULL ; (G_Node *)&__malloc_w_can_fail_malloc_l11_5 }} or ESCAPINGADDR
+  g_tail ∈
+        {{ NULL ; (G_Node *)&__malloc_w_can_fail_malloc_l11_5 }} or ESCAPINGADDR
+  S___fc_stdout[0..1] ∈ [--..--]
+  __calloc_can_fail_calloc_l18[bits 0 to 638271]# ∈
+                              {{ NULL ;
+                                 (? *)&__malloc_w_can_fail_malloc_l11_4 }} or ESCAPINGADDR repeated %64 
+  __malloc_w_can_fail_malloc_l11_1[bits 0 to 63] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED
+                                  [8..11] ∈ [--..--] or UNINITIALIZED
+                                  [12..15] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_3[bits 0 to 63] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_6 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 64 to 191]# ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED repeated %64 
+                                  [24..31] ∈ [--..--] or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_4[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_3 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 64 to 191]# ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED or ESCAPINGADDR repeated %64 
+  __malloc_w_can_fail_malloc_l11_5[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_3 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 64 to 191]# ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_5 }} or UNINITIALIZED or ESCAPINGADDR repeated %64 
+[eva:final-states] Values at end of function can_fail_calloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈
+          {{ NULL ; (void *)&__calloc_can_fail_calloc_l18 ;
+             (void *)&__calloc_can_fail_calloc_l18_0 }}
+[eva:final-states] Values at end of function can_fail_malloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈
+          {{ NULL ; (void *)&__malloc_w_can_fail_malloc_l11 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_0 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_1 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_2 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_3 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_4 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_5 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_6 }}
+[eva:final-states] Values at end of function add_game:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  team_node_1 ∈
+             {{ NULL ; (T_Node *)&__malloc_w_can_fail_malloc_l11 }} or UNINITIALIZED
+  team_node_2 ∈
+             {{ NULL ; (T_Node *)&__malloc_w_can_fail_malloc_l11 }} or UNINITIALIZED
+  g_head ∈
+        {{ NULL ; (G_Node *)&__malloc_w_can_fail_malloc_l11_5 }} or ESCAPINGADDR
+  g_tail ∈
+        {{ NULL ; (G_Node *)&__malloc_w_can_fail_malloc_l11_5 }} or ESCAPINGADDR
+  S___fc_stdout[0..1] ∈ [--..--]
+  __calloc_can_fail_calloc_l18[bits 0 to 638271]# ∈
+                              {{ NULL ;
+                                 (? *)&__malloc_w_can_fail_malloc_l11_4 }} or ESCAPINGADDR repeated %64 
+  __malloc_w_can_fail_malloc_l11_1[bits 0 to 63] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED
+                                  [8..11] ∈ [--..--] or UNINITIALIZED
+                                  [12..15] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_3[bits 0 to 63] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_6 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 64 to 191]# ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED repeated %64 
+                                  [24..31] ∈ [--..--] or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_4[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_3 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 64 to 191]# ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED or ESCAPINGADDR repeated %64 
+  __malloc_w_can_fail_malloc_l11_5[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_3 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 64 to 191]# ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_5 }} or UNINITIALIZED or ESCAPINGADDR repeated %64 
+  __malloc_w_can_fail_malloc_l11_6[0..3071] ∈ [--..--] or UNINITIALIZED
+[eva:final-states] Values at end of function add_team:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  t_head ∈ {{ NULL ; (T_Node *)&__malloc_w_can_fail_malloc_l11_0 }}
+  S___fc_stdout[0..1] ∈ [--..--]
+  __calloc_can_fail_calloc_l18_0[bits 0 to 638271]# ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11 }} repeated %64 
+  __malloc_w_can_fail_malloc_l11[bits 0 to 63] ∈
+                                {{ (? *)&__malloc_w_can_fail_malloc_l11_1 }} or UNINITIALIZED
+                                [bits 64 to 191]# ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11 }} or UNINITIALIZED repeated %64 
+  __malloc_w_can_fail_malloc_l11_0[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_1 }} or UNINITIALIZED
+                                  [bits 64 to 191]# ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_0 }} or UNINITIALIZED repeated %64 
+  __malloc_w_can_fail_malloc_l11_1[bits 0 to 63] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED
+                                  [8..11] ∈ [--..--] or UNINITIALIZED
+                                  [12..15] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_2[0..3071] ∈ [--..--] or UNINITIALIZED
+[eva:final-states] Values at end of function main:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  g_hashtab ∈
+           {{ NULL ; (G_Node **)&__calloc_can_fail_calloc_l18 }} or ESCAPINGADDR
+  g_head ∈
+        {{ NULL ; (G_Node *)&__malloc_w_can_fail_malloc_l11_5 }} or ESCAPINGADDR
+  g_tail ∈
+        {{ NULL ; (G_Node *)&__malloc_w_can_fail_malloc_l11_5 }} or ESCAPINGADDR
+  t_hashtab ∈
+           {{ NULL ; (T_Node **)&__calloc_can_fail_calloc_l18_0 }} or ESCAPINGADDR
+  t_head ∈
+        {{ NULL ; (T_Node *)&__malloc_w_can_fail_malloc_l11_0 }} or ESCAPINGADDR
+  command ∈ {120}
+  input[0..4095] ∈ [--..--] or UNINITIALIZED
+  buff[0..2][0..1023] ∈ [--..--] or UNINITIALIZED
+  cmd_cnt ∈ [0..2147483647]
+  scores[0..1] ∈ [--..--] or UNINITIALIZED
+  __retres ∈ {0}
+  S___fc_stdout[0..1] ∈ [--..--]
+  __calloc_can_fail_calloc_l18[bits 0 to 638271]# ∈
+                              {{ NULL ;
+                                 (? *)&__malloc_w_can_fail_malloc_l11_4 }} or ESCAPINGADDR repeated %64 
+  __calloc_can_fail_calloc_l18_0[bits 0 to 638271]# ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11 }} or ESCAPINGADDR repeated %64 
+  __malloc_w_can_fail_malloc_l11[bits 0 to 63] ∈
+                                {{ (? *)&__malloc_w_can_fail_malloc_l11_1 }} or UNINITIALIZED or ESCAPINGADDR
+                                [bits 64 to 191]# ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11 }} or UNINITIALIZED or ESCAPINGADDR repeated %64 
+  __malloc_w_can_fail_malloc_l11_0[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_1 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 64 to 191]# ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_0 }} or UNINITIALIZED or ESCAPINGADDR repeated %64 
+  __malloc_w_can_fail_malloc_l11_1[bits 0 to 63] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [8..11] ∈ [--..--] or UNINITIALIZED
+                                  [12..15] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_2[0..3071] ∈ [--..--] or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_3[bits 0 to 63] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_6 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 64 to 191]# ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED or ESCAPINGADDR repeated %64 
+                                  [24..31] ∈ [--..--] or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_4[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_3 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 64 to 191]# ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED or ESCAPINGADDR repeated %64 
+  __malloc_w_can_fail_malloc_l11_5[bits 0 to 63] ∈
+                                  {{ (? *)&__malloc_w_can_fail_malloc_l11_3 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 64 to 191]# ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_5 }} or UNINITIALIZED or ESCAPINGADDR repeated %64 
+  __malloc_w_can_fail_malloc_l11_6[0..3071] ∈ [--..--] or UNINITIALIZED
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  21 functions analyzed (out of 22): 95% coverage.
+  In these functions, 336 statements reached (out of 336): 100% coverage.
+  ----------------------------------------------------------------------------
+  No errors or warnings raised during the analysis.
+  ----------------------------------------------------------------------------
+  179 alarms generated by the analysis:
+      96 accesses to uninitialized left-values
+      49 escaping addresses
+      22 invalid memory accesses
+      12 integer overflows
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     0 unknown     0 invalid      0 total
+    Preconditions    27 valid    20 unknown     0 invalid     47 total
+  57% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[report] Classification
+[report] Output /home/fmarques/sbugs/projects/outputs/framaC/iaed_p2/232/errors.json
+[report] Reviews     :  156
+[report] Unclassified:  156

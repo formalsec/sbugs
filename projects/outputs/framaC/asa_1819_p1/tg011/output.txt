@@ -1,0 +1,229 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg011/p1.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  nRouters ∈ {0}
+  mLinks ∈ {0}
+  auxSRC ∈ {0}
+  auxDEST ∈ {0}
+  routerMax ∈ {1}
+  nRouterMax ∈ {0}
+  nRouterMaxAUX ∈ {0}
+  subNetworks ∈ {0}
+  apUtil_time ∈ {0}
+[eva] using specification for function scanf_va_1
+[eva] using specification for function printf_va_6
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg011/p1.c:231: 
+  starting to merge loop iterations
+[eva] using specification for function time
+[eva] using specification for function srand
+[eva] using specification for function rand
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg011/p1.c:59: 
+  out of bounds write. assert \valid(&network->nRouters);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg011/p1.c:61: 
+  signed overflow. assert routers + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_0
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_1
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg011/p1.c:67: 
+  out of bounds write. assert \valid(network->adjLists + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg011/p1.c:68: 
+  out of bounds write. assert \valid(network->visited + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg011/p1.c:66: 
+  starting to merge loop iterations
+[eva] using specification for function scanf_va_2
+[eva] using specification for function printf_va_7
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg011/p1.c:242: 
+  starting to merge loop iterations
+[eva] using specification for function scanf_va_3
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_3
+[eva] using specification for function printf_va_1
+[eva] using specification for function exit
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg011/p1.c:117: 
+  accessing uninitialized left-value.
+  assert \initialized(network->adjLists + src);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg011/p1.c:117: 
+  out of bounds read. assert \valid_read(network->adjLists + src);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg011/p1.c:118: 
+  out of bounds write. assert \valid(network->adjLists + src);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_4
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg011/p1.c:122: 
+  accessing uninitialized left-value.
+  assert \initialized(network->adjLists + dest);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg011/p1.c:122: 
+  out of bounds read. assert \valid_read(network->adjLists + dest);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg011/p1.c:123: 
+  out of bounds write. assert \valid(network->adjLists + dest);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg011/p1.c:250: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg011/p1.c:261: 
+  accessing uninitialized left-value.
+  assert \initialized(network->adjLists + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg011/p1.c:261: 
+  out of bounds read. assert \valid_read(network->adjLists + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg011/p1.c:261: 
+  accessing uninitialized left-value.
+  assert \initialized(network->visited + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg011/p1.c:261: 
+  out of bounds read. assert \valid_read(network->visited + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg011/p1.c:148: 
+  accessing uninitialized left-value. assert \initialized(&auxAdjList->id);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg011/p1.c:152: 
+  accessing uninitialized left-value.
+  assert \initialized(network->visited + currentRouter);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg011/p1.c:152: 
+  out of bounds read. assert \valid_read(network->visited + currentRouter);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg011/p1.c:152: 
+  accessing uninitialized left-value.
+  assert \initialized(network->ap + currentRouter);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg011/p1.c:152: 
+  out of bounds read. assert \valid_read(network->ap + currentRouter);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg011/p1.c:156: 
+  accessing uninitialized left-value. assert \initialized(&auxAdjList->next);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg011/p1.c:147: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg011/p1.c:265: 
+  accessing uninitialized left-value. assert \initialized(&network->identList);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg011/p1.c:259: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg011/p1.c:143: 
+  accessing uninitialized left-value.
+  assert \initialized(network->adjLists + router);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg011/p1.c:143: 
+  out of bounds read. assert \valid_read(network->adjLists + router);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg011/p1.c:145: 
+  out of bounds write. assert \valid(network->visited + router);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg011/p1.c:271: 
+  accessing uninitialized left-value. assert \initialized(&network->identList);
+[eva] done for function main
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg011/p1.c:265: 
+  assertion 'Eva,initialization' got final status invalid.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/tg011/p1.c:271: 
+  assertion 'Eva,initialization' got final status invalid.
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function DFS:
+  routerMax_0 ∈ [1..2147483647]
+  adjList ∈
+         {{ NULL ; (struct Router *)&__malloc_w_can_fail_malloc_l11_3 ;
+            (struct Router *)&__malloc_w_can_fail_malloc_l11_4 }}
+  auxAdjList ∈ {0}
+  __malloc_can_fail_malloc_l11_0[0..3] ∈ UNINITIALIZED
+                                [bits 32 to 68719476703]# ∈
+                                {0; 1} or UNINITIALIZED repeated %32 
+[eva:final-states] Values at end of function can_fail_malloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈
+          {{ NULL ; (void *)&__malloc_can_fail_malloc_l11 ;
+             (void *)&__malloc_can_fail_malloc_l11_0 ;
+             (void *)&__malloc_can_fail_malloc_l11_1 ;
+             (void *)&__malloc_can_fail_malloc_l11_2 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_3 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_4 }}
+[eva:final-states] Values at end of function createNetwork:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  network ∈ {{ (struct Network *)&__malloc_can_fail_malloc_l11 }}
+  i ∈ [3..2147483647]
+  __malloc_can_fail_malloc_l11[bits 0 to 31] ∈ [2..2147483647]
+                              [4..7] ∈ UNINITIALIZED
+                              [bits 64 to 127] ∈
+                              {{ NULL ;
+                                 (? *)&__malloc_can_fail_malloc_l11_0 }}
+                              [bits 128 to 191] ∈
+                              {{ NULL ;
+                                 (? *)&__malloc_can_fail_malloc_l11_2 }}
+                              [24..31] ∈ UNINITIALIZED
+                              [bits 256 to 319] ∈
+                              {{ NULL ;
+                                 (? *)&__malloc_can_fail_malloc_l11_1 }}
+  __malloc_can_fail_malloc_l11_0[0..3] ∈ UNINITIALIZED
+                                [4..8589934587] ∈ {0} or UNINITIALIZED
+  __malloc_can_fail_malloc_l11_1[0..7] ∈ UNINITIALIZED
+                                [8..17179869175] ∈ {0} or UNINITIALIZED
+[eva:final-states] Values at end of function createRouter:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  newRouter ∈
+           {{ (struct Router *)&__malloc_w_can_fail_malloc_l11_3 ;
+              (struct Router *)&__malloc_w_can_fail_malloc_l11_4 }}
+  S___fc_stdout[0..1] ∈ [--..--]
+  __malloc_w_can_fail_malloc_l11_3[0..3] ∈ [--..--] or UNINITIALIZED
+                                  [4..7] ∈ UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_3 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_4[bits 0 to 31] ∈
+                                  [0..2147483646] or UNINITIALIZED
+                                  [4..7] ∈ UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_3 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED
+[eva:final-states] Values at end of function addLink:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  newRouter ∈ {{ (struct Router *)&__malloc_w_can_fail_malloc_l11_4 }}
+  S___fc_stdout[0..1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11_1[bits 0 to 63] ∈
+                                {{ (? *)&__malloc_w_can_fail_malloc_l11_3 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED
+                                [bits 64 to 137438953407]# ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_3 ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED repeated %64 
+  __malloc_w_can_fail_malloc_l11_3[0..3] ∈ [--..--] or UNINITIALIZED
+                                  [4..7] ∈ UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_3 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_4[bits 0 to 31] ∈
+                                  [0..2147483646] or UNINITIALIZED
+                                  [4..7] ∈ UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_3 ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED
+[eva:final-states] Values at end of function main:
+  NON TERMINATING FUNCTION
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  6 functions analyzed (out of 15): 40% coverage.
+  In these functions, 90 statements reached (out of 130): 69% coverage.
+  ----------------------------------------------------------------------------
+  No errors or warnings raised during the analysis.
+  ----------------------------------------------------------------------------
+  25 alarms generated by the analysis:
+      13 invalid memory accesses
+      11 accesses to uninitialized left-values
+       1 integer overflow
+  2 of them are sure alarms (invalid status).
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     0 unknown     0 invalid      0 total
+    Preconditions    11 valid     0 unknown     0 invalid     11 total
+  100% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[report] Classification
+[report] Output /home/fmarques/sbugs/projects/outputs/framaC/asa_1819_p1/tg011/errors.json
+[report] Reviews     :   23
+[report] Unclassified:   23

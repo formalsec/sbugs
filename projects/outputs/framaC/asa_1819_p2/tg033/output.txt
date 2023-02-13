@@ -1,0 +1,628 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  
+[eva] using specification for function scanf_va_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:71: 
+  signed overflow. assert -2147483648 ≤ n_sup + n_chp;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:71: 
+  signed overflow. assert n_sup + n_chp ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:71: 
+  signed overflow. assert (int)(n_sup + n_chp) + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:74: 
+  signed overflow. assert n_vert + 1 ≤ 2147483647;
+[eva] using specification for function time
+[eva] using specification for function srand
+[eva] using specification for function rand
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:75: 
+  signed overflow. assert -2147483648 ≤ n_transp + n_sup;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:75: 
+  signed overflow. assert n_transp + n_sup ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:75: 
+  signed overflow. assert (int)(n_transp + n_sup) + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_0
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:191: 
+  signed overflow. assert n_sup + 1 ≤ 2147483647;
+[eva] using specification for function scanf_va_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:192: 
+  function scanf_va_2: precondition \valid(param0) got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:193: 
+  out of bounds write. assert \valid(&(verts + i)->current);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:193: 
+  out of bounds read. assert \valid_read(&(verts + i)->limit);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:194: 
+  out of bounds write. assert \valid(&(verts + i)->flow);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:195: 
+  out of bounds write. assert \valid(&(verts + i)->type);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:196: 
+  out of bounds write. assert \valid(&(verts + i)->height);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:197: 
+  out of bounds write. assert \valid(&(verts + i)->n_in);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:198: 
+  out of bounds write. assert \valid(&(verts + i)->n_out);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:199: 
+  out of bounds write. assert \valid(&(verts + i)->entry);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:200: 
+  out of bounds write. assert \valid(&(verts + i)->out);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:201: 
+  out of bounds write. assert \valid(&(verts + i)->status);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:191: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:193: 
+  accessing uninitialized left-value. assert \initialized(&(verts + i)->limit);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:192: 
+  more than 200(2147483646) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:192: 
+  more than 200(2147483646) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:193: 
+  more than 200(2147483646) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:194: 
+  more than 200(2147483646) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:195: 
+  more than 200(2147483646) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:196: 
+  more than 200(2147483646) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:197: 
+  more than 200(2147483646) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:198: 
+  more than 200(2147483646) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:199: 
+  more than 200(2147483646) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:200: 
+  more than 200(2147483646) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:201: 
+  more than 200(2147483646) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:191: 
+  signed overflow. assert i + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:193: 
+  Assigning imprecise value to (verts + i)->current
+  (pointing to __malloc_can_fail_malloc_l11 with offsets [1088..1099511627328],64%512).
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:201}
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:207: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[eva] using specification for function scanf_va_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:207: 
+  function scanf_va_3: precondition \valid(param0) got status unknown.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:207: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:208: 
+  out of bounds write. assert \valid(&(verts + i)->current);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:208: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:209: 
+  out of bounds write. assert \valid(&(verts + i)->flow);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:209: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:210: 
+  out of bounds write. assert \valid(&(verts + i)->type);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:210: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:211: 
+  out of bounds write. assert \valid(&(verts + i)->height);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:211: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:212: 
+  out of bounds write. assert \valid(&(verts + i)->n_in);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:212: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:213: 
+  out of bounds write. assert \valid(&(verts + i)->n_out);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:213: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:214: 
+  out of bounds write. assert \valid(&(verts + i)->entry);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:214: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_4
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:215: 
+  out of bounds write. assert \valid(&(verts + i)->out);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:215: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:216: 
+  out of bounds write. assert \valid(&(verts + i)->status);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:216: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:205: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:220: 
+  out of bounds write. assert \valid(&(verts + 1)->type);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:221: 
+  out of bounds write. assert \valid(&(verts + 1)->height);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:222: 
+  out of bounds write. assert \valid(&(verts + 1)->flow);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:223: 
+  out of bounds write. assert \valid(&(verts + 1)->n_in);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:224: 
+  out of bounds write. assert \valid(&(verts + 1)->n_out);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_5
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:225: 
+  out of bounds write. assert \valid(&(verts + 1)->entry);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:193: 
+  more than 200(2147483646) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:194: 
+  more than 200(2147483646) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:195: 
+  more than 200(2147483646) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:196: 
+  more than 200(2147483646) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:197: 
+  more than 200(2147483646) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:198: 
+  more than 200(2147483646) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:199: 
+  more than 200(2147483646) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:200: 
+  more than 200(2147483646) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:201: 
+  more than 200(2147483646) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:208: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:209: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:210: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:211: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:212: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:213: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:214: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:215: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:216: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[eva] using specification for function scanf_va_4
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:239: 
+  out of bounds write. assert \valid(arcs + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:240: 
+  accessing uninitialized left-value.
+  assert \initialized(&(verts + path.from)->out);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:240: 
+  accessing uninitialized left-value.
+  assert \initialized(&(verts + path.from)->n_out);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:240: 
+  out of bounds read. assert \valid_read(&(verts + path.from)->out);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:240: 
+  out of bounds read. assert \valid_read(&(verts + path.from)->n_out);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:240: 
+  out of bounds write.
+  assert \valid((verts + path.from)->out + (verts + path.from)->n_out);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:241: 
+  out of bounds write. assert \valid(&(verts + path.from)->n_out);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:241: 
+  accessing uninitialized left-value.
+  assert \initialized(&(verts + path.from)->n_out);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:241: 
+  signed overflow. assert -2147483648 ≤ (verts + path.from)->n_out + 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:241: 
+  signed overflow. assert (verts + path.from)->n_out + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:241: 
+  Assigning imprecise value to (verts + path.from)->n_out
+  (pointing to __malloc_can_fail_malloc_l11 with offsets [192..1099511627456],192%512).
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:201}
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:241: 
+  more than 200(2147483648) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:242: 
+  accessing uninitialized left-value.
+  assert \initialized(&(verts + path.from)->n_out);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:242: 
+  accessing uninitialized left-value.
+  assert \initialized(&(verts + path.from)->out);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:242: 
+  out of bounds read. assert \valid_read(&(verts + path.from)->n_out);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:242: 
+  out of bounds read. assert \valid_read(&(verts + path.from)->out);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:242: 
+  signed overflow. assert -2147483648 ≤ (verts + path.from)->n_out + 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:242: 
+  signed overflow. assert (verts + path.from)->n_out + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:25: 
+  function realloc: precondition 'freeable' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:25: 
+  allocating variable __realloc_can_fail_realloc_l25
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:242: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:242: 
+  out of bounds write. assert \valid(&(verts + path.from)->out);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:242: 
+  more than 200(2147483648) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:243: 
+  accessing uninitialized left-value.
+  assert \initialized(&(verts + path.to)->entry);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:243: 
+  accessing uninitialized left-value.
+  assert \initialized(&(verts + path.to)->n_in);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:243: 
+  out of bounds read. assert \valid_read(&(verts + path.to)->entry);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:243: 
+  out of bounds read. assert \valid_read(&(verts + path.to)->n_in);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:243: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(verts + path.to)->entry);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:243: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(verts + path.to)->n_in);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:243: 
+  out of bounds write.
+  assert \valid((verts + path.to)->entry + (verts + path.to)->n_in);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:244: 
+  out of bounds write. assert \valid(&(verts + path.to)->n_in);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:244: 
+  accessing uninitialized left-value.
+  assert \initialized(&(verts + path.to)->n_in);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:244: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(verts + path.to)->n_in);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:244: 
+  signed overflow. assert -2147483648 ≤ (verts + path.to)->n_in + 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:244: 
+  signed overflow. assert (verts + path.to)->n_in + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:244: 
+  Assigning imprecise value to (verts + path.to)->n_in
+  (pointing to __malloc_can_fail_malloc_l11 with offsets [160..1099511627424],160%512).
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:201}
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:244: 
+  more than 200(2147483648) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:245: 
+  accessing uninitialized left-value.
+  assert \initialized(&(verts + path.to)->n_in);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:245: 
+  accessing uninitialized left-value.
+  assert \initialized(&(verts + path.to)->entry);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:245: 
+  out of bounds read. assert \valid_read(&(verts + path.to)->n_in);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:245: 
+  out of bounds read. assert \valid_read(&(verts + path.to)->entry);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:245: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(verts + path.to)->n_in);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:245: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(verts + path.to)->entry);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:245: 
+  signed overflow. assert -2147483648 ≤ (verts + path.to)->n_in + 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:245: 
+  signed overflow. assert (verts + path.to)->n_in + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:25: 
+  allocating variable __realloc_can_fail_realloc_l25_0
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:245: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:245: 
+  out of bounds write. assert \valid(&(verts + path.to)->entry);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:245: 
+  more than 200(2147483648) locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:232: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:240: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(verts + path.from)->out);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:240: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(verts + path.from)->n_out);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:241: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(verts + path.from)->n_out);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:242: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(verts + path.from)->n_out);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:242: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(verts + path.from)->out);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:239: 
+  too many locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:248: 
+  out of bounds write. assert \valid(&(verts + 0)->height);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:249: 
+  out of bounds write. assert \valid(&(verts + 0)->flow);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:250: 
+  out of bounds write. assert \valid(&(verts + 0)->current);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:251: 
+  out of bounds write. assert \valid(&(verts + 0)->n_out);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:252: 
+  out of bounds write. assert \valid(&(verts + 0)->type);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_6
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:253: 
+  out of bounds write. assert \valid(&(verts + 0)->out);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:258: 
+  out of bounds write. assert \valid(&(verts + 0)->limit);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:258: 
+  accessing uninitialized left-value. assert \initialized(&(verts + 0)->limit);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:258: 
+  accessing uninitialized left-value.
+  assert \initialized(&(verts + (int)(i + 2))->limit);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:258: 
+  out of bounds read. assert \valid_read(&(verts + (int)(i + 2))->limit);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:258: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(verts + (int)(i + 2))->limit);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:258: 
+  signed overflow.
+  assert -2147483648 ≤ (verts + 0)->limit + (verts + (int)(i + 2))->limit;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:258: 
+  signed overflow.
+  assert (verts + 0)->limit + (verts + (int)(i + 2))->limit ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:258: 
+  Assigning imprecise value to (verts + 0)->limit
+  (pointing to __malloc_can_fail_malloc_l11 with offsets {128}).
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:201}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:261: 
+  out of bounds read. assert \valid_read(&(verts + (int)(i + 2))->limit);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:261: 
+  Assigning imprecise value to aux.limit.
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:201}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:262: 
+  Assigning imprecise value to aux.flow.
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:201}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:264: 
+  out of bounds write. assert \valid(arcs + (int)(n_transp + i));
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:264: 
+  Assigning imprecise value to *(arcs + (n_transp + i))
+  (pointing to __malloc_can_fail_malloc_l11_0 with offsets [0..412316860224],0%192).
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:201}
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:264: 
+  too many locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:266: 
+  out of bounds write. assert \valid(&(verts + (int)(i + 2))->current);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:266: 
+  Assigning imprecise value to (verts + (i + 2))->current
+  (pointing to __malloc_can_fail_malloc_l11 with offsets {1088}).
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:201}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:267: 
+  out of bounds write. assert \valid(&(verts + 0)->flow);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:267: 
+  signed overflow. assert -2147483648 ≤ (verts + 0)->flow + aux.limit;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:267: 
+  signed overflow. assert (verts + 0)->flow + aux.limit ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:267: 
+  Assigning imprecise value to (verts + 0)->flow
+  (pointing to __malloc_can_fail_malloc_l11 with offsets {96}).
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:201}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:268: 
+  out of bounds read. assert \valid_read(&(verts + 0)->out);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:268: 
+  out of bounds read. assert \valid_read(&(verts + 0)->n_out);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:268: 
+  out of bounds write. assert \valid((verts + 0)->out + (verts + 0)->n_out);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:269: 
+  out of bounds write. assert \valid(&(verts + 0)->n_out);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:270: 
+  out of bounds read. assert \valid_read(&(verts + 0)->n_out);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:270: 
+  out of bounds read. assert \valid_read(&(verts + 0)->out);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:25: 
+  allocating variable __realloc_can_fail_realloc_l25_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:270: 
+  out of bounds write. assert \valid(&(verts + 0)->out);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:271: 
+  accessing uninitialized left-value.
+  assert \initialized(&(verts + (int)(i + 2))->entry);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:271: 
+  accessing uninitialized left-value.
+  assert \initialized(&(verts + (int)(i + 2))->n_in);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:271: 
+  out of bounds read. assert \valid_read(&(verts + (int)(i + 2))->entry);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:271: 
+  out of bounds read. assert \valid_read(&(verts + (int)(i + 2))->n_in);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:271: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(verts + (int)(i + 2))->entry);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:271: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(verts + (int)(i + 2))->n_in);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:271: 
+  out of bounds write.
+  assert \valid((verts + (int)(i + 2))->entry + (verts + (int)(i + 2))->n_in);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:272: 
+  out of bounds write. assert \valid(&(verts + (int)(i + 2))->n_in);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:272: 
+  signed overflow. assert -2147483648 ≤ (verts + (int)(i + 2))->n_in + 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:272: 
+  signed overflow. assert (verts + (int)(i + 2))->n_in + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:272: 
+  Assigning imprecise value to (verts + (i + 2))->n_in
+  (pointing to __malloc_can_fail_malloc_l11 with offsets {1184}).
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:201}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:273: 
+  out of bounds read. assert \valid_read(&(verts + (int)(i + 2))->n_in);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:273: 
+  out of bounds read. assert \valid_read(&(verts + (int)(i + 2))->entry);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:273: 
+  signed overflow. assert -2147483648 ≤ (verts + (int)(i + 2))->n_in + 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:273: 
+  signed overflow. assert (verts + (int)(i + 2))->n_in + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:25: 
+  allocating variable __realloc_can_fail_realloc_l25_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:273: 
+  out of bounds write. assert \valid(&(verts + (int)(i + 2))->entry);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:255: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:258: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(verts + 0)->limit);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:261: 
+  accessing uninitialized left-value.
+  assert \initialized(&(verts + (int)(i + 2))->limit);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:261: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(verts + (int)(i + 2))->limit);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:264: 
+  signed overflow. assert n_transp + i ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:266: 
+  Assigning imprecise value to (verts + (i + 2))->current
+  (pointing to __malloc_can_fail_malloc_l11 with offsets {1088; 1600}).
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:201}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:267: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(verts + 0)->flow);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:268: 
+  signed overflow. assert n_transp + i ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:271: 
+  signed overflow. assert n_transp + i ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:272: 
+  accessing uninitialized left-value.
+  assert \initialized(&(verts + (int)(i + 2))->n_in);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:272: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(verts + (int)(i + 2))->n_in);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:272: 
+  Assigning imprecise value to (verts + (i + 2))->n_in
+  (pointing to __malloc_can_fail_malloc_l11 with offsets {1184; 1696}).
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:201}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:273: 
+  accessing uninitialized left-value.
+  assert \initialized(&(verts + (int)(i + 2))->n_in);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:273: 
+  accessing uninitialized left-value.
+  assert \initialized(&(verts + (int)(i + 2))->entry);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:273: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(verts + (int)(i + 2))->n_in);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:273: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(verts + (int)(i + 2))->entry);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:266: 
+  Assigning imprecise value to (verts + (i + 2))->current
+  (pointing to __malloc_can_fail_malloc_l11 with offsets {1088; 1600; 2112}).
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:201}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:272: 
+  Assigning imprecise value to (verts + (i + 2))->n_in
+  (pointing to __malloc_can_fail_malloc_l11 with offsets {1184; 1696; 2208}).
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:201}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:266: 
+  Assigning imprecise value to (verts + (i + 2))->current
+  (pointing to __malloc_can_fail_malloc_l11 with offsets [1088..1099511626816],64%512).
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:201}
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:266: 
+  more than 200(2147483645) locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:272: 
+  Assigning imprecise value to (verts + (i + 2))->n_in
+  (pointing to __malloc_can_fail_malloc_l11 with offsets [1184..1099511626912],160%512).
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:201}
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:272: 
+  more than 200(2147483645) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:273: 
+  more than 200(2147483645) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:273: 
+  more than 200(2147483645) locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:255: 
+  Trace partitioning superposing up to 100 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:255: 
+  Trace partitioning superposing up to 200 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:255: 
+  Trace partitioning superposing up to 300 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:255: 
+  Trace partitioning superposing up to 400 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:255: 
+  Trace partitioning superposing up to 500 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:255: 
+  Trace partitioning superposing up to 600 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:255: 
+  Trace partitioning superposing up to 700 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:255: 
+  Trace partitioning superposing up to 800 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:255: 
+  Trace partitioning superposing up to 900 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:255: 
+  Trace partitioning superposing up to 1000 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:255: 
+  Trace partitioning superposing up to 1100 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:255: 
+  Trace partitioning superposing up to 1200 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:255: 
+  Trace partitioning superposing up to 1300 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:255: 
+  Trace partitioning superposing up to 1400 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:255: 
+  Trace partitioning superposing up to 1500 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:255: 
+  Trace partitioning superposing up to 1600 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:255: 
+  Trace partitioning superposing up to 1700 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:255: 
+  Trace partitioning superposing up to 1800 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:255: 
+  Trace partitioning superposing up to 1900 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:255: 
+  Trace partitioning superposing up to 2000 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:255: 
+  Trace partitioning superposing up to 2100 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:255: 
+  Trace partitioning superposing up to 2200 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:255: 
+  Trace partitioning superposing up to 2300 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:255: 
+  Trace partitioning superposing up to 2400 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:255: 
+  Trace partitioning superposing up to 2500 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:255: 
+  Trace partitioning superposing up to 2600 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:255: 
+  Trace partitioning superposing up to 2700 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:255: 
+  Trace partitioning superposing up to 2800 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:255: 
+  Trace partitioning superposing up to 2900 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:255: 
+  Trace partitioning superposing up to 3000 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:255: 
+  Trace partitioning superposing up to 3100 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:255: 
+  Trace partitioning superposing up to 3200 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:255: 
+  Trace partitioning superposing up to 3300 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:255: 
+  Trace partitioning superposing up to 3400 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:255: 
+  Trace partitioning superposing up to 3500 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:255: 
+  Trace partitioning superposing up to 3600 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:255: 
+  Trace partitioning superposing up to 3700 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:255: 
+  Trace partitioning superposing up to 3800 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:255: 
+  Trace partitioning superposing up to 3900 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:255: 
+  Trace partitioning superposing up to 4000 states
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p2/tg033/p2_pr_1.c:255: 
+  Trace partitioning superposing up to 4100 states

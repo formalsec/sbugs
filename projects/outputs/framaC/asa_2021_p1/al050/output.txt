@@ -1,0 +1,631 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  table ∈ {0}
+  w ∈ {0}
+  temp ∈ {0}
+  stack ∈ {0}
+  t ∈ {0}
+  first_output ∈ {0}
+  n_pieces ∈ {0}
+  n_dependencies ∈ {0}
+[eva] using specification for function scanf_va_1
+[eva] using specification for function time
+[eva] using specification for function srand
+[eva] using specification for function rand
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_0
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:57: 
+  out of bounds write. assert \valid(&(table + i)->number);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:58: 
+  out of bounds write. assert \valid(&(table + i)->n_filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:59: 
+  out of bounds write. assert \valid(&(table + i)->n_pais);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:60: 
+  out of bounds write. assert \valid(&(table + i)->visited);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:61: 
+  out of bounds write. assert \valid(w + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:55: 
+  starting to merge loop iterations
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:57: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:58: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:59: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:60: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:57: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:58: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:59: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:60: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[eva] using specification for function scanf_va_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:31: 
+  signed overflow. assert -2147483648 ≤ first - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:31: 
+  accessing uninitialized left-value.
+  assert \initialized(&(table + (int)(first - 1))->n_filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:31: 
+  out of bounds read.
+  assert \valid_read(&(table + (int)(first - 1))->n_filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:33: 
+  out of bounds write. assert \valid(&(table + (int)(first - 1))->n_filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:33: 
+  accessing uninitialized left-value.
+  assert \initialized(&(table + (int)(first - 1))->n_filhos);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:33: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:34: 
+  out of bounds write. assert \valid(&(table + (int)(first - 1))->filhos);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:34: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:35: 
+  accessing uninitialized left-value.
+  assert \initialized(&(table + (int)(first - 1))->filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:35: 
+  out of bounds read. assert \valid_read(&(table + (int)(first - 1))->filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:35: 
+  out of bounds write. assert \valid((table + (int)(first - 1))->filhos + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:35: 
+  signed overflow. assert -2147483648 ≤ second - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:36: 
+  out of bounds write. assert \valid(&(table + (int)(second - 1))->n_pais);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:36: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:42: 
+  out of bounds write. assert \valid(&(table + (int)(first - 1))->n_filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:42: 
+  accessing uninitialized left-value.
+  assert \initialized(&(table + (int)(first - 1))->n_filhos);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:42: 
+  more than 200(2147483646) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:43: 
+  accessing uninitialized left-value.
+  assert \initialized(&(table + (int)(first - 1))->n_filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:43: 
+  accessing uninitialized left-value.
+  assert \initialized(&(table + (int)(first - 1))->filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:43: 
+  out of bounds read.
+  assert \valid_read(&(table + (int)(first - 1))->n_filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:43: 
+  out of bounds read. assert \valid_read(&(table + (int)(first - 1))->filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:25: 
+  function realloc: precondition 'freeable' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:25: 
+  allocating variable __realloc_can_fail_realloc_l25
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:43: 
+  more than 200(2147483646) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:43: 
+  out of bounds write. assert \valid(&(table + (int)(first - 1))->filhos);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:43: 
+  more than 200(2147483646) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:44: 
+  accessing uninitialized left-value.
+  assert \initialized(&(table + (int)(first - 1))->filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:44: 
+  accessing uninitialized left-value.
+  assert \initialized(&(table + (int)(first - 1))->n_filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:44: 
+  out of bounds read. assert \valid_read(&(table + (int)(first - 1))->filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:44: 
+  out of bounds read.
+  assert \valid_read(&(table + (int)(first - 1))->n_filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:44: 
+  signed overflow.
+  assert -2147483648 ≤ (table + (int)(first - 1))->n_filhos - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:44: 
+  signed overflow.
+  assert (table + (int)(first - 1))->n_filhos - 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:44: 
+  out of bounds write.
+  assert
+  \valid((table + (int)(first - 1))->filhos +
+         (int)((table + (int)(first - 1))->n_filhos - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:44: 
+  signed overflow. assert -2147483648 ≤ second - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:45: 
+  out of bounds write. assert \valid(&(table + (int)(second - 1))->n_pais);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:45: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:31: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:34: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:195: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:33: 
+  signed overflow.
+  assert -2147483648 ≤ (table + (int)(first - 1))->n_filhos + 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:33: 
+  signed overflow.
+  assert (table + (int)(first - 1))->n_filhos + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:33: 
+  Assigning imprecise value to (table + (first - 1))->n_filhos
+  (pointing to __malloc_can_fail_malloc_l11 with offsets [32..549755813408],32%256).
+  The imprecision originates from Merge
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:42: 
+  signed overflow.
+  assert -2147483648 ≤ (table + (int)(first - 1))->n_filhos + 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:42: 
+  signed overflow.
+  assert (table + (int)(first - 1))->n_filhos + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:42: 
+  Assigning imprecise value to (table + (first - 1))->n_filhos
+  (pointing to __malloc_can_fail_malloc_l11 with offsets [32..549755813408],32%256).
+  The imprecision originates from Merge
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:42: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:43: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:44: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(table + (int)(first - 1))->filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:44: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(table + (int)(first - 1))->n_filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:31: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(table + (int)(first - 1))->n_filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:33: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(table + (int)(first - 1))->n_filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:35: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(table + (int)(first - 1))->filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:42: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(table + (int)(first - 1))->n_filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:43: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(table + (int)(first - 1))->n_filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:43: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(table + (int)(first - 1))->filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:195: 
+  signed overflow. assert i + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:71: 
+  accessing uninitialized left-value.
+  assert \initialized(&(table + i)->n_pais);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:71: 
+  out of bounds read. assert \valid_read(&(table + i)->n_pais);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:71: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(table + i)->n_pais);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:71: 
+  trap representation of a _Bool lvalue.
+  assert (table + i)->n_pais ≡ 0 ∨ (table + i)->n_pais ≡ 1;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:69: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:74: 
+  signed overflow. assert first_output + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_2
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_3
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_4
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:98: 
+  out of bounds write. assert \valid(lista + node);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:95: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:104: 
+  accessing uninitialized left-value.
+  assert \initialized(&(table + node)->n_filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:104: 
+  out of bounds read. assert \valid_read(&(table + node)->n_filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:104: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(table + node)->n_filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:107: 
+  accessing uninitialized left-value.
+  assert \initialized(&(table + node)->filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:107: 
+  out of bounds read. assert \valid_read(&(table + node)->filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:107: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(table + node)->filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:107: 
+  accessing uninitialized left-value.
+  assert \initialized((table + node)->filhos + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:107: 
+  out of bounds read. assert \valid_read((table + node)->filhos + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:107: 
+  out of bounds write. assert \valid(lista + *((table + node)->filhos + i));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:107: 
+  accessing uninitialized left-value.
+  assert \initialized(lista + *((table + node)->filhos + i));
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:104: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:104: 
+  signed overflow. assert i + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:107: 
+  signed overflow.
+  assert *(lista + *((table + node)->filhos + i)) + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:101: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:114: 
+  accessing uninitialized left-value. assert \initialized(lista + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:114: 
+  out of bounds read. assert \valid_read(lista + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:116: 
+  out of bounds write. assert \valid(array + tail);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:111: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:117: 
+  signed overflow. assert tail + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:127: 
+  accessing uninitialized left-value. assert \initialized(array + tail);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:127: 
+  out of bounds read. assert \valid_read(array + tail);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:129: 
+  out of bounds write. assert \valid(order + tail_order);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:134: 
+  accessing uninitialized left-value.
+  assert \initialized(&(table + u)->n_filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:134: 
+  out of bounds read. assert \valid_read(&(table + u)->n_filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:134: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(table + u)->n_filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:136: 
+  accessing uninitialized left-value.
+  assert \initialized(&(table + u)->filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:136: 
+  out of bounds read. assert \valid_read(&(table + u)->filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:136: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(table + u)->filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:136: 
+  accessing uninitialized left-value.
+  assert \initialized((table + u)->filhos + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:136: 
+  out of bounds read. assert \valid_read((table + u)->filhos + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:139: 
+  out of bounds write. assert \valid(lista + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:139: 
+  accessing uninitialized left-value. assert \initialized(lista + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:140: 
+  accessing uninitialized left-value. assert \initialized(lista + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:140: 
+  out of bounds read. assert \valid_read(lista + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:142: 
+  out of bounds write. assert \valid(array + tail);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:134: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:143: 
+  signed overflow. assert tail + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:134: 
+  signed overflow. assert i + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:139: 
+  signed overflow. assert -2147483648 ≤ *(lista + v) - 1;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:123: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:131: 
+  signed overflow. assert tail_order + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:155: 
+  accessing uninitialized left-value. assert \initialized(order + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:155: 
+  out of bounds read. assert \valid_read(order + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:155: 
+  accessing uninitialized left-value.
+  assert \initialized(&(table + *(order + i))->n_filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:155: 
+  out of bounds read. assert \valid_read(&(table + *(order + i))->n_filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:155: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(table + *(order + i))->n_filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:159: 
+  out of bounds read. assert \valid_read(order + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:159: 
+  accessing uninitialized left-value. assert \initialized(w + *(order + i));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:159: 
+  accessing uninitialized left-value.
+  assert \initialized(&(table + *(order + i))->filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:159: 
+  out of bounds read. assert \valid_read(w + *(order + i));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:159: 
+  out of bounds read. assert \valid_read(&(table + *(order + i))->filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:159: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(table + *(order + i))->filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:159: 
+  accessing uninitialized left-value.
+  assert \initialized((table + *(order + i))->filhos + x);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:159: 
+  out of bounds read. assert \valid_read((table + *(order + i))->filhos + x);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:159: 
+  accessing uninitialized left-value.
+  assert \initialized(w + *((table + *(order + i))->filhos + x));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:159: 
+  out of bounds read.
+  assert \valid_read(w + *((table + *(order + i))->filhos + x));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:161: 
+  out of bounds read. assert \valid_read(order + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:161: 
+  accessing uninitialized left-value.
+  assert \initialized(&(table + *(order + i))->filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:161: 
+  out of bounds read. assert \valid_read(&(table + *(order + i))->filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:161: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(table + *(order + i))->filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:161: 
+  accessing uninitialized left-value.
+  assert \initialized((table + *(order + i))->filhos + x);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:161: 
+  out of bounds read. assert \valid_read((table + *(order + i))->filhos + x);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:161: 
+  out of bounds write.
+  assert \valid(w + *((table + *(order + i))->filhos + x));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:161: 
+  accessing uninitialized left-value. assert \initialized(w + *(order + i));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:161: 
+  out of bounds read. assert \valid_read(w + *(order + i));
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:155: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:155: 
+  signed overflow. assert x + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:161: 
+  signed overflow. assert *(w + *(order + i)) + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:153: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:159: 
+  accessing uninitialized left-value. assert \initialized(order + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:161: 
+  accessing uninitialized left-value. assert \initialized(order + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:170: 
+  accessing uninitialized left-value. assert \initialized(w + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:170: 
+  out of bounds read. assert \valid_read(w + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:172: 
+  out of bounds read. assert \valid_read(w + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:167: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:172: 
+  accessing uninitialized left-value. assert \initialized(w + i);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:159: 
+  more than 200(2147483648) elements to enumerate. Approximating.
+[eva] using specification for function printf_va_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:209: 
+  accessing uninitialized left-value.
+  assert \initialized(&(table + i)->filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:209: 
+  out of bounds read. assert \valid_read(&(table + i)->filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:209: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(table + i)->filhos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:209: 
+  function free: precondition 'freeable' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:207: 
+  starting to merge loop iterations
+[eva] done for function main
+[scope:rm_asserts] removing 20 assertion(s)
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function run_dominos:
+  first_output ∈ [0..2147483647]
+  i ∈ [0..2147483647]
+[eva:final-states] Values at end of function can_fail_malloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈
+          {{ NULL ; (void *)&__malloc_can_fail_malloc_l11 ;
+             (void *)&__malloc_can_fail_malloc_l11_0 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_1 ;
+             (void *)&__malloc_can_fail_malloc_l11_2 ;
+             (void *)&__malloc_can_fail_malloc_l11_3 ;
+             (void *)&__malloc_can_fail_malloc_l11_4 }}
+[eva:final-states] Values at end of function can_fail_realloc:
+  __fc_random_counter ∈ [--..--]
+  ptr ∈
+     {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                         __realloc_w_can_fail_realloc_l25}
+      (origin: Merge) }} or ESCAPINGADDR
+  size ∈
+      {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                          __realloc_w_can_fail_realloc_l25}
+       (origin: Merge) }} or ESCAPINGADDR
+  fail ∈ [0. .. 1.]
+  __retres ∈ {{ NULL ; (void *)&__realloc_w_can_fail_realloc_l25 }}
+  __malloc_can_fail_malloc_l11[bits 0 to 31] ∈
+                              [0..2147483646] or UNINITIALIZED
+                              [4..68719476679] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                  __realloc_w_can_fail_realloc_l25}
+                               (origin: Merge) }} or UNINITIALIZED or ESCAPINGADDR
+                              [68719476680] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                  __realloc_w_can_fail_realloc_l25}
+                               (origin: Merge
+                               {/home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:36}) }} or UNINITIALIZED or ESCAPINGADDR
+                              [bits 549755813448 to 549755813567]# ∈
+                              {{ NULL ;
+                                 (? *)&__malloc_w_can_fail_malloc_l11_1 ;
+                                 (? *)&__realloc_w_can_fail_realloc_l25 }} or UNINITIALIZED or ESCAPINGADDR repeated %64, bits 8 to 127 
+                              [68719476696] ∈ {0} or UNINITIALIZED
+                              [68719476697..18446744073709551583] ∈
+                              UNINITIALIZED
+[eva:final-states] Values at end of function inicializeTable:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  w ∈ {{ NULL ; (int *)&__malloc_can_fail_malloc_l11_0 }}
+  i ∈ [0..2147483647]
+  __malloc_can_fail_malloc_l11[bits 0 to 71]# ∈
+                              [0..2147483646] or UNINITIALIZED repeated %32, bits 0 to 71 
+                              [bits 72 to 199]# ∈
+                              [0..2147483646] or UNINITIALIZED repeated %32, bits 8 to 135 
+                              [bits 200 to 327]# ∈
+                              [0..2147483646] or UNINITIALIZED repeated %32, bits 8 to 135 
+                              [bits 328 to 455]# ∈
+                              [0..2147483646] or UNINITIALIZED repeated %32, bits 8 to 135 
+                              [bits 456 to 583]# ∈
+                              [0..2147483646] or UNINITIALIZED repeated %32, bits 8 to 135 
+                              [bits 584 to 711]# ∈
+                              [0..2147483646] or UNINITIALIZED repeated %32, bits 8 to 135 
+                              [bits 712 to 549755813407]# ∈
+                              [0..2147483646] or UNINITIALIZED repeated %32, bits 8 to 549755812703 
+                              [68719476676..68719476696] ∈
+                              {0} or UNINITIALIZED
+                              [68719476697..18446744073709551583] ∈
+                              UNINITIALIZED
+  __malloc_can_fail_malloc_l11_0[bits 0 to 68719476703]# ∈
+                                {1} or UNINITIALIZED repeated %32 
+                                [8589934588..18446744073709551611] ∈
+                                UNINITIALIZED
+[eva:final-states] Values at end of function putPiece:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  __malloc_can_fail_malloc_l11[bits 0 to 31] ∈
+                              [0..2147483646] or UNINITIALIZED
+                              [4..68719476679] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                  __realloc_w_can_fail_realloc_l25}
+                               (origin: Merge) }} or UNINITIALIZED or ESCAPINGADDR
+                              [68719476680] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                  __realloc_w_can_fail_realloc_l25}
+                               (origin: Merge
+                               {/home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:36}) }} or UNINITIALIZED or ESCAPINGADDR
+                              [bits 549755813448 to 549755813567]# ∈
+                              {{ NULL ;
+                                 (? *)&__malloc_w_can_fail_malloc_l11_1 ;
+                                 (? *)&__realloc_w_can_fail_realloc_l25 }} or UNINITIALIZED or ESCAPINGADDR repeated %64, bits 8 to 127 
+                              [68719476696] ∈ {0} or UNINITIALIZED
+                              [68719476697..18446744073709551583] ∈
+                              UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_1[bits 0 to 31] ∈
+                                  [-2147483648..2147483646] or UNINITIALIZED
+  __realloc_w_can_fail_realloc_l25[0..18446744073709551615] ∈
+                                  [--..--] or UNINITIALIZED
+[eva:final-states] Values at end of function topologicalSort:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  tail ∈ [0..2147483647]
+  tail_order ∈ [0..2147483647]
+  vertice ∈ [0..2147483647]
+  u ∈ [0..2147483646] or UNINITIALIZED
+  v ∈ [0..2147483647] or UNINITIALIZED
+  x ∈ [0..2147483647] or UNINITIALIZED
+  i ∈ [0..2147483647]
+  node ∈ [0..2147483647]
+  ans ∈ [0..2147483647]
+  order ∈
+       {{ NULL ; (int *)&__malloc_can_fail_malloc_l11_2 }} or ESCAPINGADDR
+  lista ∈
+       {{ NULL ; (int *)&__malloc_can_fail_malloc_l11_3 }} or ESCAPINGADDR
+  array ∈
+       {{ NULL ; (int *)&__malloc_can_fail_malloc_l11_4 }} or ESCAPINGADDR
+  __malloc_can_fail_malloc_l11_0[bits 0 to 68719476703]# ∈
+                                [1..2147483647] or UNINITIALIZED repeated %32 
+                                [bits 68719476704 to 68719476735] ∈
+                                [2..2147483647] or UNINITIALIZED
+                                [8589934592..18446744073709551611] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11_2[bits 0 to 68719476735]# ∈
+                                [0..2147483647] or UNINITIALIZED repeated %32 
+                                [8589934592..18446744073709551611] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11_3[0..8589934591] ∈ [--..--] or UNINITIALIZED
+                                [8589934592..18446744073709551611] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11_4[bits 0 to 68719476735]# ∈
+                                [0..2147483647] or UNINITIALIZED repeated %32 
+                                [8589934592..18446744073709551611] ∈
+                                UNINITIALIZED
+[eva:final-states] Values at end of function main:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  table ∈
+       {{ NULL ; (Piece *)&__malloc_can_fail_malloc_l11 }} or ESCAPINGADDR
+  w ∈ {{ NULL ; (int *)&__malloc_can_fail_malloc_l11_0 }} or ESCAPINGADDR
+  first_output ∈ [0..2147483647]
+  n_pieces ∈ [--..--]
+  n_dependencies ∈ [-2147483648..2147483646]
+  first ∈ [1..2147483647] or UNINITIALIZED
+  second ∈ [1..2147483647] or UNINITIALIZED
+  i ∈ [0..2147483647]
+  k ∈ [0..2147483647]
+  __retres ∈ {0}
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11[bits 0 to 31] ∈
+                              [0..2147483646] or UNINITIALIZED
+                              [4..68719476679] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                  __realloc_w_can_fail_realloc_l25}
+                               (origin: Merge) }} or UNINITIALIZED or ESCAPINGADDR
+                              [68719476680] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1;
+                                                  __realloc_w_can_fail_realloc_l25}
+                               (origin: Merge
+                               {/home/fmarques/sbugs/projects/alunos/asa_2021_p1/al050/projetoprimeiro.c:36}) }} or UNINITIALIZED or ESCAPINGADDR
+                              [bits 549755813448 to 549755813567]# ∈
+                              {{ NULL ;
+                                 (? *)&__malloc_w_can_fail_malloc_l11_1 ;
+                                 (? *)&__realloc_w_can_fail_realloc_l25 }} or UNINITIALIZED or ESCAPINGADDR repeated %64, bits 8 to 127 
+                              [68719476696] ∈ {0} or UNINITIALIZED
+                              [68719476697..18446744073709551583] ∈
+                              UNINITIALIZED
+  __malloc_can_fail_malloc_l11_0[bits 0 to 68719476703]# ∈
+                                [1..2147483647] or UNINITIALIZED repeated %32 
+                                [bits 68719476704 to 68719476735] ∈
+                                [2..2147483647] or UNINITIALIZED
+                                [8589934592..18446744073709551611] ∈
+                                UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_1[bits 0 to 31] ∈
+                                  [-2147483648..2147483646] or UNINITIALIZED
+  __realloc_w_can_fail_realloc_l25[0..18446744073709551615] ∈
+                                  [--..--] or UNINITIALIZED
+  __malloc_can_fail_malloc_l11_2[bits 0 to 68719476735]# ∈
+                                [0..2147483647] or UNINITIALIZED repeated %32 
+                                [8589934592..18446744073709551611] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11_3[0..8589934591] ∈ [--..--] or UNINITIALIZED
+                                [8589934592..18446744073709551611] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11_4[bits 0 to 68719476735]# ∈
+                                [0..2147483647] or UNINITIALIZED repeated %32 
+                                [8589934592..18446744073709551611] ∈
+                                UNINITIALIZED
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  7 functions analyzed (out of 8): 87% coverage.
+  In these functions, 162 statements reached (out of 162): 100% coverage.
+  ----------------------------------------------------------------------------
+  No errors or warnings raised during the analysis.
+  ----------------------------------------------------------------------------
+  122 alarms generated by the analysis:
+      50 invalid memory accesses
+      34 accesses to uninitialized left-values
+      20 integer overflows
+      17 escaping addresses
+       1 other
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     0 unknown     0 invalid      0 total
+    Preconditions    14 valid     2 unknown     0 invalid     16 total
+  87% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[report] Classification
+[report] Output /home/fmarques/sbugs/projects/outputs/framaC/asa_2021_p1/al050/errors.json
+[report] Reviews     :  104
+[report] Unclassified:  104

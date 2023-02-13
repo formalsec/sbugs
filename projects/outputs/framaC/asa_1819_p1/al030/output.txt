@@ -1,0 +1,647 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:typing:no-proto] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:65: 
+  Calling function read_input that is declared without prototype.
+  Its formals will be inferred from actual arguments
+[kernel:typing:no-proto] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:66: 
+  Calling function main_art that is declared without prototype.
+  Its formals will be inferred from actual arguments
+[kernel:typing:no-proto] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:67: 
+  Calling function print_results that is declared without prototype.
+  Its formals will be inferred from actual arguments
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  Node ∈ {0}
+  router_number ∈ {0}
+  connections_number ∈ {0}
+  subnetworks ∈ {0}
+  artic_number ∈ {0}
+  root_node ∈ {0}
+  child_nodes ∈ {0}
+  current_subn_id ∈ {0}
+  subnetwork_size ∈ {0}
+  dfs_time ∈ {0}
+  node_depth ∈ {0}
+  node_low ∈ {0}
+  node_parent ∈ {0}
+  network_articulations ∈ {0}
+  subnetwork_identifiers ∈ {0}
+  network ∈ {0}
+[eva] using specification for function scanf_va_1
+[eva] using specification for function scanf_va_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:81: 
+  signed overflow. assert k + 1 ≤ 2147483647;
+[eva] using specification for function time
+[eva] using specification for function srand
+[eva] using specification for function rand
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:90: 
+  out of bounds write. assert \valid(&(network + j)->Id);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:91: 
+  out of bounds write. assert \valid(&(network + j)->next);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:89: 
+  starting to merge loop iterations
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:90: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:91: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva] using specification for function scanf_va_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:111: 
+  signed overflow. assert -2147483648 ≤ node1 - 1;
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_0
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:115: 
+  out of bounds write. assert \valid(&newnode2->Id);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:116: 
+  accessing uninitialized left-value.
+  assert \initialized(&network_point->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:116: 
+  out of bounds read. assert \valid_read(&network_point->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:117: 
+  out of bounds write. assert \valid(&network_point->next);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:117: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:120: 
+  signed overflow. assert -2147483648 ≤ node2 - 1;
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:122: 
+  out of bounds write. assert \valid(&newnode1->Id);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:123: 
+  accessing uninitialized left-value.
+  assert \initialized(&network_point->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:123: 
+  out of bounds read. assert \valid_read(&network_point->next);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:123: 
+  Assigning imprecise value to newnode1->next
+  (pointing to __malloc_can_fail_malloc_l11_1 with offsets {64}).
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:117}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:124: 
+  out of bounds write. assert \valid(&network_point->next);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:124: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:116: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:95: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:116: 
+  Assigning imprecise value to newnode2->next
+  (pointing to __malloc_w_can_fail_malloc_l11_0 with offsets {64}).
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:117}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:123: 
+  Assigning imprecise value to newnode1->next
+  (pointing to __malloc_w_can_fail_malloc_l11_1 with offsets {64}).
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:117}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:95: 
+  signed overflow. assert i + 1 ≤ 2147483647;
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:90: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_2
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_3
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_4
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_5
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_6
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:142: 
+  out of bounds write. assert \valid(node_depth + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:143: 
+  out of bounds write. assert \valid(node_low + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:144: 
+  out of bounds write. assert \valid(node_parent + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:145: 
+  out of bounds write. assert \valid(network_articulations + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:146: 
+  out of bounds write. assert \valid(subnetwork_identifiers + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:141: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:153: 
+  accessing uninitialized left-value. assert \initialized(node_depth + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:153: 
+  out of bounds read. assert \valid_read(node_depth + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:178: 
+  out of bounds write. assert \valid(node_low + this_node);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:178: 
+  out of bounds write. assert \valid(node_depth + this_node);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:185: 
+  out of bounds read. assert \valid_read(network + this_node);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:185: 
+  Assigning imprecise value to current.
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:117}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:185: 
+  accessing uninitialized left-value. assert \initialized(&current.next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:185: 
+  pointer comparison.
+  assert \pointer_comparable((void *)current.next, (void *)0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:186: 
+  accessing uninitialized left-value. assert \initialized(&(current.next)->Id);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:186: 
+  out of bounds read. assert \valid_read(&(current.next)->Id);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:186: 
+  signed overflow. assert -2147483648 ≤ (current.next)->Id - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:186: 
+  signed overflow. assert (current.next)->Id - 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:186: 
+  Assigning imprecise value to adj_node.
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:117}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:187: 
+  accessing uninitialized left-value.
+  assert \initialized(node_depth + adj_node);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:187: 
+  out of bounds read. assert \valid_read(node_depth + adj_node);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:189: 
+  out of bounds write. assert \valid(node_parent + adj_node);
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:197: 
+  detected recursive call of function Articulation_recursive.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:197: User Error: 
+  Recursive call to Articulation_recursive without assigns clause.
+  Generating probably incomplete assigns to interpret the call. Try to increase
+  the -eva-unroll-recursive-calls parameter or write a correct specification
+  for function Articulation_recursive.
+[kernel:annot:missing-spec] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:167: 
+  Neither code nor specification for function Articulation_recursive, generating default assigns from the prototype
+[eva] using specification for function Articulation_recursive
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:202: 
+  accessing uninitialized left-value. assert \initialized(node_low + adj_node);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:202: 
+  out of bounds read. assert \valid_read(node_low + adj_node);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:202: 
+  out of bounds read. assert \valid_read(node_depth + this_node);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:203: 
+  out of bounds write. assert \valid(network_articulations + this_node);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:203: 
+  accessing uninitialized left-value.
+  assert \initialized(network_articulations + this_node);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:205: 
+  accessing uninitialized left-value. assert \initialized(node_low + adj_node);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:205: 
+  out of bounds read. assert \valid_read(node_low + this_node);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:205: 
+  out of bounds read. assert \valid_read(node_low + adj_node);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:205: 
+  out of bounds write. assert \valid(node_low + this_node);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:205: 
+  accessing uninitialized left-value. assert \initialized(node_low + adj_node);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:205: 
+  out of bounds read. assert \valid_read(node_low + adj_node);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:207: 
+  accessing uninitialized left-value.
+  assert \initialized(node_parent + this_node);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:207: 
+  out of bounds read. assert \valid_read(node_parent + this_node);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:185: 
+  out of bounds read. assert \valid_read(current.next);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:185: 
+  Assigning imprecise value to current.
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:117}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:185: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:197: 
+  Using specification of function Articulation_recursive for recursive calls.
+  Analysis of function Articulation_recursive is thus incomplete
+  and its soundness relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:194: 
+  signed overflow. assert child_nodes + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:203: 
+  signed overflow.
+  assert *(network_articulations + this_node) + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:159: 
+  out of bounds write.
+  assert \valid(subnetwork_identifiers + (int)(current_subn_id - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:162: 
+  out of bounds write. assert \valid(network_articulations + root_node);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:152: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:202: 
+  accessing uninitialized left-value.
+  assert \initialized(node_depth + this_node);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:205: 
+  accessing uninitialized left-value.
+  assert \initialized(node_low + this_node);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:205: 
+  out of bounds write. assert \valid(node_low + this_node);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:205: 
+  accessing uninitialized left-value.
+  assert \initialized(node_low + this_node);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:208: 
+  accessing uninitialized left-value.
+  assert \initialized(node_low + this_node);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:208: 
+  accessing uninitialized left-value.
+  assert \initialized(node_depth + adj_node);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:208: 
+  out of bounds read. assert \valid_read(node_low + this_node);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:208: 
+  out of bounds read. assert \valid_read(node_depth + adj_node);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:208: 
+  out of bounds write. assert \valid(node_low + this_node);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:208: 
+  accessing uninitialized left-value.
+  assert \initialized(node_low + this_node);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:208: 
+  out of bounds write. assert \valid(node_low + this_node);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:208: 
+  accessing uninitialized left-value.
+  assert \initialized(node_depth + adj_node);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:208: 
+  out of bounds read. assert \valid_read(node_depth + adj_node);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:154: 
+  signed overflow. assert subnetworks + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:178: 
+  signed overflow. assert dfs_time + 1 ≤ 2147483647;
+[eva] using specification for function printf_va_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:271: 
+  accessing uninitialized left-value.
+  assert \initialized(subnetwork_identifiers + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:271: 
+  out of bounds read. assert \valid_read(subnetwork_identifiers + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:270: 
+  starting to merge loop iterations
+[eva] using specification for function printf_va_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:278: 
+  accessing uninitialized left-value.
+  assert \initialized(subnetwork_identifiers + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:278: 
+  out of bounds read. assert \valid_read(subnetwork_identifiers + i);
+[eva] using specification for function printf_va_3
+[eva] using specification for function printf_va_4
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:287: 
+  accessing uninitialized left-value.
+  assert \initialized(network_articulations + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:287: 
+  out of bounds read. assert \valid_read(network_articulations + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:286: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:288: 
+  signed overflow. assert artic_number + 1 ≤ 2147483647;
+[eva] using specification for function printf_va_5
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:223: 
+  out of bounds write. assert \valid(node_depth + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:222: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:231: 
+  accessing uninitialized left-value. assert \initialized(node_depth + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:231: 
+  out of bounds read. assert \valid_read(node_depth + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:231: 
+  accessing uninitialized left-value.
+  assert \initialized(network_articulations + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:231: 
+  out of bounds read. assert \valid_read(network_articulations + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:248: 
+  out of bounds write. assert \valid(node_depth + this_node);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:252: 
+  out of bounds read. assert \valid_read(network + this_node);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:252: 
+  Assigning imprecise value to current.
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:117}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:252: 
+  accessing uninitialized left-value. assert \initialized(&current.next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:252: 
+  pointer comparison.
+  assert \pointer_comparable((void *)current.next, (void *)0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:253: 
+  accessing uninitialized left-value. assert \initialized(&(current.next)->Id);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:253: 
+  out of bounds read. assert \valid_read(&(current.next)->Id);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:253: 
+  signed overflow. assert -2147483648 ≤ (current.next)->Id - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:253: 
+  signed overflow. assert (current.next)->Id - 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:253: 
+  Assigning imprecise value to adj_node.
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:117}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:254: 
+  accessing uninitialized left-value.
+  assert \initialized(node_depth + adj_node);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:254: 
+  out of bounds read. assert \valid_read(node_depth + adj_node);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:254: 
+  accessing uninitialized left-value.
+  assert \initialized(network_articulations + adj_node);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:254: 
+  out of bounds read. assert \valid_read(network_articulations + adj_node);
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:255: 
+  detected recursive call of function sub_finder.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:255: User Error: 
+  Recursive call to sub_finder without assigns clause.
+  Generating probably incomplete assigns to interpret the call. Try to increase
+  the -eva-unroll-recursive-calls parameter or write a correct specification
+  for function sub_finder.
+[kernel:annot:missing-spec] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:241: 
+  Neither code nor specification for function sub_finder, generating default assigns from the prototype
+[eva] using specification for function sub_finder
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:252: 
+  out of bounds read. assert \valid_read(current.next);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:252: 
+  Assigning imprecise value to current.
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:117}
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:252: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:255: 
+  Using specification of function sub_finder for recursive calls.
+  Analysis of function sub_finder is thus incomplete and its soundness
+  relies on the written specification.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:226: 
+  starting to merge loop iterations
+[eva] using specification for function printf_va_6
+[eva] done for function main
+[scope:rm_asserts] removing 14 assertion(s)
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function can_fail_malloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈
+          {{ NULL ; (void *)&__malloc_can_fail_malloc_l11 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_0 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_1 ;
+             (void *)&__malloc_can_fail_malloc_l11_2 ;
+             (void *)&__malloc_can_fail_malloc_l11_3 ;
+             (void *)&__malloc_can_fail_malloc_l11_4 ;
+             (void *)&__malloc_can_fail_malloc_l11_5 ;
+             (void *)&__malloc_can_fail_malloc_l11_6 }}
+[eva:final-states] Values at end of function save_to_network:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  newnode1 ∈ {{ (struct Node *)&__malloc_w_can_fail_malloc_l11_1 }}
+  newnode2 ∈ {{ (struct Node *)&__malloc_w_can_fail_malloc_l11_0 }}
+  network_point ∈
+               {{ &__malloc_can_fail_malloc_l11 + [0..34359738336],0%16 }}
+  __malloc_can_fail_malloc_l11[bits 0 to 63]# ∈
+                              [1..2147483647] or UNINITIALIZED repeated %32 
+                              [8..34359738339] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                                                  __malloc_w_can_fail_malloc_l11_1}
+                               (origin: Merge
+                               {/home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:117}) }} or UNINITIALIZED
+                              [bits 274877906720 to 274877906815]# ∈
+                              {{ NULL ;
+                                 (? *)&__malloc_w_can_fail_malloc_l11_0 ;
+                                 (? *)&__malloc_w_can_fail_malloc_l11_1 }} or UNINITIALIZED repeated %64, bits 32 to 127 
+                              [34359738352..18446744073709551599] ∈
+                              UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_0[0..3] ∈ [--..--] or UNINITIALIZED
+                                  [4..7] ∈ UNINITIALIZED
+                                  [8..15] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                                                      __malloc_w_can_fail_malloc_l11_1}
+                                   (origin: Merge
+                                   {/home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:117}) }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_1[bits 0 to 31] ∈
+                                  [-2147483647..2147483647] or UNINITIALIZED
+                                  [4..7] ∈ UNINITIALIZED
+                                  [8..15] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                                                      __malloc_w_can_fail_malloc_l11_1}
+                                   (origin: Merge
+                                   {/home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:117}) }} or UNINITIALIZED
+[eva:final-states] Values at end of function read_input:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  router_number ∈ [--..--]
+  connections_number ∈ [-2147483648..2147483646]
+  network ∈ {{ NULL ; (struct Node *)&__malloc_can_fail_malloc_l11 }}
+  i ∈ [1..2147483647]
+  j ∈ [0..2147483647]
+  node1 ∈ [-2147483647..2147483647] or UNINITIALIZED
+  node2 ∈ [-2147483647..2147483647] or UNINITIALIZED
+  k ∈ [--..--]
+  S___fc_stdin[0..1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11[bits 0 to 63]# ∈
+                              [1..2147483647] or UNINITIALIZED repeated %32 
+                              [8..34359738339] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                                                  __malloc_w_can_fail_malloc_l11_1}
+                               (origin: Merge
+                               {/home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:117}) }} or UNINITIALIZED
+                              [bits 274877906720 to 274877906815]# ∈
+                              {{ NULL ;
+                                 (? *)&__malloc_w_can_fail_malloc_l11_0 ;
+                                 (? *)&__malloc_w_can_fail_malloc_l11_1 }} or UNINITIALIZED repeated %64, bits 32 to 127 
+                              [34359738352..18446744073709551599] ∈
+                              UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_0[0..3] ∈ [--..--] or UNINITIALIZED
+                                  [4..7] ∈ UNINITIALIZED
+                                  [8..15] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                                                      __malloc_w_can_fail_malloc_l11_1}
+                                   (origin: Merge
+                                   {/home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:117}) }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_1[bits 0 to 31] ∈
+                                  [-2147483647..2147483647] or UNINITIALIZED
+                                  [4..7] ∈ UNINITIALIZED
+                                  [8..15] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                                                      __malloc_w_can_fail_malloc_l11_1}
+                                   (origin: Merge
+                                   {/home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:117}) }} or UNINITIALIZED
+[eva:final-states] Values at end of function Articulation_recursive:
+  child_nodes ∈ [0..2147483647]
+  current_subn_id ∈ [1..2147483647]
+  dfs_time ∈ [1..2147483647]
+  current{.Id; .[bits 32 to 63]} ∈
+         {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                             __malloc_w_can_fail_malloc_l11_1}
+          (origin: Merge
+          {/home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:117}) }} or UNINITIALIZED
+         .next ∈ {0}
+  adj_node ∈ [0..2147483647] or UNINITIALIZED
+  __malloc_can_fail_malloc_l11_2[bits 0 to 68719476703]# ∈
+                                [-1..2147483647] or UNINITIALIZED repeated %32 
+                                [8589934588..18446744073709551611] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11_3[bits 0 to 68719476703]# ∈
+                                [-1..2147483647] or UNINITIALIZED repeated %32 
+                                [8589934588..18446744073709551611] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11_4[bits 0 to 68719476735]# ∈
+                                [0..2147483646] or UNINITIALIZED repeated %32 
+                                [8589934592..18446744073709551611] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11_5[bits 0 to 68719476703]# ∈
+                                [0..2147483647] or UNINITIALIZED repeated %32 
+                                [8589934588..18446744073709551611] ∈
+                                UNINITIALIZED
+[eva:final-states] Values at end of function main_art:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  subnetworks ∈ [0..2147483647]
+  artic_number ∈ {0}
+  root_node ∈ [0..2147483646]
+  child_nodes ∈ [0..2147483647]
+  current_subn_id ∈ [0..2147483647]
+  dfs_time ∈ [0..2147483647]
+  node_depth ∈ {{ NULL ; (int *)&__malloc_can_fail_malloc_l11_2 }}
+  node_low ∈ {{ NULL ; (int *)&__malloc_can_fail_malloc_l11_3 }}
+  node_parent ∈ {{ NULL ; (int *)&__malloc_can_fail_malloc_l11_4 }}
+  network_articulations ∈
+                       {{ NULL ; (int *)&__malloc_can_fail_malloc_l11_5 }}
+  subnetwork_identifiers ∈
+                        {{ NULL ; (int *)&__malloc_can_fail_malloc_l11_6 }}
+  i ∈ [0..2147483647]
+  __malloc_can_fail_malloc_l11_2[bits 0 to 68719476703]# ∈
+                                [-1..2147483647] or UNINITIALIZED repeated %32 
+                                [8589934588..18446744073709551611] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11_3[bits 0 to 68719476703]# ∈
+                                [-1..2147483647] or UNINITIALIZED repeated %32 
+                                [8589934588..18446744073709551611] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11_4[bits 0 to 68719476735]# ∈
+                                [0..2147483646] or UNINITIALIZED repeated %32 
+                                [8589934592..18446744073709551611] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11_5[bits 0 to 68719476703]# ∈
+                                [0..2147483647] or UNINITIALIZED repeated %32 
+                                [8589934588..18446744073709551611] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11_6[bits 0 to 68719476703]# ∈
+                                {0; 1} or UNINITIALIZED repeated %32 
+                                [8589934588..18446744073709551611] ∈
+                                UNINITIALIZED
+[eva:final-states] Values at end of function sub_finder:
+  subnetwork_size ∈ {1}
+  current{.Id; .[bits 32 to 63]} ∈
+         {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                             __malloc_w_can_fail_malloc_l11_1}
+          (origin: Merge
+          {/home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:117}) }} or UNINITIALIZED
+         .next ∈ {0}
+  adj_node ∈ [--..--] or UNINITIALIZED
+  __malloc_can_fail_malloc_l11_2[bits 0 to 68719476703]# ∈
+                                [-1..2147483647] or UNINITIALIZED repeated %32 
+                                [8589934588..18446744073709551611] ∈
+                                UNINITIALIZED
+[eva:final-states] Values at end of function subnetwork_dfs:
+  subnetwork_size ∈ {0; 1}
+  i ∈ [0..2147483647]
+  largest_subnetwork ∈ {0; 1}
+  __malloc_can_fail_malloc_l11_2[bits 0 to 68719476703]# ∈
+                                [-1..2147483647] or UNINITIALIZED repeated %32 
+                                [8589934588..18446744073709551611] ∈
+                                UNINITIALIZED
+[eva:final-states] Values at end of function print_results:
+  artic_number ∈ [0..2147483647]
+  subnetwork_size ∈ {0; 1}
+  i ∈ [0..2147483647]
+  S___fc_stdout[0..1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11_2[bits 0 to 68719476703]# ∈
+                                [-1..2147483647] or UNINITIALIZED repeated %32 
+                                [8589934588..18446744073709551611] ∈
+                                UNINITIALIZED
+[eva:final-states] Values at end of function main:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  router_number ∈ [--..--]
+  connections_number ∈ [-2147483648..2147483646]
+  subnetworks ∈ [0..2147483647]
+  artic_number ∈ [0..2147483647]
+  root_node ∈ [0..2147483646]
+  child_nodes ∈ [0..2147483647]
+  current_subn_id ∈ [0..2147483647]
+  subnetwork_size ∈ {0; 1}
+  dfs_time ∈ [0..2147483647]
+  node_depth ∈ {{ NULL ; (int *)&__malloc_can_fail_malloc_l11_2 }}
+  node_low ∈ {{ NULL ; (int *)&__malloc_can_fail_malloc_l11_3 }}
+  node_parent ∈ {{ NULL ; (int *)&__malloc_can_fail_malloc_l11_4 }}
+  network_articulations ∈
+                       {{ NULL ; (int *)&__malloc_can_fail_malloc_l11_5 }}
+  subnetwork_identifiers ∈
+                        {{ NULL ; (int *)&__malloc_can_fail_malloc_l11_6 }}
+  network ∈ {{ NULL ; (struct Node *)&__malloc_can_fail_malloc_l11 }}
+  __retres ∈ {0}
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11[bits 0 to 63]# ∈
+                              [1..2147483647] or UNINITIALIZED repeated %32 
+                              [8..34359738339] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                                                  __malloc_w_can_fail_malloc_l11_1}
+                               (origin: Merge
+                               {/home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:117}) }} or UNINITIALIZED
+                              [bits 274877906720 to 274877906815]# ∈
+                              {{ NULL ;
+                                 (? *)&__malloc_w_can_fail_malloc_l11_0 ;
+                                 (? *)&__malloc_w_can_fail_malloc_l11_1 }} or UNINITIALIZED repeated %64, bits 32 to 127 
+                              [34359738352..18446744073709551599] ∈
+                              UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_0[0..3] ∈ [--..--] or UNINITIALIZED
+                                  [4..7] ∈ UNINITIALIZED
+                                  [8..15] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                                                      __malloc_w_can_fail_malloc_l11_1}
+                                   (origin: Merge
+                                   {/home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:117}) }} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_1[bits 0 to 31] ∈
+                                  [-2147483647..2147483647] or UNINITIALIZED
+                                  [4..7] ∈ UNINITIALIZED
+                                  [8..15] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0;
+                                                      __malloc_w_can_fail_malloc_l11_1}
+                                   (origin: Merge
+                                   {/home/fmarques/sbugs/projects/alunos/asa_1819_p1/al030/NetworkAnalyzer.c:117}) }} or UNINITIALIZED
+  __malloc_can_fail_malloc_l11_2[bits 0 to 68719476703]# ∈
+                                [-1..2147483647] or UNINITIALIZED repeated %32 
+                                [8589934588..18446744073709551611] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11_3[bits 0 to 68719476703]# ∈
+                                [-1..2147483647] or UNINITIALIZED repeated %32 
+                                [8589934588..18446744073709551611] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11_4[bits 0 to 68719476735]# ∈
+                                [0..2147483646] or UNINITIALIZED repeated %32 
+                                [8589934592..18446744073709551611] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11_5[bits 0 to 68719476703]# ∈
+                                [0..2147483647] or UNINITIALIZED repeated %32 
+                                [8589934588..18446744073709551611] ∈
+                                UNINITIALIZED
+  __malloc_can_fail_malloc_l11_6[bits 0 to 68719476703]# ∈
+                                {0; 1} or UNINITIALIZED repeated %32 
+                                [8589934588..18446744073709551611] ∈
+                                UNINITIALIZED
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  9 functions analyzed (out of 11): 81% coverage.
+  In these functions, 178 statements reached (out of 178): 100% coverage.
+  ----------------------------------------------------------------------------
+  Some errors and warnings have been raised during the analysis:
+    by the Eva analyzer:      2 errors    0 warnings
+    by the Frama-C kernel:    0 errors    0 warnings
+  ----------------------------------------------------------------------------
+  91 alarms generated by the analysis:
+      49 invalid memory accesses
+      27 accesses to uninitialized left-values
+      13 integer overflows
+       2 others
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     0 unknown     0 invalid      0 total
+    Preconditions    14 valid     0 unknown     0 invalid     14 total
+  100% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[eva] User Error: Deferred error message was emitted during execution. See above messages for more information.
+[kernel] Plug-in eva aborted: invalid user input.

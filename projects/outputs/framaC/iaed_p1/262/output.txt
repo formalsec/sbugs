@@ -1,0 +1,601 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  armazem[0..9999] ∈ {0}
+  encomendas[0..499] ∈ {0}
+  lastA ∈ {-1}
+  lastE ∈ {-1}
+[eva] using specification for function getchar
+[eva] using specification for function fgets
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:146: 
+  function fgets: precondition 'valid_stream' got status unknown.
+[eva] using specification for function strtok
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:148: 
+  function strtok, behavior new_str: precondition 'valid_string_s_or_delim_not_found' got status unknown.
+[eva] using specification for function strcpy
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:148: 
+  function strcpy: precondition 'valid_string_src' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:148: 
+  function strcpy: precondition 'room_string' got status unknown.
+[eva] FRAMAC_SHARE/libc/string.h:373: 
+  cannot evaluate ACSL term, unsupported ACSL construct: logic function strcmp
+[eva] using specification for function atoi
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:149: 
+  function atoi: precondition 'valid_nptr' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:150: 
+  function atoi: precondition 'valid_nptr' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:151: 
+  function atoi: precondition 'valid_nptr' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:153: 
+  function strcpy: precondition 'valid_string_src' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:153: 
+  function strcpy: precondition 'room_string' got status unknown.
+[eva] using specification for function printf_va_1
+[eva:locals-escaping] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:460: 
+  locals {input} escaping the scope of add through __fc_strtok_ptr
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:166: 
+  function fgets: precondition 'valid_stream' got status unknown.
+[eva] using specification for function sscanf_va_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:169: 
+  function sscanf_va_1: precondition valid_read_string(s) got status unknown.
+[eva] using specification for function printf_va_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:176: 
+  accessing out of bounds index. assert 0 ≤ idp;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:176: 
+  all target addresses were invalid. This path is assumed to be dead.
+[eva] using specification for function printf_va_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:197: 
+  function fgets: precondition 'valid_stream' got status unknown.
+[eva] using specification for function sscanf_va_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:199: 
+  function sscanf_va_2: precondition valid_read_string(s) got status unknown.
+[eva] using specification for function printf_va_4
+[eva] using specification for function printf_va_5
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:209: 
+  accessing out of bounds index. assert 0 ≤ idp;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:246: 
+  function fgets: precondition 'valid_stream' got status unknown.
+[eva] using specification for function sscanf_va_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:248: 
+  function sscanf_va_3: precondition valid_read_string(s) got status unknown.
+[eva] using specification for function printf_va_8
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:254: 
+  accessing out of bounds index. assert 0 ≤ idp;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:269: 
+  function fgets: precondition 'valid_stream' got status unknown.
+[eva] using specification for function sscanf_va_4
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:271: 
+  function sscanf_va_4: precondition valid_read_string(s) got status unknown.
+[eva] using specification for function printf_va_10
+[eva] using specification for function printf_va_11
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:44: 
+  accessing out of bounds index. assert 0 ≤ ide;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:297: 
+  function fgets: precondition 'valid_stream' got status unknown.
+[eva] using specification for function sscanf_va_5
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:299: 
+  function sscanf_va_5: precondition valid_read_string(s) got status unknown.
+[eva] using specification for function printf_va_12
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:307: 
+  accessing out of bounds index. assert 0 ≤ ide;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:321: 
+  function fgets: precondition 'valid_stream' got status unknown.
+[eva] using specification for function sscanf_va_6
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:323: 
+  function sscanf_va_6: precondition valid_read_string(s) got status unknown.
+[eva] using specification for function printf_va_14
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:331: 
+  accessing out of bounds index. assert 0 ≤ idp;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:331: 
+  all target addresses were invalid. This path is assumed to be dead.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:349: 
+  function fgets: precondition 'valid_stream' got status unknown.
+[eva] using specification for function sscanf_va_7
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:351: 
+  function sscanf_va_7: precondition valid_read_string(s) got status unknown.
+[eva] using specification for function printf_va_15
+[eva] using specification for function printf_va_16
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:376: 
+  function fgets: precondition 'valid_stream' got status unknown.
+[eva] using specification for function sscanf_va_8
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:378: 
+  function sscanf_va_8: precondition valid_read_string(s) got status unknown.
+[eva] using specification for function printf_va_19
+[eva] using specification for function time
+[eva] using specification for function srand
+[eva] using specification for function rand
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11
+[eva] using specification for function printf_va_21
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:428: 
+  function fgets: precondition 'valid_stream' got status unknown.
+[eva] using specification for function sscanf_va_9
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:430: 
+  function sscanf_va_9: precondition valid_read_string(s) got status unknown.
+[eva] using specification for function printf_va_23
+[eva] using specification for function printf_va_24
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:439: 
+  accessing out of bounds index. assert 0 ≤ ide;
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:454: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:149: 
+  function strtok, behavior resume_str: precondition 'not_first_call' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:149: 
+  Assigning imprecise value to tmp_0.
+  The imprecision originates from Library function
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:150: 
+  function strtok, behavior resume_str: precondition 'not_first_call' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:150: 
+  Assigning imprecise value to tmp_1.
+  The imprecision originates from Library function
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:151: 
+  function strtok, behavior resume_str: precondition 'not_first_call' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:151: 
+  Assigning imprecise value to tmp_2.
+  The imprecision originates from Library function
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:176: 
+  signed overflow. assert -2147483648 ≤ armazem[idp].quantidade + qtd;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:176: 
+  signed overflow. assert armazem[idp].quantidade + qtd ≤ 2147483647;
+[eva] using specification for function printf_va_6
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:213: 
+  accessing out of bounds index. assert 0 ≤ ide;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:213: 
+  signed overflow. assert -2147483648 ≤ armazem[idp].peso * qtd;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:213: 
+  signed overflow. assert armazem[idp].peso * qtd ≤ 2147483647;
+[eva] using specification for function printf_va_7
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:219: 
+  signed overflow. assert -2147483648 ≤ armazem[idp].quantidade - qtd;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:219: 
+  signed overflow. assert armazem[idp].quantidade - qtd ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:221: 
+  signed overflow. assert -2147483648 ≤ armazem[idp].peso * qtd;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:221: 
+  signed overflow. assert armazem[idp].peso * qtd ≤ 2147483647;
+[eva] using specification for function strcmp
+[eva] FRAMAC_SHARE/libc/string.h:156: 
+  cannot evaluate ACSL term, unsupported ACSL construct: logic function strcmp
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:59: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:63: 
+  starting to merge loop iterations
+[eva] using specification for function printf_va_9
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:259: 
+  signed overflow. assert -2147483648 ≤ armazem[idp].quantidade - qtd;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:259: 
+  signed overflow. assert armazem[idp].quantidade - qtd ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:44: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:283: 
+  accessing out of bounds index. assert 0 ≤ idp;
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:307: 
+  starting to merge loop iterations
+[eva] using specification for function printf_va_13
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:333: 
+  starting to merge loop iterations
+[eva] using specification for function printf_va_17
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:362: 
+  function printf_va_17: precondition valid_read_string(param0) got status unknown.
+[eva] using specification for function printf_va_18
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:366: 
+  function printf_va_18: precondition valid_read_string(param0) got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:386: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:86: 
+  out of bounds write. assert \valid(arr + i);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:84: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:417: 
+  accessing uninitialized left-value.
+  assert \initialized(&(sortedArmazem + i)->quantidade);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:417: 
+  accessing uninitialized left-value.
+  assert \initialized(&(sortedArmazem + i)->preco);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:417: 
+  out of bounds read. assert \valid_read(&(sortedArmazem + i)->quantidade);
+[eva] using specification for function printf_va_22
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:417: 
+  function printf_va_22: precondition valid_read_string(param0) got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:416: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:439: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:213: 
+  signed overflow.
+  assert -2147483648 ≤ encomendas[ide].peso + (int)(armazem[idp].peso * qtd);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:213: 
+  signed overflow.
+  assert encomendas[ide].peso + (int)(armazem[idp].peso * qtd) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:221: 
+  signed overflow.
+  assert -2147483648 ≤ encomendas[ide].peso + (int)(armazem[idp].peso * qtd);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:221: 
+  signed overflow.
+  assert encomendas[ide].peso + (int)(armazem[idp].peso * qtd) ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:224: 
+  signed overflow.
+  assert -2147483648 ≤ encomendas[ide].produtos[posPE].quantidade + qtd;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:224: 
+  signed overflow.
+  assert encomendas[ide].produtos[posPE].quantidade + qtd ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:61: 
+  function strcmp: precondition 'valid_string_s1' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:64: 
+  partially overlapping lvalue assignment.
+  assert
+  &encomendas[ide].produtos[(int)(j + 1)] ≡ &encomendas[ide].produtos[j] ∨
+  \separated(
+    &encomendas[ide].produtos[(int)(j + 1)], &encomendas[ide].produtos[j]
+    );
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:231: 
+  function strcpy: precondition 'valid_string_src' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:231: 
+  function strcpy: precondition 'room_string' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:232: 
+  accessing out of bounds index. assert 0 ≤ posPE;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:283: 
+  signed overflow.
+  assert
+  -2147483648 ≤
+  armazem[idp].quantidade + encomendas[ide].produtos[posPE].quantidade;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:283: 
+  signed overflow.
+  assert
+  armazem[idp].quantidade + encomendas[ide].produtos[posPE].quantidade ≤
+  2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:285: 
+  signed overflow.
+  assert
+  -2147483648 ≤
+  encomendas[ide].produtos[posPE].quantidade *
+  encomendas[ide].produtos[posPE].peso;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:285: 
+  signed overflow.
+  assert
+  encomendas[ide].produtos[posPE].quantidade *
+  encomendas[ide].produtos[posPE].peso ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:285: 
+  signed overflow.
+  assert
+  -2147483648 ≤
+  encomendas[ide].peso -
+  (int)(encomendas[ide].produtos[posPE].quantidade *
+        encomendas[ide].produtos[posPE].peso);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:285: 
+  signed overflow.
+  assert
+  encomendas[ide].peso -
+  (int)(encomendas[ide].produtos[posPE].quantidade *
+        encomendas[ide].produtos[posPE].peso)
+  ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:309: 
+  signed overflow.
+  assert
+  -2147483648 ≤
+  encomendas[ide].produtos[i].preco * encomendas[ide].produtos[i].quantidade;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:309: 
+  signed overflow.
+  assert
+  encomendas[ide].produtos[i].preco * encomendas[ide].produtos[i].quantidade
+  ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:309: 
+  signed overflow.
+  assert
+  -2147483648 ≤
+  sum +
+  (int)(encomendas[ide].produtos[i].preco *
+        encomendas[ide].produtos[i].quantidade);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:309: 
+  signed overflow.
+  assert
+  sum +
+  (int)(encomendas[ide].produtos[i].preco *
+        encomendas[ide].produtos[i].quantidade)
+  ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:399: 
+  accessing uninitialized left-value. assert \initialized(&posE);
+[eva] using specification for function printf_va_20
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:100: 
+  accessing uninitialized left-value. assert \initialized(&(arr + l)->preco);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:100: 
+  accessing uninitialized left-value.
+  assert \initialized(&(arr + largest)->preco);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:100: 
+  out of bounds read. assert \valid_read(&(arr + l)->preco);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:100: 
+  out of bounds read. assert \valid_read(&(arr + largest)->preco);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:100: 
+  accessing uninitialized left-value. assert \initialized(&(arr + l)->preco);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:100: 
+  accessing uninitialized left-value.
+  assert \initialized(&(arr + largest)->preco);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:100: 
+  accessing uninitialized left-value. assert \initialized(&(arr + l)->id);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:100: 
+  accessing uninitialized left-value.
+  assert \initialized(&(arr + largest)->id);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:112: 
+  out of bounds read. assert \valid_read(arr + i);
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:116: 
+  detected recursive call of function heapify.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:116: User Error: 
+  Recursive call to heapify without assigns clause.
+  Generating probably incomplete assigns to interpret the call. Try to increase
+  the -eva-unroll-recursive-calls parameter or write a correct specification
+  for function heapify.
+[kernel:annot:missing-spec] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:92: 
+  Neither code nor specification for function heapify, generating default assigns from the prototype
+[eva] using specification for function heapify
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:132: 
+  out of bounds read. assert \valid_read(arr + 0);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:130: 
+  starting to merge loop iterations
+[eva] using specification for function printf_va_25
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:154: 
+  accessing out of bounds index. assert lastA < 10000;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:154: 
+  more than 200(10000) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:155: 
+  more than 200(10000) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:156: 
+  more than 200(10000) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:157: 
+  more than 200(10000) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:154: 
+  more than 200(10000) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:155: 
+  more than 200(10000) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:156: 
+  more than 200(10000) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:157: 
+  more than 200(10000) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:176: 
+  more than 200(10000) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:186: 
+  accessing out of bounds index. assert lastE < 500;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:186: 
+  more than 200(500) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:188: 
+  more than 200(500) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:186: 
+  more than 200(500) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:188: 
+  more than 200(500) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:219: 
+  more than 200(10000) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:221: 
+  more than 200(500) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:46: 
+  accessing out of bounds index. assert i < 10000;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:61: 
+  function strcmp: precondition 'valid_string_s2' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:59: 
+  signed overflow. assert i + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:64: 
+  accessing out of bounds index. assert (int)(j + 1) < 10000;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:64: 
+  signed overflow. assert j + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:67: 
+  signed overflow. assert encomendas[ide].lastP + 1 ≤ 2147483647;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:67: 
+  more than 200(500) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:74: 
+  signed overflow. assert encomendas[ide].lastP + 1 ≤ 2147483647;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:74: 
+  more than 200(500) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:232: 
+  accessing out of bounds index. assert posPE < 10000;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:213: 
+  more than 200(500) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:259: 
+  more than 200(10000) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:283: 
+  more than 200(10000) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:285: 
+  more than 200(500) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:309: 
+  accessing out of bounds index. assert i < 10000;
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:331: 
+  more than 200(10000) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:337: 
+  more than 200(10000) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:105: 
+  accessing uninitialized left-value. assert \initialized(&(arr + r)->preco);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:105: 
+  accessing uninitialized left-value.
+  assert \initialized(&(arr + largest)->preco);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:105: 
+  out of bounds read. assert \valid_read(&(arr + r)->preco);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:105: 
+  out of bounds read. assert \valid_read(&(arr + largest)->preco);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:105: 
+  accessing uninitialized left-value. assert \initialized(&(arr + r)->preco);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:105: 
+  accessing uninitialized left-value.
+  assert \initialized(&(arr + largest)->preco);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:105: 
+  accessing uninitialized left-value. assert \initialized(&(arr + r)->id);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:105: 
+  accessing uninitialized left-value.
+  assert \initialized(&(arr + largest)->id);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:116: 
+  Using specification of function heapify for recursive calls.
+  Analysis of function heapify is thus incomplete and its soundness
+  relies on the written specification.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:100: 
+  more than 200(5000) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:100: 
+  more than 200(5000) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:105: 
+  more than 200(4999) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:105: 
+  more than 200(4999) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:442: 
+  function printf_va_25: precondition valid_read_string(param0) got status unknown.
+[kernel] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:442: 
+  more than 200(500) elements to enumerate. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p1/262/heap.c:441: 
+  accessing out of bounds index. assert i < 10000;
+[eva] done for function main
+[scope:rm_asserts] removing 4 assertion(s)
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function copy:
+  i ∈ [0..10000]
+  __malloc_w_can_fail_malloc_l11[0..799999] ∈ [--..--] or UNINITIALIZED
+[eva:final-states] Values at end of function find:
+  i ∈ [0..10000]
+  __retres ∈ [-1..9999]
+[eva:final-states] Values at end of function novaE:
+  encomendas[0..499] ∈ [--..--]
+  lastE ∈ [0..499]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function addStock:
+  armazem[0..9999] ∈ [--..--]
+  idp ∈ [--..--]
+  qtd ∈ [--..--]
+  input[0..99] ∈ [--..--] or UNINITIALIZED
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function removeFromA:
+  armazem[0..9999] ∈ [--..--]
+  idp ∈ [--..--]
+  qtd ∈ [--..--]
+  input[0..99] ∈ [--..--] or UNINITIALIZED
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function removeFromE:
+  armazem[0..9999] ∈ [--..--]
+  encomendas[0..499] ∈ [--..--]
+  posPE ∈ [-1..9999] or UNINITIALIZED
+  ide ∈ [--..--]
+  idp ∈ [--..--]
+  input[0..99] ∈ [--..--] or UNINITIALIZED
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function changePrice:
+  armazem[0..9999] ∈ [--..--]
+  encomendas[0..499] ∈ [--..--]
+  ide ∈ [0..500] or UNINITIALIZED
+  posPE ∈ [-1..9999] or UNINITIALIZED
+  idp ∈ [--..--]
+  price ∈ [--..--]
+  input[0..99] ∈ [--..--] or UNINITIALIZED
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function showPInE:
+  posPE ∈ [-1..9999] or UNINITIALIZED
+  ide ∈ [--..--]
+  idp ∈ [--..--]
+  input[0..99] ∈ [--..--] or UNINITIALIZED
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function eWithMostP:
+  ide ∈ [0..500] or UNINITIALIZED
+  max ∈ [--..--]
+  posPE ∈ [-1..9999] or UNINITIALIZED
+  posE ∈ [0..499] or UNINITIALIZED
+  idp ∈ [--..--]
+  input[0..99] ∈ [--..--] or UNINITIALIZED
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function printE:
+  i ∈ [0..10000] or UNINITIALIZED
+  ide ∈ [--..--]
+  input[0..99] ∈ [--..--] or UNINITIALIZED
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function newPosPE:
+  encomendas[0..499] ∈ [--..--]
+  i ∈ [0..2147483647]
+  j ∈ [-2147483648..2147483646] or UNINITIALIZED
+  __retres ∈ [--..--]
+[eva:final-states] Values at end of function addToE:
+  armazem[0..9999] ∈ [--..--]
+  encomendas[0..499] ∈ [--..--]
+  posPE ∈ [0..9999] or UNINITIALIZED
+  ide ∈ [--..--]
+  idp ∈ [--..--]
+  qtd ∈ [--..--]
+  input[0..99] ∈ [--..--] or UNINITIALIZED
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function add:
+  __fc_strtok_ptr ∈
+                 {{ garbled mix of &{input}
+                  (origin: Library function) }} or ESCAPINGADDR
+  armazem[0..9999] ∈ [--..--]
+  lastA ∈ [0..9999]
+  input[0..99] ∈ [--..--] or UNINITIALIZED
+  description[0..62] ∈ [--..--] or UNINITIALIZED
+  price ∈ [--..--]
+  weight ∈ [--..--]
+  qtd ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function can_fail_malloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈ {{ NULL ; (void *)&__malloc_w_can_fail_malloc_l11 }}
+[eva:final-states] Values at end of function totalPrice:
+  ide ∈ [--..--]
+  sum ∈ [--..--]
+  i ∈ [0..10000] or UNINITIALIZED
+  input[0..99] ∈ [--..--] or UNINITIALIZED
+  S___fc_stdout[0..1] ∈ [--..--]
+[eva:final-states] Values at end of function heapify:
+  largest ∈ [0..9999]
+  l ∈ [1..9999],1%2
+  r ∈ [2..10000],0%2
+  temp ∈ [--..--] or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11[0..799999] ∈ [--..--] or UNINITIALIZED
+[eva:final-states] Values at end of function heapSort:
+  i ∈ {-1; 0}
+  temp ∈ [--..--] or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11[0..799999] ∈ [--..--] or UNINITIALIZED
+[eva:final-states] Values at end of function printA:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  i ∈ [0..2147483647]
+  sortedArmazem ∈
+               {{ NULL ; (produto *)&__malloc_w_can_fail_malloc_l11 }} or ESCAPINGADDR
+  S___fc_stdout[0..1] ∈ [--..--]
+  __malloc_w_can_fail_malloc_l11[0..799999] ∈ [--..--] or UNINITIALIZED
+[eva:final-states] Values at end of function main:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  __fc_strtok_ptr ∈ [--..--] or ESCAPINGADDR
+  armazem[0..9999] ∈ [--..--]
+  encomendas[0..499] ∈ [--..--]
+  lastA ∈ [-1..9999]
+  lastE ∈ [-1..499]
+  comand ∈ {120}
+  __retres ∈ {0}
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+  __malloc_w_can_fail_malloc_l11[0..799999] ∈ [--..--] or UNINITIALIZED
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  19 functions analyzed (out of 21): 90% coverage.
+  In these functions, 297 statements reached (out of 297): 100% coverage.
+  ----------------------------------------------------------------------------
+  Some errors and warnings have been raised during the analysis:
+    by the Eva analyzer:      1 error    0 warnings
+    by the Frama-C kernel:    0 errors    0 warnings
+  ----------------------------------------------------------------------------
+  71 alarms generated by the analysis:
+      30 integer overflows
+      17 accesses out of bounds index
+      15 accesses to uninitialized left-values
+       8 invalid memory accesses
+       1 other
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     0 unknown     0 invalid      0 total
+    Preconditions    73 valid    38 unknown     0 invalid    111 total
+  65% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[eva] User Error: Deferred error message was emitted during execution. See above messages for more information.
+[kernel] Plug-in eva aborted: invalid user input.

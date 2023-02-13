@@ -1,0 +1,918 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  
+[eva] using specification for function time
+[eva] using specification for function srand
+[eva] using specification for function rand
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:182: 
+  out of bounds write. assert \valid(x);
+[eva] using specification for function scanf_va_1
+[eva] using specification for function scanf_va_2
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_0
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:189: 
+  out of bounds write. assert \valid(matriz + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:190: 
+  out of bounds read. assert \valid_read(matriz + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:190: 
+  out of bounds write. assert \valid(*(matriz + i) + 0);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:188: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:190: 
+  accessing uninitialized left-value. assert \initialized(matriz + i);
+[eva] using specification for function scanf_va_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:195: 
+  signed overflow. assert -2147483648 ≤ con1 - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:195: 
+  accessing uninitialized left-value.
+  assert \initialized(matriz + (int)(con1 - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:195: 
+  out of bounds read. assert \valid_read(matriz + (int)(con1 - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:195: 
+  out of bounds write. assert \valid(*(matriz + (int)(con1 - 1)) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:195: 
+  accessing uninitialized left-value.
+  assert \initialized(*(matriz + (int)(con1 - 1)) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:196: 
+  accessing uninitialized left-value.
+  assert \initialized(matriz + (int)(con1 - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:196: 
+  out of bounds read. assert \valid_read(matriz + (int)(con1 - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:196: 
+  accessing uninitialized left-value.
+  assert \initialized(*(matriz + (int)(con1 - 1)) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:196: 
+  out of bounds read. assert \valid_read(*(matriz + (int)(con1 - 1)) + 0);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:25: 
+  allocating variable __realloc_can_fail_realloc_l25
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:196: 
+  out of bounds write. assert \valid(matriz + (int)(con1 - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:197: 
+  accessing uninitialized left-value.
+  assert \initialized(matriz + (int)(con1 - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:197: 
+  out of bounds read. assert \valid_read(matriz + (int)(con1 - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:197: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(matriz + (int)(con1 - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:197: 
+  accessing uninitialized left-value.
+  assert \initialized(*(matriz + (int)(con1 - 1)) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:197: 
+  out of bounds read. assert \valid_read(*(matriz + (int)(con1 - 1)) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:197: 
+  out of bounds write.
+  assert
+  \valid(*(matriz + (int)(con1 - 1)) +
+         (int)(*(*(matriz + (int)(con1 - 1)) + 0) - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:198: 
+  signed overflow. assert -2147483648 ≤ con2 - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:198: 
+  accessing uninitialized left-value.
+  assert \initialized(matriz + (int)(con2 - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:198: 
+  out of bounds read. assert \valid_read(matriz + (int)(con2 - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:198: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(matriz + (int)(con2 - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:198: 
+  out of bounds write. assert \valid(*(matriz + (int)(con2 - 1)) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:198: 
+  accessing uninitialized left-value.
+  assert \initialized(*(matriz + (int)(con2 - 1)) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:198: 
+  signed overflow.
+  assert *(*(matriz + (int)(con2 - 1)) + 0) + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:199: 
+  accessing uninitialized left-value.
+  assert \initialized(matriz + (int)(con2 - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:199: 
+  out of bounds read. assert \valid_read(matriz + (int)(con2 - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:199: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(matriz + (int)(con2 - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:199: 
+  accessing uninitialized left-value.
+  assert \initialized(*(matriz + (int)(con2 - 1)) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:199: 
+  out of bounds read. assert \valid_read(*(matriz + (int)(con2 - 1)) + 0);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:25: 
+  allocating variable __realloc_can_fail_realloc_l25_0
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:199: 
+  out of bounds write. assert \valid(matriz + (int)(con2 - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:200: 
+  accessing uninitialized left-value.
+  assert \initialized(matriz + (int)(con2 - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:200: 
+  out of bounds read. assert \valid_read(matriz + (int)(con2 - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:200: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(matriz + (int)(con2 - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:200: 
+  accessing uninitialized left-value.
+  assert \initialized(*(matriz + (int)(con2 - 1)) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:200: 
+  out of bounds read. assert \valid_read(*(matriz + (int)(con2 - 1)) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:200: 
+  signed overflow.
+  assert -2147483648 ≤ *(*(matriz + (int)(con2 - 1)) + 0) - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:200: 
+  out of bounds write.
+  assert
+  \valid(*(matriz + (int)(con2 - 1)) +
+         (int)(*(*(matriz + (int)(con2 - 1)) + 0) - 1));
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:193: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:195: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(matriz + (int)(con1 - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:195: 
+  signed overflow.
+  assert *(*(matriz + (int)(con1 - 1)) + 0) + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:196: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(matriz + (int)(con1 - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:197: 
+  signed overflow.
+  assert -2147483648 ≤ *(*(matriz + (int)(con1 - 1)) + 0) - 1;
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:71: 
+  out of bounds write. assert \valid(nofwhiterouters);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:72: 
+  assertion 'alloca_bounds' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:72: 
+  allocating variable __malloc_subnetsnumber_l72
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:74: 
+  out of bounds write. assert \valid(wrouters + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:73: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:76: 
+  accessing uninitialized left-value. assert \initialized(wrouters + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:76: 
+  out of bounds read. assert \valid_read(wrouters + i);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:78: 
+  out of bounds write. assert \valid(correntitem);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:54: 
+  out of bounds write. assert \valid(wrouters + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:56: 
+  accessing uninitialized left-value. assert \initialized(matriz + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:56: 
+  out of bounds read. assert \valid_read(matriz + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:56: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(matriz + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:56: 
+  accessing uninitialized left-value. assert \initialized(*(matriz + i) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:56: 
+  out of bounds read. assert \valid_read(*(matriz + i) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:57: 
+  out of bounds read. assert \valid_read(matriz + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:57: 
+  accessing uninitialized left-value. assert \initialized(*(matriz + i) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:57: 
+  out of bounds read. assert \valid_read(*(matriz + i) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:57: 
+  signed overflow. assert -2147483648 ≤ *(*(matriz + i) + j) - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:57: 
+  accessing uninitialized left-value.
+  assert \initialized(wrouters + (int)(*(*(matriz + i) + j) - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:57: 
+  out of bounds read.
+  assert \valid_read(wrouters + (int)(*(*(matriz + i) + j) - 1));
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:58: 
+  detected recursive call of function DFSvisiter.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:58: 
+  out of bounds read. assert \valid_read(matriz + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:58: 
+  accessing uninitialized left-value. assert \initialized(*(matriz + i) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:58: 
+  out of bounds read. assert \valid_read(*(matriz + i) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:58: 
+  signed overflow. assert -2147483648 ≤ *(*(matriz + i) + j) - 1;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:58: User Error: 
+  Recursive call to DFSvisiter without assigns clause.
+  Generating probably incomplete assigns to interpret the call. Try to increase
+  the -eva-unroll-recursive-calls parameter or write a correct specification
+  for function DFSvisiter.
+[kernel:annot:missing-spec] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:53: 
+  Neither code nor specification for function DFSvisiter, generating default assigns from the prototype
+[eva] using specification for function DFSvisiter
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:56: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:58: 
+  Using specification of function DFSvisiter for recursive calls.
+  Analysis of function DFSvisiter is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:61: 
+  out of bounds write. assert \valid(wrouters + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:65: 
+  signed overflow. assert -2147483648 ≤ *nofwhiterouters - 1;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:75: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:57: 
+  accessing uninitialized left-value. assert \initialized(matriz + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:57: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(matriz + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:58: 
+  accessing uninitialized left-value. assert \initialized(matriz + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:58: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(matriz + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:62: 
+  accessing uninitialized left-value. assert \initialized(&biguest->n);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:65: 
+  signed overflow. assert *nofwhiterouters - 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:65: 
+  Assigning imprecise value to *nofwhiterouters
+  (pointing to __malloc_can_fail_malloc_l11_2 with offsets {0}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:58}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:29: 
+  accessing uninitialized left-value. assert \initialized(&insertable->n);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:29: 
+  accessing uninitialized left-value.
+  assert \initialized(&(temporaryi->next)->n);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:29: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:29: 
+  accessing uninitialized left-value. assert \initialized(&temporaryi->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:29: 
+  pointer comparison.
+  assert \pointer_comparable((void *)temporaryi->next, (void *)0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:29: 
+  accessing uninitialized left-value. assert \initialized(&temporaryi->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:29: 
+  out of bounds read. assert \valid_read(&(temporaryi->next)->n);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:30: 
+  accessing uninitialized left-value. assert \initialized(&temporaryi->next);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:30: 
+  Assigning imprecise value to temporaryi.
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:58}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:29: 
+  out of bounds read. assert \valid_read(&temporaryi->next);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:30: 
+  Assigning imprecise value to temporaryi.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:32: 
+  accessing uninitialized left-value. assert \initialized(&temporaryi->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:32: 
+  pointer comparison.
+  assert \pointer_comparable((void *)temporaryi->next, (void *)0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:33: 
+  accessing uninitialized left-value. assert \initialized(&temporaryi->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:33: 
+  out of bounds read. assert \valid_read(&temporaryi->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:33: 
+  accessing uninitialized left-value.
+  assert \initialized(&(temporaryi->prev)->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:33: 
+  out of bounds read. assert \valid_read(&(temporaryi->prev)->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:33: 
+  out of bounds write. assert \valid(&((temporaryi->prev)->next)->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:34: 
+  accessing uninitialized left-value. assert \initialized(&temporaryi->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:34: 
+  accessing uninitialized left-value.
+  assert \initialized(&(temporaryi->prev)->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:34: 
+  out of bounds read. assert \valid_read(&(temporaryi->prev)->next);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:34: 
+  Assigning imprecise value to insertable->prev
+  (pointing to __malloc_w_can_fail_malloc_l11_3 with offsets {64}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:37: 
+  accessing uninitialized left-value. assert \initialized(&temporaryi->n);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:37: 
+  out of bounds read. assert \valid_read(&temporaryi->n);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:38: 
+  accessing uninitialized left-value. assert \initialized(&temporaryi->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:38: 
+  out of bounds write. assert \valid(&(temporaryi->next)->prev);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:39: 
+  Assigning imprecise value to insertable->next
+  (pointing to __malloc_w_can_fail_malloc_l11_3 with offsets {128}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:38}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:45: 
+  accessing uninitialized left-value. assert \initialized(&temporaryi->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:45: 
+  out of bounds write. assert \valid(&(temporaryi->next)->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:46: 
+  accessing uninitialized left-value. assert \initialized(&temporaryi->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:46: 
+  accessing uninitialized left-value.
+  assert \initialized(&(temporaryi->prev)->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:46: 
+  out of bounds read. assert \valid_read(&(temporaryi->prev)->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:46: 
+  accessing uninitialized left-value.
+  assert \initialized(&((temporaryi->prev)->next)->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:46: 
+  out of bounds read. assert \valid_read(&((temporaryi->prev)->next)->next);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:46: 
+  Assigning imprecise value to insertable->next
+  (pointing to __malloc_w_can_fail_malloc_l11_3 with offsets {128}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:58}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:47: 
+  accessing uninitialized left-value. assert \initialized(&temporaryi->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:47: 
+  accessing uninitialized left-value.
+  assert \initialized(&(temporaryi->prev)->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:47: 
+  out of bounds read. assert \valid_read(&(temporaryi->prev)->next);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:47: 
+  Assigning imprecise value to insertable->prev
+  (pointing to __malloc_w_can_fail_malloc_l11_3 with offsets {64}).
+  The imprecision originates from Misaligned
+  {/home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:45}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:48: 
+  accessing uninitialized left-value. assert \initialized(&temporaryi->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:48: 
+  accessing uninitialized left-value.
+  assert \initialized(&(temporaryi->prev)->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:48: 
+  out of bounds read. assert \valid_read(&(temporaryi->prev)->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:48: 
+  out of bounds write. assert \valid(&((temporaryi->prev)->next)->next);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:65: 
+  Assigning imprecise value to *nofwhiterouters
+  (pointing to __malloc_can_fail_malloc_l11_2 with offsets {0}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:24: 
+  pointer comparison.
+  assert \pointer_comparable((void *)item0->next, (void *)0);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:39: 
+  Assigning imprecise value to insertable->next
+  (pointing to __malloc_w_can_fail_malloc_l11_3 with offsets {128}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:46: 
+  Assigning imprecise value to insertable->next
+  (pointing to __malloc_w_can_fail_malloc_l11_3 with offsets {128}).
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:47: 
+  Assigning imprecise value to insertable->prev
+  (pointing to __malloc_w_can_fail_malloc_l11_3 with offsets {64}).
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:82: 
+  signed overflow. assert subnetnumber + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:203: 
+  freeing automatic bases: {__malloc_subnetsnumber_l72}
+[eva] using specification for function printf_va_1
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:206: 
+  Assigning imprecise value to printitem.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:207: 
+  accessing uninitialized left-value. assert \initialized(&printitem->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:207: 
+  out of bounds read. assert \valid_read(&printitem->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:207: 
+  pointer comparison.
+  assert \pointer_comparable((void *)printitem->next, (void *)0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:208: 
+  accessing uninitialized left-value. assert \initialized(&printitem->n);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:208: 
+  out of bounds read. assert \valid_read(&printitem->n);
+[eva] using specification for function printf_va_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:209: 
+  accessing uninitialized left-value. assert \initialized(&printitem->next);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:209: 
+  Assigning imprecise value to printitem.
+  The imprecision originates from Misaligned
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:207: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:212: 
+  accessing uninitialized left-value. assert \initialized(&printitem->n);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:212: 
+  out of bounds read. assert \valid_read(&printitem->n);
+[eva] using specification for function printf_va_3
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:213: 
+  accessing uninitialized left-value. assert \initialized(&printitem->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:213: 
+  pointer comparison.
+  assert \pointer_comparable((void *)printitem->prev, (void *)0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:214: 
+  accessing uninitialized left-value. assert \initialized(&printitem->prev);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:214: 
+  Assigning imprecise value to printitem.
+  The imprecision originates from Misaligned
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:215: 
+  accessing uninitialized left-value. assert \initialized(&printitem->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:215: 
+  out of bounds read. assert \valid_read(&printitem->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:215: 
+  function free: precondition 'freeable' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:213: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:213: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&printitem);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:213: 
+  out of bounds read. assert \valid_read(&printitem->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:213: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&printitem->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:214: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&printitem->prev);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:215: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&printitem->next);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:218: 
+  assertion 'alloca_bounds' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:218: 
+  allocating variable __malloc_main_l218
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:220: 
+  out of bounds write. assert \valid(offLIST + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:219: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:157: 
+  assertion 'alloca_bounds' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:157: 
+  allocating variable __malloc_get_breaking_routers_l157
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:158: 
+  assertion 'alloca_bounds' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:158: 
+  allocating variable __malloc_get_breaking_routers_l158
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:159: 
+  assertion 'alloca_bounds' got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:159: 
+  allocating variable __malloc_get_breaking_routers_l159
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:159: 
+  allocating variable __malloc_get_breaking_routers_l159_0
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:161: 
+  out of bounds write. assert \valid(div_0 + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:162: 
+  out of bounds write. assert \valid(l + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:163: 
+  out of bounds write. assert \valid(visited + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:164: 
+  out of bounds write. assert \valid(pais + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:160: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:167: 
+  accessing uninitialized left-value. assert \initialized(visited + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:167: 
+  out of bounds read. assert \valid_read(visited + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:127: 
+  out of bounds write. assert \valid(visited + vertice);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:129: 
+  out of bounds write. assert \valid(div_0 + vertice);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:130: 
+  out of bounds write. assert \valid(l + vertice);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:131: 
+  accessing uninitialized left-value. assert \initialized(matriz + vertice);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:131: 
+  out of bounds read. assert \valid_read(matriz + vertice);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:131: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(matriz + vertice);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:131: 
+  accessing uninitialized left-value.
+  assert \initialized(*(matriz + vertice) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:131: 
+  out of bounds read. assert \valid_read(*(matriz + vertice) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:132: 
+  out of bounds read. assert \valid_read(matriz + vertice);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:132: 
+  accessing uninitialized left-value.
+  assert \initialized(*(matriz + vertice) + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:132: 
+  out of bounds read. assert \valid_read(*(matriz + vertice) + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:132: 
+  signed overflow. assert -2147483648 ≤ *(*(matriz + vertice) + i) - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:133: 
+  accessing uninitialized left-value. assert \initialized(visited + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:133: 
+  out of bounds read. assert \valid_read(visited + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:135: 
+  out of bounds write. assert \valid(pais + v);
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:136: 
+  detected recursive call of function breakingvisit.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:136: User Error: 
+  Recursive call to breakingvisit without assigns clause.
+  Generating probably incomplete assigns to interpret the call. Try to increase
+  the -eva-unroll-recursive-calls parameter or write a correct specification
+  for function breakingvisit.
+[kernel:annot:missing-spec] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:124: 
+  Neither code nor specification for function breakingvisit, generating default assigns from the prototype
+[eva] using specification for function breakingvisit
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:137: 
+  accessing uninitialized left-value. assert \initialized(l + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:137: 
+  out of bounds read. assert \valid_read(l + vertice);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:137: 
+  out of bounds read. assert \valid_read(l + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:138: 
+  out of bounds write. assert \valid(l + vertice);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:138: 
+  accessing uninitialized left-value. assert \initialized(l + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:138: 
+  out of bounds read. assert \valid_read(l + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:139: 
+  accessing uninitialized left-value. assert \initialized(pais + vertice);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:139: 
+  out of bounds read. assert \valid_read(pais + vertice);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:142: 
+  out of bounds read. assert \valid_read(pais + vertice);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:142: 
+  accessing uninitialized left-value. assert \initialized(l + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:142: 
+  out of bounds read. assert \valid_read(l + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:142: 
+  out of bounds read. assert \valid_read(div_0 + vertice);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:143: 
+  out of bounds write. assert \valid(offLIST + vertice);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:146: 
+  accessing uninitialized left-value. assert \initialized(pais + vertice);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:146: 
+  out of bounds read. assert \valid_read(pais + vertice);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:147: 
+  out of bounds read. assert \valid_read(l + vertice);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:147: 
+  out of bounds read. assert \valid_read(div_0 + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:148: 
+  out of bounds write. assert \valid(l + vertice);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:148: 
+  out of bounds read. assert \valid_read(div_0 + v);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:131: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:136: 
+  Using specification of function breakingvisit for recursive calls.
+  Analysis of function breakingvisit is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:140: 
+  out of bounds write. assert \valid(offLIST + vertice);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:134: 
+  signed overflow. assert filhos + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:166: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:128: 
+  signed overflow. assert *time_0 + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:132: 
+  accessing uninitialized left-value. assert \initialized(matriz + vertice);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:132: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(matriz + vertice);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:137: 
+  accessing uninitialized left-value. assert \initialized(l + vertice);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:142: 
+  accessing uninitialized left-value. assert \initialized(pais + vertice);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:142: 
+  accessing uninitialized left-value. assert \initialized(div_0 + vertice);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:147: 
+  accessing uninitialized left-value. assert \initialized(l + vertice);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:147: 
+  accessing uninitialized left-value. assert \initialized(div_0 + v);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:148: 
+  accessing uninitialized left-value. assert \initialized(div_0 + v);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:222: 
+  freeing automatic bases: {__malloc_get_breaking_routers_l157,
+                            __malloc_get_breaking_routers_l158,
+                            __malloc_get_breaking_routers_l159,
+                            __malloc_get_breaking_routers_l159_0}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:227: 
+  accessing uninitialized left-value. assert \initialized(offLIST + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:227: 
+  out of bounds read. assert \valid_read(offLIST + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:226: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:228: 
+  signed overflow. assert count + 1 ≤ 2147483647;
+[eva] using specification for function printf_va_4
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_4
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:107: 
+  out of bounds write. assert \valid(nofwhiterouters);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:107: 
+  signed overflow. assert -2147483648 ≤ routers - NdeOFFrouters;
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_5
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:110: 
+  accessing uninitialized left-value. assert \initialized(listTOoff + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:110: 
+  out of bounds read. assert \valid_read(listTOoff + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:111: 
+  out of bounds write. assert \valid(routerspercorridos);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:92: 
+  out of bounds write. assert \valid(listTOoff + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:94: 
+  accessing uninitialized left-value. assert \initialized(matriz + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:94: 
+  out of bounds read. assert \valid_read(matriz + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:94: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(matriz + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:94: 
+  accessing uninitialized left-value. assert \initialized(*(matriz + i) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:94: 
+  out of bounds read. assert \valid_read(*(matriz + i) + 0);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:95: 
+  out of bounds read. assert \valid_read(matriz + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:95: 
+  accessing uninitialized left-value. assert \initialized(*(matriz + i) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:95: 
+  out of bounds read. assert \valid_read(*(matriz + i) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:95: 
+  signed overflow. assert -2147483648 ≤ *(*(matriz + i) + j) - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:95: 
+  accessing uninitialized left-value.
+  assert \initialized(listTOoff + (int)(*(*(matriz + i) + j) - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:95: 
+  out of bounds read.
+  assert \valid_read(listTOoff + (int)(*(*(matriz + i) + j) - 1));
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:96: 
+  detected recursive call of function DFSmissigALL.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:96: 
+  out of bounds read. assert \valid_read(matriz + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:96: 
+  accessing uninitialized left-value. assert \initialized(*(matriz + i) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:96: 
+  out of bounds read. assert \valid_read(*(matriz + i) + j);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:96: 
+  signed overflow. assert -2147483648 ≤ *(*(matriz + i) + j) - 1;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:96: User Error: 
+  Recursive call to DFSmissigALL without assigns clause.
+  Generating probably incomplete assigns to interpret the call. Try to increase
+  the -eva-unroll-recursive-calls parameter or write a correct specification
+  for function DFSmissigALL.
+[kernel:annot:missing-spec] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:91: 
+  Neither code nor specification for function DFSmissigALL, generating default assigns from the prototype
+[eva] using specification for function DFSmissigALL
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:94: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:96: 
+  Using specification of function DFSmissigALL for recursive calls.
+  Analysis of function DFSmissigALL is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:99: 
+  signed overflow. assert *routerspercorridos + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:100: 
+  out of bounds write. assert \valid(listTOoff + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:101: 
+  signed overflow. assert -2147483648 ≤ *nofwhiterouters - 1;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:109: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:95: 
+  accessing uninitialized left-value. assert \initialized(matriz + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:95: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(matriz + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:96: 
+  accessing uninitialized left-value. assert \initialized(matriz + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:96: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(matriz + i);
+[eva] using specification for function printf_va_5
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:237: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&x);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:239: 
+  accessing uninitialized left-value. assert \initialized(matriz + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:239: 
+  out of bounds read. assert \valid_read(matriz + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:239: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(matriz + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_1819_p1/al062/proj1.c:238: 
+  starting to merge loop iterations
+[eva] done for function main
+[scope:rm_asserts] removing 54 assertion(s)
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function criaitem:
+  nitem.n ∈ [0..2147483647]
+       .[bits 32 to 63] ∈ UNINITIALIZED
+       {.prev; .next} ∈ {0}
+[eva:final-states] Values at end of function incertitem:
+  temporaryi ∈
+            {{ &__malloc_can_fail_malloc_l11 + [-8..0] ;
+               &__malloc_w_can_fail_malloc_l11_3 + [-8..0] }}
+  __malloc_can_fail_malloc_l11[0..3] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_3}
+                               (origin: Misaligned) }}
+                              [4..7] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_3}
+                               (origin: Misaligned) }} or UNINITIALIZED
+                              [8..23] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_3}
+                               (origin: Misaligned) }}
+  __malloc_w_can_fail_malloc_l11_3[0..23] ∈
+                                  {{ garbled mix of &{__malloc_can_fail_malloc_l11;
+                                                      __malloc_w_can_fail_malloc_l11_3}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+[eva:final-states] Values at end of function can_fail_malloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈
+          {{ NULL ; (void *)&__malloc_can_fail_malloc_l11 ;
+             (void *)&__malloc_can_fail_malloc_l11_0 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_1 ;
+             (void *)&__malloc_can_fail_malloc_l11_2 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_3 ;
+             (void *)&__malloc_can_fail_malloc_l11_4 ;
+             (void *)&__malloc_can_fail_malloc_l11_5 }}
+[eva:final-states] Values at end of function can_fail_realloc:
+  __fc_random_counter ∈ [--..--]
+  ptr ∈
+     {{ (void *)&__malloc_w_can_fail_malloc_l11_1 ;
+        (void *)&__realloc_w_can_fail_realloc_l25 ;
+        (void *)&__realloc_w_can_fail_realloc_l25_0 }} or ESCAPINGADDR
+  fail ∈ [0. .. 1.]
+  __retres ∈
+          {{ NULL ; (void *)&__realloc_w_can_fail_realloc_l25 ;
+             (void *)&__realloc_w_can_fail_realloc_l25_0 }}
+  __malloc_can_fail_malloc_l11_0[bits 0 to 137438953407]# ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_1 ;
+                                   (? *)&__realloc_w_can_fail_realloc_l25 ;
+                                   (? *)&__realloc_w_can_fail_realloc_l25_0 }} or UNINITIALIZED or ESCAPINGADDR repeated %64 
+                                [17179869176..18446744073709551607] ∈
+                                UNINITIALIZED
+[eva:final-states] Values at end of function DFSmissigALL:
+  j ∈ [1..2147483647]
+  __malloc_main_l218[0] ∈ [--..--] or UNINITIALIZED
+                    [1..2147483646] ∈ {0; 1; 2; 3} or UNINITIALIZED
+                    [2147483647..4611686018427387902] ∈ UNINITIALIZED
+  __malloc_can_fail_malloc_l11_4[bits 0 to 31] ∈ [-2147483648..2147483646]
+  __malloc_can_fail_malloc_l11_5[bits 0 to 31] ∈ [-2147483647..2147483647]
+[eva:final-states] Values at end of function DFSvisiter:
+  j ∈ [1..2147483647]
+  __malloc_can_fail_malloc_l11_2[0..3] ∈
+                                {{ garbled mix of &{__malloc_can_fail_malloc_l11;
+                                                    __malloc_w_can_fail_malloc_l11_3}
+                                 (origin: Misaligned) }}
+  __malloc_subnetsnumber_l72[0] ∈
+                            {{ garbled mix of &{__malloc_can_fail_malloc_l11;
+                                                __malloc_w_can_fail_malloc_l11_3}
+                             (origin: Misaligned) }} or UNINITIALIZED
+                            [1..2147483646] ∈ {0; 1; 2} or UNINITIALIZED
+                            [2147483647..4611686018427387902] ∈
+                            UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_3[0..23] ∈
+                                  {{ garbled mix of &{__malloc_can_fail_malloc_l11;
+                                                      __malloc_w_can_fail_malloc_l11_3}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+[eva:final-states] Values at end of function breakingvisit:
+  filhos ∈ [0..2147483647]
+  i ∈ [1..2147483647]
+  abselutetime ∈ [--..--]
+  __malloc_main_l218[0] ∈ [--..--] or UNINITIALIZED
+                    [1..2147483646] ∈ {0; 3} or UNINITIALIZED
+                    [2147483647..4611686018427387902] ∈ UNINITIALIZED
+  __malloc_get_breaking_routers_l157[0] ∈ [--..--] or UNINITIALIZED
+                                    [1..2147483646] ∈
+                                    [-2147483647..2147483647] or UNINITIALIZED
+                                    [2147483647..4611686018427387902] ∈
+                                    UNINITIALIZED
+  __malloc_get_breaking_routers_l158[0..2147483646] ∈
+                                    [--..--] or UNINITIALIZED
+                                    [2147483647..4611686018427387902] ∈
+                                    UNINITIALIZED
+  __malloc_get_breaking_routers_l159[0] ∈ [--..--] or UNINITIALIZED
+                                    [1..2147483646] ∈
+                                    {0; 1} or UNINITIALIZED
+                                    [2147483647..4611686018427387902] ∈
+                                    UNINITIALIZED
+  __malloc_get_breaking_routers_l159_0[0] ∈ [--..--] or UNINITIALIZED
+                                      [1..2147483646] ∈
+                                      [-1..2147483646] or UNINITIALIZED
+                                      [2147483647..4611686018427387902] ∈
+                                      UNINITIALIZED
+[eva:final-states] Values at end of function get_breaking_routers:
+  i ∈ [0..2147483647]
+  abselutetime ∈ [--..--]
+  div_0 ∈ ESCAPINGADDR
+  __lengthof_div_0 ∈ [--..--]
+  l ∈ ESCAPINGADDR
+  __lengthof_l ∈ [--..--]
+  visited ∈ ESCAPINGADDR
+  __lengthof_visited ∈ [--..--]
+  pais ∈ ESCAPINGADDR
+  __lengthof_pais ∈ [--..--]
+  __malloc_main_l218[0] ∈ [--..--] or UNINITIALIZED
+                    [1..2147483646] ∈ {0; 3} or UNINITIALIZED
+                    [2147483647..4611686018427387902] ∈ UNINITIALIZED
+[eva:final-states] Values at end of function subnetmissingall:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  bigssubnetrouters ∈ [0..2147483647]
+  i ∈ [0..2147483647]
+  nofwhiterouters ∈ ESCAPINGADDR
+  routerspercorridos ∈
+                    {{ NULL ; (int *)&__malloc_can_fail_malloc_l11_5 }} or ESCAPINGADDR
+  __malloc_main_l218[0] ∈ [--..--] or UNINITIALIZED
+                    [1..2147483646] ∈ {0; 1; 2; 3} or UNINITIALIZED
+                    [2147483647..4611686018427387902] ∈ UNINITIALIZED
+  __malloc_can_fail_malloc_l11_5[bits 0 to 31] ∈
+                                [-2147483647..2147483647] or UNINITIALIZED
+[eva:final-states] Values at end of function subnetsnumber:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  subnetnumber ∈ [1..2147483647]
+  i ∈ [0..2147483647]
+  nofwhiterouters ∈ ESCAPINGADDR
+  wrouters ∈ ESCAPINGADDR
+  __lengthof_wrouters ∈ [--..--]
+  __malloc_can_fail_malloc_l11[0..3] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_3}
+                               (origin: Misaligned) }}
+                              [4..7] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_3}
+                               (origin: Misaligned) }} or UNINITIALIZED
+                              [8..23] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_3}
+                               (origin: Misaligned) }}
+  __malloc_w_can_fail_malloc_l11_3[0..23] ∈
+                                  {{ garbled mix of &{__malloc_can_fail_malloc_l11;
+                                                      __malloc_w_can_fail_malloc_l11_3}
+                                   (origin: Misaligned) }} or UNINITIALIZED
+[eva:final-states] Values at end of function main:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  routers ∈ [--..--]
+  connectors ∈ [--..--]
+  i ∈ [0..2147483647]
+  con1 ∈ [1..2147483647] or UNINITIALIZED
+  con2 ∈ [1..2147483647] or UNINITIALIZED
+  matriz ∈
+        {{ NULL ; (int **)&__malloc_can_fail_malloc_l11_0 }} or ESCAPINGADDR
+  originalsub ∈ [1..2147483647]
+  breakingrouter ∈ [0..2147483647]
+  x ∈ ESCAPINGADDR
+  printitem ∈
+           {{ &__malloc_w_can_fail_malloc_l11_3 + [-8..0] }} or ESCAPINGADDR
+  offLIST ∈ ESCAPINGADDR
+  __lengthof_offLIST ∈ [--..--]
+  count ∈ [0..2147483647]
+  __retres ∈ {0}
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_3}
+                (origin: Misaligned) }} or ESCAPINGADDR
+               [1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11_0[bits 0 to 137438953407]# ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_1 ;
+                                   (? *)&__realloc_w_can_fail_realloc_l25 ;
+                                   (? *)&__realloc_w_can_fail_realloc_l25_0 }} or UNINITIALIZED or ESCAPINGADDR repeated %64 
+                                [17179869176..18446744073709551607] ∈
+                                UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_1[0..3] ∈ [--..--] or UNINITIALIZED
+  __realloc_w_can_fail_realloc_l25[0..8589934587] ∈
+                                  [--..--] or UNINITIALIZED
+                                  [8589934588..18446744073709551611] ∈
+                                  UNINITIALIZED
+  __realloc_w_can_fail_realloc_l25_0[0..8589934587] ∈
+                                    [--..--] or UNINITIALIZED
+                                    [8589934588..18446744073709551611] ∈
+                                    UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_3[0..23] ∈
+                                  {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_3}
+                                   (origin: Misaligned) }} or UNINITIALIZED or ESCAPINGADDR
+  __malloc_can_fail_malloc_l11_5[bits 0 to 31] ∈
+                                [-2147483647..2147483647] or UNINITIALIZED
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  11 functions analyzed (out of 12): 91% coverage.
+  In these functions, 275 statements reached (out of 275): 100% coverage.
+  ----------------------------------------------------------------------------
+  Some errors and warnings have been raised during the analysis:
+    by the Eva analyzer:      3 errors    0 warnings
+    by the Frama-C kernel:    0 errors    0 warnings
+  ----------------------------------------------------------------------------
+  217 alarms generated by the analysis:
+      96 invalid memory accesses
+      76 accesses to uninitialized left-values
+      20 integer overflows
+      20 escaping addresses
+       5 others
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     6 unknown     0 invalid      6 total
+    Preconditions    21 valid     1 unknown     0 invalid     22 total
+  75% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[eva] User Error: Deferred error message was emitted during execution. See above messages for more information.
+[kernel] Plug-in eva aborted: invalid user input.

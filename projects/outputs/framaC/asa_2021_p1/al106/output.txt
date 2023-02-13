@@ -1,0 +1,319 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  connectionList ∈ {0}
+[eva] using specification for function scanf_va_1
+[eva] using specification for function time
+[eva] using specification for function srand
+[eva] using specification for function rand
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:26: 
+  out of bounds write. assert \valid(&(connectionList + i)->id);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:24: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:27: 
+  out of bounds write. assert \valid(&(connectionList + i)->connectedTo);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:28: 
+  out of bounds write. assert \valid(&(connectionList + i)->numConnections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:29: 
+  out of bounds write. assert \valid(&(connectionList + i)->isRoot);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:26: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:27: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:28: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:29: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:26: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:27: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:28: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:29: 
+  more than 200(2147483647) elements to enumerate. Approximating.
+[eva] using specification for function scanf_va_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:154: 
+  signed overflow. assert -2147483648 ≤ domino2 - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:154: 
+  signed overflow. assert -2147483648 ≤ domino1 - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:37: 
+  out of bounds write. assert \valid(&(connectionList + d1)->numConnections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:37: 
+  accessing uninitialized left-value.
+  assert \initialized(&(connectionList + d1)->numConnections);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:37: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:38: 
+  accessing uninitialized left-value.
+  assert \initialized(&(connectionList + d1)->numConnections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:38: 
+  out of bounds read.
+  assert \valid_read(&(connectionList + d1)->numConnections);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_0
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:39: 
+  accessing uninitialized left-value.
+  assert \initialized(&(connectionList + d1)->numConnections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:39: 
+  out of bounds read.
+  assert \valid_read(&(connectionList + d1)->numConnections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:41: 
+  out of bounds write. assert \valid(tamanho + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:41: 
+  accessing uninitialized left-value.
+  assert \initialized(&(connectionList + d1)->connectedTo);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:41: 
+  out of bounds read. assert \valid_read(&(connectionList + d1)->connectedTo);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:41: 
+  out of bounds read.
+  assert \valid_read((connectionList + d1)->connectedTo + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:43: 
+  accessing uninitialized left-value.
+  assert \initialized(&(connectionList + d1)->numConnections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:43: 
+  out of bounds read.
+  assert \valid_read(&(connectionList + d1)->numConnections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:43: 
+  out of bounds write.
+  assert \valid(tamanho + (int)((connectionList + d1)->numConnections - 1));
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:44: 
+  out of bounds write. assert \valid(&(connectionList + d1)->connectedTo);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:44: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:45: 
+  out of bounds write. assert \valid(&(connectionList + d2)->isRoot);
+[kernel] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:45: 
+  more than 200(2147483647) locations to update in array. Approximating.
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:151: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:37: 
+  signed overflow.
+  assert -2147483648 ≤ (connectionList + d1)->numConnections + 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:37: 
+  signed overflow.
+  assert (connectionList + d1)->numConnections + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:37: 
+  Assigning imprecise value to (connectionList + d1)->numConnections
+  (pointing to __malloc_can_fail_malloc_l11 with offsets [128..412316860160],128%192).
+  The imprecision originates from Merge
+  {/home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:44}
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:39: 
+  signed overflow.
+  assert -2147483648 ≤ (connectionList + d1)->numConnections - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:39: 
+  signed overflow.
+  assert (connectionList + d1)->numConnections - 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:41: 
+  accessing uninitialized left-value.
+  assert \initialized((connectionList + d1)->connectedTo + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:39: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:39: 
+  signed overflow. assert i + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:43: 
+  signed overflow.
+  assert -2147483648 ≤ (connectionList + d1)->numConnections - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:43: 
+  signed overflow.
+  assert (connectionList + d1)->numConnections - 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:92: 
+  allocating variable __malloc_checkIfRoot_l92
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:97: 
+  accessing uninitialized left-value.
+  assert \initialized(&(connectionList + i)->isRoot);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:97: 
+  out of bounds read. assert \valid_read(&(connectionList + i)->isRoot);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:102: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:105: 
+  out of bounds write. assert \valid(distict + z);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:110: 
+  accessing uninitialized left-value.
+  assert \initialized(&(connectionList + i)->numConnections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:113: 
+  accessing uninitialized left-value.
+  assert \initialized(&(connectionList + i)->connectedTo);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:113: 
+  accessing uninitialized left-value.
+  assert \initialized((connectionList + i)->connectedTo + z);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:113: 
+  out of bounds read.
+  assert \valid_read((connectionList + i)->connectedTo + z);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:72: 
+  accessing uninitialized left-value. assert \initialized(distict + z);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:72: 
+  out of bounds read. assert \valid_read(distict + z);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:76: 
+  out of bounds write. assert \valid(distict + z);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:80: 
+  accessing uninitialized left-value.
+  assert \initialized(&(connectionList + z)->numConnections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:80: 
+  out of bounds read.
+  assert \valid_read(&(connectionList + z)->numConnections);
+[eva:recursion] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:83: 
+  detected recursive call of function filhos.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:83: 
+  accessing uninitialized left-value.
+  assert \initialized(&(connectionList + z)->connectedTo);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:83: 
+  out of bounds read. assert \valid_read(&(connectionList + z)->connectedTo);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:83: 
+  accessing uninitialized left-value.
+  assert \initialized((connectionList + z)->connectedTo + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:83: 
+  out of bounds read.
+  assert \valid_read((connectionList + z)->connectedTo + i);
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:83: User Error: 
+  Recursive call to filhos without assigns clause.
+  Generating probably incomplete assigns to interpret the call. Try to increase
+  the -eva-unroll-recursive-calls parameter or write a correct specification
+  for function filhos.
+[kernel:annot:missing-spec] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:65: 
+  Neither code nor specification for function filhos, generating default assigns from the prototype
+[eva] using specification for function filhos
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:83: 
+  signed overflow.
+  assert size + tmp ≤ 2147483647;
+  (tmp from filhos(*((connectionList + z)->connectedTo + i), distict))
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:80: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:83: 
+  Using specification of function filhos for recursive calls.
+  Analysis of function filhos is thus incomplete and its soundness
+  relies on the written specification.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:83: 
+  signed overflow.
+  assert -2147483648 ≤ size + tmp;
+  (tmp from filhos(*((connectionList + z)->connectedTo + i), distict))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:80: 
+  signed overflow. assert i + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:110: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:113: 
+  signed overflow.
+  assert -2147483648 ≤ s + tmp;
+  (tmp from filhos(*((connectionList + i)->connectedTo + z), distict))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:113: 
+  signed overflow.
+  assert s + tmp ≤ 2147483647;
+  (tmp from filhos(*((connectionList + i)->connectedTo + z), distict))
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:110: 
+  signed overflow. assert z + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:95: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:110: 
+  out of bounds read.
+  assert \valid_read(&(connectionList + i)->numConnections);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:113: 
+  out of bounds read. assert \valid_read(&(connectionList + i)->connectedTo);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:98: 
+  signed overflow. assert numRoots + 1 ≤ 2147483647;
+[eva] /home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:164: 
+  freeing automatic bases: {__malloc_checkIfRoot_l92}
+[eva] using specification for function printf_va_5
+[eva] done for function main
+[scope:rm_asserts] removing 6 assertion(s)
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function fillPositions:
+  i ∈ [2..2147483647]
+  __malloc_can_fail_malloc_l11[bits 0 to 412316860063]# ∈
+                              [0..2147483646] or UNINITIALIZED repeated %32 
+                              [51539607508..51539607527] ∈
+                              {0} or UNINITIALIZED
+[eva:final-states] Values at end of function can_fail_malloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈
+          {{ NULL ; (void *)&__malloc_can_fail_malloc_l11 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_0 }}
+[eva:final-states] Values at end of function addPairs:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  i ∈ [0..2147483647]
+  tamanho ∈ {0}
+  __malloc_can_fail_malloc_l11[bits 0 to 63]# ∈
+                              [0..2147483646] or UNINITIALIZED repeated %32 
+                              [8..51539607523] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0}
+                               (origin: Merge
+                               {/home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:44}) }} or UNINITIALIZED
+                              [bits 412316860192 to 412316860223] ∈
+                              {0; 1} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_0[0..18446744073709551615] ∈
+                                  [--..--] or UNINITIALIZED
+[eva:final-states] Values at end of function filhos:
+  i ∈ [0..2147483647] or UNINITIALIZED
+  size ∈ [--..--]
+  __retres ∈ [--..--]
+  __malloc_checkIfRoot_l92[0] ∈ [--..--] or UNINITIALIZED
+                          [1..2147483646] ∈ {0; 1} or UNINITIALIZED
+[eva:final-states] Values at end of function checkIfRoot:
+  numRoots ∈ [0..2147483647]
+  sizeBiggestRoot ∈ [-1..2147483647]
+  distict ∈ ESCAPINGADDR
+  __lengthof_distict ∈ [2..2147483647]
+  z ∈ [0..2147483647] or UNINITIALIZED
+  i ∈ [2..2147483647]
+  out[0] ∈ [0..2147483647]
+     [1] ∈ [-1..2147483647]
+[eva:final-states] Values at end of function main:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  connectionList ∈
+                {{ NULL ; (Domino *)&__malloc_can_fail_malloc_l11 }} or ESCAPINGADDR
+  numDominos ∈ [--..--]
+  numDependencias ∈ [--..--]
+  domino1 ∈ [--..--] or UNINITIALIZED
+  domino2 ∈ [--..--] or UNINITIALIZED
+  i ∈ [0..2147483647] or UNINITIALIZED
+  out[0] ∈ [0..2147483647]
+     [1] ∈ [-1..2147483647]
+  __retres ∈ {-1; 0; 1}
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0..1] ∈ [--..--]
+  __malloc_can_fail_malloc_l11[bits 0 to 63]# ∈
+                              [0..2147483646] or UNINITIALIZED repeated %32 
+                              [8..51539607523] ∈
+                              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_0}
+                               (origin: Merge
+                               {/home/fmarques/sbugs/projects/alunos/asa_2021_p1/al106/p1.c:44}) }} or UNINITIALIZED
+                              [bits 412316860192 to 412316860223] ∈
+                              {0; 1} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_0[0..18446744073709551615] ∈
+                                  [--..--] or UNINITIALIZED
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  6 functions analyzed (out of 9): 66% coverage.
+  In these functions, 124 statements reached (out of 124): 100% coverage.
+  ----------------------------------------------------------------------------
+  Some errors and warnings have been raised during the analysis:
+    by the Eva analyzer:      1 error    0 warnings
+    by the Frama-C kernel:    0 errors    0 warnings
+  ----------------------------------------------------------------------------
+  54 alarms generated by the analysis:
+      24 invalid memory accesses
+      16 integer overflows
+      14 accesses to uninitialized left-values
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        1 valid     0 unknown     0 invalid      1 total
+    Preconditions    10 valid     0 unknown     0 invalid     10 total
+  100% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[eva] User Error: Deferred error message was emitted during execution. See above messages for more information.
+[kernel] Plug-in eva aborted: invalid user input.

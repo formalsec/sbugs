@@ -1,0 +1,858 @@
+[report] Monitoring events
+[report] Loading '/home/fmarques/sbugs/projects/configs/frama-c_report_rules.json'
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/iaed_p2/40/hash.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:typing:no-proto] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:287: 
+  Calling function hashStartup that is declared without prototype.
+  Its formals will be inferred from actual arguments
+[kernel] Parsing /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c (with preprocessing)
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:10: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:17: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel:parser:decimal-float] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:24: 
+  Floating-point constant 0.10 is not represented exactly. Will use 0x1.999999999999ap-4.
+[kernel] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:7: 
+  dropping duplicate def'n of func can_fail_malloc at /home/fmarques/sbugs/projects/alunos/lib/allocators.h:7 in favor of that at /home/fmarques/sbugs/projects/alunos/lib/allocators.h:7
+[kernel] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:14: 
+  dropping duplicate def'n of func can_fail_calloc at /home/fmarques/sbugs/projects/alunos/lib/allocators.h:14 in favor of that at /home/fmarques/sbugs/projects/alunos/lib/allocators.h:14
+[kernel] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:21: 
+  dropping duplicate def'n of func can_fail_realloc at /home/fmarques/sbugs/projects/alunos/lib/allocators.h:21 in favor of that at /home/fmarques/sbugs/projects/alunos/lib/allocators.h:21
+[kernel] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:7: 
+  dropping duplicate def'n of func can_fail_malloc at /home/fmarques/sbugs/projects/alunos/lib/allocators.h:7 in favor of that at /home/fmarques/sbugs/projects/alunos/lib/allocators.h:7
+[kernel] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:14: 
+  dropping duplicate def'n of func can_fail_calloc at /home/fmarques/sbugs/projects/alunos/lib/allocators.h:14 in favor of that at /home/fmarques/sbugs/projects/alunos/lib/allocators.h:14
+[kernel] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:21: 
+  dropping duplicate def'n of func can_fail_realloc at /home/fmarques/sbugs/projects/alunos/lib/allocators.h:21 in favor of that at /home/fmarques/sbugs/projects/alunos/lib/allocators.h:21
+[eva] Analyzing a complete application starting at main
+[eva] Computing initial state
+[eva] Initial state computed
+[eva:initial-state] Values of globals at initialization
+  
+[eva] using specification for function time
+[eva] using specification for function srand
+[eva] using specification for function rand
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:18: 
+  allocating variable __calloc_can_fail_calloc_l18
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:18: 
+  allocating variable __calloc_can_fail_calloc_l18_0
+[eva] using specification for function getchar
+[eva] using specification for function scanf_va_1
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/hash.c:8: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/hash.c:8: 
+  accessing uninitialized left-value. assert \initialized(text_sample);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/hash.c:10: 
+  signed overflow. assert -2147483648 ≤ a * hash_0;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/hash.c:10: 
+  signed overflow. assert a * hash_0 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/hash.c:10: 
+  signed overflow.
+  assert -2147483648 ≤ (int)(a * hash_0) + (int)*text_sample;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/hash.c:10: 
+  signed overflow. assert (int)(a * hash_0) + (int)*text_sample ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:31: 
+  out of bounds read. assert \valid_read(hash_game_sys + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:14: 
+  out of bounds read. assert \valid_read(hash_team_sys + i);
+[eva] using specification for function printf_va_3
+[eva] using specification for function scanf_va_2
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_0
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:46: 
+  out of bounds write. assert \valid(&new_team->name);
+[eva] using specification for function strcpy
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:48: 
+  function strcpy: precondition 'room_string' got status unknown.
+[eva] FRAMAC_SHARE/libc/string.h:373: 
+  cannot evaluate ACSL term, unsupported ACSL construct: logic function strcmp
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/hash.c:8: 
+  out of bounds read. assert \valid_read(text_sample);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:81: 
+  out of bounds read. assert \valid_read(hash_team_sys + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:104: 
+  out of bounds read. assert \valid_read(hash_game_sys + i);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:102: 
+  starting to merge loop iterations
+[eva] using specification for function scanf_va_3
+[eva] using specification for function printf_va_7
+[eva] using specification for function scanf_va_4
+[eva] using specification for function printf_va_9
+[eva] using specification for function scanf_va_5
+[eva] using specification for function printf_va_10
+[eva] using specification for function scanf_va_6
+[eva] using specification for function printf_va_11
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:100: 
+  out of bounds read. assert \valid_read(hash_team_sys + i);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:98: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:262: 
+  out of bounds read. assert \valid_read(hash_team_sys + i);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:260: 
+  starting to merge loop iterations
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:291: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:16: 
+  out of bounds read. assert \valid_read(&(*(hash_team_sys + i))->name);
+[eva] using specification for function strcmp
+[eva] FRAMAC_SHARE/libc/string.h:156: 
+  cannot evaluate ACSL term, unsupported ACSL construct: logic function strcmp
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_1
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_2
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:60: 
+  out of bounds write. assert \valid(&new_game->name);
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_3
+[eva] /home/fmarques/sbugs/projects/alunos/lib/allocators.h:11: 
+  allocating variable __malloc_can_fail_malloc_l11_4
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:66: 
+  function strcpy: precondition 'room_string' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:67: 
+  function strcpy: precondition 'room_string' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:68: 
+  function strcpy: precondition 'room_string' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:89: 
+  out of bounds read. assert \valid_read(hash_game_sys + i);
+[eva] using specification for function printf_va_2
+[eva] using specification for function printf_va_4
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:48: 
+  accessing uninitialized left-value. assert \initialized(&new_team->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:79: 
+  accessing uninitialized left-value. assert \initialized(&t_dummy->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/hash.c:10: 
+  accessing uninitialized left-value. assert \initialized(text_sample);
+[eva] using specification for function printf_va_8
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:100: 
+  out of bounds read. assert \valid_read(&(*(hash_team_sys + i))->wins);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:262: 
+  out of bounds read. assert \valid_read(&(*(hash_team_sys + i))->wins);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:263: 
+  signed overflow. assert last_pos + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:263: 
+  accessing out of bounds index. assert tmp < 1024;
+                                 (tmp from last_pos++)
+[eva] using specification for function qsort
+[eva] using specification for function printf_va_12
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:273: 
+  accessing uninitialized left-value. assert \initialized(&sorted_teams[i]);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:273: 
+  accessing uninitialized left-value.
+  assert \initialized(&(sorted_teams[i])->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:273: 
+  out of bounds read. assert \valid_read(&(sorted_teams[i])->name);
+[eva] using specification for function printf_va_13
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:273: 
+  function printf_va_13: precondition valid_read_string(param1) got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:271: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:273: 
+  accessing out of bounds index. assert i < 1024;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:33: 
+  out of bounds read. assert \valid_read(&(*(hash_game_sys + i))->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:34: 
+  out of bounds read.
+  assert \valid_read(&(*(hash_game_sys + i))->removed_state);
+[eva] using specification for function printf_va_1
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:16: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(hash_team_sys + i))->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:16: 
+  function strcmp: precondition 'valid_string_s1' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:53: 
+  accessing uninitialized left-value. assert \initialized(&t2_dummy->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:53: 
+  accessing uninitialized left-value. assert \initialized(&t1_dummy->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:53: 
+  function strcmp: precondition 'valid_string_s1' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:53: 
+  function strcmp: precondition 'valid_string_s2' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:66: 
+  accessing uninitialized left-value. assert \initialized(&new_game->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:67: 
+  accessing uninitialized left-value. assert \initialized(&new_game->team1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:68: 
+  accessing uninitialized left-value. assert \initialized(&new_game->team2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:87: 
+  accessing uninitialized left-value. assert \initialized(&g_dummy->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:63: 
+  accessing uninitialized left-value. assert \initialized(&t1_dummy->wins);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:65: 
+  accessing uninitialized left-value. assert \initialized(&t2_dummy->wins);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:104: 
+  out of bounds read.
+  assert \valid_read(&(*(hash_game_sys + i))->removed_state);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:105: 
+  signed overflow. assert last_pos + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:105: 
+  accessing out of bounds index. assert tmp < 100000;
+                                 (tmp from last_pos++)
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:113: 
+  accessing uninitialized left-value. assert \initialized(&sorted_games[i]);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:113: 
+  out of bounds read. assert \valid_read(&(sorted_games[i])->t2_score);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:113: 
+  out of bounds read. assert \valid_read(&(sorted_games[i])->t1_score);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:113: 
+  out of bounds read. assert \valid_read(&(sorted_games[i])->team2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:113: 
+  out of bounds read. assert \valid_read(&(sorted_games[i])->team1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:113: 
+  out of bounds read. assert \valid_read(&(sorted_games[i])->name);
+[eva] using specification for function printf_va_5
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:113: 
+  function printf_va_5: precondition valid_read_string(param1) got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:113: 
+  function printf_va_5: precondition valid_read_string(param2) got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:113: 
+  function printf_va_5: precondition valid_read_string(param3) got status unknown.
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:111: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:113: 
+  accessing out of bounds index. assert i < 100000;
+[eva] using specification for function printf_va_6
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:135: 
+  function printf_va_6: precondition valid_read_string(param2) got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:135: 
+  function printf_va_6: precondition valid_read_string(param3) got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:157: 
+  accessing uninitialized left-value. assert \initialized(&t_dummy->wins);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:157: 
+  accessing uninitialized left-value. assert \initialized(&t_dummy->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:157: 
+  function printf_va_8: precondition valid_read_string(param1) got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:16: 
+  function strcmp: precondition 'valid_string_s2' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:184: 
+  out of bounds write. assert \valid(&t1_dummy->wins);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:184: 
+  accessing uninitialized left-value. assert \initialized(&t1_dummy->wins);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:186: 
+  out of bounds write. assert \valid(&t2_dummy->wins);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:186: 
+  accessing uninitialized left-value. assert \initialized(&t2_dummy->wins);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:223: 
+  out of bounds write. assert \valid(&t1_dummy->wins);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:223: 
+  accessing uninitialized left-value. assert \initialized(&t1_dummy->wins);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:224: 
+  out of bounds write. assert \valid(&t2_dummy->wins);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:224: 
+  accessing uninitialized left-value. assert \initialized(&t2_dummy->wins);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:227: 
+  out of bounds write. assert \valid(&t2_dummy->wins);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:227: 
+  accessing uninitialized left-value. assert \initialized(&t2_dummy->wins);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:232: 
+  out of bounds write. assert \valid(&t1_dummy->wins);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:232: 
+  accessing uninitialized left-value. assert \initialized(&t1_dummy->wins);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:235: 
+  out of bounds write. assert \valid(&t2_dummy->wins);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:235: 
+  accessing uninitialized left-value. assert \initialized(&t2_dummy->wins);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:241: 
+  out of bounds write. assert \valid(&t1_dummy->wins);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:241: 
+  accessing uninitialized left-value. assert \initialized(&t1_dummy->wins);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:242: 
+  out of bounds write. assert \valid(&t2_dummy->wins);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:242: 
+  accessing uninitialized left-value. assert \initialized(&t2_dummy->wins);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:245: 
+  out of bounds write. assert \valid(&t1_dummy->wins);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:245: 
+  accessing uninitialized left-value. assert \initialized(&t1_dummy->wins);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:100: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(hash_team_sys + i))->wins);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:101: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(hash_team_sys + i))->wins);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:101: 
+  out of bounds read. assert \valid_read(&(*(hash_team_sys + i))->wins);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:262: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(hash_team_sys + i))->wins);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:296: 
+  signed overflow. assert nl_counter + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:33: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(hash_game_sys + i))->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:33: 
+  function strcmp: precondition 'valid_string_s1' got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:34: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(hash_game_sys + i))->removed_state);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:300: 
+  signed overflow. assert nl_counter + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:303: 
+  signed overflow. assert nl_counter + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:104: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(hash_game_sys + i))->removed_state);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:113: 
+  accessing uninitialized left-value.
+  assert \initialized(&(sorted_games[i])->t2_score);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:113: 
+  accessing uninitialized left-value.
+  assert \initialized(&(sorted_games[i])->t1_score);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:113: 
+  accessing uninitialized left-value.
+  assert \initialized(&(sorted_games[i])->team2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:113: 
+  accessing uninitialized left-value.
+  assert \initialized(&(sorted_games[i])->team1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:113: 
+  accessing uninitialized left-value.
+  assert \initialized(&(sorted_games[i])->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:306: 
+  signed overflow. assert nl_counter + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:135: 
+  accessing uninitialized left-value. assert \initialized(&g_dummy->t2_score);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:135: 
+  accessing uninitialized left-value. assert \initialized(&g_dummy->t1_score);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:135: 
+  accessing uninitialized left-value. assert \initialized(&g_dummy->team2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:135: 
+  accessing uninitialized left-value. assert \initialized(&g_dummy->team1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:135: 
+  accessing uninitialized left-value. assert \initialized(&g_dummy->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:135: 
+  function printf_va_6: precondition valid_read_string(param1) got status unknown.
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:309: 
+  signed overflow. assert nl_counter + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:313: 
+  signed overflow. assert nl_counter + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:179: 
+  accessing uninitialized left-value.
+  assert \initialized(&trashed_game->team1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:181: 
+  accessing uninitialized left-value.
+  assert \initialized(&trashed_game->team2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:183: 
+  accessing uninitialized left-value.
+  assert \initialized(&trashed_game->t1_score);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:183: 
+  accessing uninitialized left-value.
+  assert \initialized(&trashed_game->t2_score);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:185: 
+  accessing uninitialized left-value.
+  assert \initialized(&trashed_game->t1_score);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:185: 
+  accessing uninitialized left-value.
+  assert \initialized(&trashed_game->t2_score);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:317: 
+  signed overflow. assert nl_counter + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:210: 
+  accessing uninitialized left-value. assert \initialized(&g_dummy->t1_score);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:211: 
+  accessing uninitialized left-value. assert \initialized(&g_dummy->t2_score);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:216: 
+  accessing uninitialized left-value. assert \initialized(&g_dummy->team1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:217: 
+  accessing uninitialized left-value. assert \initialized(&g_dummy->team2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:320: 
+  signed overflow. assert nl_counter + 1 ≤ 2147483647;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:190: 
+  signed overflow. assert -2147483648 ≤ *game_count - 1;
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:119: 
+  out of bounds read. assert \valid_read(hash_team_sys + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:121: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(hash_team_sys + i))->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:124: 
+  out of bounds read. assert \valid_read(hash_game_sys + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:126: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(hash_game_sys + i))->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:127: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(hash_game_sys + i))->team1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:128: 
+  accessing uninitialized left-value.
+  assert \initialized(&(*(hash_game_sys + i))->team2);
+[eva] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:117: 
+  starting to merge loop iterations
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:119: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(hash_team_sys + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:121: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(hash_team_sys + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:121: 
+  out of bounds read. assert \valid_read(&(*(hash_team_sys + i))->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:121: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(*(hash_team_sys + i))->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:122: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(hash_team_sys + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:124: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(hash_game_sys + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:126: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(hash_game_sys + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:126: 
+  out of bounds read. assert \valid_read(&(*(hash_game_sys + i))->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:126: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(*(hash_game_sys + i))->name);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:127: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(hash_game_sys + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:127: 
+  out of bounds read. assert \valid_read(&(*(hash_game_sys + i))->team1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:127: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(*(hash_game_sys + i))->team1);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:128: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(hash_game_sys + i);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:128: 
+  out of bounds read. assert \valid_read(&(*(hash_game_sys + i))->team2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:128: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(&(*(hash_game_sys + i))->team2);
+[eva:alarm] /home/fmarques/sbugs/projects/alunos/iaed_p2/40/structs.c:129: 
+  accessing left-value that contains escaping addresses.
+  assert ¬\dangling(hash_game_sys + i);
+[eva] done for function main
+[scope:rm_asserts] removing 11 assertion(s)
+[eva] ====== VALUES COMPUTED ======
+[eva:final-states] Values at end of function bestTeamsScoreLookup:
+  i ∈ {100000}
+  max ∈ [--..--]
+[eva:final-states] Values at end of function hash:
+  text_sample ∈
+             {{ &game_name[0] ; &t1_name[0] ; &t2_name[0] ; &name[0] ;
+                &name[0] ; &name[0] ; &name[0] ; &name[0] ;
+                &__malloc_w_can_fail_malloc_l11_0 ;
+                &__malloc_w_can_fail_malloc_l11_2 ;
+                &__malloc_w_can_fail_malloc_l11_3 ;
+                &__malloc_w_can_fail_malloc_l11_4 }}
+  hash_0 ∈ [--..--]
+  a ∈ {127}
+[eva:final-states] Values at end of function hashShutdown:
+  hash_team_sys ∈
+               {{ NULL ; (Team *)&__calloc_can_fail_calloc_l18 }} or ESCAPINGADDR
+  hash_game_sys ∈
+               {{ NULL ; (Game *)&__calloc_can_fail_calloc_l18_0 }} or ESCAPINGADDR
+  hash_team_sys ∈
+               {{ NULL ; (Team *)&__calloc_can_fail_calloc_l18 }} or ESCAPINGADDR
+  hash_game_sys ∈
+               {{ NULL ; (Game *)&__calloc_can_fail_calloc_l18_0 }} or ESCAPINGADDR
+  i ∈ {100000}
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2;
+                                   __malloc_w_can_fail_malloc_l11_3;
+                                   __malloc_w_can_fail_malloc_l11_4}
+                (origin: Misaligned
+                {/home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:113}) }} or ESCAPINGADDR
+               [1] ∈ [--..--]
+  __calloc_can_fail_calloc_l18[bits 0 to 6399999]# ∈
+                              {{ NULL ;
+                                 (? *)&__malloc_w_can_fail_malloc_l11 }} or ESCAPINGADDR repeated %64 
+  __calloc_can_fail_calloc_l18_0[bits 0 to 6399999]# ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_1 }} or ESCAPINGADDR repeated %64 
+  __malloc_w_can_fail_malloc_l11[bits 0 to 63] ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_0 }} or UNINITIALIZED or ESCAPINGADDR
+                                [8..11] ∈ [--..--] or UNINITIALIZED
+                                [12..15] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_1[bits 0 to 63] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_3 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 128 to 191] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [24..31] ∈ [--..--] or UNINITIALIZED
+                                  [bits 256 to 287] ∈
+                                  [1..2147483647] or UNINITIALIZED
+                                  [bits 288 to 319] ∈
+                                  {0; 1} or UNINITIALIZED
+[eva:final-states] Values at end of function insertGame:
+  i ∈ [0..99999]
+  __calloc_can_fail_calloc_l18_0[bits 0 to 6399999]# ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_1 }} repeated %64 
+[eva:final-states] Values at end of function insertTeam:
+  i ∈ [0..99999]
+  __calloc_can_fail_calloc_l18[bits 0 to 6399999]# ∈
+                              {{ NULL ;
+                                 (? *)&__malloc_w_can_fail_malloc_l11 }} repeated %64 
+[eva:final-states] Values at end of function do_g:
+  i ∈ [1..100000]
+  last_pos ∈ [0..1024]
+  max_wins ∈ [--..--]
+  sorted_teams[0..1023] ∈
+              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11}
+               (origin: Misaligned
+               {/home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:267}) }} or UNINITIALIZED
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2;
+                                   __malloc_w_can_fail_malloc_l11_3;
+                                   __malloc_w_can_fail_malloc_l11_4}
+                (origin: Misaligned
+                {/home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:113}) }}
+               [1] ∈ [--..--]
+[eva:final-states] Values at end of function do_l:
+  i ∈ [1..100000]
+  last_pos ∈ [0..100000]
+  sorted_games[0..99999] ∈
+              {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_1}
+               (origin: Misaligned
+               {/home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:109}) }} or UNINITIALIZED
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2;
+                                   __malloc_w_can_fail_malloc_l11_3;
+                                   __malloc_w_can_fail_malloc_l11_4}
+                (origin: Misaligned
+                {/home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:113}) }}
+               [1] ∈ [--..--]
+[eva:final-states] Values at end of function gameHashLookup:
+  i ∈ [0..99999]
+  __retres ∈ {{ NULL ; (struct game *)&__malloc_w_can_fail_malloc_l11_1 }}
+[eva:final-states] Values at end of function do_p:
+  name[0] ∈ {0}
+      [1..1023] ∈ UNINITIALIZED
+  g_dummy ∈ {{ NULL ; (struct game *)&__malloc_w_can_fail_malloc_l11_1 }}
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2;
+                                   __malloc_w_can_fail_malloc_l11_3;
+                                   __malloc_w_can_fail_malloc_l11_4}
+                (origin: Misaligned
+                {/home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:113}) }}
+               [1] ∈ [--..--]
+[eva:final-states] Values at end of function teamHashLookup:
+  i ∈ [0..99999]
+  __retres ∈ {{ NULL ; (struct team *)&__malloc_w_can_fail_malloc_l11 }}
+[eva:final-states] Values at end of function do_P:
+  name[0] ∈ {0}
+      [1..1023] ∈ UNINITIALIZED
+  t_dummy ∈ {{ NULL ; (struct team *)&__malloc_w_can_fail_malloc_l11 }}
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2;
+                                   __malloc_w_can_fail_malloc_l11_3;
+                                   __malloc_w_can_fail_malloc_l11_4}
+                (origin: Misaligned
+                {/home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:113}) }}
+               [1] ∈ [--..--]
+[eva:final-states] Values at end of function do_r:
+  name[0] ∈ {0}
+      [1..1023] ∈ UNINITIALIZED
+  t1_dummy ∈
+          {{ NULL ; (struct team *)&__malloc_w_can_fail_malloc_l11 }} or UNINITIALIZED
+  t2_dummy ∈
+          {{ NULL ; (struct team *)&__malloc_w_can_fail_malloc_l11 }} or UNINITIALIZED
+  trashed_game ∈
+              {{ NULL ; (struct game *)&__malloc_w_can_fail_malloc_l11_1 }}
+  game_sys_counter ∈ [--..--]
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2;
+                                   __malloc_w_can_fail_malloc_l11_3;
+                                   __malloc_w_can_fail_malloc_l11_4}
+                (origin: Misaligned
+                {/home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:113}) }}
+               [1] ∈ [--..--]
+  __malloc_w_can_fail_malloc_l11[bits 0 to 63] ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_0 }} or UNINITIALIZED
+                                [8..11] ∈ [--..--] or UNINITIALIZED
+                                [12..15] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_1[bits 0 to 63] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_3 }} or UNINITIALIZED
+                                  [bits 128 to 191] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED
+                                  [24..31] ∈ [--..--] or UNINITIALIZED
+                                  [bits 256 to 287] ∈
+                                  [1..2147483647] or UNINITIALIZED
+                                  [bits 288 to 319] ∈
+                                  {0; 1} or UNINITIALIZED
+[eva:final-states] Values at end of function do_s:
+  name[0] ∈ {0}
+      [1..1023] ∈ UNINITIALIZED
+  new_t1_score ∈ [--..--]
+  new_t2_score ∈ [--..--]
+  old_t1_score ∈ [--..--] or UNINITIALIZED
+  old_t2_score ∈ [--..--] or UNINITIALIZED
+  t1_dummy ∈
+          {{ NULL ; (struct team *)&__malloc_w_can_fail_malloc_l11 }} or UNINITIALIZED
+  t2_dummy ∈
+          {{ NULL ; (struct team *)&__malloc_w_can_fail_malloc_l11 }} or UNINITIALIZED
+  g_dummy ∈ {{ NULL ; (struct game *)&__malloc_w_can_fail_malloc_l11_1 }}
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2;
+                                   __malloc_w_can_fail_malloc_l11_3;
+                                   __malloc_w_can_fail_malloc_l11_4}
+                (origin: Misaligned
+                {/home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:113}) }}
+               [1] ∈ [--..--]
+  __malloc_w_can_fail_malloc_l11[bits 0 to 63] ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_0 }} or UNINITIALIZED
+                                [8..11] ∈ [--..--] or UNINITIALIZED
+                                [12..15] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_1[bits 0 to 63] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_3 }} or UNINITIALIZED
+                                  [bits 128 to 191] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED
+                                  [24..31] ∈ [--..--] or UNINITIALIZED
+                                  [bits 256 to 287] ∈
+                                  [1..2147483647] or UNINITIALIZED
+                                  [bits 288 to 319] ∈
+                                  {0; 1} or UNINITIALIZED
+[eva:final-states] Values at end of function can_fail_calloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈
+          {{ NULL ; (void *)&__calloc_can_fail_calloc_l18 ;
+             (void *)&__calloc_can_fail_calloc_l18_0 }}
+[eva:final-states] Values at end of function can_fail_malloc:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  fail ∈ [0. .. 1.]
+  __retres ∈
+          {{ NULL ; (void *)&__malloc_w_can_fail_malloc_l11 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_0 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_1 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_2 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_3 ;
+             (void *)&__malloc_w_can_fail_malloc_l11_4 }}
+[eva:final-states] Values at end of function createGame:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  new_game ∈ {{ (struct game *)&__malloc_w_can_fail_malloc_l11_1 }}
+  __malloc_w_can_fail_malloc_l11_1[bits 0 to 63] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_3 }} or UNINITIALIZED
+                                  [bits 128 to 191] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED
+                                  [24..31] ∈ [--..--] or UNINITIALIZED
+                                  [bits 256 to 287] ∈
+                                  [1..2147483647] or UNINITIALIZED
+                                  [bits 288 to 319] ∈
+                                  {0; 1} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_2 ∈ [--..--] or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_3 ∈ [--..--] or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_4 ∈ [--..--] or UNINITIALIZED
+[eva:final-states] Values at end of function createTeam:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  new_team ∈ {{ (struct team *)&__malloc_w_can_fail_malloc_l11 }}
+  __malloc_w_can_fail_malloc_l11[bits 0 to 63] ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_0 }} or UNINITIALIZED
+                                [8..11] ∈ [--..--] or UNINITIALIZED
+                                [12..15] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_0 ∈ [--..--] or UNINITIALIZED
+[eva:final-states] Values at end of function do_A:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  name[0] ∈ [--..--]
+      [1..1022] ∈ UNINITIALIZED
+      [1023] ∈ {0}
+  t_dummy ∈
+         {{ (struct team *)&__malloc_w_can_fail_malloc_l11 }} or UNINITIALIZED
+  team_sys_counter ∈ [0..2147483647]
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2;
+                                   __malloc_w_can_fail_malloc_l11_3;
+                                   __malloc_w_can_fail_malloc_l11_4}
+                (origin: Misaligned
+                {/home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:113}) }}
+               [1] ∈ [--..--]
+  __calloc_can_fail_calloc_l18[bits 0 to 6399999]# ∈
+                              {{ NULL ;
+                                 (? *)&__malloc_w_can_fail_malloc_l11 }} repeated %64 
+  __malloc_w_can_fail_malloc_l11[bits 0 to 63] ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_0 }} or UNINITIALIZED
+                                [8..11] ∈ [--..--] or UNINITIALIZED
+                                [12..15] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_0 ∈ [--..--] or UNINITIALIZED
+[eva:final-states] Values at end of function do_a:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  t1_score ∈ [--..--]
+  t2_score ∈ [--..--]
+  game_name[0] ∈ [--..--]
+           [1..1022] ∈ UNINITIALIZED
+           [1023] ∈ {0}
+  t1_name[0] ∈ [--..--]
+         [1..1022] ∈ UNINITIALIZED
+         [1023] ∈ {0}
+  t2_name[0] ∈ [--..--]
+         [1..1022] ∈ UNINITIALIZED
+         [1023] ∈ {0}
+  t1_dummy ∈
+          {{ NULL ; (struct team *)&__malloc_w_can_fail_malloc_l11 }} or UNINITIALIZED
+  t2_dummy ∈
+          {{ NULL ; (struct team *)&__malloc_w_can_fail_malloc_l11 }} or UNINITIALIZED
+  g_dummy ∈
+         {{ NULL ; (struct game *)&__malloc_w_can_fail_malloc_l11_1 }} or UNINITIALIZED
+  game_sys_counter ∈ [--..--]
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2;
+                                   __malloc_w_can_fail_malloc_l11_3;
+                                   __malloc_w_can_fail_malloc_l11_4}
+                (origin: Misaligned
+                {/home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:113}) }}
+               [1] ∈ [--..--]
+  __calloc_can_fail_calloc_l18_0[bits 0 to 6399999]# ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_1 }} repeated %64 
+  __malloc_w_can_fail_malloc_l11[bits 0 to 63] ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_0 }} or UNINITIALIZED
+                                [8..11] ∈ [--..--] or UNINITIALIZED
+                                [12..15] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_1[bits 0 to 63] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_3 }} or UNINITIALIZED
+                                  [bits 128 to 191] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED
+                                  [24..31] ∈ [--..--] or UNINITIALIZED
+                                  [bits 256 to 287] ∈
+                                  [1..2147483647] or UNINITIALIZED
+                                  [bits 288 to 319] ∈
+                                  {0; 1} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_2 ∈ [--..--] or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_3 ∈ [--..--] or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_4 ∈ [--..--] or UNINITIALIZED
+[eva:final-states] Values at end of function hashStartup:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  temp ∈
+      {{ NULL ; (Team *)&__calloc_can_fail_calloc_l18 ;
+         (Team *)&__calloc_can_fail_calloc_l18_0 }}
+  __retres ∈
+          {{ NULL ; (void *)&__calloc_can_fail_calloc_l18 ;
+             (void *)&__calloc_can_fail_calloc_l18_0 }}
+[eva:final-states] Values at end of function main:
+  __fc_heap_status ∈ [--..--]
+  __fc_random_counter ∈ [--..--]
+  c ∈ {120}
+  nl_counter ∈ [0..2147483647]
+  game_sys_counter ∈ [--..--]
+  team_sys_counter ∈ [0..2147483647]
+  hash_team_sys ∈
+               {{ NULL ; (Team *)&__calloc_can_fail_calloc_l18 }} or ESCAPINGADDR
+  hash_game_sys ∈
+               {{ NULL ; (Game *)&__calloc_can_fail_calloc_l18_0 }} or ESCAPINGADDR
+  __retres ∈ {0}
+  S___fc_stdin[0..1] ∈ [--..--]
+  S___fc_stdout[0].__fc_FILE_id ∈ [--..--]
+               [0].__fc_FILE_data ∈
+               {{ garbled mix of &{__malloc_w_can_fail_malloc_l11_2;
+                                   __malloc_w_can_fail_malloc_l11_3;
+                                   __malloc_w_can_fail_malloc_l11_4}
+                (origin: Misaligned
+                {/home/fmarques/sbugs/projects/alunos/iaed_p2/40/main.c:113}) }} or ESCAPINGADDR
+               [1] ∈ [--..--]
+  __calloc_can_fail_calloc_l18[bits 0 to 6399999]# ∈
+                              {{ NULL ;
+                                 (? *)&__malloc_w_can_fail_malloc_l11 }} or ESCAPINGADDR repeated %64 
+  __calloc_can_fail_calloc_l18_0[bits 0 to 6399999]# ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_1 }} or ESCAPINGADDR repeated %64 
+  __malloc_w_can_fail_malloc_l11[bits 0 to 63] ∈
+                                {{ NULL ;
+                                   (? *)&__malloc_w_can_fail_malloc_l11_0 }} or UNINITIALIZED or ESCAPINGADDR
+                                [8..11] ∈ [--..--] or UNINITIALIZED
+                                [12..15] ∈ UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_0 ∈ [--..--] or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_1[bits 0 to 63] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_2 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 64 to 127] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_3 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [bits 128 to 191] ∈
+                                  {{ NULL ;
+                                     (? *)&__malloc_w_can_fail_malloc_l11_4 }} or UNINITIALIZED or ESCAPINGADDR
+                                  [24..31] ∈ [--..--] or UNINITIALIZED
+                                  [bits 256 to 287] ∈
+                                  [1..2147483647] or UNINITIALIZED
+                                  [bits 288 to 319] ∈
+                                  {0; 1} or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_2 ∈ [--..--] or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_3 ∈ [--..--] or UNINITIALIZED
+  __malloc_w_can_fail_malloc_l11_4 ∈ [--..--] or UNINITIALIZED
+[eva:summary] ====== ANALYSIS SUMMARY ======
+  ----------------------------------------------------------------------------
+  21 functions analyzed (out of 24): 87% coverage.
+  In these functions, 337 statements reached (out of 337): 100% coverage.
+  ----------------------------------------------------------------------------
+  No errors or warnings raised during the analysis.
+  ----------------------------------------------------------------------------
+  128 alarms generated by the analysis:
+      58 accesses to uninitialized left-values
+      39 invalid memory accesses
+      15 integer overflows
+      12 escaping addresses
+       4 accesses out of bounds index
+  ----------------------------------------------------------------------------
+  Evaluation of the logical properties reached by the analysis:
+    Assertions        0 valid     0 unknown     0 invalid      0 total
+    Preconditions    56 valid    17 unknown     0 invalid     73 total
+  76% of the logical properties reached have been proven.
+  ----------------------------------------------------------------------------
+[report] Classification
+[report] Output /home/fmarques/sbugs/projects/outputs/framaC/iaed_p2/40/errors.json
+[report] Reviews     :  128
+[report] Unclassified:  128
