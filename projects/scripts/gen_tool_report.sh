@@ -30,10 +30,10 @@ generate_report() {
 
   PROJ_PATH="$OUTPUT_ROOT/$EDITION/$PROJECT"
 
-  printf "[$EDITION/$PROJECT] Parsing reports...\n"
-  TOOL_REPORTS=$(find $PROJ_PATH -type f -name "*.err")
-  test -z "$TOOL_REPORTS" && TOOL_REPORTS=$(find $PROJ_PATH -type f -name "report.txt")
-  parse_reports "$TOOL_REPORTS" || return 0
+  #printf "[$EDITION/$PROJECT] Parsing reports...\n"
+  #TOOL_REPORTS=$(find $PROJ_PATH -type f -name "*.err")
+  #test -z "$TOOL_REPORTS" && TOOL_REPORTS=$(find $PROJ_PATH -type f -name "report.txt")
+  #parse_reports "$TOOL_REPORTS" || return 0
 
   printf "[$EDITION/$PROJECT] Generating project report...\n"
   REPORT_PATH="$PROJ_PATH/report.json"
@@ -73,7 +73,7 @@ main() {
 
   (test -e "outputs/$TOOL" \
     && ./scripts/utils/times.py "outputs/$TOOL" > "results/$TOOL-times.json") \
-    || print "[ERROR] \"outputs/$TOOL\" not found!\n"
+    || printf "[ERROR] \"outputs/$TOOL\" not found!\n"
 }
 
 export -f main generate_report parse_reports concat_jsons

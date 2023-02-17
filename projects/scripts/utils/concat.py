@@ -2,11 +2,8 @@
 from __future__ import annotations
 from __future__ import print_function
 
-import os
-import re
 import sys
 import json
-import functools
 
 def parse_json(file : str) -> dict:
     with open(file, "r") as f:

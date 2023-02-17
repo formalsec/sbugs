@@ -5,10 +5,9 @@ from __future__ import print_function
 import os
 import re
 import sys
-import yaml
 import json
 
-def read_file(filename : str) -> list[str]:
+def read_file(filename : str) -> str:
     lines = []
     with open(filename, 'r') as f:
         lines = f.read()
@@ -27,14 +26,14 @@ def main(argv : list[str]) -> int:
     lines = read_file(file)
 
     # find vulnerability summary
-    memory_error = 'SUMMARY: \w+: (?P<bug_type>[\w-]+) (?P<filename>[/\.\w-]+):(?P<lineno>\d+) \w+ (?P<function>[\w-]+)'
-    memory_leaks = '#1 \w+ in (?P<function>[\w-]+) (?P<filename>[/\.\w-]+):(?P<lineno>\d+)' # \w+ in (?P<function>[\w-]+) (?P<filename>[\.\w-]+):(?P<lineno>\d+)'
+    memory_error = "SUMMARY: \w+: (?P<bug_type>[\w-]+) (?P<filename>[/\.\w-]+):(?P<lineno>\d+) \w+ (?P<function>[\w-]+)"
+    memory_leaks = "#1 \w+ in (?P<function>[\w-]+) (?P<filename>[/\.\w-]+):(?P<lineno>\d+)"
 
-    bug_type = ''
+    bug_type = ""
     m = re.search(memory_error, lines)
     if m:
         bug_type = m.group('bug_type')
-    elif re.search('detected memory leaks', lines):
+    elif re.search("detected memory leaks", lines):
         m = re.search(memory_leaks, lines)
         if not m:
             return 1

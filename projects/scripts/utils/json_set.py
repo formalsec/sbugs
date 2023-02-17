@@ -1,10 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
-import os
 import sys
-import yaml
-import json
 import common
 
 def flatten_json(d : dict) -> list[str]:
@@ -38,7 +35,7 @@ def inflate_json(l : list) -> dict:
         )
     return result
 
-def main(argv : list[str]=None) -> int:
+def main(argv=None) -> int:
     if argv is None:
         argv = sys.argv[1:]
 
