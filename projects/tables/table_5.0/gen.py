@@ -67,8 +67,13 @@ def gen_total(col_size : int, row_size : int):
     table[4][0] = "KLEE"
     fill_row("verifuzz"  , 5, table, get_times_total("verifuzz"))
     fill_row("clang"     , 6, table, get_times_total("clang"))
-    fill_row("pulse"     , 7, table, get_times_total("pulse"))
-    fill_row("infer"     , 8, table, get_times_total("infer"))
+    fill_row("cobra"     , 7, table, get_times_total("cobra"))
+    fill_row("cppcheck"  , 8, table, get_times_total("cppcheck"))
+    fill_row("flawfinder", 9, table, get_times_total("flawfinder"))
+    fill_row("framaC"    , 10, table, get_times_total("framaC"))
+    fill_row("pulse"     , 11, table, get_times_total("pulse"))
+    fill_row("infer"     , 12, table, get_times_total("infer"))
+    fill_row("uno"       , 13, table, get_times_total("uno"))
 
     table.insert(0, ["Tool", "Min", "Max", "Mean", "St. Dev", "Total"])
     return table
@@ -83,8 +88,13 @@ def gen_project(col_size : int, row_size : int):
     fill_row("KLEE"      , 4, table, get_times_project("KLEE"      , col_size-1))
     fill_row("verifuzz"  , 5, table, get_times_project("verifuzz"  , col_size-1))
     fill_row("clang"     , 6, table, get_times_project("clang"     , col_size-1))
-    fill_row("pulse"     , 7, table, get_times_project("pulse"     , col_size-1))
-    fill_row("infer"     , 8, table, get_times_project("infer"     , col_size-1))
+    fill_row("cobra"     , 7, table, get_times_project("cobra"     , col_size-1))
+    fill_row("cppcheck"  , 8, table, get_times_project("cppcheck"  , col_size-1))
+    fill_row("flawfinder", 9, table, get_times_project("flawfinder", col_size-1))
+    fill_row("framaC"    , 10, table, get_times_project("framaC"   , col_size-1))
+    fill_row("pulse"     , 11, table, get_times_project("pulse"    , col_size-1))
+    fill_row("infer"     , 12, table, get_times_project("infer"    , col_size-1))
+    fill_row("uno"       , 13, table, get_times_project("uno"      , col_size-1))
 
     table.insert(0, ["Tool", "PA1", "PA2", "PA3", "PA4", "PA5", "PA6", "PA7", "PA8", "PA9", "PA10", "Total"])
     return table
@@ -93,11 +103,11 @@ def main(argv=None) -> int:
     if argv is None:
         argv=sys.argv[1:]
 
-    table5_total = gen_total(6, 9)
+    table5_total = gen_total(6, 14)
     with open("tbl5.0_total.tex", "w") as fd:
         fd.write(to_latex(table5_total, 6))
 
-    table5_project = gen_project(12, 9)
+    table5_project = gen_project(12, 14)
     with open("tbl5.0_project.tex", "w") as fd:
         fd.write(to_latex(table5_project, 12))
     return 0
