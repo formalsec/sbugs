@@ -4,15 +4,14 @@ function run_wasp() {
   e=$1
   i=$2
 
-  OUTPUT=../outputs/testsuite/sym_calls/$e
+  OUTPUT=../outputs/testsuite/libc/$e
   test -e $OUTPUT || mkdir -p $OUTPUT
 
   BASE=$(basename $i)
   test -e $OUTPUT/${BASE%.in}.out && return
-  timeout 30s \
-    wasp $e/wasp.wat -e '(invoke "__original_main")' \
-      < $i \
-      > $OUTPUT/${BASE%.in}.out
+  wasp $e/wasp.wat -e '(invoke "__original_main")' --timeout 30 \
+    < $i \
+    > $OUTPUT/${BASE%.in}.out
 }
 
 export -f run_wasp
