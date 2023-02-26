@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from __future__ import annotations
 import os
 import json
@@ -8,10 +9,7 @@ import matplotlib.pyplot as plt
 from matplotlib_venn import *
 import matplotlib.patches as mpatches
 from matplotlib.colors import ColorConverter
-import pandas as pd
 import numpy as np
-from pprint import pprint
-from tabulate import tabulate
 
 #plt.style.use('seaborn')
 font = {'size'   : 22}
@@ -35,7 +33,7 @@ def parse_yaml(file : str) -> dict:
 
 
 def getErrorToCweMap():
-    cwesPath = os.path.abspath("../files/cwe.yml")
+    cwesPath = os.path.abspath("../../cwe-mapping.yml")
     cwes = parse_yaml(cwesPath)
     cwesMap = {}
     for cwe in cwes:
@@ -60,43 +58,32 @@ def flatten_json(d : dict) -> list[str]:
     return res
 
 def flatten_json_static(d : dict, dataset: dict) -> list[str]:
-    cwesMap = getErrorToCweMap()
-
     ds = []
-    for p, bugs in d.items():
-        for location in bugs:
-            l = "{}:{}:{}".format(
-                p,
-                location["line"],
-                location["file"]
-            )
-            ds.append(l)
+    for p, bug_types in d.items():
+        for t, bugs in bug_types.items():
+            for b in bugs:
+                l = "{}:{}:{}".format(
+                    p,
+                    b["line"],
+                    b["file"]
+                )
+                ds.append(l)
     ds = list(set(ds))
 
     res = []
-    for p, bugs in d.items():
-        for location in bugs:
-            l1 = "{}:{}:{}".format(
-                p,
-                location["line"],
-                location["file"]
-            )
+    for location in ds:
+        l1 = location.split(":")
+        project = dataset[l1[0]]
+        cwe = ""
+        for t, bs in project.items():
+            for loc in bs:
+                if (loc["line"] == l1[1]
+                        and loc["file"] == l1[2]):
+                    cwe = t
+        if cwe == "":
+            continue
 
-            cwe = ""
-            if l1 in ds:
-                project = dataset[p]
-                for t, bs in project.items():
-                    for loc in bs:
-                        if loc["line"] == location["line"] and loc["file"] == location["file"]:
-                            cwe = t
-
-            l2 = "{}:{}:{}:{}".format(
-                    p,
-                    cwesMap[cwe],
-                    location["line"],
-                    location["file"]
-                )
-            res.append(l2)
+        res.append("{}:{}:{}:{}".format(l1[0], cwe, l1[1], l1[2]))
     return res
 
 
@@ -240,7 +227,7 @@ def venn_best_tools_different_cats(cwes, cwes_list, dataset, fuzzer, symbolic, s
         if sum(scores.values()) > 0:
             sets_list_three.append((cwes[cwe], scores))
 
-    labels=['FuSeBMC', 'CPAChecker', 'CLang']
+    labels=['FuSeBMC', 'CPAChecker', 'FramaC']
     plot_venn_scores(sets_list_three, labels, (-1.5, 0), "venn_best_tools_cats_vf_update.pdf")
 
 
@@ -350,22 +337,23 @@ def main():
     }
     cwes_list = list(cwes.keys())[:8]
 
-    dataset = set(flatten_json(parse_json("../files/dataset3.json")))
+    dataset = parse_json("../../results/dataset-gt1-extended.json")
+    dataset_cwes = set(flatten_json(dataset))
     fuzzer = set(flatten_json(parse_json("fuzzer-tp-new.json")))
     symbolic = set(flatten_json(parse_json("symbolic-tp-new.json")))
-    static = set(flatten_json_static(parse_json("static-tp.json"), parse_json("../files/dataset3.json")))
-    venn_categories(cwes, cwes_list, dataset, fuzzer, symbolic, static)
+    static = set(flatten_json(parse_json("static.json")))
+    venn_categories(cwes, cwes_list, dataset_cwes, fuzzer, symbolic, static)
 
-    fusebmc = set(flatten_json(parse_json("../files/true-positives/fuzzer-FuSeBMC.json")))
-    cpachecker = set(flatten_json(parse_json("../files/true-positives/symbolic-CPAchecker.json")))
-    clang = set(flatten_json_static(parse_json("../TAB-6/static_files/true-positives/static-clang.json"), parse_json("../files/dataset3.json")))
-    venn_best_tools_different_cats(cwes, cwes_list, dataset, fusebmc, cpachecker, clang)
+    fusebmc = set(flatten_json(parse_json("../../results/FuSeBMC.json")))
+    cpachecker = set(flatten_json(parse_json("../../results/CPAchecker.json")))
+    frama = set(flatten_json(parse_json("frama.json")))
+    venn_best_tools_different_cats(cwes, cwes_list, dataset_cwes, fusebmc, cpachecker, frama)
 
-    labels=['CPAChecker', 'FuSeBMC', 'Symbiotic']
-    symbiotic = set(flatten_json(parse_json("../files/true-positives/symbolic-symbiotic.json")))
-    venn_best_tools(cwes, cwes_list, dataset, cpachecker, fusebmc, symbiotic, labels)
+    #labels=['CPAChecker', 'FuSeBMC', 'Symbiotic']
+    #symbiotic = set(flatten_json(parse_json("../files/true-positives/symbolic-symbiotic.json")))
+    #venn_best_tools(cwes, cwes_list, dataset, cpachecker, fusebmc, symbiotic, labels)
 
-    venn_global(dataset, fuzzer, symbolic, static)
+    venn_global(dataset_cwes, fuzzer, symbolic, static)
 
 if __name__ == "__main__":
     main()

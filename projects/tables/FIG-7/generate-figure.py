@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import os
 import json
 import matplotlib
@@ -137,17 +138,13 @@ def global_score_method_plot_2(A_scores, B_scores):
 
 
 filesDir = os.path.abspath(".")
-jsonTPFiles = list(map(lambda p: os.path.join(filesDir, p), ["fuzzer-tp-new.json", "symbolic-tp-new.json"]))
+jsonTPFiles = list(map(lambda p: os.path.join(filesDir, p), ["fuzzer-tp.json", "symbolic-tp.json", "static-tp.json"]))
 tpNumbers = getNumbersDict_symb(jsonTPFiles)
-jsonTPFiles = list(map(lambda p: os.path.join(filesDir, p), ["static-tp.json"]))
-tpNumbers["static-tp"] = getNumbersDict_static(jsonTPFiles)["static-tp"]
 print(tpNumbers)
 
 
-jsonFNFiles = list(map(lambda p: os.path.join(filesDir, p), ["fuzzer-fn4.json", "symbolic-fn3.json"]))
+jsonFNFiles = list(map(lambda p: os.path.join(filesDir, p), ["fuzzer-fn.json", "symbolic-fn.json", "static-fn.json"]))
 fnNumbers = getNumbersDict_symb(jsonFNFiles)
-jsonFNFiles = list(map(lambda p: os.path.join(filesDir, p), ["static-fn2.json"]))
-fnNumbers["static-fn2"] = getNumbersDict_static(jsonFNFiles)["static-fn2"]
 print(fnNumbers)
 
 global_score_method_plot_2(tpNumbers, fnNumbers)

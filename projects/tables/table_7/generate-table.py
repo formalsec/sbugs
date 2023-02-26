@@ -20,6 +20,10 @@ def parse_yaml(file : str) -> dict:
 def json_to_string(object : dict) -> str:
     return json.dumps(object, indent=4)
 
+def json_to_file(object : dict, file : str) -> None:
+    with open(file, "w") as fd:
+        json.dump(object, fd)
+
 
 def error_to_cwe():
     cwesPath = os.path.abspath("../../cwe-mapping.yml")
@@ -161,22 +165,30 @@ def table():
     flawf = parse_json("../../results/flawfinder/flawfinder.json")
     frama = parse_json("../../results/framaC/framaC.json")
     uno   = parse_json("../../results/uno/uno.json")
-    clang_cwes = count_cwes(inflate_json(flatten_json_static(clang, dataset)),
-                            cwes_map)
-    infer_cwes = count_cwes(inflate_json(flatten_json_static(infer, dataset)),
-                            cwes_map)
-    pulse_cwes = count_cwes(inflate_json(flatten_json_static(pulse, dataset)),
-                            cwes_map)
-    cobra_cwes = count_cwes(inflate_json(flatten_json_static(cobra, dataset)),
-                            cwes_map)
-    cppch_cwes = count_cwes(inflate_json(flatten_json_static(cppch, dataset)),
-                            cwes_map)
-    flawf_cwes = count_cwes(inflate_json(flatten_json_static(flawf, dataset)),
-                            cwes_map)
-    frama_cwes = count_cwes(inflate_json(flatten_json_static(frama, dataset)),
-                            cwes_map)
-    uno_cwes = count_cwes(inflate_json(flatten_json_static(uno, dataset)),
-                          cwes_map)
+    clang_tp = inflate_json(flatten_json_static(clang, dataset))
+    json_to_file(clang_tp, "clang.json")
+    clang_cwes = count_cwes(clang_tp, cwes_map)
+    infer_tp = inflate_json(flatten_json_static(infer, dataset))
+    json_to_file(infer_tp, "infer.json")
+    infer_cwes = count_cwes(infer_tp, cwes_map)
+    pulse_tp = inflate_json(flatten_json_static(pulse, dataset))
+    json_to_file(pulse_tp, "pulse.json")
+    pulse_cwes = count_cwes(pulse_tp, cwes_map)
+    cobra_tp = inflate_json(flatten_json_static(cobra, dataset))
+    json_to_file(cobra_tp, "cobra.json")
+    cobra_cwes = count_cwes(cobra_tp, cwes_map)
+    cppch_tp = inflate_json(flatten_json_static(cppch, dataset))
+    json_to_file(cppch_tp, "cppch.json")
+    cppch_cwes = count_cwes(cppch_tp, cwes_map)
+    flawf_tp = inflate_json(flatten_json_static(flawf, dataset))
+    json_to_file(flawf_tp, "flawf.json")
+    flawf_cwes = count_cwes(flawf_tp, cwes_map)
+    frama_tp = inflate_json(flatten_json_static(frama, dataset))
+    json_to_file(frama_tp, "frama.json")
+    frama_cwes = count_cwes(frama_tp, cwes_map)
+    uno_tp = inflate_json(flatten_json_static(uno, dataset))
+    json_to_file(uno_tp, "uno.json")
+    uno_cwes = count_cwes(uno_tp, cwes_map)
     static_tools = [
         ("clang", clang_cwes),
         ("infer", infer_cwes),
