@@ -1,16 +1,28 @@
 # Vulnerability mapping
 cwe-121_stack-overflow:
+  - Buffer is accessed out of bounds
   - security.insecureAPI.strcpy
   - strcpy-param-overlap
   - stack-overflow
   - stack-buffer-overflow
   - dynamic-stack-buffer-overflow
+  - Array-index variable with unchecked min/max value
+  - Potential out of bound array indexing error
+  - array index can exceed upper-bound
+  - possible array indexing error
 cwe-122_heap-overflow:
   - calloc-overflow
   - heap-buffer-overflow
   - global-buffer-overflow
+  - Dangerous function calls lacking bounds checking
+  - Potential buffer overrun
+  - printf or scanf missing width limit on %s
+  - Suspicious sizeof in strncpy, strncat, or memcpy
+  - Source of memcpy is untrusted parameter
+  - Unchecked parameter value used in array index
 cwe-124_buffer-underflow:
   - stack-buffer-underflow
+  - array index can be negative
 cwe-369_devide-zero:
   - core.DivideZero
 cwe-401_memory-leak:
@@ -24,13 +36,21 @@ cwe-415_bad-free:
   - bad-free
 cwe-416_use-after-free:
   - heap-use-after-free
+  - Potential heap memory use after free
 cwe-457_use-uinitialised-variable:
+  - uninitialized variable
+  - possibly uninitialized variable
+  - Potentially uninitialized variable
+  - Uninitialized variable
+  - Uninitialized struct member
   - core.uninitialized.Assign
   - UNINITIALIZED_VALUE
   - core.uninitialized.ArraySubscript
   - core.uninitialized.UndefReturn
   - core.uninitialized.Branch
 cwe-476_nullptr-dereference:
+  - Null pointer dereference
+  - Possible null pointer dereference
   - SEGV
   - BUS
   - NULLPTR_DEREFERENCE
@@ -51,8 +71,13 @@ cwe-789_alloc-too-big:
   - unix.MallocSizeof
   - allocation-size-too-big
   - out-of-memory
+  - Possibly missing sizeof() in memory allocation
 cwe-1325_bad-seq-mem-alloc:
   - core.VLASize
 cwe-other:
   - unknown-crash
   - negative-size-param
+  - syntax error
+  - Potential loss of information in assignment or cast
+  - Risky cast using pointer arithmetic
+  - Untrusted format string
