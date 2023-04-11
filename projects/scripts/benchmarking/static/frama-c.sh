@@ -2,9 +2,9 @@
 
 # Available config variables
 export CC=clang
-export PROJS_DIR=~/sbugs/projects/alunos
-export OUTS_DIR=~/sbugs/projects/outputs/framaC
-export RULES=~/sbugs/projects/configs/frama-c_report_rules.json
+export PROJS_DIR=../../alunos
+export OUTS_DIR=../../outputs/static/frama-c
+export RULES=../../configs/frama-c_report_rules.json
 
 function analyse_project() {
   local PRJ=$1

@@ -2,8 +2,8 @@
 
 # Available config variables
 export CC=clang
-export PROJS_DIR=~/sbugs/projects/alunos
-export OUTS_DIR=~/sbugs/projects/outputs/cppcheck
+export PROJS_DIR=../../alunos
+export OUTS_DIR=../../outputs/static/clang
 
 
 function analyse_project() {
@@ -13,14 +13,15 @@ function analyse_project() {
   SOURCES=$(find $PRJ -type f -name "*.c")
   test -z "$SOURCES" && return 1
 
-  local TARGET=$(echo $PRJ | cut -f 7,8 -d "/" )
+  local TARGET=$(echo $PRJ | cut -f 5,6 -d "/" )
   local OUTPUT=$OUTS_DIR/$TARGET
 
   printf "Analysing $TARGET...\n"
 
   test -e $OUTPUT || mkdir -p $OUTPUT
 
-  /usr/bin/time -o $OUTPUT/time.txt cppcheck --template=gcc $PRJ/*.c > $OUTPUT/report.txt 2>&1
+  /usr/bin/time -o $OUTPUT/time.txt scan-build-14 -o $OUTPUT -enable-checker security.insecureAPI.strcpy $CC -c $SOURCES > $OUTPUT/report.txt 2>&1
+  
   # cleanup
   for FILE in $SOURCES; do
     OBJECT="$(basename ${FILE%.c}.o)"
@@ -46,5 +47,6 @@ function main() {
   done
 }
 
+#MUST BE RUN SINGLE THREADED
 export -f analyse_project
-main $@
+main 1

@@ -2,8 +2,8 @@
 
 # Available config variables
 export CC=clang
-export PROJS_DIR=~/sbugs/projects/alunos
-export OUTS_DIR=~/sbugs/projects/outputs/cobra
+export PROJS_DIR=../../alunos
+export OUTS_DIR=../../outputs/static/uno
 
 
 function analyse_project() {
@@ -20,7 +20,7 @@ function analyse_project() {
 
   test -e $OUTPUT || mkdir -p $OUTPUT
 
-  /usr/bin/time -o $OUTPUT/time.txt cobra -f cwe.cobra $PRJ/*.c > /dev/null 2>&1; cat *_.txt >> $OUTPUT/report.txt 2>&1; rm -f _*.txt
+  /usr/bin/time -o $OUTPUT/time.txt uno $PRJ/*.c > $OUTPUT/report.txt 2>&1
   # cleanup
   for FILE in $SOURCES; do
     OBJECT="$(basename ${FILE%.c}.o)"
@@ -46,6 +46,5 @@ function main() {
   done
 }
 
-#MUST BE RUN SINGLE THREADED
 export -f analyse_project
-main 1
+main $@

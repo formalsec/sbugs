@@ -2,8 +2,8 @@
 
 # Available config variables
 export CC=clang
-export PROJS_DIR=~/sbugs/projects/alunos
-export OUTS_DIR=~/sbugs/projects/outputs/uno
+export PROJS_DIR=../../alunos
+export OUTS_DIR=../../outputs/static/flawfinder
 
 
 function analyse_project() {
@@ -20,7 +20,7 @@ function analyse_project() {
 
   test -e $OUTPUT || mkdir -p $OUTPUT
 
-  /usr/bin/time -o $OUTPUT/time.txt uno $PRJ/*.c > $OUTPUT/report.txt 2>&1
+  /usr/bin/time -o $OUTPUT/time.txt flawfinder --csv $PRJ/*.c > $OUTPUT/report.txt 2>&1
   # cleanup
   for FILE in $SOURCES; do
     OBJECT="$(basename ${FILE%.c}.o)"
