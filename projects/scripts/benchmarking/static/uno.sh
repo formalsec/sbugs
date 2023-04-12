@@ -2,8 +2,8 @@
 
 # Available config variables
 export CC=clang
-export PROJS_DIR=../../alunos
-export OUTS_DIR=../../outputs/static/uno
+export PROJS_DIR=../../../alunos
+export OUTS_DIR=../../../outputs/static/uno
 
 
 function analyse_project() {
@@ -13,7 +13,7 @@ function analyse_project() {
   SOURCES=$(find $PRJ -type f -name "*.c")
   test -z "$SOURCES" && return 1
 
-  local TARGET=$(echo $PRJ | cut -f 7,8 -d "/" )
+  local TARGET=$(echo $PRJ | cut -f 5,6 -d "/" )
   local OUTPUT=$OUTS_DIR/$TARGET
 
   printf "Analysing $TARGET...\n"
@@ -33,7 +33,7 @@ function main() {
 
   for PROJ in $(ls -d $PROJS_DIR/* | grep _); do
     
-    printf "Analysing $PROJ...\n"
+    #printf "Analysing $PROJ...\n"
     
     local PROJS=$(ls -d $PROJ/* | grep -v symbolic)
     local jobs=$1
@@ -47,4 +47,4 @@ function main() {
 }
 
 export -f analyse_project
-main $@
+main 12

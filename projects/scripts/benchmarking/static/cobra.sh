@@ -2,8 +2,8 @@
 
 # Available config variables
 export CC=clang
-export PROJS_DIR=../../alunos
-export OUTS_DIR=../../outputs/static/cobra
+export PROJS_DIR=../../../alunos
+export OUTS_DIR=../../../outputs/static/cobra
 
 
 function analyse_project() {
@@ -33,7 +33,7 @@ function main() {
 
   for PROJ in $(ls -d $PROJS_DIR/* | grep _); do
     
-    printf "Analysing $PROJ...\n"
+    #printf "Analysing $PROJ...\n"
     
     local PROJS=$(ls -d $PROJ/* | grep -v symbolic)
     local jobs=$1
