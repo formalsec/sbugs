@@ -26,51 +26,54 @@ def clean_report(report):
     return report.strip()
 
 
-def parse(file):
+def parse(file, project, bugs):
 
     lines = read_file(file)
 
-    bugs = []
     for line in lines:
         try:
             if line.startswith('uno: /home'):
 
                 filename = line.split(':')[1].split('/')[-1]
                 bug_line = line.split(':')[2].strip()
-                report = line.split(':')[3].split(',')[1]
-                report = clean_report(report)
+                cwe = line.split(':')[3].split(',')[1]
+                cwe = clean_report(cwe)
 
                 bug = {
-                    'bug_type'  : report,
+                    'bug_type'  : cwe,
                     'line'      : int(bug_line),
                     'procedure' : 'unknown',
                     'file'      : filename
                 }
-                bugs.append(bug)
+                
+                if cwe not in bugs[project].keys():
+                    bugs[project][cwe] = []
+                bugs[project][cwe].append(bug)
     
         except IndexError:
             print(line)
             sys.exit()
-
-    if not bugs:
-        return
-
-    output_file = os.path.dirname(file) +'/report.json'
-    output_json(bugs, output_file)
-
     return
 
 if __name__ == '__main__':
 
-    #parse('/home/fmarques/sbugs/projects/outputs/uno/iaed_p1/241/report.txt')
-
-    uno = '/home/fmarques/sbugs/projects/outputs/uno'
-    projects = os.listdir(uno)
+    bugs = {}
+    path = '/home/fmarques/sbugs/projects/outputs/uno'
+    projects = os.listdir(path)
+    projects = filter(lambda x: os.path.isdir(f'{path}/{x}'), projects)
     
     for p in projects:
-        students = os.listdir(f'{uno}/{p}')
+
+        bugs[p] = {}   
+        students = os.listdir(f'{path}/{p}')
+        
         for s in students:
-            report = f'{uno}/{p}/{s}/report.txt'
+            report = f'{path}/{p}/{s}/report.txt'
             print(report)
-            parse(report)
-           
+            parse(report, p, bugs)
+
+        if len(bugs[p].keys()) == 0:
+            del bugs[p]
+    
+    output_file = f'{path}/report.json'
+    output_json(bugs, output_file)

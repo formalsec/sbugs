@@ -19,11 +19,10 @@ def output_json(object : list[dict], filename : str):
         json.dump(object, fd, indent=4)
 
 
-def parse(file):
+def parse(file, project, bugs):
 
     lines = read_file(file)
 
-    bugs = []
     for line in lines[1:]:
         try:
             
@@ -38,31 +37,37 @@ def parse(file):
                 'procedure' : 'unknown',
                 'file'      : filename
             }
-            bugs.append(bug)
-    
+            
+            if cwe not in bugs[project].keys():
+                bugs[project][cwe] = []
+            bugs[project][cwe].append(bug)
+
         except IndexError:
             print(line)
             sys.exit()
-
-    if not bugs:
-        return
-
-    output_file = os.path.dirname(file) +'/report.json'
-    output_json(bugs, output_file)
 
     return
 
 if __name__ == '__main__':
 
-    #parse('/home/fmarques/sbugs/projects/outputs/flawfinder/asa_1819_p2/al060/report.txt')
-
-    flawfinder = '/home/fmarques/sbugs/projects/outputs/flawfinder'
-    projects = os.listdir(flawfinder)
+    bugs = {}
+    path = '/home/fmarques/sbugs/projects/outputs/flawfinder'
+    projects = os.listdir(path)
+    projects = filter(lambda x: os.path.isdir(f'{path}/{x}'), projects)
     
     for p in projects:
-        students = os.listdir(f'{flawfinder}/{p}')
+
+        bugs[p] = {}   
+        students = os.listdir(f'{path}/{p}')
+        
         for s in students:
-            report = f'{flawfinder}/{p}/{s}/report.txt'
+            report = f'{path}/{p}/{s}/report.txt'
             print(report)
-            parse(report)
+            parse(report, p, bugs)
+
+        if len(bugs[p].keys()) == 0:
+            del bugs[p]
+    
+    output_file = f'{path}/report.json'
+    output_json(bugs, output_file)
            

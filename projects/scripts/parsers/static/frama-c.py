@@ -16,46 +16,52 @@ def output_json(object : list[dict], filename : str):
         json.dump(object, fd, indent=4)
 
 
-def parse(file):
+def parse(file, project, bugs):
 
     lines = read_file(file)
 
-    bugs = []
     idx = 0
     for line in lines:
         
         if '[eva:alarm]' in line:
             bug_line = line.split()[1].split(':')[1]
             filename = line.split()[1].split(':')[0].split('/')[-1]
-            report = lines[idx+1].split('.')[0]
+            cwe = lines[idx+1].split('.')[0]
 
             bug = {
-                'bug_type'  : report,
+                'bug_type'  : cwe,
                 'line'      : int(bug_line),
                 'procedure' : 'unknown',
                 'file'      : filename
             }
-            bugs.append(bug)
+            
+            if cwe not in bugs[project].keys():
+                bugs[project][cwe] = []
+            bugs[project][cwe].append(bug)
 
         idx += 1
    
-   
-    if not bugs:
-        return
-
-    output_file = os.path.dirname(file) +'/report.json'
-    output_json(bugs, output_file)
-
     return
 
 if __name__ == '__main__':
 
-    framaC = '/home/fmarques/sbugs/projects/outputs/framaC'
-    projects = os.listdir(framaC)
-
+    bugs = {}
+    path = '/home/fmarques/sbugs/projects/outputs/framaC'
+    projects = os.listdir(path)
+    projects = filter(lambda x: os.path.isdir(f'{path}/{x}'), projects)
+    
     for p in projects:
-        if os.path.isdir(f'{framaC}/{p}'):
-            students = os.listdir(f'{framaC}/{p}')
-            for s in students:
-                report = f'{framaC}/{p}/{s}/output.txt'
-                parse(report)
+
+        bugs[p] = {}   
+        students = os.listdir(f'{path}/{p}')
+        
+        for s in students:
+            report = f'{path}/{p}/{s}/output.txt'
+            print(report)
+            parse(report, p, bugs)
+
+        if len(bugs[p].keys()) == 0:
+            del bugs[p]
+    
+    output_file = f'{path}/report.json'
+    output_json(bugs, output_file)

@@ -17,43 +17,50 @@ def output_json(object : list[dict], filename : str):
         json.dump(object, fd, indent=4)
 
 
-def parse(file):
+def parse(file, project, bugs):
 
     lines = read_file(file)
 
     # find vulnerability summary
-    bugs = re.findall(
+    bug_report = re.findall(
         '(?P<filename>[/\.\w-]+):(?P<lineno>\d+):\d+:\swarning:\s+(?P<bug_type>[\w\.\s]+):',
         lines
     )
 
-    if not bugs:
-        return
-
-    n_bugs = []
-    for b in bugs:
+    for b in bug_report:
         bug = {
             'bug_type'  : b[2],
             'line'      : int(b[1]),
             'procedure' : 'unknown',
             'file'      : b[0].split('/')[-1]
         }
-        n_bugs.append(bug)
-
-    output_file = file.split('.')[0] + '.json'
-    print(output_file)
-    output_json(n_bugs, output_file)
-
+    
+        if b[2] not in bugs[project].keys():
+            bugs[project][b[2]] = []
+        bugs[project][b[2]].append(bug)
+        
     return
 
 if __name__ == '__main__':
 
-    cppcheck = '/home/fmarques/sbugs/projects/outputs/cppcheck'
-    projects = os.listdir(cppcheck)
+    bugs = {}
+    path = '/home/fmarques/sbugs/projects/outputs/cppcheck'
+    projects = os.listdir(path)
+    projects = filter(lambda x: os.path.isdir(f'{path}/{x}'), projects)
     
     for p in projects:
-        if os.path.isdir(f'{cppcheck}/{p}'):
-            students = os.listdir(f'{cppcheck}/{p}')
-            for s in students:
-                report = f'{cppcheck}/{p}/{s}/report.txt'
-                parse(report)
+
+        bugs[p] = {}   
+        students = os.listdir(f'{path}/{p}')
+        
+        for s in students:
+            report = f'{path}/{p}/{s}/report.txt'
+            print(report)
+            parse(report, p, bugs)
+
+        if len(bugs[p].keys()) == 0:
+            del bugs[p]
+    
+    output_file = f'{path}/report.json'
+    output_json(bugs, output_file)
+
