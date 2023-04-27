@@ -17,10 +17,12 @@ def output_json(object : list[dict], filename : str):
     with open(filename, 'w') as fd:
         json.dump(object, fd, indent=4)
 
+def main(argv : list[str]) -> int:
+    if len(argv) < 1:
+        print('Please provide a file to parse!', file=sys.stderr)
+        return -1
 
-def parse(file, project, bugs):
-
-
+    file = argv[0]
     lines = read_file(file)
 
     # find vulnerability summary
@@ -32,6 +34,7 @@ def parse(file, project, bugs):
         return 0
 
     base = os.path.splitext(os.path.basename(file))[0]
+    n_bugs = []
     for b in bugs:
         bug = {
             'bug_type'  : b[2],
@@ -39,32 +42,13 @@ def parse(file, project, bugs):
             'procedure' : 'unknown',
             'file'      : b[0]
         }
+        n_bugs.append(bug)
 
-        if report not in bugs[project].keys():
-            bugs[project][report] = []
-        bugs[project][report].append(bug)
+    output_file = os.path.splitext(file)[0] + '.json'
+    output_json(n_bugs, output_file)
 
-    return
+    return 0
 
 if __name__ == '__main__':
-
-    bugs = {}
-    path = '/home/fmarques/sbugs/projects/outputs/clang'
-    projects = os.listdir(path)
-    projects = filter(lambda x: os.path.isdir(f'{path}/{x}'), projects)
-    
-    for p in projects:
-
-        bugs[p] = {}   
-        students = os.listdir(f'{path}/{p}')
-        
-        for s in students:
-            report = f'{path}/{p}/{s}/report.txt'
-            print(report)
-            parse(report, p, bugs)
-
-        if len(bugs[p].keys()) == 0:
-            del bugs[p]
-    
-    output_file = f'{path}/report.json'
-    output_json(bugs, output_file)
+    argv = sys.argv[1:]
+    sys.exit(main(argv))
