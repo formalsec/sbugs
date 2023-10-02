@@ -11,7 +11,7 @@ BASH_REGEX=r"real\s+(?P<min>\d+)m(?P<sec>\d+).(?P<msec>\d+)"
 def parse_time(t : str) -> float:
     with open(t, "r") as fd:
         data = fd.read()
-    match = re.search(BASH_REGEX, data)
+    match = re.search(SH_REGEX, data)
     if match:
         return (
             float(match.group('min')) * 60

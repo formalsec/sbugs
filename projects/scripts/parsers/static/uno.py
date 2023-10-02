@@ -58,7 +58,7 @@ def parse(file, project, bugs):
 if __name__ == '__main__':
 
     bugs = {}
-    path = '/home/fmarques/sbugs/projects/outputs/uno'
+    path = '/../../outputs/static/uno'
     projects = os.listdir(path)
     projects = filter(lambda x: os.path.isdir(f'{path}/{x}'), projects)
     
